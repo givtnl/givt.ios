@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		D758CD0A1F15052700EF0F19 /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; };
 		D758CD0B1F15052700EF0F19 /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D758CD111F15098700EF0F19 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CD0E1F15098700EF0F19 /* menu.png */; };
+		D758CD121F15098700EF0F19 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CD0F1F15098700EF0F19 /* menu@2x.png */; };
+		D758CD131F15098700EF0F19 /* menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CD101F15098700EF0F19 /* menu@3x.png */; };
 		FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		FB07A9691F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
 		FB3CE6D91F14CA200055185B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D81F14CA200055185B /* RootViewController.swift */; };
-		FB3CE6DB1F14CA200055185B /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6DA1F14CA200055185B /* DataViewController.swift */; };
-		FB3CE6DD1F14CA200055185B /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6DC1F14CA200055185B /* ModelController.swift */; };
 		FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6DE1F14CA200055185B /* Main.storyboard */; };
 		FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6E11F14CA200055185B /* Assets.xcassets */; };
 		FB3CE6E51F14CA200055185B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6E31F14CA200055185B /* LaunchScreen.storyboard */; };
@@ -45,13 +46,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D758CD0E1F15098700EF0F19 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		D758CD0F1F15098700EF0F19 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
+		D758CD101F15098700EF0F19 /* menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@3x.png"; sourceTree = "<group>"; };
 		FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LGSideMenuController.framework; path = Carthage/Build/iOS/LGSideMenuController.framework; sourceTree = "<group>"; };
 		FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LGSideMenuController.framework.dSYM; path = Carthage/Build/iOS/LGSideMenuController.framework.dSYM; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3CE6D61F14CA200055185B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB3CE6D81F14CA200055185B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		FB3CE6DA1F14CA200055185B /* DataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		FB3CE6DC1F14CA200055185B /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
 		FB3CE6DF1F14CA200055185B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB3CE6E11F14CA200055185B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB3CE6E41F14CA200055185B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -71,6 +73,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D758CD0D1F15097300EF0F19 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D758CD0E1F15098700EF0F19 /* menu.png */,
+				D758CD0F1F15098700EF0F19 /* menu@2x.png */,
+				D758CD101F15098700EF0F19 /* menu@3x.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		D758CD141F1513EC00EF0F19 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,10 +119,10 @@
 		FB3CE6D51F14CA200055185B /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				D758CD141F1513EC00EF0F19 /* Views */,
+				D758CD0D1F15097300EF0F19 /* images */,
 				FB3CE6D61F14CA200055185B /* AppDelegate.swift */,
 				FB3CE6D81F14CA200055185B /* RootViewController.swift */,
-				FB3CE6DA1F14CA200055185B /* DataViewController.swift */,
-				FB3CE6DC1F14CA200055185B /* ModelController.swift */,
 				FB3CE6DE1F14CA200055185B /* Main.storyboard */,
 				FB3CE6E11F14CA200055185B /* Assets.xcassets */,
 				FB3CE6E31F14CA200055185B /* LaunchScreen.storyboard */,
@@ -175,8 +194,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D758CD111F15098700EF0F19 /* menu.png in Resources */,
 				FB3CE6E51F14CA200055185B /* LaunchScreen.storyboard in Resources */,
+				D758CD121F15098700EF0F19 /* menu@2x.png in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
+				D758CD131F15098700EF0F19 /* menu@3x.png in Resources */,
 				FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,8 +211,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB3CE6D91F14CA200055185B /* RootViewController.swift in Sources */,
-				FB3CE6DD1F14CA200055185B /* ModelController.swift in Sources */,
-				FB3CE6DB1F14CA200055185B /* DataViewController.swift in Sources */,
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
