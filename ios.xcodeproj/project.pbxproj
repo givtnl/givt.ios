@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; };
 		FB07A9691F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */; };
-		D758CCF61F14D44500EF0F19 /* erase.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CCF01F14D44500EF0F19 /* erase.png */; };
-		D758CCF71F14D44500EF0F19 /* erase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CCF11F14D44500EF0F19 /* erase@2x.png */; };
-		D758CCF81F14D44500EF0F19 /* erase@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CCF21F14D44500EF0F19 /* erase@3x.png */; };
-		D758CCF91F14D44500EF0F19 /* givt-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CCF31F14D44500EF0F19 /* givt-logo.png */; };
-		D758CCFA1F14D44500EF0F19 /* givt-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CCF41F14D44500EF0F19 /* givt-logo@2x.png */; };
-		D758CCFB1F14D44500EF0F19 /* givt-logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CCF51F14D44500EF0F19 /* givt-logo@3x.png */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
 		FB3CE6D91F14CA200055185B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D81F14CA200055185B /* RootViewController.swift */; };
 		FB3CE6DB1F14CA200055185B /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6DA1F14CA200055185B /* DataViewController.swift */; };
@@ -48,17 +42,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-<<<<<<< HEAD
 		FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LGSideMenuController.framework; path = Carthage/Build/iOS/LGSideMenuController.framework; sourceTree = "<group>"; };
 		FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LGSideMenuController.framework.dSYM; path = Carthage/Build/iOS/LGSideMenuController.framework.dSYM; sourceTree = "<group>"; };
-=======
-		D758CCF01F14D44500EF0F19 /* erase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erase.png; sourceTree = "<group>"; };
-		D758CCF11F14D44500EF0F19 /* erase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "erase@2x.png"; sourceTree = "<group>"; };
-		D758CCF21F14D44500EF0F19 /* erase@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "erase@3x.png"; sourceTree = "<group>"; };
-		D758CCF31F14D44500EF0F19 /* givt-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "givt-logo.png"; sourceTree = "<group>"; };
-		D758CCF41F14D44500EF0F19 /* givt-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "givt-logo@2x.png"; sourceTree = "<group>"; };
-		D758CCF51F14D44500EF0F19 /* givt-logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "givt-logo@3x.png"; sourceTree = "<group>"; };
->>>>>>> add img + gitignore for pers. settings
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3CE6D61F14CA200055185B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB3CE6D81F14CA200055185B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -82,7 +67,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-<<<<<<< HEAD
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,19 +74,6 @@
 				FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */,
 			);
 			name = Frameworks;
-=======
-		D758CCEF1F14D42900EF0F19 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				D758CCF01F14D44500EF0F19 /* erase.png */,
-				D758CCF11F14D44500EF0F19 /* erase@2x.png */,
-				D758CCF21F14D44500EF0F19 /* erase@3x.png */,
-				D758CCF31F14D44500EF0F19 /* givt-logo.png */,
-				D758CCF41F14D44500EF0F19 /* givt-logo@2x.png */,
-				D758CCF51F14D44500EF0F19 /* givt-logo@3x.png */,
-			);
-			name = Images;
->>>>>>> add img + gitignore for pers. settings
 			sourceTree = "<group>";
 		};
 		FB3CE6CA1F14CA1F0055185B = {
@@ -125,7 +96,6 @@
 		FB3CE6D51F14CA200055185B /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				D758CCEF1F14D42900EF0F19 /* Images */,
 				FB3CE6D61F14CA200055185B /* AppDelegate.swift */,
 				FB3CE6D81F14CA200055185B /* RootViewController.swift */,
 				FB3CE6DA1F14CA200055185B /* DataViewController.swift */,
@@ -200,14 +170,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D758CCF61F14D44500EF0F19 /* erase.png in Resources */,
-				D758CCFB1F14D44500EF0F19 /* givt-logo@3x.png in Resources */,
 				FB3CE6E51F14CA200055185B /* LaunchScreen.storyboard in Resources */,
-				D758CCF81F14D44500EF0F19 /* erase@3x.png in Resources */,
-				D758CCF71F14D44500EF0F19 /* erase@2x.png in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
-				D758CCFA1F14D44500EF0F19 /* givt-logo@2x.png in Resources */,
-				D758CCF91F14D44500EF0F19 /* givt-logo.png in Resources */,
 				FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
