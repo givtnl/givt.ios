@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; };
+		FB07A9691F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
 		FB3CE6D91F14CA200055185B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D81F14CA200055185B /* RootViewController.swift */; };
 		FB3CE6DB1F14CA200055185B /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6DA1F14CA200055185B /* DataViewController.swift */; };
@@ -16,7 +18,32 @@
 		FB3CE6E51F14CA200055185B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6E31F14CA200055185B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FB07A9611F14D97200FD9C1A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB07A9621F14D98300FD9C1A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				FB07A9691F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LGSideMenuController.framework; path = Carthage/Build/iOS/LGSideMenuController.framework; sourceTree = "<group>"; };
+		FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LGSideMenuController.framework.dSYM; path = Carthage/Build/iOS/LGSideMenuController.framework.dSYM; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3CE6D61F14CA200055185B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB3CE6D81F14CA200055185B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -33,17 +60,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */,
+				FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FB3CE6CA1F14CA1F0055185B = {
 			isa = PBXGroup;
 			children = (
 				FB3CE6D51F14CA200055185B /* ios */,
 				FB3CE6D41F14CA200055185B /* Products */,
+				FB07A9651F14D9F300FD9C1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +118,8 @@
 				FB3CE6CF1F14CA200055185B /* Sources */,
 				FB3CE6D01F14CA200055185B /* Frameworks */,
 				FB3CE6D11F14CA200055185B /* Resources */,
+				FB07A9611F14D97200FD9C1A /* Embed Frameworks */,
+				FB07A9621F14D98300FD9C1A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -268,6 +308,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YDSA4AY496;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
@@ -281,6 +325,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YDSA4AY496;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
@@ -308,6 +356,7 @@
 				FB3CE6EB1F14CA200055185B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
