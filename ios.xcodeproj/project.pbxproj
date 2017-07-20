@@ -43,6 +43,19 @@
 		D761E99E1F167315002B849B /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E99D1F167315002B849B /* CustomViewController.swift */; };
 		D761E9A01F167798002B849B /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E99F1F167798002B849B /* AmountViewController.swift */; };
 		D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9A11F17B14D002B849B /* RoundedButton.swift */; };
+		D761E9A61F17BCB4002B849B /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9A31F17BCB4002B849B /* help.png */; };
+		D761E9A71F17BCB4002B849B /* help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9A41F17BCB4002B849B /* help@2x.png */; };
+		D761E9A81F17BCB4002B849B /* help@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9A51F17BCB4002B849B /* help@3x.png */; };
+		D761E9AC1F17BF20002B849B /* erase.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9A91F17BF20002B849B /* erase.png */; };
+		D761E9AD1F17BF20002B849B /* erase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9AA1F17BF20002B849B /* erase@2x.png */; };
+		D761E9AE1F17BF20002B849B /* erase@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9AB1F17BF20002B849B /* erase@3x.png */; };
+		D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9AF1F18AC90002B849B /* CustomButton.swift */; };
+		D761E9B31F18B55C002B849B /* entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D761E9B21F18B450002B849B /* entypo.ttf */; };
+		D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D761E9B41F18B602002B849B /* zocial-regular-webfont.ttf */; };
+		D761E9B71F18B89D002B849B /* AmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9B61F18B89D002B849B /* AmViewController.swift */; };
+		D761E9BA1F18C5C6002B849B /* String+DoubleConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9B91F18C5C6002B849B /* String+DoubleConverter.swift */; };
+		D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9BB1F18CE0C002B849B /* ScanViewController.swift */; };
+		D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */; };
 		FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		FB07A9691F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
@@ -111,6 +124,19 @@
 		D761E99D1F167315002B849B /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		D761E99F1F167798002B849B /* AmountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
 		D761E9A11F17B14D002B849B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		D761E9A31F17BCB4002B849B /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
+		D761E9A41F17BCB4002B849B /* help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help@2x.png"; sourceTree = "<group>"; };
+		D761E9A51F17BCB4002B849B /* help@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help@3x.png"; sourceTree = "<group>"; };
+		D761E9A91F17BF20002B849B /* erase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = erase.png; sourceTree = "<group>"; };
+		D761E9AA1F17BF20002B849B /* erase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "erase@2x.png"; sourceTree = "<group>"; };
+		D761E9AB1F17BF20002B849B /* erase@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "erase@3x.png"; sourceTree = "<group>"; };
+		D761E9AF1F18AC90002B849B /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		D761E9B21F18B450002B849B /* entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = entypo.ttf; sourceTree = "<group>"; };
+		D761E9B41F18B602002B849B /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
+		D761E9B61F18B89D002B849B /* AmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmViewController.swift; sourceTree = "<group>"; };
+		D761E9B91F18C5C6002B849B /* String+DoubleConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+DoubleConverter.swift"; sourceTree = "<group>"; };
+		D761E9BB1F18CE0C002B849B /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexConversion.swift"; sourceTree = "<group>"; };
 		FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LGSideMenuController.framework; path = Carthage/Build/iOS/LGSideMenuController.framework; sourceTree = "<group>"; };
 		FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LGSideMenuController.framework.dSYM; path = Carthage/Build/iOS/LGSideMenuController.framework.dSYM; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +164,12 @@
 		D758CD0D1F15097300EF0F19 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D761E9A91F17BF20002B849B /* erase.png */,
+				D761E9AA1F17BF20002B849B /* erase@2x.png */,
+				D761E9AB1F17BF20002B849B /* erase@3x.png */,
+				D761E9A31F17BCB4002B849B /* help.png */,
+				D761E9A41F17BCB4002B849B /* help@2x.png */,
+				D761E9A51F17BCB4002B849B /* help@3x.png */,
 				D761E9971F166FF8002B849B /* rightarrow.png */,
 				D761E9981F166FF8002B849B /* rightarrow@2x.png */,
 				D761E9991F166FF8002B849B /* rightarrow@3x.png */,
@@ -173,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */,
+				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -191,8 +224,19 @@
 				D761E9641F1612F8002B849B /* SettingTableViewController.swift */,
 				D761E99D1F167315002B849B /* CustomViewController.swift */,
 				D761E99F1F167798002B849B /* AmountViewController.swift */,
+				D761E9B61F18B89D002B849B /* AmViewController.swift */,
+				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D761E9B81F18C588002B849B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D761E9B91F18C5C6002B849B /* String+DoubleConverter.swift */,
+				D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
@@ -224,6 +268,9 @@
 		FB3CE6D51F14CA200055185B /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				D761E9B81F18C588002B849B /* Extensions */,
+				D761E9B21F18B450002B849B /* entypo.ttf */,
+				D761E9B41F18B602002B849B /* zocial-regular-webfont.ttf */,
 				D761E9661F1614A7002B849B /* ViewControllers */,
 				D761E9611F1611BE002B849B /* Models */,
 				D758CD141F1513EC00EF0F19 /* Views */,
@@ -305,25 +352,32 @@
 			files = (
 				D761E99B1F166FF8002B849B /* rightarrow@2x.png in Resources */,
 				D761E96F1F165950002B849B /* list.png in Resources */,
+				D761E9A81F17BCB4002B849B /* help@3x.png in Resources */,
 				D758CD111F15098700EF0F19 /* menu.png in Resources */,
 				FB3CE6E51F14CA200055185B /* LaunchScreen.storyboard in Resources */,
 				D758CD121F15098700EF0F19 /* menu@2x.png in Resources */,
 				D761E98B1F165CDF002B849B /* lock@2x.png in Resources */,
+				D761E9AD1F17BF20002B849B /* erase@2x.png in Resources */,
 				D761E9891F165CDF002B849B /* person@3x.png in Resources */,
+				D761E9AC1F17BF20002B849B /* erase.png in Resources */,
 				D761E9731F165950002B849B /* euro@2x.png in Resources */,
 				D761E9901F166090002B849B /* share.png in Resources */,
 				D761E9881F165CDF002B849B /* person@2x.png in Resources */,
+				D761E9A61F17BCB4002B849B /* help.png in Resources */,
 				D761E9841F165CDF002B849B /* exit.png in Resources */,
 				D761E99A1F166FF8002B849B /* rightarrow.png in Resources */,
 				D761E9911F166090002B849B /* share@2x.png in Resources */,
 				D761E9921F166090002B849B /* share@3x.png in Resources */,
 				D761E9851F165CDF002B849B /* exit@2x.png in Resources */,
+				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
 				D761E98C1F165CDF002B849B /* lock@3x.png in Resources */,
+				D761E9A71F17BCB4002B849B /* help@2x.png in Resources */,
 				D761E9701F165950002B849B /* list@2x.png in Resources */,
 				D761E9821F165CDF002B849B /* info24@2x.png in Resources */,
 				D761E9831F165CDF002B849B /* info24@3x.png in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D761E99C1F166FF8002B849B /* rightarrow@3x.png in Resources */,
+				D761E9AE1F17BF20002B849B /* erase@3x.png in Resources */,
 				D761E9721F165950002B849B /* euro.png in Resources */,
 				D761E9811F165CDF002B849B /* info24.png in Resources */,
 				D761E9741F165950002B849B /* euro@3x.png in Resources */,
@@ -331,6 +385,7 @@
 				D758CD131F15098700EF0F19 /* menu@3x.png in Resources */,
 				D761E9871F165CDF002B849B /* person.png in Resources */,
 				D761E9861F165CDF002B849B /* exit@3x.png in Resources */,
+				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
 				D761E9711F165950002B849B /* list@3x.png in Resources */,
 				FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */,
 			);
@@ -346,9 +401,14 @@
 				D761E9A01F167798002B849B /* AmountViewController.swift in Sources */,
 				FB3CE6D91F14CA200055185B /* RootViewController.swift in Sources */,
 				D761E99E1F167315002B849B /* CustomViewController.swift in Sources */,
+				D761E9B71F18B89D002B849B /* AmViewController.swift in Sources */,
+				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
+				D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */,
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
+				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
 				D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */,
+				D761E9BA1F18C5C6002B849B /* String+DoubleConverter.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemTableViewCell.swift in Sources */,
 				D761E9651F1612F8002B849B /* SettingTableViewController.swift in Sources */,

@@ -18,12 +18,12 @@ class AmountViewController: LGSideMenuController, LGSideMenuDelegate {
     }
     
     func willHideLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
-        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarStyle = .default
     }
 
     override func viewDidLoad() {
         super.delegate = self
-        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarStyle = .default
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
