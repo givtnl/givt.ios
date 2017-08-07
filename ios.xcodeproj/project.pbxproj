@@ -56,6 +56,7 @@
 		D761E9BA1F18C5C6002B849B /* String+DoubleConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9B91F18C5C6002B849B /* String+DoubleConverter.swift */; };
 		D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9BB1F18CE0C002B849B /* ScanViewController.swift */; };
 		D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */; };
+		D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D761E9C41F20CFA6002B849B /* Localizable.strings */; };
 		FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		FB07A9691F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
@@ -137,6 +138,8 @@
 		D761E9B91F18C5C6002B849B /* String+DoubleConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+DoubleConverter.swift"; sourceTree = "<group>"; };
 		D761E9BB1F18CE0C002B849B /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexConversion.swift"; sourceTree = "<group>"; };
+		D761E9C31F20CFA6002B849B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D761E9C61F20D341002B849B /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LGSideMenuController.framework; path = Carthage/Build/iOS/LGSideMenuController.framework; sourceTree = "<group>"; };
 		FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LGSideMenuController.framework.dSYM; path = Carthage/Build/iOS/LGSideMenuController.framework.dSYM; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,6 +286,7 @@
 				FB3CE6E61F14CA200055185B /* Info.plist */,
 				D761E9931F166B8D002B849B /* CustomTableView.swift */,
 				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
+				D761E9C41F20CFA6002B849B /* Localizable.strings */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -334,6 +338,7 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
 			);
 			mainGroup = FB3CE6CA1F14CA1F0055185B;
 			productRefGroup = FB3CE6D41F14CA200055185B /* Products */;
@@ -378,6 +383,7 @@
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D761E99C1F166FF8002B849B /* rightarrow@3x.png in Resources */,
 				D761E9AE1F17BF20002B849B /* erase@3x.png in Resources */,
+				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
 				D761E9721F165950002B849B /* euro.png in Resources */,
 				D761E9811F165CDF002B849B /* info24.png in Resources */,
 				D761E9741F165950002B849B /* euro@3x.png in Resources */,
@@ -418,6 +424,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		D761E9C41F20CFA6002B849B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D761E9C31F20CFA6002B849B /* Base */,
+				D761E9C61F20D341002B849B /* nl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		FB3CE6DE1F14CA200055185B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -478,7 +493,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -522,7 +537,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

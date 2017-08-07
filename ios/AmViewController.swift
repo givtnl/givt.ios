@@ -10,8 +10,12 @@ import UIKit
 
 class AmViewController: UIViewController {
 
+    @IBOutlet weak var lblTitle: UINavigationItem!
+    @IBOutlet weak var btnGive: CustomButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
+        lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         // Do any additional setup after loading the view.
     }
     

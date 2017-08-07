@@ -11,6 +11,7 @@ import LGSideMenuController
 
 class SettingTableViewController: UITableViewController {
     
+    @IBOutlet weak var lblSettings: UILabel!
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
     }
@@ -24,6 +25,7 @@ class SettingTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        lblSettings.text = NSLocalizedString("Settings", comment: "Settings")
         loadSettings()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,17 +35,18 @@ class SettingTableViewController: UITableViewController {
     }
     
     private func loadSettings(){
-        let givts = Setting(name: "Giften", image: UIImage(named: "list")!)
+        // key: "Next", comment: "Next button"
+        let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!)
         
-        let limit = Setting(name: "Geeflimiet", image: UIImage(named: "euro")!)
-        let accessCode = Setting(name: "Toegangscode", image: UIImage(named: "lock")!)
+        let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!)
+        let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!)
         
-        let changeAccount = Setting(name: "Wisselen van account", image: UIImage(named: "person")!)
-        let screwAccount = Setting(name: "Account opzeggen", image: UIImage(named: "exit")!)
+        let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!)
+        let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!)
         
-        let aboutGivt = Setting(name: "Over Givt/Contact", image: UIImage(named: "info24")!)
+        let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!)
 
-        let shareGivt = Setting(name: "Share Givt", image: UIImage(named: "share")!)
+        let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!)
         
         items +=
             [
