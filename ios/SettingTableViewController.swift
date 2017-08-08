@@ -89,6 +89,18 @@ class SettingTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alert = UIAlertController(title: "title",
+                                      message: "message",
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        
+        let cancelAction = UIAlertAction(title: "OK",
+                                         style: .cancel, handler: nil)
+        
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+        UserDefaults.standard.setIsLoggedIn(value: false)
+    }
 
     /*
     // Override to support conditional editing of the table view.

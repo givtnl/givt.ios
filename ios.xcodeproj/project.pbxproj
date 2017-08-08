@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D73CA1BF1F38B2EC0059A296 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D73CA1BE1F38B2EC0059A296 /* Login.storyboard */; };
+		D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C21F38B4C30059A296 /* LoginViewController.swift */; };
+		D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C41F39BA360059A296 /* AppConstants.swift */; };
+		D73CA1C71F39BD970059A296 /* UserDefaults+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C61F39BD970059A296 /* UserDefaults+helpers.swift */; };
 		D758CD0A1F15052700EF0F19 /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; };
 		D758CD0B1F15052700EF0F19 /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D758CD111F15098700EF0F19 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CD0E1F15098700EF0F19 /* menu.png */; };
@@ -91,6 +95,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D73CA1BE1F38B2EC0059A296 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		D73CA1C21F38B4C30059A296 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D73CA1C41F39BA360059A296 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		D73CA1C61F39BD970059A296 /* UserDefaults+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+helpers.swift"; sourceTree = "<group>"; };
 		D758CD0E1F15098700EF0F19 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		D758CD0F1F15098700EF0F19 /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@2x.png"; sourceTree = "<group>"; };
 		D758CD101F15098700EF0F19 /* menu@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu@3x.png"; sourceTree = "<group>"; };
@@ -229,6 +237,7 @@
 				D761E99F1F167798002B849B /* AmountViewController.swift */,
 				D761E9B61F18B89D002B849B /* AmViewController.swift */,
 				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
+				D73CA1C21F38B4C30059A296 /* LoginViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -238,6 +247,7 @@
 			children = (
 				D761E9B91F18C5C6002B849B /* String+DoubleConverter.swift */,
 				D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */,
+				D73CA1C61F39BD970059A296 /* UserDefaults+helpers.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -287,6 +297,8 @@
 				D761E9931F166B8D002B849B /* CustomTableView.swift */,
 				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
 				D761E9C41F20CFA6002B849B /* Localizable.strings */,
+				D73CA1BE1F38B2EC0059A296 /* Login.storyboard */,
+				D73CA1C41F39BA360059A296 /* AppConstants.swift */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -326,7 +338,7 @@
 					FB3CE6D21F14CA200055185B = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = YDSA4AY496;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -363,6 +375,7 @@
 				D758CD121F15098700EF0F19 /* menu@2x.png in Resources */,
 				D761E98B1F165CDF002B849B /* lock@2x.png in Resources */,
 				D761E9AD1F17BF20002B849B /* erase@2x.png in Resources */,
+				D73CA1BF1F38B2EC0059A296 /* Login.storyboard in Resources */,
 				D761E9891F165CDF002B849B /* person@3x.png in Resources */,
 				D761E9AC1F17BF20002B849B /* erase.png in Resources */,
 				D761E9731F165950002B849B /* euro@2x.png in Resources */,
@@ -407,6 +420,7 @@
 				D761E9A01F167798002B849B /* AmountViewController.swift in Sources */,
 				FB3CE6D91F14CA200055185B /* RootViewController.swift in Sources */,
 				D761E99E1F167315002B849B /* CustomViewController.swift in Sources */,
+				D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */,
 				D761E9B71F18B89D002B849B /* AmViewController.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */,
@@ -414,7 +428,9 @@
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
 				D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */,
+				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
 				D761E9BA1F18C5C6002B849B /* String+DoubleConverter.swift in Sources */,
+				D73CA1C71F39BD970059A296 /* UserDefaults+helpers.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemTableViewCell.swift in Sources */,
 				D761E9651F1612F8002B849B /* SettingTableViewController.swift in Sources */,
@@ -560,7 +576,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -578,7 +595,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

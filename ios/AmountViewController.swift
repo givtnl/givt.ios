@@ -34,6 +34,16 @@ class AmountViewController: LGSideMenuController, LGSideMenuDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let isLoggedIn = UserDefaults.standard.isLoggedIn()
+        if(!isLoggedIn)
+        {
+            self.performSegue(withIdentifier: "loginView", sender: self)
+        }
+        
+    }
+    
+    
 
     /*
     // MARK: - Navigation
