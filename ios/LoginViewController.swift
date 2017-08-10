@@ -8,12 +8,44 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
-
+class LoginViewController: UIViewController, UITextFieldDelegate {
+    let loginManager = LoginManager()
+    
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var txtUserName: UITextField!
+    @IBOutlet weak var txtPassword: UITextField!
+    @IBOutlet weak var txtTitle: UILabel!
+    @IBOutlet weak var btnLogin: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        txtTitle.text = "Om toegang tot je account te krijgen, hoef je alleen even in te loggen."
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        txtPassword.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        //To retrieve keyboard size, uncomment following line
+        let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        bottomConstraint.constant = (keyboardSize?.height)! + 20
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        //To retrieve keyboard size, uncomment following line
+        //let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
+        bottomConstraint.constant = 20
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,43 +55,41 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func performLogin(_ sender: UIButton) {
-        loginUser()
-        UserDefaults.standard.setIsLoggedIn(value: true)
-        UserDefaults.standard.synchronize()
-        self.dismiss(animated: true, completion: nil)
+        btnLogin.loadingIndicator(show: true)
+        loginManager.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error in
+            if let b = b {
+                if(b){
+                    print("logging user in")
+                    UserDefaults.standard.isLoggedIn = true
+                    UserDefaults.standard.synchronize()
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    DispatchQueue.main.async {
+                        self.btnLogin.loadingIndicator(show: false)
+                    }
+                    print("something wrong logging user in")
+                    DispatchQueue.main.async(execute: {
+                        let alert = UIAlertController(title: "Oeps er gaat iets mis!",
+                                                      message: "Je wachtwoord is onjuist.",
+                                                      preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        let cancelAction = UIAlertAction(title: "OK",
+                                                         style: .cancel, handler: nil)
+                        
+                        alert.addAction(cancelAction)
+                        self.present(alert, animated: true, completion: nil)
+                    })
+                    
+                }
+                
+            } else {
+                NSLog(String(describing: error))
+            }
+        })
+        
+        
     }
     
-    func loginUser(){
-        var request = URLRequest(url: URL(string: "https://givtapidebug.azurewebsites.net/oauth2/token")!)
-        request.httpMethod = "POST"
-        let postString = "grant_type=password&userName=debug@nfcollect.com&password=Test123"
-        request.httpBody = postString.data(using: .utf8)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-            do
-            {
-                let parsedData = try JSONSerialization.jsonObject(with: data) as! [String:Any]
-                let currentData = parsedData
-                print(parsedData["access_token"]!)
-            } catch let error as NSError {
-                print(error)
-            }
-            
-            
-        }
-        task.resume()
-    }
     /*
     // MARK: - Navigation
 

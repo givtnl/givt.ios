@@ -95,11 +95,19 @@ class SettingTableViewController: UITableViewController {
                                       preferredStyle: UIAlertControllerStyle.alert)
         
         let cancelAction = UIAlertAction(title: "OK",
-                                         style: .cancel, handler: nil)
+                                         style: .cancel, handler: { action  -> Void in
+                                            UserDefaults.standard.isLoggedIn = false
+                                            
+                                            self.present((self.storyboard?.instantiateViewController(withIdentifier: "lvc"))!, animated: true, completion: {
+                                                self.toggleLeftViewAnimated(nil)
+                                            })
+                                            
+                                            
+        })
         
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
-        UserDefaults.standard.setIsLoggedIn(value: false)
+        
     }
 
     /*

@@ -35,10 +35,11 @@ class AmountViewController: LGSideMenuController, LGSideMenuDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let isLoggedIn = UserDefaults.standard.isLoggedIn()
+        let isLoggedIn = UserDefaults.standard.isLoggedIn
         if(!isLoggedIn)
         {
-            self.performSegue(withIdentifier: "loginView", sender: self)
+            //self.present(withIdentifier: "lvc", sender: self)
+            self.present((self.storyboard?.instantiateViewController(withIdentifier: "lvc"))!, animated: true, completion: nil)
         }
         
     }

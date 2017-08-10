@@ -11,16 +11,49 @@ import Foundation
 extension UserDefaults {
     
     enum UserDefaultsKeys: String {
-        case isLoggedIn
-        case permissionSet
+        case IsLoggedIn
+        case BearerToken
+        case BearerExpiration
+        case AmountLimit
     }
     
-    func setIsLoggedIn(value: Bool) {
-        set(value, forKey: UserDefaultsKeys.isLoggedIn.rawValue)
-        synchronize()
+    var isLoggedIn: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.IsLoggedIn.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.IsLoggedIn.rawValue)
+            synchronize()
+        }
     }
     
-    func isLoggedIn() -> Bool {
-        return bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
+    var bearerToken: String {
+        get {
+            return string(forKey: UserDefaultsKeys.BearerToken.rawValue)!
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.BearerToken.rawValue)
+            synchronize()
+        }
+    }
+    
+    var bearerExpiration: Date {
+        get {
+            return object(forKey: UserDefaultsKeys.BearerExpiration.rawValue) as! Date
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.BearerExpiration.rawValue)
+            synchronize()
+        }
+    }
+    
+    var amountLimit: Int {
+        get {
+            return integer(forKey: UserDefaultsKeys.AmountLimit.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.AmountLimit.rawValue)
+            synchronize()
+        }
     }
 }

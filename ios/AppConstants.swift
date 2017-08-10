@@ -9,5 +9,5 @@
 import Foundation
 
 class AppConstants{
-    static let isLoggedIn = "isLoggedIn"
+   
 }
