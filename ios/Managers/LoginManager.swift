@@ -77,7 +77,7 @@ class LoginManager {
                 print(parsedData["access_token"]!)
                 if(parsedData["access_token"] != nil) {
                     UserDefaults.standard.bearerToken = parsedData["access_token"]! as! String
-                    UserDefaults.standard.bearerExpiration = parsedData[".expires"]! as! Date
+                   // UserDefaults.standard.bearerExpiration = parsedData[".expires"]! as! Date
                     completionHandler(true, nil)
                     return
                 }

@@ -13,6 +13,7 @@ class CustomUITextField: UITextField{
     override func awakeFromNib() {
         self.layer.borderColor = UIColor.init(red: 234, green: 234, blue: 238).cgColor
         self.layer.borderWidth = 1.0
+        self.layer.cornerRadius = 4
         self.setLeftPaddingPoints(15)
         self.setRightPaddingPoints(15)
     }

@@ -56,7 +56,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="b2n-Os-VqD"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
@@ -66,7 +66,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="epz-vb-ZNv"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="email"/>
                             </textField>
@@ -133,6 +133,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="bottomConstraint" destination="qyI-GU-MOV" id="uY7-CL-dU7"/>
+                        <outlet property="btnForgotPassword" destination="w8V-Yp-Hcx" id="Ul8-AK-Ja9"/>
                         <outlet property="btnLogin" destination="4S2-ek-spf" id="RHH-M8-bHj"/>
                         <outlet property="txtPassword" destination="uzn-Pv-4sw" id="BeK-en-jbg"/>
                         <outlet property="txtTitle" destination="xv4-WD-WoL" id="oex-AN-9yD"/>

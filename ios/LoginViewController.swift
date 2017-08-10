@@ -16,9 +16,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var btnLogin: UIButton!
+    @IBOutlet weak var btnForgotPassword: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtTitle.text = "Om toegang tot je account te krijgen, hoef je alleen even in te loggen."
+        txtUserName.placeholder = NSLocalizedString("Email", comment: "")
+        txtPassword.placeholder = NSLocalizedString("Password", comment: "")
+        txtTitle.text = NSLocalizedString("LoginText", comment: "")
+        btnForgotPassword.setTitle(NSLocalizedString("ForgotPassword", comment: ""), for: .normal)
+        btnLogin.setTitle("Login", for: UIControlState.normal)
         //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
         txtPassword.delegate = self
@@ -61,22 +66,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if(b){
                     print("logging user in")
                     UserDefaults.standard.isLoggedIn = true
-                    UserDefaults.standard.synchronize()
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     DispatchQueue.main.async {
                         self.btnLogin.loadingIndicator(show: false)
                     }
                     print("something wrong logging user in")
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
+                                                  message: NSLocalizedString("WrongCredentials", comment: ""),
+                                                  preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    let cancelAction = UIAlertAction(title: "OK",
+                                                     style: .cancel, handler: nil)
+                    
+                    alert.addAction(cancelAction)
                     DispatchQueue.main.async(execute: {
-                        let alert = UIAlertController(title: "Oeps er gaat iets mis!",
-                                                      message: "Je wachtwoord is onjuist.",
-                                                      preferredStyle: UIAlertControllerStyle.alert)
-                        
-                        let cancelAction = UIAlertAction(title: "OK",
-                                                         style: .cancel, handler: nil)
-                        
-                        alert.addAction(cancelAction)
                         self.present(alert, animated: true, completion: nil)
                     })
                     
