@@ -11,6 +11,13 @@ import UIKit
 
 class CustomButton: UIButton{
     override func awakeFromNib() {
-
+        
     }
+    
+    override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? UIColor.init(rgb: 0x1ca96c) : UIColor.init(rgb: 0x41c98e)
+        }
+    }
+
 }

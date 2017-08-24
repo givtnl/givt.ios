@@ -16,7 +16,7 @@ class CustomViewController: UINavigationController  {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.shadowImage = UIImage()        
         // Do any additional setup after loading the view.
        /* LGSideMenuDelegate.didHideLeftView(<#T##LGSideMenuDelegate#>)
         delegateTest?.willHideLeftView(leftView: UIView, sideMenuController: LGSideMenuController) += NSLog("test")*/
@@ -28,16 +28,13 @@ class CustomViewController: UINavigationController  {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
     }
-    */
+ 
     
 
 }

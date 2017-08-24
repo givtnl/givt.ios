@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D72B70821F4489EE0022BD29 /* givt_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = D72B70811F4489ED0022BD29 /* givt_animation.gif */; };
+		D7335B2E1F45923F00B57AE0 /* UIImage+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7335B2D1F45923F00B57AE0 /* UIImage+gif.swift */; };
 		D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C21F38B4C30059A296 /* LoginViewController.swift */; };
 		D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C41F39BA360059A296 /* AppConstants.swift */; };
 		D73CA1C71F39BD970059A296 /* UserDefaults+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C61F39BD970059A296 /* UserDefaults+helpers.swift */; };
+		D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */; };
+		D740E1561F4C5FAE000531BA /* GivtManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E1551F4C5FAE000531BA /* GivtManager.swift */; };
+		D740E15A1F4C631F000531BA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E1591F4C631F000531BA /* UserService.swift */; };
+		D740E15C1F4C6328000531BA /* GivtService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15B1F4C6328000531BA /* GivtService.swift */; };
+		D740E15E1F4C63A1000531BA /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15D1F4C63A1000531BA /* UserServiceProtocol.swift */; };
+		D740E1601F4C63D1000531BA /* GivtServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15F1F4C63D1000531BA /* GivtServiceProtocol.swift */; };
 		D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */; };
 		D754DA371F3B0BE3001B7040 /* givt20h.png in Resources */ = {isa = PBXBuildFile; fileRef = D754DA341F3B0BDD001B7040 /* givt20h.png */; };
 		D754DA381F3B0BE3001B7040 /* givt20h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D754DA351F3B0BDF001B7040 /* givt20h@3x.png */; };
@@ -68,6 +76,13 @@
 		D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */; };
 		D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D761E9C41F20CFA6002B849B /* Localizable.strings */; };
 		D77667EE1F39F12900649157 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77667ED1F39F12900649157 /* LoginManager.swift */; };
+		D7F02B9B1F458BD5006D4712 /* SwiftGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7F02B991F458BB4006D4712 /* SwiftGif.framework */; };
+		D7F02B9C1F458BD5006D4712 /* SwiftGif.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7F02B991F458BB4006D4712 /* SwiftGif.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
+		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
+		D7FB25231F4F24F50011A14E /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = D7FB25201F4F24F50011A14E /* success.png */; };
+		D7FB25241F4F24F50011A14E /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7FB25211F4F24F50011A14E /* success@2x.png */; };
+		D7FB25251F4F24F50011A14E /* success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7FB25221F4F24F50011A14E /* success@3x.png */; };
 		FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		FB07A9691F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
@@ -85,6 +100,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D758CD0B1F15052700EF0F19 /* LGSideMenuController.framework in Embed Frameworks */,
+				D7F02B9C1F458BD5006D4712 /* SwiftGif.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,9 +118,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D72B70811F4489ED0022BD29 /* givt_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = givt_animation.gif; path = ../../givtapp2/SharedResources/givt_animation.gif; sourceTree = "<group>"; };
+		D7335B2D1F45923F00B57AE0 /* UIImage+gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+gif.swift"; sourceTree = "<group>"; };
 		D73CA1C21F38B4C30059A296 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D73CA1C41F39BA360059A296 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		D73CA1C61F39BD970059A296 /* UserDefaults+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+helpers.swift"; sourceTree = "<group>"; };
+		D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconServiceProtocol.swift; sourceTree = "<group>"; };
+		D740E1551F4C5FAE000531BA /* GivtManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivtManager.swift; sourceTree = "<group>"; };
+		D740E1591F4C631F000531BA /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		D740E15B1F4C6328000531BA /* GivtService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivtService.swift; sourceTree = "<group>"; };
+		D740E15D1F4C63A1000531BA /* UserServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
+		D740E15F1F4C63D1000531BA /* GivtServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivtServiceProtocol.swift; sourceTree = "<group>"; };
 		D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		D754DA341F3B0BDD001B7040 /* givt20h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = givt20h.png; path = ../../Documents/anders_geven/givt20h.png; sourceTree = "<group>"; };
 		D754DA351F3B0BDF001B7040 /* givt20h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "givt20h@3x.png"; path = "../../Documents/anders_geven/givt20h@3x.png"; sourceTree = "<group>"; };
@@ -163,6 +187,13 @@
 		D761E9C31F20CFA6002B849B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D761E9C61F20D341002B849B /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D77667ED1F39F12900649157 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		D7F02B991F458BB4006D4712 /* SwiftGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGif.framework; path = Carthage/Build/iOS/SwiftGif.framework; sourceTree = "<group>"; };
+		D7F02B9A1F458BC9006D4712 /* SwiftGif.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftGif.framework.dSYM; path = Carthage/Build/iOS/SwiftGif.framework.dSYM; sourceTree = "<group>"; };
+		D7FB251C1F4D6D2F0011A14E /* AppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
+		D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCompleteViewController.swift; sourceTree = "<group>"; };
+		D7FB25201F4F24F50011A14E /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
+		D7FB25211F4F24F50011A14E /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
+		D7FB25221F4F24F50011A14E /* success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@3x.png"; sourceTree = "<group>"; };
 		FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LGSideMenuController.framework; path = Carthage/Build/iOS/LGSideMenuController.framework; sourceTree = "<group>"; };
 		FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LGSideMenuController.framework.dSYM; path = Carthage/Build/iOS/LGSideMenuController.framework.dSYM; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,15 +211,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */,
+				D7F02B9B1F458BD5006D4712 /* SwiftGif.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D72B707E1F44832D0022BD29 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D740E1591F4C631F000531BA /* UserService.swift */,
+				D740E15B1F4C6328000531BA /* GivtService.swift */,
+				D7FB251C1F4D6D2F0011A14E /* AppServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D740E14E1F4C5328000531BA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */,
+				D740E15D1F4C63A1000531BA /* UserServiceProtocol.swift */,
+				D740E15F1F4C63D1000531BA /* GivtServiceProtocol.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		D758CD0D1F15097300EF0F19 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D7FB25201F4F24F50011A14E /* success.png */,
+				D7FB25211F4F24F50011A14E /* success@2x.png */,
+				D7FB25221F4F24F50011A14E /* success@3x.png */,
+				D72B70811F4489ED0022BD29 /* givt_animation.gif */,
 				D754DA3E1F3DAFE1001B7040 /* givtsplash.png */,
 				D754DA3D1F3DAFE1001B7040 /* givtsplash@2x.png */,
 				D754DA3C1F3DAFDC001B7040 /* givtsplash@3x.png */,
@@ -259,6 +315,7 @@
 				D761E9B61F18B89D002B849B /* AmViewController.swift */,
 				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
 				D73CA1C21F38B4C30059A296 /* LoginViewController.swift */,
+				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -270,6 +327,7 @@
 				D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */,
 				D73CA1C61F39BD970059A296 /* UserDefaults+helpers.swift */,
 				D754DA3A1F3B45D5001B7040 /* UIButton+helpers.swift */,
+				D7335B2D1F45923F00B57AE0 /* UIImage+gif.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -278,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				D77667ED1F39F12900649157 /* LoginManager.swift */,
+				D740E1551F4C5FAE000531BA /* GivtManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -294,6 +353,8 @@
 		FB3CE6CA1F14CA1F0055185B = {
 			isa = PBXGroup;
 			children = (
+				D7F02B9A1F458BC9006D4712 /* SwiftGif.framework.dSYM */,
+				D7F02B991F458BB4006D4712 /* SwiftGif.framework */,
 				FB3CE6D51F14CA200055185B /* ios */,
 				FB3CE6D41F14CA200055185B /* Products */,
 				FB07A9651F14D9F300FD9C1A /* Frameworks */,
@@ -311,6 +372,8 @@
 		FB3CE6D51F14CA200055185B /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				D740E14E1F4C5328000531BA /* Protocols */,
+				D72B707E1F44832D0022BD29 /* Services */,
 				D77667EC1F39F11300649157 /* Managers */,
 				D761E9B81F18C588002B849B /* Extensions */,
 				D761E9B21F18B450002B849B /* entypo.ttf */,
@@ -370,6 +433,11 @@
 						DevelopmentTeam = YDSA4AY496;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -402,12 +470,14 @@
 				D761E96F1F165950002B849B /* list.png in Resources */,
 				D761E9A81F17BCB4002B849B /* help@3x.png in Resources */,
 				D758CD111F15098700EF0F19 /* menu.png in Resources */,
+				D7FB25231F4F24F50011A14E /* success.png in Resources */,
 				FB3CE6E51F14CA200055185B /* LaunchScreen.storyboard in Resources */,
 				D758CD121F15098700EF0F19 /* menu@2x.png in Resources */,
 				D761E98B1F165CDF002B849B /* lock@2x.png in Resources */,
 				D761E9AD1F17BF20002B849B /* erase@2x.png in Resources */,
 				D754DA381F3B0BE3001B7040 /* givt20h@3x.png in Resources */,
 				D761E9891F165CDF002B849B /* person@3x.png in Resources */,
+				D72B70821F4489EE0022BD29 /* givt_animation.gif in Resources */,
 				D761E9AC1F17BF20002B849B /* erase.png in Resources */,
 				D761E9731F165950002B849B /* euro@2x.png in Resources */,
 				D754DA391F3B0BE3001B7040 /* givt20h@2x.png in Resources */,
@@ -415,6 +485,7 @@
 				D761E9881F165CDF002B849B /* person@2x.png in Resources */,
 				D761E9A61F17BCB4002B849B /* help.png in Resources */,
 				D754DA3F1F3DAFE5001B7040 /* givtsplash@3x.png in Resources */,
+				D7FB25241F4F24F50011A14E /* success@2x.png in Resources */,
 				D761E9841F165CDF002B849B /* exit.png in Resources */,
 				D761E99A1F166FF8002B849B /* rightarrow.png in Resources */,
 				D761E9911F166090002B849B /* share@2x.png in Resources */,
@@ -423,6 +494,7 @@
 				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
 				D761E98C1F165CDF002B849B /* lock@3x.png in Resources */,
 				D761E9A71F17BCB4002B849B /* help@2x.png in Resources */,
+				D7FB25251F4F24F50011A14E /* success@3x.png in Resources */,
 				D761E9701F165950002B849B /* list@2x.png in Resources */,
 				D754DA411F3DAFE5001B7040 /* givtsplash.png in Resources */,
 				D761E9821F165CDF002B849B /* info24@2x.png in Resources */,
@@ -452,17 +524,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7335B2E1F45923F00B57AE0 /* UIImage+gif.swift in Sources */,
+				D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */,
+				D740E15A1F4C631F000531BA /* UserService.swift in Sources */,
 				D761E9A01F167798002B849B /* AmountViewController.swift in Sources */,
 				FB3CE6D91F14CA200055185B /* RootViewController.swift in Sources */,
+				D740E1601F4C63D1000531BA /* GivtServiceProtocol.swift in Sources */,
 				D761E99E1F167315002B849B /* CustomViewController.swift in Sources */,
 				D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */,
+				D740E15C1F4C6328000531BA /* GivtService.swift in Sources */,
+				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
 				D761E9B71F18B89D002B849B /* AmViewController.swift in Sources */,
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
+				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */,
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
+				D740E1561F4C5FAE000531BA /* GivtManager.swift in Sources */,
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
+				D740E15E1F4C63A1000531BA /* UserServiceProtocol.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
 				D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */,
@@ -627,7 +708,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -646,7 +727,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

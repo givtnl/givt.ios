@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C7B93B682A72AD8A28252137DED282E5083AD00A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "C7B93B682A72AD8A28252137DED282E5083AD00A" : 9223372036854775807,
+    "6CE9242EC7BB420E7CCBF6AD5A6D298773BA2321" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BA6EA311-54FD-43B1-A3DC-70CCDDD1B6C9",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "C7B93B682A72AD8A28252137DED282E5083AD00A" : "givt.ios\/",
+    "6CE9242EC7BB420E7CCBF6AD5A6D298773BA2321" : "givtapp2\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ios",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ios.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/nfcollect\/givtapp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6CE9242EC7BB420E7CCBF6AD5A6D298773BA2321"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/nfcollect\/givt.ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C7B93B682A72AD8A28252137DED282E5083AD00A"
+    }
+  ]
+}

@@ -25,7 +25,6 @@ class AmountViewController: LGSideMenuController, LGSideMenuDelegate {
         super.delegate = self
         UIApplication.shared.statusBarStyle = .default
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
 
