@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -326,30 +328,42 @@
                                     <action selector="btnGoBack:" destination="T9t-cc-i7G" eventType="touchUpInside" id="xsX-Bp-E1g"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum!!!!!!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="rFD-qH-doC">
-                                <rect key="frame" x="20" y="206.5" width="280" height="27"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <color key="textColor" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sli-WK-n4g">
-                                <rect key="frame" x="0.0" y="304" width="320" height="100"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KF4-TD-ueG">
+                                <rect key="frame" x="36" y="50" width="248" height="340"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="rFD-qH-doC">
+                                        <rect key="frame" x="0.0" y="20" width="248" height="82"/>
+                                        <string key="text">Bedankt voor je Givt!
+Kijk voor de status in je overzicht.</string>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                        <color key="textColor" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sli-WK-n4g">
+                                        <rect key="frame" x="0.0" y="201.5" width="248" height="82"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="0Gb-YA-rf0"/>
+                                    <constraint firstAttribute="height" constant="340" id="4dr-Sv-WVG"/>
+                                    <constraint firstItem="Sli-WK-n4g" firstAttribute="top" secondItem="rFD-qH-doC" secondAttribute="bottom" multiplier="16:9" constant="20" id="88w-ip-vmi"/>
+                                    <constraint firstAttribute="trailing" secondItem="rFD-qH-doC" secondAttribute="trailing" id="Khf-2F-HuL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sli-WK-n4g" secondAttribute="trailing" id="nFl-8O-awP"/>
+                                    <constraint firstItem="rFD-qH-doC" firstAttribute="leading" secondItem="KF4-TD-ueG" secondAttribute="leading" id="nU4-Di-TGM"/>
+                                    <constraint firstItem="Sli-WK-n4g" firstAttribute="leading" secondItem="KF4-TD-ueG" secondAttribute="leading" id="rHo-22-IHL"/>
+                                    <constraint firstItem="rFD-qH-doC" firstAttribute="top" secondItem="KF4-TD-ueG" secondAttribute="top" constant="20" id="wkp-fz-Qve"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rFD-qH-doC" firstAttribute="leading" secondItem="Szx-tV-6bc" secondAttribute="leading" constant="20" id="BHl-uT-ruc"/>
-                            <constraint firstItem="rFD-qH-doC" firstAttribute="centerY" secondItem="Szx-tV-6bc" secondAttribute="centerY" constant="-64" id="BaS-fT-wcy"/>
+                            <constraint firstItem="KF4-TD-ueG" firstAttribute="centerX" secondItem="Szx-tV-6bc" secondAttribute="centerX" id="4kg-Ew-Ifl"/>
+                            <constraint firstItem="KF4-TD-ueG" firstAttribute="centerY" secondItem="Szx-tV-6bc" secondAttribute="centerY" constant="-64" id="7Pj-N1-PEN"/>
                             <constraint firstAttribute="trailing" secondItem="ohk-H0-NHv" secondAttribute="trailing" constant="20" id="IJc-P9-PeK"/>
-                            <constraint firstAttribute="trailing" secondItem="Sli-WK-n4g" secondAttribute="trailing" id="Ibc-wL-dnA"/>
-                            <constraint firstItem="Sli-WK-n4g" firstAttribute="leading" secondItem="Szx-tV-6bc" secondAttribute="leading" id="Ipi-ey-wtK"/>
                             <constraint firstItem="ohk-H0-NHv" firstAttribute="leading" secondItem="Szx-tV-6bc" secondAttribute="leading" constant="20" id="VZ8-w2-NAf"/>
-                            <constraint firstAttribute="trailing" secondItem="rFD-qH-doC" secondAttribute="trailing" constant="20" id="c3D-Gd-Ie5"/>
-                            <constraint firstItem="ohk-H0-NHv" firstAttribute="top" secondItem="Sli-WK-n4g" secondAttribute="bottom" constant="100" id="jOf-0U-Bi7"/>
                             <constraint firstItem="Wqr-Wp-Oxm" firstAttribute="top" secondItem="ohk-H0-NHv" secondAttribute="bottom" constant="20" id="rSa-NA-kUW"/>
+                            <constraint firstItem="KF4-TD-ueG" firstAttribute="leading" secondItem="Szx-tV-6bc" secondAttribute="leadingMargin" constant="20" id="wc9-eH-5TZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KF4-TD-ueG" secondAttribute="trailing" constant="20" id="zvD-re-5Zt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -739,7 +753,7 @@
                                     <constraint firstAttribute="height" constant="200" id="vf3-fM-x8C"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdD-yT-jJx" userLabel="btnGive">
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdD-yT-jJx" userLabel="btnGive">
                                 <rect key="frame" x="20" y="504" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
