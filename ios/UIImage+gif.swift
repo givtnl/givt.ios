@@ -1,9 +1,9 @@
 //
-//  UIImage+gif.swift
-//  ios
+//  Gif.swift
+//  SwiftGif
 //
-//  Created by Lennie Stockman on 17/08/2017.
-//  Copyright © 2017 Maarten Vergouwe. All rights reserved.
+//  Created by Arne Bahlo on 07.06.14.
+//  Copyright (c) 2014 Arne Bahlo. All rights reserved.
 //
 import UIKit
 import ImageIO
@@ -67,7 +67,7 @@ extension UIImage {
     }
     
     internal class func delayForImageAtIndex(_ index: Int, source: CGImageSource!) -> Double {
-        var delay = 0.01
+        var delay = 0.1
         
         // Get dictionaries
         let cfProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil)
@@ -88,10 +88,10 @@ extension UIImage {
                                                              Unmanaged.passUnretained(kCGImagePropertyGIFDelayTime).toOpaque()), to: AnyObject.self)
         }
         
-        delay = delayObject as? Double ?? 0
-        
-        if delay < 0.01 {
-            delay = 0.01 // Make sure they're not too fast
+        if let delayObject = delayObject as? Double, delayObject > 0 {
+            delay = delayObject
+        } else {
+            delay = 0.1 // Make sure they're not too fast
         }
         
         return delay
