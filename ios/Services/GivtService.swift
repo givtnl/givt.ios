@@ -83,6 +83,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         switch (central.state) {
         case .poweredOff:
             print("CBCentralManagerState.PoweredOff")
+            NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
         case .unauthorized:
             print("CBCentralManagerState.Unauthorized")
             break
@@ -92,6 +93,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         case .poweredOn:
             print("CBCentralManagerState.PoweredOn")
             startScanning()
+            
         case .resetting:
             print("CBCentralManagerState.Resetting")
         case CBManagerState.unsupported:

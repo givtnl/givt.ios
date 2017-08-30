@@ -32,8 +32,8 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
                               "apiUrl" : "https://givtapidebug.azurewebsites.net/",
                               "lastDigits" : "XXXXXXXXXXXXXXX7061",
                               "organisation" : "Bjornkerk",
-                              "mandatePopup" : "hellow",
-                              "spUrl" : "test"] as [String : Any]
+                              "mandatePopup" : "",
+                              "spUrl" : ""] as [String : Any]
             
             guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
                 return
@@ -67,11 +67,27 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         gif.loadGif(name: "givt_animation")
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGive.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
+
         
+    }
+    
+    func showBluetoothMessage() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("SomethingWentWrong2", comment: ""),
+            message: NSLocalizedString("BluetoothErrorMessage", comment: ""),
+            preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
+            UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
+            //push geeflimiet pagina
+        }))
+        present(alert, animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+                NotificationCenter.default.addObserver(self, selector: #selector(showBluetoothMessage), name: Notification.Name("BluetoothIsOff"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
         GivtService.sharedInstance.setAmount(amount: amount)
@@ -95,6 +111,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         self.navigationController?.isNavigationBarHidden = false
         sideMenuController?.isLeftViewSwipeGestureDisabled = false
         GivtService.sharedInstance.centralManager.stopScan()
+        NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
