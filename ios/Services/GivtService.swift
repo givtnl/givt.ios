@@ -138,6 +138,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             if(rssi.intValue > rssiTreshold){
                 let df = DateFormatter()
                 df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
+                df.timeZone = TimeZone(abbreviation: "UTC")
                 let date = df.string(from: Date())
                 print(date)
                 let collectId = "1"
