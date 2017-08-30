@@ -24,14 +24,11 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             return centralManager != nil && centralManager.state == .poweredOn
         }
     }
-    
 
     private var rssiTreshold: Int = -68
-    
     var isScanning: Bool?
-    
+
     var centralManager: CBCentralManager!
-    //var peripheral: CBPeripheral
     weak var onGivtProcessed: GivtProcessedProtocol?
     
     private override init() {
@@ -92,8 +89,6 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             break
         case .poweredOn:
             print("CBCentralManagerState.PoweredOn")
-            startScanning()
-            
         case .resetting:
             print("CBCentralManagerState.Resetting")
         case CBManagerState.unsupported:
