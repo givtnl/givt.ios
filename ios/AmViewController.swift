@@ -25,6 +25,17 @@ class AmViewController: UIViewController {
     @IBOutlet var btnComma: UIButton!
     @IBOutlet weak var lblTitle: UINavigationItem!
     @IBOutlet weak var btnGive: CustomButton!
+    
+    private var givtService:GivtService!
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        givtService = GivtService.sharedInstance
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UserDefaults.standard.amountLimit = 20
@@ -62,11 +73,11 @@ class AmViewController: UIViewController {
         if(amountLabel.text == "0" || pressedShortcutKey){
             amountLabel.text = ""
         }
-        if(pressedShortcutKey){ pressedShortcutKey = false }
         
-        if(amountLabel.text! == "" && (sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))!){
+        if amountLabel.text! == "" && (sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))! && !pressedShortcutKey {
             amountLabel.text = "0";
         }
+        pressedShortcutKey = false
         
         if let idx = amountLabel.text?.index(of: decimalNotation) {
             if( ((amountLabel.text?.substring(from: idx).characters.count)! == 3)) || ((sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))!){
@@ -93,10 +104,9 @@ class AmViewController: UIViewController {
     }
     
     @IBAction func addShortcutValue(sender: UIButton!){
+        pressedShortcutKey = true
         clearAll(sender: sender)
         addValue(sender: sender)
-        pressedShortcutKey = true
-        checkAmount()
     }
     
     @IBAction func clearValue(sender: UIButton!){
@@ -108,7 +118,7 @@ class AmViewController: UIViewController {
         
         amount.remove(at: amount.index(before: amount.endIndex))
         amountLabel.text = amount
-        if(amount.characters.count == 0){
+        if(amount.characters.count == 0 || pressedShortcutKey){
             amountLabel.text = "0";
         }
         checkAmount()
@@ -133,12 +143,31 @@ class AmViewController: UIViewController {
             }))
             self.present(alert, animated: true, completion: nil)
         } else {
-            let scanVC = storyboard?.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
-            scanVC.amount = dAmount
-            self.show(scanVC, sender: nil)
+            if givtService.bluetoothEnabled {
+                let scanVC = storyboard?.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
+                scanVC.amount = dAmount
+                self.show(scanVC, sender: nil)
+            } else {
+                showBluetoothMessage()
+            }
+            
         }
         
      }
+    
+    func showBluetoothMessage() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("SomethingWentWrong2", comment: ""),
+            message: NSLocalizedString("BluetoothErrorMessage", comment: ""),
+            preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
+            UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
+            
+        }))
+        present(alert, animated: true, completion: nil)
+    }
 
     
 

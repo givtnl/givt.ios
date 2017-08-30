@@ -19,14 +19,14 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     private var amount: Decimal!
     private var bestBeacon: BestBeacon?
-    var bluetoothEnabled: Bool? {
+    var bluetoothEnabled: Bool {
         get {
             return centralManager != nil && centralManager.state == .poweredOn
         }
     }
 
     private var rssiTreshold: Int = -68
-    var isScanning: Bool?
+    var isScanning: Bool = false
 
     var centralManager: CBCentralManager!
     weak var onGivtProcessed: GivtProcessedProtocol?
@@ -69,7 +69,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     func stopScanning() {
-        if(isScanning)!{
+        if(isScanning){
             isScanning = false
             centralManager.stopScan()
         }
