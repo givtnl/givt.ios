@@ -9,15 +9,40 @@
 import Foundation
 import UIKit
 
+@IBDesignable
 class CustomButton: UIButton{
     override func awakeFromNib() {
-        
+        ogBGColor = backgroundColor
     }
     
-    override var isHighlighted: Bool {
+    @IBInspectable var ogBGColor: UIColor? {
         didSet {
-            backgroundColor = isHighlighted ? UIColor.init(rgb: 0x1ca96c) : UIColor.init(rgb: 0x41c98e)
+            backgroundColor = ogBGColor
         }
     }
-
+    
+    override open var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? highlightedBGColor : ogBGColor
+        }
+    
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+            layer.masksToBounds = cornerRadius > 0
+        }
+    }
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+    @IBInspectable var borderColor: UIColor? {
+        didSet {
+            layer.borderColor = borderColor?.cgColor
+        }
+    }
+    @IBInspectable var highlightedBGColor: UIColor?
 }

@@ -19,18 +19,15 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     
     var amount: Decimal! = 0
     
-    func onGivtProcessed(status: Bool) {
+    func onGivtProcessed(transaction: Transaction, status: Bool) {
         if(status){
-            print("beacon detected")
-            print("amount set: ", amount)
             let parameters = ["amountLimit" : 0,
-                              "message" : "Testing purposes",
+                              "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
                               "GUID" : "52435d45-042e-4ca0-b734-aa592d882fd3",
                               "urlPart" : "store",
                               "givtObj" :
                                 [
-                                    ["Amount" : 5.0,"CollectId" : "1", "Timestamp" : "", "BeaconId" : "61f7ed0142450816db00"],
-                                    ["Amount" : 10.0,"CollectId" : "2", "Timestamp" : "", "BeaconId" : "61f7ed0142450816db00"],
+                                    ["Amount" : transaction.amount,"CollectId" : transaction.collectId, "Timestamp" : transaction.timeStamp, "BeaconId" : transaction.beaconId],
                                 ],
                               "apiUrl" : "https://givtapidebug.azurewebsites.net/",
                               "lastDigits" : "XXXXXXXXXXXXXXX7061",
@@ -43,11 +40,8 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
             }
             print(jsonParameters.description)
             let plainTextBytes = jsonParameters.base64EncodedString()
-            
-            
-            let bad = String(format: "https://givtapidebug.azurewebsites.net/givtapp4.html?msg=%@", plainTextBytes);
-            
-            self.showWebsite(url: bad)
+            let formatted = String(format: "https://givtapidebug.azurewebsites.net/givtapp4.html?msg=%@", plainTextBytes);
+            self.showWebsite(url: formatted)
         } else {
             let alert = UIAlertController(title: "Hey Gulle gever", message: "wacht es effe 30 seconde jo", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { action in
@@ -63,7 +57,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         webVC.delegate = self
         webVC.preferredBarTintColor = UIColor.init(red: 24, green: 24, blue: 24)
         
-        self.present(webVC, animated: true) {
+        self.navigationController?.present(webVC, animated: true) {
             UIApplication.shared.statusBarStyle = .lightContent
         }
     }
@@ -86,15 +80,6 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         if(GivtService.sharedInstance.bluetoothEnabled)!{
             GivtService.sharedInstance.startScanning()
         }
-
-        
-        /*
-        
-                if(GivtService.sharedInstance.bluetoothEnabled)!{
-            GivtService.sharedInstance.startScanning()
-        } else {
-            //bluetooth is disabled!
-        }*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,9 +105,9 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     func popToRoot(animated: Bool) {
         self.navigationController?.popViewController(animated: animated)
     }
-       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
     }
     
 

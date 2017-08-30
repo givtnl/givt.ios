@@ -9,12 +9,33 @@
 import Foundation
 import UIKit
 
+@IBDesignable
 class RoundedButton: UIButton{
-    override func awakeFromNib() {
-        super.awakeFromNib();
-        
-        layer.borderWidth = 1/UIScreen.main.nativeScale
-        layer.borderColor = UIColor.lightGray.cgColor
-        layer.cornerRadius = 6;
+    
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            layer.cornerRadius = cornerRadius
+            layer.masksToBounds = cornerRadius > 0
+        }
+    }
+    @IBInspectable var borderWidth: CGFloat = 0 {
+        didSet {
+            layer.borderWidth = borderWidth
+        }
+    }
+    
+    @IBInspectable var borderColor: UIColor = UIColor.black {
+        didSet {
+            layer.borderColor = borderColor.cgColor
+        }
+    }
+    
+    @IBInspectable var borderAlpha: CGFloat = 1 {
+        didSet {
+            if(borderAlpha > 1 || borderAlpha < 0){
+                borderAlpha = 1
+            }
+            layer.borderColor = borderColor.withAlphaComponent(borderAlpha).cgColor
+        }
     }
 }

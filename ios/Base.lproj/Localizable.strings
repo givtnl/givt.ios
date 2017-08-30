@@ -98,7 +98,7 @@
 "PasswordRule" = "The password should contain at least 7 characters including a capital and a digit.";
 
 /*Telefoonnummer placeholder bij registratie*/
-"PhoneNumber" = "Phone Number";
+"PhoneNumber" = "Mobile Number";
 
 /*Postcode placeholder*/
 "PostalCode" = "Postal Code";
@@ -437,7 +437,7 @@
 "AnswerHowDoesGivingWork" = "It’s easy. Once your registration is complete, you just open the Givt app to choose the amount you want to give and move your phone to the collection box, alms bag or basket.\nIn the movie below you can see how it’s done.";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "When the Givt app does not work like it should, you can choose to select the recipient manually. Choose an amount and press ‘Give’. Thereafter choose ‘Didn’t work’ and ‘Select recipient’. Now choose a recipient and press ‘Give’. That’s how giving to a selected recipient is done.\nThe movie below shows you how it’s done.";
+"AnswerHowDoesManualGivingWork" = "When the Givt app does not work like it should, you can choose to select the recipient manually. Choose an amount and press ‘Give’. Thereafter choose ‘Give differently?’ and select 'Churches', 'Foundations' or 'Campaigns'. Now choose a recipient and press ‘Give’. That’s how giving to a selected recipient is done.\nThe movie below shows you how it’s done.";
 "MenuSettingsSwitchAccounts" = "Switch accounts";
 "PrepareIUnderstand" = "I understand";
 
@@ -470,9 +470,9 @@
 
 /*Je gift wordt binnen twee werkdagen van je bankrekening afgeschreven.*/
 "FAQAnswer12" = "Your donation will be withdrawn from your bank account within two working days.";
-"ColId1" = "Goal 1";
-"ColId2" = "Goal 2";
-"ColId3" = "Goal 3";
+"ColId1" = "Collection 1";
+"ColId2" = "Collection 2";
+"ColId3" = "Collection 3";
 "FAQWhyBluetoothEnabledQ" = "Why do I have to enable Bluetooth to use Givt?";
 "FAQWhyBluetoothEnabledA" = "Your phone receives a signal from the beacon inside the collection box, alms bag or basket. This signal uses the Bluetooth protocol. It can be considered as a one-way traffic, which means there is no connection, in contrast to a Bluetooth car kit or headset. It is a safe and easy way to let your phone know which collection box, alms bag or basket is nearby. When the beacon is near, the phone picks up the signal and your Givt is completed.";
 
@@ -481,7 +481,7 @@
 
 /*antwoord meerdere collectesvraag*/
 "FAQAnswer14" = "Multiple collections in one service? Activate three collections by pushing the plus-symbol At the top you can see which collection (1, 2 or 3) is selected. Fill in the amounts in such a way that they resemble the order in which the collections pass by in your church. When you give to the first collection bag or basket that passes by, all donations are sent immediately. In the overview of your donations you can find your donations to the different collection goals. (At this moment, different collection goals can only be differentiated as collection 1, 2 or 3. Your church knows which number corresponds to which collection goal.)\nSkip a collection? Leave a collection open or remove it by tapping twice.\n\nIn the movie below you can see how to give to multiple collections.";
-"Collect" = "Goal";
+"Collect" = "Collection";
 "OfflineGegevenGivtsMessage" = "Thank you for your Givts!\n\nWhen there's a good connection with the Givt-server, your Givts will be processed.\nYou can check the status in the overview.";
 "OfflineGegevenGivtsMessageWithOrg" = "Thank you for your Givts to {0}!\n\nWhen there's a good connection with the Givt-server, your Givts will be processed.\nYou can check the status in the overview.";
 "ChangeDonation" = "Change your donation";
@@ -494,7 +494,7 @@
 "TypeMessage" = "Write your message here!";
 
 /*Begeleidingstekst meerdere collectes*/
-"Feature_MultipleCollections" = "News! Now, you can help three different collection goals in one go. Are you feeling the pinch this month? Just leave a collection open or remove it by tapping twice. Want to know more? Check our FAQ.";
+"Feature_MultipleCollections" = "News! Now, you can help three different collections in one go. Are you feeling the pinch this month? Just leave a collection open or remove it by tapping twice. Want to know more? Check our FAQ.";
 
 /*Ik snap het*/
 "Feature_IGetItButton" = "Just keep giving";
@@ -542,3 +542,14 @@
 "Go" = "Go";
 "NeedEmailToGiveSubtext" = "With your e-mail address we can make sure your gift will never get lost.";
 "CompleteRegistrationAfterGiveFirst" = "Thanks for giving with Givt!\n\nWe would love for you to keep \nusing Givt, so we ask you \nto complete the registration.";
+"TermsUpdate" = "The terms and conditions have been updated.";
+"AgreeToUpdateTerms" = "You agree to the new terms and conditions if you continue.";
+"IWantToReadIt" = "I want to read it";
+"TermsTextVersion" = "1.5";
+"DisabledSetting" = "You need to first register before you can view it.";
+"DisabledSettingTitle" = "Alas, that's not possible.";
+"LocationPermission" = "We need to access your location to receive the signal from the Givt-beacon.";
+"LocationEnabledMessage" = "Please, enable your location with high accuracy to give with Givt. (After your donation you can disable it again.)";
+"ChangeGivingLimit" = "Adjust maximum amount";
+"SomethingWentWrong2" = "Something went wrong.";
+"ChooseLowerAmount" = "Choose a lower amount";

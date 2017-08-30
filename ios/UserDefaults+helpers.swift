@@ -11,48 +11,64 @@ import Foundation
 extension UserDefaults {
     
     enum UserDefaultsKeys: String {
-        case IsLoggedIn
-        case BearerToken
-        case BearerExpiration
-        case AmountLimit
+        case isLoggedIn
+        case bearerToken
+        case bearerExpiration
+        case amountLimit
+        case offlineGivts
     }
     
     var isLoggedIn: Bool {
         get {
-            return bool(forKey: UserDefaultsKeys.IsLoggedIn.rawValue)
+            return bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
         }
         set(value) {
-            set(value, forKey: UserDefaultsKeys.IsLoggedIn.rawValue)
+            set(value, forKey: UserDefaultsKeys.isLoggedIn.rawValue)
             synchronize()
         }
     }
     
     var bearerToken: String {
         get {
-            return string(forKey: UserDefaultsKeys.BearerToken.rawValue)!
+            return string(forKey: UserDefaultsKeys.bearerToken.rawValue)!
         }
         set(value) {
-            set(value, forKey: UserDefaultsKeys.BearerToken.rawValue)
+            set(value, forKey: UserDefaultsKeys.bearerToken.rawValue)
             synchronize()
         }
     }
     
     var bearerExpiration: Date {
         get {
-            return object(forKey: UserDefaultsKeys.BearerExpiration.rawValue) as! Date
+            return object(forKey: UserDefaultsKeys.bearerExpiration.rawValue) as! Date
         }
         set(value) {
-            set(value, forKey: UserDefaultsKeys.BearerExpiration.rawValue)
+            set(value, forKey: UserDefaultsKeys.bearerExpiration.rawValue)
             synchronize()
         }
     }
     
     var amountLimit: Int {
         get {
-            return integer(forKey: UserDefaultsKeys.AmountLimit.rawValue)
+            return object(forKey: UserDefaultsKeys.amountLimit.rawValue) as! Int
         }
         set(value) {
-            set(value, forKey: UserDefaultsKeys.AmountLimit.rawValue)
+            set(value, forKey: UserDefaultsKeys.amountLimit.rawValue)
+            synchronize()
+        }
+    }
+    
+    var offlineGivts: [Transaction] {
+        get {
+            if let temp = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.data(forKey: UserDefaultsKeys.offlineGivts.rawValue)!) {
+                print(temp)
+                return temp as! [Transaction]
+            }
+            return [Transaction]()
+            
+        }
+        set(value) {
+            set(NSKeyedArchiver.archivedData(withRootObject: value), forKey: UserDefaultsKeys.offlineGivts.rawValue)
             synchronize()
         }
     }

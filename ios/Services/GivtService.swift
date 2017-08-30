@@ -9,9 +9,13 @@
 import Foundation
 import CoreBluetooth
 import UIKit
+import Reachability
+import AudioToolbox
 
 final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate {
     static let sharedInstance = GivtService()
+    
+    let reachability = Reachability()
     
     private var amount: Decimal!
     private var bestBeacon: BestBeacon?
@@ -21,6 +25,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     }
     
+
     private var rssiTreshold: Int = -68
     
     var isScanning: Bool?
@@ -33,6 +38,27 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         super.init()
         print("started")
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global())
+
+        NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: ReachabilityChangedNotification, object: reachability)
+        do {
+            try reachability?.startNotifier()
+        } catch {
+            print("could not start notifier")
+        }
+    }
+    
+    func internetChanged(note: Notification){
+        let reachability = note.object as! Reachability
+        
+        if reachability.isReachable {
+            for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
+                give(transaction: element, wasOfflineGivt: true)
+                UserDefaults.standard.offlineGivts.remove(at: index)
+                print(UserDefaults.standard.offlineGivts)
+            }
+        } else {
+            print("not reachable")
+        }
     }
     
     func setAmount(amount: Decimal) {
@@ -77,21 +103,17 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         if let feaa = advertisementData[CBAdvertisementDataServiceDataKey] as! NSMutableDictionary? {
             let x = feaa.object(forKey: CBUUID(string: "FEAA"))
-            //print(feaa)
-         //   print("beacon found with rssi: ", RSSI)
             if(x != nil){
                 print(x!)
                 let y = String.init(describing: x!)
                 //61f7
-                let antennaType = String(describing: x).substring(5..<14)
+                _ = String(describing: x).substring(5..<14)
                 print(y.substring(5..<14))
                 if(y.substring(5..<14) == "61f7 ed01"){
-                    //hoera
                     print("beacon found with rssi: ", RSSI)
                     let antennaID = String(format: "%@.%@", y.substring(5..<27).replacingOccurrences(of: " ", with: ""), y.substring(27..<41).replacingOccurrences(of: " ", with: ""))
-                    print(antennaID)
+                                            print(antennaID)
                     beaconDetected(antennaID: antennaID, rssi: RSSI, beaconType: 0, batteryLevel: 100)
-                    //sendPostRequest(antennaID: antennaID)
                 }
             }
         } else {
@@ -114,13 +136,13 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             }
             
             if(rssi.intValue > rssiTreshold){
-                let amount: Decimal = 4.50
                 let df = DateFormatter()
                 df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
                 let date = df.string(from: Date())
                 print(date)
                 let collectId = "1"
-                give(antennaID: antennaID, amount: amount, date: date, collectId: collectId)
+                let ts = Transaction(amount: self.amount, beaconId: antennaID, collectId: collectId, timeStamp: date, userId: "70b10bd0-320e-479a-8551-a6ea69b560e6")
+                give(transaction: ts)
                 return
             }
         }
@@ -128,84 +150,63 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         startScanning()
     }
     
-    private func give(antennaID: String, amount: Decimal, date: String, collectId: String) {
-     
-        let parameters = ["UserId": "70b10bd0-320e-479a-8551-a6ea69b560e6",
-                          "BeaconId": antennaID,
-                          "Amount": amount,
-                          "Timestamp": date] as [String : Any]
-        sendPostRequest(parameters: parameters) { status in
-            self.onGivtProcessed?.onGivtProcessed(status: status)
+    private func give(transaction: Transaction, wasOfflineGivt: Bool = false) {
+        sendPostRequest(transaction: transaction) { status in
+            if(!wasOfflineGivt) {
+                self.onGivtProcessed?.onGivtProcessed(transaction: transaction, status: status)
+                AudioServicesPlayAlertSound(1520)
+            }
+        }
+        return
+    }
+    
+    private func cacheGivt(transaction: Transaction){
+        UserDefaults.standard.offlineGivts.append(transaction)
+        print(UserDefaults.standard.offlineGivts)
+        for t in UserDefaults.standard.offlineGivts {
+            print(t.amount)
         }
     }
     
-    func sendPostRequest(parameters: [String: Any], completionHandler: @escaping (Bool) -> ()) {
+    func sendPostRequest(transaction: Transaction, completionHandler: @escaping (Bool) -> ()) {
         guard let url = URL(string: "https://givtapidebug.azurewebsites.net/api/Givts") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: transaction.convertToDictionary(), options: JSONSerialization.WritingOptions.prettyPrinted) else {
             return
         }
         request.httpBody = httpBody
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let session = URLSession.shared
-        session.dataTask(with: request) { (data, response, error) in
-            //self.showWebsite()
+        session.dataTask(with: request)
+            { (data, response, error) in
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 201 {           // check for http errors
-                print("statusCode should be 201, but is \(httpStatus.statusCode)")
-                // print("response = \(response)")
-                completionHandler(false)
-                return
-            }
-            
-            var httpStatus = response as? HTTPURLResponse
-            if(httpStatus?.statusCode == 201){
-                print("posted givt to the server")
-                completionHandler(true)
-                return
-            }
-            
-            let responseString = String(data: data!, encoding: .utf8)
-            print("responseString = \(responseString)")
-            do
-            {
-                let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
-                let currentData = parsedData
-                print(parsedData["status code"]!)
+                if error != nil {
+                    self.cacheGivt(transaction: transaction)
+                    return
+                }
                 
-                return
-            } catch let error as NSError {
-                print(error)
-                return
-            }
-            
-            if let response = response {
-                print(response)
-            }
-            
-            if let data = data {
-                do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    print(json)
-                } catch {
-                    print(error)
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 201 {
+                    print("posted givt to the server")
+                    completionHandler(true)
+                    return
+                } else {
+                    //server code is niet in orde: gegeven binnen de 30s?
+                    print(response ?? "")
+                    completionHandler(false)
+                    return
                 }
             }
-            }.resume()
+        .resume()
     }
     
 }
 
-protocol BeaconDetectedDelegate: class {
-    func onBeaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, batteryLevel: Int8)
-}
-
 protocol GivtProcessedProtocol: class {
-    func onGivtProcessed(status: Bool)
+    func onGivtProcessed(transaction: Transaction, status: Bool)
 }
 
 class BestBeacon {
@@ -218,6 +219,51 @@ class BestBeacon {
         rssi = r
         organisation = o
     }
+}
+
+class Transaction:NSObject, NSCoding {
+    var amount: Decimal
+    var beaconId: String
+    var collectId: String
+    var timeStamp: String
+    var userId: String
     
+    init(amount: Decimal, beaconId: String, collectId: String, timeStamp: String, userId: String) {
+        self.amount = amount
+        self.beaconId = beaconId
+        self.collectId = collectId
+        self.userId = userId
+        self.timeStamp = timeStamp
+    }
+    convenience required init?(coder aDecoder: NSCoder) {
+        guard
+            let amount = aDecoder.decodeObject(forKey: "amount") as? Decimal,
+            let beaconId    = aDecoder.decodeObject(forKey: "beaconId")    as? String,
+            let collectId    = aDecoder.decodeObject(forKey: "collectId")    as? String,
+            let timeStamp    = aDecoder.decodeObject(forKey: "timeStamp")    as? String,
+            let userId    = aDecoder.decodeObject(forKey: "userId")    as? String
+            else {
+                return nil
+        }
+        self.init(amount: amount, beaconId: beaconId, collectId: collectId, timeStamp: timeStamp, userId: userId)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(amount, forKey: "amount")
+        aCoder.encode(beaconId, forKey: "beaconId")
+        aCoder.encode(collectId, forKey: "collectId")
+        aCoder.encode(timeStamp, forKey: "timeStamp")
+        aCoder.encode(userId, forKey: "userId")
+    }
+    
+    func convertToDictionary() -> Dictionary<String, Any> {
+        return [
+            "Amount"   : self.amount,
+            "BeaconId" : self.beaconId,
+            "UserId"    : self.userId,
+            "CollectId" : self.collectId,
+            "Timestamp"     : self.timeStamp
+                ]
+        }
     
 }

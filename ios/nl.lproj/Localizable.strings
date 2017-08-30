@@ -108,7 +108,7 @@
 "PasswordRule" = "Het wachtwoord moet uit ten minste 7 tekens bestaan, waaronder een hoofdletter en een cijfer.";
 
 /*Telefoonnummer placeholder bij registratie*/
-"PhoneNumber" = "Telefoonnummer";
+"PhoneNumber" = "Mobiel nummer";
 
 /*Postcode placeholder*/
 "PostalCode" = "Postcode";
@@ -169,7 +169,7 @@
 
 /*Kan dit leuker?*/
 /*Foutmelding die je te zien krijgt als je een verkeerd email of wachtwoord invoert*/
-"WrongCredentials" = "Dit e-mailadres of wachtwoord \nkomt ons niet bekend voor. \nKan het zijn dat je een ander e-mailadres \nen/of wachtwoord hebt opgegeven?";
+"WrongCredentials" = "Dit e-mailadres of wachtwoord \nkomt ons niet bekend voor. \nIs het mogelijk dat je een ander e-mailadres \nen/of wachtwoord hebt opgegeven?";
 
 /*"Ja, graag"-knop, te zien als je kiest om touchid te gebruiken of niet*/
 "YesPlease" = "Ja, graag";
@@ -453,7 +453,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AnswerHowDoesGivingWork" = "Heel eenvoudig. Eenmaal geregistreerd bij Givt, hoef je alleen even de app te openen om een bedrag te kiezen en je telefoon langs de collectebus, -zak of -mand te bewegen.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op Geven. Druk daarna op ‘Niet gelukt?’ en ‘Ontvanger selecteren’. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
+"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op 'Geven'. Druk daarna op ‘Anders geven?’ en kies voor 'Kerken', 'Stichtingen' of 'Acties'. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
 "MenuSettingsSwitchAccounts" = "Wisselen van account";
 "PrepareIUnderstand" = "Ik snap het";
 
@@ -558,3 +558,14 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Go" = "Verder";
 "NeedEmailToGiveSubtext" = "Met je e-mailadres zorgen wij ervoor dat je gift nooit verloren gaat.";
 "CompleteRegistrationAfterGiveFirst" = "Leuk dat je hebt gegeven met Givt!\n\nWe willen graag dat je Givt verder\nkunt gebruiken, dus vragen we je om\nje registratie compleet te maken.";
+"TermsUpdate" = "De algemene voorwaarden zijn bijgewerkt.";
+"AgreeToUpdateTerms" = "Bij het doorgaan ga je akkoord met de nieuwe voorwaarden.";
+"IWantToReadIt" = "Ik wil het lezen";
+"TermsTextVersion" = "1.5";
+"DisabledSetting" = "Je kan deze instelling niet gebruiken vooraleer je account geregistreerd is.";
+"DisabledSettingTitle" = "Helaas, dit mag niet.";
+"LocationPermission" = "We hebben toegang tot je locatie nodig om het signaal van de Givt-zender te ontvangen.";
+"LocationEnabledMessage" = "Activeer je locatie met hoge nauwkeurigheid om met Givt te kunnen geven. (Na je gift kan je die weer uitzetten.)";
+"ChangeGivingLimit" = "Geeflimiet aanpassen";
+"SomethingWentWrong2" = "Er gaat iets mis.";
+"ChooseLowerAmount" = "Bedrag aanpassen";
