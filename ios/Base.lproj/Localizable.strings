@@ -161,7 +161,7 @@
 "IBANPlaceHolder" = "IBAN account number";
 
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Switch on your bluetooth.";
+"BluetoothErrorMessage" = "Switch on bluetooth on your phone to use Givt.";
 
 /*Foutmelding als er geen verbinding is met het internet*/
 "ConnectionError" = "No internet connection. Check your settings.";
@@ -553,3 +553,4 @@
 "ChangeGivingLimit" = "Adjust maximum amount";
 "SomethingWentWrong2" = "Something went wrong.";
 "ChooseLowerAmount" = "Choose a lower amount";
+"TurnOnBluetooth" = "Switch on bluetooth";
