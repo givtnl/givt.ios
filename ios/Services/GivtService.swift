@@ -37,7 +37,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     private override init() {
         super.init()
         print("started")
-        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global())
+        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(), options: [CBCentralManagerOptionShowPowerAlertKey:false])
 
         NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: ReachabilityChangedNotification, object: reachability)
         do {
