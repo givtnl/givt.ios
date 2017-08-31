@@ -51,7 +51,7 @@ class LoginManager {
     }
     
     public func saveAmountLimit(_ amountLimit: Int) {
-        
+        //post request to amount limit api
     }
     
     public func loginUser(email: String, password: String, completionHandler: @escaping (Bool?, NSError?) -> Void ) -> URLSessionTask {
