@@ -86,6 +86,8 @@
 		D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB252E1F5065C20011A14E /* Reachability.swift */; };
 		FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		FB07A9691F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */; };
+		FB19533D1F56DDEC00172CD3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB19533B1F56DDEC00172CD3 /* Fabric.framework */; };
+		FB19533E1F56DDEC00172CD3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
 		FB3CE6D91F14CA200055185B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D81F14CA200055185B /* RootViewController.swift */; };
 		FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6DE1F14CA200055185B /* Main.storyboard */; };
@@ -189,8 +191,6 @@
 		D761E9C31F20CFA6002B849B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D761E9C61F20D341002B849B /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D77667ED1F39F12900649157 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
-		D7F02B991F458BB4006D4712 /* SwiftGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGif.framework; path = Carthage/Build/iOS/SwiftGif.framework; sourceTree = "<group>"; };
-		D7F02B9A1F458BC9006D4712 /* SwiftGif.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftGif.framework.dSYM; path = Carthage/Build/iOS/SwiftGif.framework.dSYM; sourceTree = "<group>"; };
 		D7FB251C1F4D6D2F0011A14E /* AppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
 		D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCompleteViewController.swift; sourceTree = "<group>"; };
 		D7FB25201F4F24F50011A14E /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = success.png; sourceTree = "<group>"; };
@@ -200,6 +200,8 @@
 		D7FB252E1F5065C20011A14E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LGSideMenuController.framework; path = Carthage/Build/iOS/LGSideMenuController.framework; sourceTree = "<group>"; };
 		FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LGSideMenuController.framework.dSYM; path = Carthage/Build/iOS/LGSideMenuController.framework.dSYM; sourceTree = "<group>"; };
+		FB19533B1F56DDEC00172CD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3CE6D61F14CA200055185B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB3CE6D81F14CA200055185B /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,8 @@
 			files = (
 				FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */,
 				D7FB25281F505A0A0011A14E /* Reachability.framework in Frameworks */,
+				FB19533E1F56DDEC00172CD3 /* Crashlytics.framework in Frameworks */,
+				FB19533D1F56DDEC00172CD3 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,6 +353,8 @@
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB19533B1F56DDEC00172CD3 /* Fabric.framework */,
+				FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */,
 				D7FB25261F5059B10011A14E /* Reachability.framework */,
 				FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */,
 				FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */,
@@ -359,8 +365,6 @@
 		FB3CE6CA1F14CA1F0055185B = {
 			isa = PBXGroup;
 			children = (
-				D7F02B9A1F458BC9006D4712 /* SwiftGif.framework.dSYM */,
-				D7F02B991F458BB4006D4712 /* SwiftGif.framework */,
 				FB3CE6D51F14CA200055185B /* ios */,
 				FB3CE6D41F14CA200055185B /* Products */,
 				FB07A9651F14D9F300FD9C1A /* Frameworks */,
@@ -416,6 +420,7 @@
 				FB07A9611F14D97200FD9C1A /* Embed Frameworks */,
 				FB07A9621F14D98300FD9C1A /* CopyFiles */,
 				D7FB252C1F505AC30011A14E /* ShellScript */,
+				FBED5D0F1F56B9E300FBE595 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -438,7 +443,7 @@
 				TargetAttributes = {
 					FB3CE6D21F14CA200055185B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = YDSA4AY496;
+						DevelopmentTeam = 9C9K7PRW9C;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -544,6 +549,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "";
+		};
+		FBED5D0F1F56B9E300FBE595 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 47739bcc227f5e97130e39731652ddbe81e4ad86 1f7226b1e333c498b2405e71ca2835f49ade24d8c8aaabe5b3dc8a46c6d993c6";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -727,14 +745,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ios/ios.entitlements;
-				DEVELOPMENT_TEAM = YDSA4AY496;
+				DEVELOPMENT_TEAM = 9C9K7PRW9C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnative;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -748,14 +767,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ios/ios.entitlements;
-				DEVELOPMENT_TEAM = YDSA4AY496;
+				DEVELOPMENT_TEAM = 9C9K7PRW9C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnative;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
