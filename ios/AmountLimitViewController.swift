@@ -12,15 +12,17 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
 @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet var verticalConstraint: NSLayoutConstraint!
+    @IBOutlet var topContstraint: NSLayoutConstraint!
     @IBOutlet var btnSave: CustomButton!
     @IBOutlet var amountLimit: UITextField!
+    @IBOutlet var navBar: UINavigationBar!
     var timer: Timer?
     @IBAction func btnIncrease(_ sender: Any) {
-        
+        addValue(positive: true)
     }
     
     @IBAction func btnDecrease(_ sender: Any) {
-        
+        addValue(positive: false)
     }
     
     @IBAction func longPressIncrease(_ sender: UILongPressGestureRecognizer) {
@@ -39,10 +41,17 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
+    @IBAction func goBack(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func handleTimer(timer: Timer) {
+        addValue(positive: timer.userInfo as! Bool)
+    }
+    
+    func addValue(positive: Bool) {
         var value: Int = Int(amountLimit.text!)!
-        value += timer.userInfo as! Bool ? 5 : -5
+        value += positive ? 5 : -5
         if value < 0 {
             value = 0
         }
@@ -64,13 +73,28 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         amountLimit.tintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         amountLimit.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
+
+        //navBar.
+        
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !LoginManager().isBearerStillValid {
+            let loginVC = storyboard?.instantiateViewController(withIdentifier: "lvc") as! LoginViewController
+            self.present(loginVC, animated: true, completion: nil)
+        }
+    }
+    
+    
     
     func keyboardWillShow(notification: NSNotification) {
         //To retrieve keyboard size, uncomment following line
         let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-        bottomConstraint.constant = (keyboardSize?.height)! + 20
+                bottomConstraint.constant = (keyboardSize?.height)! + 20
         verticalConstraint.constant = bottomConstraint.constant/2 * -1
+        topContstraint.constant = bottomConstraint.constant/2 * -1
+
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
@@ -81,6 +105,8 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         //let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
         bottomConstraint.constant = 20
         verticalConstraint.constant = 0
+        topContstraint.constant = 0
+    
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
