@@ -72,14 +72,16 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         amountLimit.delegate = self
         amountLimit.tintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         amountLimit.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
-
+        print(UserDefaults.standard.amountLimit)
+        if UserDefaults.standard.amountLimit > 0 {
+            amountLimit.text = String(UserDefaults.standard.amountLimit)
+        }
         //navBar.
         
     }
     
     @IBAction func btnSave(_ sender: UIButton) {
-        LoginManager().saveAmountLimit(Int(amountLimit.text!)!)
+        LoginManager().saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_,_ in })
     }
     
     override func viewDidAppear(_ animated: Bool) {

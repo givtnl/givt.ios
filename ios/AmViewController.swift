@@ -38,8 +38,7 @@ class AmViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserDefaults.standard.amountLimit = 20
-        amountLimit = UserDefaults.standard.amountLimit
+        
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -48,7 +47,7 @@ class AmViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(true)
-        
+        amountLimit = UserDefaults.standard.amountLimit
         decimalNotation = NSLocale.current.decimalSeparator! as String
         print(decimalNotation)
         

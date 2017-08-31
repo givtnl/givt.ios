@@ -50,8 +50,47 @@ class LoginManager {
         return Date() < UserDefaults.standard.bearerExpiration
     }
     
-    public func saveAmountLimit(_ amountLimit: Int) {
+    public func saveAmountLimit(_ amountLimit: Int, completionHandler: @escaping (Bool?, NSError?) -> Void) {
         //post request to amount limit api
+        var request = URLRequest(url: URL(string:"https://givtapidebug.azurewebsites.net/api/Users")!)
+        request.httpMethod = "PUT"
+        request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
+        let putString = "GUID=" + UserDefaults.standard.guid + "&AmountLimit=" + String(amountLimit)
+        request.httpBody = putString.data(using: .utf8)
+        let urlSession = URLSession.shared
+        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
+            if error != nil {
+                print(error! as NSError)
+                completionHandler(false, nil)
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print(response!)
+                completionHandler(false, nil)
+                return
+            }
+            
+            //status is 200
+            UserDefaults.standard.amountLimit = amountLimit
+            completionHandler(true, nil)
+            let httpStatus = response as? HTTPURLResponse
+            print(httpStatus?.description)
+            let responseString = String(data: data!, encoding: .utf8)
+            //print(responseString)
+            do {
+                let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
+                _ = parsedData
+                print(parsedData)
+                
+            } catch let err as NSError {
+                print(err)
+                return
+            }
+            
+            }.resume()
+
     }
     
     public func loginUser(email: String, password: String, completionHandler: @escaping (Bool?, NSError?) -> Void ) -> URLSessionTask {
