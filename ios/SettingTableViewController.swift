@@ -91,7 +91,9 @@ class SettingTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let amountLimitVC = storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
-        self.show(amountLimitVC, sender: nil)
+
+       // self.present(amountLimitVC, animated: true)
+        self.present(amountLimitVC, animated: true)
         return
         let alert = UIAlertController(title: "title",
                                       message: "message",
