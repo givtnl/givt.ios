@@ -30,6 +30,13 @@
 		D76021F81F56DCFB00C24AB6 /* givt20h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021F11F56DCFB00C24AB6 /* givt20h@2x.png */; };
 		D76021F91F56DCFB00C24AB6 /* givt20h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021F21F56DCFB00C24AB6 /* givt20h@3x.png */; };
 		D76021FA1F56DCFB00C24AB6 /* givt_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = D76021F31F56DCFB00C24AB6 /* givt_animation.gif */; };
+		D76022011F56ECF900C24AB6 /* decrease.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021FB1F56ECF900C24AB6 /* decrease.png */; };
+		D76022021F56ECF900C24AB6 /* decrease@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021FC1F56ECF900C24AB6 /* decrease@2x.png */; };
+		D76022031F56ECF900C24AB6 /* decrease@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021FD1F56ECF900C24AB6 /* decrease@3x.png */; };
+		D76022041F56ECF900C24AB6 /* increase.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021FE1F56ECF900C24AB6 /* increase.png */; };
+		D76022051F56ECF900C24AB6 /* increase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021FF1F56ECF900C24AB6 /* increase@2x.png */; };
+		D76022061F56ECF900C24AB6 /* increase@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76022001F56ECF900C24AB6 /* increase@3x.png */; };
+		D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */; };
 		D761E9601F15248E002B849B /* SettingsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */; };
 		D761E9631F161207002B849B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9621F161207002B849B /* Setting.swift */; };
 		D761E9651F1612F8002B849B /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9641F1612F8002B849B /* SettingTableViewController.swift */; };
@@ -142,6 +149,13 @@
 		D76021F11F56DCFB00C24AB6 /* givt20h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "givt20h@2x.png"; sourceTree = "<group>"; };
 		D76021F21F56DCFB00C24AB6 /* givt20h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "givt20h@3x.png"; sourceTree = "<group>"; };
 		D76021F31F56DCFB00C24AB6 /* givt_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = givt_animation.gif; sourceTree = "<group>"; };
+		D76021FB1F56ECF900C24AB6 /* decrease.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = decrease.png; path = ../../givtapp2/iOS/Resources/decrease.png; sourceTree = "<group>"; };
+		D76021FC1F56ECF900C24AB6 /* decrease@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "decrease@2x.png"; path = "../../givtapp2/iOS/Resources/decrease@2x.png"; sourceTree = "<group>"; };
+		D76021FD1F56ECF900C24AB6 /* decrease@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "decrease@3x.png"; path = "../../givtapp2/iOS/Resources/decrease@3x.png"; sourceTree = "<group>"; };
+		D76021FE1F56ECF900C24AB6 /* increase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = increase.png; path = ../../givtapp2/iOS/Resources/increase.png; sourceTree = "<group>"; };
+		D76021FF1F56ECF900C24AB6 /* increase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "increase@2x.png"; path = "../../givtapp2/iOS/Resources/increase@2x.png"; sourceTree = "<group>"; };
+		D76022001F56ECF900C24AB6 /* increase@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "increase@3x.png"; path = "../../givtapp2/iOS/Resources/increase@3x.png"; sourceTree = "<group>"; };
+		D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountLimitViewController.swift; sourceTree = "<group>"; };
 		D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemTableViewCell.swift; sourceTree = "<group>"; };
 		D761E9621F161207002B849B /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		D761E9641F1612F8002B849B /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +260,12 @@
 		D758CD0D1F15097300EF0F19 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D76021FB1F56ECF900C24AB6 /* decrease.png */,
+				D76021FC1F56ECF900C24AB6 /* decrease@2x.png */,
+				D76021FD1F56ECF900C24AB6 /* decrease@3x.png */,
+				D76021FE1F56ECF900C24AB6 /* increase.png */,
+				D76021FF1F56ECF900C24AB6 /* increase@2x.png */,
+				D76022001F56ECF900C24AB6 /* increase@3x.png */,
 				D76021ED1F56DCFB00C24AB6 /* givtsplash.png */,
 				D76021EE1F56DCFB00C24AB6 /* givtsplash@2x.png */,
 				D76021EF1F56DCFB00C24AB6 /* givtsplash@3x.png */,
@@ -321,6 +341,7 @@
 				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
 				D73CA1C21F38B4C30059A296 /* LoginViewController.swift */,
 				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
+				D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -487,6 +508,8 @@
 				D761E9AD1F17BF20002B849B /* erase@2x.png in Resources */,
 				D761E9891F165CDF002B849B /* person@3x.png in Resources */,
 				D761E9AC1F17BF20002B849B /* erase.png in Resources */,
+				D76022011F56ECF900C24AB6 /* decrease.png in Resources */,
+				D76022051F56ECF900C24AB6 /* increase@2x.png in Resources */,
 				D761E9731F165950002B849B /* euro@2x.png in Resources */,
 				D761E9901F166090002B849B /* share.png in Resources */,
 				D76021F61F56DCFB00C24AB6 /* givtsplash@3x.png in Resources */,
@@ -508,15 +531,18 @@
 				D761E9701F165950002B849B /* list@2x.png in Resources */,
 				D761E9821F165CDF002B849B /* info24@2x.png in Resources */,
 				D76021FA1F56DCFB00C24AB6 /* givt_animation.gif in Resources */,
+				D76022031F56ECF900C24AB6 /* decrease@3x.png in Resources */,
 				D761E9831F165CDF002B849B /* info24@3x.png in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D761E99C1F166FF8002B849B /* rightarrow@3x.png in Resources */,
 				D76021F71F56DCFB00C24AB6 /* givt20h.png in Resources */,
 				D761E9AE1F17BF20002B849B /* erase@3x.png in Resources */,
+				D76022041F56ECF900C24AB6 /* increase.png in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
 				D761E9721F165950002B849B /* euro.png in Resources */,
 				D761E9811F165CDF002B849B /* info24.png in Resources */,
 				D761E9741F165950002B849B /* euro@3x.png in Resources */,
+				D76022061F56ECF900C24AB6 /* increase@3x.png in Resources */,
 				D761E98A1F165CDF002B849B /* lock.png in Resources */,
 				D758CD131F15098700EF0F19 /* menu@3x.png in Resources */,
 				D761E9871F165CDF002B849B /* person.png in Resources */,
@@ -525,6 +551,7 @@
 				D761E9711F165950002B849B /* list@3x.png in Resources */,
 				FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */,
 				D76021F51F56DCFB00C24AB6 /* givtsplash@2x.png in Resources */,
+				D76022021F56ECF900C24AB6 /* decrease@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +595,7 @@
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */,
+				D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */,
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */,
 				D740E1561F4C5FAE000531BA /* GivtManager.swift in Sources */,
