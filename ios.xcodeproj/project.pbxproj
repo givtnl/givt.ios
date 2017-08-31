@@ -30,16 +30,16 @@
 		D76021F81F56DCFB00C24AB6 /* givt20h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021F11F56DCFB00C24AB6 /* givt20h@2x.png */; };
 		D76021F91F56DCFB00C24AB6 /* givt20h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021F21F56DCFB00C24AB6 /* givt20h@3x.png */; };
 		D76021FA1F56DCFB00C24AB6 /* givt_animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = D76021F31F56DCFB00C24AB6 /* givt_animation.gif */; };
-		D76022011F56ECF900C24AB6 /* decrease.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021FB1F56ECF900C24AB6 /* decrease.png */; };
-		D76022021F56ECF900C24AB6 /* decrease@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021FC1F56ECF900C24AB6 /* decrease@2x.png */; };
-		D76022031F56ECF900C24AB6 /* decrease@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021FD1F56ECF900C24AB6 /* decrease@3x.png */; };
-		D76022041F56ECF900C24AB6 /* increase.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021FE1F56ECF900C24AB6 /* increase.png */; };
-		D76022051F56ECF900C24AB6 /* increase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76021FF1F56ECF900C24AB6 /* increase@2x.png */; };
-		D76022061F56ECF900C24AB6 /* increase@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76022001F56ECF900C24AB6 /* increase@3x.png */; };
 		D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */; };
 		D760220C1F58146300C24AB6 /* backbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = D76022091F58146300C24AB6 /* backbtn.png */; };
 		D760220D1F58146300C24AB6 /* backbtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D760220A1F58146300C24AB6 /* backbtn@2x.png */; };
 		D760220E1F58146300C24AB6 /* backbtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D760220B1F58146300C24AB6 /* backbtn@3x.png */; };
+		D76022151F5845E900C24AB6 /* decrease.png in Resources */ = {isa = PBXBuildFile; fileRef = D760220F1F5845E900C24AB6 /* decrease.png */; };
+		D76022161F5845E900C24AB6 /* decrease@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76022101F5845E900C24AB6 /* decrease@2x.png */; };
+		D76022171F5845E900C24AB6 /* decrease@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76022111F5845E900C24AB6 /* decrease@3x.png */; };
+		D76022181F5845E900C24AB6 /* increase.png in Resources */ = {isa = PBXBuildFile; fileRef = D76022121F5845E900C24AB6 /* increase.png */; };
+		D76022191F5845E900C24AB6 /* increase@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76022131F5845E900C24AB6 /* increase@2x.png */; };
+		D760221A1F5845E900C24AB6 /* increase@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D76022141F5845E900C24AB6 /* increase@3x.png */; };
 		D761E9601F15248E002B849B /* SettingsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */; };
 		D761E9631F161207002B849B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9621F161207002B849B /* Setting.swift */; };
 		D761E9651F1612F8002B849B /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9641F1612F8002B849B /* SettingTableViewController.swift */; };
@@ -154,16 +154,16 @@
 		D76021F11F56DCFB00C24AB6 /* givt20h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "givt20h@2x.png"; sourceTree = "<group>"; };
 		D76021F21F56DCFB00C24AB6 /* givt20h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "givt20h@3x.png"; sourceTree = "<group>"; };
 		D76021F31F56DCFB00C24AB6 /* givt_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = givt_animation.gif; sourceTree = "<group>"; };
-		D76021FB1F56ECF900C24AB6 /* decrease.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = decrease.png; path = ../../givtapp2/iOS/Resources/decrease.png; sourceTree = "<group>"; };
-		D76021FC1F56ECF900C24AB6 /* decrease@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "decrease@2x.png"; path = "../../givtapp2/iOS/Resources/decrease@2x.png"; sourceTree = "<group>"; };
-		D76021FD1F56ECF900C24AB6 /* decrease@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "decrease@3x.png"; path = "../../givtapp2/iOS/Resources/decrease@3x.png"; sourceTree = "<group>"; };
-		D76021FE1F56ECF900C24AB6 /* increase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = increase.png; path = ../../givtapp2/iOS/Resources/increase.png; sourceTree = "<group>"; };
-		D76021FF1F56ECF900C24AB6 /* increase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "increase@2x.png"; path = "../../givtapp2/iOS/Resources/increase@2x.png"; sourceTree = "<group>"; };
-		D76022001F56ECF900C24AB6 /* increase@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "increase@3x.png"; path = "../../givtapp2/iOS/Resources/increase@3x.png"; sourceTree = "<group>"; };
 		D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountLimitViewController.swift; sourceTree = "<group>"; };
 		D76022091F58146300C24AB6 /* backbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backbtn.png; sourceTree = "<group>"; };
 		D760220A1F58146300C24AB6 /* backbtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backbtn@2x.png"; sourceTree = "<group>"; };
 		D760220B1F58146300C24AB6 /* backbtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backbtn@3x.png"; sourceTree = "<group>"; };
+		D760220F1F5845E900C24AB6 /* decrease.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = decrease.png; sourceTree = "<group>"; };
+		D76022101F5845E900C24AB6 /* decrease@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "decrease@2x.png"; sourceTree = "<group>"; };
+		D76022111F5845E900C24AB6 /* decrease@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "decrease@3x.png"; sourceTree = "<group>"; };
+		D76022121F5845E900C24AB6 /* increase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = increase.png; sourceTree = "<group>"; };
+		D76022131F5845E900C24AB6 /* increase@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "increase@2x.png"; sourceTree = "<group>"; };
+		D76022141F5845E900C24AB6 /* increase@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "increase@3x.png"; sourceTree = "<group>"; };
 		D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemTableViewCell.swift; sourceTree = "<group>"; };
 		D761E9621F161207002B849B /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		D761E9641F1612F8002B849B /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
@@ -270,15 +270,15 @@
 		D758CD0D1F15097300EF0F19 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D760220F1F5845E900C24AB6 /* decrease.png */,
+				D76022101F5845E900C24AB6 /* decrease@2x.png */,
+				D76022111F5845E900C24AB6 /* decrease@3x.png */,
+				D76022121F5845E900C24AB6 /* increase.png */,
+				D76022131F5845E900C24AB6 /* increase@2x.png */,
+				D76022141F5845E900C24AB6 /* increase@3x.png */,
 				D76022091F58146300C24AB6 /* backbtn.png */,
 				D760220A1F58146300C24AB6 /* backbtn@2x.png */,
 				D760220B1F58146300C24AB6 /* backbtn@3x.png */,
-				D76021FB1F56ECF900C24AB6 /* decrease.png */,
-				D76021FC1F56ECF900C24AB6 /* decrease@2x.png */,
-				D76021FD1F56ECF900C24AB6 /* decrease@3x.png */,
-				D76021FE1F56ECF900C24AB6 /* increase.png */,
-				D76021FF1F56ECF900C24AB6 /* increase@2x.png */,
-				D76022001F56ECF900C24AB6 /* increase@3x.png */,
 				D76021ED1F56DCFB00C24AB6 /* givtsplash.png */,
 				D76021EE1F56DCFB00C24AB6 /* givtsplash@2x.png */,
 				D76021EF1F56DCFB00C24AB6 /* givtsplash@3x.png */,
@@ -514,17 +514,18 @@
 				D761E99B1F166FF8002B849B /* rightarrow@2x.png in Resources */,
 				D761E96F1F165950002B849B /* list.png in Resources */,
 				D761E9A81F17BCB4002B849B /* help@3x.png in Resources */,
+				D760221A1F5845E900C24AB6 /* increase@3x.png in Resources */,
 				D758CD111F15098700EF0F19 /* menu.png in Resources */,
 				D7FB25231F4F24F50011A14E /* success.png in Resources */,
 				FB3CE6E51F14CA200055185B /* LaunchScreen.storyboard in Resources */,
 				D758CD121F15098700EF0F19 /* menu@2x.png in Resources */,
+				D76022151F5845E900C24AB6 /* decrease.png in Resources */,
 				D761E98B1F165CDF002B849B /* lock@2x.png in Resources */,
+				D76022181F5845E900C24AB6 /* increase.png in Resources */,
 				D761E9AD1F17BF20002B849B /* erase@2x.png in Resources */,
 				D761E9891F165CDF002B849B /* person@3x.png in Resources */,
 				D761E9AC1F17BF20002B849B /* erase.png in Resources */,
 				D760220C1F58146300C24AB6 /* backbtn.png in Resources */,
-				D76022011F56ECF900C24AB6 /* decrease.png in Resources */,
-				D76022051F56ECF900C24AB6 /* increase@2x.png in Resources */,
 				D761E9731F165950002B849B /* euro@2x.png in Resources */,
 				D761E9901F166090002B849B /* share.png in Resources */,
 				D76021F61F56DCFB00C24AB6 /* givtsplash@3x.png in Resources */,
@@ -532,6 +533,7 @@
 				D761E9A61F17BCB4002B849B /* help.png in Resources */,
 				D76021F91F56DCFB00C24AB6 /* givt20h@3x.png in Resources */,
 				D76021F81F56DCFB00C24AB6 /* givt20h@2x.png in Resources */,
+				D76022191F5845E900C24AB6 /* increase@2x.png in Resources */,
 				D76021F41F56DCFB00C24AB6 /* givtsplash.png in Resources */,
 				D7FB25241F4F24F50011A14E /* success@2x.png in Resources */,
 				D761E9841F165CDF002B849B /* exit.png in Resources */,
@@ -546,29 +548,27 @@
 				D761E9701F165950002B849B /* list@2x.png in Resources */,
 				D761E9821F165CDF002B849B /* info24@2x.png in Resources */,
 				D76021FA1F56DCFB00C24AB6 /* givt_animation.gif in Resources */,
-				D76022031F56ECF900C24AB6 /* decrease@3x.png in Resources */,
 				D761E9831F165CDF002B849B /* info24@3x.png in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D760220D1F58146300C24AB6 /* backbtn@2x.png in Resources */,
 				D761E99C1F166FF8002B849B /* rightarrow@3x.png in Resources */,
+				D76022161F5845E900C24AB6 /* decrease@2x.png in Resources */,
 				D76021F71F56DCFB00C24AB6 /* givt20h.png in Resources */,
 				D761E9AE1F17BF20002B849B /* erase@3x.png in Resources */,
-				D76022041F56ECF900C24AB6 /* increase.png in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
 				D761E9721F165950002B849B /* euro.png in Resources */,
 				D761E9811F165CDF002B849B /* info24.png in Resources */,
 				D761E9741F165950002B849B /* euro@3x.png in Resources */,
-				D76022061F56ECF900C24AB6 /* increase@3x.png in Resources */,
 				D761E98A1F165CDF002B849B /* lock.png in Resources */,
 				D758CD131F15098700EF0F19 /* menu@3x.png in Resources */,
 				D761E9871F165CDF002B849B /* person.png in Resources */,
 				D760220E1F58146300C24AB6 /* backbtn@3x.png in Resources */,
+				D76022171F5845E900C24AB6 /* decrease@3x.png in Resources */,
 				D761E9861F165CDF002B849B /* exit@3x.png in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
 				D761E9711F165950002B849B /* list@3x.png in Resources */,
 				FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */,
 				D76021F51F56DCFB00C24AB6 /* givtsplash@2x.png in Resources */,
-				D76022021F56ECF900C24AB6 /* decrease@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
