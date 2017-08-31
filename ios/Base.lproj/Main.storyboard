@@ -377,6 +377,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="actionGive:" destination="lyO-8n-bds" eventType="touchUpInside" id="3Uk-EK-uF4"/>
+                                    <action selector="btnSave:" destination="Xb0-za-qDg" eventType="touchUpInside" id="PvL-Mq-SGF"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e62-kr-XdJ">

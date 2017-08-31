@@ -78,6 +78,10 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func btnSave(_ sender: UIButton) {
+        LoginManager().saveAmountLimit(Int(amountLimit.text!)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !LoginManager().isBearerStillValid {

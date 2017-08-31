@@ -93,7 +93,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         GivtService.sharedInstance.setAmount(amount: amount)
         GivtService.sharedInstance.onGivtProcessed = self
         
-        if(GivtService.sharedInstance.bluetoothEnabled)!{
+        if(GivtService.sharedInstance.bluetoothEnabled){
             GivtService.sharedInstance.startScanning()
         }
     }

@@ -19,7 +19,7 @@ class LoginManager {
         request.httpBody = postString.data(using: .utf8)
         let urlSession = URLSession.shared
         let task = urlSession.dataTask(with: request) { data, response, error -> Void in
-            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+            guard let data = data, error == nil else {
                 print("error=\(error)")
                 return
             }
@@ -50,6 +50,10 @@ class LoginManager {
         return Date() < UserDefaults.standard.bearerExpiration
     }
     
+    public func saveAmountLimit(_ amountLimit: Int) {
+        
+    }
+    
     public func loginUser(email: String, password: String, completionHandler: @escaping (Bool?, NSError?) -> Void ) -> URLSessionTask {
         var request = URLRequest(url: URL(string: "https://givtapidebug.azurewebsites.net/oauth2/token")!)
         request.httpMethod = "POST"
@@ -59,13 +63,11 @@ class LoginManager {
         
         let task = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
-                // If there is an error in the web request, print it to the console
-                // println(error.localizedDescription)
                 completionHandler(nil, error! as NSError)
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
                 completionHandler(false, nil)
@@ -81,16 +83,14 @@ class LoginManager {
                 print(parsedData["access_token"]!)
                 if(parsedData["access_token"] != nil) {
                     UserDefaults.standard.bearerToken = parsedData["access_token"]! as! String
-                    let strTime = parsedData[".expires"] as! String
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "E, dd MMM yyyy HH:mm:ss Z"
-                    formatter.timeZone = TimeZone(abbreviation: "GMT")
-                    UserDefaults.standard.bearerExpiration = formatter.date(from: strTime)!
-                    
+                    let test = "testen"
+                    print(test)
+                    let strTime = parsedData[".expires"] as? String
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                    let date = dateFormatter.date(from: strTime!)
+                    UserDefaults.standard.bearerExpiration = date!
                     self.getUserExt()
-                    
-                    print(UserDefaults.standard.bearerExpiration)
-                   // UserDefaults.standard.bearerExpiration = parsedData[".expires"]! as! Date
                     completionHandler(true, nil)
                     return
                 }
@@ -124,11 +124,12 @@ class LoginManager {
             }
             
             let responseString = String(data: data!, encoding: .utf8)
-            print(responseString)
+            //print(responseString)
             do {
                 let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
                 _ = parsedData
-                print(parsedData)
+                print(parsedData["GUID"])
+                UserDefaults.standard.guid = parsedData["GUID"] as! String
             } catch let err as NSError {
                 print(err)
                 return
