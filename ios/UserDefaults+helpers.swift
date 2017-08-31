@@ -16,6 +16,7 @@ extension UserDefaults {
         case bearerExpiration
         case amountLimit
         case offlineGivts
+        case guid
     }
     
     var isLoggedIn: Bool {
@@ -28,9 +29,22 @@ extension UserDefaults {
         }
     }
     
+    var guid: String {
+        get {
+            return string(forKey: UserDefaultsKeys.guid.rawValue)!
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.guid.rawValue)
+            synchronize()
+        }
+    }
+    
     var bearerToken: String {
         get {
-            return string(forKey: UserDefaultsKeys.bearerToken.rawValue)!
+            if string(forKey: UserDefaultsKeys.bearerToken.rawValue) != nil {
+                return string(forKey: UserDefaultsKeys.bearerToken.rawValue)!
+            }
+            return ""
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.bearerToken.rawValue)
