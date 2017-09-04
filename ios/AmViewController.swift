@@ -29,7 +29,6 @@ class AmViewController: UIViewController {
     private var givtService:GivtService!
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        givtService = GivtService.sharedInstance
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,7 +37,7 @@ class AmViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        givtService = GivtService.sharedInstance
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -48,6 +47,8 @@ class AmViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(true)
         amountLimit = UserDefaults.standard.amountLimit
+        print(amountLimit)
+        print(UserDefaults.standard.amountLimit)
         decimalNotation = NSLocale.current.decimalSeparator! as String
         print(decimalNotation)
         
@@ -58,7 +59,7 @@ class AmViewController: UIViewController {
         backItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 20)!], for: .normal)
         btnGive.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         self.navigationItem.backBarButtonItem = backItem
-        amountLabel.text = "0"
+        
         checkAmount()
     }
 
@@ -138,7 +139,8 @@ class AmViewController: UIViewController {
                 preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: nil))
             alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-                //push geeflimiet pagina
+                let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
+                self.present(amountLimitVC, animated: true)
             }))
             self.present(alert, animated: true, completion: nil)
         } else {

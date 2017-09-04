@@ -64,7 +64,10 @@ extension UserDefaults {
     
     var amountLimit: Int {
         get {
-            return object(forKey: UserDefaultsKeys.amountLimit.rawValue) as! Int
+            if object(forKey: UserDefaultsKeys.amountLimit.rawValue) != nil {
+                return object(forKey: UserDefaultsKeys.amountLimit.rawValue) as! Int
+            }
+            return 0
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.amountLimit.rawValue)
