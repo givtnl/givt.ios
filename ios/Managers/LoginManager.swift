@@ -20,7 +20,7 @@ class LoginManager {
         let urlSession = URLSession.shared
         let task = urlSession.dataTask(with: request) { data, response, error -> Void in
             guard let data = data, error == nil else {
-                print("error=\(error)")
+                print("error=\(String(describing: error))")
                 return
             }
             
@@ -30,17 +30,14 @@ class LoginManager {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
+            print("responseString = \(String(describing: responseString))")
             do
             {
                 let parsedData = try JSONSerialization.jsonObject(with: data) as! [String:Any]
-                let currentData = parsedData
                 print(parsedData["access_token"]!)
             } catch let error as NSError {
                 print(error)
             }
-            
-            
         }
         task.resume()
 
@@ -59,7 +56,7 @@ class LoginManager {
         let putString = "GUID=" + UserDefaults.standard.guid + "&AmountLimit=" + String(amountLimit)
         request.httpBody = putString.data(using: .utf8)
         let urlSession = URLSession.shared
-        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
+        _ = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
                 print(error! as NSError)
                 completionHandler(false, nil)
@@ -71,24 +68,9 @@ class LoginManager {
                 completionHandler(false, nil)
                 return
             }
-            
-            //status is 200
+
             UserDefaults.standard.amountLimit = amountLimit
             completionHandler(true, nil)
-            let httpStatus = response as? HTTPURLResponse
-            print(httpStatus?.description)
-            let responseString = String(data: data!, encoding: .utf8)
-            //print(responseString)
-            do {
-                let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
-                _ = parsedData
-                print(parsedData)
-                
-            } catch let err as NSError {
-                print(err)
-                return
-            }
-            
             }.resume()
 
     }
@@ -113,17 +95,11 @@ class LoginManager {
                 return
             }
             
-            let responseString = String(data: data!, encoding: .utf8)
-            print("responseString = \(String(describing: responseString))")
             do
             {
                 let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
-                _ = parsedData
-                print(parsedData["access_token"]!)
                 if(parsedData["access_token"] != nil) {
                     UserDefaults.standard.bearerToken = parsedData["access_token"]! as! String
-                    let test = "testen"
-                    print(test)
                     let strTime = parsedData[".expires"] as? String
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
@@ -151,7 +127,7 @@ class LoginManager {
         request.httpMethod = "GET"
         request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
         let urlSession = URLSession.shared
-        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
+        _ = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
                 print(error! as NSError)
                 return
@@ -162,13 +138,10 @@ class LoginManager {
                 return
             }
             
-            let responseString = String(data: data!, encoding: .utf8)
-            //print(responseString)
             do {
                 let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
-                _ = parsedData
-                print(parsedData["GUID"])
                 UserDefaults.standard.guid = parsedData["GUID"] as! String
+                UserDefaults.standard.amountLimit = parsedData["AmountLimit"] != nil ? parsedData["AmountLimit"] as! Int : 5
             } catch let err as NSError {
                 print(err)
                 return
