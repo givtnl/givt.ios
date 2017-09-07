@@ -100,7 +100,7 @@ class AmViewController: UIViewController {
             btnGive.isEnabled = true
         }
         
-        amountLabel.textColor = dAmount > Decimal(amountLimit) ? UIColor.init(rgb: 0xd53d4c) : UIColor.init(rgb: 0xD2D1D9)
+        amountLabel.textColor = dAmount > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
     }
     
     @IBAction func addShortcutValue(sender: UIButton!){
