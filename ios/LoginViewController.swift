@@ -43,6 +43,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         //To retrieve keyboard size, uncomment following line
         let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
