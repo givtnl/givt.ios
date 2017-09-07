@@ -26,12 +26,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         btnLogin.setTitle("Login", for: UIControlState.normal)
         //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         //NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
+        txtUserName.delegate = self
         txtPassword.delegate = self
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+       
+        switch textField {
+        case txtUserName:
+            txtPassword.becomeFirstResponder()
+        case txtPassword:
+            textField.resignFirstResponder()
+            login()
+        default: break
+            return false
+        }
+        
+        return false
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -60,17 +72,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func performLogin(_ sender: UIButton) {
-        btnLogin.loadingIndicator(show: true)
+        login()
+    }
+    
+    func showLoadingAnimation() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        activityIndicator.center = self.view.center
+        activityIndicator.startAnimating();
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.tag = 1
+        self.view.addSubview(activityIndicator)
+        self.view.isUserInteractionEnabled = false
+        return activityIndicator
+    }
+    
+    func login(){
+        let ai = showLoadingAnimation()
+        
         loginManager.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error in
+            self.view.isUserInteractionEnabled = true
+            if let viewWithTag = self.view.viewWithTag(1) {
+                viewWithTag.removeFromSuperview()
+            }
             if let b = b {
                 if(b){
                     print("logging user in")
                     UserDefaults.standard.isLoggedIn = true
                     self.dismiss(animated: true, completion: nil)
                 } else {
-                    DispatchQueue.main.async {
-                        self.btnLogin.loadingIndicator(show: false)
-                    }
+                    
                     print("something wrong logging user in")
                     let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
                                                   message: NSLocalizedString("WrongCredentials", comment: ""),
@@ -90,8 +120,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 NSLog(String(describing: error))
             }
         })
-        
-        
+    
     }
     
     /*

@@ -34,7 +34,7 @@
                         <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4S2-ek-spf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4S2-ek-spf" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="608" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.21385991569999999" green="0.78783458470000001" blue="0.54240250590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -48,6 +48,12 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="performLogin:" destination="Sko-mo-YiF" eventType="touchUpInside" id="CNB-Eq-11I"/>
@@ -60,7 +66,7 @@
                                 </constraints>
                                 <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rLK-fg-kiR" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="124" width="374" height="44"/>
@@ -1088,7 +1094,7 @@ Kijk voor de status in je overzicht.</string>
         <scene sceneID="cFY-6w-aFS">
             <objects>
                 <navigationController id="DML-R9-MCL" customClass="CustomViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" translucent="NO" id="zsy-MG-c4p">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="zsy-MG-c4p">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
