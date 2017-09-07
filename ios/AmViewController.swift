@@ -70,14 +70,13 @@ class AmViewController: UIViewController {
     }
     
     @IBAction func addValue(sender:UIButton!) {
-        if(amountLabel.text == "0" || pressedShortcutKey){
+        if amountLabel.text == "0" || pressedShortcutKey {
             amountLabel.text = ""
         }
         
-        if amountLabel.text! == "" && (sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))! && !pressedShortcutKey {
+        if amountLabel.text! == "" && (sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))! {
             amountLabel.text = "0";
         }
-        pressedShortcutKey = false
         
         if let idx = amountLabel.text?.index(of: decimalNotation) {
             if( ((amountLabel.text?.substring(from: idx).characters.count)! == 3)) || ((sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))!){
@@ -85,16 +84,17 @@ class AmViewController: UIViewController {
             }
         }
         
-        if( amountLabel.text?.characters.count == 9){
+        if amountLabel.text?.characters.count == 9 {
             return
         }
         amountLabel.text = amountLabel.text! + sender.currentTitle!;
         checkAmount()
+        pressedShortcutKey = false
     }
     
     private func checkAmount(){
         let dAmount = Decimal(string: (amountLabel.text?.replacingOccurrences(of: ",", with: "."))!)!
-        if(dAmount < 0.50 ) {
+        if dAmount < 0.50 {
             btnGive.isEnabled = false
         } else {
             btnGive.isEnabled = true
@@ -104,21 +104,21 @@ class AmViewController: UIViewController {
     }
     
     @IBAction func addShortcutValue(sender: UIButton!){
+        amountLabel.text = sender.currentTitle
+        checkAmount()
         pressedShortcutKey = true
-        clearAll(sender: sender)
-        addValue(sender: sender)
     }
     
     @IBAction func clearValue(sender: UIButton!){
         var amount: String = amountLabel.text!
-        if(amount.characters.count == 0) {
+        if amount.characters.count == 0 {
             checkAmount()
             return
         }
         
         amount.remove(at: amount.index(before: amount.endIndex))
         amountLabel.text = amount
-        if(amount.characters.count == 0 || pressedShortcutKey){
+        if amount.characters.count == 0 || pressedShortcutKey {
             amountLabel.text = "0";
         }
         checkAmount()
