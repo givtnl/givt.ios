@@ -47,11 +47,7 @@ class AmViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(true)
         amountLimit = UserDefaults.standard.amountLimit
-        print(amountLimit)
-        print(UserDefaults.standard.amountLimit)
         decimalNotation = NSLocale.current.decimalSeparator! as String
-        print(decimalNotation)
-        
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         let backItem = UIBarButtonItem()
         backItem.title = NSLocalizedString("Cancel", comment: "Annuleer")
@@ -137,7 +133,11 @@ class AmViewController: UIViewController {
                 title: NSLocalizedString("SomethingWentWrong2", comment: ""),
                 message: NSLocalizedString("AmountLimitExceeded", comment: ""),
                 preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
+                action in
+                self.amountLabel.text = String(UserDefaults.standard.amountLimit)
+                self.checkAmount()
+            }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
                 let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
                 self.present(amountLimitVC, animated: true)
