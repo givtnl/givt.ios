@@ -9,6 +9,9 @@
 import UIKit
 import Fabric
 import Crashlytics
+import MobileCenter
+import MobileCenterAnalytics
+import MobileCenterCrashes
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,12 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var reachability: Reachability!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        MSMobileCenter.start("b1986ee1-9626-4679-9a86-d1d1e6873688", withServices:[
+            MSAnalytics.self,
+            MSCrashes.self
+            ])
+        
         // Override point for customization after application launch.
         //print(Array(UserDefaults.standard.dictionaryRepresentation()))
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
         print(UserDefaults.standard.amountLimit)
         self.reachability = Reachability.init()
-        Fabric.with([Crashlytics.self])
+        //Fabric.with([Crashlytics.self])
         do {
             try self.reachability.startNotifier()
         } catch {
