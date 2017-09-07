@@ -50,11 +50,9 @@ class SettingTableViewController: UITableViewController {
         
         items +=
             [
-                [givts],
-                [limit, accessCode],
+                [givts, limit, accessCode],
                 [changeAccount, screwAccount],
-                [aboutGivt],
-                [shareGivt]
+                [aboutGivt, shareGivt]
             ]
        
         
