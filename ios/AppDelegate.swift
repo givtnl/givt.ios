@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //print(Array(UserDefaults.standard.dictionaryRepresentation()))
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
-        print(UserDefaults.standard.amountLimit)
+        
         self.reachability = Reachability.init()
         //Fabric.with([Crashlytics.self])
         do {
