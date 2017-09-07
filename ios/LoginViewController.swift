@@ -87,7 +87,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func login(){
         showLoadingAnimation()
-        loginManager.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error in
+        _ = loginManager.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error in
             self.view.isUserInteractionEnabled = true
             if let viewWithTag = self.view.viewWithTag(1) {
                 viewWithTag.removeFromSuperview()
@@ -96,7 +96,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 if(b){
                     print("logging user in")
                     UserDefaults.standard.isLoggedIn = true
-                    self.dismiss(animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                    }
                 } else {
                     print("something wrong logging user in")
                     let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
@@ -110,7 +112,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     DispatchQueue.main.async(execute: {
                         self.present(alert, animated: true, completion: nil)
                     })
-                    
                 }
                 
             } else {
