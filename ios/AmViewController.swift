@@ -79,8 +79,12 @@ class AmViewController: UIViewController {
                 return
             }
         }
-        
-        if amountLabel.text?.characters.count == 9 {
+        print(decimalNotation.characters.first!)
+        if (amountLabel?.text?.characters.contains(decimalNotation.characters.first!))! {
+            if amountLabel.text?.characters.count == 9 {
+                return
+            }
+        } else if amountLabel.text?.characters.count == 6 {
             return
         }
         amountLabel.text = amountLabel.text! + sender.currentTitle!;
