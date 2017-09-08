@@ -12,44 +12,15 @@ class LoginManager {
         return true
     }
     
-    public func loginUser(email: String, password: String) {
-        var request = URLRequest(url: URL(string: "https://givtapidebug.azurewebsites.net/oauth2/token")!)
-        request.httpMethod = "POST"
-        let postString = "grant_type=password&userName=" + email + "&password=" + password
-        request.httpBody = postString.data(using: .utf8)
-        let urlSession = URLSession.shared
-        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
-            guard let data = data, error == nil else {
-                print("error=\(String(describing: error))")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(String(describing: responseString))")
-            do
-            {
-                let parsedData = try JSONSerialization.jsonObject(with: data) as! [String:Any]
-                print(parsedData["access_token"]!)
-            } catch let error as NSError {
-                print(error)
-            }
-        }
-        task.resume()
-
-    }
-    
     public var isBearerStillValid: Bool {
         return Date() < UserDefaults.standard.bearerExpiration
     }
     
+    private var _baseUrl = "https://givtapidebug.azurewebsites.net"
+    
     public func saveAmountLimit(_ amountLimit: Int, completionHandler: @escaping (Bool?, NSError?) -> Void) {
         //post request to amount limit api
-        var request = URLRequest(url: URL(string:"https://givtapidebug.azurewebsites.net/api/Users")!)
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/Users")!)
         request.httpMethod = "PUT"
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
@@ -76,7 +47,7 @@ class LoginManager {
     }
     
     public func loginUser(email: String, password: String, completionHandler: @escaping (Bool?, NSError?) -> Void ) -> URLSessionTask {
-        var request = URLRequest(url: URL(string: "https://givtapidebug.azurewebsites.net/oauth2/token")!)
+        var request = URLRequest(url: URL(string: _baseUrl + "/oauth2/token")!)
         request.httpMethod = "POST"
         let postString = "grant_type=password&userName=" + email + "&password=" + password
         request.httpBody = postString.data(using: .utf8)
@@ -123,7 +94,7 @@ class LoginManager {
     }
     
     private func getUserExt() {
-        var request = URLRequest(url: URL(string:"https://givtapidebug.azurewebsites.net/api/UsersExtension")!)
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/UsersExtension")!)
         request.httpMethod = "GET"
         request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
         let urlSession = URLSession.shared
