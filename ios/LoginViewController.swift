@@ -11,12 +11,15 @@ import UIKit
 class LoginViewController: UIViewController, UITextFieldDelegate {
     let loginManager = LoginManager()
     
+    var completionHandler : ((_ loginVC: LoginViewController) -> Void)?
+    
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnForgotPassword: UIButton!
+    @IBOutlet var backButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         txtUserName.placeholder = NSLocalizedString("Email", comment: "")
@@ -45,6 +48,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -95,10 +102,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if let b = b {
                 if(b){
                     print("logging user in")
+                    
                     UserDefaults.standard.isLoggedIn = true
                     DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true, completion: { self.completionHandler?(self) } )
                     }
+                    
+                    
                 } else {
                     print("something wrong logging user in")
                     let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),

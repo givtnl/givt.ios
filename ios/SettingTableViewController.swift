@@ -36,17 +36,17 @@ class SettingTableViewController: UITableViewController {
     
     private func loadSettings(){
         // key: "Next", comment: "Next button"
-        let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!)
+        let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: {})
         
-        let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!)
-        let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!)
+        let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
+        let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: {})
         
-        let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!)
-        let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!)
+        let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: {})
+        let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: {})
         
-        let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!)
+        let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: {})
 
-        let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!)
+        let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: {})
         
         items +=
             [
@@ -54,8 +54,24 @@ class SettingTableViewController: UITableViewController {
                 [changeAccount, screwAccount],
                 [aboutGivt, shareGivt]
             ]
-       
-        
+    }
+    
+    private func openGiveLimit() {
+        if !LoginManager().isBearerStillValid {
+            let loginVC = storyboard?.instantiateViewController(withIdentifier: "lvc") as! LoginViewController
+            let completionHandler:(LoginViewController)->Void = { test in
+                let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
+                DispatchQueue.main.async {
+                    self.present(amountLimitVC, animated: true, completion: nil)
+                }
+            }
+            loginVC.completionHandler = completionHandler
+            self.present(loginVC, animated: true, completion: nil)
+        } else {
+            let amountLimitVC = storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
+            // self.present(amountLimitVC, animated: true)
+            self.present(amountLimitVC, animated: true)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,38 +95,24 @@ class SettingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "SettingsItemTableViewCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SettingsItemTableViewCell
-        //let setting = settings[indexPath.row]
-        
         let temp = self.items[indexPath.section]
         cell.settingLabel.text = temp[indexPath.row].name
         cell.settingImageView.image = temp[indexPath.row].image
+        print(temp[indexPath.row].callback)
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func finishedModalView() {
         let amountLimitVC = storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
-
-       // self.present(amountLimitVC, animated: true)
+        // self.present(amountLimitVC, animated: true)
         self.present(amountLimitVC, animated: true)
-        return
-        let alert = UIAlertController(title: "title",
-                                      message: "message",
-                                      preferredStyle: UIAlertControllerStyle.alert)
-        
-        let cancelAction = UIAlertAction(title: "OK",
-                                         style: .cancel, handler: { action  -> Void in
-                                            UserDefaults.standard.isLoggedIn = false
-                                            
-                                            self.present((self.storyboard?.instantiateViewController(withIdentifier: "lvc"))!, animated: true, completion: {
-                                                self.toggleLeftViewAnimated(nil)
-                                            })
-                                            
-                                            
-        })
-        
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = self.items[indexPath.section]
+        let cell = section[indexPath.row]
+        cell.callback()
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     /*

@@ -72,12 +72,9 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         amountLimit.delegate = self
         amountLimit.tintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         amountLimit.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        print(UserDefaults.standard.amountLimit)
         if UserDefaults.standard.amountLimit > 0 {
             amountLimit.text = String(UserDefaults.standard.amountLimit)
         }
-        //navBar.
-        
     }
     
     @IBAction func btnSave(_ sender: UIButton) {
@@ -91,14 +88,8 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !LoginManager().isBearerStillValid {
-            let loginVC = storyboard?.instantiateViewController(withIdentifier: "lvc") as! LoginViewController
-            self.present(loginVC, animated: true, completion: nil)
-        }
     }
-    
-    
-    
+        
     func keyboardWillShow(notification: NSNotification) {
         //To retrieve keyboard size, uncomment following line
         let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
