@@ -9,7 +9,6 @@
 import Foundation
 import CoreBluetooth
 import UIKit
-import Reachability
 import AudioToolbox
 
 final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate {
