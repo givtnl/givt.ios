@@ -6,6 +6,7 @@ target 'ios' do
   use_frameworks!
   pod 'MobileCenter'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+  pod ‘LGSideMenuController’
   # Pods for ios
 
 end
