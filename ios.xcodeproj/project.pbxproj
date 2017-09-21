@@ -21,7 +21,6 @@
 		D740E1601F4C63D1000531BA /* GivtServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15F1F4C63D1000531BA /* GivtServiceProtocol.swift */; };
 		D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */; };
 		D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754DA3A1F3B45D5001B7040 /* UIButton+helpers.swift */; };
-		D758CD0B1F15052700EF0F19 /* LGSideMenuController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D758CD111F15098700EF0F19 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CD0E1F15098700EF0F19 /* menu.png */; };
 		D758CD121F15098700EF0F19 /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CD0F1F15098700EF0F19 /* menu@2x.png */; };
 		D758CD131F15098700EF0F19 /* menu@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D758CD101F15098700EF0F19 /* menu@3x.png */; };
@@ -102,8 +101,6 @@
 		D7FB25241F4F24F50011A14E /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7FB25211F4F24F50011A14E /* success@2x.png */; };
 		D7FB25251F4F24F50011A14E /* success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7FB25221F4F24F50011A14E /* success@3x.png */; };
 		D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB252E1F5065C20011A14E /* Reachability.swift */; };
-		FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		FB07A9691F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM in CopyFiles */ = {isa = PBXBuildFile; fileRef = FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		FB19533D1F56DDEC00172CD3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB19533B1F56DDEC00172CD3 /* Fabric.framework */; };
 		FB19533E1F56DDEC00172CD3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
@@ -120,7 +117,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D758CD0B1F15052700EF0F19 /* LGSideMenuController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,7 +127,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				FB07A9691F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,8 +231,6 @@
 		D7FB25211F4F24F50011A14E /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
 		D7FB25221F4F24F50011A14E /* success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@3x.png"; sourceTree = "<group>"; };
 		D7FB252E1F5065C20011A14E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LGSideMenuController.framework; path = Carthage/Build/iOS/LGSideMenuController.framework; sourceTree = "<group>"; };
-		FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LGSideMenuController.framework.dSYM; path = Carthage/Build/iOS/LGSideMenuController.framework.dSYM; sourceTree = "<group>"; };
 		FB19533B1F56DDEC00172CD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -254,7 +247,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB07A9671F14D9F300FD9C1A /* LGSideMenuController.framework in Frameworks */,
 				FB19533E1F56DDEC00172CD3 /* Crashlytics.framework in Frameworks */,
 				FB19533D1F56DDEC00172CD3 /* Fabric.framework in Frameworks */,
 				076E20FBE3B8BF04AAFAEDDA /* Pods_ios.framework in Frameworks */,
@@ -421,8 +413,6 @@
 			children = (
 				FB19533B1F56DDEC00172CD3 /* Fabric.framework */,
 				FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */,
-				FB07A9681F14DA1E00FD9C1A /* LGSideMenuController.framework.dSYM */,
-				FB07A9661F14D9F300FD9C1A /* LGSideMenuController.framework */,
 				A31725F87D2D9EDE08EEAEB4 /* Pods_ios.framework */,
 			);
 			name = Frameworks;
@@ -643,10 +633,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ios/Pods-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -805,6 +797,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -825,6 +818,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRIP_BITCODE_FROM_COPIED_FILES = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -861,6 +855,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -874,6 +869,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				STRIP_BITCODE_FROM_COPIED_FILES = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -888,6 +884,7 @@
 				CODE_SIGN_ENTITLEMENTS = ios/ios.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -915,6 +912,7 @@
 				CODE_SIGN_ENTITLEMENTS = ios/ios.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

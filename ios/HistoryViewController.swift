@@ -131,13 +131,13 @@ class HistoryViewController: UIViewController {
         demStates.trailingAnchor.constraint(equalTo: (infoScreen?.trailingAnchor)!, constant: -15).isActive = true
         demStates.bottomAnchor.constraint(equalTo: (infoScreen?.bottomAnchor)!, constant: -15).isActive = true
         
+        var states: [Status] = [Status]()
+        states.append(Status(color: 0x494874, string: NSLocalizedString("HistoryAmountAccepted", comment: "")))
+        states.append(Status(color: 0x41c98e, string: NSLocalizedString("HistoryAmountCollected", comment: "")))
+        states.append(Status(color: 0xd43d4c, string: NSLocalizedString("HistoryAmountDenied", comment: "")))
+        states.append(Status(color: 0xbcb9c9, string: NSLocalizedString("HistoryAmountCancelled", comment: "")))
         
-        var statussen: [Int: String] = [0x494874 :NSLocalizedString("HistoryAmountAccepted", comment: ""),
-                                        0x41c98e: NSLocalizedString("HistoryAmountCollected", comment: ""),
-                                        0xd43d4c: NSLocalizedString("HistoryAmountDenied", comment: ""),
-                                        0xbcb9c9: NSLocalizedString("HistoryAmountCancelled", comment: "")]
-        
-        for (rgb, status) in statussen {
+        states.forEach {
             let row = UIView()
             row.translatesAutoresizingMaskIntoConstraints = false
             demStates.addArrangedSubview(row)
@@ -149,13 +149,13 @@ class HistoryViewController: UIViewController {
             bolleke.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: 0).isActive = true
             bolleke.centerYAnchor.constraint(equalTo: row.centerYAnchor, constant: 0).isActive = true
             
-            bolleke.backgroundColor = UIColor.init(rgb: rgb)
+            bolleke.backgroundColor = UIColor.init(rgb: $0.color)
             bolleke.widthAnchor.constraint(equalToConstant: 15).isActive = true
             bolleke.heightAnchor.constraint(equalToConstant: 15).isActive = true
             bolleke.layer.cornerRadius = 7.5
             
             let statusLabel = UILabel()
-            statusLabel.text = status
+            statusLabel.text = $0.string
             statusLabel.textColor = .white
             statusLabel.font = UIFont(name: "Avenir-Medium", size: 16.0)
             statusLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -163,7 +163,6 @@ class HistoryViewController: UIViewController {
             statusLabel.centerYAnchor.constraint(equalTo: row.centerYAnchor, constant: 0).isActive = true
             statusLabel.leadingAnchor.constraint(equalTo: bolleke.trailingAnchor, constant: 22).isActive = true
         }
-        
 
         UIView.animate(withDuration: 0.2, animations: {
             self.infoScreen?.alpha = 1
@@ -535,31 +534,6 @@ class HistoryViewController: UIViewController {
         }
         //self.view.addSubview(label)
     }
-    
-    func numberOfTexViewInView(superView: UIView)-> Int{
-    
-    var count = 0
-    
-    for _view in superView.subviews{
-    
-        if (_view is UITextView){
-            count += 1
-        }
-    
-    }
-    
-    return count
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -618,4 +592,14 @@ class HistoryTransaction: NSObject {
         return dictionary
     }
     
+}
+
+class Status {
+    var color: Int
+    var string: String
+    
+    init(color: Int, string: String) {
+        self.color = color
+        self.string = string
+    }
 }
