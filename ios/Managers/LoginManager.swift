@@ -8,6 +8,13 @@
 
 import Foundation
 class LoginManager {
+    //todo: make singleton
+    static let shared = LoginManager()
+    
+    private init() {
+        print("loginmanager is created")
+    }
+    
     func isUserLoggedIn() -> Bool {
         return true
     }
@@ -46,7 +53,7 @@ class LoginManager {
 
     }
     
-    public func loginUser(email: String, password: String, completionHandler: @escaping (Bool?, NSError?) -> Void ) -> URLSessionTask {
+    public func loginUser(email: String, password: String, completionHandler: @escaping (Bool, NSError?) -> Void ) -> URLSessionTask {
         var request = URLRequest(url: URL(string: _baseUrl + "/oauth2/token")!)
         request.httpMethod = "POST"
         let postString = "grant_type=password&userName=" + email + "&password=" + password
@@ -55,7 +62,7 @@ class LoginManager {
         
         let task = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
-                completionHandler(nil, error! as NSError)
+                completionHandler(false, error! as NSError)
                 return
             }
             

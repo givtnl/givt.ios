@@ -9,8 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-    let loginManager = LoginManager()
-    
+   
     var completionHandler : ((_ loginVC: LoginViewController) -> Void)?
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -40,7 +39,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             textField.resignFirstResponder()
             login()
         default: break
-            return false
         }
         
         return false
@@ -94,38 +92,37 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func login(){
         showLoadingAnimation()
-        _ = loginManager.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error in
-            self.view.isUserInteractionEnabled = true
-            if let viewWithTag = self.view.viewWithTag(1) {
-                viewWithTag.removeFromSuperview()
-            }
-            if let b = b {
-                if(b){
-                    print("logging user in")
-                    
-                    UserDefaults.standard.isLoggedIn = true
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: { self.completionHandler?(self) } )
+        _ = LoginManager.shared.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error in
+            
+                DispatchQueue.main.async {
+                    if let viewWithTag = self.view.viewWithTag(1) {
+                        self.view.isUserInteractionEnabled = true
+                        viewWithTag.removeFromSuperview()
                     }
-                    
-                    
-                } else {
-                    print("something wrong logging user in")
-                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
-                                                  message: NSLocalizedString("WrongCredentials", comment: ""),
-                                                  preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    let cancelAction = UIAlertAction(title: "OK",
-                                                     style: .cancel, handler: nil)
-                    
-                    alert.addAction(cancelAction)
-                    DispatchQueue.main.async(execute: {
-                        self.present(alert, animated: true, completion: nil)
-                    })
+                }
+                
+            
+            if b {
+                print("logging user in")
+                
+                UserDefaults.standard.isLoggedIn = true
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: { self.completionHandler?(self) } )
                 }
                 
             } else {
-                NSLog(String(describing: error))
+                print("something wrong logging user in")
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
+                                              message: NSLocalizedString("WrongCredentials", comment: ""),
+                                              preferredStyle: UIAlertControllerStyle.alert)
+                
+                let cancelAction = UIAlertAction(title: "OK",
+                                                 style: .cancel, handler: nil)
+                
+                alert.addAction(cancelAction)
+                DispatchQueue.main.async(execute: {
+                    self.present(alert, animated: true, completion: nil)
+                })
             }
         })
     

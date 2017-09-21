@@ -78,7 +78,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func btnSave(_ sender: UIButton) {
-        LoginManager().saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_,_ in
+        LoginManager.shared.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_,_ in
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
             }

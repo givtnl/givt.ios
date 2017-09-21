@@ -36,7 +36,7 @@ class SettingTableViewController: UITableViewController {
     
     private func loadSettings(){
         // key: "Next", comment: "Next button"
-        let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: {})
+        let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
         
         let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
         let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: {})
@@ -56,8 +56,27 @@ class SettingTableViewController: UITableViewController {
             ]
     }
     
+    private func openHistory() {
+        if !LoginManager.shared.isBearerStillValid {
+            let loginVC = storyboard?.instantiateViewController(withIdentifier: "lvc") as! LoginViewController
+            let completionHandler:(LoginViewController)->Void = { test in
+                let historyVC = self.storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
+                DispatchQueue.main.async {
+                    
+                    self.present(historyVC, animated: true, completion: nil)
+                }
+            }
+            loginVC.completionHandler = completionHandler
+            self.present(loginVC, animated: true, completion: nil)
+        } else {
+            let historyVC = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
+            // self.present(amountLimitVC, animated: true)
+            self.present(historyVC, animated: true)
+        }
+    }
+    
     private func openGiveLimit() {
-        if !LoginManager().isBearerStillValid {
+        if !LoginManager.shared.isBearerStillValid {
             let loginVC = storyboard?.instantiateViewController(withIdentifier: "lvc") as! LoginViewController
             let completionHandler:(LoginViewController)->Void = { test in
                 let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
