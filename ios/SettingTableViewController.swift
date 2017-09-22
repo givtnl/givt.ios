@@ -27,21 +27,15 @@ class SettingTableViewController: UITableViewController {
         super.viewDidLoad()
         lblSettings.text = NSLocalizedString("Settings", comment: "Settings")
         loadSettings()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     private func loadSettings(){
-        // key: "Next", comment: "Next button"
         let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
         
         let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
         let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: {})
         
-        let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: {})
+        let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: { self.logout() })
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: {})
         
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: {})
@@ -54,6 +48,22 @@ class SettingTableViewController: UITableViewController {
                 [changeAccount, screwAccount],
                 [aboutGivt, shareGivt]
             ]
+    }
+    
+    private func logout() {
+        UserDefaults.standard.amountLimit = 0
+        UserDefaults.standard.bearerToken = ""
+        UserDefaults.standard.isLoggedIn = false
+        UserDefaults.standard.guid = ""
+        UserDefaults.standard.bearerExpiration = Date()
+        let loginVC = storyboard?.instantiateViewController(withIdentifier: "lvc") as! LoginViewController
+        let ch: (LoginViewController)-> Void = { test in
+            //do iets spesials bij inloggen
+        }
+        loginVC.completionHandler = ch
+        self.present(loginVC, animated: true, completion: {
+            self.hideLeftView(nil)
+        })
     }
     
     private func openHistory() {

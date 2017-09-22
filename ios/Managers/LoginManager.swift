@@ -8,7 +8,6 @@
 
 import Foundation
 class LoginManager {
-    //todo: make singleton
     static let shared = LoginManager()
     
     private init() {
