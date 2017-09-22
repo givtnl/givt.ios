@@ -220,21 +220,18 @@ class HistoryViewController: UIViewController {
                 for item in monthTotal {
                     som += item.amount
                 }
+                
                 let monthTitle = self.getMonthTitle(name: object.timestamp.getMonthName() + " \'" + object.timestamp.toString("yy"))
                 purpleBar.addSubview(monthTitle)
                 monthTitle.centerYAnchor.constraint(equalTo: purpleBar.centerYAnchor).isActive = true
                 monthTitle.leadingAnchor.constraint(equalTo: purpleBar.leadingAnchor, constant: 10).isActive = true
                 
-                
                 let text = fmt.string(from: som as NSNumber)
-                
-                
                 let monthTotalAmount = self.getMonthTitle(name: text!)
                 purpleBar.addSubview(monthTotalAmount)
                 monthTotalAmount.centerYAnchor.constraint(equalTo: purpleBar.centerYAnchor).isActive = true
                 monthTotalAmount.trailingAnchor.constraint(equalTo: purpleBar.trailingAnchor, constant: -10).isActive = true
             }
-            
             
             //it's a new day
             if oldDay != object.timestamp.toString("MM/dd/yyyy") {
@@ -259,12 +256,10 @@ class HistoryViewController: UIViewController {
                 
                 agendaRectangle!.leadingAnchor.constraint(equalTo: grey!.leadingAnchor, constant: 10.0).isActive = true
                 agendaRectangle!.topAnchor.constraint(equalTo: grey!.topAnchor, constant: 10.0).isActive = true
-                //agendaRectangle.bottomAnchor.constraint(equalTo: grey.bottomAnchor, constant: -10.0).isActive = true
                 agendaRectangle!.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
                 agendaRectangle!.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
                 
                 h = UIStackView()
-                
                 h!.axis = .vertical
                 grey!.addSubview(h!)
                 h!.translatesAutoresizingMaskIntoConstraints = false
@@ -277,7 +272,6 @@ class HistoryViewController: UIViewController {
                 let churchName = self.getChurchName(name: object.orgName)
                 churchName.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
                 h!.addArrangedSubview(churchName)
-                
                 
             } else {
                 if prevOrg != object.orgName {
@@ -292,13 +286,10 @@ class HistoryViewController: UIViewController {
             collectionStackView2.translatesAutoresizingMaskIntoConstraints = false
             h!.addArrangedSubview(collectionStackView2)
             
-            
             collectionStackView2.leadingAnchor.constraint(equalTo: h!.leadingAnchor).isActive = true
-            //collectionStackView.bottomAnchor.constraint(equalTo: h.bottomAnchor).isActive = true
             collectionStackView2.trailingAnchor.constraint(equalTo: h!.trailingAnchor).isActive = true
             collectionStackView2.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
             collectionStackView2.backgroundColor = .red
-            
             
             let hour2 = self.getHourLabel(object.timestamp)
             collectionStackView2.addArrangedSubview(hour2)
@@ -315,11 +306,9 @@ class HistoryViewController: UIViewController {
             hour2.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
             
             let collecte2 = getCollectLabel(text: NSLocalizedString("Collect", comment: "") + " " +  String(describing: object.collectId))
-            //collecte2.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
             collectionStackView2.addArrangedSubview(collecte2)
             
             let amount2 = self.getAmountLabel(amount: object.amount, status: object.status, formatter: fmt)
-            //amount2.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
             collectionStackView2.addArrangedSubview(amount2)
             amount2.trailingAnchor.constraint(equalTo: collectionStackView2.trailingAnchor).isActive = true
             amount2.topAnchor.constraint(equalTo: collectionStackView2.topAnchor, constant: 0.0).isActive = true
@@ -335,7 +324,6 @@ class HistoryViewController: UIViewController {
             h!.addArrangedSubview(spacer)
             spacer.translatesAutoresizingMaskIntoConstraints = false
             spacer.heightAnchor.constraint(greaterThanOrEqualToConstant: 0.0).isActive = true
-            
             
             oldMonth = String(object.timestamp.getMonth()) + "-" + String(object.timestamp.getYear())
             oldDay = object.timestamp.toString("MM/dd/yyyy")
@@ -463,17 +451,13 @@ class HistoryViewController: UIViewController {
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 202 {
-                print(response ?? "")
-                
                 do
                 {
-                   
                     let parsedData = try JSONSerialization.jsonObject(with: data!) as! [[String: Any]]
                     for x in parsedData {
                         self.models.append(HistoryTransaction(dictionary: x as Dictionary<String, Any>)!)
-                        
-                        
                     }
+                    
                     self.models.sort {
                         if $0.timestamp.getYear() != $1.timestamp.getYear() {
                             return $0.timestamp.getYear() > $1.timestamp.getYear()
@@ -498,16 +482,16 @@ class HistoryViewController: UIViewController {
                         if $0.timestamp.getMinutes() != $1.timestamp.getMinutes() {
                             return $0.timestamp.getMinutes() < $1.timestamp.getMinutes()
                         }
+                        
+                        if $0.timestamp.getSeconds() != $1.timestamp.getSeconds() {
+                            return $0.timestamp.getSeconds() < $1.timestamp.getSeconds()
+                        }
 
-                        return $0.timestamp.getSeconds() < $1.timestamp.getSeconds()
-                        
-                        
+                        return $0.collectId < $1.collectId
                     }
                     DispatchQueue.main.async {
                         self.renderBlocks(objects: self.models)
                     }
-                    
-                    
                 }
                 catch let err as NSError {
                     print(err)
