@@ -17,7 +17,6 @@ class HistoryViewController: UIViewController {
         super.viewDidLoad()
         print(UserDefaults.standard.bearerToken)
         renderGivy()
-        givtsTitle.text = NSLocalizedString("HistoryTitle", comment: "")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -34,7 +33,6 @@ class HistoryViewController: UIViewController {
     }
     
     @IBOutlet var historyList: UIStackView!
-    @IBOutlet var givtsTitle: UILabel!
     
     @IBAction func backBtn(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
