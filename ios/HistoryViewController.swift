@@ -12,14 +12,16 @@ import SVProgressHUD
 class HistoryViewController: UIViewController {
 
     @IBOutlet var scrlHistory: UIScrollView!
-
+    @IBOutlet var infoButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(UserDefaults.standard.bearerToken)
         renderGivy()
+        self.infoButton.alpha = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
@@ -27,7 +29,7 @@ class HistoryViewController: UIViewController {
         
         getHistory(completionHandler: {_ in })
     }
-    
+
     func clearView() {
         historyList.subviews.forEach({ $0.removeFromSuperview()})
     }
@@ -36,7 +38,6 @@ class HistoryViewController: UIViewController {
     
     @IBAction func backBtn(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
-        
     }
     
     func renderGivy() {
@@ -47,19 +48,20 @@ class HistoryViewController: UIViewController {
         containerText?.trailingAnchor.constraint(equalTo: historyList.trailingAnchor).isActive = false
         containerText?.leadingAnchor.constraint(equalTo: historyList.leadingAnchor).isActive = false
         
-        text = UILabel()
-        text?.text = NSLocalizedString("HistoryIsEmpty", comment: "")
-        text?.font = UIFont(name: "Avenir-Heavy", size: 18.0)
-        text?.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        text?.numberOfLines = 0
-        text?.textAlignment = .center
-        text?.translatesAutoresizingMaskIntoConstraints = false
-        text?.lineBreakMode = .byWordWrapping
-        containerText?.addSubview(text!)
-        text?.sizeToFit()
-        text?.leadingAnchor.constraint(equalTo: containerText!.leadingAnchor, constant: 20).isActive = true
-        text?.topAnchor.constraint(equalTo: containerText!.topAnchor, constant: 20).isActive = true
-        text?.trailingAnchor.constraint(equalTo: containerText!.trailingAnchor, constant: -20).isActive = true
+        noGivtsText = UILabel()
+        noGivtsText?.text = NSLocalizedString("HistoryIsEmpty", comment: "")
+        noGivtsText?.font = UIFont(name: "Avenir-Heavy", size: 18.0)
+        noGivtsText?.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        noGivtsText?.numberOfLines = 0
+        noGivtsText?.textAlignment = .center
+        noGivtsText?.translatesAutoresizingMaskIntoConstraints = false
+        noGivtsText?.lineBreakMode = .byWordWrapping
+        containerText?.addSubview(noGivtsText!)
+        noGivtsText?.sizeToFit()
+        noGivtsText?.leadingAnchor.constraint(equalTo: containerText!.leadingAnchor, constant: 20).isActive = true
+        noGivtsText?.topAnchor.constraint(equalTo: containerText!.topAnchor, constant: 20).isActive = true
+        noGivtsText?.trailingAnchor.constraint(equalTo: containerText!.trailingAnchor, constant: -20).isActive = true
+        noGivtsText?.alpha = 0
         
         let image = #imageLiteral(resourceName: "givymoney.png")
         let imageView = UIImageView(image: image)
@@ -69,14 +71,11 @@ class HistoryViewController: UIViewController {
         imageView.widthAnchor.constraint(greaterThanOrEqualToConstant: 240).isActive = true
         imageView.heightAnchor.constraint(greaterThanOrEqualToConstant: 240).isActive = true
         imageView.centerXAnchor.constraint(equalTo: containerText!.centerXAnchor, constant: 0).isActive = true
-        imageView.topAnchor.constraint(equalTo: text!.bottomAnchor, constant: 40).isActive = true
-        
-        
-        
+        imageView.topAnchor.constraint(equalTo: noGivtsText!.bottomAnchor, constant: 40).isActive = true
     }
     
     var containerText: UIView? = nil
-    var text: UILabel? = nil
+    var noGivtsText: UILabel? = nil
     var infoScreen: UIView? = nil
     @IBAction func openInfo(_ sender: UIButton) {
         print("user wants to open info")
@@ -176,11 +175,19 @@ class HistoryViewController: UIViewController {
             UIApplication.shared.statusBarStyle = .default
         })
     }
-
+    
+    func renderNoGivts(){
+        SVProgressHUD.dismiss()
+        UIView.animate(withDuration: 0.4, animations: {
+            self.noGivtsText?.alpha = 1.0
+        })
+        
+    }
     
     func renderBlocks(objects: [HistoryTransaction]) {
         var oldMonth: String = ""
         var oldDay: String = ""
+        var oldTime: String = ""
         var prevOrg: String = ""
         var agendaRectangle: AgendaNumber? = nil
         var h: UIStackView? = nil
@@ -195,6 +202,9 @@ class HistoryViewController: UIViewController {
         fmt.positiveFormat = "¤ #,##0.00"
         
         clearView()
+        UIView.animate(withDuration: 0.2, animations: {
+            self.infoButton?.alpha = 1
+        })
         for (idx, object) in objects.enumerated() {
             /* once per month per year, add title of the month */
             if oldMonth != String(object.timestamp.getMonth()) + "-" + String(object.timestamp.getYear()) {
@@ -233,6 +243,7 @@ class HistoryViewController: UIViewController {
             
             //it's a new day
             if oldDay != object.timestamp.toString("MM/dd/yyyy") {
+                oldTime = "" //reset oldTime to not hide the time when time would be the same but the day is different DO NOT REMOVE ! ! !
                 grey = UIView()
                 
                 grey!.translatesAutoresizingMaskIntoConstraints = false
@@ -302,6 +313,12 @@ class HistoryViewController: UIViewController {
             }
             
             hour2.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
+            
+            if oldTime == hour2.text {
+                hour2.alpha = 0
+            }
+            
+            oldTime = hour2.text!
             
             let collecte2 = getCollectLabel(text: NSLocalizedString("Collect", comment: "") + " " +  String(describing: object.collectId))
             collectionStackView2.addArrangedSubview(collecte2)
@@ -487,8 +504,9 @@ class HistoryViewController: UIViewController {
 
                         return $0.collectId < $1.collectId
                     }
+
                     DispatchQueue.main.async {
-                        self.renderBlocks(objects: self.models)
+                        self.models.count == 0 ? self.renderNoGivts() : self.renderBlocks(objects: self.models)
                     }
                 }
                 catch let err as NSError {

@@ -1236,6 +1236,7 @@ Kijk voor de status in je overzicht.</string>
                     </view>
                     <connections>
                         <outlet property="historyList" destination="016-Z6-t7E" id="qqc-xj-xU9"/>
+                        <outlet property="infoButton" destination="J8o-dJ-cea" id="pzA-C9-Bo4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q80-AX-qWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
