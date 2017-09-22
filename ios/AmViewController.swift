@@ -10,7 +10,11 @@ import UIKit
 
 class AmViewController: UIViewController {
 
-    private var amountLimit: Int = 0
+    private var amountLimit: Int {
+        get {
+            return UserDefaults.standard.amountLimit
+        }
+    }
     private var pressedShortcutKey: Bool! = false
     private var decimalNotation: String! = "," {
         didSet {
@@ -46,7 +50,6 @@ class AmViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(true)
-        amountLimit = UserDefaults.standard.amountLimit
         decimalNotation = NSLocale.current.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         let backItem = UIBarButtonItem()
@@ -55,7 +58,6 @@ class AmViewController: UIViewController {
         backItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 20)!], for: .normal)
         btnGive.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         self.navigationItem.backBarButtonItem = backItem
-        
         checkAmount()
     }
 
@@ -79,7 +81,7 @@ class AmViewController: UIViewController {
                 return
             }
         }
-        print(decimalNotation.characters.first!)
+
         if (amountLabel?.text?.characters.contains(decimalNotation.characters.first!))! {
             if amountLabel.text?.characters.count == 9 {
                 return
