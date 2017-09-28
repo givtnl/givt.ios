@@ -42,12 +42,23 @@ class SettingTableViewController: UITableViewController {
 
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: {})
         
+        let devRegister = Setting(name: "DEV REGISTER", image: UIImage(named: "share")!, callback: { self.register() })
+        
         items +=
             [
                 [givts, limit, accessCode],
                 [changeAccount, screwAccount],
-                [aboutGivt, shareGivt]
+                [aboutGivt, shareGivt],
+                [devRegister]
             ]
+    }
+    
+    private func register() {
+        //SPWebViewController
+        let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+        
+        //let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
+        self.present(register, animated: true, completion: nil)
     }
     
     private func logout() {
@@ -56,27 +67,23 @@ class SettingTableViewController: UITableViewController {
         UserDefaults.standard.isLoggedIn = false
         UserDefaults.standard.guid = ""
         UserDefaults.standard.bearerExpiration = Date()
-        let loginVC = storyboard?.instantiateViewController(withIdentifier: "lvc") as! LoginViewController
-        let ch: (LoginViewController)-> Void = { test in
-            //do iets spesials bij inloggen
-        }
-        loginVC.completionHandler = ch
-        self.present(loginVC, animated: true, completion: {
+        let test = storyboard?.instantiateViewController(withIdentifier: "ncLogin")
+        self.present(test!, animated: true, completion: {
             self.hideLeftView(nil)
         })
     }
     
     private func openHistory() {
         if !LoginManager.shared.isBearerStillValid {
-            let loginVC = storyboard?.instantiateViewController(withIdentifier: "lvc") as! LoginViewController
-            let completionHandler:(LoginViewController)->Void = { test in
+            let loginVC = storyboard?.instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+            let completionHandler:()->Void = { test in
                 let historyVC = self.storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
                 DispatchQueue.main.async {
                     
                     self.present(historyVC, animated: true, completion: nil)
                 }
             }
-            loginVC.completionHandler = completionHandler
+            loginVC.outerHandler = completionHandler
             self.present(loginVC, animated: true, completion: nil)
         } else {
             let historyVC = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
@@ -86,20 +93,33 @@ class SettingTableViewController: UITableViewController {
     }
     
     private func openGiveLimit() {
-        if !LoginManager.shared.isBearerStillValid {
-            let loginVC = storyboard?.instantiateViewController(withIdentifier: "lvc") as! LoginViewController
-            let completionHandler:(LoginViewController)->Void = { test in
-                let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
+        if !LoginManager.shared.isBearerStillValid || true {
+            let loginVC = storyboard?.instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+            let completionHandler:()->Void = { _ in
+                let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "ncAmountLimit")
                 DispatchQueue.main.async {
-                    self.present(amountLimitVC, animated: true, completion: nil)
+//                    let vc = (UIApplication.shared.delegate as! AppDelegate).window!.rootViewController as! AmountViewController
+//                    let nav = vc.rootViewController as! CustomViewController
+//                    nav.show(amountLimitVC, sender: nil)
+                    print("ik kom er in")
+                    self.navigationController?.hideLeftViewAnimated(nil)
+                    self.present(amountLimitVC!, animated: true, completion: nil)
+                    
                 }
             }
-            loginVC.completionHandler = completionHandler
+            loginVC.outerHandler = completionHandler
             self.present(loginVC, animated: true, completion: nil)
         } else {
-            let amountLimitVC = storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
+            let amountLimitVC = storyboard?.instantiateViewController(withIdentifier: "ncAmountLimit")
             // self.present(amountLimitVC, animated: true)
-            self.present(amountLimitVC, animated: true)
+            /*
+            let del = UIApplication.shared.delegate as! AppDelegate
+            let vc = del.window!.rootViewController as! AmountViewController
+            let nav = vc.rootViewController as! CustomViewController
+            nav.pushViewController(amountLimitVC, animated: false)
+            vc.hideLeftViewAnimated()
+             */
+            self.present(amountLimitVC!, animated: true, completion: nil)
         }
     }
 

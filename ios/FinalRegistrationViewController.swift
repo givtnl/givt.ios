@@ -10,9 +10,11 @@ import UIKit
 
 class FinalRegistrationViewController: UIViewController {
 
+    @IBOutlet var gif: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        gif.loadGif(name: "givt_registration")
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         // Do any additional setup after loading the view.
     }
 
@@ -21,7 +23,11 @@ class FinalRegistrationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func exit(_ sender: Any) {
+        self.hideLeftView(nil)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

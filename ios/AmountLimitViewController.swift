@@ -41,7 +41,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    @IBAction func goBack(_ sender: UIButton) {
+    @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -65,6 +65,8 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         btnSave.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
         
+
+        
         NotificationCenter.default.addObserver(self, selector: #selector(AmountLimitViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AmountLimitViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
@@ -80,6 +82,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     @IBAction func btnSave(_ sender: UIButton) {
         LoginManager.shared.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_,_ in
             DispatchQueue.main.async {
+                self.navigationController?.hideLeftView(nil)
                 self.dismiss(animated: true, completion: nil)
             }
         })

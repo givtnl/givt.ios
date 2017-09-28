@@ -10,10 +10,34 @@ import UIKit
 
 class TermsViewController: UIViewController {
 
+    @IBOutlet var titleText: UILabel!
+    @IBOutlet var close: UIButton!
+    @IBOutlet var terms: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        close.setTitle(NSLocalizedString("Close", comment: ""), for: .normal)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(exit))
+        //close.addGestureRecognizer(tap)
+        //close.isUserInteractionEnabled = true
+        
+        terms.text = NSLocalizedString("PolicyText", comment: "")
+        titleText.text = NSLocalizedString("PrivacyTitle", comment: "")
+        //scrollview.contentSize.height = test.frame.height
         // Do any additional setup after loading the view.
+    }
+
+    @IBAction func exit(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .default
     }
 
     override func didReceiveMemoryWarning() {

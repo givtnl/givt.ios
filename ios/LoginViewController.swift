@@ -10,8 +10,8 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
    
-    var completionHandler : ((_ loginVC: LoginViewController) -> Void)?
-    
+    var completionHandler: () -> () = {}
+    var string: String?
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
@@ -28,6 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         btnLogin.setTitle(NSLocalizedString("Login", comment: ""), for: UIControlState.normal)
         txtUserName.delegate = self
         txtPassword.delegate = self
+        print(string)
         
     }
     
@@ -107,7 +108,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 UserDefaults.standard.isLoggedIn = true
                 DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: { self.completionHandler?(self) } )
+                    self.dismiss(animated: true, completion: { self.completionHandler() } )
                 }
                 
             } else {

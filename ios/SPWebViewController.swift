@@ -7,19 +7,30 @@
 //
 
 import UIKit
+import WebKit
 
-class SPWebViewController: UIViewController {
+class SPWebViewController: UIViewController, WKNavigationDelegate  {
 
+    var webView: WKWebView!
+    @IBOutlet var placeholder: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let myBlog = "https://google.be/"
+        let url = URL(string: myBlog)
+        let request = URLRequest(url: url!)
+        
+        // init and load request in webview.
+        webView = WKWebView(frame: self.view.frame)
+        webView.navigationDelegate = self
+        webView.load(request)
+        self.placeholder.addSubview(webView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*
