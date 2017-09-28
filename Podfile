@@ -7,6 +7,7 @@ target 'ios' do
   pod 'MobileCenter'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   pod ‘LGSideMenuController’
+  pod 'PhoneNumberKit'
   # Pods for ios
 
 end
