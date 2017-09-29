@@ -695,8 +695,16 @@ een gift te herroepen.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givt_registration.gif" translatesAutoresizingMaskIntoConstraints="NO" id="vOM-01-vvx">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Roi-DX-91v" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="562" width="335" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Er-og-D4R">
+                                <rect key="frame" x="20" y="60" width="335" height="49.5"/>
+                                <string key="text">Je registratie is gelukt.
+Veel geefplezier!</string>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Roi-DX-91v" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="567" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="wDl-RA-aHg"/>
@@ -738,14 +746,17 @@ een gift te herroepen.</string>
                         <constraints>
                             <constraint firstItem="tH2-RL-Jgs" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" constant="20" id="3vu-Ci-2MP"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" id="6xT-a1-Js2"/>
+                            <constraint firstItem="hDy-no-J4v" firstAttribute="trailing" secondItem="1Er-og-D4R" secondAttribute="trailing" constant="20" id="Car-QI-sBz"/>
                             <constraint firstItem="Roi-DX-91v" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" constant="20" id="L6b-3V-inq"/>
                             <constraint firstItem="hDy-no-J4v" firstAttribute="bottom" secondItem="tH2-RL-Jgs" secondAttribute="bottom" constant="10" id="LLF-RL-9tg"/>
+                            <constraint firstItem="1Er-og-D4R" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" constant="20" id="M97-7T-vmB"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="bottom" secondItem="hDy-no-J4v" secondAttribute="bottom" id="ULm-DD-NVj"/>
+                            <constraint firstItem="1Er-og-D4R" firstAttribute="top" secondItem="70D-LJ-tVW" secondAttribute="top" constant="60" id="Wyl-m8-T2A"/>
                             <constraint firstItem="hDy-no-J4v" firstAttribute="trailing" secondItem="tH2-RL-Jgs" secondAttribute="trailing" constant="20" id="Ym5-R8-tcR"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="trailing" secondItem="hDy-no-J4v" secondAttribute="trailing" id="fdo-BR-nG6"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="top" secondItem="70D-LJ-tVW" secondAttribute="top" id="jLl-zo-S6l"/>
                             <constraint firstItem="hDy-no-J4v" firstAttribute="trailing" secondItem="Roi-DX-91v" secondAttribute="trailing" constant="20" id="mbm-tR-sEJ"/>
-                            <constraint firstItem="tH2-RL-Jgs" firstAttribute="top" secondItem="Roi-DX-91v" secondAttribute="bottom" constant="10" id="yOw-mv-LAu"/>
+                            <constraint firstItem="tH2-RL-Jgs" firstAttribute="top" secondItem="Roi-DX-91v" secondAttribute="bottom" constant="5" id="yOw-mv-LAu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hDy-no-J4v"/>
                     </view>
@@ -754,6 +765,7 @@ een gift te herroepen.</string>
                         <outlet property="gif" destination="vOM-01-vvx" id="xI1-lM-HQ7"/>
                         <outlet property="nextButton" destination="Roi-DX-91v" id="tDp-W2-HwU"/>
                         <outlet property="termsLabel" destination="tH2-RL-Jgs" id="ZwV-xE-T4N"/>
+                        <outlet property="titleLabel" destination="1Er-og-D4R" id="JD8-2D-WGc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5bq-yT-mfj" userLabel="First Responder" sceneMemberID="firstResponder"/>

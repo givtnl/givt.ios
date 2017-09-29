@@ -10,6 +10,8 @@ import UIKit
 
 class FinalRegistrationViewController: UIViewController {
 
+    
+    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var termsLabel: UILabel!
     @IBOutlet var nextButton: CustomButton!
     @IBOutlet var gif: UIImageView!
@@ -19,7 +21,7 @@ class FinalRegistrationViewController: UIViewController {
         self.view.sendSubview(toBack: gif)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         nextButton.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
-        
+        titleLabel.text = NSLocalizedString("RegistrationSuccess", comment: "")
         initTermsText()
         // Do any additional setup after loading the view.
     }
