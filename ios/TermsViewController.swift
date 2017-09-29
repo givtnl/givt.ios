@@ -13,15 +13,14 @@ class TermsViewController: UIViewController {
     @IBOutlet var titleText: UILabel!
     @IBOutlet var close: UIButton!
     @IBOutlet var terms: UITextView!
+    var typeOfTerms: TypeOfTerms = .privacyPolicy
     override func viewDidLoad() {
         super.viewDidLoad()
         close.setTitle(NSLocalizedString("Close", comment: ""), for: .normal)
-        let tap = UITapGestureRecognizer(target: self, action: #selector(exit))
         //close.addGestureRecognizer(tap)
         //close.isUserInteractionEnabled = true
+
         
-        terms.text = NSLocalizedString("PolicyText", comment: "")
-        titleText.text = NSLocalizedString("PrivacyTitle", comment: "")
         //scrollview.contentSize.height = test.frame.height
         // Do any additional setup after loading the view.
     }
@@ -33,7 +32,17 @@ class TermsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
+        
+        if typeOfTerms == .privacyPolicy {
+            terms.text = NSLocalizedString("PolicyText", comment: "")
+            titleText.text = NSLocalizedString("PrivacyTitle", comment: "")
+        } else if typeOfTerms == .termsAndConditions {
+            terms.text = NSLocalizedString("TermsText", comment: "")
+            titleText.text = NSLocalizedString("TermsTitle", comment: "")
+        }
+          print(terms.text)
     }
+  
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -56,4 +65,9 @@ class TermsViewController: UIViewController {
     }
     */
 
+}
+
+enum TypeOfTerms {
+    case privacyPolicy
+    case termsAndConditions
 }

@@ -55,6 +55,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     @objc func openTerms() {
         let vc = storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        vc.typeOfTerms = .privacyPolicy
         self.present(vc, animated: true, completion: {
             print("done terms")
         })
@@ -155,7 +156,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             if success {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
+                    let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                    //let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
                     self.show(regDetailVC, sender: nil)
                 }
             }
