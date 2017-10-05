@@ -23,12 +23,22 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet var city: UITextField!
     @IBOutlet var nextButton: CustomButton!
     private var validationHelper = ValidationHelper.shared
-    let countries = ["België","Nederland"]
-    var selectedCountry: String?
+    private var picker: UIPickerView!
+   // let countries = ["BE":NSLocalizedString("Belgium", comment: ""), "NL": NSLocalizedString("Netherlands", comment: "")]
+    var countries = [Country]()
+    var selectedCountry: Country?
     private var _lastTextField: CustomUITextField = CustomUITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
+        countries.append(Country(name: NSLocalizedString("Belgium", comment: ""), shortName: "BE", prefix: "+32"))
+        countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", prefix: "+31"))
+        
+       
         
         titleText.text = NSLocalizedString("RegisterPersonalPage", comment: "")
         streetAndNumber.placeholder = NSLocalizedString("StreetAndHouseNumber", comment: "")
@@ -46,7 +56,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         
         nextButton.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
-        createCountryPicker()
+        
         createToolbar(countryPicker)
         createToolbar(mobileNumber)
         
@@ -62,6 +72,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
 
         
         initButtonsWithTags()
+        
+        picker = UIPickerView()
+        picker.delegate = self
+        countryPicker.inputView = picker
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -141,7 +155,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 //registration not gelukt e
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    SVProgressHUD.showError(withStatus: "Somethink is very vrong sir")
+                    SVProgressHUD.showError(withStatus: NSLocalizedString("ErrorTextRegister", comment: ""))
                 }
                 
             }
@@ -220,10 +234,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         theScrollView.contentInset = contentInset
     }
-    
-    
-    
+
     func dismissKeyboard() {
+        selectedRow(row: picker.selectedRow(inComponent: 0))
         textFieldShouldReturn(_lastTextField)
     }
     
@@ -245,20 +258,17 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return countries[row]
+        return countries[row].toString()
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //selecting row
-        selectedCountry = countries[row]
-        countryPicker.text = selectedCountry
-        checkAll()
+        selectedRow(row: row)
     }
     
-    func createCountryPicker() {
-        let picker = UIPickerView()
-        picker.delegate = self
-        countryPicker.inputView = picker
+    private func selectedRow(row: Int){
+        selectedCountry = countries[row]
+        countryPicker.text = selectedCountry?.name
+        checkAll()
     }
     
     func createToolbar(_ textField: UITextField) {

@@ -45,14 +45,14 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.setBackgroundColor(.white)
 
         
-//        #if DEBUG
-//            forename.text = "Nico"
-//            lastname.text = "De Tester"
-//            emailaddress.text = "testen@givtapp.net"
-//            password.text = "Test123"
-//            switchButton.isSelected = true
-//            checkAll()
-//        #endif
+        #if DEBUG
+            forename.text = "Nico"
+            lastname.text = "De Tester"
+            emailaddress.text = "testen@givtapp.net"
+            password.text = "Test123"
+            switchButton.isSelected = true
+            checkAll()
+        #endif
         self.regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
     }
     @IBAction func switchPasswordVisibility(_ sender: Any) {
