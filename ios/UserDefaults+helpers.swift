@@ -17,6 +17,7 @@ extension UserDefaults {
         case amountLimit
         case offlineGivts
         case guid
+        case userExt
     }
     
     var isLoggedIn: Bool {
@@ -87,6 +88,18 @@ extension UserDefaults {
         }
         set(value) {
             set(NSKeyedArchiver.archivedData(withRootObject: value), forKey: UserDefaultsKeys.offlineGivts.rawValue)
+            synchronize()
+        }
+    }
+    
+    var userExt: UserExt {
+        get {
+            let encoded = data(forKey: UserDefaultsKeys.userExt.rawValue)
+            return NSKeyedUnarchiver.unarchiveObject(with: encoded!) as! UserExt
+        }
+        set(value) {
+            let encoded = NSKeyedArchiver.archivedData(withRootObject: value)
+            set(encoded, forKey: UserDefaultsKeys.userExt.rawValue)
             synchronize()
         }
     }
