@@ -31,8 +31,17 @@ class SPInfoViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-        self.show(vc, sender: nil)
+        var userInfo = UserDefaults.standard.userExt
+        var signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: "BE", postalCode: userInfo.postalCode, street: userInfo.address)
+        var mandate = Mandate(signatory: signatory)
+        LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
+            DispatchQueue.main.async {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
+                vc.url = slimPayUrl
+                self.show(vc, sender: nil)
+            }
+        })
+        
     }
     @IBAction func exit(_ sender: Any) {
         

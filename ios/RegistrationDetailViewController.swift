@@ -50,15 +50,15 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         createToolbar(countryPicker)
         createToolbar(mobileNumber)
         
-        #if DEBUG
-            streetAndNumber.text = "Stijn Streuvelhoofd 12"
-            postalCode.text = "8501"
-            city.text = "Heule"
-            countryPicker.text = "België"
-            mobileNumber.text = "0498121314"
-            iban.text = "BE62 5100 0754 7061"
-            checkAll()
-        #endif
+//        #if DEBUG
+//            streetAndNumber.text = "Stijn Streuvelhoofd 12"
+//            postalCode.text = "8501"
+//            city.text = "Heule"
+//            countryPicker.text = "België"
+//            mobileNumber.text = "0498121314"
+//            iban.text = "BE62 5100 0754 7061"
+//            checkAll()
+//        #endif
         initButtonsWithTags()
     }
     

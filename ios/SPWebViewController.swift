@@ -8,22 +8,40 @@
 
 import UIKit
 import WebKit
+import SVProgressHUD
+
 
 class SPWebViewController: UIViewController, WKNavigationDelegate  {
 
+    var url: String!
     var webView: WKWebView!
     @IBOutlet var placeholder: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let myBlog = "https://google.be/"
-        let url = URL(string: myBlog)
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
+        
+        let url = URL(string: self.url)
         let request = URLRequest(url: url!)
+        SVProgressHUD.show()
         
         // init and load request in webview.
         webView = WKWebView(frame: self.view.frame)
         webView.navigationDelegate = self
         webView.load(request)
         self.placeholder.addSubview(webView)
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.bottomAnchor.constraint(equalTo: self.placeholder.bottomAnchor).isActive = true
+        webView.trailingAnchor.constraint(equalTo: self.placeholder.trailingAnchor).isActive = true
+        webView.leadingAnchor.constraint(equalTo: self.placeholder.leadingAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: self.placeholder.topAnchor).isActive = true
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +49,18 @@ class SPWebViewController: UIViewController, WKNavigationDelegate  {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func back(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("page fully loaded")
+        if webView.url?.absoluteString == "https://givtapidebug.azurewebsites.net/" {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+            self.show(vc, sender: nil)
+        }
+        SVProgressHUD.dismiss()
+    }
     
 
     /*

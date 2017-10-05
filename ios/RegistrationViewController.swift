@@ -43,14 +43,14 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.setBackgroundColor(.white)
 
         
-        #if DEBUG
-            forename.text = "Nico"
-            lastname.text = "De Tester"
-            emailaddress.text = "testen@givtapp.net"
-            password.text = "Test123"
-            switchButton.isSelected = true
-            checkAll()
-        #endif
+//        #if DEBUG
+//            forename.text = "Nico"
+//            lastname.text = "De Tester"
+//            emailaddress.text = "testen@givtapp.net"
+//            password.text = "Test123"
+//            switchButton.isSelected = true
+//            checkAll()
+//        #endif
     }
     
     @objc func openTerms() {
@@ -156,8 +156,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             if success {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
-                    //let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
+                    //let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
+                    let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
                     self.show(regDetailVC, sender: nil)
                 }
             }

@@ -10,7 +10,7 @@
 import Foundation
 class LoginManager {
     static let shared = LoginManager()
-    private var _registrationUser: UserExt = UserExt()
+    private var _registrationUser = UserExt()
     
     
     private init() {
@@ -148,7 +148,7 @@ class LoginManager {
         _registrationUser.city = user.city
         _registrationUser.countryCode = user.countryCode
         _registrationUser.mobileNumber = user.mobileNumber
-        _registrationUser.iban = user.iban
+        _registrationUser.iban = user.iban.replacingOccurrences(of: " ", with: "")
         _registrationUser.postalCode = user.postalCode
         
         //checkTLD
@@ -176,7 +176,10 @@ class LoginManager {
                 if success {
                     print("user succesfully registered")
                     _ = self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err) in
+                        
                         if success {
+                            self._registrationUser.password = ""
+                            UserDefaults.standard.userExt = self._registrationUser
                             completionHandler(true)
                         } else {
                             completionHandler(false)
@@ -222,6 +225,46 @@ class LoginManager {
             
            // _registrationUser.GUID = String(bytes: data!, encoding: .utf8)
 
+            
+        }
+        task.resume()
+    }
+    
+    func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (String) -> Void) {
+
+        
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/Mandate")!)
+        request.httpMethod = "POST"
+        
+        do {
+            let serialized = try JSONSerialization.data(withJSONObject: mandate.toDictionary(), options: .prettyPrinted)
+            request.httpBody = serialized
+        } catch let error {
+            print(error)
+        }
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
+
+        let urlSession = URLSession.shared
+        
+        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
+            if error != nil {
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print(response)
+                print(response?.description)
+                print(String(bytes: data!, encoding: .utf8)!)
+                return
+            }
+            let returnUrl = String(bytes: data!, encoding: .utf8)!
+            completionHandler(returnUrl)
+            
+            // _registrationUser.GUID = String(bytes: data!, encoding: .utf8)
+            
             
         }
         task.resume()

@@ -14,6 +14,7 @@
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D721F1981F7D90E7000B9546 /* givt_registration.gif in Resources */ = {isa = PBXBuildFile; fileRef = D721F1971F7D90E6000B9546 /* givt_registration.gif */; };
 		D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F1991F7E2D4B000B9546 /* CustomViewController.swift */; };
+		D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F19B1F7E3EF8000B9546 /* Mandate.swift */; };
 		D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */; };
 		D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */; };
 		D7335B2E1F45923F00B57AE0 /* UIImage+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7335B2D1F45923F00B57AE0 /* UIImage+gif.swift */; };
@@ -176,6 +177,7 @@
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D721F1971F7D90E6000B9546 /* givt_registration.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = givt_registration.gif; sourceTree = "<group>"; };
 		D721F1991F7E2D4B000B9546 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		D721F19B1F7E3EF8000B9546 /* Mandate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mandate.swift; sourceTree = "<group>"; };
 		D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountLimitNavigationViewController.swift; sourceTree = "<group>"; };
 		D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationViewController.swift; sourceTree = "<group>"; };
 		D7335B2D1F45923F00B57AE0 /* UIImage+gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+gif.swift"; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				D761E9621F161207002B849B /* Setting.swift */,
 				D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */,
 				D7E3CE931F7CFA34005807BE /* UserExt.swift */,
+				D721F19B1F7E3EF8000B9546 /* Mandate.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -887,6 +890,7 @@
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
 				D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */,
+				D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */,
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */,
