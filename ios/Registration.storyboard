@@ -45,21 +45,6 @@
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wachtwoord" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="PCv-ur-75e" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="251.5" width="335" height="44"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="Ysy-jU-EVu"/>
-                                                        </constraints>
-                                                        <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done" textContentType="family-name"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                <integer key="value" value="25"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJu-bj-TQ5" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="539" width="335" height="44"/>
                                                         <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -178,17 +163,58 @@
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="zQ5-lY-rUi"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vp-KE-yoa">
+                                                        <rect key="frame" x="20" y="251.5" width="335" height="44"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PCv-ur-75e" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                                                        <integer key="value" value="25"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textField>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32c-5t-IHf">
+                                                                <rect key="frame" x="290" y="2" width="40" height="40"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="40" id="OAc-kL-VgG"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="adt-E9-yew"/>
+                                                                </constraints>
+                                                                <state key="normal" image="active_eye.png"/>
+                                                                <state key="selected" image="visible_eye.png"/>
+                                                                <connections>
+                                                                    <action selector="switchPasswordVisibility:" destination="rSQ-dn-6aJ" eventType="touchUpInside" id="7Jl-R8-uCo"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="32c-5t-IHf" secondAttribute="trailing" constant="5" id="Fqs-CT-mfk"/>
+                                                            <constraint firstAttribute="bottom" secondItem="PCv-ur-75e" secondAttribute="bottom" id="Tvl-Ur-hPZ"/>
+                                                            <constraint firstItem="PCv-ur-75e" firstAttribute="leading" secondItem="3Vp-KE-yoa" secondAttribute="leading" id="XbS-n2-Knj"/>
+                                                            <constraint firstItem="PCv-ur-75e" firstAttribute="top" secondItem="3Vp-KE-yoa" secondAttribute="top" id="ZCD-cT-wnK"/>
+                                                            <constraint firstItem="32c-5t-IHf" firstAttribute="centerY" secondItem="3Vp-KE-yoa" secondAttribute="centerY" id="fuP-yT-1Fb"/>
+                                                            <constraint firstAttribute="height" constant="44" id="u8p-n1-e8c"/>
+                                                            <constraint firstAttribute="trailing" secondItem="PCv-ur-75e" secondAttribute="trailing" id="xlc-Es-x6F"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="NJu-bj-TQ5" firstAttribute="top" secondItem="i3D-8Z-xXB" secondAttribute="bottom" constant="10" id="26Z-f6-CLe"/>
                                                     <constraint firstItem="UBS-LN-W65" firstAttribute="leading" secondItem="R5E-cZ-hgM" secondAttribute="leading" constant="20" id="50r-8I-S2E"/>
                                                     <constraint firstItem="2nN-cS-Y50" firstAttribute="top" secondItem="Aj6-yH-iPv" secondAttribute="bottom" constant="10" id="AtV-3g-FQe"/>
-                                                    <constraint firstAttribute="trailing" secondItem="PCv-ur-75e" secondAttribute="trailing" constant="20" id="BBL-4Q-cQ7"/>
                                                     <constraint firstItem="jh1-U1-vw0" firstAttribute="top" secondItem="dGU-9Z-EaP" secondAttribute="bottom" id="DEy-i8-zQQ"/>
+                                                    <constraint firstItem="dGU-9Z-EaP" firstAttribute="top" secondItem="3Vp-KE-yoa" secondAttribute="bottom" constant="8" id="FFK-Iu-0nn"/>
                                                     <constraint firstAttribute="trailing" secondItem="UBS-LN-W65" secondAttribute="trailing" constant="20" id="GTQ-2L-wwz"/>
                                                     <constraint firstItem="dGU-9Z-EaP" firstAttribute="leading" secondItem="R5E-cZ-hgM" secondAttribute="leading" constant="20" id="J9J-pZ-8G0"/>
                                                     <constraint firstItem="NJu-bj-TQ5" firstAttribute="leading" secondItem="R5E-cZ-hgM" secondAttribute="leading" constant="20" id="JxL-fg-yCT"/>
+                                                    <constraint firstItem="3Vp-KE-yoa" firstAttribute="top" secondItem="k6T-Nj-K0f" secondAttribute="bottom" constant="10" id="Kxv-h7-Mnn"/>
                                                     <constraint firstAttribute="trailing" secondItem="2nN-cS-Y50" secondAttribute="trailing" constant="20" id="Mqi-Ga-qEz"/>
                                                     <constraint firstAttribute="trailing" secondItem="NJu-bj-TQ5" secondAttribute="trailing" constant="20" id="Ore-nq-1T8"/>
                                                     <constraint firstItem="i3D-8Z-xXB" firstAttribute="top" secondItem="jh1-U1-vw0" secondAttribute="bottom" id="P7U-Az-iuU"/>
@@ -199,15 +225,14 @@
                                                     <constraint firstItem="jh1-U1-vw0" firstAttribute="leading" secondItem="R5E-cZ-hgM" secondAttribute="leading" id="Smp-j7-xNP"/>
                                                     <constraint firstAttribute="trailing" secondItem="i3D-8Z-xXB" secondAttribute="trailing" constant="20" id="UO5-Ka-Iic"/>
                                                     <constraint firstItem="Aj6-yH-iPv" firstAttribute="top" secondItem="UBS-LN-W65" secondAttribute="bottom" constant="30" id="Y4S-aq-gll"/>
-                                                    <constraint firstItem="PCv-ur-75e" firstAttribute="leading" secondItem="R5E-cZ-hgM" secondAttribute="leading" constant="20" id="YCv-JW-YrG"/>
-                                                    <constraint firstItem="dGU-9Z-EaP" firstAttribute="top" secondItem="PCv-ur-75e" secondAttribute="bottom" constant="8" id="dc1-Pl-ACD"/>
                                                     <constraint firstItem="k6T-Nj-K0f" firstAttribute="leading" secondItem="R5E-cZ-hgM" secondAttribute="leading" constant="20" id="fTL-cF-F86"/>
                                                     <constraint firstItem="i3D-8Z-xXB" firstAttribute="leading" secondItem="R5E-cZ-hgM" secondAttribute="leading" constant="20" id="h9C-OH-cgt"/>
                                                     <constraint firstAttribute="trailing" secondItem="k6T-Nj-K0f" secondAttribute="trailing" constant="20" id="hZe-SQ-cra"/>
-                                                    <constraint firstItem="PCv-ur-75e" firstAttribute="top" secondItem="k6T-Nj-K0f" secondAttribute="bottom" constant="10" id="jx3-oo-iLG"/>
                                                     <constraint firstItem="UBS-LN-W65" firstAttribute="top" secondItem="R5E-cZ-hgM" secondAttribute="top" constant="10" id="nwZ-3h-Tci"/>
                                                     <constraint firstAttribute="bottom" secondItem="NJu-bj-TQ5" secondAttribute="bottom" constant="20" id="plR-Jw-SYh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="3Vp-KE-yoa" secondAttribute="trailing" constant="20" id="ptL-dF-rMd"/>
                                                     <constraint firstItem="2nN-cS-Y50" firstAttribute="leading" secondItem="R5E-cZ-hgM" secondAttribute="leading" constant="20" id="tlk-T5-dW1"/>
+                                                    <constraint firstItem="3Vp-KE-yoa" firstAttribute="leading" secondItem="R5E-cZ-hgM" secondAttribute="leading" constant="20" id="tpD-wx-WwR"/>
                                                     <constraint firstAttribute="trailing" secondItem="dGU-9Z-EaP" secondAttribute="trailing" constant="20" id="uDn-mt-dlc"/>
                                                 </constraints>
                                             </view>
@@ -900,11 +925,13 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
         </scene>
     </scenes>
     <resources>
+        <image name="active_eye.png" width="16" height="12"/>
         <image name="backbtn.png" width="15" height="24"/>
         <image name="checked.png" width="24" height="24"/>
         <image name="dropdown.png" width="13" height="8"/>
         <image name="givt_registration.gif" width="200" height="355"/>
         <image name="givySlimPay.png" width="180" height="180"/>
         <image name="unchecked.png" width="24" height="24"/>
+        <image name="visible_eye.png" width="16" height="12"/>
     </resources>
 </document>

@@ -59,6 +59,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
 //            iban.text = "BE62 5100 0754 7061"
 //            checkAll()
 //        #endif
+
+        
         initButtonsWithTags()
     }
     

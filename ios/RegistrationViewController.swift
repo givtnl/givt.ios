@@ -23,6 +23,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var titleText: UILabel!
     private var _lastTextField: CustomUITextField = CustomUITextField()
     private var validationHelper = ValidationHelper.shared
+    private var regDetailVC: RegistrationDetailViewController!
+    private var _isShowingPassword = false
     override func viewDidLoad() {
         super.viewDidLoad()
         initButtonsWithTags()
@@ -51,6 +53,12 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
 //            switchButton.isSelected = true
 //            checkAll()
 //        #endif
+        self.regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
+    }
+    @IBAction func switchPasswordVisibility(_ sender: Any) {
+        let button = sender as! UIButton
+        button.isSelected = !button.isSelected
+        password.isSecureTextEntry = !button.isSelected
     }
     
     @objc func openTerms() {
@@ -157,8 +165,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                     //let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-                    let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
-                    self.show(regDetailVC, sender: nil)
+                    self.show(self.regDetailVC, sender: nil)
                 }
             }
         })
