@@ -3,7 +3,7 @@
 //  ios
 //
 //  Created by Lennie Stockman on 14/07/2017.
-//  Copyright © 2017 Maarten Vergouwe. All rights reserved.
+//  Copyright © 2017 Givy Givt Vergouwe. All rights reserved.
 //
 
 import Foundation
@@ -53,5 +53,9 @@ extension String{
             start = range.upperBound
         }
         return result
+    }
+    
+    func isEmpty() -> Bool {
+        return self == ""
     }
 }
