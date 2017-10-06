@@ -18,6 +18,7 @@ extension UserDefaults {
         case offlineGivts
         case guid
         case userExt
+        case mandateSigned
     }
     
     var isLoggedIn: Bool {
@@ -100,6 +101,16 @@ extension UserDefaults {
         set(value) {
             let encoded = NSKeyedArchiver.archivedData(withRootObject: value)
             set(encoded, forKey: UserDefaultsKeys.userExt.rawValue)
+            synchronize()
+        }
+    }
+    
+    var mandateSigned: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.mandateSigned.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.mandateSigned.rawValue)
             synchronize()
         }
     }
