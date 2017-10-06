@@ -93,7 +93,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     private func openGiveLimit() {
-        if !LoginManager.shared.isBearerStillValid || true {
+        if !LoginManager.shared.isBearerStillValid {
             let loginVC = storyboard?.instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
             let completionHandler:()->Void = { _ in
                 let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "ncAmountLimit")
