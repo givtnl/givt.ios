@@ -95,9 +95,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     func initTermsText() {
         let attachment:NSTextAttachment = NSTextAttachment()
         attachment.image = #imageLiteral(resourceName: "littleinfo.png")
-        attachment.bounds = CGRect(x: 0, y: (saveMyData.font.capHeight - (attachment.image?.size.height)! - 2).rounded(), width: (attachment.image?.size.width)!, height: (attachment.image?.size.height)!)
+        attachment.bounds = CGRect(x: 0, y: -4, width: (attachment.image?.size.width)!, height: (attachment.image?.size.height)!)
         let attachmentString:NSAttributedString = NSAttributedString(attachment: attachment)
-        let myString:NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("AcceptPolicy", comment: ""))
+        let myString:NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("AcceptPolicy", comment: "") + " ")
         myString.append(attachmentString)
         
         saveMyData.attributedText = myString
