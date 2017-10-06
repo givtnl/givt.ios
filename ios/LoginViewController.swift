@@ -128,6 +128,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         })
     
     }
+    @IBAction func switchPasswordVisibility(_ sender: Any) {
+        let button = sender as! UIButton
+        button.isSelected = !button.isSelected
+        txtPassword.isSecureTextEntry = !button.isSelected
+    }
     
     /*
     // MARK: - Navigation
