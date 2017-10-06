@@ -14,7 +14,6 @@ class SPInfoViewController: UIViewController {
     @IBOutlet var headerText: UILabel!
     @IBOutlet var explanation: UILabel!
     @IBOutlet var btnNext: CustomButton!
-    @IBOutlet var btnLater: CustomButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton.isEnabled = false
@@ -43,15 +42,7 @@ class SPInfoViewController: UIViewController {
         })
         
     }
-    @IBAction func exit(_ sender: Any) {
-        
-    }
-    
-    @IBAction func later(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
-        self.show(vc, sender: nil)
-        
-    }
+
     /*
     // MARK: - Navigation
 

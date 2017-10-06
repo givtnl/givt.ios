@@ -569,10 +569,10 @@ afgeven.</string>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izA-NC-atv">
-                                <rect key="frame" x="20" y="326" width="335" height="213"/>
+                                <rect key="frame" x="20" y="326" width="335" height="267"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="x6c-Yv-HDC">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="213"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="267"/>
                                         <string key="text">Er wordt alleen geïncasseerd,
 wanneer je zelf een bedrag geeft met Givt.
 
@@ -593,7 +593,7 @@ een gift te herroepen.</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXN-cE-Huu" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="549" width="335" height="44"/>
+                                <rect key="frame" x="20" y="603" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="QOn-7Q-AjA"/>
@@ -617,41 +617,14 @@ een gift te herroepen.</string>
                                     <action selector="next:" destination="L1z-Ld-vBT" eventType="touchUpInside" id="mh2-Ba-aNT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8W8-7f-C62" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="603" width="335" height="44"/>
-                                <color key="backgroundColor" red="0.35133320089999998" green="0.32705855369999998" blue="0.53972214460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="XsJ-wo-pI4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
-                                <state key="normal" title="Vraag later">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                        <color key="value" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                        <color key="value" red="0.094940684735774994" green="0.17165490984916687" blue="0.51433265209197998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="later:" destination="L1z-Ld-vBT" eventType="touchUpInside" id="vud-xF-sbZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Iti-jS-LQD" firstAttribute="trailing" secondItem="mXN-cE-Huu" secondAttribute="trailing" constant="20" id="5tR-dB-Epq"/>
-                            <constraint firstItem="Iti-jS-LQD" firstAttribute="bottom" secondItem="8W8-7f-C62" secondAttribute="bottom" constant="20" id="EL0-B1-M4b"/>
                             <constraint firstItem="o7m-wS-WRO" firstAttribute="top" secondItem="ryM-in-ciG" secondAttribute="bottom" id="HwI-eL-4kE"/>
                             <constraint firstItem="mXN-cE-Huu" firstAttribute="leading" secondItem="lxc-vi-6Fb" secondAttribute="leading" constant="20" id="JTj-Dq-Sw4"/>
-                            <constraint firstItem="8W8-7f-C62" firstAttribute="top" secondItem="mXN-cE-Huu" secondAttribute="bottom" constant="10" id="NrU-Gr-Akp"/>
-                            <constraint firstItem="8W8-7f-C62" firstAttribute="leading" secondItem="Iti-jS-LQD" secondAttribute="leading" constant="20" id="QiD-vY-QED"/>
                             <constraint firstItem="ryM-in-ciG" firstAttribute="leading" secondItem="Iti-jS-LQD" secondAttribute="leading" constant="20" id="UBX-Jk-gJR"/>
+                            <constraint firstItem="Iti-jS-LQD" firstAttribute="bottom" secondItem="mXN-cE-Huu" secondAttribute="bottom" constant="20" id="UhS-Xo-U08"/>
                             <constraint firstItem="Iti-jS-LQD" firstAttribute="trailing" secondItem="ryM-in-ciG" secondAttribute="trailing" constant="20" id="Xhy-WS-1KH"/>
                             <constraint firstItem="izA-NC-atv" firstAttribute="leading" secondItem="Iti-jS-LQD" secondAttribute="leading" constant="20" id="Yih-Ze-ijs"/>
                             <constraint firstItem="mXN-cE-Huu" firstAttribute="top" secondItem="izA-NC-atv" secondAttribute="bottom" constant="10" id="bhu-Gm-OaO"/>
@@ -659,7 +632,6 @@ een gift te herroepen.</string>
                             <constraint firstItem="ryM-in-ciG" firstAttribute="top" secondItem="Iti-jS-LQD" secondAttribute="top" id="lr6-uH-zZa"/>
                             <constraint firstItem="Iti-jS-LQD" firstAttribute="trailing" secondItem="izA-NC-atv" secondAttribute="trailing" constant="20" id="rVW-qL-MUT"/>
                             <constraint firstItem="izA-NC-atv" firstAttribute="top" secondItem="o7m-wS-WRO" secondAttribute="bottom" constant="10" id="rob-JX-gfj"/>
-                            <constraint firstItem="Iti-jS-LQD" firstAttribute="trailing" secondItem="8W8-7f-C62" secondAttribute="trailing" constant="20" id="zVc-5Z-VZO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iti-jS-LQD"/>
                     </view>
@@ -669,7 +641,6 @@ een gift te herroepen.</string>
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="G0v-GY-J6E" id="e68-4x-q2f"/>
-                        <outlet property="btnLater" destination="8W8-7f-C62" id="fHN-Qe-Eli"/>
                         <outlet property="btnNext" destination="mXN-cE-Huu" id="lAG-OL-3Rp"/>
                         <outlet property="explanation" destination="x6c-Yv-HDC" id="e2b-b8-DsA"/>
                         <outlet property="headerText" destination="tad-kI-WfS" id="5wg-DC-RR0"/>
