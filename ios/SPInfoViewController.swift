@@ -20,7 +20,6 @@ class SPInfoViewController: UIViewController {
         headerText.text = NSLocalizedString("SlimPayInformation", comment: "")
         explanation.text = NSLocalizedString("SlimPayInformationPart2", comment: "")
         btnNext.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
-        btnLater.setTitle(NSLocalizedString("AskMeLater", comment: ""), for: .normal)
         // Do any additional setup after loading the view.
     }
 
