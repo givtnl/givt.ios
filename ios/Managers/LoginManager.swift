@@ -203,7 +203,7 @@ class LoginManager {
                     "&Address=" + _registrationUser.address +
                     "&City=" + _registrationUser.city +
                     "&PostalCode=" + _registrationUser.postalCode +
-                    "&CountryCode=" + "BE"
+                    "&CountryCode=" + _registrationUser.countryCode
                     
                 
         request.httpBody = postString.data(using: .utf8)

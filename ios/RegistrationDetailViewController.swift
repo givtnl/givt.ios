@@ -139,11 +139,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         SVProgressHUD.show()
         let address = self.streetAndNumber.text!
         let city = self.city.text!
-        let countryCode = self.city.text!
+        let countryCode = self.selectedCountry?.shortName
         let iban = self.iban.text!
         let mobileNumber = self.formattedPhoneNumber
         let postalCode = self.postalCode.text!
-        let userData = RegistrationUserData(address: address, city: city, countryCode: countryCode, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
+        let userData = RegistrationUserData(address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
         LoginManager.shared.registerExtraDataFromUser(userData, completionHandler: {success in
             if success {
                 DispatchQueue.main.async {
@@ -157,7 +157,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 //registration not gelukt e
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    SVProgressHUD.showError(withStatus: NSLocalizedString("ErrorTextRegister", comment: ""))
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ErrorTextRegister", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
                 }
                 
             }

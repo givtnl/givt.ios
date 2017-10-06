@@ -32,7 +32,7 @@ class SPInfoViewController: UIViewController {
     
     @IBAction func next(_ sender: Any) {
         var userInfo = UserDefaults.standard.userExt
-        var signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: "BE", postalCode: userInfo.postalCode, street: userInfo.address)
+        var signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)
         var mandate = Mandate(signatory: signatory)
         LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
             DispatchQueue.main.async {

@@ -82,6 +82,10 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
             })
             
         }
+        
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         SVProgressHUD.dismiss()
     }
 
