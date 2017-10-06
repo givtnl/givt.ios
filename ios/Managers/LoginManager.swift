@@ -149,7 +149,7 @@ class LoginManager {
         _registrationUser.iban = user.iban.replacingOccurrences(of: " ", with: "")
         _registrationUser.postalCode = user.postalCode
         
-        //checkTLD
+        //TODO: checkTLD
         var request = URLRequest(url: URL(string: _baseUrl + "/api/Users")!)
         request.httpMethod = "POST"
         let postString = "email=" + _registrationUser.email + "&password=" + _registrationUser.password
@@ -218,19 +218,12 @@ class LoginManager {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 return
             }
-            
             completionHandler(true)
-            
-           // _registrationUser.GUID = String(bytes: data!, encoding: .utf8)
-
-            
         }
         task.resume()
     }
     
     func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (String) -> Void) {
-
-        
         var request = URLRequest(url: URL(string: _baseUrl + "/api/Mandate")!)
         request.httpMethod = "POST"
         
@@ -253,41 +246,25 @@ class LoginManager {
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print(response)
-                print(response?.description)
-                print(String(bytes: data!, encoding: .utf8)!)
                 return
             }
             let returnUrl = String(bytes: data!, encoding: .utf8)!
             completionHandler(returnUrl)
-            
-            // _registrationUser.GUID = String(bytes: data!, encoding: .utf8)
-            
-            
         }
         task.resume()
     }
     
     func finishMandateSigning(completionHandler: @escaping (Bool) -> Void) {
-        completionHandler(false)
-        return
         var idx: Int = 0
         for i in 0...20 {
             idx = i
             var res:String  = ""
             let task = checkMandate(completionHandler: { (str) in
-                //doe iets
-                print(str)
                 res = str
-                print("Mandate signed:", UserDefaults.standard.mandateSigned)
             })
             while task?.state != .completed {
                 usleep(40000)
             }
-            print(res)
-            print(res.isEmpty())
-            print(res.split(separator: ".")[0])
-            print(res.split(separator: ".")[1])
             if !res.isEmpty() && res.split(separator: ".")[0]  == "closed" {
                 print("skip")
                 break
@@ -295,7 +272,6 @@ class LoginManager {
             usleep(500000)
         }
         completionHandler(idx != 20 && UserDefaults.standard.mandateSigned)
-        
     }
     
     func checkMandate(completionHandler: @escaping (String) -> Void) -> URLSessionTask? {
@@ -324,12 +300,8 @@ class LoginManager {
                     print("error occured")
                     completionHandler("")
                 }
-                
-                //completionHandler(true)
-                
             }
             task?.resume()
-            
         }
         return task
     }
