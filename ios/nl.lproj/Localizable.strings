@@ -190,22 +190,22 @@
 "NotificationTitle" = "Givt";
 
 /*De titel op het eerste first-use scherm.*/
-"FirstUseLabelTitle1" = "Biedt dé oplossing voor\ngeven zonder contant geld";
+"FirstUseLabelTitle1" = "Registreer eenmalig";
 
 /*De subtitel op het eerste first-use scherm.*/
-"FirstUseLabelSubTitle1" = "Wij geloven dat geven persoonlijk \nen gemakkelijk moet zijn.";
+"FirstUseLabelSubTitle1" = "";
 
 /*De titel op het tweede first-use scherm.*/
-"FirstUseLabelTitle2" = "Altijd digitaal kleingeld";
+"FirstUseLabelTitle2" = "Kies een bedrag en geef";
 
 /*De subtitel op het tweede first-use scherm.*/
-"FirstUseLabelSubTitle2" = "Selecteer een bedrag en \nbeweeg je telefoon langs \nde collectebus, -zak of -mand.";
+"FirstUseLabelSubTitle2" = "";
 
 /*De titel op het derde first-use scherm.*/
-"FirstUseLabelTitle3" = "Maakt geven compleet";
+"FirstUseLabelTitle3" = "Gebruik Givt voor elke collecte";
 
 /*De subtitel op het derde first-use scherm.*/
-"FirstUseLabelSubTitle3" = "De verschillende functies van \nGivt maken geven nog prettiger. \nProbeer het uit!";
+"FirstUseLabelSubTitle3" = "";
 
 /*"Bewaar" in het nederlands, als gebruiker vanuit instellingen naar geeflimiet instellen gaat wordt dit een knop met "Bewaar", in de registratieflow blijft deze wel gewoon Volgende / Next*/
 "Save" = "Opslaan";
@@ -305,7 +305,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQantwoord6" = "Blijven ontwikkelen\nGivt staat niet stil, maar blijft zich ontwikkelen. Op dit moment kun je tijdens de collectes gemakkelijk geven met je smartphone, maar daar houdt het niet op. Zo kan nu ook elke individuele gebruiker in de app een overzicht van al zijn of haar giften inzien.\n\nBelastingaangifte\nAan het einde van het jaar krijg je een overzicht van alle giften, wel zo gemakkelijk voor de belastingaangifte. Uiteindelijk streven we ernaar dat alle giften automatisch worden ingevuld bij de belastingaangifte.";
 
 /*Antwoord op FAQ vraag7*/
-"FAQantwoord7" = "Veilig en risicoloos\nWe vinden het erg belangrijk dat alles veilig en risicoloos verloopt. Elke gebruiker heeft daarom een persoonlijk account met een eigen wachtwoord. Om je instellingen in te zien of te wijzigen, moet je ingelogd zijn.\n\nAfhandeling transacties\nDe transacties worden afgehandeld door SlimPay; een bank gespecialiseerd in de behandeling van machtigingen. SlimPay staat onder toezicht staat van meerdere nationale banken in Europa, waaronder De Nederlandsche Bank (DNB).\n\nOngevoelig voor fraude\nBij het installeren van Givt machtig je als gebruiker tot het incasseren van de donaties die je in de app doet. Het is goed om te benadrukken dat er geen transacties plaatsvinden tijdens het geven met Givt. De transacties vinden achteraf plaats middels een automatische incasso. Aangezien deze achteraf te herroepen zijn, is het volledig veilig en ongevoelig voor fraude.\n\nOverzicht\nKerken en organisatie kunnen inloggen op het Givt-dashboard. Dit geeft een overzicht van alle financiële transacties, vanaf het moment van geven tot aan de volledige verwerking van de betaling. Zo is elk bedrag van begin tot einde te volgen.";
+"FAQantwoord7" = "Veilig en risicoloos\nWe vinden het erg belangrijk dat alles veilig en risicoloos verloopt. Elke gebruiker heeft daarom een persoonlijk account met een eigen wachtwoord. Om je instellingen in te zien of te wijzigen, moet je ingelogd zijn.\n\nAfhandeling transacties\nDe transacties worden afgehandeld door SlimPay; een bank gespecialiseerd in de behandeling van machtigingen. SlimPay staat onder toezicht van meerdere nationale banken in Europa, waaronder De Nederlandsche Bank (DNB).\n\nOngevoelig voor fraude\nBij het installeren van Givt machtig je als gebruiker tot het incasseren van de donaties die je in de app doet. Het is goed om te benadrukken dat er geen transacties plaatsvinden tijdens het geven met Givt. De transacties vinden achteraf plaats middels een automatische incasso. Aangezien deze achteraf te herroepen zijn, is het volledig veilig en ongevoelig voor fraude.\n\nOverzicht\nKerken en organisatie kunnen inloggen op het Givt-dashboard. Dit geeft een overzicht van alle financiële transacties, vanaf het moment van geven tot aan de volledige verwerking van de betaling. Zo is elk bedrag van begin tot einde te volgen.";
 
 /*kunnen we dit deze sprint al aanpassen?*/
 /*Antwoord op FAQ vraag8*/
@@ -323,7 +323,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AcceptTerms" = "Bij het doorgaan ga je akkoord met de algemene voorwaarden.";
 
 /*Tekst verschijnt wanneer het ondertekenen van de machtiging niet is gelukt*/
-"MandateSigingFailed" = "Het tekenen van de machtiging \nis helaas niet gelukt.";
+"MandateSigingFailed" = "Het tekenen van de machtiging \nis helaas niet gelukt. Probeer later opnieuw vanuit het menu. Blijft deze melding opduiken? Contacteer dan support@givtapp.net.";
 
 /*Tekst verschijnt in een loading-animatie wanneer de status van de machtiging wordt opgevraagd.*/
 "AwaitingMandateStatus" = "We hebben héél even nodig \nom je machtiging te verwerken.";
@@ -340,7 +340,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*Cindy, die {0} stond daar express ...*/
 /*Sorry, maar we nemen pas genoegen met minstens 0,50 euro.*/
-"GivtNotEnough" = "Sorry, we kunnen alleen bedragen boven {0} verwerken.";
+"GivtNotEnough" = "Helaas, we kunnen alleen bedragen boven {0} verwerken.";
 "GivtMinimumAmountEuro" = "0,50 euro";
 
 /*SlimPay informatie onder het Givy icoon*/
@@ -516,11 +516,11 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Feature_IGetItButton" = "Gewoon blijven geven";
 "Safari_GivtTransaction" = "Deze Givt wordt in een transactie omgezet.";
 "Safari_MandateSignedPopup" = "Jouw giften worden van dit IBAN afgeschreven. Niet akkoord? Annuleer dan deze Givt en maak een nieuwe account aan.";
-"DidNotSignMandateYet" = "Je hebt nog geen mandaat afgegeven, dat is nodig om je transactie te laten plaatsvinden.";
+"DidNotSignMandateYet" = "Om gewoon te kunnen geven, moet je een mandaat hebben afgegeven. Op dit moment is het niet mogelijk om een mandaat af te geven. Probeer later opnieuw.";
 "AppVersion" = "App versie: ";
 
 /*Info over knop om collecte te activeren*/
-"Ballon_ActiveerCollecte" = "Tik hier om een collecte toe te voegen.";
+"Ballon_ActiveerCollecte" = "Meerdere collectes? Tik hier om een collecte toe te voegen.";
 
 /*Dubbel Tap om collecte te verwijderen*/
 "Ballon_VerwijderCollecte" = "Tik snel twee keer om de collecte te verwijderen.";
@@ -570,3 +570,31 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SomethingWentWrong2" = "Er gaat iets mis.";
 "ChooseLowerAmount" = "Bedrag aanpassen";
 "TurnOnBluetooth" = "Bluetooth aanzetten";
+"ErrorTLDCheck" = "Helaas, met dit e-mailadres lukt het registreren niet. Controleer je nog even op typefouten?";
+"AddCollectConfirm" = "Je gaat nu een tweede collecte toevoegen. Weet je het zeker?";
+"FAQvraag0" = "Feedback of vragen?";
+"FAQantwoord0" = "Je kunt ons een bericht sturen door in het app-menu naar \"Over Givt / Contact\" te gaan en daar je vraag te stellen. We zijn natuurlijk ook bereikbaar via +31 320 320 115 of support@givtapp.net.";
+"PersonalPageHeader" = "Pas je IBAN hier aan.";
+"PersonalPageSubHeader" = "Andere Givt-gegevens kunnen worden aangepast door een e-mail te sturen naar support@givtapp.net.";
+"TitlePersonalInfo" = "Mijn gegevens";
+"PersonalInfoTempUser" = "Hé, snelle gever! Je gebruikt een tijdelijk account. We hebben je gegevens dus nog niet ontvangen.";
+"UpdatePersonalInfoError" = "Helaas lukt het op dit moment niet om je gegevens te wijzigen. Probeer later opnieuw of neem contact op met support@givtapp.net.";
+"UpdatePersonalInfoSuccess" = "Gelukt!";
+"LoadingTitle" = "Even geduld";
+"LoadingMessage" = "We zijn je gegevens aan het laden ...";
+"ButtonChange" = "Wijzigen";
+"FirstUseWelcomeTitle" = "Welkom!";
+"FirstUseWelcomeSubTitle" = "Swipe voor meer informatie";
+
+/*belastingaangifte vraag*/
+"FAQvraag15" = "Is geven met Givt ook belastingaftrekbaar?";
+
+/*antwoord op vraag15*/
+"FAQantwoord15" = "Ja, je gift met Givt is belastingaftrekbaar indien die aan een algemeen nut beogende instelling (ANBI), een culturele ANBI of aan een sociaal belang behartigende instelling (SBBI) wordt gedaan. Ga na of de kerk of stichting ook op die manier geregistreerd is. Het verzamelen van je giften voor de belastingaangifte is altijd een hele klus. Als je geeft met Givt hoeft dat niet meer. Je kan namelijk voor elk jaar een overzicht van al jouw giften die gegeven zijn met Givt downloaden. Dit overzicht kan je dan mooi gebruiken als bewijs bij je belastingaangifte. Zo gepiept, dus.";
+
+/*Fuzzy*/
+"WelcomeContinue" = "Aan de slag";
+"EnterEmail" = "Nog één klein stapje";
+"FinalizeRegistrationPopupText" = "We willen graag dat je Givt verder kunt gebruiken, dus vragen we je om je registratie compleet te maken.";
+"FinalizeRegistration" = "Registratie voltooien";
+"ImportantReminder" = "Belangrijke herinnering";
