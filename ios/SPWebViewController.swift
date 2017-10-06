@@ -11,7 +11,7 @@ import WebKit
 import SVProgressHUD
 
 
-class SPWebViewController: UIViewController, WKNavigationDelegate  {
+class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate  {
 
     var url: String!
     var webView: WKWebView!
@@ -30,10 +30,12 @@ class SPWebViewController: UIViewController, WKNavigationDelegate  {
         let url = URL(string: self.url)
         let request = URLRequest(url: url!)
         SVProgressHUD.show()
+    
         
         // init and load request in webview.
         webView = WKWebView(frame: self.view.frame)
         webView.navigationDelegate = self
+        webView.uiDelegate = self
         webView.load(request)
         self.placeholder.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +43,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate  {
         webView.trailingAnchor.constraint(equalTo: self.placeholder.trailingAnchor).isActive = true
         webView.leadingAnchor.constraint(equalTo: self.placeholder.leadingAnchor).isActive = true
         webView.topAnchor.constraint(equalTo: self.placeholder.topAnchor).isActive = true
-        
+        webView.scrollView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,15 +55,35 @@ class SPWebViewController: UIViewController, WKNavigationDelegate  {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return nil
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("page fully loaded")
         if webView.url?.absoluteString == "https://givtapidebug.azurewebsites.net/" {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
-            self.show(vc, sender: nil)
+            webView.isHidden = true
+            LoginManager.shared.finishMandateSigning(completionHandler: { (success) in
+                if success {
+                    DispatchQueue.main.async {
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                        self.show(vc, sender: nil)
+                    }
+                    
+                } else {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("MandateSigingFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                            self.dismiss(animated: true, completion: nil)
+                            }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            })
+            
         }
         SVProgressHUD.dismiss()
     }
-    
 
     /*
     // MARK: - Navigation

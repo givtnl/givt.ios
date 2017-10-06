@@ -10,12 +10,14 @@ import UIKit
 
 class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
-@IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet var backButton: UIBarButtonItem!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet var verticalConstraint: NSLayoutConstraint!
     @IBOutlet var topContstraint: NSLayoutConstraint!
     @IBOutlet var btnSave: CustomButton!
     @IBOutlet var amountLimit: UITextField!
     @IBOutlet var navBar: UINavigationBar!
+    var isRegistration: Bool = false
     var timer: Timer?
     @IBAction func btnIncrease(_ sender: Any) {
         addValue(positive: true)
@@ -63,9 +65,20 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        btnSave.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
-        
-
+        if isRegistration {
+            btnSave.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
+            /*for item in self.navBar.items! {
+                item.leftBarButtonItem?.isEnabled = false
+                item.leftBarButtonItem?.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
+                //item.leftBarButtonItem?.
+            }*/
+           // self.backButton.setBackgroundImage(#imageLiteral(resourceName: "visible_eye.png"), for: .normal, barMetrics: .default)
+            self.backButton.isEnabled = false
+            self.backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+           
+        } else {
+            btnSave.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(AmountLimitViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AmountLimitViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -81,16 +94,29 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func btnSave(_ sender: UIButton) {
         LoginManager.shared.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_,_ in
-            DispatchQueue.main.async {
-                self.navigationController?.hideLeftView(nil)
-                self.dismiss(animated: true, completion: nil)
+            if self.isRegistration {
+                DispatchQueue.main.async {
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
+                    self.show(vc, sender: nil)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.navigationController?.hideLeftView(nil)
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
+            
         })
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
         
     func keyboardWillShow(notification: NSNotification) {

@@ -17,10 +17,6 @@ class LoginManager {
         print("loginmanager is created")
     }
     
-    func isUserLoggedIn() -> Bool {
-        return true
-    }
-    
     public var isBearerStillValid: Bool {
         return Date() < UserDefaults.standard.bearerExpiration
     }
@@ -78,7 +74,9 @@ class LoginManager {
             do
             {
                 let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
+                print(parsedData)
                 if(parsedData["access_token"] != nil) {
+                    print(parsedData["access_token"])
                     UserDefaults.standard.bearerToken = parsedData["access_token"]! as! String
                     let strTime = parsedData[".expires"] as? String
                     let dateFormatter = DateFormatter()
@@ -268,5 +266,71 @@ class LoginManager {
             
         }
         task.resume()
+    }
+    
+    func finishMandateSigning(completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(false)
+        return
+        var idx: Int = 0
+        for i in 0...20 {
+            idx = i
+            var res:String  = ""
+            let task = checkMandate(completionHandler: { (str) in
+                //doe iets
+                print(str)
+                res = str
+                print("Mandate signed:", UserDefaults.standard.mandateSigned)
+            })
+            while task?.state != .completed {
+                usleep(40000)
+            }
+            print(res)
+            print(res.isEmpty())
+            print(res.split(separator: ".")[0])
+            print(res.split(separator: ".")[1])
+            if !res.isEmpty() && res.split(separator: ".")[0]  == "closed" {
+                print("skip")
+                break
+            }
+            usleep(500000)
+        }
+        completionHandler(idx != 20 && UserDefaults.standard.mandateSigned)
+        
+    }
+    
+    func checkMandate(completionHandler: @escaping (String) -> Void) -> URLSessionTask? {
+        var task: URLSessionTask?
+        if isBearerStillValid {
+            var request = URLRequest(url: URL(string: _baseUrl + "/api/Mandate?UserID=" + UserDefaults.standard.userExt.guid)!)
+            request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpMethod = "GET"
+            let urlSession = URLSession.shared
+            
+            task = urlSession.dataTask(with: request) { data, response, error -> Void in
+                if error != nil {
+                    return
+                }
+                
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
+                    print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    return
+                }
+                do {
+                    let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
+                    UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil)
+                    completionHandler(parsedData["PayProvMandateStatus"] as! String)
+                } catch {
+                    print("error occured")
+                    completionHandler("")
+                }
+                
+                //completionHandler(true)
+                
+            }
+            task?.resume()
+            
+        }
+        return task
     }
 }
