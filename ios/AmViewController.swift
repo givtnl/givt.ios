@@ -8,13 +8,48 @@
 
 import UIKit
 
-class AmViewController: UIViewController {
+class AmViewController: UIViewController, UIGestureRecognizerDelegate {
 
+    @IBOutlet var widthConstraint: NSLayoutConstraint!
+    @IBOutlet var collectionView: UIView!
+    
+    @IBOutlet var containerCollection: UIView!
+    @IBOutlet var amountLabel3: UILabel!
+    @IBOutlet var amountLabel2: UILabel!
+    @IBOutlet var leftSpacerView: UIView!
+    @IBOutlet var rightSpacerView: UIView!
+    @IBOutlet var firstView: UIView!
+    @IBOutlet var firstLine: UIView!
+    @IBOutlet var secondLine: UIView!
+    @IBOutlet var thirdLine: UIView!
+    @IBOutlet var secondView: UIView!
+    @IBOutlet var thirdView: UIView!
+    @IBOutlet var collectionButton: UIButton!
     private var amountLimit: Int {
         get {
             return UserDefaults.standard.amountLimit
         }
     }
+    var selectedAmount = 0
+    var amountList = ["0", "0", "0"]
+    var amountLabels = [UILabel]()
+    var amount: String {
+        get {
+            return amountLabels[selectedAmount].text!
+        }
+        set {
+            amountLabels[selectedAmount].text = amount
+        }
+    }
+    var currentAmountLabel: UILabel {
+        get {
+            return amountLabels[selectedAmount]
+        }
+        set {
+            amountLabels[selectedAmount] = currentAmountLabel
+        }
+    }
+    
     private var pressedShortcutKey: Bool! = false
     private var decimalNotation: String! = "," {
         didSet {
@@ -45,11 +80,26 @@ class AmViewController: UIViewController {
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
+        amountLabels = [amountLabel, amountLabel2, amountLabel3]
+        
+        addGestureRecognizerToView(view: firstView)
+        addGestureRecognizerToView(view: secondView)
+        addGestureRecognizerToView(view: thirdView)
+        
+        secondView.isHidden = true
+        secondLine.isHidden = true
+        thirdView.isHidden = true
+        thirdLine.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(true)
+        
+        
+
+        
         decimalNotation = NSLocale.current.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         let backItem = UIBarButtonItem()
@@ -60,6 +110,67 @@ class AmViewController: UIViewController {
         self.navigationItem.backBarButtonItem = backItem
         checkAmount()
     }
+    
+    func addGestureRecognizerToView(view: UIView) {
+        let selectTap = UITapGestureRecognizer(target: self, action: #selector(tappedView))
+        selectTap.numberOfTapsRequired = 1
+        view.addGestureRecognizer(selectTap)
+        
+        let tap = UITapGestureRecognizer(target: self, action:#selector(removeCollection))
+        tap.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tap)
+        
+        let longTap = UILongPressGestureRecognizer(target: self, action:#selector(clearAll))
+        longTap.minimumPressDuration = 1.0
+        view.addGestureRecognizer(longTap)
+    }
+    
+    func tappedView(_ sender: UITapGestureRecognizer) {
+        var tagIdx = sender.view?.tag
+        selectView(tagIdx!)
+    }
+    
+    func selectView(_ idx: Int!) {
+        firstLine.isHidden = true
+        secondLine.isHidden = true
+        thirdLine.isHidden = true
+
+        switch idx {
+        case 1?:
+            firstLine.isHidden = false
+            selectedAmount = 0
+        case 2?:
+            secondLine.isHidden = false
+            selectedAmount = 1
+        case 3?:
+            thirdLine.isHidden = false
+            selectedAmount = 2
+        default:
+            //niets
+            break
+        }
+    }
+    
+    @objc func removeCollection() {
+        print("tapped")
+        if !thirdView.isHidden {
+            thirdView.isHidden = true
+            leftSpacerView.isHidden = false
+            rightSpacerView.isHidden = false
+            if selectedAmount == 2 {
+                selectView(2)
+            }
+        } else if !secondView.isHidden {
+            secondView.isHidden = true
+            collectionButton.setImage(#imageLiteral(resourceName: "onecollect.png"), for: .normal)
+            if selectedAmount == 1 {
+                selectView(1)
+            }
+            NSLayoutConstraint.deactivate([widthConstraint])
+            widthConstraint = collectionView.widthAnchor.constraint(equalToConstant: 150)
+            widthConstraint.isActive = true
+        }
+    }
 
     @IBOutlet weak var amountLabel: UILabel!
     override func didReceiveMemoryWarning() {
@@ -68,67 +179,67 @@ class AmViewController: UIViewController {
     }
     
     @IBAction func addValue(sender:UIButton!) {
-        if amountLabel.text == "0" || pressedShortcutKey {
-            amountLabel.text = ""
+        if currentAmountLabel.text == "0" || pressedShortcutKey {
+            currentAmountLabel.text = ""
         }
         
-        if amountLabel.text! == "" && (sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))! {
-            amountLabel.text = "0";
+        if currentAmountLabel.text! == "" && (sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))! {
+            currentAmountLabel.text = "0";
         }
         
-        if let idx = amountLabel.text?.index(of: decimalNotation) {
-            if( ((amountLabel.text?.substring(from: idx).characters.count)! == 3)) || ((sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))!){
+        if let idx = currentAmountLabel.text?.index(of: decimalNotation) {
+            if( ((currentAmountLabel.text?.substring(from: idx).characters.count)! == 3)) || ((sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))!){
                 return
             }
         }
 
-        if (amountLabel?.text?.characters.contains(decimalNotation.characters.first!))! {
-            if amountLabel.text?.characters.count == 9 {
+        if (currentAmountLabel.text?.characters.contains(decimalNotation.characters.first!))! {
+            if currentAmountLabel.text?.characters.count == 9 {
                 return
             }
-        } else if amountLabel.text?.characters.count == 6 {
+        } else if currentAmountLabel.text?.characters.count == 6 {
             return
         }
-        amountLabel.text = amountLabel.text! + sender.currentTitle!;
+        currentAmountLabel.text = currentAmountLabel.text! + sender.currentTitle!;
         checkAmount()
         pressedShortcutKey = false
     }
     
     private func checkAmount(){
-        let dAmount = Decimal(string: (amountLabel.text?.replacingOccurrences(of: ",", with: "."))!)!
+        let dAmount = Decimal(string: (currentAmountLabel.text?.replacingOccurrences(of: ",", with: "."))!)!
         if dAmount < 0.50 {
             btnGive.isEnabled = false
         } else {
             btnGive.isEnabled = true
         }
         
-        amountLabel.textColor = dAmount > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
+        currentAmountLabel.textColor = dAmount > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
     }
     
     @IBAction func addShortcutValue(sender: UIButton!){
-        amountLabel.text = sender.currentTitle
+        currentAmountLabel.text = sender.currentTitle
         checkAmount()
         pressedShortcutKey = true
     }
     
     @IBAction func clearValue(sender: UIButton!){
-        var amount: String = amountLabel.text!
+        var amount: String = self.currentAmountLabel.text!
         if amount.characters.count == 0 {
             checkAmount()
             return
         }
         
         amount.remove(at: amount.index(before: amount.endIndex))
-        amountLabel.text = amount
+        self.currentAmountLabel.text! = amount
         if amount.characters.count == 0 || pressedShortcutKey {
-            amountLabel.text = "0";
+            self.currentAmountLabel.text = "0";
         }
         checkAmount()
         
     }
 
     @IBAction func clearAll(_ sender: Any) {
-        amountLabel.text = "0";
+        self.currentAmountLabel.text = "0";
         checkAmount()
     }
 
@@ -176,6 +287,21 @@ class AmViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
+    @IBAction func addCollection(_ sender: Any) {
+        var button = sender as! UIButton
+        NSLayoutConstraint.deactivate([widthConstraint])
+        widthConstraint = collectionView.widthAnchor.constraint(equalTo: containerCollection.widthAnchor, multiplier: 1)
+        widthConstraint.isActive = true
+        button.setImage(#imageLiteral(resourceName: "twocollect.png"), for: .normal)
+        if secondView.isHidden {
+            secondView.isHidden = false
+            selectView(2)
+        } else if thirdView.isHidden {
+            thirdView.isHidden = false
+            leftSpacerView.isHidden = true
+            rightSpacerView.isHidden = true
+            selectView(3)
+        }
+    }
     
-
 }
