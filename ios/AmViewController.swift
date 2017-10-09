@@ -31,6 +31,7 @@ class AmViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     var selectedAmount = 0
+    var numberOfCollects = 1
     var amountList = ["0", "0", "0"]
     var amountLabels = [UILabel]()
     var amount: String {
@@ -136,13 +137,13 @@ class AmViewController: UIViewController, UIGestureRecognizerDelegate {
         thirdLine.isHidden = true
 
         switch idx {
-        case 1?:
+        case 0?:
             firstLine.isHidden = false
             selectedAmount = 0
-        case 2?:
+        case 1?:
             secondLine.isHidden = false
             selectedAmount = 1
-        case 3?:
+        case 2?:
             thirdLine.isHidden = false
             selectedAmount = 2
         default:
@@ -158,17 +159,19 @@ class AmViewController: UIViewController, UIGestureRecognizerDelegate {
             leftSpacerView.isHidden = false
             rightSpacerView.isHidden = false
             if selectedAmount == 2 {
-                selectView(2)
+                selectView(1)
             }
+            numberOfCollects = 2
         } else if !secondView.isHidden {
             secondView.isHidden = true
             collectionButton.setImage(#imageLiteral(resourceName: "onecollect.png"), for: .normal)
             if selectedAmount == 1 {
-                selectView(1)
+                selectView(0)
             }
             NSLayoutConstraint.deactivate([widthConstraint])
             widthConstraint = collectionView.widthAnchor.constraint(equalToConstant: 150)
             widthConstraint.isActive = true
+            numberOfCollects = 1
         }
     }
 
@@ -214,6 +217,8 @@ class AmViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         currentAmountLabel.textColor = dAmount > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
+        
+        
     }
     
     @IBAction func addShortcutValue(sender: UIButton!){
@@ -244,34 +249,52 @@ class AmViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
      @IBAction func actionGive(_ sender: Any) {
-        let dAmount = Decimal(string: (amountLabel.text?.replacingOccurrences(of: ",", with: "."))!)
-        if(dAmount! > Decimal(amountLimit)) {
-            let alert = UIAlertController(
-                title: NSLocalizedString("SomethingWentWrong2", comment: ""),
-                message: NSLocalizedString("AmountLimitExceeded", comment: ""),
-                preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
-                action in
-                self.amountLabel.text = String(UserDefaults.standard.amountLimit)
-                self.checkAmount()
-            }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-                let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
-                self.present(amountLimitVC, animated: true)
-            }))
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            if givtService.bluetoothEnabled {
-                let scanVC = storyboard?.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
-                scanVC.amount = dAmount
-                self.show(scanVC, sender: nil)
-            } else {
-                showBluetoothMessage()
+        for index in 0..<numberOfCollects {
+            print(amountLabels[index].text)
+            let parsedDecimal = Decimal(string: (amountLabels[index].text!.replacingOccurrences(of: ",", with: ".")))!
+            
+            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
+                selectView(index)
+                displayAmountLimitExceeded()
+                return
             }
             
+            if parsedDecimal  > 0 && parsedDecimal < 0.50 {
+                selectView(index)
+                let alert = UIAlertController(title: "", message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("GivtMinimumAmountEuro", comment: "").replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+                self.present(alert, animated: true, completion: {})
+                return
+            }
+        }
+        
+    
+        if givtService.bluetoothEnabled {
+            let scanVC = storyboard?.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
+            scanVC.amount = 0
+            self.show(scanVC, sender: nil)
+        } else {
+            showBluetoothMessage()
         }
         
      }
+    
+    func displayAmountLimitExceeded() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("SomethingWentWrong2", comment: ""),
+            message: NSLocalizedString("AmountLimitExceeded", comment: ""),
+            preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
+            action in
+            self.currentAmountLabel.text = String(UserDefaults.standard.amountLimit)
+            self.checkAmount()
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
+            let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
+            self.present(amountLimitVC, animated: true)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func showBluetoothMessage() {
         let alert = UIAlertController(
@@ -279,7 +302,10 @@ class AmViewController: UIViewController, UIGestureRecognizerDelegate {
             message: NSLocalizedString("BluetoothErrorMessage", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
-            UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+            //UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+            let url = URL(string: "App-Prefs:root=Bluetooth") //for bluetooth setting
+            let app = UIApplication.shared
+            app.openURL(url!)
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
             
@@ -295,12 +321,14 @@ class AmViewController: UIViewController, UIGestureRecognizerDelegate {
         button.setImage(#imageLiteral(resourceName: "twocollect.png"), for: .normal)
         if secondView.isHidden {
             secondView.isHidden = false
-            selectView(2)
+            selectView(1)
+            numberOfCollects = 2
         } else if thirdView.isHidden {
             thirdView.isHidden = false
             leftSpacerView.isHidden = true
             rightSpacerView.isHidden = true
-            selectView(3)
+            selectView(2)
+            numberOfCollects = 3
         }
     }
     

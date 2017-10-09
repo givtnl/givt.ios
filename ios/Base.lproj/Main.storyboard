@@ -628,7 +628,7 @@ Kijk voor de status in je overzicht.</string>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cfY-RC-6gi">
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="80"/>
                                                                 <subviews>
-                                                                    <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEF-Oq-6FP">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEF-Oq-6FP">
                                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="4tW-vn-z2C" userLabel="lblAmount">
@@ -672,8 +672,8 @@ Kijk voor de status in je overzicht.</string>
                                                                             <constraint firstItem="YZV-SR-a23" firstAttribute="leading" secondItem="kEF-Oq-6FP" secondAttribute="leading" constant="5" id="xHv-xr-2Vo"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDP-AN-Lvz">
-                                                                        <rect key="frame" x="-137" y="0.0" width="30" height="80"/>
+                                                                    <view hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDP-AN-Lvz">
+                                                                        <rect key="frame" x="-148" y="0.0" width="30" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="V83-OS-ikq" userLabel="lblAmount">
                                                                                 <rect key="frame" x="16" y="0.0" width="20" height="77"/>
@@ -712,7 +712,7 @@ Kijk voor de status in je overzicht.</string>
                                                                             <constraint firstItem="JVs-FP-NJa" firstAttribute="leading" secondItem="LDP-AN-Lvz" secondAttribute="leading" constant="5" id="qLy-9c-1jD"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view hidden="YES" tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1d-tm-JK5">
+                                                                    <view hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1d-tm-JK5">
                                                                         <rect key="frame" x="-132" y="0.0" width="30.333333333333329" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-jh-60h" userLabel="lblAmount">
