@@ -337,7 +337,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Stad" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2nW-mh-yOX" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="212" width="335" height="44"/>
@@ -1064,6 +1064,7 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                         <outlet property="backButton" destination="t7R-5Y-Fz0" id="k9A-Fk-sqM"/>
                         <outlet property="bottomConstraint" destination="nA7-te-giW" id="HGj-Fh-aC3"/>
                         <outlet property="btnSave" destination="r31-cv-Adj" id="Y5B-HJ-LID"/>
+                        <outlet property="topContstraint" destination="ox0-6Z-fii" id="apb-t6-TAC"/>
                         <outlet property="verticalConstraint" destination="94J-fV-fGd" id="C7f-UH-Qa5"/>
                     </connections>
                 </viewController>
