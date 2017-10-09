@@ -88,7 +88,7 @@
 		D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9AF1F18AC90002B849B /* CustomButton.swift */; };
 		D761E9B31F18B55C002B849B /* entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D761E9B21F18B450002B849B /* entypo.ttf */; };
 		D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D761E9B41F18B602002B849B /* zocial-regular-webfont.ttf */; };
-		D761E9B71F18B89D002B849B /* AmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9B61F18B89D002B849B /* AmViewController.swift */; };
+		D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9B61F18B89D002B849B /* AmountViewController.swift */; };
 		D761E9BA1F18C5C6002B849B /* String+DoubleConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9B91F18C5C6002B849B /* String+DoubleConverter.swift */; };
 		D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9BB1F18CE0C002B849B /* ScanViewController.swift */; };
 		D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */; };
@@ -264,7 +264,7 @@
 		D761E9AF1F18AC90002B849B /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D761E9B21F18B450002B849B /* entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = entypo.ttf; sourceTree = "<group>"; };
 		D761E9B41F18B602002B849B /* zocial-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "zocial-regular-webfont.ttf"; sourceTree = "<group>"; };
-		D761E9B61F18B89D002B849B /* AmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmViewController.swift; sourceTree = "<group>"; };
+		D761E9B61F18B89D002B849B /* AmountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
 		D761E9B91F18C5C6002B849B /* String+DoubleConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+DoubleConverter.swift"; sourceTree = "<group>"; };
 		D761E9BB1F18CE0C002B849B /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexConversion.swift"; sourceTree = "<group>"; };
@@ -517,7 +517,7 @@
 				D7F131621F7555C200E25A68 /* Registration */,
 				D761E9641F1612F8002B849B /* SettingTableViewController.swift */,
 				D761E99F1F167798002B849B /* BaseViewController.swift */,
-				D761E9B61F18B89D002B849B /* AmViewController.swift */,
+				D761E9B61F18B89D002B849B /* AmountViewController.swift */,
 				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
 				D73CA1C21F38B4C30059A296 /* LoginViewController.swift */,
 				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
@@ -921,7 +921,7 @@
 				D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */,
 				D740E15C1F4C6328000531BA /* GivtService.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
-				D761E9B71F18B89D002B849B /* AmViewController.swift in Sources */,
+				D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */,
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,

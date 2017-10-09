@@ -597,7 +597,7 @@ Kijk voor de status in je overzicht.</string>
         <!--Bedrag-->
         <scene sceneID="jdE-oM-Up1">
             <objects>
-                <viewController id="lyO-8n-bds" customClass="AmViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lyO-8n-bds" customClass="AmountViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XtU-jS-ZVH"/>
                         <viewControllerLayoutGuide type="bottom" id="oQx-Zj-q7j"/>
@@ -673,7 +673,7 @@ Kijk voor de status in je overzicht.</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <view hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDP-AN-Lvz">
-                                                                        <rect key="frame" x="-148" y="0.0" width="30" height="80"/>
+                                                                        <rect key="frame" x="-132" y="0.0" width="30" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="V83-OS-ikq" userLabel="lblAmount">
                                                                                 <rect key="frame" x="16" y="0.0" width="20" height="77"/>
@@ -713,7 +713,7 @@ Kijk voor de status in je overzicht.</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <view hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1d-tm-JK5">
-                                                                        <rect key="frame" x="-132" y="0.0" width="30.333333333333329" height="80"/>
+                                                                        <rect key="frame" x="-137" y="0.0" width="30.333333333333329" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-jh-60h" userLabel="lblAmount">
                                                                                 <rect key="frame" x="16.333333333333343" y="0.0" width="19.666666666666657" height="77"/>

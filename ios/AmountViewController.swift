@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AmViewController: UIViewController, UIGestureRecognizerDelegate {
+class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @IBOutlet var widthConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UIView!
