@@ -10,7 +10,7 @@ import UIKit
 import LGSideMenuController
 
 
-class AmountViewController: LGSideMenuController, LGSideMenuDelegate {
+class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     
     
     func willShowLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {

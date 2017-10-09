@@ -77,7 +77,7 @@
 		D761E99A1F166FF8002B849B /* rightarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9971F166FF8002B849B /* rightarrow.png */; };
 		D761E99B1F166FF8002B849B /* rightarrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9981F166FF8002B849B /* rightarrow@2x.png */; };
 		D761E99C1F166FF8002B849B /* rightarrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9991F166FF8002B849B /* rightarrow@3x.png */; };
-		D761E9A01F167798002B849B /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E99F1F167798002B849B /* AmountViewController.swift */; };
+		D761E9A01F167798002B849B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E99F1F167798002B849B /* BaseViewController.swift */; };
 		D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9A11F17B14D002B849B /* RoundedButton.swift */; };
 		D761E9A61F17BCB4002B849B /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9A31F17BCB4002B849B /* help.png */; };
 		D761E9A71F17BCB4002B849B /* help@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D761E9A41F17BCB4002B849B /* help@2x.png */; };
@@ -253,7 +253,7 @@
 		D761E9971F166FF8002B849B /* rightarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightarrow.png; sourceTree = "<group>"; };
 		D761E9981F166FF8002B849B /* rightarrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightarrow@2x.png"; sourceTree = "<group>"; };
 		D761E9991F166FF8002B849B /* rightarrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rightarrow@3x.png"; sourceTree = "<group>"; };
-		D761E99F1F167798002B849B /* AmountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
+		D761E99F1F167798002B849B /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D761E9A11F17B14D002B849B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		D761E9A31F17BCB4002B849B /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		D761E9A41F17BCB4002B849B /* help@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "help@2x.png"; sourceTree = "<group>"; };
@@ -489,6 +489,7 @@
 		D758CD141F1513EC00EF0F19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
 				D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */,
 				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
 				D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */,
@@ -515,7 +516,7 @@
 				D731EACB1F792D5100F5116C /* NavigationControllers */,
 				D7F131621F7555C200E25A68 /* Registration */,
 				D761E9641F1612F8002B849B /* SettingTableViewController.swift */,
-				D761E99F1F167798002B849B /* AmountViewController.swift */,
+				D761E99F1F167798002B849B /* BaseViewController.swift */,
 				D761E9B61F18B89D002B849B /* AmViewController.swift */,
 				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
 				D73CA1C21F38B4C30059A296 /* LoginViewController.swift */,
@@ -623,7 +624,6 @@
 				FB3CE6E31F14CA200055185B /* LaunchScreen.storyboard */,
 				FB3CE6E61F14CA200055185B /* Info.plist */,
 				D761E9931F166B8D002B849B /* CustomTableView.swift */,
-				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
 				D761E9C41F20CFA6002B849B /* Localizable.strings */,
 				D73CA1C41F39BA360059A296 /* AppConstants.swift */,
 			);
@@ -909,7 +909,7 @@
 				D7335B2E1F45923F00B57AE0 /* UIImage+gif.swift in Sources */,
 				D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */,
 				D740E15A1F4C631F000531BA /* UserService.swift in Sources */,
-				D761E9A01F167798002B849B /* AmountViewController.swift in Sources */,
+				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
 				D740E1601F4C63D1000531BA /* GivtServiceProtocol.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
