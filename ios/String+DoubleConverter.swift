@@ -58,4 +58,10 @@ extension String{
     func isEmpty() -> Bool {
         return self == ""
     }
+    
+    var decimalValue: Decimal {
+        get {
+            return Decimal(string: self.replacingOccurrences(of: ",", with: "."))!
+        }
+    }
 }

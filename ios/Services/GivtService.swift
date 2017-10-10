@@ -17,6 +17,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     let reachability = Reachability()
     
     private var amount: Decimal!
+    private var amounts = [Decimal]()
     private var bestBeacon: BestBeacon?
     var bluetoothEnabled: Bool {
         get {
@@ -48,7 +49,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         
         if reachability.isReachable {
             for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
-                give(transaction: element, wasOfflineGivt: true)
+                sendPostRequest(transactions: [element])
                 UserDefaults.standard.offlineGivts.remove(at: index)
                 print(UserDefaults.standard.offlineGivts)
             }
@@ -59,6 +60,10 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     func setAmount(amount: Decimal) {
         self.amount = amount
+    }
+    
+    func setAmounts(amounts: [Decimal]) {
+        self.amounts = amounts
     }
     
     func startScanning() {
@@ -138,40 +143,50 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 let date = df.string(from: Date())
                 print(date)
                 let collectId = "1"
-                let ts = Transaction(amount: self.amount, beaconId: antennaID, collectId: collectId, timeStamp: date, userId: "70b10bd0-320e-479a-8551-a6ea69b560e6")
-                give(transaction: ts)
+                var transactions = [Transaction]()
+                for (index, value) in amounts.enumerated() {
+                    if value >= 0.50 {
+                        print(value)
+                        var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: UserDefaults.standard.guid)
+                        transactions.append(newTransaction)
+                    }
+                }
+            
+                sendPostRequest(transactions: transactions)
+                //todo: clear self.amountss
+                self.onGivtProcessed?.onGivtProcessed(transactions: transactions)
+                AudioServicesPlayAlertSound(1520)
                 return
             }
         }
         
         startScanning()
     }
+
     
-    private func give(transaction: Transaction, wasOfflineGivt: Bool = false) {
-        sendPostRequest(transaction: transaction) { status in
-            if(!wasOfflineGivt) {
-                self.onGivtProcessed?.onGivtProcessed(transaction: transaction, status: status)
-                AudioServicesPlayAlertSound(1520)
-            }
+    private func cacheGivt(transactions: [Transaction]){
+        for tr in transactions {
+            UserDefaults.standard.offlineGivts.append(tr)
         }
-        return
-    }
-    
-    private func cacheGivt(transaction: Transaction){
-        UserDefaults.standard.offlineGivts.append(transaction)
+        
         print(UserDefaults.standard.offlineGivts)
         for t in UserDefaults.standard.offlineGivts {
             print(t.amount)
         }
     }
     
-    func sendPostRequest(transaction: Transaction, completionHandler: @escaping (Bool) -> ()) {
-        guard let url = URL(string: "https://givtapidebug.azurewebsites.net/api/Givts") else { return }
+    func sendPostRequest(transactions: [Transaction]) {
+        guard let url = URL(string: "https://givtapidebug.azurewebsites.net/api/Givts/Multiple") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: transaction.convertToDictionary(), options: JSONSerialization.WritingOptions.prettyPrinted) else {
+        var object = ["Transactions": []]
+        for transaction in transactions {
+            object["Transactions"]?.append(transaction.convertToDictionary())
+        }
+        
+        guard let httpBody = try? JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions.prettyPrinted) else {
             return
         }
         request.httpBody = httpBody
@@ -182,18 +197,16 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             { (data, response, error) in
             
                 if error != nil {
-                    self.cacheGivt(transaction: transaction)
+                    self.cacheGivt(transactions: transactions)
                     return
                 }
                 
                 if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 201 {
                     print("posted givt to the server")
-                    completionHandler(true)
                     return
                 } else {
                     //server code is niet in orde: gegeven binnen de 30s?
                     print(response ?? "")
-                    completionHandler(false)
                     return
                 }
             }
@@ -203,7 +216,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
 }
 
 protocol GivtProcessedProtocol: class {
-    func onGivtProcessed(transaction: Transaction, status: Bool)
+    func onGivtProcessed(transactions: [Transaction])
 }
 
 class BestBeacon {

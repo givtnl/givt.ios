@@ -32,7 +32,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     var selectedAmount = 0
     var numberOfCollects = 1
-    var amountList = ["0", "0", "0"]
     var amountLabels = [UILabel]()
     var amount: String {
         get {
@@ -50,6 +49,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             amountLabels[selectedAmount] = currentAmountLabel
         }
     }
+    
+    
     
     private var pressedShortcutKey: Bool! = false
     private var decimalNotation: String! = "," {
@@ -247,6 +248,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         self.currentAmountLabel.text = "0";
         checkAmount()
     }
+    
+    func clearAmounts() {
+        let emptyString = "0"
+        self.amountLabel.text? = emptyString
+        self.amountLabel2.text? = emptyString
+        self.amountLabel3.text? = emptyString
+        removeCollection()
+        removeCollection()
+        checkAmount()
+    }
 
      @IBAction func actionGive(_ sender: Any) {
         for index in 0..<numberOfCollects {
@@ -271,7 +282,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
         if givtService.bluetoothEnabled {
             let scanVC = storyboard?.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
-            scanVC.amount = 0
+            givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
+            clearAmounts()
             self.show(scanVC, sender: nil)
         } else {
             showBluetoothMessage()

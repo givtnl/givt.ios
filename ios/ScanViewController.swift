@@ -17,38 +17,40 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var btnGive: CustomButton!
     
-    var amount: Decimal! = 0
-    
-    func onGivtProcessed(transaction: Transaction, status: Bool) {
-        if(status){
-            let parameters = ["amountLimit" : 0,
-                              "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
-                              "GUID" : "52435d45-042e-4ca0-b734-aa592d882fd3",
-                              "urlPart" : "store",
-                              "givtObj" :
-                                [
-                                    ["Amount" : transaction.amount,"CollectId" : transaction.collectId, "Timestamp" : transaction.timeStamp, "BeaconId" : transaction.beaconId],
-                                ],
-                              "apiUrl" : "https://givtapidebug.azurewebsites.net/",
-                              "lastDigits" : "XXXXXXXXXXXXXXX7061",
-                              "organisation" : "Bjornkerk",
-                              "mandatePopup" : "",
-                              "spUrl" : ""] as [String : Any]
-            
-            guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
-                return
-            }
-            print(jsonParameters.description)
-            let plainTextBytes = jsonParameters.base64EncodedString()
-            let formatted = String(format: "https://givtapidebug.azurewebsites.net/givtapp4.html?msg=%@", plainTextBytes);
-            self.showWebsite(url: formatted)
-        } else {
+    func onGivtProcessed(transactions: [Transaction]) {
+        var trs = [NSDictionary]()
+        for tr in transactions {
+            trs.append(["Amount" : tr.amount,"CollectId" : tr.collectId, "Timestamp" : tr.timeStamp, "BeaconId" : tr.beaconId])
+        }
+        var parameters = [NSDictionary]()
+        parameters.append(["amountLimit" : 0,
+                          "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
+                          "GUID" : "52435d45-042e-4ca0-b734-aa592d882fd3",
+                          "urlPart" : "store",
+                          "givtObj" : trs,
+                          "apiUrl" : "https://givtapidebug.azurewebsites.net/",
+                          "lastDigits" : "XXXXXXXXXXXXXXX7061",
+                          "organisation" : "Bjornkerk",
+                          "mandatePopup" : "",
+                          "spUrl" : ""])
+        
+        
+        guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
+            return
+        }
+        print(jsonParameters.description)
+        let plainTextBytes = jsonParameters.base64EncodedString()
+        let formatted = String(format: "https://givtapidebug.azurewebsites.net/givtapp4.html?msg=%@", plainTextBytes);
+        self.showWebsite(url: formatted)
+
+        /*
             let alert = UIAlertController(title: "Hey Gulle gever", message: "wacht es effe 30 seconde jo", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { action in
                 self.popToRoot(animated: true)
             }))
             self.present(alert, animated: true, completion: nil)
-        }
+         */
+        
     }
     
     func showWebsite(url: String){
@@ -89,8 +91,6 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         super.viewDidAppear(animated)
                 NotificationCenter.default.addObserver(self, selector: #selector(showBluetoothMessage), name: Notification.Name("BluetoothIsOff"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        
-        GivtService.sharedInstance.setAmount(amount: amount)
         GivtService.sharedInstance.onGivtProcessed = self
         
         if(GivtService.sharedInstance.bluetoothEnabled){
