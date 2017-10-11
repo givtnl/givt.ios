@@ -41,20 +41,15 @@ class RegNavigationController: UINavigationController {
         let topImage = #imageLiteral(resourceName: "givt20h.png")
         let navBarWidth = self.navigationBar.frame.width
         let navBarHeight = self.navigationBar.frame.height
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
+        let diff = UIScreen.main.bounds.height - self.view.bounds.height
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height - diff
         let newSize = CGSize(width: navBarWidth, height: navBarHeight + statusBarHeight) // set this to what you need
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-        
-        bottomImage.draw(in: CGRect(origin: CGPoint(x: statusBarHeight, y: 0), size: newSize))//As drawInRect is deprecated
-        
         let x = (newSize.width / 2) - (topImage.size.width / 2)
-        let y = statusBarHeight + (navBarHeight / 2) - (topImage.size.height / 2)
-        topImage.draw(at: CGPoint(x: x,y: y))//As drawInRect is deprecated
-        
+        let y = (navBarHeight / 2) - (topImage.size.height / 2) + statusBarHeight
+        topImage.draw(in: CGRect(origin: CGPoint(x: x, y: y), size: topImage.size))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage!
     }
-    
-
 }
