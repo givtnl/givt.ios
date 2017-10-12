@@ -62,6 +62,7 @@ class SettingTableViewController: UITableViewController {
     }
     
     private func logout() {
+        UserDefaults.standard.viewedCoachMarks = 0
         UserDefaults.standard.amountLimit = 0
         UserDefaults.standard.bearerToken = ""
         UserDefaults.standard.isLoggedIn = false

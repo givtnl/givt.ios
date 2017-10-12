@@ -19,6 +19,7 @@ extension UserDefaults {
         case guid
         case userExt
         case mandateSigned
+        case viewedCoachMarks
     }
     
     var isLoggedIn: Bool {
@@ -111,6 +112,16 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.mandateSigned.rawValue)
+            synchronize()
+        }
+    }
+    
+    var viewedCoachMarks: Int {
+        get {
+            return integer(forKey: UserDefaultsKeys.viewedCoachMarks.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.viewedCoachMarks.rawValue)
             synchronize()
         }
     }

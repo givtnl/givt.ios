@@ -25,6 +25,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var secondView: UIView!
     @IBOutlet var thirdView: UIView!
     @IBOutlet var collectionButton: UIButton!
+    var firstBalloon: Balloon?
+    var secondBalloon: Balloon?
+    var thirdBalloon: Balloon?
+    var topAnchor: NSLayoutConstraint!
+    var leadingAnchor: NSLayoutConstraint!
     private var amountLimit: Int {
         get {
             return UserDefaults.standard.amountLimit
@@ -98,10 +103,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(true)
-        
-        
-
-        
         decimalNotation = NSLocale.current.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         let backItem = UIBarButtonItem()
@@ -111,6 +112,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         btnGive.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         self.navigationItem.backBarButtonItem = backItem
         checkAmount()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        showFirstBalloon()
     }
     
     func addGestureRecognizerToView(view: UIView) {
@@ -142,11 +149,17 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             firstLine.isHidden = false
             selectedAmount = 0
         case 1?:
+            firstBalloon?.hide()
             secondLine.isHidden = false
             selectedAmount = 1
+            showSecondBalloon(view: secondView, arrowPointsTo: amountLabel2)
         case 2?:
+            secondBalloon?.hide()
+            
             thirdLine.isHidden = false
             selectedAmount = 2
+
+            showThirdBalloon(view: thirdView, arrowPointsTo: amountLabel3)
         default:
             //niets
             break
@@ -163,6 +176,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
                 selectView(1)
             }
             numberOfCollects = 2
+            thirdBalloon?.hide()
         } else if !secondView.isHidden {
             secondView.isHidden = true
             collectionButton.setImage(#imageLiteral(resourceName: "onecollect.png"), for: .normal)
@@ -173,6 +187,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             widthConstraint = collectionView.widthAnchor.constraint(equalToConstant: 150)
             widthConstraint.isActive = true
             numberOfCollects = 1
+            secondBalloon?.hide()
         }
     }
 
@@ -326,22 +341,103 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     @IBAction func addCollection(_ sender: Any) {
-        var button = sender as! UIButton
-        NSLayoutConstraint.deactivate([widthConstraint])
-        widthConstraint = collectionView.widthAnchor.constraint(equalTo: containerCollection.widthAnchor, multiplier: 1)
-        widthConstraint.isActive = true
-        button.setImage(#imageLiteral(resourceName: "twocollect.png"), for: .normal)
-        if secondView.isHidden {
-            secondView.isHidden = false
-            selectView(1)
-            numberOfCollects = 2
-        } else if thirdView.isHidden {
-            thirdView.isHidden = false
-            leftSpacerView.isHidden = true
-            rightSpacerView.isHidden = true
-            selectView(2)
-            numberOfCollects = 3
+        print(UserDefaults.standard.viewedCoachMarks)
+        if UserDefaults.standard.viewedCoachMarks == 1 {
+            let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("AddCollectConfirm", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("YesPlease", comment: ""), style: .default, handler: { action in
+                
+                self.addCollect(sender)
+                
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("NoThanks", comment: ""), style: .cancel, handler: { action in
+                self.firstBalloon?.hide(true)
+                return
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            addCollect(sender)
         }
+        
+
+    }
+    
+    func addCollect(_ sender: Any)  {
+        let button = sender as! UIButton
+        NSLayoutConstraint.deactivate([self.widthConstraint])
+        self.widthConstraint = self.collectionView.widthAnchor.constraint(equalTo: self.containerCollection.widthAnchor, multiplier: 1)
+        self.widthConstraint.isActive = true
+        button.setImage(#imageLiteral(resourceName: "twocollect.png"), for: .normal)
+        if self.secondView.isHidden {
+            self.secondView.isHidden = false
+            self.selectView(1)
+            self.numberOfCollects = 2
+            
+            
+        } else if self.thirdView.isHidden {
+            self.thirdView.isHidden = false
+            self.leftSpacerView.isHidden = true
+            self.rightSpacerView.isHidden = true
+            
+            self.selectView(2)
+            self.numberOfCollects = 3
+            
+        }
+    }
+    
+    func showFirstBalloon() {
+        if UserDefaults.standard.viewedCoachMarks != 0 {
+            return
+        }
+        
+        let balloon = Balloon(text: NSLocalizedString("Ballon_ActiveerCollecte", comment: ""))
+        self.view.addSubview(balloon)
+        self.view.layoutIfNeeded()
+        balloon.positionTooltip()
+        balloon.pinRight(view: self.collectionButton)
+        balloon.pinTop(view: self.containerCollection)
+        balloon.bounce()
+        
+        self.firstBalloon = balloon
+        UserDefaults.standard.viewedCoachMarks += 1
+    }
+
+    func showSecondBalloon(view: UIView, arrowPointsTo: UIView) {
+        if UserDefaults.standard.viewedCoachMarks != 1 {
+            return
+        }
+        
+        let balloon = Balloon(text: NSLocalizedString("Ballon_VerwijderCollecte", comment: ""))
+        self.view.addSubview(balloon)
+        self.view.layoutIfNeeded()
+        
+        balloon.centerTooltip(view: arrowPointsTo)
+        
+        balloon.pinTop(view: self.containerCollection)
+        balloon.pinLeft(view: view, -((200 - secondView.bounds.width)/2))
+        
+        balloon.bounce()
+        self.secondBalloon = balloon
+        UserDefaults.standard.viewedCoachMarks += 1
+    }
+
+    
+    func showThirdBalloon(view: UIView, arrowPointsTo: UIView) {
+        if UserDefaults.standard.viewedCoachMarks != 2 {
+            return
+        }
+        
+        let balloon = Balloon(text: NSLocalizedString("Ballon_VerwijderCollecte", comment: ""))
+        self.view.addSubview(balloon)
+        self.view.layoutIfNeeded()
+        
+        balloon.centerTooltip(view: arrowPointsTo)
+        
+        balloon.pinTop(view: self.containerCollection)
+        balloon.pinRight(view: self.containerCollection, 5)
+        
+        balloon.bounce()
+        self.thirdBalloon = balloon
+        UserDefaults.standard.viewedCoachMarks += 1
     }
     
 }
