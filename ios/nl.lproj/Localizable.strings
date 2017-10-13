@@ -169,7 +169,7 @@
 
 /*Kan dit leuker?*/
 /*Foutmelding die je te zien krijgt als je een verkeerd email of wachtwoord invoert*/
-"WrongCredentials" = "Dit e-mailadres of wachtwoord \nkomt ons niet bekend voor. \nIs het mogelijk dat je een ander e-mailadres \nen/of wachtwoord hebt opgegeven?";
+"WrongCredentials" = "Dit e-mailadres of wachtwoord komt ons niet bekend voor. Is het mogelijk dat je een ander e-mailadres en/of wachtwoord hebt opgegeven?";
 
 /*"Ja, graag"-knop, te zien als je kiest om touchid te gebruiken of niet*/
 "YesPlease" = "Ja, graag";
@@ -556,7 +556,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*Knop Verder*/
 "Go" = "Verder";
-"NeedEmailToGiveSubtext" = "Met je e-mailadres zorgen wij ervoor dat je gift nooit verloren gaat.";
+"NeedEmailToGiveSubtext" = "Om je giften goed af te kunnen handelen, hebben we je e-mailadres nodig.";
 "CompleteRegistrationAfterGiveFirst" = "Leuk dat je hebt gegeven met Givt!\n\nWe willen graag dat je Givt verder\nkunt gebruiken, dus vragen we je om\nje registratie compleet te maken.";
 "TermsUpdate" = "De algemene voorwaarden zijn bijgewerkt.";
 "AgreeToUpdateTerms" = "Bij het doorgaan ga je akkoord met de nieuwe voorwaarden.";
@@ -571,7 +571,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ChooseLowerAmount" = "Bedrag aanpassen";
 "TurnOnBluetooth" = "Bluetooth aanzetten";
 "ErrorTLDCheck" = "Helaas, met dit e-mailadres lukt het registreren niet. Controleer je nog even op typefouten?";
-"AddCollectConfirm" = "Je gaat nu een tweede collecte toevoegen. Weet je het zeker?";
+"AddCollectConfirm" = "Weet je zeker dat je een tweede collecte wil toevoegen?";
 "FAQvraag0" = "Feedback of vragen?";
 "FAQantwoord0" = "Je kunt ons een bericht sturen door in het app-menu naar \"Over Givt / Contact\" te gaan en daar je vraag te stellen. We zijn natuurlijk ook bereikbaar via +31 320 320 115 of support@givtapp.net.";
 "PersonalPageHeader" = "Pas je IBAN hier aan.";
@@ -594,7 +594,8 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*Fuzzy*/
 "WelcomeContinue" = "Aan de slag";
-"EnterEmail" = "Nog één klein stapje";
+"EnterEmail" = "Aan de slag";
 "FinalizeRegistrationPopupText" = "We willen graag dat je Givt verder kunt gebruiken, dus vragen we je om je registratie compleet te maken.";
 "FinalizeRegistration" = "Registratie voltooien";
 "ImportantReminder" = "Belangrijke herinnering";
+"MultipleCollections" = "Meerdere collectes";

@@ -540,7 +540,7 @@
 
 /*Knop Verder*/
 "Go" = "Go";
-"NeedEmailToGiveSubtext" = "With your e-mail address we can make sure your gift will be given.";
+"NeedEmailToGiveSubtext" = "To be able to process your donations correctly, we need your e-mail address.";
 "CompleteRegistrationAfterGiveFirst" = "Thanks for giving with Givt!\n\nWe would love for you to keep \nusing Givt, so we ask you \nto complete the registration.";
 "TermsUpdate" = "The terms and conditions have been updated.";
 "AgreeToUpdateTerms" = "You agree to the new terms and conditions if you continue.";
@@ -555,7 +555,7 @@
 "ChooseLowerAmount" = "Choose a lower amount";
 "TurnOnBluetooth" = "Switch on bluetooth";
 "ErrorTLDCheck" = "Sorry, you can’t register with this e-mail address. Please check that the spelling is correct.";
-"AddCollectConfirm" = "You're about to add a second collection. Are you sure?";
+"AddCollectConfirm" = "Are you sure you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
 "FAQantwoord0" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +31 320 320 115 or by sending an e-mail to support@givtapp.net.";
 "PersonalPageHeader" = "Change your IBAN here.";
@@ -576,7 +576,8 @@
 /*antwoord op vraag15*/
 "FAQantwoord15" = "Yes, your Givt donations are tax deductable, but only when you’re giving to institutions that are registered as ANBI (Public Benefit Organisation) or SBBI (Social Importance Organisation). Check if the church or institution has such a registration. Since it’s quite a bit of work to gather all your donations for your tax declaration, the Givt app offers you the option to annually download an overview of your donations. You can use this overview for your tax declaration. It’s a piece of cake.";
 "WelcomeContinue" = "Let's go";
-"EnterEmail" = "One more step";
+"EnterEmail" = "Let's go";
 "FinalizeRegistrationPopupText" = "We would love for you to keep \nusing Givt, so we ask that you \nfinish the registration.";
 "FinalizeRegistration" = "Finish registration";
 "ImportantReminder" = "Important reminder";
+"MultipleCollections" = "Multiple collections";

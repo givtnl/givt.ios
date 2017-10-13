@@ -116,7 +116,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        UserDefaults.standard.viewedCoachMarks = 0
         showFirstBalloon()
     }
     
@@ -139,32 +139,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         selectView(tagIdx!)
     }
     
-    func selectView(_ idx: Int!) {
-        firstLine.isHidden = true
-        secondLine.isHidden = true
-        thirdLine.isHidden = true
-
-        switch idx {
-        case 0?:
-            firstLine.isHidden = false
-            selectedAmount = 0
-        case 1?:
-            firstBalloon?.hide()
-            secondLine.isHidden = false
-            selectedAmount = 1
-            showSecondBalloon(view: secondView, arrowPointsTo: amountLabel2)
-        case 2?:
-            secondBalloon?.hide()
-            
-            thirdLine.isHidden = false
-            selectedAmount = 2
-
-            showThirdBalloon(view: thirdView, arrowPointsTo: amountLabel3)
-        default:
-            //niets
-            break
-        }
-    }
+    
     
     @objc func removeCollection() {
         print("tapped")
@@ -343,13 +318,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func addCollection(_ sender: Any) {
         print(UserDefaults.standard.viewedCoachMarks)
         if UserDefaults.standard.viewedCoachMarks == 1 {
-            let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("AddCollectConfirm", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("YesPlease", comment: ""), style: .default, handler: { action in
+            let alert = UIAlertController(title: NSLocalizedString("MultipleCollections", comment: ""), message: NSLocalizedString("AddCollectConfirm", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { action in
                 
                 self.addCollect(sender)
                 
             }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("NoThanks", comment: ""), style: .cancel, handler: { action in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: { action in
                 self.firstBalloon?.hide(true)
                 return
             }))
@@ -371,8 +346,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             self.secondView.isHidden = false
             self.selectView(1)
             self.numberOfCollects = 2
-            
-            
         } else if self.thirdView.isHidden {
             self.thirdView.isHidden = false
             self.leftSpacerView.isHidden = true
@@ -380,7 +353,33 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             
             self.selectView(2)
             self.numberOfCollects = 3
+        }
+    }
+    
+    func selectView(_ idx: Int!) {
+        firstLine.isHidden = true
+        secondLine.isHidden = true
+        thirdLine.isHidden = true
+        
+        switch idx {
+        case 0?:
+            firstLine.isHidden = false
+            selectedAmount = 0
+        case 1?:
+            firstBalloon?.hide()
+            secondLine.isHidden = false
+            selectedAmount = 1
+            showSecondBalloon(view: secondView, arrowPointsTo: amountLabel2)
+        case 2?:
+            secondBalloon?.hide()
             
+            thirdLine.isHidden = false
+            selectedAmount = 2
+            
+            showThirdBalloon(view: thirdView, arrowPointsTo: amountLabel3)
+        default:
+            //niets
+            break
         }
     }
     
@@ -391,10 +390,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         
         let balloon = Balloon(text: NSLocalizedString("Ballon_ActiveerCollecte", comment: ""))
         self.view.addSubview(balloon)
-        self.view.layoutIfNeeded()
+        
         balloon.positionTooltip()
         balloon.pinRight(view: self.collectionButton)
-        balloon.pinTop(view: self.containerCollection)
+        balloon.pinTop(view: self.containerCollection, 0)
+        self.view.layoutIfNeeded()
         balloon.bounce()
         
         self.firstBalloon = balloon
@@ -414,7 +414,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         
         balloon.pinTop(view: self.containerCollection)
         balloon.pinLeft(view: view, -((200 - secondView.bounds.width)/2))
-        
+        self.view.layoutIfNeeded()
         balloon.bounce()
         self.secondBalloon = balloon
         UserDefaults.standard.viewedCoachMarks += 1
@@ -434,7 +434,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         
         balloon.pinTop(view: self.containerCollection)
         balloon.pinRight(view: self.containerCollection, 5)
-        
+        self.view.layoutIfNeeded()
         balloon.bounce()
         self.thirdBalloon = balloon
         UserDefaults.standard.viewedCoachMarks += 1

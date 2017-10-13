@@ -53,9 +53,7 @@ class Balloon: UIView {
         pointer.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         pointer.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(pointer)
-        
-        
-        
+
         pointer.centerYAnchor.constraint(equalTo: self.topAnchor).isActive = true
         pointer.heightAnchor.constraint(equalToConstant: 20).isActive = true
         pointer.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -81,16 +79,21 @@ class Balloon: UIView {
     }
     
     func bounce() {
-        self.superview?.layoutIfNeeded()
-        topConstraint.constant = 4
-        
-        UIView.animate(withDuration: 0.4, delay: 0, options: [.repeat, .autoreverse], animations: {
-            UIView.setAnimationRepeatCount(5)
-            self.superview?.layoutIfNeeded()
-        }) { (status) in
-            self.topConstraint.constant = 0
-            self.superview?.layoutIfNeeded()
-        }
+        UIView.animate(withDuration: 0.4,
+                       delay: 0.1,
+                       options: [.autoreverse, .repeat],
+                       animations: { () -> Void in
+                        //do not reverse last frame, source
+                        //https://stackoverflow.com/questions/5040494/uiview-animations-with-autoreverse/11670490#11670490
+                        UIView.setAnimationRepeatCount(4.5)
+                        self.topConstraint.constant = 4
+                        self.superview?.layoutIfNeeded()
+        }, completion: { (finished) -> Void in
+            UIView.animate(withDuration: 0.4, animations: {
+                self.topConstraint.constant = 0
+                self.superview?.layoutIfNeeded()
+            })
+        })
     }
     
     func hide(_ animated: Bool = false) {
