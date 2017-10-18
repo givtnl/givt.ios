@@ -22,45 +22,39 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         for tr in transactions {
             trs.append(["Amount" : tr.amount,"CollectId" : tr.collectId, "Timestamp" : tr.timeStamp, "BeaconId" : tr.beaconId])
         }
-        var parameters = [NSDictionary]()
-        parameters.append(["amountLimit" : 0,
+        var parameters: NSDictionary
+        parameters = ["amountLimit" : 0,
                           "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
-                          "GUID" : "52435d45-042e-4ca0-b734-aa592d882fd3",
+                          "GUID" : "",
                           "urlPart" : "store",
                           "givtObj" : trs,
                           "apiUrl" : "https://givtapidebug.azurewebsites.net/",
                           "lastDigits" : "XXXXXXXXXXXXXXX7061",
                           "organisation" : "Bjornkerk",
                           "mandatePopup" : "",
-                          "spUrl" : ""])
+                          "spUrl" : ""] as NSDictionary
         
         
         guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
             return
         }
+        
         print(jsonParameters.description)
         let plainTextBytes = jsonParameters.base64EncodedString()
         let formatted = String(format: "https://givtapidebug.azurewebsites.net/givtapp4.html?msg=%@", plainTextBytes);
         self.showWebsite(url: formatted)
-
-        /*
-            let alert = UIAlertController(title: "Hey Gulle gever", message: "wacht es effe 30 seconde jo", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: { action in
-                self.popToRoot(animated: true)
-            }))
-            self.present(alert, animated: true, completion: nil)
-         */
-        
     }
     
     func showWebsite(url: String){
         let url = URL(string: url)!
         let webVC = SFSafariViewController(url: url)
         webVC.delegate = self
-        webVC.preferredBarTintColor = UIColor.init(red: 24, green: 24, blue: 24)
-        
+        DispatchQueue.main.async {
+            webVC.preferredBarTintColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
+            webVC.preferredControlTintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        }
         self.navigationController?.present(webVC, animated: true) {
-            UIApplication.shared.statusBarStyle = .lightContent
+            UIApplication.shared.statusBarStyle = .default
         }
     }
 
@@ -142,6 +136,10 @@ extension ScanViewController : SFSafariViewControllerDelegate{
 
         //self.popToRoot(animated: false)
         UIApplication.shared.statusBarStyle = .default
+    }
+    
+    func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
+        print("url loaded")
     }
 
 

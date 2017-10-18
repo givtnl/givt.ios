@@ -138,33 +138,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         var tagIdx = sender.view?.tag
         selectView(tagIdx!)
     }
-    
-    
-    
-    @objc func removeCollection() {
-        print("tapped")
-        if !thirdView.isHidden {
-            thirdView.isHidden = true
-            leftSpacerView.isHidden = false
-            rightSpacerView.isHidden = false
-            if selectedAmount == 2 {
-                selectView(1)
-            }
-            numberOfCollects = 2
-            thirdBalloon?.hide()
-        } else if !secondView.isHidden {
-            secondView.isHidden = true
-            collectionButton.setImage(#imageLiteral(resourceName: "onecollect.png"), for: .normal)
-            if selectedAmount == 1 {
-                selectView(0)
-            }
-            NSLayoutConstraint.deactivate([widthConstraint])
-            widthConstraint = collectionView.widthAnchor.constraint(equalToConstant: 150)
-            widthConstraint.isActive = true
-            numberOfCollects = 1
-            secondBalloon?.hide()
-        }
-    }
+
 
     @IBOutlet weak var amountLabel: UILabel!
     override func didReceiveMemoryWarning() {
@@ -173,6 +147,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @IBAction func addValue(sender:UIButton!) {
+        hideBalloons()
         if currentAmountLabel.text == "0" || pressedShortcutKey {
             currentAmountLabel.text = ""
         }
@@ -343,16 +318,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         self.widthConstraint.isActive = true
         button.setImage(#imageLiteral(resourceName: "twocollect.png"), for: .normal)
         if self.secondView.isHidden {
-            self.secondView.isHidden = false
             self.selectView(1)
-            self.numberOfCollects = 2
         } else if self.thirdView.isHidden {
-            self.thirdView.isHidden = false
-            self.leftSpacerView.isHidden = true
-            self.rightSpacerView.isHidden = true
-            
             self.selectView(2)
-            self.numberOfCollects = 3
         }
     }
     
@@ -364,22 +332,47 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         switch idx {
         case 0?:
             firstLine.isHidden = false
-            selectedAmount = 0
         case 1?:
-            firstBalloon?.hide()
+            secondView.isHidden = false
             secondLine.isHidden = false
-            selectedAmount = 1
+            
             showSecondBalloon(view: secondView, arrowPointsTo: amountLabel2)
         case 2?:
-            secondBalloon?.hide()
-            
+            thirdView.isHidden = false
             thirdLine.isHidden = false
-            selectedAmount = 2
-            
+            leftSpacerView.isHidden = true
+            rightSpacerView.isHidden = true
+
             showThirdBalloon(view: thirdView, arrowPointsTo: amountLabel3)
         default:
-            //niets
             break
+        }
+        selectedAmount = idx
+        numberOfCollects = idx + 1
+    }
+    
+    @objc func removeCollection() {
+        print("tapped")
+        if !thirdView.isHidden {
+            thirdView.isHidden = true
+            leftSpacerView.isHidden = false
+            rightSpacerView.isHidden = false
+            if selectedAmount == 2 {
+                selectView(1)
+            }
+            numberOfCollects = 2
+            thirdBalloon?.hide()
+        } else if !secondView.isHidden {
+            secondView.isHidden = true
+            collectionButton.setImage(#imageLiteral(resourceName: "onecollect.png"), for: .normal)
+            if selectedAmount == 1 {
+                selectView(0)
+            }
+            NSLayoutConstraint.deactivate([widthConstraint])
+            widthConstraint = collectionView.widthAnchor.constraint(equalToConstant: 150)
+            widthConstraint.isActive = true
+            numberOfCollects = 1
+            secondBalloon?.hide()
         }
     }
     
@@ -402,6 +395,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     func showSecondBalloon(view: UIView, arrowPointsTo: UIView) {
+        firstBalloon?.hide()
         if UserDefaults.standard.viewedCoachMarks != 1 {
             return
         }
@@ -422,6 +416,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
 
     
     func showThirdBalloon(view: UIView, arrowPointsTo: UIView) {
+        secondBalloon?.hide()
         if UserDefaults.standard.viewedCoachMarks != 2 {
             return
         }
@@ -438,6 +433,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         balloon.bounce()
         self.thirdBalloon = balloon
         UserDefaults.standard.viewedCoachMarks += 1
+    }
+    
+    func hideBalloons() {
+        firstBalloon?.hide()
+        secondBalloon?.hide()
+        thirdBalloon?.hide()
     }
     
 }
