@@ -2,11 +2,164 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9415ffff-c3e0-4d46-afe2-628c5cae1222" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Balloon.swift" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/TriangleView.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/menu_badge.imageset/menu_badge.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/menu_badge.imageset/menu_badge@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/menu_badge.imageset/menu_badge@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/menu_base.imageset/menu_base.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/menu_base.imageset/menu_base@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/menu_base.imageset/menu_base@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/redcircle.imageset/redcircle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/redcircle.imageset/redcircle@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/redcircle.imageset/redcircle@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/pencil.imageset/pencil.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/pencil.imageset/pencil@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/pencil.imageset/pencil@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Colors/Color-2.colorset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Colors/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Colors/darkGreen.colorset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Colors/lightBlue.colorset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Colors/lightGreen.colorset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Colors/lightPurple.colorset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/active_eye.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/backbtn.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/checked.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/closewhite.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/decrease.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/dropdown.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/erase.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/euro.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/exit.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givt20h.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givt_animation.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givt_registration.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givtsplash.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givySlimPay.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givymoney.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/help.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/increase.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/info24.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/list.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/littleinfo.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/lock.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/menu_badge.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/menu_base.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/navBar.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/onecollect.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/person.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/redcircle.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/rightarrow.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/share.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/success.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/twocollect.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/unchecked.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/visible_eye.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/pencil.imageset/Contents.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/FirstUse/EmailOnlyViewController.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/FirstUse/FirstUseViewController.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/FirstUseNavigationViewController.swift" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Welcome.storyboard" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/menu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/menu@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ios/menu@3x.png" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/active_eye.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/active_eye.imageset/active_eye.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/active_eye@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/active_eye.imageset/active_eye@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/active_eye@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/active_eye.imageset/active_eye@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/backbtn.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/backbtn.imageset/backbtn.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/backbtn@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/backbtn.imageset/backbtn@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/backbtn@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/backbtn.imageset/backbtn@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/checked.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/checked.imageset/checked.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/checked@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/checked.imageset/checked@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/checked@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/checked.imageset/checked@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/closewhite.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/closewhite.imageset/closewhite.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/closewhite@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/closewhite.imageset/closewhite@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/closewhite@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/closewhite.imageset/closewhite@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/decrease.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/decrease.imageset/decrease.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/decrease@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/decrease.imageset/decrease@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/decrease@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/decrease.imageset/decrease@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/dropdown.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/dropdown.imageset/dropdown.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/dropdown@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/dropdown.imageset/dropdown@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/dropdown@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/dropdown.imageset/dropdown@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/erase.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/erase.imageset/erase.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/erase@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/erase.imageset/erase@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/erase@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/erase.imageset/erase@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/euro.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/euro.imageset/euro.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/euro@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/euro.imageset/euro@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/euro@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/euro.imageset/euro@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/exit.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/exit.imageset/exit.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/exit@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/exit.imageset/exit@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/exit@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/exit.imageset/exit@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givt20h.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givt20h.imageset/givt20h.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givt20h@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givt20h.imageset/givt20h@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givt20h@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givt20h.imageset/givt20h@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givt_animation.gif" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givt_animation.imageset/givt_animation.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givt_registration.gif" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givt_registration.imageset/givt_registration.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givtsplash.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givtsplash.imageset/givtsplash.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givtsplash@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givtsplash.imageset/givtsplash@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givtsplash@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givtsplash.imageset/givtsplash@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givySlimPay.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givySlimPay.imageset/givySlimPay.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givySlimPay@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givySlimPay.imageset/givySlimPay@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givySlimPay@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givySlimPay.imageset/givySlimPay@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givymoney.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givymoney.imageset/givymoney.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givymoney@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givymoney.imageset/givymoney@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/givymoney@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givymoney.imageset/givymoney@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/help.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/help.imageset/help.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/help@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/help.imageset/help@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/help@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/help.imageset/help@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/increase.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/increase.imageset/increase.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/increase@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/increase.imageset/increase@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/increase@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/increase.imageset/increase@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/info24.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/info24.imageset/info24.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/info24@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/info24.imageset/info24@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/info24@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/info24.imageset/info24@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/list.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/list.imageset/list.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/list@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/list.imageset/list@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/list@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/list.imageset/list@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/littleinfo.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/littleinfo.imageset/littleinfo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/littleinfo@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/littleinfo.imageset/littleinfo@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/littleinfo@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/littleinfo.imageset/littleinfo@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/lock.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/lock.imageset/lock.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/lock@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/lock.imageset/lock@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/lock@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/lock.imageset/lock@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/navBar.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/navBar.imageset/navBar.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/navBar@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/navBar.imageset/navBar@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/navBar@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/navBar.imageset/navBar@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/onecollect.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/onecollect.imageset/onecollect.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/onecollect@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/onecollect.imageset/onecollect@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/onecollect@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/onecollect.imageset/onecollect@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/person.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/person.imageset/person.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/person@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/person.imageset/person@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/person@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/person.imageset/person@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/rightarrow.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/rightarrow.imageset/rightarrow.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/rightarrow@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/rightarrow.imageset/rightarrow@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/rightarrow@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/rightarrow.imageset/rightarrow@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/share.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/share.imageset/share.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/share@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/share.imageset/share@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/share@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/share.imageset/share@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/success.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/success.imageset/success.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/success@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/success.imageset/success@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/success@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/success.imageset/success@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/twocollect.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/twocollect.imageset/twocollect.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/twocollect@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/twocollect.imageset/twocollect@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/twocollect@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/twocollect.imageset/twocollect@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/unchecked.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/unchecked.imageset/unchecked.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/unchecked@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/unchecked.imageset/unchecked@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/unchecked@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/unchecked.imageset/unchecked@3x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/visible_eye.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/visible_eye.imageset/visible_eye.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/visible_eye@2x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/visible_eye.imageset/visible_eye@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ios/visible_eye@3x.png" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/visible_eye.imageset/visible_eye@3x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/ios.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/AmountViewController.swift" afterPath="$PROJECT_DIR$/ios/AmountViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/AppConstants.swift" afterPath="$PROJECT_DIR$/ios/AppConstants.swift" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/ios/Base.lproj/Main.storyboard" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/BaseViewController.swift" afterPath="$PROJECT_DIR$/ios/BaseViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/Managers/LoginManager.swift" afterPath="$PROJECT_DIR$/ios/Managers/LoginManager.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/Setting.swift" afterPath="$PROJECT_DIR$/ios/Setting.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/SettingTableViewController.swift" afterPath="$PROJECT_DIR$/ios/SettingTableViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/SettingsItemTableViewCell.swift" afterPath="$PROJECT_DIR$/ios/SettingsItemTableViewCell.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/UIImage+gif.swift" afterPath="$PROJECT_DIR$/ios/UIImage+gif.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/UserDefaults+helpers.swift" afterPath="$PROJECT_DIR$/ios/UserDefaults+helpers.swift" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,12 +170,62 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_71CDCF39-3179-4ED7-AA80-EDA50027FD48" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="AmountViewController.swift" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="AmountViewController.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ios/AmountViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1482">
-              <caret line="197" column="5" lean-forward="false" selection-start-line="197" selection-start-column="5" selection-end-line="197" selection-end-column="5" />
+            <state relative-caret-position="1655">
+              <caret line="319" column="9" lean-forward="false" selection-start-line="319" selection-start-column="9" selection-end-line="319" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Setting.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ios/Setting.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SettingTableViewController.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ios/SettingTableViewController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-950">
+              <caret line="48" column="44" lean-forward="false" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginManager.swift" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ios/Managers/LoginManager.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1386">
+              <caret line="334" column="26" lean-forward="false" selection-start-line="334" selection-start-column="9" selection-end-line="334" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppConstants.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ios/AppConstants.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegistrationUser.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ios/RegistrationUser.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -42,6 +245,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/ios/AmountViewController.swift" />
+        <option value="$PROJECT_DIR$/ios/SettingsItemTableViewCell.swift" />
+        <option value="$PROJECT_DIR$/ios/SettingTableViewController.swift" />
+        <option value="$PROJECT_DIR$/ios/Managers/LoginManager.swift" />
       </list>
     </option>
   </component>
@@ -52,9 +258,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3360" />
+    <option name="x" value="-1943" />
     <option name="y" value="-608" />
-    <option name="width" value="3360" />
+    <option name="width" value="1943" />
     <option name="height" value="1817" />
   </component>
   <component name="ProjectView">
@@ -72,7 +278,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Cidr.FilesView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -89,12 +294,31 @@
               <item name="" type="efc3779f:XcodeRootNode" />
               <item name="ios" type="1d218c8b:XcodeProjectNode" />
               <item name="ios" type="fcab9f18:XcodeViewNode" />
+              <item name="Managers" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ios" type="1d218c8b:XcodeProjectNode" />
+              <item name="ios" type="fcab9f18:XcodeViewNode" />
+              <item name="Models" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ios" type="1d218c8b:XcodeProjectNode" />
+              <item name="ios" type="fcab9f18:XcodeViewNode" />
               <item name="ViewControllers" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="ios" type="1d218c8b:XcodeProjectNode" />
+              <item name="ios" type="fcab9f18:XcodeViewNode" />
+              <item name="Views" type="fcab9f18:XcodeViewNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Cidr.FilesView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -132,20 +356,20 @@
       <updated>1507723560046</updated>
       <workItem from="1507723563938" duration="39000" />
       <workItem from="1507723999743" duration="7654000" />
+      <workItem from="1508407391255" duration="2385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7693000" />
+    <option name="totallyTimeSpent" value="10078000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3360" y="-608" width="3360" height="1817" extended-state="0" />
+    <frame x="-1943" y="-608" width="1943" height="1817" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.104166664" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18013382" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893983" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14269342" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -155,6 +379,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39942694" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893983" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -178,8 +403,64 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ios/AmountViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1482">
-          <caret line="197" column="5" lean-forward="false" selection-start-line="197" selection-start-column="5" selection-end-line="197" selection-end-column="5" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/AmountViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1655">
+          <caret line="319" column="9" lean-forward="false" selection-start-line="319" selection-start-column="9" selection-end-line="319" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/Setting.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/SettingsItemTableViewCell.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/SettingTableViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-950">
+          <caret line="48" column="44" lean-forward="false" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/RegistrationUser.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/AppConstants.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/Managers/LoginManager.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1386">
+          <caret line="334" column="26" lean-forward="false" selection-start-line="334" selection-start-column="9" selection-end-line="334" selection-end-column="26" />
           <folding />
         </state>
       </provider>
