@@ -1,7 +1,186 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Xw-O6-8oK">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Black</string>
+            <string>Avenir-Heavy</string>
+            <string>Avenir-Light</string>
+            <string>Avenir-Roman</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--First Use View Controller-->
+        <scene sceneID="gqD-X6-col">
+            <objects>
+                <viewController storyboardIdentifier="FirstUseViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="D49-Il-Zbt" customClass="FirstUseViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W05-K3-KXD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HERE BE FIRST USE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H7N-Fj-0xM">
+                                <rect key="frame" x="20" y="251.5" width="335" height="164"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-qc-YNR" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="zUh-gI-RP1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Aan de slag">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Op2-mF-ZtZ" kind="show" id="1Ej-84-aOZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pen-91-zUq" firstAttribute="trailing" secondItem="H7N-Fj-0xM" secondAttribute="trailing" constant="20" id="3RZ-x2-aUm"/>
+                            <constraint firstItem="H7N-Fj-0xM" firstAttribute="leading" secondItem="Pen-91-zUq" secondAttribute="leading" constant="20" id="Dnk-7D-ovP"/>
+                            <constraint firstItem="Pen-91-zUq" firstAttribute="bottom" secondItem="Qk9-qc-YNR" secondAttribute="bottom" constant="20" id="EqG-55-dGr"/>
+                            <constraint firstItem="Pen-91-zUq" firstAttribute="trailing" secondItem="Qk9-qc-YNR" secondAttribute="trailing" constant="20" id="GRA-ls-ztT"/>
+                            <constraint firstItem="Qk9-qc-YNR" firstAttribute="leading" secondItem="Pen-91-zUq" secondAttribute="leading" constant="20" id="Vef-Qb-mRz"/>
+                            <constraint firstItem="H7N-Fj-0xM" firstAttribute="centerY" secondItem="W05-K3-KXD" secondAttribute="centerY" id="r0s-Zk-Cez"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pen-91-zUq"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ddO-3m-Iqz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mbK-tw-Lay" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="263.19999999999999" y="328.78560719640183"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="Vso-2O-NlE">
+            <objects>
+                <viewController restorationIdentifier="EmailOnlyViewController" storyboardIdentifier="EmailOnlyViewController" id="Op2-mF-ZtZ" customClass="EmailOnlyViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r0x-Y6-vDA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Om te geven met Givt is alvast je e-mailadres nodig." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ij-J8-57U">
+                                <rect key="frame" x="77.5" y="104" width="220" height="46.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="o9F-ru-U86"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(we sturen geen spam, beloofd)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYw-YU-1WR">
+                                <rect key="frame" x="0.0" y="153.5" width="375" height="22"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvW-7E-MZ4" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="557" width="335" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="MYk-7V-udN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Doorgaan">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="done:" destination="Op2-mF-ZtZ" eventType="touchUpInside" id="zzc-BL-vko"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bij het doorgaan ga je akkoord met de algemene voorwaarden." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Qa-5Kx">
+                                <rect key="frame" x="40" y="606" width="295" height="41"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
+                                <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emailadres" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dLS-u5-htt" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="311" width="335" height="44"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4cj-OD-Ixw"/>
+                                </constraints>
+                                <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                        <integer key="value" value="35"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WvW-7E-MZ4" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="20" id="O2E-Uw-Tqd"/>
+                            <constraint firstItem="yYw-YU-1WR" firstAttribute="top" secondItem="0Ij-J8-57U" secondAttribute="bottom" constant="3" id="UKm-Y7-QNr"/>
+                            <constraint firstItem="yYw-YU-1WR" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" id="Z4H-Du-KSX"/>
+                            <constraint firstItem="2Xl-Qa-5Kx" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="40" id="Zkr-pA-icn"/>
+                            <constraint firstItem="dLS-u5-htt" firstAttribute="centerY" secondItem="r0x-Y6-vDA" secondAttribute="centerY" id="Zvf-sK-qpY"/>
+                            <constraint firstItem="0Ij-J8-57U" firstAttribute="top" secondItem="6Sa-97-5E2" secondAttribute="top" constant="40" id="aby-IA-a5e"/>
+                            <constraint firstItem="dLS-u5-htt" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="20" id="b4k-LA-J5Q"/>
+                            <constraint firstItem="dLS-u5-htt" firstAttribute="centerX" secondItem="r0x-Y6-vDA" secondAttribute="centerX" id="eg2-cr-xxF"/>
+                            <constraint firstItem="6Sa-97-5E2" firstAttribute="bottom" secondItem="2Xl-Qa-5Kx" secondAttribute="bottom" constant="20" id="fcb-Sp-Kkh"/>
+                            <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="dLS-u5-htt" secondAttribute="trailing" constant="20" id="ghB-eG-ad7"/>
+                            <constraint firstItem="2Xl-Qa-5Kx" firstAttribute="top" secondItem="WvW-7E-MZ4" secondAttribute="bottom" constant="5" id="gmV-w5-07M"/>
+                            <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="2Xl-Qa-5Kx" secondAttribute="trailing" constant="40" id="lUC-R5-SHW"/>
+                            <constraint firstItem="0Ij-J8-57U" firstAttribute="centerX" secondItem="r0x-Y6-vDA" secondAttribute="centerX" id="oMu-gE-84U"/>
+                            <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="WvW-7E-MZ4" secondAttribute="trailing" constant="20" id="sb8-db-Mff"/>
+                            <constraint firstItem="yYw-YU-1WR" firstAttribute="trailing" secondItem="6Sa-97-5E2" secondAttribute="trailing" id="w9Z-Hl-ZhK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Sa-97-5E2"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="WHh-0J-cdO"/>
+                    <connections>
+                        <outlet property="email" destination="dLS-u5-htt" id="ixy-PB-aov"/>
+                        <outlet property="terms" destination="2Xl-Qa-5Kx" id="Hf9-Mf-Xsc"/>
+                        <outlet property="titleItem" destination="WHh-0J-cdO" id="cJo-jA-F5b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FSb-kA-EAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1005.6" y="324.28785607196403"/>
+        </scene>
+        <!--First Use Navigation View Controller-->
+        <scene sceneID="mgr-1M-5XG">
+            <objects>
+                <navigationController storyboardIdentifier="FirstUseNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3Xw-O6-8oK" customClass="FirstUseNavigationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Cd-4N-Dov">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="D49-Il-Zbt" kind="relationship" relationship="rootViewController" id="egq-WI-wfL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QUT-vF-2p0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-510" y="329"/>
+        </scene>
+    </scenes>
 </document>

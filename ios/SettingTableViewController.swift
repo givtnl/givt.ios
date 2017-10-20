@@ -30,27 +30,34 @@ class SettingTableViewController: UITableViewController {
     }
     
     private func loadSettings(){
+        let userInfo: String = LoginManager.shared.isTempUser ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
+
         let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
-        
         let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
         let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: {})
-        
         let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: { self.logout() })
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: {})
-        
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: {})
-
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: {})
-        
-        let devRegister = Setting(name: "DEV REGISTER", image: UIImage(named: "share")!, callback: { self.register() })
+        let userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, hasBadge: LoginManager.shared.isTempUser, callback: { self.register() })
+        let welcomeView = Setting(name: "First Use", image: UIImage(named: "share")!) {
+            self.firstUse()
+        }
         
         items +=
             [
-                [givts, limit, accessCode],
+                [givts, limit, userInfoSetting, accessCode],
                 [changeAccount, screwAccount],
                 [aboutGivt, shareGivt],
-                [devRegister]
+                [welcomeView]
             ]
+    }
+    
+    private func firstUse() {
+        let register = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseNavigationViewController") as! FirstUseNavigationViewController
+        
+        //let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
+        self.present(register, animated: true, completion: nil)
     }
     
     private func register() {
@@ -66,12 +73,11 @@ class SettingTableViewController: UITableViewController {
         UserDefaults.standard.amountLimit = 0
         UserDefaults.standard.bearerToken = ""
         UserDefaults.standard.isLoggedIn = false
+        UserDefaults.standard.userClaims = LoginManager.UserClaims.startedApp.rawValue
         UserDefaults.standard.guid = ""
         UserDefaults.standard.bearerExpiration = Date()
-        let test = storyboard?.instantiateViewController(withIdentifier: "ncLogin")
-        self.present(test!, animated: true, completion: {
             self.hideLeftView(nil)
-        })
+        
     }
     
     private func openHistory() {
@@ -148,6 +154,7 @@ class SettingTableViewController: UITableViewController {
         let temp = self.items[indexPath.section]
         cell.settingLabel.text = temp[indexPath.row].name
         cell.settingImageView.image = temp[indexPath.row].image
+        cell.badge.isHidden = !temp[indexPath.row].hasBadge
         print(temp[indexPath.row].callback)
         return cell
     }

@@ -13,6 +13,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var widthConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UIView!
     
+    @IBOutlet var menu: UIBarButtonItem!
     @IBOutlet var containerCollection: UIView!
     @IBOutlet var amountLabel3: UILabel!
     @IBOutlet var amountLabel2: UILabel!
@@ -112,6 +113,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         btnGive.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         self.navigationItem.backBarButtonItem = backItem
         checkAmount()
+        
+        if LoginManager.shared.isTempUser {
+            
+            let alert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertActionStyle.default, handler: { action in  }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("FinalizeRegistration", comment: ""), style: .cancel, handler: { (action) in
+                //push registration flow
+            }))
+            self.present(alert, animated: true, completion: {})
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

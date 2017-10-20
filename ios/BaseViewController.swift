@@ -34,9 +34,11 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if !UserDefaults.standard.isLoggedIn
+        if LoginManager.shared.userClaim == .startedApp
         {
-            self.present((self.storyboard?.instantiateViewController(withIdentifier: "ncLogin"))!, animated: true, completion: nil)
+            let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseNavigationViewController") as! FirstUseNavigationViewController
+            self.present(welcome, animated: false, completion: nil)
+            //self.present((self.storyboard?.instantiateViewController(withIdentifier: "ncLogin"))!, animated: true, completion: nil)
         }
     }
     

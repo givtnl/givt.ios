@@ -12,9 +12,14 @@ class FirstUseNavigationViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
 
         // Do any additional setup after loading the view.
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

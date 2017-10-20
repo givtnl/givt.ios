@@ -230,10 +230,10 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemTableViewCell" rowHeight="50" id="YNy-Zl-iJq" customClass="SettingsItemTableViewCell" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="119.33333333333334" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="119.5" width="414" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YNy-Zl-iJq" id="y60-Nr-Zlz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="49.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1HR-VF-dZL">
@@ -272,11 +272,17 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="5qn-Ag-d7w" userLabel="labelVC">
-                                                    <rect key="frame" x="55" y="0.0" width="304" height="50"/>
+                                                    <rect key="frame" x="55" y="0.0" width="284" height="50"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                     <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redcircle" translatesAutoresizingMaskIntoConstraints="NO" id="jZb-bl-Ghc">
+                                                    <rect key="frame" x="344" y="0.0" width="15" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="FAk-KK-WNW"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBs-QU-xbK">
                                                     <rect key="frame" x="364" y="0.0" width="50" height="50"/>
                                                     <subviews>
@@ -306,6 +312,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="badge" destination="jZb-bl-Ghc" id="WQA-t4-A9T"/>
                                     <outlet property="settingImageView" destination="82Y-du-LGo" id="f0E-Za-kNP"/>
                                     <outlet property="settingLabel" destination="5qn-Ag-d7w" id="Umf-Bf-8og"/>
                                 </connections>
@@ -559,7 +566,7 @@ Kijk voor de status in je overzicht.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sli-WK-n4g">
-                                        <rect key="frame" x="0.0" y="153.66666666666669" width="334" height="82"/>
+                                        <rect key="frame" x="0.0" y="153.66666666666669" width="334" height="28"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1157,8 +1164,7 @@ Kijk voor de status in je overzicht.</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bedrag" id="h1k-Ax-YwJ">
-                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="QTY-DE-8Mb">
-                            <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu_badge.png" style="plain" id="QTY-DE-8Mb">
                             <connections>
                                 <action selector="toggleLeftViewAnimated:" destination="lyO-8n-bds" id="6HM-34-ghj"/>
                             </connections>
@@ -1534,10 +1540,11 @@ Kijk voor de status in je overzicht.</string>
         <image name="help.png" width="13" height="20"/>
         <image name="increase.png" width="40" height="40"/>
         <image name="info24.png" width="24" height="24"/>
-        <image name="menu.png" width="24" height="18"/>
+        <image name="menu_badge.png" width="34" height="28"/>
         <image name="onecollect.png" width="30" height="30"/>
+        <image name="redcircle" width="15" height="15"/>
         <image name="rightarrow.png" width="12" height="18"/>
-        <image name="success.png" width="91" height="82"/>
+        <image name="success.png" width="28" height="28"/>
         <image name="visible_eye.png" width="16" height="12"/>
     </resources>
     <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -20,7 +20,10 @@ extension UserDefaults {
         case userExt
         case mandateSigned
         case viewedCoachMarks
+        case userClaims
+        case isTempUser
     }
+    
     
     var isLoggedIn: Bool {
         get {
@@ -28,6 +31,26 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.isLoggedIn.rawValue)
+            synchronize()
+        }
+    }
+    
+    var isTempUser: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.isTempUser.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.isTempUser.rawValue)
+            synchronize()
+        }
+    }
+    
+    var userClaims: Int {
+        get {
+            return integer(forKey: UserDefaultsKeys.userClaims.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.userClaims.rawValue)
             synchronize()
         }
     }

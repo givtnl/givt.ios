@@ -9,5 +9,6 @@
 import Foundation
 
 class AppConstants{
-   
+    static let tempUserPassword: String = "R4nd0mP@s$w0rd123"
+    static let tempIban: String = "FB66GIVT12345678"
 }

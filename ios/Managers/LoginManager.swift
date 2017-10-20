@@ -9,12 +9,38 @@
 
 import Foundation
 class LoginManager {
+    
+    enum UserClaims: Int {
+        case startedApp
+        case giveOnce
+        case give
+    }
+    
     static let shared = LoginManager()
     private var _registrationUser = UserExt()
     
     
     private init() {
         print("loginmanager is created")
+        userClaim = .startedApp
+    }
+    
+    public var userClaim: UserClaims {
+        get {
+            return UserClaims.init(rawValue: UserDefaults.standard.userClaims)!
+        }
+        set(value){
+            UserDefaults.standard.userClaims = value.rawValue
+        }
+    }
+    
+    public var isTempUser: Bool {
+        get {
+            return UserDefaults.standard.isTempUser
+        }
+        set(value) {
+            UserDefaults.standard.isTempUser = value
+        }
     }
     
     public var isBearerStillValid: Bool {
@@ -304,5 +330,26 @@ class LoginManager {
             task?.resume()
         }
         return task
+    }
+    
+    func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
+        var regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe")
+        var regUserExt = RegistrationUserData(address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
+        self.registerUser(regUser) { b in
+            if b {
+                self.registerExtraDataFromUser(regUserExt) { b in
+                    if b {
+                        isTempUser = true
+                        userClaim = .giveOnce
+                        UserDefaults.standard.amountLimit = 133337
+                        completionHandler(true)
+                    } else {
+                        completionHandler(false)
+                    }
+                }
+            } else {
+                completionHandler(false)
+            }
+        }
     }
 }
