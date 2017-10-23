@@ -141,7 +141,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mijn persoonsgegevens mogen door Givt worden vastgelegd." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHI-V3-yIU">
-                                                                <rect key="frame" x="39" y="7.5" width="296" height="41"/>
+                                                                <rect key="frame" x="39" y="18" width="296" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                                                 <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -561,7 +561,7 @@ afgeven.</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givySlimPay.png" translatesAutoresizingMaskIntoConstraints="NO" id="o7m-wS-WRO">
-                                <rect key="frame" x="103" y="148" width="168" height="168"/>
+                                <rect key="frame" x="103.5" y="148" width="168" height="168"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="o7m-wS-WRO" secondAttribute="height" multiplier="1:1" id="RL3-le-q5N"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="168" id="iZN-wi-9vM"/>
@@ -701,15 +701,15 @@ een gift te herroepen.</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Er-og-D4R">
-                                <rect key="frame" x="20" y="60" width="335" height="49.5"/>
+                                <rect key="frame" x="20" y="60" width="335" height="55"/>
                                 <string key="text">Je registratie is gelukt.
 Veel geefplezier!</string>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Roi-DX-91v" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="567" width="335" height="44"/>
+                                <rect key="frame" x="20" y="603" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="wDl-RA-aHg"/>
@@ -740,28 +740,19 @@ Veel geefplezier!</string>
                                     <action selector="exit:" destination="UgS-ac-w3v" eventType="touchUpInside" id="988-sw-2iI"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mijn persoonsgegevens mogen door Givt worden vastgelegd." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tH2-RL-Jgs">
-                                <rect key="frame" x="20" y="616" width="335" height="41"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.84397548440000003" green="0.23647701739999999" blue="0.28622943159999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="tH2-RL-Jgs" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" constant="20" id="3vu-Ci-2MP"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" id="6xT-a1-Js2"/>
                             <constraint firstItem="hDy-no-J4v" firstAttribute="trailing" secondItem="1Er-og-D4R" secondAttribute="trailing" constant="20" id="Car-QI-sBz"/>
+                            <constraint firstItem="hDy-no-J4v" firstAttribute="bottom" secondItem="Roi-DX-91v" secondAttribute="bottom" constant="20" id="F4H-jr-MDL"/>
                             <constraint firstItem="Roi-DX-91v" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" constant="20" id="L6b-3V-inq"/>
-                            <constraint firstItem="hDy-no-J4v" firstAttribute="bottom" secondItem="tH2-RL-Jgs" secondAttribute="bottom" constant="10" id="LLF-RL-9tg"/>
                             <constraint firstItem="1Er-og-D4R" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" constant="20" id="M97-7T-vmB"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="bottom" secondItem="hDy-no-J4v" secondAttribute="bottom" id="ULm-DD-NVj"/>
                             <constraint firstItem="1Er-og-D4R" firstAttribute="top" secondItem="70D-LJ-tVW" secondAttribute="top" constant="60" id="Wyl-m8-T2A"/>
-                            <constraint firstItem="hDy-no-J4v" firstAttribute="trailing" secondItem="tH2-RL-Jgs" secondAttribute="trailing" constant="20" id="Ym5-R8-tcR"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="trailing" secondItem="hDy-no-J4v" secondAttribute="trailing" id="fdo-BR-nG6"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="top" secondItem="70D-LJ-tVW" secondAttribute="top" id="jLl-zo-S6l"/>
                             <constraint firstItem="hDy-no-J4v" firstAttribute="trailing" secondItem="Roi-DX-91v" secondAttribute="trailing" constant="20" id="mbm-tR-sEJ"/>
-                            <constraint firstItem="tH2-RL-Jgs" firstAttribute="top" secondItem="Roi-DX-91v" secondAttribute="bottom" constant="5" id="yOw-mv-LAu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hDy-no-J4v"/>
                     </view>
@@ -769,7 +760,6 @@ Veel geefplezier!</string>
                     <connections>
                         <outlet property="gif" destination="vOM-01-vvx" id="xI1-lM-HQ7"/>
                         <outlet property="nextButton" destination="Roi-DX-91v" id="tDp-W2-HwU"/>
-                        <outlet property="termsLabel" destination="tH2-RL-Jgs" id="ZwV-xE-T4N"/>
                         <outlet property="titleLabel" destination="1Er-og-D4R" id="JD8-2D-WGc"/>
                     </connections>
                 </viewController>
