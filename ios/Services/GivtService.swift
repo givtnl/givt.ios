@@ -137,6 +137,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             }
             
             if(rssi.intValue > rssiTreshold){
+                LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
                 let df = DateFormatter()
                 df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
                 df.timeZone = TimeZone(abbreviation: "UTC")
