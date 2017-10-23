@@ -424,7 +424,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "Maarten Vergouwe";
+				ORGANIZATIONNAME = Givt;
 				TargetAttributes = {
 					FB3CE6D21F14CA200055185B = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -436,6 +436,9 @@
 								enabled = 1;
 							};
 							com.apple.NetworkExtensions.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
