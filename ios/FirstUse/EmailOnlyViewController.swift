@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class EmailOnlyViewController: UIViewController {
 
@@ -26,11 +27,18 @@ class EmailOnlyViewController: UIViewController {
         myString.append(attachmentString)
         
         terms.attributedText = myString
+        let tap = UITapGestureRecognizer(target: self, action: #selector(openTerms))
+        terms.addGestureRecognizer(tap)
+        terms.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
         
         #if DEBUG
         email.text = String.random() + "@givtapp.com"
         #endif
+        
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,40 +54,61 @@ class EmailOnlyViewController: UIViewController {
         //TODO
         //if new account => .giveOnce
         //if account exists => show login
-        if true {
-            LoginManager.shared.registerEmailOnly(email: email.text!, completionHandler: { (status) in
-                if(status) {
-                    //user registerend
-                    self.navigationController?.dismiss(animated: true, completion: nil)
-                } else {
-                    
-                }
-            })
-        } else {
-            
+        SVProgressHUD.show()
+        
+        LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+            if status == "true" {
+                self.openLogin()
+            } else if status == "false" {
+                self.registerEmail(email: self.email.text!)
+            } else if status == "temp" {
+                self.openRegistration()
+            }
         }
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-
+    
+    @objc func openTerms() {
+        let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        register.typeOfTerms = .termsAndConditions
+        self.present(register, animated: true, completion: nil)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
+    func openLogin() {
+        DispatchQueue.main.async {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+            let ch: () -> Void = { _ in
+                self.dismiss(animated: true, completion: nil)
+            }
+            vc.outerHandler = ch
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func openRegistration() {
+        let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+        self.present(register, animated: true, completion: nil)
     }
-    */
+    
+    func registerEmail(email: String) {
+        LoginManager.shared.registerEmailOnly(email: email, completionHandler: { (status) in
+            if status {
+                DispatchQueue.main.async {
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                //registration failed somehow...?
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ErrorTextRegister", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                        
+                    }))
+                }
+            }
+        })
+    }
 
 }

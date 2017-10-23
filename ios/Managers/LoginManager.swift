@@ -110,6 +110,7 @@ class LoginManager {
                     dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
                     let date = dateFormatter.date(from: strTime!)
                     UserDefaults.standard.bearerExpiration = date!
+                    self.userClaim = .give
                     self.getUserExt()
                     completionHandler(true, nil)
                     return
@@ -333,9 +334,9 @@ class LoginManager {
         return task
     }
     
-    func registerEmailOnly(email email: String, completionHandler: @escaping (Bool) -> Void) {
-        var regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe")
-        var regUserExt = RegistrationUserData(address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
+    func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
+        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe")
+        let regUserExt = RegistrationUserData(address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
         self.registerUser(regUser) { b in
             if b {
                 self.registerExtraDataFromUser(regUserExt) { b in
@@ -353,6 +354,31 @@ class LoginManager {
                 completionHandler(false)
             }
         }
+    }
+    
+    func checkTLD(email: String, completionHandler: @escaping (Bool) -> Void) {
+        //TODO
+    }
+    
+    func doesEmailExist(email: String, completionHandler: @escaping (String) -> Void) {
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/Users/Check?email=" + email)!)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "GET"
+        let urlSession = URLSession.shared
+        var task: URLSessionTask?
+        task = urlSession.dataTask(with: request) { data, response, error -> Void in
+            if error != nil {
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                return
+            }
+            let status = String(bytes: data!, encoding: .utf8)!.replacingOccurrences(of: "\"", with: "")
+            completionHandler(status)
+        }
+        task?.resume()
     }
     
     func logout() {
