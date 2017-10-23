@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import UIKit
 class LoginManager {
     
     enum UserClaims: Int {
@@ -332,16 +333,19 @@ class LoginManager {
         return task
     }
     
-    func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
+    func registerEmailOnly(email email: String, completionHandler: @escaping (Bool) -> Void) {
         var regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe")
         var regUserExt = RegistrationUserData(address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
         self.registerUser(regUser) { b in
             if b {
                 self.registerExtraDataFromUser(regUserExt) { b in
                     if b {
-                        isTempUser = true
-                        userClaim = .giveOnce
+                        self.isTempUser = true
+                        print(self.userClaim.rawValue)
+                        self.userClaim = .giveOnce
+                        print(self.userClaim.rawValue)
                         UserDefaults.standard.amountLimit = 133337
+                        DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
                         completionHandler(true)
                     } else {
                         completionHandler(false)
@@ -351,5 +355,15 @@ class LoginManager {
                 completionHandler(false)
             }
         }
+    }
+    
+    func logout() {
+        UserDefaults.standard.viewedCoachMarks = 0
+        UserDefaults.standard.amountLimit = 0
+        UserDefaults.standard.bearerToken = ""
+        UserDefaults.standard.isLoggedIn = false
+        LoginManager.shared.userClaim = .startedApp
+        UserDefaults.standard.guid = ""
+        UserDefaults.standard.bearerExpiration = Date()
     }
 }
