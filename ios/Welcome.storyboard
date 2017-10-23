@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,21 +78,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Om te geven met Givt is alvast je e-mailadres nodig." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ij-J8-57U">
-                                <rect key="frame" x="77.5" y="104" width="220" height="46.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="o9F-ru-U86"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(we sturen geen spam, beloofd)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYw-YU-1WR">
-                                <rect key="frame" x="0.0" y="153.5" width="375" height="22"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvW-7E-MZ4" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="557" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -120,6 +106,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emailadres" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dLS-u5-htt" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="311" width="335" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" name="darkPurple"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="4cj-OD-Ixw"/>
                                 </constraints>
@@ -132,28 +119,74 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSH-AD-dlL">
+                                <rect key="frame" x="0.0" y="20" width="375" height="291"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Mk-QY-UOQ">
+                                        <rect key="frame" x="0.0" y="53.5" width="375" height="185.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aan de slag" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8C8-8r-xVx">
+                                                <rect key="frame" x="110.5" y="8" width="154" height="38.5"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="28"/>
+                                                <color key="textColor" name="darkPurple"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Om te geven met Givt is  alvast je e-mailadres nodig." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ij-J8-57U">
+                                                <rect key="frame" x="81" y="76.5" width="213" height="47"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(we sturen geen spam, beloofd)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYw-YU-1WR">
+                                                <rect key="frame" x="75.5" y="143.5" width="224.5" height="22"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="0Ij-J8-57U" firstAttribute="top" secondItem="8C8-8r-xVx" secondAttribute="bottom" constant="30" id="1fm-Dl-tpw"/>
+                                            <constraint firstItem="yYw-YU-1WR" firstAttribute="centerX" secondItem="9Mk-QY-UOQ" secondAttribute="centerX" id="CUG-Ho-NNy"/>
+                                            <constraint firstItem="8C8-8r-xVx" firstAttribute="top" secondItem="9Mk-QY-UOQ" secondAttribute="top" constant="8" id="FXw-4i-AAC"/>
+                                            <constraint firstItem="yYw-YU-1WR" firstAttribute="top" secondItem="0Ij-J8-57U" secondAttribute="bottom" constant="20" id="KkD-Oy-xMb"/>
+                                            <constraint firstItem="0Ij-J8-57U" firstAttribute="centerX" secondItem="9Mk-QY-UOQ" secondAttribute="centerX" id="elt-LL-SuC"/>
+                                            <constraint firstAttribute="bottom" secondItem="yYw-YU-1WR" secondAttribute="bottom" constant="20" id="qwR-7r-WVk"/>
+                                            <constraint firstItem="8C8-8r-xVx" firstAttribute="centerX" secondItem="9Mk-QY-UOQ" secondAttribute="centerX" id="tLa-h0-Ffy"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="9Mk-QY-UOQ" firstAttribute="leading" secondItem="QSH-AD-dlL" secondAttribute="leading" id="LQl-5j-Ceg"/>
+                                    <constraint firstItem="9Mk-QY-UOQ" firstAttribute="centerY" secondItem="QSH-AD-dlL" secondAttribute="centerY" id="NAK-e5-nGr"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Mk-QY-UOQ" secondAttribute="trailing" id="tJ5-6Q-GQ4"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="dLS-u5-htt" firstAttribute="top" secondItem="QSH-AD-dlL" secondAttribute="bottom" id="Igd-7a-FBR"/>
+                            <constraint firstItem="QSH-AD-dlL" firstAttribute="top" secondItem="6Sa-97-5E2" secondAttribute="top" id="Jb1-Eh-dgC"/>
                             <constraint firstItem="WvW-7E-MZ4" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="20" id="O2E-Uw-Tqd"/>
-                            <constraint firstItem="yYw-YU-1WR" firstAttribute="top" secondItem="0Ij-J8-57U" secondAttribute="bottom" constant="3" id="UKm-Y7-QNr"/>
-                            <constraint firstItem="yYw-YU-1WR" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" id="Z4H-Du-KSX"/>
                             <constraint firstItem="2Xl-Qa-5Kx" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="40" id="Zkr-pA-icn"/>
                             <constraint firstItem="dLS-u5-htt" firstAttribute="centerY" secondItem="r0x-Y6-vDA" secondAttribute="centerY" id="Zvf-sK-qpY"/>
-                            <constraint firstItem="0Ij-J8-57U" firstAttribute="top" secondItem="6Sa-97-5E2" secondAttribute="top" constant="40" id="aby-IA-a5e"/>
                             <constraint firstItem="dLS-u5-htt" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="20" id="b4k-LA-J5Q"/>
                             <constraint firstItem="dLS-u5-htt" firstAttribute="centerX" secondItem="r0x-Y6-vDA" secondAttribute="centerX" id="eg2-cr-xxF"/>
                             <constraint firstItem="6Sa-97-5E2" firstAttribute="bottom" secondItem="2Xl-Qa-5Kx" secondAttribute="bottom" constant="20" id="fcb-Sp-Kkh"/>
                             <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="dLS-u5-htt" secondAttribute="trailing" constant="20" id="ghB-eG-ad7"/>
                             <constraint firstItem="2Xl-Qa-5Kx" firstAttribute="top" secondItem="WvW-7E-MZ4" secondAttribute="bottom" constant="5" id="gmV-w5-07M"/>
                             <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="2Xl-Qa-5Kx" secondAttribute="trailing" constant="40" id="lUC-R5-SHW"/>
-                            <constraint firstItem="0Ij-J8-57U" firstAttribute="centerX" secondItem="r0x-Y6-vDA" secondAttribute="centerX" id="oMu-gE-84U"/>
+                            <constraint firstItem="QSH-AD-dlL" firstAttribute="leading" secondItem="r0x-Y6-vDA" secondAttribute="leading" id="nhI-Sf-yFv"/>
                             <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="WvW-7E-MZ4" secondAttribute="trailing" constant="20" id="sb8-db-Mff"/>
-                            <constraint firstItem="yYw-YU-1WR" firstAttribute="trailing" secondItem="6Sa-97-5E2" secondAttribute="trailing" id="w9Z-Hl-ZhK"/>
+                            <constraint firstAttribute="trailing" secondItem="QSH-AD-dlL" secondAttribute="trailing" id="zCt-sk-PQR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Sa-97-5E2"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="WHh-0J-cdO"/>
+                    <navigationItem key="navigationItem" title="Title" prompt=" " id="WHh-0J-cdO">
+                        <barButtonItem key="leftBarButtonItem" id="3AS-Vg-UsX"/>
+                    </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="email" destination="dLS-u5-htt" id="ixy-PB-aov"/>
                         <outlet property="terms" destination="2Xl-Qa-5Kx" id="Hf9-Mf-Xsc"/>
@@ -183,4 +216,9 @@
             <point key="canvasLocation" x="-510" y="329"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="darkPurple">
+            <color red="0.1803921568627451" green="0.16078431372549021" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

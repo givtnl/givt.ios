@@ -53,6 +53,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             switchButton.isSelected = true
             checkAll()
         #endif
+        emailaddress.text = UserDefaults.standard.userExt.email
+        emailaddress.isUserInteractionEnabled = false
         self.regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
     }
     @IBAction func switchPasswordVisibility(_ sender: Any) {

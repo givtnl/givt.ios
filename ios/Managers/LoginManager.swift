@@ -341,9 +341,7 @@ class LoginManager {
                 self.registerExtraDataFromUser(regUserExt) { b in
                     if b {
                         self.isTempUser = true
-                        print(self.userClaim.rawValue)
                         self.userClaim = .giveOnce
-                        print(self.userClaim.rawValue)
                         UserDefaults.standard.amountLimit = 133337
                         DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
                         completionHandler(true)
@@ -362,7 +360,8 @@ class LoginManager {
         UserDefaults.standard.amountLimit = 0
         UserDefaults.standard.bearerToken = ""
         UserDefaults.standard.isLoggedIn = false
-        LoginManager.shared.userClaim = .startedApp
+        isTempUser = false
+        userClaim = .startedApp
         UserDefaults.standard.guid = ""
         UserDefaults.standard.bearerExpiration = Date()
     }

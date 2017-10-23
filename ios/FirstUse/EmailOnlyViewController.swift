@@ -15,7 +15,7 @@ class EmailOnlyViewController: UIViewController {
     @IBOutlet var titleItem: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       navigationController?.setNavigationBarHidden(true, animated: false)
 
         
         let attachment:NSTextAttachment = NSTextAttachment()
@@ -27,6 +27,10 @@ class EmailOnlyViewController: UIViewController {
         
         terms.attributedText = myString
         // Do any additional setup after loading the view.
+        
+        #if DEBUG
+        email.text = String.random() + "@givtapp.com"
+        #endif
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,8 +62,7 @@ class EmailOnlyViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        titleItem.title = "Snel aan de slag"
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 28), NSForegroundColorAttributeName: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)]
+        
 
     }
     

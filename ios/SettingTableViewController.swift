@@ -71,6 +71,7 @@ class SettingTableViewController: UITableViewController {
     private func logout() {
         LoginManager.shared.logout()
         self.hideLeftView(nil)
+        UIApplication.shared.keyWindow?.rootViewController?.viewWillAppear(false)
         
     }
     
