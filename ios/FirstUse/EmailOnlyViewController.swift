@@ -57,18 +57,22 @@ class EmailOnlyViewController: UIViewController {
         SVProgressHUD.show()
         
         LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-            }
+            
             if status == "true" {
                 self.openLogin()
             } else if status == "false" {
-                self.registerEmail(email: self.email.text!)
+                self.checkEmail()
             } else if status == "temp" {
                 self.openRegistration()
             }
         }
         
+    }
+    
+    func hideLoader() {
+        DispatchQueue.main.async {
+            SVProgressHUD.dismiss()
+        }
     }
     
     @objc func openTerms() {
@@ -78,6 +82,7 @@ class EmailOnlyViewController: UIViewController {
     }
     
     func openLogin() {
+        self.hideLoader()
         DispatchQueue.main.async {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
             let ch: () -> Void = { _ in
@@ -89,12 +94,31 @@ class EmailOnlyViewController: UIViewController {
     }
     
     func openRegistration() {
+        self.hideLoader()
         let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         self.present(register, animated: true, completion: nil)
     }
     
+    func checkEmail() {
+        LoginManager.shared.checkTLD(email: self.email.text!, completionHandler: { (status) in
+            if status {
+                self.registerEmail(email: self.email.text!)
+            } else {
+                self.hideLoader()
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        })
+    }
+    
     func registerEmail(email: String) {
         LoginManager.shared.registerEmailOnly(email: email, completionHandler: { (status) in
+            self.hideLoader()
             if status {
                 DispatchQueue.main.async {
                     self.navigationController?.dismiss(animated: true, completion: nil)
@@ -106,6 +130,7 @@ class EmailOnlyViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
                         
                     }))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         })

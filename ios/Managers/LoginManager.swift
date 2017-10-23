@@ -357,7 +357,19 @@ class LoginManager {
     }
     
     func checkTLD(email: String, completionHandler: @escaping (Bool) -> Void) {
-        //TODO
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/CheckTLD?email=" + email)!)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "GET"
+        let urlSession = URLSession.shared
+        var task: URLSessionTask?
+        task = urlSession.dataTask(with: request) { data, response, error -> Void in
+            if error != nil {
+                return
+            }
+            let status: Bool = NSString(string: String(bytes: data!, encoding: .utf8)!).boolValue
+            completionHandler(status)
+        }
+        task?.resume()
     }
     
     func doesEmailExist(email: String, completionHandler: @escaping (String) -> Void) {
