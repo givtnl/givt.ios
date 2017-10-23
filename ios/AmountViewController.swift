@@ -114,7 +114,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationItem.backBarButtonItem = backItem
         checkAmount()
         
-        if LoginManager.shared.isTempUser {
+        if LoginManager.shared.isTempUser && LoginManager.shared.userClaim != .giveOnce {
             
             let alert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertActionStyle.default, handler: { action in  }))
