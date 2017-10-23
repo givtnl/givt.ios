@@ -43,9 +43,13 @@ class EmailOnlyViewController: UIViewController {
         //if new account => .giveOnce
         //if account exists => show login
         if true {
-            LoginManager.shared.registerEmailOnly(email: <#T##String#>, completionHandler: <#T##(Bool) -> Void#>)
-            self.navigationController?.dismiss(animated: true, completion: {
-                
+            LoginManager.shared.registerEmailOnly(email: email.text!, completionHandler: { (status) in
+                if(status) {
+                    //user registerend
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                } else {
+                    
+                }
             })
         } else {
             
