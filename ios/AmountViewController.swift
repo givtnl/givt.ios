@@ -114,6 +114,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationItem.backBarButtonItem = backItem
         checkAmount()
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UserDefaults.standard.viewedCoachMarks = 0
+        showFirstBalloon()
         if LoginManager.shared.isTempUser && LoginManager.shared.userClaim != .giveOnce {
             
             let alert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
@@ -123,12 +130,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             }))
             self.present(alert, animated: true, completion: {})
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        UserDefaults.standard.viewedCoachMarks = 0
-        showFirstBalloon()
     }
     
     func addGestureRecognizerToView(view: UIView) {
@@ -388,6 +389,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func showFirstBalloon() {
+        firstBalloon?.hide()
         if UserDefaults.standard.viewedCoachMarks != 0 {
             return
         }
