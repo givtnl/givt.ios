@@ -9,8 +9,10 @@
 import UIKit
 import SVProgressHUD
 
-class EmailOnlyViewController: UIViewController {
+class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
 
+    private var validationHelper = ValidationHelper.shared
+    @IBOutlet var contentView: UIView!
     @IBOutlet var nextBtn: CustomButton!
     @IBOutlet var hintText: UILabel!
     @IBOutlet var subtitleText: UILabel!
@@ -37,7 +39,8 @@ class EmailOnlyViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         #if DEBUG
-        email.text = String.random() + "@givtapp.com"
+            email.text = String.random() + "@givtapp.com"
+            checkAll()
         #endif
         
         email.placeholder = NSLocalizedString("Email", comment: "")
@@ -45,10 +48,49 @@ class EmailOnlyViewController: UIViewController {
         subtitleText.text = NSLocalizedString("ToGiveWeNeedYourEmailAddress", comment: "")
         hintText.text = NSLocalizedString("WeWontSendAnySpam", comment: "")
         nextBtn.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
+        nextBtn.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
+        email.delegate = self
         
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
+    
+        self.hideKeyboardWhenTappedAround()
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            print(self.view.frame.origin.y)
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.returnKeyType == .done {
+            self.doneCommand()
+        }
+        self.view.endEditing(true)
+        return false
+    }
+    
+    @objc func checkAll() {
+        let isEmailValid = validationHelper.isEmailAddressValid(self.email.text!)
+        isEmailValid ? email.setValid() : email.setInvalid()
+        self.nextBtn.isEnabled = isEmailValid
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +103,10 @@ class EmailOnlyViewController: UIViewController {
     }
     
     @IBAction func done(_ sender: Any) {
+        doneCommand()
+    }
+    
+    func doneCommand() {
         SVProgressHUD.show()
         LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
             
