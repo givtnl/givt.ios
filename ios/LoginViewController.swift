@@ -108,9 +108,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 UserDefaults.standard.isLoggedIn = true
                 DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: { self.completionHandler() } )
+                    self.dismiss(animated: false, completion: { self.completionHandler() } )
                 }
-                
             } else {
                 print("something wrong logging user in")
                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
