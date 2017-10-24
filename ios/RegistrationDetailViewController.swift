@@ -241,7 +241,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         theScrollView.contentInset = contentInset
     }
 
-    func dismissKeyboard() {
+    func hideKeyboard() {
         selectedRow(row: picker.selectedRow(inComponent: 0))
         textFieldShouldReturn(_lastTextField)
     }
@@ -280,7 +280,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     func createToolbar(_ textField: UITextField) {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(RegistrationDetailViewController.dismissKeyboard))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(RegistrationDetailViewController.hideKeyboard))
         
         toolbar.setItems([doneButton], animated: false)
         toolbar.isUserInteractionEnabled = true
