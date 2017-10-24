@@ -174,25 +174,6 @@
 "Netherlands" = "The Netherlands";
 "NotificationTitle" = "Givt";
 
-/*De titel op het eerste first-use scherm.*/
-"FirstUseLabelTitle1" = "Register once";
-
-/*De subtitel op het eerste first-use scherm.*/
-"FirstUseLabelSubTitle1" = "";
-
-/*De titel op het tweede first-use scherm.*/
-"FirstUseLabelTitle2" = "Select an amount and give";
-
-/*again alms bag could be offertory bag or offering bag*/
-/*De subtitel op het tweede first-use scherm.*/
-"FirstUseLabelSubTitle2" = "";
-
-/*De titel op het derde first-use scherm.*/
-"FirstUseLabelTitle3" = "Use Givt for all kinds of collections";
-
-/*De subtitel op het derde first-use scherm.*/
-"FirstUseLabelSubTitle3" = "";
-
 /*"Bewaar" in het nederlands, als gebruiker vanuit instellingen naar geeflimiet instellen gaat wordt dit een knop met "Bewaar", in de registratieflow blijft deze wel gewoon Volgende / Next*/
 "Save" = "Save";
 
@@ -555,7 +536,7 @@
 "ChooseLowerAmount" = "Choose a lower amount";
 "TurnOnBluetooth" = "Switch on bluetooth";
 "ErrorTLDCheck" = "Sorry, you can’t register with this e-mail address. Please check that the spelling is correct.";
-"AddCollectConfirm" = "Are you sure you want to add a second collection?";
+"AddCollectConfirm" = "Do you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
 "FAQantwoord0" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +31 320 320 115 or by sending an e-mail to support@givtapp.net.";
 "PersonalPageHeader" = "Change your IBAN here.";
@@ -567,8 +548,6 @@
 "LoadingTitle" = "Loading";
 "LoadingMessage" = "Please wait while we are loading your data...";
 "ButtonChange" = "Change";
-"FirstUseWelcomeTitle" = "Welcome!";
-"FirstUseWelcomeSubTitle" = "Swipe for more information";
 
 /*belastingaangifte vraag*/
 "FAQvraag15" = "Are my Givt donations tax deductable?";
@@ -581,3 +560,17 @@
 "FinalizeRegistration" = "Finish registration";
 "ImportantReminder" = "Important reminder";
 "MultipleCollections" = "Multiple collections";
+"QuestionAndroidLocation" = "Why does Givt need access to my location?";
+"AnswerAndroidLocation" = "When using an Android smartphone, the Givt-beacon can only be detected by the Givt-app when the location is known. Therefore, Givt needs your location to make giving possible. Beside that, we do not use your location.";
+"ShareTheGivtButton" = "Share with my friends";
+"ShareTheGivtText" = "I've just used Givt to donate to {0}!";
+"ShareTheGivtTextNoOrg" = "I've just used Givt to donate!";
+"JoinGivt" = "Get involved on givtapp.net/download.";
+"FirstUseWelcomeSubTitle" = "Swipe for more information";
+"FirstUseWelcomeTitle" = "Welcome!";
+"FirstUseLabelTitle1" = "Register once";
+"FirstUseLabelTitle2" = "Select an amount and give";
+"FirstUseLabelTitle3" = "Use Givt for all kinds of collections";
+"YesSuccess" = "Yes, success!";
+"ToGiveWeNeedYourEmailAddress" = "To start giving with Givt, \nwe just need your emailaddress.";
+"WeWontSendAnySpam" = "(we won't send any spam, promise)";

@@ -201,8 +201,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="email" destination="dLS-u5-htt" id="ixy-PB-aov"/>
+                        <outlet property="hintText" destination="yYw-YU-1WR" id="ayq-oZ-rVB"/>
+                        <outlet property="nextBtn" destination="WvW-7E-MZ4" id="zea-zt-ge4"/>
+                        <outlet property="subtitleText" destination="0Ij-J8-57U" id="x9K-bj-KI0"/>
                         <outlet property="terms" destination="2Xl-Qa-5Kx" id="Hf9-Mf-Xsc"/>
                         <outlet property="titleItem" destination="WHh-0J-cdO" id="cJo-jA-F5b"/>
+                        <outlet property="titleText" destination="8C8-8r-xVx" id="S4e-ur-ckd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSb-kA-EAb" userLabel="First Responder" sceneMemberID="firstResponder"/>

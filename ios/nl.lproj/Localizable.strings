@@ -189,24 +189,6 @@
 "Netherlands" = "Nederland";
 "NotificationTitle" = "Givt";
 
-/*De titel op het eerste first-use scherm.*/
-"FirstUseLabelTitle1" = "Registreer eenmalig";
-
-/*De subtitel op het eerste first-use scherm.*/
-"FirstUseLabelSubTitle1" = "";
-
-/*De titel op het tweede first-use scherm.*/
-"FirstUseLabelTitle2" = "Kies een bedrag en geef";
-
-/*De subtitel op het tweede first-use scherm.*/
-"FirstUseLabelSubTitle2" = "";
-
-/*De titel op het derde first-use scherm.*/
-"FirstUseLabelTitle3" = "Gebruik Givt voor elke collecte";
-
-/*De subtitel op het derde first-use scherm.*/
-"FirstUseLabelSubTitle3" = "";
-
 /*"Bewaar" in het nederlands, als gebruiker vanuit instellingen naar geeflimiet instellen gaat wordt dit een knop met "Bewaar", in de registratieflow blijft deze wel gewoon Volgende / Next*/
 "Save" = "Opslaan";
 
@@ -571,7 +553,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ChooseLowerAmount" = "Bedrag aanpassen";
 "TurnOnBluetooth" = "Bluetooth aanzetten";
 "ErrorTLDCheck" = "Helaas, met dit e-mailadres lukt het registreren niet. Controleer je nog even op typefouten?";
-"AddCollectConfirm" = "Weet je zeker dat je een tweede collecte wil toevoegen?";
+"AddCollectConfirm" = "Wil je een tweede collecte toevoegen?";
 "FAQvraag0" = "Feedback of vragen?";
 "FAQantwoord0" = "Je kunt ons een bericht sturen door in het app-menu naar \"Over Givt / Contact\" te gaan en daar je vraag te stellen. We zijn natuurlijk ook bereikbaar via +31 320 320 115 of support@givtapp.net.";
 "PersonalPageHeader" = "Pas je IBAN hier aan.";
@@ -583,8 +565,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "LoadingTitle" = "Even geduld";
 "LoadingMessage" = "We zijn je gegevens aan het laden ...";
 "ButtonChange" = "Wijzigen";
-"FirstUseWelcomeTitle" = "Welkom!";
-"FirstUseWelcomeSubTitle" = "Swipe voor meer informatie";
 
 /*belastingaangifte vraag*/
 "FAQvraag15" = "Is geven met Givt ook belastingaftrekbaar?";
@@ -599,3 +579,17 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FinalizeRegistration" = "Registratie voltooien";
 "ImportantReminder" = "Belangrijke herinnering";
 "MultipleCollections" = "Meerdere collectes";
+"QuestionAndroidLocation" = "Waarom heeft Givt mijn locatiegegevens nodig?";
+"AnswerAndroidLocation" = "Wanneer je een Android telefoon gebruikt, kan de Givt-app de zender in de collectezak alleen detecteren wanneer jouw locatiegegevens bekend zijn. Om met Givt te kunnen geven, heeft Givt dus jouw locatiegegevens nodig. Verder doen we helemaal niets met die locatiegegevens.";
+"ShareTheGivtButton" = "Deel met mijn vrienden";
+"ShareTheGivtText" = "Ik heb zonet gegeven aan {0} met Givt!";
+"ShareTheGivtTextNoOrg" = "Ik heb zonet gegeven met Givt!";
+"JoinGivt" = "Doe je ook mee? givtapp.net/download";
+"FirstUseWelcomeSubTitle" = "Swipe voor meer informatie";
+"FirstUseWelcomeTitle" = "Welkom!";
+"FirstUseLabelTitle1" = "Registreer eenmalig";
+"FirstUseLabelTitle2" = "Kies een bedrag en geef";
+"FirstUseLabelTitle3" = "Gebruik Givt voor elke collecte";
+"YesSuccess" = "Yes, gelukt!";
+"ToGiveWeNeedYourEmailAddress" = "Om te geven met Givt is\nalvast je e-mailadres nodig.";
+"WeWontSendAnySpam" = "(we sturen geen spam, beloofd)";

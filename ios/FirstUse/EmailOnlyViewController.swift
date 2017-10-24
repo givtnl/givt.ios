@@ -11,6 +11,10 @@ import SVProgressHUD
 
 class EmailOnlyViewController: UIViewController {
 
+    @IBOutlet var nextBtn: CustomButton!
+    @IBOutlet var hintText: UILabel!
+    @IBOutlet var subtitleText: UILabel!
+    @IBOutlet var titleText: UILabel!
     @IBOutlet var email: CustomUITextField!
     @IBOutlet var terms: UILabel!
     @IBOutlet var titleItem: UINavigationItem!
@@ -36,6 +40,12 @@ class EmailOnlyViewController: UIViewController {
         email.text = String.random() + "@givtapp.com"
         #endif
         
+        email.placeholder = NSLocalizedString("Email", comment: "")
+        titleText.text = NSLocalizedString("EnterEmail", comment: "")
+        subtitleText.text = NSLocalizedString("ToGiveWeNeedYourEmailAddress", comment: "")
+        hintText.text = NSLocalizedString("WeWontSendAnySpam", comment: "")
+        nextBtn.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
+        
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
@@ -51,11 +61,7 @@ class EmailOnlyViewController: UIViewController {
     }
     
     @IBAction func done(_ sender: Any) {
-        //TODO
-        //if new account => .giveOnce
-        //if account exists => show login
         SVProgressHUD.show()
-        
         LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
             
             if status == "true" {
@@ -66,7 +72,6 @@ class EmailOnlyViewController: UIViewController {
                 self.openRegistration()
             }
         }
-        
     }
     
     func hideLoader() {
