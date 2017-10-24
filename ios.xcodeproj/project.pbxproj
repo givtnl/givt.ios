@@ -61,6 +61,7 @@
 		D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE931F7CFA34005807BE /* UserExt.swift */; };
 		D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */; };
 		D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE9D1F7D2C5C005807BE /* SPWebViewController.swift */; };
+		D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */; };
 		D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F131631F7555EC00E25A68 /* RegistrationDetailViewController.swift */; };
 		D7F131661F75574D00E25A68 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F131651F75574D00E25A68 /* Registration.storyboard */; };
 		D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F131671F75593A00E25A68 /* RegistrationViewController.swift */; };
@@ -157,6 +158,7 @@
 		D7E3CE931F7CFA34005807BE /* UserExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExt.swift; sourceTree = "<group>"; };
 		D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPInfoViewController.swift; sourceTree = "<group>"; };
 		D7E3CE9D1F7D2C5C005807BE /* SPWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPWebViewController.swift; sourceTree = "<group>"; };
+		D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		D7F131631F7555EC00E25A68 /* RegistrationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDetailViewController.swift; sourceTree = "<group>"; };
 		D7F131651F75574D00E25A68 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		D7F131671F75593A00E25A68 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				D7335B2D1F45923F00B57AE0 /* UIImage+gif.swift */,
 				D77511BA1F711231004F91F6 /* Date+helpers.swift */,
 				D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */,
+				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
+				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
