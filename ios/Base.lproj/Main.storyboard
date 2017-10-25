@@ -1164,7 +1164,7 @@ Kijk voor de status in je overzicht.</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Bedrag" id="h1k-Ax-YwJ">
-                        <barButtonItem key="leftBarButtonItem" image="menu_badge.png" style="plain" id="QTY-DE-8Mb">
+                        <barButtonItem key="leftBarButtonItem" image="menu_badge.png" springLoaded="YES" style="plain" id="QTY-DE-8Mb">
                             <connections>
                                 <action selector="toggleLeftViewAnimated:" destination="lyO-8n-bds" id="6HM-34-ghj"/>
                             </connections>
@@ -1187,6 +1187,7 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="firstView" destination="kEF-Oq-6FP" id="I6X-85-hr0"/>
                         <outlet property="lblTitle" destination="h1k-Ax-YwJ" id="kRF-na-R6Y"/>
                         <outlet property="leftSpacerView" destination="bJH-ii-63Z" id="XbW-Up-13p"/>
+                        <outlet property="menu" destination="QTY-DE-8Mb" id="fuH-wr-9ha"/>
                         <outlet property="rightSpacerView" destination="vyl-Gw-Bwr" id="qLS-W7-cG0"/>
                         <outlet property="secondLine" destination="eOp-vI-VLB" id="TgS-hz-lP0"/>
                         <outlet property="secondView" destination="LDP-AN-Lvz" id="b4I-1v-i3M"/>

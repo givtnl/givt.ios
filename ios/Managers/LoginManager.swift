@@ -35,12 +35,9 @@ class LoginManager {
         }
     }
     
-    public var isTempUser: Bool {
+    public var isFullyRegistered: Bool {
         get {
-            return UserDefaults.standard.isTempUser
-        }
-        set(value) {
-            UserDefaults.standard.isTempUser = value
+            return UserDefaults.standard.mandateSigned && (UserDefaults.standard.amountLimit != .max || UserDefaults.standard.amountLimit != -1)
         }
     }
     
@@ -56,7 +53,7 @@ class LoginManager {
         request.httpMethod = "PUT"
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
-        let putString = "GUID=" + UserDefaults.standard.guid + "&AmountLimit=" + String(amountLimit)
+        let putString = "GUID=" + UserDefaults.standard.userExt.guid + "&AmountLimit=" + String(amountLimit)
         request.httpBody = putString.data(using: .utf8)
         let urlSession = URLSession.shared
         _ = urlSession.dataTask(with: request) { data, response, error -> Void in
@@ -103,7 +100,7 @@ class LoginManager {
                 let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String:Any]
                 print(parsedData)
                 if(parsedData["access_token"] != nil) {
-                    print(parsedData["access_token"])
+                    //print(parsedData["access_token"])
                     UserDefaults.standard.bearerToken = parsedData["access_token"]! as! String
                     let strTime = parsedData[".expires"] as? String
                     let dateFormatter = DateFormatter()
@@ -111,8 +108,17 @@ class LoginManager {
                     let date = dateFormatter.date(from: strTime!)
                     UserDefaults.standard.bearerExpiration = date!
                     self.userClaim = .give
-                    self.getUserExt()
-                    completionHandler(true, nil)
+                    UserDefaults.standard.isLoggedIn = true
+                    self.getUserExt(completionHandler: { (status) in
+                        if status {
+                            self.checkMandate(completionHandler: { (status) in
+                                self.userClaim = self.isFullyRegistered ? .give : .giveOnce
+                                completionHandler(true, nil)
+                            })
+                        } else {
+                            completionHandler(true, nil)
+                        }
+                    })
                     return
                 }
                 completionHandler(false, nil)
@@ -128,7 +134,7 @@ class LoginManager {
         return task
     }
     
-    private func getUserExt() {
+    private func getUserExt(completionHandler: @escaping (Bool) -> Void) {
         var request = URLRequest(url: URL(string: _baseUrl + "/api/UsersExtension")!)
         request.httpMethod = "GET"
         request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
@@ -136,20 +142,26 @@ class LoginManager {
         _ = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
                 print(error! as NSError)
+                completionHandler(false)
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 print(response!)
+                completionHandler(false)
                 return
             }
             
             do {
                 let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
-                UserDefaults.standard.guid = parsedData["GUID"] as! String
-                UserDefaults.standard.amountLimit = parsedData["AmountLimit"] != nil ? parsedData["AmountLimit"] as! Int : 5
+                let newConfig = UserDefaults.standard.userExt
+                newConfig.guid = parsedData["GUID"] as! String
+                UserDefaults.standard.userExt = newConfig
+                UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? -1 : parsedData["AmountLimit"] as! Int
+                completionHandler(true)
             } catch let err as NSError {
                 print(err)
+                completionHandler(false)
                 return
             }
            
@@ -197,7 +209,9 @@ class LoginManager {
             }
             
             self._registrationUser.guid = String(bytes: data!, encoding: .utf8)!
-            UserDefaults.standard.guid = self._registrationUser.guid
+            let newConfig = UserDefaults.standard.userExt
+            newConfig.guid = self._registrationUser.guid
+            UserDefaults.standard.userExt = newConfig
             self.registerAllData(completionHandler: { success in
                 if success {
                     print("user succesfully registered")
@@ -289,6 +303,7 @@ class LoginManager {
             var res:String  = ""
             let task = checkMandate(completionHandler: { (str) in
                 res = str
+                print(res)
             })
             while task?.state != .completed {
                 usleep(40000)
@@ -305,6 +320,9 @@ class LoginManager {
     func checkMandate(completionHandler: @escaping (String) -> Void) -> URLSessionTask? {
         var task: URLSessionTask?
         if isBearerStillValid {
+            print("---")
+            print(UserDefaults.standard.userExt.guid)
+            print("---")
             var request = URLRequest(url: URL(string: _baseUrl + "/api/Mandate?UserID=" + UserDefaults.standard.userExt.guid)!)
             request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -313,17 +331,27 @@ class LoginManager {
             
             task = urlSession.dataTask(with: request) { data, response, error -> Void in
                 if error != nil {
+                    completionHandler("")
                     return
                 }
                 
                 if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
                     print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                    completionHandler("")
                     return
                 }
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
-                    UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil)
-                    completionHandler(parsedData["PayProvMandateStatus"] as! String)
+                    UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil && parsedData["Signed"] as! Int == 1)
+                    //print(parsedData["PayProvMandateStatus"])
+                    print(UserDefaults.standard.mandateSigned)
+                    if let status = parsedData["PayProvMandateStatus"] as? String {
+                        completionHandler(status)
+                        print("pls unwrap")
+                        print(status)
+                    } else {
+                        completionHandler("")
+                    }
                 } catch {
                     print("error occured")
                     completionHandler("")
@@ -341,9 +369,8 @@ class LoginManager {
             if b {
                 self.registerExtraDataFromUser(regUserExt) { b in
                     if b {
-                        self.isTempUser = true
                         self.userClaim = .giveOnce
-                        UserDefaults.standard.amountLimit = 133337
+                        UserDefaults.standard.amountLimit = .max
                         DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
                         completionHandler(true)
                     } else {
@@ -398,9 +425,9 @@ class LoginManager {
         UserDefaults.standard.amountLimit = 0
         UserDefaults.standard.bearerToken = ""
         UserDefaults.standard.isLoggedIn = false
-        isTempUser = false
         userClaim = .startedApp
-        UserDefaults.standard.guid = ""
+        UserDefaults.standard.userExt = UserExt()
         UserDefaults.standard.bearerExpiration = Date()
+        UserDefaults.standard.mandateSigned = false
     }
 }

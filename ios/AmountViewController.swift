@@ -84,7 +84,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        givtService = GivtService.sharedInstance
+        givtService = GivtService.shared
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         self.navigationController?.setNavigationBarHidden(false, animated: false)
@@ -114,14 +114,15 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationItem.backBarButtonItem = backItem
         checkAmount()
         
+        print("Mandate signed: ", UserDefaults.standard.mandateSigned)
         
+        menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UserDefaults.standard.viewedCoachMarks = 0
         showFirstBalloon()
-        if LoginManager.shared.isTempUser && LoginManager.shared.userClaim != .giveOnce {
+        if !LoginManager.shared.isFullyRegistered && LoginManager.shared.userClaim != .giveOnce {
             
             let alert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertActionStyle.default, handler: { action in  }))

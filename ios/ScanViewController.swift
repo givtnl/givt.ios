@@ -85,10 +85,10 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         super.viewDidAppear(animated)
                 NotificationCenter.default.addObserver(self, selector: #selector(showBluetoothMessage), name: Notification.Name("BluetoothIsOff"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        GivtService.sharedInstance.onGivtProcessed = self
+        GivtService.shared.onGivtProcessed = self
         
-        if(GivtService.sharedInstance.bluetoothEnabled){
-            GivtService.sharedInstance.startScanning()
+        if(GivtService.shared.bluetoothEnabled){
+            GivtService.shared.startScanning()
         }
     }
     
@@ -104,7 +104,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
         sideMenuController?.isLeftViewSwipeGestureDisabled = false
-        GivtService.sharedInstance.centralManager.stopScan()
+        GivtService.shared.centralManager.stopScan()
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
     }
 
