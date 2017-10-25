@@ -23,13 +23,10 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        SVProgressHUD.setDefaultMaskType(.black)
-        SVProgressHUD.setDefaultAnimationType(.native)
-        SVProgressHUD.setBackgroundColor(.white)
+
         
         let url = URL(string: self.url)
         let request = URLRequest(url: url!)
-        SVProgressHUD.show()
     
         
         // init and load request in webview.

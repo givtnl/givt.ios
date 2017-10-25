@@ -116,7 +116,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         checkAmount()
         
         print("Mandate signed: ", UserDefaults.standard.mandateSigned)
-        
+        print("Amount Limit: ", UserDefaults.standard.amountLimit)
         menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
     }
     
@@ -124,7 +124,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidAppear(animated)
         showFirstBalloon()
         
-        navigiationManager.finishRegistration(self)
+        navigiationManager.finishRegistrationAlert(self)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -10,6 +10,13 @@ import UIKit
 
 class RegNavigationController: UINavigationController {
 
+    enum StartPoint {
+        case amountLimit
+        case mandate
+    }
+    
+    var startPoint: StartPoint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +32,18 @@ class RegNavigationController: UINavigationController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if startPoint == .amountLimit {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "alvcreg") as! AmountLimitViewController
+            vc.isRegistration = true
+            self.setViewControllers([vc], animated: false)
+        } else if startPoint == .mandate {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
+            self.setViewControllers([vc], animated: false)
+        }
+    }
+    
   
     @IBOutlet var navBar: UINavigationBar!
     
@@ -34,6 +53,8 @@ class RegNavigationController: UINavigationController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        print(segue.destination.nibName)
+        
     }
     
     func saveImage() -> UIImage {

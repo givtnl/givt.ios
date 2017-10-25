@@ -12,6 +12,7 @@ import LGSideMenuController
 class SettingTableViewController: UITableViewController {
     
     @IBOutlet weak var lblSettings: UILabel!
+    private var navigationManager = NavigationManager.shared
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
     }
@@ -57,11 +58,7 @@ class SettingTableViewController: UITableViewController {
 
     
     private func register() {
-        //SPWebViewController
-        let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-        
-        //let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-        self.present(register, animated: true, completion: nil)
+        navigationManager.finishRegistration(self)
     }
     
     private func logout() {

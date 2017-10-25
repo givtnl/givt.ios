@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class SPInfoViewController: UIViewController {
 
@@ -20,6 +21,9 @@ class SPInfoViewController: UIViewController {
         headerText.text = NSLocalizedString("SlimPayInformation", comment: "")
         explanation.text = NSLocalizedString("SlimPayInformationPart2", comment: "")
         btnNext.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
         // Do any additional setup after loading the view.
     }
 
@@ -29,6 +33,7 @@ class SPInfoViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
+        SVProgressHUD.show()
         var userInfo = UserDefaults.standard.userExt
         var signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)
         var mandate = Mandate(signatory: signatory)
