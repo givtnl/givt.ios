@@ -11,7 +11,7 @@ import UIKit
 class LoginNavigationViewController: UINavigationController {
 
     var outerHandler : (() -> Void)?
-    
+    var email: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,7 @@ class LoginNavigationViewController: UINavigationController {
             if outerHandler != nil {
                 let vc = i as! LoginViewController
                 vc.completionHandler = { self.outerHandler!() }
+                vc.email = email
             }
             
         }

@@ -11,7 +11,7 @@ import UIKit
 class LoginViewController: UIViewController, UITextFieldDelegate {
    
     var completionHandler: () -> () = {}
-    var string: String?
+    var email: String?
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
@@ -28,7 +28,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         btnLogin.setTitle(NSLocalizedString("Login", comment: ""), for: UIControlState.normal)
         txtUserName.delegate = self
         txtPassword.delegate = self
-        print(string)
+        txtUserName.text = email
+        
+        if !(email?.isEmpty)! {
+            txtPassword.becomeFirstResponder()
+        }
         
     }
     
@@ -105,8 +109,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             if b {
                 print("logging user in")
-                
-                UserDefaults.standard.isLoggedIn = true
                 DispatchQueue.main.async {
                     self.dismiss(animated: false, completion: { self.completionHandler() } )
                 }
