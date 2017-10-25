@@ -899,10 +899,10 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXc-vI-HpB">
-                                <rect key="frame" x="40" y="84" width="295" height="139.5"/>
+                                <rect key="frame" x="40" y="84" width="295" height="189.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bepaal hier het maximale bedrag dat je per keer wilt kunnen geven." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="10l-06-WhN">
-                                        <rect key="frame" x="0.0" y="0.0" width="295" height="139.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="295" height="189.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="23"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -941,7 +941,7 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbr-qe-p3K">
-                                <rect key="frame" x="20" y="243.5" width="335" height="80"/>
+                                <rect key="frame" x="20" y="293.5" width="335" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pN1-on-KFq" userLabel="decr">
                                         <rect key="frame" x="0.0" y="20" width="40" height="40"/>
@@ -1030,7 +1030,7 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                             <constraint firstItem="SXc-vI-HpB" firstAttribute="leading" secondItem="K7q-qD-m1C" secondAttribute="leading" constant="40" id="18z-ZD-Ex8"/>
                             <constraint firstItem="Nbr-qe-p3K" firstAttribute="top" secondItem="SXc-vI-HpB" secondAttribute="bottom" constant="20" id="693-w3-ZxT"/>
                             <constraint firstAttribute="trailing" secondItem="SXc-vI-HpB" secondAttribute="trailing" constant="40" id="748-wj-oYK"/>
-                            <constraint firstItem="Nbr-qe-p3K" firstAttribute="centerY" secondItem="K7q-qD-m1C" secondAttribute="centerY" constant="-50" id="94J-fV-fGd"/>
+                            <constraint firstItem="Nbr-qe-p3K" firstAttribute="centerY" secondItem="K7q-qD-m1C" secondAttribute="centerY" id="94J-fV-fGd"/>
                             <constraint firstAttribute="trailing" secondItem="r31-cv-Adj" secondAttribute="trailing" constant="20" id="GlA-7r-dsV"/>
                             <constraint firstItem="r31-cv-Adj" firstAttribute="leading" secondItem="K7q-qD-m1C" secondAttribute="leading" constant="20" id="TNo-Zn-8Fa"/>
                             <constraint firstItem="Nbr-qe-p3K" firstAttribute="leading" secondItem="K7q-qD-m1C" secondAttribute="leading" constant="20" id="Z2w-3u-LW0"/>
@@ -1054,7 +1054,7 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                         <outlet property="backButton" destination="t7R-5Y-Fz0" id="k9A-Fk-sqM"/>
                         <outlet property="bottomConstraint" destination="nA7-te-giW" id="HGj-Fh-aC3"/>
                         <outlet property="btnSave" destination="r31-cv-Adj" id="Y5B-HJ-LID"/>
-                        <outlet property="topContstraint" destination="ox0-6Z-fii" id="apb-t6-TAC"/>
+                        <outlet property="topContstraint" destination="ox0-6Z-fii" id="pKD-B1-Hob"/>
                         <outlet property="verticalConstraint" destination="94J-fV-fGd" id="C7f-UH-Qa5"/>
                     </connections>
                 </viewController>

@@ -53,6 +53,7 @@
 		D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F2E31F7D331B00348D7A /* TermsViewController.swift */; };
 		D782F2E81F7D37A400348D7A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D782F2E71F7D37A400348D7A /* NetworkExtension.framework */; };
 		D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */; };
+		D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788E4771FA08DA700506DA5 /* NavigationManager.swift */; };
 		D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E9E141F8F970A0073F8EB /* Balloon.swift */; };
 		D7D6FA6B1F7BADA5008A5604 /* UITextField+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */; };
 		D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */; };
@@ -150,6 +151,7 @@
 		D782F2E31F7D331B00348D7A /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		D782F2E71F7D37A400348D7A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRegistrationViewController.swift; sourceTree = "<group>"; };
+		D788E4771FA08DA700506DA5 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		D78E9E141F8F970A0073F8EB /* Balloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
 		D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+helpers.swift"; sourceTree = "<group>"; };
 		D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			children = (
 				D77667ED1F39F12900649157 /* LoginManager.swift */,
 				D740E1551F4C5FAE000531BA /* GivtManager.swift */,
+				D788E4771FA08DA700506DA5 /* NavigationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
 				D761E9BA1F18C5C6002B849B /* String+DoubleConverter.swift in Sources */,
+				D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
 				D73CA1C71F39BD970059A296 /* UserDefaults+helpers.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,

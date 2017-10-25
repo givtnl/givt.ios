@@ -64,7 +64,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             streetAndNumber.text = "Stijn Streuvelhoofd 12"
             postalCode.text = "8501"
             city.text = "Heule"
-            countryPicker.text = countries[0].name
+            selectedCountry = countries[0]
+            countryPicker.text = selectedCountry?.name
             mobileNumber.text = "0498121314"
             iban.text = "BE62 5100 0754 7061"
             checkAll()

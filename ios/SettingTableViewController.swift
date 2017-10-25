@@ -45,25 +45,16 @@ class SettingTableViewController: UITableViewController {
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: {})
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: {})
         let userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
-        let welcomeView = Setting(name: "First Use", image: UIImage(named: "share")!) {
-            self.firstUse()
-        }
+
         items =
             [
                 [givts, limit, userInfoSetting, accessCode],
                 [changeAccount, screwAccount],
                 [aboutGivt, shareGivt],
-                [welcomeView]
             ]
         self.tableView.reloadData()
     }
-    
-    private func firstUse() {
-        let register = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseNavigationViewController") as! FirstUseNavigationViewController
-        
-        //let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-        self.present(register, animated: true, completion: nil)
-    }
+
     
     private func register() {
         //SPWebViewController
@@ -155,7 +146,6 @@ class SettingTableViewController: UITableViewController {
         cell.settingLabel.text = temp[indexPath.row].name
         cell.settingImageView.image = temp[indexPath.row].image
         cell.badge.isHidden = temp[indexPath.row].isHidden
-        print(temp[indexPath.row].callback)
         return cell
     }
     

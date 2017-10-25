@@ -13,6 +13,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var widthConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UIView!
     
+    private var navigiationManager: NavigationManager = NavigationManager.shared
     @IBOutlet var menu: UIBarButtonItem!
     @IBOutlet var containerCollection: UIView!
     @IBOutlet var amountLabel3: UILabel!
@@ -122,15 +123,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         showFirstBalloon()
-        if !LoginManager.shared.isFullyRegistered && LoginManager.shared.userClaim != .giveOnce {
-            
-            let alert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertActionStyle.default, handler: { action in  }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("FinalizeRegistration", comment: ""), style: .cancel, handler: { (action) in
-                //push registration flow
-            }))
-            self.present(alert, animated: true, completion: {})
-        }
+        
+        navigiationManager.finishRegistration(self)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        reset()
     }
     
     func addGestureRecognizerToView(view: UIView) {
@@ -402,6 +401,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         balloon.pinRight(view: self.collectionButton)
         balloon.pinTop(view: self.containerCollection, 0)
         self.view.layoutIfNeeded()
+        
+        balloon.alpha = 0
+        UIView.animate(withDuration: 0.5) {
+            balloon.alpha = 1
+        }
+        
         balloon.bounce()
         
         self.firstBalloon = balloon
@@ -453,6 +458,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         firstBalloon?.hide()
         secondBalloon?.hide()
         thirdBalloon?.hide()
+    }
+    
+    func reset() {
+        hideBalloons()
+        clearAmounts()
+        selectView(0)
+       
     }
     
 }

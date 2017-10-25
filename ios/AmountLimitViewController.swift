@@ -15,6 +15,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var verticalConstraint: NSLayoutConstraint!
     @IBOutlet var topContstraint: NSLayoutConstraint!
     @IBOutlet var btnSave: CustomButton!
+    var btnSaveKeyboard: CustomButton?
     @IBOutlet var amountLimit: UITextField!
     @IBOutlet var navBar: UINavigationBar!
     var isRegistration: Bool = false
@@ -61,6 +62,9 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         if (amountLimit.text?.characters.count)! >= 5 {
             amountLimit.text = amountLimit.text?.substring(0..<5)
         }
+        
+        btnSave.isEnabled = value > 0
+        btnSaveKeyboard?.isEnabled = value > 0
     }
     
     override func viewDidLoad() {
@@ -80,7 +84,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             btnSave.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
         }
         
-        
+        btnSave.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         
         amountLimit.returnKeyType = .done
         amountLimit.delegate = self
@@ -89,9 +93,49 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         if UserDefaults.standard.amountLimit > 0 {
             amountLimit.text = String(UserDefaults.standard.amountLimit)
         }
+
+        createToolbar()
+    }
+
+    func createToolbar() {
+        let btn = CustomButton(type: .custom)
+        btn.cornerRadius = 3
+        btn.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
+        btn.highlightedBGColor = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+        btn.ogBGColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
+        btn.frame = CGRect(x: 20, y: 0, width: UIScreen.main.bounds.width - 40, height: 44)
+        btn.setTitle(btnSave.titleLabel?.text, for: .normal)
+        btn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 18.0)
+        btn.addTarget(self, action: #selector(save), for: .touchUpInside)
+        btn.isUserInteractionEnabled = true
+        btn.isEnabled = true
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.addTarget(self, action: #selector(save))
+        btn.gestureRecognizers?.append(tap)
+        self.btnSaveKeyboard = btn
+        
+        let doneToolbar: UIToolbar = UIToolbar()
+        doneToolbar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 54)
+        //doneToolbar.addSubview(btn)
+        doneToolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
+        doneToolbar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        doneToolbar.clipsToBounds = true
+        doneToolbar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        doneToolbar.isUserInteractionEnabled = true
+
+        let barItem = UIBarButtonItem(customView: btn)
+        doneToolbar.setItems([barItem], animated: false)
+        
+        amountLimit.inputAccessoryView = doneToolbar
     }
     
     @IBAction func btnSave(_ sender: UIButton) {
+        save()
+    }
+
+    @objc func save() {
+        self.view.endEditing(true)
         LoginManager.shared.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_,_ in
             if self.isRegistration {
                 DispatchQueue.main.async {
@@ -104,15 +148,15 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
                     self.dismiss(animated: true, completion: nil)
                 }
             }
-            
+
         })
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(AmountLimitViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AmountLimitViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -121,27 +165,19 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     }
         
     func keyboardWillShow(notification: NSNotification) {
-        //To retrieve keyboard size, uncomment following line
-        let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-                bottomConstraint.constant = (keyboardSize?.height)! + 20
-        verticalConstraint.constant = bottomConstraint.constant/2 * -1
-        topContstraint.constant = bottomConstraint.constant/2 * -1
-
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
+        let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
+        let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
+        UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: [], animations: {
+            self.btnSave.alpha = 0
+        }, completion: nil)
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        //To retrieve keyboard size, uncomment following line
-        //let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()
-        bottomConstraint.constant = 20
-        verticalConstraint.constant = 0
-        topContstraint.constant = 0
-    
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
+        let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
+        let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
+        UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: [], animations: {
+            self.btnSave.alpha = 1
+        }, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -156,9 +192,12 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidChange(_ textField: UITextField) {
         if (textField.text?.characters.count)! == 0 {
             textField.text = "0"
+            btnSave.isEnabled = false
+            btnSaveKeyboard?.isEnabled = false
             return
         }
-        
+        btnSave.isEnabled = true
+        btnSaveKeyboard?.isEnabled = true
         let amountLimit: Int = Int(textField.text!)!
         textField.text = String(amountLimit)
         

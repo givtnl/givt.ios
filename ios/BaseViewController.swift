@@ -12,6 +12,7 @@ import LGSideMenuController
 
 class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     
+    private var navigationManager: NavigationManager = NavigationManager.shared
     
     func willShowLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
         UIApplication.shared.statusBarStyle = .default
@@ -34,12 +35,7 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if LoginManager.shared.userClaim == .startedApp
-        {
-            let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseNavigationViewController") as! FirstUseNavigationViewController
-            self.present(welcome, animated: false, completion: nil)
-            //self.present((self.storyboard?.instantiateViewController(withIdentifier: "ncLogin"))!, animated: true, completion: nil)
-        }
+        navigationManager.loadMainPage(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,9 +52,7 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
         // Pass the selected object to the new view controller.
         if (segue.identifier! == "root")
         {
-//            let del = UIApplication.shared.delegate as! AppDelegate
-//            del.mainNavigation? = segue.destination as! CustomViewController
-//            print("test")
+
         }
     }
     
