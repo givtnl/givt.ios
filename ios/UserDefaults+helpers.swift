@@ -16,12 +16,10 @@ extension UserDefaults {
         case bearerExpiration
         case amountLimit
         case offlineGivts
-        case guid
         case userExt
         case mandateSigned
         case viewedCoachMarks
         case userClaims
-        case isTempUser
     }
     
     
@@ -35,32 +33,12 @@ extension UserDefaults {
         }
     }
     
-    var isTempUser: Bool {
-        get {
-            return bool(forKey: UserDefaultsKeys.isTempUser.rawValue)
-        }
-        set(value) {
-            set(value, forKey: UserDefaultsKeys.isTempUser.rawValue)
-            synchronize()
-        }
-    }
-    
     var userClaims: Int {
         get {
             return integer(forKey: UserDefaultsKeys.userClaims.rawValue)
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.userClaims.rawValue)
-            synchronize()
-        }
-    }
-    
-    var guid: String {
-        get {
-            return string(forKey: UserDefaultsKeys.guid.rawValue)!
-        }
-        set(value) {
-            set(value, forKey: UserDefaultsKeys.guid.rawValue)
             synchronize()
         }
     }
@@ -119,8 +97,10 @@ extension UserDefaults {
     
     var userExt: UserExt {
         get {
-            let encoded = data(forKey: UserDefaultsKeys.userExt.rawValue)
-            return NSKeyedUnarchiver.unarchiveObject(with: encoded!) as! UserExt
+            if let encoded = data(forKey: UserDefaultsKeys.userExt.rawValue) {
+                return NSKeyedUnarchiver.unarchiveObject(with: encoded) as! UserExt
+            }
+            return UserExt()
         }
         set(value) {
             let encoded = NSKeyedArchiver.archivedData(withRootObject: value)
