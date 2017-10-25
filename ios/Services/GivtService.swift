@@ -12,7 +12,7 @@ import UIKit
 import AudioToolbox
 
 final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate {
-    static let sharedInstance = GivtService()
+    static let shared = GivtService()
     
     let reachability = Reachability()
     
@@ -148,7 +148,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 for (index, value) in amounts.enumerated() {
                     if value >= 0.50 {
                         print(value)
-                        var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: UserDefaults.standard.guid)
+                        var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: UserDefaults.standard.userExt.guid)
                         transactions.append(newTransaction)
                     }
                 }
