@@ -11,13 +11,13 @@ import UIKit
 class Setting {
     var name: String
     var image: UIImage
-    var hasBadge: Bool
+    var isHidden: Bool
     var callback: () -> ()
     
-    init(name: String, image: UIImage, hasBadge: Bool = false, callback: @escaping () -> ()) {
+    init(name: String, image: UIImage, isHidden: Bool = true, callback: @escaping () -> ()) {
         self.name = name
         self.image = image
-        self.hasBadge = hasBadge
+        self.isHidden = isHidden
         self.callback = callback
     }
 

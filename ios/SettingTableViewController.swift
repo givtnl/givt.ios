@@ -26,11 +26,16 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lblSettings.text = NSLocalizedString("Settings", comment: "Settings")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadSettings()
     }
     
     private func loadSettings(){
-        let userInfo: String = LoginManager.shared.isTempUser ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
+        let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
 
         let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
         let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
@@ -39,18 +44,18 @@ class SettingTableViewController: UITableViewController {
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: {})
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: {})
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: {})
-        let userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, hasBadge: LoginManager.shared.isTempUser, callback: { self.register() })
+        let userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
         let welcomeView = Setting(name: "First Use", image: UIImage(named: "share")!) {
             self.firstUse()
         }
-        
-        items +=
+        items =
             [
                 [givts, limit, userInfoSetting, accessCode],
                 [changeAccount, screwAccount],
                 [aboutGivt, shareGivt],
                 [welcomeView]
             ]
+        self.tableView.reloadData()
     }
     
     private func firstUse() {
@@ -149,7 +154,7 @@ class SettingTableViewController: UITableViewController {
         let temp = self.items[indexPath.section]
         cell.settingLabel.text = temp[indexPath.row].name
         cell.settingImageView.image = temp[indexPath.row].image
-        cell.badge.isHidden = !temp[indexPath.row].hasBadge
+        cell.badge.isHidden = temp[indexPath.row].isHidden
         print(temp[indexPath.row].callback)
         return cell
     }
