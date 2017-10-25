@@ -23,7 +23,7 @@ class LoginManager {
     
     private init() {
         print("loginmanager is created")
-        userClaim = .startedApp
+        userClaim = UserDefaults.standard.isLoggedIn ? .give : .startedApp
     }
     
     public var userClaim: UserClaims {
@@ -320,9 +320,6 @@ class LoginManager {
     func checkMandate(completionHandler: @escaping (String) -> Void) -> URLSessionTask? {
         var task: URLSessionTask?
         if isBearerStillValid {
-            print("---")
-            print(UserDefaults.standard.userExt.guid)
-            print("---")
             var request = URLRequest(url: URL(string: _baseUrl + "/api/Mandate?UserID=" + UserDefaults.standard.userExt.guid)!)
             request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -347,8 +344,6 @@ class LoginManager {
                     print(UserDefaults.standard.mandateSigned)
                     if let status = parsedData["PayProvMandateStatus"] as? String {
                         completionHandler(status)
-                        print("pls unwrap")
-                        print(status)
                     } else {
                         completionHandler("")
                     }
@@ -370,6 +365,7 @@ class LoginManager {
                 self.registerExtraDataFromUser(regUserExt) { b in
                     if b {
                         self.userClaim = .giveOnce
+                        UserDefaults.standard.isLoggedIn = true
                         UserDefaults.standard.amountLimit = .max
                         DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
                         completionHandler(true)
