@@ -58,8 +58,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
-    
-        self.hideKeyboardWhenTappedAround()
+
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -107,6 +106,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func doneCommand() {
+        self.view.endEditing(true)
         SVProgressHUD.show()
         LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
             
@@ -166,6 +166,11 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         })
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        
     }
     
     func registerEmail(email: String) {
