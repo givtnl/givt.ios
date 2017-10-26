@@ -22,8 +22,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet var rightSpacerView: UIView!
     @IBOutlet var firstView: UIView!
     @IBOutlet var firstLine: UIView!
+    @IBOutlet var firstEuro: UILabel!
     @IBOutlet var secondLine: UIView!
+    @IBOutlet var secondEuro: UILabel!
     @IBOutlet var thirdLine: UIView!
+    @IBOutlet var thirdEuro: UILabel!
     @IBOutlet var secondView: UIView!
     @IBOutlet var thirdView: UIView!
     @IBOutlet var collectionButton: UIButton!
@@ -340,20 +343,26 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     func selectView(_ idx: Int!) {
         firstLine.isHidden = true
+        firstEuro.isHidden = true
         secondLine.isHidden = true
+        secondEuro.isHidden = true
         thirdLine.isHidden = true
+        thirdEuro.isHidden = true
         
         switch idx {
         case 0?:
             firstLine.isHidden = false
+            firstEuro.isHidden = false
         case 1?:
             secondView.isHidden = false
             secondLine.isHidden = false
+            secondEuro.isHidden = false
             
             showSecondBalloon(view: secondView, arrowPointsTo: amountLabel2)
         case 2?:
             thirdView.isHidden = false
             thirdLine.isHidden = false
+            thirdEuro.isHidden = false
             leftSpacerView.isHidden = true
             rightSpacerView.isHidden = true
 

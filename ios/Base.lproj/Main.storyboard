@@ -636,10 +636,10 @@ Kijk voor de status in je overzicht.</string>
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="80"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEF-Oq-6FP">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="75" height="80"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="4tW-vn-z2C" userLabel="lblAmount">
-                                                                                <rect key="frame" x="16" y="0.0" width="45" height="77"/>
+                                                                                <rect key="frame" x="16" y="0.0" width="20" height="77"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="36"/>
                                                                                 <color key="textColor" red="0.82352941176470584" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -654,7 +654,7 @@ Kijk voor de status in je overzicht.</string>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALL-fv-AUx">
-                                                                                <rect key="frame" x="0.0" y="77" width="75" height="6"/>
+                                                                                <rect key="frame" x="0.0" y="77" width="50" height="6"/>
                                                                                 <color key="backgroundColor" red="0.25490196078431371" green="0.78823529411764703" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="6" id="Lj7-k6-30c"/>
@@ -680,16 +680,16 @@ Kijk voor de status in je overzicht.</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDP-AN-Lvz">
-                                                                        <rect key="frame" x="75" y="0.0" width="75" height="80"/>
+                                                                        <rect key="frame" x="50" y="0.0" width="50" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="V83-OS-ikq" userLabel="lblAmount">
-                                                                                <rect key="frame" x="16" y="0.0" width="45" height="77"/>
+                                                                                <rect key="frame" x="16" y="0.0" width="20" height="77"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="36"/>
                                                                                 <color key="textColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOp-vI-VLB">
-                                                                                <rect key="frame" x="0.0" y="77" width="75" height="6"/>
+                                                                                <rect key="frame" x="0.0" y="77" width="50" height="6"/>
                                                                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="6" id="zn7-Nc-AY5"/>
@@ -719,24 +719,24 @@ Kijk voor de status in je overzicht.</string>
                                                                             <constraint firstItem="JVs-FP-NJa" firstAttribute="leading" secondItem="LDP-AN-Lvz" secondAttribute="leading" constant="5" id="qLy-9c-1jD"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1d-tm-JK5">
-                                                                        <rect key="frame" x="150" y="0.0" width="30.333333333333314" height="80"/>
+                                                                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1d-tm-JK5">
+                                                                        <rect key="frame" x="100" y="0.0" width="50" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-jh-60h" userLabel="lblAmount">
-                                                                                <rect key="frame" x="16.333333333333314" y="0.0" width="0.0" height="77"/>
+                                                                                <rect key="frame" x="16.333333333333343" y="0.0" width="19.666666666666657" height="77"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="36"/>
                                                                                 <color key="textColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVO-JW-Ah6">
-                                                                                <rect key="frame" x="0.0" y="77" width="30.333333333333314" height="6"/>
+                                                                                <rect key="frame" x="0.0" y="77" width="50" height="6"/>
                                                                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="6" id="Mwm-T4-h9R"/>
                                                                                 </constraints>
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkL-dP-weS">
-                                                                                <rect key="frame" x="5" y="12" width="9.3333333333333144" height="65"/>
+                                                                                <rect key="frame" x="5" y="12" width="9.3333333333333428" height="65"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="9.3300000000000001" id="0qF-qW-tBR"/>
                                                                                 </constraints>
@@ -1183,14 +1183,17 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="collectionButton" destination="A90-n3-V2A" id="Nyd-Ro-THC"/>
                         <outlet property="collectionView" destination="CFT-nk-nbx" id="zSg-cT-aby"/>
                         <outlet property="containerCollection" destination="cwg-g8-7CN" id="geh-dh-xCj"/>
+                        <outlet property="firstEuro" destination="YZV-SR-a23" id="I71-YL-DaJ"/>
                         <outlet property="firstLine" destination="ALL-fv-AUx" id="akt-KI-sG7"/>
                         <outlet property="firstView" destination="kEF-Oq-6FP" id="I6X-85-hr0"/>
                         <outlet property="lblTitle" destination="h1k-Ax-YwJ" id="kRF-na-R6Y"/>
                         <outlet property="leftSpacerView" destination="bJH-ii-63Z" id="XbW-Up-13p"/>
                         <outlet property="menu" destination="QTY-DE-8Mb" id="fuH-wr-9ha"/>
                         <outlet property="rightSpacerView" destination="vyl-Gw-Bwr" id="qLS-W7-cG0"/>
+                        <outlet property="secondEuro" destination="JVs-FP-NJa" id="kus-7z-6Fm"/>
                         <outlet property="secondLine" destination="eOp-vI-VLB" id="TgS-hz-lP0"/>
                         <outlet property="secondView" destination="LDP-AN-Lvz" id="b4I-1v-i3M"/>
+                        <outlet property="thirdEuro" destination="GkL-dP-weS" id="GhK-H7-aJr"/>
                         <outlet property="thirdLine" destination="BVO-JW-Ah6" id="nYv-id-X2f"/>
                         <outlet property="thirdView" destination="F1d-tm-JK5" id="L1G-8m-sJh"/>
                         <outlet property="widthConstraint" destination="HyZ-zq-4oo" id="TLN-Yk-YCM"/>
