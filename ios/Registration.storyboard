@@ -543,7 +543,7 @@
                                 <rect key="frame" x="20" y="20" width="335" height="128"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="tad-kI-WfS">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="108"/>
                                         <string key="text">Om te kunnen geven met Givt moet je 
 een machtiging (SlimPay eMandate) 
 afgeven.</string>
@@ -557,10 +557,10 @@ afgeven.</string>
                                     <constraint firstAttribute="trailing" secondItem="tad-kI-WfS" secondAttribute="trailing" id="L78-kl-DEm"/>
                                     <constraint firstItem="tad-kI-WfS" firstAttribute="top" secondItem="ryM-in-ciG" secondAttribute="top" id="Rwq-qO-k7d"/>
                                     <constraint firstItem="tad-kI-WfS" firstAttribute="leading" secondItem="ryM-in-ciG" secondAttribute="leading" id="jQj-e0-7kp"/>
-                                    <constraint firstAttribute="bottom" secondItem="tad-kI-WfS" secondAttribute="bottom" id="jUR-CO-7OT"/>
+                                    <constraint firstAttribute="bottom" secondItem="tad-kI-WfS" secondAttribute="bottom" constant="20" id="jUR-CO-7OT"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givySlimPay.png" translatesAutoresizingMaskIntoConstraints="NO" id="o7m-wS-WRO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="givySlimPay" translatesAutoresizingMaskIntoConstraints="NO" id="o7m-wS-WRO">
                                 <rect key="frame" x="103.5" y="148" width="168" height="168"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="o7m-wS-WRO" secondAttribute="height" multiplier="1:1" id="RL3-le-q5N"/>
@@ -568,11 +568,11 @@ afgeven.</string>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="168" id="zR2-yG-p10"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izA-NC-atv">
+                            <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="izA-NC-atv">
                                 <rect key="frame" x="20" y="326" width="335" height="267"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="x6c-Yv-HDC">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="267"/>
+                                        <rect key="frame" x="0.0" y="20" width="335" height="227"/>
                                         <string key="text">Er wordt alleen geïncasseerd,
 wanneer je zelf een bedrag geeft met Givt.
 
@@ -586,10 +586,10 @@ een gift te herroepen.</string>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="x6c-Yv-HDC" firstAttribute="top" secondItem="izA-NC-atv" secondAttribute="top" id="5Uu-8p-cvL"/>
+                                    <constraint firstItem="x6c-Yv-HDC" firstAttribute="top" secondItem="izA-NC-atv" secondAttribute="top" constant="20" id="5Uu-8p-cvL"/>
+                                    <constraint firstAttribute="bottom" secondItem="x6c-Yv-HDC" secondAttribute="bottom" constant="20" id="RXk-eV-iYC"/>
                                     <constraint firstAttribute="trailing" secondItem="x6c-Yv-HDC" secondAttribute="trailing" id="SD3-VA-YEJ"/>
                                     <constraint firstItem="x6c-Yv-HDC" firstAttribute="leading" secondItem="izA-NC-atv" secondAttribute="leading" id="YDa-gR-E5O"/>
-                                    <constraint firstAttribute="bottom" secondItem="x6c-Yv-HDC" secondAttribute="bottom" id="YvG-Mu-l4Y"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXN-cE-Huu" customClass="CustomButton" customModule="ios" customModuleProvider="target">
@@ -1080,7 +1080,7 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
         <image name="decrease.png" width="40" height="40"/>
         <image name="dropdown.png" width="13" height="8"/>
         <image name="givt_registration.gif" width="200" height="355"/>
-        <image name="givySlimPay.png" width="180" height="180"/>
+        <image name="givySlimPay" width="180" height="180"/>
         <image name="increase.png" width="40" height="40"/>
         <image name="unchecked.png" width="24" height="24"/>
         <image name="visible_eye.png" width="16" height="12"/>
