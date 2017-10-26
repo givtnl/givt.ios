@@ -124,7 +124,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidAppear(animated)
         showFirstBalloon()
         
-        navigiationManager.finishRegistrationAlert(self)
+        if (self.sideMenuController?.isLeftViewHidden)! {
+            navigiationManager.finishRegistrationAlert(self)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

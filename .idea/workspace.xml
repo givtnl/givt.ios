@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9415ffff-c3e0-4d46-afe2-628c5cae1222" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Managers/NavigationManager.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/ios.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/AmountLimitViewController.swift" afterPath="$PROJECT_DIR$/ios/AmountLimitViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/AmountViewController.swift" afterPath="$PROJECT_DIR$/ios/AmountViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/BaseViewController.swift" afterPath="$PROJECT_DIR$/ios/BaseViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/FirstUse/EmailOnlyViewController.swift" afterPath="$PROJECT_DIR$/ios/FirstUse/EmailOnlyViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/Managers/LoginManager.swift" afterPath="$PROJECT_DIR$/ios/Managers/LoginManager.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/Registration.storyboard" afterPath="$PROJECT_DIR$/ios/Registration.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/RegistrationDetailViewController.swift" afterPath="$PROJECT_DIR$/ios/RegistrationDetailViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/SettingTableViewController.swift" afterPath="$PROJECT_DIR$/ios/SettingTableViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/Welcome.storyboard" afterPath="$PROJECT_DIR$/ios/Welcome.storyboard" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givyPermission.imageset/givyPermission.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givyPermission.imageset/givyPermission@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givyPermission.imageset/givyPermission@3x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/Assets.xcassets/Icons/givyPermission.imageset/Contents.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,7 +14,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_6903e005fc9a5e1242cd166a7d84b231b259f4e6" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_cbcdaa8aaa2380b4d81d7021708352442ad13404" />
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
@@ -29,9 +22,35 @@
           <file leaf-file-name="AmountViewController.swift" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ios/AmountViewController.swift">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1668">
+                <state relative-caret-position="4800">
                   <caret line="320" column="9" lean-forward="false" selection-start-line="320" selection-start-column="9" selection-end-line="320" selection-end-column="9" />
-                  <folding />
+                  <folding>
+                    <marker date="1508940989000" expanded="true" signature="239:17398" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="3435:4237" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="4629:4641" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="4700:4764" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="4820:5371" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="5431:5504" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="5596:5702" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="5754:6837" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="6873:7300" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="7360:7477" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="7531:7968" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="8013:8086" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="8116:8366" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="8414:9959" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="10003:10926" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="10964:11819" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="11869:12735" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="12777:13307" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="13346:14096" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="14136:15006" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="15040:15744" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="15810:16457" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="16527:17160" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="17190:17285" ph="{...}" />
+                    <marker date="1508940989000" expanded="true" signature="17308:17391" ph="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -41,9 +60,7 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="360">
                   <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-                  <folding>
-                    <marker date="1508857494000" expanded="true" signature="170:491" ph="{...}" />
-                  </folding>
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -51,9 +68,27 @@
           <file leaf-file-name="SettingTableViewController.swift" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/ios/SettingTableViewController.swift">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="15">
-                  <caret line="50" column="44" lean-forward="false" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-                  <folding />
+                <state relative-caret-position="750">
+                  <caret line="51" column="44" lean-forward="false" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
+                  <folding>
+                    <marker date="1508939847000" expanded="true" signature="259:8827" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="2616:2623" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="2655:2820" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="2857:3775" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="3814:5458" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="5031:5368" ph="/*...*/" />
+                    <marker date="1508939847000" expanded="true" signature="5504:5610" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="5724:5840" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="5939:6060" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="6175:6616" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="6651:6885" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="6982:7168" ph="{...}" />
+                    <marker date="1508939847000" expanded="true" signature="7174:7452" ph="/*...*/" />
+                    <marker date="1508939847000" expanded="true" signature="7458:7995" ph="/*...*/" />
+                    <marker date="1508939847000" expanded="true" signature="8001:8179" ph="/*...*/" />
+                    <marker date="1508939847000" expanded="true" signature="8185:8461" ph="/*...*/" />
+                    <marker date="1508939847000" expanded="true" signature="8671:8820" ph="{...}" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -71,8 +106,8 @@
           <file leaf-file-name="AmountLimitViewController.swift" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ios/AmountLimitViewController.swift">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="907">
-                  <caret line="100" column="65" lean-forward="false" selection-start-line="100" selection-start-column="65" selection-end-line="100" selection-end-column="65" />
+                <state relative-caret-position="922">
+                  <caret line="102" column="65" lean-forward="false" selection-start-line="102" selection-start-column="65" selection-end-line="102" selection-end-column="65" />
                   <folding />
                 </state>
               </provider>
@@ -101,11 +136,11 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="RegistrationDetailViewController.swift" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ios/RegistrationDetailViewController.swift">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1523">
+                <state relative-caret-position="1465">
                   <caret line="281" column="0" lean-forward="false" selection-start-line="281" selection-start-column="0" selection-end-line="288" selection-end-column="46" />
                   <folding />
                 </state>
@@ -162,7 +197,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Cidr.FilesView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -192,6 +226,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Cidr.FilesView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -242,35 +277,35 @@
       <workItem from="1507723999743" duration="7654000" />
       <workItem from="1508407391255" duration="2385000" />
       <workItem from="1508932149053" duration="620000" />
+      <workItem from="1508943669271" duration="93000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10698000" />
+    <option name="totallyTimeSpent" value="10791000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3280" y="-608" width="3280" height="1817" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10670732" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893983" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14269342" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39942694" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32893983" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14269342" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39942694" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +325,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4785">
           <caret line="319" column="9" lean-forward="false" selection-start-line="319" selection-start-column="9" selection-end-line="319" selection-end-column="9" />
-          <folding />
+          <folding>
+            <marker date="1508940989000" expanded="true" signature="239:17398" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="3435:4237" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="4629:4641" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="4700:4764" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="4820:5371" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="5431:5504" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="5596:5702" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="5754:6837" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="6873:7300" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="7360:7477" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="7531:7968" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="8013:8086" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="8116:8366" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="8414:9959" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="10003:10926" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="10964:11819" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="11869:12735" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="12777:13307" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="13346:14096" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="14136:15006" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="15040:15744" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="15810:16457" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="16527:17160" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="17190:17285" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="17308:17391" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -298,9 +359,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <marker date="1508857494000" expanded="true" signature="170:491" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -308,7 +367,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
           <caret line="48" column="44" lean-forward="false" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
-          <folding />
+          <folding>
+            <marker date="1508939847000" expanded="true" signature="259:8827" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="2616:2623" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="2655:2820" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="2857:3775" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="3814:5458" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="5031:5368" ph="/*...*/" />
+            <marker date="1508939847000" expanded="true" signature="5504:5610" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="5724:5840" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="5939:6060" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="6175:6616" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="6651:6885" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="6982:7168" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="7174:7452" ph="/*...*/" />
+            <marker date="1508939847000" expanded="true" signature="7458:7995" ph="/*...*/" />
+            <marker date="1508939847000" expanded="true" signature="8001:8179" ph="/*...*/" />
+            <marker date="1508939847000" expanded="true" signature="8185:8461" ph="/*...*/" />
+            <marker date="1508939847000" expanded="true" signature="8671:8820" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -340,7 +417,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1508940989000" expanded="true" signature="239:17398" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="3435:4237" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="4629:4641" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="4700:4764" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="4820:5371" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="5431:5504" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="5596:5702" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="5754:6837" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="6873:7300" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="7360:7477" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="7531:7968" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="8013:8086" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="8116:8366" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="8414:9959" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="10003:10926" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="10964:11819" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="11869:12735" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="12777:13307" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="13346:14096" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="14136:15006" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="15040:15744" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="15810:16457" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="16527:17160" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="17190:17285" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="17308:17391" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -348,9 +451,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <marker date="1508857494000" expanded="true" signature="170:491" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -387,23 +488,67 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ios/SettingTableViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="50" column="44" lean-forward="false" selection-start-line="50" selection-start-column="44" selection-end-line="50" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="750">
+          <caret line="51" column="44" lean-forward="false" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
+          <folding>
+            <marker date="1508939847000" expanded="true" signature="259:8827" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="2616:2623" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="2655:2820" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="2857:3775" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="3814:5458" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="5031:5368" ph="/*...*/" />
+            <marker date="1508939847000" expanded="true" signature="5504:5610" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="5724:5840" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="5939:6060" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="6175:6616" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="6651:6885" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="6982:7168" ph="{...}" />
+            <marker date="1508939847000" expanded="true" signature="7174:7452" ph="/*...*/" />
+            <marker date="1508939847000" expanded="true" signature="7458:7995" ph="/*...*/" />
+            <marker date="1508939847000" expanded="true" signature="8001:8179" ph="/*...*/" />
+            <marker date="1508939847000" expanded="true" signature="8185:8461" ph="/*...*/" />
+            <marker date="1508939847000" expanded="true" signature="8671:8820" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ios/AmountViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1668">
+        <state relative-caret-position="4800">
           <caret line="320" column="9" lean-forward="false" selection-start-line="320" selection-start-column="9" selection-end-line="320" selection-end-column="9" />
-          <folding />
+          <folding>
+            <marker date="1508940989000" expanded="true" signature="239:17398" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="3435:4237" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="4629:4641" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="4700:4764" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="4820:5371" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="5431:5504" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="5596:5702" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="5754:6837" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="6873:7300" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="7360:7477" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="7531:7968" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="8013:8086" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="8116:8366" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="8414:9959" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="10003:10926" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="10964:11819" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="11869:12735" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="12777:13307" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="13346:14096" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="14136:15006" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="15040:15744" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="15810:16457" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="16527:17160" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="17190:17285" ph="{...}" />
+            <marker date="1508940989000" expanded="true" signature="17308:17391" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ios/RegistrationDetailViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1523">
+        <state relative-caret-position="1465">
           <caret line="281" column="0" lean-forward="false" selection-start-line="281" selection-start-column="0" selection-end-line="288" selection-end-column="46" />
           <folding />
         </state>
@@ -411,8 +556,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ios/AmountLimitViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="907">
-          <caret line="100" column="65" lean-forward="false" selection-start-line="100" selection-start-column="65" selection-end-line="100" selection-end-column="65" />
+        <state relative-caret-position="922">
+          <caret line="102" column="65" lean-forward="false" selection-start-line="102" selection-start-column="65" selection-end-line="102" selection-end-column="65" />
           <folding />
         </state>
       </provider>
