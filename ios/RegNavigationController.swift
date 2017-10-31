@@ -11,6 +11,7 @@ import UIKit
 class RegNavigationController: UINavigationController {
 
     enum StartPoint {
+        case permission
         case amountLimit
         case mandate
     }
@@ -34,7 +35,11 @@ class RegNavigationController: UINavigationController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if startPoint == .amountLimit {
+        if startPoint == .permission {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
+            vc.hasBackButton = true
+            self.setViewControllers([vc], animated: false)
+        } else if startPoint == .amountLimit {
             let vc = storyboard?.instantiateViewController(withIdentifier: "alvcreg") as! AmountLimitViewController
             vc.isRegistration = true
             self.setViewControllers([vc], animated: false)

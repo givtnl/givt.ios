@@ -149,10 +149,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             if success {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "alvcreg") as! AmountLimitViewController
-                    vc.isRegistration = true
-                   // let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
-                    self.show(vc, sender: nil)
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
+                    vc.hasBackButton = false
+                    self.show(vc, sender:nil)
                 }
             } else {
                 //registration not gelukt e

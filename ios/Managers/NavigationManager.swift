@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 class NavigationManager {
     static let shared = NavigationManager()
     private var loginManager: LoginManager = LoginManager.shared
@@ -30,18 +31,31 @@ class NavigationManager {
     }
     
     public func finishRegistration(_ context: UIViewController) {
-        if self.appSettings.amountLimit == .max { //tempuser
-            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-            context.present(vc, animated: true, completion: nil)
-        } else if self.appSettings.amountLimit == -1 { //user quit just before entering amount limit
-            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-            vc.startPoint = .amountLimit
-            context.present(vc, animated: true, completion: nil)
-        } else if !self.appSettings.mandateSigned {
-            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-            vc.startPoint = .mandate
+        let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+
+        permissionAsked { (asked) in
+            if self.appSettings.amountLimit == .max { //tempuser
+                self.pushOnMainPage(context, vc)
+            } else if !asked {
+                vc.startPoint = .permission
+                self.pushOnMainPage(context, vc)
+            } else if self.appSettings.amountLimit == -1 { //user quit just before entering amount limit
+                vc.startPoint = .amountLimit
+                self.pushOnMainPage(context, vc)
+            } else if !self.appSettings.mandateSigned {
+                vc.startPoint = .mandate
+                self.pushOnMainPage(context, vc)
+            }
+        }
+        
+        
+    }
+    
+    private func pushOnMainPage(_ context: UIViewController, _ vc: UIViewController) {
+        DispatchQueue.main.async {
             context.present(vc, animated: true, completion: nil)
         }
+        
     }
     
     public func loadMainPage(_ context: UIViewController) {
@@ -49,6 +63,34 @@ class NavigationManager {
             let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseNavigationViewController") as! FirstUseNavigationViewController
             context.present(welcome, animated: false, completion: nil)
         }
+    }
+    
+    private func permissionAsked(completionHandler: @escaping (Bool) -> Void) {
+        if #available(iOS 10.0, *) {
+            let current = UNUserNotificationCenter.current()
+            
+            current.getNotificationSettings { (settings) in
+                if settings.authorizationStatus == .notDetermined {
+                    completionHandler(false)
+                }
+                
+                if settings.authorizationStatus == .denied {
+                    completionHandler(true)
+                }
+                
+                if settings.authorizationStatus == .authorized {
+                    completionHandler(true)
+                }
+            }
+        } else {
+            //fallback
+            guard let settings = UIApplication.shared.currentUserNotificationSettings else {
+                completionHandler(false)
+                return
+            }
+            completionHandler(UIApplication.shared.isRegisteredForRemoteNotifications && !settings.types.isEmpty)
+        }
+        
     }
     
 }

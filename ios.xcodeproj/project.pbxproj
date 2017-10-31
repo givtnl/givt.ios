@@ -67,6 +67,7 @@
 		D7F131661F75574D00E25A68 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F131651F75574D00E25A68 /* Registration.storyboard */; };
 		D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F131671F75593A00E25A68 /* RegistrationViewController.swift */; };
 		D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F131691F7559BD00E25A68 /* RegNavigationController.swift */; };
+		D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F654921FA8B390007816B0 /* PermissionViewController.swift */; };
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
 		D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB252E1F5065C20011A14E /* Reachability.swift */; };
@@ -165,6 +166,7 @@
 		D7F131651F75574D00E25A68 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		D7F131671F75593A00E25A68 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		D7F131691F7559BD00E25A68 /* RegNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNavigationController.swift; sourceTree = "<group>"; };
+		D7F654921FA8B390007816B0 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		D7FB251C1F4D6D2F0011A14E /* AppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
 		D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCompleteViewController.swift; sourceTree = "<group>"; };
 		D7FB252E1F5065C20011A14E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				D7E3CE9D1F7D2C5C005807BE /* SPWebViewController.swift */,
 				D782F2E31F7D331B00348D7A /* TermsViewController.swift */,
 				D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */,
+				D7F654921FA8B390007816B0 /* PermissionViewController.swift */,
 			);
 			name = Registration;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
+				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */,
 				D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */,

@@ -68,11 +68,14 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             btnComma.setTitle(decimalNotation, for: .normal)
             let fmt = NumberFormatter()
             fmt.minimumFractionDigits = 2
-            let test: String = fmt.string(from: 7.50)!
-            btnSevenEuro.setTitle(test, for: .normal)
+            firstQuickBtn.setTitle(fmt.string(from: 2.50), for: .normal)
+            secondQuickBtn.setTitle(fmt.string(from: 7.50), for: .normal)
+            thirdQuickBtn.setTitle(fmt.string(from: 12.50), for: .normal)
         }
     }
-    @IBOutlet var btnSevenEuro: RoundedButton!
+    @IBOutlet var firstQuickBtn: RoundedButton!
+    @IBOutlet var secondQuickBtn: RoundedButton!
+    @IBOutlet var thirdQuickBtn: RoundedButton!
     @IBOutlet var btnComma: UIButton!
     @IBOutlet weak var lblTitle: UINavigationItem!
     @IBOutlet weak var btnGive: CustomButton!
