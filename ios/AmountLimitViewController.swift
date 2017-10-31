@@ -19,6 +19,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var amountLimit: UITextField!
     @IBOutlet var navBar: UINavigationBar!
     var isRegistration: Bool = false
+    var hasBackButton = false
     var timer: Timer?
     @IBAction func btnIncrease(_ sender: Any) {
         addValue(positive: true)
@@ -69,19 +70,13 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if isRegistration {
+        
+        if hasBackButton {
+            btnSave.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
+        } else {
             btnSave.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
-            /*for item in self.navBar.items! {
-                item.leftBarButtonItem?.isEnabled = false
-                item.leftBarButtonItem?.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
-                //item.leftBarButtonItem?.
-            }*/
-           // self.backButton.setBackgroundImage(#imageLiteral(resourceName: "visible_eye.png"), for: .normal, barMetrics: .default)
             self.backButton.isEnabled = false
             self.backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-           
-        } else {
-            btnSave.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
         }
         
         btnSave.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)

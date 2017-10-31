@@ -258,6 +258,7 @@ class LoginManager {
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print(response)
                 return
             }
             completionHandler(true)
@@ -283,11 +284,14 @@ class LoginManager {
         
         let task = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
+                completionHandler("")
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print(String(bytes: data!, encoding: .utf8)!)
+                completionHandler("")
                 return
             }
             let returnUrl = String(bytes: data!, encoding: .utf8)!
@@ -425,5 +429,6 @@ class LoginManager {
         UserDefaults.standard.userExt = UserExt()
         UserDefaults.standard.bearerExpiration = Date()
         UserDefaults.standard.mandateSigned = false
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 }

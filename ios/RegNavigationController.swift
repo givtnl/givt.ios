@@ -41,10 +41,12 @@ class RegNavigationController: UINavigationController {
             self.setViewControllers([vc], animated: false)
         } else if startPoint == .amountLimit {
             let vc = storyboard?.instantiateViewController(withIdentifier: "alvcreg") as! AmountLimitViewController
+            vc.hasBackButton = true
             vc.isRegistration = true
             self.setViewControllers([vc], animated: false)
         } else if startPoint == .mandate {
             let vc = storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
+            vc.hasBackButton = true
             self.setViewControllers([vc], animated: false)
         }
     }

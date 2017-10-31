@@ -15,6 +15,7 @@ class SPInfoViewController: UIViewController {
     @IBOutlet var headerText: UILabel!
     @IBOutlet var explanation: UILabel!
     @IBOutlet var btnNext: CustomButton!
+    var hasBackButton = false
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton.isEnabled = false
@@ -25,6 +26,12 @@ class SPInfoViewController: UIViewController {
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
         // Do any additional setup after loading the view.
+        if !hasBackButton {
+            self.backButton.isEnabled = false
+            self.backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        } else {
+            self.backButton.isEnabled = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,15 +45,31 @@ class SPInfoViewController: UIViewController {
         var signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)
         var mandate = Mandate(signatory: signatory)
         LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
-            DispatchQueue.main.async {
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-                vc.url = slimPayUrl
-                self.show(vc, sender: nil)
+            if slimPayUrl == "" {
+                SVProgressHUD.dismiss()
+                let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
+                    self.dismiss(animated: true, completion: {})
+                }))
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: {})
+                }
+                
+            } else {
+                DispatchQueue.main.async {
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
+                    vc.url = slimPayUrl
+                    self.show(vc, sender: nil)
+                }
             }
+            
         })
         
     }
 
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

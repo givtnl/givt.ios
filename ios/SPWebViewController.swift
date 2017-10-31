@@ -63,6 +63,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
             LoginManager.shared.finishMandateSigning(completionHandler: { (success) in
                 if success {
                     DispatchQueue.main.async {
+                        UIApplication.shared.applicationIconBadgeNumber = 0
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
                         self.show(vc, sender: nil)
                     }
