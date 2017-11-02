@@ -54,7 +54,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             checkAll()
         #endif
         emailaddress.text = UserDefaults.standard.userExt.email
-        emailaddress.isUserInteractionEnabled = false
+        emailaddress.isEnabled = false
+        //emailaddress.color
         self.regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
     }
     @IBAction func switchPasswordVisibility(_ sender: Any) {
@@ -89,9 +90,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         lastname.delegate = self
         lastname.tag = 1
         emailaddress.delegate = self
-        emailaddress.tag = 2
+        /* do not give emailadress a tag because we want to go from Lastname > Passwd because email will be blocked from entering input */
         password.delegate = self
-        password.tag = 3
+        password.tag = 2
     }
     
     func initTermsText() {
