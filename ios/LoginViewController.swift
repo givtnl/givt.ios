@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
    
     var completionHandler: () -> () = {}
-    var email: String?
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var txtUserName: UITextField!
     @IBOutlet weak var txtPassword: UITextField!
@@ -28,12 +28,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         btnLogin.setTitle(NSLocalizedString("Login", comment: ""), for: UIControlState.normal)
         txtUserName.delegate = self
         txtPassword.delegate = self
-        txtUserName.text = email
+        let email = UserDefaults.standard.userExt.email
         
-        if !(email?.isEmpty)! {
+        txtUserName.text = email
+        if !email.isEmpty() {
+            txtUserName.isEnabled = false
+            txtUserName.textColor = #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1)
             txtPassword.becomeFirstResponder()
         }
         
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -85,25 +91,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         login()
     }
     
-    func showLoadingAnimation() {
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-        activityIndicator.center = self.view.center
-        activityIndicator.startAnimating();
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.tag = 1
-        self.view.addSubview(activityIndicator)
-        self.view.isUserInteractionEnabled = false
-    }
-    
     func login(){
-        showLoadingAnimation()
+        SVProgressHUD.show()
         _ = LoginManager.shared.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error in
             
                 DispatchQueue.main.async {
-                    if let viewWithTag = self.view.viewWithTag(1) {
-                        self.view.isUserInteractionEnabled = true
-                        viewWithTag.removeFromSuperview()
-                    }
+                    SVProgressHUD.dismiss()
                 }
                 
             

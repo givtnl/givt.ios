@@ -225,6 +225,8 @@ class LoginManager {
                             completionHandler(false)
                         }
                     })
+                } else {
+                    completionHandler(false)
                 }
             })
             
@@ -253,12 +255,15 @@ class LoginManager {
         
         let task = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
+                completionHandler(false)
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print(response)
+                print(String(bytes: data!, encoding: .utf8)!)
+                completionHandler(false)
                 return
             }
             completionHandler(true)
@@ -414,6 +419,9 @@ class LoginManager {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 return
             }
+            let userExt = UserDefaults.standard.userExt
+            userExt.email = email
+            UserDefaults.standard.userExt = userExt
             let status = String(bytes: data!, encoding: .utf8)!.replacingOccurrences(of: "\"", with: "")
             completionHandler(status)
         }

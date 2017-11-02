@@ -32,10 +32,6 @@ class NavigationManager {
     
     public func finishRegistration(_ context: UIViewController) {
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-
-        print(loginManager.isBearerStillValid)
-        print(UserDefaults.standard.bearerExpiration)
-        print(Date())
         permissionAsked { (asked) in
             if self.appSettings.amountLimit == .max { //tempuser
                 self.pushOnMainPage(context, vc)

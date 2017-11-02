@@ -38,21 +38,34 @@ class SettingTableViewController: UITableViewController {
     private func loadSettings(){
         let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
 
-        let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
-        let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
-        let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: {})
+        let tempUser = UserDefaults.standard.amountLimit == .max || UserDefaults.standard.amountLimit == -1
+        
         let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: { self.logout() })
-        let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: {})
+        
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: {})
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: {})
         let userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
-
-        items =
-            [
-                [givts, limit, userInfoSetting, accessCode],
-                [changeAccount, screwAccount],
-                [aboutGivt, shareGivt],
+        
+        if !tempUser {
+            let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
+            let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
+            let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: {})
+            let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: {})
+            items =
+                [
+                    [givts, limit, userInfoSetting, accessCode],
+                    [changeAccount, screwAccount],
+                    [aboutGivt, shareGivt],
+                ]
+        } else {
+            items =
+                [
+                    [userInfoSetting],
+                    [changeAccount],
+                    [aboutGivt, shareGivt],
             ]
+        }
+    
         self.tableView.reloadData()
     }
 
@@ -88,33 +101,28 @@ class SettingTableViewController: UITableViewController {
     }
     
     private func openGiveLimit() {
-        if !LoginManager.shared.isBearerStillValid {
+        var bool = !LoginManager.shared.isBearerStillValid
+        bool = true
+        if bool {
             let loginVC = storyboard?.instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
             let completionHandler:()->Void = { _ in
-                let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "ncAmountLimit")
                 DispatchQueue.main.async {
-//                    let vc = (UIApplication.shared.delegate as! AppDelegate).window!.rootViewController as! AmountViewController
-//                    let nav = vc.rootViewController as! CustomViewController
-//                    nav.show(amountLimitVC, sender: nil)
-                    print("ik kom er in")
+
                     self.navigationController?.hideLeftViewAnimated(nil)
-                    self.present(amountLimitVC!, animated: true, completion: nil)
+                    let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+                    vc.startPoint = .amountLimit
+                    vc.isRegistration = false
+                    self.present(vc, animated: true, completion: nil)
                     
                 }
             }
             loginVC.outerHandler = completionHandler
             self.present(loginVC, animated: true, completion: nil)
         } else {
-            let amountLimitVC = storyboard?.instantiateViewController(withIdentifier: "ncAmountLimit")
-            // self.present(amountLimitVC, animated: true)
-            /*
-            let del = UIApplication.shared.delegate as! AppDelegate
-            let vc = del.window!.rootViewController as! AmountViewController
-            let nav = vc.rootViewController as! CustomViewController
-            nav.pushViewController(amountLimitVC, animated: false)
-            vc.hideLeftViewAnimated()
-             */
-            self.present(amountLimitVC!, animated: true, completion: nil)
+           let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+            vc.startPoint = .amountLimit
+            vc.isRegistration = false
+            self.present(vc, animated: true, completion: nil)
         }
     }
 

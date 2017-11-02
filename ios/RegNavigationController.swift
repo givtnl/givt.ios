@@ -17,7 +17,7 @@ class RegNavigationController: UINavigationController {
     }
     
     var startPoint: StartPoint?
-    
+    var isRegistration = true
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,7 +42,7 @@ class RegNavigationController: UINavigationController {
         } else if startPoint == .amountLimit {
             let vc = storyboard?.instantiateViewController(withIdentifier: "alvcreg") as! AmountLimitViewController
             vc.hasBackButton = true
-            vc.isRegistration = true
+            vc.isRegistration = isRegistration
             self.setViewControllers([vc], animated: false)
         } else if startPoint == .mandate {
             let vc = storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController

@@ -140,7 +140,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
                 self.navigationController?.dismiss(animated: true, completion: nil)
             }
             vc.outerHandler = ch
-            vc.email = self.email.text!
             self.present(vc, animated: true, completion: nil)
         }
     }
