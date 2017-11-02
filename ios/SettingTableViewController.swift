@@ -101,8 +101,8 @@ class SettingTableViewController: UITableViewController {
     }
     
     private func openGiveLimit() {
-        var bearerStillValid = !LoginManager.shared.isBearerStillValid
-        if bearerStillValid {
+        var bearerStillValid = LoginManager.shared.isBearerStillValid
+        if !bearerStillValid {
             let loginVC = storyboard?.instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
             let completionHandler:()->Void = { _ in
                 DispatchQueue.main.async {
