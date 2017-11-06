@@ -31,6 +31,8 @@
 		D75141A81F9E181A0016B71F /* givt_registration.gif in Resources */ = {isa = PBXBuildFile; fileRef = D75141A51F9E130C0016B71F /* givt_registration.gif */; };
 		D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */; };
 		D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754DA3A1F3B45D5001B7040 /* UIButton+helpers.swift */; };
+		D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */; };
+		D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CD01FACA73900F40827 /* QRViewController.swift */; };
 		D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */; };
 		D761E9601F15248E002B849B /* SettingsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */; };
 		D761E9631F161207002B849B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9621F161207002B849B /* Setting.swift */; };
@@ -55,6 +57,7 @@
 		D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */; };
 		D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788E4771FA08DA700506DA5 /* NavigationManager.swift */; };
 		D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E9E141F8F970A0073F8EB /* Balloon.swift */; };
+		D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F97721FACC83F0006335A /* SelectOrgViewController.swift */; };
 		D7D6FA6B1F7BADA5008A5604 /* UITextField+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */; };
 		D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */; };
 		D7DE0FED1F8E1A6900808ED4 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */; };
@@ -128,6 +131,8 @@
 		D75141A61F9E130C0016B71F /* givt_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = givt_animation.gif; sourceTree = "<group>"; };
 		D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		D754DA3A1F3B45D5001B7040 /* UIButton+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+helpers.swift"; sourceTree = "<group>"; };
+		D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualGivingViewController.swift; sourceTree = "<group>"; };
+		D75F2CD01FACA73900F40827 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		D76021DE1F56B4DD00C24AB6 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
 		D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountLimitViewController.swift; sourceTree = "<group>"; };
 		D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -154,6 +159,7 @@
 		D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRegistrationViewController.swift; sourceTree = "<group>"; };
 		D788E4771FA08DA700506DA5 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		D78E9E141F8F970A0073F8EB /* Balloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
+		D79F97721FACC83F0006335A /* SelectOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgViewController.swift; sourceTree = "<group>"; };
 		D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+helpers.swift"; sourceTree = "<group>"; };
 		D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
@@ -267,6 +273,16 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		D75F2CCD1FAC69B400F40827 /* Manual giving */ = {
+			isa = PBXGroup;
+			children = (
+				D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */,
+				D75F2CD01FACA73900F40827 /* QRViewController.swift */,
+				D79F97721FACC83F0006335A /* SelectOrgViewController.swift */,
+			);
+			path = "Manual giving";
+			sourceTree = "<group>";
+		};
 		D761E9611F1611BE002B849B /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +298,7 @@
 		D761E9661F1614A7002B849B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D75F2CCD1FAC69B400F40827 /* Manual giving */,
 				D75141961F9797E90016B71F /* FirstUse */,
 				D731EACB1F792D5100F5116C /* NavigationControllers */,
 				D7F131621F7555C200E25A68 /* Registration */,
@@ -637,10 +654,13 @@
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
+				D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
 				D761E9BA1F18C5C6002B849B /* String+DoubleConverter.swift in Sources */,
 				D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */,
+				D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */,
+				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
 				D73CA1C71F39BD970059A296 /* UserDefaults+helpers.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,

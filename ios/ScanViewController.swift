@@ -121,7 +121,15 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
 
     }
     
-
+    @IBAction func giveDifferently(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
+        self.show(vc, sender: nil)
+    }
+    
+    @IBAction func goBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension ScanViewController : SFSafariViewControllerDelegate{

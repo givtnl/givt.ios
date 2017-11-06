@@ -137,31 +137,35 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             }
             
             if(rssi.intValue > rssiTreshold){
-                LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
-                let df = DateFormatter()
-                df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
-                df.timeZone = TimeZone(abbreviation: "UTC")
-                let date = df.string(from: Date())
-                print(date)
-                let collectId = "1"
-                var transactions = [Transaction]()
-                for (index, value) in amounts.enumerated() {
-                    if value >= 0.50 {
-                        print(value)
-                        var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: UserDefaults.standard.userExt.guid)
-                        transactions.append(newTransaction)
-                    }
-                }
-            
-                sendPostRequest(transactions: transactions)
-                //todo: clear self.amountss
-                self.onGivtProcessed?.onGivtProcessed(transactions: transactions)
-                AudioServicesPlayAlertSound(1520)
+                give(antennaID: antennaID)
                 return
             }
         }
         
         startScanning()
+    }
+    
+    func give(antennaID: String) {
+        LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
+        df.timeZone = TimeZone(abbreviation: "UTC")
+        let date = df.string(from: Date())
+        print(date)
+        let collectId = "1"
+        var transactions = [Transaction]()
+        for (index, value) in amounts.enumerated() {
+            if value >= 0.50 {
+                print(value)
+                var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: UserDefaults.standard.userExt.guid)
+                transactions.append(newTransaction)
+            }
+        }
+        
+        sendPostRequest(transactions: transactions)
+        //todo: clear self.amountss
+        self.onGivtProcessed?.onGivtProcessed(transactions: transactions)
+        AudioServicesPlayAlertSound(1520)
     }
 
     
