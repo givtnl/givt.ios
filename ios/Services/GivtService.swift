@@ -13,15 +13,47 @@ import AudioToolbox
 
 final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate {
     static let shared = GivtService()
-    
+     private var _baseUrl = "https://givtapidebug.azurewebsites.net"
     let reachability = Reachability()
     
     private var amount: Decimal!
     private var amounts = [Decimal]()
-    private var bestBeacon: BestBeacon?
+    private var bestBeacon: BestBeacon = BestBeacon()
     var bluetoothEnabled: Bool {
         get {
             return centralManager != nil && centralManager.state == .poweredOn
+        }
+    }
+    
+    var orgBeaconList: [NSDictionary] {
+        let list = UserDefaults.standard.orgBeaconList as! [String: Any]
+        return list["OrgBeacons"] as! [NSDictionary]
+    }
+    
+    var lastGivtOrg: String {
+        get {
+            if let orgId = bestBeacon.organisation {
+                for organisationBeacon in orgBeaconList {
+                    if let org = organisationBeacon["EddyNameSpace"] as? String, org == bestBeacon.organisation {
+                        if let orgName = organisationBeacon["OrgName"] as? String {
+                            return orgName
+                        }
+                    }
+                }   
+            }
+            return ""
+        }
+    }
+    
+    var beaconListLastChanged: Date {
+        get {
+            let list = UserDefaults.standard.orgBeaconList as! [String: Any]
+            let lastChanged = list["LastChanged"] as! String
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+            dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+            let date = dateFormatter.date(from: lastChanged)!
+            return date
         }
     }
 
@@ -34,6 +66,11 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     private override init() {
         super.init()
         print("started")
+        
+        getBeaconsFromOrganisation { (status) in
+            print(status)
+        }
+        
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(), options: [CBCentralManagerOptionShowPowerAlertKey:false])
 
         NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: ReachabilityChangedNotification, object: reachability)
@@ -126,16 +163,16 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         stopScanning()
         
         if(rssi != 0x7f){
-            if(((bestBeacon?.beaconId) != nil) && bestBeacon?.rssi == 0){
-                bestBeacon?.beaconId = antennaID
-                bestBeacon?.rssi = rssi
-                bestBeacon?.organisation = antennaID.substring(to: antennaID.index(of: ".")!)
-            } else if(((bestBeacon?.beaconId) != nil) && (bestBeacon?.rssi?.intValue)! < rssi.intValue) {
-                bestBeacon?.beaconId = antennaID
-                bestBeacon?.rssi = rssi
-                bestBeacon?.organisation = antennaID.substring(to: antennaID.index(of: ".")!)
+            if(((bestBeacon.beaconId) == "") && bestBeacon.rssi == 0){
+                bestBeacon.beaconId = antennaID
+                bestBeacon.rssi = rssi
+                bestBeacon.organisation = antennaID.substring(to: antennaID.index(of: ".")!)
+            } else if((bestBeacon.rssi?.intValue)! < rssi.intValue) {
+                bestBeacon.beaconId = antennaID
+                bestBeacon.rssi = rssi
+                bestBeacon.organisation = antennaID.substring(to: antennaID.index(of: ".")!)
             }
-            
+            print(bestBeacon)
             if(rssi.intValue > rssiTreshold){
                 give(antennaID: antennaID)
                 return
@@ -166,6 +203,27 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         //todo: clear self.amountss
         self.onGivtProcessed?.onGivtProcessed(transactions: transactions)
         AudioServicesPlayAlertSound(1520)
+    }
+    
+    func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
+        let queryString = "https://www.givtapp.net/download?code="
+        if let startPosition = scanResult.index(of: queryString) {
+            let identifierEncoded = scanResult.substring(from: queryString.endIndex)
+            if let decoded = identifierEncoded.base64Decoded() {
+                /* mimic bestbeacon */
+                bestBeacon.beaconId = decoded
+                bestBeacon.organisation = decoded.substring(to: decoded.index(of: ".")!)
+                bestBeacon.rssi = 0
+                give(antennaID: decoded)
+                completionHandler(true)
+            } else {
+                //todo: log messed up base 64
+                completionHandler(false)
+            }
+        } else {
+            //todo log result: not our qr code
+            completionHandler(false)
+        }
     }
 
     
@@ -218,6 +276,60 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         .resume()
     }
     
+    func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
+        print()
+        let userExt = UserDefaults.standard.userExt
+        if !userExt.guid.isEmpty() {
+            var qString = "Guid=" + userExt.guid
+            
+            // add &dtLastChanged when beaconList is filled
+            if let list = UserDefaults.standard.orgBeaconList {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+                dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+                let dateString = dateFormatter.string(from: beaconListLastChanged)
+                qString += "&dtLastUpdated=" + dateString
+                print(dateString)
+            }
+            
+            
+            
+            var request = URLRequest(url: URL(string: _baseUrl + "/api/Organisation/BeaconList" + "?" + qString)!)
+            request.httpMethod = "GET"
+            request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
+            let urlSession = URLSession.shared
+            _ = urlSession.dataTask(with: request) { data, response, error -> Void in
+                if error != nil {
+                    print(error! as NSError)
+                    completionHandler(false)
+                    return
+                }
+                
+                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                    print(response!)
+                    if httpStatus.statusCode == 204 {
+                        print("list is up to date :)")
+                    }
+                    completionHandler(false)
+                    return
+                }
+                
+                do {
+                    let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
+                    UserDefaults.standard.orgBeaconList = parsedData as NSDictionary
+                    completionHandler(true)
+                } catch let err as NSError {
+                    print(err)
+                    completionHandler(false)
+                    return
+                }
+                
+                }.resume()
+            
+        }
+
+    }
+    
 }
 
 protocol GivtProcessedProtocol: class {
@@ -229,7 +341,7 @@ class BestBeacon {
     var rssi: NSNumber?
     var organisation: String?
     
-    init(b: String, r: NSNumber, o: String) {
+    init(_ b: String = "",_ r: NSNumber = 0,_ o: String = "") {
         beaconId = b
         rssi = r
         organisation = o

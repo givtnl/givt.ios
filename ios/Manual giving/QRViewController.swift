@@ -24,8 +24,8 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         navBar.title = NSLocalizedString("GiveDifferentScan", comment: "")
         subTitle.text = NSLocalizedString("GiveDiffQRText", comment: "")
         topRight.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
-        bottomRight.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(M_PI)) / 180.0)
-        bottomLeft.transform = CGAffineTransform(rotationAngle: (270.0 * CGFloat(M_PI)) / 180.0)
+        bottomRight.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)
+        bottomLeft.transform = CGAffineTransform(rotationAngle: (270.0 * CGFloat(Double.pi)) / 180.0)
         
         //capture device
         let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -71,40 +71,20 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     }
     
     func giveManually(scanResult: String) {
-        var success = true
-        let queryString = "https://www.givtapp.net/download?code="
-        if let startPosition = scanResult.index(of: queryString) {
-            //idx found
-            success = true
-            print(scanResult)
-            let identifierEncoded = scanResult.substring(from: queryString.endIndex)
-            if let decoded = identifierEncoded.base64Decoded() {
-                print(decoded)
-                GivtService.shared.give(antennaID: decoded)
-            } else { //messed up identifier
-                //todo: log messed up id
-                success = false
+        GivtService.shared.giveQR(scanResult: scanResult) { (success) in
+            if !success {
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
+                let action = UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: .default) { (ok) in
+                    self.session.startRunning()
+                }
+                let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (nok) in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alert.addAction(action)
+                alert.addAction(cancel)
+                self.present(alert, animated: true, completion: nil)
             }
-        } else {
-            //not our QR code
-            //todo log result
-            success = false
         }
-        
-        if !success {
-            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
-            let action = UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: .default) { (ok) in
-                self.session.startRunning()
-            }
-            let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (nok) in
-                self.navigationController?.popViewController(animated: true)
-            }
-            alert.addAction(action)
-            alert.addAction(cancel)
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        
     }
     
     @IBAction func goBack(_ sender: Any) {

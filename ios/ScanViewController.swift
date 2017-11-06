@@ -30,7 +30,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
                           "givtObj" : trs,
                           "apiUrl" : "https://givtapidebug.azurewebsites.net/",
                           "lastDigits" : "XXXXXXXXXXXXXXX7061",
-                          "organisation" : "Bjornkerk",
+                          "organisation" : GivtService.shared.lastGivtOrg,
                           "mandatePopup" : "",
                           "spUrl" : ""] as NSDictionary
         
@@ -63,11 +63,9 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         gif.loadGif(name: "givt_animation")
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGive.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
-
-        
     }
     
-    func showBluetoothMessage() {
+    @objc func showBluetoothMessage() {
         let alert = UIAlertController(
             title: NSLocalizedString("SomethingWentWrong2", comment: ""),
             message: NSLocalizedString("BluetoothErrorMessage", comment: ""),

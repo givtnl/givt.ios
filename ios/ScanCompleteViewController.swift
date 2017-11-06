@@ -24,6 +24,11 @@ class ScanCompleteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        print(GivtService.shared.lastGivtOrg)
+        if !GivtService.shared.lastGivtOrg.isEmpty() {
+            lblBody.text = NSLocalizedString("GivtIsBeingProcessed", comment: "").replacingOccurrences(of: "{0}", with: GivtService.shared.lastGivtOrg)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
