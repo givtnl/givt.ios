@@ -217,7 +217,11 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             if let decoded = identifierEncoded.base64Decoded() {
                 /* mimic bestbeacon */
                 bestBeacon.beaconId = decoded
-                bestBeacon.organisation = decoded.substring(to: decoded.index(of: ".")!)
+                if let idx = decoded.index(of: ".") {
+                    bestBeacon.organisation = decoded.substring(to: idx)
+                } else {
+                    bestBeacon.organisation = decoded
+                }
                 bestBeacon.rssi = 0
                 give(antennaID: decoded)
                 completionHandler(true)
