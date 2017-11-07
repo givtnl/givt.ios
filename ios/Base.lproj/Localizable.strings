@@ -164,7 +164,7 @@
 "BluetoothErrorMessage" = "Switch on bluetooth on your phone to use Givt.";
 
 /*Foutmelding als er geen verbinding is met het internet*/
-"ConnectionError" = "Currently there is no internet connection. \nSay a quick prayer and/or check your settings.";
+"ConnectionError" = "Currently we're not able to connect to the server. Say a quick prayer and/or check your settings.";
 "AmountLimitExceeded" = "This amount is higher than your chosen maximum amount. Please adjust the maximum donation amount or choose a lower amount.";
 "Belgium" = "Belgium";
 
@@ -418,7 +418,7 @@
 "AnswerHowDoesGivingWork" = "It’s easy! Once your registration is complete, you just open the Givt app, choose an amount and move your phone past the collection box, alms bag or basket.\n\nThe video below demonstrates this:";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "When the Givt app does not work like it should, you can choose to select \nthe recipient manually. Choose an amount and press ‘Give’. Thereafter \nchoose ‘Give differently?’ and select 'Churches', 'Foundations' or 'Campaigns'. Now choose a recipient and press ‘Give’. \n\nThe video below demonstrates this:";
+"AnswerHowDoesManualGivingWork" = "When the Givt app does not work like it should, you can choose to select \nthe recipient manually. Choose an amount and press ‘Give’. Thereafter \nchoose ‘Give differently’ and select 'Churches', 'Foundations' or 'Campaigns'. Now choose a recipient and press ‘Give’. \n\nThe video below demonstrates this:";
 "MenuSettingsSwitchAccounts" = "Switch accounts";
 "PrepareIUnderstand" = "I understand";
 
@@ -574,3 +574,7 @@
 "YesSuccess" = "Yes, success!";
 "ToGiveWeNeedYourEmailAddress" = "To start giving with Givt, \nwe just need your emailaddress.";
 "WeWontSendAnySpam" = "(we won't send any spam, promise)";
+
+/*In app begeleiding naar 'Anders geven?'*/
+"GiveDiffWalkthrough" = "Having some trouble? Or would you rather give using a QR code or by selecting the recipient manually?";
+"SwipeDownOpenGivt" = "Swipe down to open the Givt-app.";

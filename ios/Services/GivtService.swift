@@ -26,8 +26,13 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     var orgBeaconList: [NSDictionary] {
-        let list = UserDefaults.standard.orgBeaconList as! [String: Any]
-        return list["OrgBeacons"] as! [NSDictionary]
+        if let list = UserDefaults.standard.orgBeaconList as? [String: Any] {
+            if let temp = list["OrgBeacons"] as? [NSDictionary] {
+                return temp
+            }
+            
+        }
+        return [NSDictionary]()
     }
     
     var lastGivtOrg: String {
@@ -324,6 +329,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
                     UserDefaults.standard.orgBeaconList = parsedData as NSDictionary
+                    print(parsedData)
                     completionHandler(true)
                 } catch let err as NSError {
                     print(err)

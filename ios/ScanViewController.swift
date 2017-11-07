@@ -16,7 +16,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     @IBOutlet var gif: UIImageView!
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var btnGive: CustomButton!
-    
+    var menuView: UIView?
     @IBOutlet var overlay: UIView!
     func onGivtProcessed(transactions: [Transaction]) {
         var trs = [NSDictionary]()
@@ -89,31 +89,59 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         if(GivtService.shared.bluetoothEnabled){
             GivtService.shared.startScanning()
         }
-        /*
-        let menuView = UIView()
-        menuView.translatesAutoresizingMaskIntoConstraints = false
-        menuView.backgroundColor = .blue
+
+        addOverlay()
+
         
         
+    }
+    
+    func addOverlay() {
+        if UserDefaults.standard.hasTappedAwayGiveDiff {
+            return
+        }
         
-        self.navigationController?.view.addSubview(menuView)
-        menuView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        menuView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        menuView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        menuView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true*/
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: #selector(removeOverlay))
         
-        //let vc = storyboard?.instantiateViewController(withIdentifier: "OverlayViewController") as! OverlayViewController
-        //self.present(vc, animated: false, completion: nil)
-        
-        let menuView = UIView()
-        menuView.backgroundColor = .blue
-        /*
-        UIApplication.shared.keyWindow?.addSubview(menuView)
+        menuView = UIView()
+        menuView?.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.9843137255, blue: 0.9843137255, alpha: 1)
+        menuView?.alpha = 0
+        menuView?.translatesAutoresizingMaskIntoConstraints = false
+        UIApplication.shared.keyWindow?.addSubview(menuView!)
         let mainView = UIApplication.shared.keyWindow!
-        menuView.topAnchor.constraint(equalTo: mainView.topAnchor).isActive = true
-        menuView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor).isActive = true
-        menuView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor).isActive = true
-        menuView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor).isActive = true*/
+        //menuView.isUserInteractionEnabled = false
+        menuView?.topAnchor.constraint(equalTo: mainView.topAnchor).isActive = true
+        menuView?.leadingAnchor.constraint(equalTo: mainView.leadingAnchor).isActive = true
+        menuView?.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -84.0).isActive = true
+        menuView?.trailingAnchor.constraint(equalTo: mainView.trailingAnchor).isActive = true
+        self.view.layoutIfNeeded()
+        menuView?.addGestureRecognizer(tap)
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        menuView?.addSubview(label)
+        label.numberOfLines = 0
+        label.leadingAnchor.constraint(equalTo: (menuView?.leadingAnchor)!, constant: 20).isActive = true
+        label.bottomAnchor.constraint(equalTo: (menuView?.bottomAnchor)!, constant: 0 ).isActive = true
+        label.trailingAnchor.constraint(equalTo: (menuView?.trailingAnchor)!, constant: -20).isActive = true
+        label.font = UIFont(name: "Avenir-Heavy", size: 16.0)
+        label.text = NSLocalizedString("GiveDiffWalkthrough", comment: "")
+        label.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        label.textAlignment = .center
+        
+        UIView.animate(withDuration: TimeInterval(0.3), delay: TimeInterval(7), options: [], animations: {
+        self.menuView?.alpha = 0.9
+        }) { (status) in
+        //done
+        }
+    }
+    
+    func removeOverlay() {
+        menuView?.removeFromSuperview()
+        if menuView?.alpha != nil && menuView?.alpha != 0 {
+            UserDefaults.standard.hasTappedAwayGiveDiff = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,7 +160,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         sideMenuController?.isLeftViewSwipeGestureDisabled = false
         GivtService.shared.centralManager.stopScan()
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
-        
+        removeOverlay()
        }
 
     override func didReceiveMemoryWarning() {

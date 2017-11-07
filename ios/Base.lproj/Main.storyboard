@@ -1302,7 +1302,7 @@ Kijk voor de status in je overzicht.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNE-Iu-fDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2869.5652173913045" y="-886.14130434782612"/>
+            <point key="canvasLocation" x="2866" y="-911"/>
         </scene>
         <!-- Anders geven-->
         <scene sceneID="NJA-HW-RU8">
@@ -1320,7 +1320,7 @@ Kijk voor de status in je overzicht.</string>
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="736" translatesAutoresizingMaskIntoConstraints="NO" id="ND2-vs-2dW">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="DKC-Aa-ACx" userLabel="firstRow">
                                                 <rect key="frame" x="40" y="10" width="295" height="150"/>
@@ -1550,7 +1550,7 @@ Kijk voor de status in je overzicht.</string>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbN-wr-rgx">
-                                                <rect key="frame" x="0.0" y="480" width="375" height="123"/>
+                                                <rect key="frame" x="0.0" y="480" width="375" height="256"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
@@ -1574,7 +1574,6 @@ Kijk voor de status in je overzicht.</string>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="ND2-vs-2dW" firstAttribute="top" secondItem="Ftf-Lw-lv9" secondAttribute="top" id="JK0-js-4pj"/>
-                                    <constraint firstItem="ND2-vs-2dW" firstAttribute="height" secondItem="Ftf-Lw-lv9" secondAttribute="height" id="PkZ-2L-gEN"/>
                                     <constraint firstItem="ND2-vs-2dW" firstAttribute="leading" secondItem="Ftf-Lw-lv9" secondAttribute="leading" id="VkU-hH-3dX"/>
                                     <constraint firstAttribute="trailing" secondItem="ND2-vs-2dW" secondAttribute="trailing" id="dji-49-p9T"/>
                                     <constraint firstAttribute="bottom" secondItem="ND2-vs-2dW" secondAttribute="bottom" id="e4f-VP-aQQ"/>

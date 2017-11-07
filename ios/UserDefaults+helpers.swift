@@ -21,6 +21,16 @@ extension UserDefaults {
         case viewedCoachMarks
         case userClaims
         case orgBeaconList
+        case hasTappedAwayGiveDiff
+    }
+    
+    var hasTappedAwayGiveDiff: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.hasTappedAwayGiveDiff.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.hasTappedAwayGiveDiff.rawValue)
+        }
     }
     
     var orgBeaconList: NSDictionary? {

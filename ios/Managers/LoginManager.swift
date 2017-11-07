@@ -438,5 +438,6 @@ class LoginManager {
         UserDefaults.standard.bearerExpiration = Date()
         UserDefaults.standard.mandateSigned = false
         UIApplication.shared.applicationIconBadgeNumber = 0
+        UserDefaults.standard.hasTappedAwayGiveDiff = false
     }
 }
