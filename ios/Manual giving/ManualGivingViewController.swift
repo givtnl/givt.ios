@@ -42,13 +42,14 @@ class ManualGivingViewController: UIViewController {
         addAction(btnKerken)
         addAction(btnStichtingen)
         addAction(btnActies)
-        addAction(btnOverig)
+        //addAction(btnOverig) //we don't support this atm
         addAction(btnQR)
         
         btnStichtingen.tag = 100
         btnKerken.tag = 101
         btnActies.tag = 102
         btnOverig.tag = 103
+        btnOverig.alpha = 0.3
         btnQR.tag = 104
         
         print(stackView.spacing)
@@ -66,14 +67,10 @@ class ManualGivingViewController: UIViewController {
     @objc func choose(_ sender: UITapGestureRecognizer) {
         if let tag = sender.view?.tag {
             switch tag {
-            case 100:
-                print("stichting")
-            case 101:
-                print("kerk")
-            case 102:
-                print("acties")
-            case 103:
-                print("overig")
+            case 100, 101, 102, 103:
+                let vc = storyboard?.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
+                vc.selectedTag = tag
+                self.show(vc, sender: nil)
             case 104:
                 print("qr")
                 let vc = storyboard?.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController

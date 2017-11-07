@@ -225,6 +225,13 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             completionHandler(false)
         }
     }
+    
+    func giveManually(antennaId: String) {
+        bestBeacon.beaconId = antennaId
+        bestBeacon.organisation = antennaId
+        bestBeacon.rssi = 0
+        give(antennaID: antennaId)
+    }
 
     
     private func cacheGivt(transactions: [Transaction]){

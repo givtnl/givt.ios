@@ -17,6 +17,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var btnGive: CustomButton!
     
+    @IBOutlet var overlay: UIView!
     func onGivtProcessed(transactions: [Transaction]) {
         var trs = [NSDictionary]()
         for tr in transactions {
@@ -88,6 +89,19 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         if(GivtService.shared.bluetoothEnabled){
             GivtService.shared.startScanning()
         }
+        
+        let menuView = UIView()
+        menuView.translatesAutoresizingMaskIntoConstraints = false
+        menuView.backgroundColor = .blue
+        
+        
+        
+        self.navigationController?.view.addSubview(menuView)
+        menuView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        menuView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        menuView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        menuView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,6 +110,8 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.isOpaque = false
         sideMenuController?.isLeftViewSwipeGestureDisabled = true
+        
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,7 +120,8 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         sideMenuController?.isLeftViewSwipeGestureDisabled = false
         GivtService.shared.centralManager.stopScan()
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
-    }
+        
+       }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
