@@ -102,6 +102,18 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         menuView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         menuView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true*/
         
+        //let vc = storyboard?.instantiateViewController(withIdentifier: "OverlayViewController") as! OverlayViewController
+        //self.present(vc, animated: false, completion: nil)
+        
+        let menuView = UIView()
+        menuView.backgroundColor = .blue
+        /*
+        UIApplication.shared.keyWindow?.addSubview(menuView)
+        let mainView = UIApplication.shared.keyWindow!
+        menuView.topAnchor.constraint(equalTo: mainView.topAnchor).isActive = true
+        menuView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor).isActive = true
+        menuView.bottomAnchor.constraint(equalTo: mainView.bottomAnchor).isActive = true
+        menuView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor).isActive = true*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
