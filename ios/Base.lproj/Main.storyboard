@@ -1084,24 +1084,16 @@ Kijk voor de status in je overzicht.</string>
                                 <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JC-aN-U2N">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="652"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="7JC-aN-U2N" firstAttribute="top" secondItem="q64-wl-MlZ" secondAttribute="top" id="2uZ-UK-tSk"/>
                             <constraint firstItem="dca-BL-A98" firstAttribute="centerY" secondItem="q64-wl-MlZ" secondAttribute="centerY" id="BWU-B6-7qS"/>
                             <constraint firstItem="dca-BL-A98" firstAttribute="leading" secondItem="q64-wl-MlZ" secondAttribute="leading" id="By8-w8-MEe"/>
                             <constraint firstItem="dca-BL-A98" firstAttribute="top" secondItem="gx7-9u-1ov" secondAttribute="bottom" constant="15" id="Crx-9q-erT"/>
-                            <constraint firstAttribute="trailing" secondItem="7JC-aN-U2N" secondAttribute="trailing" id="DhC-Cx-650"/>
                             <constraint firstAttribute="trailing" secondItem="gx7-9u-1ov" secondAttribute="trailing" constant="20" id="PWz-8M-7kC"/>
-                            <constraint firstItem="UdD-yT-jJx" firstAttribute="top" secondItem="7JC-aN-U2N" secondAttribute="bottom" constant="20" id="eCh-2J-S7e"/>
                             <constraint firstItem="gx7-9u-1ov" firstAttribute="leading" secondItem="q64-wl-MlZ" secondAttribute="leading" constant="20" id="fl0-hj-bPL"/>
-                            <constraint firstItem="7JC-aN-U2N" firstAttribute="leading" secondItem="q64-wl-MlZ" secondAttribute="leading" id="haL-Uu-STc"/>
                             <constraint firstItem="UdD-yT-jJx" firstAttribute="leading" secondItem="q64-wl-MlZ" secondAttribute="leading" constant="20" id="kWD-tG-86Y"/>
                             <constraint firstItem="eAx-Oz-2c6" firstAttribute="top" secondItem="UdD-yT-jJx" secondAttribute="bottom" constant="20" id="mBH-7M-mwq"/>
                             <constraint firstAttribute="trailing" secondItem="dca-BL-A98" secondAttribute="trailing" id="rNe-LC-Sxy"/>
@@ -1122,7 +1114,6 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="bodyText" destination="gx7-9u-1ov" id="tS3-sd-fIC"/>
                         <outlet property="btnGive" destination="UdD-yT-jJx" id="Nws-no-abW"/>
                         <outlet property="gif" destination="dca-BL-A98" id="vOl-gh-cBj"/>
-                        <outlet property="overlay" destination="7JC-aN-U2N" id="OnO-XN-Bby"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4KZ-3p-NFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1275,6 +1266,7 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="churchWidth" destination="c9X-1S-bL4" id="tBC-wP-2BF"/>
                         <outlet property="kerken" destination="VfY-UX-dqy" id="Vo9-OJ-Tdn"/>
                         <outlet property="list" destination="Ymb-WS-wEx" id="hsR-oL-Eqw"/>
+                        <outlet property="navBar" destination="akm-Ra-BMg" id="63d-83-OXd"/>
                         <outlet property="overigWidth" destination="uMI-h0-1iw" id="tTY-Ad-DRY"/>
                         <outlet property="stackList" destination="iVo-76-ie5" id="aNB-ZE-ClT"/>
                         <outlet property="stichtingWidth" destination="UV8-5j-Nrb" id="xud-80-xF8"/>
@@ -1307,34 +1299,8 @@ Kijk voor de status in je overzicht.</string>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="DKC-Aa-ACx">
                                                 <rect key="frame" x="40" y="0.0" width="334" height="182"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zW5-FH-vMq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="147" height="182"/>
-                                                        <subviews>
-                                                            <imageView contentMode="scaleAspectFit" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="stichtingen" translatesAutoresizingMaskIntoConstraints="NO" id="FJV-Xu-XsG">
-                                                                <rect key="frame" x="14" y="10" width="120" height="135"/>
-                                                                <accessibility key="accessibilityConfiguration">
-                                                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
-                                                                </accessibility>
-                                                            </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stichtingen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Azd-35-GCe">
-                                                                <rect key="frame" x="0.0" y="155" width="147" height="22"/>
-                                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
-                                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <constraints>
-                                                            <constraint firstItem="Azd-35-GCe" firstAttribute="top" secondItem="FJV-Xu-XsG" secondAttribute="bottom" constant="10" id="5Ce-tH-KZr"/>
-                                                            <constraint firstItem="FJV-Xu-XsG" firstAttribute="top" secondItem="zW5-FH-vMq" secondAttribute="top" constant="10" id="P0M-DU-fs7"/>
-                                                            <constraint firstAttribute="trailing" secondItem="Azd-35-GCe" secondAttribute="trailing" id="jPV-XZ-HI7"/>
-                                                            <constraint firstAttribute="bottom" secondItem="Azd-35-GCe" secondAttribute="bottom" constant="5" id="kOd-g3-U97"/>
-                                                            <constraint firstItem="Azd-35-GCe" firstAttribute="leading" secondItem="zW5-FH-vMq" secondAttribute="leading" id="vyW-sl-cv2"/>
-                                                            <constraint firstItem="FJV-Xu-XsG" firstAttribute="centerX" secondItem="zW5-FH-vMq" secondAttribute="centerX" id="zpE-8f-Odr"/>
-                                                        </constraints>
-                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0Y-th-XnC">
-                                                        <rect key="frame" x="187" y="0.0" width="147" height="182"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="147" height="182"/>
                                                         <subviews>
                                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kerken" translatesAutoresizingMaskIntoConstraints="NO" id="Seu-F4-bYH">
                                                                 <rect key="frame" x="14" y="10" width="120" height="135"/>
@@ -1357,6 +1323,32 @@ Kijk voor de status in je overzicht.</string>
                                                             <constraint firstItem="hxk-ds-bOP" firstAttribute="top" secondItem="Seu-F4-bYH" secondAttribute="bottom" constant="10" id="gxk-9R-Tky"/>
                                                             <constraint firstItem="Seu-F4-bYH" firstAttribute="top" secondItem="E0Y-th-XnC" secondAttribute="top" constant="10" id="nrE-nA-USq"/>
                                                             <constraint firstItem="Seu-F4-bYH" firstAttribute="centerX" secondItem="E0Y-th-XnC" secondAttribute="centerX" id="pId-Cg-eHk"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zW5-FH-vMq">
+                                                        <rect key="frame" x="187" y="0.0" width="147" height="182"/>
+                                                        <subviews>
+                                                            <imageView contentMode="scaleAspectFit" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="stichtingen" translatesAutoresizingMaskIntoConstraints="NO" id="FJV-Xu-XsG">
+                                                                <rect key="frame" x="14" y="10" width="120" height="135"/>
+                                                                <accessibility key="accessibilityConfiguration">
+                                                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                                                </accessibility>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stichtingen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Azd-35-GCe">
+                                                                <rect key="frame" x="0.0" y="155" width="147" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Azd-35-GCe" firstAttribute="top" secondItem="FJV-Xu-XsG" secondAttribute="bottom" constant="10" id="5Ce-tH-KZr"/>
+                                                            <constraint firstItem="FJV-Xu-XsG" firstAttribute="top" secondItem="zW5-FH-vMq" secondAttribute="top" constant="10" id="P0M-DU-fs7"/>
+                                                            <constraint firstAttribute="trailing" secondItem="Azd-35-GCe" secondAttribute="trailing" id="jPV-XZ-HI7"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Azd-35-GCe" secondAttribute="bottom" constant="5" id="kOd-g3-U97"/>
+                                                            <constraint firstItem="Azd-35-GCe" firstAttribute="leading" secondItem="zW5-FH-vMq" secondAttribute="leading" id="vyW-sl-cv2"/>
+                                                            <constraint firstItem="FJV-Xu-XsG" firstAttribute="centerX" secondItem="zW5-FH-vMq" secondAttribute="centerX" id="zpE-8f-Odr"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>

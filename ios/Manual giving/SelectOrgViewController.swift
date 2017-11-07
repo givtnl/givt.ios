@@ -17,7 +17,7 @@ class SelectOrgViewController: UIViewController {
     @IBOutlet var churchWidth: NSLayoutConstraint!
     @IBOutlet var stackList: UIStackView!
     @IBOutlet var list: UIView!
-    var oldView: ManualOrganisationView?
+    var selectedView: ManualOrganisationView?
     var selectedTag: Int = 100
     private var lastTag: Int?
     var listToLoad: [[String: String]]!
@@ -27,24 +27,23 @@ class SelectOrgViewController: UIViewController {
     @IBOutlet var acties: UIImageView!
     @IBOutlet var straatmzkt: UIImageView!
     
+    @IBOutlet var navBar: UINavigationItem!
     @IBAction func btnGive(_ sender: Any) {
-        GivtService.shared.giveManually(antennaId: (oldView?.organisationId)!)
+        GivtService.shared.giveManually(antennaId: (selectedView?.organisationId)!)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadView(selectedTag)
-        
+        navBar.title = NSLocalizedString("GiveDifferently", comment: "")
+        btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         addTap(kerken)
         addTap(stichtingen)
         addTap(acties)
         //addTap(straatmzkt) //we dont support this atm
         straatmzkt.alpha = 0.3
-        
     }
     
     func addTap(_ view: UIView) {
-        print("pressed")
         view.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -57,40 +56,51 @@ class SelectOrgViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func selectOrg(_ sender: UITapGestureRecognizer) {
+    /* selecteren van een organisatie in de lijst */
+    @objc func selectOrg(_ sender: UITapGestureRecognizer) {
         if let view = sender.view as? ManualOrganisationView {
-            let temp = view.stack.subviews[1] as! UILabel
-            print(temp.text)
-            oldView?.toggleCheckMark()
+            selectedView?.toggleCheckMark() //vorige geselectede optie deselecteren
             view.toggleCheckMark()
-            oldView = view
+            selectedView = view
         }
-        print("selected organisation")
     }
     
-    func selectType(_ sender: UITapGestureRecognizer) {
-        if let view = sender.view as? UIView {
-            let tag = view.tag
-            loadView(tag)
+    /* selecteren van Kerk/Stichtingen/...-knop langsboven */
+    @objc func selectType(_ sender: UITapGestureRecognizer) {
+        if let view = sender.view {
+            loadView(view.tag)
         }
+    }
+    
+    
+    /* creates a spacer view */
+    fileprivate func renderSpacer() {
+        let spacer = UIView()
+        spacer.translatesAutoresizingMaskIntoConstraints = false
+        spacer.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
+        spacer.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8862745098, blue: 0.9058823529, alpha: 1)
+        stackList.addArrangedSubview(spacer)
     }
     
     func loadView(_ tag: Int) {
         if lastTag == tag {
             return
         }
+
+        /* clear list */
         for view in stackList.arrangedSubviews {
             stackList.removeArrangedSubview(view)
         }
         
         listToLoad = GivtService.shared.orgBeaconList as! [[String: String]]
-        var regExp = "c[0-9]|d[be]"
         
+        /* reset all widths */
         stichtingWidth.constant = 50
         churchWidth.constant = 50
         actiesWidth.constant = 50
         overigWidth.constant = 50
         
+        var regExp = "c[0-9]|d[be]"
         switch(tag) {
         case 100:
             regExp = "d[0-9]" //stichtingen
@@ -107,34 +117,29 @@ class SelectOrgViewController: UIViewController {
             break
         }
         self.view.layoutIfNeeded()
+        
+        /* filter list based on regExp */
         listToLoad = listToLoad.filter { ($0["EddyNameSpace"]?.substring(16..<19).matches(regExp))! }
-        
-        
-        // Do any additional setup after loading the view.
+
         for organisation in listToLoad {
-            let spacer = UIView()
-            spacer.translatesAutoresizingMaskIntoConstraints = false
-            spacer.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
-            spacer.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8862745098, blue: 0.9058823529, alpha: 1)
-            stackList.addArrangedSubview(spacer)
-            print(organisation)
+            renderSpacer()
             let temp = organisation
             let item = ManualOrganisationView(text: temp["OrgName"]!, orgId: temp["EddyNameSpace"]!)
             stackList.addArrangedSubview(item)
             
-            
-            
+            /* Going back to previous type will add the check when it was previously selected */
+            if selectedView?.organisationId == item.organisationId && selectedView?.label.text == item.label.text {
+                item.toggleCheckMark()
+                selectedView = item
+            }
+
             item.isUserInteractionEnabled = true
             let tap = UITapGestureRecognizer()
             tap.numberOfTapsRequired = 1
             tap.addTarget(self, action: #selector(selectOrg))
             item.addGestureRecognizer(tap)
         }
-        let spacer = UIView()
-        spacer.translatesAutoresizingMaskIntoConstraints = false
-        spacer.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
-        spacer.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8862745098, blue: 0.9058823529, alpha: 1)
-        stackList.addArrangedSubview(spacer)
+        renderSpacer()
         
         self.lastTag = tag
     }
@@ -142,15 +147,5 @@ class SelectOrgViewController: UIViewController {
     @IBAction func goBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

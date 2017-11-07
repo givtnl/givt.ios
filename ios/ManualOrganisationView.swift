@@ -51,10 +51,12 @@ class ManualOrganisationView: UIView {
     private func addLabel(_ text: String) {
         label = UILabel()
         label.font = UIFont(name: "Avenir-Medium", size: 19.0)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = text
         label.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.textAlignment = .left
         stack.addArrangedSubview(label)
     }

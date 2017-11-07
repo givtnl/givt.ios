@@ -89,7 +89,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         if(GivtService.shared.bluetoothEnabled){
             GivtService.shared.startScanning()
         }
-        
+        /*
         let menuView = UIView()
         menuView.translatesAutoresizingMaskIntoConstraints = false
         menuView.backgroundColor = .blue
@@ -100,7 +100,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         menuView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         menuView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         menuView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        menuView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        menuView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true*/
         
     }
     
