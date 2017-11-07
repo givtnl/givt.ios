@@ -1120,42 +1120,6 @@ Kijk voor de status in je overzicht.</string>
             </objects>
             <point key="canvasLocation" x="2186.9565217391305" y="-242.11956521739131"/>
         </scene>
-        <!--Overlay View Controller-->
-        <scene sceneID="pU2-3C-0wQ">
-            <objects>
-                <viewController storyboardIdentifier="OverlayViewController" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kEZ-v6-O0y" customClass="OverlayViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Spd-ym-pdD"/>
-                        <viewControllerLayoutGuide type="bottom" id="ye0-L8-Zjc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Qx3-yZ-VXa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hRo-ge-HIq">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
-                                <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <accessibility key="accessibilityConfiguration">
-                            <accessibilityTraits key="traits" notEnabled="YES"/>
-                        </accessibility>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="hRo-ge-HIq" secondAttribute="trailing" id="7UQ-Pt-WlZ"/>
-                            <constraint firstItem="hRo-ge-HIq" firstAttribute="leading" secondItem="Qx3-yZ-VXa" secondAttribute="leading" id="RaW-be-JQ3"/>
-                            <constraint firstItem="hRo-ge-HIq" firstAttribute="top" secondItem="Qx3-yZ-VXa" secondAttribute="top" id="a8t-zr-yom"/>
-                            <constraint firstItem="ye0-L8-Zjc" firstAttribute="top" secondItem="hRo-ge-HIq" secondAttribute="bottom" constant="84" id="pAc-e7-gY0"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X7y-7M-KPd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2188.4057971014495" y="-910.59782608695662"/>
-        </scene>
         <!--Anders geven-->
         <scene sceneID="wVu-49-Db8">
             <objects>

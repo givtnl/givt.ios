@@ -16,7 +16,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     @IBOutlet var gif: UIImageView!
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var btnGive: CustomButton!
-    var menuView: UIView?
+    var overlayView: UIView?
     @IBOutlet var overlay: UIView!
     func onGivtProcessed(transactions: [Transaction]) {
         var trs = [NSDictionary]()
@@ -104,42 +104,45 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(removeOverlay))
         
-        menuView = UIView()
-        menuView?.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.9843137255, blue: 0.9843137255, alpha: 1)
-        menuView?.alpha = 0
-        menuView?.translatesAutoresizingMaskIntoConstraints = false
-        UIApplication.shared.keyWindow?.addSubview(menuView!)
+        overlayView = UIView()
+        overlayView?.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.9843137255, blue: 0.9843137255, alpha: 0.9)
+        overlayView?.alpha = 0
+        overlayView?.translatesAutoresizingMaskIntoConstraints = false
+        UIApplication.shared.keyWindow?.addSubview(overlayView!)
         let mainView = UIApplication.shared.keyWindow!
         //menuView.isUserInteractionEnabled = false
-        menuView?.topAnchor.constraint(equalTo: mainView.topAnchor).isActive = true
-        menuView?.leadingAnchor.constraint(equalTo: mainView.leadingAnchor).isActive = true
-        menuView?.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -84.0).isActive = true
-        menuView?.trailingAnchor.constraint(equalTo: mainView.trailingAnchor).isActive = true
-        self.view.layoutIfNeeded()
-        menuView?.addGestureRecognizer(tap)
+        overlayView?.topAnchor.constraint(equalTo: mainView.topAnchor).isActive = true
+        overlayView?.leadingAnchor.constraint(equalTo: mainView.leadingAnchor).isActive = true
+        overlayView?.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -84.0).isActive = true
+        overlayView?.trailingAnchor.constraint(equalTo: mainView.trailingAnchor).isActive = true
+        
+        overlayView?.addGestureRecognizer(tap)
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        menuView?.addSubview(label)
+        overlayView?.addSubview(label)
         label.numberOfLines = 0
-        label.leadingAnchor.constraint(equalTo: (menuView?.leadingAnchor)!, constant: 20).isActive = true
-        label.bottomAnchor.constraint(equalTo: (menuView?.bottomAnchor)!, constant: 0 ).isActive = true
-        label.trailingAnchor.constraint(equalTo: (menuView?.trailingAnchor)!, constant: -20).isActive = true
+        label.leadingAnchor.constraint(equalTo: (overlayView?.leadingAnchor)!, constant: 20).isActive = true
+        label.bottomAnchor.constraint(equalTo: (overlayView?.bottomAnchor)!, constant: 0 ).isActive = true
+        label.trailingAnchor.constraint(equalTo: (overlayView?.trailingAnchor)!, constant: -20).isActive = true
         label.font = UIFont(name: "Avenir-Heavy", size: 16.0)
         label.text = NSLocalizedString("GiveDiffWalkthrough", comment: "")
         label.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         label.textAlignment = .center
-        
-        UIView.animate(withDuration: TimeInterval(0.3), delay: TimeInterval(7), options: [], animations: {
-        self.menuView?.alpha = 0.9
+    
+        self.overlayView?.isHidden = false
+        UIView.animate(withDuration: 0.3, delay: 7.0, options: [], animations: {
+            self.overlayView?.alpha = 1
         }) { (status) in
         //done
         }
     }
     
     func removeOverlay() {
-        menuView?.removeFromSuperview()
-        if menuView?.alpha != nil && menuView?.alpha != 0 {
+        overlayView?.removeFromSuperview()
+
+        if let isHidden = overlayView?.isHidden, !isHidden {
+            overlayView?.isHidden = true
             UserDefaults.standard.hasTappedAwayGiveDiff = true
         }
     }
