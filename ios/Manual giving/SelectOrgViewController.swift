@@ -90,6 +90,7 @@ class SelectOrgViewController: UIViewController {
         /* clear list */
         for view in stackList.arrangedSubviews {
             stackList.removeArrangedSubview(view)
+            view.removeFromSuperview() /* important! */
         }
         
         listToLoad = GivtService.shared.orgBeaconList as! [[String: String]]
