@@ -1209,13 +1209,6 @@ Kijk voor de status in je overzicht.</string>
                                     <constraint firstItem="oAt-na-8SN" firstAttribute="top" secondItem="cHR-GM-wez" secondAttribute="top" id="rvV-RK-Ypr"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="43O-9C-caZ">
-                                <rect key="frame" x="0.0" y="582" width="375" height="1"/>
-                                <color key="backgroundColor" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="dQj-gh-ia9"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BvS-eI-dex" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="603" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1242,7 +1235,7 @@ Kijk voor de status in je overzicht.</string>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HbP-0V-mTp">
-                                <rect key="frame" x="0.0" y="162" width="375" height="420"/>
+                                <rect key="frame" x="0.0" y="162" width="375" height="421"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="488" translatesAutoresizingMaskIntoConstraints="NO" id="Ymb-WS-wEx">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="488"/>
@@ -1276,12 +1269,9 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="cHR-GM-wez" firstAttribute="top" secondItem="gAA-0d-ruo" secondAttribute="bottom" constant="10" id="8Ac-dX-5nL"/>
                             <constraint firstItem="BvS-eI-dex" firstAttribute="leading" secondItem="Shc-YM-PDF" secondAttribute="leading" constant="20" id="Aoi-dR-gW5"/>
                             <constraint firstItem="HbP-0V-mTp" firstAttribute="leading" secondItem="Shc-YM-PDF" secondAttribute="leading" id="H9k-wt-7aG"/>
-                            <constraint firstAttribute="trailing" secondItem="43O-9C-caZ" secondAttribute="trailing" id="Mo2-J0-rH3"/>
+                            <constraint firstItem="BvS-eI-dex" firstAttribute="top" secondItem="HbP-0V-mTp" secondAttribute="bottom" constant="20" id="HS7-MJ-B7W"/>
                             <constraint firstItem="HbP-0V-mTp" firstAttribute="top" secondItem="cHR-GM-wez" secondAttribute="bottom" constant="8" id="YXx-xW-lOE"/>
-                            <constraint firstItem="43O-9C-caZ" firstAttribute="leading" secondItem="Shc-YM-PDF" secondAttribute="leading" id="ZeK-0K-mDS"/>
-                            <constraint firstItem="BvS-eI-dex" firstAttribute="top" secondItem="43O-9C-caZ" secondAttribute="bottom" constant="20" id="bvu-Nw-hVb"/>
                             <constraint firstItem="HZQ-qj-2Bf" firstAttribute="top" secondItem="BvS-eI-dex" secondAttribute="bottom" constant="20" id="cVB-xI-1kY"/>
-                            <constraint firstItem="43O-9C-caZ" firstAttribute="top" secondItem="HbP-0V-mTp" secondAttribute="bottom" id="htl-yA-OkT"/>
                             <constraint firstAttribute="trailing" secondItem="cHR-GM-wez" secondAttribute="trailing" id="kgz-pB-2H7"/>
                             <constraint firstAttribute="trailing" secondItem="HbP-0V-mTp" secondAttribute="trailing" id="qeg-4C-IhN"/>
                         </constraints>
