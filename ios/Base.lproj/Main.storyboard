@@ -1159,7 +1159,7 @@ Kijk voor de status in je overzicht.</string>
         <!--Anders geven-->
         <scene sceneID="wVu-49-Db8">
             <objects>
-                <viewController storyboardIdentifier="SelectOrgViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I2a-zH-aE5" customClass="SelectOrgViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectOrgViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I2a-zH-aE5" customClass="SelectOrgViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gAA-0d-ruo"/>
                         <viewControllerLayoutGuide type="bottom" id="HZQ-qj-2Bf"/>
@@ -1317,7 +1317,7 @@ Kijk voor de status in je overzicht.</string>
         <!-- Anders geven-->
         <scene sceneID="NJA-HW-RU8">
             <objects>
-                <viewController storyboardIdentifier="ManualGivingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5g3-dC-8Ob" customClass="ManualGivingViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ManualGivingViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5g3-dC-8Ob" customClass="ManualGivingViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jy2-zZ-aGn"/>
                         <viewControllerLayoutGuide type="bottom" id="5Xc-rr-18Y"/>
@@ -1718,6 +1718,7 @@ Kijk voor de status in je overzicht.</string>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottomLeft" destination="Tlo-R9-tPd" id="KFG-lD-JKH"/>
                         <outlet property="bottomRight" destination="zgG-fD-qhK" id="xfK-h6-BuB"/>
