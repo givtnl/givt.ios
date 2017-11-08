@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -17,6 +16,7 @@
             <string>Avenir-Heavy</string>
             <string>Avenir-Light</string>
             <string>Avenir-Medium</string>
+            <string>Avenir-Roman</string>
         </array>
         <array key="entypo.ttf">
             <string>entypo</string>
@@ -345,72 +345,101 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohk-H0-NHv" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="603" width="335" height="44"/>
-                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="bpm-0r-QKa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
-                                <state key="normal" title="Keer terug"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                        <color key="value" red="0.25490196078431371" green="0.78823529411764703" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                        <color key="value" red="0.10980392156862745" green="0.66274509803921566" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="actionGive:" destination="lyO-8n-bds" eventType="touchUpInside" id="Tgo-sr-fQm"/>
-                                    <action selector="btnGoBack:" destination="T9t-cc-i7G" eventType="touchUpInside" id="xsX-Bp-E1g"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KF4-TD-ueG">
-                                <rect key="frame" x="36" y="99.5" width="303" height="340"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="rFD-qH-doC">
-                                        <rect key="frame" x="0.0" y="20" width="303" height="82"/>
-                                        <string key="text">Bedankt voor je Givt!
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="rFD-qH-doC">
+                                <rect key="frame" x="36" y="144.5" width="303" height="49.5"/>
+                                <string key="text">Bedankt voor je Givt!
 Kijk voor de status in je overzicht.</string>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success.png" translatesAutoresizingMaskIntoConstraints="NO" id="Sli-WK-n4g">
-                                        <rect key="frame" x="0.0" y="201.5" width="303" height="28"/>
-                                    </imageView>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
+                                <color key="textColor" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="45q-nR-SS6">
+                                <rect key="frame" x="20" y="549" width="335" height="98"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohk-H0-NHv" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                        <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="bpm-0r-QKa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                        <state key="normal" title="Keer terug"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                <color key="value" red="0.25490196078431371" green="0.78823529411764703" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                                <color key="value" red="0.10980392156862745" green="0.66274509803921566" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="btnGoBack:" destination="T9t-cc-i7G" eventType="touchUpInside" id="xsX-Bp-E1g"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIq-fo-fkJ" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="54" width="335" height="44"/>
+                                        <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="oPF-Uy-TiZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                        <state key="normal" title="Deel met vrienden"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                <color key="value" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                                <color key="value" red="0.062745098039215685" green="0.054901960784313725" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="shareGivtWithFriends:" destination="T9t-cc-i7G" eventType="touchUpInside" id="7eQ-mz-QzZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yes, gelukt!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="CO5-Qi-f0y">
+                                <rect key="frame" x="36" y="70" width="303" height="34.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givyGave" translatesAutoresizingMaskIntoConstraints="NO" id="cdK-pi-bub">
+                                <rect key="frame" x="179.5" y="352" width="136" height="197"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="340" id="4dr-Sv-WVG"/>
-                                    <constraint firstItem="Sli-WK-n4g" firstAttribute="top" secondItem="rFD-qH-doC" secondAttribute="bottom" multiplier="16:9" constant="20" id="88w-ip-vmi"/>
-                                    <constraint firstAttribute="trailing" secondItem="rFD-qH-doC" secondAttribute="trailing" id="Khf-2F-HuL"/>
-                                    <constraint firstAttribute="trailing" secondItem="Sli-WK-n4g" secondAttribute="trailing" id="nFl-8O-awP"/>
-                                    <constraint firstItem="rFD-qH-doC" firstAttribute="leading" secondItem="KF4-TD-ueG" secondAttribute="leading" id="nU4-Di-TGM"/>
-                                    <constraint firstItem="Sli-WK-n4g" firstAttribute="leading" secondItem="KF4-TD-ueG" secondAttribute="leading" id="rHo-22-IHL"/>
-                                    <constraint firstItem="rFD-qH-doC" firstAttribute="top" secondItem="KF4-TD-ueG" secondAttribute="top" constant="20" id="wkp-fz-Qve"/>
+                                    <constraint firstAttribute="width" constant="136" id="EMw-R1-gR1"/>
+                                    <constraint firstAttribute="height" constant="197" id="b6t-tc-UB3"/>
                                 </constraints>
-                            </view>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KF4-TD-ueG" firstAttribute="centerX" secondItem="Szx-tV-6bc" secondAttribute="centerX" id="4kg-Ew-Ifl"/>
-                            <constraint firstItem="KF4-TD-ueG" firstAttribute="centerY" secondItem="Szx-tV-6bc" secondAttribute="centerY" constant="-64" id="7Pj-N1-PEN"/>
-                            <constraint firstAttribute="trailing" secondItem="ohk-H0-NHv" secondAttribute="trailing" constant="20" id="IJc-P9-PeK"/>
-                            <constraint firstItem="ohk-H0-NHv" firstAttribute="leading" secondItem="Szx-tV-6bc" secondAttribute="leading" constant="20" id="VZ8-w2-NAf"/>
-                            <constraint firstItem="Wqr-Wp-Oxm" firstAttribute="top" secondItem="ohk-H0-NHv" secondAttribute="bottom" constant="20" id="rSa-NA-kUW"/>
-                            <constraint firstItem="KF4-TD-ueG" firstAttribute="leading" secondItem="Szx-tV-6bc" secondAttribute="leadingMargin" constant="20" id="wc9-eH-5TZ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="KF4-TD-ueG" secondAttribute="trailing" constant="20" id="zvD-re-5Zt"/>
+                            <constraint firstItem="cdK-pi-bub" firstAttribute="centerX" secondItem="Szx-tV-6bc" secondAttribute="centerX" constant="60" id="45B-co-wTy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rFD-qH-doC" secondAttribute="trailing" constant="20" id="76k-F7-Ais"/>
+                            <constraint firstItem="CO5-Qi-f0y" firstAttribute="leading" secondItem="Szx-tV-6bc" secondAttribute="leadingMargin" constant="20" id="7gB-Cm-gr9"/>
+                            <constraint firstItem="45q-nR-SS6" firstAttribute="top" secondItem="cdK-pi-bub" secondAttribute="bottom" id="AWD-uK-Hif"/>
+                            <constraint firstItem="Wqr-Wp-Oxm" firstAttribute="top" secondItem="45q-nR-SS6" secondAttribute="bottom" constant="20" id="DiU-j0-8lx"/>
+                            <constraint firstItem="rFD-qH-doC" firstAttribute="leading" secondItem="Szx-tV-6bc" secondAttribute="leadingMargin" constant="20" id="MCv-lg-8ds"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CO5-Qi-f0y" secondAttribute="trailing" constant="20" id="ZhB-8T-vKy"/>
+                            <constraint firstItem="rFD-qH-doC" firstAttribute="top" secondItem="CO5-Qi-f0y" secondAttribute="bottom" constant="40" id="c7i-Lv-ts2"/>
+                            <constraint firstAttribute="trailing" secondItem="45q-nR-SS6" secondAttribute="trailing" constant="20" id="dMn-u8-QFQ"/>
+                            <constraint firstItem="CO5-Qi-f0y" firstAttribute="top" secondItem="w8h-vP-9ZE" secondAttribute="bottom" constant="50" id="oD3-Yc-dfc"/>
+                            <constraint firstItem="45q-nR-SS6" firstAttribute="leading" secondItem="Szx-tV-6bc" secondAttribute="leading" constant="20" id="ooi-5e-c5d"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnBack" destination="ohk-H0-NHv" id="Jdn-ik-Wir"/>
                         <outlet property="lblBody" destination="rFD-qH-doC" id="q6m-oe-rFc"/>
+                        <outlet property="lblTitle" destination="CO5-Qi-f0y" id="58u-UO-LoD"/>
+                        <outlet property="shareWithFriends" destination="qIq-fo-fkJ" id="I6y-JW-YkZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFL-RT-cX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1194,7 +1223,6 @@ Kijk voor de status in je overzicht.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="actionGive:" destination="lyO-8n-bds" eventType="touchUpInside" id="Wa8-eA-0Pe"/>
                                     <action selector="btnGive:" destination="I2a-zH-aE5" eventType="touchUpInside" id="43P-ep-N4j"/>
                                 </connections>
                             </button>
@@ -1973,6 +2001,7 @@ Kijk voor de status in je overzicht.</string>
         <image name="corner" width="40" height="40"/>
         <image name="erase.png" width="24" height="16"/>
         <image name="givt20h.png" width="53" height="20"/>
+        <image name="givyGave" width="136" height="197"/>
         <image name="help.png" width="13" height="20"/>
         <image name="info24.png" width="24" height="24"/>
         <image name="kerken" width="120" height="120"/>
@@ -1983,7 +2012,6 @@ Kijk voor de status in je overzicht.</string>
         <image name="rightarrow.png" width="12" height="18"/>
         <image name="stichtingen" width="120" height="120"/>
         <image name="straatmzkt" width="120" height="120"/>
-        <image name="success.png" width="28" height="28"/>
         <image name="visible_eye.png" width="16" height="12"/>
     </resources>
     <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
