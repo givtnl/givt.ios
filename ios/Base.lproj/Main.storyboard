@@ -1326,7 +1326,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="YAr-kD-TDm" firstAttribute="leading" secondItem="vKX-yf-kp4" secondAttribute="leading" constant="40" id="ETK-CN-E0O"/>
                                                     <constraint firstAttribute="bottom" secondItem="YAr-kD-TDm" secondAttribute="bottom" constant="20" id="SwF-jm-RII"/>
