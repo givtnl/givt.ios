@@ -23,6 +23,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         for tr in transactions {
             trs.append(["Amount" : tr.amount,"CollectId" : tr.collectId, "Timestamp" : tr.timeStamp, "BeaconId" : tr.beaconId])
         }
+
         var parameters: NSDictionary
         parameters = ["amountLimit" : 0,
                           "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),

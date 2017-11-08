@@ -1286,8 +1286,57 @@ Kijk voor de status in je overzicht.</string>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="736" translatesAutoresizingMaskIntoConstraints="NO" id="ND2-vs-2dW">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="736"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKX-yf-kp4">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="188.5"/>
+                                                <subviews>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAr-kD-TDm">
+                                                        <rect key="frame" x="40" y="10" width="295" height="158.5"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kerken" translatesAutoresizingMaskIntoConstraints="NO" id="5GJ-D4-iiX">
+                                                                <rect key="frame" x="114" y="15" width="67" height="67"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="67" id="CFg-jW-Dkj"/>
+                                                                    <constraint firstAttribute="width" constant="67" id="tdg-Pp-Zad"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Suggestie:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCU-iy-8sA">
+                                                                <rect key="frame" x="100.5" y="87" width="94.5" height="27.5"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organisatie" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqn-lf-RC9">
+                                                                <rect key="frame" x="20" y="116" width="255" height="27.5"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="0.09952672571" green="0.41830042000000001" blue="0.70923691990000004" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstItem="5GJ-D4-iiX" firstAttribute="centerX" secondItem="YAr-kD-TDm" secondAttribute="centerX" id="2uU-ET-YQg"/>
+                                                            <constraint firstItem="uCU-iy-8sA" firstAttribute="centerX" secondItem="YAr-kD-TDm" secondAttribute="centerX" id="5Rf-Ou-JzC"/>
+                                                            <constraint firstItem="5GJ-D4-iiX" firstAttribute="top" secondItem="YAr-kD-TDm" secondAttribute="top" constant="15" id="Ltz-AO-TWY"/>
+                                                            <constraint firstItem="uCU-iy-8sA" firstAttribute="top" secondItem="5GJ-D4-iiX" secondAttribute="bottom" constant="5" id="MHy-9B-Xvg"/>
+                                                            <constraint firstItem="iqn-lf-RC9" firstAttribute="top" secondItem="uCU-iy-8sA" secondAttribute="bottom" constant="2" id="ZO6-dg-lSf"/>
+                                                            <constraint firstAttribute="trailing" secondItem="iqn-lf-RC9" secondAttribute="trailing" constant="20" id="gnH-Ez-PdF"/>
+                                                            <constraint firstItem="iqn-lf-RC9" firstAttribute="centerX" secondItem="YAr-kD-TDm" secondAttribute="centerX" id="mnq-rp-Gqe"/>
+                                                            <constraint firstAttribute="bottom" secondItem="iqn-lf-RC9" secondAttribute="bottom" constant="15" id="nwp-DL-e1b"/>
+                                                            <constraint firstItem="iqn-lf-RC9" firstAttribute="leading" secondItem="YAr-kD-TDm" secondAttribute="leading" constant="20" id="vDB-NG-wwk"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="YAr-kD-TDm" firstAttribute="leading" secondItem="vKX-yf-kp4" secondAttribute="leading" constant="40" id="ETK-CN-E0O"/>
+                                                    <constraint firstAttribute="bottom" secondItem="YAr-kD-TDm" secondAttribute="bottom" constant="20" id="SwF-jm-RII"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YAr-kD-TDm" secondAttribute="trailing" constant="40" id="TJM-VG-bSU"/>
+                                                    <constraint firstItem="YAr-kD-TDm" firstAttribute="top" secondItem="vKX-yf-kp4" secondAttribute="top" constant="10" id="VYe-zg-ygf"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="20" id="WtG-Kn-Nk5"/>
+                                                </constraints>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="DKC-Aa-ACx" userLabel="firstRow">
-                                                <rect key="frame" x="40" y="10" width="295" height="150"/>
+                                                <rect key="frame" x="40" y="188.5" width="295" height="150"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0Y-th-XnC">
                                                         <rect key="frame" x="0.0" y="0.0" width="127.5" height="150"/>
@@ -1364,7 +1413,7 @@ Kijk voor de status in je overzicht.</string>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Zqy-if-lIK" userLabel="secondRow">
-                                                <rect key="frame" x="40" y="170" width="295" height="150"/>
+                                                <rect key="frame" x="40" y="348.5" width="295" height="150"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igy-ak-KHt">
                                                         <rect key="frame" x="0.0" y="0.0" width="127.5" height="150"/>
@@ -1442,7 +1491,7 @@ Kijk voor de status in je overzicht.</string>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="E9m-3O-POE" userLabel="thirdRow">
-                                                <rect key="frame" x="40" y="330" width="295" height="150"/>
+                                                <rect key="frame" x="40" y="508.5" width="295" height="150"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="200" verticalHuggingPriority="200" translatesAutoresizingMaskIntoConstraints="NO" id="BHD-4J-eZ6">
                                                         <rect key="frame" x="0.0" y="0.0" width="127.5" height="150"/>
@@ -1514,17 +1563,17 @@ Kijk voor de status in je overzicht.</string>
                                                 </constraints>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbN-wr-rgx">
-                                                <rect key="frame" x="0.0" y="480" width="375" height="256"/>
+                                                <rect key="frame" x="0.0" y="658.5" width="375" height="77.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="DKC-Aa-ACx" firstAttribute="leading" secondItem="ND2-vs-2dW" secondAttribute="leading" constant="40" id="0CA-KS-9vt"/>
-                                            <constraint firstItem="DKC-Aa-ACx" firstAttribute="top" secondItem="ND2-vs-2dW" secondAttribute="top" constant="10" id="5DZ-Lj-WaQ"/>
                                             <constraint firstItem="SbN-wr-rgx" firstAttribute="leading" secondItem="ND2-vs-2dW" secondAttribute="leading" id="6cC-A4-LmM"/>
                                             <constraint firstItem="E9m-3O-POE" firstAttribute="top" secondItem="Zqy-if-lIK" secondAttribute="bottom" constant="10" id="AT5-Cu-meX"/>
                                             <constraint firstItem="E9m-3O-POE" firstAttribute="leading" secondItem="ND2-vs-2dW" secondAttribute="leading" constant="40" id="ERK-kS-zfc"/>
+                                            <constraint firstAttribute="trailing" secondItem="vKX-yf-kp4" secondAttribute="trailing" id="Le0-cB-CKy"/>
                                             <constraint firstItem="Zqy-if-lIK" firstAttribute="leading" secondItem="ND2-vs-2dW" secondAttribute="leading" constant="40" id="PYg-cr-F95"/>
                                             <constraint firstAttribute="trailing" secondItem="SbN-wr-rgx" secondAttribute="trailing" id="QbT-nq-idP"/>
                                             <constraint firstItem="Zqy-if-lIK" firstAttribute="top" secondItem="DKC-Aa-ACx" secondAttribute="bottom" constant="10" id="UIb-hB-NaY"/>
@@ -1532,6 +1581,9 @@ Kijk voor de status in je overzicht.</string>
                                             <constraint firstAttribute="trailing" secondItem="E9m-3O-POE" secondAttribute="trailing" constant="40" id="Xrp-Zi-et3"/>
                                             <constraint firstAttribute="trailing" secondItem="DKC-Aa-ACx" secondAttribute="trailing" constant="40" id="ZiU-u8-SU9"/>
                                             <constraint firstItem="SbN-wr-rgx" firstAttribute="top" secondItem="E9m-3O-POE" secondAttribute="bottom" id="fEc-Jz-4mI"/>
+                                            <constraint firstItem="vKX-yf-kp4" firstAttribute="top" secondItem="ND2-vs-2dW" secondAttribute="top" id="h0e-0T-ieB"/>
+                                            <constraint firstItem="vKX-yf-kp4" firstAttribute="leading" secondItem="ND2-vs-2dW" secondAttribute="leading" id="htl-6O-yap"/>
+                                            <constraint firstItem="DKC-Aa-ACx" firstAttribute="top" secondItem="vKX-yf-kp4" secondAttribute="bottom" id="oTn-BG-iHZ"/>
                                             <constraint firstAttribute="trailing" secondItem="Zqy-if-lIK" secondAttribute="trailing" constant="40" id="tvi-ch-nLN"/>
                                         </constraints>
                                     </view>
@@ -1569,17 +1621,22 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="btnOverig" destination="89v-T2-cUF" id="NlD-gh-H5n"/>
                         <outlet property="btnQR" destination="BHD-4J-eZ6" id="0iB-BO-4Op"/>
                         <outlet property="btnStichtingen" destination="zW5-FH-vMq" id="baY-WC-9zR"/>
+                        <outlet property="containerHeight" destination="WtG-Kn-Nk5" id="ih9-NY-KrK"/>
                         <outlet property="kerken" destination="hxk-ds-bOP" id="GVS-eu-SRD"/>
                         <outlet property="navBar" destination="xwi-yl-DRD" id="ZFd-x7-AlL"/>
+                        <outlet property="organisationSuggestion" destination="iqn-lf-RC9" id="XtC-mQ-z7g"/>
                         <outlet property="overig" destination="QVy-Ml-Slf" id="VWt-cC-MPh"/>
                         <outlet property="qr" destination="N11-3m-Ozk" id="TKs-0l-U8J"/>
                         <outlet property="stackView" destination="DKC-Aa-ACx" id="wo4-rW-WcW"/>
                         <outlet property="stichtingen" destination="Azd-35-GCe" id="OO5-SX-feA"/>
+                        <outlet property="suggestion" destination="YAr-kD-TDm" id="TzT-fc-3BO"/>
+                        <outlet property="suggestionImage" destination="5GJ-D4-iiX" id="gM8-Ys-sN9"/>
+                        <outlet property="suggestionText" destination="uCU-iy-8sA" id="zrP-OK-OYu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CQF-gt-ASv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2866.666666666667" y="-242.11956521739131"/>
+            <point key="canvasLocation" x="2866.4000000000001" y="-242.42878560719643"/>
         </scene>
         <!--Code scannen-->
         <scene sceneID="lg9-Q0-sEk">

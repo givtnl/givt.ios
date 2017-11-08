@@ -10,11 +10,15 @@ import UIKit
 
 class ManualGivingViewController: UIViewController {
 
+    @IBOutlet var organisationSuggestion: UILabel!
+    @IBOutlet var containerHeight: NSLayoutConstraint!
+    @IBOutlet var suggestion: UIView!
     @IBOutlet var btnQR: UIView!
     @IBOutlet var btnOverig: UIView!
     @IBOutlet var btnActies: UIView!
     @IBOutlet var btnKerken: UIView!
     @IBOutlet var btnStichtingen: UIView!
+    @IBOutlet var suggestionImage: UIImageView!
     enum Choice: String {
         case foundations
         case churches
@@ -22,6 +26,7 @@ class ManualGivingViewController: UIViewController {
         case other
     }
     
+    @IBOutlet var suggestionText: UILabel!
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var qr: UILabel!
     @IBOutlet var overig: UILabel!
@@ -30,6 +35,7 @@ class ManualGivingViewController: UIViewController {
     @IBOutlet var stichtingen: UILabel!
     @IBOutlet var navBar: UINavigationItem!
     var pickedChoice: Choice!
+    private var beaconId: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         navBar.title = NSLocalizedString("GiveDifferently", comment: "")
@@ -51,8 +57,40 @@ class ManualGivingViewController: UIViewController {
         btnOverig.tag = 103
         btnOverig.alpha = 0.3
         btnQR.tag = 104
+
+        let lastOrg = GivtService.shared.lastGivtOrg
+        if let beaconId = GivtService.shared.getBestBeacon.beaconId, !lastOrg.isEmpty() {
+            suggestionText.text = NSLocalizedString("Suggestie", comment: "")
+            self.beaconId = beaconId
+
+            let tap = UITapGestureRecognizer()
+            tap.addTarget(self, action: #selector(giveManually))
+            suggestion.addGestureRecognizer(tap)
+            suggestion.layer.cornerRadius = 3
+            
+            /* filter list based on regExp */
+            var bg: UIColor = #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 0.2)
+            let type  = beaconId.substring(16..<19)
+            if type.matches("c[0-9]|d[be]") { //is a chrch
+                bg = #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 0.2)
+                suggestionImage.image = #imageLiteral(resourceName: "kerken")
+            } else if type.matches("d[0-9]") { //stichitng
+                bg = #colorLiteral(red: 0.9652975202, green: 0.7471453547, blue: 0.3372098804, alpha: 0.2)
+                suggestionImage.image = #imageLiteral(resourceName: "stichtingen")
+            } else if type.matches("a[0-9]") { //acties
+                bg = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 0.2)
+                suggestionImage.image = #imageLiteral(resourceName: "acties")
+            }
+            /* when we have the "other" option, don't forget to add regexp !*/
+            
+            suggestion.backgroundColor = bg
+            organisationSuggestion.text = lastOrg
+            suggestion.isHidden = false
+        } else {
+            suggestion.removeFromSuperview()
+            suggestion.isHidden = true
+        }
         
-        print(stackView.spacing)
     }
 
     @IBAction func goBack(_ sender: Any) {
@@ -79,7 +117,6 @@ class ManualGivingViewController: UIViewController {
                 break
             }
         }
-        
     }
     
     func addAction(_ view: UIView) {
@@ -88,14 +125,9 @@ class ManualGivingViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func giveManually() {
+        if let beaconId = self.beaconId {
+            GivtService.shared.give(antennaID: beaconId)
+        }
     }
-    */
-
 }

@@ -18,6 +18,12 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     private var amount: Decimal!
     private var amounts = [Decimal]()
+
+    var getBestBeacon: BestBeacon {
+        get {
+            return bestBeacon
+        }
+    }
     private var bestBeacon: BestBeacon = BestBeacon()
     var bluetoothEnabled: Bool {
         get {
@@ -39,10 +45,8 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         get {
             if let orgId = bestBeacon.organisation {
                 for organisationBeacon in orgBeaconList {
-                    if let org = organisationBeacon["EddyNameSpace"] as? String, org == bestBeacon.organisation {
-                        if let orgName = organisationBeacon["OrgName"] as? String {
-                            return orgName
-                        }
+                    if let org = organisationBeacon["EddyNameSpace"] as? String, let orgName = organisationBeacon["OrgName"] as? String, org == bestBeacon.organisation {
+                        return orgName
                     }
                 }   
             }
@@ -147,15 +151,15 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         if let feaa = advertisementData[CBAdvertisementDataServiceDataKey] as! NSMutableDictionary? {
             let x = feaa.object(forKey: CBUUID(string: "FEAA"))
             if(x != nil){
-                print(x!)
+                //print(x!)
                 let y = String.init(describing: x!)
                 //61f7
                 _ = String(describing: x).substring(5..<14)
                 print(y.substring(5..<14))
                 if(y.substring(5..<14) == "61f7 ed01"){
-                    print("beacon found with rssi: ", RSSI)
+                    //print("beacon found with rssi: ", RSSI)
                     let antennaID = String(format: "%@.%@", y.substring(5..<27).replacingOccurrences(of: " ", with: ""), y.substring(27..<41).replacingOccurrences(of: " ", with: ""))
-                                            print(antennaID)
+                                            //print(antennaID)
                     beaconDetected(antennaID: antennaID, rssi: RSSI, beaconType: 0, batteryLevel: 100)
                 }
             }
@@ -168,20 +172,30 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         stopScanning()
         
         if(rssi != 0x7f){
-            if(((bestBeacon.beaconId) == "") && bestBeacon.rssi == 0){
-                bestBeacon.beaconId = antennaID
-                bestBeacon.rssi = rssi
-                bestBeacon.organisation = antennaID.substring(to: antennaID.index(of: ".")!)
-            } else if((bestBeacon.rssi?.intValue)! < rssi.intValue) {
-                bestBeacon.beaconId = antennaID
-                bestBeacon.rssi = rssi
-                bestBeacon.organisation = antennaID.substring(to: antennaID.index(of: ".")!)
+            var organisation = antennaID
+            if let idx = antennaID.index(of: ".") {
+                organisation = antennaID.substring(to: idx)
             }
-            print(bestBeacon)
+            
+            if let _ = bestBeacon.beaconId, let bestBeaconRssi = bestBeacon.rssi {
+                /* beacon exists */
+                if bestBeaconRssi.intValue < rssi.intValue {
+                    bestBeacon.beaconId = antennaID
+                    bestBeacon.rssi = rssi
+                    bestBeacon.organisation = organisation
+                }
+            } else {
+                /* new beacon */
+                bestBeacon.beaconId = antennaID
+                bestBeacon.rssi = rssi
+                bestBeacon.organisation = organisation
+            }
+            
             if(rssi.intValue > rssiTreshold){
                 give(antennaID: antennaID)
                 return
             }
+ 
         }
         
         startScanning()
@@ -237,7 +251,11 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     func giveManually(antennaId: String) {
         bestBeacon.beaconId = antennaId
-        bestBeacon.organisation = antennaId
+        if let idx = antennaId.index(of: ".") {
+            bestBeacon.organisation = antennaId.substring(to: idx)
+        } else {
+            bestBeacon.organisation = antennaId
+        }
         bestBeacon.rssi = 0
         give(antennaID: antennaId)
     }
@@ -307,9 +325,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 qString += "&dtLastUpdated=" + dateString
                 print(dateString)
             }
-            
-            
-            
+  
             var request = URLRequest(url: URL(string: _baseUrl + "/api/Organisation/BeaconList" + "?" + qString)!)
             request.httpMethod = "GET"
             request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
@@ -358,7 +374,7 @@ class BestBeacon {
     var rssi: NSNumber?
     var organisation: String?
     
-    init(_ b: String = "",_ r: NSNumber = 0,_ o: String = "") {
+    init(_ b: String? = nil,_ r: NSNumber? = nil,_ o: String? = nil) {
         beaconId = b
         rssi = r
         organisation = o
