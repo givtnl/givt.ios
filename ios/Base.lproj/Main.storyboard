@@ -336,7 +336,7 @@
         <!--Scan Complete View Controller-->
         <scene sceneID="kH3-VN-Aq4">
             <objects>
-                <viewController storyboardIdentifier="testView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T9t-cc-i7G" customClass="ScanCompleteViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScanCompleteViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T9t-cc-i7G" customClass="ScanCompleteViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="w8h-vP-9ZE"/>
                         <viewControllerLayoutGuide type="bottom" id="Wqr-Wp-Oxm"/>

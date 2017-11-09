@@ -24,6 +24,11 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
             trs.append(["Amount" : tr.amount,"CollectId" : tr.collectId, "Timestamp" : tr.timeStamp, "BeaconId" : tr.beaconId])
         }
 
+        var canShare = false
+        if let beaconId = GivtService.shared.getBestBeacon.beaconId, !beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
+            canShare = true
+        }
+        
         var parameters: NSDictionary
         parameters = ["amountLimit" : 0,
                           "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
@@ -34,7 +39,8 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
                           "lastDigits" : "XXXXXXXXXXXXXXX7061",
                           "organisation" : GivtService.shared.lastGivtOrg,
                           "mandatePopup" : "",
-                          "spUrl" : ""] as NSDictionary
+                          "spUrl" : "",
+                          "canShare" : canShare] as NSDictionary
         
         
         guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
@@ -47,16 +53,25 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         self.showWebsite(url: formatted)
     }
     
-    func showWebsite(url: String){
-        let url = URL(string: url)!
-        let webVC = SFSafariViewController(url: url)
-        webVC.delegate = self
-        DispatchQueue.main.async {
-            webVC.preferredBarTintColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
-            webVC.preferredControlTintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+    fileprivate func popToRootWithDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.navigationController?.popToRootViewController(animated: false)
         }
-        self.navigationController?.present(webVC, animated: true) {
-            UIApplication.shared.statusBarStyle = .default
+    }
+    
+    func showWebsite(url: String){
+        guard let url = URL(string: url) else {
+            return //be safe
+        }
+        
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: { (status) in
+                self.popToRootWithDelay()
+            })
+        } else {
+            if(UIApplication.shared.openURL(url)) {
+                self.popToRootWithDelay()
+            }
         }
     }
 
@@ -194,12 +209,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
 extension ScanViewController : SFSafariViewControllerDelegate{
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
         print("ik kom er in")
-        var navStackArray : [AnyObject]! = self.navigationController!.viewControllers
-        // insert vc2 at second last position
-        let test = storyboard?.instantiateViewController(withIdentifier: "testView")
 
-        navStackArray.insert(test!, at: navStackArray.count)
-        self.navigationController!.setViewControllers(navStackArray as! [UIViewController], animated:false)
 
         //self.popToRoot(animated: false)
         UIApplication.shared.statusBarStyle = .default
