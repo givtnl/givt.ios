@@ -13,7 +13,14 @@ class ScanCompleteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         btnBack.setTitle(NSLocalizedString("Ready", comment: ""), for: .normal)
+        shareWithFriends.setTitle(NSLocalizedString("ShareTheGivtButton", comment: ""), for: .normal)
         lblBody.text = NSLocalizedString("GivingSuccess", comment: "")
+        lblTitle.text = NSLocalizedString("YesSuccess", comment: "")
+        
+        if let beaconId = GivtService.shared.getBestBeacon.beaconId, beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
+            shareWithFriends.removeFromSuperview()
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +31,11 @@ class ScanCompleteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        print(GivtService.shared.lastGivtOrg)
+        if !GivtService.shared.lastGivtOrg.isEmpty() {
+            lblBody.text = NSLocalizedString("GivtIsBeingProcessed", comment: "").replacingOccurrences(of: "{0}", with: GivtService.shared.lastGivtOrg)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,9 +44,21 @@ class ScanCompleteViewController: UIViewController {
     
     @IBOutlet var btnBack: CustomButton!
     @IBOutlet var lblBody: UILabel!
-
+    @IBOutlet var lblTitle: UILabel!
+    @IBOutlet var shareWithFriends: CustomButton!
+    
     @IBAction func btnGoBack(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
+    }
+    @IBAction func shareGivtWithFriends(_ sender: Any) {
+        print("sharing givt")
+
+        var message = !GivtService.shared.lastGivtOrg.isEmpty() ? NSLocalizedString("ShareTheGivtTextNoOrg", comment: "") : NSLocalizedString("ShareTheGivtText", comment: "").replacingOccurrences(of: "{0}", with: GivtService.shared.lastGivtOrg)
+        message += " " + NSLocalizedString("JoinGivt", comment: "")
+        
+        let activityViewController = UIActivityViewController(activityItems: [message as NSString], applicationActivities: nil)
+        self.present(activityViewController, animated: true, completion: {})
+        
     }
     /*
     // MARK: - Navigation

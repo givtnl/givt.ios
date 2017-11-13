@@ -20,6 +20,30 @@ extension UserDefaults {
         case mandateSigned
         case viewedCoachMarks
         case userClaims
+        case orgBeaconList
+        case hasTappedAwayGiveDiff
+    }
+    
+    var hasTappedAwayGiveDiff: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.hasTappedAwayGiveDiff.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.hasTappedAwayGiveDiff.rawValue)
+        }
+    }
+    
+    var orgBeaconList: NSDictionary? {
+        get {
+            if let list = dictionary(forKey: UserDefaultsKeys.orgBeaconList.rawValue) as NSDictionary? {
+                return list
+            }
+            return nil
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.orgBeaconList.rawValue)
+            synchronize()
+        }
     }
     
     

@@ -145,12 +145,15 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func openRegistration() {
-        self.hideLoader()
-        let userExt = UserDefaults.standard.userExt
-        userExt.email = email.text!
-        UserDefaults.standard.userExt = userExt
-        let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-        self.present(register, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.hideLoader()
+            let userExt = UserDefaults.standard.userExt
+            userExt.email = self.email.text!
+            UserDefaults.standard.userExt = userExt
+            let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+            self.present(register, animated: true, completion: nil)
+        }
+        
     }
     
     func checkEmail() {

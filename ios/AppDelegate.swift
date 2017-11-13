@@ -73,6 +73,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Network not reachable")
         }
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let host = url.host, host == "sharemygivt" {
+            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                var message = !GivtService.shared.lastGivtOrg.isEmpty() ? NSLocalizedString("ShareTheGivtTextNoOrg", comment: "") : NSLocalizedString("ShareTheGivtText", comment: "").replacingOccurrences(of: "{0}", with: GivtService.shared.lastGivtOrg)
+                message += " " + NSLocalizedString("JoinGivt", comment: "")
+                let activityViewController = UIActivityViewController(activityItems: [message as NSString], applicationActivities: nil)
+                topController.present(activityViewController, animated: true, completion: nil)
+            }
+        
+        }
+        return true
+    }
 
 
 

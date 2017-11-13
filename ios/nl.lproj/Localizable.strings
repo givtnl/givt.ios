@@ -179,7 +179,7 @@
 "BluetoothErrorMessage" = "Om Givt te kunnen gebruiken, \nmoet bluetooth op je telefoon aanstaan.";
 
 /*Foutmelding als er geen verbinding is met het internet*/
-"ConnectionError" = "Er is op dit moment geen \nverbinding met internet. \nDoe een schietgebedje en/of \ncontroleer je instellingen.";
+"ConnectionError" = "Het lukt op dit moment niet om verbinding te maken met de server. Doe een schietgebedje en/of controleer je instellingen.";
 
 /*@Tine, vind je 'Ho' kunnen? Of 'Ha' of moet de zin gewoon anders? Sjoerd kan niet leven met 'Hé'*/
 "AmountLimitExceeded" = "Hé gulle gever, dit bedrag is \nhoger dan je geeflimiet. \nPas de limiet aan of\nverlaag het bedrag.";
@@ -435,7 +435,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AnswerHowDoesGivingWork" = "Heel eenvoudig. Eenmaal geregistreerd bij Givt, hoef je alleen even de app te openen om een bedrag te kiezen en je telefoon langs de collectebus, -zak of -mand te bewegen.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op 'Geven'. Druk daarna op ‘Anders geven?’ en kies voor 'Kerken', 'Stichtingen' of 'Acties'. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
+"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op 'Geven'. Druk daarna op ‘Anders geven’ en kies voor 'Kerken', 'Stichtingen' of 'Acties'. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
 "MenuSettingsSwitchAccounts" = "Wisselen van account";
 "PrepareIUnderstand" = "Ik snap het";
 
@@ -593,3 +593,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "YesSuccess" = "Yes, gelukt!";
 "ToGiveWeNeedYourEmailAddress" = "Om te geven met Givt is\nalvast je e-mailadres nodig.";
 "WeWontSendAnySpam" = "(we sturen geen spam, beloofd)";
+
+/*In app begeleiding naar 'Anders geven?'*/
+"GiveDiffWalkthrough" = "Lukt het niet? Of wil je liever via een QR-code geven of de ontvanger selecteren uit een lijst?";
+"SwipeDownOpenGivt" = "Veeg omlaag om de Givt-app opnieuw te openen.";

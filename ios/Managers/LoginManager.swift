@@ -78,7 +78,7 @@ class LoginManager {
     public func loginUser(email: String, password: String, completionHandler: @escaping (Bool, NSError?) -> Void ) -> URLSessionTask {
         var request = URLRequest(url: URL(string: _baseUrl + "/oauth2/token")!)
         request.httpMethod = "POST"
-        let postString = "grant_type=password&userName=" + email + "&password=" + password
+        let postString = "grant_type=password&userName=" + email.RFC3986UnreservedEncoded + "&password=" + password
         request.httpBody = postString.data(using: .utf8)
         let urlSession = URLSession.shared
         
@@ -192,7 +192,7 @@ class LoginManager {
         //TODO: checkTLD
         var request = URLRequest(url: URL(string: _baseUrl + "/api/Users")!)
         request.httpMethod = "POST"
-        let postString = "email=" + _registrationUser.email + "&password=" + _registrationUser.password
+        let postString = "email=" + _registrationUser.email.RFC3986UnreservedEncoded + "&password=" + _registrationUser.password
         request.httpBody = postString.data(using: .utf8)
         let urlSession = URLSession.shared
         
@@ -389,7 +389,7 @@ class LoginManager {
     }
     
     func checkTLD(email: String, completionHandler: @escaping (Bool) -> Void) {
-        var request = URLRequest(url: URL(string: _baseUrl + "/api/CheckTLD?email=" + email)!)
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/CheckTLD?email=" + email.RFC3986UnreservedEncoded)!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "GET"
         let urlSession = URLSession.shared
@@ -405,7 +405,7 @@ class LoginManager {
     }
     
     func doesEmailExist(email: String, completionHandler: @escaping (String) -> Void) {
-        var request = URLRequest(url: URL(string: _baseUrl + "/api/Users/Check?email=" + email)!)
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/Users/Check?email=" + email.RFC3986UnreservedEncoded)!)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "GET"
         let urlSession = URLSession.shared
@@ -438,5 +438,6 @@ class LoginManager {
         UserDefaults.standard.bearerExpiration = Date()
         UserDefaults.standard.mandateSigned = false
         UIApplication.shared.applicationIconBadgeNumber = 0
+        UserDefaults.standard.hasTappedAwayGiveDiff = false
     }
 }

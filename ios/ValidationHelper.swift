@@ -32,7 +32,7 @@ class ValidationHelper {
             "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" +
         "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
         let expression = try! NSRegularExpression(pattern: regex, options: [])
-        return string.characters.count < 35 && expression.firstMatch(in: string, options: [], range: NSMakeRange(0, string.utf16.count)) != nil
+        return string.characters.count <= 70 && expression.firstMatch(in: string, options: [], range: NSMakeRange(0, string.utf16.count)) != nil
     }
     
     func isPasswordValid(_ string: String) -> Bool {
