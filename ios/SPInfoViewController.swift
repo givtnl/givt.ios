@@ -41,7 +41,7 @@ class SPInfoViewController: UIViewController {
     
     @IBAction func next(_ sender: Any) {
         SVProgressHUD.show()
-        var userInfo = UserDefaults.standard.userExt
+        var userInfo = UserDefaults.standard.userExt!
         var signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)
         var mandate = Mandate(signatory: signatory)
         LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in

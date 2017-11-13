@@ -38,7 +38,7 @@ class SettingTableViewController: UITableViewController {
     private func loadSettings(){
         let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
 
-        let tempUser = UserDefaults.standard.amountLimit == .max || UserDefaults.standard.amountLimit == -1
+        let tempUser = UserDefaults.standard.tempUser
         
         let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: { self.logout() })
         

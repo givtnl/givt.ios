@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         btnLogin.setTitle(NSLocalizedString("Login", comment: ""), for: UIControlState.normal)
         txtUserName.delegate = self
         txtPassword.delegate = self
-        let email = UserDefaults.standard.userExt.email
+        let email = UserDefaults.standard.userExt!.email
         
         txtUserName.text = email
         if !email.isEmpty() {

@@ -11,6 +11,7 @@ import UIKit
 class RegNavigationController: UINavigationController {
 
     enum StartPoint {
+        case registration
         case permission
         case amountLimit
         case mandate
@@ -39,7 +40,7 @@ class RegNavigationController: UINavigationController {
             let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
             vc.hasBackButton = true
             self.setViewControllers([vc], animated: false)
-        } else if startPoint == .amountLimit {
+        } else if startPoint == .amountLimit && !isRegistration { //only show amountlimit when not registration flow
             let vc = storyboard?.instantiateViewController(withIdentifier: "alvcreg") as! AmountLimitViewController
             vc.hasBackButton = true
             vc.isRegistration = isRegistration

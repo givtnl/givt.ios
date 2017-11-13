@@ -24,6 +24,12 @@ extension UserDefaults {
         case hasTappedAwayGiveDiff
     }
     
+    var tempUser: Bool {
+        get {
+            return userExt?.iban == AppConstants.tempIban
+        }
+    }
+    
     var hasTappedAwayGiveDiff: Bool {
         get {
             return bool(forKey: UserDefaultsKeys.hasTappedAwayGiveDiff.rawValue)
@@ -119,12 +125,12 @@ extension UserDefaults {
         }
     }
     
-    var userExt: UserExt {
+    var userExt: UserExt! {
         get {
             if let encoded = data(forKey: UserDefaultsKeys.userExt.rawValue) {
                 return NSKeyedUnarchiver.unarchiveObject(with: encoded) as! UserExt
             }
-            return UserExt()
+            return nil
         }
         set(value) {
             let encoded = NSKeyedArchiver.archivedData(withRootObject: value)

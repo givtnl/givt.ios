@@ -39,12 +39,9 @@ class PermissionViewController: UIViewController {
             let center = UNUserNotificationCenter.current()
             center.requestAuthorization(options: [.alert, .badge]) { (granted, error) in
                 DispatchQueue.main.async {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "alvcreg") as! AmountLimitViewController
-                    vc.isRegistration = true
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
                     self.show(vc, sender: nil)
                 }
-                
-                
             }
         }
     }

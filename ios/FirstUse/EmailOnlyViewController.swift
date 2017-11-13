@@ -110,11 +110,11 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.show()
         LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
             
-            if status == "true" {
+            if status == "true" { //completed registration
                 self.openLogin()
-            } else if status == "false" {
-                self.checkEmail()
-            } else if status == "temp" {
+            } else if status == "false" { //email is completely new
+                self.registerTempUser()
+            } else if status == "temp" { //email is in db but not succesfully registered
                 self.openRegistration()
             }
         }
@@ -148,7 +148,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         DispatchQueue.main.async {
             self.hideLoader()
             let userExt = UserDefaults.standard.userExt
-            userExt.email = self.email.text!
+            userExt?.email = self.email.text!
             UserDefaults.standard.userExt = userExt
             let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
             self.present(register, animated: true, completion: nil)
@@ -156,7 +156,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func checkEmail() {
+    func registerTempUser() {
         LoginManager.shared.checkTLD(email: self.email.text!, completionHandler: { (status) in
             if status {
                 self.registerEmail(email: self.email.text!)

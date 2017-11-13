@@ -33,13 +33,11 @@ class NavigationManager {
     public func finishRegistration(_ context: UIViewController) {
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         permissionAsked { (asked) in
-            if self.appSettings.amountLimit == .max { //tempuser
+            if UserDefaults.standard.tempUser { //tempuser
+                vc.startPoint = .registration
                 self.pushOnMainPage(context, vc)
             } else if !asked {
                 vc.startPoint = .permission
-                self.pushOnMainPage(context, vc)
-            } else if self.appSettings.amountLimit == -1 { //user quit just before entering amount limit
-                vc.startPoint = .amountLimit
                 self.pushOnMainPage(context, vc)
             } else if !self.appSettings.mandateSigned {
                 vc.startPoint = .mandate

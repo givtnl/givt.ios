@@ -21,11 +21,7 @@ class UserExt: NSObject, NSCoding {
     var iban: String = ""
     var mobileNumber: String = ""
     var postalCode: String = ""
-    var guid: String = ""
-    
-    var isTempUser: Bool = false
-    
-    
+    var guid: String = ""    
     
     override init() {
         
@@ -44,7 +40,6 @@ class UserExt: NSObject, NSCoding {
         self.mobileNumber = aDecoder.decodeObject(forKey: "mobileNumber") as! String
         self.postalCode = aDecoder.decodeObject(forKey: "postalCode") as! String
         self.guid = aDecoder.decodeObject(forKey: "guid") as! String
-        self.isTempUser = aDecoder.decodeBool(forKey: "isTempUser") as! Bool
     }
     
     func encode(with aCoder: NSCoder) {
@@ -59,9 +54,6 @@ class UserExt: NSObject, NSCoding {
         aCoder.encode(iban, forKey: "iban")
         aCoder.encode(mobileNumber, forKey: "mobileNumber")
         aCoder.encode(postalCode, forKey: "postalCode")
-        aCoder.encode(guid, forKey: "guid")
-        
-        aCoder.encode(isTempUser, forKey: "isTempUser")
-        
+        aCoder.encode(guid, forKey: "guid")        
     }
 }

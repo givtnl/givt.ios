@@ -53,7 +53,7 @@ class LoginManager {
         request.httpMethod = "PUT"
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
-        let putString = "GUID=" + UserDefaults.standard.userExt.guid + "&AmountLimit=" + String(amountLimit)
+        let putString = "GUID=" + (UserDefaults.standard.userExt?.guid)! + "&AmountLimit=" + String(amountLimit)
         request.httpBody = putString.data(using: .utf8)
         let urlSession = URLSession.shared
         _ = urlSession.dataTask(with: request) { data, response, error -> Void in
@@ -155,9 +155,9 @@ class LoginManager {
             do {
                 let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
                 let newConfig = UserDefaults.standard.userExt
-                newConfig.guid = parsedData["GUID"] as! String
+                newConfig?.guid = parsedData["GUID"] as! String
                 UserDefaults.standard.userExt = newConfig
-                UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? -1 : parsedData["AmountLimit"] as! Int
+                UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 500 : parsedData["AmountLimit"] as! Int
                 completionHandler(true)
             } catch let err as NSError {
                 print(err)
@@ -168,17 +168,12 @@ class LoginManager {
         }.resume()
     }
     
-    func registerUser(_ user: RegistrationUser, completionHandler: @escaping (Bool) -> Void) {
-        
+    func registerUser(_ user: RegistrationUser) {
         _registrationUser = UserExt()
         _registrationUser.firstName = user.firstName
         _registrationUser.lastName = user.lastName
         _registrationUser.password = user.password
         _registrationUser.email = user.email
-        
-        //TODO: log email to log service!
-        
-        completionHandler(true)
     }
     
     func registerExtraDataFromUser(_ user: RegistrationUserData, completionHandler: @escaping (Bool) -> Void) {
@@ -209,7 +204,7 @@ class LoginManager {
             }
             
             self._registrationUser.guid = String(bytes: data!, encoding: .utf8)!
-            let newConfig = UserDefaults.standard.userExt
+            let newConfig = UserDefaults.standard.userExt!
             newConfig.guid = self._registrationUser.guid
             UserDefaults.standard.userExt = newConfig
             self.registerAllData(completionHandler: { success in
@@ -218,8 +213,16 @@ class LoginManager {
                     _ = self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err) in
                         
                         if success {
+                             if self._registrationUser.iban == AppConstants.tempIban.replacingOccurrences(of: " ", with: "") {
+                                
+                            }
+                            
                             self._registrationUser.password = ""
                             UserDefaults.standard.userExt = self._registrationUser
+                            self.saveAmountLimit(500, completionHandler: { (status, err) in
+                                //niets
+                            })
+                            UserDefaults.standard.amountLimit = 500
                             completionHandler(true)
                         } else {
                             completionHandler(false)
@@ -329,7 +332,7 @@ class LoginManager {
     func checkMandate(completionHandler: @escaping (String) -> Void) -> URLSessionTask? {
         var task: URLSessionTask?
         if isBearerStillValid {
-            var request = URLRequest(url: URL(string: _baseUrl + "/api/Mandate?UserID=" + UserDefaults.standard.userExt.guid)!)
+            var request = URLRequest(url: URL(string: _baseUrl + "/api/Mandate?UserID=" + (UserDefaults.standard.userExt?.guid)!)!)
             request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "GET"
@@ -369,19 +372,13 @@ class LoginManager {
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
         let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe")
         let regUserExt = RegistrationUserData(address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
-        self.registerUser(regUser) { b in
+        self.registerUser(regUser)
+        self.registerExtraDataFromUser(regUserExt) { b in
             if b {
-                self.registerExtraDataFromUser(regUserExt) { b in
-                    if b {
-                        self.userClaim = .giveOnce
-                        UserDefaults.standard.isLoggedIn = true
-                        UserDefaults.standard.amountLimit = .max
-                        DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
-                        completionHandler(true)
-                    } else {
-                        completionHandler(false)
-                    }
-                }
+                self.userClaim = .giveOnce
+                UserDefaults.standard.isLoggedIn = true
+                DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
+                completionHandler(true)
             } else {
                 completionHandler(false)
             }
@@ -420,7 +417,7 @@ class LoginManager {
                 return
             }
             let userExt = UserDefaults.standard.userExt
-            userExt.email = email
+            userExt?.email = email
             UserDefaults.standard.userExt = userExt
             let status = String(bytes: data!, encoding: .utf8)!.replacingOccurrences(of: "\"", with: "")
             completionHandler(status)

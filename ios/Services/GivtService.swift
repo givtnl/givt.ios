@@ -213,7 +213,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         for (index, value) in amounts.enumerated() {
             if value >= 0.50 {
                 print(value)
-                var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: UserDefaults.standard.userExt.guid)
+                var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
                 transactions.append(newTransaction)
             }
         }
@@ -311,9 +311,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
-        print()
-        let userExt = UserDefaults.standard.userExt
-        if !userExt.guid.isEmpty() {
+        if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
             var qString = "Guid=" + userExt.guid
             
             // add &dtLastChanged when beaconList is filled
