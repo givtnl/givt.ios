@@ -26,7 +26,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         parameters = ["amountLimit" : 0,
                           "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
                           "GUID" : "",
-                          "urlPart" : "hockey",
+                          "urlPart" : "nativem",
                           "givtObj" : trs,
                           "apiUrl" : "https://givtapidebug.azurewebsites.net/",
                           "lastDigits" : "XXXXXXXXXXXXXXX7061",
