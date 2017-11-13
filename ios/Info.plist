@@ -21,23 +21,13 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>givtn</string>
-			</array>
-			<key>CFBundleURLName</key>
-			<string></string>
-		</dict>
-		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>None</string>
-			<key>CFBundleURLIconFile</key>
-			<string>icon</string>
 			<key>CFBundleURLName</key>
 			<string>com.givt.iosnative</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>givtnd</string>
+				<string>givtn</string>
 			</array>
 		</dict>
 		<dict>
@@ -48,6 +38,7 @@
 				<string>prefs</string>
 			</array>
 		</dict>
+		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
