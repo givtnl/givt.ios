@@ -286,8 +286,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             self.checkAmount()
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-            let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
-            self.present(amountLimitVC, animated: true)
+            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateInitialViewController() as! RegNavigationController
+            vc.isRegistration = false
+            vc.startPoint = .amountLimit
+            self.present(vc, animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
     }
