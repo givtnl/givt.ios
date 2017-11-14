@@ -25,7 +25,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-qc-YNR" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-qc-YNR" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="603" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -239,12 +239,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givy_welkom" translatesAutoresizingMaskIntoConstraints="NO" id="JaV-Q9-pcW">
-                                <rect key="frame" x="0.0" y="260" width="375" height="190"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5Q-pR-dV7">
+                                <rect key="frame" x="0.0" y="107.5" width="375" height="372.5"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givy_welkom" translatesAutoresizingMaskIntoConstraints="NO" id="JaV-Q9-pcW">
+                                        <rect key="frame" x="85" y="91.5" width="205" height="190"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="190" id="Rn8-nY-YUf"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="190" id="Rn8-nY-YUf"/>
+                                    <constraint firstItem="JaV-Q9-pcW" firstAttribute="centerX" secondItem="y5Q-pR-dV7" secondAttribute="centerX" id="Xeh-27-PGo"/>
+                                    <constraint firstItem="JaV-Q9-pcW" firstAttribute="centerX" secondItem="y5Q-pR-dV7" secondAttribute="centerX" id="xZM-1J-w50"/>
+                                    <constraint firstItem="JaV-Q9-pcW" firstAttribute="centerY" secondItem="y5Q-pR-dV7" secondAttribute="centerY" id="zrc-Y3-8jq"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5j-vj-GlK">
                                 <rect key="frame" x="20" y="30" width="335" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
@@ -260,15 +271,15 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="y5Q-pR-dV7" firstAttribute="top" secondItem="4SL-cA-QWS" secondAttribute="bottom" constant="20" id="2tJ-Qv-HOu"/>
                             <constraint firstItem="w5j-vj-GlK" firstAttribute="leading" secondItem="jEj-3g-uRT" secondAttribute="leading" constant="20" id="3eh-jY-2tY"/>
-                            <constraint firstItem="JaV-Q9-pcW" firstAttribute="leading" secondItem="jEj-3g-uRT" secondAttribute="leading" id="3zB-L9-OGL"/>
-                            <constraint firstItem="JaV-Q9-pcW" firstAttribute="centerX" secondItem="Y1j-UK-c2G" secondAttribute="centerX" id="68p-Gr-2ba"/>
                             <constraint firstItem="jEj-3g-uRT" firstAttribute="trailing" secondItem="w5j-vj-GlK" secondAttribute="trailing" constant="20" id="Dtk-PM-VQM"/>
                             <constraint firstItem="4SL-cA-QWS" firstAttribute="centerX" secondItem="Y1j-UK-c2G" secondAttribute="centerX" id="GRX-id-Tk3"/>
-                            <constraint firstItem="JaV-Q9-pcW" firstAttribute="trailing" secondItem="jEj-3g-uRT" secondAttribute="trailing" id="KS0-do-CPh"/>
+                            <constraint firstItem="jEj-3g-uRT" firstAttribute="bottom" secondItem="y5Q-pR-dV7" secondAttribute="bottom" constant="20" id="GkY-NB-rhL"/>
                             <constraint firstItem="w5j-vj-GlK" firstAttribute="centerX" secondItem="Y1j-UK-c2G" secondAttribute="centerX" id="R0C-1o-wu3"/>
                             <constraint firstItem="4SL-cA-QWS" firstAttribute="top" secondItem="w5j-vj-GlK" secondAttribute="bottom" constant="10" id="SgI-vq-byy"/>
-                            <constraint firstItem="jEj-3g-uRT" firstAttribute="bottom" secondItem="JaV-Q9-pcW" secondAttribute="bottom" constant="50" id="XIP-ov-uah"/>
+                            <constraint firstItem="y5Q-pR-dV7" firstAttribute="leading" secondItem="Y1j-UK-c2G" secondAttribute="leading" id="Viq-71-2z7"/>
+                            <constraint firstAttribute="trailing" secondItem="y5Q-pR-dV7" secondAttribute="trailing" id="YXI-0l-fMb"/>
                             <constraint firstItem="4SL-cA-QWS" firstAttribute="leading" secondItem="jEj-3g-uRT" secondAttribute="leading" constant="20" id="aTA-Rq-UeX"/>
                             <constraint firstItem="w5j-vj-GlK" firstAttribute="top" secondItem="jEj-3g-uRT" secondAttribute="top" constant="10" id="igQ-MO-W7L"/>
                             <constraint firstItem="jEj-3g-uRT" firstAttribute="trailing" secondItem="4SL-cA-QWS" secondAttribute="trailing" constant="20" id="wGV-ai-643"/>
