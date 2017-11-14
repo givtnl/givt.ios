@@ -9,10 +9,21 @@
 import UIKit
 
 class TemplateViewController: UIViewController {
-
+    
+    var sTitle: String!
+    var subtitle: String!
+    var uImage: UIImage!
+    
+    
+    @IBOutlet var image: UIImageView!
+    @IBOutlet var subtitleText: UILabel!
+    @IBOutlet var titleText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        titleText.text = sTitle
+        subtitleText.text = subtitle
+        image.image = uImage
         // Do any additional setup after loading the view.
     }
 

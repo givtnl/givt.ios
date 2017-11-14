@@ -48,6 +48,8 @@
 		D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9BB1F18CE0C002B849B /* ScanViewController.swift */; };
 		D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */; };
 		D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D761E9C41F20CFA6002B849B /* Localizable.strings */; };
+		D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76A03421FBAFBD600E338C5 /* CarouselViewController.swift */; };
+		D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76A03441FBAFC5100E338C5 /* TemplateViewController.swift */; };
 		D770E5341FB097FA0079D253 /* ManualOrganisationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */; };
 		D77511BB1F711231004F91F6 /* Date+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77511BA1F711231004F91F6 /* Date+helpers.swift */; };
 		D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77511BC1F713B56004F91F6 /* AgendaNumber.swift */; };
@@ -154,6 +156,8 @@
 		D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+HexConversion.swift"; sourceTree = "<group>"; };
 		D761E9C31F20CFA6002B849B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D761E9C61F20D341002B849B /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D76A03421FBAFBD600E338C5 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
+		D76A03441FBAFC5100E338C5 /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualOrganisationView.swift; sourceTree = "<group>"; };
 		D77511BA1F711231004F91F6 /* Date+helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+helpers.swift"; sourceTree = "<group>"; };
 		D77511BC1F713B56004F91F6 /* AgendaNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaNumber.swift; sourceTree = "<group>"; };
@@ -310,6 +314,7 @@
 		D761E9661F1614A7002B849B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D76A03411FBAFBBD00E338C5 /* Carousel */,
 				D75F2CCD1FAC69B400F40827 /* Manual giving */,
 				D75141961F9797E90016B71F /* FirstUse */,
 				D731EACB1F792D5100F5116C /* NavigationControllers */,
@@ -340,6 +345,15 @@
 				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		D76A03411FBAFBBD00E338C5 /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				D76A03421FBAFBD600E338C5 /* CarouselViewController.swift */,
+				D76A03441FBAFC5100E338C5 /* TemplateViewController.swift */,
+			);
+			path = Carousel;
 			sourceTree = "<group>";
 		};
 		D77667EC1F39F11300649157 /* Managers */ = {
@@ -633,6 +647,7 @@
 				D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */,
 				D740E15A1F4C631F000531BA /* UserService.swift in Sources */,
 				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
+				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
 				D740E1601F4C63D1000531BA /* GivtServiceProtocol.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
@@ -664,6 +679,7 @@
 				D740E15E1F4C63A1000531BA /* UserServiceProtocol.swift in Sources */,
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
+				D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */,
 				D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */,
 				D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */,
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,

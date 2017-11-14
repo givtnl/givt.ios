@@ -25,6 +25,7 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     override func viewDidLoad() {
         super.delegate = self
         UIApplication.shared.statusBarStyle = .default
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
@@ -36,9 +37,11 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         navigationManager.loadMainPage(self)
+        super.viewDidAppear(animated)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+
         super.viewWillAppear(animated)
         
     }

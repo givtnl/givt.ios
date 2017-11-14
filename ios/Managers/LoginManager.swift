@@ -416,8 +416,11 @@ class LoginManager {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 return
             }
-            let userExt = UserDefaults.standard.userExt
-            userExt?.email = email
+            var userExt = UserExt()
+            if let settings = UserDefaults.standard.userExt {
+                userExt = settings
+            }
+            userExt.email = email
             UserDefaults.standard.userExt = userExt
             let status = String(bytes: data!, encoding: .utf8)!.replacingOccurrences(of: "\"", with: "")
             completionHandler(status)

@@ -77,7 +77,7 @@ class SettingTableViewController: UITableViewController {
     private func logout() {
         LoginManager.shared.logout()
         self.hideLeftView(nil)
-        UIApplication.shared.keyWindow?.rootViewController?.viewDidAppear(false)
+        navigationManager.loadMainPage(self)
         
     }
     

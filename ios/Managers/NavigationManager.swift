@@ -57,7 +57,7 @@ class NavigationManager {
     
     public func loadMainPage(_ context: UIViewController) {
         if loginManager.userClaim == .startedApp {
-            let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseNavigationViewController") as! FirstUseNavigationViewController
+            let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseNavigationController") as! UINavigationController
             context.present(welcome, animated: false, completion: nil)
         }
     }
