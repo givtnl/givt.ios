@@ -8,8 +8,21 @@
 
 import UIKit
 import LGSideMenuController
+import SVProgressHUD
 
-class SettingTableViewController: UITableViewController {
+class SettingTableViewController: UITableViewController, UIActivityItemSource {
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        return ""
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType) -> Any? {
+        return ""
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivityType?) -> String {
+        return NSLocalizedString("GivtGewoonBlijvenGeven", comment: "")
+    }
+    
     
     @IBOutlet weak var lblSettings: UILabel!
     private var navigationManager = NavigationManager.shared
@@ -27,6 +40,9 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lblSettings.text = NSLocalizedString("Settings", comment: "Settings")
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
         
     }
     
@@ -43,7 +59,7 @@ class SettingTableViewController: UITableViewController {
         let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: { self.logout() })
         
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: {})
-        let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: {})
+        let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() })
         let userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
         
         if !tempUser {
@@ -69,6 +85,22 @@ class SettingTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
+    private func share() {
+        SVProgressHUD.show()
+        
+        let concurrentQueue = DispatchQueue(label: "openActivityIndicatorQueue", attributes: .concurrent)
+        concurrentQueue.async {
+            let message = NSLocalizedString("ShareGivtTextLong", comment: "")
+            let url = URL(string: "https://www.givtapp.net/download")!
+            let activityViewController = UIActivityViewController(activityItems: [self, message, url], applicationActivities: nil)
+            activityViewController.excludedActivityTypes = [.airDrop]
+            
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                self.present(activityViewController, animated: true, completion: {})
+            }
+        }
+    }
     
     private func register() {
         navigationManager.finishRegistration(self)
