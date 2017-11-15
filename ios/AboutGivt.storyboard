@@ -99,7 +99,7 @@ Je kan ons vinden  qsdfg sdfg sd gsd gfop sdf sdfg sdfg sdfg de Noordersluisweg 
                                                             <constraint firstAttribute="height" constant="128" id="bjL-C7-C4k"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Geef uw feedback!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5yq-rc-evo">
                                                         <rect key="frame" x="0.0" y="10" width="375" height="22"/>
