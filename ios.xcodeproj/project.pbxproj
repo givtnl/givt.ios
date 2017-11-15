@@ -63,6 +63,12 @@
 		D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F97721FACC83F0006335A /* SelectOrgViewController.swift */; };
 		D7D6FA6B1F7BADA5008A5604 /* UITextField+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */; };
 		D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */; };
+		D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */; };
+		D7DBED9A1FBC483300D78E2A /* AboutNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED991FBC483300D78E2A /* AboutNavigationController.swift */; };
+		D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED9B1FBC484600D78E2A /* AboutViewController.swift */; };
+		D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExt.swift */; };
+		D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */; };
+		D7DBEDA31FBC798A00D78E2A /* UIDeviceExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA21FBC798A00D78E2A /* UIDeviceExt.swift */; };
 		D7DE0FED1F8E1A6900808ED4 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */; };
 		D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */; };
 		D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE931F7CFA34005807BE /* UserExt.swift */; };
@@ -171,6 +177,12 @@
 		D79F97721FACC83F0006335A /* SelectOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgViewController.swift; sourceTree = "<group>"; };
 		D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+helpers.swift"; sourceTree = "<group>"; };
 		D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
+		D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutGivt.storyboard; sourceTree = "<group>"; };
+		D7DBED991FBC483300D78E2A /* AboutNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutNavigationController.swift; sourceTree = "<group>"; };
+		D7DBED9B1FBC484600D78E2A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExt.swift; sourceTree = "<group>"; };
+		D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextView.swift; sourceTree = "<group>"; };
+		D7DBEDA21FBC798A00D78E2A /* UIDeviceExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExt.swift; sourceTree = "<group>"; };
 		D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUser.swift; sourceTree = "<group>"; };
 		D7E3CE931F7CFA34005807BE /* UserExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExt.swift; sourceTree = "<group>"; };
@@ -285,6 +297,7 @@
 				D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */,
 				D78E9E141F8F970A0073F8EB /* Balloon.swift */,
 				D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */,
+				D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -314,6 +327,7 @@
 		D761E9661F1614A7002B849B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7DBED9F1FBC4AB000D78E2A /* Settings */,
 				D76A03411FBAFBBD00E338C5 /* Carousel */,
 				D75F2CCD1FAC69B400F40827 /* Manual giving */,
 				D75141961F9797E90016B71F /* FirstUse */,
@@ -326,7 +340,6 @@
 				D73CA1C21F38B4C30059A296 /* LoginViewController.swift */,
 				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
 				D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */,
-				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
 				D721F1991F7E2D4B000B9546 /* CustomViewController.swift */,
 			);
 			name = ViewControllers;
@@ -343,6 +356,8 @@
 				D77511BA1F711231004F91F6 /* Date+helpers.swift */,
 				D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */,
 				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
+				D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExt.swift */,
+				D7DBEDA21FBC798A00D78E2A /* UIDeviceExt.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -372,6 +387,24 @@
 				D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		D7DBED981FBC476900D78E2A /* About */ = {
+			isa = PBXGroup;
+			children = (
+				D7DBED991FBC483300D78E2A /* AboutNavigationController.swift */,
+				D7DBED9B1FBC484600D78E2A /* AboutViewController.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		D7DBED9F1FBC4AB000D78E2A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
+				D7DBED981FBC476900D78E2A /* About */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		D7F131621F7555C200E25A68 /* Registration */ = {
@@ -443,6 +476,7 @@
 				D761E9931F166B8D002B849B /* CustomTableView.swift */,
 				D761E9C41F20CFA6002B849B /* Localizable.strings */,
 				D73CA1C41F39BA360059A296 /* AppConstants.swift */,
+				D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -541,6 +575,7 @@
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
 				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
 				D7EAF10E1FB491B000DFE5CC /* icon.png in Resources */,
+				D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */,
 				D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
@@ -651,12 +686,14 @@
 				D740E1601F4C63D1000531BA /* GivtServiceProtocol.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
+				D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */,
 				D7D6FA6B1F7BADA5008A5604 /* UITextField+helpers.swift in Sources */,
 				D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */,
 				D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */,
 				D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */,
 				D77FC1BE1F86668A0031C49F /* Country.swift in Sources */,
 				D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */,
+				D7DBEDA31FBC798A00D78E2A /* UIDeviceExt.swift in Sources */,
 				D740E15C1F4C6328000531BA /* GivtService.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
 				D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */,
@@ -665,6 +702,7 @@
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
+				D7DBED9A1FBC483300D78E2A /* AboutNavigationController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
@@ -680,12 +718,14 @@
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
 				D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */,
+				D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExt.swift in Sources */,
 				D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */,
 				D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */,
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */,
+				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
 				D761E9BA1F18C5C6002B849B /* String+DoubleConverter.swift in Sources */,

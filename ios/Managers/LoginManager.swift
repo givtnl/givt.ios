@@ -428,6 +428,43 @@ class LoginManager {
         task?.resume()
     }
     
+    func sendSupport(text: String, completionHandler: @escaping (Bool) -> Void) {
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/SendSupport")!)
+        request.httpMethod = "POST"
+        
+        let params = ["Guid" : UserDefaults.standard.userExt.guid, "Message" : text, "Subject" : "Feedback app"]
+        
+        do {
+            let serialized = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            request.httpBody = serialized
+        } catch let error {
+            print(error)
+        }
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
+        
+        let urlSession = URLSession.shared
+        
+        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
+            if error != nil {
+                completionHandler(false)
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print(String(bytes: data!, encoding: .utf8)!)
+                completionHandler(false)
+                return
+            }
+            let response = String(bytes: data!, encoding: .utf8)!
+            print(response)
+            completionHandler(true)
+        }
+        task.resume()
+    }
+    
     func logout() {
         UserDefaults.standard.viewedCoachMarks = 0
         UserDefaults.standard.amountLimit = 0

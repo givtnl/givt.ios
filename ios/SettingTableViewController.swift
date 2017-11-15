@@ -58,7 +58,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         
         let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: { self.logout() })
         
-        let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: {})
+        let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() })
         let userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
         
@@ -84,8 +84,16 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     
         self.tableView.reloadData()
     }
+    
+    private func about() { 
+        DispatchQueue.main.async {
+            let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! AboutNavigationController
+            self.present(vc, animated: true, completion: {})
+        }
+    }
 
     private func share() {
+        /* https://stackoverflow.com/questions/13907156/uiactivityviewcontroller-taking-long-time-to-present */
         SVProgressHUD.show()
         
         let concurrentQueue = DispatchQueue(label: "openActivityIndicatorQueue", attributes: .concurrent)

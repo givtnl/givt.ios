@@ -10,7 +10,7 @@ import Foundation
 import SystemConfiguration
 
 class AppServices {
-    
+    static let shared = AppServices()
     func connectedToNetwork() -> Bool {
     
         var zeroAddress = sockaddr_in()
