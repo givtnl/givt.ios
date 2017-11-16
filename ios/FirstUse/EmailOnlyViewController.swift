@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet var navBar: UINavigationItem!
     private var validationHelper = ValidationHelper.shared
     @IBOutlet var contentView: UIView!
     @IBOutlet var nextBtn: CustomButton!
@@ -22,7 +23,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var titleItem: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-       navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+
 
         
         let attachment:NSTextAttachment = NSTextAttachment()
@@ -59,6 +61,13 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barStyle = .default
+        
+        self.navigationController?.navigationBar.barTintColor = .white
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

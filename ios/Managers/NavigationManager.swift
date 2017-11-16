@@ -67,7 +67,7 @@ class NavigationManager {
     }
     
     public func pushWithLogin(_ vc: UIViewController, context: UIViewController) {
-        if !LoginManager.shared.isBearerStillValid || true {
+        if !LoginManager.shared.isBearerStillValid {
             let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
             let completionHandler:()->Void = { test in
                 DispatchQueue.main.async {
