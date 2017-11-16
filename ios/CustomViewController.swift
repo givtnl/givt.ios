@@ -34,6 +34,10 @@ class CustomViewController: UINavigationController  {
         }
     }
     
+    @IBAction func unwindToAmount(segue: UIStoryboardSegue) {
+        
+    }
+    
     
     
     

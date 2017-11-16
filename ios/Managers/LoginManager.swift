@@ -465,6 +465,11 @@ class LoginManager {
         task.resume()
     }
     
+    func terminateAccount(completionHandler: @escaping (Bool) -> Void) {
+        logout()
+        completionHandler(true)
+    }
+    
     func logout() {
         UserDefaults.standard.viewedCoachMarks = 0
         UserDefaults.standard.amountLimit = 0

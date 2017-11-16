@@ -66,7 +66,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
             let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: {})
-            let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: {})
+            let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
             items =
                 [
                     [givts, limit, userInfoSetting, accessCode],
@@ -84,6 +84,14 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     
         self.tableView.reloadData()
     }
+    
+    private func terminate() {
+        DispatchQueue.main.async {
+            let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! AboutNavigationController
+            self.present(vc, animated: true, completion: {})
+        }
+    }
+
     
     private func about() { 
         DispatchQueue.main.async {

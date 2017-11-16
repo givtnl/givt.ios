@@ -111,6 +111,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(true)
+
         decimalNotation = NSLocale.current.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         let backItem = UIBarButtonItem()
@@ -128,6 +129,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         showFirstBalloon()
         
         if (self.sideMenuController?.isLeftViewHidden)! {

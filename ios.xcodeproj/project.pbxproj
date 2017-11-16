@@ -61,6 +61,10 @@
 		D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788E4771FA08DA700506DA5 /* NavigationManager.swift */; };
 		D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E9E141F8F970A0073F8EB /* Balloon.swift */; };
 		D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F97721FACC83F0006335A /* SelectOrgViewController.swift */; };
+		D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */; };
+		D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */; };
+		D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */; };
+		D7ADE24F1FBCE90500198F28 /* DecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */; };
 		D7D6FA6B1F7BADA5008A5604 /* UITextField+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */; };
 		D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */; };
 		D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */; };
@@ -175,6 +179,10 @@
 		D788E4771FA08DA700506DA5 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		D78E9E141F8F970A0073F8EB /* Balloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
 		D79F97721FACC83F0006335A /* SelectOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgViewController.swift; sourceTree = "<group>"; };
+		D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TerminateAccount.storyboard; sourceTree = "<group>"; };
+		D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminateAccountViewController.swift; sourceTree = "<group>"; };
+		D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionViewController.swift; sourceTree = "<group>"; };
 		D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+helpers.swift"; sourceTree = "<group>"; };
 		D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutGivt.storyboard; sourceTree = "<group>"; };
@@ -341,6 +349,7 @@
 				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
 				D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */,
 				D721F1991F7E2D4B000B9546 /* CustomViewController.swift */,
+				D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -381,6 +390,15 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		D7ADE2491FBC896E00198F28 /* TerminateAccount */ = {
+			isa = PBXGroup;
+			children = (
+				D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */,
+				D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */,
+			);
+			path = TerminateAccount;
+			sourceTree = "<group>";
+		};
 		D7D6FA6C1F7BE416008A5604 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +419,7 @@
 		D7DBED9F1FBC4AB000D78E2A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
 				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
 				D7DBED981FBC476900D78E2A /* About */,
 			);
@@ -477,6 +496,7 @@
 				D761E9C41F20CFA6002B849B /* Localizable.strings */,
 				D73CA1C41F39BA360059A296 /* AppConstants.swift */,
 				D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */,
+				D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -575,6 +595,7 @@
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
 				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
 				D7EAF10E1FB491B000DFE5CC /* icon.png in Resources */,
+				D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */,
 				D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */,
 				D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
@@ -676,6 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
 				D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */,
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImage+gif.swift in Sources */,
@@ -705,6 +727,7 @@
 				D7DBED9A1FBC483300D78E2A /* AboutNavigationController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
+				D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */,
 				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */,
@@ -734,6 +757,7 @@
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
 				D73CA1C71F39BD970059A296 /* UserDefaults+helpers.swift in Sources */,
+				D7ADE24F1FBCE90500198F28 /* DecisionViewController.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
 				D7DE0FED1F8E1A6900808ED4 /* TriangleView.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,

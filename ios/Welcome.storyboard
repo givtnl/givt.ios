@@ -219,9 +219,11 @@
                         <outlet property="terms" destination="2Xl-Qa-5Kx" id="Hf9-Mf-Xsc"/>
                         <outlet property="titleItem" destination="WHh-0J-cdO" id="cJo-jA-F5b"/>
                         <outlet property="titleText" destination="8C8-8r-xVx" id="S4e-ur-ckd"/>
+                        <segue destination="TJX-FO-8AE" kind="unwind" identifier="unwindEmail" animates="NO" unwindAction="unwindToAmountWithSegue:" id="XSF-SW-gQZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSb-kA-EAb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="TJX-FO-8AE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1236" y="670.61469265367316"/>
         </scene>
