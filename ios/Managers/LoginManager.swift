@@ -466,8 +466,32 @@ class LoginManager {
     }
     
     func terminateAccount(completionHandler: @escaping (Bool) -> Void) {
-        logout()
-        completionHandler(true)
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/Users/Unregister")!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
+        
+        let urlSession = URLSession.shared
+        
+        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
+            if error != nil {
+                completionHandler(false)
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print(String(bytes: data!, encoding: .utf8)!)
+                completionHandler(false)
+                return
+            }
+            let response = String(bytes: data!, encoding: .utf8)!
+            print(response)
+            self.logout()
+            completionHandler(true)
+        }
+        task.resume()
     }
     
     func logout() {

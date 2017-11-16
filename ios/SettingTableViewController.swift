@@ -86,13 +86,10 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     }
     
     private func terminate() {
-        DispatchQueue.main.async {
-            let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! AboutNavigationController
-            self.present(vc, animated: true, completion: {})
-        }
+        let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! AboutNavigationController
+        NavigationManager.shared.pushWithLogin(vc, context: self)
     }
 
-    
     private func about() { 
         DispatchQueue.main.async {
             let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! AboutNavigationController
@@ -129,47 +126,17 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     }
     
     private func openHistory() {
-        if !LoginManager.shared.isBearerStillValid {
-            let loginVC = storyboard?.instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-            let completionHandler:()->Void = { test in
-                let historyVC = self.storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
-                DispatchQueue.main.async {
-                    
-                    self.present(historyVC, animated: true, completion: nil)
-                }
-            }
-            loginVC.outerHandler = completionHandler
-            self.present(loginVC, animated: true, completion: nil)
-        } else {
-            let historyVC = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
-            // self.present(amountLimitVC, animated: true)
-            self.present(historyVC, animated: true)
-        }
+        let historyVC = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
+        
+        NavigationManager.shared.pushWithLogin(historyVC, context: self)
     }
     
     private func openGiveLimit() {
-        var bearerStillValid = LoginManager.shared.isBearerStillValid
-        if !bearerStillValid {
-            let loginVC = storyboard?.instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-            let completionHandler:()->Void = { _ in
-                DispatchQueue.main.async {
-
-                    self.navigationController?.hideLeftViewAnimated(nil)
-                    let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-                    vc.startPoint = .amountLimit
-                    vc.isRegistration = false
-                    self.present(vc, animated: true, completion: nil)
-                    
-                }
-            }
-            loginVC.outerHandler = completionHandler
-            self.present(loginVC, animated: true, completion: nil)
-        } else {
-           let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-            vc.startPoint = .amountLimit
-            vc.isRegistration = false
-            self.present(vc, animated: true, completion: nil)
-        }
+        let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+        vc.startPoint = .amountLimit
+        vc.isRegistration = false
+        
+        NavigationManager.shared.pushWithLogin(vc, context: self)
     }
 
     override func didReceiveMemoryWarning() {

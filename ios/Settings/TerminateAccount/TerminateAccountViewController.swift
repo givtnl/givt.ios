@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class TerminateAccountViewController: UIViewController {
 
@@ -28,6 +29,10 @@ class TerminateAccountViewController: UIViewController {
         confirmationLabel.text = NSLocalizedString("UnregisterUnderstood", comment: "")
         terminate.setTitle(NSLocalizedString("UnregisterButton", comment: ""), for: .normal)
         
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,12 +52,20 @@ class TerminateAccountViewController: UIViewController {
             self.present(alert, animated: true, completion:  {})
             return
         }
+        SVProgressHUD.show()
         LoginManager.shared.terminateAccount { (status) in
+            SVProgressHUD.dismiss()
             if status {
                 DispatchQueue.main.async {
+                    
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmationViewController") as! ConfirmationViewController
                     self.show(vc, sender: nil)
                 }
+            } else {
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                }))
+                self.present(alert, animated: true, completion:  {})
             }
         }
      

@@ -66,6 +66,21 @@ class NavigationManager {
         }
     }
     
+    public func pushWithLogin(_ vc: UIViewController, context: UIViewController) {
+        if !LoginManager.shared.isBearerStillValid || true {
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+            let completionHandler:()->Void = { test in
+                DispatchQueue.main.async {
+                    context.present(vc, animated: true, completion: nil)
+                }
+            }
+            loginVC.outerHandler = completionHandler
+            context.present(loginVC, animated: true, completion: nil)
+        } else {
+            context.present(vc, animated: true)
+        }
+    }
+    
     private func permissionAsked(completionHandler: @escaping (Bool) -> Void) {
         if #available(iOS 10.0, *) {
             let current = UNUserNotificationCenter.current()
