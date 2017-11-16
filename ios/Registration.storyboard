@@ -786,7 +786,6 @@ Veel geefplezier!</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <outlet property="navBar" destination="x5b-l8-Nmo" id="e0u-od-ihf"/>
                         <segue destination="rSQ-dn-6aJ" kind="relationship" relationship="rootViewController" id="zUM-gz-n25"/>
                     </connections>
                 </navigationController>

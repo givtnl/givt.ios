@@ -183,7 +183,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             self.hideLoader()
             if status {
                 DispatchQueue.main.async {
-                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    NavigationManager.shared.loadMainPage(self.navigationController!)
+
                 }
             } else {
                 //registration failed somehow...?

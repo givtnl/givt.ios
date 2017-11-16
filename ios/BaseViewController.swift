@@ -16,6 +16,9 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     
     func willShowLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
         UIApplication.shared.statusBarStyle = .default
+        if let vc = UIApplication.shared.keyWindow?.rootViewController?.childViewControllers.first as? SettingTableViewController {
+            vc.loadSettings()
+        }
     }
     
     func willHideLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
@@ -36,7 +39,6 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        navigationManager.loadMainPage(self)
         super.viewDidAppear(animated)
     }
     

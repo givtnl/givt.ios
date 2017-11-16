@@ -103,7 +103,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if b {
                 print("logging user in")
                 DispatchQueue.main.async {
-                    self.dismiss(animated: false, completion: { self.completionHandler() } )
+                    self.dismiss(animated: true, completion: { self.completionHandler() } )
                 }
             } else {
                 print("something wrong logging user in")

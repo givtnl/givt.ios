@@ -22,6 +22,20 @@ class CustomViewController: UINavigationController  {
          delegateTest?.willHideLeftView(leftView: UIView, sideMenuController: LGSideMenuController) += NSLog("test")*/
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        if LoginManager.shared.userClaim == .startedApp {
+            let vc = UIStoryboard(name: "Welcome", bundle: nil).instantiateInitialViewController()
+            self.setViewControllers([vc!], animated: false)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
+            self.setViewControllers([vc], animated: false)
+        }
+    }
+    
+    
+    
     
     
     override func didReceiveMemoryWarning() {

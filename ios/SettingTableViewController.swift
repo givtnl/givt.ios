@@ -51,7 +51,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         loadSettings()
     }
     
-    private func loadSettings(){
+    func loadSettings(){
         let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
 
         let tempUser = UserDefaults.standard.tempUser
@@ -117,7 +117,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     private func logout() {
         LoginManager.shared.logout()
         self.hideLeftView(nil)
-        navigationManager.loadMainPage(self)
+        navigationManager.loadMainPage(UIApplication.shared.keyWindow?.rootViewController?.childViewControllers[1] as! UINavigationController, animated: false)
         
     }
     
