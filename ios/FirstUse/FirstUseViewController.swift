@@ -12,7 +12,7 @@ class FirstUseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: true)
 
         // Do any additional setup after loading the view.
     }
