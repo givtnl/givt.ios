@@ -296,6 +296,13 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         selectedCountry = countries[row]
         countryPicker.text = selectedCountry?.name
         checkAll()
+        
+        /* manually trigger mobilenumber checker */
+        if let mobileNumberString = mobileNumber.text, !mobileNumberString.isEmpty() {
+            _lastTextField = mobileNumber as! CustomUITextField
+            checkAll()
+        }
+        
     }
     
     func createToolbar(_ textField: UITextField) {
