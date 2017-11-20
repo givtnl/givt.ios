@@ -74,6 +74,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        //
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            //todo find share my givt and show the share method 
+        }
+        return true
+    }
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if let host = url.host, host == "sharemygivt" {
             if var topController = UIApplication.shared.keyWindow?.rootViewController {
