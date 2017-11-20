@@ -169,7 +169,7 @@ class HistoryViewController: UIViewController {
         
     }
     
-    func closeInfo() {
+    @objc func closeInfo() {
         UIView.animate(withDuration: 0.2, animations: {
             self.infoScreen?.alpha = 0
             UIApplication.shared.statusBarStyle = .default
@@ -570,7 +570,7 @@ class HistoryTransaction: NSObject {
         amount = Double((dictionary["Amount"] as? Double)!)
         collectId = Decimal(string: dictionary["CollectId"] as! String)!
         var dateString = (dictionary["Timestamp"] as? String)!
-        if dateString.characters.count > 19 {
+        if dateString.count > 19 {
             dateString = dateString.substring(0..<19)
         }
         let df = DateFormatter()

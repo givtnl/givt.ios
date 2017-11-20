@@ -165,7 +165,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self)
     }
         
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
         let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
         UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: [], animations: {
@@ -173,7 +173,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         }, completion: nil)
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
         let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
         UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: [], animations: {
@@ -191,7 +191,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidChange(_ textField: UITextField) {
-        if (textField.text?.characters.count)! == 0 {
+        if (textField.text?.count)! == 0 {
             textField.text = "0"
             btnSave.isEnabled = false
             btnSaveKeyboard?.isEnabled = false
@@ -202,7 +202,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         let amountLimit: Int = Int(textField.text!)!
         textField.text = String(amountLimit)
         
-        if (textField.text?.characters.count)! >= 5 {
+        if (textField.text?.count)! >= 5 {
             textField.text = textField.text?.substring(0..<5)
             return
         }

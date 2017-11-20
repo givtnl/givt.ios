@@ -115,7 +115,9 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     func startScanning() {
         isScanning = true
         centralManager.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
-        UIApplication.shared.isIdleTimerDisabled = true
+        DispatchQueue.main.async {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
     }
     
     func stopScanning() {
@@ -123,7 +125,10 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             isScanning = false
             centralManager.stopScan()
         }
-        UIApplication.shared.isIdleTimerDisabled = true
+        DispatchQueue.main.async {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager){
@@ -139,6 +144,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             break
         case .poweredOn:
             print("CBCentralManagerState.PoweredOn")
+            NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
         case .resetting:
             print("CBCentralManagerState.Resetting")
         case CBManagerState.unsupported:

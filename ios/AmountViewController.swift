@@ -157,8 +157,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         view.addGestureRecognizer(longTap)
     }
     
-    func tappedView(_ sender: UITapGestureRecognizer) {
-        var tagIdx = sender.view?.tag
+    @objc func tappedView(_ sender: UITapGestureRecognizer) {
+        let tagIdx = sender.view?.tag
         selectView(tagIdx!)
     }
 
@@ -175,21 +175,21 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             currentAmountLabel.text = ""
         }
         
-        if currentAmountLabel.text! == "" && (sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))! {
+        if currentAmountLabel.text! == "" && (sender.titleLabel?.text?.contains(decimalNotation.first!))! {
             currentAmountLabel.text = "0";
         }
         
         if let idx = currentAmountLabel.text?.index(of: decimalNotation) {
-            if( ((currentAmountLabel.text?.substring(from: idx).characters.count)! == 3)) || ((sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))!){
+            if( ((currentAmountLabel.text?.substring(from: idx).count)! == 3)) || ((sender.titleLabel?.text?.contains(decimalNotation.first!))!){
                 return
             }
         }
 
-        if (currentAmountLabel.text?.characters.contains(decimalNotation.characters.first!))! {
-            if currentAmountLabel.text?.characters.count == 9 {
+        if (currentAmountLabel.text?.contains(decimalNotation.first!))! {
+            if currentAmountLabel.text?.count == 9 {
                 return
             }
-        } else if currentAmountLabel.text?.characters.count == 6 {
+        } else if currentAmountLabel.text?.count == 6 {
             return
         }
         currentAmountLabel.text = currentAmountLabel.text! + sender.currentTitle!;
@@ -218,14 +218,14 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBAction func clearValue(sender: UIButton!){
         var amount: String = self.currentAmountLabel.text!
-        if amount.characters.count == 0 {
+        if amount.count == 0 {
             checkAmount()
             return
         }
         
         amount.remove(at: amount.index(before: amount.endIndex))
         self.currentAmountLabel.text! = amount
-        if amount.characters.count == 0 || pressedShortcutKey {
+        if amount.count == 0 || pressedShortcutKey {
             self.currentAmountLabel.text = "0";
         }
         checkAmount()
@@ -268,7 +268,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
     
-        if givtService.bluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
+        if true || TARGET_OS_SIMULATOR != 0 {
             let scanVC = storyboard?.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
             givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
             self.show(scanVC, sender: nil)
@@ -306,7 +306,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             //UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
             let url = URL(string: "App-Prefs:root=Bluetooth") //for bluetooth setting
             let app = UIApplication.shared
-            app.openURL(url!)
+            if #available(iOS 10.0, *) {
+                app.open(url!, options: [:], completionHandler: nil)
+            } else {
+                app.openURL(url!)
+            }
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
             

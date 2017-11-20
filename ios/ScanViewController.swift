@@ -89,6 +89,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     @objc func showBluetoothMessage() {
+        GivtService.shared.stopScanning()
         let alert = UIAlertController(
             title: NSLocalizedString("SomethingWentWrong2", comment: ""),
             message: NSLocalizedString("BluetoothErrorMessage", comment: ""),
@@ -104,7 +105,8 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-                NotificationCenter.default.addObserver(self, selector: #selector(showBluetoothMessage), name: Notification.Name("BluetoothIsOff"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showBluetoothMessage), name: Notification.Name("BluetoothIsOff"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         GivtService.shared.onGivtProcessed = self
         
@@ -113,9 +115,10 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         }
 
         addOverlay()
-
-        
-        
+    }
+    
+    @objc func startScanning() {
+        GivtService.shared.startScanning()
     }
     
     func addOverlay() {
@@ -164,8 +167,8 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         })
     }
     
-    func removeOverlay() {
-        if !(overlayView?.isHidden)! && self.overlayView?.alpha == 1 {
+    @objc func removeOverlay() {
+        if let ovrl = overlayView, ovrl.isHidden && ovrl.alpha == 1 {
             overlayView?.isHidden = true
             UserDefaults.standard.hasTappedAwayGiveDiff = true
         }
@@ -178,7 +181,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         self.navigationController?.navigationBar.isOpaque = false
         sideMenuController?.isLeftViewSwipeGestureDisabled = true
         
-
+        GivtService.shared.startScanning()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

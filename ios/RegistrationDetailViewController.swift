@@ -74,7 +74,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         if let currentRegionCode = Locale.current.regionCode {
             print(currentRegionCode)
-            var filteredCountries = countries.filter {
+            let filteredCountries = countries.filter {
                 $0.shortName == currentRegionCode
             }
             if let filteredCountry = filteredCountries.first {
@@ -248,8 +248,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     func justifyScrollViewContent() {
-        var bottomOffset = CGPoint(x: 0, y: (theScrollView.contentSize.height - theScrollView.bounds.size.height + theScrollView.contentInset.bottom));
-        var minY = _lastTextField == countryPicker ? countryPicker.superview?.frame.minY : _lastTextField.frame.minY
+        let bottomOffset = CGPoint(x: 0, y: (theScrollView.contentSize.height - theScrollView.bounds.size.height + theScrollView.contentInset.bottom));
+        let minY = _lastTextField == countryPicker ? countryPicker.superview?.frame.minY : _lastTextField.frame.minY
         if minY! < bottomOffset.y {
             theScrollView.setContentOffset(CGPoint(x: 0, y: _lastTextField.frame.minY), animated: true)
         } else {
@@ -262,7 +262,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         theScrollView.contentInset = contentInset
     }
 
-    func hideKeyboard() {
+    @objc func hideKeyboard() {
         selectedRow(row: picker.selectedRow(inComponent: 0))
         textFieldShouldReturn(_lastTextField)
     }
