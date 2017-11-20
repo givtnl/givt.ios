@@ -135,7 +135,11 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         //menuView.isUserInteractionEnabled = false
         overlayView?.topAnchor.constraint(equalTo: mainView.topAnchor).isActive = true
         overlayView?.leadingAnchor.constraint(equalTo: mainView.leadingAnchor).isActive = true
-        overlayView?.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -84.0).isActive = true
+        if #available(iOS 11.0, *) {
+            overlayView?.bottomAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.bottomAnchor, constant: -84.0).isActive = true
+        } else {
+            overlayView?.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -84.0).isActive = true
+        }
         overlayView?.trailingAnchor.constraint(equalTo: mainView.trailingAnchor).isActive = true
         
         overlayView?.addGestureRecognizer(tap)
@@ -153,17 +157,15 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         label.textAlignment = .center
     
         self.overlayView?.isHidden = false
-        UIView.animate(withDuration: 0.3, delay: 7.0, options: [], animations: {
-            self.overlayView?.alpha = 1
-        }) { (status) in
-        //done
-        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(7), execute: { () -> Void in
+            UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                self.overlayView?.alpha = 1
+            })
+        })
     }
     
     func removeOverlay() {
-        overlayView?.removeFromSuperview()
-
-        if let isHidden = overlayView?.isHidden, !isHidden {
+        if !(overlayView?.isHidden)! && self.overlayView?.alpha == 1 {
             overlayView?.isHidden = true
             UserDefaults.standard.hasTappedAwayGiveDiff = true
         }
