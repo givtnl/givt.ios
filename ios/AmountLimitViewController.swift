@@ -77,6 +77,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             btnSave.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
             self.backButton.isEnabled = false
             self.backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            self.backButton.image = UIImage()
         }
         
         btnSave.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)

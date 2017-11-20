@@ -121,7 +121,6 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     
     private func logout() {
         LoginManager.shared.logout()
-        self.hideLeftView(self)
         navigationManager.loadMainPage(UIApplication.shared.keyWindow?.rootViewController?.childViewControllers[1] as! UINavigationController, animated: true)
     }
     
@@ -165,12 +164,6 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         cell.settingImageView.image = temp[indexPath.row].image
         cell.badge.isHidden = temp[indexPath.row].isHidden
         return cell
-    }
-    
-    func finishedModalView() {
-        let amountLimitVC = storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
-        // self.present(amountLimitVC, animated: true)
-        self.present(amountLimitVC, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

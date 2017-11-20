@@ -12,7 +12,8 @@ class FirstUseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: true)
+        self.sideMenuController?.hideLeftView(animated: false, completionHandler: {})
+        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
 
         // Do any additional setup after loading the view.
     }

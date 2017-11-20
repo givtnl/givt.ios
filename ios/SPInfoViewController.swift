@@ -29,6 +29,7 @@ class SPInfoViewController: UIViewController {
         if !hasBackButton {
             self.backButton.isEnabled = false
             self.backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            self.backButton.image = UIImage()
         } else {
             self.backButton.isEnabled = true
         }
