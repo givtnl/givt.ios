@@ -116,15 +116,17 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     
     func doneCommand() {
         self.view.endEditing(true)
-        SVProgressHUD.show()
-        LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
-            
-            if status == "true" { //completed registration
-                self.openLogin()
-            } else if status == "false" { //email is completely new
-                self.registerTempUser()
-            } else if status == "temp" { //email is in db but not succesfully registered
-                self.openRegistration()
+        if NavigationManager.shared.hasInternetConnection(context: self) {
+            SVProgressHUD.show()
+            LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
+                
+                if status == "true" { //completed registration
+                    self.openLogin()
+                } else if status == "false" { //email is completely new
+                    self.registerTempUser()
+                } else if status == "temp" { //email is in db but not succesfully registered
+                    self.openRegistration()
+                }
             }
         }
     }

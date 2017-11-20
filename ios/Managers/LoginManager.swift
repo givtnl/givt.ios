@@ -148,6 +148,7 @@ class LoginManager {
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 print(response!)
+                print(String(bytes: data!, encoding: .utf8)!)
                 completionHandler(false)
                 return
             }
@@ -393,6 +394,7 @@ class LoginManager {
         var task: URLSessionTask?
         task = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
+                completionHandler(false)
                 return
             }
             let status: Bool = NSString(string: String(bytes: data!, encoding: .utf8)!).boolValue

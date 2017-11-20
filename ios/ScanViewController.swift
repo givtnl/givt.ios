@@ -60,6 +60,12 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     func showWebsite(url: String){
+        if !AppServices.shared.connectedToNetwork() {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
+            self.show(vc, sender: self)
+            return
+        }
+        
         guard let url = URL(string: url) else {
             return //be safe
         }

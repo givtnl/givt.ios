@@ -66,18 +66,31 @@ class NavigationManager {
         }
     }
     
-    public func pushWithLogin(_ vc: UIViewController, context: UIViewController) {
-        if !LoginManager.shared.isBearerStillValid {
-            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-            let completionHandler:()->Void = { test in
-                DispatchQueue.main.async {
-                    context.present(vc, animated: true, completion: nil)
+    public func hasInternetConnection(context: UIViewController) -> Bool {
+        if !AppServices.shared.connectedToNetwork() {
+            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            }))
+            context.present(alert, animated: true, completion:  {})
+        }
+        return AppServices.shared.connectedToNetwork()
+        
+    }
+    
+    public func pushWithLogin(_ vc: UIViewController, context: UIViewController) {  
+        if hasInternetConnection(context: context) {
+            if !LoginManager.shared.isBearerStillValid {
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+                let completionHandler:()->Void = { test in
+                    DispatchQueue.main.async {
+                        context.present(vc, animated: true, completion: nil)
+                    }
                 }
+                loginVC.outerHandler = completionHandler
+                context.present(loginVC, animated: true, completion: nil)
+            } else {
+                context.present(vc, animated: true)
             }
-            loginVC.outerHandler = completionHandler
-            context.present(loginVC, animated: true, completion: nil)
-        } else {
-            context.present(vc, animated: true)
         }
     }
     

@@ -40,6 +40,10 @@ class SPInfoViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
+        if !NavigationManager.shared.hasInternetConnection(context: self) {
+            return
+        }
+        
         SVProgressHUD.show()
         var userInfo = UserDefaults.standard.userExt!
         var signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)

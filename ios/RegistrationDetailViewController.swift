@@ -37,6 +37,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         countries.append(Country(name: NSLocalizedString("Belgium", comment: ""), shortName: "BE", prefix: "+32"))
         countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", prefix: "+31"))
+        countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", prefix: "+49"))
         
        
         
@@ -70,6 +71,18 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             iban.text = "BE62 5100 0754 7061"
             checkAll()
         #endif
+        
+        if let currentRegionCode = Locale.current.regionCode {
+            print(currentRegionCode)
+            var filteredCountries = countries.filter {
+                $0.shortName == currentRegionCode
+            }
+            if let filteredCountry = filteredCountries.first {
+                selectedCountry = filteredCountry
+                countryPicker.text = selectedCountry?.toString()
+            }
+            //print(country.shortName)
+        }
 
         
         initButtonsWithTags()
@@ -137,6 +150,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @IBAction func next(_ sender: Any) {
+        if !NavigationManager.shared.hasInternetConnection(context: self) {
+            return
+        }
+        
         SVProgressHUD.show()
         let address = self.streetAndNumber.text!
         let city = self.city.text!
@@ -197,10 +214,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         nextButton.isEnabled = isStreetValid && isPostalCodeValid && isCityValid && isCountryValid && isMobileNumberValid && isIbanValid
     }
-    
+    //01568-019486
     func isMobileNumber(_ number: String) -> Bool {
         do {
-            let phoneNumber = try phoneNumberKit.parse(number)
+            let phoneNumber = try phoneNumberKit.parse(number, withRegion: (selectedCountry?.shortName)!, ignoreType: true)
             //let phoneNumberCustomDefaultRegion = try phoneNumberKit.parse("+44 20 7031 3000", withRegion: "GB", ignoreType: true)
             print(phoneNumber.numberString)
             formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)

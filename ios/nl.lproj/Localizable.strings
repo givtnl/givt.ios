@@ -597,3 +597,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 /*In app begeleiding naar 'Anders geven?'*/
 "GiveDiffWalkthrough" = "Lukt het niet? Of wil je liever via een QR-code geven of de ontvanger selecteren uit een lijst?";
 "SwipeDownOpenGivt" = "Veeg omlaag om de Givt-app opnieuw te openen.";
+"MoreInfo" = "Meer info";
+"AppStoreRestart" = "Zie je de update niet meteen? Probeer dan even de App Store-app te herstarten.";
+"Germany" = "Duitsland";

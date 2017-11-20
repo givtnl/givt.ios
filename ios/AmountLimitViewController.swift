@@ -131,6 +131,11 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
 
     @objc func save() {
         self.view.endEditing(true)
+        
+        if !NavigationManager.shared.hasInternetConnection(context: self) {
+            return
+        }
+        
         LoginManager.shared.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_,_ in
             if self.isRegistration {
                 DispatchQueue.main.async {
