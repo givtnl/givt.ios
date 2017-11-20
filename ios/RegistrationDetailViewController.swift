@@ -146,6 +146,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         } else {
             textField.resignFirstResponder()
         }
+        
+        if textField.tag == 5 {
+            next(self)
+        }
         return false
     }
     
