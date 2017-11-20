@@ -157,8 +157,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         view.addGestureRecognizer(longTap)
     }
     
-    @objc func tappedView(_ sender: UITapGestureRecognizer) {
-        let tagIdx = sender.view?.tag
+    func tappedView(_ sender: UITapGestureRecognizer) {
+        var tagIdx = sender.view?.tag
         selectView(tagIdx!)
     }
 
@@ -268,7 +268,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
     
-        if true || TARGET_OS_SIMULATOR != 0 {
+        if givtService.bluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
             let scanVC = storyboard?.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
             givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
             self.show(scanVC, sender: nil)

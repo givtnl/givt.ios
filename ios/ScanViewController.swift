@@ -54,7 +54,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     fileprivate func popToRootWithDelay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.navigationController?.popToRootViewController(animated: false)
         }
     }
@@ -71,12 +71,16 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         }
         
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: { (status) in
-                self.popToRootWithDelay()
-            })
+            DispatchQueue.main.async {
+                UIApplication.shared.open(url, options: [:], completionHandler: { (status) in
+                    self.popToRootWithDelay()
+                })
+            }
         } else {
-            if(UIApplication.shared.openURL(url)) {
-                self.popToRootWithDelay()
+            DispatchQueue.main.async {
+                if(UIApplication.shared.openURL(url)) {
+                    self.popToRootWithDelay()
+                }
             }
         }
     }
