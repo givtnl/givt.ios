@@ -54,7 +54,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     fileprivate func popToRootWithDelay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
             self.navigationController?.popToRootViewController(animated: false)
         }
     }
@@ -130,8 +130,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
             return
         }
         
-        let tap = UITapGestureRecognizer()
-        tap.addTarget(self, action: #selector(removeOverlay))
+        
         
         overlayView = UIView()
         overlayView?.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.9843137255, blue: 0.9843137255, alpha: 0.9)
@@ -149,7 +148,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         }
         overlayView?.trailingAnchor.constraint(equalTo: mainView.trailingAnchor).isActive = true
         
-        overlayView?.addGestureRecognizer(tap)
+        
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -167,13 +166,17 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(7), execute: { () -> Void in
             UIView.animate(withDuration: 0.3, animations: { () -> Void in
                 self.overlayView?.alpha = 1
+            }, completion: { (status) -> Void in
+                let tap = UITapGestureRecognizer()
+                tap.addTarget(self, action: #selector(self.removeOverlay))
+                self.overlayView?.addGestureRecognizer(tap)
             })
         })
     }
     
     @objc func removeOverlay() {
-        if let ovrl = overlayView, ovrl.isHidden && ovrl.alpha == 1 {
-            overlayView?.isHidden = true
+        overlayView?.isHidden = true
+        if overlayView?.alpha == 1 {
             UserDefaults.standard.hasTappedAwayGiveDiff = true
         }
     }
