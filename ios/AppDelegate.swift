@@ -9,9 +9,9 @@
 import UIKit
 import Fabric
 import Crashlytics
-import MobileCenter
-import MobileCenterAnalytics
-import MobileCenterCrashes
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        MSMobileCenter.start("e36f1172-f316-4601-81f3-df0024a9860f", withServices:[
+        MSAppCenter.start("e36f1172-f316-4601-81f3-df0024a9860f", withServices:[
             MSAnalytics.self,
             MSCrashes.self
             ])
