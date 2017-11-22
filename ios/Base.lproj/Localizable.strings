@@ -581,3 +581,4 @@
 "MoreInfo" = "More info";
 "AppStoreRestart" = "If the update isn't immediately visible, try to restart the App Store app.";
 "Germany" = "Germany";
+"ExtraBluetoothText" = "Does it look like your Bluetooth is on? It is still necessary to switch it off and on again.";
