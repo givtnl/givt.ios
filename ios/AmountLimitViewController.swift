@@ -49,7 +49,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func handleTimer(timer: Timer) {
+    @objc func handleTimer(timer: Timer) {
         addValue(positive: timer.userInfo as! Bool)
     }
     
@@ -190,7 +190,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         if (textField.text?.count)! == 0 {
             textField.text = "0"
             btnSave.isEnabled = false

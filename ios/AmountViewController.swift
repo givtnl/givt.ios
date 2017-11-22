@@ -118,7 +118,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         let backItem = UIBarButtonItem()
         backItem.title = NSLocalizedString("Cancel", comment: "Annuleer")
         backItem.style = .plain
-        backItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 20)!], for: .normal)
+        backItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 20)!], for: .normal)
         btnGive.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         self.navigationItem.backBarButtonItem = backItem
         checkAmount()
@@ -157,7 +157,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         view.addGestureRecognizer(longTap)
     }
     
-    func tappedView(_ sender: UITapGestureRecognizer) {
+    @objc func tappedView(_ sender: UITapGestureRecognizer) {
         var tagIdx = sender.view?.tag
         selectView(tagIdx!)
     }

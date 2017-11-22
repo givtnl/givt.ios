@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D49-Il-Zbt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D49-Il-Zbt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -96,7 +96,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvW-7E-MZ4" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="557" width="335" height="44"/>
+                                <rect key="frame" x="20" y="577.5" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="MYk-7V-udN"/>
@@ -121,13 +121,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bij het doorgaan ga je akkoord met de algemene voorwaarden." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Qa-5Kx">
-                                <rect key="frame" x="40" y="606" width="295" height="41"/>
+                                <rect key="frame" x="40" y="626.5" width="295" height="20.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emailadres" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dLS-u5-htt" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="311" width="335" height="44"/>
+                                <rect key="frame" x="20" y="311.5" width="335" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -143,25 +143,19 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSH-AD-dlL">
-                                <rect key="frame" x="0.0" y="64" width="375" height="247"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="247.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Mk-QY-UOQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
+                                        <rect key="frame" x="0.0" y="69.5" width="375" height="109"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aan de slag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8C8-8r-xVx">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="38.5"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="28"/>
-                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Om te geven met Givt is  alvast je e-mailadres nodig." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ij-J8-57U">
-                                                <rect key="frame" x="20" y="68.5" width="335" height="47"/>
+                                                <rect key="frame" x="20" y="10" width="335" height="47"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(we sturen geen spam, beloofd)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYw-YU-1WR">
-                                                <rect key="frame" x="0.0" y="135.5" width="375" height="22"/>
+                                                <rect key="frame" x="20" y="77" width="335" height="22"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -169,24 +163,22 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="0Ij-J8-57U" firstAttribute="leading" secondItem="9Mk-QY-UOQ" secondAttribute="leading" constant="20" id="5Ls-tY-Nag"/>
-                                            <constraint firstItem="0Ij-J8-57U" firstAttribute="top" secondItem="8C8-8r-xVx" secondAttribute="bottom" constant="30" id="98A-VV-x8H"/>
-                                            <constraint firstAttribute="trailing" secondItem="8C8-8r-xVx" secondAttribute="trailing" id="GVw-ko-VIN"/>
-                                            <constraint firstItem="8C8-8r-xVx" firstAttribute="top" secondItem="9Mk-QY-UOQ" secondAttribute="top" id="Jc2-Cb-eLk"/>
-                                            <constraint firstItem="yYw-YU-1WR" firstAttribute="leading" secondItem="9Mk-QY-UOQ" secondAttribute="leading" id="OSk-UU-5FS"/>
-                                            <constraint firstAttribute="trailing" secondItem="yYw-YU-1WR" secondAttribute="trailing" id="OhC-og-wyJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="0Ij-J8-57U" secondAttribute="trailing" constant="20" id="cia-HI-9oj"/>
+                                            <constraint firstItem="yYw-YU-1WR" firstAttribute="leading" secondItem="9Mk-QY-UOQ" secondAttribute="leading" constant="20" id="16m-gO-f6L"/>
+                                            <constraint firstItem="0Ij-J8-57U" firstAttribute="top" secondItem="9Mk-QY-UOQ" secondAttribute="top" constant="10" id="8yn-9c-UiP"/>
+                                            <constraint firstAttribute="trailing" secondItem="0Ij-J8-57U" secondAttribute="trailing" constant="20" id="MPz-tE-S3P"/>
+                                            <constraint firstItem="0Ij-J8-57U" firstAttribute="leading" secondItem="9Mk-QY-UOQ" secondAttribute="leading" constant="20" id="QgR-bB-ENu"/>
+                                            <constraint firstAttribute="trailing" secondItem="yYw-YU-1WR" secondAttribute="trailing" constant="20" id="SGL-AF-xSB"/>
                                             <constraint firstItem="yYw-YU-1WR" firstAttribute="top" secondItem="0Ij-J8-57U" secondAttribute="bottom" constant="20" id="ddT-51-trp"/>
-                                            <constraint firstItem="8C8-8r-xVx" firstAttribute="leading" secondItem="9Mk-QY-UOQ" secondAttribute="leading" id="xf6-7g-45U"/>
+                                            <constraint firstAttribute="bottom" secondItem="yYw-YU-1WR" secondAttribute="bottom" constant="10" id="j9Y-Md-dlh"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="9Mk-QY-UOQ" firstAttribute="leading" secondItem="QSH-AD-dlL" secondAttribute="leading" id="LQl-5j-Ceg"/>
-                                    <constraint firstItem="9Mk-QY-UOQ" firstAttribute="top" secondItem="QSH-AD-dlL" secondAttribute="top" id="kLk-Fu-xQw"/>
-                                    <constraint firstAttribute="bottom" secondItem="9Mk-QY-UOQ" secondAttribute="bottom" id="ocd-3m-3iI"/>
-                                    <constraint firstAttribute="trailing" secondItem="9Mk-QY-UOQ" secondAttribute="trailing" id="tJ5-6Q-GQ4"/>
+                                    <constraint firstItem="9Mk-QY-UOQ" firstAttribute="centerY" secondItem="QSH-AD-dlL" secondAttribute="centerY" id="DZr-6d-Xin"/>
+                                    <constraint firstItem="9Mk-QY-UOQ" firstAttribute="leading" secondItem="QSH-AD-dlL" secondAttribute="leading" id="Jck-YS-wVQ"/>
+                                    <constraint firstItem="9Mk-QY-UOQ" firstAttribute="centerX" secondItem="QSH-AD-dlL" secondAttribute="centerX" id="afd-UW-Qqr"/>
+                                    <constraint firstAttribute="trailing" secondItem="9Mk-QY-UOQ" secondAttribute="trailing" id="uXE-np-Wb7"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -210,6 +202,7 @@
                         <viewLayoutGuide key="safeArea" id="6Sa-97-5E2"/>
                     </view>
                     <navigationItem key="navigationItem" id="WHh-0J-cdO">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="backbtn" id="cFG-tk-Xbc">
                             <connections>
                                 <action selector="pop:" destination="Op2-mF-ZtZ" id="MDv-s7-act"/>
@@ -226,7 +219,6 @@
                         <outlet property="subtitleText" destination="0Ij-J8-57U" id="x9K-bj-KI0"/>
                         <outlet property="terms" destination="2Xl-Qa-5Kx" id="Hf9-Mf-Xsc"/>
                         <outlet property="titleItem" destination="WHh-0J-cdO" id="cJo-jA-F5b"/>
-                        <outlet property="titleText" destination="8C8-8r-xVx" id="S4e-ur-ckd"/>
                         <segue destination="TJX-FO-8AE" kind="unwind" identifier="unwindEmail" animates="NO" unwindAction="unwindToAmountWithSegue:" id="XSF-SW-gQZ"/>
                     </connections>
                 </viewController>

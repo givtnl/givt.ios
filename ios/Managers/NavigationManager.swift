@@ -108,7 +108,7 @@ class NavigationManager {
                     
                 } else {
                     let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-                    let completionHandler:()->Void = { test in
+                    let completionHandler:()->Void = {
                         DispatchQueue.main.async {
                             context.present(vc, animated: true, completion: nil)
                         }

@@ -15,7 +15,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         return ""
     }
     
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType) -> Any? {
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType?) -> Any? {
         return ""
     }
     

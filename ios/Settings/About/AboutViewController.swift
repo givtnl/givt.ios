@@ -33,7 +33,7 @@ NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHid
         SVProgressHUD.setBackgroundColor(.white)
     }
     
-    func keyboardWillShow(notification:NSNotification){
+    @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         var userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -52,7 +52,7 @@ NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHid
         scrollView.setContentOffset(offset, animated: true)
     }
     
-    func keyboardWillHide(notification:NSNotification){
+    @objc func keyboardWillHide(notification:NSNotification){
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInset
     }

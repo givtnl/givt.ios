@@ -90,7 +90,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     }
     
-    func internetChanged(note: Notification){
+    @objc func internetChanged(note: Notification){
         let reachability = note.object as! Reachability
         
         if reachability.isReachable {

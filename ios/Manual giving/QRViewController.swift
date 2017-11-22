@@ -28,10 +28,10 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         bottomLeft.transform = CGAffineTransform(rotationAngle: (270.0 * CGFloat(Double.pi)) / 180.0)
         
         //capture device
-        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         
         do {
-            let input = try AVCaptureDeviceInput(device: captureDevice)
+            let input = try AVCaptureDeviceInput(device: captureDevice!)
             session.addInput(input)
         } catch {
             print("camera does not work")
@@ -42,10 +42,10 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         
         output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
         
-        output.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+        output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
         
         video = AVCaptureVideoPreviewLayer(session: session)
-        video.videoGravity = AVLayerVideoGravityResizeAspectFill
+        video.videoGravity = AVLayerVideoGravity.resizeAspectFill
         video.frame = qrView.bounds
         
         qrView.layer.addSublayer(video)
@@ -57,13 +57,13 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    func captureOutput(_ output: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects != nil && metadataObjects.count > 0 {
             if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject {
-                if object.type == AVMetadataObjectTypeQRCode {
+                if object.type == AVMetadataObject.ObjectType.qr {
                     session.stopRunning()
                     print("QR Code scanned")
-                    giveManually(scanResult: object.stringValue)
+                    giveManually(scanResult: object.stringValue!)
                     print(object.stringValue)
                 }
             }

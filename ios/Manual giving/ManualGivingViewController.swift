@@ -125,7 +125,7 @@ class ManualGivingViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    func giveManually() {
+    @objc func giveManually() {
         if let beaconId = self.beaconId {
             GivtService.shared.give(antennaID: beaconId)
         }
