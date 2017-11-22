@@ -69,7 +69,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         
         self.navigationController?.navigationBar.barTintColor = .white
     }
-    
+
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y -= keyboardSize.height
@@ -80,7 +80,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y += keyboardSize.height
         }
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

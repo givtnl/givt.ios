@@ -60,15 +60,19 @@ class NavigationManager {
         if let childViewControllers = appDelegate.window?.rootViewController?.childViewControllers {
             for childViewController in childViewControllers {
                 if let vc = childViewController as? CustomViewController {
-                    if loginManager.userClaim == .startedApp {
-                        let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
-                        vc.setViewControllers([welcome], animated: animated)
-                    } else {
-                        let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
-                        vc.setViewControllers([amount], animated: animated)
-                    }
+                    load(vc: vc, animated: animated)
                 }
             }
+        }
+    }
+    
+    public func load(vc: UINavigationController, animated: Bool = true) {
+        if loginManager.userClaim == .startedApp {
+            let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
+            vc.setViewControllers([welcome], animated: animated)
+        } else {
+            let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
+            vc.setViewControllers([amount], animated: animated)
         }
     }
     
