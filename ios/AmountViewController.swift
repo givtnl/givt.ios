@@ -300,7 +300,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     func showBluetoothMessage() {
         let alert = UIAlertController(
             title: NSLocalizedString("SomethingWentWrong2", comment: ""),
-            message: NSLocalizedString("BluetoothErrorMessage", comment: ""),
+            message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
             //UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
