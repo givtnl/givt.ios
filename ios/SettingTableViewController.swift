@@ -127,7 +127,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     
     private func logout() {
         LoginManager.shared.logout()
-        navigationManager.loadMainPage(UIApplication.shared.keyWindow?.rootViewController?.childViewControllers[1] as! UINavigationController, animated: true)
+        navigationManager.loadMainPage()
     }
     
     private func openHistory() {

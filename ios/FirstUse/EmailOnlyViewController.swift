@@ -144,7 +144,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         DispatchQueue.main.async {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
             let ch: () -> Void = { _ in
-                self.navigationController?.dismiss(animated: true, completion: nil)
+                self.navigationController?.dismiss(animated: false, completion: nil)
+                NavigationManager.shared.loadMainPage()
             }
             vc.outerHandler = ch
             self.present(vc, animated: true, completion: nil)
@@ -194,7 +195,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             self.hideLoader()
             if status {
                 DispatchQueue.main.async {
-                    NavigationManager.shared.loadMainPage(self.navigationController!)
+                    NavigationManager.shared.loadMainPage()
 
                 }
             } else {

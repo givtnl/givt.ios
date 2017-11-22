@@ -55,14 +55,20 @@ class NavigationManager {
         
     }
     
-    public func loadMainPage(_ navCtrl: UINavigationController, animated: Bool = true) {
-        
-        if loginManager.userClaim == .startedApp {
-            let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
-            navCtrl.setViewControllers([welcome], animated: animated)
-        } else {
-            let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
-            navCtrl.setViewControllers([amount], animated: animated)
+    public func loadMainPage(animated: Bool = true) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if let childViewControllers = appDelegate.window?.rootViewController?.childViewControllers {
+            for childViewController in childViewControllers {
+                if let vc = childViewController as? CustomViewController {
+                    if loginManager.userClaim == .startedApp {
+                        let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
+                        vc.setViewControllers([welcome], animated: animated)
+                    } else {
+                        let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
+                        vc.setViewControllers([amount], animated: animated)
+                    }
+                }
+            }
         }
     }
     

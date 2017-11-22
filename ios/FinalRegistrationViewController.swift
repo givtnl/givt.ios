@@ -42,6 +42,8 @@ class FinalRegistrationViewController: UIViewController {
     @IBAction func exit(_ sender: Any) {
         self.hideLeftView(nil)
         self.dismiss(animated: true, completion: nil)
+        NavigationManager.shared.loadMainPage(animated: false)
+        
     }
     
     /*

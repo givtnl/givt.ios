@@ -18,7 +18,7 @@ class DecisionViewController: UINavigationController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NavigationManager.shared.loadMainPage(self)
+        NavigationManager.shared.loadMainPage()
     }
 
     override func didReceiveMemoryWarning() {
