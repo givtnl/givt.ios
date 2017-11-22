@@ -80,14 +80,33 @@ class NavigationManager {
     public func pushWithLogin(_ vc: UIViewController, context: UIViewController) {  
         if hasInternetConnection(context: context) {
             if !LoginManager.shared.isBearerStillValid {
-                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-                let completionHandler:()->Void = { test in
-                    DispatchQueue.main.async {
-                        context.present(vc, animated: true, completion: nil)
+                if UserDefaults.standard.hasPinSet {
+                    let pinVC = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
+                    pinVC.typeOfPin = .login
+                    let completionHandler:(Bool)->Void = { status in
+                        if status {
+                            DispatchQueue.main.async {
+                                context.present(vc, animated: true, completion: nil)
+                            }
+                        } else {
+                            self.pushWithLogin(vc, context: context)
+                        }
+
                     }
+                    pinVC.outerHandler = completionHandler
+                    context.present(pinVC, animated: true, completion: nil)
+                    
+                } else {
+                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+                    let completionHandler:()->Void = { test in
+                        DispatchQueue.main.async {
+                            context.present(vc, animated: true, completion: nil)
+                        }
+                    }
+                    loginVC.outerHandler = completionHandler
+                    context.present(loginVC, animated: true, completion: nil)
                 }
-                loginVC.outerHandler = completionHandler
-                context.present(loginVC, animated: true, completion: nil)
+                
             } else {
                 context.present(vc, animated: true)
             }

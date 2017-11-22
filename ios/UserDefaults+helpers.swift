@@ -22,11 +22,21 @@ extension UserDefaults {
         case userClaims
         case orgBeaconList
         case hasTappedAwayGiveDiff
+        case pinSet
     }
     
     var tempUser: Bool {
         get {
             return userExt?.iban == AppConstants.tempIban
+        }
+    }
+    
+    var hasPinSet: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.pinSet.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.pinSet.rawValue)
         }
     }
     

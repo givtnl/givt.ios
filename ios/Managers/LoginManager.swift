@@ -75,23 +75,35 @@ class LoginManager {
 
     }
     
-    public func loginUser(email: String, password: String, completionHandler: @escaping (Bool, NSError?) -> Void ) -> URLSessionTask {
+    public func loginUser(email: String, password: String, completionHandler: @escaping (Bool, NSError?, String?) -> Void ) -> URLSessionTask {
         var request = URLRequest(url: URL(string: _baseUrl + "/oauth2/token")!)
         request.httpMethod = "POST"
-        let postString = "grant_type=password&userName=" + email.RFC3986UnreservedEncoded + "&password=" + password
+        var postString = ""
+        if UserDefaults.standard.hasPinSet {
+            postString = "grant_type=pincode&userName=" + email.RFC3986UnreservedEncoded + "&pincode=" + password
+        } else {
+            postString = "grant_type=password&userName=" + email.RFC3986UnreservedEncoded + "&password=" + password
+        }
         request.httpBody = postString.data(using: .utf8)
         let urlSession = URLSession.shared
         
         let task = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
-                completionHandler(false, error! as NSError)
+                completionHandler(false, error! as NSError, nil)
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
-                completionHandler(false, nil)
+                if let data = String(data: data as! Data, encoding: String.Encoding.utf8), let dict = self.convertToDictionary(text: data) {
+                    if let err_description = dict["error_description"] as? String {
+                        print(err_description)
+                        completionHandler(false, nil, err_description)
+                    }
+                    
+                }
+                completionHandler(false, nil, nil)
                 return
             }
             
@@ -113,25 +125,36 @@ class LoginManager {
                         if status {
                             self.checkMandate(completionHandler: { (status) in
                                 self.userClaim = self.isFullyRegistered ? .give : .giveOnce
-                                completionHandler(true, nil)
+                                completionHandler(true, nil, nil)
                             })
                         } else {
-                            completionHandler(true, nil)
+                            completionHandler(true, nil, nil)
                         }
                     })
                     return
                 }
-                completionHandler(false, nil)
+                completionHandler(false, nil, nil)
                 return
             } catch let error as NSError {
                 print(error)
-                completionHandler(false, nil)
+                completionHandler(false, nil, nil)
                 return
             }
         
         }
         task.resume()
         return task
+    }
+    
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
     }
     
     private func getUserExt(completionHandler: @escaping (Bool) -> Void) {
@@ -211,7 +234,7 @@ class LoginManager {
             self.registerAllData(completionHandler: { success in
                 if success {
                     print("user succesfully registered")
-                    _ = self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err) in
+                    _ = self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
                         
                         if success {
                              if self._registrationUser.iban == AppConstants.tempIban.replacingOccurrences(of: " ", with: "") {
@@ -496,6 +519,42 @@ class LoginManager {
         task.resume()
     }
     
+    func registerPin(pin: String, completionHandler: @escaping (Bool) -> Void) {
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/Users/Pin")!)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
+        let params = ["PinHash" : pin]
+        
+        do {
+            let serialized = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            request.httpBody = serialized
+        } catch let error {
+            print(error)
+        }
+        let urlSession = URLSession.shared
+        
+        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
+            if error != nil {
+                completionHandler(false)
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print(String(bytes: data!, encoding: .utf8)!)
+                completionHandler(false)
+                return
+            }
+            let response = String(bytes: data!, encoding: .utf8)!
+            print(response)
+
+            completionHandler(true)
+        }
+        task.resume()
+    }
+    
     func logout() {
         UserDefaults.standard.viewedCoachMarks = 0
         UserDefaults.standard.amountLimit = 0
@@ -507,5 +566,6 @@ class LoginManager {
         UserDefaults.standard.mandateSigned = false
         UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.hasTappedAwayGiveDiff = false
+        UserDefaults.standard.hasPinSet = false
     }
 }

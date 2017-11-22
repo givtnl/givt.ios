@@ -65,6 +65,10 @@
 		D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */; };
 		D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */; };
 		D7ADE24F1FBCE90500198F28 /* DecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */; };
+		D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */; };
+		D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */; };
+		D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */; };
+		D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06E1FC4346F006A6A4F /* PinScreenViewController.swift */; };
 		D7D6FA6B1F7BADA5008A5604 /* UITextField+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */; };
 		D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */; };
 		D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */; };
@@ -183,6 +187,10 @@
 		D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminateAccountViewController.swift; sourceTree = "<group>"; };
 		D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionViewController.swift; sourceTree = "<group>"; };
+		D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pincode.storyboard; sourceTree = "<group>"; };
+		D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavViewController.swift; sourceTree = "<group>"; };
+		D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
+		D7CCC06E1FC4346F006A6A4F /* PinScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinScreenViewController.swift; sourceTree = "<group>"; };
 		D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+helpers.swift"; sourceTree = "<group>"; };
 		D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutGivt.storyboard; sourceTree = "<group>"; };
@@ -399,6 +407,17 @@
 			path = TerminateAccount;
 			sourceTree = "<group>";
 		};
+		D7CCC0691FC427E6006A6A4F /* Pincode */ = {
+			isa = PBXGroup;
+			children = (
+				D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */,
+				D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */,
+				D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */,
+				D7CCC06E1FC4346F006A6A4F /* PinScreenViewController.swift */,
+			);
+			path = Pincode;
+			sourceTree = "<group>";
+		};
 		D7D6FA6C1F7BE416008A5604 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +438,7 @@
 		D7DBED9F1FBC4AB000D78E2A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D7CCC0691FC427E6006A6A4F /* Pincode */,
 				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
 				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
 				D7DBED981FBC476900D78E2A /* About */,
@@ -598,6 +618,7 @@
 				D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */,
 				D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */,
 				D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */,
+				D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
@@ -720,6 +741,7 @@
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
 				D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */,
 				D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */,
+				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
@@ -732,6 +754,7 @@
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */,
 				D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */,
+				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
 				D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */,
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */,
@@ -752,6 +775,7 @@
 				D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
 				D761E9BA1F18C5C6002B849B /* String+DoubleConverter.swift in Sources */,
+				D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */,
 				D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */,
 				D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */,
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,

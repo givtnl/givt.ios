@@ -94,7 +94,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func login(){
         if NavigationManager.shared.hasInternetConnection(context: self) {
             SVProgressHUD.show()
-            _ = LoginManager.shared.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error in
+            _ = LoginManager.shared.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error, description in
                 
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()

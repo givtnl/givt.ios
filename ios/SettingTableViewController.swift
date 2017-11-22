@@ -65,7 +65,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         if !tempUser {
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
             let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
-            let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: {})
+            let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
             items =
                 [
@@ -83,6 +83,12 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         }
     
         self.tableView.reloadData()
+    }
+    
+    private func pincode() {
+        let vc = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
+        vc.typeOfPin = .set
+        self.present(vc, animated: true, completion: {})
     }
     
     private func terminate() {
