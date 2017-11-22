@@ -24,9 +24,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: true)
-
-
-        
+ 
         let attachment:NSTextAttachment = NSTextAttachment()
         attachment.image = #imageLiteral(resourceName: "littleinfo.png")
         attachment.bounds = CGRect(x: 0, y: -4, width: (attachment.image?.size.width)!, height: (attachment.image?.size.height)!)
@@ -46,12 +44,13 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         #endif
         
         email.placeholder = NSLocalizedString("Email", comment: "")
-        titleText.text = NSLocalizedString("EnterEmail", comment: "")
+        title = NSLocalizedString("EnterEmail", comment: "")
         subtitleText.text = NSLocalizedString("ToGiveWeNeedYourEmailAddress", comment: "")
         hintText.text = NSLocalizedString("WeWontSendAnySpam", comment: "")
         nextBtn.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
         nextBtn.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         email.delegate = self
+        
         
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
@@ -60,7 +59,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -142,7 +140,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         self.hideLoader()
         DispatchQueue.main.async {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-            let ch: () -> Void = { _ in
+            let ch: () -> Void = {
                 self.navigationController?.dismiss(animated: false, completion: nil)
                 NavigationManager.shared.loadMainPage()
             }
