@@ -1009,8 +1009,11 @@ Kijk voor de status in je overzicht.</string>
                                 <action selector="toggleLeftViewAnimated:" destination="lyO-8n-bds" id="6HM-34-ghj"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="help.png" id="btt-fE-FBf">
+                        <barButtonItem key="rightBarButtonItem" image="help" id="btt-fE-FBf">
                             <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="openFAQ:" destination="lyO-8n-bds" id="ZQP-C4-QdR"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -1977,7 +1980,7 @@ Kijk voor de status in je overzicht.</string>
         <image name="erase.png" width="24" height="16"/>
         <image name="givt20h.png" width="53" height="20"/>
         <image name="givyGave" width="136" height="197"/>
-        <image name="help.png" width="13" height="20"/>
+        <image name="help" width="13" height="20"/>
         <image name="info24.png" width="24" height="24"/>
         <image name="kerken" width="120" height="120"/>
         <image name="menu_badge.png" width="34" height="28"/>

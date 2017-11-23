@@ -59,6 +59,9 @@
 		D782F2E81F7D37A400348D7A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D782F2E71F7D37A400348D7A /* NetworkExtension.framework */; };
 		D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */; };
 		D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788E4771FA08DA700506DA5 /* NavigationManager.swift */; };
+		D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */; };
+		D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D44B11FC6FCD700325CAF /* FAQViewController.swift */; };
+		D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D44B31FC7039E00325CAF /* FAQView.swift */; };
 		D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E9E141F8F970A0073F8EB /* Balloon.swift */; };
 		D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F97721FACC83F0006335A /* SelectOrgViewController.swift */; };
 		D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */; };
@@ -181,6 +184,9 @@
 		D782F2E71F7D37A400348D7A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRegistrationViewController.swift; sourceTree = "<group>"; };
 		D788E4771FA08DA700506DA5 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQ.storyboard; sourceTree = "<group>"; };
+		D78D44B11FC6FCD700325CAF /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		D78D44B31FC7039E00325CAF /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		D78E9E141F8F970A0073F8EB /* Balloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
 		D79F97721FACC83F0006335A /* SelectOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgViewController.swift; sourceTree = "<group>"; };
 		D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TerminateAccount.storyboard; sourceTree = "<group>"; };
@@ -314,6 +320,8 @@
 				D78E9E141F8F970A0073F8EB /* Balloon.swift */,
 				D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */,
 				D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */,
+				D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */,
+				D78D44B31FC7039E00325CAF /* FAQView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -358,6 +366,7 @@
 				D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */,
 				D721F1991F7E2D4B000B9546 /* CustomViewController.swift */,
 				D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */,
+				D78D44B11FC6FCD700325CAF /* FAQViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -619,6 +628,7 @@
 				D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */,
 				D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */,
 				D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */,
+				D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
@@ -775,6 +785,8 @@
 				D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
 				D761E9BA1F18C5C6002B849B /* String+DoubleConverter.swift in Sources */,
+				D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */,
+				D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */,
 				D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */,
 				D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */,
 				D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */,
