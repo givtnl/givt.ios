@@ -489,4 +489,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
        
     }
     
+    @IBAction func openFAQ(_ sender: Any) {
+        let vc = UIStoryboard(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
+        self.present(vc, animated: true, completion: nil)
+    }
 }
