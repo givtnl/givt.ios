@@ -163,15 +163,10 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         let lastName = self.lastname.text!
         SVProgressHUD.show()
         let user = RegistrationUser(email: email, password: password, firstName: firstName, lastName: lastName)
-        LoginManager.shared.registerUser(user, completionHandler: { success in
-            if success {
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                    //let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-                    self.show(self.regDetailVC, sender: nil)
-                }
-            }
-        })
+        LoginManager.shared.registerUser(user)
+        SVProgressHUD.dismiss()
+        //let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
+        self.show(self.regDetailVC, sender: nil)
     }
 
     @IBAction func switchCheckbox(_ sender: UIButton) {

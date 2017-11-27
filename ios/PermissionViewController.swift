@@ -19,14 +19,15 @@ class PermissionViewController: UIViewController {
         titleLabel.text = NSLocalizedString("PrepareMobileTitle", comment: "")
         firstLabel.text = NSLocalizedString("PrepareMobileExplained", comment: "")
         secondLabel.text = NSLocalizedString("PrepareMobileSummary", comment: "")
-        self.navigationItem.backBarButtonItem?.isEnabled = false
-        self.navigationItem.backBarButtonItem?.setBackgroundImage(UIImage(), for: .normal, barMetrics: .default)
+
         if !hasBackButton {
             self.backButton.isEnabled = false
             self.backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            self.backButton.image = UIImage()
+            
         }
-        
     }
+    
     @IBOutlet var backButton: UIBarButtonItem!
     
     override func didReceiveMemoryWarning() {
@@ -39,12 +40,9 @@ class PermissionViewController: UIViewController {
             let center = UNUserNotificationCenter.current()
             center.requestAuthorization(options: [.alert, .badge]) { (granted, error) in
                 DispatchQueue.main.async {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "alvcreg") as! AmountLimitViewController
-                    vc.isRegistration = true
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
                     self.show(vc, sender: nil)
                 }
-                
-                
             }
         }
     }

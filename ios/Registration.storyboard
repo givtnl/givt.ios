@@ -749,12 +749,12 @@ Veel geefplezier!</string>
                         </subviews>
                         <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="vOM-01-vvx" secondAttribute="bottom" id="54c-5t-X5l"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" id="6xT-a1-Js2"/>
                             <constraint firstItem="hDy-no-J4v" firstAttribute="trailing" secondItem="1Er-og-D4R" secondAttribute="trailing" constant="20" id="Car-QI-sBz"/>
                             <constraint firstItem="hDy-no-J4v" firstAttribute="bottom" secondItem="Roi-DX-91v" secondAttribute="bottom" constant="20" id="F4H-jr-MDL"/>
                             <constraint firstItem="Roi-DX-91v" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" constant="20" id="L6b-3V-inq"/>
                             <constraint firstItem="1Er-og-D4R" firstAttribute="leading" secondItem="hDy-no-J4v" secondAttribute="leading" constant="20" id="M97-7T-vmB"/>
-                            <constraint firstItem="vOM-01-vvx" firstAttribute="bottom" secondItem="hDy-no-J4v" secondAttribute="bottom" id="ULm-DD-NVj"/>
                             <constraint firstItem="1Er-og-D4R" firstAttribute="top" secondItem="70D-LJ-tVW" secondAttribute="top" constant="60" id="Wyl-m8-T2A"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="trailing" secondItem="hDy-no-J4v" secondAttribute="trailing" id="fdo-BR-nG6"/>
                             <constraint firstItem="vOM-01-vvx" firstAttribute="top" secondItem="70D-LJ-tVW" secondAttribute="top" id="jLl-zo-S6l"/>
@@ -786,7 +786,6 @@ Veel geefplezier!</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <outlet property="navBar" destination="x5b-l8-Nmo" id="e0u-od-ihf"/>
                         <segue destination="rSQ-dn-6aJ" kind="relationship" relationship="rootViewController" id="zUM-gz-n25"/>
                     </connections>
                 </navigationController>
@@ -892,7 +891,7 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
             </objects>
             <point key="canvasLocation" x="-39.200000000000003" y="-636.4317841079461"/>
         </scene>
-        <!-- -->
+        <!--Permission View Controller-->
         <scene sceneID="N1a-d9-t5P">
             <objects>
                 <viewController storyboardIdentifier="PermissionViewController" id="xy9-I6-W1u" customClass="PermissionViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -980,16 +979,16 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fdq-8W-gxU"/>
                     </view>
-                    <navigationItem key="navigationItem" title=" " id="vpk-Qz-fe3">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" id="AiY-a5-yK6">
+                    <navigationItem key="navigationItem" id="49j-Xf-fye">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" id="Ebv-Vl-xrw">
                             <connections>
-                                <action selector="back:" destination="xy9-I6-W1u" id="1E3-zw-m1j"/>
+                                <action selector="back:" destination="xy9-I6-W1u" id="VvK-db-58D"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="backButton" destination="AiY-a5-yK6" id="pQc-BU-bm9"/>
+                        <outlet property="backButton" destination="Ebv-Vl-xrw" id="fSj-57-BwC"/>
                         <outlet property="btnNext" destination="8an-DY-09C" id="vDd-0R-LNU"/>
                         <outlet property="firstLabel" destination="MNE-WN-e10" id="nKb-nq-ByE"/>
                         <outlet property="secondLabel" destination="2uK-yY-DB4" id="Eb7-uD-ErX"/>

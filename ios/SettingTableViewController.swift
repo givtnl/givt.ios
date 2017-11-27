@@ -8,8 +8,21 @@
 
 import UIKit
 import LGSideMenuController
+import SVProgressHUD
 
-class SettingTableViewController: UITableViewController {
+class SettingTableViewController: UITableViewController, UIActivityItemSource {
+    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
+        return ""
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType?) -> Any? {
+        return ""
+    }
+    
+    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivityType?) -> String {
+        return NSLocalizedString("GivtGewoonBlijvenGeven", comment: "")
+    }
+    
     
     @IBOutlet weak var lblSettings: UILabel!
     private var navigationManager = NavigationManager.shared
@@ -27,6 +40,9 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lblSettings.text = NSLocalizedString("Settings", comment: "Settings")
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
         
     }
     
@@ -35,22 +51,22 @@ class SettingTableViewController: UITableViewController {
         loadSettings()
     }
     
-    private func loadSettings(){
+    func loadSettings(){
         let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
 
-        let tempUser = UserDefaults.standard.amountLimit == .max || UserDefaults.standard.amountLimit == -1
+        let tempUser = UserDefaults.standard.tempUser
         
         let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: { self.logout() })
         
-        let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: {})
-        let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: {})
+        let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
+        let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() })
         let userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
         
         if !tempUser {
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
             let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
-            let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: {})
-            let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: {})
+            let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
+            let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
             items =
                 [
                     [givts, limit, userInfoSetting, accessCode],
@@ -68,7 +84,42 @@ class SettingTableViewController: UITableViewController {
     
         self.tableView.reloadData()
     }
+    
+    private func pincode() {
+        let vc = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
+        vc.typeOfPin = .set
+        self.present(vc, animated: true, completion: {})
+    }
+    
+    private func terminate() {
+        let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! AboutNavigationController
+        NavigationManager.shared.pushWithLogin(vc, context: self)
+    }
 
+    private func about() { 
+        DispatchQueue.main.async {
+            let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! AboutNavigationController
+            self.present(vc, animated: true, completion: {})
+        }
+    }
+
+    private func share() {
+        /* https://stackoverflow.com/questions/13907156/uiactivityviewcontroller-taking-long-time-to-present */
+        SVProgressHUD.show()
+        
+        let concurrentQueue = DispatchQueue(label: "openActivityIndicatorQueue", attributes: .concurrent)
+        concurrentQueue.async {
+            let message = NSLocalizedString("ShareGivtTextLong", comment: "")
+            let url = URL(string: "https://www.givtapp.net/download")!
+            let activityViewController = UIActivityViewController(activityItems: [self, message, url], applicationActivities: nil)
+            activityViewController.excludedActivityTypes = [.airDrop]
+            
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                self.present(activityViewController, animated: true, completion: {})
+            }
+        }
+    }
     
     private func register() {
         navigationManager.finishRegistration(self)
@@ -76,53 +127,21 @@ class SettingTableViewController: UITableViewController {
     
     private func logout() {
         LoginManager.shared.logout()
-        self.hideLeftView(nil)
-        UIApplication.shared.keyWindow?.rootViewController?.viewDidAppear(false)
-        
+        navigationManager.loadMainPage()
     }
     
     private func openHistory() {
-        if !LoginManager.shared.isBearerStillValid {
-            let loginVC = storyboard?.instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-            let completionHandler:()->Void = { test in
-                let historyVC = self.storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
-                DispatchQueue.main.async {
-                    
-                    self.present(historyVC, animated: true, completion: nil)
-                }
-            }
-            loginVC.outerHandler = completionHandler
-            self.present(loginVC, animated: true, completion: nil)
-        } else {
-            let historyVC = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
-            // self.present(amountLimitVC, animated: true)
-            self.present(historyVC, animated: true)
-        }
+        let historyVC = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
+        
+        NavigationManager.shared.pushWithLogin(historyVC, context: self)
     }
     
     private func openGiveLimit() {
-        var bearerStillValid = LoginManager.shared.isBearerStillValid
-        if !bearerStillValid {
-            let loginVC = storyboard?.instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-            let completionHandler:()->Void = { _ in
-                DispatchQueue.main.async {
-
-                    self.navigationController?.hideLeftViewAnimated(nil)
-                    let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-                    vc.startPoint = .amountLimit
-                    vc.isRegistration = false
-                    self.present(vc, animated: true, completion: nil)
-                    
-                }
-            }
-            loginVC.outerHandler = completionHandler
-            self.present(loginVC, animated: true, completion: nil)
-        } else {
-           let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-            vc.startPoint = .amountLimit
-            vc.isRegistration = false
-            self.present(vc, animated: true, completion: nil)
-        }
+        let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+        vc.startPoint = .amountLimit
+        vc.isRegistration = false
+        
+        NavigationManager.shared.pushWithLogin(vc, context: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -151,12 +170,6 @@ class SettingTableViewController: UITableViewController {
         cell.settingImageView.image = temp[indexPath.row].image
         cell.badge.isHidden = temp[indexPath.row].isHidden
         return cell
-    }
-    
-    func finishedModalView() {
-        let amountLimitVC = storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
-        // self.present(amountLimitVC, animated: true)
-        self.present(amountLimitVC, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

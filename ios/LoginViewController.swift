@@ -28,12 +28,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         btnLogin.setTitle(NSLocalizedString("Login", comment: ""), for: UIControlState.normal)
         txtUserName.delegate = self
         txtPassword.delegate = self
-        let email = UserDefaults.standard.userExt.email
+        let email = UserDefaults.standard.userExt!.email
         
         txtUserName.text = email
         if !email.isEmpty() {
             txtUserName.isEnabled = false
-            txtUserName.textColor = #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1)
+            txtUserName.textColor = #colorLiteral(red: 0.537254902, green: 0.537254902, blue: 0.537254902, alpha: 1)
             txtPassword.becomeFirstResponder()
         }
         
@@ -92,35 +92,36 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login(){
-        SVProgressHUD.show()
-        _ = LoginManager.shared.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error in
-            
+        if NavigationManager.shared.hasInternetConnection(context: self) {
+            SVProgressHUD.show()
+            _ = LoginManager.shared.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error, description in
+                
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                 }
                 
-            
-            if b {
-                print("logging user in")
-                DispatchQueue.main.async {
-                    self.dismiss(animated: false, completion: { self.completionHandler() } )
+                
+                if b {
+                    print("logging user in")
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: { self.completionHandler() } )
+                    }
+                } else {
+                    print("something wrong logging user in")
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
+                                                  message: NSLocalizedString("WrongCredentials", comment: ""),
+                                                  preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    let cancelAction = UIAlertAction(title: "OK",
+                                                     style: .cancel, handler: nil)
+                    
+                    alert.addAction(cancelAction)
+                    DispatchQueue.main.async(execute: {
+                        self.present(alert, animated: true, completion: nil)
+                    })
                 }
-            } else {
-                print("something wrong logging user in")
-                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
-                                              message: NSLocalizedString("WrongCredentials", comment: ""),
-                                              preferredStyle: UIAlertControllerStyle.alert)
-                
-                let cancelAction = UIAlertAction(title: "OK",
-                                                 style: .cancel, handler: nil)
-                
-                alert.addAction(cancelAction)
-                DispatchQueue.main.async(execute: {
-                    self.present(alert, animated: true, completion: nil)
-                })
-            }
-        })
-    
+            })
+        }
     }
     @IBAction func switchPasswordVisibility(_ sender: Any) {
         let button = sender as! UIButton

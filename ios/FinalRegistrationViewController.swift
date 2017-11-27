@@ -23,6 +23,16 @@ class FinalRegistrationViewController: UIViewController {
         nextButton.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
         titleLabel.text = NSLocalizedString("RegistrationSuccess", comment: "")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .default
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,6 +42,8 @@ class FinalRegistrationViewController: UIViewController {
     @IBAction func exit(_ sender: Any) {
         self.hideLeftView(nil)
         self.dismiss(animated: true, completion: nil)
+        NavigationManager.shared.loadMainPage(animated: false)
+        
     }
     
     /*

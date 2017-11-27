@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet var navBar: UINavigationItem!
     private var validationHelper = ValidationHelper.shared
     @IBOutlet var contentView: UIView!
     @IBOutlet var nextBtn: CustomButton!
@@ -22,9 +23,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var titleItem: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-       navigationController?.setNavigationBarHidden(true, animated: false)
-
-        
+        navigationController?.setNavigationBarHidden(false, animated: true)
+ 
         let attachment:NSTextAttachment = NSTextAttachment()
         attachment.image = #imageLiteral(resourceName: "littleinfo.png")
         attachment.bounds = CGRect(x: 0, y: -4, width: (attachment.image?.size.width)!, height: (attachment.image?.size.height)!)
@@ -44,12 +44,13 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         #endif
         
         email.placeholder = NSLocalizedString("Email", comment: "")
-        titleText.text = NSLocalizedString("EnterEmail", comment: "")
+        title = NSLocalizedString("EnterEmail", comment: "")
         subtitleText.text = NSLocalizedString("ToGiveWeNeedYourEmailAddress", comment: "")
         hintText.text = NSLocalizedString("WeWontSendAnySpam", comment: "")
         nextBtn.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
         nextBtn.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         email.delegate = self
+        
         
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
@@ -58,23 +59,24 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
-
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barStyle = .default
+        
+        self.navigationController?.navigationBar.barTintColor = .white
+    }
+
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            print(self.view.frame.origin.y)
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            self.view.frame.origin.y -= keyboardSize.height
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
+            self.view.frame.origin.y += keyboardSize.height
         }
     }
     
@@ -107,15 +109,17 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     
     func doneCommand() {
         self.view.endEditing(true)
-        SVProgressHUD.show()
-        LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
-            
-            if status == "true" {
-                self.openLogin()
-            } else if status == "false" {
-                self.checkEmail()
-            } else if status == "temp" {
-                self.openRegistration()
+        if NavigationManager.shared.hasInternetConnection(context: self) {
+            SVProgressHUD.show()
+            LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
+                
+                if status == "true" { //completed registration
+                    self.openLogin()
+                } else if status == "false" { //email is completely new
+                    self.registerTempUser()
+                } else if status == "temp" { //email is in db but not succesfully registered
+                    self.openRegistration()
+                }
             }
         }
     }
@@ -136,8 +140,9 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         self.hideLoader()
         DispatchQueue.main.async {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-            let ch: () -> Void = { _ in
-                self.navigationController?.dismiss(animated: true, completion: nil)
+            let ch: () -> Void = {
+                self.navigationController?.dismiss(animated: false, completion: nil)
+                NavigationManager.shared.loadMainPage()
             }
             vc.outerHandler = ch
             self.present(vc, animated: true, completion: nil)
@@ -148,7 +153,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         DispatchQueue.main.async {
             self.hideLoader()
             let userExt = UserDefaults.standard.userExt
-            userExt.email = self.email.text!
+            userExt?.email = self.email.text!
             UserDefaults.standard.userExt = userExt
             let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
             self.present(register, animated: true, completion: nil)
@@ -156,10 +161,14 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func checkEmail() {
-        LoginManager.shared.checkTLD(email: self.email.text!, completionHandler: { (status) in
+    func registerTempUser() {
+        var email = ""
+        DispatchQueue.main.async {
+            email = self.email.text!
+        }
+        LoginManager.shared.checkTLD(email: email, completionHandler: { (status) in
             if status {
-                self.registerEmail(email: self.email.text!)
+                self.registerEmail(email: email)
             } else {
                 self.hideLoader()
                 DispatchQueue.main.async {
@@ -183,7 +192,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             self.hideLoader()
             if status {
                 DispatchQueue.main.async {
-                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    NavigationManager.shared.loadMainPage()
+
                 }
             } else {
                 //registration failed somehow...?

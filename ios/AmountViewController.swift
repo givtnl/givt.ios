@@ -94,7 +94,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         givtService = GivtService.shared
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         amountLabels = [amountLabel, amountLabel2, amountLabel3]
         
@@ -106,17 +106,19 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         secondLine.isHidden = true
         thirdView.isHidden = true
         thirdLine.isHidden = true
+        
+        self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(true)
+
         decimalNotation = NSLocale.current.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         let backItem = UIBarButtonItem()
         backItem.title = NSLocalizedString("Cancel", comment: "Annuleer")
         backItem.style = .plain
-        backItem.setTitleTextAttributes([NSFontAttributeName: UIFont(name: "Avenir-Heavy", size: 20)!], for: .normal)
+        backItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 20)!], for: .normal)
         btnGive.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         self.navigationItem.backBarButtonItem = backItem
         checkAmount()
@@ -128,6 +130,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         showFirstBalloon()
         
         if (self.sideMenuController?.isLeftViewHidden)! {
@@ -154,7 +157,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         view.addGestureRecognizer(longTap)
     }
     
-    func tappedView(_ sender: UITapGestureRecognizer) {
+    @objc func tappedView(_ sender: UITapGestureRecognizer) {
         var tagIdx = sender.view?.tag
         selectView(tagIdx!)
     }
@@ -172,21 +175,21 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             currentAmountLabel.text = ""
         }
         
-        if currentAmountLabel.text! == "" && (sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))! {
+        if currentAmountLabel.text! == "" && (sender.titleLabel?.text?.contains(decimalNotation.first!))! {
             currentAmountLabel.text = "0";
         }
         
         if let idx = currentAmountLabel.text?.index(of: decimalNotation) {
-            if( ((currentAmountLabel.text?.substring(from: idx).characters.count)! == 3)) || ((sender.titleLabel?.text?.characters.contains(decimalNotation.characters.first!))!){
+            if( ((currentAmountLabel.text?.substring(from: idx).count)! == 3)) || ((sender.titleLabel?.text?.contains(decimalNotation.first!))!){
                 return
             }
         }
 
-        if (currentAmountLabel.text?.characters.contains(decimalNotation.characters.first!))! {
-            if currentAmountLabel.text?.characters.count == 9 {
+        if (currentAmountLabel.text?.contains(decimalNotation.first!))! {
+            if currentAmountLabel.text?.count == 9 {
                 return
             }
-        } else if currentAmountLabel.text?.characters.count == 6 {
+        } else if currentAmountLabel.text?.count == 6 {
             return
         }
         currentAmountLabel.text = currentAmountLabel.text! + sender.currentTitle!;
@@ -215,14 +218,14 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBAction func clearValue(sender: UIButton!){
         var amount: String = self.currentAmountLabel.text!
-        if amount.characters.count == 0 {
+        if amount.count == 0 {
             checkAmount()
             return
         }
         
         amount.remove(at: amount.index(before: amount.endIndex))
         self.currentAmountLabel.text! = amount
-        if amount.characters.count == 0 || pressedShortcutKey {
+        if amount.count == 0 || pressedShortcutKey {
             self.currentAmountLabel.text = "0";
         }
         checkAmount()
@@ -286,8 +289,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             self.checkAmount()
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-            let amountLimitVC = self.storyboard?.instantiateViewController(withIdentifier: "alvc") as! AmountLimitViewController
-            self.present(amountLimitVC, animated: true)
+            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateInitialViewController() as! RegNavigationController
+            vc.isRegistration = false
+            vc.startPoint = .amountLimit
+            self.present(vc, animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -295,13 +300,17 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     func showBluetoothMessage() {
         let alert = UIAlertController(
             title: NSLocalizedString("SomethingWentWrong2", comment: ""),
-            message: NSLocalizedString("BluetoothErrorMessage", comment: ""),
+            message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
             //UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
             let url = URL(string: "App-Prefs:root=Bluetooth") //for bluetooth setting
             let app = UIApplication.shared
-            app.openURL(url!)
+            if #available(iOS 10.0, *) {
+                app.open(url!, options: [:], completionHandler: nil)
+            } else {
+                app.openURL(url!)
+            }
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
             
@@ -480,4 +489,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
        
     }
     
+    @IBAction func openFAQ(_ sender: Any) {
+        let vc = UIStoryboard(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
+        self.present(vc, animated: true, completion: nil)
+    }
 }

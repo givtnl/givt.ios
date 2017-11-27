@@ -90,7 +90,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     }
     
-    func internetChanged(note: Notification){
+    @objc func internetChanged(note: Notification){
         let reachability = note.object as! Reachability
         
         if reachability.isReachable {
@@ -115,7 +115,9 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     func startScanning() {
         isScanning = true
         centralManager.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
-        UIApplication.shared.isIdleTimerDisabled = true
+        DispatchQueue.main.async {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
     }
     
     func stopScanning() {
@@ -123,7 +125,10 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             isScanning = false
             centralManager.stopScan()
         }
-        UIApplication.shared.isIdleTimerDisabled = true
+        DispatchQueue.main.async {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
+        
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager){
@@ -139,6 +144,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             break
         case .poweredOn:
             print("CBCentralManagerState.PoweredOn")
+            NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
         case .resetting:
             print("CBCentralManagerState.Resetting")
         case CBManagerState.unsupported:
@@ -213,7 +219,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         for (index, value) in amounts.enumerated() {
             if value >= 0.50 {
                 print(value)
-                var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: UserDefaults.standard.userExt.guid)
+                var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
                 transactions.append(newTransaction)
             }
         }
@@ -311,9 +317,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
-        print()
-        let userExt = UserDefaults.standard.userExt
-        if !userExt.guid.isEmpty() {
+        if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
             var qString = "Guid=" + userExt.guid
             
             // add &dtLastChanged when beaconList is filled

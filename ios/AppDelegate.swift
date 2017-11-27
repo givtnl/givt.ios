@@ -9,9 +9,9 @@
 import UIKit
 import Fabric
 import Crashlytics
-import MobileCenter
-import MobileCenterAnalytics
-import MobileCenterCrashes
+import AppCenter
+import AppCenterAnalytics
+import AppCenterCrashes
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        MSMobileCenter.start("b1986ee1-9626-4679-9a86-d1d1e6873688", withServices:[
+        MSAppCenter.start("e36f1172-f316-4601-81f3-df0024a9860f", withServices:[
             MSAnalytics.self,
             MSCrashes.self
             ])
@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func reachabilityChanged(notification:Notification) {
+    @objc func reachabilityChanged(notification:Notification) {
         let reachability = notification.object as! Reachability
         if reachability.isReachable {
             if reachability.isReachableViaWiFi {
@@ -72,6 +72,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             print("Network not reachable")
         }
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        //
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            //todo find share my givt and show the share method 
+        }
+        return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

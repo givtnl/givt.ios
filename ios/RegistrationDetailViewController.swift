@@ -37,6 +37,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         countries.append(Country(name: NSLocalizedString("Belgium", comment: ""), shortName: "BE", prefix: "+32"))
         countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", prefix: "+31"))
+        countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", prefix: "+49"))
         
        
         
@@ -70,6 +71,18 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             iban.text = "BE62 5100 0754 7061"
             checkAll()
         #endif
+        
+        if let currentRegionCode = Locale.current.regionCode {
+            print(currentRegionCode)
+            let filteredCountries = countries.filter {
+                $0.shortName == currentRegionCode
+            }
+            if let filteredCountry = filteredCountries.first {
+                selectedCountry = filteredCountry
+                countryPicker.text = selectedCountry?.toString()
+            }
+            //print(country.shortName)
+        }
 
         
         initButtonsWithTags()
@@ -133,10 +146,18 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         } else {
             textField.resignFirstResponder()
         }
+        
+        if textField.tag == 5 {
+            next(self)
+        }
         return false
     }
     
     @IBAction func next(_ sender: Any) {
+        if !NavigationManager.shared.hasInternetConnection(context: self) {
+            return
+        }
+        
         SVProgressHUD.show()
         let address = self.streetAndNumber.text!
         let city = self.city.text!
@@ -197,10 +218,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         nextButton.isEnabled = isStreetValid && isPostalCodeValid && isCityValid && isCountryValid && isMobileNumberValid && isIbanValid
     }
-    
+    //01568-019486
     func isMobileNumber(_ number: String) -> Bool {
         do {
-            let phoneNumber = try phoneNumberKit.parse(number)
+            let phoneNumber = try phoneNumberKit.parse(number, withRegion: (selectedCountry?.shortName)!, ignoreType: true)
             //let phoneNumberCustomDefaultRegion = try phoneNumberKit.parse("+44 20 7031 3000", withRegion: "GB", ignoreType: true)
             print(phoneNumber.numberString)
             formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
@@ -227,8 +248,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     func justifyScrollViewContent() {
-        var bottomOffset = CGPoint(x: 0, y: (theScrollView.contentSize.height - theScrollView.bounds.size.height + theScrollView.contentInset.bottom));
-        var minY = _lastTextField == countryPicker ? countryPicker.superview?.frame.minY : _lastTextField.frame.minY
+        let bottomOffset = CGPoint(x: 0, y: (theScrollView.contentSize.height - theScrollView.bounds.size.height + theScrollView.contentInset.bottom));
+        let minY = _lastTextField == countryPicker ? countryPicker.superview?.frame.minY : _lastTextField.frame.minY
         if minY! < bottomOffset.y {
             theScrollView.setContentOffset(CGPoint(x: 0, y: _lastTextField.frame.minY), animated: true)
         } else {
@@ -241,7 +262,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         theScrollView.contentInset = contentInset
     }
 
-    func hideKeyboard() {
+    @objc func hideKeyboard() {
         selectedRow(row: picker.selectedRow(inComponent: 0))
         textFieldShouldReturn(_lastTextField)
     }
@@ -275,6 +296,13 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         selectedCountry = countries[row]
         countryPicker.text = selectedCountry?.name
         checkAll()
+        
+        /* manually trigger mobilenumber checker */
+        if let mobileNumberString = mobileNumber.text, !mobileNumberString.isEmpty() {
+            _lastTextField = mobileNumber as! CustomUITextField
+            checkAll()
+        }
+        
     }
     
     func createToolbar(_ textField: UITextField) {

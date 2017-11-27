@@ -53,7 +53,7 @@ class LoginManager {
         request.httpMethod = "PUT"
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
-        let putString = "GUID=" + UserDefaults.standard.userExt.guid + "&AmountLimit=" + String(amountLimit)
+        let putString = "GUID=" + (UserDefaults.standard.userExt?.guid)! + "&AmountLimit=" + String(amountLimit)
         request.httpBody = putString.data(using: .utf8)
         let urlSession = URLSession.shared
         _ = urlSession.dataTask(with: request) { data, response, error -> Void in
@@ -75,23 +75,35 @@ class LoginManager {
 
     }
     
-    public func loginUser(email: String, password: String, completionHandler: @escaping (Bool, NSError?) -> Void ) -> URLSessionTask {
+    public func loginUser(email: String, password: String, completionHandler: @escaping (Bool, NSError?, String?) -> Void ) -> URLSessionTask {
         var request = URLRequest(url: URL(string: _baseUrl + "/oauth2/token")!)
         request.httpMethod = "POST"
-        let postString = "grant_type=password&userName=" + email.RFC3986UnreservedEncoded + "&password=" + password
+        var postString = ""
+        if UserDefaults.standard.hasPinSet {
+            postString = "grant_type=pincode&userName=" + email.RFC3986UnreservedEncoded + "&pincode=" + password
+        } else {
+            postString = "grant_type=password&userName=" + email.RFC3986UnreservedEncoded + "&password=" + password
+        }
         request.httpBody = postString.data(using: .utf8)
         let urlSession = URLSession.shared
         
         let task = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
-                completionHandler(false, error! as NSError)
+                completionHandler(false, error! as NSError, nil)
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(String(describing: response))")
-                completionHandler(false, nil)
+                if let data = String(data: data as! Data, encoding: String.Encoding.utf8), let dict = self.convertToDictionary(text: data) {
+                    if let err_description = dict["error_description"] as? String {
+                        print(err_description)
+                        completionHandler(false, nil, err_description)
+                    }
+                    
+                }
+                completionHandler(false, nil, nil)
                 return
             }
             
@@ -113,25 +125,36 @@ class LoginManager {
                         if status {
                             self.checkMandate(completionHandler: { (status) in
                                 self.userClaim = self.isFullyRegistered ? .give : .giveOnce
-                                completionHandler(true, nil)
+                                completionHandler(true, nil, nil)
                             })
                         } else {
-                            completionHandler(true, nil)
+                            completionHandler(true, nil, nil)
                         }
                     })
                     return
                 }
-                completionHandler(false, nil)
+                completionHandler(false, nil, nil)
                 return
             } catch let error as NSError {
                 print(error)
-                completionHandler(false, nil)
+                completionHandler(false, nil, nil)
                 return
             }
         
         }
         task.resume()
         return task
+    }
+    
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
     }
     
     private func getUserExt(completionHandler: @escaping (Bool) -> Void) {
@@ -148,6 +171,7 @@ class LoginManager {
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 print(response!)
+                print(String(bytes: data!, encoding: .utf8)!)
                 completionHandler(false)
                 return
             }
@@ -155,9 +179,9 @@ class LoginManager {
             do {
                 let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
                 let newConfig = UserDefaults.standard.userExt
-                newConfig.guid = parsedData["GUID"] as! String
+                newConfig?.guid = parsedData["GUID"] as! String
                 UserDefaults.standard.userExt = newConfig
-                UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? -1 : parsedData["AmountLimit"] as! Int
+                UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 500 : parsedData["AmountLimit"] as! Int
                 completionHandler(true)
             } catch let err as NSError {
                 print(err)
@@ -168,17 +192,12 @@ class LoginManager {
         }.resume()
     }
     
-    func registerUser(_ user: RegistrationUser, completionHandler: @escaping (Bool) -> Void) {
-        
+    func registerUser(_ user: RegistrationUser) {
         _registrationUser = UserExt()
         _registrationUser.firstName = user.firstName
         _registrationUser.lastName = user.lastName
         _registrationUser.password = user.password
         _registrationUser.email = user.email
-        
-        //TODO: log email to log service!
-        
-        completionHandler(true)
     }
     
     func registerExtraDataFromUser(_ user: RegistrationUserData, completionHandler: @escaping (Bool) -> Void) {
@@ -209,17 +228,25 @@ class LoginManager {
             }
             
             self._registrationUser.guid = String(bytes: data!, encoding: .utf8)!
-            let newConfig = UserDefaults.standard.userExt
+            let newConfig = UserDefaults.standard.userExt!
             newConfig.guid = self._registrationUser.guid
             UserDefaults.standard.userExt = newConfig
             self.registerAllData(completionHandler: { success in
                 if success {
                     print("user succesfully registered")
-                    _ = self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err) in
+                    _ = self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
                         
                         if success {
+                             if self._registrationUser.iban == AppConstants.tempIban.replacingOccurrences(of: " ", with: "") {
+                                
+                            }
+                            
                             self._registrationUser.password = ""
                             UserDefaults.standard.userExt = self._registrationUser
+                            self.saveAmountLimit(500, completionHandler: { (status, err) in
+                                //niets
+                            })
+                            UserDefaults.standard.amountLimit = 500
                             completionHandler(true)
                         } else {
                             completionHandler(false)
@@ -329,7 +356,7 @@ class LoginManager {
     func checkMandate(completionHandler: @escaping (String) -> Void) -> URLSessionTask? {
         var task: URLSessionTask?
         if isBearerStillValid {
-            var request = URLRequest(url: URL(string: _baseUrl + "/api/Mandate?UserID=" + UserDefaults.standard.userExt.guid)!)
+            var request = URLRequest(url: URL(string: _baseUrl + "/api/Mandate?UserID=" + (UserDefaults.standard.userExt?.guid)!)!)
             request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "GET"
@@ -369,19 +396,13 @@ class LoginManager {
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
         let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe")
         let regUserExt = RegistrationUserData(address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
-        self.registerUser(regUser) { b in
+        self.registerUser(regUser)
+        self.registerExtraDataFromUser(regUserExt) { b in
             if b {
-                self.registerExtraDataFromUser(regUserExt) { b in
-                    if b {
-                        self.userClaim = .giveOnce
-                        UserDefaults.standard.isLoggedIn = true
-                        UserDefaults.standard.amountLimit = .max
-                        DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
-                        completionHandler(true)
-                    } else {
-                        completionHandler(false)
-                    }
-                }
+                self.userClaim = .giveOnce
+                UserDefaults.standard.isLoggedIn = true
+                DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
+                completionHandler(true)
             } else {
                 completionHandler(false)
             }
@@ -396,6 +417,7 @@ class LoginManager {
         var task: URLSessionTask?
         task = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
+                completionHandler(false)
                 return
             }
             let status: Bool = NSString(string: String(bytes: data!, encoding: .utf8)!).boolValue
@@ -419,13 +441,118 @@ class LoginManager {
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 return
             }
-            let userExt = UserDefaults.standard.userExt
+            var userExt = UserExt()
+            if let settings = UserDefaults.standard.userExt {
+                userExt = settings
+            }
             userExt.email = email
             UserDefaults.standard.userExt = userExt
             let status = String(bytes: data!, encoding: .utf8)!.replacingOccurrences(of: "\"", with: "")
             completionHandler(status)
         }
         task?.resume()
+    }
+    
+    func sendSupport(text: String, completionHandler: @escaping (Bool) -> Void) {
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/SendSupport")!)
+        request.httpMethod = "POST"
+        
+        let params = ["Guid" : UserDefaults.standard.userExt.guid, "Message" : text, "Subject" : "Feedback app"]
+        
+        do {
+            let serialized = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            request.httpBody = serialized
+        } catch let error {
+            print(error)
+        }
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
+        
+        let urlSession = URLSession.shared
+        
+        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
+            if error != nil {
+                completionHandler(false)
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print(String(bytes: data!, encoding: .utf8)!)
+                completionHandler(false)
+                return
+            }
+            let response = String(bytes: data!, encoding: .utf8)!
+            print(response)
+            completionHandler(true)
+        }
+        task.resume()
+    }
+    
+    func terminateAccount(completionHandler: @escaping (Bool) -> Void) {
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/Users/Unregister")!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
+        
+        let urlSession = URLSession.shared
+        
+        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
+            if error != nil {
+                completionHandler(false)
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print(String(bytes: data!, encoding: .utf8)!)
+                completionHandler(false)
+                return
+            }
+            let response = String(bytes: data!, encoding: .utf8)!
+            print(response)
+            self.logout()
+            completionHandler(true)
+        }
+        task.resume()
+    }
+    
+    func registerPin(pin: String, completionHandler: @escaping (Bool) -> Void) {
+        var request = URLRequest(url: URL(string: _baseUrl + "/api/Users/Pin")!)
+        request.httpMethod = "PUT"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
+        let params = ["PinHash" : pin]
+        
+        do {
+            let serialized = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted)
+            request.httpBody = serialized
+        } catch let error {
+            print(error)
+        }
+        let urlSession = URLSession.shared
+        
+        let task = urlSession.dataTask(with: request) { data, response, error -> Void in
+            if error != nil {
+                completionHandler(false)
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 && httpStatus.statusCode != 201 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print(String(bytes: data!, encoding: .utf8)!)
+                completionHandler(false)
+                return
+            }
+            let response = String(bytes: data!, encoding: .utf8)!
+            print(response)
+
+            completionHandler(true)
+        }
+        task.resume()
     }
     
     func logout() {
@@ -439,5 +566,6 @@ class LoginManager {
         UserDefaults.standard.mandateSigned = false
         UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.hasTappedAwayGiveDiff = false
+        UserDefaults.standard.hasPinSet = false
     }
 }

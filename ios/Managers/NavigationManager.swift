@@ -33,13 +33,11 @@ class NavigationManager {
     public func finishRegistration(_ context: UIViewController) {
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         permissionAsked { (asked) in
-            if self.appSettings.amountLimit == .max { //tempuser
+            if UserDefaults.standard.tempUser { //tempuser
+                vc.startPoint = .registration
                 self.pushOnMainPage(context, vc)
             } else if !asked {
                 vc.startPoint = .permission
-                self.pushOnMainPage(context, vc)
-            } else if self.appSettings.amountLimit == -1 { //user quit just before entering amount limit
-                vc.startPoint = .amountLimit
                 self.pushOnMainPage(context, vc)
             } else if !self.appSettings.mandateSigned {
                 vc.startPoint = .mandate
@@ -57,10 +55,71 @@ class NavigationManager {
         
     }
     
-    public func loadMainPage(_ context: UIViewController) {
+    public func loadMainPage(animated: Bool = true) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if let childViewControllers = appDelegate.window?.rootViewController?.childViewControllers {
+            for childViewController in childViewControllers {
+                if let vc = childViewController as? CustomViewController {
+                    load(vc: vc, animated: animated)
+                }
+            }
+        }
+    }
+    
+    public func load(vc: UINavigationController, animated: Bool = true) {
         if loginManager.userClaim == .startedApp {
-            let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseNavigationViewController") as! FirstUseNavigationViewController
-            context.present(welcome, animated: false, completion: nil)
+            let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
+            vc.setViewControllers([welcome], animated: animated)
+        } else {
+            let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
+            vc.setViewControllers([amount], animated: animated)
+        }
+    }
+    
+    public func hasInternetConnection(context: UIViewController) -> Bool {
+        if !AppServices.shared.connectedToNetwork() {
+            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            }))
+            context.present(alert, animated: true, completion:  {})
+        }
+        return AppServices.shared.connectedToNetwork()
+        
+    }
+    
+    public func pushWithLogin(_ vc: UIViewController, context: UIViewController) {  
+        if hasInternetConnection(context: context) {
+            if !LoginManager.shared.isBearerStillValid {
+                if UserDefaults.standard.hasPinSet {
+                    let pinVC = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
+                    pinVC.typeOfPin = .login
+                    let completionHandler:(Bool)->Void = { status in
+                        if status {
+                            DispatchQueue.main.async {
+                                context.present(vc, animated: true, completion: nil)
+                            }
+                        } else {
+                            self.pushWithLogin(vc, context: context)
+                        }
+
+                    }
+                    pinVC.outerHandler = completionHandler
+                    context.present(pinVC, animated: true, completion: nil)
+                    
+                } else {
+                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+                    let completionHandler:()->Void = {
+                        DispatchQueue.main.async {
+                            context.present(vc, animated: true, completion: nil)
+                        }
+                    }
+                    loginVC.outerHandler = completionHandler
+                    context.present(loginVC, animated: true, completion: nil)
+                }
+                
+            } else {
+                context.present(vc, animated: true)
+            }
         }
     }
     

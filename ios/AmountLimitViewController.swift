@@ -49,7 +49,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func handleTimer(timer: Timer) {
+    @objc func handleTimer(timer: Timer) {
         addValue(positive: timer.userInfo as! Bool)
     }
     
@@ -77,6 +77,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             btnSave.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
             self.backButton.isEnabled = false
             self.backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            self.backButton.image = UIImage()
         }
         
         btnSave.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
@@ -131,6 +132,11 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
 
     @objc func save() {
         self.view.endEditing(true)
+        
+        if !NavigationManager.shared.hasInternetConnection(context: self) {
+            return
+        }
+        
         LoginManager.shared.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_,_ in
             if self.isRegistration {
                 DispatchQueue.main.async {
@@ -159,7 +165,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self)
     }
         
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
         let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
         UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: [], animations: {
@@ -167,7 +173,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         }, completion: nil)
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
         let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
         UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: [], animations: {
@@ -184,8 +190,8 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    func textFieldDidChange(_ textField: UITextField) {
-        if (textField.text?.characters.count)! == 0 {
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if (textField.text?.count)! == 0 {
             textField.text = "0"
             btnSave.isEnabled = false
             btnSaveKeyboard?.isEnabled = false
@@ -196,7 +202,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         let amountLimit: Int = Int(textField.text!)!
         textField.text = String(amountLimit)
         
-        if (textField.text?.characters.count)! >= 5 {
+        if (textField.text?.count)! >= 5 {
             textField.text = textField.text?.substring(0..<5)
             return
         }

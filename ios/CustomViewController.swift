@@ -20,9 +20,12 @@ class CustomViewController: UINavigationController  {
         // Do any additional setup after loading the view.
         /* LGSideMenuDelegate.didHideLeftView(<#T##LGSideMenuDelegate#>)
          delegateTest?.willHideLeftView(leftView: UIView, sideMenuController: LGSideMenuController) += NSLog("test")*/
+        NavigationManager.shared.load(vc: self)
     }
     
-    
+    @IBAction func unwindToAmount(segue: UIStoryboardSegue) {
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

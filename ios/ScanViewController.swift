@@ -54,23 +54,33 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     fileprivate func popToRootWithDelay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
             self.navigationController?.popToRootViewController(animated: false)
         }
     }
     
     func showWebsite(url: String){
+        if !AppServices.shared.connectedToNetwork() {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
+            self.show(vc, sender: self)
+            return
+        }
+        
         guard let url = URL(string: url) else {
             return //be safe
         }
         
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url, options: [:], completionHandler: { (status) in
-                self.popToRootWithDelay()
-            })
+            DispatchQueue.main.async {
+                UIApplication.shared.open(url, options: [:], completionHandler: { (status) in
+                    self.popToRootWithDelay()
+                })
+            }
         } else {
-            if(UIApplication.shared.openURL(url)) {
-                self.popToRootWithDelay()
+            DispatchQueue.main.async {
+                if(UIApplication.shared.openURL(url)) {
+                    self.popToRootWithDelay()
+                }
             }
         }
     }
@@ -83,9 +93,10 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     @objc func showBluetoothMessage() {
+        GivtService.shared.stopScanning()
         let alert = UIAlertController(
             title: NSLocalizedString("SomethingWentWrong2", comment: ""),
-            message: NSLocalizedString("BluetoothErrorMessage", comment: ""),
+            message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
             UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
@@ -98,7 +109,8 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-                NotificationCenter.default.addObserver(self, selector: #selector(showBluetoothMessage), name: Notification.Name("BluetoothIsOff"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showBluetoothMessage), name: Notification.Name("BluetoothIsOff"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         GivtService.shared.onGivtProcessed = self
         
@@ -107,9 +119,10 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         }
 
         addOverlay()
-
-        
-        
+    }
+    
+    @objc func startScanning() {
+        GivtService.shared.startScanning()
     }
     
     func addOverlay() {
@@ -117,8 +130,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
             return
         }
         
-        let tap = UITapGestureRecognizer()
-        tap.addTarget(self, action: #selector(removeOverlay))
+        
         
         overlayView = UIView()
         overlayView?.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.9843137255, blue: 0.9843137255, alpha: 0.9)
@@ -129,10 +141,14 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         //menuView.isUserInteractionEnabled = false
         overlayView?.topAnchor.constraint(equalTo: mainView.topAnchor).isActive = true
         overlayView?.leadingAnchor.constraint(equalTo: mainView.leadingAnchor).isActive = true
-        overlayView?.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -84.0).isActive = true
+        if #available(iOS 11.0, *) {
+            overlayView?.bottomAnchor.constraint(equalTo: mainView.safeAreaLayoutGuide.bottomAnchor, constant: -84.0).isActive = true
+        } else {
+            overlayView?.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -84.0).isActive = true
+        }
         overlayView?.trailingAnchor.constraint(equalTo: mainView.trailingAnchor).isActive = true
         
-        overlayView?.addGestureRecognizer(tap)
+        
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -147,18 +163,20 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         label.textAlignment = .center
     
         self.overlayView?.isHidden = false
-        UIView.animate(withDuration: 0.3, delay: 7.0, options: [], animations: {
-            self.overlayView?.alpha = 1
-        }) { (status) in
-        //done
-        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(7), execute: { () -> Void in
+            UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                self.overlayView?.alpha = 1
+            }, completion: { (status) -> Void in
+                let tap = UITapGestureRecognizer()
+                tap.addTarget(self, action: #selector(self.removeOverlay))
+                self.overlayView?.addGestureRecognizer(tap)
+            })
+        })
     }
     
-    func removeOverlay() {
-        overlayView?.removeFromSuperview()
-
-        if let isHidden = overlayView?.isHidden, !isHidden {
-            overlayView?.isHidden = true
+    @objc func removeOverlay() {
+        overlayView?.isHidden = true
+        if overlayView?.alpha == 1 {
             UserDefaults.standard.hasTappedAwayGiveDiff = true
         }
     }
@@ -170,7 +188,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         self.navigationController?.navigationBar.isOpaque = false
         sideMenuController?.isLeftViewSwipeGestureDisabled = true
         
-
+        GivtService.shared.startScanning()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

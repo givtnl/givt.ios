@@ -364,7 +364,7 @@
 "CriticalUpdateTitle" = "Critical update";
 
 /*Kritische update bericht onder de titel in de alert melding*/
-"CriticalUpdateMessage" = "A new critical update is available. This is necessary for the proper functioning of the Givt-app.";
+"CriticalUpdateMessage" = "A new critical update is available. This is necessary for the proper functioning of the Givt app.";
 
 /*Als er een organisatie gedeteceerd is krijgt gebruiker alert: Message is het bericht in de alert*/
 "OrganisationProposalMessage" = "Do you want to give to {0}?";
@@ -561,7 +561,7 @@
 "ImportantReminder" = "Important reminder";
 "MultipleCollections" = "Multiple collections";
 "QuestionAndroidLocation" = "Why does Givt need access to my location?";
-"AnswerAndroidLocation" = "When using an Android smartphone, the Givt-beacon can only be detected by the Givt-app when the location is known. Therefore, Givt needs your location to make giving possible. Beside that, we do not use your location.";
+"AnswerAndroidLocation" = "When using an Android smartphone, the Givt-beacon can only be detected by the Givt app when the location is known. Therefore, Givt needs your location to make giving possible. Beside that, we do not use your location.";
 "ShareTheGivtButton" = "Share with my friends";
 "ShareTheGivtText" = "I've just used Givt to donate to {0}!";
 "ShareTheGivtTextNoOrg" = "I've just used Givt to donate!";
@@ -577,4 +577,8 @@
 
 /*In app begeleiding naar 'Anders geven?'*/
 "GiveDiffWalkthrough" = "Having some trouble? Or would you rather give using a QR code or by selecting the recipient manually?";
-"SwipeDownOpenGivt" = "Swipe down to open the Givt-app.";
+"SwipeDownOpenGivt" = "Swipe down to open the Givt app.";
+"MoreInfo" = "More info";
+"AppStoreRestart" = "If the update isn't immediately visible, try to restart the App Store app.";
+"Germany" = "Germany";
+"ExtraBluetoothText" = "Does it look like your Bluetooth is on? It is still necessary to switch it off and on again.";

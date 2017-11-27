@@ -16,6 +16,9 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     
     func willShowLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
         UIApplication.shared.statusBarStyle = .default
+        if let vc = UIApplication.shared.keyWindow?.rootViewController?.childViewControllers.first as? SettingTableViewController {
+            vc.loadSettings()
+        }
     }
     
     func willHideLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
@@ -25,6 +28,7 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     override func viewDidLoad() {
         super.delegate = self
         UIApplication.shared.statusBarStyle = .default
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
@@ -35,13 +39,16 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        navigationManager.loadMainPage(self)
+        super.viewDidAppear(animated)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+
         super.viewWillAppear(animated)
         
     }
+    
+
     
     
     // MARK: - Navigation
@@ -50,10 +57,6 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if (segue.identifier! == "root")
-        {
-
-        }
     }
     
 

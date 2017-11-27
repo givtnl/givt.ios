@@ -29,6 +29,7 @@ class SPInfoViewController: UIViewController {
         if !hasBackButton {
             self.backButton.isEnabled = false
             self.backButton.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            self.backButton.image = UIImage()
         } else {
             self.backButton.isEnabled = true
         }
@@ -40,8 +41,12 @@ class SPInfoViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
+        if !NavigationManager.shared.hasInternetConnection(context: self) {
+            return
+        }
+        
         SVProgressHUD.show()
-        var userInfo = UserDefaults.standard.userExt
+        var userInfo = UserDefaults.standard.userExt!
         var signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)
         var mandate = Mandate(signatory: signatory)
         LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
