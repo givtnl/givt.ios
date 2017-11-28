@@ -99,7 +99,12 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
             message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
-            UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+            } else {
+                UIApplication.shared.openURL(URL(string:UIApplicationOpenSettingsURLString)!)
+            }
+            
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
             //push geeflimiet pagina

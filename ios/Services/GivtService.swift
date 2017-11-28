@@ -130,24 +130,45 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager){
-        switch (central.state) {
-        case .poweredOff:
-            print("CBCentralManagerState.PoweredOff")
-            NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
-        case .unauthorized:
-            print("CBCentralManagerState.Unauthorized")
-            break
-        case .unknown:
-            print("CBCentralManagerState.Unknown")
-            break
-        case .poweredOn:
-            print("CBCentralManagerState.PoweredOn")
-            NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
-        case .resetting:
-            print("CBCentralManagerState.Resetting")
-        case CBManagerState.unsupported:
-            print("CBCentralManagerState.Unsupported")
-            break
+        if #available(iOS 10.0, *) {
+            switch (central.state) {
+            case .poweredOff:
+                print("CBCentralManagerState.PoweredOff")
+                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
+            case .unauthorized:
+                print("CBCentralManagerState.Unauthorized")
+                break
+            case .unknown:
+                print("CBCentralManagerState.Unknown")
+                break
+            case .poweredOn:
+                print("CBCentralManagerState.PoweredOn")
+                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
+            case .resetting:
+                print("CBCentralManagerState.Resetting")
+            case CBManagerState.unsupported:
+                print("CBCentralManagerState.Unsupported")
+                break
+            }
+        } else {
+            switch (central.state) {
+            case .poweredOff:
+                print("CBCentralManagerState.PoweredOff")
+                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
+            case .unauthorized:
+                print("CBCentralManagerState.Unauthorized")
+                break
+            case .unknown:
+                print("CBCentralManagerState.Unknown")
+                break
+            case .poweredOn:
+                print("CBCentralManagerState.PoweredOn")
+                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
+            case .resetting:
+                print("CBCentralManagerState.Resetting")
+            default:
+                break
+            }
         }
 }
     

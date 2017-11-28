@@ -44,6 +44,11 @@ class PermissionViewController: UIViewController {
                     self.show(vc, sender: nil)
                 }
             }
+        } else {
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+            UIApplication.shared.registerForRemoteNotifications()
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
+            self.show(vc, sender: nil)
         }
     }
     @IBAction func back(_ sender: Any) {
