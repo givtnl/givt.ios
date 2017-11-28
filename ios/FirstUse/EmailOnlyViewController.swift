@@ -69,12 +69,14 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y -= keyboardSize.height
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y += keyboardSize.height
         }
