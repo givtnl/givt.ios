@@ -8,6 +8,7 @@ target 'ios' do
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
   pod 'LGSideMenuController'
   pod 'PhoneNumberKit'
+  pod 'SwiftClient', '~> 3.0.3'
   # Pods for ios
 
 end
