@@ -42,7 +42,7 @@ class LoginManager {
     }
     
     public var isBearerStillValid: Bool {
-        return Date() < UserDefaults.standard.bearerExpiration
+        return Date() < UserDefaults.standard.bearerExpiration && !UserDefaults.standard.bearerToken.isEmpty
     }
     
     private var _baseUrl = "https://givtapidebug.azurewebsites.net"
