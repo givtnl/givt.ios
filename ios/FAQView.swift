@@ -39,6 +39,17 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
     func didLoad(q: String, a: String, v: String?) {
         self.videoUrl = v
         
+        if let videoUrl = v {
+            self.videoUrl = videoUrl
+            let request = URLRequest(url: URL(string: self.videoUrl!)!)
+            videoWrapper = WKWebView()
+            videoWrapper?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            videoWrapper?.load(request)
+            videoWrapper?.navigationDelegate = self
+            videoWrapper?.uiDelegate = self
+            videoWrapper?.translatesAutoresizingMaskIntoConstraints = false
+        }
+
         self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         
         let tap = UITapGestureRecognizer()
@@ -101,13 +112,7 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
             answer.trailingAnchor.constraint(equalTo: answerWrapper.trailingAnchor, constant: -20).isActive = true
             
             if let v = videoUrl {
-                let request = URLRequest(url: URL(string: v)!)
-                videoWrapper = WKWebView()
-                videoWrapper?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-                videoWrapper?.load(request)
-                videoWrapper?.navigationDelegate = self
-                videoWrapper?.uiDelegate = self
-                videoWrapper?.translatesAutoresizingMaskIntoConstraints = false
+
                 self.answerWrapper.addSubview(videoWrapper!)
                 
                 videoWrapper?.leadingAnchor.constraint(equalTo: answerWrapper.leadingAnchor).isActive = true

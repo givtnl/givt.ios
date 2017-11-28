@@ -22,7 +22,6 @@ class LoginManager {
     
     
     private init() {
-        print("loginmanager is created")
         userClaim = UserDefaults.standard.isLoggedIn ? .give : .startedApp
     }
     
@@ -42,7 +41,7 @@ class LoginManager {
     }
     
     public var isBearerStillValid: Bool {
-        return Date() < UserDefaults.standard.bearerExpiration
+        return Date() < UserDefaults.standard.bearerExpiration && !UserDefaults.standard.bearerToken.isEmpty
     }
     
     private var _baseUrl = "https://givtapidebug.azurewebsites.net"
@@ -58,13 +57,11 @@ class LoginManager {
         let urlSession = URLSession.shared
         _ = urlSession.dataTask(with: request) { data, response, error -> Void in
             if error != nil {
-                print(error! as NSError)
                 completionHandler(false, nil)
                 return
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                print(response!)
                 completionHandler(false, nil)
                 return
             }
@@ -94,11 +91,8 @@ class LoginManager {
             }
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(String(describing: response))")
                 if let data = String(data: data as! Data, encoding: String.Encoding.utf8), let dict = self.convertToDictionary(text: data) {
                     if let err_description = dict["error_description"] as? String {
-                        print(err_description)
                         completionHandler(false, nil, err_description)
                     }
                     
