@@ -88,7 +88,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     private func pincode() {
         let vc = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
         vc.typeOfPin = .set
-        self.present(vc, animated: true, completion: {})
+        navigationManager.pushWithLogin(vc, context: self)
     }
     
     private func terminate() {
