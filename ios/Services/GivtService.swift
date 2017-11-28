@@ -74,8 +74,6 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     private override init() {
         super.init()
-        print("started")
-        
         getBeaconsFromOrganisation { (status) in
             print(status)
         }
@@ -305,11 +303,9 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 }
                 
                 if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 201 {
-                    print("posted givt to the server")
                     return
                 } else {
                     //server code is niet in orde: gegeven binnen de 30s?
-                    print(response ?? "")
                     return
                 }
             }
@@ -327,7 +323,6 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
                 let dateString = dateFormatter.string(from: beaconListLastChanged)
                 qString += "&dtLastUpdated=" + dateString
-                print(dateString)
             }
   
             var request = URLRequest(url: URL(string: _baseUrl + "/api/Organisation/BeaconList" + "?" + qString)!)
@@ -336,15 +331,13 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             let urlSession = URLSession.shared
             _ = urlSession.dataTask(with: request) { data, response, error -> Void in
                 if error != nil {
-                    print(error! as NSError)
                     completionHandler(false)
                     return
                 }
                 
                 if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                    print(response!)
                     if httpStatus.statusCode == 204 {
-                        print("list is up to date :)")
+
                     }
                     completionHandler(false)
                     return
@@ -353,10 +346,8 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
                     UserDefaults.standard.orgBeaconList = parsedData as NSDictionary
-                    print(parsedData)
                     completionHandler(true)
                 } catch let err as NSError {
-                    print(err)
                     completionHandler(false)
                     return
                 }

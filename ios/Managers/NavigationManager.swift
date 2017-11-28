@@ -15,7 +15,7 @@ class NavigationManager {
     private var appSettings = UserDefaults.standard
     
     private init() {
-        print("started navigationManager")
+
     }
     
     public func finishRegistrationAlert(_ context: UIViewController) {
