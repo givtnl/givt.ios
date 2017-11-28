@@ -36,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             
         }
+        
+        LogService.shared.info(message: "App started")
+        
         return true
     }
 
