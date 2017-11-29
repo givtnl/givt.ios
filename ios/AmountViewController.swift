@@ -9,7 +9,7 @@
 import UIKit
 
 class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
-
+    private var log: LogService = LogService.shared
     @IBOutlet var widthConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UIView!
     
@@ -123,8 +123,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationItem.backBarButtonItem = backItem
         checkAmount()
         
-        print("Mandate signed: ", UserDefaults.standard.mandateSigned)
-        print("Amount Limit: ", UserDefaults.standard.amountLimit)
+        log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
         menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
     }
     

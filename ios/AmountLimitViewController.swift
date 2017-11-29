@@ -137,7 +137,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        LoginManager.shared.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_,_ in
+        LoginManager.shared.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_ in
             if self.isRegistration {
                 DispatchQueue.main.async {
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController

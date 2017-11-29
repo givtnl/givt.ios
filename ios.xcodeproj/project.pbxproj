@@ -31,6 +31,8 @@
 		D75141A81F9E181A0016B71F /* givt_registration.gif in Resources */ = {isa = PBXBuildFile; fileRef = D75141A51F9E130C0016B71F /* givt_registration.gif */; };
 		D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */; };
 		D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754DA3A1F3B45D5001B7040 /* UIButton+helpers.swift */; };
+		D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B2BCE1FCEADE8000B7968 /* APIClient.swift */; };
+		D75B2BD21FCEAE05000B7968 /* IAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B2BD11FCEAE05000B7968 /* IAPIClient.swift */; };
 		D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */; };
 		D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CD01FACA73900F40827 /* QRViewController.swift */; };
 		D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */; };
@@ -156,6 +158,8 @@
 		D75141A61F9E130C0016B71F /* givt_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = givt_animation.gif; sourceTree = "<group>"; };
 		D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		D754DA3A1F3B45D5001B7040 /* UIButton+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+helpers.swift"; sourceTree = "<group>"; };
+		D75B2BCE1FCEADE8000B7968 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		D75B2BD11FCEAE05000B7968 /* IAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPIClient.swift; sourceTree = "<group>"; };
 		D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualGivingViewController.swift; sourceTree = "<group>"; };
 		D75F2CD01FACA73900F40827 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		D76021DE1F56B4DD00C24AB6 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
@@ -330,6 +334,23 @@
 				D78D44B31FC7039E00325CAF /* FAQView.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		D75B2BCD1FCEADCF000B7968 /* APIClients */ = {
+			isa = PBXGroup;
+			children = (
+				D75B2BD01FCEADF4000B7968 /* Interfaces */,
+				D75B2BCE1FCEADE8000B7968 /* APIClient.swift */,
+			);
+			path = APIClients;
+			sourceTree = "<group>";
+		};
+		D75B2BD01FCEADF4000B7968 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				D75B2BD11FCEAE05000B7968 /* IAPIClient.swift */,
+			);
+			path = Interfaces;
 			sourceTree = "<group>";
 		};
 		D75F2CCD1FAC69B400F40827 /* Manual giving */ = {
@@ -516,6 +537,7 @@
 		FB3CE6D51F14CA200055185B /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				D75B2BCD1FCEADCF000B7968 /* APIClients */,
 				D7D6FA6C1F7BE416008A5604 /* Helpers */,
 				D76021DE1F56B4DD00C24AB6 /* ios.entitlements */,
 				D740E14E1F4C5328000531BA /* Protocols */,
@@ -779,6 +801,7 @@
 				D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */,
 				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
+				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */,
 				D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
@@ -798,6 +821,7 @@
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
+				D75B2BD21FCEAE05000B7968 /* IAPIClient.swift in Sources */,
 				D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */,

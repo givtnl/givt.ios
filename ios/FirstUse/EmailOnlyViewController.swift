@@ -164,13 +164,9 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func registerTempUser() {
-        var email = ""
-        DispatchQueue.main.async {
-            email = self.email.text!
-        }
-        LoginManager.shared.checkTLD(email: email, completionHandler: { (status) in
+        LoginManager.shared.checkTLD(email: self.email.text!, completionHandler: { (status) in
             if status {
-                self.registerEmail(email: email)
+                self.registerEmail(email: self.email.text!)
             } else {
                 self.hideLoader()
                 DispatchQueue.main.async {
@@ -187,6 +183,10 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func registerEmail(email: String) {

@@ -56,6 +56,18 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
         return nil
     }
     
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.webView.uiDelegate = nil
+        self.webView.navigationDelegate = nil
+        self.webView.stopLoading()
+        self.navigationController?.delegate = nil
+        self.webView = nil
+        
+    }
+    
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("page fully loaded")
         if webView.url?.absoluteString == "https://givtapidebug.azurewebsites.net/" {

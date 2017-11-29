@@ -75,7 +75,7 @@
    <ProfileAction
       buildConfiguration = "Debug"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      savedToolIdentifier = "/Users/lenniestockman/Downloads/Xcode-beta.app/Contents/Applications/Instruments.app/Contents/Resources/templates/Zombies.tracetemplate"
+      savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
