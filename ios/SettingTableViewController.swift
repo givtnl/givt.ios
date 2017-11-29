@@ -11,6 +11,8 @@ import LGSideMenuController
 import SVProgressHUD
 
 class SettingTableViewController: UITableViewController, UIActivityItemSource {
+    var logService: LogService = LogService.shared
+    
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
         return ""
     }
@@ -106,7 +108,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     private func share() {
         /* https://stackoverflow.com/questions/13907156/uiactivityviewcontroller-taking-long-time-to-present */
         SVProgressHUD.show()
-        
+        logService.info(message: "App is being shared through the menu")
         let concurrentQueue = DispatchQueue(label: "openActivityIndicatorQueue", attributes: .concurrent)
         concurrentQueue.async {
             let message = NSLocalizedString("ShareGivtTextLong", comment: "")
@@ -126,17 +128,20 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     }
     
     private func logout() {
+        logService.info(message: "User is switching accounts")
         LoginManager.shared.logout()
         navigationManager.loadMainPage()
     }
     
     private func openHistory() {
+        logService.info(message: "User is opening history")
         let historyVC = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
         
         NavigationManager.shared.pushWithLogin(historyVC, context: self)
     }
     
     private func openGiveLimit() {
+        logService.info(message: "User is opening giving limit")
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         vc.startPoint = .amountLimit
         vc.isRegistration = false
