@@ -135,8 +135,6 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
             return
         }
         
-        
-        
         overlayView = UIView()
         overlayView?.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.9843137255, blue: 0.9843137255, alpha: 0.9)
         overlayView?.alpha = 0
@@ -193,7 +191,6 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         self.navigationController?.navigationBar.isOpaque = false
         sideMenuController?.isLeftViewSwipeGestureDisabled = true
         
-        GivtService.shared.startScanning()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

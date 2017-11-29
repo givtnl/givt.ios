@@ -173,6 +173,10 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
 }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        if !shouldDetect {
+            return
+        }
+        
         if let feaa = advertisementData[CBAdvertisementDataServiceDataKey] as! NSMutableDictionary? {
             let x = feaa.object(forKey: CBUUID(string: "FEAA"))
             if(x != nil){
@@ -193,37 +197,43 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     }
     
+
+    
+    private var shouldDetect: Bool = true
     private func beaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, batteryLevel: Int8) {
-        stopScanning()
+            stopScanning()
         
-        if(rssi != 0x7f){
-            var organisation = antennaID
-            if let idx = antennaID.index(of: ".") {
-                organisation = antennaID.substring(to: idx)
-            }
-            
-            if let _ = bestBeacon.beaconId, let bestBeaconRssi = bestBeacon.rssi {
-                /* beacon exists */
-                if bestBeaconRssi.intValue < rssi.intValue {
+            if(rssi != 0x7f){
+                var organisation = antennaID
+                if let idx = antennaID.index(of: ".") {
+                    organisation = antennaID.substring(to: idx)
+                }
+                
+                if let _ = bestBeacon.beaconId, let bestBeaconRssi = bestBeacon.rssi {
+                    /* beacon exists */
+                    if bestBeaconRssi.intValue < rssi.intValue {
+                        bestBeacon.beaconId = antennaID
+                        bestBeacon.rssi = rssi
+                        bestBeacon.organisation = organisation
+                    }
+                } else {
+                    /* new beacon */
                     bestBeacon.beaconId = antennaID
                     bestBeacon.rssi = rssi
                     bestBeacon.organisation = organisation
                 }
-            } else {
-                /* new beacon */
-                bestBeacon.beaconId = antennaID
-                bestBeacon.rssi = rssi
-                bestBeacon.organisation = organisation
+                
+                if(rssi.intValue > rssiTreshold){
+                    print("is scanning: ", String(centralManager!.isScanning))
+                    shouldDetect = false
+                    give(antennaID: antennaID)
+                    return
+                }
+                
             }
-            
-            if(rssi.intValue > rssiTreshold){
-                give(antennaID: antennaID)
-                return
-            }
- 
-        }
+            shouldDetect = true
+            startScanning()
         
-        startScanning()
     }
     
     func give(antennaID: String) {
@@ -247,6 +257,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         //todo: clear self.amountss
         self.onGivtProcessed?.onGivtProcessed(transactions: transactions)
         AudioServicesPlayAlertSound(1520)
+        shouldDetect = true
     }
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
@@ -298,39 +309,21 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     func sendPostRequest(transactions: [Transaction]) {
-        guard let url = URL(string: "https://givtapidebug.azurewebsites.net/api/Givts/Multiple") else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
         var object = ["Transactions": []]
         for transaction in transactions {
             object["Transactions"]?.append(transaction.convertToDictionary())
         }
-        
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions.prettyPrinted) else {
-            return
-        }
-        request.httpBody = httpBody
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession.shared
-        session.dataTask(with: request)
-            { (data, response, error) in
-            
-                if error != nil {
-                    self.cacheGivt(transactions: transactions)
-                    return
-                }
-                
-                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 201 {
-                    return
+        APIClient.shared.post(url: "https://givtapidebug.azurewebsites.net/api/Givts/Multiple", data: object) { (res) in
+            if let res = res {
+                if res.basicStatus == .ok {
+                    LogService.shared.info(message: "Givt succesfully sent to the server")
                 } else {
-                    //server code is niet in orde: gegeven binnen de 30s?
-                    return
+                    LogService.shared.warning(message: "Givt was not sent to server. Gave between 30s?")
                 }
+            } else {
+                self.cacheGivt(transactions: transactions)
             }
-        .resume()
+        }
     }
     
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
