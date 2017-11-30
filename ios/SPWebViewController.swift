@@ -62,12 +62,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.webView.uiDelegate = nil
-        self.webView.navigationDelegate = nil
-        self.webView.stopLoading()
-        self.navigationController?.delegate = nil
-        self.webView = nil
-        
+        NotificationCenter.default.removeObserver(self)
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -102,6 +97,15 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         SVProgressHUD.dismiss()
+    }
+    
+    deinit {
+        self.webView.uiDelegate = nil
+        self.webView.navigationDelegate = nil
+        self.webView.stopLoading()
+        self.webView.scrollView.delegate = nil
+        self.navigationController?.delegate = nil
+        self.webView = nil
     }
 
     /*
