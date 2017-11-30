@@ -16,6 +16,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
      private var _baseUrl = "https://givtapidebug.azurewebsites.net"
     let reachability = Reachability()
     
+    private var client = APIClient.shared
     private var amount: Decimal!
     private var amounts = [Decimal]()
 
@@ -328,50 +329,42 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
-            var qString = "Guid=" + userExt.guid
-            
+            var data = ["Guid" : userExt.guid]
+            let headers = ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken]
             // add &dtLastChanged when beaconList is filled
-            if let list = UserDefaults.standard.orgBeaconList {
+            if UserDefaults.standard.orgBeaconList != nil {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
                 dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
                 let dateString = dateFormatter.string(from: beaconListLastChanged)
-                qString += "&dtLastUpdated=" + dateString
+                data["dtLastUpdated"] = dateString
             }
-  
-            var request = URLRequest(url: URL(string: _baseUrl + "/api/Organisation/BeaconList" + "?" + qString)!)
-            request.httpMethod = "GET"
-            request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
-            let urlSession = URLSession.shared
-            _ = urlSession.dataTask(with: request) { data, response, error -> Void in
-                if error != nil {
-                    completionHandler(false)
-                    return
-                }
-                
-                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                    if httpStatus.statusCode == 204 {
-
+            client.get(url: "/api/Organisation/BeaconList", data: data, headers: headers, callback: { (response) in
+                if let response = response, let data = response.data {
+                    if response.statusCode == 200 {
+                        do {
+                            let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                            UserDefaults.standard.orgBeaconList = parsedData as NSDictionary
+                            print("updated beacon list")
+                            completionHandler(true)
+                        } catch let err as NSError {
+                            completionHandler(false)
+                            print(err)
+                        }
+                    } else if response.statusCode == 204 {
+                        completionHandler(false)
+                        print("list up to date")
+                    } else {
+                        completionHandler(false)
+                        print("unknow statuscode")
                     }
+                } else {
+                    print("no response from server?")
                     completionHandler(false)
-                    return
                 }
-                
-                do {
-                    let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
-                    UserDefaults.standard.orgBeaconList = parsedData as NSDictionary
-                    completionHandler(true)
-                } catch let err as NSError {
-                    completionHandler(false)
-                    return
-                }
-                
-                }.resume()
-            
+            })
         }
-
     }
-    
 }
 
 protocol GivtProcessedProtocol: class {
