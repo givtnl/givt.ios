@@ -94,6 +94,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     }
     
     private func terminate() {
+        logService.info(message: "User is terminating account via the menu")
         let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! AboutNavigationController
         NavigationManager.shared.pushWithLogin(vc, context: self)
     }
@@ -128,7 +129,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     }
     
     private func logout() {
-        logService.info(message: "User is switching accounts")
+        logService.info(message: "User is switching accounts via the menu")
         LoginManager.shared.logout()
         navigationManager.loadMainPage()
     }

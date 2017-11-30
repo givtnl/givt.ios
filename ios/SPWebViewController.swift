@@ -12,7 +12,7 @@ import SVProgressHUD
 
 
 class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate  {
-
+    private var log = LogService.shared
     var url: String!
     var webView: WKWebView!
     @IBOutlet var placeholder: UIView!
@@ -41,6 +41,8 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
         webView.leadingAnchor.constraint(equalTo: self.placeholder.leadingAnchor).isActive = true
         webView.topAnchor.constraint(equalTo: self.placeholder.topAnchor).isActive = true
         webView.scrollView.delegate = self
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,10 +72,12 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("page fully loaded")
+        
         if webView.url?.absoluteString == "https://givtapidebug.azurewebsites.net/" {
             webView.isHidden = true
             LoginManager.shared.finishMandateSigning(completionHandler: { (success) in
                 if success {
+                    self.log.warning(message: "Finished mandate signing")
                     DispatchQueue.main.async {
                         UIApplication.shared.applicationIconBadgeNumber = 0
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
@@ -81,6 +85,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
                     }
                     
                 } else {
+                    self.log.warning(message: "Could not finish mandate signing")
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("MandateSigingFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in

@@ -11,7 +11,7 @@ import CoreBluetooth
 import SafariServices
 
 class ScanViewController: UIViewController, GivtProcessedProtocol {
-
+    private var log = LogService.shared
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var gif: UIImageView!
     @IBOutlet var bodyText: UILabel!
@@ -61,6 +61,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     
     func showWebsite(url: String){
         if !AppServices.shared.connectedToNetwork() {
+            self.log.info(message: "User gave offline")
             let vc = storyboard?.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
             self.show(vc, sender: self)
             return
@@ -70,6 +71,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
             return //be safe
         }
         
+        self.log.info(message: "Going to safari")
         if #available(iOS 10.0, *) {
             DispatchQueue.main.async {
                 UIApplication.shared.open(url, options: [:], completionHandler: { (status) in
@@ -118,6 +120,8 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         GivtService.shared.onGivtProcessed = self
+        
+        self.log.info(message: "Scanpage is now showing")
         
         if(GivtService.shared.bluetoothEnabled){
             GivtService.shared.startScanning()

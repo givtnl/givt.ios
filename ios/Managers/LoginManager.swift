@@ -78,6 +78,7 @@ class LoginManager {
         authClient.post(url: "/oauth2/token", data: params) { (res) in
             if let temp = res, let data = temp.data {
                 if res?.basicStatus == .ok {
+                    self.log.info(message: "Logging user in")
                     do
                     {
                         let parsedData = try JSONSerialization.jsonObject(with: data) as! [String:Any]
@@ -92,18 +93,22 @@ class LoginManager {
                             UserDefaults.standard.isLoggedIn = true
                             self.getUserExt(completionHandler: { (status) in
                                 if status {
+                                    self.log.info(message: "User logged in")
                                     self.checkMandate(completionHandler: { (status) in
                                         self.userClaim = self.isFullyRegistered ? .give : .giveOnce
                                         completionHandler(true, nil, nil)
                                     })
                                 } else {
+                                    self.log.warning(message: "Strange: we can log in but cannot retrieve our own user data")
                                     completionHandler(true, nil, nil)
                                 }
                             })
                         } else {
+                            self.log.error(message: "Could not parse access_token/.expires field")
                             completionHandler(false, nil, nil)
                         }
                     } catch let error as NSError {
+                        self.log.error(message: "Could not parse data")
                         print(error)
                         completionHandler(false, nil, nil)
                     }
@@ -181,7 +186,6 @@ class LoginManager {
                 
                 self.registerAllData(completionHandler: { success in
                     if success {
-                        print("user succesfully registered")
                         _ = self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
                             
                             if success {
@@ -222,11 +226,13 @@ class LoginManager {
             "City":  _registrationUser.city,
             "PostalCode":  _registrationUser.postalCode,
             "CountryCode":  _registrationUser.countryCode ]
-    
+        
         client.post(url: "/api/UsersExtension", data: params) { (res) in
             if res != nil {
+                self.log.info(message: "user succesfully registered")
                 completionHandler(true)
             } else {
+                self.log.info(message: "not able to store extra data")
                 completionHandler(false)
             }
         }
@@ -272,6 +278,7 @@ class LoginManager {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                     UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil && parsedData["Signed"] as! Int == 1)
+                    self.log.info(message: "Mandate signed: " + UserDefaults.standard.mandateSigned)
                     if let status = parsedData["PayProvMandateStatus"] as? String {
                         completionHandler(status)
                     } else {
@@ -312,12 +319,14 @@ class LoginManager {
                 
                 completionHandler(b)
             } else {
+                LogService.shared.error(message: "Could not check TLD")
                 completionHandler(false)
             }
         }
     }
     
     func doesEmailExist(email: String, completionHandler: @escaping (String) -> Void) {
+        self.log.info(message: "Checking if email exists")
         client.get(url: "/api/Users/Check", data: ["email" : email]) { (status) in
             if let temp = status, let text = temp.text, temp.basicStatus == .ok {
                 var userExt = UserExt()
@@ -329,12 +338,14 @@ class LoginManager {
                 let s = text.replacingOccurrences(of: "\"", with: "")
                 completionHandler(s)
             } else {
+                self.log.error(message: "Could not check wether email exists")
                 completionHandler("")
             }
         }
     }
     
     func sendSupport(text: String, completionHandler: @escaping (Bool) -> Void) {
+        self.log.info(message: "Sending a message to support")
         let params = ["Guid" : UserDefaults.standard.userExt.guid, "Message" : text, "Subject" : "Feedback app"]
         client.post(url: "/api/SendSupport", data: params) { (success) in
             completionHandler((success != nil))
@@ -342,27 +353,32 @@ class LoginManager {
     }
     
     func terminateAccount(completionHandler: @escaping (Bool) -> Void) {
+        self.log.info(message: "Terminating account")
         client.post(url: "/api/users/unregister", data: [:]) { (status) in
             if (status != nil) {
                 self.logout()
                 completionHandler(true)
             } else {
+                self.log.error(message: "Could not terminate account")
                 completionHandler(false)
             }
         }
     }
     
     func registerPin(pin: String, completionHandler: @escaping (Bool) -> Void) {
+        self.log.info(message: "Setting pin")
         client.put(url: "/api/Users/Pin", data: ["PinHash" : pin]) { (res) in
             if let res = res, res.basicStatus == .ok {
                 completionHandler(true)
             } else {
+                self.log.error(message: "Could not set pin")
                 completionHandler(false)
             }
         }
     }
     
     func logout() {
+        self.log.info(message: "App settings got cleared by either terminate account/switch account")
         UserDefaults.standard.viewedCoachMarks = 0
         UserDefaults.standard.amountLimit = 0
         UserDefaults.standard.bearerToken = ""

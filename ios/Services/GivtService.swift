@@ -13,6 +13,7 @@ import AudioToolbox
 
 final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate {
     static let shared = GivtService()
+    private var log = LogService.shared
      private var _baseUrl = "https://givtapidebug.azurewebsites.net"
     let reachability = Reachability()
     
@@ -93,13 +94,15 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         let reachability = note.object as! Reachability
         
         if reachability.isReachable {
+            log.info(message: "App got connected")
             for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
+                log.info(message: "Started processing chached Givts")
                 sendPostRequest(transactions: [element])
                 UserDefaults.standard.offlineGivts.remove(at: index)
                 print(UserDefaults.standard.offlineGivts)
             }
         } else {
-            print("not reachable")
+            log.info(message: "App got disconnected")
         }
     }
     
@@ -112,6 +115,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     func startScanning() {
+        log.info(message: "Started scanning")
         isScanning = true
         centralManager.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
         DispatchQueue.main.async {
@@ -121,6 +125,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     func stopScanning() {
         if(isScanning){
+            log.info(message: "Stopped scanning")
             isScanning = false
             centralManager.stopScan()
         }
@@ -202,6 +207,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     private var shouldDetect: Bool = true
     private func beaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, batteryLevel: Int8) {
+        self.log.info(message: "Beacon detected w/ antennaId \(antennaId) and rssi \(rssi)")
             stopScanning()
         
             if(rssi != 0x7f){
@@ -298,7 +304,9 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
 
     
     private func cacheGivt(transactions: [Transaction]){
+        
         for tr in transactions {
+            self.log.info(message: "Cached givt")
             UserDefaults.standard.offlineGivts.append(tr)
         }
         
@@ -316,9 +324,9 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         APIClient.shared.post(url: "https://givtapidebug.azurewebsites.net/api/Givts/Multiple", data: object) { (res) in
             if let res = res {
                 if res.basicStatus == .ok {
-                    LogService.shared.info(message: "Givt succesfully sent to the server")
+                    self.log.info(message: "Posted Givt to the server")
                 } else {
-                    LogService.shared.warning(message: "Givt was not sent to server. Gave between 30s?")
+                    self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
                 }
             } else {
                 self.cacheGivt(transactions: transactions)

@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 
 class SPInfoViewController: UIViewController {
-
+    private var log = LogService.shared
     @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var headerText: UILabel!
     @IBOutlet var explanation: UILabel!
@@ -51,6 +51,7 @@ class SPInfoViewController: UIViewController {
         let mandate = Mandate(signatory: signatory)
         LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
             if slimPayUrl == "" {
+                self.log.warning(message: "Mandate url is empty, what is going on?")
                 SVProgressHUD.dismiss()
                 let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
@@ -61,6 +62,7 @@ class SPInfoViewController: UIViewController {
                 }
                 
             } else {
+                self.log.info(message: "Mandate flow will now start")
                 DispatchQueue.main.async {
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
                     vc.url = slimPayUrl
