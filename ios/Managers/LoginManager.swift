@@ -13,6 +13,7 @@ import SwiftClient
 class LoginManager {
     
     private var client: APIClient = APIClient.shared
+    private var authClient: AuthClient = AuthClient.shared
     private var log: LogService = LogService.shared
     
     enum UserClaims: Int {
@@ -54,8 +55,8 @@ class LoginManager {
         //post request to amount limit api
         let url = "/api/users"
         let data = ["GUID" : (UserDefaults.standard.userExt?.guid)!, "AmountLimit" : String(amountLimit)]
-        client.put(url: url, data: data) { (success) in
-            if success {
+        client.put(url: url, data: data) { (res) in
+            if let res = res, res.basicStatus == .ok {
                 UserDefaults.standard.amountLimit = amountLimit
                 completionHandler(true)
             } else {
@@ -74,19 +75,18 @@ class LoginManager {
             
         }
         
-        client.postForm(url: "/oauth2/token", data: params) { (res) in
+        authClient.post(url: "/oauth2/token", data: params) { (res) in
             if let temp = res, let data = temp.data {
                 if res?.basicStatus == .ok {
                     do
                     {
                         let parsedData = try JSONSerialization.jsonObject(with: data) as! [String:Any]
                         print(parsedData)
-                        if(parsedData["access_token"] != nil) {
-                            UserDefaults.standard.bearerToken = parsedData["access_token"]! as! String
-                            let strTime = parsedData[".expires"] as? String
-                            let dateFormatter = DateFormatter()
-                            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                            let date = dateFormatter.date(from: strTime!)
+                        if let accessToken = parsedData["access_token"] as? String, let expiration = parsedData[".expires"] as? String {
+                            UserDefaults.standard.bearerToken = accessToken
+                            let df = DateFormatter()
+                            df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                            let date = df.date(from: expiration)
                             UserDefaults.standard.bearerExpiration = date!
                             self.userClaim = .give
                             UserDefaults.standard.isLoggedIn = true
@@ -100,14 +100,12 @@ class LoginManager {
                                     completionHandler(true, nil, nil)
                                 }
                             })
-                            return
+                        } else {
+                            completionHandler(false, nil, nil)
                         }
-                        completionHandler(false, nil, nil)
-                        return
                     } catch let error as NSError {
                         print(error)
                         completionHandler(false, nil, nil)
-                        return
                     }
                 } else {
                     if let dataString = String(data: data, encoding: String.Encoding.utf8),
@@ -135,10 +133,12 @@ class LoginManager {
     }
     
     private func getUserExt(completionHandler: @escaping (Bool) -> Void) {
-        client.get(url: "/api/UsersExtension", data: [:]) { (res) in
-            if let res = res, let data = res.data {
+        let headers = ["Content-Type" : "application/x-www-form-urlencoded; charset=utf-8", "Authorization" : "Bearer " + UserDefaults.standard.bearerToken]
+        client.get(url: "/api/UsersExtension", data: [:], headers: headers) { (res) in
+            if let res = res, let data = res.data, res.basicStatus == .ok {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                    print(parsedData)
                     let newConfig = UserDefaults.standard.userExt
                     newConfig?.guid = parsedData["GUID"] as! String
                     UserDefaults.standard.userExt = newConfig
@@ -265,8 +265,10 @@ class LoginManager {
     }
     
     func checkMandate(completionHandler: @escaping (String) -> Void) {
-        client.get(url: "/api/Mandate", data: ["UserID" : (UserDefaults.standard.userExt?.guid)!], headers: ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken]) { (response) in
-            if let temp = response, let data = temp.data {
+        let headers = ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken]
+        let data = ["UserID" : (UserDefaults.standard.userExt?.guid)!]
+        client.get(url: "/api/Mandate", data: data, headers: headers) { (response) in
+            if let temp = response, let data = temp.data, temp.basicStatus == .ok {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                     UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil && parsedData["Signed"] as! Int == 1)
@@ -305,7 +307,7 @@ class LoginManager {
     func checkTLD(email: String, completionHandler: @escaping (Bool) -> Void) {
         LogService.shared.info(message: "Checking TLD for email " + email)
         client.get(url: "/api/CheckTLD", data: ["email" : email]) { (status) in
-            if let temp = status, let text = temp.text {
+            if let temp = status, let text = temp.text, temp.basicStatus == .ok {
                 let b: Bool = NSString(string: text).boolValue
                 
                 completionHandler(b)
@@ -317,7 +319,7 @@ class LoginManager {
     
     func doesEmailExist(email: String, completionHandler: @escaping (String) -> Void) {
         client.get(url: "/api/Users/Check", data: ["email" : email]) { (status) in
-            if let temp = status, let text = temp.text {
+            if let temp = status, let text = temp.text, temp.basicStatus == .ok {
                 var userExt = UserExt()
                 if let settings = UserDefaults.standard.userExt {
                     userExt = settings
@@ -351,8 +353,12 @@ class LoginManager {
     }
     
     func registerPin(pin: String, completionHandler: @escaping (Bool) -> Void) {
-        client.put(url: "/api/Users/Pin", data: ["PinHash" : pin]) { (success) in
-            completionHandler(success)
+        client.put(url: "/api/Users/Pin", data: ["PinHash" : pin]) { (res) in
+            if let res = res, res.basicStatus == .ok {
+                completionHandler(true)
+            } else {
+                completionHandler(false)
+            }
         }
     }
     

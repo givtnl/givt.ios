@@ -27,31 +27,22 @@ class APIClient: IAPIClient {
             .set(headers: headers)
             .query(query: data)
             .end(done: { (res:Response) in
-                if res.basicStatus == .ok {
-                    callback(res)
-                } else {
-                    self.log.warning(message: "GET on " + url + " returned status " + String(res.statusCode))
-                    callback(nil)
-                }
+                callback(res)
             }) { (err) in
                 self.log.error(message: "GET on " + url + " returned an error")
                 callback(nil)
         }
     }
     
-    func put(url: String, data: [String: String], callback: @escaping (Bool) -> Void) {
+    func put(url: String, data: [String: String], callback: @escaping (Response?) -> Void) {
         log.info(message: "PUT on " + url)
         client.put(url: url).send(data: data)
             .set(headers: ["Content-Type" : "application/x-www-form-urlencoded; charset=utf-8", "Authorization" : "Bearer " + UserDefaults.standard.bearerToken])
             .end(done: { (res:Response) in
-                if res.basicStatus == .ok {
-                    callback(true)
-                } else {
-                    callback(false)
-                }
+                callback(res)
             }) { (err) in
                 print(err)
-                callback(false)
+                callback(nil)
         }
     }
     
@@ -67,19 +58,4 @@ class APIClient: IAPIClient {
                 print(err)
         }
     }
-    
-    func postForm(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) {
-        log.info(message: "POST on " + url)
-        client.post(url: url)
-            .set(headers: ["Accept" : "application/json", "Content-Type" : "application/json", "Authorization" : "Bearer " + UserDefaults.standard.bearerToken])
-            .type(type: "form")
-            .send(data: data)
-            .end(done: { (res:Response) in
-                callback(res)
-            }) { (err) in
-                callback(nil)
-                print(err)
-        }
-    }
-    
 }
