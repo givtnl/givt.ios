@@ -8,6 +8,7 @@
 
 import Foundation
 import SystemConfiguration
+import UIKit
 
 class AppServices {
     static let shared = AppServices()
@@ -34,5 +35,9 @@ class AppServices {
         let needsConnection = flags.contains(.connectionRequired)
         
         return (isReachable && !needsConnection)
+    }
+    
+    func notificationsEnabled() -> Bool {
+        return UIApplication.shared.isRegisteredForRemoteNotifications && !UIApplication.shared.currentUserNotificationSettings?.types.isEmpty
     }
 }

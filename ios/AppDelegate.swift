@@ -17,6 +17,7 @@ import AppCenterCrashes
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var logService: LogService = LogService.shared
+    var appService: AppServices = AppServices.shared
     private var reachability: Reachability!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -39,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         logService.info(message: "App started")
+        logService.info(message: "User notification status: " + appService.notificationsEnabled())
         
         return true
     }
