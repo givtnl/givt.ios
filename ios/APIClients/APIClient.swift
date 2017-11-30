@@ -29,8 +29,8 @@ class APIClient: IAPIClient {
             .end(done: { (res:Response) in
                 callback(res)
             }) { (err) in
-                self.log.error(message: "GET on " + url + " returned an error")
                 callback(nil)
+                self.log.error(message: "GET on " + url + " failed somehow")
         }
     }
     
@@ -43,6 +43,7 @@ class APIClient: IAPIClient {
             }) { (err) in
                 print(err)
                 callback(nil)
+                self.log.error(message: "PUT on " + url + " failed somehow")
         }
     }
     
@@ -56,6 +57,7 @@ class APIClient: IAPIClient {
             }) { (err) in
                 callback(nil)
                 print(err)
+                self.log.error(message: "POST on " + url + " failed somehow")
         }
     }
 }

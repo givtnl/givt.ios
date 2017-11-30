@@ -30,6 +30,7 @@ class AuthClient {
             }) { (err) in
                 callback(nil)
                 print(err)
+                self.log.error(message: "POST on " + url + " failed somehow")
         }
     }
 }
