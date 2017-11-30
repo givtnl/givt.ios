@@ -207,7 +207,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     private var shouldDetect: Bool = true
     private func beaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, batteryLevel: Int8) {
-        self.log.info(message: "Beacon detected w/ antennaId \(antennaId) and rssi \(rssi)")
+        self.log.info(message: "Beacon detected w/ antennaId \(antennaID) and rssi \(rssi)")
             stopScanning()
         
             if(rssi != 0x7f){

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
@@ -32,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
         
         self.reachability = Reachability.init()
-        //Fabric.with([Crashlytics.self])
         do {
             try self.reachability.startNotifier()
         } catch {
@@ -40,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         logService.info(message: "App started")
-        logService.info(message: "User notification status: " + appService.notificationsEnabled())
+        logService.info(message: "User notification status: " + String(appService.notificationsEnabled()))
         
         return true
     }

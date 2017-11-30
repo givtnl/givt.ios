@@ -59,7 +59,6 @@
 		D77667EE1F39F12900649157 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77667ED1F39F12900649157 /* LoginManager.swift */; };
 		D77FC1BE1F86668A0031C49F /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77FC1BD1F86668A0031C49F /* Country.swift */; };
 		D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F2E31F7D331B00348D7A /* TermsViewController.swift */; };
-		D782F2E81F7D37A400348D7A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D782F2E71F7D37A400348D7A /* NetworkExtension.framework */; };
 		D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */; };
 		D787AE2B1FCD91680004BDB1 /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D787AE2A1FCD91680004BDB1 /* LogService.swift */; };
 		D787AE2D1FCD9EFB0004BDB1 /* ILogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D787AE2C1FCD9EFB0004BDB1 /* ILogService.swift */; };
@@ -102,8 +101,6 @@
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
 		D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB252E1F5065C20011A14E /* Reachability.swift */; };
-		FB19533D1F56DDEC00172CD3 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB19533B1F56DDEC00172CD3 /* Fabric.framework */; };
-		FB19533E1F56DDEC00172CD3 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
 		FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6DE1F14CA200055185B /* Main.storyboard */; };
 		FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6E11F14CA200055185B /* Assets.xcassets */; };
@@ -247,9 +244,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB19533E1F56DDEC00172CD3 /* Crashlytics.framework in Frameworks */,
-				D782F2E81F7D37A400348D7A /* NetworkExtension.framework in Frameworks */,
-				FB19533D1F56DDEC00172CD3 /* Fabric.framework in Frameworks */,
 				076E20FBE3B8BF04AAFAEDDA /* Pods_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,8 +576,6 @@
 				FB3CE6D11F14CA200055185B /* Resources */,
 				FB07A9611F14D97200FD9C1A /* Embed Frameworks */,
 				FB07A9621F14D98300FD9C1A /* CopyFiles */,
-				D7FB252C1F505AC30011A14E /* ShellScript */,
-				FBED5D0F1F56B9E300FBE595 /* ShellScript */,
 				659DE9286974F2CA2FB67EB4 /* [CP] Embed Pods Frameworks */,
 				08120246E96A28C70D6AF7FF /* [CP] Copy Pods Resources */,
 			);
@@ -717,20 +709,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios/Pods-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D7FB252C1F505AC30011A14E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Reachability.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "";
-		};
 		E2633E18AD078D6C0397369F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -748,19 +726,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		FBED5D0F1F56B9E300FBE595 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 47739bcc227f5e97130e39731652ddbe81e4ad86 1f7226b1e333c498b2405e71ca2835f49ade24d8c8aaabe5b3dc8a46c6d993c6";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1004,7 +969,6 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1027,7 +991,6 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

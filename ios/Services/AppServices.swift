@@ -38,6 +38,6 @@ class AppServices {
     }
     
     func notificationsEnabled() -> Bool {
-        return UIApplication.shared.isRegisteredForRemoteNotifications && !UIApplication.shared.currentUserNotificationSettings?.types.isEmpty
+        return UIApplication.shared.isRegisteredForRemoteNotifications && !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty)!
     }
 }

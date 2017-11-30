@@ -278,7 +278,7 @@ class LoginManager {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                     UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil && parsedData["Signed"] as! Int == 1)
-                    self.log.info(message: "Mandate signed: " + UserDefaults.standard.mandateSigned)
+                    self.log.info(message: "Mandate signed: " + String(UserDefaults.standard.mandateSigned))
                     if let status = parsedData["PayProvMandateStatus"] as? String {
                         completionHandler(status)
                     } else {
