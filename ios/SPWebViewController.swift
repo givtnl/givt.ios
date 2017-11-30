@@ -77,7 +77,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
             webView.isHidden = true
             LoginManager.shared.finishMandateSigning(completionHandler: { (success) in
                 if success {
-                    self.log.warning(message: "Finished mandate signing")
+                    self.log.info(message: "Finished mandate signing")
                     DispatchQueue.main.async {
                         UIApplication.shared.applicationIconBadgeNumber = 0
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
