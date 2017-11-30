@@ -46,9 +46,9 @@ class SPInfoViewController: UIViewController {
         }
         
         SVProgressHUD.show()
-        var userInfo = UserDefaults.standard.userExt!
-        var signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)
-        var mandate = Mandate(signatory: signatory)
+        let userInfo = UserDefaults.standard.userExt!
+        let signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)
+        let mandate = Mandate(signatory: signatory)
         LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
             if slimPayUrl == "" {
                 SVProgressHUD.dismiss()

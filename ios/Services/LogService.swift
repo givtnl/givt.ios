@@ -71,8 +71,9 @@ final class LogService: ILogService {
         get {
             #if DEBUG
                 return "GivtApp.iOS.Debug"
+            #else
+                return "GivtApp.iOS.Production"
             #endif
-            return "GivtApp.iOS.Production"
         }
     }
     

@@ -60,7 +60,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             value = 0
         }
         amountLimit.text = String(value)
-        if (amountLimit.text?.characters.count)! >= 5 {
+        if (amountLimit.text?.count)! >= 5 {
             amountLimit.text = amountLimit.text?.substring(0..<5)
         }
         
@@ -167,16 +167,14 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         
     @objc func keyboardWillShow(notification: NSNotification) {
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
-        let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
-        UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: [], animations: {
+        UIView.animate(withDuration: TimeInterval(truncating: duration), delay: 0, options: [], animations: {
             self.btnSave.alpha = 0
         }, completion: nil)
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
-        let curve = notification.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as! NSNumber
-        UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: [], animations: {
+        UIView.animate(withDuration: TimeInterval(truncating: duration), delay: 0, options: [], animations: {
             self.btnSave.alpha = 1
         }, completion: nil)
     }

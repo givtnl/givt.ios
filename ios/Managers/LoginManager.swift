@@ -146,7 +146,7 @@ class LoginManager {
                     completionHandler(true)
                 } catch let err as NSError {
                     completionHandler(false)
-                    return
+                    print(err)
                 }
             } else {
                 completionHandler(false)
@@ -224,7 +224,7 @@ class LoginManager {
             "CountryCode":  _registrationUser.countryCode ]
     
         client.post(url: "/api/UsersExtension", data: params) { (res) in
-            if let res = res {
+            if res != nil {
                 completionHandler(true)
             } else {
                 completionHandler(false)

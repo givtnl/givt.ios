@@ -44,7 +44,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     var lastGivtOrg: String {
         get {
-            if let orgId = bestBeacon.organisation {
+            if bestBeacon.organisation != nil {
                 for organisationBeacon in orgBeaconList {
                     if let org = organisationBeacon["EddyNameSpace"] as? String, let orgName = organisationBeacon["OrgName"] as? String, org == bestBeacon.organisation {
                         return orgName
@@ -207,7 +207,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             if(rssi != 0x7f){
                 var organisation = antennaID
                 if let idx = antennaID.index(of: ".") {
-                    organisation = antennaID.substring(to: idx)
+                    organisation = String(antennaID[..<idx])
                 }
                 
                 if let _ = bestBeacon.beaconId, let bestBeaconRssi = bestBeacon.rssi {
@@ -244,12 +244,11 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         df.timeZone = TimeZone(abbreviation: "UTC")
         let date = df.string(from: Date())
         print(date)
-        let collectId = "1"
         var transactions = [Transaction]()
         for (index, value) in amounts.enumerated() {
             if value >= 0.50 {
                 print(value)
-                var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
+                let newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
                 transactions.append(newTransaction)
             }
         }
@@ -263,13 +262,13 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
         let queryString = "https://www.givtapp.net/download?code="
-        if let startPosition = scanResult.index(of: queryString) {
-            let identifierEncoded = scanResult.substring(from: queryString.endIndex)
+        if scanResult.index(of: queryString) != nil {
+            let identifierEncoded = String(scanResult[queryString.endIndex...])
             if let decoded = identifierEncoded.base64Decoded() {
                 /* mimic bestbeacon */
                 bestBeacon.beaconId = decoded
                 if let idx = decoded.index(of: ".") {
-                    bestBeacon.organisation = decoded.substring(to: idx)
+                    bestBeacon.organisation = String(decoded[..<idx])
                 } else {
                     bestBeacon.organisation = decoded
                 }
@@ -289,7 +288,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     func giveManually(antennaId: String) {
         bestBeacon.beaconId = antennaId
         if let idx = antennaId.index(of: ".") {
-            bestBeacon.organisation = antennaId.substring(to: idx)
+            bestBeacon.organisation = String(antennaId[..<idx])
         } else {
             bestBeacon.organisation = antennaId
         }

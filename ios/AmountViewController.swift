@@ -157,7 +157,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func tappedView(_ sender: UITapGestureRecognizer) {
-        var tagIdx = sender.view?.tag
+        let tagIdx = sender.view?.tag
         selectView(tagIdx!)
     }
 
@@ -248,7 +248,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
 
      @IBAction func actionGive(_ sender: Any) {
         for index in 0..<numberOfCollects {
-            print(amountLabels[index].text)
             let parsedDecimal = Decimal(string: (amountLabels[index].text!.replacingOccurrences(of: ",", with: ".")))!
             
             if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
