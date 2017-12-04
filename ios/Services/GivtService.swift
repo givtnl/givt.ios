@@ -321,23 +321,50 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         for transaction in transactions {
             object["Transactions"]?.append(transaction.convertToDictionary())
         }
-        APIClient.shared.post(url: "https://givtapidebug.azurewebsites.net/api/Givts/Multiple", data: object) { (res) in
-            if let res = res {
-                if res.basicStatus == .ok {
-                    self.log.info(message: "Posted Givt to the server")
-                } else {
-                    self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
+        do {
+            try client.post(url: "https://givtapidebug.azurewebsites.net/api/Givts/Multiple", data: object) { (res) in
+                    if let res = res {
+                        if res.basicStatus == .ok {
+                            self.log.info(message: "Posted Givt to the server")
+                        } else {
+                            self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
+                        }
+                    } else {
+                        self.cacheGivt(transactions: transactions)
+                    }
+                }
+            
+        } catch {
+            print()
+        }
+        
+    }
+    
+    
+    func getGivts(callback: @escaping ([HistoryTransaction]) -> Void) {
+        client.get(url: "/api/Givts", data: [:]) { (response) in
+            var models: [HistoryTransaction] = []
+            if let response = response, let data = response.data, response.statusCode == 202 {
+                do
+                {
+                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
+                    for x in parsedData {
+                        models.append(HistoryTransaction(dictionary: x as Dictionary<String, Any>)!)
+                    }
+                    callback(models)
+                } catch {
+                    callback(models)
                 }
             } else {
-                self.cacheGivt(transactions: transactions)
+                callback(models)
             }
         }
     }
     
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
+        
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
             var data = ["Guid" : userExt.guid]
-            let headers = ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken]
             // add &dtLastChanged when beaconList is filled
             if UserDefaults.standard.orgBeaconList != nil {
                 let dateFormatter = DateFormatter()
@@ -346,7 +373,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 let dateString = dateFormatter.string(from: beaconListLastChanged)
                 data["dtLastUpdated"] = dateString
             }
-            client.get(url: "/api/Organisation/BeaconList", data: data, headers: headers, callback: { (response) in
+            client.get(url: "/api/Organisation/BeaconList", data: data, callback: { (response) in
                 if let response = response, let data = response.data {
                     if response.statusCode == 200 {
                         do {
