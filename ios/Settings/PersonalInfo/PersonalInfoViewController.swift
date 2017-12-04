@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
 
+    private let loginManager = LoginManager.shared
+    private let validationHelper = ValidationHelper.shared
     @IBOutlet var btnNext: CustomButton!
     @IBOutlet var iban: CustomUITextField!
     @IBOutlet var cellphone: UILabel!
@@ -23,6 +26,45 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         didSet {
            // iban.text = ibanNumber?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
           //  iban.text = ibanNumber?.replacingOccurrences(of: " ", with: "").replace((.{4})/," ")
+            iban.text = ibanNumber
+            if let i = ibanNumber {
+                let isIbanValid = validationHelper.isIbanChecksumValid(i)
+                iban.setState(b: isIbanValid)
+                btnNext.isEnabled = isIbanValid
+            }
+            iban.text = ibanNumber?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField.returnKeyType == .done {
+            save()
+        }
+        return false
+    }
+    @IBAction func next(_ sender: Any) {
+        save()
+    }
+    
+    func save() {
+        SVProgressHUD.show()
+        loginManager.changeIban(iban: ibanNumber!.replacingOccurrences(of: " ", with: "")) { (success) in
+            SVProgressHUD.dismiss()
+            if success {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    
+                }))
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+            }
         }
     }
     
@@ -34,6 +76,10 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
         
         iban.delegate = self
         iban.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

@@ -430,6 +430,40 @@ class LoginManager {
         
     }
     
+    func changeIban(iban: String, callback: @escaping (Bool) -> Void) {
+        self.log.info(message: "Changing iban")
+        if let settings = UserDefaults.standard.userExt {
+            let params = [
+                "Guid":  settings.guid,
+                "IBAN":  iban,
+                "PhoneNumber":  settings.mobileNumber,
+                "FirstName":  settings.firstName,
+                "LastName":  settings.lastName,
+                "Address":  settings.address,
+                "City":  settings.city,
+                "PostalCode":  settings.postalCode,
+                "CountryCode":  settings.countryCode,
+                "AmountLimit" : String(UserDefaults.standard.amountLimit)]
+            
+            do {
+                
+                try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
+                    if let res = res, res.basicStatus == .ok {
+                        settings.iban = iban
+                        UserDefaults.standard.userExt = settings
+                        callback(true)
+                    } else {
+                        callback(false)
+                    }
+                })
+            } catch {
+                callback(false)
+                log.error(message: "Something went wrong trying to change IBAN")
+            }
+        }
+        
+    }
+    
     func logout() {
         self.log.info(message: "App settings got cleared by either terminate account/switch account")
         UserDefaults.standard.viewedCoachMarks = 0
