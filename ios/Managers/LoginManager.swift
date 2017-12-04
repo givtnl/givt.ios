@@ -130,6 +130,8 @@ class LoginManager {
                             completionHandler(false, nil, nil)
                         }
                     }
+                } else {
+                    completionHandler(false, nil, "NoInternet")
                 }
                 
             }
