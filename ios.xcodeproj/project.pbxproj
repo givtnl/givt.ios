@@ -72,6 +72,8 @@
 		D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */; };
 		D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */; };
 		D7ADE24F1FBCE90500198F28 /* DecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */; };
+		D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */; };
+		D7B715501FD0529D00666262 /* Personal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7B7154F1FD0529D00666262 /* Personal.storyboard */; };
 		D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */; };
 		D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */; };
 		D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */; };
@@ -200,6 +202,8 @@
 		D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminateAccountViewController.swift; sourceTree = "<group>"; };
 		D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionViewController.swift; sourceTree = "<group>"; };
+		D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
+		D7B7154F1FD0529D00666262 /* Personal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Personal.storyboard; sourceTree = "<group>"; };
 		D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pincode.storyboard; sourceTree = "<group>"; };
 		D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavViewController.swift; sourceTree = "<group>"; };
 		D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
@@ -317,17 +321,8 @@
 		D758CD141F1513EC00EF0F19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
-				D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */,
-				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
-				D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */,
-				D77511BC1F713B56004F91F6 /* AgendaNumber.swift */,
-				D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */,
-				D78E9E141F8F970A0073F8EB /* Balloon.swift */,
-				D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */,
-				D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */,
-				D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */,
-				D78D44B31FC7039E00325CAF /* FAQView.swift */,
+				D7B715531FD151E800666262 /* Custom Views */,
+				D7B715521FD151CD00666262 /* Pages */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -448,6 +443,40 @@
 			path = TerminateAccount;
 			sourceTree = "<group>";
 		};
+		D7B7154C1FD0526500666262 /* PersonalInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */,
+			);
+			path = PersonalInfo;
+			sourceTree = "<group>";
+		};
+		D7B715521FD151CD00666262 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */,
+				D7B7154F1FD0529D00666262 /* Personal.storyboard */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		D7B715531FD151E800666262 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
+				D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */,
+				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
+				D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */,
+				D77511BC1F713B56004F91F6 /* AgendaNumber.swift */,
+				D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */,
+				D78E9E141F8F970A0073F8EB /* Balloon.swift */,
+				D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */,
+				D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */,
+				D78D44B31FC7039E00325CAF /* FAQView.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
 		D7CCC0691FC427E6006A6A4F /* Pincode */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +508,7 @@
 		D7DBED9F1FBC4AB000D78E2A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				D7B7154C1FD0526500666262 /* PersonalInfo */,
 				D7CCC0691FC427E6006A6A4F /* Pincode */,
 				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
 				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
@@ -653,6 +683,7 @@
 				D7F131661F75574D00E25A68 /* Registration.storyboard in Resources */,
 				D75141951F9796170016B71F /* Welcome.storyboard in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
+				D7B715501FD0529D00666262 /* Personal.storyboard in Resources */,
 				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
 				D7EAF10E1FB491B000DFE5CC /* icon.png in Resources */,
 				D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */,
@@ -768,6 +799,7 @@
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */,
 				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
+				D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColor+HexConversion.swift in Sources */,
