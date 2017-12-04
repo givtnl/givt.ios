@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 
 class HistoryViewController: UIViewController {
-
+    private var givtService = GivtService.shared
     @IBOutlet var scrlHistory: UIScrollView!
     @IBOutlet var infoButton: UIButton!
     
@@ -27,7 +27,7 @@ class HistoryViewController: UIViewController {
         SVProgressHUD.setBackgroundColor(.white)
         SVProgressHUD.show()
         
-        getHistory(completionHandler: {_ in })
+        getHistory()
     }
 
     func clearView() {
@@ -443,86 +443,52 @@ class HistoryViewController: UIViewController {
     
     var models: [HistoryTransaction] = []
     
-    func getHistory(completionHandler: @escaping (Bool) -> ()) {
-        let url = URL(string: "https://givtapidebug.azurewebsites.net/api/Givts")!
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        /*
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: transaction.convertToDictionary(), options: JSONSerialization.WritingOptions.prettyPrinted) else {
-            return
-        }
-        request.httpBody = httpBody*/
-        request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession.shared
-        session.dataTask(with: request)
-        { (data, response, error) in
-            
-            if error != nil {
-                //self.cacheGivt(transaction: transaction)
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 202 {
-                do
-                {
-                    let parsedData = try JSONSerialization.jsonObject(with: data!) as! [[String: Any]]
-                    for x in parsedData {
-                        self.models.append(HistoryTransaction(dictionary: x as Dictionary<String, Any>)!)
+    func getHistory() {
+        givtService.getGivts { (historyTransactions) in
+            if historyTransactions.count == 0 {
+                DispatchQueue.main.async {
+                    self.renderNoGivts()
+                }
+            } else {
+                var objects = historyTransactions.sorted {
+                    if $0.timestamp.getYear() != $1.timestamp.getYear() {
+                        return $0.timestamp.getYear() > $1.timestamp.getYear()
                     }
                     
-                    self.models.sort {
-                        if $0.timestamp.getYear() != $1.timestamp.getYear() {
-                            return $0.timestamp.getYear() > $1.timestamp.getYear()
-                        }
-                        
-                        if $0.timestamp.getMonth() != $1.timestamp.getMonth() {
-                            return $0.timestamp.getMonth() > $1.timestamp.getMonth()
-                        }
-                        
-                        if $0.timestamp.getDay() != $1.timestamp.getDay() {
-                            return $0.timestamp.getDay() > $1.timestamp.getDay()
-                        }
-                        
-                        if $0.orgName != $1.orgName {
-                            return $0.orgName < $1.orgName
-                        }
-                        
-                        if $0.timestamp.getHour() != $1.timestamp.getHour() {
-                            return $0.timestamp.getHour() < $1.timestamp.getHour()
-                        }
-                        
-                        if $0.timestamp.getMinutes() != $1.timestamp.getMinutes() {
-                            return $0.timestamp.getMinutes() < $1.timestamp.getMinutes()
-                        }
-                        
-                        if $0.timestamp.getSeconds() != $1.timestamp.getSeconds() {
-                            return $0.timestamp.getSeconds() < $1.timestamp.getSeconds()
-                        }
-
-                        return $0.collectId < $1.collectId
+                    if $0.timestamp.getMonth() != $1.timestamp.getMonth() {
+                        return $0.timestamp.getMonth() > $1.timestamp.getMonth()
                     }
-
-                    DispatchQueue.main.async {
-                        self.models.count == 0 ? self.renderNoGivts() : self.renderBlocks(objects: self.models)
+                    
+                    if $0.timestamp.getDay() != $1.timestamp.getDay() {
+                        return $0.timestamp.getDay() > $1.timestamp.getDay()
                     }
-                }
-                catch let err as NSError {
-                    print(err)
+                    
+                    if $0.orgName != $1.orgName {
+                        return $0.orgName < $1.orgName
+                    }
+                    
+                    if $0.timestamp.getHour() != $1.timestamp.getHour() {
+                        return $0.timestamp.getHour() < $1.timestamp.getHour()
+                    }
+                    
+                    if $0.timestamp.getMinutes() != $1.timestamp.getMinutes() {
+                        return $0.timestamp.getMinutes() < $1.timestamp.getMinutes()
+                    }
+                    
+                    if $0.timestamp.getSeconds() != $1.timestamp.getSeconds() {
+                        return $0.timestamp.getSeconds() < $1.timestamp.getSeconds()
+                    }
+                    
+                    return $0.collectId < $1.collectId
                 }
                 
-                completionHandler(true)
-                return
-            } else {
-                //server code is niet in orde: gegeven binnen de 30s?
-                print(response ?? "")
-                completionHandler(false)
-                return
+                DispatchQueue.main.async {
+                    self.renderBlocks(objects: objects)
+                }
+                    
+                    
             }
-            }
-            .resume()
+        }
     }
     
     func renderLabel(model: HistoryTransaction, index: Int) {
