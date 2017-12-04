@@ -53,8 +53,12 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             switchButton.isSelected = true
             checkAll()
         #endif
-        emailaddress.text = UserDefaults.standard.userExt.email
-        emailaddress.isEnabled = false
+        if let settings = UserDefaults.standard.userExt {
+            emailaddress.text = settings.email
+            emailaddress.isEnabled = false
+        }
+        
+        
         //emailaddress.color
         self.regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
     }
