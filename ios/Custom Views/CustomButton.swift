@@ -28,6 +28,14 @@ class CustomButton: UIButton{
     
     }
     
+    @IBInspectable var disabledColor: UIColor? {
+        didSet {
+            if let c = disabledColor {
+                self.setBackgroundColor(color: c, forState: .disabled)
+            }
+        }
+    }
+    
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius
