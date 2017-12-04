@@ -46,7 +46,11 @@ class LoginManager {
     }
     
     public var isBearerStillValid: Bool {
-        return Date() < UserDefaults.standard.bearerExpiration && !UserDefaults.standard.bearerToken.isEmpty
+        if let bearerToken = UserDefaults.standard.bearerToken, Date() < UserDefaults.standard.bearerExpiration && !bearerToken.isEmpty {
+            return true
+        } else {
+            return false
+        }
     }
     
     private var _baseUrl = "https://givtapidebug.azurewebsites.net"
@@ -55,14 +59,19 @@ class LoginManager {
         //post request to amount limit api
         let url = "/api/users"
         let data = ["GUID" : (UserDefaults.standard.userExt?.guid)!, "AmountLimit" : String(amountLimit)]
-        client.put(url: url, data: data) { (res) in
-            if let res = res, res.basicStatus == .ok {
-                UserDefaults.standard.amountLimit = amountLimit
-                completionHandler(true)
-            } else {
-                completionHandler(false)
+        do {
+            try client.put(url: url, data: data) { (res) in
+                if let res = res, res.basicStatus == .ok {
+                    UserDefaults.standard.amountLimit = amountLimit
+                    completionHandler(true)
+                } else {
+                    completionHandler(false)
+                }
             }
+        } catch {
+            log.error(message: "Something went wrong saving amount limit")
         }
+        
 
     }
     
@@ -74,56 +83,61 @@ class LoginManager {
             params = ["grant_type":"password","userName":email,"password":password]
             
         }
-        
-        authClient.post(url: "/oauth2/token", data: params) { (res) in
-            if let temp = res, let data = temp.data {
-                if res?.basicStatus == .ok {
-                    self.log.info(message: "Logging user in")
-                    do
-                    {
-                        let parsedData = try JSONSerialization.jsonObject(with: data) as! [String:Any]
-                        print(parsedData)
-                        if let accessToken = parsedData["access_token"] as? String, let expiration = parsedData[".expires"] as? String {
-                            UserDefaults.standard.bearerToken = accessToken
-                            let df = DateFormatter()
-                            df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                            let date = df.date(from: expiration)
-                            UserDefaults.standard.bearerExpiration = date!
-                            self.userClaim = .give
-                            UserDefaults.standard.isLoggedIn = true
-                            self.getUserExt(completionHandler: { (status) in
-                                if status {
-                                    self.log.info(message: "User logged in")
-                                    self.checkMandate(completionHandler: { (status) in
-                                        self.userClaim = self.isFullyRegistered ? .give : .giveOnce
+        do {
+            try authClient.post(url: "/oauth2/token", data: params) { (res) in
+                if let temp = res, let data = temp.data {
+                    if res?.basicStatus == .ok {
+                        self.log.info(message: "Logging user in")
+                        do
+                        {
+                            let parsedData = try JSONSerialization.jsonObject(with: data) as! [String:Any]
+                            print(parsedData)
+                            if let accessToken = parsedData["access_token"] as? String, let expiration = parsedData[".expires"] as? String {
+                                UserDefaults.standard.bearerToken = accessToken
+                                let df = DateFormatter()
+                                df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                                let date = df.date(from: expiration)
+                                UserDefaults.standard.bearerExpiration = date!
+                                self.userClaim = .give
+                                UserDefaults.standard.isLoggedIn = true
+                                self.getUserExt(completionHandler: { (status) in
+                                    if status {
+                                        self.log.info(message: "User logged in")
+                                        self.checkMandate(completionHandler: { (status) in
+                                            self.userClaim = self.isFullyRegistered ? .give : .giveOnce
+                                            completionHandler(true, nil, nil)
+                                        })
+                                    } else {
+                                        self.log.warning(message: "Strange: we can log in but cannot retrieve our own user data")
                                         completionHandler(true, nil, nil)
-                                    })
-                                } else {
-                                    self.log.warning(message: "Strange: we can log in but cannot retrieve our own user data")
-                                    completionHandler(true, nil, nil)
-                                }
-                            })
-                        } else {
-                            self.log.error(message: "Could not parse access_token/.expires field")
+                                    }
+                                })
+                            } else {
+                                self.log.error(message: "Could not parse access_token/.expires field")
+                                completionHandler(false, nil, nil)
+                            }
+                        } catch let error as NSError {
+                            self.log.error(message: "Could not parse data")
+                            print(error)
                             completionHandler(false, nil, nil)
                         }
-                    } catch let error as NSError {
-                        self.log.error(message: "Could not parse data")
-                        print(error)
-                        completionHandler(false, nil, nil)
-                    }
-                } else {
-                    if let dataString = String(data: data, encoding: String.Encoding.utf8),
-                        let dict = self.convertToDictionary(text: dataString),
-                        let err_description = dict["error_description"] as? String {
-                        completionHandler(false, nil, err_description)
                     } else {
-                        completionHandler(false, nil, nil)
+                        if let dataString = String(data: data, encoding: String.Encoding.utf8),
+                            let dict = self.convertToDictionary(text: dataString),
+                            let err_description = dict["error_description"] as? String {
+                            completionHandler(false, nil, err_description)
+                        } else {
+                            completionHandler(false, nil, nil)
+                        }
                     }
                 }
+                
             }
-            
+        } catch {
+            log.error(message: "Something went wrong logging in.")
         }
+        
+        
     }
     
     func convertToDictionary(text: String) -> [String: Any]? {
@@ -138,14 +152,22 @@ class LoginManager {
     }
     
     private func getUserExt(completionHandler: @escaping (Bool) -> Void) {
-        let headers = ["Content-Type" : "application/x-www-form-urlencoded; charset=utf-8", "Authorization" : "Bearer " + UserDefaults.standard.bearerToken]
-        client.get(url: "/api/UsersExtension", data: [:], headers: headers) { (res) in
+        client.get(url: "/api/UsersExtension", data: [:]) { (res) in
             if let res = res, let data = res.data, res.basicStatus == .ok {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                     print(parsedData)
                     let newConfig = UserDefaults.standard.userExt
                     newConfig?.guid = parsedData["GUID"] as! String
+                    newConfig?.mobileNumber = parsedData["PhoneNumber"] as! String
+                    newConfig?.firstName = parsedData["FirstName"] as! String
+                    newConfig?.lastName = parsedData["LastName"] as! String
+                    newConfig?.email = parsedData["Email"] as! String
+                    newConfig?.address = parsedData["Address"] as! String
+                    newConfig?.postalCode = parsedData["PostalCode"] as! String
+                    newConfig?.city = parsedData["City"] as! String
+                    newConfig?.countryCode = String(describing: parsedData["CountryCode"] as! Int)
+                    newConfig?.iban = parsedData["IBAN"] as! String
                     UserDefaults.standard.userExt = newConfig
                     UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 500 : parsedData["AmountLimit"] as! Int
                     completionHandler(true)
@@ -177,42 +199,48 @@ class LoginManager {
         
         //TODO: checkTLD
         
-        client.post(url: "/api/Users", data: ["email":_registrationUser.email,"password":_registrationUser.password]) { (res) in
-            if let res = res, let data = res.data {
-                self._registrationUser.guid = String(bytes: data, encoding: .utf8)!
-                let newConfig = UserDefaults.standard.userExt!
-                newConfig.guid = self._registrationUser.guid
-                UserDefaults.standard.userExt = newConfig
-                
-                self.registerAllData(completionHandler: { success in
-                    if success {
-                        _ = self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
-                            
-                            if success {
-                                if self._registrationUser.iban == AppConstants.tempIban.replacingOccurrences(of: " ", with: "") {
-                                    
-                                }
+        do {
+            try client.post(url: "/api/Users", data: ["email":_registrationUser.email,"password":_registrationUser.password]) { (res) in
+                if let res = res, let data = res.data {
+                    self._registrationUser.guid = String(bytes: data, encoding: .utf8)!
+                    let newConfig = UserDefaults.standard.userExt!
+                    newConfig.guid = self._registrationUser.guid
+                    UserDefaults.standard.userExt = newConfig
+                    
+                    self.registerAllData(completionHandler: { success in
+                        if success {
+                            _ = self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
                                 
-                                self._registrationUser.password = ""
-                                UserDefaults.standard.userExt = self._registrationUser
-                                self.saveAmountLimit(500, completionHandler: { (status) in
-                                    //niets
-                                })
-                                UserDefaults.standard.amountLimit = 500
-                                completionHandler(true)
-                            } else {
-                                completionHandler(false)
-                            }
-                        })
-                    } else {
-                        completionHandler(false)
-                    }
-                })
-                
-            } else {
-                completionHandler(false)
+                                if success {
+                                    if self._registrationUser.iban == AppConstants.tempIban.replacingOccurrences(of: " ", with: "") {
+                                        
+                                    }
+                                    
+                                    self._registrationUser.password = ""
+                                    UserDefaults.standard.userExt = self._registrationUser
+                                    self.saveAmountLimit(500, completionHandler: { (status) in
+                                        //niets
+                                    })
+                                    UserDefaults.standard.amountLimit = 500
+                                    completionHandler(true)
+                                } else {
+                                    completionHandler(false)
+                                }
+                            })
+                        } else {
+                            completionHandler(false)
+                        }
+                    })
+                    
+                } else {
+                    completionHandler(false)
+                }
             }
+        } catch {
+            log.error(message: "Something went wrong creating extra data")
         }
+        
+        
     }
     
     func registerAllData(completionHandler: @escaping (Bool) -> Void) {
@@ -227,25 +255,36 @@ class LoginManager {
             "PostalCode":  _registrationUser.postalCode,
             "CountryCode":  _registrationUser.countryCode ]
         
-        client.post(url: "/api/UsersExtension", data: params) { (res) in
-            if res != nil {
-                self.log.info(message: "user succesfully registered")
-                completionHandler(true)
-            } else {
-                self.log.info(message: "not able to store extra data")
-                completionHandler(false)
+        do {
+            try client.post(url: "/api/UsersExtension", data: params) { (res) in
+                if res != nil {
+                    self.log.info(message: "user succesfully registered")
+                    completionHandler(true)
+                } else {
+                    self.log.info(message: "not able to store extra data")
+                    completionHandler(false)
+                }
             }
+        } catch {
+            log.error(message: "Something went wrong trying to register all user data")
         }
+        
+        
     }
     
     func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (String?) -> Void) {
-        client.post(url: "/api/Mandate", data: mandate.toDictionary()) { (response) in
-            if let response = response, let text = response.text {
-                completionHandler(text)
-            } else {
-                completionHandler(nil)
+        do {
+            try client.post(url: "/api/Mandate", data: mandate.toDictionary()) { (response) in
+                if let response = response, let text = response.text {
+                    completionHandler(text)
+                } else {
+                    completionHandler(nil)
+                }
             }
+        } catch {
+            log.error(message: "Something wrong requesting mandate url")
         }
+        
     }
     
     func finishMandateSigning(completionHandler: @escaping (Bool) -> Void) {
@@ -271,9 +310,8 @@ class LoginManager {
     }
     
     func checkMandate(completionHandler: @escaping (String) -> Void) {
-        let headers = ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken]
         let data = ["UserID" : (UserDefaults.standard.userExt?.guid)!]
-        client.get(url: "/api/Mandate", data: data, headers: headers) { (response) in
+        client.get(url: "/api/Mandate", data: data) { (response) in
             if let temp = response, let data = temp.data, temp.basicStatus == .ok {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
@@ -347,34 +385,49 @@ class LoginManager {
     func sendSupport(text: String, completionHandler: @escaping (Bool) -> Void) {
         self.log.info(message: "Sending a message to support")
         let params = ["Guid" : UserDefaults.standard.userExt.guid, "Message" : text, "Subject" : "Feedback app"]
-        client.post(url: "/api/SendSupport", data: params) { (success) in
-            completionHandler((success != nil))
+        do {
+            try client.post(url: "/api/SendSupport", data: params) { (success) in
+                completionHandler((success != nil))
+            }
+        } catch {
+            log.error(message: "Something went wrong sending a message to support")
         }
+        
     }
     
     func terminateAccount(completionHandler: @escaping (Bool) -> Void) {
         self.log.info(message: "Terminating account")
-        client.post(url: "/api/users/unregister", data: [:]) { (status) in
-            if (status != nil) {
-                self.logout()
-                completionHandler(true)
-            } else {
-                self.log.error(message: "Could not terminate account")
-                completionHandler(false)
+        do {
+            try client.post(url: "/api/users/unregister", data: [:]) { (status) in
+                if (status != nil) {
+                    self.logout()
+                    completionHandler(true)
+                } else {
+                    self.log.error(message: "Could not terminate account")
+                    completionHandler(false)
+                }
             }
+        } catch {
+            log.error(message: "Something went wrong terminating account")
         }
+        
     }
     
     func registerPin(pin: String, completionHandler: @escaping (Bool) -> Void) {
         self.log.info(message: "Setting pin")
-        client.put(url: "/api/Users/Pin", data: ["PinHash" : pin]) { (res) in
-            if let res = res, res.basicStatus == .ok {
-                completionHandler(true)
-            } else {
-                self.log.error(message: "Could not set pin")
-                completionHandler(false)
+        do {
+            try client.put(url: "/api/Users/Pin", data: ["PinHash" : pin]) { (res) in
+                if let res = res, res.basicStatus == .ok {
+                    completionHandler(true)
+                } else {
+                    self.log.error(message: "Could not set pin")
+                    completionHandler(false)
+                }
             }
+        } catch {
+            log.error(message: "Something went wrong registering the pin")
         }
+        
     }
     
     func logout() {
