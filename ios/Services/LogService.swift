@@ -33,11 +33,7 @@ final class LogService: ILogService {
     
     private func log(logLevel: LogLevel, message: String, method: String, file: String, linenr: Int) {
         print(message)
-        var email = "unknown user"
-        if let userExt = UserDefaults.standard.userExt {
-            email = userExt.email
-        }
-        let data = [ "email" : email,
+        let data = [ "email" : (UserDefaults.standard.userExt != nil) ? UserDefaults.standard.userExt!.email : "",
                     "file" : NSURL(fileURLWithPath: file).lastPathComponent,
                     "level" : logLevel.rawValue,
                     "lnr" : String(describing: linenr),
