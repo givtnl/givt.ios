@@ -54,9 +54,13 @@ class APIClient: IAPIClient {
     
     func post(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) throws {
         log.info(message: "POST on " + url)
+        var headers: [String: String] = [:]
+        if let bearerToken = UserDefaults.standard.bearerToken {
+            headers["Authorization"] = "Bearer " + bearerToken
+        }
         client.post(url: url)
             .type(type: "json")
-            .set(headers: ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken!])
+            .set(headers: headers)
             .send(data: data)
             .end(done: { (res:Response) in
                 callback(res)

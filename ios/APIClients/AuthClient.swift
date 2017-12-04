@@ -22,7 +22,7 @@ class AuthClient {
     func post(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) throws {
         log.info(message: "POST on " + url)
         client.post(url: url)
-            .set(headers: ["Accept" : "application/json", "Content-Type" : "application/json", "Authorization" : "Bearer " + UserDefaults.standard.bearerToken!])
+            .set(headers: ["Accept" : "application/json", "Content-Type" : "application/json"])
             .type(type: "form")
             .send(data: data)
             .end(done: { (res:Response) in
