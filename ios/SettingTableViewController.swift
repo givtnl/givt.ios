@@ -11,6 +11,8 @@ import LGSideMenuController
 import SVProgressHUD
 
 class SettingTableViewController: UITableViewController, UIActivityItemSource {
+    var logService: LogService = LogService.shared
+    
     func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
         return ""
     }
@@ -60,7 +62,13 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() })
-        let userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
+        var userInfoSetting: Setting?
+        if LoginManager.shared.isFullyRegistered {
+            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.changePersonalInfo() })
+        } else {
+            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
+        }
+        
         
         if !tempUser {
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
@@ -69,20 +77,26 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
             let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
             items =
                 [
-                    [givts, limit, userInfoSetting, accessCode],
+                    [givts, limit, userInfoSetting!, accessCode],
                     [changeAccount, screwAccount],
                     [aboutGivt, shareGivt],
                 ]
         } else {
             items =
                 [
-                    [userInfoSetting],
+                    [userInfoSetting!],
                     [changeAccount],
                     [aboutGivt, shareGivt],
             ]
         }
     
         self.tableView.reloadData()
+    }
+    
+    private func changePersonalInfo() {
+        UserDefaults.standard.bearerToken = ""
+        let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateInitialViewController()
+        navigationManager.pushWithLogin(vc!, context: self)
     }
     
     private func pincode() {
@@ -92,6 +106,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     }
     
     private func terminate() {
+        logService.info(message: "User is terminating account via the menu")
         let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! AboutNavigationController
         NavigationManager.shared.pushWithLogin(vc, context: self)
     }
@@ -106,7 +121,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     private func share() {
         /* https://stackoverflow.com/questions/13907156/uiactivityviewcontroller-taking-long-time-to-present */
         SVProgressHUD.show()
-        
+        logService.info(message: "App is being shared through the menu")
         let concurrentQueue = DispatchQueue(label: "openActivityIndicatorQueue", attributes: .concurrent)
         concurrentQueue.async {
             let message = NSLocalizedString("ShareGivtTextLong", comment: "")
@@ -126,17 +141,20 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     }
     
     private func logout() {
+        logService.info(message: "User is switching accounts via the menu")
         LoginManager.shared.logout()
         navigationManager.loadMainPage()
     }
     
     private func openHistory() {
+        logService.info(message: "User is opening history")
         let historyVC = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
         
         NavigationManager.shared.pushWithLogin(historyVC, context: self)
     }
     
     private func openGiveLimit() {
+        logService.info(message: "User is opening giving limit")
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         vc.startPoint = .amountLimit
         vc.isRegistration = false

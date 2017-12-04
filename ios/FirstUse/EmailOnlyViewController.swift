@@ -57,7 +57,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.setBackgroundColor(.white)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+
         NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
     }
     
@@ -73,6 +73,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y -= keyboardSize.height
         }
+       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
@@ -80,6 +81,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y += keyboardSize.height
         }
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -164,13 +166,9 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func registerTempUser() {
-        var email = ""
-        DispatchQueue.main.async {
-            email = self.email.text!
-        }
-        LoginManager.shared.checkTLD(email: email, completionHandler: { (status) in
+        LoginManager.shared.checkTLD(email: self.email.text!, completionHandler: { (status) in
             if status {
-                self.registerEmail(email: email)
+                self.registerEmail(email: self.email.text!)
             } else {
                 self.hideLoader()
                 DispatchQueue.main.async {
@@ -187,6 +185,10 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     func registerEmail(email: String) {

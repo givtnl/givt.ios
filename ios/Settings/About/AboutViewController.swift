@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class AboutViewController: UIViewController {
 
+    private var log = LogService.shared
     @IBOutlet var titleText: UILabel!
     @IBOutlet var versionNumber: UILabel!
     @IBOutlet var giveFeedback: UILabel!
@@ -110,6 +111,7 @@ NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHid
                     self.present(alert, animated: true, completion:  {})
                 }
             } else {
+                self.log.warning(message: "Could not send message to support")
                 let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("SomethingWentWrong", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in
                     self.dismiss(animated: true, completion: {})

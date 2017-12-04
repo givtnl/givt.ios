@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-
+    private var log = LogService.shared
     @IBOutlet var subTitle: UILabel!
     @IBOutlet var navBar: UINavigationItem!
     @IBOutlet var topRight: UIImageView!
@@ -50,6 +50,8 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         
         qrView.layer.addSublayer(video)
         session.startRunning()
+        
+        log.info(message: "QR Page is shown")
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,13 +60,12 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        if metadataObjects != nil && metadataObjects.count > 0 {
+        if metadataObjects.count > 0 {
             if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject {
                 if object.type == AVMetadataObject.ObjectType.qr {
                     session.stopRunning()
-                    print("QR Code scanned")
+                    self.log.info(message: "Scanned a QR")
                     giveManually(scanResult: object.stringValue!)
-                    print(object.stringValue)
                 }
             }
         }
@@ -73,6 +74,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     func giveManually(scanResult: String) {
         GivtService.shared.giveQR(scanResult: scanResult) { (success) in
             if !success {
+                self.log.warning(message: "Could not scan QR: " + scanResult )
                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
                 let action = UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: .default) { (ok) in
                     self.session.startRunning()

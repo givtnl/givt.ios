@@ -13,9 +13,11 @@ import AudioToolbox
 
 final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate {
     static let shared = GivtService()
+    private var log = LogService.shared
      private var _baseUrl = "https://givtapidebug.azurewebsites.net"
     let reachability = Reachability()
     
+    private var client = APIClient.shared
     private var amount: Decimal!
     private var amounts = [Decimal]()
 
@@ -43,7 +45,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     var lastGivtOrg: String {
         get {
-            if let orgId = bestBeacon.organisation {
+            if bestBeacon.organisation != nil {
                 for organisationBeacon in orgBeaconList {
                     if let org = organisationBeacon["EddyNameSpace"] as? String, let orgName = organisationBeacon["OrgName"] as? String, org == bestBeacon.organisation {
                         return orgName
@@ -92,13 +94,15 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         let reachability = note.object as! Reachability
         
         if reachability.isReachable {
+            log.info(message: "App got connected")
             for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
+                log.info(message: "Started processing chached Givts")
                 sendPostRequest(transactions: [element])
                 UserDefaults.standard.offlineGivts.remove(at: index)
                 print(UserDefaults.standard.offlineGivts)
             }
         } else {
-            print("not reachable")
+            log.info(message: "App got disconnected")
         }
     }
     
@@ -111,6 +115,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     func startScanning() {
+        log.info(message: "Started scanning")
         isScanning = true
         centralManager.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
         DispatchQueue.main.async {
@@ -120,6 +125,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     func stopScanning() {
         if(isScanning){
+            log.info(message: "Stopped scanning")
             isScanning = false
             centralManager.stopScan()
         }
@@ -130,28 +136,53 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager){
-        switch (central.state) {
-        case .poweredOff:
-            print("CBCentralManagerState.PoweredOff")
-            NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
-        case .unauthorized:
-            print("CBCentralManagerState.Unauthorized")
-            break
-        case .unknown:
-            print("CBCentralManagerState.Unknown")
-            break
-        case .poweredOn:
-            print("CBCentralManagerState.PoweredOn")
-            NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
-        case .resetting:
-            print("CBCentralManagerState.Resetting")
-        case CBManagerState.unsupported:
-            print("CBCentralManagerState.Unsupported")
-            break
+        if #available(iOS 10.0, *) {
+            switch (central.state) {
+            case .poweredOff:
+                print("CBCentralManagerState.PoweredOff")
+                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
+            case .unauthorized:
+                print("CBCentralManagerState.Unauthorized")
+                break
+            case .unknown:
+                print("CBCentralManagerState.Unknown")
+                break
+            case .poweredOn:
+                print("CBCentralManagerState.PoweredOn")
+                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
+            case .resetting:
+                print("CBCentralManagerState.Resetting")
+            case CBManagerState.unsupported:
+                print("CBCentralManagerState.Unsupported")
+                break
+            }
+        } else {
+            switch (central.state) {
+            case .poweredOff:
+                print("CBCentralManagerState.PoweredOff")
+                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
+            case .unauthorized:
+                print("CBCentralManagerState.Unauthorized")
+                break
+            case .unknown:
+                print("CBCentralManagerState.Unknown")
+                break
+            case .poweredOn:
+                print("CBCentralManagerState.PoweredOn")
+                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
+            case .resetting:
+                print("CBCentralManagerState.Resetting")
+            default:
+                break
+            }
         }
 }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        if !shouldDetect {
+            return
+        }
+        
         if let feaa = advertisementData[CBAdvertisementDataServiceDataKey] as! NSMutableDictionary? {
             let x = feaa.object(forKey: CBUUID(string: "FEAA"))
             if(x != nil){
@@ -172,37 +203,44 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     }
     
+
+    
+    private var shouldDetect: Bool = true
     private func beaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, batteryLevel: Int8) {
-        stopScanning()
+        self.log.info(message: "Beacon detected w/ antennaId \(antennaID) and rssi \(rssi)")
+            stopScanning()
         
-        if(rssi != 0x7f){
-            var organisation = antennaID
-            if let idx = antennaID.index(of: ".") {
-                organisation = antennaID.substring(to: idx)
-            }
-            
-            if let _ = bestBeacon.beaconId, let bestBeaconRssi = bestBeacon.rssi {
-                /* beacon exists */
-                if bestBeaconRssi.intValue < rssi.intValue {
+            if(rssi != 0x7f){
+                var organisation = antennaID
+                if let idx = antennaID.index(of: ".") {
+                    organisation = String(antennaID[..<idx])
+                }
+                
+                if let _ = bestBeacon.beaconId, let bestBeaconRssi = bestBeacon.rssi {
+                    /* beacon exists */
+                    if bestBeaconRssi.intValue < rssi.intValue {
+                        bestBeacon.beaconId = antennaID
+                        bestBeacon.rssi = rssi
+                        bestBeacon.organisation = organisation
+                    }
+                } else {
+                    /* new beacon */
                     bestBeacon.beaconId = antennaID
                     bestBeacon.rssi = rssi
                     bestBeacon.organisation = organisation
                 }
-            } else {
-                /* new beacon */
-                bestBeacon.beaconId = antennaID
-                bestBeacon.rssi = rssi
-                bestBeacon.organisation = organisation
+                
+                if(rssi.intValue > rssiTreshold){
+                    print("is scanning: ", String(centralManager!.isScanning))
+                    shouldDetect = false
+                    give(antennaID: antennaID)
+                    return
+                }
+                
             }
-            
-            if(rssi.intValue > rssiTreshold){
-                give(antennaID: antennaID)
-                return
-            }
- 
-        }
+            shouldDetect = true
+            startScanning()
         
-        startScanning()
     }
     
     func give(antennaID: String) {
@@ -212,12 +250,11 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         df.timeZone = TimeZone(abbreviation: "UTC")
         let date = df.string(from: Date())
         print(date)
-        let collectId = "1"
         var transactions = [Transaction]()
         for (index, value) in amounts.enumerated() {
             if value >= 0.50 {
                 print(value)
-                var newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
+                let newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
                 transactions.append(newTransaction)
             }
         }
@@ -226,17 +263,18 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         //todo: clear self.amountss
         self.onGivtProcessed?.onGivtProcessed(transactions: transactions)
         AudioServicesPlayAlertSound(1520)
+        shouldDetect = true
     }
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
         let queryString = "https://www.givtapp.net/download?code="
-        if let startPosition = scanResult.index(of: queryString) {
-            let identifierEncoded = scanResult.substring(from: queryString.endIndex)
+        if scanResult.index(of: queryString) != nil {
+            let identifierEncoded = String(scanResult[queryString.endIndex...])
             if let decoded = identifierEncoded.base64Decoded() {
                 /* mimic bestbeacon */
                 bestBeacon.beaconId = decoded
                 if let idx = decoded.index(of: ".") {
-                    bestBeacon.organisation = decoded.substring(to: idx)
+                    bestBeacon.organisation = String(decoded[..<idx])
                 } else {
                     bestBeacon.organisation = decoded
                 }
@@ -256,7 +294,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     func giveManually(antennaId: String) {
         bestBeacon.beaconId = antennaId
         if let idx = antennaId.index(of: ".") {
-            bestBeacon.organisation = antennaId.substring(to: idx)
+            bestBeacon.organisation = String(antennaId[..<idx])
         } else {
             bestBeacon.organisation = antennaId
         }
@@ -266,7 +304,9 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
 
     
     private func cacheGivt(transactions: [Transaction]){
+        
         for tr in transactions {
+            self.log.info(message: "Cached givt")
             UserDefaults.standard.offlineGivts.append(tr)
         }
         
@@ -277,87 +317,88 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     func sendPostRequest(transactions: [Transaction]) {
-        guard let url = URL(string: "https://givtapidebug.azurewebsites.net/api/Givts/Multiple") else { return }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
         var object = ["Transactions": []]
         for transaction in transactions {
             object["Transactions"]?.append(transaction.convertToDictionary())
         }
-        
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions.prettyPrinted) else {
-            return
-        }
-        request.httpBody = httpBody
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let session = URLSession.shared
-        session.dataTask(with: request)
-            { (data, response, error) in
+        do {
+            try client.post(url: "https://givtapidebug.azurewebsites.net/api/Givts/Multiple", data: object) { (res) in
+                    if let res = res {
+                        if res.basicStatus == .ok {
+                            self.log.info(message: "Posted Givt to the server")
+                        } else {
+                            self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
+                        }
+                    } else {
+                        self.cacheGivt(transactions: transactions)
+                    }
+                }
             
-                if error != nil {
-                    self.cacheGivt(transactions: transactions)
-                    return
+        } catch {
+            print()
+        }
+        
+    }
+    
+    
+    func getGivts(callback: @escaping ([HistoryTransaction]) -> Void) {
+        client.get(url: "/api/Givts", data: [:]) { (response) in
+            var models: [HistoryTransaction] = []
+            if let response = response, let data = response.data, response.statusCode == 202 {
+                do
+                {
+                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [[String: Any]]
+                    for x in parsedData {
+                        models.append(HistoryTransaction(dictionary: x as Dictionary<String, Any>)!)
+                    }
+                    callback(models)
+                } catch {
+                    callback(models)
                 }
-                
-                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode == 201 {
-                    return
-                } else {
-                    //server code is niet in orde: gegeven binnen de 30s?
-                    return
-                }
+            } else {
+                callback(models)
             }
-        .resume()
+        }
     }
     
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
+        
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
-            var qString = "Guid=" + userExt.guid
-            
+            var data = ["Guid" : userExt.guid]
             // add &dtLastChanged when beaconList is filled
-            if let list = UserDefaults.standard.orgBeaconList {
+            if UserDefaults.standard.orgBeaconList != nil {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
                 dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
                 let dateString = dateFormatter.string(from: beaconListLastChanged)
-                qString += "&dtLastUpdated=" + dateString
+                data["dtLastUpdated"] = dateString
             }
-  
-            var request = URLRequest(url: URL(string: _baseUrl + "/api/Organisation/BeaconList" + "?" + qString)!)
-            request.httpMethod = "GET"
-            request.setValue("Bearer " + UserDefaults.standard.bearerToken, forHTTPHeaderField: "Authorization")
-            let urlSession = URLSession.shared
-            _ = urlSession.dataTask(with: request) { data, response, error -> Void in
-                if error != nil {
-                    completionHandler(false)
-                    return
-                }
-                
-                if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                    if httpStatus.statusCode == 204 {
-
+            client.get(url: "/api/Organisation/BeaconList", data: data, callback: { (response) in
+                if let response = response, let data = response.data {
+                    if response.statusCode == 200 {
+                        do {
+                            let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                            UserDefaults.standard.orgBeaconList = parsedData as NSDictionary
+                            print("updated beacon list")
+                            completionHandler(true)
+                        } catch let err as NSError {
+                            completionHandler(false)
+                            print(err)
+                        }
+                    } else if response.statusCode == 204 {
+                        completionHandler(false)
+                        print("list up to date")
+                    } else {
+                        completionHandler(false)
+                        print("unknow statuscode")
                     }
+                } else {
+                    print("no response from server?")
                     completionHandler(false)
-                    return
                 }
-                
-                do {
-                    let parsedData = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
-                    UserDefaults.standard.orgBeaconList = parsedData as NSDictionary
-                    completionHandler(true)
-                } catch let err as NSError {
-                    completionHandler(false)
-                    return
-                }
-                
-                }.resume()
-            
+            })
         }
-
     }
-    
 }
 
 protocol GivtProcessedProtocol: class {

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Fabric
-import Crashlytics
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
@@ -16,6 +14,8 @@ import AppCenterCrashes
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    var logService: LogService = LogService.shared
+    var appService: AppServices = AppServices.shared
     private var reachability: Reachability!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -30,14 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
         
         self.reachability = Reachability.init()
-        //Fabric.with([Crashlytics.self])
         do {
             try self.reachability.startNotifier()
         } catch {
             
         }
         
-        LogService.shared.info(message: "App started")
+        logService.info(message: "App started")
+        logService.info(message: "User notification status: " + String(appService.notificationsEnabled()))
         
         return true
     }
@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        logService.info(message: "App paused")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -58,10 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        logService.info(message: "App resuming")
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        logService.info(message: "App is terminating")
     }
     
     @objc func reachabilityChanged(notification:Notification) {
@@ -69,11 +72,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if reachability.isReachable {
             if reachability.isReachableViaWiFi {
                 print("Reachable via WiFi")
+                logService.info(message: "App got connected over WiFi")
             } else {
                 print("Reachable via Cellular")
+                logService.info(message: "App got connected over Cellular")
             }
         } else {
             print("Network not reachable")
+            logService.info(message: "App got disconnected")
         }
     }
     
@@ -95,6 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 message += " " + NSLocalizedString("JoinGivt", comment: "")
                 let activityViewController = UIActivityViewController(activityItems: [message as NSString], applicationActivities: nil)
                 topController.present(activityViewController, animated: true, completion: nil)
+                logService.info(message: "A Givt is being shared via the Safari-flow")
             }
         
         }

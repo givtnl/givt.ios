@@ -9,7 +9,7 @@
 import UIKit
 
 class SelectOrgViewController: UIViewController {
-
+    private var log = LogService.shared
     @IBOutlet var btnGive: CustomButton!
     @IBOutlet var overigWidth: NSLayoutConstraint!
     @IBOutlet var actiesWidth: NSLayoutConstraint!
@@ -29,6 +29,7 @@ class SelectOrgViewController: UIViewController {
     
     @IBOutlet var navBar: UINavigationItem!
     @IBAction func btnGive(_ sender: Any) {
+        log.info(message: "Giving manually from the list")
         GivtService.shared.giveManually(antennaId: (selectedView?.organisationId)!)
     }
     override func viewDidLoad() {

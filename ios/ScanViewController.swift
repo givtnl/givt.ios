@@ -11,7 +11,7 @@ import CoreBluetooth
 import SafariServices
 
 class ScanViewController: UIViewController, GivtProcessedProtocol {
-
+    private var log = LogService.shared
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var gif: UIImageView!
     @IBOutlet var bodyText: UILabel!
@@ -61,6 +61,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     
     func showWebsite(url: String){
         if !AppServices.shared.connectedToNetwork() {
+            self.log.info(message: "User gave offline")
             let vc = storyboard?.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
             self.show(vc, sender: self)
             return
@@ -70,6 +71,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
             return //be safe
         }
         
+        self.log.info(message: "Going to safari")
         if #available(iOS 10.0, *) {
             DispatchQueue.main.async {
                 UIApplication.shared.open(url, options: [:], completionHandler: { (status) in
@@ -99,7 +101,12 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
             message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
-            UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+            } else {
+                UIApplication.shared.openURL(URL(string:UIApplicationOpenSettingsURLString)!)
+            }
+            
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
             //push geeflimiet pagina
@@ -113,6 +120,8 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         GivtService.shared.onGivtProcessed = self
+        
+        self.log.info(message: "Scanpage is now showing")
         
         if(GivtService.shared.bluetoothEnabled){
             GivtService.shared.startScanning()
@@ -129,8 +138,6 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         if UserDefaults.standard.hasTappedAwayGiveDiff {
             return
         }
-        
-        
         
         overlayView = UIView()
         overlayView?.backgroundColor = #colorLiteral(red: 0.9843137255, green: 0.9843137255, blue: 0.9843137255, alpha: 0.9)
@@ -188,7 +195,6 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         self.navigationController?.navigationBar.isOpaque = false
         sideMenuController?.isLeftViewSwipeGestureDisabled = true
         
-        GivtService.shared.startScanning()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

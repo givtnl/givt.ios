@@ -53,6 +53,9 @@ class CustomUITextField: UITextField{
         self.returnKeyType = .default
         self.reloadInputViews()
     }
+    func setState(b: Bool) {
+        b ? setValid() : setInvalid()
+    }
     
     
 }

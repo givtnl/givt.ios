@@ -12,24 +12,28 @@ import SwiftClient
 final class LogService: ILogService {
     
     func debug(message: String, method: String = #function, file: String = #file, linenr: Int = #line) {
+        print("🔧 ", terminator: "")
         self.log(logLevel: .debug, message: message, method: method, file: file, linenr: linenr)
     }
     
     func info(message: String, method: String = #function, file: String = #file, linenr: Int = #line) {
+        print("ℹ️ ", terminator: "")
         self.log(logLevel: .info, message: message, method: method, file: file, linenr: linenr)
     }
     
     func warning(message: String, method: String = #function, file: String = #file, linenr: Int = #line) {
+        print("⚠️ ", terminator: "")
         self.log(logLevel: .warning, message: message, method: method, file: file, linenr: linenr)
     }
     
     func error(message: String, method: String = #function, file: String = #file, linenr: Int = #line) {
+        print("🚩 ", terminator: "")
         self.log(logLevel: .error, message: message, method: method, file: file, linenr: linenr)
     }
     
     private func log(logLevel: LogLevel, message: String, method: String, file: String, linenr: Int) {
-        print("📣 \(message)")
-        let data = [ "email" : UserDefaults.standard.userExt.email,
+        print(message)
+        let data = [ "email" : (UserDefaults.standard.userExt != nil) ? UserDefaults.standard.userExt!.email : "",
                     "file" : NSURL(fileURLWithPath: file).lastPathComponent,
                     "level" : logLevel.rawValue,
                     "lnr" : String(describing: linenr),
@@ -63,8 +67,9 @@ final class LogService: ILogService {
         get {
             #if DEBUG
                 return "GivtApp.iOS.Debug"
+            #else
+                return "GivtApp.iOS.Production"
             #endif
-            return "GivtApp.iOS.Production"
         }
     }
     

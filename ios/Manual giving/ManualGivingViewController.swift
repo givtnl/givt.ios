@@ -9,7 +9,7 @@
 import UIKit
 
 class ManualGivingViewController: UIViewController {
-
+    private var log = LogService.shared
     @IBOutlet var organisationSuggestion: UILabel!
     @IBOutlet var containerHeight: NSLayoutConstraint!
     @IBOutlet var suggestion: UIView!
@@ -127,6 +127,7 @@ class ManualGivingViewController: UIViewController {
     
     @objc func giveManually() {
         if let beaconId = self.beaconId {
+            log.info(message: "Gave to the suggestion")
             GivtService.shared.give(antennaID: beaconId)
         }
     }

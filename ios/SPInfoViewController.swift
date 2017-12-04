@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 
 class SPInfoViewController: UIViewController {
-
+    private var log = LogService.shared
     @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var headerText: UILabel!
     @IBOutlet var explanation: UILabel!
@@ -46,11 +46,12 @@ class SPInfoViewController: UIViewController {
         }
         
         SVProgressHUD.show()
-        var userInfo = UserDefaults.standard.userExt!
-        var signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)
-        var mandate = Mandate(signatory: signatory)
+        let userInfo = UserDefaults.standard.userExt!
+        let signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)
+        let mandate = Mandate(signatory: signatory)
         LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
             if slimPayUrl == "" {
+                self.log.warning(message: "Mandate url is empty, what is going on?")
                 SVProgressHUD.dismiss()
                 let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
@@ -61,6 +62,7 @@ class SPInfoViewController: UIViewController {
                 }
                 
             } else {
+                self.log.info(message: "Mandate flow will now start")
                 DispatchQueue.main.async {
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
                     vc.url = slimPayUrl
