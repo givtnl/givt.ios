@@ -62,7 +62,13 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() })
-        let userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
+        var userInfoSetting: Setting?
+        if LoginManager.shared.isFullyRegistered {
+            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.changePersonalInfo() })
+        } else {
+            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
+        }
+        
         
         if !tempUser {
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
@@ -71,20 +77,26 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
             let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
             items =
                 [
-                    [givts, limit, userInfoSetting, accessCode],
+                    [givts, limit, userInfoSetting!, accessCode],
                     [changeAccount, screwAccount],
                     [aboutGivt, shareGivt],
                 ]
         } else {
             items =
                 [
-                    [userInfoSetting],
+                    [userInfoSetting!],
                     [changeAccount],
                     [aboutGivt, shareGivt],
             ]
         }
     
         self.tableView.reloadData()
+    }
+    
+    private func changePersonalInfo() {
+        UserDefaults.standard.bearerToken = ""
+        let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateInitialViewController()
+        navigationManager.pushWithLogin(vc!, context: self)
     }
     
     private func pincode() {
