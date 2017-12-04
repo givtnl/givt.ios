@@ -83,12 +83,9 @@ extension UserDefaults {
         }
     }
     
-    var bearerToken: String {
+    var bearerToken: String? {
         get {
-            if string(forKey: UserDefaultsKeys.bearerToken.rawValue) != nil {
-                return string(forKey: UserDefaultsKeys.bearerToken.rawValue)!
-            }
-            return ""
+            return string(forKey: UserDefaultsKeys.bearerToken.rawValue)
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.bearerToken.rawValue)
