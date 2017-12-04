@@ -1861,10 +1861,10 @@ Kijk voor de status in je overzicht.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Hme-Ma-wP3" secondAttribute="bottom" id="5Gc-oZ-mUq"/>
                             <constraint firstItem="ChL-RU-lhi" firstAttribute="trailing" secondItem="Hme-Ma-wP3" secondAttribute="trailing" id="9eE-eO-5p1"/>
                             <constraint firstItem="Hme-Ma-wP3" firstAttribute="leading" secondItem="ChL-RU-lhi" secondAttribute="leading" id="Cz7-Lh-kNt"/>
                             <constraint firstItem="DXy-no-9LD" firstAttribute="top" secondItem="ChL-RU-lhi" secondAttribute="top" id="Er3-vb-bBW"/>
-                            <constraint firstItem="ChL-RU-lhi" firstAttribute="bottom" secondItem="Hme-Ma-wP3" secondAttribute="bottom" id="PcV-nC-ce8"/>
                             <constraint firstItem="Hme-Ma-wP3" firstAttribute="top" secondItem="DXy-no-9LD" secondAttribute="bottom" id="YF4-0U-CKA"/>
                             <constraint firstItem="ChL-RU-lhi" firstAttribute="trailing" secondItem="DXy-no-9LD" secondAttribute="trailing" id="frs-ua-x2m"/>
                             <constraint firstItem="DXy-no-9LD" firstAttribute="leading" secondItem="ChL-RU-lhi" secondAttribute="leading" id="qnC-GZ-3fQ"/>
