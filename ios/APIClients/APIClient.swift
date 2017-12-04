@@ -21,8 +21,12 @@ class APIClient: IAPIClient {
     }
     
     func get(url: String, data: [String: String], headers: [String: String] = [:], callback: @escaping (Response?) -> Void) {
+        var headers = headers
+        if let bearerToken = UserDefaults.standard.bearerToken {
+                headers["Authorization"] = "Bearer " + bearerToken
+        }
         log.info(message: "GET on " + url)
-        return client.get(url: url)
+        client.get(url: url)
             .type(type: "json")
             .set(headers: headers)
             .query(query: data)
@@ -34,10 +38,11 @@ class APIClient: IAPIClient {
         }
     }
     
-    func put(url: String, data: [String: String], callback: @escaping (Response?) -> Void) {
+    func put(url: String, data: [String: String], callback: @escaping (Response?) -> Void) throws {
         log.info(message: "PUT on " + url)
         client.put(url: url).send(data: data)
-            .set(headers: ["Content-Type" : "application/x-www-form-urlencoded; charset=utf-8", "Authorization" : "Bearer " + UserDefaults.standard.bearerToken])
+            .type(type: "json")
+            .set(headers: ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken!])
             .end(done: { (res:Response) in
                 callback(res)
             }) { (err) in
@@ -47,10 +52,11 @@ class APIClient: IAPIClient {
         }
     }
     
-    func post(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) {
+    func post(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) throws {
         log.info(message: "POST on " + url)
         client.post(url: url)
-            .set(headers: ["Accept" : "application/json", "Content-Type" : "application/json", "Authorization" : "Bearer " + UserDefaults.standard.bearerToken])
+            .type(type: "json")
+            .set(headers: ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken!])
             .send(data: data)
             .end(done: { (res:Response) in
                 callback(res)
