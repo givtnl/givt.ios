@@ -24,6 +24,12 @@ class AppConstants{
     
     static var buildNumber: String {
         get {
+            /* TESTING PURPOSES ONLY */
+            // UNCOMMENT one of the following lines to simulate the popup from the update
+            //return "2" -> normal update
+            //return "3" -> critical update
+            //return "4" -> normal update
+            
             return Bundle.main.infoDictionary!["CFBundleVersion"] as! String
         }
     }
