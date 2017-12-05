@@ -20,6 +20,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var street: UILabel!
     @IBOutlet var email: UILabel!
     @IBOutlet var name: UILabel!
+    @IBOutlet var titleText: UILabel!
     var countries = [Country]()
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -105,7 +106,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         
         iban.placeholder = NSLocalizedString("IBANPlaceHolder", comment: "")
         btnNext.setTitle(NSLocalizedString("ButtonChange", comment: ""), for: .normal)
-        
+        titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
         btnNext.isEnabled = false
         
         countries.append(Country(name: NSLocalizedString("Belgium", comment: ""), shortName: "BE", prefix: "+32"))

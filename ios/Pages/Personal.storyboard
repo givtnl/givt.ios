@@ -138,6 +138,7 @@
                         <outlet property="name" destination="Xvk-tW-9cc" id="Pwe-yX-G1Y"/>
                         <outlet property="postal" destination="vxi-ud-fQc" id="aPS-hV-bDG"/>
                         <outlet property="street" destination="Pxq-OJ-gH3" id="Qhk-0m-hQj"/>
+                        <outlet property="titleText" destination="eT8-b3-F5d" id="K5a-rb-Kf9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bnH-xl-Uh5" userLabel="First Responder" sceneMemberID="firstResponder"/>
