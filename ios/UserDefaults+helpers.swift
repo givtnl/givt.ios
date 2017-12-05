@@ -23,6 +23,17 @@ extension UserDefaults {
         case orgBeaconList
         case hasTappedAwayGiveDiff
         case pinSet
+        case needsCriticalUpdate
+    }
+    
+    var needsCriticalUpdate: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.needsCriticalUpdate.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.needsCriticalUpdate.rawValue)
+            synchronize()
+        }
     }
     
     var tempUser: Bool {
@@ -37,6 +48,7 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.pinSet.rawValue)
+            synchronize()
         }
     }
     
@@ -46,6 +58,7 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.hasTappedAwayGiveDiff.rawValue)
+            synchronize()
         }
     }
     

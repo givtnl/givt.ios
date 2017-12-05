@@ -17,22 +17,34 @@ class InfraManager {
         
     }
     
-    private func checkForUpdates() {
+    private func checkForUpdates(callback: @escaping(Bool?) -> Void) {
         var appVersion: [String: String] = [:]
         appVersion["BuildNumber"] = AppConstants.buildNumber
         appVersion["DeviceOS"] = "1"
         do {
             try client.post(url: "/api/CheckForUpdate", data: appVersion) { (response) in
                 if let response = response {
-                    
-                    if response.basicStatus == .ok, let data = response.data {
+                    if response.basicStatus == .ok, let data = response.data, let text = response.text {
+                        if text == "" {
+                            callback(nil)
+                            return
+                        }
+                        
                         do {
                             let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                             print(parsedData)
+                            let dbBuildNumber = Int(truncating: parsedData["BuildNumber"] as! NSNumber)
+                            if dbBuildNumber > Int(AppConstants.buildNumber)! {
+                                //new build number
+                                if Bool(parsedData["Critical"] as! NSNumber) {
+                                    callback(true)
+                                } else {
+                                    callback(false)
+                                }
+                            }
                         } catch {
-                            self.log.warning(message: "could not parse json")
+                            self.log.info(message: "could not parse json")
                         }
-                        
                     }
                 } else {
                     self.log.warning(message: "No response from checkforupdates")
@@ -44,16 +56,9 @@ class InfraManager {
         
     }
     
-    func checkUpdates() {
-        checkForUpdates()
-    }
-    
-    func start() {
-        checkUpdates()
-    }
-    
-    func resume() {
-        checkUpdates()
-    }
-    
+    func checkUpdates(callback: @escaping(Bool?) -> Void) {
+        checkForUpdates { (status) in
+            callback(status)
+        }
+    }    
 }

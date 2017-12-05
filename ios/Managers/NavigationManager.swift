@@ -13,6 +13,7 @@ class NavigationManager {
     static let shared = NavigationManager()
     private var loginManager: LoginManager = LoginManager.shared
     private var appSettings = UserDefaults.standard
+    private var logService = LogService.shared
     
     private init() {
 
@@ -124,6 +125,101 @@ class NavigationManager {
                 context.present(vc, animated: true)
             }
         }
+    }
+    
+    
+    private var isUpdateDialogOpen = false {
+        didSet {
+            print(isUpdateDialogOpen)
+        }
+    }
+    public func resume() {
+        if !isUpdateDialogOpen {
+            showUpdateAlert()
+        }
+    }
+    
+    private var topController: UIViewController? {
+        get {
+            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                while let presentedViewController = topController.presentedViewController {
+                    topController = presentedViewController
+                }
+                return topController
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    fileprivate func showUpdate(critical: Bool) {
+        let storeMessage = "\n\n" + NSLocalizedString("AppStoreRestart", comment: "")
+        var alertTitle = ""
+        var alertMessage = ""
+        let downloadAction = UIAlertAction(title: "Download", style: .default, handler: { (action) in
+            self.isUpdateDialogOpen = false
+            UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/app/id1181435988")!)
+        })
+        var secundaryAction: UIAlertAction = UIAlertAction()
+        
+        if critical {
+            alertTitle = NSLocalizedString("CriticalUpdateTitle", comment: "")
+            alertMessage = NSLocalizedString("CriticalUpdateMessage", comment: "") + storeMessage
+            secundaryAction = UIAlertAction(title: NSLocalizedString("MoreInfo", comment: ""), style: .default, handler: { (action) in
+                self.isUpdateDialogOpen = false
+                UIApplication.shared.openURL(URL(string: "https://www.givtapp.net/updates-app/")!)
+            })
+        } else {
+            alertTitle = NSLocalizedString("UpdateAlertTitle", comment: "")
+            alertMessage = NSLocalizedString("UpdateAlertMessage", comment: "") + storeMessage
+            secundaryAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in
+                self.isUpdateDialogOpen = false
+            })
+        }
+        
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        alert.addAction(secundaryAction)
+        alert.addAction(downloadAction)
+        DispatchQueue.main.async {
+            self.topController?.present(alert, animated: false, completion: {
+                self.isUpdateDialogOpen = true
+            })
+        }
+    }
+    
+    public func showUpdateAlert() {
+        
+        DispatchQueue.main.async {
+            
+            self.topController?.view.isUserInteractionEnabled = !UserDefaults.standard.needsCriticalUpdate
+            
+            if AppServices.shared.connectedToNetwork() {
+                InfraManager.shared.checkUpdates { (isCritical) in
+                    guard let isCritical = isCritical else {
+                        UserDefaults.standard.needsCriticalUpdate = false
+                        return
+                    }
+                    self.logService.warning(message: "Depcrecated app used")
+                    if isCritical {
+                        UserDefaults.standard.needsCriticalUpdate = true
+                        self.showUpdate(critical: true)
+                    } else {
+                        UserDefaults.standard.needsCriticalUpdate = false
+                        self.showUpdate(critical: false)
+                    }
+                    
+                    self.topController?.view.isUserInteractionEnabled = !UserDefaults.standard.needsCriticalUpdate
+                }
+            } else {
+                if UserDefaults.standard.needsCriticalUpdate {
+                    self.showUpdate(critical: true)
+                } else {
+                    self.topController?.view.isUserInteractionEnabled = !UserDefaults.standard.needsCriticalUpdate
+                }
+            }
+            
+        }
+        
     }
     
     private func permissionAsked(completionHandler: @escaping (Bool) -> Void) {
