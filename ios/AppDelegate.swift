@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         logService.info(message: "App started")
         logService.info(message: "User notification status: " + String(appService.notificationsEnabled()))
-        
+        //InfraManager.shared.checkUpdates()
         return true
     }
 
@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         logService.info(message: "App resuming")
+        InfraManager.shared.checkUpdates()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
