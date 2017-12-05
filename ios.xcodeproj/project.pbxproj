@@ -74,6 +74,7 @@
 		D7ADE24F1FBCE90500198F28 /* DecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */; };
 		D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */; };
 		D7B715501FD0529D00666262 /* Personal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7B7154F1FD0529D00666262 /* Personal.storyboard */; };
+		D7BB5DA81FD59B4700D12E62 /* InfraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */; };
 		D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */; };
 		D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */; };
 		D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */; };
@@ -204,6 +205,7 @@
 		D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionViewController.swift; sourceTree = "<group>"; };
 		D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		D7B7154F1FD0529D00666262 /* Personal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Personal.storyboard; sourceTree = "<group>"; };
+		D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraManager.swift; sourceTree = "<group>"; };
 		D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pincode.storyboard; sourceTree = "<group>"; };
 		D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavViewController.swift; sourceTree = "<group>"; };
 		D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				D77667ED1F39F12900649157 /* LoginManager.swift */,
 				D740E1551F4C5FAE000531BA /* GivtManager.swift */,
 				D788E4771FA08DA700506DA5 /* NavigationManager.swift */,
+				D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */,
 				D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */,
 				D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */,
+				D7BB5DA81FD59B4700D12E62 /* InfraManager.swift in Sources */,
 				D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */,
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,

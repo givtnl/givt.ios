@@ -38,10 +38,15 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         terms.isUserInteractionEnabled = true
         // Do any additional setup after loading the view.
         
+        self.nextBtn.isEnabled = false
+        
         #if DEBUG
             email.text = String.random() + "@givtapp.com"
             checkAll()
         #endif
+        
+        
+        
         
         email.placeholder = NSLocalizedString("Email", comment: "")
         title = NSLocalizedString("EnterEmail", comment: "")

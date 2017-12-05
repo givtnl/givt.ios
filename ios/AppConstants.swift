@@ -21,4 +21,10 @@ class AppConstants{
             return "?.?"
         }
     }
+    
+    static var buildNumber: String {
+        get {
+            return Bundle.main.infoDictionary!["CFBundleVersion"] as! String
+        }
+    }
 }
