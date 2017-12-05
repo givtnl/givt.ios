@@ -112,7 +112,16 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", prefix: "+31"))
         countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", prefix: "+49"))
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+        
     }
+    
+    func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(false)
+    }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
