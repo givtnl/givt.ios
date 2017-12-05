@@ -22,20 +22,6 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var name: UILabel!
     var countries = [Country]()
     
-    var ibanNumber: String? = "" {
-        didSet {
-           // iban.text = ibanNumber?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
-          //  iban.text = ibanNumber?.replacingOccurrences(of: " ", with: "").replace((.{4})/," ")
-            iban.text = ibanNumber
-            if let i = ibanNumber {
-                let isIbanValid = validationHelper.isIbanChecksumValid(i)
-                iban.setState(b: isIbanValid)
-                btnNext.isEnabled = isIbanValid
-            }
-            iban.text = ibanNumber?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
-        }
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField.returnKeyType == .done {
@@ -48,8 +34,13 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     }
     
     func save() {
+        if let userExt = UserDefaults.standard.userExt, userExt.iban == iban.text!.replacingOccurrences(of: " ", with: "") {
+            self.dismiss(animated: true, completion: nil)
+            print("trying to save iban that did not change")
+            return
+        }
         SVProgressHUD.show()
-        loginManager.changeIban(iban: ibanNumber!.replacingOccurrences(of: " ", with: "")) { (success) in
+        loginManager.changeIban(iban: iban.text!.replacingOccurrences(of: " ", with: "")) { (success) in
             SVProgressHUD.dismiss()
             if success {
                 DispatchQueue.main.async {
@@ -70,8 +61,27 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidChange(_ textField: UITextField) {
         if textField == iban {
-            ibanNumber = iban.text
+            if let i = iban.text {
+                let isIbanValid = validationHelper.isIbanChecksumValid(i)
+                iban.setState(b: isIbanValid)
+                btnNext.isEnabled = isIbanValid
+            }
         }
+    }
+    
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print(range)
+        guard let currentText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return true }
+        
+        if range.length == 0 && range.location == textField.text!.count {
+            if (textField.text?.replacingOccurrences(of: " ", with: "").count)! % 4 == 0 {
+                textField.text = textField.text! + " "
+            }
+        }
+        
+        return true
     }
     
     override func viewDidLoad() {
@@ -113,7 +123,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             } else {
                 country = user.countryCode
             }
-            ibanNumber = user.iban
+            iban.text = user.iban.separate(every: 4, with: " ")
             print(user.iban)
             name.text = user.firstName + " " + user.lastName
             email.text = user.email
