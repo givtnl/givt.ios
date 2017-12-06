@@ -50,7 +50,7 @@ class HistoryViewController: UIViewController {
         
         noGivtsText = UILabel()
         noGivtsText?.text = NSLocalizedString("HistoryIsEmpty", comment: "")
-        noGivtsText?.font = UIFont(name: "Avenir-Heavy", size: 18.0)
+        noGivtsText?.font = UIFont(name: "Avenir-Light", size: 16.0)
         noGivtsText?.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         noGivtsText?.numberOfLines = 0
         noGivtsText?.textAlignment = .center
