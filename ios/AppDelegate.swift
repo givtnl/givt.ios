@@ -40,7 +40,102 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logService.info(message: "User notification status: " + String(appService.notificationsEnabled()))
         //InfraManager.shared.checkUpdates()
         
+        handleOldAppData()
+        
         return true
+    }
+    
+    func handleOldAppData() {
+        let file = "GivtSettings.json"
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = dir.appendingPathComponent(file)
+            do {
+                let text2 = try String(contentsOf: fileURL, encoding: .utf8)
+                print(text2)
+                if let data = text2.data(using: .utf8) {
+                    do {
+                        let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        if let myDict = dictionary {
+                            if let bearerExpiration = myDict["BearerExpiration"] {
+                                UserDefaults.standard.bearerExpiration = Date()
+                            }
+                            if let amountLimit = myDict["AmountLimit"] as? NSNumber {
+                                UserDefaults.standard.amountLimit = amountLimit.intValue
+                            }
+                            if let bearerToken = myDict["BearerToken"] {
+                                UserDefaults.standard.isLoggedIn = true
+                                LoginManager.shared.userClaim = .give
+                                UserDefaults.standard.bearerToken = String(describing: bearerToken)
+                            }
+                            if myDict["RequestedPermissions"] != nil {
+                                //we do not really use this one...
+                            }
+                            if let viewedCoachMarks = myDict["ViewedCoachMarks"] as? NSNumber {
+                                UserDefaults.standard.viewedCoachMarks = viewedCoachMarks.intValue
+                            }
+                            if let hasTappedAwayGiveDiff = myDict["HasTappedAwayGiveDiff"] as? NSNumber {
+                                UserDefaults.standard.hasTappedAwayGiveDiff = hasTappedAwayGiveDiff.boolValue
+                            }
+                            if let pinSet = myDict["PinSet"] as? NSNumber {
+                                UserDefaults.standard.hasPinSet = pinSet.boolValue
+                            }
+                            if let mandateSigned = myDict["MandateStatus"] as? NSNumber {
+                                UserDefaults.standard.mandateSigned = mandateSigned.boolValue
+                            }
+                            if let userInfo = myDict["UserInfo"] as? [String: Any] {
+                                var newSettings = UserExt()
+                                if let userExt = UserDefaults.standard.userExt {
+                                    newSettings = userExt
+                                }
+                                if let address = userInfo["Address"] as? String {
+                                    newSettings.address = address
+                                }
+                                if let city = userInfo["City"] as? String {
+                                    newSettings.city = city
+                                }
+                                if let email = userInfo["Email"] as? String {
+                                    newSettings.email = email
+                                }
+                                if let phoneNumber = userInfo["PhoneNumber"] as? String {
+                                    newSettings.mobileNumber = phoneNumber
+                                }
+                                if let iban = userInfo["IBAN"] as? String{
+                                    newSettings.iban = iban
+                                }
+                                if let firstName = userInfo["FirstName"] as? String {
+                                    newSettings.firstName = firstName
+                                }
+                                if let lastName = userInfo["LastName"] as? String {
+                                    newSettings.lastName = lastName
+                                }
+                                if let guid = userInfo["GUID"] as? String {
+                                    newSettings.guid = guid
+                                }
+                                if let postalCode = userInfo["PostalCode"] as? String {
+                                    newSettings.postalCode = postalCode
+                                }
+                                if let countryCode = userInfo["CountryCode"] as? String {
+                                    newSettings.countryCode = countryCode
+                                }
+                                UserDefaults.standard.userExt = newSettings //update settings
+                            }
+                        }
+                    } catch {
+                        logService.warning(message: "Could not read GivtSettings.json")
+                    }
+                    
+                    do {
+                        try "".write(to: fileURL, atomically: true, encoding: .utf8)
+                    } catch {
+                        logService.warning(message: "Could not empty GivtSettings.json!")
+                        LoginManager.shared.logout()
+                    }
+                
+                }
+            }
+            catch {
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
