@@ -466,6 +466,17 @@ class LoginManager {
         
     }
     
+    func resume() {
+        if !UserDefaults.standard.mandateSigned {
+            self.checkMandate(completionHandler: { (status) in
+                self.userClaim = self.isFullyRegistered ? .give : .giveOnce
+            })
+        } else {
+            self.userClaim = .give
+        }
+        
+    }
+    
     func logout() {
         self.log.info(message: "App settings got cleared by either terminate account/switch account")
         UserDefaults.standard.viewedCoachMarks = 0
