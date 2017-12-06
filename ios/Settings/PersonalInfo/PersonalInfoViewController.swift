@@ -21,7 +21,6 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var email: UILabel!
     @IBOutlet var name: UILabel!
     @IBOutlet var titleText: UILabel!
-    var countries = [Country]()
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -109,10 +108,6 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
         btnNext.isEnabled = false
         
-        countries.append(Country(name: NSLocalizedString("Belgium", comment: ""), shortName: "BE", prefix: "+32"))
-        countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", prefix: "+31"))
-        countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", prefix: "+49"))
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
         
@@ -129,7 +124,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         if let user = UserDefaults.standard.userExt {
             var country = ""
             if let idx = Int(user.countryCode) {
-                country = countries[idx].shortName
+                country = AppConstants.countries[idx].shortName
             } else {
                 country = user.countryCode
             }

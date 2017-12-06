@@ -24,22 +24,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet var nextButton: CustomButton!
     private var validationHelper = ValidationHelper.shared
     private var picker: UIPickerView!
-   // let countries = ["BE":NSLocalizedString("Belgium", comment: ""), "NL": NSLocalizedString("Netherlands", comment: "")]
-    var countries = [Country]()
     var selectedCountry: Country?
     private var _lastTextField: CustomUITextField = CustomUITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
-        countries.append(Country(name: NSLocalizedString("Belgium", comment: ""), shortName: "BE", prefix: "+32"))
-        countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", prefix: "+31"))
-        countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", prefix: "+49"))
-        
-       
         
         titleText.text = NSLocalizedString("RegisterPersonalPage", comment: "")
         streetAndNumber.placeholder = NSLocalizedString("StreetAndHouseNumber", comment: "")
@@ -65,7 +54,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             streetAndNumber.text = "Stijn Streuvelhoofd 12"
             postalCode.text = "8501"
             city.text = "Heule"
-            selectedCountry = countries[0]
+            selectedCountry = AppConstants.countries[0]
             countryPicker.text = selectedCountry?.name
             mobileNumber.text = "0498121314"
             iban.text = "BE62 5100 0754 7061"
@@ -74,7 +63,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         if let currentRegionCode = Locale.current.regionCode {
             print(currentRegionCode)
-            let filteredCountries = countries.filter {
+            let filteredCountries = AppConstants.countries.filter {
                 $0.shortName == currentRegionCode
             }
             if let filteredCountry = filteredCountries.first {
@@ -281,11 +270,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return countries.count
+        return AppConstants.countries.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return countries[row].toString()
+        return AppConstants.countries[row].toString()
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -293,7 +282,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     private func selectedRow(row: Int){
-        selectedCountry = countries[row]
+        selectedCountry = AppConstants.countries[row]
         countryPicker.text = selectedCountry?.name
         checkAll()
         
