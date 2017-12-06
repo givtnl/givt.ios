@@ -420,6 +420,14 @@ Kijk voor de status in je overzicht.</string>
             </objects>
             <point key="canvasLocation" x="4296" y="-241"/>
         </scene>
+        <!--FAQ-->
+        <scene sceneID="DZE-nZ-ggQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FAQ" id="JIe-cW-JOT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PV8-wL-ICq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1770" y="-672"/>
+        </scene>
         <!--Bedrag-->
         <scene sceneID="jdE-oM-Up1">
             <objects>
@@ -989,7 +997,7 @@ Kijk voor de status in je overzicht.</string>
                         <barButtonItem key="rightBarButtonItem" image="help" id="btt-fE-FBf">
                             <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <action selector="openFAQ:" destination="lyO-8n-bds" id="ZQP-C4-QdR"/>
+                                <segue destination="JIe-cW-JOT" kind="presentation" identifier="faq" id="PMR-0p-zsl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

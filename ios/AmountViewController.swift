@@ -486,9 +486,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         selectView(0)
        
     }
+
+    let slideAnimator = CustomPresentModalAnimation()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "faq" {
+            let destination = segue.destination
+            destination.transitioningDelegate = slideAnimator
+        }
+    }
     
-    @IBAction func openFAQ(_ sender: Any) {
-        let vc = UIStoryboard(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
-        self.present(vc, animated: true, completion: nil)
+    @IBAction func returnFromSegue(sender: UIStoryboardSegue) {
+        
     }
 }

@@ -101,6 +101,7 @@
 		D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F131671F75593A00E25A68 /* RegistrationViewController.swift */; };
 		D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F131691F7559BD00E25A68 /* RegNavigationController.swift */; };
 		D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F654921FA8B390007816B0 /* PermissionViewController.swift */; };
+		D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */; };
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
 		D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB252E1F5065C20011A14E /* Reachability.swift */; };
@@ -232,6 +233,7 @@
 		D7F131671F75593A00E25A68 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		D7F131691F7559BD00E25A68 /* RegNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNavigationController.swift; sourceTree = "<group>"; };
 		D7F654921FA8B390007816B0 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
+		D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalAnimation.swift; sourceTree = "<group>"; };
 		D7FB251C1F4D6D2F0011A14E /* AppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
 		D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCompleteViewController.swift; sourceTree = "<group>"; };
 		D7FB252E1F5065C20011A14E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
@@ -535,6 +537,14 @@
 			name = Registration;
 			sourceTree = "<group>";
 		};
+		D7F746B31FD83F9F005354A3 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +577,7 @@
 		FB3CE6D51F14CA200055185B /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				D7F746B31FD83F9F005354A3 /* Transitions */,
 				D75B2BCD1FCEADCF000B7968 /* APIClients */,
 				D7D6FA6C1F7BE416008A5604 /* Helpers */,
 				D76021DE1F56B4DD00C24AB6 /* ios.entitlements */,
@@ -826,6 +837,7 @@
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				D75B2BD21FCEAE05000B7968 /* IAPIClient.swift in Sources */,
 				D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */,
+				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButton+helpers.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
@@ -1005,7 +1017,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.givt.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1027,7 +1039,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.givt.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

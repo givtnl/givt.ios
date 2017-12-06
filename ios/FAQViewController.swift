@@ -63,10 +63,6 @@ class FAQViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func goBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
@@ -76,6 +72,7 @@ class FAQViewController: UIViewController {
         super.viewWillDisappear(animated)
         UIApplication.shared.statusBarStyle = .default
     }
+
     
     /*
     // MARK: - Navigation
