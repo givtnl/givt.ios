@@ -204,30 +204,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="JMq-td-8H3">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instellingen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uY-Jt-p1S">
-                                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="oLa-z0-LiH"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                    <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="7uY-Jt-p1S" secondAttribute="trailing" id="0vQ-eU-jh6"/>
-                                <constraint firstItem="7uY-Jt-p1S" firstAttribute="leading" secondItem="JMq-td-8H3" secondAttribute="leading" id="1VC-6Z-nt1"/>
-                                <constraint firstItem="7uY-Jt-p1S" firstAttribute="top" secondItem="JMq-td-8H3" secondAttribute="top" constant="20" id="oIt-gF-W5e"/>
-                            </constraints>
-                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemTableViewCell" rowHeight="50" id="YNy-Zl-iJq" customClass="SettingsItemTableViewCell" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="119.5" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YNy-Zl-iJq" id="y60-Nr-Zlz">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
@@ -322,13 +301,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="wVO-C2-iZq"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <connections>
-                        <outlet property="lblSettings" destination="7uY-Jt-p1S" id="GZI-b7-3Eq"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A8N-zJ-Ufi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="62" y="488"/>
+            <point key="canvasLocation" x="61.600000000000001" y="487.10644677661173"/>
         </scene>
         <!--Scan Complete View Controller-->
         <scene sceneID="kH3-VN-Aq4">

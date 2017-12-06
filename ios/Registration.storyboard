@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jKf-SB-DZ7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jKf-SB-DZ7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,11 +38,11 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maak een account aan zodat je altijd toegang tot je Givt-gegevens hebt." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="UBS-LN-W65">
-                                                        <rect key="frame" x="20" y="10" width="335" height="49.5"/>
+                                                        <rect key="frame" x="20" y="10" width="335" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="ExS-oh-XvY"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -75,13 +75,13 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Het wachtwoord moet uit ten minste 7 tekens bestaan, waaronder een hoofdletter en een cijfer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGU-9Z-EaP">
-                                                        <rect key="frame" x="20" y="303.5" width="335" height="17"/>
+                                                        <rect key="frame" x="20" y="298" width="335" height="17"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emailadres" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="k6T-Nj-K0f" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="197.5" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="192" width="335" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="MLj-fG-QeL"/>
@@ -96,7 +96,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Voornaam" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Aj6-yH-iPv" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="89.5" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="84" width="335" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="z5C-yC-dnT"/>
@@ -111,7 +111,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Achternaam" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2nN-cS-Y50" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="143.5" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="138" width="335" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="e6M-Ya-yIt"/>
@@ -158,14 +158,14 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jh1-U1-vw0">
-                                                        <rect key="frame" x="0.0" y="320.5" width="375" height="153.5"/>
+                                                        <rect key="frame" x="0.0" y="315" width="375" height="159"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="zQ5-lY-rUi"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vp-KE-yoa">
-                                                        <rect key="frame" x="20" y="251.5" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="246" width="335" height="44"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PCv-ur-75e" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
@@ -311,16 +311,16 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Om je giften te kunnen afhandelen, moeten we nog een paar dingen van je weten." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="BSH-zR-77U">
-                                                        <rect key="frame" x="20" y="10" width="335" height="74"/>
+                                                        <rect key="frame" x="20" y="10" width="335" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="uIW-rA-7f5"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Straat en huisnummer" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KQB-3R-DNd" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="104" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="74" width="335" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="RC4-up-63A"/>
@@ -330,7 +330,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="street-address"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Postcode" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rRk-r4-4fG" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="158" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="128" width="335" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="INP-su-eP7"/>
@@ -340,7 +340,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Stad" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2nW-mh-yOX" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="212" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="182" width="335" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="tRO-bb-HMT"/>
@@ -375,7 +375,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dM-GZ-XwC">
-                                                        <rect key="frame" x="20" y="266" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="236" width="335" height="44"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Land" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="La2-rd-9nq" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
@@ -420,7 +420,7 @@
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobiel nummer" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="d5n-mh-jvt" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="320" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="290" width="335" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="hjF-ii-Kbr"/>
@@ -430,7 +430,7 @@
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" textContentType="tel"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="IBAN" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b5n-qN-JY2" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="374" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="344" width="335" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="wML-km-z0Q"/>
@@ -440,7 +440,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLH-qL-Pje">
-                                                        <rect key="frame" x="0.0" y="418" width="375" height="121"/>
+                                                        <rect key="frame" x="0.0" y="388" width="375" height="151"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </view>
                                                 </subviews>
@@ -802,13 +802,23 @@ Veel geefplezier!</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUW-ib-86v">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="67.5"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacyverklaring" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypP-lk-75m">
+                                        <rect key="frame" x="60" y="20" width="255" height="27.5"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFR-iE-kd7">
-                                        <rect key="frame" x="10" y="5" width="56" height="34"/>
+                                        <rect key="frame" x="321" y="11" width="44" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="PNi-eE-JwD"/>
+                                            <constraint firstAttribute="height" constant="44" id="rl3-MF-trs"/>
+                                        </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Sluiten">
+                                        <state key="normal" image="closewhite">
                                             <color key="titleColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -818,33 +828,28 @@ Veel geefplezier!</string>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="tFR-iE-kd7" firstAttribute="centerY" secondItem="dUW-ib-86v" secondAttribute="centerY" id="2uQ-Ln-vyX"/>
-                                    <constraint firstAttribute="height" constant="44" id="Vdw-Hb-aMC"/>
-                                    <constraint firstItem="tFR-iE-kd7" firstAttribute="leading" secondItem="dUW-ib-86v" secondAttribute="leading" constant="10" id="hFx-3O-tIS"/>
+                                    <constraint firstAttribute="trailing" secondItem="ypP-lk-75m" secondAttribute="trailing" constant="60" id="JYm-k5-7cZ"/>
+                                    <constraint firstItem="tFR-iE-kd7" firstAttribute="centerY" secondItem="dUW-ib-86v" secondAttribute="centerY" id="K3D-zr-tpY"/>
+                                    <constraint firstItem="ypP-lk-75m" firstAttribute="leading" secondItem="dUW-ib-86v" secondAttribute="leading" constant="60" id="Tez-1V-LHR"/>
+                                    <constraint firstAttribute="trailing" secondItem="tFR-iE-kd7" secondAttribute="trailing" constant="10" id="hDz-iI-6gZ"/>
+                                    <constraint firstItem="ypP-lk-75m" firstAttribute="top" secondItem="dUW-ib-86v" secondAttribute="top" constant="20" id="k64-VH-s2g"/>
+                                    <constraint firstAttribute="bottom" secondItem="ypP-lk-75m" secondAttribute="bottom" constant="20" id="mH9-hu-Y5L"/>
+                                    <constraint firstItem="ypP-lk-75m" firstAttribute="centerY" secondItem="dUW-ib-86v" secondAttribute="centerY" id="sob-6S-Gww"/>
+                                    <constraint firstItem="ypP-lk-75m" firstAttribute="centerX" secondItem="dUW-ib-86v" secondAttribute="centerX" id="x22-nj-K2D"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hfb-Uj-vtO">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="87.5" width="375" height="579.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9B-VX-kQk">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacyverklaring" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypP-lk-75m">
-                                                <rect key="frame" x="115.5" y="5" width="144" height="25"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="1hR-pa-fL7"/>
-                                            <constraint firstItem="ypP-lk-75m" firstAttribute="centerY" secondItem="S9B-VX-kQk" secondAttribute="centerY" id="fNp-HQ-biZ"/>
-                                            <constraint firstItem="ypP-lk-75m" firstAttribute="centerX" secondItem="S9B-VX-kQk" secondAttribute="centerX" id="wDz-gZ-VV9"/>
+                                            <constraint firstAttribute="height" id="1hR-pa-fL7"/>
                                         </constraints>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVr-y1-AKn">
-                                        <rect key="frame" x="10" y="35" width="355" height="603"/>
+                                        <rect key="frame" x="10" y="0.0" width="355" height="579.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <string key="text">Gebruiksvoorwaarden – Givt-app
 Laatst bijgewerkt: 22-07-2017
@@ -925,28 +930,28 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eerst even dit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5k3-PZ-aBp">
-                                <rect key="frame" x="103" y="94" width="170" height="36"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="26"/>
+                                <rect key="frame" x="122.5" y="84" width="130.5" height="27.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voor een optimaal gebruik van Givt vragen we je toestemming om notficaties te versturen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNE-WN-e10">
-                                <rect key="frame" x="40" y="138" width="295" height="66"/>
+                                <rect key="frame" x="40" y="131.5" width="295" height="66"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zo weet je waar en wanneer je kunt geven." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uK-yY-DB4">
-                                <rect key="frame" x="40" y="212" width="295" height="44"/>
+                                <rect key="frame" x="40" y="205.5" width="295" height="44"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5o0-YR-5Lu">
-                                <rect key="frame" x="0.0" y="256" width="375" height="347"/>
+                                <rect key="frame" x="0.0" y="249.5" width="375" height="353.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givyPermission" translatesAutoresizingMaskIntoConstraints="NO" id="V64-kO-eTF">
-                                        <rect key="frame" x="40" y="90" width="295" height="168"/>
+                                        <rect key="frame" x="40" y="93.5" width="295" height="168"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -971,11 +976,11 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                             <constraint firstItem="5o0-YR-5Lu" firstAttribute="top" secondItem="2uK-yY-DB4" secondAttribute="bottom" id="Xp2-4t-mfS"/>
                             <constraint firstItem="fdq-8W-gxU" firstAttribute="trailing" secondItem="2uK-yY-DB4" secondAttribute="trailing" constant="40" id="d24-fi-1tS"/>
                             <constraint firstItem="MNE-WN-e10" firstAttribute="leading" secondItem="fdq-8W-gxU" secondAttribute="leading" constant="40" id="fPf-La-3el"/>
-                            <constraint firstItem="5k3-PZ-aBp" firstAttribute="top" secondItem="fdq-8W-gxU" secondAttribute="top" constant="30" id="iHw-RB-kCR"/>
+                            <constraint firstItem="5k3-PZ-aBp" firstAttribute="top" secondItem="fdq-8W-gxU" secondAttribute="top" constant="20" id="iHw-RB-kCR"/>
                             <constraint firstItem="5k3-PZ-aBp" firstAttribute="centerX" secondItem="Vff-X6-ufM" secondAttribute="centerX" id="njd-ma-lhs"/>
                             <constraint firstItem="5o0-YR-5Lu" firstAttribute="leading" secondItem="fdq-8W-gxU" secondAttribute="leading" id="ovW-cZ-2NL"/>
                             <constraint firstItem="MNE-WN-e10" firstAttribute="centerX" secondItem="Vff-X6-ufM" secondAttribute="centerX" id="wwp-9g-Jwl"/>
-                            <constraint firstItem="MNE-WN-e10" firstAttribute="top" secondItem="5k3-PZ-aBp" secondAttribute="bottom" constant="8" id="yaB-rf-5Mb"/>
+                            <constraint firstItem="MNE-WN-e10" firstAttribute="top" secondItem="5k3-PZ-aBp" secondAttribute="bottom" constant="20" id="yaB-rf-5Mb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fdq-8W-gxU"/>
                     </view>
@@ -1014,19 +1019,18 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXc-vI-HpB">
                                 <rect key="frame" x="40" y="84" width="295" height="189.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bepaal hier het maximale bedrag dat je per keer wilt kunnen geven." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="10l-06-WhN">
-                                        <rect key="frame" x="0.0" y="0.0" width="295" height="189.5"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bepaal hier het maximale bedrag dat je per keer wilt kunnen geven." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zWD-es-rb4">
+                                        <rect key="frame" x="0.0" y="20" width="295" height="44"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="10l-06-WhN" firstAttribute="leading" secondItem="SXc-vI-HpB" secondAttribute="leading" id="DLt-Gd-vcl"/>
-                                    <constraint firstItem="10l-06-WhN" firstAttribute="top" secondItem="SXc-vI-HpB" secondAttribute="top" id="JKj-gB-tbJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="10l-06-WhN" secondAttribute="trailing" id="oHW-iJ-XsF"/>
-                                    <constraint firstAttribute="bottom" secondItem="10l-06-WhN" secondAttribute="bottom" id="wuG-IX-sJo"/>
+                                    <constraint firstItem="zWD-es-rb4" firstAttribute="top" secondItem="SXc-vI-HpB" secondAttribute="top" constant="20" id="ey8-aU-VSs"/>
+                                    <constraint firstItem="zWD-es-rb4" firstAttribute="leading" secondItem="SXc-vI-HpB" secondAttribute="leading" id="fmb-Wx-FPt"/>
+                                    <constraint firstAttribute="trailing" secondItem="zWD-es-rb4" secondAttribute="trailing" id="od4-I5-OyD"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r31-cv-Adj" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
@@ -1167,6 +1171,7 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                         <outlet property="backButton" destination="t7R-5Y-Fz0" id="k9A-Fk-sqM"/>
                         <outlet property="bottomConstraint" destination="nA7-te-giW" id="HGj-Fh-aC3"/>
                         <outlet property="btnSave" destination="r31-cv-Adj" id="Y5B-HJ-LID"/>
+                        <outlet property="subTitleText" destination="zWD-es-rb4" id="dzP-I0-99F"/>
                         <outlet property="topContstraint" destination="ox0-6Z-fii" id="pKD-B1-Hob"/>
                         <outlet property="verticalConstraint" destination="94J-fV-fGd" id="C7f-UH-Qa5"/>
                     </connections>
@@ -1191,6 +1196,7 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
         <image name="backbtn" width="15" height="24"/>
         <image name="backbtn.png" width="15" height="24"/>
         <image name="checked.png" width="24" height="24"/>
+        <image name="closewhite" width="23" height="24"/>
         <image name="decrease.png" width="40" height="40"/>
         <image name="dropdown.png" width="13" height="8"/>
         <image name="givt_registration.gif" width="200" height="355"/>
