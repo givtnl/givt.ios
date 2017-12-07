@@ -71,7 +71,6 @@
 		D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */; };
 		D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */; };
 		D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */; };
-		D7ADE24F1FBCE90500198F28 /* DecisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */; };
 		D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */; };
 		D7B715501FD0529D00666262 /* Personal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7B7154F1FD0529D00666262 /* Personal.storyboard */; };
 		D7BB5DA81FD59B4700D12E62 /* InfraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */; };
@@ -203,7 +202,6 @@
 		D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TerminateAccount.storyboard; sourceTree = "<group>"; };
 		D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminateAccountViewController.swift; sourceTree = "<group>"; };
 		D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
-		D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionViewController.swift; sourceTree = "<group>"; };
 		D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		D7B7154F1FD0529D00666262 /* Personal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Personal.storyboard; sourceTree = "<group>"; };
 		D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraManager.swift; sourceTree = "<group>"; };
@@ -281,16 +279,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		D731EACB1F792D5100F5116C /* NavigationControllers */ = {
-			isa = PBXGroup;
-			children = (
-				D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */,
-				D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */,
-				D751419B1F9799970016B71F /* FirstUseNavigationViewController.swift */,
-			);
-			name = NavigationControllers;
-			sourceTree = "<group>";
-		};
 		D740E14E1F4C5328000531BA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,36 +287,6 @@
 				D740E15F1F4C63D1000531BA /* GivtServiceProtocol.swift */,
 			);
 			name = Protocols;
-			sourceTree = "<group>";
-		};
-		D75141961F9797E90016B71F /* FirstUse */ = {
-			isa = PBXGroup;
-			children = (
-				D75141971F9798040016B71F /* EmailOnlyViewController.swift */,
-				D75141991F9799750016B71F /* FirstUseViewController.swift */,
-			);
-			path = FirstUse;
-			sourceTree = "<group>";
-		};
-		D758CD0D1F15097300EF0F19 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				D7EAF10B1FB491AD00DFE5CC /* icon.png */,
-				D7EAF10C1FB491AD00DFE5CC /* icon@2x.png */,
-				D7EAF10D1FB491B000DFE5CC /* icon@3x.png */,
-				D75141A61F9E130C0016B71F /* givt_animation.gif */,
-				D75141A51F9E130C0016B71F /* givt_registration.gif */,
-			);
-			name = images;
-			sourceTree = "<group>";
-		};
-		D758CD141F1513EC00EF0F19 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				D7B715531FD151E800666262 /* Custom Views */,
-				D7B715521FD151CD00666262 /* Pages */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		D75B2BCD1FCEADCF000B7968 /* APIClients */ = {
@@ -359,65 +317,16 @@
 			path = "Manual giving";
 			sourceTree = "<group>";
 		};
-		D761E9611F1611BE002B849B /* Models */ = {
+		D76A03411FBAFBBD00E338C5 /* First Use */ = {
 			isa = PBXGroup;
 			children = (
-				D761E9621F161207002B849B /* Setting.swift */,
-				D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */,
-				D7E3CE931F7CFA34005807BE /* UserExt.swift */,
-				D721F19B1F7E3EF8000B9546 /* Mandate.swift */,
-				D77FC1BD1F86668A0031C49F /* Country.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		D761E9661F1614A7002B849B /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				D7DBED9F1FBC4AB000D78E2A /* Settings */,
-				D76A03411FBAFBBD00E338C5 /* Carousel */,
-				D75F2CCD1FAC69B400F40827 /* Manual giving */,
-				D75141961F9797E90016B71F /* FirstUse */,
-				D731EACB1F792D5100F5116C /* NavigationControllers */,
-				D7F131621F7555C200E25A68 /* Registration */,
-				D761E9641F1612F8002B849B /* SettingTableViewController.swift */,
-				D761E99F1F167798002B849B /* BaseViewController.swift */,
-				D761E9B61F18B89D002B849B /* AmountViewController.swift */,
-				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
-				D73CA1C21F38B4C30059A296 /* LoginViewController.swift */,
-				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
-				D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */,
-				D721F1991F7E2D4B000B9546 /* CustomViewController.swift */,
-				D7ADE24E1FBCE90500198F28 /* DecisionViewController.swift */,
-				D78D44B11FC6FCD700325CAF /* FAQViewController.swift */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		D761E9B81F18C588002B849B /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				D761E9B91F18C5C6002B849B /* String+DoubleConverter.swift */,
-				D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */,
-				D73CA1C61F39BD970059A296 /* UserDefaults+helpers.swift */,
-				D754DA3A1F3B45D5001B7040 /* UIButton+helpers.swift */,
-				D7335B2D1F45923F00B57AE0 /* UIImage+gif.swift */,
-				D77511BA1F711231004F91F6 /* Date+helpers.swift */,
-				D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */,
-				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
-				D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExt.swift */,
-				D7DBEDA21FBC798A00D78E2A /* UIDeviceExt.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
-		D76A03411FBAFBBD00E338C5 /* Carousel */ = {
-			isa = PBXGroup;
-			children = (
+				D751419B1F9799970016B71F /* FirstUseNavigationViewController.swift */,
 				D76A03421FBAFBD600E338C5 /* CarouselViewController.swift */,
 				D76A03441FBAFC5100E338C5 /* TemplateViewController.swift */,
+				D75141971F9798040016B71F /* EmailOnlyViewController.swift */,
+				D75141991F9799750016B71F /* FirstUseViewController.swift */,
 			);
-			path = Carousel;
+			path = "First Use";
 			sourceTree = "<group>";
 		};
 		D77667EC1F39F11300649157 /* Managers */ = {
@@ -448,17 +357,15 @@
 			path = TerminateAccount;
 			sourceTree = "<group>";
 		};
-		D7B7154C1FD0526500666262 /* PersonalInfo */ = {
-			isa = PBXGroup;
-			children = (
-				D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */,
-			);
-			path = PersonalInfo;
-			sourceTree = "<group>";
-		};
 		D7B715521FD151CD00666262 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */,
+				D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */,
+				D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */,
+				FB3CE6DE1F14CA200055185B /* Main.storyboard */,
+				D7F131651F75574D00E25A68 /* Registration.storyboard */,
+				D75141941F9796170016B71F /* Welcome.storyboard */,
 				D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */,
 				D7B7154F1FD0529D00666262 /* Personal.storyboard */,
 			);
@@ -468,6 +375,7 @@
 		D7B715531FD151E800666262 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				D761E9931F166B8D002B849B /* CustomTableView.swift */,
 				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
 				D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */,
 				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
@@ -485,7 +393,6 @@
 		D7CCC0691FC427E6006A6A4F /* Pincode */ = {
 			isa = PBXGroup;
 			children = (
-				D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */,
 				D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */,
 				D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */,
 				D7CCC06E1FC4346F006A6A4F /* PinScreenViewController.swift */,
@@ -510,31 +417,18 @@
 			path = About;
 			sourceTree = "<group>";
 		};
-		D7DBED9F1FBC4AB000D78E2A /* Settings */ = {
+		D7DBED9F1FBC4AB000D78E2A /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				D7B7154C1FD0526500666262 /* PersonalInfo */,
+				D761E9641F1612F8002B849B /* SettingTableViewController.swift */,
+				D7F746D51FD94337005354A3 /* Amount Limit */,
+				D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */,
 				D7CCC0691FC427E6006A6A4F /* Pincode */,
 				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
 				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
 				D7DBED981FBC476900D78E2A /* About */,
 			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		D7F131621F7555C200E25A68 /* Registration */ = {
-			isa = PBXGroup;
-			children = (
-				D7F131671F75593A00E25A68 /* RegistrationViewController.swift */,
-				D7F131631F7555EC00E25A68 /* RegistrationDetailViewController.swift */,
-				D7F131691F7559BD00E25A68 /* RegNavigationController.swift */,
-				D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */,
-				D7E3CE9D1F7D2C5C005807BE /* SPWebViewController.swift */,
-				D782F2E31F7D331B00348D7A /* TermsViewController.swift */,
-				D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */,
-				D7F654921FA8B390007816B0 /* PermissionViewController.swift */,
-			);
-			name = Registration;
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		D7F746B31FD83F9F005354A3 /* Transitions */ = {
@@ -543,6 +437,132 @@
 				D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */,
 			);
 			path = Transitions;
+			sourceTree = "<group>";
+		};
+		D7F746D41FD94227005354A3 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FB3CE6E31F14CA200055185B /* LaunchScreen.storyboard */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		D7F746D51FD94337005354A3 /* Amount Limit */ = {
+			isa = PBXGroup;
+			children = (
+				D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */,
+				D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */,
+			);
+			path = "Amount Limit";
+			sourceTree = "<group>";
+		};
+		D7F746D61FD9435C005354A3 /* Modals */ = {
+			isa = PBXGroup;
+			children = (
+				D78D44B11FC6FCD700325CAF /* FAQViewController.swift */,
+				D782F2E31F7D331B00348D7A /* TermsViewController.swift */,
+			);
+			path = Modals;
+			sourceTree = "<group>";
+		};
+		D7F746D71FD94390005354A3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D73CA1C21F38B4C30059A296 /* LoginViewController.swift */,
+				D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D7F746D81FD943B8005354A3 /* Give Flow */ = {
+			isa = PBXGroup;
+			children = (
+				D761E9B61F18B89D002B849B /* AmountViewController.swift */,
+				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
+				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
+			);
+			path = "Give Flow";
+			sourceTree = "<group>";
+		};
+		D7F746D91FD943F6005354A3 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				D7F131691F7559BD00E25A68 /* RegNavigationController.swift */,
+				D7F131671F75593A00E25A68 /* RegistrationViewController.swift */,
+				D7F131631F7555EC00E25A68 /* RegistrationDetailViewController.swift */,
+				D7F654921FA8B390007816B0 /* PermissionViewController.swift */,
+				D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */,
+				D7E3CE9D1F7D2C5C005807BE /* SPWebViewController.swift */,
+				D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		D7F746DA1FD94466005354A3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D7F746D41FD94227005354A3 /* SplashScreen */,
+				D7B715531FD151E800666262 /* Custom Views */,
+				D7B715521FD151CD00666262 /* Pages */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D7F746DC1FD9447C005354A3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D761E9621F161207002B849B /* Setting.swift */,
+				D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */,
+				D7E3CE931F7CFA34005807BE /* UserExt.swift */,
+				D721F19B1F7E3EF8000B9546 /* Mandate.swift */,
+				D77FC1BD1F86668A0031C49F /* Country.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D7F746D81FD943B8005354A3 /* Give Flow */,
+				D7F746D71FD94390005354A3 /* Login */,
+				D7F746D61FD9435C005354A3 /* Modals */,
+				D7DBED9F1FBC4AB000D78E2A /* Menu */,
+				D76A03411FBAFBBD00E338C5 /* First Use */,
+				D75F2CCD1FAC69B400F40827 /* Manual giving */,
+				D7F746D91FD943F6005354A3 /* Registration */,
+				D761E99F1F167798002B849B /* BaseViewController.swift */,
+				D721F1991F7E2D4B000B9546 /* CustomViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D7F746DE1FD944AE005354A3 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D7EAF10B1FB491AD00DFE5CC /* icon.png */,
+				D7EAF10C1FB491AD00DFE5CC /* icon@2x.png */,
+				D7EAF10D1FB491B000DFE5CC /* icon@3x.png */,
+				D75141A61F9E130C0016B71F /* givt_animation.gif */,
+				D75141A51F9E130C0016B71F /* givt_registration.gif */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		D7F746E01FD944C4005354A3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D761E9B91F18C5C6002B849B /* String+DoubleConverter.swift */,
+				D761E9BE1F18CFE4002B849B /* UIColor+HexConversion.swift */,
+				D73CA1C61F39BD970059A296 /* UserDefaults+helpers.swift */,
+				D754DA3A1F3B45D5001B7040 /* UIButton+helpers.swift */,
+				D7335B2D1F45923F00B57AE0 /* UIImage+gif.swift */,
+				D77511BA1F711231004F91F6 /* Date+helpers.swift */,
+				D7D6FA6A1F7BADA5008A5604 /* UITextField+helpers.swift */,
+				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
+				D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExt.swift */,
+				D7DBEDA21FBC798A00D78E2A /* UIDeviceExt.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
@@ -584,25 +604,18 @@
 				D740E14E1F4C5328000531BA /* Protocols */,
 				D72B707E1F44832D0022BD29 /* Services */,
 				D77667EC1F39F11300649157 /* Managers */,
-				D761E9B81F18C588002B849B /* Extensions */,
+				D7F746E01FD944C4005354A3 /* Extensions */,
 				D761E9B21F18B450002B849B /* entypo.ttf */,
 				D761E9B41F18B602002B849B /* zocial-regular-webfont.ttf */,
-				D761E9661F1614A7002B849B /* ViewControllers */,
-				D761E9611F1611BE002B849B /* Models */,
-				D758CD141F1513EC00EF0F19 /* Views */,
-				D758CD0D1F15097300EF0F19 /* images */,
+				D7F746DD1FD9449A005354A3 /* ViewControllers */,
+				D7F746DC1FD9447C005354A3 /* Models */,
+				D7F746DA1FD94466005354A3 /* Views */,
+				D7F746DE1FD944AE005354A3 /* images */,
 				FB3CE6D61F14CA200055185B /* AppDelegate.swift */,
-				FB3CE6DE1F14CA200055185B /* Main.storyboard */,
-				D7F131651F75574D00E25A68 /* Registration.storyboard */,
-				D75141941F9796170016B71F /* Welcome.storyboard */,
 				FB3CE6E11F14CA200055185B /* Assets.xcassets */,
-				FB3CE6E31F14CA200055185B /* LaunchScreen.storyboard */,
 				FB3CE6E61F14CA200055185B /* Info.plist */,
-				D761E9931F166B8D002B849B /* CustomTableView.swift */,
 				D761E9C41F20CFA6002B849B /* Localizable.strings */,
 				D73CA1C41F39BA360059A296 /* AppConstants.swift */,
-				D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */,
-				D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */,
 			);
 			path = ios;
 			sourceTree = "<group>";
@@ -851,7 +864,6 @@
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
 				D73CA1C71F39BD970059A296 /* UserDefaults+helpers.swift in Sources */,
-				D7ADE24F1FBCE90500198F28 /* DecisionViewController.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
 				D7DE0FED1F8E1A6900808ED4 /* TriangleView.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
