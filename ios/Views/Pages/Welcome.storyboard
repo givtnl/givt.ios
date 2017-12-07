@@ -99,11 +99,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WvW-7E-MZ4" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="577.5" width="335" height="44"/>
+                                <rect key="frame" x="20" y="610" width="335" height="37"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="MYk-7V-udN"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
                                 <state key="normal" title="Doorgaan">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,12 +120,6 @@
                                     <action selector="done:" destination="Op2-mF-ZtZ" eventType="touchUpInside" id="zzc-BL-vko"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bij het doorgaan ga je akkoord met de algemene voorwaarden." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Qa-5Kx">
-                                <rect key="frame" x="40" y="626.5" width="295" height="20.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                                <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emailadres" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dLS-u5-htt" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="311.5" width="335" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -185,22 +176,28 @@
                                     <constraint firstAttribute="trailing" secondItem="9Mk-QY-UOQ" secondAttribute="trailing" id="uXE-np-Wb7"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bij het doorgaan ga je akkoord met de algemene voorwaarden." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xl-Qa-5Kx">
+                                <rect key="frame" x="20" y="579.5" width="335" height="20.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
+                                <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2Xl-Qa-5Kx" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="20" id="9Dx-Lj-SNV"/>
+                            <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="2Xl-Qa-5Kx" secondAttribute="trailing" constant="20" id="FQS-gO-WIA"/>
+                            <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="WvW-7E-MZ4" secondAttribute="trailing" constant="20" id="Fzs-u8-0fg"/>
                             <constraint firstItem="dLS-u5-htt" firstAttribute="top" secondItem="QSH-AD-dlL" secondAttribute="bottom" id="Igd-7a-FBR"/>
                             <constraint firstItem="QSH-AD-dlL" firstAttribute="top" secondItem="6Sa-97-5E2" secondAttribute="top" id="Jb1-Eh-dgC"/>
-                            <constraint firstItem="WvW-7E-MZ4" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="20" id="O2E-Uw-Tqd"/>
-                            <constraint firstItem="2Xl-Qa-5Kx" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="40" id="Zkr-pA-icn"/>
+                            <constraint firstItem="WvW-7E-MZ4" firstAttribute="top" secondItem="2Xl-Qa-5Kx" secondAttribute="bottom" constant="10" id="TqM-ah-3Oi"/>
+                            <constraint firstItem="6Sa-97-5E2" firstAttribute="bottom" secondItem="WvW-7E-MZ4" secondAttribute="bottom" constant="20" id="WXf-Vr-ksw"/>
+                            <constraint firstItem="WvW-7E-MZ4" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="20" id="Z60-CU-K4p"/>
                             <constraint firstItem="dLS-u5-htt" firstAttribute="centerY" secondItem="r0x-Y6-vDA" secondAttribute="centerY" id="Zvf-sK-qpY"/>
                             <constraint firstItem="dLS-u5-htt" firstAttribute="leading" secondItem="6Sa-97-5E2" secondAttribute="leading" constant="20" id="b4k-LA-J5Q"/>
                             <constraint firstItem="dLS-u5-htt" firstAttribute="centerX" secondItem="r0x-Y6-vDA" secondAttribute="centerX" id="eg2-cr-xxF"/>
-                            <constraint firstItem="6Sa-97-5E2" firstAttribute="bottom" secondItem="2Xl-Qa-5Kx" secondAttribute="bottom" constant="20" id="fcb-Sp-Kkh"/>
                             <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="dLS-u5-htt" secondAttribute="trailing" constant="20" id="ghB-eG-ad7"/>
-                            <constraint firstItem="2Xl-Qa-5Kx" firstAttribute="top" secondItem="WvW-7E-MZ4" secondAttribute="bottom" constant="5" id="gmV-w5-07M"/>
-                            <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="2Xl-Qa-5Kx" secondAttribute="trailing" constant="40" id="lUC-R5-SHW"/>
                             <constraint firstItem="QSH-AD-dlL" firstAttribute="leading" secondItem="r0x-Y6-vDA" secondAttribute="leading" id="nhI-Sf-yFv"/>
-                            <constraint firstItem="6Sa-97-5E2" firstAttribute="trailing" secondItem="WvW-7E-MZ4" secondAttribute="trailing" constant="20" id="sb8-db-Mff"/>
                             <constraint firstAttribute="trailing" secondItem="QSH-AD-dlL" secondAttribute="trailing" id="zCt-sk-PQR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Sa-97-5E2"/>
