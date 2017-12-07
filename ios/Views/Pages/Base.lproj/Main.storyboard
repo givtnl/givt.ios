@@ -1198,6 +1198,9 @@ Kijk voor de status in je overzicht.</string>
                                     <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
                                         <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" red="0.8901960784313725" green="0.88627450980392153" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnGive:" destination="I2a-zH-aE5" eventType="touchUpInside" id="43P-ep-N4j"/>
