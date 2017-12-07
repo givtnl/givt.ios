@@ -17,7 +17,11 @@ class SelectOrgViewController: UIViewController {
     @IBOutlet var churchWidth: NSLayoutConstraint!
     @IBOutlet var stackList: UIStackView!
     @IBOutlet var list: UIView!
-    var selectedView: ManualOrganisationView?
+    var selectedView: ManualOrganisationView? {
+        didSet {
+            btnGive.isEnabled = selectedView != nil
+        }
+    }
     var selectedTag: Int = 100
     private var lastTag: Int?
     var listToLoad: [[String: String]]!
@@ -42,6 +46,9 @@ class SelectOrgViewController: UIViewController {
         addTap(acties)
         //addTap(straatmzkt) //we dont support this atm
         straatmzkt.alpha = 0.3
+        
+        btnGive.isEnabled = false
+        
     }
     
     func addTap(_ view: UIView) {
@@ -61,6 +68,10 @@ class SelectOrgViewController: UIViewController {
     @objc func selectOrg(_ sender: UITapGestureRecognizer) {
         if let view = sender.view as? ManualOrganisationView {
             selectedView?.toggleCheckMark() //vorige geselectede optie deselecteren
+            if selectedView == view {
+                selectedView = nil
+                return
+            }
             view.toggleCheckMark()
             selectedView = view
         }
