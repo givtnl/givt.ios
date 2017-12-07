@@ -38,7 +38,7 @@ class CustomPresentModalAnimation: NSObject, UIViewControllerAnimatedTransitioni
         
         toView.transform = screenOffUp
         
-        UIView.animate(withDuration: duration, delay: 0.0, options: [], animations: {
+        UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseInOut], animations: {
             toView.transform = CGAffineTransform.identity
             toView.alpha = 1
             
@@ -77,7 +77,7 @@ class CustomDismissModalAnimation: NSObject, UIViewControllerAnimatedTransitioni
         container.addSubview(fromView)
         
         fromView.transform = CGAffineTransform.identity
-        UIView.animate(withDuration: duration, delay: 0.0, options: [], animations: {
+        UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseInOut], animations: {
             fromView.transform = screenOffUp
         }) { (success) in
             transitionContext.completeTransition(success)
