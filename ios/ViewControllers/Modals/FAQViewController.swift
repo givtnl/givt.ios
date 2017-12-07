@@ -64,7 +64,7 @@ class FAQViewController: UIViewController {
         
         addQuestion(q: "FAQvraag0", a: "FAQantwoord0")
         
-        addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWork", v: "https://player.vimeo.com/video/205383298?autoplay=1&title=0&byline=0&portrait=1")
+        addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWork", v: "https://player.vimeo.com/video/189148412?autoplay=1&title=0&byline=0&portrait=1")
         addQuestion(q: "FAQHowDoesGivingWork", a: "AnswerHowDoesGivingWork", v: "https://player.vimeo.com/video/191948294?autoplay=1&title=0&byline=0&portrait=0")
         addQuestion(q: "FAQQuestion14", a: "FAQAnswer14", v: "https://player.vimeo.com/video/214000434?autoplay=1&title=0&byline=0&portrait=0")
         addQuestion(q: "FAQHowDoesManualGivingWork", a: "AnswerHowDoesManualGivingWork", v: "https://player.vimeo.com/video/191943978?autoplay=1&title=0&byline=0&portrait=0")
