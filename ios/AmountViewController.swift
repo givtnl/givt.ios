@@ -139,7 +139,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        reset()
     }
     
     func addGestureRecognizerToView(view: UIView) {
@@ -273,7 +272,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         } else {
             showBluetoothMessage()
         }
-        
+        reset()
      }
     
     func displayAmountLimitExceeded() {
@@ -384,7 +383,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func removeCollection() {
-        print("tapped")
         if !thirdView.isHidden {
             thirdView.isHidden = true
             leftSpacerView.isHidden = false
