@@ -60,7 +60,7 @@
                                         <constraints>
                                             <constraint firstItem="BFW-OW-Fof" firstAttribute="width" secondItem="nHZ-c5-8AP" secondAttribute="width" id="91l-IK-cp5"/>
                                             <constraint firstItem="BFW-OW-Fof" firstAttribute="leading" secondItem="nHZ-c5-8AP" secondAttribute="leading" id="f5j-xm-ziC"/>
-                                            <constraint firstAttribute="bottom" secondItem="BFW-OW-Fof" secondAttribute="bottom" id="iwk-3a-2Rr"/>
+                                            <constraint firstAttribute="bottom" secondItem="BFW-OW-Fof" secondAttribute="bottom" constant="20" id="iwk-3a-2Rr"/>
                                             <constraint firstAttribute="trailing" secondItem="BFW-OW-Fof" secondAttribute="trailing" id="s2I-Wr-dzq"/>
                                             <constraint firstItem="BFW-OW-Fof" firstAttribute="top" secondItem="nHZ-c5-8AP" secondAttribute="top" id="yhk-JX-QaS"/>
                                         </constraints>
