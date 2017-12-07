@@ -33,6 +33,7 @@ class SPInfoViewController: UIViewController {
         } else {
             self.backButton.isEnabled = true
         }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,9 +46,17 @@ class SPInfoViewController: UIViewController {
             return
         }
         
+        
+        
         SVProgressHUD.show()
         let userInfo = UserDefaults.standard.userExt!
-        let signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: userInfo.countryCode, postalCode: userInfo.postalCode, street: userInfo.address)
+        var country = ""
+        if let idx = Int(userInfo.countryCode) {
+            country = AppConstants.countries[idx].shortName
+        } else {
+            country = userInfo.countryCode
+        }
+        let signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: country, postalCode: userInfo.postalCode, street: userInfo.address)
         let mandate = Mandate(signatory: signatory)
         LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
             if slimPayUrl == "" {

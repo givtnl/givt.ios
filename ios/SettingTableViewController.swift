@@ -25,8 +25,6 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         return NSLocalizedString("GivtGewoonBlijvenGeven", comment: "")
     }
     
-    
-    @IBOutlet weak var lblSettings: UILabel!
     private var navigationManager = NavigationManager.shared
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
@@ -41,7 +39,6 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        lblSettings.text = NSLocalizedString("Settings", comment: "Settings")
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)

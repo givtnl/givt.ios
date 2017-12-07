@@ -13,20 +13,28 @@ class NavigationManager {
     static let shared = NavigationManager()
     private var loginManager: LoginManager = LoginManager.shared
     private var appSettings = UserDefaults.standard
+    private var logService = LogService.shared
     
     private init() {
 
     }
-    
+   
+    private var currentAlert: UIAlertController?
     public func finishRegistrationAlert(_ context: UIViewController) {
         if !loginManager.isFullyRegistered && loginManager.userClaim != .giveOnce {
             
-            let alert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertActionStyle.default, handler: { action in  }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("FinalizeRegistration", comment: ""), style: .cancel, handler: { (action) in
+            if let alert = self.currentAlert, self.currentAlert == self.topController?.presentedViewController {
+                self.currentAlert!.dismiss(animated: false, completion: nil)
+                self.currentAlert = nil
+            }
+            
+            
+            currentAlert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertActionStyle.default, handler: { action in  }))
+            currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("FinalizeRegistration", comment: ""), style: .cancel, handler: { (action) in
                 self.finishRegistration(context)
             }))
-            context.present(alert, animated: true, completion: {})
+            context.present(currentAlert!, animated: false, completion: {})
         }
     }
     
@@ -124,6 +132,113 @@ class NavigationManager {
                 context.present(vc, animated: true)
             }
         }
+    }
+    
+    
+    private var isUpdateDialogOpen = false {
+        didSet {
+            print(isUpdateDialogOpen)
+        }
+    }
+    public func resume() {
+        if !isUpdateDialogOpen {
+            showUpdateAlert()
+        }
+    }
+    
+    private var topController: UIViewController? {
+        get {
+            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+                return topController
+            } else {
+                return nil
+            }
+        }
+    }
+    
+    fileprivate func showUpdate(critical: Bool) {
+        let storeMessage = "\n\n" + NSLocalizedString("AppStoreRestart", comment: "")
+        
+        var downloadAction: UIAlertAction = UIAlertAction()
+        var secundaryAction: UIAlertAction = UIAlertAction()
+        
+        
+        DispatchQueue.main.async {
+            if let alert = self.currentAlert, self.currentAlert == self.topController?.presentedViewController {
+                self.currentAlert!.dismiss(animated: false, completion: nil)
+                self.currentAlert = nil
+            }
+        }
+        
+        currentAlert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        if critical {
+
+            currentAlert?.title = NSLocalizedString("CriticalUpdateTitle", comment: "")
+            currentAlert?.message = NSLocalizedString("CriticalUpdateMessage", comment: "") + storeMessage
+            secundaryAction = UIAlertAction(title: NSLocalizedString("MoreInfo", comment: ""), style: .cancel, handler: { (action) in
+                self.isUpdateDialogOpen = false
+                UIApplication.shared.openURL(URL(string: "https://www.givtapp.net/updates-app/")!)
+                UIApplication.shared.beginIgnoringInteractionEvents()
+            })
+            downloadAction = UIAlertAction(title: "Download", style: .default, handler: { (action) in
+                self.isUpdateDialogOpen = false
+                UIApplication.shared.beginIgnoringInteractionEvents()
+            })
+        } else {
+            UIApplication.shared.endIgnoringInteractionEvents()
+            currentAlert?.title = NSLocalizedString("UpdateAlertTitle", comment: "")
+            currentAlert?.message = NSLocalizedString("UpdateAlertMessage", comment: "") + storeMessage
+            secundaryAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in
+                self.isUpdateDialogOpen = false
+            })
+            downloadAction = UIAlertAction(title: "Download", style: .default, handler: { (action) in
+                self.isUpdateDialogOpen = false
+                UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/app/id1181435988")!)
+            })
+        }
+        
+        
+        currentAlert?.addAction(secundaryAction)
+        currentAlert?.addAction(downloadAction)
+        DispatchQueue.main.async {
+            UIApplication.shared.endIgnoringInteractionEvents()
+            self.topController?.present(self.currentAlert!, animated: false, completion: {
+                self.isUpdateDialogOpen = true
+            })
+        }
+    }
+    
+    
+    
+    public func showUpdateAlert() {
+        
+        DispatchQueue.main.async {
+            if AppServices.shared.connectedToNetwork() {
+                InfraManager.shared.checkUpdates { (isCritical) in
+                    guard let isCritical = isCritical else {
+                        UserDefaults.standard.needsCriticalUpdate = false
+                        DispatchQueue.main.async {
+                            UIApplication.shared.endIgnoringInteractionEvents()
+                        }
+                        return
+                    }
+                    self.logService.warning(message: "Depcrecated app used")
+                    if isCritical {
+                        UserDefaults.standard.needsCriticalUpdate = true
+                        self.showUpdate(critical: true)
+                    } else {
+                        UserDefaults.standard.needsCriticalUpdate = false
+                        self.showUpdate(critical: false)
+                    }
+                }
+            } else {
+                if UserDefaults.standard.needsCriticalUpdate {
+                    self.showUpdate(critical: true)
+                }
+            }
+            
+        }
+        
     }
     
     private func permissionAsked(completionHandler: @escaping (Bool) -> Void) {

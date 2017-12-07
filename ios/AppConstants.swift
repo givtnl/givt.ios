@@ -22,9 +22,26 @@ class AppConstants{
         }
     }
     
+    static var countries: [Country] = {
+        var countries: [Country] = []
+        countries.append(Country(name: NSLocalizedString("Belgium", comment: ""), shortName: "BE", prefix: "+32"))
+        countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", prefix: "+31"))
+        countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", prefix: "+49"))
+        return countries
+    }()
+    
     static var buildNumber: String {
         get {
+            #if DEBUG
+            /* TESTING PURPOSES ONLY */
+            // UNCOMMENT one of the following lines to simulate the popup from the update
+            //return "2" -> normal update
+            //return "3" -> critical update
+            return "4" //-> normal update
             return Bundle.main.infoDictionary!["CFBundleVersion"] as! String
+            #else
+            return Bundle.main.infoDictionary!["CFBundleVersion"] as! String
+            #endif
         }
     }
 }

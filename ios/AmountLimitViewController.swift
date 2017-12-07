@@ -10,6 +10,7 @@ import UIKit
 
 class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet var subTitleText: UILabel!
     @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet var verticalConstraint: NSLayoutConstraint!
@@ -70,6 +71,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        subTitleText.text = NSLocalizedString("AmountLimit", comment: "")
         
         if hasBackButton {
             btnSave.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)

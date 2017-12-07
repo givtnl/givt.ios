@@ -118,7 +118,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         let backItem = UIBarButtonItem()
         backItem.title = NSLocalizedString("Cancel", comment: "Annuleer")
         backItem.style = .plain
-        backItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 20)!], for: .normal)
+        backItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!], for: .normal)
         btnGive.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         self.navigationItem.backBarButtonItem = backItem
         checkAmount()
@@ -139,7 +139,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        reset()
     }
     
     func addGestureRecognizerToView(view: UIView) {
@@ -273,7 +272,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         } else {
             showBluetoothMessage()
         }
-        
+        reset()
      }
     
     func displayAmountLimitExceeded() {
@@ -384,7 +383,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func removeCollection() {
-        print("tapped")
         if !thirdView.isHidden {
             thirdView.isHidden = true
             leftSpacerView.isHidden = false
@@ -486,9 +484,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         selectView(0)
        
     }
+
+    let slideAnimator = CustomPresentModalAnimation()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "faq" {
+            let destination = segue.destination
+            destination.transitioningDelegate = slideAnimator
+        }
+    }
     
-    @IBAction func openFAQ(_ sender: Any) {
-        let vc = UIStoryboard(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
-        self.present(vc, animated: true, completion: nil)
+    @IBAction func returnFromSegue(sender: UIStoryboardSegue) {
+        
     }
 }

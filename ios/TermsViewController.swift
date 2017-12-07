@@ -16,13 +16,6 @@ class TermsViewController: UIViewController {
     var typeOfTerms: TypeOfTerms = .privacyPolicy
     override func viewDidLoad() {
         super.viewDidLoad()
-        close.setTitle(NSLocalizedString("Close", comment: ""), for: .normal)
-        //close.addGestureRecognizer(tap)
-        //close.isUserInteractionEnabled = true
-
-        
-        //scrollview.contentSize.height = test.frame.height
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func exit(_ sender: Any) {
