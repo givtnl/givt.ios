@@ -62,6 +62,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     
     
+    
     private var pressedShortcutKey: Bool! = false
     private var decimalNotation: String! = "," {
         didSet {
@@ -359,15 +360,19 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         
         switch idx {
         case 0?:
+            self.lblTitle.title = NSLocalizedString("ColId1", comment: "")
             firstLine.isHidden = false
             firstEuro.isHidden = false
+            
         case 1?:
+            self.lblTitle.title = NSLocalizedString("ColId2", comment: "")
             secondView.isHidden = false
             secondLine.isHidden = false
             secondEuro.isHidden = false
             
             showSecondBalloon(view: secondView, arrowPointsTo: amountLabel2)
         case 2?:
+            self.lblTitle.title = NSLocalizedString("ColId3", comment: "")
             thirdView.isHidden = false
             thirdLine.isHidden = false
             thirdEuro.isHidden = false
@@ -397,6 +402,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             collectionButton.setImage(#imageLiteral(resourceName: "onecollect.png"), for: .normal)
             if selectedAmount == 1 {
                 selectView(0)
+                self.lblTitle.title = NSLocalizedString("Amount", comment: "")
             }
             NSLayoutConstraint.deactivate([widthConstraint])
             widthConstraint = collectionView.widthAnchor.constraint(equalToConstant: 150)
