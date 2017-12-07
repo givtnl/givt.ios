@@ -36,6 +36,12 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
         didLoad(q: q, a: a, v: v)
     }
     
+    func addToggleGesture(v: UIView) {
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: #selector(openAnswer))
+        v.addGestureRecognizer(tap)
+    }
+    
     func didLoad(q: String, a: String, v: String?) {
         self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         
@@ -47,11 +53,13 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
         questionWrapper.translatesAutoresizingMaskIntoConstraints = false
         questionWrapper.isUserInteractionEnabled = true
         questionWrapper.addGestureRecognizer(tap)
+        addToggleGesture(v: questionWrapper)
         self.addSubview(questionWrapper)
         
         answerWrapper = UIView()
         answerWrapper.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         answerWrapper.translatesAutoresizingMaskIntoConstraints = false
+        addToggleGesture(v: answerWrapper)
         self.addSubview(answerWrapper)
         
         questionWrapper.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true

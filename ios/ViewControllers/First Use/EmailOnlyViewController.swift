@@ -17,7 +17,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var nextBtn: CustomButton!
     @IBOutlet var hintText: UILabel!
     @IBOutlet var subtitleText: UILabel!
-    @IBOutlet var titleText: UILabel!
     @IBOutlet var email: CustomUITextField!
     @IBOutlet var terms: UILabel!
     @IBOutlet var titleItem: UINavigationItem!
@@ -45,9 +44,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             checkAll()
         #endif
         
-        
-        
-        
         email.placeholder = NSLocalizedString("Email", comment: "")
         title = NSLocalizedString("EnterEmail", comment: "")
         subtitleText.text = NSLocalizedString("ToGiveWeNeedYourEmailAddress", comment: "")
@@ -55,15 +51,62 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         nextBtn.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
         nextBtn.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         email.delegate = self
-        
-        
+
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-
+    
         NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+ 
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        
+        // prevents the scroll view from swallowing up the touch event of child buttons
+        tapGesture.cancelsTouchesInView = false
+        
+        scroll.addGestureRecognizer(tapGesture)
+    
+    }
+    
+    @objc func endEditing() {
+        self.view.endEditing(false)
+    }
+    
+    @IBOutlet var scroll: UIScrollView!
+    
+    @IBOutlet var container: UIView!
+    @objc func keyboardDidShow(notification: NSNotification) {
+        scroll.contentInset.bottom -= 20
+        scroll.scrollIndicatorInsets.bottom -= 20
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+            scroll.contentInset.bottom = contentInsets.bottom + 20
+            scroll.scrollIndicatorInsets.bottom = contentInsets.bottom + 20
+            
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+            scroll.contentInset = .zero
+            scroll.scrollIndicatorInsets = .zero
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,22 +114,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.barStyle = .default
         
         self.navigationController?.navigationBar.barTintColor = .white
-    }
-
-    @objc func keyboardWillShow(notification: NSNotification) {
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y -= keyboardSize.height
-        }
-       NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y += keyboardSize.height
-        }
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -101,11 +128,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         let isEmailValid = validationHelper.isEmailAddressValid(self.email.text!)
         isEmailValid ? email.setValid() : email.setInvalid()
         self.nextBtn.isEnabled = isEmailValid
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func pop(_ sender: Any) {
@@ -185,15 +207,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         })
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-        
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
     
     func registerEmail(email: String) {
