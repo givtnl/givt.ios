@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4bl-Dj-gnz">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -21,23 +21,23 @@
             <objects>
                 <viewController storyboardIdentifier="FAQViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="4bl-Dj-gnz" customClass="FAQViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4kq-Oj-IG8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hulp nodig?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kly-Qd-27y">
-                                <rect key="frame" x="130" y="40" width="114.5" height="27.5"/>
+                                <rect key="frame" x="103" y="40" width="114.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vind hier antwoorden op je vragen en handige tips" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ycr-VA-qYM">
-                                <rect key="frame" x="40" y="87.5" width="295" height="44"/>
+                                <rect key="frame" x="20" y="87.5" width="280" height="44"/>
                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktG-4s-36p">
-                                <rect key="frame" x="321" y="31" width="44" height="44"/>
+                                <rect key="frame" x="266" y="31" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="AUG-5D-k0z"/>
                                     <constraint firstAttribute="width" constant="44" id="ZLi-0D-pGL"/>
@@ -48,13 +48,13 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wDl-rD-BAx">
-                                <rect key="frame" x="0.0" y="151.5" width="375" height="515.5"/>
+                                <rect key="frame" x="0.0" y="151.5" width="320" height="328.5"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nHZ-c5-8AP">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="510"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="510"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BFW-OW-Fof">
-                                                <rect key="frame" x="0.0" y="161" width="375" height="200"/>
+                                                <rect key="frame" x="0.0" y="161" width="320" height="200"/>
                                             </stackView>
                                         </subviews>
                                         <constraints>
@@ -79,14 +79,14 @@
                         <constraints>
                             <constraint firstItem="Ycr-VA-qYM" firstAttribute="centerX" secondItem="4kq-Oj-IG8" secondAttribute="centerX" id="2gd-8i-HFV"/>
                             <constraint firstItem="Ycr-VA-qYM" firstAttribute="top" secondItem="kly-Qd-27y" secondAttribute="bottom" constant="20" id="36o-aS-rLq"/>
-                            <constraint firstAttribute="trailing" secondItem="Ycr-VA-qYM" secondAttribute="trailing" constant="40" id="7PO-P2-7FG"/>
+                            <constraint firstAttribute="trailing" secondItem="Ycr-VA-qYM" secondAttribute="trailing" constant="20" id="7PO-P2-7FG"/>
                             <constraint firstItem="kly-Qd-27y" firstAttribute="centerX" secondItem="4kq-Oj-IG8" secondAttribute="centerX" id="92T-w7-Swj"/>
                             <constraint firstItem="wDl-rD-BAx" firstAttribute="trailing" secondItem="h2N-gG-9ND" secondAttribute="trailing" id="HVa-9g-aYJ"/>
                             <constraint firstItem="wDl-rD-BAx" firstAttribute="top" secondItem="Ycr-VA-qYM" secondAttribute="bottom" constant="20" id="Hdr-Fl-mIn"/>
                             <constraint firstItem="ktG-4s-36p" firstAttribute="centerY" secondItem="kly-Qd-27y" secondAttribute="centerY" id="UXG-fb-xiW"/>
                             <constraint firstItem="h2N-gG-9ND" firstAttribute="trailing" secondItem="ktG-4s-36p" secondAttribute="trailing" constant="10" id="WII-cc-wxo"/>
                             <constraint firstItem="wDl-rD-BAx" firstAttribute="leading" secondItem="h2N-gG-9ND" secondAttribute="leading" id="ZIP-vS-0JH"/>
-                            <constraint firstItem="Ycr-VA-qYM" firstAttribute="leading" secondItem="4kq-Oj-IG8" secondAttribute="leading" constant="40" id="esn-H4-R9q"/>
+                            <constraint firstItem="Ycr-VA-qYM" firstAttribute="leading" secondItem="4kq-Oj-IG8" secondAttribute="leading" constant="20" id="esn-H4-R9q"/>
                             <constraint firstItem="kly-Qd-27y" firstAttribute="top" secondItem="h2N-gG-9ND" secondAttribute="top" constant="20" id="g7X-S1-jAm"/>
                             <constraint firstItem="wDl-rD-BAx" firstAttribute="bottom" secondItem="h2N-gG-9ND" secondAttribute="bottom" id="mos-kT-qyN"/>
                         </constraints>
