@@ -31,7 +31,7 @@ class TermsViewController: UIViewController {
             titleText.text = NSLocalizedString("PrivacyTitle", comment: "")
         } else if typeOfTerms == .termsAndConditions {
             terms.text = NSLocalizedString("TermsText", comment: "")
-            titleText.text = NSLocalizedString("TermsTitle", comment: "")
+            titleText.text = NSLocalizedString("FullVersionTitleTerms", comment: "")
         }
           print(terms.text)
     }
