@@ -57,6 +57,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         set {
             amountLabels[selectedAmount] = currentAmountLabel
+            
         }
     }
     
@@ -388,6 +389,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func removeCollection() {
+        currentAmountLabel.text = "0"
         if !thirdView.isHidden {
             thirdView.isHidden = true
             leftSpacerView.isHidden = false

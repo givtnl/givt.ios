@@ -16,7 +16,7 @@
         <entry file="file://$PROJECT_DIR$/ios/ViewControllers/Give Flow/AmountViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+              <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -53,11 +53,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-3280" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-3360" />
     <option name="y" value="-608" />
-    <option name="width" value="3280" />
-    <option name="height" value="1817" />
+    <option name="width" value="1680" />
+    <option name="height" value="977" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -143,21 +143,30 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Debug NL">
-    <configuration name="Debug EN" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Debug" SCHEME_NAME="Debug EN" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
+    <configuration default="false" name="Debug EN" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Debug" SCHEME_NAME="Debug EN" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="Debug NL" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Debug" SCHEME_NAME="Debug NL" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration name="Release" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Release" SCHEME_NAME="Release" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
       <envs />
       <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
         <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
       </EXTENSION>
     </configuration>
-    <configuration name="Debug NL" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Debug" SCHEME_NAME="Debug NL" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-    </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.Debug NL" />
       <item index="1" class="java.lang.String" itemvalue="Application.Debug EN" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Release" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -177,19 +186,19 @@
       <workItem from="1508943669271" duration="93000" />
       <workItem from="1509976720637" duration="619000" />
       <workItem from="1512551261700" duration="80000" />
-      <workItem from="1512658924951" duration="53000" />
+      <workItem from="1512658924951" duration="499000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11543000" />
+    <option name="totallyTimeSpent" value="11989000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3280" y="-608" width="3280" height="1817" extended-state="1" />
+    <frame x="-3360" y="-608" width="1680" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10670732" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20833333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -451,7 +460,7 @@
     <entry file="file://$PROJECT_DIR$/ios/ViewControllers/Give Flow/AmountViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="11" column="40" lean-forward="true" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
           <folding />
         </state>
       </provider>

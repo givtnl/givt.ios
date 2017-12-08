@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Debug EN" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Debug" SCHEME_NAME="Debug EN" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
+    <envs />
+    <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+      <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+    </EXTENSION>
+    <method />
+  </configuration>
+</component>
