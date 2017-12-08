@@ -172,6 +172,22 @@
             </objects>
             <point key="canvasLocation" x="797.10144927536237" y="-966.03260869565224"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="6A9-8D-tZR">
+            <objects>
+                <viewController id="buL-zC-Cpl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NdF-zb-KMX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="X5G-AA-nlE"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZDF-la-ZIy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="poz-a3-GJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1380" y="-1027"/>
+        </scene>
         <!--Base View Controller-->
         <scene sceneID="clB-vc-fyl">
             <objects>
@@ -1275,7 +1291,7 @@ Kijk voor de status in je overzicht.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNE-Iu-fDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2866" y="-911"/>
+            <point key="canvasLocation" x="3204" y="-911.69415292353835"/>
         </scene>
         <!-- Anders geven-->
         <scene sceneID="NJA-HW-RU8">
@@ -1760,6 +1776,9 @@ Kijk voor de status in je overzicht.</string>
                             <color key="textShadowColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
+                    <connections>
+                        <segue destination="buL-zC-Cpl" kind="relationship" relationship="rootViewController" id="sEd-jh-yHe"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pf-Fe-lq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
