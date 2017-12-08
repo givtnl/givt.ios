@@ -61,9 +61,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    
-    
-    
     private var pressedShortcutKey: Bool! = false
     private var decimalNotation: String! = "," {
         didSet {
@@ -247,7 +244,14 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         checkAmount()
     }
 
-     @IBAction func actionGive(_ sender: Any) {
+    fileprivate func showAmountTooLow() {
+        let alert = UIAlertController(title: "", message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("GivtMinimumAmountEuro", comment: "").replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+        self.present(alert, animated: true, completion: {})
+    }
+    
+    @IBAction func actionGive(_ sender: Any) {
+        var numberOfZeroAmounts = 0
         for index in 0..<numberOfCollects {
             let parsedDecimal = Decimal(string: (amountLabels[index].text!.replacingOccurrences(of: ",", with: ".")))!
             
@@ -259,9 +263,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             
             if parsedDecimal  > 0 && parsedDecimal < 0.50 {
                 selectView(index)
-                let alert = UIAlertController(title: "", message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("GivtMinimumAmountEuro", comment: "").replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
-                self.present(alert, animated: true, completion: {})
+                showAmountTooLow()
+                return
+            }
+            
+            if parsedDecimal == 0 {
+                numberOfZeroAmounts += 1
+            }
+            
+            if numberOfZeroAmounts == numberOfCollects {
+                showAmountTooLow()
                 return
             }
         }
@@ -411,6 +422,18 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             widthConstraint.isActive = true
             numberOfCollects = 1
             secondBalloon?.hide()
+        }
+        checkAmounts()
+    }
+    
+    func checkAmounts() {
+        var amountsUnder50C = 0
+        for index in 0..<numberOfCollects {
+            let parsedDecimal = Decimal(string: (amountLabels[index].text!.replacingOccurrences(of: ",", with: ".")))!
+            if parsedDecimal < 0.50 {
+                amountsUnder50C += 1
+            }
+            btnGive.isEnabled = amountsUnder50C != numberOfCollects
         }
     }
     
