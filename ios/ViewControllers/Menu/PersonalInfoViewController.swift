@@ -62,7 +62,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidChange(_ textField: UITextField) {
         if textField == iban {
             if let i = iban.text {
-                let isIbanValid = validationHelper.isIbanChecksumValid(i)
+                let isIbanValid = validationHelper.isIbanChecksumValid(i.replacingOccurrences(of: " ", with: ""))
                 iban.setState(b: isIbanValid)
                 btnNext.isEnabled = isIbanValid
             }
