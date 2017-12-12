@@ -95,6 +95,7 @@
                     <connections>
                         <outlet property="findAnswers" destination="Ycr-VA-qYM" id="mbm-EY-len"/>
                         <outlet property="needHelp" destination="kly-Qd-27y" id="eqZ-ne-HMI"/>
+                        <outlet property="scrollView" destination="nHZ-c5-8AP" id="WZ5-tP-GjF"/>
                         <outlet property="stack" destination="BFW-OW-Fof" id="PgO-Zc-K66"/>
                     </connections>
                 </viewController>

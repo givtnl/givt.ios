@@ -11,6 +11,7 @@ import UIKit
 import WebKit
 
 class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
+    weak var delegate: OpenedQuestionDelegate?
     lazy var answer: UILabel = UILabel()
     lazy var question: UILabel = UILabel()
     
@@ -95,83 +96,92 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
     var videoString: String?
     var videoContainer: UIView?
     var indicator: UIActivityIndicatorView?
+    var isOpen: Bool = false
     
-    @objc func openAnswer() {
-        if let view = answer.superview {
-            answer.removeFromSuperview()
-            videoContainer?.removeFromSuperview()
-            videoWrapper?.removeFromSuperview()
+    func close() {
+        answer.removeFromSuperview()
+        videoContainer?.removeFromSuperview()
+        videoWrapper?.removeFromSuperview()
+        self.layoutIfNeeded()
+        
+        isOpen = false
+    }
+    
+    func open() {
+        answer = UILabel()
+        answer.textColor = .white
+        answer.font = UIFont(name: "Avenir-Roman", size: 16.0)
+        answer.text = answerString
+        answer.numberOfLines = 0
+        answer.translatesAutoresizingMaskIntoConstraints = false
+        answerWrapper.addSubview(answer)
+        answer.leadingAnchor.constraint(equalTo: answerWrapper.leadingAnchor, constant: 20).isActive = true
+        answer.topAnchor.constraint(equalTo: answerWrapper.topAnchor, constant: 0).isActive = true
+        answer.trailingAnchor.constraint(equalTo: answerWrapper.trailingAnchor, constant: -20).isActive = true
+        
+        if let v = videoString {
+            videoContainer = UIView()
+            videoContainer?.translatesAutoresizingMaskIntoConstraints = false
+            self.answerWrapper.addSubview(videoContainer!)
+            videoContainer?.leadingAnchor.constraint(equalTo: answerWrapper.leadingAnchor).isActive = true
+            videoContainer?.trailingAnchor.constraint(equalTo: answerWrapper.trailingAnchor).isActive = true
+            videoContainer?.topAnchor.constraint(equalTo: answer.bottomAnchor).isActive = true
+            videoContainer?.bottomAnchor.constraint(equalTo: answerWrapper.bottomAnchor).isActive = true
+            //videoContainer?.heightAnchor.constraint(equalToConstant: 100).isActive =  true
             
-            self.layoutIfNeeded()
-        } else {
-            answer = UILabel()
-            answer.textColor = .white
-            answer.font = UIFont(name: "Avenir-Roman", size: 16.0)
-            answer.text = answerString
-            answer.numberOfLines = 0
-            answer.translatesAutoresizingMaskIntoConstraints = false
-            answerWrapper.addSubview(answer)
-            answer.leadingAnchor.constraint(equalTo: answerWrapper.leadingAnchor, constant: 20).isActive = true
-            answer.topAnchor.constraint(equalTo: answerWrapper.topAnchor, constant: 0).isActive = true
-            answer.trailingAnchor.constraint(equalTo: answerWrapper.trailingAnchor, constant: -20).isActive = true
             
-            if let v = videoString {
-                videoContainer = UIView()
-                videoContainer?.translatesAutoresizingMaskIntoConstraints = false
-                self.answerWrapper.addSubview(videoContainer!)
-                videoContainer?.leadingAnchor.constraint(equalTo: answerWrapper.leadingAnchor).isActive = true
-                videoContainer?.trailingAnchor.constraint(equalTo: answerWrapper.trailingAnchor).isActive = true
-                videoContainer?.topAnchor.constraint(equalTo: answer.bottomAnchor).isActive = true
-                videoContainer?.bottomAnchor.constraint(equalTo: answerWrapper.bottomAnchor).isActive = true
-                //videoContainer?.heightAnchor.constraint(equalToConstant: 100).isActive =  true
-                
-                
-                let request = URLRequest(url: URL(string: v)!)
-                
-                if videoWrapper == nil {
-                    videoWrapper = WKWebView()
-                    videoWrapper?.isOpaque = false
-                    videoWrapper?.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-                    videoWrapper?.load(request)
-                    videoWrapper?.navigationDelegate = self
-                    videoWrapper?.uiDelegate = self
-                    videoWrapper?.translatesAutoresizingMaskIntoConstraints = false
-                }
-
-
-                self.videoContainer!.addSubview(videoWrapper!)
-                
-                videoWrapper?.leadingAnchor.constraint(equalTo: self.videoContainer!.leadingAnchor).isActive = true
-                videoWrapper?.topAnchor.constraint(equalTo: self.videoContainer!.topAnchor, constant: 20).isActive = true
-                videoWrapper?.trailingAnchor.constraint(equalTo: self.videoContainer!.trailingAnchor).isActive = true
-                videoWrapper?.bottomAnchor.constraint(equalTo: self.videoContainer!.bottomAnchor, constant: -20).isActive = true
-                videoWrapper?.heightAnchor.constraint(equalToConstant: 210).isActive = true
-                
-                if indicator == nil {
-                    indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-                    indicator!.translatesAutoresizingMaskIntoConstraints = false
-                    indicator!.startAnimating()
-                    indicator!.hidesWhenStopped = true
-                    self.videoContainer!.addSubview(indicator!)
-                    indicator!.centerYAnchor.constraint(equalTo: self.videoContainer!.centerYAnchor).isActive = true
-                    indicator!.centerXAnchor.constraint(equalTo: self.videoContainer!.centerXAnchor).isActive = true
-                }
-                
-
-                insertCSSString(into: videoWrapper!)
- 
-                
-            } else {
-                answer.bottomAnchor.constraint(equalTo: answerWrapper.bottomAnchor, constant: -20).isActive = true
+            let request = URLRequest(url: URL(string: v)!)
+            
+            if videoWrapper == nil {
+                videoWrapper = WKWebView()
+                videoWrapper?.isOpaque = false
+                videoWrapper?.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+                videoWrapper?.load(request)
+                videoWrapper?.navigationDelegate = self
+                videoWrapper?.uiDelegate = self
+                videoWrapper?.translatesAutoresizingMaskIntoConstraints = false
             }
             
             
-            self.layoutIfNeeded()
+            self.videoContainer!.addSubview(videoWrapper!)
+            
+            videoWrapper?.leadingAnchor.constraint(equalTo: self.videoContainer!.leadingAnchor).isActive = true
+            videoWrapper?.topAnchor.constraint(equalTo: self.videoContainer!.topAnchor, constant: 20).isActive = true
+            videoWrapper?.trailingAnchor.constraint(equalTo: self.videoContainer!.trailingAnchor).isActive = true
+            videoWrapper?.bottomAnchor.constraint(equalTo: self.videoContainer!.bottomAnchor, constant: -20).isActive = true
+            videoWrapper?.heightAnchor.constraint(equalToConstant: 210).isActive = true
+            
+            if indicator == nil {
+                indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+                indicator!.translatesAutoresizingMaskIntoConstraints = false
+                indicator!.startAnimating()
+                indicator!.hidesWhenStopped = true
+                self.videoContainer!.addSubview(indicator!)
+                indicator!.centerYAnchor.constraint(equalTo: self.videoContainer!.centerYAnchor).isActive = true
+                indicator!.centerXAnchor.constraint(equalTo: self.videoContainer!.centerXAnchor).isActive = true
+            }
             
             
+            insertCSSString(into: videoWrapper!)
+            
+            
+        } else {
+            answer.bottomAnchor.constraint(equalTo: answerWrapper.bottomAnchor, constant: -20).isActive = true
         }
         
         
+        self.layoutIfNeeded()
+        isOpen = true
+    }
+    
+    @objc func openAnswer() {
+        delegate?.didTapFAQView(sender: self)
+        if answer.superview != nil {
+            close()
+        } else {
+            open()
+            delegate?.didShowAnswer(sender: self)
+        }
     }
     
     
