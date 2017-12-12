@@ -17,27 +17,10 @@ class CustomViewController: UINavigationController  {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationBar.shadowImage = UIImage()
-        // Do any additional setup after loading the view.
-        /* LGSideMenuDelegate.didHideLeftView(<#T##LGSideMenuDelegate#>)
-         delegateTest?.willHideLeftView(leftView: UIView, sideMenuController: LGSideMenuController) += NSLog("test")*/
-        NavigationManager.shared.load(vc: self)
+        NavigationManager.shared.load(vc: self, animated: false)
     }
     
     @IBAction func unwindToAmount(segue: UIStoryboardSegue) {
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-    }
-    
-    
-    
 }

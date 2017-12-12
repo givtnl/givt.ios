@@ -1,4 +1,13 @@
 //
+//  ModalFromRightAnimation.swift
+//  ios
+//
+//  Created by Lennie Stockman on 11/12/17.
+//  Copyright © 2017 Givt. All rights reserved.
+//
+
+import Foundation
+//
 //  CustomModalAnimation.swift
 //  ios
 //
@@ -8,9 +17,9 @@
 
 import UIKit
 
-class CustomPresentModalAnimation: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
-    let duration = 0.35
-    let customDismiss = CustomDismissModalAnimation()
+class PresentFromRight: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+    let duration = 0.25
+    let customDismiss = HideFromRight()
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return customDismiss
     }
@@ -31,13 +40,13 @@ class CustomPresentModalAnimation: NSObject, UIViewControllerAnimatedTransitioni
         }
         
         let container = transitionContext.containerView
-        let screenOffUp = CGAffineTransform(translationX: 0, y: -container.frame.height)
+        let screenOffUp = CGAffineTransform(translationX: container.frame.width, y: 0)
         
         container.addSubview(fromView)
         container.addSubview(toView)
         
         toView.transform = screenOffUp
-        
+        toView.dropShadow()
         UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseInOut], animations: {
             toView.transform = CGAffineTransform.identity
             toView.alpha = 1
@@ -47,10 +56,11 @@ class CustomPresentModalAnimation: NSObject, UIViewControllerAnimatedTransitioni
         }
         
     }
+
 }
 
-class CustomDismissModalAnimation: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
-    let duration = 0.35
+class HideFromRight: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+    let duration = 0.25
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return self
     }
@@ -71,8 +81,8 @@ class CustomDismissModalAnimation: NSObject, UIViewControllerAnimatedTransitioni
         }
         
         let container = transitionContext.containerView
-        let screenOffUp = CGAffineTransform(translationX: 0, y: -container.frame.height)
-
+        let screenOffUp = CGAffineTransform(translationX: container.frame.width, y: 0)
+        
         container.addSubview(toView)
         container.addSubview(fromView)
         

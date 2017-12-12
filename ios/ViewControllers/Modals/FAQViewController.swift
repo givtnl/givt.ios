@@ -8,7 +8,25 @@
 
 import UIKit
 
-class FAQViewController: UIViewController {
+
+
+class FAQViewController: UIViewController, OpenedQuestionDelegate {
+    @IBOutlet var scrollView: UIScrollView!
+    var previousQuestion: FAQView?
+    func didTapFAQView(sender: FAQView) {
+        if previousQuestion != nil {
+            if previousQuestion != sender {
+                (previousQuestion?.isOpen)! ? previousQuestion?.close() : previousQuestion?.open()
+            }
+        }
+        previousQuestion = sender
+    }
+    
+    func didShowAnswer(sender: FAQView) {
+        /* when answer is opened, we want to scroll to the top of the Question view */
+        scrollView.layoutIfNeeded()
+        scrollView.scrollToView(view: sender, animated: false)
+    }
     
     @IBOutlet var needHelp: UILabel!
     @IBOutlet var findAnswers: UILabel!
@@ -17,20 +35,17 @@ class FAQViewController: UIViewController {
         super.viewDidLoad()
         needHelp.text = NSLocalizedString("NeedHelpTitle", comment: "")
         findAnswers.text = NSLocalizedString("FindAnswersToYourQuestions", comment: "")
-        
-
-        // Do any additional setup after loading the view.
     }
-    
-
     
     private func addQuestion(q: String, a: String, v: String? = nil) {
         addSpacer()
         let item = FAQView(q: NSLocalizedString(q, comment: ""), a: NSLocalizedString(a, comment: ""), v: v)
+        item.delegate = self
         item.translatesAutoresizingMaskIntoConstraints = false
         stack.addArrangedSubview(item)
     }
     
+
     private func addSpacer() {
         let spacer = UIView()
         spacer.translatesAutoresizingMaskIntoConstraints = false
@@ -113,4 +128,9 @@ class FAQViewController: UIViewController {
     }
     */
 
+}
+
+protocol OpenedQuestionDelegate: class {
+    func didTapFAQView(sender: FAQView)
+    func didShowAnswer(sender: FAQView)
 }

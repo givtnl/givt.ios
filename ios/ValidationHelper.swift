@@ -42,17 +42,30 @@ class ValidationHelper {
     
     //long live stackoverflow
     func isIbanChecksumValid(_ iban: String) -> Bool {        
-        let IBAN = iban.replacingOccurrences(of: " ", with: "").uppercased()
-        var a = IBAN.utf8.map{ $0 }
-        while a.count < 4 {
-            a.append(0)
+        guard iban.count >= 4 else {
+            return false
         }
-        let b = a[4..<a.count] + a[0..<4]
-        let c = b.reduce(0) { (r, u) -> Int in
-            let i = Int(u)
-            return i > 64 ? (100 * r + i - 55) % 97: (10 * r + i - 48) % 97
+        
+        let uppercase = iban.uppercased()
+        
+        guard uppercase.range(of: "^[0-9A-Z]*$", options: .regularExpression) != nil else {
+            return false
         }
-        return c == 1
+        
+        return (mod97(uppercase) == 1)
+    }
+    
+    fileprivate func mod97(_ iban: String) -> Int {
+        let symbols = iban
+        let swapped = symbols.dropFirst(4) + symbols.prefix(4)
+        
+        let mod: Int = swapped.reduce(0) { (previousMod, char) in
+            let value = Int(String(char), radix: 36)! // "0" => 0, "A" => 10, "Z" => 35
+            let factor = value < 10 ? 10 : 100
+            return (factor * previousMod + value) % 97
+        }
+        
+        return mod
     }
     
     

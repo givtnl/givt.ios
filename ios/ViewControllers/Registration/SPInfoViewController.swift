@@ -59,7 +59,7 @@ class SPInfoViewController: UIViewController {
         let signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: country, postalCode: userInfo.postalCode, street: userInfo.address)
         let mandate = Mandate(signatory: signatory)
         LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
-            if slimPayUrl == "" {
+            if slimPayUrl == nil {
                 self.log.warning(message: "Mandate url is empty, what is going on?")
                 SVProgressHUD.dismiss()
                 let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)

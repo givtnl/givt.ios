@@ -57,10 +57,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         set {
             amountLabels[selectedAmount] = currentAmountLabel
+            
         }
     }
-    
-    
     
     private var pressedShortcutKey: Bool! = false
     private var decimalNotation: String! = "," {
@@ -245,7 +244,14 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         checkAmount()
     }
 
-     @IBAction func actionGive(_ sender: Any) {
+    fileprivate func showAmountTooLow() {
+        let alert = UIAlertController(title: "", message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("GivtMinimumAmountEuro", comment: "").replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+        self.present(alert, animated: true, completion: {})
+    }
+    
+    @IBAction func actionGive(_ sender: Any) {
+        var numberOfZeroAmounts = 0
         for index in 0..<numberOfCollects {
             let parsedDecimal = Decimal(string: (amountLabels[index].text!.replacingOccurrences(of: ",", with: ".")))!
             
@@ -257,9 +263,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             
             if parsedDecimal  > 0 && parsedDecimal < 0.50 {
                 selectView(index)
-                let alert = UIAlertController(title: "", message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("GivtMinimumAmountEuro", comment: "").replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
-                self.present(alert, animated: true, completion: {})
+                showAmountTooLow()
+                return
+            }
+            
+            if parsedDecimal == 0 {
+                numberOfZeroAmounts += 1
+            }
+            
+            if numberOfZeroAmounts == numberOfCollects {
+                showAmountTooLow()
                 return
             }
         }
@@ -359,15 +372,19 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         
         switch idx {
         case 0?:
+            self.lblTitle.title = NSLocalizedString("ColId1", comment: "")
             firstLine.isHidden = false
             firstEuro.isHidden = false
+            
         case 1?:
+            self.lblTitle.title = NSLocalizedString("ColId2", comment: "")
             secondView.isHidden = false
             secondLine.isHidden = false
             secondEuro.isHidden = false
             
             showSecondBalloon(view: secondView, arrowPointsTo: amountLabel2)
         case 2?:
+            self.lblTitle.title = NSLocalizedString("ColId3", comment: "")
             thirdView.isHidden = false
             thirdLine.isHidden = false
             thirdEuro.isHidden = false
@@ -383,6 +400,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func removeCollection() {
+        currentAmountLabel.text = "0"
         if !thirdView.isHidden {
             thirdView.isHidden = true
             leftSpacerView.isHidden = false
@@ -397,12 +415,25 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             collectionButton.setImage(#imageLiteral(resourceName: "onecollect.png"), for: .normal)
             if selectedAmount == 1 {
                 selectView(0)
+                self.lblTitle.title = NSLocalizedString("Amount", comment: "")
             }
             NSLayoutConstraint.deactivate([widthConstraint])
             widthConstraint = collectionView.widthAnchor.constraint(equalToConstant: 150)
             widthConstraint.isActive = true
             numberOfCollects = 1
             secondBalloon?.hide()
+        }
+        checkAmounts()
+    }
+    
+    func checkAmounts() {
+        var amountsUnder50C = 0
+        for index in 0..<numberOfCollects {
+            let parsedDecimal = Decimal(string: (amountLabels[index].text!.replacingOccurrences(of: ",", with: ".")))!
+            if parsedDecimal < 0.50 {
+                amountsUnder50C += 1
+            }
+            btnGive.isEnabled = amountsUnder50C != numberOfCollects
         }
     }
     

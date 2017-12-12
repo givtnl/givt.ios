@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9415ffff-c3e0-4d46-afe2-628c5cae1222" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ios/AppDelegate.swift" afterPath="$PROJECT_DIR$/ios/AppDelegate.swift" />
-    </list>
+    <list default="true" id="9415ffff-c3e0-4d46-afe2-628c5cae1222" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,34 +12,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulator_0DF7E5A0-D7E3-4A11-9788-B6009B02C031" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RegistrationDetailViewController.swift" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ios/RegistrationDetailViewController.swift">
+      <file leaf-file-name="AmountViewController.swift" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ios/ViewControllers/Give Flow/AmountViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4170">
-              <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="315" selection-end-column="46" />
-              <folding>
-                <marker date="1511807837000" expanded="true" signature="1180:1488" ph="{...}" />
-                <marker date="1511807837000" expanded="true" signature="12456:12462" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SelectOrgViewController.swift" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ios/Manual giving/SelectOrgViewController.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppDelegate.swift" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ios/AppDelegate.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="46" column="46" lean-forward="false" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
+            <state relative-caret-position="165">
+              <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -68,6 +43,7 @@
         <option value="$PROJECT_DIR$/ios/RegistrationDetailViewController.swift" />
         <option value="$PROJECT_DIR$/ios/ManualOrganisationView.swift" />
         <option value="$PROJECT_DIR$/ios/Manual giving/SelectOrgViewController.swift" />
+        <option value="$PROJECT_DIR$/ios/AppDelegate.swift" />
       </list>
     </option>
   </component>
@@ -78,10 +54,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-3280" />
+    <option name="x" value="-3360" />
     <option name="y" value="-608" />
-    <option name="width" value="3280" />
-    <option name="height" value="1817" />
+    <option name="width" value="1680" />
+    <option name="height" value="977" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -98,7 +74,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Cidr.FilesView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -122,7 +97,7 @@
               <item name="ios" type="1d218c8b:XcodeProjectNode" />
               <item name="ios" type="fcab9f18:XcodeViewNode" />
               <item name="ViewControllers" type="fcab9f18:XcodeViewNode" />
-              <item name="FirstUse" type="fcab9f18:XcodeViewNode" />
+              <item name="Give Flow" type="fcab9f18:XcodeViewNode" />
             </path>
             <path>
               <item name="" type="efc3779f:XcodeRootNode" />
@@ -148,6 +123,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Cidr.FilesView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -167,21 +143,30 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Debug NL">
-    <configuration name="Debug EN" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Debug" SCHEME_NAME="Debug EN" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
+    <configuration default="false" name="Debug EN" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Debug" SCHEME_NAME="Debug EN" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration default="false" name="Debug NL" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Debug" SCHEME_NAME="Debug NL" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
+      <envs />
+      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+      </EXTENSION>
+      <method />
+    </configuration>
+    <configuration name="Release" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Release" SCHEME_NAME="Release" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
       <envs />
       <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
         <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
       </EXTENSION>
     </configuration>
-    <configuration name="Debug NL" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ios" TARGET_NAME="ios" CONFIG_NAME="Debug" SCHEME_NAME="Debug NL" RUN_TARGET_PROJECT_NAME="ios" RUN_TARGET_NAME="ios" MAKE_ACTIVE="TRUE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-    </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.Debug NL" />
       <item index="1" class="java.lang.String" itemvalue="Application.Debug EN" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Release" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -201,18 +186,19 @@
       <workItem from="1508943669271" duration="93000" />
       <workItem from="1509976720637" duration="619000" />
       <workItem from="1512551261700" duration="80000" />
+      <workItem from="1512658924951" duration="499000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11490000" />
+    <option name="totallyTimeSpent" value="11989000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-3280" y="-608" width="3280" height="1817" extended-state="0" />
+    <frame x="-3360" y="-608" width="1680" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10670732" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20833333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -247,23 +233,39 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ios/RegistrationDetailViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4170">
-          <caret line="280" column="0" lean-forward="false" selection-start-line="280" selection-start-column="0" selection-end-line="287" selection-end-column="46" />
-          <folding>
-            <marker date="1511807837000" expanded="true" signature="1180:1488" ph="{...}" />
-            <marker date="1511807837000" expanded="true" signature="12456:12462" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ios/ManualOrganisationView.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+        <state relative-caret-position="4620">
+          <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="315" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ios/Manual giving/SelectOrgViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="35" lean-forward="false" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/AppDelegate.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="46" column="46" lean-forward="false" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
+          <folding>
+            <marker date="1512638781000" expanded="true" signature="619:6780" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/RegistrationDetailViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4170">
+          <caret line="280" column="0" lean-forward="false" selection-start-line="280" selection-start-column="0" selection-end-line="287" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/ManualOrganisationView.swift" />
     <entry file="file://$PROJECT_DIR$/ios/Manual giving/SelectOrgViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -325,10 +327,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1511807837000" expanded="true" signature="1180:1488" ph="{...}" />
-            <marker date="1511807837000" expanded="true" signature="12456:12462" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -388,13 +387,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ios/SettingsItemTableViewCell.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/SettingsItemTableViewCell.swift" />
     <entry file="file://$PROJECT_DIR$/ios/RegistrationUser.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -439,23 +432,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ios/RegistrationDetailViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4170">
+        <state relative-caret-position="4590">
           <caret line="308" column="0" lean-forward="false" selection-start-line="308" selection-start-column="0" selection-end-line="315" selection-end-column="46" />
-          <folding>
-            <marker date="1511807837000" expanded="true" signature="1180:1488" ph="{...}" />
-            <marker date="1511807837000" expanded="true" signature="12456:12462" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ios/ManualOrganisationView.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ios/ManualOrganisationView.swift" />
     <entry file="file://$PROJECT_DIR$/ios/Manual giving/SelectOrgViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -466,8 +449,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ios/AppDelegate.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="46" column="46" lean-forward="false" selection-start-line="46" selection-start-column="46" selection-end-line="46" selection-end-column="46" />
+        <state relative-caret-position="615">
+          <caret line="44" column="19" lean-forward="false" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
+          <folding>
+            <marker date="1512638781000" expanded="true" signature="619:6780" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ios/ViewControllers/Give Flow/AmountViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="40" lean-forward="false" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
           <folding />
         </state>
       </provider>

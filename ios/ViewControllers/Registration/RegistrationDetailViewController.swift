@@ -151,7 +151,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let address = self.streetAndNumber.text!
         let city = self.city.text!
         let countryCode = self.selectedCountry?.shortName
-        let iban = self.iban.text!
+        let iban = self.iban.text!.replacingOccurrences(of: " ", with: "")
         let mobileNumber = self.formattedPhoneNumber
         let postalCode = self.postalCode.text!
         let userData = RegistrationUserData(address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
@@ -186,7 +186,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let isCityValid = validationHelper.isBetweenCriteria(city.text!, 35)
         let isCountryValid = validationHelper.isBetweenCriteria(countryPicker.text!, 99)
         let isMobileNumberValid = isMobileNumber(mobileNumber.text!)
-        let isIbanValid = validationHelper.isIbanChecksumValid(iban.text!)
+        let isIbanValid = validationHelper.isIbanChecksumValid(iban.text!.replacingOccurrences(of: " ", with: ""))
         
         switch _lastTextField {
         case streetAndNumber:

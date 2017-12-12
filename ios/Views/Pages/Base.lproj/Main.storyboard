@@ -172,6 +172,22 @@
             </objects>
             <point key="canvasLocation" x="797.10144927536237" y="-966.03260869565224"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="6A9-8D-tZR">
+            <objects>
+                <viewController id="buL-zC-Cpl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NdF-zb-KMX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="X5G-AA-nlE"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZDF-la-ZIy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="poz-a3-GJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1380" y="-1027"/>
+        </scene>
         <!--Base View Controller-->
         <scene sceneID="clB-vc-fyl">
             <objects>
@@ -950,13 +966,13 @@ Kijk voor de status in je overzicht.</string>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okn-Ve-nxO" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="603" width="335" height="44"/>
-                                <color key="backgroundColor" red="0.25490196078431371" green="0.78823529411764703" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ad8-bz-j0I"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
-                                <state key="normal" title="Geven"/>
+                                <state key="normal" title="Geven knop"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="4"/>
@@ -1198,6 +1214,9 @@ Kijk voor de status in je overzicht.</string>
                                     <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
                                         <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" red="0.8901960784313725" green="0.88627450980392153" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="btnGive:" destination="I2a-zH-aE5" eventType="touchUpInside" id="43P-ep-N4j"/>
@@ -1272,7 +1291,7 @@ Kijk voor de status in je overzicht.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNE-Iu-fDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2866" y="-911"/>
+            <point key="canvasLocation" x="3204" y="-911.69415292353835"/>
         </scene>
         <!-- Anders geven-->
         <scene sceneID="NJA-HW-RU8">
@@ -1344,7 +1363,7 @@ Kijk voor de status in je overzicht.</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="127.5" height="150"/>
                                                         <subviews>
                                                             <imageView contentMode="scaleAspectFit" verticalHuggingPriority="750" image="kerken" translatesAutoresizingMaskIntoConstraints="NO" id="Seu-F4-bYH">
-                                                                <rect key="frame" x="4.5" y="0.0" width="120" height="120"/>
+                                                                <rect key="frame" x="4" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                                 </accessibility>
@@ -1374,7 +1393,7 @@ Kijk voor de status in je overzicht.</string>
                                                         <rect key="frame" x="167.5" y="0.0" width="127.5" height="150"/>
                                                         <subviews>
                                                             <imageView contentMode="scaleAspectFit" verticalHuggingPriority="750" image="stichtingen" translatesAutoresizingMaskIntoConstraints="NO" id="FJV-Xu-XsG">
-                                                                <rect key="frame" x="4.5" y="0.0" width="120" height="120"/>
+                                                                <rect key="frame" x="4" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                                 </accessibility>
@@ -1421,7 +1440,7 @@ Kijk voor de status in je overzicht.</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="127.5" height="150"/>
                                                         <subviews>
                                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acties" translatesAutoresizingMaskIntoConstraints="NO" id="0we-Wa-6f0">
-                                                                <rect key="frame" x="4" y="0.0" width="120" height="120"/>
+                                                                <rect key="frame" x="4.5" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                                 </accessibility>
@@ -1453,7 +1472,7 @@ Kijk voor de status in je overzicht.</string>
                                                         <rect key="frame" x="167.5" y="0.0" width="127.5" height="150"/>
                                                         <subviews>
                                                             <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="straatmzkt" translatesAutoresizingMaskIntoConstraints="NO" id="Bj9-0F-DV5">
-                                                                <rect key="frame" x="4" y="0.0" width="120" height="120"/>
+                                                                <rect key="frame" x="4.5" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                                 </accessibility>
@@ -1499,7 +1518,7 @@ Kijk voor de status in je overzicht.</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="127.5" height="150"/>
                                                         <subviews>
                                                             <imageView contentMode="scaleAspectFit" image="qrscan" translatesAutoresizingMaskIntoConstraints="NO" id="yrB-gZ-ogB">
-                                                                <rect key="frame" x="4.5" y="0.0" width="120" height="120"/>
+                                                                <rect key="frame" x="4" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                                 </accessibility>
@@ -1531,7 +1550,7 @@ Kijk voor de status in je overzicht.</string>
                                                         <rect key="frame" x="167.5" y="0.0" width="127.5" height="150"/>
                                                         <subviews>
                                                             <imageView alpha="0.0" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="straatmzkt" translatesAutoresizingMaskIntoConstraints="NO" id="HZw-vf-aVC">
-                                                                <rect key="frame" x="4" y="0.0" width="120" height="120"/>
+                                                                <rect key="frame" x="4.5" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration">
                                                                     <accessibilityTraits key="traits" button="YES" image="YES"/>
                                                                 </accessibility>
@@ -1650,16 +1669,16 @@ Kijk voor de status in je overzicht.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nu goed mikken! Scan de QR-code en geef." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ug-pI-rYK">
-                                <rect key="frame" x="36" y="84" width="303" height="55"/>
+                                <rect key="frame" x="36" y="84" width="303" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QT6-ho-fo6">
-                                <rect key="frame" x="0.0" y="149" width="375" height="518"/>
+                                <rect key="frame" x="0.0" y="121.5" width="375" height="545.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mz4-jO-LA4">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="518"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="545.5"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="Tt0-8d-fGU">
@@ -1677,14 +1696,14 @@ Kijk voor de status in je overzicht.</string>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="Tlo-R9-tPd">
-                                        <rect key="frame" x="40" y="438" width="40" height="40"/>
+                                        <rect key="frame" x="40" y="465.5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="A2c-Hn-ust"/>
                                             <constraint firstAttribute="width" constant="40" id="Sdj-a6-nn5"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="zgG-fD-qhK">
-                                        <rect key="frame" x="295" y="438" width="40" height="40"/>
+                                        <rect key="frame" x="295" y="465.5" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="S3w-wG-aVf"/>
                                             <constraint firstAttribute="width" constant="40" id="vCK-p5-HNh"/>
@@ -1757,6 +1776,9 @@ Kijk voor de status in je overzicht.</string>
                             <color key="textShadowColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
+                    <connections>
+                        <segue destination="buL-zC-Cpl" kind="relationship" relationship="rootViewController" id="sEd-jh-yHe"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pf-Fe-lq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

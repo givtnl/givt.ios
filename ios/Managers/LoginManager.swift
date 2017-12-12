@@ -278,7 +278,12 @@ class LoginManager {
         do {
             try client.post(url: "/api/Mandate", data: mandate.toDictionary()) { (response) in
                 if let response = response, let text = response.text {
-                    completionHandler(text)
+                    if response.basicStatus == .ok {
+                        completionHandler(text)
+                    } else {
+                        completionHandler(nil)
+                        self.log.error(message: text)
+                    }
                 } else {
                     completionHandler(nil)
                 }

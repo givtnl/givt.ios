@@ -78,7 +78,7 @@ class NavigationManager {
         DispatchQueue.main.async {
             if self.loginManager.userClaim == .startedApp {
                 let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
-                vc.setViewControllers([welcome], animated: animated)
+                vc.setViewControllers([welcome], animated: false)
             } else {
                 let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
                 vc.setViewControllers([amount], animated: animated)
@@ -180,7 +180,7 @@ class NavigationManager {
                 UIApplication.shared.openURL(URL(string: "https://www.givtapp.net/updates-app/")!)
                 UIApplication.shared.beginIgnoringInteractionEvents()
             })
-            downloadAction = UIAlertAction(title: "Download", style: .default, handler: { (action) in
+            downloadAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 self.isUpdateDialogOpen = false
                 UIApplication.shared.beginIgnoringInteractionEvents()
             })
