@@ -16,7 +16,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
     func didTapFAQView(sender: FAQView) {
         if previousQuestion != nil {
             if previousQuestion != sender {
-                (previousQuestion?.isOpen)! ? previousQuestion?.close() : previousQuestion?.open()
+                previousQuestion?.close()
             }
         }
         previousQuestion = sender
