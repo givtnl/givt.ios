@@ -372,7 +372,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         
         switch idx {
         case 0?:
-            self.lblTitle.title = NSLocalizedString("ColId1", comment: "")
+            self.lblTitle.title = numberOfCollects != 1 ? NSLocalizedString("ColId1", comment: "") : NSLocalizedString("Amount", comment: "")
             firstLine.isHidden = false
             firstEuro.isHidden = false
             

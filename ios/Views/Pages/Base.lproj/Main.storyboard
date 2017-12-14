@@ -466,10 +466,10 @@ Kijk voor de status in je overzicht.</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwg-g8-7CN">
-                                                <rect key="frame" x="45" y="0.0" width="265" height="80"/>
+                                                <rect key="frame" x="45" y="0.0" width="255" height="80"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CFT-nk-nbx">
-                                                        <rect key="frame" x="57.5" y="0.0" width="150" height="80"/>
+                                                        <rect key="frame" x="52.5" y="0.0" width="150" height="80"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="cfY-RC-6gi">
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="80"/>
@@ -478,14 +478,14 @@ Kijk voor de status in je overzicht.</string>
                                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="4tW-vn-z2C" userLabel="lblAmount">
-                                                                                <rect key="frame" x="16" y="0.0" width="20" height="77"/>
+                                                                                <rect key="frame" x="16" y="11" width="20" height="66"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="36"/>
                                                                                 <color key="textColor" red="0.82352941176470584" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZV-SR-a23">
-                                                                                <rect key="frame" x="5" y="12" width="9" height="65"/>
+                                                                                <rect key="frame" x="5" y="23" width="9" height="54"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="9" id="CDI-ae-Qnx"/>
                                                                                 </constraints>
@@ -501,7 +501,7 @@ Kijk voor de status in je overzicht.</string>
                                                                                 </constraints>
                                                                             </view>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         <accessibility key="accessibilityConfiguration">
                                                                             <accessibilityTraits key="traits" button="YES"/>
                                                                         </accessibility>
@@ -510,10 +510,10 @@ Kijk voor de status in je overzicht.</string>
                                                                             <constraint firstItem="ALL-fv-AUx" firstAttribute="leading" secondItem="kEF-Oq-6FP" secondAttribute="leading" id="7U5-Xt-gp3"/>
                                                                             <constraint firstItem="ALL-fv-AUx" firstAttribute="top" secondItem="YZV-SR-a23" secondAttribute="bottom" id="9Bd-1x-On4"/>
                                                                             <constraint firstItem="4tW-vn-z2C" firstAttribute="leading" secondItem="YZV-SR-a23" secondAttribute="trailing" constant="2" id="Ff2-0w-4Jr"/>
-                                                                            <constraint firstItem="YZV-SR-a23" firstAttribute="top" secondItem="kEF-Oq-6FP" secondAttribute="top" constant="12" id="Q67-gn-d6G"/>
+                                                                            <constraint firstItem="YZV-SR-a23" firstAttribute="top" secondItem="kEF-Oq-6FP" secondAttribute="top" constant="23" id="Q67-gn-d6G"/>
                                                                             <constraint firstAttribute="trailing" secondItem="ALL-fv-AUx" secondAttribute="trailing" id="Qqm-mI-WO2"/>
                                                                             <constraint firstAttribute="bottom" secondItem="ALL-fv-AUx" secondAttribute="bottom" constant="-3" id="ZNs-Ug-bh1"/>
-                                                                            <constraint firstItem="4tW-vn-z2C" firstAttribute="top" secondItem="kEF-Oq-6FP" secondAttribute="top" id="e35-3j-DQj"/>
+                                                                            <constraint firstItem="4tW-vn-z2C" firstAttribute="top" secondItem="kEF-Oq-6FP" secondAttribute="top" constant="11" id="e35-3j-DQj"/>
                                                                             <constraint firstItem="ALL-fv-AUx" firstAttribute="top" secondItem="4tW-vn-z2C" secondAttribute="bottom" id="jSv-gA-dHS"/>
                                                                             <constraint firstAttribute="trailing" secondItem="4tW-vn-z2C" secondAttribute="trailing" constant="14" id="ovz-Ly-LWI"/>
                                                                             <constraint firstItem="YZV-SR-a23" firstAttribute="leading" secondItem="kEF-Oq-6FP" secondAttribute="leading" constant="5" id="xHv-xr-2Vo"/>
@@ -523,7 +523,7 @@ Kijk voor de status in je overzicht.</string>
                                                                         <rect key="frame" x="50" y="0.0" width="50" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="V83-OS-ikq" userLabel="lblAmount">
-                                                                                <rect key="frame" x="16" y="0.0" width="20" height="77"/>
+                                                                                <rect key="frame" x="16" y="11" width="20" height="66"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="36"/>
                                                                                 <color key="textColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -536,7 +536,7 @@ Kijk voor de status in je overzicht.</string>
                                                                                 </constraints>
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVs-FP-NJa">
-                                                                                <rect key="frame" x="5" y="12" width="9" height="65"/>
+                                                                                <rect key="frame" x="5" y="23" width="9" height="54"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="9" id="r1c-an-rFQ"/>
                                                                                 </constraints>
@@ -551,11 +551,11 @@ Kijk voor de status in je overzicht.</string>
                                                                             <constraint firstItem="eOp-vI-VLB" firstAttribute="top" secondItem="V83-OS-ikq" secondAttribute="bottom" id="CsU-1s-ZaK"/>
                                                                             <constraint firstItem="eOp-vI-VLB" firstAttribute="top" secondItem="JVs-FP-NJa" secondAttribute="bottom" id="KMa-pA-Jl4"/>
                                                                             <constraint firstAttribute="bottom" secondItem="eOp-vI-VLB" secondAttribute="bottom" constant="-3" id="MAL-se-jpS"/>
-                                                                            <constraint firstItem="JVs-FP-NJa" firstAttribute="top" secondItem="LDP-AN-Lvz" secondAttribute="top" constant="12" id="OFp-Pl-KyZ"/>
+                                                                            <constraint firstItem="JVs-FP-NJa" firstAttribute="top" secondItem="LDP-AN-Lvz" secondAttribute="top" constant="23" id="OFp-Pl-KyZ"/>
                                                                             <constraint firstAttribute="trailing" secondItem="V83-OS-ikq" secondAttribute="trailing" constant="14" id="Wvl-wQ-sIJ"/>
                                                                             <constraint firstItem="V83-OS-ikq" firstAttribute="leading" secondItem="JVs-FP-NJa" secondAttribute="trailing" constant="2" id="asL-Yh-1Fg"/>
                                                                             <constraint firstItem="eOp-vI-VLB" firstAttribute="leading" secondItem="LDP-AN-Lvz" secondAttribute="leading" id="fIY-mf-rb8"/>
-                                                                            <constraint firstItem="V83-OS-ikq" firstAttribute="top" secondItem="LDP-AN-Lvz" secondAttribute="top" id="l7s-gP-nSQ"/>
+                                                                            <constraint firstItem="V83-OS-ikq" firstAttribute="top" secondItem="LDP-AN-Lvz" secondAttribute="top" constant="11" id="l7s-gP-nSQ"/>
                                                                             <constraint firstItem="JVs-FP-NJa" firstAttribute="leading" secondItem="LDP-AN-Lvz" secondAttribute="leading" constant="5" id="qLy-9c-1jD"/>
                                                                         </constraints>
                                                                     </view>
@@ -563,7 +563,7 @@ Kijk voor de status in je overzicht.</string>
                                                                         <rect key="frame" x="100" y="0.0" width="50" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-jh-60h" userLabel="lblAmount">
-                                                                                <rect key="frame" x="16.5" y="0.0" width="19.5" height="77"/>
+                                                                                <rect key="frame" x="16.5" y="11" width="19.5" height="66"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="36"/>
                                                                                 <color key="textColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -576,7 +576,7 @@ Kijk voor de status in je overzicht.</string>
                                                                                 </constraints>
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkL-dP-weS">
-                                                                                <rect key="frame" x="5" y="12" width="9.5" height="65"/>
+                                                                                <rect key="frame" x="5" y="23" width="9.5" height="54"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="9.3300000000000001" id="0qF-qW-tBR"/>
                                                                                 </constraints>
@@ -590,20 +590,20 @@ Kijk voor de status in je overzicht.</string>
                                                                             <constraint firstItem="BVO-JW-Ah6" firstAttribute="leading" secondItem="F1d-tm-JK5" secondAttribute="leading" id="0tc-WU-dUC"/>
                                                                             <constraint firstItem="BVO-JW-Ah6" firstAttribute="top" secondItem="qT7-jh-60h" secondAttribute="bottom" id="CJW-xv-xfF"/>
                                                                             <constraint firstAttribute="trailing" secondItem="BVO-JW-Ah6" secondAttribute="trailing" id="KeK-OJ-YC2"/>
-                                                                            <constraint firstItem="GkL-dP-weS" firstAttribute="top" secondItem="F1d-tm-JK5" secondAttribute="top" constant="12" id="Osa-Qs-p1m"/>
+                                                                            <constraint firstItem="GkL-dP-weS" firstAttribute="top" secondItem="F1d-tm-JK5" secondAttribute="top" constant="23" id="Osa-Qs-p1m"/>
                                                                             <constraint firstItem="BVO-JW-Ah6" firstAttribute="top" secondItem="GkL-dP-weS" secondAttribute="bottom" id="Z6C-jw-Uuz"/>
                                                                             <constraint firstAttribute="bottom" secondItem="BVO-JW-Ah6" secondAttribute="bottom" constant="-3" id="hB2-NQ-KOg"/>
                                                                             <constraint firstItem="GkL-dP-weS" firstAttribute="leading" secondItem="F1d-tm-JK5" secondAttribute="leading" constant="5" id="ko6-zT-xp5"/>
                                                                             <constraint firstAttribute="trailing" secondItem="qT7-jh-60h" secondAttribute="trailing" constant="14" id="ns7-Va-Jzg"/>
-                                                                            <constraint firstItem="qT7-jh-60h" firstAttribute="top" secondItem="F1d-tm-JK5" secondAttribute="top" id="wQi-Xh-T0j"/>
+                                                                            <constraint firstItem="qT7-jh-60h" firstAttribute="top" secondItem="F1d-tm-JK5" secondAttribute="top" constant="11" id="wQi-Xh-T0j"/>
                                                                             <constraint firstItem="qT7-jh-60h" firstAttribute="leading" secondItem="GkL-dP-weS" secondAttribute="trailing" constant="2" id="yGh-HT-jJo"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
-                                                                <color key="backgroundColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </stackView>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="cfY-RC-6gi" firstAttribute="top" secondItem="CFT-nk-nbx" secondAttribute="top" id="0P3-xx-eBY"/>
                                                             <constraint firstAttribute="width" constant="150" id="HyZ-zq-4oo"/>
@@ -621,11 +621,12 @@ Kijk voor de status in je overzicht.</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyl-Gw-Bwr" userLabel="rightView">
-                                                <rect key="frame" x="315" y="0.0" width="40" height="80"/>
+                                                <rect key="frame" x="305" y="0.0" width="50" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A90-n3-V2A">
-                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="80"/>
-                                                        <state key="normal" image="onecollect.png"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="11" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" image="onecollect"/>
                                                         <connections>
                                                             <action selector="addCollection:" destination="lyO-8n-bds" eventType="touchUpInside" id="THT-O8-q0T"/>
                                                         </connections>
@@ -635,7 +636,7 @@ Kijk voor de status in je overzicht.</string>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="A90-n3-V2A" secondAttribute="bottom" id="0Lt-nu-aqR"/>
                                                     <constraint firstItem="A90-n3-V2A" firstAttribute="leading" secondItem="vyl-Gw-Bwr" secondAttribute="leading" id="1Yu-Qa-smU"/>
-                                                    <constraint firstAttribute="width" constant="40" id="E2w-pb-ApY"/>
+                                                    <constraint firstAttribute="width" constant="50" id="E2w-pb-ApY"/>
                                                     <constraint firstAttribute="trailing" secondItem="A90-n3-V2A" secondAttribute="trailing" id="Ov4-O6-6Rd"/>
                                                     <constraint firstItem="A90-n3-V2A" firstAttribute="top" secondItem="vyl-Gw-Bwr" secondAttribute="top" id="vfp-Tv-9Qw"/>
                                                 </constraints>
@@ -1005,12 +1006,12 @@ Kijk voor de status in je overzicht.</string>
                         <viewLayoutGuide key="safeArea" id="D9v-Aw-MYg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Bedrag" id="h1k-Ax-YwJ">
-                        <barButtonItem key="leftBarButtonItem" image="menu_badge.png" springLoaded="YES" style="plain" id="QTY-DE-8Mb">
+                        <barButtonItem key="leftBarButtonItem" image="menu_badge.png" width="50" springLoaded="YES" style="plain" id="QTY-DE-8Mb">
                             <connections>
                                 <action selector="toggleLeftViewAnimated:" destination="lyO-8n-bds" id="6HM-34-ghj"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="help" id="btt-fE-FBf">
+                        <barButtonItem key="rightBarButtonItem" image="help" width="50" id="btt-fE-FBf">
                             <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="JIe-cW-JOT" kind="presentation" identifier="faq" id="PMR-0p-zsl"/>
@@ -1918,7 +1919,7 @@ Kijk voor de status in je overzicht.</string>
         <image name="info24.png" width="24" height="24"/>
         <image name="kerken" width="120" height="120"/>
         <image name="menu_badge.png" width="34" height="28"/>
-        <image name="onecollect.png" width="30" height="30"/>
+        <image name="onecollect" width="30" height="30"/>
         <image name="qrscan" width="120" height="120"/>
         <image name="redcircle" width="15" height="15"/>
         <image name="rightarrow.png" width="12" height="18"/>
