@@ -10,7 +10,9 @@ import UIKit
 import SVProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-   
+    private let _appServices = AppServices.shared
+    private let _navigationManager = NavigationManager.shared
+    
     var completionHandler: () -> () = {}
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var txtUserName: UITextField!
@@ -92,41 +94,44 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login(){
-        if NavigationManager.shared.hasInternetConnection(context: self) {
-            SVProgressHUD.show()
-            _ = LoginManager.shared.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error, description in
-                
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                }
-                
-                
-                if b {
-                    print("logging user in")
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: { self.completionHandler() } )
-                    }
-                } else {
-                    print("something wrong logging user in")
-                    var message = NSLocalizedString("WrongCredentials", comment: "")
-                    if description == "NoInternet" {
-                        message = NSLocalizedString("NoInternet", comment: "")
-                    }
-                    
-                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
-                                                  message: message,
-                                                  preferredStyle: UIAlertControllerStyle.alert)
-                    
-                    let cancelAction = UIAlertAction(title: "OK",
-                                                     style: .cancel, handler: nil)
-                    
-                    alert.addAction(cancelAction)
-                    DispatchQueue.main.async(execute: {
-                        self.present(alert, animated: true, completion: nil)
-                    })
-                }
-            })
+        if !_appServices.connectedToNetwork() {
+            _navigationManager.presentAlertNoConnection(context: self)
+            return
         }
+        
+        SVProgressHUD.show()
+        _ = LoginManager.shared.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error, description in
+            
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+            
+            if b {
+                print("logging user in")
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: { self.completionHandler() } )
+                }
+            } else {
+                print("something wrong logging user in")
+                var message = NSLocalizedString("WrongCredentials", comment: "")
+                if description == "NoInternet" {
+                    message = NSLocalizedString("NoInternet", comment: "")
+                }
+                
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
+                                              message: message,
+                                              preferredStyle: UIAlertControllerStyle.alert)
+                
+                let cancelAction = UIAlertAction(title: "OK",
+                                                 style: .cancel, handler: nil)
+                
+                alert.addAction(cancelAction)
+                DispatchQueue.main.async(execute: {
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+        })
+        
     }
     @IBAction func switchPasswordVisibility(_ sender: Any) {
         let button = sender as! UIButton

@@ -12,6 +12,10 @@ import SVProgressHUD
 
 
 class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    private var _navigationManager = NavigationManager.shared
+    private var _appServices = AppServices.shared
+    private var _loginManager = LoginManager.shared
+    
     @IBOutlet var titleText: UILabel!
     private var phoneNumberKit = PhoneNumberKit()
     @IBOutlet var theScrollView: UIScrollView!
@@ -143,7 +147,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @IBAction func next(_ sender: Any) {
-        if !NavigationManager.shared.hasInternetConnection(context: self) {
+        if !_appServices.connectedToNetwork() {
+            _navigationManager.presentAlertNoConnection(context: self)
             return
         }
         
@@ -155,7 +160,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let mobileNumber = self.formattedPhoneNumber
         let postalCode = self.postalCode.text!
         let userData = RegistrationUserData(address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
-        LoginManager.shared.registerExtraDataFromUser(userData, completionHandler: {success in
+        _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
             if success {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()

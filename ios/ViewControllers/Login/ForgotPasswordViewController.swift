@@ -10,6 +10,9 @@ import UIKit
 import SVProgressHUD
 
 class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
+    private var _appServices = AppServices.shared
+    private var _navigationManager = NavigationManager.shared
+    
     private var validationHelper = ValidationHelper.shared
     @IBOutlet var btnSend: CustomButton!
     @IBOutlet var emailField: CustomUITextField!
@@ -47,49 +50,54 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func send(_ sender: Any) {
         print("sending password forgot mail")
-        if NavigationManager.shared.hasInternetConnection(context: self) {
-            SVProgressHUD.show()
-            LoginManager.shared.requestNewPassword(email: (emailField.text?.replacingOccurrences(of: " ", with: ""))!, callback: { (status) in
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                }
-                
-                if status {
-                    print("mail sent")
-                    let alert = UIAlertController(title: NSLocalizedString("CheckInbox", comment: ""), message: "", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                        self.navigationController?.popViewController(animated: true)
-                    }))
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OpenMailbox", comment: ""), style: UIAlertActionStyle.cancel, handler: { (action) in
-                        //open mail app
-                        let app = UIApplication.shared
-                        if let url = URL(string: "message:"), app.canOpenURL(url) {
-                            app.openURL(url)
-                        }
-                        self.navigationController?.popViewController(animated: true)
-                    }))
-                    DispatchQueue.main.async {
-                        self.present(alert, animated: true, completion: {
-                            
-                        })
-                    }
-                } else {
-                    print("mail not sent :-(")
-                    if NavigationManager.shared.hasInternetConnection(context: self) {
-                        let alert = UIAlertController(title: "", message: NSLocalizedString("SomethingWentWrong", comment: ""), preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                            
-                        }))
-                        DispatchQueue.main.async {
-                            self.present(alert, animated: true, completion: {
-                                self.navigationController?.popViewController(animated: true)
-                            })
-                        }
-                    }
-                    
-                }
-            })
+        if !_appServices.connectedToNetwork() {
+            _navigationManager.presentAlertNoConnection(context: self)
+            return
         }
+        
+        SVProgressHUD.show()
+        LoginManager.shared.requestNewPassword(email: (emailField.text?.replacingOccurrences(of: " ", with: ""))!, callback: { (status) in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+            
+            if status {
+                print("mail sent")
+                let alert = UIAlertController(title: NSLocalizedString("CheckInbox", comment: ""), message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                alert.addAction(UIAlertAction(title: NSLocalizedString("OpenMailbox", comment: ""), style: UIAlertActionStyle.cancel, handler: { (action) in
+                    //open mail app
+                    let app = UIApplication.shared
+                    if let url = URL(string: "message:"), app.canOpenURL(url) {
+                        app.openURL(url)
+                    }
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: {
+                        
+                    })
+                }
+            } else {
+                if !self._appServices.connectedToNetwork() {
+                    self._navigationManager.presentAlertNoConnection(context: self)
+                    return
+                }
+            
+                let alert = UIAlertController(title: "", message: NSLocalizedString("SomethingWentWrong", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    
+                }))
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: {
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+            }
+        })
+        
     }
     
     

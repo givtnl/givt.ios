@@ -9,6 +9,9 @@
 import UIKit
 
 class AmountLimitViewController: UIViewController, UITextFieldDelegate {
+    private let _appServices = AppServices.shared
+    private let _navigationManager = NavigationManager.shared
+    private let _loginManager = LoginManager.shared
     
     @IBOutlet var subTitleText: UILabel!
     @IBOutlet var backButton: UIBarButtonItem!
@@ -135,11 +138,12 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     @objc func save() {
         self.view.endEditing(true)
         
-        if !NavigationManager.shared.hasInternetConnection(context: self) {
+        if !_appServices.connectedToNetwork() {
+            _navigationManager.presentAlertNoConnection(context: self)
             return
         }
         
-        LoginManager.shared.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_ in
+        _loginManager.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_ in
             if self.isRegistration {
                 DispatchQueue.main.async {
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
