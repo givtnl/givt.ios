@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import TrustKit
 
 class AppConstants{
     static let tempUserPassword: String = "R4nd0mP@s$w0rd123"
@@ -37,6 +38,35 @@ class AppConstants{
             return "https://givtapidebug.azurewebsites.net"
        // return "https://api2.nfcollect.com/" // do not put this in prod before release!
         #endif
+    }()
+    
+    static var trustKitConfig: [String: Any] = {
+        let trustKitConfig = [
+            kTSKSwizzleNetworkDelegates: false,
+            kTSKPinnedDomains: [
+                "givtapidebug.azurewebsites.net": [
+                    kTSKExpirationDate: "2018-07-05",
+                    kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
+                    kTSKPublicKeyHashes: [
+                        "nrmpk4ZI3wbRBmUZIT5aKAgP0LlKHRgfA2Snjzeg9iY=",
+                        "CzdPous1hY3sIkO55pUH7vklXyIHVZAl/UnprSQvpEI="
+                    ]],
+                "api2.nfcollect.com": [
+                    kTSKExpirationDate: "2018-07-05",
+                    kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
+                    kTSKPublicKeyHashes: [
+                        "xC0Y+0Mq+Ag3UEdgBSPJGhFGcxuNFUDIFaAm6wEBrII=",
+                        "klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY="
+                    ]],
+                "api.logit.io": [
+                    kTSKExpirationDate: "2019-10-12",
+                    kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
+                    kTSKPublicKeyHashes: [
+                        "/JvZY7DBIDt5NylYRKjYP76G3E0F/6C4X6u0bqosQok=",
+                        "Slt48iBVTjuRQJTjbzopminRrHSGtndY0/sj0lFf9Qk="
+                    ]],]
+            ] as [String : Any]
+        return trustKitConfig
     }()
     
     static var buildNumber: String {

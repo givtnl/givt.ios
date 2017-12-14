@@ -35,7 +35,7 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
                 callback(res)
             }) { (err) in
                 callback(nil)
-                self.log.error(message: "GET on " + url + " failed somehow")
+                self.handleError(err: err)
         }
     }
     
@@ -50,7 +50,7 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
             }) { (err) in
                 print(err)
                 callback(nil)
-                self.log.error(message: "PUT on " + url + " failed somehow")
+                self.handleError(err: err)
         }
     }
     
@@ -68,10 +68,20 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
                 callback(res)
             }) { (err) in
                 callback(nil)
-                print(err)
-                self.log.error(message: "POST on " + url + " failed somehow")
+                self.handleError(err: err)
         }
     }
+    
+    private func handleError(err: Error) {
+        let error = (err as NSError)
+        let url = error.userInfo["NSErrorFailingURLStringKey"] as! String
+        let description = error.userInfo["NSLocalizedDescription"] as! String
+        self.log.error(message: "Following call failed: " + url + "\n" + "Description: " + description)
+        if error.code == -999 {
+            self.log.error(message: "This request has been cancelled... Probably SSL Pinning did not succeed." )
+        }
+    }
+    
     func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         let pinningValidator = TrustKit.sharedInstance().pinningValidator
         if !pinningValidator.handle(challenge, completionHandler: completionHandler) {

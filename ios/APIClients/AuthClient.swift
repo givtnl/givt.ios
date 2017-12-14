@@ -32,6 +32,17 @@ class AuthClient: NSObject, URLSessionDelegate {
                 callback(nil)
                 print(err)
                 self.log.error(message: "POST on " + url + " failed somehow")
+                self.handleError(err: err)
+        }
+    }
+    
+    private func handleError(err: Error) {
+        let error = (err as NSError)
+        let url = error.userInfo["NSErrorFailingURLStringKey"] as! String
+        let description = error.userInfo["NSLocalizedDescription"] as! String
+        self.log.error(message: "Following call failed: " + url + "\n" + "Description: " + description)
+        if error.code == -999 {
+            self.log.error(message: "This request has been cancelled... Probably SSL Pinning did not succeed." )
         }
     }
     
