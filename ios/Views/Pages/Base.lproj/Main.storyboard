@@ -422,7 +422,7 @@ Kijk voor de status in je overzicht.</string>
                         <viewLayoutGuide key="safeArea" id="N6F-1X-0jM"/>
                     </view>
                     <navigationItem key="navigationItem" id="H6U-qm-1aX">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="VZE-J0-ESa"/>
+                        <barButtonItem key="leftBarButtonItem" width="50" id="VZE-J0-ESa"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
