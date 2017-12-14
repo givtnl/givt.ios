@@ -400,8 +400,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func removeCollection() {
-        currentAmountLabel.text = "0"
         if !thirdView.isHidden {
+            amountLabel3.text = "0"
             thirdView.isHidden = true
             leftSpacerView.isHidden = false
             rightSpacerView.isHidden = false
@@ -411,16 +411,17 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             numberOfCollects = 2
             thirdBalloon?.hide()
         } else if !secondView.isHidden {
+            amountLabel2.text = "0"
             secondView.isHidden = true
             collectionButton.setImage(#imageLiteral(resourceName: "onecollect.png"), for: .normal)
-            if selectedAmount == 1 {
-                selectView(0)
-                self.lblTitle.title = NSLocalizedString("Amount", comment: "")
-            }
+           
             NSLayoutConstraint.deactivate([widthConstraint])
             widthConstraint = collectionView.widthAnchor.constraint(equalToConstant: 150)
             widthConstraint.isActive = true
             numberOfCollects = 1
+            if selectedAmount <= 1 {
+                selectView(0)
+            }
             secondBalloon?.hide()
         }
         checkAmounts()
