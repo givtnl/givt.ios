@@ -121,7 +121,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         backItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!], for: .normal)
         btnGive.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         self.navigationItem.backBarButtonItem = backItem
-        checkAmount()
+        checkAmounts()
         
         log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
         menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
@@ -191,33 +191,20 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             return
         }
         currentAmountLabel.text = currentAmountLabel.text! + sender.currentTitle!;
-        checkAmount()
+        checkAmounts()
         pressedShortcutKey = false
-    }
-    
-    private func checkAmount(){
-        let dAmount = Decimal(string: (currentAmountLabel.text?.replacingOccurrences(of: ",", with: "."))!)!
-        if dAmount < 0.50 {
-            btnGive.isEnabled = false
-        } else {
-            btnGive.isEnabled = true
-        }
-        
-        currentAmountLabel.textColor = dAmount > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
-        
-        
     }
     
     @IBAction func addShortcutValue(sender: UIButton!){
         currentAmountLabel.text = sender.currentTitle
-        checkAmount()
+        checkAmounts()
         pressedShortcutKey = true
     }
     
     @IBAction func clearValue(sender: UIButton!){
         var amount: String = self.currentAmountLabel.text!
         if amount.count == 0 {
-            checkAmount()
+            checkAmounts()
             return
         }
         
@@ -226,13 +213,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         if amount.count == 0 || pressedShortcutKey {
             self.currentAmountLabel.text = "0";
         }
-        checkAmount()
+        checkAmounts()
         
     }
 
     @IBAction func clearAll(_ sender: Any) {
         self.currentAmountLabel.text = "0";
-        checkAmount()
+        checkAmounts()
     }
     
     func clearAmounts() {
@@ -242,7 +229,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         self.amountLabel3.text? = emptyString
         removeCollection()
         removeCollection()
-        checkAmount()
+        checkAmounts()
     }
 
     fileprivate func showAmountTooLow() {
@@ -297,7 +284,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
             action in
             self.currentAmountLabel.text = String(UserDefaults.standard.amountLimit)
-            self.checkAmount()
+            self.checkAmounts()
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
             let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateInitialViewController() as! RegNavigationController
@@ -403,6 +390,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func removeCollection() {
         if !thirdView.isHidden {
             amountLabel3.text = "0"
+            amountLabel3.textColor = UIColor.init(rgb: 0xD2D1D9)
             thirdView.isHidden = true
             leftSpacerView.isHidden = false
             rightSpacerView.isHidden = false
@@ -413,6 +401,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             thirdBalloon?.hide()
         } else if !secondView.isHidden {
             amountLabel2.text = "0"
+            amountLabel2.textColor = UIColor.init(rgb: 0xD2D1D9)
             secondView.isHidden = true
             collectionButton.setImage(#imageLiteral(resourceName: "onecollect.png"), for: .normal)
            
@@ -437,6 +426,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
             }
             btnGive.isEnabled = amountsUnder50C != numberOfCollects
         }
+        
+        currentAmountLabel.textColor = Decimal(string: (currentAmountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
     }
     
     func showFirstBalloon() {
