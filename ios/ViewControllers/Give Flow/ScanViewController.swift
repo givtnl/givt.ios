@@ -192,9 +192,13 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 251, green: 251, blue: 251)
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.isOpaque = false
+        
+    
+        
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        navigationController?.navigationBar.isTranslucent = true
+        
         sideMenuController?.isLeftViewSwipeGestureDisabled = true
         
     }

@@ -448,7 +448,7 @@ Kijk voor de status in je overzicht.</string>
         <!--Bedrag-->
         <scene sceneID="jdE-oM-Up1">
             <objects>
-                <viewController storyboardIdentifier="AmountViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lyO-8n-bds" customClass="AmountViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AmountViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lyO-8n-bds" customClass="AmountViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WsT-yj-Ydz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1096,11 +1096,8 @@ Kijk voor de status in je overzicht.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dit is het Givt-moment.  Beweeg nu je telefoon langs de collectemand." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="gx7-9u-1ov">
-                                <rect key="frame" x="20" y="109.5" width="335" height="109.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="125" id="vTw-J1-Ech"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                                <rect key="frame" x="20" y="79" width="335" height="140"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1109,13 +1106,14 @@ Kijk voor de status in je overzicht.</string>
                         <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="dca-BL-A98" firstAttribute="centerY" secondItem="q64-wl-MlZ" secondAttribute="centerY" id="BWU-B6-7qS"/>
+                            <constraint firstItem="dca-BL-A98" firstAttribute="centerY" secondItem="q64-wl-MlZ" secondAttribute="centerY" priority="750" id="BWU-B6-7qS"/>
                             <constraint firstItem="dca-BL-A98" firstAttribute="leading" secondItem="zQK-V4-Qej" secondAttribute="leading" id="By8-w8-MEe"/>
-                            <constraint firstItem="dca-BL-A98" firstAttribute="top" secondItem="gx7-9u-1ov" secondAttribute="bottom" constant="15" id="Crx-9q-erT"/>
+                            <constraint firstItem="dca-BL-A98" firstAttribute="top" relation="lessThanOrEqual" secondItem="gx7-9u-1ov" secondAttribute="bottom" constant="15" id="Crx-9q-erT"/>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="trailing" secondItem="gx7-9u-1ov" secondAttribute="trailing" constant="20" id="PWz-8M-7kC"/>
                             <constraint firstItem="gx7-9u-1ov" firstAttribute="leading" secondItem="zQK-V4-Qej" secondAttribute="leading" constant="20" id="fl0-hj-bPL"/>
                             <constraint firstItem="UdD-yT-jJx" firstAttribute="leading" secondItem="zQK-V4-Qej" secondAttribute="leading" constant="20" id="kWD-tG-86Y"/>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="bottom" secondItem="UdD-yT-jJx" secondAttribute="bottom" constant="20" id="mBH-7M-mwq"/>
+                            <constraint firstItem="gx7-9u-1ov" firstAttribute="top" secondItem="zQK-V4-Qej" secondAttribute="top" constant="15" id="qPt-6W-zH8"/>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="trailing" secondItem="dca-BL-A98" secondAttribute="trailing" id="rNe-LC-Sxy"/>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="trailing" secondItem="UdD-yT-jJx" secondAttribute="trailing" constant="20" id="xeI-hx-sAu"/>
                         </constraints>

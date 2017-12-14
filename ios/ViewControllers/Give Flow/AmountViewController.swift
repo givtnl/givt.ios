@@ -114,6 +114,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
 
         decimalNotation = NSLocale.current.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
+        navigationController?.navigationBar.isTranslucent = false
         let backItem = UIBarButtonItem()
         backItem.title = NSLocalizedString("Cancel", comment: "Annuleer")
         backItem.style = .plain
