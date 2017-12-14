@@ -48,9 +48,6 @@ class ScanCompleteViewController: UIViewController {
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var shareWithFriends: CustomButton!
     
-    @IBAction func btnGoBack(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
     @IBAction func shareGivtWithFriends(_ sender: Any) {
         print("sharing givt")
 

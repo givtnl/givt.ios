@@ -62,8 +62,10 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     func showWebsite(url: String){
         if !AppServices.shared.connectedToNetwork() {
             self.log.info(message: "User gave offline")
-            let vc = storyboard?.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
-            self.show(vc, sender: self)
+            DispatchQueue.main.async {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
+                self.show(vc, sender: self)
+            }
             return
         }
         
@@ -198,10 +200,12 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        GivtService.shared.centralManager.stopScan()
+        
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
         sideMenuController?.isLeftViewSwipeGestureDisabled = false
-        GivtService.shared.centralManager.stopScan()
+        
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
         removeOverlay()
        }
@@ -220,6 +224,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     @IBAction func giveDifferently(_ sender: Any) {
+        GivtService.shared.centralManager.stopScan()
         let vc = storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
         self.show(vc, sender: nil)
     }
