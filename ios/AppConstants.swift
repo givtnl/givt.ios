@@ -30,6 +30,15 @@ class AppConstants{
         return countries
     }()
     
+    static var apiUri: String = {
+        #if DEBUG
+        return "https://givtapidebug.azurewebsites.net"
+        #else
+            return "https://givtapidebug.azurewebsites.net"
+       // return "https://api2.nfcollect.com/" // do not put this in prod before release!
+        #endif
+    }()
+    
     static var buildNumber: String {
         get {
             #if DEBUG

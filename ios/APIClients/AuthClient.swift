@@ -13,7 +13,7 @@ import TrustKit
 class AuthClient: NSObject, URLSessionDelegate {
     static let shared: AuthClient = AuthClient()
     private var log: LogService = LogService.shared
-    private static let BASEURL: String = "https://givtapidebug.azurewebsites.net"
+    private static let BASEURL: String = AppConstants.apiUri
     private var client = Client().baseUrl(url: BASEURL)
     
     private override init() {

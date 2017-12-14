@@ -14,7 +14,7 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
     static let shared = APIClient()
     private var log = LogService.shared
     
-    private static let BASEURL: String = "https://givtapidebug.azurewebsites.net"
+    private static let BASEURL: String = AppConstants.apiUri
     private var client = Client().baseUrl(url: BASEURL)
     
     private override init() {
