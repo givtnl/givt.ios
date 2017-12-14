@@ -13,27 +13,44 @@ class TermsViewController: UIViewController {
     @IBOutlet var titleText: UILabel!
     @IBOutlet var close: UIButton!
     @IBOutlet var terms: UITextView!
-    var typeOfTerms: TypeOfTerms = .privacyPolicy
+    var typeOfTerms: TypeOfTerms? {
+        didSet {
+            if typeOfTerms == .privacyPolicy {
+                textToShow = NSLocalizedString("PolicyText", comment: "")
+                titleToShow = NSLocalizedString("PrivacyTitle", comment: "")
+            } else if typeOfTerms == .termsAndConditions {
+                textToShow = NSLocalizedString("TermsText", comment: "")
+                titleToShow = NSLocalizedString("FullVersionTitleTerms", comment: "")
+            }
+        }
+    }
+    
+    var titleToShow: String = ""
+    var textToShow: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.titleText.text = self.titleToShow
+        self.terms.text = String(self.textToShow.prefix(1000))
+        
     }
+    
+    
 
     @IBAction func exit(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.terms.text = self.textToShow
+
+        }
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent
         
-        if typeOfTerms == .privacyPolicy {
-            terms.text = NSLocalizedString("PolicyText", comment: "")
-            titleText.text = NSLocalizedString("PrivacyTitle", comment: "")
-        } else if typeOfTerms == .termsAndConditions {
-            terms.text = NSLocalizedString("TermsText", comment: "")
-            titleText.text = NSLocalizedString("FullVersionTitleTerms", comment: "")
-        }
-          print(terms.text)
+        
+        
     }
   
     
