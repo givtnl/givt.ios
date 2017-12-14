@@ -139,6 +139,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         txtPassword.isSecureTextEntry = !button.isSelected
     }
     
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 

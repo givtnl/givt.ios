@@ -26,10 +26,8 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         let email = UserDefaults.standard.userExt!.email
         
         emailField.text = email
-        if !email.isEmpty() {
-            emailField.isEnabled = false
-            emailField.textColor = #colorLiteral(red: 0.537254902, green: 0.537254902, blue: 0.537254902, alpha: 1)
-        }
+        emailField.delegate = self
+        checkAll()
         
         NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
         
@@ -62,23 +60,9 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             }
             
             if status {
-                print("mail sent")
-                let alert = UIAlertController(title: NSLocalizedString("CheckInbox", comment: ""), message: "", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    self.navigationController?.popViewController(animated: true)
-                }))
-                alert.addAction(UIAlertAction(title: NSLocalizedString("OpenMailbox", comment: ""), style: UIAlertActionStyle.cancel, handler: { (action) in
-                    //open mail app
-                    let app = UIApplication.shared
-                    if let url = URL(string: "message:"), app.canOpenURL(url) {
-                        app.openURL(url)
-                    }
-                    self.navigationController?.popViewController(animated: true)
-                }))
                 DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion: {
-                        
-                    })
+                    let vc = UIStoryboard.init(name: "ForgotPassword", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordCompleteViewController") as! ForgotPasswordCompleteViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             } else {
                 if !self._appServices.connectedToNetwork() {
@@ -113,7 +97,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         let isEmailValid = validationHelper.isEmailAddressValid(self.emailField.text!)
         isEmailValid ? emailField.setValid() : emailField.setInvalid()
         self.btnSend.isEnabled = isEmailValid
-        emailField.returnKeyType = isEmailValid ? .send : .default
+        emailField.returnKeyType = isEmailValid ? .done : UIReturnKeyType.default
     }
     
     /*
