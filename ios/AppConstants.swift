@@ -40,6 +40,8 @@ class AppConstants{
         #endif
     }()
     
+    static var appStoreUrl = "itms-apps://itunes.apple.com/app/id1181435988"
+    
     static var trustKitConfig: [String: Any] = {
         let trustKitConfig = [
             kTSKSwizzleNetworkDelegates: false,
@@ -74,7 +76,7 @@ class AppConstants{
             #if DEBUG
             /* TESTING PURPOSES ONLY */
             // UNCOMMENT one of the following lines to simulate the popup from the update
-            //return "2" -> normal update
+            //return "2" //-> normal update
             //return "3" -> critical update
             return "4" //-> normal update
             return Bundle.main.infoDictionary!["CFBundleVersion"] as! String

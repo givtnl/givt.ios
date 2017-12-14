@@ -191,6 +191,13 @@ class NavigationManager {
             downloadAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 self.isUpdateDialogOpen = false
                 UIApplication.shared.beginIgnoringInteractionEvents()
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(URL(string: AppConstants.appStoreUrl)!, options: [:], completionHandler: { (status) in
+                        print(status)
+                    })
+                } else {
+                    UIApplication.shared.openURL(URL(string: AppConstants.appStoreUrl)!)
+                }
             })
         } else {
             UIApplication.shared.endIgnoringInteractionEvents()
@@ -199,9 +206,18 @@ class NavigationManager {
             secundaryAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in
                 self.isUpdateDialogOpen = false
             })
-            downloadAction = UIAlertAction(title: "Download", style: .default, handler: { (action) in
+            downloadAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 self.isUpdateDialogOpen = false
-                UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/app/id1181435988")!)
+                DispatchQueue.main.async {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(URL(string: AppConstants.appStoreUrl)!, options: [:], completionHandler: { (status) in
+                            print(status)
+                        })
+                    } else {
+                        UIApplication.shared.openURL(URL(string: AppConstants.appStoreUrl)!)
+                    }
+                }
+                
             })
         }
         
