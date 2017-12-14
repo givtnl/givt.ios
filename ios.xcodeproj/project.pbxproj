@@ -12,6 +12,7 @@
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F1991F7E2D4B000B9546 /* CustomViewController.swift */; };
 		D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F19B1F7E3EF8000B9546 /* Mandate.swift */; };
+		D72B197C1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B197B1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift */; };
 		D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72BD5431FDECA0B001481B1 /* ModalFromRightAnimation.swift */; };
 		D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */; };
 		D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */; };
@@ -69,6 +70,8 @@
 		D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D44B31FC7039E00325CAF /* FAQView.swift */; };
 		D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E9E141F8F970A0073F8EB /* Balloon.swift */; };
 		D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F97721FACC83F0006335A /* SelectOrgViewController.swift */; };
+		D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */; };
+		D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A64D081FDFDE2E005B51B2 /* ForgotPasswordViewController.swift */; };
 		D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */; };
 		D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */; };
 		D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */; };
@@ -145,6 +148,7 @@
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D721F1991F7E2D4B000B9546 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		D721F19B1F7E3EF8000B9546 /* Mandate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mandate.swift; sourceTree = "<group>"; };
+		D72B197B1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordCompleteViewController.swift; sourceTree = "<group>"; };
 		D72BD5431FDECA0B001481B1 /* ModalFromRightAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalFromRightAnimation.swift; sourceTree = "<group>"; };
 		D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountLimitNavigationViewController.swift; sourceTree = "<group>"; };
 		D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 		D78D44B31FC7039E00325CAF /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
 		D78E9E141F8F970A0073F8EB /* Balloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
 		D79F97721FACC83F0006335A /* SelectOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgViewController.swift; sourceTree = "<group>"; };
+		D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
+		D7A64D081FDFDE2E005B51B2 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TerminateAccount.storyboard; sourceTree = "<group>"; };
 		D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminateAccountViewController.swift; sourceTree = "<group>"; };
 		D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
@@ -374,6 +380,7 @@
 				D7F131651F75574D00E25A68 /* Registration.storyboard */,
 				D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */,
 				D7B7154F1FD0529D00666262 /* Personal.storyboard */,
+				D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -477,6 +484,8 @@
 			children = (
 				D73CA1C21F38B4C30059A296 /* LoginViewController.swift */,
 				D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */,
+				D7A64D081FDFDE2E005B51B2 /* ForgotPasswordViewController.swift */,
+				D72B197B1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -727,6 +736,7 @@
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
+				D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
 				FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */,
 			);
@@ -761,6 +771,7 @@
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftClient/SwiftClient.framework",
+				"${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -768,6 +779,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -807,6 +819,7 @@
 				D740E15A1F4C631F000531BA /* UserService.swift in Sources */,
 				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
+				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
 				D740E1601F4C63D1000531BA /* GivtServiceProtocol.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
@@ -854,6 +867,7 @@
 				D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */,
 				D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */,
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
+				D72B197C1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				D75B2BD21FCEAE05000B7968 /* IAPIClient.swift in Sources */,

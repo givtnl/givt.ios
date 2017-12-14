@@ -471,6 +471,24 @@ class LoginManager {
         
     }
     
+    func requestNewPassword(email: String, callback: @escaping (Bool) -> Void) {
+        do {
+            try client.post(url: "/api/v2/Users/ForgotPassword?email=" + email.RFC3986UnreservedEncoded, data: [:], callback: { (response) in
+                if let response = response {
+                    if response.basicStatus == .ok {
+                        callback(true)
+                    } else {
+                        callback(false)
+                    }
+                } else {
+                    callback(false)
+                }
+            })
+        } catch {
+            callback(false)
+        }
+    }
+    
     func resume() {
         if !UserDefaults.standard.mandateSigned {
             self.checkMandate(completionHandler: { (status) in

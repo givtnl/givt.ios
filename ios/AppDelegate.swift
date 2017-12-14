@@ -10,6 +10,7 @@ import UIKit
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
+import TrustKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,6 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //InfraManager.shared.checkUpdates()
         
         handleOldAppData()
+        
+        
+        TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig)
         
         return true
     }

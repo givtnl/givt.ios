@@ -10,6 +10,10 @@ import UIKit
 import SVProgressHUD
 
 class SPInfoViewController: UIViewController {
+    private var _navigationManager = NavigationManager.shared
+    private var _appServices = AppServices.shared
+    private var _loginManager = LoginManager.shared
+    
     private var log = LogService.shared
     @IBOutlet var backButton: UIBarButtonItem!
     @IBOutlet var headerText: UILabel!
@@ -42,11 +46,10 @@ class SPInfoViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
-        if !NavigationManager.shared.hasInternetConnection(context: self) {
+        if !_appServices.connectedToNetwork() {
+            _navigationManager.presentAlertNoConnection(context: self)
             return
         }
-        
-        
         
         SVProgressHUD.show()
         let userInfo = UserDefaults.standard.userExt!
@@ -58,7 +61,7 @@ class SPInfoViewController: UIViewController {
         }
         let signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: country, postalCode: userInfo.postalCode, street: userInfo.address)
         let mandate = Mandate(signatory: signatory)
-        LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
+        _loginManager.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
             if slimPayUrl == nil {
                 self.log.warning(message: "Mandate url is empty, what is going on?")
                 SVProgressHUD.dismiss()

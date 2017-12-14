@@ -85,7 +85,7 @@
                                 </state>
                                 <variation key="heightClass=regular-widthClass=compact" layoutMarginsFollowReadableWidth="NO"/>
                                 <connections>
-                                    <segue destination="0HR-yD-ZwH" kind="show" id="vYe-3U-qvj"/>
+                                    <segue destination="l3v-pV-nH4" kind="show" id="jym-Vd-pYv"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1k-RE-1R3">
@@ -162,15 +162,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ry-hR-GXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="220.28985507246378" y="-966.03260869565224"/>
+            <point key="canvasLocation" x="-28" y="-1051"/>
         </scene>
-        <!--Registration-->
-        <scene sceneID="VuI-j4-E2I">
+        <!--ForgotPassword-->
+        <scene sceneID="9l3-gt-Mg8">
             <objects>
-                <viewControllerPlaceholder storyboardName="Registration" id="0HR-yD-ZwH" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bdc-oH-1Mg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="ForgotPassword" id="l3v-pV-nH4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="okR-pw-ido" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="797.10144927536237" y="-966.03260869565224"/>
+            <point key="canvasLocation" x="516" y="-1097"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6A9-8D-tZR">
@@ -1083,7 +1083,7 @@ Kijk voor de status in je overzicht.</string>
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                        <color key="value" red="0.062969272530700574" green="0.05621643144660593" blue="0.1210384629740221" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.062745098039215685" green="0.054901960784313725" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
                                         <color key="value" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1902,7 +1902,7 @@ Kijk voor de status in je overzicht.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKz-ut-aCO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-590" y="-966"/>
+            <point key="canvasLocation" x="-782" y="-1051"/>
         </scene>
     </scenes>
     <resources>

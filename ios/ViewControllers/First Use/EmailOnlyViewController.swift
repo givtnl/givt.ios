@@ -10,7 +10,10 @@ import UIKit
 import SVProgressHUD
 
 class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
-
+    private var _navigationManager = NavigationManager.shared
+    private var _appServices = AppServices.shared
+    private var _loginManager = LoginManager.shared
+    
     @IBOutlet var navBar: UINavigationItem!
     private var validationHelper = ValidationHelper.shared
     @IBOutlet var contentView: UIView!
@@ -140,19 +143,28 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     
     func doneCommand() {
         self.view.endEditing(true)
-        if NavigationManager.shared.hasInternetConnection(context: self) {
-            SVProgressHUD.show()
-            LoginManager.shared.doesEmailExist(email: email.text!) { (status) in
-                
-                if status == "true" { //completed registration
-                    self.openLogin()
-                } else if status == "false" { //email is completely new
-                    self.registerTempUser()
-                } else if status == "temp" { //email is in db but not succesfully registered
-                    self.openRegistration()
-                }
+
+        if !_appServices.connectedToNetwork() {
+            _navigationManager.presentAlertNoConnection(context: self)
+            return
+        }
+        
+        SVProgressHUD.show()
+        _loginManager.doesEmailExist(email: email.text!) { (status) in
+            
+            if status == "true" { //completed registration
+                self.openLogin()
+            } else if status == "false" { //email is completely new
+                self.registerTempUser()
+            } else if status == "temp" { //email is in db but not succesfully registered
+                self.openRegistration()
+            } else {
+                //strange response from server. internet connection err/ssl pin err
+                self.hideLoader()
+                self._navigationManager.presentAlertNoConnection(context: self)
             }
         }
+    
     }
     
     func hideLoader() {
@@ -173,7 +185,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
             let ch: () -> Void = {
                 self.navigationController?.dismiss(animated: false, completion: nil)
-                NavigationManager.shared.loadMainPage()
+                self._navigationManager.loadMainPage()
             }
             vc.outerHandler = ch
             self.present(vc, animated: true, completion: nil)
@@ -193,7 +205,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func registerTempUser() {
-        LoginManager.shared.checkTLD(email: self.email.text!, completionHandler: { (status) in
+        _loginManager.checkTLD(email: self.email.text!, completionHandler: { (status) in
             if status {
                 self.registerEmail(email: self.email.text!)
             } else {
@@ -210,11 +222,11 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func registerEmail(email: String) {
-        LoginManager.shared.registerEmailOnly(email: email, completionHandler: { (status) in
+        _loginManager.registerEmailOnly(email: email, completionHandler: { (status) in
             self.hideLoader()
             if status {
                 DispatchQueue.main.async {
-                    NavigationManager.shared.loadMainPage()
+                    self._navigationManager.loadMainPage()
 
                 }
             } else {

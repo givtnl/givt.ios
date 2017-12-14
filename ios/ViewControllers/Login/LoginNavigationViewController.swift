@@ -16,9 +16,7 @@ class LoginNavigationViewController: UINavigationController {
         super.viewDidLoad()
         print("loading")
         //setup nav bar
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.topItem?.titleView = UIImageView(image: #imageLiteral(resourceName: "givt20h.png"))
+        
         for i in self.childViewControllers {
             if outerHandler != nil {
                 let vc = i as! LoginViewController
@@ -26,6 +24,7 @@ class LoginNavigationViewController: UINavigationController {
             }
             
         }
+        setLogo()
         // Do any additional setup after loading the view.
     }
 

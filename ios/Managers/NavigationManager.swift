@@ -14,6 +14,7 @@ class NavigationManager {
     private var loginManager: LoginManager = LoginManager.shared
     private var appSettings = UserDefaults.standard
     private var logService = LogService.shared
+    private let _appServices = AppServices.shared
     
     private init() {
 
@@ -89,49 +90,56 @@ class NavigationManager {
     
     public func hasInternetConnection(context: UIViewController) -> Bool {
         if !AppServices.shared.connectedToNetwork() {
-            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            }))
-            context.present(alert, animated: true, completion:  {})
+            presentAlertNoConnection(context: context)
         }
         return AppServices.shared.connectedToNetwork()
         
     }
     
-    public func pushWithLogin(_ vc: UIViewController, context: UIViewController) {  
-        if hasInternetConnection(context: context) {
-            if !LoginManager.shared.isBearerStillValid {
-                if UserDefaults.standard.hasPinSet {
-                    let pinVC = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
-                    pinVC.typeOfPin = .login
-                    let completionHandler:(Bool)->Void = { status in
-                        if status {
-                            DispatchQueue.main.async {
-                                context.present(vc, animated: true, completion: nil)
-                            }
-                        } else {
-                            self.pushWithLogin(vc, context: context)
-                        }
-
-                    }
-                    pinVC.outerHandler = completionHandler
-                    context.present(pinVC, animated: true, completion: nil)
-                    
-                } else {
-                    let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-                    let completionHandler:()->Void = {
+    public func presentAlertNoConnection(context: UIViewController) {
+        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+        }))
+        context.present(alert, animated: true, completion:  {})
+    }
+    
+    public func pushWithLogin(_ vc: UIViewController, context: UIViewController) {
+        if !_appServices.connectedToNetwork() {
+            presentAlertNoConnection(context: context)
+            return
+        }
+        if !LoginManager.shared.isBearerStillValid {
+            if UserDefaults.standard.hasPinSet {
+                let pinVC = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
+                pinVC.typeOfPin = .login
+                let completionHandler:(Bool)->Void = { status in
+                    if status {
                         DispatchQueue.main.async {
                             context.present(vc, animated: true, completion: nil)
                         }
+                    } else {
+                        self.pushWithLogin(vc, context: context)
                     }
-                    loginVC.outerHandler = completionHandler
-                    context.present(loginVC, animated: true, completion: nil)
+
                 }
+                pinVC.outerHandler = completionHandler
+                context.present(pinVC, animated: true, completion: nil)
                 
             } else {
-                context.present(vc, animated: true)
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+                let completionHandler:()->Void = {
+                    DispatchQueue.main.async {
+                        context.present(vc, animated: true, completion: nil)
+                    }
+                }
+                loginVC.outerHandler = completionHandler
+                context.present(loginVC, animated: true, completion: nil)
             }
+            
+        } else {
+            context.present(vc, animated: true)
         }
+        
     }
     
     
@@ -183,6 +191,13 @@ class NavigationManager {
             downloadAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 self.isUpdateDialogOpen = false
                 UIApplication.shared.beginIgnoringInteractionEvents()
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(URL(string: AppConstants.appStoreUrl)!, options: [:], completionHandler: { (status) in
+                        print(status)
+                    })
+                } else {
+                    UIApplication.shared.openURL(URL(string: AppConstants.appStoreUrl)!)
+                }
             })
         } else {
             UIApplication.shared.endIgnoringInteractionEvents()
@@ -191,9 +206,18 @@ class NavigationManager {
             secundaryAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in
                 self.isUpdateDialogOpen = false
             })
-            downloadAction = UIAlertAction(title: "Download", style: .default, handler: { (action) in
+            downloadAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 self.isUpdateDialogOpen = false
-                UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/app/id1181435988")!)
+                DispatchQueue.main.async {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(URL(string: AppConstants.appStoreUrl)!, options: [:], completionHandler: { (status) in
+                            print(status)
+                        })
+                    } else {
+                        UIApplication.shared.openURL(URL(string: AppConstants.appStoreUrl)!)
+                    }
+                }
+                
             })
         }
         
