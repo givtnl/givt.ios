@@ -247,6 +247,7 @@ class LoginManager {
     
     func registerAllData(completionHandler: @escaping (Bool) -> Void) {
         let params = [
+            "Email": _registrationUser.email,
             "Guid":  _registrationUser.guid,
             "IBAN":  _registrationUser.iban,
             "PhoneNumber":  _registrationUser.mobileNumber,
@@ -255,7 +256,8 @@ class LoginManager {
             "Address":  _registrationUser.address,
             "City":  _registrationUser.city,
             "PostalCode":  _registrationUser.postalCode,
-            "CountryCode":  _registrationUser.countryCode ]
+            "CountryCode":  _registrationUser.countryCode,
+            "AmountLimit": "500"]
         
         do {
             try client.post(url: "/api/UsersExtension", data: params) { (res) in

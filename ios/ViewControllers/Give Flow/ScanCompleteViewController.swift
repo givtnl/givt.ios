@@ -16,8 +16,6 @@ class ScanCompleteViewController: UIViewController {
         shareWithFriends.setTitle(NSLocalizedString("ShareTheGivtButton", comment: ""), for: .normal)
         lblBody.text = NSLocalizedString("GivingSuccess", comment: "")
         lblTitle.text = NSLocalizedString("YesSuccess", comment: "")
-        backBtn.isEnabled = false
-        backBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         if let beaconId = GivtService.shared.getBestBeacon.beaconId, beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
             shareWithFriends.removeFromSuperview()
         }
@@ -45,15 +43,11 @@ class ScanCompleteViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    @IBOutlet var backBtn: UIBarButtonItem!
     @IBOutlet var btnBack: CustomButton!
     @IBOutlet var lblBody: UILabel!
     @IBOutlet var lblTitle: UILabel!
     @IBOutlet var shareWithFriends: CustomButton!
     
-    @IBAction func btnGoBack(_ sender: Any) {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
     @IBAction func shareGivtWithFriends(_ sender: Any) {
         print("sharing givt")
 

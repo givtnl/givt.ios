@@ -124,7 +124,7 @@
                         <viewLayoutGuide key="safeArea" id="eZy-TC-tQq"/>
                     </view>
                     <navigationItem key="navigationItem" id="rmJ-dJ-FBO">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" id="Smo-sW-3EB">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="Smo-sW-3EB">
                             <connections>
                                 <action selector="goBack:" destination="qMn-WP-e5g" id="s8X-7b-AT1"/>
                             </connections>

@@ -151,8 +151,8 @@
                                                     <action selector="done:" destination="Op2-mF-ZtZ" eventType="touchUpInside" id="iEi-qR-2ML"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bij het doorgaan ga je akkoord met de algemene voorwaarden." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jAh-wO-W8r">
-                                                <rect key="frame" x="20" y="508.5" width="335" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bij het doorgaan ga je akkoord met de algemene voorwaarden." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAh-wO-W8r">
+                                                <rect key="frame" x="20" y="488" width="335" height="41"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                                 <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -208,7 +208,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WHh-0J-cdO">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" id="cFG-tk-Xbc">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="cFG-tk-Xbc">
                             <connections>
                                 <action selector="pop:" destination="Op2-mF-ZtZ" id="MDv-s7-act"/>
                             </connections>

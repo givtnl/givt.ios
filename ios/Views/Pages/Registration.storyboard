@@ -255,7 +255,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="v3m-sg-jcZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="cXl-G2-sG4"/>
-                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" id="bhq-hS-jLD">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="bhq-hS-jLD">
                             <connections>
                                 <action selector="exit:" destination="rSQ-dn-6aJ" id="1ty-fh-Djf"/>
                             </connections>
@@ -482,7 +482,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title=" " id="45S-9T-8H1">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" id="Hsd-J2-Lfb">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="Hsd-J2-Lfb">
                             <connections>
                                 <action selector="exit:" destination="yPe-50-VR6" id="d1J-zx-7Sb"/>
                             </connections>
@@ -611,7 +611,7 @@ een gift te herroepen.</string>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="dcp-yg-dMa">
                         <barButtonItem key="backBarButtonItem" title=" " id="hhZ-9E-mwu"/>
-                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" id="G0v-GY-J6E">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="G0v-GY-J6E">
                             <connections>
                                 <action selector="close:" destination="L1z-Ld-vBT" id="oBq-aE-gqi"/>
                             </connections>
@@ -653,7 +653,7 @@ een gift te herroepen.</string>
                         <viewLayoutGuide key="safeArea" id="t2K-nP-9uy"/>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="EYy-Um-Nwv">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" id="RR0-qK-hzc">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="RR0-qK-hzc">
                             <connections>
                                 <action selector="back:" destination="L2Y-fA-AGb" id="uiN-Rb-kG9"/>
                             </connections>
@@ -824,10 +824,6 @@ Veel geefplezier!</string>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVr-y1-AKn">
                                         <rect key="frame" x="10" y="0.0" width="355" height="579.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <string key="text">Gebruiksvoorwaarden – Givt-app
-Laatst bijgewerkt: 22-07-2017
-Versie: 1.5
-overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -958,7 +954,7 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                         <viewLayoutGuide key="safeArea" id="fdq-8W-gxU"/>
                     </view>
                     <navigationItem key="navigationItem" id="49j-Xf-fye">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" id="Ebv-Vl-xrw">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="Ebv-Vl-xrw">
                             <connections>
                                 <action selector="back:" destination="xy9-I6-W1u" id="VvK-db-58D"/>
                             </connections>
@@ -1132,7 +1128,7 @@ overeenkomst mag door zowel Gebruiker als Givt B.V. op </string>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="hCC-wg-53f">
                         <barButtonItem key="backBarButtonItem" title=" " id="2l4-ON-Qnn"/>
-                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" id="t7R-5Y-Fz0">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="t7R-5Y-Fz0">
                             <connections>
                                 <action selector="goBack:" destination="5PA-7A-fQw" id="WAs-dw-t9z"/>
                             </connections>
