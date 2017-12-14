@@ -38,6 +38,26 @@ class SPInfoViewController: UIViewController {
             self.backButton.isEnabled = true
         }
         
+        let attachment:NSTextAttachment = NSTextAttachment()
+        attachment.image = #imageLiteral(resourceName: "littleinfo.png")
+        attachment.bounds = CGRect(x: 0, y: -4, width: (attachment.image?.size.width)!, height: (attachment.image?.size.height)!)
+        let attachmentString:NSAttributedString = NSAttributedString(attachment: attachment)
+        let myString:NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("SlimPayInformation", comment: "") + " ")
+        myString.append(attachmentString)
+        
+        headerText.attributedText = myString
+        let tap = UITapGestureRecognizer(target: self, action: #selector(openSlimPayInfo))
+        headerText.addGestureRecognizer(tap)
+        headerText.isUserInteractionEnabled = true
+        
+    }
+    
+    @objc func openSlimPayInfo() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        vc.typeOfTerms = .slimPayInfo
+        self.present(vc, animated: true, completion: {
+            print("done terms")
+        })
     }
 
     override func didReceiveMemoryWarning() {

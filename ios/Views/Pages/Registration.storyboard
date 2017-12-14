@@ -611,7 +611,7 @@ een gift te herroepen.</string>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="dcp-yg-dMa">
                         <barButtonItem key="backBarButtonItem" title=" " id="hhZ-9E-mwu"/>
-                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="G0v-GY-J6E">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="G0v-GY-J6E">
                             <connections>
                                 <action selector="close:" destination="L1z-Ld-vBT" id="oBq-aE-gqi"/>
                             </connections>
@@ -629,7 +629,7 @@ een gift te herroepen.</string>
             </objects>
             <point key="canvasLocation" x="2702" y="36"/>
         </scene>
-        <!-- -->
+        <!--Web View Controller-->
         <scene sceneID="kT8-Q5-GA0">
             <objects>
                 <viewController storyboardIdentifier="SPWebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L2Y-fA-AGb" customClass="SPWebViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -645,17 +645,17 @@ een gift te herroepen.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="biT-YQ-Gp9" firstAttribute="width" secondItem="t2K-nP-9uy" secondAttribute="width" id="OfH-Z6-ocS"/>
-                            <constraint firstItem="biT-YQ-Gp9" firstAttribute="top" secondItem="t2K-nP-9uy" secondAttribute="top" id="Q41-Ga-HWm"/>
                             <constraint firstItem="t2K-nP-9uy" firstAttribute="bottom" secondItem="biT-YQ-Gp9" secondAttribute="bottom" id="RcX-uz-1yH"/>
+                            <constraint firstItem="biT-YQ-Gp9" firstAttribute="top" secondItem="t2K-nP-9uy" secondAttribute="top" id="bMd-3q-6BW"/>
                             <constraint firstItem="biT-YQ-Gp9" firstAttribute="leading" secondItem="t2K-nP-9uy" secondAttribute="leading" id="p01-Nd-RXJ"/>
                             <constraint firstItem="t2K-nP-9uy" firstAttribute="trailing" secondItem="biT-YQ-Gp9" secondAttribute="trailing" id="yb5-3r-KSD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="t2K-nP-9uy"/>
                     </view>
-                    <navigationItem key="navigationItem" title=" " id="EYy-Um-Nwv">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="RR0-qK-hzc">
+                    <navigationItem key="navigationItem" id="rWf-6Z-UoV">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="GCu-1G-cYX">
                             <connections>
-                                <action selector="back:" destination="L2Y-fA-AGb" id="uiN-Rb-kG9"/>
+                                <action selector="back:" destination="L2Y-fA-AGb" id="2gW-BW-hnE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -666,7 +666,7 @@ een gift te herroepen.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zi-z2-INN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3433" y="32"/>
+            <point key="canvasLocation" x="3432.8000000000002" y="31.934032983508249"/>
         </scene>
         <!--Final Registration View Controller-->
         <scene sceneID="qNW-sq-jUb">
