@@ -145,7 +145,7 @@
                         <viewLayoutGuide key="safeArea" id="Gy5-nL-RMg"/>
                     </view>
                     <navigationItem key="navigationItem" id="MYY-AS-V6b">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" id="muJ-3T-9gD">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="muJ-3T-9gD">
                             <connections>
                                 <action selector="goBack:" destination="Sko-mo-YiF" id="FAv-Zp-Hgc"/>
                             </connections>
@@ -422,7 +422,7 @@ Kijk voor de status in je overzicht.</string>
                         <viewLayoutGuide key="safeArea" id="N6F-1X-0jM"/>
                     </view>
                     <navigationItem key="navigationItem" id="H6U-qm-1aX">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" id="VZE-J0-ESa"/>
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="VZE-J0-ESa"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -1129,7 +1129,7 @@ Kijk voor de status in je overzicht.</string>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title=" " id="eIV-KD-Dxj">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" id="9Hx-Ie-oQy">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="9Hx-Ie-oQy">
                             <connections>
                                 <action selector="goBack:" destination="rTV-jI-hj3" id="SZS-Ic-iU3"/>
                             </connections>
@@ -1267,7 +1267,7 @@ Kijk voor de status in je overzicht.</string>
                         <viewLayoutGuide key="safeArea" id="jv0-et-J5F"/>
                     </view>
                     <navigationItem key="navigationItem" title="Anders geven" id="akm-Ra-BMg">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" id="1Iw-cC-4is">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="1Iw-cC-4is">
                             <connections>
                                 <action selector="goBack:" destination="I2a-zH-aE5" id="R16-dG-pcp"/>
                             </connections>
@@ -1629,7 +1629,7 @@ Kijk voor de status in je overzicht.</string>
                         <viewLayoutGuide key="safeArea" id="dVK-Iz-eza"/>
                     </view>
                     <navigationItem key="navigationItem" title=" Anders geven" id="xwi-yl-DRD">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" id="dlN-XT-0fC">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="dlN-XT-0fC">
                             <connections>
                                 <action selector="goBack:" destination="5g3-dC-8Ob" id="0nN-R5-TAw"/>
                             </connections>
@@ -1741,7 +1741,7 @@ Kijk voor de status in je overzicht.</string>
                         <viewLayoutGuide key="safeArea" id="0lA-UE-6Pk"/>
                     </view>
                     <navigationItem key="navigationItem" title="Code scannen" id="JLi-K3-eRm">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" id="UMu-rJ-Ofr">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="UMu-rJ-Ofr">
                             <connections>
                                 <action selector="goBack:" destination="iPr-9p-1fx" id="mAn-iL-jzE"/>
                             </connections>
