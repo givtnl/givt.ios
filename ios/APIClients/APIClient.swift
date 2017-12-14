@@ -8,15 +8,16 @@
 
 import Foundation
 import SwiftClient
+import TrustKit
 
-class APIClient: IAPIClient {
+class APIClient: NSObject, IAPIClient, URLSessionDelegate {
     static let shared = APIClient()
     private var log = LogService.shared
     
     private static let BASEURL: String = "https://givtapidebug.azurewebsites.net"
     private var client = Client().baseUrl(url: BASEURL)
     
-    private init() {
+    private override init() {
         
     }
     
@@ -26,7 +27,7 @@ class APIClient: IAPIClient {
                 headers["Authorization"] = "Bearer " + bearerToken
         }
         log.info(message: "GET on " + url)
-        client.get(url: url)
+        client.get(url: url).delegate(delegate: self)
             .type(type: "json")
             .set(headers: headers)
             .query(query: data)
@@ -40,7 +41,8 @@ class APIClient: IAPIClient {
     
     func put(url: String, data: [String: String], callback: @escaping (Response?) -> Void) throws {
         log.info(message: "PUT on " + url)
-        client.put(url: url).send(data: data)
+        client.put(url: url).delegate(delegate: self)
+            .send(data: data)
             .type(type: "json")
             .set(headers: ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken!])
             .end(done: { (res:Response) in
@@ -58,7 +60,7 @@ class APIClient: IAPIClient {
         if let bearerToken = UserDefaults.standard.bearerToken {
             headers["Authorization"] = "Bearer " + bearerToken
         }
-        client.post(url: url)
+        client.post(url: url).delegate(delegate: self)
             .type(type: "json")
             .set(headers: headers)
             .send(data: data)
@@ -68,6 +70,12 @@ class APIClient: IAPIClient {
                 callback(nil)
                 print(err)
                 self.log.error(message: "POST on " + url + " failed somehow")
+        }
+    }
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        let pinningValidator = TrustKit.sharedInstance().pinningValidator
+        if !pinningValidator.handle(challenge, completionHandler: completionHandler) {
+            completionHandler(URLSession.AuthChallengeDisposition.performDefaultHandling, nil)
         }
     }
 }
