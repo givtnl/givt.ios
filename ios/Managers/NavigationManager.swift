@@ -16,6 +16,8 @@ class NavigationManager {
     private var logService = LogService.shared
     private let _appServices = AppServices.shared
     
+    var delegate: NavigationManagerDelegate?
+    
     private init() {
 
     }
@@ -152,6 +154,7 @@ class NavigationManager {
         if !isUpdateDialogOpen {
             showUpdateAlert()
         }
+        self.delegate?.willResume(sender: self)
     }
     
     private var topController: UIViewController? {
@@ -293,4 +296,8 @@ class NavigationManager {
         
     }
     
+}
+
+protocol NavigationManagerDelegate: class {
+    func willResume(sender: NavigationManager)
 }

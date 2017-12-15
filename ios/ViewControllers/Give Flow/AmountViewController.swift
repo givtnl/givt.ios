@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
+class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate {
     private var log: LogService = LogService.shared
     @IBOutlet var widthConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UIView!
@@ -61,6 +61,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     
+    func willResume(sender: NavigationManager) {
+        if ((self.presentedViewController as? UIAlertController) == nil) {
+            if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
+                navigiationManager.finishRegistrationAlert(self)
+            }
+            
+            self._cameFromFAQ = false
+        }
+    }
+    
     private var pressedShortcutKey: Bool! = false
     private var decimalNotation: String! = "," {
         didSet {
@@ -90,6 +100,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         givtService = GivtService.shared
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
@@ -110,7 +121,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
 
         decimalNotation = NSLocale.current.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
@@ -125,20 +136,32 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate {
         
         log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
         menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
+        
+        if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
+            self._cameFromFAQ = true
+        }
     }
     
+    private var _cameFromFAQ: Bool = false
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        navigiationManager.delegate = self
         showFirstBalloon()
         
-        if (self.sideMenuController?.isLeftViewHidden)! {
+        if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
             navigiationManager.finishRegistrationAlert(self)
         }
+        
+        self._cameFromFAQ = false
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigiationManager.delegate = nil
     }
     
     func addGestureRecognizerToView(view: UIView) {
