@@ -42,11 +42,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //InfraManager.shared.checkUpdates()
         
         handleOldAppData()
+        handleOldTransactions()
         
         
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig)
         
         return true
+    }
+    
+    func handleOldTransactions() {
+        let file = "Givt.Models.Transaction.json"
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = dir.appendingPathComponent(file)
+            do {
+                let text = try String(contentsOf: fileURL, encoding: .utf8)
+                if let data = text.data(using: .utf8) {
+                    do {
+                        var transactions: [Transaction] = [Transaction]()
+                        let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]]
+                        if let dict = dictionary, dict.count > 0 {
+                            for (_, item) in dict.enumerated() {
+                                guard let amount = item["Amount"] as? NSNumber else { return }
+                                guard let beaconId = item["BeaconId"] as? String else { return }
+                                guard let collectId = item["CollectId"] as? String else { return }
+                                guard let timeStamp = item["Timestamp"] as? String else { return }
+                                guard let userId = item["UserId"] as? String else { return }
+                                print(amount)
+                                transactions.append(Transaction(amount: amount.decimalValue, beaconId: beaconId, collectId: collectId, timeStamp: timeStamp, userId: userId))
+                            }
+                            GivtService.shared.sendPostRequest(transactions: transactions)
+                        }
+                        
+                    } catch {
+                        logService.error(message: "Could not parse cached givts #native #fail :-(. Description: " + error.localizedDescription)
+                    }
+                }
+                
+                do {
+                    try "".write(to: fileURL, atomically: true, encoding: .utf8)
+                } catch {
+                    logService.warning(message: "Could not empty Givt.Models.Transaction.json!")
+                }
+                
+            } catch {
+            }
+        }
     }
     
     func handleOldAppData() {
@@ -59,6 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let data = text2.data(using: .utf8) {
                     do {
                         let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        print(dictionary)
                         if let myDict = dictionary {
                             if let bearerExpiration = myDict["BearerExpiration"] {
                                 UserDefaults.standard.bearerExpiration = Date()
@@ -125,7 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             }
                         }
                     } catch {
-                        logService.warning(message: "Could not read GivtSettings.json")
+                        logService.warning(message: "Could not read GivtSettings.json, perhaps the file was already gone.")
                     }
                     
                     do {
@@ -155,12 +196,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        logService.info(message: "App resuming")
+        NavigationManager.shared.resume()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        logService.info(message: "App resuming")
-        NavigationManager.shared.resume()
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

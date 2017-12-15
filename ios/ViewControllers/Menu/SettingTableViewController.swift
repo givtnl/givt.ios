@@ -145,8 +145,13 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
     
     private func logout() {
         logService.info(message: "User is switching accounts via the menu")
-        LoginManager.shared.logout()
-        navigationManager.loadMainPage()
+        if navigationManager.hasInternetConnection(context: self) {
+            LoginManager.shared.logout()
+            navigationManager.loadMainPage()
+        } else {
+            navigationManager.presentAlertNoConnection(context: self)
+        }
+        
     }
     
     private func openHistory() {

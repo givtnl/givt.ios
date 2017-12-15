@@ -29,7 +29,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
             canShare = true
         }
         
-        var parameters: NSDictionary
+        var parameters: [String: Any]
         parameters = ["amountLimit" : 0,
                           "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
                           "GUID" : "",
@@ -40,7 +40,13 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
                           "organisation" : GivtService.shared.lastGivtOrg,
                           "mandatePopup" : "",
                           "spUrl" : "",
-                          "canShare" : canShare] as NSDictionary
+                          "canShare" : canShare]
+        
+        #if DEBUG
+            parameters["nativeAppScheme"] = "givtnd://"
+        #else
+            parameters["nativeAppScheme"] = "givtn://"
+        #endif
         
         
         guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
