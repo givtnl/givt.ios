@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jKf-SB-DZ7">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -25,26 +25,26 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="rSQ-dn-6aJ" customClass="RegistrationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yaR-1P-rbQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G5P-LB-uz0">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njr-Oh-npg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5E-cZ-hgM" userLabel="InnerView">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="464"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maak een account aan zodat je altijd toegang tot je Givt-gegevens hebt." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBS-LN-W65">
-                                                        <rect key="frame" x="20" y="20" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="20" width="280" height="44"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJu-bj-TQ5" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="539" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="400" width="280" height="44"/>
                                                         <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="AeN-7L-0YY"/>
@@ -72,13 +72,13 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Het wachtwoord moet uit ten minste 7 tekens bestaan, waaronder een hoofdletter en een cijfer." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGU-9Z-EaP">
-                                                        <rect key="frame" x="20" y="298" width="335" height="17"/>
+                                                        <rect key="frame" x="20" y="298" width="280" height="17"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Emailadres" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="k6T-Nj-K0f" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="192" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="192" width="280" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="MLj-fG-QeL"/>
@@ -93,7 +93,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Voornaam" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Aj6-yH-iPv" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="84" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="84" width="280" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="z5C-yC-dnT"/>
@@ -108,7 +108,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Achternaam" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2nN-cS-Y50" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="138" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="138" width="280" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="e6M-Ya-yIt"/>
@@ -123,7 +123,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3D-8Z-xXB">
-                                                        <rect key="frame" x="20" y="474" width="335" height="55"/>
+                                                        <rect key="frame" x="20" y="335" width="280" height="55"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXG-vQ-hUt">
                                                                 <rect key="frame" x="0.0" y="15" width="24" height="24"/>
@@ -138,7 +138,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mijn persoonsgegevens mogen door Givt worden vastgelegd." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHI-V3-yIU">
-                                                                <rect key="frame" x="39" y="18" width="296" height="20.5"/>
+                                                                <rect key="frame" x="39" y="18" width="241" height="20.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                                                 <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -155,10 +155,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Vp-KE-yoa">
-                                                        <rect key="frame" x="20" y="246" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="246" width="280" height="44"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Wachtwoord" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PCv-ur-75e" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
@@ -170,7 +170,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32c-5t-IHf">
-                                                                <rect key="frame" x="290" y="2" width="40" height="40"/>
+                                                                <rect key="frame" x="235" y="2" width="40" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="OAc-kL-VgG"/>
@@ -283,26 +283,26 @@
             <objects>
                 <viewController storyboardIdentifier="RegistrationDetailViewController" title=" " automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yPe-50-VR6" customClass="RegistrationDetailViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I5L-1M-bcM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrS-cK-UJQ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5IF-pR-M1g">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2z2-D3-FKo">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Om je giften te kunnen afhandelen, moeten we nog een paar dingen van je weten." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSH-zR-77U">
-                                                        <rect key="frame" x="20" y="20" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="20" width="280" height="66"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Straat en huisnummer" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KQB-3R-DNd" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="84" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="106" width="280" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="RC4-up-63A"/>
@@ -312,7 +312,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="street-address"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Postcode" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rRk-r4-4fG" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="138" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="160" width="280" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="INP-su-eP7"/>
@@ -322,7 +322,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Stad" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2nW-mh-yOX" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="192" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="214" width="280" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="tRO-bb-HMT"/>
@@ -332,7 +332,7 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Jb-7x-PCv" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="539" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="440" width="280" height="44"/>
                                                         <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="evV-vy-wDB"/>
@@ -357,10 +357,10 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dM-GZ-XwC">
-                                                        <rect key="frame" x="20" y="246" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="268" width="280" height="44"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Land" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="La2-rd-9nq" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -368,14 +368,14 @@
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown.png" translatesAutoresizingMaskIntoConstraints="NO" id="wUQ-tP-5zJ">
-                                                                <rect key="frame" x="312" y="18" width="13" height="8"/>
+                                                                <rect key="frame" x="257" y="18" width="13" height="8"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="13" id="DpW-YD-Gpz"/>
                                                                     <constraint firstAttribute="height" constant="8" id="YhX-Xi-imm"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uv7-Hk-g1z">
-                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="44"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <state key="normal">
@@ -402,7 +402,7 @@
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobiel nummer" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="d5n-mh-jvt" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="300" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="322" width="280" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="hjF-ii-Kbr"/>
@@ -412,7 +412,7 @@
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" textContentType="tel"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="IBAN" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b5n-qN-JY2" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="354" width="335" height="44"/>
+                                                        <rect key="frame" x="20" y="376" width="280" height="44"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="wML-km-z0Q"/>
@@ -510,64 +510,20 @@
             <objects>
                 <viewController storyboardIdentifier="SPInfoViewController" title=" " useStoryboardIdentifierAsRestorationIdentifier="YES" id="L1z-Ld-vBT" customClass="SPInfoViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lxc-vi-6Fb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="335" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="ryM-in-ciG">
-                                <rect key="frame" x="20" y="64" width="335" height="128"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="tad-kI-WfS">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="108"/>
-                                        <string key="text">Om te kunnen geven met Givt moet je 
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="tad-kI-WfS">
+                                <rect key="frame" x="20" y="74" width="280" height="87.5"/>
+                                <string key="text">Om te kunnen geven met Givt moet je 
 een machtiging (SlimPay eMandate) 
 afgeven.</string>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
-                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="tad-kI-WfS" secondAttribute="trailing" id="L78-kl-DEm"/>
-                                    <constraint firstItem="tad-kI-WfS" firstAttribute="top" secondItem="ryM-in-ciG" secondAttribute="top" id="Rwq-qO-k7d"/>
-                                    <constraint firstItem="tad-kI-WfS" firstAttribute="leading" secondItem="ryM-in-ciG" secondAttribute="leading" id="jQj-e0-7kp"/>
-                                    <constraint firstAttribute="bottom" secondItem="tad-kI-WfS" secondAttribute="bottom" constant="20" id="jUR-CO-7OT"/>
-                                </constraints>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="givySlimPay" translatesAutoresizingMaskIntoConstraints="NO" id="o7m-wS-WRO">
-                                <rect key="frame" x="103.5" y="192" width="168" height="168"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="o7m-wS-WRO" secondAttribute="height" multiplier="1:1" id="RL3-le-q5N"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="168" id="iZN-wi-9vM"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="168" id="zR2-yG-p10"/>
-                                </constraints>
-                            </imageView>
-                            <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="izA-NC-atv">
-                                <rect key="frame" x="20" y="370" width="335" height="223"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="x6c-Yv-HDC">
-                                        <rect key="frame" x="0.0" y="20" width="335" height="183"/>
-                                        <string key="text">Er wordt alleen geïncasseerd,
-wanneer je zelf een bedrag geeft met Givt.
-
-Omdat we met een machtiging werken,
-is het eventueel mogelijk om achteraf 
-een gift te herroepen.</string>
-                                        <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
-                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="x6c-Yv-HDC" firstAttribute="top" secondItem="izA-NC-atv" secondAttribute="top" constant="20" id="5Uu-8p-cvL"/>
-                                    <constraint firstAttribute="bottom" secondItem="x6c-Yv-HDC" secondAttribute="bottom" constant="20" id="RXk-eV-iYC"/>
-                                    <constraint firstAttribute="trailing" secondItem="x6c-Yv-HDC" secondAttribute="trailing" id="SD3-VA-YEJ"/>
-                                    <constraint firstItem="x6c-Yv-HDC" firstAttribute="leading" secondItem="izA-NC-atv" secondAttribute="leading" id="YDa-gR-E5O"/>
-                                </constraints>
-                            </view>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXN-cE-Huu" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <rect key="frame" x="20" y="416" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="QOn-7Q-AjA"/>
@@ -591,21 +547,44 @@ een gift te herroepen.</string>
                                     <action selector="next:" destination="L1z-Ld-vBT" eventType="touchUpInside" id="mh2-Ba-aNT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="x6c-Yv-HDC">
+                                <rect key="frame" x="20" y="214.5" width="280" height="191.5"/>
+                                <string key="text">Er wordt alleen geïncasseerd,
+wanneer je zelf een bedrag geeft met Givt.
+
+Omdat we met een machtiging werken,
+is het eventueel mogelijk om achteraf 
+een gift te herroepen.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="givySlimPay" translatesAutoresizingMaskIntoConstraints="NO" id="o7m-wS-WRO">
+                                <rect key="frame" x="143.5" y="171.5" width="33" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="o7m-wS-WRO" secondAttribute="height" multiplier="1:1" id="EEI-XA-tG7"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="HlL-Dq-o2O"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="180" id="Q7X-wf-7Xb"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="180" id="S5Y-RI-1Dx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="Yt1-ab-AYm"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="o7m-wS-WRO" firstAttribute="top" secondItem="tad-kI-WfS" secondAttribute="bottom" constant="10" id="2ii-HW-Bje"/>
                             <constraint firstItem="Iti-jS-LQD" firstAttribute="trailing" secondItem="mXN-cE-Huu" secondAttribute="trailing" constant="20" id="5tR-dB-Epq"/>
-                            <constraint firstItem="o7m-wS-WRO" firstAttribute="top" secondItem="ryM-in-ciG" secondAttribute="bottom" id="HwI-eL-4kE"/>
+                            <constraint firstItem="x6c-Yv-HDC" firstAttribute="leading" secondItem="Iti-jS-LQD" secondAttribute="leading" constant="20" id="D0x-6P-ETo"/>
+                            <constraint firstItem="tad-kI-WfS" firstAttribute="top" secondItem="Iti-jS-LQD" secondAttribute="top" constant="10" id="DUc-Mi-NN1"/>
                             <constraint firstItem="mXN-cE-Huu" firstAttribute="leading" secondItem="lxc-vi-6Fb" secondAttribute="leading" constant="20" id="JTj-Dq-Sw4"/>
-                            <constraint firstItem="ryM-in-ciG" firstAttribute="leading" secondItem="Iti-jS-LQD" secondAttribute="leading" constant="20" id="UBX-Jk-gJR"/>
+                            <constraint firstItem="x6c-Yv-HDC" firstAttribute="top" secondItem="o7m-wS-WRO" secondAttribute="bottom" constant="10" id="PRV-iw-lPj"/>
+                            <constraint firstItem="Iti-jS-LQD" firstAttribute="trailing" secondItem="tad-kI-WfS" secondAttribute="trailing" constant="20" id="QaW-PY-rw4"/>
                             <constraint firstItem="Iti-jS-LQD" firstAttribute="bottom" secondItem="mXN-cE-Huu" secondAttribute="bottom" constant="20" id="UhS-Xo-U08"/>
-                            <constraint firstItem="Iti-jS-LQD" firstAttribute="trailing" secondItem="ryM-in-ciG" secondAttribute="trailing" constant="20" id="Xhy-WS-1KH"/>
-                            <constraint firstItem="izA-NC-atv" firstAttribute="leading" secondItem="Iti-jS-LQD" secondAttribute="leading" constant="20" id="Yih-Ze-ijs"/>
-                            <constraint firstItem="mXN-cE-Huu" firstAttribute="top" secondItem="izA-NC-atv" secondAttribute="bottom" constant="10" id="bhu-Gm-OaO"/>
-                            <constraint firstItem="o7m-wS-WRO" firstAttribute="centerX" secondItem="lxc-vi-6Fb" secondAttribute="centerX" id="dSk-QV-AVN"/>
-                            <constraint firstItem="ryM-in-ciG" firstAttribute="top" secondItem="Iti-jS-LQD" secondAttribute="top" id="lr6-uH-zZa"/>
-                            <constraint firstItem="Iti-jS-LQD" firstAttribute="trailing" secondItem="izA-NC-atv" secondAttribute="trailing" constant="20" id="rVW-qL-MUT"/>
-                            <constraint firstItem="izA-NC-atv" firstAttribute="top" secondItem="o7m-wS-WRO" secondAttribute="bottom" constant="10" id="rob-JX-gfj"/>
+                            <constraint firstItem="o7m-wS-WRO" firstAttribute="centerY" secondItem="lxc-vi-6Fb" secondAttribute="centerY" priority="250" id="UuK-YQ-6Pj"/>
+                            <constraint firstItem="tad-kI-WfS" firstAttribute="leading" secondItem="Iti-jS-LQD" secondAttribute="leading" constant="20" id="d4P-D5-sIo"/>
+                            <constraint firstItem="mXN-cE-Huu" firstAttribute="top" secondItem="x6c-Yv-HDC" secondAttribute="bottom" constant="10" id="e9G-Tu-QJd"/>
+                            <constraint firstItem="o7m-wS-WRO" firstAttribute="centerX" secondItem="lxc-vi-6Fb" secondAttribute="centerX" id="eg1-ZV-yjS"/>
+                            <constraint firstItem="Iti-jS-LQD" firstAttribute="trailing" secondItem="x6c-Yv-HDC" secondAttribute="trailing" constant="20" id="tc8-8f-pyc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Iti-jS-LQD"/>
                     </view>
@@ -627,18 +606,18 @@ een gift te herroepen.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqw-2g-bU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2702" y="36"/>
+            <point key="canvasLocation" x="2701.875" y="35"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="kT8-Q5-GA0">
             <objects>
                 <viewController storyboardIdentifier="SPWebViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="L2Y-fA-AGb" customClass="SPWebViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RJd-Yd-0qj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="biT-YQ-Gp9">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -673,14 +652,14 @@ een gift te herroepen.</string>
             <objects>
                 <viewController storyboardIdentifier="FinalRegistrationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UgS-ac-w3v" customClass="FinalRegistrationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="70D-LJ-tVW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givt_registration.gif" translatesAutoresizingMaskIntoConstraints="NO" id="vOM-01-vvx">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1Er-og-D4R">
-                                <rect key="frame" x="20" y="60" width="335" height="55"/>
+                                <rect key="frame" x="20" y="60" width="280" height="55"/>
                                 <string key="text">Je registratie is gelukt.
 Veel geefplezier!</string>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
@@ -688,7 +667,7 @@ Veel geefplezier!</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Roi-DX-91v" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <rect key="frame" x="20" y="416" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="wDl-RA-aHg"/>
@@ -752,7 +731,7 @@ Veel geefplezier!</string>
                 <navigationController storyboardIdentifier="registration" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jKf-SB-DZ7" customClass="RegNavigationController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x5b-l8-Nmo">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -771,20 +750,20 @@ Veel geefplezier!</string>
             <objects>
                 <viewController storyboardIdentifier="TermsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Djv-j8-pWy" customClass="TermsViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VhF-cH-n8j">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUW-ib-86v">
-                                <rect key="frame" x="0.0" y="20" width="375" height="67.5"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="67.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacyverklaring" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="ypP-lk-75m">
-                                        <rect key="frame" x="60" y="20" width="255" height="27.5"/>
+                                        <rect key="frame" x="60" y="20" width="200" height="27.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFR-iE-kd7">
-                                        <rect key="frame" x="321" y="11" width="44" height="44"/>
+                                        <rect key="frame" x="266" y="11" width="44" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="PNi-eE-JwD"/>
@@ -812,17 +791,17 @@ Veel geefplezier!</string>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hfb-Uj-vtO">
-                                <rect key="frame" x="0.0" y="87.5" width="375" height="579.5"/>
+                                <rect key="frame" x="0.0" y="87.5" width="320" height="392.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9B-VX-kQk">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" id="1hR-pa-fL7"/>
                                         </constraints>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVr-y1-AKn">
-                                        <rect key="frame" x="10" y="0.0" width="355" height="579.5"/>
+                                        <rect key="frame" x="10" y="0.0" width="300" height="392.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
@@ -870,11 +849,11 @@ Veel geefplezier!</string>
             <objects>
                 <viewController storyboardIdentifier="PermissionViewController" id="xy9-I6-W1u" customClass="PermissionViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vff-X6-ufM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8an-DY-09C" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <rect key="frame" x="20" y="416" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                 <constraints>
@@ -899,28 +878,31 @@ Veel geefplezier!</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eerst even dit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5k3-PZ-aBp">
-                                <rect key="frame" x="122.5" y="84" width="130.5" height="27.5"/>
+                                <rect key="frame" x="95" y="84" width="130.5" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voor een optimaal gebruik van Givt vragen we je toestemming om notficaties te versturen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNE-WN-e10">
-                                <rect key="frame" x="40" y="131.5" width="295" height="66"/>
+                                <rect key="frame" x="40" y="131.5" width="240" height="66"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zo weet je waar en wanneer je kunt geven." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uK-yY-DB4">
-                                <rect key="frame" x="40" y="205.5" width="295" height="44"/>
+                                <rect key="frame" x="40" y="205.5" width="240" height="44"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5o0-YR-5Lu">
-                                <rect key="frame" x="0.0" y="249.5" width="375" height="353.5"/>
+                                <rect key="frame" x="0.0" y="259.5" width="320" height="146.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givyPermission" translatesAutoresizingMaskIntoConstraints="NO" id="V64-kO-eTF">
-                                        <rect key="frame" x="40" y="93.5" width="295" height="168"/>
+                                        <rect key="frame" x="40" y="5.5" width="240" height="137"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="V64-kO-eTF" secondAttribute="height" multiplier="295:168" id="kVK-O8-EeZ"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -937,12 +919,12 @@ Veel geefplezier!</string>
                             <constraint firstItem="fdq-8W-gxU" firstAttribute="bottom" secondItem="8an-DY-09C" secondAttribute="bottom" constant="20" id="065-6b-4n3"/>
                             <constraint firstItem="8an-DY-09C" firstAttribute="leading" secondItem="fdq-8W-gxU" secondAttribute="leading" constant="20" id="0rd-nq-O76"/>
                             <constraint firstItem="2uK-yY-DB4" firstAttribute="top" secondItem="MNE-WN-e10" secondAttribute="bottom" constant="8" id="7Ay-eE-iX2"/>
-                            <constraint firstItem="8an-DY-09C" firstAttribute="top" secondItem="5o0-YR-5Lu" secondAttribute="bottom" id="7Zc-F7-iU0"/>
+                            <constraint firstItem="8an-DY-09C" firstAttribute="top" secondItem="5o0-YR-5Lu" secondAttribute="bottom" constant="10" id="7Zc-F7-iU0"/>
                             <constraint firstItem="fdq-8W-gxU" firstAttribute="trailing" secondItem="MNE-WN-e10" secondAttribute="trailing" constant="40" id="L2r-EB-9Gi"/>
                             <constraint firstItem="2uK-yY-DB4" firstAttribute="leading" secondItem="fdq-8W-gxU" secondAttribute="leading" constant="40" id="L3B-Ki-MUU"/>
                             <constraint firstItem="fdq-8W-gxU" firstAttribute="trailing" secondItem="8an-DY-09C" secondAttribute="trailing" constant="20" id="Pid-VE-BfM"/>
                             <constraint firstItem="fdq-8W-gxU" firstAttribute="trailing" secondItem="5o0-YR-5Lu" secondAttribute="trailing" id="UGj-vq-GtI"/>
-                            <constraint firstItem="5o0-YR-5Lu" firstAttribute="top" secondItem="2uK-yY-DB4" secondAttribute="bottom" id="Xp2-4t-mfS"/>
+                            <constraint firstItem="5o0-YR-5Lu" firstAttribute="top" secondItem="2uK-yY-DB4" secondAttribute="bottom" constant="10" id="Xp2-4t-mfS"/>
                             <constraint firstItem="fdq-8W-gxU" firstAttribute="trailing" secondItem="2uK-yY-DB4" secondAttribute="trailing" constant="40" id="d24-fi-1tS"/>
                             <constraint firstItem="MNE-WN-e10" firstAttribute="leading" secondItem="fdq-8W-gxU" secondAttribute="leading" constant="40" id="fPf-La-3el"/>
                             <constraint firstItem="5k3-PZ-aBp" firstAttribute="top" secondItem="fdq-8W-gxU" secondAttribute="top" constant="20" id="iHw-RB-kCR"/>
@@ -982,14 +964,14 @@ Veel geefplezier!</string>
                         <viewControllerLayoutGuide type="bottom" id="ghA-d2-Epy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="K7q-qD-m1C">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXc-vI-HpB">
-                                <rect key="frame" x="40" y="84" width="295" height="189.5"/>
+                                <rect key="frame" x="40" y="84" width="240" height="96"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bepaal hier het maximale bedrag dat je per keer wilt kunnen geven." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="13" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zWD-es-rb4">
-                                        <rect key="frame" x="0.0" y="20" width="295" height="44"/>
+                                        <rect key="frame" x="0.0" y="20" width="240" height="66"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1003,7 +985,7 @@ Veel geefplezier!</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r31-cv-Adj" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <rect key="frame" x="20" y="416" width="280" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                 <constraints>
@@ -1027,7 +1009,7 @@ Veel geefplezier!</string>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbr-qe-p3K">
-                                <rect key="frame" x="20" y="293.5" width="335" height="80"/>
+                                <rect key="frame" x="20" y="200" width="280" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pN1-on-KFq" userLabel="decr">
                                         <rect key="frame" x="0.0" y="20" width="40" height="40"/>
@@ -1043,7 +1025,7 @@ Veel geefplezier!</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZbP-Vw-N5C" userLabel="decr">
-                                        <rect key="frame" x="295" y="20" width="40" height="40"/>
+                                        <rect key="frame" x="240" y="20" width="40" height="40"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="TE4-zu-dEj"/>
@@ -1056,7 +1038,7 @@ Veel geefplezier!</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="On4-2e-O95">
-                                        <rect key="frame" x="87.5" y="0.0" width="160" height="80"/>
+                                        <rect key="frame" x="60" y="0.0" width="160" height="80"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4c-jj-s8P">
                                                 <rect key="frame" x="0.0" y="72" width="160" height="8"/>

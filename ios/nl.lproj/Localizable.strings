@@ -295,7 +295,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Alleen wanneer je zelf een bedrag geeft 
 met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om te checken of de tekst er dan beter uit ziet op het scherm.*/
-"SlimPayInformation" = "Om te kunnen geven met Givt moet je \neen machtiging (SlimPay eMandate) \nafgeven.";
+"SlimPayInformation" = "Om te kunnen geven met Givt moet je een machtiging (SlimPay eMandate) afgeven.";
 "SavingSettings" = "Je hoeft nu even niks\nte doen terwijl wij\nje gegevens opslaan.";
 
 /*Titel op het scherm van de privacyverklaring*/
@@ -326,7 +326,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "GivtMinimumAmountEuro" = "0,50 euro";
 
 /*SlimPay informatie onder het Givy icoon*/
-"SlimPayInformationPart2" = "Er wordt alleen geïncasseerd,\nwanneer je zelf een bedrag geeft met Givt.\n\nOmdat we met een machtiging werken,\nis het eventueel mogelijk om achteraf \neen gift te herroepen.";
+"SlimPayInformationPart2" = "Er wordt alleen geïncasseerd, wanneer je zelf een bedrag geeft met Givt.\n\nOmdat we met een machtiging werken, is het eventueel mogelijk om achteraf een gift te herroepen.";
 "SlimPayInfoDetail" = "Givt werkt samen met SlimPay voor het verwerken van transacties. SlimPay is gespecialiseerd in het verwerken van machtigingen en automatische incasso’s voor digitale platforms. Dit doet SlimPay voor Givt tegen de laagste kosten in de markt en met hoge snelheid.\n\nSlimPay is voor Givt de ideale partner omdat zij het geven zonder contant geld eenvoudig en veilig maakt. Zij staat als betaalinstelling onder toezicht van de Nederlandsche Bank en andere Nationale Europese Banken.\n\nHet geïncasseerde geld wordt verzameld op een rekening bij SlimPay. Givt zorgt ervoor dat het geld verdeeld wordt.";
 "SlimPayInfoDetailTitle" = "Wat is SlimPay?";
 "ContinueRegistration" = "Je gebruikersaccount werd al \naangemaakt, maar het is niet \ngelukt om de registratie \nhelemaal af te ronden. \n\nWe willen graag dat je Givt kunt \ngebruiken, dus vragen we je om \nin te loggen en je registratie \ncompleet te maken.";
