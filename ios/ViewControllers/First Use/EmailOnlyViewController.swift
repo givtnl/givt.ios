@@ -22,11 +22,11 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var subtitleText: UILabel!
     @IBOutlet var email: CustomUITextField!
     @IBOutlet var terms: UILabel!
-    @IBOutlet var titleItem: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.setNavigationBarHidden(true, animated: false)
  
+        navBar.title = NSLocalizedString("WelcomeContinue", comment: "")
         let attachment:NSTextAttachment = NSTextAttachment()
         attachment.image = #imageLiteral(resourceName: "littleinfo.png")
         attachment.bounds = CGRect(x: 0, y: -4, width: (attachment.image?.size.width)!, height: (attachment.image?.size.height)!)
@@ -107,15 +107,9 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.barStyle = .default
-        
         self.navigationController?.navigationBar.barTintColor = .white
     }
     

@@ -22,15 +22,6 @@ class RegNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setLogo()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         if startPoint == .permission {
             let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
             vc.hasBackButton = true
@@ -45,6 +36,16 @@ class RegNavigationController: UINavigationController {
             vc.hasBackButton = true
             self.setViewControllers([vc], animated: false)
         }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

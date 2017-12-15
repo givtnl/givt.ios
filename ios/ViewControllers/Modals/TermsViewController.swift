@@ -21,6 +21,9 @@ class TermsViewController: UIViewController {
             } else if typeOfTerms == .termsAndConditions {
                 textToShow = NSLocalizedString("TermsText", comment: "")
                 titleToShow = NSLocalizedString("FullVersionTitleTerms", comment: "")
+            } else if typeOfTerms == .slimPayInfo {
+                textToShow = NSLocalizedString("SlimPayInfoDetail", comment: "")
+                titleToShow = NSLocalizedString("SlimPayInfoDetailTitle", comment: "")
             }
         }
     }
@@ -80,4 +83,5 @@ class TermsViewController: UIViewController {
 enum TypeOfTerms {
     case privacyPolicy
     case termsAndConditions
+    case slimPayInfo
 }
