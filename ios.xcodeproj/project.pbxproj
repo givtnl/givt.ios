@@ -12,6 +12,7 @@
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F1991F7E2D4B000B9546 /* CustomViewController.swift */; };
 		D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F19B1F7E3EF8000B9546 /* Mandate.swift */; };
+		D72A89D11FE8050A00C06EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72A89D01FE8050A00C06EF6 /* LaunchScreen.storyboard */; };
 		D72B197C1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B197B1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift */; };
 		D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72BD5431FDECA0B001481B1 /* ModalFromRightAnimation.swift */; };
 		D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */; };
@@ -143,6 +144,7 @@
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D721F1991F7E2D4B000B9546 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		D721F19B1F7E3EF8000B9546 /* Mandate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mandate.swift; sourceTree = "<group>"; };
+		D72A89D01FE8050A00C06EF6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D72B197B1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordCompleteViewController.swift; sourceTree = "<group>"; };
 		D72B197D1FE2E4F700EE3FDE /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = nl; path = nl.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D72B197F1FE2E4F800EE3FDE /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = nl; path = nl.lproj/Welcome.storyboard; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 		D7F746D41FD94227005354A3 /* SplashScreen */ = {
 			isa = PBXGroup;
 			children = (
+				D72A89D01FE8050A00C06EF6 /* LaunchScreen.storyboard */,
 			);
 			path = SplashScreen;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				D7E708541FE7FD68002A7770 /* InfoPlist.strings in Resources */,
 				D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */,
 				D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */,
+				D72A89D11FE8050A00C06EF6 /* LaunchScreen.storyboard in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
