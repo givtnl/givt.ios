@@ -21,7 +21,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var switchButton: UIButton!
     @IBOutlet var passwordHint: UILabel!
     @IBOutlet var titleText: UILabel!
-    private var _lastTextField: CustomUITextField = CustomUITextField()
+    private var _lastTextField: UITextField = UITextField()
     private var validationHelper = ValidationHelper.shared
     private var regDetailVC: RegistrationDetailViewController!
     private var _isShowingPassword = false

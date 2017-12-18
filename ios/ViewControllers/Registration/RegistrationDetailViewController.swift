@@ -10,7 +10,6 @@ import UIKit
 import PhoneNumberKit
 import SVProgressHUD
 
-
 class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     private var _navigationManager = NavigationManager.shared
     private var _appServices = AppServices.shared
@@ -19,7 +18,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet var titleText: UILabel!
     private var phoneNumberKit = PhoneNumberKit()
     @IBOutlet var theScrollView: UIScrollView!
-    @IBOutlet var iban: UITextField!
+    @IBOutlet var iban: CustomUITextField!
+    
     @IBOutlet var streetAndNumber: UITextField!
     @IBOutlet var postalCode: UITextField!
     @IBOutlet var countryPicker: UITextField!
@@ -29,7 +29,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     private var validationHelper = ValidationHelper.shared
     private var picker: UIPickerView!
     var selectedCountry: Country?
-    private var _lastTextField: CustomUITextField = CustomUITextField()
+    private var _lastTextField: UITextField = UITextField()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +92,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
     }
     
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
@@ -112,19 +113,45 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         countryPicker.tag = 3
         mobileNumber.tag = 4
         iban.tag = 5
+        
+        iban.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField == iban {
+            
+        }
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) { //edit started
-        _lastTextField = textField as! CustomUITextField
+        _lastTextField = textField
         justifyScrollViewContent()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.text! = textField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        
+        if textField == iban {
+            textField.text = textField.text?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool { //characters will change
-        return textField != countryPicker
+        if textField == iban {
+            guard let _ = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return true }
+            
+            if range.length == 0 && range.location == textField.text!.count {
+                let temp = textField.text?.replacingOccurrences(of: " ", with: "")
+                if temp!.count != 0 && (temp!.count) % 4 == 0 {
+                    textField.text = textField.text! + " "
+                }
+            }
+            
+            return true
+        } else {
+            return textField != countryPicker
+        }
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool //user pressed return
@@ -191,7 +218,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let isCityValid = validationHelper.isBetweenCriteria(city.text!, 35)
         let isCountryValid = validationHelper.isBetweenCriteria(countryPicker.text!, 99)
         let isMobileNumberValid = isMobileNumber(mobileNumber.text!)
-        let isIbanValid = validationHelper.isIbanChecksumValid(iban.text!.replacingOccurrences(of: " ", with: ""))
+        let isIbanValid = validationHelper.isIbanChecksumValid(iban.text!)
         
         switch _lastTextField {
         case streetAndNumber:
@@ -293,7 +320,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         /* manually trigger mobilenumber checker */
         if let mobileNumberString = mobileNumber.text, !mobileNumberString.isEmpty() {
-            _lastTextField = mobileNumber as! CustomUITextField
+            _lastTextField = mobileNumber
             checkAll()
         }
         
