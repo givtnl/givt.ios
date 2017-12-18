@@ -1744,6 +1744,7 @@ Kijk voor de status in je overzicht.</string>
                     <connections>
                         <outlet property="bottomLeft" destination="Tlo-R9-tPd" id="KFG-lD-JKH"/>
                         <outlet property="bottomRight" destination="zgG-fD-qhK" id="xfK-h6-BuB"/>
+                        <outlet property="containerVIew" destination="QT6-ho-fo6" id="Ape-g3-qU0"/>
                         <outlet property="navBar" destination="JLi-K3-eRm" id="lSn-pF-uTO"/>
                         <outlet property="qrView" destination="mz4-jO-LA4" id="jfo-Qu-BlP"/>
                         <outlet property="subTitle" destination="1Ug-pI-rYK" id="RDZ-Yu-IEj"/>
