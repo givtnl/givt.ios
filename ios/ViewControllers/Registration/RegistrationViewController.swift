@@ -210,6 +210,12 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         theScrollView.contentInset = contentInset
     }
+    let slideAnimator = CustomPresentModalAnimation()
+    @IBAction func openFAQ(_ sender: Any) {
+        let vc = UIStoryboard(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
+        vc.transitioningDelegate = slideAnimator
+        self.present(vc, animated: true, completion: nil)
+    }
 }
 
 extension UIScrollView {

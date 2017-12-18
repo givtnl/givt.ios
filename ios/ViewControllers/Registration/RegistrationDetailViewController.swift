@@ -22,13 +22,18 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     @IBOutlet var streetAndNumber: UITextField!
     @IBOutlet var postalCode: UITextField!
-    @IBOutlet var countryPicker: UITextField!
+    @IBOutlet var countryField: UITextField!
+    
+    @IBOutlet var mobilePrefixField: UITextField!
+    
     @IBOutlet var mobileNumber: UITextField!
     @IBOutlet var city: UITextField!
     @IBOutlet var nextButton: CustomButton!
     private var validationHelper = ValidationHelper.shared
-    private var picker: UIPickerView!
+    private var countryPickerView: UIPickerView!
+    private var mobilePrefixPickerView: UIPickerView!
     var selectedCountry: Country?
+    var selectedMobilePrefix: Country?
     private var _lastTextField: UITextField = UITextField()
     
     override func viewDidLoad() {
@@ -38,7 +43,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         streetAndNumber.placeholder = NSLocalizedString("StreetAndHouseNumber", comment: "")
         postalCode.placeholder = NSLocalizedString("PostalCode", comment: "")
         city.placeholder = NSLocalizedString("City", comment: "")
-        countryPicker.placeholder = NSLocalizedString("Country", comment: "")
+        countryField.placeholder = NSLocalizedString("Country", comment: "")
         mobileNumber.placeholder = NSLocalizedString("PhoneNumber", comment: "")
         iban.placeholder = NSLocalizedString("IBANPlaceHolder", comment: "")
         
@@ -48,10 +53,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
         
-        
         nextButton.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         
-        createToolbar(countryPicker)
+        createToolbar(countryField)
+        createToolbar(mobilePrefixField)
         createToolbar(mobileNumber)
         
         #if DEBUG
@@ -59,7 +64,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             postalCode.text = "8501"
             city.text = "Heule"
             selectedCountry = AppConstants.countries[0]
-            countryPicker.text = selectedCountry?.name
+            countryField.text = selectedCountry?.name
             mobileNumber.text = "0498121314"
             iban.text = "BE62 5100 0754 7061"
             checkAll()
@@ -72,17 +77,25 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             }
             if let filteredCountry = filteredCountries.first {
                 selectedCountry = filteredCountry
-                countryPicker.text = selectedCountry?.toString()
+                countryField.text = selectedCountry?.name
+                countryField.setValid()
+                
+                selectedMobilePrefix = filteredCountry
+                mobilePrefixField.text = selectedMobilePrefix?.prefix
+                mobilePrefixField.setValid()
             }
-            //print(country.shortName)
         }
 
         
         initButtonsWithTags()
         
-        picker = UIPickerView()
-        picker.delegate = self
-        countryPicker.inputView = picker
+        countryPickerView = UIPickerView()
+        countryPickerView.delegate = self
+        countryField.inputView = countryPickerView
+        
+        mobilePrefixPickerView = UIPickerView()
+        mobilePrefixPickerView.delegate = self
+        mobilePrefixField.inputView = mobilePrefixPickerView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,17 +115,19 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         streetAndNumber.delegate = self
         iban.delegate = self
         postalCode.delegate = self
-        countryPicker.delegate = self
+        countryField.delegate = self
         mobileNumber.delegate = self
         city.delegate = self
-        countryPicker.delegate = self
+        countryField.delegate = self
+        mobilePrefixField.delegate = self
         
         streetAndNumber.tag = 0
         postalCode.tag = 1
         city.tag = 2
-        countryPicker.tag = 3
-        mobileNumber.tag = 4
-        iban.tag = 5
+        countryField.tag = 3
+        mobilePrefixField.tag = 4
+        mobileNumber.tag = 5
+        iban.tag = 6
         
         iban.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -149,7 +164,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             
             return true
         } else {
-            return textField != countryPicker
+            return textField != countryField
         }
         
     }
@@ -167,7 +182,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             textField.resignFirstResponder()
         }
         
-        if textField.tag == 5 {
+        if textField == iban {
             next(self)
         }
         return false
@@ -180,12 +195,12 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         }
         
         SVProgressHUD.show()
-        let address = self.streetAndNumber.text!
-        let city = self.city.text!
+        let address = self.streetAndNumber.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        let city = self.city.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let countryCode = self.selectedCountry?.shortName
         let iban = self.iban.text!.replacingOccurrences(of: " ", with: "")
         let mobileNumber = self.formattedPhoneNumber
-        let postalCode = self.postalCode.text!
+        let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let userData = RegistrationUserData(address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
             if success {
@@ -216,9 +231,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let isStreetValid = validationHelper.isBetweenCriteria(streetAndNumber.text!, 70)
         let isPostalCodeValid = validationHelper.isBetweenCriteria(postalCode.text!, 15)
         let isCityValid = validationHelper.isBetweenCriteria(city.text!, 35)
-        let isCountryValid = validationHelper.isBetweenCriteria(countryPicker.text!, 99)
+        let isCountryValid = validationHelper.isBetweenCriteria(countryField.text!, 99)
+        let isMobilePrefixValid = validationHelper.isBetweenCriteria(mobilePrefixField.text!, 6)
         let isMobileNumberValid = isMobileNumber(mobileNumber.text!)
         let isIbanValid = validationHelper.isIbanChecksumValid(iban.text!)
+        
         
         switch _lastTextField {
         case streetAndNumber:
@@ -227,25 +244,26 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             isPostalCodeValid ? _lastTextField.setValid() : _lastTextField.setInvalid()
         case city:
             isCityValid ? _lastTextField.setValid() : _lastTextField.setInvalid()
-        case countryPicker:
+        case countryField:
             isCountryValid ? _lastTextField.setValid() : _lastTextField.setInvalid()
         case mobileNumber:
             isMobileNumberValid ? _lastTextField.setValid() : _lastTextField.setInvalid()
         case iban:
             isIbanValid ? _lastTextField.setValid() : _lastTextField.setInvalid()
+        case mobilePrefixField:
+            isMobilePrefixValid ? _lastTextField.setValid() : _lastTextField.setInvalid()
         default:
             break
         }
         
-        nextButton.isEnabled = isStreetValid && isPostalCodeValid && isCityValid && isCountryValid && isMobileNumberValid && isIbanValid
+        nextButton.isEnabled = isStreetValid && isPostalCodeValid && isCityValid && isCountryValid && isMobileNumberValid && isIbanValid && isMobilePrefixValid
     }
-    //01568-019486
+
     func isMobileNumber(_ number: String) -> Bool {
         do {
-            let phoneNumber = try phoneNumberKit.parse(number, withRegion: (selectedCountry?.shortName)!, ignoreType: true)
-            //let phoneNumberCustomDefaultRegion = try phoneNumberKit.parse("+44 20 7031 3000", withRegion: "GB", ignoreType: true)
-            print(phoneNumber.numberString)
+            let phoneNumber = try phoneNumberKit.parse((selectedMobilePrefix?.prefix)! + number, withRegion: (selectedMobilePrefix?.shortName)!, ignoreType: true)
             formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
+            print("Formatted phonenumber: " + formattedPhoneNumber)
             return true
         }
         catch {
@@ -270,7 +288,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     func justifyScrollViewContent() {
         let bottomOffset = CGPoint(x: 0, y: (theScrollView.contentSize.height - theScrollView.bounds.size.height + theScrollView.contentInset.bottom));
-        let minY = _lastTextField == countryPicker ? countryPicker.superview?.frame.minY : _lastTextField.frame.minY
+        let minY = _lastTextField == countryField ? countryField.superview?.frame.minY : _lastTextField.frame.minY
         if minY! < bottomOffset.y {
             theScrollView.setContentOffset(CGPoint(x: 0, y: _lastTextField.frame.minY), animated: true)
         } else {
@@ -284,7 +302,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
 
     @objc func hideKeyboard() {
-        selectedRow(row: picker.selectedRow(inComponent: 0))
+        if _lastTextField == countryField {
+            selectedRow(pv: countryPickerView, row: countryPickerView.selectedRow(inComponent: 0))
+        } else if _lastTextField == mobilePrefixField {
+            selectedRow(pv: mobilePrefixPickerView, row: mobilePrefixPickerView.selectedRow(inComponent: 0))
+        }
         textFieldShouldReturn(_lastTextField)
     }
     
@@ -294,7 +316,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     /* PickerView settings */
     @IBAction func openPicker(_ sender: Any) {
-        countryPicker.becomeFirstResponder()
+        countryField.becomeFirstResponder()
+    }
+    @IBAction func openTelephonePicker(_ sender: Any) {
+        mobilePrefixField.becomeFirstResponder()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -306,24 +331,33 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return AppConstants.countries[row].toString()
+        if pickerView == countryPickerView {
+            return  AppConstants.countries[row].name
+        } else if pickerView == mobilePrefixPickerView {
+            return  AppConstants.countries[row].prefix
+        } else {
+            return AppConstants.countries[row].toString()
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedRow(row: row)
+        selectedRow(pv: pickerView, row: row)
     }
     
-    private func selectedRow(row: Int){
-        selectedCountry = AppConstants.countries[row]
-        countryPicker.text = selectedCountry?.name
-        checkAll()
-        
-        /* manually trigger mobilenumber checker */
-        if let mobileNumberString = mobileNumber.text, !mobileNumberString.isEmpty() {
+    private func selectedRow(pv: UIPickerView, row: Int){
+        if pv == countryPickerView {
+            _lastTextField = countryField
+            selectedCountry = AppConstants.countries[row]
+            countryField.text = selectedCountry?.name
+            checkAll()
+        } else if pv == mobilePrefixPickerView {
+            _lastTextField = mobilePrefixField
+            selectedMobilePrefix = AppConstants.countries[row]
+            mobilePrefixField.text = selectedMobilePrefix?.prefix
+            
             _lastTextField = mobileNumber
             checkAll()
         }
-        
     }
     
     func createToolbar(_ textField: UITextField) {
