@@ -97,10 +97,6 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
 
         createToolbar()
     }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.selectAll(self)
-    }
 
     func createToolbar() {
         let btn = CustomButton(type: .custom)
@@ -167,7 +163,6 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(AmountLimitViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AmountLimitViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -197,23 +192,35 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.selectedTextRange = textField.textRange(from: textField.endOfDocument, to: textField.endOfDocument)
+    } 
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if (textField.text?.count)! == 0 {
+        if let amountLimit = Int(textField.text!), amountLimit > 0 {
+            btnSave.isEnabled = true
+            btnSaveKeyboard?.isEnabled = true
+            let amountLimit: Int = Int(textField.text!)!
+            textField.text = String(amountLimit)
+            
+            if (textField.text?.count)! >= 5 {
+                textField.text = textField.text?.substring(0..<5)
+                return
+            }
+        } else {
             textField.text = "0"
             btnSave.isEnabled = false
             btnSaveKeyboard?.isEnabled = false
+            textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
             return
         }
-        btnSave.isEnabled = true
-        btnSaveKeyboard?.isEnabled = true
-        let amountLimit: Int = Int(textField.text!)!
-        textField.text = String(amountLimit)
         
-        if (textField.text?.count)! >= 5 {
-            textField.text = textField.text?.substring(0..<5)
-            return
-        }
+        
         
         
     }
