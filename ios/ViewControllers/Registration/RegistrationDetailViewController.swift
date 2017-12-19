@@ -260,8 +260,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
 
     func isMobileNumber(_ number: String) -> Bool {
+        guard let selectedMobilePrefix = selectedMobilePrefix else { return false }
         do {
-            let phoneNumber = try phoneNumberKit.parse((selectedMobilePrefix?.prefix)! + number, withRegion: (selectedMobilePrefix?.shortName)!, ignoreType: true)
+            let phoneNumber = try phoneNumberKit.parse(selectedMobilePrefix.prefix + number, withRegion: selectedMobilePrefix.shortName, ignoreType: true)
             formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
             print("Formatted phonenumber: " + formattedPhoneNumber)
             return true
@@ -371,4 +372,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         textField.inputAccessoryView = toolbar
     }
 
+    private var custom = CustomPresentModalAnimation()
+    @IBAction func openInfo(_ sender: Any) {
+        let vc = UIStoryboard(name: "WhyPersonalData", bundle: nil).instantiateInitialViewController() as! InfoRegistrationViewController
+        vc.transitioningDelegate = custom
+        self.present(vc, animated: true, completion: nil)
+    }
 }

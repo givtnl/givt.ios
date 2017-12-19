@@ -544,6 +544,11 @@
                                 <action selector="exit:" destination="yPe-50-VR6" id="d1J-zx-7Sb"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="info24" width="50" id="dqK-Km-v2e">
+                            <connections>
+                                <action selector="openInfo:" destination="yPe-50-VR6" id="3tZ-SS-pXd"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -1213,6 +1218,7 @@ Veel geefplezier!</string>
         <image name="givySlimPay" width="180" height="180"/>
         <image name="help" width="13" height="20"/>
         <image name="increase.png" width="40" height="40"/>
+        <image name="info24" width="24" height="24"/>
         <image name="unchecked.png" width="24" height="24"/>
         <image name="visible_eye.png" width="16" height="12"/>
     </resources>
