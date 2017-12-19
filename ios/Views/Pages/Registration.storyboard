@@ -611,19 +611,19 @@ afgeven.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="x6c-Yv-HDC">
-                                <rect key="frame" x="20" y="214.5" width="280" height="191.5"/>
+                                <rect key="frame" x="20" y="231" width="280" height="175"/>
                                 <string key="text">Er wordt alleen geïncasseerd,
 wanneer je zelf een bedrag geeft met Givt.
 
 Omdat we met een machtiging werken,
 is het eventueel mogelijk om achteraf 
 een gift te herroepen.</string>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="givySlimPay" translatesAutoresizingMaskIntoConstraints="NO" id="o7m-wS-WRO">
-                                <rect key="frame" x="143.5" y="171.5" width="33" height="33"/>
+                                <rect key="frame" x="135.5" y="171.5" width="49.5" height="49.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="o7m-wS-WRO" secondAttribute="height" multiplier="1:1" id="EEI-XA-tG7"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="33" id="HlL-Dq-o2O"/>
