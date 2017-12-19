@@ -97,6 +97,10 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
 
         createToolbar()
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.selectAll(self)
+    }
 
     func createToolbar() {
         let btn = CustomButton(type: .custom)
