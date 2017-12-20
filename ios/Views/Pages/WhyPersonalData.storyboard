@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dcL-Dl-bqV">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Heavy</string>
+            <string>Avenir-Roman</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Info Registration View Controller-->
+        <scene sceneID="9Uu-3D-RuH">
+            <objects>
+                <viewController storyboardIdentifier="FAQViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dcL-Dl-bqV" customClass="InfoRegistrationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PvB-mj-axv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why this personal data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBx-eE-08n">
+                                <rect key="frame" x="80" y="40" width="215" height="28"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vind hier antwoorden op je vragen en handige tips" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6S-L7-ShF">
+                                <rect key="frame" x="20" y="87.5" width="335" height="44"/>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfu-Be-cv4">
+                                <rect key="frame" x="321" y="32" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8oQ-mU-NU1"/>
+                                    <constraint firstAttribute="width" constant="44" id="KKX-X4-BeZ"/>
+                                </constraints>
+                                <state key="normal" image="closewhite"/>
+                                <connections>
+                                    <action selector="close:" destination="dcL-Dl-bqV" eventType="touchUpInside" id="XYz-Li-eVX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vd9-kv-b0s" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <color key="backgroundColor" red="0.60784313725490191" green="0.58823529411764708" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hwY-cX-Rd8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Lees statement">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.60784313725490191" green="0.58823529411764708" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.23155192712303652" green="0.22876656662475336" blue="0.27741987661928946" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="openStatement:" destination="dcL-Dl-bqV" eventType="touchUpInside" id="jO5-yX-xJa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="k6S-L7-ShF" firstAttribute="top" secondItem="JBx-eE-08n" secondAttribute="bottom" constant="20" id="4kC-Od-9wO"/>
+                            <constraint firstItem="k6S-L7-ShF" firstAttribute="centerX" secondItem="PvB-mj-axv" secondAttribute="centerX" id="7QA-Sx-ZD1"/>
+                            <constraint firstItem="JBx-eE-08n" firstAttribute="top" secondItem="bm9-nz-htH" secondAttribute="top" constant="20" id="DdG-ey-58P"/>
+                            <constraint firstItem="bm9-nz-htH" firstAttribute="trailing" secondItem="vd9-kv-b0s" secondAttribute="trailing" constant="20" id="J79-dI-cvF"/>
+                            <constraint firstItem="bm9-nz-htH" firstAttribute="bottom" secondItem="vd9-kv-b0s" secondAttribute="bottom" constant="20" id="OKr-4D-sqf"/>
+                            <constraint firstItem="kfu-Be-cv4" firstAttribute="centerY" secondItem="JBx-eE-08n" secondAttribute="centerY" id="PNX-3E-AYx"/>
+                            <constraint firstItem="bm9-nz-htH" firstAttribute="trailing" secondItem="kfu-Be-cv4" secondAttribute="trailing" constant="10" id="Ucm-bL-1PG"/>
+                            <constraint firstItem="k6S-L7-ShF" firstAttribute="leading" secondItem="PvB-mj-axv" secondAttribute="leading" constant="20" id="eeQ-Th-X8P"/>
+                            <constraint firstAttribute="trailing" secondItem="k6S-L7-ShF" secondAttribute="trailing" constant="20" id="jts-B0-w5j"/>
+                            <constraint firstItem="JBx-eE-08n" firstAttribute="centerX" secondItem="PvB-mj-axv" secondAttribute="centerX" id="qDE-3r-KFj"/>
+                            <constraint firstItem="vd9-kv-b0s" firstAttribute="leading" secondItem="bm9-nz-htH" secondAttribute="leading" constant="20" id="rC3-IX-SHy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bm9-nz-htH"/>
+                    </view>
+                    <connections>
+                        <outlet property="bodyText" destination="k6S-L7-ShF" id="6d3-dl-drc"/>
+                        <outlet property="buttonText" destination="vd9-kv-b0s" id="d6z-4n-CIh"/>
+                        <outlet property="close" destination="kfu-Be-cv4" id="GUm-6q-kK5"/>
+                        <outlet property="titleText" destination="JBx-eE-08n" id="Ajw-Px-IiA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p1J-8P-fGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="181.59999999999999" y="303.59820089955025"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="closewhite" width="23" height="24"/>
+    </resources>
+</document>

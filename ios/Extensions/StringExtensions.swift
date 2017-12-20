@@ -40,7 +40,6 @@ extension String{
         let toIndex = self.index(self.startIndex, offsetBy: r.upperBound)
         return self.substring(with: Range<String.Index>(uncheckedBounds: (lower: fromIndex, upper: toIndex)))
     }
-
     
     static let numberFormatter = NumberFormatter()
     var doubleValue: Double {

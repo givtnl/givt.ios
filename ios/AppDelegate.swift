@@ -44,12 +44,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         handleOldAppData()
         handleOldTransactions()
         
-        
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig)
-        
         return true
     }
     
+    /// Transfer data from Xamarin
     func handleOldTransactions() {
         let file = "Givt.Models.Transaction.json"
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -89,6 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    /// Transfer data from Xamarin
     func handleOldAppData() {
         let file = "GivtSettings.json"
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
@@ -101,6 +101,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                         print(dictionary)
                         if let myDict = dictionary {
+                            if let termsVersion = myDict["TermsVersion"] as? String {
+                                UserDefaults.standard.termsVersion = termsVersion
+                            }
                             if let bearerExpiration = myDict["BearerExpiration"] {
                                 UserDefaults.standard.bearerExpiration = Date()
                             }

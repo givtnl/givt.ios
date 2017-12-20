@@ -240,6 +240,7 @@
                         <outlet property="scroll" destination="ue2-0Z-aVm" id="3b4-9j-rry"/>
                         <outlet property="subtitleText" destination="5PP-vV-DBR" id="Npr-Il-cev"/>
                         <outlet property="terms" destination="jAh-wO-W8r" id="rmp-cZ-uTi"/>
+                        <outlet property="topNavigationBar" destination="v1w-FR-7YB" id="66r-pM-L9Z"/>
                         <segue destination="TJX-FO-8AE" kind="unwind" identifier="unwindEmail" animates="NO" unwindAction="unwindToAmountWithSegue:" id="XSF-SW-gQZ"/>
                     </connections>
                 </viewController>

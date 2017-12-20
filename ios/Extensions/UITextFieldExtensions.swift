@@ -12,32 +12,39 @@ import UIKit
 private var kAssociationKeyMaxLength: Int = 0
 
 extension UITextField {
-    
-    @IBInspectable var maxLength: Int {
+    @IBInspectable var originalColor: UIColor {
         get {
-            if let length = objc_getAssociatedObject(self, &kAssociationKeyMaxLength) as? Int {
-                return length
-            } else {
-                return Int.max
-            }
-        }
-        set {
-            objc_setAssociatedObject(self, &kAssociationKeyMaxLength, newValue, .OBJC_ASSOCIATION_RETAIN)
-            addTarget(self, action: #selector(checkMaxLength), for: .editingChanged)
+            return UIColor.init(red: 234, green: 234, blue: 238)
         }
     }
     
-    @objc func checkMaxLength(textField: UITextField) {
-        guard let prospectiveText = self.text,
-            prospectiveText.characters.count > maxLength
-            else {
-                return
-        }
-        
-        let selection = selectedTextRange
-        let maxCharIndex = prospectiveText.index(prospectiveText.startIndex, offsetBy: maxLength)
-        text = prospectiveText.substring(to: maxCharIndex)
-        selectedTextRange = selection
+    func setLeftPaddingPoints(_ amount:CGFloat){
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.leftView = paddingView
+        self.leftViewMode = .always
+    }
+    func setRightPaddingPoints(_ amount:CGFloat) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
+        self.rightView = paddingView
+    }
+    func setBorderColor(_ color: UIColor) {
+        self.layer.borderColor = color.cgColor
+    }
+    func resetBorderColor() {
+        self.layer.borderColor = originalColor.cgColor
+    }
+    func setValid(){
+        setBorderColor(#colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1))
+        self.returnKeyType = .done
+        self.reloadInputViews()
+    }
+    func setInvalid(){
+        setBorderColor(#colorLiteral(red: 0.8439754844, green: 0.2364770174, blue: 0.2862294316, alpha: 1))
+        self.returnKeyType = .default
+        self.reloadInputViews()
+    }
+    func setState(b: Bool) {
+        b ? setValid() : setInvalid()
     }
     
 

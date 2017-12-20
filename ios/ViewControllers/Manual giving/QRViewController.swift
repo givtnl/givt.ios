@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 
 class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    @IBOutlet var containerVIew: UIView!
     private var log = LogService.shared
     @IBOutlet var subTitle: UILabel!
     @IBOutlet var navBar: UINavigationItem!
@@ -19,6 +20,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     var video = AVCaptureVideoPreviewLayer()
     let session = AVCaptureSession()
     @IBOutlet var qrView: UIView!
+    private var isCameraDisabled = false
     override func viewDidLoad() {
         super.viewDidLoad()
         navBar.title = NSLocalizedString("GiveDifferentScan", comment: "")
@@ -33,25 +35,50 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice!)
             session.addInput(input)
+            let output = AVCaptureMetadataOutput()
+            session.addOutput(output)
+            
+            output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+            
+            output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
+            
+            video = AVCaptureVideoPreviewLayer(session: session)
+            video.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            video.frame = qrView.bounds
+            
+            qrView.layer.addSublayer(video)
+            session.startRunning()
         } catch {
             print("camera does not work")
+            isCameraDisabled = true
         }
         
-        let output = AVCaptureMetadataOutput()
-        session.addOutput(output)
         
-        output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        
-        output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
-        
-        video = AVCaptureVideoPreviewLayer(session: session)
-        video.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        video.frame = qrView.bounds
-        
-        qrView.layer.addSublayer(video)
-        session.startRunning()
         
         log.info(message: "QR Page is shown")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if isCameraDisabled {
+            let overlay: UIView = UIView(frame: CGRect(x: 0, y: 0, width: containerVIew.frame.size.width, height: containerVIew.frame.size.height))
+            overlay.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.1)
+            containerVIew.addSubview(overlay)
+            containerVIew.bringSubview(toFront: overlay)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+            let alert = UIAlertController(title: "", message: NSLocalizedString("NoCameraAccess", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OpenSettings", comment: ""), style: .default, handler: { (action) in
+                guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+                UIApplication.shared.openURL(url)
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in
+                self.navigationController?.popViewController(animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -45,7 +45,10 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         stack.addArrangedSubview(item)
     }
     
-
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     private func addSpacer() {
         let spacer = UIView()
         spacer.translatesAutoresizingMaskIntoConstraints = false

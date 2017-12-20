@@ -172,17 +172,18 @@
             </objects>
             <point key="canvasLocation" x="516" y="-1097"/>
         </scene>
-        <!--View Controller-->
+        <!--Placeholder View Controller-->
         <scene sceneID="6A9-8D-tZR">
             <objects>
-                <viewController id="buL-zC-Cpl" sceneMemberID="viewController">
+                <viewController id="buL-zC-Cpl" customClass="PlaceholderViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NdF-zb-KMX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="X5G-AA-nlE"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZDF-la-ZIy"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poz-a3-GJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1744,6 +1745,7 @@ Kijk voor de status in je overzicht.</string>
                     <connections>
                         <outlet property="bottomLeft" destination="Tlo-R9-tPd" id="KFG-lD-JKH"/>
                         <outlet property="bottomRight" destination="zgG-fD-qhK" id="xfK-h6-BuB"/>
+                        <outlet property="containerVIew" destination="QT6-ho-fo6" id="Ape-g3-qU0"/>
                         <outlet property="navBar" destination="JLi-K3-eRm" id="lSn-pF-uTO"/>
                         <outlet property="qrView" destination="mz4-jO-LA4" id="jfo-Qu-BlP"/>
                         <outlet property="subTitle" destination="1Ug-pI-rYK" id="RDZ-Yu-IEj"/>

@@ -21,7 +21,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var switchButton: UIButton!
     @IBOutlet var passwordHint: UILabel!
     @IBOutlet var titleText: UILabel!
-    private var _lastTextField: CustomUITextField = CustomUITextField()
+    private var _lastTextField: UITextField = UITextField()
     private var validationHelper = ValidationHelper.shared
     private var regDetailVC: RegistrationDetailViewController!
     private var _isShowingPassword = false
@@ -209,6 +209,12 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillHide(notification:NSNotification){
         let contentInset:UIEdgeInsets = UIEdgeInsets.zero
         theScrollView.contentInset = contentInset
+    }
+    let slideAnimator = CustomPresentModalAnimation()
+    @IBAction func openFAQ(_ sender: Any) {
+        let vc = UIStoryboard(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
+        vc.transitioningDelegate = slideAnimator
+        self.present(vc, animated: true, completion: nil)
     }
 }
 

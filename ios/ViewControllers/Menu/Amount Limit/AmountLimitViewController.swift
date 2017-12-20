@@ -13,15 +13,12 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     private let _navigationManager = NavigationManager.shared
     private let _loginManager = LoginManager.shared
     
+    @IBOutlet var theScrollView: UIScrollView!
     @IBOutlet var subTitleText: UILabel!
     @IBOutlet var backButton: UIBarButtonItem!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet var verticalConstraint: NSLayoutConstraint!
-    @IBOutlet var topContstraint: NSLayoutConstraint!
     @IBOutlet var btnSave: CustomButton!
     var btnSaveKeyboard: CustomButton?
     @IBOutlet var amountLimit: UITextField!
-    @IBOutlet var navBar: UINavigationBar!
     var isRegistration: Bool = false
     var hasBackButton = false
     var timer: Timer?
@@ -96,15 +93,20 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         }
 
         createToolbar()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
     }
 
     func createToolbar() {
         let btn = CustomButton(type: .custom)
+        btn.translatesAutoresizingMaskIntoConstraints = false
         btn.cornerRadius = 3
         btn.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         btn.highlightedBGColor = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1)
         btn.ogBGColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
-        btn.frame = CGRect(x: 20, y: 0, width: UIScreen.main.bounds.width - 40, height: 44)
         btn.setTitle(btnSave.titleLabel?.text, for: .normal)
         btn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 18.0)
         btn.addTarget(self, action: #selector(save), for: .touchUpInside)
@@ -117,7 +119,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         self.btnSaveKeyboard = btn
         
         let doneToolbar: UIToolbar = UIToolbar()
-        doneToolbar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 54)
+        doneToolbar.frame = CGRect(x: 0, y: 0, width: theScrollView.frame.width, height: 54)
         //doneToolbar.addSubview(btn)
         doneToolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         doneToolbar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -128,7 +130,18 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         let barItem = UIBarButtonItem(customView: btn)
         doneToolbar.setItems([barItem], animated: false)
         
-        amountLimit.inputAccessoryView = doneToolbar
+        
+        let customView = UIView()
+        customView.frame = CGRect(x: 0, y: 0, width: theScrollView.frame.width, height: 64)
+        
+        customView.addSubview(btn)
+        btn.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20).isActive = true
+        btn.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -10).isActive = true
+        btn.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20).isActive = true
+        
+        
+        //amountLimit.inputAccessoryView = doneToolbar
+        amountLimit.inputAccessoryView = customView
     }
     
     @IBAction func btnSave(_ sender: UIButton) {
@@ -161,17 +174,24 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(AmountLimitViewController.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AmountLimitViewController.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+        theScrollView.contentInset.bottom -= 20
+        theScrollView.scrollIndicatorInsets.bottom -= 20
     }
         
     @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+            theScrollView.contentInset.bottom = contentInsets.bottom + 20
+            theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom + 20
+        }
+        self.btnSaveKeyboard?.alpha = 1
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
         UIView.animate(withDuration: TimeInterval(truncating: duration), delay: 0, options: [], animations: {
             self.btnSave.alpha = 0
@@ -179,6 +199,11 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+            theScrollView.contentInset = .zero
+            theScrollView.scrollIndicatorInsets = .zero
+        }
+        self.btnSaveKeyboard?.alpha = 0
         let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
         UIView.animate(withDuration: TimeInterval(truncating: duration), delay: 0, options: [], animations: {
             self.btnSave.alpha = 1
@@ -193,23 +218,35 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.selectedTextRange = textField.textRange(from: textField.endOfDocument, to: textField.endOfDocument)
+    } 
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if (textField.text?.count)! == 0 {
+        if let amountLimit = Int(textField.text!), amountLimit > 0 {
+            btnSave.isEnabled = true
+            btnSaveKeyboard?.isEnabled = true
+            let amountLimit: Int = Int(textField.text!)!
+            textField.text = String(amountLimit)
+            
+            if (textField.text?.count)! >= 5 {
+                textField.text = textField.text?.substring(0..<5)
+                return
+            }
+        } else {
             textField.text = "0"
             btnSave.isEnabled = false
             btnSaveKeyboard?.isEnabled = false
+            textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
             return
         }
-        btnSave.isEnabled = true
-        btnSaveKeyboard?.isEnabled = true
-        let amountLimit: Int = Int(textField.text!)!
-        textField.text = String(amountLimit)
         
-        if (textField.text?.count)! >= 5 {
-            textField.text = textField.text?.substring(0..<5)
-            return
-        }
+        
         
         
     }

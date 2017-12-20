@@ -78,13 +78,25 @@ class NavigationManager {
     }
     
     public func load(vc: UINavigationController, animated: Bool = true) {
+        var thisVersion = ""
+        if let savedVersion = UserDefaults.standard.termsVersion {
+            thisVersion = savedVersion
+        } else {
+            thisVersion = NSLocalizedString("TermsTextVersion", comment: "")
+        }
         DispatchQueue.main.async {
+            
             if self.loginManager.userClaim == .startedApp {
                 let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
                 vc.setViewControllers([welcome], animated: false)
             } else {
-                let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
-                vc.setViewControllers([amount], animated: animated)
+                if thisVersion != NSLocalizedString("TermsTextVersion", comment: "") {
+                    let termsUpdateVC = UIStoryboard(name: "UpdatedTermsPage", bundle: nil).instantiateInitialViewController() as! UpdatedTermsPageViewController
+                    vc.setViewControllers([termsUpdateVC], animated: false)
+                } else {
+                    let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
+                    vc.setViewControllers([amount], animated: animated)
+                }
             }
         }
         

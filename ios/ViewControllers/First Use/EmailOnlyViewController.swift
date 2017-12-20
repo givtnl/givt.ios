@@ -14,6 +14,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     private var _appServices = AppServices.shared
     private var _loginManager = LoginManager.shared
     
+    @IBOutlet var topNavigationBar: UINavigationBar!
     @IBOutlet var navBar: UINavigationItem!
     private var validationHelper = ValidationHelper.shared
     @IBOutlet var contentView: UIView!
@@ -25,7 +26,9 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
- 
+        
+        topNavigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        topNavigationBar.shadowImage = UIImage()
         navBar.title = NSLocalizedString("WelcomeContinue", comment: "")
         let attachment:NSTextAttachment = NSTextAttachment()
         attachment.image = #imageLiteral(resourceName: "littleinfo.png")

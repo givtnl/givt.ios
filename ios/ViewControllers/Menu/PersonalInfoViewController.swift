@@ -59,24 +59,26 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldDidChange(_ textField: UITextField) {
+    @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == iban {
             if let i = iban.text {
-                let isIbanValid = validationHelper.isIbanChecksumValid(i.replacingOccurrences(of: " ", with: ""))
+                let isIbanValid = validationHelper.isIbanChecksumValid(i)
                 iban.setState(b: isIbanValid)
                 btnNext.isEnabled = isIbanValid
             }
         }
     }
     
-    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = textField.text?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print(range)
-        guard let currentText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return true }
+        guard let _ = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return true }
         
         if range.length == 0 && range.location == textField.text!.count {
-            if (textField.text?.replacingOccurrences(of: " ", with: "").count)! % 4 == 0 {
+            let temp = textField.text?.replacingOccurrences(of: " ", with: "")
+            if temp!.count != 0 && (temp!.count) % 4 == 0 {
                 textField.text = textField.text! + " "
             }
         }
@@ -113,7 +115,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         self.view.endEditing(false)
     }
     

@@ -41,12 +41,14 @@ class ValidationHelper {
     }
     
     //long live stackoverflow
-    func isIbanChecksumValid(_ iban: String) -> Bool {        
-        guard iban.count >= 4 else {
+    func isIbanChecksumValid(_ iban: String) -> Bool {
+        let ibanNoSpaces = iban.replacingOccurrences(of: " ", with: "")
+        //shortest IBAN in SEPA is 15 char (Norway)
+        if ibanNoSpaces.count < 15 {
             return false
         }
         
-        let uppercase = iban.uppercased()
+        let uppercase = ibanNoSpaces.uppercased()
         
         guard uppercase.range(of: "^[0-9A-Z]*$", options: .regularExpression) != nil else {
             return false
