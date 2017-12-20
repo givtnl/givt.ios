@@ -172,17 +172,18 @@
             </objects>
             <point key="canvasLocation" x="516" y="-1097"/>
         </scene>
-        <!--View Controller-->
+        <!--Placeholder View Controller-->
         <scene sceneID="6A9-8D-tZR">
             <objects>
-                <viewController id="buL-zC-Cpl" sceneMemberID="viewController">
+                <viewController id="buL-zC-Cpl" customClass="PlaceholderViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NdF-zb-KMX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="X5G-AA-nlE"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZDF-la-ZIy"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poz-a3-GJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

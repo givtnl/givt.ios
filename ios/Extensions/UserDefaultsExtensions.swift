@@ -24,6 +24,7 @@ extension UserDefaults {
         case hasTappedAwayGiveDiff
         case pinSet
         case needsCriticalUpdate
+        case termsVersion
     }
     
     var needsCriticalUpdate: Bool {
@@ -165,6 +166,16 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.mandateSigned.rawValue)
+            synchronize()
+        }
+    }
+    
+    var termsVersion: String? {
+        get {
+            return string(forKey: UserDefaultsKeys.termsVersion.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.termsVersion.rawValue)
             synchronize()
         }
     }

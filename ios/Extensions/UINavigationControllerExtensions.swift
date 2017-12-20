@@ -32,4 +32,9 @@ extension UINavigationController {
         UIGraphicsEndImageContext()
         return newImage!
     }
+    
+    func removeLogo() {
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    }
 }
+
