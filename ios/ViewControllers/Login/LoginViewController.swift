@@ -115,7 +115,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 print("something wrong logging user in")
                 var message = NSLocalizedString("WrongCredentials", comment: "")
                 if description == "NoInternet" {
-                    message = NSLocalizedString("NoInternet", comment: "")
+                    message = NSLocalizedString("ConnectionError", comment: "")
                 }
                 
                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),

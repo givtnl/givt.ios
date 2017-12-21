@@ -59,26 +59,31 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                 SVProgressHUD.dismiss()
             }
             
-            if status {
-                DispatchQueue.main.async {
-                    let vc = UIStoryboard.init(name: "ForgotPassword", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordCompleteViewController") as! ForgotPasswordCompleteViewController
-                    self.navigationController?.pushViewController(vc, animated: true)
+            if let status = status {
+                if status {
+                    DispatchQueue.main.async {
+                        let vc = UIStoryboard.init(name: "ForgotPassword", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordCompleteViewController") as! ForgotPasswordCompleteViewController
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                } else {
+                    if !self._appServices.connectedToNetwork() {
+                        self._navigationManager.presentAlertNoConnection(context: self)
+                        return
+                    }
+                    
+                    let alert = UIAlertController(title: "", message: NSLocalizedString("SomethingWentWrong", comment: ""), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        
+                    }))
+                    DispatchQueue.main.async {
+                        self.present(alert, animated: true, completion: {
+                            self.navigationController?.popViewController(animated: true)
+                        })
+                    }
                 }
             } else {
-                if !self._appServices.connectedToNetwork() {
-                    self._navigationManager.presentAlertNoConnection(context: self)
-                    return
-                }
-            
-                let alert = UIAlertController(title: "", message: NSLocalizedString("SomethingWentWrong", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    
-                }))
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion: {
-                        self.navigationController?.popViewController(animated: true)
-                    })
-                }
+                //response does not exist. ssl error?
+                self._navigationManager.presentAlertNoConnection(context: self)
             }
         })
         
