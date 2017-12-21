@@ -162,6 +162,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigiationManager.delegate = nil
+        
+
     }
     
     func addGestureRecognizerToView(view: UIView) {

@@ -29,8 +29,7 @@ class NavigationManager {
             if let alert = self.currentAlert, self.currentAlert == self.topController?.presentedViewController {
                 self.currentAlert!.dismiss(animated: false, completion: nil)
                 self.currentAlert = nil
-            }
-            
+            }  
             
             currentAlert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertActionStyle.default, handler: { action in  }))
@@ -49,10 +48,10 @@ class NavigationManager {
                 self.pushOnMainPage(context, vc)
             } else if !asked {
                 vc.startPoint = .permission
-                self.pushOnMainPage(context, vc)
+                self.pushWithLogin(vc, context: context)
             } else if !self.appSettings.mandateSigned {
                 vc.startPoint = .mandate
-                self.pushOnMainPage(context, vc)
+                self.pushWithLogin(vc, context: context)
             }
         }
         
