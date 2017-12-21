@@ -101,9 +101,11 @@ NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHid
         
         SVProgressHUD.show()
         LoginManager.shared.sendSupport(text: message) { (status) in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
             if status {
                 DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
                     let alert = UIAlertController(title: NSLocalizedString("PincodeSuccessfullTitle", comment: ""), message: NSLocalizedString("FeedbackMailSent", comment: ""), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                         self.dismiss(animated: true, completion: {})
@@ -112,16 +114,17 @@ NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHid
                 }
             } else {
                 self.log.warning(message: "Could not send message to support")
-                let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("SomethingWentWrong", comment: ""), preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in
                     self.dismiss(animated: true, completion: {})
                 }))
                 alert.addAction(UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: .default, handler: { (action) in
                     self.send()
                 }))
-                
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
-            
             print(status)
         }
     }
