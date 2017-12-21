@@ -81,7 +81,7 @@
 
 /*Ik vind toegang ontvangen vreemd klinken.*/
 /*Titel op de login-pagina*/
-"LoginText" = "Om toegang tot je account te krijgen, \nhoef je alleen even in te loggen.";
+"LoginText" = "Om toegang tot je account te krijgen, hoef je alleen even in te loggen.";
 
 /*Uitloggen knop*/
 "LogOut" = "Uitloggen";
@@ -575,7 +575,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 /*Fuzzy*/
 "WelcomeContinue" = "Aan de slag";
 "EnterEmail" = "Aan de slag";
-"FinalizeRegistrationPopupText" = "We willen graag dat je Givt verder kunt gebruiken, dus vragen we je om je registratie compleet te maken.";
+"FinalizeRegistrationPopupText" = "Om je giften op het goede adres te kunnen bezorgen, moet je nog even je registratie voltooien.";
 "FinalizeRegistration" = "Registratie voltooien";
 "ImportantReminder" = "Belangrijke herinnering";
 "MultipleCollections" = "Meerdere collectes";
