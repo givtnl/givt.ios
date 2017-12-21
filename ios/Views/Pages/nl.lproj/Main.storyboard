@@ -533,7 +533,7 @@ Kijk voor de status in je overzicht.</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <view hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDP-AN-Lvz">
-                                                                        <rect key="frame" x="-107" y="0.0" width="30" height="80"/>
+                                                                        <rect key="frame" x="-107.5" y="0.0" width="30" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="V83-OS-ikq" userLabel="lblAmount">
                                                                                 <rect key="frame" x="16" y="25" width="20" height="52"/>
@@ -1839,6 +1839,7 @@ Kijk voor de status in je overzicht.</string>
                                             <constraint firstAttribute="height" constant="50" id="Hzd-2z-Kf9"/>
                                             <constraint firstAttribute="width" constant="50" id="ajR-41-Mn3"/>
                                         </constraints>
+                                        <inset key="imageEdgeInsets" minX="3" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" image="info24.png"/>
                                         <connections>
                                             <action selector="openInfo:" destination="3fl-1y-hcG" eventType="touchUpInside" id="nEH-DP-aEu"/>
