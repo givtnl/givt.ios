@@ -305,6 +305,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="arrow" destination="HBs-QU-xbK" id="2Ke-lj-nxD"/>
                                     <outlet property="badge" destination="jZb-bl-Ghc" id="WQA-t4-A9T"/>
                                     <outlet property="settingImageView" destination="82Y-du-LGo" id="f0E-Za-kNP"/>
                                     <outlet property="settingLabel" destination="5qn-Ag-d7w" id="Umf-Bf-8og"/>
@@ -363,7 +364,7 @@ Kijk voor de status in je overzicht.</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="d7d-vz-Zdj" kind="unwind" unwindAction="returnFromSegueWithSender:" id="RXp-UM-wa8"/>
+                                            <action selector="nextBtn:" destination="T9t-cc-i7G" eventType="touchUpInside" id="lOc-se-f6f"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIq-fo-fkJ" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
@@ -434,7 +435,6 @@ Kijk voor de status in je overzicht.</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFL-RT-cX5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="d7d-vz-Zdj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4296" y="-241"/>
         </scene>
@@ -584,7 +584,7 @@ Kijk voor de status in je overzicht.</string>
                                                                         </constraints>
                                                                     </view>
                                                                     <view hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1d-tm-JK5">
-                                                                        <rect key="frame" x="-124" y="0.0" width="30.5" height="80"/>
+                                                                        <rect key="frame" x="-107.5" y="0.0" width="30.5" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-jh-60h" userLabel="lblAmount">
                                                                                 <rect key="frame" x="16.5" y="25" width="19.5" height="52"/>

@@ -14,13 +14,15 @@ class Setting {
     var isHidden: Bool
     var callback: () -> ()
     var show: Bool
+    var showArrow: Bool
     
-    init(name: String, image: UIImage, isHidden: Bool = true, callback: @escaping () -> (), show: Bool = true) {
+    init(name: String, image: UIImage, isHidden: Bool = true, callback: @escaping () -> (), show: Bool = true, showArrow: Bool = true) {
         self.name = name
         self.image = image
         self.isHidden = isHidden
         self.callback = callback
         self.show = show
+        self.showArrow = showArrow
     }
 
 }

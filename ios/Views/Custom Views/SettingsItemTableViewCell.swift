@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsItemTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var arrow: UIView!
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var settingImageView: UIImageView!
     @IBOutlet weak var badge: UIImageView!
