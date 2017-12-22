@@ -92,7 +92,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             amountLimit.text = String(UserDefaults.standard.amountLimit)
         }
 
-        createToolbar()
+        //createToolbar()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -181,33 +181,32 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
-        theScrollView.contentInset.bottom -= 20
-        theScrollView.scrollIndicatorInsets.bottom -= 20
-    }
+//        theScrollView.contentInset.bottom -= 30
+//        theScrollView.scrollIndicatorInsets.bottom -= 30
         
+
+    }
+    
+    @IBOutlet var bottomSpaceConstraint: NSLayoutConstraint!
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
-            theScrollView.contentInset.bottom = contentInsets.bottom + 20
-            theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom + 20
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
+            self.updateKeyboardConstraint(height: keyboardSize.height, duration: TimeInterval(duration))
         }
-        self.btnSaveKeyboard?.alpha = 1
-        let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
-        UIView.animate(withDuration: TimeInterval(truncating: duration), delay: 0, options: [], animations: {
-            self.btnSave.alpha = 0
-        }, completion: nil)
+    }
+    
+    func updateKeyboardConstraint(height: CGFloat, duration: TimeInterval) {
+        self.bottomSpaceConstraint.constant = height + 20
+        UIView.animate(withDuration: duration) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
-            theScrollView.contentInset = .zero
-            theScrollView.scrollIndicatorInsets = .zero
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
+            self.updateKeyboardConstraint(height: 0, duration: TimeInterval(duration))
         }
-        self.btnSaveKeyboard?.alpha = 0
-        let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber
-        UIView.animate(withDuration: TimeInterval(truncating: duration), delay: 0, options: [], animations: {
-            self.btnSave.alpha = 1
-        }, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

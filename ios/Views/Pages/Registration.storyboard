@@ -1030,38 +1030,39 @@ Veel geefplezier!</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="fip-oR-siP">
-                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r31-cv-Adj" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="416" width="280" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Kpo-YP-ScI"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="Shf-ET-2cw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Opslaan"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnSave:" destination="5PA-7A-fQw" eventType="touchUpInside" id="X5M-JR-fJv"/>
+                                </connections>
+                            </button>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fip-oR-siP">
+                                <rect key="frame" x="0.0" y="20" width="320" height="376"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYx-z7-Nhh">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="376"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r31-cv-Adj" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="396" width="280" height="44"/>
-                                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="Kpo-YP-ScI"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
-                                                <state key="normal" title="Opslaan"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="btnSave:" destination="5PA-7A-fQw" eventType="touchUpInside" id="X5M-JR-fJv"/>
-                                                </connections>
-                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nbr-qe-p3K">
-                                                <rect key="frame" x="20" y="190" width="280" height="80"/>
+                                                <rect key="frame" x="20" y="148" width="280" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pN1-on-KFq" userLabel="decr">
                                                         <rect key="frame" x="0.0" y="20" width="40" height="40"/>
@@ -1153,15 +1154,11 @@ Veel geefplezier!</string>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="r31-cv-Adj" firstAttribute="leading" secondItem="aYx-z7-Nhh" secondAttribute="leading" constant="20" id="DI7-If-Cdp"/>
                                             <constraint firstAttribute="trailing" secondItem="zWD-es-rb4" secondAttribute="trailing" constant="20" id="Ejj-ny-jgY"/>
                                             <constraint firstAttribute="trailing" secondItem="Nbr-qe-p3K" secondAttribute="trailing" constant="20" id="Gbp-Vz-cmk"/>
                                             <constraint firstItem="Nbr-qe-p3K" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zWD-es-rb4" secondAttribute="bottom" id="Ikd-sb-jHE"/>
-                                            <constraint firstAttribute="bottom" secondItem="r31-cv-Adj" secondAttribute="bottom" constant="20" id="Qer-g8-15m"/>
                                             <constraint firstItem="zWD-es-rb4" firstAttribute="top" secondItem="aYx-z7-Nhh" secondAttribute="top" constant="10" id="aGZ-uR-Vqg"/>
-                                            <constraint firstAttribute="trailing" secondItem="r31-cv-Adj" secondAttribute="trailing" constant="20" id="kIP-z9-kfi"/>
                                             <constraint firstItem="Nbr-qe-p3K" firstAttribute="leading" secondItem="aYx-z7-Nhh" secondAttribute="leading" constant="20" id="kxZ-Rp-RrE"/>
-                                            <constraint firstItem="r31-cv-Adj" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Nbr-qe-p3K" secondAttribute="bottom" id="nQr-rl-dnB"/>
                                             <constraint firstItem="Nbr-qe-p3K" firstAttribute="centerY" secondItem="aYx-z7-Nhh" secondAttribute="centerY" id="uGg-Hu-w8D"/>
                                             <constraint firstItem="zWD-es-rb4" firstAttribute="leading" secondItem="aYx-z7-Nhh" secondAttribute="leading" constant="20" id="xIg-Bd-Zpl"/>
                                         </constraints>
@@ -1181,7 +1178,10 @@ Veel geefplezier!</string>
                         <constraints>
                             <constraint firstItem="fip-oR-siP" firstAttribute="trailing" secondItem="sRc-Ad-ksx" secondAttribute="trailing" id="3hY-b0-4hW"/>
                             <constraint firstItem="fip-oR-siP" firstAttribute="leading" secondItem="sRc-Ad-ksx" secondAttribute="leading" id="H7n-4B-p8p"/>
-                            <constraint firstItem="ghA-d2-Epy" firstAttribute="top" secondItem="fip-oR-siP" secondAttribute="bottom" id="WhV-2d-72X"/>
+                            <constraint firstItem="r31-cv-Adj" firstAttribute="leading" secondItem="sRc-Ad-ksx" secondAttribute="leading" constant="20" id="OxN-WR-4TQ"/>
+                            <constraint firstItem="ghA-d2-Epy" firstAttribute="top" secondItem="r31-cv-Adj" secondAttribute="bottom" constant="20" id="R25-eZ-sZn"/>
+                            <constraint firstItem="sRc-Ad-ksx" firstAttribute="trailing" secondItem="r31-cv-Adj" secondAttribute="trailing" constant="20" id="RYj-Oo-bZn"/>
+                            <constraint firstItem="r31-cv-Adj" firstAttribute="top" secondItem="fip-oR-siP" secondAttribute="bottom" constant="20" id="bFJ-jh-aAO"/>
                             <constraint firstItem="fip-oR-siP" firstAttribute="top" secondItem="sRc-Ad-ksx" secondAttribute="top" id="jpE-Ya-p9a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sRc-Ad-ksx"/>
@@ -1197,6 +1197,7 @@ Veel geefplezier!</string>
                     <connections>
                         <outlet property="amountLimit" destination="SKI-EC-l5S" id="xK8-Aj-TRg"/>
                         <outlet property="backButton" destination="t7R-5Y-Fz0" id="k9A-Fk-sqM"/>
+                        <outlet property="bottomSpaceConstraint" destination="R25-eZ-sZn" id="OyK-af-5W2"/>
                         <outlet property="btnSave" destination="r31-cv-Adj" id="Y5B-HJ-LID"/>
                         <outlet property="subTitleText" destination="zWD-es-rb4" id="dzP-I0-99F"/>
                         <outlet property="theScrollView" destination="fip-oR-siP" id="bsh-1m-ZeE"/>
@@ -1214,7 +1215,7 @@ Veel geefplezier!</string>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1994" y="31"/>
+            <point key="canvasLocation" x="1993.125" y="30"/>
         </scene>
     </scenes>
     <resources>

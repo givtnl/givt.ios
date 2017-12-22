@@ -104,7 +104,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         givtService = GivtService.shared
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         amountLabels = [amountLabel, amountLabel2, amountLabel3]
         
@@ -117,12 +116,15 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         thirdView.isHidden = true
         thirdLine.isHidden = true
         
-        self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
+        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        
         decimalNotation = NSLocale.current.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         navigationController?.navigationBar.isTranslucent = false
