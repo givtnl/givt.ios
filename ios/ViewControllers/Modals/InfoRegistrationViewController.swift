@@ -18,10 +18,20 @@ class InfoRegistrationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        titleText.text = NSLocalizedString("WhyPersonalData", comment: "")
+        titleText.text = NSLocalizedString("PersonalInfo", comment: "")
         bodyText.text = NSLocalizedString("InformationPersonalData", comment: "")
         buttonText.setTitle(NSLocalizedString("ReadPrivacy", comment: ""), for: .normal)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .default
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +45,8 @@ class InfoRegistrationViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func openStatement(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
+        let vc = UIStoryboard.init(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        vc.typeOfTerms = TypeOfTerms.privacyPolicy
         self.present(vc, animated: true, completion: nil)
     }
     /*

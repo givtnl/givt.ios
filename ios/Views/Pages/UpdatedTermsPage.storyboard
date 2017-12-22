@@ -27,22 +27,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givt20h" translatesAutoresizingMaskIntoConstraints="NO" id="8iO-xn-qQc">
-                                <rect key="frame" x="0.0" y="30" width="53" height="20"/>
+                                <rect key="frame" x="161" y="30" width="53" height="19"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Osr-1H-lud">
-                                <rect key="frame" x="0.0" y="60" width="0.0" height="479"/>
+                                <rect key="frame" x="20" y="59" width="335" height="480"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" text="The terms and conditions have been updated." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-jB-WAU">
-                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="153.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="154"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFf-Wl-4hw">
-                                        <rect key="frame" x="0.0" y="162.5" width="0.0" height="154"/>
+                                        <rect key="frame" x="0.0" y="163" width="335" height="154"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givypaper" translatesAutoresizingMaskIntoConstraints="NO" id="lIi-8t-Mxy">
-                                                <rect key="frame" x="7" y="0.0" width="154" height="154"/>
+                                                <rect key="frame" x="90.5" y="0.0" width="154" height="154"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="lIi-8t-Mxy" secondAttribute="height" multiplier="1:1" id="jeG-RE-SC0"/>
                                                 </constraints>
@@ -57,7 +57,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" text="You agree to the new terms and conditions if you continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gs-Ow-92P">
-                                        <rect key="frame" x="0.0" y="325.5" width="0.0" height="153.5"/>
+                                        <rect key="frame" x="0.0" y="326" width="335" height="154"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -73,7 +73,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tl8-B6-DJM" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="603" width="0.0" height="44"/>
+                                <rect key="frame" x="20" y="603" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                 <constraints>
@@ -97,7 +97,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aR-aI-wc2" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="549" width="0.0" height="44"/>
+                                <rect key="frame" x="20" y="549" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                 <constraints>

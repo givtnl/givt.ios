@@ -24,8 +24,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why this personal data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBx-eE-08n">
-                                <rect key="frame" x="80" y="40" width="215" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why this personal data" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="JBx-eE-08n">
+                                <rect key="frame" x="60" y="40" width="255" height="28"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -37,10 +37,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfu-Be-cv4">
-                                <rect key="frame" x="321" y="32" width="44" height="44"/>
+                                <rect key="frame" x="315" y="29" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="8oQ-mU-NU1"/>
-                                    <constraint firstAttribute="width" constant="44" id="KKX-X4-BeZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="8oQ-mU-NU1"/>
+                                    <constraint firstAttribute="width" constant="50" id="KKX-X4-BeZ"/>
                                 </constraints>
                                 <state key="normal" image="closewhite"/>
                                 <connections>
@@ -85,8 +85,10 @@
                             <constraint firstItem="bm9-nz-htH" firstAttribute="bottom" secondItem="vd9-kv-b0s" secondAttribute="bottom" constant="20" id="OKr-4D-sqf"/>
                             <constraint firstItem="kfu-Be-cv4" firstAttribute="centerY" secondItem="JBx-eE-08n" secondAttribute="centerY" id="PNX-3E-AYx"/>
                             <constraint firstItem="bm9-nz-htH" firstAttribute="trailing" secondItem="kfu-Be-cv4" secondAttribute="trailing" constant="10" id="Ucm-bL-1PG"/>
+                            <constraint firstItem="bm9-nz-htH" firstAttribute="trailing" secondItem="JBx-eE-08n" secondAttribute="trailing" constant="60" id="adb-XA-cM6"/>
                             <constraint firstItem="k6S-L7-ShF" firstAttribute="leading" secondItem="PvB-mj-axv" secondAttribute="leading" constant="20" id="eeQ-Th-X8P"/>
                             <constraint firstAttribute="trailing" secondItem="k6S-L7-ShF" secondAttribute="trailing" constant="20" id="jts-B0-w5j"/>
+                            <constraint firstItem="JBx-eE-08n" firstAttribute="leading" secondItem="bm9-nz-htH" secondAttribute="leading" constant="60" id="n0g-pg-dt5"/>
                             <constraint firstItem="JBx-eE-08n" firstAttribute="centerX" secondItem="PvB-mj-axv" secondAttribute="centerX" id="qDE-3r-KFj"/>
                             <constraint firstItem="vd9-kv-b0s" firstAttribute="leading" secondItem="bm9-nz-htH" secondAttribute="leading" constant="20" id="rC3-IX-SHy"/>
                         </constraints>

@@ -37,10 +37,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktG-4s-36p">
-                                <rect key="frame" x="266" y="31" width="44" height="44"/>
+                                <rect key="frame" x="260" y="28" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="AUG-5D-k0z"/>
-                                    <constraint firstAttribute="width" constant="44" id="ZLi-0D-pGL"/>
+                                    <constraint firstAttribute="height" constant="50" id="AUG-5D-k0z"/>
+                                    <constraint firstAttribute="width" constant="50" id="ZLi-0D-pGL"/>
                                 </constraints>
                                 <state key="normal" image="closewhite"/>
                                 <connections>
