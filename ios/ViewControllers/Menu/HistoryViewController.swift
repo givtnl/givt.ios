@@ -196,7 +196,7 @@ class HistoryViewController: UIViewController {
         
         let fmt = NumberFormatter()
         fmt.locale = NSLocale.current
-        fmt.numberStyle = NumberFormatter.Style.currency
+        fmt.currencySymbol = "€"
         fmt.minimumFractionDigits = 2
         fmt.maximumFractionDigits = 2
         fmt.positiveFormat = "¤ #,##0.00"
@@ -275,7 +275,7 @@ class HistoryViewController: UIViewController {
                 h!.leadingAnchor.constraint(equalTo: agendaRectangle!.trailingAnchor, constant: 10.0).isActive = true
                 let ticketTop = h!.topAnchor.constraint(equalTo: grey!.topAnchor, constant: 10.0)
                 ticketTop.isActive = true
-                h!.trailingAnchor.constraint(equalTo: grey!.trailingAnchor, constant: -20.0).isActive = true
+                h!.trailingAnchor.constraint(equalTo: grey!.trailingAnchor, constant: -10.0).isActive = true
                 h!.bottomAnchor.constraint(equalTo: grey!.bottomAnchor, constant: 0).isActive = true
                 
                 let churchName = self.getChurchName(name: object.orgName)

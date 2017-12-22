@@ -29,9 +29,9 @@ class ScanCompleteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.navigationController?.navigationBar.barStyle = .default
-        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+
+        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         
         print(GivtService.shared.lastGivtOrg)
         if !GivtService.shared.lastGivtOrg.isEmpty() {
@@ -41,6 +41,7 @@ class ScanCompleteViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
     }
     
     @IBOutlet var btnBack: CustomButton!
@@ -57,6 +58,9 @@ class ScanCompleteViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: [message as NSString], applicationActivities: nil)
         self.present(activityViewController, animated: true, completion: {})
         
+    }
+    @IBAction func nextBtn(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     /*
     // MARK: - Navigation

@@ -473,7 +473,7 @@ class LoginManager {
         
     }
     
-    func requestNewPassword(email: String, callback: @escaping (Bool) -> Void) {
+    func requestNewPassword(email: String, callback: @escaping (Bool?) -> Void) {
         do {
             try client.post(url: "/api/v2/Users/ForgotPassword?email=" + email.RFC3986UnreservedEncoded, data: [:], callback: { (response) in
                 if let response = response {
@@ -483,11 +483,11 @@ class LoginManager {
                         callback(false)
                     }
                 } else {
-                    callback(false)
+                    callback(nil)
                 }
             })
         } catch {
-            callback(false)
+            callback(nil)
         }
     }
     

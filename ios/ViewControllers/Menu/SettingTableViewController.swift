@@ -56,10 +56,10 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
 
         let tempUser = UserDefaults.standard.tempUser
         
-        let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: { self.logout() })
+        let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: { self.logout() }, showArrow: false)
         
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
-        let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() })
+        let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
         var userInfoSetting: Setting?
         if LoginManager.shared.isFullyRegistered {
             userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.changePersonalInfo() })
@@ -195,6 +195,7 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         cell.settingLabel.text = temp[indexPath.row].name
         cell.settingImageView.image = temp[indexPath.row].image
         cell.badge.isHidden = temp[indexPath.row].isHidden
+        cell.arrow.alpha = temp[indexPath.row].showArrow ? 1.0 : 0.0
         return cell
     }
     

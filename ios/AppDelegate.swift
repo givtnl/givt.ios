@@ -119,7 +119,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 //we do not really use this one...
                             }
                             if let viewedCoachMarks = myDict["ViewedCoachMarks"] as? NSNumber {
-                                UserDefaults.standard.viewedCoachMarks = viewedCoachMarks.intValue
+                                /*
+                                 We increase the viewedcoachmarks by 1, when its value equals 2.
+                                 In Xamarin we worked with only two balloons, native three.
+                                 Second and Third balloon Native actually represents the second balloon in Xamarin
+                                 To NOT irritate the user, we do this so the balloon won't be shown
+                                */
+                                
+                                UserDefaults.standard.viewedCoachMarks = viewedCoachMarks.intValue == 2 ? viewedCoachMarks.intValue + 1 : viewedCoachMarks.intValue
                             }
                             if let hasTappedAwayGiveDiff = myDict["HasTappedAwayGiveDiff"] as? NSNumber {
                                 UserDefaults.standard.hasTappedAwayGiveDiff = hasTappedAwayGiveDiff.boolValue

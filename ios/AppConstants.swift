@@ -46,13 +46,6 @@ class AppConstants{
         let trustKitConfig = [
             kTSKSwizzleNetworkDelegates: false,
             kTSKPinnedDomains: [
-                "givtapidebug.azurewebsites.net": [
-                    kTSKExpirationDate: "2018-07-05",
-                    kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
-                    kTSKPublicKeyHashes: [
-                        "nrmpk4ZI3wbRBmUZIT5aKAgP0LlKHRgfA2Snjzeg9iY=",
-                        "CzdPous1hY3sIkO55pUH7vklXyIHVZAl/UnprSQvpEI="
-                    ]],
                 "api2.nfcollect.com": [
                     kTSKExpirationDate: "2018-07-05",
                     kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
