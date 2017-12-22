@@ -183,7 +183,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         }
         
         if textField == iban {
-            next(self)
+            if nextButton.isEnabled {
+                nextButton.sendActions(for: UIControlEvents.touchUpInside)
+            }
         }
         return false
     }
