@@ -99,6 +99,7 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
     var isOpen: Bool = false
     
     func close() {
+        self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         answer.removeFromSuperview()
         videoContainer?.removeFromSuperview()
         videoWrapper?.removeFromSuperview()
@@ -108,6 +109,7 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
     }
     
     func open() {
+        self.backgroundColor = UIColor.init(rgb: 0x5A5387)
         answer = UILabel()
         answer.textColor = .white
         answer.font = UIFont(name: "Avenir-Roman", size: 16.0)
@@ -178,6 +180,7 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
         delegate?.didTapFAQView(sender: self)
         if answer.superview != nil {
             close()
+            
         } else {
             open()
             delegate?.didShowAnswer(sender: self)
@@ -196,7 +199,7 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
     }
     
     func insertCSSString(into webView: WKWebView) {
-        let cssString = "body { background-color:#2E2957; } .vp-player-layout { left: 0 !important, right: 0 !important;}"
+        let cssString = "body { background-color:#5A5387; } .vp-player-layout { left: 0 !important, right: 0 !important;}"
         let jsString = "var style = document.createElement('style'); style.innerHTML = '\(cssString)'; document.head.appendChild(style);document.getElementsByClassName('js-playerLayout')[0].style = 'left:0;right:0;'"
         webView.evaluateJavaScript(jsString, completionHandler: nil)
     }
