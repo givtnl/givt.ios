@@ -53,8 +53,6 @@ class LoginManager {
         }
     }
     
-    private var _baseUrl = "https://givtapidebug.azurewebsites.net"
-    
     public func saveAmountLimit(_ amountLimit: Int, completionHandler: @escaping (Bool) -> Void) {
         //post request to amount limit api
         let url = "/api/users"
@@ -199,56 +197,9 @@ class LoginManager {
         _registrationUser.iban = user.iban.replacingOccurrences(of: " ", with: "")
         _registrationUser.postalCode = user.postalCode
         
-        //TODO: checkTLD
-        
-        do {
-            try client.post(url: "/api/Users", data: ["email":_registrationUser.email,"password":_registrationUser.password]) { (res) in
-                if let res = res, let data = res.data {
-                    self._registrationUser.guid = String(bytes: data, encoding: .utf8)!
-                    let newConfig = UserDefaults.standard.userExt!
-                    newConfig.guid = self._registrationUser.guid
-                    UserDefaults.standard.userExt = newConfig
-                    
-                    self.registerAllData(completionHandler: { success in
-                        if success {
-                            _ = self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
-                                
-                                if success {
-                                    if self._registrationUser.iban == AppConstants.tempIban.replacingOccurrences(of: " ", with: "") {
-                                        
-                                    }
-                                    
-                                    self._registrationUser.password = ""
-                                    UserDefaults.standard.userExt = self._registrationUser
-                                    self.saveAmountLimit(500, completionHandler: { (status) in
-                                        //niets
-                                    })
-                                    UserDefaults.standard.amountLimit = 500
-                                    completionHandler(true)
-                                } else {
-                                    completionHandler(false)
-                                }
-                            })
-                        } else {
-                            completionHandler(false)
-                        }
-                    })
-                    
-                } else {
-                    completionHandler(false)
-                }
-            }
-        } catch {
-            log.error(message: "Something went wrong creating extra data")
-        }
-        
-        
-    }
-    
-    func registerAllData(completionHandler: @escaping (Bool) -> Void) {
         let params = [
             "Email": _registrationUser.email,
-            "Guid":  _registrationUser.guid,
+            "Password" : _registrationUser.password,
             "IBAN":  _registrationUser.iban,
             "PhoneNumber":  _registrationUser.mobileNumber,
             "FirstName":  _registrationUser.firstName,
@@ -260,17 +211,37 @@ class LoginManager {
             "AmountLimit": "500"]
         
         do {
-            try client.post(url: "/api/UsersExtension", data: params) { (res) in
-                if res != nil {
-                    self.log.info(message: "user succesfully registered")
-                    completionHandler(true)
+            try client.post(url: "/api/v2/Users", data: params) { (res) in
+                if let res = res, let data = res.data, res.basicStatus == .ok {
+                    self._registrationUser.guid = String(bytes: data, encoding: .utf8)!
+                    let newConfig = UserDefaults.standard.userExt!
+                    newConfig.guid = self._registrationUser.guid
+                    newConfig.password = ""
+                    UserDefaults.standard.userExt = newConfig
+
+                   self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
+                        
+                        if success {
+                            
+                            self._registrationUser.password = ""
+                            UserDefaults.standard.userExt = self._registrationUser
+                            self.saveAmountLimit(500, completionHandler: { (status) in
+                                //niets
+                            })
+                            UserDefaults.standard.amountLimit = 500
+                            completionHandler(true)
+                        } else {
+                            self.log.info(message: "Login failed")
+                            completionHandler(false)
+                        }
+                    })
                 } else {
-                    self.log.info(message: "not able to store extra data")
+                    self.log.info(message: "Not able to register the user")
                     completionHandler(false)
                 }
             }
         } catch {
-            log.error(message: "Something went wrong trying to register all user data")
+            log.error(message: "Something went wrong creating extra data")
         }
         
         
