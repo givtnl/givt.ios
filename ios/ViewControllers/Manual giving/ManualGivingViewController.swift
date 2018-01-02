@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManualGivingViewController: UIViewController {
+class ManualGivingViewController: BaseScanViewController {
     private var log = LogService.shared
     @IBOutlet var organisationSuggestion: UILabel!
     @IBOutlet var containerHeight: NSLayoutConstraint!
@@ -91,6 +91,16 @@ class ManualGivingViewController: UIViewController {
             suggestion.isHidden = true
         }
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        GivtService.shared.onGivtProcessed = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        GivtService.shared.onGivtProcessed = nil
     }
 
     @IBAction func goBack(_ sender: Any) {
