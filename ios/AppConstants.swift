@@ -36,7 +36,7 @@ class AppConstants{
         return "https://givtapidebug.azurewebsites.net"
         #else
             return "https://givtapidebug.azurewebsites.net"
-       // return "https://api2.nfcollect.com/" // do not put this in prod before release!
+        //    return "https://api.givtapp.net" // do not put this in prod before release!
         #endif
     }()
     
@@ -51,8 +51,7 @@ class AppConstants{
                     kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
                     kTSKPublicKeyHashes: [
                         "GnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=",
-                        "Fbr/5aSOo4KRal8YE49t4lc76IOnK/oto9NWV1cSKWM=",
-                        "grX4Ta9HpZx6tSHkmCrvpApTQGo67CYDnvprLg5yRME="
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
                     ]],
                 "api.logit.io": [
                     kTSKExpirationDate: "2019-10-12",
