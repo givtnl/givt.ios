@@ -47,6 +47,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         
     }
     @IBAction func goBack(_ sender: Any) {
+        self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     
