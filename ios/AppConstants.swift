@@ -46,12 +46,13 @@ class AppConstants{
         let trustKitConfig = [
             kTSKSwizzleNetworkDelegates: false,
             kTSKPinnedDomains: [
-                "api2.nfcollect.com": [
-                    kTSKExpirationDate: "2018-07-05",
+                "api.givtapp.net": [
+                    kTSKExpirationDate: "2018-12-08",
                     kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
                     kTSKPublicKeyHashes: [
-                        "xC0Y+0Mq+Ag3UEdgBSPJGhFGcxuNFUDIFaAm6wEBrII=",
-                        "klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY="
+                        "GnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=",
+                        "Fbr/5aSOo4KRal8YE49t4lc76IOnK/oto9NWV1cSKWM=",
+                        "grX4Ta9HpZx6tSHkmCrvpApTQGo67CYDnvprLg5yRME="
                     ]],
                 "api.logit.io": [
                     kTSKExpirationDate: "2019-10-12",
