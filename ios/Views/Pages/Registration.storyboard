@@ -227,6 +227,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="R5E-cZ-hgM" firstAttribute="width" secondItem="njr-Oh-npg" secondAttribute="width" id="8QW-ob-0WG"/>
+                                            <constraint firstItem="R5E-cZ-hgM" firstAttribute="height" secondItem="njr-Oh-npg" secondAttribute="height" priority="250" id="CYC-Ex-VDE"/>
                                             <constraint firstAttribute="bottom" secondItem="R5E-cZ-hgM" secondAttribute="bottom" id="FeF-XM-Dlr"/>
                                             <constraint firstAttribute="trailing" secondItem="R5E-cZ-hgM" secondAttribute="trailing" id="NSO-Uh-JAo"/>
                                             <constraint firstItem="R5E-cZ-hgM" firstAttribute="leading" secondItem="njr-Oh-npg" secondAttribute="leading" id="P0O-0x-6vp"/>
@@ -240,7 +241,6 @@
                                     <constraint firstAttribute="bottom" secondItem="njr-Oh-npg" secondAttribute="bottom" id="767-2s-FsV"/>
                                     <constraint firstItem="njr-Oh-npg" firstAttribute="leading" secondItem="G5P-LB-uz0" secondAttribute="leading" id="AtT-OJ-Anx"/>
                                     <constraint firstAttribute="trailing" secondItem="njr-Oh-npg" secondAttribute="trailing" id="kFc-TU-NJV"/>
-                                    <constraint firstItem="R5E-cZ-hgM" firstAttribute="height" secondItem="G5P-LB-uz0" secondAttribute="height" priority="250" id="yAA-sM-uv1"/>
                                 </constraints>
                             </view>
                         </subviews>
