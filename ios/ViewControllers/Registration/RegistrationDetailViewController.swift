@@ -87,11 +87,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             if let filteredCountry = filteredCountries.first {
                 selectedCountry = filteredCountry
                 countryField.text = selectedCountry?.name
-                countryField.setValid()
+                checkAll(countryField)
                 
                 selectedMobilePrefix = filteredCountry
                 mobilePrefixField.text = selectedMobilePrefix?.prefix
-                mobilePrefixField.setValid()
+                checkAll(mobilePrefixField)
             }
         }
 
