@@ -290,25 +290,27 @@ class LoginManager {
     }
     
     func checkMandate(completionHandler: @escaping (String) -> Void) {
-        let data = ["UserID" : (UserDefaults.standard.userExt?.guid)!]
-        client.get(url: "/api/Mandate", data: data) { (response) in
-            if let temp = response, let data = temp.data, temp.basicStatus == .ok {
-                do {
-                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                    UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil && parsedData["Signed"] as! Int == 1)
-                    self.log.info(message: "Mandate signed: " + String(UserDefaults.standard.mandateSigned))
-                    if let status = parsedData["PayProvMandateStatus"] as? String {
-                        completionHandler(status)
-                    } else {
-                        self.log.error(message: "Could not extract PayProvMandateStatus from JSON Object")
+        if let user = UserDefaults.standard.userExt {
+            let data = ["UserID" : user.guid]
+            client.get(url: "/api/Mandate", data: data) { (response) in
+                if let temp = response, let data = temp.data, temp.basicStatus == .ok {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                        UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil && parsedData["Signed"] as! Int == 1)
+                        self.log.info(message: "Mandate signed: " + String(UserDefaults.standard.mandateSigned))
+                        if let status = parsedData["PayProvMandateStatus"] as? String {
+                            completionHandler(status)
+                        } else {
+                            self.log.error(message: "Could not extract PayProvMandateStatus from JSON Object")
+                            completionHandler("")
+                        }
+                    } catch {
+                        self.log.error(message: "Could not parse mandate. Json probably not valid.")
                         completionHandler("")
                     }
-                } catch {
-                    self.log.error(message: "Could not parse mandate. Json probably not valid.")
+                } else {
                     completionHandler("")
                 }
-            } else {
-                completionHandler("")
             }
         }
     }
