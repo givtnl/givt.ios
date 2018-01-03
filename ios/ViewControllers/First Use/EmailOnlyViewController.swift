@@ -78,10 +78,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     
     }
     
-    @objc func endEditing() {
-        self.view.endEditing(false)
-    }
-    
     @IBOutlet var scroll: UIScrollView!
     
     @IBOutlet var container: UIView!
