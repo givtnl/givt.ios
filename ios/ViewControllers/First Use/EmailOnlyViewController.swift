@@ -113,9 +113,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.returnKeyType == .done {
-            self.doneCommand()
-        }
         self.view.endEditing(true)
         return false
     }
