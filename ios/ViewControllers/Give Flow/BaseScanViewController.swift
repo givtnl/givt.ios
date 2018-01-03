@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
@@ -19,7 +20,9 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
         // Do any additional setup after loading the view.
     }
 
@@ -39,35 +42,66 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             canShare = true
         }
         
+        shouldShowMandate { (url) in
+            var parameters: [String: Any]
+            parameters = ["amountLimit" : 0,
+                          "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
+                          "GUID" : UserDefaults.standard.userExt!.guid,
+                          "urlPart" : "native",
+                          "givtObj" : trs,
+                          "apiUrl" : AppConstants.apiUri + "/",
+                          "lastDigits" : "XXXXXXXXXXXXXXX7061",
+                          "organisation" : GivtService.shared.lastGivtOrg,
+                          "mandatePopup" : "",
+                          "spUrl" : url,
+                          "canShare" : canShare]
+            
+            #if DEBUG
+                parameters["nativeAppScheme"] = "givtnd://"
+            #else
+                parameters["nativeAppScheme"] = "givtn://"
+            #endif
+            
+            
+            guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
+                return
+            }
+            
+            print(jsonParameters.description)
+            let plainTextBytes = jsonParameters.base64EncodedString()
+            let formatted = String(format: AppConstants.apiUri + "/givtapp4.html?msg=%@", plainTextBytes);
+            self.showWebsite(url: formatted)
+        }
         
-        var parameters: [String: Any]
-        parameters = ["amountLimit" : 0,
-                      "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
-                      "GUID" : UserDefaults.standard.userExt!.guid,
-                      "urlPart" : "native",
-                      "givtObj" : trs,
-                      "apiUrl" : AppConstants.apiUri + "/",
-                      "lastDigits" : "XXXXXXXXXXXXXXX7061",
-                      "organisation" : GivtService.shared.lastGivtOrg,
-                      "mandatePopup" : "",
-                      "spUrl" : "",
-                      "canShare" : canShare]
-        
-        #if DEBUG
-            parameters["nativeAppScheme"] = "givtnd://"
-        #else
-            parameters["nativeAppScheme"] = "givtn://"
-        #endif
         
         
-        guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
+    }
+    
+    func shouldShowMandate(callback: @escaping (String) -> Void) {
+        
+        let userInfo = UserDefaults.standard.userExt!
+        var country = ""
+        if let idx = Int(userInfo.countryCode) {
+            country = AppConstants.countries[idx].shortName
+        } else {
+            country = userInfo.countryCode
+        }
+        
+        if userInfo.iban == AppConstants.tempIban || UserDefaults.standard.mandateSigned == true {
+            print("not showing mandate")
+            callback("")
             return
         }
         
-        print(jsonParameters.description)
-        let plainTextBytes = jsonParameters.base64EncodedString()
-        let formatted = String(format: AppConstants.apiUri + "/givtapp4.html?msg=%@", plainTextBytes);
-        self.showWebsite(url: formatted)
+        SVProgressHUD.show()
+        let signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: country, postalCode: userInfo.postalCode, street: userInfo.address)
+        let mandate = Mandate(signatory: signatory)
+        LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
+            SVProgressHUD.dismiss()
+            if let url = slimPayUrl {
+                callback(url)
+            }
+        })
     }
     
     func showWebsite(url: String){

@@ -208,11 +208,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         logService.info(message: "App resuming")
         NavigationManager.shared.resume()
+        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        
+        LoginManager.shared.resume()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
