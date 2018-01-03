@@ -450,7 +450,7 @@ class HistoryViewController: UIViewController {
                     self.renderNoGivts()
                 }
             } else {
-                var objects = historyTransactions.sorted {
+                let objects = historyTransactions.sorted {
                     if $0.timestamp.getYear() != $1.timestamp.getYear() {
                         return $0.timestamp.getYear() > $1.timestamp.getYear()
                     }

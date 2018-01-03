@@ -138,11 +138,6 @@
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES" textContentType="email"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                        <integer key="value" value="70"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="383-ea-8pW" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="539" width="335" height="44"/>
@@ -252,7 +247,7 @@
         <!--Carousel View Controller-->
         <scene sceneID="Ljr-zg-84y">
             <objects>
-                <pageViewController storyboardIdentifier="CarouselViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="min" id="9xS-wo-GKW" customClass="CarouselViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="CarouselViewController" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="9xS-wo-GKW" customClass="CarouselViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kKF-2W-va1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1887.2" y="311.69415292353824"/>
@@ -300,9 +295,7 @@
                             <constraint firstItem="y5Q-pR-dV7" firstAttribute="top" secondItem="4SL-cA-QWS" secondAttribute="bottom" constant="20" id="2tJ-Qv-HOu"/>
                             <constraint firstItem="w5j-vj-GlK" firstAttribute="leading" secondItem="jEj-3g-uRT" secondAttribute="leading" constant="20" id="3eh-jY-2tY"/>
                             <constraint firstItem="jEj-3g-uRT" firstAttribute="trailing" secondItem="w5j-vj-GlK" secondAttribute="trailing" constant="20" id="Dtk-PM-VQM"/>
-                            <constraint firstItem="4SL-cA-QWS" firstAttribute="centerX" secondItem="Y1j-UK-c2G" secondAttribute="centerX" id="GRX-id-Tk3"/>
                             <constraint firstItem="jEj-3g-uRT" firstAttribute="bottom" secondItem="y5Q-pR-dV7" secondAttribute="bottom" constant="20" id="GkY-NB-rhL"/>
-                            <constraint firstItem="w5j-vj-GlK" firstAttribute="centerX" secondItem="Y1j-UK-c2G" secondAttribute="centerX" id="R0C-1o-wu3"/>
                             <constraint firstItem="4SL-cA-QWS" firstAttribute="top" secondItem="w5j-vj-GlK" secondAttribute="bottom" constant="10" id="SgI-vq-byy"/>
                             <constraint firstItem="y5Q-pR-dV7" firstAttribute="leading" secondItem="Y1j-UK-c2G" secondAttribute="leading" id="Viq-71-2z7"/>
                             <constraint firstAttribute="trailing" secondItem="y5Q-pR-dV7" secondAttribute="trailing" id="YXI-0l-fMb"/>

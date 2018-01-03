@@ -38,7 +38,7 @@ extension String{
     func substring(_ r: Range<Int>) -> String {
         let fromIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
         let toIndex = self.index(self.startIndex, offsetBy: r.upperBound)
-        return self.substring(with: Range<String.Index>(uncheckedBounds: (lower: fromIndex, upper: toIndex)))
+        return String(self[fromIndex..<toIndex])
     }
     
     static let numberFormatter = NumberFormatter()
@@ -95,7 +95,7 @@ extension String{
         var randomString: String = ""
         
         for _ in 0..<length {
-            let randomValue = arc4random_uniform(UInt32(base.characters.count))
+            let randomValue = arc4random_uniform(UInt32(base.count))
             randomString += "\(base[base.index(base.startIndex, offsetBy: Int(randomValue))])"
         }
         return randomString

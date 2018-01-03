@@ -99,12 +99,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let data = text2.data(using: .utf8) {
                     do {
                         let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                        print(dictionary)
                         if let myDict = dictionary {
                             if let termsVersion = myDict["TermsVersion"] as? String {
                                 UserDefaults.standard.termsVersion = termsVersion
                             }
-                            if let bearerExpiration = myDict["BearerExpiration"] {
+                            if myDict["BearerExpiration"] != nil {
                                 UserDefaults.standard.bearerExpiration = Date()
                             }
                             if let amountLimit = myDict["AmountLimit"] as? NSNumber {

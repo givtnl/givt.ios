@@ -154,7 +154,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == iban {
-            if let i = iban.text {
+            if iban.text != nil {
                 checkAll(iban)
             }
             
@@ -373,7 +373,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         } else if _lastTextField == mobilePrefixField {
             selectedRow(pv: mobilePrefixPickerView, row: mobilePrefixPickerView.selectedRow(inComponent: 0))
         }
-        textFieldShouldReturn(_lastTextField)
+        _ = textFieldShouldReturn(_lastTextField)
     }
     
     @IBAction func exit(_ sender: Any) {

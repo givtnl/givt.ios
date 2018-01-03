@@ -142,7 +142,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
-            self.updateKeyboardConstraint(height: keyboardSize.height, duration: TimeInterval(duration))
+            self.updateKeyboardConstraint(height: keyboardSize.height, duration: TimeInterval(truncating: duration))
         }
     }
     
@@ -154,9 +154,9 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+        if let _ = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
-            self.updateKeyboardConstraint(height: 0, duration: TimeInterval(duration))
+            self.updateKeyboardConstraint(height: 0, duration: TimeInterval(truncating: duration))
         }
     }
     
