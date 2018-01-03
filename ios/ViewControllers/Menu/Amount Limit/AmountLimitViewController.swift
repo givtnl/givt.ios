@@ -99,6 +99,11 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        // prevents the scroll view from swallowing up the touch event of child buttons
+        tapGesture.cancelsTouchesInView = false
+        theScrollView.addGestureRecognizer(tapGesture)
     }
 
     func createToolbar() {
