@@ -12,6 +12,7 @@
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F1991F7E2D4B000B9546 /* CustomViewController.swift */; };
 		D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F19B1F7E3EF8000B9546 /* Mandate.swift */; };
+		D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726298C1FFBD10C00743224 /* BaseScanViewController.swift */; };
 		D72A89D11FE8050A00C06EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72A89D01FE8050A00C06EF6 /* LaunchScreen.storyboard */; };
 		D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */; };
 		D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72A89D61FE820F000C06EF6 /* InfoRegistrationViewController.swift */; };
@@ -150,6 +151,7 @@
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D721F1991F7E2D4B000B9546 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		D721F19B1F7E3EF8000B9546 /* Mandate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mandate.swift; sourceTree = "<group>"; };
+		D726298C1FFBD10C00743224 /* BaseScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScanViewController.swift; sourceTree = "<group>"; };
 		D72A89D01FE8050A00C06EF6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WhyPersonalData.storyboard; sourceTree = "<group>"; };
 		D72A89D61FE820F000C06EF6 /* InfoRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRegistrationViewController.swift; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 				D761E9B61F18B89D002B849B /* AmountViewController.swift */,
 				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
 				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
+				D726298C1FFBD10C00743224 /* BaseScanViewController.swift */,
 			);
 			path = "Give Flow";
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
 				D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */,
+				D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */,
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
 				D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */,

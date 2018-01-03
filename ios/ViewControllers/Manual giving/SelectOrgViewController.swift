@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectOrgViewController: UIViewController {
+class SelectOrgViewController: BaseScanViewController {
     private var log = LogService.shared
     @IBOutlet var btnGive: CustomButton!
     @IBOutlet var overigWidth: NSLayoutConstraint!
@@ -56,7 +56,12 @@ class SelectOrgViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        GivtService.shared.onGivtProcessed = self
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        GivtService.shared.onGivtProcessed = nil
     }
     
     func addTap(_ view: UIView) {

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet var containerVIew: UIView!
     private var log = LogService.shared
     @IBOutlet var subTitle: UILabel!
@@ -60,6 +60,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        GivtService.shared.onGivtProcessed = self
         
         if isCameraDisabled {
             let overlay: UIView = UIView(frame: CGRect(x: 0, y: 0, width: containerVIew.frame.size.width, height: containerVIew.frame.size.height))
@@ -79,6 +80,11 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
             }))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        GivtService.shared.onGivtProcessed = nil
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,7 +10,7 @@ import UIKit
 import CoreBluetooth
 import SafariServices
 
-class ScanViewController: UIViewController, GivtProcessedProtocol {
+class ScanViewController: BaseScanViewController {
     private var log = LogService.shared
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var gif: UIImageView!
@@ -18,82 +18,6 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     @IBOutlet var btnGive: CustomButton!
     var overlayView: UIView?
     @IBOutlet var overlay: UIView!
-    func onGivtProcessed(transactions: [Transaction]) {
-        var trs = [NSDictionary]()
-        for tr in transactions {
-            trs.append(["Amount" : tr.amount,"CollectId" : tr.collectId, "Timestamp" : tr.timeStamp, "BeaconId" : tr.beaconId])
-        }
-
-        var canShare = false
-        if let beaconId = GivtService.shared.getBestBeacon.beaconId, !beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
-            canShare = true
-        }
-        
-        var parameters: [String: Any]
-        parameters = ["amountLimit" : 0,
-                          "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
-                          "GUID" : UserDefaults.standard.userExt!.guid,
-                          "urlPart" : "nativem",
-                          "givtObj" : trs,
-                          "apiUrl" : "https://givtapidebug.azurewebsites.net/",
-                          "lastDigits" : "XXXXXXXXXXXXXXX7061",
-                          "organisation" : GivtService.shared.lastGivtOrg,
-                          "mandatePopup" : "",
-                          "spUrl" : "",
-                          "canShare" : canShare]
-        
-        #if DEBUG
-            parameters["nativeAppScheme"] = "givtnd://"
-        #else
-            parameters["nativeAppScheme"] = "givtn://"
-        #endif
-        
-        
-        guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
-            return
-        }
-        
-        print(jsonParameters.description)
-        let plainTextBytes = jsonParameters.base64EncodedString()
-        let formatted = String(format: "https://givtapidebug.azurewebsites.net/givtapp4.html?msg=%@", plainTextBytes);
-        self.showWebsite(url: formatted)
-    }
-    
-    fileprivate func popToRootWithDelay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-            self.navigationController?.popToRootViewController(animated: false)
-        }
-    }
-    
-    func showWebsite(url: String){
-        if !AppServices.shared.connectedToNetwork() {
-            self.log.info(message: "User gave offline")
-            DispatchQueue.main.async {
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
-                self.show(vc, sender: self)
-            }
-            return
-        }
-        
-        guard let url = URL(string: url) else {
-            return //be safe
-        }
-        
-        self.log.info(message: "Going to safari")
-        if #available(iOS 10.0, *) {
-            DispatchQueue.main.async {
-                UIApplication.shared.open(url, options: [:], completionHandler: { (status) in
-                    self.popToRootWithDelay()
-                })
-            }
-        } else {
-            DispatchQueue.main.async {
-                if(UIApplication.shared.openURL(url)) {
-                    self.popToRootWithDelay()
-                }
-            }
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +51,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(showBluetoothMessage), name: Notification.Name("BluetoothIsOff"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        
         GivtService.shared.onGivtProcessed = self
         
         self.log.info(message: "Scanpage is now showing")
@@ -137,6 +62,7 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
 
         addOverlay()
     }
+
     
     @objc func startScanning() {
         GivtService.shared.startScanning()
@@ -199,8 +125,6 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-    
-        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         navigationController?.navigationBar.isTranslucent = true
@@ -210,15 +134,16 @@ class ScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        GivtService.shared.centralManager.stopScan()
+        GivtService.shared.onGivtProcessed = nil
         
+        GivtService.shared.centralManager.stopScan()
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
         sideMenuController?.isLeftViewSwipeGestureDisabled = false
         
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
         removeOverlay()
-       }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

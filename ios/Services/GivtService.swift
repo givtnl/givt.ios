@@ -14,7 +14,6 @@ import AudioToolbox
 final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate {
     static let shared = GivtService()
     private var log = LogService.shared
-     private var _baseUrl = "https://givtapidebug.azurewebsites.net"
     let reachability = Reachability()
     
     private var client = APIClient.shared
@@ -262,7 +261,12 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         sendPostRequest(transactions: transactions)
         //todo: clear self.amountss
         self.onGivtProcessed?.onGivtProcessed(transactions: transactions)
-        AudioServicesPlayAlertSound(1520)
+        
+        let deadlineTime = DispatchTime.now() + 0.35
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            AudioServicesPlayAlertSound(1520)
+        }
+    
         shouldDetect = true
     }
     

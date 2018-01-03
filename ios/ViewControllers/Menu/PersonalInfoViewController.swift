@@ -66,23 +66,63 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
                 iban.setState(b: isIbanValid)
                 btnNext.isEnabled = isIbanValid
             }
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.text = textField.text?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let _ = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return true }
-        
-        if range.length == 0 && range.location == textField.text!.count {
-            let temp = textField.text?.replacingOccurrences(of: " ", with: "")
-            if temp!.count != 0 && (temp!.count) % 4 == 0 {
-                textField.text = textField.text! + " "
+            
+            textField.text = textField.text?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
+            if let pos = self.position {
+                if deleting {
+                    //set cursor
+                    if let newPosition = textField.position(from: textField.beginningOfDocument, offset: pos-1) {
+                        textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+                    }
+                    
+                    if let cursorRange = textField.selectedTextRange, let newPosition = textField.position(from: cursorRange.start, offset: 1) {
+                        let range = textField.textRange(from: newPosition, to: cursorRange.start)
+                        //when deleting a space, remove the number before the space too.
+                        if textField.text(in: range!) == " " {
+                            //remove the number at the specific location
+                            textField.text?.remove(at: (textField.text?.index((textField.text?.startIndex)!, offsetBy: textField.offset(from: textField.beginningOfDocument, to: textField.position(from: cursorRange.start, offset: -1)!)))!)
+                            
+                            //reformat
+                            textField.text = textField.text?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
+                            
+                            //put pointer back
+                            textField.selectedTextRange = textField.textRange(from: textField.position(from: cursorRange.start, offset: -1)!, to: textField.position(from: cursorRange.start, offset: -1)!)
+                        }
+                    }
+                } else {
+                    //set cursor
+                    if let newPosition = textField.position(from: textField.beginningOfDocument, offset: pos+1) {
+                        textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+                    }
+                    
+                    //set position when editing existing IBAN.
+                    if let cursorRange = textField.selectedTextRange, let newPosition = textField.position(from: cursorRange.start, offset: -1) {
+                        // get the position one character before the cursor start position
+                        let range = textField.textRange(from: newPosition, to: cursorRange.start)
+                        if textField.text(in: range!) == " " {
+                            if let fixPosition = textField.position(from: newPosition, offset: 2) {
+                                textField.selectedTextRange = textField.textRange(from: fixPosition, to: fixPosition)
+                            }
+                        }
+                    }
+                }
             }
+            
         }
-        
+    }
+    
+    private var position: Int?
+    private var deleting: Bool = false
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let selectedRange = textField.selectedTextRange {
+            self.deleting = false
+            if range.length == 1 {
+                deleting = true
+            }
+            
+            let cursorPosition = textField.offset(from: textField.beginningOfDocument, to: selectedRange.start)
+            position = cursorPosition
+        }
         return true
     }
     

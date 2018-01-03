@@ -314,7 +314,7 @@ class HistoryViewController: UIViewController {
             
             hour2.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
             
-            if oldTime == hour2.text {
+            if oldTime == hour2.text && prevOrg == object.orgName {
                 hour2.alpha = 0
             }
             

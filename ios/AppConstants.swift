@@ -36,7 +36,7 @@ class AppConstants{
         return "https://givtapidebug.azurewebsites.net"
         #else
             return "https://givtapidebug.azurewebsites.net"
-       // return "https://api2.nfcollect.com/" // do not put this in prod before release!
+        //    return "https://api.givtapp.net" // do not put this in prod before release!
         #endif
     }()
     
@@ -46,12 +46,12 @@ class AppConstants{
         let trustKitConfig = [
             kTSKSwizzleNetworkDelegates: false,
             kTSKPinnedDomains: [
-                "api2.nfcollect.com": [
-                    kTSKExpirationDate: "2018-07-05",
+                "api.givtapp.net": [
+                    kTSKExpirationDate: "2018-12-08",
                     kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
                     kTSKPublicKeyHashes: [
-                        "xC0Y+0Mq+Ag3UEdgBSPJGhFGcxuNFUDIFaAm6wEBrII=",
-                        "klO23nT2ehFDXCfx3eHTDRESMz3asj1muO+4aIdjiuY="
+                        "GnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=",
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
                     ]],
                 "api.logit.io": [
                     kTSKExpirationDate: "2019-10-12",
