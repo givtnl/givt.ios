@@ -300,7 +300,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         } else {
             showBluetoothMessage()
         }
-        reset()
      }
     
     func displayAmountLimitExceeded() {

@@ -108,7 +108,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         // prevents the scroll view from swallowing up the touch event of child buttons
-        tapGesture.cancelsTouchesInView = false
+        tapGesture.cancelsTouchesInView = true
         theScrollView.addGestureRecognizer(tapGesture)
     }
     
@@ -254,6 +254,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         return false
     }
     
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
     @IBAction func next(_ sender: Any) {
         if !_appServices.connectedToNetwork() {
             _navigationManager.presentAlertNoConnection(context: self)
@@ -264,8 +268,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let address = self.streetAndNumber.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let city = self.city.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let countryCode = self.selectedCountry?.shortName
-        let iban = self.iban.text!.replacingOccurrences(of: " ", with: "")
-        let mobileNumber = self.formattedPhoneNumber
+        let iban = self.iban.text!.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let userData = RegistrationUserData(address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in

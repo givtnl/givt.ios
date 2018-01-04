@@ -14,6 +14,9 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     fileprivate func popToRootWithDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+            if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
+                amountVC.reset()
+            }
             self.navigationController?.popToRootViewController(animated: false)
         }
     }
@@ -47,7 +50,6 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             parameters = ["amountLimit" : 0,
                           "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
                           "GUID" : UserDefaults.standard.userExt!.guid,
-                          "urlPart" : "native",
                           "givtObj" : trs,
                           "apiUrl" : AppConstants.apiUri + "/",
                           "lastDigits" : "XXXXXXXXXXXXXXX7061",
@@ -58,8 +60,10 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             
             #if DEBUG
                 parameters["nativeAppScheme"] = "givtnd://"
+                parameters["urlPart"] = "native"
             #else
                 parameters["nativeAppScheme"] = "givtn://"
+                parameters["urlPart"] = "nativem"
             #endif
             
             
