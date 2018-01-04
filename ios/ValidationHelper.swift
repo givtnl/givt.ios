@@ -70,5 +70,13 @@ class ValidationHelper {
         return mod
     }
     
+    func isValidName(_ string: String) -> Bool {
+        var allowedCharacters = CharacterSet.letters
+        allowedCharacters.insert(" ")
+        //remove all allowed characters. When rest is not 0, means that we have unwanted characters.
+        let rest = string.trimmingCharacters(in: allowedCharacters)
+        return rest.count == 0
+    }
+    
     
 }
