@@ -264,8 +264,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let address = self.streetAndNumber.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let city = self.city.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let countryCode = self.selectedCountry?.shortName
-        let iban = self.iban.text!.replacingOccurrences(of: " ", with: "")
-        let mobileNumber = self.formattedPhoneNumber
+        let iban = self.iban.text!.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let userData = RegistrationUserData(address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
