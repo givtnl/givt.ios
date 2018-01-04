@@ -108,7 +108,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         // prevents the scroll view from swallowing up the touch event of child buttons
-        tapGesture.cancelsTouchesInView = false
+        tapGesture.cancelsTouchesInView = true
         theScrollView.addGestureRecognizer(tapGesture)
     }
     
@@ -252,6 +252,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             }
         }
         return false
+    }
+    
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true
     }
     
     @IBAction func next(_ sender: Any) {
