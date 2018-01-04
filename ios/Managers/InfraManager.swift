@@ -36,7 +36,7 @@ class InfraManager {
                             let dbBuildNumber = Int(truncating: parsedData["BuildNumber"] as! NSNumber)
                             if dbBuildNumber > Int(AppConstants.buildNumber)! {
                                 //new build number
-                                if Bool(parsedData["Critical"] as! NSNumber) {
+                                if Bool(truncating: parsedData["Critical"] as! NSNumber) {
                                     callback(true)
                                 } else {
                                     callback(false)

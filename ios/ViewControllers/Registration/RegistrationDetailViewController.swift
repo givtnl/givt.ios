@@ -87,11 +87,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             if let filteredCountry = filteredCountries.first {
                 selectedCountry = filteredCountry
                 countryField.text = selectedCountry?.name
-                countryField.setValid()
+                checkAll(countryField)
                 
                 selectedMobilePrefix = filteredCountry
                 mobilePrefixField.text = selectedMobilePrefix?.prefix
-                mobilePrefixField.setValid()
+                checkAll(mobilePrefixField)
             }
         }
 
@@ -106,13 +106,17 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         mobilePrefixPickerView.delegate = self
         mobilePrefixField.inputView = mobilePrefixPickerView
         
-        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        // prevents the scroll view from swallowing up the touch event of child buttons
+        tapGesture.cancelsTouchesInView = false
+        theScrollView.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
     }
     
     
@@ -150,7 +154,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if textField == iban {
-            if let i = iban.text {
+            if iban.text != nil {
                 checkAll(iban)
             }
             
@@ -199,7 +203,6 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     func textFieldDidBeginEditing(_ textField: UITextField) { //edit started
         _lastTextField = textField
-        justifyScrollViewContent()
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -330,6 +333,16 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
 
     func isMobileNumber(_ number: String) -> Bool {
         guard let selectedMobilePrefix = selectedMobilePrefix else { return false }
+        
+        let shortName = selectedMobilePrefix.shortName
+        if shortName == "BE" && !(number.starts(with: "4") || number.starts(with: "04")) {
+            return false
+        } else if shortName == "NL" && !(number.starts(with: "6") || number.starts(with: "06")) {
+            return false
+        } else if shortName == "DE" && !(number.starts(with: "1") || number.starts(with: "01")) {
+            return false
+        }
+        
         do {
             let phoneNumber = try phoneNumberKit.parse(selectedMobilePrefix.prefix + number, withRegion: selectedMobilePrefix.shortName, ignoreType: true)
             formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
@@ -343,32 +356,25 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         }
     }
 
-    @objc func keyboardWillShow(notification:NSNotification){
-        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
-        var userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-        
-        var contentInset:UIEdgeInsets = self.theScrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height
-        theScrollView.contentInset = contentInset
-        
-        justifyScrollViewContent()
+    @objc func keyboardDidShow(notification: NSNotification) {
+        theScrollView.contentInset.bottom -= 20
+        theScrollView.scrollIndicatorInsets.bottom -= 20
     }
     
-    func justifyScrollViewContent() {
-        let bottomOffset = CGPoint(x: 0, y: (theScrollView.contentSize.height - theScrollView.bounds.size.height + theScrollView.contentInset.bottom));
-        let minY = _lastTextField == countryField ? countryField.superview?.frame.minY : _lastTextField.frame.minY
-        if minY! < bottomOffset.y {
-            theScrollView.setContentOffset(CGPoint(x: 0, y: _lastTextField.frame.minY), animated: true)
-        } else {
-            theScrollView.setContentOffset(bottomOffset, animated: true)
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+            theScrollView.contentInset.bottom = contentInsets.bottom + 20
+            theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom + 20
+            
         }
     }
     
-    @objc func keyboardWillHide(notification:NSNotification){
-        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-        theScrollView.contentInset = contentInset
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+            theScrollView.contentInset = .zero
+            theScrollView.scrollIndicatorInsets = .zero
+        }
     }
 
     @objc func hideKeyboard() {
@@ -377,7 +383,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         } else if _lastTextField == mobilePrefixField {
             selectedRow(pv: mobilePrefixPickerView, row: mobilePrefixPickerView.selectedRow(inComponent: 0))
         }
-        textFieldShouldReturn(_lastTextField)
+        _ = textFieldShouldReturn(_lastTextField)
     }
     
     @IBAction func exit(_ sender: Any) {

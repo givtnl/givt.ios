@@ -92,57 +92,14 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         if UserDefaults.standard.amountLimit > 0 {
             amountLimit.text = String(UserDefaults.standard.amountLimit)
         }
-
-        //createToolbar()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-    }
 
-    func createToolbar() {
-        let btn = CustomButton(type: .custom)
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.cornerRadius = 3
-        btn.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
-        btn.highlightedBGColor = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1)
-        btn.ogBGColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
-        btn.setTitle(btnSave.titleLabel?.text, for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 18.0)
-        btn.addTarget(self, action: #selector(save), for: .touchUpInside)
-        btn.isUserInteractionEnabled = true
-        btn.isEnabled = true
-        let tap = UITapGestureRecognizer()
-        tap.numberOfTapsRequired = 1
-        tap.addTarget(self, action: #selector(save))
-        btn.gestureRecognizers?.append(tap)
-        self.btnSaveKeyboard = btn
-        
-        let doneToolbar: UIToolbar = UIToolbar()
-        doneToolbar.frame = CGRect(x: 0, y: 0, width: theScrollView.frame.width, height: 54)
-        //doneToolbar.addSubview(btn)
-        doneToolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
-        doneToolbar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        doneToolbar.clipsToBounds = true
-        doneToolbar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        doneToolbar.isUserInteractionEnabled = true
-
-        let barItem = UIBarButtonItem(customView: btn)
-        doneToolbar.setItems([barItem], animated: false)
-        
-        
-        let customView = UIView()
-        customView.frame = CGRect(x: 0, y: 0, width: theScrollView.frame.width, height: 64)
-        
-        customView.addSubview(btn)
-        btn.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 20).isActive = true
-        btn.bottomAnchor.constraint(equalTo: customView.bottomAnchor, constant: -10).isActive = true
-        btn.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -20).isActive = true
-        
-        
-        //amountLimit.inputAccessoryView = doneToolbar
-        amountLimit.inputAccessoryView = customView
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        // prevents the scroll view from swallowing up the touch event of child buttons
+        tapGesture.cancelsTouchesInView = false
+        theScrollView.addGestureRecognizer(tapGesture)
     }
     
     @IBAction func btnSave(_ sender: UIButton) {
@@ -181,18 +138,11 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         super.viewDidDisappear(animated)
     }
     
-    @objc func keyboardDidShow(notification: NSNotification) {
-//        theScrollView.contentInset.bottom -= 30
-//        theScrollView.scrollIndicatorInsets.bottom -= 30
-        
-
-    }
-    
     @IBOutlet var bottomSpaceConstraint: NSLayoutConstraint!
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
-            self.updateKeyboardConstraint(height: keyboardSize.height, duration: TimeInterval(duration))
+            self.updateKeyboardConstraint(height: keyboardSize.height, duration: TimeInterval(truncating: duration))
         }
     }
     
@@ -204,9 +154,9 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+        if let _ = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
-            self.updateKeyboardConstraint(height: 0, duration: TimeInterval(duration))
+            self.updateKeyboardConstraint(height: 0, duration: TimeInterval(truncating: duration))
         }
     }
     
@@ -245,9 +195,6 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
             return
         }
-        
-        
-        
         
     }
     

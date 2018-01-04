@@ -205,7 +205,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
         
         if let idx = currentAmountLabel.text?.index(of: decimalNotation) {
-            if( ((currentAmountLabel.text?.substring(from: idx).count)! == 3)) || ((sender.titleLabel?.text?.contains(decimalNotation.first!))!){
+            if( ((currentAmountLabel.text?[idx...].count)! == 3)) || ((sender.titleLabel?.text?.contains(decimalNotation.first!))!){
                 return
             }
         }
@@ -372,8 +372,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         button.setImage(#imageLiteral(resourceName: "twocollect.png"), for: .normal)
         if self.secondView.isHidden {
             self.selectView(1)
+            numberOfCollects = 2
         } else if self.thirdView.isHidden {
             self.selectView(2)
+            numberOfCollects = 3
         }
     }
     
@@ -411,7 +413,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             break
         }
         selectedAmount = idx
-        numberOfCollects = idx + 1
     }
     
     @objc func removeCollection() {

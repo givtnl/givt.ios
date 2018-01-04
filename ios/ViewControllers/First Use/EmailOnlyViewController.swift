@@ -78,10 +78,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     
     }
     
-    @objc func endEditing() {
-        self.view.endEditing(false)
-    }
-    
     @IBOutlet var scroll: UIScrollView!
     
     @IBOutlet var container: UIView!
@@ -117,9 +113,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.returnKeyType == .done {
-            self.doneCommand()
-        }
         self.view.endEditing(true)
         return false
     }

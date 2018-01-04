@@ -86,11 +86,6 @@
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                <integer key="value" value="70"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Voornaam" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Aj6-yH-iPv" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="84" width="280" height="44"/>
@@ -100,12 +95,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                <integer key="value" value="20"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="name"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Achternaam" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2nN-cS-Y50" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="138" width="280" height="44"/>
@@ -116,11 +106,6 @@
                                                         <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="family-name"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                <integer key="value" value="20"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3D-8Z-xXB">
                                                         <rect key="frame" x="20" y="335" width="280" height="55"/>
@@ -163,11 +148,6 @@
                                                                 <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                        <integer key="value" value="25"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32c-5t-IHf">
                                                                 <rect key="frame" x="235" y="2" width="40" height="40"/>
@@ -227,6 +207,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="R5E-cZ-hgM" firstAttribute="width" secondItem="njr-Oh-npg" secondAttribute="width" id="8QW-ob-0WG"/>
+                                            <constraint firstItem="R5E-cZ-hgM" firstAttribute="height" secondItem="njr-Oh-npg" secondAttribute="height" priority="250" id="CYC-Ex-VDE"/>
                                             <constraint firstAttribute="bottom" secondItem="R5E-cZ-hgM" secondAttribute="bottom" id="FeF-XM-Dlr"/>
                                             <constraint firstAttribute="trailing" secondItem="R5E-cZ-hgM" secondAttribute="trailing" id="NSO-Uh-JAo"/>
                                             <constraint firstItem="R5E-cZ-hgM" firstAttribute="leading" secondItem="njr-Oh-npg" secondAttribute="leading" id="P0O-0x-6vp"/>
@@ -240,7 +221,6 @@
                                     <constraint firstAttribute="bottom" secondItem="njr-Oh-npg" secondAttribute="bottom" id="767-2s-FsV"/>
                                     <constraint firstItem="njr-Oh-npg" firstAttribute="leading" secondItem="G5P-LB-uz0" secondAttribute="leading" id="AtT-OJ-Anx"/>
                                     <constraint firstAttribute="trailing" secondItem="njr-Oh-npg" secondAttribute="trailing" id="kFc-TU-NJV"/>
-                                    <constraint firstItem="R5E-cZ-hgM" firstAttribute="height" secondItem="G5P-LB-uz0" secondAttribute="height" priority="250" id="yAA-sM-uv1"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -324,7 +304,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="postal-code"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Stad" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2nW-mh-yOX" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="214" width="280" height="44"/>
@@ -334,7 +314,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" textContentType="address-level2"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Jb-7x-PCv" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="440" width="280" height="44"/>
@@ -424,14 +404,7 @@
                                                         </constraints>
                                                         <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
-                                                                <integer key="value" value="34"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="maskExpression" value="{aa..} {….} {….} {….}"/>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="maskTemplate" value="BE12 3456 7890 1234"/>
-                                                        </userDefinedRuntimeAttributes>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kHy-sc-OfV">
                                                         <rect key="frame" x="20" y="322" width="70" height="44"/>

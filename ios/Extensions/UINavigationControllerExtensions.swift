@@ -17,7 +17,6 @@ extension UINavigationController {
     }
     
     func givtLogo() -> UIImage {
-        let bottomImage = UIImage()
         let topImage = #imageLiteral(resourceName: "givt20h.png")
         let navBarWidth = self.navigationBar.frame.width
         let navBarHeight = self.navigationBar.frame.height

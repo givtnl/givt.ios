@@ -72,8 +72,8 @@ class CarouselViewController: UIPageViewController, UIPageViewControllerDataSour
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
-            if let currentVC = pageViewController.viewControllers![0] as? UIViewController {
-                if let idx = viewControllerList.index(of: currentVC) {
+            if let vcs = pageViewController.viewControllers  {
+                if let idx = viewControllerList.index(of: vcs[0]) {
                     pageControl.currentPage = idx
                 }
                 

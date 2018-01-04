@@ -26,7 +26,7 @@ class NavigationManager {
     public func finishRegistrationAlert(_ context: UIViewController) {
         if !loginManager.isFullyRegistered && loginManager.userClaim != .giveOnce {
             
-            if let alert = self.currentAlert, self.currentAlert == self.topController?.presentedViewController {
+            if let alert = self.currentAlert, alert == self.topController?.presentedViewController {
                 self.currentAlert!.dismiss(animated: false, completion: nil)
                 self.currentAlert = nil
             }  
@@ -170,7 +170,7 @@ class NavigationManager {
     
     private var topController: UIViewController? {
         get {
-            if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            if let topController = UIApplication.shared.keyWindow?.rootViewController {
                 return topController
             } else {
                 return nil
@@ -186,7 +186,7 @@ class NavigationManager {
         
         
         DispatchQueue.main.async {
-            if let alert = self.currentAlert, self.currentAlert == self.topController?.presentedViewController {
+            if let alert = self.currentAlert, alert == self.topController?.presentedViewController {
                 self.currentAlert!.dismiss(animated: false, completion: nil)
                 self.currentAlert = nil
             }
