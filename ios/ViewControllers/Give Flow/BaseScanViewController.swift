@@ -14,6 +14,9 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     fileprivate func popToRootWithDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+            if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
+                amountVC.reset()
+            }
             self.navigationController?.popToRootViewController(animated: false)
         }
     }
