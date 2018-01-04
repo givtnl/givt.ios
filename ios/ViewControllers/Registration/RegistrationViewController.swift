@@ -143,8 +143,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func checkAll() {
-        let isNameValid = validationHelper.isBetweenCriteria(forename.text!, 32)
-        let isLastNameValid = validationHelper.isBetweenCriteria(lastname.text!, 70)
+        let isNameValid = validationHelper.isBetweenCriteria(forename.text!, 32) && validationHelper.isValidName(forename.text!)
+        let isLastNameValid = validationHelper.isBetweenCriteria(lastname.text!, 70) && validationHelper.isValidName(lastname.text!)
         let isEmailAddressValid = validationHelper.isEmailAddressValid(emailaddress.text!)
         let isPasswordValid = validationHelper.isPasswordValid(password.text!)
         let isChecked = switchButton.isSelected
@@ -166,10 +166,10 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func next(_ sender: Any) {
-        let email = self.emailaddress.text!
-        let password = self.password.text!
-        let firstName = self.forename.text!
-        let lastName = self.lastname.text!
+        let email = self.emailaddress.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let password = self.password.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let firstName = self.forename.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let lastName = self.lastname.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         SVProgressHUD.show()
         let user = RegistrationUser(email: email, password: password, firstName: firstName, lastName: lastName)
         LoginManager.shared.registerUser(user)
