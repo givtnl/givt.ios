@@ -125,6 +125,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.text! = textField.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        checkAll()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
