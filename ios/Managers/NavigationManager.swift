@@ -82,6 +82,7 @@ class NavigationManager {
             thisVersion = savedVersion
         } else {
             thisVersion = NSLocalizedString("TermsTextVersion", comment: "")
+            UserDefaults.standard.termsVersion = thisVersion
         }
         DispatchQueue.main.async {
             
