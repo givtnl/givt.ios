@@ -333,6 +333,16 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
 
     func isMobileNumber(_ number: String) -> Bool {
         guard let selectedMobilePrefix = selectedMobilePrefix else { return false }
+        
+        let shortName = selectedMobilePrefix.shortName
+        if shortName == "BE" && !(number.starts(with: "4") || number.starts(with: "04")) {
+            return false
+        } else if shortName == "NL" && !(number.starts(with: "6") || number.starts(with: "06")) {
+            return false
+        } else if shortName == "DE" && !(number.starts(with: "1") || number.starts(with: "01")) {
+            return false
+        }
+        
         do {
             let phoneNumber = try phoneNumberKit.parse(selectedMobilePrefix.prefix + number, withRegion: selectedMobilePrefix.shortName, ignoreType: true)
             formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
