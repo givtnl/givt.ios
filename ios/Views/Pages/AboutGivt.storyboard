@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,7 +30,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEP-fU-jNa">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Chc-FD-a3P">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Chc-FD-a3P">
                                                 <rect key="frame" x="20" y="0.0" width="335" height="172.5"/>
                                                 <string key="text">Givt is een product van Givt B.V.
 
@@ -64,7 +64,7 @@ Je kan ons vinden  qsdfg sdfg sd gsd gfop sdf sdfg sdfg sdfg de Noordersluisweg 
                                                     <constraint firstAttribute="height" id="QEO-1D-YDV"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAd-M6-DLv">
+                                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="xAd-M6-DLv">
                                                 <rect key="frame" x="0.0" y="357" width="375" height="246"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4YE-hn-RK3" customClass="CustomButton" customModule="ios" customModuleProvider="target">
@@ -147,7 +147,7 @@ Je kan ons vinden  qsdfg sdfg sd gsd gfop sdf sdfg sdfg sdfg de Noordersluisweg 
                                     <constraint firstAttribute="bottom" secondItem="mEP-fU-jNa" secondAttribute="bottom" id="L6L-FN-5h3"/>
                                     <constraint firstAttribute="trailing" secondItem="mEP-fU-jNa" secondAttribute="trailing" id="Ndr-Px-dIv"/>
                                     <constraint firstItem="mEP-fU-jNa" firstAttribute="leading" secondItem="dat-Bn-WQv" secondAttribute="leading" id="PE3-KA-VRF"/>
-                                    <constraint firstItem="mEP-fU-jNa" firstAttribute="height" secondItem="dat-Bn-WQv" secondAttribute="height" id="vdd-Cd-rmV"/>
+                                    <constraint firstItem="mEP-fU-jNa" firstAttribute="height" secondItem="dat-Bn-WQv" secondAttribute="height" priority="250" id="vdd-Cd-rmV"/>
                                 </constraints>
                             </scrollView>
                         </subviews>

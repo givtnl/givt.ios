@@ -20,8 +20,8 @@ class AboutViewController: UIViewController {
     @IBOutlet var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
-NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
         textView.placeholder = NSLocalizedString("TypeMessage", comment: "")
         btnSend.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
@@ -32,6 +32,11 @@ NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHid
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
+        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        // prevents the scroll view from swallowing up the touch event of child buttons
+        tapGesture.cancelsTouchesInView = true
+        scrollView.addGestureRecognizer(tapGesture)
     }
     
     @objc func keyboardWillShow(notification:NSNotification){
