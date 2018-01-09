@@ -11,7 +11,8 @@ import SVProgressHUD
 
 class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
-    
+    private var organisation = ""
+    private var bestBeacon = BestBeacon()
     fileprivate func popToRootWithDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
             if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
@@ -35,6 +36,8 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     func onGivtProcessed(transactions: [Transaction]) {
+        organisation = GivtService.shared.lastGivtOrg
+        bestBeacon = GivtService.shared.getBestBeacon
         var trs = [NSDictionary]()
         for tr in transactions {
             trs.append(["Amount" : tr.amount,"CollectId" : tr.collectId, "Timestamp" : tr.timeStamp, "BeaconId" : tr.beaconId])
@@ -53,7 +56,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                           "givtObj" : trs,
                           "apiUrl" : AppConstants.apiUri + "/",
                           "lastDigits" : "XXXXXXXXXXXXXXX7061",
-                          "organisation" : GivtService.shared.lastGivtOrg,
+                          "organisation" : self.organisation,
                           "mandatePopup" : "",
                           "spUrl" : url,
                           "canShare" : canShare]
@@ -76,9 +79,6 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             let formatted = String(format: AppConstants.apiUri + "/givtapp4.html?msg=%@", plainTextBytes);
             self.showWebsite(url: formatted)
         }
-        
-        
-        
     }
     
     func shouldShowMandate(callback: @escaping (String) -> Void) {
@@ -104,6 +104,8 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             SVProgressHUD.dismiss()
             if let url = slimPayUrl {
                 callback(url)
+            } else {
+                callback("")
             }
         })
     }
@@ -113,6 +115,8 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             self.log.info(message: "User gave offline")
             DispatchQueue.main.async {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
+                vc.organisation = self.organisation
+                vc.bestBeacon = self.bestBeacon
                 self.show(vc, sender: self)
             }
             return
