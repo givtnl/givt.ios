@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -272,12 +272,24 @@
                                                     <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redcircle" translatesAutoresizingMaskIntoConstraints="NO" id="jZb-bl-Ghc">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YR1-5c-Vbl">
                                                     <rect key="frame" x="305" y="0.0" width="15" height="50"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="redcircle" translatesAutoresizingMaskIntoConstraints="NO" id="jZb-bl-Ghc">
+                                                            <rect key="frame" x="0.0" y="17.5" width="15" height="15"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="15" id="Lpf-no-OgB"/>
+                                                                <constraint firstAttribute="width" constant="15" id="wco-r8-9Wg"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="15" id="FAk-KK-WNW"/>
+                                                        <constraint firstItem="jZb-bl-Ghc" firstAttribute="centerX" secondItem="YR1-5c-Vbl" secondAttribute="centerX" id="W8j-Tf-PHP"/>
+                                                        <constraint firstItem="jZb-bl-Ghc" firstAttribute="centerY" secondItem="YR1-5c-Vbl" secondAttribute="centerY" id="qyQ-Kp-iQO"/>
+                                                        <constraint firstAttribute="width" constant="15" id="sIE-xR-OnD"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBs-QU-xbK">
                                                     <rect key="frame" x="325" y="0.0" width="50" height="50"/>
                                                     <subviews>
