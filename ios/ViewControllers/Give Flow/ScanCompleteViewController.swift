@@ -9,14 +9,15 @@
 import UIKit
 
 class ScanCompleteViewController: UIViewController {
-
+    var organisation = ""
+    var bestBeacon = BestBeacon()
     override func viewDidLoad() {
         super.viewDidLoad()
         btnBack.setTitle(NSLocalizedString("Ready", comment: ""), for: .normal)
         shareWithFriends.setTitle(NSLocalizedString("ShareTheGivtButton", comment: ""), for: .normal)
         lblBody.text = NSLocalizedString("GivingSuccess", comment: "")
         lblTitle.text = NSLocalizedString("YesSuccess", comment: "")
-        if let beaconId = GivtService.shared.getBestBeacon.beaconId, beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
+        if let beaconId = bestBeacon.beaconId, beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
             shareWithFriends.removeFromSuperview()
         }
 
@@ -33,9 +34,8 @@ class ScanCompleteViewController: UIViewController {
 
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         
-        print(GivtService.shared.lastGivtOrg)
-        if !GivtService.shared.lastGivtOrg.isEmpty() {
-            lblBody.text = NSLocalizedString("GivtIsBeingProcessed", comment: "").replacingOccurrences(of: "{0}", with: GivtService.shared.lastGivtOrg)
+        if !organisation.isEmpty() {
+            lblBody.text = NSLocalizedString("GivtIsBeingProcessed", comment: "").replacingOccurrences(of: "{0}", with: organisation)
         }
     }
     
@@ -52,7 +52,7 @@ class ScanCompleteViewController: UIViewController {
     @IBAction func shareGivtWithFriends(_ sender: Any) {
         print("sharing givt")
 
-        var message = !GivtService.shared.lastGivtOrg.isEmpty() ? NSLocalizedString("ShareTheGivtTextNoOrg", comment: "") : NSLocalizedString("ShareTheGivtText", comment: "").replacingOccurrences(of: "{0}", with: GivtService.shared.lastGivtOrg)
+        var message = !organisation.isEmpty() ? NSLocalizedString("ShareTheGivtTextNoOrg", comment: "") : NSLocalizedString("ShareTheGivtText", comment: "").replacingOccurrences(of: "{0}", with: organisation)
         message += " " + NSLocalizedString("JoinGivt", comment: "")
         
         let activityViewController = UIActivityViewController(activityItems: [message as NSString], applicationActivities: nil)
@@ -60,6 +60,9 @@ class ScanCompleteViewController: UIViewController {
         
     }
     @IBAction func nextBtn(_ sender: Any) {
+        if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
+            amountVC.reset()
+        }
         self.navigationController?.popToRootViewController(animated: true)
     }
     /*
