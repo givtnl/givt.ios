@@ -324,7 +324,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             object["Transactions"]?.append(transaction.convertToDictionary())
         }
         do {
-            try client.post(url: "https://givtapidebug.azurewebsites.net/api/Givts/Multiple", data: object) { (res) in
+            try client.post(url: "/api/Givts/Multiple", data: object) { (res) in
                     if let res = res {
                         if res.basicStatus == .ok {
                             self.log.info(message: "Posted Givt to the server")

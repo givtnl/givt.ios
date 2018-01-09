@@ -1,1 +1,2 @@
 "NSCameraUsageDescription" = "We willen graag de camera gebruiken om de code te scannen.";
+"NSBluetoothPeripheralUsageDescription" = "Nodig om de Givt-zenders op te pikken.";

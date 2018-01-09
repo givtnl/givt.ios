@@ -62,11 +62,11 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                           "canShare" : canShare]
             
             #if DEBUG
-                parameters["nativeAppScheme"] = "givtnd://"
+                parameters["nativeAppScheme"] = "givtd://"
                 parameters["urlPart"] = "native"
             #else
-                parameters["nativeAppScheme"] = "givtn://"
-                parameters["urlPart"] = "nativem"
+                parameters["nativeAppScheme"] = "givt://"
+                parameters["urlPart"] = "store"
             #endif
             
             
