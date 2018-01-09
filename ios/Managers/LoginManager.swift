@@ -249,7 +249,8 @@ class LoginManager {
     
     func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (String?) -> Void) {
         do {
-            try client.post(url: "/api/Mandate", data: mandate.toDictionary()) { (response) in
+            let locale = Locale.preferredLanguages[0]
+            try client.post(url: "/api/Mandate?locale=\(locale)", data: mandate.toDictionary()) { (response) in
                 if let response = response, let text = response.text {
                     if response.basicStatus == .ok {
                         completionHandler(text)
