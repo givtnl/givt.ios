@@ -217,11 +217,11 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 
                 if let _ = bestBeacon.beaconId, let bestBeaconRssi = bestBeacon.rssi {
                     /* beacon exists */
-                    if bestBeaconRssi.intValue < rssi.intValue {
-                        bestBeacon.beaconId = antennaID
+                    if bestBeaconRssi.intValue < rssi.intValue { //update rssi when bigger
                         bestBeacon.rssi = rssi
-                        bestBeacon.organisation = organisation
                     }
+                    bestBeacon.beaconId = antennaID
+                    bestBeacon.organisation = organisation
                 } else {
                     /* new beacon */
                     bestBeacon.beaconId = antennaID
@@ -230,7 +230,6 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 }
                 
                 if(rssi.intValue > rssiTreshold){
-                    print("is scanning: ", String(centralManager!.isScanning))
                     shouldDetect = false
                     give(antennaID: antennaID)
                     return
@@ -268,6 +267,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     
         shouldDetect = true
+        bestBeacon = BestBeacon()
     }
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
@@ -282,7 +282,6 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 } else {
                     bestBeacon.organisation = decoded
                 }
-                bestBeacon.rssi = 0
                 give(antennaID: decoded)
                 completionHandler(true)
             } else {
@@ -302,7 +301,6 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         } else {
             bestBeacon.organisation = antennaId
         }
-        bestBeacon.rssi = 0
         give(antennaID: antennaId)
     }
 
