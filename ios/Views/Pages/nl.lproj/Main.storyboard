@@ -1268,11 +1268,12 @@ Kijk voor de status in je overzicht.</string>
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="488" translatesAutoresizingMaskIntoConstraints="NO" id="Ymb-WS-wEx">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="488"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iVo-76-ie5">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-1" translatesAutoresizingMaskIntoConstraints="NO" id="iVo-76-ie5">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="488"/>
+                                                <color key="backgroundColor" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="iVo-76-ie5" firstAttribute="top" secondItem="Ymb-WS-wEx" secondAttribute="top" id="bhM-ba-6Xy"/>
                                             <constraint firstAttribute="trailing" secondItem="iVo-76-ie5" secondAttribute="trailing" id="c1F-dA-6QE"/>

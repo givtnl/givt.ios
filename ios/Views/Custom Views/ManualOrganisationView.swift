@@ -24,7 +24,24 @@ class ManualOrganisationView: UIView {
         self.organisationId = orgId
         self.translatesAutoresizingMaskIntoConstraints = false
         self.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
+        addSpacer(to: "top")
         addStackview(text)
+        addSpacer(to: "bottom")
+    }
+    
+    fileprivate func addSpacer(to: String) {
+        let spacer = UIView()
+        spacer.translatesAutoresizingMaskIntoConstraints = false
+        spacer.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
+        spacer.backgroundColor = #colorLiteral(red: 0.8901960784, green: 0.8862745098, blue: 0.9058823529, alpha: 1)
+        self.addSubview(spacer)
+        if to == "top" {
+            spacer.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        } else if to == "bottom" {
+            spacer.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        }
+        spacer.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        spacer.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
