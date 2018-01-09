@@ -137,7 +137,9 @@ class NavigationManager {
 
                 }
                 pinVC.outerHandler = completionHandler
-                context.present(pinVC, animated: true, completion: nil)
+                context.present(pinVC, animated: true, completion: {
+                    context.hideLeftView(context)
+                })
                 
             } else {
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
@@ -147,11 +149,15 @@ class NavigationManager {
                     }
                 }
                 loginVC.outerHandler = completionHandler
-                context.present(loginVC, animated: true, completion: nil)
+                context.present(loginVC, animated: true, completion: {
+                    context.hideLeftView(context)
+                })
             }
             
         } else {
-            context.present(vc, animated: true)
+            context.present(vc, animated: true, completion: {
+                context.hideLeftView(context)
+            })
         }
         
     }

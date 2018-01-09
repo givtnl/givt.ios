@@ -117,7 +117,9 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
         DispatchQueue.main.async {
             let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! AboutNavigationController
             vc.transitioningDelegate = self.slideFromRightAnimation
-            self.present(vc, animated: true, completion: {})
+            self.present(vc, animated: true, completion: {
+                self.hideLeftView(self)
+            })
         }
     }
 
@@ -134,7 +136,9 @@ class SettingTableViewController: UITableViewController, UIActivityItemSource {
             
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
-                self.present(activityViewController, animated: true, completion: {})
+                self.present(activityViewController, animated: true, completion: {
+                    self.hideLeftView(self)
+                })
             }
         }
     }
