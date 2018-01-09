@@ -385,7 +385,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         secondEuro.isHidden = true
         thirdLine.isHidden = true
         thirdEuro.isHidden = true
-        
+        pressedShortcutKey = true
         switch idx {
         case 0?:
             self.lblTitle.title = numberOfCollects != 1 ? NSLocalizedString("ColId1", comment: "") : NSLocalizedString("Amount", comment: "")
