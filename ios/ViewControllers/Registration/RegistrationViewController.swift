@@ -186,6 +186,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func exit(_ sender: Any) {
+        self.endEditing()
         self.dismiss(animated: true, completion: nil)
     }
     

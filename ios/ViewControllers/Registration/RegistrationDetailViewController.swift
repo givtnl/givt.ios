@@ -248,6 +248,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         if textField == iban {
             if nextButton.isEnabled {
+                
                 nextButton.sendActions(for: UIControlEvents.touchUpInside)
             }
         }
@@ -259,6 +260,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @IBAction func next(_ sender: Any) {
+        self.endEditing()
         if !_appServices.connectedToNetwork() {
             _navigationManager.presentAlertNoConnection(context: self)
             return
