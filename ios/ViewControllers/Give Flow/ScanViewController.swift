@@ -128,8 +128,7 @@ class ScanViewController: BaseScanViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         navigationController?.navigationBar.isTranslucent = true
-        
-        sideMenuController?.isLeftViewSwipeGestureDisabled = true
+        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         
     }
     
@@ -139,8 +138,7 @@ class ScanViewController: BaseScanViewController {
         GivtService.shared.centralManager.stopScan()
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
-        sideMenuController?.isLeftViewSwipeGestureDisabled = false
-        
+
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
         removeOverlay()
     }
