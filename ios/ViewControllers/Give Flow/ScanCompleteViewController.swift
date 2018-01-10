@@ -31,8 +31,6 @@ class ScanCompleteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-
-        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         
         if !organisation.isEmpty() {
             lblBody.text = NSLocalizedString("GivtIsBeingProcessed", comment: "").replacingOccurrences(of: "{0}", with: organisation)
