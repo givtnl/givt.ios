@@ -35,8 +35,7 @@ class AppConstants{
         #if DEBUG
         return "https://givtapidebug.azurewebsites.net"
         #else
-            return "https://givtapidebug.azurewebsites.net"
-        //    return "https://api.givtapp.net" // do not put this in prod before release!
+        return "https://api.givtapp.net" // do not put this in prod before release!
         #endif
     }()
     
