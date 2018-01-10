@@ -128,19 +128,16 @@ class ScanViewController: BaseScanViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         navigationController?.navigationBar.isTranslucent = true
-        
-        sideMenuController?.isLeftViewSwipeGestureDisabled = true
+        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        GivtService.shared.onGivtProcessed = nil
-        
-        GivtService.shared.centralManager.stopScan()
         super.viewWillDisappear(animated)
+        GivtService.shared.onGivtProcessed = nil
+        GivtService.shared.stopScanning()
         self.navigationController?.isNavigationBarHidden = false
-        sideMenuController?.isLeftViewSwipeGestureDisabled = false
-        
+
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
         removeOverlay()
     }
@@ -159,7 +156,9 @@ class ScanViewController: BaseScanViewController {
     }
     
     @IBAction func giveDifferently(_ sender: Any) {
-        GivtService.shared.centralManager.stopScan()
+        if !GivtService.shared.isScanning {
+            return
+        }
         let vc = storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
         self.show(vc, sender: nil)
     }

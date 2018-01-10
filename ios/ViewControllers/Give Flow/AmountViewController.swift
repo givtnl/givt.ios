@@ -152,6 +152,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
             navigiationManager.finishRegistrationAlert(self)
+
         }
         
         self._cameFromFAQ = false

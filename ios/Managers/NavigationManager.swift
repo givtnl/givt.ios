@@ -32,9 +32,16 @@ class NavigationManager {
             }  
             
             currentAlert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertActionStyle.default, handler: { action in  }))
+            currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertActionStyle.default, handler: { action in
+                if let ctx = context as? AmountViewController {
+                     ctx.menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
+                }
+            }))
             currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("FinalizeRegistration", comment: ""), style: .cancel, handler: { (action) in
                 self.finishRegistration(context)
+                if let ctx = context as? AmountViewController {
+                    ctx.menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
+                }
             }))
             context.present(currentAlert!, animated: false, completion: {})
         }
@@ -137,7 +144,9 @@ class NavigationManager {
 
                 }
                 pinVC.outerHandler = completionHandler
-                context.present(pinVC, animated: true, completion: nil)
+                context.present(pinVC, animated: true, completion: {
+                    context.hideLeftView(context)
+                })
                 
             } else {
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
@@ -147,11 +156,15 @@ class NavigationManager {
                     }
                 }
                 loginVC.outerHandler = completionHandler
-                context.present(loginVC, animated: true, completion: nil)
+                context.present(loginVC, animated: true, completion: {
+                    context.hideLeftView(context)
+                })
             }
             
         } else {
-            context.present(vc, animated: true)
+            context.present(vc, animated: true, completion: {
+                context.hideLeftView(context)
+            })
         }
         
     }

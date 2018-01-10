@@ -75,6 +75,7 @@ class AboutViewController: UIViewController {
     }
     
     func send() {
+        endEditing()
         textView.text = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
         if textView.text.isEmpty() || textView.text == textView.placeholder {
             let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("NoMessage", comment: ""), preferredStyle: .alert)

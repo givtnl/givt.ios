@@ -29,6 +29,7 @@ class ConfirmationViewController: UIViewController {
             // Put your code which should be executed with a delay here
             self.hideLeftView(nil)
             self.performSegue(withIdentifier: "unwindAmount", sender: self)
+            NavigationManager.shared.loadMainPage(animated: false)
         })
     }
 

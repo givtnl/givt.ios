@@ -129,7 +129,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             centralManager.stopScan()
         }
         DispatchQueue.main.async {
-            UIApplication.shared.isIdleTimerDisabled = true
+            UIApplication.shared.isIdleTimerDisabled = false
         }
         
     }

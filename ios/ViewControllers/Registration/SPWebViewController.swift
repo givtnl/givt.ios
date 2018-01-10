@@ -68,12 +68,9 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("page fully loaded")
         
-        var url = "https://api.givtapp.net/"
-        #if DEBUG
-        url = "https://givtapidebug.azurewebsites.net/"
-        #endif
-        
-        if webView.url?.absoluteString == url {
+        let possibleUrls = ["https://givtapidebug.azurewebsites.net/","https://api2.nfcollect.com","https://api.givtapp.net/"]
+        guard let webViewUrl = webView.url else { return }
+        if possibleUrls.contains(webViewUrl.absoluteString) {
             webView.isHidden = true
             LoginManager.shared.finishMandateSigning(completionHandler: { (success) in
                 if success {

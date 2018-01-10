@@ -24,7 +24,9 @@ class SelectOrgViewController: BaseScanViewController {
     }
     var selectedTag: Int = 100
     private var lastTag: Int?
-    var listToLoad: [[String: String]]!
+    var listToLoad: [[String: String]] = {
+        return GivtService.shared.orgBeaconList as! [[String: String]]
+    }()
 
     @IBOutlet var kerken: UIImageView!
     @IBOutlet var stichtingen: UIImageView!
@@ -52,6 +54,25 @@ class SelectOrgViewController: BaseScanViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         navigationController?.navigationBar.isTranslucent = true
+        
+        for organisation in listToLoad {
+            let temp = organisation
+            let item = ManualOrganisationView(text: temp["OrgName"]!, orgId: temp["EddyNameSpace"]!)
+            stackList.addArrangedSubview(item)
+            
+            /* Going back to previous type will add the check when it was previously selected */
+            if selectedView?.organisationId == item.organisationId && selectedView?.label.text == item.label.text {
+                item.toggleCheckMark()
+                selectedView = item
+            }
+            
+            item.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer()
+            tap.numberOfTapsRequired = 1
+            tap.addTarget(self, action: #selector(selectOrg))
+            item.addGestureRecognizer(tap)
+        }
+        loadView(selectedTag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,7 +114,10 @@ class SelectOrgViewController: BaseScanViewController {
     /* selecteren van Kerk/Stichtingen/...-knop langsboven */
     @objc func selectType(_ sender: UITapGestureRecognizer) {
         if let view = sender.view {
-            loadView(view.tag)
+            DispatchQueue.main.async {
+                 self.loadView(view.tag)
+            }
+           
         }
     }
     
@@ -113,12 +137,11 @@ class SelectOrgViewController: BaseScanViewController {
         }
 
         /* clear list */
-        for view in stackList.arrangedSubviews {
+        /*for view in stackList.arrangedSubviews {
             stackList.removeArrangedSubview(view)
             view.removeFromSuperview() /* important! */
-        }
+        }*/
         
-        listToLoad = GivtService.shared.orgBeaconList as! [[String: String]]
         
         /* reset all widths */
         stichtingWidth.constant = 50
@@ -142,32 +165,20 @@ class SelectOrgViewController: BaseScanViewController {
         default:
             break
         }
-        self.view.layoutIfNeeded()
         
-        /* filter list based on regExp */
-        listToLoad = listToLoad.filter { ($0["EddyNameSpace"]?.substring(16..<19).matches(regExp))! }
-
-        for organisation in listToLoad {
-            renderSpacer()
-            let temp = organisation
-            let item = ManualOrganisationView(text: temp["OrgName"]!, orgId: temp["EddyNameSpace"]!)
-            stackList.addArrangedSubview(item)
-            
-            /* Going back to previous type will add the check when it was previously selected */
-            if selectedView?.organisationId == item.organisationId && selectedView?.label.text == item.label.text {
-                item.toggleCheckMark()
-                selectedView = item
+        refreshList(regExp: regExp)
+    }
+    
+    func refreshList(regExp: String) {
+        for (idx, view) in stackList.arrangedSubviews.enumerated() {
+            if let organisation = view as? ManualOrganisationView {
+                if organisation.organisationId!.substring(16..<19).matches(regExp) {
+                    organisation.isHidden = false
+                } else {
+                    organisation.isHidden = true
+                }
             }
-
-            item.isUserInteractionEnabled = true
-            let tap = UITapGestureRecognizer()
-            tap.numberOfTapsRequired = 1
-            tap.addTarget(self, action: #selector(selectOrg))
-            item.addGestureRecognizer(tap)
         }
-        renderSpacer()
-        
-        self.lastTag = tag
     }
     
     @IBAction func goBack(_ sender: Any) {
