@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ManualGivingViewController: BaseScanViewController {
+class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDelegate {
     private var log = LogService.shared
     @IBOutlet var organisationSuggestion: UILabel!
     @IBOutlet var containerHeight: NSLayoutConstraint!
@@ -38,6 +38,7 @@ class ManualGivingViewController: BaseScanViewController {
     private var beaconId: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navBar.title = NSLocalizedString("GiveDifferently", comment: "")
         stichtingen.text = NSLocalizedString("Stichtingen", comment: "")
         kerken.text = NSLocalizedString("Churches", comment: "")
@@ -110,9 +111,18 @@ class ManualGivingViewController: BaseScanViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        disableButtons = false
+    }
+
+    private var disableButtons = false
     @objc func choose(_ sender: UITapGestureRecognizer) {
+        if disableButtons {
+            return
+        }
+        disableButtons = true
         if let tag = sender.view?.tag {
             switch tag {
             case 100, 101, 102, 103:
