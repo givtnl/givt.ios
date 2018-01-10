@@ -133,10 +133,9 @@ class ScanViewController: BaseScanViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        GivtService.shared.onGivtProcessed = nil
-        
-        GivtService.shared.centralManager.stopScan()
         super.viewWillDisappear(animated)
+        GivtService.shared.onGivtProcessed = nil
+        GivtService.shared.stopScanning()
         self.navigationController?.isNavigationBarHidden = false
 
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
@@ -157,7 +156,9 @@ class ScanViewController: BaseScanViewController {
     }
     
     @IBAction func giveDifferently(_ sender: Any) {
-        GivtService.shared.centralManager.stopScan()
+        if !GivtService.shared.isScanning {
+            return
+        }
         let vc = storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
         self.show(vc, sender: nil)
     }

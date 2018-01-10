@@ -72,6 +72,7 @@ class SelectOrgViewController: BaseScanViewController {
             tap.addTarget(self, action: #selector(selectOrg))
             item.addGestureRecognizer(tap)
         }
+        loadView(selectedTag)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -166,33 +167,6 @@ class SelectOrgViewController: BaseScanViewController {
         }
         
         refreshList(regExp: regExp)
-        
-        return
-        /* filter list based on regExp */
-        //listToLoad = listToLoad.filter { ($0["EddyNameSpace"]?.substring(16..<19).matches(regExp))! }
-
-        for organisation in listToLoad {
-            renderSpacer()
-            let temp = organisation
-            let item = ManualOrganisationView(text: temp["OrgName"]!, orgId: temp["EddyNameSpace"]!)
-            stackList.addArrangedSubview(item)
-            
-            /* Going back to previous type will add the check when it was previously selected */
-            if selectedView?.organisationId == item.organisationId && selectedView?.label.text == item.label.text {
-                item.toggleCheckMark()
-                selectedView = item
-            }
-
-            item.isUserInteractionEnabled = true
-            let tap = UITapGestureRecognizer()
-            tap.numberOfTapsRequired = 1
-            tap.addTarget(self, action: #selector(selectOrg))
-            item.addGestureRecognizer(tap)
-        }
-        renderSpacer()
-        
-        self.lastTag = tag
-        self.view.layoutIfNeeded()
     }
     
     func refreshList(regExp: String) {
