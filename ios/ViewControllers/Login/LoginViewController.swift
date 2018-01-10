@@ -62,6 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func goBack(_ sender: Any) {
+        self.endEditing()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -90,6 +91,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func performLogin(_ sender: UIButton) {
+        self.endEditing()
         login()
     }
     

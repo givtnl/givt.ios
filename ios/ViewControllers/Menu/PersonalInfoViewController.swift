@@ -25,11 +25,13 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField.returnKeyType == .done {
+            self.endEditing()
             save()
         }
         return false
     }
     @IBAction func next(_ sender: Any) {
+        self.endEditing()
         save()
     }
     
@@ -186,6 +188,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func goBack(_ sender: Any) {
+        self.endEditing()
         self.dismiss(animated: true, completion: nil)
     }
     
