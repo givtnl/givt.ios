@@ -15,7 +15,7 @@ class ScanCompleteViewController: UIViewController {
         super.viewDidLoad()
         btnBack.setTitle(NSLocalizedString("Ready", comment: ""), for: .normal)
         shareWithFriends.setTitle(NSLocalizedString("ShareTheGivtButton", comment: ""), for: .normal)
-        lblBody.text = NSLocalizedString("GivingSuccess", comment: "")
+        lblBody.text = NSLocalizedString("OfflineGegevenGivtMessage", comment: "")
         lblTitle.text = NSLocalizedString("YesSuccess", comment: "")
         if let beaconId = bestBeacon.beaconId, beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
             shareWithFriends.removeFromSuperview()
@@ -33,7 +33,7 @@ class ScanCompleteViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         if !organisation.isEmpty() {
-            lblBody.text = NSLocalizedString("GivtIsBeingProcessed", comment: "").replacingOccurrences(of: "{0}", with: organisation)
+            lblBody.text = NSLocalizedString("OfflineGegevenGivtMessageWithOrg", comment: "").replacingOccurrences(of: "{0}", with: organisation)
         }
     }
     
