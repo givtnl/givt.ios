@@ -29,7 +29,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemArrow", for: indexPath) as? SettingsItemArrow
             }
         } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemTableViewCell", for: indexPath) as? SettingsItemTableViewCell
+            if setting.isHighlighted {
+                cell = tableView.dequeueReusableCell(withIdentifier: "HighlightedItem", for: indexPath) as? HighlightedItem
+            } else {
+                cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemTableViewCell", for: indexPath) as? SettingsItemTableViewCell //normal cell
+            }
+            
         }
     
         cell!.settingLabel.text = setting.name
@@ -116,12 +121,16 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         if !tempUser {
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
+            let givtsTaxOverviewAvailable = Setting(name: "Belastingsaangifte beschikbaar", image: UIImage(), callback: {
+                self.openHistory()
+            }, showArrow: false, isHighlighted: true)
+            
             let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
             items =
                 [
-                    [givts, limit, userInfoSetting!, accessCode],
+                    [givts, givtsTaxOverviewAvailable, limit, userInfoSetting!, accessCode],
                     [changeAccount, screwAccount],
                     [aboutGivt, shareGivt],
             ]
