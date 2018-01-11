@@ -14,6 +14,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     private var log = LogService.shared
     @IBOutlet var subTitle: UILabel!
     @IBOutlet var navBar: UINavigationItem!
+    @IBOutlet weak var topLeft: UIImageView!
     @IBOutlet var topRight: UIImageView!
     @IBOutlet var bottomLeft: UIImageView!
     @IBOutlet var bottomRight: UIImageView!
@@ -29,6 +30,10 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
         bottomRight.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)
         bottomLeft.transform = CGAffineTransform(rotationAngle: (270.0 * CGFloat(Double.pi)) / 180.0)
         
+        log.info(message: "QR Page is shown")
+    }
+    
+    override func viewDidLayoutSubviews() {
         //capture device
         let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         
@@ -44,18 +49,19 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
             
             video = AVCaptureVideoPreviewLayer(session: session)
             video.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            video.frame = qrView.bounds
+            video.frame = containerVIew.layer.bounds
             
-            qrView.layer.addSublayer(video)
+            containerVIew.layer.addSublayer(video)
             session.startRunning()
         } catch {
             print("camera does not work")
             isCameraDisabled = true
         }
         
-        
-        
-        log.info(message: "QR Page is shown")
+        containerVIew.bringSubview(toFront: topLeft)
+        containerVIew.bringSubview(toFront: topRight)
+        containerVIew.bringSubview(toFront: bottomLeft)
+        containerVIew.bringSubview(toFront: bottomRight)
     }
     
     override func viewDidAppear(_ animated: Bool) {
