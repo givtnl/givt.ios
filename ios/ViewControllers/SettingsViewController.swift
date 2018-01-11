@@ -19,14 +19,22 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cellIdentifier = "SettingsItemTableViewCell"
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SettingsItemTableViewCell
-            let temp = self.items[indexPath.section]
-            cell.settingLabel.text = temp[indexPath.row].name
-            cell.settingImageView.image = temp[indexPath.row].image
-            cell.badge.isHidden = temp[indexPath.row].isHidden
-            cell.arrow.alpha = temp[indexPath.row].showArrow ? 1.0 : 0.0
-            return cell
+        let setting = self.items[indexPath.section][indexPath.row]
+        
+        var cell: SettingsItemTableViewCell? = nil
+        if setting.showArrow {
+            if setting.showBadge {
+                cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemBadgeAndArrow", for: indexPath) as? SettingsItemBadgeAndArrow
+            } else {
+                cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemArrow", for: indexPath) as? SettingsItemArrow
+            }
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemTableViewCell", for: indexPath) as? SettingsItemTableViewCell
+        }
+    
+        cell!.settingLabel.text = setting.name
+        cell!.settingImageView.image = setting.image
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -100,9 +108,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
         var userInfoSetting: Setting?
         if LoginManager.shared.isFullyRegistered {
-            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.changePersonalInfo() })
+            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, callback: { self.changePersonalInfo() })
         } else {
-            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, isHidden: LoginManager.shared.isFullyRegistered, callback: { self.register() })
+            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, showBadge: !LoginManager.shared.isFullyRegistered, callback: { self.register() })
         }
         
         

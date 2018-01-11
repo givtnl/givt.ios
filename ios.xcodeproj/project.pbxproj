@@ -44,7 +44,7 @@
 		D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */; };
 		D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CD01FACA73900F40827 /* QRViewController.swift */; };
 		D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */; };
-		D761E9601F15248E002B849B /* SettingsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */; };
+		D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */; };
 		D761E9631F161207002B849B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9621F161207002B849B /* Setting.swift */; };
 		D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9931F166B8D002B849B /* CustomTableView.swift */; };
 		D761E9A01F167798002B849B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E99F1F167798002B849B /* BaseViewController.swift */; };
@@ -187,7 +187,7 @@
 		D75F2CD01FACA73900F40827 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		D76021DE1F56B4DD00C24AB6 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
 		D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountLimitViewController.swift; sourceTree = "<group>"; };
-		D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemTableViewCell.swift; sourceTree = "<group>"; };
+		D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemViewCells.swift; sourceTree = "<group>"; };
 		D761E9621F161207002B849B /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		D761E9931F166B8D002B849B /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		D761E99F1F167798002B849B /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -405,7 +405,7 @@
 			children = (
 				D761E9931F166B8D002B849B /* CustomTableView.swift */,
 				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
-				D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */,
+				D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */,
 				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
 				D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */,
 				D77511BC1F713B56004F91F6 /* AgendaNumber.swift */,
@@ -918,7 +918,7 @@
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
 				D7DE0FED1F8E1A6900808ED4 /* TriangleView.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
-				D761E9601F15248E002B849B /* SettingsItemTableViewCell.swift in Sources */,
+				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
 				D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */,
 				D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */,
 				D77511BB1F711231004F91F6 /* DateExtensions.swift in Sources */,
