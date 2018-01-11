@@ -16,6 +16,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     var url: String!
     var webView: WKWebView!
     @IBOutlet var placeholder: UIView!
+    @IBOutlet weak var navBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -95,6 +96,23 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
             
         }
         
+    }
+    
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if navigationAction.targetFrame == nil {
+            if navigationAction.targetFrame == nil {
+                webView.load(navigationAction.request)
+                let bbi = UIBarButtonItem(title: NSLocalizedString("Close", comment: ""), style: .done, target: self, action: #selector(previousPage))
+                self.navBar.setRightBarButton(bbi, animated: true)
+            }
+            return nil
+        }
+        return nil
+    }
+    
+    @objc func previousPage() {
+        webView.goBack()
+        self.navBar.setRightBarButtonItems([], animated: true)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
