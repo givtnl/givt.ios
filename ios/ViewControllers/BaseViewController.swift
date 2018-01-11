@@ -16,7 +16,7 @@ class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     
     func willShowLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
         UIApplication.shared.statusBarStyle = .default
-        if let vc = UIApplication.shared.keyWindow?.rootViewController?.childViewControllers.first as? SettingTableViewController {
+        if let vc = UIApplication.shared.keyWindow?.rootViewController?.childViewControllers.first as? SettingsViewController {
             vc.loadSettings()
         }
     }

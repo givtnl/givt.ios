@@ -136,6 +136,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             if let mandateSigned = myDict["MandateStatus"] as? NSNumber {
                                 UserDefaults.standard.mandateSigned = mandateSigned.boolValue
                             }
+                            if let orgBeacons = myDict["OrgBeaconList"] as? [String: Any] {
+                                UserDefaults.standard.orgBeaconList = orgBeacons as NSDictionary
+                            }
                             if let userInfo = myDict["UserInfo"] as? [String: Any] {
                                 var newSettings = UserExt()
                                 if let userExt = UserDefaults.standard.userExt {

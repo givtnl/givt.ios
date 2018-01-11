@@ -44,9 +44,8 @@
 		D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */; };
 		D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CD01FACA73900F40827 /* QRViewController.swift */; };
 		D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */; };
-		D761E9601F15248E002B849B /* SettingsItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */; };
+		D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */; };
 		D761E9631F161207002B849B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9621F161207002B849B /* Setting.swift */; };
-		D761E9651F1612F8002B849B /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9641F1612F8002B849B /* SettingTableViewController.swift */; };
 		D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9931F166B8D002B849B /* CustomTableView.swift */; };
 		D761E9A01F167798002B849B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E99F1F167798002B849B /* BaseViewController.swift */; };
 		D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9A11F17B14D002B849B /* RoundedButton.swift */; };
@@ -65,6 +64,7 @@
 		D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77511BC1F713B56004F91F6 /* AgendaNumber.swift */; };
 		D77667EE1F39F12900649157 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77667ED1F39F12900649157 /* LoginManager.swift */; };
 		D77FC1BE1F86668A0031C49F /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77FC1BD1F86668A0031C49F /* Country.swift */; };
+		D782E68F20064A680086907E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782E68E20064A680086907E /* SettingsViewController.swift */; };
 		D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F2E31F7D331B00348D7A /* TermsViewController.swift */; };
 		D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */; };
 		D787AE2B1FCD91680004BDB1 /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D787AE2A1FCD91680004BDB1 /* LogService.swift */; };
@@ -187,9 +187,8 @@
 		D75F2CD01FACA73900F40827 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		D76021DE1F56B4DD00C24AB6 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
 		D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmountLimitViewController.swift; sourceTree = "<group>"; };
-		D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemTableViewCell.swift; sourceTree = "<group>"; };
+		D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemViewCells.swift; sourceTree = "<group>"; };
 		D761E9621F161207002B849B /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		D761E9641F1612F8002B849B /* SettingTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		D761E9931F166B8D002B849B /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
 		D761E99F1F167798002B849B /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D761E9A11F17B14D002B849B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -208,6 +207,7 @@
 		D77511BC1F713B56004F91F6 /* AgendaNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaNumber.swift; sourceTree = "<group>"; };
 		D77667ED1F39F12900649157 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		D77FC1BD1F86668A0031C49F /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		D782E68E20064A680086907E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D782F2E31F7D331B00348D7A /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		D782F2E71F7D37A400348D7A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRegistrationViewController.swift; sourceTree = "<group>"; };
@@ -405,7 +405,7 @@
 			children = (
 				D761E9931F166B8D002B849B /* CustomTableView.swift */,
 				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
-				D761E95F1F15248E002B849B /* SettingsItemTableViewCell.swift */,
+				D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */,
 				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
 				D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */,
 				D77511BC1F713B56004F91F6 /* AgendaNumber.swift */,
@@ -449,7 +449,6 @@
 		D7DBED9F1FBC4AB000D78E2A /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				D761E9641F1612F8002B849B /* SettingTableViewController.swift */,
 				D7F746D51FD94337005354A3 /* Amount Limit */,
 				D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */,
 				D7CCC0691FC427E6006A6A4F /* Pincode */,
@@ -568,6 +567,7 @@
 				D721F1991F7E2D4B000B9546 /* CustomViewController.swift */,
 				D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */,
 				D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */,
+				D782E68E20064A680086907E /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -857,6 +857,7 @@
 				D77FC1BE1F86668A0031C49F /* Country.swift in Sources */,
 				D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */,
 				D7DBEDA31FBC798A00D78E2A /* UIDeviceExtensions.swift in Sources */,
+				D782E68F20064A680086907E /* SettingsViewController.swift in Sources */,
 				D740E15C1F4C6328000531BA /* GivtService.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
 				D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */,
@@ -917,9 +918,8 @@
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
 				D7DE0FED1F8E1A6900808ED4 /* TriangleView.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
-				D761E9601F15248E002B849B /* SettingsItemTableViewCell.swift in Sources */,
+				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
 				D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */,
-				D761E9651F1612F8002B849B /* SettingTableViewController.swift in Sources */,
 				D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */,
 				D77511BB1F711231004F91F6 /* DateExtensions.swift in Sources */,
 				D770E5341FB097FA0079D253 /* ManualOrganisationView.swift in Sources */,
