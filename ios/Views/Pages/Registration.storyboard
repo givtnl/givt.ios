@@ -676,6 +676,7 @@ een gift te herroepen.</string>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="navBar" destination="rWf-6Z-UoV" id="qLn-QK-LiG"/>
                         <outlet property="placeholder" destination="biT-YQ-Gp9" id="0lg-Ez-k5X"/>
                     </connections>
                 </viewController>

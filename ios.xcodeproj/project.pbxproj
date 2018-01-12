@@ -64,6 +64,9 @@
 		D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77511BC1F713B56004F91F6 /* AgendaNumber.swift */; };
 		D77667EE1F39F12900649157 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77667ED1F39F12900649157 /* LoginManager.swift */; };
 		D77FC1BE1F86668A0031C49F /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77FC1BD1F86668A0031C49F /* Country.swift */; };
+		D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782089C2008ADB000AB6DC1 /* ManualGivingOrganisation.swift */; };
+		D782089F2008BE6000AB6DC1 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782089E2008BE6000AB6DC1 /* ArrayExtensions.swift */; };
+		D78208A12008BE7900AB6DC1 /* CollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78208A02008BE7900AB6DC1 /* CollectionExtensions.swift */; };
 		D782E68F20064A680086907E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782E68E20064A680086907E /* SettingsViewController.swift */; };
 		D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F2E31F7D331B00348D7A /* TermsViewController.swift */; };
 		D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */; };
@@ -207,6 +210,9 @@
 		D77511BC1F713B56004F91F6 /* AgendaNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaNumber.swift; sourceTree = "<group>"; };
 		D77667ED1F39F12900649157 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		D77FC1BD1F86668A0031C49F /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		D782089C2008ADB000AB6DC1 /* ManualGivingOrganisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualGivingOrganisation.swift; sourceTree = "<group>"; };
+		D782089E2008BE6000AB6DC1 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		D78208A02008BE7900AB6DC1 /* CollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
 		D782E68E20064A680086907E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		D782F2E31F7D331B00348D7A /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		D782F2E71F7D37A400348D7A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
@@ -415,6 +421,7 @@
 				D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */,
 				D78D44B31FC7039E00325CAF /* FAQView.swift */,
 				D72A89D81FE9164200C06EF6 /* AmountLimit.swift */,
+				D782089C2008ADB000AB6DC1 /* ManualGivingOrganisation.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -597,6 +604,8 @@
 				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
 				D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */,
 				D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */,
+				D782089E2008BE6000AB6DC1 /* ArrayExtensions.swift */,
+				D78208A02008BE7900AB6DC1 /* CollectionExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -861,6 +870,7 @@
 				D740E15C1F4C6328000531BA /* GivtService.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
 				D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */,
+				D782089F2008BE6000AB6DC1 /* ArrayExtensions.swift in Sources */,
 				D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
@@ -924,6 +934,8 @@
 				D77511BB1F711231004F91F6 /* DateExtensions.swift in Sources */,
 				D770E5341FB097FA0079D253 /* ManualOrganisationView.swift in Sources */,
 				D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */,
+				D78208A12008BE7900AB6DC1 /* CollectionExtensions.swift in Sources */,
+				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
