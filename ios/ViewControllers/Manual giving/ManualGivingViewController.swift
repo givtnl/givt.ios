@@ -127,7 +127,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
             switch tag {
             case 100, 101, 102, 103:
                 let vc = storyboard?.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
-                vc.selectedTag = tag
+                vc.passSelectedTag = tag
                 self.show(vc, sender: nil)
             case 104:
                 print("qr")
