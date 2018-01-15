@@ -162,7 +162,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private func terminate() {
         logService.info(message: "User is terminating account via the menu")
-        let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! AboutNavigationController
+        let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! BaseNavigationController
         vc.transitioningDelegate = self.slideFromRightAnimation
         NavigationManager.shared.pushWithLogin(vc, context: self)
     }
@@ -170,7 +170,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     private func about() {
         
         DispatchQueue.main.async {
-            let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! AboutNavigationController
+            let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! BaseNavigationController
             vc.transitioningDelegate = self.slideFromRightAnimation
             self.present(vc, animated: true, completion: {
                 self.hideLeftView(self)
@@ -215,7 +215,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private func openHistory() {
         logService.info(message: "User is opening history")
-        let vc = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
         vc.transitioningDelegate = self.slideFromRightAnimation
         NavigationManager.shared.pushWithLogin(vc, context: self)
     }

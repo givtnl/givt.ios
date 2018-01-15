@@ -12,22 +12,21 @@ import SVProgressHUD
 class HistoryViewController: UIViewController {
     private var givtService = GivtService.shared
     @IBOutlet var scrlHistory: UIScrollView!
-    @IBOutlet var infoButton: UIButton!
-    
+    @IBOutlet var infoButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         renderGivy()
-        self.infoButton.alpha = 0
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        self.infoButton.isEnabled = false
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
         SVProgressHUD.show()
         
         getHistory()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     func clearView() {
@@ -36,7 +35,7 @@ class HistoryViewController: UIViewController {
     
     @IBOutlet var historyList: UIStackView!
     
-    @IBAction func backBtn(_ sender: UIButton) {
+    @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -77,7 +76,7 @@ class HistoryViewController: UIViewController {
     var containerText: UIView? = nil
     var noGivtsText: UILabel? = nil
     var infoScreen: UIView? = nil
-    @IBAction func openInfo(_ sender: UIButton) {
+    @IBAction func openInfo(_ sender: Any) {
         print("user wants to open info")
         infoScreen = UIView()
         infoScreen?.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
@@ -203,7 +202,7 @@ class HistoryViewController: UIViewController {
         
         clearView()
         UIView.animate(withDuration: 0.2, animations: {
-            self.infoButton?.alpha = 1
+            self.infoButton?.isEnabled = true
         })
         for (idx, object) in objects.enumerated() {
             /* once per month per year, add title of the month */

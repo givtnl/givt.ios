@@ -39,6 +39,7 @@
 		D75141A81F9E181A0016B71F /* givt_registration.gif in Resources */ = {isa = PBXBuildFile; fileRef = D75141A51F9E130C0016B71F /* givt_registration.gif */; };
 		D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */; };
 		D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754DA3A1F3B45D5001B7040 /* UIButtonExtensions.swift */; };
+		D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75AA195200CBFD5006E09BB /* TaxesViewController.swift */; };
 		D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B2BCE1FCEADE8000B7968 /* APIClient.swift */; };
 		D75B2BD21FCEAE05000B7968 /* IAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B2BD11FCEAE05000B7968 /* IAPIClient.swift */; };
 		D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */; };
@@ -93,7 +94,7 @@
 		D7D6FA6B1F7BADA5008A5604 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6A1F7BADA5008A5604 /* UITextFieldExtensions.swift */; };
 		D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */; };
 		D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */; };
-		D7DBED9A1FBC483300D78E2A /* AboutNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED991FBC483300D78E2A /* AboutNavigationController.swift */; };
+		D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED991FBC483300D78E2A /* BaseNavigationController.swift */; };
 		D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED9B1FBC484600D78E2A /* AboutViewController.swift */; };
 		D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */; };
 		D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */; };
@@ -181,6 +182,7 @@
 		D75141A61F9E130C0016B71F /* givt_animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = givt_animation.gif; sourceTree = "<group>"; };
 		D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		D754DA3A1F3B45D5001B7040 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		D75AA195200CBFD5006E09BB /* TaxesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxesViewController.swift; sourceTree = "<group>"; };
 		D75B2BCE1FCEADE8000B7968 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		D75B2BD11FCEAE05000B7968 /* IAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPIClient.swift; sourceTree = "<group>"; };
 		D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualGivingViewController.swift; sourceTree = "<group>"; };
@@ -237,7 +239,7 @@
 		D7D6FA6A1F7BADA5008A5604 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutGivt.storyboard; sourceTree = "<group>"; };
-		D7DBED991FBC483300D78E2A /* AboutNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutNavigationController.swift; sourceTree = "<group>"; };
+		D7DBED991FBC483300D78E2A /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		D7DBED9B1FBC484600D78E2A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextView.swift; sourceTree = "<group>"; };
@@ -440,7 +442,7 @@
 		D7DBED981FBC476900D78E2A /* About */ = {
 			isa = PBXGroup;
 			children = (
-				D7DBED991FBC483300D78E2A /* AboutNavigationController.swift */,
+				D7DBED991FBC483300D78E2A /* BaseNavigationController.swift */,
 				D7DBED9B1FBC484600D78E2A /* AboutViewController.swift */,
 			);
 			path = About;
@@ -455,6 +457,7 @@
 				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
 				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
 				D7DBED981FBC476900D78E2A /* About */,
+				D75AA195200CBFD5006E09BB /* TaxesViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -837,6 +840,7 @@
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
+				D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */,
 				D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */,
 				D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */,
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
@@ -869,7 +873,7 @@
 				D787AE2B1FCD91680004BDB1 /* LogService.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
-				D7DBED9A1FBC483300D78E2A /* AboutNavigationController.swift in Sources */,
+				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */,
