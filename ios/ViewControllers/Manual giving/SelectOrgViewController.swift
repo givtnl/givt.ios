@@ -172,12 +172,12 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GivtService.shared.onGivtProcessed = self
+        GivtService.shared.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        GivtService.shared.onGivtProcessed = nil
+        GivtService.shared.delegate = nil
     }
     
     func addTap(_ view: UIView, _ tag: Int) {
