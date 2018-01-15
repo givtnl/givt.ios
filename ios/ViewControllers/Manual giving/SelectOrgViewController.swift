@@ -167,7 +167,9 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.sectionIndexMinimumDisplayRowCount = 20
+        tableView.sectionIndexColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
