@@ -1,18 +1,18 @@
 //
-//  AboutNavigationController.swift
+//  TaxesViewController.swift
 //  ios
 //
-//  Created by Lennie Stockman on 15/11/17.
-//  Copyright © 2017 Givt. All rights reserved.
+//  Created by Lennie Stockman on 15/01/18.
+//  Copyright © 2018 Givt. All rights reserved.
 //
 
 import UIKit
 
-class AboutNavigationController: UINavigationController {
+class TaxesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setLogo()
+
         // Do any additional setup after loading the view.
     }
 
