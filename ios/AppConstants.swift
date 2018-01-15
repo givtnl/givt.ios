@@ -77,4 +77,19 @@ class AppConstants{
             #endif
         }
     }
+    
+    static var returnUrlDir: String {
+        get {
+            return "nativep"
+        }
+    }
+    
+    static var appScheme: String {
+        get {
+            let urlTypes = Bundle.main.infoDictionary!["CFBundleURLTypes"] as! NSArray
+            return (((urlTypes[0] as! NSDictionary).value(forKey: "CFBundleURLSchemes")) as! NSArray)[0] as! String + "://"
+        }
+    }
+    
+    
 }

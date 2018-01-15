@@ -60,14 +60,9 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                           "mandatePopup" : "",
                           "spUrl" : url,
                           "canShare" : canShare]
-            
-            #if DEBUG
-                parameters["nativeAppScheme"] = "givtd://"
-                parameters["urlPart"] = "native"
-            #else
-                parameters["nativeAppScheme"] = "givt://"
-                parameters["urlPart"] = "store"
-            #endif
+        
+            parameters["nativeAppScheme"] = AppConstants.appScheme
+            parameters["urlPart"] = AppConstants.returnUrlDir
             
             
             guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
