@@ -19,7 +19,8 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     private var client = APIClient.shared
     private var amount: Decimal!
     private var amounts = [Decimal]()
-
+    private let scanLock = DispatchSemaphore(value: 1)
+    
     var getBestBeacon: BestBeacon {
         get {
             return bestBeacon
@@ -71,7 +72,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     var isScanning: Bool = false
 
     var centralManager: CBCentralManager!
-    weak var onGivtProcessed: GivtProcessedProtocol?
+    weak var delegate: GivtProcessedProtocol?
     
     private override init() {
         super.init()
@@ -79,7 +80,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             print(status)
         }
         
-        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(), options: [CBCentralManagerOptionShowPowerAlertKey:false])
+        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(qos: .userInitiated), options: [CBCentralManagerOptionShowPowerAlertKey:false])
 
         NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: ReachabilityChangedNotification, object: reachability)
         do {
@@ -115,23 +116,27 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     func startScanning() {
         log.info(message: "Started scanning")
+        
+        scanLock.wait()
         isScanning = true
         centralManager.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
+        scanLock.signal()
         DispatchQueue.main.async {
             UIApplication.shared.isIdleTimerDisabled = true
         }
     }
     
     func stopScanning() {
+        scanLock.wait()
         if(isScanning){
             log.info(message: "Stopped scanning")
             isScanning = false
             centralManager.stopScan()
         }
+        scanLock.signal()
         DispatchQueue.main.async {
             UIApplication.shared.isIdleTimerDisabled = false
         }
-        
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager){
@@ -178,10 +183,6 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
 }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if !shouldDetect {
-            return
-        }
-        
         if let feaa = advertisementData[CBAdvertisementDataServiceDataKey] as! NSMutableDictionary? {
             let x = feaa.object(forKey: CBUUID(string: "FEAA"))
             if(x != nil){
@@ -190,15 +191,13 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 //61f7
                 _ = String(describing: x).substring(5..<14)
                 print(y.substring(5..<14))
-                if(y.substring(5..<14) == "61f7 ed01"){
+                if(y.substring(5..<14) == "61f7 ed01" || y.substring(5..<14) == "61f7 ed02" || y.substring(5..<14) == "61f7 ed03") {
                     //print("beacon found with rssi: ", RSSI)
                     let antennaID = String(format: "%@.%@", y.substring(5..<27).replacingOccurrences(of: " ", with: ""), y.substring(27..<41).replacingOccurrences(of: " ", with: ""))
                                             //print(antennaID)
-                    beaconDetected(antennaID: antennaID, rssi: RSSI, beaconType: 0, batteryLevel: 100)
+                        beaconDetected( antennaID: antennaID, rssi: RSSI, beaconType: 0, batteryLevel: 100)
                 }
             }
-        } else {
-            //print("nill")
         }
     }
     
@@ -207,8 +206,6 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     private var shouldDetect: Bool = true
     private func beaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, batteryLevel: Int8) {
         self.log.info(message: "Beacon detected w/ antennaId \(antennaID) and rssi \(rssi)")
-            stopScanning()
-        
             if(rssi != 0x7f){
                 var organisation = antennaID
                 if let idx = antennaID.index(of: ".") {
@@ -231,14 +228,17 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 
                 if(rssi.intValue > rssiTreshold){
                     shouldDetect = false
-                    give(antennaID: antennaID)
+                    scanLock.wait()
+                    if (isScanning) {
+                        DispatchQueue.main.async {
+                            self.give(antennaID: antennaID)
+                        }
+                    }
+                    scanLock.signal()
                     return
                 }
                 
             }
-            shouldDetect = true
-            startScanning()
-        
     }
     
     func give(antennaID: String) {
@@ -258,15 +258,13 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
         
         sendPostRequest(transactions: transactions)
-        //todo: clear self.amountss
-        self.onGivtProcessed?.onGivtProcessed(transactions: transactions)
+        self.delegate?.onGivtProcessed(transactions: transactions)
         
         let deadlineTime = DispatchTime.now() + 0.35
         DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
             AudioServicesPlayAlertSound(1520)
         }
     
-        shouldDetect = true
         bestBeacon = BestBeacon()
     }
     

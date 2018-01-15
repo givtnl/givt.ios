@@ -52,7 +52,7 @@ class ScanViewController: BaseScanViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
-        GivtService.shared.onGivtProcessed = self
+        GivtService.shared.delegate = self
         
         self.log.info(message: "Scanpage is now showing")
         
@@ -134,7 +134,7 @@ class ScanViewController: BaseScanViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        GivtService.shared.onGivtProcessed = nil
+        GivtService.shared.delegate = nil
         GivtService.shared.stopScanning()
         self.navigationController?.isNavigationBarHidden = false
 
@@ -171,9 +171,6 @@ class ScanViewController: BaseScanViewController {
 
 extension ScanViewController : SFSafariViewControllerDelegate{
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        print("ik kom er in")
-
-
         //self.popToRoot(animated: false)
         UIApplication.shared.statusBarStyle = .default
     }

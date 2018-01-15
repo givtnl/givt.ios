@@ -9,11 +9,9 @@
 import UIKit
 
 class SettingsItemTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var arrow: UIView!
     @IBOutlet weak var settingLabel: UILabel!
     @IBOutlet weak var settingImageView: UIImageView!
-    @IBOutlet weak var badge: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -24,5 +22,13 @@ class SettingsItemTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+}
 
+class SettingsItemBadgeAndArrow: SettingsItemTableViewCell {
+    @IBOutlet weak var arrow: UIView!
+    @IBOutlet weak var badge: UIImageView!
+}
+
+class SettingsItemArrow: SettingsItemTableViewCell {
+    @IBOutlet weak var arrow: UIView!
 }

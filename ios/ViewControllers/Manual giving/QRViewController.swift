@@ -14,11 +14,12 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     private var log = LogService.shared
     @IBOutlet var subTitle: UILabel!
     @IBOutlet var navBar: UINavigationItem!
+    @IBOutlet weak var topLeft: UIImageView!
     @IBOutlet var topRight: UIImageView!
     @IBOutlet var bottomLeft: UIImageView!
     @IBOutlet var bottomRight: UIImageView!
-    var video = AVCaptureVideoPreviewLayer()
-    let session = AVCaptureSession()
+    var video : AVCaptureVideoPreviewLayer? = nil
+    var session : AVCaptureSession? = nil
     @IBOutlet var qrView: UIView!
     private var isCameraDisabled = false
     override func viewDidLoad() {
@@ -29,38 +30,45 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
         bottomRight.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)
         bottomLeft.transform = CGAffineTransform(rotationAngle: (270.0 * CGFloat(Double.pi)) / 180.0)
         
+        log.info(message: "QR Page is shown")
+    }
+    
+    override func viewDidLayoutSubviews() {
         //capture device
         let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         
         do {
+            session = AVCaptureSession()
+            video = AVCaptureVideoPreviewLayer()
             let input = try AVCaptureDeviceInput(device: captureDevice!)
-            session.addInput(input)
+            session!.addInput(input)
             let output = AVCaptureMetadataOutput()
-            session.addOutput(output)
+            session!.addOutput(output)
             
             output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             
             output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
             
-            video = AVCaptureVideoPreviewLayer(session: session)
-            video.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            video.frame = qrView.bounds
+            video! = AVCaptureVideoPreviewLayer(session: session!)
+            video!.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            video!.frame = containerVIew.layer.bounds
             
-            qrView.layer.addSublayer(video)
-            session.startRunning()
+            containerVIew.layer.addSublayer(video!)
+            session!.startRunning()
         } catch {
             print("camera does not work")
             isCameraDisabled = true
         }
         
-        
-        
-        log.info(message: "QR Page is shown")
+        containerVIew.bringSubview(toFront: topLeft)
+        containerVIew.bringSubview(toFront: topRight)
+        containerVIew.bringSubview(toFront: bottomLeft)
+        containerVIew.bringSubview(toFront: bottomRight)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GivtService.shared.onGivtProcessed = self
+        GivtService.shared.delegate = self
         
         if isCameraDisabled {
             let overlay: UIView = UIView(frame: CGRect(x: 0, y: 0, width: containerVIew.frame.size.width, height: containerVIew.frame.size.height))
@@ -84,7 +92,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        GivtService.shared.onGivtProcessed = nil
+        GivtService.shared.delegate = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,7 +104,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
         if metadataObjects.count > 0 {
             if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject {
                 if object.type == AVMetadataObject.ObjectType.qr {
-                    session.stopRunning()
+                    session!.stopRunning()
                     self.log.info(message: "Scanned a QR")
                     giveManually(scanResult: object.stringValue!)
                 }
@@ -110,7 +118,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
                 self.log.warning(message: "Could not scan QR: " + scanResult )
                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
                 let action = UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: .default) { (ok) in
-                    self.session.startRunning()
+                    self.session!.startRunning()
                 }
                 let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { (nok) in
                     self.navigationController?.popViewController(animated: true)

@@ -14,16 +14,15 @@ import SVProgressHUD
 class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate  {
     private var log = LogService.shared
     var url: String!
-    var webView: WKWebView!
-    @IBOutlet var placeholder: UIView!
+    private var webView: WKWebView!
+    @IBOutlet weak var placeholder: UIView!
+    @IBOutlet weak var navBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         
         let url = URL(string: self.url)
         let request = URLRequest(url: url!)
@@ -41,8 +40,6 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
         webView.leadingAnchor.constraint(equalTo: self.placeholder.leadingAnchor).isActive = true
         webView.topAnchor.constraint(equalTo: self.placeholder.topAnchor).isActive = true
         webView.scrollView.delegate = self
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,7 +64,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("page fully loaded")
-        
+        SVProgressHUD.show()
         let possibleUrls = ["https://givtapidebug.azurewebsites.net/","https://api2.nfcollect.com","https://api.givtapp.net/"]
         guard let webViewUrl = webView.url else { return }
         if possibleUrls.contains(webViewUrl.absoluteString) {
@@ -97,17 +94,29 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
         
     }
     
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if navigationAction.targetFrame == nil {
+            if navigationAction.targetFrame == nil {
+                webView.load(navigationAction.request)
+                let bbi = UIBarButtonItem(title: NSLocalizedString("Close", comment: ""), style: .done, target: self, action: #selector(previousPage))
+                self.navBar.setRightBarButton(bbi, animated: true)
+            }
+            return nil
+        }
+        return nil
+    }
+    
+    @objc func previousPage() {
+        webView.goBack()
+        self.navBar.setRightBarButtonItems([], animated: true)
+    }
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         SVProgressHUD.dismiss()
     }
     
     deinit {
-        self.webView.uiDelegate = nil
-        self.webView.navigationDelegate = nil
-        self.webView.stopLoading()
         self.webView.scrollView.delegate = nil
-        self.navigationController?.delegate = nil
-        self.webView = nil
     }
 
     /*

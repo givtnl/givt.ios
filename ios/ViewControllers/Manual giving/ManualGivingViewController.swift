@@ -96,12 +96,12 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GivtService.shared.onGivtProcessed = self
+        GivtService.shared.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        GivtService.shared.onGivtProcessed = nil
+        GivtService.shared.delegate = nil
     }
 
     @IBAction func goBack(_ sender: Any) {
@@ -127,7 +127,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
             switch tag {
             case 100, 101, 102, 103:
                 let vc = storyboard?.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
-                vc.selectedTag = tag
+                vc.passSelectedTag = tag
                 self.show(vc, sender: nil)
             case 104:
                 print("qr")
