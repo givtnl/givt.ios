@@ -32,10 +32,10 @@ class AppConstants{
     }()
     
     static var apiUri: String = {
-        #if DEBUG
-        return "https://givtapidebug.azurewebsites.net"
+        #if PRODUCTION
+            return "https://api.givtapp.net" // do not put this in prod before release!
         #else
-        return "https://api.givtapp.net" // do not put this in prod before release!
+            return "https://givtapidebug.azurewebsites.net"
         #endif
     }()
     
