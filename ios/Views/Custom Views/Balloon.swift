@@ -65,6 +65,13 @@ class Balloon: UIView {
         topConstraint.isActive = true
     }
     
+    func pinTop2(view toView: UIView, _ constant: CGFloat = 0) {
+        topConstraint = self.topAnchor.constraint(equalTo: toView.topAnchor, constant: constant)
+        topConstraint.isActive = true
+    }
+    
+    
+    
     func pinLeft(view toView: UIView, _ constant: CGFloat = 0) {
         leftConstraint = self.leadingAnchor.constraint(equalTo: toView.leadingAnchor, constant: constant)
         leftConstraint.isActive = true
@@ -109,8 +116,8 @@ class Balloon: UIView {
         }
     }
     
-    func centerTooltip(view: UIView) {
-        pointer.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+    func centerTooltip(view: UIView, _ constant: CGFloat = 0) {
+        pointer.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: constant).isActive = true
     }
     
     func positionTooltip() {

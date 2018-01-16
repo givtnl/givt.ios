@@ -11,12 +11,10 @@ import SVProgressHUD
 
 class HistoryViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var parentView: UIView!
-    @IBOutlet var testButton: UIButton!
-    @IBOutlet var downloadButton: UIBarButtonItem!
+    @IBOutlet var downloadButton: UIButton!
     private var givtService = GivtService.shared
-    @IBOutlet var scrlHistory: UIScrollView!
     @IBOutlet var infoButton: UIBarButtonItem!
-    private var overlay: UIView = UIView()
+    private var overlay: UIView?
     private var balloon: Balloon?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +24,8 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
         SVProgressHUD.show()
+        
+        scrollView.delegate = self
         
         getHistory()
         
@@ -39,7 +39,10 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var scrollView: UIScrollView!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        showOverlay()
+        if !UserDefaults.standard.showedTaxOverview2017 {
+             showOverlay()
+        }
+       
     }
 
     func clearView() {
@@ -56,47 +59,61 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         hideOverlay()
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        hideOverlay()
+    }
     func showOverlay() {
-        if UserDefaults.standard.showedTaxOverview2017 {
-            return
-        }
-        
-        balloon = Balloon(text: NSLocalizedString("Ballon_ActiveerCollecte", comment: ""))
-        self.view.addSubview(balloon!)
-        
-        balloon!.centerTooltip(view: self.testButton)
+        self.balloon = Balloon(text: NSLocalizedString("CheckHereForYearOverview", comment: ""))
+        self.view.addSubview(self.balloon!)
+
+        let cgRectOfButton = self.downloadButton.convert(self.downloadButton.frame, to: nil)
+        let offSet = cgRectOfButton.midX - self.scrollView.frame.midX
+        self.balloon!.centerTooltip(view: self.scrollView, offSet)
         
         
-        balloon!.pinRight(view: self.view, -5)
-        balloon!.pinTop(view: self.testButton, 5)
+        self.balloon!.pinRight(view: self.scrollView, -5)
+        
+        self.balloon!.pinTop2(view: self.view, self.scrollView.frame.minY + 5)
+        self.view.bringSubview(toFront: self.balloon!)
         self.view.layoutIfNeeded()
-        
-        balloon!.alpha = 0
+
+        self.balloon!.alpha = 0
         UIView.animate(withDuration: 0.5) {
             self.balloon!.alpha = 1
         }
+
+        self.balloon?.bounce()
         
-        balloon?.bounce()
+        self.overlay = UIView()
+        self.overlay!.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.overlay!.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.overlay!)
+        self.overlay!.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
+        self.overlay!.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
+        self.overlay!.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
+        self.overlay!.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
         
-        overlay = UIView()
-        overlay.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        overlay.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(overlay)
-        overlay.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
-        overlay.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
-        overlay.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
-        overlay.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
-        overlay.alpha = 0.6
+        self.overlay!.alpha = 0.6
         
         UserDefaults.standard.showedTaxOverview2017 = true
-        
     }
     
     func hideOverlay() {
-        if overlay.alpha != 0 {
-            overlay.alpha = 0
-            balloon?.hide()
+        overlay?.removeFromSuperview()
+        balloon?.removeFromSuperview()
+    }
+    @IBAction func openOverViewPage(_ sender: Any) {
+        if self.balloon != nil {
+            NSLayoutConstraint.deactivate((self.balloon?.constraints)!)
         }
+        
+        self.hideOverlay()
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxesViewController") as! TaxesViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 
     func renderGivy() {
@@ -121,7 +138,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         noGivtsText?.topAnchor.constraint(equalTo: containerText!.topAnchor, constant: 20).isActive = true
         noGivtsText?.trailingAnchor.constraint(equalTo: containerText!.trailingAnchor, constant: -20).isActive = true
         noGivtsText?.alpha = 0
-        
         let image = #imageLiteral(resourceName: "givymoney.png")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
@@ -140,10 +156,10 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         print("user wants to open info")
         infoScreen = UIView()
         infoScreen?.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        self.view.addSubview(infoScreen!)
+        self.navigationController?.view.addSubview(infoScreen!)
         infoScreen?.translatesAutoresizingMaskIntoConstraints = false
         infoScreen?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        infoScreen?.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        infoScreen?.topAnchor.constraint(equalTo: (self.navigationController?.view.topAnchor)!).isActive = true
         infoScreen?.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         //infoScreen?.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
         infoScreen?.alpha = 0
@@ -152,7 +168,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         let bar = UIView()
         infoScreen?.addSubview(bar)
         bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 0).isActive = true
+        bar.topAnchor.constraint(equalTo: (self.navigationController?.topLayoutGuide.bottomAnchor)!, constant: 0).isActive = true
         bar.leadingAnchor.constraint(equalTo: (infoScreen?.leadingAnchor)!, constant: 0).isActive = true
         bar.trailingAnchor.constraint(equalTo: (infoScreen?.trailingAnchor)!, constant: 0).isActive = true
         bar.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -560,6 +576,9 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         //self.view.addSubview(label)
     }
 
+    @IBAction func clearViewed2017(_ sender: Any) {
+        UserDefaults.standard.showedTaxOverview2017 = false
+    }
 }
 
 class HistoryTransaction: NSObject {
