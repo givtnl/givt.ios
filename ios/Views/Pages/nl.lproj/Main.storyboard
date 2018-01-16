@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1110,7 +1111,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdE-KD-x7v">
-                                                        <rect key="frame" x="0.0" y="52.5" width="93.5" height="52"/>
+                                                        <rect key="frame" x="0.0" y="52.5" width="93.5" height="51.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1120,7 +1121,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3L-g4-FDn">
-                                                        <rect key="frame" x="0.0" y="104.5" width="93.5" height="53"/>
+                                                        <rect key="frame" x="0.0" y="104" width="93.5" height="53"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1130,7 +1131,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="da6-LQ-oUg">
-                                                        <rect key="frame" x="0.0" y="157.5" width="93.5" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="157" width="93.5" height="52"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title=",">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1160,7 +1161,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MN3-ns-iAP">
-                                                        <rect key="frame" x="0.0" y="52.5" width="93.5" height="52"/>
+                                                        <rect key="frame" x="0.0" y="52.5" width="93.5" height="51.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1170,7 +1171,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peT-Fh-y6E">
-                                                        <rect key="frame" x="0.0" y="104.5" width="93.5" height="53"/>
+                                                        <rect key="frame" x="0.0" y="104" width="93.5" height="53"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1180,7 +1181,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1s-Tm-Urg">
-                                                        <rect key="frame" x="0.0" y="157.5" width="93.5" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="157" width="93.5" height="52"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1210,7 +1211,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjk-gW-ny2">
-                                                        <rect key="frame" x="0.0" y="52.5" width="93" height="52"/>
+                                                        <rect key="frame" x="0.0" y="52.5" width="93" height="51.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1220,7 +1221,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPh-uN-U5J">
-                                                        <rect key="frame" x="0.0" y="104.5" width="93" height="53"/>
+                                                        <rect key="frame" x="0.0" y="104" width="93" height="53"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1230,7 +1231,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDC-OX-jLx">
-                                                        <rect key="frame" x="0.0" y="157.5" width="93" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="157" width="93" height="52"/>
                                                         <gestureRecognizers/>
                                                         <fontDescription key="fontDescription" name="entypo" family="Entypo" pointSize="26"/>
                                                         <state key="normal" image="erase.png"/>
@@ -2129,9 +2130,14 @@ Kijk voor de status in je overzicht.</string>
                                     <action selector="openInfo:" destination="3fl-1y-hcG" id="CQi-Qc-fyE"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="dlTaxes" width="44" id="eCX-b1-q7w">
+                            <barButtonItem width="44" style="plain" id="VYa-Bo-Z6R">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zo0-RD-CRQ">
+                                    <rect key="frame" x="216" y="0.0" width="44" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="dlTaxes"/>
+                                </button>
                                 <connections>
-                                    <segue destination="lJe-lK-EDt" kind="show" id="gCZ-vS-hwX"/>
+                                    <segue destination="lJe-lK-EDt" kind="show" id="ht1-Hn-9po"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -2139,6 +2145,9 @@ Kijk voor de status in je overzicht.</string>
                     <connections>
                         <outlet property="historyList" destination="016-Z6-t7E" id="qqc-xj-xU9"/>
                         <outlet property="infoButton" destination="fpW-fk-0hO" id="60H-FS-bCo"/>
+                        <outlet property="parentView" destination="fVn-fJ-CeU" id="zSw-qq-ZxY"/>
+                        <outlet property="scrollView" destination="Hme-Ma-wP3" id="GEF-Ev-vbx"/>
+                        <outlet property="testButton" destination="Zo0-RD-CRQ" id="bAG-wE-9nF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q80-AX-qWG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2159,21 +2168,69 @@ Kijk voor de status in je overzicht.</string>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wil je het jaaroverzicht van jouw giften van 2017 downloaden?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWX-iD-aYU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sturen het overzicht naar " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWX-iD-aYU">
                                 <rect key="frame" x="20" y="140.5" width="280" height="46.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgF-rN-46D" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="416" width="280" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="jHp-j3-aiD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Verstuur"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="send:" destination="lJe-lK-EDt" eventType="touchUpInside" id="9Bw-rc-DfC"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w1u-tU-MH0">
+                                <rect key="frame" x="20" y="207" width="280" height="189"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" image="givymoney" translatesAutoresizingMaskIntoConstraints="NO" id="YFP-wq-FUW">
+                                        <rect key="frame" x="56" y="10.5" width="168" height="168"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="168" id="GQS-n5-QbO"/>
+                                            <constraint firstAttribute="width" secondItem="YFP-wq-FUW" secondAttribute="height" multiplier="1:1" id="hTU-9s-ENo"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="YFP-wq-FUW" firstAttribute="centerY" secondItem="w1u-tU-MH0" secondAttribute="centerY" id="3ey-J6-3A9"/>
+                                    <constraint firstItem="YFP-wq-FUW" firstAttribute="centerX" secondItem="w1u-tU-MH0" secondAttribute="centerX" id="OqF-Ft-vYt"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mea-Jc-7hl" firstAttribute="top" secondItem="gYD-K0-wNW" secondAttribute="top" constant="20" id="4Ih-mc-NJl"/>
-                            <constraint firstItem="mea-Jc-7hl" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="77U-fn-r9G"/>
-                            <constraint firstItem="QWX-iD-aYU" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="9Ga-Gk-Maf"/>
-                            <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="mea-Jc-7hl" secondAttribute="trailing" constant="20" id="h8s-RP-TfZ"/>
-                            <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="QWX-iD-aYU" secondAttribute="trailing" constant="20" id="kVp-6b-ggb"/>
-                            <constraint firstItem="QWX-iD-aYU" firstAttribute="top" secondItem="mea-Jc-7hl" secondAttribute="bottom" constant="10" id="qeG-oo-hcZ"/>
+                            <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="mea-Jc-7hl" secondAttribute="trailing" constant="20" id="3VP-Ne-HRl"/>
+                            <constraint firstItem="QWX-iD-aYU" firstAttribute="top" secondItem="mea-Jc-7hl" secondAttribute="bottom" constant="10" id="7nu-2Q-FEb"/>
+                            <constraint firstItem="mea-Jc-7hl" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="A9X-Tc-F0c"/>
+                            <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="QWX-iD-aYU" secondAttribute="trailing" constant="20" id="CWx-hv-ly2"/>
+                            <constraint firstItem="pgF-rN-46D" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="DCx-eW-Oib"/>
+                            <constraint firstItem="QWX-iD-aYU" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="SPx-ah-grm"/>
+                            <constraint firstItem="gYD-K0-wNW" firstAttribute="bottom" secondItem="pgF-rN-46D" secondAttribute="bottom" constant="20" id="U6H-od-HPT"/>
+                            <constraint firstItem="w1u-tU-MH0" firstAttribute="top" secondItem="QWX-iD-aYU" secondAttribute="bottom" constant="20" id="ejw-Qc-yw8"/>
+                            <constraint firstAttribute="trailing" secondItem="w1u-tU-MH0" secondAttribute="trailing" constant="20" id="lwS-QK-8hw"/>
+                            <constraint firstItem="pgF-rN-46D" firstAttribute="top" secondItem="w1u-tU-MH0" secondAttribute="bottom" constant="20" id="mSU-yP-TKx"/>
+                            <constraint firstItem="w1u-tU-MH0" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="trM-x4-cwc"/>
+                            <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="pgF-rN-46D" secondAttribute="trailing" constant="20" id="vMx-QU-L40"/>
+                            <constraint firstItem="mea-Jc-7hl" firstAttribute="top" secondItem="gYD-K0-wNW" secondAttribute="top" constant="20" id="vcc-0s-KuJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gYD-K0-wNW"/>
                     </view>
@@ -2185,7 +2242,10 @@ Kijk voor de status in je overzicht.</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="firstText" destination="mea-Jc-7hl" id="3k8-Pw-Zyk"/>
                         <outlet property="goBack" destination="RyQ-wt-xzP" id="gvV-ww-ulx"/>
+                        <outlet property="secondText" destination="QWX-iD-aYU" id="qnV-Fr-Cgn"/>
+                        <outlet property="sendBtn" destination="pgF-rN-46D" id="vLV-Wp-I5T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZq-GH-kih" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2239,6 +2299,7 @@ Kijk voor de status in je overzicht.</string>
         <image name="erase.png" width="24" height="16"/>
         <image name="givt20h" width="53" height="20"/>
         <image name="givyGave" width="136" height="197"/>
+        <image name="givymoney" width="240" height="240"/>
         <image name="help" width="13" height="20"/>
         <image name="info20h" width="20" height="20"/>
         <image name="kerken" width="120" height="120"/>

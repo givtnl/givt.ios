@@ -492,5 +492,6 @@ class LoginManager {
         UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.hasTappedAwayGiveDiff = false
         UserDefaults.standard.hasPinSet = false
+        UserDefaults.standard.showedTaxOverview2017 = false
     }
 }

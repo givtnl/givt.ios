@@ -278,7 +278,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQantwoord3" = "Je kunt je instellingen bereiken door links bovenin het bedragscherm op het hamburgermenu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. In je instellingen kun je het overzicht van je giften inzien, je geeflimiet aanpassen, een toegangscode instellen of je account verwijderen.\nOm je persoonlijke gegevens te wijzigen raden we je aan om contact op te nemen met onze helpdesk via +31 320 320 115 of support@givtapp.net.\nIn het filmpje hieronder zie je hoe je je instellingen wijzigt.";
 
 /*Antwoord op FAQ vraag4*/
-"FAQantwoord4" = "Steeds meer kerken\nJe kunt Givt gebruiken bij alle kerken die zijn aangesloten en daarom een zender in de collectebus, -zak of -mand hebben. Er komen wekelijks meer kerken bij, check onze website www.givtapp.net/waar-givt-gebruiken/ om het meest recente overzicht te bekijken. \n\nNog niet aangesloten?\nWanneer je als kerk of organisatie nog niet bent aangesloten bij Givt, maar er wel gebruik van wilt maken, neem dan contact met ons op via +31 320 320 115 of info@givtapp.net.";
+"FAQantwoord4" = "Steeds meer kerken\nJe kunt Givt gebruiken bij alle kerken die zijn aangesloten en daarom een zender in de collectebus, -zak of -mand hebben. Er komen wekelijks meer kerken bij, check onze website www.givtapp.net/waar om het meest recente overzicht te bekijken. \n\nNog niet aangesloten?\nWanneer je als kerk of organisatie nog niet bent aangesloten bij Givt, maar er wel gebruik van wilt maken, neem dan contact met ons op via +31 320 320 115 of info@givtapp.net.";
 
 /*Antwoord op FAQ vraag5*/
 "FAQantwoord5" = "SlimPay\nBij het installeren van Givt machtig je als gebruiker tot het incasseren van alle giften die je in de app doet. De transacties worden afgehandeld door SlimPay; een bank die gespecialiseerd is in de behandeling van machtigingen. \n\nAchteraf te herroepen\nEr vinden geen afschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Op je bankrekening is dit te zien onder een afschrijving van Givt B.V. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen.";
@@ -604,3 +604,5 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OpenMailbox" = "Open mailbox";
 "PersonalInfo" = "Persoonlijke gegevens";
 "CameraPermission" = "We hebben toegang tot je camera nodig om een qr-code te kunnen scannen.";
+"DownloadYearOverview" = "Wil je het jaaroverzicht van jouw giften van 2017 downloaden?";
+"SendOverViewTo" = "We sturen het overzicht naar\n";

@@ -25,6 +25,17 @@ extension UserDefaults {
         case pinSet
         case needsCriticalUpdate
         case termsVersion
+        case showedTaxOverview2017
+    }
+    
+    var showedTaxOverview2017: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.showedTaxOverview2017.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.showedTaxOverview2017.rawValue)
+            synchronize()
+        }
     }
     
     var needsCriticalUpdate: Bool {

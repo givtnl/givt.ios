@@ -9,10 +9,15 @@
 import UIKit
 import SVProgressHUD
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: UIViewController, UIScrollViewDelegate {
+    @IBOutlet var parentView: UIView!
+    @IBOutlet var testButton: UIButton!
+    @IBOutlet var downloadButton: UIBarButtonItem!
     private var givtService = GivtService.shared
     @IBOutlet var scrlHistory: UIScrollView!
     @IBOutlet var infoButton: UIBarButtonItem!
+    private var overlay: UIView = UIView()
+    private var balloon: Balloon?
     override func viewDidLoad() {
         super.viewDidLoad()
         renderGivy()
@@ -23,10 +28,18 @@ class HistoryViewController: UIViewController {
         SVProgressHUD.show()
         
         getHistory()
+        
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedScrollView(sender:)))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
     }
     
+    @IBOutlet var scrollView: UIScrollView!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        showOverlay()
     }
 
     func clearView() {
@@ -39,6 +52,53 @@ class HistoryViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @objc func tappedScrollView(sender: UITapGestureRecognizer) {
+        hideOverlay()
+    }
+    
+    func showOverlay() {
+        if UserDefaults.standard.showedTaxOverview2017 {
+            return
+        }
+        
+        balloon = Balloon(text: NSLocalizedString("Ballon_ActiveerCollecte", comment: ""))
+        self.view.addSubview(balloon!)
+        
+        balloon!.centerTooltip(view: self.testButton)
+        
+        
+        balloon!.pinRight(view: self.view, -5)
+        balloon!.pinTop(view: self.testButton, 5)
+        self.view.layoutIfNeeded()
+        
+        balloon!.alpha = 0
+        UIView.animate(withDuration: 0.5) {
+            self.balloon!.alpha = 1
+        }
+        
+        balloon?.bounce()
+        
+        overlay = UIView()
+        overlay.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        overlay.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(overlay)
+        overlay.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
+        overlay.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
+        overlay.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
+        overlay.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
+        overlay.alpha = 0.6
+        
+        UserDefaults.standard.showedTaxOverview2017 = true
+        
+    }
+    
+    func hideOverlay() {
+        if overlay.alpha != 0 {
+            overlay.alpha = 0
+            balloon?.hide()
+        }
+    }
+
     func renderGivy() {
         containerText = UIView()
         containerText?.translatesAutoresizingMaskIntoConstraints = false

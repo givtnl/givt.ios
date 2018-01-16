@@ -585,3 +585,5 @@
 "OpenMailbox" = "Open inbox";
 "PersonalInfo" = "Personal info";
 "CameraPermission" = "We need to access your camera to scan a qr-code.";
+"DownloadYearOverview" = "Do you want to download the overview of your donations in 2017?";
+"SendOverViewTo" = "We'll send the overview to\n";

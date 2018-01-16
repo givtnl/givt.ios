@@ -79,6 +79,7 @@ class Balloon: UIView {
     }
     
     func bounce() {
+        let oldValue = self.topConstraint.constant
         UIView.animate(withDuration: 0.4,
                        delay: 0.1,
                        options: [.autoreverse, .repeat],
@@ -86,11 +87,11 @@ class Balloon: UIView {
                         //do not reverse last frame, source
                         //https://stackoverflow.com/questions/5040494/uiview-animations-with-autoreverse/11670490#11670490
                         UIView.setAnimationRepeatCount(4.5)
-                        self.topConstraint.constant = 4
+                        self.topConstraint.constant = oldValue + 4
                         self.superview?.layoutIfNeeded()
         }, completion: { (finished) -> Void in
             UIView.animate(withDuration: 0.4, animations: {
-                self.topConstraint.constant = 0
+                self.topConstraint.constant = oldValue
                 self.superview?.layoutIfNeeded()
             })
         })

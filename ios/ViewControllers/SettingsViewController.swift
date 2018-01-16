@@ -103,6 +103,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func loadSettings(){
+        items = []
         let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
         
         let tempUser = UserDefaults.standard.tempUser
@@ -120,20 +121,30 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
         if !tempUser {
+            items.append([])
+            items.append([])
+            items.append([])
+            
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
-            let givtsTaxOverviewAvailable = Setting(name: "Belastingsaangifte beschikbaar", image: UIImage(), callback: {
-                self.openHistory()
-            }, showArrow: false, isHighlighted: true)
+            items[0].append(givts)
+            let givtsTaxOverviewAvailable: Setting?
+            if !UserDefaults.standard.showedTaxOverview2017 {
+                givtsTaxOverviewAvailable = Setting(name: "Belastingsaangifte beschikbaar", image: UIImage(), callback: {
+                    self.openHistory()
+                }, showArrow: false, isHighlighted: true)
+                items[0].append(givtsTaxOverviewAvailable!)
+            }
+            
             
             let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
+            items[0].append(limit)
+            items[0].append(userInfoSetting!)
+            
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
-            items =
-                [
-                    [givts, givtsTaxOverviewAvailable, limit, userInfoSetting!, accessCode],
-                    [changeAccount, screwAccount],
-                    [aboutGivt, shareGivt],
-            ]
+            items[0].append(accessCode)
+            items[1] = [changeAccount, screwAccount]
+            items[2] = [aboutGivt, shareGivt]
         } else {
             items =
                 [
