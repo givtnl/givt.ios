@@ -67,10 +67,10 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             return date
         }
     }
-
+    
     private var rssiTreshold: Int = -68
     var isScanning: Bool = false
-
+    
     var centralManager: CBCentralManager!
     weak var delegate: GivtProcessedProtocol?
     
@@ -81,7 +81,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
         
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(qos: .userInitiated), options: [CBCentralManagerOptionShowPowerAlertKey:false])
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: ReachabilityChangedNotification, object: reachability)
         do {
             try reachability?.startNotifier()
@@ -97,7 +97,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             log.info(message: "App got connected")
             for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
                 log.info(message: "Started processing chached Givts")
-                sendPostRequest(transactions: [element])
+                giveInBackground(transactions: [element])
                 UserDefaults.standard.offlineGivts.remove(at: index)
                 print(UserDefaults.standard.offlineGivts)
             }
@@ -180,7 +180,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 break
             }
         }
-}
+    }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         if let feaa = advertisementData[CBAdvertisementDataServiceDataKey] as! NSMutableDictionary? {
@@ -194,51 +194,51 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
                 if(y.substring(5..<14) == "61f7 ed01" || y.substring(5..<14) == "61f7 ed02" || y.substring(5..<14) == "61f7 ed03") {
                     //print("beacon found with rssi: ", RSSI)
                     let antennaID = String(format: "%@.%@", y.substring(5..<27).replacingOccurrences(of: " ", with: ""), y.substring(27..<41).replacingOccurrences(of: " ", with: ""))
-                                            //print(antennaID)
-                        beaconDetected( antennaID: antennaID, rssi: RSSI, beaconType: 0, batteryLevel: 100)
+                    //print(antennaID)
+                    beaconDetected( antennaID: antennaID, rssi: RSSI, beaconType: 0, batteryLevel: 100)
                 }
             }
         }
     }
     
-
+    
     
     private var shouldDetect: Bool = true
     private func beaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, batteryLevel: Int8) {
         self.log.info(message: "Beacon detected w/ antennaId \(antennaID) and rssi \(rssi)")
-            if(rssi != 0x7f){
-                var organisation = antennaID
-                if let idx = antennaID.index(of: ".") {
-                    organisation = String(antennaID[..<idx])
-                }
-                
-                if let _ = bestBeacon.beaconId, let bestBeaconRssi = bestBeacon.rssi {
-                    /* beacon exists */
-                    if bestBeaconRssi.intValue < rssi.intValue { //update rssi when bigger
-                        bestBeacon.rssi = rssi
-                    }
-                    bestBeacon.beaconId = antennaID
-                    bestBeacon.organisation = organisation
-                } else {
-                    /* new beacon */
-                    bestBeacon.beaconId = antennaID
-                    bestBeacon.rssi = rssi
-                    bestBeacon.organisation = organisation
-                }
-                
-                if(rssi.intValue > rssiTreshold){
-                    shouldDetect = false
-                    scanLock.wait()
-                    if (isScanning) {
-                        DispatchQueue.main.async {
-                            self.give(antennaID: antennaID)
-                        }
-                    }
-                    scanLock.signal()
-                    return
-                }
-                
+        if(rssi != 0x7f){
+            var organisation = antennaID
+            if let idx = antennaID.index(of: ".") {
+                organisation = String(antennaID[..<idx])
             }
+            
+            if let _ = bestBeacon.beaconId, let bestBeaconRssi = bestBeacon.rssi {
+                /* beacon exists */
+                if bestBeaconRssi.intValue < rssi.intValue { //update rssi when bigger
+                    bestBeacon.rssi = rssi
+                }
+                bestBeacon.beaconId = antennaID
+                bestBeacon.organisation = organisation
+            } else {
+                /* new beacon */
+                bestBeacon.beaconId = antennaID
+                bestBeacon.rssi = rssi
+                bestBeacon.organisation = organisation
+            }
+            
+            if(rssi.intValue > rssiTreshold){
+                shouldDetect = false
+                scanLock.wait()
+                if (isScanning) {
+                    DispatchQueue.main.async {
+                        self.give(antennaID: antennaID)
+                    }
+                }
+                scanLock.signal()
+                return
+            }
+            
+        }
     }
     
     func give(antennaID: String) {
@@ -257,14 +257,14 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             }
         }
         
-        sendPostRequest(transactions: transactions)
+        giveInBackground(transactions: transactions)
         self.delegate?.onGivtProcessed(transactions: transactions)
         
-        let deadlineTime = DispatchTime.now() + 0.35
+        let deadlineTime = DispatchTime.now() + 0.20
         DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
             AudioServicesPlayAlertSound(1520)
         }
-    
+        
         bestBeacon = BestBeacon()
     }
     
@@ -301,7 +301,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
         give(antennaID: antennaId)
     }
-
+    
     
     private func cacheGivt(transactions: [Transaction]){
         
@@ -316,30 +316,43 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     }
     
-    func sendPostRequest(transactions: [Transaction]) {
+    private func tryGive(transactions: [Transaction], trycount: UInt = 0) {
         var object = ["Transactions": []]
         for transaction in transactions {
             object["Transactions"]?.append(transaction.convertToDictionary())
         }
         do {
-            try client.post(url: "/api/Givts/Multiple", data: object) { (res) in
+            if trycount < 3 {
+                try client.post(url: "/api/Givts/Multiple", data: object) { (res) in
                     if let res = res {
                         if res.basicStatus == .ok {
                             self.log.info(message: "Posted Givt to the server")
-                        } else {
+                        } else if res.status == .expectationFailed {
                             self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
+                        } else {
+                            self.tryGive(transactions: transactions, trycount: trycount+1)
                         }
                     } else {
                         self.cacheGivt(transactions: transactions)
                     }
                 }
-            
+            } else {
+                self.log.error(message: "Didn't get response from server! Caching givt...")
+                self.cacheGivt(transactions: transactions)
+            }
         } catch {
-            print()
+            self.log.error(message: "Unknown error : \(error)")
         }
-        
     }
     
+    func giveInBackground(transactions: [Transaction])
+    {
+        let bgTask = UIApplication.shared.beginBackgroundTask {
+            //task will end by itself
+        }
+        self.tryGive(transactions: transactions, trycount: 0)
+        UIApplication.shared.endBackgroundTask(bgTask)
+    }
     
     func getGivts(callback: @escaping ([HistoryTransaction]) -> Void) {
         client.get(url: "/api/Givts", data: [:]) { (response) in
@@ -459,7 +472,7 @@ class Transaction:NSObject, NSCoding {
             "UserId"    : self.userId,
             "CollectId" : self.collectId,
             "Timestamp"     : self.timeStamp
-                ]
-        }
+        ]
+    }
     
 }

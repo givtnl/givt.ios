@@ -105,24 +105,25 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 nameSpaces.append(org["EddyNameSpace"]!)
             }
             
-            var index = 0
-            var string = names[index].uppercased()
-            var firstCharacter = string[string.startIndex]
-            for (i, name) in names.enumerated() {
-                let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
-                if (commonPrefix.count == 0 ) {
-                    let title = "\(firstCharacter)"
-                    let newSection = (index: index, length: i - index, title: title)
-                    sections.append(newSection)
-                    index = i
-                    string = names[index].uppercased()
-                    firstCharacter = string[string.startIndex]
+            if (names.count > 0) {
+                var index = 0
+                var string = names[index].uppercased()
+                var firstCharacter = string[string.startIndex]
+                for (i, name) in names.enumerated() {
+                    let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
+                    if (commonPrefix.count == 0 ) {
+                        let title = "\(firstCharacter)"
+                        let newSection = (index: index, length: i - index, title: title)
+                        sections.append(newSection)
+                        index = i
+                        string = names[index].uppercased()
+                        firstCharacter = string[string.startIndex]
+                    }
                 }
+                let title = "\(firstCharacter)"
+                let newSection = (index: index, length: names.count - index, title: title)
+                sections.append(newSection)
             }
-            let title = "\(firstCharacter)"
-            let newSection = (index: index, length: names.count - index, title: title)
-            sections.append(newSection)
-            
             self.tableView.reloadData()
   
         }
