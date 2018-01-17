@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		076E20FBE3B8BF04AAFAEDDA /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31725F87D2D9EDE08EEAEB4 /* Pods_ios.framework */; };
+		076E20FBE3B8BF04AAFAEDDA /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31725F87D2D9EDE08EEAEB4 /* Pods_ios.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70491941FDA927C00CE5980 /* Welcome.storyboard */; };
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F1991F7E2D4B000B9546 /* CustomViewController.swift */; };
@@ -152,6 +152,7 @@
 /* Begin PBXFileReference section */
 		419F2B5D4C67A498F60F1F8E /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		5137859347A8763C7437BABD /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		7DF90D94E6F980835D667A53 /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		A31725F87D2D9EDE08EEAEB4 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D721F1991F7E2D4B000B9546 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +298,7 @@
 			children = (
 				5137859347A8763C7437BABD /* Pods-ios.debug.xcconfig */,
 				419F2B5D4C67A498F60F1F8E /* Pods-ios.release.xcconfig */,
+				7DF90D94E6F980835D667A53 /* Pods-ios.production.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1021,6 +1023,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "PRODUCTION=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1039,7 +1042,7 @@
 		};
 		FB10620F200CFFA1000B35DE /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 419F2B5D4C67A498F60F1F8E /* Pods-ios.release.xcconfig */;
+			baseConfigurationReference = 7DF90D94E6F980835D667A53 /* Pods-ios.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
