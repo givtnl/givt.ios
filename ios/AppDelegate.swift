@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 print(amount)
                                 transactions.append(Transaction(amount: amount.decimalValue, beaconId: beaconId, collectId: collectId, timeStamp: timeStamp, userId: userId))
                             }
-                            GivtService.shared.sendPostRequest(transactions: transactions)
+                            GivtService.shared.giveInBackground(transactions: transactions)
                         }
                         
                     } catch {
