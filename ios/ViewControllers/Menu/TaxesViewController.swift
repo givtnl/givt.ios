@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class TaxesViewController: UIViewController {
 
@@ -24,7 +25,7 @@ class TaxesViewController: UIViewController {
             ] as [NSAttributedStringKey : Any]
         
         let boldAttributedString = NSAttributedString(string: UserDefaults.standard.userExt!.email, attributes: boldAttribute)
-        mutableAttributedString.append(NSAttributedString(string: NSLocalizedString("SendOverViewTo", comment: "")))
+        mutableAttributedString.append(NSAttributedString(string: NSLocalizedString("SendOverViewTo", comment: "") + " "))
         mutableAttributedString.append(boldAttributedString)
 
         firstText.text = NSLocalizedString("DownloadYearOverview", comment: "")
@@ -32,6 +33,10 @@ class TaxesViewController: UIViewController {
         
         
         sendBtn.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
+        
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +50,32 @@ class TaxesViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func send(_ sender: Any) {
+    }
+    @IBAction func sendOverview(_ sender: Any) {
+        SVProgressHUD.show()
+        GivtService.shared.sendGivtOverview { (status) in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+            if status {
+                let alert = UIAlertController(title: NSLocalizedString("CheckInbox", comment: ""), message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (uialertaction) in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+            } else {
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CouldNotSendTaxOverview", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    
+                }))
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
     }
     /*
     // MARK: - Navigation
