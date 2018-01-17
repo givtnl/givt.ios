@@ -75,9 +75,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     private override init() {
         super.init()
-        getBeaconsFromOrganisation { (status) in
-            print(status)
-        }
+        start()
         
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(), options: [CBCentralManagerOptionShowPowerAlertKey:false])
 
@@ -87,6 +85,14 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         } catch {
             print("could not start notifier")
         }
+    }
+    
+    public func start() {
+        getBeaconsFromOrganisation { (status) in
+            print(status)
+        }
+        
+        getPublicMeta(year: "2017")
     }
     
     @objc func internetChanged(note: Notification){
@@ -362,6 +368,48 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             }
         }
     }
+    
+    func getPublicMeta(year: String) {
+        if UserDefaults.standard.userExt == nil || UserDefaults.standard.showedTaxOverview2017 == true {
+            return
+        }
+        
+        client.get(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/givts/public-meta?year=\(year)", data: [:]) { (response) in
+            if let response = response {
+                if response.basicStatus == .ok {
+                    do
+                    {
+                        let parsedData = try JSONSerialization.jsonObject(with: response.data!) as! [String: Any]
+                        UserDefaults.standard.hasGivtsIn2017 = parsedData["HasDeductableGivts"] as! Bool
+                        print("Has givts in 2017:", UserDefaults.standard.hasGivtsIn2017)
+                    } catch {
+                        UserDefaults.standard.hasGivtsIn2017 = false //for the sake of it
+                    }
+                } else {
+                    UserDefaults.standard.hasGivtsIn2017 = false //for the sake of it
+                }
+            } else {
+                UserDefaults.standard.hasGivtsIn2017 = false //for the sake of it
+            }
+        }
+    }
+    
+    func sendGivtOverview(callback: @escaping (Bool) -> Void) {
+        client.get(url: "/api/Givts/Overview", data: [:]) { (response) in
+            if let response = response {
+                if response.basicStatus == .ok {
+                    callback(true)
+                } else {
+                    callback(false)
+                }
+            } else {
+                callback(false)
+            }
+            
+        }
+    }
+    
+    
     
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
         
