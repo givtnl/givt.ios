@@ -39,7 +39,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var scrollView: UIScrollView!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !UserDefaults.standard.showedTaxOverview2017 {
+        if !UserDefaults.standard.showedLastYearTaxOverview {
              showOverlay()
         }
        
@@ -95,7 +95,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         
         self.overlay!.alpha = 0.6
         
-        UserDefaults.standard.showedTaxOverview2017 = true
+        UserDefaults.standard.showedLastYearTaxOverview = true
     }
     
     func hideOverlay() {
@@ -567,7 +567,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
     }
 
     @IBAction func clearViewed2017(_ sender: Any) {
-        UserDefaults.standard.showedTaxOverview2017 = false
+        UserDefaults.standard.showedLastYearTaxOverview = false
     }
 }
 
