@@ -1515,44 +1515,47 @@ Kijk voor de status in je overzicht.</string>
                                     <action selector="btnGive:" destination="I2a-zH-aE5" eventType="touchUpInside" id="43P-ep-N4j"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yvi-za-LaC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yvi-za-LaC">
                                 <rect key="frame" x="0.0" y="158" width="320" height="238"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="ManualGivingOrganisation" editingAccessoryType="checkmark" id="F0W-TX-0za" customClass="ManualGivingOrganisation" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="315" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F0W-TX-0za" id="AE4-kG-0vx">
-                                            <rect key="frame" x="0.0" y="0.0" width="315" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gLA-MZ-C5p">
-                                                    <rect key="frame" x="15" y="11" width="265" height="22"/>
+                                                    <rect key="frame" x="15" y="-0.5" width="290" height="50.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_green" translatesAutoresizingMaskIntoConstraints="NO" id="u5w-4A-Tbo">
-                                                            <rect key="frame" x="0.0" y="0.0" width="21" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="21" height="50.5"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="21" id="Boo-tX-mCN"/>
-                                                                <constraint firstAttribute="height" constant="22" id="jj0-kP-ntm"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dh-ad-cI1">
-                                                            <rect key="frame" x="31" y="0.0" width="234" height="22"/>
-                                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dshfjkhJSFdsf sjdhfkjsd fhfkjsdf jsdhfksdf" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dh-ad-cI1">
+                                                            <rect key="frame" x="31" y="0.0" width="259" height="50.5"/>
+                                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                             <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="u5w-4A-Tbo" firstAttribute="centerY" secondItem="gLA-MZ-C5p" secondAttribute="centerY" id="K2E-2k-aee"/>
+                                                        <constraint firstAttribute="trailing" secondItem="4Dh-ad-cI1" secondAttribute="trailing" id="DjZ-4U-ROI"/>
                                                         <constraint firstItem="4Dh-ad-cI1" firstAttribute="centerY" secondItem="gLA-MZ-C5p" secondAttribute="centerY" id="RqI-8s-Nam"/>
+                                                        <constraint firstItem="4Dh-ad-cI1" firstAttribute="top" secondItem="gLA-MZ-C5p" secondAttribute="top" id="VLh-GI-Ufe"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="aXK-ha-pwh"/>
+                                                        <constraint firstItem="u5w-4A-Tbo" firstAttribute="centerY" secondItem="gLA-MZ-C5p" secondAttribute="centerY" id="gTN-yA-y5X"/>
+                                                        <constraint firstAttribute="bottom" secondItem="4Dh-ad-cI1" secondAttribute="bottom" id="n2N-53-XBe"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="gLA-MZ-C5p" firstAttribute="top" secondItem="AE4-kG-0vx" secondAttribute="topMargin" id="53U-u0-50p"/>
-                                                <constraint firstItem="gLA-MZ-C5p" firstAttribute="bottom" secondItem="AE4-kG-0vx" secondAttribute="bottomMargin" id="KYZ-Eg-Gq0"/>
+                                                <constraint firstItem="gLA-MZ-C5p" firstAttribute="centerX" secondItem="AE4-kG-0vx" secondAttribute="centerX" id="1NO-Lm-OKa"/>
+                                                <constraint firstItem="gLA-MZ-C5p" firstAttribute="centerY" secondItem="AE4-kG-0vx" secondAttribute="centerY" id="7if-vc-OJe"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gLA-MZ-C5p" secondAttribute="trailing" id="Kv4-dc-fqa"/>
                                                 <constraint firstItem="gLA-MZ-C5p" firstAttribute="leading" secondItem="AE4-kG-0vx" secondAttribute="leadingMargin" id="MOV-RG-gsF"/>
                                             </constraints>

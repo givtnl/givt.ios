@@ -12,6 +12,7 @@ import SVProgressHUD
 
 
 class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate  {
+    @IBOutlet var backButton: UIButton!
     private var log = LogService.shared
     var url: String!
     private var webView: WKWebView!
@@ -19,6 +20,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     @IBOutlet weak var navBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.setImage(UIImage(), for: .disabled)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,7 +28,6 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
         
         let url = URL(string: self.url)
         let request = URLRequest(url: url!)
-    
         
         // init and load request in webview.
         webView = WKWebView(frame: self.view.frame)
@@ -99,6 +100,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
             if navigationAction.targetFrame == nil {
                 webView.load(navigationAction.request)
                 let bbi = UIBarButtonItem(title: NSLocalizedString("Close", comment: ""), style: .done, target: self, action: #selector(previousPage))
+                backButton.isEnabled = false
                 self.navBar.setRightBarButton(bbi, animated: true)
             }
             return nil
@@ -109,6 +111,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     @objc func previousPage() {
         webView.goBack()
         self.navBar.setRightBarButtonItems([], animated: true)
+        self.backButton.isEnabled = true
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

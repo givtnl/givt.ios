@@ -659,8 +659,8 @@ een gift te herroepen.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="biT-YQ-Gp9" secondAttribute="bottom" id="5Gy-8S-SDg"/>
                             <constraint firstItem="biT-YQ-Gp9" firstAttribute="width" secondItem="t2K-nP-9uy" secondAttribute="width" id="OfH-Z6-ocS"/>
-                            <constraint firstItem="t2K-nP-9uy" firstAttribute="bottom" secondItem="biT-YQ-Gp9" secondAttribute="bottom" id="RcX-uz-1yH"/>
                             <constraint firstItem="biT-YQ-Gp9" firstAttribute="top" secondItem="t2K-nP-9uy" secondAttribute="top" id="bMd-3q-6BW"/>
                             <constraint firstItem="biT-YQ-Gp9" firstAttribute="leading" secondItem="t2K-nP-9uy" secondAttribute="leading" id="p01-Nd-RXJ"/>
                             <constraint firstItem="t2K-nP-9uy" firstAttribute="trailing" secondItem="biT-YQ-Gp9" secondAttribute="trailing" id="yb5-3r-KSD"/>
@@ -668,14 +668,18 @@ een gift te herroepen.</string>
                         <viewLayoutGuide key="safeArea" id="t2K-nP-9uy"/>
                     </view>
                     <navigationItem key="navigationItem" id="rWf-6Z-UoV">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="GCu-1G-cYX">
-                            <connections>
-                                <action selector="back:" destination="L2Y-fA-AGb" id="2gW-BW-hnE"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" width="50" style="plain" id="L4C-Ma-NFk">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="36e-cB-nZA">
+                                <rect key="frame" x="16" y="0.0" width="50" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="backbtn"/>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="backButton" destination="36e-cB-nZA" id="PTY-aw-Bww"/>
                         <outlet property="navBar" destination="rWf-6Z-UoV" id="qLn-QK-LiG"/>
                         <outlet property="placeholder" destination="biT-YQ-Gp9" id="0lg-Ez-k5X"/>
                     </connections>

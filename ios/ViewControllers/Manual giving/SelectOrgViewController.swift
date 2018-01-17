@@ -31,6 +31,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.organisationLabel.text = organisation
         cell.nameSpace = nameSpace
         cell.toggleOff()
+        cell.organisationLabel.numberOfLines = 0
         if let pp = prevPos, pp.type == selectedTag && pp.pos == indexPath {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)

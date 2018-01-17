@@ -490,7 +490,9 @@ class LoginManager {
         UserDefaults.standard.userExt = UserExt()
         UserDefaults.standard.bearerExpiration = Date()
         UserDefaults.standard.mandateSigned = false
-        UIApplication.shared.applicationIconBadgeNumber = 0
+        DispatchQueue.main.async {
+            UIApplication.shared.applicationIconBadgeNumber = 0
+        }
         UserDefaults.standard.hasTappedAwayGiveDiff = false
         UserDefaults.standard.hasPinSet = false
         UserDefaults.standard.showedLastYearTaxOverview = false

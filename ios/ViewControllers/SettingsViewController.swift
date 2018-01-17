@@ -119,6 +119,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, showBadge: !LoginManager.shared.isFullyRegistered, callback: { self.register() })
         }
         
+        let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
         
         if !tempUser {
             items.append([])
@@ -141,7 +142,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items[0].append(userInfoSetting!)
             
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
-            let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
+            
             items[0].append(accessCode)
             items[1] = [changeAccount, screwAccount]
             items[2] = [aboutGivt, shareGivt]
@@ -149,7 +150,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items =
                 [
                     [userInfoSetting!],
-                    [changeAccount],
+                    [changeAccount, screwAccount],
                     [aboutGivt, shareGivt],
             ]
         }
@@ -175,7 +176,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         logService.info(message: "User is terminating account via the menu")
         let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! BaseNavigationController
         vc.transitioningDelegate = self.slideFromRightAnimation
-        NavigationManager.shared.pushWithLogin(vc, context: self)
+        if UserDefaults.standard.tempUser { //temp users can screw their account without authentication
+            self.present(vc, animated: true, completion: {
+                self.hideLeftView(self)
+            })
+        } else {
+            NavigationManager.shared.pushWithLogin(vc, context: self)
+        }
+
     }
     
     private func about() {
