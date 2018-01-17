@@ -75,7 +75,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     
     private override init() {
         super.init()
-        start()
+        resume()
         
         centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(), options: [CBCentralManagerOptionShowPowerAlertKey:false])
 
@@ -87,12 +87,12 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     }
     
-    public func start() {
+    public func resume() {
         getBeaconsFromOrganisation { (status) in
             print(status)
         }
         
-        getPublicMeta(year: "2017")
+        getPublicMeta()
     }
     
     @objc func internetChanged(note: Notification){
@@ -369,27 +369,31 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     }
     
-    func getPublicMeta(year: String) {
-        if UserDefaults.standard.userExt == nil || UserDefaults.standard.showedTaxOverview2017 == true {
+    func getPublicMeta() {
+        if UserDefaults.standard.userExt == nil || UserDefaults.standard.showedLastYearTaxOverview == true {
             return
         }
-        
+        let year = Date().getYear() - 1 //get the previous year
         client.get(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/givts/public-meta?year=\(year)", data: [:]) { (response) in
             if let response = response {
                 if response.basicStatus == .ok {
                     do
                     {
                         let parsedData = try JSONSerialization.jsonObject(with: response.data!) as! [String: Any]
-                        UserDefaults.standard.hasGivtsIn2017 = parsedData["HasDeductableGivts"] as! Bool
-                        print("Has givts in 2017:", UserDefaults.standard.hasGivtsIn2017)
+                        if let parsedBool = parsedData["HasDeductableGivts"] as? Bool {
+                            UserDefaults.standard.hasGivtsInPreviousYear = parsedBool
+                        } else {
+                            UserDefaults.standard.hasGivtsInPreviousYear = false
+                        }
+                        print("Has givts in \(year):", UserDefaults.standard.hasGivtsInPreviousYear)
                     } catch {
-                        UserDefaults.standard.hasGivtsIn2017 = false //for the sake of it
+                        UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
                     }
                 } else {
-                    UserDefaults.standard.hasGivtsIn2017 = false //for the sake of it
+                    UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
                 }
             } else {
-                UserDefaults.standard.hasGivtsIn2017 = false //for the sake of it
+                UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
             }
         }
     }

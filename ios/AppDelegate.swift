@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         handleOldAppData()
         handleOldTransactions()
         
-        GivtService.shared.start()
+        GivtService.shared.resume()
         
         
         return true
@@ -212,6 +212,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         logService.info(message: "App resuming")
         NavigationManager.shared.resume()
+        GivtService.shared.resume()
         
     }
 
