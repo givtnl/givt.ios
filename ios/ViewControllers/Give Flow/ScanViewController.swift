@@ -156,9 +156,6 @@ class ScanViewController: BaseScanViewController {
     }
     
     @IBAction func giveDifferently(_ sender: Any) {
-        if !GivtService.shared.isScanning {
-            return
-        }
         let vc = storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
         self.show(vc, sender: nil)
     }
