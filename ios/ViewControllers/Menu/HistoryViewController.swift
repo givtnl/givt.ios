@@ -103,13 +103,13 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         balloon?.removeFromSuperview()
     }
     @IBAction func openOverViewPage(_ sender: Any) {
-        if self.balloon != nil {
-            NSLayoutConstraint.deactivate((self.balloon?.constraints)!)
-        }
-        
-        self.hideOverlay()
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxesViewController") as! TaxesViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+            if self.balloon != nil {
+                NSLayoutConstraint.deactivate((self.balloon?.constraints)!)
+            }
+            
+            self.hideOverlay()
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxesViewController") as! TaxesViewController
+            self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -564,16 +564,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
                     
             }
         }
-    }
-    
-    func renderLabel(model: HistoryTransaction, index: Int) {
-        let label = UILabel(frame: CGRect(x: 0, y: 50 * index, width: 200, height: 21))
-        label.textAlignment = .center
-        label.text = model.orgName
-        DispatchQueue.main.async {
-            self.scrlHistory.addSubview(label)
-        }
-        //self.view.addSubview(label)
     }
 
     @IBAction func clearViewed2017(_ sender: Any) {
