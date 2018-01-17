@@ -493,5 +493,6 @@ class LoginManager {
         UserDefaults.standard.hasTappedAwayGiveDiff = false
         UserDefaults.standard.hasPinSet = false
         UserDefaults.standard.showedTaxOverview2017 = false
+        UserDefaults.standard.hasGivtsIn2017 = false
     }
 }
