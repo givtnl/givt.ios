@@ -128,7 +128,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
             items[0].append(givts)
             let givtsTaxOverviewAvailable: Setting?
-            if !UserDefaults.standard.showedTaxOverview2017 {
+            if UserDefaults.standard.hasGivtsIn2017 && !UserDefaults.standard.showedTaxOverview2017 {
                 givtsTaxOverviewAvailable = Setting(name: "Belastingsaangifte beschikbaar", image: UIImage(), callback: {
                     self.openHistory()
                 }, showArrow: false, isHighlighted: true)
