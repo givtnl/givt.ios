@@ -26,6 +26,17 @@ extension UserDefaults {
         case needsCriticalUpdate
         case termsVersion
         case showedTaxOverview2017
+        case hasGivtsIn2017
+    }
+    
+    var hasGivtsIn2017: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.hasGivtsIn2017.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.hasGivtsIn2017.rawValue)
+            synchronize()
+        }
     }
     
     var showedTaxOverview2017: Bool {
