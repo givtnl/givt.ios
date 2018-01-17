@@ -585,7 +585,8 @@
 "OpenMailbox" = "Open inbox";
 "PersonalInfo" = "Personal info";
 "CameraPermission" = "We need to access your camera to scan a qr-code.";
-"DownloadYearOverview" = "Do you want to download the overview of your donations in 2017?";
-"SendOverViewTo" = "We'll send the overview to\n";
+"DownloadYearOverview" = "Do you want to download your donations overview of 2017 for your tax return?";
+"SendOverViewTo" = "We'll send the overview to";
 "YearOverviewAvailable" = "Annual overview available";
 "CheckHereForYearOverview" = "Request your annual overview here";
+"CouldNotSendTaxOverview" = "We can't seem to fetch your annual review, please try again later. Contact us at support@givtapp.net if this problem persists.";
