@@ -32,10 +32,10 @@ class AppConstants{
     }()
     
     static var apiUri: String = {
-        #if DEBUG
-        return "https://givtapidebug.azurewebsites.net"
+        #if PRODUCTION
+            return "https://api.givtapp.net" // do not put this in prod before release!
         #else
-        return "https://api.givtapp.net" // do not put this in prod before release!
+            return "https://givtapidebug.azurewebsites.net"
         #endif
     }()
     
@@ -77,4 +77,19 @@ class AppConstants{
             #endif
         }
     }
+    
+    static var returnUrlDir: String {
+        get {
+            return "natived"
+        }
+    }
+    
+    static var appScheme: String {
+        get {
+            let urlTypes = Bundle.main.infoDictionary!["CFBundleURLTypes"] as! NSArray
+            return (((urlTypes[0] as! NSDictionary).value(forKey: "CFBundleURLSchemes")) as! NSArray)[0] as! String + "://"
+        }
+    }
+    
+    
 }

@@ -32,3 +32,7 @@ class SettingsItemBadgeAndArrow: SettingsItemTableViewCell {
 class SettingsItemArrow: SettingsItemTableViewCell {
     @IBOutlet weak var arrow: UIView!
 }
+
+class HighlightedItem: SettingsItemTableViewCell {
+    
+}

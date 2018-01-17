@@ -14,17 +14,15 @@ import SVProgressHUD
 class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate  {
     private var log = LogService.shared
     var url: String!
-    var webView: WKWebView!
-    @IBOutlet var placeholder: UIView!
+    private var webView: WKWebView!
+    @IBOutlet weak var placeholder: UIView!
     @IBOutlet weak var navBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         
         let url = URL(string: self.url)
         let request = URLRequest(url: url!)
@@ -42,8 +40,6 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
         webView.leadingAnchor.constraint(equalTo: self.placeholder.leadingAnchor).isActive = true
         webView.topAnchor.constraint(equalTo: self.placeholder.topAnchor).isActive = true
         webView.scrollView.delegate = self
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -120,12 +116,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     }
     
     deinit {
-        self.webView.uiDelegate = nil
-        self.webView.navigationDelegate = nil
-        self.webView.stopLoading()
         self.webView.scrollView.delegate = nil
-        self.navigationController?.delegate = nil
-        self.webView = nil
     }
 
     /*

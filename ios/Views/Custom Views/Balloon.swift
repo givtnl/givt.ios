@@ -65,6 +65,13 @@ class Balloon: UIView {
         topConstraint.isActive = true
     }
     
+    func pinTop2(view toView: UIView, _ constant: CGFloat = 0) {
+        topConstraint = self.topAnchor.constraint(equalTo: toView.topAnchor, constant: constant)
+        topConstraint.isActive = true
+    }
+    
+    
+    
     func pinLeft(view toView: UIView, _ constant: CGFloat = 0) {
         leftConstraint = self.leadingAnchor.constraint(equalTo: toView.leadingAnchor, constant: constant)
         leftConstraint.isActive = true
@@ -79,6 +86,7 @@ class Balloon: UIView {
     }
     
     func bounce() {
+        let oldValue = self.topConstraint.constant
         UIView.animate(withDuration: 0.4,
                        delay: 0.1,
                        options: [.autoreverse, .repeat],
@@ -86,11 +94,11 @@ class Balloon: UIView {
                         //do not reverse last frame, source
                         //https://stackoverflow.com/questions/5040494/uiview-animations-with-autoreverse/11670490#11670490
                         UIView.setAnimationRepeatCount(4.5)
-                        self.topConstraint.constant = 4
+                        self.topConstraint.constant = oldValue + 4
                         self.superview?.layoutIfNeeded()
         }, completion: { (finished) -> Void in
             UIView.animate(withDuration: 0.4, animations: {
-                self.topConstraint.constant = 0
+                self.topConstraint.constant = oldValue
                 self.superview?.layoutIfNeeded()
             })
         })
@@ -108,8 +116,8 @@ class Balloon: UIView {
         }
     }
     
-    func centerTooltip(view: UIView) {
-        pointer.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+    func centerTooltip(view: UIView, _ constant: CGFloat = 0) {
+        pointer.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: constant).isActive = true
     }
     
     func positionTooltip() {

@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var reachability: Reachability!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
+        TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start("e36f1172-f316-4601-81f3-df0024a9860f", withServices:[
             MSAnalytics.self,
             MSCrashes.self
@@ -44,7 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         handleOldAppData()
         handleOldTransactions()
         
-        TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig)
+        GivtService.shared.resume()
+        
+        
         return true
     }
     
@@ -69,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 print(amount)
                                 transactions.append(Transaction(amount: amount.decimalValue, beaconId: beaconId, collectId: collectId, timeStamp: timeStamp, userId: userId))
                             }
-                            GivtService.shared.sendPostRequest(transactions: transactions)
+                            GivtService.shared.giveInBackground(transactions: transactions)
                         }
                         
                     } catch {
@@ -210,6 +212,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         logService.info(message: "App resuming")
         NavigationManager.shared.resume()
+        GivtService.shared.resume()
         
     }
 

@@ -105,24 +105,25 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 nameSpaces.append(org["EddyNameSpace"]!)
             }
             
-            var index = 0
-            var string = names[index].uppercased()
-            var firstCharacter = string[string.startIndex]
-            for (i, name) in names.enumerated() {
-                let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
-                if (commonPrefix.count == 0 ) {
-                    let title = "\(firstCharacter)"
-                    let newSection = (index: index, length: i - index, title: title)
-                    sections.append(newSection)
-                    index = i
-                    string = names[index].uppercased()
-                    firstCharacter = string[string.startIndex]
+            if (names.count > 0) {
+                var index = 0
+                var string = names[index].uppercased()
+                var firstCharacter = string[string.startIndex]
+                for (i, name) in names.enumerated() {
+                    let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
+                    if (commonPrefix.count == 0 ) {
+                        let title = "\(firstCharacter)"
+                        let newSection = (index: index, length: i - index, title: title)
+                        sections.append(newSection)
+                        index = i
+                        string = names[index].uppercased()
+                        firstCharacter = string[string.startIndex]
+                    }
                 }
+                let title = "\(firstCharacter)"
+                let newSection = (index: index, length: names.count - index, title: title)
+                sections.append(newSection)
             }
-            let title = "\(firstCharacter)"
-            let newSection = (index: index, length: names.count - index, title: title)
-            sections.append(newSection)
-            
             self.tableView.reloadData()
   
         }
@@ -167,17 +168,19 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.sectionIndexMinimumDisplayRowCount = 20
+        tableView.sectionIndexColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GivtService.shared.onGivtProcessed = self
+        GivtService.shared.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        GivtService.shared.onGivtProcessed = nil
+        GivtService.shared.delegate = nil
     }
     
     func addTap(_ view: UIView, _ tag: Int) {

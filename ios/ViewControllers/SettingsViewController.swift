@@ -29,7 +29,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemArrow", for: indexPath) as? SettingsItemArrow
             }
         } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemTableViewCell", for: indexPath) as? SettingsItemTableViewCell
+            if setting.isHighlighted {
+                cell = tableView.dequeueReusableCell(withIdentifier: "HighlightedItem", for: indexPath) as? HighlightedItem
+            } else {
+                cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemTableViewCell", for: indexPath) as? SettingsItemTableViewCell //normal cell
+            }
+            
         }
     
         cell!.settingLabel.text = setting.name
@@ -98,6 +103,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func loadSettings(){
+        items = []
         let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
         
         let tempUser = UserDefaults.standard.tempUser
@@ -115,16 +121,30 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         
         if !tempUser {
+            items.append([])
+            items.append([])
+            items.append([])
+            
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
+            items[0].append(givts)
+            let givtsTaxOverviewAvailable: Setting?
+            if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showedLastYearTaxOverview {
+                givtsTaxOverviewAvailable = Setting(name: NSLocalizedString("YearOverviewAvailable", comment: ""), image: UIImage(), callback: {
+                    self.openHistory()
+                }, showArrow: false, isHighlighted: true)
+                items[0].append(givtsTaxOverviewAvailable!)
+            }
+            
+            
             let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
+            items[0].append(limit)
+            items[0].append(userInfoSetting!)
+            
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
-            items =
-                [
-                    [givts, limit, userInfoSetting!, accessCode],
-                    [changeAccount, screwAccount],
-                    [aboutGivt, shareGivt],
-            ]
+            items[0].append(accessCode)
+            items[1] = [changeAccount, screwAccount]
+            items[2] = [aboutGivt, shareGivt]
         } else {
             items =
                 [
@@ -153,7 +173,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private func terminate() {
         logService.info(message: "User is terminating account via the menu")
-        let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! AboutNavigationController
+        let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! BaseNavigationController
         vc.transitioningDelegate = self.slideFromRightAnimation
         NavigationManager.shared.pushWithLogin(vc, context: self)
     }
@@ -161,7 +181,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     private func about() {
         
         DispatchQueue.main.async {
-            let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! AboutNavigationController
+            let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! BaseNavigationController
             vc.transitioningDelegate = self.slideFromRightAnimation
             self.present(vc, animated: true, completion: {
                 self.hideLeftView(self)
@@ -206,7 +226,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private func openHistory() {
         logService.info(message: "User is opening history")
-        let vc = storyboard?.instantiateViewController(withIdentifier: "history") as! HistoryViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
         vc.transitioningDelegate = self.slideFromRightAnimation
         NavigationManager.shared.pushWithLogin(vc, context: self)
     }
