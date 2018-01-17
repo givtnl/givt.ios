@@ -13,13 +13,12 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet var parentView: UIView!
     @IBOutlet var downloadButton: UIButton!
     private var givtService = GivtService.shared
-    @IBOutlet var infoButton: UIBarButtonItem!
+    @IBOutlet var infoButton: UIButton!
     private var overlay: UIView?
     private var balloon: Balloon?
     override func viewDidLoad() {
         super.viewDidLoad()
         renderGivy()
-        self.infoButton.isEnabled = false
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
@@ -34,12 +33,14 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         singleTapGestureRecognizer.isEnabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        
+        self.downloadButton.isHidden = !UserDefaults.standard.hasGivtsInPreviousYear
     }
     
     @IBOutlet var scrollView: UIScrollView!
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !UserDefaults.standard.showedLastYearTaxOverview {
+        if !UserDefaults.standard.showedLastYearTaxOverview && UserDefaults.standard.hasGivtsInPreviousYear {
              showOverlay()
         }
        
@@ -277,9 +278,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         fmt.positiveFormat = "¤ #,##0.00"
         
         clearView()
-        UIView.animate(withDuration: 0.2, animations: {
-            self.infoButton?.isEnabled = true
-        })
         for (idx, object) in objects.enumerated() {
             /* once per month per year, add title of the month */
             if oldMonth != String(object.timestamp.getMonth()) + "-" + String(object.timestamp.getYear()) {
@@ -523,6 +521,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
             if historyTransactions.count == 0 {
                 DispatchQueue.main.async {
                     self.renderNoGivts()
+                    self.infoButton.isHidden = true
                 }
             } else {
                 let objects = historyTransactions.sorted {
