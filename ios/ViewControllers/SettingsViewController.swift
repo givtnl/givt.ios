@@ -129,7 +129,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items[0].append(givts)
             let givtsTaxOverviewAvailable: Setting?
             if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showedLastYearTaxOverview {
-                givtsTaxOverviewAvailable = Setting(name: "Belastingsaangifte beschikbaar", image: UIImage(), callback: {
+                givtsTaxOverviewAvailable = Setting(name: NSLocalizedString("YearOverviewAvailable", comment: ""), image: UIImage(), callback: {
                     self.openHistory()
                 }, showArrow: false, isHighlighted: true)
                 items[0].append(givtsTaxOverviewAvailable!)
