@@ -410,7 +410,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
     }
     
     func sendGivtOverview(callback: @escaping (Bool) -> Void) {
-        client.get(url: "/api/Givts/Overview", data: [:]) { (response) in
+        client.get(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/givts/mail-report?year=\(Date().getYear()-1)", data: [:]) { (response) in
             if let response = response {
                 if response.basicStatus == .ok {
                     callback(true)
