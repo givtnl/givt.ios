@@ -100,6 +100,7 @@ class LoginManager {
                                 UserDefaults.standard.isLoggedIn = true
                                 self.getUserExt(completionHandler: { (status) in
                                     if status {
+                                        GivtService.shared.getPublicMeta()
                                         self.log.info(message: "User logged in")
                                         self.checkMandate(completionHandler: { (status) in
                                             self.userClaim = self.isFullyRegistered ? .give : .giveOnce
@@ -492,5 +493,7 @@ class LoginManager {
         UIApplication.shared.applicationIconBadgeNumber = 0
         UserDefaults.standard.hasTappedAwayGiveDiff = false
         UserDefaults.standard.hasPinSet = false
+        UserDefaults.standard.showedLastYearTaxOverview = false
+        UserDefaults.standard.hasGivtsInPreviousYear = false
     }
 }

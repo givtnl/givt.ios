@@ -9,25 +9,41 @@
 import UIKit
 import SVProgressHUD
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: UIViewController, UIScrollViewDelegate {
+    @IBOutlet var parentView: UIView!
+    @IBOutlet var downloadButton: UIButton!
     private var givtService = GivtService.shared
-    @IBOutlet var scrlHistory: UIScrollView!
     @IBOutlet var infoButton: UIButton!
-    
+    private var overlay: UIView?
+    private var balloon: Balloon?
     override func viewDidLoad() {
         super.viewDidLoad()
         renderGivy()
-        self.infoButton.alpha = 0
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
         SVProgressHUD.show()
         
+        scrollView.delegate = self
+        
         getHistory()
+        
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedScrollView(sender:)))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        
+        self.downloadButton.isHidden = !UserDefaults.standard.hasGivtsInPreviousYear
+    }
+    
+    @IBOutlet var scrollView: UIScrollView!
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !UserDefaults.standard.showedLastYearTaxOverview && UserDefaults.standard.hasGivtsInPreviousYear {
+             showOverlay()
+        }
+       
     }
 
     func clearView() {
@@ -36,10 +52,71 @@ class HistoryViewController: UIViewController {
     
     @IBOutlet var historyList: UIStackView!
     
-    @IBAction func backBtn(_ sender: UIButton) {
+    @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @objc func tappedScrollView(sender: UITapGestureRecognizer) {
+        hideOverlay()
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        hideOverlay()
+    }
+    func showOverlay() {
+        self.balloon = Balloon(text: NSLocalizedString("CheckHereForYearOverview", comment: ""))
+        self.view.addSubview(self.balloon!)
+
+        let cgRectOfButton = self.downloadButton.convert(self.downloadButton.frame, to: nil)
+        let offSet = cgRectOfButton.midX - self.scrollView.frame.midX
+        self.balloon!.centerTooltip(view: self.scrollView, offSet)
+        
+        
+        self.balloon!.pinRight(view: self.scrollView, -5)
+        
+        self.balloon!.pinTop2(view: self.view, self.scrollView.frame.minY + 5)
+        self.view.bringSubview(toFront: self.balloon!)
+        self.view.layoutIfNeeded()
+
+        self.balloon!.alpha = 0
+        UIView.animate(withDuration: 0.5) {
+            self.balloon!.alpha = 1
+        }
+
+        self.balloon?.bounce()
+        
+        self.overlay = UIView()
+        self.overlay!.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.overlay!.translatesAutoresizingMaskIntoConstraints = false
+        self.scrollView.addSubview(self.overlay!)
+        self.overlay!.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
+        self.overlay!.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
+        self.overlay!.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
+        self.overlay!.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
+        
+        self.overlay!.alpha = 0.6
+        
+        UserDefaults.standard.showedLastYearTaxOverview = true
+    }
+    
+    func hideOverlay() {
+        overlay?.removeFromSuperview()
+        balloon?.removeFromSuperview()
+    }
+    @IBAction func openOverViewPage(_ sender: Any) {
+            if self.balloon != nil {
+                NSLayoutConstraint.deactivate((self.balloon?.constraints)!)
+            }
+            
+            self.hideOverlay()
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxesViewController") as! TaxesViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+
     func renderGivy() {
         containerText = UIView()
         containerText?.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +139,6 @@ class HistoryViewController: UIViewController {
         noGivtsText?.topAnchor.constraint(equalTo: containerText!.topAnchor, constant: 20).isActive = true
         noGivtsText?.trailingAnchor.constraint(equalTo: containerText!.trailingAnchor, constant: -20).isActive = true
         noGivtsText?.alpha = 0
-        
         let image = #imageLiteral(resourceName: "givymoney.png")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
@@ -77,14 +153,14 @@ class HistoryViewController: UIViewController {
     var containerText: UIView? = nil
     var noGivtsText: UILabel? = nil
     var infoScreen: UIView? = nil
-    @IBAction func openInfo(_ sender: UIButton) {
+    @IBAction func openInfo(_ sender: Any) {
         print("user wants to open info")
         infoScreen = UIView()
         infoScreen?.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        self.view.addSubview(infoScreen!)
+        self.navigationController?.view.addSubview(infoScreen!)
         infoScreen?.translatesAutoresizingMaskIntoConstraints = false
         infoScreen?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        infoScreen?.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        infoScreen?.topAnchor.constraint(equalTo: (self.navigationController?.view.topAnchor)!).isActive = true
         infoScreen?.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         //infoScreen?.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
         infoScreen?.alpha = 0
@@ -93,7 +169,7 @@ class HistoryViewController: UIViewController {
         let bar = UIView()
         infoScreen?.addSubview(bar)
         bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor, constant: 0).isActive = true
+        bar.topAnchor.constraint(equalTo: (self.navigationController?.topLayoutGuide.bottomAnchor)!, constant: 0).isActive = true
         bar.leadingAnchor.constraint(equalTo: (infoScreen?.leadingAnchor)!, constant: 0).isActive = true
         bar.trailingAnchor.constraint(equalTo: (infoScreen?.trailingAnchor)!, constant: 0).isActive = true
         bar.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -202,9 +278,6 @@ class HistoryViewController: UIViewController {
         fmt.positiveFormat = "¤ #,##0.00"
         
         clearView()
-        UIView.animate(withDuration: 0.2, animations: {
-            self.infoButton?.alpha = 1
-        })
         for (idx, object) in objects.enumerated() {
             /* once per month per year, add title of the month */
             if oldMonth != String(object.timestamp.getMonth()) + "-" + String(object.timestamp.getYear()) {
@@ -448,6 +521,7 @@ class HistoryViewController: UIViewController {
             if historyTransactions.count == 0 {
                 DispatchQueue.main.async {
                     self.renderNoGivts()
+                    self.infoButton.isHidden = true
                 }
             } else {
                 let objects = historyTransactions.sorted {
@@ -490,17 +564,10 @@ class HistoryViewController: UIViewController {
             }
         }
     }
-    
-    func renderLabel(model: HistoryTransaction, index: Int) {
-        let label = UILabel(frame: CGRect(x: 0, y: 50 * index, width: 200, height: 21))
-        label.textAlignment = .center
-        label.text = model.orgName
-        DispatchQueue.main.async {
-            self.scrlHistory.addSubview(label)
-        }
-        //self.view.addSubview(label)
-    }
 
+    @IBAction func clearViewed2017(_ sender: Any) {
+        UserDefaults.standard.showedLastYearTaxOverview = false
+    }
 }
 
 class HistoryTransaction: NSObject {

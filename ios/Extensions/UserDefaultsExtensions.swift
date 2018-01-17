@@ -25,6 +25,28 @@ extension UserDefaults {
         case pinSet
         case needsCriticalUpdate
         case termsVersion
+        case showedLastYearTaxOverview
+        case hasGivtsInPreviousYear
+    }
+    
+    var hasGivtsInPreviousYear: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.hasGivtsInPreviousYear.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.hasGivtsInPreviousYear.rawValue)
+            synchronize()
+        }
+    }
+    
+    var showedLastYearTaxOverview: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.showedLastYearTaxOverview.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.showedLastYearTaxOverview.rawValue)
+            synchronize()
+        }
     }
     
     var needsCriticalUpdate: Bool {
