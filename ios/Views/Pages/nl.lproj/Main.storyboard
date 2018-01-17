@@ -315,13 +315,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6Mh-Qv-CdG">
-                                                    <rect key="frame" x="10" y="0.0" width="310" height="49.5"/>
+                                                    <rect key="frame" x="12" y="0.0" width="308" height="49.5"/>
                                                     <subviews>
                                                         <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xRe-Ag-coT">
                                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="49.5"/>
                                                             <subviews>
                                                                 <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="RZv-h0-9eV">
-                                                                    <rect key="frame" x="-10" y="0.0" width="0.0" height="0.0"/>
+                                                                    <rect key="frame" x="-12" y="0.0" width="0.0" height="0.0"/>
                                                                     <subviews>
                                                                         <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fl-z4-a9S">
                                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="0.0"/>
@@ -346,13 +346,13 @@
                                                             </subviews>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="wsP-im-ppf" userLabel="labelVC">
-                                                            <rect key="frame" x="0.0" y="0.0" width="255" height="49.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="253" height="49.5"/>
                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEk-R6-tEb">
-                                                            <rect key="frame" x="260" y="0.0" width="50" height="49.5"/>
+                                                            <rect key="frame" x="258" y="0.0" width="50" height="49.5"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whitedlTaxes" translatesAutoresizingMaskIntoConstraints="NO" id="diS-Ob-Bht">
                                                                     <rect key="frame" x="12" y="12" width="26" height="26"/>
@@ -376,7 +376,7 @@
                                                 <constraint firstItem="6Mh-Qv-CdG" firstAttribute="top" secondItem="4JS-iY-P5L" secondAttribute="top" id="CPC-ML-j4a"/>
                                                 <constraint firstAttribute="trailing" secondItem="6Mh-Qv-CdG" secondAttribute="trailing" id="QbE-Pb-2Mt"/>
                                                 <constraint firstAttribute="bottom" secondItem="6Mh-Qv-CdG" secondAttribute="bottom" id="VvX-HV-xPF"/>
-                                                <constraint firstItem="6Mh-Qv-CdG" firstAttribute="leading" secondItem="4JS-iY-P5L" secondAttribute="leading" constant="10" id="s40-ej-izS"/>
+                                                <constraint firstItem="6Mh-Qv-CdG" firstAttribute="leading" secondItem="4JS-iY-P5L" secondAttribute="leading" constant="12" id="s40-ej-izS"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2125,14 +2125,19 @@ Kijk voor de status in je overzicht.</string>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="info20h" width="44" id="fpW-fk-0hO">
-                                <connections>
-                                    <action selector="openInfo:" destination="3fl-1y-hcG" id="CQi-Qc-fyE"/>
-                                </connections>
+                            <barButtonItem style="plain" id="bsx-Gp-Pin">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0hX-Cj-lb5">
+                                    <rect key="frame" x="284" y="11" width="20" height="22"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="info20h"/>
+                                    <connections>
+                                        <action selector="openInfo:" destination="3fl-1y-hcG" eventType="touchUpInside" id="I5H-XH-Ml0"/>
+                                    </connections>
+                                </button>
                             </barButtonItem>
                             <barButtonItem width="44" style="plain" id="VYa-Bo-Z6R">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zo0-RD-CRQ">
-                                    <rect key="frame" x="216" y="0.0" width="44" height="44"/>
+                                    <rect key="frame" x="232" y="0.0" width="44" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" image="dlTaxes"/>
                                     <connections>
@@ -2145,7 +2150,7 @@ Kijk voor de status in je overzicht.</string>
                     <connections>
                         <outlet property="downloadButton" destination="Zo0-RD-CRQ" id="VWD-Sd-iq0"/>
                         <outlet property="historyList" destination="016-Z6-t7E" id="qqc-xj-xU9"/>
-                        <outlet property="infoButton" destination="fpW-fk-0hO" id="60H-FS-bCo"/>
+                        <outlet property="infoButton" destination="0hX-Cj-lb5" id="FLP-9o-N50"/>
                         <outlet property="parentView" destination="fVn-fJ-CeU" id="zSw-qq-ZxY"/>
                         <outlet property="scrollView" destination="Hme-Ma-wP3" id="GEF-Ev-vbx"/>
                     </connections>
