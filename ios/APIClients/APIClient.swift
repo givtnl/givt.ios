@@ -23,6 +23,7 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
     
     func get(url: String, data: [String: String], headers: [String: String] = [:], callback: @escaping (Response?) -> Void) {
         var headers = headers
+        headers["Response-Content-Localization"] = Locale.preferredLanguages[0]
         if let bearerToken = UserDefaults.standard.bearerToken {
                 headers["Authorization"] = "Bearer " + bearerToken
         }
