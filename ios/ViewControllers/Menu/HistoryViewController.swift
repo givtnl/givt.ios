@@ -41,10 +41,8 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !UserDefaults.standard.showedLastYearTaxOverview && UserDefaults.standard.hasGivtsInPreviousYear {
-            
+            showOverlay()
         }
-       showOverlay()
-       
     }
 
     func clearView() {
