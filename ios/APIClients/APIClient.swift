@@ -20,10 +20,10 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
     private override init() {
         
     }
-    
+   
     func get(url: String, data: [String: String], headers: [String: String] = [:], callback: @escaping (Response?) -> Void) {
         var headers = headers
-        headers["Response-Content-Localization"] = Locale.preferredLanguages[0]
+        headers["Accept-Language"] = Locale.preferredLanguages[0]
         if let bearerToken = UserDefaults.standard.bearerToken {
                 headers["Authorization"] = "Bearer " + bearerToken
         }
@@ -45,7 +45,7 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
         client.put(url: url).delegate(delegate: self)
             .send(data: data)
             .type(type: "json")
-            .set(headers: ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken!])
+            .set(headers: ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken!, "Accept-Language" : Locale.preferredLanguages[0]])
             .end(done: { (res:Response) in
                 callback(res)
             }) { (err) in
@@ -58,6 +58,7 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
     func post(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) throws {
         log.info(message: "POST on " + url)
         var headers: [String: String] = [:]
+        headers["Accept-Language"] = Locale.preferredLanguages[0]
         if let bearerToken = UserDefaults.standard.bearerToken {
             headers["Authorization"] = "Bearer " + bearerToken
         }
