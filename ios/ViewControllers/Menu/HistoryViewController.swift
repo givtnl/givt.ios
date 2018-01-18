@@ -41,8 +41,9 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !UserDefaults.standard.showedLastYearTaxOverview && UserDefaults.standard.hasGivtsInPreviousYear {
-             showOverlay()
+            
         }
+       showOverlay()
        
     }
 
@@ -63,40 +64,49 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         hideOverlay()
     }
+    @IBOutlet var containerButton: UIBarButtonItem!
+    
     func showOverlay() {
-        self.balloon = Balloon(text: NSLocalizedString("CheckHereForYearOverview", comment: ""))
-        self.view.addSubview(self.balloon!)
-
-        let cgRectOfButton = self.downloadButton.convert(self.downloadButton.frame, to: nil)
-        let offSet = cgRectOfButton.midX - self.scrollView.frame.midX
-        self.balloon!.centerTooltip(view: self.scrollView, offSet)
-        
-        
-        self.balloon!.pinRight(view: self.scrollView, -5)
-        
-        self.balloon!.pinTop2(view: self.view, self.scrollView.frame.minY + 5)
-        self.view.bringSubview(toFront: self.balloon!)
-        self.view.layoutIfNeeded()
-
-        self.balloon!.alpha = 0
-        UIView.animate(withDuration: 0.5) {
-            self.balloon!.alpha = 1
+        if let window = UIApplication.shared.keyWindow {
+            self.balloon = Balloon(text: NSLocalizedString("CheckHereForYearOverview", comment: ""))
+            self.view.addSubview(self.balloon!)
+            
+            var cgRectOfButton = CGRect()
+            if #available(iOS 11.0, *) {
+                cgRectOfButton = self.downloadButton.convert(self.downloadButton.frame, to: nil)
+            } else {
+                cgRectOfButton = (self.containerButton.value(forKey: "view") as! UIView).frame
+            }
+            let offSet = cgRectOfButton.midX - self.scrollView.frame.midX
+            self.balloon!.centerTooltip(view: self.scrollView, offSet)
+            
+            
+            self.balloon!.pinRight(view: self.scrollView, -5)
+            
+            self.balloon!.pinTop2(view: self.view, self.scrollView.frame.minY + 5)
+            self.view.bringSubview(toFront: self.balloon!)
+            self.view.layoutIfNeeded()
+            
+            self.balloon!.alpha = 0
+            UIView.animate(withDuration: 0.5) {
+                self.balloon!.alpha = 1
+            }
+            
+            self.balloon?.bounce()
+            
+            self.overlay = UIView()
+            self.overlay!.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            self.overlay!.translatesAutoresizingMaskIntoConstraints = false
+            self.scrollView.addSubview(self.overlay!)
+            self.overlay!.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
+            self.overlay!.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
+            self.overlay!.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
+            self.overlay!.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
+            
+            self.overlay!.alpha = 0.6
+            
+            UserDefaults.standard.showedLastYearTaxOverview = true
         }
-
-        self.balloon?.bounce()
-        
-        self.overlay = UIView()
-        self.overlay!.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        self.overlay!.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.addSubview(self.overlay!)
-        self.overlay!.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
-        self.overlay!.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
-        self.overlay!.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
-        self.overlay!.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
-        
-        self.overlay!.alpha = 0.6
-        
-        UserDefaults.standard.showedLastYearTaxOverview = true
     }
     
     func hideOverlay() {

@@ -2171,6 +2171,7 @@ Kijk voor de status in je overzicht.</string>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="containerButton" destination="VYa-Bo-Z6R" id="xlg-Pf-oZz"/>
                         <outlet property="downloadButton" destination="Zo0-RD-CRQ" id="VWD-Sd-iq0"/>
                         <outlet property="historyList" destination="016-Z6-t7E" id="qqc-xj-xU9"/>
                         <outlet property="infoButton" destination="0hX-Cj-lb5" id="FLP-9o-N50"/>
