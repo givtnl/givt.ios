@@ -100,6 +100,9 @@ class LoginManager {
                                 UserDefaults.standard.isLoggedIn = true
                                 self.getUserExt(completionHandler: { (status) in
                                     if status {
+                                        GivtService.shared.getBeaconsFromOrganisation(completionHandler: { (status) in
+                                            //do nothing
+                                        })
                                         GivtService.shared.getPublicMeta()
                                         self.log.info(message: "User logged in")
                                         self.checkMandate(completionHandler: { (status) in
