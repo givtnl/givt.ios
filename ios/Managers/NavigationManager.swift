@@ -15,6 +15,7 @@ class NavigationManager {
     private var appSettings = UserDefaults.standard
     private var logService = LogService.shared
     private let _appServices = AppServices.shared
+    private let slideFromRightAnimation = PresentFromRight()
     
     var delegate: NavigationManagerDelegate?
     
@@ -49,6 +50,7 @@ class NavigationManager {
     
     public func finishRegistration(_ context: UIViewController) {
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+        vc.transitioningDelegate = slideFromRightAnimation
         permissionAsked { (asked) in
             if UserDefaults.standard.tempUser { //tempuser
                 vc.startPoint = .registration

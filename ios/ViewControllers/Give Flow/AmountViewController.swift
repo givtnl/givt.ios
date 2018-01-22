@@ -12,6 +12,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     private var log: LogService = LogService.shared
     @IBOutlet var widthConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UIView!
+    private let slideFromRightAnimation = PresentFromRight()
     
     private var navigiationManager: NavigationManager = NavigationManager.shared
     @IBOutlet var menu: UIBarButtonItem!
@@ -314,10 +315,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             self.checkAmounts()
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateInitialViewController() as! RegNavigationController
-            vc.isRegistration = false
+            LogService.shared.info(message: "User is opening giving limit")
+            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
             vc.startPoint = .amountLimit
-            self.present(vc, animated: true)
+            vc.isRegistration = false
+            vc.transitioningDelegate = self.slideFromRightAnimation
+            NavigationManager.shared.pushWithLogin(vc, context: self)
         }))
         self.present(alert, animated: true, completion: nil)
     }
