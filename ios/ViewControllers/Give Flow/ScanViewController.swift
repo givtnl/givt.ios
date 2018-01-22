@@ -48,6 +48,7 @@ class ScanViewController: BaseScanViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        btnGive.isEnabled = true
         NotificationCenter.default.addObserver(self, selector: #selector(showBluetoothMessage), name: Notification.Name("BluetoothIsOff"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -124,7 +125,6 @@ class ScanViewController: BaseScanViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         navigationController?.navigationBar.isTranslucent = true
@@ -155,9 +155,12 @@ class ScanViewController: BaseScanViewController {
 
     }
     
+
     @IBAction func giveDifferently(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
-        self.show(vc, sender: nil)
+        btnGive.isEnabled = false
+        GivtService.shared.stopScanning()
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func goBack(_ sender: Any) {
