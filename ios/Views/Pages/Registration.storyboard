@@ -674,6 +674,9 @@ een gift te herroepen.</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="backbtn"/>
+                                <connections>
+                                    <action selector="back:" destination="L2Y-fA-AGb" eventType="touchUpInside" id="JWB-Vv-tRB"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
