@@ -65,7 +65,7 @@ final class LogService: ILogService {
     private var client = Client().baseUrl(url: URL)
     static var ENVIRONMENT: String {
         get {
-            #if !DEBUG
+            #if PRODUCTION
                 return "GivtApp.iOS.Production"
             #else
                 return "GivtApp.iOS.Debug"
