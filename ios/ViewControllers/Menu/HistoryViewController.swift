@@ -617,6 +617,7 @@ class HistoryTransaction: NSObject {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         df.timeZone = TimeZone(abbreviation: "UTC")
+        df.locale = Locale(identifier: "en_US_POSIX") as Locale!
         timestamp = df.date(from: dateString)!
         status = (dictionary["Status"] as? NSNumber)!
     }

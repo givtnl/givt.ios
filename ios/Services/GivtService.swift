@@ -248,6 +248,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
         df.timeZone = TimeZone(abbreviation: "UTC")
+        df.locale = Locale(identifier: "en_US_POSIX") as Locale!
         let date = df.string(from: Date())
         print(date)
         var transactions = [Transaction]()
