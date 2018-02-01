@@ -56,13 +56,13 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     }
     
-    var beaconListLastChanged: Date? {
+    var beaconListLastChanged: String? {
         get {
             let list = UserDefaults.standard.orgBeaconList as! [String: Any]
             if let lastChanged = list["LastChanged"] as? String {
-                return lastChanged.toDate
+                return lastChanged
             }
-            self.log.error(message: "LastChanged of BeaconList is empty")
+            self.log.warning(message: "No lastchanged found in beacon list")
             return nil 
         }
     }
@@ -429,12 +429,7 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             // add &dtLastChanged when beaconList is filled
             if UserDefaults.standard.orgBeaconList != nil {
                 if let date = beaconListLastChanged {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-                    dateFormatter.locale = Locale(identifier: "en_US_POSIX") as Locale!
-                    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) as TimeZone!
-                    let dateString = dateFormatter.string(from: date)
-                    data["dtLastUpdated"] = dateString
+                    data["dtLastUpdated"] = date
                 }
             }
             client.get(url: "/api/Organisation/BeaconList", data: data, callback: { (response) in
