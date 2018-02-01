@@ -27,10 +27,7 @@
 		D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */; };
 		D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E976D1FD000CE00EFD8E1 /* AuthClient.swift */; };
 		D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */; };
-		D740E15A1F4C631F000531BA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E1591F4C631F000531BA /* UserService.swift */; };
 		D740E15C1F4C6328000531BA /* GivtService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15B1F4C6328000531BA /* GivtService.swift */; };
-		D740E15E1F4C63A1000531BA /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15D1F4C63A1000531BA /* UserServiceProtocol.swift */; };
-		D740E1601F4C63D1000531BA /* GivtServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15F1F4C63D1000531BA /* GivtServiceProtocol.swift */; };
 		D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75141971F9798040016B71F /* EmailOnlyViewController.swift */; };
 		D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75141991F9799750016B71F /* FirstUseViewController.swift */; };
 		D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D751419B1F9799970016B71F /* FirstUseNavigationViewController.swift */; };
@@ -172,10 +169,7 @@
 		D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		D73E976D1FD000CE00EFD8E1 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconServiceProtocol.swift; sourceTree = "<group>"; };
-		D740E1591F4C631F000531BA /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D740E15B1F4C6328000531BA /* GivtService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivtService.swift; sourceTree = "<group>"; };
-		D740E15D1F4C63A1000531BA /* UserServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
-		D740E15F1F4C63D1000531BA /* GivtServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivtServiceProtocol.swift; sourceTree = "<group>"; };
 		D75141971F9798040016B71F /* EmailOnlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOnlyViewController.swift; sourceTree = "<group>"; };
 		D75141991F9799750016B71F /* FirstUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstUseViewController.swift; sourceTree = "<group>"; };
 		D751419B1F9799970016B71F /* FirstUseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstUseNavigationViewController.swift; sourceTree = "<group>"; };
@@ -300,7 +294,6 @@
 		D72B707E1F44832D0022BD29 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D740E1591F4C631F000531BA /* UserService.swift */,
 				D740E15B1F4C6328000531BA /* GivtService.swift */,
 				D7FB251C1F4D6D2F0011A14E /* AppServices.swift */,
 				D7FB252E1F5065C20011A14E /* Reachability.swift */,
@@ -314,8 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */,
-				D740E15D1F4C63A1000531BA /* UserServiceProtocol.swift */,
-				D740E15F1F4C63D1000531BA /* GivtServiceProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -852,11 +843,9 @@
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
 				D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */,
-				D740E15A1F4C631F000531BA /* UserService.swift in Sources */,
 				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
-				D740E1601F4C63D1000531BA /* GivtServiceProtocol.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
 				D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */,
@@ -898,7 +887,6 @@
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */,
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
-				D740E15E1F4C63A1000531BA /* UserServiceProtocol.swift in Sources */,
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
 				D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */,
