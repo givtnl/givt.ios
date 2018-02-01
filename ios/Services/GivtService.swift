@@ -56,15 +56,14 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
         }
     }
     
-    var beaconListLastChanged: Date {
+    var beaconListLastChanged: Date? {
         get {
             let list = UserDefaults.standard.orgBeaconList as! [String: Any]
-            let lastChanged = list["LastChanged"] as! String
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-            dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
-            let date = dateFormatter.date(from: lastChanged)!
-            return date
+            if let lastChanged = list["LastChanged"] as? String {
+                return lastChanged.toDate
+            }
+            self.log.error(message: "LastChanged of BeaconList is empty")
+            return nil 
         }
     }
     
@@ -429,11 +428,14 @@ final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate
             var data = ["Guid" : userExt.guid]
             // add &dtLastChanged when beaconList is filled
             if UserDefaults.standard.orgBeaconList != nil {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-                dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
-                let dateString = dateFormatter.string(from: beaconListLastChanged)
-                data["dtLastUpdated"] = dateString
+                if let date = beaconListLastChanged {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+                    dateFormatter.locale = Locale(identifier: "en_US_POSIX") as Locale!
+                    dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) as TimeZone!
+                    let dateString = dateFormatter.string(from: date)
+                    data["dtLastUpdated"] = dateString
+                }
             }
             client.get(url: "/api/Organisation/BeaconList", data: data, callback: { (response) in
                 if let response = response, let data = response.data {

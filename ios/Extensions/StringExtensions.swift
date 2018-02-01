@@ -90,6 +90,22 @@ extension String{
         }
     }
     
+    var toDate : Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS"
+        formatter.locale = Locale(identifier: "en_US_POSIX") as Locale!
+        formatter.timeZone = TimeZone(secondsFromGMT: 0) as TimeZone!
+        if let date = formatter.date(from: self) {
+            return date
+        } else {
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+            if let  date = formatter.date(from: self) {
+                return date
+            }
+        }
+        return nil
+    }
+    
     static func random(length: Int = 20) -> String {
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString: String = ""
