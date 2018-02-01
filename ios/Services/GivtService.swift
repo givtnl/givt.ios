@@ -11,7 +11,7 @@ import CoreBluetooth
 import UIKit
 import AudioToolbox
 
-final class GivtService: NSObject, GivtServiceProtocol, CBCentralManagerDelegate {
+final class GivtService: NSObject, CBCentralManagerDelegate {
     static let shared = GivtService()
     private var log = LogService.shared
     let reachability = Reachability()
