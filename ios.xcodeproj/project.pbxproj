@@ -27,7 +27,6 @@
 		D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */; };
 		D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E976D1FD000CE00EFD8E1 /* AuthClient.swift */; };
 		D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */; };
-		D740E1561F4C5FAE000531BA /* GivtManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E1551F4C5FAE000531BA /* GivtManager.swift */; };
 		D740E15A1F4C631F000531BA /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E1591F4C631F000531BA /* UserService.swift */; };
 		D740E15C1F4C6328000531BA /* GivtService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15B1F4C6328000531BA /* GivtService.swift */; };
 		D740E15E1F4C63A1000531BA /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15D1F4C63A1000531BA /* UserServiceProtocol.swift */; };
@@ -173,7 +172,6 @@
 		D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		D73E976D1FD000CE00EFD8E1 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
 		D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconServiceProtocol.swift; sourceTree = "<group>"; };
-		D740E1551F4C5FAE000531BA /* GivtManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivtManager.swift; sourceTree = "<group>"; };
 		D740E1591F4C631F000531BA /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		D740E15B1F4C6328000531BA /* GivtService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivtService.swift; sourceTree = "<group>"; };
 		D740E15D1F4C63A1000531BA /* UserServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
@@ -366,7 +364,6 @@
 			isa = PBXGroup;
 			children = (
 				D77667ED1F39F12900649157 /* LoginManager.swift */,
-				D740E1551F4C5FAE000531BA /* GivtManager.swift */,
 				D788E4771FA08DA700506DA5 /* NavigationManager.swift */,
 				D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */,
 			);
@@ -900,7 +897,6 @@
 				D787AE2D1FCD9EFB0004BDB1 /* ILogService.swift in Sources */,
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */,
-				D740E1561F4C5FAE000531BA /* GivtManager.swift in Sources */,
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
 				D740E15E1F4C63A1000531BA /* UserServiceProtocol.swift in Sources */,
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
