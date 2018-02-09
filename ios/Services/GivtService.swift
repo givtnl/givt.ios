@@ -21,7 +21,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     private var amounts = [Decimal]()
     private let scanLock = NSRecursiveLock()
     
-    var scannedPeripherals: [ScannedPeripheral] = [ScannedPeripheral]()
+    var scannedPeripherals: [String: Int] = [String: Int]()
     
     var getBestBeacon: BestBeacon {
         get {
@@ -207,11 +207,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                 if y.substring(1..<3) == "20" {
                     let batteryLevel = y.substring(5..<9)
                     if let value = Int(batteryLevel, radix: 16) {
-                        let currentPeripheral = ScannedPeripheral(p: peripheral.identifier, b: value)
-                        let pExists = scannedPeripherals.index { $0.id == currentPeripheral.id }
-                        if pExists == nil {
-                            scannedPeripherals.append(currentPeripheral)
-                        }
+                        scannedPeripherals[peripheral.identifier.uuidString] = value
                     }
                 }
             }
@@ -220,13 +216,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     
     private func beaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, peripheralId: UUID) {
         var msg = "Beacon detected \(antennaID) | RSSI: \(rssi)"
-        var batteryVoltage: Int? = nil
-        if let currentPeripheral = self.scannedPeripherals.first(where: { $0.id == peripheralId }), let v = currentPeripheral.batteryVoltage {
-            batteryVoltage = v
-        }
-        
-        if let bv = batteryVoltage {
-            //voltage filled
+        if let bv = scannedPeripherals[peripheralId.uuidString] {
             msg += " | Battery voltage: \(bv)"
             bv < 2200 ? self.log.warning(message: msg) : self.log.info(message: msg)
         } else {
@@ -497,16 +487,6 @@ class BestBeacon {
         beaconId = b
         rssi = r
         organisation = o
-    }
-}
-
-class ScannedPeripheral {
-    var id: UUID?
-    var batteryVoltage: Int?
-    
-    init(p: UUID? = nil, b: Int? = nil) {
-        id = p
-        batteryVoltage = b
     }
 }
 
