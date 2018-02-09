@@ -21,6 +21,8 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     private var amounts = [Decimal]()
     private let scanLock = NSRecursiveLock()
     
+    var scannedPeripherals: [ScannedPeripheral] = [ScannedPeripheral]()
+    
     var getBestBeacon: BestBeacon {
         get {
             return bestBeacon
@@ -120,6 +122,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     }
     
     func startScanning() {
+        self.scannedPeripherals.removeAll()
         scanLock.lock()
         if (!isScanning)
         {
@@ -189,27 +192,47 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
     }
     
+    
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         if let feaa = advertisementData[CBAdvertisementDataServiceDataKey] as! NSMutableDictionary? {
             let x = feaa.object(forKey: CBUUID(string: "FEAA"))
             if(x != nil){
-                //print(x!)
                 let y = String.init(describing: x!)
-                //61f7
-                _ = String(describing: x).substring(5..<14)
-                print(y.substring(5..<14))
+
                 if(y.substring(5..<14) == "61f7 ed01" || y.substring(5..<14) == "61f7 ed02" || y.substring(5..<14) == "61f7 ed03") {
-                    //print("beacon found with rssi: ", RSSI)
                     let antennaID = String(format: "%@.%@", y.substring(5..<27).replacingOccurrences(of: " ", with: ""), y.substring(27..<41).replacingOccurrences(of: " ", with: ""))
-                    //print(antennaID)
-                    beaconDetected( antennaID: antennaID, rssi: RSSI, beaconType: 0, batteryLevel: 100)
+                    beaconDetected(antennaID: antennaID, rssi: RSSI, beaconType: 0, peripheralId: peripheral.identifier)
+                }
+                
+                if y.substring(1..<3) == "20" {
+                    let batteryLevel = y.substring(5..<9)
+                    if let value = Int(batteryLevel, radix: 16) {
+                        let currentPeripheral = ScannedPeripheral(p: peripheral.identifier, b: value)
+                        let pExists = scannedPeripherals.index { $0.id == currentPeripheral.id }
+                        if pExists == nil {
+                            scannedPeripherals.append(currentPeripheral)
+                        }
+                    }
                 }
             }
         }
     }
     
-    private func beaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, batteryLevel: Int8) {
-        log.info(message: "Beacon detected w/ antennaId \(antennaID) and rssi \(rssi)")
+    private func beaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, peripheralId: UUID) {
+        var msg = "Beacon detected \(antennaID) | RSSI: \(rssi)"
+        var batteryVoltage: Int? = nil
+        if let currentPeripheral = self.scannedPeripherals.first(where: { $0.id == peripheralId }), let v = currentPeripheral.batteryVoltage {
+            batteryVoltage = v
+        }
+        
+        if let bv = batteryVoltage {
+            //voltage filled
+            msg += " | Battery voltage: \(bv)"
+            bv < 2200 ? self.log.warning(message: msg) : self.log.info(message: msg)
+        } else {
+            self.log.info(message: msg)
+        }
+
         if(rssi != 0x7f){
             var organisation = antennaID
             if let idx = antennaID.index(of: ".") {
@@ -474,6 +497,16 @@ class BestBeacon {
         beaconId = b
         rssi = r
         organisation = o
+    }
+}
+
+class ScannedPeripheral {
+    var id: UUID?
+    var batteryVoltage: Int?
+    
+    init(p: UUID? = nil, b: Int? = nil) {
+        id = p
+        batteryVoltage = b
     }
 }
 
