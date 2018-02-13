@@ -218,7 +218,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         var msg = "Beacon detected \(antennaID) | RSSI: \(rssi)"
         if let bv = scannedPeripherals[peripheralId.uuidString] {
             msg += " | Battery voltage: \(bv)"
-            bv < 2200 ? self.log.warning(message: msg) : self.log.info(message: msg)
+            bv < 2500 ? self.log.warning(message: msg) : self.log.info(message: msg)
         } else {
             self.log.info(message: msg)
         }
