@@ -259,7 +259,7 @@
 "FAQantwoord2" = "The first step was installing the app. For Givt to work effectively, \nit’s important that you enable Bluetooth and have a working internet \nconnection. (If you don’t have an internet connection when \nmaking your donation, the donation will be sent at a later time like \nwhen you are in a WiFi zone.)\n\nThen register yourself by filling in your information and signing a mandate. \nYou’re ready to give! Open the app, select an amount, and move your \nphone towards the collection bag or basket. A Givt beacon has been \nplaced inside. Your phone receives a signal from the beacon and \nyour chosen amount will be saved, withdrawn from your account \nand distributed to the church or collecting foundation.";
 
 /*Antwoord op FAQ vraag3*/
-"FAQantwoord3" = "You can access your app menu by pressing the hamburger menu at the top left of the ‘Amount’ screen. To change your settings, you have to login using your e-mail address and password or passcode. In the menu you can find the overview of your donations, adjust your maximum amount, change your IBAN, set a passcode, change your bank account or terminate your Givt account.\n\nTo change your personal details, leave us a message at About Givt / Contact in your menu. You can also contact our helpdesk via +31 320115 or support@givtapp.net. \n\nThe video below demonstrates how you can change your settings:";
+"FAQantwoord3" = "You can access your app menu by pressing the hamburger menu at the top left of the ‘Amount’ screen. To change your settings, you have to login using your e-mail address and password or passcode. In the menu you can find the overview of your donations, adjust your maximum amount, change your IBAN, set a passcode, change your bank account or terminate your Givt account.\n\nTo change your personal details, leave us a message at About Givt / Contact in your menu. You can also contact our helpdesk via +31 320115 or support@givtapp.net.";
 
 /*Antwoord op FAQ vraag4*/
 "FAQantwoord4" = "More and more churches\nYou can use Givt in all churches and all charities that are registered with us. More churches are joining every week, you can see the latest overview at www.givtapp.net/waar-givt-gebruiken/  \n\nNot registered yet? \nIf you as a church or organisation are not yet affiliated with Givt, please contact us at +31 320 320 115 or info@givtapp.net.";
@@ -275,7 +275,7 @@
 "FAQantwoord7" = "Safe and risk free \nIt is very important to us that everything is safe and risk free. Each user has a personal account with its own password. You need to login to view or change your settings.\n\nHandling transactions \nThe transactions are handled by SlimPay; a bank specialized in processing mandates. SlimPay is under the supervision of several national banks in Europe, including the Dutch Central Bank (DNB).\n\nImmune to fraud \nWhen installing Givt, the user gives the app authorisation to debit their account.\nWe want to emphasise that no transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt B.V. Since these transactions are revocable, it is completely safe and immune to fraud. \n\nOverview \nChurches and organizations can login to the Givt dashboard. This dashboard gives an overview of all financial transactions, from the moment of giving up to the full processing of the payment. In this way any amount can be followed from start to finish.";
 
 /*Antwoord op FAQ vraag8*/
-"FAQantwoord8" = "If you no longer want to use Givt, you can unsubscribe for all Givt services.\nTo unsubscribe, go to your settings via the burger menu and choose 'Terminate my account'.\n\nThe video below demonstrates this:";
+"FAQantwoord8" = "If you no longer want to use Givt, you can unsubscribe for all Givt services.\nTo unsubscribe, go to your settings via the burger menu and choose 'Terminate my account'.";
 "SlimPayInformation" = "We want your Givt experience to be as smooth as possible.";
 "SavingSettings" = "Sit back and relax,\nwe are saving your settings.";
 
@@ -412,13 +412,13 @@
 "FAQAnswer11" = "Go to your settings by pressing on the top left hamburger menu. Choose 'Passcode' and activate the use of a passcode. Set your own passcode. When your passcode is activated, you can use it to access your settings instead of using your e-mail address and password. However, when you've forgotten your passcode, you need your e-mail address and password to make a new one.";
 
 /*Antwoord op de vraag Hoe werkt registreren*/
-"AnswerHowDoesRegistrationWork" = "To use Givt, you have to register in the Givt app. Go to your app menu and choose 'Finish registration'. You set up a Givt account, fill in some personal details and give permission to collect the donations made with the app. The transactions are handled by Slimpay - a bank that specialises in the treatment of permissions. When your registration is complete, you are ready to give. You only need your login details to see or change your settings.\n\nThe video below demonstrates this:";
+"AnswerHowDoesRegistrationWork" = "To use Givt, you have to register in the Givt app. Go to your app menu and choose 'Finish registration'. You set up a Givt account, fill in some personal details and give permission to collect the donations made with the app. The transactions are handled by Slimpay - a bank that specialises in the treatment of permissions. When your registration is complete, you are ready to give. You only need your login details to see or change your settings.";
 
 /*Antwoord FAQ Hoe werkt geven?*/
 "AnswerHowDoesGivingWork" = "It’s easy! Just open the Givt app, choose an amount and move your phone past the collection box, alms bag or basket. Don't forget to finish your registration, so your donations can be delivered to the right address.\n\nThe video below demonstrates this:";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "When the Givt app does not work like it should, you can choose to select \nthe recipient manually. Choose an amount and press ‘Give’. Thereafter \nchoose ‘Give differently’ and select 'Churches', 'Foundations' or 'Campaigns'. Now choose a recipient and press ‘Give’. \n\nThe video below demonstrates this:";
+"AnswerHowDoesManualGivingWork" = "When the Givt app does not work like it should, you can choose to select \nthe recipient manually. Choose an amount and press ‘Give’. Thereafter \nchoose ‘Give differently’ and select 'Churches', 'Foundations' or 'Campaigns'. Now choose a recipient and press ‘Give’.";
 "MenuSettingsSwitchAccounts" = "Switch accounts";
 "PrepareIUnderstand" = "I understand";
 
@@ -461,7 +461,7 @@
 "FAQQuestion14" = "How can I give to multiple collections?";
 
 /*antwoord meerdere collectesvraag*/
-"FAQAnswer14" = "Do you have multiple collections in one service? Activate up to three collections by pushing the plus-symbol at the top right corner of your screen. You can see which one is selected (1, 2 or 3). Fill in the amounts in such a way that they resemble the order in which the collections pass by in your church. When you give to the first collection that passes by, all donations are sent immediately. In the overview you can see a breakdown of your donations. They will be labeled as ‘collection 1, 2 or 3’. (Your church knows which number corresponds with which purpose). Want to skip a collection? Leave it open or remove it by tapping twice.\n\nThe video below illustrates how this works:";
+"FAQAnswer14" = "Do you have multiple collections in one service? Activate up to three collections by pushing the plus-symbol at the top right corner of your screen. You can see which one is selected (1, 2 or 3). Fill in the amounts in such a way that they resemble the order in which the collections pass by in your church. When you give to the first collection that passes by, all donations are sent immediately. In the overview you can see a breakdown of your donations. They will be labeled as ‘collection 1, 2 or 3’. (Your church knows which number corresponds with which purpose). Want to skip a collection? Leave it open or remove it by tapping twice.";
 "Collect" = "Collection";
 "OfflineGegevenGivtsMessage" = "Thank you for your Givts!\n\nWhen there's a good connection with the Givt-server, your Givts will be processed.\nYou can check the status in the overview.";
 "OfflineGegevenGivtsMessageWithOrg" = "Thank you for your Givts to {0}!\n\nWhen there's a good connection with the Givt-server, your Givts will be processed.\nYou can check the status in the overview.";
@@ -561,7 +561,7 @@
 "ImportantReminder" = "Important reminder";
 "MultipleCollections" = "Multiple collections";
 "QuestionAndroidLocation" = "Why does Givt need access to my location?";
-"AnswerAndroidLocation" = "When using an Android smartphone, the Givt-beacon can only be detected by the Givt app when the location is known. Therefore, Givt needs your location to make giving possible. Beside that, we do not use your location.";
+"AnswerAndroidLocation" = "When using an Android smartphone, the Givt-beacon can only be detected by the Givt app when the location is known. Therefore, Givt needs your location to make giving possible. Besides that, we do not use your location.";
 "ShareTheGivtButton" = "Share with my friends";
 "ShareTheGivtText" = "I've just used Givt to donate to {0}!";
 "ShareTheGivtTextNoOrg" = "I've just used Givt to donate!";
