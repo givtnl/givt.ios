@@ -16,7 +16,6 @@ class ConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         headerTitle.text = NSLocalizedString("UnregisterSad", comment: "")
-        subTitle.text = NSLocalizedString("UnregisterSadSubText", comment: "")
         backBtn.isEnabled = false
         backBtn.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         // Do any additional setup after loading the view.

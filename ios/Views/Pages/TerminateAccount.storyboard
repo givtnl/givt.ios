@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,11 +22,11 @@
             <objects>
                 <viewController storyboardIdentifier="TerminateAccountViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="b7r-Sx-6hb" customClass="TerminateAccountViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6as-GO-jWk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9UT-Nz-iTs">
-                                <rect key="frame" x="20" y="74" width="560" height="139.5"/>
+                                <rect key="frame" x="20" y="74" width="335" height="139.5"/>
                                 <string key="text">Je kunt te allen tijde je account bij Givt
 opzeggen en verwijderen.
 
@@ -34,7 +38,7 @@ account moeten maken.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWO-W4-Y1W" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="536" width="560" height="44"/>
+                                <rect key="frame" x="20" y="603" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.84397548440000003" green="0.23647701739999999" blue="0.28622943159999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="tds-2k-843"/>
@@ -59,7 +63,7 @@ account moeten maken.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwJ-Sg-xxx">
-                                <rect key="frame" x="20" y="492" width="24" height="24"/>
+                                <rect key="frame" x="20" y="559" width="24" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="K6p-K0-aBV"/>
                                     <constraint firstAttribute="width" constant="24" id="ge2-pq-5Rp"/>
@@ -70,7 +74,7 @@ account moeten maken.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ik snap het" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9r-5q-qMm">
-                                <rect key="frame" x="59" y="492" width="82" height="23.5"/>
+                                <rect key="frame" x="59" y="559" width="82" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.56862745098039214" green="0.5607843137254902" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -114,36 +118,25 @@ account moeten maken.</string>
             <objects>
                 <viewController storyboardIdentifier="ConfirmationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dGx-CV-ZUt" customClass="ConfirmationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TT2-g2-ZG6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jammer dat je gaat, hopelijk zien we je weer terug" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGb-Xe-0c2">
-                                <rect key="frame" x="20" y="84" width="560" height="55"/>
+                                <rect key="frame" x="20" y="84" width="335" height="55"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gci-VP-OfM">
-                                <rect key="frame" x="20" y="149" width="560" height="44"/>
-                                <string key="text">We nemen contact met je op om het
-opzeggen rond te maken.</string>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givy_sad" translatesAutoresizingMaskIntoConstraints="NO" id="UbW-gN-sha">
-                                <rect key="frame" x="20" y="213" width="560" height="180"/>
+                                <rect key="frame" x="20" y="213" width="335" height="180"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UbW-gN-sha" firstAttribute="leading" secondItem="TH9-bg-VNn" secondAttribute="leading" constant="20" id="4XF-ve-EXy"/>
-                            <constraint firstItem="UbW-gN-sha" firstAttribute="top" secondItem="Gci-VP-OfM" secondAttribute="bottom" constant="20" id="AWT-jv-3zs"/>
                             <constraint firstItem="KGb-Xe-0c2" firstAttribute="leading" secondItem="TH9-bg-VNn" secondAttribute="leading" constant="20" id="HAs-6d-uDQ"/>
                             <constraint firstItem="KGb-Xe-0c2" firstAttribute="top" secondItem="TH9-bg-VNn" secondAttribute="top" constant="20" id="KgE-qo-AWf"/>
-                            <constraint firstItem="Gci-VP-OfM" firstAttribute="top" secondItem="KGb-Xe-0c2" secondAttribute="bottom" constant="10" id="MmR-wb-Cef"/>
-                            <constraint firstItem="Gci-VP-OfM" firstAttribute="leading" secondItem="TH9-bg-VNn" secondAttribute="leading" constant="20" id="O9D-A9-CSc"/>
-                            <constraint firstItem="TH9-bg-VNn" firstAttribute="trailing" secondItem="Gci-VP-OfM" secondAttribute="trailing" constant="20" id="Pda-aB-ebU"/>
+                            <constraint firstItem="UbW-gN-sha" firstAttribute="top" secondItem="KGb-Xe-0c2" secondAttribute="bottom" constant="74" id="La6-TR-rD0"/>
                             <constraint firstItem="TH9-bg-VNn" firstAttribute="trailing" secondItem="KGb-Xe-0c2" secondAttribute="trailing" constant="20" id="v1D-sB-89i"/>
                             <constraint firstItem="TH9-bg-VNn" firstAttribute="trailing" secondItem="UbW-gN-sha" secondAttribute="trailing" constant="20" id="ypC-VI-ve0"/>
                         </constraints>
@@ -156,7 +149,6 @@ opzeggen rond te maken.</string>
                     <connections>
                         <outlet property="backBtn" destination="gFY-z5-w6e" id="i8E-bv-j1u"/>
                         <outlet property="headerTitle" destination="KGb-Xe-0c2" id="5G2-d6-9W6"/>
-                        <outlet property="subTitle" destination="Gci-VP-OfM" id="m1B-8R-MBQ"/>
                         <segue destination="wi3-Kk-smB" kind="unwind" identifier="unwindAmount" unwindAction="unwindToAmountWithSegue:" id="Hv7-3Z-z8K"/>
                     </connections>
                 </viewController>
