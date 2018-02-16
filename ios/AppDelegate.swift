@@ -74,15 +74,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             GivtService.shared.giveInBackground(transactions: transactions)
                         }
                         
-                    } catch {
-                        logService.error(message: "Could not parse cached givts #native #fail :-(. Description: " + error.localizedDescription)
                     }
                 }
                 
                 do {
                     try "".write(to: fileURL, atomically: true, encoding: .utf8)
                 } catch {
-                    logService.warning(message: "Could not empty Givt.Models.Transaction.json!")
+                    logService.warning(message: "Could not empty Givt.Models.Transaction.json")
                 }
                 
             } catch {
@@ -179,10 +177,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 UserDefaults.standard.userExt = newSettings //update settings
                             }
                         }
-                    } catch {
-                        logService.warning(message: "Could not read GivtSettings.json, perhaps the file was already gone.")
                     }
-                    
                     do {
                         try "".write(to: fileURL, atomically: true, encoding: .utf8)
                     } catch {

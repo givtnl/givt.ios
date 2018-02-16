@@ -66,8 +66,8 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             amountLimit.text = amountLimit.text?.substring(0..<5)
         }
         
-        btnSave.isEnabled = value > 0
-        btnSaveKeyboard?.isEnabled = value > 0
+        btnSave.isEnabled = shouldEnableButton()
+        btnSaveKeyboard?.isEnabled = shouldEnableButton()
     }
     
     override func viewDidLoad() {
@@ -84,6 +84,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         }
         
         btnSave.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
+        btnSave.isEnabled = false
         
         amountLimit.returnKeyType = .done
         amountLimit.delegate = self
@@ -179,8 +180,8 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if let amountLimit = Int(textField.text!), amountLimit > 0 {
-            btnSave.isEnabled = true
-            btnSaveKeyboard?.isEnabled = true
+            btnSave.isEnabled = shouldEnableButton()
+            btnSaveKeyboard?.isEnabled = shouldEnableButton()
             let amountLimit: Int = Int(textField.text!)!
             textField.text = String(amountLimit)
             
@@ -190,14 +191,17 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             }
         } else {
             textField.text = "0"
-            btnSave.isEnabled = false
-            btnSaveKeyboard?.isEnabled = false
+            btnSave.isEnabled = shouldEnableButton()
+            btnSaveKeyboard?.isEnabled = shouldEnableButton()
             textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
             return
         }
         
     }
     
-
+    func shouldEnableButton() -> Bool {
+        let limit = Int(amountLimit.text!)!
+        return (limit > 0 && limit != UserDefaults.standard.amountLimit)
+    }
 
 }
