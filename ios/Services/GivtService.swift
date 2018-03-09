@@ -16,6 +16,8 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     private var log = LogService.shared
     let reachability = Reachability()
     
+    static let FEAA = CBUUID.init(string: "FEAA")
+    
     private var client = APIClient.shared
     private var amount: Decimal!
     private var amounts = [Decimal]()
@@ -128,7 +130,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         {
             log.info(message: "Started scanning")
             isScanning = true
-            centralManager.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
+            centralManager.scanForPeripherals(withServices: [GivtService.FEAA], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
             DispatchQueue.main.async {
                 UIApplication.shared.isIdleTimerDisabled = true
             }
