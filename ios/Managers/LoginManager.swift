@@ -306,7 +306,7 @@ class LoginManager {
                         UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil && parsedData["Signed"] as! Int == 1)
                         self.log.info(message: "Mandate signed: " + String(UserDefaults.standard.mandateSigned))
                         if self.isFullyRegistered {
-                            UIApplication.shared.applicationIconBadgeNumber = 0
+                            DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 0 }
                         }
                         if let status = parsedData["PayProvMandateStatus"] as? String {
                             completionHandler(status)
