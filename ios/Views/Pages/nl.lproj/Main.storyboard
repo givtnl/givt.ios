@@ -1112,7 +1112,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdE-KD-x7v">
-                                                        <rect key="frame" x="0.0" y="52.5" width="93.5" height="52"/>
+                                                        <rect key="frame" x="0.0" y="52.5" width="93.5" height="51.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1122,7 +1122,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J3L-g4-FDn">
-                                                        <rect key="frame" x="0.0" y="104.5" width="93.5" height="53"/>
+                                                        <rect key="frame" x="0.0" y="104" width="93.5" height="53"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1132,7 +1132,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="da6-LQ-oUg">
-                                                        <rect key="frame" x="0.0" y="157.5" width="93.5" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="157" width="93.5" height="52"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title=",">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1162,7 +1162,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MN3-ns-iAP">
-                                                        <rect key="frame" x="0.0" y="52.5" width="93.5" height="52"/>
+                                                        <rect key="frame" x="0.0" y="52.5" width="93.5" height="51.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1172,7 +1172,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="peT-Fh-y6E">
-                                                        <rect key="frame" x="0.0" y="104.5" width="93.5" height="53"/>
+                                                        <rect key="frame" x="0.0" y="104" width="93.5" height="53"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1182,7 +1182,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1s-Tm-Urg">
-                                                        <rect key="frame" x="0.0" y="157.5" width="93.5" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="157" width="93.5" height="52"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1212,7 +1212,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjk-gW-ny2">
-                                                        <rect key="frame" x="0.0" y="52.5" width="93" height="52"/>
+                                                        <rect key="frame" x="0.0" y="52.5" width="93" height="51.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1222,7 +1222,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPh-uN-U5J">
-                                                        <rect key="frame" x="0.0" y="104.5" width="93" height="53"/>
+                                                        <rect key="frame" x="0.0" y="104" width="93" height="53"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="30"/>
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1232,7 +1232,7 @@ Kijk voor de status in je overzicht.</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDC-OX-jLx">
-                                                        <rect key="frame" x="0.0" y="157.5" width="93" height="51.5"/>
+                                                        <rect key="frame" x="0.0" y="157" width="93" height="52"/>
                                                         <gestureRecognizers/>
                                                         <fontDescription key="fontDescription" name="entypo" family="Entypo" pointSize="26"/>
                                                         <state key="normal" image="erase.png"/>
@@ -1516,8 +1516,12 @@ Kijk voor de status in je overzicht.</string>
                                     <action selector="btnGive:" destination="I2a-zH-aE5" eventType="touchUpInside" id="43P-ep-N4j"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Z0c-L7-8Js">
+                                <rect key="frame" x="0.0" y="154" width="320" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yvi-za-LaC">
-                                <rect key="frame" x="0.0" y="158" width="320" height="238"/>
+                                <rect key="frame" x="0.0" y="210" width="320" height="186"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -1575,12 +1579,15 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="cHR-GM-wez" firstAttribute="leading" secondItem="jv0-et-J5F" secondAttribute="leading" id="2zP-Xu-EtH"/>
                             <constraint firstItem="cHR-GM-wez" firstAttribute="top" secondItem="jv0-et-J5F" secondAttribute="top" constant="10" id="8Ac-dX-5nL"/>
                             <constraint firstItem="BvS-eI-dex" firstAttribute="leading" secondItem="jv0-et-J5F" secondAttribute="leading" constant="20" id="Aoi-dR-gW5"/>
+                            <constraint firstItem="Z0c-L7-8Js" firstAttribute="trailing" secondItem="jv0-et-J5F" secondAttribute="trailing" id="DRA-Aa-f3e"/>
                             <constraint firstItem="jv0-et-J5F" firstAttribute="trailing" secondItem="Yvi-za-LaC" secondAttribute="trailing" id="DtD-nS-8YQ"/>
                             <constraint firstItem="BvS-eI-dex" firstAttribute="top" secondItem="Yvi-za-LaC" secondAttribute="bottom" constant="20" id="K0e-TV-z1C"/>
+                            <constraint firstItem="Z0c-L7-8Js" firstAttribute="top" secondItem="cHR-GM-wez" secondAttribute="bottom" id="Qsa-V0-JH7"/>
+                            <constraint firstItem="Z0c-L7-8Js" firstAttribute="leading" secondItem="jv0-et-J5F" secondAttribute="leading" id="b8b-oJ-bv1"/>
                             <constraint firstItem="jv0-et-J5F" firstAttribute="bottom" secondItem="BvS-eI-dex" secondAttribute="bottom" constant="20" id="cVB-xI-1kY"/>
                             <constraint firstItem="jv0-et-J5F" firstAttribute="trailing" secondItem="cHR-GM-wez" secondAttribute="trailing" id="kgz-pB-2H7"/>
                             <constraint firstItem="Yvi-za-LaC" firstAttribute="leading" secondItem="jv0-et-J5F" secondAttribute="leading" id="vIZ-7p-PLW"/>
-                            <constraint firstItem="Yvi-za-LaC" firstAttribute="top" secondItem="cHR-GM-wez" secondAttribute="bottom" constant="4" id="x1x-gG-cCG"/>
+                            <constraint firstItem="Yvi-za-LaC" firstAttribute="top" secondItem="Z0c-L7-8Js" secondAttribute="bottom" id="wwN-RL-kWI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jv0-et-J5F"/>
                     </view>
@@ -1601,6 +1608,7 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="kerken" destination="VfY-UX-dqy" id="Vo9-OJ-Tdn"/>
                         <outlet property="navBar" destination="akm-Ra-BMg" id="63d-83-OXd"/>
                         <outlet property="overigWidth" destination="uMI-h0-1iw" id="tTY-Ad-DRY"/>
+                        <outlet property="searchBar" destination="Z0c-L7-8Js" id="uQm-Wk-aZb"/>
                         <outlet property="stichtingWidth" destination="UV8-5j-Nrb" id="xud-80-xF8"/>
                         <outlet property="stichtingen" destination="dla-KA-vJ8" id="zFj-Cr-2fh"/>
                         <outlet property="straatmzkt" destination="yHu-vu-Ldc" id="6Rp-2d-I3D"/>
@@ -1609,7 +1617,7 @@ Kijk voor de status in je overzicht.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNE-Iu-fDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3204" y="-911.69415292353835"/>
+            <point key="canvasLocation" x="3202.5" y="-912.5"/>
         </scene>
         <!-- Anders geven-->
         <scene sceneID="NJA-HW-RU8">

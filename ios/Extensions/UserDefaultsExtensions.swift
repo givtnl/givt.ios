@@ -27,6 +27,17 @@ extension UserDefaults {
         case termsVersion
         case showedLastYearTaxOverview
         case hasGivtsInPreviousYear
+        case lastGivtToOrganisation
+    }
+    
+    var lastGivtToOrganisation: String? {
+        get {
+            return string(forKey: UserDefaultsKeys.lastGivtToOrganisation.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.lastGivtToOrganisation.rawValue)
+            synchronize()
+        }
     }
     
     var hasGivtsInPreviousYear: Bool {

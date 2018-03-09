@@ -47,6 +47,13 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         return [NSDictionary]()
     }
     
+    func getOrgName(orgNameSpace: String) -> String? {
+        var orgName = orgBeaconList.filter { (organisation) -> Bool in
+            return organisation["EddyNameSpace"] as? String == orgNameSpace
+        }
+        return orgName.first?["OrgName"] as? String
+    }
+    
     var lastGivtOrg: String {
         get {
             if bestBeacon.organisation != nil {

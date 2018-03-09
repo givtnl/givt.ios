@@ -48,6 +48,9 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             canShare = true
         }
         
+        UserDefaults.standard.lastGivtToOrganisation = bestBeacon.organisation
+        
+        
         shouldShowMandate { (url) in
             var parameters: [String: Any]
             parameters = ["amountLimit" : 0,

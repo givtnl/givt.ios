@@ -8,13 +8,16 @@
 
 import UIKit
 
-class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UITableViewDelegate {
+class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     struct PreviousPosition {
         var pos: IndexPath
         var type: Int
         var nameSpace: String
     }
+    
+    var lastGivtToOrganisationPosition: Int?
+    @IBOutlet var searchBar: UISearchBar!
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
@@ -32,7 +35,18 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.nameSpace = nameSpace
         cell.toggleOff()
         cell.organisationLabel.numberOfLines = 0
-        if let pp = prevPos, pp.type == selectedTag && pp.pos == indexPath {
+        print(nameSpace)
+        if let ns = UserDefaults.standard.lastGivtToOrganisation, ns == nameSpace {
+            print("we got a match!!!!!")
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
+            tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
+            cell.toggleOn()
+            prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: cell.nameSpace)
+            btnGive.isEnabled = true
+
+        }
+        
+        if let pp = prevPos, pp.type == selectedTag && pp.pos == indexPath  {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
             cell.toggleOn()
@@ -47,13 +61,15 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sections.map { $0.title }
     }
-    
+
     private var prevPos: PreviousPosition?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? ManualGivingOrganisation else { return }
         cell.toggleOn()
         prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: cell.nameSpace)
         btnGive.isEnabled = true
+        UserDefaults.standard.lastGivtToOrganisation = cell.nameSpace
+        self.view.endEditing(true)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -62,9 +78,45 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             cell.toggleOff()
         }
         btnGive.isEnabled = false
+        UserDefaults.standard.lastGivtToOrganisation = nil
         
     }
-    
+    var initial = true
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let visibleRows = tableView.indexPathsForVisibleRows, let lastRow = visibleRows.last?.row, let lastSection = visibleRows.map({$0.section}).last {
+            if indexPath.row == lastRow && indexPath.section == lastSection {
+                // Finished loading visible rows
+                if initial {
+                    initial = false
+                    
+                    //find orgname associated with namespace
+                    if let namespace = UserDefaults.standard.lastGivtToOrganisation, let orgName = GivtService.shared.getOrgName(orgNameSpace: namespace) {
+                        guard let tableSectionId = sections.index(where: { (sec) -> Bool in
+                            return sec.title.uppercased() == String(orgName.first!).uppercased()
+                        }) else {
+                            return
+                        }
+                        
+                        let sectionIdxOfItem = sections[tableSectionId].index
+                        
+                        guard let namespaceIdx = nameSpaces.index(where: { (ns) -> Bool in
+                            return ns == namespace
+                        }) else {
+                            return
+                        }
+                    
+                        let ip = IndexPath(row: (namespaceIdx - sectionIdxOfItem), section: tableSectionId)
+                        tableView.scrollToRow(at: ip, at: UITableViewScrollPosition.top, animated: false)
+  
+                    }
+                
+                }
+
+                
+            }
+        }
+    }
+
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let indexPathForSelectedRow = tableView.indexPathForSelectedRow,
             indexPathForSelectedRow == indexPath {
@@ -98,6 +150,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     private var selectedTag: Int = 100 {
         didSet {
             loadView(selectedTag)
+            lastTag = selectedTag
             sections.removeAll()
             names.removeAll()
             nameSpaces.removeAll()
@@ -138,7 +191,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     var filteredList: [[String: String]]?
-
+    var originalList: [[String: String]]?
+    
     @IBOutlet var kerken: UIImageView!
     @IBOutlet var stichtingen: UIImageView!
     @IBOutlet var acties: UIImageView!
@@ -151,6 +205,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
         selectedTag = passSelectedTag
         navBar.title = NSLocalizedString("GiveDifferently", comment: "")
@@ -172,6 +227,10 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tableView.sectionIndexMinimumDisplayRowCount = 20
         tableView.sectionIndexColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
+        
+        searchBar.placeholder = NSLocalizedString("SearchHere", comment: "")
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -234,12 +293,45 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         }
         
         filteredList = listToLoad.filter { ($0["EddyNameSpace"]?.substring(16..<19).matches(regExp))! }
+        originalList = filteredList
+        
+        if let lastOrg = UserDefaults.standard.lastGivtToOrganisation {
+            lastGivtToOrganisationPosition = filteredList?.index(where: { (org) -> Bool in
+                return org["EddyNameSpace"] == lastOrg
+            })
+        }
 
     }
-
     
     @IBAction func goBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // deselect row otherwise weird things happen in tableview
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: false)
+            tableView.delegate?.tableView!(tableView, didDeselectRowAt: indexPath)
+        }
+        
+        guard !searchText.isEmpty else {
+            filteredList = originalList
+            selectedTag = Int(selectedTag)
+            return
+        }
+        
+        filteredList = originalList?.filter({ (organisation) -> Bool in
+            if let search = searchBar.text, let org = organisation["OrgName"] as? String {
+                return org.lowercased().contains(search.lowercased())
+            } else {
+                return false
+            }
+        })
+        selectedTag = Int(selectedTag)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
     }
 
 }
