@@ -88,8 +88,38 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
             organisationSuggestion.text = lastOrg
             suggestion.isHidden = false
         } else {
-            suggestion.removeFromSuperview()
-            suggestion.isHidden = true
+            if let orgNS = UserDefaults.standard.lastGivtToOrganisation, let orgName = GivtService.shared.getOrgName(orgNameSpace: orgNS) {
+                log.info(message: "Filling suggestion with the organisation that was given to/selected from list.")
+                suggestionText.text = NSLocalizedString("Suggestie", comment: "")
+                self.beaconId = orgNS
+                
+                let tap = UITapGestureRecognizer()
+                tap.addTarget(self, action: #selector(giveManually))
+                suggestion.addGestureRecognizer(tap)
+                suggestion.layer.cornerRadius = 3
+                
+                /* filter list based on regExp */
+                var bg: UIColor = #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 0.2)
+                let type  = self.beaconId!.substring(16..<19)
+                if type.matches("c[0-9]|d[be]") { //is a chrch
+                    bg = #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 0.2)
+                    suggestionImage.image = #imageLiteral(resourceName: "kerken")
+                } else if type.matches("d[0-9]") { //stichitng
+                    bg = #colorLiteral(red: 0.9652975202, green: 0.7471453547, blue: 0.3372098804, alpha: 0.2)
+                    suggestionImage.image = #imageLiteral(resourceName: "stichtingen")
+                } else if type.matches("a[0-9]") { //acties
+                    bg = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 0.2)
+                    suggestionImage.image = #imageLiteral(resourceName: "acties")
+                }
+                /* when we have the "other" option, don't forget to add regexp !*/
+                
+                suggestion.backgroundColor = bg
+                organisationSuggestion.text = orgName
+                suggestion.isHidden = false
+            } else {
+                suggestion.removeFromSuperview()
+                suggestion.isHidden = true
+            }
         }
         
     }

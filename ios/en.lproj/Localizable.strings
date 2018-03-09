@@ -589,3 +589,4 @@
 "YearOverviewAvailable" = "Annual overview available";
 "CheckHereForYearOverview" = "Request your annual overview here";
 "CouldNotSendTaxOverview" = "We can't seem to fetch your annual review, please try again later. Contact us at support@givtapp.net if this problem persists.";
+"SearchHere" = "Search ...";
