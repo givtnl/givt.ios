@@ -300,6 +300,9 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 return org["EddyNameSpace"] == lastOrg
             })
         }
+        
+        /* if there has been searchd before: filter list */
+        filterList()
 
     }
     
@@ -320,14 +323,21 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             return
         }
         
-        filteredList = originalList?.filter({ (organisation) -> Bool in
-            if let search = searchBar.text, let org = organisation["OrgName"] as? String {
-                return org.lowercased().contains(search.lowercased())
-            } else {
-                return false
-            }
-        })
+        filterList()
         selectedTag = Int(selectedTag)
+    }
+    
+    func filterList() {
+        if let searchText = searchBar.text, searchText.count > 0 {
+            filteredList = originalList?.filter({ (organisation) -> Bool in
+                if let org = organisation["OrgName"] as? String {
+                    return org.lowercased().contains(searchText.lowercased())
+                } else {
+                    return false
+                }
+            })
+            tableView.reloadData()
+        }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
