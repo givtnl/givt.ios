@@ -47,7 +47,10 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         if let beaconId = GivtService.shared.getBestBeacon.beaconId, !beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
             canShare = true
         }
-            
+        
+        UserDefaults.standard.lastGivtToOrganisation = bestBeacon.organisation
+        
+        
         shouldShowMandate { (url) in
             var parameters: [String: Any]
             parameters = ["amountLimit" : 0,
