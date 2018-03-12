@@ -23,7 +23,7 @@ class AuthClient: NSObject, URLSessionDelegate {
     func post(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) throws {
         log.info(message: "POST on " + url)
         client.post(url: url).delegate(delegate: self)
-            .set(headers: ["Accept" : "application/json", "Content-Type" : "application/json", "Accept-Language" : Locale.preferredLanguages[0]])
+            .set(headers: ["Accept" : "application/json", "Accept-Language": Locale.preferredLanguages[0]])
             .type(type: "form")
             .send(data: data)
             .end(done: { (res:Response) in
