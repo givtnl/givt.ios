@@ -164,13 +164,15 @@ class PinScreenViewController: UIViewController {
                         self.present(alert, animated: true, completion: nil)
 
                         
-                    } else {
-                        
-                        if status {
-                            DispatchQueue.main.async {
-                                self.dismiss(animated: true, completion: { self.innerHandler!(true) } )
-                            }
+                    } else if status {
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: { self.innerHandler!(true) } )
                         }
+                    } else {
+                        let alert = UIAlertController(title: NSLocalizedString("PincodeWrongPinTitle", comment: ""), message: "", preferredStyle: .alert)
+                        alert.title = NSLocalizedString("SomethingWentWrong", comment: "")
+                        alert.message = NSLocalizedString("ConnectionError", comment: "")
+                        self.present(alert, animated: true, completion: nil)
                     }
                     
                 })
