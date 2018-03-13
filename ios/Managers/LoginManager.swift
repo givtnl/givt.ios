@@ -195,7 +195,7 @@ class LoginManager {
         _registrationUser.email = user.email
     }
     
-    func registerExtraDataFromUser(_ user: RegistrationUserData, completionHandler: @escaping (Bool) -> Void) {
+    func registerExtraDataFromUser(_ user: RegistrationUserData, completionHandler: @escaping (Bool?) -> Void) {
         _registrationUser.address = user.address
         _registrationUser.city = user.city
         _registrationUser.countryCode = user.countryCode
@@ -218,36 +218,48 @@ class LoginManager {
         
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
-                if let res = res, let data = res.data, res.basicStatus == .ok {
-                    self._registrationUser.guid = String(bytes: data, encoding: .utf8)!
-                    let newConfig = UserDefaults.standard.userExt!
-                    newConfig.guid = self._registrationUser.guid
-                    newConfig.password = ""
-                    UserDefaults.standard.userExt = newConfig
-
-                   self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
+                if let res = res {
+                    if let data = res.data, res.basicStatus == .ok {
+                        self._registrationUser.guid = String(bytes: data, encoding: .utf8)!
+                        let newConfig = UserDefaults.standard.userExt!
+                        newConfig.guid = self._registrationUser.guid
+                        newConfig.password = ""
+                        UserDefaults.standard.userExt = newConfig
                         
-                        if success {
+                        self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
                             
-                            self._registrationUser.password = ""
-                            UserDefaults.standard.userExt = self._registrationUser
-                            self.saveAmountLimit(500, completionHandler: { (status) in
-                                //niets
-                            })
-                            UserDefaults.standard.amountLimit = 500
-                            completionHandler(true)
+                            if success {
+                                
+                                self._registrationUser.password = ""
+                                UserDefaults.standard.userExt = self._registrationUser
+                                self.saveAmountLimit(500, completionHandler: { (status) in
+                                    //niets
+                                })
+                                UserDefaults.standard.amountLimit = 500
+                                completionHandler(true)
+                            } else {
+                                self.log.info(message: "Login failed")
+                                completionHandler(false)
+                            }
+                        })
+                    } else {
+                        //got a response but was not OK
+                        if res.statusCode == 409 {
+                            self.log.error(message: "User wants to register but is stuck in registration flow. (409)")
                         } else {
-                            self.log.info(message: "Login failed")
-                            completionHandler(false)
+                            self.log.info(message: "Not able to register the user")
                         }
-                    })
+                        completionHandler(false)
+                    }
+                    
                 } else {
-                    self.log.info(message: "Not able to register the user")
-                    completionHandler(false)
+                    self.log.info(message: "Not able to register the user (no response from server)")
+                    completionHandler(nil)
                 }
             }
         } catch {
             log.error(message: "Something went wrong creating extra data")
+            completionHandler(nil)
         }
         
         
@@ -330,11 +342,15 @@ class LoginManager {
         let regUserExt = RegistrationUserData(address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
         self.registerUser(regUser)
         self.registerExtraDataFromUser(regUserExt) { b in
-            if b {
-                self.userClaim = .giveOnce
-                UserDefaults.standard.isLoggedIn = true
-                DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
-                completionHandler(true)
+            if let b = b {
+                if b {
+                    self.userClaim = .giveOnce
+                    UserDefaults.standard.isLoggedIn = true
+                    DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
+                    completionHandler(true)
+                } else {
+                    completionHandler(false)
+                }
             } else {
                 completionHandler(false)
             }

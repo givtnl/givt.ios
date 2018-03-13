@@ -275,23 +275,36 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let userData = RegistrationUserData(address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
-            if success {
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
-                    vc.hasBackButton = false
-                    self.show(vc, sender:nil)
+            if let success = success {
+                if success {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
+                        vc.hasBackButton = false
+                        self.show(vc, sender:nil)
+                    }
+                } else {
+                    //registration not gelukt e
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ErrorTextRegister", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                            
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             } else {
-                //registration not gelukt e
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ErrorTextRegister", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                if AppServices.shared.connectedToNetwork() {
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ServerNotReachable", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
                         
                     }))
                     self.present(alert, animated: true, completion: nil)
+                } else {
+                    NavigationManager.shared.presentAlertNoConnection(context: self)
                 }
+
                 
             }
         })

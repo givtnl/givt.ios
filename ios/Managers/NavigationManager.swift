@@ -39,10 +39,22 @@ class NavigationManager {
                 }
             }))
             currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("FinalizeRegistration", comment: ""), style: .cancel, handler: { (action) in
-                self.finishRegistration(context)
                 if let ctx = context as? AmountViewController {
                     ctx.menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
                 }
+                
+                if AppServices.shared.connectedToNetwork() {
+                    self.finishRegistration(context)
+                } else {
+                    let noInternetAlert = UIAlertController(title: NSLocalizedString("NoInternetConnectionTitle", comment: ""), message: NSLocalizedString("NoInternet", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    noInternetAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                        
+                    }))
+                    context.present(noInternetAlert, animated: true, completion: nil)
+                }
+                
+                
+                
             }))
             context.present(currentAlert!, animated: false, completion: {})
         }
