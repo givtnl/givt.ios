@@ -108,7 +108,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         
         let tempUser = UserDefaults.standard.tempUser
         
-        let changeAccount = Setting(name: NSLocalizedString("MenuSettingsSwitchAccounts", comment: ""), image: UIImage(named: "person")!, callback: { self.logout() }, showArrow: false)
+        let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
@@ -119,7 +119,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, showBadge: !LoginManager.shared.isFullyRegistered, callback: { self.register() })
         }
         
-        let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "exit")!, callback: { self.terminate() })
+        let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "person")!, callback: { self.terminate() })
         
         if !tempUser {
             items.append([])
