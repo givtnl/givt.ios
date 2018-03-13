@@ -592,5 +592,5 @@
 "SearchHere" = "Search ...";
 "NoInternet" = "Woops! It looks like you're not connected to the internet. Try again when you are connected with the internet.";
 "NoInternetConnectionTitle" = "No internet connection";
-"ServerNotReachable" = "Alas, it's not possbile to finish your registration at this time, our server seems to have an issue. Can you try it again later?\nGot this message before? We're probably not aware of an issue. Help us improve Givt by sending a message and we get right on it.";
+"ServerNotReachable" = "Alas, it's not possbile to finish your registration at this time, our server seems to have an issue. Can you try it again later?\nGot this message before? We're probably not aware of this issue. Help us improve Givt by sending us a message and we'll get right on it.";
 "SendMessage" = "Send message";
