@@ -202,7 +202,7 @@ class PinScreenViewController: UIViewController {
                                 })
                             } else {
                                 SVProgressHUD.dismiss()
-                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("", comment: ""), preferredStyle: .alert)
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                                 self.present(alert, animated: true, completion:  nil)
                             }
