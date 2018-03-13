@@ -153,7 +153,8 @@ class PinScreenViewController: UIViewController {
                                 self.pincode = ""
                             }))
                         default:
-                            alert.message = NSLocalizedString("SomethingWentWrong", comment: "")
+                            alert.title = NSLocalizedString("SomethingWentWrong", comment: "")
+                            alert.message = NSLocalizedString("ConnectionError", comment: "")
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                                 self.pincode = ""
                             }))
