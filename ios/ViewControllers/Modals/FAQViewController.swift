@@ -99,7 +99,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         addQuestion(q: "FAQvraag6", a: "FAQantwoord6")
         addQuestion(q: "FAQvraag7", a: "FAQantwoord7")
         addQuestion(q: "FAQWhyBluetoothEnabledQ", a: "FAQWhyBluetoothEnabledA")
-        addQuestion(q: "QuestionWhyAreMyDataStored", a: "PolicyText")
+        addQuestion(q: "QuestionWhyAreMyDataStored", a: "AnswerWhyAreMyDataStored")
         addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
  
         addQuestion(q: "TermsTitle", a: "TermsText")

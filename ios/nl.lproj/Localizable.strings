@@ -613,3 +613,4 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "NoInternetConnectionTitle" = "Geen internetverbinding";
 "ServerNotReachable" = "Het is nu helaas niet mogelijk om je registratie af te ronden, het lijkt aan onze server te liggen. Probeer je het later nog eens?\nDeze melding al vaker gekregen? Dan zijn we hier waarschijnlijk niet van op de hoogte. Help ons Givt verbeteren en laat een bericht achter, dan gaan we ermee aan de slag.";
 "SendMessage" = "Bericht sturen";
+"AnswerWhyAreMyDataStored" = "We werken elke dag heel hard aan het verbeteren van Givt. Om dit te doen gebruiken we de gegevens die we tot onze beschikking hebben.\nSommige gegevens hebben we verplicht nodig om je mandaat aan te maken. Andere gegevens gebruiken we om je persoonlijke account te maken.\nOok gebruiken we je gegevens om je eventuele service vragen te kunnen beantwoorden.\nIn geen geval geven we jouw persoonlijke gegevens door aan derden.";
