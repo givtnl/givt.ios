@@ -297,8 +297,14 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             } else {
                 if AppServices.shared.connectedToNetwork() {
                     let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ServerNotReachable", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.default, handler: { action in
                         
+                    }))
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("SendMessage", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+                        let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! BaseNavigationController
+                        self.present(vc, animated: true, completion: {
+                            
+                        })
                     }))
                     self.present(alert, animated: true, completion: nil)
                 } else {
