@@ -609,3 +609,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "CheckHereForYearOverview" = "Vraag hier je jaaroverzicht op";
 "CouldNotSendTaxOverview" = "Het lukt nu even niet om je jaaroverzicht op te vragen, probeer het later even opnieuw. Contacteer support@givtapp.net als dit probleem blijft optreden.";
 "SearchHere" = "Zoeken ...";
+"NoInternet" = "Oeps! Het lijkt erop dat je niet verbonden bent met internet. Probeer het nog eens wanneer je wel verbinding met internet hebt.";
+"NoInternetConnectionTitle" = "Geen internetverbinding";
+"ServerNotReachable" = "Het is nu helaas niet mogelijk om je registratie af te ronden, het lijkt aan onze server te liggen. Probeer je het later nog eens?\nDeze melding al vaker gekregen? Dan zijn we hier waarschijnlijk niet van op de hoogte. Help ons Givt verbeteren en laat een bericht achter, dan gaan we ermee aan de slag.";
