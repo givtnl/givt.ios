@@ -76,9 +76,12 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
     
     private func handleError(err: Error) {
         let error = (err as NSError)
-        let url = error.userInfo["NSErrorFailingURLStringKey"] as! String
-        let description = error.userInfo["NSLocalizedDescription"] as! String
-        self.log.error(message: "Following call failed: " + url + "\n" + "Description: " + description)
+        if let url = error.userInfo["NSErrorFailingURLStringKey"] as? String, let description = error.userInfo["NSLocalizedDescription"] as? String {
+            self.log.error(message: "Following call failed: " + url + "\n" + "Description: " + description)
+        } else {
+            self.log.error(message: "Could not extract URL from error message. Is the server online?")
+        }
+        
         if error.code == -999 {
             self.log.error(message: "This request has been cancelled... Probably SSL Pinning did not succeed." )
         }
