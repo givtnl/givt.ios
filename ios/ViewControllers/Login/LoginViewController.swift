@@ -21,6 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnForgotPassword: UIButton!
     @IBOutlet var backButton: UIButton!
+    var emailEditable: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         txtUserName.placeholder = NSLocalizedString("Email", comment: "")
@@ -33,7 +34,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let email = UserDefaults.standard.userExt!.email
         
         txtUserName.text = email
-        if !email.isEmpty() {
+        if !email.isEmpty() && !emailEditable {
             txtUserName.isEnabled = false
             txtUserName.textColor = #colorLiteral(red: 0.537254902, green: 0.537254902, blue: 0.537254902, alpha: 1)
             txtPassword.becomeFirstResponder()

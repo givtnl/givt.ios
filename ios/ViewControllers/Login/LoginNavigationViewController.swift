@@ -11,6 +11,7 @@ import UIKit
 class LoginNavigationViewController: UINavigationController {
 
     var outerHandler : (() -> Void)?
+    var emailEditable: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,7 @@ class LoginNavigationViewController: UINavigationController {
         for i in self.childViewControllers {
             if outerHandler != nil {
                 let vc = i as! LoginViewController
+                vc.emailEditable = emailEditable
                 vc.completionHandler = { self.outerHandler!() }
             }
             

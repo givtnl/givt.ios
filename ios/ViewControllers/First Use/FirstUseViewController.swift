@@ -10,6 +10,17 @@ import UIKit
 
 class FirstUseViewController: UIViewController {
 
+    let subtiel : [NSAttributedStringKey: Any] = [
+        NSAttributedStringKey.font : UIFont(name: "Avenir-Light", size: 17),
+        NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1),
+        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleNone.rawValue]
+    
+    let focus : [NSAttributedStringKey: Any] = [
+        NSAttributedStringKey.font : UIFont(name: "Avenir-Medium", size: 18),
+        NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),
+        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleNone.rawValue]
+    
+    @IBOutlet var loginButton: UIButton!
     @IBOutlet var getStarted: CustomButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +28,11 @@ class FirstUseViewController: UIViewController {
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         getStarted.setTitle(NSLocalizedString("WelcomeContinue", comment: ""), for: .normal)
         // Do any additional setup after loading the view.
+        
+        var attributedString = NSMutableAttributedString(string: NSLocalizedString("AlreadyAnAccount", comment: "") + " ", attributes: subtiel)
+        attributedString.append(NSMutableAttributedString(string: NSLocalizedString("Login", comment: ""), attributes: focus))
+        
+        loginButton.setAttributedTitle(attributedString, for: UIControlState.normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,7 +45,19 @@ class FirstUseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func login(_ sender: Any) {
+        DispatchQueue.main.async {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+            let ch: () -> Void = {
+                self.navigationController?.dismiss(animated: false, completion: nil)
+                NavigationManager.shared.loadMainPage()
+            }
+            vc.outerHandler = ch
+            vc.emailEditable = true
+            self.present(vc, animated: true, completion: nil)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

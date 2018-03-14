@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D49-Il-Zbt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D49-Il-Zbt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qk9-qc-YNR" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <rect key="frame" x="20" y="561" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="zUh-gI-RP1"/>
@@ -51,7 +51,7 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0QF-4b-EFC">
-                                <rect key="frame" x="0.0" y="92" width="375" height="491"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="449"/>
                                 <connections>
                                     <segue destination="9xS-wo-GKW" kind="embed" id="R2T-nC-vf9"/>
                                 </connections>
@@ -63,16 +63,32 @@
                                     <constraint firstAttribute="height" constant="32" id="VQa-mS-iOU"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq4-Vt-GNC">
+                                <rect key="frame" x="20" y="613" width="335" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="0pu-I8-aMX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                <state key="normal" title="Al een account? Inloggen">
+                                    <color key="titleColor" red="0.35133320089999998" green="0.32705855369999998" blue="0.53972214460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="login:" destination="D49-Il-Zbt" eventType="touchUpInside" id="sLU-5e-7Mq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0QF-4b-EFC" firstAttribute="leading" secondItem="Pen-91-zUq" secondAttribute="leading" id="5r2-6R-VSC"/>
-                            <constraint firstItem="Pen-91-zUq" firstAttribute="bottom" secondItem="Qk9-qc-YNR" secondAttribute="bottom" constant="20" id="EqG-55-dGr"/>
                             <constraint firstItem="Pen-91-zUq" firstAttribute="trailing" secondItem="Qk9-qc-YNR" secondAttribute="trailing" constant="20" id="GRA-ls-ztT"/>
                             <constraint firstItem="0QF-4b-EFC" firstAttribute="top" secondItem="TQK-ca-7ow" secondAttribute="bottom" constant="20" id="K9c-OA-Zyb"/>
                             <constraint firstItem="TQK-ca-7ow" firstAttribute="centerX" secondItem="W05-K3-KXD" secondAttribute="centerX" id="S4R-hX-m0e"/>
+                            <constraint firstItem="Pen-91-zUq" firstAttribute="trailing" secondItem="dq4-Vt-GNC" secondAttribute="trailing" constant="20" id="UTS-9L-3C0"/>
                             <constraint firstItem="Qk9-qc-YNR" firstAttribute="leading" secondItem="Pen-91-zUq" secondAttribute="leading" constant="20" id="Vef-Qb-mRz"/>
+                            <constraint firstItem="dq4-Vt-GNC" firstAttribute="leading" secondItem="Pen-91-zUq" secondAttribute="leading" constant="20" id="bBq-aJ-clF"/>
+                            <constraint firstItem="Pen-91-zUq" firstAttribute="bottom" secondItem="dq4-Vt-GNC" secondAttribute="bottom" constant="10" id="cxa-3G-40E"/>
                             <constraint firstItem="Qk9-qc-YNR" firstAttribute="top" secondItem="0QF-4b-EFC" secondAttribute="bottom" constant="20" id="hYa-kX-vRS"/>
+                            <constraint firstItem="dq4-Vt-GNC" firstAttribute="top" secondItem="Qk9-qc-YNR" secondAttribute="bottom" constant="8" id="oCf-gJ-O2i"/>
                             <constraint firstItem="0QF-4b-EFC" firstAttribute="trailing" secondItem="Pen-91-zUq" secondAttribute="trailing" id="q7j-wZ-DsB"/>
                             <constraint firstItem="TQK-ca-7ow" firstAttribute="top" secondItem="Pen-91-zUq" secondAttribute="top" constant="20" id="sbz-Iv-dKW"/>
                         </constraints>
@@ -84,6 +100,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="getStarted" destination="Qk9-qc-YNR" id="eNN-6a-DLO"/>
+                        <outlet property="loginButton" destination="dq4-Vt-GNC" id="RdV-TE-d7p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mbK-tw-Lay" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -140,7 +157,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="383-ea-8pW" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="539" width="335" height="44"/>
+                                                <rect key="frame" x="20" y="497" width="335" height="44"/>
                                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="ri0-bY-hZf"/>
@@ -164,8 +181,21 @@
                                                     <action selector="done:" destination="Op2-mF-ZtZ" eventType="touchUpInside" id="iEi-qR-2ML"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQ1-3z-Qqu">
+                                                <rect key="frame" x="20" y="549" width="335" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="Gvi-lV-MO4"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                                <state key="normal" title="Al een account? Inloggen">
+                                                    <color key="titleColor" red="0.35133320089999998" green="0.32705855369999998" blue="0.53972214460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="login:" destination="Op2-mF-ZtZ" eventType="touchUpInside" id="yFZ-T3-DNS"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bij het doorgaan ga je akkoord met de algemene voorwaarden." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAh-wO-W8r">
-                                                <rect key="frame" x="20" y="488" width="335" height="41"/>
+                                                <rect key="frame" x="20" y="446" width="335" height="41"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                                 <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -181,17 +211,20 @@
                                         <constraints>
                                             <constraint firstItem="383-ea-8pW" firstAttribute="top" secondItem="jAh-wO-W8r" secondAttribute="bottom" constant="10" id="0IE-fq-xOo"/>
                                             <constraint firstItem="jAh-wO-W8r" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PAw-hK-CdU" secondAttribute="bottom" constant="8" symbolic="YES" id="0Or-9g-r4p"/>
+                                            <constraint firstItem="BQ1-3z-Qqu" firstAttribute="top" secondItem="383-ea-8pW" secondAttribute="bottom" constant="8" id="1pe-Jp-H92"/>
                                             <constraint firstItem="5PP-vV-DBR" firstAttribute="top" secondItem="ZXD-0s-ug6" secondAttribute="top" constant="20" id="26q-rW-vgl"/>
                                             <constraint firstItem="PAw-hK-CdU" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Fac-Xt-bvF" secondAttribute="bottom" constant="8" symbolic="YES" id="9Ya-L3-BpK"/>
                                             <constraint firstItem="PAw-hK-CdU" firstAttribute="centerX" secondItem="ZXD-0s-ug6" secondAttribute="centerX" id="FjL-Zf-l0l"/>
                                             <constraint firstAttribute="trailing" secondItem="5PP-vV-DBR" secondAttribute="trailing" constant="20" id="HwY-o6-Uhq"/>
+                                            <constraint firstItem="BQ1-3z-Qqu" firstAttribute="leading" secondItem="ZXD-0s-ug6" secondAttribute="leading" constant="20" id="K0X-YB-6Ab"/>
                                             <constraint firstAttribute="trailing" secondItem="PAw-hK-CdU" secondAttribute="trailing" constant="20" id="NOr-lr-UQa"/>
-                                            <constraint firstAttribute="bottom" secondItem="383-ea-8pW" secondAttribute="bottom" constant="20" id="U6F-LI-8Hp"/>
                                             <constraint firstItem="PAw-hK-CdU" firstAttribute="leading" secondItem="ZXD-0s-ug6" secondAttribute="leading" constant="20" id="Wem-ue-HXh"/>
                                             <constraint firstAttribute="trailing" secondItem="383-ea-8pW" secondAttribute="trailing" constant="20" id="cvZ-2G-NYp"/>
+                                            <constraint firstAttribute="bottom" secondItem="BQ1-3z-Qqu" secondAttribute="bottom" constant="10" id="jeX-Yd-d5K"/>
                                             <constraint firstItem="PAw-hK-CdU" firstAttribute="centerY" secondItem="ZXD-0s-ug6" secondAttribute="centerY" id="lBc-g2-7Xx"/>
                                             <constraint firstItem="383-ea-8pW" firstAttribute="leading" secondItem="ZXD-0s-ug6" secondAttribute="leading" constant="20" id="sBZ-HH-fb4"/>
                                             <constraint firstAttribute="trailing" secondItem="Fac-Xt-bvF" secondAttribute="trailing" constant="20" id="smS-cR-O67"/>
+                                            <constraint firstAttribute="trailing" secondItem="BQ1-3z-Qqu" secondAttribute="trailing" constant="20" id="t9I-Aj-CBL"/>
                                             <constraint firstItem="jAh-wO-W8r" firstAttribute="leading" secondItem="ZXD-0s-ug6" secondAttribute="leading" constant="20" id="tN5-Ot-1Un"/>
                                             <constraint firstItem="Fac-Xt-bvF" firstAttribute="leading" secondItem="ZXD-0s-ug6" secondAttribute="leading" constant="20" id="wft-gm-tas"/>
                                             <constraint firstAttribute="trailing" secondItem="jAh-wO-W8r" secondAttribute="trailing" constant="20" id="y6Q-bj-xQH"/>
@@ -230,6 +263,7 @@
                         <outlet property="contentView" destination="r0x-Y6-vDA" id="zQN-yf-Mbo"/>
                         <outlet property="email" destination="PAw-hK-CdU" id="Yuu-Be-005"/>
                         <outlet property="hintText" destination="Fac-Xt-bvF" id="w2z-qu-9gD"/>
+                        <outlet property="loginButton" destination="BQ1-3z-Qqu" id="QUM-jH-ODG"/>
                         <outlet property="navBar" destination="5dU-H0-DSv" id="8v4-6w-XPz"/>
                         <outlet property="nextBtn" destination="383-ea-8pW" id="23W-g2-PgM"/>
                         <outlet property="scroll" destination="ue2-0Z-aVm" id="3b4-9j-rry"/>
