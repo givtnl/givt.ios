@@ -153,7 +153,8 @@ class PinScreenViewController: UIViewController {
                                 self.pincode = ""
                             }))
                         default:
-                            alert.message = NSLocalizedString("SomethingWentWrong", comment: "")
+                            alert.title = NSLocalizedString("SomethingWentWrong", comment: "")
+                            alert.message = NSLocalizedString("ConnectionError", comment: "")
                             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                                 self.pincode = ""
                             }))
@@ -163,13 +164,15 @@ class PinScreenViewController: UIViewController {
                         self.present(alert, animated: true, completion: nil)
 
                         
-                    } else {
-                        
-                        if status {
-                            DispatchQueue.main.async {
-                                self.dismiss(animated: true, completion: { self.innerHandler!(true) } )
-                            }
+                    } else if status {
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: { self.innerHandler!(true) } )
                         }
+                    } else {
+                        let alert = UIAlertController(title: NSLocalizedString("PincodeWrongPinTitle", comment: ""), message: "", preferredStyle: .alert)
+                        alert.title = NSLocalizedString("SomethingWentWrong", comment: "")
+                        alert.message = NSLocalizedString("ConnectionError", comment: "")
+                        self.present(alert, animated: true, completion: nil)
                     }
                     
                 })
@@ -202,7 +205,7 @@ class PinScreenViewController: UIViewController {
                                 })
                             } else {
                                 SVProgressHUD.dismiss()
-                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("", comment: ""), preferredStyle: .alert)
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                                 self.present(alert, animated: true, completion:  nil)
                             }

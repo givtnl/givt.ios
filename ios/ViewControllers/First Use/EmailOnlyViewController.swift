@@ -10,10 +10,21 @@ import UIKit
 import SVProgressHUD
 
 class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
+    let subtiel : [NSAttributedStringKey: Any] = [
+        NSAttributedStringKey.font : UIFont(name: "Avenir-Light", size: 17),
+        NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1),
+        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleNone.rawValue]
+    
+    let focus : [NSAttributedStringKey: Any] = [
+        NSAttributedStringKey.font : UIFont(name: "Avenir-Medium", size: 18),
+        NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),
+        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleNone.rawValue]
+    
     private var _navigationManager = NavigationManager.shared
     private var _appServices = AppServices.shared
     private var _loginManager = LoginManager.shared
     
+    @IBOutlet var loginButton: UIButton!
     @IBOutlet var topNavigationBar: UINavigationBar!
     @IBOutlet var navBar: UINavigationItem!
     private var validationHelper = ValidationHelper.shared
@@ -75,7 +86,27 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         tapGesture.cancelsTouchesInView = false
         
         scroll.addGestureRecognizer(tapGesture)
+        
+        var attributedString = NSMutableAttributedString(string: NSLocalizedString("AlreadyAnAccount", comment: "") + " ", attributes: subtiel)
+        attributedString.append(NSMutableAttributedString(string: NSLocalizedString("Login", comment: ""), attributes: focus))
+        
+        loginButton.setAttributedTitle(attributedString, for: UIControlState.normal)
     
+    }
+    @IBAction func login(_ sender: Any) {
+        DispatchQueue.main.async {
+            let userExt = UserDefaults.standard.userExt
+            userExt?.email = self.email.text!
+            UserDefaults.standard.userExt = userExt
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+            let ch: () -> Void = {
+                self.navigationController?.dismiss(animated: false, completion: nil)
+                NavigationManager.shared.loadMainPage()
+            }
+            vc.outerHandler = ch
+            vc.emailEditable = true
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     @IBOutlet var scroll: UIScrollView!
@@ -110,6 +141,11 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.barTintColor = .white
+        
+        if let userExt = UserDefaults.standard.userExt, !userExt.email.isEmpty {
+            email.text = userExt.email
+        }
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -172,6 +208,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     func openLogin() {
         self.hideLoader()
         DispatchQueue.main.async {
+            
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
             let ch: () -> Void = {
                 self.navigationController?.dismiss(animated: false, completion: nil)
