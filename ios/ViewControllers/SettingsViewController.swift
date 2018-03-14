@@ -119,7 +119,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, showBadge: !LoginManager.shared.isFullyRegistered, callback: { self.register() })
         }
         
-        let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "person")!, callback: { self.terminate() })
+        let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
         if !tempUser {
             items.append([])
