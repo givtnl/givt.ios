@@ -595,5 +595,5 @@
 "ServerNotReachable" = "Alas, it's not possbile to finish your registration at this time, our server seems to have an issue. Can you try it again later?\nGot this message before? We're probably not aware of this issue. Help us improve Givt by sending us a message and we'll get right on it.";
 "SendMessage" = "Send message";
 "AnswerWhyAreMyDataStored" = "Everyday we work very hard at improving Givt. To do this we use the data we have at our disposal.\nWe require some of your data to create your mandate. Other information is used to create your personal account.\nWe also use your data to answer your service questions.\nIn no case we give your personal details to third parties.";
-"LogoffSession" = "Logoff session";
+"LogoffSession" = "Log out";
 "AlreadyAnAccount" = "Already have an account?";
