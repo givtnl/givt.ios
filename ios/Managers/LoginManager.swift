@@ -163,18 +163,21 @@ class LoginManager {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                     print(parsedData)
-                    let newConfig = UserDefaults.standard.userExt
-                    newConfig?.guid = parsedData["GUID"] as! String
-                    newConfig?.mobileNumber = parsedData["PhoneNumber"] as! String
-                    newConfig?.firstName = parsedData["FirstName"] as! String
-                    newConfig?.lastName = parsedData["LastName"] as! String
-                    newConfig?.email = parsedData["Email"] as! String
-                    newConfig?.address = parsedData["Address"] as! String
-                    newConfig?.postalCode = parsedData["PostalCode"] as! String
-                    newConfig?.city = parsedData["City"] as! String
-                    newConfig?.countryCode = String(describing: parsedData["CountryCode"] as! Int)
-                    newConfig?.iban = parsedData["IBAN"] as! String
-                    UserDefaults.standard.userExt = newConfig
+                    var config: UserExt = UserExt()
+                    if let oldConfig = UserDefaults.standard.userExt {
+                        config = oldConfig
+                    }
+                    config.guid = parsedData["GUID"] as! String
+                    config.mobileNumber = parsedData["PhoneNumber"] as! String
+                    config.firstName = parsedData["FirstName"] as! String
+                    config.lastName = parsedData["LastName"] as! String
+                    config.email = parsedData["Email"] as! String
+                    config.address = parsedData["Address"] as! String
+                    config.postalCode = parsedData["PostalCode"] as! String
+                    config.city = parsedData["City"] as! String
+                    config.countryCode = String(describing: parsedData["CountryCode"] as! Int)
+                    config.iban = parsedData["IBAN"] as! String
+                    UserDefaults.standard.userExt = config
                     UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 500 : parsedData["AmountLimit"] as! Int
                     completionHandler(true)
                 } catch let err as NSError {

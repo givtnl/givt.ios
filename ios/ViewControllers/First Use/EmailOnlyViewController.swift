@@ -95,9 +95,12 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     @IBAction func login(_ sender: Any) {
         DispatchQueue.main.async {
-            let userExt = UserDefaults.standard.userExt
-            userExt?.email = self.email.text!
-            UserDefaults.standard.userExt = userExt
+            var config = UserExt()
+            if let userExt = UserDefaults.standard.userExt {
+                config = userExt
+            }
+            config.email = self.email.text!
+            UserDefaults.standard.userExt = config
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
             let ch: () -> Void = {
                 self.navigationController?.dismiss(animated: false, completion: nil)
