@@ -23,7 +23,10 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         emailField.placeholder = NSLocalizedString("Email", comment: "")
         btnSend.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
         // Do any additional setup after loading the view.
-        let email = UserDefaults.standard.userExt!.email
+        var email = ""
+        if let userExt = UserDefaults.standard.userExt {
+            email = userExt.email
+        }
         
         emailField.text = email
         emailField.delegate = self
