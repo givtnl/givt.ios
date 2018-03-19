@@ -103,6 +103,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
  
         addQuestion(q: "TermsTitle", a: "TermsText")
+        addQuestion(q: "PrivacyTitle", a: "PolicyText")
  
         
         addSpacer()
