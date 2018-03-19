@@ -366,6 +366,13 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             return false
         } else if shortName == "DE" && !(number.starts(with: "1") || number.starts(with: "01")) {
             return false
+        } else if shortName == "GB" {
+            if !(number.starts(with: "7") || number.starts(with: "07")) {
+                return false
+            }
+            if number.count < 10 {
+                return false
+            }
         }
         
         do {
