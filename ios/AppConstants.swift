@@ -28,6 +28,7 @@ class AppConstants{
         countries.append(Country(name: NSLocalizedString("Belgium", comment: ""), shortName: "BE", prefix: "+32"))
         countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", prefix: "+31"))
         countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", prefix: "+49"))
+        countries.append(Country(name: NSLocalizedString("UnitedKingdom", comment: ""), shortName: "GB", prefix: "+44"))
         return countries
     }()
     
