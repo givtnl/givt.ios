@@ -1,4 +1,4 @@
-//
+    //
 //  HistoryViewController.swift
 //  ios
 //
@@ -8,23 +8,115 @@
 
 import UIKit
 import SVProgressHUD
+import SwipeCellKit
 
-class HistoryViewController: UIViewController, UIScrollViewDelegate {
-    @IBOutlet var parentView: UIView!
-    @IBOutlet var downloadButton: UIButton!
+class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
     private var givtService = GivtService.shared
-    @IBOutlet var infoButton: UIButton!
     private var overlay: UIView?
     private var balloon: Balloon?
+    
+    var models: [HistoryTransaction] = []
+    var tempArray: [String: [HistoryTableViewModel]] = [String: [HistoryTableViewModel]]()
+    var sortedArray: [(key: String, value: [HistoryTableViewModel])] = [(key: String, value: [HistoryTableViewModel])]()
+    var infoScreen: UIView? = nil
+    
+    @IBOutlet var parentView: UIView!
+    @IBOutlet var downloadButton: UIButton!
+    @IBOutlet var infoButton: UIButton!
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var givyContainer: UIView!
+    @IBOutlet var noGivtsLabel: UILabel!
+    @IBOutlet var containerButton: UIBarButtonItem!
+    @IBOutlet var containerVIew: UIView!
+    
+    lazy var fmt: NumberFormatter = {
+        let nf = NumberFormatter()
+        nf.locale = NSLocale.current
+        nf.currencySymbol = "€"
+        nf.minimumFractionDigits = 2
+        nf.maximumFractionDigits = 2
+        nf.positiveFormat = "¤ #,##0.00"
+        return nf
+    }()
+    
+    lazy var timeFormatter: DateFormatter = {
+        var formatter = DateFormatter()
+        formatter.dateFormat = "H:mm:ss"
+        return formatter
+    }()
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        
+        let tx = self.sortedArray[indexPath.section].value[indexPath.row]
+        let currentDate = Date()
+        let calendar = Calendar.current
+        guard let newDate = calendar.date(byAdding: Calendar.Component.minute, value: -15, to: currentDate) else { return nil }
+        if tx.timestamp < newDate {
+            print("can't swipe this transaction")
+            return nil
+        }
+        
+        guard orientation == .right else { return nil }
+
+        
+        let deleteAction = SwipeAction(style: .destructive, title: NSLocalizedString("CancelShort", comment: "")) { action, indexPath in
+            // handle action by updating model with deletion
+            self.sortedArray[indexPath.section].value.remove(at: indexPath.row)
+            
+            
+            action.fulfill(with: .delete)
+            
+            if let section = tableView.headerView(forSection: indexPath.section) as? TableSectionHeader {
+                let elligibleTx = self.sortedArray[indexPath.section].value.filter { (tx) -> Bool in
+                    return tx.status.intValue < 4
+                }
+                var total = 0.00
+                elligibleTx.forEach { (tx) in
+                    tx.collections.forEach({ (collecte) in
+                        total += collecte.amount
+                    })
+                }
+                section.amountLabel.text = self.fmt.string(from: total as! NSNumber)
+            }
+            
+            if self.sortedArray.count == 1 && self.sortedArray[indexPath.section].value.count == 0 {
+                self.givyContainer.isHidden = false
+            }
+            
+        }
+        
+        // customize the action appearance
+        deleteAction.image = #imageLiteral(resourceName: "trash")
+        deleteAction.backgroundColor = #colorLiteral(red: 0.7254901961, green: 0.1019607843, blue: 0.1411764706, alpha: 1)
+        
+        return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeTableOptions {
+        var options = SwipeTableOptions()
+        options.expansionStyle = SwipeExpansionStyle.destructive
+        options.transitionStyle = .reveal
+        
+        return options
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        renderGivy()
+        let nib = UINib(nibName: "TableSectionHeaderView", bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderView")
+        
+        noGivtsLabel.text = NSLocalizedString("HistoryIsEmpty", comment: "")
+        givyContainer.isHidden = false
+        
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
         SVProgressHUD.show()
         
-        scrollView.delegate = self
+        //scrollView.delegate = self
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         getHistory()
         
@@ -32,24 +124,90 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         singleTapGestureRecognizer.numberOfTapsRequired = 1
         singleTapGestureRecognizer.isEnabled = true
         singleTapGestureRecognizer.cancelsTouchesInView = false
-        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        //scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         
         self.downloadButton.isHidden = !UserDefaults.standard.hasGivtsInPreviousYear
+        
+        tableView.tableFooterView = UIView()
     }
     
-    @IBOutlet var scrollView: UIScrollView!
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tableView.estimatedRowHeight = 500
+        tableView.rowHeight = UITableViewAutomaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let tx = sortedArray[section].value.first else { return nil }
+        let title = tx.timestamp.getMonthName() + " \'" + tx.timestamp.toString("yy")
+        let elligibleTx = sortedArray[section].value.filter { (tx) -> Bool in
+            return tx.status.intValue < 4
+        }
+        var total = 0.00
+        elligibleTx.forEach { (tx) in
+            tx.collections.forEach({ (collecte) in
+                total += collecte.amount
+            })
+        }
+        
+        // Dequeue with the reuse identifier
+        let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderView")
+        let header = cell as! TableSectionHeader
+        header.titleLabel.text = title
+        header.amountLabel.text = fmt.string(from: total as! NSNumber)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if sortedArray[section].value.count > 0 {
+            return 30
+        } else {
+            return 0
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sortedArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sortedArray[section].value.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell") as! HistoryTableViewCell
+        cell.delegate = self
+        let tx = sortedArray[indexPath.section].value[indexPath.row]
+        cell.organisationLabel.text = tx.orgName
+        cell.setCollects(collects: tx.collections)
+        cell.dayNumber.text = String(tx.timestamp.getDay())
+        cell.timeLabel.text = timeFormatter.string(from: tx.timestamp)
+        cell.setColor(status: tx.status.intValue)
+        
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let title = UILabel()
+        title.textColor = UIColor.red
+        
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel!.font = title.font
+        header.textLabel!.textColor = title.textColor
+        header.contentView.backgroundColor = UIColor.white
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !UserDefaults.standard.showedLastYearTaxOverview && UserDefaults.standard.hasGivtsInPreviousYear {
             showOverlay()
         }
     }
-
-    func clearView() {
-        historyList.subviews.forEach({ $0.removeFromSuperview()})
-    }
-    
-    @IBOutlet var historyList: UIStackView!
     
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -62,7 +220,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         hideOverlay()
     }
-    @IBOutlet var containerButton: UIBarButtonItem!
+
     
     func showOverlay() {
         if let window = UIApplication.shared.keyWindow {
@@ -75,13 +233,13 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
             } else {
                 cgRectOfButton = (self.containerButton.value(forKey: "view") as! UIView).frame
             }
-            let offSet = cgRectOfButton.midX - self.scrollView.frame.midX
-            self.balloon!.centerTooltip(view: self.scrollView, offSet)
+            let offSet = cgRectOfButton.midX - self.tableView.frame.midX
+            self.balloon!.centerTooltip(view: self.tableView, offSet)
             
             
-            self.balloon!.pinRight(view: self.scrollView, -5)
+            self.balloon!.pinRight(view: self.tableView, -5)
             
-            self.balloon!.pinTop2(view: self.view, self.scrollView.frame.minY + 5)
+            self.balloon!.pinTop2(view: self.view, self.containerVIew.frame.minY + 5)
             self.view.bringSubview(toFront: self.balloon!)
             self.view.layoutIfNeeded()
             
@@ -95,15 +253,25 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
             self.overlay = UIView()
             self.overlay!.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
             self.overlay!.translatesAutoresizingMaskIntoConstraints = false
-            self.scrollView.addSubview(self.overlay!)
-            self.overlay!.topAnchor.constraint(equalTo: self.scrollView.topAnchor).isActive = true
-            self.overlay!.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor).isActive = true
-            self.overlay!.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor).isActive = true
-            self.overlay!.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor).isActive = true
-            
+            self.containerVIew.addSubview(self.overlay!)
+            self.overlay!.topAnchor.constraint(equalTo: self.containerVIew.topAnchor).isActive = true
+            self.overlay!.bottomAnchor.constraint(equalTo: self.containerVIew.bottomAnchor).isActive = true
+            self.overlay!.leadingAnchor.constraint(equalTo: self.containerVIew.leadingAnchor).isActive = true
+            self.overlay!.trailingAnchor.constraint(equalTo: self.containerVIew.trailingAnchor).isActive = true
             self.overlay!.alpha = 0.6
             
             UserDefaults.standard.showedLastYearTaxOverview = true
+        }
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            if let touchedView = touch.view {
+                if touchedView == self.overlay {
+                    hideOverlay()
+                }
+            }
         }
     }
     
@@ -125,42 +293,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
         super.viewWillDisappear(animated)
     }
 
-    func renderGivy() {
-        containerText = UIView()
-        containerText?.translatesAutoresizingMaskIntoConstraints = false
-        historyList.addArrangedSubview(containerText!)
-        containerText?.topAnchor.constraint(equalTo: historyList.topAnchor).isActive = false
-        containerText?.trailingAnchor.constraint(equalTo: historyList.trailingAnchor).isActive = false
-        containerText?.leadingAnchor.constraint(equalTo: historyList.leadingAnchor).isActive = false
-        
-        noGivtsText = UILabel()
-        noGivtsText?.text = NSLocalizedString("HistoryIsEmpty", comment: "")
-        noGivtsText?.font = UIFont(name: "Avenir-Light", size: 16.0)
-        noGivtsText?.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        noGivtsText?.numberOfLines = 0
-        noGivtsText?.textAlignment = .center
-        noGivtsText?.translatesAutoresizingMaskIntoConstraints = false
-        noGivtsText?.lineBreakMode = .byWordWrapping
-        containerText?.addSubview(noGivtsText!)
-        noGivtsText?.sizeToFit()
-        noGivtsText?.leadingAnchor.constraint(equalTo: containerText!.leadingAnchor, constant: 20).isActive = true
-        noGivtsText?.topAnchor.constraint(equalTo: containerText!.topAnchor, constant: 20).isActive = true
-        noGivtsText?.trailingAnchor.constraint(equalTo: containerText!.trailingAnchor, constant: -20).isActive = true
-        noGivtsText?.alpha = 0
-        let image = #imageLiteral(resourceName: "givymoney.png")
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFit
-        containerText?.addSubview(imageView)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.widthAnchor.constraint(greaterThanOrEqualToConstant: 240).isActive = true
-        imageView.heightAnchor.constraint(greaterThanOrEqualToConstant: 240).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: containerText!.centerXAnchor, constant: 0).isActive = true
-        imageView.topAnchor.constraint(equalTo: noGivtsText!.bottomAnchor, constant: 40).isActive = true
-    }
-    
-    var containerText: UIView? = nil
-    var noGivtsText: UILabel? = nil
-    var infoScreen: UIView? = nil
+
     @IBAction func openInfo(_ sender: Any) {
         print("user wants to open info")
         infoScreen = UIView()
@@ -259,280 +392,17 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
             UIApplication.shared.statusBarStyle = .default
         })
     }
-    
-    func renderNoGivts(){
-        SVProgressHUD.dismiss()
-        UIView.animate(withDuration: 0.4, animations: {
-            self.noGivtsText?.alpha = 1.0
-        })
-        
-    }
-    
-    func renderBlocks(objects: [HistoryTransaction]) {
-        var oldMonth: String = ""
-        var oldDay: String = ""
-        var oldTime: String = ""
-        var prevOrg: String = ""
-        var agendaRectangle: AgendaNumber? = nil
-        var h: UIStackView? = nil
-        var grey: UIView? = nil
-        historyList.spacing = 1
-        
-        let fmt = NumberFormatter()
-        fmt.locale = NSLocale.current
-        fmt.currencySymbol = "€"
-        fmt.minimumFractionDigits = 2
-        fmt.maximumFractionDigits = 2
-        fmt.positiveFormat = "¤ #,##0.00"
-        
-        clearView()
-        for (idx, object) in objects.enumerated() {
-            /* once per month per year, add title of the month */
-            if oldMonth != String(object.timestamp.getMonth()) + "-" + String(object.timestamp.getYear()) {
-                
-                if idx != 0 {
-                    let space = UIView()
-                    space.translatesAutoresizingMaskIntoConstraints = false
-                    space.heightAnchor.constraint(equalToConstant: 10).isActive = true
-                    self.historyList.addArrangedSubview(space)
-                }
-                
-                let purpleBar = UIView()
-                purpleBar.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-                purpleBar.translatesAutoresizingMaskIntoConstraints = false
-                purpleBar.heightAnchor.constraint(equalToConstant: 30).isActive = true
-                self.historyList.addArrangedSubview(purpleBar)
-                
-                let monthTotal = objects.flatMap { $0 }
-                    .filter { ($0.timestamp.getMonth() == object.timestamp.getMonth()) && ($0.timestamp.getYear() == object.timestamp.getYear()) && ($0.status.intValue < 4) }
-                var som: Double = 0.0
-                for item in monthTotal {
-                    som += item.amount
-                }
-                
-                let monthTitle = self.getMonthTitle(name: object.timestamp.getMonthName() + " \'" + object.timestamp.toString("yy"))
-                purpleBar.addSubview(monthTitle)
-                monthTitle.centerYAnchor.constraint(equalTo: purpleBar.centerYAnchor).isActive = true
-                monthTitle.leadingAnchor.constraint(equalTo: purpleBar.leadingAnchor, constant: 10).isActive = true
-                
-                let text = fmt.string(from: som as NSNumber)
-                let monthTotalAmount = self.getMonthTitle(name: text!)
-                purpleBar.addSubview(monthTotalAmount)
-                monthTotalAmount.centerYAnchor.constraint(equalTo: purpleBar.centerYAnchor).isActive = true
-                monthTotalAmount.trailingAnchor.constraint(equalTo: purpleBar.trailingAnchor, constant: -10).isActive = true
-            }
-            
-            //it's a new day
-            if oldDay != object.timestamp.toString("MM/dd/yyyy") {
-                oldTime = "" //reset oldTime to not hide the time when time would be the same but the day is different DO NOT REMOVE ! ! !
-                grey = UIView()
-                
-                grey!.translatesAutoresizingMaskIntoConstraints = false
-                grey!.heightAnchor.constraint(greaterThanOrEqualToConstant: 60.0).isActive = true
-                
-                self.historyList.addArrangedSubview(grey!)
-                
-                agendaRectangle = AgendaNumber()
-                agendaRectangle!.cornerRadius = 5.0
-                agendaRectangle!.backgroundColor = #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1)
-                agendaRectangle!.translatesAutoresizingMaskIntoConstraints = false
-                grey!.addSubview(agendaRectangle!)
-                
-                let agendaDay = getAgendaDay(object.timestamp.getDay())
-                agendaRectangle!.addSubview(agendaDay)
-                
-                agendaDay.centerXAnchor.constraint(equalTo: agendaRectangle!.centerXAnchor).isActive = true
-                agendaDay.centerYAnchor.constraint(equalTo: agendaRectangle!.centerYAnchor).isActive = true
-                
-                agendaRectangle!.leadingAnchor.constraint(equalTo: grey!.leadingAnchor, constant: 10.0).isActive = true
-                agendaRectangle!.topAnchor.constraint(equalTo: grey!.topAnchor, constant: 10.0).isActive = true
-                agendaRectangle!.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
-                agendaRectangle!.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
-                
-                h = UIStackView()
-                h!.axis = .vertical
-                grey!.addSubview(h!)
-                h!.translatesAutoresizingMaskIntoConstraints = false
-                h!.leadingAnchor.constraint(equalTo: agendaRectangle!.trailingAnchor, constant: 10.0).isActive = true
-                let ticketTop = h!.topAnchor.constraint(equalTo: grey!.topAnchor, constant: 10.0)
-                ticketTop.isActive = true
-                h!.trailingAnchor.constraint(equalTo: grey!.trailingAnchor, constant: -10.0).isActive = true
-                h!.bottomAnchor.constraint(equalTo: grey!.bottomAnchor, constant: 0).isActive = true
-                
-                let churchName = self.getChurchName(name: object.orgName)
-                churchName.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
-                h!.addArrangedSubview(churchName)
-                
-            } else {
-                if prevOrg != object.orgName {
-                    let churchName = self.getChurchName(name: object.orgName)
-                    churchName.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
-                    h!.addArrangedSubview(churchName)
-                }
-            }
-    
-            let collectionStackView2 = UIStackView()
-            collectionStackView2.axis = .horizontal
-            collectionStackView2.translatesAutoresizingMaskIntoConstraints = false
-            h!.addArrangedSubview(collectionStackView2)
-            
-            collectionStackView2.leadingAnchor.constraint(equalTo: h!.leadingAnchor).isActive = true
-            collectionStackView2.trailingAnchor.constraint(equalTo: h!.trailingAnchor).isActive = true
-            collectionStackView2.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
-            collectionStackView2.backgroundColor = .red
-            
-            let hour2 = self.getHourLabel(object.timestamp)
-            collectionStackView2.addArrangedSubview(hour2)
-            collectionStackView2.spacing = 5
-            
-            hour2.leadingAnchor.constraint(equalTo: collectionStackView2.leadingAnchor, constant: 0.0).isActive = true
-            hour2.topAnchor.constraint(equalTo: collectionStackView2.topAnchor, constant: 0.0).isActive = true
-            if (hour2.text?.contains("M"))! {
-                hour2.widthAnchor.constraint(equalToConstant: 50.0).isActive = true
-            } else {
-                hour2.widthAnchor.constraint(equalToConstant: 35.0).isActive = true
-            }
-            
-            hour2.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
-            
-            if oldTime == hour2.text && prevOrg == object.orgName {
-                hour2.alpha = 0
-            }
-            
-            oldTime = hour2.text!
-            
-            let collecte2 = getCollectLabel(text: NSLocalizedString("Collect", comment: "") + " " +  String(describing: object.collectId))
-            collectionStackView2.addArrangedSubview(collecte2)
-            
-            let amount2 = self.getAmountLabel(amount: object.amount, status: object.status, formatter: fmt)
-            collectionStackView2.addArrangedSubview(amount2)
-            amount2.trailingAnchor.constraint(equalTo: collectionStackView2.trailingAnchor).isActive = true
-            amount2.topAnchor.constraint(equalTo: collectionStackView2.topAnchor, constant: 0.0).isActive = true
-            amount2.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
-            amount2.widthAnchor.constraint(greaterThanOrEqualToConstant: 20.0).isActive = true
-            
-            collecte2.topAnchor.constraint(equalTo: collectionStackView2.topAnchor, constant: 0.0).isActive = true
-            collecte2.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
-            
-            /* we create a spacer view so the collecte stays right under the church name rather than sit at the bottm */
-            let spacer = UIView()
-            spacer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-            h!.addArrangedSubview(spacer)
-            spacer.translatesAutoresizingMaskIntoConstraints = false
-            spacer.heightAnchor.constraint(greaterThanOrEqualToConstant: 0.0).isActive = true
-            
-            oldMonth = String(object.timestamp.getMonth()) + "-" + String(object.timestamp.getYear())
-            oldDay = object.timestamp.toString("MM/dd/yyyy")
-            prevOrg = object.orgName
-        }
-        SVProgressHUD.dismiss()
-    }
-    
-    private func getCollectLabel(text: String) -> UILabel {
-        let label = UILabel()
-        label.text = text
-        label.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Avenir-Roman", size: 14.0)
-        label.minimumScaleFactor = 0.5
-        label.numberOfLines = 0
-        
-        return label
-    }
-    
-    private func getAmountLabel(amount: Double, status: NSNumber, formatter: NumberFormatter) -> UILabel {
-        let label = UILabel()
-        label.text = formatter.string(from: amount as NSNumber)
-        label.font = UIFont(name: "Avenir-Heavy", size: 16.0)
-        //amount.backgroundColor = .red
-        var color = UIColor()
-        switch status {
-        case 1, 2:
-            color = UIColor.init(rgb: 0x2c2b57) //in process
-        case 3:
-            color = UIColor.init(rgb: 0x41c98e) //processed
-        case 4:
-            color = UIColor.init(rgb: 0xd43d4c) //refused
-        case 5:
-            color = UIColor.init(rgb: 0xbcb9c9) //cancelled
-        default:
-            color = UIColor.init(rgb: 0x2c2b57) //in process
-            break
-        }
-        
-        label.textColor = color
-        label.textAlignment = .right
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        return label
-    }
-    
-    private func getAgendaDay(_ i: Int) -> UILabel {
-        let agendaDay = UILabel()
-        agendaDay.text = String(i)
-        agendaDay.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        agendaDay.font = UIFont(name: "Avenir-Light", size: 28.0)
-        agendaDay.translatesAutoresizingMaskIntoConstraints = false
-        return agendaDay
-    }
-    
-    private func getHourLabel(_ timestamp: Date) -> UILabel {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        let d = formatter.string(from: timestamp)
-        
-        let hour = UILabel()
-        hour.text = d
-        hour.textColor = UIColor.gray
-        //hour.backgroundColor = .green
-        hour.font = UIFont(name: "Avenir-Medium", size: 12.0)
-        hour.translatesAutoresizingMaskIntoConstraints = false
-        hour.numberOfLines = 0
-        hour.minimumScaleFactor = 0.5
-        hour.adjustsFontSizeToFitWidth = true
-        return hour
-    }
-    
-    private func getChurchName(name: String) -> UILabel {
-        let churchName = UILabel()
-        churchName.text = name
-        churchName.numberOfLines = 0
-        churchName.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        churchName.translatesAutoresizingMaskIntoConstraints = false
-        //churchName.backgroundColor = .cyan
-        churchName.font = UIFont(name: "Avenir-Heavy", size: 16.0)
-        return churchName
-    }
-    
-    private func getMonthTitle(name: String) -> UILabel {
-        let label = UILabel()
-        label.text = name
-        label.numberOfLines = 0
-        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        //churchName.backgroundColor = .cyan
-        label.font = UIFont(name: "Avenir-Heavy", size: 16.0)
-        return label
-    }
-    
-    
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    var models: [HistoryTransaction] = []
-    
     func getHistory() {
         givtService.getGivts { (historyTransactions) in
             if historyTransactions.count == 0 {
                 DispatchQueue.main.async {
-                    self.renderNoGivts()
+                    SVProgressHUD.dismiss()
+                    self.givyContainer.isHidden = false
                     self.infoButton.isHidden = true
                 }
             } else {
-                let objects = historyTransactions.sorted {
+                self.models = historyTransactions.sorted {
                     if $0.timestamp.getYear() != $1.timestamp.getYear() {
                         return $0.timestamp.getYear() > $1.timestamp.getYear()
                     }
@@ -545,103 +415,87 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate {
                         return $0.timestamp.getDay() > $1.timestamp.getDay()
                     }
                     
-                    if $0.orgName != $1.orgName {
-                        return $0.orgName < $1.orgName
-                    }
+//                    if $0.orgName != $1.orgName {
+//                        return $0.orgName < $1.orgName
+//                    }
                     
                     if $0.timestamp.getHour() != $1.timestamp.getHour() {
-                        return $0.timestamp.getHour() < $1.timestamp.getHour()
+                        return $0.timestamp.getHour() > $1.timestamp.getHour()
                     }
                     
                     if $0.timestamp.getMinutes() != $1.timestamp.getMinutes() {
-                        return $0.timestamp.getMinutes() < $1.timestamp.getMinutes()
+                        return $0.timestamp.getMinutes() > $1.timestamp.getMinutes()
                     }
                     
                     if $0.timestamp.getSeconds() != $1.timestamp.getSeconds() {
-                        return $0.timestamp.getSeconds() < $1.timestamp.getSeconds()
+                        return $0.timestamp.getSeconds() > $1.timestamp.getSeconds()
                     }
                     
                     return $0.collectId < $1.collectId
                 }
                 
+                var newTransactions = [HistoryTableViewModel]()
+                var oldDate: Date?
+                var oldOrgName: String?
+                var oldStatus: NSNumber?
+                self.models.forEach({ (tx) in
+                    // check if transaction with current date exists and is to same organsation
+                    
+                    if let oDate = oldDate, let oOrgName = oldOrgName, let oStatus = oldStatus {
+                        var existingTx = newTransactions.filter({ (newTx) -> Bool in
+                            newTx.orgName == tx.orgName && newTx.timestamp.toString("yyyy-MM-dd'T'HH:mm:ssZ") == tx.timestamp.toString("yyyy-MM-dd'T'HH:mm:ssZ") && tx.status == newTx.status
+                        })
+                        
+                        if existingTx.count > 0 {
+                            existingTx.first!.collections.append(Collecte(collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                        } else {
+                            // does not exist
+                            var collections = [Collecte]()
+                            collections.append(Collecte(collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                            let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
+                            newTransactions.append(newTx)
+                        }
+                    } else {
+                        // first time
+                        var collections = [Collecte]()
+                        collections.append(Collecte(collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                        let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
+                        newTransactions.append(newTx)
+                    }
+                    
+                    
+                    oldDate = tx.timestamp
+                    oldOrgName = tx.orgName
+                    oldStatus = tx.status
+                })
+            
+                newTransactions.forEach({ (tx) in
+                    var monthString = String(tx.timestamp.getMonth())
+                    monthString = monthString.count == 1 ? "0" + monthString : monthString
+                    let s = String(tx.timestamp.getYear()) + " - " + monthString
+                    if self.tempArray.keys.contains(s) {
+                        self.tempArray[s]!.append(tx)
+                    } else {
+                        self.tempArray[s] = [HistoryTableViewModel]()
+                        self.tempArray[s]!.append(tx)
+                    }
+
+                })
+                
+                self.sortedArray = self.tempArray.sorted(by: { (first, second) -> Bool in
+                    first.key > second.key
+                })
+                
                 DispatchQueue.main.async {
-                    self.renderBlocks(objects: objects)
+                    SVProgressHUD.dismiss()
+                    self.tableView.reloadData()
+                    self.givyContainer.isHidden = true
                 }
-                    
-                    
             }
         }
     }
 
     @IBAction func clearViewed2017(_ sender: Any) {
         UserDefaults.standard.showedLastYearTaxOverview = false
-    }
-}
-
-class HistoryTransaction: NSObject {
-    public var orgName : String
-    public var amount : Double
-    public var collectId : Decimal
-    public var timestamp : Date
-    public var status : NSNumber
-    
-    /**
-     Returns an array of models based on given dictionary.
-     
-     Sample usage:
-     let json4Swift_Base_list = Json4Swift_Base.modelsFromDictionaryArray(someDictionaryArrayFromJSON)
-     
-     - parameter array:  NSArray from JSON dictionary.
-     
-     - returns: Array of Json4Swift_Base Instances.
-     */
-    public class func modelsFromDictionaryArray(array:NSArray) -> [HistoryTransaction]
-    {
-        var models:[HistoryTransaction] = []
-        for item in array
-        {
-            models.append(HistoryTransaction(dictionary: item as! Dictionary)!)
-        }
-        return models
-    }
-    
-    required public init?(dictionary: Dictionary<String, Any>) {
-
-        orgName = (dictionary["OrgName"] as? String)!
-        amount = Double((dictionary["Amount"] as? Double)!)
-        collectId = Decimal(string: dictionary["CollectId"] as! String)!
-        var dateString = (dictionary["Timestamp"] as? String)!
-        if dateString.count > 19 {
-            dateString = dateString.substring(0..<19)
-        }
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        df.timeZone = TimeZone(abbreviation: "UTC")
-        df.locale = Locale(identifier: "en_US_POSIX") as Locale!
-        timestamp = df.date(from: dateString)!
-        status = (dictionary["Status"] as? NSNumber)!
-    }
-    
-    public func dictionaryRepresentation() -> Dictionary<String , Any> {
-        
-        var dictionary = Dictionary<String, Any>()
-        dictionary.updateValue(self.orgName, forKey: "OrgName")
-        dictionary.updateValue(self.amount, forKey: "Amount")
-        dictionary.updateValue(self.collectId, forKey: "CollectId")
-        dictionary.updateValue(self.timestamp, forKey: "Timestamp")
-        dictionary.updateValue(self.status, forKey: "Status")
-        
-        return dictionary
-    }
-    
-}
-
-class Status {
-    var color: Int
-    var string: String
-    
-    init(color: Int, string: String) {
-        self.color = color
-        self.string = string
     }
 }

@@ -10,6 +10,7 @@ target 'ios' do
   pod 'PhoneNumberKit'
   pod 'SwiftClient'
   pod ‘TrustKit’
+  pod 'SwipeCellKit'
   # Pods for ios
 
 end
