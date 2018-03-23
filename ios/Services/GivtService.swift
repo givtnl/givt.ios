@@ -443,7 +443,9 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    
+    func deleteTransactions(transactionsIds: [Int], completion: @escaping (Bool) -> Void) {
+        
+    }
     
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
         

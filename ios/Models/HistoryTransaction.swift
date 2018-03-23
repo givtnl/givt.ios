@@ -8,6 +8,7 @@
 
 import Foundation
 class HistoryTransaction: NSObject {
+    public var id: Int
     public var orgName : String
     public var amount : Double
     public var collectId : Decimal
@@ -35,7 +36,7 @@ class HistoryTransaction: NSObject {
     }
     
     required public init?(dictionary: Dictionary<String, Any>) {
-        
+        id = (dictionary["Id"] as? Int)!
         orgName = (dictionary["OrgName"] as? String)!
         amount = Double((dictionary["Amount"] as? Double)!)
         collectId = Decimal(string: dictionary["CollectId"] as! String)!
@@ -59,6 +60,7 @@ class HistoryTransaction: NSObject {
         dictionary.updateValue(self.collectId, forKey: "CollectId")
         dictionary.updateValue(self.timestamp, forKey: "Timestamp")
         dictionary.updateValue(self.status, forKey: "Status")
+        dictionary.updateValue(self.id, forKey: "Id")
         
         return dictionary
     }

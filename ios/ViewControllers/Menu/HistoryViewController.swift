@@ -61,6 +61,9 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         
         let deleteAction = SwipeAction(style: .destructive, title: NSLocalizedString("CancelShort", comment: "")) { action, indexPath in
             // handle action by updating model with deletion
+            self.sortedArray[indexPath.section].value[indexPath.row].collections.forEach {
+                print($0.transactionId)
+            }
             self.sortedArray[indexPath.section].value.remove(at: indexPath.row)
             
             
@@ -447,18 +450,18 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                         })
                         
                         if existingTx.count > 0 {
-                            existingTx.first!.collections.append(Collecte(collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                            existingTx.first!.collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
                         } else {
                             // does not exist
                             var collections = [Collecte]()
-                            collections.append(Collecte(collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                            collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
                             let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
                             newTransactions.append(newTx)
                         }
                     } else {
                         // first time
                         var collections = [Collecte]()
-                        collections.append(Collecte(collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                        collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
                         let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
                         newTransactions.append(newTx)
                     }

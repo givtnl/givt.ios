@@ -22,11 +22,13 @@ class HistoryTableViewModel {
 }
 
 class Collecte {
+    var transactionId: Int
     var collectId: Decimal
     var amount: Double
     var amountString: String
     
-    init(collectId: Decimal, amount: Double, amountString: String) {
+    init(transactionId: Int, collectId: Decimal, amount: Double, amountString: String) {
+        self.transactionId = transactionId
         self.collectId = collectId
         self.amount = amount
         self.amountString = amountString
