@@ -9,9 +9,11 @@
 import UIKit
 import SVProgressHUD
 import SwipeCellKit
+import SwiftClient
 
 class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
     private var givtService = GivtService.shared
+    private var logService = LogService.shared
     private var overlay: UIView?
     private var balloon: Balloon?
     
@@ -61,31 +63,72 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         
         let deleteAction = SwipeAction(style: .destructive, title: NSLocalizedString("CancelShort", comment: "")) { action, indexPath in
             // handle action by updating model with deletion
+            var transactionIdsToCancel = [Int]()
             self.sortedArray[indexPath.section].value[indexPath.row].collections.forEach {
-                print($0.transactionId)
+                transactionIdsToCancel.append($0.transactionId)
             }
+            
             self.sortedArray[indexPath.section].value.remove(at: indexPath.row)
-            
-            
             action.fulfill(with: .delete)
             
-            if let section = tableView.headerView(forSection: indexPath.section) as? TableSectionHeader {
-                let elligibleTx = self.sortedArray[indexPath.section].value.filter { (tx) -> Bool in
-                    return tx.status.intValue < 4
-                }
-                var total = 0.00
-                elligibleTx.forEach { (tx) in
-                    tx.collections.forEach({ (collecte) in
-                        total += collecte.amount
-                    })
-                }
-                section.amountLabel.text = self.fmt.string(from: total as! NSNumber)
-            }
             
-            if self.sortedArray.count == 1 && self.sortedArray[indexPath.section].value.count == 0 {
-                self.givyContainer.isHidden = false
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: transactionIdsToCancel, options: JSONSerialization.WritingOptions.prettyPrinted)
+                self.logService.info(message: "Cancelling following transactions with Id's: " + String(data: jsonData, encoding: String.Encoding.ascii)!)
+                
+                self.givtService.delete(transactionsIds: transactionIdsToCancel, completion: { (response) in
+                    if let response = response {
+                        switch response.status {
+                        case .ok:
+
+                            if let section = tableView.headerView(forSection: indexPath.section) as? TableSectionHeader {
+                                let elligibleTx = self.sortedArray[indexPath.section].value.filter { (tx) -> Bool in
+                                    return tx.status.intValue < 4
+                                }
+                                var total = 0.00
+                                elligibleTx.forEach { (tx) in
+                                    tx.collections.forEach({ (collecte) in
+                                        total += collecte.amount
+                                    })
+                                }
+                                section.amountLabel.text = self.fmt.string(from: total as NSNumber)
+                            }
+                            if self.sortedArray.count == 1 && self.sortedArray[indexPath.section].value.count == 0 {
+                                self.givyContainer.isHidden = false
+                            }
+                        case .expectationFailed:
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Het annuleren van je gift is niet gelukt omdat dit langer dan 15 minuten geleden is.", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        default:
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.sortedArray[indexPath.section].value.insert(tx, at: indexPath.row)
+                            tableView.reloadData()
+                            if AppServices.shared.connectedToNetwork() {
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                self.present(alert, animated: true, completion: nil)
+                            } else {
+                                NavigationManager.shared.presentAlertNoConnection(context: self)
+                            }
+                            
+                        }
+
+                    }
+                    
+                })
+
+            } catch {
+                self.logService.error(message: "Could not JSONSerialize transaction IDS")
+                let alert = UIAlertController(title: "Er gaat iets mis", message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
-            
         }
         
         // customize the action appearance

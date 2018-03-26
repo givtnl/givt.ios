@@ -74,6 +74,28 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
         }
     }
     
+    func delete(url: String, data: [Any], callback: @escaping (Response?) -> Void) {
+        log.info(message: "DELETE ON " + url)
+        var headers: [String: String] = [:]
+        headers["Accept-Language"] = Locale.preferredLanguages[0]
+        guard let bearerToken = UserDefaults.standard.bearerToken
+            else {
+                callback(nil)
+                return
+        }
+
+        headers["Authorization"] = "Bearer " + bearerToken
+        client.delete(url: url).delegate(delegate: self)
+            .type(type: "json")
+            .set(headers: headers)
+            .send(data: data).end(done: { (response) in
+                callback(response)
+            }) { (error) in
+                callback(nil)
+                self.handleError(err: error)
+        }
+    }
+    
     private func handleError(err: Error) {
         let error = (err as NSError)
         if let url = error.userInfo["NSErrorFailingURLStringKey"] as? String, let description = error.userInfo["NSLocalizedDescription"] as? String {

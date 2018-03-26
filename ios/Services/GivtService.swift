@@ -10,6 +10,7 @@ import Foundation
 import CoreBluetooth
 import UIKit
 import AudioToolbox
+import SwiftClient
 
 final class GivtService: NSObject, CBCentralManagerDelegate {
     static let shared = GivtService()
@@ -443,8 +444,11 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    func deleteTransactions(transactionsIds: [Int], completion: @escaping (Bool) -> Void) {
-        
+    func delete(transactionsIds: [Int], completion: @escaping (Response?) -> Void) {
+        var data = ["Guid": UserDefaults.standard.userExt!.guid]
+        client.delete(url: "/api/v2/Givts/Multiple", data: transactionsIds) { (response) in
+            completion(response)
+        }
     }
     
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
