@@ -62,11 +62,11 @@ class HistoryTableViewCell: SwipeTableViewCell {
     func setCollects(collects: [Collecte]) {
         collections.arrangedSubviews.forEach { (view) in
             if let sv = view as? UIStackView {
-                sv.arrangedSubviews.forEach({ (view2) in
-                    view2.removeFromSuperview()
-                })
+                sv.removeConstraints(sv.constraints)
                 sv.removeFromSuperview()
             }
+            view.removeConstraints(view.constraints)
+            view.removeFromSuperview()
         }
         
         collects.forEach { (collecte) in
