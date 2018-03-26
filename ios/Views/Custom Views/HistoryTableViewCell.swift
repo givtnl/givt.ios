@@ -81,7 +81,7 @@ class HistoryTableViewCell: SwipeTableViewCell {
             hsv.trailingAnchor.constraint(equalTo: collections.trailingAnchor).isActive = true
             
             let label = UILabel()
-            label.text = "Collecte " + String(describing: collecte.collectId)
+            label.text = NSLocalizedString("Collect", comment: "") + " " + String(describing: collecte.collectId)
             label.translatesAutoresizingMaskIntoConstraints = false
             label.font = UIFont(name: "Avenir-Light", size: 15)
             label.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
