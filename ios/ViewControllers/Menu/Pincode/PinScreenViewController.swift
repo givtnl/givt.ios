@@ -172,6 +172,9 @@ class PinScreenViewController: UIViewController {
                         let alert = UIAlertController(title: NSLocalizedString("PincodeWrongPinTitle", comment: ""), message: "", preferredStyle: .alert)
                         alert.title = NSLocalizedString("SomethingWentWrong", comment: "")
                         alert.message = NSLocalizedString("ConnectionError", comment: "")
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            self.pincode = ""
+                        }))
                         self.present(alert, animated: true, completion: nil)
                     }
                     
