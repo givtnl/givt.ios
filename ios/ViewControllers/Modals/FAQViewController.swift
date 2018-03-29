@@ -96,6 +96,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         addQuestion(q: "FAQvraag4", a: "FAQantwoord4")
  
         addQuestion(q: "FAQvraag5", a: "FAQantwoord5")
+        addQuestion(q: "FAQVraag16", a: "FAQAntwoord16") // annuleren van giften
         addQuestion(q: "FAQvraag6", a: "FAQantwoord6")
         addQuestion(q: "FAQvraag7", a: "FAQantwoord7")
         addQuestion(q: "FAQWhyBluetoothEnabledQ", a: "FAQWhyBluetoothEnabledA")
@@ -103,6 +104,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
  
         addQuestion(q: "TermsTitle", a: "TermsText")
+        addQuestion(q: "PrivacyTitle", a: "PolicyText")
  
         
         addSpacer()

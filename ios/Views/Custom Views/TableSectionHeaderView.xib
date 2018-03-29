@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Heavy</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TableSectionHeader" customModule="ios" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="830" height="81"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wsW-8D-ipv">
+                    <rect key="frame" x="0.0" y="0.0" width="830" height="81"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="duf-IU-W1G">
+                            <rect key="frame" x="20" y="0.0" width="796" height="81"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="maart '16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBd-wj-cYR">
+                                    <rect key="frame" x="0.0" y="0.0" width="442.5" height="81"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 15,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uW-mC-CzA">
+                                    <rect key="frame" x="442.5" y="0.0" width="353.5" height="81"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.35133320089999998" green="0.32705855369999998" blue="0.53972214460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="duf-IU-W1G" firstAttribute="leading" secondItem="wsW-8D-ipv" secondAttribute="leading" constant="20" id="2kx-Di-Pan"/>
+                        <constraint firstAttribute="bottom" secondItem="duf-IU-W1G" secondAttribute="bottom" id="LCs-po-LWn"/>
+                        <constraint firstItem="duf-IU-W1G" firstAttribute="top" secondItem="wsW-8D-ipv" secondAttribute="top" id="Mv8-2G-tAc"/>
+                        <constraint firstAttribute="trailing" secondItem="duf-IU-W1G" secondAttribute="trailing" constant="14" id="lpW-OS-p6d"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="wsW-8D-ipv" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="KAc-tK-vwL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wsW-8D-ipv" secondAttribute="trailing" id="OXS-G6-jlA"/>
+                <constraint firstItem="wsW-8D-ipv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="izL-7l-ajx"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wsW-8D-ipv" secondAttribute="bottom" id="oeB-nX-cWQ"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="amountLabel" destination="2uW-mC-CzA" id="zxq-9e-fWp"/>
+                <outlet property="titleLabel" destination="yBd-wj-cYR" id="JNQ-Tf-296"/>
+            </connections>
+            <point key="canvasLocation" x="250" y="-50.5"/>
+        </view>
+    </objects>
+</document>
