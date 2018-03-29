@@ -66,7 +66,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("page fully loaded")
         SVProgressHUD.show()
-        let possibleUrls = ["givtapidebug.azurewebsites.net","api2.nfcollect.com","api.givtapp.net"]
+        let possibleUrls = ["givtapidebug.azurewebsites.net","givtapicoredbg.azurewebsites.net","api2.nfcollect.com","api.givtapp.net"]
         
         guard let webViewUrl = webView.url else { return }
         
