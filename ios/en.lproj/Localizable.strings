@@ -95,7 +95,7 @@
 "Password" = "Password";
 
 /*Wachtwoord regel staat onder het wachtwoord veld*/
-"PasswordRule" = "The password should contain at least 7 characters including a capital and a digit.";
+"PasswordRule" = "The password should contain at least 7 characters including at least one capital and one digit.";
 
 /*Telefoonnummer placeholder bij registratie*/
 "PhoneNumber" = "Mobile number";
@@ -599,3 +599,10 @@
 "AlreadyAnAccount" = "Already have an account?";
 "UnitedKingdom" = "United Kingdom";
 "CancelShort" = "Cancel";
+"CantCancelGiftAfter15Minutes" = "Your donation has not been cancelled because this was longer then 15 minutes ago.";
+"UnknownErrorCancelGivt" = "Due to an unexpected error, we could not cancel your donation. Get in touch with us at support@givtapp.net for more information.";
+"TransactionCancelled" = "The gift to {0} will be cancelled.";
+"Cancelled" = "Cancelled";
+"Undo" = "Undo";
+"FAQVraag16" = "Can I revoke donations?";
+"FAQAntwoord16" = "Yes you can revoke your donations. No transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt B.V. Since these transactions are revocable, it is completely safe and immune to fraud.\nIn the first 15 minutes after the donation was done in the app, it is possible to cancel the donation by going to the donation overview and swipe the donation you want to cancel to the left. Cancelling is free of charge when doing it this way.";

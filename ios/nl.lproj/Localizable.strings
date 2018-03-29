@@ -618,3 +618,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AlreadyAnAccount" = "Heb je al een account?";
 "UnitedKingdom" = "Verenigd Koninkrijk";
 "CancelShort" = "Annuleer";
+"CantCancelGiftAfter15Minutes" = "Het annuleren van je gift is niet gelukt omdat dit langer dan 15 minuten geleden is.";
+"UnknownErrorCancelGivt" = "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact op met ons op support@givtapp.net voor meer informatie.";
+"TransactionCancelled" = "De gift naar {0} zal geannuleerd worden.";
+"Cancelled" = "Geannuleerd";
+"Undo" = "Ongedaan maken";
+"FAQVraag16" = "Kan ik mijn giften herroepen?";
+"FAQAntwoord16" = "Ja, je kan je giften herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Op je bankafschrift zal je zien dat je gift afgeschreven is door Givt B.V. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen.\nIn het eerste kwartier na de gift kan je ook via het giftenoverzicht een gift annuleren door een gift naar links te swipen (vegen). Dit is enkel mogelijk in de eerste 15 minuten na het geven; deze manier van herroepen (annuleren) is kosteloos.";
