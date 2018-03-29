@@ -91,7 +91,9 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                                         total += collecte.amount
                                     })
                                 }
-                                section.amountLabel.text = self.fmt.string(from: total as NSNumber)
+                                DispatchQueue.main.async {
+                                    section.amountLabel.text = self.fmt.string(from: total as NSNumber)
+                                }
                             }
                             if self.sortedArray.count == 1 && self.sortedArray[indexPath.section].value.count == 0 {
                                 self.givyContainer.isHidden = false
