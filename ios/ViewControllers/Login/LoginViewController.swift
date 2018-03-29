@@ -122,6 +122,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 var message = NSLocalizedString("WrongCredentials", comment: "")
                 if description == "NoInternet" {
                     message = NSLocalizedString("ConnectionError", comment: "")
+                } else if description == "ServerError" {
+                    message = NSLocalizedString("ConnectionError", comment: "")
                 }
                 
                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),

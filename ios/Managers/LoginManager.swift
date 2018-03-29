@@ -125,6 +125,9 @@ class LoginManager {
                             print(error)
                             completionHandler(false, nil, nil)
                         }
+                    } else if temp.basicStatus == .serverError {
+                        self.log.error(message: "Server error when trying to log in. Timeout? Microsoft 🙃")
+                        completionHandler(false, nil, "ServerError")
                     } else {
                         if let dataString = String(data: data, encoding: String.Encoding.utf8),
                             let dict = self.convertToDictionary(text: dataString),
