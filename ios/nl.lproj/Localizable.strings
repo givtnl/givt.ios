@@ -81,7 +81,7 @@
 
 /*Ik vind toegang ontvangen vreemd klinken.*/
 /*Titel op de login-pagina*/
-"LoginText" = "Om toegang tot je account te krijgen, hoef je alleen even in te loggen.";
+"LoginText" = "Om toegang tot je account te krijgen, willen we graag zeker weten dat jij het bent.";
 
 /*Uitloggen knop*/
 "LogOut" = "Uitloggen";

@@ -74,7 +74,7 @@
 "LoginPincode" = "Enter your access code.";
 
 /*Titel op de login-pagina*/
-"LoginText" = "Login and access your account.";
+"LoginText" = "To get access to your account we would like to make sure that you are you.";
 
 /*Uitloggen knop*/
 "LogOut" = "Logout";
@@ -601,7 +601,7 @@
 "CancelShort" = "Cancel";
 "CantCancelGiftAfter15Minutes" = "Your donation has not been cancelled because this was longer then 15 minutes ago.";
 "UnknownErrorCancelGivt" = "Due to an unexpected error, we could not cancel your donation. Get in touch with us at support@givtapp.net for more information.";
-"TransactionCancelled" = "The gift to {0} will be cancelled.";
+"TransactionCancelled" = "The donation to {0} will be cancelled.";
 "Cancelled" = "Cancelled";
 "Undo" = "Undo";
 "FAQVraag16" = "Can I revoke donations?";
