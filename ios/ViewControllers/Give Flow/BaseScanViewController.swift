@@ -13,6 +13,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
     private var organisation = ""
     private var bestBeacon = BestBeacon()
+    
     fileprivate func popToRootWithDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
             if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
@@ -139,4 +140,6 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             }
         }
     }
+    
+    
 }

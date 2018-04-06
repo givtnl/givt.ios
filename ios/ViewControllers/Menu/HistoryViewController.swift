@@ -203,7 +203,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderView")
         let header = cell as! TableSectionHeader
         header.titleLabel.text = title
-        header.amountLabel.text = fmt.string(from: total as! NSNumber)
+        header.amountLabel.text = fmt.string(from: total as NSNumber)
         
         return cell
     }

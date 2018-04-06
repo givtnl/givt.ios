@@ -126,6 +126,11 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items.append([])
             items.append([])
             
+            let changeContext = Setting(name: "VERANDER CONTEXT", image: #imageLiteral(resourceName: "collectebus"), callback: {
+                self.changeContext()
+            })
+            items[0].append(changeContext)
+            
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
             items[0].append(givts)
             let givtsTaxOverviewAvailable: Setting?
@@ -156,6 +161,28 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         settingsTable.reloadData()
+    }
+    
+    private func changeContext() {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+        let nc = storyboard?.instantiateViewController(withIdentifier: "ContextNavigationController") as! BaseNavigationController
+        nc.setViewControllers([vc], animated: true)
+        
+        //pass callback when done setting context
+        nc.transitioningDelegate = self.slideFromRightAnimation
+        vc.completion = { context in
+            DispatchQueue.main.async {
+                self.navigationManager.setContextType(type: context)
+                self.dismiss(animated: true, completion: nil)
+            }
+    
+        }
+        DispatchQueue.main.async {
+            self.present(nc, animated: true) {
+                self.hideLeftView(self)
+            }
+        }
+        
     }
     
     private func changePersonalInfo() {

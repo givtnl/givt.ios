@@ -12,8 +12,6 @@ import LGSideMenuController
 
 class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
     
-    private var navigationManager: NavigationManager = NavigationManager.shared
-    
     func willShowLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
         UIApplication.shared.statusBarStyle = .default
         if let vc = UIApplication.shared.keyWindow?.rootViewController?.childViewControllers.first as? SettingsViewController {

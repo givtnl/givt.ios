@@ -30,7 +30,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let organisation = names[sections[indexPath.section].index + indexPath.row]
         let nameSpace = nameSpaces[sections[indexPath.section].index + indexPath.row]
-        var cell = tableView.dequeueReusableCell(withIdentifier: "ManualGivingOrganisation", for: indexPath) as! ManualGivingOrganisation
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ManualGivingOrganisation", for: indexPath) as! ManualGivingOrganisation
         cell.organisationLabel.text = organisation
         cell.nameSpace = nameSpace
         cell.toggleOff()
@@ -74,7 +74,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         prevPos = nil
-        if var cell = tableView.cellForRow(at: indexPath) as? ManualGivingOrganisation {
+        if let cell = tableView.cellForRow(at: indexPath) as? ManualGivingOrganisation {
             cell.toggleOff()
         }
         btnGive.isEnabled = false
