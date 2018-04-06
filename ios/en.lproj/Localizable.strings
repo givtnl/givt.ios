@@ -3,7 +3,7 @@
 "Amount" = "Choose amount";
 
 /*"Bepaal je geeflimiet" ; bij registratie van het geeflimiet*/
-"AmountLimit" = "Determine the maximum amount of your Givt.";
+"AmountLimit" = "Determine the maximum amount of your Givt";
 
 /*Algemene "Annuleren" knop*/
 "Cancel" = "Cancel";
@@ -265,7 +265,7 @@
 "FAQantwoord4" = "More and more churches\nYou can use Givt in all churches and all charities that are registered with us. More churches are joining every week, you can see the latest overview at www.givtapp.net/waar-givt-gebruiken/  \n\nNot registered yet? \nIf you as a church or organisation are not yet affiliated with Givt, please contact us at +31 320 320 115 or info@givtapp.net.";
 
 /*Antwoord op FAQ vraag5*/
-"FAQantwoord5" = "SlimPay\nWhen installing Givt, the user gives the app authorisation to debit their account. The transactions are handled by Slimpay - a bank that specialises in the handling of these permissions. \n\nRevocable afterwards\nNo transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt B.V. Since these transactions are revocable, it is completely safe and immune to fraud.";
+"FAQantwoord5" = "SlimPay\nWhen installing Givt, the user gives the app authorisation to debit their account. The transactions are handled by Slimpay - a bank that specialises in the handling of these permissions. \n\nRevertible afterwards\nNo transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt B.V. Since these transactions are revertible, it is completely safe and immune to fraud.";
 
 /*donations/ gifts?*/
 /*Antwoord op FAQ vraag6*/
@@ -307,7 +307,7 @@
 
 /*you'd -> you?*/
 /*SlimPay informatie onder het Givy icoon*/
-"SlimPayInformationPart2" = "That's why we ask you this one time to sign the SlimPay eMandate.\n\nSince we're working with mandates, you have the option to revoke your donation if you should wish to do so.";
+"SlimPayInformationPart2" = "That's why we ask you this one time to sign the SlimPay eMandate.\n\nSince we're working with mandates, you have the option to revert your donation if you should wish to do so.";
 "SlimPayInfoDetail" = "Givt works together with SlimPay for executing the transactions. SlimPay is specialised in handling mandates and automatic money transfers on digital platforms. SlimPay executes these orders for Givt at the lowest rates on this market and at a high speed.\n\nSlimPay is an ideal partner for Givt because they make giving without cash very easy and safe. As a payment company, they are supervised by the Nederlandsche Bank and other European national banks.\n\nThe money will be collected in a SlimPay account. \nGivt will ensure that the money is distributed correctly.";
 "SlimPayInfoDetailTitle" = "What is SlimPay?";
 "ContinueRegistration" = "Your user account was already\ncreated, but it was impossible\nto finalise the registration.\n\nWe would love for you to use\nGivt, so we ask you to login\nto complete the registration.";
@@ -348,7 +348,7 @@
 "LoginSuccess" = "Have fun giving!";
 
 /*Tekst op de giften historiek wanneer er geen gifts gegeven zijn.*/
-"HistoryIsEmpty" = "This is where you'll find information about your donations, but first you'll need to start giving.";
+"HistoryIsEmpty" = "This is where you'll find information about your donations, but first you'll need to start giving";
 
 /*Errormelding bij een te lang e-mailadres*/
 "ErrorEmailTooLong" = "Sorry, your e-mail address is too long.";
@@ -385,11 +385,11 @@
 "OfflineGegevenGivtMessage" = "Thank you for your Givt!\n\nWhen there's a good connection with the Givt-server, your Givt will be processed.\nYou can check the status in the overview.";
 "OfflineGegevenGivtMessageWithOrg" = "Thank you for your Givt to {0}!\n\nWhen there's a good connection with the Givt-server, your Givt will be processed.\nYou can check the status in the overview.";
 "Pincode" = "Passcode";
-"PincodeTitleChangingPin" = "This is where you change the use of your passcode.";
+"PincodeTitleChangingPin" = "This is where you change the use of your passcode";
 "PincodeChangePinMenu" = "Change passcode";
 "PincodeSetPinTitle" = "Set passcode";
-"PincodeSetPinMessage" = "Set your passcode here.";
-"PincodeEnterPinAgain" = "Re-enter your passcode.";
+"PincodeSetPinMessage" = "Set your passcode here";
+"PincodeEnterPinAgain" = "Re-enter your passcode";
 "PincodeDoNotMatch" = "Codes do not match.\nPlease try again.";
 "PincodeSuccessfullTitle" = "Got it!";
 "PincodeSuccessfullMessage" = "Your passcode has been successfully saved.";
@@ -513,7 +513,7 @@
 "OpenSettings" = "Open settings";
 
 /*Vragen om het e-mailadres zodat je kan geven*/
-"NeedEmailToGive" = "We need some identification to allow you to give with Givt.";
+"NeedEmailToGive" = "We need some identification to allow you to give with Givt";
 
 /*knop Eerst geven*/
 "GiveFirst" = "Give first";
@@ -522,7 +522,7 @@
 "Go" = "Go";
 "NeedEmailToGiveSubtext" = "To be able to process your donations correctly, we need your e-mail address.";
 "CompleteRegistrationAfterGiveFirst" = "Thanks for giving with Givt!\n\nWe would love for you to keep \nusing Givt, so we ask you \nto complete the registration.";
-"TermsUpdate" = "The terms and conditions have been updated.";
+"TermsUpdate" = "The terms and conditions have been updated";
 "AgreeToUpdateTerms" = "You agree to the new terms and conditions if you continue.";
 "IWantToReadIt" = "I want to read it";
 "TermsTextVersion" = "1.7";
@@ -538,7 +538,7 @@
 "AddCollectConfirm" = "Do you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
 "FAQantwoord0" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +31 320 320 115 or by sending an e-mail to support@givtapp.net.";
-"PersonalPageHeader" = "Change your IBAN here.";
+"PersonalPageHeader" = "Change your IBAN here";
 "PersonalPageSubHeader" = "Other account data can be changed by sending an e-mail to support@givtapp.net.";
 "TitlePersonalInfo" = "Personal information";
 "PersonalInfoTempUser" = "Hi there, fast giver! You're using a temporary account. We have not received your personal details yet.";
@@ -571,7 +571,7 @@
 "FirstUseLabelTitle2" = "Select an amount and give";
 "FirstUseLabelTitle3" = "Use Givt for all kinds of collections";
 "YesSuccess" = "Yes, success!";
-"ToGiveWeNeedYourEmailAddress" = "To start giving with Givt, \nwe just need your e-mail address.";
+"ToGiveWeNeedYourEmailAddress" = "To start giving with Givt, \nwe just need your e-mail address";
 "WeWontSendAnySpam" = "(we won't send any spam, promise)";
 
 /*In app begeleiding naar 'Anders geven?'*/
@@ -604,5 +604,11 @@
 "TransactionCancelled" = "The donation to {0} will be cancelled.";
 "Cancelled" = "Cancelled";
 "Undo" = "Undo";
-"FAQVraag16" = "Can I revoke donations?";
-"FAQAntwoord16" = "Yes you can revoke your donations. No transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt B.V. Since these transactions are revocable, it is completely safe and immune to fraud.\nIn the first 15 minutes after the donation was done in the app, it is possible to cancel the donation by going to the donation overview and swipe the donation you want to cancel to the left. Cancelling is free of charge when doing it this way.";
+"FAQVraag16" = "Can I revert donations?";
+"FAQAntwoord16" = "Yes, you can revert your donations. No transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt B.V. Since these transactions are revertible, it is completely safe and immune to fraud.\n\nIn the first 15 minutes after the donation was done in the app, it is possible to cancel the donation by going to the donation overview and swipe the donation you want to cancel to the left. Cancelling is free of charge when doing it this way.";
+
+/*Staat je vraag er niet tussen? (FAQ)*/
+"FAQvraag17" = "Can't find your question here?";
+
+/*antwoord 'Staat je vraag er niet tussen?'*/
+"FAQantwoord17" = "Send us a message from within the app (\"About Givt / Contact\"), an e-mail at support@givtapp.net or give us a call at +31 320 320 115.";

@@ -365,7 +365,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "LoginSuccess" = "Veel geefplezier!";
 
 /*Tekst op de giften historiek wanneer er geen gifts gegeven zijn.*/
-"HistoryIsEmpty" = "Hier komen jouw giften te staan, maar het geld moet eerst nog rollen.";
+"HistoryIsEmpty" = "Hier komen jouw giften te staan, maar het geld moet eerst nog rollen";
 
 /*Errormelding bij een te lang e-mailadres*/
 "ErrorEmailTooLong" = "Sorry, dit e-mailadres is te lang.";
@@ -402,11 +402,11 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OfflineGegevenGivtMessage" = "Bedankt voor je Givt!\n\nZodra er een goede verbinding is met de Givt-server, wordt je Givt verwerkt.\nKijk voor de status in je overzicht.";
 "OfflineGegevenGivtMessageWithOrg" = "Bedankt voor je Givt!\n\nZodra er een goede verbinding is met de Givt-server, wordt je Givt aan {0} verwerkt.\nKijk voor de status in je overzicht.";
 "Pincode" = "Toegangscode";
-"PincodeTitleChangingPin" = "Hier beheer je het gebruik van je toegangscode.";
+"PincodeTitleChangingPin" = "Hier beheer je het gebruik van je toegangscode";
 "PincodeChangePinMenu" = "Wijzig toegangscode";
 "PincodeSetPinTitle" = "Toegangscode instellen";
-"PincodeSetPinMessage" = "Stel hier je toegangscode in.";
-"PincodeEnterPinAgain" = "Voer je toegangscode nogmaals in.";
+"PincodeSetPinMessage" = "Stel hier je toegangscode in";
+"PincodeEnterPinAgain" = "Voer je toegangscode nogmaals in";
 "PincodeDoNotMatch" = "Codes zijn niet hetzelfde.\nProbeer het opnieuw.";
 "PincodeSuccessfullTitle" = "Gelukt!";
 "PincodeSuccessfullMessage" = "Je toegangscode is succesvol opgeslagen.";
@@ -530,7 +530,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OpenSettings" = "Open instellingen";
 
 /*Vragen om het e-mailadres zodat je kan geven*/
-"NeedEmailToGive" = "Om te geven met Givt hebben we iets van identificatie nodig.";
+"NeedEmailToGive" = "Om te geven met Givt hebben we iets van identificatie nodig";
 
 /*knop Eerst geven*/
 "GiveFirst" = "Eerst geven";
@@ -539,7 +539,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Go" = "Verder";
 "NeedEmailToGiveSubtext" = "Om je giften goed af te kunnen handelen, hebben we je e-mailadres nodig.";
 "CompleteRegistrationAfterGiveFirst" = "Leuk dat je hebt gegeven met Givt!\n\nWe willen graag dat je Givt verder\nkunt gebruiken, dus vragen we je om\nje registratie compleet te maken.";
-"TermsUpdate" = "De algemene voorwaarden zijn bijgewerkt.";
+"TermsUpdate" = "De algemene voorwaarden zijn bijgewerkt";
 "AgreeToUpdateTerms" = "Bij het doorgaan ga je akkoord met de nieuwe voorwaarden.";
 "IWantToReadIt" = "Ik wil het lezen";
 "TermsTextVersion" = "1.7";
@@ -555,7 +555,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AddCollectConfirm" = "Wil je een tweede collecte toevoegen?";
 "FAQvraag0" = "Feedback of vragen?";
 "FAQantwoord0" = "Je kunt ons een bericht sturen door in het app-menu naar \"Over Givt / Contact\" te gaan en daar je vraag te stellen. We zijn natuurlijk ook bereikbaar via +31 320 320 115 of support@givtapp.net.";
-"PersonalPageHeader" = "Pas je IBAN hier aan.";
+"PersonalPageHeader" = "Pas je IBAN hier aan";
 "PersonalPageSubHeader" = "Andere Givt-gegevens kunnen worden aangepast door een e-mail te sturen naar support@givtapp.net.";
 "TitlePersonalInfo" = "Mijn gegevens";
 "PersonalInfoTempUser" = "Hé, snelle gever! Je gebruikt een tijdelijk account. We hebben je gegevens dus nog niet ontvangen.";
@@ -590,7 +590,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FirstUseLabelTitle2" = "Kies een bedrag en geef";
 "FirstUseLabelTitle3" = "Gebruik Givt voor elke collecte";
 "YesSuccess" = "Yes, gelukt!";
-"ToGiveWeNeedYourEmailAddress" = "Om te geven met Givt is\nalvast je e-mailadres nodig.";
+"ToGiveWeNeedYourEmailAddress" = "Om te geven met Givt is\nalvast je e-mailadres nodig";
 "WeWontSendAnySpam" = "(we sturen geen spam, beloofd)";
 
 /*In app begeleiding naar 'Anders geven?'*/
@@ -624,4 +624,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Cancelled" = "Geannuleerd";
 "Undo" = "Ongedaan maken";
 "FAQVraag16" = "Kan ik mijn giften herroepen?";
-"FAQAntwoord16" = "Ja, je kan je giften herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Op je bankafschrift zal je zien dat je gift afgeschreven is door Givt B.V. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen.\nIn het eerste kwartier na de gift kan je ook via het giftenoverzicht een gift annuleren door een gift naar links te swipen (vegen). Dit is enkel mogelijk in de eerste 15 minuten na het geven; deze manier van herroepen (annuleren) is kosteloos.";
+"FAQAntwoord16" = "Ja, je kan je giften herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Op je bankafschrift zal je zien dat je gift afgeschreven is door Givt B.V. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen.\n\nIn het eerste kwartier na de gift kan je ook via het giftenoverzicht een gift annuleren door een gift naar links te swipen (vegen). Dit is enkel mogelijk in de eerste 15 minuten na het geven; deze manier van herroepen (annuleren) is kosteloos.";
+
+/*Staat je vraag er niet tussen? (FAQ)*/
+"FAQvraag17" = "Staat je vraag er niet tussen?";
+
+/*antwoord 'Staat je vraag er niet tussen?'*/
+"FAQantwoord17" = "Stuur ons dan een bericht via de app (\"Over Givt / Contact\" in het menu), via mail naar support@givtapp.net of bel ons op +31 320 320 115.";
