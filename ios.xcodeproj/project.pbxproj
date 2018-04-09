@@ -92,7 +92,6 @@
 		D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */; };
 		D7B715501FD0529D00666262 /* Personal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7B7154F1FD0529D00666262 /* Personal.storyboard */; };
 		D7BB5DA81FD59B4700D12E62 /* InfraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */; };
-		D7BC58D420776231008C9497 /* ContextOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC58D320776230008C9497 /* ContextOverlayViewController.swift */; };
 		D7BC58D620776361008C9497 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC58D520776361008C9497 /* Context.swift */; };
 		D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */; };
 		D7C5120E20761DC7002B1618 /* ChooseContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */; };
@@ -247,7 +246,6 @@
 		D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		D7B7154F1FD0529D00666262 /* Personal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Personal.storyboard; sourceTree = "<group>"; };
 		D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraManager.swift; sourceTree = "<group>"; };
-		D7BC58D320776230008C9497 /* ContextOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextOverlayViewController.swift; sourceTree = "<group>"; };
 		D7BC58D520776361008C9497 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextViewController.swift; sourceTree = "<group>"; };
 		D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextTableViewCell.swift; sourceTree = "<group>"; };
@@ -597,7 +595,6 @@
 				D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */,
 				D782E68E20064A680086907E /* SettingsViewController.swift */,
 				D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */,
-				D7BC58D320776230008C9497 /* ContextOverlayViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -878,7 +875,6 @@
 				D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */,
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
-				D7BC58D420776231008C9497 /* ContextOverlayViewController.swift in Sources */,
 				D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */,
 				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,

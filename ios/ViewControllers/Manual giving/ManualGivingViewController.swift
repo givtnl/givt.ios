@@ -37,7 +37,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navBar.title = NSLocalizedString("GiveDifferently", comment: "")
+        navBar.title = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
         stichtingen.text = NSLocalizedString("Stichtingen", comment: "")
         kerken.text = NSLocalizedString("Churches", comment: "")
         acties.text = NSLocalizedString("Acties", comment: "")

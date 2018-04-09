@@ -12,7 +12,11 @@ import UserNotifications
 class NavigationManager {
     static let shared = NavigationManager()
     private var loginManager: LoginManager = LoginManager.shared
-    private var givtService: GivtService = GivtService.shared
+    private var givtService: GivtService {
+        get {
+            return GivtService.shared
+        }
+    }
     private var appSettings = UserDefaults.standard
     private var logService = LogService.shared
     private let _appServices = AppServices.shared
@@ -54,44 +58,12 @@ class NavigationManager {
                     }))
                     context.present(noInternetAlert, animated: true, completion: nil)
                 }
-                
-                
-                
+
             }))
             context.present(currentAlert!, animated: false, completion: {})
         }
     }
     
-    public func showContextSituation(_ nc: UINavigationController, tempContext: ContextType? = nil) {
-        let sb = UIStoryboard(name:"Main", bundle:nil)
-        
-        let useContext = tempContext == nil ? currentContextType : tempContext
-        if let type = useContext {
-            switch type {
-            case .none:
-                let vc = sb.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-                nc.show(vc, sender: nil)
-            case .collectionDevice:
-                let vc = sb.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
-                nc.show(vc, sender: nil)
-            case .qr:
-                let vc = sb.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
-                nc.show(vc, sender: nil)
-            case .manually:
-                let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
-                nc.show(vc, sender: nil)
-            }
-        } else {
-            //no context set
-            let vc = sb.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-            nc.show(vc, sender: nil)
-        }
-    }
-    
-    public func setContextType(type: ContextType) {
-        currentContextType = type
-    }
-
     public func finishRegistration(_ context: UIViewController) {
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         vc.transitioningDelegate = slideFromRightAnimation

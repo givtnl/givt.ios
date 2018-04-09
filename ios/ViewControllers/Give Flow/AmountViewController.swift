@@ -143,6 +143,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
             self._cameFromFAQ = true
         }
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgb: 0x2E2957), NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!]
     }
     
     private var _cameFromFAQ: Bool = false
@@ -297,7 +299,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
         if givtService.bluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
             givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
-            navigiationManager.showContextSituation(self.navigationController!)
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+            self.navigationController?.pushViewController(vc, animated: true)
         } else {
             showBluetoothMessage()
         }

@@ -208,7 +208,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         searchBar.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
         selectedTag = passSelectedTag
-        navBar.title = NSLocalizedString("GiveDifferently", comment: "")
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         addTap(kerken, 101)
         addTap(stichtingen, 100)
@@ -274,18 +273,21 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         churchWidth.constant = 50
         actiesWidth.constant = 50
         overigWidth.constant = 50
-        
+    
         var regExp = "c[0-9]|d[be]"
         switch(tag) {
         case 100:
             regExp = "d[0-9]" //stichtingen
             stichtingWidth.constant = 80
+            title = NSLocalizedString("Stichtingen", comment: "")
         case 101:
             regExp = "c[0-9]|d[be]" //churches
             churchWidth.constant = 80
+            title = NSLocalizedString("Churches", comment: "")
         case 102:
             regExp = "a[0-9]" //acties
             actiesWidth.constant = 80
+            title = NSLocalizedString("Acties", comment: "")
             //case 103: // overig
         //we have no other beacons :c
         default:

@@ -24,26 +24,4 @@ class CustomViewController: UINavigationController  {
         
     }
     
-    func changeContext() {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-        let nc = storyboard?.instantiateViewController(withIdentifier: "ContextNavigationController") as! BaseNavigationController
-        nc.setViewControllers([vc], animated: true)
-        
-        //pass callback when done setting context
-        nc.transitioningDelegate = self.slideAnimator
-        vc.completion = { context in
-            DispatchQueue.main.async {
-                self.setViewControllers([self.childViewControllers[0]], animated: false) //clear stack
-                NavigationManager.shared.showContextSituation(self, tempContext: context)
-                self.dismiss(animated: true, completion: nil)
-            }
-            
-        }
-        DispatchQueue.main.async {
-            self.present(nc, animated: true) {
-                
-            }
-        }
-    }
-    
 }

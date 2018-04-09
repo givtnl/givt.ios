@@ -137,11 +137,6 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
         self.navigationController?.popViewController(animated: true)
         
     }
-    
-    @IBAction func switchContext(_ sender: Any) {
-        let nvc = self.navigationController as! CustomViewController
-        nvc.changeContext()
-    }
     /*
     // MARK: - Navigation
 

@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 enum ContextType {
-    case none
     case collectionDevice
     case qr
     case manually
@@ -18,13 +17,11 @@ enum ContextType {
 
 class Context {
     var name: String
-    var explanation: String
     var type: ContextType
     var image: UIImage
     
-    init(name: String, explanation: String, type: ContextType, image: UIImage) {
+    init(name: String, type: ContextType, image: UIImage) {
         self.name = name
-        self.explanation = explanation
         self.type = type
         self.image = image
     }
