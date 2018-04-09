@@ -11,12 +11,12 @@ import SVProgressHUD
 
 class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     let subtiel : [NSAttributedStringKey: Any] = [
-        NSAttributedStringKey.font : UIFont(name: "Avenir-Light", size: 17),
+        NSAttributedStringKey.font : UIFont(name: "Avenir-Light", size: 17)!,
         NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1),
         NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleNone.rawValue]
     
     let focus : [NSAttributedStringKey: Any] = [
-        NSAttributedStringKey.font : UIFont(name: "Avenir-Medium", size: 18),
+        NSAttributedStringKey.font : UIFont(name: "Avenir-Medium", size: 18)!,
         NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),
         NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleNone.rawValue]
     
@@ -87,7 +87,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         
         scroll.addGestureRecognizer(tapGesture)
         
-        var attributedString = NSMutableAttributedString(string: NSLocalizedString("AlreadyAnAccount", comment: "") + " ", attributes: subtiel)
+        let attributedString = NSMutableAttributedString(string: NSLocalizedString("AlreadyAnAccount", comment: "") + " ", attributes: subtiel)
         attributedString.append(NSMutableAttributedString(string: NSLocalizedString("Login", comment: ""), attributes: focus))
         
         loginButton.setAttributedTitle(attributedString, for: UIControlState.normal)

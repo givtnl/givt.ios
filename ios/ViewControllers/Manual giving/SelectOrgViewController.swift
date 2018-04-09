@@ -332,7 +332,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func filterList() {
         if let searchText = searchBar.text, searchText.count > 0 {
             filteredList = originalList?.filter({ (organisation) -> Bool in
-                if let org = organisation["OrgName"] as? String {
+                if let org = organisation["OrgName"] {
                     return org.lowercased().contains(searchText.lowercased())
                 } else {
                     return false

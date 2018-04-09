@@ -271,7 +271,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
 
     
     func showOverlay() {
-        if let window = UIApplication.shared.keyWindow {
+        if UIApplication.shared.keyWindow != nil {
             self.balloon = Balloon(text: NSLocalizedString("CheckHereForYearOverview", comment: ""))
             self.view.addSubview(self.balloon!)
             
@@ -489,24 +489,24 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                 self.models.forEach({ (tx) in
                     // check if transaction with current date exists and is to same organsation
                     
-                    if let oDate = oldDate, let oOrgName = oldOrgName, let oStatus = oldStatus {
-                        var existingTx = newTransactions.filter({ (newTx) -> Bool in
+                    if let _ = oldDate, let _ = oldOrgName, let _ = oldStatus {
+                        let existingTx = newTransactions.filter({ (newTx) -> Bool in
                             newTx.orgName == tx.orgName && newTx.timestamp.toString("yyyy-MM-dd'T'HH:mm:ssZ") == tx.timestamp.toString("yyyy-MM-dd'T'HH:mm:ssZ") && tx.status == newTx.status
                         })
                         
                         if existingTx.count > 0 {
-                            existingTx.first!.collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                            existingTx.first!.collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
                         } else {
                             // does not exist
                             var collections = [Collecte]()
-                            collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                            collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
                             let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
                             newTransactions.append(newTx)
                         }
                     } else {
                         // first time
                         var collections = [Collecte]()
-                        collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                        collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
                         let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
                         newTransactions.append(newTx)
                     }

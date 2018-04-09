@@ -745,10 +745,10 @@ Kijk voor de status in je overzicht.</string>
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="80"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kEF-Oq-6FP">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="80"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="4tW-vn-z2C" userLabel="lblAmount">
-                                                                                <rect key="frame" x="16" y="25" width="120" height="52"/>
+                                                                                <rect key="frame" x="16" y="25" width="20" height="52"/>
                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="36"/>
                                                                                 <color key="textColor" red="0.82352941176470584" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -764,14 +764,14 @@ Kijk voor de status in je overzicht.</string>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ora-dU-Rpf" userLabel="GreyLine">
-                                                                                <rect key="frame" x="0.0" y="78" width="150" height="4"/>
+                                                                                <rect key="frame" x="0.0" y="78" width="50" height="4"/>
                                                                                 <color key="backgroundColor" red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="4" id="lHx-FA-9sR"/>
                                                                                 </constraints>
                                                                             </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALL-fv-AUx">
-                                                                                <rect key="frame" x="0.0" y="77" width="150" height="6"/>
+                                                                                <rect key="frame" x="0.0" y="77" width="50" height="6"/>
                                                                                 <color key="backgroundColor" red="0.25490196078431371" green="0.78823529411764703" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="6" id="Lj7-k6-30c"/>
@@ -800,30 +800,30 @@ Kijk voor de status in je overzicht.</string>
                                                                             <constraint firstItem="YZV-SR-a23" firstAttribute="leading" secondItem="kEF-Oq-6FP" secondAttribute="leading" constant="5" id="xHv-xr-2Vo"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDP-AN-Lvz">
-                                                                        <rect key="frame" x="-132.66666666666666" y="0.0" width="30" height="80"/>
+                                                                    <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LDP-AN-Lvz">
+                                                                        <rect key="frame" x="50" y="0.0" width="50" height="80"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="V83-OS-ikq" userLabel="lblAmount">
-                                                                                <rect key="frame" x="16" y="25" width="0.0" height="52"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="V83-OS-ikq" userLabel="lblAmount">
+                                                                                <rect key="frame" x="16" y="25" width="20" height="52"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="36"/>
                                                                                 <color key="textColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eFY-5F-x4t" userLabel="GreyLine">
-                                                                                <rect key="frame" x="0.0" y="78" width="30" height="4"/>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFY-5F-x4t" userLabel="GreyLine">
+                                                                                <rect key="frame" x="0.0" y="78" width="50" height="4"/>
                                                                                 <color key="backgroundColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="4" id="ZQh-9Q-fIU"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eOp-vI-VLB">
-                                                                                <rect key="frame" x="0.0" y="77" width="30" height="6"/>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOp-vI-VLB">
+                                                                                <rect key="frame" x="0.0" y="77" width="50" height="6"/>
                                                                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="6" id="zn7-Nc-AY5"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVs-FP-NJa">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVs-FP-NJa">
                                                                                 <rect key="frame" x="5" y="37" width="9" height="40"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="9" id="r1c-an-rFQ"/>
@@ -851,30 +851,30 @@ Kijk voor de status in je overzicht.</string>
                                                                             <constraint firstItem="eFY-5F-x4t" firstAttribute="trailing" secondItem="eOp-vI-VLB" secondAttribute="trailing" id="zSX-41-SBF"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <view hidden="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1d-tm-JK5">
-                                                                        <rect key="frame" x="-132.66666666666666" y="0.0" width="30" height="80"/>
+                                                                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F1d-tm-JK5">
+                                                                        <rect key="frame" x="100" y="0.0" width="50" height="80"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-jh-60h" userLabel="lblAmount">
-                                                                                <rect key="frame" x="16" y="25" width="45" height="52"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="qT7-jh-60h" userLabel="lblAmount">
+                                                                                <rect key="frame" x="16" y="25" width="20" height="52"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="36"/>
                                                                                 <color key="textColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6fM-B6-llZ" userLabel="GreyLine">
-                                                                                <rect key="frame" x="0.0" y="78" width="75" height="4"/>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fM-B6-llZ" userLabel="GreyLine">
+                                                                                <rect key="frame" x="0.0" y="78" width="50" height="4"/>
                                                                                 <color key="backgroundColor" red="0.80784313730000001" green="0.80784313730000001" blue="0.80784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="4" id="faU-tc-UcQ"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BVO-JW-Ah6">
-                                                                                <rect key="frame" x="0.0" y="77" width="75" height="6"/>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BVO-JW-Ah6">
+                                                                                <rect key="frame" x="0.0" y="77" width="50" height="6"/>
                                                                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="6" id="Mwm-T4-h9R"/>
                                                                                 </constraints>
                                                                             </view>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkL-dP-weS">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkL-dP-weS">
                                                                                 <rect key="frame" x="5" y="37" width="9" height="40"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="9.3300000000000001" id="0qF-qW-tBR"/>
@@ -1422,7 +1422,7 @@ Kijk voor de status in je overzicht.</string>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title=" " id="eIV-KD-Dxj">
-                        <barButtonItem key="leftBarButtonItem" title="Geefsituatie" image="backbtn" width="50" id="9Hx-Ie-oQy">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="9Hx-Ie-oQy">
                             <connections>
                                 <action selector="goBack:" destination="rTV-jI-hj3" id="SZS-Ic-iU3"/>
                             </connections>
@@ -2254,7 +2254,7 @@ Kijk voor de status in je overzicht.</string>
                                     </connections>
                                 </button>
                             </barButtonItem>
-                            <barButtonItem width="44" style="plain" id="VYa-Bo-Z6R">
+                            <barButtonItem width="44" id="VYa-Bo-Z6R">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zo0-RD-CRQ">
                                     <rect key="frame" x="322" y="0.0" width="44" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2500,7 +2500,7 @@ Kijk voor de status in je overzicht.</string>
                         <viewLayoutGuide key="safeArea" id="Ln1-Bo-aah"/>
                     </view>
                     <navigationItem key="navigationItem" title="Kies hier hoe je wil geven" id="Y7e-Us-ZPY">
-                        <barButtonItem key="leftBarButtonItem" title=" " image="backbtn" width="50" id="7f6-1i-y0U">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="7f6-1i-y0U">
                             <connections>
                                 <action selector="goBack:" destination="leA-Ek-M9d" id="Kc5-1F-IK4"/>
                             </connections>
@@ -2514,20 +2514,6 @@ Kijk voor de status in je overzicht.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z7x-jb-VlY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2186.9565217391305" y="-893.47826086956525"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="p2y-LT-SKa">
-            <objects>
-                <viewController id="Mkq-Va-H9C" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="he4-5v-hxL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="gvs-h2-7sl"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DTy-p1-I1H" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
         </scene>
         <!--Base Navigation Controller-->
         <scene sceneID="XTX-JE-SAe">

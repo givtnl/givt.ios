@@ -70,7 +70,7 @@ class HistoryTableViewCell: SwipeTableViewCell {
         }
         
         collects.forEach { (collecte) in
-            var hsv = UIStackView()
+            let hsv = UIStackView()
             hsv.axis = .horizontal
             hsv.distribution = .fillProportionally
             hsv.alignment = .top
