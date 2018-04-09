@@ -99,11 +99,11 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                                 self.givyContainer.isHidden = false
                             }
                         case .expectationFailed:
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Het annuleren van je gift is niet gelukt omdat dit langer dan 15 minuten geleden is.", preferredStyle: UIAlertControllerStyle.alert)
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString(" CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         default:
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         }
@@ -112,7 +112,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             self.sortedArray[indexPath.section].value.insert(tx, at: indexPath.row)
                             tableView.reloadData()
                             if AppServices.shared.connectedToNetwork() {
-                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                 self.present(alert, animated: true, completion: nil)
                             } else {
@@ -127,7 +127,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
 
             } catch {
                 self.logService.error(message: "Could not JSONSerialize transaction IDS")
-                let alert = UIAlertController(title: "Er gaat iets mis", message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
