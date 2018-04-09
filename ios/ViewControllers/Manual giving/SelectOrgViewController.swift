@@ -30,7 +30,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let organisation = names[sections[indexPath.section].index + indexPath.row]
         let nameSpace = nameSpaces[sections[indexPath.section].index + indexPath.row]
-        var cell = tableView.dequeueReusableCell(withIdentifier: "ManualGivingOrganisation", for: indexPath) as! ManualGivingOrganisation
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ManualGivingOrganisation", for: indexPath) as! ManualGivingOrganisation
         cell.organisationLabel.text = organisation
         cell.nameSpace = nameSpace
         cell.toggleOff()
@@ -74,7 +74,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         prevPos = nil
-        if var cell = tableView.cellForRow(at: indexPath) as? ManualGivingOrganisation {
+        if let cell = tableView.cellForRow(at: indexPath) as? ManualGivingOrganisation {
             cell.toggleOff()
         }
         btnGive.isEnabled = false
@@ -208,7 +208,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         searchBar.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
         selectedTag = passSelectedTag
-        navBar.title = NSLocalizedString("GiveDifferently", comment: "")
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         addTap(kerken, 101)
         addTap(stichtingen, 100)
@@ -274,18 +273,21 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         churchWidth.constant = 50
         actiesWidth.constant = 50
         overigWidth.constant = 50
-        
+    
         var regExp = "c[0-9]|d[be]"
         switch(tag) {
         case 100:
             regExp = "d[0-9]" //stichtingen
             stichtingWidth.constant = 80
+            title = NSLocalizedString("Stichtingen", comment: "")
         case 101:
             regExp = "c[0-9]|d[be]" //churches
             churchWidth.constant = 80
+            title = NSLocalizedString("Churches", comment: "")
         case 102:
             regExp = "a[0-9]" //acties
             actiesWidth.constant = 80
+            title = NSLocalizedString("Acties", comment: "")
             //case 103: // overig
         //we have no other beacons :c
         default:
@@ -330,7 +332,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func filterList() {
         if let searchText = searchBar.text, searchText.count > 0 {
             filteredList = originalList?.filter({ (organisation) -> Bool in
-                if let org = organisation["OrgName"] as? String {
+                if let org = organisation["OrgName"] {
                     return org.lowercased().contains(searchText.lowercased())
                 } else {
                     return false

@@ -49,7 +49,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     }
     
     func getOrgName(orgNameSpace: String) -> String? {
-        var orgName = orgBeaconList.filter { (organisation) -> Bool in
+        let orgName = orgBeaconList.filter { (organisation) -> Bool in
             return organisation["EddyNameSpace"] as? String == orgNameSpace
         }
         return orgName.first?["OrgName"] as? String

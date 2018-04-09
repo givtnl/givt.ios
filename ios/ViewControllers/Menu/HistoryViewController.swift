@@ -99,11 +99,11 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                                 self.givyContainer.isHidden = false
                             }
                         case .expectationFailed:
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Het annuleren van je gift is niet gelukt omdat dit langer dan 15 minuten geleden is.", preferredStyle: UIAlertControllerStyle.alert)
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString(" CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         default:
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         }
@@ -112,7 +112,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             self.sortedArray[indexPath.section].value.insert(tx, at: indexPath.row)
                             tableView.reloadData()
                             if AppServices.shared.connectedToNetwork() {
-                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                 self.present(alert, animated: true, completion: nil)
                             } else {
@@ -127,7 +127,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
 
             } catch {
                 self.logService.error(message: "Could not JSONSerialize transaction IDS")
-                let alert = UIAlertController(title: "Er gaat iets mis", message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -203,7 +203,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderView")
         let header = cell as! TableSectionHeader
         header.titleLabel.text = title
-        header.amountLabel.text = fmt.string(from: total as! NSNumber)
+        header.amountLabel.text = fmt.string(from: total as NSNumber)
         
         return cell
     }
@@ -271,7 +271,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
 
     
     func showOverlay() {
-        if let window = UIApplication.shared.keyWindow {
+        if UIApplication.shared.keyWindow != nil {
             self.balloon = Balloon(text: NSLocalizedString("CheckHereForYearOverview", comment: ""))
             self.view.addSubview(self.balloon!)
             
@@ -489,24 +489,24 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                 self.models.forEach({ (tx) in
                     // check if transaction with current date exists and is to same organsation
                     
-                    if let oDate = oldDate, let oOrgName = oldOrgName, let oStatus = oldStatus {
-                        var existingTx = newTransactions.filter({ (newTx) -> Bool in
+                    if let _ = oldDate, let _ = oldOrgName, let _ = oldStatus {
+                        let existingTx = newTransactions.filter({ (newTx) -> Bool in
                             newTx.orgName == tx.orgName && newTx.timestamp.toString("yyyy-MM-dd'T'HH:mm:ssZ") == tx.timestamp.toString("yyyy-MM-dd'T'HH:mm:ssZ") && tx.status == newTx.status
                         })
                         
                         if existingTx.count > 0 {
-                            existingTx.first!.collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                            existingTx.first!.collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
                         } else {
                             // does not exist
                             var collections = [Collecte]()
-                            collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                            collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
                             let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
                             newTransactions.append(newTx)
                         }
                     } else {
                         // first time
                         var collections = [Collecte]()
-                        collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                        collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
                         let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
                         newTransactions.append(newTx)
                     }

@@ -668,7 +668,7 @@ een gift te herroepen.</string>
                         <viewLayoutGuide key="safeArea" id="t2K-nP-9uy"/>
                     </view>
                     <navigationItem key="navigationItem" id="rWf-6Z-UoV">
-                        <barButtonItem key="leftBarButtonItem" width="50" style="plain" id="L4C-Ma-NFk">
+                        <barButtonItem key="leftBarButtonItem" width="50" id="L4C-Ma-NFk">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="36e-cB-nZA">
                                 <rect key="frame" x="16" y="0.0" width="50" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

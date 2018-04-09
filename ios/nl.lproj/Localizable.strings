@@ -522,8 +522,8 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SignMandateLater" = "Je hebt gekozen om het mandaat later aan te vragen, dit zal gebeuren bij de volgende keer dat je wil geven.";
 "Suggestie" = "Geven aan:";
 "CodeCanNotBeScanned" = "Helaas! Deze code kan niet gebruikt worden met de Givt-app.";
-"GiveDifferentScan" = "Code scannen";
-"GiveDiffQRText" = "Nu goed mikken! Scan de QR-code en geef.";
+"GiveDifferentScan" = "QR-code scannen";
+"GiveDiffQRText" = "Nu goed mikken!";
 "QRCodeOrganisationNotFound" = "Het scannen is gelukt, maar de organisatie is nog even verdwaald. Probeer het later opnieuw.";
 "NoCameraAccess" = "Om de code te scannen heeft Givt je camera nodig. Ga naar de app-instellingen op je smartphone om Givt toegang te verlenen.";
 "NSCameraUsageDescription" = "We willen graag de camera gebruiken om de code te scannen.";
@@ -631,3 +631,8 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*antwoord 'Staat je vraag er niet tussen?'*/
 "FAQantwoord17" = "Stuur ons dan een bericht via de app (\"Over Givt / Contact\" in het menu), via mail naar support@givtapp.net of bel ons op +31 320 320 115.";
+"SelectContextCollect" = "Geef in de kerk, aan de deur of op straat";
+"GiveContextQR" = "Geef door middel van een QR-code";
+"SelectContextList" = "Kies een doel uit de lijst";
+"SelectContext" = "Kies hier hoe je wil geven";
+"ChooseWhoYouWantToGiveTo" = "Kies aan wie je wil geven";

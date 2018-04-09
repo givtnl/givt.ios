@@ -612,3 +612,8 @@
 
 /*antwoord 'Staat je vraag er niet tussen?'*/
 "FAQantwoord17" = "Send us a message from within the app (\"About Givt / Contact\"), an e-mail at support@givtapp.net or give us a call at +31 320 320 115.";
+"SelectContextCollect" = "Give in the church, at the door or on the street";
+"GiveContextQR" = "Give by scanning a QR-code";
+"SelectContextList" = "Select a goal from the list";
+"SelectContext" = "Choose the way you give";
+"ChooseWhoYouWantToGiveTo" = "Choose who you want to give to";
