@@ -296,14 +296,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             }
         }
         
-    
-        if givtService.bluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
-            givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
-            let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            showBluetoothMessage()
-        }
+
+        givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+        self.navigationController?.pushViewController(vc, animated: true)
      }
     
     func displayAmountLimitExceeded() {
@@ -325,27 +321,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             NavigationManager.shared.pushWithLogin(vc, context: self)
         }))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    func showBluetoothMessage() {
-        let alert = UIAlertController(
-            title: NSLocalizedString("SomethingWentWrong2", comment: ""),
-            message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
-            preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
-            //UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
-            let url = URL(string: "App-Prefs:root=Bluetooth") //for bluetooth setting
-            let app = UIApplication.shared
-            if #available(iOS 10.0, *) {
-                app.open(url!, options: [:], completionHandler: nil)
-            } else {
-                app.openURL(url!)
-            }
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
-            
-        }))
-        present(alert, animated: true, completion: nil)
     }
 
     @IBAction func addCollection(_ sender: Any) {
