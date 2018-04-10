@@ -99,7 +99,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                                 self.givyContainer.isHidden = false
                             }
                         case .expectationFailed:
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString(" CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         default:
