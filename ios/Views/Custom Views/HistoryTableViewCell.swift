@@ -8,6 +8,7 @@
 
 import UIKit
 import SwipeCellKit
+import MaterialShowcase
 
 class HistoryTableViewCell: SwipeTableViewCell {  
 
@@ -24,7 +25,7 @@ class HistoryTableViewCell: SwipeTableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

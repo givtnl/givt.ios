@@ -575,7 +575,7 @@
 "WeWontSendAnySpam" = "(we won't send any spam, promise)";
 
 /*In app begeleiding naar 'Anders geven?'*/
-"GiveDiffWalkthrough" = "Having some trouble? Or would you rather give using a QR code or by selecting the recipient manually?";
+"GiveDiffWalkthrough" = "Having some trouble? Click here to select an organisation from the list.";
 "SwipeDownOpenGivt" = "Swipe down to open the Givt app.";
 "MoreInfo" = "More info";
 "AppStoreRestart" = "If the update isn't immediately visible, try to restart the App Store app.";
@@ -617,3 +617,8 @@
 "SelectContextList" = "Select a goal from the list";
 "SelectContext" = "Choose the way you give";
 "ChooseWhoYouWantToGiveTo" = "Choose who you want to give to";
+"CancelGiftAlertTitle" = "Cancel donation?";
+"CancelGiftAlertMessage" = "Are you sure you want to cancel this donation?";
+"GotIt" = "I got it";
+"CancelFeatureTitle" = "Swipe left to cancel this donation";
+"CancelFeatureMessage" = "Tap here to close this screen";

@@ -2103,7 +2103,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="zQ1-Uz-BOa">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zQ1-Uz-BOa">
                                                                     <rect key="frame" x="84" y="46.666666666666657" width="316" height="89"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="miR-Gg-iK7">
@@ -2122,11 +2122,15 @@ Kijk voor de status in je overzicht.</string>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="trailing" secondItem="n5a-EY-Wpt" secondAttribute="trailing" id="pYG-R5-Fps"/>
+                                                                            </constraints>
                                                                         </stackView>
                                                                     </subviews>
                                                                     <constraints>
                                                                         <constraint firstItem="miR-Gg-iK7" firstAttribute="leading" secondItem="zQ1-Uz-BOa" secondAttribute="leading" id="GIb-p1-cQL"/>
                                                                         <constraint firstAttribute="trailing" secondItem="miR-Gg-iK7" secondAttribute="trailing" id="J33-f5-TYc"/>
+                                                                        <constraint firstItem="miR-Gg-iK7" firstAttribute="width" secondItem="zQ1-Uz-BOa" secondAttribute="width" id="Qjj-Gt-8Yz"/>
                                                                     </constraints>
                                                                 </stackView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:34 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="PjM-ph-xD3">
@@ -2167,7 +2171,7 @@ Kijk voor de status in je overzicht.</string>
                                                             </constraints>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="6iP-pV-ZXc" secondAttribute="bottom" id="M69-Pz-1Mm"/>
                                                         <constraint firstAttribute="trailing" secondItem="6iP-pV-ZXc" secondAttribute="trailing" id="S5S-sa-oYg"/>

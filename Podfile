@@ -11,6 +11,7 @@ target 'ios' do
   pod 'SwiftClient'
   pod ‘TrustKit’
   pod 'SwipeCellKit'
+  pod 'MaterialShowcase'
   # Pods for ios
 
 end
