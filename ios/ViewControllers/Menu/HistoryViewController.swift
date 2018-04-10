@@ -83,16 +83,16 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            
+            var transactionIdsToCancel = [Int]()
+            self.sortedArray[indexPath.section].value[indexPath.row].collections.forEach {
+                transactionIdsToCancel.append($0.transactionId)
+            }
             self.sortedArray[indexPath.section].value.remove(at: indexPath.row) // REMOVE ITEM
             action.fulfill(with: .delete) // ANIMATION
             let alert = UIAlertController(title: NSLocalizedString("CancelGiftAlertTitle", comment: ""), message: NSLocalizedString("CancelGiftAlertMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive, handler: { (actionButton) in
                 // GET TRANSACTION ID's
-                var transactionIdsToCancel = [Int]()
-                self.sortedArray[indexPath.section].value[indexPath.row].collections.forEach {
-                    transactionIdsToCancel.append($0.transactionId)
-                }
+                
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: transactionIdsToCancel, options: JSONSerialization.WritingOptions.prettyPrinted)
                     self.logService.info(message: "Cancelling following transactions with Id's: " + String(data: jsonData, encoding: String.Encoding.ascii)!)
