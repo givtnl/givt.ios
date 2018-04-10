@@ -28,6 +28,21 @@ extension UserDefaults {
         case showedLastYearTaxOverview
         case hasGivtsInPreviousYear
         case lastGivtToOrganisation
+        case showcases
+    }
+    
+    var showcases: [String] {
+        get {
+            if let stringArray = stringArray(forKey: UserDefaultsKeys.showcases.rawValue) {
+                return stringArray
+            } else {
+                return []
+            }
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.showcases.rawValue)
+            synchronize()
+        }
     }
     
     var lastGivtToOrganisation: String? {

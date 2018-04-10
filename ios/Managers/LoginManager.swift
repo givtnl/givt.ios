@@ -524,5 +524,6 @@ class LoginManager {
         UserDefaults.standard.hasPinSet = false
         UserDefaults.standard.showedLastYearTaxOverview = false
         UserDefaults.standard.hasGivtsInPreviousYear = false
+        UserDefaults.standard.showcases = []
     }
 }

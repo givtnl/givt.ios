@@ -32,6 +32,9 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     @IBOutlet var containerButton: UIBarButtonItem!
     @IBOutlet var containerVIew: UIView!
     
+    private var cancelFeature: MaterialShowcase?
+    private var taxOverviewFeature: MaterialShowcase?
+    
     lazy var fmt: NumberFormatter = {
         let nf = NumberFormatter()
         nf.locale = NSLocale.current
@@ -52,7 +55,9 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         print("Showcase \(showcase.primaryText) will dismiss.")
     }
     func showCaseDidDismiss(showcase: MaterialShowcase) {
-        print("Showcase \(showcase.primaryText) dimissed.")
+        if showcase == cancelFeature {
+            showTaxFeature()
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
@@ -255,9 +260,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.dayNumber.text = String(tx.timestamp.getDay())
         cell.timeLabel.text = timeFormatter.string(from: tx.timestamp)
         cell.setColor(status: tx.status.intValue)
-        
-
-        
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
@@ -277,7 +279,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if !UserDefaults.standard.showedLastYearTaxOverview && UserDefaults.standard.hasGivtsInPreviousYear {
-            showOverlay()
+            //showOverlay()
         }
     }
     
@@ -352,6 +354,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         balloon?.removeFromSuperview()
     }
     @IBAction func openOverViewPage(_ sender: Any) {
+        self.taxOverviewFeature?.completeShowcase()
             if self.balloon != nil {
                 NSLayoutConstraint.deactivate((self.balloon?.constraints)!)
             }
@@ -564,40 +567,62 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     self.givyContainer.isHidden = true
                     
                 }
+
+                self.showCancelFeature()
                 
-                UIView.animate(withDuration: 0, delay: 5, options: [], animations: {
-                    self.cancelFeature = MaterialShowcase()
-                    
-                    let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.trysomething))
-                    swipeRight.direction = UISwipeGestureRecognizerDirection.left
-                    
-                    self.cancelFeature!.addGestureRecognizer(swipeRight)
                 
-                    
-                    self.cancelFeature!.primaryText = NSLocalizedString("CancelFeatureTitle", comment: "")
-                    self.cancelFeature!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
-                    
-                    
-                    DispatchQueue.main.async {
-                        self.cancelFeature!.setTargetView(tableView: self.tableView, section: 0, row: 0) // always required to set targetView
-                        self.cancelFeature!.show(completion: {
-                            print("hello darkens my fold frend")
-                        })
-                    }
-                    
-                }, completion: { (done) in
-                    print(done)
-                })
+                
             }
         }
     }
     
+    private func showCancelFeature() {
+        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.cancelGivt.rawValue) {
+            return
+        }
+        
+        self.cancelFeature = MaterialShowcase()
+        self.cancelFeature!.backgroundPromptColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        self.cancelFeature?.delegate = self
+        
+        self.cancelFeature!.primaryText = NSLocalizedString("CancelFeatureTitle", comment: "")
+        self.cancelFeature!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
+        
+        
+        DispatchQueue.main.async {
+            self.cancelFeature!.setTargetView(tableView: self.tableView, section: 0, row: 0) // always required to set targetView
+            self.cancelFeature!.show(completion: {
+                UserDefaults.standard.showcases.append(AppConstants.Showcase.cancelGivt.rawValue)
+            })
+        }
+    }
     
-    
-    private var cancelFeature: MaterialShowcase?
+    private func showTaxFeature() {
+        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.taxOverview.rawValue) {
+            return
+        }
+        
+        self.taxOverviewFeature = MaterialShowcase()
+        self.taxOverviewFeature!.backgroundPromptColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        self.taxOverviewFeature?.tintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        self.taxOverviewFeature?.delegate = self
+        
+        self.taxOverviewFeature!.primaryText = NSLocalizedString("CheckHereForYearOverview", comment: "")
+        self.taxOverviewFeature!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
+        
+        DispatchQueue.main.async {
+            self.taxOverviewFeature!.setTargetView(barButtonItem: self.containerButton) // always required to set targetView
+            self.taxOverviewFeature?.shouldSetTintColor = false
+            self.taxOverviewFeature!.show(completion: {
+                UserDefaults.standard.showcases.append(AppConstants.Showcase.taxOverview.rawValue)
+            })
+        }
+    }
 
-    
     @objc func trysomething() {
+        if cancelFeature == nil {
+            return
+        }
         cancelFeature!.completeShowcase(animated: false)
         DispatchQueue.main.async {
             let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! SwipeTableViewCell

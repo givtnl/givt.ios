@@ -2267,6 +2267,7 @@ Kijk voor de status in je overzicht.</string>
                                         <action selector="openOverViewPage:" destination="3fl-1y-hcG" eventType="touchUpInside" id="cCe-iR-1Ph"/>
                                     </connections>
                                 </button>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
