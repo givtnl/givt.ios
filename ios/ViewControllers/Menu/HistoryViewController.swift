@@ -59,7 +59,11 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     }
     func showCaseDidDismiss(showcase: MaterialShowcase) {
         if showcase == cancelFeature {
+            cancelFeature = nil
             showTaxFeature()
+        }
+        if showcase == taxOverviewFeature {
+            taxOverviewFeature = nil
         }
     }
     
@@ -588,6 +592,8 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         self.cancelFeature!.primaryText = NSLocalizedString("CancelFeatureTitle", comment: "")
         self.cancelFeature!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
         
+        let gesture = UISwipeGestureRecognizer(target: self, action:  #selector(self.removeShowcase))
+        self.cancelFeature!.addGestureRecognizer(gesture)
         
         DispatchQueue.main.async {
             self.cancelFeature!.setTargetView(tableView: self.tableView, section: 0, row: 0) // always required to set targetView
@@ -610,6 +616,9 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         self.taxOverviewFeature!.primaryText = NSLocalizedString("CheckHereForYearOverview", comment: "")
         self.taxOverviewFeature!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
         
+        let gesture = UISwipeGestureRecognizer(target: self, action:  #selector(self.removeShowcase))
+        self.taxOverviewFeature!.addGestureRecognizer(gesture)
+        
         DispatchQueue.main.async {
             self.taxOverviewFeature!.setTargetView(barButtonItem: self.containerButton) // always required to set targetView
             self.taxOverviewFeature?.shouldSetTintColor = false
@@ -619,15 +628,9 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         }
     }
 
-    @objc func trysomething() {
-        if cancelFeature == nil {
-            return
-        }
-        cancelFeature!.completeShowcase(animated: false)
-        DispatchQueue.main.async {
-            let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! SwipeTableViewCell
-            cell.showSwipe(orientation: .right, animated: true, completion: nil)
-        }
+    @objc func removeShowcase() {
+        self.taxOverviewFeature?.completeShowcase()
+        self.cancelFeature?.completeShowcase()
     }
 
     @IBAction func clearViewed2017(_ sender: Any) {

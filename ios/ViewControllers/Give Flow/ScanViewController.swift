@@ -96,6 +96,9 @@ class ScanViewController: BaseScanViewController {
         self.giveDifferentlyShowcase!.primaryText = NSLocalizedString("GiveDiffWalkthrough", comment: "")
         self.giveDifferentlyShowcase!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
         
+        let gesture = UISwipeGestureRecognizer(target: self, action:  #selector(self.removeOverlay))
+        self.giveDifferentlyShowcase!.addGestureRecognizer(gesture)
+        
         DispatchQueue.main.async {
             self.giveDifferentlyShowcase!.setTargetView(view: self.btnGive) // always required to set targetView
             self.giveDifferentlyShowcase?.shouldSetTintColor = false
