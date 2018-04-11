@@ -14,6 +14,7 @@ class AppConstants{
     enum Showcase: String {
         case cancelGivt
         case taxOverview
+        case giveDifferently
     }
     
     static let tempUserPassword: String = "R4nd0mP@s$w0rd123"
