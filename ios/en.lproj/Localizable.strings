@@ -575,7 +575,7 @@
 "WeWontSendAnySpam" = "(we won't send any spam, promise)";
 
 /*In app begeleiding naar 'Anders geven?'*/
-"GiveDiffWalkthrough" = "Having some trouble? Click here to select an organisation from the list.";
+"GiveDiffWalkthrough" = "Having some trouble? Tap here to pick an organisation from the list.";
 "SwipeDownOpenGivt" = "Swipe down to open the Givt app.";
 "MoreInfo" = "More info";
 "AppStoreRestart" = "If the update isn't immediately visible, try to restart the App Store app.";
@@ -587,7 +587,7 @@
 "DownloadYearOverview" = "Do you want to download your donations overview of 2017 for your tax return?";
 "SendOverViewTo" = "We'll send the overview to";
 "YearOverviewAvailable" = "Annual overview available";
-"CheckHereForYearOverview" = "Request your annual overview here";
+"CheckHereForYearOverview" = "You can request your annual overview here";
 "CouldNotSendTaxOverview" = "We can't seem to fetch your annual review, please try again later. Contact us at support@givtapp.net if this problem persists.";
 "SearchHere" = "Search ...";
 "NoInternet" = "Woops! It looks like you're not connected to the internet. Try again when you are connected with the internet.";
@@ -599,7 +599,7 @@
 "AlreadyAnAccount" = "Already have an account?";
 "UnitedKingdom" = "United Kingdom";
 "CancelShort" = "Cancel";
-"CantCancelGiftAfter15Minutes" = "Your donation has not been cancelled because this was longer then 15 minutes ago.";
+"CantCancelGiftAfter15Minutes" = "Sorry! More than 15 minutes have passed since you gave this donation.";
 "UnknownErrorCancelGivt" = "Due to an unexpected error, we could not cancel your donation. Get in touch with us at support@givtapp.net for more information.";
 "TransactionCancelled" = "The donation to {0} will be cancelled.";
 "Cancelled" = "Cancelled";
@@ -620,5 +620,6 @@
 "CancelGiftAlertTitle" = "Cancel donation?";
 "CancelGiftAlertMessage" = "Are you sure you want to cancel this donation?";
 "GotIt" = "I got it";
-"CancelFeatureTitle" = "Swipe left to cancel this donation";
-"CancelFeatureMessage" = "Tap here to close this screen";
+"CancelFeatureTitle" = "Swipe left to cancel a donation";
+"CancelFeatureMessage" = "Tap anywhere to dismiss this message";
+"GiveSubtitle" = "There are several ways to ‘Givt’. Pick the one that suits you best.";
