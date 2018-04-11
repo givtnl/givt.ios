@@ -47,7 +47,10 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     
     lazy var timeFormatter: DateFormatter = {
         var formatter = DateFormatter()
+        formatter.dateFormat = "H:mm"
+        #if DEBUG
         formatter.dateFormat = "H:mm:ss"
+        #endif
         return formatter
     }()
     
