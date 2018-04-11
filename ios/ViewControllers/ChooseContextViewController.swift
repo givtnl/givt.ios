@@ -10,6 +10,8 @@ import UIKit
 
 class ChooseContextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
+    @IBOutlet var giveSubtitle: UILabel!
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseContextTableViewCell") as! ChooseContextTableViewCell
         cell.name.text = contexts[indexPath.row].name
@@ -98,6 +100,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.estimatedRowHeight = 44.0
         tableView.tableHeaderView = UIView()
         tableView.tableFooterView = UIView()
+        giveSubtitle.text = NSLocalizedString("GiveSubtitle", comment: "")
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {
