@@ -281,9 +281,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !UserDefaults.standard.showedLastYearTaxOverview && UserDefaults.standard.hasGivtsInPreviousYear {
-            //showOverlay()
-        }
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -601,7 +598,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     }
     
     private func showTaxFeature() {
-        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.taxOverview.rawValue) {
+        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.taxOverview.rawValue) && !UserDefaults.standard.hasGivtsInPreviousYear {
             return
         }
         

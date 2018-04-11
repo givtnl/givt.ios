@@ -18,7 +18,7 @@ class ScanViewController: BaseScanViewController {
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var btnGive: CustomButton!
     private var giveDifferentlyShowcase: MaterialShowcase?
-
+    private var overlayTask: DispatchWorkItem?
     override func viewDidLoad() {
         super.viewDidLoad()
         gif.loadGif(name: "givt_animation")
@@ -71,12 +71,14 @@ class ScanViewController: BaseScanViewController {
     }
     
     func addOverlay() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(7), execute: { () -> Void in
+        overlayTask = DispatchWorkItem {
             self.showGiveDifferentlyShowcase()
-        })
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(7), execute: overlayTask!)
     }
     
     @objc func removeOverlay() {
+        overlayTask?.cancel()
         guard let showcase = self.giveDifferentlyShowcase else {
             return
         }
