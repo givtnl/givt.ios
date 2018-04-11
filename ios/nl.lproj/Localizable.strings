@@ -634,7 +634,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SelectContextCollect" = "Geef in de kerk, aan de deur of op straat";
 "GiveContextQR" = "Geef door middel van een QR-code";
 "SelectContextList" = "Kies een doel uit de lijst";
-"SelectContext" = "Kies hier hoe je wil geven";
+"SelectContext" = "Kies hoe je wil geven";
 "ChooseWhoYouWantToGiveTo" = "Kies aan wie je wil geven";
 "CancelGiftAlertTitle" = "Gift annuleren?";
 "CancelGiftAlertMessage" = "Weet je zeker dat je deze gift wil annuleren?";
