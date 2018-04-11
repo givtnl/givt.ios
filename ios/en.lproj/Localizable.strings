@@ -623,3 +623,6 @@
 "CancelFeatureTitle" = "Swipe left to cancel a donation";
 "CancelFeatureMessage" = "Tap anywhere to dismiss this message";
 "GiveSubtitle" = "There are several ways to ‘Givt’. Pick the one that suits you best.";
+"Confirm" = "Confirm";
+"SafariGivingToOrganisation" = "You just gave to {0}. Find the overview of your donation below.";
+"SafariGiving" = "You just gave. Find the overview of your donation below.";
