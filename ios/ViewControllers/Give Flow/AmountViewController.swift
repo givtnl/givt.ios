@@ -63,7 +63,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     func showCaseDidDismiss(showcase: MaterialShowcase) {
         if showcase.primaryText == NSLocalizedString("Ballon_ActiveerCollecte", comment: "") {
             if !UserDefaults.standard.showcases.contains(AppConstants.Showcase.giveSituation.rawValue) {
-                showShowcase(message: NSLocalizedString("GiveSituationShowcaseTitle", comment: ""), targetView: btnGive)
+                showShowcase(message: NSLocalizedString("GiveSituationShowcaseTitle", comment: "") + " 😉", targetView: btnGive)
                 UserDefaults.standard.showcases.append(AppConstants.Showcase.giveSituation.rawValue)
             }
         }
