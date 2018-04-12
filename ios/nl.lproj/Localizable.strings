@@ -434,7 +434,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AnswerHowDoesGivingWork" = "Heel eenvoudig. Open de app om een bedrag te kiezen en beweeg je telefoon langs de collectebus, -zak of -mand. Vergeet niet om je registratie te voltooien, zodat je giften op het goede adres bezorgd kunnen worden.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app, zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op 'Geven'. Druk daarna op ‘Anders geven’ en kies voor 'Kerken', 'Stichtingen' of 'Acties'. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.";
+"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app, zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op 'Volgende'. Druk daarna op ‘Kies uit de lijst’ en kies voor 'Kerken', 'Stichtingen' of 'Acties'. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.";
 "MenuSettingsSwitchAccounts" = "Wisselen van account";
 "PrepareIUnderstand" = "Ik snap het";
 
@@ -513,7 +513,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Feature_ShareTitle" = "Deel Givt met iedereen!";
 "Feature_ShareSubtitle" = "Givt delen, da's een makkie. Dat kan je onderaan in het menu.";
 "AskMeLater" = "Vraag het me later";
-"GiveDifferently" = "Anders geven";
+"GiveDifferently" = "Kies uit de lijst";
 "Churches" = "Kerken";
 "Stichtingen" = "Stichtingen";
 "Acties" = "Acties";
