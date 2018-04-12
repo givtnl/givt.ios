@@ -501,10 +501,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AppVersion" = "App versie: ";
 
 /*Info over knop om collecte te activeren*/
-"Ballon_ActiveerCollecte" = "Meerdere collectes? Tik hier om een collecte toe te voegen.";
+"Ballon_ActiveerCollecte" = "Je kunt hier tot drie collectes toevoegen";
 
 /*Dubbel Tap om collecte te verwijderen*/
-"Ballon_VerwijderCollecte" = "Tik snel twee keer om de collecte te verwijderen.";
+"Ballon_VerwijderCollecte" = "Een collecte wordt verwijderd door snel twee keer te tikken";
 "ShareGivtText" = "Deel Givt";
 "ShareGivtTextLong" = "Hey! Wil je ook gewoon blijven geven?";
 "GivtGewoonBlijvenGeven" = "Givt - Gewoon blijven geven.";
@@ -639,9 +639,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "CancelGiftAlertTitle" = "Gift annuleren?";
 "CancelGiftAlertMessage" = "Weet je zeker dat je deze gift wil annuleren?";
 "GotIt" = "Ik snap het";
-"CancelFeatureTitle" = "Veeg naar links om een gift te annuleren";
+"CancelFeatureTitle" = "Binnen het kwartier kun je een gift annuleren door naar links te vegen";
 "CancelFeatureMessage" = "Tik op het scherm om dit bericht te verbergen";
 "GiveSubtitle" = "Je kan op verschillende manieren ‘Givten’. Hier kun je kiezen wat op dit moment het best bij jou past.";
 "Confirm" = "Bevestig";
 "SafariGivingToOrganisation" = "Je hebt nu gegeven aan {0}. Hieronder vind je het overzicht van je gift.";
 "SafariGiving" = "Je hebt nu gegeven. Hieronder vind je het overzicht van je gift.";
+"GiveSituationShowcaseTitle" = "In de volgende stap kies je hoe je wil geven 😉";

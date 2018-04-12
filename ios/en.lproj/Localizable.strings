@@ -484,10 +484,10 @@
 "AppVersion" = "App version: ";
 
 /*Info over knop om collecte te activeren*/
-"Ballon_ActiveerCollecte" = "Multiple collections? Tap here to add a collection.";
+"Ballon_ActiveerCollecte" = "Here you can add up to three collections";
 
 /*Dubbel Tap om collecte te verwijderen*/
-"Ballon_VerwijderCollecte" = "Tap twice to remove a collection.";
+"Ballon_VerwijderCollecte" = "A collection can be removed by tapping fast twice";
 "ShareGivtText" = "Share Givt";
 "ShareGivtTextLong" = "Hey! Do you want to keep on giving?";
 "GivtGewoonBlijvenGeven" = "Givt - Always good to give.";
@@ -620,9 +620,10 @@
 "CancelGiftAlertTitle" = "Cancel donation?";
 "CancelGiftAlertMessage" = "Are you sure you want to cancel this donation?";
 "GotIt" = "I got it";
-"CancelFeatureTitle" = "Swipe left to cancel a donation";
+"CancelFeatureTitle" = "You can cancel a donation within 15 minutes by swiping left";
 "CancelFeatureMessage" = "Tap anywhere to dismiss this message";
 "GiveSubtitle" = "There are several ways to ‘Givt’. Pick the one that suits you best.";
 "Confirm" = "Confirm";
 "SafariGivingToOrganisation" = "You just gave to {0}. Find the overview of your donation below.";
 "SafariGiving" = "You just gave. Find the overview of your donation below.";
+"GiveSituationShowcaseTitle" = "Choose how you want to give in the next step 😉";
