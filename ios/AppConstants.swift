@@ -15,6 +15,7 @@ class AppConstants{
         case cancelGivt
         case taxOverview
         case giveDifferently
+        case giveSituation
     }
     
     static let tempUserPassword: String = "R4nd0mP@s$w0rd123"

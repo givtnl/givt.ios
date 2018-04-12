@@ -79,7 +79,6 @@
 		D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */; };
 		D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D44B11FC6FCD700325CAF /* FAQViewController.swift */; };
 		D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D44B31FC7039E00325CAF /* FAQView.swift */; };
-		D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E9E141F8F970A0073F8EB /* Balloon.swift */; };
 		D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F97721FACC83F0006335A /* SelectOrgViewController.swift */; };
 		D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */; };
 		D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A64D081FDFDE2E005B51B2 /* ForgotPasswordViewController.swift */; };
@@ -107,7 +106,6 @@
 		D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */; };
 		D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */; };
 		D7DBEDA31FBC798A00D78E2A /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */; };
-		D7DE0FED1F8E1A6900808ED4 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */; };
 		D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */; };
 		D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE931F7CFA34005807BE /* UserExt.swift */; };
 		D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */; };
@@ -233,7 +231,6 @@
 		D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQ.storyboard; sourceTree = "<group>"; };
 		D78D44B11FC6FCD700325CAF /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		D78D44B31FC7039E00325CAF /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
-		D78E9E141F8F970A0073F8EB /* Balloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
 		D79F97721FACC83F0006335A /* SelectOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgViewController.swift; sourceTree = "<group>"; };
 		D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
 		D7A64D081FDFDE2E005B51B2 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +258,6 @@
 		D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextView.swift; sourceTree = "<group>"; };
 		D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
-		D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUser.swift; sourceTree = "<group>"; };
 		D7E3CE931F7CFA34005807BE /* UserExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExt.swift; sourceTree = "<group>"; };
 		D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPInfoViewController.swift; sourceTree = "<group>"; };
@@ -425,8 +421,6 @@
 				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
 				D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */,
 				D77511BC1F713B56004F91F6 /* AgendaNumber.swift */,
-				D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */,
-				D78E9E141F8F970A0073F8EB /* Balloon.swift */,
 				D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */,
 				D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */,
 				D78D44B31FC7039E00325CAF /* FAQView.swift */,
@@ -895,7 +889,6 @@
 				D782E68F20064A680086907E /* SettingsViewController.swift in Sources */,
 				D740E15C1F4C6328000531BA /* GivtService.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
-				D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */,
 				D782089F2008BE6000AB6DC1 /* ArrayExtensions.swift in Sources */,
 				D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
@@ -955,7 +948,6 @@
 				D748F6042063D50C00B25BC2 /* HistoryTableViewModel.swift in Sources */,
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
-				D7DE0FED1F8E1A6900808ED4 /* TriangleView.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
 				D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */,
