@@ -124,6 +124,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     message = NSLocalizedString("ConnectionError", comment: "")
                 } else if description == "ServerError" {
                     message = NSLocalizedString("ConnectionError", comment: "")
+                } else if description == "LockedOut" {
+                    message = NSLocalizedString("WrongPasswordLockedOut", comment: "")
                 }
                 
                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
