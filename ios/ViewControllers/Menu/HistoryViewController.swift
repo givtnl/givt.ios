@@ -197,7 +197,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         tableView.dataSource = self
         
         getHistory()
-        
         self.downloadButton.isHidden = !UserDefaults.standard.hasGivtsInPreviousYear
         
         tableView.tableFooterView = UIView()
@@ -523,7 +522,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     }
     
     private func showTaxFeature() {
-        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.taxOverview.rawValue) && !UserDefaults.standard.hasGivtsInPreviousYear {
+        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.taxOverview.rawValue) || !UserDefaults.standard.hasGivtsInPreviousYear {
             return
         }
         
