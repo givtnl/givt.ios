@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MaterialShowcase
 
-class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate {
+class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
     private var log: LogService = LogService.shared
     @IBOutlet var widthConstraint: NSLayoutConstraint!
     @IBOutlet var collectionView: UIView!
@@ -31,9 +32,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var secondView: UIView!
     @IBOutlet var thirdView: UIView!
     @IBOutlet var collectionButton: UIButton!
-    var firstBalloon: Balloon?
-    var secondBalloon: Balloon?
-    var thirdBalloon: Balloon?
     var topAnchor: NSLayoutConstraint!
     var leadingAnchor: NSLayoutConstraint!
     private var amountLimit: Int {
@@ -59,6 +57,15 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         set {
             amountLabels[selectedAmount] = currentAmountLabel
             
+        }
+    }
+    
+    func showCaseDidDismiss(showcase: MaterialShowcase) {
+        if showcase.primaryText == NSLocalizedString("Ballon_ActiveerCollecte", comment: "") {
+            if !UserDefaults.standard.showcases.contains(AppConstants.Showcase.giveSituation.rawValue) {
+                showShowcase(message: NSLocalizedString("GiveSituationShowcaseTitle", comment: ""), targetView: btnGive)
+                UserDefaults.standard.showcases.append(AppConstants.Showcase.giveSituation.rawValue)
+            }
         }
     }
     
@@ -103,7 +110,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         super.viewDidLoad()
         
         givtService = GivtService.shared
-        btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
+        btnGive.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         
         amountLabels = [amountLabel, amountLabel2, amountLabel3]
@@ -153,6 +160,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         navigiationManager.delegate = self
         showFirstBalloon()
         
+        if UserDefaults.standard.viewedCoachMarks >= 2 && !UserDefaults.standard.showcases.contains(AppConstants.Showcase.giveSituation.rawValue) {
+            showShowcase(message: NSLocalizedString("GiveSituationShowcaseTitle", comment: "GiveSituationShowcaseTitle"), targetView: btnGive)
+            UserDefaults.standard.showcases.append(AppConstants.Showcase.giveSituation.rawValue)
+        }
+        
+        
         if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
             navigiationManager.finishRegistrationAlert(self)
 
@@ -199,7 +212,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     @IBAction func addValue(sender:UIButton!) {
-        hideBalloons()
         if currentAmountLabel.text == "0" || pressedShortcutKey {
             currentAmountLabel.text = ""
         }
@@ -328,12 +340,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         if UserDefaults.standard.viewedCoachMarks == 1 {
             let alert = UIAlertController(title: NSLocalizedString("MultipleCollections", comment: ""), message: NSLocalizedString("AddCollectConfirm", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { action in
-                
                 self.addCollect(sender)
                 
             }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: { action in
-                self.firstBalloon?.hide(true)
                 return
             }))
             self.present(alert, animated: true, completion: nil)
@@ -387,8 +397,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             thirdEuro.isHidden = false
             leftSpacerView.isHidden = true
             rightSpacerView.isHidden = true
-
-            showThirdBalloon(view: thirdView, arrowPointsTo: amountLabel3)
         default:
             break
         }
@@ -406,7 +414,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                 selectView(1)
             }
             numberOfCollects = 2
-            thirdBalloon?.hide()
         } else if !secondView.isHidden {
             amountLabel2.text = "0"
             amountLabel2.textColor = UIColor.init(rgb: 0xD2D1D9)
@@ -420,7 +427,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             if selectedAmount <= 1 {
                 selectView(0)
             }
-            secondBalloon?.hide()
         }
         checkAmounts()
     }
@@ -438,80 +444,42 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         currentAmountLabel.textColor = Decimal(string: (currentAmountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
     }
     
+    func showShowcase(message: String, targetView: UIView) {
+        let showCase = MaterialShowcase()
+        showCase.delegate = self
+        showCase.primaryText = message
+        showCase.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
+        
+        DispatchQueue.main.async {
+            showCase.setTargetView(view: targetView) // always required to set targetView
+            showCase.shouldSetTintColor = false
+            showCase.backgroundPromptColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+            showCase.show(completion: {
+                print("test")
+            })
+        }
+    }
+    
     func showFirstBalloon() {
-        firstBalloon?.hide()
         if UserDefaults.standard.viewedCoachMarks != 0 {
             return
         }
         
-        let balloon = Balloon(text: NSLocalizedString("Ballon_ActiveerCollecte", comment: ""))
-        self.view.addSubview(balloon)
+        showShowcase(message: NSLocalizedString("Ballon_ActiveerCollecte", comment: ""), targetView: self.collectionButton)
         
-        balloon.positionTooltip()
-        balloon.pinRight(view: self.collectionButton)
-        balloon.pinTop(view: self.containerCollection, 0)
-        self.view.layoutIfNeeded()
-        
-        balloon.alpha = 0
-        UIView.animate(withDuration: 0.5) {
-            balloon.alpha = 1
-        }
-        
-        balloon.bounce()
-        
-        self.firstBalloon = balloon
         UserDefaults.standard.viewedCoachMarks += 1
     }
 
     func showSecondBalloon(view: UIView, arrowPointsTo: UIView) {
-        firstBalloon?.hide()
         if UserDefaults.standard.viewedCoachMarks != 1 {
             return
         }
+        showShowcase(message: NSLocalizedString("Ballon_VerwijderCollecte", comment: ""), targetView: self.amountLabel2)
         
-        let balloon = Balloon(text: NSLocalizedString("Ballon_VerwijderCollecte", comment: ""))
-        self.view.addSubview(balloon)
-        self.view.layoutIfNeeded()
-        
-        balloon.centerTooltip(view: arrowPointsTo)
-        
-        balloon.pinTop(view: self.containerCollection)
-        balloon.pinLeft(view: view, -((200 - secondView.bounds.width)/2))
-        self.view.layoutIfNeeded()
-        balloon.bounce()
-        self.secondBalloon = balloon
         UserDefaults.standard.viewedCoachMarks += 1
     }
 
-    
-    func showThirdBalloon(view: UIView, arrowPointsTo: UIView) {
-        secondBalloon?.hide()
-        if UserDefaults.standard.viewedCoachMarks != 2 {
-            return
-        }
-        
-        let balloon = Balloon(text: NSLocalizedString("Ballon_VerwijderCollecte", comment: ""))
-        self.view.addSubview(balloon)
-        self.view.layoutIfNeeded()
-        
-        balloon.centerTooltip(view: arrowPointsTo)
-        
-        balloon.pinTop(view: self.containerCollection)
-        balloon.pinRight(view: self.containerCollection, 5)
-        self.view.layoutIfNeeded()
-        balloon.bounce()
-        self.thirdBalloon = balloon
-        UserDefaults.standard.viewedCoachMarks += 1
-    }
-    
-    func hideBalloons() {
-        firstBalloon?.hide()
-        secondBalloon?.hide()
-        thirdBalloon?.hide()
-    }
-    
     func reset() {
-        hideBalloons()
         clearAmounts()
         selectView(0)
        

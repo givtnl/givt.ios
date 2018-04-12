@@ -15,8 +15,6 @@ import MaterialShowcase
 class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate, MaterialShowcaseDelegate {
     private var givtService = GivtService.shared
     private var logService = LogService.shared
-    private var overlay: UIView?
-    private var balloon: Balloon?
     
     var models: [HistoryTransaction] = []
     var tempArray: [String: [HistoryTableViewModel]] = [String: [HistoryTableViewModel]]()
@@ -195,18 +193,10 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         SVProgressHUD.setBackgroundColor(.white)
         SVProgressHUD.show()
         
-        //scrollView.delegate = self
-        
         tableView.delegate = self
         tableView.dataSource = self
         
         getHistory()
-        
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedScrollView(sender:)))
-        singleTapGestureRecognizer.numberOfTapsRequired = 1
-        singleTapGestureRecognizer.isEnabled = true
-        singleTapGestureRecognizer.cancelsTouchesInView = false
-        //scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         
         self.downloadButton.isHidden = !UserDefaults.standard.hasGivtsInPreviousYear
         
@@ -290,82 +280,11 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    @objc func tappedScrollView(sender: UITapGestureRecognizer) {
-        hideOverlay()
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        hideOverlay()
-    }
 
-    
-    func showOverlay() {
-        if UIApplication.shared.keyWindow != nil {
-            self.balloon = Balloon(text: NSLocalizedString("CheckHereForYearOverview", comment: ""))
-            self.view.addSubview(self.balloon!)
-            
-            var cgRectOfButton = CGRect()
-            if #available(iOS 11.0, *) {
-                cgRectOfButton = self.downloadButton.convert(self.downloadButton.frame, to: nil)
-            } else {
-                cgRectOfButton = (self.containerButton.value(forKey: "view") as! UIView).frame
-            }
-            let offSet = cgRectOfButton.midX - self.tableView.frame.midX
-            self.balloon!.centerTooltip(view: self.tableView, offSet)
-            
-            
-            self.balloon!.pinRight(view: self.tableView, -5)
-            
-            self.balloon!.pinTop2(view: self.view, self.containerVIew.frame.minY + 5)
-            self.view.bringSubview(toFront: self.balloon!)
-            self.view.layoutIfNeeded()
-            
-            self.balloon!.alpha = 0
-            UIView.animate(withDuration: 0.5) {
-                self.balloon!.alpha = 1
-            }
-            
-            self.balloon?.bounce()
-            
-            self.overlay = UIView()
-            self.overlay!.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            self.overlay!.translatesAutoresizingMaskIntoConstraints = false
-            self.containerVIew.addSubview(self.overlay!)
-            self.overlay!.topAnchor.constraint(equalTo: self.containerVIew.topAnchor).isActive = true
-            self.overlay!.bottomAnchor.constraint(equalTo: self.containerVIew.bottomAnchor).isActive = true
-            self.overlay!.leadingAnchor.constraint(equalTo: self.containerVIew.leadingAnchor).isActive = true
-            self.overlay!.trailingAnchor.constraint(equalTo: self.containerVIew.trailingAnchor).isActive = true
-            self.overlay!.alpha = 0.6
-            
-            UserDefaults.standard.showedLastYearTaxOverview = true
-        }
-    }
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            if let touchedView = touch.view {
-                if touchedView == self.overlay {
-                    hideOverlay()
-                }
-            }
-        }
-    }
-    
-    func hideOverlay() {
-        overlay?.removeFromSuperview()
-        balloon?.removeFromSuperview()
-    }
     @IBAction func openOverViewPage(_ sender: Any) {
         self.taxOverviewFeature?.completeShowcase()
-            if self.balloon != nil {
-                NSLayoutConstraint.deactivate((self.balloon?.constraints)!)
-            }
-            
-            self.hideOverlay()
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxesViewController") as! TaxesViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxesViewController") as! TaxesViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
