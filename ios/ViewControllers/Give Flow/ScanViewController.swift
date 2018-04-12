@@ -24,7 +24,7 @@ class ScanViewController: BaseScanViewController {
         gif.loadGif(name: "givt_animation")
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGive.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
-        
+        title = NSLocalizedString("GiveWithYourPhone", comment: "")
     }
     
     @objc func showBluetoothMessage() {
