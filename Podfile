@@ -10,7 +10,7 @@ target 'ios' do
   pod 'PhoneNumberKit'
   pod 'SwiftClient'
   pod ‘TrustKit’
-  pod 'SwipeCellKit'
+  pod 'SwipeCellKit', '~> 2.1.0'
   pod 'MaterialShowcase'
   # Pods for ios
 
