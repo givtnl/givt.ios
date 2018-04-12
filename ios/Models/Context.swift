@@ -13,6 +13,7 @@ enum ContextType {
     case collectionDevice
     case qr
     case manually
+    case events
 }
 
 class Context {

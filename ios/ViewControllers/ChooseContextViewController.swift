@@ -21,11 +21,26 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.contextType = contexts[indexPath.row].type
+        if cell.contextType == .events {
+            cell.contentView.alpha = 0.3
+            let label = UILabel()
+            label.textAlignment = .center
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            label.font = UIFont(name: "Avenir-Heavy", size: 48)
+            label.transform = CGAffineTransform(rotationAngle: -(CGFloat.pi / 36))
+            label.text = String(Date().getDay())
+            cell.img.addSubview(label)
+            label.topAnchor.constraint(equalTo: cell.img.topAnchor, constant: 34).isActive = true
+            label.leadingAnchor.constraint(equalTo: cell.img.leadingAnchor, constant: 0).isActive = true
+            label.trailingAnchor.constraint(equalTo: cell.img.trailingAnchor, constant: 0).isActive = true
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedContext = contexts[indexPath.row]
+
         guard let navigationController = self.navigationController else { return }
         
         let sb = UIStoryboard(name:"Main", bundle:nil)
@@ -43,6 +58,8 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         case .manually:
             let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
             navigationController.show(vc, sender: nil)
+        case .events:
+            return
         }
         
     }
@@ -88,6 +105,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         ctxs.append(Context(name: NSLocalizedString("SelectContextCollect", comment: ""),  type: ContextType.collectionDevice, image: UIImage.init(named: "collectebus")!))
         ctxs.append(Context(name: NSLocalizedString("GiveContextQR", comment: ""), type: ContextType.qr, image: UIImage.init(named: "qrscan")!))
         ctxs.append(Context(name: NSLocalizedString("SelectContextList", comment: ""), type: ContextType.manually, image: UIImage.init(named: "selectlist")!))
+        ctxs.append(Context(name: NSLocalizedString("SoonMessage", comment: ""), type: ContextType.events, image: UIImage.init(named: "events")!))
         return ctxs
     }()
     
