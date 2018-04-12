@@ -505,7 +505,7 @@
 "SignMandateLater" = "You have chosen to sign the mandate later. You can do this the next time you give.";
 "Suggestie" = "Give to:";
 "CodeCanNotBeScanned" = "This code cannot be used with Givt.";
-"GiveDifferentScan" = "Scan code";
+"GiveDifferentScan" = "Scan QR-code";
 "GiveDiffQRText" = "Now, aim well ... Scan the QR-code and give.";
 "QRCodeOrganisationNotFound" = "Code is scanned, but it seems the organisation has lost its way. Please, try again later.";
 "NoCameraAccess" = "We need your camera to scan the code. Go to the app settings on your smartphone to give us your permission.";

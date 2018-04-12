@@ -522,7 +522,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SignMandateLater" = "Je hebt gekozen om het mandaat later aan te vragen, dit zal gebeuren bij de volgende keer dat je wil geven.";
 "Suggestie" = "Geven aan:";
 "CodeCanNotBeScanned" = "Helaas! Deze code kan niet gebruikt worden met de Givt-app.";
-"GiveDifferentScan" = "QR-code scannen";
+"GiveDifferentScan" = "Scan de QR-code";
 "GiveDiffQRText" = "Nu goed mikken!";
 "QRCodeOrganisationNotFound" = "Het scannen is gelukt, maar de organisatie is nog even verdwaald. Probeer het later opnieuw.";
 "NoCameraAccess" = "Om de code te scannen heeft Givt je camera nodig. Ga naar de app-instellingen op je smartphone om Givt toegang te verlenen.";
