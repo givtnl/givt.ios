@@ -37,9 +37,12 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
         super.viewDidAppear(animated)
         GivtService.shared.delegate = self
         
+        #if DEBUG
         if TARGET_OS_SIMULATOR != 0 {
             return
         }
+        #endif
+        
         
         if let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) {
             do {

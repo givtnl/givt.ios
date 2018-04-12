@@ -271,7 +271,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
         df.timeZone = TimeZone(abbreviation: "UTC")
-        df.locale = Locale(identifier: "en_US_POSIX") as Locale!
+        df.locale = Locale(identifier: "en_US_POSIX")
         let date = df.string(from: Date())
         print(date)
         var transactions = [Transaction]()
@@ -445,7 +445,6 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     }
     
     func delete(transactionsIds: [Int], completion: @escaping (Response?) -> Void) {
-        var data = ["Guid": UserDefaults.standard.userExt!.guid]
         client.delete(url: "/api/v2/Givts/Multiple", data: transactionsIds) { (response) in
             completion(response)
         }
