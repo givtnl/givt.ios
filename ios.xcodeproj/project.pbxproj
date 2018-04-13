@@ -79,7 +79,6 @@
 		D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */; };
 		D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D44B11FC6FCD700325CAF /* FAQViewController.swift */; };
 		D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D44B31FC7039E00325CAF /* FAQView.swift */; };
-		D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78E9E141F8F970A0073F8EB /* Balloon.swift */; };
 		D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F97721FACC83F0006335A /* SelectOrgViewController.swift */; };
 		D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */; };
 		D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A64D081FDFDE2E005B51B2 /* ForgotPasswordViewController.swift */; };
@@ -92,6 +91,9 @@
 		D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */; };
 		D7B715501FD0529D00666262 /* Personal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7B7154F1FD0529D00666262 /* Personal.storyboard */; };
 		D7BB5DA81FD59B4700D12E62 /* InfraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */; };
+		D7BC58D620776361008C9497 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC58D520776361008C9497 /* Context.swift */; };
+		D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */; };
+		D7C5120E20761DC7002B1618 /* ChooseContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */; };
 		D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */; };
 		D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */; };
 		D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */; };
@@ -104,7 +106,6 @@
 		D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */; };
 		D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */; };
 		D7DBEDA31FBC798A00D78E2A /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */; };
-		D7DE0FED1F8E1A6900808ED4 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */; };
 		D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */; };
 		D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE931F7CFA34005807BE /* UserExt.swift */; };
 		D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */; };
@@ -231,7 +232,6 @@
 		D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQ.storyboard; sourceTree = "<group>"; };
 		D78D44B11FC6FCD700325CAF /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		D78D44B31FC7039E00325CAF /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
-		D78E9E141F8F970A0073F8EB /* Balloon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balloon.swift; sourceTree = "<group>"; };
 		D79F97721FACC83F0006335A /* SelectOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgViewController.swift; sourceTree = "<group>"; };
 		D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
 		D7A64D081FDFDE2E005B51B2 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +244,9 @@
 		D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		D7B7154F1FD0529D00666262 /* Personal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Personal.storyboard; sourceTree = "<group>"; };
 		D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraManager.swift; sourceTree = "<group>"; };
+		D7BC58D520776361008C9497 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextViewController.swift; sourceTree = "<group>"; };
+		D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextTableViewCell.swift; sourceTree = "<group>"; };
 		D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pincode.storyboard; sourceTree = "<group>"; };
 		D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavViewController.swift; sourceTree = "<group>"; };
 		D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
@@ -256,7 +259,6 @@
 		D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextView.swift; sourceTree = "<group>"; };
 		D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
-		D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUser.swift; sourceTree = "<group>"; };
 		D7E3CE931F7CFA34005807BE /* UserExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExt.swift; sourceTree = "<group>"; };
 		D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPInfoViewController.swift; sourceTree = "<group>"; };
@@ -421,8 +423,6 @@
 				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
 				D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */,
 				D77511BC1F713B56004F91F6 /* AgendaNumber.swift */,
-				D7DE0FEC1F8E1A6900808ED4 /* TriangleView.swift */,
-				D78E9E141F8F970A0073F8EB /* Balloon.swift */,
 				D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */,
 				D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */,
 				D78D44B31FC7039E00325CAF /* FAQView.swift */,
@@ -431,6 +431,7 @@
 				D748F5F5206137E400B25BC2 /* TableSectionHeader.swift */,
 				D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */,
 				D748F5FB2061425400B25BC2 /* HistoryTableViewCell.swift */,
+				D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -569,6 +570,7 @@
 				D748F5FF2063D4A500B25BC2 /* Status.swift */,
 				D748F6012063D4BF00B25BC2 /* HistoryTransaction.swift */,
 				D748F6032063D50C00B25BC2 /* HistoryTableViewModel.swift */,
+				D7BC58D520776361008C9497 /* Context.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -588,6 +590,7 @@
 				D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */,
 				D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */,
 				D782E68E20064A680086907E /* SettingsViewController.swift */,
+				D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -814,6 +817,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ios/Pods-ios-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialShowcase/MaterialShowcase.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftClient/SwiftClient.framework",
@@ -823,6 +827,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialShowcase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftClient.framework",
@@ -862,6 +867,7 @@
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
+				D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */,
 				D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */,
 				D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */,
 				D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */,
@@ -872,6 +878,7 @@
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
+				D7BC58D620776361008C9497 /* Context.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
 				D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */,
 				D7D6FA6B1F7BADA5008A5604 /* UITextFieldExtensions.swift in Sources */,
@@ -884,7 +891,6 @@
 				D782E68F20064A680086907E /* SettingsViewController.swift in Sources */,
 				D740E15C1F4C6328000531BA /* GivtService.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
-				D78E9E151F8F970A0073F8EB /* Balloon.swift in Sources */,
 				D782089F2008BE6000AB6DC1 /* ArrayExtensions.swift in Sources */,
 				D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
@@ -940,10 +946,10 @@
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
 				D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */,
+				D7C5120E20761DC7002B1618 /* ChooseContextTableViewCell.swift in Sources */,
 				D748F6042063D50C00B25BC2 /* HistoryTableViewModel.swift in Sources */,
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
-				D7DE0FED1F8E1A6900808ED4 /* TriangleView.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
 				D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */,

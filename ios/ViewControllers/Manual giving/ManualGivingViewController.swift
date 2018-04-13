@@ -13,7 +13,6 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     @IBOutlet var organisationSuggestion: UILabel!
     @IBOutlet var containerHeight: NSLayoutConstraint!
     @IBOutlet var suggestion: UIView!
-    @IBOutlet var btnQR: UIView!
     @IBOutlet var btnOverig: UIView!
     @IBOutlet var btnActies: UIView!
     @IBOutlet var btnKerken: UIView!
@@ -28,7 +27,6 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     
     @IBOutlet var suggestionText: UILabel!
     @IBOutlet var stackView: UIStackView!
-    @IBOutlet var qr: UILabel!
     @IBOutlet var overig: UILabel!
     @IBOutlet var acties: UILabel!
     @IBOutlet var kerken: UILabel!
@@ -39,25 +37,22 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navBar.title = NSLocalizedString("GiveDifferently", comment: "")
+        navBar.title = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
         stichtingen.text = NSLocalizedString("Stichtingen", comment: "")
         kerken.text = NSLocalizedString("Churches", comment: "")
         acties.text = NSLocalizedString("Acties", comment: "")
         overig.text = NSLocalizedString("Overig", comment: "")
-        qr.text = NSLocalizedString("GiveDifferentScan", comment: "")
         
         addAction(btnKerken)
         addAction(btnStichtingen)
         addAction(btnActies)
         //addAction(btnOverig) //we don't support this atm
-        addAction(btnQR)
         
         btnStichtingen.tag = 100
         btnKerken.tag = 101
         btnActies.tag = 102
         btnOverig.tag = 103
         btnOverig.alpha = 0.3
-        btnQR.tag = 104
 
         let lastOrg = GivtService.shared.lastGivtOrg
         if let beaconId = GivtService.shared.getBestBeacon.beaconId, !lastOrg.isEmpty() {
@@ -159,10 +154,6 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
                 let vc = storyboard?.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
                 vc.passSelectedTag = tag
                 self.show(vc, sender: nil)
-            case 104:
-                print("qr")
-                let vc = storyboard?.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
-                self.show(vc, sender: nil)
             default:
                 break
             }
@@ -178,7 +169,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     @objc func giveManually() {
         if let beaconId = self.beaconId {
             log.info(message: "Gave to the suggestion")
-            GivtService.shared.give(antennaID: beaconId)
+            GivtService.shared.giveManually(antennaId: beaconId)
         }
     }
 }

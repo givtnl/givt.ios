@@ -9,6 +9,6 @@
 import Foundation
 extension Collection where Iterator.Element == String {
     var initials: [String] {
-        return map{String($0.characters.prefix(1))}
+        return map{String($0.prefix(1))}
     }
 }

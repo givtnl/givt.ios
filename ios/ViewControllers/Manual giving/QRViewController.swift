@@ -33,42 +33,43 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
         log.info(message: "QR Page is shown")
     }
     
-    override func viewDidLayoutSubviews() {
-        //capture device
-        let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
-        
-        do {
-            session = AVCaptureSession()
-            video = AVCaptureVideoPreviewLayer()
-            let input = try AVCaptureDeviceInput(device: captureDevice!)
-            session!.addInput(input)
-            let output = AVCaptureMetadataOutput()
-            session!.addOutput(output)
-            
-            output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            
-            output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
-            
-            video! = AVCaptureVideoPreviewLayer(session: session!)
-            video!.videoGravity = AVLayerVideoGravity.resizeAspectFill
-            video!.frame = containerVIew.layer.bounds
-            
-            containerVIew.layer.addSublayer(video!)
-            session!.startRunning()
-        } catch {
-            print("camera does not work")
-            isCameraDisabled = true
-        }
-        
-        containerVIew.bringSubview(toFront: topLeft)
-        containerVIew.bringSubview(toFront: topRight)
-        containerVIew.bringSubview(toFront: bottomLeft)
-        containerVIew.bringSubview(toFront: bottomRight)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         GivtService.shared.delegate = self
+        
+        #if DEBUG
+        if TARGET_OS_SIMULATOR != 0 {
+            return
+        }
+        #endif
+        
+        
+        if let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) {
+            do {
+                session = AVCaptureSession()
+                video = AVCaptureVideoPreviewLayer()
+                let input = try AVCaptureDeviceInput(device: captureDevice)
+                session!.addInput(input)
+                let output = AVCaptureMetadataOutput()
+                session!.addOutput(output)
+                
+                output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
+                
+                output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
+                
+                video! = AVCaptureVideoPreviewLayer(session: session!)
+                video!.videoGravity = AVLayerVideoGravity.resizeAspectFill
+                video!.frame = containerVIew.layer.bounds
+                
+                containerVIew.layer.addSublayer(video!)
+                session!.startRunning()
+            } catch {
+                print("camera does not work")
+                isCameraDisabled = true
+            }
+        } else {
+            isCameraDisabled = true
+        }
         
         if isCameraDisabled {
             let overlay: UIView = UIView(frame: CGRect(x: 0, y: 0, width: containerVIew.frame.size.width, height: containerVIew.frame.size.height))
@@ -87,6 +88,11 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
                 self.navigationController?.popViewController(animated: true)
             }))
             self.present(alert, animated: true, completion: nil)
+        } else {
+            containerVIew.bringSubview(toFront: topLeft)
+            containerVIew.bringSubview(toFront: topRight)
+            containerVIew.bringSubview(toFront: bottomLeft)
+            containerVIew.bringSubview(toFront: bottomRight)
         }
     }
     
@@ -134,7 +140,6 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
         self.navigationController?.popViewController(animated: true)
         
     }
-    
     /*
     // MARK: - Navigation
 

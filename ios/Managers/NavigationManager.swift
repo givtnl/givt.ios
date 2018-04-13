@@ -12,10 +12,16 @@ import UserNotifications
 class NavigationManager {
     static let shared = NavigationManager()
     private var loginManager: LoginManager = LoginManager.shared
+    private var givtService: GivtService {
+        get {
+            return GivtService.shared
+        }
+    }
     private var appSettings = UserDefaults.standard
     private var logService = LogService.shared
     private let _appServices = AppServices.shared
     private let slideFromRightAnimation = PresentFromRight()
+    private var currentContextType: ContextType?
     
     var delegate: NavigationManagerDelegate?
     
@@ -52,9 +58,7 @@ class NavigationManager {
                     }))
                     context.present(noInternetAlert, animated: true, completion: nil)
                 }
-                
-                
-                
+
             }))
             context.present(currentAlert!, animated: false, completion: {})
         }

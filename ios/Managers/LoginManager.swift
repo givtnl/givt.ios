@@ -94,8 +94,8 @@ class LoginManager {
                                 UserDefaults.standard.bearerToken = accessToken
                                 let df = DateFormatter()
                                 df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                                df.locale = Locale(identifier: "en_US_POSIX") as Locale!
-                                df.timeZone = TimeZone(secondsFromGMT: 0) as TimeZone!
+                                df.locale = Locale(identifier: "en_US_POSIX") as Locale
+                                df.timeZone = TimeZone(secondsFromGMT: 0)!
                                 let date = df.date(from: expiration)
                                 UserDefaults.standard.bearerExpiration = date!
                                 self.userClaim = .give
@@ -524,5 +524,6 @@ class LoginManager {
         UserDefaults.standard.hasPinSet = false
         UserDefaults.standard.showedLastYearTaxOverview = false
         UserDefaults.standard.hasGivtsInPreviousYear = false
+        UserDefaults.standard.showcases = []
     }
 }

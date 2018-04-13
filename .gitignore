@@ -76,3 +76,5 @@ build/Pods.build/Debug-iphoneos/SwiftClient.build/Objects-normal/armv7/SwiftClie
 ios.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
 ios.xcworkspace/xcuserdata/nico.xcuserdatad/UserInterfaceState.xcuserstate
 ios.xcworkspace/xcuserdata/nico.xcuserdatad/WorkspaceSettings.xcsettings
+ios.xcworkspace/xcuserdata
+ios.xcworkspace/xcshareddata

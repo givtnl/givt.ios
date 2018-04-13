@@ -13,6 +13,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
     private var organisation = ""
     private var bestBeacon = BestBeacon()
+    
     fileprivate func popToRootWithDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
             if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
@@ -52,21 +53,36 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         
         
         shouldShowMandate { (url) in
+            var message = NSLocalizedString("SafariGiving", comment: "")
+            if url == "" {
+                //temp or has signed mandate
+                if !self.organisation.isEmpty {
+                    message = NSLocalizedString("SafariGivingToOrganisation", comment: "").replacingOccurrences(of:"{0}", with: self.organisation)
+                }
+            } else {
+                message = NSLocalizedString("Safari_GivtTransaction", comment: "")
+            }
             var parameters: [String: Any]
-            parameters = ["amountLimit" : 0,
-                          "message" : NSLocalizedString("Safari_GivtTransaction", comment: ""),
+            parameters = ["Collect" : NSLocalizedString("Collect", comment: ""),
+                          "AreYouSureToCancelGivts" :  NSLocalizedString("CancelGiftAlertMessage", comment: ""),
+                          "ConfirmBtn" : url.count > 0 ? NSLocalizedString("Confirm", comment: "") : NSLocalizedString("Next", comment: ""),
+                          "Cancel": NSLocalizedString("Cancel", comment: ""),
+                          "SlimPayInformation": NSLocalizedString("SlimPayInformation", comment: ""),
+                          "SlimPayInformationPart2" : NSLocalizedString("SlimPayInformationPart2", comment: ""),
+                          "message" : message,
+                          "Close": NSLocalizedString("Close", comment: ""),
+                          "ShareGivt" : NSLocalizedString("ShareTheGivtButton", comment: ""),
+                          "Thanks": NSLocalizedString("GivtIsBeingProcessed", comment: "").replacingOccurrences(of: "{0}", with: self.organisation),
+                          "YesSuccess": NSLocalizedString("YesSuccess", comment: ""),
                           "GUID" : UserDefaults.standard.userExt!.guid,
                           "givtObj" : trs,
                           "apiUrl" : AppConstants.apiUri + "/",
-                          "lastDigits" : "XXXXXXXXXXXXXXX7061",
                           "organisation" : self.organisation,
-                          "mandatePopup" : "",
                           "spUrl" : url,
                           "canShare" : canShare]
         
             parameters["nativeAppScheme"] = AppConstants.appScheme
             parameters["urlPart"] = AppConstants.returnUrlDir
-            
             
             guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
                 return
@@ -74,7 +90,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             
             print(jsonParameters.description)
             let plainTextBytes = jsonParameters.base64EncodedString()
-            let formatted = String(format: AppConstants.apiUri + "/givtapp4.html?msg=%@", plainTextBytes);
+            let formatted = String(format: AppConstants.apiUri + "/confirm.html?msg=%@", plainTextBytes);
             self.showWebsite(url: formatted)
         }
     }
@@ -139,4 +155,6 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             }
         }
     }
+    
+    
 }

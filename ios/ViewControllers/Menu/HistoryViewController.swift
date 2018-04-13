@@ -10,12 +10,11 @@ import UIKit
 import SVProgressHUD
 import SwipeCellKit
 import SwiftClient
+import MaterialShowcase
 
-class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
+class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate, MaterialShowcaseDelegate {
     private var givtService = GivtService.shared
     private var logService = LogService.shared
-    private var overlay: UIView?
-    private var balloon: Balloon?
     
     var models: [HistoryTransaction] = []
     var tempArray: [String: [HistoryTableViewModel]] = [String: [HistoryTableViewModel]]()
@@ -31,6 +30,9 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     @IBOutlet var containerButton: UIBarButtonItem!
     @IBOutlet var containerVIew: UIView!
     
+    private var cancelFeature: MaterialShowcase?
+    private var taxOverviewFeature: MaterialShowcase?
+    
     lazy var fmt: NumberFormatter = {
         let nf = NumberFormatter()
         nf.locale = NSLocale.current
@@ -43,9 +45,25 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     
     lazy var timeFormatter: DateFormatter = {
         var formatter = DateFormatter()
+        formatter.dateFormat = "H:mm"
+        #if DEBUG
         formatter.dateFormat = "H:mm:ss"
+        #endif
         return formatter
     }()
+    
+    func showCaseWillDismiss(showcase: MaterialShowcase) {
+        print("Showcase \(showcase.primaryText) will dismiss.")
+    }
+    func showCaseDidDismiss(showcase: MaterialShowcase) {
+        if showcase == cancelFeature {
+            cancelFeature = nil
+            showTaxFeature()
+        }
+        if showcase == taxOverviewFeature {
+            taxOverviewFeature = nil
+        }
+    }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
@@ -55,82 +73,96 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         guard let newDate = calendar.date(byAdding: Calendar.Component.minute, value: -15, to: currentDate) else { return nil }
         if tx.timestamp < newDate {
             print("can't swipe this transaction")
-            return nil
+            //return nil
         }
         
         guard orientation == .right else { return nil }
 
         
         let deleteAction = SwipeAction(style: .destructive, title: NSLocalizedString("CancelShort", comment: "")) { action, indexPath in
-            // handle action by updating model with deletion
+            
+            if tx.timestamp < newDate {
+                action.fulfill(with: ExpansionFulfillmentStyle.reset)
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             var transactionIdsToCancel = [Int]()
             self.sortedArray[indexPath.section].value[indexPath.row].collections.forEach {
                 transactionIdsToCancel.append($0.transactionId)
             }
-            
-            self.sortedArray[indexPath.section].value.remove(at: indexPath.row)
-            action.fulfill(with: .delete)
-            
-            
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: transactionIdsToCancel, options: JSONSerialization.WritingOptions.prettyPrinted)
-                self.logService.info(message: "Cancelling following transactions with Id's: " + String(data: jsonData, encoding: String.Encoding.ascii)!)
+            self.sortedArray[indexPath.section].value.remove(at: indexPath.row) // REMOVE ITEM
+            action.fulfill(with: .delete) // ANIMATION
+            let alert = UIAlertController(title: NSLocalizedString("CancelGiftAlertTitle", comment: ""), message: NSLocalizedString("CancelGiftAlertMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive, handler: { (actionButton) in
+                // GET TRANSACTION ID's
                 
-                self.givtService.delete(transactionsIds: transactionIdsToCancel, completion: { (response) in
-                    if let response = response {
-                        switch response.status {
-                        case .ok:
-
-                            if let section = tableView.headerView(forSection: indexPath.section) as? TableSectionHeader {
-                                let elligibleTx = self.sortedArray[indexPath.section].value.filter { (tx) -> Bool in
-                                    return tx.status.intValue < 4
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: transactionIdsToCancel, options: JSONSerialization.WritingOptions.prettyPrinted)
+                    self.logService.info(message: "Cancelling following transactions with Id's: " + String(data: jsonData, encoding: String.Encoding.ascii)!)
+                    
+                    self.givtService.delete(transactionsIds: transactionIdsToCancel, completion: { (response) in
+                        if let response = response {
+                            switch response.status {
+                            case .ok:
+                                
+                                if let section = tableView.headerView(forSection: indexPath.section) as? TableSectionHeader {
+                                    let elligibleTx = self.sortedArray[indexPath.section].value.filter { (tx) -> Bool in
+                                        return tx.status.intValue < 4
+                                    }
+                                    var total = 0.00
+                                    elligibleTx.forEach { (tx) in
+                                        tx.collections.forEach({ (collecte) in
+                                            total += collecte.amount
+                                        })
+                                    }
+                                    DispatchQueue.main.async {
+                                        section.amountLabel.text = self.fmt.string(from: total as NSNumber)
+                                    }
                                 }
-                                var total = 0.00
-                                elligibleTx.forEach { (tx) in
-                                    tx.collections.forEach({ (collecte) in
-                                        total += collecte.amount
-                                    })
+                                if self.sortedArray.count == 1 && self.sortedArray[indexPath.section].value.count == 0 {
+                                    self.givyContainer.isHidden = false
                                 }
-                                DispatchQueue.main.async {
-                                    section.amountLabel.text = self.fmt.string(from: total as NSNumber)
-                                }
-                            }
-                            if self.sortedArray.count == 1 && self.sortedArray[indexPath.section].value.count == 0 {
-                                self.givyContainer.isHidden = false
-                            }
-                        case .expectationFailed:
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Het annuleren van je gift is niet gelukt omdat dit langer dan 15 minuten geleden is.", preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                        default:
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            self.sortedArray[indexPath.section].value.insert(tx, at: indexPath.row)
-                            tableView.reloadData()
-                            if AppServices.shared.connectedToNetwork() {
-                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
+                            case .expectationFailed:
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                 self.present(alert, animated: true, completion: nil)
-                            } else {
-                                NavigationManager.shared.presentAlertNoConnection(context: self)
+                            default:
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                
+                                if AppServices.shared.connectedToNetwork() {
+                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                    self.present(alert, animated: true, completion: nil)
+                                } else {
+                                    NavigationManager.shared.presentAlertNoConnection(context: self)
+                                }
+                                
                             }
                             
                         }
-
-                    }
+                        
+                    })
                     
-                })
-
-            } catch {
-                self.logService.error(message: "Could not JSONSerialize transaction IDS")
-                let alert = UIAlertController(title: "Er gaat iets mis", message: "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact met ons op.", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-            }
+                } catch {
+                    self.logService.error(message: "Could not JSONSerialize transaction IDS")
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
+            }))
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.cancel, handler: { (actionButton) in
+                self.sortedArray[indexPath.section].value.insert(tx, at: indexPath.row)
+                tableView.reloadData()
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
         
         // customize the action appearance
@@ -161,19 +193,10 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         SVProgressHUD.setBackgroundColor(.white)
         SVProgressHUD.show()
         
-        //scrollView.delegate = self
-        
         tableView.delegate = self
         tableView.dataSource = self
         
         getHistory()
-        
-        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedScrollView(sender:)))
-        singleTapGestureRecognizer.numberOfTapsRequired = 1
-        singleTapGestureRecognizer.isEnabled = true
-        singleTapGestureRecognizer.cancelsTouchesInView = false
-        //scrollView.addGestureRecognizer(singleTapGestureRecognizer)
-        
         self.downloadButton.isHidden = !UserDefaults.standard.hasGivtsInPreviousYear
         
         tableView.tableFooterView = UIView()
@@ -203,7 +226,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderView")
         let header = cell as! TableSectionHeader
         header.titleLabel.text = title
-        header.amountLabel.text = fmt.string(from: total as! NSNumber)
+        header.amountLabel.text = fmt.string(from: total as NSNumber)
         
         return cell
     }
@@ -233,7 +256,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.dayNumber.text = String(tx.timestamp.getDay())
         cell.timeLabel.text = timeFormatter.string(from: tx.timestamp)
         cell.setColor(status: tx.status.intValue)
-        
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
@@ -252,89 +274,16 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !UserDefaults.standard.showedLastYearTaxOverview && UserDefaults.standard.hasGivtsInPreviousYear {
-            showOverlay()
-        }
     }
     
     @IBAction func goBack(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    @objc func tappedScrollView(sender: UITapGestureRecognizer) {
-        hideOverlay()
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        hideOverlay()
-    }
 
-    
-    func showOverlay() {
-        if let window = UIApplication.shared.keyWindow {
-            self.balloon = Balloon(text: NSLocalizedString("CheckHereForYearOverview", comment: ""))
-            self.view.addSubview(self.balloon!)
-            
-            var cgRectOfButton = CGRect()
-            if #available(iOS 11.0, *) {
-                cgRectOfButton = self.downloadButton.convert(self.downloadButton.frame, to: nil)
-            } else {
-                cgRectOfButton = (self.containerButton.value(forKey: "view") as! UIView).frame
-            }
-            let offSet = cgRectOfButton.midX - self.tableView.frame.midX
-            self.balloon!.centerTooltip(view: self.tableView, offSet)
-            
-            
-            self.balloon!.pinRight(view: self.tableView, -5)
-            
-            self.balloon!.pinTop2(view: self.view, self.containerVIew.frame.minY + 5)
-            self.view.bringSubview(toFront: self.balloon!)
-            self.view.layoutIfNeeded()
-            
-            self.balloon!.alpha = 0
-            UIView.animate(withDuration: 0.5) {
-                self.balloon!.alpha = 1
-            }
-            
-            self.balloon?.bounce()
-            
-            self.overlay = UIView()
-            self.overlay!.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            self.overlay!.translatesAutoresizingMaskIntoConstraints = false
-            self.containerVIew.addSubview(self.overlay!)
-            self.overlay!.topAnchor.constraint(equalTo: self.containerVIew.topAnchor).isActive = true
-            self.overlay!.bottomAnchor.constraint(equalTo: self.containerVIew.bottomAnchor).isActive = true
-            self.overlay!.leadingAnchor.constraint(equalTo: self.containerVIew.leadingAnchor).isActive = true
-            self.overlay!.trailingAnchor.constraint(equalTo: self.containerVIew.trailingAnchor).isActive = true
-            self.overlay!.alpha = 0.6
-            
-            UserDefaults.standard.showedLastYearTaxOverview = true
-        }
-    }
-    
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            if let touchedView = touch.view {
-                if touchedView == self.overlay {
-                    hideOverlay()
-                }
-            }
-        }
-    }
-    
-    func hideOverlay() {
-        overlay?.removeFromSuperview()
-        balloon?.removeFromSuperview()
-    }
     @IBAction func openOverViewPage(_ sender: Any) {
-            if self.balloon != nil {
-                NSLayoutConstraint.deactivate((self.balloon?.constraints)!)
-            }
-            
-            self.hideOverlay()
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxesViewController") as! TaxesViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+        self.taxOverviewFeature?.completeShowcase()
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxesViewController") as! TaxesViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -489,24 +438,24 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                 self.models.forEach({ (tx) in
                     // check if transaction with current date exists and is to same organsation
                     
-                    if let oDate = oldDate, let oOrgName = oldOrgName, let oStatus = oldStatus {
-                        var existingTx = newTransactions.filter({ (newTx) -> Bool in
+                    if let _ = oldDate, let _ = oldOrgName, let _ = oldStatus {
+                        let existingTx = newTransactions.filter({ (newTx) -> Bool in
                             newTx.orgName == tx.orgName && newTx.timestamp.toString("yyyy-MM-dd'T'HH:mm:ssZ") == tx.timestamp.toString("yyyy-MM-dd'T'HH:mm:ssZ") && tx.status == newTx.status
                         })
                         
                         if existingTx.count > 0 {
-                            existingTx.first!.collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                            existingTx.first!.collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
                         } else {
                             // does not exist
                             var collections = [Collecte]()
-                            collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                            collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
                             let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
                             newTransactions.append(newTx)
                         }
                     } else {
                         // first time
                         var collections = [Collecte]()
-                        collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as! NSNumber)!))
+                        collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
                         let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
                         newTransactions.append(newTx)
                     }
@@ -538,9 +487,68 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     SVProgressHUD.dismiss()
                     self.tableView.reloadData()
                     self.givyContainer.isHidden = true
+                    
                 }
+
+                self.showCancelFeature()
+                
+                
+                
             }
         }
+    }
+    
+    private func showCancelFeature() {
+        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.cancelGivt.rawValue) {
+            return
+        }
+        
+        self.cancelFeature = MaterialShowcase()
+        self.cancelFeature!.backgroundPromptColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        self.cancelFeature?.delegate = self
+        
+        self.cancelFeature!.primaryText = NSLocalizedString("CancelFeatureTitle", comment: "")
+        self.cancelFeature!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
+        
+        let gesture = UISwipeGestureRecognizer(target: self, action:  #selector(self.removeShowcase))
+        self.cancelFeature!.addGestureRecognizer(gesture)
+        
+        DispatchQueue.main.async {
+            self.cancelFeature!.setTargetView(tableView: self.tableView, section: 0, row: 0) // always required to set targetView
+            self.cancelFeature!.show(completion: {
+                UserDefaults.standard.showcases.append(AppConstants.Showcase.cancelGivt.rawValue)
+            })
+        }
+    }
+    
+    private func showTaxFeature() {
+        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.taxOverview.rawValue) || !UserDefaults.standard.hasGivtsInPreviousYear {
+            return
+        }
+        
+        self.taxOverviewFeature = MaterialShowcase()
+        self.taxOverviewFeature!.backgroundPromptColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        self.taxOverviewFeature?.tintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        self.taxOverviewFeature?.delegate = self
+        
+        self.taxOverviewFeature!.primaryText = NSLocalizedString("CheckHereForYearOverview", comment: "")
+        self.taxOverviewFeature!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
+        
+        let gesture = UISwipeGestureRecognizer(target: self, action:  #selector(self.removeShowcase))
+        self.taxOverviewFeature!.addGestureRecognizer(gesture)
+        
+        DispatchQueue.main.async {
+            self.taxOverviewFeature!.setTargetView(barButtonItem: self.containerButton) // always required to set targetView
+            self.taxOverviewFeature?.shouldSetTintColor = false
+            self.taxOverviewFeature!.show(completion: {
+                UserDefaults.standard.showcases.append(AppConstants.Showcase.taxOverview.rawValue)
+            })
+        }
+    }
+
+    @objc func removeShowcase() {
+        self.taxOverviewFeature?.completeShowcase()
+        self.cancelFeature?.completeShowcase()
     }
 
     @IBAction func clearViewed2017(_ sender: Any) {

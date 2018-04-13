@@ -10,6 +10,14 @@ import Foundation
 import TrustKit
 
 class AppConstants{
+    
+    enum Showcase: String {
+        case cancelGivt
+        case taxOverview
+        case giveDifferently
+        case giveSituation
+    }
+    
     static let tempUserPassword: String = "R4nd0mP@s$w0rd123"
     static let tempIban: String = "FB66GIVT12345678"
     static var AppVersionNumber: String {
@@ -36,7 +44,7 @@ class AppConstants{
         #if PRODUCTION
             return "https://api.givtapp.net" // do not put this in prod before release!
         #else
-            return "https://givtapicoredbg.azurewebsites.net"
+            return "https://givtapidebug.azurewebsites.net"
         #endif
     }()
     

@@ -365,7 +365,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "LoginSuccess" = "Veel geefplezier!";
 
 /*Tekst op de giften historiek wanneer er geen gifts gegeven zijn.*/
-"HistoryIsEmpty" = "Hier komen jouw giften te staan, maar het geld moet eerst nog rollen.";
+"HistoryIsEmpty" = "Hier komen jouw giften te staan, maar het geld moet eerst nog rollen";
 
 /*Errormelding bij een te lang e-mailadres*/
 "ErrorEmailTooLong" = "Sorry, dit e-mailadres is te lang.";
@@ -402,11 +402,11 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OfflineGegevenGivtMessage" = "Bedankt voor je Givt!\n\nZodra er een goede verbinding is met de Givt-server, wordt je Givt verwerkt.\nKijk voor de status in je overzicht.";
 "OfflineGegevenGivtMessageWithOrg" = "Bedankt voor je Givt!\n\nZodra er een goede verbinding is met de Givt-server, wordt je Givt aan {0} verwerkt.\nKijk voor de status in je overzicht.";
 "Pincode" = "Toegangscode";
-"PincodeTitleChangingPin" = "Hier beheer je het gebruik van je toegangscode.";
+"PincodeTitleChangingPin" = "Hier beheer je het gebruik van je toegangscode";
 "PincodeChangePinMenu" = "Wijzig toegangscode";
 "PincodeSetPinTitle" = "Toegangscode instellen";
-"PincodeSetPinMessage" = "Stel hier je toegangscode in.";
-"PincodeEnterPinAgain" = "Voer je toegangscode nogmaals in.";
+"PincodeSetPinMessage" = "Stel hier je toegangscode in";
+"PincodeEnterPinAgain" = "Voer je toegangscode nogmaals in";
 "PincodeDoNotMatch" = "Codes zijn niet hetzelfde.\nProbeer het opnieuw.";
 "PincodeSuccessfullTitle" = "Gelukt!";
 "PincodeSuccessfullMessage" = "Je toegangscode is succesvol opgeslagen.";
@@ -434,7 +434,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AnswerHowDoesGivingWork" = "Heel eenvoudig. Open de app om een bedrag te kiezen en beweeg je telefoon langs de collectebus, -zak of -mand. Vergeet niet om je registratie te voltooien, zodat je giften op het goede adres bezorgd kunnen worden.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app, zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op 'Geven'. Druk daarna op ‘Anders geven’ en kies voor 'Kerken', 'Stichtingen' of 'Acties'. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.";
+"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app, zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op 'Volgende'. Druk daarna op ‘Kies uit de lijst’ en kies voor 'Kerken', 'Stichtingen' of 'Acties'. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.";
 "MenuSettingsSwitchAccounts" = "Wisselen van account";
 "PrepareIUnderstand" = "Ik snap het";
 
@@ -501,10 +501,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AppVersion" = "App versie: ";
 
 /*Info over knop om collecte te activeren*/
-"Ballon_ActiveerCollecte" = "Meerdere collectes? Tik hier om een collecte toe te voegen.";
+"Ballon_ActiveerCollecte" = "Je kunt hier tot drie collectes toevoegen";
 
 /*Dubbel Tap om collecte te verwijderen*/
-"Ballon_VerwijderCollecte" = "Tik snel twee keer om de collecte te verwijderen.";
+"Ballon_VerwijderCollecte" = "Een collecte wordt verwijderd door snel twee keer te tikken";
 "ShareGivtText" = "Deel Givt";
 "ShareGivtTextLong" = "Hey! Wil je ook gewoon blijven geven?";
 "GivtGewoonBlijvenGeven" = "Givt - Gewoon blijven geven.";
@@ -513,7 +513,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Feature_ShareTitle" = "Deel Givt met iedereen!";
 "Feature_ShareSubtitle" = "Givt delen, da's een makkie. Dat kan je onderaan in het menu.";
 "AskMeLater" = "Vraag het me later";
-"GiveDifferently" = "Anders geven";
+"GiveDifferently" = "Kies uit de lijst";
 "Churches" = "Kerken";
 "Stichtingen" = "Stichtingen";
 "Acties" = "Acties";
@@ -522,15 +522,15 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SignMandateLater" = "Je hebt gekozen om het mandaat later aan te vragen, dit zal gebeuren bij de volgende keer dat je wil geven.";
 "Suggestie" = "Geven aan:";
 "CodeCanNotBeScanned" = "Helaas! Deze code kan niet gebruikt worden met de Givt-app.";
-"GiveDifferentScan" = "Code scannen";
-"GiveDiffQRText" = "Nu goed mikken! Scan de QR-code en geef.";
+"GiveDifferentScan" = "Scan de QR-code";
+"GiveDiffQRText" = "Nu goed mikken!";
 "QRCodeOrganisationNotFound" = "Het scannen is gelukt, maar de organisatie is nog even verdwaald. Probeer het later opnieuw.";
 "NoCameraAccess" = "Om de code te scannen heeft Givt je camera nodig. Ga naar de app-instellingen op je smartphone om Givt toegang te verlenen.";
 "NSCameraUsageDescription" = "We willen graag de camera gebruiken om de code te scannen.";
 "OpenSettings" = "Open instellingen";
 
 /*Vragen om het e-mailadres zodat je kan geven*/
-"NeedEmailToGive" = "Om te geven met Givt hebben we iets van identificatie nodig.";
+"NeedEmailToGive" = "Om te geven met Givt hebben we iets van identificatie nodig";
 
 /*knop Eerst geven*/
 "GiveFirst" = "Eerst geven";
@@ -539,7 +539,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Go" = "Verder";
 "NeedEmailToGiveSubtext" = "Om je giften goed af te kunnen handelen, hebben we je e-mailadres nodig.";
 "CompleteRegistrationAfterGiveFirst" = "Leuk dat je hebt gegeven met Givt!\n\nWe willen graag dat je Givt verder\nkunt gebruiken, dus vragen we je om\nje registratie compleet te maken.";
-"TermsUpdate" = "De algemene voorwaarden zijn bijgewerkt.";
+"TermsUpdate" = "De algemene voorwaarden zijn bijgewerkt";
 "AgreeToUpdateTerms" = "Bij het doorgaan ga je akkoord met de nieuwe voorwaarden.";
 "IWantToReadIt" = "Ik wil het lezen";
 "TermsTextVersion" = "1.7";
@@ -555,7 +555,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AddCollectConfirm" = "Wil je een tweede collecte toevoegen?";
 "FAQvraag0" = "Feedback of vragen?";
 "FAQantwoord0" = "Je kunt ons een bericht sturen door in het app-menu naar \"Over Givt / Contact\" te gaan en daar je vraag te stellen. We zijn natuurlijk ook bereikbaar via +31 320 320 115 of support@givtapp.net.";
-"PersonalPageHeader" = "Pas je IBAN hier aan.";
+"PersonalPageHeader" = "Pas je IBAN hier aan";
 "PersonalPageSubHeader" = "Andere Givt-gegevens kunnen worden aangepast door een e-mail te sturen naar support@givtapp.net.";
 "TitlePersonalInfo" = "Mijn gegevens";
 "PersonalInfoTempUser" = "Hé, snelle gever! Je gebruikt een tijdelijk account. We hebben je gegevens dus nog niet ontvangen.";
@@ -590,11 +590,11 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FirstUseLabelTitle2" = "Kies een bedrag en geef";
 "FirstUseLabelTitle3" = "Gebruik Givt voor elke collecte";
 "YesSuccess" = "Yes, gelukt!";
-"ToGiveWeNeedYourEmailAddress" = "Om te geven met Givt is\nalvast je e-mailadres nodig.";
+"ToGiveWeNeedYourEmailAddress" = "Om te geven met Givt is\nalvast je e-mailadres nodig";
 "WeWontSendAnySpam" = "(we sturen geen spam, beloofd)";
 
 /*In app begeleiding naar 'Anders geven?'*/
-"GiveDiffWalkthrough" = "Lukt het niet? Of wil je liever via een QR-code geven of de ontvanger selecteren uit een lijst?";
+"GiveDiffWalkthrough" = "Lukt het niet? Tik dan hier om een organisatie uit de lijst te selecteren.";
 "SwipeDownOpenGivt" = "Veeg omlaag om de Givt-app opnieuw te openen.";
 "MoreInfo" = "Meer info";
 "AppStoreRestart" = "Zie je de update niet meteen? Probeer dan even de App Store-app te herstarten.";
@@ -606,7 +606,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "DownloadYearOverview" = "Wil je het giftenoverzicht van 2017 voor je belastingaangifte downloaden?";
 "SendOverViewTo" = "We sturen het overzicht naar";
 "YearOverviewAvailable" = "Jaaroverzicht beschikbaar";
-"CheckHereForYearOverview" = "Vraag hier je jaaroverzicht op";
+"CheckHereForYearOverview" = "Hier kun je je jaaroverzicht opvragen";
 "CouldNotSendTaxOverview" = "Het lukt nu even niet om je jaaroverzicht op te vragen, probeer het later even opnieuw. Contacteer support@givtapp.net als dit probleem blijft optreden.";
 "SearchHere" = "Zoeken ...";
 "NoInternet" = "Oeps! Het lijkt erop dat je niet verbonden bent met internet. Probeer het nog eens wanneer je wel verbinding met internet hebt.";
@@ -618,10 +618,33 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AlreadyAnAccount" = "Heb je al een account?";
 "UnitedKingdom" = "Verenigd Koninkrijk";
 "CancelShort" = "Annuleer";
-"CantCancelGiftAfter15Minutes" = "Het annuleren van je gift is niet gelukt omdat dit langer dan 15 minuten geleden is.";
+"CantCancelGiftAfter15Minutes" = "Helaas! Het is langer dan 15 minuten geleden dat je deze gift hebt gedaan.";
 "UnknownErrorCancelGivt" = "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact op met ons op support@givtapp.net voor meer informatie.";
 "TransactionCancelled" = "De gift naar {0} zal geannuleerd worden.";
 "Cancelled" = "Geannuleerd";
 "Undo" = "Ongedaan maken";
 "FAQVraag16" = "Kan ik mijn giften herroepen?";
-"FAQAntwoord16" = "Ja, je kan je giften herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Op je bankafschrift zal je zien dat je gift afgeschreven is door Givt B.V. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen.\nIn het eerste kwartier na de gift kan je ook via het giftenoverzicht een gift annuleren door een gift naar links te swipen (vegen). Dit is enkel mogelijk in de eerste 15 minuten na het geven; deze manier van herroepen (annuleren) is kosteloos.";
+"FAQAntwoord16" = "Ja, je kan je giften herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Op je bankafschrift zal je zien dat je gift afgeschreven is door Givt B.V. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen.\n\nIn het eerste kwartier na de gift kan je ook via het giftenoverzicht een gift annuleren door een gift naar links te swipen (vegen). Dit is enkel mogelijk in de eerste 15 minuten na het geven; deze manier van herroepen (annuleren) is kosteloos.";
+
+/*Staat je vraag er niet tussen? (FAQ)*/
+"FAQvraag17" = "Staat je vraag er niet tussen?";
+
+/*antwoord 'Staat je vraag er niet tussen?'*/
+"FAQantwoord17" = "Stuur ons dan een bericht via de app (\"Over Givt / Contact\" in het menu), via mail naar support@givtapp.net of bel ons op +31 320 320 115.";
+"SelectContextCollect" = "Geef in de kerk, aan de deur of op straat";
+"GiveContextQR" = "Geef door middel van een QR-code";
+"SelectContextList" = "Kies een doel uit de lijst";
+"SelectContext" = "Kies hoe je wil geven";
+"ChooseWhoYouWantToGiveTo" = "Kies aan wie je wil geven";
+"CancelGiftAlertTitle" = "Gift annuleren?";
+"CancelGiftAlertMessage" = "Weet je zeker dat je deze gift wil annuleren?";
+"GotIt" = "Ik snap het";
+"CancelFeatureTitle" = "Binnen een kwartier kun je een gift annuleren door naar links te vegen";
+"CancelFeatureMessage" = "Tik op het scherm om dit bericht te verbergen";
+"GiveSubtitle" = "Je kan op verschillende manieren ‘Givten’. Hier kun je kiezen wat op dit moment het best bij jou past.";
+"Confirm" = "Bevestig";
+"SafariGivingToOrganisation" = "Je hebt nu gegeven aan {0}. Hieronder vind je het overzicht van je gift.";
+"SafariGiving" = "Je hebt nu gegeven. Hieronder vind je het overzicht van je gift.";
+"GiveSituationShowcaseTitle" = "Kies in het volgende scherm hoe je wil geven";
+"SoonMessage" = "Binnenkort...";
+"GiveWithYourPhone" = "Beweeg je telefoon";

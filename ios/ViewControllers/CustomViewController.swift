@@ -10,6 +10,8 @@ import UIKit
 import LGSideMenuController
 
 class CustomViewController: UINavigationController  {
+    let slideAnimator = CustomPresentModalAnimation()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
