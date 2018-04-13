@@ -2438,7 +2438,7 @@ Kijk voor de status in je overzicht.</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="753" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Udo-sJ-vuI">
-                                                            <rect key="frame" x="8" y="8" width="386" height="134"/>
+                                                            <rect key="frame" x="20" y="8" width="374" height="134"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" image="collectebus" translatesAutoresizingMaskIntoConstraints="NO" id="Y49-KM-qzd">
                                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="134"/>
@@ -2447,13 +2447,13 @@ Kijk voor de status in je overzicht.</string>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="sdf sdfsdf sf qqsdf sdffsdf sdfsdf sdfsdf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXi-cj-P3J">
-                                                                    <rect key="frame" x="120" y="0.0" width="234" height="134"/>
+                                                                    <rect key="frame" x="120" y="0.0" width="222" height="134"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightarrow-purple" translatesAutoresizingMaskIntoConstraints="NO" id="pH0-bf-bQe">
-                                                                    <rect key="frame" x="374" y="0.0" width="12" height="134"/>
+                                                                    <rect key="frame" x="362" y="0.0" width="12" height="134"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="12" id="VCP-uk-xaw"/>
                                                                     </constraints>
@@ -2463,7 +2463,7 @@ Kijk voor de status in je overzicht.</string>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="Udo-sJ-vuI" firstAttribute="leading" secondItem="1ZM-hf-lg4" secondAttribute="leading" constant="8" id="MbS-rO-SxG"/>
+                                                        <constraint firstItem="Udo-sJ-vuI" firstAttribute="leading" secondItem="1ZM-hf-lg4" secondAttribute="leading" constant="20" id="MbS-rO-SxG"/>
                                                         <constraint firstItem="Udo-sJ-vuI" firstAttribute="top" secondItem="1ZM-hf-lg4" secondAttribute="top" constant="8" id="RZL-ln-63h"/>
                                                         <constraint firstAttribute="bottom" secondItem="Udo-sJ-vuI" secondAttribute="bottom" constant="8" id="uzO-mM-Php"/>
                                                         <constraint firstAttribute="trailing" secondItem="Udo-sJ-vuI" secondAttribute="trailing" constant="20" id="wB0-P9-2FU"/>
