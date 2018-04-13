@@ -136,6 +136,8 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         navigationController?.navigationBar.isTranslucent = true
         
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgb: 0x2E2957), NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 17)!]
+        
+        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
