@@ -353,6 +353,14 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                     if let res = res {
                         if res.basicStatus == .ok {
                             self.log.info(message: "Posted Givt to the server")
+                            if let data = res.data {
+                                do {
+                                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                                    print(parsedData)
+                                } catch {
+                                    
+                                }
+                            }
                         } else if res.status == .expectationFailed {
                             self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
                         } else {
