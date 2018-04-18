@@ -29,6 +29,21 @@ extension UserDefaults {
         case hasGivtsInPreviousYear
         case lastGivtToOrganisation
         case showcases
+        case showCasesByUserID
+    }
+    
+    var showCasesByUserID: [String: [String]] {
+        get {
+            if let stringArray = dictionary(forKey: UserDefaultsKeys.showCasesByUserID.rawValue) as? [String: [String]] {
+                return stringArray
+            } else {
+                return [:]
+            }
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.showCasesByUserID.rawValue)
+            synchronize()
+        }
     }
     
     var showcases: [String] {

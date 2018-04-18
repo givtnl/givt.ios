@@ -461,22 +461,30 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     func showFirstBalloon() {
-        if UserDefaults.standard.viewedCoachMarks != 0 {
+        if UserDefaults.standard.viewedCoachMarks != 0 || UserDefaults.standard.showcases.contains(AppConstants.Showcase.multipleCollects.rawValue) {
+            if !UserDefaults.standard.showcases.contains(AppConstants.Showcase.multipleCollects.rawValue) {
+                UserDefaults.standard.showcases.append(AppConstants.Showcase.multipleCollects.rawValue)
+            }
             return
         }
         
         showShowcase(message: NSLocalizedString("Ballon_ActiveerCollecte", comment: ""), targetView: self.collectionButton)
         
         UserDefaults.standard.viewedCoachMarks += 1
+        UserDefaults.standard.showcases.append(AppConstants.Showcase.multipleCollects.rawValue)
     }
 
     func showSecondBalloon(view: UIView, arrowPointsTo: UIView) {
-        if UserDefaults.standard.viewedCoachMarks != 1 {
+        if UserDefaults.standard.viewedCoachMarks != 1 || UserDefaults.standard.showcases.contains(AppConstants.Showcase.deleteMultipleCollects.rawValue){
+            if !UserDefaults.standard.showcases.contains(AppConstants.Showcase.deleteMultipleCollects.rawValue) {
+                UserDefaults.standard.showcases.append(AppConstants.Showcase.deleteMultipleCollects.rawValue)
+            }
             return
         }
         showShowcase(message: NSLocalizedString("Ballon_VerwijderCollecte", comment: ""), targetView: self.amountLabel2)
         
         UserDefaults.standard.viewedCoachMarks += 1
+        UserDefaults.standard.showcases.append(AppConstants.Showcase.deleteMultipleCollects.rawValue)
     }
 
     func reset() {

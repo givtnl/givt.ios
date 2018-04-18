@@ -16,6 +16,8 @@ class AppConstants{
         case taxOverview
         case giveDifferently
         case giveSituation
+        case multipleCollects
+        case deleteMultipleCollects
     }
     
     static let tempUserPassword: String = "R4nd0mP@s$w0rd123"
