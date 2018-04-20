@@ -9,16 +9,7 @@
 import Foundation
 import TrustKit
 
-class AppConstants{
-    
-    enum Showcase: String {
-        case cancelGivt
-        case taxOverview
-        case giveDifferently
-        case giveSituation
-        case multipleCollects
-        case deleteMultipleCollects
-    }
+class AppConstants {
     
     static let tempUserPassword: String = "R4nd0mP@s$w0rd123"
     static let tempIban: String = "FB66GIVT12345678"

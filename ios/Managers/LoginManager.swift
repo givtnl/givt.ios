@@ -180,10 +180,7 @@ class LoginManager {
                     config.city = parsedData["City"] as! String
                     config.countryCode = String(describing: parsedData["CountryCode"] as! Int)
                     config.iban = parsedData["IBAN"] as! String
-                    if let dict = UserDefaults.standard.showCasesByUserID[config.guid], !dict.isEmpty {
-                        UserDefaults.standard.showcases = dict
-                    }
-                    
+
                     UserDefaults.standard.userExt = config
                     UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 500 : parsedData["AmountLimit"] as! Int
                     completionHandler(true)
@@ -513,9 +510,6 @@ class LoginManager {
     
     func logout() {
         self.log.info(message: "App settings got cleared by either terminate account/switch account")
-        
-        UserDefaults.standard.showCasesByUserID[UserDefaults.standard.userExt!.guid] = UserDefaults.standard.showcases
-        UserDefaults.standard.showcases = []
         
         UserDefaults.standard.viewedCoachMarks = 0
         UserDefaults.standard.amountLimit = 0
