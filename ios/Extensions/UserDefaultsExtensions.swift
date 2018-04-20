@@ -42,8 +42,9 @@ extension UserDefaults {
     var showcaseByGuid: [Showcase] {
         get {
             if let dict = dictionary(forKey: UserDefaultsKeys.showcasesByGuid.rawValue) as? [String: [Showcase]] {
-                return dict[userExt!.guid]
+                return dict[userExt!.guid]!
             }
+            return []
         }
         set(value) {
             

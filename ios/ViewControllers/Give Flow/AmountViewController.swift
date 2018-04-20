@@ -62,9 +62,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     func showCaseDidDismiss(showcase: MaterialShowcase) {
         if showcase.primaryText == NSLocalizedString("Ballon_ActiveerCollecte", comment: "") {
-            if !UserDefaults.standard.showcases.contains(AppConstants.Showcase.giveSituation.rawValue) {
+            if !UserDefaults.standard.showcases.contains(UserDefaults.Showcase(rawValue: AppConstants.Showcase.giveSituation.rawValue)!) {
                 showShowcase(message: NSLocalizedString("GiveSituationShowcaseTitle", comment: "") + " 😉", targetView: btnGive)
-                UserDefaults.standard.showcases.append(AppConstants.Showcase.giveSituation.rawValue)
+                UserDefaults.standard.showcases.append(UserDefaults.Showcase(rawValue: AppConstants.Showcase.giveSituation.rawValue)!)
             }
         }
     }
@@ -160,9 +160,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         navigiationManager.delegate = self
         showFirstBalloon()
         
-        if UserDefaults.standard.viewedCoachMarks >= 2 && !UserDefaults.standard.showcases.contains(AppConstants.Showcase.giveSituation.rawValue) {
+        if UserDefaults.standard.viewedCoachMarks >= 2 && !UserDefaults.standard.showcases.contains(UserDefaults.Showcase(rawValue: AppConstants.Showcase.giveSituation.rawValue)!) {
             showShowcase(message: NSLocalizedString("GiveSituationShowcaseTitle", comment: "GiveSituationShowcaseTitle"), targetView: btnGive)
-            UserDefaults.standard.showcases.append(AppConstants.Showcase.giveSituation.rawValue)
+            UserDefaults.standard.showcases.append(UserDefaults.Showcase(rawValue: AppConstants.Showcase.giveSituation.rawValue)!)
         }
         
         
