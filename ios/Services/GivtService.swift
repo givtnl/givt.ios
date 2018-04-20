@@ -318,16 +318,85 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    func giveManually(antennaId: String) {
+    func giveManually(antennaId: String, afterGivt: ((Int, [Transaction]) -> ())? = nil) {
         bestBeacon.beaconId = antennaId
         if let idx = antennaId.index(of: ".") {
             bestBeacon.organisation = String(antennaId[..<idx])
         } else {
             bestBeacon.organisation = antennaId
         }
-        give(antennaID: antennaId)
+        
+        if let afterGivt = afterGivt {
+            LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
+            df.timeZone = TimeZone(abbreviation: "UTC")
+            df.locale = Locale(identifier: "en_US_POSIX")
+            let date = df.string(from: Date())
+            print(date)
+            var transactions = [Transaction]()
+            for (index, value) in amounts.enumerated() {
+                if value >= 0.50 {
+                    print(value)
+                    let newTransaction = Transaction(amount: value, beaconId: antennaId, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
+                    transactions.append(newTransaction)
+                }
+            }
+            
+            giveCelebrate(transactions: transactions, afterGivt: { seconds in
+                if seconds > 0 {
+                    afterGivt(seconds, transactions)
+                } else {
+                    self.delegate?.onGivtProcessed(transactions: transactions)
+                }
+            })
+        } else {
+            give(antennaID: antennaId)
+        }
+        
     }
     
+    private func giveCelebrate(transactions: [Transaction], afterGivt: @escaping (Int) -> ()) {
+        
+        var object = ["Transactions": []]
+        for transaction in transactions {
+            object["Transactions"]?.append(transaction.convertToDictionary())
+        }
+        do {
+            try client.post(url: "/api/Givts/Multiple", data: object) { (res) in
+                if let res = res {
+                    if res.basicStatus == .ok {
+                        self.log.info(message: "Posted Givt to the server")
+                        if let data = res.data {
+                            do {
+                                let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                                if let secondsToCelebration = parsedData["SecondsToCelebration"] as? Int {
+                                    if secondsToCelebration > 0 {
+                                        afterGivt(secondsToCelebration)
+                                        return
+                                    }
+                                }
+                                afterGivt(-1)
+                                print(parsedData)
+                            } catch {
+                                afterGivt(-1)
+                            }
+                        }
+                        afterGivt(-1)
+                    } else {
+                        afterGivt(-1)
+                    }
+                } else {
+                    //no response
+                    afterGivt(-1)
+                    self.cacheGivt(transactions: transactions)
+                }
+            }
+        } catch {
+            afterGivt(-1)
+            self.log.error(message: "Unknown error : \(error)")
+        }
+    }
     
     private func cacheGivt(transactions: [Transaction]){
         
@@ -356,6 +425,11 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                             if let data = res.data {
                                 do {
                                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                                    if let secondsToCelebration = parsedData["SecondsToCelebration"] as? Int {
+                                        if secondsToCelebration > 0 {
+                                            print(secondsToCelebration)
+                                        }
+                                    }
                                     print(parsedData)
                                 } catch {
                                     

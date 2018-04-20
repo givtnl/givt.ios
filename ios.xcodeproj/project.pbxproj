@@ -94,6 +94,7 @@
 		D7BC58D620776361008C9497 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC58D520776361008C9497 /* Context.swift */; };
 		D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */; };
 		D7C5120E20761DC7002B1618 /* ChooseContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */; };
+		D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB10320875E9F004139CB /* CelebrateViewController.swift */; };
 		D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */; };
 		D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */; };
 		D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */; };
@@ -246,6 +247,7 @@
 		D7BC58D520776361008C9497 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextViewController.swift; sourceTree = "<group>"; };
 		D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextTableViewCell.swift; sourceTree = "<group>"; };
+		D7CAB10320875E9F004139CB /* CelebrateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateViewController.swift; sourceTree = "<group>"; };
 		D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pincode.storyboard; sourceTree = "<group>"; };
 		D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavViewController.swift; sourceTree = "<group>"; };
 		D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
@@ -529,6 +531,7 @@
 				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
 				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
 				D726298C1FFBD10C00743224 /* BaseScanViewController.swift */,
+				D7CAB10320875E9F004139CB /* CelebrateViewController.swift */,
 			);
 			path = "Give Flow";
 			sourceTree = "<group>";
@@ -901,6 +904,7 @@
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
+				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */,
 				D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */,

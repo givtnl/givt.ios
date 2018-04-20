@@ -164,36 +164,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         settingsTable.reloadData()
     }
     
-    @objc private func toggle() {
-        guard let device = device else { return }
-        do {
-            try device.lockForConfiguration()
-            if device.torchMode == .off {
-                device.torchMode = .on
-            } else {
-                device.torchMode = .off
-            }
-            
-            device.unlockForConfiguration()
-            
-        } catch {
-            print("Torch could not be used")
-        }
-    }
     private var device: AVCaptureDevice?
     private var blinkTimer: Timer = Timer()
     private func toggleTorch() {
-        guard let device = AVCaptureDevice.default(for: AVMediaType.video)
-            else {return}
-        self.device = device
-        if self.device!.hasTorch {
-            self.blinkTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(toggle), userInfo: nil, repeats: true)
-            
-            let task = DispatchWorkItem { self.blinkTimer.invalidate() }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10, execute: task)
-        } else {
-            print("Torch is not available")
-        }
+        InfraManager.shared.flashTorch(length: 10, interval: 0.1)
     }
     
     private func changePersonalInfo() {

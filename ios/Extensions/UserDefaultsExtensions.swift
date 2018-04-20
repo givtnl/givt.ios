@@ -29,11 +29,30 @@ extension UserDefaults {
         case hasGivtsInPreviousYear
         case lastGivtToOrganisation
         case showcases
+        case showcasesByGuid
     }
     
-    var showcases: [String] {
+    enum Showcase: String {
+        case cancelGivt
+        case taxOverview
+        case giveDifferently
+        case giveSituation
+    }
+    
+    var showcaseByGuid: [Showcase] {
         get {
-            if let stringArray = stringArray(forKey: UserDefaultsKeys.showcases.rawValue) {
+            if let dict = dictionary(forKey: UserDefaultsKeys.showcasesByGuid.rawValue) as? [String: [Showcase]] {
+                return dict[userExt!.guid]
+            }
+        }
+        set(value) {
+            
+        }
+    }
+    
+    var showcases: [Showcase] {
+        get {
+            if let stringArray = array(forKey: UserDefaultsKeys.showcases.rawValue) as? [Showcase] {
                 return stringArray
             } else {
                 return []

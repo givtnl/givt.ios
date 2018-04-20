@@ -201,7 +201,18 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     @IBOutlet var navBar: UINavigationItem!
     @IBAction func btnGive(_ sender: Any) {
         log.info(message: "Giving manually from the list")
-        GivtService.shared.giveManually(antennaId: (prevPos?.nameSpace)!)
+        GivtService.shared.giveManually(antennaId: (prevPos?.nameSpace)!, afterGivt: { (seconds, transactions) in
+            if seconds > 0 {
+                print("celebrationn", seconds)
+                DispatchQueue.main.async {
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                    vc.secondsLeft = seconds
+                    vc.transactions = transactions
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                
+            }
+        })
     }
     override func viewDidLoad() {
         super.viewDidLoad()

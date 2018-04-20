@@ -1432,6 +1432,42 @@ Kijk voor de status in je overzicht.</string>
             </objects>
             <point key="canvasLocation" x="2186.9565217391305" y="-242.11956521739131"/>
         </scene>
+        <!--Celebrate View Controller-->
+        <scene sceneID="WUb-FS-nYY">
+            <objects>
+                <viewController storyboardIdentifier="YayController" id="wgi-3q-Iiw" customClass="CelebrateViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="372-H4-Qb3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123456" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fjc-TE-i8Z">
+                                <rect key="frame" x="20" y="634" width="374" height="82"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-aw-gWW">
+                                <rect key="frame" x="73" y="155" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9Ag-aw-gWW" firstAttribute="centerY" secondItem="372-H4-Qb3" secondAttribute="centerY" id="13Z-Xs-XnI"/>
+                            <constraint firstItem="Fjc-TE-i8Z" firstAttribute="leading" secondItem="QgJ-lU-eRf" secondAttribute="leading" constant="20" id="1Pb-Fl-BYM"/>
+                            <constraint firstItem="9Ag-aw-gWW" firstAttribute="centerX" secondItem="372-H4-Qb3" secondAttribute="centerX" id="Ehz-f7-qH4"/>
+                            <constraint firstItem="QgJ-lU-eRf" firstAttribute="trailing" secondItem="Fjc-TE-i8Z" secondAttribute="trailing" constant="20" id="PF1-a2-QsL"/>
+                            <constraint firstItem="QgJ-lU-eRf" firstAttribute="bottom" secondItem="Fjc-TE-i8Z" secondAttribute="bottom" constant="20" id="q75-LE-HuI"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QgJ-lU-eRf"/>
+                    </view>
+                    <connections>
+                        <outlet property="timer" destination="Fjc-TE-i8Z" id="Y9K-25-PtT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1o-KS-3Qy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2865" y="-893"/>
+        </scene>
         <!--Anders geven-->
         <scene sceneID="wVu-49-Db8">
             <objects>
