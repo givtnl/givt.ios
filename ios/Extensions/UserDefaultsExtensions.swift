@@ -28,8 +28,9 @@ extension UserDefaults {
         case showedLastYearTaxOverview
         case hasGivtsInPreviousYear
         case lastGivtToOrganisation
-        case showcases
-        case showcasesByGuid
+        @available(*, deprecated, message: "Do not use. Use showCasesByUserId instead.")
+        case showcases              //deprecated
+        case showCasesByUserID
     }
     
     enum Showcase: String {
@@ -37,23 +38,39 @@ extension UserDefaults {
         case taxOverview
         case giveDifferently
         case giveSituation
+        case multipleCollects
+        case deleteMultipleCollects
     }
     
-    var showcaseByGuid: [Showcase] {
+    var showCasesByUserID: [String] {
         get {
-            if let dict = dictionary(forKey: UserDefaultsKeys.showcasesByGuid.rawValue) as? [String: [Showcase]] {
-                return dict[userExt!.guid]!
+            if let showcaseDict = dictionary(forKey: UserDefaultsKeys.showCasesByUserID.rawValue) as? [String: [String]] {
+                if let uext = userExt, let retArray = showcaseDict[uext.guid] {
+                    return retArray
+                } else {
+                    return []
+                }
+            } else {
+                return []
             }
-            return []
         }
         set(value) {
+            var showcaseDict: [String: [String]] = [:]
+            if let originalDict = dictionary(forKey: UserDefaultsKeys.showCasesByUserID.rawValue) as? [String: [String]] {
+                showcaseDict = originalDict
+            }
             
+            if let uext = userExt {
+                showcaseDict[uext.guid] = value
+                set(showcaseDict, forKey: UserDefaultsKeys.showCasesByUserID.rawValue)
+            }
+            synchronize()
         }
     }
     
-    var showcases: [Showcase] {
+    var showcases: [String] {
         get {
-            if let stringArray = array(forKey: UserDefaultsKeys.showcases.rawValue) as? [Showcase] {
+            if let stringArray = stringArray(forKey: UserDefaultsKeys.showcases.rawValue) {
                 return stringArray
             } else {
                 return []

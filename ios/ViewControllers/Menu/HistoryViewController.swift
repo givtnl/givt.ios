@@ -499,7 +499,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     }
     
     private func showCancelFeature() {
-        if UserDefaults.standard.showcases.contains(UserDefaults.Showcase(rawValue: AppConstants.Showcase.cancelGivt.rawValue)!) {
+        if UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.cancelGivt.rawValue) {
             return
         }
         
@@ -516,13 +516,13 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         DispatchQueue.main.async {
             self.cancelFeature!.setTargetView(tableView: self.tableView, section: 0, row: 0) // always required to set targetView
             self.cancelFeature!.show(completion: {
-                UserDefaults.standard.showcases.append(UserDefaults.Showcase(rawValue: AppConstants.Showcase.cancelGivt.rawValue)!)
+                UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.cancelGivt.rawValue)
             })
         }
     }
     
     private func showTaxFeature() {
-        if UserDefaults.standard.showcases.contains(UserDefaults.Showcase(rawValue: AppConstants.Showcase.taxOverview.rawValue)!) || !UserDefaults.standard.hasGivtsInPreviousYear {
+        if UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue) || !UserDefaults.standard.hasGivtsInPreviousYear {
             return
         }
         
@@ -541,7 +541,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             self.taxOverviewFeature!.setTargetView(barButtonItem: self.containerButton) // always required to set targetView
             self.taxOverviewFeature?.shouldSetTintColor = false
             self.taxOverviewFeature!.show(completion: {
-                UserDefaults.standard.showcases.append(UserDefaults.Showcase(rawValue: AppConstants.Showcase.taxOverview.rawValue)!)
+                UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.taxOverview.rawValue)
             })
         }
     }

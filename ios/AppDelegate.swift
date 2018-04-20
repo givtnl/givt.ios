@@ -46,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GivtService.shared.resume()
         
+        if !UserDefaults.standard.showcases.isEmpty {
+            UserDefaults.standard.showCasesByUserID = UserDefaults.standard.showcases
+            UserDefaults.standard.showcases = []
+        }
         
         return true
     }
