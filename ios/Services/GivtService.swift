@@ -55,6 +55,16 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         return orgName.first?["OrgName"] as? String
     }
     
+    func isCelebration(orgNameSpace: String) -> Bool {
+        let org = orgBeaconList.filter({ (organisation) -> Bool in
+            return organisation["EddyNameSpace"] as? String == orgNameSpace
+        })
+        if let result = org.first, let celebration = result["Celebrations"] as? Int8 {
+            return celebration == 1
+        }
+        return false
+    }
+    
     var lastGivtOrg: String {
         get {
             if bestBeacon.organisation != nil {
@@ -326,7 +336,9 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
             bestBeacon.organisation = antennaId
         }
         
-        if let afterGivt = afterGivt {
+        let shouldCelebrate = isCelebration(orgNameSpace: bestBeacon.organisation!)
+        print("should celebrate \(shouldCelebrate)")
+        if let afterGivt = afterGivt, shouldCelebrate {
             LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
             let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
@@ -542,7 +554,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                     data["dtLastUpdated"] = date
                 }
             }
-            client.get(url: "/api/Organisation/BeaconList", data: data, callback: { (response) in
+            client.get(url: "/api/v2/collectgroups/applist", data: data, callback: { (response) in
                 if let response = response, let data = response.data {
                     if response.statusCode == 200 {
                         do {
