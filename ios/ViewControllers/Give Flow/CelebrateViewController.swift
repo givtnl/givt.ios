@@ -57,6 +57,8 @@ class CelebrateViewController: BaseScanViewController {
         secondsLeft = secondsLeft - 1
         if secondsLeft <= 0 {
             countdownTimer.invalidate()
+            title = NSLocalizedString("AfterCelebrationTitle", comment: "")
+            message.text = NSLocalizedString("AfterCelebrationMessage", comment: "")
             timer.text = ""
             InfraManager.shared.flashTorch(length: TORCH_TIME, interval: 0.1)
         } else {

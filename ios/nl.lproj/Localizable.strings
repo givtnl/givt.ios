@@ -649,4 +649,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SoonMessage" = "Binnenkort...";
 "GiveWithYourPhone" = "Beweeg je telefoon";
 "CelebrateTitle" = "Nog eventjes wachten...";
-"CelebrateMessage" = "Zwier je smartphone in de lucht vooraleer de aftelklok op 0 staat. Wat er dan gebeurd? Dat zal je zelf zien... én voelen.";
+"CelebrateMessage" = "Zwier je smartphone in de lucht voor de aftelklok op 0 staat. Wat er dan gebeurt? Dat merk je vanzelf...";
+"AfterCelebrationTitle" = "Zwaaien maar!";
+"AfterCelebrationMessage" = "Het is zover, zwaai er op los! (Wij zijn niet verantwoordelijk voor eventuele elleboogstoten.)";

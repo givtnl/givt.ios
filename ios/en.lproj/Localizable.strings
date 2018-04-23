@@ -630,4 +630,6 @@
 "SoonMessage" = "Coming soon...";
 "GiveWithYourPhone" = "Move your phone";
 "CelebrateTitle" = "... and now wait";
-"CelebrateMessage" = "Throw your smartphone in the air before the timer reaches 0 seconds. What's going to happen? You'll soon see it... and feel it.";
+"CelebrateMessage" = "Throw your smartphone in the air before the timer reaches 0 seconds. What's going to happen? You'll soon see...";
+"AfterCelebrationTitle" = "And now... wave!";
+"AfterCelebrationMessage" = "Now is the time, wave away! (We're not responsible for any elbow bumps that might occur.)";
