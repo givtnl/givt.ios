@@ -11,6 +11,7 @@ import AudioToolbox
 
 class CelebrateViewController: BaseScanViewController {
 
+    @IBOutlet var gif: UIImageView!
     @IBOutlet var message: UILabel!
     @IBOutlet var timer: UILabel!
     var secondsLeft: Int!
@@ -23,7 +24,7 @@ class CelebrateViewController: BaseScanViewController {
         secondsLeft = 5
         #endif
         timer.text = formatTime()
-        
+        gif.loadGif(name: "celebration")
         title = NSLocalizedString("CelebrateTitle", comment: "")
         message.text = NSLocalizedString("CelebrateMessage", comment: "")
         countdownTimer = Timer.scheduledTimer(timeInterval:

@@ -1441,20 +1441,20 @@ Kijk voor de status in je overzicht.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="123456" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fjc-TE-i8Z">
-                                <rect key="frame" x="20" y="466.66666666666669" width="374" height="249.33333333333331"/>
+                                <rect key="frame" x="20" y="476.33333333333331" width="374" height="239.66666666666669"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="60"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="givy-party" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-aw-gWW">
-                                <rect key="frame" x="63" y="269.66666666666669" width="288" height="197"/>
+                                <rect key="frame" x="63" y="260.33333333333331" width="288" height="216"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="197" id="97N-LH-ZyF"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="288" id="idb-x3-YM3"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="216" id="97N-LH-ZyF"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="320" id="idb-x3-YM3"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I1-Hy-cdh">
-                                <rect key="frame" x="20" y="73.999999999999986" width="374" height="195.66666666666663"/>
+                                <rect key="frame" x="20" y="74.000000000000014" width="374" height="186.33333333333337"/>
                                 <string key="text">Het aftellen is begonnen! Zwier je smartphone in de lucht vooraleer de aftelklok op 0 staat Wat er dan precies gebeurd? Dat zal je zelf zien... én voelen.</string>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1479,6 +1479,7 @@ Kijk voor de status in je overzicht.</string>
                     <navigationItem key="navigationItem" title="Feest" id="rn2-Bs-Jmo"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="gif" destination="9Ag-aw-gWW" id="hwk-Zi-KrJ"/>
                         <outlet property="message" destination="1I1-Hy-cdh" id="TH3-UE-gAz"/>
                         <outlet property="timer" destination="Fjc-TE-i8Z" id="Y9K-25-PtT"/>
                     </connections>
