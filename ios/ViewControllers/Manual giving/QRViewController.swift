@@ -119,7 +119,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     }
     
     func giveManually(scanResult: String) {
-        GivtService.shared.giveQR(scanResult: scanResult) { (success) in
+        GivtService.shared.giveQR(scanResult: scanResult, completionHandler: { success in
             if !success {
                 self.log.warning(message: "Could not scan QR: " + scanResult )
                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
@@ -133,7 +133,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
                 alert.addAction(cancel)
                 self.present(alert, animated: true, completion: nil)
             }
-        }
+        })
     }
     
     @IBAction func goBack(_ sender: Any) {

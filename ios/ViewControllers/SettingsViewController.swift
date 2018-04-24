@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import AVFoundation
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIActivityItemSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,6 +127,11 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items.append([])
             items.append([])
             
+            #if DEBUG
+            let zaklamp = Setting(name: "Toggle zaklamp", image: UIImage(named: "list")!, callback: { self.toggleTorch() } )
+            items[0].append(zaklamp)
+            #endif
+            
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
             items[0].append(givts)
             let givtsTaxOverviewAvailable: Setting?
@@ -156,6 +162,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         
         settingsTable.reloadData()
+    }
+    
+    private var device: AVCaptureDevice?
+    private var blinkTimer: Timer = Timer()
+    private func toggleTorch() {
+        InfraManager.shared.flashTorch(length: 10, interval: 0.1)
     }
     
     private func changePersonalInfo() {

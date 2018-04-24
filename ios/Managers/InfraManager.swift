@@ -7,14 +7,48 @@
 //
 
 import Foundation
+import AVFoundation
 
 class InfraManager {
     static var shared = InfraManager()
     private let client = APIClient.shared
     private let log = LogService.shared
-    
+    private var device: AVCaptureDevice?
     private init() {
         
+    }
+    var timer: Timer?
+    func flashTorch(length: Double, interval: Double) {
+        guard let device = AVCaptureDevice.default(for: AVMediaType.video)
+            else {return}
+        self.device = device
+        if device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+            }
+            catch {
+                print("no can do torch")
+            }
+            timer = Timer.scheduledTimer(timeInterval: TimeInterval(interval), target: self, selector: #selector(toggle), userInfo: nil, repeats: true)
+
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + length) {
+                self.timer!.invalidate()
+                self.device!.torchMode = .off
+                self.device!.unlockForConfiguration()
+            }
+        } else {
+            print("Torch is not available")
+        }
+    }
+    
+    @objc private func toggle() {
+            if device!.torchMode == .off {
+                device!.torchMode = .on
+                AudioServicesPlayAlertSound(1520)
+            } else {
+                device!.torchMode = .off
+            }
+
     }
     
     private func checkForUpdates(callback: @escaping(Bool?) -> Void) {

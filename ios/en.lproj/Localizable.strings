@@ -599,7 +599,7 @@
 "AlreadyAnAccount" = "Already have an account?";
 "UnitedKingdom" = "United Kingdom";
 "CancelShort" = "Cancel";
-"CantCancelGiftAfter15Minutes" = "Sorry! More than 15 minutes have passed since you gave this donation.";
+"CantCancelGiftAfter15Minutes" = "Sorry! More than 15 minutes have passed since you made this donation.";
 "UnknownErrorCancelGivt" = "Due to an unexpected error, we could not cancel your donation. Get in touch with us at support@givtapp.net for more information.";
 "TransactionCancelled" = "The donation to {0} will be cancelled.";
 "Cancelled" = "Cancelled";
@@ -629,3 +629,7 @@
 "GiveSituationShowcaseTitle" = "Next, choose how you want to give";
 "SoonMessage" = "Coming soon...";
 "GiveWithYourPhone" = "Move your phone";
+"CelebrateTitle" = "... and now wait ...";
+"CelebrateMessage" = "Throw your smartphone in the air (but hold on to it) before the timer hits 0. What's going to happen? You'll soon see...";
+"AfterCelebrationTitle" = "And now... wave!";
+"AfterCelebrationMessage" = "Now is the time, wave away! \n(We're not responsible for any elbow bumps that might occur.)";

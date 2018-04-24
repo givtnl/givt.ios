@@ -75,6 +75,7 @@
 		D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */; };
 		D787AE2B1FCD91680004BDB1 /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D787AE2A1FCD91680004BDB1 /* LogService.swift */; };
 		D787AE2D1FCD9EFB0004BDB1 /* ILogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D787AE2C1FCD9EFB0004BDB1 /* ILogService.swift */; };
+		D787BE79208DCA6B00E20873 /* celebration.gif in Resources */ = {isa = PBXBuildFile; fileRef = D787BE78208DCA6A00E20873 /* celebration.gif */; };
 		D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D788E4771FA08DA700506DA5 /* NavigationManager.swift */; };
 		D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */; };
 		D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D44B11FC6FCD700325CAF /* FAQViewController.swift */; };
@@ -94,6 +95,7 @@
 		D7BC58D620776361008C9497 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC58D520776361008C9497 /* Context.swift */; };
 		D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */; };
 		D7C5120E20761DC7002B1618 /* ChooseContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */; };
+		D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB10320875E9F004139CB /* CelebrateViewController.swift */; };
 		D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */; };
 		D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */; };
 		D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */; };
@@ -227,6 +229,7 @@
 		D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRegistrationViewController.swift; sourceTree = "<group>"; };
 		D787AE2A1FCD91680004BDB1 /* LogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogService.swift; sourceTree = "<group>"; };
 		D787AE2C1FCD9EFB0004BDB1 /* ILogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ILogService.swift; sourceTree = "<group>"; };
+		D787BE78208DCA6A00E20873 /* celebration.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = celebration.gif; sourceTree = "<group>"; };
 		D788E4771FA08DA700506DA5 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQ.storyboard; sourceTree = "<group>"; };
 		D78D44B11FC6FCD700325CAF /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +249,7 @@
 		D7BC58D520776361008C9497 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextViewController.swift; sourceTree = "<group>"; };
 		D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextTableViewCell.swift; sourceTree = "<group>"; };
+		D7CAB10320875E9F004139CB /* CelebrateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateViewController.swift; sourceTree = "<group>"; };
 		D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pincode.storyboard; sourceTree = "<group>"; };
 		D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavViewController.swift; sourceTree = "<group>"; };
 		D7CCC06C1FC4280F006A6A4F /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
@@ -529,6 +533,7 @@
 				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
 				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
 				D726298C1FFBD10C00743224 /* BaseScanViewController.swift */,
+				D7CAB10320875E9F004139CB /* CelebrateViewController.swift */,
 			);
 			path = "Give Flow";
 			sourceTree = "<group>";
@@ -596,6 +601,7 @@
 		D7F746DE1FD944AE005354A3 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D787BE78208DCA6A00E20873 /* celebration.gif */,
 				D7EAF10B1FB491AD00DFE5CC /* icon.png */,
 				D7EAF10C1FB491AD00DFE5CC /* icon@2x.png */,
 				D7EAF10D1FB491B000DFE5CC /* icon@3x.png */,
@@ -766,6 +772,7 @@
 				D75141A71F9E181A0016B71F /* givt_animation.gif in Resources */,
 				D75141A81F9E181A0016B71F /* givt_registration.gif in Resources */,
 				D7F131661F75574D00E25A68 /* Registration.storyboard in Resources */,
+				D787BE79208DCA6B00E20873 /* celebration.gif in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
 				D7B715501FD0529D00666262 /* Personal.storyboard in Resources */,
@@ -901,6 +908,7 @@
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
+				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */,
 				D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */,

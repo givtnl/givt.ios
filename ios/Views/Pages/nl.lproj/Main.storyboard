@@ -1432,6 +1432,62 @@ Kijk voor de status in je overzicht.</string>
             </objects>
             <point key="canvasLocation" x="2186.9565217391305" y="-242.11956521739131"/>
         </scene>
+        <!--Feest-->
+        <scene sceneID="WUb-FS-nYY">
+            <objects>
+                <viewController storyboardIdentifier="YayController" id="wgi-3q-Iiw" customClass="CelebrateViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="372-H4-Qb3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="123456" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fjc-TE-i8Z">
+                                <rect key="frame" x="20" y="476.33333333333331" width="374" height="239.66666666666669"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="60"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="givy-party" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-aw-gWW">
+                                <rect key="frame" x="63" y="260.33333333333331" width="288" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="216" id="97N-LH-ZyF"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="320" id="idb-x3-YM3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I1-Hy-cdh">
+                                <rect key="frame" x="20" y="74.000000000000014" width="374" height="186.33333333333337"/>
+                                <string key="text">Het aftellen is begonnen! Zwier je smartphone in de lucht vooraleer de aftelklok op 0 staat Wat er dan precies gebeurd? Dat zal je zelf zien... én voelen.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9Ag-aw-gWW" firstAttribute="centerY" secondItem="372-H4-Qb3" secondAttribute="centerY" priority="750" id="13Z-Xs-XnI"/>
+                            <constraint firstItem="1I1-Hy-cdh" firstAttribute="leading" secondItem="QgJ-lU-eRf" secondAttribute="leading" constant="20" id="15X-gU-lXr"/>
+                            <constraint firstItem="Fjc-TE-i8Z" firstAttribute="leading" secondItem="QgJ-lU-eRf" secondAttribute="leading" constant="20" id="1Pb-Fl-BYM"/>
+                            <constraint firstItem="9Ag-aw-gWW" firstAttribute="top" secondItem="1I1-Hy-cdh" secondAttribute="bottom" id="1Sh-E5-P6q"/>
+                            <constraint firstItem="9Ag-aw-gWW" firstAttribute="centerX" secondItem="372-H4-Qb3" secondAttribute="centerX" id="Ehz-f7-qH4"/>
+                            <constraint firstItem="1I1-Hy-cdh" firstAttribute="top" secondItem="QgJ-lU-eRf" secondAttribute="top" constant="10" id="JJx-kQ-tdr"/>
+                            <constraint firstItem="QgJ-lU-eRf" firstAttribute="trailing" secondItem="Fjc-TE-i8Z" secondAttribute="trailing" constant="20" id="PF1-a2-QsL"/>
+                            <constraint firstItem="Fjc-TE-i8Z" firstAttribute="top" secondItem="9Ag-aw-gWW" secondAttribute="bottom" id="i05-TT-p9g"/>
+                            <constraint firstItem="QgJ-lU-eRf" firstAttribute="bottom" secondItem="Fjc-TE-i8Z" secondAttribute="bottom" constant="20" id="q75-LE-HuI"/>
+                            <constraint firstItem="QgJ-lU-eRf" firstAttribute="trailing" secondItem="1I1-Hy-cdh" secondAttribute="trailing" constant="20" id="qul-vx-eAD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QgJ-lU-eRf"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Feest" id="rn2-Bs-Jmo"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="gif" destination="9Ag-aw-gWW" id="hwk-Zi-KrJ"/>
+                        <outlet property="message" destination="1I1-Hy-cdh" id="TH3-UE-gAz"/>
+                        <outlet property="timer" destination="Fjc-TE-i8Z" id="Y9K-25-PtT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1o-KS-3Qy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2865" y="-893"/>
+        </scene>
         <!--Anders geven-->
         <scene sceneID="wVu-49-Db8">
             <objects>
@@ -2549,6 +2605,7 @@ Kijk voor de status in je overzicht.</string>
         <image name="dlTaxes" width="20" height="20"/>
         <image name="erase.png" width="24" height="16"/>
         <image name="givt20h" width="53" height="20"/>
+        <image name="givy-party" width="288" height="197"/>
         <image name="givyGave" width="136" height="197"/>
         <image name="givymoney" width="240" height="240"/>
         <image name="help" width="13" height="20"/>
