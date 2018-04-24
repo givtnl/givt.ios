@@ -156,5 +156,20 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         }
     }
     
+    func giveManually(antennaID: String) {
+        GivtService.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions) in
+            if seconds > 0 {
+                LogService.shared.info(message: "Celebrating wiiehoeeew")
+                DispatchQueue.main.async {
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                    vc.secondsLeft = seconds
+                    vc.transactions = transactions
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                
+            }
+        })
+    }
+    
     
 }

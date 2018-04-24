@@ -201,18 +201,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     @IBOutlet var navBar: UINavigationItem!
     @IBAction func btnGive(_ sender: Any) {
         log.info(message: "Giving manually from the list")
-        GivtService.shared.giveManually(antennaId: (prevPos?.nameSpace)!, afterGivt: { (seconds, transactions) in
-            if seconds > 0 {
-                print("celebrationn", seconds)
-                DispatchQueue.main.async {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
-                    vc.secondsLeft = seconds
-                    vc.transactions = transactions
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-                
-            }
-        })
+        giveManually(antennaID: (prevPos?.nameSpace)!)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -304,7 +293,13 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         default:
             break
         }
+        
         filteredList = listToLoad.filter { ($0["EddyNameSpace"] as! String).substring(16..<19).matches(regExp) }
+        filteredList!.sort(by: { (first, second) -> Bool in
+            let firstName = first["OrgName"] as! String
+            let secondName = second["OrgName"] as! String
+            return firstName < secondName
+        })
         originalList = filteredList
         
         if let lastOrg = UserDefaults.standard.lastGivtToOrganisation {

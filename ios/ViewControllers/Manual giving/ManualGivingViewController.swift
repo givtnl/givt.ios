@@ -60,7 +60,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
             self.beaconId = beaconId
 
             let tap = UITapGestureRecognizer()
-            tap.addTarget(self, action: #selector(giveManually))
+            tap.addTarget(self, action: #selector(giveSuggestion))
             suggestion.addGestureRecognizer(tap)
             suggestion.layer.cornerRadius = 3
             
@@ -89,7 +89,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
                 self.beaconId = orgNS
                 
                 let tap = UITapGestureRecognizer()
-                tap.addTarget(self, action: #selector(giveManually))
+                tap.addTarget(self, action: #selector(giveSuggestion))
                 suggestion.addGestureRecognizer(tap)
                 suggestion.layer.cornerRadius = 3
                 
@@ -166,14 +166,10 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         view.addGestureRecognizer(tap)
     }
     
-    @objc func giveManually() {
+    @objc func giveSuggestion() {
         if let beaconId = self.beaconId {
             log.info(message: "Gave to the suggestion")
-            GivtService.shared.giveManually(antennaId: beaconId, afterGivt: { seconds, transactions in
-                if seconds > 0 {
-                    print("celebrationn", seconds)
-                }
-            })
+            giveManually(antennaID: beaconId)
         }
     }
 }
