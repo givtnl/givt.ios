@@ -176,7 +176,7 @@
 "IBANPlaceHolder" = "IBAN-rekeningnummer";
 
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Om Givt te kunnen gebruiken, \nmoet bluetooth op je telefoon aanstaan.";
+"BluetoothErrorMessage" = "Om Givt te kunnen gebruiken, \nmoet Bluetooth op je telefoon aanstaan.";
 
 /*Foutmelding als er geen verbinding is met het internet*/
 "ConnectionError" = "Ai! Geen verbinding met de server, maar het komt goed. Drink rustig een kopje thee en controleer voor de zekerheid je instellingen.";
@@ -271,7 +271,7 @@
 /*Klopt dit?
 Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts’. Door op deze melding te klikken geef je alsnog het bedrag dat je tijdens de collecte wilde geven.*/
 /*Antwoord op FAQ vraag2*/
-"FAQantwoord2" = "De eerste stap\nJe hebt de app al geïnstalleerd, dat is de eerste stap. Wanneer je Givt gaat gebruiken is het belangrijk dat je verbinding met internet hebt en dat bluetooth ingeschakeld is. \n\nNet zo makkelijk\nRegistreer jezelf als gebruiker door je gegevens in te vullen. Vervolgens werkt het net zo gemakkelijk als het geven van contant geld. Je opent de app, selecteert het bedrag dat je wilt geven en beweegt je telefoon richting de collectebus, -zak of -mand. Je telefoon pikt een signaal op van de zender die in de collectebus, -zak of -mand zit. Het gekozen bedrag wordt opgeslagen, van je bankrekening afgeschreven en aan de collecterende instantie overgemaakt. \n\nGeen verbinding?\nWanneer je op het moment van geven geen internetverbinding hebt, wordt de opdracht op een later moment bij het heropenen van de app verstuurd. Bijvoorbeeld als je thuis bent en weer gebruik maakt van WiFi.";
+"FAQantwoord2" = "De eerste stap\nJe hebt de app al geïnstalleerd, dat is de eerste stap. Wanneer je Givt gaat gebruiken is het belangrijk dat je verbinding met internet hebt en dat Bluetooth ingeschakeld is. \n\nNet zo makkelijk\nRegistreer jezelf als gebruiker door je gegevens in te vullen. Vervolgens werkt het net zo gemakkelijk als het geven van contant geld. Je opent de app, selecteert het bedrag dat je wilt geven en beweegt je telefoon richting de collectebus, -zak of -mand. Je telefoon pikt een signaal op van de zender die in de collectebus, -zak of -mand zit. Het gekozen bedrag wordt opgeslagen, van je bankrekening afgeschreven en aan de collecterende instantie overgemaakt. \n\nGeen verbinding?\nWanneer je op het moment van geven geen internetverbinding hebt, wordt de opdracht op een later moment bij het heropenen van de app verstuurd. Bijvoorbeeld als je thuis bent en weer gebruik maakt van WiFi.";
 
 /*Je komt nu meteen in het betaalscherm. (ipv je komt nu gelijk in het betaalscherm)*/
 /*Antwoord op FAQ vraag3*/
@@ -470,8 +470,8 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ColId1" = "Collecte 1";
 "ColId2" = "Collecte 2";
 "ColId3" = "Collecte 3";
-"FAQWhyBluetoothEnabledQ" = "Waarom moet bluetooth ingeschakeld zijn tijdens het gebruik van Givt?";
-"FAQWhyBluetoothEnabledA" = "Je telefoon pikt een signaal op van de zender die in de collectebus, -zak of -mand zit. Dit signaal werkt met het bluetooth-protocol. Het gaat hierbij om een eenrichtingsverkeer en er hoeft dus geen verbinding te worden gemaakt, zoals je dat misschien gewend bent bij een bluetooth carkit of headset. Het is een veilige en makkelijke manier voor de telefoon om te weten welke collectebus, -zak of -mand in de buurt is. Op het moment dat de zender dichtbij is en het signaal door je telefoon wordt opgepikt, is je Givt gelukt.";
+"FAQWhyBluetoothEnabledQ" = "Waarom moet Bluetooth ingeschakeld zijn tijdens het gebruik van Givt?";
+"FAQWhyBluetoothEnabledA" = "Je telefoon pikt een signaal op van de zender die in de collectebus, -zak of -mand zit. Dit signaal werkt met het Bluetooth-protocol. Het gaat hierbij om een eenrichtingsverkeer en er hoeft dus geen verbinding te worden gemaakt, zoals je dat misschien gewend bent bij een Bluetooth carkit of headset. Het is een veilige en makkelijke manier voor de telefoon om te weten welke collectebus, -zak of -mand in de buurt is. Op het moment dat de zender dichtbij is en het signaal door je telefoon wordt opgepikt, is je Givt gelukt.";
 
 /*Hoe kan ik geven aan meerdere collectes*/
 "FAQQuestion14" = "Hoe kan ik geven aan meerdere collectes?";
@@ -652,3 +652,12 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "CelebrateMessage" = "Zwier je smartphone in de lucht voor de aftelklok op 0 staat. Wat er dan gebeurt? Dat merk je vanzelf...";
 "AfterCelebrationTitle" = "Zwaaien maar!";
 "AfterCelebrationMessage" = "Het is zover, zwaai er op los! \n(We zijn niet verantwoordelijk voor eventuele elleboogstoten.)";
+
+/*Camera toegang is nodig voor flashlight (enkel voor Android)*/
+"NoCameraAccessCelebration" = "Om de vliegensvlugge en flitsende geefactie te ondersteunen hebben we toegang nodig tot je camera.";
+
+/*Op een leuke manier bedanken om de camera toestemming te geven voor de flitsende actie? (Was eerst "Nee, dank je (niet) feestelijk!" en "No, thanks (but no thanks)")*/
+"NoThanksCelebration" = "Nee, dank je";
+
+/*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
+"YesCool" = "Ja, leuk!";

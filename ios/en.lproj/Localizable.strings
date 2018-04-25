@@ -161,7 +161,7 @@
 "IBANPlaceHolder" = "IBAN account number";
 
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Switch on bluetooth on your phone to use Givt.";
+"BluetoothErrorMessage" = "Switch on Bluetooth on your phone to use Givt.";
 
 /*Foutmelding als er geen verbinding is met het internet*/
 "ConnectionError" = "Currently we're not able to connect to the server. No worries, have a cup of tea and/or check your settings.";
@@ -533,7 +533,7 @@
 "ChangeGivingLimit" = "Adjust maximum amount";
 "SomethingWentWrong2" = "Something went wrong.";
 "ChooseLowerAmount" = "Choose a lower amount";
-"TurnOnBluetooth" = "Switch on bluetooth";
+"TurnOnBluetooth" = "Switch on Bluetooth";
 "ErrorTLDCheck" = "Sorry, you can’t register with this e-mail address. Please check that the spelling is correct.";
 "AddCollectConfirm" = "Do you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
@@ -633,3 +633,12 @@
 "CelebrateMessage" = "Throw your smartphone in the air (but hold on to it) before the timer hits 0. What's going to happen? You'll soon see...";
 "AfterCelebrationTitle" = "And now... wave!";
 "AfterCelebrationMessage" = "Now is the time, wave away! \n(We're not responsible for any elbow bumps that might occur.)";
+
+/*Camera toegang is nodig voor flashlight (enkel voor Android)*/
+"NoCameraAccessCelebration" = "To be able to support the super blazing giving event, we need access to your camera.";
+
+/*Op een leuke manier bedanken om de camera toestemming te geven voor de flitsende actie? (Was eerst "Nee, dank je (niet) feestelijk!" en "No, thanks (but no thanks)")*/
+"NoThanksCelebration" = "No, thanks";
+
+/*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
+"YesCool" = "Yes, cool!";
