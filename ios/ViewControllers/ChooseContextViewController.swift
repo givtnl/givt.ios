@@ -34,6 +34,13 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
             label.topAnchor.constraint(equalTo: cell.img.topAnchor, constant: 34).isActive = true
             label.leadingAnchor.constraint(equalTo: cell.img.leadingAnchor, constant: 0).isActive = true
             label.trailingAnchor.constraint(equalTo: cell.img.trailingAnchor, constant: 0).isActive = true
+        } else {
+            cell.contentView.alpha = 1
+            cell.img.subviews.forEach { (view) in
+                if let label = view as? UILabel {
+                    label.removeFromSuperview()
+                }
+            }
         }
         return cell
     }
