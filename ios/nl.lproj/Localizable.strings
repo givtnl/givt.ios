@@ -336,7 +336,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Unregister" = "Account opzeggen";
 
 /*Informatie op de "account opzeggen" pagina*/
-"UnregisterInfo" = "Je kunt te allen tijde je account bij Givt opzeggen en verwijderen.\n\nMocht je Givt in de toekomst weer willen gebruiken, dan zul je een nieuw account moeten maken.";
+"UnregisterInfo" = "Wat jammer dat je ons wilt verlaten! We zullen al jouw persoonlijke gegevens verwijderen.\n\nHier is één uitzondering op: als je gegeven hebt aan een ANBI-geregistreerde organisatie zijn we verplicht om de informatie over de gift en je NAW-gegevens te bewaren voor minimaal 7 jaar. Je e-mailadres en telefoonnummer verwijderen we sowieso.";
 
 /*Jammer dat je gaat*/
 "UnregisterSad" = "Jammer dat je gaat,\nhopelijk zien we je weer terug.";

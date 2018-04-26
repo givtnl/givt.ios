@@ -319,7 +319,7 @@
 "Unregister" = "Terminate account";
 
 /*Informatie op de "account opzeggen" pagina*/
-"UnregisterInfo" = "It's possible to terminate and delete your account with Givt at any time.\n\nIf in the future you'd like to use Givt again, you'd have to create a new account.";
+"UnregisterInfo" = "We’re sad to see you go! We will delete all your personal information.\n\nThere’s one exception: if you donated to a PBO-registered organisation, we are obligated to keep the information about your donation, your name and address for at least 7 years. Your email address and phone number will be removed.";
 
 /*Jammer dat je gaat*/
 "UnregisterSad" = "We're sad to see you leave\nand we hope to see you again.";
