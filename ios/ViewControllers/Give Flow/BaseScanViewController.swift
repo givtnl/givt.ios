@@ -50,7 +50,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             canShare = true
         }
         
-        UserDefaults.standard.lastGivtToOrganisation = bestBeacon.organisation
+        UserDefaults.standard.lastGivtToOrganisation = bestBeacon.namespace
         
         
         shouldShowMandate { (url) in

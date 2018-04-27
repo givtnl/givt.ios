@@ -67,9 +67,9 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     
     var lastGivtOrg: String {
         get {
-            if bestBeacon.organisation != nil {
+            if bestBeacon.namespace != nil {
                 for organisationBeacon in orgBeaconList {
-                    if let org = organisationBeacon["EddyNameSpace"] as? String, let orgName = organisationBeacon["OrgName"] as? String, org == bestBeacon.organisation {
+                    if let org = organisationBeacon["EddyNameSpace"] as? String, let orgName = organisationBeacon["OrgName"] as? String, org == bestBeacon.namespace {
                         return orgName
                     }
                 }   
@@ -255,12 +255,12 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                     bestBeacon.rssi = rssi
                 }
                 bestBeacon.beaconId = antennaID
-                bestBeacon.organisation = organisation
+                bestBeacon.namespace = organisation
             } else {
                 /* new beacon */
                 bestBeacon.beaconId = antennaID
                 bestBeacon.rssi = rssi
-                bestBeacon.organisation = organisation
+                bestBeacon.namespace = organisation
             }
             
             if(rssi.intValue > rssiTreshold) {
@@ -312,9 +312,9 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                 /* mimic bestbeacon */
                 bestBeacon.beaconId = decoded
                 if let idx = decoded.index(of: ".") {
-                    bestBeacon.organisation = String(decoded[..<idx])
+                    bestBeacon.namespace = String(decoded[..<idx])
                 } else {
-                    bestBeacon.organisation = decoded
+                    bestBeacon.namespace = decoded
                 }
                 give(antennaID: decoded)
                 completionHandler(true)
@@ -331,12 +331,12 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     func giveManually(antennaId: String, afterGivt: ((Int, [Transaction]) -> ())? = nil) {
         bestBeacon.beaconId = antennaId
         if let idx = antennaId.index(of: ".") {
-            bestBeacon.organisation = String(antennaId[..<idx])
+            bestBeacon.namespace = String(antennaId[..<idx])
         } else {
-            bestBeacon.organisation = antennaId
+            bestBeacon.namespace = antennaId
         }
         
-        let shouldCelebrate = isCelebration(orgNameSpace: bestBeacon.organisation!)
+        let shouldCelebrate = isCelebration(orgNameSpace: bestBeacon.namespace!)
         print("should celebrate \(shouldCelebrate)")
         if let afterGivt = afterGivt, shouldCelebrate {
             LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
@@ -350,7 +350,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
             for (index, value) in amounts.enumerated() {
                 if value >= 0.50 {
                     print(value)
-                    let newTransaction = Transaction(amount: value, beaconId: antennaId, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
+                    let newTransaction = Transaction(amount: value, beaconId: bestBeacon.namespace!, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
                     transactions.append(newTransaction)
                 }
             }
@@ -363,7 +363,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                 }
             })
         } else {
-            give(antennaID: antennaId)
+            give(antennaID: bestBeacon.namespace!)
         }
         
     }
@@ -589,12 +589,12 @@ protocol GivtProcessedProtocol: class {
 class BestBeacon {
     var beaconId: String?
     var rssi: NSNumber?
-    var organisation: String?
+    var namespace: String?
     
-    init(_ b: String? = nil,_ r: NSNumber? = nil,_ o: String? = nil) {
+    init(_ b: String? = nil,_ r: NSNumber? = nil,_ n: String? = nil) {
         beaconId = b
         rssi = r
-        organisation = o
+        namespace = n
     }
 }
 
