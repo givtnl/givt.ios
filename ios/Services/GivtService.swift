@@ -55,11 +55,21 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         return orgName.first?["OrgName"] as? String
     }
     
+    func isCelebration(orgNameSpace: String) -> Bool {
+        let org = orgBeaconList.filter({ (organisation) -> Bool in
+            return organisation["EddyNameSpace"] as? String == orgNameSpace
+        })
+        if let result = org.first, let celebration = result["Celebrations"] as? Int8 {
+            return celebration == 1
+        }
+        return false
+    }
+    
     var lastGivtOrg: String {
         get {
-            if bestBeacon.organisation != nil {
+            if bestBeacon.namespace != nil {
                 for organisationBeacon in orgBeaconList {
-                    if let org = organisationBeacon["EddyNameSpace"] as? String, let orgName = organisationBeacon["OrgName"] as? String, org == bestBeacon.organisation {
+                    if let org = organisationBeacon["EddyNameSpace"] as? String, let orgName = organisationBeacon["OrgName"] as? String, org == bestBeacon.namespace {
                         return orgName
                     }
                 }   
@@ -245,12 +255,12 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                     bestBeacon.rssi = rssi
                 }
                 bestBeacon.beaconId = antennaID
-                bestBeacon.organisation = organisation
+                bestBeacon.namespace = organisation
             } else {
                 /* new beacon */
                 bestBeacon.beaconId = antennaID
                 bestBeacon.rssi = rssi
-                bestBeacon.organisation = organisation
+                bestBeacon.namespace = organisation
             }
             
             if(rssi.intValue > rssiTreshold) {
@@ -302,9 +312,9 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                 /* mimic bestbeacon */
                 bestBeacon.beaconId = decoded
                 if let idx = decoded.index(of: ".") {
-                    bestBeacon.organisation = String(decoded[..<idx])
+                    bestBeacon.namespace = String(decoded[..<idx])
                 } else {
-                    bestBeacon.organisation = decoded
+                    bestBeacon.namespace = decoded
                 }
                 give(antennaID: decoded)
                 completionHandler(true)
@@ -318,16 +328,87 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    func giveManually(antennaId: String) {
+    func giveManually(antennaId: String, afterGivt: ((Int, [Transaction]) -> ())? = nil) {
         bestBeacon.beaconId = antennaId
         if let idx = antennaId.index(of: ".") {
-            bestBeacon.organisation = String(antennaId[..<idx])
+            bestBeacon.namespace = String(antennaId[..<idx])
         } else {
-            bestBeacon.organisation = antennaId
+            bestBeacon.namespace = antennaId
         }
-        give(antennaID: antennaId)
+        
+        let shouldCelebrate = isCelebration(orgNameSpace: bestBeacon.namespace!)
+        print("should celebrate \(shouldCelebrate)")
+        if let afterGivt = afterGivt, shouldCelebrate {
+            LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
+            let df = DateFormatter()
+            df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
+            df.timeZone = TimeZone(abbreviation: "UTC")
+            df.locale = Locale(identifier: "en_US_POSIX")
+            let date = df.string(from: Date())
+            print(date)
+            var transactions = [Transaction]()
+            for (index, value) in amounts.enumerated() {
+                if value >= 0.50 {
+                    print(value)
+                    let newTransaction = Transaction(amount: value, beaconId: bestBeacon.namespace!, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
+                    transactions.append(newTransaction)
+                }
+            }
+            
+            giveCelebrate(transactions: transactions, afterGivt: { seconds in
+                if seconds > 0 {
+                    afterGivt(seconds, transactions)
+                } else {
+                    self.delegate?.onGivtProcessed(transactions: transactions)
+                }
+            })
+        } else {
+            give(antennaID: bestBeacon.namespace!)
+        }
+        
     }
     
+    private func giveCelebrate(transactions: [Transaction], afterGivt: @escaping (Int) -> ()) {
+        
+        var object = ["Transactions": []]
+        for transaction in transactions {
+            object["Transactions"]?.append(transaction.convertToDictionary())
+        }
+        do {
+            try client.post(url: "/api/Givts/Multiple", data: object) { (res) in
+                if let res = res {
+                    if res.basicStatus == .ok {
+                        self.log.info(message: "Posted Givt to the server")
+                        if let data = res.data {
+                            do {
+                                let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                                if let secondsToCelebration = parsedData["SecondsToCelebration"] as? Int {
+                                    if secondsToCelebration > 0 {
+                                        afterGivt(secondsToCelebration)
+                                        return
+                                    }
+                                }
+                                afterGivt(-1)
+                                print(parsedData)
+                            } catch {
+                                afterGivt(-1)
+                            }
+                        }
+                        afterGivt(-1)
+                    } else {
+                        afterGivt(-1)
+                    }
+                } else {
+                    //no response
+                    afterGivt(-1)
+                    self.cacheGivt(transactions: transactions)
+                }
+            }
+        } catch {
+            afterGivt(-1)
+            self.log.error(message: "Unknown error : \(error)")
+        }
+    }
     
     private func cacheGivt(transactions: [Transaction]){
         
@@ -353,6 +434,19 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                     if let res = res {
                         if res.basicStatus == .ok {
                             self.log.info(message: "Posted Givt to the server")
+                            if let data = res.data {
+                                do {
+                                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                                    if let secondsToCelebration = parsedData["SecondsToCelebration"] as? Int {
+                                        if secondsToCelebration > 0 {
+                                            print(secondsToCelebration)
+                                        }
+                                    }
+                                    print(parsedData)
+                                } catch {
+                                    
+                                }
+                            }
                         } else if res.status == .expectationFailed {
                             self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
                         } else {
@@ -460,7 +554,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                     data["dtLastUpdated"] = date
                 }
             }
-            client.get(url: "/api/Organisation/BeaconList", data: data, callback: { (response) in
+            client.get(url: "/api/v2/collectgroups/applist", data: data, callback: { (response) in
                 if let response = response, let data = response.data {
                     if response.statusCode == 200 {
                         do {
@@ -495,12 +589,12 @@ protocol GivtProcessedProtocol: class {
 class BestBeacon {
     var beaconId: String?
     var rssi: NSNumber?
-    var organisation: String?
+    var namespace: String?
     
-    init(_ b: String? = nil,_ r: NSNumber? = nil,_ o: String? = nil) {
+    init(_ b: String? = nil,_ r: NSNumber? = nil,_ n: String? = nil) {
         beaconId = b
         rssi = r
-        organisation = o
+        namespace = n
     }
 }
 

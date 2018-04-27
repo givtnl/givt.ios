@@ -84,11 +84,11 @@ class ScanViewController: BaseScanViewController {
         }
         
         showcase.completeShowcase()
-        UserDefaults.standard.showcases.append(AppConstants.Showcase.giveDifferently.rawValue)
+        UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.giveDifferently.rawValue)
     }
     
     func showGiveDifferentlyShowcase() {
-        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.giveDifferently.rawValue) {
+        if UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.giveDifferently.rawValue) {
             return
         }
         self.giveDifferentlyShowcase = MaterialShowcase()

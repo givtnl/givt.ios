@@ -28,7 +28,44 @@ extension UserDefaults {
         case showedLastYearTaxOverview
         case hasGivtsInPreviousYear
         case lastGivtToOrganisation
-        case showcases
+        @available(*, deprecated, message: "Do not use. Use showCasesByUserId instead.")
+        case showcases              //deprecated
+        case showCasesByUserID
+    }
+    
+    enum Showcase: String {
+        case cancelGivt
+        case taxOverview
+        case giveDifferently
+        case giveSituation
+        case multipleCollects
+        case deleteMultipleCollects
+    }
+    
+    var showCasesByUserID: [String] {
+        get {
+            if let showcaseDict = dictionary(forKey: UserDefaultsKeys.showCasesByUserID.rawValue) as? [String: [String]] {
+                if let uext = userExt, let retArray = showcaseDict[uext.guid] {
+                    return retArray
+                } else {
+                    return []
+                }
+            } else {
+                return []
+            }
+        }
+        set(value) {
+            var showcaseDict: [String: [String]] = [:]
+            if let originalDict = dictionary(forKey: UserDefaultsKeys.showCasesByUserID.rawValue) as? [String: [String]] {
+                showcaseDict = originalDict
+            }
+            
+            if let uext = userExt {
+                showcaseDict[uext.guid] = value
+                set(showcaseDict, forKey: UserDefaultsKeys.showCasesByUserID.rawValue)
+            }
+            synchronize()
+        }
     }
     
     var showcases: [String] {

@@ -32,7 +32,7 @@ class ScanCompleteViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        if !organisation.isEmpty() {
+        if organisation.isEmpty() {
             lblBody.text = NSLocalizedString("OfflineGegevenGivtMessageWithOrg", comment: "").replacingOccurrences(of: "{0}", with: organisation)
         }
     }
@@ -50,7 +50,7 @@ class ScanCompleteViewController: UIViewController {
     @IBAction func shareGivtWithFriends(_ sender: Any) {
         print("sharing givt")
 
-        var message = !organisation.isEmpty() ? NSLocalizedString("ShareTheGivtTextNoOrg", comment: "") : NSLocalizedString("ShareTheGivtText", comment: "").replacingOccurrences(of: "{0}", with: organisation)
+        var message = organisation.isEmpty() ? NSLocalizedString("ShareTheGivtTextNoOrg", comment: "") : NSLocalizedString("ShareTheGivtText", comment: "").replacingOccurrences(of: "{0}", with: organisation)
         message += " " + NSLocalizedString("JoinGivt", comment: "")
         
         let activityViewController = UIActivityViewController(activityItems: [message as NSString], applicationActivities: nil)

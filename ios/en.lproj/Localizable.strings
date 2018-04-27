@@ -161,7 +161,7 @@
 "IBANPlaceHolder" = "IBAN account number";
 
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Switch on bluetooth on your phone to use Givt.";
+"BluetoothErrorMessage" = "Switch on Bluetooth on your phone to use Givt.";
 
 /*Foutmelding als er geen verbinding is met het internet*/
 "ConnectionError" = "Currently we're not able to connect to the server. No worries, have a cup of tea and/or check your settings.";
@@ -319,7 +319,7 @@
 "Unregister" = "Terminate account";
 
 /*Informatie op de "account opzeggen" pagina*/
-"UnregisterInfo" = "It's possible to terminate and delete your account with Givt at any time.\n\nIf in the future you'd like to use Givt again, you'd have to create a new account.";
+"UnregisterInfo" = "We’re sad to see you go! We will delete all your personal information.\n\nThere’s one exception: if you donated to a PBO-registered organisation, we are obligated to keep the information about your donation, your name and address for at least 7 years. Your email address and phone number will be removed.";
 
 /*Jammer dat je gaat*/
 "UnregisterSad" = "We're sad to see you leave\nand we hope to see you again.";
@@ -533,7 +533,7 @@
 "ChangeGivingLimit" = "Adjust maximum amount";
 "SomethingWentWrong2" = "Something went wrong.";
 "ChooseLowerAmount" = "Choose a lower amount";
-"TurnOnBluetooth" = "Switch on bluetooth";
+"TurnOnBluetooth" = "Switch on Bluetooth";
 "ErrorTLDCheck" = "Sorry, you can’t register with this e-mail address. Please check that the spelling is correct.";
 "AddCollectConfirm" = "Do you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
@@ -599,7 +599,7 @@
 "AlreadyAnAccount" = "Already have an account?";
 "UnitedKingdom" = "United Kingdom";
 "CancelShort" = "Cancel";
-"CantCancelGiftAfter15Minutes" = "Sorry! More than 15 minutes have passed since you gave this donation.";
+"CantCancelGiftAfter15Minutes" = "Sorry! More than 15 minutes have passed since you made this donation.";
 "UnknownErrorCancelGivt" = "Due to an unexpected error, we could not cancel your donation. Get in touch with us at support@givtapp.net for more information.";
 "TransactionCancelled" = "The donation to {0} will be cancelled.";
 "Cancelled" = "Cancelled";
@@ -629,3 +629,16 @@
 "GiveSituationShowcaseTitle" = "Next, choose how you want to give";
 "SoonMessage" = "Coming soon...";
 "GiveWithYourPhone" = "Move your phone";
+"CelebrateTitle" = "... and now wait ...";
+"CelebrateMessage" = "Throw your smartphone in the air (but hold on to it) before the timer hits 0. What's going to happen? You'll soon see...";
+"AfterCelebrationTitle" = "And now... wave!";
+"AfterCelebrationMessage" = "Now is the time, wave away! \n(We're not responsible for any elbow bumps that might occur.)";
+
+/*Camera toegang is nodig voor flashlight (enkel voor Android)*/
+"NoCameraAccessCelebration" = "To be able to support the super blazing giving event, we need access to your camera.";
+
+/*Op een leuke manier bedanken om de camera toestemming te geven voor de flitsende actie? (Was eerst "Nee, dank je (niet) feestelijk!" en "No, thanks (but no thanks)")*/
+"NoThanksCelebration" = "No, thanks";
+
+/*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
+"YesCool" = "Yes, cool!";

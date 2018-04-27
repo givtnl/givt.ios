@@ -46,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         GivtService.shared.resume()
         
+        if !UserDefaults.standard.showcases.isEmpty {
+            UserDefaults.standard.showCasesByUserID = UserDefaults.standard.showcases
+            UserDefaults.standard.showcases = []
+        }
         
         return true
     }
@@ -251,13 +255,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 while let presentedViewController = topController.presentedViewController {
                     topController = presentedViewController
                 }
-                var message = !GivtService.shared.lastGivtOrg.isEmpty() ? NSLocalizedString("ShareTheGivtTextNoOrg", comment: "") : NSLocalizedString("ShareTheGivtText", comment: "").replacingOccurrences(of: "{0}", with: GivtService.shared.lastGivtOrg)
+                var message = NSLocalizedString("ShareTheGivtTextNoOrg", comment: "")
+                if let namespace = UserDefaults.standard.lastGivtToOrganisation, let organisation = GivtService.shared.getOrgName(orgNameSpace: namespace) {
+                    message = NSLocalizedString("ShareTheGivtText", comment: "").replacingOccurrences(of: "{0}", with: organisation)
+                }
+
                 message += " " + NSLocalizedString("JoinGivt", comment: "")
                 let activityViewController = UIActivityViewController(activityItems: [message as NSString], applicationActivities: nil)
                 topController.present(activityViewController, animated: true, completion: nil)
                 logService.info(message: "A Givt is being shared via the Safari-flow")
             }
-        
         }
         return true
     }

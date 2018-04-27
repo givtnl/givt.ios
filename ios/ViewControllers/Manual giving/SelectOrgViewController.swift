@@ -155,8 +155,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             names.removeAll()
             nameSpaces.removeAll()
             for org in filteredList! {
-                names.append(org["OrgName"]!)
-                nameSpaces.append(org["EddyNameSpace"]!)
+                names.append(org["OrgName"] as! String)
+                nameSpaces.append(org["EddyNameSpace"] as! String)
             }
             
             if (names.count > 0) {
@@ -184,14 +184,14 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     var passSelectedTag: Int!
     private var lastTag: Int?
-    var listToLoad: [[String: String]] = {
-        var list = GivtService.shared.orgBeaconList as! [[String: String]]
+    var listToLoad: [[String: Any]] = {
+        var list = GivtService.shared.orgBeaconList as! [[String: Any]]
         print(list)
         return list
     }()
     
-    var filteredList: [[String: String]]?
-    var originalList: [[String: String]]?
+    var filteredList: [[String: Any]]?
+    var originalList: [[String: Any]]?
     
     @IBOutlet var kerken: UIImageView!
     @IBOutlet var stichtingen: UIImageView!
@@ -201,7 +201,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     @IBOutlet var navBar: UINavigationItem!
     @IBAction func btnGive(_ sender: Any) {
         log.info(message: "Giving manually from the list")
-        GivtService.shared.giveManually(antennaId: (prevPos?.nameSpace)!)
+        giveManually(antennaID: (prevPos?.nameSpace)!)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -294,12 +294,17 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             break
         }
         
-        filteredList = listToLoad.filter { ($0["EddyNameSpace"]?.substring(16..<19).matches(regExp))! }
+        filteredList = listToLoad.filter { ($0["EddyNameSpace"] as! String).substring(16..<19).matches(regExp) }
+        filteredList!.sort(by: { (first, second) -> Bool in
+            let firstName = first["OrgName"] as! String
+            let secondName = second["OrgName"] as! String
+            return firstName < secondName
+        })
         originalList = filteredList
         
         if let lastOrg = UserDefaults.standard.lastGivtToOrganisation {
             lastGivtToOrganisationPosition = filteredList?.index(where: { (org) -> Bool in
-                return org["EddyNameSpace"] == lastOrg
+                return org["EddyNameSpace"] as! String == lastOrg
             })
         }
         
@@ -332,7 +337,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func filterList() {
         if let searchText = searchBar.text, searchText.count > 0 {
             filteredList = originalList?.filter({ (organisation) -> Bool in
-                if let org = organisation["OrgName"] {
+                if let org = organisation["OrgName"] as? String {
                     return org.lowercased().contains(searchText.lowercased())
                 } else {
                     return false

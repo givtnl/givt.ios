@@ -294,22 +294,46 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     @IBAction func openInfo(_ sender: Any) {
         print("user wants to open info")
         infoScreen = UIView()
-        infoScreen?.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        infoScreen?.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         self.navigationController?.view.addSubview(infoScreen!)
         infoScreen?.translatesAutoresizingMaskIntoConstraints = false
         infoScreen?.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         infoScreen?.topAnchor.constraint(equalTo: (self.navigationController?.view.topAnchor)!).isActive = true
         infoScreen?.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        //infoScreen?.heightAnchor.constraint(equalToConstant: 200.0).isActive = true
+        infoScreen!.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         infoScreen?.alpha = 0
         infoScreen?.tag = 1111
         
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        infoScreen!.addSubview(contentView)
+        contentView.topAnchor.constraint(equalTo: infoScreen!.topAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: infoScreen!.leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: infoScreen!.trailingAnchor).isActive = true
+        
+        
+        let placeholderView = UIView()
+        placeholderView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.2)
+        placeholderView.translatesAutoresizingMaskIntoConstraints = false
+        infoScreen!.addSubview(placeholderView)
+        placeholderView.topAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        placeholderView.leadingAnchor.constraint(equalTo: infoScreen!.leadingAnchor).isActive = true
+        placeholderView.trailingAnchor.constraint(equalTo: infoScreen!.trailingAnchor).isActive = true
+        placeholderView.bottomAnchor.constraint(equalTo: self.navigationController!.view.bottomAnchor).isActive = true
+        
+        
+        // any tap or even swipe motion on the placeholderview will close the info screen
+        let touch = UILongPressGestureRecognizer(target: self, action: #selector(closeInfo))
+        touch.minimumPressDuration = 0
+        placeholderView.addGestureRecognizer(touch)
+        
         let bar = UIView()
-        infoScreen?.addSubview(bar)
+        contentView.addSubview(bar)
         bar.translatesAutoresizingMaskIntoConstraints = false
         bar.topAnchor.constraint(equalTo: (self.navigationController?.topLayoutGuide.bottomAnchor)!, constant: 0).isActive = true
-        bar.leadingAnchor.constraint(equalTo: (infoScreen?.leadingAnchor)!, constant: 0).isActive = true
-        bar.trailingAnchor.constraint(equalTo: (infoScreen?.trailingAnchor)!, constant: 0).isActive = true
+        bar.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
+        bar.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
         bar.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         let infoGivts = UILabel()
@@ -336,11 +360,11 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         demStates.axis = .vertical
         demStates.spacing = 25
         demStates.translatesAutoresizingMaskIntoConstraints = false
-        infoScreen?.addSubview(demStates)
-        demStates.leadingAnchor.constraint(equalTo: (infoScreen?.leadingAnchor)!, constant: 25).isActive = true
+        contentView.addSubview(demStates)
+        demStates.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 25).isActive = true
         demStates.topAnchor.constraint(equalTo: bar.bottomAnchor, constant: 15).isActive = true
-        demStates.trailingAnchor.constraint(equalTo: (infoScreen?.trailingAnchor)!, constant: -15).isActive = true
-        demStates.bottomAnchor.constraint(equalTo: (infoScreen?.bottomAnchor)!, constant: -15).isActive = true
+        demStates.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
+        demStates.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15).isActive = true
         
         var states: [Status] = [Status]()
         states.append(Status(color: 0x494874, string: NSLocalizedString("HistoryAmountAccepted", comment: "")))
@@ -499,7 +523,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     }
     
     private func showCancelFeature() {
-        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.cancelGivt.rawValue) {
+        if UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.cancelGivt.rawValue) {
             return
         }
         
@@ -516,13 +540,17 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         DispatchQueue.main.async {
             self.cancelFeature!.setTargetView(tableView: self.tableView, section: 0, row: 0) // always required to set targetView
             self.cancelFeature!.show(completion: {
-                UserDefaults.standard.showcases.append(AppConstants.Showcase.cancelGivt.rawValue)
+                UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.cancelGivt.rawValue)
             })
         }
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        closeInfo()
+    }
+    
     private func showTaxFeature() {
-        if UserDefaults.standard.showcases.contains(AppConstants.Showcase.taxOverview.rawValue) || !UserDefaults.standard.hasGivtsInPreviousYear {
+        if UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue) || !UserDefaults.standard.hasGivtsInPreviousYear {
             return
         }
         
@@ -541,7 +569,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             self.taxOverviewFeature!.setTargetView(barButtonItem: self.containerButton) // always required to set targetView
             self.taxOverviewFeature?.shouldSetTintColor = false
             self.taxOverviewFeature!.show(completion: {
-                UserDefaults.standard.showcases.append(AppConstants.Showcase.taxOverview.rawValue)
+                UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.taxOverview.rawValue)
             })
         }
     }

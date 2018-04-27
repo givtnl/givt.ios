@@ -62,9 +62,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     func showCaseDidDismiss(showcase: MaterialShowcase) {
         if showcase.primaryText == NSLocalizedString("Ballon_ActiveerCollecte", comment: "") {
-            if !UserDefaults.standard.showcases.contains(AppConstants.Showcase.giveSituation.rawValue) {
+            if !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.giveSituation.rawValue) {
                 showShowcase(message: NSLocalizedString("GiveSituationShowcaseTitle", comment: "") + " 😉", targetView: btnGive)
-                UserDefaults.standard.showcases.append(AppConstants.Showcase.giveSituation.rawValue)
+                UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.giveSituation.rawValue)
             }
         }
     }
@@ -160,9 +160,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         navigiationManager.delegate = self
         showFirstBalloon()
         
-        if UserDefaults.standard.viewedCoachMarks >= 2 && !UserDefaults.standard.showcases.contains(AppConstants.Showcase.giveSituation.rawValue) {
+        if UserDefaults.standard.viewedCoachMarks >= 2 && !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.giveSituation.rawValue) {
             showShowcase(message: NSLocalizedString("GiveSituationShowcaseTitle", comment: "GiveSituationShowcaseTitle"), targetView: btnGive)
-            UserDefaults.standard.showcases.append(AppConstants.Showcase.giveSituation.rawValue)
+            UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.giveSituation.rawValue)
         }
         
         
@@ -461,22 +461,30 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     func showFirstBalloon() {
-        if UserDefaults.standard.viewedCoachMarks != 0 {
+        if UserDefaults.standard.viewedCoachMarks != 0 || UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.multipleCollects.rawValue) {
+            if !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.multipleCollects.rawValue) {
+                UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.multipleCollects.rawValue)
+            }
             return
         }
         
         showShowcase(message: NSLocalizedString("Ballon_ActiveerCollecte", comment: ""), targetView: self.collectionButton)
         
         UserDefaults.standard.viewedCoachMarks += 1
+        UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.multipleCollects.rawValue)
     }
 
     func showSecondBalloon(view: UIView, arrowPointsTo: UIView) {
-        if UserDefaults.standard.viewedCoachMarks != 1 {
+        if UserDefaults.standard.viewedCoachMarks != 1 || UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.deleteMultipleCollects.rawValue){
+            if !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.deleteMultipleCollects.rawValue) {
+                UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.deleteMultipleCollects.rawValue)
+            }
             return
         }
         showShowcase(message: NSLocalizedString("Ballon_VerwijderCollecte", comment: ""), targetView: self.amountLabel2)
         
         UserDefaults.standard.viewedCoachMarks += 1
+        UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.deleteMultipleCollects.rawValue)
     }
 
     func reset() {
