@@ -37,6 +37,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     func onGivtProcessed(transactions: [Transaction]) {
+        SVProgressHUD.dismiss()
         organisation = GivtService.shared.lastGivtOrg
         bestBeacon = GivtService.shared.getBestBeacon
         var trs = [NSDictionary]()
@@ -157,7 +158,9 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     func giveManually(antennaID: String) {
+        SVProgressHUD.show()
         GivtService.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions) in
+            SVProgressHUD.dismiss()
             if seconds > 0 {
                 LogService.shared.info(message: "Celebrating wiiehoeeew")
                 DispatchQueue.main.async {
