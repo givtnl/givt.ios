@@ -16,6 +16,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         var nameSpace: String
     }
     
+    @IBOutlet var typeStackView: UIStackView!
     var lastGivtToOrganisationPosition: Int?
     @IBOutlet var searchBar: UISearchBar!
     
@@ -196,7 +197,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     @IBOutlet var kerken: UIImageView!
     @IBOutlet var stichtingen: UIImageView!
     @IBOutlet var acties: UIImageView!
-    @IBOutlet var straatmzkt: UIImageView!
     
     @IBOutlet var navBar: UINavigationItem!
     @IBAction func btnGive(_ sender: Any) {
@@ -205,15 +205,23 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        typeStackView.addArrangedSubview(btnStichtingen)
+        typeStackView.addArrangedSubview(btnKerken)
+        typeStackView.addArrangedSubview(btnActies)
+        
+        if passSelectedTag == 100 {
+            setActiveType(view: btnStichtingen)
+        } else if passSelectedTag == 101 {
+            setActiveType(view: btnKerken)
+        } else if passSelectedTag == 102 {
+            setActiveType(view: btnActies)
+        }
+
         searchBar.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
         selectedTag = passSelectedTag
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
-        addTap(kerken, 101)
-        addTap(stichtingen, 100)
-        addTap(acties, 102)
-        //addTap(straatmzkt) //we dont support this atm
-        straatmzkt.alpha = 0.3
         
         btnGive.isEnabled = false
         
@@ -241,15 +249,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         super.viewWillDisappear(animated)
         GivtService.shared.delegate = nil
     }
-    
-    func addTap(_ view: UIView, _ tag: Int) {
-        view.isUserInteractionEnabled = true
-        view.tag = tag
-        let tap = UITapGestureRecognizer()
-        tap.numberOfTapsRequired = 1
-        tap.addTarget(self, action: #selector(selectType(_:)))
-        view.addGestureRecognizer(tap)
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -259,37 +258,202 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     /* selecteren van Kerk/Stichtingen/...-knop langsboven */
     @objc func selectType(_ sender: UITapGestureRecognizer) {
         if let view = sender.view {
+            if view.tag == selectedTag {
+                return
+            }
+            typeStackView.arrangedSubviews.forEach { (view) in
+                var replaceView: UIView?
+                if view == btnStichtingenSpecial {
+                    replaceView = btnStichtingen
+                } else if view == btnKerkenSpecial {
+                    replaceView = btnKerken
+                } else if view == btnActiesSpecial {
+                    replaceView = btnActies
+                }
+                if let idx = typeStackView.arrangedSubviews.index(of: view), replaceView != nil {
+                    typeStackView.removeArrangedSubview(view)
+                    view.removeFromSuperview()
+                    typeStackView.insertArrangedSubview(replaceView!, at: idx)
+                }
+            }
+            setActiveType(view: view)
+            
             selectedTag = view.tag
         }
+    }
+    
+    func setActiveType(view: UIView) {
+        if let positionInStackview = typeStackView.arrangedSubviews.index(of: view) {
+            var viewToAdd: UIView?
+            switch (view) {
+            case btnKerken:
+                viewToAdd = btnKerkenSpecial
+            case btnStichtingen:
+                viewToAdd = btnStichtingenSpecial
+            case btnActies:
+                viewToAdd = btnActiesSpecial
+            default:
+                return
+            }
+            typeStackView.removeArrangedSubview(view)
+            view.removeFromSuperview()
+            typeStackView.insertArrangedSubview(viewToAdd!, at: positionInStackview)
+        }
+    }
+    
+    func createNormalButton(backgroundColor: UIColor, image: UIImage) -> UIButton {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = backgroundColor
+        btn.layer.cornerRadius = 3
+        btn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        btn.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        let image = UIImageView(image: image)
+        image.translatesAutoresizingMaskIntoConstraints = false
+        btn.addSubview(image)
+        image.topAnchor.constraint(equalTo: btn.topAnchor, constant: 8).isActive = true
+        image.bottomAnchor.constraint(equalTo: btn.bottomAnchor, constant: -8).isActive = true
+        image.leadingAnchor.constraint(equalTo: btn.leadingAnchor, constant: 8).isActive = true
+        image.trailingAnchor.constraint(equalTo: btn.trailingAnchor, constant: -8).isActive = true
+        
+        createShadow(view: btn)
+        return btn
+    }
+    
+    func createSpecialButton(tintColor: UIColor, image: UIImage) -> UIButton {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = UIColor.clear
+        btn.layer.shadowOffset = CGSize(width: 0, height: 1)
+        btn.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.5).cgColor
+        btn.layer.shadowOpacity = 1
+        btn.layer.shadowRadius = 2
+        btn.layer.shouldRasterize = true
+        btn.layer.rasterizationScale = UIScreen.main.scale
+        btn.heightAnchor.constraint(equalToConstant: 75).isActive = true
+        btn.widthAnchor.constraint(equalToConstant: 75).isActive = true
+        
+        let borderView = UIView()
+        borderView.translatesAutoresizingMaskIntoConstraints = false
+        borderView.backgroundColor = UIColor.white
+        borderView.frame = btn.bounds
+        borderView.layer.cornerRadius = 3
+        borderView.layer.borderColor = tintColor.cgColor
+        borderView.layer.borderWidth = 1
+        borderView.layer.masksToBounds = true
+        btn.addSubview(borderView)
+        borderView.topAnchor.constraint(equalTo: btn.topAnchor).isActive = true
+        borderView.leadingAnchor.constraint(equalTo: btn.leadingAnchor).isActive = true
+        borderView.trailingAnchor.constraint(equalTo: btn.trailingAnchor).isActive = true
+        borderView.bottomAnchor.constraint(equalTo: btn.bottomAnchor).isActive = true
+        
+        let bar = UIView()
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        bar.backgroundColor = tintColor
+        borderView.addSubview(bar)
+        bar.bottomAnchor.constraint(equalTo: borderView.bottomAnchor).isActive = true
+        bar.leadingAnchor.constraint(equalTo: borderView.leadingAnchor).isActive = true
+        bar.trailingAnchor.constraint(equalTo: borderView.trailingAnchor).isActive = true
+        
+        let image = UIImageView(image: image)
+        image.translatesAutoresizingMaskIntoConstraints = false
+        //image.widthAnchor.constraint(equalToConstant: 52).isActive = true
+        image.contentMode = .scaleAspectFit
+        
+        borderView.addSubview(image)
+        image.topAnchor.constraint(equalTo: borderView.topAnchor, constant: 8).isActive = true
+        image.bottomAnchor.constraint(equalTo: bar.topAnchor, constant: -8).isActive = true
+        image.leadingAnchor.constraint(equalTo: borderView.leadingAnchor, constant: 8).isActive = true
+        image.trailingAnchor.constraint(equalTo: borderView.trailingAnchor, constant: -8).isActive = true
+        return btn
+    }
+    
+    lazy var btnStichtingen: UIButton = {
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "stichting_white"))
+        btn.tag = 100
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.addTarget(self, action: #selector(selectType(_:)))
+        btn.addGestureRecognizer(tap)
+        return btn
+    }()
+    
+    lazy var btnStichtingenSpecial: UIButton = {
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "sugg_stichting_white"))
+        btn.tag = 100
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.addTarget(self, action: #selector(selectType(_:)))
+        btn.addGestureRecognizer(tap)
+        return btn
+    }()
+    
+    lazy var btnKerken: UIButton = {
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "church_white"))
+        btn.tag = 101
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.addTarget(self, action: #selector(selectType(_:)))
+        btn.addGestureRecognizer(tap)
+        return btn
+    }()
+    
+    lazy var btnKerkenSpecial: UIButton = {
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "sugg_church_white"))
+        btn.tag = 101
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.addTarget(self, action: #selector(selectType(_:)))
+        btn.addGestureRecognizer(tap)
+        return btn
+    }()
+    
+    lazy var btnActies: UIButton = {
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "actions_white"))
+        btn.tag = 102
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.addTarget(self, action: #selector(selectType(_:)))
+        btn.addGestureRecognizer(tap)
+        return btn
+    }()
+    
+    lazy var btnActiesSpecial: UIButton = {
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "sugg_actions_white"))
+        btn.tag = 102
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.addTarget(self, action: #selector(selectType(_:)))
+        btn.addGestureRecognizer(tap)
+        return btn
+    }()
+    
+    private func createShadow(view: UIView) {
+        view.layer.shadowOffset = CGSize(width: 0, height: 1)
+        view.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.5).cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowRadius = 2
+        view.layer.shouldRasterize = true
+        view.layer.rasterizationScale = UIScreen.main.scale
     }
     
     func loadView(_ tag: Int) {
         if lastTag == tag {
             return
         }
-
-        /* reset all widths */
-        stichtingWidth.constant = 50
-        churchWidth.constant = 50
-        actiesWidth.constant = 50
-        overigWidth.constant = 50
     
         var regExp = "c[0-9]|d[be]"
         switch(tag) {
         case 100:
             regExp = "d[0-9]" //stichtingen
-            stichtingWidth.constant = 80
             title = NSLocalizedString("Stichtingen", comment: "")
         case 101:
             regExp = "c[0-9]|d[be]" //churches
-            churchWidth.constant = 80
             title = NSLocalizedString("Churches", comment: "")
         case 102:
             regExp = "a[0-9]" //acties
-            actiesWidth.constant = 80
             title = NSLocalizedString("Acties", comment: "")
-            //case 103: // overig
-        //we have no other beacons :c
         default:
             break
         }
