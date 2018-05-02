@@ -11,14 +11,7 @@ import UIKit
 class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDelegate {
     @IBOutlet var contentView: UIView!
     private var log = LogService.shared
-    @IBOutlet var organisationSuggestion: UILabel!
-    @IBOutlet var containerHeight: NSLayoutConstraint!
-    @IBOutlet var suggestion: UIView!
-    @IBOutlet var btnOverig: UIView!
-    @IBOutlet var btnActies: UIView!
-    @IBOutlet var btnKerken: UIView!
-    @IBOutlet var btnStichtingen: UIView!
-    @IBOutlet var suggestionImage: UIImageView!
+
     enum Choice: String {
         case foundations
         case churches
@@ -26,12 +19,6 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         case other
     }
     
-    @IBOutlet var suggestionText: UILabel!
-    @IBOutlet var stackView: UIStackView!
-    @IBOutlet var overig: UILabel!
-    @IBOutlet var acties: UILabel!
-    @IBOutlet var kerken: UILabel!
-    @IBOutlet var stichtingen: UILabel!
     @IBOutlet var navBar: UINavigationItem!
     var pickedChoice: Choice!
     private var beaconId: String?
@@ -214,8 +201,6 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     }
 
     func renderButtons() {
-        suggestion.removeFromSuperview()
-        
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.translatesAutoresizingMaskIntoConstraints = false
