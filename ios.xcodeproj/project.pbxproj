@@ -109,6 +109,9 @@
 		D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */; };
 		D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */; };
 		D7DBEDA31FBC798A00D78E2A /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */; };
+		D7DD799F209B054500047CA7 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD799E209B054500047CA7 /* EventViewController.swift */; };
+		D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD79A1209B359D00047CA7 /* EventSuggestionViewController.swift */; };
+		D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD79A3209B463800047CA7 /* InsetLabel.swift */; };
 		D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */; };
 		D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE931F7CFA34005807BE /* UserExt.swift */; };
 		D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */; };
@@ -264,6 +267,9 @@
 		D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextView.swift; sourceTree = "<group>"; };
 		D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
+		D7DD799E209B054500047CA7 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		D7DD79A1209B359D00047CA7 /* EventSuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSuggestionViewController.swift; sourceTree = "<group>"; };
+		D7DD79A3209B463800047CA7 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUser.swift; sourceTree = "<group>"; };
 		D7E3CE931F7CFA34005807BE /* UserExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExt.swift; sourceTree = "<group>"; };
 		D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPInfoViewController.swift; sourceTree = "<group>"; };
@@ -437,6 +443,7 @@
 				D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */,
 				D748F5FB2061425400B25BC2 /* HistoryTableViewCell.swift */,
 				D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */,
+				D7DD79A3209B463800047CA7 /* InsetLabel.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -480,6 +487,15 @@
 				D75AA195200CBFD5006E09BB /* TaxesViewController.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		D7DD79A0209B358800047CA7 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				D7DD799E209B054500047CA7 /* EventViewController.swift */,
+				D7DD79A1209B359D00047CA7 /* EventSuggestionViewController.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 		D7F746B31FD83F9F005354A3 /* Transitions */ = {
@@ -584,6 +600,7 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7DD79A0209B358800047CA7 /* Event */,
 				D7F746D81FD943B8005354A3 /* Give Flow */,
 				D7F746D71FD94390005354A3 /* Login */,
 				D7F746D61FD9435C005354A3 /* Modals */,
@@ -882,6 +899,7 @@
 				D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */,
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
+				D7DD799F209B054500047CA7 /* EventViewController.swift in Sources */,
 				D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */,
 				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
@@ -910,6 +928,7 @@
 				D787AE2B1FCD91680004BDB1 /* LogService.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
+				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
@@ -968,6 +987,7 @@
 				D770E5341FB097FA0079D253 /* ManualOrganisationView.swift in Sources */,
 				D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */,
 				D78208A12008BE7900AB6DC1 /* CollectionExtensions.swift in Sources */,
+				D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */,
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
 			);

@@ -90,6 +90,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     }
     
     private var rssiTreshold: Int = -68
+    private var _shouldNotify: Bool = false
     var isScanning: Bool = false
     
     var centralManager: CBCentralManager!
@@ -141,13 +142,14 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         self.amounts = amounts
     }
     
-    func startScanning() {
+    func startScanning(shouldNotify: Bool = false) {
         self.scannedPeripherals.removeAll()
         scanLock.lock()
         if (!isScanning)
         {
             log.info(message: "Started scanning")
             isScanning = true
+            _shouldNotify = shouldNotify
             centralManager.scanForPeripherals(withServices: [GivtService.FEAA], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
             DispatchQueue.main.async {
                 UIApplication.shared.isIdleTimerDisabled = true
@@ -263,16 +265,22 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                 bestBeacon.namespace = organisation
             }
             
-            if(rssi.intValue > rssiTreshold) {
-                scanLock.lock()
-                if (isScanning) {
-                    self.stopScanning()
-                    DispatchQueue.main.async {
-                        self.give(antennaID: antennaID)
+            if _shouldNotify {
+                NotificationCenter.default.post(name: Notification.Name("DidDiscoverBeacon"), object: nil)
+            } else {
+                if(rssi.intValue > rssiTreshold) {
+                    scanLock.lock()
+                    if (isScanning) {
+                        self.stopScanning()
+                        DispatchQueue.main.async {
+                            self.give(antennaID: antennaID)
+                        }
                     }
+                    scanLock.unlock()
                 }
-                scanLock.unlock()
             }
+            
+            
         }
     }
     

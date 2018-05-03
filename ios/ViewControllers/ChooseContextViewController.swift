@@ -66,8 +66,9 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
             let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
             navigationController.show(vc, sender: nil)
         case .events:
-            let story = UIStoryboard(name: <#T##String#>, bundle: <#T##Bundle?#>)
-            return
+            let story = UIStoryboard(name: "Event", bundle: nil)
+            let vc = story.instantiateInitialViewController() as! EventViewController
+            navigationController.show(vc, sender: nil)
         }
         
     }

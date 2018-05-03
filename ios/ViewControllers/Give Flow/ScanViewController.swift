@@ -59,7 +59,7 @@ class ScanViewController: BaseScanViewController {
         self.log.info(message: "Scanpage is now showing")
         
         if(GivtService.shared.bluetoothEnabled){
-            GivtService.shared.startScanning()
+            startScanning()
         }
 
         addOverlay()
