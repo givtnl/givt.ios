@@ -22,7 +22,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         cell.layoutMargins = UIEdgeInsets.zero
         cell.contextType = contexts[indexPath.row].type
         if cell.contextType == .events {
-            cell.contentView.alpha = 0.3
+            cell.contentView.alpha = 1
             let label = UILabel()
             label.textAlignment = .center
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -66,6 +66,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
             let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
             navigationController.show(vc, sender: nil)
         case .events:
+            let story = UIStoryboard(name: <#T##String#>, bundle: <#T##Bundle?#>)
             return
         }
         
