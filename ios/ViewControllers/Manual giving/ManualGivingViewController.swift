@@ -152,14 +152,13 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         
         let title = UILabel()
         title.text = suggestionTitle
-        title.textAlignment = .center
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.textAlignment = .center
+        title.textAlignment = .left
         title.font = UIFont(name: "Avenir-Light", size: 20)
         title.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         borderView.addSubview(title)
         title.topAnchor.constraint(equalTo: borderView.topAnchor, constant: 10).isActive = true
-        title.leadingAnchor.constraint(equalTo: borderView.leadingAnchor, constant: 10).isActive = true
+        title.leadingAnchor.constraint(equalTo: borderView.leadingAnchor, constant: 97).isActive = true
         title.trailingAnchor.constraint(equalTo: borderView.trailingAnchor, constant: 10).isActive = true
         
         let stackView = UIStackView()
@@ -231,8 +230,8 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
             stackView.addArrangedSubview(suggestief)
         }
         
-        stackView.addArrangedSubview(stichtingen)
         stackView.addArrangedSubview(churches)
+        stackView.addArrangedSubview(stichtingen)
         stackView.addArrangedSubview(actions)
 
     }

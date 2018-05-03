@@ -210,8 +210,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        typeStackView.addArrangedSubview(btnStichtingen)
         typeStackView.addArrangedSubview(btnKerken)
+        typeStackView.addArrangedSubview(btnStichtingen)
         typeStackView.addArrangedSubview(btnActies)
         
         if passSelectedTag == 100 {
