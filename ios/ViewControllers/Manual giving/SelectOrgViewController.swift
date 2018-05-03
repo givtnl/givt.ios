@@ -105,10 +105,14 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                         }) else {
                             return
                         }
-                    
-                        let ip = IndexPath(row: (namespaceIdx - sectionIdxOfItem), section: tableSectionId)
-                        tableView.scrollToRow(at: ip, at: UITableViewScrollPosition.top, animated: false)
-  
+                        
+                        if tableSectionId < tableView.numberOfSections && (namespaceIdx - sectionIdxOfItem) < tableView.numberOfRows(inSection: tableSectionId) {
+                            let ip = IndexPath(row: (namespaceIdx - sectionIdxOfItem), section: tableSectionId)
+                            tableView.scrollToRow(at: ip, at: UITableViewScrollPosition.top, animated: false)
+                        } else {
+                            self.log.warning(message: "Tried to scroll to suggestion \(orgName), but the index was out of bounds.")
+                        }
+
                     }
                 
                 }
