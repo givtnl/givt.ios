@@ -211,14 +211,10 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     func openLogin() {
         self.hideLoader()
         DispatchQueue.main.async {
-            
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-            let ch: () -> Void = {
+            self._navigationManager.executeWithLogin(context: self) {
                 self.navigationController?.dismiss(animated: false, completion: nil)
                 self._navigationManager.loadMainPage()
             }
-            vc.outerHandler = ch
-            self.present(vc, animated: true, completion: nil)
         }
     }
     

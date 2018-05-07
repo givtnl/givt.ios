@@ -16,7 +16,7 @@ extension UserDefaults {
         case bearerExpiration
         case amountLimit
         case offlineGivts
-        case userExt
+        case user
         case mandateSigned
         case viewedCoachMarks
         case userClaims
@@ -233,14 +233,14 @@ extension UserDefaults {
     
     var userExt: UserExt! {
         get {
-            if let encoded = data(forKey: UserDefaultsKeys.userExt.rawValue) {
+            if let encoded = data(forKey: UserDefaultsKeys.user.rawValue) {
                 return NSKeyedUnarchiver.unarchiveObject(with: encoded) as! UserExt
             }
             return nil
         }
         set(value) {
             let encoded = NSKeyedArchiver.archivedData(withRootObject: value)
-            set(encoded, forKey: UserDefaultsKeys.userExt.rawValue)
+            set(encoded, forKey: UserDefaultsKeys.user.rawValue)
             synchronize()
         }
     }

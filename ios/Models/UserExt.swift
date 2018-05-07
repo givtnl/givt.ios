@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-class UserExt: NSObject, NSCoding {
-    var email: String = ""
+class UserExt: BaseUser {
     var password: String = ""
     var firstName: String = ""
     var lastName: String = ""
@@ -21,14 +20,12 @@ class UserExt: NSObject, NSCoding {
     var iban: String = ""
     var mobileNumber: String = ""
     var postalCode: String = ""
-    var guid: String = ""    
     
     override init() {
-        
+        super.init()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        self.email = aDecoder.decodeObject(forKey: "email") as! String
         self.password = aDecoder.decodeObject(forKey: "password") as! String
         self.firstName = aDecoder.decodeObject(forKey: "firstName") as! String
         self.lastName = aDecoder.decodeObject(forKey: "lastName") as! String
@@ -39,11 +36,10 @@ class UserExt: NSObject, NSCoding {
         self.iban = aDecoder.decodeObject(forKey: "iban") as! String
         self.mobileNumber = aDecoder.decodeObject(forKey: "mobileNumber") as! String
         self.postalCode = aDecoder.decodeObject(forKey: "postalCode") as! String
-        self.guid = aDecoder.decodeObject(forKey: "guid") as! String
+        super.init(coder: aDecoder)
     }
     
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(email, forKey: "email")
+    override func encode(with aCoder: NSCoder) {
         aCoder.encode(password, forKey: "password")
         aCoder.encode(firstName, forKey: "firstName")
         aCoder.encode(lastName, forKey: "lastName")
@@ -54,6 +50,6 @@ class UserExt: NSObject, NSCoding {
         aCoder.encode(iban, forKey: "iban")
         aCoder.encode(mobileNumber, forKey: "mobileNumber")
         aCoder.encode(postalCode, forKey: "postalCode")
-        aCoder.encode(guid, forKey: "guid")        
+        super.encode(with: aCoder)
     }
 }
