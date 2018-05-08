@@ -217,9 +217,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
-                self.present(activityViewController, animated: true, completion: {
-                    self.hideLeftView(self)
-                })
+                self.present(activityViewController, animated: true, completion: nil)
             }
         }
     }
