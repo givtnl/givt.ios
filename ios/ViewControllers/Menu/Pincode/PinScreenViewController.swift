@@ -161,9 +161,10 @@ class PinScreenViewController: UIViewController {
                             break
                         }
                         
-                        self.present(alert, animated: true, completion: nil)
+                        DispatchQueue.main.async {
+                            self.present(alert, animated: true, completion: nil)
+                        }
 
-                        
                     } else if status {
                         DispatchQueue.main.async {
                             self.dismiss(animated: true, completion: { self.innerHandler!(true) } )
@@ -217,6 +218,7 @@ class PinScreenViewController: UIViewController {
                         
                     } else {
                         isDisabled = true
+                        
                         self.animateBullets()
                         AudioServicesPlayAlertSound(1520)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: {
@@ -253,11 +255,12 @@ class PinScreenViewController: UIViewController {
     }
     
     func animateBullets() {
-        addAnimation(view: firstBullet)
-        addAnimation(view: secondBullet)
-        addAnimation(view: thirdBullet)
-        addAnimation(view: fourthBullet)
-        
+        DispatchQueue.main.async {
+            self.addAnimation(view: self.firstBullet)
+            self.addAnimation(view: self.secondBullet)
+            self.addAnimation(view: self.thirdBullet)
+            self.addAnimation(view: self.fourthBullet)
+        }
     }
     @IBAction func forgotPin(_ sender: Any) {
         let alert = UIAlertController(title: NSLocalizedString("PincodeForgottenTitle", comment: ""), message: NSLocalizedString("PincodeForgottenMessage", comment: ""), preferredStyle: .alert)

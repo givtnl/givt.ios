@@ -494,6 +494,10 @@ class LoginManager {
     }
     
     func resume() {
+        if self.userClaim == UserClaims.startedApp {
+            return
+        }
+        
         if !UserDefaults.standard.mandateSigned {
             self.checkMandate(completionHandler: { (status) in
                 self.userClaim = self.isFullyRegistered ? .give : .giveOnce

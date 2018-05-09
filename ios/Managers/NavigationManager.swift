@@ -172,6 +172,7 @@ class NavigationManager {
             } else {
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
                 loginVC.outerHandler = completion
+                loginVC.emailEditable = emailEditable
                 context.present(loginVC, animated: true, completion: {
                     context.hideLeftView(context)
                 })
