@@ -112,6 +112,7 @@
 		D7DD799F209B054500047CA7 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD799E209B054500047CA7 /* EventViewController.swift */; };
 		D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD79A1209B359D00047CA7 /* EventSuggestionViewController.swift */; };
 		D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD79A3209B463800047CA7 /* InsetLabel.swift */; };
+		D7DD79A620A19E2500047CA7 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD79A520A19E2500047CA7 /* LocationService.swift */; };
 		D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */; };
 		D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE931F7CFA34005807BE /* UserExt.swift */; };
 		D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */; };
@@ -270,6 +271,7 @@
 		D7DD799E209B054500047CA7 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		D7DD79A1209B359D00047CA7 /* EventSuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSuggestionViewController.swift; sourceTree = "<group>"; };
 		D7DD79A3209B463800047CA7 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
+		D7DD79A520A19E2500047CA7 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUser.swift; sourceTree = "<group>"; };
 		D7E3CE931F7CFA34005807BE /* UserExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExt.swift; sourceTree = "<group>"; };
 		D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPInfoViewController.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				D740E15B1F4C6328000531BA /* GivtService.swift */,
+				D7DD79A520A19E2500047CA7 /* LocationService.swift */,
 				D7FB251C1F4D6D2F0011A14E /* AppServices.swift */,
 				D7FB252E1F5065C20011A14E /* Reachability.swift */,
 				D787AE2A1FCD91680004BDB1 /* LogService.swift */,
@@ -922,6 +925,7 @@
 				D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
 				D748F6002063D4A500B25BC2 /* Status.swift in Sources */,
+				D7DD79A620A19E2500047CA7 /* LocationService.swift in Sources */,
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
 				D7AF43011FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift in Sources */,

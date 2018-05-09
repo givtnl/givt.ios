@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 class EventViewController: BaseScanViewController {
     private let _givtService = GivtService.shared
     private var isSuggestionShowing = false
+    @IBOutlet var titleLabel: UILabel!
+    private var countdownTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +27,28 @@ class EventViewController: BaseScanViewController {
         if _givtService.bluetoothEnabled {
             _givtService.startScanning(shouldNotify: true)
         }
+        
+        _givtService.startLookingForGivtLocations()
+        
+        countdownTimer = Timer.scheduledTimer(timeInterval:
+            6, target: self, selector: #selector(tickingClocks), userInfo: nil, repeats: true)
+        
+        
+    }
+    
+    @objc func tickingClocks() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(6)) {
+            if let region = self._givtService.getGivtLocation() {
+                print(region.name)
+                self.titleLabel.text = region.name
+                 let alert = UIAlertController(title: region.name, message: "Geef aan zwolleuh", preferredStyle: UIAlertControllerStyle.alert)
+                 alert.addAction(UIAlertAction(title: "OKe", style: UIAlertActionStyle.default, handler: { (action) in
+                 //todo something
+                 }))
+                 self.present(alert, animated: true, completion: nil)
+ 
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -35,7 +60,7 @@ class EventViewController: BaseScanViewController {
     
     @objc func didDiscoverBeacon(notification: NSNotification) {
         GivtService.shared.stopScanning()
-
+        GivtService.shared.stopLookingForGivtLocations()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
             guard let orgName = self._givtService.getOrgName(orgNameSpace: self._givtService.getBestBeacon.namespace!) else {
                 self._givtService.startScanning(shouldNotify: true)

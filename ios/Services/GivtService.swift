@@ -11,10 +11,12 @@ import CoreBluetooth
 import UIKit
 import AudioToolbox
 import SwiftClient
+import CoreLocation
 
 final class GivtService: NSObject, CBCentralManagerDelegate {
     static let shared = GivtService()
     private var log = LogService.shared
+    private var locationService = LocationService.instance
     let reachability = Reachability()
     
     static let FEAA = CBUUID.init(string: "FEAA")
@@ -312,6 +314,24 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         bestBeacon = BestBeacon()
     }
     
+    func startLookingForGivtLocations() {
+        locationService.startLookingForLocation()
+        
+    }
+    
+    func stopLookingForGivtLocations() {
+        locationService.stopLookingForLocation()
+    }
+    
+    func getGivtLocation() -> GivtLocation? {
+        for location in getGivtLocations() {
+            if locationService.isLocationInRegion(region: location) {
+                return location
+            }
+        }
+        return nil
+    }
+    
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
         let queryString = "https://www.givtapp.net/download?code="
         if scanResult.index(of: queryString) != nil {
@@ -552,6 +572,12 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
     }
     
+    private func getGivtLocations() -> [GivtLocation] {
+        var locations = [GivtLocation]()
+        locations.append(GivtLocation(lat: 50.841195, long: 3.238345, radius: 30, name: "Givt"))
+        return locations
+    }
+    
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
@@ -592,6 +618,20 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
 
 protocol GivtProcessedProtocol: class {
     func onGivtProcessed(transactions: [Transaction])
+}
+
+class GivtLocation {
+    var lat: CLLocationDegrees
+    var long: CLLocationDegrees
+    var radius: Int //meter
+    var name: String
+    
+    init(lat: CLLocationDegrees, long: CLLocationDegrees, radius: Int, name: String) {
+        self.lat = lat
+        self.long = long
+        self.radius = radius
+        self.name = name
+    }
 }
 
 class BestBeacon {
