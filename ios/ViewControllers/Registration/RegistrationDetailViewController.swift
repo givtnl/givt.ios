@@ -102,9 +102,12 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         countryPickerView.delegate = self
         countryField.inputView = countryPickerView
         
+        
+        
         mobilePrefixPickerView = UIPickerView()
         mobilePrefixPickerView.delegate = self
         mobilePrefixField.inputView = mobilePrefixPickerView
+        
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         // prevents the scroll view from swallowing up the touch event of child buttons
@@ -458,6 +461,12 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             _lastTextField = countryField
             selectedCountry = AppConstants.countries[row]
             countryField.text = selectedCountry?.name
+            mobilePrefixPickerView.selectRow(row, inComponent: 0, animated: false)
+            _lastTextField = mobilePrefixField
+            selectedMobilePrefix = AppConstants.countries[row]
+            mobilePrefixField.text = selectedMobilePrefix?.prefix
+            checkAll(mobilePrefixField)
+            checkAll(mobileNumber)
             checkAll(countryField)
         } else if pv == mobilePrefixPickerView {
             _lastTextField = mobilePrefixField
