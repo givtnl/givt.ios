@@ -393,7 +393,7 @@
 "PincodeDoNotMatch" = "Codes do not match.\nPlease try again.";
 "PincodeSuccessfullTitle" = "Got it!";
 "PincodeSuccessfullMessage" = "Your passcode has been successfully saved.";
-"PincodeForgotten" = "Login with e-mail and password";
+"PincodeForgotten" = "Login with email and password";
 "PincodeForgottenTitle" = "Forgot passcode";
 "PincodeForgottenMessage" = "Login using your e-mail address to access your account.";
 "PincodeWrongPinTitle" = "Wrong passcode";
