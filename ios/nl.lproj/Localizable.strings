@@ -410,7 +410,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "PincodeDoNotMatch" = "Codes zijn niet hetzelfde.\nProbeer het opnieuw.";
 "PincodeSuccessfullTitle" = "Gelukt!";
 "PincodeSuccessfullMessage" = "Je toegangscode is succesvol opgeslagen.";
-"PincodeForgotten" = "Toegangscode vergeten?";
+"PincodeForgotten" = "Inloggen met e-mail en wachtwoord";
 "PincodeForgottenTitle" = "Toegangscode vergeten";
 "PincodeForgottenMessage" = "Log in met je e-mailadres om toegang tot je account te krijgen.";
 "PincodeWrongPinTitle" = "Foute toegangscode";
@@ -649,7 +649,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SoonMessage" = "Binnenkort...";
 "GiveWithYourPhone" = "Beweeg je telefoon";
 "CelebrateTitle" = "Nog eventjes wachten...";
-"CelebrateMessage" = "Zwier je smartphone in de lucht voor de aftelklok op 0 staat. Wat er dan gebeurt? Dat merk je vanzelf...";
+"CelebrateMessage" = "Zwier je smartphone in de lucht voor de aftelklok op 0 staat. \nWat er dan gebeurt? Dat merk je vanzelf...";
 "AfterCelebrationTitle" = "Zwaaien maar!";
 "AfterCelebrationMessage" = "Het is zover, zwaai er op los! \n(We zijn niet verantwoordelijk voor eventuele elleboogstoten.)";
 
@@ -661,3 +661,13 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
 "YesCool" = "Ja, leuk!";
+"ErrorContactGivt" = "Er is een fout opgetreden, gelieve contact op te nemen met support@givtapp.net .";
+"MandateFailPersonalInformation" = "Je IBAN en/of telefoonnummer blijkt niet goed ingevuld te zijn. Neem even contact op via support@givtapp.net om dit akkefietje op te lossen.";
+"MandateSMSCode" = "We sturen een sms-code naar {0}. Het mandaat wordt aangevraagd op naam van {1}. Correct? Ga dan gerust verder.";
+"MandateSigningCode" = "Als het goed is, krijg je zometeen een code. Vul die hieronder in om de machtiging te ondertekenen.";
+"ReadCode" = "Jouw code:";
+"ReadMandate" = "Bekijk mandaat";
+"MandatePdfFileName" = "mandaat";
+"WriteStoragePermission" = "Om deze PDF te kunnen bekijken, hebben we even toegang tot de opslag van je telefoon nodig zodat we de PDF kunnen opslaan en laten zien.";
+"LegalTextSlimPay" = "Door verder te gaan, zal u een machtiging ondertekenen voor het mandaat van Givt B.V om uw account te debiteren. U moet de accounthouder zijn of gemachtigd zijn om namens de accounthouder te handelen.\n\nUw persoonlijke gegevens worden verwerkt door SlimPay, een gelicentieerde betalingsinstelling, om de betalingstransactie uit te voeren namens Givt B.V., en om fraude te voorkomen volgens Europese regelgeving.";
+"ResendCode" = "Verstuur de code opnieuw";

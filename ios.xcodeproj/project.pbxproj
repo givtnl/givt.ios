@@ -17,7 +17,6 @@
 		D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */; };
 		D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72A89D61FE820F000C06EF6 /* InfoRegistrationViewController.swift */; };
 		D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72A89D81FE9164200C06EF6 /* AmountLimit.swift */; };
-		D72B197C1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B197B1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift */; };
 		D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72BD5431FDECA0B001481B1 /* ModalFromRightAnimation.swift */; };
 		D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */; };
 		D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */; };
@@ -130,6 +129,7 @@
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
 		FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6DE1F14CA200055185B /* Main.storyboard */; };
 		FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6E11F14CA200055185B /* Assets.xcassets */; };
+		FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A610A20A049B400696D20 /* BaseUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -167,7 +167,6 @@
 		D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WhyPersonalData.storyboard; sourceTree = "<group>"; };
 		D72A89D61FE820F000C06EF6 /* InfoRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRegistrationViewController.swift; sourceTree = "<group>"; };
 		D72A89D81FE9164200C06EF6 /* AmountLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountLimit.swift; sourceTree = "<group>"; };
-		D72B197B1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordCompleteViewController.swift; sourceTree = "<group>"; };
 		D72B197D1FE2E4F700EE3FDE /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = nl; path = nl.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D72B197F1FE2E4F800EE3FDE /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = nl; path = nl.lproj/Welcome.storyboard; sourceTree = "<group>"; };
 		D72B19811FE3016700EE3FDE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -288,6 +287,7 @@
 		FB3CE6D61F14CA200055185B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB3CE6E11F14CA200055185B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB3CE6E61F14CA200055185B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB8A610A20A049B400696D20 /* BaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -523,7 +523,6 @@
 				D73CA1C21F38B4C30059A296 /* LoginViewController.swift */,
 				D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */,
 				D7A64D081FDFDE2E005B51B2 /* ForgotPasswordViewController.swift */,
-				D72B197B1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -576,6 +575,7 @@
 				D748F6012063D4BF00B25BC2 /* HistoryTransaction.swift */,
 				D748F6032063D50C00B25BC2 /* HistoryTableViewModel.swift */,
 				D7BC58D520776361008C9497 /* Context.swift */,
+				FB8A610A20A049B400696D20 /* BaseUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -702,7 +702,6 @@
 				FB07A9611F14D97200FD9C1A /* Embed Frameworks */,
 				FB07A9621F14D98300FD9C1A /* CopyFiles */,
 				659DE9286974F2CA2FB67EB4 /* [CP] Embed Pods Frameworks */,
-				08120246E96A28C70D6AF7FF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -801,21 +800,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		08120246E96A28C70D6AF7FF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ios/Pods-ios-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		659DE9286974F2CA2FB67EB4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -906,6 +890,7 @@
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
 				D7AF43011FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift in Sources */,
 				D787AE2B1FCD91680004BDB1 /* LogService.swift in Sources */,
+				FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
@@ -935,7 +920,6 @@
 				D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */,
 				D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */,
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
-				D72B197C1FE2B19C00EE3FDE /* ForgotPasswordCompleteViewController.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				D75B2BD21FCEAE05000B7968 /* IAPIClient.swift in Sources */,

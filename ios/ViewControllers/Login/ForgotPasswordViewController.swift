@@ -64,9 +64,9 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             
             if let status = status {
                 if status {
+                    SVProgressHUD.showSuccess(withStatus: NSLocalizedString("CheckInbox", comment: ""))
                     DispatchQueue.main.async {
-                        let vc = UIStoryboard.init(name: "ForgotPassword", bundle: nil).instantiateViewController(withIdentifier: "ForgotPasswordCompleteViewController") as! ForgotPasswordCompleteViewController
-                        self.navigationController?.pushViewController(vc, animated: true)
+                        self.navigationController?.popViewController(animated: true)
                     }
                 } else {
                     if !self._appServices.connectedToNetwork() {

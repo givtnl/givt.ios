@@ -143,6 +143,14 @@ class NavigationManager {
     }
     
     public func pushWithLogin(_ vc: UIViewController, context: UIViewController) {
+        executeWithLogin(context: context) {
+            DispatchQueue.main.async {
+                context.present(vc, animated: true, completion: nil)
+            }
+        }
+    }
+
+    public func executeWithLogin(context: UIViewController, emailEditable: Bool = false, completion: @escaping () -> Void) {
         if !_appServices.connectedToNetwork() {
             presentAlertNoConnection(context: context)
             return
@@ -151,42 +159,28 @@ class NavigationManager {
             if UserDefaults.standard.hasPinSet {
                 let pinVC = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
                 pinVC.typeOfPin = .login
-                let completionHandler:(Bool)->Void = { status in
-                    if status {
-                        DispatchQueue.main.async {
-                            context.present(vc, animated: true, completion: nil)
-                        }
+                pinVC.outerHandler = { status in
+                    if !status {
+                        self.executeWithLogin(context: context, emailEditable: emailEditable, completion: completion)
                     } else {
-                        self.pushWithLogin(vc, context: context)
+                        completion()
                     }
-
                 }
-                pinVC.outerHandler = completionHandler
                 context.present(pinVC, animated: true, completion: {
                     context.hideLeftView(context)
                 })
-                
             } else {
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-                let completionHandler:()->Void = {
-                    DispatchQueue.main.async {
-                        context.present(vc, animated: true, completion: nil)
-                    }
-                }
-                loginVC.outerHandler = completionHandler
+                loginVC.outerHandler = completion
+                loginVC.emailEditable = emailEditable
                 context.present(loginVC, animated: true, completion: {
                     context.hideLeftView(context)
                 })
             }
-            
         } else {
-            context.present(vc, animated: true, completion: {
-                context.hideLeftView(context)
-            })
+            completion()
         }
-        
     }
-    
     
     private var isUpdateDialogOpen = false {
         didSet {

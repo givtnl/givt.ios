@@ -127,11 +127,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items.append([])
             items.append([])
             
-            #if DEBUG
-            let zaklamp = Setting(name: "Toggle zaklamp", image: UIImage(named: "list")!, callback: { self.toggleTorch() } )
-            items[0].append(zaklamp)
-            #endif
-            
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
             items[0].append(givts)
             let givtsTaxOverviewAvailable: Setting?
@@ -222,9 +217,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
-                self.present(activityViewController, animated: true, completion: {
-                    self.hideLeftView(self)
-                })
+                self.present(activityViewController, animated: true, completion: nil)
             }
         }
     }

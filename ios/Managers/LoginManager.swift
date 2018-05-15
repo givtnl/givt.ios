@@ -69,8 +69,6 @@ class LoginManager {
         } catch {
             log.error(message: "Something went wrong saving amount limit")
         }
-        
-
     }
     
     public func loginUser(email: String, password: String, completionHandler: @escaping (Bool, NSError?, String?) -> Void ) {
@@ -79,8 +77,8 @@ class LoginManager {
             params = ["grant_type":"pincode","userName":email,"pincode":password]
         } else {
             params = ["grant_type":"password","userName":email,"password":password]
-            
         }
+
         do {
             try authClient.post(url: "/oauth2/token", data: params) { (res) in
                 if let temp = res, let data = temp.data {
@@ -140,13 +138,10 @@ class LoginManager {
                 } else {
                     completionHandler(false, nil, "NoInternet")
                 }
-                
             }
         } catch {
             log.error(message: "Something went wrong logging in.")
         }
-        
-        
     }
     
     func convertToDictionary(text: String) -> [String: Any]? {
@@ -388,6 +383,7 @@ class LoginManager {
                 }
                 userExt.email = email
                 UserDefaults.standard.userExt = userExt
+                UserDefaults.standard.hasPinSet = false
                 let s = text.replacingOccurrences(of: "\"", with: "")
                 completionHandler(s)
             } else {
@@ -498,6 +494,10 @@ class LoginManager {
     }
     
     func resume() {
+        if self.userClaim == UserClaims.startedApp {
+            return
+        }
+        
         if !UserDefaults.standard.mandateSigned {
             self.checkMandate(completionHandler: { (status) in
                 self.userClaim = self.isFullyRegistered ? .give : .giveOnce
@@ -516,16 +516,14 @@ class LoginManager {
         UserDefaults.standard.bearerToken = ""
         UserDefaults.standard.isLoggedIn = false
         userClaim = .startedApp
-        UserDefaults.standard.userExt = UserExt()
         UserDefaults.standard.bearerExpiration = Date()
         UserDefaults.standard.mandateSigned = false
         DispatchQueue.main.async {
             UIApplication.shared.applicationIconBadgeNumber = 0
         }
         UserDefaults.standard.hasTappedAwayGiveDiff = false
-        UserDefaults.standard.hasPinSet = false
         UserDefaults.standard.showedLastYearTaxOverview = false
         UserDefaults.standard.hasGivtsInPreviousYear = false
-        
+        UserDefaults.standard.lastGivtToOrganisation = nil
     }
 }

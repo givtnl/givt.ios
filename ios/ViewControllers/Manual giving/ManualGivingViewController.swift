@@ -9,15 +9,9 @@
 import UIKit
 
 class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDelegate {
+    @IBOutlet var contentView: UIView!
     private var log = LogService.shared
-    @IBOutlet var organisationSuggestion: UILabel!
-    @IBOutlet var containerHeight: NSLayoutConstraint!
-    @IBOutlet var suggestion: UIView!
-    @IBOutlet var btnOverig: UIView!
-    @IBOutlet var btnActies: UIView!
-    @IBOutlet var btnKerken: UIView!
-    @IBOutlet var btnStichtingen: UIView!
-    @IBOutlet var suggestionImage: UIImageView!
+
     enum Choice: String {
         case foundations
         case churches
@@ -25,98 +19,246 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         case other
     }
     
-    @IBOutlet var suggestionText: UILabel!
-    @IBOutlet var stackView: UIStackView!
-    @IBOutlet var overig: UILabel!
-    @IBOutlet var acties: UILabel!
-    @IBOutlet var kerken: UILabel!
-    @IBOutlet var stichtingen: UILabel!
     @IBOutlet var navBar: UINavigationItem!
     var pickedChoice: Choice!
     private var beaconId: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navBar.title = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
-        stichtingen.text = NSLocalizedString("Stichtingen", comment: "")
-        kerken.text = NSLocalizedString("Churches", comment: "")
-        acties.text = NSLocalizedString("Acties", comment: "")
-        overig.text = NSLocalizedString("Overig", comment: "")
-        
-        addAction(btnKerken)
-        addAction(btnStichtingen)
-        addAction(btnActies)
-        //addAction(btnOverig) //we don't support this atm
-        
-        btnStichtingen.tag = 100
-        btnKerken.tag = 101
-        btnActies.tag = 102
-        btnOverig.tag = 103
-        btnOverig.alpha = 0.3
+        renderButtons()
+    }
+    
+    private func fillSuggestion() -> UIView? {
+        var namespace = ""
 
-        let lastOrg = GivtService.shared.lastGivtOrg
-        if let beaconId = GivtService.shared.getBestBeacon.beaconId, !lastOrg.isEmpty() {
-            suggestionText.text = NSLocalizedString("Suggestie", comment: "")
-            self.beaconId = beaconId
-
-            let tap = UITapGestureRecognizer()
-            tap.addTarget(self, action: #selector(giveSuggestion))
-            suggestion.addGestureRecognizer(tap)
-            suggestion.layer.cornerRadius = 3
-            
-            /* filter list based on regExp */
-            var bg: UIColor = #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 0.2)
-            let type  = beaconId.substring(16..<19)
-            if type.matches("c[0-9]|d[be]") { //is a chrch
-                bg = #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 0.2)
-                suggestionImage.image = #imageLiteral(resourceName: "kerken")
-            } else if type.matches("d[0-9]") { //stichitng
-                bg = #colorLiteral(red: 0.9652975202, green: 0.7471453547, blue: 0.3372098804, alpha: 0.2)
-                suggestionImage.image = #imageLiteral(resourceName: "stichtingen")
-            } else if type.matches("a[0-9]") { //acties
-                bg = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 0.2)
-                suggestionImage.image = #imageLiteral(resourceName: "acties")
-            }
-            /* when we have the "other" option, don't forget to add regexp !*/
-            
-            suggestion.backgroundColor = bg
-            organisationSuggestion.text = lastOrg
-            suggestion.isHidden = false
+        var overrideSuggestion = "61f7ed014e4c0317d000"
+        #if PRODUCTION
+            overrideSuggestion = "61f7ed014e4c1017d000" //Stichting Opwekking
+        #endif
+        
+        if let beaconId = GivtService.shared.getBestBeacon.namespace {
+            namespace = beaconId
         } else {
-            if let orgNS = UserDefaults.standard.lastGivtToOrganisation, let orgName = GivtService.shared.getOrgName(orgNameSpace: orgNS) {
-                log.info(message: "Filling suggestion with the organisation that was given to/selected from list.")
-                suggestionText.text = NSLocalizedString("Suggestie", comment: "")
-                self.beaconId = orgNS
-                
-                let tap = UITapGestureRecognizer()
-                tap.addTarget(self, action: #selector(giveSuggestion))
-                suggestion.addGestureRecognizer(tap)
-                suggestion.layer.cornerRadius = 3
-                
-                /* filter list based on regExp */
-                var bg: UIColor = #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 0.2)
-                let type  = self.beaconId!.substring(16..<19)
-                if type.matches("c[0-9]|d[be]") { //is a chrch
-                    bg = #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 0.2)
-                    suggestionImage.image = #imageLiteral(resourceName: "kerken")
-                } else if type.matches("d[0-9]") { //stichitng
-                    bg = #colorLiteral(red: 0.9652975202, green: 0.7471453547, blue: 0.3372098804, alpha: 0.2)
-                    suggestionImage.image = #imageLiteral(resourceName: "stichtingen")
-                } else if type.matches("a[0-9]") { //acties
-                    bg = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 0.2)
-                    suggestionImage.image = #imageLiteral(resourceName: "acties")
+            // TODO: remove this piece of junk code after Opwekking Event
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd"
+            // DATE must be BETWEEN START and END. Comparing against < so if you want to show suggestion on the 15th day ? make end date with day 16
+            if let startTime = formatter.date(from: "2018/05/15"), let endTime = formatter.date(from: "2018/05/22") {
+                if Date().isBetween(startTime, and: endTime) {
+                    GivtService.shared.orgBeaconList.forEach { (dictionary) in
+                        if let ns = dictionary["EddyNameSpace"] as? String, ns == overrideSuggestion {
+                            namespace = overrideSuggestion
+                        }
+                    }
+                } else {
+                    if let savedNamespace = UserDefaults.standard.lastGivtToOrganisation {
+                        namespace = savedNamespace
+                    }
                 }
-                /* when we have the "other" option, don't forget to add regexp !*/
-                
-                suggestion.backgroundColor = bg
-                organisationSuggestion.text = orgName
-                suggestion.isHidden = false
-            } else {
-                suggestion.removeFromSuperview()
-                suggestion.isHidden = true
             }
+            
+            
         }
         
+        
+        guard let orgName = GivtService.shared.getOrgName(orgNameSpace: namespace) else { return nil }
+        self.beaconId = namespace
+        
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: #selector(giveSuggestion))
+        
+        var c: UIColor?
+        var i: UIImage?
+        let type  = namespace.substring(16..<19)
+        if type.matches("c[0-9]|d[be]") { //is a chrch
+            c = #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 1)
+            i = #imageLiteral(resourceName: "sugg_church_white")
+        } else if type.matches("d[0-9]") { //stichitng
+            c = #colorLiteral(red: 1, green: 0.6917269826, blue: 0, alpha: 1)
+            i = #imageLiteral(resourceName: "sugg_stichting_white")
+        } else if type.matches("a[0-9]") { //acties
+            c = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
+            i = #imageLiteral(resourceName: "sugg_actions_white")
+        }
+
+        guard let tintColor = c, let image = i else { return nil }
+        
+        let suggestion = createSuggestion(suggestionTitle: NSLocalizedString("Suggestie", comment: ""), text: orgName, image: image, backgroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), tintColor: tintColor)
+        suggestion.addGestureRecognizer(tap)
+        return suggestion
+    }
+    
+    private func createShadow(view: UIView) {
+        view.layer.shadowOffset = CGSize(width: 0, height: 1)
+        view.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.5).cgColor
+        view.layer.shadowOpacity = 1
+        view.layer.shadowRadius = 2
+        view.layer.shouldRasterize = true
+        view.layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    private func createButton(text: String, image: UIImage, backgroundColor: UIColor, useShadow: Bool) -> UIButton {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.layer.cornerRadius = 3
+        btn.backgroundColor = backgroundColor
+        if useShadow {
+            createShadow(view: btn)
+        }
+        
+        btn.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.spacing = 25
+        btn.addSubview(stackView)
+        stackView.topAnchor.constraint(equalTo: btn.topAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: btn.leadingAnchor, constant: 20).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: btn.trailingAnchor, constant: -20).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: btn.bottomAnchor).isActive = true
+        
+        let image = UIImageView(image: image)
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.widthAnchor.constraint(equalToConstant: 50).isActive = true
+
+        let label = UILabel()
+        label.text = text
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.font = UIFont(name: "Avenir-Heavy", size: 18)
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        let arrow = UIImageView(image: #imageLiteral(resourceName: "smallwhitearrow"))
+        arrow.translatesAutoresizingMaskIntoConstraints = false
+        arrow.widthAnchor.constraint(equalToConstant: 6).isActive = true
+        arrow.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        
+        stackView.addArrangedSubview(image)
+        stackView.addArrangedSubview(label)
+        stackView.addArrangedSubview(arrow)
+        return btn
+    }
+    
+    private func createSuggestion(suggestionTitle: String, text: String, image: UIImage, backgroundColor: UIColor, tintColor: UIColor) -> UIButton {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = UIColor.clear
+        btn.layer.shadowOffset = CGSize(width: 0, height: 1)
+        btn.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.5).cgColor
+        btn.layer.shadowOpacity = 1
+        btn.layer.shadowRadius = 2
+        btn.layer.shouldRasterize = true
+        btn.layer.rasterizationScale = UIScreen.main.scale
+        
+        let borderView = UIView()
+        borderView.translatesAutoresizingMaskIntoConstraints = false
+        borderView.backgroundColor = backgroundColor
+        borderView.frame = btn.bounds
+        borderView.layer.cornerRadius = 3
+        borderView.layer.borderColor = tintColor.cgColor
+        borderView.layer.borderWidth = 1
+        borderView.layer.masksToBounds = true
+        btn.addSubview(borderView)
+        borderView.topAnchor.constraint(equalTo: btn.topAnchor).isActive = true
+        borderView.leadingAnchor.constraint(equalTo: btn.leadingAnchor).isActive = true
+        borderView.trailingAnchor.constraint(equalTo: btn.trailingAnchor).isActive = true
+        borderView.bottomAnchor.constraint(equalTo: btn.bottomAnchor).isActive = true
+        
+        let bar = UIView()
+        bar.translatesAutoresizingMaskIntoConstraints = false
+        bar.heightAnchor.constraint(equalToConstant: 5).isActive = true
+        bar.backgroundColor = tintColor
+        borderView.addSubview(bar)
+        bar.bottomAnchor.constraint(equalTo: borderView.bottomAnchor).isActive = true
+        bar.leadingAnchor.constraint(equalTo: borderView.leadingAnchor).isActive = true
+        bar.trailingAnchor.constraint(equalTo: borderView.trailingAnchor).isActive = true
+        
+        let title = UILabel()
+        title.text = suggestionTitle
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.textAlignment = .left
+        title.font = UIFont(name: "Avenir-Light", size: 20)
+        title.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        borderView.addSubview(title)
+        title.topAnchor.constraint(equalTo: borderView.topAnchor, constant: 10).isActive = true
+        title.leadingAnchor.constraint(equalTo: borderView.leadingAnchor, constant: 97).isActive = true
+        title.trailingAnchor.constraint(equalTo: borderView.trailingAnchor, constant: 10).isActive = true
+        
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.spacing = 25
+        borderView.addSubview(stackView)
+        stackView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 8).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: borderView.leadingAnchor, constant: 20).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: borderView.trailingAnchor, constant: -20).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: borderView.bottomAnchor, constant: -13).isActive = true
+        
+        let image = UIImageView(image: image)
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.widthAnchor.constraint(equalToConstant: 52).isActive = true
+        image.contentMode = .scaleAspectFit
+        
+        let label = UILabel()
+        label.text = text
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.font = UIFont(name: "Avenir-Heavy", size: 20)
+        label.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
+        
+        let arrow = UIImageView(image: #imageLiteral(resourceName: "smallpurplearrow"))
+        arrow.translatesAutoresizingMaskIntoConstraints = false
+        arrow.widthAnchor.constraint(equalToConstant: 6).isActive = true
+        arrow.heightAnchor.constraint(equalToConstant: 10).isActive = true
+        arrow.tintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        
+        stackView.addArrangedSubview(image)
+        stackView.addArrangedSubview(label)
+        stackView.addArrangedSubview(arrow)
+        return btn
+    }
+
+    func renderButtons() {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 20
+        stackView.distribution = .equalSpacing
+        
+        contentView.addSubview(stackView)
+        stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        
+        stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20).isActive = true
+        
+        stackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -20).isActive = true
+        
+        let stichtingen = createButton(text: NSLocalizedString("Stichtingen", comment: ""), image: #imageLiteral(resourceName: "stichting_white"), backgroundColor: #colorLiteral(red: 0.9568627451, green: 0.7490196078, blue: 0.3882352941, alpha: 1), useShadow: true)
+        let churches = createButton(text: NSLocalizedString("Churches", comment: ""), image: #imageLiteral(resourceName: "church_white"), backgroundColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), useShadow: true)
+        let actions = createButton(text: NSLocalizedString("Acties", comment: ""), image: #imageLiteral(resourceName: "actions_white"), backgroundColor: #colorLiteral(red: 0.9450980392, green: 0.4392156863, blue: 0.3411764706, alpha: 1), useShadow: true)
+        
+        stichtingen.tag = 100
+        churches.tag = 101
+        actions.tag = 102
+        
+        addAction(stichtingen)
+        addAction(churches)
+        addAction(actions)
+        
+        if let suggestief = fillSuggestion() {
+            stackView.addArrangedSubview(suggestief)
+        }
+        
+        stackView.addArrangedSubview(churches)
+        stackView.addArrangedSubview(stichtingen)
+        stackView.addArrangedSubview(actions)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -150,7 +292,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         disableButtons = true
         if let tag = sender.view?.tag {
             switch tag {
-            case 100, 101, 102, 103:
+            case 100, 101, 102:
                 let vc = storyboard?.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
                 vc.passSelectedTag = tag
                 self.show(vc, sender: nil)
@@ -173,3 +315,5 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         }
     }
 }
+
+
