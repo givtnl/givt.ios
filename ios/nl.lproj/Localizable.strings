@@ -410,7 +410,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "PincodeDoNotMatch" = "Codes zijn niet hetzelfde.\nProbeer het opnieuw.";
 "PincodeSuccessfullTitle" = "Gelukt!";
 "PincodeSuccessfullMessage" = "Je toegangscode is succesvol opgeslagen.";
-"PincodeForgotten" = "Inloggen met email en wachtwoord";
+"PincodeForgotten" = "Inloggen met e-mail en wachtwoord";
 "PincodeForgottenTitle" = "Toegangscode vergeten";
 "PincodeForgottenMessage" = "Log in met je e-mailadres om toegang tot je account te krijgen.";
 "PincodeWrongPinTitle" = "Foute toegangscode";
