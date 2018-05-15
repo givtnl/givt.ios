@@ -30,11 +30,36 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     
     private func fillSuggestion() -> UIView? {
         var namespace = ""
+
+        var overrideSuggestion = "61f7ed014e4c0317d000"
+        #if PRODUCTION
+            overrideSuggestion = "61f7ed014e4c1017d000" //Stichting Opwekking
+        #endif
+        
         if let beaconId = GivtService.shared.getBestBeacon.namespace {
             namespace = beaconId
-        } else if let savedNamespace = UserDefaults.standard.lastGivtToOrganisation {
-            namespace = savedNamespace
+        } else {
+            // TODO: remove this piece of junk code after Opwekking Event
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd"
+            // DATE must be BETWEEN START and END. Comparing against < so if you want to show suggestion on the 15th day ? make end date with day 16
+            if let startTime = formatter.date(from: "2018/05/15"), let endTime = formatter.date(from: "2018/05/22") {
+                if Date().isBetween(startTime, and: endTime) {
+                    GivtService.shared.orgBeaconList.forEach { (dictionary) in
+                        if let ns = dictionary["EddyNameSpace"] as? String, ns == overrideSuggestion {
+                            namespace = overrideSuggestion
+                        }
+                    }
+                } else {
+                    if let savedNamespace = UserDefaults.standard.lastGivtToOrganisation {
+                        namespace = savedNamespace
+                    }
+                }
+            }
+            
+            
         }
+        
         
         guard let orgName = GivtService.shared.getOrgName(orgNameSpace: namespace) else { return nil }
         self.beaconId = namespace
