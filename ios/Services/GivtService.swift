@@ -574,7 +574,18 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     
     private func getGivtLocations() -> [GivtLocation] {
         var locations = [GivtLocation]()
-        locations.append(GivtLocation(lat: 50.841195, long: 3.238345, radius: 30, name: "Givt"))
+        orgBeaconList.enumerated().forEach { (offset, dictionary) in
+            print(dictionary["OrgName"] as! String)
+            if let location = dictionary["Locations"] as? [String: Any] {
+                if let radius = location["Radius"] as? Int,
+                    let latitude = location["Latitude"] as? Double,
+                    let long = location["Longitude"] as? Double,
+                    let name = location["Name"] as? String,
+                    let beaconId = location["BeaconId"] as? String {
+                    locations.append(GivtLocation(lat: latitude, long: long, radius: radius, name: name, beaconId: beaconId))
+                }
+            }
+        }
         return locations
     }
     
@@ -625,12 +636,14 @@ class GivtLocation {
     var long: CLLocationDegrees
     var radius: Int //meter
     var name: String
+    var beaconId: String
     
-    init(lat: CLLocationDegrees, long: CLLocationDegrees, radius: Int, name: String) {
+    init(lat: CLLocationDegrees, long: CLLocationDegrees, radius: Int, name: String, beaconId: String) {
         self.lat = lat
         self.long = long
         self.radius = radius
         self.name = name
+        self.beaconId = beaconId
     }
 }
 
