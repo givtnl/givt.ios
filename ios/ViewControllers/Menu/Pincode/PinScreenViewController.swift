@@ -263,14 +263,10 @@ class PinScreenViewController: UIViewController {
         }
     }
     @IBAction func forgotPin(_ sender: Any) {
-        let alert = UIAlertController(title: NSLocalizedString("PincodeForgottenTitle", comment: ""), message: NSLocalizedString("PincodeForgottenMessage", comment: ""), preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            UserDefaults.standard.hasPinSet = false
-            self.dismiss(animated: true, completion: {
-                self.innerHandler!(false)
-            })
-        }))
-        self.present(alert, animated: true) {}
+        UserDefaults.standard.hasPinSet = false
+        self.dismiss(animated: true, completion: {
+            self.innerHandler!(false)
+        })
     }
     
     func addAnimation(view: UIView) {
