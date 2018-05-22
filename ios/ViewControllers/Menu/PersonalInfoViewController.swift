@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 
 class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
-
+    
     private let loginManager = LoginManager.shared
     private let validationHelper = ValidationHelper.shared
     @IBOutlet var btnNext: CustomButton!
@@ -22,6 +22,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var name: UILabel!
     @IBOutlet var titleText: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var changePasswordBtn: UIButton!
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -158,6 +159,9 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
         
+        changePasswordBtn.layer.cornerRadius = 4
+        
+        
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
@@ -195,6 +199,12 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func goLostPassword(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
+        self.show(newViewController, sender: nil)
+
+    }
     /*
     // MARK: - Navigation
 
