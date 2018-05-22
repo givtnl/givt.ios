@@ -15,6 +15,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     private var _appServices = AppServices.shared
     private var _loginManager = LoginManager.shared
     
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var infoButton: UIBarButtonItem!
     @IBOutlet var titleText: UILabel!
     private var phoneNumberKit = PhoneNumberKit()
     @IBOutlet var theScrollView: UIScrollView!
@@ -39,6 +41,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        infoButton.accessibilityLabel = "Info"
         titleText.text = NSLocalizedString("RegisterPersonalPage", comment: "")
         streetAndNumber.placeholder = NSLocalizedString("StreetAndHouseNumber", comment: "")
         postalCode.placeholder = NSLocalizedString("PostalCode", comment: "")

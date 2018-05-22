@@ -12,6 +12,7 @@ import UIKit
 
 class FAQViewController: UIViewController, OpenedQuestionDelegate {
     @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet weak var closeButton: UIButton!
     var previousQuestion: FAQView?
     func didTapFAQView(sender: FAQView) {
         if previousQuestion != nil {
@@ -64,6 +65,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        closeButton.accessibilityLabel = NSLocalizedString("Close", comment: "")
         UIApplication.shared.statusBarStyle = .lightContent
         
         addSpacer()
@@ -114,7 +116,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
 
     }
     

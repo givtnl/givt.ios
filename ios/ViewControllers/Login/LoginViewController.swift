@@ -20,10 +20,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtTitle: UILabel!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnForgotPassword: UIButton!
-    @IBOutlet var backButton: UIButton!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     var emailEditable: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         txtUserName.placeholder = NSLocalizedString("Email", comment: "")
         txtPassword.placeholder = NSLocalizedString("Password", comment: "")
         txtTitle.text = NSLocalizedString("LoginText", comment: "")

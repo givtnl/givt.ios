@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aMO-mo-gAx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aMO-mo-gAx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Black</string>
-            <string>Avenir-Heavy</string>
-            <string>Avenir-Light</string>
-            <string>Avenir-Medium</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Personal Info View Controller-->
         <scene sceneID="dIA-0s-DSf">
             <objects>
                 <viewController storyboardIdentifier="PersonalInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qMn-WP-e5g" customClass="PersonalInfoViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u6A-bS-aEG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change your IBAN here.  Other account data can be changed by sending an e-mail to support@givtapp.net" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="eT8-b3-F5d">
-                                <rect key="frame" x="20" y="84" width="560" height="82"/>
+                                <rect key="frame" x="20" y="84" width="335" height="82"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="IBAN" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XI1-ik-89U" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="186" width="560" height="44"/>
+                                <rect key="frame" x="20" y="186" width="335" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="HWT-Pe-880"/>
@@ -39,34 +35,34 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oa8-W2-xdJ">
-                                <rect key="frame" x="35" y="260" width="530" height="150"/>
+                                <rect key="frame" x="35" y="260" width="305" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xvk-tW-9cc">
-                                        <rect key="frame" x="0.0" y="0.0" width="530" height="22"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="305" height="22"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="VRh-qM-Dcb">
-                                        <rect key="frame" x="0.0" y="32" width="530" height="22"/>
+                                        <rect key="frame" x="0.0" y="32" width="305" height="22"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Straat" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pxq-OJ-gH3">
-                                        <rect key="frame" x="0.0" y="64" width="530" height="22"/>
+                                        <rect key="frame" x="0.0" y="64" width="305" height="22"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postcode" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-ud-fQc">
-                                        <rect key="frame" x="0.0" y="96" width="530" height="22"/>
+                                        <rect key="frame" x="0.0" y="96" width="305" height="22"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GSM nr" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="s0f-L5-DBb">
-                                        <rect key="frame" x="0.0" y="128" width="530" height="22"/>
+                                        <rect key="frame" x="0.0" y="128" width="305" height="22"/>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -74,7 +70,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtX-gr-Ili" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="536" width="560" height="44"/>
+                                <rect key="frame" x="20" y="603" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                 <constraints>
@@ -127,6 +123,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="Smo-sW-3EB" id="Sd9-tZ-A6Y"/>
                         <outlet property="btnNext" destination="mtX-gr-Ili" id="HZP-so-aOl"/>
                         <outlet property="cellphone" destination="s0f-L5-DBb" id="pVj-CK-8Ms"/>
                         <outlet property="email" destination="VRh-qM-Dcb" id="7fW-6U-SLN"/>

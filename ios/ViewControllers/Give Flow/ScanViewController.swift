@@ -12,6 +12,7 @@ import SafariServices
 import MaterialShowcase
 
 class ScanViewController: BaseScanViewController {
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     private var log = LogService.shared
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var gif: UIImageView!
@@ -25,6 +26,7 @@ class ScanViewController: BaseScanViewController {
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGive.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
         title = NSLocalizedString("GiveWithYourPhone", comment: "")
+        backBtn.accessibilityLabel = NSLocalizedString("Back", comment: "")
     }
     
     @objc func showBluetoothMessage() {

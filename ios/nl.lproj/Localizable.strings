@@ -671,3 +671,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "WriteStoragePermission" = "Om deze PDF te kunnen bekijken, hebben we even toegang tot de opslag van je telefoon nodig zodat we de PDF kunnen opslaan en laten zien.";
 "LegalTextSlimPay" = "Door verder te gaan, zal u een machtiging ondertekenen voor het mandaat van Givt B.V om uw account te debiteren. U moet de accounthouder zijn of gemachtigd zijn om namens de accounthouder te handelen.\n\nUw persoonlijke gegevens worden verwerkt door SlimPay, een gelicentieerde betalingsinstelling, om de betalingstransactie uit te voeren namens Givt B.V., en om fraude te voorkomen volgens Europese regelgeving.";
 "ResendCode" = "Verstuur de code opnieuw";
+"WrongCodeMandateSigning" = "De code lijkt niet juist te zijn. Probeer het opnieuw of vraag een nieuwe code aan.";
+"Back" = "Terug";
+"AmountLowest" = "Twee Euro Vijftig";
+"AmountMiddle" = "Zeven Euro Vijftig";
+"AmountHighest" = "Twaalf Euro Vijftig";
+"Divider" = "Komma";

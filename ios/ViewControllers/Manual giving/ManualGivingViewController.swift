@@ -10,6 +10,7 @@ import UIKit
 
 class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDelegate {
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     private var log = LogService.shared
 
     enum Choice: String {
@@ -24,6 +25,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     private var beaconId: String?
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         navBar.title = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
         renderButtons()
     }

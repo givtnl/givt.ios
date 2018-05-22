@@ -16,6 +16,7 @@ class PermissionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         btnNext.setTitle(NSLocalizedString("PrepareIUnderstand", comment: ""), for: .normal)
+        btnNext.accessibilityLabel = NSLocalizedString("PrepareIUnderstand", comment: "")
         titleLabel.text = NSLocalizedString("PrepareMobileTitle", comment: "")
         firstLabel.text = NSLocalizedString("PrepareMobileExplained", comment: "")
         secondLabel.text = NSLocalizedString("PrepareMobileSummary", comment: "")

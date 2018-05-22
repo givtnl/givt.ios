@@ -12,6 +12,7 @@ import SVProgressHUD
 class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var theScrollView: UIScrollView!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var forename: CustomUITextField!
     @IBOutlet var lastname: CustomUITextField!
     @IBOutlet var emailaddress: CustomUITextField!
@@ -30,6 +31,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         initButtonsWithTags()
         initTermsText()
         
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         titleText.text = NSLocalizedString("RegisterPage", comment: "")
         forename.placeholder = NSLocalizedString("FirstName", comment: "")
         lastname.placeholder = NSLocalizedString("LastName", comment: "")

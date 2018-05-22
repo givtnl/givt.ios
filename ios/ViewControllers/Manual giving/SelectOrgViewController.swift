@@ -16,6 +16,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         var nameSpace: String
     }
     
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var typeStackView: UIStackView!
     var lastGivtToOrganisationPosition: Int?
     @IBOutlet var searchBar: UISearchBar!
@@ -209,6 +210,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         
         typeStackView.addArrangedSubview(btnKerken)
         typeStackView.addArrangedSubview(btnStichtingen)

@@ -11,6 +11,7 @@ import UIKit
 class ChooseContextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     @IBOutlet var giveSubtitle: UILabel!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseContextTableViewCell") as! ChooseContextTableViewCell
@@ -119,6 +120,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension

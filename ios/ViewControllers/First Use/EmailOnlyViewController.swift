@@ -61,6 +61,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             checkAll()
         #endif
         
+        topNavigationBar.items?.first?.leftBarButtonItems?.first?.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        
         email.placeholder = NSLocalizedString("Email", comment: "")
         title = NSLocalizedString("EnterEmail", comment: "")
         subtitleText.text = NSLocalizedString("ToGiveWeNeedYourEmailAddress", comment: "")

@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xx1-6A-aeB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xx1-6A-aeB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Black</string>
-            <string>Avenir-Heavy</string>
-            <string>Avenir-Roman</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Updated Terms Page View Controller-->
         <scene sceneID="vcu-Q8-nPc">
@@ -27,19 +20,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givt20h" translatesAutoresizingMaskIntoConstraints="NO" id="8iO-xn-qQc">
-                                <rect key="frame" x="161" y="30" width="53" height="19"/>
+                                <rect key="frame" x="161" y="30" width="53" height="20"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="center" axis="vertical" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="Osr-1H-lud">
-                                <rect key="frame" x="20" y="59" width="335" height="480"/>
+                                <rect key="frame" x="20" y="60" width="335" height="479"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" text="The terms and conditions have been updated." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-jB-WAU">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="154"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="153.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFf-Wl-4hw">
-                                        <rect key="frame" x="0.0" y="163" width="335" height="154"/>
+                                        <rect key="frame" x="0.0" y="162.5" width="335" height="154"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givypaper" translatesAutoresizingMaskIntoConstraints="NO" id="lIi-8t-Mxy">
                                                 <rect key="frame" x="90.5" y="0.0" width="154" height="154"/>
@@ -57,7 +50,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" text="You agree to the new terms and conditions if you continue." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gs-Ow-92P">
-                                        <rect key="frame" x="0.0" y="326" width="335" height="154"/>
+                                        <rect key="frame" x="0.0" y="325.5" width="335" height="153.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="17"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

@@ -18,12 +18,14 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     @IBOutlet var topRight: UIImageView!
     @IBOutlet var bottomLeft: UIImageView!
     @IBOutlet var bottomRight: UIImageView!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     var video : AVCaptureVideoPreviewLayer? = nil
     var session : AVCaptureSession? = nil
     @IBOutlet var qrView: UIView!
     private var isCameraDisabled = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         navBar.title = NSLocalizedString("GiveDifferentScan", comment: "")
         subTitle.text = NSLocalizedString("GiveDiffQRText", comment: "")
         topRight.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))

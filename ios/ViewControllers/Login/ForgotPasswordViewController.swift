@@ -14,11 +14,13 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     private var _navigationManager = NavigationManager.shared
     
     private var validationHelper = ValidationHelper.shared
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var btnSend: CustomButton!
     @IBOutlet var emailField: CustomUITextField!
     @IBOutlet var headerText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         headerText.text = NSLocalizedString("ForgotPasswordText", comment: "")
         emailField.placeholder = NSLocalizedString("Email", comment: "")
         btnSend.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)

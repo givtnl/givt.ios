@@ -13,11 +13,12 @@ class InfoRegistrationViewController: UIViewController {
     @IBOutlet var buttonText: CustomButton!
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var titleText: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        closeButton.accessibilityLabel = NSLocalizedString("Close", comment: "")
         titleText.text = NSLocalizedString("PersonalInfo", comment: "")
         bodyText.text = NSLocalizedString("InformationPersonalData", comment: "")
         buttonText.setTitle(NSLocalizedString("ReadPrivacy", comment: ""), for: .normal)

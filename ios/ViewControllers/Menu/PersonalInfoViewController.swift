@@ -21,6 +21,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var email: UILabel!
     @IBOutlet var name: UILabel!
     @IBOutlet var titleText: UILabel!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -147,10 +148,12 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         cellphone.text = ""
         // Do any additional setup after loading the view.
         
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         iban.placeholder = NSLocalizedString("IBANPlaceHolder", comment: "")
         btnNext.setTitle(NSLocalizedString("ButtonChange", comment: ""), for: .normal)
         titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
         btnNext.isEnabled = false
+        btnNext.accessibilityLabel = NSLocalizedString("ButtonChange", comment: "")
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)

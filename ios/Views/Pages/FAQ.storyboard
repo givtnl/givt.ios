@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4bl-Dj-gnz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4bl-Dj-gnz">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Heavy</string>
-            <string>Avenir-Roman</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="6iZ-i2-oia">
@@ -93,6 +87,7 @@
                         <viewLayoutGuide key="safeArea" id="h2N-gG-9ND"/>
                     </view>
                     <connections>
+                        <outlet property="closeButton" destination="ktG-4s-36p" id="w6R-p3-HuX"/>
                         <outlet property="findAnswers" destination="Ycr-VA-qYM" id="mbm-EY-len"/>
                         <outlet property="needHelp" destination="kly-Qd-27y" id="eqZ-ne-HMI"/>
                         <outlet property="scrollView" destination="nHZ-c5-8AP" id="WZ5-tP-GjF"/>
