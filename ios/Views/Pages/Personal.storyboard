@@ -106,10 +106,10 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-GR-pQz">
-                                                        <rect key="frame" x="50" y="493" width="275" height="36"/>
+                                                        <rect key="frame" x="20" y="487" width="335" height="44"/>
                                                         <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="36" id="8LP-yq-ycG"/>
+                                                            <constraint firstAttribute="height" constant="44" id="8LP-yq-ycG"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
                                                         <state key="normal" title="Wachtwoord wijzigen">
@@ -123,7 +123,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="XI1-ik-89U" secondAttribute="trailing" constant="20" id="1NI-zf-4a1"/>
-                                                    <constraint firstAttribute="trailing" secondItem="XAb-GR-pQz" secondAttribute="trailing" constant="50" id="4BY-GW-HAG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XAb-GR-pQz" secondAttribute="trailing" constant="20" id="4BY-GW-HAG"/>
                                                     <constraint firstItem="oa8-W2-xdJ" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="65B-Ap-leX"/>
                                                     <constraint firstItem="XI1-ik-89U" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="6np-v0-2Vj"/>
                                                     <constraint firstItem="mtX-gr-Ili" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="CZm-Jm-Xpm"/>
@@ -133,11 +133,11 @@
                                                     <constraint firstItem="eT8-b3-F5d" firstAttribute="top" secondItem="eD0-T1-d4K" secondAttribute="top" constant="20" id="MRf-Yr-qlg"/>
                                                     <constraint firstItem="oa8-W2-xdJ" firstAttribute="top" secondItem="XI1-ik-89U" secondAttribute="bottom" constant="20" id="Mkt-ok-3AL"/>
                                                     <constraint firstAttribute="trailing" secondItem="eT8-b3-F5d" secondAttribute="trailing" constant="20" id="N4L-3o-fbh"/>
-                                                    <constraint firstItem="XAb-GR-pQz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oa8-W2-xdJ" secondAttribute="bottom" constant="10" id="aqt-R5-g6G"/>
                                                     <constraint firstItem="mtX-gr-Ili" firstAttribute="top" secondItem="XAb-GR-pQz" secondAttribute="bottom" constant="10" id="bY6-rU-Abo"/>
+                                                    <constraint firstItem="mtX-gr-Ili" firstAttribute="top" secondItem="XAb-GR-pQz" secondAttribute="bottom" constant="8" id="eb3-X9-OUE"/>
                                                     <constraint firstAttribute="trailing" secondItem="oa8-W2-xdJ" secondAttribute="trailing" constant="20" id="hdJ-7m-rhC"/>
                                                     <constraint firstAttribute="trailing" secondItem="mtX-gr-Ili" secondAttribute="trailing" constant="20" id="wR9-oJ-JRd"/>
-                                                    <constraint firstItem="XAb-GR-pQz" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="50" id="zPU-A7-hzO"/>
+                                                    <constraint firstItem="XAb-GR-pQz" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="zPU-A7-hzO"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
