@@ -160,6 +160,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(tapGesture)
         
         changePasswordBtn.layer.cornerRadius = 4
+        changePasswordBtn.setTitle(NSLocalizedString("ChangePassword", comment: ""), for: .normal)
         
         
     }
