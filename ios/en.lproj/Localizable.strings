@@ -393,7 +393,7 @@
 "PincodeDoNotMatch" = "Codes do not match.\nPlease try again.";
 "PincodeSuccessfullTitle" = "Got it!";
 "PincodeSuccessfullMessage" = "Your passcode has been successfully saved.";
-"PincodeForgotten" = "Forgot passcode?";
+"PincodeForgotten" = "Login with email and password";
 "PincodeForgottenTitle" = "Forgot passcode";
 "PincodeForgottenMessage" = "Login using your e-mail address to access your account.";
 "PincodeWrongPinTitle" = "Wrong passcode";
@@ -629,8 +629,8 @@
 "GiveSituationShowcaseTitle" = "Next, choose how you want to give";
 "SoonMessage" = "Coming soon...";
 "GiveWithYourPhone" = "Move your phone";
-"CelebrateTitle" = "... and now wait ...";
-"CelebrateMessage" = "Throw your smartphone in the air (but hold on to it) before the timer hits 0. What's going to happen? You'll soon see...";
+"CelebrateTitle" = "Wait for it...";
+"CelebrateMessage" = "Throw your smartphone in the air (but hold on to it) before the timer hits 0. \nWhat's going to happen? You'll soon see...";
 "AfterCelebrationTitle" = "And now... wave!";
 "AfterCelebrationMessage" = "Now is the time, wave away! \n(We're not responsible for any elbow bumps that might occur.)";
 
@@ -642,3 +642,21 @@
 
 /*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
 "YesCool" = "Yes, cool!";
+"ErrorContactGivt" = "An error has occured, please contact us at support@givtapp.net .";
+"MandateFailPersonalInformation" = "Your IBAN and/or phone number seem to be incorrect. Please contact us at support@givtapp.net to solve this issue.";
+"MandateSMSCode" = "We'll send a text message to {0}. The mandate will be signed on behalf of {1}. Correct? Proceed to the next step.";
+"MandateSigningCode" = "If all goes well, you'll receive a text message. Fill in the code below to sign your mandate.";
+"ReadCode" = "Your code:";
+"ReadMandate" = "View mandate";
+"MandatePdfFileName" = "mandate";
+"WriteStoragePermission" = "To be able to view this PDF, we need access to your phone's storage so that we can save the PDF and show it.";
+"LegalTextSlimPay" = "By continuing, you will be asked to sign a mandate authorizing Givt B.V. to debit your account. You must be the account holder or be authorized to act on the account holder's behalf.\n\nYour personal data will be processed by SlimPay, a licensed payment institution, to execute the payment transaction on behalf of Givt B.V., and to prevent fraud according to European regulation.";
+"ResendCode" = "Resend code";
+"WrongCodeMandateSigning" = "The code seems to be incorrect. Try again or request a new code.";
+"Back" = "Back";
+"AmountLowest" = "Two Euro Fifthy";
+"AmountMiddle" = "Seven Euro Fifthy";
+"AmountHighest" = "Twelve Euro Fifthy";
+"Divider" = "Dot";
+"GivtEventText" = "Hey! You're at an event where Givt is supported. Do you want to give to {0}?";
+"SearchingEventText" = "We are searching where you are, care to wait a little?";

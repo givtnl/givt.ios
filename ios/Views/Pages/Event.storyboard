@@ -27,15 +27,42 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We zoeken even waar je bent, wacht je even?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgE-JW-Wal">
                                 <rect key="frame" x="20" y="60" width="335" height="49.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="05x-ft-8QM" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="603" width="335" height="44"/>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="xlQ-Fx-Nqk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Deel met vrienden"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.062745098040000002" green="0.054901960780000002" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="giveDifferently:" destination="3oB-Co-b0Z" eventType="touchUpInside" id="D1g-RH-w8L"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LB2-dK-tjk" firstAttribute="trailing" secondItem="05x-ft-8QM" secondAttribute="trailing" constant="20" id="4qT-ra-Qir"/>
+                            <constraint firstItem="05x-ft-8QM" firstAttribute="leading" secondItem="LB2-dK-tjk" secondAttribute="leading" constant="20" id="MxJ-NL-BpG"/>
                             <constraint firstItem="lgE-JW-Wal" firstAttribute="top" secondItem="LB2-dK-tjk" secondAttribute="top" constant="40" id="ZKP-23-Sm5"/>
                             <constraint firstItem="tHt-MQ-Ldg" firstAttribute="centerY" secondItem="aw3-Ob-50n" secondAttribute="centerY" id="dn0-Ho-WAb"/>
                             <constraint firstItem="lgE-JW-Wal" firstAttribute="leading" secondItem="LB2-dK-tjk" secondAttribute="leading" constant="20" id="hin-NK-zle"/>
+                            <constraint firstItem="LB2-dK-tjk" firstAttribute="bottom" secondItem="05x-ft-8QM" secondAttribute="bottom" constant="20" id="hpE-8h-ydF"/>
                             <constraint firstItem="LB2-dK-tjk" firstAttribute="trailing" secondItem="tHt-MQ-Ldg" secondAttribute="trailing" id="iYz-3b-ypT"/>
                             <constraint firstItem="tHt-MQ-Ldg" firstAttribute="leading" secondItem="LB2-dK-tjk" secondAttribute="leading" id="pPp-V1-M3h"/>
                             <constraint firstItem="LB2-dK-tjk" firstAttribute="trailing" secondItem="lgE-JW-Wal" secondAttribute="trailing" constant="20" id="xCd-Pb-TY0"/>
@@ -43,6 +70,9 @@
                         <viewLayoutGuide key="safeArea" id="LB2-dK-tjk"/>
                     </view>
                     <connections>
+                        <outlet property="giveDifferently" destination="05x-ft-8QM" id="YPb-Sh-hPD"/>
+                        <outlet property="givyContstraint" destination="dn0-Ho-WAb" id="Xyt-he-FVQ"/>
+                        <outlet property="imageV" destination="tHt-MQ-Ldg" id="mLS-l4-q4r"/>
                         <outlet property="titleLabel" destination="lgE-JW-Wal" id="hVQ-NV-v7Y"/>
                     </connections>
                 </viewController>

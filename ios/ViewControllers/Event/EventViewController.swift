@@ -10,14 +10,23 @@ import UIKit
 import CoreLocation
 
 class EventViewController: BaseScanViewController {
+    @IBOutlet var giveDifferently: CustomButton!
     private let _givtService = GivtService.shared
     private var isSuggestionShowing = false
     @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var imageV: UIImageView!
     private var countdownTimer: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        titleLabel.text = NSLocalizedString("SearchingEventText", comment: "")
+        giveDifferently.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
         // Do any additional setup after loading the view.
+    }
+    @IBOutlet var givyContstraint: NSLayoutConstraint!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,27 +37,75 @@ class EventViewController: BaseScanViewController {
             _givtService.startScanning(shouldNotify: true)
         }
         
-        _givtService.startLookingForGivtLocations()
+        givyContstraint.constant = 20
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: [.repeat, .autoreverse], animations: {
+            self.view.layoutIfNeeded()
+        }) { (done) in
+        }
+
+        startTimer()
         
+        start20sTimer()
+    }
+    
+    private func start20sTimer() {
+        Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(after20s), userInfo: nil, repeats: false)
+    }
+    @IBAction func giveDifferently(_ sender: Any) {
+        self.stopTimer()
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func after20s() {
+        if let region = self._givtService.getGivtLocation() {
+            self.foundRegion(region: region)
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.giveDifferently.isHidden = false
+        }
+    }
+    
+    private func startTimer() {
+        _givtService.startLookingForGivtLocations()
         countdownTimer = Timer.scheduledTimer(timeInterval:
             6, target: self, selector: #selector(tickingClocks), userInfo: nil, repeats: true)
-        
-        
+    }
+    
+    private func stopTimer() {
+        countdownTimer?.invalidate()
     }
     
     @objc func tickingClocks() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(6)) {
+        self.stopTimer()
+        GivtService.shared.stopScanning()
+        GivtService.shared.stopLookingForGivtLocations()
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             if let region = self._givtService.getGivtLocation() {
-                print(region.name)
-                self.titleLabel.text = region.name
-                 let alert = UIAlertController(title: region.name, message: "Geef aan zwolleuh", preferredStyle: UIAlertControllerStyle.alert)
-                 alert.addAction(UIAlertAction(title: "OKe", style: UIAlertActionStyle.default, handler: { (action) in
-                 //todo something
-                 }))
-                 self.present(alert, animated: true, completion: nil)
- 
+                self.foundRegion(region: region)
+            } else {
+                GivtService.shared.startLookingForGivtLocations()
+                self.startTimer()
             }
         }
+    }
+    
+    private func foundRegion(region: GivtLocation) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventSuggestionViewController") as! EventSuggestionViewController
+        vc.providesPresentationContextTransitionStyle = true
+        vc.definesPresentationContext = true
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        vc.organisation = region.organisationName + " - " + region.name
+        vc.onClose = {
+            self._givtService.startLookingForGivtLocations()
+            self.startTimer()
+        }
+        vc.onSuccess = {
+            self._givtService.give(antennaID: region.beaconId)
+        }
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,7 +128,8 @@ class EventViewController: BaseScanViewController {
             vc.providesPresentationContextTransitionStyle = true
             vc.definesPresentationContext = true
             vc.modalPresentationStyle = .overCurrentContext
-            
+            vc.modalTransitionStyle = .crossDissolve
+            vc.organisation = orgName
             vc.onClose = {
                 self._givtService.startScanning(shouldNotify: true)
             }
@@ -79,13 +137,6 @@ class EventViewController: BaseScanViewController {
                 self._givtService.give(antennaID: self._givtService.getBestBeacon.beaconId!)
             }
             self.present(vc, animated: true, completion: nil)
-            /*
-            let alert = UIAlertController(title: "\(orgName)", message: "\(self._givtService.getBestBeacon.beaconId!)", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Okeeeee 🔪", style: UIAlertActionStyle.default, handler: { (action) in
-                self.isSuggestionShowing = false
-            }))
-            self.present(alert, animated: true, completion: nil)
- */
         }
 
     }

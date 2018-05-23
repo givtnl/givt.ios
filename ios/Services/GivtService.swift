@@ -13,6 +13,28 @@ import AudioToolbox
 import SwiftClient
 import CoreLocation
 
+struct BeaconList: Codable {
+    var OrgBeacons: [OrgBeacon]
+    var LastChanged: Date
+}
+
+struct OrgBeacon: Codable {
+    let EddyNameSpace: String
+    let OrgName: String
+    let Celebrations: Bool
+    let Locations: [OrgBeaconLocation]
+}
+
+struct OrgBeaconLocation: Codable {
+    let Name: String
+    let Latitude: Double
+    let Longitude: Double
+    let Radius: Int
+    let BeaconId: String
+    let dtBegin: Date
+    let dtEnd: Date
+}
+
 final class GivtService: NSObject, CBCentralManagerDelegate {
     static let shared = GivtService()
     private var log = LogService.shared
@@ -324,12 +346,17 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     }
     
     func getGivtLocation() -> GivtLocation? {
+        var foundLocations = [GivtLocation]()
         for location in getGivtLocations() {
             if locationService.isLocationInRegion(region: location) {
-                return location
+                foundLocations.append(location)
             }
         }
-        return nil
+        if foundLocations.count == 0 {
+            return nil
+        } else {
+            return locationService.getClosestLocation(locs: foundLocations)
+        }
     }
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
@@ -574,17 +601,13 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     
     private func getGivtLocations() -> [GivtLocation] {
         var locations = [GivtLocation]()
-        orgBeaconList.enumerated().forEach { (offset, dictionary) in
-            print(dictionary["OrgName"] as! String)
-            if let location = dictionary["Locations"] as? [String: Any] {
-                if let radius = location["Radius"] as? Int,
-                    let latitude = location["Latitude"] as? Double,
-                    let long = location["Longitude"] as? Double,
-                    let name = location["Name"] as? String,
-                    let beaconId = location["BeaconId"] as? String {
-                    locations.append(GivtLocation(lat: latitude, long: long, radius: radius, name: name, beaconId: beaconId))
-                }
-            }
+        guard let list = UserDefaults.standard.orgBeaconListV2 else {
+            return locations
+        }
+        list.OrgBeacons.forEach { (element) in
+            element.Locations.forEach({ (location) in
+                locations.append(GivtLocation(lat: location.Latitude, long: location.Longitude, radius: location.Radius, name: location.Name, beaconId: location.BeaconId, organisationName: element.OrgName))
+            })
         }
         return locations
     }
@@ -596,7 +619,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
             // add &dtLastChanged when beaconList is filled
             if UserDefaults.standard.orgBeaconList != nil {
                 if let date = beaconListLastChanged {
-                    data["dtLastUpdated"] = date
+                    //data["dtLastUpdated"] = date
                 }
             }
             client.get(url: "/api/v2/collectgroups/applist", data: data, callback: { (response) in
@@ -606,6 +629,24 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                             let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                             UserDefaults.standard.orgBeaconList = parsedData as NSDictionary
                             print("updated beacon list")
+                            
+                            let decoder = JSONDecoder()
+//                            let dateFormatter = DateFormatter()
+//                            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+//                            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                            //dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) as TimeZone!
+                            decoder.dateDecodingStrategy = .custom({ (date) -> Date in
+                                let container = try date.singleValueContainer()
+                                var dateStr = try container.decode(String.self)
+                                dateStr = dateStr.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) as TimeZone!
+                                return dateFormatter.date(from: dateStr) ?? Date(timeIntervalSince1970: 0)
+                            })
+                            var bl = try decoder.decode(BeaconList.self, from: data)
+                            UserDefaults.standard.orgBeaconListV2 = bl
                             completionHandler(true)
                         } catch let err as NSError {
                             completionHandler(false)
@@ -632,18 +673,18 @@ protocol GivtProcessedProtocol: class {
 }
 
 class GivtLocation {
-    var lat: CLLocationDegrees
-    var long: CLLocationDegrees
+    var coordinate: CLLocation
     var radius: Int //meter
     var name: String
     var beaconId: String
+    var organisationName: String
     
-    init(lat: CLLocationDegrees, long: CLLocationDegrees, radius: Int, name: String, beaconId: String) {
-        self.lat = lat
-        self.long = long
+    init(lat: CLLocationDegrees, long: CLLocationDegrees, radius: Int, name: String, beaconId: String, organisationName: String) {
+        self.coordinate = CLLocation(latitude: lat, longitude: long)
         self.radius = radius
         self.name = name
         self.beaconId = beaconId
+        self.organisationName = organisationName
     }
 }
 

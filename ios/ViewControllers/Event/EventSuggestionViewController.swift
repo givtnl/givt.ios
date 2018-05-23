@@ -16,6 +16,7 @@ class EventSuggestionViewController: UIViewController {
     @IBOutlet var eventImage: UIImageView!
     var onClose: () -> () = {}
     var onSuccess: () -> () = {}
+    var organisation: String!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,7 +24,7 @@ class EventSuggestionViewController: UIViewController {
         contentView.layer.cornerRadius = 40.0
         
         self.view.layoutIfNeeded()
-        self.btnGive.text = "Ja, graag!"
+        self.btnGive.text = NSLocalizedString("YesPlease", comment: "")
         self.btnGive.layer.cornerRadius = 15
         self.btnGive.clipsToBounds = true
         
@@ -59,8 +60,8 @@ class EventSuggestionViewController: UIViewController {
         mutableAttributedString.append(boldAttributedString)
         
         
-        let msg = "Hey! Je staat op een evenement waar Givt ondersteund word. Wil jij toevallig geven aan Zwolle Unlimited?"
-        let rangeOfSubstring = (msg as! NSString).range(of: "Zwolle Unlimited")
+        let msg = NSLocalizedString("GivtEventText", comment: "").replacingOccurrences(of:"{0}", with: organisation)
+        let rangeOfSubstring = (msg as NSString).range(of: organisation)
         let attributedString = NSMutableAttributedString(string: msg, attributes: lightAttributes)
         attributedString.setAttributes(boldAttributes, range: rangeOfSubstring)
         message.attributedText = attributedString
@@ -74,7 +75,7 @@ class EventSuggestionViewController: UIViewController {
     }
     
     @IBAction func close(_ sender: Any) {
-        self.dismiss(animated: true) {
+        self.dismiss(animated: false) {
             self.onClose()
         }
     }
@@ -82,9 +83,13 @@ class EventSuggestionViewController: UIViewController {
         super.viewWillAppear(animated)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        if touch.view == self.view {
+            DispatchQueue.main.async {
+                self.close(self)
+            }
+        }
     }
 
 }
