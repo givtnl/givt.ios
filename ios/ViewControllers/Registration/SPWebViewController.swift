@@ -74,7 +74,8 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
             return webViewUrl.absoluteString.lowercased().range(of: item) != nil ? true : false
         })
         
-        if filteredStrings.count > 0 {
+        if filteredStrings.count > 0  {
+            SVProgressHUD.show(withStatus: NSLocalizedString("AwaitingMandateStatus", comment: ""))
             webView.isHidden = true
             LoginManager.shared.finishMandateSigning(completionHandler: { (success) in
                 if success {
