@@ -20,6 +20,7 @@ class EventViewController: BaseScanViewController {
         super.viewDidLoad()
         titleLabel.text = NSLocalizedString("SearchingEventText", comment: "")
         giveDifferently.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
+        title = NSLocalizedString("SelectLocationContext", comment: "")
         // Do any additional setup after loading the view.
     }
     @IBOutlet var givyContstraint: NSLayoutConstraint!
@@ -47,6 +48,9 @@ class EventViewController: BaseScanViewController {
         
         start20sTimer()
     }
+    @IBAction func goBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     private func start20sTimer() {
         Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(after20s), userInfo: nil, repeats: false)
@@ -59,6 +63,7 @@ class EventViewController: BaseScanViewController {
     }
     
     @objc func after20s() {
+        
         if let region = self._givtService.getGivtLocation() {
             self.foundRegion(region: region)
         }
@@ -92,6 +97,9 @@ class EventViewController: BaseScanViewController {
     }
     
     private func foundRegion(region: GivtLocation) {
+        if (self.navigationController?.visibleViewController as? EventSuggestionViewController) != nil {
+            return
+        }
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventSuggestionViewController") as! EventSuggestionViewController
         vc.providesPresentationContextTransitionStyle = true
         vc.definesPresentationContext = true

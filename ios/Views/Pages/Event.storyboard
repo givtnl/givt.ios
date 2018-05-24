@@ -25,7 +25,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We zoeken even waar je bent, wacht je even?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgE-JW-Wal">
-                                <rect key="frame" x="20" y="60" width="335" height="49.5"/>
+                                <rect key="frame" x="20" y="104" width="335" height="49.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -69,6 +69,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LB2-dK-tjk"/>
                     </view>
+                    <navigationItem key="navigationItem" id="6YI-mF-ozn">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="tTW-gD-iwk">
+                            <connections>
+                                <action selector="goBack:" destination="3oB-Co-b0Z" id="hn2-jQ-4P2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="giveDifferently" destination="05x-ft-8QM" id="YPb-Sh-hPD"/>
                         <outlet property="givyContstraint" destination="dn0-Ho-WAb" id="Xyt-he-FVQ"/>
@@ -168,6 +176,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backbtn" width="15" height="24"/>
         <image name="closewhite" width="23" height="24"/>
         <image name="eventsnocircle" width="113" height="99"/>
         <image name="lookoutgivy" width="200" height="183"/>
