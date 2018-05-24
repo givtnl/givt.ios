@@ -157,7 +157,6 @@ class EventViewController: BaseScanViewController {
         vc.modalTransitionStyle = .crossDissolve
         vc.organisation = region.organisationName
         vc.onClose = {
-            self._givtService.startLookingForGivtLocations()
             self.startTimer()
         }
         vc.onSuccess = {
