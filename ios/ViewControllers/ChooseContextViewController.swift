@@ -30,44 +30,36 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         guard let navigationController = self.navigationController else { return }
         
         let sb = UIStoryboard(name:"Main", bundle:nil)
-        switch selectedContext.type {
-        case .collectionDevice:
-            if GivtService.shared.bluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
-                let vc = sb.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
+        DispatchQueue.main.async {
+            switch selectedContext.type {
+            case .collectionDevice:
+                if GivtService.shared.bluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
+                    let vc = sb.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
+                    navigationController.show(vc, sender: nil)
+                } else {
+                    self.showBluetoothMessage()
+                }
+            case .qr:
+                let vc = sb.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
                 navigationController.show(vc, sender: nil)
-            } else {
-                showBluetoothMessage()
+            case .manually:
+                let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
+                navigationController.show(vc, sender: nil)
+            case .events:
+                let story = UIStoryboard(name: "Event", bundle: nil)
+                let vc = story.instantiateInitialViewController() as! EventViewController
+                navigationController.show(vc, sender: nil)
             }
-        case .qr:
-            let vc = sb.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
-            navigationController.show(vc, sender: nil)
-        case .manually:
-            let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
-            navigationController.show(vc, sender: nil)
-        case .events:
-            let story = UIStoryboard(name: "Event", bundle: nil)
-            let vc = story.instantiateInitialViewController() as! EventViewController
-            navigationController.show(vc, sender: nil)
         }
-        
     }
     
     func showBluetoothMessage() {
         let alert = UIAlertController(
-            title: NSLocalizedString("SomethingWentWrong2", comment: ""),
+            title: NSLocalizedString("TurnOnBluetooth", comment: ""),
             message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
-            let url = URL(string: UIApplicationOpenSettingsURLString)
-            let app = UIApplication.shared
-            if #available(iOS 10.0, *) {
-                app.open(url!, options: [:], completionHandler: nil)
-            } else {
-                app.openURL(url!)
-            }
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
-            
+        alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
+
         }))
         present(alert, animated: true, completion: nil)
     }
