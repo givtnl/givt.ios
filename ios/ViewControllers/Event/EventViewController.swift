@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import AudioToolbox
 
 class EventViewController: BaseScanViewController {
     @IBOutlet var giveDifferently: CustomButton!
@@ -151,6 +152,7 @@ class EventViewController: BaseScanViewController {
         vc.onSuccess = {
             self._givtService.give(antennaID: region.beaconId)
         }
+        AudioServicesPlayAlertSound(1519)
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -182,6 +184,7 @@ class EventViewController: BaseScanViewController {
             vc.onSuccess = {
                 self._givtService.give(antennaID: self._givtService.getBestBeacon.beaconId!)
             }
+            AudioServicesPlayAlertSound(1519)
             self.present(vc, animated: true, completion: nil)
         }
 
