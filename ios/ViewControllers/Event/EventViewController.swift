@@ -32,23 +32,34 @@ class EventViewController: BaseScanViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didDiscoverBeacon), name: Notification.Name("DidDiscoverBeacon"), object: nil)
         _givtService.delegate = self
-        if _givtService.bluetoothEnabled {
-            _givtService.startScanning(shouldNotify: true)
-        }
+        let bluetoothEnabled = _givtService.bluetoothEnabled
+        var locationEnabled = false
         
         if CLLocationManager.locationServicesEnabled() {
             switch CLLocationManager.authorizationStatus() {
             case .notDetermined, .restricted, .denied:
-                self.showLocationMessage()
+                locationEnabled = false
             case .authorizedAlways, .authorizedWhenInUse:
-                //do nothing
-                break
+                locationEnabled = true
             }
         } else {
-            self.showLocationMessage()
+            locationEnabled = false
         }
+        
+        if !bluetoothEnabled && !locationEnabled { //if both disabled, show both after each other.
+            showBluetoothMessage {
+                self.showLocationMessage()
+            }
+        } else if !bluetoothEnabled { //only BL disabled
+            showBluetoothMessage(after: {})
+        } else if !locationEnabled { //only loc disabled
+            showLocationMessage()
+        }
+        
+        startScanning()
         
         givyContstraint.constant = 20
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: [.repeat, .autoreverse], animations: {
@@ -61,11 +72,31 @@ class EventViewController: BaseScanViewController {
         start20sTimer()
     }
     
+    @objc func startScanning() {
+        _givtService.startScanning(shouldNotify: true)
+    }
+    
+    func showBluetoothMessage(after: @escaping () -> ()) {
+        let alert = UIAlertController(
+            title: NSLocalizedString("TurnOnBluetooth", comment: ""),
+            message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
+            preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
+            after()
+        }))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    
     func showLocationMessage() {
         let alert = UIAlertController(title: NSLocalizedString("AllowGivtLocationTitle", comment: ""), message: NSLocalizedString("AllowGivtLocationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
         }))
-        present(alert, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -124,7 +155,7 @@ class EventViewController: BaseScanViewController {
         vc.definesPresentationContext = true
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
-        vc.organisation = region.organisationName + " - " + region.name
+        vc.organisation = region.organisationName
         vc.onClose = {
             self._givtService.startLookingForGivtLocations()
             self.startTimer()
