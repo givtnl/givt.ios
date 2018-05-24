@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ChooseContextViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
@@ -48,7 +49,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
             case .events:
                 let story = UIStoryboard(name: "Event", bundle: nil)
                 let vc = story.instantiateInitialViewController() as! EventViewController
-                navigationController.show(vc, sender: nil)
+                self.navigationController?.show(vc, sender: nil)
             }
         }
     }
@@ -63,7 +64,6 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         }))
         present(alert, animated: true, completion: nil)
     }
-
     
     override func viewDidDisappear(_ animated: Bool) {
         guard let selectedRow = tableView.indexPathForSelectedRow else { return }

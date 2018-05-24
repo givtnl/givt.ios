@@ -38,6 +38,18 @@ class EventViewController: BaseScanViewController {
             _givtService.startScanning(shouldNotify: true)
         }
         
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                self.showLocationMessage()
+            case .authorizedAlways, .authorizedWhenInUse:
+                //do nothing
+                break
+            }
+        } else {
+            self.showLocationMessage()
+        }
+        
         givyContstraint.constant = 20
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: [.repeat, .autoreverse], animations: {
             self.view.layoutIfNeeded()
@@ -48,6 +60,14 @@ class EventViewController: BaseScanViewController {
         
         start20sTimer()
     }
+    
+    func showLocationMessage() {
+        let alert = UIAlertController(title: NSLocalizedString("AllowGivtLocationTitle", comment: ""), message: NSLocalizedString("AllowGivtLocationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func goBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -90,7 +110,6 @@ class EventViewController: BaseScanViewController {
             if let region = self._givtService.getGivtLocation() {
                 self.foundRegion(region: region)
             } else {
-                GivtService.shared.startLookingForGivtLocations()
                 self.startTimer()
             }
         }
