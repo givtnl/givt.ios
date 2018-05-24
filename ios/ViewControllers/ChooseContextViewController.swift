@@ -21,27 +21,6 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.contextType = contexts[indexPath.row].type
-        if cell.contextType == .events {
-            cell.contentView.alpha = 1
-            let label = UILabel()
-            label.textAlignment = .center
-            label.translatesAutoresizingMaskIntoConstraints = false
-            label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            label.font = UIFont(name: "Avenir-Heavy", size: 48)
-            label.transform = CGAffineTransform(rotationAngle: -(CGFloat.pi / 36))
-            label.text = String(Date().getDay())
-            cell.img.addSubview(label)
-            label.topAnchor.constraint(equalTo: cell.img.topAnchor, constant: 34).isActive = true
-            label.leadingAnchor.constraint(equalTo: cell.img.leadingAnchor, constant: 0).isActive = true
-            label.trailingAnchor.constraint(equalTo: cell.img.trailingAnchor, constant: 0).isActive = true
-        } else {
-            cell.contentView.alpha = 1
-            cell.img.subviews.forEach { (view) in
-                if let label = view as? UILabel {
-                    label.removeFromSuperview()
-                }
-            }
-        }
         return cell
     }
     
