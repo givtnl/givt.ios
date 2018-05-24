@@ -74,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let jsonData = try JSONSerialization.data(withJSONObject: oldList, options: JSONSerialization.WritingOptions.prettyPrinted)
                 let bl = try decoder.decode(BeaconList.self, from: jsonData)
                 UserDefaults.standard.orgBeaconListV2 = bl
+                UserDefaults.standard.orgBeaconList = nil //clear forever
             } catch let err as NSError {
                 print(err)
                 logService.error(message: "Could not parse old beacon list into new list")
