@@ -34,7 +34,6 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.lastLocation = locations.last!
-        LogService.shared.info(message: "Updated location")
     }
     
     func isLocationInRegion(region: GivtLocation) -> Bool {
