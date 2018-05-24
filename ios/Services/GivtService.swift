@@ -615,7 +615,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
-            var data = ["Guid" : userExt.guid]
+            let data = ["Guid" : userExt.guid]
             // add &dtLastChanged when beaconList is filled
             if UserDefaults.standard.orgBeaconList != nil {
                 if let date = beaconListLastChanged {
@@ -631,10 +631,6 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                             print("updated beacon list")
                             
                             let decoder = JSONDecoder()
-//                            let dateFormatter = DateFormatter()
-//                            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-//                            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                            //dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) as TimeZone!
                             decoder.dateDecodingStrategy = .custom({ (date) -> Date in
                                 let container = try date.singleValueContainer()
                                 var dateStr = try container.decode(String.self)
@@ -642,10 +638,10 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                                 let dateFormatter = DateFormatter()
                                 dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
                                 dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0) as TimeZone!
+                                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
                                 return dateFormatter.date(from: dateStr) ?? Date(timeIntervalSince1970: 0)
                             })
-                            var bl = try decoder.decode(BeaconList.self, from: data)
+                            let bl = try decoder.decode(BeaconList.self, from: data)
                             UserDefaults.standard.orgBeaconListV2 = bl
                             completionHandler(true)
                         } catch let err as NSError {
