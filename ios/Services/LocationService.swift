@@ -40,7 +40,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     func isLocationInRegion(region: GivtLocation) -> Bool {
         let fence = CLCircularRegion(center: CLLocationCoordinate2D(latitude: region.coordinate.coordinate.latitude, longitude: region.coordinate.coordinate.longitude), radius: CLLocationDistance(exactly: region.radius)!, identifier: region.name)
         guard let location = lastLocation else { return false }
-        LogService.shared.info(message: "Checking for location \(location.coordinate.latitude) \(location.coordinate.longitude) in region \(region.coordinate.coordinate.latitude) \(region.coordinate.coordinate.longitude)")
+        LogService.shared.info(message: "Checking for location in region")
         let contained = fence.contains(location.coordinate)
         if contained {
             LogService.shared.info(message: "Location was within region radius")
