@@ -19,6 +19,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func startLookingForLocation() {
+        self.lastLocation = nil
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
