@@ -85,6 +85,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         
         btnSave.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         btnSave.isEnabled = false
+        btnSave.accessibilityLabel = NSLocalizedString("Save", comment: "")
         
         amountLimit.returnKeyType = .done
         amountLimit.delegate = self

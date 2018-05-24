@@ -38,7 +38,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     func onGivtProcessed(transactions: [Transaction]) {
         SVProgressHUD.dismiss()
-        organisation = GivtService.shared.lastGivtOrg
+        organisation = GivtService.shared.lastGivtOrg ?? ""
         bestBeacon = GivtService.shared.getBestBeacon
         var trs = [NSDictionary]()
         for tr in transactions {
@@ -164,7 +164,8 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             if seconds > 0 {
                 LogService.shared.info(message: "Celebrating wiiehoeeew")
                 DispatchQueue.main.async {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
                     vc.secondsLeft = seconds
                     vc.transactions = transactions
                     self.navigationController?.pushViewController(vc, animated: true)

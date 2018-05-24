@@ -619,7 +619,7 @@
 "ChooseWhoYouWantToGiveTo" = "Choose who you want to give to";
 "CancelGiftAlertTitle" = "Cancel donation?";
 "CancelGiftAlertMessage" = "Are you sure you want to cancel this donation?";
-"GotIt" = "I got it";
+"GotIt" = "Got it";
 "CancelFeatureTitle" = "You can cancel a donation within 15 minutes by swiping left";
 "CancelFeatureMessage" = "Tap anywhere to dismiss this message";
 "GiveSubtitle" = "There are several ways to ‘Givt’. Pick the one that suits you best.";
@@ -652,3 +652,16 @@
 "WriteStoragePermission" = "To be able to view this PDF, we need access to your phone's storage so that we can save the PDF and show it.";
 "LegalTextSlimPay" = "By continuing, you will be asked to sign a mandate authorizing Givt B.V. to debit your account. You must be the account holder or be authorized to act on the account holder's behalf.\n\nYour personal data will be processed by SlimPay, a licensed payment institution, to execute the payment transaction on behalf of Givt B.V., and to prevent fraud according to European regulation.";
 "ResendCode" = "Resend code";
+"WrongCodeMandateSigning" = "The code seems to be incorrect. Try again or request a new code.";
+"Back" = "Back";
+"AmountLowest" = "Two Euro Fifthy";
+"AmountMiddle" = "Seven Euro Fifthy";
+"AmountHighest" = "Twelve Euro Fifthy";
+"Divider" = "Dot";
+"GivtEventText" = "Hey! You're at an event where Givt is supported. Do you want to give to {0}?";
+"SearchingEventText" = "We are searching where you are, care to wait a little?";
+"WeDoNotFindYou" = "Alas, we cannot find your location right now. You can choose from a list to which organisation you want to give or go back and try again.";
+"SelectLocationContext" = "Give at location";
+"ChangePassword" = "Change password";
+"AllowGivtLocationTitle" = "Allow Givt access your location";
+"AllowGivtLocationMessage" = "We need your location to determine who you want to give to.\nGo to Settings > Privacy > Location Services > Set Location Services On and Set Givt to While Using the App.";

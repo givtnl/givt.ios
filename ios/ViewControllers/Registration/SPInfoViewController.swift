@@ -37,7 +37,7 @@ class SPInfoViewController: UIViewController {
         } else {
             self.backButton.isEnabled = true
         }
-        
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         let attachment:NSTextAttachment = NSTextAttachment()
         attachment.image = #imageLiteral(resourceName: "littleinfo.png")
         attachment.bounds = CGRect(x: 0, y: -4, width: (attachment.image?.size.width)!, height: (attachment.image?.size.height)!)

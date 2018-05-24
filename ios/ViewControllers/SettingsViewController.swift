@@ -166,7 +166,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     private func changePersonalInfo() {
-        UserDefaults.standard.bearerToken = ""
         let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateInitialViewController()
         vc?.transitioningDelegate = self.slideFromRightAnimation
         navigationManager.pushWithLogin(vc!, context: self)

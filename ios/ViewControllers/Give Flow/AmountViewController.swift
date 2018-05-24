@@ -111,10 +111,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         givtService = GivtService.shared
         btnGive.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
+        btnGive.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         
         amountLabels = [amountLabel, amountLabel2, amountLabel3]
-        
+        menu.accessibilityLabel = "Menu"
         addGestureRecognizerToView(view: firstView)
         addGestureRecognizerToView(view: secondView)
         addGestureRecognizerToView(view: thirdView)

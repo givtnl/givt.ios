@@ -16,8 +16,10 @@ class PinViewController: UIViewController {
     @IBOutlet var pincode: UILabel!
     @IBOutlet var subtitle: UILabel!
     @IBOutlet var navBar: UINavigationItem!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         navBar.title = NSLocalizedString("Pincode", comment: "")
         subtitle.text = NSLocalizedString("PincodeTitleChangingPin", comment: "")
         pincode.text = NSLocalizedString("Pincode", comment: "")

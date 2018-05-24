@@ -29,6 +29,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     @IBOutlet var noGivtsLabel: UILabel!
     @IBOutlet var containerButton: UIBarButtonItem!
     @IBOutlet var containerVIew: UIView!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     private var cancelFeature: MaterialShowcase?
     private var taxOverviewFeature: MaterialShowcase?
@@ -182,6 +183,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         let nib = UINib(nibName: "TableSectionHeaderView", bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderView")
         

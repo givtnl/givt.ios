@@ -148,6 +148,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="muJ-3T-9gD" id="DVf-as-Eh9"/>
                         <outlet property="bottomConstraint" destination="qyI-GU-MOV" id="uY7-CL-dU7"/>
                         <outlet property="btnForgotPassword" destination="w8V-Yp-Hcx" id="Ul8-AK-Ja9"/>
                         <outlet property="btnLogin" destination="4S2-ek-spf" id="RHH-M8-bHj"/>
@@ -1423,6 +1424,7 @@ Kijk voor de status in je overzicht.</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backBtn" destination="9Hx-Ie-oQy" id="GIM-NS-fEa"/>
                         <outlet property="bodyText" destination="gx7-9u-1ov" id="tS3-sd-fIC"/>
                         <outlet property="btnGive" destination="UdD-yT-jJx" id="Nws-no-abW"/>
                         <outlet property="gif" destination="dca-BL-A98" id="vOl-gh-cBj"/>
@@ -1653,6 +1655,7 @@ Kijk voor de status in je overzicht.</string>
                     <connections>
                         <outlet property="acties" destination="jqc-bW-GEf" id="cp2-CC-sSY"/>
                         <outlet property="actiesWidth" destination="Ix4-nc-oMU" id="GEc-7p-8p7"/>
+                        <outlet property="backButton" destination="1Iw-cC-4is" id="d5z-9K-HNj"/>
                         <outlet property="btnGive" destination="BvS-eI-dex" id="f3N-UY-Osp"/>
                         <outlet property="churchWidth" destination="c9X-1S-bL4" id="tBC-wP-2BF"/>
                         <outlet property="kerken" destination="VfY-UX-dqy" id="Vo9-OJ-Tdn"/>
@@ -1700,6 +1703,7 @@ Kijk voor de status in je overzicht.</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="dlN-XT-0fC" id="Ezq-A8-Jmi"/>
                         <outlet property="contentView" destination="ND2-vs-2dW" id="4jf-B6-j0r"/>
                         <outlet property="navBar" destination="xwi-yl-DRD" id="ZFd-x7-AlL"/>
                     </connections>
@@ -1789,6 +1793,7 @@ Kijk voor de status in je overzicht.</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="UMu-rJ-Ofr" id="ObY-Yu-WGH"/>
                         <outlet property="bottomLeft" destination="Tlo-R9-tPd" id="KFG-lD-JKH"/>
                         <outlet property="bottomRight" destination="zgG-fD-qhK" id="xfK-h6-BuB"/>
                         <outlet property="containerVIew" destination="QT6-ho-fo6" id="Ape-g3-qU0"/>
@@ -2078,6 +2083,7 @@ Kijk voor de status in je overzicht.</string>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="ecN-GT-hw3" id="s6f-WZ-qmy"/>
                         <outlet property="containerButton" destination="VYa-Bo-Z6R" id="xlg-Pf-oZz"/>
                         <outlet property="containerVIew" destination="vLV-67-JKF" id="wcX-7o-6IV"/>
                         <outlet property="downloadButton" destination="Zo0-RD-CRQ" id="VWD-Sd-iq0"/>
@@ -2238,36 +2244,36 @@ Kijk voor de status in je overzicht.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XAi-2v-pAb">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="GxF-iB-Blw">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="GxF-iB-Blw">
                                         <rect key="frame" x="0.0" y="53.333333333333314" width="414" height="618.66666666666674"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ChooseContextTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChooseContextTableViewCell" editingAccessoryType="disclosureIndicator" rowHeight="150" id="zmh-u5-IN7" customClass="ChooseContextTableViewCell" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="1" width="414" height="150"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ChooseContextTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ChooseContextTableViewCell" editingAccessoryType="disclosureIndicator" rowHeight="200" id="zmh-u5-IN7" customClass="ChooseContextTableViewCell" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="1" width="414" height="200"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zmh-u5-IN7" id="1ZM-hf-lg4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="753" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Udo-sJ-vuI">
-                                                            <rect key="frame" x="20" y="8" width="374" height="134"/>
+                                                            <rect key="frame" x="20" y="20" width="374" height="160"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" image="collectebus" translatesAutoresizingMaskIntoConstraints="NO" id="Y49-KM-qzd">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="134"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="160"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="100" id="OdY-Rn-d7X"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="sdf sdfsdf sf qqsdf sdffsdf sdfsdf sdfsdf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXi-cj-P3J">
-                                                                    <rect key="frame" x="120" y="0.0" width="222" height="134"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="253" verticalCompressionResistancePriority="752" text="sdf sdfsdf sf qqsdf sdffsdf sdfsdf sdfsdf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EXi-cj-P3J">
+                                                                    <rect key="frame" x="120" y="0.0" width="222" height="160"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightarrow-purple" translatesAutoresizingMaskIntoConstraints="NO" id="pH0-bf-bQe">
-                                                                    <rect key="frame" x="362" y="0.0" width="12" height="134"/>
+                                                                    <rect key="frame" x="362" y="0.0" width="12" height="160"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="12" id="VCP-uk-xaw"/>
                                                                     </constraints>
@@ -2278,8 +2284,8 @@ Kijk voor de status in je overzicht.</string>
                                                     <color key="backgroundColor" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="0.14999999999999999" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="Udo-sJ-vuI" firstAttribute="leading" secondItem="1ZM-hf-lg4" secondAttribute="leading" constant="20" id="MbS-rO-SxG"/>
-                                                        <constraint firstItem="Udo-sJ-vuI" firstAttribute="top" secondItem="1ZM-hf-lg4" secondAttribute="top" constant="8" id="RZL-ln-63h"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Udo-sJ-vuI" secondAttribute="bottom" constant="8" id="uzO-mM-Php"/>
+                                                        <constraint firstItem="Udo-sJ-vuI" firstAttribute="top" secondItem="1ZM-hf-lg4" secondAttribute="top" constant="20" id="RZL-ln-63h"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Udo-sJ-vuI" secondAttribute="bottom" constant="20" id="uzO-mM-Php"/>
                                                         <constraint firstAttribute="trailing" secondItem="Udo-sJ-vuI" secondAttribute="trailing" constant="20" id="wB0-P9-2FU"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
@@ -2328,6 +2334,7 @@ Kijk voor de status in je overzicht.</string>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="backButton" destination="7f6-1i-y0U" id="fSM-aD-8bf"/>
                         <outlet property="giveSubtitle" destination="01o-LO-gk7" id="QJ0-eK-AoQ"/>
                         <outlet property="tableView" destination="GxF-iB-Blw" id="egt-f2-QXn"/>
                     </connections>

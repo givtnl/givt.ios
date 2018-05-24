@@ -16,6 +16,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         var nameSpace: String
     }
     
+    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var typeStackView: UIStackView!
     var lastGivtToOrganisationPosition: Int?
     @IBOutlet var searchBar: UISearchBar!
@@ -29,8 +30,9 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let organisation = names[sections[indexPath.section].index + indexPath.row]
-        let nameSpace = nameSpaces[sections[indexPath.section].index + indexPath.row]
+        let currentElement = filteredList![sections[indexPath.section].index + indexPath.row]
+        let organisation = currentElement.OrgName
+        let nameSpace = currentElement.EddyNameSpace
         let cell = tableView.dequeueReusableCell(withIdentifier: "ManualGivingOrganisation", for: indexPath) as! ManualGivingOrganisation
         cell.organisationLabel.text = organisation
         cell.nameSpace = nameSpace
@@ -89,7 +91,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 // Finished loading visible rows
                 if initial {
                     initial = false
-                    
                     //find orgname associated with namespace
                     if let namespace = UserDefaults.standard.lastGivtToOrganisation, let orgName = GivtService.shared.getOrgName(orgNameSpace: namespace) {
                         guard let tableSectionId = sections.index(where: { (sec) -> Bool in
@@ -100,8 +101,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                         
                         let sectionIdxOfItem = sections[tableSectionId].index
                         
-                        guard let namespaceIdx = nameSpaces.index(where: { (ns) -> Bool in
-                            return ns == namespace
+                        guard let namespaceIdx = filteredList!.index(where: { (o) -> Bool in
+                            o.EddyNameSpace == namespace
                         }) else {
                             return
                         }
@@ -112,12 +113,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                         } else {
                             self.log.warning(message: "Tried to scroll to suggestion \(orgName), but the index was out of bounds.")
                         }
-
                     }
-                
                 }
-
-                
             }
         }
     }
@@ -150,25 +147,24 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     
     
     var sections : [(index: Int, length :Int, title: String)] = Array()
-    var names: [String] = [String]()
-    var nameSpaces: [String] = [String]()
     private var selectedTag: Int = 100 {
         didSet {
             loadView(selectedTag)
             lastTag = selectedTag
             sections.removeAll()
-            names.removeAll()
-            nameSpaces.removeAll()
-            for org in filteredList! {
-                names.append(org["OrgName"] as! String)
-                nameSpaces.append(org["EddyNameSpace"] as! String)
+            
+            if filteredList == nil {
+                return
             }
             
-            if (names.count > 0) {
+            if (filteredList!.count > 0) {
                 var index = 0
-                var string = names[index].uppercased()
-                var firstCharacter = string[string.startIndex]
-                for (i, name) in names.enumerated() {
+                var string = filteredList![index].OrgName.uppercased()
+                var firstCharacter = string.first!
+                let names = filteredList!.map { (orgBeacon) -> String in
+                    return orgBeacon.OrgName
+                }
+                for (i, _) in names.enumerated() {
                     let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
                     if (commonPrefix.count == 0 ) {
                         let title = "\(firstCharacter)"
@@ -176,10 +172,10 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                         sections.append(newSection)
                         index = i
                         string = names[index].uppercased()
-                        firstCharacter = string[string.startIndex]
+                        firstCharacter = string.first!
                     }
                 }
-                let title = "\(firstCharacter)"
+                let title = String(firstCharacter)
                 let newSection = (index: index, length: names.count - index, title: title)
                 sections.append(newSection)
             }
@@ -189,14 +185,13 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     var passSelectedTag: Int!
     private var lastTag: Int?
-    var listToLoad: [[String: Any]] = {
-        var list = GivtService.shared.orgBeaconList as! [[String: Any]]
-        print(list)
-        return list
+    var listToLoad: [OrgBeacon] = {
+        var list = GivtService.shared.orgBeaconList
+        return list!
     }()
     
-    var filteredList: [[String: Any]]?
-    var originalList: [[String: Any]]?
+    var filteredList: [OrgBeacon]?
+    var originalList: [OrgBeacon]?
     
     @IBOutlet var kerken: UIImageView!
     @IBOutlet var stichtingen: UIImageView!
@@ -209,6 +204,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         
         typeStackView.addArrangedSubview(btnKerken)
         typeStackView.addArrangedSubview(btnStichtingen)
@@ -462,17 +459,19 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             break
         }
         
-        filteredList = listToLoad.filter { ($0["EddyNameSpace"] as! String).substring(16..<19).matches(regExp) }
-        filteredList!.sort(by: { (first, second) -> Bool in
-            let firstName = first["OrgName"] as! String
-            let secondName = second["OrgName"] as! String
-            return firstName < secondName
+        filteredList = listToLoad.filter({ (orgBeacon) -> Bool in
+            orgBeacon.EddyNameSpace.substring(16..<19).matches(regExp)
         })
+        
+        filteredList?.sort(by: { (first, second) -> Bool in
+            return first.OrgName < second.OrgName
+        })
+        
         originalList = filteredList
         
         if let lastOrg = UserDefaults.standard.lastGivtToOrganisation {
             lastGivtToOrganisationPosition = filteredList?.index(where: { (org) -> Bool in
-                return org["EddyNameSpace"] as! String == lastOrg
+                return org.EddyNameSpace == lastOrg
             })
         }
         
@@ -505,11 +504,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func filterList() {
         if let searchText = searchBar.text, searchText.count > 0 {
             filteredList = originalList?.filter({ (organisation) -> Bool in
-                if let org = organisation["OrgName"] as? String {
-                    return org.lowercased().contains(searchText.lowercased())
-                } else {
-                    return false
-                }
+                return organisation.OrgName.lowercased().contains(searchText.lowercased())
             })
             tableView.reloadData()
         }

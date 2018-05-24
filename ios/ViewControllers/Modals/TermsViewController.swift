@@ -13,6 +13,7 @@ class TermsViewController: UIViewController {
     @IBOutlet var titleText: UILabel!
     @IBOutlet var close: UIButton!
     @IBOutlet var terms: UITextView!
+    @IBOutlet weak var closeButton: UIButton!
     var typeOfTerms: TypeOfTerms? {
         didSet {
             if typeOfTerms == .privacyPolicy {
@@ -32,6 +33,7 @@ class TermsViewController: UIViewController {
     var textToShow: String = ""
     
     override func viewDidLoad() {
+        closeButton.accessibilityLabel = NSLocalizedString("Close", comment: "")
         super.viewDidLoad()
         self.titleText.text = self.titleToShow
         self.terms.text = String(self.textToShow.prefix(1000))

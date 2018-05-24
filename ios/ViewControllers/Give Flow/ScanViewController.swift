@@ -12,6 +12,7 @@ import SafariServices
 import MaterialShowcase
 
 class ScanViewController: BaseScanViewController {
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     private var log = LogService.shared
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var gif: UIImageView!
@@ -25,24 +26,17 @@ class ScanViewController: BaseScanViewController {
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGive.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
         title = NSLocalizedString("GiveWithYourPhone", comment: "")
+        backBtn.accessibilityLabel = NSLocalizedString("Back", comment: "")
     }
     
     @objc func showBluetoothMessage() {
         GivtService.shared.stopScanning()
         let alert = UIAlertController(
-            title: NSLocalizedString("SomethingWentWrong2", comment: ""),
+            title: NSLocalizedString("TurnOnBluetooth", comment: ""),
             message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
-            } else {
-                UIApplication.shared.openURL(URL(string:UIApplicationOpenSettingsURLString)!)
-            }
-            
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
-            //push geeflimiet pagina
+        alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
+
         }))
         present(alert, animated: true, completion: nil)
     }
@@ -59,7 +53,7 @@ class ScanViewController: BaseScanViewController {
         self.log.info(message: "Scanpage is now showing")
         
         if(GivtService.shared.bluetoothEnabled){
-            GivtService.shared.startScanning()
+            startScanning()
         }
 
         addOverlay()

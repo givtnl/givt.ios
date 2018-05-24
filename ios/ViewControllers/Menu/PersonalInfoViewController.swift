@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 
 class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
-
+    
     private let loginManager = LoginManager.shared
     private let validationHelper = ValidationHelper.shared
     @IBOutlet var btnNext: CustomButton!
@@ -21,6 +21,8 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var email: UILabel!
     @IBOutlet var name: UILabel!
     @IBOutlet var titleText: UILabel!
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var changePasswordBtn: UIButton!
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -147,13 +149,19 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         cellphone.text = ""
         // Do any additional setup after loading the view.
         
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         iban.placeholder = NSLocalizedString("IBANPlaceHolder", comment: "")
         btnNext.setTitle(NSLocalizedString("ButtonChange", comment: ""), for: .normal)
         titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
         btnNext.isEnabled = false
+        btnNext.accessibilityLabel = NSLocalizedString("ButtonChange", comment: "")
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
+        
+        changePasswordBtn.layer.cornerRadius = 4
+        changePasswordBtn.setTitle(NSLocalizedString("ChangePassword", comment: ""), for: .normal)
+        
         
     }
     
@@ -192,6 +200,12 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func goLostPassword(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
+        self.show(newViewController, sender: nil)
+
+    }
     /*
     // MARK: - Navigation
 

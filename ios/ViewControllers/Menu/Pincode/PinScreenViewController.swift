@@ -16,6 +16,7 @@ class PinScreenViewController: UIViewController {
     
     @IBOutlet var btnForgotPin: UIButton!
     @IBOutlet var removeBtn: UIButton!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     var isDisabled: Bool = false
     var pincode: String = "" {
         didSet {
@@ -62,6 +63,7 @@ class PinScreenViewController: UIViewController {
     private var typeOfPin: TypeOfPin?
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         title = NSLocalizedString("PincodeSetPinTitle", comment: "")
         subtitle.text = NSLocalizedString("PincodeSetPinMessage", comment: "")
         btnForgotPin.isHidden = true

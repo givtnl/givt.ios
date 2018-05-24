@@ -1,121 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aMO-mo-gAx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aMO-mo-gAx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Black</string>
-            <string>Avenir-Heavy</string>
-            <string>Avenir-Light</string>
-            <string>Avenir-Medium</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Personal Info View Controller-->
         <scene sceneID="dIA-0s-DSf">
             <objects>
-                <viewController storyboardIdentifier="PersonalInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qMn-WP-e5g" customClass="PersonalInfoViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PersonalInfoViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qMn-WP-e5g" customClass="PersonalInfoViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u6A-bS-aEG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change your IBAN here.  Other account data can be changed by sending an e-mail to support@givtapp.net" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="eT8-b3-F5d">
-                                <rect key="frame" x="20" y="84" width="560" height="82"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="IBAN" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XI1-ik-89U" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="186" width="560" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="HWT-Pe-880"/>
-                                </constraints>
-                                <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
-                            </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oa8-W2-xdJ">
-                                <rect key="frame" x="35" y="260" width="530" height="150"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQr-9y-RQV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xvk-tW-9cc">
-                                        <rect key="frame" x="0.0" y="0.0" width="530" height="22"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                        <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="VRh-qM-Dcb">
-                                        <rect key="frame" x="0.0" y="32" width="530" height="22"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                        <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Straat" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pxq-OJ-gH3">
-                                        <rect key="frame" x="0.0" y="64" width="530" height="22"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                        <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postcode" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-ud-fQc">
-                                        <rect key="frame" x="0.0" y="96" width="530" height="22"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                        <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GSM nr" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="s0f-L5-DBb">
-                                        <rect key="frame" x="0.0" y="128" width="530" height="22"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
-                                        <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cw1-gd-KxK">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD0-T1-d4K">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="IBAN" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XI1-ik-89U" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="122" width="335" height="44"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="HWT-Pe-880"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
+                                                    </textField>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change your IBAN here.  Other account data can be changed by sending an e-mail to support@givtapp.net" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="eT8-b3-F5d">
+                                                        <rect key="frame" x="20" y="20" width="335" height="82"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
+                                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oa8-W2-xdJ">
+                                                        <rect key="frame" x="20" y="186" width="335" height="150"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xvk-tW-9cc">
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                                <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="VRh-qM-Dcb">
+                                                                <rect key="frame" x="0.0" y="32" width="335" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                                <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Straat" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Pxq-OJ-gH3">
+                                                                <rect key="frame" x="0.0" y="64" width="335" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                                <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postcode" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="vxi-ud-fQc">
+                                                                <rect key="frame" x="0.0" y="96" width="335" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                                <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GSM nr" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="s0f-L5-DBb">
+                                                                <rect key="frame" x="0.0" y="128" width="335" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                                                <color key="textColor" red="0.82328861949999999" green="0.81982773539999998" blue="0.85292178389999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtX-gr-Ili" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="539" width="335" height="44"/>
+                                                        <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="CGq-qW-V95"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                                        <state key="normal" title="Opslaan"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                                                <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                                <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                                                <color key="value" red="0.8901960784313725" green="0.88627450980392153" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="next:" destination="qMn-WP-e5g" eventType="touchUpInside" id="Mlo-Fz-Brg"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-GR-pQz">
+                                                        <rect key="frame" x="20" y="487" width="335" height="44"/>
+                                                        <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="8LP-yq-ycG"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
+                                                        <state key="normal" title="Wachtwoord wijzigen">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="goLostPassword:" destination="qMn-WP-e5g" eventType="touchUpInside" id="ebS-Xl-THA"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="XI1-ik-89U" secondAttribute="trailing" constant="20" id="1NI-zf-4a1"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XAb-GR-pQz" secondAttribute="trailing" constant="20" id="4BY-GW-HAG"/>
+                                                    <constraint firstItem="oa8-W2-xdJ" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="65B-Ap-leX"/>
+                                                    <constraint firstItem="XI1-ik-89U" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="6np-v0-2Vj"/>
+                                                    <constraint firstItem="mtX-gr-Ili" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="CZm-Jm-Xpm"/>
+                                                    <constraint firstItem="XI1-ik-89U" firstAttribute="top" secondItem="eT8-b3-F5d" secondAttribute="bottom" constant="20" id="DUm-27-EhJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="mtX-gr-Ili" secondAttribute="bottom" constant="20" id="F92-gT-xOn"/>
+                                                    <constraint firstItem="eT8-b3-F5d" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="IyI-Yv-mWs"/>
+                                                    <constraint firstItem="eT8-b3-F5d" firstAttribute="top" secondItem="eD0-T1-d4K" secondAttribute="top" constant="20" id="MRf-Yr-qlg"/>
+                                                    <constraint firstItem="oa8-W2-xdJ" firstAttribute="top" secondItem="XI1-ik-89U" secondAttribute="bottom" constant="20" id="Mkt-ok-3AL"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eT8-b3-F5d" secondAttribute="trailing" constant="20" id="N4L-3o-fbh"/>
+                                                    <constraint firstItem="mtX-gr-Ili" firstAttribute="top" secondItem="XAb-GR-pQz" secondAttribute="bottom" constant="10" id="bY6-rU-Abo"/>
+                                                    <constraint firstItem="mtX-gr-Ili" firstAttribute="top" secondItem="XAb-GR-pQz" secondAttribute="bottom" constant="8" id="eb3-X9-OUE"/>
+                                                    <constraint firstAttribute="trailing" secondItem="oa8-W2-xdJ" secondAttribute="trailing" constant="20" id="hdJ-7m-rhC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="mtX-gr-Ili" secondAttribute="trailing" constant="20" id="wR9-oJ-JRd"/>
+                                                    <constraint firstItem="XAb-GR-pQz" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="zPU-A7-hzO"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="eD0-T1-d4K" secondAttribute="trailing" id="Jdf-Nh-TA8"/>
+                                            <constraint firstItem="eD0-T1-d4K" firstAttribute="leading" secondItem="cw1-gd-KxK" secondAttribute="leading" id="MnG-zn-Qc1"/>
+                                            <constraint firstAttribute="bottom" secondItem="eD0-T1-d4K" secondAttribute="bottom" id="jnH-bQ-Jm2"/>
+                                            <constraint firstItem="eD0-T1-d4K" firstAttribute="top" secondItem="cw1-gd-KxK" secondAttribute="top" id="kxe-fY-DuT"/>
+                                        </constraints>
+                                    </scrollView>
                                 </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtX-gr-Ili" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="536" width="560" height="44"/>
-                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Se2-ef-fbW"/>
+                                    <constraint firstAttribute="bottom" secondItem="cw1-gd-KxK" secondAttribute="bottom" id="2wc-ng-qLh"/>
+                                    <constraint firstItem="eD0-T1-d4K" firstAttribute="width" secondItem="VQr-9y-RQV" secondAttribute="width" id="CZy-o5-X4N"/>
+                                    <constraint firstItem="cw1-gd-KxK" firstAttribute="leading" secondItem="VQr-9y-RQV" secondAttribute="leading" id="EAE-1B-XZF"/>
+                                    <constraint firstItem="cw1-gd-KxK" firstAttribute="top" secondItem="VQr-9y-RQV" secondAttribute="top" id="R9U-0U-fYP"/>
+                                    <constraint firstAttribute="trailing" secondItem="cw1-gd-KxK" secondAttribute="trailing" id="o59-JM-r26"/>
+                                    <constraint firstItem="eD0-T1-d4K" firstAttribute="height" secondItem="VQr-9y-RQV" secondAttribute="height" priority="250" id="z9w-uu-PhL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
-                                <state key="normal" title="Opslaan"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                        <color key="value" red="0.8901960784313725" green="0.88627450980392153" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="next:" destination="qMn-WP-e5g" eventType="touchUpInside" id="Mlo-Fz-Brg"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mtX-gr-Ili" firstAttribute="leading" secondItem="eZy-TC-tQq" secondAttribute="leading" constant="20" id="3oH-yD-eYA"/>
-                            <constraint firstItem="eZy-TC-tQq" firstAttribute="trailing" secondItem="oa8-W2-xdJ" secondAttribute="trailing" constant="35" id="5vO-4g-NkS"/>
-                            <constraint firstItem="XI1-ik-89U" firstAttribute="leading" secondItem="eZy-TC-tQq" secondAttribute="leading" constant="20" id="9kV-Al-l94"/>
-                            <constraint firstItem="XI1-ik-89U" firstAttribute="top" secondItem="eT8-b3-F5d" secondAttribute="bottom" constant="20" id="ADF-5i-i5i"/>
-                            <constraint firstItem="eT8-b3-F5d" firstAttribute="leading" secondItem="u6A-bS-aEG" secondAttribute="leading" constant="20" id="KKR-U1-q5N"/>
-                            <constraint firstItem="eZy-TC-tQq" firstAttribute="trailing" secondItem="mtX-gr-Ili" secondAttribute="trailing" constant="20" id="YYv-IM-Mry"/>
-                            <constraint firstItem="eZy-TC-tQq" firstAttribute="trailing" secondItem="XI1-ik-89U" secondAttribute="trailing" constant="20" id="eWX-6Q-o5a"/>
-                            <constraint firstItem="eZy-TC-tQq" firstAttribute="bottom" secondItem="mtX-gr-Ili" secondAttribute="bottom" constant="20" id="hHg-9A-gSM"/>
-                            <constraint firstItem="oa8-W2-xdJ" firstAttribute="top" secondItem="XI1-ik-89U" secondAttribute="bottom" constant="30" id="iz2-Xq-EbB"/>
-                            <constraint firstItem="eT8-b3-F5d" firstAttribute="top" secondItem="eZy-TC-tQq" secondAttribute="top" constant="20" id="m7C-mT-lfQ"/>
-                            <constraint firstAttribute="trailing" secondItem="eT8-b3-F5d" secondAttribute="trailing" constant="20" id="qWK-8c-D97"/>
-                            <constraint firstItem="oa8-W2-xdJ" firstAttribute="leading" secondItem="eZy-TC-tQq" secondAttribute="leading" constant="35" id="rcJ-Uj-0hs"/>
-                            <constraint firstItem="eT8-b3-F5d" firstAttribute="centerX" secondItem="u6A-bS-aEG" secondAttribute="centerX" id="u4q-kQ-OvJ"/>
+                            <constraint firstItem="VQr-9y-RQV" firstAttribute="leading" secondItem="u6A-bS-aEG" secondAttribute="leading" id="JHX-N5-IGF"/>
+                            <constraint firstAttribute="trailing" secondItem="VQr-9y-RQV" secondAttribute="trailing" id="gWa-Fp-Vh5"/>
+                            <constraint firstItem="VQr-9y-RQV" firstAttribute="top" secondItem="eZy-TC-tQq" secondAttribute="top" id="j0B-Q4-aCl"/>
+                            <constraint firstAttribute="bottom" secondItem="VQr-9y-RQV" secondAttribute="bottom" id="oXX-92-Ag7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eZy-TC-tQq"/>
                     </view>
@@ -127,8 +177,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="Smo-sW-3EB" id="Sd9-tZ-A6Y"/>
                         <outlet property="btnNext" destination="mtX-gr-Ili" id="HZP-so-aOl"/>
                         <outlet property="cellphone" destination="s0f-L5-DBb" id="pVj-CK-8Ms"/>
+                        <outlet property="changePasswordBtn" destination="XAb-GR-pQz" id="8ig-Jk-mw2"/>
                         <outlet property="email" destination="VRh-qM-Dcb" id="7fW-6U-SLN"/>
                         <outlet property="iban" destination="XI1-ik-89U" id="7Rd-t8-Bbe"/>
                         <outlet property="name" destination="Xvk-tW-9cc" id="Pwe-yX-G1Y"/>

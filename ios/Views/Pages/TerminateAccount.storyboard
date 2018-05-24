@@ -97,6 +97,7 @@ account moeten maken.</string>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="KrK-SB-Wmw" id="pzc-ig-hvM"/>
                         <outlet property="check" destination="LwJ-Sg-xxx" id="8fh-sF-Mbr"/>
                         <outlet property="confirmationLabel" destination="I9r-5q-qMm" id="r0u-4C-hqJ"/>
                         <outlet property="terminate" destination="cWO-W4-Y1W" id="bae-OC-USM"/>

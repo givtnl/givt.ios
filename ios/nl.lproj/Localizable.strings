@@ -671,3 +671,16 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "WriteStoragePermission" = "Om deze PDF te kunnen bekijken, hebben we even toegang tot de opslag van je telefoon nodig zodat we de PDF kunnen opslaan en laten zien.";
 "LegalTextSlimPay" = "Door verder te gaan, zal u een machtiging ondertekenen voor het mandaat van Givt B.V om uw account te debiteren. U moet de accounthouder zijn of gemachtigd zijn om namens de accounthouder te handelen.\n\nUw persoonlijke gegevens worden verwerkt door SlimPay, een gelicentieerde betalingsinstelling, om de betalingstransactie uit te voeren namens Givt B.V., en om fraude te voorkomen volgens Europese regelgeving.";
 "ResendCode" = "Verstuur de code opnieuw";
+"WrongCodeMandateSigning" = "De code lijkt niet juist te zijn. Probeer het opnieuw of vraag een nieuwe code aan.";
+"Back" = "Terug";
+"AmountLowest" = "Twee Euro Vijftig";
+"AmountMiddle" = "Zeven Euro Vijftig";
+"AmountHighest" = "Twaalf Euro Vijftig";
+"Divider" = "Komma";
+"GivtEventText" = "Hey! Je staat op een evenement waar Givt wordt ondersteund. Wil jij toevallig geven aan {0}?";
+"SearchingEventText" = "We zoeken even waar je bent, wacht je even?";
+"WeDoNotFindYou" = "Jammer genoeg kunnen we je niet terugvinden. Je kan kiezen om te selecteren uit een lijst of teruggaan om nog eens opnieuw te proberen.";
+"SelectLocationContext" = "Geef op locatie";
+"ChangePassword" = "Wachtwoord wijzigen";
+"AllowGivtLocationTitle" = "Sta Givt toe je locatie te gebruiken";
+"AllowGivtLocationMessage" = "We need your location to determine who you want to give to.\nGo to Settings > Privacy > Location Services > Set Location Services On and Set Givt to While Using the App.\nWe hebben je locatie nodig om te bepalen aan wie je wil geven.\nGa naar Instellingen > Privacy > Locatievoorzieningen > Zet Locatievoorzieningen aan en zet Givt aan Bij gebruik.";
