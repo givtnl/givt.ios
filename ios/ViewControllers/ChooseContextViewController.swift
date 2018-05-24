@@ -96,7 +96,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 44.0
+        tableView.estimatedRowHeight = 22
         tableView.tableHeaderView = UIView()
         tableView.tableFooterView = UIView()
         giveSubtitle.text = NSLocalizedString("GiveSubtitle", comment: "")
@@ -119,6 +119,11 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgb: 0x2E2957), NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 17)!]
         
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.flashScrollIndicators()
     }
 
     override func didReceiveMemoryWarning() {
