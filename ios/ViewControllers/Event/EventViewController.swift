@@ -52,7 +52,7 @@ class EventViewController: BaseScanViewController {
         startScanning()
         
         givyContstraint.constant = 20
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0, initialSpringVelocity: 0, options: [.repeat, .autoreverse], animations: {
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.repeat, .autoreverse], animations: {
             self.view.layoutIfNeeded()
         }) { (done) in
         }
@@ -161,6 +161,8 @@ class EventViewController: BaseScanViewController {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("DidDiscoverBeacon"), object: nil)
         GivtService.shared.delegate = nil
         GivtService.shared.stopScanning()
+        GivtService.shared.stopLookingForGivtLocations()
+        self.stopTimer()
     }
     
     @objc func didDiscoverBeacon(notification: NSNotification) {
