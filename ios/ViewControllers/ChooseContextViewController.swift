@@ -79,8 +79,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
             message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
-            //UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
-            let url = URL(string: "App-Prefs:root=Bluetooth") //for bluetooth setting
+            let url = URL(string: UIApplicationOpenSettingsURLString)
             let app = UIApplication.shared
             if #available(iOS 10.0, *) {
                 app.open(url!, options: [:], completionHandler: nil)
