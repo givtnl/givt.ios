@@ -32,18 +32,6 @@ class EventSuggestionViewController: UIViewController {
         btnGive.isUserInteractionEnabled = true
         btnGive.addGestureRecognizer(tap)
         
-        let label = UILabel()
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        label.font = UIFont(name: "Avenir-Heavy", size: 48)
-        label.transform = CGAffineTransform(rotationAngle: -(CGFloat.pi / 36))
-        label.text = String(Date().getDay())
-        eventImage.addSubview(label)
-        label.topAnchor.constraint(equalTo: eventImage.topAnchor, constant: 22).isActive = true
-        label.leadingAnchor.constraint(equalTo: eventImage.leadingAnchor, constant: 0).isActive = true
-        label.trailingAnchor.constraint(equalTo: eventImage.trailingAnchor, constant: 0).isActive = true
-        
         let mutableAttributedString = NSMutableAttributedString()
         
         let lightAttributes = [
@@ -75,7 +63,7 @@ class EventSuggestionViewController: UIViewController {
     }
     
     @IBAction func close(_ sender: Any) {
-        self.dismiss(animated: false) {
+        self.dismiss(animated: true) {
             self.onClose()
         }
     }

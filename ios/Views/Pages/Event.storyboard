@@ -97,16 +97,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUH-3X-8JH">
-                                <rect key="frame" x="40" y="220.5" width="295" height="226"/>
+                                <rect key="frame" x="40" y="224.5" width="295" height="218"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey! Je staat op een evenement waar Givt ondersteund word. Wil jij toevallig geven aan  Zwolle Unlimited?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGR-pZ-Z5l">
-                                        <rect key="frame" x="20" y="95" width="255" height="93"/>
+                                        <rect key="frame" x="20" y="87" width="255" height="93"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eventsnocircle" translatesAutoresizingMaskIntoConstraints="NO" id="KQM-Fz-mNp">
-                                        <rect key="frame" x="0.0" y="-20" width="295" height="99"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="giveatlocationnocircle" translatesAutoresizingMaskIntoConstraints="NO" id="KQM-Fz-mNp">
+                                        <rect key="frame" x="0.0" y="-30" width="295" height="101"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -114,14 +114,14 @@
                                     <constraint firstAttribute="trailing" secondItem="JGR-pZ-Z5l" secondAttribute="trailing" constant="20" id="5Oz-XN-Ecy"/>
                                     <constraint firstItem="JGR-pZ-Z5l" firstAttribute="top" secondItem="KQM-Fz-mNp" secondAttribute="bottom" constant="16" id="GUy-z2-zQB"/>
                                     <constraint firstAttribute="bottom" secondItem="JGR-pZ-Z5l" secondAttribute="bottom" constant="38" id="Ivx-9J-NIV"/>
-                                    <constraint firstItem="KQM-Fz-mNp" firstAttribute="top" secondItem="AUH-3X-8JH" secondAttribute="top" constant="-20" id="Tpy-1J-TGD"/>
+                                    <constraint firstItem="KQM-Fz-mNp" firstAttribute="top" secondItem="AUH-3X-8JH" secondAttribute="top" constant="-30" id="Tpy-1J-TGD"/>
                                     <constraint firstAttribute="trailing" secondItem="KQM-Fz-mNp" secondAttribute="trailing" id="VW3-oa-3t4"/>
                                     <constraint firstItem="JGR-pZ-Z5l" firstAttribute="leading" secondItem="AUH-3X-8JH" secondAttribute="leading" constant="20" id="a1i-8e-x1F"/>
                                     <constraint firstItem="KQM-Fz-mNp" firstAttribute="leading" secondItem="AUH-3X-8JH" secondAttribute="leading" id="l1C-7r-8tm"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ja, graag!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kn-jd-iPt" customClass="InsetLabel" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="146" y="424.5" width="84" height="44"/>
+                                <rect key="frame" x="146" y="420.5" width="84" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="a3z-Nm-liZ"/>
@@ -139,7 +139,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jo-UR-O8e">
-                                <rect key="frame" x="325" y="190.5" width="40" height="40"/>
+                                <rect key="frame" x="325" y="194.5" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rsz-R7-JvL"/>
                                     <constraint firstAttribute="width" constant="40" id="sdE-ps-dQ2"/>
@@ -178,7 +178,7 @@
     <resources>
         <image name="backbtn" width="15" height="24"/>
         <image name="closewhite" width="23" height="24"/>
-        <image name="eventsnocircle" width="113" height="99"/>
+        <image name="giveatlocationnocircle" width="118" height="101"/>
         <image name="lookoutgivy" width="200" height="183"/>
     </resources>
 </document>
