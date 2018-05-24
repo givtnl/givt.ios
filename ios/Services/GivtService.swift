@@ -617,7 +617,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
-            let data = ["Guid" : userExt.guid]
+            var data = ["Guid" : userExt.guid]
             // add &dtLastChanged when beaconList is filled
             if UserDefaults.standard.orgBeaconList != nil {
                 if let date = beaconListLastChanged {
