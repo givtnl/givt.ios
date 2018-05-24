@@ -268,7 +268,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                 bestBeacon.namespace = organisation
             }
             let characterAfterSeperatorIndex = bestBeacon.beaconId!.index(bestBeacon.beaconId!.index(of: ".")!, offsetBy: 1)
-            if _shouldNotify && bestBeacon.beaconId![characterAfterSeperatorIndex] == "a" {
+            if _shouldNotify && String(bestBeacon.beaconId![characterAfterSeperatorIndex]).lowercased() == "a" {
                 NotificationCenter.default.post(name: Notification.Name("DidDiscoverBeacon"), object: nil)
             } else {
                 if(rssi.intValue > rssiTreshold) {
