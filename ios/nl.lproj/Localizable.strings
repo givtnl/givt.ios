@@ -682,3 +682,5 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "WeDoNotFindYou" = "Jammer genoeg kunnen we je niet terugvinden. Je kan kiezen om te selecteren uit een lijst of teruggaan om nog eens opnieuw te proberen.";
 "SelectLocationContext" = "Geef op locatie";
 "ChangePassword" = "Wachtwoord wijzigen";
+"AllowGivtLocationTitle" = "Sta Givt toe je locatie te gebruiken";
+"AllowGivtLocationMessage" = "We need your location to determine who you want to give to.\nGo to Settings > Privacy > Location Services > Set Location Services On and Set Givt to While Using the App.\nWe hebben je locatie nodig om te bepalen aan wie je wil geven.\nGa naar Instellingen > Privacy > Locatievoorzieningen > Zet Locatievoorzieningen aan en zet Givt aan Bij gebruik.";
