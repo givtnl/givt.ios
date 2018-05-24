@@ -129,7 +129,8 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         if !AppServices.shared.connectedToNetwork() {
             self.log.info(message: "User gave offline")
             DispatchQueue.main.async {
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
                 vc.organisation = self.organisation
                 vc.bestBeacon = self.bestBeacon
                 self.show(vc, sender: self)
