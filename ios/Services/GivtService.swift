@@ -619,7 +619,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
             // add &dtLastChanged when beaconList is filled
             if UserDefaults.standard.orgBeaconList != nil {
                 if let date = beaconListLastChanged {
-                    //data["dtLastUpdated"] = date
+                    data["dtLastUpdated"] = date
                 }
             }
             client.get(url: "/api/v2/collectgroups/applist", data: data, callback: { (response) in
