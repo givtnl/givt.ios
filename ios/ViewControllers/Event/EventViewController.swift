@@ -150,7 +150,7 @@ class EventViewController: BaseScanViewController {
             self.startTimer()
         }
         vc.onSuccess = {
-            self._givtService.give(antennaID: region.beaconId)
+            self.giveManually(antennaID: region.beaconId)
         }
         AudioServicesPlayAlertSound(1519)
         self.present(vc, animated: true, completion: nil)
@@ -182,7 +182,7 @@ class EventViewController: BaseScanViewController {
                 self._givtService.startScanning(shouldNotify: true)
             }
             vc.onSuccess = {
-                self._givtService.give(antennaID: self._givtService.getBestBeacon.beaconId!)
+                self.giveManually(antennaID: self._givtService.getBestBeacon.beaconId!)
             }
             AudioServicesPlayAlertSound(1519)
             self.present(vc, animated: true, completion: nil)
