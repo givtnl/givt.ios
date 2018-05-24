@@ -161,8 +161,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             names.removeAll()
             nameSpaces.removeAll()
             for org in filteredList! {
-                names.append(org["OrgName"] as! String)
-                nameSpaces.append(org["EddyNameSpace"] as! String)
+                names.append(org.OrgName)
+                nameSpaces.append(org.EddyNameSpace)
             }
             
             if (names.count > 0) {
@@ -190,14 +190,13 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     var passSelectedTag: Int!
     private var lastTag: Int?
-    var listToLoad: [[String: Any]] = {
-        var list = GivtService.shared.orgBeaconList as! [[String: Any]]
-        print(list)
-        return list
+    var listToLoad: [OrgBeacon] = {
+        var list = GivtService.shared.orgBeaconList
+        return list!
     }()
     
-    var filteredList: [[String: Any]]?
-    var originalList: [[String: Any]]?
+    var filteredList: [OrgBeacon]?
+    var originalList: [OrgBeacon]?
     
     @IBOutlet var kerken: UIImageView!
     @IBOutlet var stichtingen: UIImageView!
@@ -465,17 +464,19 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             break
         }
         
-        filteredList = listToLoad.filter { ($0["EddyNameSpace"] as! String).substring(16..<19).matches(regExp) }
-        filteredList!.sort(by: { (first, second) -> Bool in
-            let firstName = first["OrgName"] as! String
-            let secondName = second["OrgName"] as! String
-            return firstName < secondName
+        filteredList = listToLoad.filter({ (orgBeacon) -> Bool in
+            orgBeacon.EddyNameSpace.substring(16..<19).matches(regExp)
         })
+        
+        filteredList?.sort(by: { (first, second) -> Bool in
+            return first.OrgName < second.OrgName
+        })
+        
         originalList = filteredList
         
         if let lastOrg = UserDefaults.standard.lastGivtToOrganisation {
             lastGivtToOrganisationPosition = filteredList?.index(where: { (org) -> Bool in
-                return org["EddyNameSpace"] as! String == lastOrg
+                return org.EddyNameSpace == lastOrg
             })
         }
         
@@ -508,11 +509,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func filterList() {
         if let searchText = searchBar.text, searchText.count > 0 {
             filteredList = originalList?.filter({ (organisation) -> Bool in
-                if let org = organisation["OrgName"] as? String {
-                    return org.lowercased().contains(searchText.lowercased())
-                } else {
-                    return false
-                }
+                return organisation.OrgName.lowercased().contains(searchText.lowercased())
             })
             tableView.reloadData()
         }

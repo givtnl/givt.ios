@@ -62,54 +62,33 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    var orgBeaconList: [NSDictionary] {
-        if let list = UserDefaults.standard.orgBeaconList as? [String: Any] {
-            if let temp = list["OrgBeacons"] as? [NSDictionary] {
-                return temp
-            }
-            
-        }
-        return [NSDictionary]()
+    var orgBeaconList: [OrgBeacon]? {
+        return UserDefaults.standard.orgBeaconListV2?.OrgBeacons
     }
     
     func getOrgName(orgNameSpace: String) -> String? {
-        let orgName = orgBeaconList.filter { (organisation) -> Bool in
-            return organisation["EddyNameSpace"] as? String == orgNameSpace
-        }
-        return orgName.first?["OrgName"] as? String
+        return orgBeaconList?.first(where: { (orgBeacon) -> Bool in
+            return orgBeacon.EddyNameSpace == orgNameSpace
+        })?.OrgName
     }
     
     func isCelebration(orgNameSpace: String) -> Bool {
-        let org = orgBeaconList.filter({ (organisation) -> Bool in
-            return organisation["EddyNameSpace"] as? String == orgNameSpace
-        })
-        if let result = org.first, let celebration = result["Celebrations"] as? Int8 {
-            return celebration == 1
-        }
-        return false
+        return orgBeaconList?.first(where: { (orgBeacon) -> Bool in
+            return orgBeacon.EddyNameSpace == orgNameSpace
+        })?.Celebrations ?? false
     }
     
-    var lastGivtOrg: String {
+    var lastGivtOrg: String? {
         get {
-            if bestBeacon.namespace != nil {
-                for organisationBeacon in orgBeaconList {
-                    if let org = organisationBeacon["EddyNameSpace"] as? String, let orgName = organisationBeacon["OrgName"] as? String, org == bestBeacon.namespace {
-                        return orgName
-                    }
-                }   
-            }
-            return ""
+            return orgBeaconList?.first(where: { (orgBeacon) -> Bool in
+                return orgBeacon.EddyNameSpace == bestBeacon.namespace
+            })?.OrgName
         }
     }
     
     var beaconListLastChanged: String? {
         get {
-            let list = UserDefaults.standard.orgBeaconList as! [String: Any]
-            if let lastChanged = list["LastChanged"] as? String {
-                return lastChanged
-            }
-            self.log.warning(message: "No lastchanged found in beacon list")
-            return nil 
+            return UserDefaults.standard.orgBeaconListV2?.LastChanged.toString("yyyy-MM-dd'T'HH:mm:ss.SSS")
         }
     }
     
@@ -618,20 +597,13 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
             var data = ["Guid" : userExt.guid]
-            // add &dtLastChanged when beaconList is filled
-            if UserDefaults.standard.orgBeaconList != nil {
-                if let date = beaconListLastChanged {
-                    data["dtLastUpdated"] = date
-                }
+            if let date = beaconListLastChanged {
+                data["dtLastUpdated"] = date
             }
             client.get(url: "/api/v2/collectgroups/applist", data: data, callback: { (response) in
                 if let response = response, let data = response.data {
                     if response.statusCode == 200 {
                         do {
-                            let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                            UserDefaults.standard.orgBeaconList = parsedData as NSDictionary
-                            print("updated beacon list")
-                            
                             let decoder = JSONDecoder()
                             decoder.dateDecodingStrategy = .custom({ (date) -> Date in
                                 let container = try date.singleValueContainer()

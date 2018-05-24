@@ -51,7 +51,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.showcases = []
         }
         
+        handleOldBeaconList()
+        
         return true
+    }
+    
+    func handleOldBeaconList() {
+        if UserDefaults.standard.orgBeaconListV2 == nil && UserDefaults.standard.orgBeaconList != nil {
+            let oldList = UserDefaults.standard.orgBeaconList!
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .custom({ (date) -> Date in
+                let container = try date.singleValueContainer()
+                var dateStr = try container.decode(String.self)
+                dateStr = dateStr.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                return dateFormatter.date(from: dateStr) ?? Date(timeIntervalSince1970: 0)
+            })
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: oldList, options: JSONSerialization.WritingOptions.prettyPrinted)
+                let bl = try decoder.decode(BeaconList.self, from: jsonData)
+                UserDefaults.standard.orgBeaconListV2 = bl
+            } catch let err as NSError {
+                print(err)
+                logService.error(message: "Could not parse old beacon list into new list")
+            }
+        }
     }
     
     /// Transfer data from Xamarin

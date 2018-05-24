@@ -38,7 +38,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     func onGivtProcessed(transactions: [Transaction]) {
         SVProgressHUD.dismiss()
-        organisation = GivtService.shared.lastGivtOrg
+        organisation = GivtService.shared.lastGivtOrg ?? ""
         bestBeacon = GivtService.shared.getBestBeacon
         var trs = [NSDictionary]()
         for tr in transactions {
