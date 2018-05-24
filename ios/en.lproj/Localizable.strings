@@ -660,3 +660,6 @@
 "Divider" = "Dot";
 "GivtEventText" = "Hey! You're at an event where Givt is supported. Do you want to give to {0}?";
 "SearchingEventText" = "We are searching where you are, care to wait a little?";
+"WeDoNotFindYou" = "Alas, we cannot find your location right now. You can choose from a list to which organisation you want to give or go back and try again.";
+"SelectLocationContext" = "Give at location";
+"ChangePassword" = "Change password";

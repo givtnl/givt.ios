@@ -679,3 +679,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Divider" = "Komma";
 "GivtEventText" = "Hey! Je staat op een evenement waar Givt wordt ondersteund. Wil jij toevallig geven aan {0}?";
 "SearchingEventText" = "We zoeken even waar je bent, wacht je even?";
+"WeDoNotFindYou" = "Jammer genoeg kunnen we je niet terugvinden. Je kan kiezen om te selecteren uit een lijst of teruggaan om nog eens opnieuw te proberen.";
+"SelectLocationContext" = "Geef op locatie";
+"ChangePassword" = "Wachtwoord wijzigen";
