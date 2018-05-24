@@ -161,6 +161,8 @@ class EventViewController: BaseScanViewController {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("DidDiscoverBeacon"), object: nil)
         GivtService.shared.delegate = nil
         GivtService.shared.stopScanning()
+        GivtService.shared.stopLookingForGivtLocations()
+        self.stopTimer()
     }
     
     @objc func didDiscoverBeacon(notification: NSNotification) {
