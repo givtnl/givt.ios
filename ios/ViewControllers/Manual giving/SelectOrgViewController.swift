@@ -30,8 +30,9 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let organisation = names[sections[indexPath.section].index + indexPath.row]
-        let nameSpace = nameSpaces[sections[indexPath.section].index + indexPath.row]
+        let currentElement = filteredList![sections[indexPath.section].index + indexPath.row]
+        let organisation = currentElement.OrgName
+        let nameSpace = currentElement.EddyNameSpace
         let cell = tableView.dequeueReusableCell(withIdentifier: "ManualGivingOrganisation", for: indexPath) as! ManualGivingOrganisation
         cell.organisationLabel.text = organisation
         cell.nameSpace = nameSpace
@@ -90,7 +91,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 // Finished loading visible rows
                 if initial {
                     initial = false
-                    
                     //find orgname associated with namespace
                     if let namespace = UserDefaults.standard.lastGivtToOrganisation, let orgName = GivtService.shared.getOrgName(orgNameSpace: namespace) {
                         guard let tableSectionId = sections.index(where: { (sec) -> Bool in
@@ -101,8 +101,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                         
                         let sectionIdxOfItem = sections[tableSectionId].index
                         
-                        guard let namespaceIdx = nameSpaces.index(where: { (ns) -> Bool in
-                            return ns == namespace
+                        guard let namespaceIdx = filteredList!.index(where: { (o) -> Bool in
+                            o.EddyNameSpace == namespace
                         }) else {
                             return
                         }
@@ -113,12 +113,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                         } else {
                             self.log.warning(message: "Tried to scroll to suggestion \(orgName), but the index was out of bounds.")
                         }
-
                     }
-                
                 }
-
-                
             }
         }
     }
@@ -151,24 +147,23 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     
     
     var sections : [(index: Int, length :Int, title: String)] = Array()
-    var names: [String] = [String]()
-    var nameSpaces: [String] = [String]()
     private var selectedTag: Int = 100 {
         didSet {
             loadView(selectedTag)
             lastTag = selectedTag
             sections.removeAll()
-            names.removeAll()
-            nameSpaces.removeAll()
-            for org in filteredList! {
-                names.append(org.OrgName)
-                nameSpaces.append(org.EddyNameSpace)
+            
+            if filteredList == nil {
+                return
             }
             
-            if (names.count > 0) {
+            if (filteredList!.count > 0) {
                 var index = 0
-                var string = names[index].uppercased()
-                var firstCharacter = string[string.startIndex]
+                var string = filteredList![index].OrgName.uppercased()
+                var firstCharacter = string.first!
+                let names = filteredList!.map { (orgBeacon) -> String in
+                    return orgBeacon.OrgName
+                }
                 for (i, name) in names.enumerated() {
                     let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
                     if (commonPrefix.count == 0 ) {
@@ -177,10 +172,10 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                         sections.append(newSection)
                         index = i
                         string = names[index].uppercased()
-                        firstCharacter = string[string.startIndex]
+                        firstCharacter = string.first!
                     }
                 }
-                let title = "\(firstCharacter)"
+                let title = String(firstCharacter)
                 let newSection = (index: index, length: names.count - index, title: title)
                 sections.append(newSection)
             }
