@@ -606,7 +606,9 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
         list.OrgBeacons.forEach { (element) in
             element.Locations.forEach({ (location) in
-                locations.append(GivtLocation(lat: location.Latitude, long: location.Longitude, radius: location.Radius, name: location.Name, beaconId: location.BeaconId, organisationName: element.OrgName))
+                if Date().isBetween(location.dtBegin, and: location.dtEnd) {
+                    locations.append(GivtLocation(lat: location.Latitude, long: location.Longitude, radius: location.Radius, name: location.Name, beaconId: location.BeaconId, organisationName: element.OrgName))
+                }
             })
         }
         return locations
