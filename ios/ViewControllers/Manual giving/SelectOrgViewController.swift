@@ -164,7 +164,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 let names = filteredList!.map { (orgBeacon) -> String in
                     return orgBeacon.OrgName
                 }
-                for (i, name) in names.enumerated() {
+                for (i, _) in names.enumerated() {
                     let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
                     if (commonPrefix.count == 0 ) {
                         let title = "\(firstCharacter)"
