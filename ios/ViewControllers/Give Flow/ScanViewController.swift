@@ -32,19 +32,11 @@ class ScanViewController: BaseScanViewController {
     @objc func showBluetoothMessage() {
         GivtService.shared.stopScanning()
         let alert = UIAlertController(
-            title: NSLocalizedString("SomethingWentWrong2", comment: ""),
+            title: NSLocalizedString("TurnOnBluetooth", comment: ""),
             message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("TurnOnBluetooth", comment: ""), style: .default, handler: { action in
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
-            } else {
-                UIApplication.shared.openURL(URL(string:UIApplicationOpenSettingsURLString)!)
-            }
-            
-        }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
-            //push geeflimiet pagina
+        alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
+
         }))
         present(alert, animated: true, completion: nil)
     }
@@ -61,7 +53,7 @@ class ScanViewController: BaseScanViewController {
         self.log.info(message: "Scanpage is now showing")
         
         if(GivtService.shared.bluetoothEnabled){
-            GivtService.shared.startScanning()
+            startScanning()
         }
 
         addOverlay()

@@ -11,10 +11,34 @@ import CoreBluetooth
 import UIKit
 import AudioToolbox
 import SwiftClient
+import CoreLocation
+
+struct BeaconList: Codable {
+    var OrgBeacons: [OrgBeacon]
+    var LastChanged: Date
+}
+
+struct OrgBeacon: Codable {
+    let EddyNameSpace: String
+    let OrgName: String
+    let Celebrations: Bool
+    let Locations: [OrgBeaconLocation]
+}
+
+struct OrgBeaconLocation: Codable {
+    let Name: String
+    let Latitude: Double
+    let Longitude: Double
+    let Radius: Int
+    let BeaconId: String
+    let dtBegin: Date
+    let dtEnd: Date
+}
 
 final class GivtService: NSObject, CBCentralManagerDelegate {
     static let shared = GivtService()
     private var log = LogService.shared
+    private var locationService = LocationService.instance
     let reachability = Reachability()
     
     static let FEAA = CBUUID.init(string: "FEAA")
@@ -90,6 +114,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     }
     
     private var rssiTreshold: Int = -68
+    private var _shouldNotify: Bool = false
     var isScanning: Bool = false
     
     var centralManager: CBCentralManager!
@@ -141,13 +166,14 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         self.amounts = amounts
     }
     
-    func startScanning() {
+    func startScanning(shouldNotify: Bool = false) {
         self.scannedPeripherals.removeAll()
         scanLock.lock()
         if (!isScanning)
         {
             log.info(message: "Started scanning")
             isScanning = true
+            _shouldNotify = shouldNotify
             centralManager.scanForPeripherals(withServices: [GivtService.FEAA], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
             DispatchQueue.main.async {
                 UIApplication.shared.isIdleTimerDisabled = true
@@ -263,16 +289,22 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                 bestBeacon.namespace = organisation
             }
             
-            if(rssi.intValue > rssiTreshold) {
-                scanLock.lock()
-                if (isScanning) {
-                    self.stopScanning()
-                    DispatchQueue.main.async {
-                        self.give(antennaID: antennaID)
+            if _shouldNotify {
+                NotificationCenter.default.post(name: Notification.Name("DidDiscoverBeacon"), object: nil)
+            } else {
+                if(rssi.intValue > rssiTreshold) {
+                    scanLock.lock()
+                    if (isScanning) {
+                        self.stopScanning()
+                        DispatchQueue.main.async {
+                            self.give(antennaID: antennaID)
+                        }
                     }
+                    scanLock.unlock()
                 }
-                scanLock.unlock()
             }
+            
+            
         }
     }
     
@@ -302,6 +334,29 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
         
         bestBeacon = BestBeacon()
+    }
+    
+    func startLookingForGivtLocations() {
+        locationService.startLookingForLocation()
+        
+    }
+    
+    func stopLookingForGivtLocations() {
+        locationService.stopLookingForLocation()
+    }
+    
+    func getGivtLocation() -> GivtLocation? {
+        var foundLocations = [GivtLocation]()
+        for location in getGivtLocations() {
+            if locationService.isLocationInRegion(region: location) {
+                foundLocations.append(location)
+            }
+        }
+        if foundLocations.count == 0 {
+            return nil
+        } else {
+            return locationService.getClosestLocation(locs: foundLocations)
+        }
     }
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
@@ -544,14 +599,27 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
     }
     
+    private func getGivtLocations() -> [GivtLocation] {
+        var locations = [GivtLocation]()
+        guard let list = UserDefaults.standard.orgBeaconListV2 else {
+            return locations
+        }
+        list.OrgBeacons.forEach { (element) in
+            element.Locations.forEach({ (location) in
+                locations.append(GivtLocation(lat: location.Latitude, long: location.Longitude, radius: location.Radius, name: location.Name, beaconId: location.BeaconId, organisationName: element.OrgName))
+            })
+        }
+        return locations
+    }
+    
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
-            var data = ["Guid" : userExt.guid]
+            let data = ["Guid" : userExt.guid]
             // add &dtLastChanged when beaconList is filled
             if UserDefaults.standard.orgBeaconList != nil {
                 if let date = beaconListLastChanged {
-                    data["dtLastUpdated"] = date
+                    //data["dtLastUpdated"] = date
                 }
             }
             client.get(url: "/api/v2/collectgroups/applist", data: data, callback: { (response) in
@@ -561,6 +629,20 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                             let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                             UserDefaults.standard.orgBeaconList = parsedData as NSDictionary
                             print("updated beacon list")
+                            
+                            let decoder = JSONDecoder()
+                            decoder.dateDecodingStrategy = .custom({ (date) -> Date in
+                                let container = try date.singleValueContainer()
+                                var dateStr = try container.decode(String.self)
+                                dateStr = dateStr.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                                return dateFormatter.date(from: dateStr) ?? Date(timeIntervalSince1970: 0)
+                            })
+                            let bl = try decoder.decode(BeaconList.self, from: data)
+                            UserDefaults.standard.orgBeaconListV2 = bl
                             completionHandler(true)
                         } catch let err as NSError {
                             completionHandler(false)
@@ -584,6 +666,22 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
 
 protocol GivtProcessedProtocol: class {
     func onGivtProcessed(transactions: [Transaction])
+}
+
+class GivtLocation {
+    var coordinate: CLLocation
+    var radius: Int //meter
+    var name: String
+    var beaconId: String
+    var organisationName: String
+    
+    init(lat: CLLocationDegrees, long: CLLocationDegrees, radius: Int, name: String, beaconId: String, organisationName: String) {
+        self.coordinate = CLLocation(latitude: lat, longitude: long)
+        self.radius = radius
+        self.name = name
+        self.beaconId = beaconId
+        self.organisationName = organisationName
+    }
 }
 
 class BestBeacon {

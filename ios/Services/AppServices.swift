@@ -9,6 +9,7 @@
 import Foundation
 import SystemConfiguration
 import UIKit
+import CoreLocation
 
 class AppServices {
     static let shared = AppServices()
@@ -39,5 +40,11 @@ class AppServices {
     
     func notificationsEnabled() -> Bool {
         return UIApplication.shared.isRegisteredForRemoteNotifications && !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty)!
+    }
+    
+    static func isLocationPermissionGranted() -> Bool
+    {
+        guard CLLocationManager.locationServicesEnabled() else { return false }
+        return [.authorizedAlways, .authorizedWhenInUse].contains(CLLocationManager.authorizationStatus())
     }
 }

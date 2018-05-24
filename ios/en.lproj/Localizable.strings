@@ -619,7 +619,7 @@
 "ChooseWhoYouWantToGiveTo" = "Choose who you want to give to";
 "CancelGiftAlertTitle" = "Cancel donation?";
 "CancelGiftAlertMessage" = "Are you sure you want to cancel this donation?";
-"GotIt" = "I got it";
+"GotIt" = "Got it";
 "CancelFeatureTitle" = "You can cancel a donation within 15 minutes by swiping left";
 "CancelFeatureMessage" = "Tap anywhere to dismiss this message";
 "GiveSubtitle" = "There are several ways to ‘Givt’. Pick the one that suits you best.";
@@ -661,5 +661,7 @@
 "GivtEventText" = "Hey! You're at an event where Givt is supported. Do you want to give to {0}?";
 "SearchingEventText" = "We are searching where you are, care to wait a little?";
 "WeDoNotFindYou" = "Alas, we cannot find your location right now. You can choose from a list to which organisation you want to give or go back and try again.";
-"SelectLocationContext" = "Give based on location";
+"SelectLocationContext" = "Give at location";
 "ChangePassword" = "Change password";
+"AllowGivtLocationTitle" = "Allow Givt access your location";
+"AllowGivtLocationMessage" = "We need your location to determine who you want to give to.\nGo to Settings > Privacy > Location Services > Set Location Services On and Set Givt to While Using the App.";

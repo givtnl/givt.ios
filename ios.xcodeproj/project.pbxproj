@@ -94,6 +94,7 @@
 		D7BC58D620776361008C9497 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC58D520776361008C9497 /* Context.swift */; };
 		D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */; };
 		D7C5120E20761DC7002B1618 /* ChooseContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */; };
+		D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C8F3D2209A0B7300DBB397 /* Event.storyboard */; };
 		D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB10320875E9F004139CB /* CelebrateViewController.swift */; };
 		D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */; };
 		D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */; };
@@ -107,6 +108,10 @@
 		D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */; };
 		D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */; };
 		D7DBEDA31FBC798A00D78E2A /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */; };
+		D7DD799F209B054500047CA7 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD799E209B054500047CA7 /* EventViewController.swift */; };
+		D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD79A1209B359D00047CA7 /* EventSuggestionViewController.swift */; };
+		D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD79A3209B463800047CA7 /* InsetLabel.swift */; };
+		D7DD79A620A19E2500047CA7 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD79A520A19E2500047CA7 /* LocationService.swift */; };
 		D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */; };
 		D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE931F7CFA34005807BE /* UserExt.swift */; };
 		D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */; };
@@ -248,6 +253,7 @@
 		D7BC58D520776361008C9497 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextViewController.swift; sourceTree = "<group>"; };
 		D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextTableViewCell.swift; sourceTree = "<group>"; };
+		D7C8F3D2209A0B7300DBB397 /* Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
 		D7CAB10320875E9F004139CB /* CelebrateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateViewController.swift; sourceTree = "<group>"; };
 		D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pincode.storyboard; sourceTree = "<group>"; };
 		D7CCC06A1FC427FC006A6A4F /* PinNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinNavViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +267,10 @@
 		D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextView.swift; sourceTree = "<group>"; };
 		D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
+		D7DD799E209B054500047CA7 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		D7DD79A1209B359D00047CA7 /* EventSuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSuggestionViewController.swift; sourceTree = "<group>"; };
+		D7DD79A3209B463800047CA7 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
+		D7DD79A520A19E2500047CA7 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationUser.swift; sourceTree = "<group>"; };
 		D7E3CE931F7CFA34005807BE /* UserExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExt.swift; sourceTree = "<group>"; };
 		D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPInfoViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				D740E15B1F4C6328000531BA /* GivtService.swift */,
+				D7DD79A520A19E2500047CA7 /* LocationService.swift */,
 				D7FB251C1F4D6D2F0011A14E /* AppServices.swift */,
 				D7FB252E1F5065C20011A14E /* Reachability.swift */,
 				D787AE2A1FCD91680004BDB1 /* LogService.swift */,
@@ -412,6 +423,7 @@
 				D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */,
 				D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */,
 				D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */,
+				D7C8F3D2209A0B7300DBB397 /* Event.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -434,6 +446,7 @@
 				D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */,
 				D748F5FB2061425400B25BC2 /* HistoryTableViewCell.swift */,
 				D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */,
+				D7DD79A3209B463800047CA7 /* InsetLabel.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -477,6 +490,15 @@
 				D75AA195200CBFD5006E09BB /* TaxesViewController.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		D7DD79A0209B358800047CA7 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				D7DD799E209B054500047CA7 /* EventViewController.swift */,
+				D7DD79A1209B359D00047CA7 /* EventSuggestionViewController.swift */,
+			);
+			path = Event;
 			sourceTree = "<group>";
 		};
 		D7F746B31FD83F9F005354A3 /* Transitions */ = {
@@ -581,6 +603,7 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7DD79A0209B358800047CA7 /* Event */,
 				D7F746D81FD943B8005354A3 /* Give Flow */,
 				D7F746D71FD94390005354A3 /* Login */,
 				D7F746D61FD9435C005354A3 /* Modals */,
@@ -789,6 +812,7 @@
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
+				D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */,
 				D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
 				FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */,
@@ -862,6 +886,7 @@
 				D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */,
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
+				D7DD799F209B054500047CA7 /* EventViewController.swift in Sources */,
 				D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */,
 				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
@@ -884,6 +909,7 @@
 				D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
 				D748F6002063D4A500B25BC2 /* Status.swift in Sources */,
+				D7DD79A620A19E2500047CA7 /* LocationService.swift in Sources */,
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
 				D7AF43011FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift in Sources */,
@@ -891,6 +917,7 @@
 				FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
+				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
@@ -948,6 +975,7 @@
 				D770E5341FB097FA0079D253 /* ManualOrganisationView.swift in Sources */,
 				D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */,
 				D78208A12008BE7900AB6DC1 /* CollectionExtensions.swift in Sources */,
+				D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */,
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
 			);

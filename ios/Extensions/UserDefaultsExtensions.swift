@@ -31,6 +31,7 @@ extension UserDefaults {
         @available(*, deprecated, message: "Do not use. Use showCasesByUserId instead.")
         case showcases              //deprecated
         case showCasesByUserID
+        case orgBeaconListV2
     }
     
     enum Showcase: String {
@@ -40,6 +41,20 @@ extension UserDefaults {
         case giveSituation
         case multipleCollects
         case deleteMultipleCollects
+    }
+    
+    var orgBeaconListV2: BeaconList? {
+        get {
+            if let data = UserDefaults.standard.value(forKey:UserDefaultsKeys.orgBeaconListV2.rawValue) as? Data {
+                let beaconList = try? PropertyListDecoder().decode(BeaconList.self, from: data)
+                return beaconList
+            }
+            return nil
+        }
+        set(value) {
+            set(try? PropertyListEncoder().encode(value), forKey: UserDefaultsKeys.orgBeaconListV2.rawValue)
+            synchronize()
+        }
     }
     
     var showCasesByUserID: [String] {
