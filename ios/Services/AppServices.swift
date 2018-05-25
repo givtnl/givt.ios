@@ -42,9 +42,15 @@ class AppServices {
         return UIApplication.shared.isRegisteredForRemoteNotifications && !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty)!
     }
     
-    static func isLocationPermissionGranted() -> Bool
-    {
-        guard CLLocationManager.locationServicesEnabled() else { return false }
+    static func isLocationServicesEnabled() -> Bool {
+        return CLLocationManager.locationServicesEnabled()
+    }
+    
+    static func isLocationPermissionDetermined() -> Bool {
+        return ![.notDetermined].contains(CLLocationManager.authorizationStatus())
+    }
+    
+    static func isLocationPermissionGranted() -> Bool {
         return [.authorizedAlways, .authorizedWhenInUse].contains(CLLocationManager.authorizationStatus())
     }
 }

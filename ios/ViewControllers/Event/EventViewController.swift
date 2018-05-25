@@ -37,15 +37,19 @@ class EventViewController: BaseScanViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(didDiscoverBeacon), name: Notification.Name("DidDiscoverBeacon"), object: nil)
         _givtService.delegate = self
         let bluetoothEnabled = _givtService.bluetoothEnabled
-        let locationEnabled = AppServices.isLocationPermissionGranted()
+        var shouldAskForLocation = false
         
-        if !bluetoothEnabled && !locationEnabled { //if both disabled, show both after each other.
+        if AppServices.isLocationServicesEnabled() && AppServices.isLocationPermissionDetermined() && !AppServices.isLocationPermissionGranted() {
+            shouldAskForLocation = true
+        }
+
+        if !bluetoothEnabled && shouldAskForLocation { //if both disabled, show both after each other.
             showBluetoothMessage {
                 self.showLocationMessage()
             }
         } else if !bluetoothEnabled { //only BL disabled
             showBluetoothMessage(after: {})
-        } else if !locationEnabled { //only loc disabled
+        } else if shouldAskForLocation { //only loc disabled
             showLocationMessage()
         }
         
