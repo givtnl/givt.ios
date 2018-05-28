@@ -275,7 +275,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                     self.log.warning(message: "Beacon close that is not an area beacon.")
                 }
             } else {
-                if(rssi.intValue > rssiTreshold) {
+                if(rssi.intValue > rssiTreshold && String(bestBeacon.beaconId![characterAfterSeperatorIndex]).lowercased() != "a") {
                     scanLock.lock()
                     if (isScanning) {
                         self.stopScanning()
