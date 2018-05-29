@@ -294,7 +294,12 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     @objc func giveSuggestion() {
         if let beaconId = self.beaconId {
             log.info(message: "Gave to the suggestion")
-            giveManually(antennaID: beaconId)
+            if let idx = beaconId.index(of: ".") {
+                let namespace = beaconId[..<idx]
+                giveManually(antennaID: String(namespace))
+            } else {
+                giveManually(antennaID: beaconId)
+            }
         }
     }
 }

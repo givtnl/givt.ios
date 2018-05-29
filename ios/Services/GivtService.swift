@@ -275,7 +275,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                     self.log.warning(message: "Beacon close that is not an area beacon.")
                 }
             } else {
-                if(rssi.intValue > rssiTreshold) {
+                if(rssi.intValue > rssiTreshold && String(bestBeacon.beaconId![characterAfterSeperatorIndex]).lowercased() != "a") {
                     scanLock.lock()
                     if (isScanning) {
                         self.stopScanning()
@@ -388,7 +388,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
             for (index, value) in amounts.enumerated() {
                 if value >= 0.50 {
                     print(value)
-                    let newTransaction = Transaction(amount: value, beaconId: bestBeacon.namespace!, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
+                    let newTransaction = Transaction(amount: value, beaconId: bestBeacon.beaconId!, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
                     transactions.append(newTransaction)
                 }
             }
@@ -401,7 +401,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
                 }
             })
         } else {
-            give(antennaID: bestBeacon.namespace!)
+            give(antennaID: bestBeacon.beaconId!)
         }
         
     }
