@@ -17,6 +17,7 @@ class EventViewController: BaseScanViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var imageV: UIImageView!
     private var countdownTimer: Timer?
+    private var timer20S: Timer?
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = NSLocalizedString("SearchingEventText", comment: "")
@@ -98,7 +99,7 @@ class EventViewController: BaseScanViewController {
     }
     
     private func start20sTimer() {
-        Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(after20s), userInfo: nil, repeats: false)
+        self.timer20S = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(after20s), userInfo: nil, repeats: false)
     }
     @IBAction func giveDifferently(_ sender: Any) {
         self.stopTimer()
@@ -155,6 +156,7 @@ class EventViewController: BaseScanViewController {
         }
         vc.onSuccess = {
             self.giveManually(antennaID: region.beaconId)
+            self.stopAllEvents()
         }
         AudioServicesPlayAlertSound(1519)
         self.present(vc, animated: true, completion: nil)
@@ -162,11 +164,16 @@ class EventViewController: BaseScanViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        stopAllEvents()
+    }
+    
+    private func stopAllEvents() {
         NotificationCenter.default.removeObserver(self, name: Notification.Name("DidDiscoverBeacon"), object: nil)
         GivtService.shared.delegate = nil
         GivtService.shared.stopScanning()
         GivtService.shared.stopLookingForGivtLocations()
         self.stopTimer()
+        self.timer20S?.invalidate()
     }
     
     @objc func didDiscoverBeacon(notification: NSNotification) {
@@ -189,6 +196,7 @@ class EventViewController: BaseScanViewController {
             }
             vc.onSuccess = {
                 self.giveManually(antennaID: self._givtService.getBestBeacon.beaconId!)
+                self.stopAllEvents()
             }
             AudioServicesPlayAlertSound(1519)
             self.present(vc, animated: true, completion: nil)
