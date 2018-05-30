@@ -49,7 +49,7 @@ class EventViewController: BaseScanViewController {
                 self.showLocationMessage()
             }
         } else if !bluetoothEnabled { //only BL disabled
-            showBluetoothMessage(after: {})
+            showBluetoothMessage {}
         } else if shouldAskForLocation { //only loc disabled
             showLocationMessage()
         }
@@ -64,7 +64,8 @@ class EventViewController: BaseScanViewController {
 
         startTimer()
         
-        start20sTimer()
+        //start timer for showing the "Choose from the list" button
+        self.timer20S = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(after20s), userInfo: nil, repeats: false)
     }
     
     @objc func startScanning() {
@@ -82,7 +83,6 @@ class EventViewController: BaseScanViewController {
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
         }
-        
     }
     
     func showLocationMessage() {
@@ -98,21 +98,13 @@ class EventViewController: BaseScanViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func start20sTimer() {
-        self.timer20S = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(after20s), userInfo: nil, repeats: false)
-    }
     @IBAction func giveDifferently(_ sender: Any) {
-        self.stopTimer()
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func after20s() {
-        
-        if let region = self._givtService.getGivtLocation() {
-            self.foundRegion(region: region)
-        }
         UIView.animate(withDuration: 0.3) {
             self.giveDifferently.isHidden = false
         }
