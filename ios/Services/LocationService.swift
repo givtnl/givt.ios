@@ -74,3 +74,19 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
 }
+
+class GivtLocation {
+    var coordinate: CLLocation
+    var radius: Int //meter
+    var name: String
+    var beaconId: String
+    var organisationName: String
+    
+    init(lat: CLLocationDegrees, long: CLLocationDegrees, radius: Int, name: String, beaconId: String, organisationName: String) {
+        self.coordinate = CLLocation(latitude: lat, longitude: long)
+        self.radius = radius
+        self.name = name
+        self.beaconId = beaconId
+        self.organisationName = organisationName
+    }
+}
