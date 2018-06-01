@@ -29,15 +29,33 @@ class EventViewController: BaseScanViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    }
+    
+    override func didDetectGivtLocation(orgName: String, identifier: String) {
+        if (self.navigationController?.visibleViewController as? EventSuggestionViewController) != nil {
+            return
+        }
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventSuggestionViewController") as! EventSuggestionViewController
+        vc.providesPresentationContextTransitionStyle = true
+        vc.definesPresentationContext = true
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalTransitionStyle = .crossDissolve
+        vc.organisation = orgName
+        vc.onClose = {
+            
+        }
+        vc.onSuccess = {
+            self.giveManually(antennaID: identifier)
+            self._givtService.stopLookingForGivtLocations()
+        }
+        AudioServicesPlayAlertSound(1519)
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didDiscoverBeacon), name: Notification.Name("DidDiscoverBeacon"), object: nil)
         _givtService.delegate = self
-        let bluetoothEnabled = _givtService.bluetoothEnabled
+        let bluetoothEnabled = _givtService.isBluetoothEnabled
         var shouldAskForLocation = false
         
         if AppServices.isLocationServicesEnabled() && AppServices.isLocationPermissionDetermined() && !AppServices.isLocationPermissionGranted() {
@@ -54,7 +72,8 @@ class EventViewController: BaseScanViewController {
             showLocationMessage()
         }
         
-        startScanning()
+        _givtService.delegate = self
+        _givtService.startLookingForGivtLocations()
         
         givyContstraint.constant = 20
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.repeat, .autoreverse], animations: {
@@ -62,14 +81,8 @@ class EventViewController: BaseScanViewController {
         }) { (done) in
         }
 
-        startTimer()
-        
         //start timer for showing the "Choose from the list" button
         self.timer20S = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(after20s), userInfo: nil, repeats: false)
-    }
-    
-    @objc func startScanning() {
-        _givtService.startScanning(shouldNotify: true)
     }
     
     func showBluetoothMessage(after: @escaping () -> ()) {
@@ -110,90 +123,11 @@ class EventViewController: BaseScanViewController {
         }
     }
     
-    private func startTimer() {
-        _givtService.startLookingForGivtLocations()
-        countdownTimer = Timer.scheduledTimer(timeInterval:
-            6, target: self, selector: #selector(tickingClocks), userInfo: nil, repeats: true)
-    }
-    
-    private func stopTimer() {
-        countdownTimer?.invalidate()
-    }
-    
-    @objc func tickingClocks() {
-        self.stopTimer()
-        GivtService.shared.stopScanning()
-        GivtService.shared.stopLookingForGivtLocations()
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            if let region = self._givtService.getGivtLocation() {
-                self.foundRegion(region: region)
-            } else {
-                self.startTimer()
-            }
-        }
-    }
-    
-    private func foundRegion(region: GivtLocation) {
-        if (self.navigationController?.visibleViewController as? EventSuggestionViewController) != nil {
-            return
-        }
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventSuggestionViewController") as! EventSuggestionViewController
-        vc.providesPresentationContextTransitionStyle = true
-        vc.definesPresentationContext = true
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .crossDissolve
-        vc.organisation = region.organisationName
-        vc.onClose = {
-            self.startTimer()
-        }
-        vc.onSuccess = {
-            self.giveManually(antennaID: region.beaconId)
-            self.stopAllEvents()
-        }
-        AudioServicesPlayAlertSound(1519)
-        self.present(vc, animated: true, completion: nil)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        stopAllEvents()
+        self._givtService.stopLookingForGivtLocations()
     }
     
-    private func stopAllEvents() {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name("DidDiscoverBeacon"), object: nil)
-        GivtService.shared.delegate = nil
-        GivtService.shared.stopScanning()
-        GivtService.shared.stopLookingForGivtLocations()
-        self.stopTimer()
-        self.timer20S?.invalidate()
-    }
-    
-    @objc func didDiscoverBeacon(notification: NSNotification) {
-        GivtService.shared.stopScanning()
-        GivtService.shared.stopLookingForGivtLocations()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-            guard let orgName = self._givtService.getOrgName(orgNameSpace: self._givtService.getBestBeacon.namespace!) else {
-                self._givtService.startScanning(shouldNotify: true)
-                return
-            }
-            
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventSuggestionViewController") as! EventSuggestionViewController
-            vc.providesPresentationContextTransitionStyle = true
-            vc.definesPresentationContext = true
-            vc.modalPresentationStyle = .overCurrentContext
-            vc.modalTransitionStyle = .crossDissolve
-            vc.organisation = orgName
-            vc.onClose = {
-                self._givtService.startScanning(shouldNotify: true)
-            }
-            vc.onSuccess = {
-                self.giveManually(antennaID: self._givtService.getBestBeacon.beaconId!)
-                self.stopAllEvents()
-            }
-            AudioServicesPlayAlertSound(1519)
-            self.present(vc, animated: true, completion: nil)
-        }
 
-    }
  
 }

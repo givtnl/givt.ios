@@ -10,6 +10,22 @@ import UIKit
 import SVProgressHUD
 
 class BaseScanViewController: UIViewController, GivtProcessedProtocol {
+    func didUpdateBluetoothState(isBluetoothOn: Bool) {
+        
+    }
+    
+    func didDetectCloseBeacon() {
+        
+    }
+    
+    func didDetectFarBeacon() {
+        
+    }
+    
+    func didDetectGivtLocation(orgName: String, identifier: String) {
+        
+    }
+    
     private var log = LogService.shared
     private var organisation = ""
     private var bestBeacon = BestBeacon()

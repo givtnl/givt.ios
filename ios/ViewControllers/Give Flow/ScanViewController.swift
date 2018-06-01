@@ -52,7 +52,7 @@ class ScanViewController: BaseScanViewController {
         
         self.log.info(message: "Scanpage is now showing")
         
-        if(GivtService.shared.bluetoothEnabled){
+        if(GivtService.shared.isBluetoothEnabled){
             startScanning()
         }
 
@@ -61,7 +61,7 @@ class ScanViewController: BaseScanViewController {
 
     
     @objc func startScanning() {
-        GivtService.shared.startScanning()
+        GivtService.shared.startScanning(scanMode: .close)
     }
     
     func addOverlay() {

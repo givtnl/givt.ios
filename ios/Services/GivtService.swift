@@ -35,7 +35,8 @@ struct OrgBeaconLocation: Codable {
     let dtEnd: Date
 }
 
-final class GivtService: NSObject, CBCentralManagerDelegate {
+final class GivtService: NSObject {
+    private let beaconService = BeaconService()
     static let shared = GivtService()
     private var log = LogService.shared
     private var locationService = LocationService.instance
@@ -46,19 +47,20 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     private var client = APIClient.shared
     private var amount: Decimal!
     private var amounts = [Decimal]()
-    private let scanLock = NSRecursiveLock()
+    private var bestBeacon: BestBeacon = BestBeacon()
+    private var scanLock = NSRecursiveLock()
     
-    var scannedPeripherals: [String: Int] = [String: Int]()
+    var knownLocation: GivtLocation?
+    
+    var isBluetoothEnabled: Bool {
+        get {
+            return beaconService.isBluetoothEnabled
+        }
+    }
     
     var getBestBeacon: BestBeacon {
         get {
             return bestBeacon
-        }
-    }
-    private var bestBeacon: BestBeacon = BestBeacon()
-    var bluetoothEnabled: Bool {
-        get {
-            return centralManager != nil && centralManager.state == .poweredOn
         }
     }
     
@@ -92,18 +94,13 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    private var rssiTreshold: Int = -68
-    private var _shouldNotify: Bool = false
-    var isScanning: Bool = false
     
-    var centralManager: CBCentralManager!
+    private var _shouldNotify: Bool = false
     weak var delegate: GivtProcessedProtocol?
     
     private override init() {
         super.init()
         resume()
-        
-        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(qos: .userInitiated), options: [CBCentralManagerOptionShowPowerAlertKey:false])
         
         NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: ReachabilityChangedNotification, object: reachability)
         do {
@@ -123,7 +120,6 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     
     @objc func internetChanged(note: Notification){
         let reachability = note.object as! Reachability
-        
         if reachability.isReachable {
             log.info(message: "App got connected")
             for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
@@ -145,152 +141,34 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         self.amounts = amounts
     }
     
-    func startScanning(shouldNotify: Bool = false) {
-        self.scannedPeripherals.removeAll()
-        scanLock.lock()
-        if (!isScanning)
-        {
-            log.info(message: "Started scanning")
-            isScanning = true
-            _shouldNotify = shouldNotify
-            centralManager.scanForPeripherals(withServices: [GivtService.FEAA], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
-            DispatchQueue.main.async {
-                UIApplication.shared.isIdleTimerDisabled = true
-            }
+    func startScanning(scanMode: ScanMode) {
+        beaconService.delegate = self
+        beaconService.startScanning(mode: scanMode)
+        DispatchQueue.main.async {
+            UIApplication.shared.isIdleTimerDisabled = true
         }
-        scanLock.unlock()
     }
     
     func stopScanning() {
-        scanLock.lock()
-        if(isScanning){
-            log.info(message: "Stopped scanning")
-            isScanning = false
-            centralManager.stopScan()
-            DispatchQueue.main.async {
-                UIApplication.shared.isIdleTimerDisabled = false
-            }
-        }
-        scanLock.unlock()
-    }
-    
-    func centralManagerDidUpdateState(_ central: CBCentralManager){
-        if #available(iOS 10.0, *) {
-            switch (central.state) {
-            case .poweredOff:
-                print("CBCentralManagerState.PoweredOff")
-                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
-            case .unauthorized:
-                print("CBCentralManagerState.Unauthorized")
-                break
-            case .unknown:
-                print("CBCentralManagerState.Unknown")
-                break
-            case .poweredOn:
-                print("CBCentralManagerState.PoweredOn")
-                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
-            case .resetting:
-                print("CBCentralManagerState.Resetting")
-            case CBManagerState.unsupported:
-                print("CBCentralManagerState.Unsupported")
-                break
-            }
-        } else {
-            switch (central.state) {
-            case .poweredOff:
-                print("CBCentralManagerState.PoweredOff")
-                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
-            case .unauthorized:
-                print("CBCentralManagerState.Unauthorized")
-                break
-            case .unknown:
-                print("CBCentralManagerState.Unknown")
-                break
-            case .poweredOn:
-                print("CBCentralManagerState.PoweredOn")
-                NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
-            case .resetting:
-                print("CBCentralManagerState.Resetting")
-            default:
-                break
-            }
+        beaconService.delegate = nil
+        beaconService.stopScanning()
+        DispatchQueue.main.async {
+            UIApplication.shared.isIdleTimerDisabled = false
         }
     }
     
+    func startLookingForGivtLocations() {
+        locationService.delegate = self
+        startScanning(scanMode: .far)
+        locationService.startLookingForLocation()
+    }
     
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if let feaa = advertisementData[CBAdvertisementDataServiceDataKey] as! NSMutableDictionary? {
-            let x = feaa.object(forKey: CBUUID(string: "FEAA"))
-            if(x != nil){
-                let y = String.init(describing: x!)
+    func stopLookingForGivtLocations() {
+        locationService.delegate = nil
+        stopScanning()
+        locationService.stopLookingForLocation()
+    }
 
-                if(y.substring(5..<14) == "61f7 ed01" || y.substring(5..<14) == "61f7 ed02" || y.substring(5..<14) == "61f7 ed03") {
-                    let antennaID = String(format: "%@.%@", y.substring(5..<27).replacingOccurrences(of: " ", with: ""), y.substring(27..<41).replacingOccurrences(of: " ", with: ""))
-                    beaconDetected(antennaID: antennaID, rssi: RSSI, beaconType: 0, peripheralId: peripheral.identifier)
-                }
-                
-                if y.substring(1..<3) == "20" {
-                    let batteryLevel = y.substring(5..<9)
-                    if let value = Int(batteryLevel, radix: 16) {
-                        scannedPeripherals[peripheral.identifier.uuidString] = value
-                    }
-                }
-            }
-        }
-    }
-    
-    private func beaconDetected(antennaID: String, rssi: NSNumber, beaconType: Int8, peripheralId: UUID) {
-        var msg = "Beacon detected \(antennaID) | RSSI: \(rssi)"
-        if let bv = scannedPeripherals[peripheralId.uuidString] {
-            msg += " | Battery voltage: \(bv)"
-            bv < 2500 ? self.log.warning(message: msg) : self.log.info(message: msg)
-        } else {
-            self.log.info(message: msg)
-        }
-
-        if(rssi != 0x7f){
-            var organisation = antennaID
-            if let idx = antennaID.index(of: ".") {
-                organisation = String(antennaID[..<idx])
-            }
-            
-            if let _ = bestBeacon.beaconId, let bestBeaconRssi = bestBeacon.rssi {
-                /* beacon exists */
-                if bestBeaconRssi.intValue < rssi.intValue { //update rssi when bigger
-                    bestBeacon.rssi = rssi
-                }
-                bestBeacon.beaconId = antennaID
-                bestBeacon.namespace = organisation
-            } else {
-                /* new beacon */
-                bestBeacon.beaconId = antennaID
-                bestBeacon.rssi = rssi
-                bestBeacon.namespace = organisation
-            }
-            let characterAfterSeperatorIndex = bestBeacon.beaconId!.index(bestBeacon.beaconId!.index(of: ".")!, offsetBy: 1)
-            if _shouldNotify {
-                if String(bestBeacon.beaconId![characterAfterSeperatorIndex]).lowercased() == "a" {
-                    NotificationCenter.default.post(name: Notification.Name("DidDiscoverBeacon"), object: nil)
-                }else{
-                    self.log.warning(message: "Beacon close that is not an area beacon.")
-                }
-            } else {
-                if(rssi.intValue > rssiTreshold && String(bestBeacon.beaconId![characterAfterSeperatorIndex]).lowercased() != "a") {
-                    scanLock.lock()
-                    if (isScanning) {
-                        self.stopScanning()
-                        DispatchQueue.main.async {
-                            self.give(antennaID: antennaID)
-                        }
-                    }
-                    scanLock.unlock()
-                }
-            }
-            
-            
-        }
-    }
-    
     func give(antennaID: String) {
         LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
         let df = DateFormatter()
@@ -317,29 +195,6 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
         }
         
         bestBeacon = BestBeacon()
-    }
-    
-    func startLookingForGivtLocations() {
-        locationService.startLookingForLocation()
-        
-    }
-    
-    func stopLookingForGivtLocations() {
-        locationService.stopLookingForLocation()
-    }
-    
-    func getGivtLocation() -> GivtLocation? {
-        var foundLocations = [GivtLocation]()
-        for location in getGivtLocations() {
-            if locationService.isLocationInRegion(region: location) {
-                foundLocations.append(location)
-            }
-        }
-        if foundLocations.count == 0 {
-            return nil
-        } else {
-            return locationService.getClosestLocation(locs: foundLocations)
-        }
     }
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
@@ -407,7 +262,6 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
     }
     
     private func giveCelebrate(transactions: [Transaction], afterGivt: @escaping (Int) -> ()) {
-        
         var object = ["Transactions": []]
         for transaction in transactions {
             object["Transactions"]?.append(transaction.convertToDictionary())
@@ -581,22 +435,7 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
             completion(response)
         }
     }
-    
-    private func getGivtLocations() -> [GivtLocation] {
-        var locations = [GivtLocation]()
-        guard let list = UserDefaults.standard.orgBeaconListV2 else {
-            return locations
-        }
-        list.OrgBeacons.forEach { (element) in
-            element.Locations.forEach({ (location) in
-                if Date().isBetween(location.dtBegin, and: location.dtEnd) {
-                    locations.append(GivtLocation(lat: location.Latitude, long: location.Longitude, radius: location.Radius, name: location.Name, beaconId: location.BeaconId, organisationName: element.OrgName))
-                }
-            })
-        }
-        return locations
-    }
-    
+
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
@@ -640,13 +479,56 @@ final class GivtService: NSObject, CBCentralManagerDelegate {
             })
         }
     }
+    
+    func triggerGivtLocation() {
+        if let location = self.knownLocation {
+            print("location detect")
+            delegate?.didDetectGivtLocation(orgName: location.organisationName, identifier: location.beaconId)
+        } else if let beaconIdentifier = self.bestBeacon.beaconId, let orgName = getOrgName(orgNameSpace: beaconIdentifier) {
+            print("beacon detect")
+            delegate?.didDetectGivtLocation(orgName: orgName, identifier: beaconIdentifier)
+        } else {
+            print("NO GIVT LOCATION COMBINATION CORRECT")
+        }
+    }
+}
+
+extension GivtService: BeaconServiceProtocol {
+    func didDetectBeacon(scanMode: ScanMode, bestBeacon: BestBeacon) {
+        self.bestBeacon = bestBeacon
+        if scanMode == .close {
+            scanLock.lock()
+            if (beaconService.isScanning) {
+                stopScanning()
+                DispatchQueue.main.async {
+                    self.give(antennaID: bestBeacon.beaconId!)
+                }
+            }
+            scanLock.unlock()
+        } else if scanMode == .far {
+            triggerGivtLocation()
+        }
+    }
+    
+    func didUpdateBluetoothState(isBluetoothOn: Bool) {
+        delegate?.didUpdateBluetoothState(isBluetoothOn: isBluetoothOn)
+    }
+}
+
+extension GivtService: LocationServiceProtocol {
+    func didDiscoverLocationInRegion(location: GivtLocation) {
+        knownLocation = location
+        triggerGivtLocation()
+    }
 }
 
 protocol GivtProcessedProtocol: class {
     func onGivtProcessed(transactions: [Transaction])
+    func didUpdateBluetoothState(isBluetoothOn: Bool)
+    func didDetectCloseBeacon()
+    func didDetectFarBeacon()
+    func didDetectGivtLocation(orgName: String, identifier: String)
 }
-
-
 
 class BestBeacon {
     var beaconId: String?
