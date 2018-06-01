@@ -20,12 +20,9 @@ protocol BeaconServiceProtocol: class {
 }
 
 class BeaconService: NSObject, CBCentralManagerDelegate {
-    
-    
     weak var delegate: BeaconServiceProtocol?
     private var centralManager: CBCentralManager!
     private let log = LogService.shared
-    private let scanLock = NSRecursiveLock()
     private var bestBeacon: BestBeacon = BestBeacon()
     private var scannedPeripherals: [String: Int] = [String: Int]()
     private let rssiTreshold: Int = -68
@@ -111,14 +108,10 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
             if let scanMode = scanMode {
                 if scanMode == .close && !isAreaBeacon {
                     if rssi.intValue > rssiTreshold {
-                        scanLock.lock()
                         self.delegate?.didDetectBeacon(scanMode: scanMode, bestBeacon: bestBeacon)
-                        scanLock.unlock()
                     }
                 } else if scanMode == .far && isAreaBeacon {
-                    scanLock.lock()
                     self.delegate?.didDetectBeacon(scanMode: scanMode, bestBeacon: bestBeacon)
-                    scanLock.unlock()
                 } else {
                     self.log.warning(message: "No active scanning mode found.")
                 }
