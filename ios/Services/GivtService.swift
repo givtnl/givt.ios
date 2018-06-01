@@ -525,8 +525,6 @@ extension GivtService: LocationServiceProtocol {
 protocol GivtProcessedProtocol: class {
     func onGivtProcessed(transactions: [Transaction])
     func didUpdateBluetoothState(isBluetoothOn: Bool)
-    func didDetectCloseBeacon()
-    func didDetectFarBeacon()
     func didDetectGivtLocation(orgName: String, identifier: String)
 }
 
