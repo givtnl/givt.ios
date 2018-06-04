@@ -49,9 +49,10 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
         self.scanMode = mode
         centralManager.scanForPeripherals(withServices: [GivtService.FEAA], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
     }
-    
+
     func stopScanning() {
         centralManager.stopScan()
+        self.scanMode = nil
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
@@ -113,8 +114,10 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
                 } else if scanMode == .far && isAreaBeacon {
                     self.delegate?.didDetectBeacon(scanMode: scanMode, bestBeacon: bestBeacon)
                 } else {
-                    self.log.warning(message: "No active scanning mode found.")
+                    self.log.info(message: "Beacon detected but did not meet requirements to trigger")
                 }
+            } else {
+                self.log.error(message: "No active scanning mode found.")
             }
         }
     }
@@ -130,6 +133,10 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
                 print(central.state)
                 break
             case .poweredOn:
+                // check wether we were scanning before. if so, restart scanning
+                if let mode = scanMode {
+                    startScanning(mode: mode)
+                }
                 print("CBCentralManagerState.PoweredOn")
                 delegate?.didUpdateBluetoothState(isBluetoothOn: true)
                 NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
@@ -145,6 +152,10 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
                 print(central.state)
                 break
             case .poweredOn:
+                // check wether we were scanning before. if so, restart scanning
+                if let mode = scanMode {
+                    startScanning(mode: mode)
+                }
                 print("CBCentralManagerState.PoweredOn")
                 delegate?.didUpdateBluetoothState(isBluetoothOn: true)
                 NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
