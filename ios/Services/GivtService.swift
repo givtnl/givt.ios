@@ -94,7 +94,6 @@ final class GivtService: NSObject {
         }
     }
     
-    
     private var _shouldNotify: Bool = false
     weak var delegate: GivtProcessedProtocol?
     
@@ -484,11 +483,11 @@ final class GivtService: NSObject {
         if let location = self.knownLocation {
             print("location detect")
             delegate?.didDetectGivtLocation(orgName: location.organisationName, identifier: location.beaconId)
-        } else if let beaconIdentifier = self.bestBeacon.beaconId, let orgName = getOrgName(orgNameSpace: beaconIdentifier) {
+        } else if let beaconIdentifier = self.bestBeacon.beaconId, let beaconNameSpace = self.bestBeacon.namespace, let orgName = getOrgName(orgNameSpace: beaconNameSpace) {
             print("beacon detect")
             delegate?.didDetectGivtLocation(orgName: orgName, identifier: beaconIdentifier)
         } else {
-            print("NO GIVT LOCATION COMBINATION CORRECT")
+            self.log.info(message: "No location/beacon near using location giving")
         }
     }
 }
