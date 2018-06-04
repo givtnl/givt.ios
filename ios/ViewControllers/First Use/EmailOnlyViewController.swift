@@ -60,6 +60,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             email.text = String.random() + "@givtapp.com"
             checkAll()
         #endif
+
         
         topNavigationBar.items?.first?.leftBarButtonItems?.first?.accessibilityLabel = NSLocalizedString("Back", comment: "")
         
@@ -149,6 +150,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.email.isEmpty {
             email.text = userExt.email
+            checkAll()
         }
         
     }
