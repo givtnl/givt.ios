@@ -14,14 +14,6 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         
     }
     
-    func didDetectCloseBeacon() {
-        
-    }
-    
-    func didDetectFarBeacon() {
-        
-    }
-    
     func didDetectGivtLocation(orgName: String, identifier: String) {
         
     }
