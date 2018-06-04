@@ -41,15 +41,15 @@ class EventViewController: BaseScanViewController {
         vc.modalPresentationStyle = .overCurrentContext
         vc.modalTransitionStyle = .crossDissolve
         vc.organisation = orgName
-        vc.onClose = {
-            
-        }
+        vc.onClose = {}
         vc.onSuccess = {
             self.giveManually(antennaID: identifier)
             self._givtService.stopLookingForGivtLocations()
         }
-        AudioServicesPlayAlertSound(1519)
-        self.present(vc, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            AudioServicesPlayAlertSound(1519)
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
