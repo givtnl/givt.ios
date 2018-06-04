@@ -477,7 +477,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FAQQuestion14" = "Hoe kan ik geven aan meerdere collectes?";
 
 /*antwoord meerdere collectesvraag*/
-"FAQAnswer14" = "Meerdere collectes in één dienst? Activeer tot drie collectes door op het plus-icoontje te drukken. Bovenin wordt vermeld welk collectedoel (1, 2 en 3) geselecteerd is. Vul de bedragen in, in de volgorde waarop de collectedoelen in de dienst voorbij komen.\nWanneer je geeft aan de eerste collectezak of -mand die voorbij komt, worden alle giften meteen verstuurd. Je geeft dus met één beweging. In het overzicht van je giften vind je jouw giften aan de verschillende doelen terug. (Op dit moment is het alleen mogelijk om de collectedoelen te onderscheiden als collecte 1, 2 of 3. Jouw kerk weet welk collectenummer overeenkomt met welk collectedoel.)\nToch een collecte overslaan? Laat die collecte open of verwijder met een dubbel tap.";
+"FAQAnswer14" = "Meerdere collectes in één dienst? Activeer tot drie collectes door op het plus-icoontje te drukken. Bovenin wordt vermeld welk collectedoel (1, 2 en 3) geselecteerd is. Vul de bedragen in, in de volgorde waarop de collectedoelen in de dienst voorbij komen.\n\nWanneer je geeft aan de eerste collectezak of -mand die voorbij komt, worden alle giften meteen verstuurd. Je geeft dus met één beweging. In het overzicht van je giften vind je jouw giften aan de verschillende doelen terug. (Op dit moment is het alleen mogelijk om de collectedoelen te onderscheiden als collecte 1, 2 of 3. Jouw kerk weet welk collectenummer overeenkomt met welk collectedoel.)\nToch een collecte overslaan? Laat die collecte open of verwijder met een dubbel tap.";
 "Collect" = "Collecte";
 "OfflineGegevenGivtsMessage" = "Bedankt voor je Givts!\n\nZodra er een goede verbinding is met de Givt-server, worden je Givts verwerkt.\nKijk voor de status in je overzicht.";
 "OfflineGegevenGivtsMessageWithOrg" = "Bedankt voor je Givts!\n\nZodra er een goede verbinding is met de Givt-server, worden je Givts aan {0} verwerkt.\nKijk voor de status in je overzicht.";
@@ -684,3 +684,5 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ChangePassword" = "Wachtwoord wijzigen";
 "AllowGivtLocationTitle" = "Sta Givt toe je locatie te gebruiken";
 "AllowGivtLocationMessage" = "We hebben je locatie nodig om te bepalen aan wie je wil geven.\nGa naar Instellingen > Privacy > Locatievoorzieningen > Zet Locatievoorzieningen aan en zet Givt aan Bij gebruik.";
+"FaqVraag10" = "Hoe verander ik mijn wachtwoord?";
+"FaqAntwoord10" = "Wanneer je je wachtwoord wilt wijzigen, kun je in het menu kiezen voor ‘Mijn gegevens’ en dan op de knop ‘Wachtwoord wijzigen’ drukken. Wij sturen je dan een e-mail met een link waarmee je je wachtwoord kunt wijzigen.";
