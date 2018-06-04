@@ -68,8 +68,11 @@ class LocationService: NSObject, CLLocationManagerDelegate {
             }
         }
         if foundLocations.count > 0 {
+            LogService.shared.info(message: "Location was within region radius")
             let closestLocation = getClosestLocation(locs: foundLocations)
             delegate?.didDiscoverLocationInRegion(location: closestLocation)
+        } else {
+            LogService.shared.info(message: "Location was out of the radius of the region")
         }
     }
     
@@ -80,14 +83,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     func isLocationInRegion(region: GivtLocation) -> Bool {
         let fence = CLCircularRegion(center: CLLocationCoordinate2D(latitude: region.coordinate.coordinate.latitude, longitude: region.coordinate.coordinate.longitude), radius: CLLocationDistance(exactly: region.radius)!, identifier: region.name)
         guard let location = lastLocation else { return false }
-        LogService.shared.info(message: "Checking for location in region")
-        let contained = fence.contains(location.coordinate)
-        if contained {
-            LogService.shared.info(message: "Location was within region radius")
-        } else {
-            LogService.shared.info(message: "Location was out of the radius of the region")
-        }
-        return contained
+        return fence.contains(location.coordinate)
     }
     
     func getClosestLocation(locs: [GivtLocation]) -> GivtLocation {
