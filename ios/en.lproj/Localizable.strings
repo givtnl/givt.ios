@@ -665,5 +665,5 @@
 "ChangePassword" = "Change password";
 "AllowGivtLocationTitle" = "Allow Givt access your location";
 "AllowGivtLocationMessage" = "We need your location to determine who you want to give to.\nGo to Settings > Privacy > Location Services > Set Location Services On and Set Givt to While Using the App.";
-"FaqVraag10" = "How do i change my password?";
+"FaqVraag10" = "How do I change my password?";
 "FaqAntwoord10" = "If you want to change your password, you can choose ‘Personal information’ in the menu and then press the ‘Change password’ button. We will send you an e-mail with a link to a web page where you can change your password.";
