@@ -338,7 +338,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 
     @IBAction func addCollection(_ sender: Any) {
         print(UserDefaults.standard.viewedCoachMarks)
-        if UserDefaults.standard.viewedCoachMarks == 1 {
+        if UserDefaults.standard.viewedCoachMarks == 1 &&
+            !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.multipleCollects.rawValue) {
             let alert = UIAlertController(title: NSLocalizedString("MultipleCollections", comment: ""), message: NSLocalizedString("AddCollectConfirm", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { action in
                 self.addCollect(sender)
