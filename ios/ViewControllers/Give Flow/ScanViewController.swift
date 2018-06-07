@@ -20,6 +20,7 @@ class ScanViewController: BaseScanViewController {
     @IBOutlet var btnGive: CustomButton!
     private var giveDifferentlyShowcase: MaterialShowcase?
     private var overlayTask: DispatchWorkItem?
+    private var bluetoothMessage: UIAlertController?
     override func viewDidLoad() {
         super.viewDidLoad()
         gif.loadGif(name: "givt_animation")
@@ -29,22 +30,9 @@ class ScanViewController: BaseScanViewController {
         backBtn.accessibilityLabel = NSLocalizedString("Back", comment: "")
     }
     
-    @objc func showBluetoothMessage() {
-        GivtService.shared.stopScanning()
-        let alert = UIAlertController(
-            title: NSLocalizedString("TurnOnBluetooth", comment: ""),
-            message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
-            preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
-
-        }))
-        present(alert, animated: true, completion: nil)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         btnGive.isEnabled = true
-        NotificationCenter.default.addObserver(self, selector: #selector(showBluetoothMessage), name: Notification.Name("BluetoothIsOff"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
@@ -52,16 +40,18 @@ class ScanViewController: BaseScanViewController {
         
         self.log.info(message: "Scanpage is now showing")
         
-        if(GivtService.shared.bluetoothEnabled){
+        if(GivtService.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0){
             startScanning()
+        } else {
+            showBluetoothMessage()
         }
 
         addOverlay()
     }
-
     
     @objc func startScanning() {
-        GivtService.shared.startScanning()
+        GivtService.shared.startScanning(scanMode: .close)
+        
     }
     
     func addOverlay() {
@@ -144,18 +134,4 @@ class ScanViewController: BaseScanViewController {
     @IBAction func goBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-}
-
-extension ScanViewController : SFSafariViewControllerDelegate{
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        //self.popToRoot(animated: false)
-        UIApplication.shared.statusBarStyle = .default
-    }
-    
-    func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
-        print("url loaded")
-    }
-
-
 }

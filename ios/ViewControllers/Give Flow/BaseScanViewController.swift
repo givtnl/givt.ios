@@ -13,7 +13,31 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
     private var organisation = ""
     private var bestBeacon = BestBeacon()
+    private var bluetoothAlert: UIAlertController?
     
+    func didUpdateBluetoothState(isBluetoothOn: Bool) {
+        if isBluetoothOn {
+            self.bluetoothAlert?.dismiss(animated: true, completion: nil)
+        } else {
+            showBluetoothMessage()
+        }
+    }
+    
+    func didDetectGivtLocation(orgName: String, identifier: String) {
+        
+    }
+    
+    func showBluetoothMessage() {
+        self.bluetoothAlert = UIAlertController(
+            title: NSLocalizedString("TurnOnBluetooth", comment: ""),
+            message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
+            preferredStyle: UIAlertControllerStyle.alert)
+        bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
+            
+        }))
+        present(self.bluetoothAlert!, animated: true, completion: nil)
+    }
+
     fileprivate func popToRootWithDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
             if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {

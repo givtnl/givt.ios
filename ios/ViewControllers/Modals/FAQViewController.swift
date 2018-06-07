@@ -91,6 +91,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         addQuestion(q: "FAQvraag3", a: "FAQantwoord3")
         addQuestion(q: "FAQvraag9", a: "FAQantwoord9", v: "https://player.vimeo.com/video/205383308?autoplay=1&title=0&byline=0&portrait=0")
         addQuestion(q: "FAQQuestion12", a: "FAQAnswer12")
+        addQuestion(q: "FaqVraag10", a: "FaqAntwoord10")
         addQuestion(q: "FAQQuestion11", a: "FAQAnswer11")
         addQuestion(q: "FAQvraag8", a: "FAQantwoord8")
         addQuestion(q: "FAQvraag1", a: "FAQantwoord1")

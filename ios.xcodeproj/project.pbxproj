@@ -25,7 +25,6 @@
 		D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C41F39BA360059A296 /* AppConstants.swift */; };
 		D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */; };
 		D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E976D1FD000CE00EFD8E1 /* AuthClient.swift */; };
-		D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */; };
 		D740E15C1F4C6328000531BA /* GivtService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15B1F4C6328000531BA /* GivtService.swift */; };
 		D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D748F5F5206137E400B25BC2 /* TableSectionHeader.swift */; };
 		D748F5F82061381B00B25BC2 /* TableSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */; };
@@ -79,6 +78,7 @@
 		D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */; };
 		D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D44B11FC6FCD700325CAF /* FAQViewController.swift */; };
 		D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D44B31FC7039E00325CAF /* FAQView.swift */; };
+		D796043620C00607005B609B /* BeaconService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D796043520C00607005B609B /* BeaconService.swift */; };
 		D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F97721FACC83F0006335A /* SelectOrgViewController.swift */; };
 		D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */; };
 		D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A64D081FDFDE2E005B51B2 /* ForgotPasswordViewController.swift */; };
@@ -183,7 +183,6 @@
 		D73CA1C41F39BA360059A296 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		D73E976D1FD000CE00EFD8E1 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
-		D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconServiceProtocol.swift; sourceTree = "<group>"; };
 		D740E15B1F4C6328000531BA /* GivtService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivtService.swift; sourceTree = "<group>"; };
 		D748F5F5206137E400B25BC2 /* TableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
 		D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableSectionHeaderView.xib; sourceTree = "<group>"; };
@@ -239,6 +238,7 @@
 		D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FAQ.storyboard; sourceTree = "<group>"; };
 		D78D44B11FC6FCD700325CAF /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		D78D44B31FC7039E00325CAF /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
+		D796043520C00607005B609B /* BeaconService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconService.swift; sourceTree = "<group>"; };
 		D79F97721FACC83F0006335A /* SelectOrgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrgViewController.swift; sourceTree = "<group>"; };
 		D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
 		D7A64D081FDFDE2E005B51B2 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -332,6 +332,7 @@
 				D7FB252E1F5065C20011A14E /* Reachability.swift */,
 				D787AE2A1FCD91680004BDB1 /* LogService.swift */,
 				D787AE2E1FCD9EFF0004BDB1 /* Interfaces */,
+				D796043520C00607005B609B /* BeaconService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -339,7 +340,6 @@
 		D740E14E1F4C5328000531BA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				D740E1511F4C537D000531BA /* BeaconServiceProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -889,7 +889,6 @@
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
 				D7DD799F209B054500047CA7 /* EventViewController.swift in Sources */,
-				D740E1521F4C537D000531BA /* BeaconServiceProtocol.swift in Sources */,
 				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
@@ -958,6 +957,7 @@
 				D761E9BA1F18C5C6002B849B /* StringExtensions.swift in Sources */,
 				D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */,
 				D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */,
+				D796043620C00607005B609B /* BeaconService.swift in Sources */,
 				D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */,
 				D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */,
 				D7BB5DA81FD59B4700D12E62 /* InfraManager.swift in Sources */,

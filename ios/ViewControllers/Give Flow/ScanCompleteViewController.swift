@@ -32,7 +32,7 @@ class ScanCompleteViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
-        if organisation.isEmpty() {
+        if !organisation.isEmpty() {
             lblBody.text = NSLocalizedString("OfflineGegevenGivtMessageWithOrg", comment: "").replacingOccurrences(of: "{0}", with: organisation)
         }
     }

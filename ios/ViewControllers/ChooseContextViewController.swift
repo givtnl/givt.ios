@@ -35,7 +35,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         DispatchQueue.main.async {
             switch selectedContext.type {
             case .collectionDevice:
-                if GivtService.shared.bluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
+                if GivtService.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
                     let vc = sb.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
                     navigationController.show(vc, sender: nil)
                 } else {

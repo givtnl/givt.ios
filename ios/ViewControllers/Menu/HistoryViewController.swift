@@ -108,31 +108,38 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             switch response.status {
                             case .ok:
                                 
-                                if let section = tableView.headerView(forSection: indexPath.section) as? TableSectionHeader {
-                                    let elligibleTx = self.sortedArray[indexPath.section].value.filter { (tx) -> Bool in
-                                        return tx.status.intValue < 4
+                                DispatchQueue.main.async {
+                                    if let section = tableView.headerView(forSection: indexPath.section) as? TableSectionHeader {
+                                        let elligibleTx = self.sortedArray[indexPath.section].value.filter { (tx) -> Bool in
+                                            return tx.status.intValue < 4
+                                        }
+                                        var total = 0.00
+                                        elligibleTx.forEach { (tx) in
+                                            tx.collections.forEach({ (collecte) in
+                                                total += collecte.amount
+                                            })
+                                        }
+                                        DispatchQueue.main.async {
+                                            section.amountLabel.text = self.fmt.string(from: total as NSNumber)
+                                        }
                                     }
-                                    var total = 0.00
-                                    elligibleTx.forEach { (tx) in
-                                        tx.collections.forEach({ (collecte) in
-                                            total += collecte.amount
-                                        })
-                                    }
-                                    DispatchQueue.main.async {
-                                        section.amountLabel.text = self.fmt.string(from: total as NSNumber)
+                                    if self.sortedArray.count == 1 && self.sortedArray[indexPath.section].value.count == 0 {
+                                        self.givyContainer.isHidden = false
                                     }
                                 }
-                                if self.sortedArray.count == 1 && self.sortedArray[indexPath.section].value.count == 0 {
-                                    self.givyContainer.isHidden = false
-                                }
+                                
                             case .expectationFailed:
                                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
+                                DispatchQueue.main.async {
+                                    self.present(alert, animated: true, completion: nil)
+                                }
                             default:
                                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
+                                DispatchQueue.main.async {
+                                    self.present(alert, animated: true, completion: nil)
+                                }
                             }
                         } else {
                             DispatchQueue.main.async {
@@ -144,11 +151,8 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                                 } else {
                                     NavigationManager.shared.presentAlertNoConnection(context: self)
                                 }
-                                
                             }
-                            
                         }
-                        
                     })
                     
                 } catch {
