@@ -13,7 +13,6 @@ class AboutViewController: UIViewController {
 
     private var log = LogService.shared
     @IBOutlet var titleText: UILabel!
-    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var versionNumber: UILabel!
     @IBOutlet var giveFeedback: UILabel!
     @IBOutlet var btnSend: UIButton!
@@ -21,7 +20,7 @@ class AboutViewController: UIViewController {
     @IBOutlet var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        goBack.accessibilityLabel = NSLocalizedString("Back", comment: "")
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
@@ -74,7 +73,9 @@ class AboutViewController: UIViewController {
     
     @IBAction func goBack(_ sender: Any) {
         self.endEditing()
-        self.dismiss(animated: true, completion: {})
+        self.navigationController?.dismiss(animated: true, completion: nil)
+
+
     }
     
     func send() {
