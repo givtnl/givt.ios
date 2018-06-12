@@ -21,11 +21,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQr-9y-RQV">
                                 <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cw1-gd-KxK">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cw1-gd-KxK">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eD0-T1-d4K">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eD0-T1-d4K">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="492.5"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="IBAN" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XI1-ik-89U" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="142.5" width="280" height="44"/>
@@ -78,8 +78,8 @@
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtX-gr-Ili" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="440" width="280" height="44"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtX-gr-Ili" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="428.5" width="280" height="44"/>
                                                         <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                                         <constraints>
@@ -105,8 +105,8 @@
                                                             <action selector="next:" destination="qMn-WP-e5g" eventType="touchUpInside" id="Mlo-Fz-Brg"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-GR-pQz">
-                                                        <rect key="frame" x="20" y="388" width="280" height="44"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-GR-pQz">
+                                                        <rect key="frame" x="20" y="376.5" width="280" height="44"/>
                                                         <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="8LP-yq-ycG"/>
@@ -129,12 +129,11 @@
                                                     <constraint firstItem="mtX-gr-Ili" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="CZm-Jm-Xpm"/>
                                                     <constraint firstItem="XI1-ik-89U" firstAttribute="top" secondItem="eT8-b3-F5d" secondAttribute="bottom" constant="20" id="DUm-27-EhJ"/>
                                                     <constraint firstAttribute="bottom" secondItem="mtX-gr-Ili" secondAttribute="bottom" constant="20" id="F92-gT-xOn"/>
-                                                    <constraint firstItem="XAb-GR-pQz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oa8-W2-xdJ" secondAttribute="bottom" priority="250" constant="20" id="FTC-P0-Qpo"/>
+                                                    <constraint firstItem="XAb-GR-pQz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oa8-W2-xdJ" secondAttribute="bottom" constant="20" id="FTC-P0-Qpo"/>
                                                     <constraint firstItem="eT8-b3-F5d" firstAttribute="leading" secondItem="eD0-T1-d4K" secondAttribute="leading" constant="20" id="IyI-Yv-mWs"/>
                                                     <constraint firstItem="eT8-b3-F5d" firstAttribute="top" secondItem="eD0-T1-d4K" secondAttribute="top" constant="20" id="MRf-Yr-qlg"/>
                                                     <constraint firstItem="oa8-W2-xdJ" firstAttribute="top" secondItem="XI1-ik-89U" secondAttribute="bottom" constant="20" id="Mkt-ok-3AL"/>
                                                     <constraint firstAttribute="trailing" secondItem="eT8-b3-F5d" secondAttribute="trailing" constant="20" id="N4L-3o-fbh"/>
-                                                    <constraint firstItem="mtX-gr-Ili" firstAttribute="top" secondItem="XAb-GR-pQz" secondAttribute="bottom" constant="10" id="bY6-rU-Abo"/>
                                                     <constraint firstItem="mtX-gr-Ili" firstAttribute="top" secondItem="XAb-GR-pQz" secondAttribute="bottom" constant="8" id="eb3-X9-OUE"/>
                                                     <constraint firstAttribute="trailing" secondItem="oa8-W2-xdJ" secondAttribute="trailing" constant="20" id="hdJ-7m-rhC"/>
                                                     <constraint firstAttribute="trailing" secondItem="mtX-gr-Ili" secondAttribute="trailing" constant="20" id="wR9-oJ-JRd"/>
