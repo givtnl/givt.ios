@@ -60,6 +60,11 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             email.text = String.random() + "@givtapp.com"
             checkAll()
         #endif
+        
+        if let userExt = UserDefaults.standard.userExt, !userExt.email.isEmpty {
+            email.text = userExt.email
+            checkAll()
+        }
 
         
         topNavigationBar.items?.first?.leftBarButtonItems?.first?.accessibilityLabel = NSLocalizedString("Back", comment: "")
@@ -147,12 +152,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.barTintColor = .white
-        
-        if let userExt = UserDefaults.standard.userExt, !userExt.email.isEmpty {
-            email.text = userExt.email
-            checkAll()
-        }
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
