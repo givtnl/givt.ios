@@ -52,6 +52,8 @@ final class GivtService: NSObject {
     
     var knownLocation: GivtLocation?
     
+    var customReturnAppScheme: String?
+    
     var isBluetoothEnabled: Bool {
         get {
             return beaconService.isBluetoothEnabled

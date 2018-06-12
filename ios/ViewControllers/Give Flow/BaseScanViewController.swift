@@ -109,6 +109,12 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             parameters["nativeAppScheme"] = AppConstants.appScheme
             parameters["urlPart"] = AppConstants.returnUrlDir
             
+            /*
+            if let redirectAppScheme = GivtService.shared.customReturnAppScheme {
+                //parameters["redirectAppScheme"] = redirectAppScheme
+            }
+ */
+            
             guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
                 return
             }

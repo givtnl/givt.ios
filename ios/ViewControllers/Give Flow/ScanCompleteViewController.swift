@@ -61,7 +61,24 @@ class ScanCompleteViewController: UIViewController {
         if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
             amountVC.reset()
         }
-        self.navigationController?.popToRootViewController(animated: true)
+        
+        if let appScheme = GivtService.shared.customReturnAppScheme {
+            let url = URL(string: appScheme)!
+            if UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: { success in
+                        self.navigationController?.popToRootViewController(animated: true)
+                    })
+                } else {
+                    // Fallback on earlier versions
+                    UIApplication.shared.openURL(url)
+                }
+            } else {
+                LogService.shared.warning(message: "\(url) was not installed on the device.")
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
+        GivtService.shared.customReturnAppScheme = nil
     }
     /*
     // MARK: - Navigation

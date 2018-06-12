@@ -271,8 +271,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         //
-        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
-            //todo find share my givt and show the share method 
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb { //coming from safari
+            if let appScheme = GivtService.shared.customReturnAppScheme {
+                let url = URL(string: appScheme)!
+                if UIApplication.shared.canOpenURL(url) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    } else {
+                        // Fallback on earlier versions
+                        UIApplication.shared.openURL(url)
+                    }
+                } else {
+                    LogService.shared.warning(message: "\(url) was not installed on the device.")
+                }
+            }
+            GivtService.shared.customReturnAppScheme = nil
         }
         return true
     }
@@ -292,6 +305,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let activityViewController = UIActivityViewController(activityItems: [message as NSString], applicationActivities: nil)
                 topController.present(activityViewController, animated: true, completion: nil)
                 logService.info(message: "A Givt is being shared via the Safari-flow")
+            }
+        } else {
+            if let query = url.query, let equalSignIndex = query.index(of: "=") {
+                let startIndex = query.index(equalSignIndex, offsetBy: 1)
+                let endIndex = query.endIndex
+                let content = String(query[startIndex..<endIndex])
+                if let decoded = content.removingPercentEncoding {
+                    LogService.shared.info(message: "App scheme: \(decoded) entering Givt-app")
+                    GivtService.shared.customReturnAppScheme = decoded
+                }
             }
         }
         return true
