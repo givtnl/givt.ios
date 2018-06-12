@@ -73,9 +73,7 @@ class AboutViewController: UIViewController {
     
     @IBAction func goBack(_ sender: Any) {
         self.endEditing()
-        self.navigationController?.dismiss(animated: true, completion: nil)
-
-
+        self.dismiss(animated: true, completion: nil)
     }
     
     func send() {
