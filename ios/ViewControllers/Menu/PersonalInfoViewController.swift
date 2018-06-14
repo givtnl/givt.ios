@@ -8,22 +8,19 @@
 
 import UIKit
 import SVProgressHUD
+import MaterialComponents
 
 class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
-    
     private let loginManager = LoginManager.shared
     private let validationHelper = ValidationHelper.shared
     @IBOutlet var btnNext: CustomButton!
-    @IBOutlet var iban: CustomUITextField!
     @IBOutlet var cellphone: UILabel!
-    @IBOutlet var postal: UILabel!
     @IBOutlet var street: UILabel!
-    @IBOutlet var email: UILabel!
     @IBOutlet var name: UILabel!
+    @IBOutlet var country: UILabel!
     @IBOutlet var titleText: UILabel!
+    @IBOutlet var changePasswordLabel: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
-    @IBOutlet weak var changePasswordBtn: UIButton!
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField.returnKeyType == .done {
@@ -38,13 +35,13 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     }
     
     func save() {
-        if let userExt = UserDefaults.standard.userExt, userExt.iban == iban.text!.replacingOccurrences(of: " ", with: "") {
+        if let userExt = UserDefaults.standard.userExt, userExt.iban == ibanInput.text!.replacingOccurrences(of: " ", with: "") {
             self.dismiss(animated: true, completion: nil)
             print("trying to save iban that did not change")
             return
         }
         SVProgressHUD.show()
-        loginManager.changeIban(iban: iban.text!.replacingOccurrences(of: " ", with: "")) { (success) in
+        loginManager.changeIban(iban: ibanInput.text!.replacingOccurrences(of: " ", with: "")) { (success) in
             SVProgressHUD.dismiss()
             if success {
                 DispatchQueue.main.async {
@@ -64,11 +61,10 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if textField == iban {
+        if let iban = textField as? SpecialUITextField, iban == ibanInput {
             if let i = iban.text {
-                let isIbanValid = validationHelper.isIbanChecksumValid(i)
-                iban.setState(b: isIbanValid)
-                btnNext.isEnabled = isIbanValid
+                iban.isValid = validationHelper.isIbanChecksumValid(i)
+                btnNext.isEnabled = iban.isValid
             }
             
             textField.text = textField.text?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
@@ -112,6 +108,22 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             
+        } else if let tf = textField as? SpecialUITextField, tf == emailInput {
+            print("is email")
+            tf.isValid = validationHelper.isEmailAddressValid(tf.text!)
+        }
+    }
+    
+    @IBOutlet var changePassword: UIView!
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let tf = textField as? SpecialUITextField {
+            tf.beganEditing()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let tf = textField as? SpecialUITextField {
+            tf.endedEditing()       
         }
     }
     
@@ -130,28 +142,59 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @IBOutlet var theScrollView: UIScrollView!
+    @objc func keyboardDidShow(notification: NSNotification) {
+        theScrollView.contentInset.bottom -= 20
+        theScrollView.scrollIndicatorInsets.bottom -= 20
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+            theScrollView.contentInset.bottom = contentInsets.bottom + 20
+            theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom + 20
+            
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+            theScrollView.contentInset = .zero
+            theScrollView.scrollIndicatorInsets = .zero
+        }
+    }
+
+    @IBOutlet var emailInput: SpecialUITextField!
+    @IBOutlet var ibanInput: SpecialUITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.removeLogo()
+        changePassword.isUserInteractionEnabled = true
+        changePassword.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changePassword2)))
+        
+        emailInput.delegate = self
+        emailInput.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        ibanInput.delegate = self
+        ibanInput.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
+       
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
-        
-        iban.delegate = self
-        iban.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-
-        
-        iban.text = ""
+    
         name.text = ""
-        email.text = ""
         street.text = ""
-        postal.text = ""
         cellphone.text = ""
         // Do any additional setup after loading the view.
         
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        iban.placeholder = NSLocalizedString("IBANPlaceHolder", comment: "")
-        btnNext.setTitle(NSLocalizedString("ButtonChange", comment: ""), for: .normal)
+        ibanInput.placeholder = NSLocalizedString("IBANPlaceHolder", comment: "")
+        btnNext.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
         titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
         btnNext.isEnabled = false
         btnNext.accessibilityLabel = NSLocalizedString("ButtonChange", comment: "")
@@ -159,20 +202,17 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         self.view.addGestureRecognizer(tapGesture)
         
-        changePasswordBtn.layer.cornerRadius = 4
-        changePasswordBtn.setTitle(NSLocalizedString("ChangePassword", comment: ""), for: .normal)
-        
-        
+        changePasswordLabel.text = NSLocalizedString("ChangePassword", comment: "")
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         self.view.endEditing(false)
     }
     
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = NSLocalizedString("TitlePersonalInfo", comment: "")
+
         if let user = UserDefaults.standard.userExt {
             var country = ""
             if let idx = Int(user.countryCode) {
@@ -180,12 +220,11 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             } else {
                 country = user.countryCode
             }
-            iban.text = user.iban.separate(every: 4, with: " ")
-            print(user.iban)
+            ibanInput.text = user.iban.separate(every: 4, with: " ")
             name.text = user.firstName + " " + user.lastName
-            email.text = user.email
-            street.text = user.address
-            postal.text = user.postalCode + " " + user.city + ", " + country
+            emailInput.text = user.email
+            street.text = user.address + ", " + user.postalCode + " " + user.city
+            self.country.text = country
             cellphone.text = user.mobileNumber
         }
     }
@@ -200,11 +239,14 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func goLostPassword(_ sender: Any) {
+    @objc func changePassword2() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
         self.show(newViewController, sender: nil)
-
+    }
+    
+    @IBAction func goLostPassword(_ sender: Any) {
+        changePassword2()
     }
     /*
     // MARK: - Navigation

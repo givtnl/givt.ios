@@ -46,6 +46,49 @@ extension UITextField {
     func setState(b: Bool) {
         b ? setValid() : setInvalid()
     }
-    
+}
 
+class SpecialUITextField: UITextField {
+    private var border: CALayer = CALayer()
+    var isValid = false {
+        didSet {
+            if isValid {
+                border.borderColor = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+            } else {
+                border.borderColor = #colorLiteral(red: 0.7372586131, green: 0.09625744075, blue: 0.1143460795, alpha: 1)
+            }
+        }
+    }
+    
+    func beganEditing() {
+        border.isHidden = false
+    }
+    
+    func endedEditing() {
+        border.isHidden = isValid
+    }
+
+    override func awakeFromNib() {
+        setBottomBorder()
+        border.isHidden = true
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    func setBottomBorder() {
+        border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width:  self.frame.size.width, height: self.frame.size.height)
+        
+        border.borderWidth = width
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
+    }
 }

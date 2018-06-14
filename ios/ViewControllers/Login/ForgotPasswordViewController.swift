@@ -20,6 +20,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var headerText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = NSLocalizedString("ChangePassword", comment: "")
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         headerText.text = NSLocalizedString("ForgotPasswordText", comment: "")
         emailField.placeholder = NSLocalizedString("Email", comment: "")

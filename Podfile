@@ -12,6 +12,7 @@ target 'ios' do
   pod ‘TrustKit’
   pod 'SwipeCellKit', '~> 2.1.0'
   pod 'MaterialShowcase'
+  pod 'MaterialComponents'
   # Pods for ios
 
 end
