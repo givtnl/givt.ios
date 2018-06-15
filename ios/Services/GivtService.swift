@@ -441,9 +441,6 @@ final class GivtService: NSObject {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
             var data = ["Guid" : userExt.guid]
-            if let date = beaconListLastChanged {
-                data["dtLastUpdated"] = date
-            }
             client.get(url: "/api/v2/collectgroups/applist", data: data, callback: { (response) in
                 if let response = response, let data = response.data {
                     if response.statusCode == 200 {
