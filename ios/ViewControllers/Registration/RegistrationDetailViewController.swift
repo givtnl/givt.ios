@@ -70,7 +70,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             selectedCountry = AppConstants.countries[0]
             selectedMobilePrefix = AppConstants.countries[0]
             countryField.text = selectedCountry?.name
-            mobilePrefixField.text = selectedMobilePrefix?.prefix
+            mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             mobileNumber.text = "0498121314"
             iban.text = "BE62 5100 0754 7061"
 
@@ -94,7 +94,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 checkAll(countryField)
                 
                 selectedMobilePrefix = filteredCountry
-                mobilePrefixField.text = selectedMobilePrefix?.prefix
+                mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
                 checkAll(mobilePrefixField)
             }
         }
@@ -383,7 +383,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         }
         
         do {
-            let phoneNumber = try phoneNumberKit.parse(selectedMobilePrefix.prefix + number, withRegion: selectedMobilePrefix.shortName, ignoreType: true)
+            let phoneNumber = try phoneNumberKit.parse(selectedMobilePrefix.phoneNumber.prefix + number, withRegion: selectedMobilePrefix.shortName, ignoreType: true)
             formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
             print("Formatted phonenumber: " + formattedPhoneNumber)
             return true
@@ -449,7 +449,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         if pickerView == countryPickerView {
             return  AppConstants.countries[row].name
         } else if pickerView == mobilePrefixPickerView {
-            return  AppConstants.countries[row].prefix
+            return  AppConstants.countries[row].phoneNumber.prefix
         } else {
             return AppConstants.countries[row].toString()
         }
@@ -468,14 +468,14 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             mobilePrefixPickerView.selectRow(row, inComponent: 0, animated: false)
             _lastTextField = mobilePrefixField
             selectedMobilePrefix = AppConstants.countries[row]
-            mobilePrefixField.text = selectedMobilePrefix?.prefix
+            mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             checkAll(mobilePrefixField)
             checkAll(mobileNumber)
             checkAll(countryField)
         } else if pv == mobilePrefixPickerView {
             _lastTextField = mobilePrefixField
             selectedMobilePrefix = AppConstants.countries[row]
-            mobilePrefixField.text = selectedMobilePrefix?.prefix
+            mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             checkAll(mobilePrefixField)
             checkAll(mobileNumber)
         }
