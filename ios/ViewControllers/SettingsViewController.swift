@@ -184,7 +184,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         vc.transitioningDelegate = self.slideFromRightAnimation
         if UserDefaults.standard.tempUser { //temp users can screw their account without authentication
             self.present(vc, animated: true, completion: {
-                self.hideLeftView(self)
             })
         } else {
             NavigationManager.shared.pushWithLogin(vc, context: self)
@@ -197,7 +196,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         vc.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
             self.present(vc, animated: true, completion:  {
-                //self.hideLeftView(self)
             }
         )}
     }
@@ -259,18 +257,4 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         vc.transitioningDelegate = self.slideFromRightAnimation
         NavigationManager.shared.pushWithLogin(vc, context: self)
     }
-    
-    // MARK: - Table view data source
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
