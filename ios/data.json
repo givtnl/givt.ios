@@ -1,0 +1,44 @@
+{
+    "OrgBeacons": [
+                   {
+                   "EddyNameSpace": "61f7ed0142450816db00",
+                   "OrgName": "De Pijler",
+                   "Celebrations": false,
+                   "Locations": [],
+                   "MultiUseAllocations": [
+                                           {
+                                           "Name": "De Pijler",
+                                           "dtBeginCron": "0 12 * * *",
+                                           "dtEndCron": "0 0 * * *"
+                                           },
+                                           {
+                                           "Name": "Nieuwe testkerk 8",
+                                           "dtBeginCron": "0 0 * * *",
+                                           "dtEndCron": "0 12 * * *"
+                                           }
+                                           ]
+                   },
+                   {
+                   "EddyNameSpace": "61f7ed0142450817db00",
+                   "OrgName": "EK Kuurne",
+                   "Celebrations": false,
+                   "Locations": [],
+                   "MultiUseAllocations": []
+                   },
+                   {
+                   "EddyNameSpace": "61f7ed014e4c0916c000",
+                   "OrgName": "Givt",
+                   "Celebrations": false,
+                   "Locations": [],
+                   "MultiUseAllocations": []
+                   },
+                   {
+                   "EddyNameSpace": "61f7ed0142450816db00",
+                   "OrgName": "Nieuwe testkerk 8",
+                   "Celebrations": false,
+                   "Locations": [],
+                   "MultiUseAllocations": []
+                   }
+                   ],
+    "LastChanged": "2018-06-13T14:21:34.763Z"
+    }
