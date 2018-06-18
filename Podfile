@@ -13,6 +13,7 @@ target 'ios' do
   pod 'SwipeCellKit', '~> 2.1.0'
   pod 'MaterialShowcase'
   pod 'MaterialComponents'
+  pod 'SwiftCron'
   # Pods for ios
 
 end

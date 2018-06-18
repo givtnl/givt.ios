@@ -73,6 +73,14 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         if let beaconId = GivtService.shared.getBestBeacon.beaconId, !beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
             canShare = true
         }
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
+        df.timeZone = TimeZone(abbreviation: "UTC")
+        df.locale = Locale(identifier: "en_US_POSIX")
+        let date = df.date(from: transactions.first!.timeStamp)
+        if let multiUseAllocationOrganisation = GivtService.shared.getMultiUseAllocationOrganisation(date: date!, namespace: bestBeacon.namespace!) {
+            organisation = multiUseAllocationOrganisation
+        }
         
         UserDefaults.standard.lastGivtToOrganisation = bestBeacon.namespace
         

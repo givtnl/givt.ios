@@ -12,6 +12,7 @@ import UIKit
 import AudioToolbox
 import SwiftClient
 import CoreLocation
+import SwiftCron
 
 struct BeaconList: Codable {
     var OrgBeacons: [OrgBeacon]
@@ -23,6 +24,7 @@ struct OrgBeacon: Codable {
     let OrgName: String
     let Celebrations: Bool
     let Locations: [OrgBeaconLocation]
+    let MultiUseAllocations: [MultiUseAllocations]?
 }
 
 struct OrgBeaconLocation: Codable {
@@ -33,6 +35,12 @@ struct OrgBeaconLocation: Codable {
     let BeaconId: String
     let dtBegin: Date
     let dtEnd: Date
+}
+
+struct MultiUseAllocations: Codable {
+    let Name: String
+    let dtBeginCron: String
+    let dtEndCron: String
 }
 
 final class GivtService: NSObject {
@@ -88,6 +96,37 @@ final class GivtService: NSObject {
                 return orgBeacon.EddyNameSpace == bestBeacon.namespace
             })?.OrgName
         }
+    }
+    
+    func getMultiUseAllocationOrganisation(date: Date, namespace: String) -> String? {
+        guard let organisation = orgBeaconList?.first(where: { (orgBeacon) -> Bool in
+            return orgBeacon.EddyNameSpace == namespace
+        }) else { return nil }
+        
+        if let ma = organisation.MultiUseAllocations, ma.count > 0 {
+            let today = Date()
+            for m in ma {
+                var startDateComponents = DateComponents()
+                startDateComponents.year = today.getYear()
+                startDateComponents.month = today.getMonth()
+                startDateComponents.day = today.getDay()
+                startDateComponents.timeZone = TimeZone.current
+                guard var startDate = Calendar.current.date(from: startDateComponents), var endDate = Calendar.current.date(from: startDateComponents) else {
+                    break
+                }
+                startDate = Calendar.current.date(byAdding: Calendar.Component.second, value: -1, to: startDate)!
+                endDate = Calendar.current.date(byAdding: Calendar.Component.second, value: 1, to: endDate)!
+                guard let beginCron = CronExpression(cronString: m.dtBeginCron + " *")?.getNextRunDate(startDate), let endCron = CronExpression(cronString: m.dtEndCron + " *")?.getNextRunDate(beginCron) else {
+                    break
+                }
+                if date.isBetween(beginCron, and: endCron) {
+                    self.log.info(message: "Could succesfully identify CRON-Allocation-Beacon")
+                    return m.Name
+                }
+            }
+            self.log.warning(message: "Could NOT identify CRON-Allocation-Beacon")
+        }
+        return nil
     }
     
     var beaconListLastChanged: String? {
@@ -445,6 +484,8 @@ final class GivtService: NSObject {
                 if let response = response, let data = response.data {
                     if response.statusCode == 200 {
                         do {
+                            let url = Bundle.main.path(forResource: "test", ofType: "json")
+                            let data2 = try Data(contentsOf: URL(fileURLWithPath: url!))
                             let decoder = JSONDecoder()
                             decoder.dateDecodingStrategy = .custom({ (date) -> Date in
                                 let container = try date.singleValueContainer()
@@ -456,7 +497,7 @@ final class GivtService: NSObject {
                                 dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
                                 return dateFormatter.date(from: dateStr) ?? Date(timeIntervalSince1970: 0)
                             })
-                            let bl = try decoder.decode(BeaconList.self, from: data)
+                            let bl = try decoder.decode(BeaconList.self, from: data2) //back to "data"
                             UserDefaults.standard.orgBeaconListV2 = bl
                             completionHandler(true)
                         } catch let err as NSError {
