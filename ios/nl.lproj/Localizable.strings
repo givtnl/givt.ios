@@ -275,7 +275,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Je komt nu meteen in het betaalscherm. (ipv je komt nu gelijk in het betaalscherm)*/
 /*Antwoord op FAQ vraag3*/
-"FAQantwoord3" = "Je kunt je app-menu bereiken door links bovenin het bedragscherm op het hamburgermenu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. In je menu kun je het overzicht van je giften inzien, je geeflimiet aanpassen, je IBAN wijzigen, een toegangscode instellen of je account verwijderen.\n\nOm je persoonlijke gegevens te wijzigen raden we je aan om contact op te nemen met onze helpdesk via +31 320 320 115 of support@givtapp.net.";
+"FAQantwoord3" = "Je kunt je app-menu bereiken door links bovenin het bedragscherm op het menu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. In je menu kun je het overzicht van je giften inzien, je geeflimiet aanpassen, je IBAN wijzigen, een toegangscode instellen of je account verwijderen.\n\nOm je persoonlijke gegevens te wijzigen raden we je aan om contact op te nemen met onze helpdesk via +31 320 320 115 of support@givtapp.net.";
 
 /*Antwoord op FAQ vraag4*/
 "FAQantwoord4" = "Steeds meer kerken\nJe kunt Givt gebruiken bij alle kerken die zijn aangesloten en daarom een zender in de collectebus, -zak of -mand hebben. Er komen wekelijks meer kerken bij, check onze website www.givtapp.net/waar om het meest recente overzicht te bekijken. \n\nNog niet aangesloten?\nWanneer je als kerk of organisatie nog niet bent aangesloten bij Givt, maar er wel gebruik van wilt maken, neem dan contact met ons op via +31 320 320 115 of info@givtapp.net.";
@@ -291,7 +291,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*kunnen we dit deze sprint al aanpassen?*/
 /*Antwoord op FAQ vraag8*/
-"FAQantwoord8" = "Als je geen gebruik meer wilt maken van Givt, heb je de mogelijkheid om je uit te schrijven in de app. Ga naar je instellingen door links bovenin het bedragscherm op het hamburgermenu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies ‘Account opzeggen’, vink de checkbox af en druk op ‘Mijn account opzeggen’. Nu is je account bij Givt opgezegd en verwijderd. Mocht je Givt in de toekomst weer willen gebruiken, dan zul je een nieuw account moeten maken.";
+"FAQantwoord8" = "Als je geen gebruik meer wilt maken van Givt, heb je de mogelijkheid om je uit te schrijven in de app. Ga naar je instellingen door links bovenin het bedragscherm op het menu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies ‘Account opzeggen’, vink de checkbox af en druk op ‘Mijn account opzeggen’. Nu is je account bij Givt opgezegd en verwijderd. Mocht je Givt in de toekomst weer willen gebruiken, dan zul je een nieuw account moeten maken.";
 
 /*Alleen wanneer je zelf een bedrag geeft 
 met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om te checken of de tekst er dan beter uit ziet op het scherm.*/
@@ -395,7 +395,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FAQvraag9" = "Waar kan ik het overzicht van mijn giften bekijken?";
 
 /*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
-"FAQantwoord9" = "Druk op het hamburgermenu linksbovenin om je app-menu te openen. Om toegang te krijgen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies voor 'Giften' om een overzicht van je giften weer te geven. Je kunt hier ook een jaarlijks giftenoverzicht downloaden voor de belastingaangifte.\nDe giften staan in een lijst met naam van de ontvanger, tijd en datum. Door de gekleurde bedragen zie je direct wat de status is: toegezegd, verwerkt, geannuleerd of geweigerd.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
+"FAQantwoord9" = "Druk op het menu linksbovenin om je app-menu te openen. Om toegang te krijgen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies voor 'Giften' om een overzicht van je giften weer te geven. Je kunt hier ook een jaarlijks giftenoverzicht downloaden voor de belastingaangifte.\nDe giften staan in een lijst met naam van de ontvanger, tijd en datum. Door de gekleurde bedragen zie je direct wat de status is: toegezegd, verwerkt, geannuleerd of geweigerd.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
 
 /*Fuzzy*/
 "GivtIsBeingProcessed" = "Bedankt voor je Givt aan {0}!\nKijk voor de status in je overzicht.";
@@ -425,7 +425,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FAQQuestion11" = "Hoe stel ik mijn toegangscode in?";
 
 /*Answer Passcode*/
-"FAQAnswer11" = "Je bereikt je instellingen door links bovenin het bedragscherm op het hamburgermenu te drukken. Kies daar ‘Toegangscode’ en activeer het gebruik van de toegangscode. Stel je eigen toegangscode in. Wanneer deze instelling actief is, kan je je toegangscode in plaats van je e-mailadres en wachtwoord gebruiken om je instellingen te bereiken. Wanneer je je toegangscode vergeten bent, heb je je e-mailadres en wachtwoord nodig om een nieuwe toegangscode in te stellen.";
+"FAQAnswer11" = "Je bereikt je instellingen door links bovenin het bedragscherm op het menu te drukken. Kies daar ‘Toegangscode’ en activeer het gebruik van de toegangscode. Stel je eigen toegangscode in. Wanneer deze instelling actief is, kan je je toegangscode in plaats van je e-mailadres en wachtwoord gebruiken om je instellingen te bereiken. Wanneer je je toegangscode vergeten bent, heb je je e-mailadres en wachtwoord nodig om een nieuwe toegangscode in te stellen.";
 
 /*Antwoord op de vraag Hoe werkt registreren*/
 "AnswerHowDoesRegistrationWork" = "Om Givt te kunnen gebruiken, moet je jezelf registreren in de Givt-app. Ga hiervoor naar je app-menu en kies voor 'Registratie voltooien'. Je maakt hierbij een Givt-account aan, vult enkele persoonlijke gegevens in en je geeft een machtiging tot het incasseren van alle giften die je in de app doet. De transacties worden afgehandeld door SlimPay; een partij die gespecialiseerd is in de behandeling van machtigingen. \nWanneer je eenmaal geregistreerd bent, kun je geven met de Givt-app. De inloggegevens van je Givt-account heb je alleen nodig om je instellingen in te zien of te wijzigen.";
