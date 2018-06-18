@@ -72,11 +72,14 @@ class ScanCompleteViewController: UIViewController {
                 } else {
                     // Fallback on earlier versions
                     UIApplication.shared.openURL(url)
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             } else {
                 LogService.shared.warning(message: "\(url) was not installed on the device.")
                 self.navigationController?.popToRootViewController(animated: true)
             }
+        } else {
+            self.navigationController?.popToRootViewController(animated: true)
         }
         GivtService.shared.customReturnAppScheme = nil
     }
