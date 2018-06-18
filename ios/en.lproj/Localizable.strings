@@ -259,7 +259,7 @@
 "FAQantwoord2" = "The first step was installing the app. For Givt to work effectively, \nit’s important that you enable Bluetooth and have a working internet \nconnection. (If you don’t have an internet connection when \nmaking your donation, the donation will be sent at a later time like \nwhen you are in a WiFi zone.)\n\nThen register yourself by filling in your information and signing a mandate. \nYou’re ready to give! Open the app, select an amount, and move your \nphone towards the collection bag or basket. A Givt beacon has been \nplaced inside. Your phone receives a signal from the beacon and \nyour chosen amount will be saved, withdrawn from your account \nand distributed to the church or collecting foundation.";
 
 /*Antwoord op FAQ vraag3*/
-"FAQantwoord3" = "You can access your app menu by pressing the hamburger menu at the top left of the ‘Amount’ screen. To change your settings, you have to login using your e-mail address and password or passcode. In the menu you can find the overview of your donations, adjust your maximum amount, change your IBAN, set a passcode, change your bank account or terminate your Givt account.\n\nTo change your personal details, leave us a message at About Givt / Contact in your menu. You can also contact our helpdesk via +31 320115 or support@givtapp.net.";
+"FAQantwoord3" = "You can access your app menu by pressing the menu at the top left of the ‘Amount’ screen. To change your settings, you have to login using your e-mail address and password or passcode. In the menu you can find the overview of your donations, adjust your maximum amount, change your IBAN, set a passcode, change your bank account or terminate your Givt account.\n\nTo change your personal details, leave us a message at About Givt / Contact in your menu. You can also contact our helpdesk via +31 320115 or support@givtapp.net.";
 
 /*Antwoord op FAQ vraag4*/
 "FAQantwoord4" = "More and more churches\nYou can use Givt in all churches and all charities that are registered with us. More churches are joining every week, you can see the latest overview at www.givtapp.net/waar-givt-gebruiken/  \n\nNot registered yet? \nIf you as a church or organisation are not yet affiliated with Givt, please contact us at +31 320 320 115 or info@givtapp.net.";
@@ -378,7 +378,7 @@
 "FAQvraag9" = "Where can I see the overview of my donations?";
 
 /*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
-"FAQantwoord9" = "Press the hamburger menu at the top left of the ‘Amount’ screen to access your app menu. To get access you have to login using your e-mail address and password or passcode. Choose ‘Donations’ to find an overview of your recent activity. This list consists of the name of the recipient, time and date. The coloured amounts indicate the status of the donation: In process, processed, refused by bank, or cancelled by user.\nIt's also possible to download an overview of your donations for your tax declaration.\n\nThe video below demonstrates this:";
+"FAQantwoord9" = "Press the menu at the top left of the ‘Amount’ screen to access your app menu. To get access you have to login using your e-mail address and password or passcode. Choose ‘Donations’ to find an overview of your recent activity. This list consists of the name of the recipient, time and date. The coloured amounts indicate the status of the donation: In process, processed, refused by bank, or cancelled by user.\nIt's also possible to download an overview of your donations for your tax declaration.\n\nThe video below demonstrates this:";
 
 /*Fuzzy*/
 "GivtIsBeingProcessed" = "Thank you for your Givt to {0}!\nYou can check the status in the overview.";
@@ -408,7 +408,7 @@
 "FAQQuestion11" = "How do I set my passcode?";
 
 /*Answer Passcode*/
-"FAQAnswer11" = "Go to your settings by pressing on the top left hamburger menu. Choose 'Passcode' and activate the use of a passcode. Set your own passcode. When your passcode is activated, you can use it to access your settings instead of using your e-mail address and password. However, when you've forgotten your passcode, you need your e-mail address and password to make a new one.";
+"FAQAnswer11" = "Go to your settings by pressing on the top left menu. Choose 'Passcode' and activate the use of a passcode. Set your own passcode. When your passcode is activated, you can use it to access your settings instead of using your e-mail address and password. However, when you've forgotten your passcode, you need your e-mail address and password to make a new one.";
 
 /*Antwoord op de vraag Hoe werkt registreren*/
 "AnswerHowDoesRegistrationWork" = "To use Givt, you have to register in the Givt app. Go to your app menu and choose 'Finish registration'. You set up a Givt account, fill in some personal details and give permission to collect the donations made with the app. The transactions are handled by Slimpay - a bank that specialises in the treatment of permissions. When your registration is complete, you are ready to give. You only need your login details to see or change your settings.";
