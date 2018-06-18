@@ -196,10 +196,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! BaseNavigationController
         vc.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
-            self.present(vc, animated: true) {
-                self.hideLeftView(self)
+            self.present(vc, animated: true, completion:  {
+                //self.hideLeftView(self)
             }
-        }
+        )}
     }
     
     private func share() {
