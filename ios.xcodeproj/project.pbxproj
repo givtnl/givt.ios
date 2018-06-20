@@ -121,7 +121,6 @@
 		D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EAF10C1FB491AD00DFE5CC /* icon@2x.png */; };
 		D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EAF10D1FB491B000DFE5CC /* icon@3x.png */; };
 		D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */; };
-		D7F0902120D26ECF00B7A8CB /* MaterialInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0902020D26ECF00B7A8CB /* MaterialInput.swift */; };
 		D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F131631F7555EC00E25A68 /* RegistrationDetailViewController.swift */; };
 		D7F131661F75574D00E25A68 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F131651F75574D00E25A68 /* Registration.storyboard */; };
 		D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F131671F75593A00E25A68 /* RegistrationViewController.swift */; };
@@ -282,7 +281,6 @@
 		D7EAF10C1FB491AD00DFE5CC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		D7EAF10D1FB491B000DFE5CC /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
 		D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
-		D7F0902020D26ECF00B7A8CB /* MaterialInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialInput.swift; sourceTree = "<group>"; };
 		D7F131631F7555EC00E25A68 /* RegistrationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDetailViewController.swift; sourceTree = "<group>"; };
 		D7F131651F75574D00E25A68 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		D7F131671F75593A00E25A68 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -449,7 +447,6 @@
 				D748F5FB2061425400B25BC2 /* HistoryTableViewCell.swift */,
 				D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */,
 				D7DD79A3209B463800047CA7 /* InsetLabel.swift */,
-				D7F0902020D26ECF00B7A8CB /* MaterialInput.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -951,7 +948,6 @@
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
-				D7F0902120D26ECF00B7A8CB /* MaterialInput.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,

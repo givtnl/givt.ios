@@ -104,22 +104,11 @@ final class GivtService: NSObject {
         }) else { return nil }
         
         if let ma = organisation.MultiUseAllocations, ma.count > 0 {
-            let today = Date()
             for m in ma {
-                var startDateComponents = DateComponents()
-                startDateComponents.year = today.getYear()
-                startDateComponents.month = today.getMonth()
-                startDateComponents.day = today.getDay()
-                startDateComponents.timeZone = TimeZone.current
-                guard var startDate = Calendar.current.date(from: startDateComponents), var endDate = Calendar.current.date(from: startDateComponents) else {
+                guard let begin = CronExpression(cronString: m.dtBeginCron + " *")?.getNextRunDate(date), let end = CronExpression(cronString: m.dtEndCron + " *")?.getNextRunDate(date) else {
                     break
                 }
-                startDate = Calendar.current.date(byAdding: Calendar.Component.second, value: -1, to: startDate)!
-                endDate = Calendar.current.date(byAdding: Calendar.Component.second, value: 1, to: endDate)!
-                guard let beginCron = CronExpression(cronString: m.dtBeginCron + " *")?.getNextRunDate(startDate), let endCron = CronExpression(cronString: m.dtEndCron + " *")?.getNextRunDate(beginCron) else {
-                    break
-                }
-                if date.isBetween(beginCron, and: endCron) {
+                if end < begin {
                     self.log.info(message: "Could succesfully identify CRON-Allocation-Beacon")
                     return m.Name
                 }
