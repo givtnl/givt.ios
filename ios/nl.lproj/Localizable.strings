@@ -690,3 +690,5 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "EditPersonalFail" = "Oops, we konden je persoonlijke gegevens niet aanpassen";
 "ChangeEmail" = "Wijzig e-mailadres";
 "ChangeIBAN" = "Wijzig IBAN";
+"SmsSuccess" = "Code verstuurd via SMS";
+"SmsFailed" = "Probeer later opnieuw";
