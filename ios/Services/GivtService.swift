@@ -55,12 +55,11 @@ final class GivtService: NSObject {
     private var client = APIClient.shared
     private var amount: Decimal!
     private var amounts = [Decimal]()
-    private var bestBeacon: BestBeacon = BestBeacon()
     private var scanLock = NSRecursiveLock()
     
-    var knownLocation: GivtLocation?
-    
     var customReturnAppScheme: String?
+    
+    var bestBeacon: BestBeacon?
     
     var isBluetoothEnabled: Bool {
         get {
@@ -68,19 +67,13 @@ final class GivtService: NSObject {
         }
     }
     
-    var getBestBeacon: BestBeacon {
-        get {
-            return bestBeacon
-        }
-    }
-    
     var orgBeaconList: [OrgBeacon]? {
         return UserDefaults.standard.orgBeaconListV2?.OrgBeacons
     }
     
-    func getOrgName(orgNameSpace: String) -> String? {
+    func getOrganisationName(organisationNameSpace: String) -> String? {
         return orgBeaconList?.first(where: { (orgBeacon) -> Bool in
-            return orgBeacon.EddyNameSpace == orgNameSpace
+            return orgBeacon.EddyNameSpace == organisationNameSpace
         })?.OrgName
     }
     
@@ -90,21 +83,18 @@ final class GivtService: NSObject {
         })?.Celebrations ?? false
     }
     
-    var lastGivtOrg: String? {
-        get {
-            return orgBeaconList?.first(where: { (orgBeacon) -> Bool in
-                return orgBeacon.EddyNameSpace == bestBeacon.namespace
-            })?.OrgName
-        }
+    func canShare(id: String) -> Bool {
+        return !id.substring(16..<19).matches("c[0-9]|d[be]")
     }
     
-    func getMultiUseAllocationOrganisation(date: Date, namespace: String) -> String? {
+    func determineOrganisationName(namespace: String) -> String? {
         guard let organisation = orgBeaconList?.first(where: { (orgBeacon) -> Bool in
             return orgBeacon.EddyNameSpace == namespace
         }) else { return nil }
         
         if let ma = organisation.MultiUseAllocations, ma.count > 0 {
             for m in ma {
+                let date = Date()
                 guard let begin = CronExpression(cronString: m.dtBeginCron + " *")?.getNextRunDate(date), let end = CronExpression(cronString: m.dtEndCron + " *")?.getNextRunDate(date) else {
                     break
                 }
@@ -115,7 +105,7 @@ final class GivtService: NSObject {
             }
             self.log.warning(message: "Could NOT identify CRON-Allocation-Beacon")
         }
-        return nil
+        return organisation.OrgName
     }
     
     var beaconListLastChanged: String? {
@@ -198,7 +188,7 @@ final class GivtService: NSObject {
         locationService.stopLookingForLocation()
     }
 
-    func give(antennaID: String) {
+    func give(antennaID: String, organisationName: String?) {
         LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
@@ -216,14 +206,12 @@ final class GivtService: NSObject {
         }
         
         giveInBackground(transactions: transactions)
-        self.delegate?.onGivtProcessed(transactions: transactions)
+        self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
         
         let deadlineTime = DispatchTime.now() + 0.20
         DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
             AudioServicesPlayAlertSound(1520)
         }
-        
-        bestBeacon = BestBeacon()
     }
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
@@ -231,6 +219,7 @@ final class GivtService: NSObject {
         if scanResult.index(of: queryString) != nil {
             let identifierEncoded = String(scanResult[queryString.endIndex...])
             if let decoded = identifierEncoded.base64Decoded() {
+                let bestBeacon = BestBeacon()
                 /* mimic bestbeacon */
                 bestBeacon.beaconId = decoded
                 if let idx = decoded.index(of: ".") {
@@ -238,7 +227,8 @@ final class GivtService: NSObject {
                 } else {
                     bestBeacon.namespace = decoded
                 }
-                give(antennaID: decoded)
+                //bepaal naam
+                give(antennaID: decoded, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
                 completionHandler(true)
             } else {
                 //todo: log messed up base 64
@@ -250,7 +240,8 @@ final class GivtService: NSObject {
         }
     }
     
-    func giveManually(antennaId: String, afterGivt: ((Int, [Transaction]) -> ())? = nil) {
+    func giveManually(antennaId: String, afterGivt: ((Int, [Transaction], String) -> ())? = nil) {
+        let bestBeacon = BestBeacon()
         bestBeacon.beaconId = antennaId
         if let idx = antennaId.index(of: ".") {
             bestBeacon.namespace = String(antennaId[..<idx])
@@ -279,13 +270,15 @@ final class GivtService: NSObject {
             
             giveCelebrate(transactions: transactions, afterGivt: { seconds in
                 if seconds > 0 {
-                    afterGivt(seconds, transactions)
+                    afterGivt(seconds, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
                 } else {
-                    self.delegate?.onGivtProcessed(transactions: transactions)
+                    self.delegate?.onGivtProcessed(transactions: transactions,
+                                                   organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!),
+                                                   canShare: self.canShare(id: bestBeacon.beaconId!))
                 }
             })
         } else {
-            give(antennaID: bestBeacon.beaconId!)
+            give(antennaID: bestBeacon.beaconId!, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
         }
         
     }
@@ -486,7 +479,7 @@ final class GivtService: NSObject {
                                 dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
                                 return dateFormatter.date(from: dateStr) ?? Date(timeIntervalSince1970: 0)
                             })
-                            let bl = try decoder.decode(BeaconList.self, from: data2) //back to "data"
+                            let bl = try decoder.decode(BeaconList.self, from: data) //back to "data"
                             UserDefaults.standard.orgBeaconListV2 = bl
                             completionHandler(true)
                         } catch let err as NSError {
@@ -508,33 +501,29 @@ final class GivtService: NSObject {
         }
     }
     
-    func triggerGivtLocation() {
-        if let location = self.knownLocation {
-            print("location detect")
-            delegate?.didDetectGivtLocation(orgName: location.organisationName, identifier: location.beaconId)
-        } else if let beaconIdentifier = self.bestBeacon.beaconId, let beaconNameSpace = self.bestBeacon.namespace, let orgName = getOrgName(orgNameSpace: beaconNameSpace) {
-            print("beacon detect")
-            delegate?.didDetectGivtLocation(orgName: orgName, identifier: beaconIdentifier)
-        } else {
-            self.log.info(message: "No location/beacon near using location giving")
-        }
+    func triggerGivtLocation(id: String, organisationName: String) {
+        delegate?.didDetectGivtLocation(orgName: organisationName, identifier: id)
     }
 }
 
 extension GivtService: BeaconServiceProtocol {
-    func didDetectBeacon(scanMode: ScanMode, bestBeacon: BestBeacon) {
+    func didUpdateBestBeacon(bestBeacon: BestBeacon) {
         self.bestBeacon = bestBeacon
+    }
+    
+    func didDetectBeacon(scanMode: ScanMode, bestBeacon: BestBeacon) {
         if scanMode == .close {
             scanLock.lock()
             if (beaconService.isScanning) {
                 stopScanning()
+                let organisationName = GivtService.shared.determineOrganisationName(namespace: bestBeacon.namespace!)
                 DispatchQueue.main.async {
-                    self.give(antennaID: bestBeacon.beaconId!)
+                    self.give(antennaID: bestBeacon.beaconId!, organisationName: organisationName)
                 }
             }
             scanLock.unlock()
         } else if scanMode == .far {
-            triggerGivtLocation()
+            triggerGivtLocation(id: bestBeacon.beaconId!, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
         }
     }
     
@@ -545,13 +534,12 @@ extension GivtService: BeaconServiceProtocol {
 
 extension GivtService: LocationServiceProtocol {
     func didDiscoverLocationInRegion(location: GivtLocation) {
-        knownLocation = location
-        triggerGivtLocation()
+        triggerGivtLocation(id: location.beaconId, organisationName: location.organisationName)
     }
 }
 
 protocol GivtProcessedProtocol: class {
-    func onGivtProcessed(transactions: [Transaction])
+    func onGivtProcessed(transactions: [Transaction], organisationName: String?, canShare: Bool)
     func didUpdateBluetoothState(isBluetoothOn: Bool)
     func didDetectGivtLocation(orgName: String, identifier: String)
 }

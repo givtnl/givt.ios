@@ -525,6 +525,6 @@ class LoginManager {
         UserDefaults.standard.hasTappedAwayGiveDiff = false
         UserDefaults.standard.showedLastYearTaxOverview = false
         UserDefaults.standard.hasGivtsInPreviousYear = false
-        UserDefaults.standard.lastGivtToOrganisation = nil
+        UserDefaults.standard.lastGivtToOrganisationNamespace = nil
     }
 }
