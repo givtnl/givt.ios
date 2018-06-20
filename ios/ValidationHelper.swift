@@ -24,15 +24,11 @@ class ValidationHelper {
     }
     
     func isEmailAddressValid(_ string: String) -> Bool {
-        let regex = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" +
-            "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" +
-            "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-" +
-            "z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5" +
-            "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" +
-            "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" +
-        "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
-        let expression = try! NSRegularExpression(pattern: regex, options: [])
-        return string.count <= 70 && expression.firstMatch(in: string, options: [], range: NSMakeRange(0, string.utf16.count)) != nil
+        let firstpart = "[A-Z0-9a-z]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
+        let serverpart = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
+        let emailRegex = firstpart + "@" + serverpart + "[A-Za-z]{2,6}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return string.count <= 70 && emailPredicate.evaluate(with: string)
     }
     
     func isPasswordValid(_ string: String) -> Bool {
