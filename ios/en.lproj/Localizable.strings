@@ -671,3 +671,5 @@
 "EditPersonalFail" = "Oops, we could not update your personal information";
 "ChangeEmail" = "Change email adress";
 "ChangeIBAN" = "Change IBAN";
+"SmsSuccess" = "Code sent via SMS";
+"SmsFailed" = "Please try again later";
