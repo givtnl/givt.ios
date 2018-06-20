@@ -306,7 +306,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             print("iban")
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
             vc.img = #imageLiteral(resourceName: "card")
-            vc.titleOfInput = "Nieuw IBAN"
+            vc.titleOfInput = NSLocalizedString("ChangeIBAN", comment: "")
             vc.inputOfInput = UserDefaults.standard.userExt!.iban
             vc.validateFunction = { s in
                 return self.validationHelper.isIbanChecksumValid(s)
@@ -315,7 +315,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 self.loginManager.changeIban(iban: s, callback: { (success) in
                     if success {
                         DispatchQueue.main.async {
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalSucces", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            let alert = UIAlertController(title: "", message: NSLocalizedString("EditPersonalSucces", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
                                 self.navigationController?.popViewController(animated: true)
                             }))
@@ -337,7 +337,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             print("emailadres")
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
             vc.img = #imageLiteral(resourceName: "email_sign")
-            vc.titleOfInput = "Nieuw e-mailadres"
+            vc.titleOfInput = NSLocalizedString("ChangeEmail", comment: "")
             vc.inputOfInput = UserDefaults.standard.userExt!.email
             vc.validateFunction = { s in
                 return self.validationHelper.isEmailAddressValid(s)
@@ -350,7 +350,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                         self.loginManager.updateEmail(email: newEmail, completionHandler: { (success2) in
                             if success2 {
                                 DispatchQueue.main.async {
-                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalSucces", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                    let alert = UIAlertController(title: "", message: NSLocalizedString("EditPersonalSucces", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
                                         self.navigationController?.popViewController(animated: true)
                                     }))

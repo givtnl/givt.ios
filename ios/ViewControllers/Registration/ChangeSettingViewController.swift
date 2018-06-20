@@ -22,7 +22,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     var img: UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        saveBtn.setTitle(NSLocalizedString("Save", comment: ""), for: UIControlState.normal)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: Notification.Name.UITextFieldTextDidChange, object: nil)
