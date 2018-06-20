@@ -374,6 +374,30 @@ class LoginManager {
         }
     }
     
+    func updateEmail(email: String, completionHandler: @escaping (Bool) -> Void) {
+        do {
+            let params = ["Email": email,"AmountLimit": UserDefaults.standard.amountLimit] as [String : Any]
+            try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/", data: params) { (response) in
+                guard let resp = response else {
+                    completionHandler(false)
+                    return
+                }
+                if resp.statusCode == 200 {
+                    let newSettings = UserDefaults.standard.userExt!
+                    newSettings.email = email
+                    UserDefaults.standard.userExt = newSettings
+                    completionHandler(true)
+                } else {
+                    LogService.shared.error(message: "Could not update email")
+                    completionHandler(false)
+                }
+            }
+        } catch {
+            LogService.shared.error(message: "Could not update email")
+            completionHandler(false)
+        }
+    }
+    
     func doesEmailExist(email: String, completionHandler: @escaping (String) -> Void) {
         self.log.info(message: "Checking if email exists")
         client.get(url: "/api/Users/Check", data: ["email" : email]) { (status) in
