@@ -34,8 +34,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     private var validationHelper = ValidationHelper.shared
     private var countryPickerView: UIPickerView!
     private var mobilePrefixPickerView: UIPickerView!
-    var selectedCountry: Country?
-    var selectedMobilePrefix: Country?
+    private var selectedCountry: Country!
+    private var selectedMobilePrefix: Country!
     private var _lastTextField: UITextField = UITextField()
     
     override func viewDidLoad() {

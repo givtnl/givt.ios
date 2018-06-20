@@ -192,9 +192,9 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         let user = UserDefaults.standard.userExt!
         var country = ""
         if let idx = Int(user.countryCode) {
-            country = AppConstants.countries[idx].shortName
+            country = AppConstants.countries[idx].name
         } else {
-            country = user.countryCode
+            country = AppConstants.countries.first(where: { $0.shortName == user.countryCode })!.name
         }
         title = NSLocalizedString("TitlePersonalInfo", comment: "")
         settings.removeAll()
