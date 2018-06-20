@@ -14,8 +14,8 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     private let loginManager = LoginManager.shared
     private let validationHelper = ValidationHelper.shared
     @IBOutlet var btnNext: CustomButton!
-    @IBOutlet var titleText: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet var titleText: UILabel!
     @IBOutlet var settingsTableView: UITableView!
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -165,24 +165,11 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let user = UserDefaults.standard.userExt!
-        var country = ""
-        if let idx = Int(user.countryCode) {
-            country = AppConstants.countries[idx].shortName
-        } else {
-            country = user.countryCode
-        }
+        
         
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
         settings = [PersonalSetting]()
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: user.firstName + " " + user.lastName, type: .name))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: user.email, type: .emailaddress))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: user.address + ", " + user.postalCode + " " + user.city, type: .address))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: country, type: .countrycode))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone"), name: user.mobileNumber, type: .phonenumber))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: user.iban, type: .iban))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "green_lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
         settingsTableView.tableFooterView = UIView()
         
         self.navigationController?.removeLogo()
@@ -196,13 +183,28 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.setBackgroundColor(.white)
         
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
+       // titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let user = UserDefaults.standard.userExt!
+        var country = ""
+        if let idx = Int(user.countryCode) {
+            country = AppConstants.countries[idx].shortName
+        } else {
+            country = user.countryCode
+        }
         title = NSLocalizedString("TitlePersonalInfo", comment: "")
+        settings.removeAll()
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: user.firstName + " " + user.lastName, type: .name))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: user.email, type: .emailaddress))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: user.address, type: .address))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: user.postalCode + " " + user.city + ", " + country, type: .countrycode))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone"), name: user.mobileNumber, type: .phonenumber))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: user.iban, type: .iban))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "green_lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
     }
 
     override func didReceiveMemoryWarning() {
@@ -236,6 +238,9 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        if let selectedRow = settingsTableView.indexPathForSelectedRow {
+            settingsTableView.deselectRow(at: selectedRow, animated: false)
+        }
     }
     
     var settings: [PersonalSetting]!
@@ -267,6 +272,8 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             settingsTableView.layoutIfNeeded()
         }
     }
+    
+    
 
 }
 
@@ -299,27 +306,76 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             print("iban")
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
             vc.img = #imageLiteral(resourceName: "card")
-            vc.title = "IBAN wijzigen"
             vc.titleOfInput = "Nieuw IBAN"
             vc.inputOfInput = UserDefaults.standard.userExt!.iban
             vc.validateFunction = { s in
                 return self.validationHelper.isIbanChecksumValid(s)
             }
-            vc.saveAction = {
-                print("saving iban")
+            vc.saveAction = { s in
+                self.loginManager.changeIban(iban: s, callback: { (success) in
+                    if success {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalSucces", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                self.navigationController?.popViewController(animated: true)
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                })
             }
             self.navigationController?.pushViewController(vc, animated: true)
         case .emailaddress:
             print("emailadres")
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
             vc.img = #imageLiteral(resourceName: "email_sign")
-            vc.title = "E-mailadres wijzigen"
             vc.titleOfInput = "Nieuw e-mailadres"
             vc.inputOfInput = UserDefaults.standard.userExt!.email
             vc.validateFunction = { s in
                 return self.validationHelper.isEmailAddressValid(s)
             }
-            vc.saveAction = {
+            vc.saveAction = { newEmail in
+                SVProgressHUD.show()
+                self.loginManager.checkTLD(email: newEmail, completionHandler: { (success) in
+                    SVProgressHUD.dismiss()
+                    if success {
+                        self.loginManager.updateEmail(email: newEmail, completionHandler: { (success2) in
+                            if success2 {
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalSucces", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                        self.navigationController?.popViewController(animated: true)
+                                    }))
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                        
+                                    }))
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+                            }
+                        })
+                    } else {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                })
                 print("saving email")
             }
             self.navigationController?.pushViewController(vc, animated: true)

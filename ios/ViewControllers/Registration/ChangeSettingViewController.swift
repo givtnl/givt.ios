@@ -15,7 +15,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var imgView: UIImageView!
     @IBOutlet var inputFieldToEdit: SpecialUITextField!
     @IBOutlet var fieldToEdit: UILabel!
-    var saveAction: () -> Void = {}
+    var saveAction: (String) -> Void = {_ in }
     var validateFunction: (String) -> Bool = {_ in return false}
     var titleOfInput: String!
     var inputOfInput: String!
@@ -60,7 +60,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        self.saveAction()
+        self.saveAction(inputFieldToEdit.text!)
     }
     
     @IBAction func goBack(_ sender: Any) {
