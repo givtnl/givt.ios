@@ -14,13 +14,9 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     private let loginManager = LoginManager.shared
     private let validationHelper = ValidationHelper.shared
     @IBOutlet var btnNext: CustomButton!
-    @IBOutlet var cellphone: UILabel!
-    @IBOutlet var street: UILabel!
-    @IBOutlet var name: UILabel!
-    @IBOutlet var country: UILabel!
     @IBOutlet var titleText: UILabel!
-    @IBOutlet var changePasswordLabel: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet var settingsTableView: UITableView!
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         if textField.returnKeyType == .done {
@@ -169,15 +165,27 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let user = UserDefaults.standard.userExt!
+        var country = ""
+        if let idx = Int(user.countryCode) {
+            country = AppConstants.countries[idx].shortName
+        } else {
+            country = user.countryCode
+        }
+        
+        settingsTableView.delegate = self
+        settingsTableView.dataSource = self
+        settings = [PersonalSetting]()
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: user.firstName + " " + user.lastName, type: .name))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: user.email, type: .emailaddress))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: user.address + ", " + user.postalCode + " " + user.city, type: .address))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: country, type: .countrycode))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone"), name: user.mobileNumber, type: .phonenumber))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: user.iban, type: .iban))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "green_lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
+        settingsTableView.tableFooterView = UIView()
+        
         self.navigationController?.removeLogo()
-        changePassword.isUserInteractionEnabled = true
-        changePassword.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changePassword2)))
-        
-        emailInput.delegate = self
-        emailInput.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
-        ibanInput.delegate = self
-        ibanInput.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -186,47 +194,15 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
-    
-        name.text = ""
-        street.text = ""
-        cellphone.text = ""
-        // Do any additional setup after loading the view.
         
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        ibanInput.placeholder = NSLocalizedString("IBANPlaceHolder", comment: "")
-        btnNext.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
         titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
-        btnNext.isEnabled = false
-        btnNext.accessibilityLabel = NSLocalizedString("ButtonChange", comment: "")
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
-        
-        changePasswordLabel.text = NSLocalizedString("ChangePassword", comment: "")
-    }
-    
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        self.view.endEditing(false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = NSLocalizedString("TitlePersonalInfo", comment: "")
-
-        if let user = UserDefaults.standard.userExt {
-            var country = ""
-            if let idx = Int(user.countryCode) {
-                country = AppConstants.countries[idx].shortName
-            } else {
-                country = user.countryCode
-            }
-            ibanInput.text = user.iban.separate(every: 4, with: " ")
-            name.text = user.firstName + " " + user.lastName
-            emailInput.text = user.email
-            street.text = user.address + ", " + user.postalCode + " " + user.city
-            self.country.text = country
-            cellphone.text = user.mobileNumber
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -257,5 +233,104 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    var settings: [PersonalSetting]!
+    
+    struct PersonalSetting {
+        var image: UIImage
+        var name: String
+        var type: SettingType
+    }
+    enum SettingType {
+        case name
+        case emailaddress
+        case address
+        case countrycode
+        case phonenumber
+        case iban
+        case changepassword
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard let headerView = settingsTableView.tableHeaderView else {
+            return
+        }
+        let size = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        if headerView.frame.size.height != size.height {
+            headerView.frame.size.height = size.height
+            settingsTableView.tableHeaderView = headerView
+            settingsTableView.layoutIfNeeded()
+        }
+    }
 
+}
+
+extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return settings.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PersonalSettingTableViewCell", for: indexPath) as! PersonalSettingTableViewCell
+        cell.labelView.text = settings[indexPath.row].name
+        cell.img.image = settings[indexPath.row].image
+        cell.accessoryType = .disclosureIndicator
+        switch settings[indexPath.row].type {
+        case .iban, .emailaddress, .changepassword:
+            cell.accessoryType = .disclosureIndicator
+            cell.labelView.alpha = 1
+            cell.selectionStyle = .default
+        default:
+            cell.accessoryType = .none
+            cell.labelView.alpha = 0.5
+            cell.selectionStyle = .none
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch settings[indexPath.row].type {
+        case .iban:
+            print("iban")
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
+            vc.img = #imageLiteral(resourceName: "card")
+            vc.title = "IBAN wijzigen"
+            vc.titleOfInput = "Nieuw IBAN"
+            vc.inputOfInput = UserDefaults.standard.userExt!.iban
+            vc.validateFunction = { s in
+                return self.validationHelper.isIbanChecksumValid(s)
+            }
+            vc.saveAction = {
+                print("saving iban")
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .emailaddress:
+            print("emailadres")
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
+            vc.img = #imageLiteral(resourceName: "email_sign")
+            vc.title = "E-mailadres wijzigen"
+            vc.titleOfInput = "Nieuw e-mailadres"
+            vc.inputOfInput = UserDefaults.standard.userExt!.email
+            vc.validateFunction = { s in
+                return self.validationHelper.isEmailAddressValid(s)
+            }
+            vc.saveAction = {
+                print("saving email")
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .changepassword:
+            print("password")
+            let vc = UIStoryboard(name: "ForgotPassword", bundle: nil).instantiateInitialViewController() as! ForgotPasswordViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            return
+        }
+    }
+    
+    
 }

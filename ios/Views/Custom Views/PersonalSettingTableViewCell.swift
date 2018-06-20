@@ -10,6 +10,8 @@ import UIKit
 
 class PersonalSettingTableViewCell: UITableViewCell {
 
+    @IBOutlet var img: UIImageView!
+    @IBOutlet var labelView: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

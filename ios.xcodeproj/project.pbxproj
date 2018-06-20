@@ -102,6 +102,8 @@
 		D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CCC06E1FC4346F006A6A4F /* PinScreenViewController.swift */; };
 		D7D6FA6B1F7BADA5008A5604 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6A1F7BADA5008A5604 /* UITextFieldExtensions.swift */; };
 		D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */; };
+		D7D9C31A20D9453F000D93C5 /* ChangeSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9C31920D9453F000D93C5 /* ChangeSettingViewController.swift */; };
+		D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9C31B20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift */; };
 		D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */; };
 		D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED991FBC483300D78E2A /* BaseNavigationController.swift */; };
 		D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBED9B1FBC484600D78E2A /* AboutViewController.swift */; };
@@ -261,6 +263,8 @@
 		D7CCC06E1FC4346F006A6A4F /* PinScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinScreenViewController.swift; sourceTree = "<group>"; };
 		D7D6FA6A1F7BADA5008A5604 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
 		D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
+		D7D9C31920D9453F000D93C5 /* ChangeSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeSettingViewController.swift; sourceTree = "<group>"; };
+		D7D9C31B20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalSettingTableViewCell.swift; sourceTree = "<group>"; };
 		D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutGivt.storyboard; sourceTree = "<group>"; };
 		D7DBED991FBC483300D78E2A /* BaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		D7DBED9B1FBC484600D78E2A /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -447,6 +451,7 @@
 				D748F5FB2061425400B25BC2 /* HistoryTableViewCell.swift */,
 				D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */,
 				D7DD79A3209B463800047CA7 /* InsetLabel.swift */,
+				D7D9C31B20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */,
 				D7E3CE9D1F7D2C5C005807BE /* SPWebViewController.swift */,
 				D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */,
+				D7D9C31920D9453F000D93C5 /* ChangeSettingViewController.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -914,6 +920,7 @@
 				D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */,
 				D7DBEDA31FBC798A00D78E2A /* UIDeviceExtensions.swift in Sources */,
 				D782E68F20064A680086907E /* SettingsViewController.swift in Sources */,
+				D7D9C31A20D9453F000D93C5 /* ChangeSettingViewController.swift in Sources */,
 				D740E15C1F4C6328000531BA /* GivtService.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
 				D782089F2008BE6000AB6DC1 /* ArrayExtensions.swift in Sources */,
@@ -961,6 +968,7 @@
 				D75B2BD21FCEAE05000B7968 /* IAPIClient.swift in Sources */,
 				D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
+				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
