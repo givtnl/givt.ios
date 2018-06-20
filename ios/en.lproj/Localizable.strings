@@ -669,3 +669,5 @@
 "FaqAntwoord10" = "If you want to change your password, you can choose ‘Personal information’ in the menu and then press the ‘Change password’ button. We will send you an e-mail with a link to a web page where you can change your password.";
 "EditPersonalSucces" = "Your personal information is successfully updated";
 "EditPersonalFail" = "Oops, we could not update your personal information";
+"ChangeEmail" = "Change email adress";
+"ChangeIBAN" = "Change IBAN";
