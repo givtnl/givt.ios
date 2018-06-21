@@ -39,7 +39,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.toggleOff()
         cell.organisationLabel.numberOfLines = 0
         print(nameSpace)
-        if let ns = UserDefaults.standard.lastGivtToOrganisation, ns == nameSpace {
+        if let ns = UserDefaults.standard.lastGivtToOrganisationNamespace, ns == nameSpace {
             print("we got a match!!!!!")
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
@@ -71,7 +71,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.toggleOn()
         prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: cell.nameSpace)
         btnGive.isEnabled = true
-        UserDefaults.standard.lastGivtToOrganisation = cell.nameSpace
+        UserDefaults.standard.lastGivtToOrganisationNamespace = cell.nameSpace
         self.view.endEditing(true)
     }
     
@@ -81,7 +81,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             cell.toggleOff()
         }
         btnGive.isEnabled = false
-        UserDefaults.standard.lastGivtToOrganisation = nil
+        UserDefaults.standard.lastGivtToOrganisationNamespace = nil
         
     }
     var initial = true
@@ -92,7 +92,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 if initial {
                     initial = false
                     //find orgname associated with namespace
-                    if let namespace = UserDefaults.standard.lastGivtToOrganisation, let orgName = GivtService.shared.getOrgName(orgNameSpace: namespace) {
+                    if let namespace = UserDefaults.standard.lastGivtToOrganisationNamespace, let orgName = GivtService.shared.getOrganisationName(organisationNameSpace: namespace) {
                         guard let tableSectionId = sections.index(where: { (sec) -> Bool in
                             return sec.title.uppercased() == String(orgName.first!).uppercased()
                         }) else {
@@ -469,7 +469,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         
         originalList = filteredList
         
-        if let lastOrg = UserDefaults.standard.lastGivtToOrganisation {
+        if let lastOrg = UserDefaults.standard.lastGivtToOrganisationNamespace {
             lastGivtToOrganisationPosition = filteredList?.index(where: { (org) -> Bool in
                 return org.EddyNameSpace == lastOrg
             })

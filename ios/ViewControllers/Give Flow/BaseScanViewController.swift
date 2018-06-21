@@ -11,8 +11,8 @@ import SVProgressHUD
 
 class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
-    private var organisation = ""
-    private var bestBeacon = BestBeacon()
+    var organisation = ""
+    var bestBeacon = BestBeacon()
     private var bluetoothAlert: UIAlertController?
     
     func didUpdateBluetoothState(isBluetoothOn: Bool) {
@@ -60,21 +60,21 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         // Dispose of any resources that can be recreated.
     }
     
-    func onGivtProcessed(transactions: [Transaction]) {
+    func onGivtProcessed(transactions: [Transaction], organisationName: String?, canShare: Bool) {
         SVProgressHUD.dismiss()
-        organisation = GivtService.shared.lastGivtOrg ?? ""
-        bestBeacon = GivtService.shared.getBestBeacon
         var trs = [NSDictionary]()
         for tr in transactions {
             trs.append(["Amount" : tr.amount,"CollectId" : tr.collectId, "Timestamp" : tr.timeStamp, "BeaconId" : tr.beaconId])
         }
         
-        var canShare = false
-        if let beaconId = GivtService.shared.getBestBeacon.beaconId, !beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
-            canShare = true
-        }
         
-        UserDefaults.standard.lastGivtToOrganisation = bestBeacon.namespace
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
+        df.timeZone = TimeZone(abbreviation: "UTC")
+        df.locale = Locale(identifier: "en_US_POSIX")
+        let date = df.date(from: transactions.first!.timeStamp)
+
+        UserDefaults.standard.lastGivtToOrganisationNamespace = bestBeacon.namespace
         
         
         shouldShowMandate { (url) in
@@ -184,7 +184,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     func giveManually(antennaID: String) {
         SVProgressHUD.show()
-        GivtService.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions) in
+        GivtService.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
             SVProgressHUD.dismiss()
             if seconds > 0 {
                 LogService.shared.info(message: "Celebrating wiiehoeeew")
@@ -193,6 +193,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                     let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
                     vc.secondsLeft = seconds
                     vc.transactions = transactions
+                    vc.organisation = orgName
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 

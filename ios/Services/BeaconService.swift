@@ -17,6 +17,7 @@ enum ScanMode {
 protocol BeaconServiceProtocol: class {
     func didUpdateBluetoothState(isBluetoothOn: Bool)
     func didDetectBeacon(scanMode: ScanMode, bestBeacon: BestBeacon)
+    func didUpdateBestBeacon(bestBeacon: BestBeacon)
 }
 
 class BeaconService: NSObject, CBCentralManagerDelegate {
@@ -104,6 +105,8 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
                 bestBeacon.rssi = rssi
                 bestBeacon.namespace = organisation
             }
+            
+            self.delegate?.didUpdateBestBeacon(bestBeacon: bestBeacon)
             
             let isAreaBeacon = String(bestBeacon.beaconId![bestBeacon.beaconId!.index(bestBeacon.beaconId!.index(of: ".")!, offsetBy: 1)]).lowercased() == "a"
             if let scanMode = scanMode {

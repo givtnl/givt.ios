@@ -30,7 +30,7 @@ class CelebrateViewController: BaseScanViewController {
         countdownTimer = Timer.scheduledTimer(timeInterval:
             1, target: self, selector: #selector(tickingClocks), userInfo: nil, repeats: true)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(secondsLeft) + TORCH_TIME) {
-            self.onGivtProcessed(transactions: self.transactions)
+            self.onGivtProcessed(transactions: self.transactions, organisationName: self.organisation, canShare: true)
         }
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         //no back button

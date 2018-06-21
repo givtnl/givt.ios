@@ -22,7 +22,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     
     @IBOutlet var navBar: UINavigationItem!
     var pickedChoice: Choice!
-    private var beaconId: String?
+    private var namespace: String?
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
@@ -31,21 +31,15 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     }
     
     private func fillSuggestion() -> UIView? {
-        var namespace = ""
-
-        var overrideSuggestion = "61f7ed014e4c0317d000"
-        #if PRODUCTION
-            overrideSuggestion = "61f7ed014e4c1017d000" //Stichting Opwekking
-        #endif
-        
-        if let beaconId = GivtService.shared.getBestBeacon.namespace {
-            namespace = beaconId
-        } else if let savedNamespace = UserDefaults.standard.lastGivtToOrganisation {
+        if let bb = GivtService.shared.bestBeacon {
+            namespace = bb.namespace
+        } else if let savedNamespace = UserDefaults.standard.lastGivtToOrganisationNamespace {
             namespace = savedNamespace
         }
         
-        guard let orgName = GivtService.shared.getOrgName(orgNameSpace: namespace) else { return nil }
-        self.beaconId = namespace
+        guard let namespace = namespace else { return nil }
+        
+        guard let orgName = GivtService.shared.getOrganisationName(organisationNameSpace: namespace) else { return nil }
         
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(giveSuggestion))
@@ -283,7 +277,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     }
     
     @objc func giveSuggestion() {
-        if let beaconId = self.beaconId {
+        if let beaconId = namespace {
             log.info(message: "Gave to the suggestion")
             if let idx = beaconId.index(of: ".") {
                 let namespace = beaconId[..<idx]

@@ -97,7 +97,7 @@ extension UserDefaults {
         }
     }
     
-    var lastGivtToOrganisation: String? {
+    var lastGivtToOrganisationNamespace: String? {
         get {
             return string(forKey: UserDefaultsKeys.lastGivtToOrganisation.rawValue)
         }

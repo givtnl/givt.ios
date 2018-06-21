@@ -297,7 +297,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     topController = presentedViewController
                 }
                 var message = NSLocalizedString("ShareTheGivtTextNoOrg", comment: "")
-                if let namespace = UserDefaults.standard.lastGivtToOrganisation, let organisation = GivtService.shared.getOrgName(orgNameSpace: namespace) {
+                if let namespace = UserDefaults.standard.lastGivtToOrganisationNamespace, let organisation = GivtService.shared.getOrganisationName(organisationNameSpace: namespace) {
                     message = NSLocalizedString("ShareTheGivtText", comment: "").replacingOccurrences(of: "{0}", with: organisation)
                 }
 
