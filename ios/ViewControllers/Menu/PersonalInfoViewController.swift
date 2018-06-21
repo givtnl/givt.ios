@@ -183,7 +183,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.setBackgroundColor(.white)
         
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-       // titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
+        titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
         
     }
     
@@ -203,8 +203,9 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: user.address, type: .address))
         settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: user.postalCode + " " + user.city + ", " + country, type: .countrycode))
         settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone"), name: user.mobileNumber, type: .phonenumber))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: user.iban, type: .iban))
+        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: user.iban.separate(every: 4, with: " "), type: .iban))
         settings.append(PersonalSetting(image: #imageLiteral(resourceName: "green_lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
+        settingsTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {

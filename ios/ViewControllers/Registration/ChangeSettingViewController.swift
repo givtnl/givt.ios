@@ -36,6 +36,10 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         inputFieldToEdit.beganEditing()
         
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -46,6 +50,11 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     @objc func textFieldDidChange() {
         inputFieldToEdit.isValid = validateFunction(inputFieldToEdit.text!)
         saveBtn.isEnabled = inputFieldToEdit.isValid
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing()
+        return true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -83,9 +92,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     }
     
     func animateKeyboard(withConstraintValue: CGFloat){
-        
         bottomAnchor.constant = withConstraintValue
-        
         UIView.animate(withDuration: 0.3, animations: {
             
             self.view.layoutIfNeeded()
