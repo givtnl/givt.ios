@@ -44,11 +44,11 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             timer?.invalidate()
             timer = nil
         }
-        
     }
-    @IBAction func goBack(_ sender: Any) {
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func handleTimer(timer: Timer) {

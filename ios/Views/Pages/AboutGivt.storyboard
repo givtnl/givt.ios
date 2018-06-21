@@ -157,7 +157,7 @@ Je kan ons vinden  qsdfg sdfg sd gsd gfop sdf sdfg sdfg sdfg de Noordersluisweg 
                     <navigationItem key="navigationItem" id="EWv-kr-Oev">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="vBb-qb-zQ4">
                             <connections>
-                                <action selector="goBack:" destination="Hw2-wN-RuE" id="pQw-ws-7rx"/>
+                                <action selector="backPressed:" destination="Hw2-wN-RuE" id="NGN-ob-HbF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

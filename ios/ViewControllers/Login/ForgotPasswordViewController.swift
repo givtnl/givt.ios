@@ -40,6 +40,8 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!, NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)]
+        self.navigationController?.removeLogo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,10 +50,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBOutlet var goBack: UIBarButtonItem!
-    @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
+
     @IBAction func send(_ sender: Any) {
         print("sending password forgot mail")
         if !_appServices.connectedToNetwork() {

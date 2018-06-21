@@ -480,10 +480,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
 
     }
     
-    @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // deselect row otherwise weird things happen in tableview
         if let indexPath = tableView.indexPathForSelectedRow {

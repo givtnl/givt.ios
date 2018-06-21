@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -93,7 +93,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hier beheer je het gebruik van je toegangscode." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSg-BF-UMG">
                                 <rect key="frame" x="20" y="74" width="335" height="44"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -112,7 +112,7 @@
                     <navigationItem key="navigationItem" title="Toegangscode" id="AH9-9a-oNO">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="dy7-mf-NPG">
                             <connections>
-                                <action selector="goBack:" destination="FbM-0B-y3D" id="nQi-Am-xe8"/>
+                                <action selector="backPressed:" destination="FbM-0B-y3D" id="sjI-zy-m36"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -140,7 +140,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voer je nieuwe toegangscode in." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Irk-fM-jhW">
                                 <rect key="frame" x="20" y="74" width="335" height="22"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -468,7 +468,7 @@
                     <navigationItem key="navigationItem" title="Wijzig" id="bKV-zA-D2k">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="X6C-Jo-Tuv">
                             <connections>
-                                <action selector="goBack:" destination="Pzo-7I-PNV" id="004-hM-Hkv"/>
+                                <action selector="backPressed:" destination="Pzo-7I-PNV" id="Cpf-qm-kxo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -87,13 +87,6 @@ class PinScreenViewController: UIViewController {
         SVProgressHUD.setBackgroundColor(.white)
     }
 
-    @IBAction func goBack(_ sender: Any) {
-        if self.typeOfPin == .login {
-            self.dismiss(animated: true, completion: {})
-        } else {
-            self.navigationController?.popViewController(animated: true)
-        }
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

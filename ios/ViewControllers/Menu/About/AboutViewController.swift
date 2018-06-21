@@ -71,9 +71,9 @@ class AboutViewController: UIViewController {
 
     @IBOutlet var goBack: UIBarButtonItem!
     
-    @IBAction func goBack(_ sender: Any) {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.endEditing()
-        self.dismiss(animated: true, completion: nil)
     }
     
     func send() {

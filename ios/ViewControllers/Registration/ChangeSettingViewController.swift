@@ -78,10 +78,6 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         self.saveAction(inputFieldToEdit.text!)
     }
     
-    @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     //and then:
     //MARK: Animate Keyboard
     @objc func keyboardWillShow(notification : NSNotification){
