@@ -319,7 +319,7 @@
 "Unregister" = "Terminate account";
 
 /*Informatie op de "account opzeggen" pagina*/
-"UnregisterInfo" = "We’re sad to see you go! We will delete all your personal information.\n\nThere’s one exception: if you donated to a PBO-registered organisation, we are obligated to keep the information about your donation, your name and address for at least 7 years. Your email address and phone number will be removed.";
+"UnregisterInfo" = "We’re sad to see you go! We will delete all your personal information.\n\nThere’s one exception: if you donated to a PBO-registered organisation, we are obligated to keep the information about your donation, your name and address for at least 7 years. Your e-mail address and phone number will be removed.";
 
 /*Jammer dat je gaat*/
 "UnregisterSad" = "We're sad to see you leave\nand we hope to see you again.";
@@ -393,7 +393,7 @@
 "PincodeDoNotMatch" = "Codes do not match.\nPlease try again.";
 "PincodeSuccessfullTitle" = "Got it!";
 "PincodeSuccessfullMessage" = "Your passcode has been successfully saved.";
-"PincodeForgotten" = "Login with email and password";
+"PincodeForgotten" = "Login with e-mail and password";
 "PincodeForgottenTitle" = "Forgot passcode";
 "PincodeForgottenMessage" = "Login using your e-mail address to access your account.";
 "PincodeWrongPinTitle" = "Wrong passcode";
@@ -538,7 +538,7 @@
 "AddCollectConfirm" = "Do you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
 "FAQantwoord0" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +31 320 320 115 or by sending an e-mail to support@givtapp.net.";
-"PersonalPageHeader" = "Change your email address or IBAN below.";
+"PersonalPageHeader" = "Change your e-mail address or IBAN below.";
 "PersonalPageSubHeader" = "Other account data can be changed by sending an e-mail to support@givtapp.net.";
 "TitlePersonalInfo" = "Personal information";
 "PersonalInfoTempUser" = "Hi there, fast giver! You're using a temporary account. We have not received your personal details yet.";
@@ -669,7 +669,7 @@
 "FaqAntwoord10" = "If you want to change your password, you can choose ‘Personal information’ in the menu and then press the ‘Change password’ button. We will send you an e-mail with a link to a web page where you can change your password.";
 "EditPersonalSucces" = "Your personal information is successfully updated";
 "EditPersonalFail" = "Oops, we could not update your personal information";
-"ChangeEmail" = "Change email adress";
+"ChangeEmail" = "Change e-mail address";
 "ChangeIBAN" = "Change IBAN";
 "SmsSuccess" = "Code sent via SMS";
 "SmsFailed" = "Please try again later";
