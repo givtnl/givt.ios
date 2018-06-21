@@ -30,16 +30,14 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         inputFieldToEdit.text = inputOfInput
         fieldToEdit.text = titleOfInput
         imgView.image = img
-        
         inputFieldToEdit.delegate = self
-        inputFieldToEdit.becomeFirstResponder()
-        inputFieldToEdit.beganEditing()
-        
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
         
-        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        inputFieldToEdit.becomeFirstResponder()
+        inputFieldToEdit.beganEditing()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -50,6 +48,13 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     @objc func textFieldDidChange() {
         inputFieldToEdit.isValid = validateFunction(inputFieldToEdit.text!)
         saveBtn.isEnabled = inputFieldToEdit.isValid
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else { return }
+        if touch.view != saveBtn {
+            self.endEditing()
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -69,6 +74,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveAction(_ sender: Any) {
+        self.endEditing()
         self.saveAction(inputFieldToEdit.text!)
     }
     

@@ -313,14 +313,12 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 return self.validationHelper.isIbanChecksumValid(s)
             }
             vc.saveAction = { s in
+                SVProgressHUD.show()
                 self.loginManager.changeIban(iban: s, callback: { (success) in
+                    SVProgressHUD.dismiss()
                     if success {
                         DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "", message: NSLocalizedString("EditPersonalSucces", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                                self.navigationController?.popViewController(animated: true)
-                            }))
-                            self.present(alert, animated: true, completion: nil)
+                            self.navigationController?.popViewController(animated: true)
                         }
                     } else {
                         DispatchQueue.main.async {
@@ -346,16 +344,12 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.saveAction = { newEmail in
                 SVProgressHUD.show()
                 self.loginManager.checkTLD(email: newEmail, completionHandler: { (success) in
-                    SVProgressHUD.dismiss()
                     if success {
                         self.loginManager.updateEmail(email: newEmail, completionHandler: { (success2) in
+                            SVProgressHUD.dismiss()
                             if success2 {
                                 DispatchQueue.main.async {
-                                    let alert = UIAlertController(title: "", message: NSLocalizedString("EditPersonalSucces", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                                        self.navigationController?.popViewController(animated: true)
-                                    }))
-                                    self.present(alert, animated: true, completion: nil)
+                                    self.navigationController?.popViewController(animated: true)
                                 }
                             } else {
                                 DispatchQueue.main.async {
@@ -368,6 +362,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                             }
                         })
                     } else {
+                        SVProgressHUD.dismiss()
                         DispatchQueue.main.async {
                             let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
