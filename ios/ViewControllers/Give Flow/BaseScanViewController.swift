@@ -102,7 +102,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                           "GUID" : UserDefaults.standard.userExt!.guid,
                           "givtObj" : trs,
                           "apiUrl" : AppConstants.apiUri + "/",
-                          "organisation" : self.organisation,
+                          "organisation" : organisationName ?? "",
                           "spUrl" : url,
                           "canShare" : canShare]
         
