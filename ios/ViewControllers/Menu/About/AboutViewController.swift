@@ -101,9 +101,8 @@ class AboutViewController: UIViewController {
         let os = "Operating system: " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
         let appLang = "App language: "  + Locale.preferredLanguages[0]
         let email = "Email: " + UserDefaults.standard.userExt.email
-        let name = UserDefaults.standard.tempUser ? "Temporary account" : UserDefaults.standard.userExt.firstName + " " + UserDefaults.standard.userExt.lastName
         var message = textView.text.replacingOccurrences(of: "\n", with: br)
-        let footer = name + br + email + br + appVersion + br + os + br + device + br + appLang
+        let footer = email + br + appVersion + br + os + br + device + br + appLang
         
         message += br + br + footer
         
