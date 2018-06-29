@@ -172,6 +172,7 @@ class LoginManager {
         client.get(url: "/api/UsersExtension", data: [:]) { (response) in
             guard let response = response else {
                 completion(nil)
+                self.log.error(message: "No response from getting UserExt object")
                 return
             }
             
@@ -186,6 +187,7 @@ class LoginManager {
                     }
                 }
             } else {
+                self.log.error(message: "Status was NOT ok from getting UserExt object")
                 completion(nil)
             }
         }
