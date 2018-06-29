@@ -95,12 +95,11 @@ final class GivtService: NSObject {
         if let ma = organisation.MultiUseAllocations, ma.count > 0 {
             for m in ma {
                 let date = Date()
-                guard let begin = CronExpression(cronString: m.dtBeginCron + " *")?.getNextRunDate(date), let end = CronExpression(cronString: m.dtEndCron + " *")?.getNextRunDate(date) else {
-                    break
-                }
-                if end < begin {
-                    self.log.info(message: "Could succesfully identify CRON-Allocation-Beacon")
-                    return m.Name
+                if let begin = CronExpression(cronString: m.dtBeginCron + " *")?.getNextRunDate(date), let end = CronExpression(cronString: m.dtEndCron + " *")?.getNextRunDate(date) {
+                    if end < begin {
+                        self.log.info(message: "Could succesfully identify CRON-Allocation-Beacon")
+                        return m.Name
+                    }
                 }
             }
             self.log.warning(message: "Could NOT identify CRON-Allocation-Beacon")
