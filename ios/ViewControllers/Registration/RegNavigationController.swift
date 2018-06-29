@@ -29,7 +29,6 @@ class RegNavigationController: UINavigationController {
         } else if startPoint == .amountLimit && !isRegistration { //only show amountlimit when not registration flow
             let vc = storyboard?.instantiateViewController(withIdentifier: "alvcreg") as! AmountLimitViewController
             vc.hasBackButton = true
-            vc.isRegistration = isRegistration
             self.setViewControllers([vc], animated: false)
         } else if startPoint == .mandate {
             let vc = storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController

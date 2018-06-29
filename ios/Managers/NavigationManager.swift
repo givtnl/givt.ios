@@ -149,6 +149,33 @@ class NavigationManager {
             }
         }
     }
+    
+    public func reAuthenticateIfNeeded(context: UIViewController, completion: @escaping () -> Void) {
+        if !LoginManager.shared.isBearerStillValid {
+            if UserDefaults.standard.hasPinSet {
+                let pinVC = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
+                pinVC.typeOfPin = .login
+                pinVC.outerHandler = { status in
+                    if !status {
+                        self.reAuthenticateIfNeeded(context: context, completion: completion)
+                    } else {
+                        completion()
+                    }
+                    context.present(pinVC, animated: true, completion: {
+                        
+                    })
+                }
+            } else {
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+                loginVC.outerHandler = completion
+                loginVC.emailEditable = false
+                context.present(loginVC, animated: true, completion: {
+                })
+            }
+        } else {
+            completion()
+        }
+    }
 
     public func executeWithLogin(context: UIViewController, emailEditable: Bool = false, completion: @escaping () -> Void) {
         if !_appServices.connectedToNetwork() {
