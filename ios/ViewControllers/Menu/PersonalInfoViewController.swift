@@ -83,6 +83,10 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             SVProgressHUD.dismiss()
             guard let userExt = userExtObject else {
                 //todo bearer prob expired
+                DispatchQueue.main.async {
+                    self.backPressed(self)
+                }
+                
                 return
             }
             let country = AppConstants.countries[userExt.CountryCode].name
