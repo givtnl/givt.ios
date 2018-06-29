@@ -155,7 +155,43 @@ class LoginManager {
         return nil
     }
     
-    private func getUserExt(completionHandler: @escaping (Bool) -> Void) {
+    struct LMUserExt: Codable {
+        var GUID: String
+        var PhoneNumber: String
+        var FirstName: String
+        var LastName: String
+        var Email: String
+        var Address: String
+        var PostalCode: String
+        var CountryCode: Int
+        var IBAN: String
+        var City: String
+    }
+    
+    func getUserExtObject(completion: @escaping(LMUserExt?) -> Void) {
+        client.get(url: "/api/UsersExtension", data: [:]) { (response) in
+            guard let response = response else {
+                completion(nil)
+                return
+            }
+            
+            if response.status == .ok {
+                if let data = response.data {
+                    do {
+                        let userExt = try JSONDecoder().decode(LMUserExt.self, from: data)
+                        completion(userExt)
+                    } catch let err as NSError {
+                        self.log.error(message: err.description)
+                        completion(nil)
+                    }
+                }
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func getUserExt(completionHandler: @escaping (Bool) -> Void) {
         client.get(url: "/api/UsersExtension", data: [:]) { (res) in
             if let res = res, let data = res.data, res.basicStatus == .ok {
                 do {

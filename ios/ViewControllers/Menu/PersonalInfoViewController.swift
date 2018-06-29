@@ -38,6 +38,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
+                title = NSLocalizedString("TitlePersonalInfo", comment: "")
         settings = [PersonalSetting]()
         settingsTableView.tableFooterView = UIView()
         self.navigationController?.removeLogo()
@@ -77,24 +78,26 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let user = UserDefaults.standard.userExt!
-        var country = ""
-        if let idx = Int(user.countryCode) {
-            country = AppConstants.countries[idx].name
-        } else {
-            country = AppConstants.countries.first(where: { $0.shortName == user.countryCode })!.name
+        SVProgressHUD.show()
+        loginManager.getUserExtObject { (userExtObject) in
+            SVProgressHUD.dismiss()
+            guard let userExt = userExtObject else {
+                //todo bearer prob expired
+                return
+            }
+            let country = AppConstants.countries[userExt.CountryCode].name
+            self.settings.removeAll()
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: userExt.FirstName + " " + userExt.LastName, type: .name))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: userExt.Email, type: .emailaddress))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address, type: .address))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: userExt.PostalCode + " " + userExt.City + ", " + country, type: .countrycode))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone"), name: userExt.PhoneNumber, type: .phonenumber))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: userExt.IBAN.separate(every: 4, with: " "), type: .iban))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "green_lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
+            DispatchQueue.main.async {
+                self.settingsTableView.reloadData()
+            }
         }
-        title = NSLocalizedString("TitlePersonalInfo", comment: "")
-        settings.removeAll()
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: user.firstName + " " + user.lastName, type: .name))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: user.email, type: .emailaddress))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: user.address, type: .address))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: user.postalCode + " " + user.city + ", " + country, type: .countrycode))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone"), name: user.mobileNumber, type: .phonenumber))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: user.iban.separate(every: 4, with: " "), type: .iban))
-        settings.append(PersonalSetting(image: #imageLiteral(resourceName: "green_lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
-        settingsTableView.reloadData()
-        
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -134,7 +137,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
             vc.img = #imageLiteral(resourceName: "card")
             vc.titleOfInput = NSLocalizedString("ChangeIBAN", comment: "")
-            vc.inputOfInput = UserDefaults.standard.userExt!.iban
+            vc.inputOfInput = settings[indexPath.row].name
             vc.validateFunction = { s in
                 return self.validationHelper.isIbanChecksumValid(s)
             }
@@ -163,7 +166,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
             vc.img = #imageLiteral(resourceName: "email_sign")
             vc.titleOfInput = NSLocalizedString("ChangeEmail", comment: "")
-            vc.inputOfInput = UserDefaults.standard.userExt!.email
+            vc.inputOfInput = settings[indexPath.row].name
             vc.validateFunction = { s in
                 return self.validationHelper.isEmailAddressValid(s)
             }
