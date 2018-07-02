@@ -161,16 +161,13 @@ class NavigationManager {
                     } else {
                         completion()
                     }
-                    context.present(pinVC, animated: true, completion: {
-                        
-                    })
+                    context.present(pinVC, animated: true, completion: nil)
                 }
             } else {
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
                 loginVC.outerHandler = completion
                 loginVC.emailEditable = false
-                context.present(loginVC, animated: true, completion: {
-                })
+                context.present(loginVC, animated: true, completion: nil)
             }
         } else {
             completion()
