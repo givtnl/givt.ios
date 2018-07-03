@@ -49,8 +49,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         handleOldBeaconList()
+        checkIfTempUser()
         
         return true
+    }
+    
+    func checkIfTempUser() {
+        guard let userExt = UserDefaults.standard.userExt else { return }
+        LoginManager.shared.doesEmailExist(email: userExt.email) { (status) in
+            if status == "true" { //completed registration
+                UserDefaults.standard.isTempUser = false
+            } else if status == "false" { //email is completely new
+                UserDefaults.standard.isTempUser = true
+            } else if status == "temp" { //email is in db but not succesfully registered
+                UserDefaults.standard.isTempUser = true
+            }
+        }
     }
     
     func handleOldBeaconList() {

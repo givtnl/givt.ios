@@ -436,9 +436,11 @@ class LoginManager {
                 if let settings = UserDefaults.standard.userExt {
                     userExt = settings
                 }
+                if userExt.email != email {
+                    UserDefaults.standard.hasPinSet = false
+                }
                 userExt.email = email
                 UserDefaults.standard.userExt = userExt
-                UserDefaults.standard.hasPinSet = false
                 let s = text.replacingOccurrences(of: "\"", with: "")
                 completionHandler(s)
             } else {
