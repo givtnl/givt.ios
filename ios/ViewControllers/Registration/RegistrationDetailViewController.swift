@@ -38,6 +38,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     private var selectedMobilePrefix: Country!
     private var _lastTextField: UITextField = UITextField()
     
+    var emailField = ""
+    var firstNameField = ""
+    var lastNameField = ""
+    var password = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -280,7 +285,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let iban = self.iban.text!.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        let userData = RegistrationUserData(address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
+        let userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
             if let success = success {
                 if success {

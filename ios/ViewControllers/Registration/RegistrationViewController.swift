@@ -25,6 +25,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     private var _lastTextField: UITextField = UITextField()
     private var validationHelper = ValidationHelper.shared
     private var regDetailVC: RegistrationDetailViewController!
+
     private var _isShowingPassword = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,11 +174,11 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         let password = self.password.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let firstName = self.forename.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let lastName = self.lastname.text!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        SVProgressHUD.show()
-        let user = RegistrationUser(email: email, password: password, firstName: firstName, lastName: lastName)
-        LoginManager.shared.registerUser(user)
-        SVProgressHUD.dismiss()
-        //let regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
+
+        self.regDetailVC.emailField = email
+        self.regDetailVC.password = password
+        self.regDetailVC.firstNameField = firstName
+        self.regDetailVC.lastNameField = lastName
         self.show(self.regDetailVC, sender: nil)
     }
 

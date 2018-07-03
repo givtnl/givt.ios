@@ -23,8 +23,6 @@ class LoginManager {
     }
     
     static let shared = LoginManager()
-    private var _registrationUser = UserExt()
-    
     
     private init() {
         userClaim = UserDefaults.standard.isLoggedIn ? .give : .startedApp
@@ -196,15 +194,7 @@ class LoginManager {
                         config = oldConfig
                     }
                     config.guid = parsedData["GUID"] as! String
-                    config.mobileNumber = parsedData["PhoneNumber"] as! String
-                    config.firstName = parsedData["FirstName"] as! String
-                    config.lastName = parsedData["LastName"] as! String
                     config.email = parsedData["Email"] as! String
-                    config.address = parsedData["Address"] as! String
-                    config.postalCode = parsedData["PostalCode"] as! String
-                    config.city = parsedData["City"] as! String
-                    config.countryCode = String(describing: parsedData["CountryCode"] as! Int)
-                    config.iban = parsedData["IBAN"] as! String
 
                     UserDefaults.standard.userExt = config
                     UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 500 : parsedData["AmountLimit"] as! Int
@@ -219,51 +209,31 @@ class LoginManager {
         }
     }
     
-    func registerUser(_ user: RegistrationUser) {
-        _registrationUser = UserExt()
-        _registrationUser.firstName = user.firstName
-        _registrationUser.lastName = user.lastName
-        _registrationUser.password = user.password
-        _registrationUser.email = user.email
-    }
-    
-    func registerExtraDataFromUser(_ user: RegistrationUserData, completionHandler: @escaping (Bool?) -> Void) {
-        _registrationUser.address = user.address
-        _registrationUser.city = user.city
-        _registrationUser.countryCode = user.countryCode
-        _registrationUser.mobileNumber = user.mobileNumber
-        _registrationUser.iban = user.iban.replacingOccurrences(of: " ", with: "")
-        _registrationUser.postalCode = user.postalCode
-        
+    func registerExtraDataFromUser(_ user: RegistrationUser, completionHandler: @escaping (Bool?) -> Void) {
         let params = [
-            "Email": _registrationUser.email,
-            "Password" : _registrationUser.password,
-            "IBAN":  _registrationUser.iban,
-            "PhoneNumber":  _registrationUser.mobileNumber,
-            "FirstName":  _registrationUser.firstName,
-            "LastName":  _registrationUser.lastName,
-            "Address":  _registrationUser.address,
-            "City":  _registrationUser.city,
-            "PostalCode":  _registrationUser.postalCode,
-            "CountryCode":  _registrationUser.countryCode,
+            "Email": user.email,
+            "Password" : user.password,
+            "IBAN":  user.iban.replacingOccurrences(of: " ", with: ""),
+            "PhoneNumber":  user.mobileNumber,
+            "FirstName":  user.firstName,
+            "LastName":  user.lastName,
+            "Address":  user.address,
+            "City":  user.city,
+            "PostalCode":  user.postalCode,
+            "CountryCode":  user.countryCode,
             "AmountLimit": "500"]
         
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
                 if let res = res {
                     if let data = res.data, res.basicStatus == .ok {
-                        self._registrationUser.guid = String(bytes: data, encoding: .utf8)!
+                        let guid = String(bytes: data, encoding: .utf8)!
                         let newConfig = UserDefaults.standard.userExt!
-                        newConfig.guid = self._registrationUser.guid
-                        newConfig.password = ""
+                        newConfig.guid = guid
                         UserDefaults.standard.userExt = newConfig
                         
-                        self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
-                            
+                        self.loginUser(email: user.email, password: user.password, completionHandler: { (success, err, descr) in
                             if success {
-                                
-                                self._registrationUser.password = ""
-                                UserDefaults.standard.userExt = self._registrationUser
                                 self.saveAmountLimit(500, completionHandler: { (status) in
                                     //niets
                                 })
@@ -371,10 +341,8 @@ class LoginManager {
     }
     
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
-        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe")
-        let regUserExt = RegistrationUserData(address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
-        self.registerUser(regUser)
-        self.registerExtraDataFromUser(regUserExt) { b in
+        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
+        self.registerExtraDataFromUser(regUser) { b in
             if let b = b {
                 if b {
                     self.userClaim = .giveOnce
