@@ -145,21 +145,37 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             }
             vc.saveAction = { s in
                 SVProgressHUD.show()
-                self.loginManager.changeIban(iban: s.replacingOccurrences(of: " ", with: ""), callback: { (success) in
-                    SVProgressHUD.dismiss()
-                    if success {
-                        DispatchQueue.main.async {
-                            self.navigationController?.popViewController(animated: true)
+                NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
+                    self.loginManager.getUserExtObject(completion: { (userExt) in
+                        guard let userExt = userExt else
+                        {
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                    
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                            return
                         }
-                    } else {
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                                
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                    }
+                        self.loginManager.changeIban(userExt: userExt,iban: s.replacingOccurrences(of: " ", with: ""), callback: { (success) in
+                            SVProgressHUD.dismiss()
+                            if success {
+                                DispatchQueue.main.async {
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                        
+                                    }))
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+                            }
+                        })
+                    })
+                    
                 })
             }
             self.navigationController?.pushViewController(vc, animated: true)
