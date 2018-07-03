@@ -68,7 +68,7 @@ class NavigationManager {
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         vc.transitioningDelegate = slideFromRightAnimation
         permissionAsked { (asked) in
-            if UserDefaults.standard.tempUser { //tempuser
+            if UserDefaults.standard.isTempUser { //tempuser
                 vc.startPoint = .registration
                 self.pushOnMainPage(context, vc)
             } else if !asked {

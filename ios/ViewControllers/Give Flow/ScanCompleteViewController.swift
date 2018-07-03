@@ -10,17 +10,16 @@ import UIKit
 
 class ScanCompleteViewController: UIViewController {
     var organisation = ""
-    var bestBeacon = BestBeacon()
+    var canShare = false
     override func viewDidLoad() {
         super.viewDidLoad()
         btnBack.setTitle(NSLocalizedString("Ready", comment: ""), for: .normal)
         shareWithFriends.setTitle(NSLocalizedString("ShareTheGivtButton", comment: ""), for: .normal)
         lblBody.text = NSLocalizedString("OfflineGegevenGivtMessage", comment: "")
         lblTitle.text = NSLocalizedString("YesSuccess", comment: "")
-        if let beaconId = bestBeacon.beaconId, beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
+        if !canShare {
             shareWithFriends.removeFromSuperview()
         }
-
     }
 
     override func didReceiveMemoryWarning() {

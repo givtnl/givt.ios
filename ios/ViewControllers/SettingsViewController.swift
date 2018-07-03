@@ -107,7 +107,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         items = []
         let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
         
-        let tempUser = UserDefaults.standard.tempUser
+        let tempUser = UserDefaults.standard.isTempUser
         
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
@@ -182,7 +182,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         logService.info(message: "User is terminating account via the menu")
         let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! BaseNavigationController
         vc.transitioningDelegate = self.slideFromRightAnimation
-        if UserDefaults.standard.tempUser { //temp users can screw their account without authentication
+        if UserDefaults.standard.isTempUser { //temp users can screw their account without authentication
             self.present(vc, animated: true, completion: {
             })
         } else {

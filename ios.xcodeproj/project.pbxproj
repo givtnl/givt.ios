@@ -61,6 +61,7 @@
 		D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76A03421FBAFBD600E338C5 /* CarouselViewController.swift */; };
 		D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76A03441FBAFC5100E338C5 /* TemplateViewController.swift */; };
 		D770E5341FB097FA0079D253 /* ManualOrganisationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */; };
+		D7721B4B20EB67AD009771EE /* LMUserExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7721B4A20EB67AD009771EE /* LMUserExt.swift */; };
 		D77511BB1F711231004F91F6 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77511BA1F711231004F91F6 /* DateExtensions.swift */; };
 		D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77511BC1F713B56004F91F6 /* AgendaNumber.swift */; };
 		D77667EE1F39F12900649157 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77667ED1F39F12900649157 /* LoginManager.swift */; };
@@ -222,6 +223,7 @@
 		D76A03421FBAFBD600E338C5 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		D76A03441FBAFC5100E338C5 /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualOrganisationView.swift; sourceTree = "<group>"; };
+		D7721B4A20EB67AD009771EE /* LMUserExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMUserExt.swift; sourceTree = "<group>"; };
 		D77511BA1F711231004F91F6 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		D77511BC1F713B56004F91F6 /* AgendaNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaNumber.swift; sourceTree = "<group>"; };
 		D77667ED1F39F12900649157 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
@@ -605,6 +607,7 @@
 				D748F6032063D50C00B25BC2 /* HistoryTableViewModel.swift */,
 				D7BC58D520776361008C9497 /* Context.swift */,
 				FB8A610A20A049B400696D20 /* BaseUser.swift */,
+				D7721B4A20EB67AD009771EE /* LMUserExt.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -918,6 +921,7 @@
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
 				D7DD799F209B054500047CA7 /* EventViewController.swift in Sources */,
 				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
+				D7721B4B20EB67AD009771EE /* LMUserExt.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,

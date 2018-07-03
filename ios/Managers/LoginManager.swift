@@ -155,18 +155,7 @@ class LoginManager {
         return nil
     }
     
-    struct LMUserExt: Codable {
-        var GUID: String
-        var PhoneNumber: String
-        var FirstName: String
-        var LastName: String
-        var Email: String
-        var Address: String
-        var PostalCode: String
-        var CountryCode: Int
-        var IBAN: String
-        var City: String
-    }
+    
     
     func getUserExtObject(completion: @escaping(LMUserExt?) -> Void) {
         client.get(url: "/api/UsersExtension", data: [:]) { (response) in
@@ -180,6 +169,8 @@ class LoginManager {
                 if let data = response.data {
                     do {
                         let userExt = try JSONDecoder().decode(LMUserExt.self, from: data)
+                        UserDefaults.standard.isTempUser = userExt.IsTempUser
+                        UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 500 : userExt.AmountLimit
                         completion(userExt)
                     } catch let err as NSError {
                         self.log.error(message: err.description)
@@ -199,6 +190,7 @@ class LoginManager {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                     print(parsedData)
+                    UserDefaults.standard.isTempUser = Bool(truncating: parsedData["IsTempUser"] as! NSNumber)
                     var config: UserExt = UserExt()
                     if let oldConfig = UserDefaults.standard.userExt {
                         config = oldConfig
@@ -588,5 +580,6 @@ class LoginManager {
         UserDefaults.standard.showedLastYearTaxOverview = false
         UserDefaults.standard.hasGivtsInPreviousYear = false
         UserDefaults.standard.lastGivtToOrganisationNamespace = nil
+        UserDefaults.standard.isTempUser = false
     }
 }

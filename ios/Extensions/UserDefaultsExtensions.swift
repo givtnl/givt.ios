@@ -32,6 +32,7 @@ extension UserDefaults {
         case showcases              //deprecated
         case showCasesByUserID
         case orgBeaconListV2
+        case tempUser
     }
     
     enum Showcase: String {
@@ -137,9 +138,13 @@ extension UserDefaults {
         }
     }
     
-    var tempUser: Bool {
+    var isTempUser: Bool {
         get {
-            return userExt?.iban == AppConstants.tempIban
+            return bool(forKey: UserDefaultsKeys.tempUser.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.tempUser.rawValue)
+            synchronize()
         }
     }
     
