@@ -513,13 +513,11 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     SVProgressHUD.dismiss()
                     self.tableView.reloadData()
                     self.givyContainer.isHidden = true
-                    
                 }
 
-                self.showCancelFeature()
-                
-                
-                
+                DispatchQueue.main.async {
+                    self.showCancelFeature()
+                }
             }
         }
     }
