@@ -440,6 +440,7 @@ final class GivtService: NSObject {
         client.get(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/givts/mail-report?year=\(Date().getYear()-1)", data: [:]) { (response) in
             if let response = response {
                 if response.basicStatus == .ok {
+                    UserDefaults.standard.showedLastYearTaxOverview = true
                     callback(true)
                 } else {
                     callback(false)
