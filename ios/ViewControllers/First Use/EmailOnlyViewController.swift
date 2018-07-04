@@ -109,14 +109,10 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             }
             config.email = self.email.text!
             UserDefaults.standard.userExt = config
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-            let ch: () -> Void = {
+            NavigationManager.shared.executeWithLogin(context: self, emailEditable: true) {
                 self.navigationController?.dismiss(animated: false, completion: nil)
                 NavigationManager.shared.loadMainPage()
             }
-            vc.outerHandler = ch
-            vc.emailEditable = true
-            self.present(vc, animated: true, completion: nil)
         }
     }
     
