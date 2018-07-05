@@ -67,20 +67,30 @@ class NavigationManager {
     public func finishRegistration(_ context: UIViewController) {
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         vc.transitioningDelegate = slideFromRightAnimation
-        permissionAsked { (asked) in
-            if UserDefaults.standard.isTempUser { //tempuser
-                vc.startPoint = .registration
-                self.pushOnMainPage(context, vc)
-            } else if !asked {
-                vc.startPoint = .permission
-                self.pushWithLogin(vc, context: context)
-            } else if !self.appSettings.mandateSigned {
-                vc.startPoint = .mandate
-                self.pushWithLogin(vc, context: context)
+        if let userExt = UserDefaults.standard.userExt {
+            LoginManager.shared.doesEmailExist(email: userExt.email) { (status) in
+                if status == "true" { //completed registration
+                    UserDefaults.standard.isTempUser = false
+                } else if status == "false" { //email is completely new
+                    UserDefaults.standard.isTempUser = true
+                } else if status == "temp" { //email is in db but not succesfully registered
+                    UserDefaults.standard.isTempUser = true
+                }
+                
+                self.permissionAsked { (asked) in
+                    if UserDefaults.standard.isTempUser { //tempuser
+                        vc.startPoint = .registration
+                        self.pushOnMainPage(context, vc)
+                    } else if !asked {
+                        vc.startPoint = .permission
+                        self.pushWithLogin(vc, context: context)
+                    } else if !self.appSettings.mandateSigned {
+                        vc.startPoint = .mandate
+                        self.pushWithLogin(vc, context: context)
+                    }
+                }
             }
         }
-        
-        
     }
     
     private func pushOnMainPage(_ context: UIViewController, _ vc: UIViewController) {
