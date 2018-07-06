@@ -139,8 +139,9 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             callback("")
             return
         }
-        SVProgressHUD.show()
+        
         NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
+            SVProgressHUD.show()
             LoginManager.shared.getUserExtObject { (userExtension) in
                 guard let userExtension = userExtension else {
                     SVProgressHUD.dismiss()
