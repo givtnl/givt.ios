@@ -144,6 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let appScheme = GivtService.shared.customReturnAppScheme {
                 let url = URL(string: appScheme)!
                 if UIApplication.shared.canOpenURL(url) {
+                    LogService.shared.info(message: "User just gave, coming back to Givt, now going to \(appScheme)")
                     if #available(iOS 10.0, *) {
                         UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     } else {
