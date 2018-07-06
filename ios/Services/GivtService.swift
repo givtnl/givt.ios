@@ -362,6 +362,7 @@ final class GivtService: NSObject {
                             }
                         } else if res.status == .expectationFailed {
                             self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
+                            
                         } else {
                             self.tryGive(transactions: transactions, trycount: trycount+1)
                         }
@@ -466,8 +467,6 @@ final class GivtService: NSObject {
                 if let response = response, let data = response.data {
                     if response.statusCode == 200 {
                         do {
-                            let url = Bundle.main.path(forResource: "test", ofType: "json")
-                            let data2 = try Data(contentsOf: URL(fileURLWithPath: url!))
                             let decoder = JSONDecoder()
                             decoder.dateDecodingStrategy = .custom({ (date) -> Date in
                                 let container = try date.singleValueContainer()
@@ -479,7 +478,7 @@ final class GivtService: NSObject {
                                 dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
                                 return dateFormatter.date(from: dateStr) ?? Date(timeIntervalSince1970: 0)
                             })
-                            let bl = try decoder.decode(BeaconList.self, from: data) //back to "data"
+                            let bl = try decoder.decode(BeaconList.self, from: data)
                             UserDefaults.standard.orgBeaconListV2 = bl
                             completionHandler(true)
                         } catch let err as NSError {
