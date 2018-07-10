@@ -178,7 +178,7 @@
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
 "BluetoothErrorMessage" = "Om Givt te kunnen gebruiken, \nmoet Bluetooth op je telefoon aanstaan.";
 
-/*Foutmelding als er geen verbinding is met het internet*/
+/*Foutmelding als er geen verbinding is met de server door bijv. internet-issues of door server-issues*/
 "ConnectionError" = "Ai! Geen verbinding met de server, maar het komt goed. Drink rustig een kopje thee en controleer voor de zekerheid je instellingen.";
 
 /*@Tine, vind je 'Ho' kunnen? Of 'Ha' of moet de zin gewoon anders? Sjoerd kan niet leven met 'Hé'*/
@@ -692,3 +692,5 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ChangeIBAN" = "Wijzig IBAN";
 "SmsSuccess" = "Code verstuurd via SMS";
 "SmsFailed" = "Probeer later opnieuw";
+"KerkdienstGemistQuestion" = "Hoe kan ik geven met Givt via kerkdienstgemist.nl?";
+"KerkdienstGemistAnswer" = "Als je via de Kerkdienst Gemist-app aan het kijken bent, kan je ook meteen geven met Givt. Onderin de pagina is een knop voorzien die je doorstuurt naar de Givt-app. Tik een bedrag aan, zoek je kerk uit de lijst en klaar! Nog niet helemaal duidelijk? Bekijk dan onderstaand instructiefilmpje.";
