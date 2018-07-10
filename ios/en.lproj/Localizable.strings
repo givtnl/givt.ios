@@ -673,5 +673,7 @@
 "ChangeIBAN" = "Change IBAN";
 "SmsSuccess" = "Code sent via SMS";
 "SmsFailed" = "Please try again later";
-"KerkdienstGemistQuestion" = "How can I give with Givt through kerkdienstgemist.nl?";
+
+/*Fuzzy*/
+"KerkdienstGemistQuestion" = "How can I give with Givt through the Kerkdienst Gemist App?";
 "KerkdienstGemistAnswer" = "If you’re watching using the Kerkdienst Gemist App, you can easily give with Givt. At the bottom of the page, you’ll find a small button that will take you to the Givt-app. Choose an amount, find your church and you’re done! Need some more guidance? Check the instruction video below!";
