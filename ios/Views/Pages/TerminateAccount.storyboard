@@ -56,18 +56,15 @@ account moeten maken.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LwJ-Sg-xxx">
-                                <rect key="frame" x="20" y="559" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="K6p-K0-aBV"/>
-                                    <constraint firstAttribute="width" constant="24" id="ge2-pq-5Rp"/>
-                                </constraints>
+                                <rect key="frame" x="4" y="543" width="56" height="56"/>
+                                <inset key="contentEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
                                 <state key="normal" image="unchecked"/>
                                 <connections>
                                     <action selector="check:" destination="b7r-Sx-6hb" eventType="touchUpInside" id="Wzg-Ah-Vr6"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ik snap het" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I9r-5q-qMm">
-                                <rect key="frame" x="59" y="559" width="82" height="23.5"/>
+                                <rect key="frame" x="61" y="559" width="82" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <color key="textColor" red="0.56862745098039214" green="0.5607843137254902" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -79,13 +76,13 @@ account moeten maken.</string>
                             <constraint firstItem="9UT-Nz-iTs" firstAttribute="top" secondItem="Vqr-jb-Wnb" secondAttribute="top" constant="10" id="4F3-7v-eij"/>
                             <constraint firstItem="Vqr-jb-Wnb" firstAttribute="bottom" secondItem="cWO-W4-Y1W" secondAttribute="bottom" constant="20" id="ARy-B7-GfO"/>
                             <constraint firstItem="cWO-W4-Y1W" firstAttribute="leading" secondItem="Vqr-jb-Wnb" secondAttribute="leading" constant="20" id="MQx-pb-atc"/>
-                            <constraint firstItem="cWO-W4-Y1W" firstAttribute="top" secondItem="LwJ-Sg-xxx" secondAttribute="bottom" constant="20" id="PiV-c8-ixI"/>
-                            <constraint firstItem="LwJ-Sg-xxx" firstAttribute="leading" secondItem="Vqr-jb-Wnb" secondAttribute="leading" constant="20" id="Qj5-6X-SuD"/>
+                            <constraint firstItem="cWO-W4-Y1W" firstAttribute="top" secondItem="LwJ-Sg-xxx" secondAttribute="bottom" constant="4" id="PiV-c8-ixI"/>
+                            <constraint firstItem="LwJ-Sg-xxx" firstAttribute="leading" secondItem="Vqr-jb-Wnb" secondAttribute="leading" constant="4" id="Qj5-6X-SuD"/>
                             <constraint firstItem="Vqr-jb-Wnb" firstAttribute="trailing" secondItem="cWO-W4-Y1W" secondAttribute="trailing" constant="20" id="UCZ-ki-cOy"/>
                             <constraint firstItem="I9r-5q-qMm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9UT-Nz-iTs" secondAttribute="bottom" id="a5a-CE-2us"/>
                             <constraint firstItem="9UT-Nz-iTs" firstAttribute="leading" secondItem="Vqr-jb-Wnb" secondAttribute="leading" constant="20" id="e3B-bR-Pdv"/>
                             <constraint firstItem="I9r-5q-qMm" firstAttribute="centerY" secondItem="LwJ-Sg-xxx" secondAttribute="centerY" id="e3J-je-nZw"/>
-                            <constraint firstItem="I9r-5q-qMm" firstAttribute="leading" secondItem="LwJ-Sg-xxx" secondAttribute="trailing" constant="15" id="vcz-vT-a0V"/>
+                            <constraint firstItem="I9r-5q-qMm" firstAttribute="leading" secondItem="LwJ-Sg-xxx" secondAttribute="trailing" constant="1" id="vcz-vT-a0V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Vqr-jb-Wnb"/>
                     </view>
