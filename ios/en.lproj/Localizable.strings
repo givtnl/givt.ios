@@ -163,7 +163,7 @@
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
 "BluetoothErrorMessage" = "Switch on Bluetooth on your phone to use Givt.";
 
-/*Foutmelding als er geen verbinding is met het internet*/
+/*Foutmelding als er geen verbinding is met de server door bijv. internet-issues of door server-issues*/
 "ConnectionError" = "Currently we're not able to connect to the server. No worries, have a cup of tea and/or check your settings.";
 "AmountLimitExceeded" = "This amount is higher than your chosen maximum amount. Please adjust the maximum donation amount or choose a lower amount.";
 "Belgium" = "Belgium";
@@ -673,3 +673,5 @@
 "ChangeIBAN" = "Change IBAN";
 "SmsSuccess" = "Code sent via SMS";
 "SmsFailed" = "Please try again later";
+"KerkdienstGemistQuestion" = "How can I give with Givt through kerkdienstgemist.nl?";
+"KerkdienstGemistAnswer" = "If you're watching through the application of Kerkdienst Gemist, you can easily give with Givt. At the bottom of the page, you'll find a small button that will take you to the Givt-app. Tap an amount, find your church and done! Don't quite understand yet? Check the instruction video below.";
