@@ -692,7 +692,5 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ChangeIBAN" = "Wijzig IBAN";
 "SmsSuccess" = "Code verstuurd via SMS";
 "SmsFailed" = "Probeer later opnieuw";
-
-/*Fuzzy*/
 "KerkdienstGemistQuestion" = "Hoe kan ik geven met Givt via de Kerkdienst Gemist-app?";
-"KerkdienstGemistAnswer" = "Als je via de Kerkdienst Gemist-app aan het kijken bent, kan je ook meteen geven met Givt. Onderin de pagina vind je een knop die je doorstuurt naar de Givt-app. Kies een bedrag, zoek je kerk uit de lijst en klaar! Nog niet helemaal duidelijk? Bekijk dan onderstaand instructiefilmpje.";
+"KerkdienstGemistAnswer" = "Als je via de Kerkdienst Gemist-app aan het kijken bent, kan je ook meteen geven met Givt als je kerk dat gebruikt. Onderin de pagina vind je een knop die je doorstuurt naar de Givt-app. Kies een bedrag, zoek je kerk uit de lijst en klaar! Nog niet helemaal duidelijk? Bekijk dan onderstaand instructiefilmpje.";
