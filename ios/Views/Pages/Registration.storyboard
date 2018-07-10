@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jKf-SB-DZ7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jKf-SB-DZ7">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -622,7 +622,7 @@ een gift te herroepen.</string>
                         <barButtonItem key="backBarButtonItem" title=" " id="hhZ-9E-mwu"/>
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="G0v-GY-J6E">
                             <connections>
-                                <action selector="close:" destination="L1z-Ld-vBT" id="oBq-aE-gqi"/>
+                                <action selector="backPressed:" destination="L1z-Ld-vBT" id="E99-LE-Xgo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -979,7 +979,7 @@ Veel geefplezier!</string>
                     <navigationItem key="navigationItem" id="49j-Xf-fye">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="Ebv-Vl-xrw">
                             <connections>
-                                <action selector="back:" destination="xy9-I6-W1u" id="VvK-db-58D"/>
+                                <action selector="backPressed:" destination="xy9-I6-W1u" id="jDq-As-z2O"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1168,7 +1168,7 @@ Veel geefplezier!</string>
                         <barButtonItem key="backBarButtonItem" title=" " id="2l4-ON-Qnn"/>
                         <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="t7R-5Y-Fz0">
                             <connections>
-                                <action selector="goBack:" destination="5PA-7A-fQw" id="WAs-dw-t9z"/>
+                                <action selector="backPressed:" destination="5PA-7A-fQw" id="Wsn-yL-8ZR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

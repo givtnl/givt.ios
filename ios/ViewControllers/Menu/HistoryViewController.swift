@@ -281,10 +281,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
-    @IBAction func goBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
 
     @IBAction func openOverViewPage(_ sender: Any) {
         self.taxOverviewFeature?.completeShowcase()
@@ -517,13 +513,11 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     SVProgressHUD.dismiss()
                     self.tableView.reloadData()
                     self.givyContainer.isHidden = true
-                    
                 }
 
-                self.showCancelFeature()
-                
-                
-                
+                DispatchQueue.main.async {
+                    self.showCancelFeature()
+                }
             }
         }
     }

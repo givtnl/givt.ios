@@ -60,6 +60,11 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             email.text = String.random() + "@givtapp.com"
             checkAll()
         #endif
+        
+        if let userExt = UserDefaults.standard.userExt, !userExt.email.isEmpty {
+            email.text = userExt.email
+            checkAll()
+        }
 
         
         topNavigationBar.items?.first?.leftBarButtonItems?.first?.accessibilityLabel = NSLocalizedString("Back", comment: "")
@@ -104,14 +109,10 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             }
             config.email = self.email.text!
             UserDefaults.standard.userExt = config
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
-            let ch: () -> Void = {
+            NavigationManager.shared.executeWithLogin(context: self, emailEditable: true) {
                 self.navigationController?.dismiss(animated: false, completion: nil)
                 NavigationManager.shared.loadMainPage()
             }
-            vc.outerHandler = ch
-            vc.emailEditable = true
-            self.present(vc, animated: true, completion: nil)
         }
     }
     
@@ -147,12 +148,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.barTintColor = .white
-        
-        if let userExt = UserDefaults.standard.userExt, !userExt.email.isEmpty {
-            email.text = userExt.email
-            checkAll()
-        }
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -40,7 +40,7 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
         }
     }
     
-    func put(url: String, data: [String: String], callback: @escaping (Response?) -> Void) throws {
+    func put(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) throws {
         log.info(message: "PUT on " + url)
         client.put(url: url).delegate(delegate: self)
             .send(data: data)

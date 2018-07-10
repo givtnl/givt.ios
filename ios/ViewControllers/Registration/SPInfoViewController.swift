@@ -70,53 +70,41 @@ class SPInfoViewController: UIViewController {
             _navigationManager.presentAlertNoConnection(context: self)
             return
         }
-        
-        SVProgressHUD.show()
-        let userInfo = UserDefaults.standard.userExt!
-        var country = ""
-        if let idx = Int(userInfo.countryCode) {
-            country = AppConstants.countries[idx].shortName
-        } else {
-            country = userInfo.countryCode
-        }
-        let signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: country, postalCode: userInfo.postalCode, street: userInfo.address)
-        let mandate = Mandate(signatory: signatory)
-        _loginManager.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
-            if slimPayUrl == nil {
-                self.log.warning(message: "Mandate url is empty, what is going on?")
-                SVProgressHUD.dismiss()
-                let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
-                    self.dismiss(animated: true, completion: {})
-                }))
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion: {})
+
+        NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
+            SVProgressHUD.show()
+            LoginManager.shared.getUserExtObject { (userExtension) in
+                guard let userInfo = userExtension else {
+                    SVProgressHUD.dismiss()
+                    return
                 }
                 
-            } else {
-                self.log.info(message: "Mandate flow will now start")
-                DispatchQueue.main.async {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-                    vc.url = slimPayUrl
-                    self.show(vc, sender: nil)
-                }
+                var country = ""
+                country = AppConstants.countries[userInfo.CountryCode].shortName
+                let signatory = Signatory(givenName: userInfo.FirstName, familyName: userInfo.LastName, iban: userInfo.IBAN, email: userInfo.Email, telephone: userInfo.PhoneNumber, city: userInfo.City, country: country, postalCode: userInfo.PostalCode, street: userInfo.Address)
+                let mandate = Mandate(signatory: signatory)
+                self._loginManager.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
+                    if slimPayUrl == nil {
+                        self.log.warning(message: "Mandate url is empty, what is going on?")
+                        SVProgressHUD.dismiss()
+                        let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
+                            self.dismiss(animated: true, completion: {})
+                        }))
+                        DispatchQueue.main.async {
+                            self.present(alert, animated: true, completion: {})
+                        }
+                    } else {
+                        SVProgressHUD.dismiss()
+                        self.log.info(message: "Mandate flow will now start")
+                        DispatchQueue.main.async {
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
+                            vc.url = slimPayUrl
+                            self.show(vc, sender: nil)
+                        }
+                    }
+                })
             }
-            
-        })
-        
+        }
     }
-
-    @IBAction func close(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

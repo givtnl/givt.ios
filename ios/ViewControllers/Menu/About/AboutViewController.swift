@@ -13,7 +13,6 @@ class AboutViewController: UIViewController {
 
     private var log = LogService.shared
     @IBOutlet var titleText: UILabel!
-    @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var versionNumber: UILabel!
     @IBOutlet var giveFeedback: UILabel!
     @IBOutlet var btnSend: UIButton!
@@ -21,7 +20,7 @@ class AboutViewController: UIViewController {
     @IBOutlet var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        goBack.accessibilityLabel = NSLocalizedString("Back", comment: "")
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
@@ -72,9 +71,9 @@ class AboutViewController: UIViewController {
 
     @IBOutlet var goBack: UIBarButtonItem!
     
-    @IBAction func goBack(_ sender: Any) {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.endEditing()
-        self.dismiss(animated: true, completion: {})
     }
     
     func send() {
@@ -102,9 +101,8 @@ class AboutViewController: UIViewController {
         let os = "Operating system: " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
         let appLang = "App language: "  + Locale.preferredLanguages[0]
         let email = "Email: " + UserDefaults.standard.userExt.email
-        let name = UserDefaults.standard.tempUser ? "Temporary account" : UserDefaults.standard.userExt.firstName + " " + UserDefaults.standard.userExt.lastName
         var message = textView.text.replacingOccurrences(of: "\n", with: br)
-        let footer = name + br + email + br + appVersion + br + os + br + device + br + appLang
+        let footer = email + br + appVersion + br + os + br + device + br + appLang
         
         message += br + br + footer
         

@@ -10,17 +10,16 @@ import UIKit
 
 class ScanCompleteViewController: UIViewController {
     var organisation = ""
-    var bestBeacon = BestBeacon()
+    var canShare = false
     override func viewDidLoad() {
         super.viewDidLoad()
         btnBack.setTitle(NSLocalizedString("Ready", comment: ""), for: .normal)
         shareWithFriends.setTitle(NSLocalizedString("ShareTheGivtButton", comment: ""), for: .normal)
         lblBody.text = NSLocalizedString("OfflineGegevenGivtMessage", comment: "")
         lblTitle.text = NSLocalizedString("YesSuccess", comment: "")
-        if let beaconId = bestBeacon.beaconId, beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
+        if !canShare {
             shareWithFriends.removeFromSuperview()
         }
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,7 +60,27 @@ class ScanCompleteViewController: UIViewController {
         if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
             amountVC.reset()
         }
-        self.navigationController?.popToRootViewController(animated: true)
+        
+        if let appScheme = GivtService.shared.customReturnAppScheme {
+            let url = URL(string: appScheme)!
+            if UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: { success in
+                        self.navigationController?.popToRootViewController(animated: true)
+                    })
+                } else {
+                    // Fallback on earlier versions
+                    UIApplication.shared.openURL(url)
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            } else {
+                LogService.shared.warning(message: "\(url) was not installed on the device.")
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        } else {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+        GivtService.shared.customReturnAppScheme = nil
     }
     /*
     // MARK: - Navigation

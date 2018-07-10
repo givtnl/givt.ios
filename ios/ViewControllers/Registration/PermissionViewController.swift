@@ -52,9 +52,6 @@ class PermissionViewController: UIViewController {
             self.show(vc, sender: nil)
         }
     }
-    @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     @IBOutlet var titleLabel: UILabel!
     

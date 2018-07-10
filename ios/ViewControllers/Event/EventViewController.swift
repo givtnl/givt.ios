@@ -107,10 +107,6 @@ class EventViewController: BaseScanViewController {
         }
     }
     
-    @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
     @IBAction func giveDifferently(_ sender: Any) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
@@ -126,8 +122,5 @@ class EventViewController: BaseScanViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self._givtService.stopLookingForGivtLocations()
-    }
-    
-
- 
+    } 
 }

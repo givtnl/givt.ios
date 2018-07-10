@@ -43,9 +43,6 @@ class PinViewController: UIViewController {
         }
     }
 
-    @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.dismiss(animated: true, completion: nil)
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

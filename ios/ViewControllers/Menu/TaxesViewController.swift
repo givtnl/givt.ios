@@ -46,9 +46,6 @@ class TaxesViewController: UIViewController {
     
     @IBOutlet var goBack: UIBarButtonItem!
     
-    @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
     @IBAction func send(_ sender: Any) {
     }
     @IBAction func sendOverview(_ sender: Any) {

@@ -23,8 +23,6 @@ class LoginManager {
     }
     
     static let shared = LoginManager()
-    private var _registrationUser = UserExt()
-    
     
     private init() {
         userClaim = UserDefaults.standard.isLoggedIn ? .give : .startedApp
@@ -155,26 +153,48 @@ class LoginManager {
         return nil
     }
     
-    private func getUserExt(completionHandler: @escaping (Bool) -> Void) {
+    
+    
+    func getUserExtObject(completion: @escaping(LMUserExt?) -> Void) {
+        client.get(url: "/api/UsersExtension", data: [:]) { (response) in
+            guard let response = response else {
+                completion(nil)
+                self.log.error(message: "No response from getting UserExt object")
+                return
+            }
+            
+            if response.status == .ok {
+                if let data = response.data {
+                    do {
+                        let userExt = try JSONDecoder().decode(LMUserExt.self, from: data)
+                        UserDefaults.standard.isTempUser = userExt.IsTempUser
+                        UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 500 : userExt.AmountLimit
+                        completion(userExt)
+                    } catch let err as NSError {
+                        self.log.error(message: err.description)
+                        completion(nil)
+                    }
+                }
+            } else {
+                self.log.error(message: "Status was NOT ok from getting UserExt object")
+                completion(nil)
+            }
+        }
+    }
+    
+    func getUserExt(completionHandler: @escaping (Bool) -> Void) {
         client.get(url: "/api/UsersExtension", data: [:]) { (res) in
             if let res = res, let data = res.data, res.basicStatus == .ok {
                 do {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                     print(parsedData)
+                    UserDefaults.standard.isTempUser = Bool(truncating: parsedData["IsTempUser"] as! NSNumber)
                     var config: UserExt = UserExt()
                     if let oldConfig = UserDefaults.standard.userExt {
                         config = oldConfig
                     }
                     config.guid = parsedData["GUID"] as! String
-                    config.mobileNumber = parsedData["PhoneNumber"] as! String
-                    config.firstName = parsedData["FirstName"] as! String
-                    config.lastName = parsedData["LastName"] as! String
                     config.email = parsedData["Email"] as! String
-                    config.address = parsedData["Address"] as! String
-                    config.postalCode = parsedData["PostalCode"] as! String
-                    config.city = parsedData["City"] as! String
-                    config.countryCode = String(describing: parsedData["CountryCode"] as! Int)
-                    config.iban = parsedData["IBAN"] as! String
 
                     UserDefaults.standard.userExt = config
                     UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 500 : parsedData["AmountLimit"] as! Int
@@ -189,51 +209,31 @@ class LoginManager {
         }
     }
     
-    func registerUser(_ user: RegistrationUser) {
-        _registrationUser = UserExt()
-        _registrationUser.firstName = user.firstName
-        _registrationUser.lastName = user.lastName
-        _registrationUser.password = user.password
-        _registrationUser.email = user.email
-    }
-    
-    func registerExtraDataFromUser(_ user: RegistrationUserData, completionHandler: @escaping (Bool?) -> Void) {
-        _registrationUser.address = user.address
-        _registrationUser.city = user.city
-        _registrationUser.countryCode = user.countryCode
-        _registrationUser.mobileNumber = user.mobileNumber
-        _registrationUser.iban = user.iban.replacingOccurrences(of: " ", with: "")
-        _registrationUser.postalCode = user.postalCode
-        
+    func registerExtraDataFromUser(_ user: RegistrationUser, completionHandler: @escaping (Bool?) -> Void) {
         let params = [
-            "Email": _registrationUser.email,
-            "Password" : _registrationUser.password,
-            "IBAN":  _registrationUser.iban,
-            "PhoneNumber":  _registrationUser.mobileNumber,
-            "FirstName":  _registrationUser.firstName,
-            "LastName":  _registrationUser.lastName,
-            "Address":  _registrationUser.address,
-            "City":  _registrationUser.city,
-            "PostalCode":  _registrationUser.postalCode,
-            "CountryCode":  _registrationUser.countryCode,
+            "Email": user.email,
+            "Password" : user.password,
+            "IBAN":  user.iban.replacingOccurrences(of: " ", with: ""),
+            "PhoneNumber":  user.mobileNumber,
+            "FirstName":  user.firstName,
+            "LastName":  user.lastName,
+            "Address":  user.address,
+            "City":  user.city,
+            "PostalCode":  user.postalCode,
+            "CountryCode":  user.countryCode,
             "AmountLimit": "500"]
         
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
                 if let res = res {
                     if let data = res.data, res.basicStatus == .ok {
-                        self._registrationUser.guid = String(bytes: data, encoding: .utf8)!
+                        let guid = String(bytes: data, encoding: .utf8)!
                         let newConfig = UserDefaults.standard.userExt!
-                        newConfig.guid = self._registrationUser.guid
-                        newConfig.password = ""
+                        newConfig.guid = guid
                         UserDefaults.standard.userExt = newConfig
                         
-                        self.loginUser(email: self._registrationUser.email, password: self._registrationUser.password, completionHandler: { (success, err, descr) in
-                            
+                        self.loginUser(email: user.email, password: user.password, completionHandler: { (success, err, descr) in
                             if success {
-                                
-                                self._registrationUser.password = ""
-                                UserDefaults.standard.userExt = self._registrationUser
                                 self.saveAmountLimit(500, completionHandler: { (status) in
                                     //niets
                                 })
@@ -270,7 +270,8 @@ class LoginManager {
     func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (String?) -> Void) {
         do {
             let locale = Locale.preferredLanguages[0]
-            try client.post(url: "/api/Mandate?locale=\(locale)", data: mandate.toDictionary()) { (response) in
+            let firstTwoLetters = String(locale[..<locale.index(locale.startIndex, offsetBy: 2)])
+            try client.post(url: "/api/Mandate?locale=\(firstTwoLetters)", data: mandate.toDictionary()) { (response) in
                 if let response = response, let text = response.text {
                     if response.basicStatus == .ok {
                         completionHandler(text)
@@ -340,10 +341,8 @@ class LoginManager {
     }
     
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
-        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe")
-        let regUserExt = RegistrationUserData(address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
-        self.registerUser(regUser)
-        self.registerExtraDataFromUser(regUserExt) { b in
+        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
+        self.registerExtraDataFromUser(regUser) { b in
             if let b = b {
                 if b {
                     self.userClaim = .giveOnce
@@ -373,6 +372,30 @@ class LoginManager {
         }
     }
     
+    func updateEmail(email: String, completionHandler: @escaping (Bool) -> Void) {
+        do {
+            let params = ["Email": email,"AmountLimit": UserDefaults.standard.amountLimit] as [String : Any]
+            try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/", data: params) { (response) in
+                guard let resp = response else {
+                    completionHandler(false)
+                    return
+                }
+                if resp.statusCode == 200 {
+                    let newSettings = UserDefaults.standard.userExt!
+                    newSettings.email = email
+                    UserDefaults.standard.userExt = newSettings
+                    completionHandler(true)
+                } else {
+                    LogService.shared.error(message: "Could not update email")
+                    completionHandler(false)
+                }
+            }
+        } catch {
+            LogService.shared.error(message: "Could not update email")
+            completionHandler(false)
+        }
+    }
+    
     func doesEmailExist(email: String, completionHandler: @escaping (String) -> Void) {
         self.log.info(message: "Checking if email exists")
         client.get(url: "/api/Users/Check", data: ["email" : email]) { (status) in
@@ -381,9 +404,11 @@ class LoginManager {
                 if let settings = UserDefaults.standard.userExt {
                     userExt = settings
                 }
+                if userExt.email != email {
+                    UserDefaults.standard.hasPinSet = false
+                }
                 userExt.email = email
                 UserDefaults.standard.userExt = userExt
-                UserDefaults.standard.hasPinSet = false
                 let s = text.replacingOccurrences(of: "\"", with: "")
                 completionHandler(s)
             } else {
@@ -441,38 +466,31 @@ class LoginManager {
         
     }
     
-    func changeIban(iban: String, callback: @escaping (Bool) -> Void) {
+    func changeIban(userExt: LMUserExt ,iban: String, callback: @escaping (Bool) -> Void) {
         self.log.info(message: "Changing iban")
-        if let settings = UserDefaults.standard.userExt {
-            let params = [
-                "Guid":  settings.guid,
-                "IBAN":  iban,
-                "PhoneNumber":  settings.mobileNumber,
-                "FirstName":  settings.firstName,
-                "LastName":  settings.lastName,
-                "Address":  settings.address,
-                "City":  settings.city,
-                "PostalCode":  settings.postalCode,
-                "CountryCode":  settings.countryCode,
-                "AmountLimit" : String(UserDefaults.standard.amountLimit)]
-            
-            do {
-                
-                try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
-                    if let res = res, res.basicStatus == .ok {
-                        settings.iban = iban
-                        UserDefaults.standard.userExt = settings
-                        callback(true)
-                    } else {
-                        callback(false)
-                    }
-                })
-            } catch {
-                callback(false)
-                log.error(message: "Something went wrong trying to change IBAN")
-            }
+        let params = [
+            "Guid":  userExt.GUID,
+            "IBAN":  iban,
+            "PhoneNumber":  userExt.PhoneNumber,
+            "FirstName":  userExt.FirstName,
+            "LastName":  userExt.LastName,
+            "Address":  userExt.Address,
+            "City":  userExt.City,
+            "PostalCode":  userExt.PostalCode,
+            "CountryCode":  userExt.CountryCode,
+            "AmountLimit" : String(UserDefaults.standard.amountLimit)] as [String : Any]
+        do {
+            try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
+                if let res = res, res.basicStatus == .ok {
+                    callback(true)
+                } else {
+                    callback(false)
+                }
+            })
+        } catch {
+            callback(false)
+            log.error(message: "Something went wrong trying to change IBAN")
         }
-        
     }
     
     func requestNewPassword(email: String, callback: @escaping (Bool?) -> Void) {
@@ -524,6 +542,7 @@ class LoginManager {
         UserDefaults.standard.hasTappedAwayGiveDiff = false
         UserDefaults.standard.showedLastYearTaxOverview = false
         UserDefaults.standard.hasGivtsInPreviousYear = false
-        UserDefaults.standard.lastGivtToOrganisation = nil
+        UserDefaults.standard.lastGivtToOrganisationNamespace = nil
+        UserDefaults.standard.isTempUser = false
     }
 }

@@ -67,20 +67,30 @@ class NavigationManager {
     public func finishRegistration(_ context: UIViewController) {
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         vc.transitioningDelegate = slideFromRightAnimation
-        permissionAsked { (asked) in
-            if UserDefaults.standard.tempUser { //tempuser
-                vc.startPoint = .registration
-                self.pushOnMainPage(context, vc)
-            } else if !asked {
-                vc.startPoint = .permission
-                self.pushWithLogin(vc, context: context)
-            } else if !self.appSettings.mandateSigned {
-                vc.startPoint = .mandate
-                self.pushWithLogin(vc, context: context)
+        if let userExt = UserDefaults.standard.userExt {
+            LoginManager.shared.doesEmailExist(email: userExt.email) { (status) in
+                if status == "true" { //completed registration
+                    UserDefaults.standard.isTempUser = false
+                } else if status == "false" { //email is completely new
+                    UserDefaults.standard.isTempUser = true
+                } else if status == "temp" { //email is in db but not succesfully registered
+                    UserDefaults.standard.isTempUser = true
+                }
+                
+                self.permissionAsked { (asked) in
+                    if UserDefaults.standard.isTempUser { //tempuser
+                        vc.startPoint = .registration
+                        self.pushOnMainPage(context, vc)
+                    } else if !asked {
+                        vc.startPoint = .permission
+                        self.pushWithLogin(vc, context: context)
+                    } else if !self.appSettings.mandateSigned {
+                        vc.startPoint = .mandate
+                        self.pushWithLogin(vc, context: context)
+                    }
+                }
             }
         }
-        
-        
     }
     
     private func pushOnMainPage(_ context: UIViewController, _ vc: UIViewController) {
@@ -147,6 +157,30 @@ class NavigationManager {
             DispatchQueue.main.async {
                 context.present(vc, animated: true, completion: nil)
             }
+        }
+    }
+    
+    public func reAuthenticateIfNeeded(context: UIViewController, completion: @escaping () -> Void) {
+        if !LoginManager.shared.isBearerStillValid {
+            if UserDefaults.standard.hasPinSet {
+                let pinVC = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
+                pinVC.typeOfPin = .login
+                pinVC.outerHandler = { status in
+                    if !status {
+                        self.reAuthenticateIfNeeded(context: context, completion: completion)
+                    } else {
+                        completion()
+                    }
+                    context.present(pinVC, animated: true, completion: nil)
+                }
+            } else {
+                let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
+                loginVC.outerHandler = completion
+                loginVC.emailEditable = false
+                context.present(loginVC, animated: true, completion: nil)
+            }
+        } else {
+            completion()
         }
     }
 

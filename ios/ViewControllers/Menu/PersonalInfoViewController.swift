@@ -10,210 +10,226 @@ import UIKit
 import SVProgressHUD
 
 class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
+    var settings: [PersonalSetting]!
+    
+    struct PersonalSetting {
+        var image: UIImage
+        var name: String
+        var type: SettingType
+    }
+    enum SettingType {
+        case name
+        case emailaddress
+        case address
+        case countrycode
+        case phonenumber
+        case iban
+        case changepassword
+    }
     
     private let loginManager = LoginManager.shared
     private let validationHelper = ValidationHelper.shared
-    @IBOutlet var btnNext: CustomButton!
-    @IBOutlet var iban: CustomUITextField!
-    @IBOutlet var cellphone: UILabel!
-    @IBOutlet var postal: UILabel!
-    @IBOutlet var street: UILabel!
-    @IBOutlet var email: UILabel!
-    @IBOutlet var name: UILabel!
-    @IBOutlet var titleText: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
-    @IBOutlet weak var changePasswordBtn: UIButton!
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        if textField.returnKeyType == .done {
-            self.endEditing()
-            save()
-        }
-        return false
-    }
-    @IBAction func next(_ sender: Any) {
-        self.endEditing()
-        save()
-    }
-    
-    func save() {
-        if let userExt = UserDefaults.standard.userExt, userExt.iban == iban.text!.replacingOccurrences(of: " ", with: "") {
-            self.dismiss(animated: true, completion: nil)
-            print("trying to save iban that did not change")
-            return
-        }
-        SVProgressHUD.show()
-        loginManager.changeIban(iban: iban.text!.replacingOccurrences(of: " ", with: "")) { (success) in
-            SVProgressHUD.dismiss()
-            if success {
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
-                }
-            } else {
-                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    
-                }))
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion: nil)
-                }
-                
-            }
-        }
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        if textField == iban {
-            if let i = iban.text {
-                let isIbanValid = validationHelper.isIbanChecksumValid(i)
-                iban.setState(b: isIbanValid)
-                btnNext.isEnabled = isIbanValid
-            }
-            
-            textField.text = textField.text?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
-            if let pos = self.position {
-                if deleting {
-                    //set cursor
-                    if let newPosition = textField.position(from: textField.beginningOfDocument, offset: pos-1) {
-                        textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
-                    }
-                    
-                    if let cursorRange = textField.selectedTextRange, let newPosition = textField.position(from: cursorRange.start, offset: 1) {
-                        let range = textField.textRange(from: newPosition, to: cursorRange.start)
-                        //when deleting a space, remove the number before the space too.
-                        if textField.text(in: range!) == " " {
-                            //remove the number at the specific location
-                            textField.text?.remove(at: (textField.text?.index((textField.text?.startIndex)!, offsetBy: textField.offset(from: textField.beginningOfDocument, to: textField.position(from: cursorRange.start, offset: -1)!)))!)
-                            
-                            //reformat
-                            textField.text = textField.text?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
-                            
-                            //put pointer back
-                            textField.selectedTextRange = textField.textRange(from: textField.position(from: cursorRange.start, offset: -1)!, to: textField.position(from: cursorRange.start, offset: -1)!)
-                        }
-                    }
-                } else {
-                    //set cursor
-                    if let newPosition = textField.position(from: textField.beginningOfDocument, offset: pos+1) {
-                        textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
-                    }
-                    
-                    //set position when editing existing IBAN.
-                    if let cursorRange = textField.selectedTextRange, let newPosition = textField.position(from: cursorRange.start, offset: -1) {
-                        // get the position one character before the cursor start position
-                        let range = textField.textRange(from: newPosition, to: cursorRange.start)
-                        if textField.text(in: range!) == " " {
-                            if let fixPosition = textField.position(from: newPosition, offset: 2) {
-                                textField.selectedTextRange = textField.textRange(from: fixPosition, to: fixPosition)
-                            }
-                        }
-                    }
-                }
-            }
-            
-        }
-    }
-    
+    @IBOutlet var titleText: UILabel!
+    @IBOutlet var settingsTableView: UITableView!
     private var position: Int?
     private var deleting: Bool = false
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let selectedRange = textField.selectedTextRange {
-            self.deleting = false
-            if range.length == 1 {
-                deleting = true
-            }
-            
-            let cursorPosition = textField.offset(from: textField.beginningOfDocument, to: selectedRange.start)
-            position = cursorPosition
-        }
-        return true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        settingsTableView.delegate = self
+        settingsTableView.dataSource = self
+                title = NSLocalizedString("TitlePersonalInfo", comment: "")
+        settings = [PersonalSetting]()
+        settingsTableView.tableFooterView = UIView()
+        self.navigationController?.removeLogo()
+       
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
         
-        iban.delegate = self
-        iban.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-
-        
-        iban.text = ""
-        name.text = ""
-        email.text = ""
-        street.text = ""
-        postal.text = ""
-        cellphone.text = ""
-        // Do any additional setup after loading the view.
-        
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        iban.placeholder = NSLocalizedString("IBANPlaceHolder", comment: "")
-        btnNext.setTitle(NSLocalizedString("ButtonChange", comment: ""), for: .normal)
-        titleText.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
-        btnNext.isEnabled = false
-        btnNext.accessibilityLabel = NSLocalizedString("ButtonChange", comment: "")
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        self.view.addGestureRecognizer(tapGesture)
+        let lbl = UILabel()
+        lbl.textAlignment = .center
+        lbl.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        lbl.font = UIFont(name: "Avenir-Light", size: 16.0)
+        lbl.numberOfLines = 0
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.text = NSLocalizedString("PersonalPageHeader", comment: "") + "\n\n" + NSLocalizedString("PersonalPageSubHeader", comment: "")
         
-        changePasswordBtn.layer.cornerRadius = 4
-        changePasswordBtn.setTitle(NSLocalizedString("ChangePassword", comment: ""), for: .normal)
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
         
+        containerView.addSubview(lbl)
+        lbl.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        lbl.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20).isActive = true
+        lbl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20).isActive = true
+        lbl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20).isActive = true
         
+        settingsTableView.tableHeaderView = containerView
+        
+        containerView.widthAnchor.constraint(equalTo: self.settingsTableView.widthAnchor).isActive = true
+        containerView.centerXAnchor.constraint(equalTo: self.settingsTableView.centerXAnchor).isActive = true
+        containerView.topAnchor.constraint(equalTo: self.settingsTableView.topAnchor, constant: 10).isActive = true
+        
+        self.settingsTableView.layoutIfNeeded()
+        self.settingsTableView.tableHeaderView = self.settingsTableView.tableHeaderView
     }
-    
-    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        self.view.endEditing(false)
-    }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let user = UserDefaults.standard.userExt {
-            var country = ""
-            if let idx = Int(user.countryCode) {
-                country = AppConstants.countries[idx].shortName
-            } else {
-                country = user.countryCode
+        SVProgressHUD.show()
+        loginManager.getUserExtObject { (userExtObject) in
+            SVProgressHUD.dismiss()
+            guard let userExt = userExtObject else {
+                DispatchQueue.main.async {
+                    self.backPressed(self)
+                }
+                return
             }
-            iban.text = user.iban.separate(every: 4, with: " ")
-            print(user.iban)
-            name.text = user.firstName + " " + user.lastName
-            email.text = user.email
-            street.text = user.address
-            postal.text = user.postalCode + " " + user.city + ", " + country
-            cellphone.text = user.mobileNumber
+            let country = AppConstants.countries[userExt.CountryCode].name
+            self.settings.removeAll()
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: userExt.FirstName + " " + userExt.LastName, type: .name))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: userExt.Email, type: .emailaddress))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address, type: .address))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: userExt.PostalCode + " " + userExt.City + ", " + country, type: .countrycode))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone"), name: userExt.PhoneNumber, type: .phonenumber))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: userExt.IBAN.separate(every: 4, with: " "), type: .iban))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "green_lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
+            DispatchQueue.main.async {
+                self.settingsTableView.reloadData()
+            }
         }
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if let selectedRow = settingsTableView.indexPathForSelectedRow {
+            settingsTableView.deselectRow(at: selectedRow, animated: false)
+        }
+    }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return settings.count
     }
     
-    @IBAction func goBack(_ sender: Any) {
-        self.endEditing()
-        self.dismiss(animated: true, completion: nil)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PersonalSettingTableViewCell", for: indexPath) as! PersonalSettingTableViewCell
+        cell.labelView.text = settings[indexPath.row].name
+        cell.img.image = settings[indexPath.row].image
+        cell.accessoryType = .disclosureIndicator
+        switch settings[indexPath.row].type {
+        case .iban, .emailaddress, .changepassword:
+            cell.accessoryType = .disclosureIndicator
+            cell.labelView.alpha = 1
+            cell.selectionStyle = .default
+        default:
+            cell.accessoryType = .none
+            cell.labelView.alpha = 0.5
+            cell.selectionStyle = .none
+        }
+        return cell
     }
     
-    @IBAction func goLostPassword(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ForgotPasswordViewController") as! ForgotPasswordViewController
-        self.show(newViewController, sender: nil)
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch settings[indexPath.row].type {
+        case .iban:
+            print("iban")
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
+            vc.img = #imageLiteral(resourceName: "card")
+            vc.titleOfInput = NSLocalizedString("ChangeIBAN", comment: "")
+            vc.inputOfInput = settings[indexPath.row].name
+            vc.validateFunction = { s in
+                return self.validationHelper.isIbanChecksumValid(s)
+            }
+            vc.saveAction = { s in
+                SVProgressHUD.show()
+                NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
+                    self.loginManager.getUserExtObject(completion: { (userExt) in
+                        guard let userExt = userExt else
+                        {
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                    
+                                }))
+                                self.present(alert, animated: true, completion: nil)
+                            }
+                            return
+                        }
+                        self.loginManager.changeIban(userExt: userExt,iban: s.replacingOccurrences(of: " ", with: ""), callback: { (success) in
+                            SVProgressHUD.dismiss()
+                            if success {
+                                DispatchQueue.main.async {
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                        
+                                    }))
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+                            }
+                        })
+                    })
+                    
+                })
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .emailaddress:
+            print("emailadres")
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
+            vc.img = #imageLiteral(resourceName: "email_sign")
+            vc.titleOfInput = NSLocalizedString("ChangeEmail", comment: "")
+            vc.inputOfInput = settings[indexPath.row].name
+            vc.validateFunction = { s in
+                return self.validationHelper.isEmailAddressValid(s)
+            }
+            vc.saveAction = { newEmail in
+                SVProgressHUD.show()
+                self.loginManager.checkTLD(email: newEmail, completionHandler: { (success) in
+                    if success {
+                        self.loginManager.updateEmail(email: newEmail, completionHandler: { (success2) in
+                            SVProgressHUD.dismiss()
+                            if success2 {
+                                DispatchQueue.main.async {
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                        
+                                    }))
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+                            }
+                        })
+                    } else {
+                        SVProgressHUD.dismiss()
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                })
+                print("saving email")
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .changepassword:
+            print("password")
+            let vc = UIStoryboard(name: "ForgotPassword", bundle: nil).instantiateInitialViewController() as! ForgotPasswordViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        default:
+            return
+        }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }

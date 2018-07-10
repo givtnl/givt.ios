@@ -11,8 +11,7 @@ import SVProgressHUD
 
 class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
-    private var organisation = ""
-    private var bestBeacon = BestBeacon()
+    var bestBeacon = BestBeacon()
     private var bluetoothAlert: UIAlertController?
     
     func didUpdateBluetoothState(isBluetoothOn: Bool) {
@@ -60,29 +59,30 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         // Dispose of any resources that can be recreated.
     }
     
-    func onGivtProcessed(transactions: [Transaction]) {
+    func onGivtProcessed(transactions: [Transaction], organisationName: String?, canShare: Bool) {
         SVProgressHUD.dismiss()
-        organisation = GivtService.shared.lastGivtOrg ?? ""
-        bestBeacon = GivtService.shared.getBestBeacon
         var trs = [NSDictionary]()
         for tr in transactions {
             trs.append(["Amount" : tr.amount,"CollectId" : tr.collectId, "Timestamp" : tr.timeStamp, "BeaconId" : tr.beaconId])
         }
         
-        var canShare = false
-        if let beaconId = GivtService.shared.getBestBeacon.beaconId, !beaconId.substring(16..<19).matches("c[0-9]|d[be]") {
-            canShare = true
-        }
+        let orgName = organisationName ?? ""
         
-        UserDefaults.standard.lastGivtToOrganisation = bestBeacon.namespace
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
+        df.timeZone = TimeZone(abbreviation: "UTC")
+        df.locale = Locale(identifier: "en_US_POSIX")
+        let date = df.date(from: transactions.first!.timeStamp)
+
+        UserDefaults.standard.lastGivtToOrganisationNamespace = bestBeacon.namespace
         
         
         shouldShowMandate { (url) in
             var message = NSLocalizedString("SafariGiving", comment: "")
             if url == "" {
                 //temp or has signed mandate
-                if !self.organisation.isEmpty {
-                    message = NSLocalizedString("SafariGivingToOrganisation", comment: "").replacingOccurrences(of:"{0}", with: self.organisation)
+                if !orgName.isEmpty {
+                    message = NSLocalizedString("SafariGivingToOrganisation", comment: "").replacingOccurrences(of:"{0}", with: orgName)
                 }
             } else {
                 message = NSLocalizedString("Safari_GivtTransaction", comment: "")
@@ -97,12 +97,12 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                           "message" : message,
                           "Close": NSLocalizedString("Close", comment: ""),
                           "ShareGivt" : NSLocalizedString("ShareTheGivtButton", comment: ""),
-                          "Thanks": NSLocalizedString("GivtIsBeingProcessed", comment: "").replacingOccurrences(of: "{0}", with: self.organisation),
+                          "Thanks": NSLocalizedString("GivtIsBeingProcessed", comment: "").replacingOccurrences(of: "{0}", with: orgName),
                           "YesSuccess": NSLocalizedString("YesSuccess", comment: ""),
                           "GUID" : UserDefaults.standard.userExt!.guid,
                           "givtObj" : trs,
                           "apiUrl" : AppConstants.apiUri + "/",
-                          "organisation" : self.organisation,
+                          "organisation" : orgName,
                           "spUrl" : url,
                           "canShare" : canShare]
         
@@ -116,52 +116,55 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             print(jsonParameters.description)
             let plainTextBytes = jsonParameters.base64EncodedString()
             let formatted = String(format: AppConstants.apiUri + "/confirm.html?msg=%@", plainTextBytes);
-            self.showWebsite(url: formatted)
+            
+            if !AppServices.shared.connectedToNetwork() {
+                self.log.info(message: "User gave offline")
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
+                    vc.organisation = orgName
+                    vc.canShare = canShare
+                    self.show(vc, sender: self)
+                }
+                return
+            } else {
+                self.showWebsite(url: formatted)
+            }
         }
     }
     
     func shouldShowMandate(callback: @escaping (String) -> Void) {
-        
-        let userInfo = UserDefaults.standard.userExt!
-        var country = ""
-        if let idx = Int(userInfo.countryCode) {
-            country = AppConstants.countries[idx].shortName
-        } else {
-            country = userInfo.countryCode
-        }
-        
-        if userInfo.iban == AppConstants.tempIban || UserDefaults.standard.mandateSigned == true {
+        if UserDefaults.standard.isTempUser || UserDefaults.standard.mandateSigned == true {
             print("not showing mandate")
             callback("")
             return
         }
         
-        SVProgressHUD.show()
-        let signatory = Signatory(givenName: userInfo.firstName, familyName: userInfo.lastName, iban: userInfo.iban, email: userInfo.email, telephone: userInfo.mobileNumber, city: userInfo.city, country: country, postalCode: userInfo.postalCode, street: userInfo.address)
-        let mandate = Mandate(signatory: signatory)
-        LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
-            SVProgressHUD.dismiss()
-            if let url = slimPayUrl {
-                callback(url)
-            } else {
-                callback("")
+        NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
+            SVProgressHUD.show()
+            LoginManager.shared.getUserExtObject { (userExtension) in
+                guard let userExtension = userExtension else {
+                    SVProgressHUD.dismiss()
+                    callback("")
+                    return
+                }
+                let country = AppConstants.countries[userExtension.CountryCode].shortName
+                let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: country, postalCode: userExtension.PostalCode, street: userExtension.Address)
+                let mandate = Mandate(signatory: signatory)
+                LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
+                    SVProgressHUD.dismiss()
+                    if let url = slimPayUrl {
+                        callback(url)
+                    } else {
+                        SVProgressHUD.dismiss()
+                        callback("")
+                    }
+                })
             }
-        })
+        }
     }
     
     func showWebsite(url: String){
-        if !AppServices.shared.connectedToNetwork() {
-            self.log.info(message: "User gave offline")
-            DispatchQueue.main.async {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "ScanCompleteViewController") as! ScanCompleteViewController
-                vc.organisation = self.organisation
-                vc.bestBeacon = self.bestBeacon
-                self.show(vc, sender: self)
-            }
-            return
-        }
-        
         guard let url = URL(string: url) else {
             return //be safe
         }
@@ -184,7 +187,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     func giveManually(antennaID: String) {
         SVProgressHUD.show()
-        GivtService.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions) in
+        GivtService.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
             SVProgressHUD.dismiss()
             if seconds > 0 {
                 LogService.shared.info(message: "Celebrating wiiehoeeew")
@@ -193,6 +196,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                     let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
                     vc.secondsLeft = seconds
                     vc.transactions = transactions
+                    vc.organisation = orgName
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
                 

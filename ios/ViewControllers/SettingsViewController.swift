@@ -107,7 +107,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         items = []
         let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
         
-        let tempUser = UserDefaults.standard.tempUser
+        let tempUser = UserDefaults.standard.isTempUser
         
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
@@ -182,9 +182,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         logService.info(message: "User is terminating account via the menu")
         let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! BaseNavigationController
         vc.transitioningDelegate = self.slideFromRightAnimation
-        if UserDefaults.standard.tempUser { //temp users can screw their account without authentication
+        if UserDefaults.standard.isTempUser { //temp users can screw their account without authentication
             self.present(vc, animated: true, completion: {
-                self.hideLeftView(self)
             })
         } else {
             NavigationManager.shared.pushWithLogin(vc, context: self)
@@ -193,14 +192,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     private func about() {
-        
+        let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! BaseNavigationController
+        vc.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
-            let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! BaseNavigationController
-            vc.transitioningDelegate = self.slideFromRightAnimation
-            self.present(vc, animated: true, completion: {
-                self.hideLeftView(self)
-            })
-        }
+            self.present(vc, animated: true, completion:  {
+            }
+        )}
     }
     
     private func share() {
@@ -260,18 +257,4 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         vc.transitioningDelegate = self.slideFromRightAnimation
         NavigationManager.shared.pushWithLogin(vc, context: self)
     }
-    
-    // MARK: - Table view data source
-
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

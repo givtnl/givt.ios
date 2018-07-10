@@ -130,8 +130,4 @@ class ScanViewController: BaseScanViewController {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    @IBAction func goBack(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
 }

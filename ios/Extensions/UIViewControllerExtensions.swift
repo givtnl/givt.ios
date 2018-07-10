@@ -13,4 +13,17 @@ extension UIViewController {
     @objc func endEditing() {
         self.view.endEditing(false)
     }
+    
+    @IBAction func backPressed(_ sender: Any) {
+        if self.isBeingPresented {
+            self.dismiss(animated: true, completion: nil)
+        } else {
+            if self.navigationController?.viewControllers.count == 1 {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        
+    }
 }

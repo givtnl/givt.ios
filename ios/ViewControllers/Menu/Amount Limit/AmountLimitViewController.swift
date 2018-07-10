@@ -19,7 +19,6 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var btnSave: CustomButton!
     var btnSaveKeyboard: CustomButton?
     @IBOutlet var amountLimit: UITextField!
-    var isRegistration: Bool = false
     var hasBackButton = false
     var timer: Timer?
     @IBAction func btnIncrease(_ sender: Any) {
@@ -44,11 +43,11 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             timer?.invalidate()
             timer = nil
         }
-        
     }
-    @IBAction func goBack(_ sender: Any) {
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.view.endEditing(true)
-        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func handleTimer(timer: Timer) {
@@ -117,18 +116,10 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         }
         
         _loginManager.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_ in
-            if self.isRegistration {
-                DispatchQueue.main.async {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
-                    self.show(vc, sender: nil)
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.navigationController?.hideLeftView(nil)
-                    self.dismiss(animated: true, completion: nil)
-                }
+            DispatchQueue.main.async {
+                self.navigationController?.hideLeftView(nil)
+                self.dismiss(animated: true, completion: nil)
             }
-
         })
     }
     

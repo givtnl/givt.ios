@@ -12,16 +12,28 @@ import UIKit
 class Country {
     var name: String //eg Belgium
     var shortName: String //eg BE
-    var prefix: String //eg +32
+    var phoneNumber: PhoneNumber
     
-    init(name: String, shortName: String, prefix: String) {
+    init(name: String, shortName: String, phoneNumber: PhoneNumber ) {
         self.name = name
         self.shortName = shortName
-        self.prefix = prefix
+        self.phoneNumber = phoneNumber
+        
     }
     
     func toString() -> String {
-        return self.name + " (" + self.prefix + ")"
+        return self.name + " (" + self.phoneNumber.prefix + ")"
     }
     
+}
+class PhoneNumber {
+    var prefix: String
+    var firstNumber: String
+    var length: Int
+    
+    init(prefix: String, firstNumber: String, length: Int){
+        self.prefix = prefix
+        self.firstNumber = firstNumber
+        self.length = length
+    }
 }

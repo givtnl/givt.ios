@@ -36,6 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if let userExt = UserDefaults.standard.userExt {
             email = userExt.email
         }
+        title = NSLocalizedString("Login", comment: "")
  
         txtUserName.text = email
         if !email.isEmpty() && !emailEditable {
@@ -62,13 +63,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return false
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.endEditing()
     }
     
-    @IBAction func goBack(_ sender: Any) {
-        self.endEditing()
-        self.dismiss(animated: true, completion: nil)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

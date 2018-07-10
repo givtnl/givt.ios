@@ -34,9 +34,14 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     private var validationHelper = ValidationHelper.shared
     private var countryPickerView: UIPickerView!
     private var mobilePrefixPickerView: UIPickerView!
-    var selectedCountry: Country?
-    var selectedMobilePrefix: Country?
+    private var selectedCountry: Country!
+    private var selectedMobilePrefix: Country!
     private var _lastTextField: UITextField = UITextField()
+    
+    var emailField = ""
+    var firstNameField = ""
+    var lastNameField = ""
+    var password = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +75,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             selectedCountry = AppConstants.countries[0]
             selectedMobilePrefix = AppConstants.countries[0]
             countryField.text = selectedCountry?.name
-            mobilePrefixField.text = selectedMobilePrefix?.prefix
+            mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             mobileNumber.text = "0498121314"
             iban.text = "BE62 5100 0754 7061"
 
@@ -94,7 +99,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 checkAll(countryField)
                 
                 selectedMobilePrefix = filteredCountry
-                mobilePrefixField.text = selectedMobilePrefix?.prefix
+                mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
                 checkAll(mobilePrefixField)
             }
         }
@@ -280,7 +285,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let iban = self.iban.text!.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        let userData = RegistrationUserData(address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
+        let userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, countryCode: countryCode!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
             if let success = success {
                 if success {
@@ -383,7 +388,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         }
         
         do {
-            let phoneNumber = try phoneNumberKit.parse(selectedMobilePrefix.prefix + number, withRegion: selectedMobilePrefix.shortName, ignoreType: true)
+            let phoneNumber = try phoneNumberKit.parse(selectedMobilePrefix.phoneNumber.prefix + number, withRegion: selectedMobilePrefix.shortName, ignoreType: true)
             formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
             print("Formatted phonenumber: " + formattedPhoneNumber)
             return true
@@ -449,7 +454,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         if pickerView == countryPickerView {
             return  AppConstants.countries[row].name
         } else if pickerView == mobilePrefixPickerView {
-            return  AppConstants.countries[row].prefix
+            return  AppConstants.countries[row].phoneNumber.prefix
         } else {
             return AppConstants.countries[row].toString()
         }
@@ -468,14 +473,14 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             mobilePrefixPickerView.selectRow(row, inComponent: 0, animated: false)
             _lastTextField = mobilePrefixField
             selectedMobilePrefix = AppConstants.countries[row]
-            mobilePrefixField.text = selectedMobilePrefix?.prefix
+            mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             checkAll(mobilePrefixField)
             checkAll(mobileNumber)
             checkAll(countryField)
         } else if pv == mobilePrefixPickerView {
             _lastTextField = mobilePrefixField
             selectedMobilePrefix = AppConstants.countries[row]
-            mobilePrefixField.text = selectedMobilePrefix?.prefix
+            mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             checkAll(mobilePrefixField)
             checkAll(mobileNumber)
         }

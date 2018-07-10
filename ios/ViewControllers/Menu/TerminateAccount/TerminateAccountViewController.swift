@@ -45,10 +45,6 @@ class TerminateAccountViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func goBack(_ sender: Any) {
-        self.dismiss(animated: true, completion: {})
-    }
-    
     @IBAction func terminate(_ sender: Any) {
         if !AppServices.shared.connectedToNetwork() {
             let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
@@ -75,14 +71,4 @@ class TerminateAccountViewController: UIViewController {
         }
      
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

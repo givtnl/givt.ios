@@ -40,6 +40,11 @@
 		</dict>
 		<dict/>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	    <string>kdgm-dev</string>
+	    <string>kdgm</string>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>76</string>
 	<key>Fabric</key>

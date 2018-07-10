@@ -15,16 +15,6 @@ class RegistrationUser {
     var password: String
     var firstName: String
     var lastName: String
-    
-    init(email: String, password: String, firstName: String, lastName: String) {
-        self.email = email
-        self.password = password
-        self.firstName = firstName
-        self.lastName = lastName
-    }
-}
-
-class RegistrationUserData {
     var address: String = ""
     var city: String = ""
     var countryCode: String = ""
@@ -32,7 +22,11 @@ class RegistrationUserData {
     var mobileNumber: String = ""
     var postalCode: String = ""
     
-    init(address: String, city: String, countryCode: String, iban: String, mobileNumber: String, postalCode: String) {
+    init(email: String, password: String, firstName: String, lastName: String, address: String, city: String, countryCode: String, iban: String, mobileNumber: String, postalCode: String) {
+        self.email = email
+        self.password = password
+        self.firstName = firstName
+        self.lastName = lastName
         self.address = address
         self.city = city
         self.countryCode = countryCode
@@ -40,5 +34,4 @@ class RegistrationUserData {
         self.mobileNumber = mobileNumber
         self.postalCode = postalCode
     }
-    
 }
