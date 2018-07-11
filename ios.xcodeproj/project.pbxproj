@@ -32,6 +32,9 @@
 		D748F6002063D4A500B25BC2 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = D748F5FF2063D4A500B25BC2 /* Status.swift */; };
 		D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D748F6012063D4BF00B25BC2 /* HistoryTransaction.swift */; };
 		D748F6042063D50C00B25BC2 /* HistoryTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D748F6032063D50C00B25BC2 /* HistoryTableViewModel.swift */; };
+		D74C19E820F6270F00E116A0 /* ExternalSuggestion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D74C19E720F6270F00E116A0 /* ExternalSuggestion.storyboard */; };
+		D74C19EA20F627DA00E116A0 /* ExternalSuggestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C19E920F627DA00E116A0 /* ExternalSuggestionViewController.swift */; };
+		D74C19EC20F62B8A00E116A0 /* ExternalSuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C19EB20F62B8A00E116A0 /* ExternalSuggestionView.swift */; };
 		D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75141971F9798040016B71F /* EmailOnlyViewController.swift */; };
 		D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75141991F9799750016B71F /* FirstUseViewController.swift */; };
 		D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D751419B1F9799970016B71F /* FirstUseNavigationViewController.swift */; };
@@ -192,6 +195,9 @@
 		D748F5FF2063D4A500B25BC2 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		D748F6012063D4BF00B25BC2 /* HistoryTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTransaction.swift; sourceTree = "<group>"; };
 		D748F6032063D50C00B25BC2 /* HistoryTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewModel.swift; sourceTree = "<group>"; };
+		D74C19E720F6270F00E116A0 /* ExternalSuggestion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExternalSuggestion.storyboard; sourceTree = "<group>"; };
+		D74C19E920F627DA00E116A0 /* ExternalSuggestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalSuggestionViewController.swift; sourceTree = "<group>"; };
+		D74C19EB20F62B8A00E116A0 /* ExternalSuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalSuggestionView.swift; sourceTree = "<group>"; };
 		D75141971F9798040016B71F /* EmailOnlyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOnlyViewController.swift; sourceTree = "<group>"; };
 		D75141991F9799750016B71F /* FirstUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstUseViewController.swift; sourceTree = "<group>"; };
 		D751419B1F9799970016B71F /* FirstUseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstUseNavigationViewController.swift; sourceTree = "<group>"; };
@@ -430,6 +436,7 @@
 				D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */,
 				D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */,
 				D7C8F3D2209A0B7300DBB397 /* Event.storyboard */,
+				D74C19E720F6270F00E116A0 /* ExternalSuggestion.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -454,6 +461,7 @@
 				D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */,
 				D7DD79A3209B463800047CA7 /* InsetLabel.swift */,
 				D7D9C31B20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift */,
+				D74C19EB20F62B8A00E116A0 /* ExternalSuggestionView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -562,6 +570,7 @@
 				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
 				D726298C1FFBD10C00743224 /* BaseScanViewController.swift */,
 				D7CAB10320875E9F004139CB /* CelebrateViewController.swift */,
+				D74C19E920F627DA00E116A0 /* ExternalSuggestionViewController.swift */,
 			);
 			path = "Give Flow";
 			sourceTree = "<group>";
@@ -808,6 +817,7 @@
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
 				D7B715501FD0529D00666262 /* Personal.storyboard in Resources */,
+				D74C19E820F6270F00E116A0 /* ExternalSuggestion.storyboard in Resources */,
 				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
 				D7AF42FF1FEA61610027EEC1 /* UpdatedTermsPage.storyboard in Resources */,
 				D7EAF10E1FB491B000DFE5CC /* icon.png in Resources */,
@@ -920,6 +930,7 @@
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D7BC58D620776361008C9497 /* Context.swift in Sources */,
+				D74C19EA20F627DA00E116A0 /* ExternalSuggestionViewController.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
 				D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */,
 				D7D6FA6B1F7BADA5008A5604 /* UITextFieldExtensions.swift in Sources */,
@@ -968,6 +979,7 @@
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D748F5FC2061425400B25BC2 /* HistoryTableViewCell.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
+				D74C19EC20F62B8A00E116A0 /* ExternalSuggestionView.swift in Sources */,
 				D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */,
 				D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExtensions.swift in Sources */,
 				D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */,

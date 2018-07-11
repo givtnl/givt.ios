@@ -311,8 +311,15 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
 
         givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        givtService.customReturnAppScheme = "kdgm://"
+        givtService.customReturnAppSchemeMediumId = "61f7ed014e4c0517c000.d00000000001"
+        if givtService.customReturnAppScheme != nil && givtService.customReturnAppSchemeMediumId != nil {
+            let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController()
+            self.navigationController?.pushViewController(vc!, animated: true)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
      }
     
     func displayAmountLimitExceeded() {

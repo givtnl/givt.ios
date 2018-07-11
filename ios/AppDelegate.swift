@@ -156,6 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             GivtService.shared.customReturnAppScheme = nil
+            GivtService.shared.customReturnAppSchemeMediumId = nil
         }
         return true
     }
@@ -177,20 +178,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 logService.info(message: "A Givt is being shared via the Safari-flow")
             }
         } else {
-            if let query = url.query, let equalSignIndex = query.index(of: "=") {
-                let startIndex = query.index(equalSignIndex, offsetBy: 1)
-                let endIndex = query.endIndex
-                let content = String(query[startIndex..<endIndex])
-                if let decoded = content.removingPercentEncoding {
-                    LogService.shared.info(message: "App scheme: \(decoded) entering Givt-app")
-                    GivtService.shared.customReturnAppScheme = decoded
+            if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = urlComponents.queryItems {
+                if let from = queryItems.first(where: { (item) -> Bool in
+                    item.name == "from"
+                }), let fromValue = from.value {
+                    LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app")
+                    GivtService.shared.customReturnAppScheme = fromValue
+                }
+                
+                if let mediumid = queryItems.first(where: { (item) -> Bool in
+                    item.name == "mediumid"
+                }), let mediumidValue = mediumid.value {
+                    LogService.shared.info(message: "Filling suggestion screen with identifier \(mediumidValue)")
+                    GivtService.shared.customReturnAppSchemeMediumId = mediumidValue
                 }
             }
         }
         return true
     }
-
-
-
 }
 
