@@ -168,7 +168,7 @@ class LoginManager {
                     do {
                         let userExt = try JSONDecoder().decode(LMUserExt.self, from: data)
                         UserDefaults.standard.isTempUser = userExt.IsTempUser
-                        UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 500 : userExt.AmountLimit
+                        UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 100 : userExt.AmountLimit
                         completion(userExt)
                     } catch let err as NSError {
                         self.log.error(message: err.description)
@@ -197,7 +197,7 @@ class LoginManager {
                     config.email = parsedData["Email"] as! String
 
                     UserDefaults.standard.userExt = config
-                    UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 500 : parsedData["AmountLimit"] as! Int
+                    UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 100 : parsedData["AmountLimit"] as! Int
                     completionHandler(true)
                 } catch let err as NSError {
                     completionHandler(false)
@@ -221,7 +221,7 @@ class LoginManager {
             "City":  user.city,
             "PostalCode":  user.postalCode,
             "CountryCode":  user.countryCode,
-            "AmountLimit": "500"]
+            "AmountLimit": "100"]
         
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
@@ -234,10 +234,10 @@ class LoginManager {
                         
                         self.loginUser(email: user.email, password: user.password, completionHandler: { (success, err, descr) in
                             if success {
-                                self.saveAmountLimit(500, completionHandler: { (status) in
+                                self.saveAmountLimit(100, completionHandler: { (status) in
                                     //niets
                                 })
-                                UserDefaults.standard.amountLimit = 500
+                                UserDefaults.standard.amountLimit = 100
                                 completionHandler(true)
                             } else {
                                 self.log.info(message: "Login failed")
