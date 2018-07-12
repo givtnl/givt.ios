@@ -17,14 +17,19 @@ class ExternalSuggestionViewController: BaseScanViewController {
         let externalSuggestion = ExternalSuggestionView(frame: CGRect.zero)
         externalSuggestion.label.text = "Nicorette {0}"
         self.view.addSubview(externalSuggestion)
-        externalSuggestion.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40).isActive = true
-        externalSuggestion.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -40).isActive = true
+        externalSuggestion.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
+        externalSuggestion.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
+        externalSuggestion.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        externalSuggestion.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         externalSuggestion.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         
         externalSuggestion.button.addTarget(self, action: #selector(self.giveAction), for: UIControlEvents.touchUpInside)
         externalSuggestion.button.setTitle(NSLocalizedString("YesPlease", comment: ""), for: UIControlState.normal)
         
         externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControlEvents.touchUpInside)
+        externalSuggestion.cancelButton.isUserInteractionEnabled = true
+        
+        externalSuggestion.image.image = GivtService.shared.externalIntegration!.logo
         
         setupLabel(label: externalSuggestion.label)
     }
@@ -37,6 +42,7 @@ class ExternalSuggestionViewController: BaseScanViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         GivtService.shared.delegate = self
+        GivtService.shared.externalIntegration!.wasShownAlready = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -53,7 +59,7 @@ class ExternalSuggestionViewController: BaseScanViewController {
         giveManually(antennaID: GivtService.shared.externalIntegration!.mediumId)
     }
     
-    @objc func cancel() {
+    @objc func cancel(sender: UIButton) {
         GivtService.shared.externalIntegration = nil
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
         self.navigationController?.pushViewController(vc, animated: true)

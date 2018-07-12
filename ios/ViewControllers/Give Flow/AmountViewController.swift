@@ -312,7 +312,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 
         givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
         
-        if givtService.externalIntegration != nil {
+        if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
             let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController()
             self.navigationController?.pushViewController(vc!, animated: true)
         } else {

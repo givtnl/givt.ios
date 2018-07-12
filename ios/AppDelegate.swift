@@ -180,12 +180,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = urlComponents.queryItems {
                 if let fromField = queryItems.first(where: { (item) -> Bool in item.name == "from" }),
                     let mediumIdField = queryItems.first(where: { (item) -> Bool in item.name == "mediumid" }),
-                    let nameField = queryItems.first(where: { (item) -> Bool in item.name == "name" }),
+                    let appIdField = queryItems.first(where: { (item) -> Bool in item.name == "appid" }),
                     let fromValue = fromField.value,
                     let mediumIdValue = mediumIdField.value,
-                    let nameValue = nameField.value {
-                    LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app with identifier \(mediumIdValue)")
-                    GivtService.shared.externalIntegration = ExternalIntegration(name: nameValue, mediumId: mediumIdValue, appScheme: fromValue)
+                    let appId = appIdField.value {
+                    if let element = AppConstants.dict[appId], let imageString = element["logo"], let image = UIImage(named: imageString), let name = element["name"] {
+                        GivtService.shared.externalIntegration = ExternalAppIntegration(name: name, logo: image, mediumId: mediumIdValue, appScheme: fromValue)
+                        LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app with identifier \(mediumIdValue)")
+                    } else {
+                        LogService.shared.warning(message: "Could not identify External App Integration")
+                    }
                 }
             }
         }
