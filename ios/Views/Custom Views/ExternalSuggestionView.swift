@@ -39,15 +39,15 @@ class ExternalSuggestionView: UIView {
         label.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         
         button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20).isActive = true
-        button.leftAnchor.constraint(equalTo: label.leftAnchor).isActive = true
-        button.rightAnchor.constraint(equalTo: label.rightAnchor).isActive = true
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 22).isActive = true
+        button.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        cancelButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 10).isActive = true
-        cancelButton.leftAnchor.constraint(equalTo: button.leftAnchor).isActive = true
-        cancelButton.rightAnchor.constraint(equalTo: button.rightAnchor).isActive = true
-        cancelButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
-        
+        cancelButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 30).isActive = true
+        cancelButton.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
+        cancelButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        cancelButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+
     }
     
     let label: UILabel = {
@@ -62,18 +62,18 @@ class ExternalSuggestionView: UIView {
     
     let button: UIButton = {
         let btn = UIButton(type: UIButtonType.custom)
-        btn.setTitle("Hellowow", for: UIControlState.normal)
         btn.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
+        btn.setBackgroundColor(color: #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1), forState: UIControlState.highlighted)
         btn.layer.cornerRadius = 4
         btn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 18.0)
+        btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         return btn
     }()
     
     let cancelButton: UIButton = {
         let btn = UIButton(type: .custom)
-        btn.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        btn.titleLabel?.textColor = #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Light", size: 14.0)
+        btn.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
+        btn.setImage(#imageLiteral(resourceName: "closewhite"), for: UIControlState.normal)
         return btn
     }()
 }

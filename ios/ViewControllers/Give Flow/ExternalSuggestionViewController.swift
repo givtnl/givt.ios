@@ -17,15 +17,13 @@ class ExternalSuggestionViewController: BaseScanViewController {
         let externalSuggestion = ExternalSuggestionView(frame: CGRect.zero)
         externalSuggestion.label.text = "Nicorette {0}"
         self.view.addSubview(externalSuggestion)
-        externalSuggestion.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
-        externalSuggestion.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20).isActive = true
+        externalSuggestion.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 40).isActive = true
+        externalSuggestion.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -40).isActive = true
         externalSuggestion.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         
         externalSuggestion.button.addTarget(self, action: #selector(self.giveAction), for: UIControlEvents.touchUpInside)
         externalSuggestion.button.setTitle(NSLocalizedString("YesPlease", comment: ""), for: UIControlState.normal)
         
-        let attributedString = NSMutableAttributedString(string: NSLocalizedString("ChooseHowIGive", comment: ""), attributes: [NSAttributedStringKey.underlineStyle : true])
-        externalSuggestion.cancelButton.setAttributedTitle(attributedString, for: UIControlState.normal)
         externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControlEvents.touchUpInside)
         
         setupLabel(label: externalSuggestion.label)
