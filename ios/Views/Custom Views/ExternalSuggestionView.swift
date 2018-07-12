@@ -55,6 +55,7 @@ class ExternalSuggestionView: UIView {
         lbl.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         lbl.font = UIFont(name: "Avenir-Light", size: 16.0)
         lbl.textAlignment = .center
+        lbl.numberOfLines = 0
         return lbl
     }()
     
@@ -72,8 +73,6 @@ class ExternalSuggestionView: UIView {
         btn.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         btn.titleLabel?.textColor = #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1)
         btn.titleLabel?.font = UIFont(name: "Avenir-Light", size: 14.0)
-        let attributedString = NSMutableAttributedString(string: "Nee, ik wil zelf kiezen hoe ik geef", attributes: [NSAttributedStringKey.underlineStyle : true])
-        btn.setAttributedTitle(attributedString, for: UIControlState.normal)
         return btn
     }()
 }

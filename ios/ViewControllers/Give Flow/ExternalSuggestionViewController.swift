@@ -23,7 +23,10 @@ class ExternalSuggestionViewController: BaseScanViewController {
         externalSuggestion.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         
         externalSuggestion.button.addTarget(self, action: #selector(self.giveAction), for: UIControlEvents.touchUpInside)
+        externalSuggestion.button.setTitle(NSLocalizedString("YesPlease", comment: ""), for: UIControlState.normal)
         
+        let attributedString = NSMutableAttributedString(string: NSLocalizedString("ChooseHowIGive", comment: ""), attributes: [NSAttributedStringKey.underlineStyle : true])
+        externalSuggestion.cancelButton.setAttributedTitle(attributedString, for: UIControlState.normal)
         setupLabel(label: externalSuggestion.label)
     }
     
