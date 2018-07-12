@@ -12,7 +12,6 @@ class ExternalSuggestionViewController: BaseScanViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
         UIApplication.shared.statusBarStyle = .lightContent
         // Do any additional setup after loading the view.
         let externalSuggestion = ExternalSuggestionView(frame: CGRect.zero)
@@ -27,9 +26,15 @@ class ExternalSuggestionViewController: BaseScanViewController {
         
         let attributedString = NSMutableAttributedString(string: NSLocalizedString("ChooseHowIGive", comment: ""), attributes: [NSAttributedStringKey.underlineStyle : true])
         externalSuggestion.cancelButton.setAttributedTitle(attributedString, for: UIControlState.normal)
+        externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControlEvents.touchUpInside)
+        
         setupLabel(label: externalSuggestion.label)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -39,6 +44,11 @@ class ExternalSuggestionViewController: BaseScanViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         GivtService.shared.delegate = nil
+        UIApplication.shared.statusBarStyle = .default
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        if let index = self.navigationController?.viewControllers.index(of: self) {
+            self.navigationController?.viewControllers.remove(at: index)
+        }
     }
     
     @objc func giveAction() {
@@ -47,6 +57,9 @@ class ExternalSuggestionViewController: BaseScanViewController {
     
     @objc func cancel() {
         
+        GivtService.shared.customReturnAppSchemeMediumId = nil
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupLabel(label: UILabel) {
@@ -76,10 +89,7 @@ class ExternalSuggestionViewController: BaseScanViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
+    
     
 
     /*

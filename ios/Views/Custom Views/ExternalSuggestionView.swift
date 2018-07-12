@@ -41,6 +41,7 @@ class ExternalSuggestionView: UIView {
         button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 20).isActive = true
         button.leftAnchor.constraint(equalTo: label.leftAnchor).isActive = true
         button.rightAnchor.constraint(equalTo: label.rightAnchor).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         cancelButton.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 10).isActive = true
         cancelButton.leftAnchor.constraint(equalTo: button.leftAnchor).isActive = true
