@@ -22,7 +22,7 @@ class ExternalSuggestionView: UIView {
     }
     
     func setupViews() {
-        self.layer.cornerRadius = 6
+        self.layer.cornerRadius = 40
         self.addSubview(label)
         self.addSubview(button)
         self.addSubview(cancelButton)
@@ -64,7 +64,7 @@ class ExternalSuggestionView: UIView {
         let btn = UIButton(type: UIButtonType.custom)
         btn.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
         btn.setBackgroundColor(color: #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1), forState: UIControlState.highlighted)
-        btn.layer.cornerRadius = 4
+        btn.layer.cornerRadius = 15
         btn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 18.0)
         btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         return btn
