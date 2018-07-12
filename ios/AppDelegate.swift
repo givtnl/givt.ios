@@ -141,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         //
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb { //coming from safari
-            if let appScheme = GivtService.shared.customReturnAppScheme {
+            if let appScheme = GivtService.shared.externalIntegration?.appScheme {
                 let url = URL(string: appScheme)!
                 if UIApplication.shared.canOpenURL(url) {
                     LogService.shared.info(message: "User just gave, coming back to Givt, now going to \(appScheme)")
@@ -155,8 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     LogService.shared.warning(message: "\(url) was not installed on the device.")
                 }
             }
-            GivtService.shared.customReturnAppScheme = nil
-            GivtService.shared.customReturnAppSchemeMediumId = nil
+            GivtService.shared.externalIntegration = nil
         }
         return true
     }
@@ -179,18 +178,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = urlComponents.queryItems {
-                if let from = queryItems.first(where: { (item) -> Bool in
-                    item.name == "from"
-                }), let fromValue = from.value {
-                    LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app")
-                    GivtService.shared.customReturnAppScheme = fromValue
-                }
-                
-                if let mediumid = queryItems.first(where: { (item) -> Bool in
-                    item.name == "mediumid"
-                }), let mediumidValue = mediumid.value {
-                    LogService.shared.info(message: "Filling suggestion screen with identifier \(mediumidValue)")
-                    GivtService.shared.customReturnAppSchemeMediumId = mediumidValue
+                if let fromField = queryItems.first(where: { (item) -> Bool in item.name == "from" }),
+                    let mediumIdField = queryItems.first(where: { (item) -> Bool in item.name == "mediumid" }),
+                    let nameField = queryItems.first(where: { (item) -> Bool in item.name == "name" }),
+                    let fromValue = fromField.value,
+                    let mediumIdValue = mediumIdField.value,
+                    let nameValue = nameField.value {
+                    LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app with identifier \(mediumIdValue)")
+                    GivtService.shared.externalIntegration = ExternalIntegration(name: nameValue, mediumId: mediumIdValue, appScheme: fromValue)
                 }
             }
         }

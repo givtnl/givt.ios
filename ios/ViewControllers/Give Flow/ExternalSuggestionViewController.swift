@@ -52,12 +52,11 @@ class ExternalSuggestionViewController: BaseScanViewController {
     }
     
     @objc func giveAction() {
-        giveManually(antennaID: GivtService.shared.customReturnAppSchemeMediumId!)
+        giveManually(antennaID: GivtService.shared.externalIntegration!.mediumId)
     }
     
     @objc func cancel() {
-        
-        GivtService.shared.customReturnAppSchemeMediumId = nil
+        GivtService.shared.externalIntegration = nil
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -71,13 +70,11 @@ class ExternalSuggestionViewController: BaseScanViewController {
             NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 17)!,
             NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
             ] as [NSAttributedStringKey : Any]
-        guard let mediumId = GivtService.shared.customReturnAppSchemeMediumId else {
-            return
-        }
+        let mediumId = GivtService.shared.externalIntegration!.mediumId
         let stopIndex = mediumId.index(of: ".")!
         let namespace = String(mediumId[..<stopIndex])
         let organisation = GivtService.shared.getOrganisationName(organisationNameSpace: namespace)!
-        let msg = NSLocalizedString("ExternalSuggestionLabel", comment: "").replacingOccurrences(of:"{0}", with: organisation)
+        let msg = NSLocalizedString("ExternalSuggestionLabel", comment: "").replacingOccurrences(of: "{0}", with: GivtService.shared.externalIntegration!.name).replacingOccurrences(of:"{1}", with: organisation)
         let rangeOfSubstring = (msg as NSString).range(of: organisation)
         let attributedString = NSMutableAttributedString(string: msg, attributes: lightAttributes)
         attributedString.setAttributes(boldAttributes, range: rangeOfSubstring)
@@ -88,18 +85,4 @@ class ExternalSuggestionViewController: BaseScanViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
