@@ -10,9 +10,9 @@ import UIKit
 
 class ExternalSuggestionViewController: BaseScanViewController {
 
+    var closeAction: () -> () = {}
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarStyle = .lightContent
         // Do any additional setup after loading the view.
         let externalSuggestion = ExternalSuggestionView(frame: CGRect.zero)
         externalSuggestion.label.text = "Nicorette {0}"
@@ -36,7 +36,6 @@ class ExternalSuggestionViewController: BaseScanViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,21 +47,24 @@ class ExternalSuggestionViewController: BaseScanViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         GivtService.shared.delegate = nil
-        UIApplication.shared.statusBarStyle = .default
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        if let index = self.navigationController?.viewControllers.index(of: self) {
-            self.navigationController?.viewControllers.remove(at: index)
-        }
     }
     
     @objc func giveAction() {
         giveManually(antennaID: GivtService.shared.externalIntegration!.mediumId)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func cancel(sender: UIButton) {
         GivtService.shared.externalIntegration = nil
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: {
+                self.closeAction()
+            })
+        }
+        
+        
     }
     
     func setupLabel(label: UILabel) {

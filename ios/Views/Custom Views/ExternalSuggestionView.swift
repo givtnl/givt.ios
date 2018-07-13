@@ -22,7 +22,7 @@ class ExternalSuggestionView: UIView {
     }
     
     func setupViews() {
-        self.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        self.backgroundColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 0.8)
         self.addSubview(containerView)
         self.addSubview(label)
         self.addSubview(button)
@@ -44,17 +44,17 @@ class ExternalSuggestionView: UIView {
         
         label.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 20).isActive = true
         label.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: -20).isActive = true
-        label.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 10).isActive = true
+        label.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 30).isActive = true
         
-        button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 10).isActive = true
+        button.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 30).isActive = true
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
         button.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 22).isActive = true
         button.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
         
-        cancelButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 30).isActive = true
-        cancelButton.bottomAnchor.constraint(equalTo: containerView.topAnchor, constant: 10).isActive = true
-        cancelButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        cancelButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        cancelButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0).isActive = true
+        cancelButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0).isActive = true
+//        cancelButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//        cancelButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
         
         image.heightAnchor.constraint(equalToConstant: 60).isActive = true
         image.widthAnchor.constraint(equalToConstant: 60).isActive = true
@@ -66,7 +66,7 @@ class ExternalSuggestionView: UIView {
     let containerView: UIView = {
         let v = UIView()
         v.translatesAutoresizingMaskIntoConstraints = false
-        v.layer.cornerRadius = 40
+        v.layer.cornerRadius = 4
         v.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         return v
     }()
@@ -86,16 +86,17 @@ class ExternalSuggestionView: UIView {
         btn.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
         btn.highlightedBGColor = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1)
         btn.ogBGColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
-        btn.layer.cornerRadius = 15
+        btn.layer.cornerRadius = 4
         btn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 18.0)
-        btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         return btn
     }()
     
     let cancelButton: UIButton = {
         let btn = UIButton(type: .custom)
         btn.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-        btn.setImage(#imageLiteral(resourceName: "closewhite"), for: UIControlState.normal)
+        btn.setImage(#imageLiteral(resourceName: "closepurple"), for: UIControlState.normal)
+        btn.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         return btn
     }()
     

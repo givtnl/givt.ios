@@ -313,8 +313,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
         
         if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
-            let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController()
-            self.navigationController?.pushViewController(vc!, animated: true)
+            let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
+            vc.providesPresentationContextTransitionStyle = true
+            vc.definesPresentationContext = true
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            vc.closeAction = {
+                let chooseContext = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+                self.navigationController?.pushViewController(chooseContext, animated: true)
+            }
+            self.navigationController?.present(vc, animated: true, completion: nil)
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
             self.navigationController?.pushViewController(vc, animated: true)

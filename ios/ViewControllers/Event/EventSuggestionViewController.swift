@@ -21,11 +21,11 @@ class EventSuggestionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        contentView.layer.cornerRadius = 40.0
+        contentView.layer.cornerRadius = 4
         
         self.view.layoutIfNeeded()
         self.btnGive.text = NSLocalizedString("YesPlease", comment: "")
-        self.btnGive.layer.cornerRadius = 15
+        self.btnGive.layer.cornerRadius = 4
         self.btnGive.clipsToBounds = true
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(give))
