@@ -154,6 +154,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
                                     
                                 }))
+                                SVProgressHUD.dismiss()
                                 self.present(alert, animated: true, completion: nil)
                             }
                             return
