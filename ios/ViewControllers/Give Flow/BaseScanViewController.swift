@@ -148,7 +148,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                     callback("")
                     return
                 }
-                let country = AppConstants.countries[userExtension.CountryCode].shortName
+                let country = userExtension.Country
                 let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: country, postalCode: userExtension.PostalCode, street: userExtension.Address)
                 let mandate = Mandate(signatory: signatory)
                 LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in

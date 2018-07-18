@@ -82,12 +82,16 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         loginManager.getUserExtObject { (userExtObject) in
             SVProgressHUD.dismiss()
             guard let userExt = userExtObject else {
+                /* TODO: @Lennie Why a guard if the user does not receive an error message? */
                 DispatchQueue.main.async {
                     self.backPressed(self)
                 }
                 return
             }
-            let country = AppConstants.countries[userExt.CountryCode].name
+            let country = AppConstants.countries.filter { (c) -> Bool in
+                c.shortName == userExt.Country
+            }[0].name
+            
             self.settings.removeAll()
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: userExt.FirstName + " " + userExt.LastName, type: .name))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: userExt.Email, type: .emailaddress))

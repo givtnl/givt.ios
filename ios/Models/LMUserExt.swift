@@ -16,7 +16,7 @@ struct LMUserExt: Codable {
     var Email: String
     var Address: String
     var PostalCode: String
-    var CountryCode: Int
+    var Country: String
     var IBAN: String
     var City: String
     var IsTempUser: Bool

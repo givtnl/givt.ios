@@ -220,7 +220,7 @@ class LoginManager {
             "Address":  user.address,
             "City":  user.city,
             "PostalCode":  user.postalCode,
-            "CountryCode":  user.countryCode,
+            "Country":  user.country,
             "AmountLimit": "499"]
         
         do {
@@ -341,7 +341,7 @@ class LoginManager {
     }
     
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
-        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
+        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
         self.registerExtraDataFromUser(regUser) { b in
             if let b = b {
                 if b {
@@ -477,7 +477,7 @@ class LoginManager {
             "Address":  userExt.Address,
             "City":  userExt.City,
             "PostalCode":  userExt.PostalCode,
-            "CountryCode":  userExt.CountryCode,
+            "Country":  userExt.Country,
             "AmountLimit" : String(UserDefaults.standard.amountLimit)] as [String : Any]
         do {
             try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in

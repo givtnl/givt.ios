@@ -17,19 +17,19 @@ class RegistrationUser {
     var lastName: String
     var address: String = ""
     var city: String = ""
-    var countryCode: String = ""
+    var country: String = ""
     var iban: String = ""
     var mobileNumber: String = ""
     var postalCode: String = ""
     
-    init(email: String, password: String, firstName: String, lastName: String, address: String, city: String, countryCode: String, iban: String, mobileNumber: String, postalCode: String) {
+    init(email: String, password: String, firstName: String, lastName: String, address: String, city: String, country: String, iban: String, mobileNumber: String, postalCode: String) {
         self.email = email
         self.password = password
         self.firstName = firstName
         self.lastName = lastName
         self.address = address
         self.city = city
-        self.countryCode = countryCode
+        self.country = country
         self.iban = iban
         self.mobileNumber = mobileNumber
         self.postalCode = postalCode

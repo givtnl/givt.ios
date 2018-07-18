@@ -75,12 +75,13 @@ class SPInfoViewController: UIViewController {
             SVProgressHUD.show()
             LoginManager.shared.getUserExtObject { (userExtension) in
                 guard let userInfo = userExtension else {
+                    /* TODO: @Lennie Why a guard but not an error message to the user????? */
                     SVProgressHUD.dismiss()
                     return
                 }
                 
-                var country = ""
-                country = AppConstants.countries[userInfo.CountryCode].shortName
+                let country = userInfo.Country
+                
                 let signatory = Signatory(givenName: userInfo.FirstName, familyName: userInfo.LastName, iban: userInfo.IBAN, email: userInfo.Email, telephone: userInfo.PhoneNumber, city: userInfo.City, country: country, postalCode: userInfo.PostalCode, street: userInfo.Address)
                 let mandate = Mandate(signatory: signatory)
                 self._loginManager.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
