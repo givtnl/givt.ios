@@ -60,7 +60,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
     }
     
-    func showCaseDidDismiss(showcase: MaterialShowcase) {
+    func showCaseDidDismiss(showcase: MaterialShowcase, didTapTarget: Bool) {
         if showcase.primaryText == NSLocalizedString("Ballon_ActiveerCollecte", comment: "") {
             if !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.giveSituation.rawValue) {
                 showShowcase(message: NSLocalizedString("GiveSituationShowcaseTitle", comment: "") + " 😉", targetView: btnGive)
@@ -470,9 +470,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             showCase.setTargetView(view: targetView) // always required to set targetView
             showCase.shouldSetTintColor = false
             showCase.backgroundPromptColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-            showCase.show(completion: {
-                print("test")
-            })
+            showCase.show(completion: nil)
         }
     }
     
