@@ -33,6 +33,15 @@ class AppConstants {
         return countries
     }()
     
+    static var dict: [String: [String: String]] = {
+        return ["org.kdgm.kerkdienstgemist":
+                    [
+                        "logo":"kerkdienstgemist",
+                        "name":"Kerkdienst Gemist"
+                    ]
+               ]
+    }()
+    
     static var apiUri: String = {
         #if PRODUCTION
             return "https://api.givtapp.net" // do not put this in prod before release!

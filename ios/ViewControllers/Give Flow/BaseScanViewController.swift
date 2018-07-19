@@ -148,7 +148,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                     callback("")
                     return
                 }
-                let country = AppConstants.countries[userExtension.CountryCode].shortName
+                let country = userExtension.Country
                 let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: country, postalCode: userExtension.PostalCode, street: userExtension.Address)
                 let mandate = Mandate(signatory: signatory)
                 LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
@@ -189,7 +189,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         SVProgressHUD.show()
         GivtService.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
             SVProgressHUD.dismiss()
-            if seconds > 0 {
+            if seconds > 0 { /* TODO: @Lennie Why check seconds > 0 if GivtService.giveManually only calls afterGivt if seconds > 0 ??? */
                 LogService.shared.info(message: "Celebrating wiiehoeeew")
                 DispatchQueue.main.async {
                     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)

@@ -57,7 +57,7 @@ final class GivtService: NSObject {
     private var amounts = [Decimal]()
     private var scanLock = NSRecursiveLock()
     
-    var customReturnAppScheme: String?
+    var externalIntegration: ExternalAppIntegration?
     
     var bestBeacon: BestBeacon?
     

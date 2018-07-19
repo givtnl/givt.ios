@@ -60,7 +60,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
     }
     
-    func showCaseDidDismiss(showcase: MaterialShowcase) {
+    func showCaseDidDismiss(showcase: MaterialShowcase, didTapTarget: Bool) {
         if showcase.primaryText == NSLocalizedString("Ballon_ActiveerCollecte", comment: "") {
             if !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.giveSituation.rawValue) {
                 showShowcase(message: NSLocalizedString("GiveSituationShowcaseTitle", comment: "") + " 😉", targetView: btnGive)
@@ -311,8 +311,22 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
 
         givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-        self.navigationController?.pushViewController(vc, animated: true)
+        
+        if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
+            let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
+            vc.providesPresentationContextTransitionStyle = true
+            vc.definesPresentationContext = true
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            vc.closeAction = {
+                let chooseContext = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+                self.navigationController?.pushViewController(chooseContext, animated: true)
+            }
+            self.navigationController?.present(vc, animated: true, completion: nil)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
      }
     
     func displayAmountLimitExceeded() {
@@ -456,9 +470,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             showCase.setTargetView(view: targetView) // always required to set targetView
             showCase.shouldSetTintColor = false
             showCase.backgroundPromptColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-            showCase.show(completion: {
-                print("test")
-            })
+            showCase.show(completion: nil)
         }
     }
     

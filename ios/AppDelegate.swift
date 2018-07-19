@@ -141,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         //
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb { //coming from safari
-            if let appScheme = GivtService.shared.customReturnAppScheme {
+            if let appScheme = GivtService.shared.externalIntegration?.appScheme {
                 let url = URL(string: appScheme)!
                 if UIApplication.shared.canOpenURL(url) {
                     LogService.shared.info(message: "User just gave, coming back to Givt, now going to \(appScheme)")
@@ -155,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     LogService.shared.warning(message: "\(url) was not installed on the device.")
                 }
             }
-            GivtService.shared.customReturnAppScheme = nil
+            GivtService.shared.externalIntegration = nil
         }
         return true
     }
@@ -177,20 +177,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 logService.info(message: "A Givt is being shared via the Safari-flow")
             }
         } else {
-            if let query = url.query, let equalSignIndex = query.index(of: "=") {
-                let startIndex = query.index(equalSignIndex, offsetBy: 1)
-                let endIndex = query.endIndex
-                let content = String(query[startIndex..<endIndex])
-                if let decoded = content.removingPercentEncoding {
-                    LogService.shared.info(message: "App scheme: \(decoded) entering Givt-app")
-                    GivtService.shared.customReturnAppScheme = decoded
+            if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = urlComponents.queryItems {
+                if let fromValue = queryItems.first(where: { (item) -> Bool in item.name == "from" })?.value,
+                    let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name == "mediumid" })?.value,
+                    let appId = queryItems.first(where: { (item) -> Bool in item.name == "appid" })?.value
+                {
+                    if let element = AppConstants.dict[appId], let imageString = element["logo"], let image = UIImage(named: imageString), let name = element["name"] {
+                        GivtService.shared.externalIntegration = ExternalAppIntegration(name: name, logo: image, mediumId: mediumIdValue, appScheme: fromValue)
+                        LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app with identifier \(mediumIdValue)")
+                    } else {
+                        LogService.shared.warning(message: "Could not identify External App Integration")
+                    }
                 }
             }
         }
         return true
     }
-
-
-
 }
 

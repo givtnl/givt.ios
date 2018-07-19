@@ -168,7 +168,7 @@ class LoginManager {
                     do {
                         let userExt = try JSONDecoder().decode(LMUserExt.self, from: data)
                         UserDefaults.standard.isTempUser = userExt.IsTempUser
-                        UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 500 : userExt.AmountLimit
+                        UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 499 : userExt.AmountLimit
                         completion(userExt)
                     } catch let err as NSError {
                         self.log.error(message: err.description)
@@ -197,7 +197,7 @@ class LoginManager {
                     config.email = parsedData["Email"] as! String
 
                     UserDefaults.standard.userExt = config
-                    UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 500 : parsedData["AmountLimit"] as! Int
+                    UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 499 : parsedData["AmountLimit"] as! Int
                     completionHandler(true)
                 } catch let err as NSError {
                     completionHandler(false)
@@ -220,8 +220,8 @@ class LoginManager {
             "Address":  user.address,
             "City":  user.city,
             "PostalCode":  user.postalCode,
-            "CountryCode":  user.countryCode,
-            "AmountLimit": "500"]
+            "Country":  user.country,
+            "AmountLimit": "499"]
         
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
@@ -234,10 +234,10 @@ class LoginManager {
                         
                         self.loginUser(email: user.email, password: user.password, completionHandler: { (success, err, descr) in
                             if success {
-                                self.saveAmountLimit(500, completionHandler: { (status) in
+                                self.saveAmountLimit(499, completionHandler: { (status) in
                                     //niets
                                 })
-                                UserDefaults.standard.amountLimit = 500
+                                UserDefaults.standard.amountLimit = 499
                                 completionHandler(true)
                             } else {
                                 self.log.info(message: "Login failed")
@@ -341,7 +341,7 @@ class LoginManager {
     }
     
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
-        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", countryCode: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
+        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
         self.registerExtraDataFromUser(regUser) { b in
             if let b = b {
                 if b {
@@ -477,7 +477,7 @@ class LoginManager {
             "Address":  userExt.Address,
             "City":  userExt.City,
             "PostalCode":  userExt.PostalCode,
-            "CountryCode":  userExt.CountryCode,
+            "Country":  userExt.Country,
             "AmountLimit" : String(UserDefaults.standard.amountLimit)] as [String : Any]
         do {
             try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
