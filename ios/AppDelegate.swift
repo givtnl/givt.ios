@@ -178,12 +178,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = urlComponents.queryItems {
-                if let fromField = queryItems.first(where: { (item) -> Bool in item.name == "from" }),
-                    let mediumIdField = queryItems.first(where: { (item) -> Bool in item.name == "mediumid" }),
-                    let appIdField = queryItems.first(where: { (item) -> Bool in item.name == "appid" }),
-                    let fromValue = fromField.value,
-                    let mediumIdValue = mediumIdField.value,
-                    let appId = appIdField.value {
+                if let fromValue = queryItems.first(where: { (item) -> Bool in item.name == "from" })?.value,
+                    let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name == "mediumid" })?.value,
+                    let appId = queryItems.first(where: { (item) -> Bool in item.name == "appid" })?.value
+                {
                     if let element = AppConstants.dict[appId], let imageString = element["logo"], let image = UIImage(named: imageString), let name = element["name"] {
                         GivtService.shared.externalIntegration = ExternalAppIntegration(name: name, logo: image, mediumId: mediumIdValue, appScheme: fromValue)
                         LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app with identifier \(mediumIdValue)")

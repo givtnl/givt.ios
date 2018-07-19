@@ -49,11 +49,16 @@ class ExternalSuggestionViewController: BaseScanViewController {
         GivtService.shared.delegate = nil
     }
     
-    @objc func giveAction() {
-        giveManually(antennaID: GivtService.shared.externalIntegration!.mediumId)
+    override func onGivtProcessed(transactions: [Transaction], organisationName: String?, canShare: Bool) {
+        super.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare)
         DispatchQueue.main.async {
+            /* TODO: how to reset amountVC ?? */
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    @objc func giveAction() {
+        giveManually(antennaID: GivtService.shared.externalIntegration!.mediumId)
     }
     
     @objc func cancel(sender: UIButton) {
@@ -62,9 +67,7 @@ class ExternalSuggestionViewController: BaseScanViewController {
             self.dismiss(animated: true, completion: {
                 self.closeAction()
             })
-        }
-        
-        
+        } 
     }
     
     func setupLabel(label: UILabel) {
