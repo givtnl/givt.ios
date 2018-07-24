@@ -56,6 +56,9 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         } else if type.matches("a[0-9]") { //acties
             c = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
             i = #imageLiteral(resourceName: "sugg_actions_white")
+        } else if type.matches("b[0-9]") {
+            c = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
+            i = #imageLiteral(resourceName: "sugg_actions_white")
         }
 
         guard let tintColor = c, let image = i else { return nil }
@@ -219,14 +222,17 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         let stichtingen = createButton(text: NSLocalizedString("Stichtingen", comment: ""), image: #imageLiteral(resourceName: "stichting_white"), backgroundColor: #colorLiteral(red: 0.9568627451, green: 0.7490196078, blue: 0.3882352941, alpha: 1), useShadow: true)
         let churches = createButton(text: NSLocalizedString("Churches", comment: ""), image: #imageLiteral(resourceName: "church_white"), backgroundColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), useShadow: true)
         let actions = createButton(text: NSLocalizedString("Acties", comment: ""), image: #imageLiteral(resourceName: "actions_white"), backgroundColor: #colorLiteral(red: 0.9450980392, green: 0.4392156863, blue: 0.3411764706, alpha: 1), useShadow: true)
+        let artiest = createButton(text: "Artiesten", image: #imageLiteral(resourceName: "straatmzkt"), backgroundColor: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1), useShadow: true)
         
         stichtingen.tag = 100
         churches.tag = 101
         actions.tag = 102
+        artiest.tag = 103
         
         addAction(stichtingen)
         addAction(churches)
         addAction(actions)
+        addAction(artiest)
         
         if let suggestief = fillSuggestion() {
             stackView.addArrangedSubview(suggestief)
@@ -235,6 +241,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         stackView.addArrangedSubview(churches)
         stackView.addArrangedSubview(stichtingen)
         stackView.addArrangedSubview(actions)
+        stackView.addArrangedSubview(artiest)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -260,7 +267,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         disableButtons = true
         if let tag = sender.view?.tag {
             switch tag {
-            case 100, 101, 102:
+            case 100, 101, 102, 103:
                 let vc = storyboard?.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
                 vc.passSelectedTag = tag
                 self.show(vc, sender: nil)

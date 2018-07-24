@@ -135,6 +135,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     @IBOutlet var actiesWidth: NSLayoutConstraint!
     @IBOutlet var stichtingWidth: NSLayoutConstraint!
     @IBOutlet var churchWidth: NSLayoutConstraint!
+    @IBOutlet var artiestWidth: NSLayoutConstraint!
+    
     @IBOutlet var stackList: UIStackView!
     @IBOutlet var list: UIView!
     @IBOutlet var tableView: UITableView!
@@ -196,6 +198,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     @IBOutlet var kerken: UIImageView!
     @IBOutlet var stichtingen: UIImageView!
     @IBOutlet var acties: UIImageView!
+    @IBOutlet var artiest: UIImageView!
     
     @IBOutlet var navBar: UINavigationItem!
     @IBAction func btnGive(_ sender: Any) {
@@ -210,6 +213,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         typeStackView.addArrangedSubview(btnKerken)
         typeStackView.addArrangedSubview(btnStichtingen)
         typeStackView.addArrangedSubview(btnActies)
+        typeStackView.addArrangedSubview(btnArtiest)
         
         if passSelectedTag == 100 {
             setActiveType(view: btnStichtingen)
@@ -217,6 +221,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             setActiveType(view: btnKerken)
         } else if passSelectedTag == 102 {
             setActiveType(view: btnActies)
+        } else if passSelectedTag == 103 {
+            setActiveType(view: btnArtiest)
         }
 
         searchBar.delegate = self
@@ -270,6 +276,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                     replaceView = btnKerken
                 } else if view == btnActiesSpecial {
                     replaceView = btnActies
+                } else if view == btnArtiestSpecial {
+                    replaceView = btnArtiest
                 }
                 if let idx = typeStackView.arrangedSubviews.index(of: view), replaceView != nil {
                     typeStackView.removeArrangedSubview(view)
@@ -293,6 +301,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 viewToAdd = btnStichtingenSpecial
             case btnActies:
                 viewToAdd = btnActiesSpecial
+            case btnArtiest:
+                viewToAdd = btnArtiestSpecial
             default:
                 return
             }
@@ -429,6 +439,25 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         btn.addGestureRecognizer(tap)
         return btn
     }()
+    lazy var btnArtiest: UIButton = {
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1), image: #imageLiteral(resourceName: "actions_white"))
+        btn.tag = 103
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.addTarget(self, action: #selector(selectType(_:)))
+        btn.addGestureRecognizer(tap)
+        return btn
+    }()
+    
+    lazy var btnArtiestSpecial: UIButton = {
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1), image: #imageLiteral(resourceName: "sugg_actions_white"))
+        btn.tag = 103
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.addTarget(self, action: #selector(selectType(_:)))
+        btn.addGestureRecognizer(tap)
+        return btn
+    }()
     
     private func createShadow(view: UIView) {
         view.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -455,12 +484,15 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         case 102:
             regExp = "a[0-9]" //acties
             title = NSLocalizedString("Acties", comment: "")
+        case 103:
+            regExp = "b[0-9]"
+            title = "Artiesten"
         default:
             break
         }
         
         filteredList = listToLoad.filter({ (orgBeacon) -> Bool in
-            orgBeacon.EddyNameSpace.substring(16..<19).matches(regExp)
+            orgBeacon.EddyNameSpace.substring(16..<18).matches(regExp)
         })
         
         filteredList?.sort(by: { (first, second) -> Bool in
