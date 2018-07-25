@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		076E20FBE3B8BF04AAFAEDDA /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31725F87D2D9EDE08EEAEB4 /* Pods_ios.framework */; };
+		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70491941FDA927C00CE5980 /* Welcome.storyboard */; };
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71DA04D20F758DD0084381E /* ExternalIntegration.swift */; };
@@ -170,6 +171,7 @@
 		5137859347A8763C7437BABD /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		5C1D2A0112EABE8D75DEBBCE /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		A31725F87D2D9EDE08EEAEB4 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D71DA04D20F758DD0084381E /* ExternalIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalIntegration.swift; sourceTree = "<group>"; };
 		D721F1991F7E2D4B000B9546 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 				FB8A610A20A049B400696D20 /* BaseUser.swift */,
 				D7721B4A20EB67AD009771EE /* LMUserExt.swift */,
 				D71DA04D20F758DD0084381E /* ExternalIntegration.swift */,
+				A46C8AEF210889A400988D6D /* Beacon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 				D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
 				D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */,
+				A46C8AF0210889A400988D6D /* Beacon.swift in Sources */,
 				D787AE2D1FCD9EFB0004BDB1 /* ILogService.swift in Sources */,
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */,

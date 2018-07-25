@@ -81,7 +81,17 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
         var msg = "Beacon detected \(antennaID) | RSSI: \(rssi)"
         if let bv = scannedPeripherals[peripheralId.uuidString] {
             msg += " | Battery voltage: \(bv)"
-            bv < 2500 ? self.log.warning(message: msg) : self.log.info(message: msg)
+            if bv < 2450 {
+                self.log.warning(message: msg)
+                let beacon = Beacon(eddyID: antennaID, batteryStatus: bv)
+                do {
+                    try APIClient.shared.put(url: "v2/beacons/\(antennaID)/?userId=\(UserDefaults.standard.userExt.guid)", data: beacon.convertToDictionary()) { (res) in }
+                } catch {
+                    self.log.error(message: "Unknown error : \(error)")
+                }
+            }else{
+                self.log.info(message: msg)
+            }
         } else {
             self.log.info(message: msg)
         }
