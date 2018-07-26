@@ -440,7 +440,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         return btn
     }()
     lazy var btnArtiest: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1), image: #imageLiteral(resourceName: "actions_white"))
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist"))
         btn.tag = 103
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -450,7 +450,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnArtiestSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1), image: #imageLiteral(resourceName: "sugg_actions_white"))
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist_white"))
         btn.tag = 103
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1

@@ -222,7 +222,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         let stichtingen = createButton(text: NSLocalizedString("Stichtingen", comment: ""), image: #imageLiteral(resourceName: "stichting_white"), backgroundColor: #colorLiteral(red: 0.9568627451, green: 0.7490196078, blue: 0.3882352941, alpha: 1), useShadow: true)
         let churches = createButton(text: NSLocalizedString("Churches", comment: ""), image: #imageLiteral(resourceName: "church_white"), backgroundColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), useShadow: true)
         let actions = createButton(text: NSLocalizedString("Acties", comment: ""), image: #imageLiteral(resourceName: "actions_white"), backgroundColor: #colorLiteral(red: 0.9450980392, green: 0.4392156863, blue: 0.3411764706, alpha: 1), useShadow: true)
-        let artiest = createButton(text: "Artiesten", image: #imageLiteral(resourceName: "straatmzkt"), backgroundColor: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1), useShadow: true)
+        let artiest = createButton(text: "Artiesten", image: #imageLiteral(resourceName: "artist"), backgroundColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), useShadow: true)
         
         stichtingen.tag = 100
         churches.tag = 101
