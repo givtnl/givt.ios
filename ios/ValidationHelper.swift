@@ -7,10 +7,15 @@
 //
 
 import Foundation
+import PhoneNumberKit
 import UIKit
 
 
 class ValidationHelper {
+    private var phoneNumberKit = PhoneNumberKit()
+    private var formattedPhoneNumber: String = ""
+
+
     static let shared = ValidationHelper()
 
     private init(){
@@ -79,6 +84,61 @@ class ValidationHelper {
         //if string start or ends with illegal character => return false
         return rest.count == 0 && !startsOrEndsWithIllegalCharacter
     }
+    class PhoneResult{
+        var IsValid: Bool
+        var Number: String??
+        init(isValid: Bool, number: String??){
+            self.IsValid = isValid
+            self.Number = number
+        }
+    }
     
+    func isValidPhone(number: String) -> PhoneResult {
+        
+        var retVal: PhoneResult = PhoneResult(isValid: false, number: nil)
+
+        for var item in AppConstants.countries {
+            item = item as Country
+            let prefix = item.phoneNumber.prefix.substring(1..<3)
+            let first = item.phoneNumber.firstNumber
+            let length = item.phoneNumber.length
+            
+            var regString: String = "\\+?"
+                regString += prefix
+                regString += first
+                regString += "{1}[0-9]{"
+                regString += String(length)
+                regString += "}|0{2}?"
+                regString += prefix
+                regString += first
+                regString += "{1}[0-9]{"
+                regString += String(length)
+                regString += "}|0{1}?"
+                regString += first
+                regString += "{1}[0-9]{"
+                regString += String(length)
+                regString += "}|"
+                regString += first
+                regString += "{1}[0-9]{"
+                regString += String(length)
+                regString += "}"
+
+            let regEx = try! NSRegularExpression(pattern: regString)
+            let results = regEx.matches(in: number, range: NSRange(number.startIndex..., in: number))
+            if(results.count > 0){
+                retVal = PhoneResult(isValid: true, number: nil)
+                let lengteNummer = number.count
+                let startIndex = lengteNummer-length
+                retVal.Number = item.phoneNumber.prefix + item.phoneNumber.firstNumber + number.substring(startIndex..<lengteNummer)
+                return retVal
+            }
+//            if(number.matches(regString) && number.count == (4+length)){
+//                
+//            }
+        }
+
+        
+        return retVal
+    }
     
 }

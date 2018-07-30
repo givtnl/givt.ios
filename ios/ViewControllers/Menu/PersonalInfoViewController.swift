@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     var settings: [PersonalSetting]!
+   private var _country: String = ""
     
     struct PersonalSetting {
         var image: UIImage
@@ -26,7 +27,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         case iban
         case changepassword
     }
-    
+    private var validatedPhoneNumber: String = ""
     private let loginManager = LoginManager.shared
     private let validationHelper = ValidationHelper.shared
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -88,7 +89,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
                 }
                 return
             }
-            let country = AppConstants.countries.filter { (c) -> Bool in
+            self._country = AppConstants.countries.filter { (c) -> Bool in
                 c.shortName == userExt.Country
             }[0].name
             
@@ -96,8 +97,8 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: userExt.FirstName + " " + userExt.LastName, type: .name))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: userExt.Email, type: .emailaddress))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address, type: .address))
-            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: userExt.PostalCode + " " + userExt.City + ", " + country, type: .countrycode))
-            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone"), name: userExt.PhoneNumber, type: .phonenumber))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: userExt.PostalCode + " " + userExt.City + ", " + self._country, type: .countrycode))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone_red"), name: userExt.PhoneNumber, type: .phonenumber))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: userExt.IBAN.separate(every: 4, with: " "), type: .iban))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "green_lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
             DispatchQueue.main.async {
@@ -138,6 +139,56 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch settings[indexPath.row].type {
+        case .phonenumber:
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
+            vc.img = #imageLiteral(resourceName: "phone_red")
+            vc.titleOfInput = NSLocalizedString("ChangePhone", comment: "")
+            vc.inputOfInput = settings[indexPath.row].name
+
+            vc.validateFunction = { newPhone in
+                let phoneResult = self.validationHelper.isValidPhone(number: newPhone)
+                if(phoneResult.IsValid){
+                    self.validatedPhoneNumber = phoneResult.Number!!
+                }
+                return phoneResult.IsValid
+            }
+            vc.saveAction = { newPhone in
+                SVProgressHUD.show()
+                NavigationManager.shared.reAuthenticateIfNeeded(context:self, completion: {
+                    self.loginManager.getUserExtObject(completion: {(userExt) in
+                        guard let userExt = userExt else {
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                    
+                                }))
+                                SVProgressHUD.dismiss()
+                                self.present(alert, animated: true, completion: nil)
+                                
+                            }
+                            return
+                        }
+                        self.loginManager.changePhone(userExt: userExt, phone: self.validatedPhoneNumber.replacingOccurrences(of: " ", with: ""), callback: {(success) in
+                            SVProgressHUD.dismiss()
+                            if success {
+                                DispatchQueue.main.async {
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                        
+                                    }))
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+                            }
+                        })
+                    })
+                })
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+
         case .iban:
             print("iban")
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController

@@ -493,6 +493,33 @@ class LoginManager {
         }
     }
     
+    func changePhone(userExt: LMUserExt ,phone: String, callback: @escaping (Bool) -> Void) {
+        self.log.info(message: "Changing mobile number")
+        let params = [
+            "Guid":  userExt.GUID,
+            "IBAN":  userExt.IBAN,
+            "PhoneNumber":  phone,
+            "FirstName":  userExt.FirstName,
+            "LastName":  userExt.LastName,
+            "Address":  userExt.Address,
+            "City":  userExt.City,
+            "PostalCode":  userExt.PostalCode,
+            "Country":  userExt.Country,
+            "AmountLimit" : String(UserDefaults.standard.amountLimit)] as [String : Any]
+        do {
+            try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
+                if let res = res, res.basicStatus == .ok {
+                    callback(true)
+                } else {
+                    callback(false)
+                }
+            })
+        } catch {
+            callback(false)
+            log.error(message: "Something went wrong trying to change mobile number")
+        }
+    }
+    
     func requestNewPassword(email: String, callback: @escaping (Bool?) -> Void) {
         do {
             try client.post(url: "/api/v2/Users/ForgotPassword?email=" + email.RFC3986UnreservedEncoded, data: [:], callback: { (response) in
