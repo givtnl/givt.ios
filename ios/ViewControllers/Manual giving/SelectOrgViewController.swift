@@ -486,7 +486,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             title = NSLocalizedString("Acties", comment: "")
         case 103:
             regExp = "b[0-9]"
-            title = "Artiesten"
+            title = NSLocalizedString("Artists", comment: "")
         default:
             break
         }
