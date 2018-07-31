@@ -417,7 +417,7 @@
 "AnswerHowDoesGivingWork" = "It’s easy! Just open the Givt app, choose an amount and move your phone past the collection box, alms bag or basket. Don't forget to finish your registration, so your donations can be delivered to the right address.\n\nThe video below demonstrates this:";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "When the Givt app does not work like it should, you can choose to select \nthe recipient manually. Choose an amount and press ‘Give’. Thereafter \nchoose ‘Choose from the list’ and select 'Churches', 'Foundations' or 'Campaigns'. Now choose a recipient and press ‘Give’.";
+"AnswerHowDoesManualGivingWork" = "When the Givt app does not work like it should, you can choose to select \nthe recipient manually. Choose an amount and press ‘Give’. Thereafter \nchoose ‘Choose from the list’ and select 'Churches', 'Foundations', 'Campaigns' or 'Artists'. Now choose a recipient and press ‘Give’.";
 "MenuSettingsSwitchAccounts" = "Switch accounts";
 "PrepareIUnderstand" = "I understand";
 
@@ -686,3 +686,4 @@
 "AndersGeven" = "Give differently";
 "KerkdienstGemist" = "Kerkdienst Gemist";
 "ChangePhone" = "Change mobile number";
+"Artists" = "Artists\n";
