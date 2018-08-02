@@ -98,85 +98,41 @@ class ValidationHelper {
 
         let retVal: PhoneResult = PhoneResult(isValid: false, number: nil)
         if(number.count > 4){
+            let possiblePrefixes = [
+                ["0032","+32","04","4"],
+                ["0031","+31","06","6"],
+                ["0049","+49","01","1"],
+                ["0044","+44","07","7"]
+            ]
+            let totalMaxes = [ 8, 8, 9, 9]
             var item: PhoneNumber
-            if(number.starts(with: "0032") || number.starts(with: "+32") || number.starts(with: "04") || number.starts(with: "4")){
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+32"})!.phoneNumber
-                if(number.starts(with: "0032") || number.starts(with: "+32")){
-                    if(number.starts(with: "0032")){ totalMax = 13 } else { totalMax = 12 }
-                    if let range2 = number.range(of: "32") {
-                        let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
-                        if(number.substring(endPos..<endPos+1) == "4" && number.count == totalMax){
-                            return returnValidPhone(number: number, phoneNumber: item)
+
+            for (row, possiblePrefix) in possiblePrefixes.enumerated() {
+                for (_, element) in possiblePrefix.enumerated() {
+                    if(number.starts(with: element)){
+                        item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == String(possiblePrefixes[row][1])})!.phoneNumber
+                        if(number.starts(with: String(possiblePrefixes[row][0])) || number.starts(with: String(possiblePrefixes[row][1]))){
+                            if(number.starts(with: String(possiblePrefixes[row][0]))){ totalMax = totalMaxes[row] + 5 } else { totalMax = totalMaxes[row] + 4 }
+                            if let range2 = number.range(of: String(possiblePrefixes[row][1]).substring(1..<3)) {
+                                let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
+                                if(number.substring(endPos..<endPos+1) == String(possiblePrefixes[row][3]) && number.count == totalMax){
+                                    return returnValidPhone(number: number, phoneNumber: item)
+                                }
+                            }
+                        } else if(number.starts(with: String(possiblePrefixes[row][2]))) { totalMax = totalMaxes[row] + 2
+                            if(number.count == totalMax){
+                                return returnValidPhone(number: number, phoneNumber: item)
+                            }
+                        } else if(number.starts(with: String(possiblePrefixes[row][3]))) { totalMax = totalMaxes[row] + 1
+                            if(number.count == totalMax){
+                                return returnValidPhone(number: number, phoneNumber: item)
+                            }
                         }
-                    }
-                } else if(number.starts(with: "04")) { totalMax = 10
-                    if(number.count == totalMax){
-                        return returnValidPhone(number: number, phoneNumber: item)
-                    }
-                } else if(number.starts(with: "4")) { totalMax = 9
-                    if(number.count == totalMax){
-                        return returnValidPhone(number: number, phoneNumber: item)
-                    }
-                }
-            } else if(number.starts(with: "0031") || number.starts(with: "+31") || number.starts(with: "06") || number.starts(with: "6")){
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+31"})!.phoneNumber
-                if(number.starts(with: "0031") || number.starts(with: "+31")){
-                    if(number.starts(with: "0031")){ totalMax = 13 } else { totalMax = 12 }
-                    if let range2 = number.range(of: "31") {
-                        let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
-                        if(number.substring(endPos..<endPos+1) == "6" && number.count == totalMax){
-                            return returnValidPhone(number: number, phoneNumber: item)
-                        }
-                    }
-                } else if(number.starts(with: "06")) { totalMax = 10
-                    if(number.count == totalMax){
-                        return returnValidPhone(number: number, phoneNumber: item)
-                    }
-                } else if(number.starts(with: "6")) { totalMax = 9
-                    if(number.count == totalMax){
-                        return returnValidPhone(number: number, phoneNumber: item)
-                    }
-                }
-            } else if(number.starts(with: "0049") || number.starts(with: "+49") || number.starts(with: "01") || number.starts(with: "1")){
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+49"})!.phoneNumber
-                if(number.starts(with: "0049") || number.starts(with: "+49")){
-                    if(number.starts(with: "0049")){ totalMax = 14 } else { totalMax = 13 }
-                    if let range2 = number.range(of: "49") {
-                        let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
-                        if(number.substring(endPos..<endPos+1) == "1" && number.count == totalMax){
-                            return returnValidPhone(number: number, phoneNumber: item)
-                        }
-                    }
-                } else if(number.starts(with: "01")) { totalMax = 11
-                    if(number.count == totalMax){
-                        return returnValidPhone(number: number, phoneNumber: item)
-                    }
-                } else if(number.starts(with: "1")) { totalMax = 10
-                    if(number.count == totalMax){
-                        return returnValidPhone(number: number, phoneNumber: item)
-                    }
-                }
-            } else if(number.starts(with: "0044") || number.starts(with: "+44") || number.starts(with: "07") || number.starts(with: "7")){
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+44"})!.phoneNumber
-                if(number.starts(with: "0044") || number.starts(with: "+44")){
-                    if(number.starts(with: "0044")){ totalMax = 14 } else { totalMax = 13 }
-                    if let range2 = number.range(of: "44") {
-                        let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
-                        if(number.substring(endPos..<endPos+1) == "7" && number.count == totalMax){
-                            return returnValidPhone(number: number, phoneNumber: item)
-                        }
-                    }
-                } else if(number.starts(with: "07")) { totalMax = 11
-                    if(number.count == totalMax){
-                        return returnValidPhone(number: number, phoneNumber: item)
-                    }
-                } else if(number.starts(with: "7")) { totalMax = 10
-                    if(number.count == totalMax){
-                        return returnValidPhone(number: number, phoneNumber: item)
                     }
                 }
             }
         }
+        
         return retVal
     }
     func returnValidPhone(number: String, phoneNumber: PhoneNumber) -> PhoneResult {
