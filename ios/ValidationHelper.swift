@@ -99,91 +99,81 @@ class ValidationHelper {
         let retVal: PhoneResult = PhoneResult(isValid: false, number: nil)
         if(number.count > 4){
             var item: PhoneNumber
-            if(number.starts(with: "0032") || number.starts(with: "+32")){
+            if(number.starts(with: "0032") || number.starts(with: "+32") || number.starts(with: "04") || number.starts(with: "4")){
                 item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+32"})!.phoneNumber
-                if(number.starts(with: "0032")){ totalMax = 13 } else { totalMax = 12 }
-                if let range2 = number.range(of: "32") {
-                    let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
-                    if(number.substring(endPos..<endPos+1) == "4" && number.count == totalMax){
+                if(number.starts(with: "0032") || number.starts(with: "+32")){
+                    if(number.starts(with: "0032")){ totalMax = 13 } else { totalMax = 12 }
+                    if let range2 = number.range(of: "32") {
+                        let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
+                        if(number.substring(endPos..<endPos+1) == "4" && number.count == totalMax){
+                            return returnValidPhone(number: number, phoneNumber: item)
+                        }
+                    }
+                } else if(number.starts(with: "04")) { totalMax = 10
+                    if(number.count == totalMax){
+                        return returnValidPhone(number: number, phoneNumber: item)
+                    }
+                } else if(number.starts(with: "4")) { totalMax = 9
+                    if(number.count == totalMax){
                         return returnValidPhone(number: number, phoneNumber: item)
                     }
                 }
-            } else if(number.starts(with: "04")) {
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+32"})!.phoneNumber
-                totalMax = 10
-                if(number.count == totalMax){
-                    return returnValidPhone(number: number, phoneNumber: item)
-                }
-            } else if(number.starts(with: "4")) {
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+32"})!.phoneNumber
-                totalMax = 9
-                if(number.count == totalMax){
-                    return returnValidPhone(number: number, phoneNumber: item)
-                }
-            } else if(number.starts(with: "0031") || number.starts(with: "+31")){
+            } else if(number.starts(with: "0031") || number.starts(with: "+31") || number.starts(with: "06") || number.starts(with: "6")){
                 item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+31"})!.phoneNumber
-                if(number.starts(with: "0031")){ totalMax = 13 } else { totalMax = 12 }
-                if let range2 = number.range(of: "31") {
-                    let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
-                    if(number.substring(endPos..<endPos+1) == "6" && number.count == totalMax){
+                if(number.starts(with: "0031") || number.starts(with: "+31")){
+                    if(number.starts(with: "0031")){ totalMax = 13 } else { totalMax = 12 }
+                    if let range2 = number.range(of: "31") {
+                        let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
+                        if(number.substring(endPos..<endPos+1) == "6" && number.count == totalMax){
+                            return returnValidPhone(number: number, phoneNumber: item)
+                        }
+                    }
+                } else if(number.starts(with: "06")) { totalMax = 10
+                    if(number.count == totalMax){
+                        return returnValidPhone(number: number, phoneNumber: item)
+                    }
+                } else if(number.starts(with: "6")) { totalMax = 9
+                    if(number.count == totalMax){
                         return returnValidPhone(number: number, phoneNumber: item)
                     }
                 }
-            } else if(number.starts(with: "06")) {
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+31"})!.phoneNumber
-                totalMax = 10
-                if(number.count == totalMax){
-                    return returnValidPhone(number: number, phoneNumber: item)
-                }
-            } else if(number.starts(with: "6")) {
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+31"})!.phoneNumber
-                totalMax = 9
-                if(number.count == totalMax){
-                    return returnValidPhone(number: number, phoneNumber: item)
-                }
-            } else if(number.starts(with: "0049") || number.starts(with: "+49")){
+            } else if(number.starts(with: "0049") || number.starts(with: "+49") || number.starts(with: "01") || number.starts(with: "1")){
                 item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+49"})!.phoneNumber
-                let totalMax: Int
-                if(number.starts(with: "0049")){ totalMax = 14 } else { totalMax = 13 }
-                if let range2 = number.range(of: "49") {
-                    let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
-                    if(number.substring(endPos..<endPos+1) == "1" && number.count == totalMax){
+                if(number.starts(with: "0049") || number.starts(with: "+49")){
+                    if(number.starts(with: "0049")){ totalMax = 14 } else { totalMax = 13 }
+                    if let range2 = number.range(of: "49") {
+                        let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
+                        if(number.substring(endPos..<endPos+1) == "1" && number.count == totalMax){
+                            return returnValidPhone(number: number, phoneNumber: item)
+                        }
+                    }
+                } else if(number.starts(with: "01")) { totalMax = 11
+                    if(number.count == totalMax){
+                        return returnValidPhone(number: number, phoneNumber: item)
+                    }
+                } else if(number.starts(with: "1")) { totalMax = 10
+                    if(number.count == totalMax){
                         return returnValidPhone(number: number, phoneNumber: item)
                     }
                 }
-            } else if(number.starts(with: "01")) {
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+49"})!.phoneNumber
-                totalMax = 11
-                if(number.count == totalMax){
-                    return returnValidPhone(number: number, phoneNumber: item)
-                }
-            } else if(number.starts(with: "1")) {
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+49"})!.phoneNumber
-                totalMax = 10
-                if(number.count == totalMax){
-                    return returnValidPhone(number: number, phoneNumber: item)
-                }
-            } else if(number.starts(with: "0044") || number.starts(with: "+44")){
+            } else if(number.starts(with: "0044") || number.starts(with: "+44") || number.starts(with: "07") || number.starts(with: "7")){
                 item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+44"})!.phoneNumber
-                let totalMax: Int
-                if(number.starts(with: "0044")){ totalMax = 14 } else { totalMax = 13 }
-                if let range2 = number.range(of: "44") {
-                    let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
-                    if(number.substring(endPos..<endPos+1) == "7" && number.count == totalMax){
+                if(number.starts(with: "0044") || number.starts(with: "+44")){
+                    if(number.starts(with: "0044")){ totalMax = 14 } else { totalMax = 13 }
+                    if let range2 = number.range(of: "44") {
+                        let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
+                        if(number.substring(endPos..<endPos+1) == "7" && number.count == totalMax){
+                            return returnValidPhone(number: number, phoneNumber: item)
+                        }
+                    }
+                } else if(number.starts(with: "07")) { totalMax = 11
+                    if(number.count == totalMax){
                         return returnValidPhone(number: number, phoneNumber: item)
                     }
-                }
-            } else if(number.starts(with: "07")) {
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+44"})!.phoneNumber
-                totalMax = 11
-                if(number.count == totalMax){
-                    return returnValidPhone(number: number, phoneNumber: item)
-                }
-            } else if(number.starts(with: "7")) {
-                item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == "+44"})!.phoneNumber
-                totalMax = 10
-                if(number.count == totalMax){
-                    return returnValidPhone(number: number, phoneNumber: item)
+                } else if(number.starts(with: "7")) { totalMax = 10
+                    if(number.count == totalMax){
+                        return returnValidPhone(number: number, phoneNumber: item)
+                    }
                 }
             }
         }
@@ -194,8 +184,6 @@ class ValidationHelper {
         let lengteNummer = number.count
         let startIndex = lengteNummer-phoneNumber.length
         retVal.Number = phoneNumber.prefix + phoneNumber.firstNumber + number.substring(startIndex..<lengteNummer)
-        print(retVal.IsValid)
-        print(retVal.Number)
         return retVal
     }
     
