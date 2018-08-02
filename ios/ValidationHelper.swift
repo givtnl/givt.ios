@@ -102,7 +102,17 @@ class ValidationHelper {
             let prefix = item.phoneNumber.prefix.substring(1..<3)
             let first = item.phoneNumber.firstNumber
             let length = item.phoneNumber.length
-            
+            var totalMax = 1 + length
+            if(number.count > 3){
+                if(number.contains("+")){
+                    totalMax += 3
+                } else if(number.substring(0..<2)==("00")){
+                    totalMax += 4
+                } else {
+                    totalMax += 1
+                }
+                
+            }
             var regString: String = "\\+?"
                 regString += prefix
                 regString += first
@@ -125,7 +135,7 @@ class ValidationHelper {
 
             let regEx = try! NSRegularExpression(pattern: regString)
             let results = regEx.matches(in: number, range: NSRange(number.startIndex..., in: number))
-            if(results.count > 0){
+            if(results.count > 0 && number.count == totalMax){
                 retVal = PhoneResult(isValid: true, number: nil)
                 let lengteNummer = number.count
                 let startIndex = lengteNummer-length
