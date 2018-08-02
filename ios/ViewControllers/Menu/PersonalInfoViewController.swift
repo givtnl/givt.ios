@@ -125,7 +125,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         cell.img.image = settings[indexPath.row].image
         cell.accessoryType = .disclosureIndicator
         switch settings[indexPath.row].type {
-        case .iban, .emailaddress, .changepassword:
+        case .iban, .emailaddress, .changepassword, .phonenumber:
             cell.accessoryType = .disclosureIndicator
             cell.labelView.alpha = 1
             cell.selectionStyle = .default
