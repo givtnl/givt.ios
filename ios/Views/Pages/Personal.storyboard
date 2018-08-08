@@ -558,6 +558,7 @@
                         <outlet property="btnSave" destination="dik-RD-mzl" id="rci-10-Q2l"/>
                         <outlet property="city" destination="9aN-lP-Imu" id="n8d-7M-9oE"/>
                         <outlet property="country" destination="ZXa-1L-KB9" id="pLX-cc-dHB"/>
+                        <outlet property="headTitle" destination="6Ik-59-Ebf" id="5Qg-mQ-VSQ"/>
                         <outlet property="postalCode" destination="LPL-rg-h55" id="4Rv-k3-swg"/>
                         <outlet property="theScrollView" destination="S7f-BC-tJ9" id="OLt-0o-OzK"/>
                     </connections>

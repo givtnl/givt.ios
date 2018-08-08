@@ -28,6 +28,7 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         country.text = currentCountry!.name
     }
     
+    @IBOutlet var headTitle: UILabel!
     var currentCountry: Country?
     private var countryPicker: UIPickerView!
     @IBOutlet var btnSave: CustomButton!
@@ -40,7 +41,7 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
     var uExt: LMUserExt?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(uExt)
+        headTitle.text = NSLocalizedString("ChangeAddress", comment: "")
         address.text = uExt!.Address
         address.delegate = self
         address.isValid = true
@@ -50,7 +51,7 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         city.text = uExt!.City
         city.isValid = true
         city.delegate = self
-        
+        btnSave.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
         
         countryPicker = UIPickerView()
         countryPicker.delegate = self
