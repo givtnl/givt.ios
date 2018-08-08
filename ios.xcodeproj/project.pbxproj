@@ -12,6 +12,7 @@
 		D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70491941FDA927C00CE5980 /* Welcome.storyboard */; };
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71DA04D20F758DD0084381E /* ExternalIntegration.swift */; };
+		D71DA050211AE5C90084381E /* ChangeAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71DA04F211AE5C90084381E /* ChangeAddressViewController.swift */; };
 		D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F1991F7E2D4B000B9546 /* CustomViewController.swift */; };
 		D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F19B1F7E3EF8000B9546 /* Mandate.swift */; };
 		D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726298C1FFBD10C00743224 /* BaseScanViewController.swift */; };
@@ -174,6 +175,7 @@
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D71DA04D20F758DD0084381E /* ExternalIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalIntegration.swift; sourceTree = "<group>"; };
+		D71DA04F211AE5C90084381E /* ChangeAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAddressViewController.swift; sourceTree = "<group>"; };
 		D721F1991F7E2D4B000B9546 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		D721F19B1F7E3EF8000B9546 /* Mandate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mandate.swift; sourceTree = "<group>"; };
 		D726298C1FFBD10C00743224 /* BaseScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScanViewController.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 			children = (
 				D7F746D51FD94337005354A3 /* Amount Limit */,
 				D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */,
+				D71DA04F211AE5C90084381E /* ChangeAddressViewController.swift */,
 				D7CCC0691FC427E6006A6A4F /* Pincode */,
 				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
 				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
@@ -1018,6 +1021,7 @@
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
+				D71DA050211AE5C90084381E /* ChangeAddressViewController.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
 				D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */,
 				D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */,

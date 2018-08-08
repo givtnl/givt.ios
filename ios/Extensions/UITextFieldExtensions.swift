@@ -65,12 +65,12 @@ class SpecialUITextField: UITextField {
     }
     
     func endedEditing() {
-        border.isHidden = isValid
+        border.isHidden = false
     }
 
     override func awakeFromNib() {
         setBottomBorder()
-        border.isHidden = true
+        border.isHidden = false
     }
 
     override init(frame: CGRect) {

@@ -35,6 +35,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var settingsTableView: UITableView!
     private var position: Int?
     private var deleting: Bool = false
+    private var uExt: LMUserExt?
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsTableView.delegate = self
@@ -82,6 +83,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.show()
         loginManager.getUserExtObject { (userExtObject) in
             SVProgressHUD.dismiss()
+            self.uExt = userExtObject
             guard let userExt = userExtObject else {
                 /* TODO: @Lennie Why a guard if the user does not receive an error message? */
                 DispatchQueue.main.async {
@@ -96,8 +98,8 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             self.settings.removeAll()
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "personal_gray"), name: userExt.FirstName + " " + userExt.LastName, type: .name))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "email_sign"), name: userExt.Email, type: .emailaddress))
-            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address, type: .address))
-            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: userExt.PostalCode + " " + userExt.City + ", " + self._country, type: .countrycode))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address + "\n" + userExt.PostalCode + " " + userExt.City + ", " + self._country, type: .address))
+            //self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: userExt.PostalCode + " " + userExt.City + ", " + self._country, type: .countrycode))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone_red"), name: userExt.PhoneNumber, type: .phonenumber))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: userExt.IBAN.separate(every: 4, with: " "), type: .iban))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "green_lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
@@ -125,7 +127,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         cell.img.image = settings[indexPath.row].image
         cell.accessoryType = .disclosureIndicator
         switch settings[indexPath.row].type {
-        case .iban, .emailaddress, .changepassword, .phonenumber:
+        case .iban, .emailaddress, .changepassword, .phonenumber, .address:
             cell.accessoryType = .disclosureIndicator
             cell.labelView.alpha = 1
             cell.selectionStyle = .default
@@ -281,6 +283,10 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         case .changepassword:
             print("password")
             let vc = UIStoryboard(name: "ForgotPassword", bundle: nil).instantiateInitialViewController() as! ForgotPasswordViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .address:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeAddressViewController") as! ChangeAddressViewController
+            vc.uExt = self.uExt
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             return
