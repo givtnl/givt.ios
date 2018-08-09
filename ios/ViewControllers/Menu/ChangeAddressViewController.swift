@@ -23,6 +23,7 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         return AppConstants.countries[row].name
     }
     
+    @IBOutlet var bottomScrollViewConstraint: NSLayoutConstraint!
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currentCountry = AppConstants.countries[row]
         country.text = currentCountry!.name
@@ -128,14 +129,17 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        var contentInset:UIEdgeInsets = self.theScrollView.contentInset
-        contentInset.bottom = keyboardFrame.size.height
-        theScrollView.contentInset = contentInset
+        bottomScrollViewConstraint.constant = keyboardFrame.size.height
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
     
     @objc func keyboardWillHide(notification:NSNotification){
-        let contentInset:UIEdgeInsets = UIEdgeInsets.zero
-        theScrollView.contentInset = contentInset
+        bottomScrollViewConstraint.constant = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -149,6 +153,11 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
             tx.endedEditing()
             
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     @objc func textFieldDidChange(_ notification: NSNotification) {
