@@ -12,7 +12,7 @@ target 'ios' do
   pod ‘TrustKit’
   pod 'SwipeCellKit', '~> 2.1.0'
   pod 'MaterialShowcase'
-  pod 'SwiftCron', :git => 'https://github.com/lennie9/SwiftCron.git', :tag => '0.4.7'
+  pod 'SwiftCron', :git => 'https://github.com/lennie9/SwiftCron.git', :tag => '0.4.8'
   # Pods for ios
 
 end
