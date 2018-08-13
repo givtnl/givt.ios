@@ -102,22 +102,24 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         uExt!.PostalCode = postalCode.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         uExt!.City = city.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         uExt!.Country = currentCountry!.shortName
-        SVProgressHUD.show()
-        LoginManager.shared.updateUserExt(userExt: uExt!) { (ok) in
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-            }
-            if ok {
+        NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
+            SVProgressHUD.show()
+            LoginManager.shared.updateUserExt(userExt: self.uExt!) { (ok) in
                 DispatchQueue.main.async {
-                    self.backPressed(self)
+                    SVProgressHUD.dismiss()
                 }
-            } else {
-                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
-                    
-                }))
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion:nil)
+                if ok {
+                    DispatchQueue.main.async {
+                        self.backPressed(self)
+                    }
+                } else {
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
+                        
+                    }))
+                    DispatchQueue.main.async {
+                        self.present(alert, animated: true, completion:nil)
+                    }
                 }
             }
         }

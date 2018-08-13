@@ -155,8 +155,8 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 return phoneResult.IsValid
             }
             vc.saveAction = { newPhone in
-                SVProgressHUD.show()
                 NavigationManager.shared.reAuthenticateIfNeeded(context:self, completion: {
+                    SVProgressHUD.show()
                     self.loginManager.getUserExtObject(completion: {(userExt) in
                         guard let userExt = userExt else {
                             DispatchQueue.main.async {
@@ -201,8 +201,8 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 return self.validationHelper.isIbanChecksumValid(s)
             }
             vc.saveAction = { s in
-                SVProgressHUD.show()
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
+                    SVProgressHUD.show()
                     self.loginManager.getUserExtObject(completion: { (userExt) in
                         guard let userExt = userExt else
                         {
@@ -247,36 +247,39 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 return self.validationHelper.isEmailAddressValid(s)
             }
             vc.saveAction = { newEmail in
-                SVProgressHUD.show()
-                self.loginManager.checkTLD(email: newEmail, completionHandler: { (success) in
-                    if success {
-                        self.loginManager.updateEmail(email: newEmail, completionHandler: { (success2) in
+                NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
+                    SVProgressHUD.show()
+                    self.loginManager.checkTLD(email: newEmail, completionHandler: { (success) in
+                        if success {
+                            self.loginManager.updateEmail(email: newEmail, completionHandler: { (success2) in
+                                SVProgressHUD.dismiss()
+                                if success2 {
+                                    DispatchQueue.main.async {
+                                        self.navigationController?.popViewController(animated: true)
+                                    }
+                                } else {
+                                    DispatchQueue.main.async {
+                                        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                            
+                                        }))
+                                        self.present(alert, animated: true, completion: nil)
+                                    }
+                                }
+                            })
+                        } else {
                             SVProgressHUD.dismiss()
-                            if success2 {
-                                DispatchQueue.main.async {
-                                    self.navigationController?.popViewController(animated: true)
-                                }
-                            } else {
-                                DispatchQueue.main.async {
-                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                                        
-                                    }))
-                                    self.present(alert, animated: true, completion: nil)
-                                }
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                    
+                                }))
+                                self.present(alert, animated: true, completion: nil)
                             }
-                        })
-                    } else {
-                        SVProgressHUD.dismiss()
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                                
-                            }))
-                            self.present(alert, animated: true, completion: nil)
                         }
-                    }
+                    })
                 })
+                
                 print("saving email")
             }
             self.navigationController?.pushViewController(vc, animated: true)
