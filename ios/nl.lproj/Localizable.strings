@@ -688,8 +688,8 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FaqAntwoord10" = "Wanneer je je wachtwoord wilt wijzigen, kun je in het menu kiezen voor ‘Mijn gegevens’ en dan op de knop ‘Wachtwoord wijzigen’ drukken. Wij sturen je dan een e-mail met een link waarmee je je wachtwoord kunt wijzigen.";
 "EditPersonalSucces" = "Je persoonlijke gegevens zijn succesvol aangepast\n";
 "EditPersonalFail" = "Oops, we konden je persoonlijke gegevens niet aanpassen";
-"ChangeEmail" = "Wijzig e-mailadres";
-"ChangeIBAN" = "Wijzig IBAN";
+"ChangeEmail" = "E-mailadres wijzigen";
+"ChangeIBAN" = "IBAN wijzigen";
 "SmsSuccess" = "Code verstuurd via SMS";
 "SmsFailed" = "Probeer later opnieuw";
 "KerkdienstGemistQuestion" = "Hoe kan ik geven met Givt via de Kerkdienst Gemist-app?";
@@ -702,6 +702,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ChooseHowIGive" = "Nee, ik wil zelf kiezen hoe ik geef";
 "AndersGeven" = "Anders geven";
 "KerkdienstGemist" = "Kerkdienst Gemist";
-"ChangePhone" = "Wijzig mobiel nummer";
+"ChangePhone" = "Mobiel nummer wijzigen";
 "Artists" = "Artiesten";
 "ChangeAddress" = "Adres wijzigen";
