@@ -546,7 +546,7 @@
                         <viewLayoutGuide key="safeArea" id="1N2-7y-e5Y"/>
                     </view>
                     <navigationItem key="navigationItem" id="JMX-p7-SFl">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="backbtn" width="50" id="bbj-ZR-cg0">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="bbj-ZR-cg0">
                             <connections>
                                 <action selector="backPressed:" destination="hFV-He-2YH" id="1tK-vY-7km"/>
                             </connections>
