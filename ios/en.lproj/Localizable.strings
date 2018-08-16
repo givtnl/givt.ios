@@ -676,7 +676,7 @@
 
 /*Fuzzy*/
 "KerkdienstGemistQuestion" = "How can I give with Givt through the Kerkdienst Gemist App?";
-"KerkdienstGemistAnswer" = "If you’re watching using the Kerkdienst Gemist App, you can easily give with Givt when your church uses this service. At the bottom of the page, you’ll find a small button that will take you to the Givt-app. Choose an amount, find your church and you’re done! Need some more guidance? Check the instruction video below!";
+"KerkdienstGemistAnswer" = "If you’re watching using the Kerkdienst Gemist App, you can easily give with Givt when your church uses this service. At the bottom of the page, you’ll find a small button that will take you to the Givt-app. Choose an amount, confirm with 'Yes, please' and you’re done! Need some more guidance? Check the instruction video below!";
 
 /*Fuzzy*/
 "ExternalSuggestionLabel" = "We see you are giving from the {0} app. Would you like to give to {1}?";
