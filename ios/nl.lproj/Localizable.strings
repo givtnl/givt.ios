@@ -275,7 +275,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Je komt nu meteen in het betaalscherm. (ipv je komt nu gelijk in het betaalscherm)*/
 /*Antwoord op FAQ vraag3*/
-"FAQantwoord3" = "Je kunt je app-menu bereiken door links bovenin het bedragscherm op het menu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. In je menu kun je het overzicht van je giften inzien, je geeflimiet aanpassen, je persoonlijke gegevens wijzigen, een toegangscode instellen of je account verwijderen.";
+"FAQantwoord3" = "Je kunt je app-menu bereiken door links bovenin het bedragscherm op het menu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. In je menu kun je het overzicht van je giften inzien, je geeflimiet aanpassen, je persoonlijke gegevens wijzigen, een toegangscode instellen of je account opzeggen.";
 
 /*Antwoord op FAQ vraag4*/
 "FAQantwoord4" = "Steeds meer organisaties\nJe kunt Givt gebruiken bij alle organisaties die bij ons zijn aangesloten. Er komen wekelijks meer organisaties bij, check onze website www.givtapp.net/waar om het meest recente overzicht te bekijken. \n\nNog niet aangesloten?\nWanneer je als kerk of organisatie nog niet bent aangesloten bij Givt, maar er wel gebruik van wilt maken, neem dan contact met ons op via +31 320 320 115 of info@givtapp.net.";
@@ -395,7 +395,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FAQvraag9" = "Waar kan ik het overzicht van mijn giften bekijken?";
 
 /*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
-"FAQantwoord9" = "Druk op het menu linksbovenin om je app-menu te openen. Om toegang te krijgen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies voor 'Giften' om een overzicht van je giften weer te geven. Je kunt hier ook een jaarlijks giftenoverzicht downloaden voor de belastingaangifte.\nDe giften staan in een lijst met naam van de ontvanger, tijd en datum. Door de gekleurde bedragen zie je direct wat de status is: toegezegd, verwerkt, geannuleerd of geweigerd.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
+"FAQantwoord9" = "Druk op het menu linksbovenin om je app-menu te openen. Om toegang te krijgen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies voor 'Giften' om een overzicht van je giften weer te geven. Je kunt hier ook een jaarlijks giftenoverzicht downloaden voor de belastingaangifte.\nDe giften staan in een lijst met naam van de ontvanger, tijd en datum. Aan de gekleurde streep (links van je gift) zie je direct wat de status is: wordt verwerkt, verwerkt, geweigerd door bank of geannuleerd door gever.\nIn het filmpje hieronder kan je zien hoe dat gaat:";
 
 /*Fuzzy*/
 "GivtIsBeingProcessed" = "Bedankt voor je Givt aan {0}!\nKijk voor de status in je overzicht.";
@@ -710,4 +710,4 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FAQvraag18" = "Hoe gaat Givt met mijn persoonsgegevens om? (AVG)";
 
 /*A:Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
-"FAQAntwoord18" = "Givt voldoet volledig aan de eisen die gesteld worden vanuit de AVG-wetgeving, AVG staat voor Algemene Verordening Gegevensbescherming.\n\nBen je benieuwd wat dat precies voor jou betekent? Het betekent dat wij zorgvuldig met jouw gegevens omgaan. Namelijk dat jij het recht hebt te weten welke gegevens we van jou bewaren, dat je het recht hebt om deze gegevens te wijzigen, het recht hebt om van ons te eisen dat wij jouw gegevens niet bewaren en dat je mag weten waarom wij je gegevens nodig hebben.\n\nWil je hier meer over weten, lees dan onze privacyverklaring.\n\nAVG is ook wel bekend onder de Engelse naam: General Data Protection Regulation (GDPR).\n";
+"FAQAntwoord18" = "Givt voldoet volledig aan de eisen die gesteld worden vanuit de AVG-wetgeving. AVG staat voor Algemene Verordening Gegevensbescherming.\n\nBen je benieuwd wat dat precies voor jou betekent? Het betekent dat wij zorgvuldig met jouw gegevens omgaan. Namelijk dat jij het recht hebt te weten welke gegevens we van jou bewaren, dat je het recht hebt om deze gegevens te wijzigen, het recht hebt om van ons te eisen dat wij jouw gegevens niet bewaren en dat je mag weten waarom wij je gegevens nodig hebben.\n\nWil je hier meer over weten, lees dan onze privacyverklaring.\n\nAVG is ook wel bekend onder de Engelse naam: General Data Protection Regulation (GDPR).\n";
