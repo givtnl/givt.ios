@@ -106,14 +106,11 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         addQuestion(q: "FAQWhyBluetoothEnabledQ", a: "FAQWhyBluetoothEnabledA")
         addQuestion(q: "QuestionWhyAreMyDataStored", a: "AnswerWhyAreMyDataStored")
         addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
+        addQuestion(q: "FAQvraag18", a: "FAQAntwoord18") //GDPR
         addQuestion(q: "FAQvraag17", a: "FAQantwoord17")
- 
         addQuestion(q: "TermsTitle", a: "TermsText")
         addQuestion(q: "PrivacyTitle", a: "PolicyText")
- 
-        
         addSpacer()
-
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -32,6 +32,10 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         imgView.image = img
         inputFieldToEdit.delegate = self
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
+        if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
+            inputFieldToEdit.delegate = self
+            inputFieldToEdit.keyboardType = .numberPad
+        }
         
     }
     

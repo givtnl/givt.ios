@@ -342,13 +342,13 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     @objc func checkAll(_ textField: UITextField) {
         switch textField {
         case streetAndNumber:
-            isStreetValid = validationHelper.isBetweenCriteria(streetAndNumber.text!, 70)
+            isStreetValid = validationHelper.isBetweenCriteria(streetAndNumber.text!, 75)
             isStreetValid ? textField.setValid() : textField.setInvalid()
         case postalCode:
             isPostalCodeValid = validationHelper.isBetweenCriteria(postalCode.text!, 15)
             isPostalCodeValid ? textField.setValid() : textField.setInvalid()
         case city:
-            isCityValid = validationHelper.isBetweenCriteria(city.text!, 35)
+            isCityValid = validationHelper.isBetweenCriteria(city.text!, 45)
             isCityValid ? textField.setValid() : textField.setInvalid()
         case countryField:
             isCountryValid = validationHelper.isBetweenCriteria(countryField.text!, 99)
