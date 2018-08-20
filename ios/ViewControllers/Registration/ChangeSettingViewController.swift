@@ -34,9 +34,21 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
         if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
             inputFieldToEdit.delegate = self
-            inputFieldToEdit.keyboardType = .numberPad
+            inputFieldToEdit.keyboardType = .phonePad
         }
         
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
+            let allowedPhoneCharacters = "0123456789+"
+            let cs = NSCharacterSet(charactersIn: allowedPhoneCharacters).inverted
+            let filtered = string.components(separatedBy: cs).joined(separator: "")
+            return string == filtered
+        } else {
+            return true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
