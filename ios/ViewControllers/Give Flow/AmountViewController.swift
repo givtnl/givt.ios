@@ -339,14 +339,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             self.currentAmountLabel.text = String(UserDefaults.standard.amountLimit)
             self.checkAmounts()
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-            LogService.shared.info(message: "User is opening giving limit")
-            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-            vc.startPoint = .amountLimit
-            vc.isRegistration = false
-            vc.transitioningDelegate = self.slideFromRightAnimation
-            NavigationManager.shared.pushWithLogin(vc, context: self)
-        }))
+        if (LoginManager.shared.isFullyRegistered){
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
+                LogService.shared.info(message: "User is opening giving limit")
+                let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+                vc.startPoint = .amountLimit
+                vc.isRegistration = false
+                vc.transitioningDelegate = self.slideFromRightAnimation
+                NavigationManager.shared.pushWithLogin(vc, context: self)
+            }))
+        }
         self.present(alert, animated: true, completion: nil)
     }
 
