@@ -711,3 +711,4 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*A:Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
 "FAQAntwoord18" = "Givt voldoet volledig aan de eisen die gesteld worden vanuit de AVG-wetgeving. AVG staat voor Algemene Verordening Gegevensbescherming.\n\nBen je benieuwd wat dat precies voor jou betekent? Het betekent dat wij zorgvuldig met jouw gegevens omgaan. Namelijk dat jij het recht hebt te weten welke gegevens we van jou bewaren, dat je het recht hebt om deze gegevens te wijzigen, het recht hebt om van ons te eisen dat wij jouw gegevens niet bewaren en dat je mag weten waarom wij je gegevens nodig hebben.\n\nWil je hier meer over weten, lees dan onze privacyverklaring.\n\nAVG is ook wel bekend onder de Engelse naam: General Data Protection Regulation (GDPR).\n";
+"SelectLocationContextLong" = "Geef op locatie tijdens evenementen";
