@@ -84,7 +84,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         var ctxs = [Context]()
         ctxs.append(Context(name: NSLocalizedString("SelectContextCollect", comment: ""),  type: ContextType.collectionDevice, image: #imageLiteral(resourceName: "collectebus")))
         ctxs.append(Context(name: NSLocalizedString("GiveContextQR", comment: ""), type: ContextType.qr, image: #imageLiteral(resourceName: "qrscan")))
-        ctxs.append(Context(name: NSLocalizedString("SelectLocationContext", comment: ""), type: ContextType.events, image: #imageLiteral(resourceName: "giveatlocation")))
+        ctxs.append(Context(name: NSLocalizedString("SelectLocationContextLong", comment: ""), type: ContextType.events, image: #imageLiteral(resourceName: "giveatlocation")))
         ctxs.append(Context(name: NSLocalizedString("SelectContextList", comment: ""), type: ContextType.manually, image: #imageLiteral(resourceName: "selectlist")))
         return ctxs
     }()
