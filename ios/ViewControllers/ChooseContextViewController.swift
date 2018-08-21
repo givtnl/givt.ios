@@ -48,9 +48,16 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
                 let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
                 navigationController.show(vc, sender: nil)
             case .events:
-                let story = UIStoryboard(name: "Event", bundle: nil)
-                let vc = story.instantiateInitialViewController() as! EventViewController
-                self.navigationController?.show(vc, sender: nil)
+                if self.givtLocations.count == 0 {
+                    let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.navigationController?.present(alert, animated: true, completion: nil)
+                } else {
+                    let story = UIStoryboard(name: "Event", bundle: nil)
+                    let vc = story.instantiateInitialViewController() as! EventViewController
+                    self.navigationController?.show(vc, sender: nil)
+                }
+                
             }
         }
     }
@@ -89,6 +96,8 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         return ctxs
     }()
     
+    private var givtLocations = [GivtLocation]()
+    
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,6 +120,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        givtLocations = GivtService.shared.getGivtLocations()
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
