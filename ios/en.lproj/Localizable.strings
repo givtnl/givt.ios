@@ -538,8 +538,12 @@
 "AddCollectConfirm" = "Do you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
 "FAQantwoord0" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +31 320 320 115 or by sending an e-mail to support@givtapp.net.";
-"PersonalPageHeader" = "Change your e-mail address or IBAN below.";
-"PersonalPageSubHeader" = "Other account data can be changed by sending an e-mail to support@givtapp.net.";
+
+/*Fuzzy*/
+"PersonalPageHeader" = "Change your account data here.";
+
+/*Fuzzy*/
+"PersonalPageSubHeader" = "Would you like to change your name? Send an e-mail to support@givtapp.net.";
 "TitlePersonalInfo" = "Personal information";
 "PersonalInfoTempUser" = "Hi there, fast giver! You're using a temporary account. We have not received your personal details yet.";
 "UpdatePersonalInfoError" = "Alas! We are not able to update your personal information. Please try again later or contact support@givtapp.net.";
