@@ -503,6 +503,10 @@ final class GivtService: NSObject {
     func triggerGivtLocation(id: String, organisationName: String) {
         delegate?.didDetectGivtLocation(orgName: organisationName, identifier: id)
     }
+    
+    func getGivtLocations() -> [GivtLocation] {
+        return locationService.getGivtLocations()
+    }
 }
 
 extension GivtService: BeaconServiceProtocol {
