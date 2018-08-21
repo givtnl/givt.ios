@@ -560,7 +560,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "PersonalPageHeader" = "Wijzig hieronder je gegevens.";
 
 /*Fuzzy*/
-"PersonalPageSubHeader" = "Wil je graag je naam veranderen? Stuur dan een mailtje sturen naar support@givtapp.net.";
+"PersonalPageSubHeader" = "Wil je graag je naam veranderen? Stuur dan een mailtje naar support@givtapp.net.";
 "TitlePersonalInfo" = "Mijn gegevens";
 "PersonalInfoTempUser" = "Hé, snelle gever! Je gebruikt een tijdelijk account. We hebben je gegevens dus nog niet ontvangen.";
 "UpdatePersonalInfoError" = "Helaas lukt het op dit moment niet om je gegevens te wijzigen. Probeer later opnieuw of neem contact op met support@givtapp.net.";
