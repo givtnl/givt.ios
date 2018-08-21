@@ -23,6 +23,9 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.contextType = contexts[indexPath.row].type
+        if cell.contextType! == ContextType.events {
+            cell.contentView.alpha = self.givtLocations.count == 0 ? 0.5 : 1
+        }
         return cell
     }
     
@@ -49,7 +52,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
                 navigationController.show(vc, sender: nil)
             case .events:
                 if self.givtLocations.count == 0 {
-                    let alert = UIAlertController(title: "", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.navigationController?.present(alert, animated: true, completion: nil)
                 } else {
