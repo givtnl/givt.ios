@@ -31,7 +31,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     }
     
     private func fillSuggestion() -> UIView? {
-        if let bb = GivtService.shared.bestBeacon {
+        if let bb = GivtManager.shared.bestBeacon {
             namespace = bb.namespace
         } else if let savedNamespace = UserDefaults.standard.lastGivtToOrganisationNamespace {
             namespace = savedNamespace
@@ -39,7 +39,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         
         guard let namespace = namespace else { return nil }
         
-        guard let orgName = GivtService.shared.getOrganisationName(organisationNameSpace: namespace) else { return nil }
+        guard let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) else { return nil }
         
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(giveSuggestion))
@@ -246,12 +246,12 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GivtService.shared.delegate = self
+        GivtManager.shared.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        GivtService.shared.delegate = nil
+        GivtManager.shared.delegate = nil
     }
 
     override func viewDidDisappear(_ animated: Bool) {

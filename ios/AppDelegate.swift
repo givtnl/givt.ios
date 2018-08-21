@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logService.info(message: "User notification status: " + String(appService.notificationsEnabled()))
         //InfraManager.shared.checkUpdates()
         
-        GivtService.shared.resume()
+        GivtManager.shared.resume()
         
         if !UserDefaults.standard.showcases.isEmpty {
             UserDefaults.standard.showCasesByUserID = UserDefaults.standard.showcases
@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         logService.info(message: "App resuming")
         NavigationManager.shared.resume()
-        GivtService.shared.resume()
+        GivtManager.shared.resume()
         
     }
 
@@ -141,7 +141,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         //
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb { //coming from safari
-            if let appScheme = GivtService.shared.externalIntegration?.appScheme {
+            if let appScheme = GivtManager.shared.externalIntegration?.appScheme {
                 let url = URL(string: appScheme)!
                 if UIApplication.shared.canOpenURL(url) {
                     LogService.shared.info(message: "User just gave, coming back to Givt, now going to \(appScheme)")
@@ -155,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     LogService.shared.warning(message: "\(url) was not installed on the device.")
                 }
             }
-            GivtService.shared.externalIntegration = nil
+            GivtManager.shared.externalIntegration = nil
         }
         return true
     }
@@ -167,7 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     topController = presentedViewController
                 }
                 var message = NSLocalizedString("ShareTheGivtTextNoOrg", comment: "")
-                if let namespace = UserDefaults.standard.lastGivtToOrganisationNamespace, let organisation = GivtService.shared.getOrganisationName(organisationNameSpace: namespace) {
+                if let namespace = UserDefaults.standard.lastGivtToOrganisationNamespace, let organisation = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
                     message = NSLocalizedString("ShareTheGivtText", comment: "").replacingOccurrences(of: "{0}", with: organisation)
                 }
 
@@ -183,7 +183,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let appId = queryItems.first(where: { (item) -> Bool in item.name == "appid" })?.value
                 {
                     if let element = AppConstants.dict[appId], let imageString = element["logo"], let image = UIImage(named: imageString), let name = element["name"] {
-                        GivtService.shared.externalIntegration = ExternalAppIntegration(name: name, logo: image, mediumId: mediumIdValue, appScheme: fromValue)
+                        GivtManager.shared.externalIntegration = ExternalAppIntegration(name: name, logo: image, mediumId: mediumIdValue, appScheme: fromValue)
                         LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app with identifier \(mediumIdValue)")
                     } else {
                         LogService.shared.warning(message: "Could not identify External App Integration")

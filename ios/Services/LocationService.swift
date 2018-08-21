@@ -37,7 +37,18 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         locationCheckTimer = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(checkAvailableLocations), userInfo: nil, repeats: true)
     }
     
-    func getGivtLocations() -> [GivtLocation] {
+    func hasActiveGivtLocations() -> Bool {
+        guard let list = UserDefaults.standard.orgBeaconListV2 else {
+            return false
+        }
+        return list.OrgBeacons.first { (orgBeacon) -> Bool in
+            return orgBeacon.Locations.first(where: { (orgBeaconLocation) -> Bool in
+                return Date().isBetween(orgBeaconLocation.dtBegin, and: orgBeaconLocation.dtEnd)
+            }) != nil
+        } != nil
+    }
+    
+    private func getGivtLocations() -> [GivtLocation] {
         var locations = [GivtLocation]()
         guard let list = UserDefaults.standard.orgBeaconListV2 else {
             return locations

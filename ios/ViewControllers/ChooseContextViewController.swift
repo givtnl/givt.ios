@@ -24,7 +24,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         cell.layoutMargins = UIEdgeInsets.zero
         cell.contextType = contexts[indexPath.row].type
         if cell.contextType! == ContextType.events {
-            cell.contentView.alpha = self.givtLocations.count == 0 ? 0.5 : 1
+            cell.contentView.alpha = !GivtManager.shared.hasGivtLocations() ? 0.5 : 1
         }
         return cell
     }
@@ -38,7 +38,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         DispatchQueue.main.async {
             switch selectedContext.type {
             case .collectionDevice:
-                if GivtService.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
+                if GivtManager.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
                     let vc = sb.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
                     navigationController.show(vc, sender: nil)
                 } else {
@@ -51,7 +51,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
                 let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
                 navigationController.show(vc, sender: nil)
             case .events:
-                if self.givtLocations.count == 0 {
+                if !GivtManager.shared.hasGivtLocations() {
                     let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.navigationController?.present(alert, animated: true, completion: nil)
@@ -98,8 +98,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         ctxs.append(Context(name: NSLocalizedString("SelectContextList", comment: ""), type: ContextType.manually, image: #imageLiteral(resourceName: "selectlist")))
         return ctxs
     }()
-    
-    private var givtLocations = [GivtLocation]()
+
     
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
@@ -123,7 +122,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        givtLocations = GivtService.shared.getGivtLocations()
+        
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)

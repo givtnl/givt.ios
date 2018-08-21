@@ -187,7 +187,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     func giveManually(antennaID: String) {
         SVProgressHUD.show()
-        GivtService.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
+        GivtManager.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
             SVProgressHUD.dismiss()
             if seconds > 0 { /* TODO: @Lennie Why check seconds > 0 if GivtService.giveManually only calls afterGivt if seconds > 0 ??? */
                 LogService.shared.info(message: "Celebrating wiiehoeeew")

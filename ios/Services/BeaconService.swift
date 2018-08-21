@@ -48,7 +48,7 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
     
     func startScanning(mode: ScanMode) {
         self.scanMode = mode
-        centralManager.scanForPeripherals(withServices: [GivtService.FEAA], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
+        centralManager.scanForPeripherals(withServices: [GivtManager.FEAA], options: [CBCentralManagerScanOptionAllowDuplicatesKey: true])
     }
 
     func stopScanning() {

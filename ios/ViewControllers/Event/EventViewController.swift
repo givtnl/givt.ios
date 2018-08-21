@@ -12,7 +12,7 @@ import AudioToolbox
 
 class EventViewController: BaseScanViewController {
     @IBOutlet var giveDifferently: CustomButton!
-    private let _givtService = GivtService.shared
+    private let _givtService = GivtManager.shared
     private var isSuggestionShowing = false
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var imageV: UIImageView!

@@ -92,7 +92,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 if initial {
                     initial = false
                     //find orgname associated with namespace
-                    if let namespace = UserDefaults.standard.lastGivtToOrganisationNamespace, let orgName = GivtService.shared.getOrganisationName(organisationNameSpace: namespace) {
+                    if let namespace = UserDefaults.standard.lastGivtToOrganisationNamespace, let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
                         guard let tableSectionId = sections.index(where: { (sec) -> Bool in
                             return sec.title.uppercased() == String(orgName.first!).uppercased()
                         }) else {
@@ -188,7 +188,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     var passSelectedTag: Int!
     private var lastTag: Int?
     var listToLoad: [OrgBeacon] = {
-        var list = GivtService.shared.orgBeaconList
+        var list = GivtManager.shared.orgBeaconList
         return list!
     }()
     
@@ -249,12 +249,12 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GivtService.shared.delegate = self
+        GivtManager.shared.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        GivtService.shared.delegate = nil
+        GivtManager.shared.delegate = nil
     }
 
     override func didReceiveMemoryWarning() {

@@ -13,7 +13,7 @@ import SwiftClient
 import MaterialShowcase
 
 class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate, MaterialShowcaseDelegate {
-    private var givtService = GivtService.shared
+    private var givtService = GivtManager.shared
     private var logService = LogService.shared
     
     var models: [HistoryTransaction] = []

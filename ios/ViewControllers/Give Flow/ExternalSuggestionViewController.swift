@@ -29,7 +29,7 @@ class ExternalSuggestionViewController: BaseScanViewController {
         externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControlEvents.touchUpInside)
         externalSuggestion.cancelButton.isUserInteractionEnabled = true
         
-        externalSuggestion.image.image = GivtService.shared.externalIntegration!.logo
+        externalSuggestion.image.image = GivtManager.shared.externalIntegration!.logo
         
         setupLabel(label: externalSuggestion.label)
     }
@@ -40,13 +40,13 @@ class ExternalSuggestionViewController: BaseScanViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GivtService.shared.delegate = self
-        GivtService.shared.externalIntegration!.wasShownAlready = true
+        GivtManager.shared.delegate = self
+        GivtManager.shared.externalIntegration!.wasShownAlready = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        GivtService.shared.delegate = nil
+        GivtManager.shared.delegate = nil
     }
     
     override func onGivtProcessed(transactions: [Transaction], organisationName: String?, canShare: Bool) {
@@ -58,11 +58,11 @@ class ExternalSuggestionViewController: BaseScanViewController {
     }
     
     @objc func giveAction() {
-        giveManually(antennaID: GivtService.shared.externalIntegration!.mediumId)
+        giveManually(antennaID: GivtManager.shared.externalIntegration!.mediumId)
     }
     
     @objc func cancel(sender: UIButton) {
-        GivtService.shared.externalIntegration = nil
+        GivtManager.shared.externalIntegration = nil
         DispatchQueue.main.async {
             self.dismiss(animated: true, completion: {
                 self.closeAction()
@@ -79,11 +79,11 @@ class ExternalSuggestionViewController: BaseScanViewController {
             NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 17)!,
             NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
             ] as [NSAttributedStringKey : Any]
-        let mediumId = GivtService.shared.externalIntegration!.mediumId
+        let mediumId = GivtManager.shared.externalIntegration!.mediumId
         let stopIndex = mediumId.index(of: ".")!
         let namespace = String(mediumId[..<stopIndex])
-        let organisation = GivtService.shared.getOrganisationName(organisationNameSpace: namespace)!
-        let msg = NSLocalizedString("ExternalSuggestionLabel", comment: "").replacingOccurrences(of: "{0}", with: GivtService.shared.externalIntegration!.name).replacingOccurrences(of:"{1}", with: organisation)
+        let organisation = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace)!
+        let msg = NSLocalizedString("ExternalSuggestionLabel", comment: "").replacingOccurrences(of: "{0}", with: GivtManager.shared.externalIntegration!.name).replacingOccurrences(of:"{1}", with: organisation)
         let rangeOfSubstring = (msg as NSString).range(of: organisation)
         let attributedString = NSMutableAttributedString(string: msg, attributes: lightAttributes)
         attributedString.setAttributes(boldAttributes, range: rangeOfSubstring)

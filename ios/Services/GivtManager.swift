@@ -43,9 +43,9 @@ struct MultiUseAllocations: Codable {
     let dtEndCron: String
 }
 
-final class GivtService: NSObject {
+final class GivtManager: NSObject {
     private let beaconService = BeaconService()
-    static let shared = GivtService()
+    static let shared = GivtManager()
     private var log = LogService.shared
     private var locationService = LocationService.instance
     let reachability = Reachability()
@@ -504,12 +504,12 @@ final class GivtService: NSObject {
         delegate?.didDetectGivtLocation(orgName: organisationName, identifier: id)
     }
     
-    func getGivtLocations() -> [GivtLocation] {
-        return locationService.getGivtLocations()
+    func hasGivtLocations() -> Bool {
+        return locationService.hasActiveGivtLocations()
     }
 }
 
-extension GivtService: BeaconServiceProtocol {
+extension GivtManager: BeaconServiceProtocol {
     func didUpdateBestBeacon(bestBeacon: BestBeacon) {
         self.bestBeacon = bestBeacon
     }
@@ -519,7 +519,7 @@ extension GivtService: BeaconServiceProtocol {
             scanLock.lock()
             if (beaconService.isScanning) {
                 stopScanning()
-                let organisationName = GivtService.shared.determineOrganisationName(namespace: bestBeacon.namespace!)
+                let organisationName = GivtManager.shared.determineOrganisationName(namespace: bestBeacon.namespace!)
                 DispatchQueue.main.async {
                     self.give(antennaID: bestBeacon.beaconId!, organisationName: organisationName)
                 }
@@ -535,7 +535,7 @@ extension GivtService: BeaconServiceProtocol {
     }
 }
 
-extension GivtService: LocationServiceProtocol {
+extension GivtManager: LocationServiceProtocol {
     func didDiscoverLocationInRegion(location: GivtLocation) {
         triggerGivtLocation(id: location.beaconId, organisationName: location.organisationName)
     }

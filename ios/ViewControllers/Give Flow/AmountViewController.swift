@@ -97,7 +97,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet weak var lblTitle: UINavigationItem!
     @IBOutlet weak var btnGive: CustomButton!
     
-    private var givtService:GivtService!
+    private var givtService:GivtManager!
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -109,7 +109,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        givtService = GivtService.shared
+        givtService = GivtManager.shared
         btnGive.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
         btnGive.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")

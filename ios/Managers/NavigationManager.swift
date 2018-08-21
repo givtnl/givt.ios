@@ -12,9 +12,9 @@ import UserNotifications
 class NavigationManager {
     static let shared = NavigationManager()
     private var loginManager: LoginManager = LoginManager.shared
-    private var givtService: GivtService {
+    private var givtService: GivtManager {
         get {
-            return GivtService.shared
+            return GivtManager.shared
         }
     }
     private var appSettings = UserDefaults.standard

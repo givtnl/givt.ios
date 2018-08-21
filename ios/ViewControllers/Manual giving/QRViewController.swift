@@ -37,7 +37,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        GivtService.shared.delegate = self
+        GivtManager.shared.delegate = self
         
         #if DEBUG
         if TARGET_OS_SIMULATOR != 0 {
@@ -100,7 +100,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        GivtService.shared.delegate = nil
+        GivtManager.shared.delegate = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -121,7 +121,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     }
     
     func giveManually(scanResult: String) {
-        GivtService.shared.giveQR(scanResult: scanResult, completionHandler: { success in
+        GivtManager.shared.giveQR(scanResult: scanResult, completionHandler: { success in
             if !success {
                 self.log.warning(message: "Could not scan QR: " + scanResult )
                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
