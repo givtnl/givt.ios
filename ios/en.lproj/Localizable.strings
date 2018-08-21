@@ -695,3 +695,5 @@
 /*A:Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
 "FAQAntwoord18" = "Givt fully complies with the GDPR requirements. GDPR stands for General Data Protection Regulation.\n\nWondering what this means for you? It means that we handle your information with care, that you have the right to know which information we keep on record, have the right to change this information, have the right to demand from us that we do not store your information and that you may know why we need your personal information.\n\nIf you would like to know more, please read our privacy statement.\n";
 "SelectLocationContextLong" = "Give at location during events";
+"GivtAtLocationDisabledTitle" = "Give at location";
+"GivtAtLocationDisabledMessage" = "Hey, slow down! At the moment, no events are available where you can give at location with Givt.";
