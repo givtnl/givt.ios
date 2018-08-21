@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ExternalSuggestionViewController: BaseScanViewController {
 
@@ -58,6 +59,7 @@ class ExternalSuggestionViewController: BaseScanViewController {
     }
     
     @objc func giveAction() {
+        AudioServicesPlayAlertSound(1520)
         giveManually(antennaID: GivtManager.shared.externalIntegration!.mediumId)
     }
     
