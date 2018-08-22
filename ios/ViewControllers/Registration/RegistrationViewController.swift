@@ -61,14 +61,13 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             emailaddress.isEnabled = false
         }
         
-        
-        //emailaddress.color
         self.regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         // prevents the scroll view from swallowing up the touch event of child buttons
         tapGesture.cancelsTouchesInView = false
         theScrollView.addGestureRecognizer(tapGesture)
+        password.setRightPaddingPoints(40)
     }
     @IBAction func switchPasswordVisibility(_ sender: Any) {
         let button = sender as! UIButton
