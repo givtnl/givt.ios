@@ -81,7 +81,7 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
         var msg = "Beacon detected \(antennaID) | RSSI: \(rssi)"
         if let bv = scannedPeripherals[peripheralId.uuidString] {
             msg += " | Battery voltage: \(bv)"
-            if bv < 2450 {
+            if bv < 2450 && bv > 0 {
                 self.log.warning(message: msg)
                 let beacon = Beacon(eddyID: antennaID, batteryStatus: bv)
                 do {
