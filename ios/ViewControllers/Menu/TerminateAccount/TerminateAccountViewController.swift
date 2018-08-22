@@ -53,21 +53,20 @@ class TerminateAccountViewController: UIViewController {
             self.present(alert, animated: true, completion:  {})
             return
         }
-        SVProgressHUD.show()
         LoginManager.shared.terminateAccount { (status) in
-            SVProgressHUD.dismiss()
-            if status {
-                DispatchQueue.main.async {
-                    
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmationViewController") as! ConfirmationViewController
-                    self.show(vc, sender: nil)
-                }
-            } else {
+            if !status {
                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 }))
-                self.present(alert, animated: true, completion:  {})
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion:  {})
+                }
             }
+        }
+        
+        DispatchQueue.main.async {
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmationViewController") as! ConfirmationViewController
+            self.show(vc, sender: nil)
         }
      
     }
