@@ -117,6 +117,10 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             let plainTextBytes = jsonParameters.base64EncodedString()
             let formatted = String(format: AppConstants.apiUri + "/confirm.html?msg=%@", plainTextBytes);
             
+            DispatchQueue.main.async {
+                AppServices.shared.vibrate()
+            }
+            
             if !AppServices.shared.connectedToNetwork() {
                 self.log.info(message: "User gave offline")
                 DispatchQueue.main.async {

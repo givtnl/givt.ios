@@ -59,7 +59,6 @@ class ExternalSuggestionViewController: BaseScanViewController {
     }
     
     @objc func giveAction() {
-        AudioServicesPlayAlertSound(1520)
         giveManually(antennaID: GivtManager.shared.externalIntegration!.mediumId)
     }
     

@@ -10,6 +10,7 @@ import Foundation
 import SystemConfiguration
 import UIKit
 import CoreLocation
+import AudioToolbox
 
 class AppServices {
     static let shared = AppServices()
@@ -52,5 +53,9 @@ class AppServices {
     
     static func isLocationPermissionGranted() -> Bool {
         return [.authorizedAlways, .authorizedWhenInUse].contains(CLLocationManager.authorizationStatus())
+    }
+    
+    func vibrate() {
+        AudioServicesPlayAlertSound(1520)
     }
 }

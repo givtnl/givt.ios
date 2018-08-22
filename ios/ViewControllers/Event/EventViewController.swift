@@ -47,7 +47,6 @@ class EventViewController: BaseScanViewController {
             self._givtService.stopLookingForGivtLocations()
         }
         DispatchQueue.main.async {
-            AudioServicesPlayAlertSound(1519)
             self.present(vc, animated: true, completion: nil)
         }
     }

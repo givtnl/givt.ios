@@ -206,11 +206,6 @@ final class GivtManager: NSObject {
         
         giveInBackground(transactions: transactions)
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
-        
-        let deadlineTime = DispatchTime.now() + 0.20
-        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
-            AudioServicesPlayAlertSound(1520)
-        }
     }
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {

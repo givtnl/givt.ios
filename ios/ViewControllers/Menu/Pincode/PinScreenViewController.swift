@@ -111,7 +111,7 @@ class PinScreenViewController: UIViewController {
                         
                         DispatchQueue.main.async {
                             self.animateBullets()
-                            AudioServicesPlayAlertSound(1520)
+                            AppServices.shared.vibrate()
                         }
                         
                         let alert = UIAlertController(title: NSLocalizedString("PincodeWrongPinTitle", comment: ""), message: "", preferredStyle: .alert)
@@ -215,7 +215,7 @@ class PinScreenViewController: UIViewController {
                         isDisabled = true
                         
                         self.animateBullets()
-                        AudioServicesPlayAlertSound(1520)
+                        AppServices.shared.vibrate()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: {
                             self.subtitle.text = NSLocalizedString("PincodeSetPinMessage", comment: "")
                             let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("PincodeDoNotMatch", comment: ""), preferredStyle: .alert)

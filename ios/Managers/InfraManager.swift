@@ -44,7 +44,7 @@ class InfraManager {
     @objc private func toggle() {
             if device!.torchMode == .off {
                 device!.torchMode = .on
-                AudioServicesPlayAlertSound(1520)
+                AppServices.shared.vibrate()
             } else {
                 device!.torchMode = .off
             }
