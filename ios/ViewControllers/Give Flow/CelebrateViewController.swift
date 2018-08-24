@@ -21,9 +21,6 @@ class CelebrateViewController: BaseScanViewController {
     private let TORCH_TIME: Double = 10.0
     override func viewDidLoad() {
         super.viewDidLoad()
-        #if DEBUG
-        secondsLeft = 5
-        #endif
         timer.text = formatTime()
         gif.loadGif(name: "celebration")
         title = NSLocalizedString("CelebrateTitle", comment: "")
