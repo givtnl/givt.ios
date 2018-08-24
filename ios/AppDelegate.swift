@@ -39,9 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         logService.info(message: "App started")
         logService.info(message: "User notification status: " + String(appService.notificationsEnabled()))
-        //InfraManager.shared.checkUpdates()
-        
-        GivtManager.shared.resume()
         
         if !UserDefaults.standard.showcases.isEmpty {
             UserDefaults.standard.showCasesByUserID = UserDefaults.standard.showcases

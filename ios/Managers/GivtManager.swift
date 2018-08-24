@@ -457,7 +457,7 @@ final class GivtManager: NSObject {
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
-            var data = ["Guid" : userExt.guid]
+            let data = ["Guid" : userExt.guid]
             client.get(url: "/api/v2/collectgroups/applist", data: data, callback: { (response) in
                 if let response = response, let data = response.data {
                     if response.statusCode == 200 {

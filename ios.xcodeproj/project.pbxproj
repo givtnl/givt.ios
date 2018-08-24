@@ -342,7 +342,6 @@
 		D72B707E1F44832D0022BD29 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D740E15B1F4C6328000531BA /* GivtManager.swift */,
 				D7DD79A520A19E2500047CA7 /* LocationService.swift */,
 				D7FB251C1F4D6D2F0011A14E /* AppServices.swift */,
 				D7FB252E1F5065C20011A14E /* Reachability.swift */,
@@ -403,6 +402,7 @@
 		D77667EC1F39F11300649157 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				D740E15B1F4C6328000531BA /* GivtManager.swift */,
 				D77667ED1F39F12900649157 /* LoginManager.swift */,
 				D788E4771FA08DA700506DA5 /* NavigationManager.swift */,
 				D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */,
