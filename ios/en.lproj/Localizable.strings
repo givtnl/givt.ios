@@ -701,3 +701,4 @@
 "SelectLocationContextLong" = "Give at location during events";
 "GivtAtLocationDisabledTitle" = "No events available";
 "GivtAtLocationDisabledMessage" = "Hey, slow down! At the moment, no events are available where you can give at location.";
+"TempAccountLogin" = "You're using a temporary account without password. You will now be automatically logged in and asked to complete your registration.";
