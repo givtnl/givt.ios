@@ -718,3 +718,4 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SelectLocationContextLong" = "Geef op locatie tijdens evenementen";
 "GivtAtLocationDisabledTitle" = "Geen evenementen beschikbaar";
 "GivtAtLocationDisabledMessage" = "Hé, niet te snel! Op dit moment zijn er geen evenementen waar je op locatie kan geven.";
+"TempAccountLogin" = "Je gebruikt een tijdelijk account zonder wachtwoord. Je wordt nu ingelogd en daarna gelijk gevraagd om je registratie af te ronden.";
