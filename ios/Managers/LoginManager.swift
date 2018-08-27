@@ -210,7 +210,7 @@ class LoginManager {
     }
     
     func registerExtraDataFromUser(_ user: RegistrationUser, completionHandler: @escaping (Bool?) -> Void) {
-        let params = [
+        var params = [
             "Email": user.email,
             "Password" : user.password,
             "IBAN":  user.iban.replacingOccurrences(of: " ", with: ""),
@@ -222,7 +222,11 @@ class LoginManager {
             "PostalCode":  user.postalCode,
             "Country":  user.country,
             "AmountLimit": "499"]
-        
+        if let langCode = Locale.current.languageCode {
+            params["AppLanguage"] = langCode
+        } else {
+            self.log.warning(message: "Device has no languagecode...")
+        }
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
                 if let res = res {
