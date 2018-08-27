@@ -111,10 +111,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         SVProgressHUD.show()
         LoginManager.shared.doesEmailExist(email: txtUserName.text!) { (status) in
-            
-            if status == "true" { //completed registration
-                self.doLogin()
-            } else if status == "temp" { //email is in db but not succesfully registered
+            if status == "temp" { //email is in db but not succesfully registered
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                 }
@@ -124,51 +121,43 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }))
                 self.present(alert, animated: true, completion:  {})
             } else {
-                //strange response from server. internet connection err/ssl pin err
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                }
-                self._navigationManager.presentAlertNoConnection(context: self)
-            }
-        }
-    }
-    
-    func doLogin() {
-        _ = LoginManager.shared.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error, description in
-            
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-            }
-            
-            if b {
-                print("logging user in")
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: { self.completionHandler() } )
-                }
-            } else {
-                print("something wrong logging user in")
-                var message = NSLocalizedString("WrongCredentials", comment: "")
-                if description == "NoInternet" {
-                    message = NSLocalizedString("ConnectionError", comment: "")
-                } else if description == "ServerError" {
-                    message = NSLocalizedString("ConnectionError", comment: "")
-                } else if description == "LockedOut" {
-                    message = NSLocalizedString("WrongPasswordLockedOut", comment: "")
-                }
-                
-                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
-                                              message: message,
-                                              preferredStyle: UIAlertControllerStyle.alert)
-                
-                let cancelAction = UIAlertAction(title: "OK",
-                                                 style: .cancel, handler: nil)
-                
-                alert.addAction(cancelAction)
-                DispatchQueue.main.async(execute: {
-                    self.present(alert, animated: true, completion: nil)
+                _ = LoginManager.shared.loginUser(email: self.txtUserName.text!,password: self.txtPassword.text!, completionHandler: { b, error, description in
+                    
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                    }
+                    
+                    if b {
+                        print("logging user in")
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: { self.completionHandler() } )
+                        }
+                    } else {
+                        print("something wrong logging user in")
+                        var message = NSLocalizedString("WrongCredentials", comment: "")
+                        if description == "NoInternet" {
+                            message = NSLocalizedString("ConnectionError", comment: "")
+                        } else if description == "ServerError" {
+                            message = NSLocalizedString("ConnectionError", comment: "")
+                        } else if description == "LockedOut" {
+                            message = NSLocalizedString("WrongPasswordLockedOut", comment: "")
+                        }
+                        
+                        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""),
+                                                      message: message,
+                                                      preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        let cancelAction = UIAlertAction(title: "OK",
+                                                         style: .cancel, handler: nil)
+                        
+                        alert.addAction(cancelAction)
+                        DispatchQueue.main.async(execute: {
+                            self.present(alert, animated: true, completion: nil)
+                        })
+                    }
                 })
             }
-        })
+        }
     }
     
     @IBAction func switchPasswordVisibility(_ sender: Any) {
