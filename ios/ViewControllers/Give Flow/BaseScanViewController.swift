@@ -192,18 +192,18 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     func giveManually(antennaID: String) {
         SVProgressHUD.show()
         GivtManager.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
-            SVProgressHUD.dismiss()
-            if seconds > 0 { /* TODO: @Lennie Why check seconds > 0 if GivtService.giveManually only calls afterGivt if seconds > 0 ??? */
-                LogService.shared.info(message: "Celebrating wiiehoeeew")
-                DispatchQueue.main.async {
-                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
-                    vc.secondsLeft = seconds
-                    vc.transactions = transactions
-                    vc.organisation = orgName
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-                
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+            
+            LogService.shared.info(message: "Celebrating wiiehoeeew")
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                vc.secondsLeft = seconds
+                vc.transactions = transactions
+                vc.organisation = orgName
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         })
     }
