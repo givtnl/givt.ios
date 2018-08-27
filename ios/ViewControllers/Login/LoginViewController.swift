@@ -110,6 +110,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         SVProgressHUD.show()
+        LoginManager.shared.doesEmailExist(email: txtUserName.text!) { (status) in
+            
+            if status == "true" { //completed registration
+                self.doLogin()
+            } else if status == "temp" { //email is in db but not succesfully registered
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
+                let alert = UIAlertController(title: NSLocalizedString("Givt", comment: ""), message: NSLocalizedString("TempAccountLogin", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    NavigationHelper.showRegistration(context: self, email: self.txtUserName.text!)
+                }))
+                self.present(alert, animated: true, completion:  {})
+            } else {
+                //strange response from server. internet connection err/ssl pin err
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
+                self._navigationManager.presentAlertNoConnection(context: self)
+            }
+        }
+    }
+    
+    func doLogin() {
         _ = LoginManager.shared.loginUser(email: txtUserName.text!,password: txtPassword.text!, completionHandler: { b, error, description in
             
             DispatchQueue.main.async {
@@ -145,8 +169,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 })
             }
         })
-        
     }
+    
     @IBAction func switchPasswordVisibility(_ sender: Any) {
         let button = sender as! UIButton
         button.isSelected = !button.isSelected

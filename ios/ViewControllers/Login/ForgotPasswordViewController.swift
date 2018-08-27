@@ -59,39 +59,52 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         }
         
         SVProgressHUD.show()
-        LoginManager.shared.requestNewPassword(email: (emailField.text?.replacingOccurrences(of: " ", with: ""))!, callback: { (status) in
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-            }
+        LoginManager.shared.doesEmailExist(email: emailField.text!) { (status) in
             
-            if let status = status {
-                if status {
-                    SVProgressHUD.showSuccess(withStatus: NSLocalizedString("CheckInbox", comment: ""))
+            if status == "temp" {
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
+                let alert = UIAlertController(title: NSLocalizedString("Givt", comment: ""), message: NSLocalizedString("TempAccountLogin", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    NavigationHelper.showRegistration(context: self, email: self.emailField.text!)
+                }))
+                self.present(alert, animated: true, completion:  {})
+            } else {
+                LoginManager.shared.requestNewPassword(email: (self.emailField.text?.replacingOccurrences(of: " ", with: ""))!, callback: { (status) in
                     DispatchQueue.main.async {
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                } else {
-                    if !self._appServices.connectedToNetwork() {
-                        self._navigationManager.presentAlertNoConnection(context: self)
-                        return
+                        SVProgressHUD.dismiss()
                     }
                     
-                    let alert = UIAlertController(title: "", message: NSLocalizedString("SomethingWentWrong", comment: ""), preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                        
-                    }))
-                    DispatchQueue.main.async {
-                        self.present(alert, animated: true, completion: {
-                            self.navigationController?.popViewController(animated: true)
-                        })
+                    if let status = status {
+                        if status {
+                            SVProgressHUD.showSuccess(withStatus: NSLocalizedString("CheckInbox", comment: ""))
+                            DispatchQueue.main.async {
+                                self.navigationController?.popViewController(animated: true)
+                            }
+                        } else {
+                            if !self._appServices.connectedToNetwork() {
+                                self._navigationManager.presentAlertNoConnection(context: self)
+                                return
+                            }
+                            
+                            let alert = UIAlertController(title: "", message: NSLocalizedString("SomethingWentWrong", comment: ""), preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                                
+                            }))
+                            DispatchQueue.main.async {
+                                self.present(alert, animated: true, completion: {
+                                    self.navigationController?.popViewController(animated: true)
+                                })
+                            }
+                        }
+                    } else {
+                        //response does not exist. ssl error?
+                        self._navigationManager.presentAlertNoConnection(context: self)
                     }
-                }
-            } else {
-                //response does not exist. ssl error?
-                self._navigationManager.presentAlertNoConnection(context: self)
+                })
             }
-        })
-        
+        }
     }
     
     
