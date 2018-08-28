@@ -21,8 +21,10 @@ class RegistrationUser {
     var iban: String = ""
     var mobileNumber: String = ""
     var postalCode: String = ""
+    var sortCode: String = ""
+    var bacsAccountNumber: String = ""
     
-    init(email: String, password: String, firstName: String, lastName: String, address: String, city: String, country: String, iban: String, mobileNumber: String, postalCode: String) {
+    init(email: String, password: String, firstName: String, lastName: String, address: String, city: String, country: String, iban: String, mobileNumber: String, postalCode: String, sortCode: String, bacsAccountNumber: String) {
         self.email = email
         self.password = password
         self.firstName = firstName
@@ -33,5 +35,7 @@ class RegistrationUser {
         self.iban = iban
         self.mobileNumber = mobileNumber
         self.postalCode = postalCode
+        self.sortCode = sortCode
+        self.bacsAccountNumber = bacsAccountNumber
     }
 }

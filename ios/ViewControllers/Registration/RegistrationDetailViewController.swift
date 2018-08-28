@@ -15,12 +15,12 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     private var _appServices = AppServices.shared
     private var _loginManager = LoginManager.shared
     
+    @IBOutlet var paymentView: UIView!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var infoButton: UIBarButtonItem!
     @IBOutlet var titleText: UILabel!
     private var phoneNumberKit = PhoneNumberKit()
     @IBOutlet var theScrollView: UIScrollView!
-    @IBOutlet var iban: CustomUITextField!
     
     @IBOutlet var streetAndNumber: UITextField!
     @IBOutlet var postalCode: UITextField!
@@ -45,6 +45,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupPaymentView()
         
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         infoButton.accessibilityLabel = "Info"
@@ -122,6 +123,118 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         // prevents the scroll view from swallowing up the touch event of child buttons
         tapGesture.cancelsTouchesInView = true
         theScrollView.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    enum PaymentType {
+        case sepa
+        case bacs
+    }
+
+    private var paymentType: PaymentType = .sepa
+    @IBOutlet var bacsButton: UIButton!
+    @IBOutlet var sepaButton: UIButton!
+    @IBOutlet var leadingAnchorLine: NSLayoutConstraint!
+    @IBOutlet var leadingAnchorPaymentView: NSLayoutConstraint!
+    @IBAction func showSepa(_ sender: Any) {
+        print("pressed sepa")
+        leadingAnchorPaymentView.constant = 0
+        leadingAnchorLine.constant = 0
+        sepaButton.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 14)
+        bacsButton.titleLabel?.font = UIFont(name: "Avenir-Light", size: 14)
+        self.paymentType = .sepa
+        self.checkAll(self.iban)
+        self.checkAll(self.sortCode)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { (success) in
+            
+        }
+        
+    }
+    @IBAction func showBacs(_ sender: Any) {
+        print("pressed bacs")
+        leadingAnchorPaymentView.constant = -view.frame.width
+        leadingAnchorLine.constant = 65
+        sepaButton.titleLabel?.font = UIFont(name: "Avenir-Light", size: 14)
+        bacsButton.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 14)
+        self.paymentType = .bacs
+        self.checkAll(self.iban)
+        self.checkAll(self.sortCode)
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { (success) in
+            
+        }
+    }
+    
+    private var iban: CustomUITextField!
+    private var sortCode: CustomUITextField!
+    private var accountNumber: CustomUITextField!
+    func setupPaymentView() {
+        iban = CustomUITextField()
+        iban.awakeFromNib()
+        iban.font = UIFont(name: "Avenir-Light", size: 16)
+        iban.borderStyle = .none
+        paymentView.isUserInteractionEnabled = true
+        let sepaView = UIView()
+        sepaView.translatesAutoresizingMaskIntoConstraints = false
+        
+        paymentView.addSubview(sepaView)
+        sepaView.topAnchor.constraint(equalTo: paymentView.topAnchor, constant: 0).isActive = true
+        sepaView.leadingAnchor.constraint(equalTo: paymentView.leadingAnchor, constant: 0).isActive = true
+        sepaView.bottomAnchor.constraint(equalTo: paymentView.bottomAnchor, constant: 0).isActive = true
+        sepaView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        
+        let bacsView = UIView()
+        bacsView.isUserInteractionEnabled = true
+        bacsView.translatesAutoresizingMaskIntoConstraints = false
+        paymentView.addSubview(bacsView)
+        bacsView.topAnchor.constraint(equalTo: paymentView.topAnchor, constant: 0).isActive = true
+        bacsView.leadingAnchor.constraint(equalTo: sepaView.trailingAnchor, constant: 0).isActive = true
+        bacsView.bottomAnchor.constraint(equalTo: paymentView.bottomAnchor, constant: 0).isActive = true
+        bacsView.trailingAnchor.constraint(equalTo: paymentView.trailingAnchor, constant: 0).isActive = true
+        
+        iban.translatesAutoresizingMaskIntoConstraints = false
+        sepaView.addSubview(iban)
+        iban.topAnchor.constraint(equalTo: sepaView.topAnchor, constant: 10).isActive = true
+        iban.trailingAnchor.constraint(equalTo: sepaView.trailingAnchor, constant: -20).isActive = true
+        iban.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        iban.leadingAnchor.constraint(equalTo: sepaView.leadingAnchor, constant: 20).isActive = true
+        iban.isEnabled = true
+        iban.isUserInteractionEnabled = true
+        //iban.bottomAnchor.constraint(greaterThanOrEqualTo: sepaView.bottomAnchor, constant: 0).isActive = true
+        
+        sortCode = CustomUITextField()
+        sortCode.delegate = self
+        sortCode.awakeFromNib()
+        sortCode.placeholder = "SORTCODE PLACEHOLDER"
+        sortCode.font = UIFont(name: "Avenir-Light", size: 16)
+        sortCode.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        sortCode.backgroundColor = .white
+        
+        sortCode.translatesAutoresizingMaskIntoConstraints = false
+        bacsView.addSubview(sortCode)
+        sortCode.topAnchor.constraint(equalTo: bacsView.topAnchor, constant: 10).isActive = true
+        sortCode.leadingAnchor.constraint(equalTo: bacsView.leadingAnchor, constant: 20).isActive = true
+        sortCode.trailingAnchor.constraint(equalTo: bacsView.trailingAnchor, constant: -20).isActive = true
+        sortCode.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        accountNumber = CustomUITextField()
+        accountNumber.delegate = self
+        accountNumber.placeholder = "ACCOUNTNUMBER PLACEHOLDER"
+        accountNumber.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        accountNumber.awakeFromNib()
+        accountNumber.font = UIFont(name: "Avenir-Light", size: 16)
+        accountNumber.translatesAutoresizingMaskIntoConstraints = false
+        bacsView.addSubview(accountNumber)
+        accountNumber.topAnchor.constraint(equalTo: sortCode.bottomAnchor, constant: 10).isActive = true
+        accountNumber.leadingAnchor.constraint(equalTo: sortCode.leadingAnchor, constant: 0).isActive = true
+        accountNumber.trailingAnchor.constraint(equalTo: sortCode.trailingAnchor, constant: 0).isActive = true
+        accountNumber.heightAnchor.constraint(equalTo: sortCode.heightAnchor, constant: 0).isActive = true
+        let btm = accountNumber.bottomAnchor.constraint(equalTo: bacsView.bottomAnchor, constant: 10)
+        btm.isActive = true
+        self.view.layoutIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -162,9 +275,14 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         mobilePrefixField.addTarget(self, action: #selector(checkAll(_:)), for: .editingChanged)
         mobileNumber.addTarget(self, action: #selector(checkAll(_:)), for: .editingChanged)
         iban.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        sortCode.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        accountNumber.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField == sortCode || textField == accountNumber {
+            checkAll(sortCode)
+        }
         if textField == iban {
             if iban.text != nil {
                 checkAll(iban)
@@ -258,7 +376,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             textField.resignFirstResponder()
         }
         
-        if textField == iban {
+        if textField == iban || textField == accountNumber {
             if nextButton.isEnabled {
                 
                 nextButton.sendActions(for: UIControlEvents.touchUpInside)
@@ -281,11 +399,18 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         SVProgressHUD.show()
         let address = self.streetAndNumber.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let city = self.city.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        let sortCode = self.sortCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        let bacsAccountNumber = self.accountNumber.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let country = self.selectedCountry?.shortName
         let iban = self.iban.text!.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        let userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode)
+        var userData: RegistrationUser!
+        if paymentType == .sepa {
+            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "")
+        } else {
+            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber)
+        }
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
             if let success = success {
                 if success {
@@ -339,6 +464,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     private var isMobilePrefixValid = false
     private var isMobileNumberValid = false
     private var isIbanValid = false
+    private var isBacsValid = false
     @objc func checkAll(_ textField: UITextField) {
         switch textField {
         case streetAndNumber:
@@ -362,11 +488,14 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         case mobilePrefixField:
             isMobilePrefixValid = validationHelper.isBetweenCriteria(mobilePrefixField.text!, 6)
             isMobilePrefixValid ? textField.setValid() : textField.setInvalid()
+        case sortCode, accountNumber:
+            isBacsValid = sortCode.text == "123" && accountNumber.text == "456"
         default:
             break
         }
-        
-        nextButton.isEnabled = isStreetValid && isPostalCodeValid && isCityValid && isCountryValid && isMobileNumberValid && isIbanValid && isMobilePrefixValid
+        //TODO: add bacs
+        var isBankDataCorrect = (isIbanValid && paymentType == .sepa) || (isBacsValid && paymentType == .bacs)
+        nextButton.isEnabled = isStreetValid && isPostalCodeValid && isCityValid && isCountryValid && isMobileNumberValid && isBankDataCorrect && isMobilePrefixValid
     }
 
     func isMobileNumber(_ number: String) -> Bool {
@@ -478,6 +607,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             checkAll(mobilePrefixField)
             checkAll(mobileNumber)
             checkAll(countryField)
+            if(selectedCountry.shortName == "GB") {
+                showBacs(self)
+            } else {
+                showSepa(self)
+            }
         } else if pv == mobilePrefixPickerView {
             _lastTextField = mobilePrefixField
             selectedMobilePrefix = AppConstants.countries[row]
