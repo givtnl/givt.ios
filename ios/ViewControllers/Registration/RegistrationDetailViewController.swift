@@ -489,7 +489,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             isMobilePrefixValid = validationHelper.isBetweenCriteria(mobilePrefixField.text!, 6)
             isMobilePrefixValid ? textField.setValid() : textField.setInvalid()
         case sortCode, accountNumber:
-            isBacsValid = sortCode.text == "123" && accountNumber.text == "456"
+            isBacsValid = sortCode.text == "000000" && accountNumber.text == "12345678"
         default:
             break
         }

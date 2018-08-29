@@ -92,6 +92,7 @@
 		D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */; };
 		D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */; };
 		D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */; };
+		D7AE8B9921359A0200CB3A33 /* BACS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AE8B9821359A0200CB3A33 /* BACS.storyboard */; };
 		D7AF42FF1FEA61610027EEC1 /* UpdatedTermsPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */; };
 		D7AF43011FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */; };
 		D7AF43031FEA8E680027EEC1 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */; };
@@ -260,6 +261,7 @@
 		D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TerminateAccount.storyboard; sourceTree = "<group>"; };
 		D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminateAccountViewController.swift; sourceTree = "<group>"; };
 		D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		D7AE8B9821359A0200CB3A33 /* BACS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BACS.storyboard; sourceTree = "<group>"; };
 		D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdatedTermsPage.storyboard; sourceTree = "<group>"; };
 		D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedTermsPageViewController.swift; sourceTree = "<group>"; };
 		D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */,
 				D7C8F3D2209A0B7300DBB397 /* Event.storyboard */,
 				D74C19E720F6270F00E116A0 /* ExternalSuggestion.storyboard */,
+				D7AE8B9821359A0200CB3A33 /* BACS.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -834,6 +837,7 @@
 				D748F5F82061381B00B25BC2 /* TableSectionHeaderView.xib in Resources */,
 				D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */,
 				D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */,
+				D7AE8B9921359A0200CB3A33 /* BACS.storyboard in Resources */,
 				D7E708541FE7FD68002A7770 /* InfoPlist.strings in Resources */,
 				D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */,
 				D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */,

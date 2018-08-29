@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="YS5-tt-IAr">
+            <objects>
+                <viewController id="Nqu-gu-5sf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9th-Yp-EIm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="UfU-O0-fBR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TIb-IQ-wXZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tvW-ue-cnO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000.8" y="38.23088455772114"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="CkW-W2-nWN">
+            <objects>
+                <viewController id="uKh-Kh-ClB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TVU-kS-Zdm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6oB-gc-SzF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCk-V3-3mv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1729" y="43"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="w3a-h4-8dY">
+            <objects>
+                <viewController storyboardIdentifier="NeedHelpVC" id="mlP-aE-Mdm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MTC-Hh-aVU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEED HELP?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfY-Np-hKx">
+                                <rect key="frame" x="114.5" y="40" width="146" height="33"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYR-iY-znj">
+                                <rect key="frame" x="0.0" y="93" width="375" height="574"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nob-Yo-ugO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7G-D9-CQn">
+                                                <rect key="frame" x="20" y="0.0" width="335" height="507.5"/>
+                                                <mutableString key="text">- The Guarantee is offered by all banks and building societies that accept instructions to pay Direct Debits
+- If there are any changes to the amount, date or frequency of your Direct Debit the organisation will notify you (normally 10 working days) in advance of your account being debited or as otherwise agreed. If you request the organisation to collect a payment, confirmation of the amount and date will be given to you at the time of the request
+- If an error is made in the payment of your Direct Debit, by the organisation or your bank or building society, you are entitled to a full and immediate refund of the amount paid from your bank or building society
+- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="q7G-D9-CQn" firstAttribute="top" secondItem="Nob-Yo-ugO" secondAttribute="top" id="SDM-4Q-aJ3"/>
+                                            <constraint firstItem="q7G-D9-CQn" firstAttribute="leading" secondItem="Nob-Yo-ugO" secondAttribute="leading" constant="20" id="Unk-lc-miq"/>
+                                            <constraint firstAttribute="trailing" secondItem="q7G-D9-CQn" secondAttribute="trailing" constant="20" id="z42-SX-cFk"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Nob-Yo-ugO" secondAttribute="trailing" id="CJH-B3-sam"/>
+                                    <constraint firstItem="Nob-Yo-ugO" firstAttribute="leading" secondItem="BYR-iY-znj" secondAttribute="leading" id="CYV-8I-xTw"/>
+                                    <constraint firstItem="Nob-Yo-ugO" firstAttribute="width" secondItem="BYR-iY-znj" secondAttribute="width" id="YSZ-Uw-9EF"/>
+                                    <constraint firstItem="Nob-Yo-ugO" firstAttribute="top" secondItem="BYR-iY-znj" secondAttribute="top" id="a3U-HP-nHn"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nob-Yo-ugO" secondAttribute="bottom" id="b41-2D-Z3S"/>
+                                    <constraint firstItem="Nob-Yo-ugO" firstAttribute="height" secondItem="BYR-iY-znj" secondAttribute="height" id="qLd-WY-8rw"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BYR-iY-znj" secondAttribute="trailing" id="4Sm-Mw-Wzb"/>
+                            <constraint firstItem="JfY-Np-hKx" firstAttribute="centerX" secondItem="MTC-Hh-aVU" secondAttribute="centerX" id="Eut-Xk-pWL"/>
+                            <constraint firstItem="BYR-iY-znj" firstAttribute="width" secondItem="MTC-Hh-aVU" secondAttribute="width" id="JO8-PE-qe3"/>
+                            <constraint firstItem="BYR-iY-znj" firstAttribute="leading" secondItem="I7M-OZ-jhI" secondAttribute="leading" id="e5r-Rd-RAM"/>
+                            <constraint firstItem="BYR-iY-znj" firstAttribute="top" secondItem="JfY-Np-hKx" secondAttribute="bottom" constant="20" id="s37-ae-YPK"/>
+                            <constraint firstItem="JfY-Np-hKx" firstAttribute="top" secondItem="I7M-OZ-jhI" secondAttribute="top" constant="20" id="s7l-yg-x7e"/>
+                            <constraint firstItem="BYR-iY-znj" firstAttribute="bottom" secondItem="I7M-OZ-jhI" secondAttribute="bottom" id="v3R-n5-qDZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="I7M-OZ-jhI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ARY-dH-TRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64.799999999999997" y="-636.4317841079461"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oge-tx-hs9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mY9-HS-WAp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ru4-v0-5fB">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Nqu-gu-5sf" kind="relationship" relationship="rootViewController" id="iBk-yV-319"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dUa-vU-mzL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="61.600000000000001" y="38.23088455772114"/>
+        </scene>
+    </scenes>
+</document>
