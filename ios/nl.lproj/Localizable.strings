@@ -730,8 +730,11 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*Fuzzy*/
 "BacsVerifyBody\n" = "Zijn deze gegevens correct ? Zo niet annuleer de registratie en verander je persoonlijke gegevens.\n\nDe bedrijfsnaam die op je transactie zal te zien zijn is Givt Ltd.";
-"BacsReadDDGuarantee" = "Read Direct Debit Guarantee";
+"BacsReadDDGuarantee" = "Lees de incasso garantie";
 "BacsDDGuarantee" = "- De garantie wordt aangeboden door alle banken en hypotheekbanken die instructies accepteren voor het betalen van automatische incasso's.\n- Als er wijzigingen zijn in de datum of frequentie van uw incasso, zal de organisatie u (normaal 10 werkdagen) op de hoogte brengen voordat uw rekening wordt afgeschreven of anderszins wordt overeengekomen.\n- Als er een fout is gemaakt in de betaling van uw automatische incasso, door de organisatie of uw bank of de opbouwmaatschappij, heeft u recht op een volledige en onmiddellijke terugbetaling van het bedrag dat u van uw bank of opbouwmaatschappij heeft betaald.\n- Als u een terugbetaling ontvangt waar u geen recht op heeft, moet u het terugbetalen wanneer de organisatie u daarom vraagt.\n- U kunt op elk moment een automatische incasso annuleren door eenvoudig contact op te nemen met uw bank of de opbouwende organisatie. Een schriftelijke bevestiging kan nodig zijn. Gelieve ook de organisatie op de hoogte te stellen.";
 "BacsAdvanceNotice" = "Alle normale waarborgen voor automatische incasso en garanties zijn van toepassing. Er kunnen geen wijzigingen in het bedrag, de datum of de te debiteren hoeveelheid worden aangebracht zonder u minimaal vijf (5) werkdagen vooraf op de hoogte te stellen van het feit dat uw rekening wordt gedebiteerd.\nIn het geval van een fout heeft u recht op een onmiddellijke terugbetaling door uw bank of woningbouwvereniging.\nU hebt het recht om op elk moment een automatische incassoinstructie te annuleren door een schrijven naar uw bank of woningbouwvereniging met een kopie om te gebruiken.";
 "BacsAdvanceNoticeTitle" = "Advance Notice";
-"BacsDDGuaranteeTitle" = "Direct Debit Guarantee";
+"BacsDDGuaranteeTitle" = "Automatische incasso garantie";
+"BacsVerifyBodyDetails" = "Naam: {0}\nAdres: {1}\nEmail adres: {2}\nSortcode: {3} \nAccount nummer: {4}\nFrequentie type: {5}\n";
+"BacsHelpTitle" = "Hulp nodig?";
+"BacsHelpBody" = "Kan je iets niet vinden of heb je gewoon een vraag ? Aarzel dan niet om ons te contacteren op het nummer: *** of stuur ons een mailtje naar het adres: support@givtapp.net en we nemen spoedig contact met je op !";
