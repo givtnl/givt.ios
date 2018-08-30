@@ -721,3 +721,17 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "TempAccountLogin" = "Je gebruikt een tijdelijk account zonder wachtwoord. Je wordt nu ingelogd en daarna gelijk gevraagd om je registratie af te ronden.";
 "SortCodePlaceholder" = "Sort code";
 "BankAccountNumberPlaceholder" = "Bank account number";
+"BacsSetupTitle" = "Instellen van incasso-instructie";
+"BacsSetupBody\n" = "Door verder te gaan, gaat u ermee akkoord dat u de accounthouder bent en dat u de enige persoon bent die autorisaties voor dit account moet autoriseren.\n\nDe details van uw incassoinstructie worden u binnen 3 werkdagen of uiterlijk 10 werkdagen vóór de eerste verzameling per e-mail toegestuurd.";
+"BacsUnderstoodNotice" = "Ik heb de voorinlichting gelezen en goedgekeurd";
+
+/*Fuzzy*/
+"BacsVerifyTitle" = "Controleer je gegevens";
+
+/*Fuzzy*/
+"BacsVerifyBody\n" = "Zijn deze gegevens correct ? Zo niet annuleer de registratie en verander je persoonlijke gegevens.\n\nDe bedrijfsnaam die op je transactie zal te zien zijn is Givt Ltd.";
+"BacsReadDDGuarantee" = "Read Direct Debit Guarantee";
+"BacsDDGuarantee" = "- De garantie wordt aangeboden door alle banken en hypotheekbanken die instructies accepteren voor het betalen van automatische incasso's.\n- Als er wijzigingen zijn in de datum of frequentie van uw incasso, zal de organisatie u (normaal 10 werkdagen) op de hoogte brengen voordat uw rekening wordt afgeschreven of anderszins wordt overeengekomen.\n- Als er een fout is gemaakt in de betaling van uw automatische incasso, door de organisatie of uw bank of de opbouwmaatschappij, heeft u recht op een volledige en onmiddellijke terugbetaling van het bedrag dat u van uw bank of opbouwmaatschappij heeft betaald.\n- Als u een terugbetaling ontvangt waar u geen recht op heeft, moet u het terugbetalen wanneer de organisatie u daarom vraagt.\n- U kunt op elk moment een automatische incasso annuleren door eenvoudig contact op te nemen met uw bank of de opbouwende organisatie. Een schriftelijke bevestiging kan nodig zijn. Gelieve ook de organisatie op de hoogte te stellen.";
+"BacsAdvanceNotice" = "Alle normale waarborgen voor automatische incasso en garanties zijn van toepassing. Er kunnen geen wijzigingen in het bedrag, de datum of de te debiteren hoeveelheid worden aangebracht zonder u minimaal vijf (5) werkdagen vooraf op de hoogte te stellen van het feit dat uw rekening wordt gedebiteerd.\nIn het geval van een fout heeft u recht op een onmiddellijke terugbetaling door uw bank of woningbouwvereniging.\nU hebt het recht om op elk moment een automatische incassoinstructie te annuleren door een schrijven naar uw bank of woningbouwvereniging met een kopie om te gebruiken.";
+"BacsAdvanceNoticeTitle" = "Advance Notice";
+"BacsDDGuaranteeTitle" = "Direct Debit Guarantee";
