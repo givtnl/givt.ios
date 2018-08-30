@@ -203,10 +203,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         sortCode = CustomUITextField()
         sortCode.delegate = self
         sortCode.awakeFromNib()
-        sortCode.placeholder = "SORTCODE PLACEHOLDER"
+        sortCode.placeholder = NSLocalizedString("SortCodePlaceholder", comment: "")
         sortCode.font = UIFont(name: "Avenir-Light", size: 16)
         sortCode.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         sortCode.backgroundColor = .white
+        sortCode.keyboardType = .numberPad
         
         sortCode.translatesAutoresizingMaskIntoConstraints = false
         bacsView.addSubview(sortCode)
@@ -216,8 +217,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         sortCode.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         accountNumber = CustomUITextField()
+        accountNumber.keyboardType = .numberPad
         accountNumber.delegate = self
-        accountNumber.placeholder = "ACCOUNTNUMBER PLACEHOLDER"
+        accountNumber.placeholder = NSLocalizedString("BankAccountNumberPlaceholder", comment: "")
         accountNumber.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         accountNumber.awakeFromNib()
         accountNumber.font = UIFont(name: "Avenir-Light", size: 16)
@@ -352,6 +354,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 position = cursorPosition
             }
             return true
+        } else if textField == sortCode || textField == accountNumber {
+            let cs = CharacterSet.decimalDigits.inverted
+            let filtered = string.components(separatedBy: cs).joined(separator: "")
+            return string == filtered
         } else {
             return textField != countryField
         }
@@ -486,6 +492,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             isMobilePrefixValid = validationHelper.isBetweenCriteria(mobilePrefixField.text!, 6)
             isMobilePrefixValid ? textField.setValid() : textField.setInvalid()
         case sortCode, accountNumber:
+            let sortCodeIsValid = sortCode.text!.count == 6 && validationHelper.isValidNumeric(string: sortCode.text!)
+            let accountNumberIsValid = accountNumber.text?.count == 8 && validationHelper.isValidNumeric(string: accountNumber.text!)
+            sortCodeIsValid ? sortCode.setValid() : sortCode.setInvalid()
+            accountNumberIsValid ? accountNumber.setValid() : accountNumber.setInvalid()
             isBacsValid = sortCode.text == "000000" && accountNumber.text == "12345678"
         default:
             break
