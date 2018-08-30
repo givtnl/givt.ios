@@ -203,7 +203,7 @@ final class GivtManager: NSObject {
                 transactions.append(newTransaction)
             }
         }
-        
+        self.cacheGivt(transactions: transactions)
         giveInBackground(transactions: transactions)
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
     }
@@ -262,6 +262,7 @@ final class GivtManager: NSObject {
                 }
             }
             
+            self.cacheGivt(transactions: transactions)
             giveCelebrate(transactions: transactions, afterGivt: { seconds in
                 if seconds > 0 {
                     afterGivt(seconds, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
@@ -287,6 +288,7 @@ final class GivtManager: NSObject {
                 if let res = res {
                     if res.basicStatus == .ok {
                         self.log.info(message: "Posted Givt to the server")
+                        self.findAndRemoveCachedTransactions(transactions: transactions)
                         if let data = res.data {
                             do {
                                 let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
@@ -303,13 +305,15 @@ final class GivtManager: NSObject {
                             }
                         }
                         afterGivt(-1)
+                    } else if res.status == .expectationFailed {
+                        self.findAndRemoveCachedTransactions(transactions: transactions)
+                        afterGivt(-1)
                     } else {
                         afterGivt(-1)
                     }
                 } else {
                     //no response
                     afterGivt(-1)
-                    self.cacheGivt(transactions: transactions)
                 }
             }
         } catch {
@@ -319,15 +323,28 @@ final class GivtManager: NSObject {
     }
     
     private func cacheGivt(transactions: [Transaction]){
-        
+        self.log.info(message: "Caching givt(s)")
         for tr in transactions {
-            self.log.info(message: "Cached givt")
             UserDefaults.standard.offlineGivts.append(tr)
         }
         
         print(UserDefaults.standard.offlineGivts)
         for t in UserDefaults.standard.offlineGivts {
             print(t.amount)
+        }
+    }
+    
+    private func findAndRemoveCachedTransactions(transactions: [Transaction]) {
+        for tr in transactions {
+            if let idx = UserDefaults.standard.offlineGivts.index(where: { (trans) -> Bool in
+                return trans.amount == tr.amount
+                    && trans.beaconId == tr.beaconId
+                    && trans.collectId == tr.collectId
+                    && trans.timeStamp == tr.timeStamp
+                    && trans.userId == tr.userId
+            }) {
+                UserDefaults.standard.offlineGivts.remove(at: idx)
+            }
         }
     }
     
@@ -342,32 +359,17 @@ final class GivtManager: NSObject {
                     if let res = res {
                         if res.basicStatus == .ok {
                             self.log.info(message: "Posted Givt to the server")
-                            if let data = res.data {
-                                do {
-                                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                                    if let secondsToCelebration = parsedData["SecondsToCelebration"] as? Int {
-                                        if secondsToCelebration > 0 {
-                                            print(secondsToCelebration)
-                                        }
-                                    }
-                                    print(parsedData)
-                                } catch {
-                                    
-                                }
-                            }
+                            self.findAndRemoveCachedTransactions(transactions: transactions)
                         } else if res.status == .expectationFailed {
                             self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
-                            
+                            self.findAndRemoveCachedTransactions(transactions: transactions)
                         } else {
                             self.tryGive(transactions: transactions, trycount: trycount+1)
                         }
-                    } else {
-                        self.cacheGivt(transactions: transactions)
                     }
                 }
             } else {
-                self.log.error(message: "Didn't get response from server! Caching givt...")
-                self.cacheGivt(transactions: transactions)
+                self.log.error(message: "Didn't get response from server! Givt has been cached")
             }
         } catch {
             self.log.error(message: "Unknown error : \(error)")
