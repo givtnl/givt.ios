@@ -17,8 +17,11 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var fieldToEdit: UILabel!
     var saveAction: (String) -> Void = {_ in }
     var validateFunction: (String) -> Bool = {_ in return false}
+    
     var titleOfInput: String!
     var inputOfInput: String!
+    var keyboardTypeOfInput: UIKeyboardType!
+    
     var img: UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         fieldToEdit.text = titleOfInput
         imgView.image = img
         inputFieldToEdit.delegate = self
+        inputFieldToEdit.keyboardType = keyboardTypeOfInput
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
         if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
             inputFieldToEdit.delegate = self

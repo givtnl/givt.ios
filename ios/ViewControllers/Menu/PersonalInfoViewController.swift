@@ -248,6 +248,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.img = #imageLiteral(resourceName: "email_sign")
             vc.titleOfInput = NSLocalizedString("ChangeEmail", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
+            vc.keyboardTypeOfInput = UIKeyboardType.emailAddress
             vc.validateFunction = { s in
                 return self.validationHelper.isEmailAddressValid(s)
             }
