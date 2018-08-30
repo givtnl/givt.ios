@@ -46,8 +46,8 @@ class BacsSettingUpViewController: UIViewController {
         self.present(helpViewController, animated: true, completion: nil)
     }
     @IBAction func openHelp(_ sender: Any) {
-        helpViewController.title = "I NEED HELP"
-        helpViewController.bodyText = "We all need some help don't we"
+        helpViewController.title = NSLocalizedString("BacsHelpTitle", comment: "")
+        helpViewController.bodyText = NSLocalizedString("BacsHelpBody", comment: "")
         self.present(helpViewController, animated: true, completion: nil)
     }
     

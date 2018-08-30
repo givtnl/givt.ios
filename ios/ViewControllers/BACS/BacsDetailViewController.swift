@@ -20,6 +20,8 @@ class BacsDetailViewController: UIViewController {
         title = NSLocalizedString("BacsVerifyTitle", comment: "")
         readGuarantee.setTitle(NSLocalizedString("BacsReadDDGuarantee", comment: ""), for: UIControlState.normal)
         done.setTitle(NSLocalizedString("Continue", comment: ""), for: UIControlState.normal)
+        personalInformationText.text = NSLocalizedString("BacsVerifyBodyDetails", comment: "")
+        personalDetailText.text = NSLocalizedString("BacsVerifyBody", comment: "")
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
