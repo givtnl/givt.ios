@@ -404,7 +404,7 @@ final class GivtManager: NSObject {
     }
     
     func getPublicMeta() {
-        if UserDefaults.standard.userExt == nil || UserDefaults.standard.showedLastYearTaxOverview == true {
+        if UserDefaults.standard.userExt == nil || UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
             return
         }
         let year = Date().getYear() - 1 //get the previous year
