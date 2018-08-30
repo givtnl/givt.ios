@@ -18,7 +18,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     let focus : [NSAttributedStringKey: Any] = [
         NSAttributedStringKey.font : UIFont(name: "Avenir-Medium", size: 18)!,
         NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),
-        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleNone.rawValue]
+        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue]
     
     private var _navigationManager = NavigationManager.shared
     private var _appServices = AppServices.shared
