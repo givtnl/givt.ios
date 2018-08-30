@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class BacsSettingUpViewController: UIViewController {
 
@@ -31,13 +32,17 @@ class BacsSettingUpViewController: UIViewController {
         attachment.image = #imageLiteral(resourceName: "littleinfo.png")
         attachment.bounds = CGRect(x: 0, y: -4, width: (attachment.image?.size.width)!, height: (attachment.image?.size.height)!)
         let attachmentString:NSAttributedString = NSAttributedString(attachment: attachment)
-        let myString:NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("BacsUnderstoodNotice", comment: ""))
+        let myString:NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("BacsUnderstoodNotice", comment: "") + " ")
         myString.append(attachmentString)
         
         advanceNoticeLabel.attributedText = myString
         let tap = UITapGestureRecognizer(target: self, action: #selector(openAdvanceNotice))
         advanceNoticeLabel.addGestureRecognizer(tap)
         advanceNoticeLabel.isUserInteractionEnabled = true
+        
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.native)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.native)
     }
     
     @objc func openAdvanceNotice() {
@@ -55,16 +60,31 @@ class BacsSettingUpViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+ 
+    @IBAction func next(_ sender: Any) {
+        NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
+            SVProgressHUD.show()
+            LoginManager.shared.getUserExtObject(completion: { (userExt) in
+                SVProgressHUD.dismiss()
+                guard let userExt = userExt else {
+                    let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
+                    }))
+                    DispatchQueue.main.async {
+                        self.present(alert, animated: true, completion: {})
+                    }
+                    return
+                }
+                
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "BacsDetailViewController") as! BacsDetailViewController
+                vc.userExtension = userExt
+                DispatchQueue.main.async {
+                    self.navigationController!.pushViewController(vc, animated: true)
+                }
+            })
+            
+        }
+        
     }
-    */
-
+    
 }

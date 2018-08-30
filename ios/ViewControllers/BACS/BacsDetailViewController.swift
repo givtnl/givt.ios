@@ -15,12 +15,22 @@ class BacsDetailViewController: UIViewController {
     @IBOutlet var readGuarantee: CustomButton!
     @IBOutlet var personalInformationText: UILabel!
     @IBOutlet var personalDetailText: UILabel!
+    var userExtension: LMUserExt!
     override func viewDidLoad() {
         super.viewDidLoad()
+        let country = AppConstants.countries.first { (country) -> Bool in
+            return country.shortName == userExtension.Country
+        }
+        
         title = NSLocalizedString("BacsVerifyTitle", comment: "")
         readGuarantee.setTitle(NSLocalizedString("BacsReadDDGuarantee", comment: ""), for: UIControlState.normal)
         done.setTitle(NSLocalizedString("Continue", comment: ""), for: UIControlState.normal)
         personalInformationText.text = NSLocalizedString("BacsVerifyBodyDetails", comment: "")
+            .replacingOccurrences(of: "{0}", with: "\(userExtension.FirstName) \(userExtension.LastName)")
+            .replacingOccurrences(of: "{1}", with: "\(userExtension.Address), \(userExtension.PostalCode) \(userExtension.City) \(country?.name ?? "undefined")")
+            .replacingOccurrences(of: "{2}", with: userExtension.Email)
+            .replacingOccurrences(of: "{3}", with: userExtension.SortCode!)
+            .replacingOccurrences(of: "{4}", with: userExtension.AccountNumber!)
         personalDetailText.text = NSLocalizedString("BacsVerifyBody", comment: "")
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
@@ -41,49 +51,32 @@ class BacsDetailViewController: UIViewController {
     }
     
     @IBAction func done(_ sender: Any) {
-        NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
-            SVProgressHUD.show()
-            LoginManager.shared.getUserExtObject(completion: { (userExt) in
-                guard let userExt = userExt else {
-                    LogService.shared.warning(message: "Couldn't retrieve userext")
-                    SVProgressHUD.dismiss()
-                    let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
-                        self.dismiss(animated: true, completion: {})
-                        NavigationManager.shared.loadMainPage(animated: false)
-                    }))
-                    DispatchQueue.main.async {
-                        self.present(alert, animated: true, completion: {})
-                    }
-                    return
-                }
-                let signatory = Signatory(givenName: userExt.FirstName, familyName: userExt.LastName, iban: nil, sortCode: userExt.SortCode, accountNumber: userExt.AccountNumber, email: userExt.Email, telephone: userExt.PhoneNumber, city: userExt.City, country: userExt.Country, postalCode: userExt.PostalCode, street: userExt.Address)
-                let mandate = Mandate(signatory: signatory)
-                LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
-                    SVProgressHUD.dismiss()
-                    if let r = response, r.status == .ok {
-                        LoginManager.shared.finishMandateSigning(completionHandler: { (done) in
-                            print(done)
-                        })
-                        DispatchQueue.main.async {
-                            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
-                            self.navigationController!.pushViewController(vc, animated: true)
-                        }
-                    } else {
-                        let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
-                            DispatchQueue.main.async {
-                                self.dismiss(animated: true, completion: nil)
-                                NavigationManager.shared.loadMainPage(animated: false)
-                            }
-                        }))
-                        DispatchQueue.main.async {
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                    }
+        let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: nil, sortCode: userExtension.SortCode, accountNumber: userExtension.AccountNumber, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: userExtension.Country, postalCode: userExtension.PostalCode, street: userExtension.Address)
+        let mandate = Mandate(signatory: signatory)
+        SVProgressHUD.show()
+        LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
+            SVProgressHUD.dismiss()
+            if let r = response, r.status == .ok {
+                LoginManager.shared.finishMandateSigning(completionHandler: { (done) in
+                    print(done)
                 })
-            })
-        }
+                DispatchQueue.main.async {
+                    let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                    self.navigationController!.pushViewController(vc, animated: true)
+                }
+            } else {
+                let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
+                        NavigationManager.shared.loadMainPage(animated: false)
+                    }
+                }))
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        })
     }
     @IBAction func goBack(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)

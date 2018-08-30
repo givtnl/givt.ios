@@ -27,7 +27,7 @@ days before the first collection.
 
 </string>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bx-VR-m7P" customClass="CustomButton" customModule="ios" customModuleProvider="target">
@@ -55,7 +55,7 @@ days before the first collection.
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="uKh-Kh-ClB" kind="show" id="kA5-BI-SBJ"/>
+                                    <action selector="next:" destination="Nqu-gu-5sf" eventType="touchUpInside" id="24G-JH-zDL"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKf-eB-0KZ">
@@ -260,6 +260,7 @@ The company name which will appear on your bank statement against the Direct Deb
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="done" destination="O4O-sn-LrH" id="x4Y-9D-qY2"/>
                         <outlet property="personalDetailText" destination="KSs-PO-glB" id="PiS-F6-jxy"/>
@@ -269,7 +270,7 @@ The company name which will appear on your bank statement against the Direct Deb
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCk-V3-3mv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1728.8" y="42.728635682158924"/>
+            <point key="canvasLocation" x="1730" y="38"/>
         </scene>
         <!--Bacs Info View Controller-->
         <scene sceneID="w3a-h4-8dY">
