@@ -708,7 +708,7 @@
 
 /*Fuzzy*/
 "BacsSetupBody" = "By continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction will be sent to you by email within 3 working days or no later than 10 working days before the first collection.";
-"BacsUnderstoodNotice" = "I have read and understond the advance notice";
+"BacsUnderstoodNotice" = "I have read and understood the advance notice";
 
 /*Fuzzy*/
 "BacsVerifyTitle" = "Verify your details";
@@ -723,3 +723,5 @@
 "BacsVerifyBodyDetails" = "Name: {0}\nAddress: {1}\nEmail address: {2}\nSort code: {3}\nAccount number: {4}\nFrequency type: donations";
 "BacsHelpTitle" = "Need help ?";
 "BacsHelpBody" = "Can't figure something out or you just have a question ? Give us a call at *** or hit us up on support@givtapp.net and we will be in touch!";
+"BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount number: {1}";
+"CantFetchPersonalInformation" = "We can't seem to fetch your personal information right now, could you try again later?";
