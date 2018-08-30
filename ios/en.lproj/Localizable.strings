@@ -721,3 +721,4 @@
 "BacsVerifyBodyDetails" = "Name: {0}\nAddress: {1}\nEmail address: {2}\nSort code: {3}\nAccount number: {4}\nFrequency type: {5}";
 "BacsHelpTitle" = "Need help ?";
 "BacsHelpBody" = "Can't figure something out or you just have a question ? Give us a call at *** or hit us up on support@givtapp.net and we will be in touch!";
+"BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount number: {1}";
