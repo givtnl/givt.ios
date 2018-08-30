@@ -84,6 +84,11 @@ class ValidationHelper {
         //if string start or ends with illegal character => return false
         return rest.count == 0 && !startsOrEndsWithIllegalCharacter
     }
+    
+    func isValidNumeric(string: String) -> Bool {
+        return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
+    }
+    
     class PhoneResult{
         var IsValid: Bool
         var Number: String??
