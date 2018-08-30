@@ -94,7 +94,6 @@
 		D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */; };
 		D7AE8B9921359A0200CB3A33 /* BACS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AE8B9821359A0200CB3A33 /* BACS.storyboard */; };
 		D7AE8B9C2136953E00CB3A33 /* BacsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8B9B2136953E00CB3A33 /* BacsInfoViewController.swift */; };
-		D7AE8B9E2136960700CB3A33 /* BacsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8B9D2136960700CB3A33 /* BacsNavigationController.swift */; };
 		D7AE8BA02136980600CB3A33 /* BacsSettingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8B9F2136980600CB3A33 /* BacsSettingUpViewController.swift */; };
 		D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BA12136BD9000CB3A33 /* BacsDetailViewController.swift */; };
 		D7AE8BA42136CA4F00CB3A33 /* PaymentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BA32136CA4F00CB3A33 /* PaymentTypes.swift */; };
@@ -268,7 +267,6 @@
 		D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
 		D7AE8B9821359A0200CB3A33 /* BACS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BACS.storyboard; sourceTree = "<group>"; };
 		D7AE8B9B2136953E00CB3A33 /* BacsInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacsInfoViewController.swift; sourceTree = "<group>"; };
-		D7AE8B9D2136960700CB3A33 /* BacsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacsNavigationController.swift; sourceTree = "<group>"; };
 		D7AE8B9F2136980600CB3A33 /* BacsSettingUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacsSettingUpViewController.swift; sourceTree = "<group>"; };
 		D7AE8BA12136BD9000CB3A33 /* BacsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacsDetailViewController.swift; sourceTree = "<group>"; };
 		D7AE8BA32136CA4F00CB3A33 /* PaymentTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTypes.swift; sourceTree = "<group>"; };
@@ -443,7 +441,6 @@
 			isa = PBXGroup;
 			children = (
 				D7AE8B9B2136953E00CB3A33 /* BacsInfoViewController.swift */,
-				D7AE8B9D2136960700CB3A33 /* BacsNavigationController.swift */,
 				D7AE8B9F2136980600CB3A33 /* BacsSettingUpViewController.swift */,
 				D7AE8BA12136BD9000CB3A33 /* BacsDetailViewController.swift */,
 			);
@@ -958,7 +955,6 @@
 				D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */,
 				D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */,
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
-				D7AE8B9E2136960700CB3A33 /* BacsNavigationController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
 				D7DD799F209B054500047CA7 /* EventViewController.swift in Sources */,
 				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
