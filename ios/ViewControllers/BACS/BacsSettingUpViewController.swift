@@ -21,33 +21,28 @@ class BacsSettingUpViewController: UIViewController {
     private var helpViewController = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsInfoViewController") as! BacsInfoViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.removeLogo()
+        title = NSLocalizedString("BacsSetupTitle", comment: "")
+        bodyText.text = NSLocalizedString("BacsSetupBody", comment: "")
+        nextButton.setTitle(NSLocalizedString("Continue", comment: ""), for: .normal)
         nextButton.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         
         let attachment:NSTextAttachment = NSTextAttachment()
         attachment.image = #imageLiteral(resourceName: "littleinfo.png")
         attachment.bounds = CGRect(x: 0, y: -4, width: (attachment.image?.size.width)!, height: (attachment.image?.size.height)!)
         let attachmentString:NSAttributedString = NSAttributedString(attachment: attachment)
-        let myString:NSMutableAttributedString = NSMutableAttributedString(string: "I have read and understood the advance notice. ") 
+        let myString:NSMutableAttributedString = NSMutableAttributedString(string: NSLocalizedString("BacsUnderstoodNotice", comment: ""))
         myString.append(attachmentString)
         
         advanceNoticeLabel.attributedText = myString
         let tap = UITapGestureRecognizer(target: self, action: #selector(openAdvanceNotice))
         advanceNoticeLabel.addGestureRecognizer(tap)
         advanceNoticeLabel.isUserInteractionEnabled = true
-
-        // Do any additional setup after loading the view.
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     
     @objc func openAdvanceNotice() {
-        helpViewController.title = "Advance notice"
-        helpViewController.bodyText = "All the normal Direct Debit safeguards and guarantees apply. No changes in the amount, date, frequency to be debited can be made without notifying you at least five (5) working days in advance of your account being debited. In the event of any error, you are entitled to an immediate refund from your Bank or Building society. You have the right to cancel a Direct Debit Instruction at any time simply by writing to your Bank or Building society, with a copy to use."
+        helpViewController.title = NSLocalizedString("BacsAdvanceNoticeTitle", comment: "")
+        helpViewController.bodyText = NSLocalizedString("BacsAdvanceNotice", comment: "")
         self.present(helpViewController, animated: true, completion: nil)
     }
     @IBAction func openHelp(_ sender: Any) {

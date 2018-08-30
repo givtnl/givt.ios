@@ -11,9 +11,15 @@ import SVProgressHUD
 
 class BacsDetailViewController: UIViewController {
 
+    @IBOutlet var done: CustomButton!
+    @IBOutlet var readGuarantee: CustomButton!
+    @IBOutlet var personalInformationText: UILabel!
+    @IBOutlet var personalDetailText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Verify your details"
+        title = NSLocalizedString("BacsVerifyTitle", comment: "")
+        readGuarantee.setTitle(NSLocalizedString("BacsReadDDGuarantee", comment: ""), for: UIControlState.normal)
+        done.setTitle(NSLocalizedString("Continue", comment: ""), for: UIControlState.normal)
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
@@ -27,8 +33,8 @@ class BacsDetailViewController: UIViewController {
     
     @IBAction func readDirectDebitGuarantee(_ sender: Any) {
         let vc = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsInfoViewController") as! BacsInfoViewController
-        vc.title = "DD GUARANTEE"
-        vc.bodyText = "HERE BE LONG LOOOOOONG TEXT"
+        vc.title = NSLocalizedString("BacsDDGuaranteeTitle", comment: "")
+        vc.bodyText = NSLocalizedString("BacsDDGuarantee", comment: "")
         self.present(vc, animated: true, completion: nil)
     }
     

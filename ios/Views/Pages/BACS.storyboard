@@ -260,6 +260,12 @@ The company name which will appear on your bank statement against the Direct Deb
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="done" destination="O4O-sn-LrH" id="x4Y-9D-qY2"/>
+                        <outlet property="personalDetailText" destination="KSs-PO-glB" id="PiS-F6-jxy"/>
+                        <outlet property="personalInformationText" destination="QfX-bb-jaB" id="Yxf-xA-U6e"/>
+                        <outlet property="readGuarantee" destination="bDc-mG-Bkx" id="HIV-SE-8LM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aCk-V3-3mv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
