@@ -152,15 +152,19 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                     callback("")
                     return
                 }
-                let country = userExtension.Country
-                let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: country, postalCode: userExtension.PostalCode, street: userExtension.Address)
+                let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, sortCode: userExtension.SortCode, accountNumber: userExtension.AccountNumber, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: userExtension.Country, postalCode: userExtension.PostalCode, street: userExtension.Address)
+                
                 let mandate = Mandate(signatory: signatory)
-                LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
+                LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
                     SVProgressHUD.dismiss()
-                    if let url = slimPayUrl {
-                        callback(url)
+                    if let r = response {
+                        if r.basicStatus == .ok {
+                            callback(r.text ?? "")
+                        } else {
+                            callback("")
+                        }
                     } else {
-                        SVProgressHUD.dismiss()
+                        //no response?
                         callback("")
                     }
                 })

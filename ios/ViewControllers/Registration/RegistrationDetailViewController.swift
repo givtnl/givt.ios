@@ -125,11 +125,6 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         theScrollView.addGestureRecognizer(tapGesture)
         
     }
-    
-    enum PaymentType {
-        case sepa
-        case bacs
-    }
 
     private var paymentType: PaymentType = .sepa
     @IBOutlet var bacsButton: UIButton!
@@ -407,8 +402,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         var userData: RegistrationUser!
         if paymentType == .sepa {
+            UserDefaults.standard.paymentType = .sepa
             userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "")
         } else {
+            UserDefaults.standard.paymentType = .bacs
             userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber)
         }
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in

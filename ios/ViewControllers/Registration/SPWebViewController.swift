@@ -29,8 +29,21 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
         let url = URL(string: self.url)
         let request = URLRequest(url: url!)
         
+        let source: String = "var meta = document.createElement('meta');" +
+            "meta.name = 'viewport';" +
+            "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';" +
+            "var head = document.getElementsByTagName('head')[0];" + "head.appendChild(meta);";
+        
+        let script: WKUserScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        let userContentController: WKUserContentController = WKUserContentController()
+        let conf = WKWebViewConfiguration()
+        conf.userContentController = userContentController
+        userContentController.addUserScript(script)
+        
         // init and load request in webview.
-        webView = WKWebView(frame: self.view.frame)
+        webView = WKWebView(frame: self.view.frame, configuration: conf)
+        webView.contentMode = .scaleAspectFit
+        webView.isMultipleTouchEnabled = false
         webView.navigationDelegate = self
         webView.uiDelegate = self
         webView.load(request)
@@ -55,8 +68,6 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return nil
     }
-    
-    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

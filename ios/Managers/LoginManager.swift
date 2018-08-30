@@ -279,26 +279,16 @@ class LoginManager {
         
     }
     
-    func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (String?) -> Void) {
+    func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (Response?) -> Void) {
         do {
-            let locale = Locale.preferredLanguages[0]
-            let firstTwoLetters = String(locale[..<locale.index(locale.startIndex, offsetBy: 2)])
-            try client.post(url: "/api/Mandate?locale=\(firstTwoLetters)", data: mandate.toDictionary()) { (response) in
-                if let response = response, let text = response.text {
-                    if response.basicStatus == .ok {
-                        completionHandler(text)
-                    } else {
-                        completionHandler(nil)
-                        self.log.error(message: text)
-                    }
-                } else {
-                    completionHandler(nil)
-                }
-            }
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(mandate)
+            try client.post(url: "/api/v2/users/mandate/sign", data: jsonData, callback: { (response) in
+                completionHandler(response)
+            })
         } catch {
-            log.error(message: "Something wrong requesting mandate url")
+            self.log.error(message: "Could not sign mandate")
         }
-        
     }
     
     func finishMandateSigning(completionHandler: @escaping (Bool) -> Void) {

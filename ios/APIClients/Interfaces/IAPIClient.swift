@@ -15,4 +15,6 @@ protocol IAPIClient {
     func put(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) throws -> Void
     
     func post(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) throws -> Void
+    
+    func post(url: String, data: Data, callback: @escaping (Response?) -> Void) throws -> Void
 }

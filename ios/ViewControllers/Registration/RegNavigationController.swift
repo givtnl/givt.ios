@@ -21,6 +21,9 @@ class RegNavigationController: UINavigationController {
     var isRegistration = true
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationBar.shadowImage = UIImage()
+        self.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!, NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)]
         self.setLogo()
         if startPoint == .permission {
             let vc = storyboard?.instantiateViewController(withIdentifier: "PermissionViewController") as! PermissionViewController
@@ -31,9 +34,15 @@ class RegNavigationController: UINavigationController {
             vc.hasBackButton = true
             self.setViewControllers([vc], animated: false)
         } else if startPoint == .mandate {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
-            vc.hasBackButton = true
-            self.setViewControllers([vc], animated: false)
+            if UserDefaults.standard.paymentType == .bacs {
+                self.removeLogo()
+                let vc = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsSettingUpViewController") as! BacsSettingUpViewController
+                self.setViewControllers([vc], animated: false)
+            } else {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
+                vc.hasBackButton = true
+                self.setViewControllers([vc], animated: false)
+            }
         }
     }
 
