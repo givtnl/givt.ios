@@ -742,3 +742,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "BacsHelpBody" = "Kan je iets niet vinden of heb je gewoon een vraag ? Aarzel dan niet om ons te contacteren op het nummer: *** of stuur ons een mailtje naar het adres: support@givtapp.net en we nemen spoedig contact met je op !";
 "BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount nummer: {1}";
 "CantFetchPersonalInformation" = "We kunnen op dit moment je gegevens niet opvragen van de server, probeer je het later even opnieuw?";
+"GivingContextCollectionBag" = "Collectemiddel";
+"GivingContextQRCode" = "QR-code";
+"GivingContextLocation" = "Locatie";
+"GivingContextCollectionBagList" = "Lijst";
