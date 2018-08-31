@@ -690,7 +690,7 @@
 "AndersGeven" = "Give differently";
 "KerkdienstGemist" = "Kerkdienst Gemist";
 "ChangePhone" = "Change mobile number";
-"Artists" = "Artists\n";
+"Artists" = "Artists";
 "ChangeAddress" = "Change address";
 
 /*Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
@@ -725,3 +725,7 @@
 "BacsHelpBody" = "Can't figure something out or you just have a question ? Give us a call at *** or hit us up on support@givtapp.net and we will be in touch!";
 "BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount number: {1}";
 "CantFetchPersonalInformation" = "We can't seem to fetch your personal information right now, could you try again later?";
+"GivingContextCollectionBag" = "Collection bag";
+"GivingContextQRCode" = "QR-code";
+"GivingContextLocation" = "Location";
+"GivingContextCollectionBagList" = "List";
