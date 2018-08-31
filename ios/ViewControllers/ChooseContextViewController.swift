@@ -14,6 +14,15 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var giveSubtitle: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
+    let lightAttributes = [
+        NSAttributedStringKey.font: UIFont(name: "Avenir-Light", size: 17)!,
+        NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        ] as [NSAttributedStringKey : Any]
+    let boldAttributes = [
+        NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 17)!,
+        NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        ] as [NSAttributedStringKey : Any]
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseContextTableViewCell") as! ChooseContextTableViewCell
         cell.name.text = contexts[indexPath.row].name
@@ -26,7 +35,26 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         if cell.contextType! == ContextType.events {
             cell.contentView.alpha = !GivtManager.shared.hasGivtLocations() ? 0.5 : 1
         }
+        switch cell.contextType! {
+        case .collectionDevice:
+            cell.name.attributedText = makeAttributedString(title: NSLocalizedString("GivingContextCollectionBag", comment: ""), subtitle: NSLocalizedString("SelectContextCollect", comment: ""))
+        case .qr:
+            cell.name.attributedText = makeAttributedString(title: NSLocalizedString("GivingContextQRCode", comment: ""), subtitle: NSLocalizedString("GiveContextQR", comment: ""))
+        case .events:
+            cell.name.attributedText = makeAttributedString(title: NSLocalizedString("GivingContextLocation", comment: ""), subtitle: NSLocalizedString("SelectLocationContextLong", comment: ""))
+        case .manually:
+            cell.name.attributedText = makeAttributedString(title: NSLocalizedString("GivingContextCollectionBagList", comment: ""), subtitle: NSLocalizedString("SelectContextList", comment: ""))
+        }
         return cell
+    }
+    
+    func makeAttributedString(title: String, subtitle: String) -> NSMutableAttributedString {
+        let mutableAttributedString = NSMutableAttributedString()
+        let boldAttributedString = NSAttributedString(string: title + "\n", attributes: boldAttributes)
+        let lightAttributedString = NSAttributedString(string: subtitle, attributes: lightAttributes)
+        mutableAttributedString.append(boldAttributedString)
+        mutableAttributedString.append(lightAttributedString)
+        return mutableAttributedString
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
