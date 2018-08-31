@@ -33,6 +33,7 @@ extension UserDefaults {
         case showCasesByUserID
         case orgBeaconListV2
         case tempUser
+        case amountPresets
     }
     
     enum Showcase: String {
@@ -42,6 +43,20 @@ extension UserDefaults {
         case giveSituation
         case multipleCollects
         case deleteMultipleCollects
+    }
+    
+    var amountPresets: [Decimal] {
+        get {
+            if let data = array(forKey: UserDefaultsKeys.amountPresets.rawValue) as? [Decimal] {
+                return data
+            } else {
+                return [2.50,7.50,12.50]
+            }
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.amountPresets.rawValue)
+            synchronize()
+        }
     }
     
     var orgBeaconListV2: BeaconList? {
