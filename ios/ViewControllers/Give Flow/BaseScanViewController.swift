@@ -13,6 +13,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
     var bestBeacon = BestBeacon()
     private var bluetoothAlert: UIAlertController?
+    private var isBacs = false
     
     func didUpdateBluetoothState(isBluetoothOn: Bool) {
         if isBluetoothOn {
@@ -155,6 +156,14 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                 let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, sortCode: userExtension.SortCode, accountNumber: userExtension.AccountNumber, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: userExtension.Country, postalCode: userExtension.PostalCode, street: userExtension.Address)
                 
                 let mandate = Mandate(signatory: signatory)
+                
+                if userExtension.AccountNumber != nil && userExtension.SortCode != nil {
+                    self.isBacs = true
+                    callback("")
+                    SVProgressHUD.dismiss()
+                    return
+                }
+                
                 LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
                     SVProgressHUD.dismiss()
                     if let r = response {

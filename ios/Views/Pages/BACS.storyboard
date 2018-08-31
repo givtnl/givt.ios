@@ -294,7 +294,7 @@ The company name which will appear on your bank statement against the Direct Deb
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7G-D9-CQn">
                                                 <rect key="frame" x="20" y="0.0" width="374" height="1311.6666666666667"/>
-                                                <mutableString key="text">- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+                                                <string key="text">- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
 - You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
 - You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
 - You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
@@ -304,7 +304,7 @@ The company name which will appear on your bank statement against the Direct Deb
 - You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
 - You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
 - You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
-- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.</mutableString>
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
