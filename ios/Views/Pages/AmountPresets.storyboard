@@ -160,6 +160,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bodyText" destination="in9-ML-YcX" id="Q5x-k1-EKO"/>
                         <outlet property="firstTextField" destination="eto-S3-xLh" id="2KK-jy-ahN"/>
                         <outlet property="resetValues" destination="1qh-AP-D7k" id="IhM-xL-kWq"/>
                         <outlet property="save" destination="dr8-y5-1MI" id="CGT-lg-n0d"/>

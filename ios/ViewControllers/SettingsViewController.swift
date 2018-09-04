@@ -120,7 +120,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, showBadge: !LoginManager.shared.isFullyRegistered, callback: { self.register() })
         }
         
-        let amountPresets = Setting(name: "VOORKEURSBEDRAGEN", image: #imageLiteral(resourceName: "amountpresets"), callback: { self.changeAmountPresets() }, showArrow: true)
+        let amountPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: #imageLiteral(resourceName: "amountpresets"), callback: { self.changeAmountPresets() }, showArrow: true)
         
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         

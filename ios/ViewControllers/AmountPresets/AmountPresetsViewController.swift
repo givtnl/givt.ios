@@ -10,6 +10,7 @@ import UIKit
 
 class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet var bodyText: UILabel!
     @IBOutlet var resetValues: CustomButton!
     @IBOutlet var theScrollView: UIScrollView!
     @IBOutlet var firstTextField: AmountPresetUITextField!
@@ -33,7 +34,11 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "VOORKEURSBEDRAGEN"
+        title = NSLocalizedString("AmountPresetsTitle", comment: "")
+        bodyText.text = NSLocalizedString("AmountPresetsBody", comment: "")
+        resetValues.setTitle(NSLocalizedString("AmountPresetsResetAll", comment: ""), for: UIControlState.normal)
+        save.setTitle(NSLocalizedString("Save", comment: ""), for: UIControlState.normal)
+        
         firstTextField.delegate = self
         secondTextField.delegate = self
         thirdTextField.delegate = self
@@ -78,9 +83,9 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
                 tf!.text = fmt.string(from: value as NSNumber)
                 let isBelowAmountLimit = value <= Decimal(amountLimit)
                 let isHigherThan50Cent = value >= 0.5
-                tf!.unfocus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? "Dit bedrag is hoger dan je geeflimiet" : "De minimale hoeveelheid bedraagt 50 cent")
+                tf!.unfocus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr50C", comment: ""))
             } else {
-                tf!.unfocus(isCorrect: false, note: "Gelieve een getal in te voeren aub")
+                tf!.unfocus(isCorrect: false, note: NSLocalizedString("AmountPresetsErrEmpty", comment: ""))
             }
         }
         save.isEnabled = firstTextField.isCorrect && secondTextField.isCorrect && thirdTextField.isCorrect
@@ -118,9 +123,9 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             if let value = getDecimalValue(text: tf.text!) {
                 let isBelowAmountLimit = value <= Decimal(amountLimit)
                 let isHigherThan50Cent = value >= 0.5
-                tf.focus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? "Dit bedrag is hoger dan je geeflimiet" : "De minimale hoeveelheid bedraagt 50 cent")
+                tf.focus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr50C", comment: ""))
             } else {
-                tf.focus(isCorrect: false, note: "Gelieve een getal in te voeren aub")
+                tf.focus(isCorrect: false, note: NSLocalizedString("AmountPresetsErrEmpty", comment: ""))
             }
         }
     }
@@ -131,9 +136,9 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
                 tf.text = fmt.string(from: value as NSNumber)
                 let isBelowAmountLimit = value <= Decimal(amountLimit)
                 let isHigherThan50Cent = value >= 0.5
-                tf.unfocus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? "Dit bedrag is hoger dan je geeflimiet" : "De minimale hoeveelheid bedraagt 50 cent")
+                tf.unfocus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr50C", comment: ""))
             } else {
-                tf.unfocus(isCorrect: false, note: "Gelieve een getal in te voeren aub")
+                tf.unfocus(isCorrect: false, note: NSLocalizedString("AmountPresetsErrEmpty", comment: ""))
             }
         }
     }
@@ -154,12 +159,12 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
                 if let value = getDecimalValue(text: text) {
                     let isBelowAmountLimit = value <= Decimal(amountLimit)
                     let isHigherThan50Cent = value >= 0.5
-                    tf.focus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? "Dit bedrag is hoger dan je geeflimiet" : "De minimale hoeveelheid bedraagt 50 cent")
+                    tf.focus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr50C", comment: ""))
                 } else {
-                    tf.focus(isCorrect: false, note: "Gelieve een getal in te voeren aub")
+                    tf.focus(isCorrect: false, note: NSLocalizedString("AmountPresetsErrEmpty", comment: ""))
                 }
             } else {
-                tf.focus(isCorrect: false, note: "Gelieve een getal in te voeren aub")
+                tf.focus(isCorrect: false, note: NSLocalizedString("AmountPresetsErrEmpty", comment: ""))
             }
             
         }
