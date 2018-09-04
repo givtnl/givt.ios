@@ -10,6 +10,7 @@ import UIKit
 
 class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet var resetValues: CustomButton!
     @IBOutlet var theScrollView: UIScrollView!
     @IBOutlet var firstTextField: AmountPresetUITextField!
     @IBOutlet var secondTextField: AmountPresetUITextField!
@@ -68,6 +69,10 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
     
+        checkAll()
+    }
+    
+    func checkAll() {
         [firstTextField, secondTextField, thirdTextField].forEach { (tf) in
             if let value = getDecimalValue(text: tf!.text!) {
                 tf!.text = fmt.string(from: value as NSNumber)
@@ -79,6 +84,12 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             }
         }
         save.isEnabled = firstTextField.isCorrect && secondTextField.isCorrect && thirdTextField.isCorrect
+    }
+    
+    @IBAction func resetValues(_ sender: Any) {
+        LogService.shared.info(message: "Resetting preset amounts")
+        UserDefaults.standard.amountPresets = [2.5, 7.5, 12.5]
+        self.backPressed(self)
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
