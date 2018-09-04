@@ -166,11 +166,11 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         guard let tx = notification.object as? SpecialUITextField else { return }
         switch tx {
         case address:
-            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 70)
+            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 70) && !tx.text!.containsEmoji
         case postalCode:
-            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 15)
+            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 15) && !tx.text!.containsEmoji
         case city:
-            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 35)
+            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 35) && !tx.text!.containsEmoji
         default:
             break
         }
