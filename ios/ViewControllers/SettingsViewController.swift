@@ -114,9 +114,11 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
         var userInfoSetting: Setting?
+        var notTempButNoMandateSoChangePersonalInfo: Setting?
         if LoginManager.shared.isFullyRegistered {
             userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, callback: { self.changePersonalInfo() })
         } else {
+            notTempButNoMandateSoChangePersonalInfo = Setting(name: NSLocalizedString("TitlePersonalInfo", comment: ""), image: UIImage(named: "pencil")!, callback: { self.changePersonalInfo() })
             userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, showBadge: !LoginManager.shared.isFullyRegistered, callback: { self.register() })
         }
         
@@ -142,8 +144,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             
             let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
             items[0].append(limit)
+            if notTempButNoMandateSoChangePersonalInfo != nil {
+                items[0].append(notTempButNoMandateSoChangePersonalInfo!)
+            }
             items[0].append(userInfoSetting!)
             items[0].append(amountPresets)
+            
             
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             
