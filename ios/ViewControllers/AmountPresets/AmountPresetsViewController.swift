@@ -186,8 +186,8 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        if let commaPosition = textField.text!.index(of: ","), string != "" {
-            if string == "," {
+        if let commaPosition = textField.text!.index(of: decimalNotation), string != "" {
+            if string == decimalNotation {
                 return false
             }
             var splitString = textField.text!.split(separator: Character(decimalNotation))
