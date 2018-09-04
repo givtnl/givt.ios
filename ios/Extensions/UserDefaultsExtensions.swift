@@ -47,14 +47,15 @@ extension UserDefaults {
     
     var amountPresets: [Decimal] {
         get {
-            if let data = array(forKey: UserDefaultsKeys.amountPresets.rawValue) as? [Decimal] {
-                return data
-            } else {
-                return [2.50,7.50,12.50]
+            if let data = object(forKey: UserDefaultsKeys.amountPresets.rawValue) as? NSData {
+                let decimals = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as! [Decimal]
+                return decimals
             }
+            return [2.50,7.50,12.50]
         }
         set(value) {
-            set(value, forKey: UserDefaultsKeys.amountPresets.rawValue)
+            let data = NSKeyedArchiver.archivedData(withRootObject: value)
+            set(data, forKey: UserDefaultsKeys.amountPresets.rawValue)
             synchronize()
         }
     }
