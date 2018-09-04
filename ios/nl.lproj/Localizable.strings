@@ -746,3 +746,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "GivingContextQRCode" = "QR-code";
 "GivingContextLocation" = "Locatie";
 "GivingContextCollectionBagList" = "Lijst";
+"AmountPresetsTitle" = "Voorkeursbedragen";
+"AmountPresetsBody" = "Stel hieronder je voorkeursbedragen in.";
+"AmountPresetsResetAll" = "Herstel waarden";
+"AmountPresetsErrGivingLimit" = "Het bedrag is hoger dan je geeflimiet";
+"AmountPresetsErr50C" = "Het bedrag moet minstens 50 cent zijn";
+"AmountPresetsErrEmpty" = "Vul een bedrag in";
