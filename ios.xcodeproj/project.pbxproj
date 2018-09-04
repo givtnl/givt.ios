@@ -92,6 +92,9 @@
 		D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */; };
 		D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */; };
 		D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */; };
+		D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */; };
+		D7AE8BA921393B3400CB3A33 /* AmountPresetsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BA821393B3400CB3A33 /* AmountPresetsNavigationController.swift */; };
+		D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BAA21393B7D00CB3A33 /* AmountPresetsViewController.swift */; };
 		D7AF42FF1FEA61610027EEC1 /* UpdatedTermsPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */; };
 		D7AF43011FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */; };
 		D7AF43031FEA8E680027EEC1 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */; };
@@ -261,6 +264,9 @@
 		D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TerminateAccount.storyboard; sourceTree = "<group>"; };
 		D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminateAccountViewController.swift; sourceTree = "<group>"; };
 		D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AmountPresets.storyboard; sourceTree = "<group>"; };
+		D7AE8BA821393B3400CB3A33 /* AmountPresetsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPresetsNavigationController.swift; sourceTree = "<group>"; };
+		D7AE8BAA21393B7D00CB3A33 /* AmountPresetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPresetsViewController.swift; sourceTree = "<group>"; };
 		D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdatedTermsPage.storyboard; sourceTree = "<group>"; };
 		D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedTermsPageViewController.swift; sourceTree = "<group>"; };
 		D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
@@ -429,6 +435,15 @@
 			path = TerminateAccount;
 			sourceTree = "<group>";
 		};
+		D7AE8BA721393B1A00CB3A33 /* AmountPresets */ = {
+			isa = PBXGroup;
+			children = (
+				D7AE8BA821393B3400CB3A33 /* AmountPresetsNavigationController.swift */,
+				D7AE8BAA21393B7D00CB3A33 /* AmountPresetsViewController.swift */,
+			);
+			path = AmountPresets;
+			sourceTree = "<group>";
+		};
 		D7B715521FD151CD00666262 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,6 +460,7 @@
 				D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */,
 				D7C8F3D2209A0B7300DBB397 /* Event.storyboard */,
 				D74C19E720F6270F00E116A0 /* ExternalSuggestion.storyboard */,
+				D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -633,6 +649,7 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
 				D7DD79A0209B358800047CA7 /* Event */,
 				D7F746D81FD943B8005354A3 /* Give Flow */,
 				D7F746D71FD94390005354A3 /* Login */,
@@ -828,6 +845,7 @@
 				D787BE79208DCA6B00E20873 /* celebration.gif in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
+				D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */,
 				D7B715501FD0529D00666262 /* Personal.storyboard in Resources */,
 				D74C19E820F6270F00E116A0 /* ExternalSuggestion.storyboard in Resources */,
 				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
@@ -994,6 +1012,7 @@
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D748F5FC2061425400B25BC2 /* HistoryTableViewCell.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
+				D7AE8BA921393B3400CB3A33 /* AmountPresetsNavigationController.swift in Sources */,
 				D74C19EC20F62B8A00E116A0 /* ExternalSuggestionView.swift in Sources */,
 				D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */,
 				D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExtensions.swift in Sources */,
@@ -1036,6 +1055,7 @@
 				D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */,
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
+				D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

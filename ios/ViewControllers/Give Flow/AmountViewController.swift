@@ -85,9 +85,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             btnComma.setTitle(decimalNotation, for: .normal)
             let fmt = NumberFormatter()
             fmt.minimumFractionDigits = 2
-            firstQuickBtn.setTitle(fmt.string(from: 2.50), for: .normal)
-            secondQuickBtn.setTitle(fmt.string(from: 7.50), for: .normal)
-            thirdQuickBtn.setTitle(fmt.string(from: 12.50), for: .normal)
+            firstQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber), for: .normal)
+            secondQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber), for: .normal)
+            thirdQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber), for: .normal)
         }
     }
     @IBOutlet var firstQuickBtn: RoundedButton!
@@ -241,6 +241,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     @IBAction func addShortcutValue(sender: UIButton!){
         currentAmountLabel.text = sender.currentTitle
+        if sender.currentTitle!.contains(",") {
+            let decimal = Decimal(string: sender.currentTitle!.replacingOccurrences(of: ",", with: "."))
+            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
+                self.log.info(message: "User used a custom amount preset")
+            }
+        } else if let decimal = Decimal(string: sender.currentTitle!) {
+            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
+                self.log.info(message: "User used a custom amount preset")
+            }
+        }
         checkAmounts()
         pressedShortcutKey = true
     }

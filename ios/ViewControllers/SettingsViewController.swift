@@ -120,6 +120,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, showBadge: !LoginManager.shared.isFullyRegistered, callback: { self.register() })
         }
         
+        let amountPresets = Setting(name: "VOORKEURSBEDRAGEN", image: #imageLiteral(resourceName: "amountpresets"), callback: { self.changeAmountPresets() }, showArrow: true)
+        
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
         if !tempUser {
@@ -141,6 +143,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
             items[0].append(limit)
             items[0].append(userInfoSetting!)
+            items[0].append(amountPresets)
             
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             
@@ -150,7 +153,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         } else {
             items =
                 [
-                    [userInfoSetting!],
+                    [userInfoSetting!, amountPresets],
                     [changeAccount, screwAccount],
                     [aboutGivt, shareGivt],
             ]
@@ -163,6 +166,13 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     private var blinkTimer: Timer = Timer()
     private func toggleTorch() {
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
+    }
+    
+    private func changeAmountPresets() {
+        let vc = UIStoryboard(name: "AmountPresets", bundle: nil).instantiateInitialViewController()
+        vc!.transitioningDelegate = self.slideFromRightAnimation
+        DispatchQueue.main.async {
+            self.present(vc!, animated: true, completion:  nil)}
     }
     
     private func changePersonalInfo() {
