@@ -85,6 +85,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             btnComma.setTitle(decimalNotation, for: .normal)
             let fmt = NumberFormatter()
             fmt.minimumFractionDigits = 2
+            fmt.minimumIntegerDigits = 1
             firstQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber), for: .normal)
             secondQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber), for: .normal)
             thirdQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber), for: .normal)
