@@ -76,6 +76,11 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
     
         checkAll()
+        
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        // prevents the scroll view from swallowing up the touch event of child buttons
+        tapGesture.cancelsTouchesInView = true
+        theScrollView.addGestureRecognizer(tapGesture)
     }
     
     func checkAll() {
