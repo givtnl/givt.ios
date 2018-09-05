@@ -30,6 +30,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
              self.getDecimalValue(text: secondTextField.text!)!,
              self.getDecimalValue(text: thirdTextField.text!)!]
         LogService.shared.info(message: "Saving custom preset amounts")
+        self.navigationController?.hideLeftView(self)
         self.backPressed(self)
     }
     override func viewDidLoad() {
