@@ -190,6 +190,9 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             if string == decimalNotation {
                 return false
             }
+            if range.location <= commaPosition.encodedOffset {
+                return true
+            }
             var splitString = textField.text!.split(separator: Character(decimalNotation))
             if splitString.count == 2 {
                 if splitString[1].count == 2 {
