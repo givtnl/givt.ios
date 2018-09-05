@@ -100,6 +100,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     @IBAction func resetValues(_ sender: Any) {
         LogService.shared.info(message: "Resetting preset amounts")
         UserDefaults.standard.amountPresets = [2.5, 7.5, 12.5]
+        self.navigationController?.hideLeftView(self)
         self.backPressed(self)
     }
     
