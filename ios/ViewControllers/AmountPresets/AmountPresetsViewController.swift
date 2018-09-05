@@ -81,6 +81,10 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
         // prevents the scroll view from swallowing up the touch event of child buttons
         tapGesture.cancelsTouchesInView = true
         theScrollView.addGestureRecognizer(tapGesture)
+        
+        createToolbar(firstTextField)
+        createToolbar(secondTextField)
+        createToolbar(thirdTextField)
     }
     
     func checkAll() {
@@ -95,6 +99,35 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             }
         }
         save.isEnabled = firstTextField.isCorrect && secondTextField.isCorrect && thirdTextField.isCorrect
+    }
+    
+    func createToolbar(_ textField: UITextField) {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let barButton: UIBarButtonItem?
+        if textField.tag == 3 {
+            barButton = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.done, target: self, action: #selector(nextField(_:)))
+        } else {
+            barButton = UIBarButtonItem(title: NSLocalizedString("Next", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(nextField(_:)))
+        }
+        toolbar.setItems([barButton!], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        
+        textField.inputAccessoryView = toolbar
+    }
+    
+    @objc func nextField(_ barButtonItem: UIBarButtonItem) {
+        if let tf = currentTextField {
+            let nextField = [firstTextField, secondTextField, thirdTextField].first { (amountTextField) -> Bool in
+                return tf.tag + 1 == amountTextField?.tag
+            }
+            if nextField != nil {
+                nextField!?.becomeFirstResponder()
+            } else {
+                self.endEditing()
+                self.save(self)
+            }
+        }
     }
     
     @IBAction func resetValues(_ sender: Any) {
@@ -124,9 +157,10 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             theScrollView.scrollIndicatorInsets = .zero
         }
     }
-    
+    var currentTextField: AmountPresetUITextField?
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if let tf = textField as? AmountPresetUITextField {
+            currentTextField = tf
             if let value = getDecimalValue(text: tf.text!) {
                 let isBelowAmountLimit = value <= Decimal(amountLimit)
                 let isHigherThan50Cent = value >= 0.5
@@ -139,6 +173,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         if let tf = textField as? AmountPresetUITextField {
+            currentTextField = nil
             if let value = getDecimalValue(text: tf.text!) {
                 tf.text = fmt.string(from: value as NSNumber)
                 let isBelowAmountLimit = value <= Decimal(amountLimit)
