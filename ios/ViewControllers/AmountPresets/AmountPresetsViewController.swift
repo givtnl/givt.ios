@@ -104,29 +104,16 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     func createToolbar(_ textField: UITextField) {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        let barButton: UIBarButtonItem?
-        if textField.tag == 3 {
-            barButton = UIBarButtonItem(title: NSLocalizedString("Save", comment: ""), style: UIBarButtonItemStyle.done, target: self, action: #selector(nextField(_:)))
-        } else {
-            barButton = UIBarButtonItem(title: NSLocalizedString("Next", comment: ""), style: UIBarButtonItemStyle.plain, target: self, action: #selector(nextField(_:)))
-        }
-        toolbar.setItems([barButton!], animated: false)
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        let done = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(nextField(_:)))
+        toolbar.setItems([spacer, done], animated: false)
         toolbar.isUserInteractionEnabled = true
-        
         textField.inputAccessoryView = toolbar
     }
     
     @objc func nextField(_ barButtonItem: UIBarButtonItem) {
         if let tf = currentTextField {
-            let nextField = [firstTextField, secondTextField, thirdTextField].first { (amountTextField) -> Bool in
-                return tf.tag + 1 == amountTextField?.tag
-            }
-            if nextField != nil {
-                nextField!?.becomeFirstResponder()
-            } else {
-                self.endEditing()
-                self.save(self)
-            }
+            tf.resignFirstResponder()
         }
     }
     
@@ -159,6 +146,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     }
     var currentTextField: AmountPresetUITextField?
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
         if let tf = textField as? AmountPresetUITextField {
             currentTextField = tf
             if let value = getDecimalValue(text: tf.text!) {
