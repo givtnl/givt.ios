@@ -48,15 +48,26 @@ extension UserDefaults {
     var amountPresets: [Decimal] {
         get {
             if let data = object(forKey: UserDefaultsKeys.amountPresets.rawValue) as? NSData {
-                let decimals = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as! [Decimal]
-                return decimals
+                if let amountPresetByUserId = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [String: [Decimal]], let decimals = amountPresetByUserId[userExt.guid]  {
+                    return decimals
+                }
             }
             return [2.50,7.50,12.50]
         }
         set(value) {
-            let data = NSKeyedArchiver.archivedData(withRootObject: value)
-            set(data, forKey: UserDefaultsKeys.amountPresets.rawValue)
-            synchronize()
+            var amountPresetByUserId: [String: [Decimal]] = [:]
+            if let data = object(forKey: UserDefaultsKeys.amountPresets.rawValue) as? NSData {
+                if let unarchivedDictionary = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [String: [Decimal]]  {
+                    amountPresetByUserId = unarchivedDictionary
+                }
+            }
+            
+            if let uext = userExt {
+                amountPresetByUserId[uext.guid] = value
+                let data = NSKeyedArchiver.archivedData(withRootObject: amountPresetByUserId)
+                set(data, forKey: UserDefaultsKeys.amountPresets.rawValue)
+                synchronize()
+            }
         }
     }
     
