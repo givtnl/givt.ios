@@ -1177,7 +1177,6 @@ Veel geefplezier!</string>
                         <outlet property="backButton" destination="t7R-5Y-Fz0" id="k9A-Fk-sqM"/>
                         <outlet property="bottomSpaceConstraint" destination="R25-eZ-sZn" id="OyK-af-5W2"/>
                         <outlet property="btnSave" destination="r31-cv-Adj" id="Y5B-HJ-LID"/>
-                        <outlet property="currencyLabel" destination="qFh-3Q-aIR" id="UYa-0d-F3P"/>
                         <outlet property="subTitleText" destination="zWD-es-rb4" id="dzP-I0-99F"/>
                         <outlet property="theScrollView" destination="fip-oR-siP" id="bsh-1m-ZeE"/>
                     </connections>

@@ -104,20 +104,29 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func loadSettings(){
-        items = []        
+        items = []
+        let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
+        
+        let tempUser = UserDefaults.standard.isTempUser
+        
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
-        
-        let finishRegistration = Setting(name: NSLocalizedString("FinalizeRegistration", comment: ""), image: #imageLiteral(resourceName: "pencil"), showBadge: true, callback: { self.register() })
-        let changePersonalInfo = Setting(name: NSLocalizedString("TitlePersonalInfo", comment: ""), image: #imageLiteral(resourceName: "pencil"), showBadge: false, callback: { self.changePersonalInfo() })
+        var userInfoSetting: Setting?
+        var notTempButNoMandateSoChangePersonalInfo: Setting?
+        if LoginManager.shared.isFullyRegistered {
+            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, callback: { self.changePersonalInfo() })
+        } else {
+            notTempButNoMandateSoChangePersonalInfo = Setting(name: NSLocalizedString("TitlePersonalInfo", comment: ""), image: UIImage(named: "pencil")!, callback: { self.changePersonalInfo() })
+            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, showBadge: !LoginManager.shared.isFullyRegistered, callback: { self.register() })
+        }
         
         let amountPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: #imageLiteral(resourceName: "amountpresets"), callback: { self.changeAmountPresets() }, showArrow: true)
         
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
-        if !UserDefaults.standard.isTempUser {
+        if !tempUser {
             items.append([])
             items.append([])
             items.append([])
@@ -132,14 +141,13 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 items[0].append(givtsTaxOverviewAvailable!)
             }
             
-            if(NSLocale.current.currencySymbol == "€"){
-                items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() }))
-
-            } else if(NSLocale.current.currencySymbol == "£"){
-                items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "pound")!, callback: { self.openGiveLimit() }))
-            }
             
-            items[0].append(changePersonalInfo)
+            let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
+            items[0].append(limit)
+            if notTempButNoMandateSoChangePersonalInfo != nil {
+                items[0].append(notTempButNoMandateSoChangePersonalInfo!)
+            }
+            items[0].append(userInfoSetting!)
             items[0].append(amountPresets)
             
             
@@ -148,15 +156,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items[0].append(accessCode)
             items[1] = [changeAccount, screwAccount]
             items[2] = [aboutGivt, shareGivt]
-            
-            if !LoginManager.shared.isFullyRegistered {
-                items.insert([finishRegistration], at: 0)
-            }
         } else {
             items =
                 [
-                    [finishRegistration],
-                    [amountPresets],
+                    [userInfoSetting!, amountPresets],
                     [changeAccount, screwAccount],
                     [aboutGivt, shareGivt],
             ]

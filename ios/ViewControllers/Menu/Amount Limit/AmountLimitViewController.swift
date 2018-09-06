@@ -12,7 +12,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     private let _appServices = AppServices.shared
     private let _navigationManager = NavigationManager.shared
     private let _loginManager = LoginManager.shared
-    @IBOutlet var currencyLabel: UILabel!
+    
     @IBOutlet var theScrollView: UIScrollView!
     @IBOutlet var subTitleText: UILabel!
     @IBOutlet var backButton: UIBarButtonItem!
@@ -71,9 +71,6 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currencyLabel.text = NSLocale.current.currencySymbol;
-
-        
         subTitleText.text = NSLocalizedString("AmountLimit", comment: "")
         
         if hasBackButton {
