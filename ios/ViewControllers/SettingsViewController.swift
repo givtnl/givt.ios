@@ -134,10 +134,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             
             if(NSLocale.current.currencySymbol == "€"){
                 items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() }))
+
             } else if(NSLocale.current.currencySymbol == "£"){
                 items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "pound")!, callback: { self.openGiveLimit() }))
-            } else {
-                items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() }))
             }
             
             items[0].append(changePersonalInfo)
