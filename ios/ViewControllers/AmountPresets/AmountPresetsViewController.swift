@@ -133,8 +133,14 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
-            theScrollView.contentInset.bottom = contentInsets.bottom + 20
-            theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom + 20
+            if #available(iOS 11.0, *) {
+                theScrollView.contentInset.bottom = contentInsets.bottom + 20 - view.safeAreaInsets.bottom
+                theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom + 20  - view.safeAreaInsets.bottom
+            } else {
+                theScrollView.contentInset.bottom = contentInsets.bottom + 20
+                theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom + 20
+            }
+            
             
         }
     }
