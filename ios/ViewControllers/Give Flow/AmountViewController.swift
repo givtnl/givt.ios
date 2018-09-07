@@ -294,7 +294,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
 
     fileprivate func showAmountTooLow() {
-        let alert = UIAlertController(title: "", message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("GivtMinimumAmountEuro", comment: "").replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        let minimumAmount = NSLocale.current.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
+        let alert = UIAlertController(title: "", message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
