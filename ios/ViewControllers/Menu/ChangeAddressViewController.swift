@@ -128,10 +128,14 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         var userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        bottomScrollViewConstraint.constant = keyboardFrame.size.height
+        if #available(iOS 11.0, *) {
+            bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom
+        } else {
+            bottomScrollViewConstraint.constant = keyboardFrame.size.height
+        }
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
