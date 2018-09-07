@@ -752,4 +752,4 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountPresetsErrGivingLimit" = "Het bedrag is hoger dan je geeflimiet";
 "AmountPresetsErr50C" = "Het bedrag moet minstens 50 cent zijn";
 "AmountPresetsErrEmpty" = "Vul een bedrag in";
-"GivtMinimumAmountPond" = "";
+"GivtMinimumAmountPond" = "0.50 pond";
