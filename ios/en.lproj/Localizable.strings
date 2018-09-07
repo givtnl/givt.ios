@@ -732,6 +732,6 @@
 "AmountPresetsTitle" = "Amount presets";
 "AmountPresetsBody" = "Set your amount presets below.";
 "AmountPresetsResetAll" = "Reset values";
-"AmountPresetsErrGivingLimit" = "The amount is higher than your giving limit";
+"AmountPresetsErrGivingLimit" = "The amount is higher than your maximum amount";
 "AmountPresetsErr50C" = "The amount has to be at least 50 cents";
 "AmountPresetsErrEmpty" = "Enter an amount";
