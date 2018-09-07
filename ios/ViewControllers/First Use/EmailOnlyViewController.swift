@@ -185,6 +185,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             } else if status == "false" { //email is completely new
                 self.registerTempUser()
             } else if status == "temp" { //email is in db but not succesfully registered
+                self.hideLoader()
                 NavigationHelper.showRegistration(context: self, email: self.email.text!)
             } else {
                 //strange response from server. internet connection err/ssl pin err
