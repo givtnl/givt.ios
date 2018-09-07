@@ -37,7 +37,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     lazy var fmt: NumberFormatter = {
         let nf = NumberFormatter()
         nf.locale = NSLocale.current
-        nf.currencySymbol = NSLocale.current.currencySymbol;
+        nf.currencySymbol = UserDefaults.standard.currencySymbol;
         nf.minimumFractionDigits = 2
         nf.maximumFractionDigits = 2
         nf.positiveFormat = "¤ #,##0.00"

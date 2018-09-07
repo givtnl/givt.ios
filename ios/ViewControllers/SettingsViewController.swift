@@ -141,9 +141,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 items[0].append(givtsTaxOverviewAvailable!)
             }
             
-            if(NSLocale.current.currencySymbol == "€"){
+            if(UserDefaults.standard.currencySymbol == "€"){
                 items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() }))
-            } else if(NSLocale.current.currencySymbol == "£"){
+            } else if(UserDefaults.standard.currencySymbol == "£"){
                 items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "pound")!, callback: { self.openGiveLimit() }))
             } else {
                 items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() }))

@@ -71,7 +71,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currencyLabel.text = NSLocale.current.currencySymbol;
+        currencyLabel.text = UserDefaults.standard.currencySymbol;
 
         
         subTitleText.text = NSLocalizedString("AmountLimit", comment: "")

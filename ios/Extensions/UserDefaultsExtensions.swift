@@ -34,6 +34,7 @@ extension UserDefaults {
         case orgBeaconListV2
         case tempUser
         case amountPresets
+        case accountType
     }
     
     enum Showcase: String {
@@ -43,6 +44,29 @@ extension UserDefaults {
         case giveSituation
         case multipleCollects
         case deleteMultipleCollects
+    }
+    
+    var currencySymbol: String {
+        get {
+            if let at = accountType {
+                if at == "SEPA" {
+                    return "€"
+                } else if at == "BACS" {
+                    return "£"
+                }
+            }
+            return NSLocale.current.currencySymbol ?? "€"
+        }
+    }
+    
+    var accountType: String? { //BACS of SEPA
+        get {
+            return string(forKey: UserDefaultsKeys.accountType.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.accountType.rawValue)
+            synchronize()
+        }
     }
     
     var amountPresets: [Decimal] {
