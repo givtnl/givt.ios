@@ -105,7 +105,11 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
-            animateKeyboard(withConstraintValue: keyboardSize.size.height + 20)
+            if #available(iOS 11.0, *) {
+                animateKeyboard(withConstraintValue: keyboardSize.size.height + 20 - view.safeAreaInsets.bottom)
+            } else {
+                animateKeyboard(withConstraintValue: keyboardSize.size.height + 20)
+            }
         }
     }
     
