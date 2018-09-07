@@ -598,5 +598,6 @@ class LoginManager {
         UserDefaults.standard.hasGivtsInPreviousYear = false
         UserDefaults.standard.lastGivtToOrganisationNamespace = nil
         UserDefaults.standard.isTempUser = false
+        UserDefaults.standard.accountType = nil
     }
 }
