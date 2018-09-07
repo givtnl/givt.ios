@@ -119,9 +119,10 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func resetValues(_ sender: Any) {
         LogService.shared.info(message: "Resetting preset amounts")
-        UserDefaults.standard.amountPresets = [2.5, 7.5, 12.5]
-        self.navigationController?.hideLeftView(self)
-        self.backPressed(self)
+        firstTextField.text = fmt.string(from: 2.5 as NSNumber)
+        secondTextField.text = fmt.string(from: 7.5 as NSNumber)
+        thirdTextField.text = fmt.string(from: 12.5 as NSNumber)
+        checkAll()
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {
