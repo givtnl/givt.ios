@@ -753,6 +753,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountPresetsErr50C" = "Het bedrag moet minstens 50 cent zijn";
 "AmountPresetsErrEmpty" = "Vul een bedrag in";
 "GivtMinimumAmountPond" = "0.50 pond";
-"AlertBACSMessage" = "Doordat je {0} als landkeuze hebt aangegeven, gaan we er van uit dat je het liefst wil geven d.m.v. een SEPA-machtiging, daar hebben wij je IBAN voor nodig. Wil je toch liever BACS gebruiken, dan hebben we je Sort Code en Account Number nodig.";
-"AlertSEPAMessage" = "Doordat je {0} als landkeuze hebt aangegeven, gaan we er van uit dat je het liefst wil geven d.m.v. BACS Direct Debit, daar hebben wij je Sort Code en Account Number voor nodig. Wil je toch liever SEPA gebruiken, dan hebben we je IBAN nodig.";
+"AlertBACSMessage" = "Doordat je {0} als landkeuze hebt aangegeven, gaan we ervan uit dat je het liefst wil geven d.m.v. een SEPA-machtiging, daar hebben wij je IBAN voor nodig. Wil je toch liever BACS gebruiken, dan hebben we je Sort Code en Account Number nodig.";
+"AlertSEPAMessage" = "Doordat je {0} als landkeuze hebt aangegeven, gaan we ervan uit dat je het liefst wil geven d.m.v. BACS Direct Debit, daar hebben wij je Sort Code en Account Number voor nodig. Wil je toch liever SEPA gebruiken, dan hebben we je IBAN nodig.";
 "Important" = "Belangrijk";
