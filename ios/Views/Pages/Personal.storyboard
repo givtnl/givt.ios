@@ -539,8 +539,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="QY4-AD-hWH" firstAttribute="trailing" secondItem="1N2-7y-e5Y" secondAttribute="trailing" id="6DH-t4-Bba"/>
-                            <constraint firstItem="1N2-7y-e5Y" firstAttribute="bottom" secondItem="QY4-AD-hWH" secondAttribute="bottom" id="CHu-mT-7F0"/>
                             <constraint firstItem="QY4-AD-hWH" firstAttribute="top" secondItem="1N2-7y-e5Y" secondAttribute="top" id="Qsy-5a-hvF"/>
+                            <constraint firstItem="QY4-AD-hWH" firstAttribute="bottom" secondItem="1N2-7y-e5Y" secondAttribute="bottom" id="eic-gJ-M1j"/>
                             <constraint firstItem="QY4-AD-hWH" firstAttribute="leading" secondItem="1N2-7y-e5Y" secondAttribute="leading" id="h38-GA-pFt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1N2-7y-e5Y"/>
@@ -590,6 +590,6 @@
     <resources>
         <image name="backbtn" width="15" height="24"/>
         <image name="dropdown.png" width="16" height="16"/>
-        <image name="house" width="24" height="20"/>
+        <image name="house" width="20" height="19"/>
     </resources>
 </document>

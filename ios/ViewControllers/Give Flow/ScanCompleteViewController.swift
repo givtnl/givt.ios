@@ -61,7 +61,7 @@ class ScanCompleteViewController: UIViewController {
             amountVC.reset()
         }
         
-        if let appScheme = GivtService.shared.externalIntegration?.appScheme {
+        if let appScheme = GivtManager.shared.externalIntegration?.appScheme {
             let url = URL(string: appScheme)!
             if UIApplication.shared.canOpenURL(url) {
                 if #available(iOS 10.0, *) {
@@ -80,7 +80,7 @@ class ScanCompleteViewController: UIViewController {
         } else {
             self.navigationController?.popToRootViewController(animated: true)
         }
-        GivtService.shared.externalIntegration = nil
+        GivtManager.shared.externalIntegration = nil
     }
     /*
     // MARK: - Navigation

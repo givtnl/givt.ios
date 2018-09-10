@@ -12,7 +12,7 @@ import AudioToolbox
 
 class EventViewController: BaseScanViewController {
     @IBOutlet var giveDifferently: CustomButton!
-    private let _givtService = GivtService.shared
+    private let _givtService = GivtManager.shared
     private var isSuggestionShowing = false
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var imageV: UIImageView!
@@ -47,7 +47,6 @@ class EventViewController: BaseScanViewController {
             self._givtService.stopLookingForGivtLocations()
         }
         DispatchQueue.main.async {
-            AudioServicesPlayAlertSound(1519)
             self.present(vc, animated: true, completion: nil)
         }
     }

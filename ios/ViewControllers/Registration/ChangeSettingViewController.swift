@@ -17,8 +17,11 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var fieldToEdit: UILabel!
     var saveAction: (String) -> Void = {_ in }
     var validateFunction: (String) -> Bool = {_ in return false}
+    
     var titleOfInput: String!
     var inputOfInput: String!
+    var keyboardTypeOfInput: UIKeyboardType!
+    
     var img: UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +34,26 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         fieldToEdit.text = titleOfInput
         imgView.image = img
         inputFieldToEdit.delegate = self
+        if let keyboardTypeOfInput = keyboardTypeOfInput {
+            inputFieldToEdit.keyboardType = keyboardTypeOfInput
+        }
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
         if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
             inputFieldToEdit.delegate = self
-            inputFieldToEdit.keyboardType = .numberPad
+            inputFieldToEdit.keyboardType = .phonePad
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
+            let allowedPhoneCharacters = "0123456789+"
+            let cs = NSCharacterSet(charactersIn: allowedPhoneCharacters).inverted
+            let filtered = string.components(separatedBy: cs).joined(separator: "")
+            return string == filtered
+        } else {
+            return true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +105,11 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
-            animateKeyboard(withConstraintValue: keyboardSize.size.height + 20)
+            if #available(iOS 11.0, *) {
+                animateKeyboard(withConstraintValue: keyboardSize.size.height + 20 - view.safeAreaInsets.bottom)
+            } else {
+                animateKeyboard(withConstraintValue: keyboardSize.size.height + 20)
+            }
         }
     }
     

@@ -13,7 +13,7 @@ import SwiftClient
 import MaterialShowcase
 
 class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate, MaterialShowcaseDelegate {
-    private var givtService = GivtService.shared
+    private var givtService = GivtManager.shared
     private var logService = LogService.shared
     
     var models: [HistoryTransaction] = []
@@ -53,10 +53,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         return formatter
     }()
     
-    func showCaseWillDismiss(showcase: MaterialShowcase) {
-        print("Showcase \(showcase.primaryText) will dismiss.")
-    }
-    func showCaseDidDismiss(showcase: MaterialShowcase) {
+    func showCaseDidDismiss(showcase: MaterialShowcase, didTapTarget: Bool) {
         if showcase == cancelFeature {
             cancelFeature = nil
             showTaxFeature()
@@ -531,7 +528,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         
         self.cancelFeature = MaterialShowcase()
         self.cancelFeature!.backgroundPromptColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        self.cancelFeature?.delegate = self
+        self.cancelFeature!.delegate = self
         
         self.cancelFeature!.primaryText = NSLocalizedString("CancelFeatureTitle", comment: "")
         self.cancelFeature!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
@@ -558,13 +555,13 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         
         self.taxOverviewFeature = MaterialShowcase()
         self.taxOverviewFeature!.backgroundPromptColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        self.taxOverviewFeature?.tintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        self.taxOverviewFeature?.delegate = self
+        self.taxOverviewFeature!.tintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        self.taxOverviewFeature!.delegate = self
         
         self.taxOverviewFeature!.primaryText = NSLocalizedString("CheckHereForYearOverview", comment: "")
         self.taxOverviewFeature!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
         
-        let gesture = UISwipeGestureRecognizer(target: self, action:  #selector(self.removeShowcase))
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.removeShowcase))
         self.taxOverviewFeature!.addGestureRecognizer(gesture)
         
         DispatchQueue.main.async {

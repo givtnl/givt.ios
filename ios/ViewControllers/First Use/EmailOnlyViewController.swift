@@ -18,7 +18,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     let focus : [NSAttributedStringKey: Any] = [
         NSAttributedStringKey.font : UIFont(name: "Avenir-Medium", size: 18)!,
         NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),
-        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleNone.rawValue]
+        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue]
     
     private var _navigationManager = NavigationManager.shared
     private var _appServices = AppServices.shared
@@ -57,7 +57,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         self.nextBtn.isEnabled = false
         
         #if DEBUG
-            email.text = String.random() + "@givtapp.com"
+            email.text = String.random() + "@givtapp.be"
             checkAll()
         #endif
         
@@ -185,7 +185,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             } else if status == "false" { //email is completely new
                 self.registerTempUser()
             } else if status == "temp" { //email is in db but not succesfully registered
-                self.openRegistration()
+                self.hideLoader()
+                NavigationHelper.showRegistration(context: self, email: self.email.text!)
             } else {
                 //strange response from server. internet connection err/ssl pin err
                 self.hideLoader()
@@ -215,18 +216,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
                 self._navigationManager.loadMainPage()
             }
         }
-    }
-    
-    func openRegistration() {
-        DispatchQueue.main.async {
-            self.hideLoader()
-            let userExt = UserDefaults.standard.userExt
-            userExt?.email = self.email.text!
-            UserDefaults.standard.userExt = userExt
-            let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-            self.present(register, animated: true, completion: nil)
-        }
-        
     }
     
     func registerTempUser() {

@@ -135,7 +135,11 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber {
-            self.updateKeyboardConstraint(height: keyboardSize.height, duration: TimeInterval(truncating: duration))
+            if #available(iOS 11.0, *) {
+                self.updateKeyboardConstraint(height: keyboardSize.height - view.safeAreaInsets.bottom, duration: TimeInterval(truncating: duration))
+            } else {
+                self.updateKeyboardConstraint(height: keyboardSize.height, duration: TimeInterval(truncating: duration))
+            }
         }
     }
     

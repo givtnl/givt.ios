@@ -14,6 +14,15 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet var giveSubtitle: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
+    let lightAttributes = [
+        NSAttributedStringKey.font: UIFont(name: "Avenir-Light", size: 17)!,
+        NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        ] as [NSAttributedStringKey : Any]
+    let boldAttributes = [
+        NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 17)!,
+        NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        ] as [NSAttributedStringKey : Any]
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseContextTableViewCell") as! ChooseContextTableViewCell
         cell.name.text = contexts[indexPath.row].name
@@ -23,7 +32,29 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         cell.contextType = contexts[indexPath.row].type
+        if cell.contextType! == ContextType.events {
+            cell.contentView.alpha = !GivtManager.shared.hasGivtLocations() ? 0.5 : 1
+        }
+        switch cell.contextType! {
+        case .collectionDevice:
+            cell.name.attributedText = makeAttributedString(title: NSLocalizedString("GivingContextCollectionBag", comment: ""), subtitle: NSLocalizedString("SelectContextCollect", comment: ""))
+        case .qr:
+            cell.name.attributedText = makeAttributedString(title: NSLocalizedString("GivingContextQRCode", comment: ""), subtitle: NSLocalizedString("GiveContextQR", comment: ""))
+        case .events:
+            cell.name.attributedText = makeAttributedString(title: NSLocalizedString("GivingContextLocation", comment: ""), subtitle: NSLocalizedString("SelectLocationContextLong", comment: ""))
+        case .manually:
+            cell.name.attributedText = makeAttributedString(title: NSLocalizedString("GivingContextCollectionBagList", comment: ""), subtitle: NSLocalizedString("SelectContextList", comment: ""))
+        }
         return cell
+    }
+    
+    func makeAttributedString(title: String, subtitle: String) -> NSMutableAttributedString {
+        let mutableAttributedString = NSMutableAttributedString()
+        let boldAttributedString = NSAttributedString(string: title + "\n", attributes: boldAttributes)
+        let lightAttributedString = NSAttributedString(string: subtitle, attributes: lightAttributes)
+        mutableAttributedString.append(boldAttributedString)
+        mutableAttributedString.append(lightAttributedString)
+        return mutableAttributedString
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -35,7 +66,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
         DispatchQueue.main.async {
             switch selectedContext.type {
             case .collectionDevice:
-                if GivtService.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
+                if GivtManager.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
                     let vc = sb.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
                     navigationController.show(vc, sender: nil)
                 } else {
@@ -48,9 +79,16 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
                 let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
                 navigationController.show(vc, sender: nil)
             case .events:
-                let story = UIStoryboard(name: "Event", bundle: nil)
-                let vc = story.instantiateInitialViewController() as! EventViewController
-                self.navigationController?.show(vc, sender: nil)
+                if !GivtManager.shared.hasGivtLocations() {
+                    let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.navigationController?.present(alert, animated: true, completion: nil)
+                } else {
+                    let story = UIStoryboard(name: "Event", bundle: nil)
+                    let vc = story.instantiateInitialViewController() as! EventViewController
+                    self.navigationController?.show(vc, sender: nil)
+                }
+                
             }
         }
     }
@@ -81,13 +119,13 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     lazy var contexts: [Context] = {
-        var ctxs = [Context]()
-        ctxs.append(Context(name: NSLocalizedString("SelectContextCollect", comment: ""),  type: ContextType.collectionDevice, image: #imageLiteral(resourceName: "collectebus")))
-        ctxs.append(Context(name: NSLocalizedString("GiveContextQR", comment: ""), type: ContextType.qr, image: #imageLiteral(resourceName: "qrscan")))
-        ctxs.append(Context(name: NSLocalizedString("SelectLocationContext", comment: ""), type: ContextType.events, image: #imageLiteral(resourceName: "giveatlocation")))
-        ctxs.append(Context(name: NSLocalizedString("SelectContextList", comment: ""), type: ContextType.manually, image: #imageLiteral(resourceName: "selectlist")))
-        return ctxs
+        let collectionDevice = Context(name: NSLocalizedString("SelectContextCollect", comment: ""),  type: ContextType.collectionDevice, image: #imageLiteral(resourceName: "collectebus"))
+        let qr = Context(name: NSLocalizedString("GiveContextQR", comment: ""), type: ContextType.qr, image: #imageLiteral(resourceName: "qrscan"))
+        let location = Context(name: NSLocalizedString("SelectLocationContextLong", comment: ""), type: ContextType.events, image: #imageLiteral(resourceName: "giveatlocation"))
+        let list = Context(name: NSLocalizedString("SelectContextList", comment: ""), type: ContextType.manually, image: #imageLiteral(resourceName: "selectlist"))
+        return !GivtManager.shared.hasGivtLocations() ? [collectionDevice, qr, list, location] : [collectionDevice, qr, location, list]
     }()
+
     
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
@@ -111,6 +149,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)

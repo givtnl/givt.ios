@@ -128,10 +128,14 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         var userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
-        bottomScrollViewConstraint.constant = keyboardFrame.size.height
+        if #available(iOS 11.0, *) {
+            bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom
+        } else {
+            bottomScrollViewConstraint.constant = keyboardFrame.size.height
+        }
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
@@ -166,11 +170,11 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         guard let tx = notification.object as? SpecialUITextField else { return }
         switch tx {
         case address:
-            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 70)
+            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 70) && !tx.text!.containsEmoji
         case postalCode:
-            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 15)
+            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 15) && !tx.text!.containsEmoji
         case city:
-            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 35)
+            tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 35) && !tx.text!.containsEmoji
         default:
             break
         }

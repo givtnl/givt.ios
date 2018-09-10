@@ -555,8 +555,12 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AddCollectConfirm" = "Wil je een tweede collecte toevoegen?";
 "FAQvraag0" = "Feedback of vragen?";
 "FAQantwoord0" = "Je kunt ons een bericht sturen door in het app-menu naar \"Over Givt / Contact\" te gaan en daar je vraag te stellen. We zijn natuurlijk ook bereikbaar via +31 320 320 115 of support@givtapp.net.";
-"PersonalPageHeader" = "Wijzig hieronder je e-mailadres of je IBAN.";
-"PersonalPageSubHeader" = "Andere Givt-gegevens kunnen worden aangepast door een e-mail te sturen naar support@givtapp.net.";
+
+/*Fuzzy*/
+"PersonalPageHeader" = "Wijzig hieronder je gegevens.";
+
+/*Fuzzy*/
+"PersonalPageSubHeader" = "Wil je graag je naam veranderen? Stuur dan een mailtje naar support@givtapp.net.";
 "TitlePersonalInfo" = "Mijn gegevens";
 "PersonalInfoTempUser" = "Hé, snelle gever! Je gebruikt een tijdelijk account. We hebben je gegevens dus nog niet ontvangen.";
 "UpdatePersonalInfoError" = "Helaas lukt het op dit moment niet om je gegevens te wijzigen. Probeer later opnieuw of neem contact op met support@givtapp.net.";
@@ -662,7 +666,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 /*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
 "YesCool" = "Ja, leuk!";
 "ErrorContactGivt" = "Er is een fout opgetreden, gelieve contact op te nemen met support@givtapp.net .";
-"MandateFailPersonalInformation" = "Je IBAN en/of telefoonnummer blijkt niet goed ingevuld te zijn. Neem even contact op via support@givtapp.net om dit akkefietje op te lossen.";
+"MandateFailPersonalInformation" = "Je IBAN en/of telefoonnummer blijkt niet goed ingevuld te zijn. Wijzig je telefoonnummer of neem even contact op via support@givtapp.net om dit akkefietje op te lossen.";
 "MandateSMSCode" = "We sturen een sms-code naar {0}. Het mandaat wordt aangevraagd op naam van {1}. Correct? Ga dan gerust verder.";
 "MandateSigningCode" = "Als het goed is, krijg je zometeen een code. Vul die hieronder in om de machtiging te ondertekenen.";
 "ReadCode" = "Jouw code:";
@@ -683,7 +687,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SelectLocationContext" = "Geef op locatie";
 "ChangePassword" = "Wachtwoord wijzigen";
 "AllowGivtLocationTitle" = "Sta Givt toe je locatie te gebruiken";
-"AllowGivtLocationMessage" = "We hebben je locatie nodig om te bepalen aan wie je wil geven.\nGa naar Instellingen > Privacy > Locatievoorzieningen > Zet Locatievoorzieningen aan en zet Givt aan Bij gebruik.";
+"AllowGivtLocationMessage" = "We hebben je locatie nodig om te bepalen aan wie je wil geven.\nGa naar Instellingen > Privacy > Locatievoorzieningen > Zet Locatievoorzieningen aan en stel 'Bij gebruik van app' in voor Givt.";
 "FaqVraag10" = "Hoe verander ik mijn wachtwoord?";
 "FaqAntwoord10" = "Wanneer je je wachtwoord wilt wijzigen, kun je in het menu kiezen voor ‘Mijn gegevens’ en dan op de knop ‘Wachtwoord wijzigen’ drukken. Wij sturen je dan een e-mail met een link waarmee je je wachtwoord kunt wijzigen.";
 "EditPersonalSucces" = "Je persoonlijke gegevens zijn succesvol aangepast\n";
@@ -711,3 +715,44 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*A:Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
 "FAQAntwoord18" = "Givt voldoet volledig aan de eisen die gesteld worden vanuit de AVG-wetgeving. AVG staat voor Algemene Verordening Gegevensbescherming.\n\nBen je benieuwd wat dat precies voor jou betekent? Het betekent dat wij zorgvuldig met jouw gegevens omgaan. Namelijk dat jij het recht hebt te weten welke gegevens we van jou bewaren, dat je het recht hebt om deze gegevens te wijzigen, het recht hebt om van ons te eisen dat wij jouw gegevens niet bewaren en dat je mag weten waarom wij je gegevens nodig hebben.\n\nWil je hier meer over weten, lees dan onze privacyverklaring.\n\nAVG is ook wel bekend onder de Engelse naam: General Data Protection Regulation (GDPR).\n";
+"SelectLocationContextLong" = "Geef op locatie tijdens evenementen";
+"GivtAtLocationDisabledTitle" = "Geen evenementen beschikbaar";
+"GivtAtLocationDisabledMessage" = "Hé, niet te snel! Op dit moment zijn er geen evenementen waar je op locatie kan geven.";
+"TempAccountLogin" = "Je gebruikt een tijdelijk account zonder wachtwoord. Je wordt nu ingelogd en daarna gelijk gevraagd om je registratie af te ronden.";
+"SortCodePlaceholder" = "Sort code";
+"BankAccountNumberPlaceholder" = "Bank account number";
+"BacsSetupTitle" = "Instellen van incasso-instructie";
+
+/*Fuzzy*/
+"BacsSetupBody" = "Door verder te gaan, gaat u ermee akkoord dat u de accounthouder bent en dat u de enige persoon bent die autorisaties voor dit account moet autoriseren.\n\nDe details van uw incassoinstructie worden u binnen 3 werkdagen of uiterlijk 10 werkdagen vóór de eerste verzameling per e-mail toegestuurd.";
+"BacsUnderstoodNotice" = "Ik heb de voorinlichting gelezen en goedgekeurd";
+
+/*Fuzzy*/
+"BacsVerifyTitle" = "Controleer je gegevens";
+
+/*Fuzzy*/
+"BacsVerifyBody" = "Zijn deze gegevens correct? Zo niet, annuleer de registratie en verander je persoonlijke gegevens.\n\nDe bedrijfsnaam die op je transactie zal te zien zijn is 'Givt Ltd.'.";
+"BacsReadDDGuarantee" = "Lees de incasso garantie";
+"BacsDDGuarantee" = "- De garantie wordt aangeboden door alle banken en hypotheekbanken die instructies accepteren voor het betalen van automatische incasso's.\n- Als er wijzigingen zijn in de datum of frequentie van uw incasso, zal de organisatie u (normaal 10 werkdagen) op de hoogte brengen voordat uw rekening wordt afgeschreven of anderszins wordt overeengekomen.\n- Als er een fout is gemaakt in de betaling van uw automatische incasso, door de organisatie of uw bank of de opbouwmaatschappij, heeft u recht op een volledige en onmiddellijke terugbetaling van het bedrag dat u van uw bank of opbouwmaatschappij heeft betaald.\n- Als u een terugbetaling ontvangt waar u geen recht op heeft, moet u het terugbetalen wanneer de organisatie u daarom vraagt.\n- U kunt op elk moment een automatische incasso annuleren door eenvoudig contact op te nemen met uw bank of de opbouwende organisatie. Een schriftelijke bevestiging kan nodig zijn. Gelieve ook de organisatie op de hoogte te stellen.";
+"BacsAdvanceNotice" = "Alle normale waarborgen voor automatische incasso en garanties zijn van toepassing. Er kunnen geen wijzigingen in het bedrag, de datum of de te debiteren hoeveelheid worden aangebracht zonder u minimaal vijf (5) werkdagen vooraf op de hoogte te stellen van het feit dat uw rekening wordt gedebiteerd.\nIn het geval van een fout heeft u recht op een onmiddellijke terugbetaling door uw bank of woningbouwvereniging.\nU hebt het recht om op elk moment een automatische incassoinstructie te annuleren door een schrijven naar uw bank of woningbouwvereniging met een kopie om te gebruiken.";
+"BacsAdvanceNoticeTitle" = "Advance Notice";
+"BacsDDGuaranteeTitle" = "Automatische incasso garantie";
+"BacsVerifyBodyDetails" = "Naam: {0}\nAdres: {1}\nEmail adres: {2}\nSortcode: {3} \nAccount nummer: {4}\nFrequentie type: giften";
+"BacsHelpTitle" = "Hulp nodig?";
+"BacsHelpBody" = "Kan je iets niet vinden of heb je gewoon een vraag ? Aarzel dan niet om ons te contacteren op het nummer: *** of stuur ons een mailtje naar het adres: support@givtapp.net en we nemen spoedig contact met je op !";
+"BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount nummer: {1}";
+"CantFetchPersonalInformation" = "We kunnen op dit moment je gegevens niet opvragen van de server, probeer je het later even opnieuw?";
+"GivingContextCollectionBag" = "Collectemiddel";
+"GivingContextQRCode" = "QR-code";
+"GivingContextLocation" = "Locatie";
+"GivingContextCollectionBagList" = "Lijst";
+"AmountPresetsTitle" = "Voorkeursbedragen";
+"AmountPresetsBody" = "Stel hieronder je voorkeursbedragen in.";
+"AmountPresetsResetAll" = "Herstel waarden";
+"AmountPresetsErrGivingLimit" = "Het bedrag is hoger dan je geeflimiet";
+"AmountPresetsErr50C" = "Het bedrag moet minstens 50 cent zijn";
+"AmountPresetsErrEmpty" = "Vul een bedrag in";
+"GivtMinimumAmountPond" = "0.50 pond";
+"AlertBACSMessage" = "Doordat je {0} als landkeuze hebt aangegeven, gaan we er van uit dat je het liefst wil geven d.m.v. een SEPA-machtiging, daar hebben wij je IBAN voor nodig. Wil je toch liever BACS gebruiken, dan hebben we je Sort Code en Account Number nodig.";
+"AlertSEPAMessage" = "Doordat je {0} als landkeuze hebt aangegeven, gaan we er van uit dat je het liefst wil geven d.m.v. BACS Direct Debit, daar hebben wij je Sort Code en Account Number voor nodig. Wil je toch liever SEPA gebruiken, dan hebben we je IBAN nodig.";
+"Important" = "Belangrijk";

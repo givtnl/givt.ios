@@ -117,6 +117,10 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             let plainTextBytes = jsonParameters.base64EncodedString()
             let formatted = String(format: AppConstants.apiUri + "/confirm.html?msg=%@", plainTextBytes);
             
+            DispatchQueue.main.async {
+                AppServices.shared.vibrate()
+            }
+            
             if !AppServices.shared.connectedToNetwork() {
                 self.log.info(message: "User gave offline")
                 DispatchQueue.main.async {
@@ -187,7 +191,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     func giveManually(antennaID: String) {
         SVProgressHUD.show()
-        GivtService.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
+        GivtManager.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
             SVProgressHUD.dismiss()
             if seconds > 0 { /* TODO: @Lennie Why check seconds > 0 if GivtService.giveManually only calls afterGivt if seconds > 0 ??? */
                 LogService.shared.info(message: "Celebrating wiiehoeeew")

@@ -538,8 +538,12 @@
 "AddCollectConfirm" = "Do you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
 "FAQantwoord0" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +31 320 320 115 or by sending an e-mail to support@givtapp.net.";
-"PersonalPageHeader" = "Change your e-mail address or IBAN below.";
-"PersonalPageSubHeader" = "Other account data can be changed by sending an e-mail to support@givtapp.net.";
+
+/*Fuzzy*/
+"PersonalPageHeader" = "Change your account data here.";
+
+/*Fuzzy*/
+"PersonalPageSubHeader" = "Would you like to change your name? Send an e-mail to support@givtapp.net.";
 "TitlePersonalInfo" = "Personal information";
 "PersonalInfoTempUser" = "Hi there, fast giver! You're using a temporary account. We have not received your personal details yet.";
 "UpdatePersonalInfoError" = "Alas! We are not able to update your personal information. Please try again later or contact support@givtapp.net.";
@@ -643,7 +647,7 @@
 /*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
 "YesCool" = "Yes, cool!";
 "ErrorContactGivt" = "An error has occured, please contact us at support@givtapp.net .";
-"MandateFailPersonalInformation" = "Your IBAN and/or phone number seem to be incorrect. Please contact us at support@givtapp.net to solve this issue.";
+"MandateFailPersonalInformation" = "Your IBAN and/or phone number seem to be incorrect. Please change your personal information via the menu or contact us at support@givtapp.net to solve this issue.";
 "MandateSMSCode" = "We'll send a text message to {0}. The mandate will be signed on behalf of {1}. Correct? Proceed to the next step.";
 "MandateSigningCode" = "If all goes well, you'll receive a text message. Fill in the code below to sign your mandate.";
 "ReadCode" = "Your code:";
@@ -664,7 +668,7 @@
 "SelectLocationContext" = "Give at location";
 "ChangePassword" = "Change password";
 "AllowGivtLocationTitle" = "Allow Givt access your location";
-"AllowGivtLocationMessage" = "We need your location to determine who you want to give to.\nGo to Settings > Privacy > Location Services > Set Location Services On and Set Givt to While Using the App.";
+"AllowGivtLocationMessage" = "We need your location to determine who you want to give to.\nGo to Settings > Privacy > Location Services > Set Location Services On and set Givt to 'While Using the App'.";
 "FaqVraag10" = "How do I change my password?";
 "FaqAntwoord10" = "If you want to change your password, you can choose ‘Personal information’ in the menu and then press the ‘Change password’ button. We will send you an e-mail with a link to a web page where you can change your password.";
 "EditPersonalSucces" = "Your personal information is successfully updated";
@@ -686,7 +690,7 @@
 "AndersGeven" = "Give differently";
 "KerkdienstGemist" = "Kerkdienst Gemist";
 "ChangePhone" = "Change mobile number";
-"Artists" = "Artists\n";
+"Artists" = "Artists";
 "ChangeAddress" = "Change address";
 
 /*Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
@@ -694,3 +698,44 @@
 
 /*A:Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
 "FAQAntwoord18" = "Givt fully complies with the GDPR requirements. GDPR stands for General Data Protection Regulation.\n\nWondering what this means for you? It means that we handle your information with care, that you have the right to know which information we keep on record, have the right to change this information, have the right to demand from us that we do not store your information and that you may know why we need your personal information.\n\nIf you would like to know more, please read our privacy statement.\n";
+"SelectLocationContextLong" = "Give at location during events";
+"GivtAtLocationDisabledTitle" = "No events available";
+"GivtAtLocationDisabledMessage" = "Hey, slow down! At the moment, no events are available where you can give at location.";
+"TempAccountLogin" = "You're using a temporary account without password. You will now be automatically logged in and asked to complete your registration.";
+"SortCodePlaceholder" = "Sort code";
+"BankAccountNumberPlaceholder" = "Bank account number";
+"BacsSetupTitle" = "Setting up Direct Debit Instruction";
+
+/*Fuzzy*/
+"BacsSetupBody" = "By continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction will be sent to you by email within 3 working days or no later than 10 working days before the first collection.";
+"BacsUnderstoodNotice" = "I have read and understood the advance notice";
+
+/*Fuzzy*/
+"BacsVerifyTitle" = "Verify your details";
+
+/*Fuzzy*/
+"BacsVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'\n\nThe company name wich will appear on your bank statement against the Direct Debit will be Givt Ltd.";
+"BacsReadDDGuarantee" = "Read Direct Debit Guarantee";
+"BacsDDGuarantee" = "- The Guarantee is offered by all banks and building societies that accept instructions to pay Direct Debits.\n- If there any changes to the amount date or frequency of your Direct Debit the organisation will notify you (normally 10 working days) in advance of your account being debited or as otherwise agreed.\n- If an error is made in the payment of your Direct Debit, by the organisation or your bank or building society, you are entitled to a full and immediate refund of the amount paid from your bank or building society.\n- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to.\n- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.";
+"BacsAdvanceNotice" = "All the normal Direct Debit safeguards and guarantees apply. No changes in the amount, date, frequency to be debited can be made without notifying you at least five (5) working days in advance of your account being debited. \nIn the event of any error, you are entitled to an immediate refund from your Bank or Building society. \nYou have the right to cancel a Direct Debit Instruction at any time by writing to your Bank or Building society, with a  copy to use.";
+"BacsAdvanceNoticeTitle" = "Advance Notice";
+"BacsDDGuaranteeTitle" = "Direct Debit Guarantee";
+"BacsVerifyBodyDetails" = "Name: {0}\nAddress: {1}\nEmail address: {2}\nSort code: {3}\nAccount number: {4}\nFrequency type: donations";
+"BacsHelpTitle" = "Need help ?";
+"BacsHelpBody" = "Can't figure something out or you just have a question ? Give us a call at *** or hit us up on support@givtapp.net and we will be in touch!";
+"BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount number: {1}";
+"CantFetchPersonalInformation" = "We can't seem to fetch your personal information right now, could you try again later?";
+"GivingContextCollectionBag" = "Collection bag";
+"GivingContextQRCode" = "QR-code";
+"GivingContextLocation" = "Location";
+"GivingContextCollectionBagList" = "List";
+"AmountPresetsTitle" = "Amount presets";
+"AmountPresetsBody" = "Set your amount presets below.";
+"AmountPresetsResetAll" = "Reset values";
+"AmountPresetsErrGivingLimit" = "The amount is higher than your maximum amount";
+"AmountPresetsErr50C" = "The amount has to be at least 50 cents";
+"AmountPresetsErrEmpty" = "Enter an amount";
+"GivtMinimumAmountPond" = "0.50 pond";
+"AlertBACSMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through a SEPA mandate, we need your IBAN for that. If you prefer to use BACS, we need your Sort Code and Account Number.";
+"AlertSEPAMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through BACS Direct Debit, we need your Sort Code and Account Number for that. If you prefer to use SEPA, we need your IBAN.";
+"Important" = "Important";

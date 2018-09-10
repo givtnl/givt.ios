@@ -85,9 +85,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             btnComma.setTitle(decimalNotation, for: .normal)
             let fmt = NumberFormatter()
             fmt.minimumFractionDigits = 2
-            firstQuickBtn.setTitle(fmt.string(from: 2.50), for: .normal)
-            secondQuickBtn.setTitle(fmt.string(from: 7.50), for: .normal)
-            thirdQuickBtn.setTitle(fmt.string(from: 12.50), for: .normal)
+            fmt.minimumIntegerDigits = 1
+            firstQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber), for: .normal)
+            secondQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber), for: .normal)
+            thirdQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber), for: .normal)
         }
     }
     @IBOutlet var firstQuickBtn: RoundedButton!
@@ -97,7 +98,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet weak var lblTitle: UINavigationItem!
     @IBOutlet weak var btnGive: CustomButton!
     
-    private var givtService:GivtService!
+    private var givtService:GivtManager!
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
@@ -109,7 +110,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        givtService = GivtService.shared
+        givtService = GivtManager.shared
         btnGive.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
         btnGive.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
@@ -241,6 +242,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     @IBAction func addShortcutValue(sender: UIButton!){
         currentAmountLabel.text = sender.currentTitle
+        if sender.currentTitle!.contains(",") {
+            let decimal = Decimal(string: sender.currentTitle!.replacingOccurrences(of: ",", with: "."))
+            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
+                self.log.info(message: "User used a custom amount preset")
+            }
+        } else if let decimal = Decimal(string: sender.currentTitle!) {
+            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
+                self.log.info(message: "User used a custom amount preset")
+            }
+        }
         checkAmounts()
         pressedShortcutKey = true
     }
@@ -339,14 +350,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             self.currentAmountLabel.text = String(UserDefaults.standard.amountLimit)
             self.checkAmounts()
         }))
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-            LogService.shared.info(message: "User is opening giving limit")
-            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-            vc.startPoint = .amountLimit
-            vc.isRegistration = false
-            vc.transitioningDelegate = self.slideFromRightAnimation
-            NavigationManager.shared.pushWithLogin(vc, context: self)
-        }))
+        if (LoginManager.shared.isFullyRegistered){
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
+                LogService.shared.info(message: "User is opening giving limit")
+                let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+                vc.startPoint = .amountLimit
+                vc.isRegistration = false
+                vc.transitioningDelegate = self.slideFromRightAnimation
+                NavigationManager.shared.pushWithLogin(vc, context: self)
+            }))
+        }
         self.present(alert, animated: true, completion: nil)
     }
 

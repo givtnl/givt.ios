@@ -102,7 +102,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             //self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: userExt.PostalCode + " " + userExt.City + ", " + self._country, type: .countrycode))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone_red"), name: userExt.PhoneNumber, type: .phonenumber))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: userExt.IBAN.separate(every: 4, with: " "), type: .iban))
-            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "green_lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
             DispatchQueue.main.async {
                 self.settingsTableView.reloadData()
             }
@@ -127,14 +127,19 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         cell.img.image = settings[indexPath.row].image
         cell.accessoryType = .disclosureIndicator
         switch settings[indexPath.row].type {
-        case .iban, .emailaddress, .changepassword, .phonenumber, .address:
-            cell.accessoryType = .disclosureIndicator
-            cell.labelView.alpha = 1
-            cell.selectionStyle = .default
-        default:
+        case .name:
             cell.accessoryType = .none
             cell.labelView.alpha = 0.5
             cell.selectionStyle = .none
+        case .emailaddress:
+            cell.accessoryType = .disclosureIndicator
+            cell.labelView.alpha = 1
+            cell.selectionStyle = .default
+            cell.labelView.numberOfLines = 1
+        default:
+            cell.accessoryType = .disclosureIndicator
+            cell.labelView.alpha = 1
+            cell.selectionStyle = .default
         }
         return cell
     }
@@ -243,6 +248,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.img = #imageLiteral(resourceName: "email_sign")
             vc.titleOfInput = NSLocalizedString("ChangeEmail", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
+            vc.keyboardTypeOfInput = UIKeyboardType.emailAddress
             vc.validateFunction = { s in
                 return self.validationHelper.isEmailAddressValid(s)
             }

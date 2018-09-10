@@ -50,7 +50,7 @@ class TaxesViewController: UIViewController {
     }
     @IBAction func sendOverview(_ sender: Any) {
         SVProgressHUD.show()
-        GivtService.shared.sendGivtOverview { (status) in
+        GivtManager.shared.sendGivtOverview { (status) in
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
             }

@@ -12,9 +12,9 @@ import UserNotifications
 class NavigationManager {
     static let shared = NavigationManager()
     private var loginManager: LoginManager = LoginManager.shared
-    private var givtService: GivtService {
+    private var givtService: GivtManager {
         get {
-            return GivtService.shared
+            return GivtManager.shared
         }
     }
     private var appSettings = UserDefaults.standard
@@ -295,7 +295,6 @@ class NavigationManager {
             })
         }
         
-        
         currentAlert?.addAction(secundaryAction)
         currentAlert?.addAction(downloadAction)
         DispatchQueue.main.async {
@@ -306,10 +305,7 @@ class NavigationManager {
         }
     }
     
-    
-    
     public func showUpdateAlert() {
-        
         DispatchQueue.main.async {
             if AppServices.shared.connectedToNetwork() {
                 InfraManager.shared.checkUpdates { (isCritical) in
@@ -366,7 +362,6 @@ class NavigationManager {
         }
         
     }
-    
 }
 
 protocol NavigationManagerDelegate: class {

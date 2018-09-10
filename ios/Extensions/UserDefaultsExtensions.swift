@@ -33,6 +33,7 @@ extension UserDefaults {
         case showCasesByUserID
         case orgBeaconListV2
         case tempUser
+        case amountPresets
     }
     
     enum Showcase: String {
@@ -42,6 +43,32 @@ extension UserDefaults {
         case giveSituation
         case multipleCollects
         case deleteMultipleCollects
+    }
+    
+    var amountPresets: [Decimal] {
+        get {
+            if let data = object(forKey: UserDefaultsKeys.amountPresets.rawValue) as? NSData {
+                if let amountPresetByUserId = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [String: [Decimal]], let decimals = amountPresetByUserId[userExt.guid]  {
+                    return decimals
+                }
+            }
+            return [2.50,7.50,12.50]
+        }
+        set(value) {
+            var amountPresetByUserId: [String: [Decimal]] = [:]
+            if let data = object(forKey: UserDefaultsKeys.amountPresets.rawValue) as? NSData {
+                if let unarchivedDictionary = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [String: [Decimal]]  {
+                    amountPresetByUserId = unarchivedDictionary
+                }
+            }
+            
+            if let uext = userExt {
+                amountPresetByUserId[uext.guid] = value
+                let data = NSKeyedArchiver.archivedData(withRootObject: amountPresetByUserId)
+                set(data, forKey: UserDefaultsKeys.amountPresets.rawValue)
+                synchronize()
+            }
+        }
     }
     
     var orgBeaconListV2: BeaconList? {

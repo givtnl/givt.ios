@@ -104,25 +104,20 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func loadSettings(){
-        items = []
-        let userInfo: String = !LoginManager.shared.isFullyRegistered ? NSLocalizedString("FinalizeRegistration", comment: "") : NSLocalizedString("TitlePersonalInfo", comment: "")
-        
-        let tempUser = UserDefaults.standard.isTempUser
-        
+        items = []        
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
-        var userInfoSetting: Setting?
-        if LoginManager.shared.isFullyRegistered {
-            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, callback: { self.changePersonalInfo() })
-        } else {
-            userInfoSetting = Setting(name: userInfo, image: UIImage(named: "pencil")!, showBadge: !LoginManager.shared.isFullyRegistered, callback: { self.register() })
-        }
+        
+        let finishRegistration = Setting(name: NSLocalizedString("FinalizeRegistration", comment: ""), image: #imageLiteral(resourceName: "pencil"), showBadge: true, callback: { self.register() })
+        let changePersonalInfo = Setting(name: NSLocalizedString("TitlePersonalInfo", comment: ""), image: #imageLiteral(resourceName: "pencil"), showBadge: false, callback: { self.changePersonalInfo() })
+        
+        let amountPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: #imageLiteral(resourceName: "amountpresets"), callback: { self.changeAmountPresets() }, showArrow: true)
         
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
-        if !tempUser {
+        if !UserDefaults.standard.isTempUser {
             items.append([])
             items.append([])
             items.append([])
@@ -130,27 +125,33 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
             items[0].append(givts)
             let givtsTaxOverviewAvailable: Setting?
-            if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showedLastYearTaxOverview {
+            if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
                 givtsTaxOverviewAvailable = Setting(name: NSLocalizedString("YearOverviewAvailable", comment: ""), image: UIImage(), callback: {
                     self.openHistory()
                 }, showArrow: false, isHighlighted: true)
                 items[0].append(givtsTaxOverviewAvailable!)
             }
             
-            
             let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
             items[0].append(limit)
-            items[0].append(userInfoSetting!)
+            items[0].append(changePersonalInfo)
+            items[0].append(amountPresets)
+            
             
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             
             items[0].append(accessCode)
             items[1] = [changeAccount, screwAccount]
             items[2] = [aboutGivt, shareGivt]
+            
+            if !LoginManager.shared.isFullyRegistered {
+                items.insert([finishRegistration], at: 0)
+            }
         } else {
             items =
                 [
-                    [userInfoSetting!],
+                    [finishRegistration],
+                    [amountPresets],
                     [changeAccount, screwAccount],
                     [aboutGivt, shareGivt],
             ]
@@ -163,6 +164,13 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     private var blinkTimer: Timer = Timer()
     private func toggleTorch() {
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
+    }
+    
+    private func changeAmountPresets() {
+        let vc = UIStoryboard(name: "AmountPresets", bundle: nil).instantiateInitialViewController()
+        vc!.transitioningDelegate = self.slideFromRightAnimation
+        DispatchQueue.main.async {
+            self.present(vc!, animated: true, completion:  nil)}
     }
     
     private func changePersonalInfo() {

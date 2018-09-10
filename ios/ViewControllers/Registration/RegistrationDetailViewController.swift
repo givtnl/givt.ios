@@ -342,22 +342,22 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     @objc func checkAll(_ textField: UITextField) {
         switch textField {
         case streetAndNumber:
-            isStreetValid = validationHelper.isBetweenCriteria(streetAndNumber.text!, 75)
+            isStreetValid = validationHelper.isBetweenCriteria(streetAndNumber.text!, 75) && !streetAndNumber.text!.containsEmoji
             isStreetValid ? textField.setValid() : textField.setInvalid()
         case postalCode:
-            isPostalCodeValid = validationHelper.isBetweenCriteria(postalCode.text!, 15)
+            isPostalCodeValid = validationHelper.isBetweenCriteria(postalCode.text!, 15) && !postalCode.text!.containsEmoji
             isPostalCodeValid ? textField.setValid() : textField.setInvalid()
         case city:
-            isCityValid = validationHelper.isBetweenCriteria(city.text!, 45)
+            isCityValid = validationHelper.isBetweenCriteria(city.text!, 45) && !city.text!.containsEmoji
             isCityValid ? textField.setValid() : textField.setInvalid()
         case countryField:
             isCountryValid = validationHelper.isBetweenCriteria(countryField.text!, 99)
             isCountryValid ? textField.setValid() : textField.setInvalid()
         case mobileNumber:
-            isMobileNumberValid = isMobileNumber(mobileNumber.text!)
+            isMobileNumberValid = isMobileNumber(mobileNumber.text!) && !mobileNumber.text!.containsEmoji
             isMobileNumberValid ? textField.setValid() : textField.setInvalid()
         case iban:
-            isIbanValid = validationHelper.isIbanChecksumValid(iban.text!)
+            isIbanValid = validationHelper.isIbanChecksumValid(iban.text!) && !iban.text!.containsEmoji
             isIbanValid ? textField.setValid() : textField.setInvalid()
         case mobilePrefixField:
             isMobilePrefixValid = validationHelper.isBetweenCriteria(mobilePrefixField.text!, 6)

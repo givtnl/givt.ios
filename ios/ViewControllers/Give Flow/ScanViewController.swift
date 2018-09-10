@@ -36,11 +36,11 @@ class ScanViewController: BaseScanViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
-        GivtService.shared.delegate = self
+        GivtManager.shared.delegate = self
         
         self.log.info(message: "Scanpage is now showing")
         
-        if(GivtService.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0){
+        if(GivtManager.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0){
             startScanning()
         } else {
             showBluetoothMessage()
@@ -50,7 +50,7 @@ class ScanViewController: BaseScanViewController {
     }
     
     @objc func startScanning() {
-        GivtService.shared.startScanning(scanMode: .close)
+        GivtManager.shared.startScanning(scanMode: .close)
         
     }
     
@@ -102,8 +102,8 @@ class ScanViewController: BaseScanViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        GivtService.shared.delegate = nil
-        GivtService.shared.stopScanning()
+        GivtManager.shared.delegate = nil
+        GivtManager.shared.stopScanning()
         self.navigationController?.isNavigationBarHidden = false
 
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
@@ -126,7 +126,7 @@ class ScanViewController: BaseScanViewController {
 
     @IBAction func giveDifferently(_ sender: Any) {
         btnGive.isEnabled = false
-        GivtService.shared.stopScanning()
+        GivtManager.shared.stopScanning()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }

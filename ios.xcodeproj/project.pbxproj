@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		076E20FBE3B8BF04AAFAEDDA /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31725F87D2D9EDE08EEAEB4 /* Pods_ios.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		076E20FBE3B8BF04AAFAEDDA /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A31725F87D2D9EDE08EEAEB4 /* Pods_ios.framework */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D70491941FDA927C00CE5980 /* Welcome.storyboard */; };
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
@@ -28,7 +28,7 @@
 		D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C41F39BA360059A296 /* AppConstants.swift */; };
 		D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */; };
 		D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E976D1FD000CE00EFD8E1 /* AuthClient.swift */; };
-		D740E15C1F4C6328000531BA /* GivtService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15B1F4C6328000531BA /* GivtService.swift */; };
+		D740E15C1F4C6328000531BA /* GivtManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D740E15B1F4C6328000531BA /* GivtManager.swift */; };
 		D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D748F5F5206137E400B25BC2 /* TableSectionHeader.swift */; };
 		D748F5F82061381B00B25BC2 /* TableSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */; };
 		D748F5FC2061425400B25BC2 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D748F5FB2061425400B25BC2 /* HistoryTableViewCell.swift */; };
@@ -92,6 +92,9 @@
 		D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */; };
 		D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */; };
 		D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */; };
+		D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */; };
+		D7AE8BA921393B3400CB3A33 /* AmountPresetsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BA821393B3400CB3A33 /* AmountPresetsNavigationController.swift */; };
+		D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BAA21393B7D00CB3A33 /* AmountPresetsViewController.swift */; };
 		D7AF42FF1FEA61610027EEC1 /* UpdatedTermsPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */; };
 		D7AF43011FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */; };
 		D7AF43031FEA8E680027EEC1 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */; };
@@ -139,7 +142,7 @@
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
 		D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB252E1F5065C20011A14E /* Reachability.swift */; };
-		FB106210200F8163000B35DE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D782F2E71F7D37A400348D7A /* NetworkExtension.framework */; };
+		FB38F1B22133E7500025F648 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38F1B12133E7500025F648 /* NavigationHelper.swift */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
 		FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6DE1F14CA200055185B /* Main.storyboard */; };
 		FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6E11F14CA200055185B /* Assets.xcassets */; };
@@ -171,7 +174,7 @@
 /* Begin PBXFileReference section */
 		419F2B5D4C67A498F60F1F8E /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		5137859347A8763C7437BABD /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		7DF90D94E6F980835D667A53 /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
+		5C1D2A0112EABE8D75DEBBCE /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		A31725F87D2D9EDE08EEAEB4 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -195,7 +198,7 @@
 		D73CA1C41F39BA360059A296 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		D73E976D1FD000CE00EFD8E1 /* AuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthClient.swift; sourceTree = "<group>"; };
-		D740E15B1F4C6328000531BA /* GivtService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivtService.swift; sourceTree = "<group>"; };
+		D740E15B1F4C6328000531BA /* GivtManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GivtManager.swift; sourceTree = "<group>"; };
 		D748F5F5206137E400B25BC2 /* TableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
 		D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableSectionHeaderView.xib; sourceTree = "<group>"; };
 		D748F5FB2061425400B25BC2 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -261,6 +264,9 @@
 		D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TerminateAccount.storyboard; sourceTree = "<group>"; };
 		D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminateAccountViewController.swift; sourceTree = "<group>"; };
 		D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AmountPresets.storyboard; sourceTree = "<group>"; };
+		D7AE8BA821393B3400CB3A33 /* AmountPresetsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPresetsNavigationController.swift; sourceTree = "<group>"; };
+		D7AE8BAA21393B7D00CB3A33 /* AmountPresetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPresetsViewController.swift; sourceTree = "<group>"; };
 		D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdatedTermsPage.storyboard; sourceTree = "<group>"; };
 		D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedTermsPageViewController.swift; sourceTree = "<group>"; };
 		D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +317,7 @@
 		D7FB252E1F5065C20011A14E /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		FB19533B1F56DDEC00172CD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		FB38F1B12133E7500025F648 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3CE6D61F14CA200055185B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB3CE6E11F14CA200055185B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -324,7 +331,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				076E20FBE3B8BF04AAFAEDDA /* Pods_ios.framework in Frameworks */,
-				FB106210200F8163000B35DE /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +342,7 @@
 			children = (
 				5137859347A8763C7437BABD /* Pods-ios.debug.xcconfig */,
 				419F2B5D4C67A498F60F1F8E /* Pods-ios.release.xcconfig */,
-				7DF90D94E6F980835D667A53 /* Pods-ios.production.xcconfig */,
+				5C1D2A0112EABE8D75DEBBCE /* Pods-ios.production.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -344,7 +350,6 @@
 		D72B707E1F44832D0022BD29 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D740E15B1F4C6328000531BA /* GivtService.swift */,
 				D7DD79A520A19E2500047CA7 /* LocationService.swift */,
 				D7FB251C1F4D6D2F0011A14E /* AppServices.swift */,
 				D7FB252E1F5065C20011A14E /* Reachability.swift */,
@@ -405,6 +410,7 @@
 		D77667EC1F39F11300649157 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				D740E15B1F4C6328000531BA /* GivtManager.swift */,
 				D77667ED1F39F12900649157 /* LoginManager.swift */,
 				D788E4771FA08DA700506DA5 /* NavigationManager.swift */,
 				D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */,
@@ -429,6 +435,15 @@
 			path = TerminateAccount;
 			sourceTree = "<group>";
 		};
+		D7AE8BA721393B1A00CB3A33 /* AmountPresets */ = {
+			isa = PBXGroup;
+			children = (
+				D7AE8BA821393B3400CB3A33 /* AmountPresetsNavigationController.swift */,
+				D7AE8BAA21393B7D00CB3A33 /* AmountPresetsViewController.swift */,
+			);
+			path = AmountPresets;
+			sourceTree = "<group>";
+		};
 		D7B715521FD151CD00666262 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,6 +460,7 @@
 				D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */,
 				D7C8F3D2209A0B7300DBB397 /* Event.storyboard */,
 				D74C19E720F6270F00E116A0 /* ExternalSuggestion.storyboard */,
+				D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -488,6 +504,7 @@
 			isa = PBXGroup;
 			children = (
 				D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */,
+				FB38F1B12133E7500025F648 /* NavigationHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -632,6 +649,7 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
 				D7DD79A0209B358800047CA7 /* Event */,
 				D7F746D81FD943B8005354A3 /* Give Flow */,
 				D7F746D71FD94390005354A3 /* Login */,
@@ -775,7 +793,7 @@
 				TargetAttributes = {
 					FB3CE6D21F14CA200055185B = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = YDSA4AY496;
+						DevelopmentTeam = 9C9K7PRW9C;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -827,6 +845,7 @@
 				D787BE79208DCA6B00E20873 /* celebration.gif in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
+				D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */,
 				D7B715501FD0529D00666262 /* Personal.storyboard in Resources */,
 				D74C19E820F6270F00E116A0 /* ExternalSuggestion.storyboard in Resources */,
 				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
@@ -953,7 +972,8 @@
 				D7DBEDA31FBC798A00D78E2A /* UIDeviceExtensions.swift in Sources */,
 				D782E68F20064A680086907E /* SettingsViewController.swift in Sources */,
 				D7D9C31A20D9453F000D93C5 /* ChangeSettingViewController.swift in Sources */,
-				D740E15C1F4C6328000531BA /* GivtService.swift in Sources */,
+				D740E15C1F4C6328000531BA /* GivtManager.swift in Sources */,
+				FB38F1B22133E7500025F648 /* NavigationHelper.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
 				D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */,
 				D782089F2008BE6000AB6DC1 /* ArrayExtensions.swift in Sources */,
@@ -992,6 +1012,7 @@
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D748F5FC2061425400B25BC2 /* HistoryTableViewCell.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
+				D7AE8BA921393B3400CB3A33 /* AmountPresetsNavigationController.swift in Sources */,
 				D74C19EC20F62B8A00E116A0 /* ExternalSuggestionView.swift in Sources */,
 				D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */,
 				D7DBED9E1FBC490E00D78E2A /* UINavigationControllerExtensions.swift in Sources */,
@@ -1034,6 +1055,7 @@
 				D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */,
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
+				D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1113,7 +1135,6 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = "PRODUCTION=1";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1132,7 +1153,7 @@
 		};
 		FB10620F200CFFA1000B35DE /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DF90D94E6F980835D667A53 /* Pods-ios.production.xcconfig */;
+			baseConfigurationReference = 5C1D2A0112EABE8D75DEBBCE /* Pods-ios.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1144,10 +1165,10 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativepre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Givt Universal";
+				PROVISIONING_PROFILE_SPECIFIER = "Native Givt Pre Auto-Build";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1273,14 +1294,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = YDSA4AY496;
+				DEVELOPMENT_TEAM = 9C9K7PRW9C;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Givt Universal";
+				PROVISIONING_PROFILE = "3ce18608-3c76-4483-8182-e1a97ba62157";
+				PROVISIONING_PROFILE_SPECIFIER = "Native Givt Dev Development";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -1302,10 +1323,10 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.givtapp.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "Givt Universal";
+				PROVISIONING_PROFILE_SPECIFIER = "Native Givt Pre Auto-Build";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
