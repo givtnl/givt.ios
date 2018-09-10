@@ -50,7 +50,7 @@ class PermissionViewController: UIViewController {
     }
     
     func determineNextScreen() {
-        if UserDefaults.standard.paymentType == .bacs {
+        if UserDefaults.standard.paymentTypeRegistration == .bacs {
             DispatchQueue.main.async {
                 let vc = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsSettingUpViewController") as! BacsSettingUpViewController
                 self.show(vc, sender: nil)

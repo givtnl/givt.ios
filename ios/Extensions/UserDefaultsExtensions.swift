@@ -110,7 +110,7 @@ extension UserDefaults {
         }
     }
     
-    var paymentType: PaymentType {
+    var paymentTypeRegistration: PaymentType {
         get {
             if let pt = string(forKey: UserDefaultsKeys.paymentType.rawValue) {
                 return PaymentType(rawValue: pt)!

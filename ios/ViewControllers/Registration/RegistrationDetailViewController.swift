@@ -422,10 +422,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         var userData: RegistrationUser!
         if paymentType == .sepa {
-            UserDefaults.standard.paymentType = .sepa
+            UserDefaults.standard.paymentTypeRegistration = .sepa
             userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "")
         } else {
-            UserDefaults.standard.paymentType = .bacs
+            UserDefaults.standard.paymentTypeRegistration = .bacs
             userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber)
         }
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
