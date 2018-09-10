@@ -2257,7 +2257,7 @@ TGFiZWwD4oCoTGFiZWw
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dpo-rg-Ru3">
-                                        <rect key="frame" x="0.0" y="70" width="375" height="620"/>
+                                        <rect key="frame" x="0.0" y="70" width="375" height="610"/>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2266,7 +2266,7 @@ TGFiZWwD4oCoTGFiZWw
                                     <constraint firstItem="Dpo-rg-Ru3" firstAttribute="leading" secondItem="XAi-2v-pAb" secondAttribute="leading" id="Jaq-YT-7yQ"/>
                                     <constraint firstItem="01o-LO-gk7" firstAttribute="top" secondItem="XAi-2v-pAb" secondAttribute="top" constant="10" id="S5x-qP-hXL"/>
                                     <constraint firstAttribute="trailing" secondItem="01o-LO-gk7" secondAttribute="trailing" constant="20" id="WAv-RQ-hlG"/>
-                                    <constraint firstAttribute="bottom" secondItem="Dpo-rg-Ru3" secondAttribute="bottom" id="lMB-nu-X0r"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dpo-rg-Ru3" secondAttribute="bottom" constant="10" id="lMB-nu-X0r"/>
                                     <constraint firstItem="01o-LO-gk7" firstAttribute="leading" secondItem="XAi-2v-pAb" secondAttribute="leading" constant="20" id="uxt-Qc-d41"/>
                                     <constraint firstItem="Dpo-rg-Ru3" firstAttribute="top" secondItem="01o-LO-gk7" secondAttribute="bottom" constant="10" id="xHs-OU-0oa"/>
                                 </constraints>
