@@ -110,6 +110,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let currency = UserDefaults.standard.currencySymbol
+        let currencys = [firstEuro, secondEuro, thirdEuro]
+        currencys.forEach { (c) in
+            c?.text = currency
+        }
+        
         givtService = GivtManager.shared
         btnGive.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
         btnGive.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
@@ -288,7 +294,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
 
     fileprivate func showAmountTooLow() {
-        let alert = UIAlertController(title: "", message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("GivtMinimumAmountEuro", comment: "").replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
+        let alert = UIAlertController(title: "", message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }

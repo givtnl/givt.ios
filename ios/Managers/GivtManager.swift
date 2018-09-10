@@ -406,9 +406,6 @@ final class GivtManager: NSObject {
     }
     
     func getPublicMeta() {
-        if UserDefaults.standard.userExt == nil || UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
-            return
-        }
         let year = Date().getYear() - 1 //get the previous year
         client.get(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/givts/public-meta?year=\(year)", data: [:]) { (response) in
             if let response = response {
@@ -420,6 +417,9 @@ final class GivtManager: NSObject {
                             UserDefaults.standard.hasGivtsInPreviousYear = parsedBool
                         } else {
                             UserDefaults.standard.hasGivtsInPreviousYear = false
+                        }
+                        if let parsedAccountType = parsedData["AccountType"] as? String {
+                            UserDefaults.standard.accountType = parsedAccountType
                         }
                         print("Has givts in \(year):", UserDefaults.standard.hasGivtsInPreviousYear)
                     } catch {

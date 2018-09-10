@@ -131,9 +131,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 }, showArrow: false, isHighlighted: true)
                 items[0].append(givtsTaxOverviewAvailable!)
             }
-            
-            let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
-            items[0].append(limit)
+
+            let givingLimitImage = UserDefaults.standard.currencySymbol == "£" ? #imageLiteral(resourceName: "pound") : #imageLiteral(resourceName: "euro")
+            items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: givingLimitImage, callback: { self.openGiveLimit() }))
             items[0].append(changePersonalInfo)
             items[0].append(amountPresets)
             
