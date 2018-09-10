@@ -33,6 +33,13 @@ class AppConstants {
         return countries
     }()
     
+    enum CountryCodes: String {
+        case UnitedKingdom = "GB"
+        case Belgium = "BE"
+        case Netherlands = "NL"
+        case Germany = "DE"
+    }
+    
     static var dict: [String: [String: String]] = {
         return ["org.kdgm.kerkdienstgemist":
                     [

@@ -145,6 +145,13 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         }) { (success) in
             
         }
+        if self.selectedCountry.shortName == AppConstants.CountryCodes.UnitedKingdom.rawValue {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertSEPAMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
         
     }
     @IBAction func showBacs(_ sender: Any) {
@@ -160,6 +167,13 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             self.view.layoutIfNeeded()
         }) { (success) in
             
+        }
+        if self.selectedCountry.shortName != AppConstants.CountryCodes.UnitedKingdom.rawValue {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertBACSMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
