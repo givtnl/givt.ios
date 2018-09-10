@@ -17,12 +17,14 @@ enum ContextType {
 }
 
 class Context {
-    var name: String
+    var title: String
+    var subtitle: String
     var type: ContextType
     var image: UIImage
     
-    init(name: String, type: ContextType, image: UIImage) {
-        self.name = name
+    init(title: String, subtitle: String, type: ContextType, image: UIImage) {
+        self.title = title
+        self.subtitle = subtitle
         self.type = type
         self.image = image
     }

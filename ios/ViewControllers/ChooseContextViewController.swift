@@ -13,6 +13,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
    
     @IBOutlet var giveSubtitle: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet var contextsStackView: UIStackView!
     
     let lightAttributes = [
         NSAttributedStringKey.font: UIFont(name: "Avenir-Light", size: 17)!,
@@ -25,7 +26,7 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseContextTableViewCell") as! ChooseContextTableViewCell
-        cell.name.text = contexts[indexPath.row].name
+        cell.name.text = contexts[indexPath.row].subtitle
         //cell.subtext.text = contexts[indexPath.row].explanation
         cell.img.image = contexts[indexPath.row].image
         cell.preservesSuperviewLayoutMargins = false
@@ -119,10 +120,10 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     lazy var contexts: [Context] = {
-        let collectionDevice = Context(name: NSLocalizedString("SelectContextCollect", comment: ""),  type: ContextType.collectionDevice, image: #imageLiteral(resourceName: "collectebus"))
-        let qr = Context(name: NSLocalizedString("GiveContextQR", comment: ""), type: ContextType.qr, image: #imageLiteral(resourceName: "qrscan"))
-        let location = Context(name: NSLocalizedString("SelectLocationContextLong", comment: ""), type: ContextType.events, image: #imageLiteral(resourceName: "giveatlocation"))
-        let list = Context(name: NSLocalizedString("SelectContextList", comment: ""), type: ContextType.manually, image: #imageLiteral(resourceName: "selectlist"))
+        let collectionDevice = Context(title: NSLocalizedString("GivingContextCollectionBag", comment: ""), subtitle: NSLocalizedString("SelectContextCollect", comment: ""), type: ContextType.collectionDevice, image: #imageLiteral(resourceName: "collectebus"))
+        let qr = Context(title: NSLocalizedString("GivingContextQRCode", comment: ""), subtitle: NSLocalizedString("GiveContextQR", comment: ""), type: ContextType.qr, image: #imageLiteral(resourceName: "qrscan"))
+        let location = Context(title: NSLocalizedString("GivingContextLocation", comment: ""), subtitle: NSLocalizedString("SelectLocationContextLong", comment: ""), type: ContextType.events, image: #imageLiteral(resourceName: "giveatlocation"))
+        let list = Context(title: NSLocalizedString("GivingContextCollectionBagList", comment: ""),subtitle: NSLocalizedString("SelectContextList", comment: ""), type: ContextType.manually, image: #imageLiteral(resourceName: "selectlist"))
         return !GivtManager.shared.hasGivtLocations() ? [collectionDevice, qr, list, location] : [collectionDevice, qr, location, list]
     }()
 
@@ -144,7 +145,35 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
             // Fallback on earlier versions
         }
         // Do any additional setup after loading the view.
+        
         title = NSLocalizedString("SelectContext", comment: "")
+        contexts.forEach { (context) in
+            let containerView = UIView()
+            containerView.translatesAutoresizingMaskIntoConstraints = false
+            containerView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            contextsStackView.addArrangedSubview(containerView)
+            
+            let stackView = UIStackView()
+            stackView.spacing = 10
+            stackView.translatesAutoresizingMaskIntoConstraints = false
+            stackView.axis = .horizontal
+            containerView.addSubview(stackView)
+            stackView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10).isActive = true
+            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10).isActive = true
+            let img = UIImageView(image: context.image)
+            img.contentMode = .scaleAspectFit
+            stackView.addArrangedSubview(img)
+            img.widthAnchor.constraint(lessThanOrEqualToConstant: 80).isActive = true
+            let label = UILabel()
+            label.numberOfLines = 0
+            label.textAlignment = .center
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+            label.attributedText = makeAttributedString(title: context.title, subtitle: context.subtitle)
+            stackView.addArrangedSubview(label)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -172,3 +201,8 @@ class ChooseContextViewController: UIViewController, UITableViewDelegate, UITabl
 
 }
 
+class ContextTableView: UITableView {
+    override var intrinsicContentSize: CGSize {
+        return contentSize
+    }
+}
