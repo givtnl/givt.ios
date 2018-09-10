@@ -736,3 +736,6 @@
 "AmountPresetsErr50C" = "The amount has to be at least 50 cents";
 "AmountPresetsErrEmpty" = "Enter an amount";
 "GivtMinimumAmountPond" = "0.50 pond";
+"AlertBACSMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through a SEPA mandate, we need your IBAN for that. If you prefer to use BACS, we need your Sort Code and Account Number.";
+"AlertSEPAMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through BACS Direct Debit, we need your Sort Code and Account Number for that. If you prefer to use SEPA, we need your IBAN.";
+"Important" = "Important";
