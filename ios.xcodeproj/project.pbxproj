@@ -95,6 +95,11 @@
 		D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */; };
 		D7AE8BA921393B3400CB3A33 /* AmountPresetsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BA821393B3400CB3A33 /* AmountPresetsNavigationController.swift */; };
 		D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BAA21393B7D00CB3A33 /* AmountPresetsViewController.swift */; };
+		D7AE8B9921359A0200CB3A33 /* BACS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AE8B9821359A0200CB3A33 /* BACS.storyboard */; };
+		D7AE8B9C2136953E00CB3A33 /* BacsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8B9B2136953E00CB3A33 /* BacsInfoViewController.swift */; };
+		D7AE8BA02136980600CB3A33 /* BacsSettingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8B9F2136980600CB3A33 /* BacsSettingUpViewController.swift */; };
+		D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BA12136BD9000CB3A33 /* BacsDetailViewController.swift */; };
+		D7AE8BA42136CA4F00CB3A33 /* PaymentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BA32136CA4F00CB3A33 /* PaymentTypes.swift */; };
 		D7AF42FF1FEA61610027EEC1 /* UpdatedTermsPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */; };
 		D7AF43011FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */; };
 		D7AF43031FEA8E680027EEC1 /* PlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */; };
@@ -267,6 +272,11 @@
 		D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AmountPresets.storyboard; sourceTree = "<group>"; };
 		D7AE8BA821393B3400CB3A33 /* AmountPresetsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPresetsNavigationController.swift; sourceTree = "<group>"; };
 		D7AE8BAA21393B7D00CB3A33 /* AmountPresetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPresetsViewController.swift; sourceTree = "<group>"; };
+		D7AE8B9821359A0200CB3A33 /* BACS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BACS.storyboard; sourceTree = "<group>"; };
+		D7AE8B9B2136953E00CB3A33 /* BacsInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacsInfoViewController.swift; sourceTree = "<group>"; };
+		D7AE8B9F2136980600CB3A33 /* BacsSettingUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacsSettingUpViewController.swift; sourceTree = "<group>"; };
+		D7AE8BA12136BD9000CB3A33 /* BacsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacsDetailViewController.swift; sourceTree = "<group>"; };
+		D7AE8BA32136CA4F00CB3A33 /* PaymentTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTypes.swift; sourceTree = "<group>"; };
 		D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UpdatedTermsPage.storyboard; sourceTree = "<group>"; };
 		D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedTermsPageViewController.swift; sourceTree = "<group>"; };
 		D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderViewController.swift; sourceTree = "<group>"; };
@@ -444,6 +454,16 @@
 			path = AmountPresets;
 			sourceTree = "<group>";
 		};
+		D7AE8B9A2136951400CB3A33 /* BACS */ = {
+			isa = PBXGroup;
+			children = (
+				D7AE8B9B2136953E00CB3A33 /* BacsInfoViewController.swift */,
+				D7AE8B9F2136980600CB3A33 /* BacsSettingUpViewController.swift */,
+				D7AE8BA12136BD9000CB3A33 /* BacsDetailViewController.swift */,
+			);
+			path = BACS;
+			sourceTree = "<group>";
+		};
 		D7B715521FD151CD00666262 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +481,7 @@
 				D7C8F3D2209A0B7300DBB397 /* Event.storyboard */,
 				D74C19E720F6270F00E116A0 /* ExternalSuggestion.storyboard */,
 				D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */,
+				D7AE8B9821359A0200CB3A33 /* BACS.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -642,6 +663,7 @@
 				D7721B4A20EB67AD009771EE /* LMUserExt.swift */,
 				D71DA04D20F758DD0084381E /* ExternalIntegration.swift */,
 				A46C8AEF210889A400988D6D /* Beacon.swift */,
+				D7AE8BA32136CA4F00CB3A33 /* PaymentTypes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -650,6 +672,7 @@
 			isa = PBXGroup;
 			children = (
 				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
+				D7AE8B9A2136951400CB3A33 /* BACS */,
 				D7DD79A0209B358800047CA7 /* Event */,
 				D7F746D81FD943B8005354A3 /* Give Flow */,
 				D7F746D71FD94390005354A3 /* Login */,
@@ -855,6 +878,7 @@
 				D748F5F82061381B00B25BC2 /* TableSectionHeaderView.xib in Resources */,
 				D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */,
 				D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */,
+				D7AE8B9921359A0200CB3A33 /* BACS.storyboard in Resources */,
 				D7E708541FE7FD68002A7770 /* InfoPlist.strings in Resources */,
 				D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */,
 				D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */,
@@ -961,8 +985,10 @@
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D7BC58D620776361008C9497 /* Context.swift in Sources */,
 				D74C19EA20F627DA00E116A0 /* ExternalSuggestionViewController.swift in Sources */,
+				D7AE8BA42136CA4F00CB3A33 /* PaymentTypes.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
 				D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */,
+				D7AE8B9C2136953E00CB3A33 /* BacsInfoViewController.swift in Sources */,
 				D7D6FA6B1F7BADA5008A5604 /* UITextFieldExtensions.swift in Sources */,
 				D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */,
 				D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */,
@@ -998,6 +1024,7 @@
 				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
 				D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */,
 				D7AF43031FEA8E680027EEC1 /* PlaceholderViewController.swift in Sources */,
+				D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColorExtensions.swift in Sources */,
@@ -1029,6 +1056,7 @@
 				D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
 				D761E9BA1F18C5C6002B849B /* StringExtensions.swift in Sources */,
+				D7AE8BA02136980600CB3A33 /* BacsSettingUpViewController.swift in Sources */,
 				D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */,
 				D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */,
 				D796043620C00607005B609B /* BeaconService.swift in Sources */,

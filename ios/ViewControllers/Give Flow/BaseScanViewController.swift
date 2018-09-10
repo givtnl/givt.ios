@@ -13,6 +13,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
     var bestBeacon = BestBeacon()
     private var bluetoothAlert: UIAlertController?
+    private var isBacs = false
     
     func didUpdateBluetoothState(isBluetoothOn: Bool) {
         if isBluetoothOn {
@@ -153,15 +154,27 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                     callback("")
                     return
                 }
-                let country = userExtension.Country
-                let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: country, postalCode: userExtension.PostalCode, street: userExtension.Address)
+                let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, sortCode: userExtension.SortCode, accountNumber: userExtension.AccountNumber, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: userExtension.Country, postalCode: userExtension.PostalCode, street: userExtension.Address)
+                
                 let mandate = Mandate(signatory: signatory)
-                LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
+                
+                if userExtension.AccountNumber != nil && userExtension.SortCode != nil {
+                    self.isBacs = true
+                    callback("")
                     SVProgressHUD.dismiss()
-                    if let url = slimPayUrl {
-                        callback(url)
+                    return
+                }
+                
+                LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
+                    SVProgressHUD.dismiss()
+                    if let r = response {
+                        if r.basicStatus == .ok {
+                            callback(r.text ?? "")
+                        } else {
+                            callback("")
+                        }
                     } else {
-                        SVProgressHUD.dismiss()
+                        //no response?
                         callback("")
                     }
                 })
@@ -193,18 +206,18 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     func giveManually(antennaID: String) {
         SVProgressHUD.show()
         GivtManager.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
-            SVProgressHUD.dismiss()
-            if seconds > 0 { /* TODO: @Lennie Why check seconds > 0 if GivtService.giveManually only calls afterGivt if seconds > 0 ??? */
-                LogService.shared.info(message: "Celebrating wiiehoeeew")
-                DispatchQueue.main.async {
-                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
-                    vc.secondsLeft = seconds
-                    vc.transactions = transactions
-                    vc.organisation = orgName
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-                
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+            
+            LogService.shared.info(message: "Celebrating wiiehoeeew")
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                vc.secondsLeft = seconds
+                vc.transactions = transactions
+                vc.organisation = orgName
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         })
     }

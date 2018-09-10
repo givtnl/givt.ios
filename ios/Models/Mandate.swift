@@ -9,92 +9,56 @@
 import Foundation
 import UIKit
 
-class Mandate {
-    var signatory: [String: Any]
+
+struct Mandate: Codable {
+    var signatory: Signatory
     
     init(signatory: Signatory) {
-        self.signatory = signatory.toDictionary()
-    }
-    
-    func toDictionary() -> [String : Any] {
-        
-        var dictionary = [String:Any]()
-        let otherSelf = Mirror(reflecting: self)
-        
-        for child in otherSelf.children {
-            
-            if let key = child.label {
-                dictionary[key] = child.value
-            }
-        }
-        
-        print("USER_DICTIONARY :: \(dictionary.description)")
-        
-        return dictionary
+        self.signatory = signatory
     }
 }
 
-class Signatory {
+struct Signatory: Codable {
     var givenName: String
     var familyName: String
-    var bankAccount: [String: Any]
+    var bankAccount: BankAccount?
+    var bacsAccount: BacsAccount?
     var email: String
     var telephone: String
-    var billingAddress: [String: Any]
+    var billingAddress: BillingAddress
     
-    init(givenName: String, familyName: String, iban: String, email: String, telephone: String, city: String, country: String, postalCode: String, street: String ) {
+    init(givenName: String, familyName: String, iban: String?, sortCode: String?, accountNumber: String?, email: String, telephone: String, city: String, country: String, postalCode: String, street: String ) {
         self.givenName = givenName
         self.familyName = familyName
-        self.bankAccount = BankAccount(iban: iban).toDictionary()
         self.email = email
         self.telephone = telephone
-        self.billingAddress = BillingAddress(city: city, country: country, postalCode: postalCode, street: street).toDictionary()
-    }
-    
-    func toDictionary() -> [String : Any] {
+        self.billingAddress = BillingAddress(city: city, country: country, postalCode: postalCode, street: street)
         
-        var dictionary = [String:Any]()
-        let otherSelf = Mirror(reflecting: self)
-        
-        for child in otherSelf.children {
-            
-            if let key = child.label {
-                dictionary[key] = child.value
-            }
+        if iban != nil {
+            self.bankAccount = BankAccount(iban: iban!)
+        } else {
+            self.bacsAccount = BacsAccount(sortCode: sortCode!, accountNumber: accountNumber!)
         }
-        
-        print("USER_DICTIONARY :: \(dictionary.description)")
-        
-        return dictionary
     }
 }
 
-class BankAccount {
+struct BankAccount: Codable {
     var iban: String
-    
     init(iban: String) {
         self.iban = iban
     }
-    
-    func toDictionary() -> [String : Any] {
-        
-        var dictionary = [String:Any]()
-        let otherSelf = Mirror(reflecting: self)
-        
-        for child in otherSelf.children {
-            
-            if let key = child.label {
-                dictionary[key] = child.value
-            }
-        }
-        
-        print("USER_DICTIONARY :: \(dictionary.description)")
-        
-        return dictionary
+}
+
+struct BacsAccount: Codable {
+    var sortCode: String
+    var accountNumber: String
+    init(sortCode: String, accountNumber: String) {
+        self.sortCode = sortCode
+        self.accountNumber = accountNumber
     }
 }
 
-class BillingAddress {
+struct BillingAddress: Codable {
     var city: String
     var country: String
     var postalCode: String
@@ -105,22 +69,5 @@ class BillingAddress {
         self.country = country
         self.postalCode = postalCode
         self.street1 = street
-    }
-    
-    func toDictionary() -> [String : Any] {
-        
-        var dictionary = [String:Any]()
-        let otherSelf = Mirror(reflecting: self)
-        
-        for child in otherSelf.children {
-            
-            if let key = child.label {
-                dictionary[key] = child.value
-            }
-        }
-        
-        print("USER_DICTIONARY :: \(dictionary.description)")
-        
-        return dictionary
     }
 }

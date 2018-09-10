@@ -35,6 +35,7 @@ extension UserDefaults {
         case tempUser
         case amountPresets
         case accountType
+        case paymentType
     }
     
     enum Showcase: String {
@@ -106,6 +107,19 @@ extension UserDefaults {
         set(value) {
             set(try? PropertyListEncoder().encode(value), forKey: UserDefaultsKeys.orgBeaconListV2.rawValue)
             synchronize()
+        }
+    }
+    
+    var paymentType: PaymentType {
+        get {
+            if let pt = string(forKey: UserDefaultsKeys.paymentType.rawValue) {
+                return PaymentType(rawValue: pt)!
+            } else {
+                return .sepa
+            }
+        }
+        set(value) {
+            set(value.rawValue, forKey: UserDefaultsKeys.paymentType.rawValue)
         }
     }
     

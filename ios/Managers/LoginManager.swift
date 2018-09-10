@@ -210,10 +210,9 @@ class LoginManager {
     }
     
     func registerExtraDataFromUser(_ user: RegistrationUser, completionHandler: @escaping (Bool?) -> Void) {
-        let params = [
+        var params = [
             "Email": user.email,
             "Password" : user.password,
-            "IBAN":  user.iban.replacingOccurrences(of: " ", with: ""),
             "PhoneNumber":  user.mobileNumber,
             "FirstName":  user.firstName,
             "LastName":  user.lastName,
@@ -222,6 +221,19 @@ class LoginManager {
             "PostalCode":  user.postalCode,
             "Country":  user.country,
             "AmountLimit": "499"]
+        if !user.iban.isEmpty {
+            params["IBAN"] = user.iban.replacingOccurrences(of: " ", with: "")
+        } else {
+            params["SortCode"] = user.sortCode
+            params["AccountNumber"] = user.bacsAccountNumber
+        }
+        
+        if let langCode = Locale.current.languageCode {
+            params["AppLanguage"] = langCode
+        } else {
+            self.log.warning(message: "Device has no languagecode... Default NL") //TODO: when changing default lang, change this to "en"
+            params["AppLanguage"] = "nl"
+        }
         
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
@@ -267,26 +279,16 @@ class LoginManager {
         
     }
     
-    func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (String?) -> Void) {
+    func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (Response?) -> Void) {
         do {
-            let locale = Locale.preferredLanguages[0]
-            let firstTwoLetters = String(locale[..<locale.index(locale.startIndex, offsetBy: 2)])
-            try client.post(url: "/api/Mandate?locale=\(firstTwoLetters)", data: mandate.toDictionary()) { (response) in
-                if let response = response, let text = response.text {
-                    if response.basicStatus == .ok {
-                        completionHandler(text)
-                    } else {
-                        completionHandler(nil)
-                        self.log.error(message: text)
-                    }
-                } else {
-                    completionHandler(nil)
-                }
-            }
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(mandate)
+            try client.post(url: "/api/v2/users/mandate/sign", data: jsonData, callback: { (response) in
+                completionHandler(response)
+            })
         } catch {
-            log.error(message: "Something wrong requesting mandate url")
+            self.log.error(message: "Could not sign mandate")
         }
-        
     }
     
     func finishMandateSigning(completionHandler: @escaping (Bool) -> Void) {
@@ -341,7 +343,7 @@ class LoginManager {
     }
     
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
-        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
+        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB", sortCode: "", bacsAccountNumber: "")
         self.registerExtraDataFromUser(regUser) { b in
             if let b = b {
                 if b {

@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Title-->
+        <scene sceneID="YS5-tt-IAr">
+            <objects>
+                <viewController storyboardIdentifier="BacsSettingUpViewController" id="Nqu-gu-5sf" customClass="BacsSettingUpViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9th-Yp-EIm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gt7-Xl-lPr">
+                                <rect key="frame" x="20" y="74.000000000000014" width="374" height="232.33333333333337"/>
+                                <string key="text">By continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.
+
+The details of your Direct Debit Instruction will be sent to you by email within 3 working days or no later than 10 working
+days before the first collection.
+
+</string>
+                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bx-VR-m7P" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="672" width="374" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hoJ-Wd-cMw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="VOLGENDE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="next:" destination="Nqu-gu-5sf" eventType="touchUpInside" id="24G-JH-zDL"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKf-eB-0KZ">
+                                <rect key="frame" x="20" y="607" width="374" height="55"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mmy-wL-LbQ">
+                                        <rect key="frame" x="0.0" y="15" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="NfB-nl-dCZ"/>
+                                            <constraint firstAttribute="width" constant="24" id="f3b-BM-zim"/>
+                                        </constraints>
+                                        <state key="normal" image="unchecked"/>
+                                        <state key="selected" image="checked.png"/>
+                                        <connections>
+                                            <action selector="giveConsent:" destination="Nqu-gu-5sf" eventType="touchUpInside" id="J1p-A8-ucr"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have read and understood the advance notice" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzs-d3-1RX">
+                                        <rect key="frame" x="39" y="17.333333333333371" width="335" height="20.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
+                                        <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="AgK-Pa-9jh"/>
+                                    <constraint firstItem="dzs-d3-1RX" firstAttribute="leading" secondItem="Mmy-wL-LbQ" secondAttribute="trailing" constant="15" id="HGr-fz-6s5"/>
+                                    <constraint firstAttribute="trailing" secondItem="dzs-d3-1RX" secondAttribute="trailing" id="HdJ-hR-nCd"/>
+                                    <constraint firstItem="dzs-d3-1RX" firstAttribute="centerY" secondItem="QKf-eB-0KZ" secondAttribute="centerY" id="ZFd-Wo-847"/>
+                                    <constraint firstItem="Mmy-wL-LbQ" firstAttribute="leading" secondItem="QKf-eB-0KZ" secondAttribute="leading" id="ZL4-x4-Owm"/>
+                                    <constraint firstItem="Mmy-wL-LbQ" firstAttribute="centerY" secondItem="QKf-eB-0KZ" secondAttribute="centerY" id="szJ-CE-1Ho"/>
+                                </constraints>
+                                <viewLayoutGuide key="safeArea" id="eQf-HO-cZ4"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5bx-VR-m7P" firstAttribute="top" secondItem="QKf-eB-0KZ" secondAttribute="bottom" constant="10" id="24c-ga-ma6"/>
+                            <constraint firstItem="UfU-O0-fBR" firstAttribute="trailing" secondItem="Gt7-Xl-lPr" secondAttribute="trailing" constant="20" id="Fcb-6m-Jmf"/>
+                            <constraint firstItem="UfU-O0-fBR" firstAttribute="trailing" secondItem="5bx-VR-m7P" secondAttribute="trailing" constant="20" id="Lqh-Hv-OQi"/>
+                            <constraint firstItem="QKf-eB-0KZ" firstAttribute="trailing" secondItem="UfU-O0-fBR" secondAttribute="trailing" constant="-20" id="Nbp-gj-CLv"/>
+                            <constraint firstItem="Gt7-Xl-lPr" firstAttribute="top" secondItem="UfU-O0-fBR" secondAttribute="top" constant="10" id="a0x-Es-bAb"/>
+                            <constraint firstItem="UfU-O0-fBR" firstAttribute="bottom" secondItem="5bx-VR-m7P" secondAttribute="bottom" constant="20" id="e6A-Rv-YHD"/>
+                            <constraint firstItem="QKf-eB-0KZ" firstAttribute="leading" secondItem="UfU-O0-fBR" secondAttribute="leading" constant="20" id="hfu-kH-vWI"/>
+                            <constraint firstItem="Gt7-Xl-lPr" firstAttribute="leading" secondItem="UfU-O0-fBR" secondAttribute="leading" constant="20" id="nOx-J3-FtZ"/>
+                            <constraint firstItem="5bx-VR-m7P" firstAttribute="leading" secondItem="UfU-O0-fBR" secondAttribute="leading" constant="20" id="u4q-5v-KQm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UfU-O0-fBR"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="9ec-De-nZb">
+                        <barButtonItem key="rightBarButtonItem" image="help" width="50" id="mcb-tF-KxR">
+                            <connections>
+                                <action selector="openHelp:" destination="Nqu-gu-5sf" id="YZs-Fg-lg2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="advanceNoticeLabel" destination="dzs-d3-1RX" id="m0q-cI-geS"/>
+                        <outlet property="bodyText" destination="Gt7-Xl-lPr" id="UE3-gS-FRq"/>
+                        <outlet property="nextButton" destination="5bx-VR-m7P" id="RNd-QF-imp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tvW-ue-cnO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000.8" y="38.23088455772114"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="CkW-W2-nWN">
+            <objects>
+                <viewController storyboardIdentifier="BacsDetailViewController" id="uKh-Kh-ClB" customClass="BacsDetailViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TVU-kS-Zdm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y7a-Kt-K2h">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BqG-co-lWN">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfX-bb-jaB">
+                                                <rect key="frame" x="20" y="10" width="374" height="139.33333333333334"/>
+                                                <string key="text" base64-UTF8="YES">
+TmFtZTogSm9obiBEb2UKQWRkcmVzczogVW5rbm93bnN0cmVldCAxMjMsIExvbmRvbiAxMjPigKhFbWFp
+bCBhZGRyZXNzOiBqb2huZG9lQGdpdnRhcHAubmV04oCoU29ydCBjb2RlOiAxMjMDCkFjY291bnQgTnVt
+YmVyOiA0NTYKRnJlcXVlbmN5IHR5cGU6IGRvbmF0aW9ucw
+</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSs-PO-glB">
+                                                <rect key="frame" x="20" y="169.33333333333337" width="374" height="209"/>
+                                                <string key="text">If any of the above is incorrect, please abort the registration and change your personal information through the menu under ‘Personal information’.
+
+
+The company name which will appear on your bank statement against the Direct Debit will be Givt Ltd.</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4O-sn-LrH" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="608" width="374" height="44"/>
+                                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="oel-PN-TAV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                                <state key="normal" title="DONE">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="done:" destination="uKh-Kh-ClB" eventType="touchUpInside" id="hGQ-NF-cqE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDc-mG-Bkx" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="554" width="374" height="44"/>
+                                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="OnH-ea-eYu"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
+                                                <state key="normal" title="Read Direct Debit Guarantee">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <state key="disabled">
+                                                    <color key="titleShadowColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                        <color key="value" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                                        <color key="value" red="0.094940684735774994" green="0.17165490984916687" blue="0.51433265209197998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="readDirectDebitGuarantee:" destination="uKh-Kh-ClB" eventType="touchUpInside" id="vxu-2l-fke"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="bDc-mG-Bkx" firstAttribute="trailing" secondItem="O4O-sn-LrH" secondAttribute="trailing" id="3LQ-Ff-Qs8"/>
+                                            <constraint firstItem="bDc-mG-Bkx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KSs-PO-glB" secondAttribute="bottom" constant="8" id="AcC-8a-6WQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="QfX-bb-jaB" secondAttribute="trailing" constant="20" id="Cha-5G-ynY"/>
+                                            <constraint firstAttribute="bottom" secondItem="O4O-sn-LrH" secondAttribute="bottom" constant="20" id="Z3J-kj-nnR"/>
+                                            <constraint firstItem="KSs-PO-glB" firstAttribute="trailing" secondItem="QfX-bb-jaB" secondAttribute="trailing" id="ZUg-vv-ePI"/>
+                                            <constraint firstItem="bDc-mG-Bkx" firstAttribute="leading" secondItem="O4O-sn-LrH" secondAttribute="leading" id="ayV-57-LAE"/>
+                                            <constraint firstItem="O4O-sn-LrH" firstAttribute="leading" secondItem="BqG-co-lWN" secondAttribute="leading" constant="20" id="c0T-hv-uXk"/>
+                                            <constraint firstAttribute="trailing" secondItem="O4O-sn-LrH" secondAttribute="trailing" constant="20" id="jQL-Ru-Gf5"/>
+                                            <constraint firstItem="QfX-bb-jaB" firstAttribute="top" secondItem="BqG-co-lWN" secondAttribute="top" constant="10" id="jWO-xe-eaa"/>
+                                            <constraint firstItem="O4O-sn-LrH" firstAttribute="top" secondItem="bDc-mG-Bkx" secondAttribute="bottom" constant="10" id="kGd-7V-YVn"/>
+                                            <constraint firstItem="KSs-PO-glB" firstAttribute="leading" secondItem="QfX-bb-jaB" secondAttribute="leading" id="kTC-hx-BNK"/>
+                                            <constraint firstItem="QfX-bb-jaB" firstAttribute="leading" secondItem="BqG-co-lWN" secondAttribute="leading" constant="20" id="lad-ti-ZrP"/>
+                                            <constraint firstItem="KSs-PO-glB" firstAttribute="top" secondItem="QfX-bb-jaB" secondAttribute="bottom" constant="20" id="qqC-TY-g2r"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="BqG-co-lWN" firstAttribute="top" secondItem="Y7a-Kt-K2h" secondAttribute="top" id="1F1-RT-uoV"/>
+                                    <constraint firstAttribute="bottom" secondItem="BqG-co-lWN" secondAttribute="bottom" id="Bam-PM-b2f"/>
+                                    <constraint firstAttribute="trailing" secondItem="BqG-co-lWN" secondAttribute="trailing" id="T4X-0Y-SeI"/>
+                                    <constraint firstItem="BqG-co-lWN" firstAttribute="leading" secondItem="Y7a-Kt-K2h" secondAttribute="leading" id="ca0-wv-iX1"/>
+                                    <constraint firstItem="BqG-co-lWN" firstAttribute="width" secondItem="Y7a-Kt-K2h" secondAttribute="width" id="q9X-IZ-DUE"/>
+                                    <constraint firstItem="BqG-co-lWN" firstAttribute="height" secondItem="Y7a-Kt-K2h" secondAttribute="height" priority="250" id="xZd-GJ-feE"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Y7a-Kt-K2h" firstAttribute="trailing" secondItem="6oB-gc-SzF" secondAttribute="trailing" id="3oi-At-HJa"/>
+                            <constraint firstItem="Y7a-Kt-K2h" firstAttribute="leading" secondItem="6oB-gc-SzF" secondAttribute="leading" id="dYB-34-YAR"/>
+                            <constraint firstItem="Y7a-Kt-K2h" firstAttribute="top" secondItem="6oB-gc-SzF" secondAttribute="top" id="kjZ-NQ-uaP"/>
+                            <constraint firstItem="Y7a-Kt-K2h" firstAttribute="bottom" secondItem="6oB-gc-SzF" secondAttribute="bottom" id="qX0-tf-F7W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6oB-gc-SzF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="2cY-FD-DDH">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="szO-TT-YaX">
+                            <connections>
+                                <action selector="goBack:" destination="uKh-Kh-ClB" id="aL3-jz-nHg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="done" destination="O4O-sn-LrH" id="x4Y-9D-qY2"/>
+                        <outlet property="personalDetailText" destination="KSs-PO-glB" id="PiS-F6-jxy"/>
+                        <outlet property="personalInformationText" destination="QfX-bb-jaB" id="Yxf-xA-U6e"/>
+                        <outlet property="readGuarantee" destination="bDc-mG-Bkx" id="HIV-SE-8LM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aCk-V3-3mv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1730" y="38"/>
+        </scene>
+        <!--Bacs Info View Controller-->
+        <scene sceneID="w3a-h4-8dY">
+            <objects>
+                <viewController storyboardIdentifier="BacsInfoViewController" id="mlP-aE-Mdm" customClass="BacsInfoViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MTC-Hh-aVU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEED HELP?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfY-Np-hKx">
+                                <rect key="frame" x="134" y="40" width="146" height="33"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYR-iY-znj">
+                                <rect key="frame" x="0.0" y="93" width="414" height="643"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nob-Yo-ugO">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1331.6666666666667"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7G-D9-CQn">
+                                                <rect key="frame" x="20" y="0.0" width="374" height="1311.6666666666667"/>
+                                                <string key="text">- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to
+- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="q7G-D9-CQn" secondAttribute="bottom" constant="20" id="CR3-Wg-inz"/>
+                                            <constraint firstItem="q7G-D9-CQn" firstAttribute="top" secondItem="Nob-Yo-ugO" secondAttribute="top" id="SDM-4Q-aJ3"/>
+                                            <constraint firstItem="q7G-D9-CQn" firstAttribute="leading" secondItem="Nob-Yo-ugO" secondAttribute="leading" constant="20" id="Unk-lc-miq"/>
+                                            <constraint firstAttribute="trailing" secondItem="q7G-D9-CQn" secondAttribute="trailing" constant="20" id="z42-SX-cFk"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Nob-Yo-ugO" secondAttribute="trailing" id="CJH-B3-sam"/>
+                                    <constraint firstItem="Nob-Yo-ugO" firstAttribute="leading" secondItem="BYR-iY-znj" secondAttribute="leading" id="CYV-8I-xTw"/>
+                                    <constraint firstItem="Nob-Yo-ugO" firstAttribute="width" secondItem="BYR-iY-znj" secondAttribute="width" id="YSZ-Uw-9EF"/>
+                                    <constraint firstItem="Nob-Yo-ugO" firstAttribute="top" secondItem="BYR-iY-znj" secondAttribute="top" id="a3U-HP-nHn"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nob-Yo-ugO" secondAttribute="bottom" id="b41-2D-Z3S"/>
+                                    <constraint firstItem="Nob-Yo-ugO" firstAttribute="height" relation="greaterThanOrEqual" secondItem="BYR-iY-znj" secondAttribute="height" priority="250" id="qLd-WY-8rw"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qg6-9B-9SP">
+                                <rect key="frame" x="354" y="31.666666666666671" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="6OX-z6-mUV"/>
+                                    <constraint firstAttribute="height" constant="50" id="umo-a4-pUw"/>
+                                </constraints>
+                                <state key="normal" image="closewhite"/>
+                                <connections>
+                                    <action selector="close:" destination="mlP-aE-Mdm" eventType="touchUpInside" id="z1o-04-8ch"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BYR-iY-znj" secondAttribute="trailing" id="4Sm-Mw-Wzb"/>
+                            <constraint firstItem="JfY-Np-hKx" firstAttribute="centerX" secondItem="MTC-Hh-aVU" secondAttribute="centerX" id="Eut-Xk-pWL"/>
+                            <constraint firstItem="BYR-iY-znj" firstAttribute="width" secondItem="MTC-Hh-aVU" secondAttribute="width" id="JO8-PE-qe3"/>
+                            <constraint firstItem="BYR-iY-znj" firstAttribute="leading" secondItem="I7M-OZ-jhI" secondAttribute="leading" id="e5r-Rd-RAM"/>
+                            <constraint firstItem="I7M-OZ-jhI" firstAttribute="trailing" secondItem="Qg6-9B-9SP" secondAttribute="trailing" constant="10" id="fxr-lB-5If"/>
+                            <constraint firstItem="BYR-iY-znj" firstAttribute="top" secondItem="JfY-Np-hKx" secondAttribute="bottom" constant="20" id="s37-ae-YPK"/>
+                            <constraint firstItem="JfY-Np-hKx" firstAttribute="top" secondItem="I7M-OZ-jhI" secondAttribute="top" constant="20" id="s7l-yg-x7e"/>
+                            <constraint firstItem="BYR-iY-znj" firstAttribute="bottom" secondItem="I7M-OZ-jhI" secondAttribute="bottom" id="v3R-n5-qDZ"/>
+                            <constraint firstItem="Qg6-9B-9SP" firstAttribute="centerY" secondItem="JfY-Np-hKx" secondAttribute="centerY" id="v7h-me-X1S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="I7M-OZ-jhI"/>
+                    </view>
+                    <connections>
+                        <outlet property="bodyLabel" destination="q7G-D9-CQn" id="Lbs-eG-VcI"/>
+                        <outlet property="titleLabel" destination="JfY-Np-hKx" id="bhz-8j-sie"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ARY-dH-TRF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1000" y="-608"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="backbtn" width="15" height="24"/>
+        <image name="checked.png" width="16" height="16"/>
+        <image name="closewhite" width="23" height="24"/>
+        <image name="help" width="13" height="20"/>
+        <image name="unchecked" width="24" height="24"/>
+    </resources>
+</document>
