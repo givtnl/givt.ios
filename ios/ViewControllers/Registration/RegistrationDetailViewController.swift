@@ -497,10 +497,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             isCountryValid = validationHelper.isBetweenCriteria(countryField.text!, 99)
             isCountryValid ? textField.setValid() : textField.setInvalid()
         case mobileNumber:
-            isMobileNumberValid = isMobileNumber(mobileNumber.text!) && !mobileNumber.text!.containsEmoji
+            isMobileNumberValid = isMobileNumber(mobileNumber.text!)
             isMobileNumberValid ? textField.setValid() : textField.setInvalid()
         case iban:
-            isIbanValid = validationHelper.isIbanChecksumValid(iban.text!) && !iban.text!.containsEmoji
+            isIbanValid = validationHelper.isIbanChecksumValid(iban.text!)
             isIbanValid ? textField.setValid() : textField.setInvalid()
         case mobilePrefixField:
             isMobilePrefixValid = validationHelper.isBetweenCriteria(mobilePrefixField.text!, 6)
