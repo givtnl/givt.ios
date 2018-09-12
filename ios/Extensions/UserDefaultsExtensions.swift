@@ -35,6 +35,7 @@ extension UserDefaults {
         case tempUser
         case amountPresets
         case accountType
+        case fingerprintSet
     }
     
     enum Showcase: String {
@@ -155,6 +156,16 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.lastGivtToOrganisation.rawValue)
+            synchronize()
+        }
+    }
+    
+    var hasFingerprintSet: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.fingerprintSet.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.fingerprintSet.rawValue)
             synchronize()
         }
     }
