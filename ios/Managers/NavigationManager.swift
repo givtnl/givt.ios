@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import UserNotifications
+import LocalAuthentication
 class NavigationManager {
     static let shared = NavigationManager()
     private var loginManager: LoginManager = LoginManager.shared
@@ -160,9 +161,22 @@ class NavigationManager {
         }
     }
     
-    public func reAuthenticateIfNeeded(context: UIViewController, completion: @escaping () -> Void) {
+    public func reAuthenticateIfNeeded(context: UIViewController, skipFingerprint: Bool = false, completion: @escaping () -> Void) {
         if !LoginManager.shared.isBearerStillValid {
-            if UserDefaults.standard.hasPinSet {
+            if UserDefaults.standard.hasFingerprintSet && !skipFingerprint {
+                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                    self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
+                }))
+                
+                self.loginManager.loginWithFingerprint { (success) in
+                    if success {
+                        completion()
+                    } else {
+                        context.present(cannotUseTouchId, animated: true, completion: nil)
+                    }
+                }
+            } else if UserDefaults.standard.hasPinSet {
                 let pinVC = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
                 pinVC.typeOfPin = .login
                 pinVC.outerHandler = { status in
@@ -184,13 +198,26 @@ class NavigationManager {
         }
     }
 
-    public func executeWithLogin(context: UIViewController, emailEditable: Bool = false, completion: @escaping () -> Void) {
+    public func executeWithLogin(context: UIViewController, emailEditable: Bool = false, skipFingerprint: Bool = false, completion: @escaping () -> Void) {
         if !_appServices.connectedToNetwork() {
             presentAlertNoConnection(context: context)
             return
         }
         if !LoginManager.shared.isBearerStillValid {
-            if UserDefaults.standard.hasPinSet {
+            if UserDefaults.standard.hasFingerprintSet && !skipFingerprint {
+                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                    self.executeWithLogin(context: context, emailEditable: emailEditable, skipFingerprint: true, completion: completion)
+                }))
+                
+                self.loginManager.loginWithFingerprint { (success) in
+                    if success {
+                        completion()
+                    } else {
+                        context.present(cannotUseTouchId, animated: true, completion: nil)
+                    }
+                }
+            } else if UserDefaults.standard.hasPinSet {
                 let pinVC = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
                 pinVC.typeOfPin = .login
                 pinVC.outerHandler = { status in

@@ -121,7 +121,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }))
                 self.present(alert, animated: true, completion:  {})
             } else {
-                _ = LoginManager.shared.loginUser(email: self.txtUserName.text!,password: self.txtPassword.text!, completionHandler: { b, error, description in
+                _ = LoginManager.shared.loginUser(email: self.txtUserName.text!,password: self.txtPassword.text!, type: .password, completionHandler: { b, error, description in
                     
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()

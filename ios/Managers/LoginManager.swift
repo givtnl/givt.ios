@@ -9,12 +9,19 @@
 import Foundation
 import UIKit
 import SwiftClient
+import LocalAuthentication
 
 class LoginManager {
     
     private var client: APIClient = APIClient.shared
     private var authClient: AuthClient = AuthClient.shared
     private var log: LogService = LogService.shared
+    
+    enum AuthenticationType {
+        case password
+        case pincode
+        case fingerprint
+    }
     
     enum UserClaims: Int {
         case startedApp
@@ -69,11 +76,14 @@ class LoginManager {
         }
     }
     
-    public func loginUser(email: String, password: String, completionHandler: @escaping (Bool, NSError?, String?) -> Void ) {
+    public func loginUser(email: String, password: String, type: AuthenticationType, completionHandler: @escaping (Bool, NSError?, String?) -> Void ) {
         var params: [String : String] = [:]
-        if UserDefaults.standard.hasPinSet {
+        switch type {
+        case .fingerprint:
+            params = ["grant_type":"fingerprint","userName":email,"fingerprint":password]
+        case .pincode:
             params = ["grant_type":"pincode","userName":email,"pincode":password]
-        } else {
+        case .password:
             params = ["grant_type":"password","userName":email,"password":password]
         }
 
@@ -129,6 +139,9 @@ class LoginManager {
                             let dict = self.convertToDictionary(text: dataString),
                             let err_description = dict["error_description"] as? String {
                             completionHandler(false, nil, err_description)
+                            if err_description == "NoFingerprintSet" {
+                                UserDefaults.standard.hasFingerprintSet = false
+                            }
                         } else {
                             completionHandler(false, nil, nil)
                         }
@@ -209,6 +222,27 @@ class LoginManager {
         }
     }
     
+    func registerFingerprint(fingerprint: String, completion: @escaping (Bool) -> Void) {
+        let params = ["Fingerprint" : fingerprint]
+        do {
+            try client.put(url: "/api/v2/Users/Fingerprint", data: params, callback: { (response) in
+                if let r = response {
+                    if r.basicStatus == .ok {
+                        UserDefaults.standard.hasFingerprintSet = true
+                        completion(true)
+                    } else {
+                        print(r.text!)
+                        completion(false)
+                    }
+                } else {
+                    completion(false)
+                }
+            })
+        } catch {
+            print("err")
+        }
+    }
+    
     func registerExtraDataFromUser(_ user: RegistrationUser, completionHandler: @escaping (Bool?) -> Void) {
         var params = [
             "Email": user.email,
@@ -244,7 +278,7 @@ class LoginManager {
                         newConfig.guid = guid
                         UserDefaults.standard.userExt = newConfig
                         
-                        self.loginUser(email: user.email, password: user.password, completionHandler: { (success, err, descr) in
+                        self.loginUser(email: user.email, password: user.password, type: .password, completionHandler: { (success, err, descr) in
                             if success {
                                 self.saveAmountLimit(499, completionHandler: { (status) in
                                     //niets
@@ -546,6 +580,42 @@ class LoginManager {
         } catch {
             callback(false)
             log.error(message: "Something went wrong trying to change mobile number")
+        }
+    }
+    
+    func loginWithFingerprint(completion: @escaping (Bool) -> Void) {
+        let authenticationContext = LAContext()
+        var error: NSError?
+        if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            let localQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecMatchLimit as String: kSecMatchLimitOne,kSecReturnAttributes as String: true, kSecReturnData as String: true]
+            
+            var item: CFTypeRef?
+            let status = SecItemCopyMatching(localQuery as CFDictionary, &item)
+            
+            if status == errSecSuccess {
+                guard let existingItem = item as? [String : Any],
+                    let passwordData = existingItem[kSecValueData as String] as? Data,
+                    let password = String(data: passwordData, encoding: String.Encoding.utf8)
+                    else {
+                        self.log.warning(message: "Fingerprint password is gone")
+                        UserDefaults.standard.hasFingerprintSet = false
+                        completion(false)
+                        return
+                }
+                self.loginUser(email: UserDefaults.standard.userExt!.email, password: password, type: LoginManager.AuthenticationType.fingerprint, completionHandler: { (success, err, str) in
+                    if success {
+                        completion(true)
+                    } else {
+                        UserDefaults.standard.hasFingerprintSet = false
+                        completion(false)
+                    }
+                })
+            } else {
+                completion(false)
+                
+            }
+        } else {
+            completion(false)
         }
     }
     

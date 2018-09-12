@@ -141,6 +141,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             
             items[0].append(accessCode)
+            
+            if(InfraManager.biometricType() == .touch) {
+                let fingerprint = Setting(name: NSLocalizedString("TouchID", comment: ""), image: #imageLiteral(resourceName: "TouchID"), callback: { self.manageFingerprint() })
+                items[0].append(fingerprint)
+            } else if(InfraManager.biometricType() == .face) {
+                let fingerprint = Setting(name: NSLocalizedString("FaceID", comment: ""), image: #imageLiteral(resourceName: "FaceID"), callback: { self.manageFingerprint() })
+                items[0].append(fingerprint)
+            }
             items[1] = [changeAccount, screwAccount]
             items[2] = [aboutGivt, shareGivt]
             
@@ -171,6 +179,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         vc!.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
             self.present(vc!, animated: true, completion:  nil)}
+    }
+    
+    private func manageFingerprint() {
+        let vc = UIStoryboard(name: "Fingerprint", bundle: nil).instantiateInitialViewController()
+        vc!.transitioningDelegate = self.slideFromRightAnimation
+        navigationManager.pushWithLogin(vc!, context: self)
     }
     
     private func changePersonalInfo() {
