@@ -169,7 +169,9 @@ class NavigationManager {
                     self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
                 }))
                 
+                context.showLoader()
                 self.loginManager.loginWithFingerprint { (success, status) in
+                    context.hideLoader()
                     if success {
                         completion()
                     } else {
@@ -218,10 +220,9 @@ class NavigationManager {
         }
         if !LoginManager.shared.isBearerStillValid {
             if UserDefaults.standard.hasFingerprintSet && !skipFingerprint {
-
-                
-                
+                context.showLoader()
                 self.loginManager.loginWithFingerprint { (success, status) in
+                    context.hideLoader()
                     if success {
                         completion()
                     } else {

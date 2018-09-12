@@ -50,7 +50,9 @@ class FingerprintViewController: UIViewController {
             var error: NSError?
             if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
                 let newFingerprint = NSUUID().uuidString.replacingOccurrences(of: "-", with: "") //strip dashes
+                showLoader()
                 LoginManager.shared.registerFingerprint(fingerprint: newFingerprint) { (success) in
+                    self.hideLoader()
                     if success {
                         print("saved fingerprint")
                         let flags = SecAccessControlCreateWithFlags(nil, kSecAttrAccessibleWhenUnlocked, SecAccessControlCreateFlags.userPresence, nil)
@@ -64,7 +66,7 @@ class FingerprintViewController: UIViewController {
                             SecItemAdd(dict as CFDictionary, nil)
                         } else if status == errSecSuccess {
                             DispatchQueue.main.async {
-                                sw.isOn = false
+                                sw.isOn = true
                             }
                             UserDefaults.standard.hasFingerprintSet = true
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: {

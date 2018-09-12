@@ -196,7 +196,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     
     }
     
-    func hideLoader() {
+    override func hideLoader() {
         DispatchQueue.main.async {
             SVProgressHUD.dismiss()
         }
