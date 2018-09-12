@@ -583,7 +583,7 @@ class LoginManager {
         }
     }
     
-    func loginWithFingerprint(completion: @escaping (Bool) -> Void) {
+    func loginWithFingerprint(completion: @escaping (Bool, OSStatus?) -> Void) {
         let authenticationContext = LAContext()
         var error: NSError?
         if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
@@ -599,23 +599,23 @@ class LoginManager {
                     else {
                         self.log.warning(message: "Fingerprint password is gone")
                         UserDefaults.standard.hasFingerprintSet = false
-                        completion(false)
+                        completion(false, status)
                         return
                 }
                 self.loginUser(email: UserDefaults.standard.userExt!.email, password: password, type: LoginManager.AuthenticationType.fingerprint, completionHandler: { (success, err, str) in
                     if success {
-                        completion(true)
+                        completion(true, status)
                     } else {
                         UserDefaults.standard.hasFingerprintSet = false
-                        completion(false)
+                        completion(false, status)
                     }
                 })
             } else {
-                completion(false)
+                completion(false, status)
                 
             }
         } else {
-            completion(false)
+            completion(false, nil)
         }
     }
     

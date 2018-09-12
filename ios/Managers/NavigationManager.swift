@@ -169,11 +169,24 @@ class NavigationManager {
                     self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
                 }))
                 
-                self.loginManager.loginWithFingerprint { (success) in
+                self.loginManager.loginWithFingerprint { (success, status) in
                     if success {
                         completion()
                     } else {
-                        context.present(cannotUseTouchId, animated: true, completion: nil)
+                        if let status = status, status == errSecUserCanceled {
+                            let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            cannotUseTouchId.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
+                                self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
+                            }))
+                            cannotUseTouchId.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+                            context.present(cannotUseTouchId, animated: true, completion: nil)
+                        } else {
+                            let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                                self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
+                            }))
+                            context.present(cannotUseTouchId, animated: true, completion: nil)
+                        }
                     }
                 }
             } else if UserDefaults.standard.hasPinSet {
@@ -205,16 +218,28 @@ class NavigationManager {
         }
         if !LoginManager.shared.isBearerStillValid {
             if UserDefaults.standard.hasFingerprintSet && !skipFingerprint {
-                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
-                    self.executeWithLogin(context: context, emailEditable: emailEditable, skipFingerprint: true, completion: completion)
-                }))
+
                 
-                self.loginManager.loginWithFingerprint { (success) in
+                
+                self.loginManager.loginWithFingerprint { (success, status) in
                     if success {
                         completion()
                     } else {
-                        context.present(cannotUseTouchId, animated: true, completion: nil)
+                        if let status = status, status == errSecUserCanceled {
+                            let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            cannotUseTouchId.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
+                                self.executeWithLogin(context: context, emailEditable: emailEditable, skipFingerprint: true, completion: completion)
+                            }))
+                            cannotUseTouchId.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+                            context.present(cannotUseTouchId, animated: true, completion: nil)
+                        } else {
+                            let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                                self.executeWithLogin(context: context, emailEditable: emailEditable, skipFingerprint: true, completion: completion)
+                            }))
+                            context.present(cannotUseTouchId, animated: true, completion: nil)
+                        }
+                        
                     }
                 }
             } else if UserDefaults.standard.hasPinSet {

@@ -63,9 +63,23 @@ class FingerprintViewController: UIViewController {
                             dict[kSecClass as String] = kSecClassGenericPassword
                             SecItemAdd(dict as CFDictionary, nil)
                         } else if status == errSecSuccess {
-                            //succesfully saved
+                            DispatchQueue.main.async {
+                                sw.isOn = false
+                            }
+                            UserDefaults.standard.hasFingerprintSet = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: {
+                                self.hideLeftView(self)
+                                self.backPressed(self)
+                            })
+                        } else if status == errSecUserCanceled {
+                            DispatchQueue.main.async {
+                                sw.isOn = false
+                                UserDefaults.standard.hasFingerprintSet = false
+                            }
                         } else {
-                            self.present(cannotUseTouchId, animated: true, completion: nil)
+                            DispatchQueue.main.async {
+                                self.present(cannotUseTouchId, animated: true, completion: nil)
+                            }
                         }
                     }
                 }
