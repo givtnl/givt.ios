@@ -748,3 +748,4 @@
 "AuthenticationIssueTitle" = "Authentication problem";
 "AuthenticationIssueMessage" = "We could not propely identify you. Please try again later.";
 "AuthenticationIssueFallbackMessage" = "We could not properly identify you. Please log in using your access code or password.";
+"CancelledAuthorizationMessage" = "You cancelled the authentication. Do you want to login using your access code/password?";
