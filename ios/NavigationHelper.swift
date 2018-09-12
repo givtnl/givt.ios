@@ -19,4 +19,19 @@ class NavigationHelper {
             context.present(register, animated: true, completion: nil)
         }
     }
+    
+    static func openUrl(url: URL, completion: ((Bool) -> Swift.Void)?) -> Bool {
+        if UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: completion)
+            } else {
+                // Fallback on earlier versions
+                UIApplication.shared.openURL(url)
+                completion?(true)
+            }
+            return true
+        } else {
+            return false
+        }
+    }
 }

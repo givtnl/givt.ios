@@ -188,17 +188,11 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         }
         
         self.log.info(message: "Going to safari")
-        if #available(iOS 10.0, *) {
-            DispatchQueue.main.async {
-                UIApplication.shared.open(url, options: [:], completionHandler: { (status) in
-                    self.popToRootWithDelay()
-                })
-            }
-        } else {
-            DispatchQueue.main.async {
-                if(UIApplication.shared.openURL(url)) {
-                    self.popToRootWithDelay()
-                }
+        DispatchQueue.main.async {
+            if !NavigationHelper.openUrl(url: url, completion: { (status) in
+                self.popToRootWithDelay()
+            }) {
+                self.popToRootWithDelay()
             }
         }
     }

@@ -63,17 +63,9 @@ class ScanCompleteViewController: UIViewController {
         
         if let appScheme = GivtManager.shared.externalIntegration?.appScheme {
             let url = URL(string: appScheme)!
-            if UIApplication.shared.canOpenURL(url) {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: { success in
-                        self.navigationController?.popToRootViewController(animated: true)
-                    })
-                } else {
-                    // Fallback on earlier versions
-                    UIApplication.shared.openURL(url)
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
-            } else {
+            if !NavigationHelper.openUrl(url: url, completion: { success in
+                self.navigationController?.popToRootViewController(animated: true)
+            }){
                 LogService.shared.warning(message: "\(url) was not installed on the device.")
                 self.navigationController?.popToRootViewController(animated: true)
             }

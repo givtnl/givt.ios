@@ -140,14 +140,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb { //coming from safari
             if let appScheme = GivtManager.shared.externalIntegration?.appScheme {
                 let url = URL(string: appScheme)!
-                if UIApplication.shared.canOpenURL(url) {
+                if NavigationHelper.openUrl(url: url, completion: nil) {
                     LogService.shared.info(message: "User just gave, coming back to Givt, now going to \(appScheme)")
-                    if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    } else {
-                        // Fallback on earlier versions
-                        UIApplication.shared.openURL(url)
-                    }
                 } else {
                     LogService.shared.warning(message: "\(url) was not installed on the device.")
                 }
