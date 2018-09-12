@@ -143,10 +143,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items[0].append(accessCode)
             
             if(InfraManager.biometricType() == .touch) {
-                let fingerprint = Setting(name: "touchid", image: #imageLiteral(resourceName: "TouchID"), callback: { self.manageFingerprint() })
+                let fingerprint = Setting(name: NSLocalizedString("TouchID", comment: ""), image: #imageLiteral(resourceName: "TouchID"), callback: { self.manageFingerprint() })
                 items[0].append(fingerprint)
             } else if(InfraManager.biometricType() == .face) {
-                let fingerprint = Setting(name: "faceid", image: #imageLiteral(resourceName: "TouchID"), callback: { self.manageFingerprint() })
+                let fingerprint = Setting(name: NSLocalizedString("FaceID", comment: ""), image: #imageLiteral(resourceName: "FaceID"), callback: { self.manageFingerprint() })
                 items[0].append(fingerprint)
             }
             items[1] = [changeAccount, screwAccount]

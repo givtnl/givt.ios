@@ -63,22 +63,13 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="kgZ-gG-VRF"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22B-OP-WC3">
-                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="getKey:" destination="tmh-Cy-Uwu" eventType="touchUpInside" id="ywR-9G-Fkj"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qon-qd-0rP" firstAttribute="top" secondItem="Gvi-iw-q4X" secondAttribute="top" constant="10" id="Tu1-XB-seF"/>
                             <constraint firstItem="4is-99-TGz" firstAttribute="trailing" secondItem="Gvi-iw-q4X" secondAttribute="trailing" id="Zgp-x6-jGC"/>
                             <constraint firstAttribute="trailing" secondItem="qon-qd-0rP" secondAttribute="trailing" constant="20" id="btl-Rq-LOx"/>
-                            <constraint firstItem="22B-OP-WC3" firstAttribute="centerY" secondItem="Tfr-Bc-1Ss" secondAttribute="centerY" id="ej5-Iq-2gw"/>
                             <constraint firstItem="4is-99-TGz" firstAttribute="top" secondItem="qon-qd-0rP" secondAttribute="bottom" constant="20" id="iIJ-zw-b45"/>
-                            <constraint firstItem="22B-OP-WC3" firstAttribute="centerX" secondItem="Tfr-Bc-1Ss" secondAttribute="centerX" id="nBS-Sz-MA6"/>
                             <constraint firstItem="qon-qd-0rP" firstAttribute="leading" secondItem="Gvi-iw-q4X" secondAttribute="leading" constant="20" id="q08-hU-Hi2"/>
                             <constraint firstItem="4is-99-TGz" firstAttribute="leading" secondItem="Gvi-iw-q4X" secondAttribute="leading" id="rOd-F1-8zT"/>
                         </constraints>
@@ -92,6 +83,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bodyText" destination="qon-qd-0rP" id="lMl-Dg-DFW"/>
+                        <outlet property="menuItem" destination="DQH-WM-A45" id="UFX-Qh-7do"/>
                         <outlet property="switchButton" destination="abP-80-gXP" id="pe8-TB-YTw"/>
                     </connections>
                 </viewController>

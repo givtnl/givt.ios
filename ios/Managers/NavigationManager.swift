@@ -164,7 +164,7 @@ class NavigationManager {
     public func reAuthenticateIfNeeded(context: UIViewController, skipFingerprint: Bool = false, completion: @escaping () -> Void) {
         if !LoginManager.shared.isBearerStillValid {
             if UserDefaults.standard.hasFingerprintSet && !skipFingerprint {
-                let cannotUseTouchId = UIAlertController(title: "Authenticatieprobleem", message: "We konden je niet goed identificeren. Log in met je toegangscode of wachtwoord", preferredStyle: UIAlertControllerStyle.alert)
+                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
                     self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
                 }))
@@ -205,7 +205,7 @@ class NavigationManager {
         }
         if !LoginManager.shared.isBearerStillValid {
             if UserDefaults.standard.hasFingerprintSet && !skipFingerprint {
-                let cannotUseTouchId = UIAlertController(title: "Authenticatieprobleem", message: "We konden je niet goed identificeren. Log in met je toegangscode of wachtwoord", preferredStyle: UIAlertControllerStyle.alert)
+                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
                     self.executeWithLogin(context: context, emailEditable: emailEditable, skipFingerprint: true, completion: completion)
                 }))
