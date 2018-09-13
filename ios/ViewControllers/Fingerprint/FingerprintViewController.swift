@@ -86,7 +86,7 @@ class FingerprintViewController: UIViewController {
                                 UserDefaults.standard.hasFingerprintSet = false
                             }
                         } else {
-                            LogService.shared.warning(message: "Something went wrong setting fingerprint for the first time (\(addedItemStatus))")
+                            LogService.shared.warning(message: "Something went wrong setting fingerprint for the first time (\(status))")
                             DispatchQueue.main.async {
                                 self.present(cannotUseTouchId, animated: true, completion: nil)
                             }
