@@ -139,9 +139,6 @@ class LoginManager {
                             let dict = self.convertToDictionary(text: dataString),
                             let err_description = dict["error_description"] as? String {
                             completionHandler(false, nil, err_description)
-                            if err_description == "NoFingerprintSet" {
-                                UserDefaults.standard.hasFingerprintSet = false
-                            }
                         } else {
                             completionHandler(false, nil, nil)
                         }
