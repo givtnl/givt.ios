@@ -89,6 +89,7 @@ class FingerprintViewController: UIViewController {
                 self.present(cannotUseTouchId, animated: true, completion: nil)
             }
         } else {
+            SecItemDelete(self.query as CFDictionary)
             UserDefaults.standard.hasFingerprintSet = false
         }
         
