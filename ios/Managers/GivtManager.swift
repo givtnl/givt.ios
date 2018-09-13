@@ -409,6 +409,9 @@ final class GivtManager: NSObject {
     }
     
     func getPublicMeta() {
+        if UserDefaults.standard.userExt == nil || UserDefaults.standard.userExt!.guid == nil {
+            return
+        }
         let year = Date().getYear() - 1 //get the previous year
         client.get(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/givts/public-meta?year=\(year)", data: [:]) { (response) in
             if let response = response {
