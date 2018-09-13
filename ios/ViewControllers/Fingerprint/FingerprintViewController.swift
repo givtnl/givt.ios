@@ -54,42 +54,52 @@ class FingerprintViewController: UIViewController {
                 LoginManager.shared.registerFingerprint(fingerprint: newFingerprint) { (success) in
                     self.hideLoader()
                     if success {
-                        print("saved fingerprint")
                         let flags = SecAccessControlCreateWithFlags(nil, kSecAttrAccessibleWhenUnlocked, SecAccessControlCreateFlags.userPresence, nil)
-                        var dict: [String: Any] = [kSecAttrLabel as String: "Fingerprint",
+                        let dict: [String: Any] = [kSecAttrLabel as String: "Fingerprint",
                                                    kSecValueData as String: newFingerprint.data(using: String.Encoding.utf8)!,
                                                    kSecAttrAccessControl as String: flags!]
-                        let status = SecItemUpdate(self.query as CFDictionary, dict as CFDictionary)
-                        
-                        if status == errSecItemNotFound {
-                            dict[kSecClass as String] = kSecClassGenericPassword
-                            let addedItemStatus = SecItemAdd(dict as CFDictionary, nil)
-                            if addedItemStatus == errSecSuccess {
+                        // save empty key
+                        var initialSave = dict
+                        initialSave[kSecClass as String] = kSecClassGenericPassword
+                        initialSave[kSecValueData as String] = "".data(using: .utf8)
+                        let addedItemStatus = SecItemAdd(initialSave as CFDictionary, nil)
+                        if addedItemStatus == errSecSuccess {
+                            LogService.shared.info(message: "Sucessfully saved fingerprint for the first time")
+                            //update the item - force touch id to trigger
+                            let status = SecItemUpdate(self.query as CFDictionary, dict as CFDictionary)
+                            if status == errSecSuccess {
                                 LogService.shared.info(message: "Sucessfully saved fingerprint for the first type")
+                                DispatchQueue.main.async {
+                                    sw.isOn = true
+                                }
+                                UserDefaults.standard.hasFingerprintSet = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: {
+                                    self.hideLeftView(self)
+                                    self.backPressed(self)
+                                })
+                            } else if status == errSecUserCanceled {
+                                LogService.shared.info(message: "User cancelled setting fingerprint")
+                                DispatchQueue.main.async {
+                                    sw.isOn = false
+                                    UserDefaults.standard.hasFingerprintSet = false
+                                }
                             } else {
-                                LogService.shared.warning(message: "Something went wrong setting fingerprint for the first time (\(addedItemStatus))")
-                            }
-                        } else if status == errSecSuccess {
-                            LogService.shared.info(message: "Sucessfully saved fingerprint for the first type")
-                            DispatchQueue.main.async {
-                                sw.isOn = true
-                            }
-                            UserDefaults.standard.hasFingerprintSet = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: {
-                                self.hideLeftView(self)
-                                self.backPressed(self)
-                            })
-                        } else if status == errSecUserCanceled {
-                            LogService.shared.info(message: "User cancelled setting fingerprint")
-                            DispatchQueue.main.async {
-                                sw.isOn = false
-                                UserDefaults.standard.hasFingerprintSet = false
+                                LogService.shared.warning(message: "Something went wrong setting fingerprint for the first time (\(status))")
+                                DispatchQueue.main.async {
+                                    self.present(cannotUseTouchId, animated: true, completion: nil)
+                                }
                             }
                         } else {
-                            LogService.shared.warning(message: "Something went wrong setting fingerprint for the first time (\(status))")
+                            LogService.shared.warning(message: "Something went wrong setting fingerprint for the first time (\(addedItemStatus))")
                             DispatchQueue.main.async {
                                 self.present(cannotUseTouchId, animated: true, completion: nil)
                             }
+                        }
+                        print("saved fingerprint")
+                
+                    } else {
+                        DispatchQueue.main.async {
+                            self.present(cannotUseTouchId, animated: true, completion: nil)
                         }
                     }
                 }
