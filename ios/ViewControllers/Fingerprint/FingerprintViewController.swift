@@ -63,8 +63,14 @@ class FingerprintViewController: UIViewController {
                         
                         if status == errSecItemNotFound {
                             dict[kSecClass as String] = kSecClassGenericPassword
-                            SecItemAdd(dict as CFDictionary, nil)
+                            let addedItemStatus = SecItemAdd(dict as CFDictionary, nil)
+                            if addedItemStatus == errSecSuccess {
+                                LogService.shared.info(message: "Sucessfully saved fingerprint for the first type")
+                            } else {
+                                LogService.shared.warning(message: "Something went wrong setting fingerprint for the first time (\(addedItemStatus))")
+                            }
                         } else if status == errSecSuccess {
+                            LogService.shared.info(message: "Sucessfully saved fingerprint for the first type")
                             DispatchQueue.main.async {
                                 sw.isOn = true
                             }
@@ -74,11 +80,13 @@ class FingerprintViewController: UIViewController {
                                 self.backPressed(self)
                             })
                         } else if status == errSecUserCanceled {
+                            LogService.shared.info(message: "User cancelled setting fingerprint")
                             DispatchQueue.main.async {
                                 sw.isOn = false
                                 UserDefaults.standard.hasFingerprintSet = false
                             }
                         } else {
+                            LogService.shared.warning(message: "Something went wrong setting fingerprint for the first time (\(addedItemStatus))")
                             DispatchQueue.main.async {
                                 self.present(cannotUseTouchId, animated: true, completion: nil)
                             }

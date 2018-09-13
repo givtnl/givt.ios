@@ -604,8 +604,10 @@ class LoginManager {
                 }
                 self.loginUser(email: UserDefaults.standard.userExt!.email, password: password, type: LoginManager.AuthenticationType.fingerprint, completionHandler: { (success, err, str) in
                     if success {
+                        self.log.info(message: "Succesfully logged in with biometrics")
                         completion(true, status)
                     } else {
+                        self.log.info(message: "Could not log in using biometrics. Defaulting to passcode/password")
                         UserDefaults.standard.hasFingerprintSet = false
                         completion(false, status)
                     }
