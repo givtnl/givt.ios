@@ -154,12 +154,6 @@
 /*Placeholder voor Straat en huisnummer*/
 "StreetAndHouseNumber" = "Straat en huisnummer";
 
-/*TouchID*/
-"TouchID" = "TouchID";
-
-/*TouchID titel op de touchid pagina*/
-"TouchIDText" = "Wil je TouchID gebruiken?";
-
 /*"Nogmaals proberen" knop op de geef mislukt pagina*/
 "TryAgain" = "Opnieuw proberen";
 
