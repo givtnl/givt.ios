@@ -145,6 +145,7 @@
 		D7F3A84521480161008B65AE /* Fingerprint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F3A84421480161008B65AE /* Fingerprint.storyboard */; };
 		D7F3A84A214801EA008B65AE /* FingerprintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F3A849214801EA008B65AE /* FingerprintViewController.swift */; };
 		D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F3A84B21480216008B65AE /* FingerprintNavigationController.swift */; };
+		D7F3A84E214A6925008B65AE /* BadgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F3A84D214A6925008B65AE /* BadgeService.swift */; };
 		D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F654921FA8B390007816B0 /* PermissionViewController.swift */; };
 		D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */; };
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
@@ -326,6 +327,7 @@
 		D7F3A84421480161008B65AE /* Fingerprint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Fingerprint.storyboard; sourceTree = "<group>"; };
 		D7F3A849214801EA008B65AE /* FingerprintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintViewController.swift; sourceTree = "<group>"; };
 		D7F3A84B21480216008B65AE /* FingerprintNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintNavigationController.swift; sourceTree = "<group>"; };
+		D7F3A84D214A6925008B65AE /* BadgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeService.swift; sourceTree = "<group>"; };
 		D7F654921FA8B390007816B0 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalAnimation.swift; sourceTree = "<group>"; };
 		D7FB251C1F4D6D2F0011A14E /* AppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				D787AE2A1FCD91680004BDB1 /* LogService.swift */,
 				D787AE2E1FCD9EFF0004BDB1 /* Interfaces */,
 				D796043520C00607005B609B /* BeaconService.swift */,
+				D7F3A84D214A6925008B65AE /* BadgeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1055,6 +1058,7 @@
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */,
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
+				D7F3A84E214A6925008B65AE /* BadgeService.swift in Sources */,
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D748F5FC2061425400B25BC2 /* HistoryTableViewCell.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
