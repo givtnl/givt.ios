@@ -36,6 +36,7 @@ extension UserDefaults {
         case amountPresets
         case accountType
         case fingerprintSet
+        case badges
     }
     
     enum Showcase: String {
@@ -57,6 +58,20 @@ extension UserDefaults {
                 }
             }
             return NSLocale.current.currencySymbol ?? "€"
+        }
+    }
+    
+    var badges: [Int] {
+        get {
+            guard let badges = array(forKey: UserDefaultsKeys.badges.rawValue) as? [Int] else {
+                return [Int]()
+            }
+            return badges
+        }
+        set(value)
+        {
+            set(value, forKey: UserDefaultsKeys.badges.rawValue)
+            synchronize()
         }
     }
     

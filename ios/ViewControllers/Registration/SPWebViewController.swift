@@ -92,7 +92,6 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
                 if success {
                     self.log.info(message: "Finished mandate signing")
                     DispatchQueue.main.async {
-                        UIApplication.shared.applicationIconBadgeNumber = 0
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
                         self.show(vc, sender: nil)
                     }

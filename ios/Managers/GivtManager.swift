@@ -138,6 +138,8 @@ final class GivtManager: NSObject {
         }
         
         getPublicMeta()
+        
+        hasOfflineGifts() ? BadgeService.shared.addBadge(badge: .offlineGifts) : BadgeService.shared.removeBadge(badge: .offlineGifts)
     }
     
     @objc func internetChanged(note: Notification){
@@ -148,8 +150,8 @@ final class GivtManager: NSObject {
                 log.info(message: "Started processing chached Givts")
                 giveInBackground(transactions: [element])
                 UserDefaults.standard.offlineGivts.remove(at: index)
-                print(UserDefaults.standard.offlineGivts)
                 NotificationCenter.default.post(name: Notification.Name("OfflineGiftsSent"), object: nil)
+                BadgeService.shared.removeBadge(badge: .offlineGifts)
             }
         } else {
             log.info(message: "App got disconnected")
@@ -332,11 +334,7 @@ final class GivtManager: NSObject {
         for tr in transactions {
             UserDefaults.standard.offlineGivts.append(tr)
         }
-        
-        print(UserDefaults.standard.offlineGivts)
-        for t in UserDefaults.standard.offlineGivts {
-            print(t.amount)
-        }
+        BadgeService.shared.addBadge(badge: .offlineGifts)
     }
     
     private func findAndRemoveCachedTransactions(transactions: [Transaction]) {
