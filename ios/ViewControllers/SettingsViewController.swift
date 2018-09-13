@@ -59,7 +59,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
+        NotificationCenter.default.addObserver(self, selector: #selector(offlineGiftsSent), name: Notification.Name("OfflineGiftsSent"), object: nil)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func offlineGiftsSent(notification:Notification) {
+        loadSettings()
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,7 +127,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items.append([])
             items.append([])
             
-            let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: UserDefaults.standard.offlineGivts.count > 0, callback: { self.openHistory() })
+
+            let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[0].append(givts)
             let givtsTaxOverviewAvailable: Setting?
             if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
@@ -266,9 +272,15 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private func openHistory() {
         logService.info(message: "User is opening history")
-        let vc = storyboard?.instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
-        vc.transitioningDelegate = self.slideFromRightAnimation
-        NavigationManager.shared.pushWithLogin(vc, context: self)
+        if GivtManager.shared.hasOfflineGifts() {
+            let alert = UIAlertController(title: NSLocalizedString("OfflineGiftsTitle", comment: ""), message: NSLocalizedString("OfflineGiftsMessage", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
+            vc.transitioningDelegate = self.slideFromRightAnimation
+            NavigationManager.shared.pushWithLogin(vc, context: self)
+        }
     }
     
     private func openGiveLimit() {

@@ -87,6 +87,10 @@ final class GivtManager: NSObject {
         return !id.substring(16..<19).matches("c[0-9]|d[be]")
     }
     
+    func hasOfflineGifts() -> Bool {
+        return UserDefaults.standard.offlineGivts.count > 0
+    }
+    
     func determineOrganisationName(namespace: String) -> String? {
         guard let organisation = orgBeaconList?.first(where: { (orgBeacon) -> Bool in
             return orgBeacon.EddyNameSpace == namespace
@@ -145,6 +149,7 @@ final class GivtManager: NSObject {
                 giveInBackground(transactions: [element])
                 UserDefaults.standard.offlineGivts.remove(at: index)
                 print(UserDefaults.standard.offlineGivts)
+                NotificationCenter.default.post(name: Notification.Name("OfflineGiftsSent"), object: nil)
             }
         } else {
             log.info(message: "App got disconnected")

@@ -132,7 +132,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         thirdView.isHidden = true
         thirdLine.isHidden = true
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(offlineGiftsSent), name: Notification.Name("OfflineGiftsSent"), object: nil)
+    }
+    
+    @objc func offlineGiftsSent(notification:Notification) {
+        menu.image = LoginManager.shared.isFullyRegistered && !GivtManager.shared.hasOfflineGifts() ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
     }
     
     
@@ -153,7 +157,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         checkAmounts()
         
         log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
-        menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
+        menu.image = LoginManager.shared.isFullyRegistered && !GivtManager.shared.hasOfflineGifts() ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
         
         if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
             self._cameFromFAQ = true
