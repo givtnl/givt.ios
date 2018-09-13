@@ -763,3 +763,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OfflineGiftsTitle" = "Offline giften";
 "OfflineGiftsMessage" = "Om er voor te zorgen dat je giften op tijd aankomen, is het even nodig om je internetverbinding aan te zetten zodat de giften die je hebt gedaan te kunnen versturen naar de server.";
 "EnrollFingerprint" = "Plaats nu je vinger op de vingerafdruk-sensor.";
+
+/*Fuzzy*/
+"FingerprintMessageAlert" = "Gebruik {0} om in te loggen voor {1}";
