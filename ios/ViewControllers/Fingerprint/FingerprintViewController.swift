@@ -63,7 +63,7 @@ class FingerprintViewController: UIViewController {
                         initialSave[kSecClass as String] = kSecClassGenericPassword
                         initialSave[kSecValueData as String] = "".data(using: .utf8)
                         let addedItemStatus = SecItemAdd(initialSave as CFDictionary, nil)
-                        if addedItemStatus == errSecSuccess {
+                        if addedItemStatus == errSecSuccess || addedItemStatus == errSecDuplicateItem {
                             LogService.shared.info(message: "Sucessfully saved fingerprint for the first time")
                             //update the item - force touch id to trigger
                             let status = SecItemUpdate(self.query as CFDictionary, dict as CFDictionary)
