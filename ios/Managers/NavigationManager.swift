@@ -175,6 +175,7 @@ class NavigationManager {
                     if success {
                         completion()
                     } else {
+                        print(status)
                         if let status = status, status == errSecUserCanceled {
                             let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             cannotUseTouchId.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
@@ -226,6 +227,7 @@ class NavigationManager {
                     if success {
                         completion()
                     } else {
+                        print(status)
                         if let status = status, status == errSecUserCanceled {
                             let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             cannotUseTouchId.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler: { (action) in
