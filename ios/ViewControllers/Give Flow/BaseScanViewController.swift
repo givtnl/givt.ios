@@ -140,7 +140,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     func shouldShowMandate(callback: @escaping (String) -> Void) {
-        if UserDefaults.standard.isTempUser || UserDefaults.standard.mandateSigned == true {
+        if UserDefaults.standard.isTempUser || UserDefaults.standard.mandateSigned == true || !AppServices.shared.connectedToNetwork() {
             print("not showing mandate")
             callback("")
             return
