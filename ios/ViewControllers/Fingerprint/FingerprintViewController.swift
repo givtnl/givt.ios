@@ -14,7 +14,7 @@ class FingerprintViewController: UIViewController {
 
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var menuItem: UILabel!
-    let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint"]
+    var query: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecUseOperationPrompt as String: "Gebruik je vingerafdruk om in te loggen."]
     @IBOutlet var switchButton: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +23,15 @@ class FingerprintViewController: UIViewController {
             title = NSLocalizedString("TouchID", comment: "")
             menuItem.text = NSLocalizedString("TouchID", comment: "")
             bodyText.text = NSLocalizedString("TouchIDUsage", comment: "")
+            
         } else if InfraManager.biometricType() == .face {
             title = NSLocalizedString("FaceID", comment: "")
             menuItem.text = NSLocalizedString("FaceID", comment: "")
             bodyText.text = NSLocalizedString("FaceIDUsage", comment: "")
         }
+        query[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")
+                                                    .replacingOccurrences(of: "{0}", with: title!)
+                                                    .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.email)
         // Do any additional setup after loading the view.
     }
 
@@ -55,7 +59,7 @@ class FingerprintViewController: UIViewController {
                     self.hideLoader()
                     if success {
                         let flags = SecAccessControlCreateWithFlags(nil, kSecAttrAccessibleWhenUnlocked, SecAccessControlCreateFlags.userPresence, nil)
-                        let dict: [String: Any] = [kSecAttrLabel as String: "Fingerprint",
+                        var dict: [String: Any] = [kSecAttrLabel as String: "Fingerprint",
                                                    kSecValueData as String: newFingerprint.data(using: String.Encoding.utf8)!,
                                                    kSecAttrAccessControl as String: flags!]
                         // save empty key
