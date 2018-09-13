@@ -746,3 +746,6 @@
 "OfflineGiftsTitle" = "Offline donations";
 "OfflineGiftsMessage" = "To make sure your donations arrive on time, your internet connection needs to be turned on so that the donations you made can be sent to the server.";
 "EnrollFingerprint" = "Place your finger on the sensor.";
+
+/*Fuzzy*/
+"FingerprintMessageAlert" = "Use {0} to log in for {1}";
