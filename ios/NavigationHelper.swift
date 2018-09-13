@@ -10,12 +10,15 @@ import Foundation
 import UIKit
 
 class NavigationHelper {
-    static func showRegistration(context: UIViewController, email: String) {
+    static func showRegistration(context: UIViewController, email: String, password: String? = nil) {
         DispatchQueue.main.async {
             let userExt = UserDefaults.standard.userExt
             userExt?.email = email
             UserDefaults.standard.userExt = userExt
             let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "RegistrationEmailPW") as! RegistrationViewController
+            vc.passwordField = password
+            register.setViewControllers([vc], animated: false)
             context.present(register, animated: true, completion: nil)
         }
     }

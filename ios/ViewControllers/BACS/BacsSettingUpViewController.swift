@@ -64,7 +64,7 @@ class BacsSettingUpViewController: UIViewController {
     @IBAction func next(_ sender: Any) {
         NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
             SVProgressHUD.show()
-            LoginManager.shared.getUserExtObject(completion: { (userExt) in
+            LoginManager.shared.getUserExt(completion: { (userExt) in
                 SVProgressHUD.dismiss()
                 guard let userExt = userExt else {
                     let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)

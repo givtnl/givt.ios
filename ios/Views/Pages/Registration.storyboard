@@ -15,7 +15,7 @@
         <!--Registration View Controller-->
         <scene sceneID="pKr-fG-nUB">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="rSQ-dn-6aJ" customClass="RegistrationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationEmailPW" automaticallyAdjustsScrollViewInsets="NO" id="rSQ-dn-6aJ" customClass="RegistrationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yaR-1P-rbQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

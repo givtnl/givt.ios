@@ -82,7 +82,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SVProgressHUD.show()
-        loginManager.getUserExtObject { (userExtObject) in
+        loginManager.getUserExt { (userExtObject) in
             SVProgressHUD.dismiss()
             self.uExt = userExtObject
             guard let userExt = userExtObject else {
@@ -171,7 +171,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.saveAction = { newPhone in
                 NavigationManager.shared.reAuthenticateIfNeeded(context:self, completion: {
                     SVProgressHUD.show()
-                    self.loginManager.getUserExtObject(completion: {(userExt) in
+                    self.loginManager.getUserExt(completion: {(userExt) in
                         guard let userExt = userExt else {
                             DispatchQueue.main.async {
                                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
@@ -217,7 +217,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.saveAction = { s in
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                     SVProgressHUD.show()
-                    self.loginManager.getUserExtObject(completion: { (userExt) in
+                    self.loginManager.getUserExt(completion: { (userExt) in
                         guard let userExt = userExt else
                         {
                             DispatchQueue.main.async {

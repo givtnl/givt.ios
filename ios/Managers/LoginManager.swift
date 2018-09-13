@@ -106,8 +106,19 @@ class LoginManager {
                                 UserDefaults.standard.bearerExpiration = date!
                                 self.userClaim = .give
                                 UserDefaults.standard.isLoggedIn = true
-                                self.getUserExt(completionHandler: { (status) in
-                                    if status {
+                                self.getUserExt(completion: { (obj) in
+                                    if let uext = obj {
+                                        UserDefaults.standard.isTempUser = uext.IsTempUser
+                                        var config: UserExt = UserExt()
+                                        if let oldConfig = UserDefaults.standard.userExt {
+                                            config = oldConfig
+                                        }
+                                        config.guid = uext.GUID
+                                        config.email = uext.Email
+                                        
+                                        UserDefaults.standard.userExt = config
+                                        UserDefaults.standard.amountLimit = (uext.AmountLimit == 0) ? 499 : uext.AmountLimit
+                                        
                                         GivtManager.shared.getBeaconsFromOrganisation(completionHandler: { (status) in
                                             //do nothing
                                         })
@@ -162,10 +173,8 @@ class LoginManager {
         }
         return nil
     }
-    
-    
-    
-    func getUserExtObject(completion: @escaping(LMUserExt?) -> Void) {
+
+    func getUserExt(completion: @escaping(LMUserExt?) -> Void) {
         client.get(url: "/api/UsersExtension", data: [:]) { (response) in
             guard let response = response else {
                 completion(nil)
@@ -188,33 +197,6 @@ class LoginManager {
             } else {
                 self.log.error(message: "Status was NOT ok from getting UserExt object")
                 completion(nil)
-            }
-        }
-    }
-    
-    func getUserExt(completionHandler: @escaping (Bool) -> Void) {
-        client.get(url: "/api/UsersExtension", data: [:]) { (res) in
-            if let res = res, let data = res.data, res.basicStatus == .ok {
-                do {
-                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                    print(parsedData)
-                    UserDefaults.standard.isTempUser = Bool(truncating: parsedData["IsTempUser"] as! NSNumber)
-                    var config: UserExt = UserExt()
-                    if let oldConfig = UserDefaults.standard.userExt {
-                        config = oldConfig
-                    }
-                    config.guid = parsedData["GUID"] as! String
-                    config.email = parsedData["Email"] as! String
-
-                    UserDefaults.standard.userExt = config
-                    UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 499 : parsedData["AmountLimit"] as! Int
-                    completionHandler(true)
-                } catch let err as NSError {
-                    completionHandler(false)
-                    print(err)
-                }
-            } else {
-                completionHandler(false)
             }
         }
     }

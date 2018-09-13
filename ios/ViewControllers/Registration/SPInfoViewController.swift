@@ -73,7 +73,7 @@ class SPInfoViewController: UIViewController {
 
         NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
             SVProgressHUD.show()
-            LoginManager.shared.getUserExtObject { (userExtension) in
+            LoginManager.shared.getUserExt { (userExtension) in
                 guard let userInfo = userExtension else {
                     self.log.warning(message: "Mandate url is empty, what is going on?")
                     SVProgressHUD.dismiss()
