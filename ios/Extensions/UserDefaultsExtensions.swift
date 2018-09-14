@@ -177,10 +177,23 @@ extension UserDefaults {
     
     var hasFingerprintSet: Bool {
         get {
-            return bool(forKey: UserDefaultsKeys.fingerprintSet.rawValue)
+            if let fingerprintByGuid = dictionary(forKey: UserDefaultsKeys.fingerprintSet.rawValue) as? [String: Bool],
+                let u = userExt,
+                let value = fingerprintByGuid[u.guid] {
+                return value
+            }
+            return false
         }
         set(value) {
-            set(value, forKey: UserDefaultsKeys.fingerprintSet.rawValue)
+            var fingerprintPerGuid: [String: Bool] = [:]
+            if let original = dictionary(forKey: UserDefaultsKeys.fingerprintSet.rawValue) as? [String: Bool] {
+                fingerprintPerGuid = original
+            }
+            
+            if let uExt = userExt {
+                fingerprintPerGuid[uExt.guid] = value
+                set(fingerprintPerGuid, forKey: UserDefaultsKeys.fingerprintSet.rawValue)
+            }
             synchronize()
         }
     }
