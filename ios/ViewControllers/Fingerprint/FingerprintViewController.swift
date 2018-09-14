@@ -14,7 +14,7 @@ class FingerprintViewController: UIViewController {
 
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var menuItem: UILabel!
-    var query: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecUseOperationPrompt as String: "Gebruik je vingerafdruk om in te loggen."]
+    var query: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecUseOperationPrompt as String: "Gebruik je vingerafdruk om in te loggen.", kSecAttrAccount as String: UserDefaults.standard.userExt!.email]
     @IBOutlet var switchButton: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,8 @@ class FingerprintViewController: UIViewController {
                         let flags = SecAccessControlCreateWithFlags(nil, kSecAttrAccessibleWhenUnlocked, SecAccessControlCreateFlags.userPresence, nil)
                         var dict: [String: Any] = [kSecAttrLabel as String: "Fingerprint",
                                                    kSecValueData as String: newFingerprint.data(using: String.Encoding.utf8)!,
-                                                   kSecAttrAccessControl as String: flags!]
+                                                   kSecAttrAccessControl as String: flags!,
+                                                   kSecAttrAccount as String: UserDefaults.standard.userExt!.email]
                         // save empty key
                         var initialSave = dict
                         initialSave[kSecClass as String] = kSecClassGenericPassword
