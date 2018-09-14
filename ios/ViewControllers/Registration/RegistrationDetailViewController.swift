@@ -183,6 +183,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     func setupPaymentView() {
         iban = CustomUITextField()
         iban.awakeFromNib()
+        iban.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         iban.font = UIFont(name: "Avenir-Light", size: 16)
         iban.borderStyle = .none
         paymentView.isUserInteractionEnabled = true
