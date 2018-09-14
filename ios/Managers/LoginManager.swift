@@ -582,7 +582,23 @@ class LoginManager {
         let authenticationContext = LAContext()
         var error: NSError?
         if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
-            let localQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecMatchLimit as String: kSecMatchLimitOne,kSecReturnAttributes as String: true, kSecReturnData as String: true]
+            var localQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecMatchLimit as String: kSecMatchLimitOne,kSecReturnAttributes as String: true, kSecReturnData as String: true]
+            if #available(iOS 11.0, *) {
+                if authenticationContext.biometryType == .touchID {
+                    localQuery[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")
+                        .replacingOccurrences(of: "{0}", with: NSLocalizedString("TouchID", comment: ""))
+                        .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.email)
+                } else if authenticationContext.biometryType == .faceID {
+                    localQuery[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")
+                        .replacingOccurrences(of: "{0}", with: NSLocalizedString("FaceID", comment: ""))
+                        .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.email)
+                }
+            } else {
+                // Fallback on earlier versions
+                localQuery[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")
+                    .replacingOccurrences(of: "{0}", with: NSLocalizedString("TouchID", comment: ""))
+                    .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.email)
+            }
             
             var item: CFTypeRef?
             let status = SecItemCopyMatching(localQuery as CFDictionary, &item)
