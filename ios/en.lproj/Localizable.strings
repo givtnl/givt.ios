@@ -749,3 +749,5 @@
 
 /*Fuzzy*/
 "FingerprintMessageAlert" = "Use {0} to log in for {1}";
+"LoginFingerprint" = "Login using your fingerprint";
+"LoginFingerprintCancel" = "Don't use fingerprint";
