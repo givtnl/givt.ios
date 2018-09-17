@@ -45,7 +45,6 @@
 "Give" = "Give";
 
 /*"Op afstand geven" knop; wordt getoond op de pagina wanneer het scannen niet lukt*/
-/*Fuzzy*/
 "SelectReceiverButton" = "Select recipient";
 
 /*maximum donation amount*/
@@ -373,8 +372,6 @@
 
 /*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
 "FAQantwoord9" = "Press the menu at the top left of the ‘Amount’ screen to access your app menu. To get access you have to login using your e-mail address and password or passcode. Choose ‘Donations’ to find an overview of your recent activity. This list consists of the name of the recipient, time and date. The coloured line indicates the status of the donation: In process, processed, refused by bank, or cancelled by user.\nYou can request an overview of your donations for your tax declaration at the end of each year.\n\nThe video below demonstrates this:";
-
-/*Fuzzy*/
 "GivtIsBeingProcessed" = "Thank you for your Givt to {0}!\nYou can check the status in the overview.";
 "OfflineGegevenGivtMessage" = "Thank you for your Givt!\n\nWhen there's a good connection with the Givt-server, your Givt will be processed.\nYou can check the status in the overview.";
 "OfflineGegevenGivtMessageWithOrg" = "Thank you for your Givt to {0}!\n\nWhen there's a good connection with the Givt-server, your Givt will be processed.\nYou can check the status in the overview.";
@@ -532,11 +529,7 @@
 "AddCollectConfirm" = "Do you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
 "FAQantwoord0" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +31 320 320 115 or by sending an e-mail to support@givtapp.net.";
-
-/*Fuzzy*/
 "PersonalPageHeader" = "Change your account data here.";
-
-/*Fuzzy*/
 "PersonalPageSubHeader" = "Would you like to change your name? Send an e-mail to support@givtapp.net.";
 "TitlePersonalInfo" = "Personal information";
 "PersonalInfoTempUser" = "Hi there, fast giver! You're using a temporary account. We have not received your personal details yet.";
@@ -671,15 +664,9 @@
 "ChangeIBAN" = "Change IBAN";
 "SmsSuccess" = "Code sent via SMS";
 "SmsFailed" = "Please try again later";
-
-/*Fuzzy*/
 "KerkdienstGemistQuestion" = "How can I give with Givt through the Kerkdienst Gemist App?";
 "KerkdienstGemistAnswer" = "If you’re watching using the Kerkdienst Gemist App, you can easily give with Givt when your church uses this service. At the bottom of the page, you’ll find a small button that will take you to the Givt-app. Choose an amount, confirm with 'Yes, please' and you’re done! Need some more guidance? Check the instruction video below!";
-
-/*Fuzzy*/
 "ExternalSuggestionLabel" = "We see you are giving from the {0} app. Would you like to give to {1}?";
-
-/*Fuzzy*/
 "ChooseHowIGive" = "No, I'd like to decide how I give myself";
 "AndersGeven" = "Give differently";
 "KerkdienstGemist" = "Kerkdienst Gemist";
@@ -699,15 +686,9 @@
 "SortCodePlaceholder" = "Sort code";
 "BankAccountNumberPlaceholder" = "Bank account number";
 "BacsSetupTitle" = "Setting up Direct Debit Instruction";
-
-/*Fuzzy*/
 "BacsSetupBody" = "By continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction will be sent to you by email within 3 working days or no later than 10 working days before the first collection.";
 "BacsUnderstoodNotice" = "I have read and understood the advance notice";
-
-/*Fuzzy*/
 "BacsVerifyTitle" = "Verify your details";
-
-/*Fuzzy*/
 "BacsVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'\n\nThe company name wich will appear on your bank statement against the Direct Debit will be Givt Ltd.";
 "BacsReadDDGuarantee" = "Read Direct Debit Guarantee";
 "BacsDDGuarantee" = "- The Guarantee is offered by all banks and building societies that accept instructions to pay Direct Debits.\n- If there are any changes to the amount date or frequency of your Direct Debit, the organisation will notify you (normally 10 working days) in advance of your account being debited or as otherwise agreed.\n- If an error is made in the payment of your Direct Debit, by the organisation or your bank or building society, you are entitled to a full and immediate refund of the amount paid from your bank or building society.\n- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to.\n- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.";
@@ -746,8 +727,6 @@
 "OfflineGiftsTitle" = "Offline donations";
 "OfflineGiftsMessage" = "To make sure your donations arrive on time, your internet connection needs to be activated so that the donations you made can be sent to the server.";
 "EnrollFingerprint" = "Place your finger on the sensor.";
-
-/*Fuzzy*/
 "FingerprintMessageAlert" = "Use {0} to log in for {1}";
 "LoginFingerprint" = "Login using your fingerprint";
 "LoginFingerprintCancel" = "Don't use fingerprint";
