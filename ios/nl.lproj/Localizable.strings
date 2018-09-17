@@ -50,7 +50,6 @@
 
 /*Op afstand geven en het bedrag overmaken is volgens mij niet hetzelfde!!*/
 /*"Op afstand geven" knop; wordt getoond op de pagina wanneer het scannen niet lukt*/
-/*Fuzzy*/
 "SelectReceiverButton" = "Ontvanger selecteren";
 
 /*"Geeflimiet" knop bij de instellingen*/
@@ -88,7 +87,6 @@
 
 /*"collectemiddel" blijft vreemd. Alternatieven: "collectebus of -zak" of "inzamelobject" of "Givt logo"*/
 /*Titel op de scanpagina */
-/*Fuzzy*/
 "MakeContact" = "Dit is het Givt-moment. \nBeweeg nu je telefoon langs de\ncollectebus, -zak of -mand.";
 
 /*"Volgende" knop*/
@@ -390,8 +388,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
 "FAQantwoord9" = "Druk op het menu linksbovenin om je app-menu te openen. Om toegang te krijgen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies voor 'Giften' om een overzicht van je giften weer te geven. Je kunt hier ook een jaarlijks giftenoverzicht downloaden voor de belastingaangifte.\nDe giften staan in een lijst met naam van de ontvanger, tijd en datum. Aan de gekleurde streep (links van je gift) zie je direct wat de status is: wordt verwerkt, verwerkt, geweigerd door bank of geannuleerd door gever.\nIn het filmpje hieronder kan je zien hoe dat gaat:";
-
-/*Fuzzy*/
 "GivtIsBeingProcessed" = "Bedankt voor je Givt aan {0}!\nKijk voor de status in je overzicht.";
 "OfflineGegevenGivtMessage" = "Bedankt voor je Givt!\n\nZodra er een goede verbinding is met de Givt-server, wordt je Givt verwerkt.\nKijk voor de status in je overzicht.";
 "OfflineGegevenGivtMessageWithOrg" = "Bedankt voor je Givt!\n\nZodra er een goede verbinding is met de Givt-server, wordt je Givt aan {0} verwerkt.\nKijk voor de status in je overzicht.";
@@ -549,11 +545,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AddCollectConfirm" = "Wil je een tweede collecte toevoegen?";
 "FAQvraag0" = "Feedback of vragen?";
 "FAQantwoord0" = "Je kunt ons een bericht sturen door in het app-menu naar \"Over Givt / Contact\" te gaan en daar je vraag te stellen. We zijn natuurlijk ook bereikbaar via +31 320 320 115 of support@givtapp.net.";
-
-/*Fuzzy*/
 "PersonalPageHeader" = "Wijzig hieronder je gegevens.";
-
-/*Fuzzy*/
 "PersonalPageSubHeader" = "Wil je graag je naam veranderen? Stuur dan een mailtje naar support@givtapp.net.";
 "TitlePersonalInfo" = "Mijn gegevens";
 "PersonalInfoTempUser" = "Hé, snelle gever! Je gebruikt een tijdelijk account. We hebben je gegevens dus nog niet ontvangen.";
@@ -568,8 +560,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*antwoord op vraag15*/
 "FAQantwoord15" = "Ja, je gift met Givt is belastingaftrekbaar indien die aan een algemeen nut beogende instelling (ANBI), een culturele ANBI of aan een sociaal belang behartigende instelling (SBBI) wordt gedaan. Ga na of de kerk of stichting ook op die manier geregistreerd is. Het verzamelen van je giften voor de belastingaangifte is altijd een hele klus. Als je geeft met Givt hoeft dat niet meer. Je kan namelijk voor elk jaar een overzicht van al jouw giften die gegeven zijn met Givt downloaden. Je kan het overzicht downloaden bij je giftenoverzicht in het app-menu. Dit overzicht kan je dan mooi gebruiken als bewijs bij je belastingaangifte. Zo gepiept, dus.";
-
-/*Fuzzy*/
 "WelcomeContinue" = "Aan de slag";
 "EnterEmail" = "Aan de slag";
 "FinalizeRegistrationPopupText" = "Om je giften op het goede adres te kunnen bezorgen, moet je nog even je registratie voltooien.";
@@ -692,11 +682,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SmsFailed" = "Probeer later opnieuw";
 "KerkdienstGemistQuestion" = "Hoe kan ik geven met Givt via de Kerkdienst Gemist-app?";
 "KerkdienstGemistAnswer" = "Als je via de Kerkdienst Gemist-app aan het kijken bent, kan je ook meteen geven met Givt als je kerk dat gebruikt. Onderin de pagina vind je een knop die je doorstuurt naar de Givt-app. Kies een bedrag, druk op 'Ja, graag' wanneer de suggestie verschijnt en klaar! Nog niet helemaal duidelijk? Bekijk dan onderstaand instructiefilmpje.";
-
-/*Fuzzy*/
 "ExternalSuggestionLabel" = "We zien dat je geeft vanuit {0}. Wil je geven aan {1}?";
-
-/*Fuzzy*/
 "ChooseHowIGive" = "Nee, ik wil zelf kiezen hoe ik geef";
 "AndersGeven" = "Anders geven";
 "KerkdienstGemist" = "Kerkdienst Gemist";
@@ -716,15 +702,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SortCodePlaceholder" = "Sort code";
 "BankAccountNumberPlaceholder" = "Bank account number";
 "BacsSetupTitle" = "Instellen van incasso-instructie";
-
-/*Fuzzy*/
 "BacsSetupBody" = "Door verder te gaan, gaat u ermee akkoord dat u de accounthouder bent en dat u de enige persoon bent die autorisaties voor dit account moet autoriseren.\n\nDe details van uw incassoinstructie worden u binnen 3 werkdagen of uiterlijk 10 werkdagen vóór de eerste verzameling per e-mail toegestuurd.";
 "BacsUnderstoodNotice" = "Ik heb de voorinlichting gelezen en goedgekeurd";
-
-/*Fuzzy*/
 "BacsVerifyTitle" = "Controleer je gegevens";
-
-/*Fuzzy*/
 "BacsVerifyBody" = "Zijn deze gegevens correct? Zo niet, annuleer de registratie en verander je persoonlijke gegevens.\n\nDe bedrijfsnaam die op je transactie zal te zien zijn is 'Givt Ltd.'.";
 "BacsReadDDGuarantee" = "Lees de incasso garantie";
 "BacsDDGuarantee" = "- De Garantie wordt aangeboden door alle banken en 'building societies' (hypotheekbanken) die instructies accepteren voor het betalen van automatische incasso's.\n- Als er wijzigingen zijn in de datum of frequentie van uw incasso, zal de organisatie u op voorhand op de hoogte brengen (normaal 10 werkdagen op voorhand) voordat uw rekening wordt gedebiteerd of in de termijn die anderszins wordt overeengekomen.\n- Als er een fout is gemaakt in de betaling van uw automatische incasso, door de organisatie of uw bank of de 'building society' (hypotheekbank) , heeft u recht op een volledige en onmiddellijke terugbetaling van het betaalde bedrag van uw bank of 'building society' (hypotheekbank). \n- Als u een terugbetaling ontvangt waar u geen recht op heeft, moet u het terugbetalen wanneer de organisatie u daarom vraagt.\n- U kunt op elk moment een automatische incasso annuleren door eenvoudig contact op te nemen met uw bank of de 'building society' (hypotheekbank) . Een schriftelijke bevestiging kan vereist zijn. Gelieve ook de organisatie op de hoogte te stellen.";
@@ -763,8 +743,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OfflineGiftsTitle" = "Offline giften";
 "OfflineGiftsMessage" = "Om ervoor te zorgen dat je giften op tijd aankomen, is het even nodig om je internetverbinding aan te zetten zodat de giften die je hebt gedaan, verstuurd kunnen worden naar de server.";
 "EnrollFingerprint" = "Plaats nu je vinger op de vingerafdruk-sensor.";
-
-/*Fuzzy*/
 "FingerprintMessageAlert" = "Gebruik {0} om in te loggen voor {1}";
 "LoginFingerprint" = "Login met je vingerafdruk";
 "LoginFingerprintCancel" = "Geen gebruik maken van vingerafdruk";
