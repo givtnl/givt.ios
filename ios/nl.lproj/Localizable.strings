@@ -766,3 +766,5 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*Fuzzy*/
 "FingerprintMessageAlert" = "Gebruik {0} om in te loggen voor {1}";
+"LoginFingerprint" = "Login met je vingerafdruk";
+"LoginFingerprintCancel" = "Geen gebruik maken van vingerafdruk";
