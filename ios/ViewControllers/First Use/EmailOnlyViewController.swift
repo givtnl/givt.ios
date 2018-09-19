@@ -180,7 +180,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.show()
         _loginManager.doesEmailExist(email: email.text!) { (status) in
             
-            if status == "true" { //completed registration
+            if status == "true" || status == "dashboard" { //show login if user completed registration or is a dashboard user TODO: rework!!
                 self.openLogin()
             } else if status == "false" { //email is completely new
                 self.registerTempUser()
