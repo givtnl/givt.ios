@@ -564,7 +564,7 @@ class LoginManager {
         let authenticationContext = LAContext()
         var error: NSError?
         if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
-            var localQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecMatchLimit as String: kSecMatchLimitOne,kSecReturnAttributes as String: true, kSecReturnData as String: true, kSecAttrAccount as String: UserDefaults.standard.userExt!.email]
+            var localQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecMatchLimit as String: kSecMatchLimitOne,kSecReturnAttributes as String: true, kSecReturnData as String: true, kSecAttrAccount as String: UserDefaults.standard.userExt!.guid]
             if #available(iOS 11.0, *) {
                 if authenticationContext.biometryType == .touchID {
                     localQuery[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")

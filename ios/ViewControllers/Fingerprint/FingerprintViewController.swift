@@ -31,7 +31,7 @@ class FingerprintViewController: UIViewController {
         }
         query[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")
                                                     .replacingOccurrences(of: "{0}", with: title!)
-                                                    .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.email)
+                                                    .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.guid)
         // Do any additional setup after loading the view.
     }
 
@@ -62,7 +62,7 @@ class FingerprintViewController: UIViewController {
                         var dict: [String: Any] = [kSecAttrLabel as String: "Fingerprint",
                                                    kSecValueData as String: newFingerprint.data(using: String.Encoding.utf8)!,
                                                    kSecAttrAccessControl as String: flags!,
-                                                   kSecAttrAccount as String: UserDefaults.standard.userExt!.email]
+                                                   kSecAttrAccount as String: UserDefaults.standard.userExt!.guid]
                         // save empty key
                         var initialSave = dict
                         initialSave[kSecClass as String] = kSecClassGenericPassword
