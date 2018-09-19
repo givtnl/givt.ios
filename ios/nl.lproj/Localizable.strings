@@ -745,7 +745,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "EnrollFingerprint" = "Plaats nu je vinger op de vingerafdruk-sensor.";
 "FingerprintMessageAlert" = "Gebruik {0} om in te loggen voor {1}";
 "LoginFingerprint" = "Login met je vingerafdruk";
-"LoginFingerprintCancel" = "Geen gebruik maken van vingerafdruk";
+
+/*Fuzzy*/
+"LoginFingerprintCancel" = "Inloggen met toegangscode/wachtwoord";
 "fingerprint_state_scanning" = "Raak de sensor aan";
 "fingerprint_state_success" = "Vingerafdruk herkend";
 "fingerprint_state_failure" = "Vingeradruk niet herkend.\nProbeer opnieuw.";
