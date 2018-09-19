@@ -715,10 +715,10 @@
 "AlertSEPAMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through BACS Direct Debit, we need your Sort Code and Account Number for that. If you prefer to use SEPA, we need your IBAN.";
 "Important" = "Important";
 "FingerprintTitle" = "Fingerprint";
-"TouchID" = "TouchID";
-"FaceID" = "FaceID";
-"TouchIDUsage" = "This is where you change the use of your TouchID.";
-"FaceIDUsage" = "This is where you change the use of your FaceID.";
+"TouchID" = "Touch ID";
+"FaceID" = "Face ID";
+"TouchIDUsage" = "This is where you change the use of your Touch ID.";
+"FaceIDUsage" = "This is where you change the use of your Face ID.";
 "FingerprintUsage" = "This is where you change the use of your fingerprint.";
 "AuthenticationIssueTitle" = "Authentication problem";
 "AuthenticationIssueMessage" = "We could not propely identify you. Please try again later.";
@@ -730,3 +730,6 @@
 "FingerprintMessageAlert" = "Use {0} to log in for {1}";
 "LoginFingerprint" = "Login using your fingerprint";
 "LoginFingerprintCancel" = "Don't use fingerprint";
+"fingerprint_state_scanning" = "Touch sensor";
+"fingerprint_state_success" = "Fingerprint recognized";
+"fingerprint_state_failure" = "Fingerprint not recognized.\nTry again.";
