@@ -729,7 +729,9 @@
 "EnrollFingerprint" = "Place your finger on the sensor.";
 "FingerprintMessageAlert" = "Use {0} to log in for {1}";
 "LoginFingerprint" = "Login using your fingerprint";
-"LoginFingerprintCancel" = "Don't use fingerprint";
+
+/*Fuzzy*/
+"LoginFingerprintCancel" = "Login using pass code/password";
 "fingerprint_state_scanning" = "Touch sensor";
 "fingerprint_state_success" = "Fingerprint recognized";
 "fingerprint_state_failure" = "Fingerprint not recognized.\nTry again.";
