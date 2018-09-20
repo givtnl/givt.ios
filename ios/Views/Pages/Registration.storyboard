@@ -716,21 +716,15 @@ een gift te herroepen.</string>
                         <viewLayoutGuide key="safeArea" id="t2K-nP-9uy"/>
                     </view>
                     <navigationItem key="navigationItem" id="rWf-6Z-UoV">
-                        <barButtonItem key="leftBarButtonItem" width="50" id="L4C-Ma-NFk">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="36e-cB-nZA">
-                                <rect key="frame" x="20" y="0.0" width="50" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="imageEdgeInsets" minX="9" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="backbtn"/>
-                                <connections>
-                                    <action selector="back:" destination="L2Y-fA-AGb" eventType="touchUpInside" id="JWB-Vv-tRB"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="bB5-3a-X6G">
+                            <connections>
+                                <action selector="back:" destination="L2Y-fA-AGb" id="nuF-Sv-3fq"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="backButton" destination="36e-cB-nZA" id="PTY-aw-Bww"/>
+                        <outlet property="backButton" destination="bB5-3a-X6G" id="itU-DE-ms9"/>
                         <outlet property="navBar" destination="rWf-6Z-UoV" id="qLn-QK-LiG"/>
                         <outlet property="placeholder" destination="biT-YQ-Gp9" id="0lg-Ez-k5X"/>
                     </connections>
