@@ -296,7 +296,11 @@ class LoginManager {
         do {
             let jsonEncoder = JSONEncoder()
             let jsonData = try jsonEncoder.encode(mandate)
-            try client.post(url: "/api/v2/users/mandate/sign", data: jsonData, callback: { (response) in
+            var localeQuerystring = ""
+            if let langCode = Locale.current.languageCode {
+                localeQuerystring = "?locale=" + langCode
+            }
+            try client.post(url: "/api/v2/users/mandate/sign" + localeQuerystring, data: jsonData, callback: { (response) in
                 completionHandler(response)
             })
         } catch {
