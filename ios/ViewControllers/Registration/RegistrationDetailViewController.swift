@@ -511,11 +511,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             let accountNumberIsValid = accountNumber.text?.count == 8 && validationHelper.isValidNumeric(string: accountNumber.text!)
             sortCodeIsValid ? sortCode.setValid() : sortCode.setInvalid()
             accountNumberIsValid ? accountNumber.setValid() : accountNumber.setInvalid()
-            isBacsValid = sortCode.text == "000000" && accountNumber.text == "12345678"
+            isBacsValid = sortCodeIsValid && accountNumberIsValid
         default:
             break
         }
-        //TODO: add bacs
+        
         var isBankDataCorrect = (isIbanValid && paymentType == .sepa) || (isBacsValid && paymentType == .bacs)
         nextButton.isEnabled = isStreetValid && isPostalCodeValid && isCityValid && isCountryValid && isMobileNumberValid && isBankDataCorrect && isMobilePrefixValid
     }
