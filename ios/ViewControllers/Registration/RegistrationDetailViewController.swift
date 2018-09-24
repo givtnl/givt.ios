@@ -244,7 +244,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         accountNumber.leadingAnchor.constraint(equalTo: sortCode.leadingAnchor, constant: 0).isActive = true
         accountNumber.trailingAnchor.constraint(equalTo: sortCode.trailingAnchor, constant: 0).isActive = true
         accountNumber.heightAnchor.constraint(equalTo: sortCode.heightAnchor, constant: 0).isActive = true
-        let btm = accountNumber.bottomAnchor.constraint(equalTo: bacsView.bottomAnchor, constant: 10)
+        let btm = accountNumber.bottomAnchor.constraint(equalTo: bacsView.bottomAnchor, constant: 0)
         btm.isActive = true
         self.view.layoutIfNeeded()
     }
