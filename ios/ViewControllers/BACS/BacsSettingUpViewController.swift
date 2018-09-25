@@ -62,29 +62,29 @@ class BacsSettingUpViewController: UIViewController {
     }
  
     @IBAction func next(_ sender: Any) {
-        NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
-            SVProgressHUD.show()
-            LoginManager.shared.getUserExt(completion: { (userExt) in
-                SVProgressHUD.dismiss()
-                guard let userExt = userExt else {
-                    let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
-                    }))
-                    DispatchQueue.main.async {
-                        self.present(alert, animated: true, completion: {})
+        if NavigationManager.shared.hasInternetConnection(context: self) {
+            NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
+                SVProgressHUD.show()
+                LoginManager.shared.getUserExt(completion: { (userExt) in
+                    SVProgressHUD.dismiss()
+                    guard let userExt = userExt else {
+                        let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
+                        }))
+                        DispatchQueue.main.async {
+                            self.present(alert, animated: true, completion: {})
+                        }
+                        return
                     }
-                    return
-                }
-                
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "BacsDetailViewController") as! BacsDetailViewController
-                vc.userExtension = userExt
-                DispatchQueue.main.async {
-                    self.navigationController!.pushViewController(vc, animated: true)
-                }
-            })
-            
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "BacsDetailViewController") as! BacsDetailViewController
+                    vc.userExtension = userExt
+                    DispatchQueue.main.async {
+                        self.navigationController!.pushViewController(vc, animated: true)
+                    }
+                })
+            }
         }
-        
     }
     
 }

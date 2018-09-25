@@ -51,32 +51,34 @@ class BacsDetailViewController: UIViewController {
     }
     
     @IBAction func done(_ sender: Any) {
-        let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: nil, sortCode: userExtension.SortCode, accountNumber: userExtension.AccountNumber, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: userExtension.Country, postalCode: userExtension.PostalCode, street: userExtension.Address)
-        let mandate = Mandate(signatory: signatory)
-        SVProgressHUD.show()
-        LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
-            SVProgressHUD.dismiss()
-            if let r = response, r.status == .ok {
-                LoginManager.shared.finishMandateSigning(completionHandler: { (done) in
-                    print(done)
-                })
-                DispatchQueue.main.async {
-                    let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
-                    self.navigationController!.pushViewController(vc, animated: true)
-                }
-            } else {
-                let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
+        if NavigationManager.shared.hasInternetConnection(context: self) {
+            let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: nil, sortCode: userExtension.SortCode, accountNumber: userExtension.AccountNumber, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: userExtension.Country, postalCode: userExtension.PostalCode, street: userExtension.Address)
+            let mandate = Mandate(signatory: signatory)
+            SVProgressHUD.show()
+            LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
+                SVProgressHUD.dismiss()
+                if let r = response, r.status == .ok {
+                    LoginManager.shared.finishMandateSigning(completionHandler: { (done) in
+                        print(done)
+                    })
                     DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
-                        NavigationManager.shared.loadMainPage(animated: false)
+                        let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                        self.navigationController!.pushViewController(vc, animated: true)
                     }
-                }))
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: nil)
+                            NavigationManager.shared.loadMainPage(animated: false)
+                        }
+                    }))
+                    DispatchQueue.main.async {
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
-            }
-        })
+            })
+        }
     }
     @IBAction func goBack(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
