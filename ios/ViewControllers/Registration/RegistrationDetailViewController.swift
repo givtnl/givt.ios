@@ -102,6 +102,12 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 selectedMobilePrefix = filteredCountry
                 mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
                 checkAll(mobilePrefixField)
+                
+                if(selectedCountry.shortName == "GB") {
+                    showBacs(self)
+                } else {
+                    showSepa(self)
+                }
             }
         }
 
