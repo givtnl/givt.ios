@@ -102,12 +102,6 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 selectedMobilePrefix = filteredCountry
                 mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
                 checkAll(mobilePrefixField)
-                
-                if(selectedCountry.shortName == "GB") {
-                    showBacs(self)
-                } else {
-                    showSepa(self)
-                }
             }
         }
 
@@ -130,6 +124,16 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         tapGesture.cancelsTouchesInView = true
         theScrollView.addGestureRecognizer(tapGesture)
         
+        if(selectedCountry.shortName == "GB") {
+            showBacs(sender: self, animated: false)
+        } else {
+            showSepa(sender: self, animated: false)
+        }
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     private var paymentType: PaymentType = .sepa
@@ -137,7 +141,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     @IBOutlet var sepaButton: UIButton!
     @IBOutlet var leadingAnchorLine: NSLayoutConstraint!
     @IBOutlet var leadingAnchorPaymentView: NSLayoutConstraint!
-    @IBAction func showSepa(_ sender: Any) {
+    private func showSepa(sender: Any, animated: Bool) {
         print("pressed sepa")
         leadingAnchorPaymentView.constant = 0
         leadingAnchorLine.constant = 0
@@ -146,21 +150,24 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         self.paymentType = .sepa
         self.checkAll(self.iban)
         self.checkAll(self.sortCode)
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        }) { (success) in
-            
-        }
-        if self.selectedCountry.shortName == AppConstants.CountryCodes.UnitedKingdom.rawValue {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertSEPAMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            }) { (success) in
+                
             }
+            if self.selectedCountry.shortName == AppConstants.CountryCodes.UnitedKingdom.rawValue {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertSEPAMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        } else {
+            self.view.layoutIfNeeded()
         }
-        
     }
-    @IBAction func showBacs(_ sender: Any) {
+    private func showBacs(sender: Any, animated: Bool) {
         print("pressed bacs")
         leadingAnchorPaymentView.constant = -view.frame.width
         leadingAnchorLine.constant = 65
@@ -169,18 +176,28 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         self.paymentType = .bacs
         self.checkAll(self.iban)
         self.checkAll(self.sortCode)
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        }) { (success) in
-            
-        }
-        if self.selectedCountry.shortName != AppConstants.CountryCodes.UnitedKingdom.rawValue {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertBACSMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+        if animated {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            }) { (success) in
+                
             }
+            if self.selectedCountry.shortName != AppConstants.CountryCodes.UnitedKingdom.rawValue {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertBACSMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        } else {
+            self.view.layoutIfNeeded()
         }
+    }
+    @IBAction func showSepa(_ sender: Any) {
+        showSepa(sender: sender, animated: true)
+    }
+    @IBAction func showBacs(_ sender: Any) {
+        showBacs(sender: sender, animated: true)
     }
     
     private var iban: CustomUITextField!
@@ -260,6 +277,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
+        
+        
     }
     
     
