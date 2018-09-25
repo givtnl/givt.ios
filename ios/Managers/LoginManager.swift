@@ -488,6 +488,8 @@ class LoginManager {
         let params = [
             "Guid":  userExt.GUID,
             "IBAN":  userExt.IBAN,
+            "AccountNumber" : userExt.AccountNumber,
+            "SortCode" : userExt.SortCode,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -515,6 +517,8 @@ class LoginManager {
         let params = [
             "Guid":  userExt.GUID,
             "IBAN":  iban,
+            "AccountNumber" : userExt.AccountNumber,
+            "SortCode" : userExt.SortCode,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -542,6 +546,8 @@ class LoginManager {
         let params = [
             "Guid":  userExt.GUID,
             "IBAN":  userExt.IBAN,
+            "AccountNumber" : userExt.AccountNumber,
+            "SortCode" : userExt.SortCode,
             "PhoneNumber":  phone,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
