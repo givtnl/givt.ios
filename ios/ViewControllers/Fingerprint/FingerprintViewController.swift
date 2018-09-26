@@ -14,7 +14,7 @@ class FingerprintViewController: UIViewController {
 
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var menuItem: UILabel!
-    var query: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecUseOperationPrompt as String: "Gebruik je vingerafdruk om in te loggen.", kSecAttrAccount as String: UserDefaults.standard.userExt!.email]
+    var query: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecUseOperationPrompt as String: "Gebruik je vingerafdruk om in te loggen.", kSecAttrAccount as String: UserDefaults.standard.userExt!.guid]
     @IBOutlet var switchButton: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class FingerprintViewController: UIViewController {
         }
         query[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")
                                                     .replacingOccurrences(of: "{0}", with: title!)
-                                                    .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.guid)
+                                                    .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.email)
         // Do any additional setup after loading the view.
     }
 
