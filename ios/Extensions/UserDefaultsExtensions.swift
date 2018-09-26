@@ -34,6 +34,9 @@ extension UserDefaults {
         case orgBeaconListV2
         case tempUser
         case amountPresets
+        case accountType
+        case fingerprintSet
+        case badges
     }
     
     enum Showcase: String {
@@ -43,6 +46,43 @@ extension UserDefaults {
         case giveSituation
         case multipleCollects
         case deleteMultipleCollects
+    }
+    
+    var currencySymbol: String {
+        get {
+            if let at = accountType {
+                if at == "SEPA" {
+                    return "€"
+                } else if at == "BACS" {
+                    return "£"
+                }
+            }
+            return NSLocale.current.currencySymbol ?? "€"
+        }
+    }
+    
+    var badges: [Int] {
+        get {
+            guard let badges = array(forKey: UserDefaultsKeys.badges.rawValue) as? [Int] else {
+                return [Int]()
+            }
+            return badges
+        }
+        set(value)
+        {
+            set(value, forKey: UserDefaultsKeys.badges.rawValue)
+            synchronize()
+        }
+    }
+    
+    var accountType: String? { //BACS of SEPA
+        get {
+            return string(forKey: UserDefaultsKeys.accountType.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.accountType.rawValue)
+            synchronize()
+        }
     }
     
     var amountPresets: [Decimal] {
@@ -131,6 +171,29 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.lastGivtToOrganisation.rawValue)
+            synchronize()
+        }
+    }
+    
+    var hasFingerprintSet: Bool {
+        get {
+            if let fingerprintByGuid = dictionary(forKey: UserDefaultsKeys.fingerprintSet.rawValue) as? [String: Bool],
+                let u = userExt,
+                let value = fingerprintByGuid[u.guid] {
+                return value
+            }
+            return false
+        }
+        set(value) {
+            var fingerprintPerGuid: [String: Bool] = [:]
+            if let original = dictionary(forKey: UserDefaultsKeys.fingerprintSet.rawValue) as? [String: Bool] {
+                fingerprintPerGuid = original
+            }
+            
+            if let uExt = userExt {
+                fingerprintPerGuid[uExt.guid] = value
+                set(fingerprintPerGuid, forKey: UserDefaultsKeys.fingerprintSet.rawValue)
+            }
             synchronize()
         }
     }

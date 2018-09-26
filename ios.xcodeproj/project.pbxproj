@@ -92,6 +92,11 @@
 		D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */; };
 		D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */; };
 		D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */; };
+		D7AE8B9921359A0200CB3A33 /* BACS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AE8B9821359A0200CB3A33 /* BACS.storyboard */; };
+		D7AE8B9C2136953E00CB3A33 /* BacsInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8B9B2136953E00CB3A33 /* BacsInfoViewController.swift */; };
+		D7AE8BA02136980600CB3A33 /* BacsSettingUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8B9F2136980600CB3A33 /* BacsSettingUpViewController.swift */; };
+		D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BA12136BD9000CB3A33 /* BacsDetailViewController.swift */; };
+		D7AE8BA42136CA4F00CB3A33 /* PaymentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BA32136CA4F00CB3A33 /* PaymentTypes.swift */; };
 		D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */; };
 		D7AE8BA921393B3400CB3A33 /* AmountPresetsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BA821393B3400CB3A33 /* AmountPresetsNavigationController.swift */; };
 		D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AE8BAA21393B7D00CB3A33 /* AmountPresetsViewController.swift */; };
@@ -103,7 +108,6 @@
 		D7BB5DA81FD59B4700D12E62 /* InfraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */; };
 		D7BC58D620776361008C9497 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC58D520776361008C9497 /* Context.swift */; };
 		D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */; };
-		D7C5120E20761DC7002B1618 /* ChooseContextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */; };
 		D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7C8F3D2209A0B7300DBB397 /* Event.storyboard */; };
 		D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CAB10320875E9F004139CB /* CelebrateViewController.swift */; };
 		D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */; };
@@ -137,6 +141,10 @@
 		D7F131661F75574D00E25A68 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F131651F75574D00E25A68 /* Registration.storyboard */; };
 		D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F131671F75593A00E25A68 /* RegistrationViewController.swift */; };
 		D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F131691F7559BD00E25A68 /* RegNavigationController.swift */; };
+		D7F3A84521480161008B65AE /* Fingerprint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F3A84421480161008B65AE /* Fingerprint.storyboard */; };
+		D7F3A84A214801EA008B65AE /* FingerprintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F3A849214801EA008B65AE /* FingerprintViewController.swift */; };
+		D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F3A84B21480216008B65AE /* FingerprintNavigationController.swift */; };
+		D7F3A84E214A6925008B65AE /* BadgeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F3A84D214A6925008B65AE /* BadgeService.swift */; };
 		D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F654921FA8B390007816B0 /* PermissionViewController.swift */; };
 		D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */; };
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
@@ -264,6 +272,11 @@
 		D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TerminateAccount.storyboard; sourceTree = "<group>"; };
 		D7ADE24A1FBC899300198F28 /* TerminateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TerminateAccountViewController.swift; sourceTree = "<group>"; };
 		D7ADE24C1FBC8E9300198F28 /* ConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationViewController.swift; sourceTree = "<group>"; };
+		D7AE8B9821359A0200CB3A33 /* BACS.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BACS.storyboard; sourceTree = "<group>"; };
+		D7AE8B9B2136953E00CB3A33 /* BacsInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacsInfoViewController.swift; sourceTree = "<group>"; };
+		D7AE8B9F2136980600CB3A33 /* BacsSettingUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacsSettingUpViewController.swift; sourceTree = "<group>"; };
+		D7AE8BA12136BD9000CB3A33 /* BacsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BacsDetailViewController.swift; sourceTree = "<group>"; };
+		D7AE8BA32136CA4F00CB3A33 /* PaymentTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTypes.swift; sourceTree = "<group>"; };
 		D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AmountPresets.storyboard; sourceTree = "<group>"; };
 		D7AE8BA821393B3400CB3A33 /* AmountPresetsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPresetsNavigationController.swift; sourceTree = "<group>"; };
 		D7AE8BAA21393B7D00CB3A33 /* AmountPresetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountPresetsViewController.swift; sourceTree = "<group>"; };
@@ -275,7 +288,6 @@
 		D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfraManager.swift; sourceTree = "<group>"; };
 		D7BC58D520776361008C9497 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextViewController.swift; sourceTree = "<group>"; };
-		D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseContextTableViewCell.swift; sourceTree = "<group>"; };
 		D7C8F3D2209A0B7300DBB397 /* Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
 		D7CAB10320875E9F004139CB /* CelebrateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateViewController.swift; sourceTree = "<group>"; };
 		D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pincode.storyboard; sourceTree = "<group>"; };
@@ -310,6 +322,10 @@
 		D7F131651F75574D00E25A68 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		D7F131671F75593A00E25A68 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		D7F131691F7559BD00E25A68 /* RegNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegNavigationController.swift; sourceTree = "<group>"; };
+		D7F3A84421480161008B65AE /* Fingerprint.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Fingerprint.storyboard; sourceTree = "<group>"; };
+		D7F3A849214801EA008B65AE /* FingerprintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintViewController.swift; sourceTree = "<group>"; };
+		D7F3A84B21480216008B65AE /* FingerprintNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FingerprintNavigationController.swift; sourceTree = "<group>"; };
+		D7F3A84D214A6925008B65AE /* BadgeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeService.swift; sourceTree = "<group>"; };
 		D7F654921FA8B390007816B0 /* PermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModalAnimation.swift; sourceTree = "<group>"; };
 		D7FB251C1F4D6D2F0011A14E /* AppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
@@ -356,6 +372,7 @@
 				D787AE2A1FCD91680004BDB1 /* LogService.swift */,
 				D787AE2E1FCD9EFF0004BDB1 /* Interfaces */,
 				D796043520C00607005B609B /* BeaconService.swift */,
+				D7F3A84D214A6925008B65AE /* BadgeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -435,6 +452,16 @@
 			path = TerminateAccount;
 			sourceTree = "<group>";
 		};
+		D7AE8B9A2136951400CB3A33 /* BACS */ = {
+			isa = PBXGroup;
+			children = (
+				D7AE8B9B2136953E00CB3A33 /* BacsInfoViewController.swift */,
+				D7AE8B9F2136980600CB3A33 /* BacsSettingUpViewController.swift */,
+				D7AE8BA12136BD9000CB3A33 /* BacsDetailViewController.swift */,
+			);
+			path = BACS;
+			sourceTree = "<group>";
+		};
 		D7AE8BA721393B1A00CB3A33 /* AmountPresets */ = {
 			isa = PBXGroup;
 			children = (
@@ -461,6 +488,8 @@
 				D7C8F3D2209A0B7300DBB397 /* Event.storyboard */,
 				D74C19E720F6270F00E116A0 /* ExternalSuggestion.storyboard */,
 				D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */,
+				D7AE8B9821359A0200CB3A33 /* BACS.storyboard */,
+				D7F3A84421480161008B65AE /* Fingerprint.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -482,7 +511,6 @@
 				D748F5F5206137E400B25BC2 /* TableSectionHeader.swift */,
 				D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */,
 				D748F5FB2061425400B25BC2 /* HistoryTableViewCell.swift */,
-				D7C5120D20761DC7002B1618 /* ChooseContextTableViewCell.swift */,
 				D7DD79A3209B463800047CA7 /* InsetLabel.swift */,
 				D7D9C31B20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift */,
 				D74C19EB20F62B8A00E116A0 /* ExternalSuggestionView.swift */,
@@ -540,6 +568,15 @@
 				D7DD79A1209B359D00047CA7 /* EventSuggestionViewController.swift */,
 			);
 			path = Event;
+			sourceTree = "<group>";
+		};
+		D7F3A8462148016C008B65AE /* Fingerprint */ = {
+			isa = PBXGroup;
+			children = (
+				D7F3A849214801EA008B65AE /* FingerprintViewController.swift */,
+				D7F3A84B21480216008B65AE /* FingerprintNavigationController.swift */,
+			);
+			path = Fingerprint;
 			sourceTree = "<group>";
 		};
 		D7F746B31FD83F9F005354A3 /* Transitions */ = {
@@ -642,6 +679,7 @@
 				D7721B4A20EB67AD009771EE /* LMUserExt.swift */,
 				D71DA04D20F758DD0084381E /* ExternalIntegration.swift */,
 				A46C8AEF210889A400988D6D /* Beacon.swift */,
+				D7AE8BA32136CA4F00CB3A33 /* PaymentTypes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -649,7 +687,9 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7F3A8462148016C008B65AE /* Fingerprint */,
 				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
+				D7AE8B9A2136951400CB3A33 /* BACS */,
 				D7DD79A0209B358800047CA7 /* Event */,
 				D7F746D81FD943B8005354A3 /* Give Flow */,
 				D7F746D71FD94390005354A3 /* Login */,
@@ -855,11 +895,13 @@
 				D748F5F82061381B00B25BC2 /* TableSectionHeaderView.xib in Resources */,
 				D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */,
 				D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */,
+				D7AE8B9921359A0200CB3A33 /* BACS.storyboard in Resources */,
 				D7E708541FE7FD68002A7770 /* InfoPlist.strings in Resources */,
 				D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */,
 				D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */,
 				D72A89D11FE8050A00C06EF6 /* LaunchScreen.storyboard in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
+				D7F3A84521480161008B65AE /* Fingerprint.storyboard in Resources */,
 				D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
 				D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */,
@@ -961,8 +1003,11 @@
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D7BC58D620776361008C9497 /* Context.swift in Sources */,
 				D74C19EA20F627DA00E116A0 /* ExternalSuggestionViewController.swift in Sources */,
+				D7AE8BA42136CA4F00CB3A33 /* PaymentTypes.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
 				D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */,
+				D7AE8B9C2136953E00CB3A33 /* BacsInfoViewController.swift in Sources */,
+				D7F3A84A214801EA008B65AE /* FingerprintViewController.swift in Sources */,
 				D7D6FA6B1F7BADA5008A5604 /* UITextFieldExtensions.swift in Sources */,
 				D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */,
 				D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */,
@@ -998,6 +1043,7 @@
 				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
 				D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */,
 				D7AF43031FEA8E680027EEC1 /* PlaceholderViewController.swift in Sources */,
+				D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColorExtensions.swift in Sources */,
@@ -1009,6 +1055,7 @@
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D7FB252F1F5065C20011A14E /* Reachability.swift in Sources */,
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
+				D7F3A84E214A6925008B65AE /* BadgeService.swift in Sources */,
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D748F5FC2061425400B25BC2 /* HistoryTableViewCell.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
@@ -1026,9 +1073,11 @@
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
+				D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
 				D761E9BA1F18C5C6002B849B /* StringExtensions.swift in Sources */,
+				D7AE8BA02136980600CB3A33 /* BacsSettingUpViewController.swift in Sources */,
 				D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */,
 				D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */,
 				D796043620C00607005B609B /* BeaconService.swift in Sources */,
@@ -1039,7 +1088,6 @@
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
 				D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */,
-				D7C5120E20761DC7002B1618 /* ChooseContextTableViewCell.swift in Sources */,
 				D748F6042063D50C00B25BC2 /* HistoryTableViewModel.swift in Sources */,
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,

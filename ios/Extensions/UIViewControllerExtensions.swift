@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SVProgressHUD
 
 extension UIViewController {  
     @objc func endEditing() {
@@ -25,5 +26,16 @@ extension UIViewController {
             }
         }
         
+    }
+    
+    func showLoader() {
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.black)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.native)
+        SVProgressHUD.setDefaultAnimationType(SVProgressHUDAnimationType.native)
+        SVProgressHUD.show()
+    }
+    
+    func hideLoader() {
+        SVProgressHUD.dismiss()
     }
 }

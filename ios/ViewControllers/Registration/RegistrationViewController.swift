@@ -27,6 +27,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     private var regDetailVC: RegistrationDetailViewController!
 
     private var _isShowingPassword = false
+    
+    var passwordField: String? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initButtonsWithTags()
@@ -56,9 +59,15 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             switchButton.isSelected = true
             checkAll()
         #endif
+        
         if let settings = UserDefaults.standard.userExt {
             emailaddress.text = settings.email
             emailaddress.isEnabled = false
+        }
+        
+        if let passwordField = passwordField {
+            password.text = passwordField
+            password.isEnabled = false
         }
         
         self.regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController

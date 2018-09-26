@@ -9,12 +9,19 @@
 import Foundation
 import UIKit
 import SwiftClient
+import LocalAuthentication
 
 class LoginManager {
     
     private var client: APIClient = APIClient.shared
     private var authClient: AuthClient = AuthClient.shared
     private var log: LogService = LogService.shared
+    
+    enum AuthenticationType {
+        case password
+        case pincode
+        case fingerprint
+    }
     
     enum UserClaims: Int {
         case startedApp
@@ -69,11 +76,14 @@ class LoginManager {
         }
     }
     
-    public func loginUser(email: String, password: String, completionHandler: @escaping (Bool, NSError?, String?) -> Void ) {
+    public func loginUser(email: String, password: String, type: AuthenticationType, completionHandler: @escaping (Bool, NSError?, String?) -> Void ) {
         var params: [String : String] = [:]
-        if UserDefaults.standard.hasPinSet {
+        switch type {
+        case .fingerprint:
+            params = ["grant_type":"fingerprint","userName":email,"fingerprint":password]
+        case .pincode:
             params = ["grant_type":"pincode","userName":email,"pincode":password]
-        } else {
+        case .password:
             params = ["grant_type":"password","userName":email,"password":password]
         }
 
@@ -96,8 +106,19 @@ class LoginManager {
                                 UserDefaults.standard.bearerExpiration = date!
                                 self.userClaim = .give
                                 UserDefaults.standard.isLoggedIn = true
-                                self.getUserExt(completionHandler: { (status) in
-                                    if status {
+                                self.getUserExt(completion: { (obj) in
+                                    if let uext = obj {
+                                        UserDefaults.standard.isTempUser = uext.IsTempUser
+                                        var config: UserExt = UserExt()
+                                        if let oldConfig = UserDefaults.standard.userExt {
+                                            config = oldConfig
+                                        }
+                                        config.guid = uext.GUID
+                                        config.email = uext.Email
+                                        
+                                        UserDefaults.standard.userExt = config
+                                        UserDefaults.standard.amountLimit = (uext.AmountLimit == 0) ? 499 : uext.AmountLimit
+                                        
                                         GivtManager.shared.getBeaconsFromOrganisation(completionHandler: { (status) in
                                             //do nothing
                                         })
@@ -152,10 +173,8 @@ class LoginManager {
         }
         return nil
     }
-    
-    
-    
-    func getUserExtObject(completion: @escaping(LMUserExt?) -> Void) {
+
+    func getUserExt(completion: @escaping(LMUserExt?) -> Void) {
         client.get(url: "/api/UsersExtension", data: [:]) { (response) in
             guard let response = response else {
                 completion(nil)
@@ -182,38 +201,31 @@ class LoginManager {
         }
     }
     
-    func getUserExt(completionHandler: @escaping (Bool) -> Void) {
-        client.get(url: "/api/UsersExtension", data: [:]) { (res) in
-            if let res = res, let data = res.data, res.basicStatus == .ok {
-                do {
-                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                    print(parsedData)
-                    UserDefaults.standard.isTempUser = Bool(truncating: parsedData["IsTempUser"] as! NSNumber)
-                    var config: UserExt = UserExt()
-                    if let oldConfig = UserDefaults.standard.userExt {
-                        config = oldConfig
+    func registerFingerprint(fingerprint: String, completion: @escaping (Bool) -> Void) {
+        let params = ["Fingerprint" : fingerprint]
+        do {
+            try client.put(url: "/api/v2/Users/Fingerprint", data: params, callback: { (response) in
+                if let r = response {
+                    if r.basicStatus == .ok {
+                        UserDefaults.standard.hasFingerprintSet = true
+                        completion(true)
+                    } else {
+                        print(r.text!)
+                        completion(false)
                     }
-                    config.guid = parsedData["GUID"] as! String
-                    config.email = parsedData["Email"] as! String
-
-                    UserDefaults.standard.userExt = config
-                    UserDefaults.standard.amountLimit = (parsedData["AmountLimit"] != nil && parsedData["AmountLimit"] as! Int == 0) ? 499 : parsedData["AmountLimit"] as! Int
-                    completionHandler(true)
-                } catch let err as NSError {
-                    completionHandler(false)
-                    print(err)
+                } else {
+                    completion(false)
                 }
-            } else {
-                completionHandler(false)
-            }
+            })
+        } catch {
+            print("err")
         }
     }
     
     func registerExtraDataFromUser(_ user: RegistrationUser, completionHandler: @escaping (Bool?) -> Void) {
-        let params = [
+        var params = [
             "Email": user.email,
             "Password" : user.password,
-            "IBAN":  user.iban.replacingOccurrences(of: " ", with: ""),
             "PhoneNumber":  user.mobileNumber,
             "FirstName":  user.firstName,
             "LastName":  user.lastName,
@@ -222,6 +234,19 @@ class LoginManager {
             "PostalCode":  user.postalCode,
             "Country":  user.country,
             "AmountLimit": "499"]
+        if !user.iban.isEmpty {
+            params["IBAN"] = user.iban.replacingOccurrences(of: " ", with: "")
+        } else {
+            params["SortCode"] = user.sortCode
+            params["AccountNumber"] = user.bacsAccountNumber
+        }
+        
+        if let langCode = Locale.current.languageCode {
+            params["AppLanguage"] = langCode
+        } else {
+            self.log.warning(message: "Device has no languagecode... Default NL") //TODO: when changing default lang, change this to "en"
+            params["AppLanguage"] = "nl"
+        }
         
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
@@ -232,7 +257,7 @@ class LoginManager {
                         newConfig.guid = guid
                         UserDefaults.standard.userExt = newConfig
                         
-                        self.loginUser(email: user.email, password: user.password, completionHandler: { (success, err, descr) in
+                        self.loginUser(email: user.email, password: user.password, type: .password, completionHandler: { (success, err, descr) in
                             if success {
                                 self.saveAmountLimit(499, completionHandler: { (status) in
                                     //niets
@@ -267,26 +292,20 @@ class LoginManager {
         
     }
     
-    func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (String?) -> Void) {
+    func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (Response?) -> Void) {
         do {
-            let locale = Locale.preferredLanguages[0]
-            let firstTwoLetters = String(locale[..<locale.index(locale.startIndex, offsetBy: 2)])
-            try client.post(url: "/api/Mandate?locale=\(firstTwoLetters)", data: mandate.toDictionary()) { (response) in
-                if let response = response, let text = response.text {
-                    if response.basicStatus == .ok {
-                        completionHandler(text)
-                    } else {
-                        completionHandler(nil)
-                        self.log.error(message: text)
-                    }
-                } else {
-                    completionHandler(nil)
-                }
+            let jsonEncoder = JSONEncoder()
+            let jsonData = try jsonEncoder.encode(mandate)
+            var localeQuerystring = ""
+            if let langCode = Locale.current.languageCode {
+                localeQuerystring = "?locale=" + langCode
             }
+            try client.post(url: "/api/v2/users/mandate/sign" + localeQuerystring, data: jsonData, callback: { (response) in
+                completionHandler(response)
+            })
         } catch {
-            log.error(message: "Something wrong requesting mandate url")
+            self.log.error(message: "Could not sign mandate")
         }
-        
     }
     
     func finishMandateSigning(completionHandler: @escaping (Bool) -> Void) {
@@ -320,9 +339,7 @@ class LoginManager {
                         let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
                         UserDefaults.standard.mandateSigned = (parsedData["Signed"] != nil && parsedData["Signed"] as! Int == 1)
                         self.log.info(message: "Mandate signed: " + String(UserDefaults.standard.mandateSigned))
-                        if self.isFullyRegistered {
-                            DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 0 }
-                        }
+                        !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
                         if let status = parsedData["PayProvMandateStatus"] as? String {
                             completionHandler(status)
                         } else {
@@ -341,7 +358,7 @@ class LoginManager {
     }
     
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
-        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB")
+        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB", sortCode: "", bacsAccountNumber: "")
         self.registerExtraDataFromUser(regUser) { b in
             if let b = b {
                 if b {
@@ -471,6 +488,8 @@ class LoginManager {
         let params = [
             "Guid":  userExt.GUID,
             "IBAN":  userExt.IBAN,
+            "AccountNumber" : userExt.AccountNumber,
+            "SortCode" : userExt.SortCode,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -498,6 +517,8 @@ class LoginManager {
         let params = [
             "Guid":  userExt.GUID,
             "IBAN":  iban,
+            "AccountNumber" : userExt.AccountNumber,
+            "SortCode" : userExt.SortCode,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -525,6 +546,8 @@ class LoginManager {
         let params = [
             "Guid":  userExt.GUID,
             "IBAN":  userExt.IBAN,
+            "AccountNumber" : userExt.AccountNumber,
+            "SortCode" : userExt.SortCode,
             "PhoneNumber":  phone,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -544,6 +567,60 @@ class LoginManager {
         } catch {
             callback(false)
             log.error(message: "Something went wrong trying to change mobile number")
+        }
+    }
+    
+    func loginWithFingerprint(completion: @escaping (Bool, OSStatus?) -> Void) {
+        let authenticationContext = LAContext()
+        var error: NSError?
+        if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            var localQuery: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecMatchLimit as String: kSecMatchLimitOne,kSecReturnAttributes as String: true, kSecReturnData as String: true, kSecAttrAccount as String: UserDefaults.standard.userExt!.guid]
+            if #available(iOS 11.0, *) {
+                if authenticationContext.biometryType == .touchID {
+                    localQuery[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")
+                        .replacingOccurrences(of: "{0}", with: NSLocalizedString("TouchID", comment: ""))
+                        .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.email)
+                } else if authenticationContext.biometryType == .faceID {
+                    localQuery[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")
+                        .replacingOccurrences(of: "{0}", with: NSLocalizedString("FaceID", comment: ""))
+                        .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.email)
+                }
+            } else {
+                // Fallback on earlier versions
+                localQuery[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")
+                    .replacingOccurrences(of: "{0}", with: NSLocalizedString("TouchID", comment: ""))
+                    .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.email)
+            }
+            
+            var item: CFTypeRef?
+            let status = SecItemCopyMatching(localQuery as CFDictionary, &item)
+            
+            if status == errSecSuccess {
+                guard let existingItem = item as? [String : Any],
+                    let passwordData = existingItem[kSecValueData as String] as? Data,
+                    let password = String(data: passwordData, encoding: String.Encoding.utf8)
+                    else {
+                        self.log.warning(message: "Fingerprint password is gone")
+                        UserDefaults.standard.hasFingerprintSet = false
+                        completion(false, status)
+                        return
+                }
+                self.loginUser(email: UserDefaults.standard.userExt!.email, password: password, type: LoginManager.AuthenticationType.fingerprint, completionHandler: { (success, err, str) in
+                    if success {
+                        self.log.info(message: "Succesfully logged in with biometrics")
+                        completion(true, status)
+                    } else {
+                        self.log.info(message: "Could not log in using biometrics. Defaulting to passcode/password")
+                        UserDefaults.standard.hasFingerprintSet = false
+                        completion(false, status)
+                    }
+                })
+            } else {
+                completion(false, status)
+                
+            }
+        } else {
+            completion(false, nil)
         }
     }
     
@@ -598,5 +675,6 @@ class LoginManager {
         UserDefaults.standard.hasGivtsInPreviousYear = false
         UserDefaults.standard.lastGivtToOrganisationNamespace = nil
         UserDefaults.standard.isTempUser = false
+        UserDefaults.standard.accountType = nil
     }
 }

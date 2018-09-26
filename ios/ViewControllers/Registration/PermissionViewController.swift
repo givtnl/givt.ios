@@ -40,16 +40,26 @@ class PermissionViewController: UIViewController {
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
             center.requestAuthorization(options: [.alert, .badge]) { (granted, error) in
-                DispatchQueue.main.async {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
-                    self.show(vc, sender: nil)
-                }
+                self.determineNextScreen()
             }
         } else {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
             UIApplication.shared.registerForRemoteNotifications()
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
-            self.show(vc, sender: nil)
+            determineNextScreen()
+        }
+    }
+    
+    func determineNextScreen() {
+        if UserDefaults.standard.accountType == "BACS" {
+            DispatchQueue.main.async {
+                let vc = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsSettingUpViewController") as! BacsSettingUpViewController
+                self.show(vc, sender: nil)
+            }
+        } else {
+            DispatchQueue.main.async {
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPInfoViewController") as! SPInfoViewController
+                self.show(vc, sender: nil)
+            }
         }
     }
     

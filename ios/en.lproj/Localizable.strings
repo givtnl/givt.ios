@@ -45,7 +45,6 @@
 "Give" = "Give";
 
 /*"Op afstand geven" knop; wordt getoond op de pagina wanneer het scannen niet lukt*/
-/*Fuzzy*/
 "SelectReceiverButton" = "Select recipient";
 
 /*maximum donation amount*/
@@ -140,12 +139,6 @@
 /*Placeholder voor Straat en huisnummer*/
 "StreetAndHouseNumber" = "Street name and number";
 
-/*TouchID*/
-"TouchID" = "TouchID";
-
-/*TouchID titel op de touchid pagina*/
-"TouchIDText" = "Want to use TouchID?";
-
 /*"Nogmaals proberen" knop op de geef mislukt pagina*/
 "TryAgain" = "Try again";
 
@@ -213,7 +206,7 @@
 "PrepareMobileSummary" = "This way you'll know where and when you can give.";
 
 /*De tekst van de privacy policy waar de gebruiker akkoord mee moet gaan.*/
-"PolicyText" = "Privacy Statement of Givt B.V.\n\nTranslation from original 1.7 (June 7th 2018)\n\nThrough its service, Givt will process privacy-sensitive or personal data. Givt B.V. values the privacy of its customers and observes due care in processing and protecting personal data.\n\nDuring the processing we stick to the requirements of the Dutch \"Wet bescherming persoonsgegevens\" (Wbp). This means we:\n- Clearly specify our purposes before we process personal data, by using this Privacy Statement;\n- Limit our collection of personal data to only the personal data needed for legitimate purposes;\n- First ask for explicit permission to process your personal data in cases where your permission is required;\n- Take appropriate security measures to protect your personal data and we demand the same from parties who process personal data on our behalf;\n- Respect your right to inspect, correct or delete your personal data held by us.\n\nGivt B.V. is the party responsible for all data processing. Our data processing is registered with the Dutch Data Protection Authority, number M1640707. In this privacy statement, we will explain which personal data we collect and for which purposes. We recommend that you read it carefully.\n\nThis privacy statement was last amended on 28-2-2018.\n\nUse of Personal Data\nBy using our service, you are providing certain data to us. This could be personal data. We only retain and use the personal data provided directly by you or for which it is clear that it has been supplied to us to be processed.\nWe use the following data for the purposes as mentioned in this Privacy Statement:\n- Name and address\n- Telephone number\n- E-mail address\n- Payment details\n\nRegistration\nCertain features of our service require you to register beforehand. After your registration we will retain your user name and the personal data you provided. We will retain this data so that you do not have to re-enter it every time you visit our website, to contact you in connection with the execution of the agreement, invoicing and payment, and to provide an overview of the products and services you have purchased from us.\nWe will not provide the data linked to your user name to third parties, unless it is necessary for the execution of the agreement you concluded with us or if law requires this. In the event of suspicion of fraud or misuse of our website we may hand over personal data to the entitled authorities.\n \n\nPromotion\nOther than the advertisements on the website, we can inform you about new products or services:\n- by e-mail\n\nContact Form and Newsletter\nWe have a newsletter to inform those interested of our products and/or services. Each newsletter contains a link with which to unsubscribe from our newsletter. Your e-mail address will be added to the list of subscribers automatically.\nIf you fill out a contact form on the website or send us an e-mail, the data you provide will be retained for as long as is necessary depending on the nature of the form or the content of your e-mail, to fully answer and correctly handle your message or e-mail.\n\nPublication\nWe will not publish your data.\n\nProviding Data to Third Parties\nWe may provide your information to our partners. These partners are involved in the execution of the agreement. In all cases, these parties are necessary to provide the services. These are not the collecting authorities, as we protect the anonymity of users.\nYou agree that the transaction data are anonymous and can be used for data collection, statistics, reviews and comparisons. Only the summary will be shared with other customers and we ensure you that none of your data will be traceable to individuals.\nWe will also never sell data to third parties. We are only committed to make it easier for the donor to give to charities of their choosing. \n\nSecurity\nWe take security measures to reduce misuse of and unauthorized access to personal data. We take the following measures in particular:\n- Access to personal data requires the use of a username and password\n- Access to personal data requires the use of a username and login token\n- We make use of secure connections (Secure Sockets Layer of SSL) to encrypt all information between you and our website when entering your personal data.\n- We keep logs of all requests for personal data.\n\nUse of location services\nThe app may use the location services as provided by the operating system on the smartphone. With these services, the app may determine the location of the user. These location data are not being sent to anywhere outside the smartphone, but solely used to determine whether the user is on a location where it’s possible to use Givt for donating. The locations where one can use Givt are downloaded to the smartphone prior to using the location services.\n\nDiagnostic information from the app\nThe app sends anonymous information about its functioning. This information contains non-personal data from your smartphone like its type and operating system, but also the version information of the app. These data are solely used for purposes of improving the service of Givt or allowing better responses to your questions. This information will never be shared with third-parties. \n\nChanges to this Privacy Statement\nWe reserve the right to modify this statement. We recommend that you review this statement regularly, so that you remain informed of any changes.\n\nInspection and Modification of your Data\nYou can always contact us if you have any questions regarding our privacy policy or wish to review, modify or delete your personal data.\n\nGivt B.V. \nNoordersluisweg 27\n8243 PR LELYSTAD\n0031 320 320 115\nKVKnr: 64534421";
+"PolicyText" = "Privacy Statement of Givt B.V.\n\nTranslation from original 1.7 (June 7th 2018)\n\nThrough its service, Givt will process privacy-sensitive or personal data. Givt B.V. values the privacy of its customers and observes due care in processing and protecting personal data.\n\nDuring the processing we stick to the requirements of the Dutch \"Wet bescherming persoonsgegevens\" (Wbp). This means we:\n- Clearly specify our purposes before we process personal data, by using this Privacy Statement;\n- Limit our collection of personal data to only the personal data needed for legitimate purposes;\n- First ask for explicit permission to process your personal data in cases where your permission is required;\n- Take appropriate security measures to protect your personal data and we demand the same from parties who process personal data on our behalf;\n- Respect your right to inspect, correct or delete your personal data held by us.\n\nGivt B.V. is the party responsible for all data processing. Our data processing is registered with the Dutch Data Protection Authority, number M1640707. In this privacy statement, we will explain which personal data we collect and for which purposes. We recommend that you read it carefully.\n\nThis privacy statement was last amended on 07-6-2018.\n\nUse of Personal Data\nBy using our service, you are providing certain data to us. This could be personal data. We only retain and use the personal data provided directly by you or for which it is clear that it has been supplied to us to be processed.\nWe use the following data for the purposes as mentioned in this Privacy Statement:\n- Name and address\n- Telephone number\n- E-mail address\n- Payment details\n\nRegistration\nCertain features of our service require you to register beforehand. After your registration we will retain your user name and the personal data you provided. We will retain this data so that you do not have to re-enter it every time you visit our website, to contact you in connection with the execution of the agreement, invoicing and payment, and to provide an overview of the products and services you have purchased from us.\nWe will not provide the data linked to your user name to third parties, unless it is necessary for the execution of the agreement you concluded with us or if law requires this. In the event of suspicion of fraud or misuse of our website we may hand over personal data to the entitled authorities.\n \n\nPromotion\nOther than the advertisements on the website, we can inform you about new products or services:\n- by e-mail\n\nContact Form and Newsletter\nWe have a newsletter to inform those interested of our products and/or services. Each newsletter contains a link with which to unsubscribe from our newsletter. Your e-mail address will be added to the list of subscribers automatically.\nIf you fill out a contact form on the website or send us an e-mail, the data you provide will be retained for as long as is necessary depending on the nature of the form or the content of your e-mail, to fully answer and correctly handle your message or e-mail.\n\nPublication\nWe will not publish your data.\n\nProviding Data to Third Parties\nWe may provide your information to our partners. These partners are involved in the execution of the agreement. In all cases, these parties are necessary to provide the services. These are not the collecting authorities, as we protect the anonymity of users.\nYou agree that the transaction data are anonymous and can be used for data collection, statistics, reviews and comparisons. Only the summary will be shared with other customers and we ensure you that none of your data will be traceable to individuals.\nWe will also never sell data to third parties. We are only committed to make it easier for the donor to give to charities of their choosing. \n\nSecurity\nWe take security measures to reduce misuse of and unauthorized access to personal data. We take the following measures in particular:\n- Access to personal data requires the use of a username and password\n- Access to personal data requires the use of a username and login token\n- We make use of secure connections (Secure Sockets Layer of SSL) to encrypt all information between you and our website when entering your personal data.\n- We keep logs of all requests for personal data.\n\nUse of location services\nThe app may use the location services as provided by the operating system on the smartphone. With these services, the app may determine the location of the user. These location data are not being sent to anywhere outside the smartphone, but solely used to determine whether the user is on a location where it’s possible to use Givt for donating. The locations where one can use Givt are downloaded to the smartphone prior to using the location services.\n\nDiagnostic information from the app\nThe app sends anonymous information about its functioning. This information contains non-personal data from your smartphone like its type and operating system, but also the version information of the app. These data are solely used for purposes of improving the service of Givt or allowing better responses to your questions. This information will never be shared with third-parties. \n\nChanges to this Privacy Statement\nWe reserve the right to modify this statement. We recommend that you review this statement regularly, so that you remain informed of any changes.\n\nInspection and Modification of your Data\nYou can always contact us if you have any questions regarding our privacy policy or wish to review, modify or delete your personal data.\n\nGivt B.V. \nNoordersluisweg 27\n8243 PR LELYSTAD\n0031 320 320 115\nKVKnr: 64534421";
 
 /*"Hulp nodig?" op de hulppagina (titel) */
 "NeedHelpTitle" = "Need help?";
@@ -379,8 +372,6 @@
 
 /*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
 "FAQantwoord9" = "Press the menu at the top left of the ‘Amount’ screen to access your app menu. To get access you have to login using your e-mail address and password or passcode. Choose ‘Donations’ to find an overview of your recent activity. This list consists of the name of the recipient, time and date. The coloured line indicates the status of the donation: In process, processed, refused by bank, or cancelled by user.\nYou can request an overview of your donations for your tax declaration at the end of each year.\n\nThe video below demonstrates this:";
-
-/*Fuzzy*/
 "GivtIsBeingProcessed" = "Thank you for your Givt to {0}!\nYou can check the status in the overview.";
 "OfflineGegevenGivtMessage" = "Thank you for your Givt!\n\nWhen there's a good connection with the Givt-server, your Givt will be processed.\nYou can check the status in the overview.";
 "OfflineGegevenGivtMessageWithOrg" = "Thank you for your Givt to {0}!\n\nWhen there's a good connection with the Givt-server, your Givt will be processed.\nYou can check the status in the overview.";
@@ -538,11 +529,7 @@
 "AddCollectConfirm" = "Do you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
 "FAQantwoord0" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +31 320 320 115 or by sending an e-mail to support@givtapp.net.";
-
-/*Fuzzy*/
 "PersonalPageHeader" = "Change your account data here.";
-
-/*Fuzzy*/
 "PersonalPageSubHeader" = "Would you like to change your name? Send an e-mail to support@givtapp.net.";
 "TitlePersonalInfo" = "Personal information";
 "PersonalInfoTempUser" = "Hi there, fast giver! You're using a temporary account. We have not received your personal details yet.";
@@ -677,15 +664,9 @@
 "ChangeIBAN" = "Change IBAN";
 "SmsSuccess" = "Code sent via SMS";
 "SmsFailed" = "Please try again later";
-
-/*Fuzzy*/
 "KerkdienstGemistQuestion" = "How can I give with Givt through the Kerkdienst Gemist App?";
 "KerkdienstGemistAnswer" = "If you’re watching using the Kerkdienst Gemist App, you can easily give with Givt when your church uses this service. At the bottom of the page, you’ll find a small button that will take you to the Givt-app. Choose an amount, confirm with 'Yes, please' and you’re done! Need some more guidance? Check the instruction video below!";
-
-/*Fuzzy*/
 "ExternalSuggestionLabel" = "We see you are giving from the {0} app. Would you like to give to {1}?";
-
-/*Fuzzy*/
 "ChooseHowIGive" = "No, I'd like to decide how I give myself";
 "AndersGeven" = "Give differently";
 "KerkdienstGemist" = "Kerkdienst Gemist";
@@ -705,24 +686,18 @@
 "SortCodePlaceholder" = "Sort code";
 "BankAccountNumberPlaceholder" = "Bank account number";
 "BacsSetupTitle" = "Setting up Direct Debit Instruction";
-
-/*Fuzzy*/
 "BacsSetupBody" = "By continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction will be sent to you by email within 3 working days or no later than 10 working days before the first collection.";
 "BacsUnderstoodNotice" = "I have read and understood the advance notice";
-
-/*Fuzzy*/
 "BacsVerifyTitle" = "Verify your details";
-
-/*Fuzzy*/
 "BacsVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'\n\nThe company name wich will appear on your bank statement against the Direct Debit will be Givt Ltd.";
 "BacsReadDDGuarantee" = "Read Direct Debit Guarantee";
-"BacsDDGuarantee" = "- The Guarantee is offered by all banks and building societies that accept instructions to pay Direct Debits.\n- If there any changes to the amount date or frequency of your Direct Debit the organisation will notify you (normally 10 working days) in advance of your account being debited or as otherwise agreed.\n- If an error is made in the payment of your Direct Debit, by the organisation or your bank or building society, you are entitled to a full and immediate refund of the amount paid from your bank or building society.\n- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to.\n- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.";
+"BacsDDGuarantee" = "- The Guarantee is offered by all banks and building societies that accept instructions to pay Direct Debits.\n- If there are any changes to the amount date or frequency of your Direct Debit, the organisation will notify you (normally 10 working days) in advance of your account being debited or as otherwise agreed.\n- If an error is made in the payment of your Direct Debit, by the organisation or your bank or building society, you are entitled to a full and immediate refund of the amount paid from your bank or building society.\n- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to.\n- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.";
 "BacsAdvanceNotice" = "All the normal Direct Debit safeguards and guarantees apply. No changes in the amount, date, frequency to be debited can be made without notifying you at least five (5) working days in advance of your account being debited. \nIn the event of any error, you are entitled to an immediate refund from your Bank or Building society. \nYou have the right to cancel a Direct Debit Instruction at any time by writing to your Bank or Building society, with a  copy to use.";
 "BacsAdvanceNoticeTitle" = "Advance Notice";
 "BacsDDGuaranteeTitle" = "Direct Debit Guarantee";
 "BacsVerifyBodyDetails" = "Name: {0}\nAddress: {1}\nEmail address: {2}\nSort code: {3}\nAccount number: {4}\nFrequency type: donations";
 "BacsHelpTitle" = "Need help ?";
-"BacsHelpBody" = "Can't figure something out or you just have a question ? Give us a call at *** or hit us up on support@givtapp.net and we will be in touch!";
+"BacsHelpBody" = "Can't figure something out or you just have a question ? Give us a call at +31 320 320 115 or hit us up on support@givtapp.net and we will be in touch!";
 "BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount number: {1}";
 "CantFetchPersonalInformation" = "We can't seem to fetch your personal information right now, could you try again later?";
 "GivingContextCollectionBag" = "Collection bag";
@@ -739,3 +714,24 @@
 "AlertBACSMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through a SEPA mandate, we need your IBAN for that. If you prefer to use BACS, we need your Sort Code and Account Number.";
 "AlertSEPAMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through BACS Direct Debit, we need your Sort Code and Account Number for that. If you prefer to use SEPA, we need your IBAN.";
 "Important" = "Important";
+"FingerprintTitle" = "Fingerprint";
+"TouchID" = "Touch ID";
+"FaceID" = "Face ID";
+"TouchIDUsage" = "This is where you change the use of your Touch ID.";
+"FaceIDUsage" = "This is where you change the use of your Face ID.";
+"FingerprintUsage" = "This is where you change the use of your fingerprint.";
+"AuthenticationIssueTitle" = "Authentication problem";
+"AuthenticationIssueMessage" = "We could not propely identify you. Please try again later.";
+"AuthenticationIssueFallbackMessage" = "We could not properly identify you. Please log in using your access code or password.";
+"CancelledAuthorizationMessage" = "You cancelled the authentication. Do you want to login using your access code/password?";
+"OfflineGiftsTitle" = "Offline donations";
+"OfflineGiftsMessage" = "To make sure your donations arrive on time, your internet connection needs to be activated so that the donations you made can be sent to the server.";
+"EnrollFingerprint" = "Place your finger on the sensor.";
+"FingerprintMessageAlert" = "Use {0} to log in for {1}";
+"LoginFingerprint" = "Login using your fingerprint";
+
+/*Fuzzy*/
+"LoginFingerprintCancel" = "Login using pass code/password";
+"fingerprint_state_scanning" = "Touch sensor";
+"fingerprint_state_success" = "Fingerprint recognized";
+"fingerprint_state_failure" = "Fingerprint not recognized.\nTry again.";

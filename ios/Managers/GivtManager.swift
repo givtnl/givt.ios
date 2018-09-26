@@ -87,6 +87,10 @@ final class GivtManager: NSObject {
         return !id.substring(16..<19).matches("c[0-9]|d[be]")
     }
     
+    func hasOfflineGifts() -> Bool {
+        return UserDefaults.standard.offlineGivts.count > 0
+    }
+    
     func determineOrganisationName(namespace: String) -> String? {
         guard let organisation = orgBeaconList?.first(where: { (orgBeacon) -> Bool in
             return orgBeacon.EddyNameSpace == namespace
@@ -134,6 +138,8 @@ final class GivtManager: NSObject {
         }
         
         getPublicMeta()
+        
+        hasOfflineGifts() ? BadgeService.shared.addBadge(badge: .offlineGifts) : BadgeService.shared.removeBadge(badge: .offlineGifts)
     }
     
     @objc func internetChanged(note: Notification){
@@ -144,7 +150,8 @@ final class GivtManager: NSObject {
                 log.info(message: "Started processing chached Givts")
                 giveInBackground(transactions: [element])
                 UserDefaults.standard.offlineGivts.remove(at: index)
-                print(UserDefaults.standard.offlineGivts)
+                NotificationCenter.default.post(name: Notification.Name("OfflineGiftsSent"), object: nil)
+                BadgeService.shared.removeBadge(badge: .offlineGifts)
             }
         } else {
             log.info(message: "App got disconnected")
@@ -327,11 +334,7 @@ final class GivtManager: NSObject {
         for tr in transactions {
             UserDefaults.standard.offlineGivts.append(tr)
         }
-        
-        print(UserDefaults.standard.offlineGivts)
-        for t in UserDefaults.standard.offlineGivts {
-            print(t.amount)
-        }
+        BadgeService.shared.addBadge(badge: .offlineGifts)
     }
     
     private func findAndRemoveCachedTransactions(transactions: [Transaction]) {
@@ -406,7 +409,7 @@ final class GivtManager: NSObject {
     }
     
     func getPublicMeta() {
-        if UserDefaults.standard.userExt == nil || UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
+        if UserDefaults.standard.userExt == nil || UserDefaults.standard.userExt!.guid == nil {
             return
         }
         let year = Date().getYear() - 1 //get the previous year
@@ -420,6 +423,9 @@ final class GivtManager: NSObject {
                             UserDefaults.standard.hasGivtsInPreviousYear = parsedBool
                         } else {
                             UserDefaults.standard.hasGivtsInPreviousYear = false
+                        }
+                        if let parsedAccountType = parsedData["AccountType"] as? String {
+                            UserDefaults.standard.accountType = parsedAccountType
                         }
                         print("Has givts in \(year):", UserDefaults.standard.hasGivtsInPreviousYear)
                     } catch {

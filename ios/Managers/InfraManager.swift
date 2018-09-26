@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import LocalAuthentication
 
 class InfraManager {
     static var shared = InfraManager()
@@ -17,6 +18,13 @@ class InfraManager {
     private init() {
         
     }
+    
+    enum BiometricType {
+        case none
+        case touch
+        case face
+    }
+    
     var timer: Timer?
     func flashTorch(length: Double, interval: Double) {
         guard let device = AVCaptureDevice.default(for: AVMediaType.video)
@@ -38,6 +46,27 @@ class InfraManager {
             }
         } else {
             print("Torch is not available")
+        }
+    }
+    
+    static func biometricType() -> BiometricType {
+        let authContext = LAContext()
+        if #available(iOS 11, *) {
+            var error: NSError?
+            if authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                switch(authContext.biometryType) {
+                case .none:
+                    return .none
+                case .touchID:
+                    return .touch
+                case .faceID:
+                    return .face
+                }
+            } else {
+                return .none
+            }
+        } else {
+            return authContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) ? .touch : .none
         }
     }
     

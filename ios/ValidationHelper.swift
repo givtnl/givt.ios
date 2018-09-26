@@ -84,6 +84,26 @@ class ValidationHelper {
         //if string start or ends with illegal character => return false
         return rest.count == 0 && !startsOrEndsWithIllegalCharacter
     }
+    
+    
+    func isValidNumeric(string: String) -> Bool {
+        return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
+    }
+    
+    func isValidAddress(string: String) -> Bool {
+        var allowedCharacters = CharacterSet.alphanumerics
+        allowedCharacters.insert(" ")
+        allowedCharacters.insert("-")
+        allowedCharacters.insert("'")
+        allowedCharacters.insert("’")
+        allowedCharacters.insert(".")
+        //remove all allowed characters. When rest is not 0, means that we have unwanted characters.
+        let rest = string.trimmingCharacters(in: allowedCharacters)
+        let startsOrEndsWithIllegalCharacter = string.starts(with: " ") || string.starts(with: "-") || string.starts(with: "'") || string.starts(with: "’") || string.last == " " || string.last == "-" || string.last == "'" || string.last == "’" || string.starts(with: ".")
+        //if string start or ends with illegal character => return false
+        return rest.count == 0 && !startsOrEndsWithIllegalCharacter
+    }
+    
     class PhoneResult{
         var IsValid: Bool
         var Number: String??

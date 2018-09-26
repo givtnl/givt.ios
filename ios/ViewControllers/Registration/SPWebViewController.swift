@@ -12,7 +12,7 @@ import SVProgressHUD
 
 
 class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate  {
-    @IBOutlet var backButton: UIButton!
+    @IBOutlet var backButton: UIBarButtonItem!
     private var log = LogService.shared
     var url: String!
     private var webView: WKWebView!
@@ -20,7 +20,6 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     @IBOutlet weak var navBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-        backButton.setImage(UIImage(), for: .disabled)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,8 +28,21 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
         let url = URL(string: self.url)
         let request = URLRequest(url: url!)
         
+        let source: String = "var meta = document.createElement('meta');" +
+            "meta.name = 'viewport';" +
+            "meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';" +
+            "var head = document.getElementsByTagName('head')[0];" + "head.appendChild(meta);";
+        
+        let script: WKUserScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        let userContentController: WKUserContentController = WKUserContentController()
+        let conf = WKWebViewConfiguration()
+        conf.userContentController = userContentController
+        userContentController.addUserScript(script)
+        
         // init and load request in webview.
-        webView = WKWebView(frame: self.view.frame)
+        webView = WKWebView(frame: self.view.frame, configuration: conf)
+        webView.contentMode = .scaleAspectFit
+        webView.isMultipleTouchEnabled = false
         webView.navigationDelegate = self
         webView.uiDelegate = self
         webView.load(request)
@@ -56,8 +68,6 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
         return nil
     }
     
-    
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
@@ -81,7 +91,6 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
                 if success {
                     self.log.info(message: "Finished mandate signing")
                     DispatchQueue.main.async {
-                        UIApplication.shared.applicationIconBadgeNumber = 0
                         let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
                         self.show(vc, sender: nil)
                     }
@@ -108,6 +117,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
                 webView.load(navigationAction.request)
                 let bbi = UIBarButtonItem(title: NSLocalizedString("Close", comment: ""), style: .done, target: self, action: #selector(previousPage))
                 backButton.isEnabled = false
+                backButton.image = UIImage()
                 self.navBar.setRightBarButton(bbi, animated: true)
             }
             return nil
@@ -119,6 +129,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
         webView.goBack()
         self.navBar.setRightBarButtonItems([], animated: true)
         self.backButton.isEnabled = true
+        self.backButton.image = #imageLiteral(resourceName: "backbtn")
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

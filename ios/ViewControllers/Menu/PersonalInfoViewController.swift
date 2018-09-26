@@ -26,6 +26,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         case phonenumber
         case iban
         case changepassword
+        case bacs
     }
     private var validatedPhoneNumber: String = ""
     private let loginManager = LoginManager.shared
@@ -81,14 +82,16 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         SVProgressHUD.show()
-        loginManager.getUserExtObject { (userExtObject) in
+        loginManager.getUserExt { (userExtObject) in
             SVProgressHUD.dismiss()
             self.uExt = userExtObject
             guard let userExt = userExtObject else {
-                /* TODO: @Lennie Why a guard if the user does not receive an error message? */
-                DispatchQueue.main.async {
-                    self.backPressed(self)
-                }
+                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                    DispatchQueue.main.async {
+                        self.backPressed(self)
+                    }
+                }))
                 return
             }
             self._country = AppConstants.countries.filter { (c) -> Bool in
@@ -101,7 +104,12 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "house"), name: userExt.Address + "\n" + userExt.PostalCode + " " + userExt.City + ", " + self._country, type: .address))
             //self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "location"), name: userExt.PostalCode + " " + userExt.City + ", " + self._country, type: .countrycode))
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "phone_red"), name: userExt.PhoneNumber, type: .phonenumber))
-            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: userExt.IBAN.separate(every: 4, with: " "), type: .iban))
+            if let iban = userExt.IBAN {
+                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: iban.separate(every: 4, with: " "), type: .iban))
+            } else if let sortCode = userExt.SortCode, let accountNumber = userExt.AccountNumber {
+                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: NSLocalizedString("BacsSortcodeAccountnumber", comment: "").replacingOccurrences(of: "{0}", with: sortCode).replacingOccurrences(of: "{1}", with: accountNumber), type: .bacs))
+            }
+            
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
             DispatchQueue.main.async {
                 self.settingsTableView.reloadData()
@@ -127,10 +135,11 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         cell.img.image = settings[indexPath.row].image
         cell.accessoryType = .disclosureIndicator
         switch settings[indexPath.row].type {
-        case .name:
+        case .name, .bacs:
             cell.accessoryType = .none
             cell.labelView.alpha = 0.5
             cell.selectionStyle = .none
+            cell.img.image = cell.img.image!.noir
         case .emailaddress:
             cell.accessoryType = .disclosureIndicator
             cell.labelView.alpha = 1
@@ -162,7 +171,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.saveAction = { newPhone in
                 NavigationManager.shared.reAuthenticateIfNeeded(context:self, completion: {
                     SVProgressHUD.show()
-                    self.loginManager.getUserExtObject(completion: {(userExt) in
+                    self.loginManager.getUserExt(completion: {(userExt) in
                         guard let userExt = userExt else {
                             DispatchQueue.main.async {
                                 let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("EditPersonalFail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
@@ -208,7 +217,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.saveAction = { s in
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                     SVProgressHUD.show()
-                    self.loginManager.getUserExtObject(completion: { (userExt) in
+                    self.loginManager.getUserExt(completion: { (userExt) in
                         guard let userExt = userExt else
                         {
                             DispatchQueue.main.async {

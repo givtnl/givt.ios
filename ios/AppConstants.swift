@@ -33,6 +33,13 @@ class AppConstants {
         return countries
     }()
     
+    enum CountryCodes: String {
+        case UnitedKingdom = "GB"
+        case Belgium = "BE"
+        case Netherlands = "NL"
+        case Germany = "DE"
+    }
+    
     static var dict: [String: [String: String]] = {
         return ["org.kdgm.kerkdienstgemist":
                     [
@@ -47,6 +54,7 @@ class AppConstants {
             return "https://api.givtapp.net" // do not put this in prod before release!
         #else
             return "https://givtapidebug.azurewebsites.net"
+            //return "http://192.168.77.107:1699"
         #endif
     }()
     

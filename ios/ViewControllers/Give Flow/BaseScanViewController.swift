@@ -13,6 +13,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
     var bestBeacon = BestBeacon()
     private var bluetoothAlert: UIAlertController?
+    private var isBacs = false
     
     func didUpdateBluetoothState(isBluetoothOn: Bool) {
         if isBluetoothOn {
@@ -108,6 +109,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         
             parameters["nativeAppScheme"] = AppConstants.appScheme
             parameters["urlPart"] = AppConstants.returnUrlDir
+            parameters["currency"] = UserDefaults.standard.currencySymbol
             
             guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
                 return
@@ -138,7 +140,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     func shouldShowMandate(callback: @escaping (String) -> Void) {
-        if UserDefaults.standard.isTempUser || UserDefaults.standard.mandateSigned == true {
+        if UserDefaults.standard.isTempUser || UserDefaults.standard.mandateSigned == true || !AppServices.shared.connectedToNetwork() {
             print("not showing mandate")
             callback("")
             return
@@ -146,21 +148,33 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         
         NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
             SVProgressHUD.show()
-            LoginManager.shared.getUserExtObject { (userExtension) in
+            LoginManager.shared.getUserExt { (userExtension) in
                 guard let userExtension = userExtension else {
                     SVProgressHUD.dismiss()
                     callback("")
                     return
                 }
-                let country = userExtension.Country
-                let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: country, postalCode: userExtension.PostalCode, street: userExtension.Address)
+                let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, sortCode: userExtension.SortCode, accountNumber: userExtension.AccountNumber, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: userExtension.Country, postalCode: userExtension.PostalCode, street: userExtension.Address)
+                
                 let mandate = Mandate(signatory: signatory)
-                LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { slimPayUrl in
+                
+                if userExtension.AccountNumber != nil && userExtension.SortCode != nil {
+                    self.isBacs = true
+                    callback("")
                     SVProgressHUD.dismiss()
-                    if let url = slimPayUrl {
-                        callback(url)
+                    return
+                }
+                
+                LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
+                    SVProgressHUD.dismiss()
+                    if let r = response {
+                        if r.basicStatus == .ok {
+                            callback(r.text ?? "")
+                        } else {
+                            callback("")
+                        }
                     } else {
-                        SVProgressHUD.dismiss()
+                        //no response?
                         callback("")
                     }
                 })
@@ -174,17 +188,11 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         }
         
         self.log.info(message: "Going to safari")
-        if #available(iOS 10.0, *) {
-            DispatchQueue.main.async {
-                UIApplication.shared.open(url, options: [:], completionHandler: { (status) in
-                    self.popToRootWithDelay()
-                })
-            }
-        } else {
-            DispatchQueue.main.async {
-                if(UIApplication.shared.openURL(url)) {
-                    self.popToRootWithDelay()
-                }
+        DispatchQueue.main.async {
+            if !NavigationHelper.openUrl(url: url, completion: { (status) in
+                self.popToRootWithDelay()
+            }) {
+                self.popToRootWithDelay()
             }
         }
     }
@@ -192,18 +200,18 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     func giveManually(antennaID: String) {
         SVProgressHUD.show()
         GivtManager.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
-            SVProgressHUD.dismiss()
-            if seconds > 0 { /* TODO: @Lennie Why check seconds > 0 if GivtService.giveManually only calls afterGivt if seconds > 0 ??? */
-                LogService.shared.info(message: "Celebrating wiiehoeeew")
-                DispatchQueue.main.async {
-                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
-                    vc.secondsLeft = seconds
-                    vc.transactions = transactions
-                    vc.organisation = orgName
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-                
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+            }
+            
+            LogService.shared.info(message: "Celebrating wiiehoeeew")
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                vc.secondsLeft = seconds
+                vc.transactions = transactions
+                vc.organisation = orgName
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         })
     }

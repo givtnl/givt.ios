@@ -59,7 +59,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
+        NotificationCenter.default.addObserver(self, selector: #selector(offlineGiftsSent), name: Notification.Name("OfflineGiftsSent"), object: nil)
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func offlineGiftsSent(notification:Notification) {
+        loadSettings()
     }
 
     override func didReceiveMemoryWarning() {
@@ -122,7 +127,8 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items.append([])
             items.append([])
             
-            let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, callback: { self.openHistory() })
+
+            let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[0].append(givts)
             let givtsTaxOverviewAvailable: Setting?
             if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
@@ -131,9 +137,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 }, showArrow: false, isHighlighted: true)
                 items[0].append(givtsTaxOverviewAvailable!)
             }
-            
-            let limit = Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: UIImage(named: "euro")!, callback: { self.openGiveLimit() })
-            items[0].append(limit)
+
+            let givingLimitImage = UserDefaults.standard.currencySymbol == "£" ? #imageLiteral(resourceName: "pound") : #imageLiteral(resourceName: "euro")
+            items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: givingLimitImage, callback: { self.openGiveLimit() }))
             items[0].append(changePersonalInfo)
             items[0].append(amountPresets)
             
@@ -141,6 +147,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             
             items[0].append(accessCode)
+            
+            if(InfraManager.biometricType() == .touch) {
+                let fingerprint = Setting(name: NSLocalizedString("TouchID", comment: ""), image: #imageLiteral(resourceName: "TouchID"), callback: { self.manageFingerprint() })
+                items[0].append(fingerprint)
+            } else if(InfraManager.biometricType() == .face) {
+                let fingerprint = Setting(name: NSLocalizedString("FaceID", comment: ""), image: #imageLiteral(resourceName: "FaceID"), callback: { self.manageFingerprint() })
+                items[0].append(fingerprint)
+            }
             items[1] = [changeAccount, screwAccount]
             items[2] = [aboutGivt, shareGivt]
             
@@ -171,6 +185,12 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         vc!.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
             self.present(vc!, animated: true, completion:  nil)}
+    }
+    
+    private func manageFingerprint() {
+        let vc = UIStoryboard(name: "Fingerprint", bundle: nil).instantiateInitialViewController()
+        vc!.transitioningDelegate = self.slideFromRightAnimation
+        navigationManager.pushWithLogin(vc!, context: self)
     }
     
     private func changePersonalInfo() {
@@ -252,9 +272,15 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private func openHistory() {
         logService.info(message: "User is opening history")
-        let vc = storyboard?.instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
-        vc.transitioningDelegate = self.slideFromRightAnimation
-        NavigationManager.shared.pushWithLogin(vc, context: self)
+        if GivtManager.shared.hasOfflineGifts() {
+            let alert = UIAlertController(title: NSLocalizedString("OfflineGiftsTitle", comment: ""), message: NSLocalizedString("OfflineGiftsMessage", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
+            vc.transitioningDelegate = self.slideFromRightAnimation
+            NavigationManager.shared.pushWithLogin(vc, context: self)
+        }
     }
     
     private func openGiveLimit() {
