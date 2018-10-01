@@ -40,7 +40,7 @@ class AppConstants {
         case Germany = "DE"
     }
     
-    static var dict: [String: [String: String]] = {
+    static var externalApps: [String: [String: String]] = {
         return ["org.kdgm.kerkdienstgemist":
                     [
                         "logo":"kerkdienstgemist",
