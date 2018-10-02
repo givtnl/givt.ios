@@ -93,7 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-        BadgeService.shared.refreshCount()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -174,9 +173,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name == "mediumid" })?.value,
                     let appId = queryItems.first(where: { (item) -> Bool in item.name == "appid" })?.value
                 {
-                    if let element = AppConstants.dict[appId], let imageString = element["logo"], let image = UIImage(named: imageString), let name = element["name"] {
-                        GivtManager.shared.externalIntegration = ExternalAppIntegration(name: name, logo: image, mediumId: mediumIdValue, appScheme: fromValue)
-                        LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app with identifier \(mediumIdValue)")
+                    if let element = AppConstants.externalApps[appId], let imageString = element["logo"], let image = UIImage(named: imageString), let name = element["name"] {
+                        if mediumIdValue.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumIdValue.prefix(20))) == nil {
+                            LogService.shared.warning(message: "Illegal mediumid \"\(mediumIdValue)\" provided. Going to normal give flow")
+                        } else {
+                            GivtManager.shared.externalIntegration = ExternalAppIntegration(name: name, logo: image, mediumId: mediumIdValue, appScheme: fromValue)
+                            LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app with identifier \(mediumIdValue)")
+                        }
                     } else {
                         LogService.shared.warning(message: "Could not identify External App Integration")
                     }

@@ -150,9 +150,8 @@ final class GivtManager: NSObject {
                 log.info(message: "Started processing chached Givts")
                 giveInBackground(transactions: [element])
                 UserDefaults.standard.offlineGivts.remove(at: index)
-                NotificationCenter.default.post(name: Notification.Name("OfflineGiftsSent"), object: nil)
-                BadgeService.shared.removeBadge(badge: .offlineGifts)
             }
+            BadgeService.shared.removeBadge(badge: .offlineGifts)
         } else {
             log.info(message: "App got disconnected")
         }
@@ -296,6 +295,7 @@ final class GivtManager: NSObject {
                     if res.basicStatus == .ok {
                         self.log.info(message: "Posted Givt to the server")
                         self.findAndRemoveCachedTransactions(transactions: transactions)
+                        BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         if let data = res.data {
                             do {
                                 let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
@@ -314,6 +314,7 @@ final class GivtManager: NSObject {
                         afterGivt(-1)
                     } else if res.status == .expectationFailed {
                         self.findAndRemoveCachedTransactions(transactions: transactions)
+                        BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         afterGivt(-1)
                     } else {
                         afterGivt(-1)
@@ -349,6 +350,7 @@ final class GivtManager: NSObject {
                 UserDefaults.standard.offlineGivts.remove(at: idx)
             }
         }
+        
     }
     
     private func tryGive(transactions: [Transaction], trycount: UInt = 0) {
@@ -363,9 +365,11 @@ final class GivtManager: NSObject {
                         if res.basicStatus == .ok {
                             self.log.info(message: "Posted Givt to the server")
                             self.findAndRemoveCachedTransactions(transactions: transactions)
+                            BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         } else if res.status == .expectationFailed {
                             self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
                             self.findAndRemoveCachedTransactions(transactions: transactions)
+                            BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         } else {
                             self.tryGive(transactions: transactions, trycount: trycount+1)
                         }
