@@ -295,6 +295,7 @@ final class GivtManager: NSObject {
                     if res.basicStatus == .ok {
                         self.log.info(message: "Posted Givt to the server")
                         self.findAndRemoveCachedTransactions(transactions: transactions)
+                        BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         if let data = res.data {
                             do {
                                 let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
@@ -308,27 +309,24 @@ final class GivtManager: NSObject {
                                 print(parsedData)
                             } catch {
                                 afterGivt(-1)
-                                BadgeService.shared.addBadge(badge: .offlineGifts)
                             }
                         }
                         afterGivt(-1)
                     } else if res.status == .expectationFailed {
                         self.findAndRemoveCachedTransactions(transactions: transactions)
+                        BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         afterGivt(-1)
                     } else {
                         afterGivt(-1)
-                        BadgeService.shared.addBadge(badge: .offlineGifts)
                     }
                 } else {
                     //no response
                     afterGivt(-1)
-                    BadgeService.shared.addBadge(badge: .offlineGifts)
                 }
             }
         } catch {
             afterGivt(-1)
             self.log.error(message: "Unknown error : \(error)")
-            BadgeService.shared.addBadge(badge: .offlineGifts)
         }
     }
     
@@ -352,6 +350,7 @@ final class GivtManager: NSObject {
                 UserDefaults.standard.offlineGivts.remove(at: idx)
             }
         }
+        
     }
     
     private func tryGive(transactions: [Transaction], trycount: UInt = 0) {
@@ -366,23 +365,21 @@ final class GivtManager: NSObject {
                         if res.basicStatus == .ok {
                             self.log.info(message: "Posted Givt to the server")
                             self.findAndRemoveCachedTransactions(transactions: transactions)
+                            BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         } else if res.status == .expectationFailed {
                             self.log.warning(message: "Givt was not sent to server. Gave between 30s?")
                             self.findAndRemoveCachedTransactions(transactions: transactions)
+                            BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         } else {
                             self.tryGive(transactions: transactions, trycount: trycount+1)
                         }
-                    } else {
-                        BadgeService.shared.addBadge(badge: .offlineGifts)
                     }
                 }
             } else {
                 self.log.error(message: "Didn't get response from server! Givt has been cached")
-                BadgeService.shared.addBadge(badge: .offlineGifts)
             }
         } catch {
             self.log.error(message: "Unknown error : \(error)")
-            BadgeService.shared.addBadge(badge: .offlineGifts)
         }
     }
     
