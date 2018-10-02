@@ -132,12 +132,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         thirdView.isHidden = true
         thirdLine.isHidden = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(offlineGiftsSent), name: Notification.Name("OfflineGiftsSent"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
     }
     
-    @objc func offlineGiftsSent(notification:Notification) {
+    @objc func checkBadges(notification:Notification) {
         DispatchQueue.main.async {
-            self.menu.image = LoginManager.shared.isFullyRegistered && !GivtManager.shared.hasOfflineGifts() ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
+            self.menu.image = BadgeService.shared.hasBadge(badge: .completeRegistration) || BadgeService.shared.hasBadge(badge: .offlineGifts) ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         }
     }
     
@@ -159,7 +159,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         checkAmounts()
         
         log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
-        menu.image = LoginManager.shared.isFullyRegistered && !GivtManager.shared.hasOfflineGifts() ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
+        menu.image = BadgeService.shared.hasBadge(badge: .completeRegistration) || BadgeService.shared.hasBadge(badge: .offlineGifts) ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         
         if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
             self._cameFromFAQ = true

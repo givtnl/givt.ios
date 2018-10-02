@@ -40,10 +40,15 @@ class BadgeService {
         }
     }
     
+    func hasBadge(badge: Badge) -> Bool {
+        return badges.contains(badge.rawValue)
+    }
+    
     func refreshCount() {
         UserDefaults.standard.badges = badges
         DispatchQueue.main.async {
             UIApplication.shared.applicationIconBadgeNumber = self.badges.count
         }
+        NotificationCenter.default.post(name: .GivtBadgeNumberDidChange, object: nil)
     }
 }
