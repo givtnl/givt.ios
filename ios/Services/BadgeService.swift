@@ -21,7 +21,9 @@ class BadgeService {
     
     init() {
         badges = UserDefaults.standard.badges
-        UIApplication.shared.applicationIconBadgeNumber = badges.count
+        DispatchQueue.main.async {
+            UIApplication.shared.applicationIconBadgeNumber = self.badges.count
+        }
     }
 
     func addBadge(badge: Badge) {

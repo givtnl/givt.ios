@@ -349,6 +349,10 @@ final class GivtManager: NSObject {
                 UserDefaults.standard.offlineGivts.remove(at: idx)
             }
         }
+        if UserDefaults.standard.offlineGivts.count == 0 {
+            NotificationCenter.default.post(name: Notification.Name("OfflineGiftsSent"), object: nil)
+            BadgeService.shared.removeBadge(badge: .offlineGifts)
+        }
     }
     
     private func tryGive(transactions: [Transaction], trycount: UInt = 0) {

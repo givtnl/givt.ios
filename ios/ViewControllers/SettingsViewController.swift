@@ -171,7 +171,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             ]
         }
         
-        settingsTable.reloadData()
+        DispatchQueue.main.async {
+            self.settingsTable.reloadData()
+        }
+        
     }
     
     private var device: AVCaptureDevice?

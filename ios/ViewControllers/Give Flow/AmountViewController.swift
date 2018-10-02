@@ -136,7 +136,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     @objc func offlineGiftsSent(notification:Notification) {
-        menu.image = LoginManager.shared.isFullyRegistered && !GivtManager.shared.hasOfflineGifts() ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
+        DispatchQueue.main.async {
+            self.menu.image = LoginManager.shared.isFullyRegistered && !GivtManager.shared.hasOfflineGifts() ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
+        }
     }
     
     
