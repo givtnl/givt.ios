@@ -19,7 +19,7 @@ class BadgeService {
     
     private var badges: [Int]!
     
-    init() {
+    private init() {
         badges = UserDefaults.standard.badges
         DispatchQueue.main.async {
             UIApplication.shared.applicationIconBadgeNumber = self.badges.count
@@ -44,7 +44,7 @@ class BadgeService {
         return badges.contains(badge.rawValue)
     }
     
-    func refreshCount() {
+    private func refreshCount() {
         UserDefaults.standard.badges = badges
         DispatchQueue.main.async {
             UIApplication.shared.applicationIconBadgeNumber = self.badges.count

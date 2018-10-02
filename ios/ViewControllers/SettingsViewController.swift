@@ -59,11 +59,11 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
-        NotificationCenter.default.addObserver(self, selector: #selector(offlineGiftsSent), name: Notification.Name("OfflineGiftsSent"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(badgeDidChange), name: .GivtBadgeNumberDidChange, object: nil)
         // Do any additional setup after loading the view.
     }
     
-    @objc func offlineGiftsSent(notification:Notification) {
+    @objc func badgeDidChange(notification:Notification) {
         loadSettings()
     }
 
