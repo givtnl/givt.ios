@@ -125,11 +125,7 @@ final class GivtManager: NSObject {
         resume()
         
         NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: ReachabilityChangedNotification, object: reachability)
-        do {
-            try reachability?.startNotifier()
-        } catch {
-            print("could not start notifier")
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(connectionStatusDidChange(notification:)), name: .GivtConnectionStateDidChange, object: nil)
     }
     
     public func resume() {
@@ -142,18 +138,25 @@ final class GivtManager: NSObject {
         hasOfflineGifts() ? BadgeService.shared.addBadge(badge: .offlineGifts) : BadgeService.shared.removeBadge(badge: .offlineGifts)
     }
     
+    func processCachedGivts() {
+        for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
+            log.info(message: "Started processing chached Givts")
+            giveInBackground(transactions: [element])
+            UserDefaults.standard.offlineGivts.remove(at: index)
+        }
+        BadgeService.shared.removeBadge(badge: .offlineGifts)
+    }
+    
     @objc func internetChanged(note: Notification){
         let reachability = note.object as! Reachability
         if reachability.isReachable {
-            log.info(message: "App got connected")
-            for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
-                log.info(message: "Started processing chached Givts")
-                giveInBackground(transactions: [element])
-                UserDefaults.standard.offlineGivts.remove(at: index)
-            }
-            BadgeService.shared.removeBadge(badge: .offlineGifts)
-        } else {
-            log.info(message: "App got disconnected")
+            processCachedGivts()
+        }
+    }
+    
+    @objc func connectionStatusDidChange(notification: Notification) {
+        if let canSend = notification.object as? Bool, canSend {
+            processCachedGivts()
         }
     }
     

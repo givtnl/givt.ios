@@ -45,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.showcases = []
         }
         
+        AppServices.shared.startCheckingInternetConnection()
+        
         handleOldBeaconList()
         checkIfTempUser()
         
@@ -123,16 +125,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let reachability = notification.object as! Reachability
         if reachability.isReachable {
             if reachability.isReachableViaWiFi {
-                print("Reachable via WiFi")
                 logService.info(message: "App got connected over WiFi")
             } else {
-                print("Reachable via Cellular")
                 logService.info(message: "App got connected over Cellular")
             }
         } else {
-            print("Network not reachable")
             logService.info(message: "App got disconnected")
         }
+        AppServices.shared.fetchInternetConnection()
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
