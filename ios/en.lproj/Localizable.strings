@@ -689,15 +689,15 @@
 "BacsSetupBody" = "By continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction will be sent to you by email within 3 working days or no later than 10 working days before the first collection.";
 "BacsUnderstoodNotice" = "I have read and understood the advance notice";
 "BacsVerifyTitle" = "Verify your details";
-"BacsVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'\n\nThe company name wich will appear on your bank statement against the Direct Debit will be Givt Ltd.";
+"BacsVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'\n\nThe company name which will appear on your bank statement against the Direct Debit will be Givt Ltd.";
 "BacsReadDDGuarantee" = "Read Direct Debit Guarantee";
 "BacsDDGuarantee" = "- The Guarantee is offered by all banks and building societies that accept instructions to pay Direct Debits.\n- If there are any changes to the amount date or frequency of your Direct Debit, the organisation will notify you (normally 10 working days) in advance of your account being debited or as otherwise agreed.\n- If an error is made in the payment of your Direct Debit, by the organisation or your bank or building society, you are entitled to a full and immediate refund of the amount paid from your bank or building society.\n- If you receive a refund you are not entitled to, you must pay it back when the organisation asks you to.\n- You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.";
 "BacsAdvanceNotice" = "All the normal Direct Debit safeguards and guarantees apply. No changes in the amount, date, frequency to be debited can be made without notifying you at least five (5) working days in advance of your account being debited. \nIn the event of any error, you are entitled to an immediate refund from your Bank or Building society. \nYou have the right to cancel a Direct Debit Instruction at any time by writing to your Bank or Building society, with a  copy to use.";
 "BacsAdvanceNoticeTitle" = "Advance Notice";
 "BacsDDGuaranteeTitle" = "Direct Debit Guarantee";
 "BacsVerifyBodyDetails" = "Name: {0}\nAddress: {1}\nEmail address: {2}\nSort code: {3}\nAccount number: {4}\nFrequency type: donations";
-"BacsHelpTitle" = "Need help ?";
-"BacsHelpBody" = "Can't figure something out or you just have a question ? Give us a call at +31 320 320 115 or hit us up on support@givtapp.net and we will be in touch!";
+"BacsHelpTitle" = "Need help?";
+"BacsHelpBody" = "Can't figure something out or you just have a question? Give us a call at +31 320 320 115 or hit us up on support@givtapp.net and we will be in touch!";
 "BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount number: {1}";
 "CantFetchPersonalInformation" = "We can't seem to fetch your personal information right now, could you try again later?";
 "GivingContextCollectionBag" = "Collection bag";
@@ -717,9 +717,9 @@
 "FingerprintTitle" = "Fingerprint";
 "TouchID" = "Touch ID";
 "FaceID" = "Face ID";
-"TouchIDUsage" = "This is where you change the use of your Touch ID.";
-"FaceIDUsage" = "This is where you change the use of your Face ID.";
-"FingerprintUsage" = "This is where you change the use of your fingerprint.";
+"TouchIDUsage" = "This is where you change the use of your Touch ID to login into the Givt app.";
+"FaceIDUsage" = "This is where you change the use of your Face ID to login into the Givt app.";
+"FingerprintUsage" = "This is where you change the use of your fingerprint to login into the Givt app.";
 "AuthenticationIssueTitle" = "Authentication problem";
 "AuthenticationIssueMessage" = "We could not propely identify you. Please try again later.";
 "AuthenticationIssueFallbackMessage" = "We could not properly identify you. Please log in using your access code or password.";
@@ -735,3 +735,11 @@
 "fingerprint_state_scanning" = "Touch sensor";
 "fingerprint_state_success" = "Fingerprint recognized";
 "fingerprint_state_failure" = "Fingerprint not recognized.\nTry again.";
+"ActivateBluetooth" = "Activate Bluetooth";
+"AmountTooHigh" = "Bedrag te hoog";
+"ActivateLocation" = "Activate location";
+"LoginFailure" = "Login error";
+"RequestFailed" = "Request failed";
+
+/*Fuzzy*/
+"ResetPasswordSent" = "You should have received an e-mail with a link to reset your password. In case you do not see the e-mail right away, check your spam.";
