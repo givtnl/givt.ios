@@ -759,3 +759,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*Fuzzy*/
 "ResetPasswordSent" = "Je krijgt een e-mail met daarin een link om je wachtwoord opnieuw in te stellen. Heb je na 5 minuten nog steeds de e-mail niet ontvangen? Kijk dan even in je spam.";
+
+/*Fuzzy*/
+"Success" = "Gelukt!";
