@@ -236,6 +236,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         iban.leadingAnchor.constraint(equalTo: sepaView.leadingAnchor, constant: 20).isActive = true
         iban.isEnabled = true
         iban.isUserInteractionEnabled = true
+        iban.autocapitalizationType = .allCharacters
         //iban.bottomAnchor.constraint(greaterThanOrEqualTo: sepaView.bottomAnchor, constant: 0).isActive = true
         
         sortCode = CustomUITextField()
@@ -325,7 +326,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 checkAll(iban)
             }
             
-            textField.text = textField.text?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ")
+            textField.text = textField.text?.replacingOccurrences(of: " ", with: "").separate(every: 4, with: " ").uppercased()
             if let pos = self.position {
                 if deleting {
                     //set cursor
