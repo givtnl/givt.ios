@@ -78,9 +78,14 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                     
                     if let status = status {
                         if status {
-                            SVProgressHUD.showSuccess(withStatus: NSLocalizedString("CheckInbox", comment: ""))
+                            let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("ResetPasswordSent", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                                DispatchQueue.main.async {
+                                    self.navigationController?.popViewController(animated: true)
+                                }
+                            }))
                             DispatchQueue.main.async {
-                                self.navigationController?.popViewController(animated: true)
+                                self.present(alert, animated: true, completion: nil)
                             }
                         } else {
                             if !self._appServices.connectedToNetwork() {
