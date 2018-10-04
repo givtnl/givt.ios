@@ -743,3 +743,6 @@
 
 /*Fuzzy*/
 "ResetPasswordSent" = "You should have received an e-mail with a link to reset your password. In case you do not see the e-mail right away, check your spam.";
+
+/*Fuzzy*/
+"Success" = "Success!";
