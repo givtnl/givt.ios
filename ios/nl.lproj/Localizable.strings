@@ -31,7 +31,7 @@
 
 /*@lennie Krijgt de gebruiker nog meer info in dit geval? Of ziet hij alleen dat er iets mis gaat?*/
 /*Foutmelding bij het registreren: algemene melding dat er iets fout ging bij het registreren*/
-"ErrorTextRegister" = "Er gaat iets mis bij de registratie. \nProbeer het eens met een \nander e-mailadres.";
+"ErrorTextRegister" = "Er gaat iets mis bij de registratie. Probeer het eens met een ander e-mailadres.";
 
 /*Algemene foutmelding (popup) "één van de velden is niet correct ingevuld"*/
 "FieldsNotCorrect" = "Eén van de velden is nog \nniet helemaal correct ingevuld.";
@@ -297,13 +297,13 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AcceptTerms" = "Bij het doorgaan ga je akkoord met de algemene voorwaarden.";
 
 /*Tekst verschijnt wanneer het ondertekenen van de machtiging niet is gelukt*/
-"MandateSigingFailed" = "Het tekenen van de machtiging \nis helaas niet gelukt. Probeer later opnieuw vanuit het menu. Blijft deze melding opduiken? Contacteer dan support@givtapp.net.";
+"MandateSigingFailed" = "Het tekenen van de machtiging is helaas niet gelukt. Probeer later opnieuw vanuit het menu. Blijft deze melding opduiken? Contacteer dan support@givtapp.net.";
 
 /*Tekst verschijnt in een loading-animatie wanneer de status van de machtiging wordt opgevraagd.*/
 "AwaitingMandateStatus" = "We hebben héél even nodig \nom je machtiging te verwerken.";
 
 /*Treedt op wanneer het niet mogelijk blijkt te zijn om een machtigings-ondertekening te starten (SlimPay niet te bereiken)*/
-"RequestMandateFailed" = "Het is op dit moment niet mogelijk \nom een machtiging aan te vragen. \nProbeer binnen een paar minuten opnieuw.";
+"RequestMandateFailed" = "Het is op dit moment niet mogelijk om een machtiging aan te vragen. Probeer binnen een paar minuten opnieuw.";
 "Continue" = "Doorgaan";
 
 /*"Hoe werkt geven?" vraag in FAQ*/
@@ -551,7 +551,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "PersonalInfoTempUser" = "Hé, snelle gever! Je gebruikt een tijdelijk account. We hebben je gegevens dus nog niet ontvangen.";
 "UpdatePersonalInfoError" = "Helaas lukt het op dit moment niet om je gegevens te wijzigen. Probeer later opnieuw of neem contact op met support@givtapp.net.";
 "UpdatePersonalInfoSuccess" = "Gelukt!";
-"LoadingTitle" = "Even geduld";
+"LoadingTitle" = "Even wachten";
 "LoadingMessage" = "We zijn je gegevens aan het laden ...";
 "ButtonChange" = "Wijzigen";
 
@@ -713,7 +713,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "BacsDDGuaranteeTitle" = "Automatische incasso garantie";
 "BacsVerifyBodyDetails" = "Naam: {0}\nAdres: {1}\nEmail adres: {2}\nSortcode: {3} \nAccount nummer: {4}\nFrequentie type: giften";
 "BacsHelpTitle" = "Hulp nodig?";
-"BacsHelpBody" = "Kan je iets niet vinden of heb je gewoon een vraag ? Aarzel dan niet om ons te contacteren op het nummer: +31 320 320 115 of stuur ons een mailtje naar het adres: support@givtapp.net en we nemen spoedig contact met je op !";
+"BacsHelpBody" = "Kan je iets niet vinden of heb je gewoon een vraag? Aarzel dan niet om ons te contacteren op het nummer: +31 320 320 115 of stuur ons een mailtje naar het adres: support@givtapp.net en we nemen spoedig contact met je op!";
 "BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount nummer: {1}";
 "CantFetchPersonalInformation" = "We kunnen op dit moment je gegevens niet opvragen van de server, probeer je het later even opnieuw?";
 "GivingContextCollectionBag" = "Collectemiddel";
@@ -733,9 +733,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FingerprintTitle" = "Vingerafdruk";
 "TouchID" = "Touch ID";
 "FaceID" = "Face ID";
-"TouchIDUsage" = "Hier beheer je het gebruik van je Touch ID.";
-"FaceIDUsage" = "Hier beheer je het gebruik van je Face ID.";
-"FingerprintUsage" = "Hier beheer je het gebruik van je vingerafdruk.";
+"TouchIDUsage" = "Hier beheer je het gebruik van je Touch ID om in de Givt-app in te loggen.";
+"FaceIDUsage" = "Hier beheer je het gebruik van je Face ID om in de Givt-app in te loggen.";
+"FingerprintUsage" = "Hier beheer je het gebruik van je vingerafdruk om in de Givt-app in te loggen.";
 "AuthenticationIssueTitle" = "Authenticatieprobleem";
 "AuthenticationIssueMessage" = "We konden je niet goed identificeren. Probeer je het later even opnieuw?";
 "AuthenticationIssueFallbackMessage" = "We konden je niet goed identificeren. Log in met je toegangscode of wachtwoord.";
@@ -751,3 +751,11 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "fingerprint_state_scanning" = "Raak de sensor aan";
 "fingerprint_state_success" = "Vingerafdruk herkend";
 "fingerprint_state_failure" = "Vingeradruk niet herkend.\nProbeer opnieuw.";
+"ActivateBluetooth" = "Bluetooth activeren";
+"AmountTooHigh" = "Bedrag te hoog";
+"ActivateLocation" = "Locatie activeren";
+"LoginFailure" = "Fout bij inloggen";
+"RequestFailed" = "Aanvraag mislukt";
+
+/*Fuzzy*/
+"ResetPasswordSent" = "Je krijgt een e-mail met daarin een link om je wachtwoord opnieuw in te stellen. Heb je na 5 minuten nog steeds de e-mail niet ontvangen? Kijk dan even in je spam.";
