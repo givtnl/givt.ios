@@ -145,6 +145,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 } else {
                     LogService.shared.warning(message: "\(url) was not installed on the device.")
                 }
+            } else if let url = userActivity.webpageURL{
+                if let mediumId = GivtManager.shared.getMediumIdFromGivtLink(link: url.absoluteString) {
+                    if mediumId.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumId.prefix(20))) == nil {
+                        LogService.shared.warning(message: "Illegal mediumid \"\(mediumId)\" provided. Going to normal give flow")
+                    } else {
+                        GivtManager.shared.externalIntegration = ExternalAppIntegration(name: "QR", logo: nil, mediumId: mediumId, appScheme: nil)
+                        LogService.shared.info(message: "App scheme: QR entering Givt-app with identifier \(mediumId)")
+                        return true;
+                    }
+                }
             }
             GivtManager.shared.externalIntegration = nil
         }

@@ -11,12 +11,12 @@ import UIKit
 
 class ExternalAppIntegration {
     var name: String
-    var logo: UIImage
+    var logo: UIImage?
     var mediumId: String
-    var appScheme: String
+    var appScheme: String?
     var wasShownAlready: Bool
     
-    init(name: String, logo: UIImage, mediumId: String, appScheme: String, wasShownAlready: Bool = false) {
+    init(name: String, logo: UIImage?, mediumId: String, appScheme: String?, wasShownAlready: Bool = false) {
         self.name = name
         self.logo = logo
         self.mediumId = mediumId

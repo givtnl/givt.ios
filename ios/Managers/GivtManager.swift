@@ -218,27 +218,19 @@ final class GivtManager: NSObject {
     }
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
-        let queryString = "https://www.givtapp.net/download?code="
-        if scanResult.index(of: queryString) != nil {
-            let identifierEncoded = String(scanResult[queryString.endIndex...])
-            if let decoded = identifierEncoded.base64Decoded() {
-                let bestBeacon = BestBeacon()
-                /* mimic bestbeacon */
-                bestBeacon.beaconId = decoded
-                if let idx = decoded.index(of: ".") {
-                    bestBeacon.namespace = String(decoded[..<idx])
-                } else {
-                    bestBeacon.namespace = decoded
-                }
-                //bepaal naam
-                give(antennaID: decoded, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
-                completionHandler(true)
+        if let mediumid = getMediumIdFromGivtLink(link: scanResult) {
+            let bestBeacon = BestBeacon()
+            /* mimic bestbeacon */
+            bestBeacon.beaconId = mediumid
+            if let idx = mediumid.index(of: ".") {
+                bestBeacon.namespace = String(mediumid[..<idx])
             } else {
-                //todo: log messed up base 64
-                completionHandler(false)
+                bestBeacon.namespace = mediumid
             }
+            //bepaal naam
+            give(antennaID: mediumid, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
+            completionHandler(true)
         } else {
-            //todo log result: not our qr code
             completionHandler(false)
         }
     }
@@ -512,6 +504,30 @@ final class GivtManager: NSObject {
     
     func triggerGivtLocation(id: String, organisationName: String) {
         delegate?.didDetectGivtLocation(orgName: organisationName, identifier: id)
+    }
+    
+    func getMediumIdFromGivtLink(link: String) -> String?{
+        let queryString = "https://www.givtapp.net/download?code="
+        let queryString2 = "https://www.givt.app/download?code="
+        let idxqs = link.index(of: queryString)
+        let idxqs2 = link.index(of: queryString2)
+        if idxqs != nil || idxqs2 != nil {
+            var encoded: String;
+            if idxqs != nil {
+                encoded = String(link[queryString.endIndex...])
+            } else if idxqs2 != nil {
+                encoded = String(link[queryString2.endIndex...])
+            } else { return nil }
+            
+            if let decoded = encoded.base64Decoded() {
+                return decoded
+            } else {
+                //todo: log messed up base 64
+            }
+        } else {
+            //todo log result: not our qr code
+        }
+        return nil;
     }
     
     func hasGivtLocations() -> Bool {
