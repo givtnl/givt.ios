@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class AboutViewController: UIViewController {
+class AboutViewController: UIViewController, UITextViewDelegate {
 
     private var log = LogService.shared
     @IBOutlet var titleText: UILabel!
@@ -23,6 +23,7 @@ class AboutViewController: UIViewController {
         goBack.accessibilityLabel = NSLocalizedString("Back", comment: "")
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
         // Do any additional setup after loading the view.
         textView.placeholder = NSLocalizedString("TypeMessage", comment: "")
         btnSend.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
@@ -38,6 +39,16 @@ class AboutViewController: UIViewController {
         // prevents the scroll view from swallowing up the touch event of child buttons
         tapGesture.cancelsTouchesInView = true
         scrollView.addGestureRecognizer(tapGesture)
+        
+        btnSend.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: UIControlState.disabled)
+        btnSend.isEnabled = false
+    }
+    
+    @objc private func textDidChange(notification: Notification) {
+        if let tv = notification.object as? CustomUITextView {
+            let text = tv.text.trimmingCharacters(in: .whitespacesAndNewlines)
+            btnSend.isEnabled = !text.isEmpty && text != tv.placeholder!
+        }
     }
     
     @objc func keyboardWillShow(notification:NSNotification){
@@ -79,13 +90,6 @@ class AboutViewController: UIViewController {
     func send() {
         endEditing()
         textView.text = textView.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        if textView.text.isEmpty() || textView.text == textView.placeholder {
-            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("NoMessage", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            }))
-            self.present(alert, animated: true, completion:  {})
-            return
-        }
         
         if !AppServices.shared.connectedToNetwork() {
             let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
@@ -113,7 +117,7 @@ class AboutViewController: UIViewController {
             }
             if status {
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: NSLocalizedString("PincodeSuccessfullTitle", comment: ""), message: NSLocalizedString("FeedbackMailSent", comment: ""), preferredStyle: .alert)
+                    let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("FeedbackMailSent", comment: ""), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                         self.dismiss(animated: true, completion: {})
                     }))
