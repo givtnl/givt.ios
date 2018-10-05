@@ -9,6 +9,17 @@
 import UIKit
 import SVProgressHUD
 
+public enum SettingType {
+    case name
+    case emailaddress
+    case address
+    case countrycode
+    case phonenumber
+    case iban
+    case changepassword
+    case bacs
+}
+
 class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
     var settings: [PersonalSetting]!
    private var _country: String = ""
@@ -18,16 +29,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
         var name: String
         var type: SettingType
     }
-    enum SettingType {
-        case name
-        case emailaddress
-        case address
-        case countrycode
-        case phonenumber
-        case iban
-        case changepassword
-        case bacs
-    }
+    
     private var validatedPhoneNumber: String = ""
     private let loginManager = LoginManager.shared
     private let validationHelper = ValidationHelper.shared
@@ -110,7 +112,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
                 self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: NSLocalizedString("BacsSortcodeAccountnumber", comment: "").replacingOccurrences(of: "{0}", with: sortCode).replacingOccurrences(of: "{1}", with: accountNumber), type: .bacs))
             }
             
-            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: PersonalInfoViewController.SettingType.changepassword))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: SettingType.changepassword))
             DispatchQueue.main.async {
                 self.settingsTableView.reloadData()
             }
@@ -157,6 +159,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         switch settings[indexPath.row].type {
         case .phonenumber:
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
+            vc.type = settings[indexPath.row].type
             vc.img = #imageLiteral(resourceName: "phone_red")
             vc.titleOfInput = NSLocalizedString("ChangePhone", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
@@ -208,6 +211,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         case .iban:
             print("iban")
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
+            vc.type = settings[indexPath.row].type
             vc.img = #imageLiteral(resourceName: "card")
             vc.titleOfInput = NSLocalizedString("ChangeIBAN", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
@@ -253,8 +257,10 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             self.navigationController?.pushViewController(vc, animated: true)
         case .emailaddress:
             print("emailadres")
+            
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
             vc.img = #imageLiteral(resourceName: "email_sign")
+            vc.type = settings[indexPath.row].type
             vc.titleOfInput = NSLocalizedString("ChangeEmail", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
             vc.keyboardTypeOfInput = UIKeyboardType.emailAddress
