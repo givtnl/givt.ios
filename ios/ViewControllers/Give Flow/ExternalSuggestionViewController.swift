@@ -84,7 +84,13 @@ class ExternalSuggestionViewController: BaseScanViewController {
         let stopIndex = mediumId.index(of: ".")!
         let namespace = String(mediumId[..<stopIndex])
         let organisation = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace)!
-        let msg = NSLocalizedString("ExternalSuggestionLabel", comment: "").replacingOccurrences(of: "{0}", with: GivtManager.shared.externalIntegration!.name).replacingOccurrences(of:"{1}", with: organisation)
+        let with = GivtManager.shared.externalIntegration!.name
+        let msg: String
+        if (with == "QR"){
+            msg = NSLocalizedString("QRScannedOutOfApp", comment: "").replacingOccurrences(of:"{0}", with: organisation)
+        } else {
+            msg = NSLocalizedString("ExternalSuggestionLabel", comment: "").replacingOccurrences(of: "{0}", with: GivtManager.shared.externalIntegration!.name).replacingOccurrences(of:"{1}", with: organisation)
+        }
         let rangeOfSubstring = (msg as NSString).range(of: organisation)
         let attributedString = NSMutableAttributedString(string: msg, attributes: lightAttributes)
         attributedString.setAttributes(boldAttributes, range: rangeOfSubstring)
