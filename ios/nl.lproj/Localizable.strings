@@ -61,9 +61,6 @@
 /*"Gegevens" knop bij instellingen*/
 "Information" = "Gegevens";
 
-/*Emailadres ongeldig*/
-"InvalidEmail" = "Dit e-mailadres en/of wachtwoord \nkunnen we niet vinden. \nWe hebben echt overal gezocht.";
-
 /*Achternaam placeholder op de registratiepagina*/
 "LastName" = "Achternaam";
 
@@ -779,3 +776,4 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "QRScannedOutOfApp" = "Hey! Wat leuk dat je wil geven met een QR-code! Klopt het dat je wil geven aan {0}?";
 "SaveFailed" = "Opslaan mislukt";
 "InvalidEmail" = "Ongeldig e-mailadres";
+"GiftsOverviewSent" = "We hebben je giftenoverzicht verstuurd naar je mailbox.";
