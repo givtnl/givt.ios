@@ -168,13 +168,13 @@
 "IBANPlaceHolder" = "IBAN-rekeningnummer";
 
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Om Givt te kunnen gebruiken, \nmoet Bluetooth op je telefoon aanstaan.";
+"BluetoothErrorMessage" = "Activeer Bluetooth om gewoon aan een zender te blijven geven.";
 
 /*Foutmelding als er geen verbinding is met de server door bijv. internet-issues of door server-issues*/
 "ConnectionError" = "Ai! Geen verbinding met de server, maar het komt goed. Drink rustig een kopje thee en controleer voor de zekerheid je instellingen.";
 
 /*@Tine, vind je 'Ho' kunnen? Of 'Ha' of moet de zin gewoon anders? Sjoerd kan niet leven met 'Hé'*/
-"AmountLimitExceeded" = "Hé gulle gever, dit bedrag is \nhoger dan je geeflimiet. \nPas de limiet aan of\nverlaag het bedrag.";
+"AmountLimitExceeded" = "Hé gulle gever, dit bedrag is hoger dan je geeflimiet. Pas de limiet aan of verlaag het bedrag.";
 "Belgium" = "België";
 "ForgotAmountLimit" = "Wacht even, je moet nog \neen geeflimiet instellen.";
 "InsertAmount" = "Weet je al hoeveel je wil geven? \nVoer een bedrag in.";
@@ -303,7 +303,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AwaitingMandateStatus" = "We hebben héél even nodig \nom je machtiging te verwerken.";
 
 /*Treedt op wanneer het niet mogelijk blijkt te zijn om een machtigings-ondertekening te starten (SlimPay niet te bereiken)*/
-"RequestMandateFailed" = "Het is op dit moment niet mogelijk om een machtiging aan te vragen. Probeer binnen een paar minuten opnieuw.";
+"RequestMandateFailed" = "Het is op dit moment niet mogelijk om een machtiging aan te vragen. Probeer je het later even opnieuw?";
 "Continue" = "Doorgaan";
 
 /*"Hoe werkt geven?" vraag in FAQ*/
@@ -397,7 +397,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "PincodeSetPinTitle" = "Toegangscode instellen";
 "PincodeSetPinMessage" = "Stel hier je toegangscode in";
 "PincodeEnterPinAgain" = "Voer je toegangscode nogmaals in";
-"PincodeDoNotMatch" = "Codes zijn niet hetzelfde.\nProbeer het opnieuw.";
+"PincodeDoNotMatch" = "Codes zijn niet gelijk aan elkaar. Probeer je het nog een keer?";
 "PincodeSuccessfullTitle" = "Gelukt!";
 "PincodeSuccessfullMessage" = "Je toegangscode is succesvol opgeslagen.";
 "PincodeForgotten" = "Inloggen met e-mail en wachtwoord";
@@ -407,7 +407,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "PincodeWrongPinFirstTry" = "Eerste poging klopt niet.\nProbeer het nog een keer.";
 "PincodeWrongPinSecondTry" = "Tweede poging klopt niet.\nProbeer het nog een keer.";
 "PincodeWrongPinThirdTry" = "Je hebt drie verkeerde pogingen gedaan, log in met je e-mailadres.";
-"WrongPasswordLockedOut" = "Je hebt drie verkeerde pogingen gedaan, je kunt 15 minuten niet inloggen. Probeer straks opnieuw.";
+"WrongPasswordLockedOut" = "Je hebt drie verkeerde pogingen gedaan, je kunt 15 minuten niet inloggen. Probeer straks opnieuw of vraag een nieuw wachtwoord aan.";
 "ConfirmGivtSafari" = "Bedankt voor je Givt aan {0}! Bevestig door op de knop te drukken en kijk voor de status in je overzicht.";
 "ConfirmGivtSafariNoOrg" = "Bedankt voor je Givt! Bevestig door op de knop te drukken en kijk voor de status in je overzicht.";
 
@@ -477,7 +477,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AreYouSureToCancelGivts" = "Weet je het zeker? Tik op OK om te bevestigen.";
 "FeedbackTitle" = "Feedback of vragen?";
 "NoMessage" = "Je hebt geen bericht ingevoerd.";
-"FeedbackMailSent" = "Je bericht is verzonden, we nemen zo snel mogelijk contact met je op.";
+"FeedbackMailSent" = "We hebben je bericht succesvol ontvangen, we nemen als de bliksem contact met je op.";
 "TypeMessage" = "Schrijf hier je bericht!";
 
 /*Begeleidingstekst meerdere collectes*/
@@ -511,7 +511,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SignMandateLaterTitle" = "Ok, we vragen het je later opnieuw!";
 "SignMandateLater" = "Je hebt gekozen om het mandaat later aan te vragen, dit zal gebeuren bij de volgende keer dat je wil geven.";
 "Suggestie" = "Geven aan:";
-"CodeCanNotBeScanned" = "Helaas! Deze code kan niet gebruikt worden met de Givt-app.";
+"CodeCanNotBeScanned" = "Helaas, met deze code kan je niet geven in de Givt-app.";
 "GiveDifferentScan" = "Scan de QR-code";
 "GiveDiffQRText" = "Nu goed mikken!";
 "QRCodeOrganisationNotFound" = "Het scannen is gelukt, maar de organisatie is nog even verdwaald. Probeer het later opnieuw.";
@@ -549,9 +549,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "PersonalPageSubHeader" = "Wil je graag je naam veranderen? Stuur dan een mailtje naar support@givtapp.net.";
 "TitlePersonalInfo" = "Mijn gegevens";
 "PersonalInfoTempUser" = "Hé, snelle gever! Je gebruikt een tijdelijk account. We hebben je gegevens dus nog niet ontvangen.";
-"UpdatePersonalInfoError" = "Helaas lukt het op dit moment niet om je gegevens te wijzigen. Probeer later opnieuw of neem contact op met support@givtapp.net.";
+"UpdatePersonalInfoError" = "We kunnen op dit moment je gegevens niet opslaan op de server, probeer je het later even opnieuw?";
 "UpdatePersonalInfoSuccess" = "Gelukt!";
-"LoadingTitle" = "Even wachten";
+"LoadingTitle" = "Even wachten...";
 "LoadingMessage" = "We zijn je gegevens aan het laden ...";
 "ButtonChange" = "Wijzigen";
 
@@ -606,7 +606,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AlreadyAnAccount" = "Heb je al een account?";
 "UnitedKingdom" = "Verenigd Koninkrijk";
 "CancelShort" = "Annuleer";
-"CantCancelGiftAfter15Minutes" = "Helaas! Het is langer dan 15 minuten geleden dat je deze gift hebt gedaan.";
+"CantCancelGiftAfter15Minutes" = "Helaas, deze gift kan je niet meer annuleren vanuit de Givt-app omdat het langer dan 15 minuten geleden is dat je deze gift hebt gedaan.";
 "UnknownErrorCancelGivt" = "Door een onbekende fout kunnen we je gift niet annuleren. Neem contact op met ons op support@givtapp.net voor meer informatie.";
 "TransactionCancelled" = "De gift naar {0} zal geannuleerd worden.";
 "Cancelled" = "Geannuleerd";
@@ -762,3 +762,17 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*Fuzzy*/
 "Success" = "Gelukt!";
+"NotSoFast" = "Niet zo snel, gulle gever";
+"GiftBetween30Sec" = "Je hebt al eens binnen de 30 seconden gegeven. Wacht je nog even?";
+"Android8ActivateLocation" = "Activeer je locatie en zorg ervoor dat de modus op ‘Hoge nauwkeurigheid’ staat.";
+"Android9ActivateLocation" = "Activeer je locatie en zorg ervoor dat de ‘Locatienauwkeurigheid’ actief is.";
+"NonExistingEmail" = "Dit e-mailadres komt ons niet bekend voor. Is het mogelijk dat je een ander e-mailadres hebt opgegeven?";
+"SecondCollection" = "Tweede collecte";
+"AmountTooLow" = "Bedrag te laag";
+"QRScanFailed" = "Mikken mislukt";
+"TemporaryAccount" = "Tijdelijk account";
+"TemporaryDisabled" = "Tijdelijk geblokkeerd";
+"CancelFailed" = "Annuleren mislukt";
+"AccessDenied" = "Toegang geweigerd";
+"UnknownError" = "Onbekende fout";
+"MandateFailed" = "Machtigen mislukt";
