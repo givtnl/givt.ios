@@ -761,3 +761,4 @@
 "UnknownError" = "Unknown error";
 "MandateFailed" = "Authorization failed";
 "QRScannedOutOfApp" = "Hey! Great that you want to give with a QR-code! Would you like to give to {0}?";
+"SaveFailed" = "Saving failed";
