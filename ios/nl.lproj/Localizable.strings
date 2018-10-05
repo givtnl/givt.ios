@@ -778,3 +778,4 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "MandateFailed" = "Machtigen mislukt";
 "QRScannedOutOfApp" = "Hey! Wat leuk dat je wil geven met een QR-code! Klopt het dat je wil geven aan {0}?";
 "SaveFailed" = "Opslaan mislukt";
+"InvalidEmail" = "Ongeldig e-mailadres";
