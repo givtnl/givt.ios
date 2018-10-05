@@ -285,7 +285,7 @@
 "AwaitingMandateStatus" = "We just need a moment to process your mandate.";
 
 /*Treedt op wanneer het niet mogelijk blijkt te zijn om een machtigings-ondertekening te starten (SlimPay niet te bereiken)*/
-"RequestMandateFailed" = "At the moment it is not possible to request a mandate. \nPlease try again in a few minutes.";
+"RequestMandateFailed" = "At the moment it is not possible to request a mandate. Please try again in a few minutes.";
 "Continue" = "Continue";
 
 /*"Hoe werkt geven?" vraag in FAQ*/
@@ -760,3 +760,4 @@
 "AccessDenied" = "Access denied";
 "UnknownError" = "Unknown error";
 "MandateFailed" = "Authorization failed";
+"QRScannedOutOfApp" = "Hey! Great that you want to give with a QR-code! Would you like to give to {0}?";
