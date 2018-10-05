@@ -81,7 +81,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             
             if tx.timestamp < newDate {
                 action.fulfill(with: ExpansionFulfillmentStyle.reset)
-                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
@@ -126,13 +126,13 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                                 }
                                 
                             case .expectationFailed:
-                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                 DispatchQueue.main.async {
                                     self.present(alert, animated: true, completion: nil)
                                 }
                             default:
-                                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                 DispatchQueue.main.async {
                                     self.present(alert, animated: true, completion: nil)
@@ -142,7 +142,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             DispatchQueue.main.async {
                                 
                                 if AppServices.shared.connectedToNetwork() {
-                                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                    let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                     self.present(alert, animated: true, completion: nil)
                                 } else {
@@ -154,7 +154,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     
                 } catch {
                     self.logService.error(message: "Could not JSONSerialize transaction IDS")
-                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }

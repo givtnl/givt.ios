@@ -55,7 +55,7 @@ class TaxesViewController: UIViewController {
                 SVProgressHUD.dismiss()
             }
             if status {
-                let alert = UIAlertController(title: NSLocalizedString("CheckInbox", comment: ""), message: "", preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: "", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (uialertaction) in
                     self.navigationController?.popViewController(animated: true)
                 }))
@@ -64,7 +64,7 @@ class TaxesViewController: UIViewController {
                 }
                 
             } else {
-                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CouldNotSendTaxOverview", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CouldNotSendTaxOverview", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                     
                 }))
