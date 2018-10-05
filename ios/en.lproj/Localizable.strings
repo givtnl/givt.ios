@@ -154,7 +154,7 @@
 "IBANPlaceHolder" = "IBAN account number";
 
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Switch on Bluetooth on your phone to use Givt.";
+"BluetoothErrorMessage" = "Switch on Bluetooth so you're ready to give to a beacon.";
 
 /*Foutmelding als er geen verbinding is met de server door bijv. internet-issues of door server-issues*/
 "ConnectionError" = "Currently we're not able to connect to the server. No worries, have a cup of tea and/or check your settings.";
@@ -381,7 +381,7 @@
 "PincodeSetPinTitle" = "Set passcode";
 "PincodeSetPinMessage" = "Set your passcode here";
 "PincodeEnterPinAgain" = "Re-enter your passcode";
-"PincodeDoNotMatch" = "Codes do not match.\nPlease try again.";
+"PincodeDoNotMatch" = "Codes do not match. Could you try again?";
 "PincodeSuccessfullTitle" = "Got it!";
 "PincodeSuccessfullMessage" = "Your passcode has been successfully saved.";
 "PincodeForgotten" = "Login with e-mail and password";
@@ -461,7 +461,7 @@
 "AreYouSureToCancelGivts" = "Are you sure? Press OK to confirm.";
 "FeedbackTitle" = "Feedback or questions?";
 "NoMessage" = "You didn't enter a message.";
-"FeedbackMailSent" = "Your message has been sent. We'll get back to you as soon as possible.";
+"FeedbackMailSent" = "We've received your message succesfully, we'll be in touch as soon as possible.";
 "TypeMessage" = "Write your message here!";
 
 /*Begeleidingstekst meerdere collectes*/
@@ -495,7 +495,7 @@
 "SignMandateLaterTitle" = "Okay, we will ask you again later.";
 "SignMandateLater" = "You have chosen to sign the mandate later. You can do this the next time you give.";
 "Suggestie" = "Give to:";
-"CodeCanNotBeScanned" = "This code cannot be used with Givt.";
+"CodeCanNotBeScanned" = "Alas, this code cannot be used to give within the Givt app.";
 "GiveDifferentScan" = "Scan QR-code";
 "GiveDiffQRText" = "Now, aim well ... Scan the QR-code and give.";
 "QRCodeOrganisationNotFound" = "Code is scanned, but it seems the organisation has lost its way. Please, try again later.";
@@ -525,7 +525,7 @@
 "SomethingWentWrong2" = "Something went wrong.";
 "ChooseLowerAmount" = "Choose a lower amount";
 "TurnOnBluetooth" = "Switch on Bluetooth";
-"ErrorTLDCheck" = "Sorry, you can’t register with this e-mail address. Please check that the spelling is correct.";
+"ErrorTLDCheck" = "Sorry, you can’t register with this e-mail address. Could you check for any typos?";
 "AddCollectConfirm" = "Do you want to add a second collection?";
 "FAQvraag0" = "Feedback or questions?";
 "FAQantwoord0" = "In the app-menu under \"About Givt / Contact\" there's a text field where you can type a message and send it to us. Of course you can also contact us by calling +31 320 320 115 or by sending an e-mail to support@givtapp.net.";
@@ -533,9 +533,9 @@
 "PersonalPageSubHeader" = "Would you like to change your name? Send an e-mail to support@givtapp.net.";
 "TitlePersonalInfo" = "Personal information";
 "PersonalInfoTempUser" = "Hi there, fast giver! You're using a temporary account. We have not received your personal details yet.";
-"UpdatePersonalInfoError" = "Alas! We are not able to update your personal information. Please try again later or contact support@givtapp.net.";
+"UpdatePersonalInfoError" = "Alas! We are not able to update your personal information at the moment. Could you try again later?";
 "UpdatePersonalInfoSuccess" = "Success!";
-"LoadingTitle" = "Loading";
+"LoadingTitle" = "Please wait...";
 "LoadingMessage" = "Please wait while we are loading your data...";
 "ButtonChange" = "Change";
 
@@ -590,7 +590,7 @@
 "AlreadyAnAccount" = "Already have an account?";
 "UnitedKingdom" = "United Kingdom";
 "CancelShort" = "Cancel";
-"CantCancelGiftAfter15Minutes" = "Sorry! More than 15 minutes have passed since you made this donation.";
+"CantCancelGiftAfter15Minutes" = "Alas, you can't cancel this donation within the Givt-app because it was more than 15 minutes ago since you gave this donation.";
 "UnknownErrorCancelGivt" = "Due to an unexpected error, we could not cancel your donation. Get in touch with us at support@givtapp.net for more information.";
 "TransactionCancelled" = "The donation to {0} will be cancelled.";
 "Cancelled" = "Cancelled";
@@ -736,7 +736,7 @@
 "fingerprint_state_success" = "Fingerprint recognized";
 "fingerprint_state_failure" = "Fingerprint not recognized.\nTry again.";
 "ActivateBluetooth" = "Activate Bluetooth";
-"AmountTooHigh" = "Bedrag te hoog";
+"AmountTooHigh" = "Amount too high";
 "ActivateLocation" = "Activate location";
 "LoginFailure" = "Login error";
 "RequestFailed" = "Request failed";
@@ -746,3 +746,17 @@
 
 /*Fuzzy*/
 "Success" = "Success!";
+"NotSoFast" = "Not so fast, big spender";
+"GiftBetween30Sec" = "You already gave within 30 seconds. Can you wait a little?";
+"Android8ActivateLocation" = "Enable your location and make sure the 'High accuracy' mode is selected.";
+"Android9ActivateLocation" = "Enable your location and make sure 'Location Accuracy' is enabled.";
+"NonExistingEmail" = "We have not seen this e-mail address before. Is it possible that you registered with a different e-mail account?";
+"SecondCollection" = "Second collection";
+"AmountTooLow" = "Amount too low";
+"QRScanFailed" = "Aiming failed";
+"TemporaryAccount" = "Temporary account";
+"TemporaryDisabled" = "Temporarily blocked";
+"CancelFailed" = "Cancel failed";
+"AccessDenied" = "Access denied";
+"UnknownError" = "Unknown error";
+"MandateFailed" = "Authorization failed";
