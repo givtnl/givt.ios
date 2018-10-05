@@ -478,7 +478,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             } else {
                 SVProgressHUD.dismiss()
                 if AppServices.shared.connectedToNetwork() {
-                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ServerNotReachable", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.default, handler: { action in
                         
                     }))

@@ -124,7 +124,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
         GivtManager.shared.giveQR(scanResult: scanResult, completionHandler: { success in
             if !success {
                 self.log.warning(message: "Could not scan QR: " + scanResult )
-                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("QRScanFailed", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
                 let action = UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: .default) { (ok) in
                     self.session!.startRunning()
                 }

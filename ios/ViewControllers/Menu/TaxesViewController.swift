@@ -55,7 +55,7 @@ class TaxesViewController: UIViewController {
                 SVProgressHUD.dismiss()
             }
             if status {
-                let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: "", preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("GiftsOverviewSent", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (uialertaction) in
                     self.navigationController?.popViewController(animated: true)
                 }))

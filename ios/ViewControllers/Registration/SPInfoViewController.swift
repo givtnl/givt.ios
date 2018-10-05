@@ -77,7 +77,7 @@ class SPInfoViewController: UIViewController {
                 guard let userInfo = userExtension else {
                     self.log.warning(message: "Mandate url is empty, what is going on?")
                     SVProgressHUD.dismiss()
-                    let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
                         self.dismiss(animated: true, completion: {})
                     }))
@@ -103,7 +103,7 @@ class SPInfoViewController: UIViewController {
                     } else {
                         self.log.warning(message: "Mandate url is empty, what is going on?")
                         SVProgressHUD.dismiss()
-                        let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
                             self.dismiss(animated: true, completion: {})
                         }))
