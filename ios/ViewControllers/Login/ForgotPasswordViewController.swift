@@ -65,12 +65,12 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                 }
-                let alert = UIAlertController(title: NSLocalizedString("Givt", comment: ""), message: NSLocalizedString("TempAccountLogin", comment: ""), preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("TemporaryAccount", comment: ""), message: NSLocalizedString("TempAccountLogin", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                     NavigationHelper.showRegistration(context: self, email: self.emailField.text!)
                 }))
                 self.present(alert, animated: true, completion:  {})
-            } else {
+            } else if status == "true" {
                 LoginManager.shared.requestNewPassword(email: (self.emailField.text?.replacingOccurrences(of: " ", with: ""))!, callback: { (status) in
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
@@ -93,10 +93,8 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                                 return
                             }
                             
-                            let alert = UIAlertController(title: "", message: NSLocalizedString("SomethingWentWrong", comment: ""), preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                                
-                            }))
+                            let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("NonExistingEmail", comment: ""), preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                             DispatchQueue.main.async {
                                 self.present(alert, animated: true, completion: {
                                     self.navigationController?.popViewController(animated: true)
@@ -108,6 +106,15 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                         self._navigationManager.presentAlertNoConnection(context: self)
                     }
                 })
+            } else {
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
+                let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("NonExistingEmail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         }
     }

@@ -68,8 +68,8 @@ class BacsSettingUpViewController: UIViewController {
                 LoginManager.shared.getUserExt(completion: { (userExt) in
                     SVProgressHUD.dismiss()
                     guard let userExt = userExt else {
-                        let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
+                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
                         }))
                         DispatchQueue.main.async {
                             self.present(alert, animated: true, completion: {})

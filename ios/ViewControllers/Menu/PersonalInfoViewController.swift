@@ -88,7 +88,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             SVProgressHUD.dismiss()
             self.uExt = userExtObject
             guard let userExt = userExtObject else {
-                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
                     DispatchQueue.main.async {
                         self.backPressed(self)

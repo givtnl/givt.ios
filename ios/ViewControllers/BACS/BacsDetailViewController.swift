@@ -66,7 +66,7 @@ class BacsDetailViewController: UIViewController {
                         self.navigationController!.pushViewController(vc, animated: true)
                     }
                 } else {
-                    let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
                         DispatchQueue.main.async {
                             self.dismiss(animated: true, completion: nil)
