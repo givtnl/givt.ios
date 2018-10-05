@@ -57,9 +57,6 @@
 /*"Gegevens" knop bij instellingen*/
 "Information" = "Personal info";
 
-/*Emailadres ongeldig*/
-"InvalidEmail" = "Your e-mail address and/or password is incorrect.";
-
 /*Achternaam placeholder op de registratiepagina*/
 "LastName" = "Surname";
 
@@ -763,3 +760,4 @@
 "QRScannedOutOfApp" = "Hey! Great that you want to give with a QR-code! Would you like to give to {0}?";
 "SaveFailed" = "Saving failed";
 "InvalidEmail" = "Invalid e-mail address";
+"GiftsOverviewSent" = "We've sent your donations overview to your mailbox.";
