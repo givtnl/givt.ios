@@ -53,8 +53,8 @@ class AppServices {
     @objc func fetchInternetConnection() {
         //clear cache. response was previously cached
         URLCache.shared.removeAllCachedResponses()
-        APIClient.shared.get(url: "/", data: [:]) { (response) in
-            if let r = response, r.statusCode >= 200 && r.statusCode < 300 {
+        APIClient.shared.get(url: "/api/v2/status", data: [:]) { (response) in
+            if let r = response, r.basicStatus == .ok {
                 if self.hasInternetConnection == nil || !self.hasInternetConnection! {
                     self.hasInternetConnection = true
                 }
