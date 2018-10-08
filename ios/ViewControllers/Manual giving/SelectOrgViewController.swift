@@ -189,7 +189,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     private var lastTag: Int?
     var listToLoad: [OrgBeacon] = {
         var list = GivtManager.shared.orgBeaconList
-        return list!
+        return list ?? [OrgBeacon]()
     }()
     
     var filteredList: [OrgBeacon]?
