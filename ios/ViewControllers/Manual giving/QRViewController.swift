@@ -81,7 +81,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
-            let alert = UIAlertController(title: "", message: NSLocalizedString("NoCameraAccess", comment: ""), preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("AccessDenied", comment: ""), message: NSLocalizedString("NoCameraAccess", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OpenSettings", comment: ""), style: .default, handler: { (action) in
                 guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
                 UIApplication.shared.openURL(url)
