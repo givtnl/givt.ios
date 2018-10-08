@@ -373,7 +373,7 @@
 "OfflineGegevenGivtMessage" = "Thank you for your Givt!\n\nWhen there's a good connection with the Givt-server, your Givt will be processed.\nYou can check the status in the overview.";
 "OfflineGegevenGivtMessageWithOrg" = "Thank you for your Givt to {0}!\n\nWhen there's a good connection with the Givt-server, your Givt will be processed.\nYou can check the status in the overview.";
 "Pincode" = "Passcode";
-"PincodeTitleChangingPin" = "This is where you change the use of your passcode";
+"PincodeTitleChangingPin" = "This is where you change the use of your passcode to login into the Givt-app.";
 "PincodeChangePinMenu" = "Change passcode";
 "PincodeSetPinTitle" = "Set passcode";
 "PincodeSetPinMessage" = "Set your passcode here";
