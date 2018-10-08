@@ -389,7 +389,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OfflineGegevenGivtMessage" = "Bedankt voor je Givt!\n\nZodra er een goede verbinding is met de Givt-server, wordt je Givt verwerkt.\nKijk voor de status in je overzicht.";
 "OfflineGegevenGivtMessageWithOrg" = "Bedankt voor je Givt!\n\nZodra er een goede verbinding is met de Givt-server, wordt je Givt aan {0} verwerkt.\nKijk voor de status in je overzicht.";
 "Pincode" = "Toegangscode";
-"PincodeTitleChangingPin" = "Hier beheer je het gebruik van je toegangscode";
+"PincodeTitleChangingPin" = "Hier beheer je het gebruik van je toegangscode om in de Givt-app in te loggen.";
 "PincodeChangePinMenu" = "Wijzig toegangscode";
 "PincodeSetPinTitle" = "Toegangscode instellen";
 "PincodeSetPinMessage" = "Stel hier je toegangscode in";
