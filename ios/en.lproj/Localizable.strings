@@ -761,3 +761,4 @@
 "SaveFailed" = "Saving failed";
 "InvalidEmail" = "Invalid e-mail address";
 "GiftsOverviewSent" = "We've sent your donations overview to your mailbox.";
+"GiftWasBetween30S" = "Your donation was not processed because it was less than 30 sec. ago since your last donation.";
