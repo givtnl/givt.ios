@@ -119,6 +119,7 @@ final class GivtManager: NSObject {
     
     private var _shouldNotify: Bool = false
     weak var delegate: GivtProcessedProtocol?
+    private var cachedGivtsLock = NSRecursiveLock()
     
     private override init() {
         super.init()
@@ -139,12 +140,14 @@ final class GivtManager: NSObject {
     }
     
     func processCachedGivts() {
+        cachedGivtsLock.lock()
         for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
             log.info(message: "Started processing chached Givts")
             giveInBackground(transactions: [element])
             UserDefaults.standard.offlineGivts.remove(at: index)
         }
         BadgeService.shared.removeBadge(badge: .offlineGifts)
+        cachedGivtsLock.unlock()
     }
     
     @objc func internetChanged(note: Notification){
