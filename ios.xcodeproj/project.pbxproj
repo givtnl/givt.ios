@@ -133,6 +133,7 @@
 		D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE951F7D2159005807BE /* SPInfoViewController.swift */; };
 		D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E3CE9D1F7D2C5C005807BE /* SPWebViewController.swift */; };
 		D7E708541FE7FD68002A7770 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7E708511FE7FD67002A7770 /* InfoPlist.strings */; };
+		D7E8E2C3216E00FD003C39C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7E8E2C2216E00FD003C39C8 /* GoogleService-Info.plist */; };
 		D7EAF10E1FB491B000DFE5CC /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EAF10B1FB491AD00DFE5CC /* icon.png */; };
 		D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EAF10C1FB491AD00DFE5CC /* icon@2x.png */; };
 		D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EAF10D1FB491B000DFE5CC /* icon@3x.png */; };
@@ -313,6 +314,7 @@
 		D7E3CE9D1F7D2C5C005807BE /* SPWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPWebViewController.swift; sourceTree = "<group>"; };
 		D7E708521FE7FD67002A7770 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D7E708531FE7FD68002A7770 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D7E8E2C2216E00FD003C39C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D7EAF10B1FB491AD00DFE5CC /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		D7EAF10C1FB491AD00DFE5CC /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		D7EAF10D1FB491B000DFE5CC /* icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@3x.png"; sourceTree = "<group>"; };
@@ -775,6 +777,7 @@
 		FB3CE6D51F14CA200055185B /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				D7E8E2C2216E00FD003C39C8 /* GoogleService-Info.plist */,
 				D7F746B31FD83F9F005354A3 /* Transitions */,
 				D75B2BCD1FCEADCF000B7968 /* APIClients */,
 				D7D6FA6C1F7BE416008A5604 /* Helpers */,
@@ -899,6 +902,7 @@
 				D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */,
 				D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */,
 				D7AE8B9921359A0200CB3A33 /* BACS.storyboard in Resources */,
+				D7E8E2C3216E00FD003C39C8 /* GoogleService-Info.plist in Resources */,
 				D7E708541FE7FD68002A7770 /* InfoPlist.strings in Resources */,
 				D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */,
 				D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */,
@@ -957,25 +961,31 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ios/Pods-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/LGSideMenuController/LGSideMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialShowcase/MaterialShowcase.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftClient/SwiftClient.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftCron/SwiftCron.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LGSideMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialShowcase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCron.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
