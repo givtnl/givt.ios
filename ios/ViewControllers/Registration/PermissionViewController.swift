@@ -44,9 +44,10 @@ class PermissionViewController: UIViewController {
             }
         } else {
             UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
-            UIApplication.shared.registerForRemoteNotifications()
+            
             determineNextScreen()
         }
+        UIApplication.shared.registerForRemoteNotifications()
     }
     
     func determineNextScreen() {
