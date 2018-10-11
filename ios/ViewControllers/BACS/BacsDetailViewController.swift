@@ -52,10 +52,8 @@ class BacsDetailViewController: UIViewController {
     
     @IBAction func done(_ sender: Any) {
         if NavigationManager.shared.hasInternetConnection(context: self) {
-            let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: nil, sortCode: userExtension.SortCode, accountNumber: userExtension.AccountNumber, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: userExtension.Country, postalCode: userExtension.PostalCode, street: userExtension.Address)
-            let mandate = Mandate(signatory: signatory)
             SVProgressHUD.show()
-            LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
+            LoginManager.shared.requestMandateUrl(completionHandler: { (response) in
                 SVProgressHUD.dismiss()
                 if let r = response, r.status == .ok {
                     LoginManager.shared.finishMandateSigning(completionHandler: { (done) in
