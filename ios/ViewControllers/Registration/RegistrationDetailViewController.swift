@@ -102,6 +102,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 selectedMobilePrefix = filteredCountry
                 mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
                 checkAll(mobilePrefixField)
+            } else {
+                selectedCountry = AppConstants.countries.first!
             }
         }
 
