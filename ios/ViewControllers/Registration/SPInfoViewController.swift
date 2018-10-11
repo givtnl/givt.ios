@@ -73,10 +73,18 @@ class SPInfoViewController: UIViewController {
 
         NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
             SVProgressHUD.show()
-            LoginManager.shared.getUserExt { (userExtension) in
-                guard let userInfo = userExtension else {
+            
+            self._loginManager.requestMandateUrl(completionHandler: { (response) in
+                SVProgressHUD.dismiss()
+                if let r = response, let slimpayUrl = r.text, r.basicStatus == .ok {
+                    self.log.info(message: "Mandate flow will now start")
+                    DispatchQueue.main.async {
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
+                        vc.url = slimpayUrl
+                        self.show(vc, sender: nil)
+                    }
+                } else {
                     self.log.warning(message: "Mandate url is empty, what is going on?")
-                    SVProgressHUD.dismiss()
                     let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
                         self.dismiss(animated: true, completion: {})
@@ -84,35 +92,8 @@ class SPInfoViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.present(alert, animated: true, completion: {})
                     }
-                    return
                 }
-                
-                let country = userInfo.Country
-                
-                let signatory = Signatory(givenName: userInfo.FirstName, familyName: userInfo.LastName, iban: userInfo.IBAN!, sortCode: nil, accountNumber: nil, email: userInfo.Email, telephone: userInfo.PhoneNumber, city: userInfo.City, country: country, postalCode: userInfo.PostalCode, street: userInfo.Address)
-                let mandate = Mandate(signatory: signatory)
-                self._loginManager.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
-                    if let r = response, let slimpayUrl = r.text, r.basicStatus == .ok {
-                        SVProgressHUD.dismiss()
-                        self.log.info(message: "Mandate flow will now start")
-                        DispatchQueue.main.async {
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-                            vc.url = slimpayUrl
-                            self.show(vc, sender: nil)
-                        }
-                    } else {
-                        self.log.warning(message: "Mandate url is empty, what is going on?")
-                        SVProgressHUD.dismiss()
-                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: NSLocalizedString("Next", comment: ""), style: .cancel, handler: { (action) in
-                            self.dismiss(animated: true, completion: {})
-                        }))
-                        DispatchQueue.main.async {
-                            self.present(alert, animated: true, completion: {})
-                        }
-                    }
-                })
-            }
+            })
         }
     }
 }
