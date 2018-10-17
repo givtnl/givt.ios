@@ -403,7 +403,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "PincodeWrongPinTitle" = "Foute toegangscode";
 "PincodeWrongPinFirstTry" = "Eerste poging klopt niet.\nProbeer het nog een keer.";
 "PincodeWrongPinSecondTry" = "Tweede poging klopt niet.\nProbeer het nog een keer.";
-"PincodeWrongPinThirdTry" = "Je hebt drie verkeerde pogingen gedaan, log in met je e-mailadres.";
+"PincodeWrongPinThirdTry" = "Je hebt drie verkeerde pogingen gedaan. Log in met je e-mailadres en wachtwoord.";
 "WrongPasswordLockedOut" = "Je hebt drie verkeerde pogingen gedaan, je kunt 15 minuten niet inloggen. Probeer straks opnieuw of vraag een nieuw wachtwoord aan.";
 "ConfirmGivtSafari" = "Bedankt voor je Givt aan {0}! Bevestig door op de knop te drukken en kijk voor de status in je overzicht.";
 "ConfirmGivtSafariNoOrg" = "Bedankt voor je Givt! Bevestig door op de knop te drukken en kijk voor de status in je overzicht.";
