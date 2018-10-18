@@ -761,7 +761,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Success" = "Gelukt!";
 "NotSoFast" = "Niet zo snel, gulle gever";
 "GiftBetween30Sec" = "Je hebt al eens binnen de 30 seconden gegeven. Wacht je nog even?";
-"Android8ActivateLocation" = "Activeer je locatie en zorg ervoor dat de modus op ‘Hoge nauwkeurigheid’ staat.";
+"Android8ActivateLocation" = "Activeer je locatie en zorg ervoor dat de modus op ‘Hoge nauwkeurigheid’ staat. (Na je gift kan je die gewoon weer uitzetten.)";
 "Android9ActivateLocation" = "Activeer je locatie en zorg ervoor dat de ‘Locatienauwkeurigheid’ actief is.";
 "NonExistingEmail" = "Dit e-mailadres komt ons niet bekend voor. Is het mogelijk dat je een ander e-mailadres hebt opgegeven?";
 "SecondCollection" = "Tweede collecte";
@@ -772,7 +772,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "CancelFailed" = "Annuleren mislukt";
 "AccessDenied" = "Toegang geweigerd";
 "UnknownError" = "Onbekende fout";
-"MandateFailed" = "Machtigen mislukt";
+"MandateFailed" = "Machtiging mislukt";
 "QRScannedOutOfApp" = "Hey! Wat leuk dat je wil geven met een QR-code! Klopt het dat je wil geven aan {0}?";
 "SaveFailed" = "Opslaan mislukt";
 "InvalidEmail" = "Ongeldig e-mailadres";
