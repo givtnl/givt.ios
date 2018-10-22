@@ -757,7 +757,7 @@
 "AccessDenied" = "Access denied";
 "UnknownError" = "Unknown error";
 "MandateFailed" = "Authorization failed";
-"QRScannedOutOfApp" = "Hey! Great that you want to give with a QR-code! Would you like to give to {0}?";
+"QRScannedOutOfApp" = "Hey! Great that you want to give with a QR-code! Are you sure you would like to give to {0}?";
 "SaveFailed" = "Saving failed";
 "InvalidEmail" = "Invalid e-mail address";
 "GiftsOverviewSent" = "We've sent your donations overview to your mailbox.";
