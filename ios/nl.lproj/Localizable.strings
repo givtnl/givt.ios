@@ -780,5 +780,5 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "GiftWasBetween30S" = "Je gift is niet doorgezet omdat het minder dan 30 sec. geleden is sinds je vorige gift.";
 
 /*Fuzzy*/
-"PromotionalQR" = "Helaas, deze code verwijst naar onze webpagina. Hiermee kan je niet geven in de Givt-app.";
+"PromotionalQR" = "Deze code verwijst naar onze webpagina. Hiermee kan je helaas niet geven in de Givt-app.";
 "PromotionalQRTitle" = "Promo QR-code";
