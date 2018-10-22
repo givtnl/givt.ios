@@ -114,8 +114,8 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
                 if object.type == AVMetadataObject.ObjectType.qr {
                     session!.stopRunning()
                     self.log.info(message: "Scanned a QR")
-                    if object.stringValue?.rangeOfCharacter(from: CharacterSet(charactersIn: "=")) != nil {
-                        let alert = UIAlertController(title: "Promo QR Code", message: NSLocalizedString("PromotionalQR", comment: ""), preferredStyle: .alert)
+                    if object.stringValue! == "https://www.givtapp.net/download/" {
+                        let alert = UIAlertController(title: NSLocalizedString("PromotionalQRTitle", comment: ""), message: NSLocalizedString("PromotionalQR", comment: ""), preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
                             self.session?.startRunning()
                         }))
