@@ -762,3 +762,6 @@
 "InvalidEmail" = "Invalid e-mail address";
 "GiftsOverviewSent" = "We've sent your donations overview to your mailbox.";
 "GiftWasBetween30S" = "Your donation was not processed because it was less than 30 sec. ago since your last donation.";
+
+/*Fuzzy*/
+"PromotionalQR" = "Alas, this code redirects to our webpage. You cannot use it to give within the Givt app.";
