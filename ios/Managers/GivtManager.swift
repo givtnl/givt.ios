@@ -230,6 +230,7 @@ final class GivtManager: NSObject {
             } else {
                 bestBeacon.namespace = mediumid
             }
+            self.bestBeacon = bestBeacon
             //bepaal naam
             give(antennaID: mediumid, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
             completionHandler(true)
@@ -246,6 +247,7 @@ final class GivtManager: NSObject {
         } else {
             bestBeacon.namespace = antennaId
         }
+        self.bestBeacon = bestBeacon
         
         let shouldCelebrate = isCelebration(orgNameSpace: bestBeacon.namespace!)
         print("should celebrate \(shouldCelebrate)")
