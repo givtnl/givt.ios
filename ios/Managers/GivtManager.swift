@@ -557,7 +557,11 @@ extension GivtManager: BeaconServiceProtocol {
             }
             scanLock.unlock()
         } else if scanMode == .far {
-            triggerGivtLocation(id: bestBeacon.beaconId!, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+            if let orgName = self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!) {
+                triggerGivtLocation(id: bestBeacon.beaconId!, organisationName: orgName)
+            } else {
+                self.log.warning(message: "Found a location beacon that is not a known namespace in the db. Beacon found: \(bestBeacon.beaconId!)")
+            }
         }
     }
     
