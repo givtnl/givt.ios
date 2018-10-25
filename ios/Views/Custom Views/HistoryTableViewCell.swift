@@ -23,6 +23,7 @@ class HistoryTableViewCell: SwipeTableViewCell {
     @IBOutlet var amountLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+         self.organisationLabel.numberOfLines = 0
         // Initialization code
     }
     
