@@ -86,7 +86,7 @@ class EventViewController: BaseScanViewController {
     
     func showBluetoothMessage(after: @escaping () -> ()) {
         let alert = UIAlertController(
-            title: NSLocalizedString("TurnOnBluetooth", comment: ""),
+            title: NSLocalizedString("ActivateBluetooth", comment: ""),
             message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in

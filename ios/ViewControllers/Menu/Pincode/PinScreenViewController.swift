@@ -218,7 +218,7 @@ class PinScreenViewController: UIViewController {
                         AppServices.shared.vibrate()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: {
                             self.subtitle.text = NSLocalizedString("PincodeSetPinMessage", comment: "")
-                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong2", comment: ""), message: NSLocalizedString("PincodeDoNotMatch", comment: ""), preferredStyle: .alert)
+                            let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("PincodeDoNotMatch", comment: ""), preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: .default, handler: { (action) in
                                 self.pincode = ""
                                 self.pincodeCheck = ""

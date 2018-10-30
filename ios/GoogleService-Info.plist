@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>978122520533-lcvin22kmnci9f7fhji22efjndfs5054.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.978122520533-lcvin22kmnci9f7fhji22efjndfs5054</string>
+	<key>API_KEY</key>
+	<string>AIzaSyClW5y3RMJgHAin1z5JEZ581GmfU6gCQRE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>978122520533</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.givt.iosnativedev</string>
+	<key>PROJECT_ID</key>
+	<string>givtapp-ebde1</string>
+	<key>STORAGE_BUCKET</key>
+	<string>givtapp-ebde1.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:978122520533:ios:a97de2a12ed696c8</string>
+	<key>DATABASE_URL</key>
+	<string>https://givtapp-ebde1.firebaseio.com</string>
+</dict>
+</plist>

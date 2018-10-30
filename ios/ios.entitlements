@@ -6,6 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
+		<string>applinks:www.givtapp.net</string>
 		<string>applinks:givtapidebug.azurewebsites.net</string>
 		<string>applinks:api2.nfcollect.com</string>
 		<string>applinks:cloud.givtapp.net</string>

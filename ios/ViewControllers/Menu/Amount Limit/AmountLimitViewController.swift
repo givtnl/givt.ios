@@ -200,7 +200,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     func shouldEnableButton() -> Bool {
         let limit = Int(amountLimit.text!)!
-        return (limit > 0 && limit != UserDefaults.standard.amountLimit)
+        return (limit >= 5 && limit != UserDefaults.standard.amountLimit)
     }
 
 }

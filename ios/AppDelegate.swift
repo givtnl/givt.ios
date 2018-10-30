@@ -49,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UserDefaults.standard.showcases = []
         }
         
+        AppServices.shared.startCheckingInternetConnection()
+        
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
         } else {
@@ -133,16 +135,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let reachability = notification.object as! Reachability
         if reachability.isReachable {
             if reachability.isReachableViaWiFi {
-                print("Reachable via WiFi")
                 logService.info(message: "App got connected over WiFi")
             } else {
-                print("Reachable via Cellular")
                 logService.info(message: "App got connected over Cellular")
             }
         } else {
-            print("Network not reachable")
             logService.info(message: "App got disconnected")
         }
+        AppServices.shared.fetchInternetConnection()
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
@@ -154,6 +154,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     LogService.shared.info(message: "User just gave, coming back to Givt, now going to \(appScheme)")
                 } else {
                     LogService.shared.warning(message: "\(url) was not installed on the device.")
+                }
+            } else if let url = userActivity.webpageURL{
+                if let mediumId = GivtManager.shared.getMediumIdFromGivtLink(link: url.absoluteString) {
+                    if mediumId.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumId.prefix(20))) == nil {
+                        LogService.shared.warning(message: "Illegal mediumid \"\(mediumId)\" provided. Going to normal give flow")
+                    } else {
+                        GivtManager.shared.externalIntegration = ExternalAppIntegration(name: "QR", logo: nil, mediumId: mediumId, appScheme: nil)
+                        LogService.shared.info(message: "App scheme: QR entering Givt-app with identifier \(mediumId)")
+                        return true;
+                    }
                 }
             }
             GivtManager.shared.externalIntegration = nil
@@ -227,6 +237,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         let dataDict:[String: String] = ["token": fcmToken]
+        LogService.shared.info(message: "Firebase notification: " + fcmToken)
         NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
     }
     

@@ -21,6 +21,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     var titleOfInput: String!
     var inputOfInput: String!
     var keyboardTypeOfInput: UIKeyboardType!
+    var type: SettingType!
     
     var img: UIImage!
     override func viewDidLoad() {
@@ -41,6 +42,10 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
             inputFieldToEdit.delegate = self
             inputFieldToEdit.keyboardType = .phonePad
+        }
+        
+        if type == SettingType.iban {
+            inputFieldToEdit.autocapitalizationType = .allCharacters
         }
     }
     
@@ -67,6 +72,9 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange() {
+        if type == SettingType.iban {
+            inputFieldToEdit.text = inputFieldToEdit.text!.uppercased()
+        }
         inputFieldToEdit.isValid = validateFunction(inputFieldToEdit.text!)
         saveBtn.isEnabled = inputFieldToEdit.isValid
     }

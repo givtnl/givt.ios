@@ -98,7 +98,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
                 } else {
                     self.log.warning(message: "Could not finish mandate signing")
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("MandateSigingFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("MandateSigingFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
                             self.dismiss(animated: true, completion: nil)
                             }))

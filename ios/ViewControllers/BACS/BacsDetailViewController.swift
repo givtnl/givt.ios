@@ -52,10 +52,8 @@ class BacsDetailViewController: UIViewController {
     
     @IBAction func done(_ sender: Any) {
         if NavigationManager.shared.hasInternetConnection(context: self) {
-            let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: nil, sortCode: userExtension.SortCode, accountNumber: userExtension.AccountNumber, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: userExtension.Country, postalCode: userExtension.PostalCode, street: userExtension.Address)
-            let mandate = Mandate(signatory: signatory)
             SVProgressHUD.show()
-            LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
+            LoginManager.shared.requestMandateUrl(completionHandler: { (response) in
                 SVProgressHUD.dismiss()
                 if let r = response, r.status == .ok {
                     LoginManager.shared.finishMandateSigning(completionHandler: { (done) in
@@ -66,7 +64,7 @@ class BacsDetailViewController: UIViewController {
                         self.navigationController!.pushViewController(vc, animated: true)
                     }
                 } else {
-                    let alert = UIAlertController(title: NSLocalizedString("NotificationTitle", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
                         DispatchQueue.main.async {
                             self.dismiss(animated: true, completion: nil)
