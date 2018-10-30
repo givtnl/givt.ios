@@ -14,6 +14,7 @@ import AudioToolbox
 
 class AppServices {
     static let shared = AppServices()
+    private var timer: Timer?
     private var hasInternetConnection: Bool? {
         didSet {
             NotificationCenter.default.post(Notification(name: .GivtConnectionStateDidChange, object: hasInternetConnection, userInfo: nil))
@@ -45,12 +46,16 @@ class AppServices {
         return (isReachable && !needsConnection) && hasInternetConnection ?? false
     }
     
-    func startCheckingInternetConnection() {
-        fetchInternetConnection()
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fetchInternetConnection), userInfo: nil, repeats: true)
+    func start() {
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fetchInternetConnection), userInfo: nil, repeats: true)
+        timer!.fire()
     }
     
-    @objc func fetchInternetConnection() {
+    func stop() {
+        timer?.invalidate()
+    }
+    
+    @objc private func fetchInternetConnection() {
         //clear cache. response was previously cached
         URLCache.shared.removeAllCachedResponses()
         APIClient.shared.get(url: "/api/v2/status", data: [:]) { (response) in
