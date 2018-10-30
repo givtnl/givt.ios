@@ -24,6 +24,7 @@
 		D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */; };
 		D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */; };
 		D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7335B2D1F45923F00B57AE0 /* UIImageExtensions.swift */; };
+		D7347C8721885EFE003128EC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7347C8621885EFE003128EC /* GoogleService-Info.plist */; };
 		D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C21F38B4C30059A296 /* LoginViewController.swift */; };
 		D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C41F39BA360059A296 /* AppConstants.swift */; };
 		D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */; };
@@ -68,7 +69,6 @@
 		D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76A03441FBAFC5100E338C5 /* TemplateViewController.swift */; };
 		D770E5341FB097FA0079D253 /* ManualOrganisationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */; };
 		D7721B4B20EB67AD009771EE /* LMUserExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7721B4A20EB67AD009771EE /* LMUserExt.swift */; };
-		D7747047216E4E0900C2E937 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7747046216E4E0900C2E937 /* GoogleService-Info.plist */; };
 		D77511BB1F711231004F91F6 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77511BA1F711231004F91F6 /* DateExtensions.swift */; };
 		D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77511BC1F713B56004F91F6 /* AgendaNumber.swift */; };
 		D77667EE1F39F12900649157 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77667ED1F39F12900649157 /* LoginManager.swift */; };
@@ -203,6 +203,7 @@
 		D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountLimitNavigationViewController.swift; sourceTree = "<group>"; };
 		D731EACE1F79300300F5116C /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationViewController.swift; sourceTree = "<group>"; };
 		D7335B2D1F45923F00B57AE0 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		D7347C8621885EFE003128EC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D73CA1C21F38B4C30059A296 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D73CA1C41F39BA360059A296 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
@@ -248,7 +249,6 @@
 		D76A03441FBAFC5100E338C5 /* TemplateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewController.swift; sourceTree = "<group>"; };
 		D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualOrganisationView.swift; sourceTree = "<group>"; };
 		D7721B4A20EB67AD009771EE /* LMUserExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMUserExt.swift; sourceTree = "<group>"; };
-		D7747046216E4E0900C2E937 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Documents/Pre/Prod/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D77511BA1F711231004F91F6 /* DateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		D77511BC1F713B56004F91F6 /* AgendaNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgendaNumber.swift; sourceTree = "<group>"; };
 		D77667ED1F39F12900649157 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
@@ -788,7 +788,7 @@
 		FB3CE6D51F14CA200055185B /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				D7747046216E4E0900C2E937 /* GoogleService-Info.plist */,
+				D7347C8621885EFE003128EC /* GoogleService-Info.plist */,
 				D7F746B31FD83F9F005354A3 /* Transitions */,
 				D75B2BCD1FCEADCF000B7968 /* APIClients */,
 				D7D6FA6C1F7BE416008A5604 /* Helpers */,
@@ -911,7 +911,6 @@
 				D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */,
 				D748F5F82061381B00B25BC2 /* TableSectionHeaderView.xib in Resources */,
 				D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */,
-				D7747047216E4E0900C2E937 /* GoogleService-Info.plist in Resources */,
 				D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */,
 				D7AE8B9921359A0200CB3A33 /* BACS.storyboard in Resources */,
 				D7E8E2C3216E00FD003C39C8 /* GoogleService-Info.plist in Resources */,
@@ -921,6 +920,7 @@
 				D72A89D11FE8050A00C06EF6 /* LaunchScreen.storyboard in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				D7F3A84521480161008B65AE /* Fingerprint.storyboard in Resources */,
+				D7347C8721885EFE003128EC /* GoogleService-Info.plist in Resources */,
 				D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
 				D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */,
