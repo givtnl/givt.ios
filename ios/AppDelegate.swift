@@ -32,7 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // Override point for customization after application launch.
         //print(Array(UserDefaults.standard.dictionaryRepresentation()))
-        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
         
         self.reachability = Reachability.init()
         do {
