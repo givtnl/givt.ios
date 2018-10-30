@@ -301,7 +301,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 
     fileprivate func showAmountTooLow() {
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
-        let alert = UIAlertController(title: "", message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""), message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
@@ -355,7 +355,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     func displayAmountLimitExceeded() {
         let alert = UIAlertController(
-            title: NSLocalizedString("SomethingWentWrong2", comment: ""),
+            title: NSLocalizedString("AmountTooHigh", comment: ""),
             message: NSLocalizedString("AmountLimitExceeded", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
@@ -380,7 +380,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         print(UserDefaults.standard.viewedCoachMarks)
         if UserDefaults.standard.viewedCoachMarks == 1 &&
             !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.deleteMultipleCollects.rawValue) {
-            let alert = UIAlertController(title: NSLocalizedString("MultipleCollections", comment: ""), message: NSLocalizedString("AddCollectConfirm", comment: ""), preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("SecondCollection", comment: ""), message: NSLocalizedString("AddCollectConfirm", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { action in
                 self.addCollect(sender)
                 

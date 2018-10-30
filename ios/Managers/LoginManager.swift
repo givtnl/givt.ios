@@ -292,15 +292,13 @@ class LoginManager {
         
     }
     
-    func requestMandateUrl(mandate: Mandate, completionHandler: @escaping (Response?) -> Void) {
+    func requestMandateUrl(completionHandler: @escaping (Response?) -> Void) {
         do {
-            let jsonEncoder = JSONEncoder()
-            let jsonData = try jsonEncoder.encode(mandate)
             var localeQuerystring = ""
             if let langCode = Locale.current.languageCode {
                 localeQuerystring = "?locale=" + langCode
             }
-            try client.post(url: "/api/v2/users/mandate/sign" + localeQuerystring, data: jsonData, callback: { (response) in
+            try client.post(url: "/api/v2/users/" + UserDefaults.standard.userExt.guid + "/mandate" + localeQuerystring, data: [:], callback: { (response) in
                 completionHandler(response)
             })
         } catch {

@@ -250,16 +250,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     private func register() {
-        if AppServices.shared.connectedToNetwork() {
+        if navigationManager.hasInternetConnection(context: self) {
             navigationManager.finishRegistration(self)
-        } else {
-            let noInternetAlert = UIAlertController(title: NSLocalizedString("NoInternetConnectionTitle", comment: ""), message: NSLocalizedString("NoInternet", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            noInternetAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
-                
-            }))
-            self.present(noInternetAlert, animated: true, completion: nil)
         }
-
     }
     
     private func logout() {

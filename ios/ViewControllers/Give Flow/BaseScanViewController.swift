@@ -11,7 +11,6 @@ import SVProgressHUD
 
 class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
-    var bestBeacon = BestBeacon()
     private var bluetoothAlert: UIAlertController?
     private var isBacs = false
     
@@ -29,7 +28,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     func showBluetoothMessage() {
         self.bluetoothAlert = UIAlertController(
-            title: NSLocalizedString("TurnOnBluetooth", comment: ""),
+            title: NSLocalizedString("ActivateBluetooth", comment: ""),
             message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
@@ -75,7 +74,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         df.locale = Locale(identifier: "en_US_POSIX")
         let date = df.date(from: transactions.first!.timeStamp)
 
-        UserDefaults.standard.lastGivtToOrganisationNamespace = bestBeacon.namespace
+        UserDefaults.standard.lastGivtToOrganisationNamespace = GivtManager.shared.bestBeacon?.namespace
         
         
         shouldShowMandate { (url) in
@@ -165,7 +164,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                     return
                 }
                 
-                LoginManager.shared.requestMandateUrl(mandate: mandate, completionHandler: { (response) in
+                LoginManager.shared.requestMandateUrl(completionHandler: { (response) in
                     SVProgressHUD.dismiss()
                     if let r = response {
                         if r.basicStatus == .ok {

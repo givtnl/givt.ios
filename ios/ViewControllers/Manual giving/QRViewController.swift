@@ -81,7 +81,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
-            let alert = UIAlertController(title: "", message: NSLocalizedString("NoCameraAccess", comment: ""), preferredStyle: .alert)
+            let alert = UIAlertController(title: NSLocalizedString("AccessDenied", comment: ""), message: NSLocalizedString("NoCameraAccess", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OpenSettings", comment: ""), style: .default, handler: { (action) in
                 guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
                 UIApplication.shared.openURL(url)
@@ -114,7 +114,20 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
                 if object.type == AVMetadataObject.ObjectType.qr {
                     session!.stopRunning()
                     self.log.info(message: "Scanned a QR")
-                    giveManually(scanResult: object.stringValue!)
+                    if object.stringValue! == "https://www.givtapp.net/download/" {
+                        let alert = UIAlertController(title: NSLocalizedString("PromotionalQRTitle", comment: ""), message: NSLocalizedString("PromotionalQR", comment: ""), preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+                            self.session?.startRunning()
+                        }))
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.default, handler: {(action) in
+                            DispatchQueue.main.async {
+                                self.backPressed(self)
+                            }
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        giveManually(scanResult: object.stringValue!)
+                    }
                 }
             }
         }
@@ -124,7 +137,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
         GivtManager.shared.giveQR(scanResult: scanResult, completionHandler: { success in
             if !success {
                 self.log.warning(message: "Could not scan QR: " + scanResult )
-                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
+                let alert = UIAlertController(title: NSLocalizedString("QRScanFailed", comment: ""), message: NSLocalizedString("CodeCanNotBeScanned", comment: ""), preferredStyle: .alert)
                 let action = UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: .default) { (ok) in
                     self.session!.startRunning()
                 }

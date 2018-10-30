@@ -53,11 +53,7 @@ class NavigationManager {
                 if AppServices.shared.connectedToNetwork() {
                     self.finishRegistration(context)
                 } else {
-                    let noInternetAlert = UIAlertController(title: NSLocalizedString("NoInternetConnectionTitle", comment: ""), message: NSLocalizedString("NoInternet", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    noInternetAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
-                        
-                    }))
-                    context.present(noInternetAlert, animated: true, completion: nil)
+                    self.presentAlertNoConnection(context: context)
                 }
 
             }))

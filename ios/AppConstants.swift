@@ -65,7 +65,6 @@ class AppConstants {
             kTSKSwizzleNetworkDelegates: false,
             kTSKPinnedDomains: [
                 "api.givtapp.net": [
-                    kTSKExpirationDate: "2018-12-08",
                     kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
                     kTSKPublicKeyHashes: [
                         "GnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=",

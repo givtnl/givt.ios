@@ -119,17 +119,14 @@ final class GivtManager: NSObject {
     
     private var _shouldNotify: Bool = false
     weak var delegate: GivtProcessedProtocol?
+    private var cachedGivtsLock = NSRecursiveLock()
     
     private override init() {
         super.init()
         resume()
         
         NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: ReachabilityChangedNotification, object: reachability)
-        do {
-            try reachability?.startNotifier()
-        } catch {
-            print("could not start notifier")
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(connectionStatusDidChange(notification:)), name: .GivtConnectionStateDidChange, object: nil)
     }
     
     public func resume() {
@@ -142,18 +139,27 @@ final class GivtManager: NSObject {
         hasOfflineGifts() ? BadgeService.shared.addBadge(badge: .offlineGifts) : BadgeService.shared.removeBadge(badge: .offlineGifts)
     }
     
+    func processCachedGivts() {
+        cachedGivtsLock.lock()
+        for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
+            log.info(message: "Started processing chached Givts")
+            giveInBackground(transactions: [element])
+            UserDefaults.standard.offlineGivts.remove(at: index)
+        }
+        BadgeService.shared.removeBadge(badge: .offlineGifts)
+        cachedGivtsLock.unlock()
+    }
+    
     @objc func internetChanged(note: Notification){
         let reachability = note.object as! Reachability
         if reachability.isReachable {
-            log.info(message: "App got connected")
-            for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
-                log.info(message: "Started processing chached Givts")
-                giveInBackground(transactions: [element])
-                UserDefaults.standard.offlineGivts.remove(at: index)
-            }
-            BadgeService.shared.removeBadge(badge: .offlineGifts)
-        } else {
-            log.info(message: "App got disconnected")
+            processCachedGivts()
+        }
+    }
+    
+    @objc func connectionStatusDidChange(notification: Notification) {
+        if let canSend = notification.object as? Bool, canSend {
+            processCachedGivts()
         }
     }
     
@@ -215,27 +221,20 @@ final class GivtManager: NSObject {
     }
     
     func giveQR(scanResult: String, completionHandler: @escaping (Bool) -> Void) {
-        let queryString = "https://www.givtapp.net/download?code="
-        if scanResult.index(of: queryString) != nil {
-            let identifierEncoded = String(scanResult[queryString.endIndex...])
-            if let decoded = identifierEncoded.base64Decoded() {
-                let bestBeacon = BestBeacon()
-                /* mimic bestbeacon */
-                bestBeacon.beaconId = decoded
-                if let idx = decoded.index(of: ".") {
-                    bestBeacon.namespace = String(decoded[..<idx])
-                } else {
-                    bestBeacon.namespace = decoded
-                }
-                //bepaal naam
-                give(antennaID: decoded, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
-                completionHandler(true)
+        if let mediumid = getMediumIdFromGivtLink(link: scanResult) {
+            let bestBeacon = BestBeacon()
+            /* mimic bestbeacon */
+            bestBeacon.beaconId = mediumid
+            if let idx = mediumid.index(of: ".") {
+                bestBeacon.namespace = String(mediumid[..<idx])
             } else {
-                //todo: log messed up base 64
-                completionHandler(false)
+                bestBeacon.namespace = mediumid
             }
+            self.bestBeacon = bestBeacon
+            //bepaal naam
+            give(antennaID: mediumid, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!))
+            completionHandler(true)
         } else {
-            //todo log result: not our qr code
             completionHandler(false)
         }
     }
@@ -248,6 +247,7 @@ final class GivtManager: NSObject {
         } else {
             bestBeacon.namespace = antennaId
         }
+        self.bestBeacon = bestBeacon
         
         let shouldCelebrate = isCelebration(orgNameSpace: bestBeacon.namespace!)
         print("should celebrate \(shouldCelebrate)")
@@ -511,6 +511,30 @@ final class GivtManager: NSObject {
         delegate?.didDetectGivtLocation(orgName: organisationName, identifier: id)
     }
     
+    func getMediumIdFromGivtLink(link: String) -> String?{
+        let queryString = "https://www.givtapp.net/download?code="
+        let queryString2 = "https://www.givt.app/download?code="
+        let idxqs = link.index(of: queryString)
+        let idxqs2 = link.index(of: queryString2)
+        if idxqs != nil || idxqs2 != nil {
+            var encoded: String;
+            if idxqs != nil {
+                encoded = String(link[queryString.endIndex...])
+            } else if idxqs2 != nil {
+                encoded = String(link[queryString2.endIndex...])
+            } else { return nil }
+            
+            if let decoded = encoded.base64Decoded() {
+                return decoded
+            } else {
+                //todo: log messed up base 64
+            }
+        } else {
+            //todo log result: not our qr code
+        }
+        return nil;
+    }
+    
     func hasGivtLocations() -> Bool {
         return locationService.hasActiveGivtLocations()
     }
@@ -533,7 +557,11 @@ extension GivtManager: BeaconServiceProtocol {
             }
             scanLock.unlock()
         } else if scanMode == .far {
-            triggerGivtLocation(id: bestBeacon.beaconId!, organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+            if let orgName = self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!) {
+                triggerGivtLocation(id: bestBeacon.beaconId!, organisationName: orgName)
+            } else {
+                self.log.warning(message: "Found a location beacon that is not a known namespace in the db. Beacon found: \(bestBeacon.beaconId!)")
+            }
         }
     }
     

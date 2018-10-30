@@ -58,7 +58,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
             i = #imageLiteral(resourceName: "sugg_actions_white")
         } else if type.matches("b[0-9]") {
             c = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
-            i = #imageLiteral(resourceName: "sugg_actions_white")
+            i = #imageLiteral(resourceName: "artist_white")
         }
 
         guard let tintColor = c, let image = i else { return nil }
