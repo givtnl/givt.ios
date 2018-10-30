@@ -383,6 +383,14 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		D7347C8521885C2B003128EC /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				D7E8E2C2216E00FD003C39C8 /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		D740E14E1F4C5328000531BA /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,6 +773,7 @@
 				FB3CE6D41F14CA200055185B /* Products */,
 				FB07A9651F14D9F300FD9C1A /* Frameworks */,
 				4B950123D45CD9CD856C736B /* Pods */,
+				D7347C8521885C2B003128EC /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
