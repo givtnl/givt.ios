@@ -104,7 +104,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func login(){
-        if !_appServices.connectedToNetwork() {
+        if !_appServices.isServerReachable {
             _navigationManager.presentAlertNoConnection(context: self)
             return
         }
