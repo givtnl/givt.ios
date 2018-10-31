@@ -50,7 +50,7 @@ class NavigationManager {
                     ctx.menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
                 }
                 
-                if AppServices.shared.connectedToNetwork() {
+                if AppServices.shared.isServerReachable {
                     self.finishRegistration(context)
                 } else {
                     self.presentAlertNoConnection(context: context)
@@ -135,11 +135,10 @@ class NavigationManager {
     }
     
     public func hasInternetConnection(context: UIViewController) -> Bool {
-        if !AppServices.shared.connectedToNetwork() {
+        if !AppServices.shared.isServerReachable {
             presentAlertNoConnection(context: context)
         }
-        return AppServices.shared.connectedToNetwork()
-        
+        return AppServices.shared.isServerReachable        
     }
     
     public func presentAlertNoConnection(context: UIViewController) {
@@ -211,7 +210,7 @@ class NavigationManager {
     }
 
     public func executeWithLogin(context: UIViewController, emailEditable: Bool = false, skipFingerprint: Bool = false, completion: @escaping () -> Void) {
-        if !_appServices.connectedToNetwork() {
+        if !_appServices.isServerReachable {
             presentAlertNoConnection(context: context)
             return
         }
@@ -358,7 +357,7 @@ class NavigationManager {
     
     public func showUpdateAlert() {
         DispatchQueue.main.async {
-            if AppServices.shared.connectedToNetwork() {
+            if AppServices.shared.isServerReachable {
                 InfraManager.shared.checkUpdates { (isCritical) in
                     guard let isCritical = isCritical else {
                         UserDefaults.standard.needsCriticalUpdate = false

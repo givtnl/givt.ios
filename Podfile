@@ -15,6 +15,7 @@ target 'ios' do
   pod 'SwiftCron', :git => 'https://github.com/lennie9/SwiftCron.git', :tag => '0.4.8'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'ReachabilitySwift'
   # Pods for ios
 
 end
