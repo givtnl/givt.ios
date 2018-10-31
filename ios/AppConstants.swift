@@ -29,7 +29,7 @@ class AppConstants {
         var countries: [Country] = []
         countries.append(Country(name: NSLocalizedString("Belgium", comment: ""), shortName: "BE", phoneNumber: PhoneNumber(prefix: "+32", firstNumbers: ["4"], length: 8)))
         countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", phoneNumber: PhoneNumber(prefix: "+31", firstNumbers: ["6"], length: 8)))
-        countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", phoneNumber: PhoneNumber(prefix: "+49", firstNumbers: ["15","16","17"], length: 8)))
+        countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", phoneNumber: PhoneNumber(prefix: "+49", firstNumbers: ["15","16","17"], length: 9)))
         countries.append(Country(name: NSLocalizedString("UnitedKingdom", comment: ""), shortName: "GB", phoneNumber: PhoneNumber(prefix: "+44", firstNumbers: ["7"], length: 9)))
         return countries
     }()
