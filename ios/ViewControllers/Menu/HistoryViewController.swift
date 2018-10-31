@@ -141,7 +141,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                         } else {
                             DispatchQueue.main.async {
                                 
-                                if AppServices.shared.connectedToNetwork() {
+                                if AppServices.shared.isServerReachable {
                                     let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                                     self.present(alert, animated: true, completion: nil)

@@ -53,7 +53,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func send(_ sender: Any) {
         print("sending password forgot mail")
-        if !_appServices.connectedToNetwork() {
+        if !_appServices.isServerReachable {
             _navigationManager.presentAlertNoConnection(context: self)
             return
         }
@@ -88,7 +88,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                                 self.present(alert, animated: true, completion: nil)
                             }
                         } else {
-                            if !self._appServices.connectedToNetwork() {
+                            if !self._appServices.isServerReachable {
                                 self._navigationManager.presentAlertNoConnection(context: self)
                                 return
                             }

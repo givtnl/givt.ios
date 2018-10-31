@@ -435,7 +435,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     @IBAction func next(_ sender: Any) {
         self.endEditing()
-        if !_appServices.connectedToNetwork() {
+        if !_appServices.isServerReachable {
             _navigationManager.presentAlertNoConnection(context: self)
             return
         }
@@ -479,7 +479,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 }
             } else {
                 SVProgressHUD.dismiss()
-                if AppServices.shared.connectedToNetwork() {
+                if AppServices.shared.isServerReachable {
                     let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.default, handler: { action in
                         
