@@ -28,12 +28,18 @@ class Country {
 }
 class PhoneNumber {
     var prefix: String
-    var firstNumber: String
+    var firstNumbers: [String]
     var length: Int
     
-    init(prefix: String, firstNumber: String, length: Int){
+    init(prefix: String, firstNumbers: [String], length: Int){
         self.prefix = prefix
-        self.firstNumber = firstNumber
+        self.firstNumbers = firstNumbers
         self.length = length
+    }
+    
+    var prefixWithZeros: String {
+        get {
+            return self.prefix.replacingOccurrences(of: "+", with: "00")
+        }
     }
 }

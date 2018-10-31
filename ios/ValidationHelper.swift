@@ -106,61 +106,47 @@ class ValidationHelper {
     
     class PhoneResult{
         var IsValid: Bool
-        var Number: String??
-        init(isValid: Bool, number: String??){
+        var Number: String?
+        init(isValid: Bool, number: String?){
             self.IsValid = isValid
             self.Number = number
         }
     }
     
     func isValidPhone(number: String) -> PhoneResult {
-        var totalMax: Int
-
-        let retVal: PhoneResult = PhoneResult(isValid: false, number: nil)
-        if(number.count > 4){
-            let possiblePrefixes = [
-                ["0032","+32","04","4"],
-                ["0031","+31","06","6"],
-                ["0049","+49","01","1"],
-                ["0044","+44","07","7"]
-            ]
-            let totalMaxes = [ 8, 8, 9, 9]
-            var item: PhoneNumber
-
-            for (row, possiblePrefix) in possiblePrefixes.enumerated() {
-                for (_, element) in possiblePrefix.enumerated() {
-                    if(number.starts(with: element)){
-                        item = AppConstants.countries.first(where: { $0.phoneNumber.prefix == String(possiblePrefixes[row][1])})!.phoneNumber
-                        if(number.starts(with: String(possiblePrefixes[row][0])) || number.starts(with: String(possiblePrefixes[row][1]))){
-                            if(number.starts(with: String(possiblePrefixes[row][0]))){ totalMax = totalMaxes[row] + 5 } else { totalMax = totalMaxes[row] + 4 }
-                            if let range2 = number.range(of: String(possiblePrefixes[row][1]).substring(1..<3)) {
-                                let endPos = number.distance(from: number.startIndex, to: range2.upperBound)
-                                if(number.substring(endPos..<endPos+1) == String(possiblePrefixes[row][3]) && number.count == totalMax){
-                                    return returnValidPhone(number: number, phoneNumber: item)
-                                }
-                            }
-                        } else if(number.starts(with: String(possiblePrefixes[row][2]))) { totalMax = totalMaxes[row] + 2
-                            if(number.count == totalMax){
-                                return returnValidPhone(number: number, phoneNumber: item)
-                            }
-                        } else if(number.starts(with: String(possiblePrefixes[row][3]))) { totalMax = totalMaxes[row] + 1
-                            if(number.count == totalMax){
-                                return returnValidPhone(number: number, phoneNumber: item)
-                            }
+        
+        for country in AppConstants.countries {
+            var temp = number
+            if temp.starts(with: country.phoneNumber.prefix) {
+                temp = temp.replacingOccurrences(of: country.phoneNumber.prefix, with: "")
+            } else if temp.starts(with: country.phoneNumber.prefixWithZeros) {
+                temp = temp.replacingOccurrences(of: country.phoneNumber.prefixWithZeros, with: "")
+            } else {
+                continue
+            }
+            
+            if temp.starts(with: "0") {
+                temp.remove(at: temp.startIndex)
+            }
+            
+            for p in country.phoneNumber.firstNumbers {
+                if temp.starts(with: p) {
+                    // add one more to length if country is germany and first numbers after prefix is "16" because this phonenumber can be 10 or 11 characters long after prefix
+                    let length = p.count + country.phoneNumber.length + (country.shortName == "DE" && p == "16" ? 1 : 0)
+                    if(country.shortName == "DE" && p == "16" && (length == temp.count || length == temp.count+1)) || length == temp.count {
+                        do {
+                            let phoneNumber = try phoneNumberKit.parse(country.phoneNumber.prefix + temp, withRegion: country.shortName, ignoreType: true)
+                            formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
+                            return PhoneResult(isValid: true, number: formattedPhoneNumber)
+                        }
+                        catch {
+                            formattedPhoneNumber = ""
+                            return PhoneResult(isValid: false, number: nil)
                         }
                     }
                 }
             }
         }
-        
-        return retVal
+        return PhoneResult(isValid: false, number: nil)
     }
-    func returnValidPhone(number: String, phoneNumber: PhoneNumber) -> PhoneResult {
-        let retVal = PhoneResult(isValid: true, number: nil)
-        let lengteNummer = number.count
-        let startIndex = lengteNummer-phoneNumber.length
-        retVal.Number = phoneNumber.prefix + phoneNumber.firstNumber + number.substring(startIndex..<lengteNummer)
-        return retVal
-    }
-    
 }

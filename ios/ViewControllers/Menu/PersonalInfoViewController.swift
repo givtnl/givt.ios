@@ -167,7 +167,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.validateFunction = { newPhone in
                 let phoneResult = self.validationHelper.isValidPhone(number: newPhone)
                 if(phoneResult.IsValid){
-                    self.validatedPhoneNumber = phoneResult.Number!!
+                    self.validatedPhoneNumber = phoneResult.Number!
                 }
                 return phoneResult.IsValid
             }
