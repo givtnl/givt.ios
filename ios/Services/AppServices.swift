@@ -38,17 +38,11 @@ class AppServices {
         } catch {
             print("could not start reachability notifier")
         }
-        
     }
     
     func stop() {
         timer?.invalidate()
         reachability.stopNotifier()
-        
-    }
-    
-    func sendNotification() {
-        
     }
     
     @objc private func reachabilityChanged(note: Notification) {
@@ -72,8 +66,8 @@ class AppServices {
     
     @objc private func fetchInternetConnection() {
         notificationLocker.lock()
-        //clear cache. response was previously cached
         if isReachable {
+            //clear cache. response was previously cached
             URLCache.shared.removeAllCachedResponses()
             APIClient.shared.get(url: "/api/v2/status", data: [:]) { (response) in
                 if let r = response, r.basicStatus == .ok {
@@ -92,7 +86,6 @@ class AppServices {
             }
         }
         notificationLocker.unlock()
-        
     }
     
     func notificationsEnabled() -> Bool {
@@ -112,6 +105,6 @@ class AppServices {
     }
     
     func vibrate() {
-        AudioServicesPlayAlertSound(1520)
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
 }

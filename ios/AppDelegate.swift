@@ -104,7 +104,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         logService.info(message: "App resuming")
         NavigationManager.shared.resume()
         GivtManager.shared.resume()
-        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -113,8 +112,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         appService.start()
     }
     
-
-
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         logService.info(message: "App is terminating")
