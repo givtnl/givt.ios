@@ -46,11 +46,6 @@ class AppServices {
         reachability.stopNotifier()
         
     }
-    
-    func sendNotification() {
-        
-    }
-    
     @objc private func reachabilityChanged(note: Notification) {
         notificationLocker.lock()
         if let reachability = note.object as? Reachability {
