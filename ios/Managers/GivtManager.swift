@@ -444,6 +444,9 @@ final class GivtManager: NSObject {
                                 UserDefaults.standard.accountType = AccountType.undefined
                             }
                         }
+                        if let parsedYears = parsedData["YearsWithGivts"] as? [Int] {
+                            UserDefaults.standard.yearsWithGivts = parsedYears
+                        }
                         print("Has givts in \(year):", UserDefaults.standard.hasGivtsInPreviousYear)
                     } catch {
                         UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
