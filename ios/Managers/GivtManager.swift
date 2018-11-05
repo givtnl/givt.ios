@@ -26,6 +26,19 @@ struct OrgBeacon: Codable {
     let Celebrations: Bool
     let Locations: [OrgBeaconLocation]
     let MultiUseAllocations: [MultiUseAllocations]?
+    var accountType: AccountType {
+        get {
+            let start = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 8)
+            let end = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 12)
+            
+            let asciiCountry = EddyNameSpace[start..<end]
+            if (asciiCountry == "4742"){
+                return AccountType.bacs
+            }else {
+                return AccountType.sepa
+            }
+        }
+    }
 }
 
 struct OrgBeaconLocation: Codable {
