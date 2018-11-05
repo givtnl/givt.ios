@@ -138,7 +138,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         super.viewDidAppear(animated)
     }
 
-    private var paymentType: PaymentType = .sepa
+    private var paymentType: AccountType = .sepa
     @IBOutlet var bacsButton: UIButton!
     @IBOutlet var sepaButton: UIButton!
     @IBOutlet var leadingAnchorLine: NSLayoutConstraint!
@@ -451,10 +451,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         var userData: RegistrationUser!
         if paymentType == .sepa {
-            UserDefaults.standard.accountType = "SEPA"
+            UserDefaults.standard.accountType = AccountType.sepa
             userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "")
         } else {
-            UserDefaults.standard.accountType = "BACS"
+            UserDefaults.standard.accountType = AccountType.bacs
             userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber)
         }
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in

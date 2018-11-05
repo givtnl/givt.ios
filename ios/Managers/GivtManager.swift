@@ -425,7 +425,11 @@ final class GivtManager: NSObject {
                             UserDefaults.standard.hasGivtsInPreviousYear = false
                         }
                         if let parsedAccountType = parsedData["AccountType"] as? String {
-                            UserDefaults.standard.accountType = parsedAccountType
+                            if let accType = AccountType(rawValue: parsedAccountType.lowercased()){
+                                UserDefaults.standard.accountType = accType
+                            } else {
+                                UserDefaults.standard.accountType = AccountType.undefined
+                            }
                         }
                         print("Has givts in \(year):", UserDefaults.standard.hasGivtsInPreviousYear)
                     } catch {
