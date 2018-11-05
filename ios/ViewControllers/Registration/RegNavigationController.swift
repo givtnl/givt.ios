@@ -34,7 +34,7 @@ class RegNavigationController: UINavigationController {
             vc.hasBackButton = true
             self.setViewControllers([vc], animated: false)
         } else if startPoint == .mandate {
-            if UserDefaults.standard.accountType == "BACS" {
+            if UserDefaults.standard.accountType == AccountType.bacs {
                 self.removeLogo()
                 let vc = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsSettingUpViewController") as! BacsSettingUpViewController
                 self.setViewControllers([vc], animated: false)
