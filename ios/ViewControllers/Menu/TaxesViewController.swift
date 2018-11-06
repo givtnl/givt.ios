@@ -81,7 +81,7 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate {
     }
     @IBAction func sendOverview(_ sender: Any) {
         SVProgressHUD.show()
-        GivtManager.shared.sendGivtOverview { (status) in
+        GivtManager.shared.sendGivtOverview(year: Int(yearField.text!)!) { (status) in
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
             }
