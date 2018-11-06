@@ -460,8 +460,12 @@ final class GivtManager: NSObject {
         }
     }
     
-    func sendGivtOverview(callback: @escaping (Bool) -> Void) {
-        client.get(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/givts/mail-report?year=\(Date().getYear()-1)", data: [:]) { (response) in
+    func sendGivtOverview(year: Int, callback: @escaping (Bool) -> Void) {
+        var date = Date().getYear()-1
+        if(year != nil && year > 2015){
+            date = year
+        }
+        client.get(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/givts/mail-report?year=\(date)", data: [:]) { (response) in
             if let response = response {
                 if response.basicStatus == .ok {
                     UserDefaults.standard.showedLastYearTaxOverview = true
