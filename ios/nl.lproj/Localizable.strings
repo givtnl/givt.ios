@@ -588,7 +588,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OpenMailbox" = "Open mailbox";
 "PersonalInfo" = "Persoonlijke gegevens";
 "CameraPermission" = "We hebben toegang tot je camera nodig om een qr-code te kunnen scannen.";
-"DownloadYearOverview" = "Wil je het giftenoverzicht van 2017 voor je belastingaangifte downloaden?";
+"DownloadYearOverview" = "Wil je een giftenoverzicht van een volledig jaar downloaden voor je belastingaangifte ?\nKies hieronder het jaar en we versturen het overzicht naar {0}";
 "SendOverViewTo" = "We sturen het overzicht naar";
 "YearOverviewAvailable" = "Jaaroverzicht beschikbaar";
 "CheckHereForYearOverview" = "Hier kun je je jaaroverzicht opvragen";
@@ -782,3 +782,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 /*Fuzzy*/
 "PromotionalQR" = "Deze code verwijst naar onze webpagina. Hiermee kan je helaas niet geven in de Givt-app.";
 "PromotionalQRTitle" = "Promo QR-code";
+
+/*Annuleer van fingerprint scsannen */
+"fingerprint_cancel" = "Annuleer";
