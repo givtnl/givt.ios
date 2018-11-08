@@ -51,7 +51,7 @@ class PermissionViewController: UIViewController {
     }
     
     func determineNextScreen() {
-        if UserDefaults.standard.accountType == "BACS" {
+        if (UserDefaults.standard.accountType == AccountType.bacs) {
             DispatchQueue.main.async {
                 let vc = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsSettingUpViewController") as! BacsSettingUpViewController
                 self.show(vc, sender: nil)

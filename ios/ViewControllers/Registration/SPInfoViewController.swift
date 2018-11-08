@@ -66,7 +66,7 @@ class SPInfoViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
-        if !_appServices.connectedToNetwork() {
+        if !_appServices.isServerReachable {
             _navigationManager.presentAlertNoConnection(context: self)
             return
         }

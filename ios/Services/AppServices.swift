@@ -11,59 +11,81 @@ import SystemConfiguration
 import UIKit
 import CoreLocation
 import AudioToolbox
+import Reachability
 
 class AppServices {
     static let shared = AppServices()
-    private var hasInternetConnection: Bool? {
-        didSet {
-            NotificationCenter.default.post(Notification(name: .GivtConnectionStateDidChange, object: hasInternetConnection, userInfo: nil))
+    private var timer: Timer?
+    private let reachability = Reachability()!
+    private var isConnectable = false
+    private var isReachable = false
+    private let notificationLocker = NSRecursiveLock()
+    var isServerReachable: Bool {
+        get {
+            return isConnectable && isReachable
         }
     }
     
-    func connectedToNetwork() -> Bool {
-    
-        var zeroAddress = sockaddr_in()
-        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
-        zeroAddress.sin_family = sa_family_t(AF_INET)
-        
-        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
-            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
-                SCNetworkReachabilityCreateWithAddress(nil, $0)
-            }
-        }) else {
-            return false
-        }
-        
-        var flags: SCNetworkReachabilityFlags = []
-        if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
-            return false
-        }
-        
-        let isReachable = flags.contains(.reachable)
-        let needsConnection = flags.contains(.connectionRequired)
-        
-        return (isReachable && !needsConnection) && hasInternetConnection ?? false
+    private init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
     }
     
-    func startCheckingInternetConnection() {
-        fetchInternetConnection()
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fetchInternetConnection), userInfo: nil, repeats: true)
+    func start() {
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fetchInternetConnection), userInfo: nil, repeats: true)
+        timer!.fire()
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("could not start reachability notifier")
+        }
     }
     
-    @objc func fetchInternetConnection() {
-        //clear cache. response was previously cached
-        URLCache.shared.removeAllCachedResponses()
-        APIClient.shared.get(url: "/api/v2/status", data: [:]) { (response) in
-            if let r = response, r.basicStatus == .ok {
-                if self.hasInternetConnection == nil || !self.hasInternetConnection! {
-                    self.hasInternetConnection = true
+    func stop() {
+        timer?.invalidate()
+        reachability.stopNotifier()
+    }
+    
+    @objc private func reachabilityChanged(note: Notification) {
+        notificationLocker.lock()
+        if let reachability = note.object as? Reachability {
+            if isReachable {
+                if reachability.connection == .none {
+                    isReachable = false
+                    isConnectable = false //if internet is turned off, we manually set this to false to indicate call to ping will also fail
+                    NotificationCenter.default.post(Notification(name: .GivtConnectionStateDidChange, object: false, userInfo: nil))
                 }
             } else {
-                if self.hasInternetConnection == nil || self.hasInternetConnection! {
-                    self.hasInternetConnection = false
+                if reachability.connection != .none {
+                    isReachable = true
+                    timer!.fire() //let internetchecker fire notification
                 }
             }
         }
+        notificationLocker.unlock()
+    }
+    
+    @objc private func fetchInternetConnection() {
+        notificationLocker.lock()
+        if isReachable {
+            //clear cache. response was previously cached
+            URLCache.shared.removeAllCachedResponses()
+            APIClient.shared.get(url: "/api/v2/status", data: [:]) { (response) in
+                if let r = response, r.basicStatus == .ok {
+                    //ping success
+                    if !self.isConnectable {
+                        self.isConnectable = true
+                        NotificationCenter.default.post(Notification(name: .GivtConnectionStateDidChange, object: true, userInfo: nil))
+                    }
+                } else {
+                    //ping failed
+                    if self.isConnectable {
+                        self.isConnectable = false
+                        NotificationCenter.default.post(Notification(name: .GivtConnectionStateDidChange, object: false, userInfo: nil))
+                    }
+                }
+            }
+        }
+        notificationLocker.unlock()
     }
     
     func notificationsEnabled() -> Bool {
@@ -83,6 +105,6 @@ class AppServices {
     }
     
     func vibrate() {
-        AudioServicesPlayAlertSound(1520)
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
 }

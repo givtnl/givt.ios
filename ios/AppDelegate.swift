@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
-    private var reachability: Reachability!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
@@ -30,17 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         Messaging.messaging().delegate = self
         FirebaseApp.configure()
         
-        // Override point for customization after application launch.
-        //print(Array(UserDefaults.standard.dictionaryRepresentation()))
-        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: ReachabilityChangedNotification, object: nil)
-        
-        self.reachability = Reachability.init()
-        do {
-            try self.reachability.startNotifier()
-        } catch {
-            
-        }
-        
         logService.info(message: "App started")
         logService.info(message: "User notification status: " + String(appService.notificationsEnabled()))
         
@@ -48,8 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UserDefaults.standard.showCasesByUserID = UserDefaults.standard.showcases
             UserDefaults.standard.showcases = []
         }
-        
-        AppServices.shared.startCheckingInternetConnection()
         
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
@@ -105,6 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        appService.stop()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -118,31 +105,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         logService.info(message: "App resuming")
         NavigationManager.shared.resume()
         GivtManager.shared.resume()
-        
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         LoginManager.shared.resume()
+        appService.start()
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         logService.info(message: "App is terminating")
-    }
-    
-    @objc func reachabilityChanged(notification:Notification) {
-        let reachability = notification.object as! Reachability
-        if reachability.isReachable {
-            if reachability.isReachableViaWiFi {
-                logService.info(message: "App got connected over WiFi")
-            } else {
-                logService.info(message: "App got connected over Cellular")
-            }
-        } else {
-            logService.info(message: "App got disconnected")
-        }
-        AppServices.shared.fetchInternetConnection()
+        appService.stop()
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {

@@ -7,7 +7,8 @@
 //
 
 import Foundation
-public enum PaymentType: String {
+public enum AccountType: String {
     case sepa
     case bacs
+    case undefined
 }

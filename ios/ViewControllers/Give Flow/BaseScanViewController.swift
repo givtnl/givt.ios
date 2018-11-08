@@ -122,7 +122,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                 AppServices.shared.vibrate()
             }
             
-            if !AppServices.shared.connectedToNetwork() {
+            if !AppServices.shared.isServerReachable {
                 self.log.info(message: "User gave offline")
                 DispatchQueue.main.async {
                     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -139,7 +139,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     func shouldShowMandate(callback: @escaping (String) -> Void) {
-        if UserDefaults.standard.isTempUser || UserDefaults.standard.mandateSigned == true || !AppServices.shared.connectedToNetwork() {
+        if UserDefaults.standard.isTempUser || UserDefaults.standard.mandateSigned == true || !AppServices.shared.isServerReachable {
             print("not showing mandate")
             callback("")
             return

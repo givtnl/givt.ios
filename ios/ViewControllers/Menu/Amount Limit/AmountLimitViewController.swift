@@ -113,7 +113,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     @objc func save() {
         self.view.endEditing(true)
         
-        if !_appServices.connectedToNetwork() {
+        if !_appServices.isServerReachable {
             _navigationManager.presentAlertNoConnection(context: self)
             return
         }
