@@ -27,7 +27,9 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
         if let bearerToken = UserDefaults.standard.bearerToken {
                 headers["Authorization"] = "Bearer " + bearerToken
         }
-        log.info(message: "GET on " + url)
+        if url != "/api/v2/status" {
+            log.info(message: "GET on " + url)
+        }
         client.get(url: url).delegate(delegate: self)
             .type(type: "json")
             .set(headers: headers)

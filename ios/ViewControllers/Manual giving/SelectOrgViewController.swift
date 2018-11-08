@@ -494,7 +494,20 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             break
         }
         
-        filteredList = listToLoad.filter({ (orgBeacon) -> Bool in
+        let countryFilteredList = listToLoad.filter({ (orgBeacon) -> Bool in
+            if (UserDefaults.standard.accountType == .undefined){
+                if (NSLocale.current.regionCode == "GB"){
+                    return orgBeacon.accountType == AccountType.bacs
+                }
+                else{
+                    return orgBeacon.accountType == AccountType.sepa            
+                }
+            }else{
+                return orgBeacon.accountType == UserDefaults.standard.accountType
+            }
+        })
+        
+        filteredList = countryFilteredList.filter({ (orgBeacon) -> Bool in
             orgBeacon.EddyNameSpace.substring(16..<18).matches(regExp)
         })
         

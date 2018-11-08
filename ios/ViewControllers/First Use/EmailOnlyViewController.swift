@@ -172,7 +172,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     func doneCommand() {
         self.view.endEditing(true)
 
-        if !_appServices.connectedToNetwork() {
+        if !_appServices.isServerReachable {
             _navigationManager.presentAlertNoConnection(context: self)
             return
         }

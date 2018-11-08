@@ -46,7 +46,7 @@ class TerminateAccountViewController: UIViewController {
     }
     
     @IBAction func terminate(_ sender: Any) {
-        if !AppServices.shared.connectedToNetwork() {
+        if !AppServices.shared.isServerReachable {
             let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             }))

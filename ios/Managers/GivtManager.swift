@@ -13,6 +13,7 @@ import AudioToolbox
 import SwiftClient
 import CoreLocation
 import SwiftCron
+import Reachability
 
 struct BeaconList: Codable {
     var OrgBeacons: [OrgBeacon]
@@ -25,6 +26,19 @@ struct OrgBeacon: Codable {
     let Celebrations: Bool
     let Locations: [OrgBeaconLocation]
     let MultiUseAllocations: [MultiUseAllocations]?
+    var accountType: AccountType {
+        get {
+            let start = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 8)
+            let end = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 12)
+            
+            let asciiCountry = EddyNameSpace[start..<end]
+            if (asciiCountry == "4742"){
+                return AccountType.bacs
+            }else {
+                return AccountType.sepa
+            }
+        }
+    }
 }
 
 struct OrgBeaconLocation: Codable {
@@ -125,7 +139,6 @@ final class GivtManager: NSObject {
         super.init()
         resume()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(internetChanged), name: ReachabilityChangedNotification, object: reachability)
         NotificationCenter.default.addObserver(self, selector: #selector(connectionStatusDidChange(notification:)), name: .GivtConnectionStateDidChange, object: nil)
     }
     
@@ -150,16 +163,12 @@ final class GivtManager: NSObject {
         cachedGivtsLock.unlock()
     }
     
-    @objc func internetChanged(note: Notification){
-        let reachability = note.object as! Reachability
-        if reachability.isReachable {
-            processCachedGivts()
-        }
-    }
-    
     @objc func connectionStatusDidChange(notification: Notification) {
-        if let canSend = notification.object as? Bool, canSend {
-            processCachedGivts()
+        if let canSend = notification.object as? Bool {
+            print("Server is reachable ?  \(canSend)")
+            if canSend {
+                processCachedGivts()
+            }
         }
     }
     
@@ -429,7 +438,11 @@ final class GivtManager: NSObject {
                             UserDefaults.standard.hasGivtsInPreviousYear = false
                         }
                         if let parsedAccountType = parsedData["AccountType"] as? String {
-                            UserDefaults.standard.accountType = parsedAccountType
+                            if let accType = AccountType(rawValue: parsedAccountType.lowercased()){
+                                UserDefaults.standard.accountType = accType
+                            } else {
+                                UserDefaults.standard.accountType = AccountType.undefined
+                            }
                         }
                         print("Has givts in \(year):", UserDefaults.standard.hasGivtsInPreviousYear)
                     } catch {

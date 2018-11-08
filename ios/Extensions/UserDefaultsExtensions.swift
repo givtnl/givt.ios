@@ -50,14 +50,14 @@ extension UserDefaults {
     
     var currencySymbol: String {
         get {
-            if let at = accountType {
-                if at == "SEPA" {
-                    return "€"
-                } else if at == "BACS" {
-                    return "£"
-                }
+            switch accountType {
+            case AccountType.sepa:
+                return "€"
+            case AccountType.bacs:
+                return "£"
+            case AccountType.undefined:
+                return NSLocale.current.currencySymbol ?? "€"
             }
-            return NSLocale.current.currencySymbol ?? "€"
         }
     }
     
@@ -75,12 +75,20 @@ extension UserDefaults {
         }
     }
     
-    var accountType: String? { //BACS of SEPA
+    var accountType: AccountType { //BACS of SEPA
         get {
-            return string(forKey: UserDefaultsKeys.accountType.rawValue)
+            if let accTypeString = string(forKey: UserDefaultsKeys.accountType.rawValue)?.lowercased(){
+                if let accType = AccountType(rawValue: accTypeString){
+                    return accType
+                } else {
+                    return .undefined
+                }
+            } else {
+                return .undefined
+            }
         }
         set(value) {
-            set(value, forKey: UserDefaultsKeys.accountType.rawValue)
+            set(value.rawValue, forKey: UserDefaultsKeys.accountType.rawValue)
             synchronize()
         }
     }
