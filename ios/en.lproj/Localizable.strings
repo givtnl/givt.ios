@@ -766,3 +766,6 @@
 /*Fuzzy*/
 "PromotionalQR" = "This code redirects to our webpage. You cannot use it to give within the Givt app.";
 "PromotionalQRTitle" = "Promo QR code";
+
+/*Annuleer van fingerprint scsannen */
+"fingerprint_cancel" = "Cancel";
