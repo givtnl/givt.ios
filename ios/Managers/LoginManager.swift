@@ -362,7 +362,7 @@ class LoginManager {
                 if b {
                     self.userClaim = .giveOnce
                     UserDefaults.standard.isLoggedIn = true
-                    DispatchQueue.main.async { UIApplication.shared.applicationIconBadgeNumber = 1 }
+                    BadgeService.shared.addBadge(badge: .completeRegistration)
                     completionHandler(true)
                 } else {
                     completionHandler(false)
@@ -485,9 +485,9 @@ class LoginManager {
         self.log.info(message: "Updating user extension")
         let params = [
             "Guid":  userExt.GUID,
-            "IBAN":  userExt.IBAN,
-            "AccountNumber" : userExt.AccountNumber,
-            "SortCode" : userExt.SortCode,
+            "IBAN":  userExt.IBAN ?? "",
+            "AccountNumber" : userExt.AccountNumber ?? "",
+            "SortCode" : userExt.SortCode ?? "",
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -515,8 +515,8 @@ class LoginManager {
         let params = [
             "Guid":  userExt.GUID,
             "IBAN":  iban,
-            "AccountNumber" : userExt.AccountNumber,
-            "SortCode" : userExt.SortCode,
+            "AccountNumber" : userExt.AccountNumber ?? "",
+            "SortCode" : userExt.SortCode ?? "",
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -543,9 +543,9 @@ class LoginManager {
         self.log.info(message: "Changing mobile number")
         let params = [
             "Guid":  userExt.GUID,
-            "IBAN":  userExt.IBAN,
-            "AccountNumber" : userExt.AccountNumber,
-            "SortCode" : userExt.SortCode,
+            "IBAN":  userExt.IBAN ?? "",
+            "AccountNumber" : userExt.AccountNumber ?? "",
+            "SortCode" : userExt.SortCode ?? "",
             "PhoneNumber":  phone,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -665,9 +665,7 @@ class LoginManager {
         userClaim = .startedApp
         UserDefaults.standard.bearerExpiration = Date()
         UserDefaults.standard.mandateSigned = false
-        DispatchQueue.main.async {
-            UIApplication.shared.applicationIconBadgeNumber = 0
-        }
+        BadgeService.shared.removeAllBadges()
         UserDefaults.standard.hasTappedAwayGiveDiff = false
         UserDefaults.standard.showedLastYearTaxOverview = false
         UserDefaults.standard.hasGivtsInPreviousYear = false
