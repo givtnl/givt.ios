@@ -36,15 +36,6 @@ class CelebrateViewController: BaseScanViewController {
         navigationItem.leftBarButtonItem = backButton
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        UIApplication.shared.isIdleTimerDisabled = true
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        UIApplication.shared.isIdleTimerDisabled = false
-    }
-    
     private func formatTime() -> String {
         let minutes = secondsLeft / 60
         let seconds = secondsLeft % 60
