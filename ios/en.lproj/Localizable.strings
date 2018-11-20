@@ -130,7 +130,7 @@
 "Settings" = "Settings";
 
 /*Er ging iets verkeerd (algemene error)*/
-"SomethingWentWrong" = "Oops, something went wrong.";
+"SomethingWentWrong" = "Whoops, something went wrong.";
 
 /*'Street name and number' may be clearer or they may just fill in the street without a number*/
 /*Placeholder voor Straat en huisnummer*/
@@ -578,7 +578,7 @@
 "CheckHereForYearOverview" = "You can request your annual overview here";
 "CouldNotSendTaxOverview" = "We can't seem to fetch your annual review, please try again later. Contact us at support@givtapp.net if this problem persists.";
 "SearchHere" = "Search ...";
-"NoInternet" = "Woops! It looks like you're not connected to the internet. Try again when you are connected with the internet.";
+"NoInternet" = "Whoops! It looks like you're not connected to the internet. Try again when you are connected with the internet.";
 "NoInternetConnectionTitle" = "No internet connection";
 "ServerNotReachable" = "Alas, it's not possbile to finish your registration at this time, our server seems to have an issue. Can you try it again later?\nGot this message before? We're probably not aware of this issue. Help us improve Givt by sending us a message and we'll get right on it.";
 "SendMessage" = "Send message";
@@ -637,7 +637,7 @@
 "ReadCode" = "Your code:";
 "ReadMandate" = "View mandate";
 "MandatePdfFileName" = "mandate";
-"WriteStoragePermission" = "To be able to view this PDF, we need access to your phone's storage so that we can save the PDF and show it.";
+"WriteStoragePermission" = "To be able to view this PDF, we temporarily need access to your phone's storage so that we can save the PDF and show it.";
 "LegalTextSlimPay" = "By continuing, you will be asked to sign a mandate authorizing Givt B.V. to debit your account. You must be the account holder or be authorized to act on the account holder's behalf.\n\nYour personal data will be processed by SlimPay, a licensed payment institution, to execute the payment transaction on behalf of Givt B.V., and to prevent fraud according to European regulation.";
 "ResendCode" = "Resend code";
 "WrongCodeMandateSigning" = "The code seems to be incorrect. Try again or request a new code.";
@@ -769,3 +769,4 @@
 
 /*Annuleer van fingerprint scsannen */
 "fingerprint_cancel" = "Cancel";
+"DownloadYearOverviewByChoice" = "Do you want to download an annual overview of your donations? Choose the year below and we will send the overview to {0}";
