@@ -37,8 +37,12 @@ class CelebrateViewController: BaseScanViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.isIdleTimerDisabled = true
         super.viewWillAppear(animated)
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     private func formatTime() -> String {
