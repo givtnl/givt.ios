@@ -637,7 +637,7 @@
 "ReadCode" = "Your code:";
 "ReadMandate" = "View mandate";
 "MandatePdfFileName" = "mandate";
-"WriteStoragePermission" = "To be able to view this PDF, we need access to your phone's storage so that we can save the PDF and show it.\n";
+"WriteStoragePermission" = "To be able to view this PDF, we need access to your phone's storage so that we can save the PDF and show it.";
 "LegalTextSlimPay" = "By continuing, you will be asked to sign a mandate authorizing Givt B.V. to debit your account. You must be the account holder or be authorized to act on the account holder's behalf.\n\nYour personal data will be processed by SlimPay, a licensed payment institution, to execute the payment transaction on behalf of Givt B.V., and to prevent fraud according to European regulation.";
 "ResendCode" = "Resend code";
 "WrongCodeMandateSigning" = "The code seems to be incorrect. Try again or request a new code.";
