@@ -200,12 +200,18 @@ final class GivtManager: NSObject {
         locationService.delegate = self
         startScanning(scanMode: .far)
         locationService.startLookingForLocation()
+        DispatchQueue.main.async {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
     }
     
     func stopLookingForGivtLocations() {
         locationService.delegate = nil
         stopScanning()
         locationService.stopLookingForLocation()
+        DispatchQueue.main.async {
+            UIApplication.shared.isIdleTimerDisabled = false
+        }
     }
 
     func give(antennaID: String, organisationName: String?) {
