@@ -769,4 +769,4 @@
 
 /*Annuleer van fingerprint scsannen */
 "fingerprint_cancel" = "Cancel";
-"DownloadYearOverviewByChoice" = "Do you want to download an annual overview of your donations? Choose the year below and we will send the overview to {0}";
+"DownloadYearOverviewByChoice" = "Do you want to download an annual overview of your donations? Choose the year below and we will send the overview to";

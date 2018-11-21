@@ -34,10 +34,8 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate {
     }
     
     @IBOutlet var sendBtn: CustomButton!
-    @IBOutlet var secondText: UILabel!
-    @IBOutlet var firstText: UILabel!
     @IBOutlet var yearField: CustomUITextField!
-    
+    @IBOutlet var firstText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +48,9 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate {
             ] as [NSAttributedStringKey : Any]
         
         let boldAttributedString = NSAttributedString(string: UserDefaults.standard.userExt!.email, attributes: boldAttribute)
-        mutableAttributedString.append(NSAttributedString(string: NSLocalizedString("SendOverViewTo", comment: "") + " "))
+        mutableAttributedString.append(NSAttributedString(string: NSLocalizedString("DownloadYearOverviewByChoice", comment: "") + " "))
         mutableAttributedString.append(boldAttributedString)
-
-        firstText.text = NSLocalizedString("DownloadYearOverview", comment: "")
-        secondText.attributedText = mutableAttributedString
+        firstText.attributedText = mutableAttributedString
         
         
         sendBtn.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
