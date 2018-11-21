@@ -2113,7 +2113,7 @@ Kijk voor de status in je overzicht.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="We sturen het overzicht naar " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWX-iD-aYU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We sturen het overzicht naar " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QWX-iD-aYU">
                                 <rect key="frame" x="20" y="64" width="374" height="46.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="zmU-TM-qsw"/>
@@ -2122,7 +2122,7 @@ Kijk voor de status in je overzicht.</string>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MaT-GU-xJy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaT-GU-xJy">
                                 <rect key="frame" x="20" y="130.66666666666666" width="374" height="44"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Jaar" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AAV-Sm-VSv" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
@@ -2191,27 +2191,37 @@ Kijk voor de status in je overzicht.</string>
                                     <action selector="sendOverview:" destination="lJe-lK-EDt" eventType="touchUpInside" id="8nq-FG-k4h"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" preservesSuperviewLayoutMargins="YES" image="givymoney" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-VI-QVA">
-                                <rect key="frame" x="20" y="194.66666666666663" width="374" height="240"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kkj-bT-YMg">
+                                <rect key="frame" x="20" y="194.66666666666669" width="374" height="583.33333333333326"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="givymoney" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-VI-QVA">
+                                        <rect key="frame" x="28" y="28" width="318" height="240"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="7ve-VI-QVA" firstAttribute="top" secondItem="Kkj-bT-YMg" secondAttribute="topMargin" constant="20" id="1qk-Gf-tk9"/>
+                                    <constraint firstItem="7ve-VI-QVA" firstAttribute="leading" secondItem="Kkj-bT-YMg" secondAttribute="leadingMargin" constant="20" id="74R-sf-u8q"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="7ve-VI-QVA" secondAttribute="trailing" constant="20" id="9En-Sa-1MD"/>
+                                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="7ve-VI-QVA" secondAttribute="bottom" constant="20" id="ea8-Ad-enR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="MaT-GU-xJy" secondAttribute="trailing" constant="20" id="1oi-aK-5sM"/>
                             <constraint firstItem="pgF-rN-46D" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="43l-Br-VzB"/>
-                            <constraint firstItem="QWX-iD-aYU" firstAttribute="leading" secondItem="MaT-GU-xJy" secondAttribute="leading" id="BfP-gf-Ah1"/>
-                            <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="QWX-iD-aYU" secondAttribute="trailing" constant="20" id="FaR-MP-1vr"/>
-                            <constraint firstItem="7ve-VI-QVA" firstAttribute="top" secondItem="MaT-GU-xJy" secondAttribute="bottom" constant="20" id="J58-Dx-qfe"/>
-                            <constraint firstItem="pgF-rN-46D" firstAttribute="top" secondItem="7ve-VI-QVA" secondAttribute="bottom" constant="20" id="L3H-JL-FZT"/>
+                            <constraint firstItem="MaT-GU-xJy" firstAttribute="top" secondItem="QWX-iD-aYU" secondAttribute="bottom" constant="20" id="65I-Nw-yBJ"/>
+                            <constraint firstItem="Kkj-bT-YMg" firstAttribute="top" secondItem="MaT-GU-xJy" secondAttribute="bottom" constant="20" id="9zH-v8-N8g"/>
+                            <constraint firstItem="QWX-iD-aYU" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="LCE-zc-Qh0"/>
                             <constraint firstItem="MaT-GU-xJy" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="OkI-7U-a2f"/>
-                            <constraint firstItem="QWX-iD-aYU" firstAttribute="trailing" secondItem="MaT-GU-xJy" secondAttribute="trailing" id="Vq9-5c-eSl"/>
-                            <constraint firstItem="7ve-VI-QVA" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="dzM-fg-rYO"/>
-                            <constraint firstItem="QWX-iD-aYU" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="kSp-uc-xv4"/>
-                            <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="7ve-VI-QVA" secondAttribute="trailing" constant="20" id="kek-dV-iZF"/>
+                            <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="QWX-iD-aYU" secondAttribute="trailing" constant="20" id="WLe-Hj-dmo"/>
+                            <constraint firstItem="Kkj-bT-YMg" firstAttribute="leading" secondItem="gYD-K0-wNW" secondAttribute="leading" constant="20" id="XZI-oi-tG0"/>
+                            <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="Kkj-bT-YMg" secondAttribute="trailing" constant="20" id="i8H-Va-vn2"/>
                             <constraint firstItem="gYD-K0-wNW" firstAttribute="bottom" secondItem="pgF-rN-46D" secondAttribute="bottom" constant="20" id="lIt-x0-tXz"/>
+                            <constraint firstItem="pgF-rN-46D" firstAttribute="top" secondItem="Kkj-bT-YMg" secondAttribute="bottom" constant="20" id="oU7-Zl-9Mg"/>
                             <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="pgF-rN-46D" secondAttribute="trailing" constant="20" id="qqx-8i-RKR"/>
-                            <constraint firstItem="MaT-GU-xJy" firstAttribute="top" secondItem="QWX-iD-aYU" secondAttribute="bottom" constant="20" id="vs5-PO-rT7"/>
-                            <constraint firstItem="QWX-iD-aYU" firstAttribute="top" secondItem="gYD-K0-wNW" secondAttribute="top" constant="20" id="y9R-xx-zyG"/>
+                            <constraint firstItem="QWX-iD-aYU" firstAttribute="top" secondItem="gYD-K0-wNW" secondAttribute="top" constant="20" id="uRj-cI-xCi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gYD-K0-wNW"/>
                     </view>
@@ -2231,7 +2241,7 @@ Kijk voor de status in je overzicht.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XZq-GH-kih" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4754.3999999999996" y="514.28571428571433"/>
+            <point key="canvasLocation" x="4753.6231884057979" y="513.61607142857144"/>
         </scene>
         <!--Login Navigation View Controller-->
         <scene sceneID="j4E-5s-cpT">
