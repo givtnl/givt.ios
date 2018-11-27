@@ -37,6 +37,7 @@ extension UserDefaults {
         case accountType
         case fingerprintSet
         case badges
+        case yearsWithGivts
     }
     
     enum Showcase: String {
@@ -222,6 +223,16 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.showedLastYearTaxOverview.rawValue)
+            synchronize()
+        }
+    }
+    
+    var yearsWithGivts: [Int] {
+        get {
+            return array(forKey: UserDefaultsKeys.yearsWithGivts.rawValue) as! [Int]
+        }
+        set(value){
+            set(value, forKey: UserDefaultsKeys.yearsWithGivts.rawValue)
             synchronize()
         }
     }
