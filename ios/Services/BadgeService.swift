@@ -44,6 +44,11 @@ class BadgeService {
         return badges.contains(badge.rawValue)
     }
     
+    func removeAllBadges() -> Void {
+        badges.removeAll()
+        refreshCount()
+    }
+    
     private func refreshCount() {
         UserDefaults.standard.badges = badges
         DispatchQueue.main.async {
@@ -51,4 +56,5 @@ class BadgeService {
         }
         NotificationCenter.default.post(name: .GivtBadgeNumberDidChange, object: nil)
     }
+    
 }

@@ -588,11 +588,11 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OpenMailbox" = "Open mailbox";
 "PersonalInfo" = "Persoonlijke gegevens";
 "CameraPermission" = "We hebben toegang tot je camera nodig om een qr-code te kunnen scannen.";
-"DownloadYearOverview" = "Wil je het giftenoverzicht van 2017 voor je belastingaangifte downloaden?";
+"DownloadYearOverview" = "Wil je het giftenoverzicht van 2017 voor je belastingaangifte downloaden?\n";
 "SendOverViewTo" = "We sturen het overzicht naar";
 "YearOverviewAvailable" = "Jaaroverzicht beschikbaar";
 "CheckHereForYearOverview" = "Hier kun je je jaaroverzicht opvragen";
-"CouldNotSendTaxOverview" = "Het lukt nu even niet om je giftenoverzicht van het afgelopen jaar op te vragen, probeer het later even opnieuw. Contacteer support@givtapp.net als dit probleem blijft optreden.";
+"CouldNotSendTaxOverview" = "Het lukt nu even niet om je giftenoverzicht op te vragen, probeer het later even opnieuw. Contacteer support@givtapp.net als dit probleem blijft optreden.";
 "SearchHere" = "Zoeken ...";
 "NoInternet" = "Oeps! Het lijkt erop dat je niet verbonden bent met internet. Probeer het nog eens wanneer je wel verbinding met internet hebt.";
 "NoInternetConnectionTitle" = "Geen internetverbinding";
@@ -710,7 +710,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "BacsDDGuaranteeTitle" = "Automatische incasso garantie";
 "BacsVerifyBodyDetails" = "Naam: {0}\nAdres: {1}\nEmail adres: {2}\nSortcode: {3} \nAccount nummer: {4}\nFrequentie type: giften";
 "BacsHelpTitle" = "Hulp nodig?";
-"BacsHelpBody" = "Kan je iets niet vinden of heb je gewoon een vraag? Aarzel dan niet om ons te contacteren op het nummer: +31 320 320 115 of stuur ons een mailtje naar het adres: support@givtapp.net en we nemen spoedig contact met je op!";
+"BacsHelpBody" = "Kan je iets niet vinden of heb je gewoon een vraag? Aarzel dan niet om ons te contacteren op het nummer: +31 320 320 115 of stuur ons een mailtje naar support@givtapp.net en we nemen spoedig contact met je op!";
 "BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount nummer: {1}";
 "CantFetchPersonalInformation" = "We kunnen op dit moment je gegevens niet opvragen van de server, probeer je het later even opnieuw?";
 "GivingContextCollectionBag" = "Collectemiddel";
@@ -782,3 +782,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 /*Fuzzy*/
 "PromotionalQR" = "Deze code verwijst naar onze webpagina. Hiermee kan je helaas niet geven in de Givt-app.";
 "PromotionalQRTitle" = "Promo QR-code";
+
+/*Annuleer van fingerprint scsannen */
+"fingerprint_cancel" = "Annuleer";
+"DownloadYearOverviewByChoice" = "Wil je een giftenoverzicht van een volledig jaar downloaden voor je belastingaangifte ? Kies hieronder het jaar en we versturen het overzicht naar";
