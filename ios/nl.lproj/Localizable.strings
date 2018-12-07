@@ -699,7 +699,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SortCodePlaceholder" = "Sort code";
 "BankAccountNumberPlaceholder" = "Bank account number";
 "BacsSetupTitle" = "Instellen van incasso-instructie";
-"BacsSetupBody" = "Door verder te gaan, gaat u ermee akkoord dat u de accounthouder bent en dat u de enige persoon bent die inningen voor dit account kan autoriseren.\n\nDe details van uw incasso-instructie worden u binnen 3 werkdagen of uiterlijk 10 werkdagen vóór de eerste collecte per e-mail toegestuurd.";
+"BacsSetupBody" = "Door verder te gaan, gaat u ermee akkoord dat u de accounthouder bent en dat u de enige persoon bent die inningen voor dit account kan autoriseren.\n\nDe details van uw incasso-instructie machtiging worden u binnen 3 werkdagen of uiterlijk 10 werkdagen vóór de eerste collecte per e-mail toegestuurd.";
 "BacsUnderstoodNotice" = "Ik heb de voorinlichting gelezen en goedgekeurd";
 "BacsVerifyTitle" = "Controleer je gegevens";
 "BacsVerifyBody" = "Zijn deze gegevens correct? Zo niet, annuleer de registratie en verander je persoonlijke gegevens.\n\nDe bedrijfsnaam die op je transactie zal te zien zijn is 'Givt Ltd.'.";
