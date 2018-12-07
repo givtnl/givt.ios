@@ -683,7 +683,7 @@
 "SortCodePlaceholder" = "Sort code";
 "BankAccountNumberPlaceholder" = "Bank account number";
 "BacsSetupTitle" = "Setting up Direct Debit Instruction";
-"BacsSetupBody" = "By continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction will be sent to you by email within 3 working days or no later than 10 working days before the first collection.";
+"BacsSetupBody" = "By continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction mandate will be sent to you by email within 3 working days or no later than 10 working days before the first collection.";
 "BacsUnderstoodNotice" = "I have read and understood the advance notice";
 "BacsVerifyTitle" = "Verify your details";
 "BacsVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'\n\nThe company name which will appear on your bank statement against the Direct Debit will be Givt Ltd.";
