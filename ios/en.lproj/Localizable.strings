@@ -770,3 +770,4 @@
 /*Annuleer van fingerprint scsannen */
 "fingerprint_cancel" = "Cancel";
 "DownloadYearOverviewByChoice" = "Do you want to download an annual overview of your donations? Choose the year below and we will send the overview to";
+"GiveOutOfApp" = "Hey! Great that you want to give with Givt! Are you sure you would like to give to {0}?";
