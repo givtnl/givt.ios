@@ -267,7 +267,8 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.validateFunction = { s in
                 return self.validationHelper.isEmailAddressValid(s)
             }
-            vc.saveAction = { newEmail in
+            vc.saveAction = { email in
+                let newEmail = email.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                     SVProgressHUD.show()
                     self.loginManager.checkTLD(email: newEmail, completionHandler: { (success) in
