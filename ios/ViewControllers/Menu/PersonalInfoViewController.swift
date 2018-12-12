@@ -265,7 +265,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.inputOfInput = settings[indexPath.row].name
             vc.keyboardTypeOfInput = UIKeyboardType.emailAddress
             vc.validateFunction = { s in
-                return self.validationHelper.isEmailAddressValid(s)
+                return self.validationHelper.isEmailAddressValid(s.trimmingCharacters(in: CharacterSet.init(charactersIn: " ")))
             }
             vc.saveAction = { email in
                 let newEmail = email.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))

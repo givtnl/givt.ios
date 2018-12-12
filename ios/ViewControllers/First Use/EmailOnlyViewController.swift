@@ -156,7 +156,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func checkAll() {
-        let isEmailValid = validationHelper.isEmailAddressValid(self.email.text!)
+        let isEmailValid = validationHelper.isEmailAddressValid(self.email.text!.trimmingCharacters(in: CharacterSet.init(charactersIn: " ")))
         isEmailValid ? email.setValid() : email.setInvalid()
         self.nextBtn.isEnabled = isEmailValid
     }
