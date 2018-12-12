@@ -107,7 +107,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             if let userExt = UserDefaults.standard.userExt {
                 config = userExt
             }
-            config.email = self.email.text!
+            config.email = self.email.text!.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
             UserDefaults.standard.userExt = config
             NavigationManager.shared.executeWithLogin(context: self, emailEditable: true) {
                 self.navigationController?.dismiss(animated: false, completion: nil)
@@ -172,13 +172,15 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     func doneCommand() {
         self.view.endEditing(true)
 
+        let email = self.email.text!.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
+        
         if !_appServices.isServerReachable {
             _navigationManager.presentAlertNoConnection(context: self)
             return
         }
         
         SVProgressHUD.show()
-        _loginManager.doesEmailExist(email: email.text!) { (status) in
+        _loginManager.doesEmailExist(email: email) { (status) in
             
             if status == "true" || status == "dashboard" { //show login if user completed registration or is a dashboard user TODO: rework!!
                 self.openLogin()
@@ -186,7 +188,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
                 self.registerTempUser()
             } else if status == "temp" { //email is in db but not succesfully registered
                 self.hideLoader()
-                NavigationHelper.showRegistration(context: self, email: self.email.text!)
+                NavigationHelper.showRegistration(context: self, email: email)
             } else {
                 //strange response from server. internet connection err/ssl pin err
                 self.hideLoader()
@@ -219,9 +221,10 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     func registerTempUser() {
-        _loginManager.checkTLD(email: self.email.text!, completionHandler: { (status) in
+        let email = self.email.text!.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
+        _loginManager.checkTLD(email: email, completionHandler: { (status) in
             if status {
-                self.registerEmail(email: self.email.text!)
+                self.registerEmail(email: email)
             } else {
                 self.hideLoader()
                 DispatchQueue.main.async {
