@@ -32,8 +32,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var secondView: UIView!
     @IBOutlet var thirdView: UIView!
     @IBOutlet var collectionButton: UIButton!
+    
     var topAnchor: NSLayoutConstraint!
     var leadingAnchor: NSLayoutConstraint!
+    
     private var amountLimit: Int {
         get {
             return UserDefaults.standard.amountLimit
@@ -133,6 +135,49 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         thirdLine.isHidden = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: { () -> Void in
+            if let sv = self.navigationController?.view.superview {
+                let view = UIView()
+                sv.addSubview(view)
+                view.backgroundColor = UIColor(red: 0x01, green: 0x7a, blue: 0xff)
+                view.translatesAutoresizingMaskIntoConstraints = false
+                let topConstraint = view.topAnchor.constraint(equalTo: sv.topAnchor, constant: -110)
+                
+                let label = UILabel()
+                view.addSubview(label)
+                label.text = "Hallo! We willen je graag een nieuwe feature voorstellen! Heb je even?"
+                label.lineBreakMode = NSLineBreakMode.byWordWrapping
+                label.font = UIFont(name: label.font.fontName, size: 16.0)
+                label.textColor = UIColor.white
+                label.translatesAutoresizingMaskIntoConstraints = false
+                label.numberOfLines = 2
+                
+                let btn = UIButton()
+                view.addSubview(btn)
+                btn.setTitle("Lees meer", for: UIControlState.normal)
+                btn.titleLabel!.font = UIFont(name: btn.titleLabel!.font.fontName, size: 14.0)
+                btn.translatesAutoresizingMaskIntoConstraints = false
+                
+                NSLayoutConstraint.activate([
+                    view.widthAnchor.constraint(equalTo: sv.widthAnchor),
+                    view.heightAnchor.constraint(equalToConstant: 110),
+                    view.leftAnchor.constraint(equalTo: sv.leftAnchor),
+                    topConstraint,
+                    label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    label.topAnchor.constraint(equalTo: view.topAnchor, constant: 36),
+                    label.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40),
+                    btn.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    btn.topAnchor.constraint(equalTo: label.bottomAnchor)
+                ])
+                sv.layoutIfNeeded()
+                
+                UIView.animate(withDuration: 0.3, animations: {() -> Void in
+                    topConstraint.constant = 0
+                    sv.layoutIfNeeded()
+                })
+            }
+        })
     }
     
     @objc func checkBadges(notification:Notification) {
