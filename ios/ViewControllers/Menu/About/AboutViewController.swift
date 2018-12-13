@@ -104,7 +104,7 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         let device = "Device: " + UIDevice.current.modelName
         let os = "Operating system: " + UIDevice.current.systemName + " " + UIDevice.current.systemVersion
         let appLang = "App language: "  + Locale.preferredLanguages[0]
-        let email = "Email: " + UserDefaults.standard.userExt.email
+        let email = "Email: " + UserDefaults.standard.userExt!.email
         var message = textView.text.replacingOccurrences(of: "\n", with: br)
         let footer = email + br + appVersion + br + os + br + device + br + appLang
         
