@@ -32,7 +32,7 @@ class LoginManager {
     static let shared = LoginManager()
     
     private init() {
-        userClaim = UserDefaults.standard.isLoggedIn ? .give : .startedApp
+        userClaim = UserDefaults.standard.isLoggedIn && !(UserDefaults.standard.userExt?.guid ?? "").isEmpty ? .give : .startedApp
     }
     
     public var userClaim: UserClaims {
@@ -298,7 +298,7 @@ class LoginManager {
             if let langCode = Locale.current.languageCode {
                 localeQuerystring = "?locale=" + langCode
             }
-            try client.post(url: "/api/v2/users/" + UserDefaults.standard.userExt.guid + "/mandate" + localeQuerystring, data: [:], callback: { (response) in
+            try client.post(url: "/api/v2/users/" + UserDefaults.standard.userExt!.guid + "/mandate" + localeQuerystring, data: [:], callback: { (response) in
                 completionHandler(response)
             })
         } catch {
@@ -435,7 +435,7 @@ class LoginManager {
     
     func sendSupport(text: String, completionHandler: @escaping (Bool) -> Void) {
         self.log.info(message: "Sending a message to support")
-        let params = ["Guid" : UserDefaults.standard.userExt.guid, "Message" : text, "Subject" : "Feedback app"]
+        let params = ["Guid" : UserDefaults.standard.userExt!.guid, "Message" : text, "Subject" : "Feedback app"]
         do {
             try client.post(url: "/api/SendSupport", data: params) { (success) in
                 completionHandler((success != nil))

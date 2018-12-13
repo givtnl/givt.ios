@@ -68,6 +68,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
         if let passwordField = passwordField {
             password.text = passwordField
             password.isEnabled = false
+            password.textColor = UIColor.gray
         }
         
         self.regDetailVC = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationDetailViewController") as! RegistrationDetailViewController
