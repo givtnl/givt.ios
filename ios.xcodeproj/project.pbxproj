@@ -151,6 +151,7 @@
 		D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */; };
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
+		FB1E1ABF21C4075A00A656DA /* NewFeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E1ABE21C4075A00A656DA /* NewFeatureManager.swift */; };
 		FB38F1B22133E7500025F648 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38F1B12133E7500025F648 /* NavigationHelper.swift */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
 		FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6DE1F14CA200055185B /* Main.storyboard */; };
@@ -337,6 +338,7 @@
 		F2A335656287D463EE35D0BB /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		FB19533B1F56DDEC00172CD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		FB1E1ABE21C4075A00A656DA /* NewFeatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureManager.swift; sourceTree = "<group>"; };
 		FB38F1B12133E7500025F648 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3CE6D61F14CA200055185B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 				D77667ED1F39F12900649157 /* LoginManager.swift */,
 				D788E4771FA08DA700506DA5 /* NavigationManager.swift */,
 				D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */,
+				FB1E1ABE21C4075A00A656DA /* NewFeatureManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1032,6 +1035,7 @@
 				D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */,
 				D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */,
 				D77FC1BE1F86668A0031C49F /* Country.swift in Sources */,
+				FB1E1ABF21C4075A00A656DA /* NewFeatureManager.swift in Sources */,
 				D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */,
 				D7DBEDA31FBC798A00D78E2A /* UIDeviceExtensions.swift in Sources */,
 				D782E68F20064A680086907E /* SettingsViewController.swift in Sources */,
