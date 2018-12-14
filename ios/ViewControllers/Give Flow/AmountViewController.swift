@@ -136,29 +136,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: { () -> Void in
-            if let sv = self.navigationController?.view.superview {
-                if let featView = Bundle.main.loadNibNamed("NewFeaturePopDownView", owner: self, options: nil)?.first as! NewFeaturePopDownView? {
-                    featView.translatesAutoresizingMaskIntoConstraints = false
-                    sv.addSubview(featView)
-                    let topConstraint = featView.topAnchor.constraint(equalTo: sv.topAnchor, constant: -110)
-                    NSLayoutConstraint.activate([
-                        featView.label.topAnchor.constraint(equalTo: featView.topAnchor, constant: 8),
-                        featView.widthAnchor.constraint(equalToConstant: sv.frame.width-16),
-                        featView.leftAnchor.constraint(equalTo: sv.leftAnchor, constant: 8),
-                        topConstraint
-                    ])
-                    sv.layoutIfNeeded()
-                    featView.invalidateIntrinsicContentSize()
-                    sv.layoutIfNeeded()
-
-                    UIView.animate(withDuration: 0.3, animations: {() -> Void in
-                        topConstraint.constant = 38
-                        sv.layoutIfNeeded()
-                    })
-                }
-            }
-        })
+        NewFeatureManager.shared.checkUpdateState(context: self)
     }
     
     @objc func checkBadges(notification:Notification) {
