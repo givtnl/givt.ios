@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import AVFoundation
+import LGSideMenuController
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIActivityItemSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -183,22 +184,32 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
     }
     
+    private func hideMenuAnimated() {
+        if let menuCtrl = UIApplication.shared.delegate?.window??.rootViewController as? LGSideMenuController {
+            menuCtrl.hideLeftViewAnimated()
+        }
+    }
+    
     private func changeAmountPresets() {
         let vc = UIStoryboard(name: "AmountPresets", bundle: nil).instantiateInitialViewController()
         vc!.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
-            self.present(vc!, animated: true, completion:  nil)}
+            self.present(vc!, animated: true, completion:  nil)
+            self.hideMenuAnimated()
+        }
     }
     
     private func manageFingerprint() {
         let vc = UIStoryboard(name: "Fingerprint", bundle: nil).instantiateInitialViewController()
         vc!.transitioningDelegate = self.slideFromRightAnimation
+        hideMenuAnimated()
         navigationManager.pushWithLogin(vc!, context: self)
     }
     
     private func changePersonalInfo() {
         let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateInitialViewController()
         vc?.transitioningDelegate = self.slideFromRightAnimation
+        hideMenuAnimated()
         navigationManager.pushWithLogin(vc!, context: self)
     }
     
@@ -206,6 +217,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         let vc = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
         vc.typeOfPin = .set
         vc.transitioningDelegate = self.slideFromRightAnimation
+        hideMenuAnimated()
         navigationManager.pushWithLogin(vc, context: self)
     }
     
@@ -218,6 +230,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             })
         } else {
             NavigationManager.shared.pushWithLogin(vc, context: self)
+            hideMenuAnimated()
         }
 
     }
@@ -226,13 +239,14 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! BaseNavigationController
         vc.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
-            self.present(vc, animated: true, completion:  {
-            }
-        )}
+            self.present(vc, animated: true, completion: nil)
+            self.hideMenuAnimated()
+        }
     }
     
     private func share() {
         /* https://stackoverflow.com/questions/13907156/uiactivityviewcontroller-taking-long-time-to-present */
+        hideMenuAnimated()
         SVProgressHUD.show()
         logService.info(message: "App is being shared through the menu")
         let concurrentQueue = DispatchQueue(label: "openActivityIndicatorQueue", attributes: .concurrent)
@@ -251,6 +265,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     
     private func register() {
         if navigationManager.hasInternetConnection(context: self) {
+            hideMenuAnimated()
             navigationManager.finishRegistration(self)
         }
     }
@@ -275,6 +290,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
             vc.transitioningDelegate = self.slideFromRightAnimation
+            hideMenuAnimated()
             NavigationManager.shared.pushWithLogin(vc, context: self)
         }
     }
@@ -285,6 +301,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         vc.startPoint = .amountLimit
         vc.isRegistration = false
         vc.transitioningDelegate = self.slideFromRightAnimation
+        hideMenuAnimated()
         NavigationManager.shared.pushWithLogin(vc, context: self)
     }
 }
