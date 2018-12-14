@@ -11,6 +11,8 @@ import UIKit
 
 @IBDesignable
 class NewFeaturePopDownView : UIView {
+    @IBOutlet weak var label: UILabel!
+    
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -19,5 +21,9 @@ class NewFeaturePopDownView : UIView {
             layer.cornerRadius = newValue
             layer.masksToBounds = newValue > 0
         }
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: self.bounds.width, height: label.bounds.height + 16)
     }
 }
