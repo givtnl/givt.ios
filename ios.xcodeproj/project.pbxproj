@@ -159,6 +159,7 @@
 		FB8187AE21C298050084C23E /* NewFeaturePopDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8187AD21C298040084C23E /* NewFeaturePopDownView.xib */; };
 		FB8187B221C29C7C0084C23E /* NewFeaturePopDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */; };
 		FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A610A20A049B400696D20 /* BaseUser.swift */; };
+		FBA0894A21C7DE18001DD889 /* Features.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0894921C7DE18001DD889 /* Features.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -347,6 +348,7 @@
 		FB8187AD21C298040084C23E /* NewFeaturePopDownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewFeaturePopDownView.xib; path = "ios/Views/Custom Views/NewFeaturePopDownView.xib"; sourceTree = SOURCE_ROOT; };
 		FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturePopDownView.swift; sourceTree = "<group>"; };
 		FB8A610A20A049B400696D20 /* BaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUser.swift; sourceTree = "<group>"; };
+		FBA0894921C7DE18001DD889 /* Features.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Features.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,29 +376,22 @@
 		D72B707E1F44832D0022BD29 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D7DD79A520A19E2500047CA7 /* LocationService.swift */,
 				D7FB251C1F4D6D2F0011A14E /* AppServices.swift */,
-				D787AE2A1FCD91680004BDB1 /* LogService.swift */,
-				D787AE2E1FCD9EFF0004BDB1 /* Interfaces */,
-				D796043520C00607005B609B /* BeaconService.swift */,
 				D7F3A84D214A6925008B65AE /* BadgeService.swift */,
+				D796043520C00607005B609B /* BeaconService.swift */,
+				D787AE2E1FCD9EFF0004BDB1 /* Interfaces */,
+				D7DD79A520A19E2500047CA7 /* LocationService.swift */,
+				D787AE2A1FCD91680004BDB1 /* LogService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		D740E14E1F4C5328000531BA /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Protocols;
 			sourceTree = "<group>";
 		};
 		D75B2BCD1FCEADCF000B7968 /* APIClients */ = {
 			isa = PBXGroup;
 			children = (
-				D75B2BD01FCEADF4000B7968 /* Interfaces */,
 				D75B2BCE1FCEADE8000B7968 /* APIClient.swift */,
 				D73E976D1FD000CE00EFD8E1 /* AuthClient.swift */,
+				D75B2BD01FCEADF4000B7968 /* Interfaces */,
 			);
 			path = APIClients;
 			sourceTree = "<group>";
@@ -435,9 +430,9 @@
 			isa = PBXGroup;
 			children = (
 				D740E15B1F4C6328000531BA /* GivtManager.swift */,
+				D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */,
 				D77667ED1F39F12900649157 /* LoginManager.swift */,
 				D788E4771FA08DA700506DA5 /* NavigationManager.swift */,
-				D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */,
 				FB1E1ABE21C4075A00A656DA /* NewFeatureManager.swift */,
 			);
 			path = Managers;
@@ -482,22 +477,23 @@
 		D7B715521FD151CD00666262 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				D70491941FDA927C00CE5980 /* Welcome.storyboard */,
-				D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */,
 				D7DBED961FBC473700D78E2A /* AboutGivt.storyboard */,
-				D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */,
-				FB3CE6DE1F14CA200055185B /* Main.storyboard */,
-				D7F131651F75574D00E25A68 /* Registration.storyboard */,
-				D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */,
-				D7B7154F1FD0529D00666262 /* Personal.storyboard */,
-				D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */,
-				D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */,
-				D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */,
-				D7C8F3D2209A0B7300DBB397 /* Event.storyboard */,
-				D74C19E720F6270F00E116A0 /* ExternalSuggestion.storyboard */,
 				D7AE8BA521393AF900CB3A33 /* AmountPresets.storyboard */,
 				D7AE8B9821359A0200CB3A33 /* BACS.storyboard */,
+				D7C8F3D2209A0B7300DBB397 /* Event.storyboard */,
+				D74C19E720F6270F00E116A0 /* ExternalSuggestion.storyboard */,
+				D78D44AF1FC6FC0200325CAF /* FAQ.storyboard */,
+				FBA0894921C7DE18001DD889 /* Features.storyboard */,
 				D7F3A84421480161008B65AE /* Fingerprint.storyboard */,
+				D7A64D061FDFDC62005B51B2 /* ForgotPassword.storyboard */,
+				FB3CE6DE1F14CA200055185B /* Main.storyboard */,
+				D7B7154F1FD0529D00666262 /* Personal.storyboard */,
+				D7CCC0671FC427A9006A6A4F /* Pincode.storyboard */,
+				D7F131651F75574D00E25A68 /* Registration.storyboard */,
+				D7ADE2471FBC870000198F28 /* TerminateAccount.storyboard */,
+				D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */,
+				D70491941FDA927C00CE5980 /* Welcome.storyboard */,
+				D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -505,25 +501,25 @@
 		D7B715531FD151E800666262 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				D761E9931F166B8D002B849B /* CustomTableView.swift */,
-				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
-				D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */,
-				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
-				D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */,
 				D77511BC1F713B56004F91F6 /* AgendaNumber.swift */,
-				D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */,
-				D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */,
-				D78D44B31FC7039E00325CAF /* FAQView.swift */,
 				D72A89D81FE9164200C06EF6 /* AmountLimit.swift */,
-				D782089C2008ADB000AB6DC1 /* ManualGivingOrganisation.swift */,
-				D748F5F5206137E400B25BC2 /* TableSectionHeader.swift */,
-				D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */,
+				D761E9AF1F18AC90002B849B /* CustomButton.swift */,
+				D761E9931F166B8D002B849B /* CustomTableView.swift */,
+				D754DA321F3AF9E7001B7040 /* CustomUITextField.swift */,
+				D7DBEDA01FBC5D5900D78E2A /* CustomUITextView.swift */,
+				D74C19EB20F62B8A00E116A0 /* ExternalSuggestionView.swift */,
+				D78D44B31FC7039E00325CAF /* FAQView.swift */,
 				D748F5FB2061425400B25BC2 /* HistoryTableViewCell.swift */,
 				D7DD79A3209B463800047CA7 /* InsetLabel.swift */,
-				D7D9C31B20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift */,
-				D74C19EB20F62B8A00E116A0 /* ExternalSuggestionView.swift */,
-				FB8187AD21C298040084C23E /* NewFeaturePopDownView.xib */,
+				D782089C2008ADB000AB6DC1 /* ManualGivingOrganisation.swift */,
+				D770E5331FB097FA0079D253 /* ManualOrganisationView.swift */,
 				FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */,
+				FB8187AD21C298040084C23E /* NewFeaturePopDownView.xib */,
+				D7D9C31B20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift */,
+				D761E9A11F17B14D002B849B /* RoundedButton.swift */,
+				D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */,
+				D748F5F5206137E400B25BC2 /* TableSectionHeader.swift */,
+				D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -541,8 +537,8 @@
 		D7D6FA6C1F7BE416008A5604 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */,
 				FB38F1B12133E7500025F648 /* NavigationHelper.swift */,
+				D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -666,9 +662,9 @@
 		D7F746DA1FD94466005354A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D7F746D41FD94227005354A3 /* SplashScreen */,
 				D7B715531FD151E800666262 /* Custom Views */,
 				D7B715521FD151CD00666262 /* Pages */,
+				D7F746D41FD94227005354A3 /* SplashScreen */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -676,20 +672,20 @@
 		D7F746DC1FD9447C005354A3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D761E9621F161207002B849B /* Setting.swift */,
-				D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */,
-				D7E3CE931F7CFA34005807BE /* UserExt.swift */,
-				D721F19B1F7E3EF8000B9546 /* Mandate.swift */,
-				D77FC1BD1F86668A0031C49F /* Country.swift */,
-				D748F5FF2063D4A500B25BC2 /* Status.swift */,
-				D748F6012063D4BF00B25BC2 /* HistoryTransaction.swift */,
-				D748F6032063D50C00B25BC2 /* HistoryTableViewModel.swift */,
-				D7BC58D520776361008C9497 /* Context.swift */,
 				FB8A610A20A049B400696D20 /* BaseUser.swift */,
-				D7721B4A20EB67AD009771EE /* LMUserExt.swift */,
-				D71DA04D20F758DD0084381E /* ExternalIntegration.swift */,
 				A46C8AEF210889A400988D6D /* Beacon.swift */,
+				D7BC58D520776361008C9497 /* Context.swift */,
+				D77FC1BD1F86668A0031C49F /* Country.swift */,
+				D71DA04D20F758DD0084381E /* ExternalIntegration.swift */,
+				D748F6032063D50C00B25BC2 /* HistoryTableViewModel.swift */,
+				D748F6012063D4BF00B25BC2 /* HistoryTransaction.swift */,
+				D7721B4A20EB67AD009771EE /* LMUserExt.swift */,
+				D721F19B1F7E3EF8000B9546 /* Mandate.swift */,
 				D7AE8BA32136CA4F00CB3A33 /* PaymentTypes.swift */,
+				D7E3CE911F7CF0DA005807BE /* RegistrationUser.swift */,
+				D761E9621F161207002B849B /* Setting.swift */,
+				D748F5FF2063D4A500B25BC2 /* Status.swift */,
+				D7E3CE931F7CFA34005807BE /* UserExt.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -697,23 +693,24 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D7F3A8462148016C008B65AE /* Fingerprint */,
 				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
 				D7AE8B9A2136951400CB3A33 /* BACS */,
+				D761E99F1F167798002B849B /* BaseViewController.swift */,
+				D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */,
+				D721F1991F7E2D4B000B9546 /* CustomViewController.swift */,
 				D7DD79A0209B358800047CA7 /* Event */,
+				FBA0894821C7DD14001DD889 /* Features */,
+				D7F3A8462148016C008B65AE /* Fingerprint */,
+				D76A03411FBAFBBD00E338C5 /* First Use */,
 				D7F746D81FD943B8005354A3 /* Give Flow */,
 				D7F746D71FD94390005354A3 /* Login */,
-				D7F746D61FD9435C005354A3 /* Modals */,
-				D7DBED9F1FBC4AB000D78E2A /* Menu */,
-				D76A03411FBAFBBD00E338C5 /* First Use */,
 				D75F2CCD1FAC69B400F40827 /* Manual giving */,
-				D7F746D91FD943F6005354A3 /* Registration */,
-				D761E99F1F167798002B849B /* BaseViewController.swift */,
-				D721F1991F7E2D4B000B9546 /* CustomViewController.swift */,
-				D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */,
+				D7DBED9F1FBC4AB000D78E2A /* Menu */,
+				D7F746D61FD9435C005354A3 /* Modals */,
 				D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */,
+				D7F746D91FD943F6005354A3 /* Registration */,
 				D782E68E20064A680086907E /* SettingsViewController.swift */,
-				D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */,
+				D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -722,11 +719,11 @@
 			isa = PBXGroup;
 			children = (
 				D787BE78208DCA6A00E20873 /* celebration.gif */,
+				D75141A61F9E130C0016B71F /* givt_animation.gif */,
+				D75141A51F9E130C0016B71F /* givt_registration.gif */,
 				D7EAF10B1FB491AD00DFE5CC /* icon.png */,
 				D7EAF10C1FB491AD00DFE5CC /* icon@2x.png */,
 				D7EAF10D1FB491B000DFE5CC /* icon@3x.png */,
-				D75141A61F9E130C0016B71F /* givt_animation.gif */,
-				D75141A51F9E130C0016B71F /* givt_registration.gif */,
 			);
 			path = images;
 			sourceTree = "<group>";
@@ -734,19 +731,19 @@
 		D7F746E01FD944C4005354A3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				D761E9B91F18C5C6002B849B /* StringExtensions.swift */,
-				D761E9BE1F18CFE4002B849B /* UIColorExtensions.swift */,
-				D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */,
-				D754DA3A1F3B45D5001B7040 /* UIButtonExtensions.swift */,
-				D7335B2D1F45923F00B57AE0 /* UIImageExtensions.swift */,
-				D77511BA1F711231004F91F6 /* DateExtensions.swift */,
-				D7D6FA6A1F7BADA5008A5604 /* UITextFieldExtensions.swift */,
-				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
-				D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */,
-				D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */,
 				D782089E2008BE6000AB6DC1 /* ArrayExtensions.swift */,
 				D78208A02008BE7900AB6DC1 /* CollectionExtensions.swift */,
+				D77511BA1F711231004F91F6 /* DateExtensions.swift */,
 				D7F0D2A421639544004770F8 /* NotificationExtensions.swift */,
+				D761E9B91F18C5C6002B849B /* StringExtensions.swift */,
+				D754DA3A1F3B45D5001B7040 /* UIButtonExtensions.swift */,
+				D761E9BE1F18CFE4002B849B /* UIColorExtensions.swift */,
+				D7DBEDA21FBC798A00D78E2A /* UIDeviceExtensions.swift */,
+				D7335B2D1F45923F00B57AE0 /* UIImageExtensions.swift */,
+				D7DBED9D1FBC490E00D78E2A /* UINavigationControllerExtensions.swift */,
+				D7D6FA6A1F7BADA5008A5604 /* UITextFieldExtensions.swift */,
+				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
+				D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -783,29 +780,35 @@
 		FB3CE6D51F14CA200055185B /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				D7E8E2C2216E00FD003C39C8 /* GoogleService-Info.plist */,
-				D7F746B31FD83F9F005354A3 /* Transitions */,
 				D75B2BCD1FCEADCF000B7968 /* APIClients */,
-				D7D6FA6C1F7BE416008A5604 /* Helpers */,
-				D76021DE1F56B4DD00C24AB6 /* ios.entitlements */,
-				D740E14E1F4C5328000531BA /* Protocols */,
-				D72B707E1F44832D0022BD29 /* Services */,
-				D77667EC1F39F11300649157 /* Managers */,
-				D7F746E01FD944C4005354A3 /* Extensions */,
-				D761E9B21F18B450002B849B /* entypo.ttf */,
-				D761E9B41F18B602002B849B /* zocial-regular-webfont.ttf */,
-				D7F746DD1FD9449A005354A3 /* ViewControllers */,
-				D7F746DC1FD9447C005354A3 /* Models */,
-				D7F746DA1FD94466005354A3 /* Views */,
-				D7F746DE1FD944AE005354A3 /* images */,
+				D73CA1C41F39BA360059A296 /* AppConstants.swift */,
 				FB3CE6D61F14CA200055185B /* AppDelegate.swift */,
 				FB3CE6E11F14CA200055185B /* Assets.xcassets */,
+				D761E9B21F18B450002B849B /* entypo.ttf */,
+				D7F746E01FD944C4005354A3 /* Extensions */,
+				D7E8E2C2216E00FD003C39C8 /* GoogleService-Info.plist */,
+				D7D6FA6C1F7BE416008A5604 /* Helpers */,
+				D7F746DE1FD944AE005354A3 /* images */,
 				FB3CE6E61F14CA200055185B /* Info.plist */,
-				D761E9C41F20CFA6002B849B /* Localizable.strings */,
 				D7E708511FE7FD67002A7770 /* InfoPlist.strings */,
-				D73CA1C41F39BA360059A296 /* AppConstants.swift */,
+				D76021DE1F56B4DD00C24AB6 /* ios.entitlements */,
+				D761E9C41F20CFA6002B849B /* Localizable.strings */,
+				D77667EC1F39F11300649157 /* Managers */,
+				D7F746DC1FD9447C005354A3 /* Models */,
+				D72B707E1F44832D0022BD29 /* Services */,
+				D7F746B31FD83F9F005354A3 /* Transitions */,
+				D7F746DD1FD9449A005354A3 /* ViewControllers */,
+				D7F746DA1FD94466005354A3 /* Views */,
+				D761E9B41F18B602002B849B /* zocial-regular-webfont.ttf */,
 			);
 			path = ios;
+			sourceTree = "<group>";
+		};
+		FBA0894821C7DD14001DD889 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -900,6 +903,7 @@
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
 				D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */,
 				D7B715501FD0529D00666262 /* Personal.storyboard in Resources */,
+				FBA0894A21C7DE18001DD889 /* Features.storyboard in Resources */,
 				D74C19E820F6270F00E116A0 /* ExternalSuggestion.storyboard in Resources */,
 				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
 				D7AF42FF1FEA61610027EEC1 /* UpdatedTermsPage.storyboard in Resources */,
