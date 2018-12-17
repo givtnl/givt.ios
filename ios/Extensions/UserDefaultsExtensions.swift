@@ -38,6 +38,7 @@ extension UserDefaults {
         case fingerprintSet
         case badges
         case yearsWithGivts
+        case lastFeatureShown
     }
     
     enum Showcase: String {
@@ -161,6 +162,7 @@ extension UserDefaults {
         }
     }
     
+    @available(*, deprecated, message: "Do not use. Use showCasesByUserId instead.")
     var showcases: [String] {
         get {
             if let stringArray = stringArray(forKey: UserDefaultsKeys.showcases.rawValue) {
@@ -291,7 +293,6 @@ extension UserDefaults {
         }
     }
     
-    
     var isLoggedIn: Bool {
         get {
             return bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
@@ -401,6 +402,16 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.viewedCoachMarks.rawValue)
+            synchronize()
+        }
+    }
+
+    var lastFeatureShown: Int {
+        get {
+            return integer(forKey: UserDefaultsKeys.lastFeatureShown.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.lastFeatureShown.rawValue)
             synchronize()
         }
     }
