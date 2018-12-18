@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Features First View Controller-->
         <scene sceneID="DeC-4q-wxJ">
             <objects>
-                <viewController id="wxt-7i-4uY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="features" id="wxt-7i-4uY" customClass="FeaturesFirstViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="595-2M-sXG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTq-T7-frQ" userLabel="carouselview">
                                 <rect key="frame" x="0.0" y="80" width="414" height="816"/>
                                 <connections>
-                                    <segue destination="vyK-ac-tsL" kind="embed" id="D38-jq-3QW"/>
+                                    <segue destination="vyK-ac-tsL" kind="embed" identifier="EmbedFeaturesCarousel" id="D38-jq-3QW"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsx-Jb-cYF" userLabel="btnClose">
@@ -46,9 +46,6 @@
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,7 +77,7 @@
         <!--Feature Carousel View Controller-->
         <scene sceneID="hNr-ws-a56">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="vyK-ac-tsL" customClass="FeatureCarouselViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="vyK-ac-tsL" customClass="FeatureCarouselViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cpg-qL-iOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="51" y="26"/>
@@ -154,9 +151,10 @@
                     </view>
                     <size key="freeformSize" width="414" height="816"/>
                     <connections>
-                        <outlet property="image" destination="apk-rn-rRw" id="Mx6-Ot-A0x"/>
-                        <outlet property="subText" destination="Qii-M5-7r5" id="hKy-1M-m2E"/>
-                        <outlet property="title" destination="PnB-eZ-tGI" id="b1F-c6-17o"/>
+                        <outlet property="colorView" destination="zCU-y0-gTS" id="02B-YO-2Ss"/>
+                        <outlet property="imgIllustration" destination="apk-rn-rRw" id="mET-Ip-NVj"/>
+                        <outlet property="lblText" destination="Qii-M5-7r5" id="Spv-46-ukV"/>
+                        <outlet property="lblTitle" destination="PnB-eZ-tGI" id="rrz-sV-Zlr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fIu-Cv-yz4" userLabel="First Responder" sceneMemberID="firstResponder"/>

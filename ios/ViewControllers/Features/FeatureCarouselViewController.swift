@@ -10,24 +10,27 @@ import Foundation
 import UIKit
 
 class FeatureCarouselViewController: BaseCarouselViewController {
-    func createPage(title: String, subText: String, image: UIImage) -> FeatureViewController{
-        let storyboard = UIStoryboard.init(name: "Features", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "feature") as! FeatureViewController
-        vc.titleText.text = title
-        vc.subText.text = subText
-        vc.image.image = image
-        return vc
-    }
+    var contentPages: [FeaturePageContent]? = nil
     
     override func setupViewControllers() {
-        for feature in FeatureManager.shared.features {
-            
+        if let pages = contentPages {
+            viewControllerList = [UIViewController]()
+            let storyboard = UIStoryboard.init(name: "Features", bundle: nil)
+            for page in pages{
+                let vc = storyboard.instantiateViewController(withIdentifier: "feature") as! FeatureViewController
+                vc.content = page
+                viewControllerList.append(vc)
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-        pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -104)
+        pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 0.831372549, green: 0.8352941176, blue: 0.8666666667, alpha: 1)
+        pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        NSLayoutConstraint.activate([
+            pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -104)
+        ])
     }
 }
