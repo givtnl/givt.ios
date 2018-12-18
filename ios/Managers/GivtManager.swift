@@ -42,7 +42,7 @@ struct OrgBeacon: Codable {
 }
 
 struct OrgBeaconLocation: Codable {
-    let Name: String
+    let Name: String?
     let Latitude: Double
     let Longitude: Double
     let Radius: Int
