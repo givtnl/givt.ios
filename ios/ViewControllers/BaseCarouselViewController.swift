@@ -17,8 +17,6 @@ class BaseCarouselViewController: UIPageViewController, UIPageViewControllerData
         pc.translatesAutoresizingMaskIntoConstraints = false
         pc.currentPage = 0
         pc.numberOfPages = 0
-        pc.currentPageIndicatorTintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        pc.pageIndicatorTintColor = #colorLiteral(red: 0.831372549, green: 0.8352941176, blue: 0.8666666667, alpha: 1)
         return pc
     }()
     

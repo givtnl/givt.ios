@@ -37,9 +37,9 @@ class CarouselViewController: BaseCarouselViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.831372549, green: 0.8352941176, blue: 0.8666666667, alpha: 1)
         pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        
-        pageControl.numberOfPages = presentationCount(for: self)
     }
 }

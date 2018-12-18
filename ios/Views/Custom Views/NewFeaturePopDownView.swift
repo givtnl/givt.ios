@@ -11,8 +11,9 @@ import UIKit
 
 @IBDesignable
 class NewFeaturePopDownView : UIView {
+    var context: UIViewController!
     @IBOutlet weak var label: UILabel!
-    
+    @IBOutlet weak var tapGesture: UITapGestureRecognizer!
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
