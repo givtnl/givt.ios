@@ -468,7 +468,7 @@ final class GivtManager: NSObject {
     
     func sendGivtOverview(year: Int, callback: @escaping (Bool) -> Void) {
         var date = Date().getYear()-1
-        if(year != nil && year > 2015){
+        if(year > 2015){
             date = year
         }
         client.get(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/givts/mail-report?year=\(date)", data: [:]) { (response) in
