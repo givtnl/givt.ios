@@ -19,4 +19,11 @@ class FeaturesFirstViewController: UIViewController {
             }
         }
     }
+
+    @IBAction func btnCloseTapped(_ sender: Any) {
+        DispatchQueue.main.async {
+            FeatureManager.shared.dismissNotification()
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
 }

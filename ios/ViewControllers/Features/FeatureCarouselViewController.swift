@@ -30,7 +30,7 @@ class FeatureCarouselViewController: BaseCarouselViewController {
         pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         NSLayoutConstraint.activate([
             pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -104)
+            pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -74)
         ])
     }
 }

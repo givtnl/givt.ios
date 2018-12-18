@@ -44,6 +44,9 @@ class Feature {
 class FeatureManager {
     static let shared = FeatureManager()
 
+    var featureViewConstraint: NSLayoutConstraint? = nil
+    var currentContext: UIViewController? = nil
+    
     let features: Dictionary<Int, Feature> = [
         1: Feature( id: 1,
                     notification: "Hi! Want to know more about location giving?",
@@ -78,6 +81,7 @@ class FeatureManager {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: { () -> Void in
                 if let sv = context.navigationController?.view.superview {
                     if let featView = Bundle.main.loadNibNamed("NewFeaturePopDownView", owner: context, options: nil)?.first as! NewFeaturePopDownView? {
+                        self.currentContext = context
                         featView.translatesAutoresizingMaskIntoConstraints = false
                         featView.context = context
                         sv.addSubview(featView)
@@ -103,16 +107,28 @@ class FeatureManager {
                             sv.layoutIfNeeded()
                         })
                         
+                        self.featureViewConstraint = topConstraint
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {() -> Void in
-                            UIView.animate(withDuration: 0.6, animations: {() -> Void in
-                                topConstraint.constant = -110
-                                sv.layoutIfNeeded()
-                                //UserDefaults.standard.lastFeatureShown = self.highestFeature
-                            })
+                            self.dismissNotification()
                         })
                     }
                 }
             })
+        }
+    }
+    
+    func dismissNotification() {
+        if let topConstraint = self.featureViewConstraint {
+            if let sv = currentContext!.navigationController?.view.superview {
+                UIView.animate(withDuration: 0.6, animations: {() -> Void in
+                    topConstraint.constant = -110
+                    sv.layoutIfNeeded()
+                    //UserDefaults.standard.lastFeatureShown = self.highestFeature
+                })
+            }
+            self.featureViewConstraint = nil
+            self.currentContext = nil
         }
     }
     
