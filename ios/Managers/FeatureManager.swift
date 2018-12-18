@@ -29,8 +29,8 @@ class Feature {
     }
 }
 
-class NewFeatureManager {
-    static let shared = NewFeatureManager()
+class FeatureManager {
+    static let shared = FeatureManager()
 
     let features: Dictionary<Int, Feature> = [
         1: Feature(id: 1, notification: "This is feature notification", image: "image.png", color: UIColor.red, title: "Title", subText: "This is the text with explanation about the feature", mustSee: true)

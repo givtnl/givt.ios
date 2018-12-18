@@ -54,7 +54,7 @@
 		D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */; };
 		D761E9631F161207002B849B /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9621F161207002B849B /* Setting.swift */; };
 		D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9931F166B8D002B849B /* CustomTableView.swift */; };
-		D761E9A01F167798002B849B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E99F1F167798002B849B /* BaseViewController.swift */; };
+		D761E9A01F167798002B849B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E99F1F167798002B849B /* FirstViewController.swift */; };
 		D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9A11F17B14D002B849B /* RoundedButton.swift */; };
 		D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D761E9AF1F18AC90002B849B /* CustomButton.swift */; };
 		D761E9B31F18B55C002B849B /* entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D761E9B21F18B450002B849B /* entypo.ttf */; };
@@ -151,7 +151,7 @@
 		D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */; };
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
-		FB1E1ABF21C4075A00A656DA /* NewFeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E1ABE21C4075A00A656DA /* NewFeatureManager.swift */; };
+		FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */; };
 		FB38F1B22133E7500025F648 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38F1B12133E7500025F648 /* NavigationHelper.swift */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
 		FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6DE1F14CA200055185B /* Main.storyboard */; };
@@ -160,6 +160,9 @@
 		FB8187B221C29C7C0084C23E /* NewFeaturePopDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */; };
 		FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A610A20A049B400696D20 /* BaseUser.swift */; };
 		FBA0894A21C7DE18001DD889 /* Features.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBA0894921C7DE18001DD889 /* Features.storyboard */; };
+		FBA0894C21C7F97F001DD889 /* FeatureCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0894B21C7F97F001DD889 /* FeatureCarouselViewController.swift */; };
+		FBA0894E21C7FC27001DD889 /* BaseCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0894D21C7FC27001DD889 /* BaseCarouselViewController.swift */; };
+		FBA0895021C7FEE4001DD889 /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0894F21C7FEE4001DD889 /* FeatureViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -236,7 +239,7 @@
 		D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItemViewCells.swift; sourceTree = "<group>"; };
 		D761E9621F161207002B849B /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		D761E9931F166B8D002B849B /* CustomTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
-		D761E99F1F167798002B849B /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D761E99F1F167798002B849B /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		D761E9A11F17B14D002B849B /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		D761E9AF1F18AC90002B849B /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D761E9B21F18B450002B849B /* entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = entypo.ttf; sourceTree = "<group>"; };
@@ -339,7 +342,7 @@
 		F2A335656287D463EE35D0BB /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		FB19533B1F56DDEC00172CD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		FB1E1ABE21C4075A00A656DA /* NewFeatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeatureManager.swift; sourceTree = "<group>"; };
+		FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureManager.swift; sourceTree = "<group>"; };
 		FB38F1B12133E7500025F648 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3CE6D61F14CA200055185B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -349,6 +352,9 @@
 		FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturePopDownView.swift; sourceTree = "<group>"; };
 		FB8A610A20A049B400696D20 /* BaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUser.swift; sourceTree = "<group>"; };
 		FBA0894921C7DE18001DD889 /* Features.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Features.storyboard; sourceTree = "<group>"; };
+		FBA0894B21C7F97F001DD889 /* FeatureCarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureCarouselViewController.swift; sourceTree = "<group>"; };
+		FBA0894D21C7FC27001DD889 /* BaseCarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCarouselViewController.swift; sourceTree = "<group>"; };
+		FBA0894F21C7FEE4001DD889 /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -433,7 +439,7 @@
 				D7BB5DA71FD59B4700D12E62 /* InfraManager.swift */,
 				D77667ED1F39F12900649157 /* LoginManager.swift */,
 				D788E4771FA08DA700506DA5 /* NavigationManager.swift */,
-				FB1E1ABE21C4075A00A656DA /* NewFeatureManager.swift */,
+				FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -635,11 +641,11 @@
 			isa = PBXGroup;
 			children = (
 				D761E9B61F18B89D002B849B /* AmountViewController.swift */,
-				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
-				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
 				D726298C1FFBD10C00743224 /* BaseScanViewController.swift */,
 				D7CAB10320875E9F004139CB /* CelebrateViewController.swift */,
 				D74C19E920F627DA00E116A0 /* ExternalSuggestionViewController.swift */,
+				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
+				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
 			);
 			path = "Give Flow";
 			sourceTree = "<group>";
@@ -695,13 +701,14 @@
 			children = (
 				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
 				D7AE8B9A2136951400CB3A33 /* BACS */,
-				D761E99F1F167798002B849B /* BaseViewController.swift */,
+				FBA0894D21C7FC27001DD889 /* BaseCarouselViewController.swift */,
 				D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */,
 				D721F1991F7E2D4B000B9546 /* CustomViewController.swift */,
 				D7DD79A0209B358800047CA7 /* Event */,
 				FBA0894821C7DD14001DD889 /* Features */,
 				D7F3A8462148016C008B65AE /* Fingerprint */,
 				D76A03411FBAFBBD00E338C5 /* First Use */,
+				D761E99F1F167798002B849B /* FirstViewController.swift */,
 				D7F746D81FD943B8005354A3 /* Give Flow */,
 				D7F746D71FD94390005354A3 /* Login */,
 				D75F2CCD1FAC69B400F40827 /* Manual giving */,
@@ -807,6 +814,8 @@
 		FBA0894821C7DD14001DD889 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				FBA0894B21C7F97F001DD889 /* FeatureCarouselViewController.swift */,
+				FBA0894F21C7FEE4001DD889 /* FeatureViewController.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1022,7 +1031,7 @@
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
 				D7DD799F209B054500047CA7 /* EventViewController.swift in Sources */,
-				D761E9A01F167798002B849B /* BaseViewController.swift in Sources */,
+				D761E9A01F167798002B849B /* FirstViewController.swift in Sources */,
 				D7721B4B20EB67AD009771EE /* LMUserExt.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
@@ -1039,22 +1048,25 @@
 				D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */,
 				D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */,
 				D77FC1BE1F86668A0031C49F /* Country.swift in Sources */,
-				FB1E1ABF21C4075A00A656DA /* NewFeatureManager.swift in Sources */,
+				FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */,
 				D73CA1C31F38B4C30059A296 /* LoginViewController.swift in Sources */,
 				D7DBEDA31FBC798A00D78E2A /* UIDeviceExtensions.swift in Sources */,
 				D782E68F20064A680086907E /* SettingsViewController.swift in Sources */,
 				D7D9C31A20D9453F000D93C5 /* ChangeSettingViewController.swift in Sources */,
 				D740E15C1F4C6328000531BA /* GivtManager.swift in Sources */,
 				FB38F1B22133E7500025F648 /* NavigationHelper.swift in Sources */,
+				FBA0894C21C7F97F001DD889 /* FeatureCarouselViewController.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
 				D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */,
 				D782089F2008BE6000AB6DC1 /* ArrayExtensions.swift in Sources */,
+				FBA0895021C7FEE4001DD889 /* FeatureViewController.swift in Sources */,
 				D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
 				D748F6002063D4A500B25BC2 /* Status.swift in Sources */,
 				D7DD79A620A19E2500047CA7 /* LocationService.swift in Sources */,
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
+				FBA0894E21C7FC27001DD889 /* BaseCarouselViewController.swift in Sources */,
 				D7AF43011FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift in Sources */,
 				D787AE2B1FCD91680004BDB1 /* LogService.swift in Sources */,
 				FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */,
