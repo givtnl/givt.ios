@@ -8,19 +8,7 @@
 
 import UIKit
 
-class CarouselViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-
-    var viewControllerList: [UIViewController]!
-    
-    var pageControl: UIPageControl = {
-        let pc = UIPageControl()
-        pc.translatesAutoresizingMaskIntoConstraints = false
-        pc.currentPage = 0
-        pc.numberOfPages = 0
-        pc.currentPageIndicatorTintColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        pc.pageIndicatorTintColor = #colorLiteral(red: 0.831372549, green: 0.8352941176, blue: 0.8666666667, alpha: 1)
-        return pc
-    }()
+class CarouselViewController: BaseCarouselViewController {
     
     func createPage(title: String, subtitle: String, image: UIImage) -> TemplateViewController {
         
@@ -32,7 +20,7 @@ class CarouselViewController: UIPageViewController, UIPageViewControllerDataSour
         return vc
     }
     
-    func setupViewControllers() {
+    override func setupViewControllers() {
         let welcomeGivy: UIImage
         if let code = Locale.current.languageCode, code == "nl" {
             welcomeGivy = #imageLiteral(resourceName: "givy_welkom")
@@ -49,70 +37,9 @@ class CarouselViewController: UIPageViewController, UIPageViewControllerDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dataSource = self
-        self.delegate = self
-        // Do any additional setup after loading the view.
-        
-        setupViewControllers()
-        
-        if let firstVC = viewControllerList.first {
-            self.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
-        }
-        
-        self.view.addSubview(pageControl)
         pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
         pageControl.numberOfPages = presentationCount(for: self)
     }
-
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return viewControllerList.count
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if completed {
-            if let vcs = pageViewController.viewControllers  {
-                if let idx = viewControllerList.index(of: vcs[0]) {
-                    pageControl.currentPage = idx
-                }
-                
-            }
-        }
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
-        guard let vcIndex = viewControllerList.index(of: viewController) else {
-            return nil
-        }
-        
-        let prevIndex = vcIndex - 1
-        
-        guard prevIndex >= 0 else {
-            return nil
-        }
-        
-        guard viewControllerList.count > prevIndex else {
-            return nil
-        }
-        
-        return viewControllerList[prevIndex]
-    }
-    
-    
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let vcIndex = viewControllerList.index(of: viewController) else { return nil }
-        
-        let nextIndex = vcIndex + 1
-        
-        guard viewControllerList.count != nextIndex else {return nil}
-        
-        guard viewControllerList.count > nextIndex else {return nil}
-        
-        return viewControllerList[nextIndex]
-        
-    }
-
 }

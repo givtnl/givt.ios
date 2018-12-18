@@ -10,7 +10,7 @@ import UIKit
 import LGSideMenuController
 
 
-class BaseViewController: LGSideMenuController, LGSideMenuDelegate {
+class FirstViewController: LGSideMenuController, LGSideMenuDelegate {
     
     func willShowLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
         UIApplication.shared.statusBarStyle = .default

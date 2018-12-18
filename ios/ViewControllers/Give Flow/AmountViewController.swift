@@ -136,7 +136,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
         
-        NewFeatureManager.shared.checkUpdateState(context: self)
+        FeatureManager.shared.checkUpdateState(context: self)
     }
     
     @objc func checkBadges(notification:Notification) {
