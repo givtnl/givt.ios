@@ -25,6 +25,11 @@ class NewFeaturePopDownView : UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: self.bounds.width, height: label.bounds.height + 16)
+        if label.bounds.height + 16 >= 60 {
+            return CGSize(width: self.bounds.width, height: label.bounds.height + 16)
+        }
+        else {
+            return CGSize(width: self.bounds.width, height: 60)
+        }
     }
 }
