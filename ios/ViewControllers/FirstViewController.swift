@@ -14,9 +14,9 @@ class FirstViewController: LGSideMenuController, LGSideMenuDelegate {
     
     func willShowLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {
         UIApplication.shared.statusBarStyle = .default
-        if let vc = UIApplication.shared.keyWindow?.rootViewController?.childViewControllers.first as? SettingsViewController {
-            vc.loadSettings()
-        }
+//        if let vc = UIApplication.shared.keyWindow?.rootViewController?.childViewControllers.first as? SettingsViewController {
+//            vc.loadItems()()
+//        }
     }
     
     func willHideLeftView(_ leftView: UIView, sideMenuController: LGSideMenuController) {

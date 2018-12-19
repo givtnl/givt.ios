@@ -42,7 +42,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="L2n-x1-M0n"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                 <state key="normal" title="Skip">
                                     <color key="titleColor" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -58,11 +58,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ha5-qH-Vta" userLabel="btnBack">
+                                <rect key="frame" x="20" y="30" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="jIp-MX-i6K"/>
+                                    <constraint firstAttribute="height" constant="50" id="nhF-Rj-okm"/>
+                                </constraints>
+                                <state key="normal" image="backbtn"/>
+                                <connections>
+                                    <action selector="btnCloseTapped:" destination="wxt-7i-4uY" eventType="touchUpInside" id="bdd-wL-5FY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="kTq-T7-frQ" firstAttribute="top" secondItem="Tsx-Jb-cYF" secondAttribute="bottom" id="5mZ-ch-9M3"/>
+                            <constraint firstItem="Ha5-qH-Vta" firstAttribute="top" secondItem="595-2M-sXG" secondAttribute="topMargin" constant="30" id="COt-Ew-jJV"/>
                             <constraint firstItem="Tsx-Jb-cYF" firstAttribute="top" secondItem="595-2M-sXG" secondAttribute="top" constant="30" id="DAh-wd-Cab"/>
                             <constraint firstAttribute="trailing" secondItem="kTq-T7-frQ" secondAttribute="trailing" id="EwY-z8-lUS"/>
                             <constraint firstAttribute="trailing" secondItem="Tsx-Jb-cYF" secondAttribute="trailing" constant="20" id="H4N-4G-F8z"/>
@@ -71,10 +83,16 @@
                             <constraint firstAttribute="trailing" secondItem="Tsx-Jb-cYF" secondAttribute="trailing" constant="20" id="QN7-F7-SL7"/>
                             <constraint firstItem="qDc-13-xR5" firstAttribute="bottom" secondItem="oqF-u7-6Bw" secondAttribute="bottom" constant="-20" id="hgO-8w-amw"/>
                             <constraint firstItem="qDc-13-xR5" firstAttribute="leading" secondItem="595-2M-sXG" secondAttribute="leading" constant="20" id="jjt-Rl-86e"/>
+                            <constraint firstItem="Ha5-qH-Vta" firstAttribute="leading" secondItem="oqF-u7-6Bw" secondAttribute="leading" constant="20" id="mNP-Lm-9ff"/>
                             <constraint firstItem="kTq-T7-frQ" firstAttribute="leading" secondItem="595-2M-sXG" secondAttribute="leading" id="n8F-3m-bIW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oqF-u7-6Bw"/>
                     </view>
+                    <connections>
+                        <outlet property="btnBack" destination="Ha5-qH-Vta" id="Cph-34-irE"/>
+                        <outlet property="btnClose" destination="Tsx-Jb-cYF" id="Smx-VH-UN0"/>
+                        <outlet property="btnSkip" destination="qDc-13-xR5" id="cVq-4u-1wr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZ9-a7-HwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -112,15 +130,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCU-y0-gTS" userLabel="coloredView">
                                 <rect key="frame" x="0.0" y="373" width="414" height="443"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnB-eZ-tGI">
-                                        <rect key="frame" x="186" y="40" width="42" height="24"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is the text with explanation about the feature" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qii-M5-7r5">
+                                        <rect key="frame" x="20" y="82.333333333333371" width="374" height="54.666666666666657"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the text with explanation about the feature" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qii-M5-7r5">
-                                        <rect key="frame" x="20" y="84" width="374" height="40.666666666666657"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnB-eZ-tGI">
+                                        <rect key="frame" x="183" y="40" width="48" height="23"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -146,6 +164,7 @@
                             <constraint firstItem="zUa-aF-6bb" firstAttribute="top" secondItem="Qrf-cU-sVK" secondAttribute="top" id="qTl-DT-r0g"/>
                             <constraint firstAttribute="trailing" secondItem="zCU-y0-gTS" secondAttribute="trailing" id="yee-sr-quO"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="SLq-VT-slz"/>
                     </view>
                     <size key="freeformSize" width="414" height="816"/>
                     <connections>
@@ -161,6 +180,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backbtn" width="15" height="24"/>
         <image name="closepurple" width="23" height="24"/>
         <image name="givy_welkom" width="290" height="290"/>
     </resources>

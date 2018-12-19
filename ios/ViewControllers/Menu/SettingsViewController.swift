@@ -10,110 +10,38 @@ import UIKit
 import SVProgressHUD
 import AVFoundation
 
-class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIActivityItemSource {
-    @IBOutlet weak var navItem: UINavigationItem!
-    @IBOutlet var settingsTable: UITableView!
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items[section].count
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.items.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let setting = self.items[indexPath.section][indexPath.row]
-        
-        var cell: SettingsItemTableViewCell? = nil
-        if setting.showArrow {
-            if setting.showBadge {
-                cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemBadgeAndArrow", for: indexPath) as? SettingsItemBadgeAndArrow
-            } else {
-                cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemArrow", for: indexPath) as? SettingsItemArrow
-            }
-        } else {
-            if setting.isHighlighted {
-                cell = tableView.dequeueReusableCell(withIdentifier: "HighlightedItem", for: indexPath) as? HighlightedItem
-            } else {
-                cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemTableViewCell", for: indexPath) as? SettingsItemTableViewCell //normal cell
-            }
-            
-        }
-    
-        cell!.settingLabel.text = setting.name
-        cell!.settingImageView.image = setting.image
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = self.items[indexPath.section]
-        let cell = section[indexPath.row]
-        cell.callback()
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        let titleImg = UIImageView(image: UIImage(named: "givt20h"))
-        titleImg.translatesAutoresizingMaskIntoConstraints = false
-        navItem.titleView = titleImg
-        
-        /* some how we're not able to set the table first cel right below the navigation bar
-         * there is a hidden table header somewhere.
-         * I haven't found where to change this so, we change the contentinset to -30 */
-        settingsTable.tableHeaderView = nil
-        settingsTable.contentInset = UIEdgeInsetsMake(-30, 0, 0, 0)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        settingsTable.dataSource = self
-        settingsTable.delegate = self
-        SVProgressHUD.setDefaultMaskType(.black)
-        SVProgressHUD.setDefaultAnimationType(.native)
-        SVProgressHUD.setBackgroundColor(.white)
-        
-
-        NotificationCenter.default.addObserver(self, selector: #selector(badgeDidChange), name: .GivtBadgeNumberDidChange, object: nil)
-    }
-    
-    @objc func badgeDidChange(notification:Notification) {
-        loadSettings()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+class SettingsViewController: BaseMenuViewController {
     var logService: LogService = LogService.shared
     private let slideFromRightAnimation = PresentFromRight()
     
-    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        return ""
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType?) -> Any? {
-        return ""
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivityType?) -> String {
-        return NSLocalizedString("GivtGewoonBlijvenGeven", comment: "")
-    }
-    
     private var navigationManager = NavigationManager.shared
+
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
     }
     
-    var items = [[Setting]]()
-    
     override func viewWillAppear(_ animated: Bool) {
+        navItem.leftBarButtonItem = nil
         super.viewWillAppear(animated)
-        loadSettings()
     }
     
-    func loadSettings(){
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(badgeDidChange), name: .GivtBadgeNumberDidChange, object: nil)
+    }
+    
+    @objc func badgeDidChange(notification:Notification) {
+        loadItems()
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
+    }
+    
+    override func loadItems(){
         items = []        
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
@@ -132,7 +60,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items.append([])
             items.append([])
             items.append([])
-            
 
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[0].append(givts)
@@ -175,11 +102,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                     [aboutGivt, shareGivt],
             ]
         }
-        
-        DispatchQueue.main.async {
-            self.settingsTable.reloadData()
-        }
-        
     }
     
     private var device: AVCaptureDevice?
@@ -294,6 +216,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     private func appInfo() {
-        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "featureMenu") as! FeatureMenuViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -27,13 +27,15 @@ class FeaturePageContent {
 
 class Feature {
     let id: Int
+    let title: String
     let notification: String
     let mustSee: Bool
     let shouldShow: ()->Bool
     let pages: [FeaturePageContent]
     
-    init(id: Int, notification: String, mustSee: Bool, shouldShow: @escaping ()->Bool = { ()->Bool in return true }, pages: [FeaturePageContent]) {
+    init(id: Int, title: String, notification: String, mustSee: Bool, shouldShow: @escaping ()->Bool = { ()->Bool in return true }, pages: [FeaturePageContent]) {
         self.id = id
+        self.title = title
         self.notification = notification
         self.mustSee = mustSee
         self.shouldShow = shouldShow
@@ -49,6 +51,7 @@ class FeatureManager {
     
     let features: Dictionary<Int, Feature> = [
         1: Feature( id: 1,
+                    title: "Location giving",
                     notification: "Hi! Want to know more about location giving?",
                     mustSee: true,
                     pages: [
@@ -133,13 +136,19 @@ class FeatureManager {
     }
     
     @objc func notificationTapped(_ recognizer: UITapGestureRecognizer) {
-        if let vc = UIStoryboard(name: "Features", bundle: nil).instantiateInitialViewController() as? FeaturesFirstViewController{
-            if let view = recognizer.view {
-                if let popDownview = view as? NewFeaturePopDownView {
-                    vc.featurePages = self.features[1]?.pages
-                    popDownview.context?.present(vc, animated: true, completion: nil)
-                }
+        if let view = recognizer.view {
+            if let popDownview = view as? NewFeaturePopDownView, let vc = getViewControllerForFeature(feature: 1) {
+                vc.btnBackVisible = false
+                popDownview.context?.present(vc, animated: true, completion: nil)
             }
         }
+    }
+    
+    func getViewControllerForFeature(feature: Int) -> FeaturesFirstViewController? {
+        if let vc = UIStoryboard(name: "Features", bundle: nil).instantiateInitialViewController() as? FeaturesFirstViewController{
+            vc.featurePages = features[feature]?.pages
+            return vc
+        }
+        return nil
     }
 }
