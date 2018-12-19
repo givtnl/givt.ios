@@ -11,6 +11,9 @@ import SVProgressHUD
 import AVFoundation
 
 class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIActivityItemSource {
+    @IBOutlet weak var navItem: UINavigationItem!
+    @IBOutlet var settingsTable: UITableView!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items[section].count
     }
@@ -50,7 +53,17 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    
+    override func viewWillLayoutSubviews() {
+        let titleImg = UIImageView(image: UIImage(named: "givt20h"))
+        titleImg.translatesAutoresizingMaskIntoConstraints = false
+        navItem.titleView = titleImg
+        
+        /* some how we're not able to set the table first cel right below the navigation bar
+         * there is a hidden table header somewhere.
+         * I haven't found where to change this so, we change the contentinset to -30 */
+        settingsTable.tableHeaderView = nil
+        settingsTable.contentInset = UIEdgeInsetsMake(-30, 0, 0, 0)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,8 +72,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
+        
+
         NotificationCenter.default.addObserver(self, selector: #selector(badgeDidChange), name: .GivtBadgeNumberDidChange, object: nil)
-        // Do any additional setup after loading the view.
     }
     
     @objc func badgeDidChange(notification:Notification) {
@@ -71,10 +85,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBOutlet var settingsTable: UITableView!
-    
-    //new
     
     var logService: LogService = LogService.shared
     private let slideFromRightAnimation = PresentFromRight()
@@ -96,11 +106,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         return .default
     }
     
-    var firstSection = [Setting]()
-    var secondSection = [Setting]()
-    
-    let section = ["Normale instellingen", "Anders"]
-    
     var items = [[Setting]]()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,6 +117,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         items = []        
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
+        let appInfo = Setting(name: "The app from A to Z", image: UIImage(named: "info24")!, callback: { self.appInfo() })
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
         
@@ -143,7 +149,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items[0].append(changePersonalInfo)
             items[0].append(amountPresets)
             
-            
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             
             items[0].append(accessCode)
@@ -156,7 +161,7 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 items[0].append(fingerprint)
             }
             items[1] = [changeAccount, screwAccount]
-            items[2] = [aboutGivt, shareGivt]
+            items[2] = [appInfo, aboutGivt, shareGivt]
             
             if !LoginManager.shared.isFullyRegistered {
                 items.insert([finishRegistration], at: 0)
@@ -286,5 +291,9 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         vc.isRegistration = false
         vc.transitioningDelegate = self.slideFromRightAnimation
         NavigationManager.shared.pushWithLogin(vc, context: self)
+    }
+    
+    private func appInfo() {
+        
     }
 }
