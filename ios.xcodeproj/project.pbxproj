@@ -156,6 +156,7 @@
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
 		FB3CE6E01F14CA200055185B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6DE1F14CA200055185B /* Main.storyboard */; };
 		FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB3CE6E11F14CA200055185B /* Assets.xcassets */; };
+		FB45AC3721C9558200F12584 /* MenuNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45AC3621C9558200F12584 /* MenuNavigationViewController.swift */; };
 		FB8187AE21C298050084C23E /* NewFeaturePopDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8187AD21C298040084C23E /* NewFeaturePopDownView.xib */; };
 		FB8187B221C29C7C0084C23E /* NewFeaturePopDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */; };
 		FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A610A20A049B400696D20 /* BaseUser.swift */; };
@@ -349,6 +350,7 @@
 		FB3CE6D61F14CA200055185B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB3CE6E11F14CA200055185B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB3CE6E61F14CA200055185B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB45AC3621C9558200F12584 /* MenuNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationViewController.swift; sourceTree = "<group>"; };
 		FB8187AD21C298040084C23E /* NewFeaturePopDownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewFeaturePopDownView.xib; path = "ios/Views/Custom Views/NewFeaturePopDownView.xib"; sourceTree = SOURCE_ROOT; };
 		FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturePopDownView.swift; sourceTree = "<group>"; };
 		FB8A610A20A049B400696D20 /* BaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUser.swift; sourceTree = "<group>"; };
@@ -563,14 +565,16 @@
 		D7DBED9F1FBC4AB000D78E2A /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				D7F746D51FD94337005354A3 /* Amount Limit */,
-				D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */,
-				D71DA04F211AE5C90084381E /* ChangeAddressViewController.swift */,
-				D7CCC0691FC427E6006A6A4F /* Pincode */,
-				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
-				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
 				D7DBED981FBC476900D78E2A /* About */,
+				D7F746D51FD94337005354A3 /* Amount Limit */,
+				D71DA04F211AE5C90084381E /* ChangeAddressViewController.swift */,
+				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
+				FB45AC3621C9558200F12584 /* MenuNavigationViewController.swift */,
+				D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */,
+				D7CCC0691FC427E6006A6A4F /* Pincode */,
+				D782E68E20064A680086907E /* SettingsViewController.swift */,
 				D75AA195200CBFD5006E09BB /* TaxesViewController.swift */,
+				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -718,7 +722,6 @@
 				D7F746D61FD9435C005354A3 /* Modals */,
 				D7AF43021FEA8E680027EEC1 /* PlaceholderViewController.swift */,
 				D7F746D91FD943F6005354A3 /* Registration */,
-				D782E68E20064A680086907E /* SettingsViewController.swift */,
 				D7AF43001FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift */,
 			);
 			path = ViewControllers;
@@ -1047,6 +1050,7 @@
 				D7AE8B9C2136953E00CB3A33 /* BacsInfoViewController.swift in Sources */,
 				D7F3A84A214801EA008B65AE /* FingerprintViewController.swift in Sources */,
 				D7D6FA6B1F7BADA5008A5604 /* UITextFieldExtensions.swift in Sources */,
+				FB45AC3721C9558200F12584 /* MenuNavigationViewController.swift in Sources */,
 				D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */,
 				D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */,
 				D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */,
