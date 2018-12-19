@@ -10,7 +10,21 @@ import Foundation
 import UIKit
 
 class FeaturesFirstViewController: UIViewController {
+    @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var btnClose: UIButton!
+    @IBOutlet weak var btnSkip: CustomButton!
+    
+    var btnBackVisible = true
+    var btnCloseVisible = true
+    var btnSkipVisible = true
+    
     var featurePages: [FeaturePageContent]? = nil
+
+    override func viewWillAppear(_ animated: Bool) {
+        btnBack.isHidden = !btnBackVisible
+        btnClose.isHidden = !btnCloseVisible
+        btnSkip.isHidden = !btnSkipVisible
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EmbedFeaturesCarousel" {
