@@ -167,6 +167,7 @@
 		FBA0894E21C7FC27001DD889 /* BaseCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0894D21C7FC27001DD889 /* BaseCarouselViewController.swift */; };
 		FBA0895021C7FEE4001DD889 /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA0894F21C7FEE4001DD889 /* FeatureViewController.swift */; };
 		FBB85B0321C9230400A1A634 /* FeaturesFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB85B0221C9230400A1A634 /* FeaturesFirstViewController.swift */; };
+		FBBF72A621CA819600EBB085 /* FeaturesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBF72A521CA819600EBB085 /* FeaturesNavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -363,6 +364,7 @@
 		FBA0894D21C7FC27001DD889 /* BaseCarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCarouselViewController.swift; sourceTree = "<group>"; };
 		FBA0894F21C7FEE4001DD889 /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
 		FBB85B0221C9230400A1A634 /* FeaturesFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesFirstViewController.swift; sourceTree = "<group>"; };
+		FBBF72A521CA819600EBB085 /* FeaturesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesNavigationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -828,6 +830,7 @@
 				FBA0894B21C7F97F001DD889 /* FeatureCarouselViewController.swift */,
 				FBA0894F21C7FEE4001DD889 /* FeatureViewController.swift */,
 				FBB85B0221C9230400A1A634 /* FeaturesFirstViewController.swift */,
+				FBBF72A521CA819600EBB085 /* FeaturesNavigationController.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1102,6 +1105,7 @@
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColorExtensions.swift in Sources */,
+				FBBF72A621CA819600EBB085 /* FeaturesNavigationController.swift in Sources */,
 				D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
 				D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */,

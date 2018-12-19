@@ -25,6 +25,7 @@ class FeatureViewController: UIViewController {
         colorView.backgroundColor = content.color
         
         action = content.action
+        super.viewWillAppear(animated)
     }
     
     override func viewDidLoad() {

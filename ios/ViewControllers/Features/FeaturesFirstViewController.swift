@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 
 class FeaturesFirstViewController: UIViewController {
-    @IBOutlet weak var btnBack: UIButton!
-    @IBOutlet weak var btnClose: UIButton!
+    @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var btnSkip: CustomButton!
     
     var btnBackVisible = true
@@ -21,9 +20,10 @@ class FeaturesFirstViewController: UIViewController {
     var featurePages: [FeaturePageContent]? = nil
 
     override func viewWillAppear(_ animated: Bool) {
-        btnBack.isHidden = !btnBackVisible
-        btnClose.isHidden = !btnCloseVisible
+        navItem.leftBarButtonItem = btnBackVisible ? navItem.leftBarButtonItem : nil
+        navItem.rightBarButtonItem = btnCloseVisible ? navItem.rightBarButtonItem : nil
         btnSkip.isHidden = !btnSkipVisible
+        super.viewWillAppear(animated)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

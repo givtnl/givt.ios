@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wxt-7i-4uY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ogr-VH-ndU">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,28 +13,17 @@
         <!--Features First View Controller-->
         <scene sceneID="DeC-4q-wxJ">
             <objects>
-                <viewController storyboardIdentifier="features" id="wxt-7i-4uY" customClass="FeaturesFirstViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="featureCarousel" id="wxt-7i-4uY" customClass="FeaturesFirstViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="595-2M-sXG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTq-T7-frQ" userLabel="carouselview">
-                                <rect key="frame" x="0.0" y="80" width="414" height="816"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <connections>
                                     <segue destination="vyK-ac-tsL" kind="embed" identifier="EmbedFeaturesCarousel" id="D38-jq-3QW"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsx-Jb-cYF" userLabel="btnClose">
-                                <rect key="frame" x="344" y="30" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="0AA-Lz-SqX"/>
-                                    <constraint firstAttribute="width" constant="50" id="guM-Mm-34k"/>
-                                </constraints>
-                                <state key="normal" image="closepurple"/>
-                                <connections>
-                                    <action selector="btnCloseTapped:" destination="wxt-7i-4uY" eventType="touchUpInside" id="0Qk-Sj-bFp"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDc-13-xR5" userLabel="btnSkip" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="798" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,45 +47,56 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ha5-qH-Vta" userLabel="btnBack">
-                                <rect key="frame" x="20" y="30" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="jIp-MX-i6K"/>
-                                    <constraint firstAttribute="height" constant="50" id="nhF-Rj-okm"/>
-                                </constraints>
-                                <state key="normal" image="backbtn"/>
-                                <connections>
-                                    <action selector="btnCloseTapped:" destination="wxt-7i-4uY" eventType="touchUpInside" id="bdd-wL-5FY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="kTq-T7-frQ" firstAttribute="top" secondItem="Tsx-Jb-cYF" secondAttribute="bottom" id="5mZ-ch-9M3"/>
-                            <constraint firstItem="Ha5-qH-Vta" firstAttribute="top" secondItem="595-2M-sXG" secondAttribute="topMargin" constant="30" id="COt-Ew-jJV"/>
-                            <constraint firstItem="Tsx-Jb-cYF" firstAttribute="top" secondItem="595-2M-sXG" secondAttribute="top" constant="30" id="DAh-wd-Cab"/>
                             <constraint firstAttribute="trailing" secondItem="kTq-T7-frQ" secondAttribute="trailing" id="EwY-z8-lUS"/>
-                            <constraint firstAttribute="trailing" secondItem="Tsx-Jb-cYF" secondAttribute="trailing" constant="20" id="H4N-4G-F8z"/>
                             <constraint firstItem="kTq-T7-frQ" firstAttribute="bottom" secondItem="595-2M-sXG" secondAttribute="bottom" id="Li1-vu-jB2"/>
+                            <constraint firstItem="kTq-T7-frQ" firstAttribute="top" secondItem="oqF-u7-6Bw" secondAttribute="top" id="Myi-Py-wgT"/>
                             <constraint firstAttribute="trailing" secondItem="qDc-13-xR5" secondAttribute="trailing" constant="20" id="Oze-5h-ayY"/>
-                            <constraint firstAttribute="trailing" secondItem="Tsx-Jb-cYF" secondAttribute="trailing" constant="20" id="QN7-F7-SL7"/>
                             <constraint firstItem="qDc-13-xR5" firstAttribute="bottom" secondItem="oqF-u7-6Bw" secondAttribute="bottom" constant="-20" id="hgO-8w-amw"/>
                             <constraint firstItem="qDc-13-xR5" firstAttribute="leading" secondItem="595-2M-sXG" secondAttribute="leading" constant="20" id="jjt-Rl-86e"/>
-                            <constraint firstItem="Ha5-qH-Vta" firstAttribute="leading" secondItem="oqF-u7-6Bw" secondAttribute="leading" constant="20" id="mNP-Lm-9ff"/>
                             <constraint firstItem="kTq-T7-frQ" firstAttribute="leading" secondItem="595-2M-sXG" secondAttribute="leading" id="n8F-3m-bIW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oqF-u7-6Bw"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wKv-Qm-pnR">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="IwQ-jP-X4k">
+                            <connections>
+                                <action selector="btnCloseTapped:" destination="wxt-7i-4uY" id="bfe-9H-GE4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="closepurple" width="50" id="EUE-02-mcI">
+                            <connections>
+                                <action selector="btnCloseTapped:" destination="wxt-7i-4uY" id="iyO-Gt-kwT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="btnBack" destination="Ha5-qH-Vta" id="Cph-34-irE"/>
-                        <outlet property="btnClose" destination="Tsx-Jb-cYF" id="Smx-VH-UN0"/>
                         <outlet property="btnSkip" destination="qDc-13-xR5" id="cVq-4u-1wr"/>
+                        <outlet property="navItem" destination="wKv-Qm-pnR" id="pqJ-yk-K04"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dZ9-a7-HwK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-647.82608695652175" y="26.116071428571427"/>
+        </scene>
+        <!--Features Navigation Controller-->
+        <scene sceneID="w3a-B2-nEC">
+            <objects>
+                <navigationController storyboardIdentifier="features" id="ogr-VH-ndU" userLabel="Features Navigation Controller" customClass="FeaturesNavigationController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="buP-LL-rJJ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="wxt-7i-4uY" kind="relationship" relationship="rootViewController" id="h5T-vC-e70"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qrd-zw-D6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1432" y="25"/>
         </scene>
         <!--Feature Carousel View Controller-->
         <scene sceneID="hNr-ws-a56">
@@ -115,10 +115,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUa-aF-6bb" userLabel="imageView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="373"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="370"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givy_welkom" translatesAutoresizingMaskIntoConstraints="NO" id="apk-rn-rRw" userLabel="imgIllustration">
-                                        <rect key="frame" x="62" y="41.666666666666657" width="290" height="290"/>
+                                        <rect key="frame" x="62" y="40" width="290" height="290"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,7 +128,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zCU-y0-gTS" userLabel="coloredView">
-                                <rect key="frame" x="0.0" y="373" width="414" height="443"/>
+                                <rect key="frame" x="0.0" y="370" width="414" height="446"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is the text with explanation about the feature" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qii-M5-7r5">
                                         <rect key="frame" x="20" y="82.333333333333371" width="374" height="54.666666666666657"/>
@@ -156,9 +156,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="zCU-y0-gTS" secondAttribute="bottom" id="2so-zs-bgz"/>
-                            <constraint firstItem="zCU-y0-gTS" firstAttribute="height" secondItem="Qrf-cU-sVK" secondAttribute="height" multiplier="0.5" constant="35" id="Pbu-wZ-aly"/>
+                            <constraint firstItem="zCU-y0-gTS" firstAttribute="height" secondItem="Qrf-cU-sVK" secondAttribute="height" multiplier="0.5" constant="38" id="Pbu-wZ-aly"/>
                             <constraint firstAttribute="trailing" secondItem="zUa-aF-6bb" secondAttribute="trailing" id="ZBa-jO-maA"/>
-                            <constraint firstItem="zUa-aF-6bb" firstAttribute="height" secondItem="Qrf-cU-sVK" secondAttribute="height" multiplier="0.5" constant="-35" id="dd7-Xa-CT0"/>
+                            <constraint firstItem="zUa-aF-6bb" firstAttribute="height" secondItem="Qrf-cU-sVK" secondAttribute="height" multiplier="0.5" constant="-38" id="dd7-Xa-CT0"/>
                             <constraint firstItem="zUa-aF-6bb" firstAttribute="leading" secondItem="Qrf-cU-sVK" secondAttribute="leading" id="fFu-CF-W5M"/>
                             <constraint firstItem="zCU-y0-gTS" firstAttribute="leading" secondItem="Qrf-cU-sVK" secondAttribute="leading" id="l1c-RO-IE8"/>
                             <constraint firstItem="zUa-aF-6bb" firstAttribute="top" secondItem="Qrf-cU-sVK" secondAttribute="top" id="qTl-DT-r0g"/>
