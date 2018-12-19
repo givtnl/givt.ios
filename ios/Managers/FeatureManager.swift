@@ -144,10 +144,12 @@ class FeatureManager {
         }
     }
     
-    func getViewControllerForFeature(feature: Int) -> FeaturesFirstViewController? {
-        if let vc = UIStoryboard(name: "Features", bundle: nil).instantiateInitialViewController() as? FeaturesFirstViewController{
-            vc.featurePages = features[feature]?.pages
-            return vc
+    func getViewControllerForFeature(feature: Int) -> FeaturesNavigationController? {
+        if let vc = UIStoryboard(name: "Features", bundle: nil).instantiateInitialViewController() as? FeaturesNavigationController {
+            if let feature = features.first(where: { $0.key == feature }) {
+                vc.features = [feature.value]
+                return vc
+            }
         }
         return nil
     }

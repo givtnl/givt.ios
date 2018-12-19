@@ -1826,7 +1826,7 @@ Kijk voor de status in je overzicht.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pf-Fe-lq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821" y="-241"/>
+            <point key="canvasLocation" x="707" y="-234"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="B6m-w8-sW2">
