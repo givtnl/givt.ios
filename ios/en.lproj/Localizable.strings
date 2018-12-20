@@ -772,5 +772,9 @@
 "DownloadYearOverviewByChoice" = "Do you want to download an annual overview of your donations? Choose the year below and we will send the overview to";
 "GiveOutOfApp" = "Hey! Great that you want to give with Givt! Are you sure you would like to give to {0}?";
 "MandateFailTryAgainLater" = "Something went wrong while generating the mandate. Can you try again later?";
-"FI_Button_Skip" = "Skip";
-"FI_Menu_Text" = "Your app from A to Z";
+
+/*Fuzzy*/
+"FeatureButtonSkip" = "Skip";
+
+/*Fuzzy*/
+"FeatureMenuText" = "Your app from A to Z";
