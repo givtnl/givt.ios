@@ -15,7 +15,8 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
     
     var items = [[Setting]]()
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         navItem.titleView = UIImageView(image: UIImage(named: "givt20h"))
         
         /* some how we're not able to set the table first cel right below the navigation bar
@@ -27,7 +28,6 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         table.delegate = self
         
         loadItems()
-        super.viewWillAppear(animated)
     }
     
     func loadItems() {

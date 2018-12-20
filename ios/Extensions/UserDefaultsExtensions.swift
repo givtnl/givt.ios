@@ -39,6 +39,7 @@ extension UserDefaults {
         case badges
         case yearsWithGivts
         case lastFeatureShown
+        case featureBadges
     }
     
     enum Showcase: String {
@@ -414,5 +415,19 @@ extension UserDefaults {
             set(value, forKey: UserDefaultsKeys.lastFeatureShown.rawValue)
             synchronize()
         }
+    }
+    
+    var featureBadges: [Int] {
+        get {
+            if let badges = array(forKey: UserDefaultsKeys.featureBadges.rawValue) as? [Int] {
+                return badges
+            }
+            return []
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.featureBadges.rawValue)
+            synchronize()
+        }
+
     }
 }

@@ -26,6 +26,8 @@ class FeaturesNavigationController: UINavigationController {
             vc.btnCloseVisible = btnCloseVisible
             vc.btnSkipVisible = btnSkipVisible
             vc.featurePages = features.first!.pages
+            vc.feature = features.first!.id
         }
     }
+    
 }

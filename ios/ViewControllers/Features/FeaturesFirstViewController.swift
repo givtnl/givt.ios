@@ -12,18 +12,24 @@ import UIKit
 class FeaturesFirstViewController: UIViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var btnSkip: CustomButton!
+    @IBOutlet weak var carouselView: UIView!
     
     var btnBackVisible = true
     var btnCloseVisible = true
     var btnSkipVisible = true
     
-    var featurePages: [FeaturePageContent]? = nil
+    var feature: Int = 0
+    var featurePages: [FeaturePageContent]!
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         navItem.leftBarButtonItem = btnBackVisible ? navItem.leftBarButtonItem : nil
         navItem.rightBarButtonItem = btnCloseVisible ? navItem.rightBarButtonItem : nil
         btnSkip.isHidden = !btnSkipVisible
-        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.post(name: .GivtDidShowFeature, object: nil, userInfo: ["id": feature])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -33,7 +39,7 @@ class FeaturesFirstViewController: UIViewController {
             }
         }
     }
-
+    
     @IBAction func btnCloseTapped(_ sender: Any) {
         DispatchQueue.main.async {
             FeatureManager.shared.dismissNotification()

@@ -28,6 +28,7 @@
                                 <rect key="frame" x="20" y="798" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="L2n-x1-M0n"/>
                                 </constraints>
@@ -75,6 +76,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnSkip" destination="qDc-13-xR5" id="cVq-4u-1wr"/>
+                        <outlet property="carouselView" destination="kTq-T7-frQ" id="E2D-rs-eXP"/>
                         <outlet property="navItem" destination="wKv-Qm-pnR" id="pqJ-yk-K04"/>
                     </connections>
                 </viewController>
@@ -154,6 +156,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="zCU-y0-gTS" secondAttribute="bottom" id="2so-zs-bgz"/>
                             <constraint firstItem="zCU-y0-gTS" firstAttribute="height" secondItem="Qrf-cU-sVK" secondAttribute="height" multiplier="0.5" constant="38" id="Pbu-wZ-aly"/>

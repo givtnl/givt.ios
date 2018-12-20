@@ -135,13 +135,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         thirdLine.isHidden = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
-        
-        FeatureManager.shared.checkUpdateState(context: self)
     }
     
     @objc func checkBadges(notification:Notification) {
         DispatchQueue.main.async {
-            self.menu.image = BadgeService.shared.hasBadge(badge: .completeRegistration) || BadgeService.shared.hasBadge(badge: .offlineGifts) ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
+            self.menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         }
     }
     
@@ -163,7 +161,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         checkAmounts()
         
         log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
-        menu.image = BadgeService.shared.hasBadge(badge: .completeRegistration) || BadgeService.shared.hasBadge(badge: .offlineGifts) ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
+        
+        FeatureManager.shared.checkUpdateState(context: self)
+        
+        menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         
         if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
             self._cameFromFAQ = true

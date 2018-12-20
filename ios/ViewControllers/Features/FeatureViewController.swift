@@ -18,20 +18,18 @@ class FeatureViewController: UIViewController {
     @IBOutlet weak var imgIllustration: UIImageView!
     @IBOutlet weak var colorView: UIView!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         lblTitle.text = content.title
         lblText.text = content.subText
         imgIllustration.image = UIImage(named: content.image)
         colorView.backgroundColor = content.color
         
         action = content.action
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {() in
             self.action(self)
         })
+        self.view!.isUserInteractionEnabled = true
+    
     }
 }

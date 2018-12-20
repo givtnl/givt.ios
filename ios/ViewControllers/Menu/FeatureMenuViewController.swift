@@ -12,7 +12,8 @@ import UIKit
 class FeatureMenuViewController: BaseMenuViewController {
     private let slideFromRightAnimation = PresentFromRight()
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         navItem.titleView = UIImageView(image: UIImage(named: "givt20h"))
         
         /* some how we're not able to set the table first cel right below the navigation bar
@@ -22,14 +23,16 @@ class FeatureMenuViewController: BaseMenuViewController {
         table.contentInset = UIEdgeInsetsMake(-30, 0, 0, 0)
         table.dataSource = self
         table.delegate = self
-        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didShowFeature), name: .GivtDidShowFeature, object: nil)
     }
     
     override func loadItems() {
         items = []
         items.append([])
-        for feat in FeatureManager.shared.features {
-            let item = Setting(name: feat.value.title, image: UIImage(), showBadge: false, callback: { self.showFeature(which: feat.key) }, showArrow: true, isHighlighted: false)
+        for feat in FeatureManager.shared.features.sorted(by: {pair1, pair2 in pair1.value.title < pair2.value.title }) {
+            let showBadge = feat.value.mustSee && FeatureManager.shared.featuresWithBadge.firstIndex(of: feat.key) != nil
+            let item = Setting(name: feat.value.title, image: UIImage(), showBadge: showBadge, callback: { self.showFeature(which: feat.key) }, showArrow: true, isHighlighted: false)
             items[0].append(item)
         }
     }
@@ -40,6 +43,15 @@ class FeatureMenuViewController: BaseMenuViewController {
             vc.btnCloseVisible = false
             vc.btnSkipVisible = false
             self.present(vc, animated: true, completion: {})
+        }
+    }
+    
+    @objc private func didShowFeature(_ notification: NSNotification) {
+        if let id = notification.userInfo?["id"] as? Int {
+            if let item = items[0].first(where: { s in s.name == FeatureManager.shared.features[id]!.title }) {
+                item.showBadge = false
+                table.reloadData()
+            }
         }
     }
 }
