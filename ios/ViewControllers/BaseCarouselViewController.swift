@@ -24,14 +24,10 @@ class BaseCarouselViewController: UIPageViewController, UIPageViewControllerData
         super.viewDidLoad()
         self.dataSource = self
         self.delegate = self
-        // Do any additional setup after loading the view.
-        
         setupViewControllers()
-        
         if let firstVC = viewControllerList.first {
             self.setViewControllers([firstVC], direction: .forward, animated: true, completion: nil)
         }
-        
         self.view.addSubview(pageControl)
         pageControl.numberOfPages = presentationCount(for: self)
     }
@@ -55,35 +51,25 @@ class BaseCarouselViewController: UIPageViewController, UIPageViewControllerData
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        
         guard let vcIndex = viewControllerList.index(of: viewController) else {
             return nil
         }
-        
         let prevIndex = vcIndex - 1
-        
         guard prevIndex >= 0 else {
             return nil
         }
-        
         guard viewControllerList.count > prevIndex else {
             return nil
         }
-        
         return viewControllerList[prevIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         guard let vcIndex = viewControllerList.index(of: viewController) else { return nil }
-        
         let nextIndex = vcIndex + 1
-        
         guard viewControllerList.count != nextIndex else {return nil}
-        
         guard viewControllerList.count > nextIndex else {return nil}
-        
         return viewControllerList[nextIndex]
-        
     }
 }
 
