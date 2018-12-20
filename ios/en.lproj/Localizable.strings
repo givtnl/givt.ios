@@ -772,28 +772,5 @@
 "DownloadYearOverviewByChoice" = "Do you want to download an annual overview of your donations? Choose the year below and we will send the overview to";
 "GiveOutOfApp" = "Hey! Great that you want to give with Givt! Are you sure you would like to give to {0}?";
 "MandateFailTryAgainLater" = "Something went wrong while generating the mandate. Can you try again later?";
-
-/*ID should be the featureId*/
-/*Fuzzy*/
-"FI_FID_STEPID_Title" = "Title - Lorem ipsum dolor sit amet";
-
-/*ID should be the featureId*/
-/*Fuzzy*/
-"FI_FID_STEPID_Subtext" = "Sub - Praesent fermentum fermentum accumsan. Maecenas tincidunt maximus facilisis.";
-"FI_FID_NotificationText" = "Notification - Lorem ipsum dolor sit amet";
 "FI_Button_Skip" = "Skip";
 "FI_Menu_Text" = "Your app from A to Z";
-"FI_TEST001_NotificationText" = "A freshly baked pushnotifciation at 180 degrees";
-"FI_TEST002_NotificationText" = "The cake is a lie";
-"FI_TEST001_1_Title" = "Step 1 - Make dough";
-"FI_TEST001_2_Title" = "Step 2 - In the oven";
-"FI_TEST001_3_Title" = "Step 3 - Eat!";
-"FI_TEST002_1_Title" = "Title";
-"FI_TEST002_2_Title" = "Title";
-"FI_TEST002_3_Title" = "Title";
-"FI_TEST001_1_Subtitle" = "Abit of milk, an egg and start stirring";
-"FI_TEST001_2_Subtitle" = "Open the door, put the baking shape in and close it. Put the oven on 180 degrees";
-"FI_TEST001_3_Subtitle" = "Enjoy!";
-"FI_TEST002_1_Subtitle" = "Subtitel";
-"FI_TEST002_2_Subtitle" = "Subtitel";
-"FI_TEST002_3_Subtitle" = "Subtitel";
