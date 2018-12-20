@@ -778,3 +778,6 @@
 
 /*Fuzzy*/
 "FeatureMenuText" = "Your app from A to Z";
+"FeatureMultipleNew" = "Hello, we would like to introduce a few new features to you.";
+"FeatureReadMore" = "Read more";
+"FeatureStepTitle" = "Feature {0} of {1}";
