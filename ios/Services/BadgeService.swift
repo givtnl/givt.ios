@@ -13,6 +13,7 @@ class BadgeService {
     enum Badge: Int {
         case completeRegistration
         case offlineGifts
+        case showFeature
     }
     
     static let shared = BadgeService()
@@ -38,6 +39,10 @@ class BadgeService {
             badges.remove(at: idx)
             refreshCount()
         }
+    }
+    
+    func hasBadge() -> Bool {
+        return badges.count > 0
     }
     
     func hasBadge(badge: Badge) -> Bool {

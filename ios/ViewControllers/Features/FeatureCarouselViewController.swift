@@ -10,7 +10,18 @@ import Foundation
 import UIKit
 
 class FeatureCarouselViewController: BaseCarouselViewController {
-    var contentPages: [FeaturePageContent]? = nil
+    var contentPages: [FeaturePageContent]!
+    
+    private var scrollView: UIScrollView? {
+        get {
+            for view in self.view!.subviews {
+                if let v = view as? UIScrollView {
+                    return v
+                }
+            }
+            return nil
+        }
+    }
     
     override func setupViewControllers() {
         if let pages = contentPages {

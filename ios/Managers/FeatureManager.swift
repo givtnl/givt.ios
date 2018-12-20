@@ -49,11 +49,25 @@ class FeatureManager {
     var featureViewConstraint: NSLayoutConstraint? = nil
     var currentContext: UIViewController? = nil
     
-    let features: Dictionary<Int, Feature> = [
+    let features: [Int: Feature] = [
         1: Feature( id: 1,
+                    title: "Giving from the list",
+                    notification: "Hi! Want to know more about giving from the list?",
+                    mustSee: true,
+                    pages: [
+                        FeaturePageContent(image: "selectlist",
+                                           color: #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1),
+                                           title: "Giving from the list",
+                                           subText: "Select an organisation from the list."),
+                        FeaturePageContent(image: "sugg_actions_white",
+                                           color: UIColor.darkGray,
+                                           title: "Choose an amount",
+                                           subText: "Just choose an amount and give")
+                    ]),
+        2: Feature( id: 2,
                     title: "Location giving",
                     notification: "Hi! Want to know more about location giving?",
-                    mustSee: true,
+                    mustSee: false,
                     pages: [
                         FeaturePageContent(image: "lookoutgivy",
                                            color: UIColor.red,
@@ -64,24 +78,47 @@ class FeatureManager {
                                            title: "Choose an amount",
                                            subText: "Just choose an amount and give",
                                            action: {(context) -> Void in
-                                                let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""), message: "Jaja, kwetet", preferredStyle: UIAlertControllerStyle.alert)
-                                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
-                                                context!.present(alert, animated: true, completion: {})
-                                           })
-                        ])
+                                            let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""), message: "Jaja, kwetet", preferredStyle: UIAlertControllerStyle.alert)
+                                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+                                            context!.present(alert, animated: true, completion: {})
+                    })
+            ])
     ]
     
-    var highestFeature: Int = 0
+    var featuresWithBadge: [Int] {
+        return UserDefaults.standard.featureBadges
+    }
+    
+    var showBadge: Bool {
+        return UserDefaults.standard.featureBadges.count > 0
+    }
+    
+    private var highestFeature: Int {
+        if let max = self.features.keys.max() {
+            return max
+        }
+        return 0
+    }
+    
+    private var lastFeatureShown: Int {
+        return UserDefaults.standard.lastFeatureShown
+    }
     
     init() {
-        if let max = self.features.keys.max() {
-            highestFeature = max
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(didShowFeature), name: .GivtDidShowFeature, object: nil)
     }
     
     func checkUpdateState(context: UIViewController) {
-        if highestFeature > UserDefaults.standard.lastFeatureShown {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: { () -> Void in
+        var badges = UserDefaults.standard.featureBadges
+        badges.append(contentsOf: features.filter { $0.key > lastFeatureShown && $0.value.mustSee && badges.firstIndex(of: $0.key) == nil }.map { $0.key })
+        UserDefaults.standard.featureBadges = badges
+        
+        if badges.count > 0 && !BadgeService.shared.hasBadge(badge: .showFeature) {
+            BadgeService.shared.addBadge(badge: .showFeature)
+        }
+
+        if highestFeature > lastFeatureShown {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { () -> Void in
                 if let sv = context.navigationController?.view.superview {
                     if let featView = Bundle.main.loadNibNamed("NewFeaturePopDownView", owner: context, options: nil)?.first as! NewFeaturePopDownView? {
                         self.currentContext = context
@@ -127,7 +164,7 @@ class FeatureManager {
                 UIView.animate(withDuration: 0.6, animations: {() -> Void in
                     topConstraint.constant = -110
                     sv.layoutIfNeeded()
-                    //UserDefaults.standard.lastFeatureShown = self.highestFeature
+                    UserDefaults.standard.lastFeatureShown = self.highestFeature
                 })
             }
             self.featureViewConstraint = nil
@@ -135,11 +172,27 @@ class FeatureManager {
         }
     }
     
-    @objc func notificationTapped(_ recognizer: UITapGestureRecognizer) {
+    @objc private func notificationTapped(_ recognizer: UITapGestureRecognizer) {
         if let view = recognizer.view {
-            if let popDownview = view as? NewFeaturePopDownView, let vc = getViewControllerForFeature(feature: 1) {
-                vc.btnBackVisible = false
-                popDownview.context?.present(vc, animated: true, completion: nil)
+            if let popDownview = view as? NewFeaturePopDownView {
+                var featuresToShow: [Feature] = []
+                var featureBadges = UserDefaults.standard.featureBadges
+                for id in featureBadges {
+                    featuresToShow.append(features[id]!)
+                }
+                for feature in features.filter({ pair in pair.key > lastFeatureShown && featuresToShow.first(where: { feat in feat.id == pair.key }) == nil }) {
+                    featuresToShow.append(feature.value)
+                    if feature.value.mustSee {
+                        featureBadges.append(feature.key)
+                    }
+                }
+                UserDefaults.standard.featureBadges = featureBadges
+
+                if let vc = UIStoryboard(name: "Features", bundle: nil).instantiateInitialViewController() as? FeaturesNavigationController {
+                    vc.btnBackVisible = false
+                    vc.features = featuresToShow
+                    popDownview.context?.present(vc, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -152,5 +205,18 @@ class FeatureManager {
             }
         }
         return nil
+    }
+    
+    @objc private func didShowFeature(notification: NSNotification) {
+        if let featureId = notification.userInfo?["id"] as? Int {
+            var featureBadges = UserDefaults.standard.featureBadges
+            if let badge = featureBadges.firstIndex(of: featureId) {
+                featureBadges.remove(at: badge)
+                UserDefaults.standard.featureBadges = featureBadges
+                if featureBadges.count == 0 {
+                    BadgeService.shared.removeBadge(badge: .showFeature)
+                }
+            }
+        }
     }
 }

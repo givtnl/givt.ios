@@ -19,14 +19,10 @@ class SettingsViewController: BaseMenuViewController {
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navItem.leftBarButtonItem = nil
-        super.viewWillAppear(animated)
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        navItem.leftBarButtonItem = nil
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
@@ -45,7 +41,7 @@ class SettingsViewController: BaseMenuViewController {
         items = []        
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
-        let appInfo = Setting(name: "The app from A to Z", image: UIImage(named: "info24")!, callback: { self.appInfo() })
+        let appInfo = Setting(name: "The app from A to Z", image: UIImage(named: "info24")!, showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
         

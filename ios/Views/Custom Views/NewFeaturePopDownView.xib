@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hallo! We hebben iets nieuws voor je klaar staan? Heb je even?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1A-WW-VBc">
-                    <rect key="frame" x="8" y="8" width="359" height="44"/>
+                    <rect key="frame" x="-41.5" y="19.5" width="458" height="22"/>
                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -25,7 +25,11 @@
             <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
             <constraints>
+                <constraint firstItem="V1A-WW-VBc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="9og-Er-wze"/>
+                <constraint firstAttribute="trailing" secondItem="V1A-WW-VBc" secondAttribute="trailing" constant="8" id="A2r-4P-Bmx"/>
+                <constraint firstAttribute="bottom" secondItem="V1A-WW-VBc" secondAttribute="bottom" constant="8" id="YPx-v3-5ZK"/>
                 <constraint firstItem="V1A-WW-VBc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jtr-MO-GBs"/>
+                <constraint firstItem="V1A-WW-VBc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="peU-KI-u0Q"/>
                 <constraint firstItem="V1A-WW-VBc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="scO-39-NSV"/>
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
