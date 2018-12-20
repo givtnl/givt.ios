@@ -799,3 +799,17 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FI_FID_NotificationText" = "Notification - Lorem ipsum dolor sit amet";
 "FI_Button_Skip" = "Sla over";
 "FI_Menu_Text" = "Uw app van A tot Z";
+"FI_TEST001_NotificationText" = "Een versgebakken pushnotifcation op 180 graden";
+"FI_TEST002_NotificationText" = "De taart is een leugen";
+"FI_TEST001_1_Title" = "Stap 1 - Deeg maken";
+"FI_TEST001_2_Title" = "Stap 2 - In de oven";
+"FI_TEST001_3_Title" = "Stap 3 - Smullen maar";
+"FI_TEST002_1_Title" = "Title";
+"FI_TEST002_2_Title" = "Title";
+"FI_TEST002_3_Title" = "Title";
+"FI_TEST001_1_Subtitle" = "Een beetje melk, een ei en dan roeren maar";
+"FI_TEST001_2_Subtitle" = "Open het deurtje, steek de bakvorm erin en doe het toe. Zet dan de oven aan op 180 graden";
+"FI_TEST001_3_Subtitle" = "Genieten maar!";
+"FI_TEST002_1_Subtitle" = "Subtitel";
+"FI_TEST002_2_Subtitle" = "Subtitel";
+"FI_TEST002_3_Subtitle" = "Subtitel";
