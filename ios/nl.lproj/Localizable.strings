@@ -794,3 +794,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*Fuzzy*/
 "FeatureMenuText" = "Uw app van A tot Z";
+"FeatureMultipleNew" = "Hallo, we willen je graag enkele nieuwe features voorstellen.";
+"FeatureReadMore" = "Lees meer";
+"FeatureStepTitle" = "Feature {0} van {1}";
