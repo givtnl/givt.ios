@@ -42,7 +42,7 @@ struct OrgBeacon: Codable {
 }
 
 struct OrgBeaconLocation: Codable {
-    let Name: String
+    let Name: String?
     let Latitude: Double
     let Longitude: Double
     let Radius: Int
@@ -428,7 +428,7 @@ final class GivtManager: NSObject {
     }
     
     func getPublicMeta() {
-        if UserDefaults.standard.userExt == nil || UserDefaults.standard.userExt.guid == nil {
+        if UserDefaults.standard.userExt?.guid == nil {
             return
         }
         let year = Date().getYear() - 1 //get the previous year

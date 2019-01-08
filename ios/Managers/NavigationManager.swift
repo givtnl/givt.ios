@@ -119,6 +119,8 @@ class NavigationManager {
         DispatchQueue.main.async {
             
             if self.loginManager.userClaim == .startedApp {
+                //force logout. TODO: remove this when users have been refactored
+                self.loginManager.logout()
                 let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
                 vc.setViewControllers([welcome], animated: false)
             } else {
