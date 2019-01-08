@@ -265,9 +265,10 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.inputOfInput = settings[indexPath.row].name
             vc.keyboardTypeOfInput = UIKeyboardType.emailAddress
             vc.validateFunction = { s in
-                return self.validationHelper.isEmailAddressValid(s)
+                return self.validationHelper.isEmailAddressValid(s.trimmingCharacters(in: CharacterSet.init(charactersIn: " ")))
             }
-            vc.saveAction = { newEmail in
+            vc.saveAction = { email in
+                let newEmail = email.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                     SVProgressHUD.show()
                     self.loginManager.checkTLD(email: newEmail, completionHandler: { (success) in

@@ -59,7 +59,9 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         }
         
         SVProgressHUD.show()
-        LoginManager.shared.doesEmailExist(email: emailField.text!) { (status) in
+        let email = emailField.text!.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
+
+        LoginManager.shared.doesEmailExist(email: email) { (status) in
             
             if status == "temp" {
                 DispatchQueue.main.async {
@@ -67,11 +69,11 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                 }
                 let alert = UIAlertController(title: NSLocalizedString("TemporaryAccount", comment: ""), message: NSLocalizedString("TempAccountLogin", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    NavigationHelper.showRegistration(context: self, email: self.emailField.text!)
+                    NavigationHelper.showRegistration(context: self, email: email)
                 }))
                 self.present(alert, animated: true, completion:  {})
             } else if status == "true" {
-                LoginManager.shared.requestNewPassword(email: (self.emailField.text?.replacingOccurrences(of: " ", with: ""))!, callback: { (status) in
+                LoginManager.shared.requestNewPassword(email: (email), callback: { (status) in
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
                     }
@@ -129,7 +131,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func checkAll() {
-        let isEmailValid = validationHelper.isEmailAddressValid(self.emailField.text!)
+        let isEmailValid = validationHelper.isEmailAddressValid(self.emailField.text!.trimmingCharacters(in: CharacterSet.init(charactersIn: " ")))
         isEmailValid ? emailField.setValid() : emailField.setInvalid()
         self.btnSend.isEnabled = isEmailValid
         emailField.returnKeyType = isEmailValid ? .done : UIReturnKeyType.default

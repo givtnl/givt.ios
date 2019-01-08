@@ -109,15 +109,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        let email = txtUserName.text!.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
+        
         SVProgressHUD.show()
-        LoginManager.shared.doesEmailExist(email: txtUserName.text!) { (status) in
+        LoginManager.shared.doesEmailExist(email: email) { (status) in
             if status == "temp" { //email is in db but not succesfully registered
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                 }
                 let alert = UIAlertController(title: NSLocalizedString("TemporaryAccount", comment: ""), message: NSLocalizedString("TempAccountLogin", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    NavigationHelper.showRegistration(context: self, email: self.txtUserName.text!)
+                    NavigationHelper.showRegistration(context: self, email: email)
                 }))
                 self.present(alert, animated: true, completion:  {})
             } else if status == "dashboard" {
@@ -127,7 +129,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             SVProgressHUD.dismiss()
                         }
                         print("Logging dashboard user in" )
-                        NavigationHelper.showRegistration(context: self, email: self.txtUserName.text!, password: self.txtPassword.text!)
+                        NavigationHelper.showRegistration(context: self, email: email, password: self.txtPassword.text!)
                     }
                 }
             } else {
@@ -147,7 +149,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func doLogin(completion: @escaping (Bool) -> Void) {
-        _ = LoginManager.shared.loginUser(email: self.txtUserName.text!,password: self.txtPassword.text!, type: .password, completionHandler: { b, error, description in
+        let email = txtUserName.text!.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
+
+        _ = LoginManager.shared.loginUser(email: email,password: self.txtPassword.text!, type: .password, completionHandler: { b, error, description in
             if b {
                 completion(true)
             } else {

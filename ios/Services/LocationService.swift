@@ -92,7 +92,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     func isLocationInRegion(region: GivtLocation) -> Bool {
-        let fence = CLCircularRegion(center: CLLocationCoordinate2D(latitude: region.coordinate.coordinate.latitude, longitude: region.coordinate.coordinate.longitude), radius: CLLocationDistance(exactly: region.radius)!, identifier: region.name)
+        let fence = CLCircularRegion(center: CLLocationCoordinate2D(latitude: region.coordinate.coordinate.latitude, longitude: region.coordinate.coordinate.longitude), radius: CLLocationDistance(exactly: region.radius)!, identifier: region.name ?? "")
         guard let location = lastLocation else { return false }
         return fence.contains(location.coordinate)
     }
@@ -125,11 +125,11 @@ class LocationService: NSObject, CLLocationManagerDelegate {
 class GivtLocation {
     var coordinate: CLLocation
     var radius: Int //meter
-    var name: String
+    var name: String?
     var beaconId: String
     var organisationName: String
     
-    init(lat: CLLocationDegrees, long: CLLocationDegrees, radius: Int, name: String, beaconId: String, organisationName: String) {
+    init(lat: CLLocationDegrees, long: CLLocationDegrees, radius: Int, name: String?, beaconId: String, organisationName: String) {
         self.coordinate = CLLocation(latitude: lat, longitude: long)
         self.radius = radius
         self.name = name

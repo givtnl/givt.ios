@@ -134,7 +134,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     if mediumId.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumId.prefix(20))) == nil {
                         LogService.shared.warning(message: "Illegal mediumid \"\(mediumId)\" provided. Going to normal give flow")
                     } else {
-                        GivtManager.shared.externalIntegration = ExternalAppIntegration(name: "QR", logo: nil, mediumId: mediumId, appScheme: nil)
+                        let specialChar = mediumId.substring(21..<22)
+                        if (specialChar == "c"){
+                            GivtManager.shared.externalIntegration = ExternalAppIntegration(name: "QR", logo: UIImage(named: "qr_scan_phone"), mediumId: mediumId, appScheme: nil)
+                        } else {
+                            GivtManager.shared.externalIntegration = ExternalAppIntegration(name: "normal", logo:UIImage(named: "givt_mobile"), mediumId: mediumId, appScheme: nil)
+                        }
                         LogService.shared.info(message: "App scheme: QR entering Givt-app with identifier \(mediumId)")
                         return true;
                     }

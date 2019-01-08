@@ -85,7 +85,7 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
                 self.log.warning(message: msg)
                 let beacon = Beacon(eddyID: antennaID, batteryStatus: bv)
                 do {
-                    try APIClient.shared.put(url: "/api/v2/beacons/\(antennaID)/?userId=\(UserDefaults.standard.userExt.guid)", data: beacon.convertToDictionary()) { (res) in }
+                    try APIClient.shared.put(url: "/api/v2/beacons/\(antennaID)/?userId=\(UserDefaults.standard.userExt!.guid)", data: beacon.convertToDictionary()) { (res) in }
                 } catch {
                     self.log.error(message: "Unknown error : \(error)")
                 }

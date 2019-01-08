@@ -97,7 +97,8 @@ extension UserDefaults {
     var amountPresets: [Decimal] {
         get {
             if let data = object(forKey: UserDefaultsKeys.amountPresets.rawValue) as? NSData {
-                if let amountPresetByUserId = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [String: [Decimal]], let decimals = amountPresetByUserId[userExt.guid]  {
+                if let amountPresetByUserId = NSKeyedUnarchiver.unarchiveObject(with: data as Data) as? [String: [Decimal]],
+                    let decimals = amountPresetByUserId[userExt?.guid ?? ""]  {
                     return decimals
                 }
             }
@@ -360,15 +361,15 @@ extension UserDefaults {
         }
     }
     
-    var userExt: UserExt! {
+    var userExt: UserExt? {
         get {
             if let encoded = data(forKey: UserDefaultsKeys.userExt.rawValue) {
-                return NSKeyedUnarchiver.unarchiveObject(with: encoded) as! UserExt
+                return NSKeyedUnarchiver.unarchiveObject(with: encoded) as? UserExt
             }
             return nil
         }
         set(value) {
-            let encoded = NSKeyedArchiver.archivedData(withRootObject: value)
+            let encoded = NSKeyedArchiver.archivedData(withRootObject: value!)
             set(encoded, forKey: UserDefaultsKeys.userExt.rawValue)
             synchronize()
         }
