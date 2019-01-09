@@ -11,12 +11,13 @@ import UIKit
 
 class FeatureViewController: UIViewController {
     var content: FeaturePageContent!
-    var action: (UIViewController?)->Void = {(_) in}
+    var action: ((UIViewController?)->())? = nil
 
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblText: UILabel!
     @IBOutlet weak var imgIllustration: UIImageView!
     @IBOutlet weak var colorView: UIView!
+    @IBOutlet var btnAction: CustomButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +25,22 @@ class FeatureViewController: UIViewController {
         lblText.text = content.subText
         imgIllustration.image = UIImage(named: content.image)
         colorView.backgroundColor = content.color
+        btnAction.isHidden = true;
+        if content.action != nil {
+            action = content.action
+            btnAction.isHidden = false
+            btnAction.addTarget(self, action: #selector(FeatureViewController.buttonClicked(_:)), for: .touchUpInside)
+        } else {
+            btnAction.isHidden = true
+        }
         
-        action = content.action
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {() in
-            self.action(self)
-        })
         self.view!.isUserInteractionEnabled = true
     
+    }
+    
+    @objc func buttonClicked(_ sender: AnyObject?) {
+        if let actie = self.action {
+            actie(self)
+        }
     }
 }
