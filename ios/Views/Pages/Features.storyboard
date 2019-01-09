@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ogr-VH-ndU">
-    <device id="retina6_5" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,17 +15,17 @@
             <objects>
                 <viewController storyboardIdentifier="featureCarousel" id="wxt-7i-4uY" customClass="FeaturesFirstViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="595-2M-sXG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTq-T7-frQ" userLabel="carouselview">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <connections>
                                     <segue destination="vyK-ac-tsL" kind="embed" identifier="EmbedFeaturesCarousel" id="D38-jq-3QW"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDc-13-xR5" userLabel="btnSkip" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="798" width="374" height="44"/>
+                                <rect key="frame" x="20" y="536" width="560" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                 <gestureRecognizers/>
@@ -92,7 +92,7 @@
             <objects>
                 <navigationController storyboardIdentifier="features" id="ogr-VH-ndU" userLabel="Features Navigation Controller" customClass="FeaturesNavigationController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="buP-LL-rJJ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -147,13 +147,37 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gt-hh-Emu" userLabel="btnSkip" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="386" width="374" height="40"/>
+                                        <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                        <gestureRecognizers/>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="20"/>
+                                        <state key="normal" title="Action">
+                                            <color key="titleColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96529752016067505" green="0.74714535474777222" blue="0.33720988035202026" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="9gt-hh-Emu" firstAttribute="leading" secondItem="zCU-y0-gTS" secondAttribute="leading" constant="20" id="7Wq-PJ-gQR"/>
                                     <constraint firstItem="Qii-M5-7r5" firstAttribute="top" secondItem="PnB-eZ-tGI" secondAttribute="bottom" constant="20" id="8ip-g8-7U3"/>
                                     <constraint firstItem="PnB-eZ-tGI" firstAttribute="centerX" secondItem="zCU-y0-gTS" secondAttribute="centerX" id="Jjf-wN-EaO"/>
                                     <constraint firstAttribute="trailing" secondItem="Qii-M5-7r5" secondAttribute="trailing" constant="20" id="Wog-RH-epz"/>
                                     <constraint firstItem="PnB-eZ-tGI" firstAttribute="top" secondItem="zCU-y0-gTS" secondAttribute="top" constant="40" id="cuB-He-zVI"/>
+                                    <constraint firstAttribute="bottom" secondItem="9gt-hh-Emu" secondAttribute="bottom" constant="20" id="f5X-av-9GW"/>
+                                    <constraint firstAttribute="trailing" secondItem="9gt-hh-Emu" secondAttribute="trailing" constant="20" id="fPe-os-aAZ"/>
                                     <constraint firstItem="Qii-M5-7r5" firstAttribute="leading" secondItem="zCU-y0-gTS" secondAttribute="leading" constant="20" id="jb5-zR-lzK"/>
                                 </constraints>
                             </view>
@@ -174,6 +198,7 @@
                     </view>
                     <size key="freeformSize" width="414" height="816"/>
                     <connections>
+                        <outlet property="btnAction" destination="9gt-hh-Emu" id="Nbf-ei-zdl"/>
                         <outlet property="colorView" destination="zCU-y0-gTS" id="02B-YO-2Ss"/>
                         <outlet property="imgIllustration" destination="apk-rn-rRw" id="mET-Ip-NVj"/>
                         <outlet property="lblText" destination="Qii-M5-7r5" id="Spv-46-ukV"/>

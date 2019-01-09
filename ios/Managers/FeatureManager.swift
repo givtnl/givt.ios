@@ -14,14 +14,18 @@ class FeaturePageContent {
     let color: UIColor
     let title: String
     let subText: String
-    let action: (UIViewController?)->Void
+    let action: ((UIViewController?)->Void)?
 
-    init(image: String, color: UIColor, title: String, subText: String, action: @escaping (UIViewController?)->Void = {(_) in } ) {
+    init(image: String, color: UIColor, title: String, subText: String, action: ((UIViewController?)->Void)? = nil ) {
         self.image = image
         self.color = color
         self.title = title
         self.subText = subText
-        self.action = action
+        if let actie = action {
+            self.action = actie
+        } else {
+            self.action = nil
+        }
     }
 }
 
