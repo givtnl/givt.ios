@@ -205,6 +205,9 @@ class FeatureManager {
         if let vc = UIStoryboard(name: "Features", bundle: nil).instantiateInitialViewController() as? FeaturesNavigationController {
             if let feature = features.first(where: { $0.key == feature }) {
                 vc.features = [feature.value]
+                if UserDefaults.standard.lastFeatureShown < feature.value.id {
+                    UserDefaults.standard.lastFeatureShown = feature.value.id
+                }
                 return vc
             }
         }
