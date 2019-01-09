@@ -119,6 +119,10 @@ class LoginManager {
                                         UserDefaults.standard.userExt = config
                                         UserDefaults.standard.amountLimit = (uext.AmountLimit == 0) ? 499 : uext.AmountLimit
                                         
+                                        if UserDefaults.standard.lastFeatureShown == -1 && self.userClaim == .startedApp {
+                                            UserDefaults.standard.lastFeatureShown = 0
+                                        }
+                                        
                                         GivtManager.shared.getBeaconsFromOrganisation(completionHandler: { (status) in
                                             //do nothing
                                         })
