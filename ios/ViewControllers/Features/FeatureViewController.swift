@@ -33,7 +33,12 @@ class FeatureViewController: UIViewController {
         } else {
             btnAction.isHidden = true
         }
-        
+        if #available(iOS 11.0, *) {
+            NSLayoutConstraint.activate([
+                btnAction.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                btnAction.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+                ])
+        }
         self.view!.isUserInteractionEnabled = true
     
     }
