@@ -42,7 +42,7 @@ class FeatureCarouselViewController: BaseCarouselViewController {
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
                 pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                pageControl.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -74)
+                pageControl.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -60)
                 ])
         } else {
             NSLayoutConstraint.activate([
