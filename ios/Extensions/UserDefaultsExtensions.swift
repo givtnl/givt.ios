@@ -409,7 +409,12 @@ extension UserDefaults {
 
     var lastFeatureShown: Int {
         get {
-            return integer(forKey: UserDefaultsKeys.lastFeatureShown.rawValue)
+            if(UserDefaults.standard.object(forKey: "lastFeatureShown") != nil) {
+                return integer(forKey: UserDefaultsKeys.lastFeatureShown.rawValue)
+            } else {
+                return -1
+            }
+            
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.lastFeatureShown.rawValue)
