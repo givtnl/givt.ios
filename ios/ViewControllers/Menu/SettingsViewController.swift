@@ -95,7 +95,7 @@ class SettingsViewController: BaseMenuViewController {
                     [finishRegistration],
                     [amountPresets],
                     [changeAccount, screwAccount],
-                    [aboutGivt, shareGivt],
+                    [appInfo, aboutGivt, shareGivt],
             ]
         }
     }
