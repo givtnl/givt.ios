@@ -30,8 +30,21 @@ class FeatureCarouselViewController: BaseCarouselViewController {
             for page in pages{
                 let vc = storyboard.instantiateViewController(withIdentifier: "feature") as! FeatureViewController
                 vc.content = page
+                vc.callingCarousselController = self
                 viewControllerList.append(vc)
             }
+        }
+    }
+    
+    func hideSkipButton() {
+        if let pvc = self.parent as! FeaturesFirstViewController? {
+            pvc.btnSkip.isHidden = true
+        }
+    }
+    
+    func showSkipButton(){
+        if let pvc = self.parent as! FeaturesFirstViewController? {
+            pvc.btnSkip.isHidden = false || !pvc.btnSkipVisible
         }
     }
     
