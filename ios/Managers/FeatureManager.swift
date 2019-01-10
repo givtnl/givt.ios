@@ -15,7 +15,7 @@ class FeaturePageContent {
     let title: String
     let subText: String
     let action: ((UIViewController?)->Void)?
-
+    
     init(image: String, color: UIColor, title: String, subText: String, action: ((UIViewController?)->Void)? = nil ) {
         self.image = image
         self.color = color
@@ -49,7 +49,7 @@ class Feature {
 
 class FeatureManager {
     static let shared = FeatureManager()
-
+    
     var featureViewConstraint: NSLayoutConstraint? = nil
     var currentContext: UIViewController? = nil
     
@@ -67,7 +67,7 @@ class FeatureManager {
                                            color: UIColor.darkGray,
                                            title: "Choose an amount",
                                            subText: "Just choose an amount and give")
-                    ]),
+            ]),
         2: Feature( id: 2,
                     title: "Location giving",
                     notification: "Hi! Want to know more about location giving?",
@@ -85,7 +85,7 @@ class FeatureManager {
                                             let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""), message: "Jaja, kwetet", preferredStyle: UIAlertControllerStyle.alert)
                                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
                                             context!.present(alert, animated: true, completion: {})
-                    })
+                        })
             ])
     ]
     
@@ -145,13 +145,19 @@ class FeatureManager {
                         sv.layoutIfNeeded()
                         featView.invalidateIntrinsicContentSize()
                         sv.layoutIfNeeded()
-                        
-                        UIView.animate(withDuration: 0.6, animations: {() -> Void in
-                            topConstraint.constant = 38
-                            sv.layoutIfNeeded()
-                        })
-                        
+                        if #available(iOS 11.0, *){
+                            UIView.animate(withDuration: 0.6, animations: {() -> Void in
+                                topConstraint.constant = 38
+                                sv.layoutIfNeeded()
+                            })
+                        } else {
+                            UIView.animate(withDuration: 0.6, animations: {() -> Void in
+                                topConstraint.constant = 24
+                                sv.layoutIfNeeded()
+                            })
+                        }
                         self.featureViewConstraint = topConstraint
+
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {() -> Void in
                             self.dismissNotification()
@@ -191,7 +197,7 @@ class FeatureManager {
                     }
                 }
                 UserDefaults.standard.featureBadges = featureBadges
-
+                
                 if let vc = UIStoryboard(name: "Features", bundle: nil).instantiateInitialViewController() as? FeaturesNavigationController {
                     vc.btnBackVisible = false
                     vc.features = featuresToShow
