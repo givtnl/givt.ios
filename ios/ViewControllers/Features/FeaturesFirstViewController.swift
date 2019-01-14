@@ -40,6 +40,10 @@ class FeaturesFirstViewController: UIViewController {
         }
     }
     
+    func changeSkipVisibility(visible: Bool) {
+        btnSkip.isHidden = !visible || !btnSkipVisible
+    }
+    
     @IBAction func btnCloseTapped(_ sender: Any) {
         DispatchQueue.main.async {
             FeatureManager.shared.dismissNotification()

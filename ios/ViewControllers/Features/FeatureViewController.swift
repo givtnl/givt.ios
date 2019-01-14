@@ -13,8 +13,6 @@ class FeatureViewController: UIViewController {
     var content: FeaturePageContent!
     var action: ((UIViewController?)->())? = nil
     
-    var callingCarousselController: FeatureCarouselViewController? = nil
-
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblText: UILabel!
     @IBOutlet weak var imgIllustration: UIImageView!
@@ -39,10 +37,12 @@ class FeatureViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if content.action != nil {
-            callingCarousselController?.hideSkipButton()
-        } else {
-            callingCarousselController?.showSkipButton()
+        if let featuresFirstController = self.parent!.parent as? FeaturesFirstViewController {
+            if content.action != nil {
+                featuresFirstController.changeSkipVisibility(visible: false)
+            } else {
+                featuresFirstController.changeSkipVisibility(visible: true)
+            }
         }
     }
     
