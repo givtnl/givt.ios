@@ -43,6 +43,8 @@ class FeatureMenuViewController: BaseMenuViewController {
             vc.btnCloseVisible = false
             vc.btnSkipVisible = false
             self.present(vc, animated: true, completion: {})
+            hideMenuAnimated()
+            self.navigationController?.popViewController(animated: false)
         }
     }
     

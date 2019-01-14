@@ -8,12 +8,19 @@
 
 import Foundation
 import UIKit
+import LGSideMenuController
 
 class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIActivityItemSource {
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var navItem: UINavigationItem!
     
     var items = [[Setting]]()
+    
+    func hideMenuAnimated() {
+        if let menuCtrl = UIApplication.shared.delegate?.window??.rootViewController as? LGSideMenuController {
+            menuCtrl.hideLeftViewAnimated()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

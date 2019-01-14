@@ -109,7 +109,7 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="vyK-ac-tsL" customClass="FeatureCarouselViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cpg-qL-iOu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51" y="26"/>
+            <point key="canvasLocation" x="238" y="-52"/>
         </scene>
         <!--Feature View Controller-->
         <scene sceneID="pW7-J4-oeh">
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fIu-Cv-yz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734.78260869565224" y="24.776785714285712"/>
+            <point key="canvasLocation" x="1128" y="17"/>
         </scene>
     </scenes>
     <resources>

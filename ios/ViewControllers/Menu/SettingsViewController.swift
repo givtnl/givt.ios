@@ -107,12 +107,6 @@ class SettingsViewController: BaseMenuViewController {
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
     }
     
-    private func hideMenuAnimated() {
-        if let menuCtrl = UIApplication.shared.delegate?.window??.rootViewController as? LGSideMenuController {
-            menuCtrl.hideLeftViewAnimated()
-        }
-    }
-    
     private func changeAmountPresets() {
         let vc = UIStoryboard(name: "AmountPresets", bundle: nil).instantiateInitialViewController()
         vc!.transitioningDelegate = self.slideFromRightAnimation
