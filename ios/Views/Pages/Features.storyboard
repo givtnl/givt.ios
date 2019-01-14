@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTq-T7-frQ" userLabel="carouselview">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                                 <connections>
                                     <segue destination="vyK-ac-tsL" kind="embed" identifier="EmbedFeaturesCarousel" id="D38-jq-3QW"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qDc-13-xR5" userLabel="btnSkip" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="536" width="560" height="44"/>
+                                <rect key="frame" x="20" y="714" width="335" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                 <gestureRecognizers/>
@@ -148,7 +148,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9gt-hh-Emu" userLabel="btnSkip" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="386" width="374" height="40"/>
+                                        <rect key="frame" x="20" y="352" width="374" height="40"/>
                                         <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                         <gestureRecognizers/>
@@ -171,13 +171,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.96529752016067505" green="0.74714535474777222" blue="0.33720988035202026" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="9gt-hh-Emu" firstAttribute="leading" secondItem="zCU-y0-gTS" secondAttribute="leading" constant="20" id="7Wq-PJ-gQR"/>
                                     <constraint firstItem="Qii-M5-7r5" firstAttribute="top" secondItem="PnB-eZ-tGI" secondAttribute="bottom" constant="20" id="8ip-g8-7U3"/>
                                     <constraint firstItem="PnB-eZ-tGI" firstAttribute="centerX" secondItem="zCU-y0-gTS" secondAttribute="centerX" id="Jjf-wN-EaO"/>
                                     <constraint firstAttribute="trailing" secondItem="Qii-M5-7r5" secondAttribute="trailing" constant="20" id="Wog-RH-epz"/>
                                     <constraint firstItem="PnB-eZ-tGI" firstAttribute="top" secondItem="zCU-y0-gTS" secondAttribute="top" constant="40" id="cuB-He-zVI"/>
-                                    <constraint firstAttribute="bottom" secondItem="9gt-hh-Emu" secondAttribute="bottom" constant="20" id="f5X-av-9GW"/>
-                                    <constraint firstAttribute="trailing" secondItem="9gt-hh-Emu" secondAttribute="trailing" constant="20" id="fPe-os-aAZ"/>
                                     <constraint firstItem="Qii-M5-7r5" firstAttribute="leading" secondItem="zCU-y0-gTS" secondAttribute="leading" constant="20" id="jb5-zR-lzK"/>
                                 </constraints>
                             </view>
@@ -190,9 +187,12 @@
                             <constraint firstAttribute="trailing" secondItem="zUa-aF-6bb" secondAttribute="trailing" id="ZBa-jO-maA"/>
                             <constraint firstItem="zUa-aF-6bb" firstAttribute="height" secondItem="Qrf-cU-sVK" secondAttribute="height" multiplier="0.5" constant="-38" id="dd7-Xa-CT0"/>
                             <constraint firstItem="zUa-aF-6bb" firstAttribute="leading" secondItem="Qrf-cU-sVK" secondAttribute="leading" id="fFu-CF-W5M"/>
+                            <constraint firstItem="SLq-VT-slz" firstAttribute="trailing" secondItem="9gt-hh-Emu" secondAttribute="trailing" constant="20" id="kk1-Ke-rUg"/>
                             <constraint firstItem="zCU-y0-gTS" firstAttribute="leading" secondItem="Qrf-cU-sVK" secondAttribute="leading" id="l1c-RO-IE8"/>
                             <constraint firstItem="zUa-aF-6bb" firstAttribute="top" secondItem="Qrf-cU-sVK" secondAttribute="top" id="qTl-DT-r0g"/>
+                            <constraint firstItem="SLq-VT-slz" firstAttribute="bottom" secondItem="9gt-hh-Emu" secondAttribute="bottom" constant="20" id="vbq-Td-yAW"/>
                             <constraint firstAttribute="trailing" secondItem="zCU-y0-gTS" secondAttribute="trailing" id="yee-sr-quO"/>
+                            <constraint firstItem="9gt-hh-Emu" firstAttribute="leading" secondItem="SLq-VT-slz" secondAttribute="leading" constant="20" id="zKB-rm-sJc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SLq-VT-slz"/>
                     </view>

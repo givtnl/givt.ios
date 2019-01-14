@@ -119,8 +119,8 @@ class LoginManager {
                                         UserDefaults.standard.userExt = config
                                         UserDefaults.standard.amountLimit = (uext.AmountLimit == 0) ? 499 : uext.AmountLimit
                                         
-                                        if UserDefaults.standard.lastFeatureShown == -1 && self.userClaim == .startedApp {
-                                            UserDefaults.standard.lastFeatureShown = 0
+                                        if(UserDefaults.standard.lastFeatureShown == -1 && UserDefaults.standard.userExt == nil){
+                                            UserDefaults.standard.lastFeatureShown = FeatureManager.shared.features[FeatureManager.shared.features.count]!.id
                                         }
                                         
                                         GivtManager.shared.getBeaconsFromOrganisation(completionHandler: { (status) in
@@ -364,6 +364,9 @@ class LoginManager {
         self.registerExtraDataFromUser(regUser) { b in
             if let b = b {
                 if b {
+                    if(UserDefaults.standard.lastFeatureShown == -1 && UserDefaults.standard.userExt == nil){
+                        UserDefaults.standard.lastFeatureShown = FeatureManager.shared.features[FeatureManager.shared.features.count]!.id
+                    }
                     self.userClaim = .giveOnce
                     UserDefaults.standard.isLoggedIn = true
                     BadgeService.shared.addBadge(badge: .completeRegistration)
