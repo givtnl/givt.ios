@@ -113,6 +113,10 @@ class FeatureManager {
     }
     
     func checkUpdateState(context: UIViewController) {
+        
+        let filteredFeatures = FeatureManager.shared.features.filter {
+            $0.value.mustSee == true
+        }
         var badges = UserDefaults.standard.featureBadges
         badges.append(contentsOf: features.filter { $0.key > lastFeatureShown && $0.value.mustSee && badges.firstIndex(of: $0.key) == nil }.map { $0.key })
         UserDefaults.standard.featureBadges = badges
@@ -120,7 +124,6 @@ class FeatureManager {
         if badges.count > 0 && !BadgeService.shared.hasBadge(badge: .showFeature) && lastFeatureShown != -1{
             BadgeService.shared.addBadge(badge: .showFeature)
         }
-
         if highestFeature > lastFeatureShown && lastFeatureShown != -1{
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { () -> Void in
                 if let sv = context.navigationController?.view.superview {
@@ -130,7 +133,7 @@ class FeatureManager {
                         featView.context = context
                         sv.addSubview(featView)
                         
-                        if self.highestFeature - UserDefaults.standard.lastFeatureShown == 1 {
+                        if(filteredFeatures.filter { $0.value.id > self.lastFeatureShown}.count == 1){
                             featView.label.text = self.features[self.highestFeature]?.notification
                         }
                         
@@ -145,17 +148,17 @@ class FeatureManager {
                         sv.layoutIfNeeded()
                         featView.invalidateIntrinsicContentSize()
                         sv.layoutIfNeeded()
+                        var newTopConstraint: CGFloat = 0
+                        //Need to have this for notch support
                         if #available(iOS 11.0, *){
-                            UIView.animate(withDuration: 0.6, animations: {() -> Void in
-                                topConstraint.constant = 38
-                                sv.layoutIfNeeded()
-                            })
+                            newTopConstraint = 38
                         } else {
-                            UIView.animate(withDuration: 0.6, animations: {() -> Void in
-                                topConstraint.constant = 24
-                                sv.layoutIfNeeded()
-                            })
+                            newTopConstraint = 24
                         }
+                        UIView.animate(withDuration: 0.6, animations: {() -> Void in
+                            topConstraint.constant = newTopConstraint
+                            sv.layoutIfNeeded()
+                        })
                         self.featureViewConstraint = topConstraint
 
                         
