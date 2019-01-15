@@ -32,8 +32,8 @@ class SettingsViewController: BaseMenuViewController {
     }
     
     @objc func badgeDidChange(notification:Notification) {
-        loadItems()
         DispatchQueue.main.async {
+            self.loadItems()
             self.table.reloadData()
         }
     }
