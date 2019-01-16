@@ -150,6 +150,12 @@ final class GivtManager: NSObject {
         getPublicMeta()
         
         hasOfflineGifts() ? BadgeService.shared.addBadge(badge: .offlineGifts) : BadgeService.shared.removeBadge(badge: .offlineGifts)
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            if AppServices.shared.isServerReachable {
+                self.processCachedGivts();
+            }
+        }
     }
     
     func processCachedGivts() {
