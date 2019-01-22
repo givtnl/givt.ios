@@ -413,7 +413,7 @@
 "InformationPersonalData" = "Givt needs this personal data to process your gifts. We are careful with this information. You can read it in our privacy statement.";
 
 /*Wie is Givt/NFCollect?*/
-"InformationAboutUs" = "Givt is a product of Givt B.V.\n\nWe are located on the Noordersluisweg 27 in Lelystad. For questions or complaints you can reach us via +31 320 320 115 or support@givtapp.net.\n\nWe are registered in the trade register of the Dutch Chamber of Commerce under number 64534421.";
+"InformationAboutUs" = "Givt is a product of Givt B.V.\n\nWe are located on the Noordersluisweg 27 in Lelystad, The Netherlands. For questions or complaints you can reach us via +31 320 320 115 or support@givtapp.net.\n\nWe are registered in the trade register of the Dutch Chamber of Commerce under number 64534421.";
 
 /*Over Givt*/
 "TitleAboutGivt" = "About Givt / Contact";
@@ -708,8 +708,8 @@
 "AmountPresetsErr50C" = "The amount has to be at least 50 cents";
 "AmountPresetsErrEmpty" = "Enter an amount";
 "GivtMinimumAmountPond" = "0.50 pond";
-"AlertBACSMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through a SEPA mandate, we need your IBAN for that. If you prefer to use BACS, we need your Sort Code and Account Number.";
-"AlertSEPAMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through BACS Direct Debit, we need your Sort Code and Account Number for that. If you prefer to use SEPA, we need your IBAN.";
+"AlertBACSMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through a SEPA mandate (€), we need your IBAN for that. If you prefer to use BACS (£), we need your Sort Code and Account Number.";
+"AlertSEPAMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through BACS Direct Debit (£), we need your Sort Code and Account Number for that. If you prefer to use SEPA (€), we need your IBAN.";
 "Important" = "Important";
 "FingerprintTitle" = "Fingerprint";
 "TouchID" = "Touch ID";
