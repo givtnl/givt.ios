@@ -120,11 +120,11 @@ class FeatureManager {
         var badges = UserDefaults.standard.featureBadges
         badges.append(contentsOf: features.filter { $0.key > lastFeatureShown && $0.value.mustSee && badges.firstIndex(of: $0.key) == nil }.map { $0.key })
         UserDefaults.standard.featureBadges = badges
-        if badges.count > 0 && !BadgeService.shared.hasBadge(badge: .showFeature) && lastFeatureShown != -1{
+        if badges.count > 0 && !BadgeService.shared.hasBadge(badge: .showFeature) {
             BadgeService.shared.addBadge(badge: .showFeature)
         }
         
-        if highestFeature > lastFeatureShown && lastFeatureShown != -1{
+        if highestFeature > lastFeatureShown {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { () -> Void in
                 if let sv = context.navigationController?.view.superview {
                     if let featView = Bundle.main.loadNibNamed("NewFeaturePopDownView", owner: context, options: nil)?.first as! NewFeaturePopDownView? {
