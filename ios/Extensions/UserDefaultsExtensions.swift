@@ -412,7 +412,7 @@ extension UserDefaults {
             if(UserDefaults.standard.object(forKey: "lastFeatureShown") != nil) {
                 return integer(forKey: UserDefaultsKeys.lastFeatureShown.rawValue)
             } else {
-                return -1
+                return 0
             }
             
         }
