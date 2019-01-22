@@ -9,7 +9,8 @@
 import Foundation
 
 extension Notification.Name {
-    public static let GivtBadgeNumberDidChange = Notification.Name("BadgeNumberDidChange")
-    public static let GivtConnectionStateDidChange = Notification.Name("ConnectionStateDidChange")
-    public static let GivtDidShowFeature = Notification.Name("DidShowFeature")
+    public static let GivtBadgeNumberDidChange = Notification.Name("GivtBadgeNumberDidChange")
+    public static let GivtConnectionStateDidChange = Notification.Name("GivtConnectionStateDidChange")
+    public static let GivtDidShowFeature = Notification.Name("GivtDidShowFeature")
+    public static let GivtUserDidLogin = Notification.Name("GivtUserDidLogin")
 }

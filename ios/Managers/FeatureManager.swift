@@ -97,7 +97,7 @@ class FeatureManager {
         return UserDefaults.standard.featureBadges.count > 0
     }
     
-    private var highestFeature: Int {
+    public var highestFeature: Int {
         if let max = self.features.keys.max() {
             return max
         }
@@ -110,20 +110,20 @@ class FeatureManager {
     
     init() {
         NotificationCenter.default.addObserver(self, selector: #selector(didShowFeature), name: .GivtDidShowFeature, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userDidLogin), name: .GivtUserDidLogin, object: nil)
     }
     
     func checkUpdateState(context: UIViewController) {
-        
         let filteredFeatures = FeatureManager.shared.features.filter {
-            $0.value.mustSee == true
+            $0.value.mustSee == true && $0.key > self.lastFeatureShown
         }
         var badges = UserDefaults.standard.featureBadges
         badges.append(contentsOf: features.filter { $0.key > lastFeatureShown && $0.value.mustSee && badges.firstIndex(of: $0.key) == nil }.map { $0.key })
         UserDefaults.standard.featureBadges = badges
-        
         if badges.count > 0 && !BadgeService.shared.hasBadge(badge: .showFeature) && lastFeatureShown != -1{
             BadgeService.shared.addBadge(badge: .showFeature)
         }
+        
         if highestFeature > lastFeatureShown && lastFeatureShown != -1{
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { () -> Void in
                 if let sv = context.navigationController?.view.superview {
@@ -133,8 +133,8 @@ class FeatureManager {
                         featView.context = context
                         sv.addSubview(featView)
                         
-                        if(filteredFeatures.filter { $0.value.id > self.lastFeatureShown}.count == 1){
-                            featView.label.text = self.features[self.highestFeature]?.notification
+                        if filteredFeatures.count == 1 {
+                            featView.label.text = filteredFeatures.first?.value.notification
                         }
                         
                         featView.tapGesture.addTarget(self, action: #selector(self.notificationTapped))
@@ -161,7 +161,6 @@ class FeatureManager {
                         })
                         self.featureViewConstraint = topConstraint
 
-                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {() -> Void in
                             self.dismissNotification()
                         })
@@ -177,11 +176,11 @@ class FeatureManager {
                 UIView.animate(withDuration: 0.6, animations: {() -> Void in
                     topConstraint.constant = -110
                     sv.layoutIfNeeded()
-                    UserDefaults.standard.lastFeatureShown = self.highestFeature
                 })
             }
             self.featureViewConstraint = nil
             self.currentContext = nil
+            UserDefaults.standard.lastFeatureShown = self.highestFeature
         }
     }
     
@@ -206,6 +205,8 @@ class FeatureManager {
                     vc.features = featuresToShow
                     popDownview.context?.present(vc, animated: true, completion: nil)
                 }
+                
+                UserDefaults.standard.lastFeatureShown = self.highestFeature
             }
         }
     }
@@ -214,9 +215,6 @@ class FeatureManager {
         if let vc = UIStoryboard(name: "Features", bundle: nil).instantiateInitialViewController() as? FeaturesNavigationController {
             if let feature = features.first(where: { $0.key == feature }) {
                 vc.features = [feature.value]
-                if UserDefaults.standard.lastFeatureShown < feature.value.id {
-                    UserDefaults.standard.lastFeatureShown = feature.value.id
-                }
                 return vc
             }
         }
@@ -234,5 +232,9 @@ class FeatureManager {
                 }
             }
         }
+    }
+    
+    @objc private func userDidLogin(notification: NSNotification) {
+        UserDefaults.standard.lastFeatureShown = self.highestFeature
     }
 }
