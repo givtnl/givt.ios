@@ -46,8 +46,12 @@ class LoginManager {
     
     public var isFullyRegistered: Bool {
         get {
-            return UserDefaults.standard.mandateSigned && (UserDefaults.standard.amountLimit != .max || UserDefaults.standard.amountLimit != -1)
+            return UserDefaults.standard.mandateSigned && UserDefaults.standard.amountLimit != .max && UserDefaults.standard.amountLimit != -1
         }
+    }
+    
+    public var isUserLoggedIn: Bool {
+        get { return UserDefaults.standard.isLoggedIn }
     }
     
     public var isBearerStillValid: Bool {
@@ -118,21 +122,19 @@ class LoginManager {
                                         
                                         UserDefaults.standard.userExt = config
                                         UserDefaults.standard.amountLimit = (uext.AmountLimit == 0) ? 499 : uext.AmountLimit
-                                        
-                                        if(UserDefaults.standard.lastFeatureShown == -1 && UserDefaults.standard.userExt == nil){
-                                            UserDefaults.standard.lastFeatureShown = FeatureManager.shared.features[FeatureManager.shared.features.count]!.id
-                                        }
-                                        
+                                                                                
                                         GivtManager.shared.getBeaconsFromOrganisation(completionHandler: { (status) in
                                             //do nothing
                                         })
                                         GivtManager.shared.getPublicMeta()
                                         self.log.info(message: "User logged in")
                                         self.checkMandate(completionHandler: { (status) in
+                                            NotificationCenter.default.post(name: .GivtUserDidLogin, object: nil)
                                             self.userClaim = self.isFullyRegistered ? .give : .giveOnce
                                             completionHandler(true, nil, nil)
                                         })
                                     } else {
+                                        NotificationCenter.default.post(name: .GivtUserDidLogin, object: nil)
                                         self.log.warning(message: "Strange: we can log in but cannot retrieve our own user data")
                                         completionHandler(true, nil, nil)
                                     }
@@ -364,9 +366,6 @@ class LoginManager {
         self.registerExtraDataFromUser(regUser) { b in
             if let b = b {
                 if b {
-                    if(UserDefaults.standard.lastFeatureShown == -1 && UserDefaults.standard.userExt == nil){
-                        UserDefaults.standard.lastFeatureShown = FeatureManager.shared.features[FeatureManager.shared.features.count]!.id
-                    }
                     self.userClaim = .giveOnce
                     UserDefaults.standard.isLoggedIn = true
                     BadgeService.shared.addBadge(badge: .completeRegistration)
