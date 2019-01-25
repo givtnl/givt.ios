@@ -53,7 +53,11 @@ class SettingsViewController: BaseMenuViewController {
         items = []        
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
-        let appInfo = Setting(name: "The app from A to Z", image: UIImage(named: "givt_atoz")!, showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
+        var appInfo: Setting? = nil
+        
+        if (FeatureManager.shared.features.count != 0) {
+            appInfo = Setting(name: "The app from A to Z", image: UIImage(named: "givt_atoz")!, showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
+        }
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
         
@@ -96,19 +100,33 @@ class SettingsViewController: BaseMenuViewController {
                 items[0].append(fingerprint)
             }
             items[1] = [changeAccount, screwAccount]
-            items[2] = [appInfo, aboutGivt, shareGivt]
+            if let info = appInfo {
+                items[2] = [info, aboutGivt, shareGivt]
+            } else {
+                items[2] = [aboutGivt, shareGivt]
+            }
             
             if !LoginManager.shared.isFullyRegistered {
                 items.insert([finishRegistration], at: 0)
             }
         } else {
-            items =
-                [
-                    [finishRegistration],
-                    [amountPresets],
-                    [changeAccount, screwAccount],
-                    [appInfo, aboutGivt, shareGivt],
-            ]
+            if let info = appInfo {
+                items =
+                    [
+                        [finishRegistration],
+                        [amountPresets],
+                        [changeAccount, screwAccount],
+                        [info, aboutGivt, shareGivt],
+                ]
+            } else {
+                items =
+                    [
+                        [finishRegistration],
+                        [amountPresets],
+                        [changeAccount, screwAccount],
+                        [aboutGivt, shareGivt],
+                ]
+            }
         }
     }
     

@@ -53,41 +53,7 @@ class FeatureManager {
     var featureViewConstraint: NSLayoutConstraint? = nil
     var currentContext: UIViewController? = nil
     
-    let features: [Int: Feature] = [
-        1: Feature( id: 1,
-                    title: "Giving from the list",
-                    notification: "Hi! Want to know more about giving from the list?",
-                    mustSee: true,
-                    pages: [
-                        FeaturePageContent(image: "selectlist",
-                                           color: #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1),
-                                           title: "Giving from the list",
-                                           subText: "Select an organisation from the list."),
-                        FeaturePageContent(image: "sugg_actions_white",
-                                           color: UIColor.darkGray,
-                                           title: "Choose an amount",
-                                           subText: "Just choose an amount and give")
-            ]),
-        2: Feature( id: 2,
-                    title: "Location giving",
-                    notification: "Hi! Want to know more about location giving?",
-                    mustSee: false,
-                    pages: [
-                        FeaturePageContent(image: "lookoutgivy",
-                                           color: UIColor.red,
-                                           title: "Location giving",
-                                           subText: "The Givt-app can detect where you are by accessing your location data."),
-                        FeaturePageContent(image: "sugg_actions_white",
-                                           color: UIColor.purple,
-                                           title: "Choose an amount",
-                                           subText: "Just choose an amount and give",
-                                           action: {(context) -> Void in
-                                            let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""), message: "Jaja, kwetet", preferredStyle: UIAlertControllerStyle.alert)
-                                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
-                                            context!.present(alert, animated: true, completion: {})
-                        })
-            ])
-    ]
+    let features: [Int: Feature] = [:]
     
     var featuresWithBadge: [Int] {
         return UserDefaults.standard.featureBadges
