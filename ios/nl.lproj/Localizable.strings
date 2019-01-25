@@ -797,3 +797,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FeatureMultipleNew" = "Hallo, we willen je graag enkele nieuwe features voorstellen.";
 "FeatureReadMore" = "Lees meer";
 "FeatureStepTitle" = "Feature {0} van {1}";
+
+/*FAQ Question Anonymity*/
+"FAQuestAnonymity" = "Hoe wordt mijn anonimiteit gewaarborgd door Givt?";
+
+/*FAQ Answer Anonymity*/
+"FAQanswerAnonymity" = "Givt draagt er zorg voor dat de ontvangende partij nooit terug zal kunnen zien van wie de gift afkomstig is en dat jij als gebruiker dus anoniem kan geven met Givt. Enkel de totaalbedragen zullen worden gedeeld met de ontvangende partij. Gegevens van jou als gebruiker zullen ook nooit doorverkocht worden aan derden, deze worden alleen ingezet om het voor jou makkelijker te maken om te geven en om op een manier betrokken te zijn bij de goede doelen zoals jij dat prettig vindt.\n\nWil je hier meer over lezen? Lees dan onze <a href=\"http://www.givtapp.net/privacyverklaringgivt-service\">online privacyverklaring</a> of scroll naar beneden voor de laatste vraag helemaal onderaan deze FAQ.";
