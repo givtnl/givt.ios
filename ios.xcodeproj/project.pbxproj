@@ -411,13 +411,6 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		D740E14E1F4C5328000531BA /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
 		D75B2BCD1FCEADCF000B7968 /* APIClients */ = {
 			isa = PBXGroup;
 			children = (
@@ -818,14 +811,12 @@
 			isa = PBXGroup;
 			children = (
 				D7347C88218862B1003128EC /* GoogleService-Info.plist */,
-				D7F746B31FD83F9F005354A3 /* Transitions */,
 				D75B2BCD1FCEADCF000B7968 /* APIClients */,
 				D73CA1C41F39BA360059A296 /* AppConstants.swift */,
 				FB3CE6D61F14CA200055185B /* AppDelegate.swift */,
 				FB3CE6E11F14CA200055185B /* Assets.xcassets */,
 				D761E9B21F18B450002B849B /* entypo.ttf */,
 				D7F746E01FD944C4005354A3 /* Extensions */,
-				D7E8E2C2216E00FD003C39C8 /* GoogleService-Info.plist */,
 				D7D6FA6C1F7BE416008A5604 /* Helpers */,
 				D7F746DE1FD944AE005354A3 /* images */,
 				FB3CE6E61F14CA200055185B /* Info.plist */,
