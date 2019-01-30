@@ -435,10 +435,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                         return $0.timestamp.getDay() > $1.timestamp.getDay()
                     }
                     
-//                    if $0.orgName != $1.orgName {
-//                        return $0.orgName < $1.orgName
-//                    }
-                    
                     if $0.timestamp.getHour() != $1.timestamp.getHour() {
                         return $0.timestamp.getHour() > $1.timestamp.getHour()
                     }

@@ -14,14 +14,8 @@ class CustomViewController: UINavigationController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationBar.shadowImage = UIImage()
         NavigationManager.shared.load(vc: self, animated: false)
-    }
-    @IBAction func unwindToAmount(segue: UIStoryboardSegue) {
-        
-    }
-    
+    }    
 }
