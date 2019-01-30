@@ -32,8 +32,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var secondView: UIView!
     @IBOutlet var thirdView: UIView!
     @IBOutlet var collectionButton: UIButton!
+    
     var topAnchor: NSLayoutConstraint!
     var leadingAnchor: NSLayoutConstraint!
+    
     private var amountLimit: Int {
         get {
             return UserDefaults.standard.amountLimit
@@ -137,7 +139,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     @objc func checkBadges(notification:Notification) {
         DispatchQueue.main.async {
-            self.menu.image = BadgeService.shared.hasBadge(badge: .completeRegistration) || BadgeService.shared.hasBadge(badge: .offlineGifts) ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
+            self.menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         }
     }
     
@@ -159,7 +161,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         checkAmounts()
         
         log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
-        menu.image = BadgeService.shared.hasBadge(badge: .completeRegistration) || BadgeService.shared.hasBadge(badge: .offlineGifts) ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
+        
+        FeatureManager.shared.checkUpdateState(context: self)
+        
+        menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         
         if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
             self._cameFromFAQ = true

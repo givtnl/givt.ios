@@ -413,7 +413,7 @@
 "InformationPersonalData" = "Givt needs this personal data to process your gifts. We are careful with this information. You can read it in our privacy statement.";
 
 /*Wie is Givt/NFCollect?*/
-"InformationAboutUs" = "Givt is a product of Givt B.V.\n\nWe are located on the Noordersluisweg 27 in Lelystad. For questions or complaints you can reach us via +31 320 320 115 or support@givtapp.net.\n\nWe are registered in the trade register of the Dutch Chamber of Commerce under number 64534421.";
+"InformationAboutUs" = "Givt is a product of Givt B.V.\n\nWe are located on the Noordersluisweg 27 in Lelystad, The Netherlands. For questions or complaints you can reach us via +31 320 320 115 or support@givtapp.net.\n\nWe are registered in the trade register of the Dutch Chamber of Commerce under number 64534421.";
 
 /*Over Givt*/
 "TitleAboutGivt" = "About Givt / Contact";
@@ -708,8 +708,8 @@
 "AmountPresetsErr50C" = "The amount has to be at least 50 cents";
 "AmountPresetsErrEmpty" = "Enter an amount";
 "GivtMinimumAmountPond" = "0.50 pond";
-"AlertBACSMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through a SEPA mandate, we need your IBAN for that. If you prefer to use BACS, we need your Sort Code and Account Number.";
-"AlertSEPAMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through BACS Direct Debit, we need your Sort Code and Account Number for that. If you prefer to use SEPA, we need your IBAN.";
+"AlertBACSMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through a SEPA mandate (€), we need your IBAN for that. If you prefer to use BACS (£), we need your Sort Code and Account Number.";
+"AlertSEPAMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through BACS Direct Debit (£), we need your Sort Code and Account Number for that. If you prefer to use SEPA (€), we need your IBAN.";
 "Important" = "Important";
 "FingerprintTitle" = "Fingerprint";
 "TouchID" = "Touch ID";
@@ -781,3 +781,10 @@
 "FeatureMultipleNew" = "Hello, we would like to introduce a few new features to you.";
 "FeatureReadMore" = "Read more";
 "FeatureStepTitle" = "Feature {0} of {1}";
+
+/*FAQ Question Anonymity*/
+"FAQuestAnonymity" = "How is my anonymity guaranteed by Givt?";
+
+/*FAQ Answer Anonymity*/
+"FAQanswerAnonymity" = "Givt ensures that the receiving party will never be able to see who has given the donation and that you, as a user, can give anonymously with Givt. Only the total amounts will be shared with the receiving party. Data from you as a user will never be resold to third parties, it is only used to make it easier for you to give and to be involved in the charities in a way that you prefer.\n\nDo you want to read more about this? Then read our privacy statement (scroll down to the last question at the bottom of this FAQ).";
+"NoticeSmsCode" = "Please note that you have to fill in the sms code in the webpage and not in the app. When you have signed the mandate you will be automatically redirected to the app.";

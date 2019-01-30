@@ -11,108 +11,53 @@ import SVProgressHUD
 import AVFoundation
 import LGSideMenuController
 
-class SettingsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIActivityItemSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items[section].count
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.items.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let setting = self.items[indexPath.section][indexPath.row]
-        
-        var cell: SettingsItemTableViewCell? = nil
-        if setting.showArrow {
-            if setting.showBadge {
-                cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemBadgeAndArrow", for: indexPath) as? SettingsItemBadgeAndArrow
-            } else {
-                cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemArrow", for: indexPath) as? SettingsItemArrow
-            }
-        } else {
-            if setting.isHighlighted {
-                cell = tableView.dequeueReusableCell(withIdentifier: "HighlightedItem", for: indexPath) as? HighlightedItem
-            } else {
-                cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemTableViewCell", for: indexPath) as? SettingsItemTableViewCell //normal cell
-            }
-            
-        }
-    
-        cell!.settingLabel.text = setting.name
-        cell!.settingImageView.image = setting.image
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let section = self.items[indexPath.section]
-        let cell = section[indexPath.row]
-        cell.callback()
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        settingsTable.dataSource = self
-        settingsTable.delegate = self
-        SVProgressHUD.setDefaultMaskType(.black)
-        SVProgressHUD.setDefaultAnimationType(.native)
-        SVProgressHUD.setBackgroundColor(.white)
-        NotificationCenter.default.addObserver(self, selector: #selector(badgeDidChange), name: .GivtBadgeNumberDidChange, object: nil)
-        // Do any additional setup after loading the view.
-    }
-    
-    @objc func badgeDidChange(notification:Notification) {
-        loadSettings()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBOutlet var settingsTable: UITableView!
-    
-    //new
-    
+class SettingsViewController: BaseMenuViewController {
     var logService: LogService = LogService.shared
     private let slideFromRightAnimation = PresentFromRight()
     
-    func activityViewControllerPlaceholderItem(_ activityViewController: UIActivityViewController) -> Any {
-        return ""
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType?) -> Any? {
-        return ""
-    }
-    
-    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivityType?) -> String {
-        return NSLocalizedString("GivtGewoonBlijvenGeven", comment: "")
-    }
-    
     private var navigationManager = NavigationManager.shared
+
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
     }
-    
-    var firstSection = [Setting]()
-    var secondSection = [Setting]()
-    
-    let section = ["Normale instellingen", "Anders"]
-    
-    var items = [[Setting]]()
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadSettings()
+        
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navItem.leftBarButtonItem = nil
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setBackgroundColor(.white)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(badgeDidChange), name: .GivtBadgeNumberDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userDidLogin), name: .GivtUserDidLogin, object: nil)
     }
     
-    func loadSettings(){
+    @objc func badgeDidChange(notification:Notification) {
+        //only if user is logged in
+        if LoginManager.shared.isUserLoggedIn {
+            DispatchQueue.main.async {
+                self.loadItems()
+                self.table.reloadData()
+            }
+        }
+    }
+    
+    @objc func userDidLogin(notification:Notification) {
+        DispatchQueue.main.async {
+            self.loadItems()
+            self.table.reloadData()
+        }
+    }
+    
+    override func loadItems(){
         items = []        
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
+        var appInfo: Setting? = nil
+        
+        if (FeatureManager.shared.features.count != 0) {
+            appInfo = Setting(name: "The app from A to Z", image: UIImage(named: "givt_atoz")!, showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
+        }
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
         
@@ -127,7 +72,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items.append([])
             items.append([])
             items.append([])
-            
 
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[0].append(givts)
@@ -144,7 +88,6 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
             items[0].append(changePersonalInfo)
             items[0].append(amountPresets)
             
-            
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             
             items[0].append(accessCode)
@@ -157,37 +100,40 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 items[0].append(fingerprint)
             }
             items[1] = [changeAccount, screwAccount]
-            items[2] = [aboutGivt, shareGivt]
+            if let info = appInfo {
+                items[2] = [info, aboutGivt, shareGivt]
+            } else {
+                items[2] = [aboutGivt, shareGivt]
+            }
             
             if !LoginManager.shared.isFullyRegistered {
                 items.insert([finishRegistration], at: 0)
             }
         } else {
-            items =
-                [
-                    [finishRegistration],
-                    [amountPresets],
-                    [changeAccount, screwAccount],
-                    [aboutGivt, shareGivt],
-            ]
+            if let info = appInfo {
+                items =
+                    [
+                        [finishRegistration],
+                        [amountPresets],
+                        [changeAccount, screwAccount],
+                        [info, aboutGivt, shareGivt],
+                ]
+            } else {
+                items =
+                    [
+                        [finishRegistration],
+                        [amountPresets],
+                        [changeAccount, screwAccount],
+                        [aboutGivt, shareGivt],
+                ]
+            }
         }
-        
-        DispatchQueue.main.async {
-            self.settingsTable.reloadData()
-        }
-        
     }
     
     private var device: AVCaptureDevice?
     private var blinkTimer: Timer = Timer()
     private func toggleTorch() {
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
-    }
-    
-    private func hideMenuAnimated() {
-        if let menuCtrl = UIApplication.shared.delegate?.window??.rootViewController as? LGSideMenuController {
-            menuCtrl.hideLeftViewAnimated()
-        }
     }
     
     private func changeAmountPresets() {
@@ -303,5 +249,10 @@ class SettingsViewController: UIViewController, UITableViewDataSource, UITableVi
         vc.transitioningDelegate = self.slideFromRightAnimation
         hideMenuAnimated()
         NavigationManager.shared.pushWithLogin(vc, context: self)
+    }
+    
+    private func appInfo() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "featureMenu") as! FeatureMenuViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
