@@ -30,6 +30,7 @@ class SettingsViewController: BaseMenuViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(badgeDidChange), name: .GivtBadgeNumberDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userDidLogin), name: .GivtUserDidLogin, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userViewedAnnualOverView), name: .GivtUserViewedAnnualOverview, object: nil)
     }
     
     @objc func badgeDidChange(notification:Notification) {
@@ -44,6 +45,14 @@ class SettingsViewController: BaseMenuViewController {
     
     @objc func userDidLogin(notification:Notification) {
         DispatchQueue.main.async {
+            self.loadItems()
+            self.table.reloadData()
+        }
+    }
+    
+    @objc func userViewedAnnualOverView(notification:Notification){
+        DispatchQueue.main.async {
+            UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.taxOverview.rawValue)
             self.loadItems()
             self.table.reloadData()
         }
