@@ -55,8 +55,8 @@ class AppConstants {
         #if PRODUCTION
             return "https://api.givtapp.net" // do not put this in prod before release!
         #else
-            return "https://givtapidebug.azurewebsites.net"
-            //return "http://192.168.77.107:1699"
+            return "https://givtapicoredbg.azurewebsites.net"
+            //return "http://localhost:5000"
         #endif
     }()
     
