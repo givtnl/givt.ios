@@ -47,6 +47,11 @@ class AppConstants {
                     [
                         "logo":"kerkdienstgemist",
                         "name":"Kerkdienst Gemist"
+                    ],
+                "org.opwekking":
+                    [
+                        "logo":"opwekking",
+                        "name":"Opwekking 2019"
                     ]
                ]
     }()
