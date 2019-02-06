@@ -788,3 +788,9 @@
 /*FAQ Answer Anonymity*/
 "FAQanswerAnonymity" = "Givt ensures that the receiving party will never be able to see who has given the donation and that you, as a user, can give anonymously with Givt. Only the total amounts will be shared with the receiving party. Data from you as a user will never be resold to third parties, it is only used to make it easier for you to give and to be involved in the charities in a way that you prefer.\n\nDo you want to read more about this? Then read our privacy statement (scroll down to the last question at the bottom of this FAQ).";
 "NoticeSmsCode" = "Important!\nPlease note that you have to fill in the sms code in the webpage and not in the app. When you have signed the mandate you will be automatically redirected to the app.";
+"Feature_push1_title" = "Push notifications";
+"Feature_push2_title" = "We'll help you through";
+"Feature_push3_title" = "Make sure it's turned on";
+"Feature_push1_message" = "With a push notification we can tell you something important without opening the app.";
+"Feature_push2_message" = "When there is something wrong with your account or with your gifts, we can communicate with you fast and easily.";
+"Feature_push3_message" = "Leave it on. We only communicate about urgent things.";
