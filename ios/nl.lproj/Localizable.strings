@@ -810,3 +810,4 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Feature_push1_message" = "Een pushnotificatie geeft ons de mogelijkheid om jou iets belangrijks te vertellen terwijl de app op de achtergrond is.";
 "Feature_push2_message" = "Mocht er iets niet kloppen met je account of misgaan met je giften, kunnen we dat makkelijk en snel communiceren.";
 "Feature_push3_message" = "Laat ze gerust aan staan. We communiceren alleen zaken die dringend zijn. ";
+"Feature_push_inappnot" = "Bekijk nu informatie rond pushnotificaties";
