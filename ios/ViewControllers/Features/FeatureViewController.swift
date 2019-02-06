@@ -26,9 +26,13 @@ class FeatureViewController: UIViewController {
         imgIllustration.image = UIImage(named: content.image)
         colorView.backgroundColor = content.color
         btnAction.isHidden = true;
-        if content.action != nil {
+        if content.action != nil && content.actionText != nil {
             action = content.action
             btnAction.isHidden = false
+            
+            if let text = content.actionText {
+                btnAction.setTitle(text(self), for: .normal)
+            }
             btnAction.addTarget(self, action: #selector(FeatureViewController.buttonClicked(_:)), for: .touchUpInside)
         } else {
             btnAction.isHidden = true
@@ -49,6 +53,7 @@ class FeatureViewController: UIViewController {
     @objc func buttonClicked(_ sender: AnyObject?) {
         if let actie = self.action {
             actie(self)
+            
         }
     }
 }
