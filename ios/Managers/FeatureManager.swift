@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class FeaturePageContent {
     let image: String
@@ -53,7 +54,40 @@ class FeatureManager {
     var featureViewConstraint: NSLayoutConstraint? = nil
     var currentContext: UIViewController? = nil
     
-    let features: [Int: Feature] = [:]
+    let features: [Int: Feature] = [
+        1: Feature( id: 1,
+                    title: NSLocalizedString("Feature_push1_title", comment:""),
+                    notification: NSLocalizedString("Feature_push_inappnot", comment:""),
+                    mustSee: true,
+                    pages: [
+                        FeaturePageContent(
+                            image: "feature_pushnot1",
+                            color: #colorLiteral(red: 0.30196078431, green: 0.59607843137, blue: 0.81176470588, alpha: 1),
+                            title: NSLocalizedString("Feature_push1_title", comment:""),
+                            subText: NSLocalizedString("Feature_push1_message", comment:"")),
+                        FeaturePageContent(
+                            image: "feature_pushnot2",
+                            color: #colorLiteral(red: 0.9581139684, green: 0.7486050725, blue: 0.3875802159, alpha: 1),
+                            title: NSLocalizedString("Feature_push2_title", comment:""),
+                            subText: NSLocalizedString("Feature_push2_message", comment:"")),
+                        FeaturePageContent(
+                            image: "feature_pushnot3",
+                            color: #colorLiteral(red: 0.9461216331, green: 0.4369549155, blue: 0.3431782126, alpha: 1),
+                            title: NSLocalizedString("Feature_push3_title", comment:""),
+                            subText: NSLocalizedString("Feature_push3_message", comment:""),
+                            action: {(context) -> Void in
+                                if #available(iOS 10.0, *) {
+                                    let center = UNUserNotificationCenter.current()
+                                    center.requestAuthorization(options: [.alert, .badge]) { (granted, error) in
+                                        
+                                    }
+                                } else {
+                                    UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+                                }
+                                UIApplication.shared.registerForRemoteNotifications()
+                        })
+            ])
+    ]
     
     var featuresWithBadge: [Int] {
         return UserDefaults.standard.featureBadges
