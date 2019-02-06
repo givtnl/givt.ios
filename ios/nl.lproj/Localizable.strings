@@ -804,3 +804,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 /*FAQ Answer Anonymity*/
 "FAQanswerAnonymity" = "Givt draagt er zorg voor dat de ontvangende partij nooit terug zal kunnen zien van wie de gift afkomstig is en dat jij als gebruiker dus anoniem kan geven met Givt. Enkel de totaalbedragen zullen worden gedeeld met de ontvangende partij. Gegevens van jou als gebruiker zullen ook nooit doorverkocht worden aan derden, deze worden alleen ingezet om het voor jou makkelijker te maken om te geven en om op een manier betrokken te zijn bij de goede doelen zoals jij dat prettig vindt.\n\nWil je hier meer over lezen? Lees dan onze privacyverklaring (scroll helemaal naar beneden in deze FAQ waar je de privacyverklaring gelijk kan openen).";
 "NoticeSmsCode" = "Let op!\nDe sms-code die je zult ontvangen, moet je invullen op het SlimPay scherm in je webpagina, dus niet in de app. Na het tekenen van de machtiging, ga je automatisch terug naar de Givt-app.";
+"Feature_push1_title" = "Pushnotificaties";
+"Feature_push2_title" = "We helpen je erdoorheen";
+"Feature_push3_title" = "Zorg dat ze aan staan";
+"Feature_push1_message" = "Een pushnotificatie geeft ons de mogelijkheid om jou iets belangrijks te vertellen terwijl de app op de achtergrond is.";
+"Feature_push2_message" = "Mocht er iets niet kloppen met je account of misgaan met je giften, kunnen we dat makkelijk en snel communiceren.";
+"Feature_push3_message" = "Laat ze gerust aan staan. We communiceren alleen zaken die dringend zijn. ";
