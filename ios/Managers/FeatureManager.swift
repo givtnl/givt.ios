@@ -15,18 +15,16 @@ class FeaturePageContent {
     let color: UIColor
     let title: String
     let subText: String
+    let actionText: ((UIViewController?)->String)?
     let action: ((UIViewController?)->Void)?
-    
-    init(image: String, color: UIColor, title: String, subText: String, action: ((UIViewController?)->Void)? = nil ) {
+
+    init(image: String, color: UIColor, title: String, subText: String, actionText: ((UIViewController?)->String)? = nil, action: ((UIViewController?)->Void)? = nil) {
         self.image = image
         self.color = color
         self.title = title
         self.subText = subText
-        if let actie = action {
-            self.action = actie
-        } else {
-            self.action = nil
-        }
+        self.actionText = actionText
+        self.action = action
     }
 }
 
@@ -75,16 +73,45 @@ class FeatureManager {
                             color: #colorLiteral(red: 0.9461216331, green: 0.4369549155, blue: 0.3431782126, alpha: 1),
                             title: NSLocalizedString("Feature_push3_title", comment:""),
                             subText: NSLocalizedString("Feature_push3_message", comment:""),
+                            actionText: {(context) -> String in
+                                return AppServices.shared.notificationsEnabled() ? NSLocalizedString("Feature_push_enabled_action", comment: "") : NSLocalizedString("Feature_push_notenabled_action", comment: "")
+                        },
                             action: {(context) -> Void in
                                 if #available(iOS 10.0, *) {
                                     let center = UNUserNotificationCenter.current()
-                                    center.requestAuthorization(options: [.alert, .badge]) { (granted, error) in
-                                        
-                                    }
+                                    center.getNotificationSettings(completionHandler: {(settings) in
+                                        if settings.authorizationStatus == .notDetermined {
+                                            center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                                                context?.dismiss(animated: true)
+                                            }
+                                        } else {
+                                            
+                                            if settings.authorizationStatus == .authorized {
+                                                context?.dismiss(animated: true)
+                                                return
+                                            }
+                                            
+                                            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                                                context?.dismiss(animated: true)
+                                                return
+                                            }
+                                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                                context?.dismiss(animated: true)
+                                            })
+                                        }
+                                    })
                                 } else {
-                                    UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+                                    if (AppServices.shared.notificationsEnabled()){
+                                        context?.dismiss(animated: true)
+                                        return
+                                    } else {
+                                        UIApplication.shared.registerForRemoteNotifications()
+                                        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                                            context?.dismiss(animated: true)
+                                        })
+                                    }
                                 }
-                                UIApplication.shared.registerForRemoteNotifications()
                         })
             ])
     ]
