@@ -40,6 +40,7 @@ extension UserDefaults {
         case yearsWithGivts
         case lastFeatureShown
         case featureBadges
+        case pushnotificationId
     }
     
     enum Showcase: String {
@@ -403,6 +404,16 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.viewedCoachMarks.rawValue)
+            synchronize()
+        }
+    }
+    
+    var pushnotificationId: String? {
+        get {
+            return string(forKey: UserDefaultsKeys.pushnotificationId.rawValue)
+        }
+        set (value){
+            set(value , forKey: UserDefaultsKeys.pushnotificationId.rawValue)
             synchronize()
         }
     }
