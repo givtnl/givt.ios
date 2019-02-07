@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
-    var notService: NotificationService = NotificationService.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
@@ -32,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         
         logService.info(message: "App started")
-        logService.info(message: "User notification status: " + String(notService.notificationsEnabled()))
+        logService.info(message: "User notification status: " + String(appService.notificationsEnabled()))
         
         if !UserDefaults.standard.showcases.isEmpty {
             UserDefaults.standard.showCasesByUserID = UserDefaults.standard.showcases
