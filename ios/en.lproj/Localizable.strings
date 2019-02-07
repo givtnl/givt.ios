@@ -794,6 +794,6 @@
 "Feature_push1_message" = "With a push notification we can tell you something important without opening the app.";
 "Feature_push2_message" = "When there is something wrong with your account or with your gifts, we can communicate with you fast and easily.";
 "Feature_push3_message" = "Leave it on. We only communicate about urgent things.";
-"Feature_push_inappnot" = "Watch some information about push notifications";
+"Feature_push_inappnot" = "Tap here to read more about push notifications";
 "Feature_push_notenabled_action" = "Switch on";
 "Feature_push_enabled_action" = "I understand";
