@@ -40,7 +40,7 @@ extension UserDefaults {
         case yearsWithGivts
         case lastFeatureShown
         case featureBadges
-        case pushnotificationId
+        case notificationsEnabled
     }
     
     enum Showcase: String {
@@ -408,12 +408,12 @@ extension UserDefaults {
         }
     }
     
-    var pushnotificationId: String? {
+    var notificationsEnabled: Bool? {
         get {
-            return string(forKey: UserDefaultsKeys.pushnotificationId.rawValue)
+            return bool(forKey: UserDefaultsKeys.notificationsEnabled.rawValue)
         }
         set (value){
-            set(value , forKey: UserDefaultsKeys.pushnotificationId.rawValue)
+            set(value , forKey: UserDefaultsKeys.notificationsEnabled.rawValue)
             synchronize()
         }
     }

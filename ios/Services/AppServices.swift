@@ -103,8 +103,4 @@ class AppServices {
     func vibrate() {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
     }
-    
-    func notificationsEnabled() -> Bool {
-        return UIApplication.shared.isRegisteredForRemoteNotifications && !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty)!
-    }
 }

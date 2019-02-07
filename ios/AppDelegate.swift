@@ -12,37 +12,29 @@ import AppCenterAnalytics
 import AppCenterCrashes
 import AppCenterPush
 import TrustKit
-import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
+    var notificationManager: NotificationManager = NotificationManager.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start("e36f1172-f316-4601-81f3-df0024a9860f", withServices:[
             MSAnalytics.self,
             MSCrashes.self,
-            MSPush.self
             ])
         
-        
-        
         logService.info(message: "App started")
-        logService.info(message: "User notification status: " + String(appService.notificationsEnabled()))
         
         if !UserDefaults.standard.showcases.isEmpty {
             UserDefaults.standard.showCasesByUserID = UserDefaults.standard.showcases
             UserDefaults.standard.showcases = []
         }
         
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().delegate = self
-        } else {
-            // Fallback on earlier versions
-        }
+        notificationManager.start()
         
         handleOldBeaconList()
         checkIfTempUser()
@@ -93,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         appService.stop()
+        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -106,6 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         logService.info(message: "App resuming")
         NavigationManager.shared.resume()
         GivtManager.shared.resume()
+        notificationManager.resume()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

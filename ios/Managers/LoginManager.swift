@@ -659,29 +659,6 @@ class LoginManager {
         } else {
             self.userClaim = .give
         }
-        
-        if (MSAppCenter.installId()?.uuidString != UserDefaults.standard.pushnotificationId && self.isUserLoggedIn){
-            if let pushnotId = MSAppCenter.installId()?.uuidString {
-                do {
-                    try APIClient.shared.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/pushnotificationid", data: ["PushnotificationId" : pushnotId], callback: { (response) in
-                        if let response = response {
-                            if (response.basicStatus == .ok){
-                                UserDefaults.standard.pushnotificationId = pushnotId
-                                self.log.info(message: "Pushnotificationid updated")
-                            } else {
-                                if let respBody = response.text {
-                                    self.log.error(message: "Could not update the push notification id : " + respBody)
-                                } else {
-                                    self.log.error(message: "Could not update the push notification id")
-                                }
-                            }
-                        }
-                    })
-                } catch {
-                    self.log.error(message: "\(error)")
-                }
-            }
-        }
     }
     
     func logout() {

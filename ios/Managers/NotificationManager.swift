@@ -1,0 +1,123 @@
+//
+//  NotificationManager.swift
+//  ios
+//
+//  Created by Bjorn Derudder on 07/02/2019.
+//  Copyright © 2019 Givt. All rights reserved.
+//
+
+
+import AppCenter
+import AppCenterPush
+import Foundation
+import UIKit
+import UserNotifications
+
+final class NotificationManager {
+    
+    static let shared: NotificationManager = NotificationManager()
+    
+    let loginManager = LoginManager.shared
+    let log = LogService.shared
+    let client = APIClient.shared
+    
+    var pushServiceRunning = false
+    
+    func start() -> Void {
+        log.info(message: "User notification status: " + String(self.notificationsEnabled))
+        if (self.notificationsEnabled) {
+            startNotificationService()
+        }
+        sendNotificationIdToServer()
+    }
+    
+    func resume() -> Void {
+        if self.notificationsEnabled {
+            startNotificationService()
+        }
+        sendNotificationIdToServer()
+    }
+    
+    func sendNotificationIdToServer() {
+        var pushnotId: String? = nil
+        if (notificationsEnabled) {
+            pushnotId = MSAppCenter.installId()?.uuidString
+        }
+        
+        if (notificationsEnabled != UserDefaults.standard.notificationsEnabled && loginManager.isUserLoggedIn){
+            do {
+                try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/pushnotificationid", data: ["PushNotificationId" : pushnotId as Any], callback: { (response) in
+                    if let response = response {
+                        if (response.basicStatus == .ok){
+                            UserDefaults.standard.notificationsEnabled = self.notificationsEnabled
+                            self.log.info(message: "PushNotificationid updated")
+                        } else {
+                            if let respBody = response.text {
+                                self.log.error(message: "Could not update the push notification id : " + respBody)
+                            } else {
+                                self.log.error(message: "Could not update the push notification id")
+                            }
+                        }
+                    }
+                })
+            } catch {
+                self.log.error(message: "\(error)")
+            }
+        }
+    }
+    
+    func requestNotificationPermission(completion: @escaping (Bool) -> Void ) -> Void {
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.getNotificationSettings(completionHandler: {(settings) in
+                if settings.authorizationStatus == .notDetermined {
+                    center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
+                        if granted {
+                            self.startNotificationService()
+                        }
+                        completion(true)
+                    }
+                } else {
+                    if settings.authorizationStatus == .authorized {
+                        self.startNotificationService()
+                        completion(true)
+                        return
+                    }
+                    
+                    guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                        completion(true)
+                        return
+                    }
+                    UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                        self.startNotificationService()
+                        completion(true)
+                    })
+                }
+            })
+        } else {
+            if (self.notificationsEnabled){
+                self.startNotificationService()
+                completion(true)
+            } else {
+                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    self.startNotificationService()
+                    completion(true)
+                })
+            }
+        }
+    }
+    
+    func startNotificationService() -> Void {
+        if (loginManager.isUserLoggedIn && !self.pushServiceRunning){
+            MSAppCenter.startService(MSPush.self)
+            self.pushServiceRunning = true
+        }
+    }
+    
+    func stop() -> Void {
+        
+    }
+    
+    var notificationsEnabled: Bool { get { return !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty ?? true) } }
+}
