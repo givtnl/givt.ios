@@ -74,7 +74,7 @@ class FeatureManager {
                             title: NSLocalizedString("Feature_push3_title", comment:""),
                             subText: NSLocalizedString("Feature_push3_message", comment:""),
                             actionText: {(context) -> String in
-                                return AppServices.shared.notificationsEnabled() ? NSLocalizedString("Feature_push_enabled_action", comment: "") : NSLocalizedString("Feature_push_notenabled_action", comment: "")
+                                return NotificationService.shared.notificationsEnabled() ? NSLocalizedString("Feature_push_enabled_action", comment: "") : NSLocalizedString("Feature_push_notenabled_action", comment: "")
                         },
                             action: {(context) -> Void in
                                 if #available(iOS 10.0, *) {
@@ -101,7 +101,7 @@ class FeatureManager {
                                         }
                                     })
                                 } else {
-                                    if (AppServices.shared.notificationsEnabled()){
+                                    if (NotificationService.shared.notificationsEnabled()){
                                         context?.dismiss(animated: true)
                                         return
                                     } else {

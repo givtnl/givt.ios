@@ -659,6 +659,19 @@ class LoginManager {
             self.userClaim = .give
         }
         
+        if (NotificationService.shared.checkIfPushNotificationIdChanged()){
+            NotificationService.shared.sendPushNotificationId { (success) in
+                if let success = success {
+                    if (success){
+                        self.log.info(message: "Pushnotificationid updated")
+                    } else {
+                        self.log.info(message: "Pushnotificationid could not be updated")
+                    }
+                } else {
+                    self.log.info(message: "Pushnotificationid could not be updated")
+                }
+            }
+        }
     }
     
     func logout() {
