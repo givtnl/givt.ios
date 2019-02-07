@@ -809,7 +809,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Feature_push3_title" = "Zorg dat ze aan staan";
 "Feature_push1_message" = "Een pushnotificatie geeft ons de mogelijkheid om jou iets belangrijks te vertellen terwijl de app op de achtergrond is.";
 "Feature_push2_message" = "Mocht er iets niet kloppen met je account of misgaan met je giften, kunnen we dat makkelijk en snel communiceren.";
-"Feature_push3_message" = "Laat ze gerust aan staan. We communiceren alleen zaken die dringend zijn. ";
+"Feature_push3_message" = "En laat ze gerust aan staan. We communiceren alleen zaken die dringend zijn. ";
 "Feature_push_inappnot" = "Bekijk nu informatie rond pushnotificaties";
 "Feature_push_notenabled_action" = "Inschakelen";
 "Feature_push_enabled_action" = "Ik begrijp het";
