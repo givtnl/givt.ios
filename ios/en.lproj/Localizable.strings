@@ -790,10 +790,10 @@
 "NoticeSmsCode" = "Important!\nPlease note that you have to fill in the sms code in the webpage and not in the app. When you have signed the mandate you will be automatically redirected to the app.";
 "Feature_push1_title" = "Push notifications";
 "Feature_push2_title" = "We'll help you through";
-"Feature_push3_title" = "Make sure it's turned on";
+"Feature_push3_title" = "Make sure they're switched on";
 "Feature_push1_message" = "With a push notification we can tell you something important without opening the app.";
 "Feature_push2_message" = "When there is something wrong with your account or with your gifts, we can communicate with you fast and easily.";
-"Feature_push3_message" = "Leave it on. We only communicate about urgent things.";
+"Feature_push3_message" = "Leave them on. We only communicate about urgent matters.";
 "Feature_push_inappnot" = "Tap here to read more about push notifications";
 "Feature_push_notenabled_action" = "Switch on";
 "Feature_push_enabled_action" = "I understand";
