@@ -30,13 +30,15 @@ class FeaturePageContent {
 
 class Feature {
     let id: Int
+    let icon: String
     let title: String
     let notification: String
     let mustSee: Bool
     let shouldShow: ()->Bool
     let pages: [FeaturePageContent]
     
-    init(id: Int, title: String, notification: String, mustSee: Bool, shouldShow: @escaping ()->Bool = { ()->Bool in return true }, pages: [FeaturePageContent]) {
+    init(id: Int, icon: String, title: String, notification: String, mustSee: Bool, shouldShow: @escaping ()->Bool = { ()->Bool in return true }, pages: [FeaturePageContent]) {
+        self.icon = icon
         self.id = id
         self.title = title
         self.notification = notification
@@ -54,6 +56,7 @@ class FeatureManager {
     
     let features: [Int: Feature] = [
         1: Feature( id: 1,
+                    icon: "bell",
                     title: NSLocalizedString("Feature_push1_title", comment:""),
                     notification: NSLocalizedString("Feature_push_inappnot", comment:""),
                     mustSee: true,
