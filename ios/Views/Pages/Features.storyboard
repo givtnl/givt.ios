@@ -180,7 +180,7 @@
                                     <constraint firstItem="Qii-M5-7r5" firstAttribute="top" secondItem="PnB-eZ-tGI" secondAttribute="bottom" constant="20" id="8ip-g8-7U3"/>
                                     <constraint firstItem="PnB-eZ-tGI" firstAttribute="centerX" secondItem="zCU-y0-gTS" secondAttribute="centerX" id="Jjf-wN-EaO"/>
                                     <constraint firstAttribute="trailing" secondItem="Qii-M5-7r5" secondAttribute="trailing" constant="20" id="Wog-RH-epz"/>
-                                    <constraint firstItem="PnB-eZ-tGI" firstAttribute="top" secondItem="zCU-y0-gTS" secondAttribute="top" constant="40" id="cuB-He-zVI"/>
+                                    <constraint firstItem="PnB-eZ-tGI" firstAttribute="top" secondItem="zCU-y0-gTS" secondAttribute="top" constant="20" id="cuB-He-zVI"/>
                                     <constraint firstItem="Qii-M5-7r5" firstAttribute="leading" secondItem="zCU-y0-gTS" secondAttribute="leading" constant="20" id="jb5-zR-lzK"/>
                                 </constraints>
                             </view>
