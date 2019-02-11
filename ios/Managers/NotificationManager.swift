@@ -23,6 +23,10 @@ final class NotificationManager {
     
     var pushServiceRunning = false
     
+    init() {
+        NotificationCenter.default.addObserver(self, selector: #selector(userDidLogin), name: .GivtUserDidLogin, object: nil)
+    }
+    
     func start() -> Void {
         log.info(message: "User notification status: " + String(self.notificationsEnabled))
         if (self.notificationsEnabled) {
@@ -38,24 +42,24 @@ final class NotificationManager {
         sendNotificationIdToServer()
     }
     
-    func sendNotificationIdToServer() {
+    func sendNotificationIdToServer(force: Bool = false) {
         var pushnotId: String? = nil
         if (notificationsEnabled) {
             pushnotId = MSAppCenter.installId()?.uuidString
         }
         
-        if (notificationsEnabled != UserDefaults.standard.notificationsEnabled && loginManager.isUserLoggedIn){
+        if ((force || notificationsEnabled != UserDefaults.standard.notificationsEnabled) && loginManager.isUserLoggedIn){
             do {
                 try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/pushnotificationid", data: ["PushNotificationId" : pushnotId as Any], callback: { (response) in
                     if let response = response {
                         if (response.basicStatus == .ok){
                             UserDefaults.standard.notificationsEnabled = self.notificationsEnabled
-                            self.log.info(message: "PushNotificationid updated")
+                            self.log.info(message: "PushNotificationId updated")
                         } else {
                             if let respBody = response.text {
-                                self.log.error(message: "Could not update the push notification id : " + respBody)
+                                self.log.error(message: "Could not update the PushNotificationId: " + respBody)
                             } else {
-                                self.log.error(message: "Could not update the push notification id")
+                                self.log.error(message: "Could not update the PushNotificationId")
                             }
                         }
                     }
@@ -117,6 +121,10 @@ final class NotificationManager {
     
     func stop() -> Void {
         
+    }
+    
+    @objc private func userDidLogin(notification: NSNotification) {
+        sendNotificationIdToServer(force: true)
     }
     
     var notificationsEnabled: Bool { get { return !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty ?? true) } }
