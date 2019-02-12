@@ -38,7 +38,7 @@ class FeatureCarouselViewController: BaseCarouselViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 0.831372549, green: 0.8352941176, blue: 0.8666666667, alpha: 1)
-        pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        pageControl.pageIndicatorTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.2029644692)
         if #available(iOS 11.0, *) {
             NSLayoutConstraint.activate([
                 pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
