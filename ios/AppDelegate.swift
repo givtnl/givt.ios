@@ -22,9 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
-        MSAppCenter.start("e36f1172-f316-4601-81f3-df0024a9860f", withServices:[
+        MSAppCenter.start(AppConstants.appcenterId, withServices:[
             MSAnalytics.self,
-            MSCrashes.self,
+            MSCrashes.self
             ])
         
         logService.info(message: "App started")
