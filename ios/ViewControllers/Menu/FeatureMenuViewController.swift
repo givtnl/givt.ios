@@ -32,7 +32,8 @@ class FeatureMenuViewController: BaseMenuViewController {
         items.append([])
         for feat in FeatureManager.shared.features.sorted(by: {pair1, pair2 in pair1.value.title < pair2.value.title }) {
             let showBadge = feat.value.mustSee && FeatureManager.shared.featuresWithBadge.firstIndex(of: feat.key) != nil
-            let item = Setting(name: feat.value.title, image: UIImage(), showBadge: showBadge, callback: { self.showFeature(which: feat.key) }, showArrow: true, isHighlighted: false)
+            let item = Setting(name: feat.value.title, image: UIImage(named: feat.value.icon)!, showBadge: showBadge,
+                               callback: { self.showFeature(which: feat.key) }, showArrow: true, isHighlighted: false)
             items[0].append(item)
         }
     }

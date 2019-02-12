@@ -10,38 +10,31 @@ import UIKit
 import AppCenter
 import AppCenterAnalytics
 import AppCenterCrashes
+import AppCenterPush
 import TrustKit
-import Firebase
-import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
+    var notificationManager: NotificationManager = NotificationManager.shared
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
-        MSAppCenter.start("e36f1172-f316-4601-81f3-df0024a9860f", withServices:[
+        MSAppCenter.start(AppConstants.appcenterId, withServices:[
             MSAnalytics.self,
             MSCrashes.self
             ])
-        Messaging.messaging().delegate = self
-        FirebaseApp.configure()
         
         logService.info(message: "App started")
-        logService.info(message: "User notification status: " + String(appService.notificationsEnabled()))
         
         if !UserDefaults.standard.showcases.isEmpty {
             UserDefaults.standard.showCasesByUserID = UserDefaults.standard.showcases
             UserDefaults.standard.showcases = []
         }
         
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().delegate = self
-        } else {
-            // Fallback on earlier versions
-        }
+        notificationManager.start()
         
         handleOldBeaconList()
         checkIfTempUser()
@@ -92,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         appService.stop()
+        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -105,6 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         logService.info(message: "App resuming")
         NavigationManager.shared.resume()
         GivtManager.shared.resume()
+        notificationManager.resume()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -188,22 +183,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        Messaging.messaging().apnsToken = deviceToken
-    }
-    
-    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
-        
-    }
-    
-    func application(_ application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [AnyHashable : Any], withResponseInfo responseInfo: [AnyHashable : Any], completionHandler: @escaping () -> Void) {
-        
-    }
-    
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        
-    }
-    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
         /* handle incoming notification */
         print(userInfo)
@@ -213,12 +192,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         /* handle incoming notification */ 
         print(userInfo)
     }
-    
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        let dataDict:[String: String] = ["token": fcmToken]
-        LogService.shared.info(message: "Firebase notification: " + fcmToken)
-        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
-    }
-    
 }
 

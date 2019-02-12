@@ -13,9 +13,8 @@ target 'ios' do
   pod 'SwipeCellKit', '~> 2.1.0'
   pod 'MaterialShowcase', '0.6.2'
   pod 'SwiftCron', :git => 'https://github.com/lennie9/SwiftCron.git', :tag => '0.4.8'
-  pod 'Firebase/Core'
-  pod 'Firebase/Messaging'
   pod 'ReachabilitySwift'
+  pod 'AppCenter/Push'
   # Pods for ios
 
 end

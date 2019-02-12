@@ -47,6 +47,11 @@ class AppConstants {
                     [
                         "logo":"kerkdienstgemist",
                         "name":"Kerkdienst Gemist"
+                    ],
+                "org.opwekking":
+                    [
+                        "logo":"opwekking",
+                        "name":"Opwekking 2019"
                     ]
                ]
     }()
@@ -55,8 +60,8 @@ class AppConstants {
         #if PRODUCTION
             return "https://api.givtapp.net" // do not put this in prod before release!
         #else
-            return "https://givtapidebug.azurewebsites.net"
-            //return "http://192.168.77.107:1699"
+            return "https://givtapicoredbg.azurewebsites.net"
+            //return "http://localhost:5000"
         #endif
     }()
     
@@ -110,6 +115,14 @@ class AppConstants {
             return (((urlTypes[0] as! NSDictionary).value(forKey: "CFBundleURLSchemes")) as! NSArray)[0] as! String + "://"
         }
     }
+    
+    static var appcenterId: String = {
+        #if PRODUCTION
+            return "1cf2ecca-1ceb-4bd9-87f9-c3aface80e0b"
+        #else
+            return "e36f1172-f316-4601-81f3-df0024a9860f"
+        #endif
+    }()
     
     
 }
