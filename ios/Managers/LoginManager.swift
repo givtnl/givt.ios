@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import SwiftClient
 import LocalAuthentication
-import AppCenter
 
 class LoginManager {
     
