@@ -25,6 +25,7 @@ class FeaturesFirstViewController: UIViewController {
         super.viewDidLoad()
         navItem.leftBarButtonItem = btnBackVisible ? navItem.leftBarButtonItem : nil
         navItem.rightBarButtonItem = btnCloseVisible ? navItem.rightBarButtonItem : nil
+        btnSkip.setTitle(NSLocalizedString("FeatureButtonSkip", comment: ""), for: .normal)
         btnSkip.isHidden = !btnSkipVisible
     }
     
