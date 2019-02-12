@@ -117,10 +117,15 @@ final class NotificationManager {
     }
     
     func startNotificationService() -> Void {
-        if loginManager.isUserLoggedIn && !self.pushServiceRunning {
-            MSAppCenter.startService(MSPush.self)
-            self.pushServiceRunning = true
-            MSPush.setEnabled(true)
+        if loginManager.isUserLoggedIn {
+            if !self.pushServiceRunning {
+                MSAppCenter.startService(MSPush.self)
+                self.pushServiceRunning = true
+            }
+            
+            if !MSPush.isEnabled() {
+                MSPush.setEnabled(true)
+            }
         }
     }
     
