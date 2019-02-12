@@ -34,16 +34,14 @@ class Feature {
     let title: String
     let notification: String
     let mustSee: Bool
-    let shouldShow: ()->Bool
     let pages: [FeaturePageContent]
     
-    init(id: Int, icon: String, title: String, notification: String, mustSee: Bool, shouldShow: @escaping ()->Bool = { ()->Bool in return true }, pages: [FeaturePageContent]) {
+    init(id: Int, icon: String, title: String, notification: String, mustSee: Bool, pages: [FeaturePageContent]) {
         self.icon = icon
         self.id = id
         self.title = title
         self.notification = notification
         self.mustSee = mustSee
-        self.shouldShow = shouldShow
         self.pages = pages
     }
 }
@@ -127,6 +125,7 @@ class FeatureManager {
                 if let sv = context.navigationController?.view.superview {
                     if let featView = Bundle.main.loadNibNamed("NewFeaturePopDownView", owner: context, options: nil)?.first as! NewFeaturePopDownView? {
                         self.currentContext = context
+                        featView.dropShadow()
                         featView.translatesAutoresizingMaskIntoConstraints = false
                         featView.context = context
                         sv.addSubview(featView)
