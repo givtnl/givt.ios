@@ -116,5 +116,13 @@ class AppConstants {
         }
     }
     
+    static var appcenterId: String = {
+        #if PRODUCTION
+            return "1cf2ecca-1ceb-4bd9-87f9-c3aface80e0b"
+        #else
+            return "e36f1172-f316-4601-81f3-df0024a9860f"
+        #endif
+    }
+    
     
 }
