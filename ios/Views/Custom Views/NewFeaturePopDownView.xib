@@ -26,8 +26,8 @@
             <color key="tintColor" red="0.30196078431372547" green="0.59607843137254901" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="V1A-WW-VBc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="9og-Er-wze"/>
-                <constraint firstAttribute="trailing" secondItem="V1A-WW-VBc" secondAttribute="trailing" constant="8" id="A2r-4P-Bmx"/>
+                <constraint firstItem="V1A-WW-VBc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="9og-Er-wze"/>
+                <constraint firstAttribute="trailing" secondItem="V1A-WW-VBc" secondAttribute="trailing" constant="10" id="A2r-4P-Bmx"/>
                 <constraint firstAttribute="bottom" secondItem="V1A-WW-VBc" secondAttribute="bottom" constant="8" id="YPx-v3-5ZK"/>
                 <constraint firstItem="V1A-WW-VBc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jtr-MO-GBs"/>
                 <constraint firstItem="V1A-WW-VBc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="peU-KI-u0Q"/>
