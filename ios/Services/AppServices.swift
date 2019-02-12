@@ -88,10 +88,6 @@ class AppServices {
         notificationLocker.unlock()
     }
     
-    func notificationsEnabled() -> Bool {
-        return UIApplication.shared.isRegisteredForRemoteNotifications && !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty)!
-    }
-    
     static func isLocationServicesEnabled() -> Bool {
         return CLLocationManager.locationServicesEnabled()
     }

@@ -64,6 +64,9 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate {
         yearField.inputView = yearPicker
         yearField.text = UserDefaults.standard.yearsWithGivts.count >= 1 ? String(UserDefaults.standard.yearsWithGivts.first!) : ""
         createToolbar(yearField)
+        
+        NotificationCenter.default.post(name: .GivtUserViewedAnnualOverview, object: nil)
+
     }
 
     override func didReceiveMemoryWarning() {

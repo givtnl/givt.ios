@@ -30,6 +30,7 @@ class SettingsViewController: BaseMenuViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(badgeDidChange), name: .GivtBadgeNumberDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(userDidLogin), name: .GivtUserDidLogin, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(userViewedAnnualOverView), name: .GivtUserViewedAnnualOverview, object: nil)
     }
     
     @objc func badgeDidChange(notification:Notification) {
@@ -49,6 +50,14 @@ class SettingsViewController: BaseMenuViewController {
         }
     }
     
+    @objc func userViewedAnnualOverView(notification:Notification){
+        DispatchQueue.main.async {
+            UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.taxOverview.rawValue)
+            self.loadItems()
+            self.table.reloadData()
+        }
+    }
+    
     override func loadItems(){
         items = []        
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
@@ -56,7 +65,7 @@ class SettingsViewController: BaseMenuViewController {
         var appInfo: Setting? = nil
         
         if (FeatureManager.shared.features.count != 0) {
-            appInfo = Setting(name: "The app from A to Z", image: UIImage(named: "givt_atoz")!, showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
+            appInfo = Setting(name: NSLocalizedString("FeatureMenuText", comment: ""), image: UIImage(named: "givt_atoz")!, showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
         }
         let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)

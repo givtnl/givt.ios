@@ -26,9 +26,7 @@ class NavigationManager {
     
     var delegate: NavigationManagerDelegate?
     
-    private init() {
-
-    }
+    private init() { }
    
     private var currentAlert: UIAlertController?
     public func finishRegistrationAlert(_ context: UIViewController) {

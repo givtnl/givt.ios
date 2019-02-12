@@ -8,41 +8,40 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 class FeaturePageContent {
     let image: String
     let color: UIColor
     let title: String
     let subText: String
+    let actionText: ((UIViewController?)->String)?
     let action: ((UIViewController?)->Void)?
-    
-    init(image: String, color: UIColor, title: String, subText: String, action: ((UIViewController?)->Void)? = nil ) {
+
+    init(image: String, color: UIColor, title: String, subText: String, actionText: ((UIViewController?)->String)? = nil, action: ((UIViewController?)->Void)? = nil) {
         self.image = image
         self.color = color
         self.title = title
         self.subText = subText
-        if let actie = action {
-            self.action = actie
-        } else {
-            self.action = nil
-        }
+        self.actionText = actionText
+        self.action = action
     }
 }
 
 class Feature {
     let id: Int
+    let icon: String
     let title: String
     let notification: String
     let mustSee: Bool
-    let shouldShow: ()->Bool
     let pages: [FeaturePageContent]
     
-    init(id: Int, title: String, notification: String, mustSee: Bool, shouldShow: @escaping ()->Bool = { ()->Bool in return true }, pages: [FeaturePageContent]) {
+    init(id: Int, icon: String, title: String, notification: String, mustSee: Bool, pages: [FeaturePageContent]) {
+        self.icon = icon
         self.id = id
         self.title = title
         self.notification = notification
         self.mustSee = mustSee
-        self.shouldShow = shouldShow
         self.pages = pages
     }
 }
@@ -53,7 +52,38 @@ class FeatureManager {
     var featureViewConstraint: NSLayoutConstraint? = nil
     var currentContext: UIViewController? = nil
     
-    let features: [Int: Feature] = [:]
+    let features: [Int: Feature] = [
+        1: Feature( id: 1,
+                    icon: "bell",
+                    title: NSLocalizedString("Feature_push1_title", comment:""),
+                    notification: NSLocalizedString("Feature_push_inappnot", comment:""),
+                    mustSee: true,
+                    pages: [
+                        FeaturePageContent(
+                            image: "feature_pushnot1",
+                            color: #colorLiteral(red: 0.30196078431, green: 0.59607843137, blue: 0.81176470588, alpha: 1),
+                            title: NSLocalizedString("Feature_push1_title", comment:""),
+                            subText: NSLocalizedString("Feature_push1_message", comment:"")),
+                        FeaturePageContent(
+                            image: "feature_pushnot2",
+                            color: #colorLiteral(red: 0.9581139684, green: 0.7486050725, blue: 0.3875802159, alpha: 1),
+                            title: NSLocalizedString("Feature_push2_title", comment:""),
+                            subText: NSLocalizedString("Feature_push2_message", comment:"")),
+                        FeaturePageContent(
+                            image: "feature_pushnot3",
+                            color: #colorLiteral(red: 0.9461216331, green: 0.4369549155, blue: 0.3431782126, alpha: 1),
+                            title: NSLocalizedString("Feature_push3_title", comment:""),
+                            subText: NSLocalizedString("Feature_push3_message", comment:""),
+                            actionText: {(context) -> String in
+                                return NotificationManager.shared.notificationsEnabled ? NSLocalizedString("Feature_push_enabled_action", comment: "") : NSLocalizedString("Feature_push_notenabled_action", comment: "")
+                            },
+                            action: {(context) -> Void in
+                                NotificationManager.shared.requestNotificationPermission(completion: {(success) in
+                                    context?.dismiss(animated: true)
+                                })
+                            })
+            ])
+    ]
     
     var featuresWithBadge: [Int] {
         return UserDefaults.standard.featureBadges
@@ -95,6 +125,7 @@ class FeatureManager {
                 if let sv = context.navigationController?.view.superview {
                     if let featView = Bundle.main.loadNibNamed("NewFeaturePopDownView", owner: context, options: nil)?.first as! NewFeaturePopDownView? {
                         self.currentContext = context
+                        featView.dropShadow()
                         featView.translatesAutoresizingMaskIntoConstraints = false
                         featView.context = context
                         sv.addSubview(featView)
