@@ -122,7 +122,7 @@ class AppConstants {
         #else
             return "e36f1172-f316-4601-81f3-df0024a9860f"
         #endif
-    }
+    }()
     
     
 }
