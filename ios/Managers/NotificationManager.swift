@@ -28,16 +28,20 @@ final class NotificationManager {
     }
     
     func start() -> Void {
-        log.info(message: "User notification status: " + String(self.notificationsEnabled))
-        if (self.notificationsEnabled) {
+        log.info(message: "User notification status: " + String(notificationsEnabled))
+        if notificationsEnabled {
             startNotificationService()
+        } else {
+            MSPush.setEnabled(false)
         }
         sendNotificationIdToServer()
     }
     
     func resume() -> Void {
-        if self.notificationsEnabled {
+        if notificationsEnabled {
             startNotificationService()
+        } else {
+            MSPush.setEnabled(false)
         }
         sendNotificationIdToServer()
     }
@@ -48,7 +52,7 @@ final class NotificationManager {
             pushnotId = MSAppCenter.installId()?.uuidString
         }
         
-        if ((force || notificationsEnabled != UserDefaults.standard.notificationsEnabled) && loginManager.isUserLoggedIn){
+        if (force || notificationsEnabled != UserDefaults.standard.notificationsEnabled) && loginManager.isUserLoggedIn {
             do {
                 try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/pushnotificationid", data: ["PushNotificationId" : pushnotId as Any], callback: { (response) in
                     if let response = response {
@@ -99,8 +103,8 @@ final class NotificationManager {
                 }
             })
         } else {
-            if (self.notificationsEnabled){
-                self.startNotificationService()
+            if notificationsEnabled {
+                startNotificationService()
                 completion(true)
             } else {
                 UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
@@ -113,9 +117,15 @@ final class NotificationManager {
     }
     
     func startNotificationService() -> Void {
-        if (loginManager.isUserLoggedIn && !self.pushServiceRunning){
-            MSAppCenter.startService(MSPush.self)
-            self.pushServiceRunning = true
+        if loginManager.isUserLoggedIn {
+            if !self.pushServiceRunning {
+                MSAppCenter.startService(MSPush.self)
+                self.pushServiceRunning = true
+            }
+            
+            if !MSPush.isEnabled() {
+                MSPush.setEnabled(true)
+            }
         }
     }
     
