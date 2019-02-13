@@ -11,6 +11,7 @@ import UIKit
 import SwiftClient
 import LocalAuthentication
 import AppCenter
+import CoreTelephony
 
 class LoginManager {
     
@@ -364,6 +365,13 @@ class LoginManager {
     
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
         let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB", sortCode: "", bacsAccountNumber: "")
+        
+        let networkInfo = CTTelephonyNetworkInfo()
+        
+        if let countryCode = networkInfo.subscriberCellularProvider?.isoCountryCode{
+            regUser.country = countryCode
+        }
+        
         self.registerExtraDataFromUser(regUser) { b in
             if let b = b {
                 if b {
