@@ -52,14 +52,14 @@ class FingerprintViewController: UIViewController {
             let authenticationContext = LAContext()
             authenticationContext.touchIDAuthenticationAllowableReuseDuration = 10
             var error: NSError?
-            if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
                 let newFingerprint = NSUUID().uuidString.replacingOccurrences(of: "-", with: "") //strip dashes
                 showLoader()
                 LoginManager.shared.registerFingerprint(fingerprint: newFingerprint) { (success) in
                     self.hideLoader()
                     if success {
                         let flags = SecAccessControlCreateWithFlags(nil, kSecAttrAccessibleWhenUnlocked, SecAccessControlCreateFlags.userPresence, nil)
-                        var dict: [String: Any] = [kSecAttrLabel as String: "Fingerprint",
+                        let dict: [String: Any] = [kSecAttrLabel as String: "Fingerprint",
                                                    kSecValueData as String: newFingerprint.data(using: String.Encoding.utf8)!,
                                                    kSecAttrAccessControl as String: flags!,
                                                    kSecAttrAccount as String: UserDefaults.standard.userExt!.guid]
