@@ -58,7 +58,7 @@ class ScanCompleteViewController: UIViewController {
     }
     @IBAction func nextBtn(_ sender: Any) {
         if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
-            amountVC.reset()
+//            amountVC.reset()
         }
         
         if let appScheme = GivtManager.shared.externalIntegration?.appScheme {
