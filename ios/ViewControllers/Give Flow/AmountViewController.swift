@@ -313,6 +313,15 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     @IBAction func actionGive(_ sender: Any) {
         var numberOfZeroAmounts = 0
+        
+        /* Check for the special crash secret */
+        if Decimal(string: (amountLabels[0].text!.replacingOccurrences(of: ",", with: ".")))! == 666
+            && Decimal(string: (amountLabels[1].text!.replacingOccurrences(of: ",", with: ".")))! == 0.66
+            && Decimal(string: (amountLabels[2].text!.replacingOccurrences(of: ",", with: ".")))! == 66.6 {
+                [][1]
+        }
+        
+        
         for index in 0..<numberOfCollects {
             let parsedDecimal = Decimal(string: (amountLabels[index].text!.replacingOccurrences(of: ",", with: ".")))!
             
