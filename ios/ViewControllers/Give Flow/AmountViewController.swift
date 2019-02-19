@@ -133,7 +133,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         super.viewDidLoad()
 //        amountOne.setLeftPaddingPoints(25)
 //        amountOne.setRightPaddingPoints(72)
-        amountOne.deleteBtn.isHidden = true
 //        amountTwo.setLeftPaddingPoints(25)
 //        amountTwo.setRightPaddingPoints(72)
 //        amountTwo.deleteBtn.isHidden = true
@@ -150,7 +149,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //        currencys.forEach { (c) in
 //            c?.text = currency
 //        }
-
         givtService = GivtManager.shared
 //        btnGive.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
 //        btnGive.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")

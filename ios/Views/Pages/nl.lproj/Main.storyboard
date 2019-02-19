@@ -1083,13 +1083,10 @@ Kijk voor de status in je overzicht.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
-                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yYV-z7-Em1" customClass="AmountUITextField" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="22" y="87.333333333333314" width="331" height="77.333333333333314"/>
-                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JdZ-h5-LAO" customClass="CollectionView" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="87.333333333333314" width="335" height="77.333333333333314"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-MY-azs" customClass="CollectionView" customModule="ios" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="172.66666666666666" width="335" height="77.333333333333343"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1098,17 +1095,17 @@ Kijk voor de status in je overzicht.</string>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="KbE-MY-azs" firstAttribute="leading" secondItem="g1b-YV-Sfa" secondAttribute="leading" constant="20" id="5XF-xh-XJn"/>
+                                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="top" secondItem="hOa-LK-WV7" secondAttribute="bottom" constant="10" id="7pO-Yi-Xa6"/>
                                             <constraint firstAttribute="trailing" secondItem="KbE-MY-azs" secondAttribute="trailing" constant="20" id="7ub-nD-TRz"/>
-                                            <constraint firstItem="yYV-z7-Em1" firstAttribute="height" secondItem="hOa-LK-WV7" secondAttribute="height" id="CjL-TW-J4D"/>
                                             <constraint firstAttribute="trailing" secondItem="hOa-LK-WV7" secondAttribute="trailing" constant="22" id="Mnj-eF-bM7"/>
+                                            <constraint firstAttribute="trailing" secondItem="JdZ-h5-LAO" secondAttribute="trailing" constant="20" id="RaQ-Tl-WG5"/>
                                             <constraint firstItem="hOa-LK-WV7" firstAttribute="height" secondItem="g1b-YV-Sfa" secondAttribute="height" multiplier="0.32" id="WJe-x0-XE2"/>
-                                            <constraint firstAttribute="trailing" secondItem="yYV-z7-Em1" secondAttribute="trailing" constant="22" id="YBQ-5e-d7A"/>
+                                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="leading" secondItem="g1b-YV-Sfa" secondAttribute="leading" constant="20" id="aTG-aI-IjP"/>
                                             <constraint firstItem="hOa-LK-WV7" firstAttribute="top" secondItem="g1b-YV-Sfa" secondAttribute="top" id="cfR-g1-Dn3"/>
-                                            <constraint firstItem="yYV-z7-Em1" firstAttribute="leading" secondItem="g1b-YV-Sfa" secondAttribute="leading" constant="22" id="hIz-2e-WOQ"/>
-                                            <constraint firstItem="yYV-z7-Em1" firstAttribute="top" secondItem="hOa-LK-WV7" secondAttribute="bottom" constant="10" id="iBU-c5-fQp"/>
+                                            <constraint firstItem="KbE-MY-azs" firstAttribute="height" secondItem="hOa-LK-WV7" secondAttribute="height" id="esh-E6-vRM"/>
+                                            <constraint firstItem="KbE-MY-azs" firstAttribute="top" secondItem="JdZ-h5-LAO" secondAttribute="bottom" constant="8" id="fvQ-Br-8W2"/>
+                                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="height" secondItem="hOa-LK-WV7" secondAttribute="height" id="ghJ-kp-g0X"/>
                                             <constraint firstItem="hOa-LK-WV7" firstAttribute="leading" secondItem="g1b-YV-Sfa" secondAttribute="leading" constant="22" id="kye-HF-Vj7"/>
-                                            <constraint firstItem="KbE-MY-azs" firstAttribute="top" secondItem="yYV-z7-Em1" secondAttribute="bottom" constant="8" id="mLi-sS-K28"/>
-                                            <constraint firstItem="KbE-MY-azs" firstAttribute="height" secondItem="yYV-z7-Em1" secondAttribute="height" id="s1O-B7-Azw"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1157,7 +1154,6 @@ Kijk voor de status in je overzicht.</string>
                     <connections>
                         <outlet property="amountOne" destination="hOa-LK-WV7" id="D8Y-kU-xX1"/>
                         <outlet property="amountThree" destination="KbE-MY-azs" id="PPI-7u-aPN"/>
-                        <outlet property="amountTwo" destination="yYV-z7-Em1" id="el2-iu-ZZy"/>
                         <outlet property="btnNext" destination="avu-iq-1Ae" id="G0B-tH-oXZ"/>
                         <outlet property="calcPresetsStackView" destination="23j-EG-1Q9" id="HSQ-ib-NoU"/>
                         <outlet property="calcView" destination="Vep-oF-LTp" id="FlS-aR-4gf"/>
