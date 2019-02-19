@@ -35,7 +35,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     @IBOutlet var amountOne: AmountUITextField!
     @IBOutlet var amountTwo: AmountUITextField!
-    @IBOutlet var amountThree: AmountUITextField!
+    @IBOutlet weak var amountThree: CollectionView!
     
     @IBOutlet var btnNext: CustomButton!
     @IBAction func btnNext(_ sender: Any) {
@@ -150,7 +150,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //        currencys.forEach { (c) in
 //            c?.text = currency
 //        }
-        
+
         givtService = GivtManager.shared
 //        btnGive.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
 //        btnGive.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")

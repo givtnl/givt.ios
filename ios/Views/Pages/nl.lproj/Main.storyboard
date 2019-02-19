@@ -1090,7 +1090,7 @@ Kijk voor de status in je overzicht.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="24"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-MY-azs" customClass="CollecteView" customModule="ios" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-MY-azs" customClass="CollectionView" customModule="ios" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="172.66666666666666" width="335" height="77.333333333333343"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -1156,6 +1156,7 @@ Kijk voor de status in je overzicht.</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="amountOne" destination="hOa-LK-WV7" id="D8Y-kU-xX1"/>
+                        <outlet property="amountThree" destination="KbE-MY-azs" id="PPI-7u-aPN"/>
                         <outlet property="amountTwo" destination="yYV-z7-Em1" id="el2-iu-ZZy"/>
                         <outlet property="btnNext" destination="avu-iq-1Ae" id="G0B-tH-oXZ"/>
                         <outlet property="calcPresetsStackView" destination="23j-EG-1Q9" id="HSQ-ib-NoU"/>
