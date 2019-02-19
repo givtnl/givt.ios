@@ -40,12 +40,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var btnNext: CustomButton!
     @IBAction func btnNext(_ sender: Any) {
         calcPresetsStackView.removeArrangedSubview(viewPresets)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-            // Code you want to be delayed
-            self.calcPresetsStackView.insertArrangedSubview(self.viewPresets, at: 0)
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+//            // Code you want to be delayed
+//            self.calcPresetsStackView.insertArrangedSubview(self.viewPresets, at: 0)
+//        }
     }
-    var viewPresets: UIView!
+    @IBOutlet var viewPresets: UIView!
     @IBOutlet var viewCalc: UIView!
     
     @IBOutlet var calcPresetsStackView: UIStackView!
@@ -128,31 +128,21 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     @IBOutlet var pageControl: UIView!
+    @IBOutlet var calcView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        amountOne.setLeftPaddingPoints(25)
-        amountOne.setRightPaddingPoints(72)
+//        amountOne.setLeftPaddingPoints(25)
+//        amountOne.setRightPaddingPoints(72)
         amountOne.deleteBtn.isHidden = true
-        amountTwo.setLeftPaddingPoints(25)
-        amountTwo.setRightPaddingPoints(72)
+//        amountTwo.setLeftPaddingPoints(25)
+//        amountTwo.setRightPaddingPoints(72)
 //        amountTwo.deleteBtn.isHidden = true
 //        amountTwo.deleteBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         
-        amountThree.setLeftPaddingPoints(25)
-        amountThree.setRightPaddingPoints(72)
+//        amountThree.setLeftPaddingPoints(25)
+//        amountThree.setRightPaddingPoints(72)
 //        amountThree.deleteBtn.isHidden = true
 
-//        viewPresets = UIView()
-//        calcPresetsStackView.insertArrangedSubview(viewPresets, at: 0)
-//
-//        viewCalc.removeConstraint(leadingCtrCalc)
-//
-//        let ctr1 = NSLayoutConstraint(item: viewPresets, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: calcPresetsStackView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
-//        let ctr2 = NSLayoutConstraint(item: viewPresets, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: calcPresetsStackView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
-//        let ctr3 = NSLayoutConstraint(item: viewPresets, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: calcPresetsStackView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
-//        let ctr4 = NSLayoutConstraint(item: viewPresets, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 115)
-//        let ctr5 = NSLayoutConstraint(item: viewCalc, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: viewPresets, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
-//        NSLayoutConstraint.activate([ctr1, ctr2, ctr3, ctr4, ctr5])
 
         
 //        let currency = UserDefaults.standard.currencySymbol
@@ -191,7 +181,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         super.viewWillAppear(animated)
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        
 //        decimalNotation = NSLocale.current.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         navigationController?.navigationBar.isTranslucent = false
@@ -592,9 +581,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //    @IBAction func returnFromSegue(sender: UIStoryboardSegue) {
 //
 //    }
+    
 }
 
-class AmountUITextField: UITextField {
+class AmountUITextField: UIView {
     
     var borderView: UIView!
     var bar: UIView!
@@ -602,12 +592,14 @@ class AmountUITextField: UITextField {
     var currency: UILabel!
     var amount: UILabel!
     var isCorrect = true
-    var deleteBtn: UIImageView!
+    var deleteBtn: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
+    @objc func click(sender: UIButton) {
+        print("click")
+    }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -636,23 +628,28 @@ class AmountUITextField: UITextField {
         bar = UIView()
         bar.isUserInteractionEnabled = false
         bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.heightAnchor.constraint(equalToConstant: 3).isActive = true
+        bar.heightAnchor.constraint(equalToConstant: 2).isActive = true
         bar.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
-        borderView.addSubview(bar)
-        bar.bottomAnchor.constraint(equalTo: borderView.bottomAnchor).isActive = true
-        bar.leadingAnchor.constraint(equalTo: borderView.leadingAnchor).isActive = true
-        bar.trailingAnchor.constraint(equalTo: borderView.trailingAnchor).isActive = true
+//        borderView.addSubview(bar)
+//        bar.bottomAnchor.constraint(equalTo: borderView.bottomAnchor).isActive = true
+//        bar.leadingAnchor.constraint(equalTo: borderView.leadingAnchor).isActive = true
+//        bar.trailingAnchor.constraint(equalTo: borderView.trailingAnchor).isActive = true
         
-        deleteBtn =  UIImageView(image: #imageLiteral(resourceName: "decrease"))
+        deleteBtn =  UIButton()
+        deleteBtn.addTarget(self, action: #selector(click), for: UIControlEvents.touchUpInside)
+        
+        
+        deleteBtn.setImage(#imageLiteral(resourceName: "decrease"), for: UIControlState.normal)
         deleteBtn.alpha = 0.5
+        
         deleteBtn.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(deleteBtn)
         deleteBtn.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        deleteBtn.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        deleteBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
         deleteBtn.contentMode = UIViewContentMode.scaleAspectFit
         deleteBtn.widthAnchor.constraint(equalToConstant: 20).isActive = true
         deleteBtn.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        deleteBtn.isUserInteractionEnabled = false
+        deleteBtn.isUserInteractionEnabled = true
         
         currency = UILabel()
         currency.translatesAutoresizingMaskIntoConstraints = false
@@ -685,7 +682,7 @@ class AmountUITextField: UITextField {
 //        note.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -25).isActive = true
 //        note.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
     }
-    
+
     func focus(isCorrect: Bool, note: String) {
         self.isCorrect = isCorrect
         if isCorrect {
