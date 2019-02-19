@@ -159,18 +159,12 @@ class NavigationManager {
     public func reAuthenticateIfNeeded(context: UIViewController, skipFingerprint: Bool = false, completion: @escaping () -> Void) {
         if !LoginManager.shared.isBearerStillValid {
             if UserDefaults.standard.hasFingerprintSet && !skipFingerprint {
-                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
-                    self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
-                }))
-                
                 context.showLoader()
                 self.loginManager.loginWithFingerprint { (success, status) in
                     context.hideLoader()
                     if success {
                         completion()
                     } else {
-                        print(status)
                         if let status = status, status == errSecUserCanceled {
                             let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
@@ -222,7 +216,6 @@ class NavigationManager {
                     if success {
                         completion()
                     } else {
-                        print(status)
                         if let status = status, status == errSecUserCanceled {
                             let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
