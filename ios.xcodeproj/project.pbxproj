@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27689CE0221AF94B006C0DA6 /* CollecteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27689CDF221AF94B006C0DA6 /* CollecteView.xib */; };
-		27689CE4221B0064006C0DA6 /* CollecteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27689CE3221B0064006C0DA6 /* CollecteView.swift */; };
+		27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27689CDF221AF94B006C0DA6 /* CollectionView.xib */; };
+		27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27689CE3221B0064006C0DA6 /* CollectionView.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
@@ -196,8 +196,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		27689CDF221AF94B006C0DA6 /* CollecteView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CollecteView.xib; path = "ios/Views/Custom Views/CollecteView.xib"; sourceTree = SOURCE_ROOT; };
-		27689CE3221B0064006C0DA6 /* CollecteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollecteView.swift; sourceTree = "<group>"; };
+		27689CDF221AF94B006C0DA6 /* CollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CollectionView.xib; path = "ios/Views/Custom Views/CollectionView.xib"; sourceTree = SOURCE_ROOT; };
+		27689CE3221B0064006C0DA6 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
@@ -543,8 +543,8 @@
 				D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */,
 				D748F5F5206137E400B25BC2 /* TableSectionHeader.swift */,
 				D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */,
-				27689CDF221AF94B006C0DA6 /* CollecteView.xib */,
-				27689CE3221B0064006C0DA6 /* CollecteView.swift */,
+				27689CDF221AF94B006C0DA6 /* CollectionView.xib */,
+				27689CE3221B0064006C0DA6 /* CollectionView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -931,7 +931,7 @@
 				D7F131661F75574D00E25A68 /* Registration.storyboard in Resources */,
 				FB8187AE21C298050084C23E /* NewFeaturePopDownView.xib in Resources */,
 				D787BE79208DCA6B00E20873 /* celebration.gif in Resources */,
-				27689CE0221AF94B006C0DA6 /* CollecteView.xib in Resources */,
+				27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
 				D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */,
@@ -1121,7 +1121,7 @@
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */,
-				27689CE4221B0064006C0DA6 /* CollecteView.swift in Sources */,
+				27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */,
 				D7F0D2A521639544004770F8 /* NotificationExtensions.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,

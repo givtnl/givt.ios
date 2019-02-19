@@ -9,16 +9,26 @@
 import UIKit
 
 @IBDesignable
-class CollecteView: UIView {
+class CollectionView: UIView {
     private var borderView: UIView!
+    @IBOutlet var contentView: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //shadowAndCorners()
+        commonInit()
+    }
+    
+    private func commonInit() {
+        Bundle.main.loadNibNamed("CollectionView", owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        shadowAndCorners()
     }
     
     func shadowAndCorners() {
@@ -45,5 +55,6 @@ class CollecteView: UIView {
         borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         borderView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        self.sendSubview(toBack: borderView)
     }
 }
