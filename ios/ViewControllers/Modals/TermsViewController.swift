@@ -22,8 +22,7 @@ class TermsViewController: UIViewController {
             } else if typeOfTerms == .termsAndConditions {
                 textToShow = NSLocalizedString("TermsText", comment: "")
                 if let country = AppServices.getCountryFromSim() {
-                    /** - ToDo: change this to GB after testing is done */
-                    if(country == "BE"){
+                    if(country == "GB"){
                         self.textToShow = NSLocalizedString("TermsTextGB", comment: "")
                     }
                 }
