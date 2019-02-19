@@ -20,22 +20,26 @@
             <rect key="frame" x="0.0" y="0.0" width="520" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlj-up-7DO">
-                    <rect key="frame" x="102" y="33" width="67" height="47"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="34"/>
-                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdN-tw-Q0o">
+                    <rect key="frame" x="30" y="38" width="8" height="24"/>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
+                    <color key="textColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdN-tw-Q0o">
-                    <rect key="frame" x="54" y="50" width="10" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlj-up-7DO">
+                    <rect key="frame" x="69" y="26.5" width="62" height="47"/>
+                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="34"/>
+                    <color key="textColor" red="0.82352941176470584" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="JdN-tw-Q0o" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="F3X-3X-TWC"/>
+                <constraint firstItem="vlj-up-7DO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="YcZ-g9-ghS"/>
+                <constraint firstItem="JdN-tw-Q0o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="q3o-Hf-SK9"/>
+                <constraint firstItem="vlj-up-7DO" firstAttribute="leading" secondItem="JdN-tw-Q0o" secondAttribute="trailing" constant="31" id="qaQ-M1-VBr"/>
+            </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
