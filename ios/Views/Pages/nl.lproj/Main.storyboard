@@ -800,6 +800,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="njY-f4-xac"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCW-62-N94" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="98.333333333333343" y="10" width="73.333333333333343" height="51"/>
@@ -815,6 +818,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="WyL-li-GIh"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAG-Aw-TuA" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="181.66666666666669" y="10" width="73.333333333333314" height="51"/>
@@ -830,6 +836,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="7WW-ab-3ZN"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oad-iX-HrB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="15" y="69" width="73.333333333333329" height="51"/>
@@ -845,6 +854,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="kf5-i4-0HC"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2y-kT-0o4" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="98.333333333333343" y="69" width="73.333333333333343" height="51"/>
@@ -860,6 +872,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="npj-OV-9Th"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qL-oU-syQ" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="181.66666666666669" y="69" width="73.333333333333314" height="51"/>
@@ -875,6 +890,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="Euh-ga-j9d"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVZ-Me-cmB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="15" y="127.99999999999999" width="73.333333333333329" height="51.333333333333329"/>
@@ -890,6 +908,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="hrP-sF-vgk"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jw-tI-vCz" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="98.333333333333343" y="127.99999999999999" width="73.333333333333343" height="51.333333333333329"/>
@@ -905,6 +926,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="aRt-4K-PmT"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnM-rs-vqX" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="15" y="187.33333333333337" width="73.333333333333329" height="51"/>
@@ -920,6 +944,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="aFm-w5-IRk"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJb-1f-9ig" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="98.333333333333343" y="187.33333333333337" width="73.333333333333343" height="51"/>
@@ -935,6 +962,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="8V5-3x-vrS"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgC-fX-maL" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="181.66666666666669" y="187.33333333333337" width="73.333333333333314" height="51"/>
@@ -950,6 +980,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="clearValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="aaa-oR-J6z"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g42-Kb-4UT" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="181.66666666666669" y="127.99999999999999" width="73.333333333333314" height="51.333333333333329"/>
@@ -965,6 +998,9 @@ Kijk voor de status in je overzicht.</string>
                                                                         <real key="value" value="5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="4Wg-rK-Bi2"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
