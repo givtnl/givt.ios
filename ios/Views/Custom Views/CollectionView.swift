@@ -25,10 +25,10 @@ class CollectionView: UIView {
     
     private func commonInit() {
         Bundle.main.loadNibNamed("CollectionView", owner: self, options: nil)
+        shadowAndCorners()
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        shadowAndCorners()
     }
     
     func shadowAndCorners() {
@@ -55,6 +55,5 @@ class CollectionView: UIView {
         borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         borderView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        self.sendSubview(toBack: borderView)
     }
 }
