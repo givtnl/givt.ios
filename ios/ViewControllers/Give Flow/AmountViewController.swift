@@ -372,8 +372,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             title: NSLocalizedString("AmountTooHigh", comment: ""),
             message: NSLocalizedString("AmountLimitExceeded", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
-            action in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: { action in
             self.currentAmountLabel.text = String(UserDefaults.standard.amountLimit)
             self.checkAmounts()
         }))
@@ -497,7 +496,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             btnGive.isEnabled = amountsUnder50C != numberOfCollects
         }
         
-        currentAmountLabel.textColor = Decimal(string: (currentAmountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
+        for index in 0..<numberOfCollects {
+            let amountLabel = amountLabels[index]
+            amountLabel.textColor = Decimal(string: (amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit) ?
+                                    UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) :
+                                    UIColor.init(rgb: 0xD2D1D9)
+        }
     }
     
     func showShowcase(message: String, targetView: UIView) {
