@@ -12,6 +12,8 @@ import UIKit
 class CollectionView: UIView {
     private var borderView: UIView!
     @IBOutlet var contentView: UIView!
+    @IBOutlet var collectLabel: UILabel!
+    @IBOutlet var deleteBtn: UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +28,7 @@ class CollectionView: UIView {
     private func commonInit() {
         Bundle.main.loadNibNamed("CollectionView", owner: self, options: nil)
         shadowAndCorners()
+        styleDeleteButton()
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -55,5 +58,17 @@ class CollectionView: UIView {
         borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         borderView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+    }
+    
+    func styleDeleteButton() {
+        deleteBtn.isHidden = true
+        deleteBtn.setImage(#imageLiteral(resourceName: "decrease"), for: UIControlState.normal)
+        deleteBtn.translatesAutoresizingMaskIntoConstraints = false
+        deleteBtn.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        deleteBtn.contentMode = UIViewContentMode.scaleAspectFit
+        deleteBtn.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        deleteBtn.translatesAutoresizingMaskIntoConstraints = false
+        deleteBtn.alpha = 0.5
     }
 }

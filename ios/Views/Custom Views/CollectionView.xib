@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CollectionView" customModule="ios" customModuleProvider="target">
             <connections>
+                <outlet property="collectLabel" destination="kPS-8Y-cWM" id="J7p-cS-v8b"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Aai-f9-2Rx"/>
+                <outlet property="deleteBtn" destination="z2I-y3-G8B" id="mcE-jV-UKY"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -32,11 +34,27 @@
                     <color key="textColor" red="0.82352941176470584" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2I-y3-G8B">
+                    <rect key="frame" x="470" y="33" width="30" height="34"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1ste collecte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPS-8Y-cWM">
+                    <rect key="frame" x="364" y="39" width="91" height="22"/>
+                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                    <color key="textColor" red="0.82352941176470584" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="z2I-y3-G8B" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="385-uO-5zO"/>
                 <constraint firstItem="JdN-tw-Q0o" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="F3X-3X-TWC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="z2I-y3-G8B" secondAttribute="trailing" constant="20" id="GZu-ZW-L0k"/>
                 <constraint firstItem="vlj-up-7DO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="YcZ-g9-ghS"/>
+                <constraint firstItem="kPS-8Y-cWM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="btm-7k-4As"/>
+                <constraint firstItem="z2I-y3-G8B" firstAttribute="leading" secondItem="kPS-8Y-cWM" secondAttribute="trailing" constant="15" id="ns3-ET-gMZ"/>
                 <constraint firstItem="JdN-tw-Q0o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="q3o-Hf-SK9"/>
                 <constraint firstItem="vlj-up-7DO" firstAttribute="leading" secondItem="JdN-tw-Q0o" secondAttribute="trailing" constant="31" id="qaQ-M1-VBr"/>
             </constraints>

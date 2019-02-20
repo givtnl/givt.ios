@@ -115,19 +115,24 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet weak var btnGive: CustomButton!
     @IBOutlet var leadingCtrCalc: NSLayoutConstraint!
     
+    @IBOutlet var stackCollections: UIStackView!
+
     @IBOutlet var amountOne: CollectionView!
     @IBOutlet var amountTwo: CollectionView!
     @IBOutlet var amountThree: CollectionView!
     
-    @IBOutlet var stackCollections: UIStackView!
+    
+    
     @IBOutlet var addCollect: UIButton!
     @IBAction func addCollect(_ sender: Any) {
         if(amountTwo.isHidden){
             stackCollections.addArrangedSubview(amountTwo)
             amountTwo.isHidden = false
+            amountTwo.deleteBtn.isHidden = false
         } else if (amountThree.isHidden){
             stackCollections.addArrangedSubview(amountThree)
             amountThree.isHidden = false
+            amountThree.deleteBtn.isHidden = false
             addCollect.isHidden = true
         }
     }
@@ -139,7 +144,19 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+    @objc func deleteCollect(sender: UIButton){
+        switch sender.tag {
+            case 2:
+                stackCollections.removeArrangedSubview(amountTwo)
+                amountTwo.isHidden = true
+            case 3:
+                stackCollections.removeArrangedSubview(amountThree)
+                amountThree.isHidden = true
+            default:
+                return
+        }
+        addCollect.isHidden = false
+    }
     @IBOutlet var pageControl: UIView!
     @IBOutlet var calcView: UIView!
     override func viewDidLoad() {
@@ -148,8 +165,18 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         amountTwo.isHidden = true
         stackCollections.removeArrangedSubview(amountThree)
         amountThree.isHidden = true
-
-
+        
+        amountOne.deleteBtn.tag = 1
+        amountOne.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        amountOne.collectLabel.text = "1ste collecte"
+        
+        amountTwo.deleteBtn.tag = 2
+        amountTwo.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        amountTwo.collectLabel.text = "2de collecte"
+        
+        amountThree.deleteBtn.tag = 3
+        amountThree.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        amountThree.collectLabel.text = "3de collecte"
         
 //        let currency = UserDefaults.standard.currencySymbol
 //        let currencys = [firstEuro, secondEuro, thirdEuro]
