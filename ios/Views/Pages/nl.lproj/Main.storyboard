@@ -968,6 +968,7 @@ Kijk voor de status in je overzicht.</string>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgC-fX-maL" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="181.66666666666669" y="187.33333333333337" width="73.333333333333314" height="51"/>
+                                                                <gestureRecognizers/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="&lt;">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -982,6 +983,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="clearValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="aaa-oR-J6z"/>
+                                                                    <outletCollection property="gestureRecognizers" destination="7Lk-gE-NB3" appends="YES" id="5Ct-xZ-wF3"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g42-Kb-4UT" customClass="CustomButton" customModule="ios" customModuleProvider="target">

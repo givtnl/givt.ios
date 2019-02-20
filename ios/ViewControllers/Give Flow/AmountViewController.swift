@@ -412,11 +412,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         //checkAmounts()
 
     }
-//
-//    @IBAction func clearAll(_ sender: Any) {
-//        self.currentAmountLabel.text = "0";
-//        checkAmounts()
-//    }
+
+    @IBAction func clearAll(_ sender: Any) {
+        var currentAmountLabel = amountOne.amountLabel!
+        currentAmountLabel.text = "0";
+        //checkAmounts()
+    }
     
 //    func clearAmounts() {
 //        let emptyString = "0"
