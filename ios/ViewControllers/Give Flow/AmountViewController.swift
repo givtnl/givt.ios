@@ -121,18 +121,51 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var amountTwo: CollectionView!
     @IBOutlet var amountThree: CollectionView!
     
-    
+    var nuOfCollectsShown: Int {
+        var count = 0
+        
+        // get count of collectes shown
+        for view in stackCollections.subviews as! [CollectionView] {
+            if(!view.isHidden){
+                count += 1
+            }
+        }
+        return count
+    }
     
     @IBOutlet var addCollect: UIButton!
+    func insertCollectAtPosition(collect: CollectionView, position: Int){
+        stackCollections.insertArrangedSubview(collect, at: position)
+        collect.isHidden = false
+        collect.deleteBtn.isHidden = false
+    }
     @IBAction func addCollect(_ sender: Any) {
-        if(amountTwo.isHidden){
-            stackCollections.addArrangedSubview(amountTwo)
-            amountTwo.isHidden = false
-            amountTwo.deleteBtn.isHidden = false
+        
+        var nuOfCollectsShown = self.nuOfCollectsShown
+        
+        if(amountOne.isHidden) {
+            insertCollectAtPosition(collect: amountOne, position: 0)
+        } else if(amountTwo.isHidden){
+            insertCollectAtPosition(collect: amountTwo, position: 1)
         } else if (amountThree.isHidden){
-            stackCollections.addArrangedSubview(amountThree)
-            amountThree.isHidden = false
-            amountThree.deleteBtn.isHidden = false
+            insertCollectAtPosition(collect: amountThree, position: 2)
+        }
+        
+        nuOfCollectsShown = self.nuOfCollectsShown
+
+        // if count off collects show is higher then 1 show all deletebuttons
+        if nuOfCollectsShown > 1 {
+            for view in stackCollections.subviews as! [CollectionView] {
+                if(!view.isHidden){
+                    view.deleteBtn.isHidden = false
+                }
+            }
+        }
+        
+        // if count of collects is higher or equal then one and les then 3 show the add button
+        if nuOfCollectsShown >= 1 && nuOfCollectsShown < stackCollections.subviews.count {
+            addCollect.isHidden = false
+        } else {
             addCollect.isHidden = true
         }
     }
@@ -146,6 +179,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     @objc func deleteCollect(sender: UIButton){
         switch sender.tag {
+            case 1:
+                stackCollections.removeArrangedSubview(amountOne)
+                amountOne.isHidden = true
             case 2:
                 stackCollections.removeArrangedSubview(amountTwo)
                 amountTwo.isHidden = true
@@ -155,7 +191,24 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             default:
                 return
         }
-        addCollect.isHidden = false
+        
+        let nuOfCollectsShown = self.nuOfCollectsShown
+        
+        // if count of collectes shown is one hide the delete button
+        if nuOfCollectsShown == 1 {
+            for view in stackCollections.subviews as! [CollectionView] {
+                if(!view.isHidden){
+                    view.deleteBtn.isHidden = true
+                }
+            }
+        }
+        
+        // if count of collects is higher or equal then one and les then 3 show the add button
+        if nuOfCollectsShown >= 1 && nuOfCollectsShown < stackCollections.subviews.count {
+            addCollect.isHidden = false
+        } else {
+            addCollect.isHidden = true
+        }
     }
     @IBOutlet var pageControl: UIView!
     @IBOutlet var calcView: UIView!
