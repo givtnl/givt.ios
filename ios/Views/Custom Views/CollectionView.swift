@@ -14,6 +14,8 @@ class CollectionView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet var collectLabel: UILabel!
     @IBOutlet var deleteBtn: UIButton!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var currencySign: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

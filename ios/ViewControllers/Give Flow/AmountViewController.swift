@@ -96,17 +96,17 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     private var pressedShortcutKey: Bool! = false
-//    private var decimalNotation: String! = "," {
-//        didSet {
+    private var decimalNotation: String! = "," {
+        didSet {
 //            btnComma.setTitle(decimalNotation, for: .normal)
-//            let fmt = NumberFormatter()
-//            fmt.minimumFractionDigits = 2
-//            fmt.minimumIntegerDigits = 1
+            let fmt = NumberFormatter()
+            fmt.minimumFractionDigits = 2
+            fmt.minimumIntegerDigits = 1
 //            firstQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber), for: .normal)
 //            secondQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber), for: .normal)
 //            thirdQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber), for: .normal)
-//        }
-//    }
+        }
+    }
     @IBOutlet var firstQuickBtn: RoundedButton!
     @IBOutlet var secondQuickBtn: RoundedButton!
     @IBOutlet var thirdQuickBtn: RoundedButton!
@@ -222,23 +222,27 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         amountOne.deleteBtn.tag = 1
         amountOne.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
         amountOne.collectLabel.text = "1ste collecte"
+        amountOne.amountLabel.text = "0"
         
         amountTwo.deleteBtn.tag = 2
         amountTwo.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
         amountTwo.collectLabel.text = "2de collecte"
+        amountTwo.amountLabel.text = "0"
         
         amountThree.deleteBtn.tag = 3
         amountThree.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
         amountThree.collectLabel.text = "3de collecte"
+        amountThree.amountLabel.text = "0"
+    
+        let currency = UserDefaults.standard.currencySymbol
+        let currencys = [amountOne.currencySign, amountTwo.currencySign, amountThree.currencySign]
+        currencys.forEach { (c) in
+            c?.text = currency
+        }
         
-//        let currency = UserDefaults.standard.currencySymbol
-//        let currencys = [firstEuro, secondEuro, thirdEuro]
-//        currencys.forEach { (c) in
-//            c?.text = currency
-//        }
         givtService = GivtManager.shared
-//        btnGive.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
-//        btnGive.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
+        btnNext.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
+        btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
 //        lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
 //
 //        amountLabels = [amountLabel, amountLabel2, amountLabel3]
@@ -347,32 +351,34 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //        // Dispose of any resources that can be recreated.
 //    }
     
-//    @IBAction func addValue(sender:UIButton!) {
-//        if currentAmountLabel.text == "0" || pressedShortcutKey {
-//            currentAmountLabel.text = ""
-//        }
-//
-//        if currentAmountLabel.text! == "" && (sender.titleLabel?.text?.contains(decimalNotation.first!))! {
-//            currentAmountLabel.text = "0";
-//        }
-//
-//        if let idx = currentAmountLabel.text?.index(of: decimalNotation) {
-//            if( ((currentAmountLabel.text?[idx...].count)! == 3)) || ((sender.titleLabel?.text?.contains(decimalNotation.first!))!){
-//                return
-//            }
-//        }
-//
-//        if (currentAmountLabel.text?.contains(decimalNotation.first!))! {
-//            if currentAmountLabel.text?.count == 9 {
-//                return
-//            }
-//        } else if currentAmountLabel.text?.count == 6 {
-//            return
-//        }
-//        currentAmountLabel.text = currentAmountLabel.text! + sender.currentTitle!;
+    @IBAction func addValue(sender:UIButton!) {
+        var currentAmountLabel = amountOne.amountLabel!
+        
+        if currentAmountLabel.text == "0" || pressedShortcutKey {
+            currentAmountLabel.text = ""
+        }
+
+        if currentAmountLabel.text! == "" && (sender.titleLabel?.text?.contains(decimalNotation.first!))! {
+            currentAmountLabel.text = "0";
+        }
+
+        if let idx = currentAmountLabel.text?.index(of: decimalNotation) {
+            if( ((currentAmountLabel.text?[idx...].count)! == 3)) || ((sender.titleLabel?.text?.contains(decimalNotation.first!))!){
+                return
+            }
+        }
+
+        if (currentAmountLabel.text?.contains(decimalNotation.first!))! {
+            if currentAmountLabel.text?.count == 9 {
+                return
+            }
+        } else if currentAmountLabel.text?.count == 6 {
+            return
+        }
+        currentAmountLabel.text = currentAmountLabel.text! + sender.currentTitle!;
 //        checkAmounts()
-//        pressedShortcutKey = false
-//    }
+        pressedShortcutKey = false
+    }
     
 //    @IBAction func addShortcutValue(sender: UIButton!){
 //        currentAmountLabel.text = sender.currentTitle
@@ -390,21 +396,22 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //        pressedShortcutKey = true
 //    }
     
-//    @IBAction func clearValue(sender: UIButton!){
-//        var amount: String = self.currentAmountLabel.text!
-//        if amount.count == 0 {
+    @IBAction func clearValue(sender: UIButton!){
+        let currentAmountLabel = amountOne.amountLabel!
+        var amount: String = currentAmountLabel.text!
+        if amount.count == 0 {
 //            checkAmounts()
-//            return
-//        }
-//
-//        amount.remove(at: amount.index(before: amount.endIndex))
-//        self.currentAmountLabel.text! = amount
-//        if amount.count == 0 || pressedShortcutKey {
-//            self.currentAmountLabel.text = "0";
-//        }
-//        checkAmounts()
-//
-//    }
+            return
+        }
+
+        amount.remove(at: amount.index(before: amount.endIndex))
+        currentAmountLabel.text! = amount
+        if amount.count == 0 || pressedShortcutKey {
+            currentAmountLabel.text = "0";
+        }
+        //checkAmounts()
+
+    }
 //
 //    @IBAction func clearAll(_ sender: Any) {
 //        self.currentAmountLabel.text = "0";
@@ -602,7 +609,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //            if parsedDecimal < 0.50 {
 //                amountsUnder50C += 1
 //            }
-//            btnGive.isEnabled = amountsUnder50C != numberOfCollects
+//            btnNext.isEnabled = amountsUnder50C != numberOfCollects
 //        }
 //
 //        currentAmountLabel.textColor = Decimal(string: (currentAmountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)

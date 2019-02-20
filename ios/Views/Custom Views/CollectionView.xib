@@ -12,8 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CollectionView" customModule="ios" customModuleProvider="target">
             <connections>
+                <outlet property="amountLabel" destination="vlj-up-7DO" id="tfx-IT-zAW"/>
                 <outlet property="collectLabel" destination="kPS-8Y-cWM" id="J7p-cS-v8b"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="Aai-f9-2Rx"/>
+                <outlet property="currencySign" destination="JdN-tw-Q0o" id="Dpk-3i-Pgl"/>
                 <outlet property="deleteBtn" destination="z2I-y3-G8B" id="mcE-jV-UKY"/>
             </connections>
         </placeholder>
