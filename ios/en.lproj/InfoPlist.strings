@@ -1,2 +1,3 @@
 "NSCameraUsageDescription" = "We'd like to use your camera to scan the code.";
 "NSBluetoothPeripheralUsageDescription" = "Needed to scan the Givt-beacons.";
+"NSFaceIDUsageDescription" = "Login quickly and easily with Face ID";
