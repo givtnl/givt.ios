@@ -14,7 +14,6 @@ class FingerprintViewController: UIViewController {
 
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var menuItem: UILabel!
-    var query: [String: Any] = [kSecClass as String: kSecClassGenericPassword, kSecAttrLabel as String: "Fingerprint", kSecUseOperationPrompt as String: "Gebruik je vingerafdruk om in te loggen.", kSecAttrAccount as String: UserDefaults.standard.userExt!.guid]
     @IBOutlet var switchButton: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,18 +28,18 @@ class FingerprintViewController: UIViewController {
             menuItem.text = NSLocalizedString("FaceID", comment: "")
             bodyText.text = NSLocalizedString("FaceIDUsage", comment: "")
         }
-        query[kSecUseOperationPrompt as String] = NSLocalizedString("FingerprintMessageAlert", comment: "")
-                                                    .replacingOccurrences(of: "{0}", with: title!)
-                                                    .replacingOccurrences(of: "{1}", with: UserDefaults.standard.userExt!.email)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func toggleSwitch(_ sender: Any) {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrLabel as String: "Fingerprint",
+            kSecAttrAccount as String: UserDefaults.standard.userExt!.guid]
+
         let sw = sender as! UISwitch
         if sw.isOn {
             let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
@@ -48,13 +47,13 @@ class FingerprintViewController: UIViewController {
                 sw.isOn = false
                 UserDefaults.standard.hasFingerprintSet = false
             }))
-            
+
             let authenticationContext = LAContext()
             authenticationContext.touchIDAuthenticationAllowableReuseDuration = 10
             var error: NSError?
             
             if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-                authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: " ") { (didEvaluate, error) in
+                authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: NSLocalizedString("TouchID", comment: "")) { (didEvaluate, error) in
                     let newFingerprint = NSUUID().uuidString.replacingOccurrences(of: "-", with: "") //strip dashes
                     self.showLoader()
                     LoginManager.shared.registerFingerprint(fingerprint: newFingerprint) { (success) in
@@ -100,7 +99,7 @@ class FingerprintViewController: UIViewController {
                                 LogService.shared.info(message: "Sucessfully saved biometric")
                                 doWhenSucces()
                             case errSecDuplicateItem:
-                                SecItemDelete(self.query as CFDictionary)
+                                SecItemDelete(query as CFDictionary)
                                 let status = SecItemAdd(dict as CFDictionary, nil)
                                 switch status {
                                 case errSecSuccess:
@@ -128,7 +127,7 @@ class FingerprintViewController: UIViewController {
                 self.present(cannotUseTouchId, animated: true, completion: nil)
             }
         } else {
-            SecItemDelete(self.query as CFDictionary)
+            SecItemDelete(query as CFDictionary)
             UserDefaults.standard.hasFingerprintSet = false
         }
     }
