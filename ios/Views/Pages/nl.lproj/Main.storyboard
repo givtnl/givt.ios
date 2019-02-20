@@ -1023,7 +1023,7 @@ Kijk voor de status in je overzicht.</string>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="Nv6-iH-YVl" firstAttribute="leading" secondItem="aFc-xz-VHc" secondAttribute="trailing" id="113-Ob-WUX"/>
+                                                    <constraint firstItem="Nv6-iH-YVl" firstAttribute="leading" secondItem="aFc-xz-VHc" secondAttribute="trailing" constant="8" symbolic="YES" id="113-Ob-WUX"/>
                                                     <constraint firstAttribute="bottom" secondItem="aFc-xz-VHc" secondAttribute="bottom" id="HXJ-Ty-uxY"/>
                                                     <constraint firstItem="Nv6-iH-YVl" firstAttribute="top" secondItem="23j-EG-1Q9" secondAttribute="top" id="UBz-vg-fc2"/>
                                                     <constraint firstItem="aFc-xz-VHc" firstAttribute="width" secondItem="23j-EG-1Q9" secondAttribute="width" multiplier="0.28" id="ZRL-1j-uLA"/>
@@ -1048,6 +1048,28 @@ Kijk voor de status in je overzicht.</string>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sHt-md-26B">
+                                        <rect key="frame" x="20" y="57.333333333333343" width="335" height="223.00000000000003"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdZ-h5-LAO" customClass="CollectionView" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="69"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-MY-azs" customClass="CollectionView" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="77" width="335" height="69"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wef-5E-eYC" customClass="CollectionView" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="153.99999999999997" width="335" height="69"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="wef-5E-eYC" firstAttribute="height" secondItem="JdZ-h5-LAO" secondAttribute="height" id="6Ks-tG-C4I"/>
+                                            <constraint firstItem="KbE-MY-azs" firstAttribute="height" secondItem="JdZ-h5-LAO" secondAttribute="height" id="Tgj-Rl-tnN"/>
+                                        </constraints>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avu-iq-1Ae" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="184.33333333333337" y="388.66666666666669" width="168.66666666666663" height="33"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.34999999999999998" height="1"/>
@@ -1073,53 +1095,29 @@ Kijk voor de status in je overzicht.</string>
                                             <action selector="btnNext:" destination="lyO-8n-bds" eventType="touchUpInside" id="hap-le-ZYc"/>
                                         </connections>
                                     </button>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1b-YV-Sfa">
-                                        <rect key="frame" x="0.0" y="47.333333333333357" width="375" height="241.66666666666663"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JdZ-h5-LAO" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="77.333333333333314" width="335" height="77.333333333333314"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-MY-azs" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="162.66666666666666" width="335" height="77.333333333333343"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wef-5E-eYC" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="0.0" width="335" height="77.333333333333329"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="wef-5E-eYC" secondAttribute="trailing" constant="20" id="1Vf-HX-8Ct"/>
-                                            <constraint firstItem="KbE-MY-azs" firstAttribute="leading" secondItem="g1b-YV-Sfa" secondAttribute="leading" constant="20" id="5XF-xh-XJn"/>
-                                            <constraint firstItem="KbE-MY-azs" firstAttribute="height" secondItem="wef-5E-eYC" secondAttribute="height" id="7NZ-U0-Wd3"/>
-                                            <constraint firstAttribute="trailing" secondItem="KbE-MY-azs" secondAttribute="trailing" constant="20" id="7ub-nD-TRz"/>
-                                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="height" secondItem="wef-5E-eYC" secondAttribute="height" id="Ob6-0s-j43"/>
-                                            <constraint firstItem="wef-5E-eYC" firstAttribute="top" secondItem="g1b-YV-Sfa" secondAttribute="top" id="QzI-Rl-4Aa"/>
-                                            <constraint firstAttribute="trailing" secondItem="JdZ-h5-LAO" secondAttribute="trailing" constant="20" id="RaQ-Tl-WG5"/>
-                                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="leading" secondItem="g1b-YV-Sfa" secondAttribute="leading" constant="20" id="aTG-aI-IjP"/>
-                                            <constraint firstItem="wef-5E-eYC" firstAttribute="leading" secondItem="g1b-YV-Sfa" secondAttribute="leading" constant="20" id="fks-Ud-sMi"/>
-                                            <constraint firstItem="KbE-MY-azs" firstAttribute="top" secondItem="JdZ-h5-LAO" secondAttribute="bottom" constant="8" id="fvQ-Br-8W2"/>
-                                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="top" secondItem="wef-5E-eYC" secondAttribute="bottom" constant="8" id="jcE-in-fNO"/>
-                                            <constraint firstItem="wef-5E-eYC" firstAttribute="height" secondItem="g1b-YV-Sfa" secondAttribute="height" multiplier="0.32" id="vtq-eH-CKg"/>
-                                        </constraints>
-                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVS-Dl-35h">
+                                        <rect key="frame" x="164.66666666666666" y="300.33333333333331" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="addCollect:" destination="lyO-8n-bds" eventType="touchUpInside" id="COG-Z0-GKS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Vep-oF-LTp" firstAttribute="leading" secondItem="sk7-Jb-o0S" secondAttribute="leading" id="00C-9r-ldd"/>
+                                    <constraint firstAttribute="trailing" secondItem="sHt-md-26B" secondAttribute="trailing" constant="20" id="0fZ-MN-xv5"/>
                                     <constraint firstItem="avu-iq-1Ae" firstAttribute="width" secondItem="sk7-Jb-o0S" secondAttribute="width" multiplier="0.45" id="7ml-jD-nKC"/>
                                     <constraint firstItem="7gc-CF-kwy" firstAttribute="leading" secondItem="sk7-Jb-o0S" secondAttribute="leading" constant="22" id="9l0-oF-VIA"/>
-                                    <constraint firstAttribute="trailing" secondItem="g1b-YV-Sfa" secondAttribute="trailing" id="Bhr-Qv-gYW"/>
-                                    <constraint firstItem="g1b-YV-Sfa" firstAttribute="leading" secondItem="sk7-Jb-o0S" secondAttribute="leading" id="LZZ-8z-BgO"/>
+                                    <constraint firstItem="eVS-Dl-35h" firstAttribute="centerX" secondItem="sk7-Jb-o0S" secondAttribute="centerX" id="KhT-We-Fpr"/>
                                     <constraint firstAttribute="trailing" secondItem="7gc-CF-kwy" secondAttribute="trailing" constant="22" id="MaH-3y-LfX"/>
                                     <constraint firstAttribute="bottom" secondItem="Vep-oF-LTp" secondAttribute="bottom" id="POq-tL-ag4"/>
                                     <constraint firstItem="Vep-oF-LTp" firstAttribute="top" secondItem="avu-iq-1Ae" secondAttribute="bottom" constant="20" id="SQ5-FZ-mfb"/>
                                     <constraint firstItem="Vep-oF-LTp" firstAttribute="height" secondItem="sk7-Jb-o0S" secondAttribute="height" multiplier="0.36" id="YGx-ZG-dsF"/>
-                                    <constraint firstItem="g1b-YV-Sfa" firstAttribute="height" secondItem="sk7-Jb-o0S" secondAttribute="height" multiplier="0.35" id="b7h-ib-Wwv"/>
+                                    <constraint firstItem="sHt-md-26B" firstAttribute="leading" secondItem="sk7-Jb-o0S" secondAttribute="leading" constant="20" id="cNT-D9-I8G"/>
+                                    <constraint firstItem="eVS-Dl-35h" firstAttribute="top" secondItem="sHt-md-26B" secondAttribute="bottom" constant="20" id="dee-Lz-dfl"/>
                                     <constraint firstItem="7gc-CF-kwy" firstAttribute="top" secondItem="sk7-Jb-o0S" secondAttribute="top" constant="10" id="ex0-Yx-hNU"/>
-                                    <constraint firstItem="g1b-YV-Sfa" firstAttribute="top" secondItem="7gc-CF-kwy" secondAttribute="bottom" constant="10" id="fhv-A9-Sx8"/>
+                                    <constraint firstItem="sHt-md-26B" firstAttribute="top" secondItem="7gc-CF-kwy" secondAttribute="bottom" constant="20" id="glz-8E-VZ6"/>
                                     <constraint firstAttribute="trailing" secondItem="Vep-oF-LTp" secondAttribute="trailing" id="gz0-W8-6TH"/>
                                     <constraint firstAttribute="trailing" secondItem="avu-iq-1Ae" secondAttribute="trailing" constant="22" id="zK1-i5-JBq"/>
                                 </constraints>
@@ -1128,6 +1126,7 @@ Kijk voor de status in je overzicht.</string>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="sk7-Jb-o0S" firstAttribute="top" secondItem="D9v-Aw-MYg" secondAttribute="top" id="5WY-zz-hfM"/>
+                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="height" secondItem="D9v-Aw-MYg" secondAttribute="height" multiplier="0.1" id="ZAL-5o-XIt"/>
                             <constraint firstItem="sk7-Jb-o0S" firstAttribute="leading" secondItem="D9v-Aw-MYg" secondAttribute="leading" id="beR-AS-rZu"/>
                             <constraint firstItem="D9v-Aw-MYg" firstAttribute="bottom" secondItem="sk7-Jb-o0S" secondAttribute="bottom" id="cd0-FH-jWR"/>
                             <constraint firstItem="D9v-Aw-MYg" firstAttribute="trailing" secondItem="sk7-Jb-o0S" secondAttribute="trailing" id="y8h-iW-q2a"/>
@@ -1149,13 +1148,17 @@ Kijk voor de status in je overzicht.</string>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="amountThree" destination="KbE-MY-azs" id="PPI-7u-aPN"/>
+                        <outlet property="addCollect" destination="eVS-Dl-35h" id="WUj-kn-JrR"/>
+                        <outlet property="amountOne" destination="JdZ-h5-LAO" id="bwx-pC-KcT"/>
+                        <outlet property="amountThree" destination="wef-5E-eYC" id="rgk-Jm-5Vv"/>
+                        <outlet property="amountTwo" destination="KbE-MY-azs" id="UGv-Y1-2zg"/>
                         <outlet property="btnNext" destination="avu-iq-1Ae" id="G0B-tH-oXZ"/>
                         <outlet property="calcPresetsStackView" destination="23j-EG-1Q9" id="HSQ-ib-NoU"/>
                         <outlet property="calcView" destination="Vep-oF-LTp" id="FlS-aR-4gf"/>
                         <outlet property="lblTitle" destination="h1k-Ax-YwJ" id="kRF-na-R6Y"/>
                         <outlet property="menu" destination="QTY-DE-8Mb" id="fuH-wr-9ha"/>
                         <outlet property="pageControl" destination="sk7-Jb-o0S" id="Lji-EQ-vmT"/>
+                        <outlet property="stackCollections" destination="sHt-md-26B" id="xAS-22-VA5"/>
                         <outlet property="viewCalc" destination="Nv6-iH-YVl" id="ZAR-nj-Ksz"/>
                         <outlet property="viewPresets" destination="aFc-xz-VHc" id="cnH-Vi-F6e"/>
                     </connections>

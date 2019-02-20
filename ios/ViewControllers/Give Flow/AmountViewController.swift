@@ -32,10 +32,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //    @IBOutlet var secondView: UIView!
 //    @IBOutlet var thirdView: UIView!
 //    @IBOutlet var collectionButton: UIButton!
-    
-    @IBOutlet var amountOne: AmountUITextField!
-    @IBOutlet var amountTwo: AmountUITextField!
-    @IBOutlet weak var amountThree: CollectionView!
+
     
     @IBOutlet var btnNext: CustomButton!
     @IBAction func btnNext(_ sender: Any) {
@@ -118,6 +115,22 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet weak var btnGive: CustomButton!
     @IBOutlet var leadingCtrCalc: NSLayoutConstraint!
     
+    @IBOutlet var amountOne: CollectionView!
+    @IBOutlet var amountTwo: CollectionView!
+    @IBOutlet var amountThree: CollectionView!
+    
+    @IBOutlet var stackCollections: UIStackView!
+    @IBOutlet var addCollect: UIButton!
+    @IBAction func addCollect(_ sender: Any) {
+        if(amountTwo.isHidden){
+            stackCollections.addArrangedSubview(amountTwo)
+            amountTwo.isHidden = false
+        } else if (amountThree.isHidden){
+            stackCollections.addArrangedSubview(amountThree)
+            amountThree.isHidden = false
+            addCollect.isHidden = true
+        }
+    }
     private var givtService:GivtManager!
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -131,16 +144,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var calcView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        amountOne.setLeftPaddingPoints(25)
-//        amountOne.setRightPaddingPoints(72)
-//        amountTwo.setLeftPaddingPoints(25)
-//        amountTwo.setRightPaddingPoints(72)
-//        amountTwo.deleteBtn.isHidden = true
-//        amountTwo.deleteBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        
-//        amountThree.setLeftPaddingPoints(25)
-//        amountThree.setRightPaddingPoints(72)
-//        amountThree.deleteBtn.isHidden = true
+        stackCollections.removeArrangedSubview(amountTwo)
+        amountTwo.isHidden = true
+        stackCollections.removeArrangedSubview(amountThree)
+        amountThree.isHidden = true
 
 
         
