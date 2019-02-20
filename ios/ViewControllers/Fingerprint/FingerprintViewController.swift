@@ -53,7 +53,7 @@ class FingerprintViewController: UIViewController {
             var error: NSError?
             
             if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-                authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, " ") { (didEvaluate, error) in
+                authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: " ") { (didEvaluate, error) in
                     let newFingerprint = NSUUID().uuidString.replacingOccurrences(of: "-", with: "") //strip dashes
                     self.showLoader()
                     LoginManager.shared.registerFingerprint(fingerprint: newFingerprint) { (success) in
