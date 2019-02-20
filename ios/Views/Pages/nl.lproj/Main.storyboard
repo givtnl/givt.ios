@@ -1077,15 +1077,15 @@ Kijk voor de status in je overzicht.</string>
                                         <rect key="frame" x="0.0" y="47.333333333333357" width="375" height="241.66666666666663"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JdZ-h5-LAO" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="87.333333333333314" width="335" height="77.333333333333314"/>
+                                                <rect key="frame" x="20" y="77.333333333333314" width="335" height="77.333333333333314"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-MY-azs" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="172.66666666666666" width="335" height="77.333333333333343"/>
+                                                <rect key="frame" x="20" y="162.66666666666666" width="335" height="77.333333333333343"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wef-5E-eYC" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="67" y="0.0" width="240" height="128"/>
+                                                <rect key="frame" x="20" y="0.0" width="335" height="77.333333333333329"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
@@ -1101,7 +1101,7 @@ Kijk voor de status in je overzicht.</string>
                                             <constraint firstItem="JdZ-h5-LAO" firstAttribute="leading" secondItem="g1b-YV-Sfa" secondAttribute="leading" constant="20" id="aTG-aI-IjP"/>
                                             <constraint firstItem="wef-5E-eYC" firstAttribute="leading" secondItem="g1b-YV-Sfa" secondAttribute="leading" constant="20" id="fks-Ud-sMi"/>
                                             <constraint firstItem="KbE-MY-azs" firstAttribute="top" secondItem="JdZ-h5-LAO" secondAttribute="bottom" constant="8" id="fvQ-Br-8W2"/>
-                                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="top" secondItem="wef-5E-eYC" secondAttribute="bottom" id="jcE-in-fNO"/>
+                                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="top" secondItem="wef-5E-eYC" secondAttribute="bottom" constant="8" id="jcE-in-fNO"/>
                                             <constraint firstItem="wef-5E-eYC" firstAttribute="height" secondItem="g1b-YV-Sfa" secondAttribute="height" multiplier="0.32" id="vtq-eH-CKg"/>
                                         </constraints>
                                     </view>
