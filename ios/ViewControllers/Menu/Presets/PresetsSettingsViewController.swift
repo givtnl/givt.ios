@@ -59,5 +59,6 @@ class PresetsSettingsViewController : UIViewController {
                 childView.alpha = gotoPresetsView.isUserInteractionEnabled ? 1.0 : 0.4
             }
         }
+        NotificationCenter.default.post(Notification(name: .GivtAmountPresetsSet, object: false, userInfo: nil))
     }
 }
