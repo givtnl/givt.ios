@@ -25,14 +25,14 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             var parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
             
             if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
-                setActiveCollection(collectOne)
+                setActiveCollection(collectionViews[index])
                 //displayAmountLimitExceeded()
                 return
             }
             
             if parsedDecimal  > 0 && parsedDecimal < 0.50 {
-                setActiveCollection(collectOne)
-                //showAmountTooLow()
+                setActiveCollection(collectionViews[index])
+                showAmountTooLow()
                 return
             }
             
@@ -41,7 +41,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             }
             
             if numberOfZeroAmounts == collectionViews.count {
-                //showAmountTooLow()
+                showAmountTooLow()
                 return
             }
         }
@@ -438,12 +438,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //        checkAmounts()
 //    }
 
-//    fileprivate func showAmountTooLow() {
-//        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
-//        let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""), message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
-//        self.present(alert, animated: true, completion: {})
-//    }
+    fileprivate func showAmountTooLow() {
+        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
+        let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""), message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+        self.present(alert, animated: true, completion: {})
+    }
     
 //    func displayAmountLimitExceeded() {
 //        let alert = UIAlertController(
