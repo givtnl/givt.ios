@@ -14,9 +14,41 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     private let slideFromRightAnimation = PresentFromRight()
     
     private var navigiationManager: NavigationManager = NavigationManager.shared
+    private var givtService:GivtManager!
+
+    @IBOutlet var pageControl: UIView!
+    @IBOutlet var calcView: UIView!
+    
     @IBOutlet var menu: UIBarButtonItem!
-    var collectionViews: [CollectionView] = [CollectionView]()
     @IBOutlet var btnNext: CustomButton!
+    @IBOutlet var viewPresets: UIView!
+    @IBOutlet var viewCalc: UIView!
+    @IBOutlet var calcPresetsStackView: UIStackView!
+    
+    @IBOutlet var amountPresetOne: PresetButton!
+    @IBOutlet var amountPresetTwo: PresetButton!
+    @IBOutlet var amountPresetThree: PresetButton!
+    @IBOutlet var addCollect: StripedBorderView!
+
+    @IBOutlet var btnComma: UIButton!
+    @IBOutlet weak var lblTitle: UINavigationItem!
+    
+    @IBOutlet var stackCollections: UIStackView!
+    
+    @IBOutlet var collectOne: CollectionView!
+    @IBOutlet var collectTwo: CollectionView!
+    @IBOutlet var collectThree: CollectionView!
+    var collectionViews: [CollectionView] = [CollectionView]()
+    
+    var currentCollect: CollectionView!
+    
+    private var pressedShortcutKey: Bool! = false
+    
+    var topAnchor: NSLayoutConstraint!
+    var leadingAnchor: NSLayoutConstraint!
+    var selectedAmount = 0
+    private var _cameFromFAQ: Bool = false
+
     @IBAction func btnNext(_ sender: Any) {
         var numberOfZeroAmounts = 0
         for index in 0..<collectionViews.count {
@@ -63,20 +95,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    @IBOutlet var viewPresets: UIView!
-    @IBOutlet var viewCalc: UIView!
-    
-    @IBOutlet var calcPresetsStackView: UIStackView!
-    
-    var topAnchor: NSLayoutConstraint!
-    var leadingAnchor: NSLayoutConstraint!
     
     private var amountLimit: Int {
         get {
             return UserDefaults.standard.amountLimit
         }
     }
-    var selectedAmount = 0
 //    var amount: String {
 //        get {
 //            return amountLabels[selectedAmount].text!
@@ -96,7 +120,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
     }
     
-    private var pressedShortcutKey: Bool! = false
     private var decimalNotation: String! = "," {
         didSet {
             btnComma.setTitle(decimalNotation, for: .normal)
@@ -109,24 +132,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
     }
 
-
-    @IBOutlet var amountPresetOne: PresetButton!
-    @IBOutlet var amountPresetTwo: PresetButton!
-    @IBOutlet var amountPresetThree: PresetButton!
-    
-    @IBOutlet var btnComma: UIButton!
-    @IBOutlet weak var lblTitle: UINavigationItem!
-    @IBOutlet weak var btnGive: CustomButton!
-    @IBOutlet var leadingCtrCalc: NSLayoutConstraint!
-    
-    @IBOutlet var stackCollections: UIStackView!
-
-    @IBOutlet var collectOne: CollectionView!
-    @IBOutlet var collectTwo: CollectionView!
-    @IBOutlet var collectThree: CollectionView!
-    
-    var currentCollect: CollectionView!
-    
     var nuOfCollectsShown: Int {
         var count = 0
         
@@ -139,7 +144,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         return count
     }
     
-    @IBOutlet var addCollect: StripedBorderView!
     func insertCollectAtPosition(collect: CollectionView, position: Int){
         stackCollections.insertArrangedSubview(collect, at: position)
         collect.isHidden = false
@@ -183,14 +187,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
         
     }
-    private var givtService:GivtManager!
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
     @objc func deleteCollect(sender: UIButton){
         switch sender.tag {
             case 1:
@@ -242,8 +239,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             addCollect.isHidden = true
         }
     }
-    @IBOutlet var pageControl: UIView!
-    @IBOutlet var calcView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         stackCollections.removeArrangedSubview(collectTwo)
@@ -322,7 +319,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgb: 0x2E2957), NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!]
     }
     
-    private var _cameFromFAQ: Bool = false
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigiationManager.delegate = self
@@ -334,15 +330,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         self._cameFromFAQ = false
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigiationManager.delegate = nil
-        
-
     }
     
     @IBAction func addValue(sender:UIButton!) {
@@ -493,16 +483,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //        }
 //    }
 
-//    let slideAnimator = CustomPresentModalAnimation()
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "faq" {
-//            let destination = segue.destination
-//            destination.transitioningDelegate = slideAnimator
-//        }
-//    }
-    
-//    @IBAction func returnFromSegue(sender: UIStoryboardSegue) {
-//
-//    }
-    
+    let slideAnimator = CustomPresentModalAnimation()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "faq" {
+            let destination = segue.destination
+            destination.transitioningDelegate = slideAnimator
+        }
+    }
 }
