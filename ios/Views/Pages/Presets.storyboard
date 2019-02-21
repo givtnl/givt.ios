@@ -52,6 +52,9 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JED-7P-T4u">
                                                 <rect key="frame" x="306" y="9.5" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="switch:" destination="LNd-8Z-PVC" eventType="valueChanged" id="viY-Fg-fDq"/>
+                                                </connections>
                                             </switch>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,7 +126,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="z3s-Wi-vN1" id="Ikp-Co-vQG"/>
+                        <outlet property="gotoPresetsView" destination="Shj-VR-nyj" id="2Op-oq-xMU"/>
                         <outlet property="navBar" destination="ryg-z5-8Ta" id="EEw-ku-J5d"/>
+                        <outlet property="switcher" destination="JED-7P-T4u" id="eod-b2-oce"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGN-FC-R4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
