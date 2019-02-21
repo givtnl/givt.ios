@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27689CDF221AF94B006C0DA6 /* CollectionView.xib */; };
 		27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27689CE3221B0064006C0DA6 /* CollectionView.swift */; };
+		27A0E4E1221E9D6D00982842 /* StripedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E0221E9D6D00982842 /* StripedBorderView.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
@@ -198,6 +199,7 @@
 /* Begin PBXFileReference section */
 		27689CDF221AF94B006C0DA6 /* CollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CollectionView.xib; path = "ios/Views/Custom Views/CollectionView.xib"; sourceTree = SOURCE_ROOT; };
 		27689CE3221B0064006C0DA6 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		27A0E4E0221E9D6D00982842 /* StripedBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripedBorderView.swift; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 				D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */,
 				27689CDF221AF94B006C0DA6 /* CollectionView.xib */,
 				27689CE3221B0064006C0DA6 /* CollectionView.swift */,
+				27A0E4E0221E9D6D00982842 /* StripedBorderView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1081,6 +1084,7 @@
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
+				27A0E4E1221E9D6D00982842 /* StripedBorderView.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,

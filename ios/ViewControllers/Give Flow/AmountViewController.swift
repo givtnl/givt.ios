@@ -133,12 +133,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         return count
     }
     
-    @IBOutlet var addCollect: UIButton!
+    @IBOutlet var addCollect: StripedBorderView!
     func insertCollectAtPosition(collect: CollectionView, position: Int){
         stackCollections.insertArrangedSubview(collect, at: position)
         collect.isHidden = false
         collect.deleteBtn.isHidden = false
     }
+
     @IBAction func addCollect(_ sender: Any) {
         
         var nuOfCollectsShown = self.nuOfCollectsShown
