@@ -126,7 +126,7 @@ class SettingsViewController: BaseMenuViewController {
                 items =
                     [
                         [finishRegistration],
-                        [amountPresets],
+                        [amountPresets, turnOnPresets],
                         [changeAccount, screwAccount],
                         [info, aboutGivt, shareGivt],
                 ]
@@ -134,7 +134,7 @@ class SettingsViewController: BaseMenuViewController {
                 items =
                     [
                         [finishRegistration],
-                        [amountPresets],
+                        [amountPresets, turnOnPresets],
                         [changeAccount, screwAccount],
                         [aboutGivt, shareGivt],
                 ]
