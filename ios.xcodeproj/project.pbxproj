@@ -12,6 +12,9 @@
 		27A0E4E1221E9D6D00982842 /* StripedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E0221E9D6D00982842 /* StripedBorderView.swift */; };
 		27A0E4E3221EC7E800982842 /* PresetButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A0E4E2221EC7E800982842 /* PresetButton.xib */; };
 		27A0E4E5221ECE6700982842 /* PresetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E4221ECE6700982842 /* PresetButton.swift */; };
+		27A0E4E9221F395000982842 /* PresetsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E8221F395000982842 /* PresetsNavigationViewController.swift */; };
+		27A0E4EB221F3D3500982842 /* Presets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A0E4EA221F3D3500982842 /* Presets.storyboard */; };
+		27A0E4EE221F3FF100982842 /* PresetsSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4ED221F3FF100982842 /* PresetsSettingsViewController.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
@@ -204,6 +207,9 @@
 		27A0E4E0221E9D6D00982842 /* StripedBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripedBorderView.swift; sourceTree = "<group>"; };
 		27A0E4E2221EC7E800982842 /* PresetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetButton.xib; sourceTree = "<group>"; };
 		27A0E4E4221ECE6700982842 /* PresetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetButton.swift; sourceTree = "<group>"; };
+		27A0E4E8221F395000982842 /* PresetsNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsNavigationViewController.swift; sourceTree = "<group>"; };
+		27A0E4EA221F3D3500982842 /* Presets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Presets.storyboard; sourceTree = "<group>"; };
+		27A0E4ED221F3FF100982842 /* PresetsSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsSettingsViewController.swift; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
@@ -391,6 +397,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27A0E4EC221F3EA800982842 /* Presets */ = {
+			isa = PBXGroup;
+			children = (
+				27A0E4E8221F395000982842 /* PresetsNavigationViewController.swift */,
+				27A0E4ED221F3FF100982842 /* PresetsSettingsViewController.swift */,
+			);
+			path = Presets;
+			sourceTree = "<group>";
+		};
 		4B950123D45CD9CD856C736B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +538,7 @@
 				D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */,
 				D70491941FDA927C00CE5980 /* Welcome.storyboard */,
 				D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */,
+				27A0E4EA221F3D3500982842 /* Presets.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -601,6 +617,7 @@
 				D782E68E20064A680086907E /* SettingsViewController.swift */,
 				D75AA195200CBFD5006E09BB /* TaxesViewController.swift */,
 				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
+				27A0E4EC221F3EA800982842 /* Presets */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -965,6 +982,7 @@
 				D7F3A84521480161008B65AE /* Fingerprint.storyboard in Resources */,
 				D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
+				27A0E4EB221F3D3500982842 /* Presets.storyboard in Resources */,
 				D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */,
 				D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
@@ -1039,6 +1057,7 @@
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
 				D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */,
 				D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */,
+				27A0E4EE221F3FF100982842 /* PresetsSettingsViewController.swift in Sources */,
 				D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */,
 				FB45AC3921CA406200F12584 /* FeatureMenuViewController.swift in Sources */,
 				D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */,
@@ -1108,6 +1127,7 @@
 				D761E9BF1F18CFE4002B849B /* UIColorExtensions.swift in Sources */,
 				FBBF72A621CA819600EBB085 /* FeaturesNavigationController.swift in Sources */,
 				D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */,
+				27A0E4E9221F395000982842 /* PresetsNavigationViewController.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
 				D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */,
 				A46C8AF0210889A400988D6D /* Beacon.swift in Sources */,
