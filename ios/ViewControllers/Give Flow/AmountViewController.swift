@@ -48,6 +48,179 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     var leadingAnchor: NSLayoutConstraint!
     var selectedAmount = 0
     private var _cameFromFAQ: Bool = false
+    
+    private var amountLimit: Int {
+        get {
+            return UserDefaults.standard.amountLimit
+        }
+    }
+    
+    private var decimalNotation: String! = "," {
+        didSet {
+            btnComma.setTitle(decimalNotation, for: .normal)
+            let fmt = NumberFormatter()
+            fmt.minimumFractionDigits = 2
+            fmt.minimumIntegerDigits = 1
+            amountPresetOne.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber)
+            amountPresetTwo.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber)
+            amountPresetThree.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber)
+        }
+    }
+    
+    var nuOfCollectsShown: Int {
+        var count = 0
+        
+        // get count of collectes shown
+        for view in stackCollections.subviews as! [CollectionView] {
+            if(!view.isHidden){
+                count += 1
+            }
+        }
+        return count
+    }
+    
+    // Begin of system overrides
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        stackCollections.removeArrangedSubview(collectTwo)
+        collectTwo.isHidden = true
+        stackCollections.removeArrangedSubview(collectThree)
+        collectThree.isHidden = true
+        
+        collectOne.deleteBtn.tag = 1
+        collectOne.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        collectOne.collectLabel.text = "1ste collecte"
+        collectOne.amountLabel.text = "0"
+        
+        collectTwo.deleteBtn.tag = 2
+        collectTwo.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        collectTwo.collectLabel.text = "2de collecte"
+        collectTwo.amountLabel.text = "0"
+        
+        collectThree.deleteBtn.tag = 3
+        collectThree.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        collectThree.collectLabel.text = "3de collecte"
+        collectThree.amountLabel.text = "0"
+        
+        setActiveCollection(collectOne)
+        collectionViews.append(collectOne)
+        
+        let currency = UserDefaults.standard.currencySymbol
+        let currencys = [collectOne.currencySign, collectTwo.currencySign, collectThree.currencySign, amountPresetOne.currency, amountPresetTwo.currency, amountPresetThree.currency]
+        currencys.forEach { (c) in
+            c?.text = currency
+        }
+        
+        givtService = GivtManager.shared
+        btnNext.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
+        btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
+        
+        lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
+        
+        menu.accessibilityLabel = "Menu"
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        decimalNotation = NSLocale.current.decimalSeparator! as String
+        super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
+        navigationController?.navigationBar.isTranslucent = false
+        let backItem = UIBarButtonItem()
+        backItem.title = NSLocalizedString("Cancel", comment: "Annuleer")
+        backItem.style = .plain
+        backItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!], for: .normal)
+        btnNext.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
+        self.navigationItem.backBarButtonItem = backItem
+        checkAmounts()
+        
+        log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
+        
+        FeatureManager.shared.checkUpdateState(context: self)
+        
+        menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
+        
+        if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
+            self._cameFromFAQ = true
+        }
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgb: 0x2E2957), NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigiationManager.delegate = self
+        
+        if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
+            navigiationManager.finishRegistrationAlert(self)
+        }
+        
+        self._cameFromFAQ = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigiationManager.delegate = nil
+    }
+    
+    // End of system overrides
+    
+    @IBAction func addCollect(_ sender: Any) {
+        
+        var nuOfCollectsShown = self.nuOfCollectsShown
+        
+        if(collectOne.isHidden) {
+            insertCollectAtPosition(collect: collectOne, position: 0)
+            setActiveCollection(collectOne)
+            collectionViews.append(collectOne)
+        } else if(collectTwo.isHidden){
+            insertCollectAtPosition(collect: collectTwo, position: 1)
+            setActiveCollection(collectTwo)
+            collectionViews.append(collectTwo)
+        } else if (collectThree.isHidden){
+            insertCollectAtPosition(collect: collectThree, position: 2)
+            setActiveCollection(collectThree)
+            collectionViews.append(collectThree)
+        }
+        
+        nuOfCollectsShown = self.nuOfCollectsShown
+        
+        // if count off collects show is higher then 1 show all deletebuttons
+        if nuOfCollectsShown > 1 {
+            for view in stackCollections.subviews as! [CollectionView] {
+                if(!view.isHidden){
+                    view.deleteBtn.isHidden = false
+                }
+            }
+        }
+        
+        // if count of collects is higher or equal then one and les then 3 show the add button
+        if nuOfCollectsShown >= 1 && nuOfCollectsShown < stackCollections.subviews.count {
+            addCollect.isHidden = false
+        } else {
+            addCollect.isHidden = true
+        }
+        
+    }
+    
+    func insertCollectAtPosition(collect: CollectionView, position: Int){
+        stackCollections.insertArrangedSubview(collect, at: position)
+        collect.isHidden = false
+        collect.deleteBtn.isHidden = false
+    }
+    
+    @IBAction func setActiveCollection(_ sender: Any) {
+        currentCollect = sender as? CollectionView
+        collectOne.active = false
+        collectTwo.active = false
+        collectThree.active = false
+        currentCollect.active = true
+    }
 
     @IBAction func btnNext(_ sender: Any) {
         var numberOfZeroAmounts = 0
@@ -96,19 +269,77 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
     }
     
-    private var amountLimit: Int {
-        get {
-            return UserDefaults.standard.amountLimit
+    @IBAction func addValue(sender:UIButton!) {
+        var currentAmountLabel = currentCollect.amountLabel!
+        
+        if currentAmountLabel.text == "0" || pressedShortcutKey {
+            currentAmountLabel.text = ""
         }
+        
+        if currentAmountLabel.text! == "" && (sender.titleLabel?.text?.contains(decimalNotation.first!))! {
+            currentAmountLabel.text = "0";
+        }
+        
+        if let idx = currentAmountLabel.text?.index(of: decimalNotation) {
+            if( ((currentAmountLabel.text?[idx...].count)! == 3)) || ((sender.titleLabel?.text?.contains(decimalNotation.first!))!){
+                return
+            }
+        }
+        
+        if (currentAmountLabel.text?.contains(decimalNotation.first!))! {
+            if currentAmountLabel.text?.count == 9 {
+                return
+            }
+        } else if currentAmountLabel.text?.count == 6 {
+            return
+        }
+        currentAmountLabel.text = currentAmountLabel.text! + sender.currentTitle!;
+        checkAmounts()
+        pressedShortcutKey = false
     }
-//    var amount: String {
-//        get {
-//            return amountLabels[selectedAmount].text!
-//        }
-//        set {
-//            amountLabels[selectedAmount].text = amount
-//        }
-//    }
+    
+    @IBAction func addPresetValue(_ sender: Any) {
+        var currentAmountLabel = currentCollect.amountLabel!
+        
+        let button = sender as! PresetButton
+        
+        currentAmountLabel.text = button.amount.text
+        if button.amount.text!.contains(",") {
+            let decimal = Decimal(string: button.amount.text!.replacingOccurrences(of: ",", with: "."))
+            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
+                self.log.info(message: "User used a custom amount preset")
+            }
+        } else if let decimal = Decimal(string: button.amount.text!) {
+            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
+                self.log.info(message: "User used a custom amount preset")
+            }
+        }
+        checkAmounts()
+        pressedShortcutKey = true
+    }
+    
+    @IBAction func clearValue(sender: UIButton!){
+        let currentAmountLabel = currentCollect.amountLabel!
+        var amount: String = currentAmountLabel.text!
+        if amount.count == 0 {
+            checkAmounts()
+            return
+        }
+        
+        amount.remove(at: amount.index(before: amount.endIndex))
+        currentAmountLabel.text! = amount
+        if amount.count == 0 || pressedShortcutKey {
+            currentAmountLabel.text = "0";
+        }
+        checkAmounts()
+        
+    }
+    
+    @IBAction func clearAll(_ sender: Any) {
+        var currentAmountLabel = currentCollect.amountLabel!
+        currentAmountLabel.text = "0";
+        checkAmounts()
+    }
     
     func willResume(sender: NavigationManager) {
         if ((self.presentedViewController as? UIAlertController) == nil) {
@@ -118,74 +349,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             
             self._cameFromFAQ = false
         }
-    }
-    
-    private var decimalNotation: String! = "," {
-        didSet {
-            btnComma.setTitle(decimalNotation, for: .normal)
-            let fmt = NumberFormatter()
-            fmt.minimumFractionDigits = 2
-            fmt.minimumIntegerDigits = 1
-            amountPresetOne.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber)
-            amountPresetTwo.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber)
-            amountPresetThree.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber)
-        }
-    }
-
-    var nuOfCollectsShown: Int {
-        var count = 0
-        
-        // get count of collectes shown
-        for view in stackCollections.subviews as! [CollectionView] {
-            if(!view.isHidden){
-                count += 1
-            }
-        }
-        return count
-    }
-    
-    func insertCollectAtPosition(collect: CollectionView, position: Int){
-        stackCollections.insertArrangedSubview(collect, at: position)
-        collect.isHidden = false
-        collect.deleteBtn.isHidden = false
-    }
-
-    @IBAction func addCollect(_ sender: Any) {
-        
-        var nuOfCollectsShown = self.nuOfCollectsShown
-        
-        if(collectOne.isHidden) {
-            insertCollectAtPosition(collect: collectOne, position: 0)
-            setActiveCollection(collectOne)
-            collectionViews.append(collectOne)
-        } else if(collectTwo.isHidden){
-            insertCollectAtPosition(collect: collectTwo, position: 1)
-            setActiveCollection(collectTwo)
-            collectionViews.append(collectTwo)
-        } else if (collectThree.isHidden){
-            insertCollectAtPosition(collect: collectThree, position: 2)
-            setActiveCollection(collectThree)
-            collectionViews.append(collectThree)
-        }
-        
-        nuOfCollectsShown = self.nuOfCollectsShown
-
-        // if count off collects show is higher then 1 show all deletebuttons
-        if nuOfCollectsShown > 1 {
-            for view in stackCollections.subviews as! [CollectionView] {
-                if(!view.isHidden){
-                    view.deleteBtn.isHidden = false
-                }
-            }
-        }
-        
-        // if count of collects is higher or equal then one and les then 3 show the add button
-        if nuOfCollectsShown >= 1 && nuOfCollectsShown < stackCollections.subviews.count {
-            addCollect.isHidden = false
-        } else {
-            addCollect.isHidden = true
-        }
-        
     }
     
     @objc func deleteCollect(sender: UIButton){
@@ -240,191 +403,19 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        stackCollections.removeArrangedSubview(collectTwo)
-        collectTwo.isHidden = true
-        stackCollections.removeArrangedSubview(collectThree)
-        collectThree.isHidden = true
-        
-        collectOne.deleteBtn.tag = 1
-        collectOne.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
-        collectOne.collectLabel.text = "1ste collecte"
-        collectOne.amountLabel.text = "0"
-        
-        collectTwo.deleteBtn.tag = 2
-        collectTwo.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
-        collectTwo.collectLabel.text = "2de collecte"
-        collectTwo.amountLabel.text = "0"
-        
-        collectThree.deleteBtn.tag = 3
-        collectThree.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
-        collectThree.collectLabel.text = "3de collecte"
-        collectThree.amountLabel.text = "0"
-        
-        setActiveCollection(collectOne)
-        collectionViews.append(collectOne)
-    
-        let currency = UserDefaults.standard.currencySymbol
-        let currencys = [collectOne.currencySign, collectTwo.currencySign, collectThree.currencySign, amountPresetOne.currency, amountPresetTwo.currency, amountPresetThree.currency]
-        currencys.forEach { (c) in
-            c?.text = currency
-        }
-        
-        givtService = GivtManager.shared
-        btnNext.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
-        btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
-        
-        lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
-
-        menu.accessibilityLabel = "Menu"
-
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
-    }
-    
     @objc func checkBadges(notification:Notification) {
         DispatchQueue.main.async {
             self.menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         }
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        decimalNotation = NSLocale.current.decimalSeparator! as String
-        super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
-        navigationController?.navigationBar.isTranslucent = false
-        let backItem = UIBarButtonItem()
-        backItem.title = NSLocalizedString("Cancel", comment: "Annuleer")
-        backItem.style = .plain
-        backItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!], for: .normal)
-        btnNext.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
-        self.navigationItem.backBarButtonItem = backItem
-        checkAmounts()
-        
-        log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
-        
-        FeatureManager.shared.checkUpdateState(context: self)
-        
-        menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
-        
-        if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
-            self._cameFromFAQ = true
-        }
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgb: 0x2E2957), NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!]
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigiationManager.delegate = self
- 
-        if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
-            navigiationManager.finishRegistrationAlert(self)
-        }
-        
-        self._cameFromFAQ = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigiationManager.delegate = nil
-    }
-    
-    @IBAction func addValue(sender:UIButton!) {
-        var currentAmountLabel = currentCollect.amountLabel!
-        
-        if currentAmountLabel.text == "0" || pressedShortcutKey {
-            currentAmountLabel.text = ""
-        }
-
-        if currentAmountLabel.text! == "" && (sender.titleLabel?.text?.contains(decimalNotation.first!))! {
-            currentAmountLabel.text = "0";
-        }
-
-        if let idx = currentAmountLabel.text?.index(of: decimalNotation) {
-            if( ((currentAmountLabel.text?[idx...].count)! == 3)) || ((sender.titleLabel?.text?.contains(decimalNotation.first!))!){
-                return
-            }
-        }
-
-        if (currentAmountLabel.text?.contains(decimalNotation.first!))! {
-            if currentAmountLabel.text?.count == 9 {
-                return
-            }
-        } else if currentAmountLabel.text?.count == 6 {
-            return
-        }
-        currentAmountLabel.text = currentAmountLabel.text! + sender.currentTitle!;
-        checkAmounts()
-        pressedShortcutKey = false
-    }
-    
-
-    @IBAction func setActiveCollection(_ sender: Any) {
-        currentCollect = sender as? CollectionView
-        collectOne.active = false
-        collectTwo.active = false
-        collectThree.active = false
-        currentCollect.active = true
-    }
-    
-    @IBAction func addShortcutValue(_ sender: Any) {
-        var currentAmountLabel = currentCollect.amountLabel!
-        
-        let button = sender as! PresetButton
-        
-        currentAmountLabel.text = button.amount.text
-        if button.amount.text!.contains(",") {
-            let decimal = Decimal(string: button.amount.text!.replacingOccurrences(of: ",", with: "."))
-            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
-                self.log.info(message: "User used a custom amount preset")
-            }
-        } else if let decimal = Decimal(string: button.amount.text!) {
-            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
-                self.log.info(message: "User used a custom amount preset")
-            }
+    func clearAmounts() {
+        let emptyString = "0"
+        for view in collectionViews {
+            view.amountLabel.text? = emptyString
         }
         checkAmounts()
-        pressedShortcutKey = true
     }
-    
-    @IBAction func clearValue(sender: UIButton!){
-        let currentAmountLabel = currentCollect.amountLabel!
-        var amount: String = currentAmountLabel.text!
-        if amount.count == 0 {
-            checkAmounts()
-            return
-        }
-
-        amount.remove(at: amount.index(before: amount.endIndex))
-        currentAmountLabel.text! = amount
-        if amount.count == 0 || pressedShortcutKey {
-            currentAmountLabel.text = "0";
-        }
-        checkAmounts()
-
-    }
-
-    @IBAction func clearAll(_ sender: Any) {
-        var currentAmountLabel = currentCollect.amountLabel!
-        currentAmountLabel.text = "0";
-        checkAmounts()
-    }
-    
-//    func clearAmounts() {
-//        let emptyString = "0"
-//        self.amountLabel.text? = emptyString
-//        self.amountLabel2.text? = emptyString
-//        self.amountLabel3.text? = emptyString
-//        removeCollection()
-//        removeCollection()
-//        checkAmounts()
-//    }
 
     fileprivate func showAmountTooLow() {
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
