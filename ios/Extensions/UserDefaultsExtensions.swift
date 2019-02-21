@@ -23,6 +23,7 @@ extension UserDefaults {
         case orgBeaconList
         case hasTappedAwayGiveDiff
         case pinSet
+        case presetsSet
         case needsCriticalUpdate
         case termsVersion
         case showedLastYearTaxOverview
@@ -262,6 +263,15 @@ extension UserDefaults {
         }
     }
     
+    var hasPresetsSet: Bool {
+        get {
+            return bool(forKey: UserDefaultsKeys.presetsSet.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.presetsSet.rawValue)
+            synchronize()
+        }
+    }
     var hasPinSet: Bool {
         get {
             return bool(forKey: UserDefaultsKeys.pinSet.rawValue)

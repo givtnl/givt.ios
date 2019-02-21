@@ -24,11 +24,12 @@ class PresetsSettingsViewController : UIViewController {
         tap.addTarget(self, action: #selector(gotoPresets))
         gotoPresetsView.isUserInteractionEnabled = false
         gotoPresetsView.addGestureRecognizer(tap)
-        gotoPresetsView.isOpaque = true
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        switcher.isOn = false
+        switcher.isOn = UserDefaults.standard.hasPresetsSet
+
         switcher.isUserInteractionEnabled = true
         
         gotoPresetsView.isUserInteractionEnabled = switcher.isOn
@@ -42,6 +43,9 @@ class PresetsSettingsViewController : UIViewController {
         self.show(vc, sender: self)
     }
     @IBAction func `switch`(_ sender: Any) {
+        // ToDo: check for better logic where to set this
+        UserDefaults.standard.hasPresetsSet = true
+
         let sw = sender as! UISwitch
         if sw.isOn {
             sw.isUserInteractionEnabled = false
@@ -49,6 +53,7 @@ class PresetsSettingsViewController : UIViewController {
                 self.gotoPresets()
             })
         } else {
+            UserDefaults.standard.hasPresetsSet = false
             for childView in gotoPresetsView.subviews {
                 gotoPresetsView.isUserInteractionEnabled = switcher.isOn
                 childView.alpha = gotoPresetsView.isUserInteractionEnabled ? 1.0 : 0.4

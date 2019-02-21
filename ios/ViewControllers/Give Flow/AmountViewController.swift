@@ -85,6 +85,17 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // ToDo: hide/disable with notification
+        
+        if(!UserDefaults.standard.hasPresetsSet){
+            calcPresetsStackView.removeArrangedSubview(viewPresets)
+            viewPresets.isHidden = true
+        } else {
+            calcPresetsStackView.insertArrangedSubview(viewPresets, at: 0)
+            viewPresets.isHidden = false
+        }
+        
         stackCollections.removeArrangedSubview(collectTwo)
         collectTwo.isHidden = true
         stackCollections.removeArrangedSubview(collectThree)
