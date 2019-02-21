@@ -383,7 +383,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         pressedShortcutKey = false
     }
     
-    @IBAction func cahngeAmount(_ sender: Any) {
+    @IBAction func changeAmount(_ sender: Any) {
         currentAmount = sender as? CollectionView
     }
     

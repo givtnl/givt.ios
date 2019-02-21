@@ -1092,21 +1092,21 @@ Kijk voor de status in je overzicht.</string>
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="69"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <action selector="cahngeAmount:" destination="lyO-8n-bds" eventType="touchUpInside" id="g39-HB-obe"/>
+                                                    <action selector="changeAmount:" destination="lyO-8n-bds" eventType="touchUpInside" id="g39-HB-obe"/>
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-MY-azs" customClass="CollectionView" customModule="ios" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="77" width="335" height="69"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <action selector="cahngeAmount:" destination="lyO-8n-bds" eventType="touchUpInside" id="5LO-WW-CCM"/>
+                                                    <action selector="changeAmount:" destination="lyO-8n-bds" eventType="touchUpInside" id="5LO-WW-CCM"/>
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wef-5E-eYC" customClass="CollectionView" customModule="ios" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="153.99999999999997" width="335" height="69"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
-                                                    <action selector="cahngeAmount:" destination="lyO-8n-bds" eventType="touchUpInside" id="Ddj-3C-ac5"/>
+                                                    <action selector="changeAmount:" destination="lyO-8n-bds" eventType="touchUpInside" id="Ddj-3C-ac5"/>
                                                 </connections>
                                             </view>
                                         </subviews>
@@ -1163,7 +1163,7 @@ Kijk voor de status in je overzicht.</string>
                                         </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avu-iq-1Ae" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="184.33333333333337" y="388.66666666666669" width="168.66666666666663" height="33"/>
+                                        <rect key="frame" x="184.33333333333337" y="377.66666666666669" width="168.66666666666663" height="44"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.34999999999999998" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="3f0-oV-omv"/>
