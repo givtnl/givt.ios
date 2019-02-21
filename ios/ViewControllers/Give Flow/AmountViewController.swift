@@ -121,6 +121,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var amountTwo: CollectionView!
     @IBOutlet var amountThree: CollectionView!
     
+    var currentAmount: CollectionView!
+    
     var nuOfCollectsShown: Int {
         var count = 0
         
@@ -353,7 +355,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //    }
     
     @IBAction func addValue(sender:UIButton!) {
-        var currentAmountLabel = amountOne.amountLabel!
+        var currentAmountLabel = currentAmount.amountLabel!
         
         if currentAmountLabel.text == "0" || pressedShortcutKey {
             currentAmountLabel.text = ""
@@ -381,6 +383,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         pressedShortcutKey = false
     }
     
+    @IBAction func cahngeAmount(_ sender: Any) {
+        currentAmount = sender as? CollectionView
+    }
+    
 //    @IBAction func addShortcutValue(sender: UIButton!){
 //        currentAmountLabel.text = sender.currentTitle
 //        if sender.currentTitle!.contains(",") {
@@ -398,7 +404,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //    }
     
     @IBAction func clearValue(sender: UIButton!){
-        let currentAmountLabel = amountOne.amountLabel!
+        let currentAmountLabel = currentAmount.amountLabel!
         var amount: String = currentAmountLabel.text!
         if amount.count == 0 {
 //            checkAmounts()
@@ -415,7 +421,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
 
     @IBAction func clearAll(_ sender: Any) {
-        var currentAmountLabel = amountOne.amountLabel!
+        var currentAmountLabel = currentAmount.amountLabel!
         currentAmountLabel.text = "0";
         //checkAmounts()
     }
