@@ -712,66 +712,42 @@ Kijk voor de status in je overzicht.</string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaT-GT-awW">
                                                                 <rect key="frame" x="10" y="37.333333333333371" width="95" height="173.66666666666666"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5wd-Yq-bTw" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cn6-kA-C6Y" customClass="PresetButton" customModule="ios" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="95" height="52.333333333333336"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
-                                                                        <state key="normal" title="€2,50">
-                                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                                                                <color key="value" red="0.56862745098039214" green="0.5607843137254902" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="20"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ayK-Rz-le1" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                                        <color key="backgroundColor" red="1" green="0.45409438689999998" blue="0.2474886681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <connections>
+                                                                            <action selector="addShortcutValue:" destination="lyO-8n-bds" eventType="touchUpInside" id="Jdi-8t-iHt"/>
+                                                                        </connections>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ky-9Q-vkw" customClass="PresetButton" customModule="ios" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="60.333333333333371" width="95" height="52.666666666666657"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
-                                                                        <state key="normal" title="€5,00">
-                                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                                                                <color key="value" red="0.56862745098039214" green="0.5607843137254902" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="20"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TLX-Ba-kpB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                                        <color key="backgroundColor" red="1" green="0.45409438689999998" blue="0.2474886681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <connections>
+                                                                            <action selector="addShortcutValue:" destination="lyO-8n-bds" eventType="touchUpInside" id="5Mi-vA-aXD"/>
+                                                                        </connections>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ov7-5Q-kWa" customClass="PresetButton" customModule="ios" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="121.00000000000001" width="95" height="52.666666666666671"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
-                                                                        <state key="normal" title="€7,50">
-                                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </state>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                                                                <color key="value" red="0.56862745098039214" green="0.5607843137254902" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="20"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </button>
+                                                                        <color key="backgroundColor" red="1" green="0.45409438689999998" blue="0.2474886681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <connections>
+                                                                            <action selector="addShortcutValue:" destination="lyO-8n-bds" eventType="touchUpInside" id="ivw-XG-whP"/>
+                                                                        </connections>
+                                                                    </view>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="TLX-Ba-kpB" secondAttribute="bottom" id="0l2-sB-Mvr"/>
-                                                                    <constraint firstItem="5wd-Yq-bTw" firstAttribute="leading" secondItem="VaT-GT-awW" secondAttribute="leading" id="4Eb-MV-2Qu"/>
-                                                                    <constraint firstItem="ayK-Rz-le1" firstAttribute="leading" secondItem="VaT-GT-awW" secondAttribute="leading" id="5MA-pr-vIE"/>
-                                                                    <constraint firstItem="TLX-Ba-kpB" firstAttribute="height" secondItem="5wd-Yq-bTw" secondAttribute="height" id="6no-yf-juU"/>
-                                                                    <constraint firstItem="ayK-Rz-le1" firstAttribute="height" secondItem="5wd-Yq-bTw" secondAttribute="height" id="Ack-2h-XbS"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="5wd-Yq-bTw" secondAttribute="trailing" id="LyL-aX-USc"/>
-                                                                    <constraint firstItem="TLX-Ba-kpB" firstAttribute="leading" secondItem="VaT-GT-awW" secondAttribute="leading" id="MR8-1x-e89"/>
-                                                                    <constraint firstItem="ayK-Rz-le1" firstAttribute="top" secondItem="5wd-Yq-bTw" secondAttribute="bottom" constant="8" id="Nfs-oB-Zlz"/>
-                                                                    <constraint firstItem="5wd-Yq-bTw" firstAttribute="top" secondItem="VaT-GT-awW" secondAttribute="top" id="gJO-Hr-8LS"/>
-                                                                    <constraint firstItem="TLX-Ba-kpB" firstAttribute="top" secondItem="ayK-Rz-le1" secondAttribute="bottom" constant="8" id="gja-1K-GBP"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="TLX-Ba-kpB" secondAttribute="trailing" id="lSu-Yo-TZe"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="ayK-Rz-le1" secondAttribute="trailing" id="yh8-f2-fIN"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="ov7-5Q-kWa" secondAttribute="trailing" id="8Jv-85-NdI"/>
+                                                                    <constraint firstItem="ov7-5Q-kWa" firstAttribute="height" secondItem="cn6-kA-C6Y" secondAttribute="height" id="AZH-xi-BtB"/>
+                                                                    <constraint firstItem="2Ky-9Q-vkw" firstAttribute="height" secondItem="cn6-kA-C6Y" secondAttribute="height" id="MrN-zK-CC3"/>
+                                                                    <constraint firstItem="cn6-kA-C6Y" firstAttribute="top" secondItem="VaT-GT-awW" secondAttribute="top" id="PbK-Ma-U1X"/>
+                                                                    <constraint firstItem="2Ky-9Q-vkw" firstAttribute="leading" secondItem="VaT-GT-awW" secondAttribute="leading" id="QdE-U9-oK7"/>
+                                                                    <constraint firstItem="ov7-5Q-kWa" firstAttribute="leading" secondItem="VaT-GT-awW" secondAttribute="leading" id="UiD-3I-xCM"/>
+                                                                    <constraint firstItem="2Ky-9Q-vkw" firstAttribute="top" secondItem="cn6-kA-C6Y" secondAttribute="bottom" constant="8" id="Vh2-zL-rGk"/>
+                                                                    <constraint firstItem="cn6-kA-C6Y" firstAttribute="leading" secondItem="VaT-GT-awW" secondAttribute="leading" id="cPf-DT-QtM"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="ov7-5Q-kWa" secondAttribute="bottom" id="dDn-Go-iUE"/>
+                                                                    <constraint firstItem="ov7-5Q-kWa" firstAttribute="top" secondItem="2Ky-9Q-vkw" secondAttribute="bottom" constant="8" id="nxi-Vy-eY1"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="cn6-kA-C6Y" secondAttribute="trailing" id="pQg-iZ-zMy"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="2Ky-9Q-vkw" secondAttribute="trailing" id="xVh-N5-V2v"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -1236,8 +1212,12 @@ Kijk voor de status in je overzicht.</string>
                     <connections>
                         <outlet property="addCollect" destination="LVh-mq-ZfQ" id="zKp-su-ZJY"/>
                         <outlet property="amountOne" destination="JdZ-h5-LAO" id="bwx-pC-KcT"/>
+                        <outlet property="amountPresetOne" destination="cn6-kA-C6Y" id="ztU-Bu-Lk5"/>
+                        <outlet property="amountPresetThree" destination="ov7-5Q-kWa" id="Dif-bc-myQ"/>
+                        <outlet property="amountPresetTwo" destination="2Ky-9Q-vkw" id="Zvb-Wt-CpO"/>
                         <outlet property="amountThree" destination="wef-5E-eYC" id="rgk-Jm-5Vv"/>
                         <outlet property="amountTwo" destination="KbE-MY-azs" id="UGv-Y1-2zg"/>
+                        <outlet property="btnComma" destination="MnM-rs-vqX" id="mUl-Ja-Npv"/>
                         <outlet property="btnNext" destination="avu-iq-1Ae" id="G0B-tH-oXZ"/>
                         <outlet property="calcPresetsStackView" destination="23j-EG-1Q9" id="HSQ-ib-NoU"/>
                         <outlet property="calcView" destination="Vep-oF-LTp" id="FlS-aR-4gf"/>
