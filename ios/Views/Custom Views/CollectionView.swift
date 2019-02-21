@@ -9,9 +9,9 @@
 import UIKit
 
 @IBDesignable
-class CollectionView: UIView {
+class CollectionView: UIControl {
     private var borderView: UIView!
-    @IBOutlet var contentView: UIView!
+    @IBOutlet var contentView: UIControl!
     @IBOutlet var collectLabel: UILabel!
     @IBOutlet var deleteBtn: UIButton!
     @IBOutlet weak var amountLabel: UILabel!
@@ -34,6 +34,10 @@ class CollectionView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    @IBAction func contentViewTouch(_ sender: Any) {
+        sendActions(for: .touchUpInside)
     }
     
     func shadowAndCorners() {
