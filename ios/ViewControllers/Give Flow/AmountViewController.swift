@@ -29,9 +29,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var amountPresetTwo: PresetButton!
     @IBOutlet var amountPresetThree: PresetButton!
     @IBOutlet var addCollect: StripedBorderView!
-
+    @IBOutlet weak var addCollectLabel: UILabel!
+    
     @IBOutlet var btnComma: UIButton!
     @IBOutlet weak var lblTitle: UINavigationItem!
+    @IBOutlet weak var screenTitle: UILabel!
     
     @IBOutlet var stackCollections: UIStackView!
     
@@ -93,17 +95,17 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         collectOne.deleteBtn.tag = 1
         collectOne.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
-        collectOne.collectLabel.text = "1ste collecte"
+        collectOne.collectLabel.text = NSLocalizedString("FirstCollect", comment: "")
         collectOne.amountLabel.text = "0"
         
         collectTwo.deleteBtn.tag = 2
         collectTwo.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
-        collectTwo.collectLabel.text = "2de collecte"
+        collectTwo.collectLabel.text = NSLocalizedString("SecondCollect", comment: "")
         collectTwo.amountLabel.text = "0"
         
         collectThree.deleteBtn.tag = 3
         collectThree.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
-        collectThree.collectLabel.text = "3de collecte"
+        collectThree.collectLabel.text = NSLocalizedString("ThirdCollect", comment: "")
         collectThree.amountLabel.text = "0"
         
         setActiveCollection(collectOne)
@@ -119,7 +121,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         btnNext.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
         btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         
-        lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
+        screenTitle.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
+        addCollectLabel.text = NSLocalizedString("AddCollect", comment: "")
         
         menu.accessibilityLabel = "Menu"
         

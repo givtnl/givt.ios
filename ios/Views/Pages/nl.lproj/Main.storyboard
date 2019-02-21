@@ -1211,6 +1211,7 @@ Kijk voor de status in je overzicht.</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="addCollect" destination="LVh-mq-ZfQ" id="zKp-su-ZJY"/>
+                        <outlet property="addCollectLabel" destination="vEQ-X4-UKG" id="s5d-23-e31"/>
                         <outlet property="amountPresetOne" destination="cn6-kA-C6Y" id="ztU-Bu-Lk5"/>
                         <outlet property="amountPresetThree" destination="ov7-5Q-kWa" id="Dif-bc-myQ"/>
                         <outlet property="amountPresetTwo" destination="2Ky-9Q-vkw" id="Zvb-Wt-CpO"/>
@@ -1224,6 +1225,7 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="lblTitle" destination="h1k-Ax-YwJ" id="kRF-na-R6Y"/>
                         <outlet property="menu" destination="QTY-DE-8Mb" id="fuH-wr-9ha"/>
                         <outlet property="pageControl" destination="sk7-Jb-o0S" id="Lji-EQ-vmT"/>
+                        <outlet property="screenTitle" destination="7gc-CF-kwy" id="oVk-kG-BQT"/>
                         <outlet property="stackCollections" destination="sHt-md-26B" id="xAS-22-VA5"/>
                         <outlet property="viewCalc" destination="Nv6-iH-YVl" id="ZAR-nj-Ksz"/>
                         <outlet property="viewPresets" destination="aFc-xz-VHc" id="cnH-Vi-F6e"/>
