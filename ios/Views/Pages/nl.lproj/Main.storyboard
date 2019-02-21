@@ -1524,7 +1524,7 @@ Kijk voor de status in je overzicht.</string>
                                     <constraint firstItem="oAt-na-8SN" firstAttribute="leading" secondItem="cHR-GM-wez" secondAttribute="leading" constant="20" id="3tF-gn-Dc9"/>
                                     <constraint firstAttribute="bottom" secondItem="oAt-na-8SN" secondAttribute="bottom" id="IHR-oi-IV4"/>
                                     <constraint firstAttribute="height" constant="80" id="Z0I-IG-iGV"/>
-                                    <constraint firstAttribute="trailing" secondItem="oAt-na-8SN" secondAttribute="trailing" constant="20" id="fnN-YR-Wc9"/>
+                                    <constraint firstAttribute="trailing" secondItem="oAt-na-8SN" secondAttribute="trailing" priority="200" constant="20" id="fnN-YR-Wc9"/>
                                     <constraint firstItem="oAt-na-8SN" firstAttribute="top" secondItem="cHR-GM-wez" secondAttribute="top" id="rvV-RK-Ypr"/>
                                 </constraints>
                             </view>
