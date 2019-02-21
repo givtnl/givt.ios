@@ -17,10 +17,53 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     private var navigiationManager: NavigationManager = NavigationManager.shared
     @IBOutlet var menu: UIBarButtonItem!
-    
+    var collectionViews: [CollectionView] = [CollectionView]()
     @IBOutlet var btnNext: CustomButton!
     @IBAction func btnNext(_ sender: Any) {
-        calcPresetsStackView.removeArrangedSubview(viewPresets)
+        var numberOfZeroAmounts = 0
+        for index in 0..<collectionViews.count {
+            var parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
+            
+            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
+                setActiveCollection(collectOne)
+                //displayAmountLimitExceeded()
+                return
+            }
+            
+            if parsedDecimal  > 0 && parsedDecimal < 0.50 {
+                setActiveCollection(collectOne)
+                //showAmountTooLow()
+                return
+            }
+            
+            if parsedDecimal == 0 {
+                numberOfZeroAmounts += 1
+            }
+            
+            if numberOfZeroAmounts == collectionViews.count {
+                //showAmountTooLow()
+                return
+            }
+        }
+        
+        
+        givtService.setAmounts(amounts: [(collectOne.amountLabel.text?.decimalValue)!, (collectTwo.amountLabel.text?.decimalValue)!, (collectThree.amountLabel.text?.decimalValue)!])
+        
+        if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
+            let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
+            vc.providesPresentationContextTransitionStyle = true
+            vc.definesPresentationContext = true
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            vc.closeAction = {
+                let chooseContext = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+                self.navigationController?.pushViewController(chooseContext, animated: true)
+            }
+            self.navigationController?.present(vc, animated: true, completion: nil)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     @IBOutlet var viewPresets: UIView!
     @IBOutlet var viewCalc: UIView!
@@ -36,7 +79,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
     }
     var selectedAmount = 0
-    var numberOfCollects = 1
 //    var amount: String {
 //        get {
 //            return amountLabels[selectedAmount].text!
@@ -113,12 +155,15 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         if(collectOne.isHidden) {
             insertCollectAtPosition(collect: collectOne, position: 0)
             setActiveCollection(collectOne)
+            collectionViews.append(collectOne)
         } else if(collectTwo.isHidden){
             insertCollectAtPosition(collect: collectTwo, position: 1)
             setActiveCollection(collectTwo)
+            collectionViews.append(collectTwo)
         } else if (collectThree.isHidden){
             insertCollectAtPosition(collect: collectThree, position: 2)
             setActiveCollection(collectThree)
+            collectionViews.append(collectThree)
         }
         
         nuOfCollectsShown = self.nuOfCollectsShown
@@ -138,6 +183,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         } else {
             addCollect.isHidden = true
         }
+        
     }
     private var givtService:GivtManager!
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -152,6 +198,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             case 1:
                 stackCollections.removeArrangedSubview(collectOne)
                 collectOne.isHidden = true
+                collectionViews = collectionViews.filter { $0 != collectOne }
                 if (collectTwo.isHidden){
                     setActiveCollection(collectThree)
                 } else {
@@ -160,6 +207,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             case 2:
                 stackCollections.removeArrangedSubview(collectTwo)
                 collectTwo.isHidden = true
+                collectionViews = collectionViews.filter { $0 != collectTwo }
                 if (collectOne.isHidden){
                     setActiveCollection(collectThree)
                 } else {
@@ -168,6 +216,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             case 3:
                 stackCollections.removeArrangedSubview(collectThree)
                 collectThree.isHidden = true
+                collectionViews = collectionViews.filter { $0 != collectThree }
                 if (collectOne.isHidden){
                     setActiveCollection(collectTwo)
                 } else {
@@ -218,6 +267,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         collectThree.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
         collectThree.collectLabel.text = "3de collecte"
         collectThree.amountLabel.text = "0"
+        
+        setActiveCollection(collectOne)
+        collectionViews.append(collectOne)
     
         let currency = UserDefaults.standard.currencySymbol
         let currencys = [collectOne.currencySign, collectTwo.currencySign, collectThree.currencySign, amountPresetOne.currency, amountPresetTwo.currency, amountPresetThree.currency]
@@ -229,7 +281,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         btnNext.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
         btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         
-        setActiveCollection(collectOne)
         lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
 
         menu.accessibilityLabel = "Menu"
@@ -393,53 +444,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
 //        self.present(alert, animated: true, completion: {})
 //    }
-    
-//    @IBAction func actionGive(_ sender: Any) {
-//        var numberOfZeroAmounts = 0
-//        for index in 0..<numberOfCollects {
-//            let parsedDecimal = Decimal(string: (amountLabels[index].text!.replacingOccurrences(of: ",", with: ".")))!
-//
-//            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
-//                selectView(index)
-//                displayAmountLimitExceeded()
-//                return
-//            }
-//
-//            if parsedDecimal  > 0 && parsedDecimal < 0.50 {
-//                selectView(index)
-//                showAmountTooLow()
-//                return
-//            }
-//
-//            if parsedDecimal == 0 {
-//                numberOfZeroAmounts += 1
-//            }
-//
-//            if numberOfZeroAmounts == numberOfCollects {
-//                showAmountTooLow()
-//                return
-//            }
-//        }
-//
-//
-//        givtService.setAmounts(amounts: [(amountLabels[0].text?.decimalValue)!, (amountLabels[1].text?.decimalValue)!, (amountLabels[2].text?.decimalValue)!])
-//
-//        if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
-//            let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
-//            vc.providesPresentationContextTransitionStyle = true
-//            vc.definesPresentationContext = true
-//            vc.modalPresentationStyle = .overFullScreen
-//            vc.modalTransitionStyle = .crossDissolve
-//            vc.closeAction = {
-//                let chooseContext = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-//                self.navigationController?.pushViewController(chooseContext, animated: true)
-//            }
-//            self.navigationController?.present(vc, animated: true, completion: nil)
-//        } else {
-//            let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
-//     }
     
 //    func displayAmountLimitExceeded() {
 //        let alert = UIAlertController(
