@@ -269,18 +269,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         
         setActiveCollection(collectOne)
-//        lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
-//
-//        amountLabels = [amountLabel, amountLabel2, amountLabel3]
-//        menu.accessibilityLabel = "Menu"
-//        addGestureRecognizerToView(view: firstView)
-//        addGestureRecognizerToView(view: secondView)
-//        addGestureRecognizerToView(view: thirdView)
-//
-//        secondView.isHidden = true
-//        secondLine.isHidden = true
-//        thirdView.isHidden = true
-//        thirdLine.isHidden = true
+        lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
+
+        menu.accessibilityLabel = "Menu"
+
         
         NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
     }
