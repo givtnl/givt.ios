@@ -267,6 +267,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         givtService = GivtManager.shared
         btnNext.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
         btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
+        
+        changeAmount(amountOne)
 //        lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
 //
 //        amountLabels = [amountLabel, amountLabel2, amountLabel3]
@@ -414,7 +416,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     @IBAction func addShortcutValue(_ sender: Any) {
-        var currentAmountLabel = amountOne.amountLabel!
+        var currentAmountLabel = currentAmount.amountLabel!
         
         let button = sender as! PresetButton
         
