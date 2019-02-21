@@ -204,8 +204,6 @@
 		27A0E4E0221E9D6D00982842 /* StripedBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripedBorderView.swift; sourceTree = "<group>"; };
 		27A0E4E2221EC7E800982842 /* PresetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetButton.xib; sourceTree = "<group>"; };
 		27A0E4E4221ECE6700982842 /* PresetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetButton.swift; sourceTree = "<group>"; };
-		27A0E4E6221ED1B600982842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		27A0E4E7221ED1B600982842 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Welcome.storyboard; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
@@ -220,6 +218,8 @@
 		D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WhyPersonalData.storyboard; sourceTree = "<group>"; };
 		D72A89D61FE820F000C06EF6 /* InfoRegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRegistrationViewController.swift; sourceTree = "<group>"; };
 		D72A89D81FE9164200C06EF6 /* AmountLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountLimit.swift; sourceTree = "<group>"; };
+		D72B197D1FE2E4F700EE3FDE /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = nl; path = nl.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D72B197F1FE2E4F800EE3FDE /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = nl; path = nl.lproj/Welcome.storyboard; sourceTree = "<group>"; };
 		D72B19811FE3016700EE3FDE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D72BD5431FDECA0B001481B1 /* ModalFromRightAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalFromRightAnimation.swift; sourceTree = "<group>"; };
 		D731EACC1F792D7400F5116C /* AmountLimitNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountLimitNavigationViewController.swift; sourceTree = "<group>"; };
@@ -919,7 +919,6 @@
 			knownRegions = (
 				nl,
 				en,
-				Base,
 			);
 			mainGroup = FB3CE6CA1F14CA1F0055185B;
 			productRefGroup = FB3CE6D41F14CA200055185B /* Products */;
@@ -1176,7 +1175,7 @@
 		D70491941FDA927C00CE5980 /* Welcome.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				27A0E4E7221ED1B600982842 /* Base */,
+				D72B197F1FE2E4F800EE3FDE /* nl */,
 			);
 			name = Welcome.storyboard;
 			sourceTree = "<group>";
@@ -1202,7 +1201,7 @@
 		FB3CE6DE1F14CA200055185B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				27A0E4E6221ED1B600982842 /* Base */,
+				D72B197D1FE2E4F700EE3FDE /* nl */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
