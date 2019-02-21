@@ -466,6 +466,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
 
         currentCollect.amountLabel.textColor = Decimal(string: (currentCollect.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
+        currentCollect.isInValid = Decimal(string: (currentCollect.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit)
     }
 //
 //    func showShowcase(message: String, targetView: UIView) {
