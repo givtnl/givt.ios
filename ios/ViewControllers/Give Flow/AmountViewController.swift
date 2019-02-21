@@ -356,27 +356,21 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @objc func deleteCollect(sender: UIButton){
         switch sender.tag {
             case 1:
-                stackCollections.removeArrangedSubview(collectOne)
-                collectOne.isHidden = true
-                collectionViews = collectionViews.filter { $0 != collectOne }
+                deleteCollectFromView(collect: collectOne)
                 if (collectTwo.isHidden){
                     setActiveCollection(collectThree)
                 } else {
                     setActiveCollection(collectTwo)
                 }
             case 2:
-                stackCollections.removeArrangedSubview(collectTwo)
-                collectTwo.isHidden = true
-                collectionViews = collectionViews.filter { $0 != collectTwo }
+                deleteCollectFromView(collect: collectTwo)
                 if (collectOne.isHidden){
                     setActiveCollection(collectThree)
                 } else {
                     setActiveCollection(collectOne)
                 }
             case 3:
-                stackCollections.removeArrangedSubview(collectThree)
-                collectThree.isHidden = true
-                collectionViews = collectionViews.filter { $0 != collectThree }
+                deleteCollectFromView(collect: collectTwo)
                 if (collectOne.isHidden){
                     setActiveCollection(collectTwo)
                 } else {
@@ -404,7 +398,15 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             addCollect.isHidden = true
         }
     }
-    
+    func deleteCollectFromView(collect: CollectionView){
+        stackCollections.removeArrangedSubview(collect)
+        collect.isHidden = true
+        collect.amountLabel.text = "0"
+        collectionViews = collectionViews.filter { $0 != collect }
+    }
+    func selectFirstCollect(){
+        setActiveCollection(collectionViews.first!)
+    }
     @objc func checkBadges(notification:Notification) {
         DispatchQueue.main.async {
             self.menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
@@ -415,6 +417,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         let emptyString = "0"
         for view in collectionViews {
             view.amountLabel.text? = emptyString
+            if(view.tag != 1 && !view.isHidden){
+                stackCollections.removeArrangedSubview(view)
+                view.isHidden = true
+            }
         }
         checkAmounts()
     }
