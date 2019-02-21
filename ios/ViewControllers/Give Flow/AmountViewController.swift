@@ -98,18 +98,21 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     private var pressedShortcutKey: Bool! = false
     private var decimalNotation: String! = "," {
         didSet {
-//            btnComma.setTitle(decimalNotation, for: .normal)
+            btnComma.setTitle(decimalNotation, for: .normal)
             let fmt = NumberFormatter()
             fmt.minimumFractionDigits = 2
             fmt.minimumIntegerDigits = 1
-//            firstQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber), for: .normal)
-//            secondQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber), for: .normal)
-//            thirdQuickBtn.setTitle(fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber), for: .normal)
+            amountPresetOne.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber)
+            amountPresetTwo.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber)
+            amountPresetThree.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber)
         }
     }
-    @IBOutlet var firstQuickBtn: RoundedButton!
-    @IBOutlet var secondQuickBtn: RoundedButton!
-    @IBOutlet var thirdQuickBtn: RoundedButton!
+
+
+    @IBOutlet var amountPresetOne: PresetButton!
+    @IBOutlet var amountPresetTwo: PresetButton!
+    @IBOutlet var amountPresetThree: PresetButton!
+    
     @IBOutlet var btnComma: UIButton!
     @IBOutlet weak var lblTitle: UINavigationItem!
     @IBOutlet weak var btnGive: CustomButton!
@@ -256,7 +259,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         amountThree.amountLabel.text = "0"
     
         let currency = UserDefaults.standard.currencySymbol
-        let currencys = [amountOne.currencySign, amountTwo.currencySign, amountThree.currencySign]
+        let currencys = [amountOne.currencySign, amountTwo.currencySign, amountThree.currencySign, amountPresetOne.currency, amountPresetTwo.currency, amountPresetThree.currency]
         currencys.forEach { (c) in
             c?.text = currency
         }
@@ -291,7 +294,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         super.viewWillAppear(animated)
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-//        decimalNotation = NSLocale.current.decimalSeparator! as String
+        decimalNotation = NSLocale.current.decimalSeparator! as String
         super.navigationController?.navigationBar.barTintColor = UIColor(rgb: 0xF5F5F5)
         navigationController?.navigationBar.isTranslucent = false
         let backItem = UIBarButtonItem()
@@ -401,6 +404,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         pressedShortcutKey = false
     }
     
+
     @IBAction func changeAmount(_ sender: Any) {
         currentAmount = sender as? CollectionView
         amountOne.active = false
@@ -409,21 +413,25 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         currentAmount.active = true
     }
     
-//    @IBAction func addShortcutValue(sender: UIButton!){
-//        currentAmountLabel.text = sender.currentTitle
-//        if sender.currentTitle!.contains(",") {
-//            let decimal = Decimal(string: sender.currentTitle!.replacingOccurrences(of: ",", with: "."))
-//            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
-//                self.log.info(message: "User used a custom amount preset")
-//            }
-//        } else if let decimal = Decimal(string: sender.currentTitle!) {
-//            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
-//                self.log.info(message: "User used a custom amount preset")
-//            }
-//        }
-//        checkAmounts()
-//        pressedShortcutKey = true
-//    }
+    @IBAction func addShortcutValue(_ sender: Any) {
+        var currentAmountLabel = amountOne.amountLabel!
+        
+        let button = sender as! PresetButton
+        
+        currentAmountLabel.text = button.amount.text
+        if button.amount.text!.contains(",") {
+            let decimal = Decimal(string: button.amount.text!.replacingOccurrences(of: ",", with: "."))
+            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
+                self.log.info(message: "User used a custom amount preset")
+            }
+        } else if let decimal = Decimal(string: button.amount.text!) {
+            if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
+                self.log.info(message: "User used a custom amount preset")
+            }
+        }
+        //        checkAmounts()
+        pressedShortcutKey = true
+    }
     
     @IBAction func clearValue(sender: UIButton!){
         let currentAmountLabel = currentAmount.amountLabel!
