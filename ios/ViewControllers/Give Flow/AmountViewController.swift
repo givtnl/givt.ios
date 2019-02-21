@@ -26,7 +26,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             
             if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
                 setActiveCollection(collectionViews[index])
-                //displayAmountLimitExceeded()
+                displayAmountLimitExceeded()
                 return
             }
             
@@ -445,28 +445,28 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         self.present(alert, animated: true, completion: {})
     }
     
-//    func displayAmountLimitExceeded() {
-//        let alert = UIAlertController(
-//            title: NSLocalizedString("AmountTooHigh", comment: ""),
-//            message: NSLocalizedString("AmountLimitExceeded", comment: ""),
-//            preferredStyle: UIAlertControllerStyle.alert)
-//        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
-//            action in
-//            self.currentAmountLabel.text = String(UserDefaults.standard.amountLimit)
-//            self.checkAmounts()
-//        }))
-//        if (LoginManager.shared.isFullyRegistered){
-//            alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-//                LogService.shared.info(message: "User is opening giving limit")
-//                let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-//                vc.startPoint = .amountLimit
-//                vc.isRegistration = false
-//                vc.transitioningDelegate = self.slideFromRightAnimation
-//                NavigationManager.shared.pushWithLogin(vc, context: self)
-//            }))
-//        }
-//        self.present(alert, animated: true, completion: nil)
-//    }
+    func displayAmountLimitExceeded() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("AmountTooHigh", comment: ""),
+            message: NSLocalizedString("AmountLimitExceeded", comment: ""),
+            preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
+            action in
+            self.currentAmount.amountLabel.text = String(UserDefaults.standard.amountLimit)
+            //self.checkAmounts()
+        }))
+        if (LoginManager.shared.isFullyRegistered){
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
+                LogService.shared.info(message: "User is opening giving limit")
+                let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+                vc.startPoint = .amountLimit
+                vc.isRegistration = false
+                vc.transitioningDelegate = self.slideFromRightAnimation
+                NavigationManager.shared.pushWithLogin(vc, context: self)
+            }))
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
 
 //    func checkAmounts() {
 //        var amountsUnder50C = 0
