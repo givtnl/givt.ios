@@ -385,6 +385,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     @IBAction func changeAmount(_ sender: Any) {
         currentAmount = sender as? CollectionView
+        amountOne.active = false
+        amountTwo.active = false
+        amountThree.active = false
+        currentAmount.active = true
     }
     
 //    @IBAction func addShortcutValue(sender: UIButton!){

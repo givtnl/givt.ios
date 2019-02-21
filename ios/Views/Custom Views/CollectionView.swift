@@ -16,6 +16,7 @@ class CollectionView: UIControl {
     @IBOutlet var deleteBtn: UIButton!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var currencySign: UILabel!
+    @IBOutlet weak var activeMarker: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +35,18 @@ class CollectionView: UIControl {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    private var _active: Bool = false
+    
+    var active: Bool {
+        get {
+            return _active
+        }
+        set {
+            activeMarker.isHidden = !newValue
+            _active = newValue
+        }
     }
     
     @IBAction func contentViewTouch(_ sender: Any) {
