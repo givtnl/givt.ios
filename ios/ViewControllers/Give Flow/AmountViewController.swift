@@ -148,10 +148,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         if(amountOne.isHidden) {
             insertCollectAtPosition(collect: amountOne, position: 0)
+            changeAmount(amountOne)
         } else if(amountTwo.isHidden){
             insertCollectAtPosition(collect: amountTwo, position: 1)
+            changeAmount(amountTwo)
         } else if (amountThree.isHidden){
             insertCollectAtPosition(collect: amountThree, position: 2)
+            changeAmount(amountThree)
         }
         
         nuOfCollectsShown = self.nuOfCollectsShown
@@ -185,12 +188,27 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             case 1:
                 stackCollections.removeArrangedSubview(amountOne)
                 amountOne.isHidden = true
+                if (amountTwo.isHidden){
+                    changeAmount(amountThree)
+                } else {
+                    changeAmount(amountTwo)
+                }
             case 2:
                 stackCollections.removeArrangedSubview(amountTwo)
                 amountTwo.isHidden = true
+                if (amountOne.isHidden){
+                    changeAmount(amountThree)
+                } else {
+                    changeAmount(amountOne)
+                }
             case 3:
                 stackCollections.removeArrangedSubview(amountThree)
                 amountThree.isHidden = true
+                if (amountOne.isHidden){
+                    changeAmount(amountTwo)
+                } else {
+                    changeAmount(amountOne)
+            }
             default:
                 return
         }
