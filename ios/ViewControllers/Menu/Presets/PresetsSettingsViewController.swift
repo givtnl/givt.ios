@@ -9,7 +9,12 @@
 import UIKit
 
 class PresetsSettingsViewController : UIViewController {
+    @IBOutlet var backButton: UIBarButtonItem!
+  
+    @IBOutlet var navBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        navBar.title = NSLocalizedString("AmountPresetsTitle", comment: "")
     }
 }

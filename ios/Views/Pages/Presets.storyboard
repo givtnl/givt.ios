@@ -115,8 +115,16 @@
                         <viewLayoutGuide key="safeArea" id="Rr3-3t-hUe"/>
                     </view>
                     <navigationItem key="navigationItem" title="Voorkeursbedragen" id="ryg-z5-8Ta">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="z3s-Wi-vN1"/>
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="z3s-Wi-vN1">
+                            <connections>
+                                <action selector="backPressed:" destination="LNd-8Z-PVC" id="Fkd-JK-AtP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="backButton" destination="z3s-Wi-vN1" id="Ikp-Co-vQG"/>
+                        <outlet property="navBar" destination="ryg-z5-8Ta" id="EEw-ku-J5d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGN-FC-R4S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
