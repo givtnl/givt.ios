@@ -17,6 +17,7 @@ class CollectionView: UIControl {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var currencySign: UILabel!
     @IBOutlet weak var activeMarker: UIView!
+    @IBOutlet weak var invalidMarker: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +36,7 @@ class CollectionView: UIControl {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        invalidMarker.isHidden = true
     }
     
     private var _active: Bool = false
@@ -44,8 +46,29 @@ class CollectionView: UIControl {
             return _active
         }
         set {
-            activeMarker.isHidden = !newValue
+            if (!_isInValid) {
+                activeMarker.isHidden = !newValue
+            } else {
+                activeMarker.isHidden = true
+            }
             _active = newValue
+        }
+    }
+    
+    private var _isInValid: Bool = false
+    
+    var isInValid: Bool {
+        get {
+            return _isInValid
+        }
+        set {
+            if (newValue){
+                activeMarker.isHidden = true
+            } else {
+                activeMarker.isHidden = !active
+            }
+            invalidMarker.isHidden = !newValue
+            _isInValid = newValue
         }
     }
     
