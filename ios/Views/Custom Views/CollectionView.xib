@@ -33,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlj-up-7DO">
-                    <rect key="frame" x="69" y="26.5" width="62" height="47"/>
+                    <rect key="frame" x="48" y="26.5" width="62" height="47"/>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="34"/>
                     <color key="textColor" red="0.82352941176470584" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="O97-7s-StG" secondAttribute="bottom" id="kk8-J9-ihv"/>
                 <constraint firstItem="z2I-y3-G8B" firstAttribute="leading" secondItem="kPS-8Y-cWM" secondAttribute="trailing" constant="15" id="ns3-ET-gMZ"/>
                 <constraint firstItem="JdN-tw-Q0o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="q3o-Hf-SK9"/>
-                <constraint firstItem="vlj-up-7DO" firstAttribute="leading" secondItem="JdN-tw-Q0o" secondAttribute="trailing" constant="31" id="qaQ-M1-VBr"/>
+                <constraint firstItem="vlj-up-7DO" firstAttribute="leading" secondItem="JdN-tw-Q0o" secondAttribute="trailing" constant="10" id="qaQ-M1-VBr"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
