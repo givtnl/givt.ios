@@ -120,9 +120,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     @IBOutlet var stackCollections: UIStackView!
 
-    @IBOutlet var amountOne: CollectionView!
-    @IBOutlet var amountTwo: CollectionView!
-    @IBOutlet var amountThree: CollectionView!
+    @IBOutlet var collectOne: CollectionView!
+    @IBOutlet var collectTwo: CollectionView!
+    @IBOutlet var collectThree: CollectionView!
     
     var currentAmount: CollectionView!
     
@@ -149,15 +149,15 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         var nuOfCollectsShown = self.nuOfCollectsShown
         
-        if(amountOne.isHidden) {
-            insertCollectAtPosition(collect: amountOne, position: 0)
-            changeAmount(amountOne)
-        } else if(amountTwo.isHidden){
-            insertCollectAtPosition(collect: amountTwo, position: 1)
-            changeAmount(amountTwo)
-        } else if (amountThree.isHidden){
-            insertCollectAtPosition(collect: amountThree, position: 2)
-            changeAmount(amountThree)
+        if(collectOne.isHidden) {
+            insertCollectAtPosition(collect: collectOne, position: 0)
+            setActiveCollection(collectOne)
+        } else if(collectTwo.isHidden){
+            insertCollectAtPosition(collect: collectTwo, position: 1)
+            setActiveCollection(collectTwo)
+        } else if (collectThree.isHidden){
+            insertCollectAtPosition(collect: collectThree, position: 2)
+            setActiveCollection(collectThree)
         }
         
         nuOfCollectsShown = self.nuOfCollectsShown
@@ -189,28 +189,28 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @objc func deleteCollect(sender: UIButton){
         switch sender.tag {
             case 1:
-                stackCollections.removeArrangedSubview(amountOne)
-                amountOne.isHidden = true
-                if (amountTwo.isHidden){
-                    changeAmount(amountThree)
+                stackCollections.removeArrangedSubview(collectOne)
+                collectOne.isHidden = true
+                if (collectTwo.isHidden){
+                    setActiveCollection(collectThree)
                 } else {
-                    changeAmount(amountTwo)
+                    setActiveCollection(collectTwo)
                 }
             case 2:
-                stackCollections.removeArrangedSubview(amountTwo)
-                amountTwo.isHidden = true
-                if (amountOne.isHidden){
-                    changeAmount(amountThree)
+                stackCollections.removeArrangedSubview(collectTwo)
+                collectTwo.isHidden = true
+                if (collectOne.isHidden){
+                    setActiveCollection(collectThree)
                 } else {
-                    changeAmount(amountOne)
+                    setActiveCollection(collectOne)
                 }
             case 3:
-                stackCollections.removeArrangedSubview(amountThree)
-                amountThree.isHidden = true
-                if (amountOne.isHidden){
-                    changeAmount(amountTwo)
+                stackCollections.removeArrangedSubview(collectThree)
+                collectThree.isHidden = true
+                if (collectOne.isHidden){
+                    setActiveCollection(collectTwo)
                 } else {
-                    changeAmount(amountOne)
+                    setActiveCollection(collectOne)
             }
             default:
                 return
@@ -238,28 +238,28 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var calcView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        stackCollections.removeArrangedSubview(amountTwo)
-        amountTwo.isHidden = true
-        stackCollections.removeArrangedSubview(amountThree)
-        amountThree.isHidden = true
+        stackCollections.removeArrangedSubview(collectTwo)
+        collectTwo.isHidden = true
+        stackCollections.removeArrangedSubview(collectThree)
+        collectThree.isHidden = true
         
-        amountOne.deleteBtn.tag = 1
-        amountOne.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
-        amountOne.collectLabel.text = "1ste collecte"
-        amountOne.amountLabel.text = "0"
+        collectOne.deleteBtn.tag = 1
+        collectOne.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        collectOne.collectLabel.text = "1ste collecte"
+        collectOne.amountLabel.text = "0"
         
-        amountTwo.deleteBtn.tag = 2
-        amountTwo.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
-        amountTwo.collectLabel.text = "2de collecte"
-        amountTwo.amountLabel.text = "0"
+        collectTwo.deleteBtn.tag = 2
+        collectTwo.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        collectTwo.collectLabel.text = "2de collecte"
+        collectTwo.amountLabel.text = "0"
         
-        amountThree.deleteBtn.tag = 3
-        amountThree.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
-        amountThree.collectLabel.text = "3de collecte"
-        amountThree.amountLabel.text = "0"
+        collectThree.deleteBtn.tag = 3
+        collectThree.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        collectThree.collectLabel.text = "3de collecte"
+        collectThree.amountLabel.text = "0"
     
         let currency = UserDefaults.standard.currencySymbol
-        let currencys = [amountOne.currencySign, amountTwo.currencySign, amountThree.currencySign, amountPresetOne.currency, amountPresetTwo.currency, amountPresetThree.currency]
+        let currencys = [collectOne.currencySign, collectTwo.currencySign, collectThree.currencySign, amountPresetOne.currency, amountPresetTwo.currency, amountPresetThree.currency]
         currencys.forEach { (c) in
             c?.text = currency
         }
@@ -268,7 +268,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         btnNext.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
         btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         
-        changeAmount(amountOne)
+        setActiveCollection(collectOne)
 //        lblTitle.title = NSLocalizedString("Amount", comment: "Title on the AmountPage")
 //
 //        amountLabels = [amountLabel, amountLabel2, amountLabel3]
@@ -407,11 +407,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
 
-    @IBAction func changeAmount(_ sender: Any) {
+    @IBAction func setActiveCollection(_ sender: Any) {
         currentAmount = sender as? CollectionView
-        amountOne.active = false
-        amountTwo.active = false
-        amountThree.active = false
+        collectOne.active = false
+        collectTwo.active = false
+        collectThree.active = false
         currentAmount.active = true
     }
     
