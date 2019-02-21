@@ -58,7 +58,7 @@ class ScanCompleteViewController: UIViewController {
     }
     @IBAction func nextBtn(_ sender: Any) {
         if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
-            amountVC.clearAmounts()
+            NotificationCenter.default.post(name: .GivtFlowCompleted, object: nil)
         }
         
         if let appScheme = GivtManager.shared.externalIntegration?.appScheme {

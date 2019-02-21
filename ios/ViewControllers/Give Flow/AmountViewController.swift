@@ -83,6 +83,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(clearAmounts), name: Notification.Name.GivtFlowCompleted, object: self.view.window)
+        
         stackCollections.removeArrangedSubview(collectTwo)
         collectTwo.isHidden = true
         stackCollections.removeArrangedSubview(collectThree)
@@ -409,7 +412,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
     }
     
-    func clearAmounts() {
+    @objc func clearAmounts() {
         let emptyString = "0"
         for view in collectionViews {
             view.amountLabel.text? = emptyString
