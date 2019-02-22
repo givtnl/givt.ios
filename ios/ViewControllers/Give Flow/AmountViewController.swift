@@ -86,8 +86,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        calcPresetsStackView.removeArrangedSubview(viewPresets)
-        viewPresets.isHidden = true
+        if(!UserDefaults.standard.hasPresetsSet){
+            calcPresetsStackView.removeArrangedSubview(viewPresets)
+            viewPresets.isHidden = true
+        }
         
         stackCollections.removeArrangedSubview(collectTwo)
         collectTwo.isHidden = true
@@ -130,10 +132,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(presetsWillShow), name: .GivtAmountPresetsSet, object: nil)
+
     }
     
     @objc func presetsWillShow(notification: Notification){
-        if(!UserDefaults.standard.hasPresetsSet && !viewPresets.isHidden){
+        if(!viewPresets.isHidden){
             calcPresetsStackView.removeArrangedSubview(viewPresets)
             viewPresets.isHidden = true
         } else {
@@ -144,7 +148,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(presetsWillShow), name: NSNotification.Name.GivtAmountPresetsSet, object: nil)
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         decimalNotation = NSLocale.current.decimalSeparator! as String
