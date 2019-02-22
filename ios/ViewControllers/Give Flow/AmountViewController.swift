@@ -136,16 +136,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 
     }
     
-    @objc func presetsWillShow(notification: Notification){
-        if(!viewPresets.isHidden){
-            calcPresetsStackView.removeArrangedSubview(viewPresets)
-            viewPresets.isHidden = true
-        } else {
-            calcPresetsStackView.insertArrangedSubview(viewPresets, at: 0)
-            viewPresets.isHidden = false
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
@@ -507,6 +497,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         if segue.identifier == "faq" {
             let destination = segue.destination
             destination.transitioningDelegate = slideAnimator
+        }
+    }
+    
+    @objc func presetsWillShow(notification: Notification){
+        if(!viewPresets.isHidden){
+            calcPresetsStackView.removeArrangedSubview(viewPresets)
+            viewPresets.isHidden = true
+        } else {
+            calcPresetsStackView.insertArrangedSubview(viewPresets, at: 0)
+            viewPresets.isHidden = false
         }
     }
 }
