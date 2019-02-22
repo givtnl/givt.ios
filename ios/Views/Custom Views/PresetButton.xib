@@ -45,16 +45,20 @@
                     </subviews>
                     <color key="backgroundColor" red="0.56848269701004028" green="0.55902117490768433" blue="0.65014410018920898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="sxc-YU-uKN" firstAttribute="centerY" secondItem="cfQ-Gb-Uls" secondAttribute="centerY" id="0Gl-Vn-yJa"/>
-                        <constraint firstItem="sxc-YU-uKN" firstAttribute="centerX" secondItem="cfQ-Gb-Uls" secondAttribute="centerX" id="6I7-VW-L7A"/>
+                        <constraint firstItem="sxc-YU-uKN" firstAttribute="centerY" secondItem="cfQ-Gb-Uls" secondAttribute="centerY" id="E75-pg-Xbe"/>
+                        <constraint firstItem="sxc-YU-uKN" firstAttribute="centerX" secondItem="cfQ-Gb-Uls" secondAttribute="centerX" id="S5f-gk-iRU"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <integer key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D9A-25-eRJ" customClass="UIControl">
+                    <rect key="frame" x="0.0" y="0.0" width="205" height="111"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
-                        <action selector="viewTouch:" destination="-1" eventType="touchUpInside" id="8Ay-nl-8R2"/>
+                        <action selector="viewTouch:" destination="-1" eventType="touchUpInside" id="1Gi-fo-rU9"/>
                     </connections>
                 </view>
             </subviews>
@@ -63,9 +67,13 @@
                 <constraint firstItem="cfQ-Gb-Uls" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="6zg-Qh-AKQ"/>
                 <constraint firstItem="cfQ-Gb-Uls" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7vC-h8-lHf"/>
                 <constraint firstItem="cfQ-Gb-Uls" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Lq8-nh-eCs"/>
+                <constraint firstItem="D9A-25-eRJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="PKL-2h-pfs"/>
+                <constraint firstItem="D9A-25-eRJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PbR-ht-58u"/>
                 <constraint firstItem="cfQ-Gb-Uls" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="RPi-YO-WBX"/>
                 <constraint firstItem="cfQ-Gb-Uls" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Vb5-qY-L21"/>
                 <constraint firstItem="cfQ-Gb-Uls" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="cci-HX-cWA"/>
+                <constraint firstAttribute="bottom" secondItem="D9A-25-eRJ" secondAttribute="bottom" id="iPf-Ma-JwF"/>
+                <constraint firstAttribute="trailing" secondItem="D9A-25-eRJ" secondAttribute="trailing" id="usx-jR-Taf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

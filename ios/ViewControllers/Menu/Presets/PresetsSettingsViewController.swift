@@ -15,13 +15,13 @@ class PresetsSettingsViewController : UIViewController {
     @IBOutlet var gotoPresetsView: UIView!
     @IBOutlet var presetsSwitchTitle: UILabel!
     @IBOutlet var presetsGotoTitle: UILabel!
-    
-    /** ToDo: remember if presets are set  */
-    
+    @IBOutlet var presetsBody: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         navBar.title = NSLocalizedString("AmountPresetsTitle", comment: "")
+        presetsBody.text = NSLocalizedString("AmountPresetsBody", comment: "")
         presetsSwitchTitle.text = NSLocalizedString("AmountPresetsTitle", comment: "")
         presetsGotoTitle.text = NSLocalizedString("AmountPresetsTitle", comment: "")
         let tap = UITapGestureRecognizer()
