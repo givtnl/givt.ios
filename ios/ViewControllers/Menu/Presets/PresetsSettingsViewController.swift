@@ -13,6 +13,8 @@ class PresetsSettingsViewController : UIViewController {
     @IBOutlet var switcher: UISwitch!
     @IBOutlet var navBar: UINavigationItem!
     @IBOutlet var gotoPresetsView: UIView!
+    @IBOutlet var presetsSwitchTitle: UILabel!
+    @IBOutlet var presetsGotoTitle: UILabel!
     
     /** ToDo: remember if presets are set  */
     
@@ -20,6 +22,8 @@ class PresetsSettingsViewController : UIViewController {
         super.viewDidLoad()
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         navBar.title = NSLocalizedString("AmountPresetsTitle", comment: "")
+        presetsSwitchTitle.text = NSLocalizedString("AmountPresetsTitle", comment: "")
+        presetsGotoTitle.text = NSLocalizedString("AmountPresetsTitle", comment: "")
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(gotoPresets))
         gotoPresetsView.isUserInteractionEnabled = false
