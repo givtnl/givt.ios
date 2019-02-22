@@ -47,7 +47,6 @@ class PresetsSettingsViewController : UIViewController {
         self.show(vc, sender: self)
     }
     @IBAction func `switch`(_ sender: Any) {
-        // ToDo: check for better logic where to set this
         UserDefaults.standard.hasPresetsSet = true
 
         let sw = sender as! UISwitch
