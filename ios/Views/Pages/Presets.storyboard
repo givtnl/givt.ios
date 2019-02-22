@@ -128,6 +128,7 @@
                         <outlet property="backButton" destination="z3s-Wi-vN1" id="Ikp-Co-vQG"/>
                         <outlet property="gotoPresetsView" destination="Shj-VR-nyj" id="2Op-oq-xMU"/>
                         <outlet property="navBar" destination="ryg-z5-8Ta" id="EEw-ku-J5d"/>
+                        <outlet property="presetsBody" destination="sda-ok-DVf" id="quj-DC-3CS"/>
                         <outlet property="presetsGotoTitle" destination="QbU-wn-Rdm" id="PEL-1r-wjn"/>
                         <outlet property="presetsSwitchTitle" destination="EUY-N9-4uB" id="19d-tO-LsE"/>
                         <outlet property="switcher" destination="JED-7P-T4u" id="eod-b2-oce"/>
