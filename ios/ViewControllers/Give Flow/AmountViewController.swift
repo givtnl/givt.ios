@@ -379,7 +379,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                     setActiveCollection(collectOne)
                 }
             case 3:
-                deleteCollectFromView(collect: collectTwo)
+                deleteCollectFromView(collect: collectThree)
                 if (collectOne.isHidden){
                     setActiveCollection(collectTwo)
                 } else {
