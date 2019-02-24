@@ -431,6 +431,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                 view.isHidden = true
             }
         }
+        if (collectOne.isHidden){
+            addCollect(collectOne)
+        }
+        setActiveCollection(collectOne)
         checkAmounts()
     }
 
@@ -477,20 +481,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         currentCollect.amountLabel.textColor = Decimal(string: (currentCollect.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
         currentCollect.isInValid = Decimal(string: (currentCollect.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit)
     }
-//
-//    func showShowcase(message: String, targetView: UIView) {
-//        let showCase = MaterialShowcase()
-//        showCase.delegate = self
-//        showCase.primaryText = message
-//        showCase.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
-//
-//        DispatchQueue.main.async {
-//            showCase.setTargetView(view: targetView) // always required to set targetView
-//            showCase.shouldSetTintColor = false
-//            showCase.backgroundPromptColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-//            showCase.show(completion: nil)
-//        }
-//    }
 
     let slideAnimator = CustomPresentModalAnimation()
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
