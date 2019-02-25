@@ -434,6 +434,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         if (collectOne.isHidden){
             addCollect(collectOne)
         }
+        if (addCollect.isHidden){
+            addCollect.isHidden = false
+        }
         setActiveCollection(collectOne)
         checkAmounts()
     }
