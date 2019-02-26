@@ -135,7 +135,9 @@ class PinScreenViewController: UIViewController {
                                 })
                             }))
                         default:
-                            UserDefaults.standard.hasPinSet = false
+                            if descr == "WrongPassOrUser" || descr == "AccountDisabled" {
+                                UserDefaults.standard.hasPinSet = false
+                            }
                             alert = nil
                             ErrorHandlingHelper.ShowLoginError(context: self, error: descr)
                         }
