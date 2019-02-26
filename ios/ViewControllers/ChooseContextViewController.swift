@@ -116,12 +116,10 @@ class ChooseContextViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
-//        navigationController?.navigationBar.isTranslucent = true
-//        
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgb: 0x2E2957), NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 17)!]
-        
+        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_second"))
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = true
+
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
     }
 }
