@@ -44,33 +44,33 @@ class ChooseContextViewController: UIViewController {
     @IBAction func selectContext(_ sender: Any) {
         let contextType = (sender as! SelectContextView).contextType
         let sb = UIStoryboard(name:"Main", bundle:nil)
-            DispatchQueue.main.async {
-                switch contextType! {
-                case .collectionDevice:
-                    if GivtManager.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
-                        let vc = sb.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
-                        self.navigationController!.show(vc, sender: nil)
-                    } else {
-                        self.showBluetoothMessage()
-                    }
-                case .qr:
-                    let vc = sb.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
+        DispatchQueue.main.async {
+            switch contextType! {
+            case .collectionDevice:
+                if GivtManager.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
+                    let vc = sb.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
                     self.navigationController!.show(vc, sender: nil)
-                case .manually:
-                    let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
-                    self.navigationController!.show(vc, sender: nil)
-                case .events:
-                    if !GivtManager.shared.hasGivtLocations() {
-                        let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                        self.navigationController?.present(alert, animated: true, completion: nil)
-                    } else {
-                        let story = UIStoryboard(name: "Event", bundle: nil)
-                        let vc = story.instantiateInitialViewController() as! EventViewController
-                        self.navigationController?.show(vc, sender: nil)
-                    }
+                } else {
+                    self.showBluetoothMessage()
+                }
+            case .qr:
+                let vc = sb.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
+                self.navigationController!.show(vc, sender: nil)
+            case .manually:
+                let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
+                self.navigationController!.show(vc, sender: nil)
+            case .events:
+                if !GivtManager.shared.hasGivtLocations() {
+                    let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.navigationController?.present(alert, animated: true, completion: nil)
+                } else {
+                    let story = UIStoryboard(name: "Event", bundle: nil)
+                    let vc = story.instantiateInitialViewController() as! EventViewController
+                    self.navigationController?.show(vc, sender: nil)
                 }
             }
+        }
     }
     
     override func viewDidLoad() {
