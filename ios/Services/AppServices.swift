@@ -12,6 +12,7 @@ import UIKit
 import CoreLocation
 import AudioToolbox
 import Reachability
+import CoreTelephony
 
 class AppServices {
     static let shared = AppServices()
@@ -86,6 +87,15 @@ class AppServices {
             }
         }
         notificationLocker.unlock()
+    }
+    
+    static func getCountryFromSim() -> String? {
+        let networkInfo = CTTelephonyNetworkInfo()
+        
+        if let countryCode = networkInfo.subscriberCellularProvider?.isoCountryCode {
+            return countryCode.uppercased()
+        }
+        return nil
     }
     
     static func isLocationServicesEnabled() -> Bool {

@@ -111,7 +111,7 @@ class NavigationManager {
         if let savedVersion = UserDefaults.standard.termsVersion {
             thisVersion = savedVersion
         } else {
-            thisVersion = NSLocalizedString("TermsTextVersion", comment: "")
+            thisVersion = AppServices.getCountryFromSim() == "GB" ? NSLocalizedString("TermsTextVersionGB", comment: "") : NSLocalizedString("TermsTextVersion", comment: "")
             UserDefaults.standard.termsVersion = thisVersion
         }
         DispatchQueue.main.async {
@@ -122,7 +122,8 @@ class NavigationManager {
                 let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
                 vc.setViewControllers([welcome], animated: false)
             } else {
-                if thisVersion != NSLocalizedString("TermsTextVersion", comment: "") {
+                let onlineVersion = AppServices.getCountryFromSim() == "GB" ? NSLocalizedString("TermsTextVersionGB", comment: "") : NSLocalizedString("TermsTextVersion", comment: "")
+                if thisVersion != onlineVersion {
                     let termsUpdateVC = UIStoryboard(name: "UpdatedTermsPage", bundle: nil).instantiateInitialViewController() as! UpdatedTermsPageViewController
                     vc.setViewControllers([termsUpdateVC], animated: false)
                 } else {
@@ -159,18 +160,12 @@ class NavigationManager {
     public func reAuthenticateIfNeeded(context: UIViewController, skipFingerprint: Bool = false, completion: @escaping () -> Void) {
         if !LoginManager.shared.isBearerStillValid {
             if UserDefaults.standard.hasFingerprintSet && !skipFingerprint {
-                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
-                    self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
-                }))
-                
                 context.showLoader()
                 self.loginManager.loginWithFingerprint { (success, status) in
                     context.hideLoader()
                     if success {
                         completion()
                     } else {
-                        print(status)
                         if let status = status, status == errSecUserCanceled {
                             let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
@@ -222,7 +217,6 @@ class NavigationManager {
                     if success {
                         completion()
                     } else {
-                        print(status)
                         if let status = status, status == errSecUserCanceled {
                             let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in

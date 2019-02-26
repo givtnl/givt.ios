@@ -160,6 +160,7 @@
 		FB45AC3721C9558200F12584 /* MenuNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45AC3621C9558200F12584 /* MenuNavigationViewController.swift */; };
 		FB45AC3921CA406200F12584 /* FeatureMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45AC3821CA406200F12584 /* FeatureMenuViewController.swift */; };
 		FB45AC3B21CA4A4A00F12584 /* BaseMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45AC3A21CA4A4A00F12584 /* BaseMenuViewController.swift */; };
+		FB7F33FB22254E5A00482E2C /* ErrorHandlingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7F33FA22254E5A00482E2C /* ErrorHandlingHelper.swift */; };
 		FB8187AE21C298050084C23E /* NewFeaturePopDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8187AD21C298040084C23E /* NewFeaturePopDownView.xib */; };
 		FB8187B221C29C7C0084C23E /* NewFeaturePopDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */; };
 		FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8A610A20A049B400696D20 /* BaseUser.swift */; };
@@ -359,6 +360,7 @@
 		FB45AC3621C9558200F12584 /* MenuNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNavigationViewController.swift; sourceTree = "<group>"; };
 		FB45AC3821CA406200F12584 /* FeatureMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureMenuViewController.swift; sourceTree = "<group>"; };
 		FB45AC3A21CA4A4A00F12584 /* BaseMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMenuViewController.swift; sourceTree = "<group>"; };
+		FB7F33FA22254E5A00482E2C /* ErrorHandlingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingHelper.swift; sourceTree = "<group>"; };
 		FB8187AD21C298040084C23E /* NewFeaturePopDownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewFeaturePopDownView.xib; path = "ios/Views/Custom Views/NewFeaturePopDownView.xib"; sourceTree = SOURCE_ROOT; };
 		FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturePopDownView.swift; sourceTree = "<group>"; };
 		FB8A610A20A049B400696D20 /* BaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUser.swift; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 			children = (
 				FB38F1B12133E7500025F648 /* NavigationHelper.swift */,
 				D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */,
+				FB7F33FA22254E5A00482E2C /* ErrorHandlingHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1038,6 +1041,7 @@
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
 				D7DD799F209B054500047CA7 /* EventViewController.swift in Sources */,
+				FB7F33FB22254E5A00482E2C /* ErrorHandlingHelper.swift in Sources */,
 				D761E9A01F167798002B849B /* FirstViewController.swift in Sources */,
 				D7721B4B20EB67AD009771EE /* LMUserExt.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
