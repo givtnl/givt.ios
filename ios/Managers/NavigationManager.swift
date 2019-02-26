@@ -122,7 +122,8 @@ class NavigationManager {
                 let welcome = UIStoryboard(name: "Welcome", bundle: nil).instantiateViewController(withIdentifier: "FirstUseViewController") as! FirstUseViewController
                 vc.setViewControllers([welcome], animated: false)
             } else {
-                if thisVersion != NSLocalizedString("TermsTextVersion", comment: "") {
+                let onlineVersion = AppServices.getCountryFromSim() == "GB" ? NSLocalizedString("TermsTextVersionGB", comment: "") : NSLocalizedString("TermsTextVersion", comment: "")
+                if thisVersion != onlineVersion {
                     let termsUpdateVC = UIStoryboard(name: "UpdatedTermsPage", bundle: nil).instantiateInitialViewController() as! UpdatedTermsPageViewController
                     vc.setViewControllers([termsUpdateVC], animated: false)
                 } else {
