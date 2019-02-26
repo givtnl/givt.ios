@@ -93,7 +93,7 @@ class AppServices {
         let networkInfo = CTTelephonyNetworkInfo()
         
         if let countryCode = networkInfo.subscriberCellularProvider?.isoCountryCode {
-            return countryCode
+            return countryCode.uppercased()
         }
         return nil
     }

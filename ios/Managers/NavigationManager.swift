@@ -111,7 +111,7 @@ class NavigationManager {
         if let savedVersion = UserDefaults.standard.termsVersion {
             thisVersion = savedVersion
         } else {
-            thisVersion = NSLocalizedString("TermsTextVersion", comment: "")
+            thisVersion = AppServices.getCountryFromSim() == "GB" ? NSLocalizedString("TermsTextVersionGB", comment: "") : NSLocalizedString("TermsTextVersion", comment: "")
             UserDefaults.standard.termsVersion = thisVersion
         }
         DispatchQueue.main.async {
