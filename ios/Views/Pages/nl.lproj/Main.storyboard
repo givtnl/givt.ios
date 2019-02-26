@@ -1584,9 +1584,21 @@ Kijk voor de status in je overzicht.</string>
             <objects>
                 <viewController storyboardIdentifier="ManualGivingViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5g3-dC-8Ob" customClass="ManualGivingViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hEK-Bt-s38">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="736" translatesAutoresizingMaskIntoConstraints="NO" id="ND2-vs-2dW">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ND2-vs-2dW" firstAttribute="top" secondItem="dVK-Iz-eza" secondAttribute="top" id="Iba-Pl-JBs"/>
+                            <constraint firstItem="ND2-vs-2dW" firstAttribute="bottom" secondItem="dVK-Iz-eza" secondAttribute="bottom" id="UT4-ue-AHx"/>
+                            <constraint firstItem="ND2-vs-2dW" firstAttribute="trailing" secondItem="dVK-Iz-eza" secondAttribute="trailing" id="dhI-si-3jm"/>
+                            <constraint firstItem="ND2-vs-2dW" firstAttribute="leading" secondItem="dVK-Iz-eza" secondAttribute="leading" id="ug1-5a-V6p"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dVK-Iz-eza"/>
                     </view>
                     <navigationItem key="navigationItem" title=" Anders geven" id="xwi-yl-DRD">
@@ -1600,6 +1612,7 @@ Kijk voor de status in je overzicht.</string>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="dlN-XT-0fC" id="Ezq-A8-Jmi"/>
+                        <outlet property="contentView" destination="ND2-vs-2dW" id="4jf-B6-j0r"/>
                         <outlet property="navBar" destination="xwi-yl-DRD" id="ZFd-x7-AlL"/>
                     </connections>
                 </viewController>
