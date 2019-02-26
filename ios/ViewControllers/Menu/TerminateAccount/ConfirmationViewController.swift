@@ -24,10 +24,9 @@ class ConfirmationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
             // Put your code which should be executed with a delay here
-            self.hideLeftView(nil)
-            self.performSegue(withIdentifier: "unwindAmount", sender: self)
+            self.dismiss(animated: true, completion: nil)
             NavigationManager.shared.loadMainPage(animated: false)
         })
     }
@@ -36,12 +35,4 @@ class ConfirmationViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    
-
 }

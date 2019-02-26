@@ -107,57 +107,45 @@ class PinScreenViewController: UIViewController {
                 LoginManager.shared.loginUser(email: UserDefaults.standard.userExt!.email, password: pincode, type: .pincode, completionHandler: { (status, err, description) in
                     SVProgressHUD.dismiss()
                     if let descr = description, !status {
-                        
-                        
                         DispatchQueue.main.async {
                             self.animateBullets()
                             AppServices.shared.vibrate()
                         }
                         
-                        let alert = UIAlertController(title: NSLocalizedString("PincodeWrongPinTitle", comment: ""), message: "", preferredStyle: .alert)
+                        var alert: UIAlertController? = UIAlertController(title: NSLocalizedString("PincodeWrongPinTitle", comment: ""), message: "", preferredStyle: .alert)
                         
                         switch descr {
-                        case "NoError":
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                                self.pincode = ""
-                            }))
-                            break
                         case "OneAttemptLeft":
-                            alert.message = NSLocalizedString("PincodeWrongPinSecondTry", comment: "")
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            alert!.message = NSLocalizedString("PincodeWrongPinSecondTry", comment: "")
+                            alert!.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                                 self.pincode = ""
                             }))
                         case "TwoAttemptsLeft":
-                            alert.message = NSLocalizedString("PincodeWrongPinFirstTry", comment: "")
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            alert!.message = NSLocalizedString("PincodeWrongPinFirstTry", comment: "")
+                            alert!.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                                 self.pincode = ""
                             }))
                         case "PinWiped":
                             UserDefaults.standard.hasPinSet = false
-                            alert.message = NSLocalizedString("PincodeWrongPinThirdTry", comment: "")
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            alert!.message = NSLocalizedString("PincodeWrongPinThirdTry", comment: "")
+                            alert!.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                                 self.pincode = ""
                                 self.dismiss(animated: true, completion: {
                                     self.innerHandler!(false)
                                 })
                             }))
-                        case "NoInternet":
-                            alert.title = NSLocalizedString("SomethingWentWrong", comment: "")
-                            alert.message = NSLocalizedString("ConnectionError", comment: "")
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                                self.pincode = ""
-                            }))
                         default:
-                            alert.title = NSLocalizedString("SomethingWentWrong", comment: "")
-                            alert.message = NSLocalizedString("ConnectionError", comment: "")
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                                self.pincode = ""
-                            }))
-                            break
+                            if descr == "WrongPassOrUser" || descr == "AccountDisabled" {
+                                UserDefaults.standard.hasPinSet = false
+                            }
+                            alert = nil
+                            ErrorHandlingHelper.ShowLoginError(context: self, error: descr)
                         }
                         
-                        DispatchQueue.main.async {
-                            self.present(alert, animated: true, completion: nil)
+                        if let alert = alert {
+                            DispatchQueue.main.async {
+                                self.present(alert, animated: true, completion: nil)
+                            }
                         }
 
                     } else if status {
