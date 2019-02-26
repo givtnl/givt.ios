@@ -120,7 +120,7 @@
 
 /*Maak je persoonlijke account?*/
 /*Titel op de registreerpagina*/
-"RegisterPage" = "Maak een account aan zodat je altijd \ntoegang tot je Givt-gegevens hebt.";
+"RegisterPage" = "Maak een account aan zodat je altijd toegang tot je Givt-gegevens hebt.";
 
 /*Kan dit leuker?*/
 /*Titel op de tweede registratiepagina*/
@@ -318,7 +318,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SlimPayInformationPart2" = "Er wordt alleen geïncasseerd, wanneer je zelf een bedrag geeft met Givt.\n\nOmdat we met een machtiging werken, is het eventueel mogelijk om achteraf een gift te herroepen.";
 "SlimPayInfoDetail" = "Givt werkt samen met SlimPay voor het verwerken van transacties. SlimPay is gespecialiseerd in het verwerken van machtigingen en automatische incasso’s voor digitale platforms. Dit doet SlimPay voor Givt tegen de laagste kosten in de markt en met hoge snelheid.\n\nSlimPay is voor Givt de ideale partner omdat zij het geven zonder contant geld eenvoudig en veilig maakt. Zij staat als betaalinstelling onder toezicht van de Nederlandsche Bank en andere Nationale Europese Banken.\n\nHet geïncasseerde geld wordt verzameld op een rekening bij SlimPay. Givt zorgt ervoor dat het geld verdeeld wordt.";
 "SlimPayInfoDetailTitle" = "Wat is SlimPay?";
-"ContinueRegistration" = "Je gebruikersaccount werd al \naangemaakt, maar het is niet \ngelukt om de registratie \nhelemaal af te ronden. \n\nWe willen graag dat je Givt kunt \ngebruiken, dus vragen we je om \nin te loggen en je registratie \ncompleet te maken.";
+"ContinueRegistration" = "Je gebruikersaccount werd al aangemaakt, maar het is niet gelukt om de registratie helemaal af te ronden. \n\nWe willen graag dat je Givt kunt gebruiken, dus vragen we je om in te loggen en je registratie compleet te maken.";
 "ContactFailedButton" = "Niet gelukt?";
 
 /*Title van de pagina "Account opzeggen"*/
@@ -818,3 +818,5 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SecondCollect" = "2de collecte";
 "ThirdCollect" = "3de collecte";
 "AddCollect" = "Collecte toevoegen";
+"TermsTextVersionGB" = "1.8";
+"AccountDisabledError" = "Oeps, het lijkt erop dat je account is gedeactiveerd. Neem snel contact op met support@givtapp.net!";
