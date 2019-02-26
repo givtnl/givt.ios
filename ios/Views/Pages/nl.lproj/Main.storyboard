@@ -1193,7 +1193,7 @@ Kijk voor de status in je overzicht.</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sk7-Jb-o0S" firstAttribute="top" secondItem="D9v-Aw-MYg" secondAttribute="top" id="5WY-zz-hfM"/>
                             <constraint firstItem="JdZ-h5-LAO" firstAttribute="height" secondItem="D9v-Aw-MYg" secondAttribute="height" multiplier="0.1" id="ZAL-5o-XIt"/>
@@ -2282,7 +2282,7 @@ best bij jou past.</string>
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="D7V-XZ-zeg" firstAttribute="top" secondItem="cir-JG-aZJ" secondAttribute="top" id="1m8-UU-P6S"/>
                                     <constraint firstAttribute="bottom" secondItem="4mR-Ef-QWQ" secondAttribute="bottom" id="85C-K2-wLG"/>

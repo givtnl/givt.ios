@@ -161,7 +161,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             self._cameFromFAQ = true
         }
         
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgb: 0x2E2957), NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!]
+        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
