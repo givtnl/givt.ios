@@ -11,7 +11,6 @@ import CoreLocation
 
 class ChooseContextViewController: UIViewController {
    
-//    @IBOutlet var giveSubtitle: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
     @IBOutlet var titleLabel: UILabel!
@@ -113,51 +112,6 @@ class ChooseContextViewController: UIViewController {
                 fourthSelection.alpha = 0.4
             }
         }
-        
-//
-//        let hasGivtLocations = GivtManager.shared.hasGivtLocations()
-//        contexts.forEach { (context) in
-//            let containerView = UIView()
-//            containerView.isUserInteractionEnabled = true
-//            let tap = ContextTapGesture(target: self, action: #selector(pressedRow))
-//            tap.contextType = context.type
-//            containerView.addGestureRecognizer(tap)
-//            containerView.translatesAutoresizingMaskIntoConstraints = false
-//            containerView.backgroundColor = #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 0.8036708048)
-//            contextsStackView.addArrangedSubview(containerView)
-//
-//            let stackView = UIStackView()
-//            stackView.spacing = 10
-//            stackView.translatesAutoresizingMaskIntoConstraints = false
-//            stackView.axis = .horizontal
-//            containerView.addSubview(stackView)
-//            stackView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5).isActive = true
-//            stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10).isActive = true
-//            stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -5).isActive = true
-//            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10).isActive = true
-//            let img = UIImageView(image: context.image)
-//            img.contentMode = .scaleAspectFit
-//            stackView.addArrangedSubview(img)
-//            img.widthAnchor.constraint(lessThanOrEqualToConstant: 80).isActive = true
-//            let label = UILabel()
-//            label.adjustsFontSizeToFitWidth = true
-//            label.minimumScaleFactor = 0.6
-//            label.numberOfLines = 0
-//            label.textAlignment = .center
-//            label.translatesAutoresizingMaskIntoConstraints = false
-//            label.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-//            label.attributedText = makeAttributedString(title: context.title, subtitle: context.subtitle)
-//            stackView.addArrangedSubview(label)
-//            let arrow = UIImageView(image: #imageLiteral(resourceName: "rightarrow-purple"))
-//            arrow.translatesAutoresizingMaskIntoConstraints = false
-//            arrow.contentMode = .scaleAspectFit
-//            stackView.addArrangedSubview(arrow)
-//            arrow.widthAnchor.constraint(equalToConstant: 12).isActive = true
-//
-//            if !hasGivtLocations && context.type == .events {
-//                containerView.alpha = 0.4
-//            }
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -172,6 +126,3 @@ class ChooseContextViewController: UIViewController {
     }
 }
 
-//class ContextTapGesture: UITapGestureRecognizer {
-//    var contextType: ContextType!
-//}

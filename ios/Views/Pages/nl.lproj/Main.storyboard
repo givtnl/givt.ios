@@ -1584,11 +1584,11 @@ Kijk voor de status in je overzicht.</string>
             <objects>
                 <viewController storyboardIdentifier="ManualGivingViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5g3-dC-8Ob" customClass="ManualGivingViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hEK-Bt-s38">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="736" translatesAutoresizingMaskIntoConstraints="NO" id="ND2-vs-2dW">
-                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -2191,14 +2191,14 @@ Kijk voor de status in je overzicht.</string>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="736" translatesAutoresizingMaskIntoConstraints="NO" id="cir-JG-aZJ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoe wil je geven ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7V-XZ-zeg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Hoe wil je geven ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7V-XZ-zeg">
                                         <rect key="frame" x="20" y="10" width="374" height="27.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKm-Yo-Wje">
-                                        <rect key="frame" x="40" y="47.5" width="334" height="61.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKm-Yo-Wje">
+                                        <rect key="frame" x="20" y="47.5" width="374" height="61.5"/>
                                         <string key="text">Je kan op verschillende manieren ‘Givten’. 
 Hier kun je kiezen wat op dit moment het 
 best bij jou past.</string>
@@ -2207,17 +2207,17 @@ best bij jou past.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLY-4u-8ip">
-                                        <rect key="frame" x="0.0" y="209" width="414" height="565"/>
+                                        <rect key="frame" x="0.0" y="245" width="414" height="565"/>
                                         <color key="backgroundColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4mR-Ef-QWQ">
-                                        <rect key="frame" x="0.0" y="116" width="414" height="658"/>
+                                        <rect key="frame" x="0.0" y="131.5" width="414" height="642.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ccJ-cB-Q5c">
-                                                <rect key="frame" x="20" y="20" width="374" height="618"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="622.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbX-o1-bs5" customClass="SelectContextView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="142"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="143"/>
                                                         <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2229,7 +2229,7 @@ best bij jou past.</string>
                                                         </connections>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUc-Jb-nhG" customClass="SelectContextView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="158.5" width="374" height="142.5"/>
+                                                        <rect key="frame" x="0.0" y="160" width="374" height="143"/>
                                                         <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2241,7 +2241,7 @@ best bij jou past.</string>
                                                         </connections>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VCJ-rL-9Ah" customClass="SelectContextView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="317.5" width="374" height="142"/>
+                                                        <rect key="frame" x="0.0" y="319.5" width="374" height="143"/>
                                                         <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2253,7 +2253,7 @@ best bij jou past.</string>
                                                         </connections>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIl-Za-biW" customClass="SelectContextView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="476" width="374" height="142"/>
+                                                        <rect key="frame" x="0.0" y="479.5" width="374" height="143"/>
                                                         <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -2293,7 +2293,7 @@ best bij jou past.</string>
                                     <constraint firstItem="4mR-Ef-QWQ" firstAttribute="leading" secondItem="cir-JG-aZJ" secondAttribute="leading" id="SUn-tv-yGa"/>
                                     <constraint firstItem="4mR-Ef-QWQ" firstAttribute="top" secondItem="hKm-Yo-Wje" secondAttribute="bottom" constant="8" id="TUo-4A-mnT"/>
                                     <constraint firstAttribute="trailing" secondItem="4mR-Ef-QWQ" secondAttribute="trailing" id="Tvl-Si-V5H"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZLY-4u-8ip" secondAttribute="bottom" id="aRk-zl-3kE"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZLY-4u-8ip" secondAttribute="bottom" constant="-36" id="aRk-zl-3kE"/>
                                     <constraint firstItem="hKm-Yo-Wje" firstAttribute="leading" secondItem="cir-JG-aZJ" secondAttribute="leading" constant="20" id="fbq-rq-cZ6"/>
                                     <constraint firstItem="ZLY-4u-8ip" firstAttribute="height" secondItem="cir-JG-aZJ" secondAttribute="height" multiplier="0.73" id="kJD-nW-eyP"/>
                                     <constraint firstItem="D7V-XZ-zeg" firstAttribute="leading" secondItem="cir-JG-aZJ" secondAttribute="leading" constant="20" id="kWW-Hb-g1W"/>
