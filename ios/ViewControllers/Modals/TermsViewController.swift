@@ -21,6 +21,11 @@ class TermsViewController: UIViewController {
                 titleToShow = NSLocalizedString("PrivacyTitle", comment: "")
             } else if typeOfTerms == .termsAndConditions {
                 textToShow = NSLocalizedString("TermsText", comment: "")
+                if let country = AppServices.getCountryFromSim() {
+                    if(country == "GB"){
+                        self.textToShow = NSLocalizedString("TermsTextGB", comment: "")
+                    }
+                }
                 titleToShow = NSLocalizedString("FullVersionTitleTerms", comment: "")
             } else if typeOfTerms == .slimPayInfo {
                 textToShow = NSLocalizedString("SlimPayInfoDetail", comment: "")
