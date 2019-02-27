@@ -101,13 +101,13 @@ class ScanViewController: BaseScanViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
         GivtManager.shared.delegate = nil
         GivtManager.shared.stopScanning()
         self.navigationController?.isNavigationBarHidden = false
 
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
         removeOverlay()
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {
