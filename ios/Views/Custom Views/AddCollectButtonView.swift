@@ -32,7 +32,6 @@ class AddCollectButtonView: UIButton {
         set {
             layer.cornerRadius = newValue
             layer.masksToBounds = newValue > 0
-            borderLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: newValue).cgPath
         }
     }
     
@@ -98,5 +97,10 @@ class AddCollectButtonView: UIButton {
         borderLayer.fillColor = UIColor.clear.cgColor
         borderLayer.backgroundColor = UIColor.clear.cgColor
         layer.addSublayer(borderLayer)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        borderLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
     }
 }
