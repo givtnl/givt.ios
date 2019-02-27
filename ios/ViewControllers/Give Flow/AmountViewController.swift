@@ -28,7 +28,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var amountPresetOne: PresetButton!
     @IBOutlet var amountPresetTwo: PresetButton!
     @IBOutlet var amountPresetThree: PresetButton!
-    @IBOutlet var addCollect: StripedBorderView!
+    @IBOutlet var addCollect: AddCollectButtonView!
     @IBOutlet weak var addCollectLabel: UILabel!
     
     @IBOutlet var btnComma: UIButton!
@@ -125,7 +125,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         
         screenTitle.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
-        addCollectLabel.text = NSLocalizedString("AddCollect", comment: "")
+//        addCollectLabel.text = NSLocalizedString("AddCollect", comment: "")
         lblTitle.title = ""
         
         menu.accessibilityLabel = "Menu"
@@ -346,7 +346,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             currentAmountLabel.text = "0";
         }
         checkAmounts()
-        
     }
     
     @IBAction func clearAll(_ sender: Any) {

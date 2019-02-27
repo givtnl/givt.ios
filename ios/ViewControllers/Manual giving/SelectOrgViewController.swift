@@ -16,6 +16,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         var nameSpace: String
     }
     
+    @IBOutlet var titleText: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var typeStackView: UIStackView!
     var lastGivtToOrganisationPosition: Int?
@@ -265,6 +266,14 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_third"))
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = true
+        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
+    }
+    
     /* selecteren van Kerk/Stichtingen/...-knop langsboven */
     @objc func selectType(_ sender: UITapGestureRecognizer) {
         if let view = sender.view {
@@ -480,16 +489,16 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         switch(tag) {
         case 100:
             regExp = "d[0-9]" //stichtingen
-            title = NSLocalizedString("Stichtingen", comment: "")
+            titleText.text = NSLocalizedString("Stichtingen", comment: "")
         case 101:
             regExp = "c[0-9]|d[be]" //churches
-            title = NSLocalizedString("Churches", comment: "")
+            titleText.text = NSLocalizedString("Churches", comment: "")
         case 102:
             regExp = "a[0-9]" //acties
-            title = NSLocalizedString("Acties", comment: "")
+            titleText.text = NSLocalizedString("Acties", comment: "")
         case 103:
             regExp = "b[0-9]"
-            title = NSLocalizedString("Artists", comment: "")
+            titleText.text = NSLocalizedString("Artists", comment: "")
         default:
             break
         }

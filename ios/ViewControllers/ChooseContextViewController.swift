@@ -119,7 +119,6 @@ class ChooseContextViewController: UIViewController {
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_second"))
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
-
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
     }
 }

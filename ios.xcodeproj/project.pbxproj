@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27689CDF221AF94B006C0DA6 /* CollectionView.xib */; };
 		27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27689CE3221B0064006C0DA6 /* CollectionView.swift */; };
-		27A0E4E1221E9D6D00982842 /* StripedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E0221E9D6D00982842 /* StripedBorderView.swift */; };
+		27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E0221E9D6D00982842 /* AddCollectButtonView.swift */; };
 		27A0E4E3221EC7E800982842 /* PresetButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A0E4E2221EC7E800982842 /* PresetButton.xib */; };
 		27A0E4E5221ECE6700982842 /* PresetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E4221ECE6700982842 /* PresetButton.swift */; };
 		27A0E4E9221F395000982842 /* PresetsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E8221F395000982842 /* PresetsNavigationViewController.swift */; };
@@ -206,7 +206,7 @@
 /* Begin PBXFileReference section */
 		27689CDF221AF94B006C0DA6 /* CollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CollectionView.xib; path = "ios/Views/Custom Views/CollectionView.xib"; sourceTree = SOURCE_ROOT; };
 		27689CE3221B0064006C0DA6 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
-		27A0E4E0221E9D6D00982842 /* StripedBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripedBorderView.swift; sourceTree = "<group>"; };
+		27A0E4E0221E9D6D00982842 /* AddCollectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectButtonView.swift; sourceTree = "<group>"; };
 		27A0E4E2221EC7E800982842 /* PresetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetButton.xib; sourceTree = "<group>"; };
 		27A0E4E4221ECE6700982842 /* PresetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetButton.swift; sourceTree = "<group>"; };
 		27A0E4E8221F395000982842 /* PresetsNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsNavigationViewController.swift; sourceTree = "<group>"; };
@@ -571,7 +571,7 @@
 				D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */,
 				27689CDF221AF94B006C0DA6 /* CollectionView.xib */,
 				27689CE3221B0064006C0DA6 /* CollectionView.swift */,
-				27A0E4E0221E9D6D00982842 /* StripedBorderView.swift */,
+				27A0E4E0221E9D6D00982842 /* AddCollectButtonView.swift */,
 				27A0E4E2221EC7E800982842 /* PresetButton.xib */,
 				27A0E4E4221ECE6700982842 /* PresetButton.swift */,
 				27AC59F722255DD400163BF4 /* SelectContextView.xib */,
@@ -1118,7 +1118,7 @@
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
-				27A0E4E1221E9D6D00982842 /* StripedBorderView.swift in Sources */,
+				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
