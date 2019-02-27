@@ -9,8 +9,7 @@
 import UIKit
 
 @IBDesignable
-class StripedBorderView: UIButton {
-    
+class AddCollectButtonView: UIButton {
     private var borderLayer: CAShapeLayer!
     private var lineDashPattern: [NSNumber] = [0,0]
     
@@ -23,7 +22,9 @@ class StripedBorderView: UIButton {
         super.init(coder: aDecoder)
         commonInit()
     }
-    
+    @IBAction func viewTouch(_ sender: Any) {
+        sendActions(for: .touchUpInside)
+    }
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
