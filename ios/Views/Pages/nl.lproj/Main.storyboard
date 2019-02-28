@@ -1099,7 +1099,7 @@ Kijk voor de status in je overzicht.</string>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVh-mq-ZfQ" customClass="AddCollectButtonView" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="83" y="315.5" width="248" height="40"/>
+                                        <rect key="frame" x="70.5" y="315.5" width="273" height="40"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="increase" translatesAutoresizingMaskIntoConstraints="NO" id="pfc-fH-Pba">
                                                 <rect key="frame" x="20" y="10" width="20" height="20"/>
@@ -1197,7 +1197,7 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="sk7-Jb-o0S" firstAttribute="leading" secondItem="D9v-Aw-MYg" secondAttribute="leading" id="beR-AS-rZu"/>
                             <constraint firstItem="D9v-Aw-MYg" firstAttribute="bottom" secondItem="sk7-Jb-o0S" secondAttribute="bottom" id="cd0-FH-jWR"/>
                             <constraint firstAttribute="centerX" secondItem="D9v-Aw-MYg" secondAttribute="centerX" id="jbD-6f-uAB"/>
-                            <constraint firstItem="LVh-mq-ZfQ" firstAttribute="width" secondItem="WsT-yj-Ydz" secondAttribute="width" multiplier="0.6" id="slI-9j-95Z"/>
+                            <constraint firstItem="LVh-mq-ZfQ" firstAttribute="width" secondItem="WsT-yj-Ydz" secondAttribute="width" multiplier="0.66" id="slI-9j-95Z"/>
                             <constraint firstItem="D9v-Aw-MYg" firstAttribute="trailing" secondItem="sk7-Jb-o0S" secondAttribute="trailing" id="y8h-iW-q2a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D9v-Aw-MYg"/>
