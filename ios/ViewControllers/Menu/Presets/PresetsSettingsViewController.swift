@@ -32,7 +32,7 @@ class PresetsSettingsViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        switcher.isOn = UserDefaults.standard.hasPresetsSet
+        switcher.isOn = UserDefaults.standard.hasPresetsSet!
 
         switcher.isUserInteractionEnabled = true
         
