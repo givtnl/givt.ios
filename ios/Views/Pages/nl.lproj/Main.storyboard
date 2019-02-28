@@ -944,11 +944,10 @@ Kijk voor de status in je overzicht.</string>
                                                                     <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="8V5-3x-vrS"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgC-fX-maL" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="200.5" y="210" width="82.5" height="58.5"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgC-fX-maL" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                                <rect key="frame" x="234.5" y="229" width="16" height="22"/>
                                                                 <gestureRecognizers/>
-                                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                                                <state key="normal" title="&lt;">
+                                                                <state key="normal" image="erase_new">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
@@ -2782,6 +2781,7 @@ best bij jou past.</string>
         <image name="corner" width="40" height="40"/>
         <image name="dlTaxes" width="20" height="20"/>
         <image name="dropdown.png" width="16" height="16"/>
+        <image name="erase_new" width="24" height="18"/>
         <image name="givy-party" width="288" height="197"/>
         <image name="givyGave" width="136" height="197"/>
         <image name="givymoney" width="240" height="240"/>
