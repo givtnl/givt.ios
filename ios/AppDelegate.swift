@@ -38,8 +38,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         handleOldBeaconList()
         checkIfTempUser()
+        doMagicForPresets()
         
         return true
+    }
+    
+    func doMagicForPresets() {
+        if(UserDefaults.standard.object(forKey: UserDefaults.UserDefaultsKeys.presetsSet.rawValue) == nil){
+            UserDefaults.standard.hasPresetsSet = UserDefaults.standard.userExt?.guid != nil
+        }
     }
     
     func checkIfTempUser() {
