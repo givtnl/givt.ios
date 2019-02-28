@@ -1108,7 +1108,7 @@ Kijk voor de status in je overzicht.</string>
                                                     <constraint firstAttribute="height" constant="20" id="ify-NN-ggo"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collecte toevoegen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEQ-X4-UKG">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collecte toevoegen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEQ-X4-UKG">
                                                 <rect key="frame" x="60" y="9" width="142" height="22"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1117,6 +1117,7 @@ Kijk voor de status in je overzicht.</string>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="vEQ-X4-UKG" secondAttribute="trailing" constant="20" id="3nO-Un-miG"/>
                                             <constraint firstItem="vEQ-X4-UKG" firstAttribute="leading" secondItem="pfc-fH-Pba" secondAttribute="trailing" constant="20" id="TtN-1w-S3k"/>
                                             <constraint firstItem="pfc-fH-Pba" firstAttribute="centerY" secondItem="LVh-mq-ZfQ" secondAttribute="centerY" id="VR9-Tt-TwI"/>
                                             <constraint firstItem="vEQ-X4-UKG" firstAttribute="centerY" secondItem="LVh-mq-ZfQ" secondAttribute="centerY" id="aSu-9X-lsG"/>
