@@ -263,9 +263,12 @@ extension UserDefaults {
         }
     }
     
-    var hasPresetsSet: Bool {
+    var hasPresetsSet: Bool? {
         get {
-            return bool(forKey: UserDefaultsKeys.presetsSet.rawValue)
+            if let bool = bool(forKey: UserDefaultsKeys.presetsSet.rawValue) as Bool? {
+                return bool
+            }
+            return nil
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.presetsSet.rawValue)

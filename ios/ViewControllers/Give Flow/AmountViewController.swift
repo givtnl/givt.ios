@@ -86,7 +86,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if(!UserDefaults.standard.hasPresetsSet){
+        if(!UserDefaults.standard.hasPresetsSet!){
             calcPresetsStackView.removeArrangedSubview(viewPresets)
             viewPresets.isHidden = true
         }
