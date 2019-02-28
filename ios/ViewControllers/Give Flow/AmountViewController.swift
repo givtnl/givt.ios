@@ -126,6 +126,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         screenTitle.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         addCollectLabel.text = NSLocalizedString("AddCollect", comment: "")
+        addCollectLabel.adjustsFontSizeToFitWidth = true
         lblTitle.title = ""
         
         menu.accessibilityLabel = "Menu"
