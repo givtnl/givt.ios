@@ -20,7 +20,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var calcView: UIView!
     
     @IBOutlet var menu: UIBarButtonItem!
-    @IBOutlet var btnNext: CustomButton!
+    @IBOutlet var btnNext: CustomButtonWithRightArrow!
     @IBOutlet var viewPresets: UIView!
     @IBOutlet var viewCalc: UIView!
     @IBOutlet var calcPresetsStackView: UIStackView!
@@ -121,7 +121,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
         
         givtService = GivtManager.shared
-        btnNext.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
+        btnNext.labelText.text = NSLocalizedString("Next", comment: "Button to give")
+        btnNext.labelText.adjustsFontSizeToFitWidth = true
         btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         
         screenTitle.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
@@ -240,7 +241,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBAction func btnNext(_ sender: Any) {
         var numberOfZeroAmounts = 0
         for index in 0..<collectionViews.count {
-            var parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
+            let parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
             
             if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
                 setActiveCollection(collectionViews[index])
@@ -285,7 +286,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     @IBAction func addValue(sender:UIButton!) {
-        var currentAmountLabel = currentCollect.amountLabel!
+        let currentAmountLabel = currentCollect.amountLabel!
         
         if currentAmountLabel.text == "0" || pressedShortcutKey {
             currentAmountLabel.text = ""
@@ -314,7 +315,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     @IBAction func addPresetValue(_ sender: Any) {
-        var currentAmountLabel = currentCollect.amountLabel!
+        let currentAmountLabel = currentCollect.amountLabel!
         
         let button = sender as! PresetButton
         
@@ -350,7 +351,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     @IBAction func clearAll(_ sender: Any) {
-        var currentAmountLabel = currentCollect.amountLabel!
+        let currentAmountLabel = currentCollect.amountLabel!
         currentAmountLabel.text = "0";
         checkAmounts()
     }

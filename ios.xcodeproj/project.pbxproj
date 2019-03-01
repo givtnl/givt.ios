@@ -17,6 +17,8 @@
 		27A0E4EE221F3FF100982842 /* PresetsSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4ED221F3FF100982842 /* PresetsSettingsViewController.swift */; };
 		27AC59F822255DD400163BF4 /* SelectContextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27AC59F722255DD400163BF4 /* SelectContextView.xib */; };
 		27AC59FA22255DEE00163BF4 /* SelectContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC59F922255DEE00163BF4 /* SelectContextView.swift */; };
+		27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */; };
+		27D7F7662229214E00D3953A /* CustomButtonWithRightArrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
@@ -215,6 +217,8 @@
 		27A0E4ED221F3FF100982842 /* PresetsSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsSettingsViewController.swift; sourceTree = "<group>"; };
 		27AC59F722255DD400163BF4 /* SelectContextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectContextView.xib; sourceTree = "<group>"; };
 		27AC59F922255DEE00163BF4 /* SelectContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextView.swift; sourceTree = "<group>"; };
+		27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonWithRightArrow.swift; sourceTree = "<group>"; };
+		27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomButtonWithRightArrow.xib; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
@@ -578,6 +582,8 @@
 				27A0E4E4221ECE6700982842 /* PresetButton.swift */,
 				27AC59F722255DD400163BF4 /* SelectContextView.xib */,
 				27AC59F922255DEE00163BF4 /* SelectContextView.swift */,
+				27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */,
+				27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -965,6 +971,7 @@
 				D75141A81F9E181A0016B71F /* givt_registration.gif in Resources */,
 				D7F131661F75574D00E25A68 /* Registration.storyboard in Resources */,
 				FB8187AE21C298050084C23E /* NewFeaturePopDownView.xib in Resources */,
+				27D7F7662229214E00D3953A /* CustomButtonWithRightArrow.xib in Resources */,
 				D787BE79208DCA6B00E20873 /* celebration.gif in Resources */,
 				27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
@@ -1064,6 +1071,7 @@
 			files = (
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
+				27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */,
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
 				D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */,
 				D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */,
