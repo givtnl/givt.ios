@@ -37,6 +37,7 @@ class CollectionView: UIControl {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         invalidMarker.isHidden = true
+        collectLabel.adjustsFontSizeToFitWidth = true
     }
     
     private var _active: Bool = false
