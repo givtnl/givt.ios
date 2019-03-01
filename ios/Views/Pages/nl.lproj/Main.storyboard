@@ -945,7 +945,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgC-fX-maL" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="234.5" y="229" width="16" height="22"/>
+                                                                <rect key="frame" x="200.5" y="210" width="82.5" height="58.5"/>
                                                                 <gestureRecognizers/>
                                                                 <state key="normal" image="erase_new">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1098,7 +1098,7 @@ Kijk voor de status in je overzicht.</string>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVh-mq-ZfQ" customClass="AddCollectButtonView" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="70.5" y="315.5" width="273" height="40"/>
+                                        <rect key="frame" x="83" y="315.5" width="248" height="40"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="increase" translatesAutoresizingMaskIntoConstraints="NO" id="pfc-fH-Pba">
                                                 <rect key="frame" x="20" y="10" width="20" height="20"/>
@@ -1108,7 +1108,7 @@ Kijk voor de status in je overzicht.</string>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collecte toevoegen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEQ-X4-UKG">
-                                                <rect key="frame" x="60" y="9" width="142" height="22"/>
+                                                <rect key="frame" x="60" y="9" width="168" height="22"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1144,14 +1144,13 @@ Kijk voor de status in je overzicht.</string>
                                             <action selector="addCollect:" destination="lyO-8n-bds" eventType="touchUpInside" id="5SI-jw-nsh"/>
                                         </connections>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avu-iq-1Ae" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="205.5" y="431.5" width="186.5" height="44"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avu-iq-1Ae" customClass="CustomButtonWithRightArrow" customModule="ios" customModuleProvider="target">
+                                        <rect key="frame" x="254.5" y="442.5" width="89" height="22"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.34999999999999998" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="3f0-oV-omv"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
-                                        <state key="normal" title="Volgende">
+                                        <state key="normal">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1166,7 +1165,7 @@ Kijk voor de status in je overzicht.</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="btnNext:" destination="lyO-8n-bds" eventType="touchUpInside" id="hap-le-ZYc"/>
+                                            <action selector="btnNext:" destination="lyO-8n-bds" eventType="touchUpInside" id="guP-fE-iaY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -2246,7 +2245,7 @@ best bij jou past.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLY-4u-8ip">
-                                        <rect key="frame" x="0.0" y="245" width="414" height="565"/>
+                                        <rect key="frame" x="0.0" y="206.5" width="414" height="603.5"/>
                                         <color key="backgroundColor" red="0.82352941180000006" green="0.81960784310000001" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4mR-Ef-QWQ">
@@ -2334,7 +2333,7 @@ best bij jou past.</string>
                                     <constraint firstAttribute="trailing" secondItem="4mR-Ef-QWQ" secondAttribute="trailing" id="Tvl-Si-V5H"/>
                                     <constraint firstAttribute="bottom" secondItem="ZLY-4u-8ip" secondAttribute="bottom" constant="-36" id="aRk-zl-3kE"/>
                                     <constraint firstItem="hKm-Yo-Wje" firstAttribute="leading" secondItem="cir-JG-aZJ" secondAttribute="leading" constant="20" id="fbq-rq-cZ6"/>
-                                    <constraint firstItem="ZLY-4u-8ip" firstAttribute="height" secondItem="cir-JG-aZJ" secondAttribute="height" multiplier="0.73" id="kJD-nW-eyP"/>
+                                    <constraint firstItem="ZLY-4u-8ip" firstAttribute="height" secondItem="cir-JG-aZJ" secondAttribute="height" multiplier="0.78" id="kJD-nW-eyP"/>
                                     <constraint firstItem="D7V-XZ-zeg" firstAttribute="leading" secondItem="cir-JG-aZJ" secondAttribute="leading" constant="20" id="kWW-Hb-g1W"/>
                                     <constraint firstItem="hKm-Yo-Wje" firstAttribute="top" secondItem="D7V-XZ-zeg" secondAttribute="bottom" id="rwq-24-fP3"/>
                                     <constraint firstAttribute="trailing" secondItem="hKm-Yo-Wje" secondAttribute="trailing" constant="20" id="tQI-ud-HaI"/>
