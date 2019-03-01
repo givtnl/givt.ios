@@ -86,6 +86,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if(!UserDefaults.standard.hasPresetsSet!){
             calcPresetsStackView.removeArrangedSubview(viewPresets)
             viewPresets.isHidden = true
@@ -99,7 +100,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         collectOne.deleteBtn.tag = 1
         collectOne.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
         collectOne.collectLabel.text = NSLocalizedString("FirstCollect", comment: "")
+        collectOne.collectLabel.isHidden = true
         collectOne.amountLabel.text = "0"
+        
         
         collectTwo.deleteBtn.tag = 2
         collectTwo.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
@@ -140,6 +143,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        collectOne.deleteBtn.isHidden = true
+        collectOne.collectLabel.isHidden = true
+        
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         decimalNotation = NSLocale.current.decimalSeparator! as String
@@ -211,6 +218,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             for view in stackCollections.subviews as! [CollectionView] {
                 if(!view.isHidden){
                     view.deleteBtn.isHidden = false
+                    view.collectLabel.isHidden = false
                 }
             }
         }
