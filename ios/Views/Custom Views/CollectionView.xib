@@ -33,20 +33,20 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlj-up-7DO">
-                    <rect key="frame" x="48" y="26.5" width="62" height="47"/>
+                    <rect key="frame" x="48" y="26.5" width="260" height="47"/>
                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="34"/>
                     <color key="textColor" red="0.82352941176470584" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2I-y3-G8B">
-                    <rect key="frame" x="470" y="33" width="30" height="34"/>
+                    <rect key="frame" x="480" y="33" width="30" height="34"/>
                     <state key="normal">
                         <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1ste collecte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPS-8Y-cWM">
-                    <rect key="frame" x="364" y="39" width="91" height="22"/>
-                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1ste collecte" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPS-8Y-cWM">
+                    <rect key="frame" x="324" y="36.5" width="156" height="27.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                     <color key="textColor" red="0.82352941176470584" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -71,16 +71,18 @@
                 <constraint firstAttribute="bottom" secondItem="2tN-Pr-Byc" secondAttribute="bottom" id="8xi-me-Rzi"/>
                 <constraint firstItem="JdN-tw-Q0o" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="F3X-3X-TWC"/>
                 <constraint firstAttribute="trailing" secondItem="2tN-Pr-Byc" secondAttribute="trailing" id="F8x-2c-WtL"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="z2I-y3-G8B" secondAttribute="trailing" constant="20" id="GZu-ZW-L0k"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="z2I-y3-G8B" secondAttribute="trailing" constant="10" id="GZu-ZW-L0k"/>
+                <constraint firstItem="vlj-up-7DO" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="IMx-5E-AoB"/>
                 <constraint firstItem="O97-7s-StG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="MCC-9N-YRj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="O97-7s-StG" secondAttribute="trailing" id="YZR-cu-lXl"/>
                 <constraint firstItem="vlj-up-7DO" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="YcZ-g9-ghS"/>
                 <constraint firstItem="kPS-8Y-cWM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="btm-7k-4As"/>
                 <constraint firstItem="2tN-Pr-Byc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dhE-5X-hQd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="O97-7s-StG" secondAttribute="bottom" id="kk8-J9-ihv"/>
-                <constraint firstItem="z2I-y3-G8B" firstAttribute="leading" secondItem="kPS-8Y-cWM" secondAttribute="trailing" constant="15" id="ns3-ET-gMZ"/>
+                <constraint firstItem="z2I-y3-G8B" firstAttribute="leading" secondItem="kPS-8Y-cWM" secondAttribute="trailing" id="ns3-ET-gMZ"/>
                 <constraint firstItem="JdN-tw-Q0o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="q3o-Hf-SK9"/>
                 <constraint firstItem="vlj-up-7DO" firstAttribute="leading" secondItem="JdN-tw-Q0o" secondAttribute="trailing" constant="10" id="qaQ-M1-VBr"/>
+                <constraint firstItem="kPS-8Y-cWM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.3" id="sqo-6j-ug7"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

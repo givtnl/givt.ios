@@ -1062,29 +1062,29 @@ Kijk voor de status in je overzicht.</string>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoeveel wil je geven ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gc-CF-kwy">
                                         <rect key="frame" x="22" y="0.0" width="370" height="27.5"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sHt-md-26B">
-                                        <rect key="frame" x="20" y="47.5" width="374" height="248"/>
+                                        <rect key="frame" x="20" y="47.5" width="374" height="294.5"/>
                                         <subviews>
                                             <view tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdZ-h5-LAO" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="77.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="93"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="setActiveCollection:" destination="lyO-8n-bds" eventType="touchUpInside" id="g39-HB-obe"/>
                                                 </connections>
                                             </view>
                                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-MY-azs" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="85.5" width="374" height="77.5"/>
+                                                <rect key="frame" x="0.0" y="101" width="374" height="93"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="setActiveCollection:" destination="lyO-8n-bds" eventType="touchUpInside" id="5LO-WW-CCM"/>
                                                 </connections>
                                             </view>
                                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wef-5E-eYC" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="171" width="374" height="77"/>
+                                                <rect key="frame" x="0.0" y="202" width="374" height="92.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="setActiveCollection:" destination="lyO-8n-bds" eventType="touchUpInside" id="Ddj-3C-ac5"/>
@@ -1098,7 +1098,7 @@ Kijk voor de status in je overzicht.</string>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVh-mq-ZfQ" customClass="AddCollectButtonView" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="83" y="315.5" width="248" height="40"/>
+                                        <rect key="frame" x="83" y="362" width="248" height="40"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="increase" translatesAutoresizingMaskIntoConstraints="NO" id="pfc-fH-Pba">
                                                 <rect key="frame" x="20" y="10" width="20" height="20"/>
@@ -1145,7 +1145,7 @@ Kijk voor de status in je overzicht.</string>
                                         </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avu-iq-1Ae" customClass="CustomButtonWithRightArrow" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="254.5" y="442.5" width="89" height="22"/>
+                                        <rect key="frame" x="205.5" y="431.5" width="186.5" height="44"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.34999999999999998" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="3f0-oV-omv"/>
@@ -1191,7 +1191,7 @@ Kijk voor de status in je overzicht.</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sk7-Jb-o0S" firstAttribute="top" secondItem="D9v-Aw-MYg" secondAttribute="top" id="5WY-zz-hfM"/>
-                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="height" secondItem="D9v-Aw-MYg" secondAttribute="height" multiplier="0.1" id="ZAL-5o-XIt"/>
+                            <constraint firstItem="JdZ-h5-LAO" firstAttribute="height" secondItem="D9v-Aw-MYg" secondAttribute="height" multiplier="0.12" id="ZAL-5o-XIt"/>
                             <constraint firstItem="LVh-mq-ZfQ" firstAttribute="centerX" secondItem="D9v-Aw-MYg" secondAttribute="centerX" id="aLB-Qd-QY4"/>
                             <constraint firstItem="sk7-Jb-o0S" firstAttribute="leading" secondItem="D9v-Aw-MYg" secondAttribute="leading" id="beR-AS-rZu"/>
                             <constraint firstItem="D9v-Aw-MYg" firstAttribute="bottom" secondItem="sk7-Jb-o0S" secondAttribute="bottom" id="cd0-FH-jWR"/>

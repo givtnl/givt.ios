@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PresetsNavigationViewController: UINavigationController {
+class PresetsNavigationViewController: BaseNavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
