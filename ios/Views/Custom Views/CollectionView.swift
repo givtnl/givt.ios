@@ -38,6 +38,8 @@ class CollectionView: UIControl {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         invalidMarker.isHidden = true
         collectLabel.adjustsFontSizeToFitWidth = true
+        collectLabel.baselineAdjustment = .alignCenters
+        amountLabel.baselineAdjustment = .alignCenters
     }
     
     private var _active: Bool = false
