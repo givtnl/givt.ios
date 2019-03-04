@@ -249,7 +249,7 @@
 "FAQantwoord2" = "The first step was installing the app. For Givt to work effectively, \nit’s important that you enable Bluetooth and have a working internet \nconnection. \n\nThen register yourself by filling in your information and signing a mandate. \nYou’re ready to give! Open the app, select an amount, and scan a QR-code, move your phone towards the collection bag or basket or select a goal from the list. \nYour chosen amount will be saved, withdrawn from your account \nand distributed to the church or collecting charities.\n\nIf you don’t have an internet connection when making your donation, the donation will be sent at a later time when you re-open the app. Like when you are in a WiFi zone.";
 
 /*Antwoord op FAQ vraag3*/
-"FAQantwoord3" = "You can access your app menu by tapping the menu at the top left of the ‘Amount’ screen. To change your settings, you have to login using your e-mail address and password or passcode. In the menu you can find the overview of your donations, adjust your maximum amount, review and/or change your personal information, set a passcode or terminate your Givt account.";
+"FAQantwoord3" = "You can access your app menu by tapping the menu at the top left of the ‘Amount’ screen. To change your settings, you have to login using your e-mail address and password or passcode. In the menu you can find the overview of your donations, adjust your maximum amount, review and/or change your personal information, change your amount presets, set a passcode or terminate your Givt account.";
 
 /*Antwoord op FAQ vraag4*/
 "FAQantwoord4" = "More and more organisations\nYou can use Givt in all organisations that are registered with us. More organisations are joining every week, you can see the latest overview at www.givtapp.net/waar \n\nNot registered yet? \nIf your organisation is not affiliated with Givt yet, please contact us at +31 320 320 115 or info@givtapp.net.";
@@ -448,7 +448,7 @@
 "FAQQuestion14" = "How can I give to multiple collections?";
 
 /*antwoord meerdere collectesvraag*/
-"FAQAnswer14" = "Do you have multiple collections in one service? Activate up to three collections by pushing the plus-symbol at the top right corner of your screen. You can see which one is selected (1, 2 or 3). Fill in the amounts in such a way that they resemble the order in which the collections pass by in your church. When you give to the first collection that passes by, all donations are sent immediately. In the overview you can see a breakdown of your donations. They will be labeled as ‘collection 1, 2 or 3’. (Your church knows which number corresponds with which purpose). Want to skip a collection? Leave it open or remove it by tapping twice.";
+"FAQAnswer14" = "Do you have multiple collections in one service? Activate up to three collections, the green line shows which collection(1, 2 or 3) is selected. Fill in the amounts in such a way that they resemble the order in which the collections pass by in your church. \n\nWhen you give to the first collection that passes by, all donations are sent immediately. In the overview you can see a breakdown of your donations. They will be labeled as ‘collection 1, 2 or 3’. (Your church knows which number corresponds with which collection). Want to skip a collection? Leave it open or remove it.";
 "Collect" = "Collection";
 "OfflineGegevenGivtsMessage" = "Thank you for your Givts!\n\nWhen there's a good connection with the Givt-server, your Givts will be processed.\nYou can check the status in the overview.";
 "OfflineGegevenGivtsMessageWithOrg" = "Thank you for your Givts to {0}!\n\nWhen there's a good connection with the Givt-server, your Givts will be processed.\nYou can check the status in the overview.";
@@ -804,3 +804,15 @@
 "AddCollect" = "Add a collection";
 "TermsTextVersionGB" = "1.0";
 "AccountDisabledError" = "Alas, it looks like your account has been deactivated. Don't worry! Just send a quick email to support@givtapp.net.";
+
+/*op het scherm waar je de voorkeursbedragen (presets) kan enablen of disablen*/
+"AmountPresetsChangingPresets" = "You can add amount presets to your keyboard. This is where you can enable and set the amount presets.";
+
+/*menu-item to change/set the amount presets*/
+"AmountPresetsChangePresetMenu" = "Change amount presets";
+"Feature_newgui1_title" = "New design";
+"Feature_newgui2_title" = "Progress bar";
+"Feature_newgui3_title" = "Multiple collections";
+"Feature_newgui1_message" = "Use the functions you're used to even easier.";
+"Feature_newgui2_message" = "Now you know exactly where you are in the giving process.";
+"Feature_newgui3_message" = "Now even easier to add and / or remove collections.";
