@@ -144,9 +144,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        collectOne.deleteBtn.isHidden = true
-        collectOne.collectLabel.isHidden = true
-        
+        if(nuOfCollectsShown == 1){
+            collectOne.deleteBtn.isHidden = true
+            collectOne.collectLabel.isHidden = true
+        }
+
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         decimalNotation = NSLocale.current.decimalSeparator! as String
@@ -202,6 +204,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             setActiveCollection(collectOne)
             collectionViews.append(collectOne)
         } else if(collectTwo.isHidden){
+            if(!collectOne.isHidden){
+                collectOne.deleteBtn.isHidden = false
+                collectOne.collectLabel.isHidden = false
+            }
             insertCollectAtPosition(collect: collectTwo, position: 1)
             setActiveCollection(collectTwo)
             collectionViews.append(collectTwo)
@@ -229,6 +235,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         } else {
             addCollect.isHidden = true
         }
+        
+        checkAmounts()
         
     }
     
@@ -407,6 +415,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             for view in stackCollections.subviews as! [CollectionView] {
                 if(!view.isHidden){
                     view.deleteBtn.isHidden = true
+                    view.collectLabel.isHidden = view.deleteBtn.tag == 1 ? true : false
                 }
             }
         }
@@ -417,6 +426,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         } else {
             addCollect.isHidden = true
         }
+        checkAmounts()
     }
     func deleteCollectFromView(collect: CollectionView){
         stackCollections.removeArrangedSubview(collect)
@@ -489,11 +499,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             if parsedDecimal < 0.50 {
                 amountsUnder50C += 1
             }
-            btnNext.isEnabled = amountsUnder50C != collectionViews.count
+            collectionViews[index].amountLabel.textColor = parsedDecimal > Decimal(amountLimit) || (parsedDecimal > 0 && parsedDecimal < 0.50) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
+            collectionViews[index].isInValid = parsedDecimal > Decimal(amountLimit)
         }
-
-        currentCollect.amountLabel.textColor = Decimal(string: (currentCollect.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
-        currentCollect.isInValid = Decimal(string: (currentCollect.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! > Decimal(amountLimit)
+        btnNext.isEnabled = nuOfCollectsShown == collectionViews.filter { Decimal(string: $0.amountLabel.text!.replacingOccurrences(of: ",", with: ".")) == 0 && !$0.isHidden }.count ? false : true
     }
 
     let slideAnimator = CustomPresentModalAnimation()
