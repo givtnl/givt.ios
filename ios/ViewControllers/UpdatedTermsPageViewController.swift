@@ -35,7 +35,7 @@ class UpdatedTermsPageViewController: UIViewController {
     }
     
     @IBAction func nextBtn(_ sender: Any) {
-        UserDefaults.standard.termsVersion = NSLocalizedString("TermsTextVersion", comment: "")
+        UserDefaults.standard.termsVersion = AppServices.getCountryFromSim() == "GB" ? NSLocalizedString("TermsTextVersionGB", comment: "") : NSLocalizedString("TermsTextVersion", comment: "")
         NavigationManager.shared.load(vc: self.navigationController!, animated: true)
     }
     
