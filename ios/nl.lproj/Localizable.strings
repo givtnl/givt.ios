@@ -264,7 +264,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Je komt nu meteen in het betaalscherm. (ipv je komt nu gelijk in het betaalscherm)*/
 /*Antwoord op FAQ vraag3*/
-"FAQantwoord3" = "Je kunt je app-menu bereiken door links bovenin het bedragscherm op het menu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. In je menu kun je het overzicht van je giften inzien, je geeflimiet aanpassen, je persoonlijke gegevens wijzigen, een toegangscode instellen of je account opzeggen.";
+"FAQantwoord3" = "Je kunt je app-menu bereiken door links bovenin het bedragscherm op het menu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. In je menu kun je het overzicht van je giften inzien, je geeflimiet aanpassen, je persoonlijke gegevens wijzigen, je voorkeursbedragen aanpassen, een toegangscode instellen of je account opzeggen.";
 
 /*Antwoord op FAQ vraag4*/
 "FAQantwoord4" = "Steeds meer organisaties\nJe kunt Givt gebruiken bij alle organisaties die bij ons zijn aangesloten. Er komen wekelijks meer organisaties bij, check onze website www.givtapp.net/waar om het meest recente overzicht te bekijken. \n\nNog niet aangesloten?\nWanneer je als kerk of organisatie nog niet bent aangesloten bij Givt, maar er wel gebruik van wilt maken, neem dan contact met ons op via +31 320 320 115 of info@givtapp.net.";
@@ -421,7 +421,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AnswerHowDoesGivingWork" = "Heel eenvoudig. Open de app om een bedrag te kiezen en beweeg je telefoon langs de collectebus, -zak of -mand. Vergeet niet om je registratie te voltooien, zodat je giften op het goede adres bezorgd kunnen worden.\nIn het filmpje hieronder kan je zien hoe dat gaat.";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app, zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op 'Volgende'. Druk daarna op ‘Kies uit de lijst’ en kies voor 'Kerken', 'Stichtingen', 'Acties' of 'Artiesten'. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.";
+"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app, zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op 'Volgende'. Druk daarna op ‘Lijst’ en kies voor 'Kerken', 'Stichtingen', 'Acties' of 'Artiesten'. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.";
 "MenuSettingsSwitchAccounts" = "Wisselen van account";
 "PrepareIUnderstand" = "Ik snap het";
 
@@ -464,7 +464,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FAQQuestion14" = "Hoe kan ik geven aan meerdere collectes?";
 
 /*antwoord meerdere collectesvraag*/
-"FAQAnswer14" = "Meerdere collectes in één dienst? Activeer tot drie collectes door op het plus-icoontje te drukken. Bovenin wordt vermeld welk collectedoel (1, 2 en 3) geselecteerd is. Vul de bedragen in, in de volgorde waarop de collectedoelen in de dienst voorbij komen.\n\nWanneer je geeft aan de eerste collectezak of -mand die voorbij komt, worden alle giften meteen verstuurd. Je geeft dus met één beweging. In het overzicht van je giften vind je jouw giften aan de verschillende doelen terug. (Op dit moment is het alleen mogelijk om de collectedoelen te onderscheiden als collecte 1, 2 of 3. Jouw kerk weet welk collectenummer overeenkomt met welk collectedoel.)\nToch een collecte overslaan? Laat die collecte open of verwijder met een dubbel tap.";
+"FAQAnswer14" = "Meerdere collectes in één dienst? Activeer tot drie collectes, de groene lijn laat zien welk collectedoel (1, 2 en 3) geselecteerd is. Vul de bedragen in, in de volgorde waarop de collectedoelen in de dienst voorbij komen.\n\nWanneer je geeft aan de eerste collectezak of -mand die voorbij komt, worden alle giften meteen verstuurd. Je geeft dus met één beweging. In het overzicht van je giften vind je jouw giften aan de verschillende doelen terug. (Op dit moment is het alleen mogelijk om de collectedoelen te onderscheiden als collecte 1, 2 of 3. Jouw kerk weet welk collectenummer overeenkomt met welk collectedoel.)\nToch een collecte overslaan? Laat die collecte open of verwijder hem.";
 "Collect" = "Collecte";
 "OfflineGegevenGivtsMessage" = "Bedankt voor je Givts!\n\nZodra er een goede verbinding is met de Givt-server, worden je Givts verwerkt.\nKijk voor de status in je overzicht.";
 "OfflineGegevenGivtsMessageWithOrg" = "Bedankt voor je Givts!\n\nZodra er een goede verbinding is met de Givt-server, worden je Givts aan {0} verwerkt.\nKijk voor de status in je overzicht.";
@@ -820,3 +820,15 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AddCollect" = "Collecte toevoegen";
 "TermsTextVersionGB" = "1.0";
 "AccountDisabledError" = "Oeps, het lijkt erop dat je account is gedeactiveerd. Neem snel contact op met support@givtapp.net!";
+
+/*op het scherm waar je de voorkeursbedragen (presets) kan enablen of disablen*/
+"AmountPresetsChangingPresets" = "Om sneller te kunnen geven kun je voorkeursbedragen toevoegen aan je toetsenbord. Hier beheer je het gebruik daarvan.";
+
+/*menu-item to change/set the amount presets*/
+"AmountPresetsChangePresetMenu" = "Wijzig voorkeursbedragen";
+"Feature_newgui1_title" = "Nieuw design";
+"Feature_newgui2_title" = "Voortgangsbalk";
+"Feature_newgui3_title" = "Meerdere collectes";
+"Feature_newgui1_message" = "Gebruik de functies die je gewend bent nóg makkelijker.";
+"Feature_newgui2_message" = "Nu weet je precies waar je bent in het geefproces.";
+"Feature_newgui3_message" = "Nu nog makkelijker collectes toevoegen en/of verwijderen.";
