@@ -825,8 +825,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountPresetsChangingPresets" = "Om sneller te kunnen geven kun je voorkeursbedragen toevoegen aan je toetsenbord. Hier beheer je het gebruik daarvan.";
 
 /*menu-item to change/set the amount presets*/
-"AmountPresetsChangePresetMenu" = "Wijzig voorkeursbedragen";
-"Feature_newgui1_title" = "Nieuw design";
+/*Fuzzy*/
+"AmountPresetsChangePresetsMenu" = "Wijzig voorkeursbedragen";
+"Feature_newgui1_title" = "De gebruikersinterface";
 "Feature_newgui2_title" = "Voortgangsbalk";
 "Feature_newgui3_title" = "Meerdere collectes";
 "Feature_newgui1_message" = "Gebruik de functies die je gewend bent nóg makkelijker.";
