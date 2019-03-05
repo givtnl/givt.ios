@@ -324,7 +324,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             return
         }
         currentAmountLabel.text = currentAmountLabel.text! + sender.currentTitle!;
-        checkAmount(collection: currentCollect)
+        checkAmounts()
         pressedShortcutKey = false
     }
     
@@ -344,7 +344,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                 self.log.info(message: "User used a custom amount preset")
             }
         }
-        checkAmount(collection: currentCollect)
+        checkAmounts()
         pressedShortcutKey = true
     }
     
