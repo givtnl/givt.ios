@@ -49,7 +49,7 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1ste collecte" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPS-8Y-cWM">
-                    <rect key="frame" x="355.5" y="36.5" width="114.5" height="27.5"/>
+                    <rect key="frame" x="324.5" y="36.5" width="145.5" height="27.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="20"/>
                     <color key="textColor" red="0.82352941176470584" green="0.81960784313725488" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -79,7 +79,7 @@
                 <constraint firstItem="z2I-y3-G8B" firstAttribute="leading" secondItem="kPS-8Y-cWM" secondAttribute="trailing" id="ns3-ET-gMZ"/>
                 <constraint firstItem="JdN-tw-Q0o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="q3o-Hf-SK9"/>
                 <constraint firstItem="vlj-up-7DO" firstAttribute="leading" secondItem="JdN-tw-Q0o" secondAttribute="trailing" constant="10" id="qaQ-M1-VBr"/>
-                <constraint firstItem="kPS-8Y-cWM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.22" id="sqo-6j-ug7"/>
+                <constraint firstItem="kPS-8Y-cWM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.28" id="sqo-6j-ug7"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
