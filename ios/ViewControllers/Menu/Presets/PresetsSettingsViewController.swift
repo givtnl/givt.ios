@@ -21,9 +21,9 @@ class PresetsSettingsViewController : UIViewController {
         super.viewDidLoad()
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         navBar.title = NSLocalizedString("AmountPresetsTitle", comment: "")
-        presetsBody.text = NSLocalizedString("AmountPresetsBody", comment: "")
+        presetsBody.text = NSLocalizedString("AmountPresetsChangingPresets", comment: "")
         presetsSwitchTitle.text = NSLocalizedString("AmountPresetsTitle", comment: "")
-        presetsGotoTitle.text = NSLocalizedString("AmountPresetsTitle", comment: "")
+        presetsGotoTitle.text = NSLocalizedString("AmountPresetsChangePresetsMenu", comment: "")
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(gotoPresets))
         gotoPresetsView.isUserInteractionEnabled = false
