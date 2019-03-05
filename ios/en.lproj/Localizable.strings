@@ -809,8 +809,9 @@
 "AmountPresetsChangingPresets" = "You can add amount presets to your keyboard. This is where you can enable and set the amount presets.";
 
 /*menu-item to change/set the amount presets*/
-"AmountPresetsChangePresetMenu" = "Change amount presets";
-"Feature_newgui1_title" = "New design";
+/*Fuzzy*/
+"AmountPresetsChangePresetsMenu" = "Change amount presets";
+"Feature_newgui1_title" = "The user interface";
 "Feature_newgui2_title" = "Progress bar";
 "Feature_newgui3_title" = "Multiple collections";
 "Feature_newgui1_message" = "Use the functions you're used to even easier.";
