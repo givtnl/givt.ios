@@ -818,3 +818,6 @@
 "Feature_newgui2_message" = "Now you know exactly where you are in the giving process.";
 "Feature_newgui3_message" = "Now even easier to add and / or remove collections.";
 "Feature_newgui_action" = "Okay, understood!";
+
+/*in app notification to announce new feature (new gui!)*/
+"Feature_newgui_inappnot" = "Tap here to read more about the new interface!";
