@@ -474,7 +474,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
             action in
-            self.currentCollect.amountLabel.text = String(UserDefaults.standard.amountLimit)
             self.checkAmounts()
         }))
         if (LoginManager.shared.isFullyRegistered){
