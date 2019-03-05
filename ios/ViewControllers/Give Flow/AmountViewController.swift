@@ -250,6 +250,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         currentCollect = sender as? CollectionView
         collectionViews.filter { $0.tag != currentCollect.tag }.forEach { $0.isActive = false }
         currentCollect.isActive = true
+        pressedShortcutKey = true
     }
 
     @IBAction func btnNext(_ sender: Any) {
