@@ -84,9 +84,9 @@ class FeatureManager {
                             })
             ]),
         2: Feature( id: 2,
-                    icon: "bell",
+                    icon: "feature_newinterface_menu_icon",
                     title: NSLocalizedString("Feature_newgui1_title", comment: ""),
-                    notification: "",
+                    notification: NSLocalizedString("Feature_newgui_inappnot", comment:""),
                     mustSee: false,
                     pages: [
                         FeaturePageContent(
