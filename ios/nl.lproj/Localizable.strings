@@ -834,3 +834,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Feature_newgui2_message" = "Nu weet je precies waar je bent in het geefproces.";
 "Feature_newgui3_message" = "Nu nog makkelijker collectes toevoegen en/of verwijderen.";
 "Feature_newgui_action" = "Oké, begrepen!";
+
+/*in app notification to announce new feature (new gui!)*/
+"Feature_newgui_inappnot" = "Tap hier om meer te weten te komen over de nieuwe interface!";
