@@ -84,29 +84,32 @@ class FeatureManager {
                             })
             ]),
         2: Feature( id: 2,
-                    icon: "",
-                    title: "",
+                    icon: "bell",
+                    title: NSLocalizedString("Feature_newgui1_title", comment: ""),
                     notification: "",
                     mustSee: false,
                     pages: [
-                        FeaturePageContent(image: "feature_newgui1",
-                                           color: #colorLiteral(red: 0.9568627451, green: 0.7490196078, blue: 0.3882352941, alpha: 1),
-                                           title: NSLocalizedString("Feature_newgui1_title", comment: ""),
-                                           subText: NSLocalizedString("Feature_newgui1_message", comment: "")),
-                        FeaturePageContent(image: "feature_newgui2",
-                                           color: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1),
-                                           title: NSLocalizedString("Feature_newgui2_title", comment: ""),
-                                           subText: NSLocalizedString("Feature_newgui2_message", comment: "")),
-                        FeaturePageContent(image: "feature_newgui3",
-                                           color: #colorLiteral(red: 0.3019607843, green: 0.5960784314, blue: 0.8117647059, alpha: 1),
-                                           title: NSLocalizedString("Feature_newgui3_title", comment: ""),
-                                           subText: NSLocalizedString("Feature_newgui3_message", comment: ""),
-                                           actionText: {(context) -> String in
-                                                return NSLocalizedString("Feature_newgui_action", comment: "")
-                                            },
-                                           action: {(context) -> Void in
-                                                context?.dismiss(animated: true)
-                                            })
+                        FeaturePageContent(
+                            image: "feature_newgui1",
+                            color: #colorLiteral(red: 0.9568627451, green: 0.7490196078, blue: 0.3882352941, alpha: 1),
+                            title: NSLocalizedString("Feature_newgui1_title", comment: ""),
+                            subText: NSLocalizedString("Feature_newgui1_message", comment: "")),
+                        FeaturePageContent(
+                            image: "feature_newgui2",
+                            color: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1),
+                            title: NSLocalizedString("Feature_newgui2_title", comment: ""),
+                            subText: NSLocalizedString("Feature_newgui2_message", comment: "")),
+                        FeaturePageContent(
+                            image: "feature_newgui3",
+                            color: #colorLiteral(red: 0.3019607843, green: 0.5960784314, blue: 0.8117647059, alpha: 1),
+                            title: NSLocalizedString("Feature_newgui3_title", comment: ""),
+                            subText: NSLocalizedString("Feature_newgui3_message", comment: ""),
+                            actionText: {(context) -> String in
+                                return NSLocalizedString("Feature_newgui_action", comment: "")
+                            },
+                            action: {(context) -> Void in
+                                context?.dismiss(animated: true)
+                            })
             ])
     ]
     
