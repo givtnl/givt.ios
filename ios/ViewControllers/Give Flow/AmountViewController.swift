@@ -248,10 +248,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     @IBAction func setActiveCollection(_ sender: Any) {
         currentCollect = sender as? CollectionView
-        collectOne.active = false
-        collectTwo.active = false
-        collectThree.active = false
-        currentCollect.active = true
+        collectionViews.filter { $0.tag != currentCollect.tag }.forEach { $0.isActive = false }
+        currentCollect.isActive = true
     }
 
     @IBAction func btnNext(_ sender: Any) {
@@ -326,7 +324,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             return
         }
         currentAmountLabel.text = currentAmountLabel.text! + sender.currentTitle!;
-        checkAmounts()
+        checkAmount(collection: currentCollect)
         pressedShortcutKey = false
     }
     
@@ -346,7 +344,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                 self.log.info(message: "User used a custom amount preset")
             }
         }
-        checkAmounts()
+        checkAmount(collection: currentCollect)
         pressedShortcutKey = true
     }
     
@@ -491,17 +489,14 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
         self.present(alert, animated: true, completion: nil)
     }
-
+    func checkAmount(collection: CollectionView) {
+        let parsedDecimal = Decimal(string: (collection.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
+        collection.amountLabel.textColor = parsedDecimal > Decimal(amountLimit) || (parsedDecimal > 0 && parsedDecimal < 0.50) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
+        collection.isValid = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= 0.50 || parsedDecimal == 0
+        collection.activeMarker.backgroundColor = collection.isActive ? collection.isValid ? #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5529411765, alpha: 1) : #colorLiteral(red: 0.737254902, green: 0.09803921569, blue: 0.1137254902, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+    }
     func checkAmounts() {
-        var amountsUnder50C = 0
-        for index in 0..<collectionViews.count {
-            let parsedDecimal = Decimal(string: (collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
-            if parsedDecimal < 0.50 {
-                amountsUnder50C += 1
-            }
-            collectionViews[index].amountLabel.textColor = parsedDecimal > Decimal(amountLimit) || (parsedDecimal > 0 && parsedDecimal < 0.50) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
-            collectionViews[index].isInValid = parsedDecimal > Decimal(amountLimit)
-        }
+        collectionViews.forEach { checkAmount(collection: $0) }
         btnNext.isEnabled = nuOfCollectsShown == collectionViews.filter { Decimal(string: $0.amountLabel.text!.replacingOccurrences(of: ",", with: ".")) == 0 && !$0.isHidden }.count ? false : true
     }
 
