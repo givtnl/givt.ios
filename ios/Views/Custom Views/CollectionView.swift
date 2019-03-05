@@ -17,7 +17,6 @@ class CollectionView: UIControl {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var currencySign: UILabel!
     @IBOutlet weak var activeMarker: UIView!
-    @IBOutlet weak var invalidMarker: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,42 +35,40 @@ class CollectionView: UIControl {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        invalidMarker.isHidden = true
         collectLabel.adjustsFontSizeToFitWidth = true
         collectLabel.baselineAdjustment = .alignCenters
         amountLabel.baselineAdjustment = .alignCenters
     }
     
-    private var _active: Bool = false
+    private var _isActive: Bool = false
     
-    var active: Bool {
+    var isActive: Bool {
         get {
-            return _active
+            return _isActive
         }
         set {
-            if (!_isInValid) {
-                activeMarker.isHidden = !newValue
+            _isActive = newValue
+            if(_isActive){
+                activeMarker.isHidden = false
+                if(_isValid){
+                    activeMarker.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5529411765, alpha: 1)
+                } else {
+                    activeMarker.backgroundColor = #colorLiteral(red: 0.737254902, green: 0.09803921569, blue: 0.1137254902, alpha: 1)
+                }
             } else {
                 activeMarker.isHidden = true
             }
-            _active = newValue
         }
     }
     
-    private var _isInValid: Bool = false
+    private var _isValid: Bool = true
     
-    var isInValid: Bool {
+    var isValid: Bool {
         get {
-            return _isInValid
+            return _isValid
         }
         set {
-            if (newValue){
-                activeMarker.isHidden = true
-            } else {
-                activeMarker.isHidden = !active
-            }
-            invalidMarker.isHidden = !newValue
-            _isInValid = newValue
+            _isValid = newValue
         }
     }
     
