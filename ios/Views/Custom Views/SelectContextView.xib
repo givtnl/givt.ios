@@ -29,17 +29,17 @@
                         <constraint firstAttribute="width" secondItem="zzG-l1-6mm" secondAttribute="height" multiplier="1:1" id="R4a-7p-ZHC"/>
                     </constraints>
                 </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gjP-fw-qjC">
-                    <rect key="frame" x="343" y="122.5" width="285" height="82"/>
+                <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gjP-fw-qjC">
+                    <rect key="frame" x="333" y="133" width="305" height="61.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QR-code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyA-AP-fDG">
-                            <rect key="frame" x="0.0" y="0.0" width="285" height="20.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="305" height="20.5"/>
                             <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                             <color key="textColor" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Knw-92-848">
-                            <rect key="frame" x="0.0" y="20.5" width="285" height="61.5"/>
+                            <rect key="frame" x="0.0" y="20.5" width="305" height="41"/>
                             <string key="text">Geef door middel van het scannen van een 
 QR-code</string>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
@@ -70,7 +70,7 @@ QR-code</string>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="sRx-nW-43z" secondAttribute="trailing" constant="5" id="7IE-sE-URH"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="BhR-Us-FF6" secondAttribute="bottom" id="9K6-N1-fAd"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zzG-l1-6mm" secondAttribute="bottom" constant="4" id="IUp-bp-5e7"/>
-                <constraint firstItem="gjP-fw-qjC" firstAttribute="leading" secondItem="zzG-l1-6mm" secondAttribute="trailing" constant="20" id="Lw3-gO-GVK"/>
+                <constraint firstItem="gjP-fw-qjC" firstAttribute="leading" secondItem="zzG-l1-6mm" secondAttribute="trailing" constant="10" id="Lw3-gO-GVK"/>
                 <constraint firstItem="sRx-nW-43z" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="OS5-0f-LT5"/>
                 <constraint firstItem="gjP-fw-qjC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="RdJ-KA-rpR"/>
                 <constraint firstItem="BhR-Us-FF6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Rt0-Ib-DZN"/>
@@ -80,7 +80,7 @@ QR-code</string>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gjP-fw-qjC" secondAttribute="bottom" constant="20" id="hYx-K8-RGB"/>
                 <constraint firstItem="zzG-l1-6mm" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" constant="-8" id="oT3-dn-jjU"/>
                 <constraint firstItem="gjP-fw-qjC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rAG-q7-VKf"/>
-                <constraint firstItem="sRx-nW-43z" firstAttribute="leading" secondItem="gjP-fw-qjC" secondAttribute="trailing" constant="20" id="sYC-vH-vzo"/>
+                <constraint firstItem="sRx-nW-43z" firstAttribute="leading" secondItem="gjP-fw-qjC" secondAttribute="trailing" constant="10" id="sYC-vH-vzo"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
