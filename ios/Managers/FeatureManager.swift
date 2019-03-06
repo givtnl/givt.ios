@@ -210,6 +210,9 @@ class FeatureManager {
     }
     
     @objc private func notificationTapped(_ recognizer: UITapGestureRecognizer) {
+        DispatchQueue.main.async {
+            self.dismissNotification()
+        }
         if let view = recognizer.view {
             if let popDownview = view as? NewFeaturePopDownView {
                 var featuresToShow: [Feature] = []
