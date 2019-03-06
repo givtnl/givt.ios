@@ -138,9 +138,6 @@ class FeatureManager {
     }
     
     func checkUpdateState(context: UIViewController) {
-        let filteredFeatures = FeatureManager.shared.features.filter {
-            $0.value.mustSee == true && $0.key > self.lastFeatureShown
-        }
         var badges = UserDefaults.standard.featureBadges
         badges.append(contentsOf: features.filter { $0.key > lastFeatureShown && $0.value.mustSee && badges.firstIndex(of: $0.key) == nil }.map { $0.key })
         UserDefaults.standard.featureBadges = badges
@@ -158,8 +155,8 @@ class FeatureManager {
                         featView.context = context
                         sv.addSubview(featView)
                         
-                        if filteredFeatures.count == 1 {
-                            featView.label.text = filteredFeatures.first?.value.notification
+                        if FeatureManager.shared.features.filter({ $0.key > self.lastFeatureShown }).count == 1 {
+                            featView.label.text = FeatureManager.shared.features.filter({ $0.key > self.lastFeatureShown }).first?.value.notification
                         } else {
                             featView.label.text = NSLocalizedString("Feature_multiple_inappnot", comment: "")
                         }
