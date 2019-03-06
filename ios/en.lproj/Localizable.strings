@@ -820,4 +820,5 @@
 "Feature_newgui_action" = "Okay, understood!";
 
 /*in app notification to announce new feature (new gui!)*/
-"Feature_newgui_inappnot" = "Tap here to read more about the new interface!";
+"Feature_newgui_inappnot" = "Tap here to read more about the renewed user interface!";
+"Feature_multiple_inappnot" = "Hi! We have something new for you. Do you have a minute?";
