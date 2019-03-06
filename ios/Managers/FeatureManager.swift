@@ -160,6 +160,8 @@ class FeatureManager {
                         
                         if filteredFeatures.count == 1 {
                             featView.label.text = filteredFeatures.first?.value.notification
+                        } else {
+                            featView.label.text = NSLocalizedString("Feature_multiple_inappnot", comment: "")
                         }
                         
                         featView.tapGesture.addTarget(self, action: #selector(self.notificationTapped))
