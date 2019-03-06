@@ -836,4 +836,5 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Feature_newgui_action" = "Oké, begrepen!";
 
 /*in app notification to announce new feature (new gui!)*/
-"Feature_newgui_inappnot" = "Tap hier om meer te weten te komen over de nieuwe interface!";
+"Feature_newgui_inappnot" = "Tap hier om meer te weten te komen over de vernieuwde gebruikersinterface!";
+"Feature_multiple_inappnot" = "Hallo! We hebben iets nieuws voor je klaar staan. Heb je even?";
