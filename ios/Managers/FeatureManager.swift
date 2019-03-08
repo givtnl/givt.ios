@@ -90,7 +90,7 @@ class FeatureManager {
                     mustSee: false,
                     pages: [
                         FeaturePageContent(
-                            image: "feature_newgui1",
+                            image: Locale.current.languageCode == "en" ? "feature_newgui1_en" : "feature_newgui1",
                             color: #colorLiteral(red: 0.9568627451, green: 0.7490196078, blue: 0.3882352941, alpha: 1),
                             title: NSLocalizedString("Feature_newgui1_title", comment: ""),
                             subText: NSLocalizedString("Feature_newgui1_message", comment: "")),
