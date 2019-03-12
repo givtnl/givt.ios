@@ -21,26 +21,19 @@ class ScanCompleteViewController: UIViewController {
             shareWithFriends.removeFromSuperview()
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_fourth"))
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = true
+        navigationItem.hidesBackButton = true
         
         if !organisation.isEmpty() {
             lblBody.text = NSLocalizedString("OfflineGegevenGivtMessageWithOrg", comment: "").replacingOccurrences(of: "{0}", with: organisation)
         }
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
-    
+
     @IBOutlet var btnBack: CustomButton!
     @IBOutlet var lblBody: UILabel!
     @IBOutlet var lblTitle: UILabel!
@@ -58,7 +51,7 @@ class ScanCompleteViewController: UIViewController {
     }
     @IBAction func nextBtn(_ sender: Any) {
         if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
-            amountVC.reset()
+            amountVC.clearAmounts()
         }
         
         if let appScheme = GivtManager.shared.externalIntegration?.appScheme {
