@@ -626,7 +626,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "GotIt" = "Ik snap het";
 "CancelFeatureTitle" = "Binnen een kwartier kun je een gift annuleren door naar links te vegen";
 "CancelFeatureMessage" = "Tik op het scherm om dit bericht te verbergen";
-"GiveSubtitle" = "Je kan op verschillende manieren ‘Givten’. Hier kun je kiezen wat op dit moment het best bij jou past.";
+"GiveSubtitle" = "Je kunt op verschillende manieren ‘Givten’. Hier kun je kiezen wat op dit moment het best bij jou past.";
 "Confirm" = "Bevestig";
 "SafariGivingToOrganisation" = "Je hebt nu gegeven aan {0}. Hieronder vind je het overzicht van je gift.";
 "SafariGiving" = "Je hebt nu gegeven. Hieronder vind je het overzicht van je gift.";
@@ -705,7 +705,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "BacsVerifyBody" = "Zijn deze gegevens correct? Zo niet, annuleer de registratie en verander je persoonlijke gegevens.\n\nDe bedrijfsnaam die op je transactie zal te zien zijn is 'Givt Ltd.'.";
 "BacsReadDDGuarantee" = "Lees de incasso garantie";
 "BacsDDGuarantee" = "- De Garantie wordt aangeboden door alle banken en 'building societies' (hypotheekbanken) die instructies accepteren voor het betalen van automatische incasso's.\n- Als er wijzigingen zijn in de datum of frequentie van uw incasso, zal de organisatie u op voorhand op de hoogte brengen (normaal 10 werkdagen op voorhand) voordat uw rekening wordt gedebiteerd of in de termijn die anderszins wordt overeengekomen.\n- Als er een fout is gemaakt in de betaling van uw automatische incasso, door de organisatie of uw bank of de 'building society' (hypotheekbank) , heeft u recht op een volledige en onmiddellijke terugbetaling van het betaalde bedrag van uw bank of 'building society' (hypotheekbank). \n- Als u een terugbetaling ontvangt waar u geen recht op heeft, moet u het terugbetalen wanneer de organisatie u daarom vraagt.\n- U kunt op elk moment een automatische incasso annuleren door eenvoudig contact op te nemen met uw bank of de 'building society' (hypotheekbank) . Een schriftelijke bevestiging kan vereist zijn. Gelieve ook de organisatie op de hoogte te stellen.";
-"BacsAdvanceNotice" = "Alle normale waarborgen voor automatische incasso en garanties zijn van toepassing. Er kunnen geen wijzigingen in het bedrag, de datum of de te debiteren hoeveelheid worden aangebracht zonder u daarvan op de hoogte te stellen, minimaal vijf (5) werkdagen voor het debiteren van uw rekening.\nIn het geval van een fout heeft u recht op een onmiddellijke terugbetaling door uw bank of woningbouwvereniging ('Building society').\nU hebt het recht om op elk moment een automatische incasso-instructie te annuleren door een schrijven naar uw bank of woningbouwvereniging ('Building society') met een kopie om te gebruiken.";
+"BacsAdvanceNotice" = "Alle normale waarborgen voor automatische incasso en garanties zijn van toepassing. Er kunnen geen wijzigingen in het bedrag, de datum of de te debiteren hoeveelheid worden aangebracht zonder u daarvan op de hoogte te stellen, minimaal vijf (5) werkdagen voor het debiteren van uw rekening.\nIn het geval van een fout heeft u recht op een onmiddellijke terugbetaling door uw bank of woningbouwvereniging ('Building society').\nU hebt het recht om op elk moment een automatische incasso-instructie te annuleren door een schrijven naar uw bank of woningbouwvereniging ('Building society') met ons in kopie.";
 "BacsAdvanceNoticeTitle" = "Voorinlichting";
 "BacsDDGuaranteeTitle" = "Automatische incasso garantie";
 "BacsVerifyBodyDetails" = "Naam: {0}\nAdres: {1}\nEmail adres: {2}\nSortcode: {3} \nAccount nummer: {4}\nFrequentie type: giften";
@@ -830,9 +830,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Feature_newgui1_title" = "De gebruikersinterface";
 "Feature_newgui2_title" = "Voortgangsbalk";
 "Feature_newgui3_title" = "Meerdere collectes";
-"Feature_newgui1_message" = "Gebruik de functies die je gewend bent nóg makkelijker.";
-"Feature_newgui2_message" = "Nu weet je precies waar je bent in het geefproces.";
-"Feature_newgui3_message" = "Nu nog makkelijker collectes toevoegen en/of verwijderen.";
+"Feature_newgui1_message" = "Snel en makkelijk een bedrag intoetsen en collectes toevoegen of verwijderen in het eerste scherm.";
+"Feature_newgui2_message" = "Aan de hand van de voortgangsbalk bovenaan weet je precies waar je bent in het geefproces.";
+"Feature_newgui3_message" = "Collectes toevoegen of verwijderen met één druk op de knop.";
 "Feature_newgui_action" = "Oké, begrepen!";
 
 /*in app notification to announce new feature (new gui!)*/
