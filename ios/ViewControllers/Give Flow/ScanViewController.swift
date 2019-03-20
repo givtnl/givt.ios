@@ -16,7 +16,6 @@ class ScanViewController: BaseScanViewController {
     private var log = LogService.shared
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var gif: UIImageView!
-    @IBOutlet var titleText: UILabel!
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var btnGive: CustomButton!
     private var giveDifferentlyShowcase: MaterialShowcase?
@@ -27,7 +26,7 @@ class ScanViewController: BaseScanViewController {
         gif.loadGif(name: "givt_animation")
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGive.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
-        titleText.text = NSLocalizedString("GiveWithYourPhone", comment: "")
+        title = NSLocalizedString("GiveWithYourPhone", comment: "")
         backBtn.accessibilityLabel = NSLocalizedString("Back", comment: "")
     }
     
@@ -94,21 +93,21 @@ class ScanViewController: BaseScanViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_third"))
-        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         GivtManager.shared.delegate = nil
         GivtManager.shared.stopScanning()
         self.navigationController?.isNavigationBarHidden = false
 
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
         removeOverlay()
-        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {

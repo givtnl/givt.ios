@@ -12,7 +12,6 @@ import AVFoundation
 class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet var containerVIew: UIView!
     private var log = LogService.shared
-    @IBOutlet var titleText: UILabel!
     @IBOutlet var subTitle: UILabel!
     @IBOutlet var navBar: UINavigationItem!
     @IBOutlet weak var topLeft: UIImageView!
@@ -27,7 +26,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        titleText.text = NSLocalizedString("GiveDifferentScan", comment: "")
+        navBar.title = NSLocalizedString("GiveDifferentScan", comment: "")
         subTitle.text = NSLocalizedString("GiveDiffQRText", comment: "")
         topRight.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi / 2))
         bottomRight.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)
@@ -108,13 +107,6 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_third"))
-        navigationController?.navigationBar.backgroundColor = UIColor.white
-        navigationController?.navigationBar.isTranslucent = true
-        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
-    }
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         if metadataObjects.count > 0 {
@@ -158,5 +150,5 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
             }
         })
     }
-    
+
 }

@@ -59,10 +59,7 @@ class SettingsViewController: BaseMenuViewController {
     }
     
     override func loadItems(){
-        items = []
-        
-        let turnOnPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: #imageLiteral(resourceName: "amountpresets"), callback: { self.setPresets() }, showArrow: true)
-        
+        items = []        
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
         var appInfo: Setting? = nil
@@ -75,6 +72,8 @@ class SettingsViewController: BaseMenuViewController {
         
         let finishRegistration = Setting(name: NSLocalizedString("FinalizeRegistration", comment: ""), image: #imageLiteral(resourceName: "pencil"), showBadge: true, callback: { self.register() })
         let changePersonalInfo = Setting(name: NSLocalizedString("TitlePersonalInfo", comment: ""), image: #imageLiteral(resourceName: "pencil"), showBadge: false, callback: { self.changePersonalInfo() })
+        
+        let amountPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: #imageLiteral(resourceName: "amountpresets"), callback: { self.changeAmountPresets() }, showArrow: true)
         
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
@@ -96,7 +95,8 @@ class SettingsViewController: BaseMenuViewController {
             let givingLimitImage = UserDefaults.standard.currencySymbol == "£" ? #imageLiteral(resourceName: "pound") : #imageLiteral(resourceName: "euro")
             items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: givingLimitImage, callback: { self.openGiveLimit() }))
             items[0].append(changePersonalInfo)
-            items[0].append(turnOnPresets)
+            items[0].append(amountPresets)
+            
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             
             items[0].append(accessCode)
@@ -123,7 +123,7 @@ class SettingsViewController: BaseMenuViewController {
                 items =
                     [
                         [finishRegistration],
-                        [turnOnPresets],
+                        [amountPresets],
                         [changeAccount, screwAccount],
                         [info, aboutGivt, shareGivt],
                 ]
@@ -131,7 +131,7 @@ class SettingsViewController: BaseMenuViewController {
                 items =
                     [
                         [finishRegistration],
-                        [turnOnPresets],
+                        [amountPresets],
                         [changeAccount, screwAccount],
                         [aboutGivt, shareGivt],
                 ]
@@ -143,15 +143,6 @@ class SettingsViewController: BaseMenuViewController {
     private var blinkTimer: Timer = Timer()
     private func toggleTorch() {
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
-    }
-    
-    private func setPresets() {
-        let vc = UIStoryboard(name: "Presets", bundle: nil).instantiateViewController(withIdentifier: "PresetsNavigationViewController") as! PresetsNavigationViewController
-        vc.transitioningDelegate = self.slideFromRightAnimation
-        DispatchQueue.main.async {
-            self.present(vc, animated: true, completion:  nil)
-            self.hideMenuAnimated()
-        }
     }
     
     private func changeAmountPresets() {
