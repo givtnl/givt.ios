@@ -14,7 +14,6 @@ class EventViewController: BaseScanViewController {
     @IBOutlet var giveDifferently: CustomButton!
     private let _givtService = GivtManager.shared
     private var isSuggestionShowing = false
-    @IBOutlet var mainTitle: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var imageV: UIImageView!
     private var countdownTimer: Timer?
@@ -23,18 +22,13 @@ class EventViewController: BaseScanViewController {
         super.viewDidLoad()
         titleLabel.text = NSLocalizedString("SearchingEventText", comment: "")
         giveDifferently.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
-        mainTitle.text = NSLocalizedString("SelectLocationContext", comment: "")
+        title = NSLocalizedString("SelectLocationContext", comment: "")
         // Do any additional setup after loading the view.
     }
-    
     @IBOutlet var givyContstraint: NSLayoutConstraint!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_third"))
-        navigationController?.navigationBar.backgroundColor = UIColor.white
-        navigationController?.navigationBar.isTranslucent = true
-        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
     }
     
     override func didDetectGivtLocation(orgName: String, identifier: String) {
@@ -127,5 +121,5 @@ class EventViewController: BaseScanViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self._givtService.stopLookingForGivtLocations()
-    }
+    } 
 }

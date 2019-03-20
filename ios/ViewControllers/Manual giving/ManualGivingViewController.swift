@@ -11,7 +11,6 @@ import UIKit
 class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDelegate {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var backButton: UIBarButtonItem!
-    @IBOutlet var titleText: UILabel!
     private var log = LogService.shared
 
     enum Choice: String {
@@ -27,7 +26,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        titleText.text = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
+        navBar.title = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
         renderButtons()
     }
     
@@ -259,13 +258,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         super.viewDidDisappear(animated)
         disableButtons = false
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_third"))
-        navigationController?.navigationBar.backgroundColor = UIColor.white
-        navigationController?.navigationBar.isTranslucent = true
-        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
-    }
+
     private var disableButtons = false
     @objc func choose(_ sender: UITapGestureRecognizer) {
         if disableButtons {

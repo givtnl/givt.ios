@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3oB-Co-b0Z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3oB-Co-b0Z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +26,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We zoeken even waar je bent, wacht je even?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgE-JW-Wal">
-                                <rect key="frame" x="20" y="106.5" width="335" height="49.5"/>
+                                <rect key="frame" x="20" y="104" width="335" height="49.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -54,25 +55,16 @@
                                     <action selector="giveDifferently:" destination="3oB-Co-b0Z" eventType="touchUpInside" id="D1g-RH-w8L"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tET-B1-mWg">
-                                <rect key="frame" x="20" y="64" width="335" height="27.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LB2-dK-tjk" firstAttribute="trailing" secondItem="05x-ft-8QM" secondAttribute="trailing" constant="20" id="4qT-ra-Qir"/>
-                            <constraint firstItem="LB2-dK-tjk" firstAttribute="trailing" secondItem="tET-B1-mWg" secondAttribute="trailing" constant="20" id="Fwh-4Y-hqe"/>
                             <constraint firstItem="05x-ft-8QM" firstAttribute="leading" secondItem="LB2-dK-tjk" secondAttribute="leading" constant="20" id="MxJ-NL-BpG"/>
-                            <constraint firstItem="tET-B1-mWg" firstAttribute="top" secondItem="LB2-dK-tjk" secondAttribute="top" id="Yl3-ZG-d5e"/>
+                            <constraint firstItem="lgE-JW-Wal" firstAttribute="top" secondItem="LB2-dK-tjk" secondAttribute="top" constant="40" id="ZKP-23-Sm5"/>
                             <constraint firstItem="tHt-MQ-Ldg" firstAttribute="centerY" secondItem="aw3-Ob-50n" secondAttribute="centerY" id="dn0-Ho-WAb"/>
                             <constraint firstItem="lgE-JW-Wal" firstAttribute="leading" secondItem="LB2-dK-tjk" secondAttribute="leading" constant="20" id="hin-NK-zle"/>
                             <constraint firstItem="LB2-dK-tjk" firstAttribute="bottom" secondItem="05x-ft-8QM" secondAttribute="bottom" constant="20" id="hpE-8h-ydF"/>
                             <constraint firstItem="LB2-dK-tjk" firstAttribute="trailing" secondItem="tHt-MQ-Ldg" secondAttribute="trailing" id="iYz-3b-ypT"/>
-                            <constraint firstItem="tET-B1-mWg" firstAttribute="leading" secondItem="LB2-dK-tjk" secondAttribute="leading" constant="20" id="jD9-zr-fpO"/>
-                            <constraint firstItem="lgE-JW-Wal" firstAttribute="top" secondItem="tET-B1-mWg" secondAttribute="bottom" constant="15" id="mHd-Fb-2AB"/>
                             <constraint firstItem="tHt-MQ-Ldg" firstAttribute="leading" secondItem="LB2-dK-tjk" secondAttribute="leading" id="pPp-V1-M3h"/>
                             <constraint firstItem="LB2-dK-tjk" firstAttribute="trailing" secondItem="lgE-JW-Wal" secondAttribute="trailing" constant="20" id="xCd-Pb-TY0"/>
                         </constraints>
@@ -90,7 +82,6 @@
                         <outlet property="giveDifferently" destination="05x-ft-8QM" id="YPb-Sh-hPD"/>
                         <outlet property="givyContstraint" destination="dn0-Ho-WAb" id="Xyt-he-FVQ"/>
                         <outlet property="imageV" destination="tHt-MQ-Ldg" id="mLS-l4-q4r"/>
-                        <outlet property="mainTitle" destination="tET-B1-mWg" id="Edi-dA-nQC"/>
                         <outlet property="titleLabel" destination="lgE-JW-Wal" id="hVQ-NV-v7Y"/>
                     </connections>
                 </viewController>
@@ -140,7 +131,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ja, graag!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kn-jd-iPt" customClass="InsetLabel" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="130.5" y="423.5" width="114" height="44"/>
+                                <rect key="frame" x="146" y="423.5" width="84" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="a3z-Nm-liZ"/>

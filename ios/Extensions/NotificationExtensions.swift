@@ -14,5 +14,4 @@ extension Notification.Name {
     public static let GivtDidShowFeature = Notification.Name("GivtDidShowFeature")
     public static let GivtUserDidLogin = Notification.Name("GivtUserDidLogin")
     public static let GivtUserViewedAnnualOverview = Notification.Name("GivtUserViewedAnnualOverview")
-    public static let GivtAmountPresetsSet = Notification.Name("GivtAmountPresetsSet")
 }
