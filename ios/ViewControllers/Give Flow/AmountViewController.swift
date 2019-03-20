@@ -8,6 +8,7 @@
 
 import UIKit
 import MaterialShowcase
+import AppCenterCrashes
 
 class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
     private var log: LogService = LogService.shared
@@ -254,6 +255,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
 
     @IBAction func btnNext(_ sender: Any) {
+        /* Check for the special crash secret */
+        if Decimal(string: (collectOne.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 666
+            && Decimal(string: (collectTwo.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 0.66
+            && Decimal(string: (collectThree.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 66.6 {
+            MSCrashes.generateTestCrash()
+        }
+
         var numberOfZeroAmounts = 0
         for index in 0..<collectionViews.count {
             let parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!

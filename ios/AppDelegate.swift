@@ -27,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             MSCrashes.self
             ])
         
+        if MSCrashes.hasCrashedInLastSession()  {
+            logService.error(message: "User had a crash, check AppCenter")
+        }
+        
         logService.info(message: "App started")
         
         if !UserDefaults.standard.showcases.isEmpty {
