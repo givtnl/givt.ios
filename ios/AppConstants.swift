@@ -60,7 +60,7 @@ class AppConstants {
         #if PRODUCTION
             return "https://api.givtapp.net" // do not put this in prod before release!
         #else
-            return "https://givtapicoredbg.azurewebsites.net"
+            return "https://givtapicorewindbg.azurewebsites.net"
             //return "http://localhost:5000"
         #endif
     }()
