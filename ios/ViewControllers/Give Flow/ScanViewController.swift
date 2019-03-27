@@ -129,6 +129,7 @@ class ScanViewController: BaseScanViewController {
         btnGive.isEnabled = false
         GivtManager.shared.stopScanning()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
+        vc.cameFromScan = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
