@@ -471,7 +471,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 
     fileprivate func showAmountTooLow() {
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
-        let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""), message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
+                                      message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
@@ -481,20 +482,24 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             title: NSLocalizedString("AmountTooHigh", comment: ""),
             message: NSLocalizedString("AmountLimitExceeded", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
-            action in
-            self.checkAmounts()
-        }))
-        if (LoginManager.shared.isFullyRegistered){
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-                LogService.shared.info(message: "User is opening giving limit")
-                let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-                vc.startPoint = .amountLimit
-                vc.isRegistration = false
-                vc.transitioningDelegate = self.slideFromRightAnimation
-                NavigationManager.shared.pushWithLogin(vc, context: self)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
+                action in
+                self.checkAmounts()
             }))
-        }
+        
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
+                    LogService.shared.info(message: "User is opening giving limit")
+                    let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+                    vc.startPoint = .amountLimit
+                    if (LoginManager.shared.isFullyRegistered || !UserDefaults.standard.isTempUser){
+                        vc.isRegistration = false
+                    } else {
+                        vc.isRegistration = true
+                    }
+                    vc.transitioningDelegate = self.slideFromRightAnimation
+                    NavigationManager.shared.pushWithLogin(vc, context: self)
+            }))
+        
         self.present(alert, animated: true, completion: nil)
     }
     func checkAmount(collection: CollectionView) {
