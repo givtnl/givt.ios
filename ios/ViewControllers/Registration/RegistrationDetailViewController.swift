@@ -9,6 +9,7 @@
 import UIKit
 import PhoneNumberKit
 import SVProgressHUD
+import AppCenterAnalytics
 
 class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     private var _navigationManager = NavigationManager.shared
@@ -45,6 +46,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MSAnalytics.trackEvent("User entered 2nd step of registration")
+
         setupPaymentView()
         
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")

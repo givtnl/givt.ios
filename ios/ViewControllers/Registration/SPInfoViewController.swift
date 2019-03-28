@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import AppCenterAnalytics
 
 class SPInfoViewController: UIViewController {
     private var _navigationManager = NavigationManager.shared
@@ -22,6 +23,8 @@ class SPInfoViewController: UIViewController {
     var hasBackButton = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        MSAnalytics.trackEvent("User started SEPA mandate flow")
+
         backButton.isEnabled = false
         headerText.text = NSLocalizedString("SlimPayInformation", comment: "")
         explanation.text = NSLocalizedString("SlimPayInformationPart2", comment: "")

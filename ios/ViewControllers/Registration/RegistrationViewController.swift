@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import AppCenterAnalytics
 
 class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
@@ -32,6 +33,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MSAnalytics.trackEvent("User started registration")
+
         initButtonsWithTags()
         initTermsText()
         
