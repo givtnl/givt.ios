@@ -38,6 +38,8 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <action selector="viewTouch:" destination="-1" eventType="touchUpInside" id="fKE-Q4-Gnb"/>
+                        <action selector="viewTouchDown:" destination="-1" eventType="touchDown" id="UJ3-Ew-kaA"/>
+                        <action selector="viewTouchDragOutside:" destination="-1" eventType="touchDragOutside" id="0bj-xU-s91"/>
                     </connections>
                 </view>
             </subviews>
