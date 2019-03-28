@@ -100,9 +100,9 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("MandateSigingFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
-                            self.show(vc, sender: nil)
-                            }))
+                            self.navigationController?.dismiss(animated: false, completion: nil)
+                            NavigationManager.shared.loadMainPage()
+                        }))
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
