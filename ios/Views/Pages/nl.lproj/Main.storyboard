@@ -1166,6 +1166,8 @@ Kijk voor de status in je overzicht.</string>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="btnNext:" destination="lyO-8n-bds" eventType="touchUpInside" id="guP-fE-iaY"/>
+                                            <action selector="btnNextTouchDown:" destination="lyO-8n-bds" eventType="touchDown" id="nFu-oW-Gsh"/>
+                                            <action selector="btnNextTouchDragOutside:" destination="lyO-8n-bds" eventType="touchDragOutside" id="ag3-MH-R4I"/>
                                         </connections>
                                     </button>
                                 </subviews>

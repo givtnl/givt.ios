@@ -254,7 +254,16 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         pressedShortcutKey = true
     }
 
+    @IBAction func btnNextTouchDown(_ sender: Any) {
+        btnNext.ogBGColor = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+    }
+    
+    @IBAction func btnNextTouchDragOutside(_ sender: Any) {
+        btnNext.ogBGColor = #colorLiteral(red: 0.2529559135, green: 0.789002955, blue: 0.554667592, alpha: 1)
+    }
+    
     @IBAction func btnNext(_ sender: Any) {
+        btnNext.ogBGColor = #colorLiteral(red: 0.2529559135, green: 0.789002955, blue: 0.554667592, alpha: 1)
         /* Check for the special crash secret */
         if Decimal(string: (collectOne.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 666
             && Decimal(string: (collectTwo.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 0.66
