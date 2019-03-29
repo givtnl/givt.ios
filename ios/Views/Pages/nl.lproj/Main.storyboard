@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -642,7 +642,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="givyGave" translatesAutoresizingMaskIntoConstraints="NO" id="cdK-pi-bub">
-                                <rect key="frame" x="199" y="547" width="136" height="197"/>
+                                <rect key="frame" x="199" y="728" width="136" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="EMw-R1-gR1"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="197" id="b6t-tc-UB3"/>
@@ -699,37 +699,37 @@ Kijk voor de status in je overzicht.</string>
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vep-oF-LTp">
-                                        <rect key="frame" x="0.0" y="495.5" width="414" height="278.5"/>
+                                        <rect key="frame" x="0.0" y="449" width="414" height="325"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9B-KQ-rXU">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="312.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="359"/>
                                                 <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23j-EG-1Q9">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="278.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="325"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-xz-VHc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="116" height="278.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="116" height="325"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaT-GT-awW">
-                                                                <rect key="frame" x="10" y="41.5" width="106" height="195"/>
+                                                                <rect key="frame" x="10" y="48.5" width="106" height="227.5"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cn6-kA-C6Y" customClass="PresetButton" customModule="ios" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="106" height="60"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="106" height="70.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <connections>
                                                                             <action selector="addPresetValue:" destination="lyO-8n-bds" eventType="touchUpInside" id="Jdi-8t-iHt"/>
                                                                         </connections>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ky-9Q-vkw" customClass="PresetButton" customModule="ios" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="68" width="106" height="59.5"/>
+                                                                        <rect key="frame" x="0.0" y="78.5" width="106" height="70.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <connections>
                                                                             <action selector="addPresetValue:" destination="lyO-8n-bds" eventType="touchUpInside" id="5Mi-vA-aXD"/>
                                                                         </connections>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ov7-5Q-kWa" customClass="PresetButton" customModule="ios" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="135.5" width="106" height="59.5"/>
+                                                                        <rect key="frame" x="0.0" y="157" width="106" height="70.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <connections>
                                                                             <action selector="addPresetValue:" destination="lyO-8n-bds" eventType="touchUpInside" id="ivw-XG-whP"/>
@@ -762,10 +762,10 @@ Kijk voor de status in je overzicht.</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv6-iH-YVl">
-                                                        <rect key="frame" x="116" y="0.0" width="298" height="278.5"/>
+                                                        <rect key="frame" x="116" y="0.0" width="298" height="325"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNy-mi-UI2" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="10" width="82.5" height="58.5"/>
+                                                                <rect key="frame" x="15" y="10" width="82.5" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="1">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -783,7 +783,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCW-62-N94" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="107.5" y="10" width="83" height="58.5"/>
+                                                                <rect key="frame" x="107.5" y="10" width="83" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="2">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -801,7 +801,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAG-Aw-TuA" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="200.5" y="10" width="82.5" height="58.5"/>
+                                                                <rect key="frame" x="200.5" y="10" width="82.5" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="3">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -819,7 +819,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oad-iX-HrB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="76.5" width="82.5" height="58.5"/>
+                                                                <rect key="frame" x="15" y="88" width="82.5" height="70.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="4">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -837,7 +837,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2y-kT-0o4" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="107.5" y="76.5" width="83" height="58.5"/>
+                                                                <rect key="frame" x="107.5" y="88" width="83" height="70.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="5">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -855,7 +855,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qL-oU-syQ" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="200.5" y="76.5" width="82.5" height="58.5"/>
+                                                                <rect key="frame" x="200.5" y="88" width="82.5" height="70.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="6">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -873,7 +873,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVZ-Me-cmB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="143" width="82.5" height="59"/>
+                                                                <rect key="frame" x="15" y="166.5" width="82.5" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="7">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -891,7 +891,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jw-tI-vCz" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="107.5" y="143" width="83" height="59"/>
+                                                                <rect key="frame" x="107.5" y="166.5" width="83" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="8">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -909,7 +909,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnM-rs-vqX" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="210" width="82.5" height="58.5"/>
+                                                                <rect key="frame" x="15" y="244.5" width="82.5" height="70.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title=",">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -927,7 +927,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJb-1f-9ig" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="107.5" y="210" width="83" height="58.5"/>
+                                                                <rect key="frame" x="107.5" y="244.5" width="83" height="70.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="0">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -945,7 +945,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgC-fX-maL" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="200.5" y="210" width="82.5" height="58.5"/>
+                                                                <rect key="frame" x="200.5" y="244.5" width="82.5" height="70.5"/>
                                                                 <gestureRecognizers/>
                                                                 <state key="normal" image="erase_new">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -964,7 +964,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g42-Kb-4UT" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="200.5" y="143" width="82.5" height="59"/>
+                                                                <rect key="frame" x="200.5" y="166.5" width="82.5" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="9">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1067,24 +1067,24 @@ Kijk voor de status in je overzicht.</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sHt-md-26B">
-                                        <rect key="frame" x="20" y="50.5" width="374" height="271.5"/>
+                                        <rect key="frame" x="20" y="40.5" width="374" height="272.5"/>
                                         <subviews>
                                             <view tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdZ-h5-LAO" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="85.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="setActiveCollection:" destination="lyO-8n-bds" eventType="touchUpInside" id="g39-HB-obe"/>
                                                 </connections>
                                             </view>
                                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KbE-MY-azs" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="93" width="374" height="85.5"/>
+                                                <rect key="frame" x="0.0" y="93.5" width="374" height="85.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="setActiveCollection:" destination="lyO-8n-bds" eventType="touchUpInside" id="5LO-WW-CCM"/>
                                                 </connections>
                                             </view>
                                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wef-5E-eYC" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="186.5" width="374" height="85"/>
+                                                <rect key="frame" x="0.0" y="187" width="374" height="85.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <action selector="setActiveCollection:" destination="lyO-8n-bds" eventType="touchUpInside" id="Ddj-3C-ac5"/>
@@ -1098,7 +1098,7 @@ Kijk voor de status in je overzicht.</string>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVh-mq-ZfQ" customClass="AddCollectButtonView" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="83" y="342" width="248" height="40"/>
+                                        <rect key="frame" x="83" y="333" width="248" height="40"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="increase" translatesAutoresizingMaskIntoConstraints="NO" id="pfc-fH-Pba">
                                                 <rect key="frame" x="20" y="10" width="20" height="20"/>
@@ -1145,7 +1145,7 @@ Kijk voor de status in je overzicht.</string>
                                         </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avu-iq-1Ae" customClass="CustomButtonWithRightArrow" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="205.5" y="431.5" width="186.5" height="44"/>
+                                        <rect key="frame" x="205.5" y="385" width="186.5" height="44"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.34999999999999998" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="3f0-oV-omv"/>
@@ -1299,7 +1299,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -1356,7 +1356,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="givy-party" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-aw-gWW">
-                                <rect key="frame" x="63" y="340" width="288" height="216"/>
+                                <rect key="frame" x="199" y="340" width="16" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="216" id="97N-LH-ZyF"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="320" id="idb-x3-YM3"/>
