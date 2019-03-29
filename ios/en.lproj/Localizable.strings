@@ -368,7 +368,7 @@
 "FAQvraag9" = "Where can I see the overview of my donations?";
 
 /*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
-"FAQantwoord9" = "Press the menu at the top left of the ‘Amount’ screen to access your app menu. To get access you have to login using your e-mail address and password or passcode. Choose ‘Donations’ to find an overview of your recent activity. This list consists of the name of the recipient, time, and date. The coloured line indicates the status of the donation: In process, processed, refused by bank, or cancelled by user.\nYou can request an overview of your donations for your tax declaration at the end of each year.\n\nThe video below demonstrates this:";
+"FAQantwoord9" = "Press the menu at the top left of the ‘Amount’ screen to access your app menu. To get access you have to login using your e-mail address and password or passcode. Choose ‘Donations’ to find an overview of your recent activity. This list consists of the name of the recipient, time, and date. The coloured line indicates the status of the donation: In process, processed, refused by bank, or cancelled by user.\nYou can request an overview of your donations for your tax declaration at the end of each year.";
 "GivtIsBeingProcessed" = "Thank you for your Givt to {0}!\nYou can check the status in the overview.";
 "OfflineGegevenGivtMessage" = "Thank you for your Givt!\n\nWhen there's a good connection with the Givt-server, your Givt will be processed.\nYou can check the status in the overview.";
 "OfflineGegevenGivtMessageWithOrg" = "Thank you for your Givt to {0}!\n\nWhen there's a good connection with the Givt-server, your Givt will be processed.\nYou can check the status in the overview.";
@@ -402,7 +402,7 @@
 "AnswerHowDoesRegistrationWork" = "To use Givt, you have to register in the Givt app. Go to your app menu and choose 'Finish registration'. You set up a Givt account, fill in some personal details and give permission to collect the donations made with the app. The transactions are handled by Slimpay - a bank that specialises in the treatment of permissions. When your registration is complete, you are ready to give. You only need your login details to see or change your settings.";
 
 /*Antwoord FAQ Hoe werkt geven?*/
-"AnswerHowDoesGivingWork" = "It’s easy! Just open the Givt app, choose an amount and move your phone past the collection box, alms bag or basket. Don't forget to finish your registration, so your donations can be delivered to the right address.\n\nThe video below demonstrates this:";
+"AnswerHowDoesGivingWork" = "It’s easy! Just open the Givt app, choose an amount and move your phone past the collection box, alms bag or basket. Don't forget to finish your registration, so your donations can be delivered to the right address.";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
 "AnswerHowDoesManualGivingWork" = "When the Givt app does not work like it should, you can choose to select \nthe recipient manually. Choose an amount and press ‘Give’. Thereafter \nchoose ‘Choose from the list’ and select 'Churches', 'Charities', 'Campaigns' or 'Artists'. Now choose a recipient and press ‘Give’.";
@@ -662,7 +662,7 @@
 "SmsSuccess" = "Code sent via SMS";
 "SmsFailed" = "Please try again later";
 "KerkdienstGemistQuestion" = "How can I give with Givt through the Kerkdienst Gemist App?";
-"KerkdienstGemistAnswer" = "If you’re watching using the Kerkdienst Gemist App, you can easily give with Givt when your church uses this service. At the bottom of the page, you’ll find a small button that will take you to the Givt app. Choose an amount, confirm with 'Yes, please' and you’re done! Need some more guidance? Check the instruction video below!";
+"KerkdienstGemistAnswer" = "If you’re watching using the Kerkdienst Gemist App, you can easily give with Givt when your church uses this service. At the bottom of the page, you’ll find a small button that will take you to the Givt app. Choose an amount, confirm with 'Yes, please' and you’re done!";
 "ExternalSuggestionLabel" = "We see you are giving from the {0} app. Would you like to give to {1}?";
 "ChooseHowIGive" = "No, I'd like to decide how I give myself";
 "AndersGeven" = "Give differently";
@@ -822,3 +822,4 @@
 /*in app notification to announce new feature (new gui!)*/
 "Feature_newgui_inappnot" = "Tap here to read more about the renewed user interface!";
 "Feature_multiple_inappnot" = "Hi! We have something new for you. Do you have a minute?";
+"PolicyTextGB" = "";
