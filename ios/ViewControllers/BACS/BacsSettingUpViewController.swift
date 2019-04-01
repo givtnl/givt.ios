@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import AppCenterAnalytics
 
 class BacsSettingUpViewController: UIViewController {
 
@@ -22,6 +23,8 @@ class BacsSettingUpViewController: UIViewController {
     private var helpViewController = UIStoryboard(name: "BACS", bundle: nil).instantiateViewController(withIdentifier: "BacsInfoViewController") as! BacsInfoViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        MSAnalytics.trackEvent("User started BACS mandate flow")
+
         self.navigationController?.removeLogo()
         title = NSLocalizedString("BacsSetupTitle", comment: "")
         bodyText.text = NSLocalizedString("BacsSetupBody", comment: "")

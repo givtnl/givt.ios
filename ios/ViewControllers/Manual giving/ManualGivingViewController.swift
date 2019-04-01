@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AppCenterAnalytics
 
 class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDelegate {
     @IBOutlet var contentView: UIView!
@@ -14,6 +15,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     @IBOutlet var titleText: UILabel!
     private var log = LogService.shared
 
+    var cameFromScan: Bool = false
     enum Choice: String {
         case foundations
         case churches
@@ -291,6 +293,9 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     }
     
     @objc func giveSuggestion() {
+        if(cameFromScan){
+            MSAnalytics.trackEvent("User came from ScanPage and pressed Suggestion")
+        }
         if let beaconId = namespace {
             log.info(message: "Gave to the suggestion")
             if let idx = beaconId.index(of: ".") {

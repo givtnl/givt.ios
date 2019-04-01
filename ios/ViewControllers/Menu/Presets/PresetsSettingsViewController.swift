@@ -28,6 +28,11 @@ class PresetsSettingsViewController : UIViewController {
         tap.addTarget(self, action: #selector(gotoPresets))
         gotoPresetsView.isUserInteractionEnabled = false
         gotoPresetsView.addGestureRecognizer(tap)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSavePresets), name: .GivtDidSavePresets, object: nil)
+
+    }
+    @objc func didSavePresets() {
+        self.backPressed(self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
