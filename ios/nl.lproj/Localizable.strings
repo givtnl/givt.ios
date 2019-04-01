@@ -839,3 +839,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Feature_newgui_inappnot" = "Tap hier om meer te weten te komen over de vernieuwde gebruikersinterface!";
 "Feature_multiple_inappnot" = "Hallo! We hebben iets nieuws voor je klaar staan. Heb je even?";
 "PolicyTextGB" = "";
+
+/*Givt B.V. voor SEPA-users*/
+"GivtCompanyInfo" = "Givt B.V.";
+
+/*Givt Ltd. ...*/
+"GivtCompanyInfoGB" = "Givt Ltd.";
