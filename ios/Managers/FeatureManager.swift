@@ -82,6 +82,34 @@ class FeatureManager {
                                     context?.dismiss(animated: true)
                                 })
                             })
+            ]),
+        2: Feature( id: 2,
+                    icon: "feature_newinterface_menu_icon",
+                    title: NSLocalizedString("Feature_newgui1_title", comment: ""),
+                    notification: NSLocalizedString("Feature_newgui_inappnot", comment:""),
+                    mustSee: false,
+                    pages: [
+                        FeaturePageContent(
+                            image: Locale.current.languageCode == "en" ? "feature_newgui1_en" : "feature_newgui1",
+                            color: #colorLiteral(red: 0.9568627451, green: 0.7490196078, blue: 0.3882352941, alpha: 1),
+                            title: NSLocalizedString("Feature_newgui1_title", comment: ""),
+                            subText: NSLocalizedString("Feature_newgui1_message", comment: "")),
+                        FeaturePageContent(
+                            image: "feature_newgui2",
+                            color: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1),
+                            title: NSLocalizedString("Feature_newgui2_title", comment: ""),
+                            subText: NSLocalizedString("Feature_newgui2_message", comment: "")),
+                        FeaturePageContent(
+                            image: "feature_newgui3",
+                            color: #colorLiteral(red: 0.3019607843, green: 0.5960784314, blue: 0.8117647059, alpha: 1),
+                            title: NSLocalizedString("Feature_newgui3_title", comment: ""),
+                            subText: NSLocalizedString("Feature_newgui3_message", comment: ""),
+                            actionText: {(context) -> String in
+                                return NSLocalizedString("Feature_newgui_action", comment: "")
+                            },
+                            action: {(context) -> Void in
+                                context?.dismiss(animated: true)
+                            })
             ])
     ]
     
@@ -110,9 +138,6 @@ class FeatureManager {
     }
     
     func checkUpdateState(context: UIViewController) {
-        let filteredFeatures = FeatureManager.shared.features.filter {
-            $0.value.mustSee == true && $0.key > self.lastFeatureShown
-        }
         var badges = UserDefaults.standard.featureBadges
         badges.append(contentsOf: features.filter { $0.key > lastFeatureShown && $0.value.mustSee && badges.firstIndex(of: $0.key) == nil }.map { $0.key })
         UserDefaults.standard.featureBadges = badges
@@ -130,8 +155,10 @@ class FeatureManager {
                         featView.context = context
                         sv.addSubview(featView)
                         
-                        if filteredFeatures.count == 1 {
-                            featView.label.text = filteredFeatures.first?.value.notification
+                        if FeatureManager.shared.features.filter({ $0.key > self.lastFeatureShown }).count == 1 {
+                            featView.label.text = FeatureManager.shared.features.filter({ $0.key > self.lastFeatureShown }).first?.value.notification
+                        } else {
+                            featView.label.text = NSLocalizedString("Feature_multiple_inappnot", comment: "")
                         }
                         
                         featView.tapGesture.addTarget(self, action: #selector(self.notificationTapped))
@@ -182,6 +209,9 @@ class FeatureManager {
     }
     
     @objc private func notificationTapped(_ recognizer: UITapGestureRecognizer) {
+        DispatchQueue.main.async {
+            self.dismissNotification()
+        }
         if let view = recognizer.view {
             if let popDownview = view as? NewFeaturePopDownView {
                 var featuresToShow: [Feature] = []
