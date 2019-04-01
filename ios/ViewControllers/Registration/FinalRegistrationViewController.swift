@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AppCenterAnalytics
 
 class FinalRegistrationViewController: UIViewController {
 
@@ -17,6 +18,8 @@ class FinalRegistrationViewController: UIViewController {
     @IBOutlet var gif: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        MSAnalytics.trackEvent("User finished registration")
+
         gif.loadGif(name: "givt_registration")
         self.view.sendSubview(toBack: gif)
         self.navigationController?.setNavigationBarHidden(true, animated: false)

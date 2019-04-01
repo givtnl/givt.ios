@@ -17,13 +17,19 @@ class TermsViewController: UIViewController {
     var typeOfTerms: TypeOfTerms? {
         didSet {
             if typeOfTerms == .privacyPolicy {
-                textToShow = NSLocalizedString("PolicyText", comment: "")
+                if let country = AppServices.getCountryFromSim() {
+                    if(country == "GB"){
+                        textToShow = NSLocalizedString("PolicyTextGB", comment: "")
+                    }
+                } else {
+                    textToShow = NSLocalizedString("PolicyText", comment: "")
+                }
                 titleToShow = NSLocalizedString("PrivacyTitle", comment: "")
             } else if typeOfTerms == .termsAndConditions {
                 textToShow = NSLocalizedString("TermsText", comment: "")
                 if let country = AppServices.getCountryFromSim() {
                     if(country == "GB"){
-                        self.textToShow = NSLocalizedString("TermsTextGB", comment: "")
+                        textToShow = NSLocalizedString("TermsTextGB", comment: "")
                     }
                 }
                 titleToShow = NSLocalizedString("FullVersionTitleTerms", comment: "")
@@ -40,8 +46,8 @@ class TermsViewController: UIViewController {
     override func viewDidLoad() {
         closeButton.accessibilityLabel = NSLocalizedString("Close", comment: "")
         super.viewDidLoad()
-        self.titleText.text = self.titleToShow
-        self.terms.text = String(self.textToShow.prefix(1000))
+        titleText.text = self.titleToShow
+        terms.text = String(self.textToShow.prefix(1000))
         
     }
     
@@ -54,7 +60,6 @@ class TermsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             self.terms.text = self.textToShow
-
         }
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarStyle = .lightContent

@@ -11,7 +11,6 @@ import UIKit
 class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var bodyText: UILabel!
-    @IBOutlet var resetValues: CustomButton!
     @IBOutlet var theScrollView: UIScrollView!
     @IBOutlet var firstTextField: AmountPresetUITextField!
     @IBOutlet var secondTextField: AmountPresetUITextField!
@@ -32,13 +31,14 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
         LogService.shared.info(message: "Saving custom preset amounts")
         self.navigationController?.hideLeftView(self)
         self.backPressed(self)
+        NotificationCenter.default.post(name: .GivtDidSavePresets, object: nil)
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = NSLocalizedString("AmountPresetsTitle", comment: "")
         bodyText.text = NSLocalizedString("AmountPresetsBody", comment: "")
-        resetValues.setTitle(NSLocalizedString("AmountPresetsResetAll", comment: ""), for: UIControlState.normal)
         save.setTitle(NSLocalizedString("Save", comment: ""), for: UIControlState.normal)
         
         firstTextField.delegate = self
@@ -115,14 +115,6 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
         if let tf = currentTextField {
             tf.resignFirstResponder()
         }
-    }
-    
-    @IBAction func resetValues(_ sender: Any) {
-        LogService.shared.info(message: "Resetting preset amounts")
-        firstTextField.text = fmt.string(from: 2.5 as NSNumber)
-        secondTextField.text = fmt.string(from: 7.5 as NSNumber)
-        thirdTextField.text = fmt.string(from: 12.5 as NSNumber)
-        checkAll()
     }
     
     @objc func keyboardDidShow(notification: NSNotification) {

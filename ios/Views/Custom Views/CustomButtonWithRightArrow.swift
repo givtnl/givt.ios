@@ -28,6 +28,14 @@ class CustomButtonWithRightArrow : UIButton {
         sendActions(for: .touchUpInside)
     }
     
+    @IBAction func viewTouchDown(_ sender: Any) {
+        sendActions(for: .touchDown)
+    }
+    
+    @IBAction func viewTouchDragOutside(_ sender: Any) {
+        sendActions(for: .touchDragOutside)
+    }
+    
     @IBOutlet var contentView: UIButton!
     @IBOutlet var labelText: UILabel!
     

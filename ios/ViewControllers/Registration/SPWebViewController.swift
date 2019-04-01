@@ -76,7 +76,7 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("page fully loaded")
         SVProgressHUD.show()
-        let possibleUrls = ["givtapidebug.azurewebsites.net","givtapicoredbg.azurewebsites.net","api2.nfcollect.com","api.givtapp.net"]
+        let possibleUrls = [".azurewebsites.net","api2.nfcollect.com","api.givtapp.net"]
         
         guard let webViewUrl = webView.url else { return }
         
@@ -100,8 +100,9 @@ class SPWebViewController: UIViewController, WKNavigationDelegate, WKUIDelegate,
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("MandateSigingFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                            self.dismiss(animated: true, completion: nil)
-                            }))
+                            self.navigationController?.dismiss(animated: false, completion: nil)
+                            NavigationManager.shared.loadMainPage()
+                        }))
                         self.present(alert, animated: true, completion: nil)
                     }
                 }
