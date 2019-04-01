@@ -823,3 +823,9 @@
 "Feature_newgui_inappnot" = "Tap here to read more about the renewed user interface!";
 "Feature_multiple_inappnot" = "Hi! We have something new for you. Do you have a minute?";
 "PolicyTextGB" = "";
+
+/*Givt B.V. voor SEPA-users*/
+"GivtCompanyInfo" = "Givt B.V.";
+
+/*Givt Ltd. ...*/
+"GivtCompanyInfoGB" = "Givt Ltd.";
