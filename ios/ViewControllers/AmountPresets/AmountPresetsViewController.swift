@@ -35,6 +35,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = NSLocalizedString("AmountPresetsTitle", comment: "")
         bodyText.text = NSLocalizedString("AmountPresetsBody", comment: "")
         resetValues.setTitle(NSLocalizedString("AmountPresetsResetAll", comment: ""), for: UIControlState.normal)
@@ -86,7 +87,6 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
         createToolbar(secondTextField)
         createToolbar(thirdTextField)
     }
-    
     func checkAll() {
         [firstTextField, secondTextField, thirdTextField].forEach { (tf) in
             if let value = getDecimalValue(text: tf!.text!) {

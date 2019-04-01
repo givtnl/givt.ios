@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27689CDF221AF94B006C0DA6 /* CollectionView.xib */; };
+		27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27689CE3221B0064006C0DA6 /* CollectionView.swift */; };
+		27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E0221E9D6D00982842 /* AddCollectButtonView.swift */; };
+		27A0E4E3221EC7E800982842 /* PresetButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A0E4E2221EC7E800982842 /* PresetButton.xib */; };
+		27A0E4E5221ECE6700982842 /* PresetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E4221ECE6700982842 /* PresetButton.swift */; };
+		27A0E4E9221F395000982842 /* PresetsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E8221F395000982842 /* PresetsNavigationViewController.swift */; };
+		27A0E4EB221F3D3500982842 /* Presets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A0E4EA221F3D3500982842 /* Presets.storyboard */; };
+		27A0E4EE221F3FF100982842 /* PresetsSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4ED221F3FF100982842 /* PresetsSettingsViewController.swift */; };
+		27AC59F822255DD400163BF4 /* SelectContextView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27AC59F722255DD400163BF4 /* SelectContextView.xib */; };
+		27AC59FA22255DEE00163BF4 /* SelectContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC59F922255DEE00163BF4 /* SelectContextView.swift */; };
+		27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */; };
+		27D7F7662229214E00D3953A /* CustomButtonWithRightArrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
@@ -195,6 +207,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		27689CDF221AF94B006C0DA6 /* CollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CollectionView.xib; path = "ios/Views/Custom Views/CollectionView.xib"; sourceTree = SOURCE_ROOT; };
+		27689CE3221B0064006C0DA6 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		27A0E4E0221E9D6D00982842 /* AddCollectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectButtonView.swift; sourceTree = "<group>"; };
+		27A0E4E2221EC7E800982842 /* PresetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetButton.xib; sourceTree = "<group>"; };
+		27A0E4E4221ECE6700982842 /* PresetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetButton.swift; sourceTree = "<group>"; };
+		27A0E4E8221F395000982842 /* PresetsNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsNavigationViewController.swift; sourceTree = "<group>"; };
+		27A0E4EA221F3D3500982842 /* Presets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Presets.storyboard; sourceTree = "<group>"; };
+		27A0E4ED221F3FF100982842 /* PresetsSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetsSettingsViewController.swift; sourceTree = "<group>"; };
+		27AC59F722255DD400163BF4 /* SelectContextView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectContextView.xib; sourceTree = "<group>"; };
+		27AC59F922255DEE00163BF4 /* SelectContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextView.swift; sourceTree = "<group>"; };
+		27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonWithRightArrow.swift; sourceTree = "<group>"; };
+		27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomButtonWithRightArrow.xib; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
@@ -384,6 +408,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27A0E4EC221F3EA800982842 /* Presets */ = {
+			isa = PBXGroup;
+			children = (
+				27A0E4E8221F395000982842 /* PresetsNavigationViewController.swift */,
+				27A0E4ED221F3FF100982842 /* PresetsSettingsViewController.swift */,
+			);
+			path = Presets;
+			sourceTree = "<group>";
+		};
 		4B950123D45CD9CD856C736B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +557,7 @@
 				D7AF42FE1FEA61610027EEC1 /* UpdatedTermsPage.storyboard */,
 				D70491941FDA927C00CE5980 /* Welcome.storyboard */,
 				D72A89D21FE81FD800C06EF6 /* WhyPersonalData.storyboard */,
+				27A0E4EA221F3D3500982842 /* Presets.storyboard */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -550,6 +584,15 @@
 				D761E95F1F15248E002B849B /* SettingsItemViewCells.swift */,
 				D748F5F5206137E400B25BC2 /* TableSectionHeader.swift */,
 				D748F5F72061381B00B25BC2 /* TableSectionHeaderView.xib */,
+				27689CDF221AF94B006C0DA6 /* CollectionView.xib */,
+				27689CE3221B0064006C0DA6 /* CollectionView.swift */,
+				27A0E4E0221E9D6D00982842 /* AddCollectButtonView.swift */,
+				27A0E4E2221EC7E800982842 /* PresetButton.xib */,
+				27A0E4E4221ECE6700982842 /* PresetButton.swift */,
+				27AC59F722255DD400163BF4 /* SelectContextView.xib */,
+				27AC59F922255DEE00163BF4 /* SelectContextView.swift */,
+				27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */,
+				27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -598,6 +641,7 @@
 				D782E68E20064A680086907E /* SettingsViewController.swift */,
 				D75AA195200CBFD5006E09BB /* TaxesViewController.swift */,
 				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
+				27A0E4EC221F3EA800982842 /* Presets */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -938,7 +982,9 @@
 				D75141A81F9E181A0016B71F /* givt_registration.gif in Resources */,
 				D7F131661F75574D00E25A68 /* Registration.storyboard in Resources */,
 				FB8187AE21C298050084C23E /* NewFeaturePopDownView.xib in Resources */,
+				27D7F7662229214E00D3953A /* CustomButtonWithRightArrow.xib in Resources */,
 				D787BE79208DCA6B00E20873 /* celebration.gif in Resources */,
+				27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
 				D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */,
@@ -947,6 +993,7 @@
 				D74C19E820F6270F00E116A0 /* ExternalSuggestion.storyboard in Resources */,
 				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
 				D7AF42FF1FEA61610027EEC1 /* UpdatedTermsPage.storyboard in Resources */,
+				27A0E4E3221EC7E800982842 /* PresetButton.xib in Resources */,
 				D7EAF10E1FB491B000DFE5CC /* icon.png in Resources */,
 				D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */,
 				D748F5F82061381B00B25BC2 /* TableSectionHeaderView.xib in Resources */,
@@ -961,6 +1008,8 @@
 				D7F3A84521480161008B65AE /* Fingerprint.storyboard in Resources */,
 				D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
+				27AC59F822255DD400163BF4 /* SelectContextView.xib in Resources */,
+				27A0E4EB221F3D3500982842 /* Presets.storyboard in Resources */,
 				D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */,
 				D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
@@ -1032,9 +1081,11 @@
 			files = (
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
+				27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */,
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
 				D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */,
 				D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */,
+				27A0E4EE221F3FF100982842 /* PresetsSettingsViewController.swift in Sources */,
 				D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */,
 				FB45AC3921CA406200F12584 /* FeatureMenuViewController.swift in Sources */,
 				D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */,
@@ -1055,6 +1106,7 @@
 				D7AE8B9C2136953E00CB3A33 /* BacsInfoViewController.swift in Sources */,
 				D7F3A84A214801EA008B65AE /* FingerprintViewController.swift in Sources */,
 				D7D6FA6B1F7BADA5008A5604 /* UITextFieldExtensions.swift in Sources */,
+				27A0E4E5221ECE6700982842 /* PresetButton.swift in Sources */,
 				FB45AC3721C9558200F12584 /* MenuNavigationViewController.swift in Sources */,
 				D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */,
 				D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */,
@@ -1088,6 +1140,7 @@
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
+				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
@@ -1097,12 +1150,14 @@
 				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
 				D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */,
 				D7AF43031FEA8E680027EEC1 /* PlaceholderViewController.swift in Sources */,
+				27AC59FA22255DEE00163BF4 /* SelectContextView.swift in Sources */,
 				D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColorExtensions.swift in Sources */,
 				FBBF72A621CA819600EBB085 /* FeaturesNavigationController.swift in Sources */,
 				D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */,
+				27A0E4E9221F395000982842 /* PresetsNavigationViewController.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
 				D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */,
 				A46C8AF0210889A400988D6D /* Beacon.swift in Sources */,
@@ -1128,6 +1183,7 @@
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */,
+				27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */,
 				D7F0D2A521639544004770F8 /* NotificationExtensions.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
