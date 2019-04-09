@@ -221,6 +221,7 @@ class NavigationManager {
                             let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                             cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
                                 self.executeWithLogin(context: context, emailEditable: emailEditable, skipFingerprint: true, completion: completion)
+                                UserDefaults.standard.hasFingerprintSet = false
                             }))
                             cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.default, handler: nil))
                             context.present(cannotUseTouchId, animated: true, completion: nil)

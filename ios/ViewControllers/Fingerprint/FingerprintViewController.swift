@@ -54,73 +54,77 @@ class FingerprintViewController: UIViewController {
             
             if authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
                 authenticationContext.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: " ") { (didEvaluate, error) in
-                    let newFingerprint = NSUUID().uuidString.replacingOccurrences(of: "-", with: "") //strip dashes
-                    self.showLoader()
-                    LoginManager.shared.registerFingerprint(fingerprint: newFingerprint) { (success) in
-                        self.hideLoader()
-                        if success {
-                            let doWhenSucces = { () in
-                                DispatchQueue.main.async {
-                                    UserDefaults.standard.hasFingerprintSet = true
-                                    sw.isOn = true
+                    let doWhenCancel = { () in
+                        LogService.shared.info(message: "User cancelled setting fingerprint")
+                        DispatchQueue.main.async {
+                            sw.isOn = false
+                            UserDefaults.standard.hasFingerprintSet = false
+                        }
+                    }
+                    
+                    if didEvaluate {
+                        let newFingerprint = NSUUID().uuidString.replacingOccurrences(of: "-", with: "") //strip dashes
+                        self.showLoader()
+                        LoginManager.shared.registerFingerprint(fingerprint: newFingerprint) { (success) in
+                            self.hideLoader()
+                            if success {
+                                let doWhenSucces = { () in
+                                    DispatchQueue.main.async {
+                                        UserDefaults.standard.hasFingerprintSet = true
+                                        sw.isOn = true
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: {
+                                        self.hideLeftView(self)
+                                        self.backPressed(self)
+                                    })
                                 }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.35, execute: {
-                                    self.hideLeftView(self)
-                                    self.backPressed(self)
-                                })
-                            }
-                            
-                            let doWhenCancel = { () in
-                                LogService.shared.info(message: "User cancelled setting fingerprint")
-                                DispatchQueue.main.async {
-                                    sw.isOn = false
-                                    UserDefaults.standard.hasFingerprintSet = false
+                                
+                                let doWhenError = { (addedItemStatus: OSStatus) in
+                                    LogService.shared.warning(message: "Something went wrong setting biometric (\(addedItemStatus))")
+                                    DispatchQueue.main.async {
+                                        sw.isOn = false
+                                        self.present(cannotUseTouchId, animated: true, completion: nil)
+                                    }
                                 }
-                            }
-                            
-                            let doWhenError = { (addedItemStatus: OSStatus) in
-                                LogService.shared.warning(message: "Something went wrong setting biometric (\(addedItemStatus))")
-                                DispatchQueue.main.async {
-                                    sw.isOn = false
-                                    self.present(cannotUseTouchId, animated: true, completion: nil)
-                                }
-                            }
-                            
-                            let flags = SecAccessControlCreateWithFlags(nil, kSecAttrAccessibleWhenUnlocked, SecAccessControlCreateFlags.userPresence, nil)
-                            let dict: [String: Any] = [kSecAttrLabel as String: "Fingerprint",
-                                                       kSecValueData as String: newFingerprint.data(using: String.Encoding.utf8)!,
-                                                       kSecAttrAccessControl as String: flags!,
-                                                       kSecClass as String: kSecClassGenericPassword,
-                                                       kSecAttrAccount as String: UserDefaults.standard.userExt!.guid]
-                            
-                            let addedItemStatus = SecItemAdd(dict as CFDictionary, nil)
-                            switch addedItemStatus {
-                            case errSecSuccess:
-                                LogService.shared.info(message: "Sucessfully saved biometric")
-                                doWhenSucces()
-                            case errSecDuplicateItem:
-                                SecItemDelete(query as CFDictionary)
-                                let status = SecItemAdd(dict as CFDictionary, nil)
-                                switch status {
+                                
+                                let flags = SecAccessControlCreateWithFlags(nil, kSecAttrAccessibleWhenUnlocked, SecAccessControlCreateFlags.userPresence, nil)
+                                let dict: [String: Any] = [kSecAttrLabel as String: "Fingerprint",
+                                                           kSecValueData as String: newFingerprint.data(using: String.Encoding.utf8)!,
+                                                           kSecAttrAccessControl as String: flags!,
+                                                           kSecClass as String: kSecClassGenericPassword,
+                                                           kSecAttrAccount as String: UserDefaults.standard.userExt!.guid]
+                                
+                                let addedItemStatus = SecItemAdd(dict as CFDictionary, nil)
+                                switch addedItemStatus {
                                 case errSecSuccess:
-                                    LogService.shared.info(message: "Sucessfully updated biometric")
+                                    LogService.shared.info(message: "Sucessfully saved biometric")
                                     doWhenSucces()
+                                case errSecDuplicateItem:
+                                    SecItemDelete(query as CFDictionary)
+                                    let status = SecItemAdd(dict as CFDictionary, nil)
+                                    switch status {
+                                    case errSecSuccess:
+                                        LogService.shared.info(message: "Sucessfully updated biometric")
+                                        doWhenSucces()
+                                    case errSecUserCanceled:
+                                        doWhenCancel()
+                                    default:
+                                        doWhenError(addedItemStatus)
+                                    }
                                 case errSecUserCanceled:
                                     doWhenCancel()
                                 default:
                                     doWhenError(addedItemStatus)
                                 }
-                            case errSecUserCanceled:
-                                doWhenCancel()
-                            default:
-                                doWhenError(addedItemStatus)
-                            }
-                        } else {
-                            DispatchQueue.main.async {
-                                self.present(cannotUseTouchId, animated: true, completion: nil)
-                                sw.isOn = false
+                            } else {
+                                DispatchQueue.main.async {
+                                    self.present(cannotUseTouchId, animated: true, completion: nil)
+                                    sw.isOn = false
+                                }
                             }
                         }
+                    } else {
+                        doWhenCancel()
                     }
                 }
             } else {
