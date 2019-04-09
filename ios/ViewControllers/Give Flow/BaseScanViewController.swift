@@ -72,10 +72,8 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
         df.timeZone = TimeZone(abbreviation: "UTC")
         df.locale = Locale(identifier: "en_US_POSIX")
-        let date = df.date(from: transactions.first!.timeStamp)
 
         UserDefaults.standard.lastGivtToOrganisationNamespace = GivtManager.shared.bestBeacon?.namespace
-        
         
         shouldShowMandate { (url) in
             var message = NSLocalizedString("SafariGiving", comment: "")
@@ -110,7 +108,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             parameters["urlPart"] = AppConstants.returnUrlDir
             parameters["currency"] = UserDefaults.standard.currencySymbol
             
-            guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted) else {
+            guard let jsonParameters = try? JSONSerialization.data(withJSONObject: parameters) else {
                 return
             }
             
