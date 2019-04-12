@@ -1,367 +1,30 @@
-
-/*"Bedrag" titel op het geef bedrag scherm*/
-"Amount" = "Hoeveel wil je geven?";
-
-/*"Bepaal je geeflimiet" ; bij registratie van het geeflimiet*/
-"AmountLimit" = "Bepaal hier het maximale bedrag \ndat je per keer wilt kunnen geven.";
-
-/*Algemene "Annuleren" knop*/
-"Cancel" = "Annuleren";
-
-/*"Pincode wijzigen" in op de instellingen pagina*/
-"ChangePincode" = "Toegangscode wijzigen";
-
-/*"Gelukt! Check je inbox." op de pagina na dat je een email terugkrijgt om het wachtwoord te resetten*/
-"CheckInbox" = "Gelukt! Check je mailbox.";
-
-/*"Stad" placeholder bij het invoeren van je stad bij de registratie*/
-"City" = "Woonplaats";
-
-/*Het scannen is mislukt, titel wordt getoond langsboven*/
-"ContactFailed" = "Werkt het niet goed? \nProbeer opnieuw of selecteer \nde ontvanger handmatig.";
-
-/*"Land" placeholder bij de keuze van het land bij registratie*/
-"Country" = "Land";
-
-/*E-mail placeholder*/
-"Email" = "E-mailadres";
-
-/*Foutmelding bij het registreren: algemene melding dat er iets fout ging bij het registreren*/
-"ErrorTextRegister" = "Er gaat iets mis bij de registratie. Probeer het eens met een ander e-mailadres.";
-
-/*Algemene foutmelding (popup) "één van de velden is niet correct ingevuld"*/
-"FieldsNotCorrect" = "Eén van de velden is nog \nniet helemaal correct ingevuld.";
-
-/*"Voornaam" placeholder bij de registratie*/
-"FirstName" = "Voornaam";
-
-/*Wachtwoord vergeten? knop bij de login-pagina*/
-"ForgotPassword" = "Wachtwoord vergeten?";
-
-/*Titeltekst op de vergeet wachtwoord pagina*/
-"ForgotPasswordText" = "Als je hier je e-mailadres invult, dan sturen wij een e-mail waarmee je een nieuw wachtwoord kunt aanmaken.\n\nAls je de e-mail niet meteen vindt, kijk dan even in je spam.";
-
-/*"Geven" op de Geef pagina waar je je bedrag kiest*/
-"Give" = "Geven";
-
-/*"Op afstand geven" knop; wordt getoond op de pagina wanneer het scannen niet lukt*/
-"SelectReceiverButton" = "Ontvanger selecteren";
-
-/*"Geeflimiet" knop bij de instellingen*/
-"GiveLimit" = "Geeflimiet";
-
-/*Titel wanneer geven gelukt is*/
-"GivingSuccess" = "Bedankt voor je Givt!\nKijk voor de status in je overzicht.";
-
-/*"Gegevens" knop bij instellingen*/
-"Information" = "Gegevens";
-
-/*Achternaam placeholder op de registratiepagina*/
-"LastName" = "Achternaam";
-
-/*Laadtekst wanneer je aan het inloggen bent*/
-"LoggingIn" = "Je hoeft nu even niks\nte doen terwijl wij\nje gegevens ophalen.";
-
-/*Inloggen tekst op de inlog knop*/
-"Login" = "Inloggen";
-
-/*Geef pincode op -titel op het login pincode scherm*/
-"LoginPincode" = "Vul je toegangscode in.";
-
-/*Titel op de login-pagina*/
-"LoginText" = "Om toegang tot je account te krijgen, willen we graag zeker weten dat jij het bent.";
-
-/*Uitloggen knop*/
-"LogOut" = "Uitloggen";
-
-/*Titel op de scanpagina */
-"MakeContact" = "Dit is het Givt-moment. \nBeweeg nu je telefoon langs de\ncollectebus, -zak of -mand.";
-
-/*"Volgende" knop*/
-"Next" = "Volgende";
-
-/*"Nee, bedankt" knop*/
-"NoThanks" = "Nee, bedankt";
-
-/*Notificaties menu item bij instellingen*/
-"Notifications" = "Notificaties";
-
-/*Wachtwoord placeholder bij registratie*/
-"Password" = "Wachtwoord";
-
-/*Wachtwoord regel staat onder het wachtwoord veld*/
-"PasswordRule" = "Het wachtwoord moet uit ten minste 7 tekens bestaan, waaronder een hoofdletter en een cijfer.";
-
-/*Telefoonnummer placeholder bij registratie*/
-"PhoneNumber" = "Mobiel nummer";
-
-/*Postcode placeholder*/
-"PostalCode" = "Postcode";
-
-/*"Klaar'-knop bij het succesvol geven*/
-"Ready" = "Klaar";
-
-/*"Registreren"-knop*/
-"Register" = "Registreren";
-
-/*Tekst die je ziet als je bezig bent met registreren*/
-"RegisterBusy" = "We hebben even \neen momentje nodig \nom je registratie te verwerken.";
-
-/*Titel op de registreerpagina*/
-"RegisterPage" = "Maak een account aan zodat je altijd toegang tot je Givt-gegevens hebt.";
-
-/*Titel op de tweede registratiepagina*/
-"RegisterPersonalPage" = "Om je giften te kunnen afhandelen,\nmoeten we nog een paar dingen van je weten.";
-
-/*Titel op de pincodepagina*/
-"RegisterPincode" = "Vul je toegangscode in.";
-
-/*Titel op de registratie-gelukt pagina*/
-"RegistrationSuccess" = "Je registratie is gelukt. \nVeel geefplezier!";
-
-/*Beveiliging menu-item op instellingen*/
-"Security" = "Beveiliging";
-
-/*"Verstuur"-knop tekst*/
-"Send" = "Verstuur";
-
-/*Instellingen (titel)*/
-"Settings" = "Instellingen";
-
-/*Er ging iets verkeerd (algemene error)*/
-"SomethingWentWrong" = "Oeps, er gaat iets mis.";
-
-/*Placeholder voor Straat en huisnummer*/
-"StreetAndHouseNumber" = "Straat en huisnummer";
-
-/*"Nogmaals proberen" knop op de geef mislukt pagina*/
-"TryAgain" = "Opnieuw proberen";
-
-/*Welcome text*/
-/*Titel op de welkomstpagina*/
-"Welcome" = "Welkom bij Givt.";
-
-/*Foutmelding die je te zien krijgt als je een verkeerd email of wachtwoord invoert*/
-"WrongCredentials" = "Dit e-mailadres of wachtwoord komt ons niet bekend voor. Is het mogelijk dat je een ander e-mailadres en/of wachtwoord hebt opgegeven?";
-
-/*"Ja, graag"-knop, te zien als je kiest om touchid te gebruiken of niet*/
-"YesPlease" = "Ja, graag";
 "IBANPlaceHolder" = "IBAN-rekeningnummer";
 
-/*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Activeer Bluetooth om gewoon aan een zender te blijven geven.";
-
-/*Foutmelding als er geen verbinding is met de server door bijv. internet-issues of door server-issues*/
-"ConnectionError" = "Ai! Geen verbinding met de server, maar het komt goed. Drink rustig een kopje thee en controleer voor de zekerheid je instellingen.";
+/*@Tine, vind je 'Ho' kunnen? Of 'Ha' of moet de zin gewoon anders? Sjoerd kan niet leven met 'Hé'*/
 "AmountLimitExceeded" = "Hé gulle gever, dit bedrag is hoger dan je geeflimiet. Pas de limiet aan of verlaag het bedrag.";
 "Belgium" = "België";
+
+/*'You have not yet set a maximum amount'*/
 "ForgotAmountLimit" = "Wacht even, je moet nog \neen geeflimiet instellen.";
 "InsertAmount" = "Weet je al hoeveel je wil geven? \nVoer een bedrag in.";
 "Netherlands" = "Nederland";
 "NotificationTitle" = "Givt";
-
-/*"Bewaar" in het nederlands, als gebruiker vanuit instellingen naar geeflimiet instellen gaat wordt dit een knop met "Bewaar", in de registratieflow blijft deze wel gewoon Volgende / Next*/
-"Save" = "Opslaan";
-
-/*In registratieflow "Mijn persoonsgegevens mogen door Givt worden vastgelegd." => hierbij geeft gebruik toe dat hij givt toelaat z'n data op te slaan*/
-"AcceptPolicy" = "Prima, mijn gegevens mogen \ndoor Givt worden vastgelegd.";
-
-/*Close-tekst op knop: registratieflow -> algemene voorwaarden knop rechtsboven "Sluiten"*/
-"Close" = "Sluiten";
-
-/*In registratieflow bij algemene voorwaarden, knop linksboven "Verstuur via e-mail"*/
-"SendViaEmail" = "Verstuur via e-mail";
-
-/*De titel op de pagina met algemene voorwaarden*/
-"TermsTitle" = "Onze algemene voorwaarden";
-
-/*"Een korte samenvatting van de algemene voorwaarden:"*/
-"ShortSummaryTitleTerms" = "Hier gaat het om:";
-
-/*"De uitgebreide versie van de voorwaarden:" zie sketch registratieflow -> algemene voorwaarden*/
-"FullVersionTitleTerms" = "Algemene Voorwaarden";
-
-/*De algemene voorwaarden zelf (lange tekst, zie sketch)*/
-"TermsText" = "Gebruiksvoorwaarden – Givt-app\nLaatst bijgewerkt: 27-02-2018\nVersie: 1.7\n\n1.\tAlgemeen\nDeze gebruiksvoorwaarden beschrijven de voorwaarden waaronder gebruik kan worden gemaakt van de mobiele applicatie Givt (“Givt”). Givt stelt de Gebruiker in staat om (anoniem) donaties te geven via zijn/haar smartphone aan bijvoorbeeld kerken, fondsen of stichtingen die zijn aangesloten bij Givt.  Givt wordt beheerd door Givt B.V., een besloten vennootschap, gevestigd te Lelystad (8243 PR), aan de Noordersluisweg 27, ingeschreven in het handelsregister van de Kamer van Koophandel onder nummer 64534421 (“Givt B.V.”). Deze gebruiksvoorwaarden zijn van toepassing op het gebruik van Givt. Door het gebruik van Givt (waaronder mede wordt verstaan het downloaden en de installatie daarvan), aanvaard jij als gebruiker (“Gebruiker”) deze gebruiksvoorwaarden en onze privacyverklaring (www.givtapp.net/privacyverklaringgivt). Deze gebruiksvoorwaarden en onze privacyverklaring zijn tevens te raadplegen, downloaden en printen op onze website. Wij kunnen deze gebruiksvoorwaarden van tijd tot tijd aanpassen. \n\n2.\tLicentie en intellectuele eigendomsrechten\n2.1\tAlle rechten op Givt, de bijbehorende documentatie en alle wijzigingen en uitbreidingen hierop en de handhaving hiervan liggen en blijven bij Givt B.V. De Gebruiker verkrijgt uitsluitend de gebruiksrechten en bevoegdheden die voortvloeien uit de strekking van deze voorwaarden en voor het overige mag u Givt niet gebruiken, verveelvoudigen of openbaar maken.\n2.2\tGivt B.V. verleent aan de Gebruiker een niet-exclusieve, niet-sublicentieerbare en niet-overdraagbare licentie voor het gebruik van Givt. Het is de Gebruiker niet toegestaan om Givt te gebruiken voor commerciële doeleinden. \n2.3\tDe Gebruiker mag Givt niet aan derden ter beschikking stellen, verkopen, verhuren, decompileren, onderwerpen aan reverse engineering of aanpassen zonder voorafgaande toestemming van Givt B.V. Evenmin mag de Gebruiker de technische voorzieningen die bedoeld zijn om Givt te beschermen (laten) verwijderen of (laten) omzeilen. \n2.4\tGivt B.V. heeft te allen tijde het recht om Givt aan te passen, gegevens te wijzigen of verwijderen, de Gebruiker het gebruik van Givt te ontzeggen door de licentie te beëindigen, het gebruik van Givt te beperken of de toegang tot Givt geheel of gedeeltelijk, tijdelijk of blijvend te ontzeggen. Givt B.V. zal de Gebruiker hierover op een haar passende wijze informeren. \n2.5\tDe Gebruiker verwerft geen enkel(e) recht, titel of belang in of op de intellectuele eigendomsrechten en/of vergelijkbare rechten op (de inhoud van) Givt, waaronder de onderliggende software en content.\n\n3.\tGebruik van Givt\n3.1\tDe Gebruiker kan alleen donaties geven aan kerken, stichtingen, fondsen en/of andere rechtspersonen die zijn aangesloten bij Givt, een relatie zijn aangegaan met Givt B.V. en een ANBI-status hebben of om welke reden dan ook onder aftrekbare giften kan worden gerekend door de lokale belastingautoriteiten. De donaties worden anoniem gedaan. \n3.2\tHet gebruik van Givt is voor eigen rekening en risico en dient te worden gebruikt in overeenstemming met de doeleinden waarvoor zij bestemd is. Het is niet toegestaan de broncode van Givt te reverse engineeren of Givt te decompileren en/of te wijzigen, Givt beschikbaar te stellen aan derden of enige aanduidingen van Givt B.V. als rechthebbende op Givt of delen daarvan te verwijderen of onleesbaar te maken.\n3.3\tDe Gebruiker is verantwoordelijk voor de juiste verstrekking van gegevens zoals NAW-gegevens, bankrekeningnummer en andere gegevens zoals gevraagd door Givt B.V. om het gebruik van Givt te waarborgen. \n3.4\tIndien de Gebruiker jonger is dan 18 jaar dient hij/zij voor het gebruik van Givt de toestemming van zijn/haar ouder of wettelijke vertegenwoordiger te hebben. Door deze gebruiksvoorwaarden te accepteren, garandeert de Gebruiker dat hij/zij 18 jaar of ouder is of toestemming heeft van zijn/haar ouders of wettelijke vertegenwoordiger. \n3.5\tGivt is beschikbaar voor de besturingssystemen Android en iOS. Naast de hieronder opgenomen bepalingen kan Apple’s App Store of Google Play voorwaarden stellen aan het verkrijgen van Givt, het gebruiken daarvan en aanverwante zaken. Raadpleeg hiervoor de gebruiksvoorwaarden en privacyverklaring van Apple’s App Store en Google Play en eventueel van toepassing zijnde voorwaarden op de website van de betreffende aanbieder. Deze gebruikersvoorwaarden zijn van toepassing op de overeenkomst tussen de Gebruiker en Givt B.V. en gelden niet tussen de Gebruiker en de aanbieder van het platform via welke u Givt heeft verkregen. Deze aanbieders kunnen de Gebruiker echter wel aanspreken op overtreding van bepalingen in deze gebruikersvoorwaarden. \n3.6\tNadat de Gebruiker Givt heeft gedownload, dient de Gebruiker zich te registreren. Daarbij moet de Gebruiker de volgende informatie verstrekken: (i) NAW-gegevens, (ii) telefoonnummer, (iii) bankrekeningnummer en (iv) e-mailadres. Op de verwerking van persoonsgegevens via Givt is de privacyverklaring van Givt B.V. van toepassing. Bij eventuele wijzigingen van gegevens dient de Gebruiker onmiddellijk dit aan te passen via Givt.\n3.7 De Gebruiker kan na het downloaden van Givt er ook voor kiezen om alleen een e-mailadres op te geven en daarna gelijk de app te gebruiken om te doneren. Na de donatie zal een voltooiing van de registratie worden gevraagd. Indien de Gebruiker dit later wenst te doen, verbindt Givt B.V. zich ertoe het e-mailadres van de Gebruiker enkel en alleen te gebruiken om de Gebruiker aan de nog te voltooien registratieprocedure te herinneren.  \n3.8\tOm van Givt gebruik te kunnen maken, dient de Gebruiker zelf op eigen kosten zorg te dragen voor de daarvoor noodzakelijke apparatuur, systeemprogrammatuur en (internet)verbinding. \n3.9\tGivt B.V. levert de gerelateerde diensten op basis van de informatie die de Gebruiker verstrekt. De Gebruiker is verplicht correcte en volledige informatie te verstrekken, die niet vals of misleidend is. De Gebruiker mag geen gegevens verstrekken met betrekking tot namen of bankrekeningen waarvoor de Gebruiker niet bevoegd is om deze te gebruiken. Givt B.V. en de Processor hebben het recht informatie die de Gebruiker heeft verstrekt, te valideren en te verifiëren.  \n3.10\tDe Gebruiker kan het gebruik van Givt op ieder gewenst moment beëindigen, door zijn Givt account te verwijderen via het menu in de app, of via mail aan support@givtapp.net . Givt  B.V. kan de relatie met de Gebruiker beëindigen indien de Gebruiker deze voorwaarden niet naleeft of indien Givt voor 18 achtereenvolgende maanden niet wordt gebruikt. Op verzoek stuurt Givt B.V. een overzicht van alle donatiegegevens. \n3.11\tGivt B.V. brengt geen vergoeding in rekening voor het gebruik van Givt. \n3.12\tGivt B.V. heeft het recht de aangeboden functionaliteiten van tijd tot tijd aan te passen om deze te verbeteren of te wijzigen en om fouten te herstellen. Givt B.V. zal zich inspannen om eventuele fouten in de Givt-software op te lossen, maar kan niet garanderen dat alle fouten, al dan niet tijdig, worden hersteld.\n\n4.\tVerwerking transacties\n4.1\tGivt B.V. is geen bank/financiële instelling en verleent geen bancaire of betalingsverwerkende diensten. Om de donaties van de Gebruiker te verwerken, heeft Givt B.V. daarom een overeenkomst gesloten met een betaaldienstverlener genaamd SlimPay, een financiële instelling (de “Processor”), waarin is afgesproken dat Givt B.V. de transactiegegevens naar de Processor verstuurt, om donaties te initiëren en af te handelen. Givt B.V. zal, na de collectie van de donaties, zorgdragen voor de afdracht van de donaties aan de door de Gebruiker aangestelde begunstigde(n). De transactiedata zullen door Givt worden verwerkt en doorgestuurd naar de Processor. De Processor zal de betalingstransacties initiëren en Givt B.V. is verantwoordelijk om de relevante bedragen over te maken naar een bankrekening van de kerk/stichting zoals door de Gebruiker aangewezen als begunstigde van de donatie.\n4.2\tDe Gebruiker gaat ermee akkoord dat Givt B.V. de Gebruikers (transactie- en bank-)gegevens mag doorgeven aan de Processor, samen met alle andere noodzakelijke account- en persoonlijke informatie van de Gebruiker, om de Processor in staat te stellen de betalingstransacties te kunnen initiëren en verwerken. Givt B.V. behoudt zich het recht voor om op elk moment van Processor te veranderen. De Gebruiker gaat ermee akkoord dat Givt B.V. relevante informatie over de Gebruiker en de gegevens zoals omschreven in artikel 4.2 mag doorsturen naar de nieuwe Processor om betalingstransacties te kunnen blijven verwerken. \n4.3\tGivt B.V. en de Processor zullen de gegevens van de Gebruiker verwerken in overeenstemming met de wet­ en regelgeving die geldt voor gegevensbescherming. Voor verdere informatie over hoe persoonsgegevens worden verzameld, verwerkt en gebruikt, verwijst Givt B.V. de Gebruiker naar haar privacybeleid. Deze kan online (www.givtapp.net/privacyverklaringgivt) teruggevonden worden.\n4.4\tDe donaties van de Gebruiker verlopen via Givt B.V. als intermediair. Vervolgens zal Givt B.V. ervoor zorgdragen dat de gelden worden overgemaakt naar de begunstigde(n), met wie Givt B.V. een overeenkomst heeft afgesloten. \n4.5\tOm een donatie via Givt uit te voeren, dient de Gebruiker een betaling te initiëren (via iDEAL) of een machtiging af te geven aan Givt B.V. en/of de Processor (voor een automatische SEPA incasso). De Gebruiker kan te allen tijde – binnen de termijnen zoals gehanteerd door de Gebruikers bank – een automatische incasso terugdraaien. \n4.6\tEen donatie kan door Givt B.V. en/of de Processor worden geweigerd als er redelijke gronden zijn om aan te nemen dat een Gebruiker in strijd met deze voorwaarden handelt of als er redelijke gronden zijn om aan te nemen dat een donatie mogelijk verdacht of illegaal is. Givt B.V. stelt de Gebruiker hiervan zo spoedig mogelijk op de hoogte, tenzij dit wettelijk is verboden. \n4.7\tVoor donaties via Givt gelden de volgende limieten: 1000 EUR per donatie en 25000 EUR per kalenderjaar.\n4.8\tDe Gebruiker gaat ermee akkoord dat Givt B.V. de Gebruikers (transactie-)gegevens mag doorgeven aan de lokale belastingautoriteiten, samen met alle andere noodzakelijke account- en persoonlijke informatie van de Gebruiker, om de Gebruiker te assisteren met zijn/haar jaarlijkse belastingaangifte.   \n\n5.\tBeveiliging, diefstal en verlies\n5.1\tDe Gebruiker dient alle redelijke voorzorgsmaatregelen te nemen om zijn/haar inloggegevens tot Givt veilig te bewaren om verlies, diefstal, verduistering of ongeautoriseerd gebruik van Givt of zijn/haar smartphone te vermijden.\n5.2\tDe Gebruiker is verantwoordelijk voor de beveiliging van zijn/haar smartphone. Givt B.V. beschouwt elke donatie vanuit de Givt-account van de Gebruiker als een door de Gebruiker goedgekeurde transactie, ongeacht de rechten die de Gebruiker toekomen onder artikel 4.5.\n5.3\tDe Gebruiker dient Givt B.V. onmiddellijk op de hoogte te brengen via support@givtapp.net of +31 320 320 115, zodra zijn/haar smartphone is verloren of gestolen. Bij ontvangst van een melding blokkeert Givt B.V. het account om (verder) misbruik te voorkomen. \n\n6.\tUpdates\n6.1\tGivt B.V. brengt van tijd tot tijd updates uit ter verbetering van de gebruikerservaring, die fouten kunnen herstellen of het functioneren van Givt verbeteren. Beschikbare updates voor Givt zullen kenbaar worden gemaakt via notificatie langs Apple’s App Store en Google Play, waarbij het uitsluitend de verantwoordelijkheid van de Gebruiker is deze notificaties bij te houden.\n6.2\tEen update kan voorwaarden stellen die afwijken van het in deze voorwaarden bepaalde. Dit wordt aan de Gebruiker altijd vooraf gemeld en de Gebruiker heeft dan gelegenheid de update te weigeren. Door installatie van een dergelijke update gaat de Gebruiker akkoord met deze afwijkende voorwaarden, welke dan deel uit zullen maken van deze gebruikersvoorwaarden. Indien de Gebruiker niet akkoord gaat met de gewijzigde voorwaarden, dient hij/zij het gebruik van Givt te staken en Givt te verwijderen van zijn/haar mobiele telefoon en/of tablet.\n\n7.\tAansprakelijkheid\n7.1\tGivt is met de grootste zorg samengesteld. Hoewel Givt B.V. ernaar streeft Givt 24 uur per dag beschikbaar te maken, aanvaardt zij geen aansprakelijkheid indien, om welke reden dan ook, Givt niet beschikbaar is op een bepaald moment of voor een bepaalde periode. Givt B.V. houdt zich het recht voor Givt (onaangekondigd) tijdelijk of permanent te staken, zonder dat de Gebruiker daar enige rechten uit kan ontlenen.\n7.2\tGivt B.V. is niet aansprakelijk voor schade of letsel welke voortvloeit uit het gebruik van Givt. De beperkingen van aansprakelijkheid zoals genoemd in dit artikel komen te vervallen indien de aansprakelijkheid voor schade het gevolg is van opzet of grove schuld aan de zijde van Givt B.V.\n7.3\tDe Gebruiker vrijwaart Givt B.V. voor alle mogelijke aanspraken van derden (bijvoorbeeld begunstigden van de donaties of de belastingdienst) als gevolg van het gebruik van Givt of het niet of op niet correcte wijze nakomen van wettelijke of contractuele verplichtingen jegens Givt B.V. De Gebruiker zal Givt B.V. alle schade en kosten vergoeden die Givt B.V. als gevolg van dergelijke aanspraken lijdt.\n\n8.\tOverige Bepalingen\n8.1\tDeze gebruikersvoorwaarden treden in werking bij ingebruikname van Givt en blijven dan voor onbepaalde tijd van kracht. De overeenkomst mag door zowel de Gebruiker als Givt B.V. op ieder moment worden opgezegd met een opzegtermijn van een maand. Deze overeenkomst eindigt van rechtswege indien de Gebruiker: (i) in staat van faillissement wordt verklaard, (ii) surséance van betaling aanvraagt of er algeheel beslag op Gebruikers vermogen wordt gelegd, (iii) de Gebruiker overlijdt, (iv) in liquidatie treedt, opgeheven wordt of wordt ontbonden. Na beëindiging van de overeenkomst (om welke reden dan ook) dient de Gebruiker ieder gebruik van Givt te staken en gestaakt te houden. De Gebruiker dient dan alle kopieën (inclusief reservekopieën) van Givt te verwijderen van al zijn/haar systemen.\n8.2\tIndien enige bepaling van deze voorwaarden nietig is of vernietigd wordt, tast dit niet de geldigheid van de gehele overeenkomst aan en zullen overige bepalingen van deze voorwaarden van kracht blijven. Partijen zullen in dat geval ter vervanging (een) nieuwe bepaling(en) vaststellen, waarmee zoveel als rechtens mogelijk is aan de bedoeling van de oorspronkelijke overeenkomst gestalte wordt gegeven.\n8.3\tHet is de Gebruiker niet toegestaan rechten en/of verplichtingen voortvloeiende uit het gebruik van Givt en deze voorwaarden over te dragen aan derden zonder voorafgaande schriftelijke toestemming van Givt B.V. Omgekeerd is dit Givt B.V. wel toegestaan. \n8.4\tEventuele geschillen die voortvloeien uit of in verband met deze voorwaarden worden definitief beslecht door de rechtbank van Lelystad. Voordat het geschil naar de rechter zal worden verwezen, zullen U en Wij ons inspannen om het geschil in der minne op te lossen.\n8.5\tOp deze Gebruiksvoorwaarden is Nederlands recht van toepassing.\n8.6\tDe Gebruiksvoorwaarden doen geen afbreuk aan de Gebruikers dwingendrechtelijke rechten als consument.\n8.7\tGivt B.V. beschikt over een interne klachtenprocedure. Givt B.V. behandelt klachten efficiënt en zo spoedig als redelijkerwijs mogelijk is. Als de Gebruiker een klacht heeft over de tenuitvoerlegging van deze voorwaarden door Givt B.V., moet de Gebruiker deze schriftelijk indienen bij Givt B.V. (via support@givtapp.net).";
-
-/*Opsomming van de algemene voorwaarden in het kort*/
-"ShortTermsText" = "Binnenkort komt hier een samenvatting \nvan de Algemene Voorwaarden.";
-
-/*"Je mobiel voorbereiden" titel op het scherm voor de toestemming van bluetooth e.d.*/
-"PrepareMobileTitle" = "Eerst even dit";
-
-/*Tekst onder de titel "Om Givt zo te kunnen gebruiken..." - met uitleg waarom we gegevens nodig hebben*/
-"PrepareMobileExplained" = "Voor een optimaal gebruik van Givt vragen we je toestemming om notificaties te versturen.";
-
-/*De laatste zin op het toestemmingscherm "Zo weet je waar en wanneer je kunt geven" => sketch*/
-"PrepareMobileSummary" = "Zo weet je waar en wanneer \nje kunt geven.";
-
-/*De tekst van de privacy policy waar de gebruiker akkoord mee moet gaan.*/
-"PolicyText" = "Laatst bijgewerkt: 19-10-2018\n\nVersie: 1.8\n\nPrivacyverklaring Givt B.V.\n\nVia de dienst Givt - bestaande uit zowel een app als een online platform - worden privacygevoelige gegevens oftewel persoonsgegevens verwerkt. Givt B.V. acht een zorgvuldige omgang met persoonsgegevens van groot belang. Persoonlijke gegevens worden door ons dan ook zorgvuldig verwerkt en beveiligd. \n\nBij onze verwerking houden wij ons aan de eisen die de Algemene Verordening Gegevensbescherming (EU 2016/679, ook wel gekend als AVG) stelt. Dat betekent onder andere dat wij:\n-\tduidelijk vermelden met welke doeleinden wij persoonsgegevens verwerken. Dat doen wij via deze privacyverklaring;\n-\tonze verzameling van persoonsgegevens beperken tot alleen de persoonsgegevens die nodig zijn voor legitieme doeleinden;\n-\tu eerst vragen om uitdrukkelijke toestemming om uw persoonsgegevens te verwerken in gevallen waarin uw toestemming is vereist;\n-\tpassende beveiligingsmaatregelen nemen om uw persoonsgegevens te beschermen en dat ook eisen van partijen die in onze opdracht persoonsgegevens verwerken;\n-\tuw recht respecteren om uw persoonsgegevens op uw aanvraag ter inzage te bieden, te corrigeren of te verwijderen.\n\nGivt B.V. is de verantwoordelijke voor de gegevensverwerking. Onze verwerking is aangemeld bij het College Bescherming Persoonsgegevens onder het nummer M1640707. In deze privacyverklaring leggen wij uit welke persoonsgegevens wij verzamelen en gebruiken en met welk doel. Wij raden u aan deze zorgvuldig te lezen.\n\nDeze privacyverklaring is voor het laatst aangepast op 19-10-2018.\n\nGebruik van persoonsgegevens\nDoor het gebruiken van onze dienst laat u bepaalde gegevens bij ons achter. Dat kunnen persoonsgegevens zijn. Wij bewaren en gebruiken uitsluitend de persoonsgegevens die rechtstreeks door u worden opgegeven, in het kader van de door u gevraagde dienst, of waarvan bij opgave duidelijk is dat ze aan ons worden verstrekt om te verwerken. \nWij gebruiken de volgende gegevens voor de in deze privacyverklaring genoemde doelen:\n- NAW gegevens \n- Telefoonnummer \n- E-mailadres \n- Betalingsgegevens \n\nRegistreren\nBij bepaalde onderdelen van onze dienst moet u zich eerst registreren. Na registratie bewaren wij via de door u gekozen gebruikersnaam de door u opgegeven persoonsgegevens. Wij bewaren deze gegevens zodat u deze niet elke keer opnieuw hoeft in te vullen, zodat wij u kunnen contacteren in het kader van uitvoering van de overeenkomst en om een overzicht te geven van het gebruik van onze diensten. \nWij zullen de aan uw gebruikersnaam gekoppelde gegevens niet aan derden verstrekken, tenzij dat noodzakelijk is in het kader van de uitvoering van de overeenkomst die u met ons sluit of indien dit wettelijk verplicht is. In geval van een vermoeden van fraude of misbruik van onze online dienst-infrastructuur kunnen wij persoonsgegevens aan de bevoegde autoriteiten overhandigen.\n\nReclame\nWij kunnen u, naast de informatie via onze online dienst-infrastructuur, op de hoogte brengen van onze nieuwe producten en diensten:\n- per e-mail\n\nContactformulier en nieuwsbrief\nWij bieden een nieuwsbrief waarmee wij geïnteresseerden willen informeren over onze producten en/of diensten. Iedere nieuwsbrief bevat een link waarmee u zich kunt afmelden. Uw e-mailadres wordt automatisch toegevoegd aan de lijst van abonnees. \nAls u een contactformulier op de website invult, of ons een e-mail stuurt, dan worden de gegevens die u ons toestuurt bewaard zolang als naar de aard van het formulier of de inhoud van uw e-mail nodig is voor de volledige beantwoording en afhandeling daarvan.\n\nPublicatie\nWij publiceren uw klantgegevens niet.\n\nVerstrekking aan derden\nWij kunnen uw gegevens doorgeven aan onze partners. Deze partners zijn betrokken bij de uitvoering van de overeenkomst. Dit zijn in alle gevallen partners die nodig zijn om de diensten te kunnen bieden. Dit betreft niet de collecterende instanties, aangezien wij de anonimiteit van u als gebruiker in hun richting waarborgen. \n\nU gaat ermee akkoord dat de transactiegegevens kunnen worden geanonimiseerd en kunnen worden gebruikt voor data verzameling, statistiek overzichten en vergelijkingen. Alleen de totalen zullen worden gedeeld met andere klanten en wij dragen ervoor zorg dat geen van jouw gegevens herleidbaar tot individuen zal zijn. \n\nOok zullen we gegevens nooit verkopen aan derden en alleen maar inzetten om het voor de donateur makkelijker te maken om te geven en op een manier betrokken te zijn bij de goede doelen zoals zij dat wensen.\n\nBeveiliging\nWij nemen beveiligingsmaatregelen om misbruik van en ongeautoriseerde toegang tot persoonsgegevens te beperken. In het bijzonder nemen wij de volgende maatregelen: \n- Toegang tot persoonsgegevens wordt afgeschermd met een gebruikersnaam en wachtwoord\n- Toegang tot persoonsgegevens wordt afgeschermd met een gebruikersnaam en een login token\n- Wij maken gebruik van beveiligde verbindingen (TLS/SSL of Transport Layer Security/Secure Sockets Layer) waarmee alle informatie tussen u en onze online dienst-infrastructuur wordt afgeschermd wanneer u persoonsgegevens invoert\n- Wij houden logs bij van alle opvragingen van persoonsgegevens\n\nGebruik van locatiegegevens\nIn de app kan er worden gebruik gemaakt van de locatiegegevens die het besturingssysteem van de betreffende smartphone voorziet. Met deze gegevens kan de app bepalen waar de gebruiker is. Deze locatiegegevens worden niet verstuurd naar ergens buiten de smartphone en enkel gebruikt om te bepalen of de gebruiker op een locatie is waar Givt kan worden gebruikt om te geven. De locaties waar Givt kan worden gebruikt, worden vooraf gedownload naar de smartphone.\n\nDiagnostische informatie van de app\nDe app verstuurt geanonimiseerde informatie over de werking. Deze informatie bevat niet-persoonsgebonden gegevens van uw smartphone zoals het type en het besturingssysteem, maar ook de versie van de app. Deze gegevens worden uitsluitend gebruikt om de service van Givt te kunnen verbeteren of om uw vragen sneller te kunnen beantwoorden. Deze informatie wordt nooit verstrekt aan derden.\n\nWijzigingen in deze privacyverklaring\nWij behouden ons het recht voor om wijzigingen aan te brengen in deze privacyverklaring. Het verdient aanbeveling om deze privacyverklaring geregeld te raadplegen, zodat u van deze wijzigingen op de hoogte bent.\n\nInzage en wijzigen van uw gegevens\nVoor vragen over ons privacybeleid of vragen omtrent inzage en wijzigingen in (of verwijdering van) uw persoonsgegevens kunt u te allen tijde contact met ons opnemen via onderstaande gegevens:\n\nGivt B.V.\nNoordersluisweg 27\n8243 PR LELYSTAD\n0031 320 320 115\nKVKnr: 64534421";
-
-/*"Hulp nodig?" op de hulppagina (titel) */
-"NeedHelpTitle" = "Hulp nodig?";
-
-/*"Vind hier antwoorden op je vragen en handige tips" : ondertitel op de helppagina*/
-"FindAnswersToYourQuestions" = "Vind hier antwoorden op je vragen \nen handige tips";
-
-/*Vraag op de helppagina: "Hoe werkt het registreren?"*/
-"QuestionHowDoesRegisteringWorks" = "Hoe werkt het registreren?";
-
-/*Vraag op de helppagina "Waarom worden mijn persoonsgegevens vastgelegd?"*/
-"QuestionWhyAreMyDataStored" = "Waarom worden mijn \npersoonsgegevens vastgelegd?";
 "SelectReceiverTitle" = "Ontvanger selecteren";
-
-/*Wat is Givt?*/
-"FAQvraag1" = "Wat is Givt eigenlijk?";
-
-/*Hoe werkt Givt?*/
-"FAQvraag2" = "Hoe werkt Givt?";
-
-/*Hoe wijzig ik mijn instellingen of gegevens?*/
-"FAQvraag3" = "Hoe wijzig ik mijn instellingen \nof gegevens?";
-
-/*Waar kan ik Givt gebruiken?*/
-"FAQvraag4" = "Waar kan ik gebruik maken van Givt?";
-
-/*Hoe wordt mijn Givt afgeschreven?*/
-"FAQvraag5" = "Hoe wordt mijn gift afgeschreven?";
-
-/*Wat kan ik nog meer met Givt?*/
-"FAQvraag6" = "Wat kan ik allemaal met Givt?";
-
-/*Hoe veilig is geven met Givt?*/
-"FAQvraag7" = "Hoe veilig is geven met Givt?";
-
-/*Hoe kan ik mij afmelden voor Givt?*/
-"FAQvraag8" = "Hoe kan ik mij afmelden voor Givt?";
-
-/*Antwoord op FAQ vraag1*/
-"FAQantwoord1" = "Meedoen met je smartphone\nGivt is dé oplossing voor het meedoen aan de collecte zonder contant geld. Iedereen heeft een smartphone, met de Givt-app gebruik je deze tijdens de collecte om eenvoudig deel te kunnen nemen. Givt is een service waarmee je zonder contant geld kan geven.\n\nPersoonlijk en bewust\nHet geven van geld is niet zomaar een financiële transactie, het is vaak een persoonlijk en bewust moment. Vandaar dat wij de Givt-app zo ontwikkelen dat het net zo natuurlijk aanvoelt als het geven van contant geld. \n\nWaarom 'Givt'?\nDe naam Givt is gekozen omdat het zowel om ‘giving’ gaat, alsook om de ‘gift’ op zich. We zochten naar een moderne en compacte naam, die vriendelijk en speels oogt. Als je goed naar het logo kijkt, zie je dat het groene balkje met de letter 'v' samen een collectezak vormen, wat een idee geeft van de functie van de app. \n\nNederland en België\nAchter Givt zit een team van specialisten, verdeeld over Nederland en België, die allemaal actief bezig zijn met de ontwikkeling en verbetering van Givt. Lees er meer over op onze website www.givtapp.net.";
-
-/*Antwoord op FAQ vraag2*/
-"FAQantwoord2" = "De eerste stap\nJe hebt de app al geïnstalleerd, dat is de eerste stap. Wanneer je Givt gaat gebruiken is het belangrijk dat je verbinding met internet hebt en dat Bluetooth ingeschakeld is. \n\nNet zo makkelijk\nRegistreer jezelf als gebruiker door je gegevens in te vullen. Vervolgens werkt het net zo gemakkelijk als het geven van contant geld. Open de app, selecteer het bedrag dat je wilt geven en scan een QR-code, beweeg je telefoon langs een collectemiddel of selecteer een doel uit een lijst. Het gekozen bedrag wordt opgeslagen, van je bankrekening afgeschreven en aan de collecterende organisatie overgemaakt. \n\nGeen verbinding?\nWanneer je op het moment van geven geen internetverbinding hebt, wordt de opdracht op een later moment bij het heropenen van de app verstuurd. Bijvoorbeeld als je thuis bent en weer gebruik maakt van WiFi.";
-
-/*Antwoord op FAQ vraag3*/
-"FAQantwoord3" = "Je kunt je app-menu bereiken door links bovenin het bedragscherm op het menu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. In je menu kun je het overzicht van je giften inzien, je geeflimiet aanpassen, je persoonlijke gegevens wijzigen, je voorkeursbedragen aanpassen, een toegangscode instellen of je account opzeggen.";
-
-/*Antwoord op FAQ vraag4*/
-"FAQantwoord4" = "Steeds meer organisaties\nJe kunt Givt gebruiken bij alle organisaties die bij ons zijn aangesloten. Er komen wekelijks meer organisaties bij, check onze website www.givtapp.net/waar om het meest recente overzicht te bekijken. \n\nNog niet aangesloten?\nWanneer je als kerk of organisatie nog niet bent aangesloten bij Givt, maar er wel gebruik van wilt maken, neem dan contact met ons op via +31 320 320 115 of info@givtapp.net.";
-
-/*Antwoord op FAQ vraag5*/
-"FAQantwoord5" = "SlimPay\nBij het installeren van Givt machtig je als gebruiker tot het incasseren van alle giften die je in de app doet. De transacties worden afgehandeld door SlimPay; een bank die gespecialiseerd is in de behandeling van machtigingen. \n\nAchteraf te herroepen\nEr vinden geen afschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen.";
-
-/*Antwoord op FAQ vraag6*/
-"FAQantwoord6" = "Blijven ontwikkelen\nGivt staat niet stil, maar blijft zich ontwikkelen. Op dit moment kun je tijdens de collectes gemakkelijk geven met je smartphone, maar daar houdt het niet op. Ben je benieuwd waar we nu mee bezig zijn? Neem een kijkje op www.givtapp.net/ontwikkelingen.\n\nBelastingaangifte\nAan het einde van het jaar kan je een overzicht van je giften opvragen, wel zo gemakkelijk voor de belastingaangifte. In dit overzicht staan alleen de giften die je hebt gedaan aan een algemeen nut beogende instelling (ANBI), een culturele ANBI of aan een sociaal belang behartigende instelling (SBBI). Uiteindelijk streven we ernaar dat alle giften automatisch worden ingevuld bij de belastingaangifte.";
-
-/*Antwoord op FAQ vraag7*/
-"FAQantwoord7" = "Veilig en risicoloos\nWe vinden het erg belangrijk dat alles veilig en risicoloos verloopt. Elke gebruiker heeft daarom een persoonlijk account met een eigen wachtwoord. Om je instellingen en gegevens in te zien of te wijzigen, moet je ingelogd zijn.\n\nAfhandeling transacties\nDe transacties worden afgehandeld door SlimPay; een bank gespecialiseerd in de behandeling van machtigingen. SlimPay staat onder toezicht van meerdere nationale banken in Europa, waaronder De Nederlandsche Bank (DNB).\n\nOngevoelig voor fraude\nBij het installeren van Givt machtig je als gebruiker tot het incasseren van de donaties die je in de app doet. Het is goed om te benadrukken dat er geen transacties plaatsvinden tijdens het geven met Givt. De transacties vinden achteraf plaats middels een automatische incasso. Aangezien deze achteraf te herroepen zijn, is het volledig veilig en ongevoelig voor fraude.\n\nOverzicht\nOrganisaties kunnen inloggen op het Givt-dashboard. Dit geeft een overzicht van alle financiële transacties samen, vanaf het moment van geven tot aan de volledige verwerking van de betaling. Zo is elke collecte van begin tot eind te volgen. Organisaties kunnen zien hoeveel mensen gebruik hebben gemaakt van Givt maar natuurlijk niet wie dat zijn.";
-
-/*Antwoord op FAQ vraag8*/
-"FAQantwoord8" = "Als je geen gebruik meer wilt maken van Givt, heb je de mogelijkheid om je uit te schrijven in de app. Ga naar je instellingen door links bovenin het bedragscherm op het menu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies ‘Account opzeggen’, vink de checkbox af en druk op ‘Mijn account opzeggen’. Nu is je account bij Givt opgezegd en verwijderd. Mocht je Givt in de toekomst weer willen gebruiken, dan zul je een nieuw account moeten maken.";
 
 /*Alleen wanneer je zelf een bedrag geeft 
 met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om te checken of de tekst er dan beter uit ziet op het scherm.*/
 "SlimPayInformation" = "Om te kunnen geven met Givt moet je een machtiging (SlimPay eMandate) afgeven.";
 "SavingSettings" = "Je hoeft nu even niks\nte doen terwijl wij\nje gegevens opslaan.";
-
-/*Titel op het scherm van de privacyverklaring*/
-"PrivacyTitle" = "Privacyverklaring";
-
-/*Tekst op het einde van de registratie "Bij het doorgaan ga je akkoord met de algemene voorwaarden."*/
-"AcceptTerms" = "Bij het doorgaan ga je akkoord met de algemene voorwaarden.";
-
-/*Tekst verschijnt wanneer het ondertekenen van de machtiging niet is gelukt*/
-"MandateSigingFailed" = "Het tekenen van de machtiging is helaas niet gelukt. Probeer later opnieuw vanuit het menu. Blijft deze melding opduiken? Contacteer dan support@givtapp.net.";
-
-/*Tekst verschijnt in een loading-animatie wanneer de status van de machtiging wordt opgevraagd.*/
-"AwaitingMandateStatus" = "We hebben héél even nodig \nom je machtiging te verwerken.";
-
-/*Treedt op wanneer het niet mogelijk blijkt te zijn om een machtigings-ondertekening te starten (SlimPay niet te bereiken)*/
-"RequestMandateFailed" = "Het is op dit moment niet mogelijk om een machtiging aan te vragen. Probeer je het later even opnieuw?";
 "Continue" = "Doorgaan";
-
-/*"Hoe werkt geven?" vraag in FAQ*/
-"FAQHowDoesGivingWork" = "Hoe kan ik geven?";
-
-/*"Hoe werkt handmatig geven?"*/
-"FAQHowDoesManualGivingWork" = "Hoe werkt handmatig geven?";
-
-/*Sorry, maar we nemen pas genoegen met minstens 0,50 euro.*/
-"GivtNotEnough" = "Helaas, we kunnen alleen bedragen boven {0} verwerken.";
 "GivtMinimumAmountEuro" = "0,50 euro";
-
-/*SlimPay informatie onder het Givy icoon*/
-"SlimPayInformationPart2" = "Er wordt alleen geïncasseerd, wanneer je zelf een bedrag geeft met Givt.\n\nOmdat we met een machtiging werken, is het eventueel mogelijk om achteraf een gift te herroepen.";
 "SlimPayInfoDetail" = "Givt werkt samen met SlimPay voor het verwerken van transacties. SlimPay is gespecialiseerd in het verwerken van machtigingen en automatische incasso’s voor digitale platforms. Dit doet SlimPay voor Givt tegen de laagste kosten in de markt en met hoge snelheid.\n\nSlimPay is voor Givt de ideale partner omdat zij het geven zonder contant geld eenvoudig en veilig maakt. Zij staat als betaalinstelling onder toezicht van de Nederlandsche Bank en andere Nationale Europese Banken.\n\nHet geïncasseerde geld wordt verzameld op een rekening bij SlimPay. Givt zorgt ervoor dat het geld verdeeld wordt.";
 "SlimPayInfoDetailTitle" = "Wat is SlimPay?";
 "ContinueRegistration" = "Je gebruikersaccount werd al aangemaakt, maar het is niet gelukt om de registratie helemaal af te ronden. \n\nWe willen graag dat je Givt kunt gebruiken, dus vragen we je om in te loggen en je registratie compleet te maken.";
+
+/*not succesful?*/
 "ContactFailedButton" = "Niet gelukt?";
-
-/*Title van de pagina "Account opzeggen"*/
-"Unregister" = "Account opzeggen";
-
-/*Informatie op de "account opzeggen" pagina*/
-"UnregisterInfo" = "Wat jammer dat je ons wilt verlaten! We zullen al jouw persoonlijke gegevens verwijderen.\n\nHier is één uitzondering op: als je gegeven hebt aan een ANBI-geregistreerde organisatie zijn we verplicht om de informatie over de gift en je NAW-gegevens te bewaren voor minimaal 7 jaar. Je e-mailadres en telefoonnummer verwijderen we sowieso.";
-
-/*Jammer dat je gaat*/
-"UnregisterSad" = "Jammer dat je gaat,\nhopelijk zien we je weer terug.";
 "UnregisterButton" = "Mijn account opzeggen";
 "UnregisterUnderstood" = "Ik begrijp het";
-
-/*Titel op de Historie pagina in de app*/
-"HistoryTitle" = "Giften";
-
-/*Titel op de infopagina van het Historiescherm*/
-"HistoryInfoTitle" = "Info over de gift";
-
-/*Groene status bij de Historie infopagina*/
-"HistoryAmountAccepted" = "Wordt verwerkt";
-
-/*Status bij de historiepagina van gebruiker die geannuleerd heeft*/
-"HistoryAmountCancelled" = "Geannuleerd door gever";
-
-/*Status van bank die bedrag geweigerd heeft op de infopagina van de Historie*/
-"HistoryAmountDenied" = "Geweigerd door bank";
-
-/*Status op de infopagina van de Historie waar de instantie heeft geïncasseerd*/
-"HistoryAmountCollected" = "Verwerkt";
-
-/*Titel bovenaan op scherm na inloggen met filmpje over de geefbeweging*/
-"LoginSuccess" = "Veel geefplezier!";
-
-/*Tekst op de giften historiek wanneer er geen gifts gegeven zijn.*/
-"HistoryIsEmpty" = "Hier komen jouw giften te staan, maar het geld moet eerst nog rollen";
-
-/*Errormelding bij een te lang e-mailadres*/
-"ErrorEmailTooLong" = "Sorry, dit e-mailadres is te lang.";
-
-/*Titel bovenaan een popup alert dat een nieuwe update beschikbaar is*/
-"UpdateAlertTitle" = "Update beschikbaar";
-
-/*Bericht die in de alert zal staan omtrent een systeemupdate van Givt*/
-"UpdateAlertMessage" = "Er is een nieuwe versie van Givt beschikbaar, wil je hem nu installeren?";
-
-/*Kritische update titel van het alert scherm*/
-"CriticalUpdateTitle" = "Kritieke update";
-
-/*Kritische update bericht onder de titel in de alert melding*/
-"CriticalUpdateMessage" = "Er is een kritieke update beschikbaar, deze is nodig voor het correct functioneren van de Givt-app.";
-
-/*Als er een organisatie gedeteceerd is krijgt gebruiker alert: Message is het bericht in de alert*/
-"OrganisationProposalMessage" = "Wil je geven aan {0}?";
-
-/*Ja*/
-"Yes" = "Ja";
-
-/*Nee*/
-"No" = "Nee";
-
-/*Waar kan ik het overzicht van mijn giften bekijken?*/
-"FAQvraag9" = "Waar kan ik het overzicht van mijn giften bekijken?";
-
-/*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
-"FAQantwoord9" = "Druk op het menu linksbovenin om je app-menu te openen. Om toegang te krijgen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies voor 'Giften' om een overzicht van je giften weer te geven. Je kunt hier ook een jaarlijks giftenoverzicht downloaden voor de belastingaangifte.\nDe giften staan in een lijst met naam van de ontvanger, tijd en datum. Aan de gekleurde streep (links van je gift) zie je direct wat de status is: wordt verwerkt, verwerkt, geweigerd door bank of geannuleerd door gever.";
 "GivtIsBeingProcessed" = "Bedankt voor je Givt aan {0}!\nKijk voor de status in je overzicht.";
 "OfflineGegevenGivtMessage" = "Bedankt voor je Givt!\n\nZodra er een goede verbinding is met de Givt-server, wordt je Givt verwerkt.\nKijk voor de status in je overzicht.";
 "OfflineGegevenGivtMessageWithOrg" = "Bedankt voor je Givt!\n\nZodra er een goede verbinding is met de Givt-server, wordt je Givt aan {0} verwerkt.\nKijk voor de status in je overzicht.";
@@ -384,64 +47,13 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "WrongPasswordLockedOut" = "Je hebt drie verkeerde pogingen gedaan, je kunt 15 minuten niet inloggen. Probeer straks opnieuw of vraag een nieuw wachtwoord aan.";
 "ConfirmGivtSafari" = "Bedankt voor je Givt aan {0}! Bevestig door op de knop te drukken en kijk voor de status in je overzicht.";
 "ConfirmGivtSafariNoOrg" = "Bedankt voor je Givt! Bevestig door op de knop te drukken en kijk voor de status in je overzicht.";
-
-/*Question about passcode*/
-"FAQQuestion11" = "Hoe stel ik mijn toegangscode in?";
-
-/*Answer Passcode*/
-"FAQAnswer11" = "Je bereikt je instellingen door links bovenin het bedragscherm op het menu te drukken. Kies daar ‘Toegangscode’ en activeer het gebruik van de toegangscode. Stel je eigen toegangscode in. Wanneer deze instelling actief is, kan je je toegangscode in plaats van je e-mailadres en wachtwoord gebruiken om je instellingen te bereiken. Wanneer je je toegangscode vergeten bent, heb je je e-mailadres en wachtwoord nodig om een nieuwe toegangscode in te stellen.";
-
-/*Antwoord op de vraag Hoe werkt registreren*/
-"AnswerHowDoesRegistrationWork" = "Om Givt te kunnen gebruiken, moet je jezelf registreren in de Givt-app. Ga hiervoor naar je app-menu en kies voor 'Registratie voltooien'. Je maakt hierbij een Givt-account aan, vult enkele persoonlijke gegevens in en je geeft een machtiging tot het incasseren van alle giften die je in de app doet. De transacties worden afgehandeld door SlimPay; een partij die gespecialiseerd is in de behandeling van machtigingen. \nWanneer je eenmaal geregistreerd bent, kun je geven met de Givt-app. De inloggegevens van je Givt-account heb je alleen nodig om je instellingen in te zien of te wijzigen.";
-
-/*Antwoord FAQ Hoe werkt geven?*/
-"AnswerHowDoesGivingWork" = "Heel eenvoudig. Open de app om een bedrag te kiezen en beweeg je telefoon langs de collectebus, -zak of -mand. Vergeet niet om je registratie te voltooien, zodat je giften op het goede adres bezorgd kunnen worden.";
-
-/*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "Wanneer het niet lukt om gebruik te maken van de Givt-app, zoals wij het bedoeld hebben, kan je er altijd voor kiezen handmatig een ontvanger te selecteren. Kies een bedrag en druk op 'Volgende'. Druk daarna op ‘Lijst’ en kies voor 'Kerken', 'Goede doelen', 'Acties' of 'Artiesten'. Kies nu de ontvanger uit de lijst aan wie je wilt geven en druk op ‘Geven’. Zo werkt het geven door een ontvanger te selecteren.";
 "MenuSettingsSwitchAccounts" = "Wisselen van account";
 "PrepareIUnderstand" = "Ik snap het";
-
-/*Informatie over waarom persoonlijke gegevens invullen.*/
-"InformationPersonalData" = "Givt heeft deze persoonlijke gegevens nodig om je giften te kunnen verwerken. Wij gaan zorgvuldig met deze gegevens om. Dit kun je teruglezen in onze privacyverklaring.";
-
-/*Wie is Givt/NFCollect?*/
-"InformationAboutUs" = "Givt is een product van Givt B.V.\n\nJe kan ons vinden op de Noordersluisweg 27 te Lelystad, Nederland. Voor vragen of klachten zijn we te bereiken via +31 320 320 115 of support@givtapp.net.\n\nIn de Kamer van Koophandel zijn we geregistreerd onder KVKnr.: 64534421.";
-
-/*Over Givt*/
-"TitleAboutGivt" = "Over Givt / Contact";
-
-/*Verstuur jaaroverzicht (knop bij giften)*/
-"SendAnnualReview" = "Verstuur jaaroverzicht";
-
-/*Informatie over het versturen van jaaroverzicht*/
-"InfoAnnualReview" = "Verkrijg hier het jaaroverzicht van je giften in 2016. \nDit jaaroverzicht kan je gebruiken bij je belastingaangifte.";
-
-/*Verstuur per e-mail*/
-"SendByEmail" = "Verstuur per e-mail";
-
-/*Waarom deze persoonlijke gegevens?*/
-"WhyPersonalData" = "Waarom deze persoonlijke gegevens?";
-
-/*Lees privacyverklaring*/
-"ReadPrivacy" = "Lees privacyverklaring";
-
-/*Hoe lang duurt het voor mijn gift wordt afgeschreven?*/
-"FAQQuestion12" = "Hoe lang duurt het voor mijn gift wordt afgeschreven?";
-
-/*Je gift wordt binnen twee werkdagen van je bankrekening afgeschreven.*/
-"FAQAnswer12" = "Jouw gift wordt binnen twee werkdagen van je bankrekening afgeschreven.";
 "ColId1" = "Collecte 1";
 "ColId2" = "Collecte 2";
 "ColId3" = "Collecte 3";
 "FAQWhyBluetoothEnabledQ" = "Waarom moet Bluetooth ingeschakeld zijn tijdens het gebruik van Givt?";
 "FAQWhyBluetoothEnabledA" = "Je telefoon pikt een signaal op van de zender die in de collectebus, -zak of -mand zit. Dit signaal werkt met het Bluetooth-protocol. Het gaat hierbij om een eenrichtingsverkeer en er hoeft dus geen verbinding te worden gemaakt, zoals je dat misschien gewend bent bij een Bluetooth carkit of headset. Het is een veilige en makkelijke manier voor de telefoon om te weten welke collectebus, -zak of -mand in de buurt is. Op het moment dat de zender dichtbij is en het signaal door je telefoon wordt opgepikt, is je Givt gelukt.";
-
-/*Hoe kan ik geven aan meerdere collectes*/
-"FAQQuestion14" = "Hoe kan ik geven aan meerdere collectes?";
-
-/*antwoord meerdere collectesvraag*/
-"FAQAnswer14" = "Meerdere collectes in één dienst? Activeer tot drie collectes, de groene lijn laat zien welk collectedoel (1, 2 en 3) geselecteerd is. Vul de bedragen in, in de volgorde waarop de collectedoelen in de dienst voorbij komen.\n\nWanneer je geeft aan de eerste collectezak of -mand die voorbij komt, worden alle giften meteen verstuurd. Je geeft dus met één beweging. In het overzicht van je giften vind je jouw giften aan de verschillende doelen terug. (Op dit moment is het alleen mogelijk om de collectedoelen te onderscheiden als collecte 1, 2 of 3. Jouw kerk weet welk collectenummer overeenkomt met welk collectedoel.)\nToch een collecte overslaan? Laat die collecte open of verwijder hem.";
 "Collect" = "Collecte";
 "OfflineGegevenGivtsMessage" = "Bedankt voor je Givts!\n\nZodra er een goede verbinding is met de Givt-server, worden je Givts verwerkt.\nKijk voor de status in je overzicht.";
 "OfflineGegevenGivtsMessageWithOrg" = "Bedankt voor je Givts!\n\nZodra er een goede verbinding is met de Givt-server, worden je Givts aan {0} verwerkt.\nKijk voor de status in je overzicht.";
@@ -453,22 +65,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "NoMessage" = "Je hebt geen bericht ingevoerd.";
 "FeedbackMailSent" = "We hebben je bericht succesvol ontvangen, we nemen als de bliksem contact met je op.";
 "TypeMessage" = "Schrijf hier je bericht!";
-
-/*Begeleidingstekst meerdere collectes*/
-"Feature_MultipleCollections" = "Nieuws! Je kan nu met één beweging tot drie verschillende doelen een handje helpen. Is het deze maand toch iets te hard gegaan, sla er dan eentje over of verwijder een collecte met een dubbele tap. Wil je meer weten, check dan onze FAQ.";
-
-/*Ik snap het*/
-"Feature_IGetItButton" = "Gewoon blijven geven";
 "Safari_GivtTransaction" = "Deze Givt wordt in een transactie omgezet.";
 "Safari_MandateSignedPopup" = "Jouw giften worden van dit IBAN afgeschreven. Niet akkoord? Annuleer dan deze Givt en maak een nieuwe account aan.";
 "DidNotSignMandateYet" = "Om gewoon te kunnen geven, moet je een mandaat hebben afgegeven. Op dit moment is het niet mogelijk om een mandaat af te geven. Probeer later opnieuw.";
 "AppVersion" = "App versie: ";
-
-/*Info over knop om collecte te activeren*/
-"Ballon_ActiveerCollecte" = "Je kunt hier tot drie collectes toevoegen";
-
-/*Dubbel Tap om collecte te verwijderen*/
-"Ballon_VerwijderCollecte" = "Een collecte wordt verwijderd door snel twee keer te tikken";
 "ShareGivtText" = "Deel Givt";
 "ShareGivtTextLong" = "Hey! Wil je ook gewoon blijven geven?";
 "GivtGewoonBlijvenGeven" = "Givt - Gewoon blijven geven.";
@@ -492,15 +92,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "NoCameraAccess" = "Om de code te scannen heeft Givt je camera nodig. Ga naar de app-instellingen op je smartphone om Givt toegang te verlenen.";
 "NSCameraUsageDescription" = "We willen graag de camera gebruiken om de code te scannen.";
 "OpenSettings" = "Open instellingen";
-
-/*Vragen om het e-mailadres zodat je kan geven*/
-"NeedEmailToGive" = "Om te geven met Givt hebben we iets van identificatie nodig";
-
-/*knop Eerst geven*/
-"GiveFirst" = "Eerst geven";
-
-/*Knop Verder*/
-"Go" = "Verder";
 "NeedEmailToGiveSubtext" = "Om je giften goed af te kunnen handelen, hebben we je e-mailadres nodig.";
 "CompleteRegistrationAfterGiveFirst" = "Leuk dat je hebt gegeven met Givt!\n\nWe willen graag dat je Givt verder\nkunt gebruiken, dus vragen we je om\nje registratie compleet te maken.";
 "TermsUpdate" = "De algemene voorwaarden zijn bijgewerkt";
@@ -528,12 +119,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "LoadingTitle" = "Even wachten...";
 "LoadingMessage" = "We zijn je gegevens aan het laden ...";
 "ButtonChange" = "Wijzigen";
-
-/*belastingaangifte vraag*/
-"FAQvraag15" = "Is geven met Givt ook belastingaftrekbaar?";
-
-/*antwoord op vraag15*/
-"FAQantwoord15" = "Ja, je gift met Givt is belastingaftrekbaar indien die aan een algemeen nut beogende instelling (ANBI), een culturele ANBI of aan een sociaal belang behartigende instelling (SBBI) wordt gedaan. Ga na of de kerk of goed doel ook op die manier geregistreerd is. Het verzamelen van je giften voor de belastingaangifte is altijd een hele klus. Als je geeft met Givt hoeft dat niet meer. Je kan namelijk voor elk jaar een overzicht van al jouw giften die gegeven zijn met Givt downloaden. Je kan het overzicht downloaden bij je giftenoverzicht in het app-menu. Dit overzicht kan je dan mooi gebruiken als bewijs bij je belastingaangifte. Zo gepiept, dus.";
 "WelcomeContinue" = "Aan de slag";
 "EnterEmail" = "Aan de slag";
 "FinalizeRegistrationPopupText" = "Om je giften op het goede adres te kunnen bezorgen, moet je nog even je registratie voltooien.";
@@ -554,9 +139,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "YesSuccess" = "Yes, gelukt!";
 "ToGiveWeNeedYourEmailAddress" = "Om te geven met Givt is\nalvast je e-mailadres nodig";
 "WeWontSendAnySpam" = "(we sturen geen spam, beloofd)";
-
-/*In app begeleiding naar 'Anders geven?'*/
-"GiveDiffWalkthrough" = "Lukt het niet? Tik dan hier om een organisatie uit de lijst te selecteren.";
 "SwipeDownOpenGivt" = "Veeg omlaag om de Givt-app opnieuw te openen.";
 "MoreInfo" = "Meer info";
 "AppStoreRestart" = "Zie je de update niet meteen? Probeer dan even de App Store-app te herstarten.";
@@ -587,12 +169,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Undo" = "Ongedaan maken";
 "FAQVraag16" = "Kan ik mijn giften herroepen?";
 "FAQAntwoord16" = "Ja, je kan je giften herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen.\n\nIn het eerste kwartier na de gift kan je ook via het giftenoverzicht een gift annuleren door een gift naar links te swipen (vegen). Dit is enkel mogelijk in de eerste 15 minuten na het geven; deze manier van herroepen (annuleren) is kosteloos.";
-
-/*Staat je vraag er niet tussen? (FAQ)*/
-"FAQvraag17" = "Staat je vraag er niet tussen?";
-
-/*antwoord 'Staat je vraag er niet tussen?'*/
-"FAQantwoord17" = "Stuur ons dan een bericht via de app (\"Over Givt / Contact\" in het menu), via mail naar support@givtapp.net of bel ons op +31 320 320 115.";
 "SelectContextCollect" = "Geef in de kerk, aan de deur of op straat";
 "GiveContextQR" = "Geef door middel van een QR-code";
 "SelectContextList" = "Kies een doel uit de lijst";
@@ -614,15 +190,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "CelebrateMessage" = "Zwier je smartphone in de lucht voor de aftelklok op 0 staat. \nWat er dan gebeurt? Dat merk je vanzelf...";
 "AfterCelebrationTitle" = "Zwaaien maar!";
 "AfterCelebrationMessage" = "Het is zover, zwaai er op los! \n(We zijn niet verantwoordelijk voor eventuele elleboogstoten.)";
-
-/*Camera toegang is nodig voor flashlight (enkel voor Android)*/
-"NoCameraAccessCelebration" = "Om de vliegensvlugge en flitsende geefactie te ondersteunen hebben we toegang nodig tot je camera.";
-
-/*Op een leuke manier bedanken om de camera toestemming te geven voor de flitsende actie? (Was eerst "Nee, dank je (niet) feestelijk!" en "No, thanks (but no thanks)")*/
-"NoThanksCelebration" = "Nee, dank je";
-
-/*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
-"YesCool" = "Ja, leuk!";
 "ErrorContactGivt" = "Er is een fout opgetreden, gelieve contact op te nemen met support@givtapp.net .";
 "MandateFailPersonalInformation" = "Je IBAN en/of telefoonnummer blijkt niet goed ingevuld te zijn. Wijzig je gegevens via het menu of neem even contact op via support@givtapp.net om dit akkefietje op te lossen.";
 "MandateSMSCode" = "We sturen een sms-code naar {0}. Het mandaat wordt aangevraagd op naam van {1}. Correct? Ga dan gerust verder.";
@@ -663,12 +230,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ChangePhone" = "Mobiel nummer wijzigen";
 "Artists" = "Artiesten";
 "ChangeAddress" = "Adres wijzigen";
-
-/*Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
-"FAQvraag18" = "Hoe gaat Givt met mijn persoonsgegevens om? (AVG)";
-
-/*A:Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
-"FAQAntwoord18" = "Givt voldoet volledig aan de eisen die gesteld worden vanuit de AVG-wetgeving. AVG staat voor Algemene Verordening Gegevensbescherming.\n\nBen je benieuwd wat dat precies voor jou betekent? Het betekent dat wij zorgvuldig met jouw gegevens omgaan. Namelijk dat jij het recht hebt te weten welke gegevens we van jou bewaren, dat je het recht hebt om deze gegevens te wijzigen, het recht hebt om van ons te eisen dat wij jouw gegevens niet bewaren en dat je mag weten waarom wij je gegevens nodig hebben.\n\nLees hieronder welke gegevens we waarvoor nodig hebben:\nAdresgegevens: We hebben je adresgegevens nodig om het mandaat aan te kunnen maken, zonder deze gegevens is het mandaat niet geldig en kun je je registratie niet afronden. Welke gegevens hiervoor nodig zijn, is wettelijk bepaald.\nMobiele nummer: We gebruiken je mobiele nummer voor het versturen van een SMS-code die nodig is bij het tekenen van het mandaat. Dit wordt verzorgd door onze partner SlimPay.\nBetalingsgegevens: Je betalingsgegevens hebben we nodig om je gedane gift af te kunnen schrijven.\nE-mailadres: We gebruiken je e-mailadres om je Givt-account aan te maken. Je logt in met je e-mailadres en je wachtwoord.\n\nWil je hier meer over weten, lees dan onze privacyverklaring.\n\nAVG is ook wel bekend onder de Engelse naam: General Data Protection Regulation (GDPR).\n";
 "SelectLocationContextLong" = "Geef op locatie tijdens evenementen";
 "GivtAtLocationDisabledTitle" = "Geen evenementen beschikbaar";
 "GivtAtLocationDisabledMessage" = "Hé, niet te snel! Op dit moment zijn er geen evenementen waar je op locatie kan geven.";
@@ -759,9 +320,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 /*Fuzzy*/
 "PromotionalQR" = "Deze code verwijst naar onze webpagina. Hiermee kan je helaas niet geven in de Givt-app.";
 "PromotionalQRTitle" = "Promo QR-code";
-
-/*Annuleer van fingerprint scsannen */
-"fingerprint_cancel" = "Annuleer";
 "DownloadYearOverviewByChoice" = "Wil je een giftenoverzicht van een volledig jaar downloaden voor je belastingaangifte ? Kies hieronder het jaar en we versturen het overzicht naar";
 "GiveOutOfApp" = "He! Leuk dat je wil geven met Givt! Klopt het dat je wil geven aan {0}?";
 "MandateFailTryAgainLater" = "Er gaat iets mis bij het aanmaken van de machtiging. Probeer je later nog eens opnieuw?";
@@ -774,12 +332,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FeatureMultipleNew" = "Hallo, we willen je graag enkele nieuwe features voorstellen.";
 "FeatureReadMore" = "Lees meer";
 "FeatureStepTitle" = "Feature {0} van {1}";
-
-/*FAQ Question Anonymity*/
-"FAQuestAnonymity" = "Hoe wordt mijn anonimiteit gewaarborgd door Givt?";
-
-/*FAQ Answer Anonymity*/
-"FAQanswerAnonymity" = "Givt draagt er zorg voor dat de ontvangende partij nooit terug zal kunnen zien van wie de gift afkomstig is en dat jij als gebruiker dus anoniem kan geven met Givt. Enkel de totaalbedragen zullen worden gedeeld met de ontvangende partij. Gegevens van jou als gebruiker zullen ook nooit doorverkocht worden aan derden, deze worden alleen ingezet om het voor jou makkelijker te maken om te geven en om op een manier betrokken te zijn bij de goede doelen zoals jij dat prettig vindt.\n\nWil je hier meer over lezen? Lees dan onze privacyverklaring (scroll helemaal naar beneden in deze FAQ waar je de privacyverklaring gelijk kan openen).";
 "NoticeSmsCode" = "Let op!\nDe sms-code die je zult ontvangen, moet je invullen op het SlimPay scherm in je webpagina, dus niet in de app. Na het tekenen van de machtiging, ga je automatisch terug naar de Givt-app.";
 "Feature_push1_title" = "Pushnotificaties";
 "Feature_push2_title" = "We helpen je erdoorheen";
@@ -797,12 +349,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AddCollect" = "Collecte toevoegen";
 "TermsTextVersionGB" = "1.1";
 "AccountDisabledError" = "Oeps, het lijkt erop dat je account is gedeactiveerd. Neem snel contact op met support@givtapp.net!";
-
-/*op het scherm waar je de voorkeursbedragen (presets) kan enablen of disablen*/
-"AmountPresetsChangingPresets" = "Om sneller te kunnen geven kun je voorkeursbedragen toevoegen aan je toetsenbord. Hier beheer je het gebruik daarvan.";
-
-/*menu-item to change/set the amount presets*/
-"AmountPresetsChangePresetsMenu" = "Wijzig voorkeursbedragen";
 "Feature_newgui1_title" = "De gebruikersinterface";
 "Feature_newgui2_title" = "Voortgangsbalk";
 "Feature_newgui3_title" = "Meerdere collectes";
@@ -810,17 +356,8 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Feature_newgui2_message" = "Aan de hand van de voortgangsbalk bovenaan weet je precies waar je bent in het geefproces.";
 "Feature_newgui3_message" = "Collectes toevoegen of verwijderen met één druk op de knop.";
 "Feature_newgui_action" = "Oké, begrepen!";
-
-/*in app notification to announce new feature (new gui!)*/
-"Feature_newgui_inappnot" = "Tap hier om meer te weten te komen over de vernieuwde gebruikersinterface!";
 "Feature_multiple_inappnot" = "Hallo! We hebben iets nieuws voor je klaar staan. Heb je even?";
-"PolicyTextGB" = "";
-
-/*Givt B.V. voor SEPA-users*/
-"GivtCompanyInfo" = "Givt B.V.";
-
-/*Givt Ltd. ...*/
-"GivtCompanyInfoGB" = "Givt Ltd.";
+"PolicyTextGB" = "Privacy Statement of Givt Ltd.\n\nThrough its service, Givt will process privacy-sensitive or personal data. Givt Ltd values the privacy of its customers and observes due care in processing and protecting personal data.\n\nDuring the processing we stick to the requirements of the General Data Protection Regulation (EU 2016/679, also known as the GDPR). This means we:\n- Clearly specify our purposes before we process personal data, by using this Privacy Statement;\n- Limit our collection of personal data to only the personal data needed for legitimate purposes;\n- First ask for explicit permission to process your personal data in cases where your permission is required;\n- Take appropriate security measures to protect your personal data and we demand the same from parties who process personal data on our behalf;\n- Respect your right to inspect, correct or delete your personal data held by us.\n\nGivt Ltd. is the party responsible for all data processing. Our data processing is registered with the Information Commissioner's Office ICO number: ZA486091. In this privacy statement, we will explain which personal data we collect and for which purposes. We recommend that you read it carefully.\n\nThis privacy statement was last amended on 04-02-2019\n\nUse of Personal Data\nBy using our service, you are providing certain data to us. This could be personal data. We only retain and use the personal data provided directly by you or for which it is clear that it has been supplied to us to be processed.\nWe use the following data for the purposes as mentioned in this Privacy Statement:\n- Name and address\n- Telephone number\n- E-mail address\n- Payment details\n\nRegistration\nCertain features of our service require you to register beforehand. After your registration we will retain your user name and the personal data you provided. We will retain this data so that you do not have to re-enter it every time you visit our website, to contact you in connection with the execution of the agreement, invoicing and payment, and to provide an overview of the products and services you have purchased from us.\nWe will not provide the data linked to your user name to third parties, unless it is necessary for the execution of the agreement you concluded with us or if law requires this. In the event of suspicion of fraud or misuse of our website we may hand over personal data to the entitled authorities.\n \nPromotion\nOther than the advertisements on the website, we can inform you about new products or services:\n- by e-mail\n\nContact Form and Newsletter\nWe have a newsletter to inform those interested of our products and/or services. Each newsletter contains a link with which to unsubscribe from our newsletter. Your e-mail address will be added to the list of subscribers automatically.\nIf you fill out a contact form on the website or send us an e-mail, the data you provide will be retained for as long as is necessary depending on the nature of the form or the content of your e-mail, to fully answer and correctly handle your message or e-mail.\n\nPublication\nWe will not publish your data.\n\nProviding Data to Third Parties\nWe may provide your information to our partners. These partners are involved in the execution of the agreement. In all cases, these parties are necessary to provide the services. These are not the collecting authorities, as we protect the anonymity of users.\nYou agree that the transaction data are anonymous and can be used for data collection, statistics, reviews and comparisons. Only the summary will be shared with other customers and we ensure you that none of your data will be traceable to individuals.\nWe will also never sell data to third parties. We are only committed to make it easier for the donor to give to charities of their choosing. \n\nSecurity\nWe take security measures to reduce misuse of and unauthorized access to personal data. We take the following measures in particular:\n- Access to personal data requires the use of a username and password\n- Access to personal data requires the use of a username and login token\n- We make use of secure connections (Secure Sockets Layer of SSL) to encrypt all information between you and our website when entering your personal data.\n- We keep logs of all requests for personal data.\n\nUse of location services\nThe app may use the location services as provided by the operating system on the smartphone. With these services, the app may determine the location of the user. These location data are not being sent to anywhere outside the smartphone, but solely used to determine whether the user is on a location where it’s possible to use Givt for donating. The locations where one can use Givt are downloaded to the smartphone prior to using the location services.\n\nDiagnostic information from the app\nThe app sends anonymous information about its functioning. This information contains non-personal data from your smartphone like its type and operating system, but also the version information of the app. These data are solely used for purposes of improving the service of Givt or allowing better responses to your questions. This information will never be shared with third-parties. \n\nChanges to this Privacy Statement\nWe reserve the right to modify this statement. We recommend that you review this statement regularly, so that you remain informed of any changes.\n\nInspection and Modification of your Data\nYou can always contact us if you have any questions regarding our privacy policy or wish to review, modify or delete your personal data.\n\nGivt Ltd. is a part of Givt B.V., Our office is located on the Noordersluisweg 27 in Lelystad, the Netherlands.\nCompany Number (CRN): 11396586";
 
 /*Ik heb hier de punt weggehaald, omdat ik vermoed dat ik die zelf ten onrechte had geplaatst. Als die hier bewust wel was geplaatst, dan hoor ik het graag. 
  "Bedrag" titel op het geef bedrag scherm*/
@@ -1312,15 +849,13 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Givt Ltd. ...*/
 "GivtCompanyInfoGB" = "Givt Ltd.";
-"CelebrationHappyToSeeYou" = "Leuk dat je gaat geven met de Feestgivt!";
-"CelebrationQueueText" = "Het aftellen voor de Feestgivt is nog niet gestart. Via een pushnotificatie vertellen we je zodra het gaat beginnen!";
-"CelebrationGiftSuccessful" = "Loopt het anders dan gedacht, no worries. Je Givt is al verstuurd.";
-"CelebrationNotificationText" = "Zet je pushnotificaties aan zodat we straks samen kunnen aftellen voor de Feestgivt!";
-"CelebrationQueueCancel" = "Nee, ik doe niet mee aan de Feestgivt";
-"CelebrationNotificationEnable" = "Schakel gelijk pushnotificaties in";
-"CelebrationAlertAppPause" = "Let op!";
-"CelebrationAlertAppPauseText" = "Sluit de Givt-app niet af als je mee wilt doen aan de Feestgivt. Laat de app op de achtergrond openstaan zodat je niets mist.";
-"CelebrationAlertAppPauseButton" = "Oké, begrepen!";
+"CelebrationHappyToSeeYou" = "";
+"CelebrationQueueText" = "";
+"CelebrationGiftSuccessful" = "";
+"CelebrationQueueCancel" = "";
+"CelebrationAlertAppPause" = "";
+"CelebrationAlertAppPauseText" = "";
+"CelebrationAlertAppPauseButton" = "";
 "CelebrationWaitingTextPatience" = "Een pushnotificatie wordt verstuurd wanneer het zo ver is. Kill de Givt-app in tussentijd niet!";
 "CelebrationFound" = "Er is nog een speciaal moment voor alle Givters";
 "CelebrationParticipate" = "Wil je hieraan meedoen?";
