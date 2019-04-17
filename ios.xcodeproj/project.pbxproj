@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27689CDF221AF94B006C0DA6 /* CollectionView.xib */; };
 		27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27689CE3221B0064006C0DA6 /* CollectionView.swift */; };
+		279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279672B42264CF6D0092464A /* CelebrationQueueViewController.swift */; };
 		27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E0221E9D6D00982842 /* AddCollectButtonView.swift */; };
 		27A0E4E3221EC7E800982842 /* PresetButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27A0E4E2221EC7E800982842 /* PresetButton.xib */; };
 		27A0E4E5221ECE6700982842 /* PresetButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A0E4E4221ECE6700982842 /* PresetButton.swift */; };
@@ -209,6 +210,7 @@
 /* Begin PBXFileReference section */
 		27689CDF221AF94B006C0DA6 /* CollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CollectionView.xib; path = "ios/Views/Custom Views/CollectionView.xib"; sourceTree = SOURCE_ROOT; };
 		27689CE3221B0064006C0DA6 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		279672B42264CF6D0092464A /* CelebrationQueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationQueueViewController.swift; sourceTree = "<group>"; };
 		27A0E4E0221E9D6D00982842 /* AddCollectButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCollectButtonView.swift; sourceTree = "<group>"; };
 		27A0E4E2221EC7E800982842 /* PresetButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PresetButton.xib; sourceTree = "<group>"; };
 		27A0E4E4221ECE6700982842 /* PresetButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetButton.swift; sourceTree = "<group>"; };
@@ -710,6 +712,7 @@
 				D74C19E920F627DA00E116A0 /* ExternalSuggestionViewController.swift */,
 				D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */,
 				D761E9BB1F18CE0C002B849B /* ScanViewController.swift */,
+				279672B42264CF6D0092464A /* CelebrationQueueViewController.swift */,
 			);
 			path = "Give Flow";
 			sourceTree = "<group>";
@@ -1168,6 +1171,7 @@
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				D75B2BD21FCEAE05000B7968 /* IAPIClient.swift in Sources */,
+				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
 				D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
