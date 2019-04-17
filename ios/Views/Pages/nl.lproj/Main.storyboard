@@ -642,7 +642,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="givyGave" translatesAutoresizingMaskIntoConstraints="NO" id="cdK-pi-bub">
-                                <rect key="frame" x="199" y="728" width="136" height="16"/>
+                                <rect key="frame" x="199" y="547" width="136" height="197.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="EMw-R1-gR1"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="197" id="b6t-tc-UB3"/>
@@ -1356,7 +1356,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="givy-party" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-aw-gWW">
-                                <rect key="frame" x="199" y="340" width="16" height="216"/>
+                                <rect key="frame" x="63" y="340" width="288" height="216.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="216" id="97N-LH-ZyF"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="320" id="idb-x3-YM3"/>
@@ -2136,7 +2136,7 @@ Kijk voor de status in je overzicht.</string>
                                 <rect key="frame" x="20" y="194.5" width="374" height="583.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="givymoney" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-VI-QVA">
-                                        <rect key="frame" x="28" y="28" width="318" height="240"/>
+                                        <rect key="frame" x="28" y="28" width="318" height="16"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2387,6 +2387,118 @@ best bij jou past.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPr-yA-f4R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2187" y="-1579"/>
+        </scene>
+        <!--Celebration Queue View Controller-->
+        <scene sceneID="rNb-UR-u6k">
+            <objects>
+                <viewController storyboardIdentifier="CelebrationQueueViewController" id="mNQ-d4-HwD" customClass="CelebrationQueueViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZsN-B5-3XC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfa-RE-6Yf">
+                                <rect key="frame" x="20" y="64" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZWB-1n-TdE">
+                                <rect key="frame" x="20" y="105" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENb-c4-V9M" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="798" width="374" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="V1U-X3-Z2j"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Geven"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnGive:" destination="I2a-zH-aE5" eventType="touchUpInside" id="ThD-Ep-14t"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9g-1r-13K" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="744" width="374" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="VJb-Zi-pfe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Geven"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="btnGive:" destination="I2a-zH-aE5" eventType="touchUpInside" id="Dul-tN-2F9"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cxH-ly-tCp">
+                                <rect key="frame" x="20" y="308" width="374" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="225" id="JeV-K6-PTQ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oyi-VM-7CI" firstAttribute="trailing" secondItem="cxH-ly-tCp" secondAttribute="trailing" constant="20" id="2WJ-fE-q81"/>
+                            <constraint firstItem="cxH-ly-tCp" firstAttribute="top" relation="lessThanOrEqual" secondItem="ZWB-1n-TdE" secondAttribute="bottom" constant="182" id="4Ub-qs-BTA"/>
+                            <constraint firstItem="ZWB-1n-TdE" firstAttribute="leading" secondItem="oyi-VM-7CI" secondAttribute="leading" constant="20" id="8ER-gj-IlU"/>
+                            <constraint firstItem="oyi-VM-7CI" firstAttribute="bottom" secondItem="ENb-c4-V9M" secondAttribute="bottom" constant="20" id="9zQ-Ro-fgc"/>
+                            <constraint firstItem="oyi-VM-7CI" firstAttribute="trailing" secondItem="ZWB-1n-TdE" secondAttribute="trailing" constant="20" id="Ekz-ho-Pqr"/>
+                            <constraint firstItem="ZWB-1n-TdE" firstAttribute="top" secondItem="Gfa-RE-6Yf" secondAttribute="bottom" constant="20" id="Mgb-bg-Gqm"/>
+                            <constraint firstItem="oyi-VM-7CI" firstAttribute="trailing" secondItem="E9g-1r-13K" secondAttribute="trailing" constant="20" id="Npl-6W-JfZ"/>
+                            <constraint firstItem="ENb-c4-V9M" firstAttribute="top" secondItem="E9g-1r-13K" secondAttribute="bottom" constant="10" id="QWP-mW-ZUm"/>
+                            <constraint firstItem="E9g-1r-13K" firstAttribute="top" relation="lessThanOrEqual" secondItem="cxH-ly-tCp" secondAttribute="bottom" constant="211" id="R6w-pP-nr0"/>
+                            <constraint firstItem="oyi-VM-7CI" firstAttribute="trailing" secondItem="ENb-c4-V9M" secondAttribute="trailing" constant="20" id="T3X-uG-I1k"/>
+                            <constraint firstItem="cxH-ly-tCp" firstAttribute="leading" secondItem="oyi-VM-7CI" secondAttribute="leading" constant="20" id="cpD-Le-pM0"/>
+                            <constraint firstItem="Gfa-RE-6Yf" firstAttribute="top" secondItem="oyi-VM-7CI" secondAttribute="top" constant="20" id="k8c-C7-ma4"/>
+                            <constraint firstItem="ENb-c4-V9M" firstAttribute="leading" secondItem="oyi-VM-7CI" secondAttribute="leading" constant="20" id="nx8-6k-l09"/>
+                            <constraint firstItem="oyi-VM-7CI" firstAttribute="trailing" secondItem="Gfa-RE-6Yf" secondAttribute="trailing" constant="20" id="v65-3t-0YY"/>
+                            <constraint firstItem="E9g-1r-13K" firstAttribute="leading" secondItem="oyi-VM-7CI" secondAttribute="leading" constant="20" id="yYw-IF-K76"/>
+                            <constraint firstItem="Gfa-RE-6Yf" firstAttribute="leading" secondItem="oyi-VM-7CI" secondAttribute="leading" constant="20" id="zZ3-GA-VC7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oyi-VM-7CI"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="cxH-ly-tCp" id="By4-e1-aSb"/>
+                        <outlet property="secondaryTitelLabel" destination="ZWB-1n-TdE" id="JNQ-en-c5S"/>
+                        <outlet property="titelLabel" destination="Gfa-RE-6Yf" id="B4O-1i-2DF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="htr-NZ-sUZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2868" y="-1577"/>
         </scene>
         <!--Menu Navigation View Controller-->
         <scene sceneID="EuK-Lk-NLH">
