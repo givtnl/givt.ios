@@ -813,9 +813,6 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 /*Camera toegang is nodig voor flashlight (enkel voor Android)*/
 "NoCameraAccessCelebration" = "To be able to support the super blazing giving event, we need access to your camera.";
 
-/*Op een leuke manier bedanken om de camera toestemming te geven voor de flitsende actie? (Was eerst "Nee, dank je (niet) feestelijk!" en "No, thanks (but no thanks)")*/
-"NoThanksCelebration" = "No, thanks";
-
 /*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
 "YesCool" = "Yes, cool!";
 
@@ -849,19 +846,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Givt Ltd. ...*/
 "GivtCompanyInfoGB" = "Givt is a product of Givt Ltd.\nOur office is located on Noordersluisweg 27 in Lelystad, the Netherlands. \nFor questions or complaints you can reach us via support@givt.app.\n\nWe are registered under Company Number (CRN): 11396586.";
-"CelebrationHappyToSeeYou" = "";
-"CelebrationQueueText" = "";
-"CelebrationGiftSuccessful" = "";
-"CelebrationQueueCancel" = "";
-"CelebrationAlertAppPause" = "";
-"CelebrationAlertAppPauseText" = "";
-"CelebrationAlertAppPauseButton" = "";
-"CelebrationWaitingTextPatience" = "A pushnotification will be send when the moment is nearby. In meanwhile, please don't kill the Givt-app.";
-"CelebrationFound" = "There will be a special moment for all Givters";
-"CelebrationParticipate" = "Do you want to participate with this?";
-"CelebrationParticipateYes" = "Seems fun!";
-"CelebrationParticipateNo" = "Next time";
-"CelebrationWaitingWelcome" = "Nice that you participate!";
-"CelebrationWaitingParticipate" = "Waiting for the party...";
-"CelebrationWaitingRemark" = "(The app can also work in the background)";
-"CelebrationEnablePushNotification" = "Activate Push Notifications";
+"CelebrationHappyToSeeYou" = "Your Givt is successful, let's celebrate that together!";
+"CelebrationQueueText" = "With a push notification, we will let you know when you can start the countdown for the Givt-Party.";
+"CelebrationQueueCancel" = "No thanks, maybe a next time";
+"CelebrationEnablePushNotification" = "Yes, I want to activate push notifications";
