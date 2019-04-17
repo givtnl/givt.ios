@@ -813,9 +813,6 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 /*Camera toegang is nodig voor flashlight (enkel voor Android)*/
 "NoCameraAccessCelebration" = "Om de vliegensvlugge en flitsende geefactie te ondersteunen hebben we toegang nodig tot je camera.";
 
-/*Op een leuke manier bedanken om de camera toestemming te geven voor de flitsende actie? (Was eerst "Nee, dank je (niet) feestelijk!" en "No, thanks (but no thanks)")*/
-"NoThanksCelebration" = "Nee, dank je";
-
 /*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
 "YesCool" = "Ja, leuk!";
 
@@ -849,19 +846,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Givt Ltd. ...*/
 "GivtCompanyInfoGB" = "Givt Ltd.";
-"CelebrationHappyToSeeYou" = "";
-"CelebrationQueueText" = "";
-"CelebrationGiftSuccessful" = "";
-"CelebrationQueueCancel" = "";
-"CelebrationAlertAppPause" = "";
-"CelebrationAlertAppPauseText" = "";
-"CelebrationAlertAppPauseButton" = "";
-"CelebrationWaitingTextPatience" = "Een pushnotificatie wordt verstuurd wanneer het zo ver is. Kill de Givt-app in tussentijd niet!";
-"CelebrationFound" = "Er is nog een speciaal moment voor alle Givters";
-"CelebrationParticipate" = "Wil je hieraan meedoen?";
-"CelebrationParticipateYes" = "Ja, leuk!";
-"CelebrationParticipateNo" = "Een volgende keer";
-"CelebrationWaitingWelcome" = "Leuk dat je meedoet!";
-"CelebrationWaitingParticipate" = "Nog even geduld...";
-"CelebrationWaitingRemark" = "(De app mag wel gewoon op de achtergrond werken)";
-"CelebrationEnablePushNotification" = "Activeer Push Notificaties";
+"CelebrationHappyToSeeYou" = "Je Givt is gelukt en dat gaan we samen vieren!";
+"CelebrationQueueText" = "Het aftellen tot de Feest-Givt starten we met een pushnotificatie.";
+"CelebrationQueueCancel" = "Nee, ik doe niet mee aan de Feest-Givt";
+"CelebrationEnablePushNotification" = "Schakel pushnotificaties in";
