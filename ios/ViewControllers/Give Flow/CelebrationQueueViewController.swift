@@ -11,21 +11,32 @@ import UIKit
 
 class CelebrationQueueViewController : UIViewController {
     
+    private var mNotificationManager: NotificationManager = NotificationManager()
+
     @IBOutlet var titelLabel: UILabel!
     @IBOutlet var secondaryTitelLabel: UILabel!
     
+    @IBOutlet var imageFlash: UIImageView!
+
     @IBOutlet var buttonEnablePushNot: CustomButton!
     @IBOutlet var buttonCancelPartyGivt: CustomButton!
     
     override func viewDidLoad() {
-        navigationItem.title = "Queue titel"
+        // set label texts
         titelLabel.text = NSLocalizedString("CelebrationHappyToSeeYou", comment: "")
         secondaryTitelLabel.text = NSLocalizedString("CelebrationQueueText", comment: "")
+        
+        // set button texts
         buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControlState.normal)
         let cancelString = NSLocalizedString("CelebrationQueueCancel", comment: "")
         let cancelStringMutable = NSMutableAttributedString(string: cancelString)
         cancelStringMutable.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 0, length: cancelString.count))
         buttonCancelPartyGivt.setAttributedTitle(cancelStringMutable, for: UIControlState.normal)
+        
+        // show/hide and move anchors based on mNotificationManager.notificationsEnabled
+        buttonEnablePushNot.isHidden = mNotificationManager.notificationsEnabled
+        imageFlash.bottomAnchor.constraint(equalTo: buttonCancelPartyGivt.topAnchor).isActive = mNotificationManager.notificationsEnabled
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
