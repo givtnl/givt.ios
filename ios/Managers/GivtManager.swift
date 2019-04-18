@@ -160,12 +160,10 @@ final class GivtManager: NSObject {
     
     func processCachedGivts() {
         cachedGivtsLock.lock()
-        for (index, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
+        for (_, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
             log.info(message: "Started processing chached Givts")
             giveInBackground(transactions: [element])
-            UserDefaults.standard.offlineGivts.remove(at: index)
         }
-        BadgeService.shared.removeBadge(badge: .offlineGifts)
         cachedGivtsLock.unlock()
     }
     
@@ -306,11 +304,12 @@ final class GivtManager: NSObject {
     }
     
     private func giveCelebrate(transactions: [Transaction], afterGivt: @escaping (Int) -> ()) {
-        var object = ["Transactions": []]
-        for transaction in transactions {
-            object["Transactions"]?.append(transaction.convertToDictionary())
-        }
+        cachedGivtsLock.lock()
         do {
+            var object = ["Transactions": []]
+            for transaction in transactions {
+                object["Transactions"]?.append(transaction.convertToDictionary())
+            }
             try client.post(url: "/api/Givts/Multiple", data: object) { (res) in
                 if let res = res {
                     if res.basicStatus == .ok {
@@ -349,6 +348,7 @@ final class GivtManager: NSObject {
             afterGivt(-1)
             self.log.error(message: "Unknown error : \(error)")
         }
+        cachedGivtsLock.unlock()
     }
     
     private func cacheGivt(transactions: [Transaction]){
@@ -375,11 +375,12 @@ final class GivtManager: NSObject {
     }
     
     private func tryGive(transactions: [Transaction], trycount: UInt = 0) {
-        var object = ["Transactions": []]
-        for transaction in transactions {
-            object["Transactions"]?.append(transaction.convertToDictionary())
-        }
+        cachedGivtsLock.lock()
         do {
+            var object = ["Transactions": []]
+            for transaction in transactions {
+                object["Transactions"]?.append(transaction.convertToDictionary())
+            }
             if trycount < 3 {
                 try client.post(url: "/api/Givts/Multiple", data: object) { (res) in
                     if let res = res {
@@ -402,6 +403,7 @@ final class GivtManager: NSObject {
         } catch {
             self.log.error(message: "Unknown error : \(error)")
         }
+        cachedGivtsLock.unlock()
     }
     
     func giveInBackground(transactions: [Transaction])
