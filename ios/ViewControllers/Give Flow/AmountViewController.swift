@@ -263,60 +263,59 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
 
     @IBAction func btnNext(_ sender: Any) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "CelebrationQueueViewController") as! CelebrationQueueViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-//        btnNext.ogBGColor = #colorLiteral(red: 0.2529559135, green: 0.789002955, blue: 0.554667592, alpha: 1)
-//        /* Check for the special crash secret */
-//        if Decimal(string: (collectOne.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 666
-//            && Decimal(string: (collectTwo.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 0.66
-//            && Decimal(string: (collectThree.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 66.6 {
-//            MSCrashes.generateTestCrash()
-//        }
-//
-//        var numberOfZeroAmounts = 0
-//        for index in 0..<collectionViews.count {
-//            let parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
-//
-//            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
-//                setActiveCollection(collectionViews[index])
-//                displayAmountLimitExceeded()
-//                return
-//            }
-//
-//            if parsedDecimal  > 0 && parsedDecimal < 0.50 {
-//                setActiveCollection(collectionViews[index])
-//                showAmountTooLow()
-//                return
-//            }
-//
-//            if parsedDecimal == 0 {
-//                numberOfZeroAmounts += 1
-//            }
-//
-//            if numberOfZeroAmounts == collectionViews.count {
-//                showAmountTooLow()
-//                return
-//            }
-//        }
-//
-//
-//        givtService.setAmounts(amounts: [(collectOne.amountLabel.text?.decimalValue)!, (collectTwo.amountLabel.text?.decimalValue)!, (collectThree.amountLabel.text?.decimalValue)!])
-//
-//        if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
-//            let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
-//            vc.providesPresentationContextTransitionStyle = true
-//            vc.definesPresentationContext = true
-//            vc.modalPresentationStyle = .overFullScreen
-//            vc.modalTransitionStyle = .crossDissolve
-//            vc.closeAction = {
-//                let chooseContext = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-//                self.navigationController?.pushViewController(chooseContext, animated: true)
-//            }
-//            self.navigationController?.present(vc, animated: true, completion: nil)
-//        } else {
-//            let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
+
+        btnNext.ogBGColor = #colorLiteral(red: 0.2529559135, green: 0.789002955, blue: 0.554667592, alpha: 1)
+        /* Check for the special crash secret */
+        if Decimal(string: (collectOne.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 666
+            && Decimal(string: (collectTwo.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 0.66
+            && Decimal(string: (collectThree.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 66.6 {
+            MSCrashes.generateTestCrash()
+        }
+
+        var numberOfZeroAmounts = 0
+        for index in 0..<collectionViews.count {
+            let parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
+
+            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
+                setActiveCollection(collectionViews[index])
+                displayAmountLimitExceeded()
+                return
+            }
+
+            if parsedDecimal  > 0 && parsedDecimal < 0.50 {
+                setActiveCollection(collectionViews[index])
+                showAmountTooLow()
+                return
+            }
+
+            if parsedDecimal == 0 {
+                numberOfZeroAmounts += 1
+            }
+
+            if numberOfZeroAmounts == collectionViews.count {
+                showAmountTooLow()
+                return
+            }
+        }
+
+
+        givtService.setAmounts(amounts: [(collectOne.amountLabel.text?.decimalValue)!, (collectTwo.amountLabel.text?.decimalValue)!, (collectThree.amountLabel.text?.decimalValue)!])
+
+        if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
+            let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
+            vc.providesPresentationContextTransitionStyle = true
+            vc.definesPresentationContext = true
+            vc.modalPresentationStyle = .overFullScreen
+            vc.modalTransitionStyle = .crossDissolve
+            vc.closeAction = {
+                let chooseContext = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+                self.navigationController?.pushViewController(chooseContext, animated: true)
+            }
+            self.navigationController?.present(vc, animated: true, completion: nil)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func addValue(sender:UIButton!) {
