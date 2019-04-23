@@ -11,10 +11,9 @@ import UIKit
 
 class CelebrationQueueViewController : UIViewController {
     
-    var secondsLeft: Int!
     var transactions: [Transaction]!
     var organisation = ""
-    
+    var secondsLeft = -1
     private var mNotificationManager: NotificationManager = NotificationManager()
 
     @IBOutlet var titelLabel: UILabel!
@@ -26,6 +25,9 @@ class CelebrationQueueViewController : UIViewController {
     @IBOutlet var buttonCancelPartyGivt: CustomButton!
     
     override func viewDidLoad() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(shouldShowCelebration), name: .GivtReceivedCelebrationNotification, object: nil)
+
         // set label texts
         titelLabel.text = NSLocalizedString("CelebrationHappyToSeeYou", comment: "")
         secondaryTitelLabel.text = NSLocalizedString("CelebrationQueueText", comment: "")
@@ -49,5 +51,13 @@ class CelebrationQueueViewController : UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
+    }
+    @objc func shouldShowCelebration(){
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+        vc.transactions = transactions
+        vc.organisation = organisation
+        vc.secondsLeft = secondsLeft
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
