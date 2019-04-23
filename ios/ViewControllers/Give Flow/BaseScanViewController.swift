@@ -203,8 +203,13 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                 DispatchQueue.main.async {
                     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "CelebrationQueueVC") as! CelebrationQueueViewController
+                    vc.transactions = transactions
+                    vc.organisation = orgName
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 20, execute: {
+                    NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil)
+                })
             } else {
                 DispatchQueue.main.async {
                     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
