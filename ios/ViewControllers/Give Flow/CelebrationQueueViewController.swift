@@ -11,6 +11,10 @@ import UIKit
 
 class CelebrationQueueViewController : UIViewController {
     
+    var secondsLeft: Int!
+    var transactions: [Transaction]!
+    var organisation = ""
+    
     private var mNotificationManager: NotificationManager = NotificationManager()
 
     @IBOutlet var titelLabel: UILabel!

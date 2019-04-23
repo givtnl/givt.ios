@@ -17,7 +17,8 @@ class CelebrateViewController: BaseScanViewController {
     var secondsLeft: Int!
     var countdownTimer: Timer!
     var transactions: [Transaction]!
-    var organisation = ""
+    var organisation: String!
+    
     private let TORCH_TIME: Double = 10.0
     override func viewDidLoad() {
         super.viewDidLoad()
