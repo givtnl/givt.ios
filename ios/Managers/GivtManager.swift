@@ -291,8 +291,10 @@ final class GivtManager: NSObject {
             self.cacheGivt(transactions: transactions)
             giveCelebrate(transactions: transactions, afterGivt: { resultData in
                 if let result = resultData {
-                    if let seconds = result["SecondsToCelebration"] as? Int, let queueSet = result["CelebrationQueueSet"] as? Bool {
-                        afterGivt(seconds, queueSet, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+                    if let seconds = result["SecondsToCelebration"] as? Int {
+                        afterGivt(seconds, false, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+                    } else if let queueSet = result["CelebrationQueueSet"] as? Bool {
+                        afterGivt(-1, queueSet, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
                     }
                 } else {
                     self.delegate?.onGivtProcessed(transactions: transactions,
@@ -331,14 +333,15 @@ final class GivtManager: NSObject {
                                         resultData["SecondsToCelebration"] = secondsToCelebration
                                     }
                                     afterGivt(resultData)
+                                } else {
+                                    afterGivt(nil)
                                 }
-                                afterGivt(nil)
-                                print(parsedData)
                             } catch {
                                 afterGivt(nil)
                             }
+                        } else {
+                            afterGivt(nil)
                         }
-                        afterGivt(nil)
                     } else if res.status == .expectationFailed {
                         self.findAndRemoveCachedTransactions(transactions: transactions)
                         BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
