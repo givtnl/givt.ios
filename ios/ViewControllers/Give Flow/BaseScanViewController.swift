@@ -196,7 +196,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     func giveManually(antennaID: String) {
         SVProgressHUD.show()
-        GivtManager.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
+        GivtManager.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, queueSet, transactions, orgName) in
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
             }
@@ -204,11 +204,20 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             LogService.shared.info(message: "Celebrating wiiehoeeew")
             DispatchQueue.main.async {
                 let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
-                vc.secondsLeft = seconds
-                vc.transactions = transactions
-                vc.organisation = orgName
-                self.navigationController?.pushViewController(vc, animated: true)
+                if(queueSet){
+                    let vc = storyboard.instantiateViewController(withIdentifier: "CelebrationQueueVC") as! CelebrationQueueViewController
+                    vc.secondsLeft = seconds
+                    vc.transactions = transactions
+                    vc.organisation = orgName
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                    vc.secondsLeft = seconds
+                    vc.transactions = transactions
+                    vc.organisation = orgName
+                    self.navigationController?.pushViewController(vc, animated: true)
+
+                }
             }
         })
     }

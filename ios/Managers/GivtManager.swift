@@ -258,7 +258,7 @@ final class GivtManager: NSObject {
         }
     }
     
-    func giveManually(antennaId: String, afterGivt: ((Int, [Transaction], String) -> ())? = nil) {
+    func giveManually(antennaId: String, afterGivt: ((Int, Bool, [Transaction], String) -> ())? = nil) {
         let bestBeacon = BestBeacon()
         bestBeacon.beaconId = antennaId
         if let idx = antennaId.index(of: ".") {
@@ -269,6 +269,7 @@ final class GivtManager: NSObject {
         self.bestBeacon = bestBeacon
         
         let shouldCelebrate = isCelebration(orgNameSpace: bestBeacon.namespace!)
+        
         print("should celebrate \(shouldCelebrate)")
         if let afterGivt = afterGivt, shouldCelebrate {
             LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
@@ -288,9 +289,11 @@ final class GivtManager: NSObject {
             }
             
             self.cacheGivt(transactions: transactions)
-            giveCelebrate(transactions: transactions, afterGivt: { seconds in
-                if seconds > 0 {
-                    afterGivt(seconds, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+            giveCelebrate(transactions: transactions, afterGivt: { resultData in
+                if let result = resultData {
+                    if let seconds = result["SecondsToCelebration"] as? Int, let queueSet = result["CelebrationQueueSet"] as? Bool {
+                        afterGivt(seconds, queueSet, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+                    }
                 } else {
                     self.delegate?.onGivtProcessed(transactions: transactions,
                                                    organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!),
@@ -303,7 +306,7 @@ final class GivtManager: NSObject {
         
     }
     
-    private func giveCelebrate(transactions: [Transaction], afterGivt: @escaping (Int) -> ()) {
+    private func giveCelebrate(transactions: [Transaction], afterGivt: @escaping ([String: Any]?) -> ()) {
         cachedGivtsLock.lock()
         do {
             var object = ["Transactions": []]
@@ -318,34 +321,38 @@ final class GivtManager: NSObject {
                         BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         if let data = res.data {
                             do {
+                                var resultData: [String: Any] = [:]
                                 let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                                if let secondsToCelebration = parsedData["SecondsToCelebration"] as? Int {
-                                    if secondsToCelebration > 0 {
-                                        afterGivt(secondsToCelebration)
-                                        return
+                                if let celebrationQueue = parsedData["CelebrationQueueSet"] as? Bool, let secondsToCelebration = parsedData["SecondsToCelebration"] as? Int {
+                                    if celebrationQueue {
+                                        resultData["CelebrationQueueSet"] = celebrationQueue
                                     }
+                                    if secondsToCelebration > 0 {
+                                        resultData["SecondsToCelebration"] = secondsToCelebration
+                                    }
+                                    afterGivt(resultData)
                                 }
-                                afterGivt(-1)
+                                afterGivt(nil)
                                 print(parsedData)
                             } catch {
-                                afterGivt(-1)
+                                afterGivt(nil)
                             }
                         }
-                        afterGivt(-1)
+                        afterGivt(nil)
                     } else if res.status == .expectationFailed {
                         self.findAndRemoveCachedTransactions(transactions: transactions)
                         BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
-                        afterGivt(-1)
+                        afterGivt(nil)
                     } else {
-                        afterGivt(-1)
+                        afterGivt(nil)
                     }
                 } else {
                     //no response
-                    afterGivt(-1)
+                    afterGivt(nil)
                 }
             }
         } catch {
-            afterGivt(-1)
+            afterGivt(nil)
             self.log.error(message: "Unknown error : \(error)")
         }
         cachedGivtsLock.unlock()
