@@ -843,7 +843,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Givt Ltd. ...*/
 "GivtCompanyInfoGB" = "Givt Ltd.";
-"CelebrationHappyToSeeYou" = "Je Givt is gelukt en dat gaan we samen vieren!";
+"CelebrationHappyToSeeYou" = "Je Givt is gelukt en dat gaan we vieren!";
 "CelebrationQueueText" = "Het aftellen tot de Feest-Givt starten we met een pushnotificatie.";
 "CelebrationQueueCancel" = "Nee, ik doe niet mee aan de Feest-Givt";
 "CelebrationEnablePushNotification" = "Schakel pushnotificaties in";
