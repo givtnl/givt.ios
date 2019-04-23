@@ -14,7 +14,7 @@ import AppCenterPush
 import TrustKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
@@ -22,9 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
+        MSPush.setDelegate(self)
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
-            MSAnalytics.self,
-            MSCrashes.self
+                MSAnalytics.self,
+                MSCrashes.self,
+                MSPush.self
             ])
         
         if MSCrashes.hasCrashedInLastSession()  {
@@ -50,6 +52,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func doMagicForPresets() {
         if(UserDefaults.standard.object(forKey: UserDefaults.UserDefaultsKeys.presetsSet.rawValue) == nil){
             UserDefaults.standard.hasPresetsSet = UserDefaults.standard.userExt?.guid != nil
+        }
+    }
+    
+    func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
+        let title: String = pushNotification.title ?? ""
+        var message: String = pushNotification.message ?? ""
+        var customData: String = ""
+        for item in pushNotification.customData {
+            customData =  ((customData.isEmpty) ? "" : "\(customData), ") + "\(item.key): \(item.value)"
+        }
+        if (UIApplication.shared.applicationState == .background) {
+            NSLog("Notification received in background, title: \"\(title)\", message: \"\(message)\", custom data: \"\(customData)\"");
+        } else {
+            message =  message + ((customData.isEmpty) ? "" : "\n\(customData)")
+            
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
+            
+            // Show the alert controller.
+            self.window?.rootViewController?.present(alertController, animated: true)
         }
     }
     
