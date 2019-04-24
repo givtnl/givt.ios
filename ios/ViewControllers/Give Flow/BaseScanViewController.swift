@@ -199,6 +199,10 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             
             LogService.shared.info(message: "Celebrating wiiehoeeew")
             
+            if (!queueSet && seconds < 0) {
+                self.onGivtProcessed(transactions: transactions, organisationName: orgName, canShare: true)
+            }
+            
             if (queueSet) {
                 DispatchQueue.main.async {
                     let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
