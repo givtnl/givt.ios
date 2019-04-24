@@ -509,6 +509,23 @@ final class GivtManager: NSObject {
             completion(response)
         }
     }
+    
+    func getSecondsLeftToCelebrate(collectGroupId: String, completion: @escaping (Int) -> Void) {
+        client.get(url: "/api/v2/collectgroups/\(collectGroupId)/celebration", data: [:]) { (response) in
+            if let response = response, let data = response.data {
+                do {
+                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                    if let secondsLeft = parsedData["SecondsRemaining"] as? Int {
+                        completion(secondsLeft)
+                        return
+                    }
+                } catch {
+                    UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
+                }
+            }
+            completion(-1)
+        }
+    }
 
     func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
         
