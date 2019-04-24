@@ -116,6 +116,21 @@ final class NotificationManager {
         }
     }
     
+    func processIncomingNotification(payload: [String: String]) -> Void {
+        if let payloadType = payload["Type"] {
+            if let type = NotificationType(rawValue: payloadType) {
+                switch (type) {
+                case .CelebrationActivated:
+                    print("The celebration is activated")
+                }
+            } else {
+                print("no payload type found")
+            }
+        } else {
+            print("no payload type found")
+        }
+    }
+    
     func startNotificationService() -> Void {
         if loginManager.isUserLoggedIn {
             if !self.pushServiceRunning {
@@ -138,4 +153,8 @@ final class NotificationManager {
     }
     
     var notificationsEnabled: Bool { get { return !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty ?? true) } }
+    
+    enum NotificationType: String {
+        case CelebrationActivated = "CelebrationActivated"
+    }
 }
