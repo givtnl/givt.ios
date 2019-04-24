@@ -295,6 +295,8 @@ final class GivtManager: NSObject {
                         afterGivt(seconds, false, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
                     } else if let queueSet = result["CelebrationQueueSet"] as? Bool {
                         afterGivt(-1, queueSet, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+                    } else {
+                        afterGivt(-1, false, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
                     }
                 } else {
                     self.delegate?.onGivtProcessed(transactions: transactions,
