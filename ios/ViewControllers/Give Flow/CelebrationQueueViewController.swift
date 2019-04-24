@@ -9,12 +9,11 @@
 import Foundation
 import UIKit
 
-class CelebrationQueueViewController : UIViewController {
+class CelebrationQueueViewController : BaseScanViewController {
     
     var transactions: [Transaction]!
     var organisation = ""
     var secondsLeft = -1
-    private var mNotificationManager: NotificationManager = NotificationManager()
 
     @IBOutlet var titelLabel: UILabel!
     @IBOutlet var secondaryTitelLabel: UILabel!
@@ -40,10 +39,11 @@ class CelebrationQueueViewController : UIViewController {
         buttonCancelPartyGivt.setAttributedTitle(cancelStringMutable, for: UIControlState.normal)
         
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled
-        buttonEnablePushNot.isHidden = mNotificationManager.notificationsEnabled
-        imageFlash.bottomAnchor.constraint(equalTo: buttonCancelPartyGivt.topAnchor).isActive = mNotificationManager.notificationsEnabled
+        buttonEnablePushNot.isHidden = NotificationManager.shared.notificationsEnabled
+        imageFlash.bottomAnchor.constraint(equalTo: buttonCancelPartyGivt.topAnchor).isActive = NotificationManager.shared.notificationsEnabled
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_fourth"))
@@ -52,6 +52,21 @@ class CelebrationQueueViewController : UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
     }
+    
+    @IBAction func cancelCelebration(_ sender: Any) {
+        onGivtProcessed(transactions: transactions, organisationName: organisation, canShare: true)
+    }
+    
+    @IBAction func activePushNotfications(_ sender: Any) {
+        NotificationManager.shared.requestNotificationPermission(completion: { success in
+            if success {
+                self.buttonEnablePushNot.isHidden = true
+            } else {
+                self.cancelCelebration(self)
+            }
+        })
+    }
+    
     @objc func shouldShowCelebration(notification: NSNotification){
         
         if let data = notification.userInfo as? [String : String] {

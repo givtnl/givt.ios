@@ -83,22 +83,28 @@ final class NotificationManager : NSObject, MSPushDelegate {
                     center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
                         if granted {
                             self.startNotificationService()
+                            self.sendNotificationIdToServer()
+                            completion(true)
                         }
-                        completion(true)
+                        else {
+                            completion(false)
+                        }
                     }
                 } else {
                     if settings.authorizationStatus == .authorized {
                         self.startNotificationService()
+                        self.sendNotificationIdToServer()
                         completion(true)
                         return
                     }
                     
                     guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
-                        completion(true)
+                        completion(false)
                         return
                     }
                     UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
                         self.startNotificationService()
+                        self.sendNotificationIdToServer()
                         completion(true)
                     })
                 }
@@ -106,11 +112,13 @@ final class NotificationManager : NSObject, MSPushDelegate {
         } else {
             if notificationsEnabled {
                 startNotificationService()
+                sendNotificationIdToServer()
                 completion(true)
             } else {
                 UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                     self.startNotificationService()
+                    self.sendNotificationIdToServer()
                     completion(true)
                 })
             }
@@ -130,6 +138,7 @@ final class NotificationManager : NSObject, MSPushDelegate {
             }
         }
     }
+    
     func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
         if let data = pushNotification?.customData, let payloadType = data["Type"], let type = NotificationType(rawValue: payloadType) {
             switch (type) {
