@@ -14,7 +14,7 @@ import AppCenterPush
 import TrustKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
@@ -22,11 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
-        MSPush.setDelegate(self)
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
                 MSAnalytics.self,
-                MSCrashes.self,
-                MSPush.self
+                MSCrashes.self
             ])
         
         if MSCrashes.hasCrashedInLastSession()  {
@@ -157,13 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         }
         return true
     }
-    
-    func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
-        if let data = pushNotification?.customData {
-            notificationManager.processIncomingNotification(payload: data)
-        }
-    }
-    
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if let host = url.host, host == "sharemygivt" {
             if var topController = UIApplication.shared.keyWindow?.rootViewController {
