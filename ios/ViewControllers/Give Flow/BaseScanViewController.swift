@@ -201,6 +201,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             
             if (!queueSet && seconds < 0) {
                 self.onGivtProcessed(transactions: transactions, organisationName: orgName, canShare: true)
+                return
             }
             
             if (queueSet) {
