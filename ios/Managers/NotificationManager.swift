@@ -13,7 +13,7 @@ import Foundation
 import UIKit
 import UserNotifications
 
-final class NotificationManager {
+final class NotificationManager : NSObject, MSPushDelegate {
     
     static let shared: NotificationManager = NotificationManager()
     
@@ -23,7 +23,8 @@ final class NotificationManager {
     
     var pushServiceRunning = false
     
-    init() {
+    override init() {
+        super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(userDidLogin), name: .GivtUserDidLogin, object: nil)
     }
     
@@ -116,27 +117,10 @@ final class NotificationManager {
         }
     }
     
-    func processIncomingNotification(payload: [String: String]) -> Void {
-        if let payloadType = payload["Type"] {
-            if let type = NotificationType(rawValue: payloadType) {
-                switch (type) {
-                case .CelebrationActivated:
-                    if let collectGroupId = payload["CollectGroupId"] {
-                        NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil, userInfo: ["CollectGroupId": collectGroupId])
-                    }
-                    print("The celebration is activated")
-                }
-            } else {
-                print("no payload type found")
-            }
-        } else {
-            print("no payload type found")
-        }
-    }
-    
     func startNotificationService() -> Void {
         if loginManager.isUserLoggedIn {
             if !self.pushServiceRunning {
+                MSPush.setDelegate(self)
                 MSAppCenter.startService(MSPush.self)
                 self.pushServiceRunning = true
             }
@@ -144,6 +128,19 @@ final class NotificationManager {
             if !MSPush.isEnabled() {
                 MSPush.setEnabled(true)
             }
+        }
+    }
+    func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
+        if let data = pushNotification?.customData, let payloadType = data["Type"], let type = NotificationType(rawValue: payloadType) {
+            switch (type) {
+            case .CelebrationActivated:
+                if let collectGroupId = data["CollectGroupId"] {
+                    NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil, userInfo: ["CollectGroupId": collectGroupId])
+                }
+                print("The celebration is activated")
+            }
+        } else {
+            log.error(message: "Payload not correct")
         }
     }
     
