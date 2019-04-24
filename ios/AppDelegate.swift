@@ -55,26 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         }
     }
     
-    func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
-        let title: String = pushNotification.title ?? ""
-        var message: String = pushNotification.message ?? ""
-        var customData: String = ""
-        for item in pushNotification.customData {
-            customData =  ((customData.isEmpty) ? "" : "\(customData), ") + "\(item.key): \(item.value)"
-        }
-        if (UIApplication.shared.applicationState == .background) {
-            NSLog("Notification received in background, title: \"\(title)\", message: \"\(message)\", custom data: \"\(customData)\"");
-        } else {
-            message =  message + ((customData.isEmpty) ? "" : "\n\(customData)")
-            
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .cancel))
-            
-            // Show the alert controller.
-            self.window?.rootViewController?.present(alertController, animated: true)
-        }
-    }
-    
     func checkIfTempUser() {
         guard let userExt = UserDefaults.standard.userExt else { return }
         LoginManager.shared.doesEmailExist(email: userExt.email) { (status) in
@@ -178,6 +158,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         return true
     }
     
+    func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
+        if let data = pushNotification?.customData {
+            notificationManager.processIncomingNotification(payload: data)
+        }
+    }
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if let host = url.host, host == "sharemygivt" {
             if var topController = UIApplication.shared.keyWindow?.rootViewController {
@@ -214,16 +200,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
             }
         }
         return true
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        /* handle incoming notification */
-        print(userInfo)
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        /* handle incoming notification */ 
-        print(userInfo)
     }
 }
 
