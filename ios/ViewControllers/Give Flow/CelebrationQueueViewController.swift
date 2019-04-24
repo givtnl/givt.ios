@@ -52,12 +52,21 @@ class CelebrationQueueViewController : UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
     }
-    @objc func shouldShowCelebration(){
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
-        vc.transactions = transactions
-        vc.organisation = organisation
-        vc.secondsLeft = secondsLeft
-        self.navigationController?.pushViewController(vc, animated: true)
+    @objc func shouldShowCelebration(notification: NSNotification){
+        
+        if let data = notification.userInfo as? [String : String] {
+            if let collectGroupId = data["CollectGroupId"] {
+                GivtManager.shared.getSecondsLeftToCelebrate(collectGroupId: collectGroupId, completion: {secondsLeft in //TODO: Change colelctgroupid
+                    DispatchQueue.main.async {
+                        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                        vc.transactions = self.transactions
+                        vc.organisation = self.organisation
+                        vc.secondsLeft = secondsLeft
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                })
+            }
+        }
     }
 }

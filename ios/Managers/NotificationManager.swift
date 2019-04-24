@@ -121,7 +121,9 @@ final class NotificationManager {
             if let type = NotificationType(rawValue: payloadType) {
                 switch (type) {
                 case .CelebrationActivated:
-                    NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil)
+                    if let collectGroupId = payload["CollectGroupId"] {
+                        NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil, userInfo: ["CollectGroupId": collectGroupId])
+                    }
                     print("The celebration is activated")
                 }
             } else {
