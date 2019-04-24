@@ -121,6 +121,7 @@ final class NotificationManager {
             if let type = NotificationType(rawValue: payloadType) {
                 switch (type) {
                 case .CelebrationActivated:
+                    NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil)
                     print("The celebration is activated")
                 }
             } else {
