@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
-            MSAnalytics.self,
-            MSCrashes.self
+                MSAnalytics.self,
+                MSCrashes.self
             ])
         
         if MSCrashes.hasCrashedInLastSession()  {
@@ -155,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
-    
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if let host = url.host, host == "sharemygivt" {
             if var topController = UIApplication.shared.keyWindow?.rootViewController {
@@ -192,16 +192,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         return true
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        /* handle incoming notification */
-        print(userInfo)
-    }
-    
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        /* handle incoming notification */ 
-        print(userInfo)
     }
 }
 

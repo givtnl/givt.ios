@@ -13,7 +13,7 @@ import Foundation
 import UIKit
 import UserNotifications
 
-final class NotificationManager {
+final class NotificationManager : NSObject, MSPushDelegate {
     
     static let shared: NotificationManager = NotificationManager()
     
@@ -23,7 +23,8 @@ final class NotificationManager {
     
     var pushServiceRunning = false
     
-    init() {
+    override init() {
+        super.init()
         NotificationCenter.default.addObserver(self, selector: #selector(userDidLogin), name: .GivtUserDidLogin, object: nil)
     }
     
@@ -82,22 +83,28 @@ final class NotificationManager {
                     center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
                         if granted {
                             self.startNotificationService()
+                            self.sendNotificationIdToServer()
+                            completion(true)
                         }
-                        completion(true)
+                        else {
+                            completion(false)
+                        }
                     }
                 } else {
                     if settings.authorizationStatus == .authorized {
                         self.startNotificationService()
+                        self.sendNotificationIdToServer()
                         completion(true)
                         return
                     }
                     
                     guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
-                        completion(true)
+                        completion(false)
                         return
                     }
                     UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
                         self.startNotificationService()
+                        self.sendNotificationIdToServer()
                         completion(true)
                     })
                 }
@@ -105,11 +112,13 @@ final class NotificationManager {
         } else {
             if notificationsEnabled {
                 startNotificationService()
+                sendNotificationIdToServer()
                 completion(true)
             } else {
                 UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                     self.startNotificationService()
+                    self.sendNotificationIdToServer()
                     completion(true)
                 })
             }
@@ -119,6 +128,7 @@ final class NotificationManager {
     func startNotificationService() -> Void {
         if loginManager.isUserLoggedIn {
             if !self.pushServiceRunning {
+                MSPush.setDelegate(self)
                 MSAppCenter.startService(MSPush.self)
                 self.pushServiceRunning = true
             }
@@ -126,6 +136,20 @@ final class NotificationManager {
             if !MSPush.isEnabled() {
                 MSPush.setEnabled(true)
             }
+        }
+    }
+    
+    func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
+        if let data = pushNotification?.customData, let payloadType = data["Type"], let type = NotificationType(rawValue: payloadType) {
+            switch (type) {
+            case .CelebrationActivated:
+                if let collectGroupId = data["CollectGroupId"] {
+                    NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil, userInfo: ["CollectGroupId": collectGroupId])
+                }
+                print("The celebration is activated")
+            }
+        } else {
+            log.error(message: "Payload not correct")
         }
     }
     
@@ -138,4 +162,8 @@ final class NotificationManager {
     }
     
     var notificationsEnabled: Bool { get { return !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty ?? true) } }
+    
+    enum NotificationType: String {
+        case CelebrationActivated = "CelebrationActivated"
+    }
 }
