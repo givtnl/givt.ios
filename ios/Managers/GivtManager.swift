@@ -258,7 +258,7 @@ final class GivtManager: NSObject {
         }
     }
     
-    func giveManually(antennaId: String, afterGivt: ((Int, [Transaction], String) -> ())? = nil) {
+    func giveManually(antennaId: String, afterGivt: ((Int, Bool, [Transaction], String) -> ())? = nil) {
         let bestBeacon = BestBeacon()
         bestBeacon.beaconId = antennaId
         if let idx = antennaId.index(of: ".") {
@@ -269,6 +269,7 @@ final class GivtManager: NSObject {
         self.bestBeacon = bestBeacon
         
         let shouldCelebrate = isCelebration(orgNameSpace: bestBeacon.namespace!)
+        
         print("should celebrate \(shouldCelebrate)")
         if let afterGivt = afterGivt, shouldCelebrate {
             LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
@@ -288,9 +289,15 @@ final class GivtManager: NSObject {
             }
             
             self.cacheGivt(transactions: transactions)
-            giveCelebrate(transactions: transactions, afterGivt: { seconds in
-                if seconds > 0 {
-                    afterGivt(seconds, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+            giveCelebrate(transactions: transactions, afterGivt: { resultData in
+                if let result = resultData {
+                    if let seconds = result["SecondsToCelebration"] as? Int {
+                        afterGivt(seconds, false, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+                    } else if let queueSet = result["CelebrationQueueSet"] as? Bool {
+                        afterGivt(-1, queueSet, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+                    } else {
+                        afterGivt(-1, false, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
+                    }
                 } else {
                     self.delegate?.onGivtProcessed(transactions: transactions,
                                                    organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!),
@@ -303,7 +310,7 @@ final class GivtManager: NSObject {
         
     }
     
-    private func giveCelebrate(transactions: [Transaction], afterGivt: @escaping (Int) -> ()) {
+    private func giveCelebrate(transactions: [Transaction], afterGivt: @escaping ([String: Any]?) -> ()) {
         cachedGivtsLock.lock()
         do {
             var object = ["Transactions": []]
@@ -318,34 +325,39 @@ final class GivtManager: NSObject {
                         BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         if let data = res.data {
                             do {
+                                var resultData: [String: Any] = [:]
                                 let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                                if let secondsToCelebration = parsedData["SecondsToCelebration"] as? Int {
-                                    if secondsToCelebration > 0 {
-                                        afterGivt(secondsToCelebration)
-                                        return
+                                if let celebrationQueue = parsedData["CelebrationQueueSet"] as? Bool, let secondsToCelebration = parsedData["SecondsToCelebration"] as? Int {
+                                    if celebrationQueue {
+                                        resultData["CelebrationQueueSet"] = celebrationQueue
                                     }
+                                    if secondsToCelebration > 0 {
+                                        resultData["SecondsToCelebration"] = secondsToCelebration
+                                    }
+                                    afterGivt(resultData)
+                                } else {
+                                    afterGivt(nil)
                                 }
-                                afterGivt(-1)
-                                print(parsedData)
                             } catch {
-                                afterGivt(-1)
+                                afterGivt(nil)
                             }
+                        } else {
+                            afterGivt(nil)
                         }
-                        afterGivt(-1)
                     } else if res.status == .expectationFailed {
                         self.findAndRemoveCachedTransactions(transactions: transactions)
                         BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
-                        afterGivt(-1)
+                        afterGivt(nil)
                     } else {
-                        afterGivt(-1)
+                        afterGivt(nil)
                     }
                 } else {
                     //no response
-                    afterGivt(-1)
+                    afterGivt(nil)
                 }
             }
         } catch {
-            afterGivt(-1)
+            afterGivt(nil)
             self.log.error(message: "Unknown error : \(error)")
         }
         cachedGivtsLock.unlock()
@@ -497,6 +509,23 @@ final class GivtManager: NSObject {
     func delete(transactionsIds: [Int], completion: @escaping (Response?) -> Void) {
         client.delete(url: "/api/v2/Givts/Multiple", data: transactionsIds) { (response) in
             completion(response)
+        }
+    }
+    
+    func getSecondsLeftToCelebrate(collectGroupId: String, completion: @escaping (Int) -> Void) {
+        client.get(url: "/api/v2/collectgroups/\(collectGroupId)/celebration", data: [:]) { (response) in
+            if let response = response, let data = response.data {
+                do {
+                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                    if let secondsLeft = parsedData["SecondsRemaining"] as? Int {
+                        completion(secondsLeft)
+                        return
+                    }
+                } catch {
+                    UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
+                }
+            }
+            completion(-1)
         }
     }
 

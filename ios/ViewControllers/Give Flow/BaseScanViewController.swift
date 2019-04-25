@@ -151,9 +151,6 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                     callback("")
                     return
                 }
-                let signatory = Signatory(givenName: userExtension.FirstName, familyName: userExtension.LastName, iban: userExtension.IBAN, sortCode: userExtension.SortCode, accountNumber: userExtension.AccountNumber, email: userExtension.Email, telephone: userExtension.PhoneNumber, city: userExtension.City, country: userExtension.Country, postalCode: userExtension.PostalCode, street: userExtension.Address)
-                
-                let mandate = Mandate(signatory: signatory)
                 
                 if userExtension.AccountNumber != nil && userExtension.SortCode != nil {
                     self.isBacs = true
@@ -183,7 +180,6 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         guard let url = URL(string: url) else {
             return //be safe
         }
-        
         self.log.info(message: "Going to safari")
         DispatchQueue.main.async {
             if !NavigationHelper.openUrl(url: url, completion: { (status) in
@@ -196,19 +192,35 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     func giveManually(antennaID: String) {
         SVProgressHUD.show()
-        GivtManager.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, transactions, orgName) in
+        GivtManager.shared.giveManually(antennaId: antennaID, afterGivt: { (seconds, queueSet, transactions, orgName) in
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
             }
             
             LogService.shared.info(message: "Celebrating wiiehoeeew")
-            DispatchQueue.main.async {
-                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
-                vc.secondsLeft = seconds
-                vc.transactions = transactions
-                vc.organisation = orgName
-                self.navigationController?.pushViewController(vc, animated: true)
+            
+            if (!queueSet && seconds < 0) {
+                self.onGivtProcessed(transactions: transactions, organisationName: orgName, canShare: true)
+                return
+            }
+            
+            if (queueSet) {
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "CelebrationQueueVC") as! CelebrationQueueViewController
+                    vc.transactions = transactions
+                    vc.organisation = orgName
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                    vc.secondsLeft = seconds
+                    vc.transactions = transactions
+                    vc.organisation = orgName
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         })
     }

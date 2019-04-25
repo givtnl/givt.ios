@@ -123,23 +123,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 }))
                 self.present(alert, animated: true, completion:  {})
             } else if status == "dashboard" {
-                self.doLogin() { res in
+                self.doLogin(email: email) { res in
                     if res {
                         DispatchQueue.main.async {
                             SVProgressHUD.dismiss()
+                            print("Logging dashboard user in" )
+                            NavigationHelper.showRegistration(context: self, email: email, password: self.txtPassword.text!)
                         }
-                        print("Logging dashboard user in" )
-                        NavigationHelper.showRegistration(context: self, email: email, password: self.txtPassword.text!)
                     }
                 }
             } else {
-                self.doLogin() { res in
+                self.doLogin(email: email) { res in
                     if res {
                         DispatchQueue.main.async {
                             SVProgressHUD.dismiss()
-                        }
-                        print("logging user in")
-                        DispatchQueue.main.async {
+                            print("logging user in")
                             self.dismiss(animated: true, completion: { self.completionHandler() } )
                         }
                     }
@@ -148,9 +146,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func doLogin(completion: @escaping (Bool) -> Void) {
-        let email = txtUserName.text!.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
-
+    func doLogin(email: String, completion: @escaping (Bool) -> Void) {
         _ = LoginManager.shared.loginUser(email: email,password: self.txtPassword.text!, type: .password, completionHandler: { b, error, description in
             if b {
                 completion(true)
