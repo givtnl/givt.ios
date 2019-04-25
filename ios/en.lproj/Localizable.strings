@@ -845,5 +845,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "GivtCompanyInfoGB" = "Givt is a product of Givt Ltd.\nOur office is located on Noordersluisweg 27 in Lelystad, the Netherlands. \nFor questions or complaints you can reach us via support@givt.app.\n\nWe are registered under Company Number (CRN): 11396586.";
 "CelebrationHappyToSeeYou" = "Your Givt is successful, let's celebrate that together!";
 "CelebrationQueueText" = "Just leave the app open and we will make sure your phone receives a push notification to start the countdown.";
-"CelebrationQueueCancel" = "No thanks, maybe a next time";
+"CelebrationQueueCancel" = "No thanks, maybe next time";
 "CelebrationEnablePushNotification" = "Activate push notifications";
