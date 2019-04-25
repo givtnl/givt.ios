@@ -59,10 +59,12 @@ class CelebrationQueueViewController : BaseScanViewController {
     
     @IBAction func activePushNotfications(_ sender: Any) {
         NotificationManager.shared.requestNotificationPermission(completion: { success in
-            if success {
-                self.buttonEnablePushNot.isHidden = true
-            } else {
-                self.cancelCelebration(self)
+            DispatchQueue.main.async {
+                if success {
+                    self.buttonEnablePushNot.isHidden = true
+                } else {
+                    self.cancelCelebration(self)
+                }
             }
         })
     }
