@@ -33,11 +33,13 @@ class CelebrationQueueViewController : BaseScanViewController {
         
         // set button texts
         buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControlState.normal)
+        buttonEnablePushNot.accessibilityLabel = NSLocalizedString("CelebrationEnablePushNotification", comment: "")
         let cancelString = NSLocalizedString("CelebrationQueueCancel", comment: "")
         let cancelStringMutable = NSMutableAttributedString(string: cancelString)
         cancelStringMutable.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 0, length: cancelString.count))
         cancelStringMutable.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 0x2e, green: 0x29, blue: 0x57), range: NSRange(location: 0, length: cancelString.count))
         buttonCancelPartyGivt.setAttributedTitle(cancelStringMutable, for: UIControlState.normal)
+        buttonCancelPartyGivt.accessibilityLabel = NSLocalizedString("CelebrationQueueCancel", comment: "")
         
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled
         buttonEnablePushNot.isHidden = NotificationManager.shared.notificationsEnabled
