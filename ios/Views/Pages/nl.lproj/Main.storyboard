@@ -642,7 +642,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="givyGave" translatesAutoresizingMaskIntoConstraints="NO" id="cdK-pi-bub">
-                                <rect key="frame" x="199" y="547" width="136" height="197.00000000000006"/>
+                                <rect key="frame" x="199" y="728" width="136" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="EMw-R1-gR1"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="197" id="b6t-tc-UB3"/>
@@ -1224,7 +1224,9 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="amountPresetThree" destination="ov7-5Q-kWa" id="Dif-bc-myQ"/>
                         <outlet property="amountPresetTwo" destination="2Ky-9Q-vkw" id="Zvb-Wt-CpO"/>
                         <outlet property="btnComma" destination="MnM-rs-vqX" id="mUl-Ja-Npv"/>
+                        <outlet property="btnFaq" destination="btt-fE-FBf" id="Tnd-6Q-1ou"/>
                         <outlet property="btnNext" destination="avu-iq-1Ae" id="G0B-tH-oXZ"/>
+                        <outlet property="btnRemove" destination="KgC-fX-maL" id="gmb-mn-IxK"/>
                         <outlet property="calcPresetsStackView" destination="23j-EG-1Q9" id="HSQ-ib-NoU"/>
                         <outlet property="calcView" destination="Vep-oF-LTp" id="FlS-aR-4gf"/>
                         <outlet property="collectOne" destination="JdZ-h5-LAO" id="bwx-pC-KcT"/>
@@ -1356,7 +1358,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="givy-party" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-aw-gWW">
-                                <rect key="frame" x="63" y="340" width="288" height="216.00000000000006"/>
+                                <rect key="frame" x="199" y="340" width="16" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="216" id="97N-LH-ZyF"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="320" id="idb-x3-YM3"/>
