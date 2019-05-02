@@ -40,6 +40,8 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
             namespace = savedNamespace
         }
         
+        guard let _ = GivtManager.shared.orgBeaconList?.first(where: { $0.EddyNameSpace == namespace }) else { return nil }
+        
         guard let namespace = namespace else { return nil }
         
         guard let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) else { return nil }
