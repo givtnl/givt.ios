@@ -119,29 +119,19 @@ class LoginManager {
                                 config.email = email
                               
                                 UserDefaults.standard.userExt = config
-                                
-                                GivtManager.shared.getBeaconsFromOrganisation(completionHandler: { (status) in
-                                    //do nothing
-                                })
-                                
-                                GivtManager.shared.getPublicMeta()
-
+                            
                                 self.getUserExt(completion: { (obj) in
-                                    if let uext = obj {
-                                        UserDefaults.standard.amountLimit = (uext.AmountLimit == 0) ? 499 : uext.AmountLimit
+                                    if obj != nil {
+                                        self.userClaim = self.isFullyRegistered ? .give : .giveOnce
+                                        !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
                                     } else {
                                         self.log.warning(message: "Strange: we can log in but cannot retrieve our own user data")
                                     }
+                                    self.log.info(message: "User logged in")
+                                    NotificationCenter.default.post(name: .GivtUserDidLogin, object: nil)
+                                    
+                                    completionHandler(true, nil, nil)
                                 })
-                                
-                                self.checkMandate(completionHandler: { (status) in
-                                    self.userClaim = self.isFullyRegistered ? .give : .giveOnce
-                                })
-                                
-                                self.log.info(message: "User logged in")
-                                NotificationCenter.default.post(name: .GivtUserDidLogin, object: nil)
-
-                                completionHandler(true, nil, nil)
                             } else {
                                 self.log.error(message: "Could not parse access_token/.expires field")
                                 completionHandler(false, nil, nil)
@@ -197,6 +187,11 @@ class LoginManager {
                         let userExt = try JSONDecoder().decode(LMUserExt.self, from: data)
                         UserDefaults.standard.isTempUser = userExt.IsTempUser
                         UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 499 : userExt.AmountLimit
+                        UserDefaults.standard.mandateSigned = userExt.PayProvMandateStatus == "closed.completed"
+                        if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()) {
+                            UserDefaults.standard.accountType = accountType
+                        }
+                        
                         completion(userExt)
                     } catch let err as NSError {
                         self.log.error(message: err.description)
