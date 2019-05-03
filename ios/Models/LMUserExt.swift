@@ -23,4 +23,6 @@ struct LMUserExt: Codable {
     var City: String
     var IsTempUser: Bool
     var AmountLimit: Int
+    var PayProvMandateStatus: String?
+    var AccountType: String
 }
