@@ -501,9 +501,9 @@ class LoginManager {
         self.log.info(message: "Updating user extension")
         let params = [
             "Guid":  userExt.GUID,
-            "IBAN":  userExt.IBAN ?? "",
-            "AccountNumber" : userExt.AccountNumber ?? "",
-            "SortCode" : userExt.SortCode ?? "",
+            "IBAN":  userExt.IBAN as Any,
+            "AccountNumber" : userExt.AccountNumber as Any,
+            "SortCode" : userExt.SortCode as Any,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -531,8 +531,8 @@ class LoginManager {
         let params = [
             "Guid":  userExt.GUID,
             "IBAN":  iban,
-            "AccountNumber" : userExt.AccountNumber ?? "",
-            "SortCode" : userExt.SortCode ?? "",
+            "AccountNumber" : userExt.AccountNumber as Any,
+            "SortCode" : userExt.SortCode as Any,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -559,9 +559,9 @@ class LoginManager {
         self.log.info(message: "Changing mobile number")
         let params = [
             "Guid":  userExt.GUID,
-            "IBAN":  userExt.IBAN ?? "",
-            "AccountNumber" : userExt.AccountNumber ?? "",
-            "SortCode" : userExt.SortCode ?? "",
+            "IBAN":  userExt.IBAN as Any,
+            "AccountNumber" : userExt.AccountNumber as Any,
+            "SortCode" : userExt.SortCode as Any,
             "PhoneNumber":  phone,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
