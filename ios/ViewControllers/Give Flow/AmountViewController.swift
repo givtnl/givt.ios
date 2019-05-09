@@ -67,8 +67,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             fmt.minimumFractionDigits = 2
             fmt.minimumIntegerDigits = 1
             amountPresetOne.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber)
+            amountPresetOne.contentView.accessibilityLabel = fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber)
             amountPresetTwo.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber)
+            amountPresetTwo.contentView.accessibilityLabel = fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber)
             amountPresetThree.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber)
+            amountPresetThree.contentView.accessibilityLabel = fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber)
         }
     }
     
