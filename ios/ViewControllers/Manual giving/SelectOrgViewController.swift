@@ -213,6 +213,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tableView.estimatedRowHeight = 50
         
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        btnGive.accessibilityLabel = NSLocalizedString("Give", comment: "")
         
         typeStackView.addArrangedSubview(btnKerken)
         typeStackView.addArrangedSubview(btnStichtingen)
@@ -247,6 +248,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         
         searchBar.placeholder = NSLocalizedString("SearchHere", comment: "")
+        searchBar.accessibilityLabel = NSLocalizedString("SearchHere", comment: "")
         
         
     }
@@ -269,6 +271,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_third"))
+        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepThree", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
@@ -399,6 +402,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tap.numberOfTapsRequired = 1
         tap.addTarget(self, action: #selector(selectType(_:)))
         btn.addGestureRecognizer(tap)
+        btn.accessibilityLabel = NSLocalizedString("Stichtingen", comment: "")
         return btn
     }()
     
@@ -409,6 +413,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tap.numberOfTapsRequired = 1
         tap.addTarget(self, action: #selector(selectType(_:)))
         btn.addGestureRecognizer(tap)
+        btn.accessibilityLabel = NSLocalizedString("Stichtingen", comment: "")
         return btn
     }()
     
@@ -419,6 +424,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tap.numberOfTapsRequired = 1
         tap.addTarget(self, action: #selector(selectType(_:)))
         btn.addGestureRecognizer(tap)
+        btn.accessibilityLabel = NSLocalizedString("Churches", comment: "")
         return btn
     }()
     
@@ -429,6 +435,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tap.numberOfTapsRequired = 1
         tap.addTarget(self, action: #selector(selectType(_:)))
         btn.addGestureRecognizer(tap)
+        btn.accessibilityLabel = NSLocalizedString("Churches", comment: "")
         return btn
     }()
     
@@ -439,6 +446,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tap.numberOfTapsRequired = 1
         tap.addTarget(self, action: #selector(selectType(_:)))
         btn.addGestureRecognizer(tap)
+        btn.accessibilityLabel = NSLocalizedString("Acties", comment: "")
         return btn
     }()
     
@@ -449,6 +457,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tap.numberOfTapsRequired = 1
         tap.addTarget(self, action: #selector(selectType(_:)))
         btn.addGestureRecognizer(tap)
+        btn.accessibilityLabel = NSLocalizedString("Acties", comment: "")
         return btn
     }()
     lazy var btnArtiest: UIButton = {
@@ -458,6 +467,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tap.numberOfTapsRequired = 1
         tap.addTarget(self, action: #selector(selectType(_:)))
         btn.addGestureRecognizer(tap)
+        btn.accessibilityLabel = NSLocalizedString("Artists", comment: "")
         return btn
     }()
     
@@ -468,6 +478,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         tap.numberOfTapsRequired = 1
         tap.addTarget(self, action: #selector(selectType(_:)))
         btn.addGestureRecognizer(tap)
+        btn.accessibilityLabel = NSLocalizedString("Artists", comment: "")
         return btn
     }()
     

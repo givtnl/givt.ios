@@ -100,8 +100,7 @@ class LoginManager {
                         do
                         {
                             let parsedData = try JSONSerialization.jsonObject(with: data) as! [String:Any]
-                            print(parsedData)
-                            if let accessToken = parsedData["access_token"] as? String, let expiration = parsedData[".expires"] as? String {
+                            if let accessToken = parsedData["access_token"] as? String, let expiration = parsedData[".expires"] as? String, let guid = parsedData["GUID"] as? String {
                                 UserDefaults.standard.bearerToken = accessToken
                                 let df = DateFormatter()
                                 df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
@@ -111,34 +110,27 @@ class LoginManager {
                                 UserDefaults.standard.bearerExpiration = date!
                                 self.userClaim = .give
                                 UserDefaults.standard.isLoggedIn = true
+                                
+                                var config: UserExt = UserExt()
+                                if let oldConfig = UserDefaults.standard.userExt {
+                                    config = oldConfig
+                                }
+                                config.guid = guid
+                                config.email = email
+                              
+                                UserDefaults.standard.userExt = config
+                            
                                 self.getUserExt(completion: { (obj) in
-                                    if let uext = obj {
-                                        UserDefaults.standard.isTempUser = uext.IsTempUser
-                                        var config: UserExt = UserExt()
-                                        if let oldConfig = UserDefaults.standard.userExt {
-                                            config = oldConfig
-                                        }
-                                        config.guid = uext.GUID
-                                        config.email = uext.Email
-                                        
-                                        UserDefaults.standard.userExt = config
-                                        UserDefaults.standard.amountLimit = (uext.AmountLimit == 0) ? 499 : uext.AmountLimit
-                                                                                
-                                        GivtManager.shared.getBeaconsFromOrganisation(completionHandler: { (status) in
-                                            //do nothing
-                                        })
-                                        GivtManager.shared.getPublicMeta()
-                                        self.log.info(message: "User logged in")
-                                        self.checkMandate(completionHandler: { (status) in
-                                            NotificationCenter.default.post(name: .GivtUserDidLogin, object: nil)
-                                            self.userClaim = self.isFullyRegistered ? .give : .giveOnce
-                                            completionHandler(true, nil, nil)
-                                        })
+                                    if obj != nil {
+                                        self.userClaim = self.isFullyRegistered ? .give : .giveOnce
+                                        !self.isFullyRegistered ? BadgeService.shared.addBadge(badge: .completeRegistration) : BadgeService.shared.removeBadge(badge: .completeRegistration)
                                     } else {
-                                        NotificationCenter.default.post(name: .GivtUserDidLogin, object: nil)
                                         self.log.warning(message: "Strange: we can log in but cannot retrieve our own user data")
-                                        completionHandler(true, nil, nil)
                                     }
+                                    self.log.info(message: "User logged in")
+                                    NotificationCenter.default.post(name: .GivtUserDidLogin, object: nil)
+                                    
+                                    completionHandler(true, nil, nil)
                                 })
                             } else {
                                 self.log.error(message: "Could not parse access_token/.expires field")
@@ -195,6 +187,11 @@ class LoginManager {
                         let userExt = try JSONDecoder().decode(LMUserExt.self, from: data)
                         UserDefaults.standard.isTempUser = userExt.IsTempUser
                         UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 499 : userExt.AmountLimit
+                        UserDefaults.standard.mandateSigned = userExt.PayProvMandateStatus == "closed.completed"
+                        if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()) {
+                            UserDefaults.standard.accountType = accountType
+                        }
+                        
                         completion(userExt)
                     } catch let err as NSError {
                         self.log.error(message: err.description)
@@ -374,6 +371,13 @@ class LoginManager {
                 if b {
                     self.userClaim = .giveOnce
                     UserDefaults.standard.isLoggedIn = true
+                    var config: UserExt = UserExt()
+                    if let oldConfig = UserDefaults.standard.userExt {
+                        config = oldConfig
+                    }
+                    config.isTemp = true
+                    UserDefaults.standard.userExt = config
+                    UserDefaults.standard.isTempUser = config.isTemp
                     BadgeService.shared.addBadge(badge: .completeRegistration)
                     completionHandler(true)
                 } else {
@@ -497,9 +501,9 @@ class LoginManager {
         self.log.info(message: "Updating user extension")
         let params = [
             "Guid":  userExt.GUID,
-            "IBAN":  userExt.IBAN ?? "",
-            "AccountNumber" : userExt.AccountNumber ?? "",
-            "SortCode" : userExt.SortCode ?? "",
+            "IBAN":  userExt.IBAN as Any,
+            "AccountNumber" : userExt.AccountNumber as Any,
+            "SortCode" : userExt.SortCode as Any,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -527,8 +531,8 @@ class LoginManager {
         let params = [
             "Guid":  userExt.GUID,
             "IBAN":  iban,
-            "AccountNumber" : userExt.AccountNumber ?? "",
-            "SortCode" : userExt.SortCode ?? "",
+            "AccountNumber" : userExt.AccountNumber as Any,
+            "SortCode" : userExt.SortCode as Any,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -555,9 +559,9 @@ class LoginManager {
         self.log.info(message: "Changing mobile number")
         let params = [
             "Guid":  userExt.GUID,
-            "IBAN":  userExt.IBAN ?? "",
-            "AccountNumber" : userExt.AccountNumber ?? "",
-            "SortCode" : userExt.SortCode ?? "",
+            "IBAN":  userExt.IBAN as Any,
+            "AccountNumber" : userExt.AccountNumber as Any,
+            "SortCode" : userExt.SortCode as Any,
             "PhoneNumber":  phone,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
