@@ -89,21 +89,25 @@ class ChooseContextViewController: UIViewController {
                     firstSelection.content.text = element.subtitle
                     firstSelection.image.image = element.image
                     firstSelection.contextType = element.type
+                    firstSelection.contentView.accessibilityLabel = element.subtitle
                 case 1:
                     secondSelection.title.text = element.title
                     secondSelection.content.text = element.subtitle
                     secondSelection.image.image = element.image
                     secondSelection.contextType = element.type
+                    secondSelection.contentView.accessibilityLabel = element.subtitle
                 case 2:
                     thirdSelection.title.text = element.title
                     thirdSelection.content.text = element.subtitle
                     thirdSelection.image.image = element.image
                     thirdSelection.contextType = element.type
+                    thirdSelection.contentView.accessibilityLabel = element.subtitle
                 case 3:
                     fourthSelection.title.text = element.title
                     fourthSelection.content.text = element.subtitle
                     fourthSelection.image.image = element.image
                     fourthSelection.contextType = element.type
+                    fourthSelection.contentView.accessibilityLabel = element.subtitle
             default:
                 return
             }
@@ -117,6 +121,7 @@ class ChooseContextViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_second"))
+        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepTwo", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false

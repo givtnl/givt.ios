@@ -27,6 +27,7 @@ class ScanViewController: BaseScanViewController {
         gif.loadGif(name: "givt_animation")
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGive.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
+        btnGive.accessibilityLabel = NSLocalizedString("GiveDifferently", comment: "")
         titleText.text = NSLocalizedString("GiveWithYourPhone", comment: "")
         backBtn.accessibilityLabel = NSLocalizedString("Back", comment: "")
     }
@@ -95,6 +96,7 @@ class ScanViewController: BaseScanViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_third"))
+        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepThree", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor(rgb: 0xfbfbfb)
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false

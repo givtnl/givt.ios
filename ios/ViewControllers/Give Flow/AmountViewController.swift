@@ -21,6 +21,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var calcView: UIView!
     
     @IBOutlet var menu: UIBarButtonItem!
+    @IBOutlet var btnFaq: UIBarButtonItem!
+    @IBOutlet var btnRemove: CustomButton!
     @IBOutlet var btnNext: CustomButtonWithRightArrow!
     @IBOutlet var viewPresets: UIView!
     @IBOutlet var viewCalc: UIView!
@@ -135,7 +137,12 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         lblTitle.title = ""
         
         menu.accessibilityLabel = "Menu"
-        
+        btnFaq.accessibilityLabel = NSLocalizedString("FAQButtonAccessibilityLabel", comment: "")
+        btnRemove.accessibilityLabel = NSLocalizedString("RemoveBtnAccessabilityLabel", comment: "")
+        addCollect.accessibilityLabel = NSLocalizedString("AddCollect", comment: "")
+        collectOne.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("FirstCollect", comment: ""))
+        collectTwo.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("SecondCollect", comment: ""))
+        collectThree.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("ThirdCollect", comment: ""))
         
         NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(presetsWillShow), name: .GivtAmountPresetsSet, object: nil)
@@ -174,6 +181,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         }
         
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
+        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepOne", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
     }

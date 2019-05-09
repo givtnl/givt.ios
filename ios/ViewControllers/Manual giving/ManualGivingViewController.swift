@@ -40,6 +40,8 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
             namespace = savedNamespace
         }
         
+        guard let _ = GivtManager.shared.orgBeaconList?.first(where: { $0.EddyNameSpace == namespace }) else { return nil }
+        
         guard let namespace = namespace else { return nil }
         
         guard let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) else { return nil }
@@ -82,6 +84,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     
     private func createButton(text: String, image: UIImage, backgroundColor: UIColor, useShadow: Bool) -> UIButton {
         let btn = UIButton()
+        btn.accessibilityLabel = text
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.layer.cornerRadius = 3
         btn.backgroundColor = backgroundColor
@@ -134,6 +137,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
         btn.layer.shadowRadius = 2
         btn.layer.shouldRasterize = true
         btn.layer.rasterizationScale = UIScreen.main.scale
+        btn.accessibilityLabel = suggestionTitle + " " + text
         
         let borderView = UIView()
         borderView.translatesAutoresizingMaskIntoConstraints = false
@@ -264,6 +268,7 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_third"))
+        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepThree", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
