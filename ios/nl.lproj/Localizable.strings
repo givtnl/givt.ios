@@ -133,9 +133,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "JoinGivt" = "Doe je ook mee? givtapp.net/download";
 "FirstUseWelcomeSubTitle" = "Swipe voor meer informatie";
 "FirstUseWelcomeTitle" = "Welkom!";
-"FirstUseLabelTitle1" = "Registreer eenmalig";
-"FirstUseLabelTitle2" = "Kies een bedrag en geef";
-"FirstUseLabelTitle3" = "Gebruik Givt voor elke collecte";
+"FirstUseLabelTitle1" = "Met één machtiging overal geven";
+"FirstUseLabelTitle2" = "Makkelijk, veilig en anoniem geven";
+"FirstUseLabelTitle3" = "Altijd en overal geven";
 "YesSuccess" = "Yes, gelukt!";
 "ToGiveWeNeedYourEmailAddress" = "Om te geven met Givt is\nalvast je e-mailadres nodig";
 "WeWontSendAnySpam" = "(we sturen geen spam, beloofd)";
@@ -168,7 +168,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Cancelled" = "Geannuleerd";
 "Undo" = "Ongedaan maken";
 "FAQVraag16" = "Kan ik mijn giften herroepen?";
-"FAQAntwoord16" = "Binnen het eerste kwartier kan je via het giftenoverzicht je gift annuleren door naar links te swipen (vegen). Dit is enkel mogelijk binnen de eerste 15 minuten na het geven en deze manier van herroepen is kosteloos. Let op: dit kan alleen als je je registratie in de Givt-app hebt voltooid.\n\nJe kan je giften ook op een later moment herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen. Het herroepen van deze giften brengt wel storneringskosten met zich mee voor de organisatie waaraan je gegeven hebt. ";
+"FAQAntwoord16" = "Binnen het eerste kwartier kan je via het giftenoverzicht je gift annuleren door naar links te swipen (vegen). Dit is enkel mogelijk binnen de eerste 15 minuten na het geven en deze manier van herroepen is kosteloos. Let op: dit kan alleen als je je registratie in de Givt-app hebt voltooid.\n\nJe kan je giften ook op een later moment herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Alle automatische incasso’s zijn achteraf via je eigen bank te herroepen. Het herroepen van deze giften brengt wel storneringskosten met zich mee voor de organisatie waaraan je gegeven hebt.";
 "SelectContextCollect" = "Geef in de kerk, aan de deur of op straat";
 "GiveContextQR" = "Geef door middel van een QR-code";
 "SelectContextList" = "Kies een doel uit de lijst";
@@ -853,3 +853,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "ProgressBarStepThree" = "Stap 3";
 "RemoveCollectButtonAccessibilityLabel" = "Verwijder de {0}";
 "RemoveBtnAccessabilityLabel" = "Wis";
+"ProgressBarStepFour" = "Stap 4";
