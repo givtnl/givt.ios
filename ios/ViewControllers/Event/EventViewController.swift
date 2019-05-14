@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import AudioToolbox
+import AppCenterAnalytics
 
 class EventViewController: BaseScanViewController {
     @IBOutlet var giveDifferently: CustomButton!
@@ -49,8 +50,10 @@ class EventViewController: BaseScanViewController {
         vc.organisation = orgName
         vc.onClose = {}
         vc.onSuccess = {
-            self.giveManually(antennaID: identifier)
+            LogService.shared.info(message: "GIVE_LOCATION id: \(identifier)")
+            MSAnalytics.trackEvent("GIVE_LOCATION", withProperties: ["id": identifier])
             self._givtService.stopLookingForGivtLocations()
+            self.giveManually(antennaID: identifier)
         }
         DispatchQueue.main.async {
             self.present(vc, animated: true, completion: nil)

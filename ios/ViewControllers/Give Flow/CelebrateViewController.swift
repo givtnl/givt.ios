@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import AppCenterAnalytics
 
 class CelebrateViewController: BaseScanViewController {
 
@@ -22,6 +23,8 @@ class CelebrateViewController: BaseScanViewController {
     private let TORCH_TIME: Double = 10.0
     override func viewDidLoad() {
         super.viewDidLoad()
+        LogService.shared.info(message: "CELEBRATE_COUNTDOWN")
+        MSAnalytics.trackEvent("CELEBRATE_COUNTDOWN")
         timer.text = formatTime()
         gif.loadGif(name: "celebration")
         title = NSLocalizedString("CelebrateTitle", comment: "")
@@ -50,6 +53,8 @@ class CelebrateViewController: BaseScanViewController {
     @objc func tickingClocks() {
         secondsLeft = secondsLeft - 1
         if secondsLeft <= 0 {
+            LogService.shared.info(message: "CELEBRATE_FLASH")
+            MSAnalytics.trackEvent("CELEBRATE_FLASH")
             countdownTimer.invalidate()
             title = NSLocalizedString("AfterCelebrationTitle", comment: "")
             message.text = NSLocalizedString("AfterCelebrationMessage", comment: "")
