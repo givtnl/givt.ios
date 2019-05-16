@@ -20,6 +20,7 @@ class EventViewController: BaseScanViewController {
     @IBOutlet var imageV: UIImageView!
     private var countdownTimer: Timer?
     private var timer20S: Timer?
+    private var lockObj: NSRecursiveLock = NSRecursiveLock()
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = NSLocalizedString("SearchingEventText", comment: "")
@@ -39,6 +40,9 @@ class EventViewController: BaseScanViewController {
     }
     
     override func didDetectGivtLocation(orgName: String, identifier: String) {
+        // require a lock because the presenting of the eventsuggestion happens async
+        lockObj.lock()
+        // In some cases it is possible that a second screen is loading, but passes this check
         if (self.navigationController?.visibleViewController as? EventSuggestionViewController) != nil {
             return
         }
@@ -57,6 +61,8 @@ class EventViewController: BaseScanViewController {
         }
         DispatchQueue.main.async {
             self.present(vc, animated: true, completion: nil)
+            // When the eventsuggestion screen is loaded, unlock the 'lock'
+            self.lockObj.unlock()
         }
     }
     
