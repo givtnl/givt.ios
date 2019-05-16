@@ -854,3 +854,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "RemoveCollectButtonAccessibilityLabel" = "Remove the {0}";
 "RemoveBtnAccessabilityLabel" = "Erase";
 "ProgressBarStepFour" = "Stap 3";
+"ChangeBankAccountNumberAndSortCode" = "Change bank details";
