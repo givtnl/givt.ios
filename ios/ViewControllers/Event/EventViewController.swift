@@ -37,6 +37,8 @@ class EventViewController: BaseScanViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
+        LogService.shared.info(message: "GIVE_LOCATION_START")
+        MSAnalytics.trackEvent("GIVE_LOCATION_START")
     }
     
     override func didDetectGivtLocation(orgName: String, identifier: String) {
