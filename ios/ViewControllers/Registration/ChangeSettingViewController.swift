@@ -53,6 +53,9 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
             inputFieldToEdit.delegate = self
             inputFieldToEdit.keyboardType = .phonePad
+        } else if(titleOfInput == NSLocalizedString("ChangeBankAccountNumberAndSortCode", comment: "")) {
+            inputFieldToEdit.delegate = self
+            inputFieldToEdit.keyboardType = .phonePad
         }
         
         if type == SettingType.iban {
@@ -70,6 +73,11 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
             let allowedPhoneCharacters = "0123456789+"
             let cs = NSCharacterSet(charactersIn: allowedPhoneCharacters).inverted
+            let filtered = string.components(separatedBy: cs).joined(separator: "")
+            return string == filtered
+        } else if (titleOfInput == NSLocalizedString("ChangeBankAccountNumberAndSortCode", comment: "")) {
+            let allowedNumberCharacters = "0123456789"
+            let cs = NSCharacterSet(charactersIn: allowedNumberCharacters).inverted
             let filtered = string.components(separatedBy: cs).joined(separator: "")
             return string == filtered
         } else {
