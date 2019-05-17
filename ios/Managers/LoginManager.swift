@@ -467,8 +467,20 @@ class LoginManager {
         do {
             try client.post(url: "/api/users/unregister", data: [:]) { (status) in
                 if (status != nil) {
-                    self.logout()
-                    completionHandler(true)
+                    if let userExt = UserDefaults.standard.userExt {
+                        self.doesEmailExist(email: userExt.email, completionHandler: {(resp) in
+                            if (resp == "false") {
+                                completionHandler(true)
+                                self.logout()
+                            } else {
+                                self.log.error(message: "Could not terminate account because the user is still found after terminating.")
+                                completionHandler(false)
+                            }
+                        })
+                    } else {
+                        self.log.error(message: "Could not terminate account because no user ext is found on device.")
+                        completionHandler(false)
+                    }
                 } else {
                     self.log.error(message: "Could not terminate account")
                     completionHandler(false)
