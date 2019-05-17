@@ -150,4 +150,10 @@ class ValidationHelper {
         }
         return PhoneResult(isValid: false, number: nil)
     }
+    func isValidSortcode(s: String) -> Bool {
+        return s.count == 6
+    }
+    func isValidAccountNumber(s: String) -> Bool {
+        return s.count == 8
+    }
 }
