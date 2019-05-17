@@ -11,6 +11,12 @@ import CoreLocation
 import AudioToolbox
 import AppCenterAnalytics
 
+enum GivingState: Int {
+    case idle
+    case alert
+    case given
+}
+
 class EventViewController: BaseScanViewController {
     @IBOutlet var giveDifferently: CustomButton!
     private let _givtService = GivtManager.shared
@@ -20,13 +26,15 @@ class EventViewController: BaseScanViewController {
     @IBOutlet var imageV: UIImageView!
     private var countdownTimer: Timer?
     private var timer20S: Timer?
-    private var lockObj: NSRecursiveLock = NSRecursiveLock()
+
+    private var givingState: GivingState = .idle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = NSLocalizedString("SearchingEventText", comment: "")
         giveDifferently.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
         mainTitle.text = NSLocalizedString("SelectLocationContext", comment: "")
-        // Do any additional setup after loading the view.
+        self.givingState = .idle
     }
     
     @IBOutlet var givyContstraint: NSLayoutConstraint!
@@ -42,29 +50,27 @@ class EventViewController: BaseScanViewController {
     }
     
     override func didDetectGivtLocation(orgName: String, identifier: String) {
-        // require a lock because the presenting of the eventsuggestion happens async
-        lockObj.lock()
-        // In some cases it is possible that a second screen is loading, but passes this check
-        if (self.navigationController?.visibleViewController as? EventSuggestionViewController) != nil {
-            return
-        }
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventSuggestionViewController") as! EventSuggestionViewController
-        vc.providesPresentationContextTransitionStyle = true
-        vc.definesPresentationContext = true
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .crossDissolve
-        vc.organisation = orgName
-        vc.onClose = {}
-        vc.onSuccess = {
-            LogService.shared.info(message: "GIVE_LOCATION id: \(identifier)")
-            MSAnalytics.trackEvent("GIVE_LOCATION", withProperties: ["id": identifier])
-            self._givtService.stopLookingForGivtLocations()
-            self.giveManually(antennaID: identifier)
-        }
         DispatchQueue.main.async {
-            self.present(vc, animated: true, completion: nil)
-            // When the eventsuggestion screen is loaded, unlock the 'lock'
-            self.lockObj.unlock()
+            if self.givingState == .idle {
+                self.givingState = .alert
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventSuggestionViewController") as! EventSuggestionViewController
+                vc.providesPresentationContextTransitionStyle = true
+                vc.definesPresentationContext = true
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.modalTransitionStyle = .crossDissolve
+                vc.organisation = orgName
+                vc.onClose = {
+                    self.givingState = .idle
+                }
+                vc.onSuccess = {
+                    self.givingState = .given
+                    LogService.shared.info(message: "GIVE_LOCATION id: \(identifier)")
+                    MSAnalytics.trackEvent("GIVE_LOCATION", withProperties: ["id": identifier])
+                    self._givtService.stopLookingForGivtLocations()
+                    self.giveManually(antennaID: identifier)
+                }
+                self.present(vc, animated: true, completion: nil)
+            }
         }
     }
     
