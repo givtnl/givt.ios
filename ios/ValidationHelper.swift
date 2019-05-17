@@ -99,7 +99,8 @@ class ValidationHelper {
         allowedCharacters.insert(".")
         //remove all allowed characters. When rest is not 0, means that we have unwanted characters.
         let rest = string.trimmingCharacters(in: allowedCharacters)
-        let startsOrEndsWithIllegalCharacter = string.starts(with: " ") || string.starts(with: "-") || string.starts(with: "'") || string.starts(with: "’") || string.last == " " || string.last == "-" || string.last == "'" || string.last == "’" || string.starts(with: ".")
+        let trimmedString = string.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        let startsOrEndsWithIllegalCharacter = trimmedString.starts(with: " ") || trimmedString.starts(with: "-") || trimmedString.starts(with: "'") || trimmedString.starts(with: "’") || trimmedString.last == " " || trimmedString.last == "-" || trimmedString.last == "'" || trimmedString.last == "’" || trimmedString.starts(with: ".")
         //if string start or ends with illegal character => return false
         return rest.count == 0 && !startsOrEndsWithIllegalCharacter
     }
