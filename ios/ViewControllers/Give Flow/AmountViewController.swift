@@ -9,10 +9,12 @@
 import UIKit
 import MaterialShowcase
 import AppCenterCrashes
+import AppCenterAnalytics
 
 class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
     private var log: LogService = LogService.shared
     private let slideFromRightAnimation = PresentFromRight()
+    
     
     private var navigiationManager: NavigationManager = NavigationManager.shared
     private var givtService:GivtManager!
@@ -327,11 +329,15 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        
+        let hasPresetSet:String = String(UserDefaults.standard.hasPresetsSet!)
+        let usedPreset:String = String( !collectOne.IsRegularValue && !collectTwo.IsRegularValue && !collectThree.IsRegularValue)
+        MSAnalytics.trackEvent("GAVE_AMOUNT", withProperties: ["preset": hasPresetSet, "used_preset": usedPreset]) 
     }
     
     @IBAction func addValue(sender:UIButton!) {
         let currentAmountLabel = currentCollect.amountLabel!
-        
+        currentCollect.IsRegularValue = true
         if currentAmountLabel.text == "0" || pressedShortcutKey {
             currentAmountLabel.text = ""
         }
@@ -359,8 +365,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     @IBAction func addPresetValue(_ sender: Any) {
-        let currentAmountLabel = currentCollect.amountLabel!
         
+        let currentAmountLabel = currentCollect.amountLabel!
+        currentCollect.IsRegularValue = false
         let button = sender as! PresetButton
         
         currentAmountLabel.text = button.amount.text
@@ -368,6 +375,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             let decimal = Decimal(string: button.amount.text!.replacingOccurrences(of: ",", with: "."))
             if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
                 self.log.info(message: "User used a custom amount preset")
+                
             }
         } else if let decimal = Decimal(string: button.amount.text!) {
             if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
@@ -412,6 +420,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @objc func deleteCollect(sender: UIButton){
         switch sender.tag {
             case 1:
+                collectOne.IsRegularValue = false
                 deleteCollectFromView(collect: collectOne)
                 if (collectTwo.isHidden){
                     setActiveCollection(collectThree)
@@ -419,6 +428,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                     setActiveCollection(collectTwo)
                 }
             case 2:
+                 collectTwo.IsRegularValue = false
                 deleteCollectFromView(collect: collectTwo)
                 if (collectOne.isHidden){
                     setActiveCollection(collectThree)
@@ -426,6 +436,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                     setActiveCollection(collectOne)
                 }
             case 3:
+                 collectThree.IsRegularValue = false
                 deleteCollectFromView(collect: collectThree)
                 if (collectOne.isHidden){
                     setActiveCollection(collectTwo)
