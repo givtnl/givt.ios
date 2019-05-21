@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AppCenterAnalytics
 
 class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     
@@ -29,6 +30,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
              self.getDecimalValue(text: secondTextField.text!)!,
              self.getDecimalValue(text: thirdTextField.text!)!]
         LogService.shared.info(message: "Saving custom preset amounts")
+        MSAnalytics.trackEvent("PRESET_CHANGE")
         self.navigationController?.hideLeftView(self)
         self.backPressed(self)
         NotificationCenter.default.post(name: .GivtDidSavePresets, object: nil)
