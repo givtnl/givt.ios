@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import AppCenterAnalytics
 
 class ChooseContextViewController: UIViewController {
    
@@ -61,10 +62,12 @@ class ChooseContextViewController: UIViewController {
                 self.navigationController!.show(vc, sender: nil)
             case .events:
                 if !GivtManager.shared.hasGivtLocations() {
+                    MSAnalytics.trackEvent("CONTEXT_SELECTED", withProperties: ["context": "events_on"])
                     let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.navigationController?.present(alert, animated: true, completion: nil)
                 } else {
+                    MSAnalytics.trackEvent("CONTEXT_SELECTED", withProperties: ["context": "events_off"])
                     let story = UIStoryboard(name: "Event", bundle: nil)
                     let vc = story.instantiateInitialViewController() as! EventViewController
                     self.navigationController?.show(vc, sender: nil)

@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import AppCenterAnalytics
 
 class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDelegate {
     @IBOutlet var containerVIew: UIView!
@@ -26,6 +27,7 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
     private var isCameraDisabled = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        MSAnalytics.trackEvent("CONTEXT_SELECTED", withProperties: ["context": "qr"])
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         titleText.text = NSLocalizedString("GiveDifferentScan", comment: "")
         subTitle.text = NSLocalizedString("GiveDiffQRText", comment: "")
