@@ -284,6 +284,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             && Decimal(string: (collectThree.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 66.6 {
             MSCrashes.generateTestCrash()
         }
+        
+        let hasPresetSet:String = String(UserDefaults.standard.hasPresetsSet!)
+        let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
+        MSAnalytics.trackEvent("GIVING_STARTED", withProperties: ["hasPresets": hasPresetSet, "usedPresets":usedPreset])
 
         var numberOfZeroAmounts = 0
         for index in 0..<collectionViews.count {
@@ -329,15 +333,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
-        let hasPresetSet:String = String(UserDefaults.standard.hasPresetsSet!)
-        let usedPreset:String = String( !collectOne.IsRegularValue && !collectTwo.IsRegularValue && !collectThree.IsRegularValue)
-        MSAnalytics.trackEvent("GAVE_AMOUNT", withProperties: ["preset": hasPresetSet, "used_preset": usedPreset]) 
     }
     
     @IBAction func addValue(sender:UIButton!) {
         let currentAmountLabel = currentCollect.amountLabel!
-        currentCollect.IsRegularValue = true
+        currentCollect.isPreset = false
         if currentAmountLabel.text == "0" || pressedShortcutKey {
             currentAmountLabel.text = ""
         }
@@ -367,7 +367,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBAction func addPresetValue(_ sender: Any) {
         
         let currentAmountLabel = currentCollect.amountLabel!
-        currentCollect.IsRegularValue = false
+        currentCollect.isPreset = true
         let button = sender as! PresetButton
         
         currentAmountLabel.text = button.amount.text
@@ -420,7 +420,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @objc func deleteCollect(sender: UIButton){
         switch sender.tag {
             case 1:
-                collectOne.IsRegularValue = false
+                collectOne.isPreset = true
                 deleteCollectFromView(collect: collectOne)
                 if (collectTwo.isHidden){
                     setActiveCollection(collectThree)
@@ -428,7 +428,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                     setActiveCollection(collectTwo)
                 }
             case 2:
-                 collectTwo.IsRegularValue = false
+                 collectTwo.isPreset = true
                 deleteCollectFromView(collect: collectTwo)
                 if (collectOne.isHidden){
                     setActiveCollection(collectThree)
@@ -436,7 +436,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                     setActiveCollection(collectOne)
                 }
             case 3:
-                 collectThree.IsRegularValue = false
+                 collectThree.isPreset = true
                 deleteCollectFromView(collect: collectThree)
                 if (collectOne.isHidden){
                     setActiveCollection(collectTwo)
