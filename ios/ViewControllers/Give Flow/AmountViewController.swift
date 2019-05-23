@@ -284,10 +284,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             && Decimal(string: (collectThree.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 66.6 {
             MSCrashes.generateTestCrash()
         }
-        
-        let hasPresetSet:String = String(UserDefaults.standard.hasPresetsSet!)
-        let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
-        MSAnalytics.trackEvent("GIVING_STARTED", withProperties: ["hasPresets": hasPresetSet, "usedPresets":usedPreset])
 
         var numberOfZeroAmounts = 0
         for index in 0..<collectionViews.count {
@@ -317,7 +313,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 
 
         givtService.setAmounts(amounts: [(collectOne.amountLabel.text?.decimalValue)!, (collectTwo.amountLabel.text?.decimalValue)!, (collectThree.amountLabel.text?.decimalValue)!])
-
+        
+        let hasPresetSet:String = String(UserDefaults.standard.hasPresetsSet!)
+        let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
+        MSAnalytics.trackEvent("GIVING_STARTED", withProperties: ["hasPresets": hasPresetSet, "usedPresets":usedPreset])
+        
         if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
             let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
             vc.providesPresentationContextTransitionStyle = true
