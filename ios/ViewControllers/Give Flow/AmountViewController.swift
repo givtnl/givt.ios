@@ -314,9 +314,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 
         givtService.setAmounts(amounts: [(collectOne.amountLabel.text?.decimalValue)!, (collectTwo.amountLabel.text?.decimalValue)!, (collectThree.amountLabel.text?.decimalValue)!])
         
-        let hasPresetSet:String = String(UserDefaults.standard.hasPresetsSet!)
+        let hasPresetSet = UserDefaults.standard.hasPresetsSet ?? false
         let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
-        MSAnalytics.trackEvent("GIVING_STARTED", withProperties: ["hasPresets": hasPresetSet, "usedPresets":usedPreset])
+        MSAnalytics.trackEvent("GIVING_STARTED", withProperties: ["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
         
         if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
             let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
