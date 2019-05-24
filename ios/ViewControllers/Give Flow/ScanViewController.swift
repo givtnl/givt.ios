@@ -10,7 +10,6 @@ import UIKit
 import CoreBluetooth
 import SafariServices
 import MaterialShowcase
-import AppCenterAnalytics
 
 class ScanViewController: BaseScanViewController {
     @IBOutlet weak var backBtn: UIBarButtonItem!
@@ -25,7 +24,6 @@ class ScanViewController: BaseScanViewController {
     private var bluetoothMessage: UIAlertController?
     override func viewDidLoad() {
         super.viewDidLoad()
-        MSAnalytics.trackEvent("CONTEXT_SELECTED", withProperties: ["context": "collectionDevice"])
         gif.loadGif(name: "givt_animation")
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGive.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)

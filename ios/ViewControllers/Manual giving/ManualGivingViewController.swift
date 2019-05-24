@@ -28,7 +28,6 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     private var namespace: String?
     override func viewDidLoad() {
         super.viewDidLoad()
-        MSAnalytics.trackEvent("CONTEXT_SELECTED", withProperties: ["context": "manually"])
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         titleText.text = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
         renderButtons()

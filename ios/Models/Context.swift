@@ -9,11 +9,15 @@
 import Foundation
 import UIKit
 
-enum ContextType {
-    case collectionDevice
-    case qr
-    case manually
-    case events
+enum ContextType:String {
+    case GiveWithBluetooth
+    case GiveWithQR
+    case GiveFromList
+    case GiveToEvent
+    
+    var name: String {
+        get { return String(describing: self) }
+    }
 }
 
 class Context {

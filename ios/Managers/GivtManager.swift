@@ -237,7 +237,7 @@ final class GivtManager: NSObject {
         }
         self.cacheGivt(transactions: transactions)
         giveInBackground(transactions: transactions)
-        MSAnalytics.trackEvent("GIVING_FINISHED", withProperties: ["namespace": String((transactions[0].beaconId).prefix(20))])
+    MSAnalytics.trackEvent("GIVING_FINISHED", withProperties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.isReachable)])
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
     }
     
