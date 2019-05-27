@@ -19,8 +19,8 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var fieldToEdit: UILabel!
     var saveAction: (String) -> Void = {_ in }
     var saveAction2: (String, String) -> Void = {_ , _ in}
-    var validateFunction: (String) -> Bool = {(String) in return false}
-    var validateFunction2: (String) -> Bool = {(String) in return false}
+    var validateInput1: (String) -> Bool = {(String) in return false}
+    var validateInput2: (String) -> Bool = {(String) in return false}
 
     var titleOfInput: String!
     var inputOfInput: String!
@@ -51,11 +51,11 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         }
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
         if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
-            inputFieldToEdit.delegate = self
             inputFieldToEdit.keyboardType = .phonePad
         } else if(titleOfInput == NSLocalizedString("ChangeBankAccountNumberAndSortCode", comment: "")) {
-            inputFieldToEdit.delegate = self
             inputFieldToEdit.keyboardType = .phonePad
+            inputFieldToEdit2.delegate = self
+            inputFieldToEdit2.keyboardType = inputFieldToEdit.keyboardType
         }
         
         if type == SettingType.iban {
@@ -94,22 +94,22 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if(type == SettingType.bacs){
-            inputFieldToEdit.isValid = validateFunction(inputFieldToEdit.text!)
-            inputFieldToEdit2.isValid = validateFunction2(inputFieldToEdit2.text!)
+            inputFieldToEdit.isValid = validateInput1(inputFieldToEdit.text!)
+            inputFieldToEdit2.isValid = validateInput2(inputFieldToEdit2.text!)
             saveBtn.isEnabled = inputFieldToEdit.isValid && inputFieldToEdit2.isValid
         } else {
-            inputFieldToEdit.isValid = validateFunction(textField.text!)
+            inputFieldToEdit.isValid = validateInput1(textField.text!)
             saveBtn.isEnabled = inputFieldToEdit.isValid
         }
     }
     
     @objc func textFieldDidChange() {
-        inputFieldToEdit.isValid = validateFunction(inputFieldToEdit.text!)
+        inputFieldToEdit.isValid = validateInput1(inputFieldToEdit.text!)
         if type == SettingType.iban {
             inputFieldToEdit.text = inputFieldToEdit.text!.uppercased()
         } else if type == SettingType.bacs {
-            inputFieldToEdit.isValid = validateFunction(inputFieldToEdit.text!)
-            inputFieldToEdit2.isValid = validateFunction2(inputFieldToEdit2.text!)
+            inputFieldToEdit.isValid = validateInput1(inputFieldToEdit.text!)
+            inputFieldToEdit2.isValid = validateInput2(inputFieldToEdit2.text!)
             saveBtn.isEnabled = inputFieldToEdit.isValid && inputFieldToEdit2.isValid
         } else {
             saveBtn.isEnabled = inputFieldToEdit.isValid

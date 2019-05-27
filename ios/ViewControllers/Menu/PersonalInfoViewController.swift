@@ -164,7 +164,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.titleOfInput = NSLocalizedString("ChangePhone", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
 
-            vc.validateFunction = { newPhone in
+            vc.validateInput1 = { newPhone in
                 let phoneResult = self.validationHelper.isValidPhone(number: newPhone)
                 if(phoneResult.IsValid){
                     self.validatedPhoneNumber = phoneResult.Number!
@@ -215,7 +215,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.img = #imageLiteral(resourceName: "card")
             vc.titleOfInput = NSLocalizedString("ChangeIBAN", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
-            vc.validateFunction = { s in
+            vc.validateInput1 = { s in
                 return self.validationHelper.isIbanChecksumValid(s)
             }
             vc.saveAction = { s in
@@ -265,10 +265,10 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 vc.inputOfInput = uExt.SortCode
                 vc.inputOfInput2 = uExt.AccountNumber
             }
-            vc.validateFunction = { s in
+            vc.validateInput1 = { s in
                 return self.validationHelper.isValidSortcode(s: s)
             }
-            vc.validateFunction2 = { s in
+            vc.validateInput2 = { s in
                 return self.validationHelper.isValidAccountNumber(s: s)
             }
             vc.saveAction2 = { sortCode, accountNumber in
@@ -307,7 +307,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.titleOfInput = NSLocalizedString("ChangeEmail", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
             vc.keyboardTypeOfInput = UIKeyboardType.emailAddress
-            vc.validateFunction = { s in
+            vc.validateInput1 = { s in
                 return self.validationHelper.isEmailAddressValid(s.trimmingCharacters(in: CharacterSet.init(charactersIn: " ")))
             }
             vc.saveAction = { email in
