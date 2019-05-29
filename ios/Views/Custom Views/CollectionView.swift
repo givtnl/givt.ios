@@ -18,6 +18,8 @@ class CollectionView: UIControl {
     @IBOutlet weak var currencySign: UILabel!
     @IBOutlet weak var activeMarker: UIView!
     
+    var isPreset: Bool = true;
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()

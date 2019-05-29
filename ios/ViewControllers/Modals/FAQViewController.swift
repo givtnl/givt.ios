@@ -84,33 +84,37 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         
         addQuestion(q: "FAQvraag0", a: "FAQantwoord0")
         
-        addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWork")
+        // GIVING
         addQuestion(q: "FAQHowDoesGivingWork", a: "AnswerHowDoesGivingWork")
         addQuestion(q: "FAQQuestion14", a: "FAQAnswer14")
+        addQuestion(q: "FAQWhyBluetoothEnabledQ", a: "FAQWhyBluetoothEnabledA")
         addQuestion(q: "FAQHowDoesManualGivingWork", a: "AnswerHowDoesManualGivingWork")
         addQuestion(q: "KerkdienstGemistQuestion", a: "KerkdienstGemistAnswer")
-        addQuestion(q: "FAQvraag3", a: "FAQantwoord3")
-        addQuestion(q: "FAQvraag9", a: "FAQantwoord9")
-        addQuestion(q: "FAQuestAnonymity", a: "FAQanswerAnonymity")
+        addQuestion(q: "FAQVraag16", a: "FAQAntwoord16") // annuleren van giften
+        addQuestion(q: "FAQvraag5", a: "FAQantwoord5")
         addQuestion(q: "FAQQuestion12", a: "FAQAnswer12")
-        addQuestion(q: "FaqVraag10", a: "FaqAntwoord10")
+        addQuestion(q: "FAQvraag9", a: "FAQantwoord9")
+        addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
+        
+        // ACCOUNT
+        addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWork")
         addQuestion(q: "FAQQuestion11", a: "FAQAnswer11")
+        addQuestion(q: "FaqVraag10", a: "FaqAntwoord10")
+        addQuestion(q: "FAQvraag3", a: "FAQantwoord3")
         addQuestion(q: "FAQvraag8", a: "FAQantwoord8")
+        
+        // GIVT
         addQuestion(q: "FAQvraag1", a: "FAQantwoord1")
         addQuestion(q: "FAQvraag2", a: "FAQantwoord2")
         addQuestion(q: "FAQvraag4", a: "FAQantwoord4")
- 
-        addQuestion(q: "FAQvraag5", a: "FAQantwoord5")
-        addQuestion(q: "FAQVraag16", a: "FAQAntwoord16") // annuleren van giften
         addQuestion(q: "FAQvraag6", a: "FAQantwoord6")
         addQuestion(q: "FAQvraag7", a: "FAQantwoord7")
-        addQuestion(q: "FAQWhyBluetoothEnabledQ", a: "FAQWhyBluetoothEnabledA")
+        addQuestion(q: "FAQuestAnonymity", a: "FAQanswerAnonymity")
         addQuestion(q: "QuestionWhyAreMyDataStored", a: "AnswerWhyAreMyDataStored")
-        addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
         addQuestion(q: "FAQvraag18", a: "FAQAntwoord18") //GDPR
-        addQuestion(q: "FAQvraag17", a: "FAQantwoord17")
         addQuestion(q: "TermsTitle", a: "TermsText")
         addQuestion(q: "PrivacyTitle", a: "PolicyText")
+//      addQuestion(q: "FAQvraag17", a: "FAQantwoord17")
         addSpacer()
     }
     

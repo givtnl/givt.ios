@@ -137,7 +137,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         cell.img.image = settings[indexPath.row].image
         cell.accessoryType = .disclosureIndicator
         switch settings[indexPath.row].type {
-        case .name, .bacs:
+        case .name:
             cell.accessoryType = .none
             cell.labelView.alpha = 0.5
             cell.selectionStyle = .none
@@ -164,7 +164,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.titleOfInput = NSLocalizedString("ChangePhone", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
 
-            vc.validateFunction = { newPhone in
+            vc.validateInput1 = { newPhone in
                 let phoneResult = self.validationHelper.isValidPhone(number: newPhone)
                 if(phoneResult.IsValid){
                     self.validatedPhoneNumber = phoneResult.Number!
@@ -215,7 +215,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.img = #imageLiteral(resourceName: "card")
             vc.titleOfInput = NSLocalizedString("ChangeIBAN", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
-            vc.validateFunction = { s in
+            vc.validateInput1 = { s in
                 return self.validationHelper.isIbanChecksumValid(s)
             }
             vc.saveAction = { s in
@@ -255,6 +255,49 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 })
             }
             self.navigationController?.pushViewController(vc, animated: true)
+        case .bacs:
+            print("bacs")
+            let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
+            vc.type = settings[indexPath.row].type
+            vc.img = #imageLiteral(resourceName: "card")
+            vc.titleOfInput = NSLocalizedString("ChangeBankAccountNumberAndSortCode", comment: "")
+            if let uExt = self.uExt {
+                vc.inputOfInput = uExt.SortCode
+                vc.inputOfInput2 = uExt.AccountNumber
+            }
+            vc.validateInput1 = { s in
+                return self.validationHelper.isValidSortcode(s: s)
+            }
+            vc.validateInput2 = { s in
+                return self.validationHelper.isValidAccountNumber(s: s)
+            }
+            vc.saveAction2 = { sortCode, accountNumber in
+                self.uExt?.SortCode = sortCode
+                self.uExt?.AccountNumber = accountNumber
+                NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
+                    SVProgressHUD.show()
+                    self.loginManager.updateUserExt(userExt: self.uExt!) { (ok) in
+                        DispatchQueue.main.async {
+                            SVProgressHUD.dismiss()
+                        }
+                        if ok {
+                            DispatchQueue.main.async {
+                                self.backPressed(self)
+                            }
+                        } else {
+                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
+                                
+                            }))
+                            DispatchQueue.main.async {
+                                self.present(alert, animated: true, completion:nil)
+                            }
+                        }
+                    }
+                })
+            }
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         case .emailaddress:
             print("emailadres")
             
@@ -264,7 +307,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.titleOfInput = NSLocalizedString("ChangeEmail", comment: "")
             vc.inputOfInput = settings[indexPath.row].name
             vc.keyboardTypeOfInput = UIKeyboardType.emailAddress
-            vc.validateFunction = { s in
+            vc.validateInput1 = { s in
                 return self.validationHelper.isEmailAddressValid(s.trimmingCharacters(in: CharacterSet.init(charactersIn: " ")))
             }
             vc.saveAction = { email in

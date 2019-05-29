@@ -22,7 +22,6 @@ class NavigationManager {
     private var logService = LogService.shared
     private let _appServices = AppServices.shared
     private let slideFromRightAnimation = PresentFromRight()
-    private var currentContextType: ContextType?
     
     var delegate: NavigationManagerDelegate?
     

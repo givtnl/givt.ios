@@ -13,14 +13,21 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var saveBtn: CustomButton!
     @IBOutlet var bottomAnchor: NSLayoutConstraint!
     @IBOutlet var imgView: UIImageView!
+    @IBOutlet var imgView2: UIImageView!
     @IBOutlet var inputFieldToEdit: SpecialUITextField!
+    @IBOutlet var inputFieldToEdit2: SpecialUITextField!
     @IBOutlet var fieldToEdit: UILabel!
     var saveAction: (String) -> Void = {_ in }
-    var validateFunction: (String) -> Bool = {_ in return false}
-    
+    var saveAction2: (String, String) -> Void = {_ , _ in}
+    var validateInput1: (String) -> Bool = {(String) in return false}
+    var validateInput2: (String) -> Bool = {(String) in return false}
+
     var titleOfInput: String!
     var inputOfInput: String!
+    var inputOfInput2: String!
+
     var keyboardTypeOfInput: UIKeyboardType!
+    
     var type: SettingType!
     
     var img: UIImage!
@@ -34,18 +41,30 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         inputFieldToEdit.text = inputOfInput
         fieldToEdit.text = titleOfInput
         imgView.image = img
+        
+        imgView2.isHidden = true
+        inputFieldToEdit2.isHidden = true
+        
         inputFieldToEdit.delegate = self
         if let keyboardTypeOfInput = keyboardTypeOfInput {
             inputFieldToEdit.keyboardType = keyboardTypeOfInput
         }
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
         if(titleOfInput == NSLocalizedString("ChangePhone", comment: "")){
-            inputFieldToEdit.delegate = self
             inputFieldToEdit.keyboardType = .phonePad
+        } else if(titleOfInput == NSLocalizedString("ChangeBankAccountNumberAndSortCode", comment: "")) {
+            inputFieldToEdit.keyboardType = .phonePad
+            inputFieldToEdit2.delegate = self
+            inputFieldToEdit2.keyboardType = inputFieldToEdit.keyboardType
         }
         
         if type == SettingType.iban {
             inputFieldToEdit.autocapitalizationType = .allCharacters
+        }
+        if type == SettingType.bacs {
+            imgView2.isHidden = false
+            inputFieldToEdit2.isHidden = false
+            inputFieldToEdit2.text = inputOfInput2
         }
     }
     
@@ -56,6 +75,11 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
             let cs = NSCharacterSet(charactersIn: allowedPhoneCharacters).inverted
             let filtered = string.components(separatedBy: cs).joined(separator: "")
             return string == filtered
+        } else if (titleOfInput == NSLocalizedString("ChangeBankAccountNumberAndSortCode", comment: "")) {
+            let allowedNumberCharacters = "0123456789"
+            let cs = NSCharacterSet(charactersIn: allowedNumberCharacters).inverted
+            let filtered = string.components(separatedBy: cs).joined(separator: "")
+            return string == filtered
         } else {
             return true
         }
@@ -64,19 +88,32 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         inputFieldToEdit.becomeFirstResponder()
         inputFieldToEdit.beganEditing()
+        inputFieldToEdit2.beganEditing()
+
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        inputFieldToEdit.isValid = validateFunction(textField.text!)
-        saveBtn.isEnabled = inputFieldToEdit.isValid
+        if(type == SettingType.bacs){
+            inputFieldToEdit.isValid = validateInput1(inputFieldToEdit.text!)
+            inputFieldToEdit2.isValid = validateInput2(inputFieldToEdit2.text!)
+            saveBtn.isEnabled = inputFieldToEdit.isValid && inputFieldToEdit2.isValid
+        } else {
+            inputFieldToEdit.isValid = validateInput1(textField.text!)
+            saveBtn.isEnabled = inputFieldToEdit.isValid
+        }
     }
     
     @objc func textFieldDidChange() {
+        inputFieldToEdit.isValid = validateInput1(inputFieldToEdit.text!)
         if type == SettingType.iban {
             inputFieldToEdit.text = inputFieldToEdit.text!.uppercased()
+        } else if type == SettingType.bacs {
+            inputFieldToEdit.isValid = validateInput1(inputFieldToEdit.text!)
+            inputFieldToEdit2.isValid = validateInput2(inputFieldToEdit2.text!)
+            saveBtn.isEnabled = inputFieldToEdit.isValid && inputFieldToEdit2.isValid
+        } else {
+            saveBtn.isEnabled = inputFieldToEdit.isValid
         }
-        inputFieldToEdit.isValid = validateFunction(inputFieldToEdit.text!)
-        saveBtn.isEnabled = inputFieldToEdit.isValid
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -104,7 +141,11 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func saveAction(_ sender: Any) {
         self.endEditing()
-        self.saveAction(inputFieldToEdit.text!)
+        if type == SettingType.bacs {
+            self.saveAction2(inputFieldToEdit.text!, inputFieldToEdit2.text!)
+        } else {
+            self.saveAction(inputFieldToEdit.text!)
+        }
     }
     
     //and then:
