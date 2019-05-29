@@ -81,6 +81,18 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         for view in stack.arrangedSubviews {
             view.removeFromSuperview()
         }
+        let termsText: String = ""; let policyText: String = "";
+        if let countryCode = AppServices.getCountryFromSim() {
+            if countryCode == "GB" {
+                termsText = "TermsTextGB"
+                policyText = "PolicyTextGB"
+            } else {
+                termsText = "TermsText"
+                policyText = "PolicyText"
+            }
+        }
+        
+        
         
         addQuestion(q: "FAQvraag0", a: "FAQantwoord0")
         
@@ -112,9 +124,9 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         addQuestion(q: "FAQuestAnonymity", a: "FAQanswerAnonymity")
         addQuestion(q: "QuestionWhyAreMyDataStored", a: "AnswerWhyAreMyDataStored")
         addQuestion(q: "FAQvraag18", a: "FAQAntwoord18") //GDPR
-        addQuestion(q: "TermsTitle", a: "TermsText")
-        addQuestion(q: "PrivacyTitle", a: "PolicyText")
-//      addQuestion(q: "FAQvraag17", a: "FAQantwoord17")
+        addQuestion(q: "TermsTitle", a: termsText)
+        addQuestion(q: "PrivacyTitle", a: policyText)
+
         addSpacer()
     }
     
