@@ -221,8 +221,8 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ChangeIBAN" = "IBAN wijzigen";
 "SmsSuccess" = "Code verstuurd via SMS";
 "SmsFailed" = "Probeer later opnieuw";
-"KerkdienstGemistQuestion" = "Hoe kan ik geven met Givt via de Kerkdienst Gemist-app?";
-"KerkdienstGemistAnswer" = "Als je via de Kerkdienst Gemist-app aan het kijken bent, kan je ook meteen geven met Givt als je kerk dat gebruikt. Onderin de pagina vind je een knop die je doorstuurt naar de Givt-app. Kies een bedrag, druk op 'Ja, graag' wanneer de suggestie verschijnt en klaar!";
+"KerkdienstGemistQuestion" = "Hoe kan ik geven met Givt via 3de-partijen?";
+"KerkdienstGemistAnswer" = "Kerkdienst Gemist\nAls je via de Kerkdienst Gemist-app aan het kijken bent, kan je ook meteen geven met Givt als je kerk dat gebruikt. Onderin de pagina vind je een knop die je doorstuurt naar de Givt-app. Kies een bedrag, druk op 'Ja, graag' wanneer de suggestie verschijnt en klaar!";
 "ExternalSuggestionLabel" = "We zien dat je geeft vanuit {0}. Wil je geven aan {1}?";
 "ChooseHowIGive" = "Nee, ik wil zelf kiezen hoe ik geef";
 "AndersGeven" = "Anders geven";
@@ -769,7 +769,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQQuestion14" = "Hoe kan ik geven aan meerdere collectes?";
 
 /*antwoord meerdere collectesvraag*/
-"FAQAnswer14" = "Meerdere collectes in één dienst? Activeer tot drie collectes, de groene lijn laat zien welk collectedoel (1, 2 en 3) geselecteerd is. Vul de bedragen in, in de volgorde waarop de collectedoelen in de dienst voorbij komen.\n\nWanneer je geeft aan de eerste collectezak of -mand die voorbij komt, worden alle giften meteen verstuurd. Je geeft dus met één beweging. In het overzicht van je giften vind je jouw giften aan de verschillende doelen terug. (Op dit moment is het alleen mogelijk om de collectedoelen te onderscheiden als collecte 1, 2 of 3. Jouw kerk weet welk collectenummer overeenkomt met welk collectedoel.)\nToch een collecte overslaan? Laat die collecte open of verwijder hem.";
+"FAQAnswer14" = "Zijn er meerdere collectes in één dienst? Ook dan kan je geven in één vlotte beweging. \nDoor op de ‘Collecte toevoegen’-knop te drukken, kun je tot drie collectes activeren. Bij iedere collecte kun je een zelfgekozen bedrag invoeren. Klik op de collecte die je wilt aanpassen en vul een bedrag in of maak gebruik van de voorkeursbedragen. Het verwijderen van een collecte doe je door te drukken op het min-teken, rechts van het bedrag. \n\nDe verschillende collectedoelen worden onderscheiden door nummer 1, 2 of 3. Jouw kerk weet welk collectenummer overeenkomt met welk collectedoel. Al bij de eerste collectezak of -mand waar je aan geeft, worden alle giften verstuurd. In het giften-overzicht kun je al je giften terugvinden.\n\nWil je toch een collecte overslaan? Laat dan die collecte open (€ 0,00) of verwijder deze door te drukken op het min-teken, rechts van het bedrag.";
 
 /*Begeleidingstekst meerdere collectes*/
 "Feature_MultipleCollections" = "Nieuws! Je kan nu met één beweging tot drie verschillende doelen een handje helpen. Is het deze maand toch iets te hard gegaan, sla er dan eentje over of verwijder een collecte met een dubbele tap. Wil je meer weten, check dan onze FAQ.";
