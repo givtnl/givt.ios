@@ -14,6 +14,7 @@ import SwiftClient
 import CoreLocation
 import SwiftCron
 import Reachability
+import AppCenterAnalytics
 
 struct BeaconList: Codable {
     var OrgBeacons: [OrgBeacon]
@@ -236,6 +237,7 @@ final class GivtManager: NSObject {
         }
         self.cacheGivt(transactions: transactions)
         giveInBackground(transactions: transactions)
+    MSAnalytics.trackEvent("GIVING_FINISHED", withProperties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.isReachable)])
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
     }
     
@@ -299,6 +301,7 @@ final class GivtManager: NSObject {
                         afterGivt(-1, false, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
                     }
                 } else {
+                    MSAnalytics.trackEvent("GIVING_FINISHED", withProperties: ["namespace": String((transactions[0].beaconId).prefix(20))])
                     self.delegate?.onGivtProcessed(transactions: transactions,
                                                    organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!),
                                                    canShare: self.canShare(id: bestBeacon.beaconId!))

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AppCenterAnalytics
 
 class CelebrationQueueViewController : BaseScanViewController {
     
@@ -24,7 +25,8 @@ class CelebrationQueueViewController : BaseScanViewController {
     @IBOutlet var buttonCancelPartyGivt: CustomButton!
     
     override func viewDidLoad() {
-        
+        LogService.shared.info(message: "CELEBRATE_QUEUE")
+        MSAnalytics.trackEvent("CELEBRATE_QUEUE")
         NotificationCenter.default.addObserver(self, selector: #selector(shouldShowCelebration), name: .GivtReceivedCelebrationNotification, object: nil)
 
         // set label texts
@@ -57,6 +59,8 @@ class CelebrationQueueViewController : BaseScanViewController {
     }
     
     @IBAction func cancelCelebration(_ sender: Any) {
+        LogService.shared.info(message: "CELEBRATE_QUEUE_CANCEL")
+        MSAnalytics.trackEvent("CELEBRATE_QUEUE_CANCEL")
         onGivtProcessed(transactions: transactions, organisationName: organisation, canShare: true)
     }
     

@@ -9,6 +9,13 @@
 import UIKit
 import CoreLocation
 import AudioToolbox
+import AppCenterAnalytics
+
+enum GivingState: Int {
+    case idle
+    case alert
+    case given
+}
 
 class EventViewController: BaseScanViewController {
     @IBOutlet var giveDifferently: CustomButton!
@@ -19,12 +26,15 @@ class EventViewController: BaseScanViewController {
     @IBOutlet var imageV: UIImageView!
     private var countdownTimer: Timer?
     private var timer20S: Timer?
+
+    private var givingState: GivingState = .idle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         titleLabel.text = NSLocalizedString("SearchingEventText", comment: "")
         giveDifferently.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
         mainTitle.text = NSLocalizedString("SelectLocationContext", comment: "")
-        // Do any additional setup after loading the view.
+        self.givingState = .idle
     }
     
     @IBOutlet var givyContstraint: NSLayoutConstraint!
@@ -35,25 +45,32 @@ class EventViewController: BaseScanViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
+        LogService.shared.info(message: "GIVE_LOCATION_START")
+        MSAnalytics.trackEvent("GIVE_LOCATION_START")
     }
     
     override func didDetectGivtLocation(orgName: String, identifier: String) {
-        if (self.navigationController?.visibleViewController as? EventSuggestionViewController) != nil {
-            return
-        }
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventSuggestionViewController") as! EventSuggestionViewController
-        vc.providesPresentationContextTransitionStyle = true
-        vc.definesPresentationContext = true
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .crossDissolve
-        vc.organisation = orgName
-        vc.onClose = {}
-        vc.onSuccess = {
-            self.giveManually(antennaID: identifier)
-            self._givtService.stopLookingForGivtLocations()
-        }
         DispatchQueue.main.async {
-            self.present(vc, animated: true, completion: nil)
+            if self.givingState == .idle {
+                self.givingState = .alert
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "EventSuggestionViewController") as! EventSuggestionViewController
+                vc.providesPresentationContextTransitionStyle = true
+                vc.definesPresentationContext = true
+                vc.modalPresentationStyle = .overCurrentContext
+                vc.modalTransitionStyle = .crossDissolve
+                vc.organisation = orgName
+                vc.onClose = {
+                    self.givingState = .idle
+                }
+                vc.onSuccess = {
+                    self.givingState = .given
+                    LogService.shared.info(message: "GIVE_LOCATION id: \(identifier)")
+                    MSAnalytics.trackEvent("GIVE_LOCATION", withProperties: ["id": identifier])
+                    self._givtService.stopLookingForGivtLocations()
+                    self.giveManually(antennaID: identifier)
+                }
+                self.present(vc, animated: true, completion: nil)
+            }
         }
     }
     

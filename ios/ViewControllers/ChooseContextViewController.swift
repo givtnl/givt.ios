@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import AppCenterAnalytics
 
 class ChooseContextViewController: UIViewController {
    
@@ -22,10 +23,10 @@ class ChooseContextViewController: UIViewController {
     @IBOutlet var fourthSelection: SelectContextView!
     
     lazy var contexts: [Context] = {
-        let collectionDevice = Context(title: NSLocalizedString("GivingContextCollectionBag", comment: ""), subtitle: NSLocalizedString("SelectContextCollect", comment: ""), type: ContextType.collectionDevice, image: #imageLiteral(resourceName: "collectebus_grijs"))
-        let qr = Context(title: NSLocalizedString("GivingContextQRCode", comment: ""), subtitle: NSLocalizedString("GiveContextQR", comment: ""), type: ContextType.qr, image: #imageLiteral(resourceName: "qr_scan_phone_grijs"))
-        let list = Context(title: NSLocalizedString("GivingContextCollectionBagList", comment: ""),subtitle: NSLocalizedString("SelectContextList", comment: ""), type: ContextType.manually, image: #imageLiteral(resourceName: "selectlist_grijs"))
-        let location = Context(title: NSLocalizedString("GivingContextLocation", comment: ""), subtitle: NSLocalizedString("SelectLocationContextLong", comment: ""), type: ContextType.events, image: #imageLiteral(resourceName: "locatie_grijs"))
+        let collectionDevice = Context(title: NSLocalizedString("GivingContextCollectionBag", comment: ""), subtitle: NSLocalizedString("SelectContextCollect", comment: ""), type: ContextType.GiveWithBluetooth, image: #imageLiteral(resourceName: "collectebus_grijs"))
+        let qr = Context(title: NSLocalizedString("GivingContextQRCode", comment: ""), subtitle: NSLocalizedString("GiveContextQR", comment: ""), type: ContextType.GiveWithQR, image: #imageLiteral(resourceName: "qr_scan_phone_grijs"))
+        let list = Context(title: NSLocalizedString("GivingContextCollectionBagList", comment: ""),subtitle: NSLocalizedString("SelectContextList", comment: ""), type: ContextType.GiveFromList, image: #imageLiteral(resourceName: "selectlist_grijs"))
+        let location = Context(title: NSLocalizedString("GivingContextLocation", comment: ""), subtitle: NSLocalizedString("SelectLocationContextLong", comment: ""), type: ContextType.GiveToEvent, image: #imageLiteral(resourceName: "locatie_grijs"))
     return [collectionDevice, qr, list, location]
     }()
     
@@ -43,23 +44,24 @@ class ChooseContextViewController: UIViewController {
 
     @IBAction func selectContext(_ sender: Any) {
         let contextType = (sender as! SelectContextView).contextType
+        MSAnalytics.trackEvent("CONTEXT_SELECTED", withProperties: ["context": contextType!.name])
         let sb = UIStoryboard(name:"Main", bundle:nil)
         DispatchQueue.main.async {
             switch contextType! {
-            case .collectionDevice:
+            case .GiveWithBluetooth:
                 if GivtManager.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
                     let vc = sb.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
                     self.navigationController!.show(vc, sender: nil)
                 } else {
                     self.showBluetoothMessage()
                 }
-            case .qr:
+            case .GiveWithQR:
                 let vc = sb.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
                 self.navigationController!.show(vc, sender: nil)
-            case .manually:
+            case .GiveFromList:
                 let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
                 self.navigationController!.show(vc, sender: nil)
-            case .events:
+            case .GiveToEvent:
                 if !GivtManager.shared.hasGivtLocations() {
                     let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -112,7 +114,7 @@ class ChooseContextViewController: UIViewController {
                 return
             }
             
-            if !GivtManager.shared.hasGivtLocations() && element.type == .events {
+            if !GivtManager.shared.hasGivtLocations() && element.type == .GiveToEvent {
                 fourthSelection.alpha = 0.4
             }
         }

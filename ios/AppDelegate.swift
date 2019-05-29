@@ -178,10 +178,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name == "mediumid" })?.value,
                     let appId = queryItems.first(where: { (item) -> Bool in item.name == "appid" })?.value
                 {
-                    if let element = AppConstants.externalApps[appId], let imageString = element["logo"], let image = UIImage(named: imageString), let name = element["name"] {
+                    if let element = AppConstants.externalApps[appId], let name = element["name"] {
                         if mediumIdValue.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumIdValue.prefix(20))) == nil {
                             LogService.shared.warning(message: "Illegal mediumid \"\(mediumIdValue)\" provided. Going to normal give flow")
                         } else {
+                            var image: UIImage? = nil
+                            if let imageString = element["logo"] {
+                                image = UIImage(named: imageString)
+                            }
                             GivtManager.shared.externalIntegration = ExternalAppIntegration(name: name, logo: image, mediumId: mediumIdValue, appScheme: fromValue)
                             LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app with identifier \(mediumIdValue)")
                         }

@@ -9,10 +9,12 @@
 import UIKit
 import MaterialShowcase
 import AppCenterCrashes
+import AppCenterAnalytics
 
 class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
     private var log: LogService = LogService.shared
     private let slideFromRightAnimation = PresentFromRight()
+    
     
     private var navigiationManager: NavigationManager = NavigationManager.shared
     private var givtService:GivtManager!
@@ -311,7 +313,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 
 
         givtService.setAmounts(amounts: [(collectOne.amountLabel.text?.decimalValue)!, (collectTwo.amountLabel.text?.decimalValue)!, (collectThree.amountLabel.text?.decimalValue)!])
-
+        
+        let hasPresetSet = UserDefaults.standard.hasPresetsSet ?? false
+        let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
+        MSAnalytics.trackEvent("GIVING_STARTED", withProperties: ["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
+        
         if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
             let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
             vc.providesPresentationContextTransitionStyle = true
@@ -331,7 +337,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     @IBAction func addValue(sender:UIButton!) {
         let currentAmountLabel = currentCollect.amountLabel!
-        
+        currentCollect.isPreset = false
         if currentAmountLabel.text == "0" || pressedShortcutKey {
             currentAmountLabel.text = ""
         }
@@ -359,8 +365,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     @IBAction func addPresetValue(_ sender: Any) {
-        let currentAmountLabel = currentCollect.amountLabel!
         
+        let currentAmountLabel = currentCollect.amountLabel!
+        currentCollect.isPreset = true
         let button = sender as! PresetButton
         
         currentAmountLabel.text = button.amount.text
@@ -368,6 +375,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             let decimal = Decimal(string: button.amount.text!.replacingOccurrences(of: ",", with: "."))
             if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
                 self.log.info(message: "User used a custom amount preset")
+                
             }
         } else if let decimal = Decimal(string: button.amount.text!) {
             if decimal != 2.5 && decimal != 7.5 && decimal != 12.5 {
@@ -412,6 +420,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @objc func deleteCollect(sender: UIButton){
         switch sender.tag {
             case 1:
+                collectOne.isPreset = true
                 deleteCollectFromView(collect: collectOne)
                 if (collectTwo.isHidden){
                     setActiveCollection(collectThree)
@@ -419,6 +428,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                     setActiveCollection(collectTwo)
                 }
             case 2:
+                 collectTwo.isPreset = true
                 deleteCollectFromView(collect: collectTwo)
                 if (collectOne.isHidden){
                     setActiveCollection(collectThree)
@@ -426,6 +436,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                     setActiveCollection(collectOne)
                 }
             case 3:
+                 collectThree.isPreset = true
                 deleteCollectFromView(collect: collectThree)
                 if (collectOne.isHidden){
                     setActiveCollection(collectTwo)
