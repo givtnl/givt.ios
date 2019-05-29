@@ -81,7 +81,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         for view in stack.arrangedSubviews {
             view.removeFromSuperview()
         }
-        let termsText: String = ""; let policyText: String = "";
+        var termsText: String = ""; var policyText: String = "";
         if let countryCode = AppServices.getCountryFromSim() {
             if countryCode == "GB" {
                 termsText = "TermsTextGB"
