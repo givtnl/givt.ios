@@ -61,7 +61,6 @@
 		D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754DA3A1F3B45D5001B7040 /* UIButtonExtensions.swift */; };
 		D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75AA195200CBFD5006E09BB /* TaxesViewController.swift */; };
 		D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B2BCE1FCEADE8000B7968 /* APIClient.swift */; };
-		D75B2BD21FCEAE05000B7968 /* IAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75B2BD11FCEAE05000B7968 /* IAPIClient.swift */; };
 		D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */; };
 		D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75F2CD01FACA73900F40827 /* QRViewController.swift */; };
 		D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76022071F56F06600C24AB6 /* AmountLimitViewController.swift */; };
@@ -265,7 +264,6 @@
 		D754DA3A1F3B45D5001B7040 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		D75AA195200CBFD5006E09BB /* TaxesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxesViewController.swift; sourceTree = "<group>"; };
 		D75B2BCE1FCEADE8000B7968 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		D75B2BD11FCEAE05000B7968 /* IAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPIClient.swift; sourceTree = "<group>"; };
 		D75F2CCE1FAC69EB00F40827 /* ManualGivingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualGivingViewController.swift; sourceTree = "<group>"; };
 		D75F2CD01FACA73900F40827 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		D76021DE1F56B4DD00C24AB6 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
@@ -446,17 +444,8 @@
 			children = (
 				D75B2BCE1FCEADE8000B7968 /* APIClient.swift */,
 				D73E976D1FD000CE00EFD8E1 /* AuthClient.swift */,
-				D75B2BD01FCEADF4000B7968 /* Interfaces */,
 			);
 			path = APIClients;
-			sourceTree = "<group>";
-		};
-		D75B2BD01FCEADF4000B7968 /* Interfaces */ = {
-			isa = PBXGroup;
-			children = (
-				D75B2BD11FCEAE05000B7968 /* IAPIClient.swift */,
-			);
-			path = Interfaces;
 			sourceTree = "<group>";
 		};
 		D75F2CCD1FAC69B400F40827 /* Manual giving */ = {
@@ -1170,7 +1159,6 @@
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
-				D75B2BD21FCEAE05000B7968 /* IAPIClient.swift in Sources */,
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
 				D75F2CCF1FAC69EB00F40827 /* ManualGivingViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,

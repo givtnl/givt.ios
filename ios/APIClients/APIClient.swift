@@ -10,7 +10,7 @@ import Foundation
 import SwiftClient
 import TrustKit
 
-class APIClient: NSObject, IAPIClient, URLSessionDelegate {
+class APIClient: NSObject, URLSessionDelegate {
     static let shared = APIClient()
     private var log = LogService.shared
     
