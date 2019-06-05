@@ -532,7 +532,7 @@ final class GivtManager: NSObject {
         }
     }
 
-    func getBeaconsFromOrganisation(tries: Int = 5, completionHandler: @escaping (Bool) -> Void) {
+    func getBeaconsFromOrganisation(tries: Int = 4, completionHandler: @escaping (Bool) -> Void) {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
             let data = ["Guid" : userExt.guid]
