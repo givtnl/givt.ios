@@ -21,7 +21,7 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
         
     }
    
-    func get(url: String, data: [String: String], headers: [String: String] = [:], timeout: Double, callback: @escaping (Response?) -> Void) {
+    func get(url: String, data: [String: String], headers: [String: String] = [:], timeout: Double = 60, callback: @escaping (Response?) -> Void) {
         var headers = headers
         headers["Accept-Language"] = Locale.preferredLanguages[0]
         if let bearerToken = UserDefaults.standard.bearerToken {
