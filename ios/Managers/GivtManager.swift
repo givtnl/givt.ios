@@ -557,7 +557,10 @@ final class GivtManager: NSObject {
                         } catch let err as NSError {
                             if (tries > 0) {
                                 self.getBeaconsFromOrganisation(tries: tries-1,  completionHandler: completionHandler)
+                                self.log.warning(message: "Retrying the fetch beacon list.")
                                 return
+                            } else {
+                                self.log.warning(message: "Stop trying to fetch beacon list.")
                             }
                             completionHandler(false)
                             print(err)
@@ -568,7 +571,10 @@ final class GivtManager: NSObject {
                     } else {
                         if (tries > 0) {
                             self.getBeaconsFromOrganisation(tries: tries-1,  completionHandler: completionHandler)
+                            self.log.warning(message: "Retrying the fetch beacon list.")
                             return
+                        } else {
+                            self.log.warning(message: "Stop trying to fetch beacon list.")
                         }
                         completionHandler(false)
                         print("unknow statuscode")
@@ -576,7 +582,10 @@ final class GivtManager: NSObject {
                 } else {
                     if (tries > 0) {
                         self.getBeaconsFromOrganisation(tries: tries-1,  completionHandler: completionHandler)
+                        self.log.warning(message: "Retrying the fetch beacon list.")
                         return
+                    } else {
+                        self.log.warning(message: "Stop trying to fetch beacon list.")
                     }
                     print("no response from server?")
                     completionHandler(false)
