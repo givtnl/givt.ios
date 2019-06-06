@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -285,14 +285,14 @@ The company name which will appear on your bank statement against the Direct Deb
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEED HELP?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfY-Np-hKx">
-                                <rect key="frame" x="134" y="40" width="146" height="33"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEED HELP?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="JfY-Np-hKx">
+                                <rect key="frame" x="50" y="40" width="294" height="27.333333333333329"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYR-iY-znj">
-                                <rect key="frame" x="0.0" y="93" width="414" height="643"/>
+                                <rect key="frame" x="0.0" y="87.333333333333314" width="414" height="648.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nob-Yo-ugO">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1331.6666666666667"/>
@@ -334,7 +334,7 @@ The company name which will appear on your bank statement against the Direct Deb
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qg6-9B-9SP">
-                                <rect key="frame" x="354" y="31.666666666666671" width="50" height="50"/>
+                                <rect key="frame" x="354" y="28.666666666666671" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="6OX-z6-mUV"/>
                                     <constraint firstAttribute="height" constant="50" id="umo-a4-pUw"/>
@@ -348,14 +348,15 @@ The company name which will appear on your bank statement against the Direct Deb
                         <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BYR-iY-znj" secondAttribute="trailing" id="4Sm-Mw-Wzb"/>
-                            <constraint firstItem="JfY-Np-hKx" firstAttribute="centerX" secondItem="MTC-Hh-aVU" secondAttribute="centerX" id="Eut-Xk-pWL"/>
                             <constraint firstItem="BYR-iY-znj" firstAttribute="width" secondItem="MTC-Hh-aVU" secondAttribute="width" id="JO8-PE-qe3"/>
+                            <constraint firstItem="Qg6-9B-9SP" firstAttribute="centerY" secondItem="JfY-Np-hKx" secondAttribute="centerY" id="QgZ-ft-4YK"/>
                             <constraint firstItem="BYR-iY-znj" firstAttribute="leading" secondItem="I7M-OZ-jhI" secondAttribute="leading" id="e5r-Rd-RAM"/>
                             <constraint firstItem="I7M-OZ-jhI" firstAttribute="trailing" secondItem="Qg6-9B-9SP" secondAttribute="trailing" constant="10" id="fxr-lB-5If"/>
+                            <constraint firstItem="Qg6-9B-9SP" firstAttribute="leading" secondItem="JfY-Np-hKx" secondAttribute="trailing" constant="10" id="kc0-BC-74z"/>
                             <constraint firstItem="BYR-iY-znj" firstAttribute="top" secondItem="JfY-Np-hKx" secondAttribute="bottom" constant="20" id="s37-ae-YPK"/>
                             <constraint firstItem="JfY-Np-hKx" firstAttribute="top" secondItem="I7M-OZ-jhI" secondAttribute="top" constant="20" id="s7l-yg-x7e"/>
+                            <constraint firstItem="JfY-Np-hKx" firstAttribute="leading" secondItem="I7M-OZ-jhI" secondAttribute="leading" constant="50" id="uCM-gK-ygV"/>
                             <constraint firstItem="BYR-iY-znj" firstAttribute="bottom" secondItem="I7M-OZ-jhI" secondAttribute="bottom" id="v3R-n5-qDZ"/>
-                            <constraint firstItem="Qg6-9B-9SP" firstAttribute="centerY" secondItem="JfY-Np-hKx" secondAttribute="centerY" id="v7h-me-X1S"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I7M-OZ-jhI"/>
                     </view>
