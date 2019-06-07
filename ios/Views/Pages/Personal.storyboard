@@ -115,6 +115,93 @@
             </objects>
             <point key="canvasLocation" x="311.59420289855075" y="198.09782608695653"/>
         </scene>
+        <!--Gift Aid View Controller-->
+        <scene sceneID="gmR-jo-tKF">
+            <objects>
+                <viewController storyboardIdentifier="GiftAidViewController" id="Q3e-KT-zLD" customClass="GiftAidViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W4b-s1-H38">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bi-vd-IUi" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="672" width="374" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="TKi-bx-QHi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Opslaan"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveAction:" destination="Ltj-A3-ruq" eventType="touchUpInside" id="AXF-ho-ww3"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Y7o-GS-hpD">
+                                <rect key="frame" x="20" y="277.66666666666669" width="374" height="181"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="heeeeeeeeeeele lange tekst die niet op een lijjn past om te testen of deze dus meerdere lijnen bevat" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9F-jI-46C">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="5GW-Zw-wBQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBN-Hg-JxG">
+                                        <rect key="frame" x="0.0" y="150" width="374" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giftaid for my oncoming transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2r-Py-rhq">
+                                                <rect key="frame" x="0.0" y="0.0" width="325" height="31"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFC-9R-PYt">
+                                                <rect key="frame" x="325" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="giftAidChanged:" destination="Q3e-KT-zLD" eventType="valueChanged" id="JNI-W0-m12"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5gz-cb-wSW" firstAttribute="trailing" secondItem="Y7o-GS-hpD" secondAttribute="trailing" constant="20" id="ELr-IA-DLc"/>
+                            <constraint firstItem="5gz-cb-wSW" firstAttribute="trailing" secondItem="2Bi-vd-IUi" secondAttribute="trailing" constant="20" id="FCN-i2-sfl"/>
+                            <constraint firstItem="Y7o-GS-hpD" firstAttribute="centerX" secondItem="W4b-s1-H38" secondAttribute="centerX" id="FDB-nb-d5z"/>
+                            <constraint firstItem="5gz-cb-wSW" firstAttribute="bottom" secondItem="2Bi-vd-IUi" secondAttribute="bottom" constant="20" id="ZQE-Hq-Eof"/>
+                            <constraint firstItem="Y7o-GS-hpD" firstAttribute="centerY" secondItem="W4b-s1-H38" secondAttribute="centerY" id="bDV-TH-Ttf"/>
+                            <constraint firstItem="Y7o-GS-hpD" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" constant="20" id="eVj-bS-qmc"/>
+                            <constraint firstItem="2Bi-vd-IUi" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" constant="20" id="hQB-L9-VBo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5gz-cb-wSW"/>
+                    </view>
+                    <connections>
+                        <outlet property="giftAidSwitch" destination="lFC-9R-PYt" id="TnV-yc-aMb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlo-IP-uVE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="-469"/>
+        </scene>
         <!--Change Setting View Controller-->
         <scene sceneID="Tce-IF-TOd">
             <objects>

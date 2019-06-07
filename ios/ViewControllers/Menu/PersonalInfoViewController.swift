@@ -18,6 +18,7 @@ public enum SettingType {
     case iban
     case changepassword
     case bacs
+    case giftaid
 }
 
 class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
@@ -113,6 +114,7 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             }
             
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: SettingType.changepassword))
+            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "euro"), name: "GiftAid", type: .giftaid))
             DispatchQueue.main.async {
                 self.settingsTableView.reloadData()
             }
@@ -355,6 +357,9 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
         case .address:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeAddressViewController") as! ChangeAddressViewController
             vc.uExt = self.uExt
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .giftaid:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "GiftAidViewController") as! GiftAidViewController
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             return
