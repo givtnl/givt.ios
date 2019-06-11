@@ -63,24 +63,6 @@ class LoginManager {
         }
     }
     
-    public func saveAmountLimit(_ amountLimit: Int, completionHandler: @escaping (Bool) -> Void) {
-        //post request to amount limit api
-        let url = "/api/users"
-        let data = ["GUID" : (UserDefaults.standard.userExt?.guid)!, "AmountLimit" : String(amountLimit)]
-        do {
-            try client.put(url: url, data: data) { (res) in
-                if let res = res, res.basicStatus == .ok {
-                    UserDefaults.standard.amountLimit = amountLimit
-                    completionHandler(true)
-                } else {
-                    completionHandler(false)
-                }
-            }
-        } catch {
-            log.error(message: "Something went wrong saving amount limit")
-        }
-    }
-    
     public func loginUser(email: String, password: String, type: AuthenticationType, completionHandler: @escaping (Bool, NSError?, String?) -> Void ) {
         var params: [String : String] = [:]
         switch type {
@@ -263,9 +245,6 @@ class LoginManager {
                         
                         self.loginUser(email: user.email, password: user.password, type: .password, completionHandler: { (success, err, descr) in
                             if success {
-                                self.saveAmountLimit(499, completionHandler: { (status) in
-                                    //niets
-                                })
                                 UserDefaults.standard.amountLimit = 499
                                 completionHandler(true)
                             } else {
@@ -403,9 +382,19 @@ class LoginManager {
         }
     }
     
-    func updateEmail(email: String, completionHandler: @escaping (Bool) -> Void) {
+    // Used to update the email address, amountlimit and the giftaid
+    func updateUser(uext: LMUserExt, completionHandler: @escaping (Bool) -> Void) {
         do {
-            let params = ["Email": email,"AmountLimit": UserDefaults.standard.amountLimit] as [String : Any]
+            var date: String? = nil
+            if let giftAid = uext.GiftAid {
+                let df = DateFormatter()
+                df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
+                df.timeZone = TimeZone(abbreviation: "UTC")
+                df.locale = Locale(identifier: "en_US_POSIX")
+                date = df.string(from: giftAid)
+            }
+            
+            let params = ["Email": uext.Email,"AmountLimit": uext.AmountLimit, "GiftAid": date] as [String : Any]
             try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/", data: params) { (response) in
                 guard let resp = response else {
                     completionHandler(false)
@@ -413,7 +402,8 @@ class LoginManager {
                 }
                 if resp.statusCode == 200 {
                     let newSettings = UserDefaults.standard.userExt!
-                    newSettings.email = email
+                    newSettings.email = uext.Email
+                    UserDefaults.standard.amountLimit = uext.AmountLimit
                     UserDefaults.standard.userExt = newSettings
                     completionHandler(true)
                 } else {
@@ -522,8 +512,8 @@ class LoginManager {
             "Address":  userExt.Address,
             "City":  userExt.City,
             "PostalCode":  userExt.PostalCode,
-            "Country":  userExt.Country,
-            "AmountLimit" : String(UserDefaults.standard.amountLimit)] as [String : Any]
+            "Country":  userExt.Country
+        ]
         do {
             try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
                 if let res = res, res.basicStatus == .ok {
@@ -535,64 +525,6 @@ class LoginManager {
         } catch {
             callback(false)
             log.error(message: "Something went wrong updating UserExt")
-        }
-    }
-    
-    func changeIban(userExt: LMUserExt ,iban: String, callback: @escaping (Bool) -> Void) {
-        self.log.info(message: "Changing iban")
-        let params = [
-            "Guid":  userExt.GUID,
-            "IBAN":  iban,
-            "AccountNumber" : userExt.AccountNumber as Any,
-            "SortCode" : userExt.SortCode as Any,
-            "PhoneNumber":  userExt.PhoneNumber,
-            "FirstName":  userExt.FirstName,
-            "LastName":  userExt.LastName,
-            "Address":  userExt.Address,
-            "City":  userExt.City,
-            "PostalCode":  userExt.PostalCode,
-            "Country":  userExt.Country,
-            "AmountLimit" : String(UserDefaults.standard.amountLimit)] as [String : Any]
-        do {
-            try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
-                if let res = res, res.basicStatus == .ok {
-                    callback(true)
-                } else {
-                    callback(false)
-                }
-            })
-        } catch {
-            callback(false)
-            log.error(message: "Something went wrong trying to change IBAN")
-        }
-    }
-    
-    func changePhone(userExt: LMUserExt ,phone: String, callback: @escaping (Bool) -> Void) {
-        self.log.info(message: "Changing mobile number")
-        let params = [
-            "Guid":  userExt.GUID,
-            "IBAN":  userExt.IBAN as Any,
-            "AccountNumber" : userExt.AccountNumber as Any,
-            "SortCode" : userExt.SortCode as Any,
-            "PhoneNumber":  phone,
-            "FirstName":  userExt.FirstName,
-            "LastName":  userExt.LastName,
-            "Address":  userExt.Address,
-            "City":  userExt.City,
-            "PostalCode":  userExt.PostalCode,
-            "Country":  userExt.Country,
-            "AmountLimit" : String(UserDefaults.standard.amountLimit)] as [String : Any]
-        do {
-            try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
-                if let res = res, res.basicStatus == .ok {
-                    callback(true)
-                } else {
-                    callback(false)
-                }
-            })
-        } catch {
-            callback(false)
-            log.error(message: "Something went wrong trying to change mobile number")
         }
     }
     
