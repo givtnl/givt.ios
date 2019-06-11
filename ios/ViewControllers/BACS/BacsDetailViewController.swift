@@ -74,19 +74,20 @@ class BacsDetailViewController: UIViewController {
                                 NavigationManager.shared.loadMainPage(animated: false)
                             }
                         }))
-                        var givtStatusCode = -1
                         if let data = r.data {
                             do {
-                                givtStatusCode = Int(try JSONSerialization.jsonObject(with: data, options: .allowFragments) as! String) ?? -1
+                                let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                                if let parsedCode = parsedData["Code"] as? Int {
+                                    if(parsedCode == 111){
+                                        alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
+                                        alert.message = NSLocalizedString("UpdateBacsAccountDetailsError", comment: "")
+                                    } else if (parsedCode == 112){
+                                        alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
+                                        alert.message = NSLocalizedString("DDIFailedMessage", comment: "")
+                                    }
+                                }
                             } catch {
                                 self.log.error(message: "Could not parse givtStatusCode Json probably not valid.")
-                            }
-                            if(givtStatusCode == 111){
-                                alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
-                                alert.message = NSLocalizedString("UpdateBacsAccountDetailsError", comment: "")
-                            } else if (givtStatusCode == 112){
-                                alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
-                                alert.message = NSLocalizedString("DDIFailedMessage", comment: "")
                             }
                         }
                         
