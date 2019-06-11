@@ -147,6 +147,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="readyAction:" destination="Q3e-KT-zLD" eventType="touchUpInside" id="T0B-8I-Bep"/>
                                     <action selector="saveAction:" destination="Ltj-A3-ruq" eventType="touchUpInside" id="AXF-ho-ww3"/>
                                 </connections>
                             </button>
