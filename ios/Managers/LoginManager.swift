@@ -535,9 +535,12 @@ class LoginManager {
                 if let response = res {
                     result.ok = response.basicStatus == .ok
                     if(!result.ok){
-                        if let givtStatusCode = response.data {
+                        if let data = response.data {
                             do {
-                                result.error = Int(try JSONSerialization.jsonObject(with: givtStatusCode, options: .allowFragments) as! String) ?? -1
+                                let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                                if let parsedCode = parsedData["Code"] as? Int {
+                                    result.error = parsedCode
+                                }
                             }
                             catch {
                                 self.log.error(message: "Could not parse givtStatusCode Json probably not valid.")
