@@ -166,7 +166,9 @@ class LoginManager {
             if response.status == .ok {
                 if let data = response.data {
                     do {
-                        let userExt = try JSONDecoder().decode(LMUserExt.self, from: data)
+                        let decoder = JSONDecoder()
+                        decoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
+                        let userExt = try decoder.decode(LMUserExt.self, from: data)
                         UserDefaults.standard.isTempUser = userExt.IsTempUser
                         UserDefaults.standard.amountLimit = userExt.AmountLimit == 0 ? 499 : userExt.AmountLimit
                         UserDefaults.standard.mandateSigned = userExt.PayProvMandateStatus == "closed.completed"
@@ -632,4 +634,15 @@ class LoginManager {
         UserDefaults.standard.isTempUser = false
         UserDefaults.standard.accountType = .undefined
     }
+}
+
+extension Formatter {
+    static let iso8601: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSXXXXX"
+        return formatter
+    }()
 }
