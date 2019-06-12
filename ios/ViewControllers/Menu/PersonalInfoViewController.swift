@@ -365,6 +365,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             self.navigationController?.pushViewController(vc, animated: true)
         case .giftaid:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "GiftAidViewController") as! GiftAidViewController
+            vc.uExt = self.uExt
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             return
