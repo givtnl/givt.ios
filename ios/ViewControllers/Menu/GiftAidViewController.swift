@@ -15,9 +15,19 @@ class GiftAidViewController: UIViewController {
     
     @IBOutlet weak var giftAidSwitch: UISwitch!
     @IBAction func readyAction(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.backPressed(self)
-        }
+        LoginManager.shared.updateUser(uext: self.uExt!, completionHandler: { (ok) in
+            if ok {
+                DispatchQueue.main.async {
+                    self.backPressed(self)
+                }
+            } else {
+                let alertController = UIAlertController(title: "Oops", message:
+                    "Something went wrong" , preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Ok", style: .default))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+        })
     }
     @IBAction func giftAidChanged(_ sender: Any) {
         
@@ -27,26 +37,10 @@ class GiftAidViewController: UIViewController {
         } else {
             uExt?.GiftAid = nil
         }
-        
-        LoginManager.shared.updateUserExt(userExt: uExt!) { (ok) in
-            if ok {
-                let alertController = UIAlertController(title: "GiftAid changed", message:
-                    "GiftAid changed to : " + self.giftAidSwitch.isOn.description , preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-                
-                self.present(alertController, animated: true, completion: nil)
-            } else {
-                let alertController = UIAlertController(title: "Oops", message:
-                   "Something went wrong" , preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Ok", style: .default))
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
-        }
     }
     
     override func viewDidLoad() {
-        giftAidSwitch.isOn = uExt?.GiftAid != nil
+        giftAidSwitch.setOn(uExt?.GiftAid != nil, animated: false)
     }
     
 }
