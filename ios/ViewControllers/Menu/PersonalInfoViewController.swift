@@ -280,19 +280,25 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 self.uExt?.AccountNumber = accountNumber
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                     SVProgressHUD.show()
-                    self.loginManager.updateUserExt(userExt: self.uExt!) { (ok) in
+                    self.loginManager.updateUserExt(userExt: self.uExt!) { (result) in
                         DispatchQueue.main.async {
                             SVProgressHUD.dismiss()
                         }
-                        if ok {
+                        if result.ok {
                             DispatchQueue.main.async {
                                 self.backPressed(self)
                             }
                         } else {
                             let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
-                                
-                            }))
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil ))
+
+                            if(result.error == 111){
+                                alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
+                                alert.message = NSLocalizedString("UpdateBacsAccountDetailsError", comment: "")
+                            } else if (result.error == 112){
+                                alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
+                                alert.message = NSLocalizedString("DDIFailedMessage", comment: "")
+                            }
                             DispatchQueue.main.async {
                                 self.present(alert, animated: true, completion:nil)
                             }
