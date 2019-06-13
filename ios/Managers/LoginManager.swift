@@ -500,8 +500,11 @@ class LoginManager {
         }
         
     }
-    
-    func updateUserExt(userExt: LMUserExt, callback: @escaping (Bool) -> Void) {
+    internal class UserExtUpdateResult {
+        var ok: Bool = false
+        var error: Int = -1
+    }
+    func updateUserExt(userExt: LMUserExt, callback: @escaping (UserExtUpdateResult) -> Void) {
         self.log.info(message: "Updating user extension")
         let params = [
             "Guid":  userExt.GUID,
@@ -516,16 +519,32 @@ class LoginManager {
             "PostalCode":  userExt.PostalCode,
             "Country":  userExt.Country
         ]
+        
+        
+        let result = UserExtUpdateResult()
+
         do {
             try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
-                if let res = res, res.basicStatus == .ok {
-                    callback(true)
-                } else {
-                    callback(false)
+                if let response = res {
+                    result.ok = response.basicStatus == .ok
+                    if(!result.ok){
+                        if let data = response.data {
+                            do {
+                                let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                                if let parsedCode = parsedData["Code"] as? Int {
+                                    result.error = parsedCode
+                                }
+                            }
+                            catch {
+                                self.log.error(message: "Could not parse givtStatusCode Json probably not valid.")
+                            }
+                        }
+                    }
                 }
+                callback(result)
             })
         } catch {
-            callback(false)
+            callback(result)
             log.error(message: "Something went wrong updating UserExt")
         }
     }

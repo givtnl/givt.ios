@@ -104,11 +104,11 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         uExt!.Country = currentCountry!.shortName
         NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
             SVProgressHUD.show()
-            LoginManager.shared.updateUserExt(userExt: self.uExt!) { (ok) in
+            LoginManager.shared.updateUserExt(userExt: self.uExt!) { (result) in
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                 }
-                if ok {
+                if result.ok {
                     DispatchQueue.main.async {
                         self.backPressed(self)
                     }
