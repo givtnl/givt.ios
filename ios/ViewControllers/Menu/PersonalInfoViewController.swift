@@ -192,7 +192,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                         userExt.PhoneNumber = self.validatedPhoneNumber.replacingOccurrences(of: " ", with: "")
                         self.loginManager.updateUserExt(userExt: userExt, callback: {(success) in
                             SVProgressHUD.dismiss()
-                            if success {
+                            if success.ok {
                                 DispatchQueue.main.async {
                                     self.navigationController?.popViewController(animated: true)
                                 }
@@ -240,7 +240,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                         userExt.IBAN = s.replacingOccurrences(of: " ", with: "")
                         self.loginManager.updateUserExt(userExt: userExt, callback: { (success) in
                             SVProgressHUD.dismiss()
-                            if success {
+                            if success.ok {
                                 DispatchQueue.main.async {
                                     self.navigationController?.popViewController(animated: true)
                                 }
