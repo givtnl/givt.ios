@@ -114,7 +114,11 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
             }
             
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: SettingType.changepassword))
-            self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "euro"), name: "GiftAid", type: .giftaid))
+            
+            if UserDefaults.standard.accountType == AccountType.bacs {
+                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "euro"), name: "GiftAid", type: .giftaid))
+            }
+            
             DispatchQueue.main.async {
                 self.settingsTableView.reloadData()
             }
