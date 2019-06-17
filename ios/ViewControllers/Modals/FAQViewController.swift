@@ -81,18 +81,9 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         for view in stack.arrangedSubviews {
             view.removeFromSuperview()
         }
-        let GB:Bool = AppServices.getCountryFromSim() == "GB"
         var termsText: String = ""; var policyText: String = "";
         
-        if GB {
-            termsText = "TermsTextGB"
-            policyText = "PolicyTextGB"
-        } else {
-            termsText = "TermsText"
-            policyText = "PolicyText"
-        }
-        
-        
+        let GB:Bool = AppServices.getCountryFromSim() == "GB"
         
         addQuestion(q: "FAQvraag0", a: "FAQantwoord0")
         
@@ -145,12 +136,15 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         addQuestion(q: "QuestionWhyAreMyDataStored", a: "AnswerWhyAreMyDataStored")
         if (GB) {
             addQuestion(q: "FAQvraag18", a: "FAQantwoord18GB")
+            addQuestion(q: "TermsTitle", a: "TermsTextGB")
+            addQuestion(q: "PrivacyTitle", a: "PolicyTextGB")
         }
         else {
             addQuestion(q: "FAQvraag18", a: "FAQantwoord18")
+            addQuestion(q: "TermsTitle", a: "TermsText")
+            addQuestion(q: "PrivacyTitle", a: "PolicyText")
         }
-        addQuestion(q: "TermsTitle", a: termsText)
-        addQuestion(q: "PrivacyTitle", a: policyText)
+       
 
         addSpacer()
     }
