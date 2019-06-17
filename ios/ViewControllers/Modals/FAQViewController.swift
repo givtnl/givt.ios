@@ -81,11 +81,13 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         for view in stack.arrangedSubviews {
             view.removeFromSuperview()
         }
+        var GB:Bool = false
         var termsText: String = ""; var policyText: String = "";
         if let countryCode = AppServices.getCountryFromSim() {
             if countryCode == "GB" {
                 termsText = "TermsTextGB"
                 policyText = "PolicyTextGB"
+                GB = true
             } else {
                 termsText = "TermsText"
                 policyText = "PolicyText"
@@ -103,13 +105,28 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         addQuestion(q: "FAQHowDoesManualGivingWork", a: "AnswerHowDoesManualGivingWork")
         addQuestion(q: "KerkdienstGemistQuestion", a: "KerkdienstGemistAnswer")
         addQuestion(q: "FAQVraag16", a: "FAQAntwoord16") // annuleren van giften
-        addQuestion(q: "FAQvraag5", a: "FAQantwoord5")
+        if (!GB) {
+            addQuestion(q: "FAQvraag5", a: "FAQantwoord5")
+        }
+        else {
+            addQuestion(q: "FAQvraag5", a: "FAQantwoord5GB")
+        }
         addQuestion(q: "FAQQuestion12", a: "FAQAnswer12")
         addQuestion(q: "FAQvraag9", a: "FAQantwoord9")
-        addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
-        
+        if (!GB) {
+            addQuestion(q: "FAQvraag15", a: "FAQantwoord15")
+        }
+        else {
+            addQuestion(q: "FAQvraag15GB", a: "FAQantwoord15GB")
+        }
+    
         // ACCOUNT
-        addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWork")
+        if (!GB) {
+            addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWork")
+        }
+        else {
+            addQuestion(q: "QuestionHowDoesRegisteringWorks", a: "AnswerHowDoesRegistrationWorkGB")
+        }
         addQuestion(q: "FAQQuestion11", a: "FAQAnswer11")
         addQuestion(q: "FaqVraag10", a: "FaqAntwoord10")
         addQuestion(q: "FAQvraag3", a: "FAQantwoord3")
@@ -120,10 +137,20 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         addQuestion(q: "FAQvraag2", a: "FAQantwoord2")
         addQuestion(q: "FAQvraag4", a: "FAQantwoord4")
         addQuestion(q: "FAQvraag6", a: "FAQantwoord6")
-        addQuestion(q: "FAQvraag7", a: "FAQantwoord7")
+        if (!GB) {
+            addQuestion(q: "FAQvraag7", a: "FAQantwoord7")
+        }
+        else {
+            addQuestion(q: "FAQvraag7", a: "FAQantwoord7GB")
+        }
         addQuestion(q: "FAQuestAnonymity", a: "FAQanswerAnonymity")
         addQuestion(q: "QuestionWhyAreMyDataStored", a: "AnswerWhyAreMyDataStored")
-        addQuestion(q: "FAQvraag18", a: "FAQAntwoord18") //GDPR
+        if (!GB) {
+            addQuestion(q: "FAQvraag18", a: "FAQantwoord18")
+        }
+        else {
+            addQuestion(q: "FAQvraag18", a: "FAQantwoord18GB")
+        }
         addQuestion(q: "TermsTitle", a: termsText)
         addQuestion(q: "PrivacyTitle", a: policyText)
 
