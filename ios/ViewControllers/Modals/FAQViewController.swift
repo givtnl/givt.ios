@@ -84,6 +84,9 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         var termsText: String = ""; var policyText: String = "";
         
         let GB:Bool = AppServices.getCountryFromSim() == "GB"
+        if (GB) {
+            addQuestion(q: "FAQVraagDDI", a: "FAQAntwoordDDI")
+        }
         addQuestion(q: "FAQvraag0", a: "FAQantwoord0")
         
         // GIVING
