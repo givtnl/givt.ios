@@ -16,6 +16,8 @@ class BacsDetailViewController: UIViewController {
     @IBOutlet var personalInformationText: UILabel!
     @IBOutlet var personalDetailText: UILabel!
     var userExtension: LMUserExt!
+    private var log: LogService = LogService.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let country = AppConstants.countries.first { (country) -> Bool in
@@ -55,24 +57,43 @@ class BacsDetailViewController: UIViewController {
             SVProgressHUD.show()
             LoginManager.shared.requestMandateUrl(completionHandler: { (response) in
                 SVProgressHUD.dismiss()
-                if let r = response, r.status == .ok {
-                    LoginManager.shared.finishMandateSigning(completionHandler: { (done) in
-                        print(done)
-                    })
-                    DispatchQueue.main.async {
-                        let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
-                        self.navigationController!.pushViewController(vc, animated: true)
-                    }
-                } else {
-                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
+                if let r = response {
+                    if(r.status == .ok){
+                        LoginManager.shared.finishMandateSigning(completionHandler: { (done) in
+                            print(done)
+                        })
                         DispatchQueue.main.async {
-                            self.dismiss(animated: true, completion: nil)
-                            NavigationManager.shared.loadMainPage(animated: false)
+                            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                            self.navigationController!.pushViewController(vc, animated: true)
                         }
-                    }))
-                    DispatchQueue.main.async {
-                        self.present(alert, animated: true, completion: nil)
+                    } else {
+                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true, completion: nil)
+                                NavigationManager.shared.loadMainPage(animated: false)
+                            }
+                        }))
+                        if let data = r.data {
+                            do {
+                                let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                                if let parsedCode = parsedData["Code"] as? Int {
+                                    if(parsedCode == 111){
+                                        alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
+                                        alert.message = NSLocalizedString("UpdateBacsAccountDetailsError", comment: "")
+                                    } else if (parsedCode == 112){
+                                        alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
+                                        alert.message = NSLocalizedString("DDIFailedMessage", comment: "")
+                                    }
+                                }
+                            } catch {
+                                self.log.error(message: "Could not parse givtStatusCode Json probably not valid.")
+                            }
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.present(alert, animated: true, completion: nil)
+                        }
                     }
                 }
             })

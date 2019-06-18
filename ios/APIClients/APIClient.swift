@@ -10,7 +10,7 @@ import Foundation
 import SwiftClient
 import TrustKit
 
-class APIClient: NSObject, IAPIClient, URLSessionDelegate {
+class APIClient: NSObject, URLSessionDelegate {
     static let shared = APIClient()
     private var log = LogService.shared
     
@@ -21,7 +21,7 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
         
     }
    
-    func get(url: String, data: [String: String], headers: [String: String] = [:], callback: @escaping (Response?) -> Void) {
+    func get(url: String, data: [String: String], headers: [String: String] = [:], timeout: Double = 60, callback: @escaping (Response?) -> Void) {
         var headers = headers
         headers["Accept-Language"] = Locale.preferredLanguages[0]
         if let bearerToken = UserDefaults.standard.bearerToken {
@@ -32,6 +32,7 @@ class APIClient: NSObject, IAPIClient, URLSessionDelegate {
         }
         client.get(url: url).delegate(delegate: self)
             .type(type: "json")
+            .timeout(timeout: timeout)
             .set(headers: headers)
             .query(query: data)
             .end(done: { (res:Response) in
