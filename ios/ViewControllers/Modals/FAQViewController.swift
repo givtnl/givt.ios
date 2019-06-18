@@ -84,9 +84,6 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         var termsText: String = ""; var policyText: String = "";
         
         let GB:Bool = AppServices.getCountryFromSim() == "GB"
-        if (GB) {
-            addQuestion(q: "FAQQuestion12", a: "FAQAnswer12GB")
-        }
         addQuestion(q: "FAQvraag0", a: "FAQantwoord0")
         
         // GIVING
@@ -102,7 +99,10 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         else {
             addQuestion(q: "FAQvraag5", a: "FAQantwoord5")
         }
-        if (!GB) {
+        if (GB) {
+            addQuestion(q: "FAQQuestion12", a: "FAQAnswer12GB")
+        }
+        else {
             addQuestion(q: "FAQQuestion12", a: "FAQAnswer12")
         }
         addQuestion(q: "FAQvraag9", a: "FAQantwoord9")
