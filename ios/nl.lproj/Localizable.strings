@@ -121,7 +121,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ButtonChange" = "Wijzigen";
 "WelcomeContinue" = "Aan de slag";
 "EnterEmail" = "Aan de slag";
-"FinalizeRegistrationPopupText" = "Om je giften op het goede adres te kunnen bezorgen, moet je nog even je registratie voltooien.";
+"FinalizeRegistrationPopupText" = "Om je giften op het juiste adres te kunnen bezorgen, moet je nog even je registratie voltooien.";
 "FinalizeRegistration" = "Registratie voltooien";
 "ImportantReminder" = "Belangrijke herinnering";
 "MultipleCollections" = "Meerdere collectes";
@@ -222,7 +222,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SmsSuccess" = "Code verstuurd via SMS";
 "SmsFailed" = "Probeer later opnieuw";
 "KerkdienstGemistQuestion" = "Hoe kan ik geven met Givt via 3de-partijen?";
-"KerkdienstGemistAnswer" = "Kerkdienst Gemist\nAls je via de Kerkdienst Gemist-app aan het kijken bent, kan je ook meteen geven met Givt als je kerk dat gebruikt. Onderin de pagina vind je een knop die je doorstuurt naar de Givt-app. Kies een bedrag, druk op 'Ja, graag' wanneer de suggestie verschijnt en klaar!";
+"KerkdienstGemistAnswer" = "Kerkdienst Gemist\nAls je via de Kerkdienst Gemist-app aan het kijken bent, kan je ook geven met Givt als je kerk dat gebruikt. Onderin de pagina vind je een knop die je doorstuurt naar de Givt-app. Kies een bedrag, druk op 'Ja, graag' wanneer de suggestie verschijnt en klaar!";
 "ExternalSuggestionLabel" = "We zien dat je geeft vanuit {0}. Wil je geven aan {1}?";
 "ChooseHowIGive" = "Nee, ik wil zelf kiezen hoe ik geef";
 "AndersGeven" = "Anders geven";
@@ -627,7 +627,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*kunnen we dit deze sprint al aanpassen? 
  Antwoord op FAQ vraag8*/
-"FAQantwoord8" = "Als je geen gebruik meer wilt maken van Givt, heb je de mogelijkheid om je uit te schrijven in de app. Ga naar je instellingen door links bovenin het bedragscherm op het menu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies ‘Account opzeggen’, vink de checkbox af en druk op ‘Mijn account opzeggen’. Nu is je account bij Givt opgezegd en verwijderd. Mocht je Givt in de toekomst weer willen gebruiken, dan zul je een nieuw account moeten maken.";
+"FAQantwoord8" = "Als je geen gebruik meer wilt maken van Givt, heb je de mogelijkheid om je account op te zeggen in de app. Ga naar je instellingen door links bovenin het bedragscherm op het menu te drukken. Om je instellingen te wijzigen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies ‘Account opzeggen’, vink de checkbox af en druk op ‘Mijn account opzeggen’. Nu is je account bij Givt opgezegd en verwijderd. Mocht je Givt in de toekomst weer willen gebruiken, dan zul je een nieuw account moeten maken.";
 
 /*Titel op het scherm van de privacyverklaring*/
 "PrivacyTitle" = "Privacyverklaring";
@@ -724,16 +724,16 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQQuestion11" = "Hoe stel ik mijn toegangscode in?";
 
 /*Answer Passcode*/
-"FAQAnswer11" = "Je bereikt je instellingen door links bovenin het bedragscherm op het menu te drukken. Kies daar voor ‘Toegangscode’, ‘Vingerafdruk’/’Touch ID’ of ‘FaceID’ (enkel beschikbaar voor iPhone), afhankelijk van hoe je de Givt-app wilt beveiligen. \n\nWanneer deze instelling actief is, kan je je toegangscode, vingerafdruk of FaceID in plaats van je e-mailadres en wachtwoord gebruiken om jouw instellingen te bereiken. Wanneer je je toegangscode vergeten bent, heb je je e-mailadres en wachtwoord nodig om deze opnieuw in te stellen.";
+"FAQAnswer11" = "Je kunt je app-menu bereiken door links bovenin het bedragscherm op het menu te drukken. Kies daar voor ‘Toegangscode’, ‘Vingerafdruk’/’Touch ID’ of ‘FaceID’ (enkel beschikbaar voor iPhone), afhankelijk van hoe je de Givt-app wilt beveiligen. \n\nWanneer deze instelling actief is, kan je je toegangscode, vingerafdruk of FaceID in plaats van je e-mailadres en wachtwoord gebruiken om jouw instellingen te bereiken. Wanneer je je toegangscode vergeten bent, heb je je e-mailadres en wachtwoord nodig om deze opnieuw in te stellen.";
 
 /*Antwoord op de vraag Hoe werkt registreren*/
-"AnswerHowDoesRegistrationWork" = "Om te starten met geven, is alleen je e-mailadres nodig. Zodra je dat hebt ingevuld, kan je gewoon beginnen geven. \n\nOpgelet: je moet je nog verder registreren om ervoor te zorgen dat al je gedane en toekomstige giften effectief verwerkt kunnen worden. Ga hiervoor naar het menu in de app en kies voor 'Registratie voltooien'. Je maakt hierbij een Givt-account aan, vult enkele persoonlijke gegevens in en je geeft een machtiging tot het incasseren van alle giften die je in de app doet. De transacties worden afgehandeld door SlimPay; een partij die gespecialiseerd is in de behandeling van machtigingen. \n\nWanneer je eenmaal geregistreerd bent, kun je gewoon blijven geven met de Givt-app. De inloggegevens van je Givt-account heb je alleen nodig om je instellingen in te zien of te wijzigen.\n";
+"AnswerHowDoesRegistrationWork" = "Om te starten met geven, is alleen je e-mailadres nodig. Zodra je dat hebt ingevuld, kan je gewoon beginnen met geven. \n\nOpgelet: je moet je nog verder registreren om ervoor te zorgen dat al je gedane en toekomstige giften verwerkt kunnen worden. Ga hiervoor naar het menu in de app en kies voor 'Registratie voltooien'. Je maakt hierbij een Givt-account aan, vult enkele persoonlijke gegevens in en je geeft een machtiging tot het incasseren van alle giften die je in de app doet. De transacties worden afgehandeld door SlimPay; een partij die gespecialiseerd is in de behandeling van machtigingen. \n\nWanneer je eenmaal geregistreerd bent, kan je gewoon blijven geven met de Givt-app. De inloggegevens van je Givt-account heb je alleen nodig om je instellingen in te zien of te wijzigen.\n";
 
 /*Antwoord FAQ Hoe werkt geven?*/
-"AnswerHowDoesGivingWork" = "Vanaf nu kan je heel eenvoudig geven. Open de app om een bedrag te kiezen en selecteer een van de 4 mogelijkheden; geven via een collectebus, -zak of -mand, qr code, lijst of op locatie. Meer is er niet nodig.\n\nVergeet niet om je registratie te voltooien, zodat je giften op het goede adres bezorgd kunnen worden.";
+"AnswerHowDoesGivingWork" = "Vanaf nu kan je heel eenvoudig geven. Open de app om een bedrag te kiezen en selecteer een van de 4 mogelijkheden; geven via een collectebus, -zak of -mand, qr code, lijst of op locatie. Meer is er niet nodig.\n\nVergeet niet om je registratie te voltooien, zodat je giften op het juiste adres bezorgd kunnen worden.";
 
 /*Antwoord FAQ hoe werkt ontvanger selecteren?*/
-"AnswerHowDoesManualGivingWork" = "Lukt het je niet om te geven aan een collectebus, -zak of -mand?\nDan kan je er altijd voor kiezen om handmatig de ontvanger te selecteren.\nKlik bij het geven op de ‘Lijst’ optie. Daar wordt alles opgedeeld in 4 eenvoudige categorieën: kerken, goede doelen, acties en artiesten. Kies een ontvanger uit een van deze lijsten en druk op ‘Geven’.\nZo, je gift is gelukt!";
+"AnswerHowDoesManualGivingWork" = "Lukt het je niet om te geven aan een collectebus, -zak of -mand?\nDan kan je er altijd voor kiezen om handmatig de ontvanger te selecteren.\nKlik bij het geven op de ‘Lijst’ optie. Daar worden alle organisaties waar je Givt kan gebruiken opgedeeld in 4 eenvoudige categorieën: kerken, goede doelen, acties en artiesten. Kies een ontvanger uit een van deze lijsten en druk op ‘Geven’.\nZo, je gift is gelukt!";
 
 /*Informatie over waarom persoonlijke gegevens invullen.*/
 "InformationPersonalData" = "Givt heeft deze persoonlijke gegevens nodig om je giften te kunnen verwerken. Wij gaan zorgvuldig met deze gegevens om. Dit kun je teruglezen in onze privacyverklaring.";
