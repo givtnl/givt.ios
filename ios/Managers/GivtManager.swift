@@ -532,11 +532,11 @@ final class GivtManager: NSObject {
         }
     }
 
-    func getBeaconsFromOrganisation(completionHandler: @escaping (Bool) -> Void) {
+    func getBeaconsFromOrganisation(tries: Int = 4, completionHandler: @escaping (Bool) -> Void) {
         
         if let userExt = UserDefaults.standard.userExt, !userExt.guid.isEmpty() {
             let data = ["Guid" : userExt.guid]
-            client.get(url: "/api/v2/collectgroups/applist", data: data, callback: { (response) in
+            client.get(url: "/api/v2/collectgroups/applist", data: data, timeout: 20, callback: { (response) in
                 if let response = response, let data = response.data {
                     if response.statusCode == 200 {
                         do {
@@ -555,6 +555,13 @@ final class GivtManager: NSObject {
                             UserDefaults.standard.orgBeaconListV2 = bl
                             completionHandler(true)
                         } catch let err as NSError {
+                            if (tries > 0) {
+                                self.getBeaconsFromOrganisation(tries: tries-1,  completionHandler: completionHandler)
+                                self.log.warning(message: "Retrying the fetch beacon list.")
+                                return
+                            } else {
+                                self.log.warning(message: "Stop trying to fetch beacon list.")
+                            }
                             completionHandler(false)
                             print(err)
                         }
@@ -562,10 +569,24 @@ final class GivtManager: NSObject {
                         completionHandler(false)
                         print("list up to date")
                     } else {
+                        if (tries > 0) {
+                            self.getBeaconsFromOrganisation(tries: tries-1,  completionHandler: completionHandler)
+                            self.log.warning(message: "Retrying the fetch beacon list.")
+                            return
+                        } else {
+                            self.log.warning(message: "Stop trying to fetch beacon list.")
+                        }
                         completionHandler(false)
                         print("unknow statuscode")
                     }
                 } else {
+                    if (tries > 0) {
+                        self.getBeaconsFromOrganisation(tries: tries-1,  completionHandler: completionHandler)
+                        self.log.warning(message: "Retrying the fetch beacon list.")
+                        return
+                    } else {
+                        self.log.warning(message: "Stop trying to fetch beacon list.")
+                    }
                     print("no response from server?")
                     completionHandler(false)
                 }

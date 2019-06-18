@@ -94,21 +94,14 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                                 self._navigationManager.presentAlertNoConnection(context: self)
                                 return
                             }
-                            
-                            let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("NonExistingEmail", comment: ""), preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                            DispatchQueue.main.async {
-                                self.present(alert, animated: true, completion: {
-                                    self.navigationController?.popViewController(animated: true)
-                                })
-                            }
+                            ErrorHandlingHelper.ShowLoginError(context: self, error: "SomethingWrongGeneric")
                         }
                     } else {
                         //response does not exist. ssl error?
-                        self._navigationManager.presentAlertNoConnection(context: self)
+                        ErrorHandlingHelper.ShowLoginError(context: self, error: "SomethingWrongGeneric")
                     }
                 })
-            } else {
+            } else if status == "false" {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
                 }
@@ -117,6 +110,9 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     self.present(alert, animated: true, completion: nil)
                 }
+            }
+            else {
+                ErrorHandlingHelper.ShowLoginError(context: self, error: "SomethingWrongGeneric")
             }
         }
     }
