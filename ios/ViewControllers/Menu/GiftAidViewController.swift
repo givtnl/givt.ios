@@ -74,7 +74,6 @@ class GiftAidViewController: UIViewController {
     }
     
     @IBAction func saveAction(_ sender: Any) {
-        let stateBefore = uExt?.GiftAid
         self.endEditing()
         let giftaidOn = giftAidSwitch.isOn
         if (giftaidOn) {
@@ -82,25 +81,7 @@ class GiftAidViewController: UIViewController {
         } else {
             uExt?.GiftAid = nil
         }
-        if(uExt?.GiftAid != stateBefore){
-            if let userExt = uExt {
-                self.loginManager.updateUser(uext: userExt, completionHandler: {(success) in
-                    if success {
-                        DispatchQueue.main.async {
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                                
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        }
-                    }
-                })
-            }
-        }
+
         if comingFromRegistration {
             if NavigationManager.shared.hasInternetConnection(context: self) {
                 SVProgressHUD.show()
@@ -142,6 +123,25 @@ class GiftAidViewController: UIViewController {
                             DispatchQueue.main.async {
                                 self.present(alert, animated: true, completion: nil)
                             }
+                        }
+                    }
+                })
+            }
+        }
+        else {
+            if let userExt = uExt {
+                self.loginManager.updateUser(uext: userExt, completionHandler: {(success) in
+                    if success {
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                
+                            }))
+                            self.present(alert, animated: true, completion: nil)
                         }
                     }
                 })
