@@ -63,7 +63,9 @@ class BacsDetailViewController: UIViewController {
                             print(done)
                         })
                         DispatchQueue.main.async {
-                            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                            let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidViewController") as! GiftAidViewController
+                            vc.comingFromRegistration = true
+                            vc.uExt = self.userExtension
                             self.navigationController!.pushViewController(vc, animated: true)
                         }
                     } else {
@@ -90,7 +92,6 @@ class BacsDetailViewController: UIViewController {
                                 self.log.error(message: "Could not parse givtStatusCode Json probably not valid.")
                             }
                         }
-                        
                         DispatchQueue.main.async {
                             self.present(alert, animated: true, completion: nil)
                         }
@@ -99,6 +100,7 @@ class BacsDetailViewController: UIViewController {
             })
         }
     }
+ 
     @IBAction func goBack(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aMO-mo-gAx">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,14 @@
             <objects>
                 <viewController storyboardIdentifier="PersonalInfoViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qMn-WP-e5g" customClass="PersonalInfoViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u6A-bS-aEG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQr-9y-RQV">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qtq-UD-GGM">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
@@ -115,16 +115,188 @@
             </objects>
             <point key="canvasLocation" x="311.59420289855075" y="198.09782608695653"/>
         </scene>
+        <!--Gift Aid View Controller-->
+        <scene sceneID="gmR-jo-tKF">
+            <objects>
+                <viewController storyboardIdentifier="GiftAidViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q3e-KT-zLD" customClass="GiftAidViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W4b-s1-H38">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Giftaid_UKLogo" translatesAutoresizingMaskIntoConstraints="NO" id="LNE-9w-OEH">
+                                <rect key="frame" x="60" y="108" width="294" height="104"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="Kuf-mh-bf6"/>
+                                    <constraint firstAttribute="width" secondItem="LNE-9w-OEH" secondAttribute="height" multiplier="147:52" id="L2r-Ud-fPb"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="204" id="MnC-Je-nql"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ae-pp-aF7" userLabel="switch view">
+                                <rect key="frame" x="0.0" y="232" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="UOe-XU-lCT">
+                                        <rect key="frame" x="20" y="14" width="155" height="22"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="I want to use Gift Aid">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="16" name="Avenir-Medium"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Oxa-TV-SVY">
+                                        <rect key="frame" x="345" y="9.6666666666666572" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="UOe-XU-lCT" firstAttribute="leading" secondItem="6ae-pp-aF7" secondAttribute="leading" constant="20" id="BSC-Dj-jSw"/>
+                                    <constraint firstAttribute="trailing" secondItem="Oxa-TV-SVY" secondAttribute="trailing" constant="20" id="Ddz-yz-SCS"/>
+                                    <constraint firstAttribute="height" constant="50" id="Pa5-uN-gTS"/>
+                                    <constraint firstItem="Oxa-TV-SVY" firstAttribute="centerY" secondItem="6ae-pp-aF7" secondAttribute="centerY" id="USx-7r-bRH"/>
+                                    <constraint firstItem="UOe-XU-lCT" firstAttribute="centerY" secondItem="6ae-pp-aF7" secondAttribute="centerY" id="d06-ZD-dPb"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w57-jc-Kow">
+                                <rect key="frame" x="20" y="302" width="374" height="427"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aeM-Ii-zou">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="427"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="226" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZM-CT-h9v">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="65.666666666666671"/>
+                                                <string key="text">As a UK taxpayer, you can use the Gift Aid initiative. While this option is active, Givt Ltd. will enter Gift Aid claims for all your donations.</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="228" text="When you enable this option, you agree to the following: " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPx-k8-t81" userLabel="disclaimer1">
+                                                <rect key="frame" x="0.0" y="105.66666666666669" width="374" height="44"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="231" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwU-tA-PZq" userLabel="disclaimer2">
+                                                <rect key="frame" x="0.0" y="159.66666666666669" width="374" height="109.33333333333331"/>
+                                                <string key="text">  I am a UK taxpayer and understand that if I pay less Income Tax and/or Capital Gains Tax in the current tax year than the amount of Gift Aid claimed on all my donations, it is my responsibility to pay any difference.</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Oblique" family="Avenir" pointSize="16"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="FwU-tA-PZq" firstAttribute="leading" secondItem="aeM-Ii-zou" secondAttribute="leading" id="2SI-jl-uf6"/>
+                                            <constraint firstItem="eZM-CT-h9v" firstAttribute="top" secondItem="aeM-Ii-zou" secondAttribute="top" id="5xl-zD-Bd1"/>
+                                            <constraint firstItem="eZM-CT-h9v" firstAttribute="leading" secondItem="aeM-Ii-zou" secondAttribute="leading" id="NTx-NH-cLD"/>
+                                            <constraint firstItem="iPx-k8-t81" firstAttribute="top" secondItem="eZM-CT-h9v" secondAttribute="bottom" constant="40" id="S47-u6-Pht"/>
+                                            <constraint firstAttribute="trailing" secondItem="eZM-CT-h9v" secondAttribute="trailing" id="Szm-bM-3Np"/>
+                                            <constraint firstAttribute="trailing" secondItem="iPx-k8-t81" secondAttribute="trailing" id="bHs-gB-Zju"/>
+                                            <constraint firstAttribute="trailing" secondItem="FwU-tA-PZq" secondAttribute="trailing" id="kIx-t8-9U9"/>
+                                            <constraint firstItem="FwU-tA-PZq" firstAttribute="top" secondItem="iPx-k8-t81" secondAttribute="bottom" constant="10" id="pFc-MD-7ed"/>
+                                            <constraint firstItem="iPx-k8-t81" firstAttribute="leading" secondItem="aeM-Ii-zou" secondAttribute="leading" id="pjy-eb-wB4"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aeM-Ii-zou" firstAttribute="centerY" secondItem="w57-jc-Kow" secondAttribute="centerY" id="8j6-GM-glb"/>
+                                    <constraint firstAttribute="bottom" secondItem="aeM-Ii-zou" secondAttribute="bottom" id="9JZ-BT-zdu"/>
+                                    <constraint firstItem="aeM-Ii-zou" firstAttribute="leading" secondItem="w57-jc-Kow" secondAttribute="leading" id="BQY-j4-Ei1"/>
+                                    <constraint firstAttribute="trailing" secondItem="aeM-Ii-zou" secondAttribute="trailing" id="d8h-2T-9Ae"/>
+                                    <constraint firstItem="aeM-Ii-zou" firstAttribute="centerX" secondItem="w57-jc-Kow" secondAttribute="centerX" id="hyd-81-fxU"/>
+                                    <constraint firstItem="aeM-Ii-zou" firstAttribute="top" secondItem="w57-jc-Kow" secondAttribute="top" id="url-2L-yMq"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bi-vd-IUi" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="749" width="374" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="TKi-bx-QHi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Opslaan"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveAction:" destination="Q3e-KT-zLD" eventType="touchUpInside" id="mBN-42-CZD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5gz-cb-wSW" firstAttribute="trailing" secondItem="w57-jc-Kow" secondAttribute="trailing" constant="20" id="0BI-Wn-YbB"/>
+                            <constraint firstItem="6ae-pp-aF7" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" id="0ew-hn-k3q"/>
+                            <constraint firstAttribute="trailing" secondItem="LNE-9w-OEH" secondAttribute="trailing" constant="60" id="2Za-zu-BTx"/>
+                            <constraint firstItem="w57-jc-Kow" firstAttribute="top" secondItem="6ae-pp-aF7" secondAttribute="bottom" constant="20" id="4Us-qS-21J"/>
+                            <constraint firstItem="w57-jc-Kow" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" constant="20" id="AQl-vr-Jcl"/>
+                            <constraint firstItem="5gz-cb-wSW" firstAttribute="trailing" secondItem="2Bi-vd-IUi" secondAttribute="trailing" constant="20" id="FCN-i2-sfl"/>
+                            <constraint firstItem="LNE-9w-OEH" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" constant="60" id="Mwp-63-HCF"/>
+                            <constraint firstItem="LNE-9w-OEH" firstAttribute="top" secondItem="5gz-cb-wSW" secondAttribute="top" constant="20" id="RHe-MN-CyW"/>
+                            <constraint firstItem="5gz-cb-wSW" firstAttribute="bottom" secondItem="2Bi-vd-IUi" secondAttribute="bottom" constant="20" id="ZQE-Hq-Eof"/>
+                            <constraint firstItem="2Bi-vd-IUi" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" constant="20" id="hQB-L9-VBo"/>
+                            <constraint firstItem="5gz-cb-wSW" firstAttribute="trailing" secondItem="6ae-pp-aF7" secondAttribute="trailing" id="hoC-2I-lTu"/>
+                            <constraint firstItem="2Bi-vd-IUi" firstAttribute="top" secondItem="w57-jc-Kow" secondAttribute="bottom" constant="20" id="rgs-BM-J58"/>
+                            <constraint firstItem="6ae-pp-aF7" firstAttribute="top" secondItem="LNE-9w-OEH" secondAttribute="bottom" constant="20" id="wHQ-wb-H3l"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5gz-cb-wSW"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="vc7-7j-M0X">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="puW-BY-5r5">
+                            <connections>
+                                <action selector="backPressed:" destination="Q3e-KT-zLD" id="kj6-HQ-JzA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="info24" width="50" id="xVj-hS-Dfw">
+                            <connections>
+                                <action selector="openInfo:" destination="Q3e-KT-zLD" id="lfl-MG-0ii"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="btnSave" destination="2Bi-vd-IUi" id="b7w-7d-qZo"/>
+                        <outlet property="giftAidSwitch" destination="Oxa-TV-SVY" id="HIR-gr-NTB"/>
+                        <outlet property="lblBodyDisclaimer" destination="FwU-tA-PZq" id="FkT-y2-ovS"/>
+                        <outlet property="lblHeaderDisclaimer" destination="iPx-k8-t81" id="ofe-jD-V1S"/>
+                        <outlet property="lblInfo" destination="eZM-CT-h9v" id="qGT-eC-Qdt"/>
+                        <outlet property="lblSettings" destination="UOe-XU-lCT" id="FBP-aR-NJk"/>
+                        <outlet property="navigationItem" destination="vc7-7j-M0X" id="jpU-Tb-32e"/>
+                        <outlet property="scrollView" destination="w57-jc-Kow" id="gWv-p6-4cs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlo-IP-uVE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="-470.08928571428567"/>
+        </scene>
         <!--Change Setting View Controller-->
         <scene sceneID="Tce-IF-TOd">
             <objects>
                 <viewController storyboardIdentifier="ChangeSettingViewController" id="Ltj-A3-ruq" customClass="ChangeSettingViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Ya-uj-Mcz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nIo-jq-Bgs">
-                                <rect key="frame" x="20" y="297.66666666666669" width="374" height="141"/>
+                                <rect key="frame" x="20" y="372.66666666666669" width="374" height="141.00000000000006"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rec-Cp-770">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="87"/>
@@ -226,7 +398,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-h6-pvu" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="672" width="374" height="44"/>
+                                <rect key="frame" x="20" y="798" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                 <constraints>
@@ -253,11 +425,11 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KD1-TF-ZmB">
-                                <rect key="frame" x="0.0" y="438.66666666666669" width="414" height="233.33333333333331"/>
+                                <rect key="frame" x="0.0" y="513.66666666666663" width="414" height="284.33333333333337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jep-mg-B8c">
-                                <rect key="frame" x="0.0" y="63.999999999999986" width="414" height="233.66666666666663"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="284.66666666666669"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="40" id="cah-pU-UTn"/>
@@ -310,17 +482,17 @@
             <objects>
                 <viewController storyboardIdentifier="ChangeAddressViewController" automaticallyAdjustsScrollViewInsets="NO" id="hFV-He-2YH" customClass="ChangeAddressViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ziR-xZ-dxM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QY4-AD-hWH">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7f-BC-tJ9">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TVU-fc-Yov">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEO-YM-NWO">
                                                         <rect key="frame" x="20" y="20" width="374" height="249"/>
@@ -526,7 +698,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dik-RD-mzl" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="608" width="374" height="44"/>
+                                                        <rect key="frame" x="20" y="710" width="374" height="44"/>
                                                         <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                                         <constraints>
@@ -624,7 +796,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aMO-mo-gAx" customClass="BaseNavigationController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EkD-5j-nWq">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -636,10 +808,100 @@
             </objects>
             <point key="canvasLocation" x="-564" y="198"/>
         </scene>
+        <!--Gift Aid Info Controller-->
+        <scene sceneID="5rV-z6-Z0c">
+            <objects>
+                <viewController storyboardIdentifier="GiftAidInfoController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MYz-3t-UoE" customClass="GiftAidInfoController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DBS-Np-FtT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is Gift Aid?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Tbc-xt-Jq1">
+                                <rect key="frame" x="50" y="64" width="294" height="27.333333333333329"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZF-Lx-5gN">
+                                <rect key="frame" x="0.0" y="111.33333333333331" width="414" height="750.66666666666674"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nm6-lP-muC">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="391.66666666666669"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQu-cc-lIb">
+                                                <rect key="frame" x="20" y="0.0" width="374" height="371.66666666666669"/>
+                                                <string key="text">Donating through Gift Aid means charities and community amateur sports clubs (CASCs) can claim an extra 25p for every £1 you give. It will not cost you any extra.
+
+Gift Aid treats the donations as being made after deduction of income tax at the basic rate. The charity you give to can reclaim this basic rate income tax paid on the gift from HMRC.  Your donations will qualify as long as they’re not more than 4 times what you have paid in tax in that tax year
+
+For more info, go to: www.gov.uk/donating-to-charity/gift-aid
+</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="IQu-cc-lIb" firstAttribute="top" secondItem="Nm6-lP-muC" secondAttribute="top" id="Ol1-hV-JKb"/>
+                                            <constraint firstItem="IQu-cc-lIb" firstAttribute="leading" secondItem="Nm6-lP-muC" secondAttribute="leading" constant="20" id="SJm-us-WDd"/>
+                                            <constraint firstAttribute="trailing" secondItem="IQu-cc-lIb" secondAttribute="trailing" constant="20" id="c6f-iL-Z3f"/>
+                                            <constraint firstAttribute="bottom" secondItem="IQu-cc-lIb" secondAttribute="bottom" constant="20" id="rg2-z5-OeB"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Nm6-lP-muC" secondAttribute="trailing" id="97e-Kp-vPv"/>
+                                    <constraint firstItem="Nm6-lP-muC" firstAttribute="top" secondItem="mZF-Lx-5gN" secondAttribute="top" id="Hbb-4B-8b1"/>
+                                    <constraint firstItem="Nm6-lP-muC" firstAttribute="height" relation="greaterThanOrEqual" secondItem="mZF-Lx-5gN" secondAttribute="height" priority="250" id="Qkg-Yj-hgm"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nm6-lP-muC" secondAttribute="bottom" id="kle-Fp-Vfq"/>
+                                    <constraint firstItem="Nm6-lP-muC" firstAttribute="width" secondItem="mZF-Lx-5gN" secondAttribute="width" id="sHE-JU-SCC"/>
+                                    <constraint firstItem="Nm6-lP-muC" firstAttribute="leading" secondItem="mZF-Lx-5gN" secondAttribute="leading" id="tXW-Fa-xNB"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VzZ-pH-ZTl">
+                                <rect key="frame" x="354" y="52.666666666666657" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="kKg-EK-0Yk"/>
+                                    <constraint firstAttribute="width" constant="50" id="kVv-oa-UoU"/>
+                                </constraints>
+                                <state key="normal" image="closewhite"/>
+                                <connections>
+                                    <action selector="close:" destination="MYz-3t-UoE" eventType="touchUpInside" id="Ncx-8v-LMB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mZF-Lx-5gN" firstAttribute="width" secondItem="DBS-Np-FtT" secondAttribute="width" id="At0-0S-U3c"/>
+                            <constraint firstItem="mZF-Lx-5gN" firstAttribute="leading" secondItem="JwC-Pt-Jfu" secondAttribute="leading" id="GDk-yI-OI6"/>
+                            <constraint firstItem="JwC-Pt-Jfu" firstAttribute="trailing" secondItem="VzZ-pH-ZTl" secondAttribute="trailing" constant="10" id="IQ4-qc-Lol"/>
+                            <constraint firstItem="VzZ-pH-ZTl" firstAttribute="centerY" secondItem="Tbc-xt-Jq1" secondAttribute="centerY" id="V7F-rz-pcW"/>
+                            <constraint firstItem="Tbc-xt-Jq1" firstAttribute="leading" secondItem="JwC-Pt-Jfu" secondAttribute="leading" constant="50" id="bHo-aw-RSR"/>
+                            <constraint firstItem="Tbc-xt-Jq1" firstAttribute="top" secondItem="JwC-Pt-Jfu" secondAttribute="top" constant="20" id="pqu-1p-Bbw"/>
+                            <constraint firstAttribute="trailing" secondItem="mZF-Lx-5gN" secondAttribute="trailing" id="t4q-G2-dUH"/>
+                            <constraint firstItem="mZF-Lx-5gN" firstAttribute="bottom" secondItem="JwC-Pt-Jfu" secondAttribute="bottom" id="tnA-fX-WyO"/>
+                            <constraint firstItem="mZF-Lx-5gN" firstAttribute="top" secondItem="Tbc-xt-Jq1" secondAttribute="bottom" constant="20" id="wb6-NN-R5g"/>
+                            <constraint firstItem="VzZ-pH-ZTl" firstAttribute="leading" secondItem="Tbc-xt-Jq1" secondAttribute="trailing" constant="10" id="zGy-jg-PzE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JwC-Pt-Jfu"/>
+                    </view>
+                    <connections>
+                        <outlet property="bodyLabel" destination="IQu-cc-lIb" id="lLl-gk-alx"/>
+                        <outlet property="titleLabel" destination="Tbc-xt-Jq1" id="EJG-F7-mKK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xfc-vL-LHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1848" y="-470"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Giftaid_UKLogo" width="960" height="337"/>
         <image name="backbtn" width="15" height="24"/>
+        <image name="closewhite" width="23" height="24"/>
         <image name="dropdown.png" width="16" height="16"/>
         <image name="house" width="20" height="19"/>
+        <image name="info24" width="24" height="24"/>
     </resources>
 </document>

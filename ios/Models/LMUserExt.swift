@@ -25,4 +25,5 @@ struct LMUserExt: Codable {
     var AmountLimit: Int
     var PayProvMandateStatus: String?
     var AccountType: String
+    var GiftAid: Date?
 }
