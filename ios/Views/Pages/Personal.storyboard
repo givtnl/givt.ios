@@ -273,13 +273,13 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="btnBack" destination="puW-BY-5r5" id="qDM-ql-hzZ"/>
                         <outlet property="btnSave" destination="2Bi-vd-IUi" id="b7w-7d-qZo"/>
                         <outlet property="giftAidSwitch" destination="Oxa-TV-SVY" id="HIR-gr-NTB"/>
                         <outlet property="lblBodyDisclaimer" destination="FwU-tA-PZq" id="FkT-y2-ovS"/>
                         <outlet property="lblHeaderDisclaimer" destination="iPx-k8-t81" id="ofe-jD-V1S"/>
                         <outlet property="lblInfo" destination="eZM-CT-h9v" id="qGT-eC-Qdt"/>
                         <outlet property="lblSettings" destination="UOe-XU-lCT" id="FBP-aR-NJk"/>
+                        <outlet property="navigationItem" destination="vc7-7j-M0X" id="jpU-Tb-32e"/>
                         <outlet property="scrollView" destination="w57-jc-Kow" id="gWv-p6-4cs"/>
                     </connections>
                 </viewController>

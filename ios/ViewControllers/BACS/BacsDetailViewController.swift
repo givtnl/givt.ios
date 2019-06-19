@@ -53,9 +53,52 @@ class BacsDetailViewController: UIViewController {
     }
     
     @IBAction func done(_ sender: Any) {
-        let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidViewController") as! GiftAidViewController
-        vc.comingFromRegistration = true
-        self.navigationController!.pushViewController(vc, animated: true)
+        if NavigationManager.shared.hasInternetConnection(context: self) {
+            SVProgressHUD.show()
+            LoginManager.shared.requestMandateUrl(completionHandler: { (response) in
+                SVProgressHUD.dismiss()
+                if let r = response {
+                    if(r.status == .ok){
+                        LoginManager.shared.finishMandateSigning(completionHandler: { (done) in
+                            print(done)
+                        })
+                        DispatchQueue.main.async {
+                            let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidViewController") as! GiftAidViewController
+                            vc.comingFromRegistration = true
+                            vc.uExt = self.userExtension
+                            self.navigationController!.pushViewController(vc, animated: true)
+                        }
+                    } else {
+                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true, completion: nil)
+                                NavigationManager.shared.loadMainPage(animated: false)
+                            }
+                        }))
+                        if let data = r.data {
+                            do {
+                                let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
+                                if let parsedCode = parsedData["Code"] as? Int {
+                                    if(parsedCode == 111){
+                                        alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
+                                        alert.message = NSLocalizedString("UpdateBacsAccountDetailsError", comment: "")
+                                    } else if (parsedCode == 112){
+                                        alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
+                                        alert.message = NSLocalizedString("DDIFailedMessage", comment: "")
+                                    }
+                                }
+                            } catch {
+                                self.log.error(message: "Could not parse givtStatusCode Json probably not valid.")
+                            }
+                        }
+                        DispatchQueue.main.async {
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                }
+            })
+        }
     }
  
     @IBAction func goBack(_ sender: Any) {
