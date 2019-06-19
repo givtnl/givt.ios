@@ -237,7 +237,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SortCodePlaceholder" = "Sort code";
 "BankAccountNumberPlaceholder" = "Bank account number";
 "BacsSetupTitle" = "Setting up Direct Debit Instruction";
-"BacsSetupBody" = "By continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction mandate will be sent to you by email within 3 working days or no later than 10 working days before the first collection.";
+"BacsSetupBody" = "You are signing an incidental direct debit, we will only debit from your account when you use the Givt app to make a donation.\n\nBy continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction mandate will be sent to you by email within 3 working days or no later than 10 working days before the first collection.";
 "BacsUnderstoodNotice" = "I have read and understood the advance notice";
 "BacsVerifyTitle" = "Verify your details";
 "BacsVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'\n\nThe company name which will appear on your bank statement against the Direct Debit will be Givt Ltd.";
@@ -246,7 +246,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "BacsAdvanceNotice" = "You are signing an incidental, non-recurring Direct Debit Instruction mandate. Only on your specific request will debits be executed by the organisation. All the normal Direct Debit safeguards and guarantees apply. No changes in the use of this Direct Debit Instruction can be made without notifying you at least five (5) working days in advance of your account being debited.\nIn the event of any error, you are entitled to an immediate refund from your bank or building society. \nYou have the right to cancel a Direct Debit Instruction at any time by writing to your bank or building society, with a copy to us.";
 "BacsAdvanceNoticeTitle" = "Advance Notice";
 "BacsDDGuaranteeTitle" = "Direct Debit Guarantee";
-"BacsVerifyBodyDetails" = "Name: {0}\nAddress: {1}\nEmail address: {2}\nSort code: {3}\nAccount number: {4}\nFrequency type: donations";
+"BacsVerifyBodyDetails" = "Name: {0}\nAddress: {1}\nEmail address: {2}\nSort code: {3}\nAccount number: {4}\nFrequency type: Incidental, when you use the Givt app to make a donation";
 "BacsHelpTitle" = "Need help?";
 "BacsHelpBody" = "Can't figure something out or you just have a question? Give us a call at +31 320 320 115 or hit us up on support@givt.app and we will be in touch!";
 "BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount number: {1}";
@@ -620,7 +620,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQantwoord5" = "SlimPay\nWhen installing Givt, the user gives the app authorisation to debit their account. The transactions are handled by Slimpay – a bank that specialises in processing mandates.\n\nRevocable afterwards\nNo transactions take place in the moment of giving. The transactions take place afterwards via a direct debit. Since these transactions are revocable, it is completely safe and immune to fraud.";
 
 /*Antwoord op FAQ vraag6*/
-"FAQantwoord6" = "Continues to develop\nGivt continues to develop their service. Right now you can easily give during the offering using your smartphone, but it doesn't stop there. Curious to see what we are working on? Have a look on: www.givtapp.net/ontwikkelingen\n\nTax return\nAt the end of the year you can request an overview of all your donations, which makes it easier for you when it comes to tax declaration. Eventually we would like to see that all donations are automatically filled in on the declaration.";
+"FAQantwoord6" = "Continues to develop\nGivt continues to develop their service. Right now you can easily give during the offering using your smartphone, but it doesn't stop there. Curious to see what we are working on? Have a look on: www.givtapp.net/ontwikkelingen (Dutch only)\n\nTax return\nAt the end of the year you can request an overview of all your donations, which makes it easier for you when it comes to tax declaration. Eventually we would like to see that all donations are automatically filled in on the declaration.";
 
 /*Antwoord op FAQ vraag7*/
 "FAQantwoord7" = "Safe and risk free \nIt is very important to us that everything is safe and risk free. Each user has a personal account with its own password. You need to login to view or change your settings.\n\nHandling transactions \nThe transactions are handled by Slimpay – a bank that specialises in processing mandates. SlimPay is under the supervision of several national banks in Europe, including the Dutch Central Bank (DNB).\n\nImmune to fraud \nWhen installing Givt, the user gives the app authorisation to debit their account.\nWe want to emphasise that no transactions take place in the moment of giving. The transactions take place afterwards via a direct debit. Since these transactions are revocable, it is completely safe and immune to fraud. \n\nOverview \nOrganisations can login to the Givt dashboard. This dashboard gives an overview of all financial transactions, from the moment of giving up to the full processing of the payment. In this way any collection can be followed from start to finish.\nOrganisations can see how many people used Givt, but not who they are.";
@@ -868,7 +868,11 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "GiftAid_Info" = "As a UK taxpayer, you can use the Gift Aid initiative. While this option is active, Givt Ltd. will enter Gift Aid claims for all your donations.";
 "GiftAid_HeaderDisclaimer" = "When you enable this option, you agree to the following: ";
 "GiftAid_BodyDisclaimer" = "I am a UK taxpayer and understand that if I pay less Income Tax and/or Capital Gains Tax in the current tax year than the amount of Gift Aid claimed on all my donations, it is my responsibility to pay any difference.";
-
-/*Fuzzy*/
 "GiftAidInfo_Title" = "What is Gift Aid?";
-"GiftAidInfo_Body" = "Donating through Gift Aid means charities and community amateur sports clubs (CASCs) can claim an extra 25p for every £1 you give. It will not cost you any extra.\n\nGift Aid treats the donations as being made after deduction of income tax at the basic rate. The charity you give to can reclaim this basic rate income tax paid on the gift from HMRC.  Your donations will qualify as long as they’re not more than 4 times what you have paid in tax in that tax year\n\nFor more info, go to: www.gov.uk/donating-to-charity/gift-aid";
+"GiftAidInfo_Body" = "Donating through Gift Aid means charities and community amateur sports clubs (CASCs) can claim an extra 25p for every £1 you give. It will not cost you any extra. \n\nGift Aid treats the donations as being made after deduction of income tax at the basic rate. The charity you give to can reclaim this basic rate income tax paid on the gift from HMRC. Your donations will qualify as long as they’re not more than 4 times what you have paid in tax in that tax year. \n \nFor more info, please go to: www.gov.uk/donating-to-charity/gift-aid";
+"FAQAnswer12GB" = "Your donation will be withdrawn from your bank account within five working days. The first time you make a donation with Givt, the donation will be withdrawn after two weeks, as it takes extra time to set up your registration.";
+"FAQVraagDDI" = "Does the Direct Debit mean I signed up to monthly deductions?";
+"FAQAntwoordDDI" = "NO! You sign a direct debit so we can deduct the donations you have made using the Givt app. The deductions we make are incidental, user-driven deductions.\n\nWe will not debit your account unless you make a donation using the Givt app.";
+"GiftAidUnsavedChanges" = "You have unsaved changes, do you want to go back to save the changes or dismiss these changes?";
+"GiftAidChangeLater" = "Later on, you can change this option in the menu under 'Personal Info'.";
+"Dismiss" = "Dismiss";

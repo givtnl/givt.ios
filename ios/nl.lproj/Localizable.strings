@@ -237,7 +237,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SortCodePlaceholder" = "Sort code";
 "BankAccountNumberPlaceholder" = "Bank account number";
 "BacsSetupTitle" = "Instellen van incasso-instructie";
-"BacsSetupBody" = "Door verder te gaan, gaat u ermee akkoord dat u de accounthouder bent en dat u de enige persoon bent die inningen voor dit account kan autoriseren.\n\nDe details van uw incasso-instructie machtiging worden u binnen 3 werkdagen of uiterlijk 10 werkdagen vóór de eerste collecte per e-mail toegestuurd.";
+"BacsSetupBody" = "Je tekent een machtiging voor incidentele afschrijvingen. We incasseren alleen bedragen die je geeft met de Givt-app.\n\nDoor verder te gaan, gaat u ermee akkoord dat u de accounthouder bent en dat u de enige persoon bent die inningen voor dit account kan autoriseren.\n\nDe details van uw incasso-instructie machtiging worden u binnen 3 werkdagen of uiterlijk 10 werkdagen vóór de eerste collecte per e-mail toegestuurd.";
 "BacsUnderstoodNotice" = "Ik heb de voorinlichting gelezen en goedgekeurd";
 "BacsVerifyTitle" = "Controleer je gegevens";
 "BacsVerifyBody" = "Zijn deze gegevens correct? Zo niet, annuleer de registratie en verander je persoonlijke gegevens.\n\nDe bedrijfsnaam die op je transactie zal te zien zijn is 'Givt Ltd.'.";
@@ -246,7 +246,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "BacsAdvanceNotice" = "You are signing an ad hoc, non-recurring Direct Debit Instruction mandate. Only on your specific request will debits be executed by the organisation. All the normal Direct Debit safeguards and guarantees apply. No changes in the use of this Direct Debit Instruction can be made without notifying you at least five (5) working days in advance of your account being debited.\nIn the event of any error, you are entitled to an immediate refund from your bank or building society. \nYou have the right to cancel a Direct Debit Instruction at any time by writing to your bank or building society, with a copy to us.";
 "BacsAdvanceNoticeTitle" = "Voorinlichting";
 "BacsDDGuaranteeTitle" = "Automatische incasso garantie";
-"BacsVerifyBodyDetails" = "Naam: {0}\nAdres: {1}\nEmail adres: {2}\nSortcode: {3} \nAccount nummer: {4}\nFrequentie type: giften";
+"BacsVerifyBodyDetails" = "Naam: {0}\nAdres: {1}\nEmail adres: {2}\nSortcode: {3} \nAccount nummer: {4}\nFrequentie type: Incidenteel, wanneer je de Givt-app gebruikt om te geven";
 "BacsHelpTitle" = "Hulp nodig?";
 "BacsHelpBody" = "Kan je iets niet vinden of heb je gewoon een vraag? Aarzel dan niet om ons te contacteren op het nummer: +31 320 320 115 of stuur ons een mailtje naar support@givtapp.net en we nemen spoedig contact met je op!";
 "BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount nummer: {1}";
@@ -868,7 +868,11 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "GiftAid_Info" = "Enkel UK belastingsplichtigen kunnen gebruik maken van Gift Aid. Alle giften gedaan wanneer deze optie actief is, zal Givt Ltd. aangeven om in aanmerking te komen bij Gift Aid.";
 "GiftAid_HeaderDisclaimer" = "Wanneer je de optie activeert ga je akkoord met het volgende:";
 "GiftAid_BodyDisclaimer" = "Ik ben een UK belastingsbetaler en begrijp dat, als ik minder belastingen in het huidige belastingsjaar dan dat ik donaties heb gedaan met behulp van Gift aid, dat het mijn plicht is om het verschil bij te betalen.";
-
-/*Fuzzy*/
 "GiftAidInfo_Title" = "Wat is Gift Aid?";
-"GiftAidInfo_Body" = "Donating through Gift Aid means charities and community amateur sports clubs (CASCs) can claim an extra 25p for every £1 you give. It will not cost you any extra.\n\nGift Aid treats the donations as being made after deduction of income tax at the basic rate. The charity you give to can reclaim this basic rate income tax paid on the gift from HMRC.  Your donations will qualify as long as they’re not more than 4 times what you have paid in tax in that tax year\n\nFor more info, go to: www.gov.uk/donating-to-charity/gift-aid";
+"GiftAidInfo_Body" = "Donating through Gift Aid means charities and community amateur sports clubs (CASCs) can claim an extra 25p for every £1 you give. It will not cost you any extra. \n\nGift Aid treats the donations as being made after deduction of income tax at the basic rate. The charity you give to can reclaim this basic rate income tax paid on the gift from HMRC. Your donations will qualify as long as they’re not more than 4 times what you have paid in tax in that tax year. \n \nFor more info, please go to: www.gov.uk/donating-to-charity/gift-aid";
+"FAQAnswer12GB" = "Your donation will be withdrawn from your bank account within five working days. The first time you make a donation with Givt, the donation will be withdrawn after two weeks, as it takes extra time to set up your registration.";
+"FAQVraagDDI" = "Does the Direct Debit mean I signed up to monthly deductions?";
+"FAQAntwoordDDI" = "NO! You sign a direct debit so we can deduct the donations you have made using the Givt app. The deductions we make are incidental, user-driven deductions.\n\nWe will not debit your account unless you make a donation using the Givt app.";
+"GiftAidUnsavedChanges" = "Je hebt wijzigingen die niet opgeslaan zijn. Wil je terug om deze op te slaan of wil je deze wijzigingen ongedaan maken?";
+"GiftAidChangeLater" = "Je kunt deze optie later nog wijzigen via het menu onder 'Persoonlijke gegevens'";
+"Dismiss" = "Ongedaan maken";
