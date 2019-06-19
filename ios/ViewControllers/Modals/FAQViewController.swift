@@ -147,7 +147,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
             addQuestion(q: "PrivacyTitle", a: "PolicyTextGB")
         }
         else {
-            addQuestion(q: "FAQvraag18", a: "FAQantwoord18")
+            addQuestion(q: "FAQvraag18", a: "FAQAntwoord18")
             addQuestion(q: "TermsTitle", a: "TermsText")
             addQuestion(q: "PrivacyTitle", a: "PolicyText")
         }
