@@ -14,7 +14,7 @@ class GiftAidViewController: UIViewController {
     
     var uExt: LMUserExt?
     private let loginManager = LoginManager.shared
-    var comingFromRegistration = false
+    var comingFromRegistration: Bool = false
         private var log: LogService = LogService.shared
     
     @IBOutlet weak var giftAidSwitch: UISwitch!
@@ -23,7 +23,6 @@ class GiftAidViewController: UIViewController {
     @IBOutlet weak var lblHeaderDisclaimer: UILabel!
     @IBOutlet weak var lblBodyDisclaimer: UILabel!
     @IBOutlet weak var btnSave: CustomButton!
-    @IBOutlet weak var btnBack: UIBarButtonItem!
     @IBOutlet weak var scrollView: UIScrollView!
     
     private var helpViewController = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidInfoController") as! GiftAidInfoController
@@ -58,11 +57,10 @@ class GiftAidViewController: UIViewController {
         lblHeaderDisclaimer.text = NSLocalizedString("GiftAid_HeaderDisclaimer", comment:"")
         lblBodyDisclaimer.text = NSLocalizedString("GiftAid_BodyDisclaimer", comment: "")
         
-        if comingFromRegistration {
-            self.btnBack.isEnabled = false;
-            self.btnBack.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-            self.btnBack.image = UIImage()
-        }
+           if(comingFromRegistration){
+                navigationItem.leftBarButtonItem?.isEnabled = false
+                navigationItem.leftBarButtonItem?.image = nil
+           }
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,71 +79,33 @@ class GiftAidViewController: UIViewController {
         } else {
             uExt?.GiftAid = nil
         }
-
-        if comingFromRegistration {
-            if NavigationManager.shared.hasInternetConnection(context: self) {
-                SVProgressHUD.show()
-                LoginManager.shared.requestMandateUrl(completionHandler: { (response) in
-                    SVProgressHUD.dismiss()
-                    if let r = response {
-                        if(r.status == .ok){
-                            LoginManager.shared.finishMandateSigning(completionHandler: { (done) in
-                                print(done)
-                            })
-                            DispatchQueue.main.async {
-                                let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
-                                self.navigationController!.pushViewController(vc, animated: true)
-                            }
+        if let userExt = uExt {
+            self.loginManager.updateUser(uext: userExt, completionHandler: {(success) in
+                if success {
+                    DispatchQueue.main.async {
+                        if(self.comingFromRegistration){
+                            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                            self.navigationController!.pushViewController(vc, animated: true)
+                            
+                            
                         } else {
-                            let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
-                                DispatchQueue.main.async {
-                                    self.dismiss(animated: true, completion: nil)
-                                    NavigationManager.shared.loadMainPage(animated: false)
-                                }
-                            }))
-                            if let data = r.data {
-                                do {
-                                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                                    if let parsedCode = parsedData["Code"] as? Int {
-                                        if(parsedCode == 111){
-                                            alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
-                                            alert.message = NSLocalizedString("UpdateBacsAccountDetailsError", comment: "")
-                                        } else if (parsedCode == 112){
-                                            alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
-                                            alert.message = NSLocalizedString("DDIFailedMessage", comment: "")
-                                        }
-                                    }
-                                } catch {
-                                    self.log.error(message: "Could not parse givtStatusCode Json probably not valid.")
-                                }
-                            }
-                            DispatchQueue.main.async {
-                                self.present(alert, animated: true, completion: nil)
-                            }
-                        }
-                    }
-                })
-            }
-        }
-        else {
-            if let userExt = uExt {
-                self.loginManager.updateUser(uext: userExt, completionHandler: {(success) in
-                    if success {
-                        DispatchQueue.main.async {
                             self.navigationController?.popViewController(animated: true)
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                                
-                            }))
-                            self.present(alert, animated: true, completion: nil)
+                            
                         }
                     }
-                })
-            }
+                } else {
+                    self.showSaveFailedError()
+                }
+            })
+        }
+    }
+    private func showSaveFailedError() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
