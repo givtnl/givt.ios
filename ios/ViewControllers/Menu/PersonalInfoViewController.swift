@@ -18,6 +18,7 @@ public enum SettingType {
     case iban
     case changepassword
     case bacs
+    case giftaid
 }
 
 class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
@@ -112,7 +113,12 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
                 self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "card"), name: NSLocalizedString("BacsSortcodeAccountnumber", comment: "").replacingOccurrences(of: "{0}", with: sortCode).replacingOccurrences(of: "{1}", with: accountNumber), type: .bacs))
             }
             
+            if UserDefaults.standard.accountType == AccountType.bacs {
+                self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "Giftaid_Icon-yellow"), name: "GiftAid", type: .giftaid))
+            }
+            
             self.settings.append(PersonalSetting(image: #imageLiteral(resourceName: "lock"), name: NSLocalizedString("ChangePassword", comment: ""), type: SettingType.changepassword))
+            
             DispatchQueue.main.async {
                 self.settingsTableView.reloadData()
             }
@@ -175,7 +181,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 NavigationManager.shared.reAuthenticateIfNeeded(context:self, completion: {
                     SVProgressHUD.show()
                     self.loginManager.getUserExt(completion: {(userExt) in
-                        guard let userExt = userExt else {
+                        guard var userExt = userExt else {
                             DispatchQueue.main.async {
                                 let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
@@ -187,9 +193,10 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                             }
                             return
                         }
-                        self.loginManager.changePhone(userExt: userExt, phone: self.validatedPhoneNumber.replacingOccurrences(of: " ", with: ""), callback: {(success) in
+                        userExt.PhoneNumber = self.validatedPhoneNumber.replacingOccurrences(of: " ", with: "")
+                        self.loginManager.updateUserExt(userExt: userExt, callback: {(success) in
                             SVProgressHUD.dismiss()
-                            if success {
+                            if success.ok {
                                 DispatchQueue.main.async {
                                     self.navigationController?.popViewController(animated: true)
                                 }
@@ -222,7 +229,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                     SVProgressHUD.show()
                     self.loginManager.getUserExt(completion: { (userExt) in
-                        guard let userExt = userExt else
+                        guard var userExt = userExt else
                         {
                             DispatchQueue.main.async {
                                 let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
@@ -234,9 +241,10 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                             }
                             return
                         }
-                        self.loginManager.changeIban(userExt: userExt,iban: s.replacingOccurrences(of: " ", with: ""), callback: { (success) in
+                        userExt.IBAN = s.replacingOccurrences(of: " ", with: "")
+                        self.loginManager.updateUserExt(userExt: userExt, callback: { (success) in
                             SVProgressHUD.dismiss()
-                            if success {
+                            if success.ok {
                                 DispatchQueue.main.async {
                                     self.navigationController?.popViewController(animated: true)
                                 }
@@ -322,22 +330,25 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                     SVProgressHUD.show()
                     self.loginManager.checkTLD(email: newEmail, completionHandler: { (success) in
                         if success {
-                            self.loginManager.updateEmail(email: newEmail, completionHandler: { (success2) in
-                                SVProgressHUD.dismiss()
-                                if success2 {
-                                    DispatchQueue.main.async {
-                                        self.navigationController?.popViewController(animated: true)
+                            if var uext = self.uExt {
+                                uext.Email = newEmail
+                                self.loginManager.updateUser(uext: uext, completionHandler: { (success2) in
+                                    SVProgressHUD.dismiss()
+                                    if success2 {
+                                        DispatchQueue.main.async {
+                                            self.navigationController?.popViewController(animated: true)
+                                        }
+                                    } else {
+                                        DispatchQueue.main.async {
+                                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                                
+                                            }))
+                                            self.present(alert, animated: true, completion: nil)
+                                        }
                                     }
-                                } else {
-                                    DispatchQueue.main.async {
-                                        let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                                            
-                                        }))
-                                        self.present(alert, animated: true, completion: nil)
-                                    }
-                                }
-                            })
+                                })
+                            }
                         } else {
                             SVProgressHUD.dismiss()
                             DispatchQueue.main.async {
@@ -360,6 +371,10 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             self.navigationController?.pushViewController(vc, animated: true)
         case .address:
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChangeAddressViewController") as! ChangeAddressViewController
+            vc.uExt = self.uExt
+            self.navigationController?.pushViewController(vc, animated: true)
+        case .giftaid:
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "GiftAidViewController") as! GiftAidViewController
             vc.uExt = self.uExt
             self.navigationController?.pushViewController(vc, animated: true)
         default:

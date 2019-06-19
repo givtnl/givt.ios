@@ -67,11 +67,6 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         }
         
         let orgName = organisationName ?? ""
-        
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
-        df.timeZone = TimeZone(abbreviation: "UTC")
-        df.locale = Locale(identifier: "en_US_POSIX")
 
         UserDefaults.standard.lastGivtToOrganisationNamespace = GivtManager.shared.bestBeacon?.namespace
         
