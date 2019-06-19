@@ -876,3 +876,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "GiftAidUnsavedChanges" = "You have unsaved changes, do you want to go back to save the changes or dismiss these changes?";
 "GiftAidChangeLater" = "Later on, you can change this option in the menu under 'Personal Info'.";
 "Dismiss" = "Dismiss";
+"ImportantMessage" = "Important mention";
