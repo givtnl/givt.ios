@@ -118,10 +118,15 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        _loginManager.saveAmountLimit(Int(amountLimit.text!)!, completionHandler: {_ in
-            DispatchQueue.main.async {
-                self.navigationController?.hideLeftView(nil)
-                self.dismiss(animated: true, completion: nil)
+        _loginManager.getUserExt(completion: {uext in
+            if var uext = uext {
+                uext.AmountLimit = Int(self.amountLimit.text!)!
+                self._loginManager.updateUser(uext: uext, completionHandler:{_ in
+                    DispatchQueue.main.async {
+                        self.navigationController?.hideLeftView(nil)
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                })
             }
         })
     }
