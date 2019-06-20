@@ -12,6 +12,7 @@ class GiftAidInfoController: UIViewController {
     var bodyText: String = ""
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var bodyLabel: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -26,6 +27,7 @@ class GiftAidInfoController: UIViewController {
         super.viewWillAppear(animated)
         titleLabel.text = title
         bodyLabel.text = bodyText
+        closeButton.accessibilityLabel = NSLocalizedString("Close", comment: "")
     }
     
     @IBAction func close(_ sender: Any) {
