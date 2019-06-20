@@ -620,16 +620,15 @@
 				FB45AC3A21CA4A4A00F12584 /* BaseMenuViewController.swift */,
 				D71DA04F211AE5C90084381E /* ChangeAddressViewController.swift */,
 				FB45AC3821CA406200F12584 /* FeatureMenuViewController.swift */,
+				FB51CC4222BB784E0082776F /* Gift Aid */,
 				D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */,
 				FB45AC3621C9558200F12584 /* MenuNavigationViewController.swift */,
 				D7B7154D1FD0527E00666262 /* PersonalInfoViewController.swift */,
 				D7CCC0691FC427E6006A6A4F /* Pincode */,
+				27A0E4EC221F3EA800982842 /* Presets */,
 				D782E68E20064A680086907E /* SettingsViewController.swift */,
 				D75AA195200CBFD5006E09BB /* TaxesViewController.swift */,
 				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
-				27A0E4EC221F3EA800982842 /* Presets */,
-				A40C296222AA5EF70098442C /* GiftAidViewController.swift */,
-				DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -870,6 +869,15 @@
 				D761E9B41F18B602002B849B /* zocial-regular-webfont.ttf */,
 			);
 			path = ios;
+			sourceTree = "<group>";
+		};
+		FB51CC4222BB784E0082776F /* Gift Aid */ = {
+			isa = PBXGroup;
+			children = (
+				A40C296222AA5EF70098442C /* GiftAidViewController.swift */,
+				DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */,
+			);
+			path = "Gift Aid";
 			sourceTree = "<group>";
 		};
 		FBA0894821C7DD14001DD889 /* Features */ = {
