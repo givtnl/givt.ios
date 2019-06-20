@@ -9,6 +9,7 @@
 import Foundation
 import SVProgressHUD
 import UIKit
+import AppCenterAnalytics
 
 class GiftAidViewController: UIViewController {
     
@@ -103,6 +104,7 @@ class GiftAidViewController: UIViewController {
         if let userExt = uExt {
             self.loginManager.updateUser(uext: userExt, completionHandler: {(success) in
                 if success {
+                    MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties: ["state": (self.uExt?.GiftAid != nil).description])
                     DispatchQueue.main.async {
                         if(self.comingFromRegistration){
                             let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
