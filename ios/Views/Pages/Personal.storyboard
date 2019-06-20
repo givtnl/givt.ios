@@ -214,7 +214,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bi-vd-IUi" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="749" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <accessibility key="accessibilityConfiguration" identifier="btnGive"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="TKi-bx-QHi"/>
                                 </constraints>
@@ -888,6 +888,7 @@ For more info, go to: www.gov.uk/donating-to-charity/gift-aid
                     </view>
                     <connections>
                         <outlet property="bodyLabel" destination="IQu-cc-lIb" id="lLl-gk-alx"/>
+                        <outlet property="closeButton" destination="VzZ-pH-ZTl" id="075-jo-S1n"/>
                         <outlet property="titleLabel" destination="Tbc-xt-Jq1" id="EJG-F7-mKK"/>
                     </connections>
                 </viewController>

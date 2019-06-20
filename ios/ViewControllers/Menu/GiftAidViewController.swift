@@ -36,12 +36,17 @@ class GiftAidViewController: UIViewController {
         lblInfo.text = NSLocalizedString("GiftAid_Info", comment: "")
         lblHeaderDisclaimer.text = NSLocalizedString("GiftAid_HeaderDisclaimer", comment:"")
         lblBodyDisclaimer.text = NSLocalizedString("GiftAid_BodyDisclaimer", comment: "")
+        btnSave.setTitle(NSLocalizedString("Save", comment:""), for: .normal)
         
-           if(comingFromRegistration){
-                navigationItem.leftBarButtonItem?.isEnabled = false
-                navigationItem.leftBarButtonItem?.image = nil
-           }
+        btnSave.accessibilityLabel = NSLocalizedString("Save", comment: "")
+        
+        if(comingFromRegistration){
+            navigationItem.leftBarButtonItem?.isEnabled = false
+            navigationItem.leftBarButtonItem?.image = nil
+        }
+        
         navigationItem.leftBarButtonItem?.action = #selector(showAlertPersonalInfo)
+        navigationItem.rightBarButtonItem?.accessibilityLabel = NSLocalizedString("MoreInfo", comment: "")
     }
     
     override func viewDidLayoutSubviews() {
