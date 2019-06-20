@@ -396,7 +396,7 @@ class LoginManager {
                 date = df.string(from: giftAid)
             }
             
-            let params = ["Email": uext.Email,"AmountLimit": uext.AmountLimit, "GiftAid": date] as [String : Any]
+            let params = ["Email": uext.Email,"AmountLimit": uext.AmountLimit, "GiftAid": date ?? ""] as [String : Any]
             try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/", data: params) { (response) in
                 guard let resp = response else {
                     completionHandler(false)
