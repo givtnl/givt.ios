@@ -12,6 +12,7 @@ import AppCenterAnalytics
 import AppCenterCrashes
 import AppCenterPush
 import TrustKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
     var notificationManager: NotificationManager = NotificationManager.shared
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
@@ -31,6 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             logService.error(message: "User had a crash, check AppCenter")
         }
         
+        if #available(iOS 10.0, *) {
+            registerForPushNotifications()
+        } else {
+            // Fallback on earlier versions
+        }
+
         logService.info(message: "App started")
         
         if !UserDefaults.standard.showcases.isEmpty {
@@ -43,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         handleOldBeaconList()
         checkIfTempUser()
         doMagicForPresets()
-        
+
         return true
     }
     
@@ -91,7 +98,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    @available(iOS 10.0, *)
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current() // 1
+            .requestAuthorization(options: [.alert, .sound, .badge]) {
+                [weak self] granted, error in
+                
+                print("Permission granted: \(granted)")
+                guard granted else { return }
+                let testAction = UNNotificationAction(
+                    identifier: "Identifier.testAction", title: "TestAction",
+                    options: [.foreground])
+                
+                // 2
+                let actionCategory = UNNotificationCategory(
+                    identifier: "ACTION_CATEGORY", actions: [testAction],
+                    intentIdentifiers: [], options: [])
+                
+                // 3
+                UNUserNotificationCenter.current().setNotificationCategories([actionCategory])
+                self?.getNotificationSettings()
+        }
+    }
+    
+    @available(iOS 10.0, *)
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -197,5 +237,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void ) {
+        guard let aps = userInfo["aps"] as? [String: AnyObject] else {
+            completionHandler(.failed)
+            return
+        }
+        print(aps)
+        completionHandler(.newData)
+    }
 }
-
