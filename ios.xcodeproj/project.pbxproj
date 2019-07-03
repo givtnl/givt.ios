@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2700EF9E22C22A5D003B8EA9 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2700EF9D22C22A5D003B8EA9 /* LocalNotificationManager.swift */; };
 		27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27689CDF221AF94B006C0DA6 /* CollectionView.xib */; };
 		27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27689CE3221B0064006C0DA6 /* CollectionView.swift */; };
 		279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279672B42264CF6D0092464A /* CelebrationQueueViewController.swift */; };
@@ -210,7 +209,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2700EF9D22C22A5D003B8EA9 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		27689CDF221AF94B006C0DA6 /* CollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CollectionView.xib; path = "ios/Views/Custom Views/CollectionView.xib"; sourceTree = SOURCE_ROOT; };
 		27689CE3221B0064006C0DA6 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		279672B42264CF6D0092464A /* CelebrationQueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationQueueViewController.swift; sourceTree = "<group>"; };
@@ -485,7 +483,6 @@
 				D788E4771FA08DA700506DA5 /* NavigationManager.swift */,
 				FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */,
 				A4DE893F220C76F500379CFD /* NotificationManager.swift */,
-				2700EF9D22C22A5D003B8EA9 /* LocalNotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1120,7 +1117,6 @@
 				D7D9C31A20D9453F000D93C5 /* ChangeSettingViewController.swift in Sources */,
 				D740E15C1F4C6328000531BA /* GivtManager.swift in Sources */,
 				FB38F1B22133E7500025F648 /* NavigationHelper.swift in Sources */,
-				2700EF9E22C22A5D003B8EA9 /* LocalNotificationManager.swift in Sources */,
 				FBA0894C21C7F97F001DD889 /* FeatureCarouselViewController.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
 				D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */,

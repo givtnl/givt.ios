@@ -152,15 +152,6 @@ final class GivtManager: NSObject {
         
         if hasOfflineGifts() {
             BadgeService.shared.addBadge(badge: .offlineGifts)
-            if #available(iOS 10.0, *) {
-                let localNotificationManager = LocalNotificationManager()
-                localNotificationManager.notifications = [
-                    GivtNotification(id: "Test-1", title: "Offline Givts")
-                ]
-                localNotificationManager.schedule()
-            } else {
-                // Fallback on earlier versions
-            }
         } else {
             BadgeService.shared.removeBadge(badge: .offlineGifts)
         }
