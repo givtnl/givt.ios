@@ -132,14 +132,14 @@ final class NotificationManager : NSObject {
     }
     
     func processPushNotification(fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void, pushNotificationInfo: [AnyHashable: Any] ) {
-       
         guard let aps = pushNotificationInfo["aps"] as? [String: AnyObject] else {
             completionHandler(.failed)
             return
         }
-        // Loging toevoegen (peist Mike)
+
         guard let type = pushNotificationInfo["type"] as? String else  {
             completionHandler(.failed)
+            LogService.shared.error(message: "Pushnotification type not of string-type")
             return
         }
         
@@ -153,7 +153,7 @@ final class NotificationManager : NSObject {
                 GivtManager.shared.processCachedGivts()
             default:
                 print("wrong type")
-            
+            LogService.shared.error(message: "Pushnotification type not known")
         }
         
         print(aps)
