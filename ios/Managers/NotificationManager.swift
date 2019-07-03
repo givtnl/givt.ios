@@ -145,7 +145,7 @@ final class NotificationManager : NSObject {
         
         switch type {
             case NotificationType.CelebrationActivated.rawValue:
-                if let collectGroupId = aps["CollectGroupId"] {
+                if let collectGroupId = pushNotificationInfo["CollectGroupId"] {
                     NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil, userInfo: ["CollectGroupId": collectGroupId])
             }
             case NotificationType.ProcessCachedGivts.rawValue:
