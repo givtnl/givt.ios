@@ -50,7 +50,7 @@ final class NotificationManager : NSObject, MSPushDelegate {
     func sendNotificationIdToServer(force: Bool = false) {
         var pushnotId: String? = nil
         if (notificationsEnabled) {
-            pushnotId = MSAppCenter.installId()?.uuidString
+            pushnotId = UserDefaults.standard.deviceToken
         }
         
         if (force || notificationsEnabled != UserDefaults.standard.notificationsEnabled) && loginManager.isUserLoggedIn {
