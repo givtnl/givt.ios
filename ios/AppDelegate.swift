@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
-    var notificationManager: NotificationManager = NotificationManager.shared
+    
     var loginManager: LoginManager = LoginManager.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -32,12 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if MSCrashes.hasCrashedInLastSession()  {
             logService.error(message: "User had a crash, check AppCenter")
         }
-        
-        if #available(iOS 10.0, *) {
-            registerForPushNotifications()
-        } else {
-            // Fallback on earlier versions
-        }
 
         logService.info(message: "App started")
         
@@ -46,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.showcases = []
         }
         
-        notificationManager.start()
+        NotificationManager.shared.start()
         
         handleOldBeaconList()
         checkIfTempUser()
@@ -99,39 +93,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    @available(iOS 10.0, *)
-    func registerForPushNotifications() {
-        UNUserNotificationCenter.current() // 1
-            .requestAuthorization(options: [.alert, .sound, .badge]) {
-                [weak self] granted, error in
-                
-                print("Permission granted: \(granted)")
-                guard granted else { return }
-                let testAction = UNNotificationAction(
-                    identifier: "Identifier.testAction", title: "TestAction",
-                    options: [.foreground])
-                
-                // 2
-                let actionCategory = UNNotificationCategory(
-                    identifier: "ACTION_CATEGORY", actions: [testAction],
-                    intentIdentifiers: [], options: [])
-                
-                // 3
-                UNUserNotificationCenter.current().setNotificationCategories([actionCategory])
-                self?.getNotificationSettings()
-        }
-    }
-    
-    @available(iOS 10.0, *)
-    func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { settings in
-            print("Notification settings: \(settings)")
-            guard settings.authorizationStatus == .authorized else { return }
-            DispatchQueue.main.async {
-                UIApplication.shared.registerForRemoteNotifications()
-            }
-        }
-    }
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -151,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logService.info(message: "App resuming")
         NavigationManager.shared.resume()
         GivtManager.shared.resume()
-        notificationManager.resume()
+        NotificationManager.shared.resume()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -240,11 +201,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-        let token = tokenParts.joined()
-        print("Device Token: \(token)")
-        UserDefaults.standard.deviceToken = token
-        notificationManager.self.sendNotificationIdToServer()
+        NotificationManager.shared.processRegisterForRemoteNotifications(deviceToken: deviceToken)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
@@ -253,6 +210,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification pushNotificationInfo: [AnyHashable: Any],
     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void ) {
-        notificationManager.self.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
+        NotificationManager.shared.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
     }
 }
