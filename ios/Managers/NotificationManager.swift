@@ -6,14 +6,11 @@
 //  Copyright © 2019 Givt. All rights reserved.
 //
 
-
-import AppCenter
-import AppCenterPush
 import Foundation
 import UIKit
 import UserNotifications
 
-final class NotificationManager : NSObject, MSPushDelegate {
+final class NotificationManager : NSObject {
     
     static let shared: NotificationManager = NotificationManager()
     
@@ -32,20 +29,10 @@ final class NotificationManager : NSObject, MSPushDelegate {
     
     func start() -> Void {
         log.info(message: "User notification status: " + String(notificationsEnabled))
-        if notificationsEnabled {
-            startNotificationService()
-        } else {
-            MSPush.setEnabled(false)
-        }
         sendNotificationIdToServer()
     }
     
     func resume() -> Void {
-        if notificationsEnabled {
-            startNotificationService()
-        } else {
-            MSPush.setEnabled(false)
-        }
         sendNotificationIdToServer()
     }
     
@@ -53,6 +40,8 @@ final class NotificationManager : NSObject, MSPushDelegate {
         var pushnotId: String? = nil
         if (notificationsEnabled) {
             pushnotId = UserDefaults.standard.deviceToken
+        } else {
+            UserDefaults.standard.deviceToken = nil
         }
         
         if (force || notificationsEnabled != UserDefaults.standard.notificationsEnabled) && loginManager.isUserLoggedIn {
@@ -84,8 +73,7 @@ final class NotificationManager : NSObject, MSPushDelegate {
                 if settings.authorizationStatus == .notDetermined {
                     center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
                         if granted {
-                            self.startNotificationService()
-                            self.sendNotificationIdToServer()
+                            UIApplication.shared.registerForRemoteNotifications()
                             completion(true)
                         }
                         else {
@@ -94,8 +82,7 @@ final class NotificationManager : NSObject, MSPushDelegate {
                     }
                 } else {
                     if settings.authorizationStatus == .authorized {
-                        self.startNotificationService()
-                        self.sendNotificationIdToServer()
+                        UIApplication.shared.registerForRemoteNotifications()
                         completion(true)
                         return
                     }
@@ -105,55 +92,26 @@ final class NotificationManager : NSObject, MSPushDelegate {
                         return
                     }
                     UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                        self.startNotificationService()
-                        self.sendNotificationIdToServer()
+                        UIApplication.shared.registerForRemoteNotifications()
                         completion(true)
                     })
                 }
             })
         } else {
             if notificationsEnabled {
-                startNotificationService()
-                sendNotificationIdToServer()
-                completion(true)
+                if let _ = UserDefaults.standard.deviceToken {
+                    completion(true)
+                } else {
+                    UIApplication.shared.registerForRemoteNotifications()
+                    completion(true)
+                }
             } else {
                 UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                    self.startNotificationService()
-                    self.sendNotificationIdToServer()
+                    UIApplication.shared.registerForRemoteNotifications()
                     completion(true)
                 })
             }
-        }
-    }
-    
-    func startNotificationService() -> Void {
-        if loginManager.isUserLoggedIn {
-            if !self.pushServiceRunning {
-                MSPush.setDelegate(self)
-                MSAppCenter.startService(MSPush.self)
-                self.pushServiceRunning = true
-            }
-            
-            if !MSPush.isEnabled() {
-                MSPush.setEnabled(true)
-            }
-        }
-    }
-    
-    func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
-        if let data = pushNotification?.customData, let payloadType = data["Type"], let type = NotificationType(rawValue: payloadType) {
-            switch (type) {
-            case .CelebrationActivated:
-                if let collectGroupId = data["CollectGroupId"] {
-                    NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil, userInfo: ["CollectGroupId": collectGroupId])
-                }
-                print("The celebration is activated")
-            default:
-                print("Could not find type")
-            }
-        } else {
-            log.error(message: "Payload not correct")
         }
     }
     
@@ -163,6 +121,14 @@ final class NotificationManager : NSObject, MSPushDelegate {
     
     @objc private func userDidLogin(notification: NSNotification) {
         sendNotificationIdToServer(force: true)
+    }
+    
+    func processRegisterForRemoteNotifications(deviceToken: Data) {
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+        UserDefaults.standard.deviceToken = token
+        sendNotificationIdToServer()
     }
     
     func processPushNotification(fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void, pushNotificationInfo: [AnyHashable: Any] ) {
