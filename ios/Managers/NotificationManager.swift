@@ -138,7 +138,7 @@ final class NotificationManager : NSObject {
             return
         }
         // Loging toevoegen (peist Mike)
-        guard let type = aps["type"] as? String else  {
+        guard let type = pushNotificationInfo["type"] as? String else  {
             completionHandler(.failed)
             return
         }
