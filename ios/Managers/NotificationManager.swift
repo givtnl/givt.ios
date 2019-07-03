@@ -18,10 +18,12 @@ final class NotificationManager : NSObject, MSPushDelegate {
     static let shared: NotificationManager = NotificationManager()
     
     let loginManager = LoginManager.shared
+    
     let log = LogService.shared
     let client = APIClient.shared
     
     var pushServiceRunning = false
+    var notificationsEnabled: Bool { get { return !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty ?? true) } }
     
     override init() {
         super.init()
@@ -55,7 +57,7 @@ final class NotificationManager : NSObject, MSPushDelegate {
         
         if (force || notificationsEnabled != UserDefaults.standard.notificationsEnabled) && loginManager.isUserLoggedIn {
             do {
-                try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/pushnotificationid", data: ["PushNotificationId" : pushnotId as Any], callback: { (response) in
+                try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/pushnotificationid", data: ["PushNotificationId" : pushnotId as Any, "OS" : 2], callback: { (response) in
                     if let response = response {
                         if (response.basicStatus == .ok){
                             UserDefaults.standard.notificationsEnabled = self.notificationsEnabled
@@ -147,6 +149,8 @@ final class NotificationManager : NSObject, MSPushDelegate {
                     NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil, userInfo: ["CollectGroupId": collectGroupId])
                 }
                 print("The celebration is activated")
+            default:
+                print("Could not find type")
             }
         } else {
             log.error(message: "Payload not correct")
@@ -161,9 +165,32 @@ final class NotificationManager : NSObject, MSPushDelegate {
         sendNotificationIdToServer(force: true)
     }
     
-    var notificationsEnabled: Bool { get { return !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty ?? true) } }
-    
-    enum NotificationType: String {
-        case CelebrationActivated = "CelebrationActivated"
+    func processPushNotification(fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void, pushNotificationInfo: [AnyHashable: Any] ) {
+       
+        guard let aps = pushNotificationInfo["aps"] as? [String: AnyObject] else {
+            completionHandler(.failed)
+            return
+        }
+        // Loging toevoegen (peist Mike)
+        guard let type = aps["type"] as? String else  {
+            completionHandler(.failed)
+            return
+        }
+        
+        switch type {
+            case NotificationType.CelebrationActivated.rawValue:
+                if let collectGroupId = aps["CollectGroupId"] {
+                    NotificationCenter.default.post(name: .GivtReceivedCelebrationNotification, object: nil, userInfo: ["CollectGroupId": collectGroupId])
+            }
+            case NotificationType.ProcessCachedGivts.rawValue:
+                print("process cached givts action")
+                GivtManager.shared.processCachedGivts()
+            default:
+                print("wrong type")
+            
+        }
+        
+        print(aps)
+        completionHandler(.newData)
     }
 }
