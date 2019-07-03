@@ -42,6 +42,7 @@ extension UserDefaults {
         case lastFeatureShown
         case featureBadges
         case notificationsEnabled
+        case deviceToken
     }
     
     enum Showcase: String {
@@ -407,6 +408,16 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.termsVersion.rawValue)
+            synchronize()
+        }
+    }
+    
+    var deviceToken: String? {
+        get {
+            return string(forKey: UserDefaultsKeys.deviceToken.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.deviceToken.rawValue)
             synchronize()
         }
     }
