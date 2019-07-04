@@ -843,9 +843,9 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Givt Ltd. ...*/
 "GivtCompanyInfoGB" = "Givt Ltd.";
-"CelebrationHappyToSeeYou" = "Je Givt is gelukt en dat gaan we vieren!";
+"CelebrationHappyToSeeYou" = "We gaan samen je Givt vieren!";
 "CelebrationQueueText" = "Je mag de app gewoon op dit scherm laten staan. Wij sturen een pushnotificatie wanneer het aftellen begint.";
-"CelebrationQueueCancel" = "Nee, dankje";
+"CelebrationQueueCancel" = "Geven zonder Flash Givt";
 "CelebrationEnablePushNotification" = "Schakel pushnotificaties in";
 "FAQButtonAccessibilityLabel" = "Veelgestelde vragen";
 "ProgressBarStepOne" = "Stap 1";
@@ -877,3 +877,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "GiftAidChangeLater" = "Je kunt deze optie later nog wijzigen via het menu onder 'Persoonlijke gegevens'";
 "Dismiss" = "Ongedaan maken";
 "ImportantMessage" = "Belangrijke melding";
+"CelebrationQueueCancelAlertBody" = "Weet je het zeker?";
