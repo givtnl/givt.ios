@@ -137,7 +137,7 @@ final class NotificationManager : NSObject {
             return
         }
 
-        guard let type = pushNotificationInfo["type"] as? String else  {
+        guard let type = pushNotificationInfo["Type"] as? String else  {
             completionHandler(.failed)
             LogService.shared.error(message: "Pushnotification type not of string-type")
             return
