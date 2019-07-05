@@ -22,30 +22,28 @@ class CelebrationQueueViewController : BaseScanViewController {
     @IBOutlet var imageFlash: UIImageView!
 
     @IBOutlet var buttonEnablePushNot: CustomButton!
-    @IBOutlet var buttonCancelPartyGivt: CustomButton!
+    @IBOutlet var buttonCancelFlashGivt: CustomButton!
     
     override func viewDidLoad() {
         LogService.shared.info(message: "CELEBRATE_QUEUE")
         MSAnalytics.trackEvent("CELEBRATE_QUEUE")
-        NotificationCenter.default.addObserver(self, selector: #selector(shouldShowCelebration), name: .GivtReceivedCelebrationNotification, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(shouldShowCelebration), name:.GivtReceivedCelebrationNotification, object: nil)
 
         // set label texts
         titelLabel.text = NSLocalizedString("CelebrationHappyToSeeYou", comment: "")
         secondaryTitelLabel.text = NSLocalizedString("CelebrationQueueText", comment: "")
         
         // set button texts
-        buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControlState.normal)
+    buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControlState.normal)
         buttonEnablePushNot.accessibilityLabel = NSLocalizedString("CelebrationEnablePushNotification", comment: "")
-        let cancelString = NSLocalizedString("CelebrationQueueCancel", comment: "")
-        let cancelStringMutable = NSMutableAttributedString(string: cancelString)
-        cancelStringMutable.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 0, length: cancelString.count))
-        cancelStringMutable.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 0x2e, green: 0x29, blue: 0x57), range: NSRange(location: 0, length: cancelString.count))
-        buttonCancelPartyGivt.setAttributedTitle(cancelStringMutable, for: UIControlState.normal)
-        buttonCancelPartyGivt.accessibilityLabel = NSLocalizedString("CelebrationQueueCancel", comment: "")
+        
+        buttonCancelFlashGivt.setTitle(NSLocalizedString("CelebrationQueueCancel", comment: ""), for: UIControlState.normal)
+        buttonCancelFlashGivt.accessibilityLabel = NSLocalizedString("CelebrationQueueCancel", comment: "")
         
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled
         buttonEnablePushNot.isHidden = NotificationManager.shared.notificationsEnabled
-        imageFlash.bottomAnchor.constraint(equalTo: buttonCancelPartyGivt.topAnchor).isActive = NotificationManager.shared.notificationsEnabled
+        imageFlash.bottomAnchor.constraint(equalTo: buttonCancelFlashGivt.topAnchor).isActive = NotificationManager.shared.notificationsEnabled
         
     }
     
@@ -59,9 +57,18 @@ class CelebrationQueueViewController : BaseScanViewController {
     }
     
     @IBAction func cancelCelebration(_ sender: Any) {
-        LogService.shared.info(message: "CELEBRATE_QUEUE_CANCEL")
-        MSAnalytics.trackEvent("CELEBRATE_QUEUE_CANCEL")
-        onGivtProcessed(transactions: transactions, organisationName: organisation, canShare: true)
+        let alert = UIAlertController(title: NSLocalizedString("CelebrationQueueCancel", comment: ""), message: NSLocalizedString("CelebrationQueueCancelAlertBody", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .cancel, handler: { (action) in
+            LogService.shared.info(message: "CELEBRATE_QUEUE_CANCEL")
+            MSAnalytics.trackEvent("CELEBRATE_QUEUE_CANCEL")
+            self.onGivtProcessed(transactions: self.transactions, organisationName: self.organisation, canShare: true)
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .default, handler: { (action) in
+            self.dismiss(animated: true, completion: {})
+        }))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func activePushNotfications(_ sender: Any) {

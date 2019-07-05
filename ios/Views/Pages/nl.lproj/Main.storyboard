@@ -2138,7 +2138,7 @@ Kijk voor de status in je overzicht.</string>
                                 <rect key="frame" x="20" y="194.5" width="374" height="583.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="givymoney" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ve-VI-QVA">
-                                        <rect key="frame" x="28" y="28" width="318" height="240"/>
+                                        <rect key="frame" x="28" y="28" width="318" height="16"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2444,22 +2444,17 @@ best bij jou past.</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="V1U-X3-Z2j"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="18"/>
-                                <state key="normal" title="Geven">
-                                    <color key="titleColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Cancel FlashGivt"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" red="0.84313725490196079" green="0.23529411764705882" blue="0.28627450980392155" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.73725490196078436" green="0.098039215686274508" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -2492,7 +2487,7 @@ best bij jou past.</string>
                         <viewLayoutGuide key="safeArea" id="oyi-VM-7CI"/>
                     </view>
                     <connections>
-                        <outlet property="buttonCancelPartyGivt" destination="ENb-c4-V9M" id="guE-N6-z5G"/>
+                        <outlet property="buttonCancelFlashGivt" destination="ENb-c4-V9M" id="guE-N6-z5G"/>
                         <outlet property="buttonEnablePushNot" destination="E9g-1r-13K" id="0zY-E4-3At"/>
                         <outlet property="imageFlash" destination="dM3-9v-wcq" id="aTe-3z-HzW"/>
                         <outlet property="secondaryTitelLabel" destination="ZWB-1n-TdE" id="JNQ-en-c5S"/>
