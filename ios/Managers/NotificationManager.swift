@@ -20,7 +20,11 @@ final class NotificationManager : NSObject {
     let client = APIClient.shared
     
     var pushServiceRunning = false
-    var notificationsEnabled: Bool { get { return !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty ?? true) } }
+    var notificationsEnabled: Bool {
+        get {
+            return !(UIApplication.shared.currentUserNotificationSettings?.types.isEmpty ?? true)
+        }
+    }
     
     override init() {
         super.init()
@@ -28,7 +32,6 @@ final class NotificationManager : NSObject {
     }
     
     func start() -> Void {
-        log.info(message: "User notification status: " + String(notificationsEnabled))
         sendNotificationIdToServer()
     }
     
@@ -39,12 +42,18 @@ final class NotificationManager : NSObject {
     func sendNotificationIdToServer(force: Bool = false) {
         var pushnotId: String? = nil
         if (notificationsEnabled) {
-            pushnotId = UserDefaults.standard.deviceToken
+            if (UserDefaults.standard.deviceToken == nil) {
+                UIApplication.shared.registerForRemoteNotifications()
+                return
+            } else {
+                pushnotId = UserDefaults.standard.deviceToken
+            }
         } else {
             UserDefaults.standard.deviceToken = nil
         }
         
         if (force || notificationsEnabled != UserDefaults.standard.notificationsEnabled) && loginManager.isUserLoggedIn {
+            NotificationCenter.default.post(name: .NotificationStatusUpdated, object: notificationsEnabled)
             do {
                 try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/pushnotificationid", data: ["PushNotificationId" : pushnotId as Any, "OS" : 2], callback: { (response) in
                     if let response = response {
@@ -92,7 +101,6 @@ final class NotificationManager : NSObject {
                         return
                     }
                     UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                        UIApplication.shared.registerForRemoteNotifications()
                         completion(true)
                     })
                 }
