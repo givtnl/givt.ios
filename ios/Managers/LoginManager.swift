@@ -101,6 +101,9 @@ class LoginManager {
                                 config.email = email
                               
                                 UserDefaults.standard.userExt = config
+                                GivtManager.shared.getBeaconsFromOrganisation(completionHandler: { (status) in
+                                    //do nothing
+                                })
                             
                                 self.getUserExt(completion: { (obj) in
                                     if obj != nil {
