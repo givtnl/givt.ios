@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AppCenterAnalytics
+import UserNotifications
 
 class CelebrationQueueViewController : BaseScanViewController {
     
@@ -46,7 +47,6 @@ class CelebrationQueueViewController : BaseScanViewController {
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled
         buttonEnablePushNot.isHidden = NotificationManager.shared.notificationsEnabled
         imageFlash.bottomAnchor.constraint(equalTo: buttonCancelPartyGivt.topAnchor).isActive = NotificationManager.shared.notificationsEnabled
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +56,8 @@ class CelebrationQueueViewController : BaseScanViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
-    }
+        buttonEnablePushNot.isHidden = NotificationManager.shared.notificationsEnabled
+}
     
     @IBAction func cancelCelebration(_ sender: Any) {
         LogService.shared.info(message: "CELEBRATE_QUEUE_CANCEL")
@@ -65,15 +66,14 @@ class CelebrationQueueViewController : BaseScanViewController {
     }
     
     @IBAction func activePushNotfications(_ sender: Any) {
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidUpdateNotificationStatus), name: .NotificationStatusUpdated, object: nil)
         NotificationManager.shared.requestNotificationPermission(completion: { success in
-            DispatchQueue.main.async {
-                if success {
-                    self.buttonEnablePushNot.isHidden = true
-                } else {
-                    self.cancelCelebration(self)
-                }
-            }
+
         })
+    }
+    
+    @objc func onDidUpdateNotificationStatus() {
+        buttonEnablePushNot.isHidden = NotificationManager.shared.notificationsEnabled
     }
     
     @objc func shouldShowCelebration(notification: NSNotification){
