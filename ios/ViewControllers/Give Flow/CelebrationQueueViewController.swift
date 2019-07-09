@@ -64,7 +64,10 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
 
         let sem = DispatchSemaphore(value: 0)
         NotificationManager.shared.areNotificationsEnabled { enabled in
-            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled }
+            DispatchQueue.main.async {
+                self.buttonEnablePushNot.isHidden = enabled
+                sem.signal()
+            }
         }
         let _ = sem.wait(timeout: .now() + 2.0)
     }
