@@ -41,15 +41,14 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
         buttonCancelFlashGivt.accessibilityLabel = NSLocalizedString("CelebrationQueueCancel", comment: "")
         
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled
-        let sem = DispatchSemaphore(value: 0)
         NotificationManager.shared.areNotificationsEnabled { enabled in
             DispatchQueue.main.async {
                 self.buttonEnablePushNot.isHidden = enabled
                 self.imageFlash.bottomAnchor.constraint(equalTo: self.buttonCancelFlashGivt.topAnchor).isActive = enabled
-                sem.signal()
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
             }
         }
-        let _ = sem.wait(timeout: .now() + 2.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,14 +61,9 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
 
         NotificationManager.shared.delegates.append(self)
 
-        let sem = DispatchSemaphore(value: 0)
         NotificationManager.shared.areNotificationsEnabled { enabled in
-            DispatchQueue.main.async {
-                self.buttonEnablePushNot.isHidden = enabled
-                sem.signal()
-            }
+            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled }
         }
-        let _ = sem.wait(timeout: .now() + 2.0)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

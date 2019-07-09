@@ -74,23 +74,21 @@ final class NotificationManager : NSObject {
     }
     
     func areNotificationsEnabled(completion: @escaping (Bool) -> Void) {
-        DispatchQueue.main.async {
-            if #available(iOS 10.0, *) {
-                UNUserNotificationCenter.current().getNotificationSettings(){ (setttings) in
-                    switch setttings.authorizationStatus{
-                    case .authorized:
-                        completion(true)
-                    default:
-                        completion(false)
-                    }
-                }
-            } else {
-                let notificationDisabled = UIApplication.shared.currentUserNotificationSettings?.types.isEmpty
-                if let notificationDisabled = notificationDisabled, !notificationDisabled {
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().getNotificationSettings(){ (setttings) in
+                switch setttings.authorizationStatus{
+                case .authorized:
                     completion(true)
-                } else {
+                default:
                     completion(false)
                 }
+            }
+        } else {
+            let notificationDisabled = UIApplication.shared.currentUserNotificationSettings?.types.isEmpty
+            if let notificationDisabled = notificationDisabled, !notificationDisabled {
+                completion(true)
+            } else {
+                completion(false)
             }
         }
     }
@@ -146,7 +144,7 @@ final class NotificationManager : NSObject {
                 })
             }
         } else {
-            self.areNotificationsEnabled { enabled in
+            areNotificationsEnabled { enabled in
                 DispatchQueue.main.async {
                     if (enabled) {
                         UIApplication.shared.registerForRemoteNotifications()

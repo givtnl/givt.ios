@@ -76,14 +76,16 @@ class FeatureManager {
                             subText: NSLocalizedString("Feature_push3_message", comment:""),
                             actionText: {(context) -> String in
                                 var retVal: String = ""
-                                var sem = DispatchSemaphore(value: 0)
-                                NotificationManager.shared.areNotificationsEnabled { enabled in
-                                    if enabled {
-                                        retVal = NSLocalizedString("Feature_push_enabled_action", comment: "")
-                                    } else {
-                                        retVal = NSLocalizedString("Feature_push_notenabled_action", comment: "")
+                                let sem = DispatchSemaphore(value: 0)
+                                DispatchQueue.global(qos: .background).async {
+                                    NotificationManager.shared.areNotificationsEnabled { enabled in
+                                        if enabled {
+                                            retVal = NSLocalizedString("Feature_push_enabled_action", comment: "")
+                                        } else {
+                                            retVal = NSLocalizedString("Feature_push_notenabled_action", comment: "")
+                                        }
+                                        sem.signal()
                                     }
-                                    sem.signal()
                                 }
                                 let _ = sem.wait(timeout: .now() + 2.0)
                                 return retVal
