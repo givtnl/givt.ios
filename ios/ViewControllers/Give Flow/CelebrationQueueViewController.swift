@@ -11,7 +11,7 @@ import UIKit
 import AppCenterAnalytics
 import UserNotifications
 
-class CelebrationQueueViewController : BaseScanViewController {
+class CelebrationQueueViewController : BaseScanViewController, NotificationManagerDelegate {
     
     var transactions: [Transaction]!
     var organisation = ""
@@ -29,22 +29,27 @@ class CelebrationQueueViewController : BaseScanViewController {
         LogService.shared.info(message: "CELEBRATE_QUEUE")
         MSAnalytics.trackEvent("CELEBRATE_QUEUE")
 
-        NotificationCenter.default.addObserver(self, selector: #selector(shouldShowCelebration), name:.GivtReceivedCelebrationNotification, object: nil)
-
         // set label texts
         titelLabel.text = NSLocalizedString("CelebrationHappyToSeeYou", comment: "")
         secondaryTitelLabel.text = NSLocalizedString("CelebrationQueueText", comment: "")
         
         // set button texts
-    buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControlState.normal)
+        buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControlState.normal)
         buttonEnablePushNot.accessibilityLabel = NSLocalizedString("CelebrationEnablePushNotification", comment: "")
         
         buttonCancelFlashGivt.setTitle(NSLocalizedString("CelebrationQueueCancel", comment: ""), for: UIControlState.normal)
         buttonCancelFlashGivt.accessibilityLabel = NSLocalizedString("CelebrationQueueCancel", comment: "")
         
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled
-        buttonEnablePushNot.isHidden = NotificationManager.shared.notificationsEnabled
-        imageFlash.bottomAnchor.constraint(equalTo: buttonCancelFlashGivt.topAnchor).isActive = NotificationManager.shared.notificationsEnabled
+        let sem = DispatchSemaphore(value: 0)
+        NotificationManager.shared.areNotificationsEnabled { enabled in
+            DispatchQueue.main.async {
+                self.buttonEnablePushNot.isHidden = enabled
+                self.imageFlash.bottomAnchor.constraint(equalTo: self.buttonCancelFlashGivt.topAnchor).isActive = enabled
+                sem.signal()
+            }
+        }
+        let _ = sem.wait(timeout: .now() + 2.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,8 +59,20 @@ class CelebrationQueueViewController : BaseScanViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
-        buttonEnablePushNot.isHidden = NotificationManager.shared.notificationsEnabled
-}
+
+        NotificationManager.shared.delegates.append(self)
+
+        let sem = DispatchSemaphore(value: 0)
+        NotificationManager.shared.areNotificationsEnabled { enabled in
+            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled }
+        }
+        let _ = sem.wait(timeout: .now() + 2.0)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationManager.shared.delegates.removeAll { $0 === self }
+        super.viewWillDisappear(animated)
+    }
     
     @IBAction func cancelCelebration(_ sender: Any) {
         let alert = UIAlertController(title: NSLocalizedString("CelebrationQueueCancel", comment: ""), message: NSLocalizedString("CelebrationQueueCancelAlertBody", comment: ""), preferredStyle: .alert)
@@ -72,32 +89,26 @@ class CelebrationQueueViewController : BaseScanViewController {
         }
     }
     
-    @IBAction func activePushNotfications(_ sender: Any) {
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidUpdateNotificationStatus), name: .NotificationStatusUpdated, object: nil)
-        NotificationManager.shared.requestNotificationPermission(completion: { success in
-
+    func onNotificationTokenRegistered(token: String?) {
+        NotificationManager.shared.areNotificationsEnabled { enabled in
+            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled }
+        }
+    }
+    
+    func onReceivedCelebration(collectGroupId: String) {
+        GivtManager.shared.getSecondsLeftToCelebrate(collectGroupId: collectGroupId, completion: {secondsLeft in
+            DispatchQueue.main.async {
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                vc.transactions = self.transactions
+                vc.organisation = self.organisation
+                vc.secondsLeft = secondsLeft
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         })
     }
     
-    @objc func onDidUpdateNotificationStatus() {
-        buttonEnablePushNot.isHidden = NotificationManager.shared.notificationsEnabled
-    }
-    
-    @objc func shouldShowCelebration(notification: NSNotification){
-        
-        if let data = notification.userInfo as? [String : String] {
-            if let collectGroupId = data["CollectGroupId"] {
-                GivtManager.shared.getSecondsLeftToCelebrate(collectGroupId: collectGroupId, completion: {secondsLeft in //TODO: Change colelctgroupid
-                    DispatchQueue.main.async {
-                        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
-                        vc.transactions = self.transactions
-                        vc.organisation = self.organisation
-                        vc.secondsLeft = secondsLeft
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                })
-            }
-        }
+    @IBAction func activatePushNotfications(_ sender: Any) {
+        NotificationManager.shared.requestNotificationPermission()
     }
 }

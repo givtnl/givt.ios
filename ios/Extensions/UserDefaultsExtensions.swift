@@ -431,16 +431,6 @@ extension UserDefaults {
             synchronize()
         }
     }
-    
-    var notificationsEnabled: Bool? {
-        get {
-            return bool(forKey: UserDefaultsKeys.notificationsEnabled.rawValue)
-        }
-        set (value){
-            set(value , forKey: UserDefaultsKeys.notificationsEnabled.rawValue)
-            synchronize()
-        }
-    }
 
     var lastFeatureShown: Int {
         get {
