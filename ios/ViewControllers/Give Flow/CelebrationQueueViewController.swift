@@ -29,6 +29,8 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
         LogService.shared.info(message: "CELEBRATE_QUEUE")
         MSAnalytics.trackEvent("CELEBRATE_QUEUE")
 
+        UIApplication.shared.isIdleTimerDisabled = true
+
         // set label texts
         titelLabel.text = NSLocalizedString("CelebrationHappyToSeeYou", comment: "")
         secondaryTitelLabel.text = NSLocalizedString("CelebrationQueueText", comment: "")
@@ -68,6 +70,7 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
 
     override func viewWillDisappear(_ animated: Bool) {
         NotificationManager.shared.delegates.removeAll { $0 === self }
+        UIApplication.shared.isIdleTimerDisabled = false
         super.viewWillDisappear(animated)
     }
     
