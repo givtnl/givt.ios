@@ -44,7 +44,7 @@ class CelebrateViewController: BaseScanViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        UIApplication.shared.isIdleTimerDisabled = true
+        UIApplication.shared.isIdleTimerDisabled = false
         super.viewWillDisappear(animated)
     }
     
