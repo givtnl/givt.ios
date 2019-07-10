@@ -75,7 +75,7 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
     }
     
     @IBAction func cancelCelebration(_ sender: Any) {
-        let alert = UIAlertController(title: NSLocalizedString("CelebrationQueueCancel", comment: ""), message: NSLocalizedString("CelebrationQueueCancelAlertBody", comment: ""), preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("CelebrationQueueCancelAlertTitle", comment: ""), message: NSLocalizedString("CelebrationQueueCancelAlertBody", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .cancel, handler: { (action) in
             LogService.shared.info(message: "CELEBRATE_QUEUE_CANCEL")
             MSAnalytics.trackEvent("CELEBRATE_QUEUE_CANCEL")
