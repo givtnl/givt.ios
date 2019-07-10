@@ -104,9 +104,15 @@ class FeatureManager {
                                         innerContext?.dismiss(animated: true)
                                     }
                                 }
-                                var notifFeature = NotificationFeature(context: context)
-                                NotificationManager.shared.delegates.append(notifFeature)
-                                NotificationManager.shared.requestNotificationPermission()
+                                NotificationManager.shared.areNotificationsEnabled { enabled in
+                                    if enabled {
+                                        DispatchQueue.main.async { context?.dismiss(animated: true) }
+                                    } else {
+                                        var notifFeature = NotificationFeature(context: context)
+                                        NotificationManager.shared.delegates.append(notifFeature)
+                                        NotificationManager.shared.requestNotificationPermission()
+                                    }
+                                }
                             })
             ]),
         2: Feature( id: 2,
