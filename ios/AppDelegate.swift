@@ -45,7 +45,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         handleOldBeaconList()
         checkIfTempUser()
         doMagicForPresets()
-
+        
+        if let remoteNotif = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
+            DispatchQueue.global(qos: .background).async {
+                NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
+            }
+        }
+        
         return true
     }
     
@@ -212,4 +218,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void ) {
         NotificationManager.shared.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
     }
+    
 }
