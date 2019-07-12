@@ -180,7 +180,6 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
         delegate?.didTapFAQView(sender: self)
         if answer.superview != nil {
             close()
-            
         } else {
             open()
             delegate?.didShowAnswer(sender: self)
