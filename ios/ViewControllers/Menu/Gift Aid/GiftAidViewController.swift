@@ -101,8 +101,12 @@ class GiftAidViewController: UIViewController {
         } else {
             uExt?.GiftAid = nil
         }
+        showLoader()
         if let userExt = uExt {
             self.loginManager.updateUser(uext: userExt, completionHandler: {(success) in
+                DispatchQueue.main.async {
+                    self.hideLoader()
+                }
                 if success {
                     MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties: ["state": (self.uExt?.GiftAid != nil).description])
                     DispatchQueue.main.async {
