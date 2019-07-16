@@ -123,67 +123,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Giftaid_UKLogo" translatesAutoresizingMaskIntoConstraints="NO" id="LNE-9w-OEH">
-                                <rect key="frame" x="60" y="108" width="294" height="104"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="Kuf-mh-bf6"/>
-                                    <constraint firstAttribute="width" secondItem="LNE-9w-OEH" secondAttribute="height" multiplier="147:52" id="L2r-Ud-fPb"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="204" id="MnC-Je-nql"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ae-pp-aF7" userLabel="switch view">
-                                <rect key="frame" x="0.0" y="232" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="307.33333333333331" width="414" height="50"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="UOe-XU-lCT">
-                                        <rect key="frame" x="20" y="14" width="155" height="22"/>
-                                        <attributedString key="attributedText">
-                                            <fragment content="I want to use Gift Aid">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="16" name="Avenir-Medium"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Oxa-TV-SVY">
-                                        <rect key="frame" x="345" y="9.6666666666666572" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </switch>
+                                    <view contentMode="scaleToFill" restorationIdentifier="innerSwitch" translatesAutoresizingMaskIntoConstraints="NO" id="6iF-43-FxE">
+                                        <rect key="frame" x="0.0" y="1" width="414" height="48"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="UOe-XU-lCT">
+                                                <rect key="frame" x="20" y="13" width="155" height="22"/>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="I want to use Gift Aid">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="16" name="Avenir-Medium"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Oxa-TV-SVY">
+                                                <rect key="frame" x="345" y="8.3333333333333712" width="51" height="31"/>
+                                                <color key="onTintColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </switch>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="Oxa-TV-SVY" firstAttribute="centerY" secondItem="6iF-43-FxE" secondAttribute="centerY" id="3p0-FP-9C8"/>
+                                            <constraint firstAttribute="trailing" secondItem="Oxa-TV-SVY" secondAttribute="trailing" constant="20" id="EmW-e8-Wlm"/>
+                                            <constraint firstItem="UOe-XU-lCT" firstAttribute="centerY" secondItem="6iF-43-FxE" secondAttribute="centerY" id="oCS-CK-eFQ"/>
+                                            <constraint firstItem="UOe-XU-lCT" firstAttribute="leading" secondItem="6iF-43-FxE" secondAttribute="leading" constant="20" id="rUV-3z-fed"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="UOe-XU-lCT" firstAttribute="leading" secondItem="6ae-pp-aF7" secondAttribute="leading" constant="20" id="BSC-Dj-jSw"/>
-                                    <constraint firstAttribute="trailing" secondItem="Oxa-TV-SVY" secondAttribute="trailing" constant="20" id="Ddz-yz-SCS"/>
                                     <constraint firstAttribute="height" constant="50" id="Pa5-uN-gTS"/>
-                                    <constraint firstItem="Oxa-TV-SVY" firstAttribute="centerY" secondItem="6ae-pp-aF7" secondAttribute="centerY" id="USx-7r-bRH"/>
-                                    <constraint firstItem="UOe-XU-lCT" firstAttribute="centerY" secondItem="6ae-pp-aF7" secondAttribute="centerY" id="d06-ZD-dPb"/>
+                                    <constraint firstItem="6iF-43-FxE" firstAttribute="top" secondItem="6ae-pp-aF7" secondAttribute="top" constant="1" id="goI-qX-Sco"/>
+                                    <constraint firstItem="6iF-43-FxE" firstAttribute="leading" secondItem="6ae-pp-aF7" secondAttribute="leading" id="oVH-si-bEa"/>
+                                    <constraint firstAttribute="bottom" secondItem="6iF-43-FxE" secondAttribute="bottom" constant="1" id="obA-t4-BRP"/>
+                                    <constraint firstAttribute="trailing" secondItem="6iF-43-FxE" secondAttribute="trailing" id="yr2-tV-vHw"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w57-jc-Kow">
-                                <rect key="frame" x="20" y="302" width="374" height="427"/>
+                                <rect key="frame" x="20" y="377.33333333333326" width="374" height="351.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aeM-Ii-zou">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="427"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="351.66666666666669"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="226" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZM-CT-h9v">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="226" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZM-CT-h9v">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="65.666666666666671"/>
                                                 <string key="text">As a UK taxpayer, you can use the Gift Aid initiative. While this option is active, Givt Ltd. will enter Gift Aid claims for all your donations.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="228" text="When you enable this option, you agree to the following: " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPx-k8-t81" userLabel="disclaimer1">
-                                                <rect key="frame" x="0.0" y="105.66666666666669" width="374" height="44"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="228" text="When you enable this option, you agree to the following: " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPx-k8-t81" userLabel="disclaimer1">
+                                                <rect key="frame" x="0.0" y="85.666666666666686" width="374" height="44"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="231" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwU-tA-PZq" userLabel="disclaimer2">
-                                                <rect key="frame" x="0.0" y="159.66666666666669" width="374" height="109.33333333333331"/>
-                                                <string key="text">  I am a UK taxpayer and understand that if I pay less Income Tax and/or Capital Gains Tax in the current tax year than the amount of Gift Aid claimed on all my donations, it is my responsibility to pay any difference.</string>
-                                                <fontDescription key="fontDescription" name="Avenir-Oblique" family="Avenir" pointSize="16"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="231" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwU-tA-PZq" userLabel="disclaimer2">
+                                                <rect key="frame" x="0.0" y="149.66666666666669" width="374" height="109.33333333333331"/>
+                                                <string key="text">I am a UK taxpayer and understand that if I pay less Income Tax and/or Capital Gains Tax in the current tax year than the amount of Gift Aid claimed on all my donations, it is my responsibility to pay any difference.</string>
+                                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -193,11 +197,11 @@
                                             <constraint firstItem="FwU-tA-PZq" firstAttribute="leading" secondItem="aeM-Ii-zou" secondAttribute="leading" id="2SI-jl-uf6"/>
                                             <constraint firstItem="eZM-CT-h9v" firstAttribute="top" secondItem="aeM-Ii-zou" secondAttribute="top" id="5xl-zD-Bd1"/>
                                             <constraint firstItem="eZM-CT-h9v" firstAttribute="leading" secondItem="aeM-Ii-zou" secondAttribute="leading" id="NTx-NH-cLD"/>
-                                            <constraint firstItem="iPx-k8-t81" firstAttribute="top" secondItem="eZM-CT-h9v" secondAttribute="bottom" constant="40" id="S47-u6-Pht"/>
+                                            <constraint firstItem="iPx-k8-t81" firstAttribute="top" secondItem="eZM-CT-h9v" secondAttribute="bottom" constant="20" id="S47-u6-Pht"/>
                                             <constraint firstAttribute="trailing" secondItem="eZM-CT-h9v" secondAttribute="trailing" id="Szm-bM-3Np"/>
                                             <constraint firstAttribute="trailing" secondItem="iPx-k8-t81" secondAttribute="trailing" id="bHs-gB-Zju"/>
                                             <constraint firstAttribute="trailing" secondItem="FwU-tA-PZq" secondAttribute="trailing" id="kIx-t8-9U9"/>
-                                            <constraint firstItem="FwU-tA-PZq" firstAttribute="top" secondItem="iPx-k8-t81" secondAttribute="bottom" constant="10" id="pFc-MD-7ed"/>
+                                            <constraint firstItem="FwU-tA-PZq" firstAttribute="top" secondItem="iPx-k8-t81" secondAttribute="bottom" constant="20" id="pFc-MD-7ed"/>
                                             <constraint firstItem="iPx-k8-t81" firstAttribute="leading" secondItem="aeM-Ii-zou" secondAttribute="leading" id="pjy-eb-wB4"/>
                                         </constraints>
                                     </view>
@@ -238,22 +242,26 @@
                                     <action selector="saveAction:" destination="Q3e-KT-zLD" eventType="touchUpInside" id="mBN-42-CZD"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givy_gift_aid" translatesAutoresizingMaskIntoConstraints="NO" id="Nww-HW-ndy">
+                                <rect key="frame" x="20" y="108.00000000000001" width="374" height="179.33333333333337"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5gz-cb-wSW" firstAttribute="trailing" secondItem="w57-jc-Kow" secondAttribute="trailing" constant="20" id="0BI-Wn-YbB"/>
                             <constraint firstItem="6ae-pp-aF7" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" id="0ew-hn-k3q"/>
-                            <constraint firstAttribute="trailing" secondItem="LNE-9w-OEH" secondAttribute="trailing" constant="60" id="2Za-zu-BTx"/>
                             <constraint firstItem="w57-jc-Kow" firstAttribute="top" secondItem="6ae-pp-aF7" secondAttribute="bottom" constant="20" id="4Us-qS-21J"/>
                             <constraint firstItem="w57-jc-Kow" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" constant="20" id="AQl-vr-Jcl"/>
                             <constraint firstItem="5gz-cb-wSW" firstAttribute="trailing" secondItem="2Bi-vd-IUi" secondAttribute="trailing" constant="20" id="FCN-i2-sfl"/>
-                            <constraint firstItem="LNE-9w-OEH" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" constant="60" id="Mwp-63-HCF"/>
-                            <constraint firstItem="LNE-9w-OEH" firstAttribute="top" secondItem="5gz-cb-wSW" secondAttribute="top" constant="20" id="RHe-MN-CyW"/>
+                            <constraint firstItem="Nww-HW-ndy" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" constant="20" id="PlA-M7-fXJ"/>
+                            <constraint firstItem="5gz-cb-wSW" firstAttribute="trailing" secondItem="Nww-HW-ndy" secondAttribute="trailing" constant="20" id="UtO-au-8hq"/>
+                            <constraint firstItem="Nww-HW-ndy" firstAttribute="height" secondItem="W4b-s1-H38" secondAttribute="height" multiplier="0.2" id="XBl-qo-mte"/>
                             <constraint firstItem="5gz-cb-wSW" firstAttribute="bottom" secondItem="2Bi-vd-IUi" secondAttribute="bottom" constant="20" id="ZQE-Hq-Eof"/>
+                            <constraint firstItem="Nww-HW-ndy" firstAttribute="top" secondItem="5gz-cb-wSW" secondAttribute="top" constant="20" id="cpD-bX-HwV"/>
                             <constraint firstItem="2Bi-vd-IUi" firstAttribute="leading" secondItem="5gz-cb-wSW" secondAttribute="leading" constant="20" id="hQB-L9-VBo"/>
                             <constraint firstItem="5gz-cb-wSW" firstAttribute="trailing" secondItem="6ae-pp-aF7" secondAttribute="trailing" id="hoC-2I-lTu"/>
+                            <constraint firstItem="6ae-pp-aF7" firstAttribute="top" secondItem="Nww-HW-ndy" secondAttribute="bottom" constant="20" id="jrH-bi-4iD"/>
                             <constraint firstItem="2Bi-vd-IUi" firstAttribute="top" secondItem="w57-jc-Kow" secondAttribute="bottom" constant="20" id="rgs-BM-J58"/>
-                            <constraint firstItem="6ae-pp-aF7" firstAttribute="top" secondItem="LNE-9w-OEH" secondAttribute="bottom" constant="20" id="wHQ-wb-H3l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5gz-cb-wSW"/>
                     </view>
@@ -898,10 +906,10 @@ For more info, go to: www.gov.uk/donating-to-charity/gift-aid
         </scene>
     </scenes>
     <resources>
-        <image name="Giftaid_UKLogo" width="960" height="337"/>
         <image name="backbtn" width="15" height="24"/>
         <image name="closewhite" width="23" height="24"/>
         <image name="dropdown.png" width="16" height="16"/>
+        <image name="givy_gift_aid" width="157" height="150"/>
         <image name="house" width="20" height="19"/>
         <image name="info24" width="24" height="24"/>
     </resources>

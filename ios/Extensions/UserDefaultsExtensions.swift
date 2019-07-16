@@ -42,6 +42,7 @@ extension UserDefaults {
         case lastFeatureShown
         case featureBadges
         case notificationsEnabled
+        case deviceToken
     }
     
     enum Showcase: String {
@@ -411,22 +412,22 @@ extension UserDefaults {
         }
     }
     
+    var deviceToken: String? {
+        get {
+            return string(forKey: UserDefaultsKeys.deviceToken.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.deviceToken.rawValue)
+            synchronize()
+        }
+    }
+    
     var viewedCoachMarks: Int {
         get {
             return integer(forKey: UserDefaultsKeys.viewedCoachMarks.rawValue)
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.viewedCoachMarks.rawValue)
-            synchronize()
-        }
-    }
-    
-    var notificationsEnabled: Bool? {
-        get {
-            return bool(forKey: UserDefaultsKeys.notificationsEnabled.rawValue)
-        }
-        set (value){
-            set(value , forKey: UserDefaultsKeys.notificationsEnabled.rawValue)
             synchronize()
         }
     }

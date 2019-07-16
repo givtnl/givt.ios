@@ -75,12 +75,44 @@ class FeatureManager {
                             title: NSLocalizedString("Feature_push3_title", comment:""),
                             subText: NSLocalizedString("Feature_push3_message", comment:""),
                             actionText: {(context) -> String in
-                                return NotificationManager.shared.notificationsEnabled ? NSLocalizedString("Feature_push_enabled_action", comment: "") : NSLocalizedString("Feature_push_notenabled_action", comment: "")
+                                var retVal: String = ""
+                                let sem = DispatchSemaphore(value: 0)
+                                DispatchQueue.global(qos: .background).async {
+                                    NotificationManager.shared.areNotificationsEnabled { enabled in
+                                        if enabled {
+                                            retVal = NSLocalizedString("Feature_push_enabled_action", comment: "")
+                                        } else {
+                                            retVal = NSLocalizedString("Feature_push_notenabled_action", comment: "")
+                                        }
+                                        sem.signal()
+                                    }
+                                }
+                                let _ = sem.wait(timeout: .now() + 2.0)
+                                return retVal
                             },
                             action: {(context) -> Void in
-                                NotificationManager.shared.requestNotificationPermission(completion: {(success) in
-                                    context?.dismiss(animated: true)
-                                })
+                                class NotificationFeature : NotificationManagerDelegate {
+                                    func onReceivedCelebration(collectGroupId: String) {}
+                                    
+                                    var innerContext: UIViewController?
+                                    init(context: UIViewController?) {
+                                        innerContext = context
+                                    }
+                                    
+                                    func onNotificationTokenRegistered(token: String?) {
+                                        NotificationManager.shared.delegates.removeAll { $0 === self }
+                                        innerContext?.dismiss(animated: true)
+                                    }
+                                }
+                                NotificationManager.shared.areNotificationsEnabled { enabled in
+                                    if enabled {
+                                        DispatchQueue.main.async { context?.dismiss(animated: true) }
+                                    } else {
+                                        var notifFeature = NotificationFeature(context: context)
+                                        NotificationManager.shared.delegates.append(notifFeature)
+                                        NotificationManager.shared.requestNotificationPermission()
+                                    }
+                                }
                             })
             ]),
         2: Feature( id: 2,

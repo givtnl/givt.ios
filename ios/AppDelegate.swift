@@ -12,14 +12,16 @@ import AppCenterAnalytics
 import AppCenterCrashes
 import AppCenterPush
 import TrustKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
-    var notificationManager: NotificationManager = NotificationManager.shared
-
+    
+    var loginManager: LoginManager = LoginManager.shared
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
@@ -30,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if MSCrashes.hasCrashedInLastSession()  {
             logService.error(message: "User had a crash, check AppCenter")
         }
-        
+
         logService.info(message: "App started")
         
         if !UserDefaults.standard.showcases.isEmpty {
@@ -38,11 +40,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.showcases = []
         }
         
-        notificationManager.start()
+        NotificationManager.shared.start()
         
         handleOldBeaconList()
         checkIfTempUser()
         doMagicForPresets()
+        
+        if let remoteNotif = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
+            DispatchQueue.global(qos: .background).async {
+                NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
+            }
+        }
         
         return true
     }
@@ -91,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -110,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         logService.info(message: "App resuming")
         NavigationManager.shared.resume()
         GivtManager.shared.resume()
-        notificationManager.resume()
+        NotificationManager.shared.resume()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -197,5 +205,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        NotificationManager.shared.processRegisterForRemoteNotifications(deviceToken: deviceToken)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register: \(error)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification pushNotificationInfo: [AnyHashable: Any],
+    fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void ) {
+        NotificationManager.shared.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
+    }
+    
 }
-
