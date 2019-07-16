@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 import AppCenterAnalytics
+import UserNotifications
 
-class CelebrationQueueViewController : BaseScanViewController {
+class CelebrationQueueViewController : BaseScanViewController, NotificationManagerDelegate {
     
     var transactions: [Transaction]!
     var organisation = ""
@@ -22,12 +23,13 @@ class CelebrationQueueViewController : BaseScanViewController {
     @IBOutlet var imageFlash: UIImageView!
 
     @IBOutlet var buttonEnablePushNot: CustomButton!
-    @IBOutlet var buttonCancelPartyGivt: CustomButton!
+    @IBOutlet var buttonCancelFlashGivt: CustomButton!
     
     override func viewDidLoad() {
         LogService.shared.info(message: "CELEBRATE_QUEUE")
         MSAnalytics.trackEvent("CELEBRATE_QUEUE")
-        NotificationCenter.default.addObserver(self, selector: #selector(shouldShowCelebration), name: .GivtReceivedCelebrationNotification, object: nil)
+
+        UIApplication.shared.isIdleTimerDisabled = true
 
         // set label texts
         titelLabel.text = NSLocalizedString("CelebrationHappyToSeeYou", comment: "")
@@ -36,17 +38,19 @@ class CelebrationQueueViewController : BaseScanViewController {
         // set button texts
         buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControlState.normal)
         buttonEnablePushNot.accessibilityLabel = NSLocalizedString("CelebrationEnablePushNotification", comment: "")
-        let cancelString = NSLocalizedString("CelebrationQueueCancel", comment: "")
-        let cancelStringMutable = NSMutableAttributedString(string: cancelString)
-        cancelStringMutable.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: NSRange(location: 0, length: cancelString.count))
-        cancelStringMutable.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 0x2e, green: 0x29, blue: 0x57), range: NSRange(location: 0, length: cancelString.count))
-        buttonCancelPartyGivt.setAttributedTitle(cancelStringMutable, for: UIControlState.normal)
-        buttonCancelPartyGivt.accessibilityLabel = NSLocalizedString("CelebrationQueueCancel", comment: "")
+        
+        buttonCancelFlashGivt.setTitle(NSLocalizedString("CelebrationQueueCancel", comment: ""), for: UIControlState.normal)
+        buttonCancelFlashGivt.accessibilityLabel = NSLocalizedString("CelebrationQueueCancel", comment: "")
         
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled
-        buttonEnablePushNot.isHidden = NotificationManager.shared.notificationsEnabled
-        imageFlash.bottomAnchor.constraint(equalTo: buttonCancelPartyGivt.topAnchor).isActive = NotificationManager.shared.notificationsEnabled
-        
+        NotificationManager.shared.areNotificationsEnabled { enabled in
+            DispatchQueue.main.async {
+                self.buttonEnablePushNot.isHidden = enabled
+                self.imageFlash.bottomAnchor.constraint(equalTo: self.buttonCancelFlashGivt.topAnchor).isActive = enabled
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,41 +60,55 @@ class CelebrationQueueViewController : BaseScanViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
+
+        NotificationManager.shared.delegates.append(self)
+
+        NotificationManager.shared.areNotificationsEnabled { enabled in
+            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled }
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationManager.shared.delegates.removeAll { $0 === self }
+        UIApplication.shared.isIdleTimerDisabled = false
+        super.viewWillDisappear(animated)
     }
     
     @IBAction func cancelCelebration(_ sender: Any) {
-        LogService.shared.info(message: "CELEBRATE_QUEUE_CANCEL")
-        MSAnalytics.trackEvent("CELEBRATE_QUEUE_CANCEL")
-        onGivtProcessed(transactions: transactions, organisationName: organisation, canShare: true)
+        let alert = UIAlertController(title: NSLocalizedString("CelebrationQueueCancelAlertTitle", comment: ""), message: NSLocalizedString("CelebrationQueueCancelAlertBody", comment: ""), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (action) in
+            LogService.shared.info(message: "CELEBRATE_QUEUE_CANCEL")
+            MSAnalytics.trackEvent("CELEBRATE_QUEUE_CANCEL")
+            self.onGivtProcessed(transactions: self.transactions, organisationName: self.organisation, canShare: true)
+        }))
+        alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: { (action) in
+            self.dismiss(animated: true, completion: {})
+        }))
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
-    @IBAction func activePushNotfications(_ sender: Any) {
-        NotificationManager.shared.requestNotificationPermission(completion: { success in
+    func onNotificationTokenRegistered(token: String?) {
+        NotificationManager.shared.areNotificationsEnabled { enabled in
+            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled }
+        }
+    }
+    
+    func onReceivedCelebration(collectGroupId: String) {
+        GivtManager.shared.getSecondsLeftToCelebrate(collectGroupId: collectGroupId, completion: {secondsLeft in
             DispatchQueue.main.async {
-                if success {
-                    self.buttonEnablePushNot.isHidden = true
-                } else {
-                    self.cancelCelebration(self)
-                }
+                let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
+                vc.transactions = self.transactions
+                vc.organisation = self.organisation
+                vc.secondsLeft = secondsLeft
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         })
     }
     
-    @objc func shouldShowCelebration(notification: NSNotification){
-        
-        if let data = notification.userInfo as? [String : String] {
-            if let collectGroupId = data["CollectGroupId"] {
-                GivtManager.shared.getSecondsLeftToCelebrate(collectGroupId: collectGroupId, completion: {secondsLeft in //TODO: Change colelctgroupid
-                    DispatchQueue.main.async {
-                        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "YayController") as! CelebrateViewController
-                        vc.transactions = self.transactions
-                        vc.organisation = self.organisation
-                        vc.secondsLeft = secondsLeft
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
-                })
-            }
-        }
+    @IBAction func activatePushNotfications(_ sender: Any) {
+        NotificationManager.shared.requestNotificationPermission()
     }
 }

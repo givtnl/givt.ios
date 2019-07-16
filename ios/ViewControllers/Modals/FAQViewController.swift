@@ -7,8 +7,7 @@
 //
 
 import UIKit
-
-
+import AppCenterAnalytics
 
 class FAQViewController: UIViewController, OpenedQuestionDelegate {
     @IBOutlet var scrollView: UIScrollView!
@@ -27,6 +26,8 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         /* when answer is opened, we want to scroll to the top of the Question view */
         scrollView.layoutIfNeeded()
         scrollView.scrollToView(view: sender, animated: false)
+        MSAnalytics.trackEvent("OPEN_FAQ_QUESTION", withProperties: ["question": sender.questionString])
+        LogService.shared.info(message: "OPEN_FAQ_QUESTION \(sender.questionString)")
     }
     
     @IBOutlet var needHelp: UILabel!
@@ -63,10 +64,14 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        MSAnalytics.trackEvent("OPEN_FAQ")
+        
         closeButton.accessibilityLabel = NSLocalizedString("Close", comment: "")
-        UIApplication.shared.statusBarStyle = .lightContent
         
         addSpacer()
         
@@ -81,7 +86,6 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         for view in stack.arrangedSubviews {
             view.removeFromSuperview()
         }
-        var termsText: String = ""; var policyText: String = "";
         
         let GB:Bool = AppServices.getCountryFromSim() == "GB"
         if (GB) {
@@ -158,13 +162,10 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UIApplication.shared.statusBarStyle = .default
     }
 
     

@@ -25,6 +25,9 @@ class CelebrateViewController: BaseScanViewController {
         super.viewDidLoad()
         LogService.shared.info(message: "CELEBRATE_COUNTDOWN")
         MSAnalytics.trackEvent("CELEBRATE_COUNTDOWN")
+        
+        UIApplication.shared.isIdleTimerDisabled = true
+
         timer.text = formatTime()
         gif.loadGif(name: "celebration")
         title = NSLocalizedString("CelebrateTitle", comment: "")
@@ -38,6 +41,11 @@ class CelebrateViewController: BaseScanViewController {
         //no back button
         let backButton = UIBarButtonItem(title: "", style: .plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        UIApplication.shared.isIdleTimerDisabled = false
+        super.viewWillDisappear(animated)
     }
     
     private func formatTime() -> String {
