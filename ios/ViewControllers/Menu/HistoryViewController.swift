@@ -195,7 +195,8 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
         SVProgressHUD.show()
-        
+        infoButton.accessibilityLabel = NSLocalizedString("HistoryInfoLegendaAccessibilityLabel", comment: "")
+        downloadButton.accessibilityLabel = NSLocalizedString("HistoryDownloadAnnualOverviewAccessibilityLabel", comment: "")
         tableView.delegate = self
         tableView.dataSource = self
         
