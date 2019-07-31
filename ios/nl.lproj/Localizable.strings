@@ -49,7 +49,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ConfirmGivtSafariNoOrg" = "Bedankt voor je Givt! Bevestig door op de knop te drukken en kijk voor de status in je overzicht.";
 "MenuSettingsSwitchAccounts" = "Wisselen van account";
 "PrepareIUnderstand" = "Ik snap het";
-"ColId1" = "Collecte 1";
+"AmountLimitExceededGB" = "This amount is higher than £250. Please adjust the maximum donation amount and choose a lower amount.";
 "ColId2" = "Collecte 2";
 "ColId3" = "Collecte 3";
 "FAQWhyBluetoothEnabledQ" = "Waarom moet Bluetooth ingeschakeld zijn tijdens het gebruik van Givt?";
