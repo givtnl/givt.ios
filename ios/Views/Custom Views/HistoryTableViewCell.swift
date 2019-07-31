@@ -13,6 +13,7 @@ import MaterialShowcase
 class HistoryTableViewCell: SwipeTableViewCell {  
 
     @IBOutlet var agendaRectangle: UIView!
+    @IBOutlet var agendaIcon: UIView!
     @IBOutlet var statusBullet: UIView!
     @IBOutlet var statusView: UIView!
     @IBOutlet var timeLabel: UILabel!
@@ -21,6 +22,8 @@ class HistoryTableViewCell: SwipeTableViewCell {
     @IBOutlet var collectLabel: UILabel!
     @IBOutlet var organisationLabel: UILabel!
     @IBOutlet var amountLabel: UILabel!
+    @IBOutlet weak var giftAidLogo: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
          self.organisationLabel.numberOfLines = 0

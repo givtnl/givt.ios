@@ -14,6 +14,7 @@ class HistoryTransaction: NSObject {
     public var collectId : Decimal
     public var timestamp : Date
     public var status : NSNumber
+    public var giftAid: Bool
     
     /**
      Returns an array of models based on given dictionary.
@@ -50,6 +51,7 @@ class HistoryTransaction: NSObject {
         df.locale = Locale(identifier: "en_US_POSIX")
         timestamp = df.date(from: dateString)!
         status = (dictionary["Status"] as? NSNumber)!
+        giftAid = ((dictionary["GiftAid"] as? String) != nil)
     }
     
     public func dictionaryRepresentation() -> Dictionary<String , Any> {
@@ -61,6 +63,7 @@ class HistoryTransaction: NSObject {
         dictionary.updateValue(self.timestamp, forKey: "Timestamp")
         dictionary.updateValue(self.status, forKey: "Status")
         dictionary.updateValue(self.id, forKey: "Id")
+        dictionary.updateValue(self.giftAid, forKey: "GiftAid")
         
         return dictionary
     }
