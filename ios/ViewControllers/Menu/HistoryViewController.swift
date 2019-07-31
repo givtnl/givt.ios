@@ -30,6 +30,9 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     @IBOutlet var containerButton: UIBarButtonItem!
     @IBOutlet var containerVIew: UIView!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var giftAidView: UIView!
+    @IBOutlet weak var giftAidYearLabel: UILabel!
+    @IBOutlet weak var giftAidYearAmountLabel: UILabel!
     
     private var cancelFeature: MaterialShowcase?
     private var taxOverviewFeature: MaterialShowcase?
@@ -186,10 +189,21 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         super.viewDidLoad()
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         let nib = UINib(nibName: "TableSectionHeaderView", bundle: nil)
+        
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderView")
+        let nib_giftaid = UINib(nibName: "TableSectionHeaderGiftAidView", bundle: nil)
+        tableView.register(nib_giftaid, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderGiftAidView")
         
         noGivtsLabel.text = NSLocalizedString("HistoryIsEmpty", comment: "")
         givyContainer.isHidden = false
+        
+        if ( UserDefaults.standard.accountType != AccountType.bacs) {
+            DispatchQueue.main.async {
+                self.giftAidView.isHidden = true;
+                self.tableView.topAnchor.constraint(equalTo: self.containerVIew.topAnchor).isActive = true
+                self.view.layoutIfNeeded()
+            }
+        }
         
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
@@ -219,6 +233,14 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         let elligibleTx = sortedArray[section].value.filter { (tx) -> Bool in
             return tx.status.intValue < 4
         }
+        
+        var fiscalYear = tx.timestamp.toString("YYYY")
+        if (tx.timestamp.getMonth() <= 3) {
+            fiscalYear = String(tx.timestamp.getYear()-1)
+        }
+        giftAidYearLabel.text = fiscalYear;
+        
+        
         var total = 0.00
         elligibleTx.forEach { (tx) in
             tx.collections.forEach({ (collecte) in
@@ -256,6 +278,13 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.delegate = self
         let tx = sortedArray[indexPath.section].value[indexPath.row]
         cell.organisationLabel.text = tx.orgName
+        if !tx.giftAid {
+            DispatchQueue.main.async {
+                cell.giftAidLogo.isHidden = true;
+                cell.organisationLabel.leadingAnchor.constraint(equalTo: cell.agendaIcon .trailingAnchor, constant: 10).isActive = true
+                self.view.layoutIfNeeded()
+            }
+        }
         cell.setCollects(collects: tx.collections)
         cell.dayNumber.text = String(tx.timestamp.getDay())
         cell.timeLabel.text = timeFormatter.string(from: tx.timestamp)
@@ -501,7 +530,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             // does not exist
                             var collections = [Collecte]()
                             collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
-                            let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
+                            let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAid: tx.giftAid)
                             newTransactions.append(newTx)
                             prevTransaction = newTx
                         }
@@ -509,7 +538,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                         // first time
                         var collections = [Collecte]()
                         collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
-                        let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
+                        let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAid: tx.giftAid)
                         newTransactions.append(newTx)
                         prevTransaction = newTx
                     }

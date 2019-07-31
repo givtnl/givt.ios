@@ -1358,7 +1358,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="givy-party" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-aw-gWW">
-                                <rect key="frame" x="63" y="340" width="288" height="216.00000000000006"/>
+                                <rect key="frame" x="199" y="340" width="16" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="216" id="97N-LH-ZyF"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="320" id="idb-x3-YM3"/>
@@ -1791,8 +1791,42 @@ Kijk voor de status in je overzicht.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLV-67-JKF">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f30-M3-CFf">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="4zV-wk-dMz">
+                                                <rect key="frame" x="20" y="0.0" width="380" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="maart '16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ca-Yj-bQ5" userLabel="giftAidYear">
+                                                        <rect key="frame" x="0.0" y="0.0" width="211.5" height="30"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 15,00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4H-Uh-061" userLabel="giftAidYearAmount">
+                                                        <rect key="frame" x="211.5" y="0.0" width="168.5" height="30"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="tintColor" red="0.91372549020000005" green="0.58823529409999997" blue="0.070588235289999995" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="s4H-Uh-061" secondAttribute="trailing" constant="20" id="43b-ID-hyT"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.58823529409999997" blue="0.070588235289999995" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="M3Y-wX-p9K"/>
+                                            <constraint firstItem="4zV-wk-dMz" firstAttribute="leading" secondItem="f30-M3-CFf" secondAttribute="leading" constant="20" id="Vr5-w2-qRd"/>
+                                            <constraint firstItem="4zV-wk-dMz" firstAttribute="top" secondItem="f30-M3-CFf" secondAttribute="top" id="dWL-yG-mHY"/>
+                                            <constraint firstAttribute="bottom" secondItem="4zV-wk-dMz" secondAttribute="bottom" id="ndf-IV-04b"/>
+                                            <constraint firstAttribute="trailing" secondItem="4zV-wk-dMz" secondAttribute="trailing" constant="14" id="qvf-wd-G09"/>
+                                        </constraints>
+                                    </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="lQc-TT-oq2">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <rect key="frame" x="0.0" y="30" width="414" height="744"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <color key="separatorColor" red="0.35133320089999998" green="0.32705855369999998" blue="0.53972214460000001" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
@@ -1952,9 +1986,11 @@ Kijk voor de status in je overzicht.</string>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <connections>
+                                                    <outlet property="agendaIcon" destination="5Zl-PQ-irK" id="Fcu-Xl-7Ms"/>
                                                     <outlet property="agendaRectangle" destination="fsV-YR-S29" id="fTX-rY-ARw"/>
                                                     <outlet property="collections" destination="zQ1-Uz-BOa" id="k7R-oP-PCQ"/>
                                                     <outlet property="dayNumber" destination="NpX-Fy-D5d" id="gv2-d5-ouM"/>
+                                                    <outlet property="giftAidLogo" destination="PbN-0G-lc8" id="U3R-Hi-q0f"/>
                                                     <outlet property="organisationLabel" destination="91h-8c-ovJ" id="dfI-un-rLG"/>
                                                     <outlet property="statusView" destination="c4l-NM-6ga" id="lLt-U7-GiT"/>
                                                     <outlet property="timeLabel" destination="PjM-ph-xD3" id="Gu2-rO-T3y"/>
@@ -1995,10 +2031,13 @@ Kijk voor de status in je overzicht.</string>
                                     <constraint firstAttribute="bottom" secondItem="lQc-TT-oq2" secondAttribute="bottom" id="O6b-su-ILe"/>
                                     <constraint firstAttribute="trailing" secondItem="LW8-wQ-rwY" secondAttribute="trailing" id="P5I-hT-2tq"/>
                                     <constraint firstItem="lQc-TT-oq2" firstAttribute="leading" secondItem="vLV-67-JKF" secondAttribute="leading" id="YQq-PC-I0v"/>
-                                    <constraint firstItem="lQc-TT-oq2" firstAttribute="top" secondItem="vLV-67-JKF" secondAttribute="top" id="coK-xV-zSj"/>
+                                    <constraint firstItem="lQc-TT-oq2" firstAttribute="top" secondItem="f30-M3-CFf" secondAttribute="bottom" id="bRi-oP-H9d"/>
+                                    <constraint firstItem="f30-M3-CFf" firstAttribute="top" secondItem="vLV-67-JKF" secondAttribute="top" id="pPL-CK-ExU"/>
                                     <constraint firstItem="LW8-wQ-rwY" firstAttribute="top" secondItem="vLV-67-JKF" secondAttribute="top" id="qjQ-Zb-eyn"/>
+                                    <constraint firstAttribute="trailing" secondItem="f30-M3-CFf" secondAttribute="trailing" id="t2p-TA-gQc"/>
                                     <constraint firstAttribute="bottom" secondItem="LW8-wQ-rwY" secondAttribute="bottom" id="vdo-A8-CEN"/>
                                     <constraint firstAttribute="trailing" secondItem="lQc-TT-oq2" secondAttribute="trailing" id="xue-Hm-AAc"/>
+                                    <constraint firstItem="f30-M3-CFf" firstAttribute="leading" secondItem="vLV-67-JKF" secondAttribute="leading" id="ywh-fG-VzT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2046,6 +2085,9 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="containerButton" destination="VYa-Bo-Z6R" id="xlg-Pf-oZz"/>
                         <outlet property="containerVIew" destination="vLV-67-JKF" id="wcX-7o-6IV"/>
                         <outlet property="downloadButton" destination="Zo0-RD-CRQ" id="VWD-Sd-iq0"/>
+                        <outlet property="giftAidView" destination="f30-M3-CFf" id="8bx-n7-0Js"/>
+                        <outlet property="giftAidYearAmountLabel" destination="s4H-Uh-061" id="BQE-xr-rbL"/>
+                        <outlet property="giftAidYearLabel" destination="3Ca-Yj-bQ5" id="aXK-jc-mYk"/>
                         <outlet property="givyContainer" destination="LW8-wQ-rwY" id="DbP-ju-noI"/>
                         <outlet property="infoButton" destination="0hX-Cj-lb5" id="FLP-9o-N50"/>
                         <outlet property="noGivtsLabel" destination="cJJ-jB-60R" id="iXN-bF-k0V"/>
