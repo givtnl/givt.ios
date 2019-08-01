@@ -56,7 +56,17 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     func addValue(positive: Bool) {
         var value: Int = Int(amountLimit.text!)!
-        value += positive ? 5 : -5
+        switch UserDefaults.standard.accountType {
+            case AccountType.bacs:
+                value += positive ? (value <= 245 ? 5 : 0 ) : (value > 250 ? -(value-250) : -5)
+                break
+            case AccountType.sepa:
+                value += positive ? 5 : -5
+                break
+            default:
+                break
+        }
+        
         if value < 0 {
             value = 0
         }
