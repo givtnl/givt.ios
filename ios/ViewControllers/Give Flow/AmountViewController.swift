@@ -510,7 +510,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     func displayAmountLimitExceeded() {
-        let bacsAnd250: Bool = UserDefaults.standard.accountType == AccountType.bacs && UserDefaults.standard.amountLimit == 250
+        let bacsAnd250: Bool = UserDefaults.standard.accountType == AccountType.bacs && UserDefaults.standard.amountLimit >= 250
         let alert = UIAlertController(
             title: NSLocalizedString("AmountTooHigh", comment: ""),
             message: !bacsAnd250 ? NSLocalizedString("AmountLimitExceeded", comment: "") : NSLocalizedString("AmountLimitExceededGB", comment: ""),
