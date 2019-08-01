@@ -291,8 +291,10 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             fiscalYear = tx.timestamp.getYear() - 1
         }
         if let giftAidYearAmount = self.giftAidGroupList[fiscalYear] {
-            giftAidYearLabel.text = String(fiscalYear)
-            giftAidYearAmountLabel.text = fmt.string(from: giftAidYearAmount as NSNumber)
+            if (tx.giftAid && tx.status == 3) {
+                giftAidYearLabel.text = String(fiscalYear)
+                giftAidYearAmountLabel.text = fmt.string(from: giftAidYearAmount as NSNumber)
+            }
         }
         return cell
     }
