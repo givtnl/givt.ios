@@ -37,6 +37,8 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     private var cancelFeature: MaterialShowcase?
     private var taxOverviewFeature: MaterialShowcase?
     
+    private var giftAidGroupList: [Int:Double] = [:]
+    
     lazy var fmt: NumberFormatter = {
         let nf = NumberFormatter()
         nf.locale = NSLocale.current
@@ -234,13 +236,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             return tx.status.intValue < 4
         }
         
-        var fiscalYear = tx.timestamp.toString("YYYY")
-        if (tx.timestamp.getMonth() <= 3) {
-            fiscalYear = String(tx.timestamp.getYear()-1)
-        }
-        giftAidYearLabel.text = fiscalYear;
-        
-        
         var total = 0.00
         elligibleTx.forEach { (tx) in
             tx.collections.forEach({ (collecte) in
@@ -292,6 +287,15 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
+        
+        var fiscalYear = tx.timestamp.getYear()
+        if (tx.timestamp.getMonth() <= 3 && tx.timestamp.getDay() <= 5) {
+            fiscalYear = tx.timestamp.getYear() - 1
+        }
+        if let giftAidYearAmount = self.giftAidGroupList[fiscalYear] {
+            giftAidYearLabel.text = String(fiscalYear)
+            giftAidYearAmountLabel.text = fmt.string(from: giftAidYearAmount as NSNumber)
+        }
         return cell
     }
     
@@ -547,6 +551,19 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     oldDate = tx.timestamp
                     oldOrgName = tx.orgName
                     oldStatus = tx.status
+                    
+                    // calculate the giftaided tax years
+                    if (tx.giftAid) {
+                        var fiscalYear = tx.timestamp.getYear()
+                        if (tx.timestamp.getMonth() <= 3 && tx.timestamp.getDay() <= 5) {
+                            fiscalYear = tx.timestamp.getYear() - 1
+                        }
+                        if (self.giftAidGroupList.keys.contains(fiscalYear)) {
+                            self.giftAidGroupList[fiscalYear] = (self.giftAidGroupList[fiscalYear]!) + tx.amount
+                        } else {
+                            self.giftAidGroupList[fiscalYear] = tx.amount
+                        }
+                    }
                 })
             
                 newTransactions.forEach({ (tx) in
@@ -559,7 +576,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                         self.tempArray[s] = [HistoryTableViewModel]()
                         self.tempArray[s]!.append(tx)
                     }
-
                 })
                 
                 self.sortedArray = self.tempArray.sorted(by: { (first, second) -> Bool in
