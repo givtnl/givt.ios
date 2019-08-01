@@ -271,13 +271,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.delegate = self
         let tx = sortedArray[indexPath.section].value[indexPath.row]
         cell.organisationLabel.text = tx.orgName
-        if !tx.giftAid {
-            DispatchQueue.main.async {
-                cell.giftAidLogo.isHidden = true;
-                cell.organisationLabel.leadingAnchor.constraint(equalTo: cell.agendaIcon .trailingAnchor, constant: 10).isActive = true
-                self.view.layoutIfNeeded()
-            }
-        }
         cell.setCollects(collects: tx.collections)
         cell.dayNumber.text = String(tx.timestamp.getDay())
         cell.timeLabel.text = timeFormatter.string(from: tx.timestamp)
@@ -287,14 +280,12 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.layoutMargins = UIEdgeInsets.zero
         
         var fiscalYear = tx.timestamp.getYear()
-        if (tx.timestamp.getMonth() <= 3 && tx.timestamp.getDay() <= 5) {
+        if (tx.timestamp.getMonth() < 4 || (tx.timestamp.getMonth() == 4 && tx.timestamp.getDay() <= 5)) {
             fiscalYear = tx.timestamp.getYear() - 1
         }
         if let giftAidYearAmount = self.giftAidGroupList[fiscalYear] {
-            if (tx.giftAid && tx.status == 3) {
-                giftAidYearLabel.text = String(fiscalYear)
-                giftAidYearAmountLabel.text = fmt.string(from: giftAidYearAmount as NSNumber)
-            }
+            giftAidYearLabel.text = String(fiscalYear)
+            giftAidYearAmountLabel.text = fmt.string(from: giftAidYearAmount as NSNumber)
         }
         return cell
     }
@@ -555,7 +546,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     // calculate the giftaided tax years
                     if (tx.giftAid) {
                         var fiscalYear = tx.timestamp.getYear()
-                        if (tx.timestamp.getMonth() <= 3 && tx.timestamp.getDay() <= 5) {
+                        if (tx.timestamp.getMonth() < 4 || (tx.timestamp.getMonth() == 4 && tx.timestamp.getDay() <= 5)) {
                             fiscalYear = tx.timestamp.getYear() - 1
                         }
                         if (self.giftAidGroupList.keys.contains(fiscalYear)) {
