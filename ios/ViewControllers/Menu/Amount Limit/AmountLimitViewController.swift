@@ -58,6 +58,13 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         var value: Int = Int(amountLimit.text!)!
         switch UserDefaults.standard.accountType {
             case AccountType.bacs:
+                if positive && value == 250 {
+                    let alert = UIAlertController(title: NSLocalizedString("AmountTooHigh", comment: ""), message: NSLocalizedString("MaximumAmountReachedGB", comment: ""), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
                 value += positive ? (value <= 245 ? 5 : 0 ) : (value > 250 ? -(value-250) : -5)
                 break
             case AccountType.sepa:
