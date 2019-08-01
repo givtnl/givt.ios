@@ -199,12 +199,10 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         noGivtsLabel.text = NSLocalizedString("HistoryIsEmpty", comment: "")
         givyContainer.isHidden = false
         
-        if ( UserDefaults.standard.accountType == AccountType.bacs) {
-            DispatchQueue.main.async {
-                self.giftAidView.isHidden = false;
-                self.tableView.topAnchor.constraint(equalTo: self.containerVIew.topAnchor).isActive = true
-                self.view.layoutIfNeeded()
-            }
+        if (UserDefaults.standard.accountType != AccountType.bacs) {
+            self.giftAidView.isHidden = true
+            self.tableView.topAnchor.constraint(equalTo: self.containerVIew.topAnchor).isActive = true
+            self.view.layoutIfNeeded()
         }
         
         SVProgressHUD.setDefaultMaskType(.black)
