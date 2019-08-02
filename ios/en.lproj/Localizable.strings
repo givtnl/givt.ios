@@ -49,8 +49,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ConfirmGivtSafariNoOrg" = "Thank you for your Givt! Please confirm by pressing the button. You can check the status in the overview.";
 "MenuSettingsSwitchAccounts" = "Switch accounts";
 "PrepareIUnderstand" = "I understand";
-"ColId1" = "Collection 1";
-"ColId2" = "Collection 2";
+"AmountLimitExceededGB" = "This amount is higher than £250. Please choose a lower amount.";
+
+/*Fuzzy*/
+"GiftOverview_GiftAidBanner" = "Gift-Aided {0}";
 "ColId3" = "Collection 3";
 "FAQWhyBluetoothEnabledQ" = "Why do I have to enable Bluetooth to use Givt?";
 "FAQWhyBluetoothEnabledA" = "Your phone receives a signal from the beacon inside the collection box, alms bag or basket. This signal uses the Bluetooth protocol. It can be considered as a one-way traffic, which means there is no connection, in contrast to a Bluetooth car kit or headset. It is a safe and easy way to let your phone know which collection box, alms bag or basket is nearby. When the beacon is near, the phone picks up the signal and your Givt is completed.";

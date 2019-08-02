@@ -5,7 +5,7 @@
 "Belgium" = "België";
 
 /*'You have not yet set a maximum amount'*/
-"ForgotAmountLimit" = "Wacht even, je moet nog \neen geeflimiet instellen.";
+"ForgotAmountLimit" = "Wacht even, je moet nog een geeflimiet instellen.";
 "InsertAmount" = "Weet je al hoeveel je wil geven? \nVoer een bedrag in.";
 "Netherlands" = "Nederland";
 "NotificationTitle" = "Givt";
@@ -49,8 +49,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ConfirmGivtSafariNoOrg" = "Bedankt voor je Givt! Bevestig door op de knop te drukken en kijk voor de status in je overzicht.";
 "MenuSettingsSwitchAccounts" = "Wisselen van account";
 "PrepareIUnderstand" = "Ik snap het";
-"ColId1" = "Collecte 1";
-"ColId2" = "Collecte 2";
+"AmountLimitExceededGB" = "This amount is higher than £250. Please choose a lower amount.";
+
+/*Fuzzy*/
+"GiftOverview_GiftAidBanner" = "Gift-Aided {0}";
 "ColId3" = "Collecte 3";
 "FAQWhyBluetoothEnabledQ" = "Waarom moet Bluetooth ingeschakeld zijn tijdens het gebruik van Givt?";
 "FAQWhyBluetoothEnabledA" = "Je telefoon pikt een signaal op van de zender die in de collectebus, -zak of -mand zit. Dit signaal werkt met het Bluetooth-protocol. Het gaat hierbij om een eenrichtingsverkeer en er hoeft dus geen verbinding te worden gemaakt, zoals je dat misschien gewend bent bij een Bluetooth carkit of headset. Het is een veilige en makkelijke manier voor de telefoon om te weten welke collectebus, -zak of -mand in de buurt is. Op het moment dat de zender dichtbij is en het signaal door je telefoon wordt opgepikt, is je Givt gelukt.";
