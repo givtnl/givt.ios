@@ -193,13 +193,11 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         let nib = UINib(nibName: "TableSectionHeaderView", bundle: nil)
         
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderView")
-        let nib_giftaid = UINib(nibName: "TableSectionHeaderGiftAidView", bundle: nil)
-        tableView.register(nib_giftaid, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderGiftAidView")
         
         noGivtsLabel.text = NSLocalizedString("HistoryIsEmpty", comment: "")
         givyContainer.isHidden = false
         
-        if (UserDefaults.standard.accountType != AccountType.bacs) {
+        if(UserDefaults.standard.accountType != AccountType.bacs || !UserDefaults.standard.giftAid) {
             self.giftAidView.isHidden = true
             self.tableView.topAnchor.constraint(equalTo: self.containerVIew.topAnchor).isActive = true
             self.view.layoutIfNeeded()
