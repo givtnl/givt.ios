@@ -282,7 +282,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             fiscalYear = tx.timestamp.getYear() - 1
         }
         if let giftAidYearAmount = self.giftAidGroupList[fiscalYear] {
-            giftAidYearLabel.text = String(fiscalYear)
+            giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: String(fiscalYear))
             giftAidYearAmountLabel.text = fmt.string(from: giftAidYearAmount as NSNumber)
         }
         return cell
