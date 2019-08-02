@@ -165,8 +165,6 @@
 		D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */; };
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
-		DF006EB022E10A9C0018CEA6 /* TableSectionHeaderGiftAidView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF006EAF22E10A9C0018CEA6 /* TableSectionHeaderGiftAidView.xib */; };
-		DF006EB222E10E830018CEA6 /* TableSectionHeaderGiftAidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF006EB122E10E830018CEA6 /* TableSectionHeaderGiftAidView.swift */; };
 		DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */; };
 		DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */; };
 		FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */; };
@@ -377,8 +375,6 @@
 		D7FB251C1F4D6D2F0011A14E /* AppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
 		D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCompleteViewController.swift; sourceTree = "<group>"; };
 		DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF006EAF22E10A9C0018CEA6 /* TableSectionHeaderGiftAidView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableSectionHeaderGiftAidView.xib; sourceTree = "<group>"; };
-		DF006EB122E10E830018CEA6 /* TableSectionHeaderGiftAidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeaderGiftAidView.swift; sourceTree = "<group>"; };
 		DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushnotificationType.swift; sourceTree = "<group>"; };
 		DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidInfoController.swift; sourceTree = "<group>"; };
 		F2A335656287D463EE35D0BB /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -585,8 +581,6 @@
 				27AC59F922255DEE00163BF4 /* SelectContextView.swift */,
 				27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */,
 				27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */,
-				DF006EAF22E10A9C0018CEA6 /* TableSectionHeaderGiftAidView.xib */,
-				DF006EB122E10E830018CEA6 /* TableSectionHeaderGiftAidView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -1013,7 +1007,6 @@
 				D7F3A84521480161008B65AE /* Fingerprint.storyboard in Resources */,
 				D70491961FDA927C00CE5980 /* Welcome.storyboard in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
-				DF006EB022E10A9C0018CEA6 /* TableSectionHeaderGiftAidView.xib in Resources */,
 				27AC59F822255DD400163BF4 /* SelectContextView.xib in Resources */,
 				27A0E4EB221F3D3500982842 /* Presets.storyboard in Resources */,
 				D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */,
@@ -1215,7 +1208,6 @@
 				D71DA050211AE5C90084381E /* ChangeAddressViewController.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
 				D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */,
-				DF006EB222E10E830018CEA6 /* TableSectionHeaderGiftAidView.swift in Sources */,
 				D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */,
 				D77511BB1F711231004F91F6 /* DateExtensions.swift in Sources */,
 				D770E5341FB097FA0079D253 /* ManualOrganisationView.swift in Sources */,
