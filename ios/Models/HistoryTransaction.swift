@@ -15,6 +15,26 @@ class HistoryTransaction: NSObject {
     public var timestamp : Date
     public var status : NSNumber
     public var giftAid: Bool
+    public var taxYear: Int {
+        get {
+            var taxYear = 0
+            
+            switch UserDefaults.standard.accountType {
+                case AccountType.bacs:
+                    if (timestamp.getMonth() < 4 || (timestamp.getMonth() == 4 && timestamp.getDay() < 6)) {
+                        taxYear = timestamp.getYear()-1
+                    } else {
+                        taxYear = timestamp.getYear()
+                    }
+                break
+                case AccountType.sepa:
+                    taxYear = timestamp.getYear()
+                default:
+                    taxYear = 0
+            }
+            return taxYear
+        }
+    }
     
     /**
      Returns an array of models based on given dictionary.
