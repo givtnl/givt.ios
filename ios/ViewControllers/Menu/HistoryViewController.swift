@@ -269,6 +269,12 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.delegate = self
         let tx = sortedArray[indexPath.section].value[indexPath.row]
         cell.organisationLabel.text = tx.orgName
+        if !tx.giftAid {
+            cell.giftAidLogo.isHidden = true
+        } else {
+            cell.giftAidLogo.isHidden = false
+        }
+        self.view.layoutIfNeeded()
         cell.setCollects(collects: tx.collections)
         cell.dayNumber.text = String(tx.timestamp.getDay())
         cell.timeLabel.text = timeFormatter.string(from: tx.timestamp)
@@ -277,14 +283,15 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         
-        var fiscalYear = tx.timestamp.getYear()
-        if (tx.timestamp.getMonth() < 4 || (tx.timestamp.getMonth() == 4 && tx.timestamp.getDay() <= 5)) {
-            fiscalYear = tx.timestamp.getYear() - 1
-        }
-        if let giftAidYearAmount = self.giftAidGroupList[fiscalYear] {
-            giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: String(fiscalYear))
+        if let giftAidYearAmount = self.giftAidGroupList[tx.taxYear] {
+            giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: String(tx.taxYear))
             giftAidYearAmountLabel.text = fmt.string(from: giftAidYearAmount as NSNumber)
+        } else {
+            giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: String(tx.taxYear))
+            let total = 0.00
+            giftAidYearAmountLabel.text = fmt.string(from: total as NSNumber)
         }
+        
         return cell
     }
     
@@ -523,7 +530,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             // does not exist
                             var collections = [Collecte]()
                             collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
-                            let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAid: tx.giftAid)
+                            let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAid: tx.giftAid, taxYear: tx.taxYear)
                             newTransactions.append(newTx)
                             prevTransaction = newTx
                         }
@@ -531,26 +538,20 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                         // first time
                         var collections = [Collecte]()
                         collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
-                        let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAid: tx.giftAid)
+                        let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAid: tx.giftAid, taxYear: tx.taxYear)
                         newTransactions.append(newTx)
                         prevTransaction = newTx
                     }
-                    
                     
                     oldDate = tx.timestamp
                     oldOrgName = tx.orgName
                     oldStatus = tx.status
                     
-                    // calculate the giftaided tax years
-                    if (tx.giftAid) {
-                        var fiscalYear = tx.timestamp.getYear()
-                        if (tx.timestamp.getMonth() < 4 || (tx.timestamp.getMonth() == 4 && tx.timestamp.getDay() <= 5)) {
-                            fiscalYear = tx.timestamp.getYear() - 1
-                        }
-                        if (self.giftAidGroupList.keys.contains(fiscalYear)) {
-                            self.giftAidGroupList[fiscalYear] = (self.giftAidGroupList[fiscalYear]!) + tx.amount
+                    if (tx.giftAid && tx.status == 3) {
+                        if (self.giftAidGroupList.keys.contains(tx.taxYear)) {
+                            self.giftAidGroupList[tx.taxYear] = (self.giftAidGroupList[tx.taxYear]!) + tx.amount
                         } else {
-                            self.giftAidGroupList[fiscalYear] = tx.amount
+                            self.giftAidGroupList[tx.taxYear] = tx.amount
                         }
                     }
                 })
