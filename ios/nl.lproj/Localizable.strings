@@ -102,8 +102,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AgreeToUpdateTerms" = "Bij het doorgaan ga je akkoord met de nieuwe voorwaarden.";
 "IWantToReadIt" = "Ik wil het lezen";
 "TermsTextVersion" = "1.9";
-"DisabledSetting" = "Je kan deze instelling niet gebruiken vooraleer je account geregistreerd is.";
-"DisabledSettingTitle" = "Helaas, dit mag niet.";
 "LocationPermission" = "We hebben toegang tot je locatie nodig om het signaal van de Givt-zender te ontvangen.";
 "LocationEnabledMessage" = "Activeer je locatie met hoge nauwkeurigheid om met Givt te kunnen geven. (Na je gift kan je die weer uitzetten.)";
 "ChangeGivingLimit" = "Geeflimiet aanpassen";
@@ -145,7 +143,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "WeWontSendAnySpam" = "(we sturen geen spam, beloofd)";
 "SwipeDownOpenGivt" = "Veeg omlaag om de Givt-app opnieuw te openen.";
 "MoreInfo" = "Meer info";
-"AppStoreRestart" = "Zie je de update niet meteen? Probeer dan even de App Store-app te herstarten.";
 "Germany" = "Duitsland";
 "ExtraBluetoothText" = "Lijkt je Bluetooth al aan te staan? Dan is het toch even nodig om Bluetooth uit en opnieuw aan te zetten.";
 "OpenMailbox" = "Open mailbox";
@@ -885,3 +882,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "CelebrationQueueCancelAlertTitle" = "Jammer!";
 "HistoryInfoLegendaAccessibilityLabel" = "Info legenda";
 "HistoryDownloadAnnualOverviewAccessibilityLabel" = "Download jaaroverzicht van giften (mail)";
+"BluetoothErrorMessageEvent" = "Met Bluetooth kan je dankzij lokatie-zenders toch je locatie vinden indien er geen/slechte GPS verbinding is.\nActiveer deze nu.";
