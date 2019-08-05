@@ -102,8 +102,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AgreeToUpdateTerms" = "You agree to the new terms and conditions if you continue.";
 "IWantToReadIt" = "I want to read it";
 "TermsTextVersion" = "1.9";
-"DisabledSetting" = "You need to first register before you can view it.";
-"DisabledSettingTitle" = "Alas, that's not possible.";
 "LocationPermission" = "We need to access your location to receive the signal from the Givt-beacon.";
 "LocationEnabledMessage" = "Please enable your location with high accuracy to give with Givt. (After your donation you can disable it again.)";
 "ChangeGivingLimit" = "Adjust maximum amount";
@@ -145,7 +143,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "WeWontSendAnySpam" = "(we won't send any spam, promise)";
 "SwipeDownOpenGivt" = "Swipe down to open the Givt app.";
 "MoreInfo" = "More info";
-"AppStoreRestart" = "If the update isn't immediately visible, try to restart the App Store app.";
 "Germany" = "Germany";
 "ExtraBluetoothText" = "Does it look like your Bluetooth is on? It is still necessary to switch it off and on again.";
 "OpenMailbox" = "Open inbox";
@@ -885,3 +882,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "CelebrationQueueCancelAlertTitle" = "Too bad!";
 "HistoryInfoLegendaAccessibilityLabel" = "Info explanation";
 "HistoryDownloadAnnualOverviewAccessibilityLabel" = "Download annual overview of donations (mail)";
+"BluetoothErrorMessageEvent" = "With Bluetooth, you can find your location even with no/poor GPS connection, thanks to location-beacons. \nActivate your Bluetooth now!";
