@@ -74,6 +74,17 @@ class EventViewController: BaseScanViewController {
         }
     }
     
+    override func showBluetoothMessage() {
+        bluetoothAlert = UIAlertController(
+            title: NSLocalizedString("ActivateBluetooth", comment: ""),
+            message: NSLocalizedString("BluetoothErrorMessageEvent" , comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
+            preferredStyle: UIAlertControllerStyle.alert)
+        bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
+            
+        }))
+        present(bluetoothAlert!, animated: true, completion: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         _givtService.delegate = self
