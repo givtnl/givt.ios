@@ -30,9 +30,14 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
     @IBOutlet var containerButton: UIBarButtonItem!
     @IBOutlet var containerVIew: UIView!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var giftAidView: UIView!
+    @IBOutlet weak var giftAidYearLabel: UILabel!
+    @IBOutlet weak var giftAidYearAmountLabel: UILabel!
     
     private var cancelFeature: MaterialShowcase?
     private var taxOverviewFeature: MaterialShowcase?
+    
+    private var giftAidGroupList: [Int:Double] = [:]
     
     lazy var fmt: NumberFormatter = {
         let nf = NumberFormatter()
@@ -186,10 +191,17 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         super.viewDidLoad()
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         let nib = UINib(nibName: "TableSectionHeaderView", bundle: nil)
+        
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderView")
         
         noGivtsLabel.text = NSLocalizedString("HistoryIsEmpty", comment: "")
         givyContainer.isHidden = false
+        
+        if(UserDefaults.standard.accountType != AccountType.bacs || !UserDefaults.standard.giftAid) {
+            self.giftAidView.isHidden = true
+            self.tableView.topAnchor.constraint(equalTo: self.containerVIew.topAnchor).isActive = true
+            self.view.layoutIfNeeded()
+        }
         
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
@@ -219,6 +231,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         let elligibleTx = sortedArray[section].value.filter { (tx) -> Bool in
             return tx.status.intValue < 4
         }
+        
         var total = 0.00
         elligibleTx.forEach { (tx) in
             tx.collections.forEach({ (collecte) in
@@ -256,6 +269,12 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.delegate = self
         let tx = sortedArray[indexPath.section].value[indexPath.row]
         cell.organisationLabel.text = tx.orgName
+        if !tx.giftAid {
+            cell.giftAidLogo.isHidden = true
+        } else {
+            cell.giftAidLogo.isHidden = false
+        }
+        self.view.layoutIfNeeded()
         cell.setCollects(collects: tx.collections)
         cell.dayNumber.text = String(tx.timestamp.getDay())
         cell.timeLabel.text = timeFormatter.string(from: tx.timestamp)
@@ -263,6 +282,16 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.preservesSuperviewLayoutMargins = false
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
+        
+        if let giftAidYearAmount = self.giftAidGroupList[tx.taxYear] {
+            giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: String(tx.taxYear))
+            giftAidYearAmountLabel.text = fmt.string(from: giftAidYearAmount as NSNumber)
+        } else {
+            giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: String(tx.taxYear))
+            let total = 0.00
+            giftAidYearAmountLabel.text = fmt.string(from: total as NSNumber)
+        }
+        
         return cell
     }
     
@@ -398,7 +427,39 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             statusLabel.centerYAnchor.constraint(equalTo: row.centerYAnchor, constant: 0).isActive = true
             statusLabel.leadingAnchor.constraint(equalTo: bolleke.trailingAnchor, constant: 22).isActive = true
         }
-
+        
+        if UserDefaults.standard.accountType == AccountType.bacs {
+            let empty_row = UIView()
+            empty_row.translatesAutoresizingMaskIntoConstraints = false
+            empty_row.layer.borderWidth = 1
+            empty_row.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
+            demStates.addArrangedSubview(empty_row)
+            empty_row.heightAnchor.constraint(equalToConstant: 1).isActive = true
+            
+            let row = UIView()
+            row.translatesAutoresizingMaskIntoConstraints = false
+            demStates.addArrangedSubview(row)
+            row.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
+            
+            let imageView = UIImageView(image: UIImage(named: "giftaid_yellow_noborder_15")!)
+            row.addSubview(imageView)
+            imageView.contentMode = .scaleAspectFit
+            imageView.frame = CGRect(x: 0, y: 0, width: 15, height: 15)
+            imageView.leadingAnchor.constraint(equalTo: row.leadingAnchor, constant: 0).isActive = true
+            imageView.centerYAnchor.constraint(equalTo: row.centerYAnchor, constant: 0).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 15).isActive = true
+            imageView.heightAnchor.constraint(equalToConstant: 15).isActive = true
+            
+            let statusLabel = UILabel()
+            statusLabel.text = "Gift Aided"
+            statusLabel.textColor = .white
+            statusLabel.font = UIFont(name: "Avenir-Medium", size: 16.0)
+            statusLabel.translatesAutoresizingMaskIntoConstraints = false
+            row.addSubview(statusLabel)
+            statusLabel.centerYAnchor.constraint(equalTo: row.centerYAnchor, constant: 0).isActive = true
+            statusLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 22).isActive = true
+        }
+        
         UIView.animate(withDuration: 0.2, animations: {
             self.infoScreen?.alpha = 1
             UIApplication.shared.statusBarStyle = .lightContent
@@ -469,7 +530,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             // does not exist
                             var collections = [Collecte]()
                             collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
-                            let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
+                            let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAid: tx.giftAid, taxYear: tx.taxYear)
                             newTransactions.append(newTx)
                             prevTransaction = newTx
                         }
@@ -477,15 +538,22 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                         // first time
                         var collections = [Collecte]()
                         collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
-                        let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections)
+                        let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAid: tx.giftAid, taxYear: tx.taxYear)
                         newTransactions.append(newTx)
                         prevTransaction = newTx
                     }
                     
-                    
                     oldDate = tx.timestamp
                     oldOrgName = tx.orgName
                     oldStatus = tx.status
+                    
+                    if (tx.giftAid && tx.status == 3) {
+                        if (self.giftAidGroupList.keys.contains(tx.taxYear)) {
+                            self.giftAidGroupList[tx.taxYear] = (self.giftAidGroupList[tx.taxYear]!) + tx.amount
+                        } else {
+                            self.giftAidGroupList[tx.taxYear] = tx.amount
+                        }
+                    }
                 })
             
                 newTransactions.forEach({ (tx) in
@@ -498,7 +566,6 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                         self.tempArray[s] = [HistoryTableViewModel]()
                         self.tempArray[s]!.append(tx)
                     }
-
                 })
                 
                 self.sortedArray = self.tempArray.sorted(by: { (first, second) -> Bool in
