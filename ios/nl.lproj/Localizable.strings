@@ -883,3 +883,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "HistoryInfoLegendaAccessibilityLabel" = "Info legenda";
 "HistoryDownloadAnnualOverviewAccessibilityLabel" = "Download jaaroverzicht van giften (mail)";
 "BluetoothErrorMessageEvent" = "Met Bluetooth kan je dankzij lokatie-zenders toch je locatie vinden indien er geen/slechte GPS verbinding is.\nActiveer deze nu.";
+"processCashedGivt_NamespaceInvalid" = "We zien dat je een nog niet verwerkte gift hebt aan een organisatie die jammergenoeg Givt niet meer gebruikt. Deze wordt gewoon verwijderd.";
