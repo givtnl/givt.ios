@@ -43,6 +43,7 @@ extension UserDefaults {
         case featureBadges
         case notificationsEnabled
         case deviceToken
+        case giftAid
     }
     
     enum Showcase: String {
@@ -458,6 +459,15 @@ extension UserDefaults {
             set(value, forKey: UserDefaultsKeys.featureBadges.rawValue)
             synchronize()
         }
-
+    }
+    
+    var giftAid: Bool{
+        get {
+            return bool(forKey: UserDefaultsKeys.giftAid.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.giftAid.rawValue)
+            synchronize()
+        }
     }
 }

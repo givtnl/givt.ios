@@ -178,7 +178,7 @@ class LoginManager {
                         if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()) {
                             UserDefaults.standard.accountType = accountType
                         }
-                        
+                        UserDefaults.standard.giftAid = (userExt.GiftAid != nil)
                         completion(userExt)
                     } catch let err as NSError {
                         self.log.error(message: err.description)
@@ -414,6 +414,7 @@ class LoginManager {
                     let newSettings = UserDefaults.standard.userExt!
                     newSettings.email = uext.Email
                     UserDefaults.standard.amountLimit = uext.AmountLimit
+                    UserDefaults.standard.giftAid = (uext.GiftAid != nil)
                     UserDefaults.standard.userExt = newSettings
                     completionHandler(true)
                 } else {
