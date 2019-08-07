@@ -64,11 +64,14 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
                         
                     }))
                     self.present(alert, animated: true, completion: nil)
+                    value = 250;
                 }
                 value += positive ? (value <= 245 ? 5 : 0 ) : (value > 250 ? -(value-250) : -5)
                 break
             case AccountType.sepa:
-                value += positive ? 5 : -5
+                if (value <= 99994 || !positive) {
+                    value += positive ?  5 : -5
+                }
                 break
             default:
                 break
@@ -200,15 +203,18 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     } 
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if let amountLimit = Int(textField.text!), amountLimit > 0 {
-            btnSave.isEnabled = shouldEnableButton()
-            btnSaveKeyboard?.isEnabled = shouldEnableButton()
-            let amountLimit: Int = Int(textField.text!)!
-            textField.text = String(amountLimit)
-            
-            if (textField.text?.count)! >= 5 {
-                textField.text = textField.text?.substring(0..<5)
-                return
+        var amountLimit = 0;
+        
+        if let amount = Int(textField.text!) {
+            if ( amount > 250 && UserDefaults.standard.accountType == .bacs) {
+                let alert = UIAlertController(title: NSLocalizedString("AmountTooHigh", comment: ""), message: NSLocalizedString("MaximumAmountReachedGB", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    
+                }))
+                self.present(alert, animated: true, completion: nil)
+                amountLimit = 250;
+            } else {
+                amountLimit = amount;
             }
         } else {
             textField.text = "0"
@@ -217,7 +223,15 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             textField.selectedTextRange = textField.textRange(from: textField.beginningOfDocument, to: textField.endOfDocument)
             return
         }
+            
+        btnSave.isEnabled = shouldEnableButton()
+        btnSaveKeyboard?.isEnabled = shouldEnableButton()
+        textField.text = String(amountLimit)
         
+        if (textField.text?.count)! >= 5 {
+            textField.text = textField.text?.substring(0..<5)
+            return
+        }
     }
     
     func shouldEnableButton() -> Bool {
