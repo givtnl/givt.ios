@@ -289,7 +289,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         for index in 0..<collectionViews.count {
             let parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
 
-            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
+            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) || UserDefaults.standard.accountType == AccountType.bacs && parsedDecimal > 250 {
                 setActiveCollection(collectionViews[index])
                 displayAmountLimitExceeded()
                 return
