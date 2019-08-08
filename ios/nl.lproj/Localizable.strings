@@ -3,9 +3,6 @@
 /*@Tine, vind je 'Ho' kunnen? Of 'Ha' of moet de zin gewoon anders? Sjoerd kan niet leven met 'Hé'*/
 "AmountLimitExceeded" = "Hé gulle gever, dit bedrag is hoger dan je geeflimiet. Pas de limiet aan of verlaag het bedrag.";
 "Belgium" = "België";
-
-/*'You have not yet set a maximum amount'*/
-"ForgotAmountLimit" = "Wacht even, je moet nog een geeflimiet instellen.";
 "InsertAmount" = "Weet je al hoeveel je wil geven? \nVoer een bedrag in.";
 "Netherlands" = "Nederland";
 "NotificationTitle" = "Givt";
@@ -884,3 +881,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "HistoryDownloadAnnualOverviewAccessibilityLabel" = "Download jaaroverzicht van giften (mail)";
 "BluetoothErrorMessageEvent" = "Met Bluetooth kan je dankzij lokatie-zenders toch je locatie vinden indien er geen/slechte GPS verbinding is.\nActiveer deze nu.";
 "processCashedGivt_NamespaceInvalid" = "We zien dat je een nog niet verwerkte gift hebt aan een organisatie die jammergenoeg Givt niet meer gebruikt. Deze wordt gewoon verwijderd.";
+"SuggestionNamespaceInvalid" = "De organisatie '{0}' ondersteunt niet langer Givt.";
