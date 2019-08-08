@@ -660,6 +660,7 @@ class LoginManager {
         UserDefaults.standard.showedLastYearTaxOverview = false
         UserDefaults.standard.hasGivtsInPreviousYear = false
         UserDefaults.standard.lastGivtToOrganisationNamespace = nil
+        UserDefaults.standard.lastGivtToOrganisationName = nil
         UserDefaults.standard.isTempUser = false
         UserDefaults.standard.accountType = .undefined
     }
