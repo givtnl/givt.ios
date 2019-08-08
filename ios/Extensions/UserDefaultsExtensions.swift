@@ -29,6 +29,7 @@ extension UserDefaults {
         case showedLastYearTaxOverview
         case hasGivtsInPreviousYear
         case lastGivtToOrganisation
+        case lastGivtToOrganisation_name
         @available(*, deprecated, message: "Do not use. Use showCasesByUserId instead.")
         case showcases              //deprecated
         case showCasesByUserID
@@ -188,6 +189,15 @@ extension UserDefaults {
         }
         set(value) {
             set(value, forKey: UserDefaultsKeys.lastGivtToOrganisation.rawValue)
+            synchronize()
+        }
+    }
+    var lastGivtToOrganisationName: String? {
+        get {
+            return string(forKey: UserDefaultsKeys.lastGivtToOrganisation_name.rawValue)
+        }
+        set(value) {
+            set(value, forKey: UserDefaultsKeys.lastGivtToOrganisation_name.rawValue)
             synchronize()
         }
     }

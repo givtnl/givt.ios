@@ -69,6 +69,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         let orgName = organisationName ?? ""
 
         UserDefaults.standard.lastGivtToOrganisationNamespace = GivtManager.shared.bestBeacon?.namespace
+        UserDefaults.standard.lastGivtToOrganisationName = orgName
         
         shouldShowMandate { (url) in
             var message = NSLocalizedString("SafariGiving", comment: "")
