@@ -60,7 +60,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OfflineGegevenGivtsMessageWithOrg" = "Thank you for your Givts to {0}!\n\nWhen there's a good connection with the Givt-server, your Givts will be processed.\nYou can check the status in the overview.";
 "ChangeDonation" = "Change your donation";
 "CancelGivts" = "cancel your Givt";
-"Or" = "or";
 "AreYouSureToCancelGivts" = "Are you sure? Press OK to confirm.";
 "FeedbackTitle" = "Feedback or questions?";
 "NoMessage" = "You didn't enter a message.";
@@ -881,4 +880,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "HistoryDownloadAnnualOverviewAccessibilityLabel" = "Download annual overview of donations (mail)";
 "BluetoothErrorMessageEvent" = "With Bluetooth, you can find your location even with no/poor GPS connection, thanks to location-beacons. \nActivate your Bluetooth now!";
 "processCashedGivt_NamespaceInvalid" = "We see that you have made a non-processed gift to an organisation that, sadly, doesn't use Givt anymore. This gift will be deleted.";
-"SuggestionNamespaceInvalid" = "The organisation '{0}' doesn't support Givt anymore.";
+"SuggestionNamespaceInvalid" = "Your last selected organisation doesn't support Givt anymore.";
