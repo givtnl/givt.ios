@@ -3,9 +3,6 @@
 /*@Tine, vind je 'Ho' kunnen? Of 'Ha' of moet de zin gewoon anders? Sjoerd kan niet leven met 'Hé'*/
 "AmountLimitExceeded" = "This amount is higher than your chosen maximum amount. Please adjust the maximum donation amount or choose a lower amount.";
 "Belgium" = "Belgium";
-
-/*'You have not yet set a maximum amount'*/
-"ForgotAmountLimit" = "Wait a moment, you have not yet set a maximum amount.";
 "InsertAmount" = "Do you know how much you want to give? \nChoose an amount.";
 "Netherlands" = "The Netherlands";
 "NotificationTitle" = "Givt";
@@ -49,9 +46,13 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ConfirmGivtSafariNoOrg" = "Thank you for your Givt! Please confirm by pressing the button. You can check the status in the overview.";
 "MenuSettingsSwitchAccounts" = "Switch accounts";
 "PrepareIUnderstand" = "I understand";
-"ColId1" = "Collection 1";
-"ColId2" = "Collection 2";
-"ColId3" = "Collection 3";
+"AmountLimitExceededGB" = "This amount is higher than £250. Please choose a lower amount.";
+
+/*Fuzzy*/
+"GiftOverview_GiftAidBanner" = "Gift-Aided {0}";
+
+/*Fuzzy*/
+"MaximumAmountReachedGB" = "Woah, you've reached the maximum donation limit. In the UK you can give a maximum of £250 per donation.";
 "FAQWhyBluetoothEnabledQ" = "Why do I have to enable Bluetooth to use Givt?";
 "FAQWhyBluetoothEnabledA" = "Your phone receives a signal from the beacon inside the collection box, alms bag or basket. This signal uses the Bluetooth protocol. It can be considered as a one-way traffic, which means there is no connection, in contrast to a Bluetooth car kit or headset. It is a safe and easy way to let your phone know which collection box, alms bag or basket is nearby. When the beacon is near, the phone picks up the signal and your Givt is completed.";
 "Collect" = "Collection";
@@ -59,7 +60,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "OfflineGegevenGivtsMessageWithOrg" = "Thank you for your Givts to {0}!\n\nWhen there's a good connection with the Givt-server, your Givts will be processed.\nYou can check the status in the overview.";
 "ChangeDonation" = "Change your donation";
 "CancelGivts" = "cancel your Givt";
-"Or" = "or";
 "AreYouSureToCancelGivts" = "Are you sure? Press OK to confirm.";
 "FeedbackTitle" = "Feedback or questions?";
 "NoMessage" = "You didn't enter a message.";
@@ -98,8 +98,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AgreeToUpdateTerms" = "You agree to the new terms and conditions if you continue.";
 "IWantToReadIt" = "I want to read it";
 "TermsTextVersion" = "1.9";
-"DisabledSetting" = "You need to first register before you can view it.";
-"DisabledSettingTitle" = "Alas, that's not possible.";
 "LocationPermission" = "We need to access your location to receive the signal from the Givt-beacon.";
 "LocationEnabledMessage" = "Please enable your location with high accuracy to give with Givt. (After your donation you can disable it again.)";
 "ChangeGivingLimit" = "Adjust maximum amount";
@@ -141,7 +139,6 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "WeWontSendAnySpam" = "(we won't send any spam, promise)";
 "SwipeDownOpenGivt" = "Swipe down to open the Givt app.";
 "MoreInfo" = "More info";
-"AppStoreRestart" = "If the update isn't immediately visible, try to restart the App Store app.";
 "Germany" = "Germany";
 "ExtraBluetoothText" = "Does it look like your Bluetooth is on? It is still necessary to switch it off and on again.";
 "OpenMailbox" = "Open inbox";
@@ -879,3 +876,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "ImportantMessage" = "Important mention";
 "CelebrationQueueCancelAlertBody" = "Are you sure you don't want to celebrate with us?";
 "CelebrationQueueCancelAlertTitle" = "Too bad!";
+"HistoryInfoLegendaAccessibilityLabel" = "Info explanation";
+"HistoryDownloadAnnualOverviewAccessibilityLabel" = "Download annual overview of donations (mail)";
+"BluetoothErrorMessageEvent" = "With Bluetooth, you can find your location even with no/poor GPS connection, thanks to location-beacons. \nActivate your Bluetooth now!";
+"processCashedGivt_NamespaceInvalid" = "We see that you have made a non-processed gift to an organisation that, sadly, doesn't use Givt anymore. This gift will be deleted.";
+"SuggestionNamespaceInvalid" = "Your last selected organisation doesn't support Givt anymore.";

@@ -178,7 +178,7 @@ class LoginManager {
                         if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()) {
                             UserDefaults.standard.accountType = accountType
                         }
-                        
+                        UserDefaults.standard.giftAid = (userExt.GiftAid != nil)
                         completion(userExt)
                     } catch let err as NSError {
                         self.log.error(message: err.description)
@@ -225,6 +225,10 @@ class LoginManager {
             "PostalCode":  user.postalCode,
             "Country":  user.country,
             "AmountLimit": "499"]
+        
+        if AppServices.getCountryFromSim() == "GB" {
+            params["AmountLimit"] = "250"
+        }
         if !user.iban.isEmpty {
             params["IBAN"] = user.iban.replacingOccurrences(of: " ", with: "")
         } else {
@@ -238,7 +242,6 @@ class LoginManager {
             self.log.warning(message: "Device has no languagecode... Default NL") //TODO: when changing default lang, change this to "en"
             params["AppLanguage"] = "nl"
         }
-        
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
                 if let res = res {
@@ -250,7 +253,9 @@ class LoginManager {
                         
                         self.loginUser(email: user.email, password: user.password, type: .password, completionHandler: { (success, err, descr) in
                             if success {
-                                UserDefaults.standard.amountLimit = 499
+                                if let limit = params["AmountLimit"] {
+                                    UserDefaults.standard.amountLimit = Int(limit) ?? 499
+                                }
                                 completionHandler(true)
                             } else {
                                 self.log.info(message: "Login failed")
@@ -409,6 +414,7 @@ class LoginManager {
                     let newSettings = UserDefaults.standard.userExt!
                     newSettings.email = uext.Email
                     UserDefaults.standard.amountLimit = uext.AmountLimit
+                    UserDefaults.standard.giftAid = (uext.GiftAid != nil)
                     UserDefaults.standard.userExt = newSettings
                     completionHandler(true)
                 } else {
@@ -655,6 +661,7 @@ class LoginManager {
         UserDefaults.standard.showedLastYearTaxOverview = false
         UserDefaults.standard.hasGivtsInPreviousYear = false
         UserDefaults.standard.lastGivtToOrganisationNamespace = nil
+        UserDefaults.standard.lastGivtToOrganisationName = nil
         UserDefaults.standard.isTempUser = false
         UserDefaults.standard.accountType = .undefined
     }

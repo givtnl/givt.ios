@@ -14,6 +14,27 @@ class HistoryTransaction: NSObject {
     public var collectId : Decimal
     public var timestamp : Date
     public var status : NSNumber
+    public var giftAid: Bool
+    public var taxYear: Int {
+        get {
+            var taxYear = 0
+            
+            switch UserDefaults.standard.accountType {
+                case AccountType.bacs:
+                    if (timestamp.getMonth() < 4 || (timestamp.getMonth() == 4 && timestamp.getDay() < 6)) {
+                        taxYear = timestamp.getYear()-1
+                    } else {
+                        taxYear = timestamp.getYear()
+                    }
+                break
+                case AccountType.sepa:
+                    taxYear = timestamp.getYear()
+                default:
+                    taxYear = 0
+            }
+            return taxYear
+        }
+    }
     
     /**
      Returns an array of models based on given dictionary.
@@ -50,6 +71,7 @@ class HistoryTransaction: NSObject {
         df.locale = Locale(identifier: "en_US_POSIX")
         timestamp = df.date(from: dateString)!
         status = (dictionary["Status"] as? NSNumber)!
+        giftAid = ((dictionary["GiftAid"] as? String) != nil)
     }
     
     public func dictionaryRepresentation() -> Dictionary<String , Any> {
@@ -61,6 +83,7 @@ class HistoryTransaction: NSObject {
         dictionary.updateValue(self.timestamp, forKey: "Timestamp")
         dictionary.updateValue(self.status, forKey: "Status")
         dictionary.updateValue(self.id, forKey: "Id")
+        dictionary.updateValue(self.giftAid, forKey: "GiftAid")
         
         return dictionary
     }

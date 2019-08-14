@@ -34,17 +34,35 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
     }
     
     private func fillSuggestion() -> UIView? {
+        var orgName = ""
+        
         if let bb = GivtManager.shared.bestBeacon {
             namespace = bb.namespace
         } else if let savedNamespace = UserDefaults.standard.lastGivtToOrganisationNamespace {
             namespace = savedNamespace
         }
         
-        guard let _ = GivtManager.shared.orgBeaconList?.first(where: { $0.EddyNameSpace == namespace }) else { return nil }
+       guard let namespace = namespace else { return nil }
         
-        guard let namespace = namespace else { return nil }
+        if let savedName = UserDefaults.standard.lastGivtToOrganisationName {
+            orgName = savedName
+        } else if let nameFound = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
+            orgName = nameFound
+        }
         
-        guard let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) else { return nil }
+        guard let _ = GivtManager.shared.orgBeaconList?.first(where: { $0.EddyNameSpace == namespace }) else {
+                DispatchQueue.main.async {
+
+                    let alert = UIAlertController(title: "", message: NSLocalizedString("SuggestionNamespaceInvalid", comment: "").replacingOccurrences(of: "{0}", with: orgName), preferredStyle: UIAlertControllerStyle.alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                UserDefaults.standard.lastGivtToOrganisationNamespace = nil
+            return nil
+        }
         
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: #selector(giveSuggestion))

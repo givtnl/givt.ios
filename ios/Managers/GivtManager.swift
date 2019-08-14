@@ -598,26 +598,18 @@ final class GivtManager: NSObject {
         delegate?.didDetectGivtLocation(orgName: organisationName, identifier: id)
     }
     
-    func getMediumIdFromGivtLink(link: String) -> String?{
-        let queryString = "https://www.givtapp.net/download?code="
-        let queryString2 = "https://www.givt.app/download?code="
-        let idxqs = link.index(of: queryString)
-        let idxqs2 = link.index(of: queryString2)
-        if idxqs != nil || idxqs2 != nil {
-            var encoded: String;
-            if idxqs != nil {
-                encoded = String(link[queryString.endIndex...])
-            } else if idxqs2 != nil {
-                encoded = String(link[queryString2.endIndex...])
-            } else { return nil }
-            
-            if let decoded = encoded.base64Decoded() {
+    func getMediumIdFromGivtLink(link: String) -> String? {
+        let queryStrings = [ "https://www.givtapp.net/download?code=",
+                             "https://www.givt.app/download?code=",
+                             "https://api.givtapp.net/givt?code=",
+                             "https://givtapicorewindbg.azurewebsites.net/givt?code=",
+                             "https://givtapicoredbg.azurewebsites.net/givt?code=" ]
+        
+        for queryString in queryStrings {
+            let idxqs = link.index(of: queryString)
+            if idxqs != nil, let decoded = String(link[queryString.endIndex...]).base64Decoded() {
                 return decoded
-            } else {
-                //todo: log messed up base 64
             }
-        } else {
-            //todo log result: not our qr code
         }
         return nil;
     }

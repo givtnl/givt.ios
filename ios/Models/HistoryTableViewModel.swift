@@ -12,12 +12,16 @@ class HistoryTableViewModel {
     var timestamp: Date
     var status : NSNumber
     var collections: [Collecte]
+    var giftAid: Bool
+    var taxYear: Int
     
-    init(orgName: String, timestamp: Date, status: NSNumber, collections: [Collecte]) {
+init(orgName: String, timestamp: Date, status: NSNumber, collections: [Collecte], giftAid: Bool, taxYear: Int) {
         self.orgName = orgName
         self.timestamp = timestamp
         self.status = status
         self.collections = collections
+        self.giftAid = giftAid
+        self.taxYear = taxYear
     }
 }
 

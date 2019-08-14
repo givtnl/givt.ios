@@ -289,7 +289,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         for index in 0..<collectionViews.count {
             let parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
 
-            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
+            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) || UserDefaults.standard.accountType == AccountType.bacs && parsedDecimal > 250 {
                 setActiveCollection(collectionViews[index])
                 displayAmountLimitExceeded()
                 return
@@ -510,27 +510,30 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     
     func displayAmountLimitExceeded() {
+        let bacsAnd250: Bool = UserDefaults.standard.accountType == AccountType.bacs && UserDefaults.standard.amountLimit >= 250
         let alert = UIAlertController(
             title: NSLocalizedString("AmountTooHigh", comment: ""),
-            message: NSLocalizedString("AmountLimitExceeded", comment: ""),
+            message: !bacsAnd250 ? NSLocalizedString("AmountLimitExceeded", comment: "") : NSLocalizedString("AmountLimitExceededGB", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
+        alert.addAction(UIAlertAction(title: !bacsAnd250 ? NSLocalizedString("ChooseLowerAmount", comment: "") : "OK", style: .default, handler: {
                 action in
                 self.checkAmounts()
             }))
         
+        if !bacsAnd250 {
             alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-                    LogService.shared.info(message: "User is opening giving limit")
-                    let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
-                    vc.startPoint = .amountLimit
-                    if (LoginManager.shared.isFullyRegistered || !UserDefaults.standard.isTempUser){
-                        vc.isRegistration = false
-                    } else {
-                        vc.isRegistration = true
-                    }
-                    vc.transitioningDelegate = self.slideFromRightAnimation
-                    NavigationManager.shared.pushWithLogin(vc, context: self)
+                LogService.shared.info(message: "User is opening giving limit")
+                let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
+                vc.startPoint = .amountLimit
+                if (LoginManager.shared.isFullyRegistered || !UserDefaults.standard.isTempUser){
+                    vc.isRegistration = false
+                } else {
+                    vc.isRegistration = true
+                }
+                vc.transitioningDelegate = self.slideFromRightAnimation
+                NavigationManager.shared.pushWithLogin(vc, context: self)
             }))
+        }
         
         self.present(alert, animated: true, completion: nil)
     }

@@ -133,8 +133,8 @@ class ValidationHelper {
             for p in country.phoneNumber.firstNumbers {
                 if temp.starts(with: p) {
                     // add one more to length if country is germany and first numbers after prefix is "16" because this phonenumber can be 10 or 11 characters long after prefix
-                    let length = p.count + country.phoneNumber.length + (country.shortName == "DE" && p == "16" ? 1 : 0)
-                    if(country.shortName == "DE" && p == "16" && (length == temp.count || length == temp.count+1)) || length == temp.count {
+                    let length = p.count + country.phoneNumber.length + (country.shortName == "DE" ? 1 : 0)
+                    if(country.shortName == "DE" && (length == temp.count || length == temp.count+1)) || length == temp.count {
                         do {
                             let phoneNumber = try phoneNumberKit.parse(country.phoneNumber.prefix + temp, withRegion: country.shortName, ignoreType: true)
                             formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
