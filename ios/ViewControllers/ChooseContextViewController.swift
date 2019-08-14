@@ -30,10 +30,10 @@ class ChooseContextViewController: UIViewController {
     return [collectionDevice, qr, list, location]
     }()
     
-    func showBluetoothMessage() {
+    func showBluetoothMessage(text: String) {
         let alert = UIAlertController(
             title: NSLocalizedString("ActivateBluetooth", comment: ""),
-            message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
+            message: text + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
 
@@ -53,7 +53,7 @@ class ChooseContextViewController: UIViewController {
                     let vc = sb.instantiateViewController(withIdentifier: "scanView") as! ScanViewController
                     self.navigationController!.show(vc, sender: nil)
                 } else {
-                    self.showBluetoothMessage()
+                    self.showBluetoothMessage(text: NSLocalizedString("BluetoothErrorMessage", comment: ""))
                 }
             case .GiveWithQR:
                 let vc = sb.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
@@ -67,9 +67,13 @@ class ChooseContextViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                     self.navigationController?.present(alert, animated: true, completion: nil)
                 } else {
-                    let story = UIStoryboard(name: "Event", bundle: nil)
-                    let vc = story.instantiateInitialViewController() as! EventViewController
-                    self.navigationController?.show(vc, sender: nil)
+                    if GivtManager.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0 {
+                        let story = UIStoryboard(name: "Event", bundle: nil)
+                        let vc = story.instantiateInitialViewController() as! EventViewController
+                        self.navigationController?.show(vc, sender: nil)
+                    } else {
+                        self.showBluetoothMessage(text: NSLocalizedString("BluetoothErrorMessageEvent", comment: ""))
+                    }
                 }
             }
         }

@@ -11,7 +11,7 @@ import SVProgressHUD
 
 class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var log = LogService.shared
-    private var bluetoothAlert: UIAlertController?
+    var bluetoothAlert: UIAlertController?
     private var isBacs = false
     
     func didUpdateBluetoothState(isBluetoothOn: Bool) {
@@ -29,7 +29,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     func showBluetoothMessage() {
         self.bluetoothAlert = UIAlertController(
             title: NSLocalizedString("ActivateBluetooth", comment: ""),
-            message: NSLocalizedString("BluetoothErrorMessage", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
+            message: NSLocalizedString("BluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
         bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
             
@@ -69,6 +69,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         let orgName = organisationName ?? ""
 
         UserDefaults.standard.lastGivtToOrganisationNamespace = GivtManager.shared.bestBeacon?.namespace
+        UserDefaults.standard.lastGivtToOrganisationName = orgName
         
         shouldShowMandate { (url) in
             var message = NSLocalizedString("SafariGiving", comment: "")
