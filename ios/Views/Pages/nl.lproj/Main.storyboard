@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font Awesome 5 Free-Solid-900.otf">
+            <string>FontAwesome5Free-Solid</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="aPr-cV-vW3">
@@ -1500,17 +1505,17 @@ Kijk voor de status in je overzicht.</string>
                                                 <stackView opaque="NO" contentMode="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gLA-MZ-C5p">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="50"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_green" translatesAutoresizingMaskIntoConstraints="NO" id="u5w-4A-Tbo">
-                                                            <rect key="frame" x="0.0" y="0.0" width="21" height="50"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="21" id="Boo-tX-mCN"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WdF-h3-fRk">
-                                                            <rect key="frame" x="31" y="0.0" width="343" height="50"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="place-of-worship" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1Q-BP-buf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="50"/>
+                                                            <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WdF-h3-fRk">
+                                                            <rect key="frame" x="40" y="0.0" width="334" height="50"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dshfjkhJSFdsf sjdhfkjsd fhfkjsdf jsdhfksdf" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dh-ad-cI1">
-                                                                    <rect key="frame" x="0.0" y="12" width="343" height="26"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="dshfjkhJSFdsf sjdhfkjsd fhfkjsdf jsdhfksdf" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dh-ad-cI1">
+                                                                    <rect key="frame" x="0.0" y="12" width="374" height="26"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1527,7 +1532,6 @@ Kijk voor de status in je overzicht.</string>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="WdF-h3-fRk" secondAttribute="bottom" id="F1o-pQ-Yyv"/>
-                                                        <constraint firstItem="u5w-4A-Tbo" firstAttribute="centerY" secondItem="gLA-MZ-C5p" secondAttribute="centerY" id="gTN-yA-y5X"/>
                                                         <constraint firstItem="WdF-h3-fRk" firstAttribute="top" secondItem="gLA-MZ-C5p" secondAttribute="top" id="yuv-Rq-wDV"/>
                                                     </constraints>
                                                 </stackView>
@@ -1542,7 +1546,7 @@ Kijk voor de status in je overzicht.</string>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="checkMark" destination="u5w-4A-Tbo" id="go5-fL-bJ4"/>
+                                            <outlet property="iconLabel" destination="g1Q-BP-buf" id="3Gg-5D-nKq"/>
                                             <outlet property="organisationLabel" destination="4Dh-ad-cI1" id="2Dd-kc-mqi"/>
                                         </connections>
                                     </tableViewCell>
@@ -1597,7 +1601,7 @@ Kijk voor de status in je overzicht.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CNE-Iu-fDp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3490" y="-900"/>
+            <point key="canvasLocation" x="3489.8550724637685" y="-900"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="lg9-Q0-sEk">
@@ -2890,7 +2894,6 @@ best bij jou past.</string>
         <image name="active_eye.png" width="16" height="12"/>
         <image name="backbtn" width="15" height="24"/>
         <image name="backbtn.png" width="15" height="24"/>
-        <image name="check_green" width="21" height="16"/>
         <image name="corner" width="40" height="40"/>
         <image name="dlTaxes" width="20" height="20"/>
         <image name="dropdown.png" width="16" height="16"/>
