@@ -297,16 +297,6 @@ class ManualGivingViewController: BaseScanViewController, UIGestureRecognizerDel
             return
         }
         disableButtons = true
-        if let tag = sender.view?.tag {
-            switch tag {
-            case 100, 101, 102, 103:
-                let vc = storyboard?.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
-                vc.passSelectedTag = tag
-                self.show(vc, sender: nil)
-            default:
-                break
-            }
-        }
     }
     
     func addAction(_ view: UIView) {

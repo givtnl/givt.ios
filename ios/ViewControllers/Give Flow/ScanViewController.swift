@@ -130,7 +130,7 @@ class ScanViewController: BaseScanViewController {
     @IBAction func giveDifferently(_ sender: Any) {
         btnGive.isEnabled = false
         GivtManager.shared.stopScanning()
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
         vc.cameFromScan = true
         self.navigationController?.pushViewController(vc, animated: true)
     }

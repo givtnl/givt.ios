@@ -16,10 +16,12 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         var nameSpace: String
     }
     
+    var cameFromScan: Bool = false
+    var lastGivtToOrganisationPosition: Int?
+
     @IBOutlet var titleText: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var typeStackView: UIStackView!
-    var lastGivtToOrganisationPosition: Int?
     @IBOutlet var searchBar: UISearchBar!
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,39 +156,9 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         didSet {
             loadView(selectedTag)
             lastTag = selectedTag
-            sections.removeAll()
-            
-            if filteredList == nil {
-                return
-            }
-            
-            if (filteredList!.count > 0) {
-                var index = 0
-                var string = filteredList![index].OrgName.uppercased()
-                var firstCharacter = string.first!
-                let names = filteredList!.map { (orgBeacon) -> String in
-                    return orgBeacon.OrgName
-                }
-                for (i, _) in names.enumerated() {
-                    let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
-                    if (commonPrefix.count == 0 ) {
-                        let title = "\(firstCharacter)"
-                        let newSection = (index: index, length: i - index, title: title)
-                        sections.append(newSection)
-                        index = i
-                        string = names[index].uppercased()
-                        firstCharacter = string.first!
-                    }
-                }
-                let title = String(firstCharacter)
-                let newSection = (index: index, length: names.count - index, title: title)
-                sections.append(newSection)
-            }
-            self.tableView.reloadData()
-  
         }
     }
-    var passSelectedTag: Int!
+    
     private var lastTag: Int?
     var listToLoad: [OrgBeacon] = {
         var list = GivtManager.shared.orgBeaconList
@@ -200,12 +172,13 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     @IBOutlet var stichtingen: UIImageView!
     @IBOutlet var acties: UIImageView!
     @IBOutlet var artiest: UIImageView!
-    
     @IBOutlet var navBar: UINavigationItem!
+    
     @IBAction func btnGive(_ sender: Any) {
         log.info(message: "Giving manually from the list")
         giveManually(antennaID: (prevPos?.nameSpace)!)
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -220,19 +193,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         typeStackView.addArrangedSubview(btnActies)
         typeStackView.addArrangedSubview(btnArtiest)
         
-        if passSelectedTag == 100 {
-            setActiveType(view: btnStichtingen)
-        } else if passSelectedTag == 101 {
-            setActiveType(view: btnKerken)
-        } else if passSelectedTag == 102 {
-            setActiveType(view: btnActies)
-        } else if passSelectedTag == 103 {
-            setActiveType(view: btnArtiest)
-        }
-
         searchBar.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
-        selectedTag = passSelectedTag
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         
         btnGive.isEnabled = false
@@ -250,8 +212,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         searchBar.placeholder = NSLocalizedString("SearchHere", comment: "")
         searchBar.accessibilityLabel = NSLocalizedString("SearchHere", comment: "")
         
-        
-    }
+        loadView(0)
+   }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -511,6 +473,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             regExp = "b[0-9]"
             titleText.text = NSLocalizedString("Artists", comment: "")
         default:
+            regExp = ".*"
+            titleText.text = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
             break
         }
         
@@ -545,7 +509,35 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         
         /* if there has been searchd before: filter list */
         filterList()
+        
+        sections.removeAll()
+        if filteredList == nil {
+            return
+        }
 
+        if (filteredList!.count > 0) {
+            var index = 0
+            var string = filteredList![index].OrgName.uppercased()
+            var firstCharacter = string.first!
+            let names = filteredList!.map { (orgBeacon) -> String in
+                return orgBeacon.OrgName
+            }
+            for (i, _) in names.enumerated() {
+                let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
+                if (commonPrefix.count == 0 ) {
+                    let title = "\(firstCharacter)"
+                    let newSection = (index: index, length: i - index, title: title)
+                    sections.append(newSection)
+                    index = i
+                    string = names[index].uppercased()
+                    firstCharacter = string.first!
+                }
+            }
+            let title = String(firstCharacter)
+            let newSection = (index: index, length: names.count - index, title: title)
+            sections.append(newSection)
+        }
+        self.tableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

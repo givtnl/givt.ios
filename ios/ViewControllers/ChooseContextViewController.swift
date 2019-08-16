@@ -59,7 +59,7 @@ class ChooseContextViewController: UIViewController {
                 let vc = sb.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
                 self.navigationController!.show(vc, sender: nil)
             case .GiveFromList:
-                let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
+                let vc = sb.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
                 self.navigationController!.show(vc, sender: nil)
             case .GiveToEvent:
                 if !GivtManager.shared.hasGivtLocations() {
