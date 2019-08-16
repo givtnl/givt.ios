@@ -142,7 +142,7 @@ class EventViewController: BaseScanViewController {
     
     @IBAction func giveDifferently(_ sender: Any) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
+        let vc = sb.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
