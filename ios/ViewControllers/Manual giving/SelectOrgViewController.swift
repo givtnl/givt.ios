@@ -18,7 +18,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     
     var cameFromScan: Bool = false
     var lastGivtToOrganisationPosition: Int?
-
+    
     @IBOutlet var titleText: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var typeStackView: UIStackView!
@@ -49,7 +49,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             cell.toggleOn()
             prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: cell.nameSpace)
             btnGive.isEnabled = true
-
+            
         }
         
         if let pp = prevPos, pp.type == selectedTag && pp.pos == indexPath  {
@@ -67,7 +67,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sections.map { $0.title }
     }
-
+    
     private var prevPos: PreviousPosition?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? ManualGivingOrganisation else { return }
@@ -121,7 +121,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             }
         }
     }
-
+    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let indexPathForSelectedRow = tableView.indexPathForSelectedRow,
             indexPathForSelectedRow == indexPath {
@@ -178,7 +178,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         log.info(message: "Giving manually from the list")
         giveManually(antennaID: (prevPos?.nameSpace)!)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -213,7 +213,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         searchBar.accessibilityLabel = NSLocalizedString("SearchHere", comment: "")
         
         loadView(0)
-   }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -224,7 +224,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         super.viewWillDisappear(animated)
         GivtManager.shared.delegate = nil
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -243,28 +243,29 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     @objc func selectType(_ sender: UITapGestureRecognizer) {
         if let view = sender.view {
             if view.tag == selectedTag {
-                return
-            }
-            typeStackView.arrangedSubviews.forEach { (view) in
-                var replaceView: UIView?
-                if view == btnStichtingenSpecial {
-                    replaceView = btnStichtingen
-                } else if view == btnKerkenSpecial {
-                    replaceView = btnKerken
-                } else if view == btnActiesSpecial {
-                    replaceView = btnActies
-                } else if view == btnArtiestSpecial {
-                    replaceView = btnArtiest
+                unsetActiveType(view: view)
+                selectedTag = 0
+            } else {
+                typeStackView.arrangedSubviews.forEach { (view) in
+                    var replaceView: UIView?
+                    if view == btnStichtingenSpecial {
+                        replaceView = btnStichtingen
+                    } else if view == btnKerkenSpecial {
+                        replaceView = btnKerken
+                    } else if view == btnActiesSpecial {
+                        replaceView = btnActies
+                    } else if view == btnArtiestSpecial {
+                        replaceView = btnArtiest
+                    }
+                    if let idx = typeStackView.arrangedSubviews.index(of: view), replaceView != nil {
+                        typeStackView.removeArrangedSubview(view)
+                        view.removeFromSuperview()
+                        typeStackView.insertArrangedSubview(replaceView!, at: idx)
+                    }
                 }
-                if let idx = typeStackView.arrangedSubviews.index(of: view), replaceView != nil {
-                    typeStackView.removeArrangedSubview(view)
-                    view.removeFromSuperview()
-                    typeStackView.insertArrangedSubview(replaceView!, at: idx)
-                }
+                setActiveType(view: view)
+                selectedTag = view.tag
             }
-            setActiveType(view: view)
-            
-            selectedTag = view.tag
         }
     }
     
@@ -287,6 +288,28 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             view.removeFromSuperview()
             typeStackView.insertArrangedSubview(viewToAdd!, at: positionInStackview)
         }
+    }
+    
+    func unsetActiveType(view: UIView) {
+        if let positionInStackview = typeStackView.arrangedSubviews.index(of: view) {
+            var viewToAdd: UIView?
+            switch (view) {
+            case btnKerkenSpecial:
+                viewToAdd = btnKerken
+            case btnStichtingenSpecial:
+                viewToAdd = btnStichtingen
+            case btnActiesSpecial:
+                viewToAdd = btnActies
+            case btnArtiestSpecial:
+                viewToAdd = btnArtiest
+            default:
+                return
+            }
+            typeStackView.removeArrangedSubview(view)
+            view.removeFromSuperview()
+            typeStackView.insertArrangedSubview(viewToAdd!, at: positionInStackview)
+        }
+
     }
     
     func createNormalButton(backgroundColor: UIColor, image: UIImage) -> UIButton {
@@ -457,7 +480,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         if lastTag == tag {
             return
         }
-    
+        
         var regExp = "c[0-9]|d[be]"
         switch(tag) {
         case 100:
@@ -514,7 +537,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         if filteredList == nil {
             return
         }
-
+        
         if (filteredList!.count > 0) {
             var index = 0
             var string = filteredList![index].OrgName.uppercased()
@@ -569,5 +592,5 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
     }
-
+    
 }
