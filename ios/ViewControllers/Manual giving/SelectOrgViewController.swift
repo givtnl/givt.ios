@@ -41,15 +41,13 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.nameSpace = nameSpace
         cell.toggleOff()
         cell.organisationLabel.numberOfLines = 0
-        print(nameSpace)
+
         if let ns = UserDefaults.standard.lastGivtToOrganisationNamespace, ns == nameSpace {
-            print("we got a match!!!!!")
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
             cell.toggleOn()
             prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: cell.nameSpace)
             btnGive.isEnabled = true
-            
         }
         
         if let pp = prevPos, pp.type == selectedTag && pp.pos == indexPath  {
@@ -85,8 +83,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         }
         btnGive.isEnabled = false
         UserDefaults.standard.lastGivtToOrganisationNamespace = nil
-        
     }
+    
     var initial = true
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let visibleRows = tableView.indexPathsForVisibleRows, let lastRow = visibleRows.last?.row, let lastSection = visibleRows.map({$0.section}).last {
