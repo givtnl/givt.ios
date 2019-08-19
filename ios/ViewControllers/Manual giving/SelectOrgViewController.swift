@@ -395,7 +395,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     
     lazy var btnStichtingen: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "stichting_white"), labelText: "Goed doel")
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "stichting_white"), labelText: NSLocalizedString("Charity", comment: ""))
         btn.tag = 100
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -406,7 +406,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnStichtingenSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: "Goed doel")
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: NSLocalizedString("Charity", comment: ""))
         btn.tag = 100
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -417,7 +417,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnKerken: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "church_white"), labelText: "Kerk")
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "church_white"), labelText: NSLocalizedString("Church", comment: ""))
         btn.tag = 101
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -428,7 +428,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnKerkenSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "sugg_church_white"), labelText: "Kerk")
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "sugg_church_white"), labelText: NSLocalizedString("Church", comment: ""))
         btn.tag = 101
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -439,7 +439,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnActies: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "actions_white"), labelText: "Actie")
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "actions_white"), labelText: NSLocalizedString("Campaign", comment: ""))
         btn.tag = 102
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -450,7 +450,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnActiesSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "sugg_actions_white"), labelText: "Actie")
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "sugg_actions_white"), labelText: NSLocalizedString("Campaign", comment: ""))
         btn.tag = 102
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -460,7 +460,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         return btn
     }()
     lazy var btnArtiest: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist"), labelText: "Artiest")
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist"), labelText: NSLocalizedString("Artist", comment: ""))
         btn.tag = 103
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -471,7 +471,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnArtiestSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist_white"), labelText: "Artiest")
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist_white"), labelText: NSLocalizedString("Artist", comment: ""))
         btn.tag = 103
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
