@@ -310,26 +310,34 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
 
     }
     
-    func createNormalButton(backgroundColor: UIColor, image: UIImage) -> UIButton {
+    func createNormalButton(backgroundColor: UIColor, image: UIImage, labelText: String) -> UIButton {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = backgroundColor
         btn.layer.cornerRadius = 3
-        btn.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        btn.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        btn.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        btn.widthAnchor.constraint(equalToConstant: 60).isActive = true
         let image = UIImageView(image: image)
         image.translatesAutoresizingMaskIntoConstraints = false
         btn.addSubview(image)
-        image.topAnchor.constraint(equalTo: btn.topAnchor, constant: 8).isActive = true
-        image.bottomAnchor.constraint(equalTo: btn.bottomAnchor, constant: -8).isActive = true
-        image.leadingAnchor.constraint(equalTo: btn.leadingAnchor, constant: 8).isActive = true
-        image.trailingAnchor.constraint(equalTo: btn.trailingAnchor, constant: -8).isActive = true
+        image.contentMode = .scaleAspectFit
+        image.topAnchor.constraint(equalTo: btn.topAnchor, constant: 4).isActive = true
+        image.centerXAnchor.constraint(equalTo: btn.centerXAnchor).isActive = true
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.font = UIFont(name: "Avenir Heavy", size: 11)
+        label.text = labelText
+        btn.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: btn.centerXAnchor).isActive = true
+        image.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -4).isActive = true
+        label.bottomAnchor.constraint(equalTo: btn.bottomAnchor, constant: -4).isActive = true
         
         createShadow(view: btn)
         return btn
     }
     
-    func createSpecialButton(tintColor: UIColor, image: UIImage) -> UIButton {
+    func createSpecialButton(tintColor: UIColor, image: UIImage, labelText: String) -> UIButton {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = UIColor.clear
@@ -365,21 +373,28 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         bar.leadingAnchor.constraint(equalTo: borderView.leadingAnchor).isActive = true
         bar.trailingAnchor.constraint(equalTo: borderView.trailingAnchor).isActive = true
         
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Avenir Heavy", size: 12)
+        label.text = labelText
+        label.textColor = tintColor
+        borderView.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: btn.centerXAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: bar.topAnchor, constant: -4).isActive = true
+        
         let image = UIImageView(image: image)
         image.translatesAutoresizingMaskIntoConstraints = false
-        //image.widthAnchor.constraint(equalToConstant: 52).isActive = true
         image.contentMode = .scaleAspectFit
-        
         borderView.addSubview(image)
-        image.topAnchor.constraint(equalTo: borderView.topAnchor, constant: 8).isActive = true
-        image.bottomAnchor.constraint(equalTo: bar.topAnchor, constant: -8).isActive = true
-        image.leadingAnchor.constraint(equalTo: borderView.leadingAnchor, constant: 8).isActive = true
-        image.trailingAnchor.constraint(equalTo: borderView.trailingAnchor, constant: -8).isActive = true
+        image.topAnchor.constraint(equalTo: borderView.topAnchor, constant: 4).isActive = true
+        image.centerXAnchor.constraint(equalTo: btn.centerXAnchor).isActive = true
+        image.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -4).isActive = true
+
         return btn
     }
     
     lazy var btnStichtingen: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "stichting_white"))
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "stichting_white"), labelText: "Stichting")
         btn.tag = 100
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -390,7 +405,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnStichtingenSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "sugg_stichting_white"))
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: "Stichting")
         btn.tag = 100
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -401,7 +416,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnKerken: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "church_white"))
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "church_white"), labelText: "Kerk")
         btn.tag = 101
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -412,7 +427,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnKerkenSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "sugg_church_white"))
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "sugg_church_white"), labelText: "Kerk")
         btn.tag = 101
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -423,7 +438,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnActies: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "actions_white"))
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "actions_white"), labelText: "Actie")
         btn.tag = 102
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -434,7 +449,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnActiesSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "sugg_actions_white"))
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "sugg_actions_white"), labelText: "Actie")
         btn.tag = 102
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -444,7 +459,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         return btn
     }()
     lazy var btnArtiest: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist"))
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist"), labelText: "Artiest")
         btn.tag = 103
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -455,7 +470,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnArtiestSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist_white"))
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist_white"), labelText: "Artiest")
         btn.tag = 103
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
