@@ -42,7 +42,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.toggleOff()
         cell.organisationLabel.numberOfLines = 0
 
-        if let ns = UserDefaults.standard.lastGivtToOrganisationNamespace, ns == nameSpace {
+        if let ns = getPreselectedOrganisation(), ns == nameSpace {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
             cell.toggleOn()
@@ -93,7 +93,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 if initial {
                     initial = false
                     //find orgname associated with namespace
-                    if let namespace = UserDefaults.standard.lastGivtToOrganisationNamespace, let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
+                    if let namespace = getPreselectedOrganisation(), let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
                         guard let tableSectionId = sections.index(where: { (sec) -> Bool in
                             return sec.title.uppercased() == String(orgName.first!).uppercased()
                         }) else {
@@ -210,6 +210,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         searchBar.placeholder = NSLocalizedString("SearchHere", comment: "")
         searchBar.accessibilityLabel = NSLocalizedString("SearchHere", comment: "")
         
+        selectedTag = 0
         loadView(0)
     }
     
@@ -394,7 +395,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     
     lazy var btnStichtingen: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "stichting_white"), labelText: "Stichting")
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "stichting_white"), labelText: "Goed doel")
         btn.tag = 100
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -405,7 +406,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnStichtingenSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: "Stichting")
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: "Goed doel")
         btn.tag = 100
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -494,22 +495,23 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             return
         }
         
-        var regExp = "c[0-9]|d[be]"
+        var mediumType: MediumHelper.OrganisationType
+        
         switch(tag) {
         case 100:
-            regExp = "d[0-9]" //stichtingen
+            mediumType = .charity
             titleText.text = NSLocalizedString("Stichtingen", comment: "")
         case 101:
-            regExp = "c[0-9]|d[be]" //churches
+            mediumType = .church
             titleText.text = NSLocalizedString("Churches", comment: "")
         case 102:
-            regExp = "a[0-9]" //acties
+            mediumType = .campaign
             titleText.text = NSLocalizedString("Acties", comment: "")
         case 103:
-            regExp = "b[0-9]"
+            mediumType = .artist
             titleText.text = NSLocalizedString("Artists", comment: "")
         default:
-            regExp = ".*"
+            mediumType = .invalid
             titleText.text = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
             break
         }
@@ -528,7 +530,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         })
         
         filteredList = countryFilteredList.filter({ (orgBeacon) -> Bool in
-            orgBeacon.EddyNameSpace.substring(16..<18).matches(regExp)
+            MediumHelper.namespaceToOrganisationType(namespace: orgBeacon.EddyNameSpace) == mediumType || mediumType == .invalid
         })
         
         filteredList?.sort(by: { (first, second) -> Bool in
@@ -605,5 +607,27 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
     }
-    
+
+    private func getPreselectedOrganisation() -> String? {
+        var namespace: String?
+
+        if let bb = GivtManager.shared.bestBeacon {
+            namespace = bb.namespace
+        } else if let savedNamespace = UserDefaults.standard.lastGivtToOrganisationNamespace {
+            namespace = savedNamespace
+        } else if let savedName = UserDefaults.standard.lastGivtToOrganisationName {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "", message: NSLocalizedString("SuggestionNamespaceInvalid", comment: "").replacingOccurrences(of: "{0}", with: savedName), preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                    
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+            UserDefaults.standard.lastGivtToOrganisationNamespace = nil
+            UserDefaults.standard.lastGivtToOrganisationName = nil
+        }
+        
+        return namespace
+    }
 }
