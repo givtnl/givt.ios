@@ -1514,29 +1514,16 @@ Kijk voor de status in je overzicht.</string>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WdF-h3-fRk">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dshfjkhJSFdsf sjdhfkjsd fhfkjsdf jsdhfksdf" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dh-ad-cI1">
                                                             <rect key="frame" x="40" y="0.0" width="334" height="50"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dshfjkhJSFdsf sjdhfkjsd fhfkjsdf jsdhfksdf" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Dh-ad-cI1">
-                                                                    <rect key="frame" x="0.0" y="12" width="334" height="26"/>
-                                                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                                                                    <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="4Dh-ad-cI1" secondAttribute="trailing" id="Cwb-bE-MI4"/>
-                                                                <constraint firstItem="4Dh-ad-cI1" firstAttribute="top" secondItem="WdF-h3-fRk" secondAttribute="top" constant="12" id="PcG-2G-fpp"/>
-                                                                <constraint firstAttribute="bottom" secondItem="4Dh-ad-cI1" secondAttribute="bottom" constant="12" id="RCm-xw-C5v"/>
-                                                                <constraint firstItem="4Dh-ad-cI1" firstAttribute="leading" secondItem="WdF-h3-fRk" secondAttribute="leading" id="ujm-Cb-Eol"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="iQJ-XA-bwO"/>
                                                             </constraints>
-                                                        </view>
+                                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                                            <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="WdF-h3-fRk" secondAttribute="bottom" id="F1o-pQ-Yyv"/>
-                                                        <constraint firstItem="WdF-h3-fRk" firstAttribute="top" secondItem="gLA-MZ-C5p" secondAttribute="top" id="yuv-Rq-wDV"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>

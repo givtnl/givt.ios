@@ -42,7 +42,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.toggleOff()
         cell.organisationLabel.numberOfLines = 0
 
-        if let ns = getPreselectedOrganisation(), ns == nameSpace {
+        if let ns = getPreselectedOrganisation(), ns == nameSpace, initial {
+            initial = false
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
             cell.toggleOn()
@@ -54,6 +55,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
             cell.toggleOn()
+            btnGive.isEnabled = true
         }
         return cell
     }
@@ -72,7 +74,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.toggleOn()
         prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: cell.nameSpace)
         btnGive.isEnabled = true
-        UserDefaults.standard.lastGivtToOrganisationNamespace = cell.nameSpace
         self.view.endEditing(true)
     }
     
@@ -82,16 +83,15 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             cell.toggleOff()
         }
         btnGive.isEnabled = false
-        UserDefaults.standard.lastGivtToOrganisationNamespace = nil
     }
     
     var initial = true
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
         if let visibleRows = tableView.indexPathsForVisibleRows, let lastRow = visibleRows.last?.row, let lastSection = visibleRows.map({$0.section}).last {
             if indexPath.row == lastRow && indexPath.section == lastSection {
                 // Finished loading visible rows
                 if initial {
-                    initial = false
                     //find orgname associated with namespace
                     if let namespace = getPreselectedOrganisation(), let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
                         guard let tableSectionId = sections.index(where: { (sec) -> Bool in
@@ -539,7 +539,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         
         originalList = filteredList
         
-        if let lastOrg = UserDefaults.standard.lastGivtToOrganisationNamespace {
+        if let lastOrg = getPreselectedOrganisation() {
             lastGivtToOrganisationPosition = filteredList?.index(where: { (org) -> Bool in
                 return org.EddyNameSpace == lastOrg
             })
@@ -575,7 +575,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             let newSection = (index: index, length: names.count - index, title: title)
             sections.append(newSection)
         }
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -615,17 +615,21 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             namespace = bb.namespace
         } else if let savedNamespace = UserDefaults.standard.lastGivtToOrganisationNamespace {
             namespace = savedNamespace
-        } else if let savedName = UserDefaults.standard.lastGivtToOrganisationName {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "", message: NSLocalizedString("SuggestionNamespaceInvalid", comment: "").replacingOccurrences(of: "{0}", with: savedName), preferredStyle: UIAlertControllerStyle.alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                    
-                }))
-                self.present(alert, animated: true, completion: nil)
+            if let savedName = UserDefaults.standard.lastGivtToOrganisationName {
+                guard let _ = GivtManager.shared.orgBeaconList?.first(where: { $0.EddyNameSpace == namespace }) else {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "", message: NSLocalizedString("SuggestionNamespaceInvalid", comment: "").replacingOccurrences(of: "{0}", with: savedName), preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                            
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    UserDefaults.standard.lastGivtToOrganisationNamespace = nil
+                    UserDefaults.standard.lastGivtToOrganisationName = nil
+                    return nil
+                }
             }
-            UserDefaults.standard.lastGivtToOrganisationNamespace = nil
-            UserDefaults.standard.lastGivtToOrganisationName = nil
         }
         
         return namespace
