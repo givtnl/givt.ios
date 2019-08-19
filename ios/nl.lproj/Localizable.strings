@@ -878,6 +878,10 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "CelebrationQueueCancelAlertTitle" = "Jammer!";
 "HistoryInfoLegendaAccessibilityLabel" = "Info legenda";
 "HistoryDownloadAnnualOverviewAccessibilityLabel" = "Download jaaroverzicht van giften (mail)";
-"BluetoothErrorMessageEvent" = "Met Bluetooth kan je dankzij lokatie-zenders toch je locatie vinden indien er geen/slechte GPS verbinding is.\nActiveer deze nu.";
+"BluetoothErrorMessageEvent" = "Met Bluetooth kan je dankzij locatie-zenders toch je locatie vinden indien er geen/slechte GPS-verbinding is.\nActiveer deze nu.";
 "processCashedGivt_NamespaceInvalid" = "We zien dat je een nog niet verwerkte gift hebt aan een organisatie die jammergenoeg Givt niet meer gebruikt. Deze wordt gewoon verwijderd.";
-"SuggestionNamespaceInvalid" = "Je laatst geselecteerde organisatie ondersteunt niet langer Givt.";
+"SuggestionNamespaceInvalid" = "Je laatst geselecteerde doel ondersteunt niet langer Givt.";
+"Charity" = "Goed doel";
+"Artist" = "Artiest";
+"Church" = "Kerk";
+"Campaign" = "Actie";
