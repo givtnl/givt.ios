@@ -91,7 +91,7 @@ final class GivtManager: NSObject {
             return orgBeacon.EddyNameSpace == organisationNameSpace
         })?.OrgName
     }
-    
+        
     func isCelebration(orgNameSpace: String) -> Bool {
         return orgBeaconList?.first(where: { (orgBeacon) -> Bool in
             return orgBeacon.EddyNameSpace == orgNameSpace
@@ -722,5 +722,4 @@ class Transaction:NSObject, NSCoding {
             "Timestamp"     : self.timeStamp
         ]
     }
-    
 }

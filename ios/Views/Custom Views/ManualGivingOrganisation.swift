@@ -9,17 +9,25 @@
 import UIKit
 
 class ManualGivingOrganisation: UITableViewCell {
+
+    
     public var nameSpace: String = "" {
         didSet {
-            let type  = nameSpace.substring(16..<19)
-            if type.matches("c[0-9]|d[be]") { //is a chrch
+            switch MediumHelper.namespaceToOrganisationType(namespace: nameSpace) {
+            case .church:
                 iconLabel.text = "place-of-worship"
-            } else if type.matches("d[0-9]") { //stichitng
+                break
+            case .charity:
                 iconLabel.text = "hands-helping"
-            } else if type.matches("a[0-9]") { //acties
+                break
+            case .campaign:
                 iconLabel.text = "hand-holding-heart"
-            } else if type.matches("b[0-9]") {
+                break
+            case .artist:
                 iconLabel.text = "guitar"
+                break
+            default:
+                break
             }
         }
     }
@@ -42,15 +50,21 @@ class ManualGivingOrganisation: UITableViewCell {
     }
     
     func toggleOn() {
-        let type  = nameSpace.substring(16..<19)
-        if type.matches("c[0-9]|d[be]") { //is a chrch
+        switch MediumHelper.namespaceToOrganisationType(namespace: nameSpace) {
+        case .church:
             setBackgroundColorRecursive(view: self, color: #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 1))
-        } else if type.matches("d[0-9]") { //stichitng
+            break
+        case .charity:
             setBackgroundColorRecursive(view: self, color: #colorLiteral(red: 1, green: 0.6917269826, blue: 0, alpha: 1))
-        } else if type.matches("a[0-9]") { //acties
+            break
+        case .campaign:
             setBackgroundColorRecursive(view: self, color: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1))
-        } else if type.matches("b[0-9]") {
+            break
+        case .artist:
             setBackgroundColorRecursive(view: self, color: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1))
+            break
+        default:
+            break
         }
         iconLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         organisationLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
