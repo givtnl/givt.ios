@@ -547,12 +547,17 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         
         /* if there has been searchd before: filter list */
         filterList()
-        
+
+        loadSections()
+        tableView.reloadData()
+    }
+    
+    private func loadSections() {
+        /* Show shortcust characters in list */
         sections.removeAll()
         if filteredList == nil {
             return
         }
-        
         if (filteredList!.count > 0) {
             var index = 0
             var string = filteredList![index].OrgName.uppercased()
@@ -575,7 +580,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             let newSection = (index: index, length: names.count - index, title: title)
             sections.append(newSection)
         }
-        tableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -585,14 +589,14 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             tableView.delegate?.tableView!(tableView, didDeselectRowAt: indexPath)
         }
         
-        guard !searchText.isEmpty else {
+        if !searchText.isEmpty {
+            filterList()
+        } else {
             filteredList = originalList
-            selectedTag = Int(selectedTag)
-            return
         }
         
-        filterList()
-        selectedTag = Int(selectedTag)
+        loadSections()
+        tableView.reloadData()
     }
     
     func filterList() {
@@ -600,7 +604,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             filteredList = originalList?.filter({ (organisation) -> Bool in
                 return organisation.OrgName.lowercased().contains(searchText.lowercased())
             })
-            tableView.reloadData()
         }
     }
     
