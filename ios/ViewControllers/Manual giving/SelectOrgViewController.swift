@@ -18,6 +18,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     
     var cameFromScan: Bool = false
     var lastGivtToOrganisationPosition: Int?
+    var initial = true
+    var scrollTo = true
     
     @IBOutlet var titleText: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -44,14 +46,10 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
 
         if let ns = getPreselectedOrganisation(), ns == nameSpace, initial {
             initial = false
-            tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
-            tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
-            cell.toggleOn()
-            prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: cell.nameSpace)
-            btnGive.isEnabled = true
+            prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: nameSpace)
         }
         
-        if let pp = prevPos, pp.type == selectedTag && pp.pos == indexPath  {
+        if let pp = prevPos, (pp.type == selectedTag || pp.type == 0 || selectedTag == 0) && pp.nameSpace == nameSpace  {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
             tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
             cell.toggleOn()
@@ -85,35 +83,41 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         btnGive.isEnabled = false
     }
     
-    var initial = true
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.selectionStyle = .none
         if let visibleRows = tableView.indexPathsForVisibleRows, let lastRow = visibleRows.last?.row, let lastSection = visibleRows.map({$0.section}).last {
-            if indexPath.row == lastRow && indexPath.section == lastSection {
+            if indexPath.row == lastRow, indexPath.section == lastSection, scrollTo {
+                scrollTo = false
                 // Finished loading visible rows
+                var namespace: String?
+                
                 if initial {
-                    //find orgname associated with namespace
-                    if let namespace = getPreselectedOrganisation(), let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
-                        guard let tableSectionId = sections.index(where: { (sec) -> Bool in
-                            return sec.title.uppercased() == String(orgName.first!).uppercased()
-                        }) else {
-                            return
-                        }
-                        
-                        let sectionIdxOfItem = sections[tableSectionId].index
-                        
-                        guard let namespaceIdx = filteredList!.index(where: { (o) -> Bool in
-                            o.EddyNameSpace == namespace
-                        }) else {
-                            return
-                        }
-                        
-                        if tableSectionId < tableView.numberOfSections && (namespaceIdx - sectionIdxOfItem) < tableView.numberOfRows(inSection: tableSectionId) {
-                            let ip = IndexPath(row: (namespaceIdx - sectionIdxOfItem), section: tableSectionId)
-                            tableView.scrollToRow(at: ip, at: UITableViewScrollPosition.top, animated: false)
-                        } else {
-                            self.log.warning(message: "Tried to scroll to suggestion \(orgName), but the index was out of bounds.")
-                        }
+                    namespace = getPreselectedOrganisation()
+                }
+                else if let pp = prevPos {
+                    namespace = pp.nameSpace
+                }
+                
+                //find orgname associated with namespace
+                if let namespace = namespace, let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
+                    guard let tableSectionId = sections.index(where: { (sec) -> Bool in
+                        return sec.title.uppercased() == String(orgName.first!).uppercased()
+                    }) else {
+                        return
+                    }
+                    
+                    let sectionIdxOfItem = sections[tableSectionId].index
+                    
+                    guard let namespaceIdx = filteredList!.index(where: { (o) -> Bool in
+                        o.EddyNameSpace == namespace
+                    }) else {
+                        return
+                    }
+                    
+                    if tableSectionId < tableView.numberOfSections && (namespaceIdx - sectionIdxOfItem) < tableView.numberOfRows(inSection: tableSectionId) {
+                        let ip = IndexPath(row: (namespaceIdx - sectionIdxOfItem), section: tableSectionId)
+                        tableView.scrollToRow(at: ip, at: UITableViewScrollPosition.top, animated: false)
                     }
                 }
             }
@@ -241,27 +245,30 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     /* selecteren van Kerk/Stichtingen/...-knop langsboven */
     @objc func selectType(_ sender: UITapGestureRecognizer) {
         if let view = sender.view {
+            scrollTo = true
             if view.tag == selectedTag {
                 unsetActiveType(view: view)
                 selectedTag = 0
             } else {
-                typeStackView.arrangedSubviews.forEach { (view) in
+                typeStackView.arrangedSubviews.forEach { (v) in
                     var replaceView: UIView?
-                    if view == btnStichtingenSpecial {
+                    if v == btnStichtingenSpecial {
                         replaceView = btnStichtingen
-                    } else if view == btnKerkenSpecial {
+                    } else if v == btnKerkenSpecial {
                         replaceView = btnKerken
-                    } else if view == btnActiesSpecial {
+                    } else if v == btnActiesSpecial {
                         replaceView = btnActies
-                    } else if view == btnArtiestSpecial {
+                    } else if v == btnArtiestSpecial {
                         replaceView = btnArtiest
                     }
-                    if let idx = typeStackView.arrangedSubviews.index(of: view), replaceView != nil {
-                        typeStackView.removeArrangedSubview(view)
-                        view.removeFromSuperview()
+                    
+                    if let idx = typeStackView.arrangedSubviews.index(of: v), replaceView != nil {
+                        typeStackView.removeArrangedSubview(v)
+                        v.removeFromSuperview()
                         typeStackView.insertArrangedSubview(replaceView!, at: idx)
                     }
                 }
+                
                 setActiveType(view: view)
                 selectedTag = view.tag
             }
@@ -271,21 +278,34 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func setActiveType(view: UIView) {
         if let positionInStackview = typeStackView.arrangedSubviews.index(of: view) {
             var viewToAdd: UIView?
+            var orgType = MediumHelper.OrganisationType.invalid
+            
             switch (view) {
             case btnKerken:
                 viewToAdd = btnKerkenSpecial
+                orgType = .church
             case btnStichtingen:
                 viewToAdd = btnStichtingenSpecial
+                orgType = .charity
             case btnActies:
                 viewToAdd = btnActiesSpecial
+                orgType = .campaign
             case btnArtiest:
                 viewToAdd = btnArtiestSpecial
+                orgType = .artist
             default:
                 return
             }
             typeStackView.removeArrangedSubview(view)
             view.removeFromSuperview()
             typeStackView.insertArrangedSubview(viewToAdd!, at: positionInStackview)
+            
+            if let idx = tableView.indexPathForSelectedRow, let selectedOrg = tableView.cellForRow(at: idx) as? ManualGivingOrganisation {
+                if MediumHelper.namespaceToOrganisationType(namespace: selectedOrg.nameSpace) != orgType {
+                    /* Disable give button because selected organisation is not in view anymore */
+                    btnGive.isEnabled = false
+                }
+            }
         }
     }
     
@@ -307,6 +327,11 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             typeStackView.removeArrangedSubview(view)
             view.removeFromSuperview()
             typeStackView.insertArrangedSubview(viewToAdd!, at: positionInStackview)
+
+            if let _ = tableView.indexPathForSelectedRow {
+                /* Enable give button because selected organisation is in view again */
+                btnGive.isEnabled = true
+            }
         }
 
     }
