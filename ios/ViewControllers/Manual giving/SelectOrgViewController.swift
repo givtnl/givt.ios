@@ -51,7 +51,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         
         if let pp = prevPos, (pp.type == selectedTag || pp.type == 0 || selectedTag == 0) && pp.nameSpace == nameSpace  {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
-            tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
             cell.toggleOn()
             btnGive.isEnabled = true
         }
@@ -300,11 +299,9 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             view.removeFromSuperview()
             typeStackView.insertArrangedSubview(viewToAdd!, at: positionInStackview)
             
-            if let idx = tableView.indexPathForSelectedRow, let selectedOrg = tableView.cellForRow(at: idx) as? ManualGivingOrganisation {
-                if MediumHelper.namespaceToOrganisationType(namespace: selectedOrg.nameSpace) != orgType {
-                    /* Disable give button because selected organisation is not in view anymore */
-                    btnGive.isEnabled = false
-                }
+            if let pp = prevPos, MediumHelper.namespaceToOrganisationType(namespace: pp.nameSpace) != orgType {
+                /* Disable give button because selected organisation is not in view anymore */
+                btnGive.isEnabled = false
             }
         }
     }
@@ -328,7 +325,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             view.removeFromSuperview()
             typeStackView.insertArrangedSubview(viewToAdd!, at: positionInStackview)
 
-            if let _ = tableView.indexPathForSelectedRow {
+            if let _ = prevPos {
                 /* Enable give button because selected organisation is in view again */
                 btnGive.isEnabled = true
             }
