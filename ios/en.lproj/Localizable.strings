@@ -170,7 +170,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "GiveContextQR" = "Give by scanning a QR-code";
 "SelectContextList" = "Select a goal from the list";
 "SelectContext" = "Choose the way you give";
-"ChooseWhoYouWantToGiveTo" = "Who will you give to?";
+"ChooseWhoYouWantToGiveTo" = "Choose who you want to give to";
 "CancelGiftAlertTitle" = "Cancel donation?";
 "CancelGiftAlertMessage" = "Are you sure you want to cancel this donation?";
 "GotIt" = "Got it";
