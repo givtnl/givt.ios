@@ -12,7 +12,6 @@ import UIKit
 import AudioToolbox
 import SwiftClient
 import CoreLocation
-import SwiftCron
 import Reachability
 import AppCenterAnalytics
 
@@ -26,7 +25,6 @@ struct OrgBeacon: Codable {
     let OrgName: String
     let Celebrations: Bool
     let Locations: [OrgBeaconLocation]
-    let MultiUseAllocations: [MultiUseAllocations]?
     var accountType: AccountType {
         get {
             let start = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 8)
@@ -50,12 +48,6 @@ struct OrgBeaconLocation: Codable {
     let BeaconId: String
     let dtBegin: Date
     let dtEnd: Date
-}
-
-struct MultiUseAllocations: Codable {
-    let Name: String
-    let dtBeginCron: String
-    let dtEndCron: String
 }
 
 final class GivtManager: NSObject {
@@ -111,18 +103,6 @@ final class GivtManager: NSObject {
             return orgBeacon.EddyNameSpace == namespace
         }) else { return nil }
         
-        if let ma = organisation.MultiUseAllocations, ma.count > 0 {
-            for m in ma {
-                let date = Date()
-                if let begin = CronExpression(cronString: m.dtBeginCron)?.getNextRunDate(date), let end = CronExpression(cronString: m.dtEndCron)?.getNextRunDate(date) {
-                    if end < begin {
-                        self.log.info(message: "Could succesfully identify CRON-Allocation-Beacon")
-                        return m.Name
-                    }
-                }
-            }
-            self.log.warning(message: "Could NOT identify CRON-Allocation-Beacon")
-        }
         return organisation.OrgName
     }
     
