@@ -9,7 +9,7 @@
 import UIKit
 import LGSideMenuController
 
-class CustomViewController: UINavigationController  {
+class MainNavigationController: UINavigationController  {
     let slideAnimator = CustomPresentModalAnimation()
     
     override func viewDidLoad() {

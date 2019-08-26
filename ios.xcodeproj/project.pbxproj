@@ -28,7 +28,7 @@
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71DA04D20F758DD0084381E /* ExternalIntegration.swift */; };
 		D71DA050211AE5C90084381E /* ChangeAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71DA04F211AE5C90084381E /* ChangeAddressViewController.swift */; };
-		D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F1991F7E2D4B000B9546 /* CustomViewController.swift */; };
+		D721F19A1F7E2D4B000B9546 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F1991F7E2D4B000B9546 /* MainNavigationController.swift */; };
 		D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D721F19B1F7E3EF8000B9546 /* Mandate.swift */; };
 		D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D726298C1FFBD10C00743224 /* BaseScanViewController.swift */; };
 		D72A89D11FE8050A00C06EF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D72A89D01FE8050A00C06EF6 /* LaunchScreen.storyboard */; };
@@ -231,7 +231,7 @@
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D71DA04D20F758DD0084381E /* ExternalIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalIntegration.swift; sourceTree = "<group>"; };
 		D71DA04F211AE5C90084381E /* ChangeAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAddressViewController.swift; sourceTree = "<group>"; };
-		D721F1991F7E2D4B000B9546 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		D721F1991F7E2D4B000B9546 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		D721F19B1F7E3EF8000B9546 /* Mandate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mandate.swift; sourceTree = "<group>"; };
 		D726298C1FFBD10C00743224 /* BaseScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScanViewController.swift; sourceTree = "<group>"; };
 		D72A89D01FE8050A00C06EF6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -767,7 +767,7 @@
 				D7AE8B9A2136951400CB3A33 /* BACS */,
 				FBA0894D21C7FC27001DD889 /* BaseCarouselViewController.swift */,
 				D7C5120B20761D51002B1618 /* ChooseContextViewController.swift */,
-				D721F1991F7E2D4B000B9546 /* CustomViewController.swift */,
+				D721F1991F7E2D4B000B9546 /* MainNavigationController.swift */,
 				D7DD79A0209B358800047CA7 /* Event */,
 				FBA0894821C7DD14001DD889 /* Features */,
 				D7F3A8462148016C008B65AE /* Fingerprint */,
@@ -1162,7 +1162,7 @@
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColorExtensions.swift in Sources */,
 				FBBF72A621CA819600EBB085 /* FeaturesNavigationController.swift in Sources */,
-				D721F19A1F7E2D4B000B9546 /* CustomViewController.swift in Sources */,
+				D721F19A1F7E2D4B000B9546 /* MainNavigationController.swift in Sources */,
 				27A0E4E9221F395000982842 /* PresetsNavigationViewController.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
 				D76022081F56F06600C24AB6 /* AmountLimitViewController.swift in Sources */,

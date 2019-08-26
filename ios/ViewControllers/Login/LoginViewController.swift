@@ -147,17 +147,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func doLogin(email: String, completion: @escaping (Bool) -> Void) {
-        _ = LoginManager.shared.loginUser(email: email,password: self.txtPassword.text!, type: .password, completionHandler: { b, error, description in
-            if b {
-                completion(true)
-            } else {
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
+        DispatchQueue.main.async {
+            _ = LoginManager.shared.loginUser(email: email,password: self.txtPassword.text!, type: .password, completionHandler: { b, error, description in
+                if b {
+                    completion(true)
+                } else {
+                    DispatchQueue.main.async {
+                        SVProgressHUD.dismiss()
+                    }
+                    ErrorHandlingHelper.ShowLoginError(context: self, error: description ?? "")
+                    completion(false)
                 }
-                ErrorHandlingHelper.ShowLoginError(context: self, error: description ?? "")
-                completion(false)
-            }
-        })
+            })
+        }
     }
     
     @IBAction func switchPasswordVisibility(_ sender: Any) {
