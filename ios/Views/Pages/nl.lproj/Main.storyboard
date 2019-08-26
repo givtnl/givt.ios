@@ -645,7 +645,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="givyGave" translatesAutoresizingMaskIntoConstraints="NO" id="cdK-pi-bub">
-                                <rect key="frame" x="199" y="547" width="136" height="197.00000000000006"/>
+                                <rect key="frame" x="199" y="547" width="136" height="197"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="EMw-R1-gR1"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="197" id="b6t-tc-UB3"/>
@@ -1698,10 +1698,10 @@ Kijk voor de status in je overzicht.</string>
             </objects>
             <point key="canvasLocation" x="3489.8550724637685" y="-244.56521739130437"/>
         </scene>
-        <!--Custom View Controller-->
+        <!--Main Navigation Controller-->
         <scene sceneID="cFY-6w-aFS">
             <objects>
-                <navigationController id="DML-R9-MCL" customClass="CustomViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="DML-R9-MCL" customClass="MainNavigationController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="zsy-MG-c4p">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

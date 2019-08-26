@@ -16,11 +16,11 @@ class SettingsViewController: BaseMenuViewController {
     private let slideFromRightAnimation = PresentFromRight()
     
     private var navigationManager = NavigationManager.shared
-
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         return .default
     }
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navItem.leftBarButtonItem = nil
@@ -82,7 +82,7 @@ class SettingsViewController: BaseMenuViewController {
             items.append([])
             items.append([])
             items.append([])
-
+            
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[0].append(givts)
             let givtsTaxOverviewAvailable: Setting?
@@ -92,7 +92,7 @@ class SettingsViewController: BaseMenuViewController {
                 }, showArrow: false, isHighlighted: true)
                 items[0].append(givtsTaxOverviewAvailable!)
             }
-
+            
             let givingLimitImage = UserDefaults.standard.currencySymbol == "£" ? #imageLiteral(resourceName: "pound") : #imageLiteral(resourceName: "euro")
             items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: givingLimitImage, callback: { self.openGiveLimit() }))
             items[0].append(changePersonalInfo)
@@ -147,90 +147,106 @@ class SettingsViewController: BaseMenuViewController {
     
     private func setPresets() {
         let vc = UIStoryboard(name: "Presets", bundle: nil).instantiateViewController(withIdentifier: "PresetsNavigationViewController") as! PresetsNavigationViewController
+        vc.modalPresentationStyle = .fullScreen
         vc.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
-            self.present(vc, animated: true, completion:  nil)
-            self.hideMenuAnimated()
+            self.hideMenuAnimated() {
+                self.present(vc, animated: true, completion:  nil)
+            }
         }
     }
     
     private func changeAmountPresets() {
         let vc = UIStoryboard(name: "AmountPresets", bundle: nil).instantiateInitialViewController()
-        vc!.transitioningDelegate = self.slideFromRightAnimation
+        vc?.transitioningDelegate = self.slideFromRightAnimation
+        vc?.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async {
-            self.present(vc!, animated: true, completion:  nil)
-            self.hideMenuAnimated()
+            self.hideMenuAnimated() {
+                self.present(vc!, animated: true, completion:  nil)
+            }
         }
     }
     
     private func manageFingerprint() {
         let vc = UIStoryboard(name: "Fingerprint", bundle: nil).instantiateInitialViewController()
-        vc!.transitioningDelegate = self.slideFromRightAnimation
-        hideMenuAnimated()
-        navigationManager.pushWithLogin(vc!, context: self)
+        vc?.transitioningDelegate = self.slideFromRightAnimation
+        vc?.modalPresentationStyle = .fullScreen
+        hideMenuAnimated() {
+            self.navigationManager.pushWithLogin(vc!, context: self)
+        }
     }
     
     private func changePersonalInfo() {
         let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateInitialViewController()
         vc?.transitioningDelegate = self.slideFromRightAnimation
-        hideMenuAnimated()
-        navigationManager.pushWithLogin(vc!, context: self)
+        vc?.modalPresentationStyle = .fullScreen
+        hideMenuAnimated() {
+            self.navigationManager.pushWithLogin(vc!, context: self)
+        }
     }
     
     private func pincode() {
         let vc = UIStoryboard(name: "Pincode", bundle: nil).instantiateViewController(withIdentifier: "PinNavViewController") as! PinNavViewController
+        vc.modalPresentationStyle = .fullScreen
         vc.typeOfPin = .set
         vc.transitioningDelegate = self.slideFromRightAnimation
-        hideMenuAnimated()
-        navigationManager.pushWithLogin(vc, context: self)
+        hideMenuAnimated() {
+            self.navigationManager.pushWithLogin(vc, context: self)
+        }
     }
     
     private func terminate() {
         logService.info(message: "User is terminating account via the menu")
         let vc = UIStoryboard(name: "TerminateAccount", bundle: nil).instantiateViewController(withIdentifier: "TerminateAccountNavigationController") as! BaseNavigationController
+        vc.modalPresentationStyle = .fullScreen
         vc.transitioningDelegate = self.slideFromRightAnimation
         if UserDefaults.standard.isTempUser { //temp users can screw their account without authentication
             self.present(vc, animated: true, completion: {
             })
         } else {
-            NavigationManager.shared.pushWithLogin(vc, context: self)
-            hideMenuAnimated()
+            hideMenuAnimated() {
+                NavigationManager.shared.pushWithLogin(vc, context: self)
+            }
         }
-
+        
     }
     
     private func about() {
         let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! BaseNavigationController
         vc.transitioningDelegate = self.slideFromRightAnimation
+        vc.modalPresentationStyle = .fullScreen
         DispatchQueue.main.async {
-            self.present(vc, animated: true, completion: nil)
-            self.hideMenuAnimated()
+            self.hideMenuAnimated() {
+                self.present(vc, animated: true, completion: nil)
+            }
         }
     }
     
     private func share() {
         /* https://stackoverflow.com/questions/13907156/uiactivityviewcontroller-taking-long-time-to-present */
-        hideMenuAnimated()
-        SVProgressHUD.show()
-        logService.info(message: "App is being shared through the menu")
-        let concurrentQueue = DispatchQueue(label: "openActivityIndicatorQueue", attributes: .concurrent)
-        concurrentQueue.async {
-            let message = NSLocalizedString("ShareGivtTextLong", comment: "")
-            let url = URL(string: "https://www.givtapp.net/download")!
-            let activityViewController = UIActivityViewController(activityItems: [self, message, url], applicationActivities: nil)
-            activityViewController.excludedActivityTypes = [.airDrop]
-            
-            DispatchQueue.main.async {
-                SVProgressHUD.dismiss()
-                self.present(activityViewController, animated: true, completion: nil)
+        hideMenuAnimated() {
+            SVProgressHUD.show()
+            self.logService.info(message: "App is being shared through the menu")
+            let concurrentQueue = DispatchQueue(label: "openActivityIndicatorQueue", attributes: .concurrent)
+            concurrentQueue.async {
+                let message = NSLocalizedString("ShareGivtTextLong", comment: "")
+                let url = URL(string: "https://www.givtapp.net/download")!
+                let activityViewController = UIActivityViewController(activityItems: [self, message, url], applicationActivities: nil)
+                activityViewController.excludedActivityTypes = [.airDrop]
+                
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.present(activityViewController, animated: true, completion: nil)
+                }
             }
         }
     }
     
     private func register() {
         if navigationManager.hasInternetConnection(context: self) {
-            hideMenuAnimated()
-            navigationManager.finishRegistration(self)
+            hideMenuAnimated() {
+                self.navigationManager.finishRegistration(self)
+            }
         }
     }
     
@@ -254,8 +270,10 @@ class SettingsViewController: BaseMenuViewController {
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
             vc.transitioningDelegate = self.slideFromRightAnimation
-            hideMenuAnimated()
-            NavigationManager.shared.pushWithLogin(vc, context: self)
+            vc.modalPresentationStyle = .fullScreen
+            hideMenuAnimated() {
+                NavigationManager.shared.pushWithLogin(vc, context: self)
+            }
         }
     }
     
@@ -265,8 +283,10 @@ class SettingsViewController: BaseMenuViewController {
         vc.startPoint = .amountLimit
         vc.isRegistration = false
         vc.transitioningDelegate = self.slideFromRightAnimation
-        hideMenuAnimated()
-        NavigationManager.shared.pushWithLogin(vc, context: self)
+        vc.modalPresentationStyle = .fullScreen
+        hideMenuAnimated() {
+            NavigationManager.shared.pushWithLogin(vc, context: self)
+        }
     }
     
     private func appInfo() {
