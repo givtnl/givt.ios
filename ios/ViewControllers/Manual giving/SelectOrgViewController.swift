@@ -44,9 +44,11 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.toggleOff()
         cell.organisationLabel.numberOfLines = 0
 
-        if let ns = getPreselectedOrganisation(), ns == nameSpace, initial {
+        if initial {
             initial = false
-            prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: nameSpace)
+            if let ns = getPreselectedOrganisation(), ns == nameSpace {
+                prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: nameSpace)
+            }
         }
         
         if let pp = prevPos, (pp.type == selectedTag || pp.type == 0 || selectedTag == 0) && pp.nameSpace == nameSpace  {
