@@ -22,28 +22,35 @@ protocol BeaconServiceProtocol: class {
 
 class BeaconService: NSObject, CBCentralManagerDelegate {
     weak var delegate: BeaconServiceProtocol?
-    private var centralManager: CBCentralManager!
+    private var centralManagerInstance: CBCentralManager! = nil
+    private var centralManager: CBCentralManager! {
+        get {
+            if centralManagerInstance == nil {
+                centralManagerInstance = CBCentralManager(delegate: self, queue: DispatchQueue.global(qos: .userInitiated), options: [CBCentralManagerOptionShowPowerAlertKey:false])
+            }
+            return centralManagerInstance
+        }
+    }
     private let log = LogService.shared
     private var bestBeacon: BestBeacon = BestBeacon()
     private var scannedPeripherals: [String: Int] = [String: Int]()
     private let rssiTreshold: Int = -68
     private var scanMode: ScanMode?
-    
+        
     var isBluetoothEnabled: Bool {
         get {
-            return centralManager != nil && centralManager.state == .poweredOn
+            return centralManager.state == .poweredOn
         }
     }
     
     var isScanning: Bool {
         get {
-            return centralManager != nil && centralManager.isScanning
+            return centralManager.isScanning
         }
     }
     
     override init() {
         super.init()
-        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(qos: .userInitiated), options: [CBCentralManagerOptionShowPowerAlertKey:false])
     }
     
     func startScanning(mode: ScanMode) {
