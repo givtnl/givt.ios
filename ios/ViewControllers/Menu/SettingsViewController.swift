@@ -61,7 +61,7 @@ class SettingsViewController: BaseMenuViewController {
     override func loadItems(){
         items = []
         
-        let turnOnPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: #imageLiteral(resourceName: "amountpresets"), callback: { self.setPresets() }, showArrow: true)
+        let turnOnPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: UIImage(named: "amountpresets")!, callback: { self.setPresets() }, showArrow: true)
         
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
         
