@@ -68,10 +68,8 @@ final class GivtManager: NSObject {
     
     var bestBeacon: BestBeacon?
     
-    var isBluetoothEnabled: Bool {
-        get {
-            return beaconService.isBluetoothEnabled
-        }
+    func getBluetoothState(currentView: UIView) -> BluetoothState {
+        return beaconService.getBluetoothState(currentView: currentView)
     }
     
     var orgBeaconList: [OrgBeacon]? {
@@ -121,6 +119,8 @@ final class GivtManager: NSObject {
         resume()
         
         NotificationCenter.default.addObserver(self, selector: #selector(connectionStatusDidChange(notification:)), name: .GivtConnectionStateDidChange, object: nil)
+        beaconService.delegate = self
+        locationService.delegate = self
     }
     
     public func resume() {
@@ -171,7 +171,6 @@ final class GivtManager: NSObject {
     }
     
     func startScanning(scanMode: ScanMode) {
-        beaconService.delegate = self
         beaconService.startScanning(mode: scanMode)
         DispatchQueue.main.async {
             UIApplication.shared.isIdleTimerDisabled = true
@@ -179,7 +178,6 @@ final class GivtManager: NSObject {
     }
     
     func stopScanning() {
-        beaconService.delegate = nil
         beaconService.stopScanning()
         DispatchQueue.main.async {
             UIApplication.shared.isIdleTimerDisabled = false
@@ -187,7 +185,6 @@ final class GivtManager: NSObject {
     }
     
     func startLookingForGivtLocations() {
-        locationService.delegate = self
         startScanning(scanMode: .far)
         locationService.startLookingForLocation()
         DispatchQueue.main.async {
@@ -196,7 +193,6 @@ final class GivtManager: NSObject {
     }
     
     func stopLookingForGivtLocations() {
-        locationService.delegate = nil
         stopScanning()
         locationService.stopLookingForLocation()
         DispatchQueue.main.async {
@@ -222,7 +218,7 @@ final class GivtManager: NSObject {
         }
         self.cacheGivt(transactions: transactions)
         giveInBackground(transactions: transactions)
-    MSAnalytics.trackEvent("GIVING_FINISHED", withProperties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.isReachable)])
+        MSAnalytics.trackEvent("GIVING_FINISHED", withProperties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
     }
     
@@ -629,8 +625,8 @@ extension GivtManager: BeaconServiceProtocol {
         }
     }
     
-    func didUpdateBluetoothState(isBluetoothOn: Bool) {
-        delegate?.didUpdateBluetoothState(isBluetoothOn: isBluetoothOn)
+    func didUpdateBluetoothState(bluetoothState: BluetoothState) {
+        delegate?.didUpdateBluetoothState(bluetoothState: bluetoothState)
     }
 }
 
@@ -642,7 +638,7 @@ extension GivtManager: LocationServiceProtocol {
 
 protocol GivtProcessedProtocol: class {
     func onGivtProcessed(transactions: [Transaction], organisationName: String?, canShare: Bool)
-    func didUpdateBluetoothState(isBluetoothOn: Bool)
+    func didUpdateBluetoothState(bluetoothState: BluetoothState)
     func didDetectGivtLocation(orgName: String, identifier: String)
 }
 

@@ -42,9 +42,9 @@ class ScanViewController: BaseScanViewController {
         
         self.log.info(message: "Scanpage is now showing")
         
-        if(GivtManager.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0){
+        if GivtManager.shared.getBluetoothState(currentView: self.view) == .enabled || TARGET_OS_SIMULATOR != 0 {
             startScanning()
-        } else {
+        } else if GivtManager.shared.getBluetoothState(currentView: self.view) == .disabled {
             showBluetoothMessage()
         }
 
@@ -53,7 +53,6 @@ class ScanViewController: BaseScanViewController {
     
     @objc func startScanning() {
         GivtManager.shared.startScanning(scanMode: .close)
-        
     }
     
     func addOverlay() {

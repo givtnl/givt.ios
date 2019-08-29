@@ -19,13 +19,15 @@ enum GivingState: Int {
 
 class EventViewController: BaseScanViewController {
     @IBOutlet var giveDifferently: CustomButton!
-    private let _givtService = GivtManager.shared
+    private let givtManager = GivtManager.shared
     private var isSuggestionShowing = false
     @IBOutlet var mainTitle: UILabel!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var imageV: UIImageView!
     private var countdownTimer: Timer?
     private var timer20S: Timer?
+    
+    private var shouldShowAfterBluetoothAlert: () -> Void = {}
 
     private var givingState: GivingState = .idle
 
@@ -66,7 +68,7 @@ class EventViewController: BaseScanViewController {
                     self.givingState = .given
                     LogService.shared.info(message: "GIVE_LOCATION id: \(identifier)")
                     MSAnalytics.trackEvent("GIVE_LOCATION", withProperties: ["id": identifier])
-                    self._givtService.stopLookingForGivtLocations()
+                    self.givtManager.stopLookingForGivtLocations()
                     self.giveManually(antennaID: identifier)
                 }
                 self.present(vc, animated: true, completion: nil)
@@ -87,26 +89,36 @@ class EventViewController: BaseScanViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        _givtService.delegate = self
-        let bluetoothEnabled = _givtService.isBluetoothEnabled
+        givtManager.delegate = self
         var shouldAskForLocation = false
         
         if AppServices.isLocationServicesEnabled() && AppServices.isLocationPermissionDetermined() && !AppServices.isLocationPermissionGranted() {
             shouldAskForLocation = true
         }
 
-        if !bluetoothEnabled && shouldAskForLocation { //if both disabled, show both after each other.
-            showBluetoothMessage {
+        shouldShowAfterBluetoothAlert = {
+            if shouldAskForLocation {
                 self.showLocationMessage()
             }
-        } else if !bluetoothEnabled { //only BL disabled
-            showBluetoothMessage {}
-        } else if shouldAskForLocation { //only loc disabled
-            showLocationMessage()
         }
         
-        _givtService.delegate = self
-        _givtService.startLookingForGivtLocations()
+        switch givtManager.getBluetoothState(currentView: self.view) {
+        case .enabled:
+            if shouldAskForLocation { //only loc disabled
+                showLocationMessage()
+            }
+            givtManager.startLookingForGivtLocations()
+        case .disabled:
+            if shouldAskForLocation {
+                showBluetoothMessage {
+                    self.showLocationMessage()
+                }
+            } else {
+                showBluetoothMessage()
+            }
+        case .unknown:
+            print("State will be updated later")
+        }
         
         givyContstraint.constant = 20
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.repeat, .autoreverse], animations: {
@@ -118,16 +130,25 @@ class EventViewController: BaseScanViewController {
         self.timer20S = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(after20s), userInfo: nil, repeats: false)
     }
     
+    override func didUpdateBluetoothState(bluetoothState: BluetoothState) {
+        if bluetoothState == .enabled {
+            self.bluetoothAlert?.dismiss(animated: true, completion: nil)
+            givtManager.startLookingForGivtLocations()
+        } else {
+            showBluetoothMessage() { self.shouldShowAfterBluetoothAlert() }
+        }
+    }
+    
     func showBluetoothMessage(after: @escaping () -> ()) {
-        let alert = UIAlertController(
+        bluetoothAlert = UIAlertController(
             title: NSLocalizedString("ActivateBluetooth", comment: ""),
             message: NSLocalizedString("BluetoothErrorMessageEvent", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
+        bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
             after()
         }))
         DispatchQueue.main.async {
-            self.present(alert, animated: true, completion: nil)
+            self.present(self.bluetoothAlert!, animated: true, completion: nil)
         }
     }
     
@@ -154,6 +175,6 @@ class EventViewController: BaseScanViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self._givtService.stopLookingForGivtLocations()
+        self.givtManager.stopLookingForGivtLocations()
     }
 }
