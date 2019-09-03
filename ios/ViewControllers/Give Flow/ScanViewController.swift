@@ -19,14 +19,20 @@ class ScanViewController: BaseScanViewController {
     @IBOutlet var titleText: UILabel!
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var btnGive: CustomButton!
+    @IBOutlet var btnGiveDifferent: CustomButton!
+    
     private var giveDifferentlyShowcase: MaterialShowcase?
     private var overlayTask: DispatchWorkItem?
     private var bluetoothMessage: UIAlertController?
+    
+    private var suggestion: [String:Any] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         gif.loadGif(name: "givt_animation")
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGive.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
+        btnGiveDifferent.setTitle(NSLocalizedString("GiveYetDifferently", comment: ""), for: .normal)
         btnGive.accessibilityLabel = NSLocalizedString("GiveDifferently", comment: "")
         titleText.text = NSLocalizedString("GiveWithYourPhone", comment: "")
         backBtn.accessibilityLabel = NSLocalizedString("Back", comment: "")
@@ -36,6 +42,8 @@ class ScanViewController: BaseScanViewController {
         super.viewDidAppear(animated)
         btnGive.isEnabled = true
         NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showBoth), name: .GivtDidFindBeaconFarAway, object: nil)
+        
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
         GivtManager.shared.delegate = self
@@ -48,20 +56,61 @@ class ScanViewController: BaseScanViewController {
             showBluetoothMessage()
         }
 
+        showGiveDifferentButton()
         addOverlay()
     }
     
+    @IBAction func giveManually(_ sender: Any) {
+        if let beaconId = suggestion["beaconId"] as? String {
+            GivtManager.shared.giveManually(antennaId: beaconId)
+        }
+    }
     @objc func startScanning() {
         GivtManager.shared.startScanning(scanMode: .close)
     }
-    
+    @objc func showBoth(notification: Notification) {
+        if let bestBeacon = notification.userInfo?["bestBeacon"] as? BestBeacon {
+            suggestion["found"] = true
+            if let namespace = bestBeacon.namespace {
+                suggestion["name"] = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace)
+            }
+            suggestion["beaconId"] = bestBeacon.beaconId
+        } else {
+            suggestion["found"] = false
+        }
+    }
     func addOverlay() {
         overlayTask = DispatchWorkItem {
             self.showGiveDifferentlyShowcase()
         }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(7), execute: overlayTask!)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(8), execute: overlayTask!)
     }
-    
+    func showGiveDifferentButton() {
+        
+        btnGiveDifferent.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
+        btnGiveDifferent.accessibilityLabel = NSLocalizedString("GiveDifferently", comment: "")
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(6)) {
+            if let foundBeaconFarAway = self.suggestion["found"] as? Bool {
+                if foundBeaconFarAway {
+                    self.btnGive.setTitle(NSLocalizedString("GiveToNearestBeacon", comment: "").replacingOccurrences(of: "{0}", with: self.suggestion["name"] as! String), for: .normal)
+                    self.btnGive.titleLabel?.adjustsFontSizeToFitWidth = true
+                    self.btnGiveDifferent.setTitle(NSLocalizedString("GiveYetDifferently", comment: ""), for: .normal)
+                    self.btnGive.isHidden = false
+                    self.btnGiveDifferent.isHidden = false
+                } else {
+                    self.showOnlyGiveDifferent()
+                }
+            } else {
+                self.showOnlyGiveDifferent()
+            }
+        }
+    }
+    func showOnlyGiveDifferent() {
+        self.btnGiveDifferent.setBackgroundColor(color: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),forState: .normal)
+        self.btnGiveDifferent.setTitleColor(.white, for: .normal)
+        self.btnGiveDifferent.isHidden = false
+    }
     @objc func removeOverlay() {
         overlayTask?.cancel()
         guard let showcase = self.giveDifferentlyShowcase else {
