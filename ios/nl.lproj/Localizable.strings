@@ -885,3 +885,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "Artist" = "Artiest";
 "Church" = "Kerk";
 "Campaign" = "Actie";
+"GiveYetDifferently" = "Kies toch uit de lijst";
+"GiveToNearestBeacon" = "Wil je geven aan {0}?";
