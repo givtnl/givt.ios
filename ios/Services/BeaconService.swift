@@ -161,6 +161,8 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
                 if scanMode == .close && !isAreaBeacon {
                     if rssi.intValue > rssiTreshold {
                         self.delegate?.didDetectBeacon(scanMode: scanMode, bestBeacon: bestBeacon)
+                    } else {
+                        NotificationCenter.default.post(name: .GivtDidFindBeaconFarAway, object: nil, userInfo: ["bestBeacon": bestBeacon])
                     }
                 } else if scanMode == .far && isAreaBeacon {
                     self.delegate?.didDetectBeacon(scanMode: scanMode, bestBeacon: bestBeacon)
