@@ -34,8 +34,7 @@ class ScanViewController: BaseScanViewController {
         btnGive.accessibilityLabel = NSLocalizedString("GiveDifferently", comment: "")
         titleText.text = NSLocalizedString("GiveWithYourPhone", comment: "")
         backBtn.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        let spacing: CGFloat = 20.0
-        btnGive.contentEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        btnGive.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
     }
     
