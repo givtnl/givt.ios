@@ -9,7 +9,6 @@
 import UIKit
 import CoreBluetooth
 import SafariServices
-import MaterialShowcase
 
 class ScanViewController: BaseScanViewController {
     @IBOutlet weak var backBtn: UIBarButtonItem!
@@ -21,7 +20,6 @@ class ScanViewController: BaseScanViewController {
     @IBOutlet var btnGive: CustomButton!
     @IBOutlet var btnGiveDifferent: CustomButton!
     
-    private var giveDifferentlyShowcase: MaterialShowcase?
     private var overlayTask: DispatchWorkItem?
     private var bluetoothMessage: UIAlertController?
     
@@ -55,7 +53,6 @@ class ScanViewController: BaseScanViewController {
         }
 
         showGiveDifferentButton()
-        addOverlay()
     }
     
     @IBAction func giveManually(_ sender: Any) {
@@ -68,12 +65,6 @@ class ScanViewController: BaseScanViewController {
         GivtManager.shared.startScanning(scanMode: .close)
     }
 
-    func addOverlay() {
-        overlayTask = DispatchWorkItem {
-            self.showGiveDifferentlyShowcase()
-        }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(8), execute: overlayTask!)
-    }
     func showGiveDifferentButton() {
         
         btnGiveDifferent.setTitle(NSLocalizedString("GiveYetDifferently", comment: ""), for: .normal)
@@ -96,36 +87,6 @@ class ScanViewController: BaseScanViewController {
                 self.btnGiveDifferent.isHidden = false            }
         }
     }
-
-    @objc func removeOverlay() {
-        overlayTask?.cancel()
-        guard let showcase = self.giveDifferentlyShowcase else {
-            return
-        }
-        
-        showcase.completeShowcase()
-        UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.giveDifferently.rawValue)
-    }
-    
-    func showGiveDifferentlyShowcase() {
-        if UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.giveDifferently.rawValue) {
-            return
-        }
-        self.giveDifferentlyShowcase = MaterialShowcase()
-        
-        self.giveDifferentlyShowcase!.primaryText = NSLocalizedString("GiveDiffWalkthrough", comment: "")
-        self.giveDifferentlyShowcase!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
-        
-        let gesture = UISwipeGestureRecognizer(target: self, action:  #selector(self.removeOverlay))
-        self.giveDifferentlyShowcase!.addGestureRecognizer(gesture)
-        
-        DispatchQueue.main.async {
-            self.giveDifferentlyShowcase!.setTargetView(view: self.btnGive) // always required to set targetView
-            self.giveDifferentlyShowcase?.shouldSetTintColor = false
-            self.giveDifferentlyShowcase!.backgroundPromptColor = #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1)
-            self.giveDifferentlyShowcase!.show(completion: nil)
-        }
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -143,7 +104,6 @@ class ScanViewController: BaseScanViewController {
         self.navigationController?.isNavigationBarHidden = false
 
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
-        removeOverlay()
         super.viewWillDisappear(animated)
     }
 
