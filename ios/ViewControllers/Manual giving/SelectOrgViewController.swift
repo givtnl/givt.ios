@@ -44,11 +44,9 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.toggleOff()
         cell.organisationLabel.numberOfLines = 0
 
-        if initial {
+        if initial, let ns = getPreselectedOrganisation(), ns == nameSpace {
             initial = false
-            if let ns = getPreselectedOrganisation(), ns == nameSpace {
-                prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: nameSpace)
-            }
+            prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: nameSpace)
         }
         
         if let pp = prevPos, (pp.type == selectedTag || pp.type == 0 || selectedTag == 0) && pp.nameSpace == nameSpace  {
@@ -638,8 +636,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     private func getPreselectedOrganisation() -> String? {
         var namespace: String?
 
-        if let bb = GivtManager.shared.bestBeacon {
-            namespace = bb.namespace
+        if let ns = GivtManager.shared.bestBeacon?.namespace {
+            namespace = ns
         } else if let savedNamespace = UserDefaults.standard.lastGivtToOrganisationNamespace {
             namespace = savedNamespace
             if let savedName = UserDefaults.standard.lastGivtToOrganisationName {
