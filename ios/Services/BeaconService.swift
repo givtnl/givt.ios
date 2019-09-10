@@ -8,42 +8,80 @@
 
 import Foundation
 import CoreBluetooth
+import UIKit
 
 enum ScanMode {
     case close //traditional
     case far //"a" beacons
 }
 
+enum BluetoothState {
+    case unknown
+    case enabled
+    case disabled
+}
+
 protocol BeaconServiceProtocol: class {
-    func didUpdateBluetoothState(isBluetoothOn: Bool)
+    func didUpdateBluetoothState(bluetoothState: BluetoothState)
     func didDetectBeacon(scanMode: ScanMode, bestBeacon: BestBeacon)
     func didUpdateBestBeacon(bestBeacon: BestBeacon)
 }
 
 class BeaconService: NSObject, CBCentralManagerDelegate {
     weak var delegate: BeaconServiceProtocol?
-    private var centralManager: CBCentralManager!
+    private var centralManagerInstance: CBCentralManager! = nil
+    private var centralManager: CBCentralManager! {
+        get {
+            if centralManagerInstance == nil {
+                centralManagerInstance = CBCentralManager(delegate: self, queue: DispatchQueue.global(qos: .userInitiated), options: [CBCentralManagerOptionShowPowerAlertKey:false])
+            }
+            return centralManagerInstance
+        }
+    }
     private let log = LogService.shared
     private var bestBeacon: BestBeacon = BestBeacon()
     private var scannedPeripherals: [String: Int] = [String: Int]()
     private let rssiTreshold: Int = -68
     private var scanMode: ScanMode?
+        
+    func getBluetoothState(currentView: UIView) -> BluetoothState {
+        switch centralManager.state {
+        case .poweredOn:
+            return .enabled
+        case .unknown:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                self.keepCheckingBluetoothState(currentView: currentView)
+            })
+            return .unknown
+        case .poweredOff, .unauthorized:
+            return .disabled
+        default:
+            return .disabled
+        }
+    }
     
-    var isBluetoothEnabled: Bool {
-        get {
-            return centralManager != nil && centralManager.state == .poweredOn
+    private func keepCheckingBluetoothState(currentView: UIView)  {
+        if UIApplication.shared.applicationState == .active {
+            if self.centralManager.state == .poweredOn {
+                self.delegate?.didUpdateBluetoothState(bluetoothState: .enabled)
+            } else {
+                self.delegate?.didUpdateBluetoothState(bluetoothState: .disabled)
+            }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                self.keepCheckingBluetoothState(currentView: currentView)
+            })
         }
     }
     
     var isScanning: Bool {
         get {
-            return centralManager != nil && centralManager.isScanning
+            return centralManager.isScanning
         }
     }
     
     override init() {
         super.init()
-        centralManager = CBCentralManager(delegate: self, queue: DispatchQueue.global(qos: .userInitiated), options: [CBCentralManagerOptionShowPowerAlertKey:false])
     }
     
     func startScanning(mode: ScanMode) {
@@ -140,7 +178,7 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
             switch (central.state) {
             case .poweredOff:
                 print("CBCentralManagerState.PoweredOff")
-                delegate?.didUpdateBluetoothState(isBluetoothOn: false)
+                delegate?.didUpdateBluetoothState(bluetoothState: .disabled)
                 NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
             case .unauthorized, .unknown, .resetting, .unsupported:
                 print(central.state)
@@ -151,7 +189,7 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
                     startScanning(mode: mode)
                 }
                 print("CBCentralManagerState.PoweredOn")
-                delegate?.didUpdateBluetoothState(isBluetoothOn: true)
+                delegate?.didUpdateBluetoothState(bluetoothState: .enabled)
                 NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
                 break
             }
@@ -159,7 +197,7 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
             switch (central.state) {
             case .poweredOff:
                 print("CBCentralManagerState.PoweredOff")
-                delegate?.didUpdateBluetoothState(isBluetoothOn: false)
+                delegate?.didUpdateBluetoothState(bluetoothState: .disabled)
                 NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
             case .unauthorized, .unknown, .resetting:
                 print(central.state)
@@ -170,7 +208,7 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
                     startScanning(mode: mode)
                 }
                 print("CBCentralManagerState.PoweredOn")
-                delegate?.didUpdateBluetoothState(isBluetoothOn: true)
+                delegate?.didUpdateBluetoothState(bluetoothState: .enabled)
                 NotificationCenter.default.post(name: Notification.Name("BluetoothIsOn"), object: nil)
             default:
                 break
