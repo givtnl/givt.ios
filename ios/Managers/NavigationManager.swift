@@ -98,7 +98,7 @@ class NavigationManager {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         if let childViewControllers = appDelegate.window?.rootViewController?.childViewControllers {
             for childViewController in childViewControllers {
-                if let vc = childViewController as? CustomViewController {
+                if let vc = childViewController as? MainNavigationController {
                      load(vc: vc, animated: animated)
                 }
             }

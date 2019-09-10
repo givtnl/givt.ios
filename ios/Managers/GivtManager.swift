@@ -12,7 +12,6 @@ import UIKit
 import AudioToolbox
 import SwiftClient
 import CoreLocation
-import SwiftCron
 import Reachability
 import AppCenterAnalytics
 
@@ -26,7 +25,6 @@ struct OrgBeacon: Codable {
     let OrgName: String
     let Celebrations: Bool
     let Locations: [OrgBeaconLocation]
-    let MultiUseAllocations: [MultiUseAllocations]?
     var accountType: AccountType {
         get {
             let start = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 8)
@@ -52,12 +50,6 @@ struct OrgBeaconLocation: Codable {
     let dtEnd: Date
 }
 
-struct MultiUseAllocations: Codable {
-    let Name: String
-    let dtBeginCron: String
-    let dtEndCron: String
-}
-
 final class GivtManager: NSObject {
     private let beaconService = BeaconService()
     static let shared = GivtManager()
@@ -76,10 +68,8 @@ final class GivtManager: NSObject {
     
     var bestBeacon: BestBeacon?
     
-    var isBluetoothEnabled: Bool {
-        get {
-            return beaconService.isBluetoothEnabled
-        }
+    func getBluetoothState(currentView: UIView) -> BluetoothState {
+        return beaconService.getBluetoothState(currentView: currentView)
     }
     
     var orgBeaconList: [OrgBeacon]? {
@@ -91,7 +81,7 @@ final class GivtManager: NSObject {
             return orgBeacon.EddyNameSpace == organisationNameSpace
         })?.OrgName
     }
-    
+        
     func isCelebration(orgNameSpace: String) -> Bool {
         return orgBeaconList?.first(where: { (orgBeacon) -> Bool in
             return orgBeacon.EddyNameSpace == orgNameSpace
@@ -111,18 +101,6 @@ final class GivtManager: NSObject {
             return orgBeacon.EddyNameSpace == namespace
         }) else { return nil }
         
-        if let ma = organisation.MultiUseAllocations, ma.count > 0 {
-            for m in ma {
-                let date = Date()
-                if let begin = CronExpression(cronString: m.dtBeginCron)?.getNextRunDate(date), let end = CronExpression(cronString: m.dtEndCron)?.getNextRunDate(date) {
-                    if end < begin {
-                        self.log.info(message: "Could succesfully identify CRON-Allocation-Beacon")
-                        return m.Name
-                    }
-                }
-            }
-            self.log.warning(message: "Could NOT identify CRON-Allocation-Beacon")
-        }
         return organisation.OrgName
     }
     
@@ -141,6 +119,8 @@ final class GivtManager: NSObject {
         resume()
         
         NotificationCenter.default.addObserver(self, selector: #selector(connectionStatusDidChange(notification:)), name: .GivtConnectionStateDidChange, object: nil)
+        beaconService.delegate = self
+        locationService.delegate = self
     }
     
     public func resume() {
@@ -186,7 +166,6 @@ final class GivtManager: NSObject {
     }
     
     func startScanning(scanMode: ScanMode) {
-        beaconService.delegate = self
         beaconService.startScanning(mode: scanMode)
         DispatchQueue.main.async {
             UIApplication.shared.isIdleTimerDisabled = true
@@ -194,7 +173,6 @@ final class GivtManager: NSObject {
     }
     
     func stopScanning() {
-        beaconService.delegate = nil
         beaconService.stopScanning()
         DispatchQueue.main.async {
             UIApplication.shared.isIdleTimerDisabled = false
@@ -202,7 +180,6 @@ final class GivtManager: NSObject {
     }
     
     func startLookingForGivtLocations() {
-        locationService.delegate = self
         startScanning(scanMode: .far)
         locationService.startLookingForLocation()
         DispatchQueue.main.async {
@@ -211,7 +188,6 @@ final class GivtManager: NSObject {
     }
     
     func stopLookingForGivtLocations() {
-        locationService.delegate = nil
         stopScanning()
         locationService.stopLookingForLocation()
         DispatchQueue.main.async {
@@ -237,7 +213,7 @@ final class GivtManager: NSObject {
         }
         self.cacheGivt(transactions: transactions)
         giveInBackground(transactions: transactions)
-    MSAnalytics.trackEvent("GIVING_FINISHED", withProperties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.isReachable)])
+        MSAnalytics.trackEvent("GIVING_FINISHED", withProperties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
     }
     
@@ -644,8 +620,8 @@ extension GivtManager: BeaconServiceProtocol {
         }
     }
     
-    func didUpdateBluetoothState(isBluetoothOn: Bool) {
-        delegate?.didUpdateBluetoothState(isBluetoothOn: isBluetoothOn)
+    func didUpdateBluetoothState(bluetoothState: BluetoothState) {
+        delegate?.didUpdateBluetoothState(bluetoothState: bluetoothState)
     }
 }
 
@@ -657,7 +633,7 @@ extension GivtManager: LocationServiceProtocol {
 
 protocol GivtProcessedProtocol: class {
     func onGivtProcessed(transactions: [Transaction], organisationName: String?, canShare: Bool)
-    func didUpdateBluetoothState(isBluetoothOn: Bool)
+    func didUpdateBluetoothState(bluetoothState: BluetoothState)
     func didDetectGivtLocation(orgName: String, identifier: String)
 }
 
@@ -717,5 +693,4 @@ class Transaction:NSObject, NSCoding {
             "Timestamp"     : self.timeStamp
         ]
     }
-    
 }

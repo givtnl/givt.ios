@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 import SafariServices
-import MaterialShowcase
+import AppCenterAnalytics
 
 class ScanViewController: BaseScanViewController {
     @IBOutlet weak var backBtn: UIBarButtonItem!
@@ -19,77 +19,76 @@ class ScanViewController: BaseScanViewController {
     @IBOutlet var titleText: UILabel!
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var btnGive: CustomButton!
-    private var giveDifferentlyShowcase: MaterialShowcase?
+    @IBOutlet var btnGiveDifferent: CustomButton!
+    
     private var overlayTask: DispatchWorkItem?
     private var bluetoothMessage: UIAlertController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        MSAnalytics.trackEvent("GIVE_SCANNING_START")
         gif.loadGif(name: "givt_animation")
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
-        btnGive.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
+        btnGiveDifferent.setTitle(NSLocalizedString("GiveYetDifferently", comment: ""), for: .normal)
         btnGive.accessibilityLabel = NSLocalizedString("GiveDifferently", comment: "")
         titleText.text = NSLocalizedString("GiveWithYourPhone", comment: "")
         backBtn.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        btnGive.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         btnGive.isEnabled = true
         NotificationCenter.default.addObserver(self, selector: #selector(startScanning), name: Notification.Name("BluetoothIsOn"), object: nil)
+        
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         
         GivtManager.shared.delegate = self
         
         self.log.info(message: "Scanpage is now showing")
         
-        if(GivtManager.shared.isBluetoothEnabled || TARGET_OS_SIMULATOR != 0){
+        if GivtManager.shared.getBluetoothState(currentView: self.view) == .enabled || TARGET_OS_SIMULATOR != 0 {
             startScanning()
-        } else {
+        } else if GivtManager.shared.getBluetoothState(currentView: self.view) == .disabled {
             showBluetoothMessage()
         }
 
-        addOverlay()
+        showGiveDifferentButton()
+    }
+    
+    @IBAction func giveManually(_ sender: Any) {
+        if let nameSpace = GivtManager.shared.bestBeacon?.namespace {
+            GivtManager.shared.giveManually(antennaId: nameSpace)
+        }
+        MSAnalytics.trackEvent("GIVE_TO_SUGGESTION")
+
     }
     
     @objc func startScanning() {
         GivtManager.shared.startScanning(scanMode: .close)
-        
     }
-    
-    func addOverlay() {
-        overlayTask = DispatchWorkItem {
-            self.showGiveDifferentlyShowcase()
-        }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(7), execute: overlayTask!)
-    }
-    
-    @objc func removeOverlay() {
-        overlayTask?.cancel()
-        guard let showcase = self.giveDifferentlyShowcase else {
-            return
-        }
+
+    func showGiveDifferentButton() {
         
-        showcase.completeShowcase()
-        UserDefaults.standard.showCasesByUserID.append(UserDefaults.Showcase.giveDifferently.rawValue)
-    }
-    
-    func showGiveDifferentlyShowcase() {
-        if UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.giveDifferently.rawValue) {
-            return
-        }
-        self.giveDifferentlyShowcase = MaterialShowcase()
-        
-        self.giveDifferentlyShowcase!.primaryText = NSLocalizedString("GiveDiffWalkthrough", comment: "")
-        self.giveDifferentlyShowcase!.secondaryText = NSLocalizedString("CancelFeatureMessage", comment: "")
-        
-        let gesture = UISwipeGestureRecognizer(target: self, action:  #selector(self.removeOverlay))
-        self.giveDifferentlyShowcase!.addGestureRecognizer(gesture)
-        
-        DispatchQueue.main.async {
-            self.giveDifferentlyShowcase!.setTargetView(view: self.btnGive) // always required to set targetView
-            self.giveDifferentlyShowcase?.shouldSetTintColor = false
-            self.giveDifferentlyShowcase!.backgroundPromptColor = #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1)
-            self.giveDifferentlyShowcase!.show(completion: nil)
+        btnGiveDifferent.setTitle(NSLocalizedString("GiveYetDifferently", comment: ""), for: .normal)
+        btnGiveDifferent.accessibilityLabel = NSLocalizedString("GiveYetDifferently", comment: "")
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(6)) {
+            if let orgNamespace = GivtManager.shared.bestBeacon?.namespace, let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: orgNamespace) {
+                self.btnGive.setTitle(NSLocalizedString("GiveToNearestBeacon", comment: "").replacingOccurrences(of: "{0}", with: orgName), for: .normal)
+                self.btnGive.accessibilityLabel = self.btnGive.titleLabel?.text
+                self.btnGive.titleLabel?.adjustsFontSizeToFitWidth = true
+                self.btnGiveDifferent.setTitle(NSLocalizedString("GiveYetDifferently", comment: ""), for: .normal)
+                self.btnGive.isHidden = false
+                self.btnGiveDifferent.isHidden = false
+            } else {
+                self.btnGiveDifferent.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
+                self.btnGiveDifferent.accessibilityLabel = self.btnGiveDifferent.titleLabel?.text
+                // Show only give different
+                self.btnGiveDifferent.setBackgroundColor(color: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),forState: .normal)
+                self.btnGiveDifferent.setTitleColor(.white, for: .normal)
+                self.btnGiveDifferent.isHidden = false            }
         }
     }
     
@@ -109,7 +108,6 @@ class ScanViewController: BaseScanViewController {
         self.navigationController?.isNavigationBarHidden = false
 
         NotificationCenter.default.removeObserver(self, name: Notification.Name("BluetoothIsOff"), object: nil)
-        removeOverlay()
         super.viewWillDisappear(animated)
     }
 
@@ -128,9 +126,11 @@ class ScanViewController: BaseScanViewController {
     
 
     @IBAction func giveDifferently(_ sender: Any) {
+        MSAnalytics.trackEvent("GIVE_FROM_LIST")
+
         btnGive.isEnabled = false
         GivtManager.shared.stopScanning()
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ManualGivingViewController") as! ManualGivingViewController
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
         vc.cameFromScan = true
         self.navigationController?.pushViewController(vc, animated: true)
     }

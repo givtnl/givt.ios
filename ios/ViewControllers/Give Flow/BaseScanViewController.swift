@@ -10,18 +10,19 @@ import UIKit
 import SVProgressHUD
 
 class BaseScanViewController: UIViewController, GivtProcessedProtocol {
+   
     private var log = LogService.shared
     var bluetoothAlert: UIAlertController?
     private var isBacs = false
     
-    func didUpdateBluetoothState(isBluetoothOn: Bool) {
-        if isBluetoothOn {
+    func didUpdateBluetoothState(bluetoothState: BluetoothState) {
+        if bluetoothState == .enabled {
             self.bluetoothAlert?.dismiss(animated: true, completion: nil)
         } else {
             showBluetoothMessage()
         }
     }
-    
+        
     func didDetectGivtLocation(orgName: String, identifier: String) {
         
     }

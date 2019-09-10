@@ -16,10 +16,14 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         var nameSpace: String
     }
     
+    var cameFromScan: Bool = false
+    var lastGivtToOrganisationPosition: Int?
+    var initial = true
+    var scrollTo = true
+    
     @IBOutlet var titleText: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var typeStackView: UIStackView!
-    var lastGivtToOrganisationPosition: Int?
     @IBOutlet var searchBar: UISearchBar!
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -39,21 +43,16 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         cell.nameSpace = nameSpace
         cell.toggleOff()
         cell.organisationLabel.numberOfLines = 0
-        print(nameSpace)
-        if let ns = UserDefaults.standard.lastGivtToOrganisationNamespace, ns == nameSpace {
-            print("we got a match!!!!!")
-            tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
-            tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
-            cell.toggleOn()
-            prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: cell.nameSpace)
-            btnGive.isEnabled = true
 
+        if initial, let ns = getPreselectedOrganisation(), ns == nameSpace {
+            initial = false
+            prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: nameSpace)
         }
         
-        if let pp = prevPos, pp.type == selectedTag && pp.pos == indexPath  {
+        if let pp = prevPos, (pp.type == selectedTag || pp.type == 0 || selectedTag == 0) && pp.nameSpace == nameSpace  {
             tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
-            tableView.delegate?.tableView!(tableView, didSelectRowAt: indexPath)
             cell.toggleOn()
+            btnGive.isEnabled = true
         }
         return cell
     }
@@ -65,14 +64,13 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return sections.map { $0.title }
     }
-
+    
     private var prevPos: PreviousPosition?
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? ManualGivingOrganisation else { return }
         cell.toggleOn()
         prevPos = PreviousPosition(pos: indexPath, type: selectedTag, nameSpace: cell.nameSpace)
         btnGive.isEnabled = true
-        UserDefaults.standard.lastGivtToOrganisationNamespace = cell.nameSpace
         self.view.endEditing(true)
     }
     
@@ -82,44 +80,49 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             cell.toggleOff()
         }
         btnGive.isEnabled = false
-        UserDefaults.standard.lastGivtToOrganisationNamespace = nil
-        
     }
-    var initial = true
+    
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.selectionStyle = .none
         if let visibleRows = tableView.indexPathsForVisibleRows, let lastRow = visibleRows.last?.row, let lastSection = visibleRows.map({$0.section}).last {
-            if indexPath.row == lastRow && indexPath.section == lastSection {
+            if indexPath.row == lastRow, indexPath.section == lastSection, scrollTo {
+                scrollTo = false
                 // Finished loading visible rows
+                var namespace: String?
+                
                 if initial {
-                    initial = false
-                    //find orgname associated with namespace
-                    if let namespace = UserDefaults.standard.lastGivtToOrganisationNamespace, let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
-                        guard let tableSectionId = sections.index(where: { (sec) -> Bool in
-                            return sec.title.uppercased() == String(orgName.first!).uppercased()
-                        }) else {
-                            return
-                        }
-                        
-                        let sectionIdxOfItem = sections[tableSectionId].index
-                        
-                        guard let namespaceIdx = filteredList!.index(where: { (o) -> Bool in
-                            o.EddyNameSpace == namespace
-                        }) else {
-                            return
-                        }
-                        
-                        if tableSectionId < tableView.numberOfSections && (namespaceIdx - sectionIdxOfItem) < tableView.numberOfRows(inSection: tableSectionId) {
-                            let ip = IndexPath(row: (namespaceIdx - sectionIdxOfItem), section: tableSectionId)
-                            tableView.scrollToRow(at: ip, at: UITableViewScrollPosition.top, animated: false)
-                        } else {
-                            self.log.warning(message: "Tried to scroll to suggestion \(orgName), but the index was out of bounds.")
-                        }
+                    namespace = getPreselectedOrganisation()
+                }
+                else if let pp = prevPos {
+                    namespace = pp.nameSpace
+                }
+                
+                //find orgname associated with namespace
+                if let namespace = namespace, let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
+                    guard let tableSectionId = sections.index(where: { (sec) -> Bool in
+                        return sec.title.uppercased() == String(orgName.first!).uppercased()
+                    }) else {
+                        return
+                    }
+                    
+                    let sectionIdxOfItem = sections[tableSectionId].index
+                    
+                    guard let namespaceIdx = filteredList!.index(where: { (o) -> Bool in
+                        o.EddyNameSpace == namespace
+                    }) else {
+                        return
+                    }
+                    
+                    if tableSectionId < tableView.numberOfSections && (namespaceIdx - sectionIdxOfItem) < tableView.numberOfRows(inSection: tableSectionId) {
+                        let ip = IndexPath(row: (namespaceIdx - sectionIdxOfItem), section: tableSectionId)
+                        tableView.scrollToRow(at: ip, at: UITableViewScrollPosition.top, animated: false)
                     }
                 }
             }
         }
     }
-
+    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if let indexPathForSelectedRow = tableView.indexPathForSelectedRow,
             indexPathForSelectedRow == indexPath {
@@ -154,39 +157,9 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         didSet {
             loadView(selectedTag)
             lastTag = selectedTag
-            sections.removeAll()
-            
-            if filteredList == nil {
-                return
-            }
-            
-            if (filteredList!.count > 0) {
-                var index = 0
-                var string = filteredList![index].OrgName.uppercased()
-                var firstCharacter = string.first!
-                let names = filteredList!.map { (orgBeacon) -> String in
-                    return orgBeacon.OrgName
-                }
-                for (i, _) in names.enumerated() {
-                    let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
-                    if (commonPrefix.count == 0 ) {
-                        let title = "\(firstCharacter)"
-                        let newSection = (index: index, length: i - index, title: title)
-                        sections.append(newSection)
-                        index = i
-                        string = names[index].uppercased()
-                        firstCharacter = string.first!
-                    }
-                }
-                let title = String(firstCharacter)
-                let newSection = (index: index, length: names.count - index, title: title)
-                sections.append(newSection)
-            }
-            self.tableView.reloadData()
-  
         }
     }
-    var passSelectedTag: Int!
+    
     private var lastTag: Int?
     var listToLoad: [OrgBeacon] = {
         var list = GivtManager.shared.orgBeaconList
@@ -200,12 +173,13 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     @IBOutlet var stichtingen: UIImageView!
     @IBOutlet var acties: UIImageView!
     @IBOutlet var artiest: UIImageView!
-    
     @IBOutlet var navBar: UINavigationItem!
+    
     @IBAction func btnGive(_ sender: Any) {
         log.info(message: "Giving manually from the list")
         giveManually(antennaID: (prevPos?.nameSpace)!)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -220,19 +194,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         typeStackView.addArrangedSubview(btnActies)
         typeStackView.addArrangedSubview(btnArtiest)
         
-        if passSelectedTag == 100 {
-            setActiveType(view: btnStichtingen)
-        } else if passSelectedTag == 101 {
-            setActiveType(view: btnKerken)
-        } else if passSelectedTag == 102 {
-            setActiveType(view: btnActies)
-        } else if passSelectedTag == 103 {
-            setActiveType(view: btnArtiest)
-        }
-
         searchBar.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
-        selectedTag = passSelectedTag
         btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
         
         btnGive.isEnabled = false
@@ -250,7 +213,8 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         searchBar.placeholder = NSLocalizedString("SearchHere", comment: "")
         searchBar.accessibilityLabel = NSLocalizedString("SearchHere", comment: "")
         
-        
+        selectedTag = 0
+        loadView(0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -262,7 +226,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         super.viewWillDisappear(animated)
         GivtManager.shared.delegate = nil
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -280,73 +244,123 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     /* selecteren van Kerk/Stichtingen/...-knop langsboven */
     @objc func selectType(_ sender: UITapGestureRecognizer) {
         if let view = sender.view {
+            scrollTo = true
             if view.tag == selectedTag {
-                return
-            }
-            typeStackView.arrangedSubviews.forEach { (view) in
-                var replaceView: UIView?
-                if view == btnStichtingenSpecial {
-                    replaceView = btnStichtingen
-                } else if view == btnKerkenSpecial {
-                    replaceView = btnKerken
-                } else if view == btnActiesSpecial {
-                    replaceView = btnActies
-                } else if view == btnArtiestSpecial {
-                    replaceView = btnArtiest
+                unsetActiveType(view: view)
+                selectedTag = 0
+            } else {
+                typeStackView.arrangedSubviews.forEach { (v) in
+                    var replaceView: UIView?
+                    if v == btnStichtingenSpecial {
+                        replaceView = btnStichtingen
+                    } else if v == btnKerkenSpecial {
+                        replaceView = btnKerken
+                    } else if v == btnActiesSpecial {
+                        replaceView = btnActies
+                    } else if v == btnArtiestSpecial {
+                        replaceView = btnArtiest
+                    }
+                    
+                    if let idx = typeStackView.arrangedSubviews.index(of: v), replaceView != nil {
+                        typeStackView.removeArrangedSubview(v)
+                        v.removeFromSuperview()
+                        typeStackView.insertArrangedSubview(replaceView!, at: idx)
+                    }
                 }
-                if let idx = typeStackView.arrangedSubviews.index(of: view), replaceView != nil {
-                    typeStackView.removeArrangedSubview(view)
-                    view.removeFromSuperview()
-                    typeStackView.insertArrangedSubview(replaceView!, at: idx)
-                }
+                
+                setActiveType(view: view)
+                selectedTag = view.tag
             }
-            setActiveType(view: view)
-            
-            selectedTag = view.tag
         }
     }
     
     func setActiveType(view: UIView) {
         if let positionInStackview = typeStackView.arrangedSubviews.index(of: view) {
             var viewToAdd: UIView?
+            var orgType = MediumHelper.OrganisationType.invalid
+            
             switch (view) {
             case btnKerken:
                 viewToAdd = btnKerkenSpecial
+                orgType = .church
             case btnStichtingen:
                 viewToAdd = btnStichtingenSpecial
+                orgType = .charity
             case btnActies:
                 viewToAdd = btnActiesSpecial
+                orgType = .campaign
             case btnArtiest:
                 viewToAdd = btnArtiestSpecial
+                orgType = .artist
             default:
                 return
             }
             typeStackView.removeArrangedSubview(view)
             view.removeFromSuperview()
             typeStackView.insertArrangedSubview(viewToAdd!, at: positionInStackview)
+            
+            if let pp = prevPos, MediumHelper.namespaceToOrganisationType(namespace: pp.nameSpace) != orgType {
+                /* Disable give button because selected organisation is not in view anymore */
+                btnGive.isEnabled = false
+            }
         }
     }
     
-    func createNormalButton(backgroundColor: UIColor, image: UIImage) -> UIButton {
+    func unsetActiveType(view: UIView) {
+        if let positionInStackview = typeStackView.arrangedSubviews.index(of: view) {
+            var viewToAdd: UIView?
+            switch (view) {
+            case btnKerkenSpecial:
+                viewToAdd = btnKerken
+            case btnStichtingenSpecial:
+                viewToAdd = btnStichtingen
+            case btnActiesSpecial:
+                viewToAdd = btnActies
+            case btnArtiestSpecial:
+                viewToAdd = btnArtiest
+            default:
+                return
+            }
+            typeStackView.removeArrangedSubview(view)
+            view.removeFromSuperview()
+            typeStackView.insertArrangedSubview(viewToAdd!, at: positionInStackview)
+
+            if let _ = prevPos {
+                /* Enable give button because selected organisation is in view again */
+                btnGive.isEnabled = true
+            }
+        }
+
+    }
+    
+    func createNormalButton(backgroundColor: UIColor, image: UIImage, labelText: String) -> UIButton {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = backgroundColor
         btn.layer.cornerRadius = 3
-        btn.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        btn.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        btn.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        btn.widthAnchor.constraint(equalToConstant: 60).isActive = true
         let image = UIImageView(image: image)
         image.translatesAutoresizingMaskIntoConstraints = false
         btn.addSubview(image)
-        image.topAnchor.constraint(equalTo: btn.topAnchor, constant: 8).isActive = true
-        image.bottomAnchor.constraint(equalTo: btn.bottomAnchor, constant: -8).isActive = true
-        image.leadingAnchor.constraint(equalTo: btn.leadingAnchor, constant: 8).isActive = true
-        image.trailingAnchor.constraint(equalTo: btn.trailingAnchor, constant: -8).isActive = true
+        image.contentMode = .scaleAspectFit
+        image.topAnchor.constraint(equalTo: btn.topAnchor, constant: 4).isActive = true
+        image.centerXAnchor.constraint(equalTo: btn.centerXAnchor).isActive = true
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.font = UIFont(name: "Avenir Heavy", size: 11)
+        label.text = labelText
+        btn.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: btn.centerXAnchor).isActive = true
+        image.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -4).isActive = true
+        label.bottomAnchor.constraint(equalTo: btn.bottomAnchor, constant: -4).isActive = true
         
         createShadow(view: btn)
         return btn
     }
     
-    func createSpecialButton(tintColor: UIColor, image: UIImage) -> UIButton {
+    func createSpecialButton(tintColor: UIColor, image: UIImage, labelText: String) -> UIButton {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.backgroundColor = UIColor.clear
@@ -382,21 +396,28 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         bar.leadingAnchor.constraint(equalTo: borderView.leadingAnchor).isActive = true
         bar.trailingAnchor.constraint(equalTo: borderView.trailingAnchor).isActive = true
         
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "Avenir Heavy", size: 12)
+        label.text = labelText
+        label.textColor = tintColor
+        borderView.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: btn.centerXAnchor).isActive = true
+        label.bottomAnchor.constraint(equalTo: bar.topAnchor, constant: -4).isActive = true
+        
         let image = UIImageView(image: image)
         image.translatesAutoresizingMaskIntoConstraints = false
-        //image.widthAnchor.constraint(equalToConstant: 52).isActive = true
         image.contentMode = .scaleAspectFit
-        
         borderView.addSubview(image)
-        image.topAnchor.constraint(equalTo: borderView.topAnchor, constant: 8).isActive = true
-        image.bottomAnchor.constraint(equalTo: bar.topAnchor, constant: -8).isActive = true
-        image.leadingAnchor.constraint(equalTo: borderView.leadingAnchor, constant: 8).isActive = true
-        image.trailingAnchor.constraint(equalTo: borderView.trailingAnchor, constant: -8).isActive = true
+        image.topAnchor.constraint(equalTo: borderView.topAnchor, constant: 4).isActive = true
+        image.centerXAnchor.constraint(equalTo: btn.centerXAnchor).isActive = true
+        image.bottomAnchor.constraint(equalTo: label.topAnchor, constant: -4).isActive = true
+
         return btn
     }
     
     lazy var btnStichtingen: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "stichting_white"))
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "stichting_white"), labelText: NSLocalizedString("Charity", comment: ""))
         btn.tag = 100
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -407,7 +428,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnStichtingenSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "sugg_stichting_white"))
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), image: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: NSLocalizedString("Charity", comment: ""))
         btn.tag = 100
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -418,7 +439,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnKerken: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "church_white"))
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "church_white"), labelText: NSLocalizedString("Church", comment: ""))
         btn.tag = 101
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -429,7 +450,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnKerkenSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "sugg_church_white"))
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), image: #imageLiteral(resourceName: "sugg_church_white"), labelText: NSLocalizedString("Church", comment: ""))
         btn.tag = 101
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -440,7 +461,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnActies: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "actions_white"))
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "actions_white"), labelText: NSLocalizedString("Campaign", comment: ""))
         btn.tag = 102
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -451,7 +472,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnActiesSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "sugg_actions_white"))
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), image: #imageLiteral(resourceName: "sugg_actions_white"), labelText: NSLocalizedString("Campaign", comment: ""))
         btn.tag = 102
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -461,7 +482,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         return btn
     }()
     lazy var btnArtiest: UIButton = {
-        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist"))
+        let btn = createNormalButton(backgroundColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist"), labelText: NSLocalizedString("Artist", comment: ""))
         btn.tag = 103
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -472,7 +493,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }()
     
     lazy var btnArtiestSpecial: UIButton = {
-        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist_white"))
+        let btn = createSpecialButton(tintColor: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), image: #imageLiteral(resourceName: "artist_white"), labelText: NSLocalizedString("Artist", comment: ""))
         btn.tag = 103
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -495,22 +516,25 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         if lastTag == tag {
             return
         }
-    
-        var regExp = "c[0-9]|d[be]"
+        
+        var mediumType: MediumHelper.OrganisationType
+        
         switch(tag) {
         case 100:
-            regExp = "d[0-9]" //stichtingen
+            mediumType = .charity
             titleText.text = NSLocalizedString("Stichtingen", comment: "")
         case 101:
-            regExp = "c[0-9]|d[be]" //churches
+            mediumType = .church
             titleText.text = NSLocalizedString("Churches", comment: "")
         case 102:
-            regExp = "a[0-9]" //acties
+            mediumType = .campaign
             titleText.text = NSLocalizedString("Acties", comment: "")
         case 103:
-            regExp = "b[0-9]"
+            mediumType = .artist
             titleText.text = NSLocalizedString("Artists", comment: "")
         default:
+            mediumType = .invalid
+            titleText.text = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
             break
         }
         
@@ -528,7 +552,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         })
         
         filteredList = countryFilteredList.filter({ (orgBeacon) -> Bool in
-            orgBeacon.EddyNameSpace.substring(16..<18).matches(regExp)
+            MediumHelper.namespaceToOrganisationType(namespace: orgBeacon.EddyNameSpace) == mediumType || mediumType == .invalid
         })
         
         filteredList?.sort(by: { (first, second) -> Bool in
@@ -537,7 +561,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         
         originalList = filteredList
         
-        if let lastOrg = UserDefaults.standard.lastGivtToOrganisationNamespace {
+        if let lastOrg = getPreselectedOrganisation() {
             lastGivtToOrganisationPosition = filteredList?.index(where: { (org) -> Bool in
                 return org.EddyNameSpace == lastOrg
             })
@@ -546,6 +570,38 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         /* if there has been searchd before: filter list */
         filterList()
 
+        loadSections()
+        tableView.reloadData()
+    }
+    
+    private func loadSections() {
+        /* Show shortcust characters in list */
+        sections.removeAll()
+        if filteredList == nil {
+            return
+        }
+        if (filteredList!.count > 0) {
+            var index = 0
+            var string = filteredList![index].OrgName.uppercased()
+            var firstCharacter = string.first!
+            let names = filteredList!.map { (orgBeacon) -> String in
+                return orgBeacon.OrgName
+            }
+            for (i, _) in names.enumerated() {
+                let commonPrefix = names[i].commonPrefix(with: names[index], options: .caseInsensitive)
+                if (commonPrefix.count == 0 ) {
+                    let title = "\(firstCharacter)"
+                    let newSection = (index: index, length: i - index, title: title)
+                    sections.append(newSection)
+                    index = i
+                    string = names[index].uppercased()
+                    firstCharacter = string.first!
+                }
+            }
+            let title = String(firstCharacter)
+            let newSection = (index: index, length: names.count - index, title: title)
+            sections.append(newSection)
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -555,14 +611,14 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             tableView.delegate?.tableView!(tableView, didDeselectRowAt: indexPath)
         }
         
-        guard !searchText.isEmpty else {
+        if !searchText.isEmpty {
+            filterList()
+        } else {
             filteredList = originalList
-            selectedTag = Int(selectedTag)
-            return
         }
         
-        filterList()
-        selectedTag = Int(selectedTag)
+        loadSections()
+        tableView.reloadData()
     }
     
     func filterList() {
@@ -570,7 +626,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             filteredList = originalList?.filter({ (organisation) -> Bool in
                 return organisation.OrgName.lowercased().contains(searchText.lowercased())
             })
-            tableView.reloadData()
         }
     }
     
@@ -578,4 +633,30 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         self.view.endEditing(true)
     }
 
+    private func getPreselectedOrganisation() -> String? {
+        var namespace: String?
+
+        if let ns = GivtManager.shared.bestBeacon?.namespace {
+            namespace = ns
+        } else if let savedNamespace = UserDefaults.standard.lastGivtToOrganisationNamespace {
+            namespace = savedNamespace
+            if let savedName = UserDefaults.standard.lastGivtToOrganisationName {
+                guard let _ = GivtManager.shared.orgBeaconList?.first(where: { $0.EddyNameSpace == namespace }) else {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "", message: NSLocalizedString("SuggestionNamespaceInvalid", comment: "").replacingOccurrences(of: "{0}", with: savedName), preferredStyle: UIAlertControllerStyle.alert)
+                        
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                            
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    UserDefaults.standard.lastGivtToOrganisationNamespace = nil
+                    UserDefaults.standard.lastGivtToOrganisationName = nil
+                    return nil
+                }
+            }
+        }
+        
+        return namespace
+    }
 }

@@ -10,10 +10,9 @@ target 'ios' do
   pod 'PhoneNumberKit'
   pod 'SwiftClient'
   pod ‘TrustKit’
-  pod 'SwipeCellKit', '~> 2.1.0'
-  pod 'MaterialShowcase', '0.6.2'
-  pod 'SwiftCron', :git => 'https://github.com/lennie9/SwiftCron.git', :tag => '0.4.8'
-  pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift.git', :tag => 'v4.3.0'
+  pod 'SwipeCellKit', '~> 2.5.4'
+  pod 'MaterialShowcase', '0.6.6'
+  pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift.git', :tag => 'v4.3.1'
   pod 'AppCenter/Push'
   # Pods for ios
 
