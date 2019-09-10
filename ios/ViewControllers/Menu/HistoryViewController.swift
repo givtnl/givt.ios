@@ -284,10 +284,10 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.layoutMargins = UIEdgeInsets.zero
         
         if let giftAidYearAmount = self.giftAidGroupList[tx.taxYear] {
-            giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: String(tx.taxYear))
+            giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: "\'\(String(tx.taxYear).suffix(2))")
             giftAidYearAmountLabel.text = fmt.string(from: giftAidYearAmount as NSNumber)
         } else {
-            giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: String(tx.taxYear))
+            giftAidYearLabel.text = NSLocalizedString("GiftOverview_GiftAidBanner", comment: "").replacingOccurrences(of: "{0}", with: "\'\(String(tx.taxYear).suffix(2))")
             let total = 0.00
             giftAidYearAmountLabel.text = fmt.string(from: total as NSNumber)
         }
