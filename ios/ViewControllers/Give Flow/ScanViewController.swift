@@ -75,20 +75,23 @@ class ScanViewController: BaseScanViewController {
         btnGiveDifferent.accessibilityLabel = NSLocalizedString("GiveYetDifferently", comment: "")
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(6)) {
-            if let orgNamespace = GivtManager.shared.bestBeacon?.namespace, let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: orgNamespace) {
-                self.btnGive.setTitle(NSLocalizedString("GiveToNearestBeacon", comment: "").replacingOccurrences(of: "{0}", with: orgName), for: .normal)
-                self.btnGive.accessibilityLabel = self.btnGive.titleLabel?.text
-                self.btnGive.titleLabel?.adjustsFontSizeToFitWidth = true
-                self.btnGiveDifferent.setTitle(NSLocalizedString("GiveYetDifferently", comment: ""), for: .normal)
-                self.btnGive.isHidden = false
-                self.btnGiveDifferent.isHidden = false
-            } else {
-                self.btnGiveDifferent.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
-                self.btnGiveDifferent.accessibilityLabel = self.btnGiveDifferent.titleLabel?.text
-                // Show only give different
-                self.btnGiveDifferent.setBackgroundColor(color: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),forState: .normal)
-                self.btnGiveDifferent.setTitleColor(.white, for: .normal)
-                self.btnGiveDifferent.isHidden = false            }
+            UIView.animate(withDuration: 0.5, animations: {
+                if let orgNamespace = GivtManager.shared.bestBeacon?.namespace, let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: orgNamespace) {
+                    self.btnGive.setTitle(NSLocalizedString("GiveToNearestBeacon", comment: "").replacingOccurrences(of: "{0}", with: orgName), for: .normal)
+                    self.btnGive.accessibilityLabel = self.btnGive.titleLabel?.text
+                    self.btnGive.titleLabel?.adjustsFontSizeToFitWidth = true
+                    self.btnGiveDifferent.setTitle(NSLocalizedString("GiveYetDifferently", comment: ""), for: .normal)
+                    self.btnGive.isHidden = false
+                    self.btnGiveDifferent.isHidden = false
+                } else {
+                    self.btnGiveDifferent.setTitle(NSLocalizedString("GiveDifferently", comment: ""), for: .normal)
+                    self.btnGiveDifferent.accessibilityLabel = self.btnGiveDifferent.titleLabel?.text
+                    // Show only give different
+                    self.btnGiveDifferent.setBackgroundColor(color: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),forState: .normal)
+                    self.btnGiveDifferent.setTitleColor(.white, for: .normal)
+                    self.btnGiveDifferent.isHidden = false
+                }
+            })
         }
     }
     
