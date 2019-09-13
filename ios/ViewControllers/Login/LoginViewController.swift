@@ -116,12 +116,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if status == "temp" { //email is in db but not succesfully registered
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
+                    let alert = UIAlertController(title: NSLocalizedString("TemporaryAccount", comment: ""), message: NSLocalizedString("TempAccountLogin", comment: ""), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        NavigationHelper.showRegistration(context: self, email: email)
+                    }))
+                    self.present(alert, animated: true, completion:  {})
                 }
-                let alert = UIAlertController(title: NSLocalizedString("TemporaryAccount", comment: ""), message: NSLocalizedString("TempAccountLogin", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    NavigationHelper.showRegistration(context: self, email: email)
-                }))
-                self.present(alert, animated: true, completion:  {})
             } else if status == "dashboard" {
                 self.doLogin(email: email) { res in
                     if res {
