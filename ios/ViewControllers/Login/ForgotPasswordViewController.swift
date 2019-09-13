@@ -66,49 +66,48 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             if status == "temp" {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
+                    let alert = UIAlertController(title: NSLocalizedString("TemporaryAccount", comment: ""), message: NSLocalizedString("TempAccountLogin", comment: ""), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        NavigationHelper.showRegistration(context: self, email: email)
+                    }))
+                    self.present(alert, animated: true, completion:  {})
                 }
-                let alert = UIAlertController(title: NSLocalizedString("TemporaryAccount", comment: ""), message: NSLocalizedString("TempAccountLogin", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    NavigationHelper.showRegistration(context: self, email: email)
-                }))
-                self.present(alert, animated: true, completion:  {})
             } else if status == "true" {
                 LoginManager.shared.requestNewPassword(email: (email), callback: { (status) in
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
-                    }
-                    
-                    if let status = status {
-                        if status {
-                            let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("ResetPasswordSent", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                        if let status = status {
+                            if status {
+                                let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("ResetPasswordSent", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                                    DispatchQueue.main.async {
+                                        self.navigationController?.popViewController(animated: true)
+                                    }
+                                }))
                                 DispatchQueue.main.async {
-                                    self.navigationController?.popViewController(animated: true)
+                                    self.present(alert, animated: true, completion: nil)
                                 }
-                            }))
-                            DispatchQueue.main.async {
-                                self.present(alert, animated: true, completion: nil)
+                            } else {
+                                if !self._appServices.isServerReachable {
+                                    self._navigationManager.presentAlertNoConnection(context: self)
+                                    return
+                                }
+                                ErrorHandlingHelper.ShowLoginError(context: self, error: "SomethingWrongGeneric")
                             }
                         } else {
-                            if !self._appServices.isServerReachable {
-                                self._navigationManager.presentAlertNoConnection(context: self)
-                                return
-                            }
+                            //response does not exist. ssl error?
                             ErrorHandlingHelper.ShowLoginError(context: self, error: "SomethingWrongGeneric")
                         }
-                    } else {
-                        //response does not exist. ssl error?
-                        ErrorHandlingHelper.ShowLoginError(context: self, error: "SomethingWrongGeneric")
                     }
                 })
             } else if status == "false" {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                }
-                let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("NonExistingEmail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion: nil)
+                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("NonExistingEmail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    DispatchQueue.main.async {
+                        self.present(alert, animated: true, completion: nil)
+                    }
                 }
             }
             else {

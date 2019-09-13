@@ -226,8 +226,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             if status {
                 self.registerEmail(email: email)
             } else {
-                self.hideLoader()
                 DispatchQueue.main.async {
+                    self.hideLoader()
                     let alert = UIAlertController(title: NSLocalizedString("InvalidEmail", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
                         
