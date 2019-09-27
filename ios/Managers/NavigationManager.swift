@@ -61,6 +61,7 @@ class NavigationManager {
     public func finishRegistration(_ context: UIViewController) {
         let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "registration") as! RegNavigationController
         vc.transitioningDelegate = slideFromRightAnimation
+        vc.modalPresentationStyle = .fullScreen
         if let userExt = UserDefaults.standard.userExt {
             LoginManager.shared.doesEmailExist(email: userExt.email) { (status) in
                 if status == "true" { //completed registration

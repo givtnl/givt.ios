@@ -531,6 +531,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                     vc.isRegistration = true
                 }
                 vc.transitioningDelegate = self.slideFromRightAnimation
+                vc.modalPresentationStyle = .fullScreen
                 NavigationManager.shared.pushWithLogin(vc, context: self)
             }))
         }
