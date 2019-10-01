@@ -15,8 +15,8 @@ class ExternalAppIntegration {
     var mediumId: String
     var appScheme: String?
     var wasShownAlready: Bool
-    
-    init(name: String, logo: UIImage?, mediumId: String, appScheme: String?, wasShownAlready: Bool = false) {
+        
+    init(mediumId: String, name: String = "normal", logo: UIImage? = UIImage(named: "givt_mobile"),  appScheme: String? = nil, wasShownAlready: Bool = false) {
         self.name = name
         self.logo = logo
         self.mediumId = mediumId
