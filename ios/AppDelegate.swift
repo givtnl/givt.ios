@@ -150,9 +150,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     } else {
                         let specialChar = mediumId.substring(21..<22)
                         if (specialChar == "c"){
-                            GivtManager.shared.externalIntegration = ExternalAppIntegration(name: "QR", logo: UIImage(named: "qr_scan_phone"), mediumId: mediumId, appScheme: nil)
+                            GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumId, name: "QR", logo: UIImage(named: "qr_scan_phone"))
                         } else {
-                            GivtManager.shared.externalIntegration = ExternalAppIntegration(name: "normal", logo:UIImage(named: "givt_mobile"), mediumId: mediumId, appScheme: nil)
+                            GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumId)
                         }
                         LogService.shared.info(message: "App scheme: QR entering Givt-app with identifier \(mediumId)")
                         return true;
@@ -182,23 +182,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = urlComponents.queryItems {
-                if let fromValue = queryItems.first(where: { (item) -> Bool in item.name == "from" })?.value,
-                    let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name == "mediumid" })?.value,
-                    let appId = queryItems.first(where: { (item) -> Bool in item.name == "appid" })?.value
-                {
-                    if let element = AppConstants.externalApps[appId], let name = element["name"] {
-                        if mediumIdValue.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumIdValue.prefix(20))) == nil {
-                            LogService.shared.warning(message: "Illegal mediumid \"\(mediumIdValue)\" provided. Going to normal give flow")
-                        } else {
-                            var image: UIImage? = nil
-                            if let imageString = element["logo"] {
-                                image = UIImage(named: imageString)
-                            }
-                            GivtManager.shared.externalIntegration = ExternalAppIntegration(name: name, logo: image, mediumId: mediumIdValue, appScheme: fromValue)
-                            LogService.shared.info(message: "App scheme: \(fromValue) entering Givt-app with identifier \(mediumIdValue)")
-                        }
+                if let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name == "mediumid" })?.value {
+                    if mediumIdValue.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumIdValue.prefix(20))) == nil {
+                        LogService.shared.warning(message: "Illegal mediumid \"\(mediumIdValue)\" provided. Going to normal give flow")
                     } else {
-                        LogService.shared.warning(message: "Could not identify External App Integration")
+                        if let fromValue = queryItems.first(where: { (item) -> Bool in item.name == "from" })?.value {
+                            if let appId = queryItems.first(where: { (item) -> Bool in item.name == "appid" })?.value,
+                                let element = AppConstants.externalApps[appId], let name = element["name"] {
+                                    var image: UIImage? = nil
+                                    if let imageString = element["logo"] {
+                                        image = UIImage(named: imageString)
+                                    }
+                                    GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, name: name, logo: image, appScheme: fromValue)
+                            } else {
+                                GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, appScheme: fromValue)
+                            }
+                        } else {
+                            GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue)
+                        }
+                        LogService.shared.info(message: "Entering Givt-app with identifier \(mediumIdValue)")
                     }
                 }
             }
