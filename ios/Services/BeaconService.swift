@@ -98,10 +98,12 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
         if let feaa = advertisementData[CBAdvertisementDataServiceDataKey] as! NSMutableDictionary? {
             let x = feaa.object(forKey: CBUUID(string: "FEAA"))
             if(x != nil){
-                let y = String.init(describing: x!)
+                let y = String.init(describing: x!).replacingOccurrences(of: " ", with: "").lowercased()
                 
-                if(y.substring(5..<14) == "61f7 ed01" || y.substring(5..<14) == "61f7 ed02" || y.substring(5..<14) == "61f7 ed03") {
-                    let antennaID = String(format: "%@.%@", y.substring(5..<27).replacingOccurrences(of: " ", with: ""), y.substring(27..<41).replacingOccurrences(of: " ", with: ""))
+                if y.contains("61f7ed01") || y.contains("61f7ed02") || y.contains("61f7ed03") {
+                    let namespace = y[y.index(of: "61f7ed")!..<y.index(y.index(of: "61f7ed")!, offsetBy: 20)]
+                    let instance = y[y.index(y.index(of: "61f7ed")!, offsetBy: 20)..<y.index(y.index(of: "61f7ed")!, offsetBy: 32)]
+                    let antennaID = String(format: "%@.%@", String(namespace), String(instance))
                     beaconDetected(antennaID: antennaID, rssi: RSSI, beaconType: 0, peripheralId: peripheral.identifier)
                 }
                 
