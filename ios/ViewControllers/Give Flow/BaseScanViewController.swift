@@ -16,10 +16,12 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     private var isBacs = false
     
     func didUpdateBluetoothState(bluetoothState: BluetoothState) {
-        if bluetoothState == .enabled {
-            self.bluetoothAlert?.dismiss(animated: true, completion: nil)
-        } else {
-            showBluetoothMessage()
+        DispatchQueue.main.async {
+            if bluetoothState == .enabled {
+                self.bluetoothAlert?.dismiss(animated: true, completion: nil)
+            } else {
+                self.showBluetoothMessage()
+            }
         }
     }
         
