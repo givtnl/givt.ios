@@ -131,11 +131,13 @@ class EventViewController: BaseScanViewController {
     }
     
     override func didUpdateBluetoothState(bluetoothState: BluetoothState) {
-        if bluetoothState == .enabled {
-            self.bluetoothAlert?.dismiss(animated: true, completion: nil)
-            givtManager.startLookingForGivtLocations()
-        } else {
-            showBluetoothMessage() { self.shouldShowAfterBluetoothAlert() }
+        DispatchQueue.main.async {
+            if bluetoothState == .enabled {
+                self.bluetoothAlert?.dismiss(animated: true, completion: nil)
+                self.givtManager.startLookingForGivtLocations()
+            } else {
+                self.showBluetoothMessage() { self.shouldShowAfterBluetoothAlert() }
+            }
         }
     }
     
