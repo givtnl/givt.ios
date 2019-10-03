@@ -158,7 +158,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
                     return
                 }
                 
-                LoginManager.shared.requestMandateUrl(completionHandler: { (response) in
+                LoginManager.shared.registerMandate(completionHandler: { (response) in
                     SVProgressHUD.dismiss()
                     if let r = response {
                         if r.basicStatus == .ok {
