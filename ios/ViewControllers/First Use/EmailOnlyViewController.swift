@@ -181,21 +181,21 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         
         SVProgressHUD.show()
         _loginManager.doesEmailExist(email: email) { (status) in
-            
-            if status == "true" || status == "dashboard" { //show login if user completed registration or is a dashboard user TODO: rework!!
-                self.openLogin()
-            } else if status == "false" { //email is completely new
-                self.registerTempUser()
-            } else if status == "temp" { //email is in db but not succesfully registered
-                self.hideLoader()
-                NavigationHelper.showRegistration(context: self, email: email)
-            } else {
-                //strange response from server. internet connection err/ssl pin err
-                self.hideLoader()
-                self._navigationManager.presentAlertNoConnection(context: self)
+            DispatchQueue.main.async {
+                if status == "true" || status == "dashboard" { //show login if user completed registration or is a dashboard user TODO: rework!!
+                    self.openLogin()
+                } else if status == "false" { //email is completely new
+                    self.registerTempUser()
+                } else if status == "temp" { //email is in db but not succesfully registered
+                    self.hideLoader()
+                    NavigationHelper.showRegistration(context: self, email: email)
+                } else {
+                    //strange response from server. internet connection err/ssl pin err
+                    self.hideLoader()
+                    self._navigationManager.presentAlertNoConnection(context: self)
+                }
             }
-        }
-    
+        }    
     }
     
     override func hideLoader() {
