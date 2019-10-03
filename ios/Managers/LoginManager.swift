@@ -299,6 +299,16 @@ class LoginManager {
         }
     }
     
+    func registerMandate(completionHandler: @escaping (Response?) -> Void) {
+        do {
+            try client.post(url: "/api/v2/users/" + UserDefaults.standard.userExt!.guid + "/mandates", data: [:], callback: { (response) in
+                completionHandler(response)
+            })
+        } catch {
+            self.log.error(message: "Could not sign mandate")
+        }
+    }
+    
     func finishMandateSigning(completionHandler: @escaping (Bool) -> Void) {
         var idx: Int = 0
         var res:String  = ""
