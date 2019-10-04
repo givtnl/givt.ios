@@ -182,12 +182,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         } else {
             if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = urlComponents.queryItems {
-                if let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name == "mediumid" })?.value {
+                if let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "mediumid" })?.value {
                     if mediumIdValue.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumIdValue.prefix(20))) == nil {
                         LogService.shared.warning(message: "Illegal mediumid \"\(mediumIdValue)\" provided. Going to normal give flow")
                     } else {
-                        if let fromValue = queryItems.first(where: { (item) -> Bool in item.name == "from" })?.value {
-                            if let appId = queryItems.first(where: { (item) -> Bool in item.name == "appid" })?.value,
+                        if let fromValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "from" })?.value {
+                            if let appId = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "appid" })?.value,
                                 let element = AppConstants.externalApps[appId], let name = element["name"] {
                                     var image: UIImage? = nil
                                     if let imageString = element["logo"] {
