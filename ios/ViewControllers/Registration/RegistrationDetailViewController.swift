@@ -208,6 +208,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     private var iban: CustomUITextField!
     private var sortCode: CustomUITextField!
     private var accountNumber: CustomUITextField!
+    private var accountName: CustomUITextField!
+    
     func setupPaymentView() {
         iban = CustomUITextField()
         iban.awakeFromNib()
@@ -257,7 +259,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         bacsView.addSubview(sortCode)
         sortCode.topAnchor.constraint(equalTo: bacsView.topAnchor, constant: 10).isActive = true
         sortCode.leadingAnchor.constraint(equalTo: bacsView.leadingAnchor, constant: 20).isActive = true
-        sortCode.trailingAnchor.constraint(equalTo: bacsView.trailingAnchor, constant: -20).isActive = true
+        sortCode.widthAnchor.constraint(equalTo: bacsView.widthAnchor, multiplier: 0.4).isActive = true
         sortCode.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         accountNumber = CustomUITextField()
@@ -269,12 +271,24 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         accountNumber.font = UIFont(name: "Avenir-Light", size: 16)
         accountNumber.translatesAutoresizingMaskIntoConstraints = false
         bacsView.addSubview(accountNumber)
-        accountNumber.topAnchor.constraint(equalTo: sortCode.bottomAnchor, constant: 10).isActive = true
-        accountNumber.leadingAnchor.constraint(equalTo: sortCode.leadingAnchor, constant: 0).isActive = true
-        accountNumber.trailingAnchor.constraint(equalTo: sortCode.trailingAnchor, constant: 0).isActive = true
+        accountNumber.topAnchor.constraint(equalTo: bacsView.topAnchor, constant: 10).isActive = true
+        accountNumber.leadingAnchor.constraint(equalTo: sortCode.trailingAnchor, constant: 10).isActive = true
+        accountNumber.trailingAnchor.constraint(equalTo: bacsView.trailingAnchor, constant: -20).isActive = true
         accountNumber.heightAnchor.constraint(equalTo: sortCode.heightAnchor, constant: 0).isActive = true
-        let btm = accountNumber.bottomAnchor.constraint(equalTo: bacsView.bottomAnchor, constant: 0)
-        btm.isActive = true
+        
+        accountName = CustomUITextField()
+        accountName.delegate = self
+        accountName.awakeFromNib()
+        accountName.placeholder = NSLocalizedString("BankAccountHolderNamePlaceholder", comment: "")
+        accountName.font = UIFont(name: "Avenir-Light", size: 16)
+        accountName.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        accountName.translatesAutoresizingMaskIntoConstraints = false
+        bacsView.addSubview(accountName)
+        accountName.topAnchor.constraint(equalTo: sortCode.bottomAnchor, constant: 10).isActive = true
+        accountName.leadingAnchor.constraint(equalTo: sortCode.leadingAnchor, constant: 0).isActive = true
+        accountName.trailingAnchor.constraint(equalTo: accountNumber.trailingAnchor, constant: 0).isActive = true
+        accountName.heightAnchor.constraint(equalTo: sortCode.heightAnchor, constant: 0).isActive = true
+        accountName.bottomAnchor.constraint(equalTo: bacsView.bottomAnchor, constant: 0).isActive = true
         self.view.layoutIfNeeded()
     }
     
@@ -283,8 +297,6 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
-        
-        
     }
     
     
@@ -323,7 +335,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if textField == sortCode || textField == accountNumber {
+        if textField == sortCode || textField == accountNumber || textField == accountName {
             checkAll(sortCode)
         }
         if textField == iban {
@@ -537,17 +549,19 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         case mobilePrefixField:
             isMobilePrefixValid = validationHelper.isBetweenCriteria(mobilePrefixField.text!, 6)
             isMobilePrefixValid ? textField.setValid() : textField.setInvalid()
-        case sortCode, accountNumber:
+        case sortCode, accountNumber, accountName:
             let sortCodeIsValid = sortCode.text!.count == 6 && validationHelper.isValidNumeric(string: sortCode.text!)
             let accountNumberIsValid = accountNumber.text?.count == 8 && validationHelper.isValidNumeric(string: accountNumber.text!)
+            let accountNameIsValid = accountName.text!.count > 0
             sortCodeIsValid ? sortCode.setValid() : sortCode.setInvalid()
             accountNumberIsValid ? accountNumber.setValid() : accountNumber.setInvalid()
-            isBacsValid = sortCodeIsValid && accountNumberIsValid
+            accountNameIsValid ? accountName.setValid() : accountName.setInvalid()
+            isBacsValid = sortCodeIsValid && accountNumberIsValid && accountNameIsValid
         default:
             break
         }
         
-        var isBankDataCorrect = (isIbanValid && paymentType == .sepa) || (isBacsValid && paymentType == .bacs)
+        let isBankDataCorrect = (isIbanValid && paymentType == .sepa) || (isBacsValid && paymentType == .bacs)
         nextButton.isEnabled = isStreetValid && isPostalCodeValid && isCityValid && isCountryValid && isMobileNumberValid && isBankDataCorrect && isMobilePrefixValid
     }
 
