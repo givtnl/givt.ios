@@ -234,6 +234,7 @@ class LoginManager {
         } else {
             params["SortCode"] = user.sortCode
             params["AccountNumber"] = user.bacsAccountNumber
+            params["AccountName"] = user.accountName
         }
         
         if let langCode = Locale.current.languageCode {
@@ -349,7 +350,7 @@ class LoginManager {
     }
     
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
-        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB", sortCode: "", bacsAccountNumber: "")
+        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB", sortCode: "", bacsAccountNumber: "", accountName: "")
         
         if let countryCode = AppServices.getCountryFromSim() {
             regUser.country = countryCode

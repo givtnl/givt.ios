@@ -332,6 +332,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         iban.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         sortCode.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         accountNumber.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        accountName.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -460,6 +461,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let city = self.city.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let sortCode = self.sortCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let bacsAccountNumber = self.accountNumber.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        let accountName = self.accountName.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let country = self.selectedCountry?.shortName
         let iban = self.iban.text!.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -467,10 +469,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         var userData: RegistrationUser!
         if paymentType == .sepa {
             UserDefaults.standard.accountType = AccountType.sepa
-            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "")
+            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "", accountName: "")
         } else {
             UserDefaults.standard.accountType = AccountType.bacs
-            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber)
+            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber, accountName: accountName)
         }
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
             if let success = success {
@@ -552,7 +554,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         case sortCode, accountNumber, accountName:
             let sortCodeIsValid = sortCode.text!.count == 6 && validationHelper.isValidNumeric(string: sortCode.text!)
             let accountNumberIsValid = accountNumber.text?.count == 8 && validationHelper.isValidNumeric(string: accountNumber.text!)
-            let accountNameIsValid = accountName.text!.count > 0
+            let accountNameIsValid = accountName.text!.count > 0 && accountName.text!.count <= 18
             sortCodeIsValid ? sortCode.setValid() : sortCode.setInvalid()
             accountNumberIsValid ? accountNumber.setValid() : accountNumber.setInvalid()
             accountNameIsValid ? accountName.setValid() : accountName.setInvalid()
