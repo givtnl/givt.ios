@@ -101,7 +101,9 @@ class FeatureManager {
                                     
                                     func onNotificationTokenRegistered(token: String?) {
                                         NotificationManager.shared.delegates.removeAll { $0 === self }
-                                        innerContext?.dismiss(animated: true)
+                                        DispatchQueue.main.async {
+                                            self.innerContext?.dismiss(animated: true)
+                                        }
                                     }
                                 }
                                 NotificationManager.shared.areNotificationsEnabled { enabled in
