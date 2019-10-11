@@ -152,7 +152,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SearchHere" = "Search ...";
 "NoInternet" = "Whoops! It looks like you're not connected to the internet. Try again when you are connected with the internet.";
 "NoInternetConnectionTitle" = "No internet connection";
-"ServerNotReachable" = "Alas, it's not possbile to finish your registration at this time, our server seems to have an issue. Can you try it again later?\nGot this message before? We're probably not aware of this issue. Help us improve Givt by sending us a message and we'll get right on it.";
+"ServerNotReachable" = "Alas, it's not possible to finish your registration at this time, our server seems to have an issue. Can you try it again later?\nGot this message before? We're probably not aware of this issue. Help us improve Givt by sending us a message and we'll get right on it.";
 "SendMessage" = "Send message";
 "AnswerWhyAreMyDataStored" = "Everyday we work very hard at improving Givt. To do this we use the data we have at our disposal.\nWe require some of your data to create your mandate. Other information is used to create your personal account.\nWe also use your data to answer your service questions.\nIn no case we give your personal details to third parties.";
 "LogoffSession" = "Log out";
@@ -187,7 +187,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "CelebrateMessage" = "Throw your smartphone in the air (but hold on to it) before the timer hits 0. \nWhat's going to happen? You'll soon see...";
 "AfterCelebrationTitle" = "And now... wave!";
 "AfterCelebrationMessage" = "Now is the time, wave away! \n(We're not responsible for any elbow bumps that might occur.)";
-"ErrorContactGivt" = "An error has occured, please contact us at support@givtapp.net .";
+"ErrorContactGivt" = "An error has occurred, please contact us at support@givtapp.net .";
 "MandateFailPersonalInformation" = "Your IBAN and/or phone number seem to be incorrect. Please change your personal information via the menu or contact us at support@givtapp.net to solve this issue.";
 "MandateSMSCode" = "We'll send a text message to {0}. The mandate will be signed on behalf of {1}. Correct? Proceed to the next step.";
 "MandateSigningCode" = "If all goes well, you'll receive a text message. Fill in the code below to sign your mandate.";
@@ -234,7 +234,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SortCodePlaceholder" = "Sort code";
 "BankAccountNumberPlaceholder" = "Bank account number";
 "BacsSetupTitle" = "Setting up Direct Debit Instruction";
-"BacsSetupBody" = "You are signing an incidental direct debit, we will only debit from your account when you use the Givt app to make a donation.\n\nBy continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction mandate will be sent to you by email within 3 working days or no later than 10 working days before the first collection.";
+"BacsSetupBody" = "You are signing an incidental direct debit, we will only debit from your account when you use the Givt app to make a donation.\n\nBy continuing, you agree that you are the account holder and are the only person required to authorise debits from this account.\n\nThe details of your Direct Debit Instruction mandate will be sent to you by e-mail within 3 working days or no later than 10 working days before the first collection.";
 "BacsUnderstoodNotice" = "I have read and understood the advance notice";
 "BacsVerifyTitle" = "Verify your details";
 "BacsVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'\n\nThe company name which will appear on your bank statement against the Direct Debit will be Givt Ltd.";
@@ -243,12 +243,12 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "BacsAdvanceNotice" = "You are signing an incidental, non-recurring Direct Debit Instruction mandate. Only on your specific request will debits be executed by the organisation. All the normal Direct Debit safeguards and guarantees apply. No changes in the use of this Direct Debit Instruction can be made without notifying you at least five (5) working days in advance of your account being debited.\nIn the event of any error, you are entitled to an immediate refund from your bank or building society. \nYou have the right to cancel a Direct Debit Instruction at any time by writing to your bank or building society, with a copy to us.";
 "BacsAdvanceNoticeTitle" = "Advance Notice";
 "BacsDDGuaranteeTitle" = "Direct Debit Guarantee";
-"BacsVerifyBodyDetails" = "Name: {0}\nAddress: {1}\nEmail address: {2}\nSort code: {3}\nAccount number: {4}\nFrequency type: Incidental, when you use the Givt app to make a donation";
+"BacsVerifyBodyDetails" = "Name: {0}\nAddress: {1}\nE-mail address: {2}\nSort code: {3}\nAccount number: {4}\nFrequency type: Incidental, when you use the Givt app to make a donation";
 "BacsHelpTitle" = "Need help?";
 "BacsHelpBody" = "Can't figure something out or you just have a question? Give us a call at +31 320 320 115 or hit us up on support@givt.app and we will be in touch!";
 "BacsSortcodeAccountnumber" = "Sortcode: {0}\nAccount number: {1}";
 "CantFetchPersonalInformation" = "We can't seem to fetch your personal information right now, could you try again later?";
-"GivingContextCollectionBag" = "Collection bag";
+"GivingContextCollectionBag" = "Collection device";
 "GivingContextQRCode" = "QR-code";
 "GivingContextLocation" = "Location";
 "GivingContextCollectionBagList" = "List";
@@ -269,7 +269,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FaceIDUsage" = "This is where you change the use of your Face ID to login into the Givt app.";
 "FingerprintUsage" = "This is where you change the use of your fingerprint to login into the Givt app.";
 "AuthenticationIssueTitle" = "Authentication problem";
-"AuthenticationIssueMessage" = "We could not propely identify you. Please try again later.";
+"AuthenticationIssueMessage" = "We could not properly identify you. Please try again later.";
 "AuthenticationIssueFallbackMessage" = "We could not properly identify you. Please log in using your access code or password.";
 "CancelledAuthorizationMessage" = "You cancelled the authentication. Do you want to login using your access code/password?";
 "OfflineGiftsTitle" = "Offline donations";
@@ -345,7 +345,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ThirdCollect" = "3rd collection";
 "AddCollect" = "Add a collection";
 "TermsTextVersionGB" = "1.3";
-"AccountDisabledError" = "Alas, it looks like your account has been deactivated. Don't worry! Just send a quick email to support@givtapp.net.";
+"AccountDisabledError" = "Alas, it looks like your account has been deactivated. Don't worry! Just send a quick e-mail to support@givtapp.net.";
 "Feature_newgui1_title" = "The user interface";
 "Feature_newgui2_title" = "Progress bar";
 "Feature_newgui3_title" = "Multiple collections";
@@ -608,7 +608,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Je komt nu meteen in het betaalscherm. (ipv je komt nu gelijk in het betaalscherm) 
  Antwoord op FAQ vraag3*/
-"FAQantwoord3" = "You can access the app menu by tapping the menu at the top left of the ‘Amount’ screen. To change your settings, you have to log in using your email address and password, or when activated; a passcode, fingerprint/Touch ID or a FaceID. In the menu you can find an overview of your donations, adjust your maximum amount, review and/or change your personal information, change your amount presets, set a passcode, fingerprint/Touch ID or FaceID, or terminate your Givt account.\n";
+"FAQantwoord3" = "You can access the app menu by tapping the menu at the top left of the ‘Amount’ screen. To change your settings, you have to log in using your e-mail address and password, or when activated; a passcode, fingerprint/Touch ID or a FaceID. In the menu you can find an overview of your donations, adjust your maximum amount, review and/or change your personal information, change your amount presets, set a passcode, fingerprint/Touch ID or FaceID, or terminate your Givt account.\n";
 
 /*Antwoord op FAQ vraag4*/
 "FAQantwoord4" = "More and more organisations\nYou can use Givt in all organisations that are registered with us. More organisations are joining every week, you can see the latest overview at www.givtapp.net/en/where-to-use-givt. \n\nNot registered yet? \nIf your organisation is not affiliated with Givt yet, please contact us at +31 320 320 115 or info@givtapp.net.";
@@ -721,7 +721,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQQuestion11" = "How do I set my passcode, Touch ID and Face ID?";
 
 /*Answer Passcode*/
-"FAQAnswer11" = "Go to your settings by pressing menu in the top left of the screen. There you can protect your Givt app with a passcode, fingerprint/Touch ID or a FaceID (only available on certain iPhones). \n\nWhen one of these settings is activated, you can use it to access your settings instead of using your email address and password. However, when you've forgotten your passcode, you need your email address and password to make a new one.\n";
+"FAQAnswer11" = "Go to your settings by pressing menu in the top left of the screen. There you can protect your Givt app with a passcode, fingerprint/Touch ID or a FaceID (only available on certain iPhones). \n\nWhen one of these settings is activated, you can use it to access your settings instead of using your e-mail address and password. However, when you've forgotten your passcode, you need your e-mail address and password to make a new one.\n";
 
 /*Antwoord op de vraag Hoe werkt registreren*/
 "AnswerHowDoesRegistrationWork" = "To use Givt, you have to register in the Givt app. Go to your app menu and choose 'Finish registration'. You set up a Givt account, fill in some personal details and give permission to collect the donations made with the app. The transactions are handled by Slimpay - a bank that specialises in the treatment of permissions. When your registration is complete, you are ready to give. You only need your login details to see or change your settings.";
@@ -814,7 +814,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQvraag18" = "How does Givt handle my personal information? (GDPR)";
 
 /*A:Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
-"FAQAntwoord18" = "Givt fully complies with the GDPR requirements. GDPR stands for General Data Protection Regulation.\n\nWondering what this means for you? It means that we handle your information with care, that you have the right to know which information we keep on record, have the right to change this information, have the right to demand from us that we do not store your information, and that you may know why we need your personal information.\n\nWhy we need your personal data:\nAddress information: We need your address information in order to create the mandate. The mandate is not valid without this information and you cannot complete your registration without it. The required data are determined by law. Mobile number: We use your mobile number to send the SMS code needed for signing the mandate. This process is handled by our partner SlimPay. Payment details: We need your payment information to debit the donations you make. Email address: We use your email address to create your Givt account. You can use your email address and password to log in.\n\nIf you would like to know more, please read our privacy statement.\n";
+"FAQAntwoord18" = "Givt fully complies with the GDPR requirements. GDPR stands for General Data Protection Regulation.\n\nWondering what this means for you? It means that we handle your information with care, that you have the right to know which information we keep on record, have the right to change this information, have the right to demand from us that we do not store your information, and that you may know why we need your personal information.\n\nWhy we need your personal data:\nAddress information: We need your address information in order to create the mandate. The mandate is not valid without this information and you cannot complete your registration without it. The required data are determined by law. Mobile number: We use your mobile number to send the SMS code needed for signing the mandate. This process is handled by our partner SlimPay. Payment details: We need your payment information to debit the donations you make. E-mail address: We use your e-mail address to create your Givt account. You can use your e-mail address and password to log in.\n\nIf you would like to know more, please read our privacy statement.\n";
 
 /*Annuleer van fingerprint scsannen*/
 "fingerprint_cancel" = "Cancel";
@@ -855,11 +855,11 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "UpdateBacsAccountDetailsError" = "Alas, the Sortcode or Account number is invalid. You can change the Sortcode and/or Account number under ‘Personal information’ in the menu.";
 "DDIFailedTitle" = "DDI request failed";
 "DDIFailedMessage" = "At the moment it is not possible to request a Direct Debit Instruction. Please try again in a few minutes.";
-"FAQantwoord5GB" = "Handling transactions\nThe transactions are handled by SmartDebit; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., SmartDebit is under the supervision of the Financial Conduct Authority.\n\nRevertible afterwards\nThe transactions take place afterwards via a direct debit under Givt Ltd. We want to emphasise that no transactions take place in the moment of giving. Since these transactions are revocable, it is completely safe and immune to fraud.";
+"FAQantwoord5GB" = "Handling transactions\nThe transactions are handled by EazyCollect; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., EazyCollect is under the supervision of the Financial Conduct Authority.\n\nRevertible afterwards\nThe transactions take place afterwards via a direct debit under Givt Ltd. We want to emphasise that no transactions take place in the moment of giving. Since these transactions are revocable, it is completely safe and immune to fraud.";
 "FAQvraag15GB" = "Can I Gift Aid my donations?";
 "FAQantwoord15GB" = "Yes, you can Gift Aid your donations (This is currently under active development.)\n\nSince the first of May 2019, it is possible for an intermediary like Givt Ltd. to make Gift Aid declarations on behalf of a donor. It’s hassle-free! You simply authorise Givt Ltd. once to make Gift Aid declarations through the Givt app.";
-"AnswerHowDoesRegistrationWorkGB" = "To start giving, all you need is an email address. Once you have entered this, you are ready to give.\n\nPlease note: you need to fully register to ensure that all your previous and future donations can be processed. Go to the menu in the app and choose ‘Complete registration’. Here, you set up a Givt account by filling in your personal information and by us giving permission to debit the donations made in the app. Those transactions are processed by Smart Debit, who are specialised in direct debits. \n\nWhen your registration is complete, you are ready to give with the Givt app. You only need your login details to see or change your settings.";
-"FAQantwoord7GB" = "Registered Small Payment Institution\nGivt Ltd. is registered with the Financial Conduct Authority as a Small Payment Institution (823261). This means you can be confident that the way we conduct our business is transparent and secure and that the people running the company have been thoroughly checked.\n\nPersonal safety\nIt is very important to us that everything is safe and risk free. Each user has a personal account with its own password. You need to log in to view or change your settings.\n\nHandling transactions\nThe transactions are handled by SmartDebit; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., SmartDebit is under the supervision of the Financial Conduct Authority.\n\nImmune to fraud\nWhen installing Givt, the user gives the app authorisation to debit their account. We want to emphasise that no transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt Ltd. Since these transactions are revocable, it is completely safe and immune to fraud.\n\nOverview\nIndividual users can see an overview of their donations in the app. Organisations can log in to the Givt dashboard. This dashboard gives an overview of all financial transactions, from the moment of giving up to the full processing of the payment. In this way any collection can be followed from start to finish. Organisations can see how many people used Givt, but not who they are.";
+"AnswerHowDoesRegistrationWorkGB" = "To start giving, all you need is an e-mail address. Once you have entered this, you are ready to give.\n\nPlease note: you need to fully register to ensure that all your previous and future donations can be processed. Go to the menu in the app and choose ‘Complete registration’. Here, you set up a Givt account by filling in your personal information and by us giving permission to debit the donations made in the app. Those transactions are processed by Smart Debit, who are specialised in direct debits. \n\nWhen your registration is complete, you are ready to give with the Givt app. You only need your login details to see or change your settings.";
+"FAQantwoord7GB" = "Registered Small Payment Institution\nGivt Ltd. is registered with the Financial Conduct Authority as a Small Payment Institution (823261). This means you can be confident that the way we conduct our business is transparent and secure and that the people running the company have been thoroughly checked.\n\nPersonal safety\nIt is very important to us that everything is safe and risk free. Each user has a personal account with its own password. You need to log in to view or change your settings.\n\nHandling transactions\nThe transactions are handled by EazyCollect; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., EazyCollect is under the supervision of the Financial Conduct Authority.\n\nImmune to fraud\nWhen installing Givt, the user gives the app authorisation to debit their account. We want to emphasise that no transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt Ltd. Since these transactions are revocable, it is completely safe and immune to fraud.\n\nOverview\nIndividual users can see an overview of their donations in the app. Organisations can log in to the Givt dashboard. This dashboard gives an overview of all financial transactions, from the moment of giving up to the full processing of the payment. In this way any collection can be followed from start to finish. Organisations can see how many people used Givt, but not who they are.";
 "FAQantwoord18GB" = "Givt fully complies with the GDPR requirements. GDPR stands for General Data Protection Regulation.\n\nWondering what this means for you? It means that we handle your information with care, that you have the right to know which information we keep on record, have the right to change this information, have the right to demand from us that we do not store your information, and that you may know why we need your personal information.\n\nIf you would like to know more, please read our privacy statement.";
 "GiftAid_Setting" = "I want to use Gift Aid";
 "GiftAid_Info" = "As a UK taxpayer, you can use the Gift Aid initiative. While this option is active, Givt Ltd. will enter Gift Aid claims for all your donations.";
@@ -887,3 +887,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "Campaign" = "Campaign";
 "GiveYetDifferently" = "Choose from the list";
 "GiveToNearestBeacon" = "Give to: {0}";
+"BankAccountHolderNamePlaceholder" = "Account name";

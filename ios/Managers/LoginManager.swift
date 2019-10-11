@@ -234,6 +234,7 @@ class LoginManager {
         } else {
             params["SortCode"] = user.sortCode
             params["AccountNumber"] = user.bacsAccountNumber
+            params["AccountName"] = user.accountName
         }
         
         if let langCode = Locale.current.languageCode {
@@ -285,20 +286,20 @@ class LoginManager {
         
     }
     
-    func requestMandateUrl(completionHandler: @escaping (Response?) -> Void) {
+    func registerMandate(completionHandler: @escaping (Response?) -> Void) {
         do {
             var localeQuerystring = ""
             if let langCode = Locale.current.languageCode {
                 localeQuerystring = "?locale=" + langCode
             }
-            try client.post(url: "/api/v2/users/" + UserDefaults.standard.userExt!.guid + "/mandate" + localeQuerystring, data: [:], callback: { (response) in
+            try client.post(url: "/api/v2/users/" + UserDefaults.standard.userExt!.guid + "/mandates" + localeQuerystring, data: [:], callback: { (response) in
                 completionHandler(response)
             })
         } catch {
             self.log.error(message: "Could not sign mandate")
         }
     }
-    
+        
     func finishMandateSigning(completionHandler: @escaping (Bool) -> Void) {
         var idx: Int = 0
         var res:String  = ""
@@ -349,7 +350,7 @@ class LoginManager {
     }
     
     func registerEmailOnly(email: String, completionHandler: @escaping (Bool) -> Void) {
-        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB", sortCode: "", bacsAccountNumber: "")
+        let regUser = RegistrationUser(email: email, password: AppConstants.tempUserPassword, firstName: "John", lastName: "Doe", address: "Foobarstraat 5", city: "Foobar", country: "NL", iban: AppConstants.tempIban, mobileNumber: "0600000000", postalCode: "786 FB", sortCode: "", bacsAccountNumber: "", accountName: "")
         
         if let countryCode = AppServices.getCountryFromSim() {
             regUser.country = countryCode
@@ -520,6 +521,7 @@ class LoginManager {
             "IBAN":  userExt.IBAN as Any,
             "AccountNumber" : userExt.AccountNumber as Any,
             "SortCode" : userExt.SortCode as Any,
+            "AccountName": userExt.AccountName as Any,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,

@@ -277,6 +277,7 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             if let uExt = self.uExt {
                 vc.inputOfInput = uExt.SortCode
                 vc.inputOfInput2 = uExt.AccountNumber
+                vc.inputOfInput3 = uExt.AccountName
             }
             vc.validateInput1 = { s in
                 return self.validationHelper.isValidSortcode(s: s)
@@ -284,9 +285,13 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
             vc.validateInput2 = { s in
                 return self.validationHelper.isValidAccountNumber(s: s)
             }
-            vc.saveAction2 = { sortCode, accountNumber in
+            vc.validateInput3 = { s in
+                return self.validationHelper.isValidAccountName(string: s)
+            }
+            vc.saveAction2 = { sortCode, accountNumber, accountName in
                 self.uExt?.SortCode = sortCode
                 self.uExt?.AccountNumber = accountNumber
+                self.uExt?.AccountName = accountName
                 NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
                     SVProgressHUD.show()
                     self.loginManager.updateUserExt(userExt: self.uExt!) { (result) in

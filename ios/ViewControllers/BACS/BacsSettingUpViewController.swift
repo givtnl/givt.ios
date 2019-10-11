@@ -80,9 +80,9 @@ class BacsSettingUpViewController: UIViewController {
                         return
                     }
                     
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "BacsDetailViewController") as! BacsDetailViewController
-                    vc.userExtension = userExt
                     DispatchQueue.main.async {
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "BacsDetailViewController") as! BacsDetailViewController
+                        vc.userExtension = userExt
                         self.navigationController!.pushViewController(vc, animated: true)
                     }
                 })

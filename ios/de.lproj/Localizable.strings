@@ -1,0 +1,889 @@
+"IBANPlaceHolder" = "IBAN";
+
+/*@Tine, vind je 'Ho' kunnen? Of 'Ha' of moet de zin gewoon anders? Sjoerd kan niet leven met 'Hé'*/
+"AmountLimitExceeded" = "Dieser Betrag ist höher als Dein gewählter Maximalbetrag. Bitte passe den Maximalbetrag an oder wähle einen niedrigeren Betrag.";
+"Belgium" = "Belgien";
+"InsertAmount" = "Weißt Du, wieviel Du spenden möchtest? Wähle einen Betrag.";
+"Netherlands" = "Niederlande";
+"NotificationTitle" = "Givt";
+"SelectReceiverTitle" = "Empfänger auswählen";
+
+/*Alleen wanneer je zelf een bedrag geeft 
+met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om te checken of de tekst er dan beter uit ziet op het scherm.*/
+"SlimPayInformation" = "Wir möchten, dass Du Givt so einfach wie möglich nutzen kannst.";
+"SavingSettings" = "Lehn Dich zurück und entspann Dich, wir speichern Deine Einstellungen.";
+"Continue" = "Weiter";
+"GivtMinimumAmountEuro" = "0,50 Euro";
+"SlimPayInfoDetail" = "Givt arbeitet bei der Ausführung der Transaktionen mit SlimPay zusammen. SlimPay ist spezialisiert auf die Abwicklung von Mandaten und automatischen Geldüberweisungen auf digitalen Plattformen. SlimPay führt diese Aufträge für Givt zu den niedrigsten Preisen auf diesem Markt und mit hoher Geschwindigkeit aus.\n\nSlimPay ist ein idealer Partner für Givt, weil sie das bargeldlose Spenden sehr einfach und sicher machen. Als Zahlungsdienstleister werden sie von der Nederlandsche Bank und anderen europäischen Nationalbanken beaufsichtigt.\n\nDas Geld wird auf einem SlimPay-Konto gesammelt. \nGivt wird sicherstellen, dass das Geld korrekt ausgegeben wird.\n";
+"SlimPayInfoDetailTitle" = "Was ist SlimPay`";
+"ContinueRegistration" = "Dein Benutzerkonto wurde bereits angelegt,\naber es war leider nicht möglich.\ndie Registrierung abzuschließen.\n\nWir möchten Dir gerne dabei helfen, Givt zu nutzen, \ndaher bitten wir Dich, Dich einzuloggen.\num die Registrierung abzuschließen.";
+
+/*not succesful?*/
+"ContactFailedButton" = "Nicht geklappt?";
+"UnregisterButton" = "Meinen Account schließen";
+"UnregisterUnderstood" = "Ich verstehe";
+"GivtIsBeingProcessed" = "Danke für deine Spende an {0}!\nDen Status kannst du in der Übersicht überprüfen.";
+"OfflineGegevenGivtMessage" = "Vielen Dank für Deine Spende!\n\nSobald es eine gute Verbindung mit dem Givt-Server gibt, wird Deine Spende verarbeitet.\nDen Status kannst du in der Übersicht überprüfen.";
+"OfflineGegevenGivtMessageWithOrg" = "Vielen Dank für Deine Spende an {0}!\n\nSobald es eine gute Verbindung mit dem Givt-Server gibt, wird Deine Spende verarbeitet.\nDen Status kannst du in der Übersicht überprüfen.";
+"Pincode" = "Pin-Code";
+"PincodeTitleChangingPin" = "Hier kannst Du das Passwort anpassen, welches für den Login in die Givt App verwendet wird.";
+"PincodeChangePinMenu" = "Pin-Code ändern ";
+"PincodeSetPinTitle" = "Pin-Code festlegen";
+"PincodeSetPinMessage" = "Lege Deinen Pin-Code hier fest";
+"PincodeEnterPinAgain" = "Gib Deinen Pin-Code nochmals ein";
+"PincodeDoNotMatch" = "Die Codes stimmen nicht überein. Bitte nochmals versuchen.";
+"PincodeSuccessfullTitle" = "Jetzt hat es geklappt!";
+"PincodeSuccessfullMessage" = "Dein Pin-Code wurde erfolgreich gespeichert.";
+"PincodeForgotten" = "Login mit E-Mail und Passwort";
+"PincodeForgottenTitle" = "Pin-Code vergessen";
+"PincodeForgottenMessage" = "Nutze Deine E-Mail, um Dich in Deinem Account einzuloggen. ";
+"PincodeWrongPinTitle" = "Falscher Pin-Code";
+"PincodeWrongPinFirstTry" = "Erster Versuch fehlgeschlagen. Bitte versuch es noch einmal.";
+"PincodeWrongPinSecondTry" = "Zweiter Versuch fehlgeschlagen. Bitte versuch es noch einmal.";
+"PincodeWrongPinThirdTry" = "Dritter Versuch fehlgeschlagen. Bitte nutze Deine E-Mail-Adresse, um Dich einzuloggen. ";
+"WrongPasswordLockedOut" = "Dritter Versuch fehlgeschlagen. Für die nächsten 15 Minuten kannst Du Dich nicht einloggen. Bitte versuche es später wieder. ";
+"ConfirmGivtSafari" = "Vielen Dank für Deine Spende an {0}! Bitte durch Drücken der Taste bestätigen.\nDen Status kannst du in der Übersicht überprüfen.";
+"ConfirmGivtSafariNoOrg" = "Vielen Dank für Deine Spende! Bitte durch Drücken der Taste bestätigen.\nDen Status kannst du in der Übersicht überprüfen.";
+"MenuSettingsSwitchAccounts" = "Accounts wechseln";
+"PrepareIUnderstand" = "Ich habe verstanden ";
+"AmountLimitExceededGB" = "This amount is higher than £250. Please choose a lower amount.";
+
+/*Fuzzy*/
+"GiftOverview_GiftAidBanner" = "Gift-Aided {0}";
+
+/*Fuzzy*/
+"MaximumAmountReachedGB" = "Woah, you've reached the maximum donation limit. In the UK you can give a maximum of £250 per donation.";
+"FAQWhyBluetoothEnabledQ" = "Warum muss ich Bluetooth aktivieren, um Givt zu nutzen?";
+"FAQWhyBluetoothEnabledA" = "Dein Smartphone empfängt ein Signal von der Signalleuchte in der Spendenbox, dem Klingelbeutel oder dem Kollekten-Korb. Dieses Signal verwendet das Bluetooth-Protokoll. Es kann als Einbahnstraße betrachtet werden, d.h. es gibt im Gegensatz zur Verwendung in einem Bluetooth Car Kit oder Headset keine Verbindung,  Es ist eine sichere und einfache Möglichkeit, dem Smartphone mitzuteilen, welche Spendenbox, welcher Klingelbeutel oder Kollekten-Korb sich in der Nähe befindet. Wenn sich das Signal in der Nähe befindet, nimmt das Telefon das Signal auf und Deine Spende wird getätigt.";
+"Collect" = "Kollekte";
+"OfflineGegevenGivtsMessage" = "Vielen Dank für Deine Spende!\n\nSobald es eine gute Verbindung mit dem Givt-Server gibt, wird Deine Spende verarbeitet.\nDen Status kannst du in der Übersicht überprüfen.";
+"OfflineGegevenGivtsMessageWithOrg" = "Vielen Dank für Deine Spende an {0}!\n\nSobald es eine gute Verbindung mit dem Givt-Server gibt, wird Deine Spende verarbeitet.\nDen Status kannst du in der Übersicht überprüfen.";
+"ChangeDonation" = "Ändere Deine Spende";
+
+/*What does Givt! mean here?    the donation or the account?*/
+"CancelGivts" = "Ziehe Deine Spende zurück";
+"AreYouSureToCancelGivts" = "Bist Du sicher? Zum Bestätigen OK drücken. ";
+"FeedbackTitle" = "Feedback oder Fragen?";
+"NoMessage" = "Du hast keine Nachricht eingegeben.";
+"FeedbackMailSent" = "Deine Nachricht haben wir erhalten. Wir werden uns so bald als möglich, mit Dir in Verbindung setzen. ";
+"TypeMessage" = "Schreibe Deine Nachricht hier!";
+"Safari_GivtTransaction" = "Dieses Spende wird in eine Transaktion umgewandelt.";
+
+/*here also: cancel this Givt means cancel the donation or cancel the account?*/
+"Safari_MandateSignedPopup" = "Deine Spende wird von diesem Konto (IBAN) eingezogen. Sollte das nicht korrekt sein, so storniere diese Spende und registriere Dich neu.";
+"DidNotSignMandateYet" = "Du musst noch ein Mandat unterschreiben. Dies ist notwendig, damit die Spende bis zum Schluss ausgeführt werden kann. Im Moment ist es nicht möglich, eines zu unterschreiben. Givt wird fortfahren, aber um die Bearbeitung abzuschließen, muss ein Mandat unterzeichnet werden.";
+"AppVersion" = "App Version: ";
+"ShareGivtText" = "Givt teilen";
+"ShareGivtTextLong" = "Hey! Willst du weiter spenden?";
+"GivtGewoonBlijvenGeven" = "Givt - Geben tut so gut";
+"UpdatesDoneTitle" = "Bist Du bereit zum Spenden?";
+"UpdatesDoneSubtitle" = "Givt ist nun absolute up-to-date. Viel Spaß beim Senden. ";
+"Feature_ShareTitle" = "Teile Givt mit Jedem!";
+"Feature_ShareSubtitle" = "Das Weiterempfehlen von Givt ist so einfach wie das 1, 2, 3. Du kannst die App unten auf der Einstellungsseite teilen.";
+"AskMeLater" = "Frag mich später noch einmal";
+"GiveDifferently" = "Aus der Liste auswählen";
+"Churches" = "Kirchen";
+"Stichtingen" = "Wohltätigkeitsorganisationen";
+"Acties" = "Kampagnen";
+"Overig" = "Andere";
+"SignMandateLaterTitle" = "Okay, wir fragen Dich einfach später noch einmal.";
+"SignMandateLater" = "Du hast Dich entschieden, das Mandat später zu unterzeichnen. Du kannst dies beim nächsten Mal tun, wenn Du spendest.";
+"Suggestie" = "Spende an:";
+"CodeCanNotBeScanned" = "Leider kann dieser Code nicht innerhalb der Givt App verwendet werden.";
+"GiveDifferentScan" = "QR-Code scannen";
+"GiveDiffQRText" = "Jetzt ziele gut!";
+"QRCodeOrganisationNotFound" = "Der Code wurde gescannt, aber es scheint, dass sich die Organisation verlaufen hat. Bitte versuche es später noch einmal.";
+"NoCameraAccess" = "Wir brauchen Deine Kamera, um den Code zu scannen. Wechsle zu den App-Einstellungen auf Deinem Smartphone, um uns Deine Zustimmung zu geben.";
+"NSCameraUsageDescription" = "Wir würden gerne Deine Kamera verwenden, um den Code zu scannen.";
+"OpenSettings" = "Einstellungen öffnen";
+"NeedEmailToGiveSubtext" = "Um Deine Spenden korrekt bearbeiten zu können, benötigen wir Deine E-Mail-Adresse.";
+"CompleteRegistrationAfterGiveFirst" = "Danke, dass du mit Givt! gespendet hast.\n\nWir möchten Dir gerne dabei helfen, Givt zu nutzen, \ndaher bitten wir Dich, die Registrierung abzuschließen.";
+"TermsUpdate" = "Die Allgemeinen Geschäftsbedingungen wurden aktualisiert.";
+"AgreeToUpdateTerms" = "Mit dem Fortfahren erklärst Du Dich mit den neuen Allgemeinen Geschäftsbedingungen einverstanden.";
+"IWantToReadIt" = "Die möchte ich erst lesen";
+"TermsTextVersion" = "1.9";
+"LocationPermission" = "Wir müssen auf Deinen Standort zugreifen, um das Signal von der Givt-Frequenz zu empfangen.";
+"LocationEnabledMessage" = "Bitte aktiviere Deinen Standort mit hoher Genauigkeit, um mit Givt zu spenden. (Nach Deiner Spende kannst Du ihn wieder deaktivieren.)";
+"ChangeGivingLimit" = "Maximalbetrag anpassen";
+"SomethingWentWrong2" = "Etwas ist hier falsch gelaufen.";
+"ChooseLowerAmount" = "Wähle einen niedrigeren Betrag";
+"TurnOnBluetooth" = "Bluetooth anschalten";
+"ErrorTLDCheck" = "Mit dieser E-Mail-Adresse kannst Du Dich leider nicht anmelden. Könntest Du auf Tippfehler überprüfen?";
+"AddCollectConfirm" = "Möchtest Du eine zweite Sammlung hinzufügen?";
+"FAQvraag0" = "Feedback oder Fragen?";
+"FAQantwoord0" = "Im App-Menü unter \"Über Givt / Kontakt\" gibt es ein Textfeld, in dem Du eine Nachricht eingeben und an uns senden kannst. Natürlich kannst Du uns auch telefonisch unter +31 320 320 320 115 oder per E-Mail an support@givtapp.net erreichen.";
+"PersonalPageHeader" = "Ändere Deine Zugangsdaten hier. ";
+"PersonalPageSubHeader" = "Möchtest Du Deinen Namen ändern? Schicke eine E-Mail an support@givtapp.net";
+"TitlePersonalInfo" = "Persönliche Informationen";
+"PersonalInfoTempUser" = "Hallo, lieber Spender! Du benutzt ein vorläufiges Konto. Wir haben bisher noch keine persönlichen Daten von Dir erhalten.";
+"UpdatePersonalInfoError" = "Leider können wir Deine persönlichen Daten im Moment nicht aktualisieren. Könntest Du es später noch einmal versuchen?";
+"UpdatePersonalInfoSuccess" = "Erfolg!";
+"LoadingTitle" = "Bitte warte.....";
+"LoadingMessage" = "Bitte warte während wir Deine Daten laden.....";
+"ButtonChange" = "Ändern";
+"WelcomeContinue" = "Los geht*s ";
+"EnterEmail" = "Los geht*s ";
+"FinalizeRegistrationPopupText" = "Um Deine Spenden an die richtige Adresse zu übermitteln, musst Du Deine Registrierung abschließen.";
+"FinalizeRegistration" = "Registrierung abschließen";
+"ImportantReminder" = "Wichtige Erinnerung";
+"MultipleCollections" = "Mehrere Sammlungen";
+"QuestionAndroidLocation" = "Warum benötigt Givt Zugriff auf meinen Standort?";
+"AnswerAndroidLocation" = "Bei der Verwendung eines Android-Smartphones kann das Givt-Signal von der Givt-App nur erkannt werden, wenn der Standort bekannt ist. Daher benötigt Givt Deinen Standort, um das Spenden zu ermöglichen. Keine Sorge, abgesehen davon verwenden wir Deinen Standort nicht.";
+"ShareTheGivtButton" = "Teile Givt mit Deinen Freunden";
+"ShareTheGivtText" = "Ich habe gerade Givt genutzt, um für {0} zu spenden!";
+"ShareTheGivtTextNoOrg" = "Ich habe gerade Givt genutzt, um für zu spenden!";
+"JoinGivt" = "Mache mit bei givtapp.net/download.";
+"FirstUseWelcomeSubTitle" = "Für weitere Informationen bitte wischen.";
+"FirstUseWelcomeTitle" = "Willkommen!";
+"FirstUseLabelTitle1" = "Überall mit einem Lastschriftauftrag spenden";
+"FirstUseLabelTitle2" = "Einfaches, sicheres und anonymes Spenden";
+"FirstUseLabelTitle3" = " Spende Immer und überall ";
+"YesSuccess" = "Super, geschafft!";
+"ToGiveWeNeedYourEmailAddress" = "Um mit dem Spenden mit Givt beginnen zu können, benötigen wir nur Deine E-Mail-Adresse.";
+"WeWontSendAnySpam" = "(wir werden keinen Spam versenden, versprochen)";
+"SwipeDownOpenGivt" = "Wische nach unten, um die Givt App zu öffnen.";
+"MoreInfo" = "Weitere Infos";
+"Germany" = "Deutschland";
+"ExtraBluetoothText" = "Ist Dein Bluetooth eingeschaltet? Es ist wohl noch nötig, es aus- und wieder einzuschalten.";
+"OpenMailbox" = "Öffne Deinen Posteingang";
+"PersonalInfo" = "Persönliche Infos";
+"CameraPermission" = "Wir müssen auf Deine Kamera zugreifen, um einen QR-Code zu scannen.";
+
+/*here I put in the current year, as Givt has not been used in Germany before... or can you use a placeholder for the year?*/
+"DownloadYearOverview" = "Möchtest du Deine Spendenübersicht von 2019 für Deine Steuererklärung herunterladen?";
+"SendOverViewTo" = "Wir senden die Übersicht an";
+"YearOverviewAvailable" = "Jährliche Spendenübersicht verfügbar";
+"CheckHereForYearOverview" = "Hier kannst Du Deine jährliche Spendenübersicht anfordern";
+"CouldNotSendTaxOverview" = "Wir können Deine jährliche Spendenübersicht nicht abrufen, bitte versuche es später noch einmal. Wende Dich an support@givtapp.net, wenn dieses Problem weiterhin besteht.";
+"SearchHere" = "Suche....";
+"NoInternet" = "Hoppla! Es sieht so aus, als ob Du keine Verbindung zum Internet hättest. Versuchs noch einmal, wenn Du mit dem Internet verbunden bist.";
+"NoInternetConnectionTitle" = "Keine Internetverbindung";
+
+/*here the English is misspelled: possbile instead of possible*/
+"ServerNotReachable" = "Leider ist es gerade nicht möglich, Deine Registrierung abzuschließen, unser Server scheint ein Problem zu haben. Kannst Du es später noch einmal versuchen?\nDu hast diese Nachricht schon mal bekommen? Offensichtlich sind wir uns dieses Problems nicht bewusst. Hilf uns, Givt zu verbessern, indem Du uns eine Nachricht schickst, und wir werden uns sofort darum kümmern.";
+"SendMessage" = "Schicke eine Nachricht";
+"AnswerWhyAreMyDataStored" = "Jeden Tag arbeiten wir sehr hart daran, Givt zu verbessern. Dazu verwenden wir die uns zur Verfügung stehenden Daten.\nFür die Erstellung Deines Mandats benötigen wir einige Deiner Daten. Andere Informationen werden verwendet, um Dein persönliches Konto zu erstellen.\nWir verwenden Deine Daten auch, um Deine Support-Fragen zu beantworten.\nIn keinem Fall geben wir Deine persönlichen Daten an Dritte weiter.";
+"LogoffSession" = "Ausloggen";
+"AlreadyAnAccount" = "Du hast schon einen Account?";
+"UnitedKingdom" = "Vereinigtes Königreich";
+"CancelShort" = "Abbrechen";
+"CantCancelGiftAfter15Minutes" = "Leider kannst Du diese Spende innerhalb der Givt App nicht stornieren, da es mehr als 15 Minuten her ist, seit Du diese Spende gegeben hast.";
+"UnknownErrorCancelGivt" = "Aufgrund eines unerwarteten Fehlers konnten wir Deine Spende nicht stornieren. Wende Dich an uns unter support@givtapp.net für weitere Informationen.";
+"TransactionCancelled" = "Die Spende an {0} wird storniert.";
+"Cancelled" = "Storniert";
+"Undo" = "Zurück";
+"FAQVraag16" = "Kann ich einen Spende zurückziehen?";
+"FAQAntwoord16" = "In den ersten 15 Minuten nach der Spende durch die App ist es möglich, die Spende zu stornieren. Wechsle einfach in die Spendenübersicht und wische die Spende, die du stornieren möchtest, nach links. Die Stornierung ist kostenlos, wenn Du es auf diese Weise durchführst. Hinweis: Du kannst Deine Spende nur stornieren, wenn Du Deine Registrierung in der Givt App abgeschlossen hast.\n\nIm Moment der Spende finden keine Transaktionen statt. Die Transaktionen erfolgen anschließend per Lastschrift. Da diese Transaktionen über Deine Bank reversibel sind, bist Du absolut sicher und vor Betrug geschützt. Diese Art der Rückabwicklung verursacht Kosten für die Organisation, der Du gespendet hast.";
+"SelectContextCollect" = "Spende in der Kirche, an der Tür oder auf der Straße";
+"GiveContextQR" = "Spende, indem Du einen QR-Code scannst";
+"SelectContextList" = "Suche Dir ein Spendenziel aus der Liste aus";
+"SelectContext" = "Wähle die Art und Weise, wie du spendest";
+"ChooseWhoYouWantToGiveTo" = "Wähle aus, wem Du spenden möchtest";
+"CancelGiftAlertTitle" = "Die Spende stornieren?";
+"CancelGiftAlertMessage" = "Bist Du sicher, dass Du die Spende stornieren möchtest?\n";
+"GotIt" = "Hab's kapiert!";
+"CancelFeatureTitle" = "Du kannst eine Spende innerhalb von 15 Minuten stornieren, indem Du nach links wischst";
+"CancelFeatureMessage" = "Tippe irgendwo hin, um diese Nachricht zu verlassen";
+"GiveSubtitle" = "Es gibt mehrere Möglichkeiten, um mit Givt zu spenden. Wähle diejenige, die am besten zu Dir passt.";
+"Confirm" = "Bestätige";
+"SafariGivingToOrganisation" = "Du hast gerade an {0} gespendet. Unten findest Du die Übersicht über Deine Spende.";
+"SafariGiving" = "Du hast gerade gespendet. Unten findest Du die Übersicht über Deine Spende.";
+"GiveSituationShowcaseTitle" = "Als nächstes wählst Du, wie Du geben möchtest";
+"SoonMessage" = "Bald verfügbar.....";
+"GiveWithYourPhone" = "Bewege Dein Handy";
+"CelebrateTitle" = "Warte mal.....";
+"CelebrateMessage" = "Wirf Dein Smartphone in die Luft (aber halte es fest!), bevor der Timer 0 erreicht. \nWas wird dann passieren? Du erfährst es gleich.....";
+"AfterCelebrationTitle" = "Und jetzt.... winke!";
+"AfterCelebrationMessage" = "Jetzt ist die Zeit, winke wie wild! \n(Wir sind nicht verantwortlich für auftretende Ellbogenverletzungen.)";
+
+/*here: occurred is misspelled, an r is missing*/
+"ErrorContactGivt" = "Ein Fehler ist aufgetreten, bitte kontaktiere uns unter support@givtapp.net ";
+"MandateFailPersonalInformation" = "Deine IBAN und/oder Telefonnummer scheint falsch zu sein. Bitte ändere Deine persönlichen Daten über das Menü oder kontaktiere uns unter support@givtapp.net, um dieses Problem zu lösen.";
+"MandateSMSCode" = "Wir senden eine SMS an {0}. Das Mandat wird im Namen von {1} unterzeichnet. Ist das korrekt so? Fahre mit dem nächsten Schritt fort.";
+"MandateSigningCode" = "Wenn alles gut geht, erhältst du eine SMS. Bitte trage den untenstehenden Code ein, um Dein Mandat zu unterzeichnen.";
+"ReadCode" = "Dein Code:";
+"ReadMandate" = "Mandat ansehen";
+"MandatePdfFileName" = "Mandat";
+"WriteStoragePermission" = "Um dieses PDF ansehen zu können, benötigen wir Zugriff auf den Speicher Deines Telefons, damit wir das PDF speichern und anzeigen können.";
+"LegalTextSlimPay" = "Wenn Du weitermachst, wirst Du gebeten, ein Mandat zu unterzeichnen, das Givt B.V. berechtigt, Dein Konto zu belasten. Du musst der Kontoinhaber sein oder berechtigt, im Namen des Kontoinhabers zu handeln.\n\nDeine persönlichen Daten werden von SlimPay, einem lizenzierten Zahlungsinstitut, verarbeitet, um den Zahlungsvorgang im Namen von Givt B.V. durchzuführen und Betrug gemäß den europäischen Vorschriften zu verhindern.";
+"ResendCode" = "Code nochmals zusenden";
+"WrongCodeMandateSigning" = "Der Code scheint nicht korrekt zu sein. Versuche es nochmals oder lass Dir einen neuen Code zusenden. ";
+"Back" = "Zurück";
+"AmountLowest" = "Zwei Euro fünfzig";
+"AmountMiddle" = "Sieben Euro fünfzig";
+"AmountHighest" = "Zwölf Euro fünfzig";
+"Divider" = "Punkt";
+"GivtEventText" = "Hey! Du bist bei einer Veranstaltung, bei der Givt unterstützt wird. Möchtest Du {0} etwas spenden?";
+"SearchingEventText" = "Wir suchen gerade Deinen Standort, möchtest Du noch etwas warten?";
+"WeDoNotFindYou" = "Leider können wir Deinen Standort im Moment nicht finden. Du kannst aus einer Liste auswählen, an welche Organisation du spenden möchtest, oder zurückgehen und es erneut versuchen.";
+"SelectLocationContext" = "Spende an Deinem Standort";
+"ChangePassword" = "Ändere Dein Passwort";
+"AllowGivtLocationTitle" = "Ermögliche Givt den Zugriff auf Deinen Standort.";
+"AllowGivtLocationMessage" = "Wir benötigen Deinen Standort, um festzustellen, an wen Du spenden möchtest.\nWähle Einstellungen > Datenschutz > Standortdienste > Standortdienste ein und stelle Givt auf ‚während der Nutzung der App'.";
+"FaqVraag10" = "Wie kann ich mein Passwort ändern?";
+"FaqAntwoord10" = "Wenn Du Dein Passwort ändern möchtest, kannst Du im Menü \"Persönliche Informationen\" wählen und dann auf die Schaltfläche \"Passwort ändern\" klicken. Wir senden Dir eine E-Mail mit einem Link zu einer Webseite, auf der Du Dein Passwort ändern kannst.";
+"EditPersonalSucces" = "Deine persönlichen Daten wurden erfolgreich aktualisiert.";
+"EditPersonalFail" = "Ups, wir konnten Deine persönlichen Daten nicht aktualisieren.";
+"ChangeEmail" = "E-Mail Adresse ändern ";
+"ChangeIBAN" = "IBAN ändern";
+"SmsSuccess" = "Code wurde per SMS gesandt";
+"SmsFailed" = "Versuche es später noch einmal";
+"KerkdienstGemistQuestion" = "Wie kann ich mit Givt durch Dritte geben?";
+"KerkdienstGemistAnswer" = "";
+"ExternalSuggestionLabel" = "Wir sehen, dass Du mit der {0} App gibst. Möchtest Du {1} spenden?";
+"ChooseHowIGive" = "Nein, ich würde gerne selbst entscheiden, wie ich das tue.";
+"AndersGeven" = "Spende anders";
+"KerkdienstGemist" = "";
+"ChangePhone" = "Ändere Deine Telefonnummer";
+"Artists" = "Künstler";
+"ChangeAddress" = "Adresse ändern";
+"SelectLocationContextLong" = "Spenden am Veranstaltungsort bei Veranstaltungen";
+"GivtAtLocationDisabledTitle" = "Keine Veranstaltungen verfügbar";
+"GivtAtLocationDisabledMessage" = "Hey, nicht so schnell! Im Moment sind keine Veranstaltungen verfügbar, bei denen Du vor Ort spenden kannst.";
+"TempAccountLogin" = "Du verwendest ein temporäres Konto ohne Passwort. Du wirst nun automatisch eingeloggt und aufgefordert, Deine Registrierung abzuschließen.";
+"SortCodePlaceholder" = "Sortierungscode";
+"BankAccountNumberPlaceholder" = "Kontonummer";
+"BacsSetupTitle" = "Einrichten der Einzugsermächtigung";
+"BacsSetupBody" = "Du unterzeichnest eine pauschale Einzugsermächtigung, wir belasten Dein Konto nur, wenn Du die Givt App benutzt, um eine Spende zu tätigen.\n\nIndem Du fortfährst, stimmst Du zu, dass Du der Kontoinhaber bist und die einzige Person bist, die zur Ermächtigung von Belastungen von diesem Konto berechtigt ist.\n\nDie Details Deiner Einzugsermächtigung werden Dir innerhalb von 3 Werktagen oder spätestens 10 Werktage vor der ersten Einziehung per E-Mail zugesandt.";
+"BacsUnderstoodNotice" = "Ich habe die Hinweise zur Vorankündigung gelesen und verstanden.";
+"BacsVerifyTitle" = "Überprüfe Deine Daten";
+"BacsVerifyBody" = "Wenn einer der oben genannten Punkte falsch ist, unterbreche bitte die Registrierung und ändere Deine \"Persönlichen Daten\".\n\nDer Firmenname, der auf Deinem Kontoauszug gegenüber der Lastschrift erscheint, lautet Givt Ltd.";
+"BacsReadDDGuarantee" = "Lastschrift-Garantie lesen";
+"BacsDDGuarantee" = "- Die Garantie wird von allen Banken und Bausparkassen angeboten, die Weisungen zur Zahlung von Lastschriften akzeptieren.\n- Bei Änderungen in der Art und Weise, wie diese beiläufige Lastschriftanweisung verwendet wird, wird das Unternehmen Dich ( in der Regel innerhalb von 10 Werktagen) benachrichtigen, bevor Dein Konto belastet wird oder wie anders vereinbart. \n- Wenn bei der Zahlung Deiner Lastschrift durch das Unternehmen oder Deine Bank oder Bausparkasse ein Fehler auftritt, hast du Anspruch auf eine vollständige und sofortige Rückerstattung des von Deiner Bank oder Bausparkasse gezahlten Betrages.\n- Wenn Du eine Rückerstattung erhältst, auf die Du keinen Anspruch hast, musst Du sie zurückzahlen, wenn die Organisation Dich dazu auffordert.\n- Eine Einzugsermächtigung kannst Du jederzeit widerrufen, indem Du Dich einfach an Deine Bank oder Bausparkasse wendest. Eine schriftliche Bestätigung kann erforderlich sein. Bitte benachrichtige dann auch die Organisation.";
+"BacsAdvanceNotice" = "Du unterschreibst eine fallweise, nicht wiederkehrende Weisung zum Lastschriftverfahren. Nur auf Deinen speziellen Wunsch hin werden Abbuchungen von der Organisation durchgeführt. Es gelten alle üblichen Sicherheitsvorkehrungen und Garantien für Lastschriften. Es können keine Änderungen an der Nutzung dieser Einzugsermächtigung vorgenommen werden, ohne Dich mindestens fünf (5) Werktage vor der Belastung Deines Kontos zu informieren.\nIm Falle eines Fehlers hast Du Anspruch auf eine sofortige Rückerstattung durch Deine Bank oder Bausparkasse. \nDu hast das Recht, eine Einzugsermächtigung jederzeit schriftlich an Deine Bank oder Bausparkasse mit einer Kopie an uns zu widerrufen.";
+"BacsAdvanceNoticeTitle" = "Vorankündigung";
+"BacsDDGuaranteeTitle" = "Lastschrift-Garantie";
+"BacsVerifyBodyDetails" = "Name: {0}\nAdresse: {1}\nE-Mail-Adresse: {2}\nSortierungscode: {3}\nKontonummer: {4}\nFrequenzart: nach Nutzung, wenn Du die Givt App benutzt, um eine Spende zu tätigen.";
+"BacsHelpTitle" = "Brauchst Du Hilfe?";
+"BacsHelpBody" = "Du benötigst Hilfe oder hast nur eine Frage? Rufe uns unter +31 320 320 320 115 an oder kontaktiere uns unter support@givt.app und wir werden uns mit Dir in Verbindung setzen!";
+"BacsSortcodeAccountnumber" = "Sortierungscode: {0}\nKontonummer: {1}";
+"CantFetchPersonalInformation" = "Wir können Deine persönlichen Daten im Moment nicht abrufen, könntest Du es später noch einmal versuchen?";
+"GivingContextCollectionBag" = "Sammel“Behälter\"";
+"GivingContextQRCode" = "QR-Code";
+"GivingContextLocation" = "Standort";
+"GivingContextCollectionBagList" = "Liste";
+"AmountPresetsTitle" = "Betragsvorgaben";
+"AmountPresetsBody" = "Stelle Deine Betragsvorgaben unten ein.";
+"AmountPresetsResetAll" = "Werte zurücksetzen";
+"AmountPresetsErrGivingLimit" = "Der Betrag ist höher als Dein Maximalbetrag.";
+"AmountPresetsErr50C" = "Der Betrag muss mindestens 0,50 Euro betragen.";
+"AmountPresetsErrEmpty" = "Gib einen Betrag ein";
+"GivtMinimumAmountPond" = "";
+"AlertBACSMessage" = "Da Du {0} als Länderwahl angegeben hast, gehen wir davon aus, dass Du lieber über ein SEPA-Mandat (€) gibst, dafür benötigen wir Deine IBAN. Wenn Du lieber BACS (£) verwendest, benötigen wir Deinen Sort Code und Deine Kontonummer.";
+"AlertSEPAMessage" = "Da Du {0} als Länderwahl angegeben hast, gehen wir davon aus, dass Du lieber über BACS Direct Debit (£) gibst, dafür benötigen wir Deinen Sort Code und Deine Kontonummer. Wenn Du lieber SEPA (€) nutzen möchtest, benötigen wir Deine IBAN.";
+"Important" = "Wichtig";
+"FingerprintTitle" = "Fingerabdruck";
+"TouchID" = "Touch ID";
+"FaceID" = "Face ID";
+"TouchIDUsage" = "Hier änderst Du die Verwendung Deiner Touch ID, um Dich bei der Givt App anzumelden.";
+"FaceIDUsage" = "Hier änderst Du die Verwendung Deiner Face ID, um Dich bei der Givt App anzumelden.";
+"FingerprintUsage" = "Hier änderst Du die Verwendung Deines Fingerabdrucks, um Dich bei der Givt App anzumelden.";
+"AuthenticationIssueTitle" = "Authentifizierungsproblem";
+
+/*here it should be properly instead of propely   ;-)*/
+"AuthenticationIssueMessage" = "Wir konnten Dich nicht richtig identifizieren. Bitte versuchs später noch einmal.";
+"AuthenticationIssueFallbackMessage" = "Wir konnten Dich nicht richtig identifizieren. Bitte logge Dich mit Deinem Zugangscode oder Passwort ein.";
+"CancelledAuthorizationMessage" = "Du hast die Authentifizierung abgebrochen. Möchtest Du Dich mit Deinem Zugangscode / Passwort anmelden?";
+"OfflineGiftsTitle" = "Offline Spenden";
+"OfflineGiftsMessage" = "Um sicherzustellen, dass Deine Spenden rechtzeitig ankommen, muss Deine Internetverbindung aktiviert sein, damit die von Dir geleisteten Spenden an den Server geschickt werden können.";
+"EnrollFingerprint" = "Lege Deinen Finger auf den Sensor.";
+"FingerprintMessageAlert" = "Benutze {0}, um Dich für {1} anzumelden.";
+"LoginFingerprint" = "Login mit Deinem Fingerabdruck";
+"LoginFingerprintCancel" = "Login mit Passcode / Passwort\n";
+"fingerprint_state_scanning" = "Berührungssensor";
+"fingerprint_state_success" = "Fingerabdruck erkannt";
+"fingerprint_state_failure" = "Fingerabdruck nicht erkannt. Bitte versuche es noch einmal.";
+"ActivateBluetooth" = "Bluetooth aktivieren";
+"AmountTooHigh" = "Betrag zu hoch";
+"ActivateLocation" = "Standort aktivieren";
+"LoginFailure" = "Login Fehler";
+"RequestFailed" = "Anfrage fehlgeschlagen";
+"ResetPasswordSent" = "Du solltest eine E-Mail mit einem Link erhalten haben, um Dein Passwort zurückzusetzen. Falls Du die E-Mail nicht sofort findest, überprüfe Deinen Spam-Ordner.";
+"Success" = "Erfolgreich!";
+"NotSoFast" = "Nicht so schnell, großer Geldgeber.";
+"GiftBetween30Sec" = "Du hast bereits innerhalb von 30 Sekunden gespendet. Kannst Du noch ein wenig warten?";
+"Android8ActivateLocation" = "Aktiviere Deinen Standort und stelle sicher, dass der Modus \"Hohe Genauigkeit\" ausgewählt ist.";
+"Android9ActivateLocation" = "Aktiviere Deinen Standort und stelle sicher, dass \" Standortgenauigkeit \" aktiviert ist.";
+"NonExistingEmail" = "Diese E-Mail-Adresse ist uns nicht bekannt. Ist es möglich, dass Du Dich mit einem anderen E-Mail-Konto registriert hast?";
+"SecondCollection" = "Zweite Sammlung";
+"AmountTooLow" = "Betrag zu gering";
+"QRScanFailed" = "Zielvorgabe fehlgeschlagen";
+"TemporaryAccount" = "Vorübergehendes Konto";
+"TemporaryDisabled" = "Vorübergehend gesperrt";
+"CancelFailed" = "Stornieren fehlgeschlagen";
+"AccessDenied" = "Zugang verweigert";
+"UnknownError" = "Unbekannter Fehler";
+"MandateFailed" = "Autorisierung fehlgeschlagen";
+"QRScannedOutOfApp" = "Hey! Prima, dass Du mit einem QR-Code spenden möchtest! Bist du sicher, dass du {0} etwas spenden möchtest?";
+"SaveFailed" = "Speichern fehlgeschlagen";
+"InvalidEmail" = "Ungültige E-Mail-Adresse";
+"GiftsOverviewSent" = "Wir haben Deine Spendenübersicht an Deine Mailbox geschickt.";
+"GiftWasBetween30S" = "Deine Spende wurde nicht verarbeitet, weil seit Deiner letzten Spende weniger als 30 Sekunden vergangen sind.";
+"PromotionalQR" = "Dieser Code leitet Dich zu unserer Webseite weiter. Du kannst es nicht verwenden, um innerhalb der Givt App zu spenden.";
+"PromotionalQRTitle" = "Promo QR-Code";
+"DownloadYearOverviewByChoice" = "Möchtest Du eine Jahresübersicht Deiner Spenden herunterladen? Wähle das untenstehende Jahr aus und wir senden die Übersicht an folgende Adresse";
+"GiveOutOfApp" = "Hey! Schön, dass du mit Givt spenden willst! Bist du sicher, dass du {0} etwas geben möchtest?";
+"MandateFailTryAgainLater" = "Bei der Erstellung des Mandats ist etwas schief gelaufen. Kannst Du es später noch einmal versuchen?";
+"FeatureButtonSkip" = "Überspringen";
+"FeatureMenuText" = "Dein App von A bis Z";
+"FeatureMultipleNew" = "Hallo, wir möchten Dir ein paar neue Features vorstellen.";
+"FeatureReadMore" = "Lies weiter";
+"FeatureStepTitle" = "Feature {0} of {1}";
+"NoticeSmsCode" = "Wichtig!\nBitte beachte, dass Du den SMS-Code auf der Webseite ausfüllen musst und nicht in der App. Wenn Du das Mandat unterschrieben hast, wirst Du automatisch zur App weitergeleitet.";
+"Feature_push1_title" = "Push-Benachrichtigungen";
+"Feature_push2_title" = "Wir helfen Dir da durch";
+"Feature_push3_title" = "Vergewissere Dich, dass sie eingeschaltet sind.";
+"Feature_push1_message" = "Mit einer Push-Benachrichtigung können wir Dir etwas Wichtiges mitteilen, während die App nicht läuft.";
+"Feature_push2_message" = "Wenn mit Deinem Konto oder Deinen Spenden etwas nicht stimmt, können wir das einfach und schnell kommunizieren.";
+"Feature_push3_message" = "Und zögere nicht, sie anzulassen. Wir kommunizieren nur über dringende Angelegenheiten.";
+"Feature_push_inappnot" = "Hier anklicken, um mehr über Push-Benachrichtigungen zu erfahren.";
+"Feature_push_notenabled_action" = "Einschalten";
+"Feature_push_enabled_action" = "Ich verstehe";
+"TermsTextGB" = "";
+"FirstCollect" = "Erste Sammlung";
+"SecondCollect" = "Zweite Sammlung";
+"ThirdCollect" = "Dritte Sammlung";
+"AddCollect" = "Füge eine Sammlung hinzu";
+"TermsTextVersionGB" = "1.3";
+"AccountDisabledError" = "Leider sieht es so aus, als ob Dein Konto deaktiviert wurde. Keine Sorge! Sende einfach eine kurze E-Mail an support@givtapp.net.";
+"Feature_newgui1_title" = "Die Benutzeroberfläche";
+"Feature_newgui2_title" = "Fortschrittsbalken";
+"Feature_newgui3_title" = "Mehrere Sammlungen";
+"Feature_newgui1_message" = "Im ersten Fenster kannst Du schnell und einfach einen Betrag hinzufügen und Sammlungen hinzufügen oder entfernen.";
+"Feature_newgui2_message" = "Anhand des Fortschrittsbalkens oben weißt Du genau, wo Du Dich im Spendenprozess befindest.";
+"Feature_newgui3_message" = "Mit einem einzigen Antippen auf eine Schaltfläche kannst Du Sammlungen hinzufügen oder entfernen.";
+"Feature_newgui_action" = "Okay, verstanden!";
+"Feature_multiple_inappnot" = "Hi! Wir haben etwas Neues für Dich. Hast du eine Minute Zeit?";
+"PolicyTextGB" = "";
+
+/*Ik heb hier de punt weggehaald, omdat ik vermoed dat ik die zelf ten onrechte had geplaatst. Als die hier bewust wel was geplaatst, dan hoor ik het graag. 
+ "Bedrag" titel op het geef bedrag scherm*/
+"Amount" = "Betrag wählen";
+
+/*"Bepaal je geeflimiet" ; bij registratie van het geeflimiet*/
+"AmountLimit" = "Bestimme den maximalen Betrag Deiner Spende.";
+
+/*Algemene "Annuleren" knop*/
+"Cancel" = "Abbrechen";
+
+/*"Pincode wijzigen" in op de instellingen pagina*/
+"ChangePincode" = "Ändere Deinen Zugangscode";
+
+/*Check je mailbox te populair? Bekijk je inbox? 
+ "Gelukt! Check je inbox." op de pagina na dat je een email terugkrijgt om het wachtwoord te resetten*/
+"CheckInbox" = "\nErfolgreich! Überprüfe Deinen Posteingang.";
+
+/*"Stad" placeholder bij het invoeren van je stad bij de registratie*/
+"City" = "Stadt";
+
+/*Dat klinkt alsof je ook de optie krijgt om het bedrag over te maken. 
+ Het scannen is mislukt, titel wordt getoond langsboven*/
+"ContactFailed" = "Etwas ist schief gelaufen. Versuchs noch einmal oder wähle den Empfänger manuell aus.";
+
+/*"Land" placeholder bij de keuze van het land bij registratie*/
+"Country" = "Land";
+
+/*E-mail placeholder*/
+"Email" = "E-Mail Adresse";
+
+/*@lennie Krijgt de gebruiker nog meer info in dit geval? Of ziet hij alleen dat er iets mis gaat? 
+ Foutmelding bij het registreren: algemene melding dat er iets fout ging bij het registreren*/
+"ErrorTextRegister" = "Bei der Erstellung Deines Kontos ist etwas schief gelaufen. Versuchs mit einer anderen E-Mail-Adresse.";
+
+/*Algemene foutmelding (popup) "één van de velden is niet correct ingevuld"*/
+"FieldsNotCorrect" = "Eines der eingegebenen Felder ist nicht korrekt.";
+
+/*"Voornaam" placeholder bij de registratie*/
+"FirstName" = "Vorname";
+
+/*Wachtwoord vergeten? knop bij de login-pagina*/
+"ForgotPassword" = "Passwort vergessen?";
+
+/*Titeltekst op de vergeet wachtwoord pagina*/
+"ForgotPasswordText" = "Gib Deine E-Mail-Adresse ein. Wir senden Dir eine E-Mail mit den Informationen, wie Du Dein Passwort ändern kannst.\n\nWenn Du die E-Mail nicht sofort finden kannst, überprüfe bitte Deinen Spam-Ordner.";
+
+/*"Geven" op de Geef pagina waar je je bedrag kiest*/
+"Give" = "Spende";
+
+/*Op afstand geven en het bedrag overmaken is volgens mij niet hetzelfde!! 
+ "Op afstand geven" knop; wordt getoond op de pagina wanneer het scannen niet lukt*/
+"SelectReceiverButton" = "Wähle den Empfänger aus";
+
+/*"Geeflimiet" knop bij de instellingen*/
+"GiveLimit" = "Maximal-Betrag";
+
+/*Titel wanneer geven gelukt is*/
+"GivingSuccess" = "Vielen Dank für Deine Spende!\nDu kannst den Status in Deiner Übersicht überprüfen.";
+
+/*"Gegevens" knop bij instellingen*/
+"Information" = "Persönliche Info";
+
+/*Achternaam placeholder op de registratiepagina*/
+"LastName" = "Nachname";
+
+/*Nog even naar kijken? 
+ Laadtekst wanneer je aan het inloggen bent*/
+"LoggingIn" = "Einloggen.....";
+
+/*Nu staat overal doorgaan ipv inloggen, was dat de bedoeling? Of moest het enkel in het registratiegelukt-scherm veranderd worden? 
+ Inloggen tekst op de inlog knop*/
+"Login" = "Login";
+
+/*Geef pincode op -titel op het login pincode scherm*/
+"LoginPincode" = "Gib Deinen Zugangs-Code ein";
+
+/*Ik vind toegang ontvangen vreemd klinken. 
+ Titel op de login-pagina*/
+"LoginText" = "Um Zugang zu Deinem Konto zu erhalten, möchten wir sicherstellen, dass Du auch Du bist.";
+
+/*Uitloggen knop*/
+"LogOut" = "Abmelden";
+
+/*"collectemiddel" blijft vreemd. Alternatieven: "collectebus of -zak" of "inzamelobject" of "Givt logo" 
+ Titel op de scanpagina*/
+"MakeContact" = "Das ist der Givt-Moment.\nFühre Dein Handy in Richtung der \nSammelbox, Tasche oder dem Kollekten-Korb.";
+
+/*"Volgende" knop*/
+"Next" = "Weiter";
+
+/*"Nee, bedankt" knop*/
+"NoThanks" = "Nein, danke";
+
+/*Notificaties menu item bij instellingen*/
+"Notifications" = "Benachrichtigungen";
+
+/*Wachtwoord placeholder bij registratie*/
+"Password" = "Passwort";
+
+/*tekens, waaronder 
+ Wachtwoord regel staat onder het wachtwoord veld*/
+"PasswordRule" = "Das Passwort sollte mindestens 7 Zeichen lang sein, einschließlich mindestens einem Großbuchstaben und einer Ziffer.";
+
+/*Telefoonnummer placeholder bij registratie*/
+"PhoneNumber" = "Telefonnummer";
+
+/*Postcode placeholder*/
+"PostalCode" = "PLZ";
+
+/*"Klaar'-knop bij het succesvol geven*/
+"Ready" = "Fertig";
+
+/*"Registreren"-knop*/
+"Register" = "Anmelden";
+
+/*Moet hier een tekst staan? Lijkt mij niet nodig? 
+ Tekst die je ziet als je bezig bent met registreren*/
+"RegisterBusy" = "Anmelden ...";
+
+/*Maak je persoonlijke account? 
+ Titel op de registreerpagina*/
+"RegisterPage" = "Melde Dich an, um auf Deine Givt Informationen zuzugreifen.";
+
+/*Kan dit leuker? 
+ Titel op de tweede registratiepagina*/
+"RegisterPersonalPage" = "Um Deine Spenden zu verarbeiten, \nbenötigen wir einige persönliche Informationen.";
+
+/*Titel op de pincodepagina*/
+"RegisterPincode" = "Gib Deinen Zugangs-Code ein.";
+
+/*Iets persoonlijker? 
+ Titel op de registratie-gelukt pagina*/
+"RegistrationSuccess" = "Registrierung erfolgreich.\nViel Spaß beim Spenden!";
+
+/*Beveiliging menu-item op instellingen*/
+"Security" = "Sicherheit";
+
+/*"Verstuur"-knop tekst*/
+"Send" = "Senden";
+
+/*Instellingen (titel)*/
+"Settings" = "Einstellungen";
+
+/*@lennie, waarom is dit een aparte term? Ik ben exact dezelfde term eerder tegengekomen. En ik heb dus ook weer dezelfde vraag: Is dit alles wat een gebruiker krijgt? 
+ Er ging iets verkeerd (algemene error)*/
+"SomethingWentWrong" = "Ups, etwas ist schief gelaufen.";
+
+/*Placeholder voor Straat en huisnummer*/
+"StreetAndHouseNumber" = "Straßenname und -nummer";
+
+/*"Nogmaals proberen" knop op de geef mislukt pagina*/
+"TryAgain" = "Versuchs noch einmal";
+
+/*Welcome text 
+ Titel op de welkomstpagina*/
+"Welcome" = "Willkommen";
+
+/*Kan dit leuker? 
+ Foutmelding die je te zien krijgt als je een verkeerd email of wachtwoord invoert*/
+"WrongCredentials" = "Ungültige E-Mail-Adresse oder Passwort. Ist es möglich, dass Du Dich mit einem anderen E-Mail-Konto registriert hast?";
+
+/*"Ja, graag"-knop, te zien als je kiest om touchid te gebruiken of niet*/
+"YesPlease" = "Ja, bitte";
+
+/*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
+"BluetoothErrorMessage" = "Aktiviere Bluetooth, damit Du bereit bist, einem Signal zu spenden.";
+
+/*Foutmelding als er geen verbinding is met de server door bijv. internet-issues of door server-issues*/
+"ConnectionError" = "Derzeit ist es uns nicht möglich, eine Verbindung zum Server herzustellen. Keine Sorge, gönne Dir eine Tasse Tee und/oder überprüfe Deine Einstellungen.";
+
+/*"Bewaar" in het nederlands, als gebruiker vanuit instellingen naar geeflimiet instellen gaat wordt dit een knop met "Bewaar", in de registratieflow blijft deze wel gewoon Volgende / Next*/
+"Save" = "Speichern";
+
+/*In registratieflow "Mijn persoonsgegevens mogen door Givt worden vastgelegd." => hierbij geeft gebruik toe dat hij givt toelaat z'n data op te slaan*/
+"AcceptPolicy" = "Ok, Givt ist berechtigt, meine Daten zu speichern.";
+
+/*Close-tekst op knop: registratieflow -> algemene voorwaarden knop rechtsboven "Sluiten"*/
+"Close" = "Schließen";
+
+/*In registratieflow bij algemene voorwaarden, knop linksboven "Verstuur via e-mail"*/
+"SendViaEmail" = "Per E-Mail versenden";
+
+/*De titel op de pagina met algemene voorwaarden*/
+"TermsTitle" = "Unsere Nutzungsbedingungen";
+
+/*"Een korte samenvatting van de algemene voorwaarden:"*/
+"ShortSummaryTitleTerms" = "Es kommt auf Folgendes an:";
+
+/*"De uitgebreide versie van de voorwaarden:" zie sketch registratieflow -> algemene voorwaarden*/
+"FullVersionTitleTerms" = "Nutzungsbedingungen";
+
+/*De algemene voorwaarden zelf (lange tekst, zie sketch)*/
+"TermsText" = "";
+
+/*"Je mobiel voorbereiden" titel op het scherm voor de toestemming van bluetooth e.d.*/
+"PrepareMobileTitle" = "Bevor Du loslegst";
+
+/*Tekst onder de titel "Om Givt zo te kunnen gebruiken..." - met uitleg waarom we gegevens nodig hebben*/
+"PrepareMobileExplained" = "Für ein optimales Erlebnis mit Givt benötigen wir Deine Zustimmung, um Benachrichtigungen versenden zu können.";
+
+/*De laatste zin op het toestemmingscherm "Zo weet je waar en wanneer je kunt geven" => sketch*/
+"PrepareMobileSummary" = "So weißt Du, wo und wann Du spenden kannst.";
+
+/*De tekst van de privacy policy waar de gebruiker akkoord mee moet gaan.*/
+"PolicyText" = "";
+
+/*"Hulp nodig?" op de hulppagina (titel)*/
+"NeedHelpTitle" = "Hilfe benötigt?";
+
+/*"Vind hier antwoorden op je vragen en handige tips" : ondertitel op de helppagina*/
+"FindAnswersToYourQuestions" = "Hier findest Du Antworten auf Deine Fragen und hilfreiche Tips";
+
+/*Vraag op de helppagina: "Hoe werkt het registreren?"*/
+"QuestionHowDoesRegisteringWorks" = "Wie funktioniert die Registrierung?";
+
+/*Vraag op de helppagina "Waarom worden mijn persoonsgegevens vastgelegd?"*/
+"QuestionWhyAreMyDataStored" = "Warum speichert Givt meine personenbezogenen Daten?";
+
+/*Wat is Givt?*/
+"FAQvraag1" = "Was ist Givt?";
+
+/*Hoe werkt Givt?*/
+"FAQvraag2" = "Wie funktioniert Givt?";
+
+/*Hoe wijzig ik mijn instellingen of gegevens?*/
+"FAQvraag3" = "Wie kann ich meine Einstellungen oder persönlichen Daten ändern?";
+
+/*Waar kan ik Givt gebruiken?*/
+"FAQvraag4" = "Wo kann ich Givt einsetzen?";
+
+/*Hoe wordt mijn Givt afgeschreven?*/
+"FAQvraag5" = "Wie wird meine Spende abgebucht?";
+
+/*Wat kan ik nog meer met Givt?*/
+"FAQvraag6" = "";
+
+/*Hoe veilig is geven met Givt?*/
+"FAQvraag7" = "";
+
+/*Hoe kan ik mij afmelden voor Givt?*/
+"FAQvraag8" = "";
+
+/*Antwoord op FAQ vraag1*/
+"FAQantwoord1" = "";
+
+/*Klopt dit?
+Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts’. Door op deze melding te klikken geef je alsnog het bedrag dat je tijdens de collecte wilde geven. 
+ Antwoord op FAQ vraag2*/
+"FAQantwoord2" = "";
+
+/*Je komt nu meteen in het betaalscherm. (ipv je komt nu gelijk in het betaalscherm) 
+ Antwoord op FAQ vraag3*/
+"FAQantwoord3" = "";
+
+/*Antwoord op FAQ vraag4*/
+"FAQantwoord4" = "";
+
+/*Antwoord op FAQ vraag5*/
+"FAQantwoord5" = "";
+
+/*Antwoord op FAQ vraag6*/
+"FAQantwoord6" = "";
+
+/*Antwoord op FAQ vraag7*/
+"FAQantwoord7" = "";
+
+/*kunnen we dit deze sprint al aanpassen? 
+ Antwoord op FAQ vraag8*/
+"FAQantwoord8" = "";
+
+/*Titel op het scherm van de privacyverklaring*/
+"PrivacyTitle" = "Datenschutzerklärung";
+
+/*Tekst op het einde van de registratie "Bij het doorgaan ga je akkoord met de algemene voorwaarden."*/
+"AcceptTerms" = "Wenn Du weiter gehst, stimmst Du unseren AGBs zu.";
+
+/*Tekst verschijnt wanneer het ondertekenen van de machtiging niet is gelukt*/
+"MandateSigingFailed" = "Das Mandat konnte nicht unterschrieben werden. Versuche es später noch einmal über das Menü. Kommt diese Nachricht immer wieder? Kontaktiere uns über support@givtapp.net .";
+
+/*Tekst verschijnt in een loading-animatie wanneer de status van de machtiging wordt opgevraagd.*/
+"AwaitingMandateStatus" = "Wir benötigen einen Moment um Dein Mandat zu bearbeiten.";
+
+/*Treedt op wanneer het niet mogelijk blijkt te zijn om een machtigings-ondertekening te starten (SlimPay niet te bereiken)*/
+"RequestMandateFailed" = "Im Moment ist es nicht möglich, ein Mandat zu erstellen. Bitte versuche es in ein paar Minuten nochmal.";
+
+/*"Hoe werkt geven?" vraag in FAQ*/
+"FAQHowDoesGivingWork" = "";
+
+/*"Hoe werkt handmatig geven?"*/
+"FAQHowDoesManualGivingWork" = "";
+
+/*Cindy, die {0} stond daar express ... 
+ Sorry, maar we nemen pas genoegen met minstens 0,50 euro.*/
+"GivtNotEnough" = "Tut mir Leid, der Minimal-Betrag ist {0}.";
+
+/*SlimPay informatie onder het Givy icoon*/
+"SlimPayInformationPart2" = "Deshalb bitten wir Dich dieses eine Mal, das SlimPay Mandat zu unterschreiben.\n\nDa wir mit Mandaten arbeiten, hast Du die Option, Deine Spenden wieder zurückzuziehen, wenn Du das möchtest.";
+
+/*Title van de pagina "Account opzeggen"*/
+"Unregister" = "Account löschen";
+
+/*Informatie op de "account opzeggen" pagina*/
+"UnregisterInfo" = "Wir sind sehr traurig, dass Du gehst! Wir werden alle Deine persönlichen Daten löschen.\n\nMit einer Ausnahme: wenn Du einer gemeinnützigen Organisation gespendet hast, müssen wir Deine Spendendaten, Deinen Namen und Adresse für mindestens sieben Jahre aufbewahren. Deine E-Mail-Adresse und Telefonnummer werden gelöscht.";
+
+/*Jammer dat je gaat*/
+"UnregisterSad" = "Wir sind sehr traurig, dass Du gehst und hoffen, dass wir Dich wiedersehen.";
+
+/*Titel op de Historie pagina in de app*/
+"HistoryTitle" = "Spenden";
+
+/*Titel op de infopagina van het Historiescherm*/
+"HistoryInfoTitle" = "Spendendetails";
+
+/*Groene status bij de Historie infopagina*/
+"HistoryAmountAccepted" = "In Bearbeitung";
+
+/*Status bij de historiepagina van gebruiker die geannuleerd heeft*/
+"HistoryAmountCancelled" = "Vom Benutzer abgebrochen";
+
+/*Status van bank die bedrag geweigerd heeft op de infopagina van de Historie*/
+"HistoryAmountDenied" = "Von Bank abgelehnt";
+
+/*Status op de infopagina van de Historie waar de instantie heeft geïncasseerd*/
+"HistoryAmountCollected" = "Bearbeitet";
+
+/*Titel bovenaan op scherm na inloggen met filmpje over de geefbeweging*/
+"LoginSuccess" = "Viel Spaß beim Spenden!";
+
+/*Tekst op de giften historiek wanneer er geen gifts gegeven zijn.*/
+"HistoryIsEmpty" = "Hier findest Du Informationen über Deine Spenden, aber zuerst mußt Du anfangen zu spenden!";
+
+/*Errormelding bij een te lang e-mailadres*/
+"ErrorEmailTooLong" = "Sorry, Deine E-Mail-Adresse ist zu lang.";
+
+/*Titel bovenaan een popup alert dat een nieuwe update beschikbaar is*/
+"UpdateAlertTitle" = "Update verfügbar";
+
+/*Bericht die in de alert zal staan omtrent een systeemupdate van Givt*/
+"UpdateAlertMessage" = "Eine neue Version von Givt ist verfügbar, möchtest Du jetzt updaten?";
+
+/*Kritische update titel van het alert scherm*/
+"CriticalUpdateTitle" = "Wichtiges Update";
+
+/*Kritische update bericht onder de titel in de alert melding*/
+"CriticalUpdateMessage" = "Ein wichtiges Update ist verfügbar. Es ist notwendig für den korrekten Betrieb der Givt App.";
+
+/*Als er een organisatie gedeteceerd is krijgt gebruiker alert: Message is het bericht in de alert*/
+"OrganisationProposalMessage" = "Möchtest Du an {0} spenden?";
+
+/*Ja*/
+"Yes" = "Ja";
+
+/*Nee*/
+"No" = "Nein";
+
+/*Waar kan ik het overzicht van mijn giften bekijken?*/
+"FAQvraag9" = "";
+
+/*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
+"FAQantwoord9" = "";
+
+/*Question about passcode*/
+"FAQQuestion11" = "";
+
+/*Answer Passcode*/
+"FAQAnswer11" = "";
+
+/*Antwoord op de vraag Hoe werkt registreren*/
+"AnswerHowDoesRegistrationWork" = "";
+
+/*Antwoord FAQ Hoe werkt geven?*/
+"AnswerHowDoesGivingWork" = "";
+
+/*Antwoord FAQ hoe werkt ontvanger selecteren?*/
+"AnswerHowDoesManualGivingWork" = "";
+
+/*Informatie over waarom persoonlijke gegevens invullen.*/
+"InformationPersonalData" = "Givt benötigt diese persönlichen Daten um Deine Spenden zu bearbeiten. Wir gehen sorgsam mit diesen Daten um. Du kannst es in unserer Datenschutzerklärung nachlesen.";
+
+/*Wie is Givt/NFCollect?*/
+"InformationAboutUs" = "Givt ist ein Produkt der Givt B.V.\n\nDu findest uns in Noordersluisweg 27 in Lelystad, Niederlande. Für Fragen und Beschwerden erreichst Du uns unter +31 320 320 115 oder support@givtapp.net.\n\nWir sind im Handelsregister der Niederländischen Handelskammer unter der Nummer 64534421 registriert.";
+
+/*Over Givt*/
+"TitleAboutGivt" = "Über Givt / Kontakt";
+
+/*Verstuur jaaroverzicht (knop bij giften)*/
+"SendAnnualReview" = "Jahresübersicht senden";
+
+/*Informatie over het versturen van jaaroverzicht*/
+"InfoAnnualReview" = "Hier kannst Du die Jahresübersicht über Deine Spenden erhalten.\nDie Jahresübersicht kannst Du für Deine Steuererklärung verwenden.";
+
+/*Verstuur per e-mail*/
+"SendByEmail" = "Per E-Mail versenden";
+
+/*Waarom deze persoonlijke gegevens?*/
+"WhyPersonalData" = "Warum diese persönlichen Daten?";
+
+/*Lees privacyverklaring*/
+"ReadPrivacy" = "Datenschutzerklärung lesen";
+
+/*Hoe lang duurt het voor mijn gift wordt afgeschreven?*/
+"FAQQuestion12" = "";
+
+/*Je gift wordt binnen twee werkdagen van je bankrekening afgeschreven.*/
+"FAQAnswer12" = "";
+
+/*Hoe kan ik geven aan meerdere collectes*/
+"FAQQuestion14" = "";
+
+/*antwoord meerdere collectesvraag*/
+"FAQAnswer14" = "";
+
+/*Begeleidingstekst meerdere collectes*/
+"Feature_MultipleCollections" = "Neuigkeiten! Jetzt kannst Du drei Sammlungen gleichzeitig bedienen. Wird es diesen Monat eng bei Dir? Lasse einfach eine Sammlung offen oder entferne sie. Möchtest Du mehr erfahren? Schau in unser FAQ.";
+
+/*Ik snap het*/
+"Feature_IGetItButton" = "Immer spendenbereit";
+
+/*Info over knop om collecte te activeren*/
+"Ballon_ActiveerCollecte" = "Hier kannst Du bis zu drei Sammlungen hinzufügen";
+
+/*Dubbel Tap om collecte te verwijderen*/
+"Ballon_VerwijderCollecte" = "Eine Sammlung kannst Du durch einen Doppel-Tap entfernen";
+
+/*Vragen om het e-mailadres zodat je kan geven*/
+"NeedEmailToGive" = "Wir brauchen eine Identifikation, um Dir das Spenden mit Givt zu erlauben";
+
+/*knop Eerst geven*/
+"GiveFirst" = "Spende zuerst";
+
+/*Knop Verder*/
+"Go" = "Los geht's";
+
+/*belastingaangifte vraag*/
+"FAQvraag15" = "";
+
+/*antwoord op vraag15*/
+"FAQantwoord15" = "";
+
+/*In app begeleiding naar 'Anders geven?'*/
+"GiveDiffWalkthrough" = "Alles klar? Tippe hier um eine Organisation von der Liste zu wählen.";
+
+/*Staat je vraag er niet tussen? (FAQ)*/
+"FAQvraag17" = "";
+
+/*antwoord 'Staat je vraag er niet tussen?'*/
+"FAQantwoord17" = "";
+
+/*Camera toegang is nodig voor flashlight (enkel voor Android)*/
+"NoCameraAccessCelebration" = "Damit Du das super-mega Spenden-Event unterstützen kannst, benötigen wir Zugang zu Deiner Kamera.";
+
+/*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
+"YesCool" = "Ja, cool!";
+
+/*Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
+"FAQvraag18" = "";
+
+/*A:Hoe gaat Givt met mijn persoonsgegevens om? (AVG)*/
+"FAQAntwoord18" = "";
+
+/*Annuleer van fingerprint scsannen*/
+"fingerprint_cancel" = "Abbrechen";
+
+/*FAQ Question Anonymity*/
+"FAQuestAnonymity" = "";
+
+/*FAQ Answer Anonymity*/
+"FAQanswerAnonymity" = "";
+
+/*op het scherm waar je de voorkeursbedragen (presets) kan enablen of disablen*/
+"AmountPresetsChangingPresets" = "Du kannst hier Beträge vordefinieren und zu Deiner Tastatur hinzufügen.";
+
+/*menu-item to change/set the amount presets*/
+"AmountPresetsChangePresetsMenu" = "Vordefinierte Beträge anpassen";
+
+/*in app notification to announce new feature (new gui!)*/
+"Feature_newgui_inappnot" = "Tippe hier um mehr über das neue Benutzerinterface zu erfahren!";
+
+/*Givt B.V. voor SEPA-users*/
+"GivtCompanyInfo" = "Givt ist ein Produkt der Givt B.V.\n\nDu findest uns in Noordersluisweg 27 in Lelystad, Niederlande. Für Fragen und Beschwerden erreichst Du uns unter +31 320 320 115 oder support@givtapp.net.\n\nWir sind im Handelsregister der Niederländischen Handelskammer unter der Nummer 64534421 registriert.";
+
+/*Givt Ltd. ...*/
+"GivtCompanyInfoGB" = "N.A. for German";
+"CelebrationHappyToSeeYou" = "Lass uns Deine Spende gemeinsam feiern!";
+"CelebrationQueueText" = "Lass einfach Deine App offen und wir stellen sicher, dass Du eine Push-Nachricht erhältst, die den Countdown startet.";
+"CelebrationQueueCancel" = "Ohne Blitzspende spenden";
+"CelebrationEnablePushNotification" = "Push-Nachrichten aktivieren";
+"FAQButtonAccessibilityLabel" = "";
+"ProgressBarStepOne" = "Schritt 1";
+"ProgressBarStepTwo" = "Schritt 2";
+"ProgressBarStepThree" = "Schritt 3";
+"RemoveCollectButtonAccessibilityLabel" = "Entferne {0}";
+"RemoveBtnAccessabilityLabel" = "Löschen";
+"ProgressBarStepFour" = "Schritt 4";
+"ChangeBankAccountNumberAndSortCode" = "Bankdaten ändern";
+"UpdateBacsAccountDetailsError" = "Oha, die Bankleitzahl oder die Kontonummer ist ungültig. Du kannst Bankleitzahl und/oder Kontonummer unter dem Menüpunkt 'Persönliche Daten' ändern.";
+"DDIFailedTitle" = "Lastschrift-Anfrage fehlgeschlagen";
+"DDIFailedMessage" = "Im Moment kann keine Lastschrift-Anfrage durchgeführt werden. Bitte versuche es in ein paar Minuten noch einmal.";
+"FAQantwoord5GB" = "";
+"FAQvraag15GB" = "";
+"FAQantwoord15GB" = "";
+"AnswerHowDoesRegistrationWorkGB" = "";
+"FAQantwoord7GB" = "";
+"FAQantwoord18GB" = "";
+"GiftAid_Setting" = "N.A. in Germany";
+"GiftAid_Info" = "N.A. in Germany";
+"GiftAid_HeaderDisclaimer" = "N.A. in Germany";
+"GiftAid_BodyDisclaimer" = "N.A. in Germany";
+"GiftAidInfo_Title" = "N.A. in Germany";
+"GiftAidInfo_Body" = "N.A. in Germany";
+"FAQAnswer12GB" = "";
+"FAQVraagDDI" = "";
+"FAQAntwoordDDI" = "";
+"GiftAidUnsavedChanges" = "N.A. in Germany";
+"GiftAidChangeLater" = "N.A. in Germany";
+"Dismiss" = "Schließen";
+"ImportantMessage" = "Wichtige Nachricht";
+"CelebrationQueueCancelAlertBody" = "Sicher, dass Du nicht mit uns feiern willst?";
+"CelebrationQueueCancelAlertTitle" = "Zu schade!";
+"HistoryInfoLegendaAccessibilityLabel" = "Info Erklärung";
+"HistoryDownloadAnnualOverviewAccessibilityLabel" = "Jährliche Spendenübersicht herunterladen (E-Mail)";
+"BluetoothErrorMessageEvent" = "Mit Bluetooth kannst Du Deine Position auch mit schlechter/fehlender GPS-Verbindung bestimmen, durch die Verwendung von Positions-Beacons. \nAktiviere Bluetooth jetzt!";
+"processCashedGivt_NamespaceInvalid" = "Wir haben eine nicht-verarbeitete Spende an eine Organisation entdeckt, die bedauerlicherweise Givt nicht mehr verwendet. Deine Spende wird annuliert.";
+"SuggestionNamespaceInvalid" = "Dein zuletzt ausgewähltes Spendenziel verwendet Givt nicht mehr.";
+"Charity" = "Wohltätige Organisation";
+"Artist" = "Künstler";
+"Church" = "Kirche";
+"Campaign" = "Kampagne";
+"GiveYetDifferently" = "Wähle aus der Liste";
+"GiveToNearestBeacon" = "Spende an: {0}";
+"BankAccountHolderNamePlaceholder" = "Kontobezeichnung";

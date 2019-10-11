@@ -140,7 +140,9 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         
         _loginManager.getUserExt(completion: {uext in
             if var uext = uext {
-                uext.AmountLimit = Int(self.amountLimit.text!)!
+                DispatchQueue.main.async {
+                    uext.AmountLimit = Int(self.amountLimit.text!)!
+                }
                 self._loginManager.updateUser(uext: uext, completionHandler:{_ in
                     DispatchQueue.main.async {
                         self.navigationController?.hideLeftView(nil)
