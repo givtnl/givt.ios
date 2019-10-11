@@ -62,7 +62,9 @@ class SpecialUITextField: UITextField {
             }
         }
     }
-    
+    func isDifferentFrom(from: String) -> Bool {
+        return self.text! != from
+    }
     func beganEditing() {
         border.isHidden = false
     }

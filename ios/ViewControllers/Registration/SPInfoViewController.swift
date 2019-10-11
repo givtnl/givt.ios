@@ -77,7 +77,7 @@ class SPInfoViewController: UIViewController {
         NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
             SVProgressHUD.show()
             
-            self._loginManager.requestMandateUrl(completionHandler: { (response) in
+            self._loginManager.registerMandate(completionHandler: { (response) in
                 SVProgressHUD.dismiss()
                 if let r = response, let slimpayUrl = r.text, r.basicStatus == .ok {
                     self.log.info(message: "Mandate flow will now start")

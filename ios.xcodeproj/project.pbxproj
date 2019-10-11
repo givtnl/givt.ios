@@ -401,6 +401,8 @@
 		FBA0894F21C7FEE4001DD889 /* FeatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
 		FBB85B0221C9230400A1A634 /* FeaturesFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesFirstViewController.swift; sourceTree = "<group>"; };
 		FBBF72A521CA819600EBB085 /* FeaturesNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesNavigationController.swift; sourceTree = "<group>"; };
+		FBD827E4234DF2F70034BB51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FBD827E5234DF2F70034BB51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -979,6 +981,7 @@
 			knownRegions = (
 				nl,
 				en,
+				de,
 			);
 			mainGroup = FB3CE6CA1F14CA1F0055185B;
 			productRefGroup = FB3CE6D41F14CA200055185B /* Products */;
@@ -1255,6 +1258,7 @@
 			children = (
 				D761E9C61F20D341002B849B /* nl */,
 				D72B19811FE3016700EE3FDE /* en */,
+				FBD827E5234DF2F70034BB51 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1264,6 +1268,7 @@
 			children = (
 				D7E708521FE7FD67002A7770 /* nl */,
 				D7E708531FE7FD68002A7770 /* en */,
+				FBD827E4234DF2F70034BB51 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

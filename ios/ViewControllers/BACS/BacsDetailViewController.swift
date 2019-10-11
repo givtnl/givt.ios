@@ -55,7 +55,7 @@ class BacsDetailViewController: UIViewController {
     @IBAction func done(_ sender: Any) {
         if NavigationManager.shared.hasInternetConnection(context: self) {
             SVProgressHUD.show()
-            LoginManager.shared.requestMandateUrl(completionHandler: { (response) in
+            LoginManager.shared.registerMandate { (response) in
                 SVProgressHUD.dismiss()
                 if let r = response {
                     if(r.status == .ok){
@@ -97,7 +97,7 @@ class BacsDetailViewController: UIViewController {
                         }
                     }
                 }
-            })
+            }
         }
     }
  
