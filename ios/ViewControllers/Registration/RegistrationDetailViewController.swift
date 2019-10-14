@@ -554,7 +554,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         case sortCode, accountNumber, accountName:
             let sortCodeIsValid = sortCode.text!.count == 6 && validationHelper.isValidNumeric(string: sortCode.text!)
             let accountNumberIsValid = accountNumber.text?.count == 8 && validationHelper.isValidNumeric(string: accountNumber.text!)
-            let accountNameIsValid = accountName.text!.count > 0 && accountName.text!.count <= 18
+            let accountNameIsValid = validationHelper.isValidAccountName(string: accountName.text!)
             sortCodeIsValid ? sortCode.setValid() : sortCode.setInvalid()
             accountNumberIsValid ? accountNumber.setValid() : accountNumber.setInvalid()
             accountNameIsValid ? accountName.setValid() : accountName.setInvalid()
