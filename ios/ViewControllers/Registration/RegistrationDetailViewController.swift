@@ -74,7 +74,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         
         #if DEBUG
             streetAndNumber.text = "Stijn Streuvelhoofd 12"
-            postalCode.text = "8501"
+            postalCode.text = "RH5 4PQ"
             city.text = "Heule"
             selectedCountry = AppConstants.countries[0]
             selectedMobilePrefix = AppConstants.countries[0]
@@ -82,6 +82,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             mobileNumber.text = "0498121314"
             iban.text = "BE62 5100 0754 7061"
+            sortCode.text="000000"
+            accountNumber.text = "12345678"
+            accountName.text="GivtTest"
 
             checkAll(streetAndNumber)
             checkAll(postalCode)
@@ -90,6 +93,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             checkAll(mobilePrefixField)
             checkAll(mobileNumber)
             checkAll(iban)
+            checkAll(sortCode)
+            checkAll(accountNumber)
+            checkAll(accountName)
         #endif
         
         if let currentRegionCode = Locale.current.regionCode {
@@ -134,7 +140,6 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         } else {
             showSepa(sender: self, animated: false)
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
