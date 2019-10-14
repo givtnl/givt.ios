@@ -84,6 +84,13 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
             imgView3.isHidden = false
             inputFieldToEdit3.isHidden = false
             inputFieldToEdit3.text = inputOfInput3
+            if(UserDefaults.standard.mandateSigned) {
+                inputFieldToEdit.disable()
+                inputFieldToEdit2.disable()
+                inputFieldToEdit3.disable()
+                
+                saveBtn.isEnabled = false
+            }
         }
         
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
@@ -111,6 +118,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         inputFieldToEdit.becomeFirstResponder()
         inputFieldToEdit.beganEditing()
         inputFieldToEdit2.beganEditing()
+        inputFieldToEdit3.beganEditing()
 
     }
     
