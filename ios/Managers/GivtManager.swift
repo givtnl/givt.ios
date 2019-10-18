@@ -583,8 +583,7 @@ final class GivtManager: NSObject {
         let queryStrings = [ "https://www.givtapp.net/download?code=",
                              "https://www.givt.app/download?code=",
                              "https://api.givtapp.net/givt?code=",
-                             "https://givtapicorewindbg.azurewebsites.net/givt?code=",
-                             "https://givtapicoredbg.azurewebsites.net/givt?code=" ]
+                             "https://givt-debug-api.azurewebsites.net/givt?code=" ]
         
         for queryString in queryStrings {
             let idxqs = link.index(of: queryString)
