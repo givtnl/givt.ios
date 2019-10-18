@@ -9,8 +9,7 @@
 		<string>applinks:www.givtapp.net</string>
 		<string>applinks:cloud.givtapp.net</string>
 		<string>applinks:api.givtapp.net</string>
-		<string>applinks:givtapicoredbg.azurewebsites.net</string>
-		<string>applinks:givtapicorewindbg.azurewebsites.net</string>
+		<string>applinks:givt-debug-api.azurewebsites.net</string>
 	</array>
 	<key>com.apple.developer.networking.networkextension</key>
 	<array/>
