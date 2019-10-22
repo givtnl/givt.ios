@@ -85,7 +85,10 @@ class SpecialUITextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
-    
+    func disable() {
+        self.isEnabled = false
+        border.removeFromSuperlayer()
+    }
     func setBottomBorder() {
         border = CALayer()
         let width = CGFloat(2.0)

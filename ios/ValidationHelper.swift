@@ -165,7 +165,7 @@ class ValidationHelper {
         allowedCharacters.insert("/")
         //remove all allowed characters. When rest is not 0, means that we have unwanted characters.
         let rest = string.trimmingCharacters(in: allowedCharacters)
-        if(rest.count == 0 && string.count >= 2 && string.count <= 18) {
+        if(rest.count == 0 && string.count >= 3 && string.count <= 18) {
             return true
         } else {
             return false
