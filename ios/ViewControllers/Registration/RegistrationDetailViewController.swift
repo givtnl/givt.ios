@@ -84,7 +84,6 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             iban.text = "BE62 5100 0754 7061"
             sortCode.text="000000"
             accountNumber.text = "12345678"
-            accountName.text="GivtTest"
 
             checkAll(streetAndNumber)
             checkAll(postalCode)
@@ -95,7 +94,6 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             checkAll(iban)
             checkAll(sortCode)
             checkAll(accountNumber)
-            checkAll(accountName)
         #endif
         
         if let currentRegionCode = Locale.current.regionCode {
@@ -213,7 +211,6 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     private var iban: CustomUITextField!
     private var sortCode: CustomUITextField!
     private var accountNumber: CustomUITextField!
-    private var accountName: CustomUITextField!
     
     func setupPaymentView() {
         iban = CustomUITextField()
@@ -281,19 +278,6 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         accountNumber.trailingAnchor.constraint(equalTo: bacsView.trailingAnchor, constant: -20).isActive = true
         accountNumber.heightAnchor.constraint(equalTo: sortCode.heightAnchor, constant: 0).isActive = true
         
-        accountName = CustomUITextField()
-        accountName.delegate = self
-        accountName.awakeFromNib()
-        accountName.placeholder = NSLocalizedString("BankAccountHolderNamePlaceholder", comment: "")
-        accountName.font = UIFont(name: "Avenir-Light", size: 16)
-        accountName.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-        accountName.translatesAutoresizingMaskIntoConstraints = false
-        bacsView.addSubview(accountName)
-        accountName.topAnchor.constraint(equalTo: sortCode.bottomAnchor, constant: 10).isActive = true
-        accountName.leadingAnchor.constraint(equalTo: sortCode.leadingAnchor, constant: 0).isActive = true
-        accountName.trailingAnchor.constraint(equalTo: accountNumber.trailingAnchor, constant: 0).isActive = true
-        accountName.heightAnchor.constraint(equalTo: sortCode.heightAnchor, constant: 0).isActive = true
-        accountName.bottomAnchor.constraint(equalTo: bacsView.bottomAnchor, constant: 0).isActive = true
         self.view.layoutIfNeeded()
     }
     
@@ -337,11 +321,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         iban.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         sortCode.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         accountNumber.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        accountName.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if textField == sortCode || textField == accountNumber || textField == accountName {
+        if textField == sortCode || textField == accountNumber {
             checkAll(sortCode)
         }
         if textField == iban {
@@ -466,7 +449,6 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let city = self.city.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let sortCode = self.sortCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let bacsAccountNumber = self.accountNumber.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        let accountName = self.accountName.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         let country = self.selectedCountry?.shortName
         let iban = self.iban.text!.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -474,10 +456,10 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         var userData: RegistrationUser!
         if paymentType == .sepa {
             UserDefaults.standard.accountType = AccountType.sepa
-            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "", accountName: "")
+            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: iban, mobileNumber: mobileNumber, postalCode: postalCode, sortCode: "", bacsAccountNumber: "")
         } else {
             UserDefaults.standard.accountType = AccountType.bacs
-            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber, accountName: accountName)
+            userData = RegistrationUser(email: emailField, password: password, firstName: firstNameField, lastName: lastNameField, address: address, city: city, country: country!, iban: "", mobileNumber: mobileNumber, postalCode: postalCode, sortCode: sortCode, bacsAccountNumber: bacsAccountNumber)
         }
         _loginManager.registerExtraDataFromUser(userData, completionHandler: {success in
             if let success = success {
@@ -556,14 +538,12 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         case mobilePrefixField:
             isMobilePrefixValid = validationHelper.isBetweenCriteria(mobilePrefixField.text!, 6)
             isMobilePrefixValid ? textField.setValid() : textField.setInvalid()
-        case sortCode, accountNumber, accountName:
+        case sortCode, accountNumber:
             let sortCodeIsValid = sortCode.text!.count == 6 && validationHelper.isValidNumeric(string: sortCode.text!)
             let accountNumberIsValid = accountNumber.text?.count == 8 && validationHelper.isValidNumeric(string: accountNumber.text!)
-            let accountNameIsValid = validationHelper.isValidAccountName(string: accountName.text!)
             sortCodeIsValid ? sortCode.setValid() : sortCode.setInvalid()
             accountNumberIsValid ? accountNumber.setValid() : accountNumber.setInvalid()
-            accountNameIsValid ? accountName.setValid() : accountName.setInvalid()
-            isBacsValid = sortCodeIsValid && accountNumberIsValid && accountNameIsValid
+            isBacsValid = sortCodeIsValid && accountNumberIsValid
         default:
             break
         }
