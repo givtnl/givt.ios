@@ -261,7 +261,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         bacsView.addSubview(sortCode)
         sortCode.topAnchor.constraint(equalTo: bacsView.topAnchor, constant: 10).isActive = true
         sortCode.leadingAnchor.constraint(equalTo: bacsView.leadingAnchor, constant: 20).isActive = true
-        sortCode.widthAnchor.constraint(equalTo: bacsView.widthAnchor, multiplier: 0.4).isActive = true
+        sortCode.trailingAnchor.constraint(equalTo: bacsView.trailingAnchor, constant: -20).isActive = true
         sortCode.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         accountNumber = CustomUITextField()
@@ -273,10 +273,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         accountNumber.font = UIFont(name: "Avenir-Light", size: 16)
         accountNumber.translatesAutoresizingMaskIntoConstraints = false
         bacsView.addSubview(accountNumber)
-        accountNumber.topAnchor.constraint(equalTo: bacsView.topAnchor, constant: 10).isActive = true
-        accountNumber.leadingAnchor.constraint(equalTo: sortCode.trailingAnchor, constant: 10).isActive = true
-        accountNumber.trailingAnchor.constraint(equalTo: bacsView.trailingAnchor, constant: -20).isActive = true
+        accountNumber.topAnchor.constraint(equalTo: sortCode.bottomAnchor, constant: 10).isActive = true
+        accountNumber.leadingAnchor.constraint(equalTo: sortCode.leadingAnchor, constant: 0).isActive = true
+        accountNumber.trailingAnchor.constraint(equalTo: sortCode.trailingAnchor, constant: 0).isActive = true
         accountNumber.heightAnchor.constraint(equalTo: sortCode.heightAnchor, constant: 0).isActive = true
+        accountNumber.bottomAnchor.constraint(equalTo: bacsView.bottomAnchor, constant: 0).isActive = true
         
         self.view.layoutIfNeeded()
     }
