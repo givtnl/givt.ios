@@ -137,20 +137,20 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
             _navigationManager.presentAlertNoConnection(context: self)
             return
         }
-        
-        _loginManager.getUserExt(completion: {uext in
-            if var uext = uext {
-                DispatchQueue.main.async {
-                    uext.AmountLimit = Int(self.amountLimit.text!)!
+        if let amountLimit = Int(self.amountLimit.text!) {
+            _loginManager.getUserExt(completion: {userExtension in
+                if var uext = userExtension {
+                    uext.AmountLimit = amountLimit
+                    self._loginManager.updateUser(uext: uext, completionHandler: {_ in
+                        DispatchQueue.main.async {
+                            self.navigationController?.hideLeftView(nil)
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    })
                 }
-                self._loginManager.updateUser(uext: uext, completionHandler:{_ in
-                    DispatchQueue.main.async {
-                        self.navigationController?.hideLeftView(nil)
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                })
-            }
-        })
+            })
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
