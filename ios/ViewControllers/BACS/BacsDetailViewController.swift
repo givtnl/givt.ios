@@ -79,7 +79,11 @@ class BacsDetailViewController: UIViewController {
                         if let data = r.data {
                             do {
                                 let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                                if let parsedCode = parsedData["Code"] as? Int {
+                                if let additionalInformation = parsedData["AdditionalInformation"] as? Dictionary<String, Any>,
+                                    let errorTerm = additionalInformation["errorTerm"] as? String {
+                                    alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
+                                    alert.message = NSLocalizedString(errorTerm, comment: "")
+                                } else if let parsedCode = parsedData["Code"] as? Int {
                                     if(parsedCode == 111){
                                         alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
                                         alert.message = NSLocalizedString("UpdateBacsAccountDetailsError", comment: "")
