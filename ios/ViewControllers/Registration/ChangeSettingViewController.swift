@@ -18,23 +18,20 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var inputFieldToEdit: SpecialUITextField!
     @IBOutlet var inputFieldToEdit2: SpecialUITextField!
-    @IBOutlet var inputFieldToEdit3: SpecialUITextField!
     
     @IBOutlet var inputStack: UIStackView!
     
     @IBOutlet var fieldToEdit: UILabel!
     var saveAction: (String) -> Void = {_ in }
-    var saveAction2: (String, String, String) -> Void = {_ , _, _ in}
+    var saveAction2: (String, String) -> Void = {_ , _ in}
     
     var validateInput1: (String) -> Bool = {(String) in return false}
     var validateInput2: (String) -> Bool = {(String) in return false}
-    var validateInput3: (String) -> Bool = {(String) in return false}
 
     var titleOfInput: String!
     
     var inputOfInput: String!
     var inputOfInput2: String!
-    var inputOfInput3: String!
 
     var keyboardTypeOfInput: UIKeyboardType!
     
@@ -56,8 +53,6 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         imgView2.isHidden = true
         inputFieldToEdit2.isHidden = true
         
-        imgView3.isHidden = true
-        inputFieldToEdit3.isHidden = true
         // end of hiding
         
         inputFieldToEdit.delegate = self
@@ -80,17 +75,6 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
             imgView2.isHidden = false
             inputFieldToEdit2.isHidden = false
             inputFieldToEdit2.text = inputOfInput2
-
-            imgView3.isHidden = false
-            inputFieldToEdit3.isHidden = false
-            inputFieldToEdit3.text = inputOfInput3
-            if(UserDefaults.standard.mandateSigned) {
-                inputFieldToEdit.disable()
-                inputFieldToEdit2.disable()
-                inputFieldToEdit3.disable()
-                
-                saveBtn.isEnabled = false
-            }
         }
         
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
@@ -118,7 +102,6 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         inputFieldToEdit.becomeFirstResponder()
         inputFieldToEdit.beganEditing()
         inputFieldToEdit2.beganEditing()
-        inputFieldToEdit3.beganEditing()
 
     }
     
@@ -126,9 +109,8 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         if(type == SettingType.bacs){
             inputFieldToEdit.isValid = validateInput1(inputFieldToEdit.text!)
             inputFieldToEdit2.isValid = validateInput2(inputFieldToEdit2.text!)
-            inputFieldToEdit3.isValid = validateInput3(inputFieldToEdit3.text!)
-            if(inputFieldToEdit.isValid && inputFieldToEdit2.isValid && inputFieldToEdit3.isValid) {
-                if (inputFieldToEdit.isDifferentFrom(from: inputOfInput) || inputFieldToEdit2.isDifferentFrom(from: inputOfInput2) ||  inputFieldToEdit3.isDifferentFrom(from: inputOfInput3)) {
+            if(inputFieldToEdit.isValid && inputFieldToEdit2.isValid) {
+                if (inputFieldToEdit.isDifferentFrom(from: inputOfInput) || inputFieldToEdit2.isDifferentFrom(from: inputOfInput2)) {
                     saveBtn.isEnabled = true
                 } else {
                     saveBtn.isEnabled = false
@@ -149,10 +131,9 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         } else if type == SettingType.bacs {
             inputFieldToEdit.isValid = validateInput1(inputFieldToEdit.text!)
             inputFieldToEdit2.isValid = validateInput2(inputFieldToEdit2.text!)
-            inputFieldToEdit3.isValid = validateInput3(inputFieldToEdit3.text!)
             
-            if(inputFieldToEdit.isValid && inputFieldToEdit2.isValid && inputFieldToEdit3.isValid) {
-                if (inputFieldToEdit.isDifferentFrom(from: inputOfInput) || inputFieldToEdit2.isDifferentFrom(from: inputOfInput2) ||  inputFieldToEdit3.isDifferentFrom(from: inputOfInput3)) {
+            if(inputFieldToEdit.isValid && inputFieldToEdit2.isValid) {
+                if (inputFieldToEdit.isDifferentFrom(from: inputOfInput) || inputFieldToEdit2.isDifferentFrom(from: inputOfInput2)) {
                     saveBtn.isEnabled = true
                 } else {
                     saveBtn.isEnabled = false
@@ -191,7 +172,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveAction(_ sender: Any) {
         self.endEditing()
         if type == SettingType.bacs {
-            self.saveAction2(inputFieldToEdit.text!, inputFieldToEdit2.text!, inputFieldToEdit3.text!)
+            self.saveAction2(inputFieldToEdit.text!, inputFieldToEdit2.text!)
         } else {
             self.saveAction(inputFieldToEdit.text!)
         }
