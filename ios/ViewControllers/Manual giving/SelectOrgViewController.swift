@@ -540,7 +540,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         
         let countryFilteredList = listToLoad.filter({ (orgBeacon) -> Bool in
             if (UserDefaults.standard.accountType == .undefined){
-                if (NSLocale.current.regionCode == "GB"){
+                if (NSLocale.current.regionCode == "GB" || NSLocale.current.regionCode == "GG" || NSLocale.current.regionCode == "JE" ){
                     return orgBeacon.accountType == AccountType.bacs
                 }
                 else{
