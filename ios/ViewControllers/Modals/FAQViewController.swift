@@ -87,7 +87,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
             view.removeFromSuperview()
         }
         
-        let GB:Bool = AppServices.getCountryFromSim() == "GB"
+        let GB:Bool = (AppServices.getCountryFromSim() == "GB" || AppServices.getCountryFromSim() == "GG" || AppServices.getCountryFromSim() == "JE")
         if (GB) {
             addQuestion(q: "FAQVraagDDI", a: "FAQAntwoordDDI")
         }
