@@ -239,8 +239,8 @@ class LoginManager {
         if let langCode = Locale.current.languageCode {
             params["AppLanguage"] = langCode
         } else {
-            self.log.warning(message: "Device has no languagecode... Default NL") //TODO: when changing default lang, change this to "en"
-            params["AppLanguage"] = "nl"
+            self.log.warning(message: "Device has no languagecode... Default EN") //TODO: when changing default lang, change this to "en"
+            params["AppLanguage"] = "en"
         }
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
