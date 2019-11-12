@@ -910,3 +910,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "CountryStringSK" = "Slowakije";
 "CountryStringIE" = "Ierland";
 "CountryStringAD" = "Andorra";
+"ErrorChangePostalCode" = "Je gebruikt een postcode die onbekend is. Ga naar \"Mijn gegevens\" in het menu.";
