@@ -31,10 +31,36 @@ class AppConstants {
         countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", phoneNumber: PhoneNumber(prefix: "+31", firstNumbers: ["6"], length: 8)))
         countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", phoneNumber: PhoneNumber(prefix: "+49", firstNumbers: ["15","16","17"], length: 9)))
         countries.append(Country(name: NSLocalizedString("UnitedKingdom", comment: ""), shortName: "GB", phoneNumber: PhoneNumber(prefix: "+44", firstNumbers: ["7"], length: 9)))
+
+        var sortedCountries = CountryCodesSEPA.sorted() { $0.value < $1.value }
+        for(key, value) in sortedCountries {
+            countries.append(Country(name: NSLocalizedString("CountryString"+key, comment: ""), shortName: key, phoneNumber: PhoneNumber(prefix: "GEEGEE", firstNumbers: [""], length: 0)))
+        }
         return countries
     }()
 
-    
+    static var CountryCodesSEPA: [String:Int] = {
+        return ["BE":0,
+        "NL":1,
+        "DE":2,
+        "FR":3,
+        "IT":7,
+        "LU":8,
+        "GR":9,
+        "PT":10,
+        "ES":11,
+        "FI":12,
+        "AT":13,
+        "CY":14,
+        "EE":15,
+        "LV":16,
+        "LT":17,
+        "MT":18,
+        "SI":19,
+        "SK":20,
+        "IE":21,
+        "AD":22]
+    }()
     enum CountryCodes: String {
         case UnitedKingdom = "GB"
         case Belgium = "BE"
