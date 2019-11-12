@@ -226,7 +226,10 @@ class LoginManager {
             "Country":  user.country,
             "AmountLimit": "499"]
         
-        if AppServices.getCountryFromSim() == "GB" {
+        // GB = UK = England + Northern Ireland
+        // GG = Guernsey
+        // JE = Jersey
+        if AppServices.getCountryFromSim() == "GB" || AppServices.getCountryFromSim() == "GG" || AppServices.getCountryFromSim() == "JE" {
             params["AmountLimit"] = "250"
         }
         if !user.iban.isEmpty {

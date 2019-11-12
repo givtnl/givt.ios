@@ -31,13 +31,16 @@ class AppConstants {
         countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", phoneNumber: PhoneNumber(prefix: "+31", firstNumbers: ["6"], length: 8)))
         countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", phoneNumber: PhoneNumber(prefix: "+49", firstNumbers: ["15","16","17"], length: 9)))
         countries.append(Country(name: NSLocalizedString("UnitedKingdom", comment: ""), shortName: "GB", phoneNumber: PhoneNumber(prefix: "+44", firstNumbers: ["7"], length: 9)))
-
+        countries.append(Country(name: NSLocalizedString("Jersey", comment: ""), shortName: "JE", phoneNumber: PhoneNumber(prefix: "+44", firstNumbers: ["7"], length: 9)))
+        countries.append(Country(name: NSLocalizedString("Guernsey", comment: ""), shortName: "GG", phoneNumber: PhoneNumber(prefix: "+44", firstNumbers: ["7"], length: 9)))
+        
         var sortedCountries = CountryCodesSEPA.sorted() { $0.value < $1.value }
         for(key, value) in sortedCountries {
             if(value >= 6) {
                 countries.append(Country(name: NSLocalizedString("CountryString"+key, comment: ""), shortName: key, phoneNumber: PhoneNumber(prefix: PhoneNumberPrefixesSEPA.first{$0.key.contains(key)}!.value, firstNumbers: [""], length: 0)))
             }
         }
+        
         return countries
     }()
 
@@ -91,6 +94,8 @@ class AppConstants {
         case Belgium = "BE"
         case Netherlands = "NL"
         case Germany = "DE"
+        case Jersey = "JE"
+        case Guernsey = "GG"
     }
     
     static var externalApps: [String: [String: String]] = {

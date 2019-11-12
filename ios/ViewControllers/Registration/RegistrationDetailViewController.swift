@@ -133,7 +133,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         tapGesture.cancelsTouchesInView = true
         theScrollView.addGestureRecognizer(tapGesture)
         
-        if(selectedCountry.shortName == "GB") {
+        if(selectedCountry.shortName == "GB" || selectedCountry.shortName == "GG" || selectedCountry.shortName == "JE") {
             showBacs(sender: self, animated: false)
         } else {
             showSepa(sender: self, animated: false)
@@ -164,7 +164,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             }) { (success) in
                 
             }
-            if self.selectedCountry.shortName == AppConstants.CountryCodes.UnitedKingdom.rawValue {
+            if (self.selectedCountry.shortName == AppConstants.CountryCodes.UnitedKingdom.rawValue || self.selectedCountry.shortName == AppConstants.CountryCodes.Guernsey.rawValue || self.selectedCountry.shortName == AppConstants.CountryCodes.Jersey.rawValue) {
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertSEPAMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -190,7 +190,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             }) { (success) in
                 
             }
-            if self.selectedCountry.shortName != AppConstants.CountryCodes.UnitedKingdom.rawValue {
+            if (self.selectedCountry.shortName != AppConstants.CountryCodes.UnitedKingdom.rawValue && self.selectedCountry.shortName != AppConstants.CountryCodes.Guernsey.rawValue && self.selectedCountry.shortName != AppConstants.CountryCodes.Jersey.rawValue) {
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertBACSMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertControllerStyle.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -531,7 +531,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             isCountryValid = validationHelper.isBetweenCriteria(countryField.text!, 99)
             isCountryValid ? textField.setValid() : textField.setInvalid()
         case mobileNumber:
-            if(["NL","BE","GB", "DE"].filter{$0 == selectedCountry.shortName}.count == 1) {
+            if(["NL","BE","GB", "DE", "GG", "JE"].filter{$0 == selectedCountry.shortName}.count == 1) {
                 isMobileNumberValid = isMobileNumber(mobileNumber.text!)
             } else {
                 isMobileNumberValid = true
@@ -568,7 +568,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             return false
         } else if shortName == "DE" && !(number.starts(with: "1") || number.starts(with: "01")) {
             return false
-        } else if shortName == "GB" {
+        } else if (shortName == "GB" || shortName == "GG" || shortName == "JE")  {
             if !(number.starts(with: "7") || number.starts(with: "07")) {
                 return false
             }
@@ -667,7 +667,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             checkAll(mobilePrefixField)
             checkAll(mobileNumber)
             checkAll(countryField)
-            if(selectedCountry.shortName == "GB") {
+            if(selectedCountry.shortName == "GB" || selectedCountry.shortName == "GG" || selectedCountry.shortName == "JE") {
                 showBacs(self)
             } else {
                 showSepa(self)
