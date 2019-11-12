@@ -31,7 +31,7 @@ struct OrgBeacon: Codable {
             let end = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 12)
             
             let asciiCountry = EddyNameSpace[start..<end]
-            if (asciiCountry == "4742"){
+            if (asciiCountry == "4742" || asciiCountry == "4747" || asciiCountry == "4a45"){
                 return AccountType.bacs
             }else {
                 return AccountType.sepa
