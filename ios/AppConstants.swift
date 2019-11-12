@@ -41,7 +41,7 @@ class AppConstants {
             }
         }
         
-        return countries
+        return countries.sorted(by: { $0.name < $1.name})
     }()
 
     static var CountryCodesSEPA: [String:Int] = {
