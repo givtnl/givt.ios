@@ -531,8 +531,13 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             isCountryValid = validationHelper.isBetweenCriteria(countryField.text!, 99)
             isCountryValid ? textField.setValid() : textField.setInvalid()
         case mobileNumber:
-            isMobileNumberValid = isMobileNumber(mobileNumber.text!)
+            if(["NL","BE","GB", "DE"].filter{$0 == selectedCountry.shortName}.count == 1) {
+                isMobileNumberValid = isMobileNumber(mobileNumber.text!)
+            } else {
+                isMobileNumberValid = true
+            }
             isMobileNumberValid ? textField.setValid() : textField.setInvalid()
+
         case iban:
             isIbanValid = validationHelper.isIbanChecksumValid(iban.text!)
             isIbanValid ? textField.setValid() : textField.setInvalid()

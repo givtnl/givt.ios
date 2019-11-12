@@ -34,32 +34,57 @@ class AppConstants {
 
         var sortedCountries = CountryCodesSEPA.sorted() { $0.value < $1.value }
         for(key, value) in sortedCountries {
-            countries.append(Country(name: NSLocalizedString("CountryString"+key, comment: ""), shortName: key, phoneNumber: PhoneNumber(prefix: "GEEGEE", firstNumbers: [""], length: 0)))
+            if(value >= 6) {
+                countries.append(Country(name: NSLocalizedString("CountryString"+key, comment: ""), shortName: key, phoneNumber: PhoneNumber(prefix: PhoneNumberPrefixesSEPA.first{$0.key.contains(key)}!.value, firstNumbers: [""], length: 0)))
+            }
         }
         return countries
     }()
 
     static var CountryCodesSEPA: [String:Int] = {
         return ["BE":0,
-        "NL":1,
-        "DE":2,
-        "FR":3,
-        "IT":7,
-        "LU":8,
-        "GR":9,
-        "PT":10,
-        "ES":11,
-        "FI":12,
-        "AT":13,
-        "CY":14,
-        "EE":15,
-        "LV":16,
-        "LT":17,
-        "MT":18,
-        "SI":19,
-        "SK":20,
-        "IE":21,
-        "AD":22]
+                "NL":1,
+                "DE":2,
+                "FR":6,
+                "IT":7,
+                "LU":8,
+                "GR":9,
+                "PT":10,
+                "ES":11,
+                "FI":12,
+                "AT":13,
+                "CY":14,
+                "EE":15,
+                "LV":16,
+                "LT":17,
+                "MT":18,
+                "SI":19,
+                "SK":20,
+                "IE":21,
+                "AD":22]
+    }()
+    
+    static var PhoneNumberPrefixesSEPA: [String: String] = {
+        return ["BE":"+32",
+                "NL":"+31",
+                "DE":"+49",
+                "FR":"+33",
+                "IT":"+39",
+                "LU":"+37",
+                "GR":"+30",
+                "PT":"+351",
+                "ES":"+34",
+                "FI":"+358",
+                "AT":"+43",
+                "CY":"+357",
+                "EE":"+372",
+                "LV":"+371",
+                "LT":"+370",
+                "MT":"+356",
+                "SI":"+386",
+                "SK":"+421",
+                "IE":"+353",
+                "AD":"+376"]
     }()
     enum CountryCodes: String {
         case UnitedKingdom = "GB"
