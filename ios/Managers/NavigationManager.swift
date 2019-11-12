@@ -68,7 +68,7 @@ class NavigationManager {
                     UserDefaults.standard.isTempUser = false
                 } else if status == "false" { //email is completely new
                     UserDefaults.standard.isTempUser = true
-                } else if status == "temp" { //email is in db but not succesfully registered
+                } else if status == "temp" || status == "dashboard" { //email is in db but not succesfully registered
                     UserDefaults.standard.isTempUser = true
                 }
                 
