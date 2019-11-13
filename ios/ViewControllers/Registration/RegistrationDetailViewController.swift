@@ -531,7 +531,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             isCountryValid = validationHelper.isBetweenCriteria(countryField.text!, 99)
             isCountryValid ? textField.setValid() : textField.setInvalid()
         case mobileNumber:
-            if(["NL","BE","GB", "DE", "GG", "JE"].filter{$0 == selectedCountry.shortName}.count == 1) {
+            if(["NL","BE","GB", "DE", "GG", "JE"].filter{$0 == selectedMobilePrefix.shortName}.count == 1) {
                 isMobileNumberValid = isMobileNumber(mobileNumber.text!)
             } else {
                 isMobileNumberValid = true
@@ -542,7 +542,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             isIbanValid = validationHelper.isIbanChecksumValid(iban.text!)
             isIbanValid ? textField.setValid() : textField.setInvalid()
         case mobilePrefixField:
-            isMobilePrefixValid = validationHelper.isBetweenCriteria(mobilePrefixField.text!, 6)
+            if(["NL","BE","GB", "DE", "GG", "JE"].filter{$0 == selectedMobilePrefix.shortName}.count == 1) {
+                isMobilePrefixValid = validationHelper.isBetweenCriteria(mobilePrefixField.text!, 6)
+            } else {
+                isMobilePrefixValid = true
+            }
             isMobilePrefixValid ? textField.setValid() : textField.setInvalid()
         case sortCode, accountNumber:
             let sortCodeIsValid = sortCode.text!.count == 6 && validationHelper.isValidNumeric(string: sortCode.text!)
