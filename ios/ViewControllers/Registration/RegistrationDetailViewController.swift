@@ -96,7 +96,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             checkAll(accountNumber)
         #endif
         
-        if let currentRegionCode = Locale.current.regionCode {
+        if let currentRegionCode = AppServices.getCountryFromSim() {
             print(currentRegionCode)
             let filteredCountries = AppConstants.countries.filter {
                 $0.shortName == currentRegionCode
