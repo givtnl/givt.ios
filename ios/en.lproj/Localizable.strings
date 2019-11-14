@@ -911,4 +911,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "CountryStringIE" = "Ireland";
 "CountryStringAD" = "Andorra";
 "ErrorChangePostalCode" = "You've entered a post code that is unknown. Please change it under \"Personal information\" in the menu.";
-"InformationAboutUsGB" = "Givt is a product of Givt B.V.\n\nWe are located on the Noordersluisweg 27 in Lelystad, The Netherlands. For questions or complaints you can reach us via +31 320 320 115 or support@givtapp.net.\n\nWe are registered in the trade register of the Dutch Chamber of Commerce under number 64534421.";
+"InformationAboutUsGB" = "Givt is a product of Givt B.V.\n\nWe are located at\n\nRiverside House\nRiver Lawn Road\nTonbridge\nEngland\nTN9 1EP\n\nFor questions or complaints you can reach us via +31 320 320 115 or support@givt.app.\n\nWe are registered in the trade register of the Dutch Chamber of Commerce under number 64534421.";
