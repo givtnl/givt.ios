@@ -28,7 +28,11 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         textView.placeholder = NSLocalizedString("TypeMessage", comment: "")
         btnSend.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
         giveFeedback.text = NSLocalizedString("FeedbackTitle", comment: "")
-        titleText.text = NSLocalizedString("InformationAboutUs", comment: "")
+        if let country = AppServices.getCountryFromSim(), (country == "GB" || country == "GG" || country == "JE") {
+            titleText.text = NSLocalizedString("InformationAboutUsGB", comment: "")
+        } else {
+            titleText.text = NSLocalizedString("InformationAboutUs", comment: "")
+        }
         versionNumber.text = NSLocalizedString("AppVersion", comment: "") + AppConstants.AppVersionNumber
         
         SVProgressHUD.setDefaultMaskType(.black)
