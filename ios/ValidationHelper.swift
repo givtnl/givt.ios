@@ -157,19 +157,4 @@ class ValidationHelper {
     func isValidAccountNumber(s: String) -> Bool {
         return s.count == 8
     }
-    func isValidAccountName(string: String) -> Bool {
-        var allowedCharacters = CharacterSet.letters
-        allowedCharacters.union(CharacterSet.alphanumerics)
-        allowedCharacters.insert("-")
-        allowedCharacters.insert(" ")
-        allowedCharacters.insert("&")
-        allowedCharacters.insert("/")
-        //remove all allowed characters. When rest is not 0, means that we have unwanted characters.
-        let rest = string.trimmingCharacters(in: allowedCharacters)
-        if(rest.count == 0 && string.count >= 3 && string.count <= 18) {
-            return true
-        } else {
-            return false
-        }
-    }
 }
