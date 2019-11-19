@@ -530,14 +530,14 @@ class LoginManager {
             "City":  userExt.City,
             "PostalCode":  userExt.PostalCode,
             "Country":  userExt.Country,
-            "GiftAid": userExt.GiftAid as Any
+            "GiftAid": userExt.GiftAid == nil ? nil : userExt.GiftAid!.toISOString()
         ]
         
         
         let result = UserExtUpdateResult()
 
         do {
-            try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
+            try client.put(url: "/api/v2/UsersExtension", data: params, callback: { (res) in
                 if let response = res {
                     result.ok = response.basicStatus == .ok
                     if(!result.ok){

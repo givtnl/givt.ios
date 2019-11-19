@@ -43,12 +43,12 @@ class APIClient: NSObject, URLSessionDelegate {
         }
     }
     
-    func put(url: String, data: [String: Any], callback: @escaping (Response?) -> Void) throws {
+    func put(url: String, data: [String: Any?], callback: @escaping (Response?) -> Void) throws {
         log.info(message: "PUT on " + url)
         client.put(url: url).delegate(delegate: self)
-            .send(data: data)
             .type(type: "json")
             .set(headers: ["Authorization" : "Bearer " + UserDefaults.standard.bearerToken!, "Accept-Language" : Locale.preferredLanguages[0]])
+            .send(data: data)
             .end(done: { (res:Response) in
                 callback(res)
             }) { (err) in
