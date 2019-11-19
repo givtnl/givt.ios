@@ -523,7 +523,6 @@ class LoginManager {
             "IBAN":  userExt.IBAN as Any,
             "AccountNumber" : userExt.AccountNumber as Any,
             "SortCode" : userExt.SortCode as Any,
-            "AccountName": userExt.AccountName as Any,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
