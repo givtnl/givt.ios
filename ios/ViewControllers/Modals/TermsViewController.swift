@@ -17,7 +17,7 @@ class TermsViewController: UIViewController {
     var typeOfTerms: TypeOfTerms? {
         didSet {
             if typeOfTerms == .privacyPolicy {
-                if let country = AppServices.getCountryFromSim(), country == "GB" {
+                if let country = AppServices.getCountryFromSim(), (country == "GB" || country == "GG" || country == "JE") {
                     textToShow = NSLocalizedString("PolicyTextGB", comment: "")
                 } else {
                     textToShow = NSLocalizedString("PolicyText", comment: "")
@@ -26,7 +26,7 @@ class TermsViewController: UIViewController {
             } else if typeOfTerms == .termsAndConditions {
                 textToShow = NSLocalizedString("TermsText", comment: "")
                 if let country = AppServices.getCountryFromSim() {
-                    if(country == "GB"){
+                    if(country == "GB" || country == "GG" || country == "JE"){
                         textToShow = NSLocalizedString("TermsTextGB", comment: "")
                     }
                 }

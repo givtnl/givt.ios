@@ -55,4 +55,12 @@ extension Date {
         fmt.dateFormat = format
         return fmt.string(from: self)
     }
+    
+    public func toISOString() -> String {
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        df.timeZone = TimeZone(abbreviation: "UTC")
+        df.locale = Locale(identifier: "en_US_POSIX")
+        return df.string(from: self)
+    }
 }
