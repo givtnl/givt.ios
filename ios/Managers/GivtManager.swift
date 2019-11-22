@@ -31,7 +31,7 @@ struct OrgBeacon: Codable {
             let end = EddyNameSpace.index(EddyNameSpace.startIndex, offsetBy: 12)
             
             let asciiCountry = EddyNameSpace[start..<end]
-            if (asciiCountry == "4742"){
+            if (asciiCountry == "4742" || asciiCountry == "4747" || asciiCountry == "4a45"){
                 return AccountType.bacs
             }else {
                 return AccountType.sepa
@@ -197,11 +197,7 @@ final class GivtManager: NSObject {
 
     func give(antennaID: String, organisationName: String?) {
         LoginManager.shared.userClaim = .give //set to give so we show popup if user is still temp
-        let df = DateFormatter()
-        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS0"
-        df.timeZone = TimeZone(abbreviation: "UTC")
-        df.locale = Locale(identifier: "en_US_POSIX")
-        let date = df.string(from: Date())
+        let date = Date().toISOString()
         print(date)
         var transactions = [Transaction]()
         for (index, value) in amounts.enumerated() {

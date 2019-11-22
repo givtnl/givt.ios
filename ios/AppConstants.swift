@@ -31,15 +31,71 @@ class AppConstants {
         countries.append(Country(name: NSLocalizedString("Netherlands", comment: ""), shortName: "NL", phoneNumber: PhoneNumber(prefix: "+31", firstNumbers: ["6"], length: 8)))
         countries.append(Country(name: NSLocalizedString("Germany", comment: ""), shortName: "DE", phoneNumber: PhoneNumber(prefix: "+49", firstNumbers: ["15","16","17"], length: 9)))
         countries.append(Country(name: NSLocalizedString("UnitedKingdom", comment: ""), shortName: "GB", phoneNumber: PhoneNumber(prefix: "+44", firstNumbers: ["7"], length: 9)))
-        return countries
+        countries.append(Country(name: NSLocalizedString("Jersey", comment: ""), shortName: "JE", phoneNumber: PhoneNumber(prefix: "+44", firstNumbers: ["7"], length: 9)))
+        countries.append(Country(name: NSLocalizedString("Guernsey", comment: ""), shortName: "GG", phoneNumber: PhoneNumber(prefix: "+44", firstNumbers: ["7"], length: 9)))
+        
+        var sortedCountries = CountryCodesSEPA.sorted() { $0.value < $1.value }
+        for(key, value) in sortedCountries {
+            if(value >= 6) {
+                countries.append(Country(name: NSLocalizedString("CountryString"+key, comment: ""), shortName: key, phoneNumber: PhoneNumber(prefix: PhoneNumberPrefixesSEPA.first{$0.key.contains(key)}!.value, firstNumbers: [""], length: 0)))
+            }
+        }
+        
+        return countries.sorted(by: { $0.name < $1.name})
     }()
 
+    static var CountryCodesSEPA: [String:Int] = {
+        return ["BE":0,
+                "NL":1,
+                "DE":2,
+                "FR":6,
+                "IT":7,
+                "LU":8,
+                "GR":9,
+                "PT":10,
+                "ES":11,
+                "FI":12,
+                "AT":13,
+                "CY":14,
+                "EE":15,
+                "LV":16,
+                "LT":17,
+                "MT":18,
+                "SI":19,
+                "SK":20,
+                "IE":21,
+                "AD":22]
+    }()
     
+    static var PhoneNumberPrefixesSEPA: [String: String] = {
+        return ["BE":"+32",
+                "NL":"+31",
+                "DE":"+49",
+                "FR":"+33",
+                "IT":"+39",
+                "LU":"+37",
+                "GR":"+30",
+                "PT":"+351",
+                "ES":"+34",
+                "FI":"+358",
+                "AT":"+43",
+                "CY":"+357",
+                "EE":"+372",
+                "LV":"+371",
+                "LT":"+370",
+                "MT":"+356",
+                "SI":"+386",
+                "SK":"+421",
+                "IE":"+353",
+                "AD":"+376"]
+    }()
     enum CountryCodes: String {
         case UnitedKingdom = "GB"
         case Belgium = "BE"
         case Netherlands = "NL"
         case Germany = "DE"
+        case Jersey = "JE"
+        case Guernsey = "GG"
     }
     
     static var externalApps: [String: [String: String]] = {

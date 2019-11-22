@@ -226,7 +226,10 @@ class LoginManager {
             "Country":  user.country,
             "AmountLimit": "499"]
         
-        if AppServices.getCountryFromSim() == "GB" {
+        // GB = UK = England + Northern Ireland
+        // GG = Guernsey
+        // JE = Jersey
+        if AppServices.getCountryFromSim() == "GB" || AppServices.getCountryFromSim() == "GG" || AppServices.getCountryFromSim() == "JE" {
             params["AmountLimit"] = "250"
         }
         if !user.iban.isEmpty {
@@ -239,8 +242,8 @@ class LoginManager {
         if let langCode = Locale.current.languageCode {
             params["AppLanguage"] = langCode
         } else {
-            self.log.warning(message: "Device has no languagecode... Default NL") //TODO: when changing default lang, change this to "en"
-            params["AppLanguage"] = "nl"
+            self.log.warning(message: "Device has no languagecode... Default EN") //TODO: when changing default lang, change this to "en"
+            params["AppLanguage"] = "en"
         }
         do {
             try client.post(url: "/api/v2/Users", data: params) { (res) in
@@ -520,7 +523,6 @@ class LoginManager {
             "IBAN":  userExt.IBAN as Any,
             "AccountNumber" : userExt.AccountNumber as Any,
             "SortCode" : userExt.SortCode as Any,
-            "AccountName": userExt.AccountName as Any,
             "PhoneNumber":  userExt.PhoneNumber,
             "FirstName":  userExt.FirstName,
             "LastName":  userExt.LastName,
@@ -528,14 +530,14 @@ class LoginManager {
             "City":  userExt.City,
             "PostalCode":  userExt.PostalCode,
             "Country":  userExt.Country,
-            "GiftAid": userExt.GiftAid as Any
+            "GiftAid": userExt.GiftAid == nil ? nil : userExt.GiftAid!.toISOString()
         ]
         
         
         let result = UserExtUpdateResult()
 
         do {
-            try client.put(url: "/api/UsersExtension", data: params, callback: { (res) in
+            try client.put(url: "/api/v2/UsersExtension", data: params, callback: { (res) in
                 if let response = res {
                     result.ok = response.basicStatus == .ok
                     if(!result.ok){
