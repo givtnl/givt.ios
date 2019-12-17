@@ -912,3 +912,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "CountryStringAD" = "Andorra";
 "ErrorChangePostalCode" = "You've entered a post code that is unknown. Please change it under \"Personal information\" in the menu.";
 "InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Riverside House, River Lawn Road in Tonbridge, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
+"BluetoothErrorMessageAction" = "I'll change it";
+"BluetoothErrorMessageCancel" = "Rather not";
