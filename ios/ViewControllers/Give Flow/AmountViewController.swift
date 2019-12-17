@@ -491,6 +491,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                 view.isHidden = true
             }
         }
+        collectionViews.removeAll { $0.isHidden }
+        
         if (collectOne.isHidden){
             addCollect(collectOne)
         }
@@ -546,7 +548,11 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     func checkAmounts() {
         collectionViews.forEach { checkAmount(collection: $0) }
-        btnNext.isEnabled = nuOfCollectsShown == collectionViews.filter { Decimal(string: $0.amountLabel.text!.replacingOccurrences(of: ",", with: ".")) == 0 && !$0.isHidden }.count ? false : true
+        let countOfZeroAmounts = collectionViews.filter {
+            !$0.isHidden
+            && Decimal(string: $0.amountLabel.text!.replacingOccurrences(of: ",", with: "."))! == 0
+        }.count
+        btnNext.isEnabled = nuOfCollectsShown != countOfZeroAmounts
     }
 
     let slideAnimator = CustomPresentModalAnimation()
