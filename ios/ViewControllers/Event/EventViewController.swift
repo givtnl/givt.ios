@@ -75,18 +75,7 @@ class EventViewController: BaseScanViewController {
             }
         }
     }
-    
-    override func showBluetoothMessage() {
-        bluetoothAlert = UIAlertController(
-            title: NSLocalizedString("ActivateBluetooth", comment: ""),
-            message: NSLocalizedString("BluetoothErrorMessageEvent" , comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
-            preferredStyle: UIAlertControllerStyle.alert)
-        bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
-            
-        }))
-        present(bluetoothAlert!, animated: true, completion: nil)
-    }
-    
+        
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         givtManager.delegate = self
@@ -102,7 +91,7 @@ class EventViewController: BaseScanViewController {
             }
         }
         
-        switch givtManager.getBluetoothState(currentView: self.view) {
+        switch givtManager.getBluetoothState() {
         case .enabled:
             if shouldAskForLocation { //only loc disabled
                 showLocationMessage()
@@ -140,20 +129,7 @@ class EventViewController: BaseScanViewController {
             }
         }
     }
-    
-    func showBluetoothMessage(after: @escaping () -> ()) {
-        bluetoothAlert = UIAlertController(
-            title: NSLocalizedString("ActivateBluetooth", comment: ""),
-            message: NSLocalizedString("BluetoothErrorMessageEvent", comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
-            preferredStyle: UIAlertControllerStyle.alert)
-        bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
-            after()
-        }))
-        DispatchQueue.main.async {
-            self.present(self.bluetoothAlert!, animated: true, completion: nil)
-        }
-    }
-    
+        
     func showLocationMessage() {
         let alert = UIAlertController(title: NSLocalizedString("AllowGivtLocationTitle", comment: ""), message: NSLocalizedString("AllowGivtLocationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
@@ -178,5 +154,9 @@ class EventViewController: BaseScanViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.givtManager.stopLookingForGivtLocations()
+    }
+    
+    override func deniedBluetoothAccess() {
+        
     }
 }

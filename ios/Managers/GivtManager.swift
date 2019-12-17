@@ -68,8 +68,8 @@ final class GivtManager: NSObject {
     
     var bestBeacon: BestBeacon?
     
-    func getBluetoothState(currentView: UIView) -> BluetoothState {
-        return beaconService.getBluetoothState(currentView: currentView)
+    func getBluetoothState() -> BluetoothState {
+        return beaconService.getBluetoothState()
     }
     
     var orgBeaconList: [OrgBeacon]? {
