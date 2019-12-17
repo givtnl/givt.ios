@@ -577,9 +577,13 @@ final class GivtManager: NSObject {
     
     func getMediumIdFromGivtLink(link: String) -> String? {
         let queryStrings = [ "https://www.givtapp.net/download?code=",
+                             "https://www.givtapp.net/download/?code=",
                              "https://www.givt.app/download?code=",
+                             "https://www.givt.app/download/?code=",
                              "https://api.givtapp.net/givt?code=",
-                             "https://givt-debug-api.azurewebsites.net/givt?code=" ]
+                             "https://api.givtapp.net/givt/?code=",
+                             "https://givt-debug-api.azurewebsites.net/givt?code=",
+                             "https://givt-debug-api.azurewebsites.net/givt/?code="]
         
         for queryString in queryStrings {
             let idxqs = link.index(of: queryString)
