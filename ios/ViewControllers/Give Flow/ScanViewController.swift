@@ -48,12 +48,11 @@ class ScanViewController: BaseScanViewController {
         
         self.log.info(message: "Scanpage is now showing")
         
-        if GivtManager.shared.getBluetoothState(currentView: self.view) == .enabled || TARGET_OS_SIMULATOR != 0 {
+        if GivtManager.shared.getBluetoothState() == .enabled || TARGET_OS_SIMULATOR != 0 {
             startScanning()
-        } else if GivtManager.shared.getBluetoothState(currentView: self.view) == .disabled {
+        } else if GivtManager.shared.getBluetoothState() == .disabled {
             showBluetoothMessage()
         }
-
         showGiveDifferentButton()
     }
     
@@ -62,7 +61,6 @@ class ScanViewController: BaseScanViewController {
             GivtManager.shared.giveManually(antennaId: nameSpace)
         }
         MSAnalytics.trackEvent("GIVE_TO_SUGGESTION")
-
     }
     
     @objc func startScanning() {
@@ -127,6 +125,9 @@ class ScanViewController: BaseScanViewController {
 
     }
     
+    override func deniedBluetoothAccess() {
+        giveDifferently("")
+    }
 
     @IBAction func giveDifferently(_ sender: Any) {
         MSAnalytics.trackEvent("GIVE_FROM_LIST")
