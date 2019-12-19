@@ -1,3 +1,4 @@
+
 //
 //  NavigationManager.swift
 //  ios
@@ -213,26 +214,27 @@ class NavigationManager {
             if UserDefaults.standard.hasFingerprintSet && !skipFingerprint {
                 context.showLoader()
                 self.loginManager.loginWithFingerprint { (success, status) in
-                    context.hideLoader()
-                    if success {
-                        completion()
-                    } else {
-                        if let status = status, status == errSecUserCanceled {
-                            let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
-                                self.executeWithLogin(context: context, emailEditable: emailEditable, skipFingerprint: true, completion: completion)
-                                UserDefaults.standard.hasFingerprintSet = false
-                            }))
-                            cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.default, handler: nil))
-                            context.present(cannotUseTouchId, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        context.hideLoader()
+                        if success {
+                            completion()
                         } else {
-                            let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
-                                self.executeWithLogin(context: context, emailEditable: emailEditable, skipFingerprint: true, completion: completion)
-                            }))
-                            context.present(cannotUseTouchId, animated: true, completion: nil)
+                            if let status = status, status == errSecUserCanceled {
+                                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+                                    self.executeWithLogin(context: context, emailEditable: emailEditable, skipFingerprint: true, completion: completion)
+                                    UserDefaults.standard.hasFingerprintSet = false
+                                }))
+                                cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.default, handler: nil))
+                                context.present(cannotUseTouchId, animated: true, completion: nil)
+                            } else {
+                                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                                    self.executeWithLogin(context: context, emailEditable: emailEditable, skipFingerprint: true, completion: completion)
+                                }))
+                                context.present(cannotUseTouchId, animated: true, completion: nil)
+                            }
                         }
-                        
                     }
                 }
             } else if UserDefaults.standard.hasPinSet {
@@ -245,16 +247,20 @@ class NavigationManager {
                         completion()
                     }
                 }
-                context.present(pinVC, animated: true, completion: {
-                    context.hideLeftView(context)
-                })
+                DispatchQueue.main.async {
+                    context.present(pinVC, animated: true, completion: {
+                        context.hideLeftView(context)
+                    })
+                }
             } else {
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
                 loginVC.outerHandler = completion
                 loginVC.emailEditable = emailEditable
-                context.present(loginVC, animated: true, completion: {
-                    context.hideLeftView(context)
-                })
+                DispatchQueue.main.async {
+                    context.present(loginVC, animated: true, completion: {
+                        context.hideLeftView(context)
+                    })
+                }
             }
         } else {
             completion()
