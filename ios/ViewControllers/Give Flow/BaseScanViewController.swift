@@ -29,13 +29,26 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         
     }
     
-    func showBluetoothMessage() {
+    func deniedBluetoothAccess() {
+        preconditionFailure("This method must be overridden")
+    }
+    
+    func showBluetoothMessage(_ after: (() -> ())? = nil) {
         self.bluetoothAlert = UIAlertController(
             title: NSLocalizedString("ActivateBluetooth", comment: ""),
             message: NSLocalizedString("BluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
             preferredStyle: UIAlertControllerStyle.alert)
-        bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
-            
+        bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("BluetoothErrorMessageAction", comment: ""), style: .cancel, handler: { action in
+            if let after = after {
+                after()
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                    self.didUpdateBluetoothState(bluetoothState: GivtManager.shared.getBluetoothState())
+                }
+            }
+        }))
+        bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("BluetoothErrorMessageCancel", comment: ""), style: .default, handler: { action in
+            self.deniedBluetoothAccess()
         }))
         present(self.bluetoothAlert!, animated: true, completion: nil)
     }
