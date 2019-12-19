@@ -44,13 +44,13 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
     private let rssiTreshold: Int = -68
     private var scanMode: ScanMode?
         
-    func getBluetoothState(currentView: UIView) -> BluetoothState {
+    func getBluetoothState() -> BluetoothState {
         switch centralManager.state {
         case .poweredOn:
             return .enabled
         case .unknown:
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                self.keepCheckingBluetoothState(currentView: currentView)
+                self.keepCheckingBluetoothState()
             })
             return .unknown
         case .poweredOff, .unauthorized:
@@ -60,7 +60,7 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    private func keepCheckingBluetoothState(currentView: UIView)  {
+    private func keepCheckingBluetoothState()  {
         if UIApplication.shared.applicationState == .active {
             if self.centralManager.state == .poweredOn {
                 self.delegate?.didUpdateBluetoothState(bluetoothState: .enabled)
@@ -69,7 +69,7 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                self.keepCheckingBluetoothState(currentView: currentView)
+                self.keepCheckingBluetoothState()
             })
         }
     }
