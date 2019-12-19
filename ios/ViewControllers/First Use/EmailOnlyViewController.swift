@@ -101,19 +101,25 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         loginButton.setAttributedTitle(attributedString, for: UIControlState.normal)
     
     }
-    @IBAction func login(_ sender: Any) {
+    
+    func openLogin(emailEditable: Bool = false) {
         DispatchQueue.main.async {
+            self.hideLoader()
             var config = UserExt()
             if let userExt = UserDefaults.standard.userExt {
                 config = userExt
             }
             config.email = self.email.text!.trimmingCharacters(in: CharacterSet.init(charactersIn: " "))
             UserDefaults.standard.userExt = config
-            NavigationManager.shared.executeWithLogin(context: self, emailEditable: true) {
+            NavigationManager.shared.executeWithLogin(context: self, emailEditable: emailEditable) {
                 self.navigationController?.dismiss(animated: false, completion: nil)
                 NavigationManager.shared.loadMainPage()
             }
         }
+    }
+    
+    @IBAction func login(_ sender: Any) {
+        openLogin(emailEditable: true)
     }
     
     @IBOutlet var scroll: UIScrollView!
@@ -208,16 +214,6 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         let register = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
         register.typeOfTerms = .termsAndConditions
         self.present(register, animated: true, completion: nil)
-    }
-    
-    func openLogin() {
-        self.hideLoader()
-        DispatchQueue.main.async {
-            self._navigationManager.executeWithLogin(context: self) {
-                self.navigationController?.dismiss(animated: false, completion: nil)
-                self._navigationManager.loadMainPage()
-            }
-        }
     }
     
     func registerTempUser() {
