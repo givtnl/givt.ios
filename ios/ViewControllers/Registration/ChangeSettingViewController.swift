@@ -68,7 +68,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         }
         
         if type == SettingType.iban {
-            inputFieldToEdit.autocapitalizgationType = .allCharacters
+            inputFieldToEdit.autocapitalizationType = .allCharacters
         }
         if type == SettingType.bacs {
             //show hidden fields
