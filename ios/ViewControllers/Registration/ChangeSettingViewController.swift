@@ -68,13 +68,19 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         }
         
         if type == SettingType.iban {
-            inputFieldToEdit.autocapitalizationType = .allCharacters
+            inputFieldToEdit.autocapitalizgationType = .allCharacters
         }
         if type == SettingType.bacs {
             //show hidden fields
             imgView2.isHidden = false
             inputFieldToEdit2.isHidden = false
             inputFieldToEdit2.text = inputOfInput2
+            if(UserDefaults.standard.mandateSigned) {
+                inputFieldToEdit.disable()
+                inputFieldToEdit2.disable()
+                saveBtn.isEnabled = false
+            }
+
         }
         
         saveBtn.setBackgroundColor(color: #colorLiteral(red: 0.8232886195, green: 0.8198277354, blue: 0.8529217839, alpha: 1), forState: .disabled)
