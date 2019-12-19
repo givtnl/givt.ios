@@ -27,7 +27,7 @@ class NavigationManager {
     var delegate: NavigationManagerDelegate?
     
     private init() { }
-   
+    
     private var currentAlert: UIAlertController?
     public func finishRegistrationAlert(_ context: UIViewController) {
         if !loginManager.isFullyRegistered && loginManager.userClaim != .giveOnce {
@@ -40,7 +40,7 @@ class NavigationManager {
             currentAlert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertActionStyle.default, handler: { action in
                 if let ctx = context as? AmountViewController {
-                     ctx.menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
+                    ctx.menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
                 }
             }))
             currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("FinalizeRegistration", comment: ""), style: .cancel, handler: { (action) in
@@ -53,7 +53,7 @@ class NavigationManager {
                 } else {
                     self.presentAlertNoConnection(context: context)
                 }
-
+                
             }))
             context.present(currentAlert!, animated: false, completion: {})
         }
@@ -101,7 +101,7 @@ class NavigationManager {
         if let childViewControllers = appDelegate.window?.rootViewController?.childViewControllers {
             for childViewController in childViewControllers {
                 if let vc = childViewController as? MainNavigationController {
-                     load(vc: vc, animated: animated)
+                    load(vc: vc, animated: animated)
                 }
             }
         }
@@ -163,23 +163,25 @@ class NavigationManager {
             if UserDefaults.standard.hasFingerprintSet && !skipFingerprint {
                 context.showLoader()
                 self.loginManager.loginWithFingerprint { (success, status) in
-                    context.hideLoader()
-                    if success {
-                        completion()
-                    } else {
-                        if let status = status, status == errSecUserCanceled {
-                            let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
-                                self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
-                            }))
-                            cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.default, handler: nil))
-                            context.present(cannotUseTouchId, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        context.hideLoader()
+                        if success {
+                            completion()
                         } else {
-                            let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
-                                self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
-                            }))
-                            context.present(cannotUseTouchId, animated: true, completion: nil)
+                            if let status = status, status == errSecUserCanceled {
+                                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("Login", comment: ""), message: NSLocalizedString("CancelledAuthorizationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+                                    self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
+                                }))
+                                cannotUseTouchId.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.default, handler: nil))
+                                context.present(cannotUseTouchId, animated: true, completion: nil)
+                            } else {
+                                let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueFallbackMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                                cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                                    self.reAuthenticateIfNeeded(context: context, skipFingerprint: true, completion: completion)
+                                }))
+                                context.present(cannotUseTouchId, animated: true, completion: nil)
+                            }
                         }
                     }
                 }
@@ -192,19 +194,23 @@ class NavigationManager {
                     } else {
                         completion()
                     }
-                    context.present(pinVC, animated: true, completion: nil)
+                    DispatchQueue.main.async {
+                        context.present(pinVC, animated: true, completion: nil)
+                    }
                 }
             } else {
                 let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ncLogin") as! LoginNavigationViewController
                 loginVC.outerHandler = completion
                 loginVC.emailEditable = false
-                context.present(loginVC, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    context.present(loginVC, animated: true, completion: nil)
+                }
             }
         } else {
             completion()
         }
     }
-
+    
     public func executeWithLogin(context: UIViewController, emailEditable: Bool = false, skipFingerprint: Bool = false, completion: @escaping () -> Void) {
         if !_appServices.isServerReachable {
             presentAlertNoConnection(context: context)
@@ -305,7 +311,7 @@ class NavigationManager {
         
         currentAlert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         if critical {
-
+            
             currentAlert?.title = NSLocalizedString("CriticalUpdateTitle", comment: "")
             currentAlert?.message = NSLocalizedString("CriticalUpdateMessage", comment: "") + storeMessage
             secundaryAction = UIAlertAction(title: NSLocalizedString("MoreInfo", comment: ""), style: .cancel, handler: { (action) in
