@@ -72,7 +72,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                     }))
                     self.present(alert, animated: true, completion:  {})
                 }
-            } else if status == "true" {
+            } else if status == "true" || status == "dashboard" {
                 LoginManager.shared.requestNewPassword(email: (email), callback: { (status) in
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
