@@ -115,6 +115,6 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>Needed to scan the Givt-beacons.</string>
+	<string>With Bluetooth we are able to detect the Givt beacons</string>
 </dict>
 </plist>
