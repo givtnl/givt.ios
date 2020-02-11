@@ -22,7 +22,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             case .enabled:
                 self.bluetoothAlert?.dismiss(animated: true, completion: nil)
             case .unauthorized:
-                self.showBluetoothUnauthorisedMessage()
+                self.showBluetoothMessage(type: .unauthorized)
             default:
                 self.showBluetoothMessage()
             }
@@ -37,11 +37,18 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         preconditionFailure("This method must be overridden")
     }
     
-    func showBluetoothMessage(_ after: (() -> ())? = nil) {
-        self.bluetoothAlert = UIAlertController(
-            title: NSLocalizedString("ActivateBluetooth", comment: ""),
-            message: NSLocalizedString("BluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
-            preferredStyle: UIAlertControllerStyle.alert)
+    func showBluetoothMessage(type: BluetoothMessageType = .normal, after: (() -> ())? = nil) {
+        if type == .unauthorized {
+            self.bluetoothAlert = UIAlertController(
+                title: NSLocalizedString("AuthoriseBluetooth", comment: ""),
+                message: NSLocalizedString("AuthoriseBluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("AuthoriseBluetoothExtraText", comment: "") ,
+                preferredStyle: UIAlertControllerStyle.alert)
+        } else {
+            self.bluetoothAlert = UIAlertController(
+                title: NSLocalizedString("ActivateBluetooth", comment: ""),
+                message: NSLocalizedString("BluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
+                preferredStyle: UIAlertControllerStyle.alert)
+        }
         bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("BluetoothErrorMessageAction", comment: ""), style: .cancel, handler: { action in
             if let after = after {
                 after()
@@ -57,26 +64,6 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
         present(self.bluetoothAlert!, animated: true, completion: nil)
     }
     
-    func showBluetoothUnauthorisedMessage(_ after: (() -> ())? = nil) {
-           self.bluetoothAlert = UIAlertController(
-               title: NSLocalizedString("AuthoriseBluetooth", comment: ""),
-               message: NSLocalizedString("AuthoriseBluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("AuthoriseBluetoothExtraText", comment: "") ,
-               preferredStyle: UIAlertControllerStyle.alert)
-           bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("BluetoothErrorMessageAction", comment: ""), style: .cancel, handler: { action in
-               if let after = after {
-                   after()
-               } else {
-                   DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                       self.didUpdateBluetoothState(bluetoothState: GivtManager.shared.getBluetoothState())
-                   }
-               }
-           }))
-           bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("BluetoothErrorMessageCancel", comment: ""), style: .default, handler: { action in
-               self.deniedBluetoothAccess()
-           }))
-           present(self.bluetoothAlert!, animated: true, completion: nil)
-       }
-
     fileprivate func popToRootWithDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
             if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
