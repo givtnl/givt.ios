@@ -114,5 +114,7 @@
 	<false/>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>With Bluetooth we are able to detect the Givt beacons</string>
 </dict>
 </plist>

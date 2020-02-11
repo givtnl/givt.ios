@@ -52,6 +52,8 @@ class ScanViewController: BaseScanViewController {
             startScanning()
         } else if GivtManager.shared.getBluetoothState() == .disabled {
             showBluetoothMessage()
+        } else if GivtManager.shared.getBluetoothState() == .unauthorized {
+            showBluetoothMessage(type: .unauthorized)
         }
         showGiveDifferentButton()
     }

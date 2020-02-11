@@ -19,6 +19,7 @@ enum BluetoothState {
     case unknown
     case enabled
     case disabled
+    case unauthorized
 }
 
 protocol BeaconServiceProtocol: class {
@@ -53,8 +54,10 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
                 self.keepCheckingBluetoothState()
             })
             return .unknown
-        case .poweredOff, .unauthorized:
+        case .poweredOff:
             return .disabled
+        case .unauthorized:
+            return .unauthorized
         default:
             return .disabled
         }
@@ -182,9 +185,13 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
                 print("CBCentralManagerState.PoweredOff")
                 delegate?.didUpdateBluetoothState(bluetoothState: .disabled)
                 NotificationCenter.default.post(name: Notification.Name("BluetoothIsOff"), object: nil)
-            case .unauthorized, .unknown, .resetting, .unsupported:
+            case .unknown, .resetting, .unsupported:
                 print(central.state)
                 break
+            case .unauthorized:
+                print("CBCentralManagerState.Unauthorized")
+                delegate?.didUpdateBluetoothState(bluetoothState: .unauthorized)
+                NotificationCenter.default.post(name: Notification.Name("BluetoothIsUnauthorized"), object: nil)
             case .poweredOn:
                 // check wether we were scanning before. if so, restart scanning
                 if let mode = scanMode {
