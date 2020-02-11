@@ -914,3 +914,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Riverside House, River Lawn Road in Tonbridge, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
 "BluetoothErrorMessageAction" = "On it";
 "BluetoothErrorMessageCancel" = "Rather not";
+"AuthoriseBluetooth" = "Authorise Givt to use Bluetooth";
+"AuthoriseBluetoothErrorMessage" = "Give Givt permission to access your Bluetooth so you're ready to give to a beacon.\nGo to settings > Privacy > Bluetooth and select 'Givt'.";
