@@ -190,16 +190,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         var amountLimit = 0;
         
         if let amount = Int(textField.text!) {
-            if ( amount > 250 && UserDefaults.standard.accountType == .bacs) {
-                let alert = UIAlertController(title: NSLocalizedString("AmountTooHigh", comment: ""), message: NSLocalizedString("MaximumAmountReachedGB", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    
-                }))
-                self.present(alert, animated: true, completion: nil)
-                amountLimit = 250;
-            } else {
-                amountLimit = amount;
-            }
+            amountLimit = amount;
         } else {
             textField.text = "0"
             btnSave.isEnabled = shouldEnableButton()
