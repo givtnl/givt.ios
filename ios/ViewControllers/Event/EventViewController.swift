@@ -107,8 +107,16 @@ class EventViewController: BaseScanViewController {
             }
         case .unknown:
             print("State will be updated later")
+        case .unauthorized:
+            if shouldAskForLocation {
+                showBluetoothMessage(type: .unauthorized) {
+                    self.showLocationMessage()
+                }
+            } else {
+                showBluetoothMessage(type: .unauthorized)
+            }
         }
-        
+            
         givyContstraint.constant = 20
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [.repeat, .autoreverse], animations: {
             self.view.layoutIfNeeded()
@@ -121,10 +129,14 @@ class EventViewController: BaseScanViewController {
     
     override func didUpdateBluetoothState(bluetoothState: BluetoothState) {
         DispatchQueue.main.async {
-            if bluetoothState == .enabled {
+            switch(bluetoothState)
+            {
+            case .enabled:
                 self.bluetoothAlert?.dismiss(animated: true, completion: nil)
                 self.givtManager.startLookingForGivtLocations()
-            } else {
+            case .unauthorized:
+                self.showBluetoothMessage(type: .unauthorized) { self.shouldShowAfterBluetoothAlert() }
+            default:
                 self.showBluetoothMessage() { self.shouldShowAfterBluetoothAlert() }
             }
         }

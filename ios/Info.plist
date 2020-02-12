@@ -106,5 +106,7 @@
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>With Bluetooth we are able to detect the Givt beacons</string>
 </dict>
 </plist>
