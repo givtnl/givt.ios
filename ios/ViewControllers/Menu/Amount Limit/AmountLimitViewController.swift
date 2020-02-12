@@ -56,27 +56,9 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
     
     func addValue(positive: Bool) {
         var value: Int = Int(amountLimit.text!)!
-        switch UserDefaults.standard.accountType {
-            case AccountType.bacs:
-                if positive && value >= 250 {
-                    let alert = UIAlertController(title: NSLocalizedString("AmountTooHigh", comment: ""), message: NSLocalizedString("MaximumAmountReachedGB", comment: ""), preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                        
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                    value = 250;
-                }
-                value += positive ? (value <= 245 ? 5 : 0 ) : (value > 250 ? -(value-250) : -5)
-                break
-            case AccountType.sepa:
-                if (value <= 99994 || !positive) {
-                    value += positive ?  5 : -5
-                }
-                break
-            default:
-                break
+        if (value <= 99994 || !positive) {
+            value += positive ?  5 : -5
         }
-        
         if value < 0 {
             value = 0
         }
@@ -208,16 +190,7 @@ class AmountLimitViewController: UIViewController, UITextFieldDelegate {
         var amountLimit = 0;
         
         if let amount = Int(textField.text!) {
-            if ( amount > 250 && UserDefaults.standard.accountType == .bacs) {
-                let alert = UIAlertController(title: NSLocalizedString("AmountTooHigh", comment: ""), message: NSLocalizedString("MaximumAmountReachedGB", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    
-                }))
-                self.present(alert, animated: true, completion: nil)
-                amountLimit = 250;
-            } else {
-                amountLimit = amount;
-            }
+            amountLimit = amount;
         } else {
             textField.text = "0"
             btnSave.isEnabled = shouldEnableButton()

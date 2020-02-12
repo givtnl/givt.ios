@@ -163,6 +163,7 @@
 		D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F746B41FD83FC7005354A3 /* CustomModalAnimation.swift */; };
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
+		DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */; };
 		DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */; };
 		DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */; };
 		FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */; };
@@ -373,6 +374,7 @@
 		D7FB251C1F4D6D2F0011A14E /* AppServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
 		D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCompleteViewController.swift; sourceTree = "<group>"; };
 		DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMessageType.swift; sourceTree = "<group>"; };
 		DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushnotificationType.swift; sourceTree = "<group>"; };
 		DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidInfoController.swift; sourceTree = "<group>"; };
 		F2A335656287D463EE35D0BB /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -767,6 +769,7 @@
 				D748F5FF2063D4A500B25BC2 /* Status.swift */,
 				D7E3CE931F7CFA34005807BE /* UserExt.swift */,
 				DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */,
+				DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1158,6 +1161,7 @@
 				D787AE2B1FCD91680004BDB1 /* LogService.swift in Sources */,
 				FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
+				DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */,
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
