@@ -96,11 +96,7 @@ class GiftAidViewController: UIViewController {
     @IBAction func saveAction(_ sender: Any) {
         self.endEditing()
         let giftaidOn = giftAidSwitch.isOn
-        if (giftaidOn) {
-            uExt?.GiftAid = Date()
-        } else {
-            uExt?.GiftAid = nil
-        }
+        uExt?.GiftAid = giftaidOn
         showLoader()
         if let userExt = uExt {
             self.loginManager.updateUser(uext: userExt, completionHandler: {(success) in
