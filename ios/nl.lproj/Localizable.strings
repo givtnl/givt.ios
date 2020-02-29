@@ -521,7 +521,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "YesPlease" = "Ja, graag";
 
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Activeer Bluetooth om gewoon aan een zender te blijven geven.";
+"BluetoothErrorMessage" = "Activeer Bluetooth om gewoon aan de collecte te blijven geven.";
 
 /*Foutmelding als er geen verbinding is met de server door bijv. internet-issues of door server-issues*/
 "ConnectionError" = "Ai! Geen verbinding met de server, maar het komt goed. Drink rustig een kopje thee en controleer voor de zekerheid je instellingen.";
@@ -915,7 +915,9 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BluetoothErrorMessageAction" = "Ik doe het";
 "BluetoothErrorMessageCancel" = "Liever niet";
 "AuthoriseBluetooth" = "Geef Givt toegang tot Bluetooth";
-"AuthoriseBluetoothErrorMessage" = "Geef Givt toegang tot je Bluetooth om gewoon aan een zender te blijven geven.";
+
+/*Fuzzy*/
+"AuthoriseBluetoothErrorMessage" = "Geef Givt toegang tot je Bluetooth om gewoon aan de collecte te blijven geven.";
 
 /*Fuzzy*/
 "AuthoriseBluetoothExtraText" = "Ga naar Instellingen > Privacy > Bluetooth en selecteer \"Givt\".";
