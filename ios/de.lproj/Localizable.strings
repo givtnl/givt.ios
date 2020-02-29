@@ -521,7 +521,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "YesPlease" = "Ja, bitte";
 
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Aktiviere Bluetooth, damit Du bereit bist, einem Signal zu spenden.";
+"BluetoothErrorMessage" = "Aktiviere Bluetooth, damit Du bereit bist, einem Sammlung zu spenden.";
 
 /*Foutmelding als er geen verbinding is met de server door bijv. internet-issues of door server-issues*/
 "ConnectionError" = "Derzeit ist es uns nicht möglich, eine Verbindung zum Server herzustellen. Keine Sorge, gönne Dir eine Tasse Tee und/oder überprüfe Deine Einstellungen.";
@@ -913,3 +913,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Riverside House, River Lawn Road in Tonbridge, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
 "BluetoothErrorMessageAction" = "Ich mach es";
 "BluetoothErrorMessageCancel" = "Lieber nicht";
+"AuthoriseBluetooth" = "Autorisiere Givt zur Verwendung von Bluetooth";
+
+/*Fuzzy*/
+"AuthoriseBluetoothErrorMessage" = "Gebe Givt Autorisation zu Verwendung von Bluetooth, damit Du bereit bist, einem Sammlung zu spenden.";
+"AuthoriseBluetoothExtraText" = "Gehe zu Einstellungen > Datenschutz > Bluetooth und wähle 'Givt'.";
