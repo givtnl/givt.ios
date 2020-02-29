@@ -119,7 +119,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ButtonChange" = "Change";
 "WelcomeContinue" = "Let's go";
 "EnterEmail" = "Let's go";
-"FinalizeRegistrationPopupText" = "In order to deliver your donations to the right address, you need to finish your registration.";
+"FinalizeRegistrationPopupText" = "Important: Donations can only be processed after you have finished your registration.";
 "FinalizeRegistration" = "Finish registration";
 "ImportantReminder" = "Important reminder";
 "MultipleCollections" = "Multiple collections";
@@ -521,7 +521,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "YesPlease" = "Yes, please";
 
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Switch on Bluetooth so you're ready to give to a beacon.";
+"BluetoothErrorMessage" = "Switch on Bluetooth so you're ready to give to a collection.";
 
 /*Foutmelding als er geen verbinding is met de server door bijv. internet-issues of door server-issues*/
 "ConnectionError" = "Currently we're not able to connect to the server. No worries, have a cup of tea and/or check your settings.";
@@ -911,11 +911,13 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "CountryStringIE" = "Ireland";
 "CountryStringAD" = "Andorra";
 "ErrorChangePostalCode" = "You've entered a post code that is unknown. Please change it under \"Personal information\" in the menu.";
-"InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Riverside House, River Lawn Road in Tonbridge, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
+"InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Censeo House in St Albans, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
 "BluetoothErrorMessageAction" = "On it";
 "BluetoothErrorMessageCancel" = "Rather not";
 "AuthoriseBluetooth" = "Authorise Givt to use Bluetooth";
-"AuthoriseBluetoothErrorMessage" = "Give Givt permission to access your Bluetooth so you're ready to give to a beacon.";
+
+/*Fuzzy*/
+"AuthoriseBluetoothErrorMessage" = "Give Givt permission to access your Bluetooth so you're ready to give to a collection.";
 
 /*Fuzzy*/
 "AuthoriseBluetoothExtraText" = "Go to Settings > Privacy > Bluetooth and select 'Givt'.";
