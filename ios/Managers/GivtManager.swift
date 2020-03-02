@@ -454,14 +454,30 @@ final class GivtManager: NSObject {
                             UserDefaults.standard.yearsWithGivts = parsedYears
                         }
                         print("Has givts in \(year):", UserDefaults.standard.hasGivtsInPreviousYear)
+                        if let parsedAccountType = parsedData["AccountType"] as? String {
+                            if let accType = AccountType(rawValue: parsedAccountType.lowercased()){
+                                UserDefaults.standard.accountType = accType
+                            } else {
+                                UserDefaults.standard.accountType = AccountType.undefined
+                            }
+                        }
+//                        if let giftAidSettings = parsedData["GiftAidSettings"] as? GiftAidSettings {
+//                            UserDefaults.standard.giftAidSettings = giftAidSettings
+//                        }
+//                        else{
+                            UserDefaults.standard.giftAidSettings = GiftAidSettings(shouldAskForGiftAidPermission: false)
+//                        }
                     } catch {
                         UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
+                        UserDefaults.standard.giftAidSettings = GiftAidSettings(shouldAskForGiftAidPermission: false)
                     }
                 } else {
                     UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
+                    UserDefaults.standard.giftAidSettings = GiftAidSettings(shouldAskForGiftAidPermission: false)
                 }
             } else {
                 UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
+                UserDefaults.standard.giftAidSettings = GiftAidSettings(shouldAskForGiftAidPermission: false)
             }
         }
     }
