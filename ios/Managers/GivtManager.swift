@@ -461,27 +461,36 @@ final class GivtManager: NSObject {
                                 UserDefaults.standard.accountType = AccountType.undefined
                             }
                         }
-//                        if let giftAidSettings = parsedData["GiftAidSettings"] as? GiftAidSettings {
-//                            UserDefaults.standard.giftAidSettings = giftAidSettings
-//                        }
-//                        else{
-                            UserDefaults.standard.giftAidSettings = GiftAidSettings(shouldAskForGiftAidPermission: false)
-//                        }
+                        if let parsedGiftAidSettings = parsedData["GiftAidSettings"] as? [String: AnyObject] {
+                            let giftAidSettings = GiftAidSettings()
+                            if let shouldAskForPermission = parsedGiftAidSettings["shouldAskForGiftAidPermission"] as? Bool {
+                                giftAidSettings.shouldAskForGiftAidPermission = shouldAskForPermission
+                            } else {
+                                giftAidSettings.shouldAskForGiftAidPermission = false
+                            }
+                            UserDefaults.standard.giftAidSettings = giftAidSettings
+                        } else{
+                            self.setShouldAskForGiftAidPermission()
+                        }
                     } catch {
                         UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
-                        UserDefaults.standard.giftAidSettings = GiftAidSettings(shouldAskForGiftAidPermission: false)
+                        self.setShouldAskForGiftAidPermission()
                     }
                 } else {
                     UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
-                    UserDefaults.standard.giftAidSettings = GiftAidSettings(shouldAskForGiftAidPermission: false)
+                    self.setShouldAskForGiftAidPermission()
                 }
             } else {
                 UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
-                UserDefaults.standard.giftAidSettings = GiftAidSettings(shouldAskForGiftAidPermission: false)
+                self.setShouldAskForGiftAidPermission()
             }
         }
     }
-    
+    private func setShouldAskForGiftAidPermission() {
+        let giftAidSettings = GiftAidSettings()
+        giftAidSettings.shouldAskForGiftAidPermission = false
+        UserDefaults.standard.giftAidSettings = giftAidSettings
+    }
     func sendGivtOverview(year: Int, callback: @escaping (Bool) -> Void) {
         var date = Date().getYear()-1
         if(year > 2015){

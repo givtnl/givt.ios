@@ -7,10 +7,27 @@
 //
 
 import Foundation
-class GiftAidSettings {
-    var shouldAskForGiftAidPermission: Bool
+class GiftAidSettings: BaseGiftAidSettings {
+    override init() {
+        super.init()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    override func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+    }
+}
+
+class BaseGiftAidSettings: NSObject, NSCoding {
+    var shouldAskForGiftAidPermission: Bool = false
+    override init() {}
     
-    init(shouldAskForGiftAidPermission: Bool = false) {
-        self.shouldAskForGiftAidPermission = shouldAskForGiftAidPermission
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(shouldAskForGiftAidPermission, forKey: "shouldAskForGiftAidPermission")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.shouldAskForGiftAidPermission = aDecoder.decodeBool(forKey: "shouldAskForGiftAidPermission")
     }
 }
