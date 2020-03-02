@@ -482,13 +482,12 @@ extension UserDefaults {
         }
     }
     
-    var giftAidSettings: GiftAidSettings {
+    var giftAidSettings: GiftAidSettings? {
         get {
-            if let giftAidSettings = object(forKey: UserDefaultsKeys.giftAidSettings.rawValue) as? GiftAidSettings {
-                return giftAidSettings
-            } else {
-                return GiftAidSettings()
+            if let giftAidSettings = data(forKey: UserDefaultsKeys.giftAidSettings.rawValue) {
+                return NSKeyedUnarchiver.unarchiveObject(with: giftAidSettings) as? GiftAidSettings
             }
+            return nil
         }
         set(value) {
             let encoded = NSKeyedArchiver.archivedData(withRootObject: value)

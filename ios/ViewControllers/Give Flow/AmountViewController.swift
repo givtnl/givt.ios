@@ -198,7 +198,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
             navigationManager.finishRegistrationAlert(self)
         }
-        if (UserDefaults.standard.mandateSigned && !UserDefaults.standard.giftAidSettings.shouldAskForGiftAidPermission){
+        
+        var shouldAskForPermission = false;
+        if let giftAidSettings = UserDefaults.standard.giftAidSettings {
+            shouldAskForPermission = giftAidSettings.shouldAskForGiftAidPermission
+        }
+        
+        if (UserDefaults.standard.mandateSigned && shouldAskForPermission){
             let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidViewController") as! GiftAidViewController
             navigationManager.pushWithLogin(vc, context: self)
         }
