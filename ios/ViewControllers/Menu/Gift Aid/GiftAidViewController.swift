@@ -30,7 +30,10 @@ class GiftAidViewController: UIViewController {
     private var helpViewController = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidInfoController") as! GiftAidInfoController
     
     override func viewDidLoad() {
-        giftAidSwitch.setOn(uExt?.GiftAidEnabled != nil, animated: false)
+        if (uExt == nil) {
+            self.navigationController?.popViewController(animated: false)
+        }
+        giftAidSwitch.setOn(uExt!.GiftAidEnabled, animated: false)
         previousStateGiftAid = giftAidSwitch.isOn
         
         lblSettings.text = NSLocalizedString("GiftAid_Setting", comment:"")
@@ -99,7 +102,7 @@ class GiftAidViewController: UIViewController {
         uExt?.GiftAidEnabled = giftaidOn
         showLoader()
         if let userExt = uExt {
-            self.loginManager.updateUser(uext: userExt, completionHandler: {(success) in
+            self.loginManager.changeGiftAidEnabled(giftaidEnabled: giftaidOn, completionHandler: {(success) in
                 DispatchQueue.main.async {
                     self.hideLoader()
                 }

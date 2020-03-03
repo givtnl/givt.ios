@@ -278,8 +278,24 @@ class LoginManager {
             log.error(message: "Something went wrong creating extra data")
             completionHandler(nil)
         }
-        
-        
+    }
+    
+    func changeGiftAidEnabled(giftaidEnabled: Bool, completionHandler: @escaping (Bool) -> Void) {
+        do {
+            let params = ["authorised" : giftaidEnabled]
+            try client.post(url: "/api/v2/users/" + UserDefaults.standard.userExt!.guid + "/giftaidauthorisations", data: params, callback: { (res) in
+                if let res = res {
+                    completionHandler(true)
+                    self.log.info(message: "updated the giftaidShizzle")
+                } else {
+                    self.log.info(message: "not updated the giftaidShizzle")
+                    completionHandler(false)
+                }
+            })
+        } catch {
+            self.log.info(message: "not updated the giftaidShizzle")
+            completionHandler(false)
+        }
     }
     
     func registerMandate(completionHandler: @escaping (Response?) -> Void) {
