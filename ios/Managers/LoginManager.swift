@@ -531,7 +531,7 @@ class LoginManager {
             "City":  userExt.City,
             "PostalCode":  userExt.PostalCode,
             "Country":  userExt.Country,
-            "GiftAid": userExt.GiftAidEnabled
+            "GiftAidEnabled": userExt.GiftAidEnabled
         ]
         
         
