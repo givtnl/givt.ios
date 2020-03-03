@@ -44,7 +44,7 @@ extension UserDefaults {
         case featureBadges
         case notificationsEnabled
         case deviceToken
-        case giftAid
+        case giftAidEnabled
         case giftAidSettings
     }
     
@@ -472,12 +472,12 @@ extension UserDefaults {
         }
     }
     
-    var giftAid: Bool{
+    var giftAidEnabled: Bool{
         get {
-            return bool(forKey: UserDefaultsKeys.giftAid.rawValue)
+            return bool(forKey: UserDefaultsKeys.giftAidEnabled.rawValue)
         }
         set(value) {
-            set(value, forKey: UserDefaultsKeys.giftAid.rawValue)
+            set(value, forKey: UserDefaultsKeys.giftAidEnabled.rawValue)
             synchronize()
         }
     }
