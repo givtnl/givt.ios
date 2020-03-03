@@ -30,7 +30,7 @@ class GiftAidViewController: UIViewController {
     private var helpViewController = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidInfoController") as! GiftAidInfoController
     
     override func viewDidLoad() {
-        giftAidSwitch.setOn(uExt?.GiftAid != nil, animated: false)
+        giftAidSwitch.setOn(uExt?.GiftAidEnabled != nil, animated: false)
         previousStateGiftAid = giftAidSwitch.isOn
         
         lblSettings.text = NSLocalizedString("GiftAid_Setting", comment:"")
@@ -96,7 +96,7 @@ class GiftAidViewController: UIViewController {
     @IBAction func saveAction(_ sender: Any) {
         self.endEditing()
         let giftaidOn = giftAidSwitch.isOn
-        uExt?.GiftAid = giftaidOn
+        uExt?.GiftAidEnabled = giftaidOn
         showLoader()
         if let userExt = uExt {
             self.loginManager.updateUser(uext: userExt, completionHandler: {(success) in
@@ -104,7 +104,7 @@ class GiftAidViewController: UIViewController {
                     self.hideLoader()
                 }
                 if success {
-                    MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties: ["state": (self.uExt?.GiftAid != nil).description])
+                    MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties: ["state": (self.uExt?.GiftAidEnabled != nil).description])
                     DispatchQueue.main.async {
                         if(self.comingFromRegistration){
                             let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController

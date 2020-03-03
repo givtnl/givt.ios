@@ -197,7 +197,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         noGivtsLabel.text = NSLocalizedString("HistoryIsEmpty", comment: "")
         givyContainer.isHidden = false
         
-        if(UserDefaults.standard.accountType != AccountType.bacs || !UserDefaults.standard.giftAid) {
+        if(UserDefaults.standard.accountType != AccountType.bacs || !UserDefaults.standard.giftAidEnabled) {
             self.giftAidView.isHidden = true
             self.tableView.topAnchor.constraint(equalTo: self.containerVIew.topAnchor).isActive = true
             self.view.layoutIfNeeded()

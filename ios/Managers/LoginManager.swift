@@ -178,7 +178,7 @@ class LoginManager {
                         if let accountType = AccountType(rawValue: userExt.AccountType.lowercased()) {
                             UserDefaults.standard.accountType = accountType
                         }
-                        UserDefaults.standard.giftAid = userExt.GiftAid
+                        UserDefaults.standard.giftAidEnabled = userExt.GiftAidEnabled
                         completion(userExt)
                     } catch let err as NSError {
                         self.log.error(message: err.description)
@@ -392,7 +392,7 @@ class LoginManager {
     // Used to update the email address, amountlimit and the giftaid
     func updateUser(uext: LMUserExt, completionHandler: @escaping (Bool) -> Void) {
         do {
-            let params = ["Email": uext.Email,"AmountLimit": uext.AmountLimit, "GiftAid": uext.GiftAid] as [String : Any]
+            let params = ["Email": uext.Email,"AmountLimit": uext.AmountLimit, "GiftAid": uext.GiftAidEnabled] as [String : Any]
             try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/", data: params) { (response) in
                 guard let resp = response else {
                     completionHandler(false)
@@ -402,7 +402,7 @@ class LoginManager {
                     let newSettings = UserDefaults.standard.userExt!
                     newSettings.email = uext.Email
                     UserDefaults.standard.amountLimit = uext.AmountLimit
-                    UserDefaults.standard.giftAid = uext.GiftAid
+                    UserDefaults.standard.giftAidEnabled = uext.GiftAidEnabled
                     UserDefaults.standard.userExt = newSettings
                     completionHandler(true)
                 } else {
@@ -515,7 +515,7 @@ class LoginManager {
             "City":  userExt.City,
             "PostalCode":  userExt.PostalCode,
             "Country":  userExt.Country,
-            "GiftAid": userExt.GiftAid
+            "GiftAid": userExt.GiftAidEnabled
         ]
         
         
