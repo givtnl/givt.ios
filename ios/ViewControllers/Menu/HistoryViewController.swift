@@ -269,7 +269,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         cell.delegate = self
         let tx = sortedArray[indexPath.section].value[indexPath.row]
         cell.organisationLabel.text = tx.orgName
-        if !tx.giftAid {
+        if !tx.giftAidEnabled {
             cell.giftAidLogo.isHidden = true
         } else {
             cell.giftAidLogo.isHidden = false
@@ -530,7 +530,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             // does not exist
                             var collections = [Collecte]()
                             collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
-                            let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAid: tx.giftAid, taxYear: tx.taxYear)
+                            let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAidEnabled: tx.giftAidEnabled, taxYear: tx.taxYear)
                             newTransactions.append(newTx)
                             prevTransaction = newTx
                         }
@@ -538,7 +538,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                         // first time
                         var collections = [Collecte]()
                         collections.append(Collecte(transactionId: tx.id, collectId: tx.collectId, amount: tx.amount, amountString: self.fmt.string(from: tx.amount as NSNumber)!))
-                        let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAid: tx.giftAid, taxYear: tx.taxYear)
+                        let newTx = HistoryTableViewModel(orgName: tx.orgName, timestamp: tx.timestamp, status: tx.status, collections: collections, giftAidEnabled: tx.giftAidEnabled, taxYear: tx.taxYear)
                         newTransactions.append(newTx)
                         prevTransaction = newTx
                     }
@@ -547,7 +547,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     oldOrgName = tx.orgName
                     oldStatus = tx.status
                     
-                    if (tx.giftAid && tx.status == 3) {
+                    if (tx.giftAidEnabled && tx.status == 3) {
                         if (self.giftAidGroupList.keys.contains(tx.taxYear)) {
                             self.giftAidGroupList[tx.taxYear] = (self.giftAidGroupList[tx.taxYear]!) + tx.amount
                         } else {
