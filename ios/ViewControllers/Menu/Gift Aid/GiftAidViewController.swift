@@ -18,7 +18,7 @@ class GiftAidViewController: UIViewController {
     private let loginManager = LoginManager.shared
     var comingFromRegistration: Bool = false
         private var log: LogService = LogService.shared
-    
+    var shouldAskForGiftAidPermission: Bool? = false
     @IBOutlet weak var giftAidSwitch: UISwitch!
     @IBOutlet weak var lblSettings: UILabel!
     @IBOutlet weak var lblInfo: UILabel!
@@ -30,11 +30,13 @@ class GiftAidViewController: UIViewController {
     private var helpViewController = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidInfoController") as! GiftAidInfoController
     
     override func viewDidLoad() {
-        if (uExt == nil) {
-            self.navigationController?.popViewController(animated: false)
+        
+        if let shouldShowGiftAid = shouldAskForGiftAidPermission {
+            if(!shouldShowGiftAid) {
+                giftAidSwitch.setOn(uExt!.GiftAidEnabled, animated: false)
+                previousStateGiftAid = giftAidSwitch.isOn
+            }
         }
-        giftAidSwitch.setOn(uExt!.GiftAidEnabled, animated: false)
-        previousStateGiftAid = giftAidSwitch.isOn
         
         lblSettings.text = NSLocalizedString("GiftAid_Setting", comment:"")
         lblInfo.text = NSLocalizedString("GiftAid_Info", comment: "")
@@ -98,16 +100,15 @@ class GiftAidViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: Any) {
         self.endEditing()
-        let giftaidOn = giftAidSwitch.isOn
-        uExt?.GiftAidEnabled = giftaidOn
         showLoader()
-        if let userExt = uExt {
-            self.loginManager.changeGiftAidEnabled(giftaidEnabled: giftaidOn, completionHandler: {(success) in
+        if var userExt = uExt {
+            userExt.GiftAidEnabled = giftAidSwitch.isOn
+            self.loginManager.changeGiftAidEnabled(giftaidEnabled: userExt.GiftAidEnabled, completionHandler: {(success) in
                 DispatchQueue.main.async {
                     self.hideLoader()
                 }
                 if success {
-                    MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties: ["state": (self.uExt?.GiftAidEnabled != nil).description])
+                    MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties: ["state": (userExt.GiftAidEnabled).description])
                     DispatchQueue.main.async {
                         if(self.comingFromRegistration){
                             let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
@@ -120,7 +121,7 @@ class GiftAidViewController: UIViewController {
                                                }),
                                                action2: nil )
                         } else {
-                            self.navigationController?.popViewController(animated: true)
+                            self.dismiss(animated: true, completion: nil)
                         }
                     }
                     
