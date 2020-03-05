@@ -427,7 +427,7 @@ final class GivtManager: NSObject {
         }
     }
     
-    func getPublicMeta() {
+    func getPublicMeta(completion: @escaping (Bool?) -> Void = { _ in }) {
         if UserDefaults.standard.userExt?.guid == nil {
             return
         }
@@ -462,27 +462,22 @@ final class GivtManager: NSObject {
                             }
                         }
                         if let parsedGiftAidSettings = parsedData["GiftAidSettings"] as? [String: AnyObject] {
-                            let giftAidSettings = GiftAidSettings()
-                            if let shouldAskForPermission = parsedGiftAidSettings["shouldAskForGiftAidPermission"] as? Bool {
-                                giftAidSettings.shouldAskForGiftAidPermission = shouldAskForPermission
+                            if let shouldAskForPermission = parsedGiftAidSettings["ShouldAskForGiftAidPermission"] as? Bool {
+                                completion(shouldAskForPermission)
                             } else {
-                                giftAidSettings.shouldAskForGiftAidPermission = false
+                                completion(false)
                             }
-                            UserDefaults.standard.giftAidSettings = giftAidSettings
                         } else{
-                            self.setShouldAskForGiftAidPermission()
+                            completion(false)
                         }
                     } catch {
                         UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
-                        self.setShouldAskForGiftAidPermission()
                     }
                 } else {
                     UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
-                    self.setShouldAskForGiftAidPermission()
                 }
             } else {
                 UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
-                self.setShouldAskForGiftAidPermission()
             }
         }
     }
