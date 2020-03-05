@@ -10,6 +10,7 @@ import UIKit
 import MaterialShowcase
 import AppCenterCrashes
 import AppCenterAnalytics
+import SVProgressHUD
 
 class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
     private var log: LogService = LogService.shared
@@ -199,14 +200,27 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             navigationManager.finishRegistrationAlert(self)
         }
         
-        var shouldAskForPermission = false;
-        if let giftAidSettings = UserDefaults.standard.giftAidSettings {
-            shouldAskForPermission = giftAidSettings.shouldAskForGiftAidPermission
-        }
-        
-        if (UserDefaults.standard.mandateSigned && shouldAskForPermission){
-            let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidViewController") as! GiftAidViewController
-            navigationManager.pushWithLogin(vc, context: self)
+        GivtManager.shared.getPublicMeta { (shouldShowGiftAid) in
+            if let shouldAskForPermission = shouldShowGiftAid {
+                if (UserDefaults.standard.mandateSigned && shouldAskForPermission){
+                    let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidViewController") as! GiftAidViewController
+                    vc.shouldAskForGiftAidPermission = shouldAskForPermission
+                    LoginManager.shared.getUserExt { (userExtObject) in
+                        SVProgressHUD.dismiss()
+                        guard let userExt = userExtObject else {
+                            let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                                DispatchQueue.main.async {
+                                    self.backPressed(self)
+                                }
+                            }))
+                            return
+                        }
+                        vc.uExt = userExt
+                        NavigationManager.shared.pushWithLogin(vc, context: self)
+                    }
+                }
+            }
         }
         
         self._cameFromFAQ = false
