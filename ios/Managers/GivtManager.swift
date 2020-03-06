@@ -481,11 +481,7 @@ final class GivtManager: NSObject {
             }
         }
     }
-    private func setShouldAskForGiftAidPermission() {
-        let giftAidSettings = GiftAidSettings()
-        giftAidSettings.shouldAskForGiftAidPermission = false
-        UserDefaults.standard.giftAidSettings = giftAidSettings
-    }
+   
     func sendGivtOverview(year: Int, callback: @escaping (Bool) -> Void) {
         var date = Date().getYear()-1
         if(year > 2015){
