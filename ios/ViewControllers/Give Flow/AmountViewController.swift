@@ -217,7 +217,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                             return
                         }
                         vc.uExt = userExt
-                        NavigationManager.shared.pushWithLogin(vc, context: self)
+                        DispatchQueue.main.async {
+                            self.present(vc, animated: true, completion: nil)
+                        }
                     }
                 }
             }
