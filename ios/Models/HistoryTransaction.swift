@@ -14,7 +14,7 @@ class HistoryTransaction: NSObject {
     public var collectId : Decimal
     public var timestamp : Date
     public var status : NSNumber
-    public var giftAid: Bool
+    public var giftAidEnabled: Bool
     public var taxYear: Int {
         get {
             var taxYear = 0
@@ -71,7 +71,7 @@ class HistoryTransaction: NSObject {
         df.locale = Locale(identifier: "en_US_POSIX")
         timestamp = df.date(from: dateString)!
         status = (dictionary["Status"] as? NSNumber)!
-        giftAid = ((dictionary["GiftAid"] as? String) != nil)
+        giftAidEnabled = (dictionary["GiftAidEnabled"] as? Bool)!
     }
     
     public func dictionaryRepresentation() -> Dictionary<String , Any> {
@@ -83,7 +83,7 @@ class HistoryTransaction: NSObject {
         dictionary.updateValue(self.timestamp, forKey: "Timestamp")
         dictionary.updateValue(self.status, forKey: "Status")
         dictionary.updateValue(self.id, forKey: "Id")
-        dictionary.updateValue(self.giftAid, forKey: "GiftAid")
+        dictionary.updateValue(self.giftAidEnabled, forKey: "GiftAidEnabled")
         
         return dictionary
     }

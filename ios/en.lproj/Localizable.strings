@@ -119,7 +119,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ButtonChange" = "Change";
 "WelcomeContinue" = "Let's go";
 "EnterEmail" = "Let's go";
-"FinalizeRegistrationPopupText" = "In order to deliver your donations to the right address, you need to finish your registration.";
+"FinalizeRegistrationPopupText" = "Important: Donations can only be processed after you have finished your registration.";
 "FinalizeRegistration" = "Finish registration";
 "ImportantReminder" = "Important reminder";
 "MultipleCollections" = "Multiple collections";
@@ -521,7 +521,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "YesPlease" = "Yes, please";
 
 /*Foutmelding dat de bluetooth niet aanstaat, is een popup*/
-"BluetoothErrorMessage" = "Switch on Bluetooth so you're ready to give to a beacon.";
+"BluetoothErrorMessage" = "Switch on Bluetooth so you're ready to give to a collection.";
 
 /*Foutmelding als er geen verbinding is met de server door bijv. internet-issues of door server-issues*/
 "ConnectionError" = "Currently we're not able to connect to the server. No worries, have a cup of tea and/or check your settings.";
@@ -861,8 +861,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "AnswerHowDoesRegistrationWorkGB" = "To start giving, all you need is an e-mail address. Once you have entered this, you are ready to give.\n\nPlease note: you need to fully register to ensure that all your previous and future donations can be processed. Go to the menu in the app and choose ‘Complete registration’. Here, you set up a Givt account by filling in your personal information and by us giving permission to debit the donations made in the app. Those transactions are processed by Smart Debit, who are specialised in direct debits. \n\nWhen your registration is complete, you are ready to give with the Givt app. You only need your login details to see or change your settings.";
 "FAQantwoord7GB" = "Registered Small Payment Institution\nGivt Ltd. is registered with the Financial Conduct Authority as a Small Payment Institution (823261). This means you can be confident that the way we conduct our business is transparent and secure and that the people running the company have been thoroughly checked.\n\nPersonal safety\nIt is very important to us that everything is safe and risk free. Each user has a personal account with its own password. You need to log in to view or change your settings.\n\nHandling transactions\nThe transactions are handled by EazyCollect; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., EazyCollect is under the supervision of the Financial Conduct Authority.\n\nImmune to fraud\nWhen installing Givt, the user gives the app authorisation to debit their account. We want to emphasise that no transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt Ltd. Since these transactions are revocable, it is completely safe and immune to fraud.\n\nOverview\nIndividual users can see an overview of their donations in the app. Organisations can log in to the Givt dashboard. This dashboard gives an overview of all financial transactions, from the moment of giving up to the full processing of the payment. In this way any collection can be followed from start to finish. Organisations can see how many people used Givt, but not who they are.";
 "FAQantwoord18GB" = "Givt fully complies with the GDPR requirements. GDPR stands for General Data Protection Regulation.\n\nWondering what this means for you? It means that we handle your information with care, that you have the right to know which information we keep on record, have the right to change this information, have the right to demand from us that we do not store your information, and that you may know why we need your personal information.\n\nIf you would like to know more, please read our privacy statement.";
-"GiftAid_Setting" = "I want to use Gift Aid";
-"GiftAid_Info" = "As a UK taxpayer, you can use the Gift Aid initiative. While this option is active, Givt Ltd. will enter Gift Aid claims for all your donations.";
+"GiftAid_Setting" = "I want to use/keep using Gift Aid";
+"GiftAid_Info" = "As a UK taxpayer, you can use the Gift Aid initiative. Every year we will remind you of your choice. Activating GiftAid after March 1st will count towards March and the next tax year. Activating it after the beginning of the tax year will count towards all your donations since the beginning of that same tax year.";
 "GiftAid_HeaderDisclaimer" = "When you enable this option, you agree to the following: ";
 "GiftAid_BodyDisclaimer" = "I am a UK taxpayer and understand that if I pay less Income Tax and/or Capital Gains Tax in the current tax year than the amount of Gift Aid claimed on all my donations, it is my responsibility to pay any difference.";
 "GiftAidInfo_Title" = "What is Gift Aid?";
@@ -911,11 +911,13 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "CountryStringIE" = "Ireland";
 "CountryStringAD" = "Andorra";
 "ErrorChangePostalCode" = "You've entered a post code that is unknown. Please change it under \"Personal information\" in the menu.";
-"InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Riverside House, River Lawn Road in Tonbridge, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
+"InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Censeo House in St Albans, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
 "BluetoothErrorMessageAction" = "On it";
 "BluetoothErrorMessageCancel" = "Rather not";
 "AuthoriseBluetooth" = "Authorise Givt to use Bluetooth";
-"AuthoriseBluetoothErrorMessage" = "Give Givt permission to access your Bluetooth so you're ready to give to a beacon.";
+
+/*Fuzzy*/
+"AuthoriseBluetoothErrorMessage" = "Give Givt permission to access your Bluetooth so you're ready to give to a collection.";
 
 /*Fuzzy*/
 "AuthoriseBluetoothExtraText" = "Go to Settings > Privacy > Bluetooth and select 'Givt'.";

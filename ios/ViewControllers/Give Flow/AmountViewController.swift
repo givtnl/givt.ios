@@ -10,13 +10,14 @@ import UIKit
 import MaterialShowcase
 import AppCenterCrashes
 import AppCenterAnalytics
+import SVProgressHUD
 
 class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
     private var log: LogService = LogService.shared
     private let slideFromRightAnimation = PresentFromRight()
     
     
-    private var navigiationManager: NavigationManager = NavigationManager.shared
+    private var navigationManager: NavigationManager = NavigationManager.shared
     private var givtService:GivtManager!
 
     @IBOutlet var pageControl: UIView!
@@ -193,10 +194,35 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigiationManager.delegate = self
+        navigationManager.delegate = self
         
         if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
-            navigiationManager.finishRegistrationAlert(self)
+            navigationManager.finishRegistrationAlert(self)
+        }
+        
+        GivtManager.shared.getPublicMeta { (shouldShowGiftAid) in
+            if let shouldAskForPermission = shouldShowGiftAid {
+                if (UserDefaults.standard.mandateSigned && shouldAskForPermission){
+                    let vc = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidViewController") as! GiftAidViewController
+                    vc.shouldAskForGiftAidPermission = shouldAskForPermission
+                    LoginManager.shared.getUserExt { (userExtObject) in
+                        SVProgressHUD.dismiss()
+                        guard let userExt = userExtObject else {
+                            let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                                DispatchQueue.main.async {
+                                    self.backPressed(self)
+                                }
+                            }))
+                            return
+                        }
+                        vc.uExt = userExt
+                        DispatchQueue.main.async {
+                            self.present(vc, animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
         }
         
         self._cameFromFAQ = false
@@ -204,7 +230,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigiationManager.delegate = nil
+        self.navigationManager.delegate = nil
     }
     
     // End of system overrides
@@ -411,7 +437,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     func willResume(sender: NavigationManager) {
         if ((self.presentedViewController as? UIAlertController) == nil) {
             if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
-                navigiationManager.finishRegistrationAlert(self)
+                navigationManager.finishRegistrationAlert(self)
             }
             self._cameFromFAQ = false
         }

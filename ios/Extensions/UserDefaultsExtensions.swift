@@ -44,7 +44,8 @@ extension UserDefaults {
         case featureBadges
         case notificationsEnabled
         case deviceToken
-        case giftAid
+        case giftAidEnabled
+        case giftAidSettings
     }
     
     enum Showcase: String {
@@ -471,12 +472,26 @@ extension UserDefaults {
         }
     }
     
-    var giftAid: Bool{
+    var giftAidEnabled: Bool{
         get {
-            return bool(forKey: UserDefaultsKeys.giftAid.rawValue)
+            return bool(forKey: UserDefaultsKeys.giftAidEnabled.rawValue)
         }
         set(value) {
-            set(value, forKey: UserDefaultsKeys.giftAid.rawValue)
+            set(value, forKey: UserDefaultsKeys.giftAidEnabled.rawValue)
+            synchronize()
+        }
+    }
+    
+    var giftAidSettings: GiftAidSettings? {
+        get {
+            if let giftAidSettings = data(forKey: UserDefaultsKeys.giftAidSettings.rawValue) {
+                return NSKeyedUnarchiver.unarchiveObject(with: giftAidSettings) as? GiftAidSettings
+            }
+            return nil
+        }
+        set(value) {
+            let encoded = NSKeyedArchiver.archivedData(withRootObject: value)
+            set(encoded, forKey: UserDefaultsKeys.giftAidSettings.rawValue)
             synchronize()
         }
     }

@@ -422,7 +422,7 @@ final class GivtManager: NSObject {
         }
     }
     
-    func getPublicMeta() {
+    func getPublicMeta(completion: @escaping (Bool?) -> Void = { _ in }) {
         if UserDefaults.standard.userExt?.guid == nil {
             return
         }
@@ -449,6 +449,22 @@ final class GivtManager: NSObject {
                             UserDefaults.standard.yearsWithGivts = parsedYears
                         }
                         print("Has givts in \(year):", UserDefaults.standard.hasGivtsInPreviousYear)
+                        if let parsedAccountType = parsedData["AccountType"] as? String {
+                            if let accType = AccountType(rawValue: parsedAccountType.lowercased()){
+                                UserDefaults.standard.accountType = accType
+                            } else {
+                                UserDefaults.standard.accountType = AccountType.undefined
+                            }
+                        }
+                        if let parsedGiftAidSettings = parsedData["GiftAidSettings"] as? [String: AnyObject] {
+                            if let shouldAskForPermission = parsedGiftAidSettings["ShouldAskForGiftAidPermission"] as? Bool {
+                                completion(shouldAskForPermission)
+                            } else {
+                                completion(false)
+                            }
+                        } else{
+                            completion(false)
+                        }
                     } catch {
                         UserDefaults.standard.hasGivtsInPreviousYear = false //for the sake of it
                     }
@@ -460,7 +476,7 @@ final class GivtManager: NSObject {
             }
         }
     }
-    
+   
     func sendGivtOverview(year: Int, callback: @escaping (Bool) -> Void) {
         var date = Date().getYear()-1
         if(year > 2015){
