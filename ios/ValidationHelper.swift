@@ -44,6 +44,15 @@ class ValidationHelper {
     //long live stackoverflow
     func isIbanChecksumValid(_ iban: String) -> Bool {
         let ibanNoSpaces = iban.replacingOccurrences(of: " ", with: "")
+        
+        // validate first two characters are letters
+        if ibanNoSpaces.count > 2 {
+            let firstTwoCharacters = ibanNoSpaces.prefix(2)
+            guard firstTwoCharacters.range(of: "^[A-Z]*$", options: .regularExpression) != nil else {
+                return false
+            }
+        }
+        
         //shortest IBAN in SEPA is 15 char (Norway)
         if ibanNoSpaces.count < 15 {
             return false
