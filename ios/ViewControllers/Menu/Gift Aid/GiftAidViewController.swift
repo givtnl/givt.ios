@@ -18,7 +18,7 @@ class GiftAidViewController: UIViewController {
     private let loginManager = LoginManager.shared
     var comingFromRegistration: Bool = false
         private var log: LogService = LogService.shared
-    
+    var shouldAskForGiftAidPermission: Bool? = false
     @IBOutlet weak var giftAidSwitch: UISwitch!
     @IBOutlet weak var lblSettings: UILabel!
     @IBOutlet weak var lblInfo: UILabel!
@@ -30,8 +30,13 @@ class GiftAidViewController: UIViewController {
     private var helpViewController = UIStoryboard(name: "Personal", bundle: nil).instantiateViewController(withIdentifier: "GiftAidInfoController") as! GiftAidInfoController
     
     override func viewDidLoad() {
-        giftAidSwitch.setOn(uExt?.GiftAid != nil, animated: false)
-        previousStateGiftAid = giftAidSwitch.isOn
+        
+        if let shouldShowGiftAid = shouldAskForGiftAidPermission {
+            if(!shouldShowGiftAid) {
+                giftAidSwitch.setOn(uExt!.GiftAidEnabled, animated: false)
+                previousStateGiftAid = giftAidSwitch.isOn
+            }
+        }
         
         lblSettings.text = NSLocalizedString("GiftAid_Setting", comment:"")
         lblInfo.text = NSLocalizedString("GiftAid_Info", comment: "")
@@ -95,47 +100,44 @@ class GiftAidViewController: UIViewController {
     
     @IBAction func saveAction(_ sender: Any) {
         self.endEditing()
-        let giftaidOn = giftAidSwitch.isOn
-        if (giftaidOn) {
-            uExt?.GiftAid = Date()
-        } else {
-            uExt?.GiftAid = nil
-        }
-        showLoader()
-        if let userExt = uExt {
-            self.loginManager.updateUser(uext: userExt, completionHandler: {(success) in
-                DispatchQueue.main.async {
-                    self.hideLoader()
-                }
-                if success {
-                    MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties: ["state": (self.uExt?.GiftAid != nil).description])
+        NavigationManager.shared.reAuthenticateIfNeeded(context: self, completion: {
+            self.showLoader()
+            if var userExt = self.uExt {
+                userExt.GiftAidEnabled = self.giftAidSwitch.isOn
+                self.loginManager.changeGiftAidEnabled(giftaidEnabled: userExt.GiftAidEnabled, completionHandler: {(success) in
                     DispatchQueue.main.async {
-                        if(self.comingFromRegistration){
-                            let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
-                            
-                                self.showAlert(title: NSLocalizedString("ImportantMessage", comment: ""),
-                                               message: NSLocalizedString("GiftAidChangeLater", comment: ""),
-                                               action1: UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
-                                                
-                                                self.navigationController!.pushViewController(vc, animated: true)
-                                               }),
-                                               action2: nil )
-                        } else {
-                            self.navigationController?.popViewController(animated: true)
+                        self.hideLoader()
+                    }
+                    if success {
+                        MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties: ["state": (userExt.GiftAidEnabled).description])
+                        DispatchQueue.main.async {
+                            if(self.comingFromRegistration){
+                                let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                                
+                                    self.showAlert(title: NSLocalizedString("ImportantMessage", comment: ""),
+                                                   message: NSLocalizedString("GiftAidChangeLater", comment: ""),
+                                                   action1: UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: .default, handler: { action in
+                                                    
+                                                    self.navigationController!.pushViewController(vc, animated: true)
+                                                   }),
+                                                   action2: nil )
+                            } else {
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                        }
+                        
+                    } else {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                
+                            }))
+                            self.present(alert, animated: true, completion: nil)
                         }
                     }
-                    
-                } else {
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                            
-                        }))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                }
-            })
-        }
+                })
+            }
+        })
     }
     
     func showAlert(title:String, message:String, action1: UIAlertAction, action2: UIAlertAction?) {
