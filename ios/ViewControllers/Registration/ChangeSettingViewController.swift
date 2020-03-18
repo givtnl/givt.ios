@@ -125,8 +125,12 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
                 saveBtn.isEnabled = false
             }
         } else {
-            inputFieldToEdit.isValid = validateInput1(textField.text!)
-            saveBtn.isEnabled = inputFieldToEdit.isValid
+            if !inputFieldToEdit.isDifferentFrom(from: inputOfInput) {
+                saveBtn.isEnabled = false
+            } else {
+                inputFieldToEdit.isValid = validateInput1(textField.text!)
+                saveBtn.isEnabled = inputFieldToEdit.isValid
+            }
         }
     }
     
@@ -134,6 +138,11 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
         inputFieldToEdit.isValid = validateInput1(inputFieldToEdit.text!)
         if type == SettingType.iban {
             inputFieldToEdit.text = inputFieldToEdit.text!.uppercased()
+            if !inputFieldToEdit.isDifferentFrom(from: inputOfInput) {
+                saveBtn.isEnabled = false
+            } else {
+                saveBtn.isEnabled = inputFieldToEdit.isValid
+            }
         } else if type == SettingType.bacs {
             inputFieldToEdit.isValid = validateInput1(inputFieldToEdit.text!)
             inputFieldToEdit2.isValid = validateInput2(inputFieldToEdit2.text!)

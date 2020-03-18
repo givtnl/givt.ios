@@ -35,8 +35,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     private var validationHelper = ValidationHelper.shared
     private var countryPickerView: UIPickerView!
     private var mobilePrefixPickerView: UIPickerView!
-    private var selectedCountry: Country!
-    private var selectedMobilePrefix: Country!
+    private var selectedCountry: Country! = AppConstants.countries.first!
+    private var selectedMobilePrefix: Country! = AppConstants.countries.first!
     private var _lastTextField: UITextField = UITextField()
     
     var emailField = ""
@@ -109,11 +109,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                 selectedMobilePrefix = filteredCountry
                 mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
                 checkAll(mobilePrefixField)
-            } else {
-                selectedCountry = AppConstants.countries.first!
             }
         }
-
         
         initButtonsWithTags()
         
@@ -121,12 +118,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         countryPickerView.delegate = self
         countryField.inputView = countryPickerView
         
-        
-        
         mobilePrefixPickerView = UIPickerView()
         mobilePrefixPickerView.delegate = self
         mobilePrefixField.inputView = mobilePrefixPickerView
-        
         
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         // prevents the scroll view from swallowing up the touch event of child buttons
