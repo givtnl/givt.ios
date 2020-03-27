@@ -27,7 +27,24 @@ class ValidationHelper {
         let count = newString.count
         return (count > 1 && count <= maxLength)
     }
-    
+    func isValidUKPostalCode(string: String) -> Bool {
+        let trimmedString = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        if(!trimmedString.contains(" ")) {
+            return false
+        }
+        
+        let splitString = trimmedString.components(separatedBy: " ")
+        
+        if(splitString.count != 2) {
+            return false
+        }
+        
+        if(splitString[0].count < 2 || splitString[1].count < 2) {
+            return false
+        }
+        
+        return true
+    }
     func isEmailAddressValid(_ string: String) -> Bool {
         let firstpart = "([A-Z0-9a-z._%+-]{0,30})?"
         let serverpart = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
