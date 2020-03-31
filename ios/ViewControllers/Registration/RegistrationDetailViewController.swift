@@ -447,7 +447,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let country = self.selectedCountry?.shortName
         let iban = self.iban.text!.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).capitalized
         var userData: RegistrationUser!
         if paymentType == .sepa {
             UserDefaults.standard.accountType = AccountType.sepa
