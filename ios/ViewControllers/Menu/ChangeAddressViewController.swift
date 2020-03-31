@@ -100,7 +100,7 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
     
     @IBAction func save(_ sender: Any) {
         uExt!.Address = address.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        uExt!.PostalCode = postalCode.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        uExt!.PostalCode = postalCode.text!.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
         uExt!.City = city.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         uExt!.Country = currentCountry!.shortName
         NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
