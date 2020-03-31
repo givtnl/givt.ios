@@ -667,6 +667,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             checkAll(mobilePrefixField)
             checkAll(mobileNumber)
+            checkAll(postalCode)
             checkAll(countryField)
             if(selectedCountry.shortName == "GB" || selectedCountry.shortName == "GG" || selectedCountry.shortName == "JE") {
                 showBacs(self)

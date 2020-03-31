@@ -27,6 +27,7 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currentCountry = AppConstants.countries[row]
         country.text = currentCountry!.name
+        textFieldDidChange(NSNotification(name:NSNotification.Name("postalCode"), object: postalCode))
     }
     
     @IBOutlet var headTitle: UILabel!
