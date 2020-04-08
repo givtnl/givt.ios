@@ -27,6 +27,7 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currentCountry = AppConstants.countries[row]
         country.text = currentCountry!.name
+        textFieldDidChange(NSNotification(name:NSNotification.Name("postalCode"), object: postalCode))
     }
     
     @IBOutlet var headTitle: UILabel!
@@ -99,7 +100,7 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
     
     @IBAction func save(_ sender: Any) {
         uExt!.Address = address.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        uExt!.PostalCode = postalCode.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        uExt!.PostalCode = postalCode.text!.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
         uExt!.City = city.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         uExt!.Country = currentCountry!.shortName
         NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
@@ -173,6 +174,9 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
             tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 70) && validationHelper.isValidAddress(string: tx.text!)
         case postalCode:
             tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 15) && validationHelper.isValidAddress(string: tx.text!)
+            if(["GB","GG","JE"].filter{$0 == currentCountry!.shortName}.count == 1) {
+                tx.isValid = validationHelper.isValidUKPostalCode(string: tx.text!)
+            }
         case city:
             tx.isValid = validationHelper.isBetweenCriteria(tx.text!, 35) && validationHelper.isValidAddress(string: tx.text!)
         default:

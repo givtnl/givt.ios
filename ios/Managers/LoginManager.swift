@@ -408,7 +408,7 @@ class LoginManager {
     // Used to update the email address, amountlimit and the giftaid
     func updateUser(uext: LMUserExt, completionHandler: @escaping (Bool) -> Void) {
         do {
-            let params = ["Email": uext.Email,"AmountLimit": uext.AmountLimit, "GiftAid": uext.GiftAidEnabled] as [String : Any]
+            let params = ["Email": uext.Email, "AmountLimit": uext.AmountLimit, "GiftAidEnabled": uext.GiftAidEnabled] as [String : Any]
             try client.post(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)/", data: params) { (response) in
                 guard let resp = response else {
                     completionHandler(false)

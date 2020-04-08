@@ -447,7 +447,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         let country = self.selectedCountry?.shortName
         let iban = self.iban.text!.replacingOccurrences(of: " ", with: "").trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
         let mobileNumber = self.formattedPhoneNumber.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+        let postalCode = self.postalCode.text!.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).capitalized
         var userData: RegistrationUser!
         if paymentType == .sepa {
             UserDefaults.standard.accountType = AccountType.sepa
@@ -517,6 +517,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             isStreetValid ? textField.setValid() : textField.setInvalid()
         case postalCode:
             isPostalCodeValid = validationHelper.isBetweenCriteria(postalCode.text!, 15) && validationHelper.isValidAddress(string: postalCode.text!)
+            if(["GB","GG","JE"].filter{$0 == selectedMobilePrefix.shortName}.count == 1) {
+                isPostalCodeValid = validationHelper.isValidUKPostalCode(string: postalCode.text!)
+            }
             isPostalCodeValid ? textField.setValid() : textField.setInvalid()
         case city:
             isCityValid = validationHelper.isBetweenCriteria(city.text!, 45) && validationHelper.isValidAddress(string: city.text!)
@@ -664,6 +667,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
             checkAll(mobilePrefixField)
             checkAll(mobileNumber)
+            checkAll(postalCode)
             checkAll(countryField)
             if(selectedCountry.shortName == "GB" || selectedCountry.shortName == "GG" || selectedCountry.shortName == "JE") {
                 showBacs(self)
@@ -690,10 +694,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         textField.inputAccessoryView = toolbar
     }
 
-    private var custom = CustomPresentModalAnimation()
     @IBAction func openInfo(_ sender: Any) {
         let vc = UIStoryboard(name: "WhyPersonalData", bundle: nil).instantiateInitialViewController() as! InfoRegistrationViewController
-        vc.transitioningDelegate = custom
         self.present(vc, animated: true, completion: nil)
     }
 }
