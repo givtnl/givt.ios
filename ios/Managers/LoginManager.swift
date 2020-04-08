@@ -467,28 +467,37 @@ class LoginManager {
         
     }
     
-    func terminateAccount(completionHandler: @escaping (Bool) -> Void) {
+    func terminateAccount(completionHandler: @escaping (UnregisterResult) -> Void) {
         self.log.info(message: "Terminating account")
         do {
-            try client.post(url: "/api/users/unregister", data: [:]) { (status) in
-                if (status != nil) {
-                    if let userExt = UserDefaults.standard.userExt {
-                        self.doesEmailExist(email: userExt.email, completionHandler: {(resp) in
-                            if (resp == "false") {
-                                completionHandler(true)
-                                self.logout()
-                            } else {
-                                self.log.error(message: "Could not terminate account because the user is still found after terminating.")
-                                completionHandler(false)
+            try client.post(url: "/api/users/unregister", data: [:]) { (unregisterResponse) in
+                if (unregisterResponse != nil) {
+                    if let statusCode = unregisterResponse?.statusCode {
+                        if(statusCode >= 300) {
+                            if(statusCode == 424) {
+                                completionHandler(.MandateNotRevokedError)
                             }
-                        })
-                    } else {
-                        self.log.error(message: "Could not terminate account because no user ext is found on device.")
-                        completionHandler(false)
+                            completionHandler(.UnknownError)
+                        } else {
+                            if let userExt = UserDefaults.standard.userExt {
+                                self.doesEmailExist(email: userExt.email, completionHandler: {(resp) in
+                                    if (resp == "false" || resp == "dashboard") {
+                                        completionHandler(.NoError)
+                                        self.logout()
+                                    } else {
+                                        self.log.error(message: "Could not terminate account because the user is still found after terminating.")
+                                        completionHandler(.UnknownError)
+                                    }
+                                })
+                            } else {
+                                self.log.error(message: "Could not terminate account because no user ext is found on device.")
+                                completionHandler(.UnknownError)
+                            }
+                        }
                     }
                 } else {
                     self.log.error(message: "Could not terminate account")
-                    completionHandler(false)
+                    completionHandler(.UnknownError)
                 }
             }
         } catch {
@@ -516,6 +525,11 @@ class LoginManager {
     internal class UserExtUpdateResult {
         var ok: Bool = false
         var error: Int = -1
+    }
+    enum UnregisterResult {
+        case NoError
+        case UnknownError
+        case MandateNotRevokedError
     }
     func updateUserExt(userExt: LMUserExt, callback: @escaping (UserExtUpdateResult) -> Void) {
         self.log.info(message: "Updating user extension")

@@ -57,17 +57,26 @@ class TerminateAccountViewController: UIViewController {
         }
         LoginManager.shared.terminateAccount { (status) in
             SVProgressHUD.dismiss()
-            if !status {
-                let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
+            switch(status) {
+            case .NoError:
+                DispatchQueue.main.async {
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmationViewController") as! ConfirmationViewController
+                    self.show(vc, sender: nil)
+                
+                }
+            case .UnknownError:
+                let alert = UIAlertController(title: NSLocalizedString("UnregisterErrorTitle", comment: ""), message: NSLocalizedString("UnregisterError", comment: ""), preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                 }))
                 DispatchQueue.main.async {
                     self.present(alert, animated: true, completion:  {})
                 }
-            } else {
+            case .MandateNotRevokedError:
+                let alert = UIAlertController(title: NSLocalizedString("UnregisterErrorTitle", comment: ""), message: NSLocalizedString("UnregisterMandateError", comment: ""), preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                }))
                 DispatchQueue.main.async {
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmationViewController") as! ConfirmationViewController
-                    self.show(vc, sender: nil)
+                    self.present(alert, animated: true, completion:  {})
                 }
             }
         }
