@@ -57,7 +57,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         self.nextBtn.isEnabled = false
         
         #if DEBUG
-            email.text = String.random() + "@givtapp.be"
+            email.text = "givttest+"+String.random() + "@gmail.com"
             checkAll()
         #endif
         

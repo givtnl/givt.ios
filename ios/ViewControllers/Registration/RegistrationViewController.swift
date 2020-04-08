@@ -225,11 +225,9 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
             theScrollView.scrollIndicatorInsets = .zero
         }
     }
-    let slideAnimator = CustomPresentModalAnimation()
+    
     @IBAction func openFAQ(_ sender: Any) {
         let vc = UIStoryboard(name: "FAQ", bundle: nil).instantiateInitialViewController() as! FAQViewController
-        vc.modalPresentationStyle = .fullScreen
-        vc.transitioningDelegate = slideAnimator
         self.present(vc, animated: true, completion: nil)
     }
 }
