@@ -55,28 +55,17 @@ class TerminateAccountViewController: UIViewController {
             self.present(alert, animated: true, completion:  {})
             return
         }
-        LoginManager.shared.terminateAccount { (status) in
-            SVProgressHUD.dismiss()
-            switch(status) {
-            case .NoError:
-                DispatchQueue.main.async {
+        LoginManager.shared.terminateAccount { (error) in
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                if let error = error {
+                    let alert = UIAlertController(title: NSLocalizedString("UnregisterErrorTitle", comment: ""), message: NSLocalizedString(error, comment: ""), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    }))
+                    self.present(alert, animated: true, completion:  {})
+                } else {
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmationViewController") as! ConfirmationViewController
                     self.show(vc, sender: nil)
-                
-                }
-            case .UnknownError:
-                let alert = UIAlertController(title: NSLocalizedString("UnregisterErrorTitle", comment: ""), message: NSLocalizedString("UnregisterError", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                }))
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion:  {})
-                }
-            case .MandateNotRevokedError:
-                let alert = UIAlertController(title: NSLocalizedString("UnregisterErrorTitle", comment: ""), message: NSLocalizedString("UnregisterMandateError", comment: ""), preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                }))
-                DispatchQueue.main.async {
-                    self.present(alert, animated: true, completion:  {})
                 }
             }
         }
