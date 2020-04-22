@@ -49,7 +49,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountLimitExceededGB" = "This amount is higher than £250. Please choose a lower amount.";
 
 /*Fuzzy*/
-"GiftOverview_GiftAidBanner" = "Gift-Aided {0}";
+"GiftOverview_GiftAidBanner" = "Gift Aided {0}";
 
 /*Fuzzy*/
 "MaximumAmountReachedGB" = "Woah, you've reached the maximum donation limit. In the UK you can give a maximum of £250 per donation.";
@@ -855,14 +855,14 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "UpdateBacsAccountDetailsError" = "Alas, the Sortcode or Account number is invalid. You can change the Sortcode and/or Account number under ‘Personal information’ in the menu.";
 "DDIFailedTitle" = "DDI request failed";
 "DDIFailedMessage" = "At the moment it is not possible to request a Direct Debit Instruction. Please try again in a few minutes.";
-"FAQantwoord5GB" = "Handling transactions\nThe transactions are handled by SmartDebit; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., SmartDebit is under the supervision of the Financial Conduct Authority.\n\nRevertible afterwards\nThe transactions take place afterwards via a direct debit under Givt Ltd. We want to emphasise that no transactions take place in the moment of giving. Since these transactions are revocable, it is completely safe and immune to fraud.";
+"FAQantwoord5GB" = "Handling transactions\nThe transactions are handled by EazyCollect; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., EazyCollect is under the supervision of the Financial Conduct Authority.\n\nRevertible afterwards\nThe transactions take place afterwards via a direct debit under Givt Ltd. We want to emphasise that no transactions take place in the moment of giving. Since these transactions are revocable, it is completely safe and immune to fraud.";
 "FAQvraag15GB" = "Can I Gift Aid my donations?";
 "FAQantwoord15GB" = "Yes, you can Gift Aid your donations (This is currently under active development.)\n\nSince the first of May 2019, it is possible for an intermediary like Givt Ltd. to make Gift Aid declarations on behalf of a donor. It’s hassle-free! You simply authorise Givt Ltd. once to make Gift Aid declarations through the Givt app.";
 "AnswerHowDoesRegistrationWorkGB" = "To use Givt, you have to register in the Givt app. Go to your app menu and choose ‘Finish registration’. You set up a Givt account, fill in some personal details and give permission to debit the donations made with the app. With this Givt account, you don’t have to fill in all your personal details every time you want to donate.\n\nOf course it is also very important to us that everything is safe and risk-free. Each user has a personal account with its own password. When your registration is complete, you are ready to give. You only need your login details to see or change your settings.";
 "FAQantwoord7GB" = "Registered Small Payment Institution\nGivt Ltd. is registered with the Financial Conduct Authority as a Small Payment Institution (823261). This means you can be confident that the way we conduct our business is transparent and secure and that the people running the company have been thoroughly checked.\n\nPersonal safety\nIt is very important to us that everything is safe and risk free. Each user has a personal account with its own password. You need to log in to view or change your settings.\n\nHandling transactions\nThe transactions are handled by SmartDebit; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., SmartDebit is under the supervision of the Financial Conduct Authority.\n\nImmune to fraud\nWhen installing Givt, the user gives the app authorisation to debit their account. We want to emphasise that no transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt Ltd. Since these transactions are revocable, it is completely safe and immune to fraud.\n\nOverview\nIndividual users can see an overview of their donations in the app. Organisations can log in to the Givt dashboard. This dashboard gives an overview of all financial transactions, from the moment of giving up to the full processing of the payment. In this way any collection can be followed from start to finish. Organisations can see how many people used Givt, but not who they are.";
 "FAQantwoord18GB" = "Givt fully complies with the GDPR requirements. GDPR stands for General Data Protection Regulation.\n\nWondering what this means for you? It means that we handle your information with care, that you have the right to know which information we keep on record, have the right to change this information, have the right to demand from us that we do not store your information, and that you may know why we need your personal information.\n\nIf you would like to know more, please read our privacy statement.";
 "GiftAid_Setting" = "Ik wil Gift Aid (blijven) gebruiken";
-"GiftAid_Info" = "Enkel UK belastingsplichtigen kunnen gebruik maken van Gift Aid. Elk jaar herinneren we je aan je keuze. Wanneer je Gift Aid activeert na 1 maart zal het tellen voor zowel maart als het volgende aanslagjaar. Wanneer je het activeert na het begin van het aanslagjaar zal het tellen voor all giften sinds het begin van dat aanslagjaar.";
+"GiftAid_Info" = "Enkel UK belastingsplichtigen kunnen gebruik maken van Gift Aid. Elk jaar herinneren we je aan je keuze. Wanneer je Gift Aid activeert na 1 maart zal het tellen voor zowel maart als het volgende aanslagjaar.";
 "GiftAid_HeaderDisclaimer" = "Wanneer je de optie activeert ga je akkoord met het volgende:";
 "GiftAid_BodyDisclaimer" = "Ik ben een UK belastingsbetaler en begrijp dat, als ik minder belastingen in het huidige belastingsjaar dan dat ik donaties heb gedaan met behulp van Gift aid, dat het mijn plicht is om het verschil bij te betalen.";
 "GiftAidInfo_Title" = "Wat is Gift Aid?";
@@ -911,7 +911,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "CountryStringIE" = "Ierland";
 "CountryStringAD" = "Andorra";
 "ErrorChangePostalCode" = "Je gebruikt een postcode die onbekend is. Ga naar \"Mijn gegevens\" in het menu.";
-"InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Riverside House, River Lawn Road in Tonbridge, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
+"InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Censeo House in St Albans, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
 "BluetoothErrorMessageAction" = "Ik doe het";
 "BluetoothErrorMessageCancel" = "Liever niet";
 "AuthoriseBluetooth" = "Geef Givt toegang tot Bluetooth";
@@ -921,3 +921,6 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Fuzzy*/
 "AuthoriseBluetoothExtraText" = "Ga naar Instellingen > Privacy > Bluetooth en selecteer \"Givt\".";
+"UnregisterError" = "Helaas, we kunnen op dit moment je account niet opzeggen. Gelieve later nog eens te proberen.";
+"UnregisterMandateError" = "Helaas, we kunnen op dit moment je account niet opzeggen omdat er iets misgaat met het annuleren van je mandaat. Gelieve contact met ons op te nemen.";
+"UnregisterErrorTitle" = "Opzeggen mislukt";
