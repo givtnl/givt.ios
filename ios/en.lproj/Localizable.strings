@@ -374,7 +374,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "CheckInbox" = "Success! Check your inbox.";
 
 /*"Stad" placeholder bij het invoeren van je stad bij de registratie*/
-"City" = "City";
+"City" = "City/Town";
 
 /*Dat klinkt alsof je ook de optie krijgt om het bedrag over te maken. 
  Het scannen is mislukt, titel wordt getoond langsboven*/
