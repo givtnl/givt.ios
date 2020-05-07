@@ -368,7 +368,7 @@ final class GivtManager: NSObject {
             for transaction in transactions {
                 object["Transactions"]?.append(transaction.convertToDictionary())
             }
-            if trycount < 3 {
+            if trycount < 3, object["Transactions"]?.count ?? 0 > 0 {
                 try client.post(url: "/api/Givts/Multiple", data: object) { (res) in
                     if let res = res {
                         if res.basicStatus == .ok {
