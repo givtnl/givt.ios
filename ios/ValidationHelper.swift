@@ -39,7 +39,7 @@ class ValidationHelper {
             return false
         }
         
-        if(splitString[0].count < 2 || splitString[1].count < 2) {
+        if(splitString[0].count < 2 || splitString[1].count != 3) {
             return false
         }
         
