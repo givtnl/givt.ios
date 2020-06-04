@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -645,7 +645,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="givyGave" translatesAutoresizingMaskIntoConstraints="NO" id="cdK-pi-bub">
-                                <rect key="frame" x="199" y="547" width="136" height="197"/>
+                                <rect key="frame" x="199" y="547" width="136" height="197.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="EMw-R1-gR1"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="197" id="b6t-tc-UB3"/>
@@ -1391,7 +1391,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="givy-party" translatesAutoresizingMaskIntoConstraints="NO" id="9Ag-aw-gWW">
-                                <rect key="frame" x="63" y="340" width="288" height="216"/>
+                                <rect key="frame" x="63" y="340" width="288" height="216.00000000000006"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="216" id="97N-LH-ZyF"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="320" id="idb-x3-YM3"/>
@@ -2106,7 +2106,7 @@ Kijk voor de status in je overzicht.</string>
                                         </connections>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown.png" translatesAutoresizingMaskIntoConstraints="NO" id="dth-fh-REQ">
-                                        <rect key="frame" x="350" y="14" width="16" height="16"/>
+                                        <rect key="frame" x="334" y="6" width="32" height="32"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKh-SI-fOK">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
@@ -2271,7 +2271,7 @@ Kijk voor de status in je overzicht.</string>
 Hier kun je kiezen wat op dit moment het 
 best bij jou past.</string>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLY-4u-8ip">
@@ -2909,7 +2909,6 @@ best bij jou past.</string>
             <point key="canvasLocation" x="1343" y="554"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="acties" width="120" height="120"/>
         <image name="active_eye.png" width="16" height="12"/>
@@ -2935,4 +2934,5 @@ best bij jou past.</string>
         <image name="visible_eye.png" width="16" height="12"/>
         <image name="whitedlTaxes" width="26" height="26"/>
     </resources>
+    <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
