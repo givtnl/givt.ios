@@ -921,6 +921,8 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "AuthoriseBluetoothExtraText" = "Ga naar Instellingen > Privacy > Bluetooth en selecteer \"Givt\".";
-"UnregisterError" = "Helaas, we kunnen op dit moment je account niet opzeggen. Gelieve later nog eens te proberen.";
-"UnregisterMandateError" = "Helaas, we kunnen op dit moment je account niet opzeggen omdat er iets misgaat met het annuleren van je mandaat. Gelieve contact met ons op te nemen.";
+
+/*Fuzzy*/
+"UnregisterError" = "Helaas, we kunnen op dit moment je account niet opzeggen. Probeer je het later nog een keer?";
+"UnregisterMandateError" = "Helaas, we kunnen op dit moment je account niet opzeggen omdat het niet lukt om je machtiging op te zeggen. Neem aub contact op met ons.";
 "UnregisterErrorTitle" = "Opzeggen mislukt";
