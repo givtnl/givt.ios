@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aMO-mo-gAx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aMO-mo-gAx">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,28 +17,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQr-9y-RQV">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qtq-UD-GGM">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PersonalSettingTableViewCell" id="z9N-4m-cHW" customClass="PersonalSettingTableViewCell" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="600" height="81.5"/>
+                                                <rect key="frame" x="0.0" y="28" width="414" height="82.666664123535156"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z9N-4m-cHW" id="qFg-KW-2vw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="569" height="81.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="383" height="82.666664123535156"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3nu-xy-h4j">
-                                                            <rect key="frame" x="20" y="15" width="554" height="51.5"/>
+                                                            <rect key="frame" x="20" y="14.999999999999996" width="363" height="52.666666666666657"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OW1-pi-xHu">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="51.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="52.666666666666664"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5V6-gw-4cX">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="51.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="52.666666666666664"/>
                                                                         </imageView>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,10 +51,10 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ycz-kP-HHx">
-                                                                    <rect key="frame" x="30" y="0.0" width="524" height="51.5"/>
+                                                                    <rect key="frame" x="30" y="0.0" width="333" height="52.666666666666664"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jw6-YV-XlA">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="524" height="51.5"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="333" height="52.666666666666664"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                             <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -122,10 +122,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ae-pp-aF7" userLabel="switch view">
-                                <rect key="frame" x="0.0" y="204" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="307.33333333333331" width="414" height="50"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" restorationIdentifier="innerSwitch" translatesAutoresizingMaskIntoConstraints="NO" id="6iF-43-FxE">
-                                        <rect key="frame" x="0.0" y="1" width="600" height="48"/>
+                                        <rect key="frame" x="0.0" y="1" width="414" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="UOe-XU-lCT">
                                                 <rect key="frame" x="20" y="13" width="155" height="22"/>
@@ -141,7 +141,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Oxa-TV-SVY">
-                                                <rect key="frame" x="531" y="8.5" width="51" height="31"/>
+                                                <rect key="frame" x="345" y="8.3333333333333712" width="51" height="31"/>
                                                 <color key="onTintColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </switch>
                                         </subviews>
@@ -164,26 +164,26 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w57-jc-Kow">
-                                <rect key="frame" x="20" y="274" width="560" height="193"/>
+                                <rect key="frame" x="20" y="377.33333333333326" width="374" height="351.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aeM-Ii-zou">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="193"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="351.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="226" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZM-CT-h9v">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="65.666666666666671"/>
                                                 <string key="text">As a UK taxpayer, you can use the Gift Aid initiative. While this option is active, Givt Ltd. will enter Gift Aid claims for all your donations.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="228" text="When you enable this option, you agree to the following: " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPx-k8-t81" userLabel="disclaimer1">
-                                                <rect key="frame" x="0.0" y="64" width="560" height="22"/>
+                                                <rect key="frame" x="0.0" y="85.666666666666686" width="374" height="44"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="231" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwU-tA-PZq" userLabel="disclaimer2">
-                                                <rect key="frame" x="0.0" y="106" width="560" height="66"/>
+                                                <rect key="frame" x="0.0" y="149.66666666666669" width="374" height="109.33333333333331"/>
                                                 <string key="text">I am a UK taxpayer and understand that if I pay less Income Tax and/or Capital Gains Tax in the current tax year than the amount of Gift Aid claimed on all my donations, it is my responsibility to pay any difference.</string>
                                                 <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -214,7 +214,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bi-vd-IUi" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="487" width="560" height="44"/>
+                                <rect key="frame" x="20" y="749" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive"/>
                                 <constraints>
@@ -241,7 +241,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givy_gift_aid" translatesAutoresizingMaskIntoConstraints="NO" id="Nww-HW-ndy">
-                                <rect key="frame" x="20" y="64" width="560" height="120"/>
+                                <rect key="frame" x="20" y="108.00000000000001" width="374" height="179.33333333333337"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -302,13 +302,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nIo-jq-Bgs">
-                                <rect key="frame" x="20" y="241" width="560" height="98"/>
+                                <rect key="frame" x="20" y="394" width="374" height="98"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rec-Cp-770">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bh4-Zw-q5G">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fv1-ok-VIo">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
@@ -327,7 +327,7 @@
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lxB-5k-uS5" customClass="SpecialUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="30" y="0.0" width="530" height="44"/>
+                                                        <rect key="frame" x="30" y="0.0" width="344" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="EQa-g9-17q"/>
                                                         </constraints>
@@ -349,10 +349,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zc-A6-Qhd">
-                                        <rect key="frame" x="0.0" y="54" width="560" height="44"/>
+                                        <rect key="frame" x="0.0" y="54" width="374" height="44"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6AN-Lt-qm2">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVl-4H-VbO">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
@@ -371,7 +371,7 @@
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-xS-eho" customClass="SpecialUITextField" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="30" y="0.0" width="530" height="44"/>
+                                                        <rect key="frame" x="30" y="0.0" width="344" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="bgU-xy-3Rf"/>
                                                         </constraints>
@@ -395,7 +395,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7c-h6-pvu" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="20" y="536" width="560" height="44"/>
+                                <rect key="frame" x="20" y="798" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                 <constraints>
@@ -422,14 +422,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KD1-TF-ZmB">
-                                <rect key="frame" x="0.0" y="339" width="600" height="197"/>
+                                <rect key="frame" x="0.0" y="492" width="414" height="306"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jep-mg-B8c">
-                                <rect key="frame" x="0.0" y="44" width="600" height="197"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="306"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-mailadres:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRK-jG-t30">
-                                        <rect key="frame" x="20" y="144" width="560" height="33"/>
+                                        <rect key="frame" x="20" y="253" width="374" height="33"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -826,19 +826,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What is Gift Aid?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Tbc-xt-Jq1">
-                                <rect key="frame" x="50" y="20" width="480" height="27.5"/>
+                                <rect key="frame" x="50" y="64" width="294" height="27.333333333333329"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mZF-Lx-5gN">
-                                <rect key="frame" x="0.0" y="67.5" width="600" height="532.5"/>
+                                <rect key="frame" x="0.0" y="111.33333333333331" width="414" height="750.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nm6-lP-muC">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="326"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="391.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQu-cc-lIb">
-                                                <rect key="frame" x="20" y="0.0" width="560" height="306"/>
+                                                <rect key="frame" x="20" y="0.0" width="374" height="371.66666666666669"/>
                                                 <string key="text">Donating through Gift Aid means charities and community amateur sports clubs (CASCs) can claim an extra 25p for every £1 you give. It will not cost you any extra.
 
 Gift Aid treats the donations as being made after deduction of income tax at the basic rate. The charity you give to can reclaim this basic rate income tax paid on the gift from HMRC.  Your donations will qualify as long as they’re not more than 4 times what you have paid in tax in that tax year
@@ -869,7 +869,7 @@ For more info, go to: www.gov.uk/donating-to-charity/gift-aid
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VzZ-pH-ZTl">
-                                <rect key="frame" x="540" y="9" width="50" height="50"/>
+                                <rect key="frame" x="354" y="52.666666666666657" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="kKg-EK-0Yk"/>
                                     <constraint firstAttribute="width" constant="50" id="kVv-oa-UoU"/>
@@ -904,6 +904,174 @@ For more info, go to: www.gov.uk/donating-to-charity/gift-aid
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xfc-vL-LHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1848" y="-470"/>
+        </scene>
+        <!--Change Phone Number View Controller-->
+        <scene sceneID="2ue-R2-QCU">
+            <objects>
+                <viewController storyboardIdentifier="ChangePhoneNumberViewController" automaticallyAdjustsScrollViewInsets="NO" id="jRj-iF-u3N" customClass="ChangePhoneNumberViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SIx-jB-92M">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tEP-bC-V7F">
+                                <rect key="frame" x="20" y="88" width="374" height="754"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wf-C6-5i8">
+                                        <rect key="frame" x="0.0" y="20" width="374" height="87"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Mobiel nummer wijzigen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5IK-sW-Lyf">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="33"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
+                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Txy-cB-LzZ">
+                                                <rect key="frame" x="0.0" y="43" width="374" height="44"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UVz-FT-hPa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxB-s9-eea">
+                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="44"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+31" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zVi-2S-q66" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="44"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
+                                                                    </textField>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown.png" translatesAutoresizingMaskIntoConstraints="NO" id="eAK-95-tnZ">
+                                                                        <rect key="frame" x="28" y="6" width="32" height="32"/>
+                                                                    </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psa-da-oqA">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="44"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        <state key="normal">
+                                                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="openTelephonePicker:" destination="jRj-iF-u3N" eventType="touchUpInside" id="9Nd-vj-Wg1"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="psa-da-oqA" secondAttribute="bottom" id="6Au-bf-ljS"/>
+                                                                    <constraint firstItem="psa-da-oqA" firstAttribute="leading" secondItem="uxB-s9-eea" secondAttribute="leading" id="77E-Qo-A2E"/>
+                                                                    <constraint firstItem="eAK-95-tnZ" firstAttribute="centerY" secondItem="uxB-s9-eea" secondAttribute="centerY" id="Anx-xf-zwF"/>
+                                                                    <constraint firstItem="psa-da-oqA" firstAttribute="top" secondItem="uxB-s9-eea" secondAttribute="top" id="D8K-3d-wIr"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="psa-da-oqA" secondAttribute="trailing" id="Rqi-ix-HPf"/>
+                                                                    <constraint firstAttribute="height" constant="44" id="Rwl-im-2aN"/>
+                                                                    <constraint firstItem="zVi-2S-q66" firstAttribute="leading" secondItem="uxB-s9-eea" secondAttribute="leading" id="efr-Ot-sId"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="eAK-95-tnZ" secondAttribute="trailing" constant="10" id="hCW-fl-6la"/>
+                                                                    <constraint firstItem="zVi-2S-q66" firstAttribute="top" secondItem="uxB-s9-eea" secondAttribute="top" id="iBU-TA-vmd"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="zVi-2S-q66" secondAttribute="trailing" id="kaV-83-FQq"/>
+                                                                    <constraint firstAttribute="width" constant="70" id="ldH-AL-wLd"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="zVi-2S-q66" secondAttribute="bottom" id="tOo-Me-tEg"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobiel nummer" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YSM-bI-aRE" customClass="SpecialUITextField" customModule="ios" customModuleProvider="target">
+                                                                <rect key="frame" x="80" y="0.0" width="294" height="44"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="44" id="4kH-hF-0nO"/>
+                                                                </constraints>
+                                                                <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" smartInsertDeleteType="no" textContentType="tel"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="44" id="2hE-GW-aws"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="UVz-FT-hPa" secondAttribute="trailing" id="40W-dK-1RT"/>
+                                                    <constraint firstItem="UVz-FT-hPa" firstAttribute="leading" secondItem="Txy-cB-LzZ" secondAttribute="leading" id="MVe-NK-4fv"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Txy-cB-LzZ" firstAttribute="leading" secondItem="5IK-sW-Lyf" secondAttribute="leading" id="9Jk-xb-ykg"/>
+                                            <constraint firstItem="5IK-sW-Lyf" firstAttribute="top" secondItem="9wf-C6-5i8" secondAttribute="top" id="BTd-gv-V2K"/>
+                                            <constraint firstAttribute="trailing" secondItem="5IK-sW-Lyf" secondAttribute="trailing" id="Hnv-MM-fdE"/>
+                                            <constraint firstAttribute="trailing" secondItem="Txy-cB-LzZ" secondAttribute="trailing" id="f7e-bP-AdC"/>
+                                            <constraint firstItem="5IK-sW-Lyf" firstAttribute="leading" secondItem="9wf-C6-5i8" secondAttribute="leading" id="pmF-xW-OuL"/>
+                                            <constraint firstItem="Txy-cB-LzZ" firstAttribute="top" secondItem="5IK-sW-Lyf" secondAttribute="bottom" constant="10" id="q6c-vw-Lsw"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnK-e8-3KV" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="710" width="374" height="44"/>
+                                        <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="1oT-PD-2ec"/>
+                                            <constraint firstAttribute="height" constant="44" id="CTy-Ro-FIN"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                        <state key="normal" title="Opslaan"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                                <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                                <color key="value" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="savePhoneNumber:" destination="jRj-iF-u3N" eventType="touchUpInside" id="FwI-mY-lwR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="9wf-C6-5i8" secondAttribute="bottom" constant="647" id="3X6-VY-gFq"/>
+                                    <constraint firstAttribute="trailing" secondItem="9wf-C6-5i8" secondAttribute="trailing" id="Hwo-4z-JJ7"/>
+                                    <constraint firstAttribute="bottom" secondItem="xnK-e8-3KV" secondAttribute="bottom" id="N5r-F9-3al"/>
+                                    <constraint firstAttribute="trailing" secondItem="xnK-e8-3KV" secondAttribute="trailing" id="ihd-el-Jit"/>
+                                    <constraint firstItem="9wf-C6-5i8" firstAttribute="top" secondItem="tEP-bC-V7F" secondAttribute="top" constant="20" id="osG-xq-AdZ"/>
+                                    <constraint firstItem="9wf-C6-5i8" firstAttribute="leading" secondItem="tEP-bC-V7F" secondAttribute="leading" id="vfx-l0-mhh"/>
+                                    <constraint firstItem="xnK-e8-3KV" firstAttribute="leading" secondItem="tEP-bC-V7F" secondAttribute="leading" id="vi9-uO-CRv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7Wx-5y-cK4" firstAttribute="bottom" secondItem="tEP-bC-V7F" secondAttribute="bottom" constant="20" id="1hT-oF-E1h"/>
+                            <constraint firstItem="tEP-bC-V7F" firstAttribute="top" secondItem="7Wx-5y-cK4" secondAttribute="top" id="HA7-Uy-Y0j"/>
+                            <constraint firstItem="7Wx-5y-cK4" firstAttribute="trailing" secondItem="tEP-bC-V7F" secondAttribute="trailing" constant="20" id="IgI-xn-pX6"/>
+                            <constraint firstItem="tEP-bC-V7F" firstAttribute="leading" secondItem="7Wx-5y-cK4" secondAttribute="leading" constant="20" id="tkl-MY-aYN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Wx-5y-cK4"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kgg-OM-gT5">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="uVe-IP-6at">
+                            <connections>
+                                <action selector="backPressed:" destination="jRj-iF-u3N" id="ZUc-J2-S59"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="mobileNumberTextField" destination="YSM-bI-aRE" id="WUh-ft-obM"/>
+                        <outlet property="mobilePrefixField" destination="zVi-2S-q66" id="VFB-cw-hJh"/>
+                        <outlet property="prefixPickerButton" destination="psa-da-oqA" id="tQ4-hr-ytZ"/>
+                        <outlet property="saveBtn" destination="xnK-e8-3KV" id="5Uj-rD-M5q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N3h-Yp-YWR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="331.8840579710145" y="867.85714285714278"/>
         </scene>
     </scenes>
     <resources>
