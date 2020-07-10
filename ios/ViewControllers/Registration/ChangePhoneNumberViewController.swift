@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate  {
     
-    @IBOutlet weak var mobileNumberTextField: SpecialUITextField!
+    @IBOutlet weak var mobileNumberTextField: CustomUITextField!
     @IBOutlet weak var mobilePrefixField: CustomUITextField!
     @IBOutlet weak var prefixPickerButton: UIButton!
     @IBOutlet weak var saveBtn: CustomButton!
 
     private var mobilePrefixPickerView: UIPickerView!
     private var selectedMobilePrefix: Country! = AppConstants.countries.first!
+    private var formattedPhoneNumber: String!
     
     var currentPhoneNumber: String!
     
@@ -37,6 +39,7 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
                 mobilePrefixField.text = Country.phoneNumber.prefix
                 mobileNumberTextField.text = String(currentPhoneNumber.dropFirst( Country.phoneNumber.prefix.count))
                 currentPhoneNumber = mobileNumberTextField.text
+                selectedMobilePrefix = Country
             }
         }
     }
@@ -62,11 +65,45 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
         mobilePrefixField.becomeFirstResponder()
     }
     @IBAction func savePhoneNumber(_ sender: Any) {
+        NavigationManager.shared.reAuthenticateIfNeeded(context:self, completion: {
+            SVProgressHUD.show()
+            LoginManager.shared.getUserExt(completion: {(userExt) in
+                guard var userExt = userExt else {
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+
+                        }))
+                        SVProgressHUD.dismiss()
+                        self.present(alert, animated: true, completion: nil)
+
+                    }
+                    return
+                }
+                userExt.PhoneNumber = self.formattedPhoneNumber.replacingOccurrences(of: " ", with: "")
+                LoginManager.shared.updateUserExt(userExt: userExt, callback: {(success) in
+                    SVProgressHUD.dismiss()
+                    if success.ok {
+                        DispatchQueue.main.async {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+
+                            }))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                })
+            })
+        })
         print(selectedMobilePrefix.phoneNumber.prefix)
     }
     
     func validatePhoneNumber(number: String) -> Bool {
-        let shouldValidate = ["NL", "BE", "DE", "GB", "GE", "JE"].filter{$0 == selectedMobilePrefix.shortName}.count == 1
+        let shouldValidate = ["NL", "BE", "DE", "GB", "GG", "JE"].filter{$0 == selectedMobilePrefix.shortName}.count == 1
         if(shouldValidate) {
             if var number = mobileNumberTextField.text {
                 if (number.prefix(1) == "0") {
@@ -76,9 +113,13 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
                 }
                 number = selectedMobilePrefix.phoneNumber.prefix + number
             }
-            return ValidationHelper.shared.isValidPhone(number: number).IsValid
+            let validationResult = ValidationHelper.shared.isValidPhone(number: number)
+            if (validationResult.IsValid) {
+                formattedPhoneNumber = validationResult.Number
+            }
+            return validationResult.IsValid
         } else {
-            return false
+            return true
         }
     }
     

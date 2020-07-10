@@ -18,7 +18,26 @@ class CustomUITextField: UITextField{
         self.setLeftPaddingPoints(15)
         self.setRightPaddingPoints(15)
     }
+    private var border: CALayer = CALayer()
+    var isValid = false {
+        didSet {
+            if isValid {
+                self.layer.borderColor = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+            } else {
+                self.layer.borderColor = #colorLiteral(red: 0.7372586131, green: 0.09625744075, blue: 0.1143460795, alpha: 1)
+            }
+        }
+    }
+    func isDifferentFrom(from: String) -> Bool {
+        return self.text! != from
+    }
+    func beganEditing() {
+        self.layer.isHidden = false
+    }
     
+    func endedEditing() {
+        self.layer.isHidden = false
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -26,5 +45,4 @@ class CustomUITextField: UITextField{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
 }
