@@ -148,7 +148,35 @@ class ValidationHelper {
             self.Number = number
         }
     }
-    
+    func isValidPhoneWithPrefix(number: String, country: Country) -> PhoneResult {
+        var temp = number
+        if temp.starts(with: country.phoneNumber.prefix) {
+            temp = temp.replacingOccurrences(of: country.phoneNumber.prefix, with: "")
+        } else if temp.starts(with: country.phoneNumber.prefixWithZeros) {
+            temp = temp.replacingOccurrences(of: country.phoneNumber.prefixWithZeros, with: "")
+        } else if temp.starts(with: "0") {
+            temp.remove(at: temp.startIndex)
+        }
+        
+        for p in country.phoneNumber.firstNumbers {
+            if temp.starts(with: p) {
+                // add one more to length if country is germany and first numbers after prefix is "16" because this phonenumber can be 10 or 11 characters long after prefix
+                let length = p.count + country.phoneNumber.length
+                if (country.shortName == "DE" && (length == temp.count || length == temp.count+1)) || length == temp.count {
+                    do {
+                        let phoneNumber = try phoneNumberKit.parse(country.phoneNumber.prefix + temp, withRegion: country.shortName, ignoreType: true)
+                        formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
+                        return PhoneResult(isValid: true, number: formattedPhoneNumber)
+                    }
+                    catch {
+                        formattedPhoneNumber = ""
+                        return PhoneResult(isValid: false, number: nil)
+                    }
+                }
+            }
+        }
+        return PhoneResult(isValid: false, number: nil)
+    }
     func isValidPhone(number: String) -> PhoneResult {
         let countrysToValidate = AppConstants.countries.filter{
             $0.shortName == "NL" ||
