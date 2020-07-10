@@ -169,59 +169,9 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch settings[indexPath.row].type {
         case .phonenumber:
-            
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangePhoneNumberViewController") as! ChangePhoneNumberViewController
             vc.currentPhoneNumber = uExt?.PhoneNumber
-//            vc.type = settings[indexPath.row].type
-//            vc.img = #imageLiteral(resourceName: "phone_red")
-//            vc.titleOfInput = NSLocalizedString("ChangePhone", comment: "")
-//            vc.inputOfInput = settings[indexPath.row].name
-//
-//            vc.validateInput1 = { newPhone in
-//                let phoneResult = self.validationHelper.isValidPhone(number: newPhone)
-//                if(phoneResult.IsValid){
-//                    self.validatedPhoneNumber = phoneResult.Number!
-//                }
-//                return phoneResult.IsValid
-//            }
-//            vc.saveAction = { newPhone in
-//                NavigationManager.shared.reAuthenticateIfNeeded(context:self, completion: {
-//                    SVProgressHUD.show()
-//                    self.loginManager.getUserExt(completion: {(userExt) in
-//                        guard var userExt = userExt else {
-//                            DispatchQueue.main.async {
-//                                let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-//                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-//
-//                                }))
-//                                SVProgressHUD.dismiss()
-//                                self.present(alert, animated: true, completion: nil)
-//
-//                            }
-//                            return
-//                        }
-//                        userExt.PhoneNumber = self.validatedPhoneNumber.replacingOccurrences(of: " ", with: "")
-//                        self.loginManager.updateUserExt(userExt: userExt, callback: {(success) in
-//                            SVProgressHUD.dismiss()
-//                            if success.ok {
-//                                DispatchQueue.main.async {
-//                                    self.navigationController?.popViewController(animated: true)
-//                                }
-//                            } else {
-//                                DispatchQueue.main.async {
-//                                    let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-//                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-//
-//                                    }))
-//                                    self.present(alert, animated: true, completion: nil)
-//                                }
-//                            }
-//                        })
-//                    })
-//                })
-//            }
             self.navigationController?.pushViewController(vc, animated: true)
-            
         case .iban:
             print("iban")
             let vc = storyboard?.instantiateViewController(withIdentifier: "ChangeSettingViewController") as! ChangeSettingViewController
