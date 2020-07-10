@@ -31,7 +31,6 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
         mobilePrefixPickerView = UIPickerView()
         mobilePrefixPickerView.delegate = self
         mobilePrefixField.inputView = mobilePrefixPickerView
-        
         mobilePrefixField.delegate = self
                 
         AppConstants.countries.forEach { (Country) in
@@ -41,6 +40,10 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
                 currentPhoneNumber = mobileNumberTextField.text
                 selectedMobilePrefix = Country
             }
+        }
+        
+        if let index = AppConstants.countries.firstIndex(where: { $0.phoneNumber.prefix == selectedMobilePrefix.phoneNumber.prefix }) {
+            mobilePrefixPickerView.selectRow(index, inComponent: 0, animated: false)
         }
     }
     
@@ -59,6 +62,7 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
     private func selectedRow(pv: UIPickerView, row: Int){
         selectedMobilePrefix = AppConstants.countries[row]
         mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
+        mobileNumberTextField.isValid = validatePhoneNumber(number: mobileNumberTextField.text!)
     }
     
     @IBAction func openTelephonePicker(_ sender: Any) {
@@ -113,7 +117,7 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
                 }
                 number = selectedMobilePrefix.phoneNumber.prefix + number
             }
-            let validationResult = ValidationHelper.shared.isValidPhone(number: number)
+            let validationResult = ValidationHelper.shared.isValidPhoneWithPrefix(number: number, country: selectedMobilePrefix)
             if (validationResult.IsValid) {
                 formattedPhoneNumber = validationResult.Number
             }
