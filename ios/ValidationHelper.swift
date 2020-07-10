@@ -140,7 +140,7 @@ class ValidationHelper {
         return isValidCityOrAddress(string: string, illegalStartingOrEndingCharacters: illegalStartingOrEndingCharacters)
     }
     
-    class PhoneResult{
+    public class PhoneResult{
         var IsValid: Bool
         var Number: String?
         init(isValid: Bool, number: String?){
@@ -150,18 +150,21 @@ class ValidationHelper {
     }
     
     func isValidPhone(number: String) -> PhoneResult {
-        
-        for country in AppConstants.countries {
+        let countrysToValidate = AppConstants.countries.filter{
+            $0.shortName == "NL" ||
+            $0.shortName == "BE" ||
+            $0.shortName == "DE" ||
+            $0.shortName == "GB" ||
+            $0.shortName == "GG" ||
+            $0.shortName == "JE"
+        }
+        for country in  countrysToValidate {
             var temp = number
             if temp.starts(with: country.phoneNumber.prefix) {
                 temp = temp.replacingOccurrences(of: country.phoneNumber.prefix, with: "")
             } else if temp.starts(with: country.phoneNumber.prefixWithZeros) {
                 temp = temp.replacingOccurrences(of: country.phoneNumber.prefixWithZeros, with: "")
-            } else {
-                continue
-            }
-            
-            if temp.starts(with: "0") {
+            } else if temp.starts(with: "0") {
                 temp.remove(at: temp.startIndex)
             }
             
