@@ -432,6 +432,13 @@
 			path = Presets;
 			sourceTree = "<group>";
 		};
+		32CE4D4F24BDE5770048671B /* FirstTargetThenAmount */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FirstTargetThenAmount;
+			sourceTree = "<group>";
+		};
 		4B950123D45CD9CD856C736B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -777,6 +784,7 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				32CE4D4F24BDE5770048671B /* FirstTargetThenAmount */,
 				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
 				D7AE8B9A2136951400CB3A33 /* BACS */,
 				FBA0894D21C7FC27001DD889 /* BaseCarouselViewController.swift */,
