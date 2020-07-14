@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import PhoneNumberKit
 
 class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate  {
     
@@ -15,18 +16,23 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
     @IBOutlet weak var mobilePrefixField: CustomUITextField!
     @IBOutlet weak var prefixPickerButton: UIButton!
     @IBOutlet weak var saveBtn: CustomButton!
-
-    private var mobilePrefixPickerView: UIPickerView!
+    @IBOutlet weak var theScrollView: UIScrollView!
+    @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
+    
     private var selectedMobilePrefix: Country! = AppConstants.countries.first!
     private var formattedPhoneNumber: String!
-    
+    private var mobilePrefixPickerView: UIPickerView!
+    private var phoneNumberKit = PhoneNumberKit()
+
     var currentPhoneNumber: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: Notification.Name.UITextFieldTextDidChange, object: nil)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
+        
         // initialize picker view
         mobilePrefixPickerView = UIPickerView()
         mobilePrefixPickerView.delegate = self
@@ -42,11 +48,56 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
             }
         }
         
+        createToolbar(mobilePrefixField)
+        createToolbar(mobileNumberTextField)
+
         if let index = AppConstants.countries.firstIndex(where: { $0.phoneNumber.prefix == selectedMobilePrefix.phoneNumber.prefix }) {
             mobilePrefixPickerView.selectRow(index, inComponent: 0, animated: false)
         }
     }
+    func createToolbar(_ textField: UITextField) {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(ChangePhoneNumberViewController.hideKeyboard))
+        
+        toolbar.setItems([doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        
+        textField.inputAccessoryView = toolbar
+    }
+    @objc func keyboardDidShow(notification: NSNotification) {
+           theScrollView.contentInset.bottom -= 20
+           theScrollView.scrollIndicatorInsets.bottom -= 20
+       }
+       
+   @objc func keyboardWillShow(notification: NSNotification) {
+    let userInfo = notification.userInfo!
+
+    var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+
+    keyboardFrame = self.view.convert(keyboardFrame, from: nil)
     
+    if #available(iOS 11.0, *) {
+        bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom
+    } else {
+        bottomScrollViewConstraint.constant = keyboardFrame.size.height
+    }
+    UIView.animate(withDuration: 0.3, animations: {
+        self.view.layoutIfNeeded()
+    })
+   }
+   
+    @objc func keyboardWillHide(notification:NSNotification){
+          bottomScrollViewConstraint.constant = 0
+          UIView.animate(withDuration: 0.3, animations: {
+              self.view.layoutIfNeeded()
+          })
+    }
+
+    @objc func hideKeyboard() {
+       selectedRow(pv: mobilePrefixPickerView, row: mobilePrefixPickerView.selectedRow(inComponent: 0))
+        self.view.endEditing(false)
+    }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return AppConstants.countries.count
     }
@@ -123,7 +174,15 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
             }
             return validationResult.IsValid
         } else {
-            return true
+            do {
+                let phoneNumber = try phoneNumberKit.parse(selectedMobilePrefix.phoneNumber.prefix + mobileNumberTextField.text!, withRegion: selectedMobilePrefix.shortName, ignoreType: true)
+                formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
+                return true
+            }
+            catch {
+                print("Generic parser error")
+                return false
+            }
         }
     }
     
