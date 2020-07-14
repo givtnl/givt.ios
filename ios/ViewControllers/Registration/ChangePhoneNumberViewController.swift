@@ -74,31 +74,30 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
            theScrollView.contentInset.bottom -= 20
            theScrollView.scrollIndicatorInsets.bottom -= 20
        }
-@objc func keyboardWillShow(notification : NSNotification){
+       
+   @objc func keyboardWillShow(notification: NSNotification) {
+    let userInfo = notification.userInfo!
 
-if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-  
-  if #available(iOS 11.0, *) {
-      animateKeyboard(withConstraintValue: keyboardSize.size.height + 20 - view.safeAreaInsets.bottom)
-  } else {
-      animateKeyboard(withConstraintValue: keyboardSize.size.height + 20)
-  }
-}
-}
+    var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 
-@objc func keyboardWillHide(notification : NSNotification){
-
-animateKeyboard(withConstraintValue: 20)
-}
-
-func animateKeyboard(withConstraintValue: CGFloat){
-bottomScrollViewConstraint.constant = withConstraintValue
-UIView.animate(withDuration: 0.3, animations: {
-  
-  self.view.layoutIfNeeded()
-})
-}
+    keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+    
+    if #available(iOS 11.0, *) {
+        bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom
+    } else {
+        bottomScrollViewConstraint.constant = keyboardFrame.size.height
+    }
+    UIView.animate(withDuration: 0.3, animations: {
+        self.view.layoutIfNeeded()
+    })
+   }
    
+    @objc func keyboardWillHide(notification:NSNotification){
+          bottomScrollViewConstraint.constant = 0
+          UIView.animate(withDuration: 0.3, animations: {
+              self.view.layoutIfNeeded()
+          })
+    }
 
     @objc func hideKeyboard() {
        selectedRow(pv: mobilePrefixPickerView, row: mobilePrefixPickerView.selectedRow(inComponent: 0))
