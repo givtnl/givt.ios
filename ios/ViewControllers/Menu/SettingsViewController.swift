@@ -60,7 +60,7 @@ class SettingsViewController: BaseMenuViewController {
     
     override func loadItems(){
         items = []
-        
+        let firstTargetThenAmount = Setting(name: "Jist no wie, ton oevele", image: UIImage(named:"help")!, callback: {self.startFirstTargetThenAmountFlow() })
         let turnOnPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: UIImage(named: "amountpresets")!, callback: { self.setPresets() }, showArrow: true)
         
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
@@ -77,12 +77,13 @@ class SettingsViewController: BaseMenuViewController {
         let changePersonalInfo = Setting(name: NSLocalizedString("TitlePersonalInfo", comment: ""), image: #imageLiteral(resourceName: "pencil"), showBadge: false, callback: { self.changePersonalInfo() })
         
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
-        
         if !UserDefaults.standard.isTempUser {
             items.append([])
             items.append([])
             items.append([])
             
+            items[0].append(firstTargetThenAmount)
+
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[0].append(givts)
             let givtsTaxOverviewAvailable: Setting?
@@ -143,6 +144,16 @@ class SettingsViewController: BaseMenuViewController {
     private var blinkTimer: Timer = Timer()
     private func toggleTorch() {
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
+    }
+    private func startFirstTargetThenAmountFlow() {
+        let vc = UIStoryboard(name:"FirstTargetThenAmount", bundle: nil).instantiateInitialViewController()
+        vc?.modalPresentationStyle = .fullScreen
+        vc?.transitioningDelegate = self.slideFromRightAnimation
+        DispatchQueue.main.async {
+           self.hideMenuAnimated() {
+               self.present(vc!, animated: true, completion:  nil)
+           }
+       }
     }
     
     private func setPresets() {
