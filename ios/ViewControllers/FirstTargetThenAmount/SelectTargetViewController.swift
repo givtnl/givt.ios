@@ -9,7 +9,8 @@
 import UIKit
 
 class SelectTargetViewController: BaseScanViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-    
+    private let slideFromRightAnimation = PresentFromRight()
+
     struct PreviousPosition {
         var pos: IndexPath
         var type: Int
@@ -176,8 +177,14 @@ class SelectTargetViewController: BaseScanViewController, UITableViewDataSource,
     @IBOutlet var navBar: UINavigationItem!
     
     @IBAction func btnGive(_ sender: Any) {
-        log.info(message: "Giving manually from the list")
-        giveManually(antennaID: (prevPos?.nameSpace)!)
+//        log.info(message: "Giving manually from the list")
+//        giveManually(antennaID: (prevPos?.nameSpace)!)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "SelectAmountViewController") as! SelectAmountViewController
+        vc.transitioningDelegate = self.slideFromRightAnimation
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion:  nil)
+        self.navigationController?.popViewController(animated: false)
+
     }
     
     override func viewDidLoad() {
