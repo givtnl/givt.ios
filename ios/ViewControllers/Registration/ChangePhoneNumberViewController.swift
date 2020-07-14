@@ -54,6 +54,8 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
         if let index = AppConstants.countries.firstIndex(where: { $0.phoneNumber.prefix == selectedMobilePrefix.phoneNumber.prefix }) {
             mobilePrefixPickerView.selectRow(index, inComponent: 0, animated: false)
         }
+        
+        saveBtn.isEnabled = false
     }
     func createToolbar(_ textField: UITextField) {
         let toolbar = UIToolbar()
@@ -159,6 +161,9 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
     
     func validatePhoneNumber(number: String) -> Bool {
         let shouldValidate = ["NL", "BE", "DE", "GB", "GG", "JE"].filter{$0 == selectedMobilePrefix.shortName}.count == 1
+        if(currentPhoneNumber == mobileNumberTextField.text) {
+            return false
+        }
         if(shouldValidate) {
             if var number = mobileNumberTextField.text {
                 if (number.prefix(1) == "0") {
