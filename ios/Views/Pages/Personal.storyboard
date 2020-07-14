@@ -25,20 +25,20 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PersonalSettingTableViewCell" id="z9N-4m-cHW" customClass="PersonalSettingTableViewCell" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="83.666664123535156"/>
+                                                <rect key="frame" x="0.0" y="28" width="414" height="84.333335876464844"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z9N-4m-cHW" id="qFg-KW-2vw">
-                                                    <rect key="frame" x="0.0" y="0.0" width="383" height="83.666664123535156"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="383" height="84.333335876464844"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3nu-xy-h4j">
-                                                            <rect key="frame" x="20" y="14.999999999999996" width="363" height="53.666666666666657"/>
+                                                            <rect key="frame" x="20" y="15.000000000000004" width="363" height="54.333333333333343"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OW1-pi-xHu">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="53.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="54.333333333333336"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5V6-gw-4cX">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="53.666666666666664"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="20" height="54.333333333333336"/>
                                                                         </imageView>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,10 +51,10 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ycz-kP-HHx">
-                                                                    <rect key="frame" x="30" y="0.0" width="333" height="53.666666666666664"/>
+                                                                    <rect key="frame" x="30" y="0.0" width="333" height="54.333333333333336"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jw6-YV-XlA">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="333" height="53.666666666666664"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="333" height="54.333333333333336"/>
                                                                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                                             <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -913,165 +913,119 @@ For more info, go to: www.gov.uk/donating-to-charity/gift-aid
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tEP-bC-V7F">
-                                <rect key="frame" x="0.0" y="88" width="414" height="754"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Mobiel nummer wijzigen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNU-QT-gok">
+                                <rect key="frame" x="20" y="108" width="374" height="33"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GqO-OT-mIL">
+                                <rect key="frame" x="20" y="161" width="374" height="44"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvE-KN-CAx">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="754"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WfS-xj-QQy">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UG8-Wf-xTh">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="754"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zjw-NW-ssd">
+                                                <rect key="frame" x="0.0" y="0.0" width="70" height="44"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEp-De-7ar">
-                                                        <rect key="frame" x="20" y="0.0" width="374" height="197"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Mobiel nummer wijzigen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNU-QT-gok">
-                                                                <rect key="frame" x="0.0" y="20" width="277" height="33"/>
-                                                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="24"/>
-                                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GqO-OT-mIL">
-                                                                <rect key="frame" x="0.0" y="63" width="374" height="44"/>
-                                                                <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WfS-xj-QQy">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
-                                                                        <subviews>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zjw-NW-ssd">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="44"/>
-                                                                                <subviews>
-                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+31" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhG-mq-TKS" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="44"/>
-                                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                                        <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
-                                                                                    </textField>
-                                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown.png" translatesAutoresizingMaskIntoConstraints="NO" id="60e-Rg-MzZ">
-                                                                                        <rect key="frame" x="44" y="14" width="16" height="16"/>
-                                                                                    </imageView>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usv-6z-9mm">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="44"/>
-                                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                                        <state key="normal">
-                                                                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                                        </state>
-                                                                                        <connections>
-                                                                                            <action selector="openTelephonePicker:" destination="jRj-iF-u3N" eventType="touchUpInside" id="Wnx-7F-qoE"/>
-                                                                                        </connections>
-                                                                                    </button>
-                                                                                </subviews>
-                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="trailing" secondItem="usv-6z-9mm" secondAttribute="trailing" id="1ZA-3w-9r9"/>
-                                                                                    <constraint firstItem="WhG-mq-TKS" firstAttribute="top" secondItem="Zjw-NW-ssd" secondAttribute="top" id="1ZC-bb-xky"/>
-                                                                                    <constraint firstAttribute="trailing" secondItem="WhG-mq-TKS" secondAttribute="trailing" id="1zU-dX-hLv"/>
-                                                                                    <constraint firstAttribute="height" constant="44" id="8CE-ws-Q86"/>
-                                                                                    <constraint firstItem="60e-Rg-MzZ" firstAttribute="centerY" secondItem="Zjw-NW-ssd" secondAttribute="centerY" id="9G7-BI-EjZ"/>
-                                                                                    <constraint firstItem="usv-6z-9mm" firstAttribute="leading" secondItem="Zjw-NW-ssd" secondAttribute="leading" id="ADS-jk-bL3"/>
-                                                                                    <constraint firstAttribute="width" constant="70" id="BpT-7k-1dw"/>
-                                                                                    <constraint firstAttribute="bottom" secondItem="WhG-mq-TKS" secondAttribute="bottom" id="FtT-F0-RdW"/>
-                                                                                    <constraint firstAttribute="trailing" secondItem="60e-Rg-MzZ" secondAttribute="trailing" constant="10" id="I3v-Yp-pOG"/>
-                                                                                    <constraint firstAttribute="bottom" secondItem="usv-6z-9mm" secondAttribute="bottom" id="VNC-eX-5Fe"/>
-                                                                                    <constraint firstItem="WhG-mq-TKS" firstAttribute="leading" secondItem="Zjw-NW-ssd" secondAttribute="leading" id="Vdz-S0-Aaw"/>
-                                                                                    <constraint firstItem="usv-6z-9mm" firstAttribute="top" secondItem="Zjw-NW-ssd" secondAttribute="top" id="mkg-cq-cel"/>
-                                                                                </constraints>
-                                                                            </view>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobiel nummer" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i8G-0Q-ICn" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
-                                                                                <rect key="frame" x="80" y="0.0" width="294" height="44"/>
-                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="height" constant="44" id="b86-UB-k8r"/>
-                                                                                </constraints>
-                                                                                <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
-                                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" smartInsertDeleteType="no" textContentType="tel"/>
-                                                                            </textField>
-                                                                        </subviews>
-                                                                    </stackView>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="WfS-xj-QQy" firstAttribute="leading" secondItem="GqO-OT-mIL" secondAttribute="leading" id="Fcx-mo-vmh"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="WfS-xj-QQy" secondAttribute="trailing" id="d2W-wK-W8k"/>
-                                                                </constraints>
-                                                            </stackView>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="PNU-QT-gok" firstAttribute="leading" secondItem="GEp-De-7ar" secondAttribute="leading" id="IbO-KH-0ru"/>
-                                                            <constraint firstAttribute="trailing" secondItem="GqO-OT-mIL" secondAttribute="trailing" id="IpF-Mf-joG"/>
-                                                            <constraint firstItem="PNU-QT-gok" firstAttribute="top" secondItem="GEp-De-7ar" secondAttribute="top" constant="20" id="YDa-bi-IZX"/>
-                                                            <constraint firstItem="GqO-OT-mIL" firstAttribute="top" secondItem="PNU-QT-gok" secondAttribute="bottom" constant="10" id="awz-5C-SCU"/>
-                                                            <constraint firstItem="GqO-OT-mIL" firstAttribute="leading" secondItem="PNU-QT-gok" secondAttribute="leading" id="e0P-jw-e79"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8w-19-0fh" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="710" width="374" height="44"/>
-                                                        <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="PdD-F2-Wan"/>
-                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="XJS-vd-bkJ"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
-                                                        <state key="normal" title="Opslaan"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="4"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                                                <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                                                <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                                                <color key="value" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+31" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WhG-mq-TKS" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="44"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="name"/>
+                                                    </textField>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown.png" translatesAutoresizingMaskIntoConstraints="NO" id="60e-Rg-MzZ">
+                                                        <rect key="frame" x="44" y="14" width="16" height="16"/>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usv-6z-9mm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="44"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <state key="normal">
+                                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        </state>
                                                         <connections>
-                                                            <action selector="savePhoneNumber:" destination="jRj-iF-u3N" eventType="touchUpInside" id="hlc-Au-WeG"/>
+                                                            <action selector="openTelephonePicker:" destination="jRj-iF-u3N" eventType="touchUpInside" id="uva-Ih-JEC"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="p8w-19-0fh" firstAttribute="leading" secondItem="UG8-Wf-xTh" secondAttribute="leading" constant="20" id="2SQ-S3-Un9"/>
-                                                    <constraint firstAttribute="trailing" secondItem="GEp-De-7ar" secondAttribute="trailing" constant="20" id="E4h-tQ-Fcz"/>
-                                                    <constraint firstAttribute="bottom" secondItem="p8w-19-0fh" secondAttribute="bottom" id="a8C-L8-4Sg"/>
-                                                    <constraint firstItem="GEp-De-7ar" firstAttribute="top" secondItem="UG8-Wf-xTh" secondAttribute="top" id="hTT-gC-5Su"/>
-                                                    <constraint firstAttribute="trailing" secondItem="p8w-19-0fh" secondAttribute="trailing" constant="20" id="ltb-kz-Ou1"/>
-                                                    <constraint firstAttribute="bottom" secondItem="GEp-De-7ar" secondAttribute="bottom" constant="557" id="tuv-Hd-hpd"/>
-                                                    <constraint firstItem="GEp-De-7ar" firstAttribute="leading" secondItem="UG8-Wf-xTh" secondAttribute="leading" constant="20" id="vPa-sz-eUD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="usv-6z-9mm" secondAttribute="trailing" id="1ZA-3w-9r9"/>
+                                                    <constraint firstItem="WhG-mq-TKS" firstAttribute="top" secondItem="Zjw-NW-ssd" secondAttribute="top" id="1ZC-bb-xky"/>
+                                                    <constraint firstAttribute="trailing" secondItem="WhG-mq-TKS" secondAttribute="trailing" id="1zU-dX-hLv"/>
+                                                    <constraint firstAttribute="height" constant="44" id="8CE-ws-Q86"/>
+                                                    <constraint firstItem="60e-Rg-MzZ" firstAttribute="centerY" secondItem="Zjw-NW-ssd" secondAttribute="centerY" id="9G7-BI-EjZ"/>
+                                                    <constraint firstItem="usv-6z-9mm" firstAttribute="leading" secondItem="Zjw-NW-ssd" secondAttribute="leading" id="ADS-jk-bL3"/>
+                                                    <constraint firstAttribute="width" constant="70" id="BpT-7k-1dw"/>
+                                                    <constraint firstAttribute="bottom" secondItem="WhG-mq-TKS" secondAttribute="bottom" id="FtT-F0-RdW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="60e-Rg-MzZ" secondAttribute="trailing" constant="10" id="I3v-Yp-pOG"/>
+                                                    <constraint firstAttribute="bottom" secondItem="usv-6z-9mm" secondAttribute="bottom" id="VNC-eX-5Fe"/>
+                                                    <constraint firstItem="WhG-mq-TKS" firstAttribute="leading" secondItem="Zjw-NW-ssd" secondAttribute="leading" id="Vdz-S0-Aaw"/>
+                                                    <constraint firstItem="usv-6z-9mm" firstAttribute="top" secondItem="Zjw-NW-ssd" secondAttribute="top" id="mkg-cq-cel"/>
                                                 </constraints>
                                             </view>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobiel nummer" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i8G-0Q-ICn" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="80" y="0.0" width="294" height="44"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="b86-UB-k8r"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" returnKeyType="next" smartInsertDeleteType="no" textContentType="tel"/>
+                                            </textField>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="UG8-Wf-xTh" secondAttribute="bottom" id="Bfs-90-ZCg"/>
-                                            <constraint firstAttribute="trailing" secondItem="UG8-Wf-xTh" secondAttribute="trailing" id="DR8-U0-V1p"/>
-                                            <constraint firstItem="UG8-Wf-xTh" firstAttribute="centerY" secondItem="gvE-KN-CAx" secondAttribute="centerY" id="GI1-zJ-3Ly"/>
-                                            <constraint firstItem="UG8-Wf-xTh" firstAttribute="top" secondItem="gvE-KN-CAx" secondAttribute="top" id="iB3-0r-CI5"/>
-                                            <constraint firstItem="UG8-Wf-xTh" firstAttribute="centerX" secondItem="gvE-KN-CAx" secondAttribute="centerX" id="rwq-pC-HwO"/>
-                                        </constraints>
-                                    </scrollView>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="gvE-KN-CAx" firstAttribute="centerX" secondItem="tEP-bC-V7F" secondAttribute="centerX" id="8ej-eI-XEN"/>
-                                    <constraint firstAttribute="bottom" secondItem="gvE-KN-CAx" secondAttribute="bottom" id="G17-qj-FmP"/>
-                                    <constraint firstItem="gvE-KN-CAx" firstAttribute="leading" secondItem="tEP-bC-V7F" secondAttribute="leading" id="YKT-7m-ocG"/>
-                                    <constraint firstItem="gvE-KN-CAx" firstAttribute="top" secondItem="tEP-bC-V7F" secondAttribute="top" id="uiN-t6-yGW"/>
+                                    <constraint firstAttribute="trailing" secondItem="WfS-xj-QQy" secondAttribute="trailing" id="Ibn-m1-S0m"/>
+                                    <constraint firstItem="WfS-xj-QQy" firstAttribute="top" secondItem="GqO-OT-mIL" secondAttribute="top" id="KlC-Ee-c4C"/>
+                                    <constraint firstItem="WfS-xj-QQy" firstAttribute="leading" secondItem="GqO-OT-mIL" secondAttribute="leading" id="es6-WV-AmQ"/>
                                 </constraints>
-                            </view>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p8w-19-0fh" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="20" y="798" width="374" height="44"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="PdD-F2-Wan"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="XJS-vd-bkJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Opslaan"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="savePhoneNumber:" destination="jRj-iF-u3N" eventType="touchUpInside" id="T1i-H5-BpZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="UG8-Wf-xTh" firstAttribute="width" secondItem="SIx-jB-92M" secondAttribute="width" id="0mU-ZI-w9R"/>
-                            <constraint firstItem="7Wx-5y-cK4" firstAttribute="bottom" secondItem="tEP-bC-V7F" secondAttribute="bottom" constant="20" id="1hT-oF-E1h"/>
-                            <constraint firstItem="tEP-bC-V7F" firstAttribute="top" secondItem="7Wx-5y-cK4" secondAttribute="top" id="HA7-Uy-Y0j"/>
-                            <constraint firstItem="tEP-bC-V7F" firstAttribute="leading" secondItem="7Wx-5y-cK4" secondAttribute="leading" id="PIQ-Wk-EAP"/>
-                            <constraint firstItem="tEP-bC-V7F" firstAttribute="trailing" secondItem="7Wx-5y-cK4" secondAttribute="trailing" id="hDB-7V-iQy"/>
+                            <constraint firstItem="7Wx-5y-cK4" firstAttribute="trailing" secondItem="GqO-OT-mIL" secondAttribute="trailing" constant="20" id="CJS-gk-Kn3"/>
+                            <constraint firstItem="PNU-QT-gok" firstAttribute="leading" secondItem="7Wx-5y-cK4" secondAttribute="leading" constant="20" id="I4z-te-hFT"/>
+                            <constraint firstItem="p8w-19-0fh" firstAttribute="leading" secondItem="7Wx-5y-cK4" secondAttribute="leading" constant="20" id="KgP-f6-kMY"/>
+                            <constraint firstItem="GqO-OT-mIL" firstAttribute="leading" secondItem="7Wx-5y-cK4" secondAttribute="leading" constant="20" id="RTW-Oq-qFz"/>
+                            <constraint firstItem="7Wx-5y-cK4" firstAttribute="trailing" secondItem="PNU-QT-gok" secondAttribute="trailing" constant="20" id="Yz4-OC-pCd"/>
+                            <constraint firstItem="7Wx-5y-cK4" firstAttribute="bottom" secondItem="p8w-19-0fh" secondAttribute="bottom" constant="20" id="fNT-KU-Exp"/>
+                            <constraint firstItem="PNU-QT-gok" firstAttribute="top" secondItem="7Wx-5y-cK4" secondAttribute="top" constant="20" id="jgF-ik-9Ck"/>
+                            <constraint firstItem="GqO-OT-mIL" firstAttribute="top" secondItem="PNU-QT-gok" secondAttribute="bottom" constant="20" id="pex-2L-cgR"/>
+                            <constraint firstItem="7Wx-5y-cK4" firstAttribute="trailing" secondItem="p8w-19-0fh" secondAttribute="trailing" constant="20" id="tAU-AJ-vJP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Wx-5y-cK4"/>
                     </view>
@@ -1084,13 +1038,12 @@ For more info, go to: www.gov.uk/donating-to-charity/gift-aid
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="bottomScrollViewConstraint" destination="G17-qj-FmP" id="er8-nY-v1E"/>
-                        <outlet property="mobileNumberTextField" destination="i8G-0Q-ICn" id="mYU-ns-g8X"/>
-                        <outlet property="mobilePrefixField" destination="WhG-mq-TKS" id="TLa-vr-2WO"/>
-                        <outlet property="prefixPickerButton" destination="usv-6z-9mm" id="t3e-mS-Ll2"/>
-                        <outlet property="saveBtn" destination="p8w-19-0fh" id="F50-qP-xOS"/>
-                        <outlet property="theScrollView" destination="gvE-KN-CAx" id="7i8-78-mlv"/>
-                        <outlet property="titelLabel" destination="PNU-QT-gok" id="kFK-Ps-E8k"/>
+                        <outlet property="bottomScrollViewConstraint" destination="fNT-KU-Exp" id="vXe-kG-L80"/>
+                        <outlet property="mobileNumberTextField" destination="i8G-0Q-ICn" id="hZe-CQ-hvL"/>
+                        <outlet property="mobilePrefixField" destination="WhG-mq-TKS" id="Eq2-WT-YQE"/>
+                        <outlet property="prefixPickerButton" destination="usv-6z-9mm" id="iTM-oS-5G7"/>
+                        <outlet property="saveBtn" destination="p8w-19-0fh" id="c04-3q-0IY"/>
+                        <outlet property="titelLabel" destination="PNU-QT-gok" id="K2I-g8-NNz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N3h-Yp-YWR" userLabel="First Responder" sceneMemberID="firstResponder"/>

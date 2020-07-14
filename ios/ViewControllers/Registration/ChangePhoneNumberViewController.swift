@@ -10,16 +10,15 @@ import UIKit
 import SVProgressHUD
 import PhoneNumberKit
 
-class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate  {
+class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate   {
     
     @IBOutlet weak var mobileNumberTextField: CustomUITextField!
     @IBOutlet weak var mobilePrefixField: CustomUITextField!
     @IBOutlet weak var prefixPickerButton: UIButton!
     @IBOutlet weak var saveBtn: CustomButton!
-    @IBOutlet weak var theScrollView: UIScrollView!
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var titelLabel: UILabel!
-    
+
     private var selectedMobilePrefix: Country! = AppConstants.countries.first!
     private var formattedPhoneNumber: String!
     private var mobilePrefixPickerView: UIPickerView!
@@ -36,18 +35,20 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
         
-        // initialize picker view
+//         initialize picker view
         mobilePrefixPickerView = UIPickerView()
         mobilePrefixPickerView.delegate = self
         mobilePrefixField.inputView = mobilePrefixPickerView
         mobilePrefixField.delegate = self
                 
         AppConstants.countries.forEach { (Country) in
-            if (currentPhoneNumber.contains( Country.phoneNumber.prefix)) {
-                mobilePrefixField.text = Country.phoneNumber.prefix
-                mobileNumberTextField.text = String(currentPhoneNumber.dropFirst( Country.phoneNumber.prefix.count))
-                currentPhoneNumber = mobileNumberTextField.text
-                selectedMobilePrefix = Country
+            if let currentPhoneNumberFromUser = currentPhoneNumber {
+                if (currentPhoneNumberFromUser.contains( Country.phoneNumber.prefix)) {
+                    mobilePrefixField.text = Country.phoneNumber.prefix
+                    mobileNumberTextField.text = String(currentPhoneNumber.dropFirst( Country.phoneNumber.prefix.count))
+                    currentPhoneNumber = mobileNumberTextField.text
+                    selectedMobilePrefix = Country
+                }
             }
         }
         
@@ -64,36 +65,33 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(ChangePhoneNumberViewController.hideKeyboard))
-        
+
         toolbar.setItems([doneButton], animated: false)
         toolbar.isUserInteractionEnabled = true
-        
+
         textField.inputAccessoryView = toolbar
     }
-    @objc func keyboardDidShow(notification: NSNotification) {
-           theScrollView.contentInset.bottom -= 20
-           theScrollView.scrollIndicatorInsets.bottom -= 20
-       }
-       
+
    @objc func keyboardWillShow(notification: NSNotification) {
     let userInfo = notification.userInfo!
 
     var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 
     keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-    
+
     if #available(iOS 11.0, *) {
-        bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom
+        bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom + 20
     } else {
-        bottomScrollViewConstraint.constant = keyboardFrame.size.height
+        bottomScrollViewConstraint.constant = keyboardFrame.size.height + 20
     }
     UIView.animate(withDuration: 0.3, animations: {
         self.view.layoutIfNeeded()
     })
    }
-   
+
+
     @objc func keyboardWillHide(notification:NSNotification){
-          bottomScrollViewConstraint.constant = 0
+          bottomScrollViewConstraint.constant = 20
           UIView.animate(withDuration: 0.3, animations: {
               self.view.layoutIfNeeded()
           })
@@ -103,24 +101,24 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
        selectedRow(pv: mobilePrefixPickerView, row: mobilePrefixPickerView.selectedRow(inComponent: 0))
         self.view.endEditing(false)
     }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    @objc func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return AppConstants.countries.count
     }
-    
+
     @objc func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return  AppConstants.countries[row].phoneNumber.prefix
     }
-    
+
     @objc func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedRow(pv: pickerView, row: row)
     }
-    
+
     private func selectedRow(pv: UIPickerView, row: Int){
         selectedMobilePrefix = AppConstants.countries[row]
         mobilePrefixField.text = selectedMobilePrefix?.phoneNumber.prefix
         mobileNumberTextField.isValid = validatePhoneNumber(number: mobileNumberTextField.text!)
     }
-    
+
     @IBAction func openTelephonePicker(_ sender: Any) {
         mobilePrefixField.becomeFirstResponder()
     }
@@ -161,7 +159,7 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
         })
         print(selectedMobilePrefix.phoneNumber.prefix)
     }
-    
+
     func validatePhoneNumber(number: String) -> Bool {
         let shouldValidate = ["NL", "BE", "DE", "GB", "GG", "JE"].filter{$0 == selectedMobilePrefix.shortName}.count == 1
         if(currentPhoneNumber == mobileNumberTextField.text) {
@@ -198,8 +196,8 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
         mobileNumberTextField.isValid = validatePhoneNumber(number: mobileNumberTextField.text!)
         saveBtn.isEnabled = mobileNumberTextField.isValid
     }
-    
-    
+
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if !mobileNumberTextField.isDifferentFrom(from: currentPhoneNumber) {
             saveBtn.isEnabled = false
