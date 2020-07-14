@@ -15,8 +15,8 @@ import SVProgressHUD
 class SelectAmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
     private var log: LogService = LogService.shared
     private let slideFromRightAnimation = PresentFromRight()
-    
-    
+    var selectedMediumId: String!
+
     private var navigationManager: NavigationManager = NavigationManager.shared
     private var givtService:GivtManager!
 
@@ -310,55 +310,62 @@ class SelectAmountViewController: UIViewController, UIGestureRecognizerDelegate,
             && Decimal(string: (collectThree.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))! == 66.6 {
             MSCrashes.generateTestCrash()
         }
-
-        var numberOfZeroAmounts = 0
-        for index in 0..<collectionViews.count {
-            let parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
-
-            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
-                setActiveCollection(collectionViews[index])
-                displayAmountLimitExceeded()
-                return
-            }
-
-            if parsedDecimal  > 0 && parsedDecimal < 0.50 {
-                setActiveCollection(collectionViews[index])
-                showAmountTooLow()
-                return
-            }
-
-            if parsedDecimal == 0 {
-                numberOfZeroAmounts += 1
-            }
-
-            if numberOfZeroAmounts == collectionViews.count {
-                showAmountTooLow()
-                return
-            }
-        }
-
-
-        givtService.setAmounts(amounts: [(collectOne.amountLabel.text?.decimalValue)!, (collectTwo.amountLabel.text?.decimalValue)!, (collectThree.amountLabel.text?.decimalValue)!])
-        
-        let hasPresetSet = UserDefaults.standard.hasPresetsSet ?? false
-        let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
-        MSAnalytics.trackEvent("GIVING_STARTED", withProperties: ["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
-        
-        if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
-            let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
-            vc.providesPresentationContextTransitionStyle = true
-            vc.definesPresentationContext = true
-            vc.modalPresentationStyle = .overFullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            vc.closeAction = {
-                let chooseContext = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-                self.navigationController?.pushViewController(chooseContext, animated: true)
-            }
-            self.navigationController?.present(vc, animated: true, completion: nil)
-        } else {
-            let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        let alert = UIAlertController(title: "TestThong", message: "Giving to: " + selectedMediumId, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+        self.present(alert, animated: true, completion: {})
+//        let vc = storyboard?.instantiateViewController(withIdentifier: "SelectAmountViewController") as! SelectAmountViewController
+//        vc.transitioningDelegate = self.slideFromRightAnimation
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true, completion:  nil)
+//        self.navigationController?.popViewController(animated: false)
+//        var numberOfZeroAmounts = 0
+//        for index in 0..<collectionViews.count {
+//            let parsedDecimal = Decimal(string: (self.collectionViews[index].amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
+//
+//            if parsedDecimal > Decimal(UserDefaults.standard.amountLimit) {
+//                setActiveCollection(collectionViews[index])
+//                displayAmountLimitExceeded()
+//                return
+//            }
+//
+//            if parsedDecimal  > 0 && parsedDecimal < 0.50 {
+//                setActiveCollection(collectionViews[index])
+//                showAmountTooLow()
+//                return
+//            }
+//
+//            if parsedDecimal == 0 {
+//                numberOfZeroAmounts += 1
+//            }
+//
+//            if numberOfZeroAmounts == collectionViews.count {
+//                showAmountTooLow()
+//                return
+//            }
+//        }
+//
+//
+//        givtService.setAmounts(amounts: [(collectOne.amountLabel.text?.decimalValue)!, (collectTwo.amountLabel.text?.decimalValue)!, (collectThree.amountLabel.text?.decimalValue)!])
+//
+//        let hasPresetSet = UserDefaults.standard.hasPresetsSet ?? false
+//        let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
+//        MSAnalytics.trackEvent("GIVING_STARTED", withProperties: ["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
+//
+//        if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
+//            let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController
+//            vc.providesPresentationContextTransitionStyle = true
+//            vc.definesPresentationContext = true
+//            vc.modalPresentationStyle = .overFullScreen
+//            vc.modalTransitionStyle = .crossDissolve
+//            vc.closeAction = {
+//                let chooseContext = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+//                self.navigationController?.pushViewController(chooseContext, animated: true)
+//            }
+//            self.navigationController?.present(vc, animated: true, completion: nil)
+//        } else {
+//            let vc = storyboard?.instantiateViewController(withIdentifier: "ChooseContextViewController") as! ChooseContextViewController
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
     }
     
     @IBAction func addValue(sender:UIButton!) {

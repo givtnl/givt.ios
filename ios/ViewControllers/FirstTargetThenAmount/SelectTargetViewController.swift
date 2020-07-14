@@ -180,11 +180,11 @@ class SelectTargetViewController: BaseScanViewController, UITableViewDataSource,
 //        log.info(message: "Giving manually from the list")
 //        giveManually(antennaID: (prevPos?.nameSpace)!)
         let vc = storyboard?.instantiateViewController(withIdentifier: "SelectAmountViewController") as! SelectAmountViewController
+        vc.selectedMediumId = prevPos?.nameSpace
         vc.transitioningDelegate = self.slideFromRightAnimation
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true, completion:  nil)
         self.navigationController?.popViewController(animated: false)
-
     }
     
     override func viewDidLoad() {
