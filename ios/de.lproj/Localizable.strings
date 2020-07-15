@@ -49,7 +49,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountLimitExceededGB" = "This amount is higher than £250. Please choose a lower amount.";
 
 /*Fuzzy*/
-"GiftOverview_GiftAidBanner" = "Gift-Aided {0}";
+"GiftOverview_GiftAidBanner" = "Gift Aided {0}";
 
 /*Fuzzy*/
 "MaximumAmountReachedGB" = "Woah, you've reached the maximum donation limit. In the UK you can give a maximum of £250 per donation.";
@@ -268,7 +268,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountPresetsErrGivingLimit" = "Der Betrag ist höher als Dein Maximalbetrag.";
 "AmountPresetsErr50C" = "Der Betrag muss mindestens 0,50 Euro betragen.";
 "AmountPresetsErrEmpty" = "Gib einen Betrag ein";
-"GivtMinimumAmountPond" = "0.50 pond";
+"GivtMinimumAmountPond" = "£0.50";
 "AlertBACSMessage" = "Da Du {0} als Länderwahl angegeben hast, gehen wir davon aus, dass Du lieber über ein SEPA-Mandat (€) gibst, dafür benötigen wir Deine IBAN. Wenn Du lieber BACS (£) verwendest, benötigen wir Deinen Sort Code und Deine Kontonummer.";
 "AlertSEPAMessage" = "Da Du {0} als Länderwahl angegeben hast, gehen wir davon aus, dass Du lieber über BACS Direct Debit (£) gibst, dafür benötigen wir Deinen Sort Code und Deine Kontonummer. Wenn Du lieber SEPA (€) nutzen möchtest, benötigen wir Deine IBAN.";
 "Important" = "Wichtig";
@@ -910,7 +910,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "CountryStringIE" = "Irland";
 "CountryStringAD" = "Andorra";
 "ErrorChangePostalCode" = "Du hast eine unbekannte PLZ eingegeben. Bitte ändere es im Menu unter \"Persönliche Informationen\".";
-"InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Riverside House, River Lawn Road in Tonbridge, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
+"InformationAboutUsGB" = "Givt is a product of Givt LTD.\n\nWe are located at the Censeo House in St Albans, England. For questions or complaints you can reach us via +44 20 3790 8068 or support@givt.app.\n\nWe are registered under the Company Registration Number 11396586.";
 "BluetoothErrorMessageAction" = "Ich mach es";
 "BluetoothErrorMessageCancel" = "Lieber nicht";
 "AuthoriseBluetooth" = "Autorisiere Givt zur Verwendung von Bluetooth";
@@ -918,3 +918,6 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 /*Fuzzy*/
 "AuthoriseBluetoothErrorMessage" = "Gebe Givt Autorisation zu Verwendung von Bluetooth, damit Du bereit bist, einem Sammlung zu spenden.";
 "AuthoriseBluetoothExtraText" = "Gehe zu Einstellungen > Datenschutz > Bluetooth und wähle 'Givt'.";
+"UnregisterError" = "Alas, we are unable to unregister your account. Could you try again later?";
+"UnregisterMandateError" = "Alas, we are unable to unregister your account because we are unable to cancel your mandate or direct debit instruction. Please contact us.";
+"UnregisterErrorTitle" = "Terminate failed";

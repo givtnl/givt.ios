@@ -522,7 +522,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             }
             isPostalCodeValid ? textField.setValid() : textField.setInvalid()
         case city:
-            isCityValid = validationHelper.isBetweenCriteria(city.text!, 45) && validationHelper.isValidAddress(string: city.text!)
+            isCityValid = validationHelper.isBetweenCriteria(city.text!, 45) && validationHelper.isValidCity(string: city.text!)
             isCityValid ? textField.setValid() : textField.setInvalid()
         case countryField:
             isCountryValid = validationHelper.isBetweenCriteria(countryField.text!, 99)
