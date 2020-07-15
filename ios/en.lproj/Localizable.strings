@@ -203,7 +203,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountMiddle" = "Seven Euro Fifthy";
 "AmountHighest" = "Twelve Euro Fifthy";
 "Divider" = "Dot";
-"GivtEventText" = "Hey! You're at an event where Givt is supported. Do you want to give to {0}?";
+"GivtEventText" = "Hey! You're at a location where Givt is supported. Do you want to give to {0}?";
 "SearchingEventText" = "We are searching where you are, care to wait a little?";
 "WeDoNotFindYou" = "Alas, we cannot find your location right now. You can choose from a list to which organisation you want to give or go back and try again.";
 "SelectLocationContext" = "Give at location";
@@ -227,9 +227,9 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ChangePhone" = "Change mobile number";
 "Artists" = "Artists";
 "ChangeAddress" = "Change address";
-"SelectLocationContextLong" = "Give at location during events";
-"GivtAtLocationDisabledTitle" = "No events available";
-"GivtAtLocationDisabledMessage" = "Hey, slow down! At the moment, no events are available where you can give at location.";
+"SelectLocationContextLong" = "Give based on your location";
+"GivtAtLocationDisabledTitle" = "No Givt locations found";
+"GivtAtLocationDisabledMessage" = "Sorry! At the moment, no organisations are available to give to at this location.";
 "TempAccountLogin" = "You're using a temporary account without password. You will now be automatically logged in and asked to complete your registration.";
 "SortCodePlaceholder" = "Sort code";
 "BankAccountNumberPlaceholder" = "Bank account number";
@@ -805,7 +805,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQantwoord17" = "Send us a message from within the app (\"About Givt / Contact\"), an e-mail at support@givtapp.net or give us a call at +31 320 320 115.";
 
 /*Camera toegang is nodig voor flashlight (enkel voor Android)*/
-"NoCameraAccessCelebration" = "To be able to support the super blazing giving event, we need access to your camera.";
+"NoCameraAccessCelebration" = "To be able to support the giving event, we need access to your camera.";
 
 /*"Ja, leuk!" of "Yes, cool!" op de vraag of er toegang tot camera gegeven mag worden voor flitsende geef-actie*/
 "YesCool" = "Yes, cool!";
