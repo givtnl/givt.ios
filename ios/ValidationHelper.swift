@@ -115,24 +115,32 @@ class ValidationHelper {
     func isValidNumeric(string: String) -> Bool {
         return CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
     }
-    
-    func isValidAddress(string: String) -> Bool {
+
+    func isValidCityOrAddress(string: String, illegalStartingOrEndingCharacters: Array<Character>) -> Bool {
         var allowedCharacters = CharacterSet.alphanumerics
-        allowedCharacters.insert(" ")
-        allowedCharacters.insert("-")
-        allowedCharacters.insert("'")
-        allowedCharacters.insert("’")
-        allowedCharacters.insert(".")
-        allowedCharacters.insert(",")
+        allowedCharacters.insert(charactersIn: " -'.,‘")
         //remove all allowed characters. When rest is not 0, means that we have unwanted characters.
         let rest = string.trimmingCharacters(in: allowedCharacters)
         let trimmedString = string.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
-        let startsOrEndsWithIllegalCharacter = trimmedString.starts(with: " ") || trimmedString.starts(with: "-") || trimmedString.starts(with: "'") || trimmedString.starts(with: "’") || trimmedString.last == " " || trimmedString.last == "-" || trimmedString.last == "'" || trimmedString.last == "’" || trimmedString.starts(with: ".") || trimmedString.starts(with: ",")
+        let startsOrEndsWithIllegalCharacter = illegalStartingOrEndingCharacters.reduce(false) { (result, next) in
+            return result || trimmedString.starts(with: String(next)) || trimmedString.last == next
+        }
         //if string start or ends with illegal character => return false
         return rest.count == 0 && !startsOrEndsWithIllegalCharacter
+
     }
     
-    class PhoneResult{
+    func isValidCity(string: String) -> Bool {
+        let illegalStartingOrEndingCharacters = Array(" -.,")
+        return isValidCityOrAddress(string: string, illegalStartingOrEndingCharacters: illegalStartingOrEndingCharacters)
+    }
+    
+    func isValidAddress(string: String) -> Bool {
+        let illegalStartingOrEndingCharacters = Array(" -'‘.,")
+        return isValidCityOrAddress(string: string, illegalStartingOrEndingCharacters: illegalStartingOrEndingCharacters)
+    }
+    
+    public class PhoneResult{
         var IsValid: Bool
         var Number: String?
         init(isValid: Bool, number: String?){
@@ -140,20 +148,51 @@ class ValidationHelper {
             self.Number = number
         }
     }
-    
-    func isValidPhone(number: String) -> PhoneResult {
+    func isValidPhoneWithPrefix(number: String, country: Country) -> PhoneResult {
+        var temp = number
+        if temp.starts(with: country.phoneNumber.prefix) {
+            temp = temp.replacingOccurrences(of: country.phoneNumber.prefix, with: "")
+        } else if temp.starts(with: country.phoneNumber.prefixWithZeros) {
+            temp = temp.replacingOccurrences(of: country.phoneNumber.prefixWithZeros, with: "")
+        } else if temp.starts(with: "0") {
+            temp.remove(at: temp.startIndex)
+        }
         
-        for country in AppConstants.countries {
+        for p in country.phoneNumber.firstNumbers {
+            if temp.starts(with: p) {
+                // add one more to length if country is germany and first numbers after prefix is "16" because this phonenumber can be 10 or 11 characters long after prefix
+                let length = p.count + country.phoneNumber.length
+                if (country.shortName == "DE" && (length == temp.count || length == temp.count+1)) || length == temp.count {
+                    do {
+                        let phoneNumber = try phoneNumberKit.parse(country.phoneNumber.prefix + temp, withRegion: country.shortName, ignoreType: true)
+                        formattedPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .e164)
+                        return PhoneResult(isValid: true, number: formattedPhoneNumber)
+                    }
+                    catch {
+                        formattedPhoneNumber = ""
+                        return PhoneResult(isValid: false, number: nil)
+                    }
+                }
+            }
+        }
+        return PhoneResult(isValid: false, number: nil)
+    }
+    func isValidPhone(number: String) -> PhoneResult {
+        let countrysToValidate = AppConstants.countries.filter{
+            $0.shortName == "NL" ||
+            $0.shortName == "BE" ||
+            $0.shortName == "DE" ||
+            $0.shortName == "GB" ||
+            $0.shortName == "GG" ||
+            $0.shortName == "JE"
+        }
+        for country in  countrysToValidate {
             var temp = number
             if temp.starts(with: country.phoneNumber.prefix) {
                 temp = temp.replacingOccurrences(of: country.phoneNumber.prefix, with: "")
             } else if temp.starts(with: country.phoneNumber.prefixWithZeros) {
                 temp = temp.replacingOccurrences(of: country.phoneNumber.prefixWithZeros, with: "")
-            } else {
-                continue
-            }
-            
-            if temp.starts(with: "0") {
+            } else if temp.starts(with: "0") {
                 temp.remove(at: temp.startIndex)
             }
             
