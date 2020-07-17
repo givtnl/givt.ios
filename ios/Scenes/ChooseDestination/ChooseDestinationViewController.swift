@@ -25,7 +25,7 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var navBar: UINavigationItem!
-    @IBOutlet var btnGive: CustomButton!
+    @IBOutlet var nextButton: CustomButton!
 
     var churchButton: DestinationCategoryButton!
     var charityButton: DestinationCategoryButton!
@@ -51,6 +51,39 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         destinationCell.type = destination.type
         return destinationCell
     }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
+            destinationCell.toggleOff()
+            nextButton.isEnabled = false
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if (tableView.indexPathsForSelectedRows?.contains { $0 == indexPath }) ?? false {
+            //deselect when tapped again
+            tableView.deselectRow(at: indexPath, animated: false)
+            tableView.delegate!.tableView?(tableView, didDeselectRowAt: indexPath)
+            return nil //make sure selection doesn't continue
+        }
+        return indexPath
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
+            destinationCell.toggleOn()
+            nextButton.isEnabled = true
+        }
+    }
+        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
+        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepOne", comment: "")
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.isTranslucent = true
+        self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,8 +103,8 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         tableView.tableFooterView = UIView(frame: .zero)
 
-        btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
-        btnGive.isEnabled = false
+        nextButton.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
+        nextButton.isEnabled = false
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         churchButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "church_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_church_white"), labelText: NSLocalizedString("Church", comment: ""), tag: CollectGroupType.church.rawValue)
         churchButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
@@ -87,7 +120,27 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         typeStackView.addArrangedSubview(artistButton)
         
         loadDestinations()
-        filterDestinationsAndReloadTable(categoryType: nil)
+        filterDestinationsAndReloadTable()
+    }
+    
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        do {
+            try mediater.send(request: OpenChooseAmountScene(name: "", mediumId: ""))
+        } catch {}
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // deselect row otherwise weird things happen in tableview
+        if let indexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: indexPath, animated: false)
+            tableView.delegate?.tableView!(tableView, didDeselectRowAt: indexPath)
+        }
+        
+        filterDestinationsAndReloadTable()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
     }
     
     @objc func categoryButtonTapped(_ sender: UITapGestureRecognizer) {
@@ -112,8 +165,7 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
                 typeStackView.insertArrangedSubview(button, at: idx)
             }
             
-            //filter table
-            button.active ? filterDestinationsAndReloadTable(categoryType: CollectGroupType(rawValue: button.tag)) : filterDestinationsAndReloadTable(categoryType: nil)
+            filterDestinationsAndReloadTable()
         }
     }
     
@@ -131,27 +183,34 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         }
     }
     
-    private func filterDestinationsAndReloadTable(categoryType: CollectGroupType?) {
-        if let categoryType = categoryType {
-            filteredDestinations = destinations.filter { $0.type == categoryType }
-        } else {
-            filteredDestinations = destinations
+    private func filterDestinationsAndReloadTable() {
+        filteredDestinations = destinations
+        if let currentSearchText = searchBar.text, !currentSearchText.isEmpty {
+            filteredDestinations = filteredDestinations.filter { $0.name.contains(currentSearchText) }
         }
-        self.sections = buildTableSections(input: self.filteredDestinations)
+        
+        if let activeCategoryButton = typeStackView.arrangedSubviews.first(where: { view in
+            return (view as! DestinationCategoryButton).active
+        }) {
+            filteredDestinations = filteredDestinations.filter { $0.type == CollectGroupType(rawValue: activeCategoryButton.tag) }
+        }
+        
+        buildTableSections()
         self.tableView.reloadData()
     }
     
-    private func buildTableSections(input: [DestinationViewModel]) -> [TableSection] {
-        if input.count > 0 {
-            let names = input.map { $0.name }
+    private func buildTableSections() {
+        if filteredDestinations.count > 0 {
+            let names = filteredDestinations.map { $0.name }
             var firstCharacters = names.map { $0.first! }
             firstCharacters = Array(Set(firstCharacters)).sorted()
-            return firstCharacters.map { fc in
+            sections = firstCharacters.map { fc in
                 let firstNameWithCharacter = names.sorted().firstIndex { String($0.first!) == String(fc) }
                 let lastNameWithCharacter = names.sorted().lastIndex { String($0.first!) == String(fc) }
                 return TableSection(index: firstNameWithCharacter!, length: lastNameWithCharacter! - firstNameWithCharacter! + 1, title: String(fc))
             }
+            return
         }
-        return [TableSection]()
+        sections = [TableSection]()
     }
 }
