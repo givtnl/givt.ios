@@ -13,7 +13,6 @@ internal protocol MediaterProtocol {
     func registerPostProcessor<P: RequestPostProcessorProtocol>(processor: P)
     
     func send<R: RequestProtocol>(request: R) throws -> (R.TResponse)
-
     func sendAsync<R: RequestProtocol>(request: R, completion: @escaping (R.TResponse) -> Void) throws
     
     var shared: MediaterProtocol { get }

@@ -67,7 +67,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="btnGive:" destination="vZ1-9Z-8gT" eventType="touchUpInside" id="rwg-Km-TLR"/>
+                                    <action selector="nextButtonTapped:" destination="vZ1-9Z-8gT" eventType="touchUpInside" id="rwg-Km-TLR"/>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="mH7-pw-7vj">
@@ -159,8 +159,8 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="7nO-Ce-bZk" id="9tp-W7-YGb"/>
-                        <outlet property="btnGive" destination="NtY-cO-dZL" id="ngz-hv-MLa"/>
                         <outlet property="navBar" destination="Wwt-Fo-4ma" id="0WX-Dv-VUp"/>
+                        <outlet property="nextButton" destination="NtY-cO-dZL" id="ngz-hv-MLa"/>
                         <outlet property="searchBar" destination="mH7-pw-7vj" id="IDO-5O-Eq5"/>
                         <outlet property="tableView" destination="5ij-jE-3iz" id="nfh-cZ-Ljl"/>
                         <outlet property="titleText" destination="plU-Zf-NqT" id="dDC-9k-xYV"/>

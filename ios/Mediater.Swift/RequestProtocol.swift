@@ -11,6 +11,6 @@ public protocol RequestProtocol {
     associatedtype TResponse
 }
 
-public final class NoResponseRequest : RequestProtocol {
+public class NoResponseRequest : RequestProtocol {
     public typealias TResponse = Void
 }

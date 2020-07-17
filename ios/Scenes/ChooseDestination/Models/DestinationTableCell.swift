@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 internal final class DestinationTableCell : UITableViewCell {
-    
     public var name: String = "" {
         didSet {
             collectGroupLabel.text = name
@@ -45,6 +44,7 @@ internal final class DestinationTableCell : UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
