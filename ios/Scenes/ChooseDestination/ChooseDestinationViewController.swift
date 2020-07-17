@@ -121,7 +121,7 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         let userDetail = try? mediater.send(request: GetUserDetailQuery())
         try? mediater.sendAsync(request: GetCollectGroupsQuery()) { response in
             self.destinations = response
-                .filter { $0.paymentType == userDetail?.paymentType }
+                .filter { $0.paymentType == userDetail?.paymentType } // only show destinations that the user can give to with his account
                 .map { cg in
                     let destination = DestinationViewModel()
                     destination.name = cg.name
@@ -137,7 +137,21 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         } else {
             filteredDestinations = destinations
         }
-        self.sections = TableSectionBuilder.build(input: self.filteredDestinations)
+        self.sections = buildTableSections(input: self.filteredDestinations)
         self.tableView.reloadData()
+    }
+    
+    private func buildTableSections(input: [DestinationViewModel]) -> [TableSection] {
+        if input.count > 0 {
+            let names = input.map { $0.name }
+            var firstCharacters = names.map { $0.first! }
+            firstCharacters = Array(Set(firstCharacters)).sorted()
+            return firstCharacters.map { fc in
+                let firstNameWithCharacter = names.sorted().firstIndex { String($0.first!) == String(fc) }
+                let lastNameWithCharacter = names.sorted().lastIndex { String($0.first!) == String(fc) }
+                return TableSection(index: firstNameWithCharacter!, length: lastNameWithCharacter! - firstNameWithCharacter! + 1, title: String(fc))
+            }
+        }
+        return [TableSection]()
     }
 }
