@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             logService.error(message: "User had a crash, check AppCenter")
         }
 
+        registerHandlers()
+        
         logService.info(message: "App started")
         
         if !UserDefaults.standard.showcases.isEmpty {
@@ -221,4 +223,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationManager.shared.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
     }
     
+    func registerHandlers() {
+        Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
+        Mediater.shared.registerHandler(handler: GetUserDetailQueryHandler())
+    }
 }

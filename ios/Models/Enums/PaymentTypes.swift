@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+@available(*, deprecated, message: "Use PaymentType instead")
 public enum AccountType: String {
     case sepa
     case bacs
