@@ -32,6 +32,7 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     var campaignButton: DestinationCategoryButton!
     var artistButton: DestinationCategoryButton!
 
+    //MARK: tableSections
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
@@ -43,15 +44,34 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].length
     }
-    
+
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
+    }
+
+    //MARK: table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let destination = filteredDestinations[sections[indexPath.section].index + indexPath.row]
         let destinationCell = tableView.dequeueReusableCell(withIdentifier: String(describing: DestinationTableCell.self), for: indexPath) as! DestinationTableCell
         destinationCell.name = destination.name
         destinationCell.type = destination.type
+        if destination.selected {
+            //select row that should be selected
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            destinationCell.toggleOn()
+            nextButton.isEnabled = true
+        }
         return destinationCell
     }
 
+    func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        // update ViewModel
+        if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
+            (destinations.first { $0.name == destinationCell.name })!.selected = false
+        }
+        return indexPath
+    }
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
             destinationCell.toggleOff()
@@ -60,11 +80,14 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if (tableView.indexPathsForSelectedRows?.contains { $0 == indexPath }) ?? false {
-            //deselect when tapped again
-            tableView.deselectRow(at: indexPath, animated: false)
-            tableView.delegate!.tableView?(tableView, didDeselectRowAt: indexPath)
-            return nil //make sure selection doesn't continue
+        if let indexPaths = tableView.indexPathsForSelectedRows {
+            if (indexPaths.contains { $0 == indexPath }) {
+                // deselect when tapped again
+                tableView.deselectRow(at: indexPath, animated: false)
+                _ = tableView.delegate!.tableView?(tableView, willDeselectRowAt: indexPath)
+                tableView.delegate!.tableView?(tableView, didDeselectRowAt: indexPath)
+                return nil //make sure selection doesn't continue
+            }
         }
         return indexPath
     }
@@ -73,9 +96,14 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
             destinationCell.toggleOn()
             nextButton.isEnabled = true
+            // update ViewModel
+            (destinations.first { $0.name == destinationCell.name })!.selected = true
+            // make sure other destinations are deselected
+            destinations.filter { $0.name != destinationCell.name }.forEach { $0.selected = false }
         }
     }
-        
+    
+    //MARK: viewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
@@ -123,12 +151,14 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         filterDestinationsAndReloadTable()
     }
     
+    //MARK: nextButton
     @IBAction func nextButtonTapped(_ sender: Any) {
         do {
             try mediater.send(request: OpenChooseAmountScene(name: "", mediumId: ""))
         } catch {}
     }
     
+    //MARK: tableFiltering
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // deselect row otherwise weird things happen in tableview
         if let indexPath = tableView.indexPathForSelectedRow {
@@ -177,7 +207,8 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
                 .map { cg in
                     let destination = DestinationViewModel()
                     destination.name = cg.name
-                    destination.type = cg.type                    
+                    destination.type = cg.type
+                    destination.selected = false
                     return destination
                 }
         }
@@ -196,6 +227,15 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         }
         
         buildTableSections()
+        
+        //deselect all cells before loading
+        if let indexPaths = tableView.indexPathsForSelectedRows {
+            for path in indexPaths {
+                tableView.deselectRow(at: path, animated: false)
+                tableView.delegate!.tableView?(tableView, didDeselectRowAt: path)
+            }
+        }
+        
         self.tableView.reloadData()
     }
     
