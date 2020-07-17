@@ -203,7 +203,6 @@
 		FBC1859124C06616001A4C6B /* CollectGroupDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1859024C06616001A4C6B /* CollectGroupDetailModel.swift */; };
 		FBC1859324C06716001A4C6B /* CollectGroupType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1859224C06716001A4C6B /* CollectGroupType.swift */; };
 		FBC1859524C08431001A4C6B /* DestinationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1859424C08431001A4C6B /* DestinationTableCell.swift */; };
-		FBC1859924C088AF001A4C6B /* TableSectionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1859824C088AF001A4C6B /* TableSectionBuilder.swift */; };
 		FBC1859C24C08918001A4C6B /* TableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1859B24C08918001A4C6B /* TableSection.swift */; };
 		FBC185A024C08F19001A4C6B /* PaymentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC1859F24C08F19001A4C6B /* PaymentType.swift */; };
 		FBC185A224C0AD81001A4C6B /* DestinationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185A124C0AD81001A4C6B /* DestinationViewModel.swift */; };
@@ -211,6 +210,9 @@
 		FBC185AE24C0CD98001A4C6B /* UserDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185AD24C0CD98001A4C6B /* UserDetailModel.swift */; };
 		FBC185B124C0CF15001A4C6B /* GetUserDetailQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B024C0CF15001A4C6B /* GetUserDetailQueryHandler.swift */; };
 		FBC185B324C0D661001A4C6B /* DestinationCategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B224C0D661001A4C6B /* DestinationCategoryButton.swift */; };
+		FBC185B824C1A7F8001A4C6B /* OpenChooseAmountScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B724C1A7F8001A4C6B /* OpenChooseAmountScene.swift */; };
+		FBC185BA24C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B924C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift */; };
+		FBC185BC24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185BB24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift */; };
 		FBD9CACC237580D5006C07FA /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD9CACB237580D5006C07FA /* Welcome.storyboard */; };
 		FBD9CACE237580DB006C07FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD9CACD237580DB006C07FA /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -445,7 +447,6 @@
 		FBC1859024C06616001A4C6B /* CollectGroupDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectGroupDetailModel.swift; sourceTree = "<group>"; };
 		FBC1859224C06716001A4C6B /* CollectGroupType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectGroupType.swift; sourceTree = "<group>"; };
 		FBC1859424C08431001A4C6B /* DestinationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTableCell.swift; sourceTree = "<group>"; };
-		FBC1859824C088AF001A4C6B /* TableSectionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionBuilder.swift; sourceTree = "<group>"; };
 		FBC1859B24C08918001A4C6B /* TableSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSection.swift; sourceTree = "<group>"; };
 		FBC1859F24C08F19001A4C6B /* PaymentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentType.swift; sourceTree = "<group>"; };
 		FBC185A124C0AD81001A4C6B /* DestinationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewModel.swift; sourceTree = "<group>"; };
@@ -453,6 +454,9 @@
 		FBC185AD24C0CD98001A4C6B /* UserDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailModel.swift; sourceTree = "<group>"; };
 		FBC185B024C0CF15001A4C6B /* GetUserDetailQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserDetailQueryHandler.swift; sourceTree = "<group>"; };
 		FBC185B224C0D661001A4C6B /* DestinationCategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCategoryButton.swift; sourceTree = "<group>"; };
+		FBC185B724C1A7F8001A4C6B /* OpenChooseAmountScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountScene.swift; sourceTree = "<group>"; };
+		FBC185B924C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountSceneValidator.swift; sourceTree = "<group>"; };
+		FBC185BB24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountSceneHandler.swift; sourceTree = "<group>"; };
 		FBD827E4234DF2F70034BB51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FBD827E5234DF2F70034BB51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBD9CACB237580D5006C07FA /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
@@ -904,6 +908,7 @@
 			isa = PBXGroup;
 			children = (
 				FB13642C24BF2E43006EF19D /* ChooseDestination */,
+				FBC185B524C1A789001A4C6B /* Routes */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -921,7 +926,6 @@
 			children = (
 				FB13642424BF2E3B006EF19D /* ChooseDestinationViewController.swift */,
 				FBC1858E24C065D2001A4C6B /* Models */,
-				FBC1859724C086FB001A4C6B /* ViewBuilders */,
 			);
 			path = ChooseDestination;
 			sourceTree = "<group>";
@@ -1055,14 +1059,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		FBC1859724C086FB001A4C6B /* ViewBuilders */ = {
-			isa = PBXGroup;
-			children = (
-				FBC1859824C088AF001A4C6B /* TableSectionBuilder.swift */,
-			);
-			path = ViewBuilders;
-			sourceTree = "<group>";
-		};
 		FBC185A424C0CD0B001A4C6B /* Requests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1130,6 +1126,24 @@
 				FBC1859224C06716001A4C6B /* CollectGroupType.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FBC185B524C1A789001A4C6B /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				FBC185B624C1A7A6001A4C6B /* ChooseAmountScene */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		FBC185B624C1A7A6001A4C6B /* ChooseAmountScene */ = {
+			isa = PBXGroup;
+			children = (
+				FBC185B724C1A7F8001A4C6B /* OpenChooseAmountScene.swift */,
+				FBC185B924C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift */,
+				FBC185BB24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift */,
+			);
+			path = ChooseAmountScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1399,6 +1413,7 @@
 				A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */,
 				D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */,
 				D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */,
+				FBC185BA24C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift in Sources */,
 				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
 				FBC1858724C0651D001A4C6B /* MediaterProtocol.swift in Sources */,
 				D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */,
@@ -1407,6 +1422,7 @@
 				D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				FBC1859124C06616001A4C6B /* CollectGroupDetailModel.swift in Sources */,
+				FBC185BC24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColorExtensions.swift in Sources */,
 				FBBF72A621CA819600EBB085 /* FeaturesNavigationController.swift in Sources */,
@@ -1448,7 +1464,6 @@
 				D7AE8BA02136980600CB3A33 /* BacsSettingUpViewController.swift in Sources */,
 				D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */,
 				D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */,
-				FBC1859924C088AF001A4C6B /* TableSectionBuilder.swift in Sources */,
 				FBC1858B24C0651D001A4C6B /* Mediater.swift in Sources */,
 				D796043620C00607005B609B /* BeaconService.swift in Sources */,
 				DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */,
@@ -1479,6 +1494,7 @@
 				D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */,
 				D78208A12008BE7900AB6DC1 /* CollectionExtensions.swift in Sources */,
 				D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */,
+				FBC185B824C1A7F8001A4C6B /* OpenChooseAmountScene.swift in Sources */,
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
 				FBC1859324C06716001A4C6B /* CollectGroupType.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
