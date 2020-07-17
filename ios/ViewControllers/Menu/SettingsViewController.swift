@@ -146,7 +146,7 @@ class SettingsViewController: BaseMenuViewController {
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
     }
     private func startFirstTargetThenAmountFlow() {
-        let vc = UIStoryboard(name:"FirstTargetThenAmount", bundle: nil).instantiateInitialViewController()
+        let vc = UIStoryboard(name:"FirstDestinationThenAmount", bundle: nil).instantiateInitialViewController()
         vc?.modalPresentationStyle = .fullScreen
         vc?.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {

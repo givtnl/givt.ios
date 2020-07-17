@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vZ1-9Z-8gT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vZ1-9Z-8gT">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
         <!--Kies aan wie je wil geven-->
         <scene sceneID="9HQ-df-UNw">
             <objects>
-                <viewController storyboardIdentifier="SelectTargetViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vZ1-9Z-8gT" customClass="SelectTargetViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectTargetViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vZ1-9Z-8gT" customClass="ChooseDestinationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yq9-f8-eOl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,33 +32,6 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="bWI-LI-hFM">
                                         <rect key="frame" x="20" y="0.0" width="374" height="80"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" tag="101" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kerken" translatesAutoresizingMaskIntoConstraints="NO" id="7wS-yu-w6b">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="MeG-73-kYg"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stichtingen" translatesAutoresizingMaskIntoConstraints="NO" id="i0I-Gg-WHQ">
-                                                <rect key="frame" x="65" y="0.0" width="50" height="80"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="X9E-Mx-ahc"/>
-                                                </constraints>
-                                            </imageView>
-                                            <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="acties" translatesAutoresizingMaskIntoConstraints="NO" id="wh9-va-H0V">
-                                                <rect key="frame" x="130" y="0.0" width="50" height="80"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="rv7-wv-SY1"/>
-                                                </constraints>
-                                            </imageView>
-                                        </subviews>
-                                        <variation key="default">
-                                            <mask key="subviews">
-                                                <exclude reference="7wS-yu-w6b"/>
-                                                <exclude reference="i0I-Gg-WHQ"/>
-                                                <exclude reference="wh9-va-H0V"/>
-                                            </mask>
-                                        </variation>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -106,7 +79,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="ManualGivingOrganisation" editingAccessoryType="checkmark" id="nOA-RD-lPo" customClass="ManualGivingOrganisation" customModule="ios" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="DestinationTableCell" editingAccessoryType="checkmark" id="nOA-RD-lPo" userLabel="DestinationTableCell" customClass="DestinationTableCell" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nOA-RD-lPo" id="bKw-y7-ySz">
@@ -125,7 +98,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dshfjkhJSFdsf sjdhfkjsd fhfkjsdf jsdhfksdf" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fm-yv-KIg">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dshfjkhJSFdsf sjdhfkjsd fhfkjsdf jsdhfksdf" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Fm-yv-KIg" customClass="Dest">
                                                             <rect key="frame" x="40" y="0.0" width="334" height="50"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="c1z-bn-IW7"/>
@@ -147,8 +120,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="collectGroupLabel" destination="5Fm-yv-KIg" id="kAU-Rk-dZh"/>
                                             <outlet property="iconLabel" destination="NhW-Dl-XgN" id="MsZ-JP-qqh"/>
-                                            <outlet property="organisationLabel" destination="5Fm-yv-KIg" id="kAU-Rk-dZh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -185,17 +158,11 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="acties" destination="wh9-va-H0V" id="noX-hv-E3e"/>
-                        <outlet property="actiesWidth" destination="rv7-wv-SY1" id="CWE-i1-yYO"/>
                         <outlet property="backButton" destination="7nO-Ce-bZk" id="9tp-W7-YGb"/>
                         <outlet property="btnGive" destination="NtY-cO-dZL" id="ngz-hv-MLa"/>
-                        <outlet property="churchWidth" destination="MeG-73-kYg" id="2Zb-r6-UMs"/>
-                        <outlet property="kerken" destination="7wS-yu-w6b" id="aqO-Sg-jCX"/>
                         <outlet property="navBar" destination="Wwt-Fo-4ma" id="0WX-Dv-VUp"/>
                         <outlet property="searchBar" destination="mH7-pw-7vj" id="IDO-5O-Eq5"/>
-                        <outlet property="stichtingWidth" destination="X9E-Mx-ahc" id="Oix-qk-w1s"/>
-                        <outlet property="stichtingen" destination="i0I-Gg-WHQ" id="NMt-bV-cYM"/>
-                        <outlet property="tableView" destination="5ij-jE-3iz" id="omo-m4-PcR"/>
+                        <outlet property="tableView" destination="5ij-jE-3iz" id="nfh-cZ-Ljl"/>
                         <outlet property="titleText" destination="plU-Zf-NqT" id="dDC-9k-xYV"/>
                         <outlet property="typeStackView" destination="bWI-LI-hFM" id="lYJ-rP-bKh"/>
                     </connections>
@@ -766,13 +733,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="acties" width="120" height="120"/>
         <image name="backbtn" width="15" height="24"/>
         <image name="erase_new" width="24" height="18"/>
         <image name="help" width="13" height="20"/>
         <image name="increase" width="40" height="40"/>
-        <image name="kerken" width="120" height="120"/>
         <image name="menu_badge.png" width="128" height="128"/>
-        <image name="stichtingen" width="120" height="120"/>
     </resources>
 </document>
