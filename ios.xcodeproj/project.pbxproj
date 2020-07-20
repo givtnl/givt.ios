@@ -211,7 +211,6 @@
 		FBC185B124C0CF15001A4C6B /* GetUserDetailQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B024C0CF15001A4C6B /* GetUserDetailQueryHandler.swift */; };
 		FBC185B324C0D661001A4C6B /* DestinationCategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B224C0D661001A4C6B /* DestinationCategoryButton.swift */; };
 		FBC185B824C1A7F8001A4C6B /* OpenChooseAmountScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B724C1A7F8001A4C6B /* OpenChooseAmountScene.swift */; };
-		FBC185BA24C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B924C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift */; };
 		FBC185BC24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185BB24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift */; };
 		FBC185C124C57DB6001A4C6B /* MediaterWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C024C57DB6001A4C6B /* MediaterWithContextProtocol.swift */; };
 		FBC185C324C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C224C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift */; };
@@ -460,7 +459,6 @@
 		FBC185B024C0CF15001A4C6B /* GetUserDetailQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserDetailQueryHandler.swift; sourceTree = "<group>"; };
 		FBC185B224C0D661001A4C6B /* DestinationCategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCategoryButton.swift; sourceTree = "<group>"; };
 		FBC185B724C1A7F8001A4C6B /* OpenChooseAmountScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountScene.swift; sourceTree = "<group>"; };
-		FBC185B924C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountSceneValidator.swift; sourceTree = "<group>"; };
 		FBC185BB24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountSceneHandler.swift; sourceTree = "<group>"; };
 		FBC185C024C57DB6001A4C6B /* MediaterWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaterWithContextProtocol.swift; sourceTree = "<group>"; };
 		FBC185C224C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandlerWithContextProtocol.swift; sourceTree = "<group>"; };
@@ -1151,7 +1149,6 @@
 			isa = PBXGroup;
 			children = (
 				FBC185B724C1A7F8001A4C6B /* OpenChooseAmountScene.swift */,
-				FBC185B924C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift */,
 				FBC185BB24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift */,
 			);
 			path = ChooseAmountScene;
@@ -1439,7 +1436,6 @@
 				A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */,
 				D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */,
 				D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */,
-				FBC185BA24C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift in Sources */,
 				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
 				FBC1858724C0651D001A4C6B /* MediaterProtocol.swift in Sources */,
 				D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */,
