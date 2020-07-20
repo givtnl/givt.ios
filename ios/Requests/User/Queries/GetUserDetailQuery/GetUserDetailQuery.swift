@@ -8,6 +8,6 @@
 
 import Foundation
 
-class GetUserDetailQuery : RequestProtocol {
+internal struct GetUserDetailQuery : RequestProtocol {
     typealias TResponse = UserDetailModel
 }

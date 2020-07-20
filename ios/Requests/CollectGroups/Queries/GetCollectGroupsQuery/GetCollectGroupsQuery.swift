@@ -8,6 +8,6 @@
 
 import Foundation
 
-internal final class GetCollectGroupsQuery : RequestProtocol {
+internal struct GetCollectGroupsQuery : RequestProtocol {
     typealias TResponse = [CollectGroupDetailModel]
 }

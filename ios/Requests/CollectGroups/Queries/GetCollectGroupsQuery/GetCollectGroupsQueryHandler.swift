@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal final class GetCollectGroupsQueryHandler : RequestHandlerProtocol {
+internal struct GetCollectGroupsQueryHandler : RequestHandlerProtocol {
     let apiClient = APIClient.shared
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {

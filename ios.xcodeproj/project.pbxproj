@@ -213,6 +213,11 @@
 		FBC185B824C1A7F8001A4C6B /* OpenChooseAmountScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B724C1A7F8001A4C6B /* OpenChooseAmountScene.swift */; };
 		FBC185BA24C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B924C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift */; };
 		FBC185BC24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185BB24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift */; };
+		FBC185C124C57DB6001A4C6B /* MediaterWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C024C57DB6001A4C6B /* MediaterWithContextProtocol.swift */; };
+		FBC185C324C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C224C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift */; };
+		FBC185C524C5CDF2001A4C6B /* MediaterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C424C5CDF2001A4C6B /* MediaterExtension.swift */; };
+		FBC185C724C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C624C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift */; };
+		FBC185C924C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C824C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift */; };
 		FBD9CACC237580D5006C07FA /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD9CACB237580D5006C07FA /* Welcome.storyboard */; };
 		FBD9CACE237580DB006C07FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD9CACD237580DB006C07FA /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -457,6 +462,11 @@
 		FBC185B724C1A7F8001A4C6B /* OpenChooseAmountScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountScene.swift; sourceTree = "<group>"; };
 		FBC185B924C1A80E001A4C6B /* OpenChooseAmountSceneValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountSceneValidator.swift; sourceTree = "<group>"; };
 		FBC185BB24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountSceneHandler.swift; sourceTree = "<group>"; };
+		FBC185C024C57DB6001A4C6B /* MediaterWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaterWithContextProtocol.swift; sourceTree = "<group>"; };
+		FBC185C224C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandlerWithContextProtocol.swift; sourceTree = "<group>"; };
+		FBC185C424C5CDF2001A4C6B /* MediaterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaterExtension.swift; sourceTree = "<group>"; };
+		FBC185C624C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPreProcessorWithContextProtocol.swift; sourceTree = "<group>"; };
+		FBC185C824C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPostProcessorWithContextProtocol.swift; sourceTree = "<group>"; };
 		FBD827E4234DF2F70034BB51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FBD827E5234DF2F70034BB51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBD9CACB237580D5006C07FA /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
@@ -975,6 +985,7 @@
 				D761E9C41F20CFA6002B849B /* Localizable.strings */,
 				D77667EC1F39F11300649157 /* Managers */,
 				FBC1857D24C0651D001A4C6B /* Mediater.Swift */,
+				FBC185BF24C57D73001A4C6B /* Mediater.Swift.Extensions */,
 				D7F746DC1FD9447C005354A3 /* Models */,
 				FBC185A424C0CD0B001A4C6B /* Requests */,
 				FB13641C24BF2CDC006EF19D /* Scenes */,
@@ -1144,6 +1155,18 @@
 				FBC185BB24C1A824001A4C6B /* OpenChooseAmountSceneHandler.swift */,
 			);
 			path = ChooseAmountScene;
+			sourceTree = "<group>";
+		};
+		FBC185BF24C57D73001A4C6B /* Mediater.Swift.Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FBC185C424C5CDF2001A4C6B /* MediaterExtension.swift */,
+				FBC185C024C57DB6001A4C6B /* MediaterWithContextProtocol.swift */,
+				FBC185C224C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift */,
+				FBC185C824C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift */,
+				FBC185C624C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift */,
+			);
+			path = Mediater.Swift.Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1354,11 +1377,13 @@
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D7BC58D620776361008C9497 /* Context.swift in Sources */,
+				FBC185C124C57DB6001A4C6B /* MediaterWithContextProtocol.swift in Sources */,
 				D74C19EA20F627DA00E116A0 /* ExternalSuggestionViewController.swift in Sources */,
 				D7AE8BA42136CA4F00CB3A33 /* PaymentTypes.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,
 				D7DBEDA11FBC5D5900D78E2A /* CustomUITextView.swift in Sources */,
 				D7AE8B9C2136953E00CB3A33 /* BacsInfoViewController.swift in Sources */,
+				FBC185C524C5CDF2001A4C6B /* MediaterExtension.swift in Sources */,
 				D7F3A84A214801EA008B65AE /* FingerprintViewController.swift in Sources */,
 				D7D6FA6B1F7BADA5008A5604 /* UITextFieldExtensions.swift in Sources */,
 				27A0E4E5221ECE6700982842 /* PresetButton.swift in Sources */,
@@ -1393,6 +1418,7 @@
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
 				D748F6002063D4A500B25BC2 /* Status.swift in Sources */,
 				D7DD79A620A19E2500047CA7 /* LocationService.swift in Sources */,
+				FBC185C724C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift in Sources */,
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
 				32CE4D5324BDEEEC0048671B /* SelectAmountViewController.swift in Sources */,
@@ -1459,6 +1485,7 @@
 				D7F0D2A521639544004770F8 /* NotificationExtensions.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */,
 				FBC1857C24C06507001A4C6B /* GetCollectGroupsQueryHandler.swift in Sources */,
+				FBC185C924C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift in Sources */,
 				D73CA1C51F39BA360059A296 /* AppConstants.swift in Sources */,
 				D761E9BA1F18C5C6002B849B /* StringExtensions.swift in Sources */,
 				D7AE8BA02136980600CB3A33 /* BacsSettingUpViewController.swift in Sources */,
@@ -1493,6 +1520,7 @@
 				FB8187B221C29C7C0084C23E /* NewFeaturePopDownView.swift in Sources */,
 				D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */,
 				D78208A12008BE7900AB6DC1 /* CollectionExtensions.swift in Sources */,
+				FBC185C324C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift in Sources */,
 				D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */,
 				FBC185B824C1A7F8001A4C6B /* OpenChooseAmountScene.swift in Sources */,
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
