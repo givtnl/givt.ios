@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class GetUserDetailQueryHandler : RequestHandlerProtocol {
+internal struct GetUserDetailQueryHandler : RequestHandlerProtocol {
     public func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let paymentType = UserDefaults.standard.accountType == .undefined
             ?
@@ -21,6 +21,4 @@ public class GetUserDetailQueryHandler : RequestHandlerProtocol {
     public func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
         return request is GetUserDetailQuery
     }
-    
-    
 }
