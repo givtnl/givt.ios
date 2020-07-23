@@ -115,11 +115,13 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        titleText.text = "ChooseWhoYouWantToGiveTo".localized
+
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         navigationController?.navigationBar.isTranslucent = true
-
+        
         searchBar.delegate = self
 
         tableView.dataSource = self
@@ -134,13 +136,13 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         nextButton.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
         nextButton.isEnabled = false
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        churchButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "church_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_church_white"), labelText: NSLocalizedString("Church", comment: ""), tag: CollectGroupType.church.rawValue)
+        churchButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "church_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_church_white"), labelText: "Church".localized, tag: CollectGroupType.church.rawValue)
         churchButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
-        charityButton = DestinationCategoryButton(color: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "stichting_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: NSLocalizedString("Charity", comment: ""), tag: CollectGroupType.charity.rawValue)
+        charityButton = DestinationCategoryButton(color: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "stichting_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: "Charity".localized, tag: CollectGroupType.charity.rawValue)
         charityButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
-        campaignButton = DestinationCategoryButton(color: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "actions_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_actions_white"), labelText: NSLocalizedString("Campaign", comment: ""), tag: CollectGroupType.campaign.rawValue)
+        campaignButton = DestinationCategoryButton(color: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "actions_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_actions_white"), labelText: "Campaign".localized, tag: CollectGroupType.campaign.rawValue)
         campaignButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
-        artistButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "artist"), imageWhenActive: #imageLiteral(resourceName: "artist_white"), labelText: NSLocalizedString("Artist", comment: ""), tag: CollectGroupType.artist.rawValue)
+        artistButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "artist"), imageWhenActive: #imageLiteral(resourceName: "artist_white"), labelText: "Artist".localized, tag: CollectGroupType.artist.rawValue)
         artistButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
         typeStackView.addArrangedSubview(churchButton)
         typeStackView.addArrangedSubview(charityButton)
@@ -198,7 +200,13 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
             if let idx = typeStackView.arrangedSubviews.index(of: button) {
                 typeStackView.removeArrangedSubview(button)
                 button.removeFromSuperview()
-                button.active ? button.setInactive() : button.setActive()
+                if button.active {
+                    button.setInactive()
+                    titleText.text = "ChooseWhoYouWantToGiveTo".localized
+                } else {
+                    button.setActive()
+                    titleText.text = button.labelText
+                }
                 typeStackView.insertArrangedSubview(button, at: idx)
             }
             

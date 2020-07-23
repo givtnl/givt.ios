@@ -13,7 +13,7 @@ class DestinationCategoryButton : UIButton {
     private var color: UIColor!
     private var imageWhenActive: UIImage!
     private var imageWhenInactive: UIImage!
-    private var labelText: String!
+    public var labelText: String!
     public var active: Bool!
     
     private var heightConstraint: NSLayoutConstraint?

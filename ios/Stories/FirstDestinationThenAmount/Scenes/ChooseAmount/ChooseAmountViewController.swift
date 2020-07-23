@@ -110,6 +110,7 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
                     try? self.mediater.send(request: DeleteDonationCommand(objectId: donationId))
                 }
             }
+            AppServices.shared.vibrate()
             hideLoader()
             try mediater.sendAsync(request: GoToSafariRoute(donations: [Transaction(amount: amount, beaconId: input.mediumId, collectId: "0", timeStamp: timeStamp.toISOString(), userId: userId.uuidString)],
                                                        canShare: false,
@@ -117,8 +118,9 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
                                                        collectGroupName: input.name),
                                    withContext: self)
             {
+                usleep(500000)
                 try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
-            }            
+            }
         } catch DonationError.amountTooHigh {
             displayAmountTooHigh()
         } catch DonationError.amountTooLow {
