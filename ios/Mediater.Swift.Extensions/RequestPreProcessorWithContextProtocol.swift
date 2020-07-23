@@ -9,6 +9,6 @@
 import Foundation
 import UIKit
 
-protocol RequestPreProcessorWithContextProtocol : RequestPreProcessorProtocol {
+public protocol RequestPreProcessorWithContextProtocol : RequestProcessorProtocol {
     func handle<R: RequestProtocol>(request: R, withContext context: UIViewController, completion: @escaping(R) throws -> Void) throws
 }

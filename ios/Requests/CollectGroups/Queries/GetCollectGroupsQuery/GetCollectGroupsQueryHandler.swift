@@ -8,23 +8,29 @@
 
 import Foundation
 
-internal struct GetCollectGroupsQueryHandler : RequestHandlerProtocol {
-    let apiClient = APIClient.shared
-    
+internal struct GetCollectGroupsQueryHandler : RequestHandlerProtocol {    
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-//        apiClient.get(url: "/api/v2/collectgroups", data: [:]) { response in
-//            if let response = response, response.basicStatus == .ok {
-//                let decoder = JSONDecoder()
-//                do {
-//                    try completion(try decoder.decode([CollectGroupDetailModel].self, from: response.data!) as! R.TResponse)
-//                } catch {}
-//            }
-//        }
-//        try? completion([CollectGroupDetailModel]() as! R.TResponse)
-        var collectGroups = [CollectGroupDetailModel]()
-        collectGroups.append(CollectGroupDetailModel(namespace: "61f7ed014e4c0720c000", name: "Mijn kerk", type: .church, paymentType: .SEPADirectDebit))
-        collectGroups.append(CollectGroupDetailModel(namespace: "61f7ed014e4c0720c000", name: "De stichting", type: .charity, paymentType: .SEPADirectDebit))
-        collectGroups.append(CollectGroupDetailModel(namespace: "61f7ed014e4c0720c000", name: "Een artiest", type: .artist, paymentType: .SEPADirectDebit))
+        let collectGroups = GivtManager.shared.orgBeaconList!.map { (orgBeacon) -> CollectGroupDetailModel in
+            var type = CollectGroupType.church
+            switch MediumHelper.namespaceToOrganisationType(namespace: orgBeacon.EddyNameSpace) {
+            case .church:
+                type = .church
+            case .charity:
+                type = .charity
+            case .campaign:
+                type = .campaign
+            case .artist:
+                type = .artist
+            default:
+                break
+            }
+            return CollectGroupDetailModel(namespace: orgBeacon.EddyNameSpace,
+                                    name: orgBeacon.OrgName,
+                                    type: type,
+                                    paymentType: orgBeacon.accountType == AccountType.sepa ? PaymentType.SEPADirectDebit : PaymentType.BACSDirectDebit)
+            
+        }
+        
         try? completion(collectGroups as! R.TResponse)
     }
     

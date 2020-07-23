@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class OpenChooseAmountScene : NoResponseRequest {
+public class OpenChooseAmountRoute : NoResponseRequest {
     var name: String
     var mediumId: String
     
