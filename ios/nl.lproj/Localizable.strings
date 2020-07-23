@@ -203,13 +203,13 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountMiddle" = "Zeven Euro Vijftig";
 "AmountHighest" = "Twaalf Euro Vijftig";
 "Divider" = "Komma";
-"GivtEventText" = "Hey! Je staat op een locatie waar Givt wordt ondersteund. Wil jij toevallig geven aan {0}?";
+"GivtEventText" = "Hey! Je bent op een locatie waar Givt wordt ondersteund. Wil jij toevallig geven aan {0}?";
 "SearchingEventText" = "We zoeken even waar je bent, wacht je even?";
 "WeDoNotFindYou" = "Jammer genoeg kunnen we je niet terugvinden. Je kan kiezen om te selecteren uit een lijst of teruggaan om nog eens opnieuw te proberen.";
 "SelectLocationContext" = "Geef op locatie";
 "ChangePassword" = "Wachtwoord wijzigen";
 "AllowGivtLocationTitle" = "Sta Givt toe je locatie te gebruiken";
-"AllowGivtLocationMessage" = "We hebben je locatie nodig om te bepalen aan wie je wil geven.\nGa naar Instellingen > Privacy > Locatievoorzieningen > Zet Locatievoorzieningen aan en stel 'Bij gebruik van app' in voor Givt.";
+"AllowGivtLocationMessage" = "We hebben je locatie nodig om te bepalen aan wie je wilt geven.\nGa naar Instellingen > Privacy > Locatievoorzieningen > Zet Locatievoorzieningen aan en stel 'Bij gebruik van app' in voor Givt.";
 "FaqVraag10" = "Hoe verander ik mijn wachtwoord?";
 "FaqAntwoord10" = "Wanneer je je wachtwoord wilt wijzigen, kun je in het menu kiezen voor ‘Mijn gegevens’ en dan op de knop ‘Wachtwoord wijzigen’ drukken. Wij sturen je dan een e-mail met een link waarmee je je wachtwoord kunt wijzigen.";
 "EditPersonalSucces" = "Je persoonlijke gegevens zijn succesvol aangepast\n";
@@ -926,3 +926,20 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "UnregisterError" = "Helaas, we kunnen op dit moment je account niet opzeggen. Probeer je het later nog een keer?";
 "UnregisterMandateError" = "Helaas, we kunnen op dit moment je account niet opzeggen omdat het niet lukt om je machtiging op te zeggen. Neem aub contact op met ons.";
 "UnregisterErrorTitle" = "Opzeggen mislukt";
+"SetupRecurringGiftTitle" = "Regel instellen";
+
+/*Fuzzy*/
+"SetupRecurringGiftText_1-1" = "Ik wil graag elke";
+
+/*Fuzzy*/
+"SetupRecurringGiftText_2-1" = "op";
+"SetupRecurringGiftText_3" = "geven aan";
+"SetupRecurringGiftText_4" = "eindigend";
+"SetupRecurringGiftText_5" = "na";
+"SetupRecurringGiftText_6" = "keer.";
+"SetupRecurringGiftText_1-2" = "Ik wil graag elk";
+"SetupRecurringGiftText_2-2" = "op dag";
+"Add" = "Toevoegen";
+
+/*Fuzzy*/
+"MenuItem_FirstDestinationThenAmount" = "Geven aan een goed doel";
