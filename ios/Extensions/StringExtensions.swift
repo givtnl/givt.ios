@@ -90,11 +90,15 @@ extension String{
         }
     }
     
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
     var toDate : Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS"
         formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0) as TimeZone!
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
         if let date = formatter.date(from: self) {
             return date
         } else {

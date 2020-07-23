@@ -16,15 +16,15 @@ final class Mediater : MediaterProtocol {
     var handlers = [Any]()
     var postProcessors = [Any]()
     
-    func registerPreProcessor<P>(processor: P) where P : RequestPreProcessorProtocol {
+    func registerPreProcessor(processor: RequestProcessorProtocol) {
         preProcessors.append(processor)
     }
     
-    func registerPostProcessor<P>(processor: P) where P : RequestPostProcessorProtocol {
+    func registerPostProcessor(processor: RequestProcessorProtocol) {
         postProcessors.append(processor)
     }
     
-    func registerHandler<H>(handler: H) where H : RequestHandlerProtocol {
+    func registerHandler(handler: RequestProcessorProtocol) {
         handlers.append(handler)
     }
 
@@ -36,6 +36,9 @@ final class Mediater : MediaterProtocol {
             semaphore.signal()
         }
         semaphore.wait()
+        if response == nil {
+            throw MediaterError.handlerNotFound
+        }
         return response
     }
 

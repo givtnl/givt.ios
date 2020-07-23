@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-extension Mediater : MediaterWithContextProtocol {
-    func send<R>(request: R, withContext context: UIViewController) throws -> (R.TResponse) where R : RequestProtocol {
+extension Mediater : MediaterWithContextProtocol {    
+    public func send<R>(request: R, withContext context: UIViewController) throws -> (R.TResponse) where R : RequestProtocol {
         var response: R.TResponse!
         let semaphore = DispatchSemaphore.init(value: 1)
         try sendAsync(request: request, withContext: context) { innerResponse in
@@ -18,10 +18,16 @@ extension Mediater : MediaterWithContextProtocol {
             semaphore.signal()
         }
         semaphore.wait()
+        if response is ()? {
+            return () as! R.TResponse
+        }
+        if response == nil {
+            throw MediaterError.noResponse
+        }
         return response
     }
     
-    func sendAsync<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) -> Void) throws where R : RequestProtocol {
+    public func sendAsync<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) -> Void) throws where R : RequestProtocol {
         let handler = self.handlers.first { handler in
             if let handler = handler as? RequestHandlerWithContextProtocol {
                 return handler.canHandle(request: request)
@@ -71,6 +77,8 @@ extension Mediater : MediaterWithContextProtocol {
             }
             
             try preCompletion(request)
+        } else {
+            throw MediaterError.handlerNotFound
         }
     }
 }

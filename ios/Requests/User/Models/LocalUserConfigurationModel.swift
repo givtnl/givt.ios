@@ -8,6 +8,9 @@
 
 import Foundation
 
-public struct UserDetailModel {
+public struct LocalUserConfigurationModel {
+    var userId: UUID?
     var paymentType: PaymentType
+    var giftAidEnabled: Bool
+    var mandateSigned: Bool
 }

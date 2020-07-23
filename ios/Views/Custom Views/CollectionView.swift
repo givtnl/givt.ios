@@ -20,6 +20,18 @@ class CollectionView: UIControl {
     
     var isPreset: Bool = true;
     
+    var amount = "0" {
+        didSet {
+            amountLabel.text = amount
+        }
+    }
+    
+    var currency = "€" {
+        didSet {
+            currencySign.text = currency
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -40,6 +52,7 @@ class CollectionView: UIControl {
         collectLabel.adjustsFontSizeToFitWidth = true
         collectLabel.baselineAdjustment = .alignCenters
         amountLabel.baselineAdjustment = .alignCenters
+        amount = "0"
     }
     
     private var _isActive: Bool = false

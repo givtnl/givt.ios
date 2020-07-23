@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol MediaterWithContextProtocol {
+public protocol MediaterWithContextProtocol : MediaterProtocol {
     func send<R: RequestProtocol>(request: R, withContext context: UIViewController) throws -> (R.TResponse)
     func sendAsync<R: RequestProtocol>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) -> Void) throws
 }

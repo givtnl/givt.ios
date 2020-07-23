@@ -17,7 +17,7 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     var destinations = [DestinationViewModel]()
     var filteredDestinations = [DestinationViewModel]()
     var sections = [TableSection]()
-    var mediater: MediaterProtocol = Mediater.shared
+    var mediater: MediaterWithContextProtocol = Mediater.shared
     
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var titleText: UILabel!
@@ -154,8 +154,15 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     //MARK: nextButton
     @IBAction func nextButtonTapped(_ sender: Any) {
         do {
-            try mediater.send(request: OpenChooseAmountScene(name: "", mediumId: ""))
+            if let selectedCell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as? DestinationTableCell,
+               let mediumId = ((try mediater.send(request: GetCollectGroupsQuery())).first { $0.name == selectedCell.name })?.namespace {
+                try mediater.send(request: OpenChooseAmountRoute(name: selectedCell.name, mediumId: mediumId), withContext: self)
+            }
         } catch {}
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        try? mediater.send(request: BackToMainRoute(), withContext: self)
     }
     
     //MARK: tableFiltering
@@ -200,7 +207,7 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     }
     
     private func loadDestinations() {
-        let userDetail = try? mediater.send(request: GetUserDetailQuery())
+        let userDetail = try? mediater.send(request: GetLocalUserConfiguration())
         try? mediater.sendAsync(request: GetCollectGroupsQuery()) { response in
             self.destinations = response
                 .filter { $0.paymentType == userDetail?.paymentType } // only show destinations that the user can give to with his account
