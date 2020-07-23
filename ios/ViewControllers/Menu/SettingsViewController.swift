@@ -60,7 +60,7 @@ class SettingsViewController: BaseMenuViewController {
     
     override func loadItems(){
         items = []
-        let firstTargetThenAmount = Setting(name: "Jist no wie, ton oevele", image: UIImage(named:"help")!, callback: {self.startFirstTargetThenAmountFlow() })
+        let firstTargetThenAmount = Setting(name: "Doelbewust geven", image: UIImage(named:"help")!, callback: { self.startFirstDestinationThenAmountFlow() })
         let turnOnPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: UIImage(named: "amountpresets")!, callback: { self.setPresets() }, showArrow: true)
         
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
@@ -145,7 +145,7 @@ class SettingsViewController: BaseMenuViewController {
     private func toggleTorch() {
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
     }
-    private func startFirstTargetThenAmountFlow() {
+    private func startFirstDestinationThenAmountFlow() {
         let vc = UIStoryboard(name:"FirstDestinationThenAmount", bundle: nil).instantiateInitialViewController()
         vc?.modalPresentationStyle = .fullScreen
         vc?.transitioningDelegate = self.slideFromRightAnimation
