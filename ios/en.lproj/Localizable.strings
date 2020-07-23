@@ -926,3 +926,20 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterError" = "Alas, we are unable to unregister your account. Could you try again later?";
 "UnregisterMandateError" = "Alas, we are unable to unregister your account because we are unable to cancel your mandate or direct debit instruction. Please contact us.";
 "UnregisterErrorTitle" = "Terminate failed";
+"SetupRecurringGiftTitle" = "";
+
+/*Fuzzy*/
+"SetupRecurringGiftText_1-1" = "I want to give each";
+
+/*Fuzzy*/
+"SetupRecurringGiftText_2-1" = "on";
+"SetupRecurringGiftText_3" = "to";
+"SetupRecurringGiftText_4" = "ending";
+"SetupRecurringGiftText_5" = "after";
+"SetupRecurringGiftText_6" = "times.";
+"SetupRecurringGiftText_1-2" = "I want to give each";
+"SetupRecurringGiftText_2-2" = "on day";
+"Add" = "Add";
+
+/*Fuzzy*/
+"MenuItem_FirstDestinationThenAmount" = "Give to a good cause";
