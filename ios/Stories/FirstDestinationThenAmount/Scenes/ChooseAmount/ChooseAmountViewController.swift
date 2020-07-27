@@ -44,6 +44,7 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
         amountControl.collectLabel.isHidden = true
         amountControl.deleteBtn.isHidden = true
         amountControl.currency = UserDefaults.standard.currencySymbol
+        amountControl.isActive = true
         
         giveButton.labelText.text = NSLocalizedString("Give", comment: "Button to give")
         giveButton.labelText.adjustsFontSizeToFitWidth = true
