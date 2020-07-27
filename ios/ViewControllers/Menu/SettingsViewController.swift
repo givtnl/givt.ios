@@ -61,6 +61,9 @@ class SettingsViewController: BaseMenuViewController {
     override func loadItems(){
         items = []
         let firstDestinationThenAmount = Setting(name: "MenuItem_FirstDestinationThenAmount".localized, image: UIImage(named:"hand-holding-heart")!, callback: { self.startFirstDestinationThenAmountFlow() })
+        
+        let setupRecurringGift = Setting(name: "Iederne moand ekji", image: UIImage(named:"hand-holding-heart")!, callback: { self.setupRecurringDonation() })
+        
         let turnOnPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: UIImage(named: "amountpresets")!, callback: { self.setPresets() }, showArrow: true)
         
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
@@ -84,6 +87,7 @@ class SettingsViewController: BaseMenuViewController {
             items.append([])
             
             items[0].append(firstDestinationThenAmount)
+            items[0].append(setupRecurringGift)
 
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[1].append(givts)
@@ -148,6 +152,16 @@ class SettingsViewController: BaseMenuViewController {
     }
     private func startFirstDestinationThenAmountFlow() {
         let vc = UIStoryboard(name:"FirstDestinationThenAmount", bundle: nil).instantiateInitialViewController()
+        vc?.modalPresentationStyle = .fullScreen
+        vc?.transitioningDelegate = self.slideFromRightAnimation
+        DispatchQueue.main.async {
+           self.hideMenuAnimated() {
+               self.present(vc!, animated: true, completion:  nil)
+           }
+       }
+    }
+    private func setupRecurringDonation() {
+        let vc = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController()
         vc?.modalPresentationStyle = .fullScreen
         vc?.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
