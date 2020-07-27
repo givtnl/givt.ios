@@ -519,7 +519,7 @@
                                             <action selector="giveButtonTouchDragOutside:" destination="d4b-JG-Fkt" eventType="touchDragOutside" id="emG-I6-92a"/>
                                         </connections>
                                     </button>
-                                    <view tag="1" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-XT-tmy" userLabel="Amount" customClass="CollectionView" customModule="ios" customModuleProvider="target">
+                                    <view tag="1" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-XT-tmy" userLabel="Amount" customClass="CollectionView" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="20" y="56" width="374" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
