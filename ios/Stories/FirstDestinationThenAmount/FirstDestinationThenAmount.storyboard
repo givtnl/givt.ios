@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KHk-Y6-8db">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KHk-Y6-8db">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -520,22 +520,27 @@
                                         </connections>
                                     </button>
                                     <view tag="1" contentMode="scaleToFill" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iDc-XT-tmy" userLabel="Amount" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="56" width="374" height="85.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="20" y="56" width="374" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="vES-9M-ZmV"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="c4d-uX-cBk" firstAttribute="leading" secondItem="vOq-fm-RGO" secondAttribute="leading" id="2aj-p9-aP1"/>
+                                    <constraint firstItem="iDc-XT-tmy" firstAttribute="top" secondItem="aCs-dN-8yS" secondAttribute="bottom" constant="20" id="59i-GJ-Nog"/>
                                     <constraint firstAttribute="bottom" secondItem="c4d-uX-cBk" secondAttribute="bottom" id="8Bq-m8-uOh"/>
                                     <constraint firstItem="aCs-dN-8yS" firstAttribute="top" secondItem="vOq-fm-RGO" secondAttribute="top" id="DOq-6F-Afl"/>
+                                    <constraint firstAttribute="trailing" secondItem="iDc-XT-tmy" secondAttribute="trailing" constant="20" id="IXg-B3-LdN"/>
                                     <constraint firstItem="aCs-dN-8yS" firstAttribute="leading" secondItem="vOq-fm-RGO" secondAttribute="leading" constant="22" id="IjP-3A-f1p"/>
                                     <constraint firstItem="HXO-C3-ng4" firstAttribute="width" secondItem="vOq-fm-RGO" secondAttribute="width" multiplier="0.45" id="Lxf-VR-5WL"/>
                                     <constraint firstAttribute="trailing" secondItem="aCs-dN-8yS" secondAttribute="trailing" constant="22" id="Nv5-GW-5ly"/>
                                     <constraint firstAttribute="trailing" secondItem="HXO-C3-ng4" secondAttribute="trailing" constant="22" id="d12-FM-lD6"/>
                                     <constraint firstItem="c4d-uX-cBk" firstAttribute="top" secondItem="HXO-C3-ng4" secondAttribute="bottom" constant="20" id="dD7-yb-kxS"/>
                                     <constraint firstItem="c4d-uX-cBk" firstAttribute="height" secondItem="vOq-fm-RGO" secondAttribute="height" multiplier="0.42" id="pIh-a7-p3d"/>
+                                    <constraint firstItem="iDc-XT-tmy" firstAttribute="leading" secondItem="vOq-fm-RGO" secondAttribute="leading" constant="20" id="qHX-Sx-v7a"/>
                                     <constraint firstAttribute="trailing" secondItem="c4d-uX-cBk" secondAttribute="trailing" id="u0b-Lq-p69"/>
                                 </constraints>
                             </view>
