@@ -8,10 +8,10 @@
 
 import Foundation
 
-class SetupRecurringDonationBackToChooseDestinationRoute : NoResponseRequest {
-    var amount: String = "0"
+public class SetupRecurringDonationBackToChooseDestinationRoute : NoResponseRequest {
+    var mediumId: String
     
-    init(amount: String) {
-        self.amount = amount
+    init(mediumId: String) {
+        self.mediumId = mediumId
     }
 }

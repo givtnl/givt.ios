@@ -154,7 +154,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         do {
             if let selectedCell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as? DestinationTableCell,
                let mediumId = ((try mediater.send(request: GetCollectGroupsQuery())).first { $0.name == selectedCell.name })?.namespace {
-                try mediater.send(request: OpenChooseAmountRoute(name: selectedCell.name, mediumId: mediumId), withContext: self)
+                try mediater.send(request: SetupRecurringDonationOpenSubscriptionRoute(name: selectedCell.name, mediumId: mediumId), withContext: self)
             }
         } catch {}
     }

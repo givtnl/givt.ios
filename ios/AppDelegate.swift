@@ -240,5 +240,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Mediater.shared.registerHandler(handler: GoToSafariRouteHandler())
         Mediater.shared.registerHandler(handler: FinalizeGivingRouteHandler())
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
+        
+        // Flow: SetupRecurringSubscription
+        // -- Navigation
+        Mediater.shared.registerHandler(handler: SetupRecurringDonationOpenChooseSubscriptionHandler())
+        Mediater.shared.registerHandler(handler: SetupRecurringDonationOpenChooseAmountRouteHandler())
+        Mediater.shared.registerHandler(handler: SetupRecurringDonationBackToChooseDestinationRouteHandler())
+        
+        // -- Commands
+        Mediater.shared.registerPreProcessor(processor: CreateSubscriptionCommandPreHandler())
+        Mediater.shared.registerHandler(handler: CreateSubscriptionCommandHandler())
+        
+        
     }
 }
