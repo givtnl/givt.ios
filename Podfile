@@ -14,6 +14,8 @@ target 'ios' do
   pod 'MaterialShowcase', '0.6.6'
   pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift.git', :tag => 'v4.3.1'
   pod 'AppCenter/Push'
+  pod 'SwiftCron'
+
   # Pods for ios
 
 end
