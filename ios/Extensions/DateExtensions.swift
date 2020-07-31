@@ -63,4 +63,12 @@ extension Date {
         df.locale = Locale(identifier: "en_US_POSIX")
         return df.string(from: self)
     }
+    static let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMMM yyyy"
+        return formatter
+    }()
+    var formatted: String {
+        return Date.formatter.string(from: self)
+    }
 }
