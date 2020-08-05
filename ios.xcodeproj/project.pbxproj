@@ -23,6 +23,8 @@
 		320CF72724CEDF6B008B3EDE /* SetupRecurringDonationChooseSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseSubscriptionViewController.swift */; };
 		320CF72A24CEF1D3008B3EDE /* OpenChooseSubscriptionRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72924CEF1D3008B3EDE /* OpenChooseSubscriptionRoute.swift */; };
 		320CF72C24CEF1E6008B3EDE /* OpenChooseSubscriptionRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72B24CEF1E6008B3EDE /* OpenChooseSubscriptionRouteHandler.swift */; };
+		3211FB6E24D95BBE00351BC4 /* VerySpecialUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211FB6D24D95BBE00351BC4 /* VerySpecialUITextField.swift */; };
+		3211FB7124D95C1000351BC4 /* VerySpecialUITextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3211FB7024D95C1000351BC4 /* VerySpecialUITextField.xib */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */; };
 		32CA179D24CECB9500248053 /* SetupRecurringDonation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */; };
@@ -38,7 +40,6 @@
 		32D4852E24D0445200F821A5 /* CreateSubscriptionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4852D24D0445200F821A5 /* CreateSubscriptionCommand.swift */; };
 		32D4853124D0459C00F821A5 /* CreateSubscriptionCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853024D0459C00F821A5 /* CreateSubscriptionCommandHandler.swift */; };
 		32D4853324D0477000F821A5 /* CreateSubscriptionCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateSubscriptionCommandPreHandler.swift */; };
-		32D4853524D0590800F821A5 /* CronExpressionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853424D0590800F821A5 /* CronExpressionError.swift */; };
 		A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C296222AA5EF70098442C /* GiftAidViewController.swift */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
@@ -302,6 +303,8 @@
 		320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseSubscriptionViewController.swift; sourceTree = "<group>"; };
 		320CF72924CEF1D3008B3EDE /* OpenChooseSubscriptionRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseSubscriptionRoute.swift; sourceTree = "<group>"; };
 		320CF72B24CEF1E6008B3EDE /* OpenChooseSubscriptionRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseSubscriptionRouteHandler.swift; sourceTree = "<group>"; };
+		3211FB6D24D95BBE00351BC4 /* VerySpecialUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerySpecialUITextField.swift; sourceTree = "<group>"; };
+		3211FB7024D95C1000351BC4 /* VerySpecialUITextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerySpecialUITextField.xib; sourceTree = "<group>"; };
 		32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupRecurringDonation.storyboard; sourceTree = "<group>"; };
 		32CA179E24CECBFC00248053 /* SetupRecurringDonationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationNavigationController.swift; sourceTree = "<group>"; };
@@ -316,7 +319,6 @@
 		32D4852D24D0445200F821A5 /* CreateSubscriptionCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubscriptionCommand.swift; sourceTree = "<group>"; };
 		32D4853024D0459C00F821A5 /* CreateSubscriptionCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubscriptionCommandHandler.swift; sourceTree = "<group>"; };
 		32D4853224D0477000F821A5 /* CreateSubscriptionCommandPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubscriptionCommandPreHandler.swift; sourceTree = "<group>"; };
-		32D4853424D0590800F821A5 /* CronExpressionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronExpressionError.swift; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A40C296222AA5EF70098442C /* GiftAidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidViewController.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 		320CF72524CEDF37008B3EDE /* ChooseSubscription */ = {
 			isa = PBXGroup;
 			children = (
+				3211FB6F24D95BCA00351BC4 /* Subviews */,
 				320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseSubscriptionViewController.swift */,
 			);
 			path = ChooseSubscription;
@@ -591,6 +594,15 @@
 				320CF72B24CEF1E6008B3EDE /* OpenChooseSubscriptionRouteHandler.swift */,
 			);
 			path = OpenChooseSubscription;
+			sourceTree = "<group>";
+		};
+		3211FB6F24D95BCA00351BC4 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				3211FB6D24D95BBE00351BC4 /* VerySpecialUITextField.swift */,
+				3211FB7024D95C1000351BC4 /* VerySpecialUITextField.xib */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		32CA179B24CECAB900248053 /* SetupRecurringDonation */ = {
@@ -1360,7 +1372,6 @@
 				FBC1857924C0647C001A4C6B /* NotLoggedInError.swift */,
 				FB872FFE24C809EF005FF355 /* DonationError.swift */,
 				FB87302924C881D9005FF355 /* SafariError.swift */,
-				32D4853424D0590800F821A5 /* CronExpressionError.swift */,
 			);
 			path = Errors;
 			sourceTree = "<group>";
@@ -1623,6 +1634,7 @@
 				D7B715501FD0529D00666262 /* Personal.storyboard in Resources */,
 				FBA0894A21C7DE18001DD889 /* Features.storyboard in Resources */,
 				D74C19E820F6270F00E116A0 /* ExternalSuggestion.storyboard in Resources */,
+				3211FB7124D95C1000351BC4 /* VerySpecialUITextField.xib in Resources */,
 				D761E9B51F18B602002B849B /* zocial-regular-webfont.ttf in Resources */,
 				D7AF42FF1FEA61610027EEC1 /* UpdatedTermsPage.storyboard in Resources */,
 				27A0E4E3221EC7E800982842 /* PresetButton.xib in Resources */,
@@ -1883,7 +1895,6 @@
 				D796043620C00607005B609B /* BeaconService.swift in Sources */,
 				DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */,
 				FB872FF524C6EC58005FF355 /* BackToMainRouteHandler.swift in Sources */,
-				32D4853524D0590800F821A5 /* CronExpressionError.swift in Sources */,
 				DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */,
 				FB58BCD1230AD361001B1B9C /* MediumHelper.swift in Sources */,
 				A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */,
@@ -1925,6 +1936,7 @@
 				FBC1859324C06716001A4C6B /* CollectGroupType.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
 				D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */,
+				3211FB6E24D95BBE00351BC4 /* VerySpecialUITextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
