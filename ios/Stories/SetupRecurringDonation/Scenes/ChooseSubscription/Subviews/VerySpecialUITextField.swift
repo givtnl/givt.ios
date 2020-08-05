@@ -21,11 +21,21 @@ class VerySpecialUITextField: UIView {
 
     @IBOutlet weak var bottomBorderView: UIView!
     
-    var isPreset: Bool = true;
-    
-    var amount = "0" {
-        didSet {
-            amountLabel.text = amount
+    private var numberFormatter: NumberFormatter!
+    var amount: Decimal {
+        set {
+            amountLabel.text = String(format: "%.2f", String(describing: newValue))
+        }
+        get {
+            if let _ = numberFormatter.number(from: amountLabel.text!) {
+                if let amountDouble = Decimal(string: amountLabel.text!, locale: Locale.current){
+                    return amountDouble
+                } else {
+                    return 0
+                }
+            } else {
+                return 0
+            }
         }
     }
     
@@ -80,7 +90,9 @@ class VerySpecialUITextField: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 //        amountLabel.baselineAdjustment = .alignCenters
-        amount = "0"
+        numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale.current
+        numberFormatter.numberStyle = .decimal
     }
     
     private var _isValid: Bool = true

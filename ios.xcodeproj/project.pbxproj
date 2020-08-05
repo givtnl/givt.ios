@@ -25,6 +25,7 @@
 		320CF72C24CEF1E6008B3EDE /* OpenChooseSubscriptionRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72B24CEF1E6008B3EDE /* OpenChooseSubscriptionRouteHandler.swift */; };
 		3211FB6E24D95BBE00351BC4 /* VerySpecialUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211FB6D24D95BBE00351BC4 /* VerySpecialUITextField.swift */; };
 		3211FB7124D95C1000351BC4 /* VerySpecialUITextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3211FB7024D95C1000351BC4 /* VerySpecialUITextField.xib */; };
+		3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450824DB0206003CF5CF /* ColorHelper.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */; };
 		32CA179D24CECB9500248053 /* SetupRecurringDonation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */; };
@@ -302,6 +303,7 @@
 		320CF72B24CEF1E6008B3EDE /* OpenChooseSubscriptionRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseSubscriptionRouteHandler.swift; sourceTree = "<group>"; };
 		3211FB6D24D95BBE00351BC4 /* VerySpecialUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerySpecialUITextField.swift; sourceTree = "<group>"; };
 		3211FB7024D95C1000351BC4 /* VerySpecialUITextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerySpecialUITextField.xib; sourceTree = "<group>"; };
+		3232450824DB0206003CF5CF /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupRecurringDonation.storyboard; sourceTree = "<group>"; };
 		32CA179E24CECBFC00248053 /* SetupRecurringDonationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationNavigationController.swift; sourceTree = "<group>"; };
@@ -858,6 +860,7 @@
 				D7D6FA6D1F7BE423008A5604 /* ValidationHelper.swift */,
 				FB7F33FA22254E5A00482E2C /* ErrorHandlingHelper.swift */,
 				FB58BCD0230AD361001B1B9C /* MediumHelper.swift */,
+				3232450824DB0206003CF5CF /* ColorHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1849,6 +1852,7 @@
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
+				3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */,
 				D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */,
 				27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */,
 				D7F0D2A521639544004770F8 /* NotificationExtensions.swift in Sources */,
