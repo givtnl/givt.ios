@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="activeMarker" destination="21P-Ri-B5Z" id="kMs-ls-Cwj"/>
                 <outlet property="amountLabel" destination="jH6-ir-lcY" id="Zx1-eE-QJo"/>
+                <outlet property="bottomBorderView" destination="21P-Ri-B5Z" id="aqD-c5-KhR"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="WRN-7i-K5W"/>
                 <outlet property="currencySign" destination="PmE-b0-l3P" id="rah-Ie-17Q"/>
                 <outlet property="currencyView" destination="Ga4-gA-UmI" id="sEg-eF-duv"/>
