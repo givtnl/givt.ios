@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerySpecialUITextField" customModule="ios">
+            <connections>
+                <outlet property="activeMarker" destination="21P-Ri-B5Z" id="kMs-ls-Cwj"/>
+                <outlet property="amountLabel" destination="jH6-ir-lcY" id="Zx1-eE-QJo"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="WRN-7i-K5W"/>
+                <outlet property="currencySign" destination="PmE-b0-l3P" id="rah-Ie-17Q"/>
+                <outlet property="currencyView" destination="Ga4-gA-UmI" id="sEg-eF-duv"/>
+                <outlet property="stackView" destination="Sit-GE-0gf" id="kMq-xf-XHZ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleAspectFit" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="502" height="110"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sit-GE-0gf">
+                    <rect key="frame" x="0.0" y="0.0" width="502" height="110"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ga4-gA-UmI">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="110"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmE-b0-l3P">
+                                    <rect key="frame" x="20" y="0.0" width="80" height="110"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                    <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="PmE-b0-l3P" firstAttribute="leading" secondItem="Ga4-gA-UmI" secondAttribute="leading" constant="20" id="U7j-HX-2r7"/>
+                                <constraint firstAttribute="trailing" secondItem="PmE-b0-l3P" secondAttribute="trailing" id="X2a-A5-62R"/>
+                                <constraint firstAttribute="bottom" secondItem="PmE-b0-l3P" secondAttribute="bottom" id="YG8-Dj-fAN"/>
+                                <constraint firstItem="PmE-b0-l3P" firstAttribute="top" secondItem="Ga4-gA-UmI" secondAttribute="top" id="d3g-Sf-Ef8"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ovl-6Y-pKg">
+                            <rect key="frame" x="100" y="0.0" width="402" height="110"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jH6-ir-lcY">
+                                    <rect key="frame" x="20" y="0.0" width="362" height="110"/>
+                                    <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="jH6-ir-lcY" firstAttribute="leading" secondItem="Ovl-6Y-pKg" secondAttribute="leading" constant="20" id="19Y-6r-SGB"/>
+                                <constraint firstAttribute="bottom" secondItem="jH6-ir-lcY" secondAttribute="bottom" id="8zF-cn-Y3h"/>
+                                <constraint firstAttribute="trailing" secondItem="jH6-ir-lcY" secondAttribute="trailing" constant="20" id="b8Y-2E-4uM"/>
+                                <constraint firstItem="jH6-ir-lcY" firstAttribute="top" secondItem="Ovl-6Y-pKg" secondAttribute="top" id="eZd-Wo-JfA"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21P-Ri-B5Z">
+                    <rect key="frame" x="0.0" y="107" width="502" height="3"/>
+                    <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="Lw0-Yr-W5g"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="3" id="Z0r-IM-nK9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="21P-Ri-B5Z" secondAttribute="trailing" id="6ZT-Lh-wjF"/>
+                <constraint firstItem="21P-Ri-B5Z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8Av-mJ-8jJ"/>
+                <constraint firstItem="Sit-GE-0gf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9uq-wJ-VDn"/>
+                <constraint firstItem="Sit-GE-0gf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AY1-ya-cdQ"/>
+                <constraint firstAttribute="bottom" secondItem="21P-Ri-B5Z" secondAttribute="bottom" id="UU8-DG-58A"/>
+                <constraint firstAttribute="trailing" secondItem="Sit-GE-0gf" secondAttribute="trailing" id="mR1-Zi-pOQ"/>
+                <constraint firstAttribute="bottom" secondItem="Sit-GE-0gf" secondAttribute="bottom" id="uof-bb-prP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="201.44927536231884" y="-23.4375"/>
+        </view>
+    </objects>
+</document>

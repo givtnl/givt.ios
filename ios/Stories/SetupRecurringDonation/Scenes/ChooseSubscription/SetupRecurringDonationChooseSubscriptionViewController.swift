@@ -15,36 +15,31 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     
     @IBOutlet var navBar: UINavigationItem!
     @IBOutlet weak var backButton: UIBarButtonItem!
-    @IBOutlet var titleText: UILabel!
     
     @IBOutlet weak var mainStackView: UIStackView!
-    
-    @IBOutlet weak var startDateButton: UIButton!
-    @IBOutlet weak var startDatePicker: UIDatePicker!
-    @IBOutlet weak var startDateLabel: CustomUITextField!
-    
+
+    @IBOutlet weak var frequencyLabel: CustomUITextField!
     @IBOutlet weak var frequencyButton: UIButton!
     @IBOutlet weak var frequencyPicker: UIPickerView!
-    @IBOutlet weak var frequencyLabel: CustomUITextField!
     
-    @IBOutlet weak var endDateButton: UIButton!
-    @IBOutlet weak var endDatePicker: UIDatePicker!
-    @IBOutlet weak var endDateLabel: CustomUITextField!
+    @IBOutlet weak var startDateLabel: CustomUITextField!
+    @IBOutlet weak var startDateButton: UIButton!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
     
-    @IBOutlet weak var repeatXtimesTextField: CustomUITextField!
+    @IBOutlet weak var frequencyTextField: CustomUITextField!
     
     var input: SetupRecurringDonationOpenSubscriptionRoute!
     
     private var pickers: Array<Any> = [Any]()
-    private let frequencys: Array<Array<Any>> = [[Frequency.Monthly, "Maandelijks"], [Frequency.Yearly, "Jaarlijks"], [Frequency.ThreeMonthly, "3 maandelijks"]]
+    private let frequencys: Array<Array<Any>> = [[Frequency.Monthly, "Maand"], [Frequency.Yearly, "Jaar"], [Frequency.ThreeMonthly, "Kwartaal"]]
+    
     private let animationDuration = 0.4
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupStartDatePicker()
         setupFrequencyPicker()
-        setupEndDatePicker()
-        setupRepeatXtimesTextField(frequency: .Monthly)
     }
     @IBAction func openStartDatePicker(_ sender: Any) {
         if (startDatePicker.isHidden) {
@@ -92,28 +87,6 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         }
     }
     
-    @IBAction func openEndDatePicker(_ sender: Any) {
-        if (endDatePicker.isHidden) {
-            closeAllOpenPickerViews()
-            UIView.animate(
-                withDuration: animationDuration,
-                delay: 0.0,
-                options: [.curveEaseOut],
-                animations: {
-                    self.endDatePicker.isHidden = false
-                    self.endDatePicker.alpha = 1
-            })
-        } else {
-            UIView.animate(
-                withDuration: animationDuration,
-                delay: 0.0,
-                options: [.curveEaseOut],
-                animations: {
-                    self.endDatePicker.isHidden = true
-                    self.endDatePicker.alpha = 0
-            })
-        }
-    }
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: SetupRecurringDonationBackToChooseDestinationRoute(mediumId: input.mediumId), withContext: self)
     }
@@ -130,40 +103,15 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
             } catch { }
         }
     }
-    private func calculateNumberOfOccurencesBetweenDates(frequency: Frequency) -> Int {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = "dd MMMM yyyy"
-        if let startDate = dateFormatter.date(from:startDateLabel.text!) {
-            if let endDate = dateFormatter.date(from:endDateLabel.text!) {
-                return getFrequencyBetweenDates(startDate: startDate, endDate: endDate, frequency: frequency)
-            }
-        }
-        return -1
-    }
-    private func getFrequencyBetweenDates(startDate: Date, endDate: Date, frequency: Frequency ) -> Int {
-        let calendar = Calendar.current
-        switch frequency {
-        case .Monthly:
-            let components = calendar.dateComponents([.month], from: startDate, to: endDate)
-            return components.month!
-        case .ThreeMonthly:
-            let components = calendar.dateComponents([.month], from: startDate, to: endDate)
-            return components.month! / 3
-        case .Yearly:
-            let components = calendar.dateComponents([.year], from: startDate, to: endDate)
-            return components.year!
-        }
-    }
+
+
     private func setupStartDatePicker() {
         startDatePicker.datePickerMode = .date
         let givtPurpleUIColor = UIColor.init(rgb: 0x2c2b57)
         startDatePicker.setValue(givtPurpleUIColor, forKeyPath: "textColor")
         startDatePicker.setValue(false, forKeyPath: "highlightsToday")
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
-        let currentDate = Date()
-        endDatePicker.date = currentDate
-        endDateLabel.text = currentDate.formatted
+        
         pickers.append(startDatePicker)
         
     }
@@ -175,31 +123,11 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         pickers.append(frequencyPicker)
         
     }
-    private func setupEndDatePicker() {
-        endDatePicker.datePickerMode = .date
-        let givtPurpleUIColor = UIColor.init(rgb: 0x2c2b57)
-        endDatePicker.setValue(givtPurpleUIColor, forKeyPath: "textColor")
-        endDatePicker.setValue(false, forKeyPath: "highlightsToday")
-        endDatePicker.addTarget(self, action: #selector(handleEndDatePicker), for: .valueChanged)
-        let currentDate = Date()
-        var dateComponent = DateComponents()
-        dateComponent.year = 1
-        if let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate) {
-            endDatePicker.date = futureDate
-            endDateLabel.text = futureDate.formatted
-        }
-        pickers.append(endDatePicker)
-    }
+    
     @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
-        let frequency = frequencys[frequencyPicker.selectedRow(inComponent: 0)][0] as! Frequency
         startDateLabel.text = datePicker.date.formatted
-        setupRepeatXtimesTextField(frequency: frequency)
     }
-    @objc func handleEndDatePicker(_ datePicker: UIDatePicker) {
-        let frequency = frequencys[frequencyPicker.selectedRow(inComponent: 0)][0] as! Frequency
-        endDateLabel.text = datePicker.date.formatted
-        setupRepeatXtimesTextField(frequency: frequency)
-    }
+    
     private func closeAllOpenPickerViews() {
         for picker in pickers {
             if picker is UIDatePicker {
@@ -228,9 +156,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
             }
         }
     }
-    private func setupRepeatXtimesTextField(frequency: Frequency) {
-        repeatXtimesTextField.text = String(calculateNumberOfOccurencesBetweenDates(frequency: frequency))
-    }
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -247,7 +173,6 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let freq = frequencys[row][0] as! Frequency
-        setupRepeatXtimesTextField(frequency: freq)
         if let frequency = frequencys[row] as? Array<Any> {
             self.frequencyLabel.text = frequency[1] as? String
         }
