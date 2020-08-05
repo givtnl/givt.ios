@@ -11,9 +11,11 @@ import Foundation
 public class SetupRecurringDonationOpenSubscriptionRoute : NoResponseRequest {
     var name: String
     var mediumId: String
+    var orgType: CollectGroupType
     
-    init (name: String, mediumId: String) {
+    init (name: String, mediumId: String, orgType: CollectGroupType) {
         self.name = name
         self.mediumId = mediumId
+        self.orgType = orgType
     }
 }
