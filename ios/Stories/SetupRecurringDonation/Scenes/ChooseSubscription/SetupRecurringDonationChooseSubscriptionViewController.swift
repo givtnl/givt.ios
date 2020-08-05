@@ -9,14 +9,14 @@
 import UIKit
 import SwiftCron
 
-class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
     @IBOutlet var navBar: UINavigationItem!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
-    @IBOutlet weak var amountView: VerySpecialUITextField!
+    @IBOutlet weak var amountView: VerySpecialUITextField! { didSet { amountView.amountLabel.delegate = self } }
     @IBOutlet weak var collectGroupNameTextView: VerySpecialUITextField!
     
     @IBOutlet weak var mainStackView: UIStackView!
@@ -30,6 +30,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     @IBOutlet weak var startDatePicker: UIDatePicker!
     
     @IBOutlet weak var occurencesTextField: CustomUITextField!
+    @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     
     var input: SetupRecurringDonationOpenSubscriptionRoute!
     
@@ -41,14 +42,14 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // get the currency symbol from user settings
-        amountView.currency = UserDefaults.standard.currencySymbol
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
         
-        // setup stuff
+        setupAmountView()
         setupCollectGroupNameView()
-        // setup pickers
         setupStartDatePicker()
         setupFrequencyPicker()
+        setupOccurencsView()
     }
     @IBAction func openStartDatePicker(_ sender: Any) {
         if (startDatePicker.isHidden) {
@@ -112,42 +113,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
             } catch { }
         }
     }
-    
-    
-    
-    
-    @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
-        startDateLabel.text = datePicker.date.formatted
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return frequencys.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if let frequency = frequencys[row] as? Array<Any> {
-            return frequency[1] as? String
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let freq = frequencys[row][0] as! Frequency
-        if let frequency = frequencys[row] as? Array<Any> {
-            self.frequencyLabel.text = frequency[1] as? String
-        }
-        pickerView.reloadAllComponents()
-    }
-    private enum Frequency {
-        case Monthly
-        case ThreeMonthly
-        case Yearly
-    }
 }
-
 
 extension SetupRecurringDonationChooseSubscriptionViewController {
     private func setupCollectGroupNameView() {
@@ -159,16 +125,16 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         var bottomBorderColor: UIColor
         
         switch input.orgType {
-            case .church:
-                bottomBorderColor = #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1)
-            case .charity:
-                bottomBorderColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
-            case .campaign:
-                bottomBorderColor = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
-            case .artist:
-                bottomBorderColor = #colorLiteral(red: 1, green: 1, blue: 0.4798561128, alpha: 1)
-            default:
-                bottomBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        case .church:
+            bottomBorderColor = ColorHelper.GivtBlue
+        case .charity:
+            bottomBorderColor = ColorHelper.GivtOrange
+        case .campaign:
+            bottomBorderColor = ColorHelper.GivtRed
+        case .artist:
+            bottomBorderColor = ColorHelper.GivtGreen
+        default:
+            bottomBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         }
         
         collectGroupNameTextView.bottomBorderColor = bottomBorderColor
@@ -183,13 +149,45 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         pickers.append(startDatePicker)
         
     }
+    @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
+        startDateLabel.text = datePicker.date.formatted
+    }
     private func setupFrequencyPicker() {
         let givtPurpleUIColor = UIColor.init(rgb: 0x2c2b57)
         frequencyPicker.setValue(givtPurpleUIColor, forKeyPath: "textColor")
         frequencyPicker.dataSource = self
         frequencyPicker.delegate = self
         pickers.append(frequencyPicker)
+    }
+    
+    private func setupAmountView() {
+        // get the currency symbol from user settingsf
+        amountView.currency = UserDefaults.standard.currencySymbol
+        amountView.amountLabel.text = "0"
         
+        // setup event handlers
+        amountView.amountLabel.addTarget(self, action: #selector(handleAmountEditingChanged), for: .editingChanged)
+        amountView.amountLabel.addTarget(self, action: #selector(handleAmountEditingDidBegin), for: .editingDidBegin)
+        // setup toolbar for the keyboard
+        createToolbar(amountView.amountLabel)
+        // set number keypad
+        amountView.amountLabel.keyboardType = .decimalPad
+    }
+    @objc func handleAmountEditingChanged() {
+        if(amountView.amount >= 0.5) {
+            amountView.bottomBorderColor = ColorHelper.GivtGreen
+        } else if (amountView.amount > Decimal(UserDefaults.standard.amountLimit) || amountView.amount < 0.5) {
+            amountView.bottomBorderColor = ColorHelper.GivtRed
+        }
+    }
+    @objc func handleAmountEditingDidBegin() {
+        if(amountView.amount == 0) {
+            amountView.bottomBorderColor = .clear
+        }
+    }
+    private func setupOccurencsView() {
+        createToolbar(occurencesTextField)
+        occurencesTextField.keyboardType = .numberPad
     }
     private func closeAllOpenPickerViews() {
         for picker in pickers {
@@ -218,5 +216,62 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
                 }
             }
         }
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return frequencys.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return frequencys[row][1] as! String
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.frequencyLabel.text = frequencys[row][1] as! String
+        pickerView.reloadAllComponents()
+    }
+    private enum Frequency {
+        case Monthly
+        case ThreeMonthly
+        case Yearly
+    }
+    func createToolbar(_ textField: UITextField) {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideKeyboard))
+        
+        toolbar.setItems([doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        
+        textField.inputAccessoryView = toolbar
+    }
+    
+    @objc func hideKeyboard(){
+        self.view.endEditing(true)
+    }
+    @objc func keyboardWillShow(notification:NSNotification){
+        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
+        
+        if #available(iOS 11.0, *) {
+            bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom
+        } else {
+            bottomScrollViewConstraint.constant = keyboardFrame.size.height
+        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    @objc func keyboardWillHide(notification:NSNotification){
+        bottomScrollViewConstraint.constant = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 }

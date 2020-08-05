@@ -376,13 +376,13 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9G-k1-NdZ">
                                                                         <rect key="frame" x="0.0" y="248" width="374" height="44"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OmU-h5-Y4I" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OmU-h5-Y4I" customClass="CustomUITextField" customModule="ios" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="80" id="bcO-Ci-CcS"/>
                                                                                     <constraint firstAttribute="height" constant="44" id="cp3-NR-d6T"/>
                                                                                 </constraints>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                                                                 <textInputTraits key="textInputTraits"/>
                                                                             </textField>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="maanden" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acb-w8-OIu">
@@ -496,6 +496,7 @@
                     <connections>
                         <outlet property="amountView" destination="Skb-Hx-MDj" id="LpP-dw-Xvg"/>
                         <outlet property="backButton" destination="21A-8R-8IW" id="OjT-8m-vHB"/>
+                        <outlet property="bottomScrollViewConstraint" destination="63x-bS-6Ak" id="YnE-Jd-sX0"/>
                         <outlet property="collectGroupNameTextView" destination="lDx-DY-AtB" id="WF4-1w-5Cw"/>
                         <outlet property="frequencyButton" destination="mIz-dt-G6N" id="jdN-1Z-Vcd"/>
                         <outlet property="frequencyLabel" destination="phc-si-YWc" id="GGS-KL-oxh"/>
