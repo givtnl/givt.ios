@@ -13,7 +13,7 @@ class CreateSubscriptionCommand : Codable, RequestProtocol {
     typealias TResponse = Bool
     
     var userId: UUID? = nil
-    let amountPerTurn: Int
+    let amountPerTurn: Decimal
     let nameSpace: String
     let endsAfterTurns: Int
     let cronExpression: String
@@ -26,7 +26,7 @@ class CreateSubscriptionCommand : Codable, RequestProtocol {
         case cronExpression
     }
     
-    internal init(amountPerTurn: Int, nameSpace: String, endsAfterTurns: Int, cronExpression: String) {
+    internal init(amountPerTurn: Decimal, nameSpace: String, endsAfterTurns: Int, cronExpression: String) {
         self.amountPerTurn = amountPerTurn
         self.nameSpace = nameSpace
         self.endsAfterTurns = endsAfterTurns
