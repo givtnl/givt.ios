@@ -38,7 +38,13 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     private let frequencys: Array<Array<Any>> = [[Frequency.Monthly, "Maand", "maanden"], [Frequency.Yearly, "Jaar", "jaren"], [Frequency.ThreeMonthly, "Kwartaal", "kwartalen"]]
     
     private let animationDuration = 0.4
-    
+    private var decimalNotation: String! = "," {
+        didSet {
+            let fmt = NumberFormatter()
+            fmt.minimumFractionDigits = 2
+            fmt.minimumIntegerDigits = 1
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -168,6 +174,8 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         // setup event handlers
         amountView.amountLabel.addTarget(self, action: #selector(handleAmountEditingChanged), for: .editingChanged)
         amountView.amountLabel.addTarget(self, action: #selector(handleAmountEditingDidBegin), for: .editingDidBegin)
+        amountView.amountLabel.addTarget(self, action: #selector(handleAmountEditingDidEnd), for: .editingDidEnd)
+        
         // setup toolbar for the keyboard
         createToolbar(amountView.amountLabel)
         // set number keypad
@@ -176,6 +184,8 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
     @objc func handleAmountEditingChanged() {
         if(amountView.amount >= 0.5) {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
+        } else if (amountView.amount == 0) {
+            amountView.bottomBorderColor = .clear
         } else if (amountView.amount > Decimal(UserDefaults.standard.amountLimit) || amountView.amount < 0.5) {
             amountView.bottomBorderColor = ColorHelper.GivtRed
         }
@@ -183,6 +193,13 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
     @objc func handleAmountEditingDidBegin() {
         if(amountView.amount == 0) {
             amountView.bottomBorderColor = .clear
+        }
+    }
+    @objc func handleAmountEditingDidEnd() {
+        if(amountView.amount < 0.5) {
+            showAmountTooLow()
+        } else if (amountView.amount > Decimal(UserDefaults.standard.amountLimit)) {
+            displayAmountTooHigh()
         }
     }
     private func setupOccurencsView() {
@@ -274,4 +291,28 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
             self.view.layoutIfNeeded()
         })
     }
+    
+    fileprivate func showAmountTooLow() {
+        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
+        let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
+                                      message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+        self.present(alert, animated: true, completion: {})
+    }
+    
+    fileprivate func displayAmountTooHigh() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("AmountTooHigh", comment: ""),
+            message: NSLocalizedString("AmountLimitExceeded", comment: ""),
+            preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default) { action in })
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
+            try? self.mediater.send(request: ChangeAmountLimitRoute(), withContext: self)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
 }
