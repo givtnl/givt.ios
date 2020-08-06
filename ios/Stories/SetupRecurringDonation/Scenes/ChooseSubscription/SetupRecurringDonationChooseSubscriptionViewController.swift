@@ -30,12 +30,15 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     @IBOutlet weak var startDatePicker: UIDatePicker!
     
     @IBOutlet weak var occurencesTextField: CustomUITextField!
+    @IBOutlet weak var occurencesLabel: UILabel!
+    
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var createSubcriptionButton: CustomButton!
     
     var input: SetupRecurringDonationOpenSubscriptionRoute!
     
     private var pickers: Array<Any> = [Any]()
-    private let frequencys: Array<Array<Any>> = [[Frequency.Monthly, "Maand", "maanden"], [Frequency.Yearly, "Jaar", "jaren"], [Frequency.ThreeMonthly, "Kwartaal", "kwartalen"]]
+    private let frequencys: Array<Array<Any>> = [[Frequency.Monthly, "Maand", "maanden", "0 0 1 * *"], [Frequency.Yearly, "Jaar", "jaren", "0 0 1 1 *"], [Frequency.ThreeMonthly, "Kwartaal", "kwartalen", "0 0 1 * *"]]
     
     private let animationDuration = 0.4
     private var decimalNotation: String! = "," {
@@ -102,26 +105,30 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
             })
         }
     }
-    
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: SetupRecurringDonationBackToChooseDestinationRoute(mediumId: input.mediumId), withContext: self)
     }
-    
     @IBAction func makeSubscription(_ sender: Any) {
-        if let cronExpression = CronExpression(minute: "0", hour: "0", day: "10", month: "5") {
-            let command = CreateSubscriptionCommand(amountPerTurn: 10, nameSpace: input.mediumId, endsAfterTurns: 10, cronExpression: cronExpression.stringRepresentation)
-            do {
-                try mediater.sendAsync(request: command, completion: { isSuccessful in
-                    if isSuccessful {
-                        try? self.mediater.send(request: FinalizeGivingRoute())
-                    }
-                })
-            } catch { }
-        }
+        let cronExpression = frequencys[frequencyPicker.selectedRow(inComponent: 0)][3] as! String
+        let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression)
+        do {
+            try mediater.sendAsync(request: command, completion: { isSuccessful in
+                if isSuccessful {
+                    try? self.mediater.send(request: FinalizeGivingRoute())
+                }
+            })
+        } catch { }
+        
     }
 }
 
 extension SetupRecurringDonationChooseSubscriptionViewController {
+    private func EnsureButtonHasCorrectState() {
+        let amount = amountView.amount
+        let endsAfterTurns = Int(occurencesTextField.text!) ?? 0
+        createSubcriptionButton.isEnabled = amount >= 0.5 && amount <= Decimal(UserDefaults.standard.amountLimit) && endsAfterTurns > 0
+    }
+    
     private func setupCollectGroupNameView() {
         // hide symbol and make not editable field for the cgName
         collectGroupNameTextView.isEditable = false;
@@ -151,12 +158,10 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         startDatePicker.setValue(givtPurpleUIColor, forKeyPath: "textColor")
         startDatePicker.setValue(false, forKeyPath: "highlightsToday")
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
-        
+        startDateLabel.text = startDatePicker.date.formatted
+        startDatePicker.minimumDate = Date()
         pickers.append(startDatePicker)
         
-    }
-    @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
-        startDateLabel.text = datePicker.date.formatted
     }
     private func setupFrequencyPicker() {
         let givtPurpleUIColor = UIColor.init(rgb: 0x2c2b57)
@@ -164,8 +169,10 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         frequencyPicker.dataSource = self
         frequencyPicker.delegate = self
         pickers.append(frequencyPicker)
+        frequencyPicker.selectRow(0, inComponent: 0, animated: false)
+        frequencyLabel.text = frequencys[0][1] as? String
+        occurencesLabel.text = frequencys[0][2] as? String
     }
-    
     private func setupAmountView() {
         // get the currency symbol from user settingsf
         amountView.currency = UserDefaults.standard.currencySymbol
@@ -180,6 +187,18 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         createToolbar(amountView.amountLabel)
         // set number keypad
         amountView.amountLabel.keyboardType = .decimalPad
+    }
+    private func setupOccurencsView() {
+        createToolbar(occurencesTextField)
+        occurencesTextField.keyboardType = .numberPad
+        // setup event handlers
+        occurencesTextField.addTarget(self, action: #selector(handleOccurencesEditingChanged), for: .editingChanged)
+        occurencesTextField.addTarget(self, action: #selector(handleOccurencesEditingEnd), for: .editingDidEnd)
+        
+    }
+    
+    @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
+        startDateLabel.text = datePicker.date.formatted
     }
     @objc func handleAmountEditingChanged() {
         if(amountView.amount >= 0.5) {
@@ -201,11 +220,16 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         } else if (amountView.amount > Decimal(UserDefaults.standard.amountLimit)) {
             displayAmountTooHigh()
         }
+        EnsureButtonHasCorrectState()
     }
-    private func setupOccurencsView() {
-        createToolbar(occurencesTextField)
-        occurencesTextField.keyboardType = .numberPad
+
+    @objc func handleOccurencesEditingChanged() {
+        EnsureButtonHasCorrectState()
     }
+    @objc func handleOccurencesEditingEnd() {
+        EnsureButtonHasCorrectState()
+    }
+
     private func closeAllOpenPickerViews() {
         for picker in pickers {
             if picker is UIDatePicker {
@@ -234,27 +258,28 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
             }
         }
     }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return frequencys.count
     }
-    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return frequencys[row][1] as! String
+        return frequencys[row][1] as? String
     }
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.frequencyLabel.text = frequencys[row][1] as! String
+        self.frequencyLabel.text = frequencys[row][1] as? String
+        self.occurencesLabel.text = frequencys[row][2] as? String
         pickerView.reloadAllComponents()
+        EnsureButtonHasCorrectState()
     }
     private enum Frequency {
         case Monthly
         case ThreeMonthly
         case Yearly
     }
+    
     func createToolbar(_ textField: UITextField) {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -265,13 +290,12 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         
         textField.inputAccessoryView = toolbar
     }
-    
     @objc func hideKeyboard(){
         self.view.endEditing(true)
     }
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
-        var userInfo = notification.userInfo!
+        let userInfo = notification.userInfo!
         var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
@@ -284,7 +308,6 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
             self.view.layoutIfNeeded()
         })
     }
-    
     @objc func keyboardWillHide(notification:NSNotification){
         bottomScrollViewConstraint.constant = 0
         UIView.animate(withDuration: 0.3, animations: {
@@ -299,7 +322,6 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
-    
     fileprivate func displayAmountTooHigh() {
         let alert = UIAlertController(
             title: NSLocalizedString("AmountTooHigh", comment: ""),
