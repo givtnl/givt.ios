@@ -226,6 +226,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func registerHandlers() {
+        Mediater.shared.registerHandler(handler: OpenFAQRouteHandler())
         Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
         Mediater.shared.registerHandler(handler: GetLocalUserConfigurationHandler())
         Mediater.shared.registerHandler(handler: OpenChooseAmountRouteHandler())

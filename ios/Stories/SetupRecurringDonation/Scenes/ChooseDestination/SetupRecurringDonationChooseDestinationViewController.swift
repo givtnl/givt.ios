@@ -22,12 +22,18 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     @IBOutlet var tableView: UITableView!
     @IBOutlet var navBar: UINavigationItem!
     @IBOutlet var nextButton: CustomButton!
-
+    @IBAction func openFAQ(_ sender: Any) {
+        do {
+            let command = OpenFAQRoute(fromReverseFlow: true)
+            try mediater.send(request: command, withContext: self)
+        } catch { }
+    }
+    
     var churchButton: DestinationCategoryButton!
     var charityButton: DestinationCategoryButton!
     var campaignButton: DestinationCategoryButton!
     var artistButton: DestinationCategoryButton!
-
+    
     //MARK: tableSections
     func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
@@ -40,11 +46,11 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].length
     }
-
+    
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         return index
     }
-
+    
     //MARK: table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let destination = filteredDestinations[sections[indexPath.section].index + indexPath.row]
@@ -59,7 +65,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         }
         return destinationCell
     }
-
+    
     func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
         // update ViewModel
         if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
@@ -111,15 +117,15 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         titleText.text = "ChooseWhoYouWantToGiveTo".localized
-
+        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         navigationController?.navigationBar.isTranslucent = true
         
         searchBar.delegate = self
-
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -128,7 +134,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         tableView.sectionIndexColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         tableView.tableFooterView = UIView(frame: .zero)
-
+        
         nextButton.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
         nextButton.isEnabled = false
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
@@ -153,7 +159,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     @IBAction func nextButtonTapped(_ sender: Any) {
         do {
             if let selectedCell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as? DestinationTableCell,
-               let medium = ((try mediater.send(request: GetCollectGroupsQuery())).first { $0.name == selectedCell.name }) {
+                let medium = ((try mediater.send(request: GetCollectGroupsQuery())).first { $0.name == selectedCell.name }) {
                 try mediater.send(request: SetupRecurringDonationOpenSubscriptionRoute(name: selectedCell.name, mediumId: medium.namespace, orgType: medium.type), withContext: self)
             }
         } catch {}
@@ -191,7 +197,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
                 prevButton.setInactive()
                 typeStackView.insertArrangedSubview(prevButton, at: idx!)
             }
-
+            
             //replace tapped button with newly styled button
             if let idx = typeStackView.arrangedSubviews.index(of: button) {
                 typeStackView.removeArrangedSubview(button)
@@ -221,7 +227,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
                     destination.type = cg.type
                     destination.selected = false
                     return destination
-                }
+            }
         }
     }
     
