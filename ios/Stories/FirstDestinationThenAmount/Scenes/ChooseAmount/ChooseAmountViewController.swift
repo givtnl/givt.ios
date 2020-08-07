@@ -78,7 +78,13 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: BackToChooseDestinationRoute(amount: amountControl.amount), withContext: self)
     }
-
+    @IBAction func faqButton(_ sender: Any) {
+        do {
+            let command = OpenFAQRoute(fromReverseFlow: true)
+            try mediater.send(request: command, withContext: self)
+        } catch { }
+    }
+    
     @IBAction func giveButtonTouchDown(_ sender: Any) {
         giveButton.ogBGColor = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1)
     }
