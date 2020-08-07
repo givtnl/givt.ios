@@ -28,6 +28,7 @@
 		3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450824DB0206003CF5CF /* ColorHelper.swift */; };
 		3232450C24DC4E16003CF5CF /* OpenFAQRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450B24DC4E16003CF5CF /* OpenFAQRoute.swift */; };
 		3232450E24DC4E28003CF5CF /* OpenFAQRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450D24DC4E28003CF5CF /* OpenFAQRouteHandler.swift */; };
+		3232451024DD4C63003CF5CF /* ReverseGivingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450F24DD4C63003CF5CF /* ReverseGivingMenuController.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */; };
 		32CA179D24CECB9500248053 /* SetupRecurringDonation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */; };
@@ -308,6 +309,7 @@
 		3232450824DB0206003CF5CF /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		3232450B24DC4E16003CF5CF /* OpenFAQRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFAQRoute.swift; sourceTree = "<group>"; };
 		3232450D24DC4E28003CF5CF /* OpenFAQRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFAQRouteHandler.swift; sourceTree = "<group>"; };
+		3232450F24DD4C63003CF5CF /* ReverseGivingMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGivingMenuController.swift; sourceTree = "<group>"; };
 		32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupRecurringDonation.storyboard; sourceTree = "<group>"; };
 		32CA179E24CECBFC00248053 /* SetupRecurringDonationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationNavigationController.swift; sourceTree = "<group>"; };
@@ -905,6 +907,7 @@
 				D782E68E20064A680086907E /* SettingsViewController.swift */,
 				D75AA195200CBFD5006E09BB /* TaxesViewController.swift */,
 				D7ADE2491FBC896E00198F28 /* TerminateAccount */,
+				3232450F24DD4C63003CF5CF /* ReverseGivingMenuController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -1804,6 +1807,7 @@
 				FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */,
 				FB87300224C80B7B005FF355 /* ChangeAmountLimitRoute.swift in Sources */,
 				FB87301124C836EA005FF355 /* ExportDonationCommand.swift in Sources */,
+				3232451024DD4C63003CF5CF /* ReverseGivingMenuController.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
 				FB87302A24C881D9005FF355 /* SafariError.swift in Sources */,
 				DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */,
