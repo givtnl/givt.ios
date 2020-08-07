@@ -12,7 +12,7 @@ import AppCenterAnalytics
 class FAQViewController: UIViewController, OpenedQuestionDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var closeButton: UIButton!
-    var input: OpenFAQRoute!
+    var input: OpenFAQRoute?
     var previousQuestion: FAQView?
     func didTapFAQView(sender: FAQView) {
         if previousQuestion != nil {
@@ -34,11 +34,11 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
     @IBOutlet var needHelp: UILabel!
     @IBOutlet var findAnswers: UILabel!
     @IBOutlet var stack: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         needHelp.text = NSLocalizedString("NeedHelpTitle", comment: "")
         findAnswers.text = NSLocalizedString("FindAnswersToYourQuestions", comment: "")
-        closeButton.isHidden = input.fromReverseFlow
     }
     
     private func addQuestion(q: String, a: String, v: String? = nil) {
