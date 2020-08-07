@@ -927,19 +927,19 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterMandateError" = "Helaas, we kunnen op dit moment je account niet opzeggen omdat het niet lukt om je machtiging op te zeggen. Neem aub contact op met ons.";
 "UnregisterErrorTitle" = "Opzeggen mislukt";
 "SetupRecurringGiftTitle" = "Regel instellen";
-
-/*Fuzzy*/
-"SetupRecurringGiftText_1-1" = "Ik wil graag elke";
-
-/*Fuzzy*/
-"SetupRecurringGiftText_2-1" = "op";
 "SetupRecurringGiftText_3" = "geven aan";
 "SetupRecurringGiftText_4" = "eindigend";
 "SetupRecurringGiftText_5" = "na";
 "SetupRecurringGiftText_6" = "keer.";
-"SetupRecurringGiftText_1-2" = "Ik wil graag elk";
-"SetupRecurringGiftText_2-2" = "op dag";
 "Add" = "Toevoegen";
 
 /*Fuzzy*/
 "MenuItem_FirstDestinationThenAmount" = "Geven aan een goed doel";
+
+/*Fuzzy*/
+"FAQQuestionFirstTargetThenAmount1" = "Wat is \"geven aan een goed doel\"?";
+
+/*Fuzzy*/
+"FAQAnswerFirstTargetThenAmount1" = "\"Geven aan een goed doel\" is een nieuwe functionaliteit in je Givt-app. Het werkt net zoals je het van de app gewoon bent, maar nu kan je eerst je goede doel kiezen en daarna hoeveel je wil geven.";
+"FAQQuestionFirstTargetThenAmount2" = "Waarom kan ik enkel maar een goed doel uit de lijst selecteren?";
+"FAQAnswerFirstTargetThenAmount2" = "Het \"geven aan een goed doel\" is splinternieuw en nog in volle opbouw. Beetje bij beetje zullen wij dus nieuwe functionaliteiten toevoegen.";
