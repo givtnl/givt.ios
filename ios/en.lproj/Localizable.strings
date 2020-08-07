@@ -927,19 +927,19 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterMandateError" = "Alas, we are unable to unregister your account because we are unable to cancel your mandate or direct debit instruction. Please contact us.";
 "UnregisterErrorTitle" = "Terminate failed";
 "SetupRecurringGiftTitle" = "";
-
-/*Fuzzy*/
-"SetupRecurringGiftText_1-1" = "I want to give each";
-
-/*Fuzzy*/
-"SetupRecurringGiftText_2-1" = "on";
 "SetupRecurringGiftText_3" = "to";
 "SetupRecurringGiftText_4" = "ending";
 "SetupRecurringGiftText_5" = "after";
 "SetupRecurringGiftText_6" = "times.";
-"SetupRecurringGiftText_1-2" = "I want to give each";
-"SetupRecurringGiftText_2-2" = "on day";
 "Add" = "Add";
 
 /*Fuzzy*/
 "MenuItem_FirstDestinationThenAmount" = "Give to a good cause";
+
+/*Fuzzy*/
+"FAQQuestionFirstTargetThenAmount1" = "What is \"Give to a good cause\"?";
+
+/*Fuzzy*/
+"FAQAnswerFirstTargetThenAmount1" = "\"Give to a good cause\" is a new functionality in your Givt-app. It works just as fine as you are used with us, but now you can choose first the good cause and then the amount. Handy!";
+"FAQQuestionFirstTargetThenAmount2" = "Why can I only choose a good cause from the list?";
+"FAQAnswerFirstTargetThenAmount2" = "\"Giving to a good cause\" is brand new and still under construction. New functionalities are constantly added in time.";
