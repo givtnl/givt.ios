@@ -12,7 +12,6 @@ import AppCenterAnalytics
 class FAQViewController: UIViewController, OpenedQuestionDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var closeButton: UIButton!
-    var input: OpenFAQRoute?
     var previousQuestion: FAQView?
     func didTapFAQView(sender: FAQView) {
         if previousQuestion != nil {

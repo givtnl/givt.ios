@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -169,12 +169,6 @@
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="KyO-RU-psg">
                             <connections>
                                 <action selector="backButton:" destination="pif-bt-Fyp" id="wm8-Uu-480"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="help" width="50" id="TPC-KD-ePS">
-                            <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="openFAQ:" destination="pif-bt-Fyp" id="MnB-hb-gRn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -500,12 +494,6 @@
                                 <action selector="backButton:" destination="UTq-9E-O8z" id="B9c-8P-Tku"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="help" width="50" id="MeL-PQ-3jI">
-                            <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="openFAQ:" destination="UTq-9E-O8z" id="OeO-dh-z8g"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -535,6 +523,5 @@
     <resources>
         <image name="backbtn" width="15" height="24"/>
         <image name="dropdown.png" width="128" height="128"/>
-        <image name="help" width="13" height="20"/>
     </resources>
 </document>

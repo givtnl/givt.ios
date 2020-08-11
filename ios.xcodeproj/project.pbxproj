@@ -26,8 +26,6 @@
 		3211FB6E24D95BBE00351BC4 /* VerySpecialUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211FB6D24D95BBE00351BC4 /* VerySpecialUITextField.swift */; };
 		3211FB7124D95C1000351BC4 /* VerySpecialUITextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3211FB7024D95C1000351BC4 /* VerySpecialUITextField.xib */; };
 		3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450824DB0206003CF5CF /* ColorHelper.swift */; };
-		3232450C24DC4E16003CF5CF /* OpenFAQRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450B24DC4E16003CF5CF /* OpenFAQRoute.swift */; };
-		3232450E24DC4E28003CF5CF /* OpenFAQRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450D24DC4E28003CF5CF /* OpenFAQRouteHandler.swift */; };
 		3232451024DD4C63003CF5CF /* ReverseGivingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450F24DD4C63003CF5CF /* ReverseGivingMenuController.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */; };
@@ -307,8 +305,6 @@
 		3211FB6D24D95BBE00351BC4 /* VerySpecialUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerySpecialUITextField.swift; sourceTree = "<group>"; };
 		3211FB7024D95C1000351BC4 /* VerySpecialUITextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerySpecialUITextField.xib; sourceTree = "<group>"; };
 		3232450824DB0206003CF5CF /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
-		3232450B24DC4E16003CF5CF /* OpenFAQRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFAQRoute.swift; sourceTree = "<group>"; };
-		3232450D24DC4E28003CF5CF /* OpenFAQRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFAQRouteHandler.swift; sourceTree = "<group>"; };
 		3232450F24DD4C63003CF5CF /* ReverseGivingMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGivingMenuController.swift; sourceTree = "<group>"; };
 		32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupRecurringDonation.storyboard; sourceTree = "<group>"; };
@@ -607,15 +603,6 @@
 			path = Subviews;
 			sourceTree = "<group>";
 		};
-		3232450A24DC4DFF003CF5CF /* OpenFAQ */ = {
-			isa = PBXGroup;
-			children = (
-				3232450B24DC4E16003CF5CF /* OpenFAQRoute.swift */,
-				3232450D24DC4E28003CF5CF /* OpenFAQRouteHandler.swift */,
-			);
-			path = OpenFAQ;
-			sourceTree = "<group>";
-		};
 		32CA179B24CECAB900248053 /* SetupRecurringDonation */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,7 +634,6 @@
 		32CA17B024CED48100248053 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				3232450A24DC4DFF003CF5CF /* OpenFAQ */,
 				320CF72824CEF1C1008B3EDE /* OpenChooseSubscription */,
 				32CA17B124CED48A00248053 /* BackToChooseDestination */,
 			);
@@ -1755,7 +1741,6 @@
 				D7AE8B9C2136953E00CB3A33 /* BacsInfoViewController.swift in Sources */,
 				FBC185C524C5CDF2001A4C6B /* MediaterExtension.swift in Sources */,
 				D7F3A84A214801EA008B65AE /* FingerprintViewController.swift in Sources */,
-				3232450E24DC4E28003CF5CF /* OpenFAQRouteHandler.swift in Sources */,
 				FB872FFF24C809EF005FF355 /* DonationError.swift in Sources */,
 				D7D6FA6B1F7BADA5008A5604 /* UITextFieldExtensions.swift in Sources */,
 				27A0E4E5221ECE6700982842 /* PresetButton.swift in Sources */,
@@ -1901,7 +1886,6 @@
 				D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */,
 				FB87302624C87678005FF355 /* SafariTransactionModel.swift in Sources */,
 				FBC185B124C0CF15001A4C6B /* GetLocalUserConfigurationHandler.swift in Sources */,
-				3232450C24DC4E16003CF5CF /* OpenFAQRoute.swift in Sources */,
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				FB872FF224C6EC2F005FF355 /* BackToMainRoute.swift in Sources */,
 				FBC1858A24C0651D001A4C6B /* RequestProtocol.swift in Sources */,
