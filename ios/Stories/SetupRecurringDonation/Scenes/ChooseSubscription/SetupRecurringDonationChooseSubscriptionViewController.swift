@@ -119,12 +119,6 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         } catch { }
         
     }
-    @IBAction func openFAQ(_ sender: Any) {
-        do {
-            let command = OpenFAQRoute(fromReverseFlow: true)
-            try mediater.send(request: command, withContext: self)
-        } catch { }
-    }
 }
 
 extension SetupRecurringDonationChooseSubscriptionViewController {
