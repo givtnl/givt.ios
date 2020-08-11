@@ -22,12 +22,6 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     @IBOutlet var tableView: UITableView!
     @IBOutlet var navBar: UINavigationItem!
     @IBOutlet var nextButton: CustomButton!
-    @IBAction func openFAQ(_ sender: Any) {
-        do {
-            let command = OpenFAQRoute(fromReverseFlow: true)
-            try mediater.send(request: command, withContext: self)
-        } catch { }
-    }
     
     var churchButton: DestinationCategoryButton!
     var charityButton: DestinationCategoryButton!
