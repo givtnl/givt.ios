@@ -55,7 +55,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
         
         setupAmountView()
-        setupCollectGroupNameView()
+//        setupCollectGroupNameView()
         setupStartDatePicker()
         setupFrequencyPicker()
         setupOccurencsView()
@@ -128,29 +128,29 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         createSubcriptionButton.isEnabled = amount >= 0.5 && amount <= Decimal(UserDefaults.standard.amountLimit) && endsAfterTurns > 0
     }
     
-    private func setupCollectGroupNameView() {
-        // hide symbol and make not editable field for the cgName
-        collectGroupNameTextView.isEditable = false;
-        collectGroupNameTextView.isValutaField = false;
-        collectGroupNameTextView.amountLabel.text = input.name
-        // set color of the cgName view bottom border
-        var bottomBorderColor: UIColor
-        
-        switch input.orgType {
-        case .church:
-            bottomBorderColor = ColorHelper.GivtBlue
-        case .charity:
-            bottomBorderColor = ColorHelper.GivtOrange
-        case .campaign:
-            bottomBorderColor = ColorHelper.GivtRed
-        case .artist:
-            bottomBorderColor = ColorHelper.GivtGreen
-        default:
-            bottomBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        }
-        
-        collectGroupNameTextView.bottomBorderColor = bottomBorderColor
-    }
+//    private func setupCollectGroupNameView() {
+//        // hide symbol and make not editable field for the cgName
+//        collectGroupNameTextView.isEditable = false;
+//        collectGroupNameTextView.isValutaField = false;
+//        collectGroupNameTextView.amountLabel.text = input.name
+//        // set color of the cgName view bottom border
+//        var bottomBorderColor: UIColor
+//
+//        switch input.orgType {
+//        case .church:
+//            bottomBorderColor = ColorHelper.GivtBlue
+//        case .charity:
+//            bottomBorderColor = ColorHelper.GivtOrange
+//        case .campaign:
+//            bottomBorderColor = ColorHelper.GivtRed
+//        case .artist:
+//            bottomBorderColor = ColorHelper.GivtGreen
+//        default:
+//            bottomBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+//        }
+//
+//        collectGroupNameTextView.bottomBorderColor = bottomBorderColor
+//    }
     private func setupStartDatePicker() {
         startDatePicker.datePickerMode = .date
         let givtPurpleUIColor = UIColor.init(rgb: 0x2c2b57)
