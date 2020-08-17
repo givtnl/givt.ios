@@ -33,6 +33,6 @@ class CreateDonationCommandHandler : RequestHandlerProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        request is CreateDonationCommand
+        return request is CreateDonationCommand
     }
 }
