@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class VerySpecialUITextField: UIView {
+class AmountTextField: UIView {
     private var borderView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var amountLabel: UITextField!
@@ -82,8 +82,8 @@ class VerySpecialUITextField: UIView {
     }
     
     private func commonInit() {
-        let bundle = Bundle(for: VerySpecialUITextField.self)
-        bundle.loadNibNamed("VerySpecialUITextField", owner: self, options: nil)
+        let bundle = Bundle(for: AmountTextField.self)
+        bundle.loadNibNamed("AmountTextField", owner: self, options: nil)
         
         shadowAndCorners()
         addSubview(contentView)
