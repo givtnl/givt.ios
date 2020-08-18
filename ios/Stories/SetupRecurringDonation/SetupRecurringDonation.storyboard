@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -186,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qP-Ng-2v2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="843" y="684"/>
+            <point key="canvasLocation" x="1645" y="684"/>
         </scene>
         <!--Plan je Givt-->
         <scene sceneID="SsZ-Ka-MoC">
@@ -217,7 +217,7 @@
                                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Skb-Hx-MDj" customClass="VerySpecialUITextField" customModule="ios" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Skb-Hx-MDj" customClass="AmountTextField" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="50" width="374" height="44"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                 <constraints>
@@ -238,9 +238,13 @@
                                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDx-DY-AtB" customClass="VerySpecialUITextField" customModule="ios" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDx-DY-AtB" customClass="CollectGroupLabel" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="154" width="374" height="44"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <accessibility key="accessibilityConfiguration" hint="Doel kiezen">
+                                                                    <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
+                                                                    <bool key="isElement" value="NO"/>
+                                                                </accessibility>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="44" id="lVx-HZ-2b4"/>
                                                                 </constraints>
@@ -501,7 +505,7 @@
                         <outlet property="amountView" destination="Skb-Hx-MDj" id="LpP-dw-Xvg"/>
                         <outlet property="backButton" destination="21A-8R-8IW" id="OjT-8m-vHB"/>
                         <outlet property="bottomScrollViewConstraint" destination="63x-bS-6Ak" id="YnE-Jd-sX0"/>
-                        <outlet property="collectGroupNameTextView" destination="lDx-DY-AtB" id="WF4-1w-5Cw"/>
+                        <outlet property="collectGroupLabel" destination="lDx-DY-AtB" id="WF4-1w-5Cw"/>
                         <outlet property="createSubcriptionButton" destination="lJ0-Hf-NsM" id="XJM-5M-HRC"/>
                         <outlet property="frequencyButton" destination="mIz-dt-G6N" id="jdN-1Z-Vcd"/>
                         <outlet property="frequencyLabel" destination="phc-si-YWc" id="GGS-KL-oxh"/>
@@ -517,7 +521,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o74-s8-g1r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="684"/>
+            <point key="canvasLocation" x="935" y="684"/>
         </scene>
     </scenes>
     <resources>
