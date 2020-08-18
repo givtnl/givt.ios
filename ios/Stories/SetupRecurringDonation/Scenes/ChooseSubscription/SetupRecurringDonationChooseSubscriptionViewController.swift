@@ -35,7 +35,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var createSubcriptionButton: CustomButton!
     
-    var input: SetupRecurringDonationOpenSubscriptionRoute!
+    var input: DestinationSelectedRoute? = nil
     
     private var pickers: Array<Any> = [Any]()
     private let frequencys: Array<Array<Any>> = [[Frequency.Monthly, "Maand", "maanden", "0 0 1 * *"], [Frequency.Yearly, "Jaar", "jaren", "0 0 1 1 *"], [Frequency.ThreeMonthly, "Kwartaal", "kwartalen", "0 0 1 * *"]]
@@ -59,7 +59,13 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         setupStartDatePicker()
         setupFrequencyPicker()
         setupOccurencsView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         setupCollectGroupLabel()
+        ensureButtonHasCorrectState()
     }
     
     @IBAction func openStartDatePicker(_ sender: Any) {
@@ -110,12 +116,12 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     }
     
     @IBAction func backButton(_ sender: Any) {
-        try? mediater.send(request: SetupRecurringDonationBackToChooseDestinationRoute(mediumId: input.mediumId), withContext: self)
+        try? mediater.send(request: BackToMainRoute(), withContext: self)
     }
     
     @IBAction func makeSubscription(_ sender: Any) {
         let cronExpression = frequencys[frequencyPicker.selectedRow(inComponent: 0)][3] as! String
-        let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression)
+        let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression)
         do {
             try mediater.sendAsync(request: command, completion: { isSuccessful in
                 if isSuccessful {
@@ -128,12 +134,16 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
 
 extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupLabelDelegate {
     func collectGroupLabelTapped() {
+        try? mediater.send(request: SetupRecurringDonationChooseDestinationRoute(mediumId: ""), withContext: self)
     }
     
-    private func EnsureButtonHasCorrectState() {
+    private func ensureButtonHasCorrectState() {
         let amount = amountView.amount
         let endsAfterTurns = Int(occurencesTextField.text!) ?? 0
-        createSubcriptionButton.isEnabled = amount >= 0.5 && amount <= Decimal(UserDefaults.standard.amountLimit) && endsAfterTurns > 0
+        createSubcriptionButton.isEnabled = amount >= 0.5
+                                        && amount <= Decimal(UserDefaults.standard.amountLimit)
+                                        && endsAfterTurns > 0
+                                        && input?.mediumId != nil
     }
         
     private func setupStartDatePicker() {
@@ -180,11 +190,26 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         // setup event handlers
         occurencesTextField.addTarget(self, action: #selector(handleOccurencesEditingChanged), for: .editingChanged)
         occurencesTextField.addTarget(self, action: #selector(handleOccurencesEditingEnd), for: .editingDidEnd)
-        
     }
     
     private func setupCollectGroupLabel() {
         collectGroupLabel.delegate = self
+        collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
+        if let input = self.input {
+            collectGroupLabel.label.text = input.name
+            switch input.orgType {
+            case .artist :
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+            case .campaign :
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
+            case .church :
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1)
+            case .charity :
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
+            default :
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
+            }
+        }
     }
     
     @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
@@ -208,14 +233,14 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         if(amountView.amount < 0.5) {
             showAmountTooLow()
         }
-        EnsureButtonHasCorrectState()
+        ensureButtonHasCorrectState()
     }
 
     @objc func handleOccurencesEditingChanged() {
-        EnsureButtonHasCorrectState()
+        ensureButtonHasCorrectState()
     }
     @objc func handleOccurencesEditingEnd() {
-        EnsureButtonHasCorrectState()
+        ensureButtonHasCorrectState()
     }
 
     private func closeAllOpenPickerViews() {
@@ -260,7 +285,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         self.frequencyLabel.text = frequencys[row][1] as? String
         self.occurencesLabel.text = frequencys[row][2] as? String
         pickerView.reloadAllComponents()
-        EnsureButtonHasCorrectState()
+        ensureButtonHasCorrectState()
     }
     
     private enum Frequency {

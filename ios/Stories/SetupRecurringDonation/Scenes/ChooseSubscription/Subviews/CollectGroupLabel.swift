@@ -36,7 +36,7 @@ class CollectGroupLabel : UIView {
             }
         }
     }
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -72,7 +72,7 @@ class CollectGroupLabel : UIView {
     
     @IBAction func labelTapped(_ sender: UITapGestureRecognizer) {
         if let delegate = self.delegate {
-            delegate.labelTapped()
+            delegate.collectGroupLabelTapped()
         }
     }
     
