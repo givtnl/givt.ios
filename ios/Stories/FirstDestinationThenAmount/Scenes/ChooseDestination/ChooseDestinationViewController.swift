@@ -58,7 +58,6 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         if destination.selected {
             //select row that should be selected
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-            destinationCell.toggleOn()
             nextButton.isEnabled = true
         }
         return destinationCell
@@ -73,10 +72,7 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
-            destinationCell.toggleOff()
-            nextButton.isEnabled = false
-        }
+        nextButton.isEnabled = false
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -94,7 +90,6 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
-            destinationCell.toggleOn()
             nextButton.isEnabled = true
             // update ViewModel
             (destinations.first { $0.name == destinationCell.name })!.selected = true

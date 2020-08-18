@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SetupRecurringDonationOpenSubscriptionRoute : NoResponseRequest {
+public class DestinationSelectedRoute : NoResponseRequest {
     var name: String
     var mediumId: String
     var orgType: CollectGroupType

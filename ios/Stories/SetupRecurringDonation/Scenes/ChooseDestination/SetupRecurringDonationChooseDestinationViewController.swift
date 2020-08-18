@@ -54,7 +54,6 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         if destination.selected {
             //select row that should be selected
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-            destinationCell.toggleOn()
             nextButton.isEnabled = true
         }
         return destinationCell
@@ -69,10 +68,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
-            destinationCell.toggleOff()
-            nextButton.isEnabled = false
-        }
+        nextButton.isEnabled = false
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -90,7 +86,6 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
-            destinationCell.toggleOn()
             nextButton.isEnabled = true
             // update ViewModel
             (destinations.first { $0.name == destinationCell.name })!.selected = true
@@ -154,13 +149,13 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         do {
             if let selectedCell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as? DestinationTableCell,
                 let medium = ((try mediater.send(request: GetCollectGroupsQuery())).first { $0.name == selectedCell.name }) {
-                try mediater.send(request: SetupRecurringDonationOpenSubscriptionRoute(name: selectedCell.name, mediumId: medium.namespace, orgType: medium.type), withContext: self)
+                try mediater.send(request: DestinationSelectedRoute(name: selectedCell.name, mediumId: medium.namespace, orgType: medium.type), withContext: self)
             }
         } catch {}
     }
     
     @IBAction func backButton(_ sender: Any) {
-        try? mediater.send(request: BackToMainRoute(), withContext: self)
+        try? mediater.send(request: BackToChooseSubscriptionRoute(), withContext: self)
     }
     
     //MARK: tableFiltering
@@ -227,14 +222,15 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     
     private func filterDestinationsAndReloadTable() {
         filteredDestinations = destinations
-        if let currentSearchText = searchBar.text, !currentSearchText.isEmpty {
-            filteredDestinations = filteredDestinations.filter { $0.name.contains(currentSearchText) }
-        }
         
         if let activeCategoryButton = typeStackView.arrangedSubviews.first(where: { view in
             return (view as! DestinationCategoryButton).active
         }) {
             filteredDestinations = filteredDestinations.filter { $0.type == CollectGroupType(rawValue: activeCategoryButton.tag) }
+        }
+
+        if let currentSearchText = searchBar.text, !currentSearchText.isEmpty {
+            filteredDestinations = filteredDestinations.filter { $0.name.contains(currentSearchText) }
         }
         
         buildTableSections()
