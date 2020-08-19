@@ -926,15 +926,14 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterError" = "Helaas, we kunnen op dit moment je account niet opzeggen. Probeer je het later nog een keer?";
 "UnregisterMandateError" = "Helaas, we kunnen op dit moment je account niet opzeggen omdat het niet lukt om je machtiging op te zeggen. Neem aub contact op met ons.";
 "UnregisterErrorTitle" = "Opzeggen mislukt";
-"SetupRecurringGiftTitle" = "Regel instellen";
-"SetupRecurringGiftText_3" = "geven aan";
-"SetupRecurringGiftText_4" = "eindigend";
-"SetupRecurringGiftText_5" = "na";
-"SetupRecurringGiftText_6" = "keer.";
+"SetupRecurringGiftTitle" = "Plan je Givt";
+"SetupRecurringGiftText_3" = "Elk(e)";
+"SetupRecurringGiftText_4" = "Vanaf";
+"SetupRecurringGiftText_5" = "Dit moet stoppen na";
 "Add" = "Toevoegen";
 
 /*Fuzzy*/
-"MenuItem_FirstDestinationThenAmount" = "Geven aan een goed doel";
+"SubMenuItem_FirstDestinationThenAmount" = "Eenmalige gift";
 
 /*Fuzzy*/
 "FAQQuestionFirstTargetThenAmount1" = "Wat is \"geven aan een goed doel\"?";
@@ -943,3 +942,18 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "FAQAnswerFirstTargetThenAmount1" = "\"Geven aan een goed doel\" is een nieuwe functionaliteit in je Givt-app. Het werkt net zoals je het van de app gewoon bent, maar nu kan je eerst je goede doel kiezen en daarna hoeveel je wil geven.";
 "FAQQuestionFirstTargetThenAmount2" = "Waarom kan ik enkel maar een goed doel uit de lijst selecteren?";
 "FAQAnswerFirstTargetThenAmount2" = "Het \"geven aan een goed doel\" is splinternieuw en nog in volle opbouw. Beetje bij beetje zullen wij dus nieuwe functionaliteiten toevoegen.";
+"SetupRecurringGiftText_2" = "geven aan";
+"SetupRecurringGiftText_1" = "Ik wil graag";
+"SetupRecurringGiftSelectOrganisationPlaceHolder" = "Kies aan wie je wil geven";
+"SetupRecurringGiftWeek" = "week";
+"SetupRecurringGiftMonth" = "maand";
+"SetupRecurringGiftQuarter" = "kwartaal";
+"SetupRecurringGiftYear" = "jaar";
+"SetupRecurringGiftWeekPlural" = "weken";
+"SetupRecurringGiftMonthPlural" = "maanden";
+"SetupRecurringGiftQuarterPlural" = "kwartalen";
+"SetupRecurringGiftYearPlural" = "jaren";
+"MenuItem_newGiving" = "Doelbewust geven";
+"SubMenuItem_RecurringDonation" = "Plan je Givt";
+"SetupRecurringGiftHalfYear" = "half jaar";
+"SetupRecurringGiftHalfYearPlural" = "keer";
