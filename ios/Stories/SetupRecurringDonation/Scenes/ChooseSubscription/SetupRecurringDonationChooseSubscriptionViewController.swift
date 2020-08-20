@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SwiftCron
 
 class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
