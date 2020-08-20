@@ -162,13 +162,6 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         try? mediater.send(request: BackToMainRoute(), withContext: self)
     }
     
-    @IBAction func faqButton(_ sender: Any) {
-        do {
-            let command = OpenFAQRoute(fromReverseFlow: true)
-            try mediater.send(request: command, withContext: self)
-        } catch { }
-    }
-    
     //MARK: tableFiltering
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // deselect row otherwise weird things happen in tableview
