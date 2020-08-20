@@ -1,5 +1,5 @@
 //
-//  ReverseGivingMenuController.swift
+//  ConsciousGivingViewController.swift
 //  ios
 //
 //  Created by Mike Pattyn on 07/08/2020.
@@ -10,7 +10,7 @@ import Foundation
 import Foundation
 import UIKit
 
-class ReverseGivingViewController: BaseMenuViewController {
+class ConsciousGivingViewController: BaseMenuViewController {
     private let slideFromRightAnimation = PresentFromRight()
     
     override func viewDidLoad() {
