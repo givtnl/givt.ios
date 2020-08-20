@@ -154,12 +154,6 @@
                                 <action selector="backButton:" destination="vZ1-9Z-8gT" id="XAf-7u-Yaa"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="faqButton" image="help" id="Yej-Ib-aZ9">
-                            <color key="tintColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="faqButton:" destination="vZ1-9Z-8gT" id="uGe-lM-eM8"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -568,12 +562,6 @@
                                 <action selector="backButton:" destination="d4b-JG-Fkt" id="vwY-pD-Tn9"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="help" id="zn8-x2-FbJ">
-                            <color key="tintColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <action selector="faqButton:" destination="d4b-JG-Fkt" id="LuA-St-WO6"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -616,6 +604,5 @@
     <resources>
         <image name="backbtn" width="15" height="24"/>
         <image name="erase_new" width="24" height="18"/>
-        <image name="help" width="13" height="20"/>
     </resources>
 </document>
