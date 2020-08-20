@@ -14,6 +14,11 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     
     @IBOutlet var navBar: UINavigationItem!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var Label1: UILabel!
+    @IBOutlet weak var Label2: UILabel!
+    @IBOutlet weak var Label3: UILabel!
+    @IBOutlet weak var Label4: UILabel!
+    @IBOutlet weak var LabelStarting: UILabel!
     
     @IBOutlet weak var amountView: AmountTextField! { didSet { amountView.amountLabel.delegate = self } }
     @IBOutlet weak var collectGroupLabel: CollectGroupLabel!
@@ -37,7 +42,13 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     var input: DestinationSelectedRoute? = nil
     
     private var pickers: Array<Any> = [Any]()
-    private let frequencys: Array<Array<Any>> = [[Frequency.Monthly, "Maand", "maanden", "0 0 1 * *"], [Frequency.Yearly, "Jaar", "jaren", "0 0 1 1 *"], [Frequency.ThreeMonthly, "Kwartaal", "kwartalen", "0 0 1 * *"]]
+    
+     private let frequencys: Array<Array<Any>> =
+        [[Frequency.Weekly, NSLocalizedString("SetupRecurringGiftWeek", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
+        , [Frequency.Monthly, NSLocalizedString("SetupRecurringGiftMonth", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
+        , [Frequency.ThreeMonthly, NSLocalizedString("SetupRecurringGiftQuarter", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
+        , [Frequency.SixMonthly, NSLocalizedString("SetupRecurringGiftHalfYear", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
+        , [Frequency.Yearly, NSLocalizedString("SetupRecurringGiftYear", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]]
     
     private let animationDuration = 0.4
     private var decimalNotation: String! = "," {
@@ -53,6 +64,11 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
+        Label1.text = NSLocalizedString("SetupRecurringGiftText_1", comment: "")
+        Label2.text = NSLocalizedString("SetupRecurringGiftText_2", comment: "")
+        Label3.text = NSLocalizedString("SetupRecurringGiftText_3", comment: "")
+        LabelStarting.text = NSLocalizedString("SetupRecurringGiftText_4", comment: "")
+        Label4.text = NSLocalizedString("SetupRecurringGiftText_5", comment: "")
         
         setupAmountView()
         setupStartDatePicker()
@@ -119,7 +135,46 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     }
     
     @IBAction func makeSubscription(_ sender: Any) {
-        let cronExpression = frequencys[frequencyPicker.selectedRow(inComponent: 0)][3] as! String
+        
+        let cronExpression: String
+        
+        
+        let dayOfMonth = startDatePicker.date.getDay()
+        let month = startDatePicker.date.getMonth()
+        
+        switch frequencys[frequencyPicker.selectedRow(inComponent: 0)][0] as! Frequency {
+        case Frequency.Weekly:
+            let dayOfWeek: String
+            let myCalendar = Calendar(identifier: .gregorian)
+            switch myCalendar.component(.weekday, from: startDatePicker.date) {
+                case 0, 7:
+                    dayOfWeek = "SAT"
+                case 1:
+                    dayOfWeek = "SUN"
+                case 2:
+                    dayOfWeek = "MON"
+                case 3:
+                    dayOfWeek = "TUE"
+                case 4:
+                    dayOfWeek = "WED"
+                case 5:
+                    dayOfWeek = "THU"
+                case 6:
+                    dayOfWeek = "FRI"
+                default:
+                    dayOfWeek = "SUN"
+            }
+            cronExpression = "0 0 * * \(dayOfWeek)"
+        case Frequency.Monthly:
+            cronExpression = "0 0 \(dayOfMonth) * *"
+        case Frequency.ThreeMonthly:
+            cronExpression = "0 0 \(dayOfMonth) \(month+1)/3 *"
+        case Frequency.SixMonthly:
+            cronExpression = "0 0 \(dayOfMonth) \(month+1)/6 *"
+        case Frequency.Yearly:
+            cronExpression = "0 0 \(dayOfMonth) \(month+1)/12 *"
+        }
+        
         let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression)
         do {
             try mediater.sendAsync(request: command, completion: { isSuccessful in
@@ -171,6 +226,8 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         // get the currency symbol from user settingsf
         amountView.currency = UserDefaults.standard.currencySymbol
         amountView.amountLabel.text = "0"
+        amountView.bottomBorderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+        
         
         // setup event handlers
         amountView.amountLabel.addTarget(self, action: #selector(handleAmountEditingChanged), for: .editingChanged)
@@ -193,7 +250,8 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     
     private func setupCollectGroupLabel() {
         collectGroupLabel.delegate = self
-        collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
+        collectGroupLabel.label.text = NSLocalizedString("SetupRecurringGiftSelectOrganisationPlaceHolder", comment: "")
+        collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1131311879, green: 0.6627788544, blue: 0.423469007, alpha: 1)
         if let input = self.input {
             collectGroupLabel.label.text = input.name
             switch input.orgType {
@@ -206,7 +264,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
             case .charity :
                 collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
             default :
-                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1131311879, green: 0.6627788544, blue: 0.423469007, alpha: 1)
             }
         }
     }
@@ -218,8 +276,8 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     @objc func handleAmountEditingChanged() {
         if(amountView.amount >= 0.5) {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
-        } else if (amountView.amount == 0) {
-            amountView.bottomBorderColor = .clear
+        } else {
+            amountView.bottomBorderColor = ColorHelper.GivtRed
         }
     }
     
@@ -288,8 +346,10 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     }
     
     private enum Frequency {
+        case Weekly
         case Monthly
         case ThreeMonthly
+        case SixMonthly
         case Yearly
     }
     
