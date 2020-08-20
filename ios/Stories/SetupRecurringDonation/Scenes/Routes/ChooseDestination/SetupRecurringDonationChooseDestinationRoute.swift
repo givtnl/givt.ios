@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class SetupRecurringDonationBackToChooseDestinationRoute : NoResponseRequest {
+public class SetupRecurringDonationChooseDestinationRoute : NoResponseRequest {
     var mediumId: String
     
     init(mediumId: String) {

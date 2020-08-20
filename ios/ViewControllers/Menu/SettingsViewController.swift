@@ -60,10 +60,6 @@ class SettingsViewController: BaseMenuViewController {
     
     override func loadItems(){
         items = []
-        let firstDestinationThenAmount = Setting(name: "MenuItem_FirstDestinationThenAmount".localized, image: UIImage(named:"hand-holding-heart")!, callback: { self.startFirstDestinationThenAmountFlow() })
-        
-        let setupRecurringGift = Setting(name: "Iederne moand ekji", image: UIImage(named:"hand-holding-heart")!, callback: { self.setupRecurringDonation() })
-        
         let turnOnPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: UIImage(named: "amountpresets")!, callback: { self.setPresets() }, showArrow: true)
         
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
@@ -80,17 +76,20 @@ class SettingsViewController: BaseMenuViewController {
         let changePersonalInfo = Setting(name: NSLocalizedString("TitlePersonalInfo", comment: ""), image: #imageLiteral(resourceName: "pencil"), showBadge: false, callback: { self.changePersonalInfo() })
         
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
+        
+        let consciousGivingItem = Setting(name: "Doelbewust geven", image: UIImage(named: "hand-holding-heart")!, callback:  {self.consciousGiving()})
+        
         if !UserDefaults.standard.isTempUser {
             items.append([])
             items.append([])
             items.append([])
             items.append([])
             
-            items[0].append(firstDestinationThenAmount)
-            items[0].append(setupRecurringGift)
+            
 
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[1].append(givts)
+            items[1].append(consciousGivingItem)
             let givtsTaxOverviewAvailable: Setting?
             if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
                 givtsTaxOverviewAvailable = Setting(name: NSLocalizedString("YearOverviewAvailable", comment: ""), image: UIImage(), callback: {
@@ -149,26 +148,6 @@ class SettingsViewController: BaseMenuViewController {
     private var blinkTimer: Timer = Timer()
     private func toggleTorch() {
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
-    }
-    private func startFirstDestinationThenAmountFlow() {
-        let vc = UIStoryboard(name:"FirstDestinationThenAmount", bundle: nil).instantiateInitialViewController()
-        vc?.modalPresentationStyle = .fullScreen
-        vc?.transitioningDelegate = self.slideFromRightAnimation
-        DispatchQueue.main.async {
-           self.hideMenuAnimated() {
-               self.present(vc!, animated: true, completion:  nil)
-           }
-       }
-    }
-    private func setupRecurringDonation() {
-        let vc = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController()
-        vc?.modalPresentationStyle = .fullScreen
-        vc?.transitioningDelegate = self.slideFromRightAnimation
-        DispatchQueue.main.async {
-           self.hideMenuAnimated() {
-               self.present(vc!, animated: true, completion:  nil)
-           }
-       }
     }
     
     private func setPresets() {
@@ -316,7 +295,17 @@ class SettingsViewController: BaseMenuViewController {
     }
     
     private func appInfo() {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "featureMenu") as! FeatureMenuViewController
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+          let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "featureMenu") as! FeatureMenuViewController
+          self.navigationController?.pushViewController(vc, animated: true)
+      }
+    private func consciousGiving() {
+          let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConsciousGivingViewController") as! ConsciousGivingViewController
+        NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
+            SVProgressHUD.show()
+                self.navigationController?.pushViewController(vc, animated: true)
+                SVProgressHUD.dismiss()
+            }
+        
+          
+      }
 }

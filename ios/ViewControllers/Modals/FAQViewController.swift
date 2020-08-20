@@ -12,7 +12,6 @@ import AppCenterAnalytics
 class FAQViewController: UIViewController, OpenedQuestionDelegate {
     @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var closeButton: UIButton!
-    var input: OpenFAQRoute?
     var previousQuestion: FAQView?
     func didTapFAQView(sender: FAQView) {
         if previousQuestion != nil {
@@ -89,7 +88,7 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
             view.removeFromSuperview()
         }
         
-        if(input?.fromReverseFlow != true){
+        
             let GB:Bool = (AppServices.getCountryFromSim() == "GB" || AppServices.getCountryFromSim() == "GG" || AppServices.getCountryFromSim() == "JE")
                 if (GB) {
                     addQuestion(q: "FAQVraagDDI", a: "FAQAntwoordDDI")
@@ -158,11 +157,6 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
                     addQuestion(q: "TermsTitle", a: "TermsText")
                     addQuestion(q: "PrivacyTitle", a: "PolicyText")
                 }
-        }
-        else {
-            addQuestion(q: "FAQQuestionFirstTargetThenAmount1", a: "FAQAnswerFirstTargetThenAmount1")
-            addQuestion(q: "FAQQuestionFirstTargetThenAmount2", a: "FAQAnswerFirstTargetThenAmount2")
-        }
 
         addSpacer()
     }

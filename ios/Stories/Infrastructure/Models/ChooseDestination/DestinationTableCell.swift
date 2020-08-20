@@ -49,15 +49,20 @@ internal final class DestinationTableCell : UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        if selected {
+            toggleOn()
+        } else {
+            toggleOff()
+        }
     }
     
-    func toggleOff() {
+    private func toggleOff() {
         setBackgroundColorRecursive(view: self.contentView, color: UIColor.clear)
         iconLabel.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         collectGroupLabel.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
     }
     
-    func toggleOn() {
+    private func toggleOn() {
         switch type {
         case .church:
             setBackgroundColorRecursive(view: self.contentView, color: #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 1))
