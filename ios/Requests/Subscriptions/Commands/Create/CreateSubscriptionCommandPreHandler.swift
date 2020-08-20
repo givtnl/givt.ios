@@ -22,6 +22,6 @@ class CreateSubscriptionCommandPreHandler: RequestPreProcessorProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        request is CreateSubscriptionCommand
+        return request is CreateSubscriptionCommand
     }
 }

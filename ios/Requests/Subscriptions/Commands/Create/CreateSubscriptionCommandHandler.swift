@@ -35,6 +35,6 @@ class CreateSubscriptionCommandHandler : RequestHandlerProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        request is CreateSubscriptionCommand
+        return request is CreateSubscriptionCommand
     }
 }

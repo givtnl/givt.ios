@@ -17,7 +17,7 @@ class ChangeAmountLimitRoutePreHandler : RequestPreProcessorWithContextProtocol 
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        request is ChangeAmountLimitRoute
+        return request is ChangeAmountLimitRoute
     }
 }
 

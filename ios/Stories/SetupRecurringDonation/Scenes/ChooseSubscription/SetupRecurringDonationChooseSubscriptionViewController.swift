@@ -14,9 +14,14 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     
     @IBOutlet var navBar: UINavigationItem!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var Label1: UILabel!
+    @IBOutlet weak var Label2: UILabel!
+    @IBOutlet weak var Label3: UILabel!
+    @IBOutlet weak var Label4: UILabel!
+    @IBOutlet weak var LabelStarting: UILabel!
     
-    @IBOutlet weak var amountView: VerySpecialUITextField! { didSet { amountView.amountLabel.delegate = self } }
-    @IBOutlet weak var collectGroupNameTextView: VerySpecialUITextField!
+    @IBOutlet weak var amountView: AmountTextField! { didSet { amountView.amountLabel.delegate = self } }
+    @IBOutlet weak var collectGroupLabel: CollectGroupLabel!
     
     @IBOutlet weak var mainStackView: UIStackView!
     
@@ -34,10 +39,16 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var createSubcriptionButton: CustomButton!
     
-    var input: SetupRecurringDonationOpenSubscriptionRoute!
+    var input: DestinationSelectedRoute? = nil
     
     private var pickers: Array<Any> = [Any]()
-    private let frequencys: Array<Array<Any>> = [[Frequency.Monthly, "Maand", "maanden", "0 0 1 * *"], [Frequency.Yearly, "Jaar", "jaren", "0 0 1 1 *"], [Frequency.ThreeMonthly, "Kwartaal", "kwartalen", "0 0 1 * *"]]
+    
+     private let frequencys: Array<Array<Any>> =
+        [[Frequency.Weekly, NSLocalizedString("SetupRecurringGiftWeek", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
+        , [Frequency.Monthly, NSLocalizedString("SetupRecurringGiftMonth", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
+        , [Frequency.ThreeMonthly, NSLocalizedString("SetupRecurringGiftQuarter", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
+        , [Frequency.SixMonthly, NSLocalizedString("SetupRecurringGiftHalfYear", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
+        , [Frequency.Yearly, NSLocalizedString("SetupRecurringGiftYear", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]]
     
     private let animationDuration = 0.4
     private var decimalNotation: String! = "," {
@@ -47,18 +58,31 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
             fmt.minimumIntegerDigits = 1
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
+        Label1.text = NSLocalizedString("SetupRecurringGiftText_1", comment: "")
+        Label2.text = NSLocalizedString("SetupRecurringGiftText_2", comment: "")
+        Label3.text = NSLocalizedString("SetupRecurringGiftText_3", comment: "")
+        LabelStarting.text = NSLocalizedString("SetupRecurringGiftText_4", comment: "")
+        Label4.text = NSLocalizedString("SetupRecurringGiftText_5", comment: "")
         
         setupAmountView()
-        setupCollectGroupNameView()
         setupStartDatePicker()
         setupFrequencyPicker()
         setupOccurencsView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupCollectGroupLabel()
+        ensureButtonHasCorrectState()
+    }
+    
     @IBAction func openStartDatePicker(_ sender: Any) {
         if (startDatePicker.isHidden) {
             closeAllOpenPickerViews()
@@ -81,6 +105,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
             })
         }
     }
+    
     @IBAction func openFrequencyPicker(_ sender: Any) {
         if (frequencyPicker.isHidden) {
             closeAllOpenPickerViews()
@@ -104,12 +129,53 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
             })
         }
     }
+    
     @IBAction func backButton(_ sender: Any) {
-        try? mediater.send(request: SetupRecurringDonationBackToChooseDestinationRoute(mediumId: input.mediumId), withContext: self)
+        try? mediater.send(request: BackToMainRoute(), withContext: self)
     }
+    
     @IBAction func makeSubscription(_ sender: Any) {
-        let cronExpression = frequencys[frequencyPicker.selectedRow(inComponent: 0)][3] as! String
-        let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression)
+        
+        let cronExpression: String
+        
+        
+        let dayOfMonth = startDatePicker.date.getDay()
+        let month = startDatePicker.date.getMonth()
+        
+        switch frequencys[frequencyPicker.selectedRow(inComponent: 0)][0] as! Frequency {
+        case Frequency.Weekly:
+            let dayOfWeek: String
+            let myCalendar = Calendar(identifier: .gregorian)
+            switch myCalendar.component(.weekday, from: startDatePicker.date) {
+                case 0, 7:
+                    dayOfWeek = "SAT"
+                case 1:
+                    dayOfWeek = "SUN"
+                case 2:
+                    dayOfWeek = "MON"
+                case 3:
+                    dayOfWeek = "TUE"
+                case 4:
+                    dayOfWeek = "WED"
+                case 5:
+                    dayOfWeek = "THU"
+                case 6:
+                    dayOfWeek = "FRI"
+                default:
+                    dayOfWeek = "SUN"
+            }
+            cronExpression = "0 0 * * \(dayOfWeek)"
+        case Frequency.Monthly:
+            cronExpression = "0 0 \(dayOfMonth) * *"
+        case Frequency.ThreeMonthly:
+            cronExpression = "0 0 \(dayOfMonth) \(month+1)/3 *"
+        case Frequency.SixMonthly:
+            cronExpression = "0 0 \(dayOfMonth) \(month+1)/6 *"
+        case Frequency.Yearly:
+            cronExpression = "0 0 \(dayOfMonth) \(month+1)/12 *"
+        }
+        
+        let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression)
         do {
             try mediater.sendAsync(request: command, completion: { isSuccessful in
                 if isSuccessful {
@@ -117,46 +183,23 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
                 }
             })
         } catch { }
-        
-    }
-    @IBAction func openFAQ(_ sender: Any) {
-        do {
-            let command = OpenFAQRoute(fromReverseFlow: true)
-            try mediater.send(request: command, withContext: self)
-        } catch { }
     }
 }
 
-extension SetupRecurringDonationChooseSubscriptionViewController {
-    private func EnsureButtonHasCorrectState() {
-        let amount = amountView.amount
-        let endsAfterTurns = Int(occurencesTextField.text!) ?? 0
-        createSubcriptionButton.isEnabled = amount >= 0.5 && amount <= Decimal(UserDefaults.standard.amountLimit) && endsAfterTurns > 0
+extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupLabelDelegate {
+    func collectGroupLabelTapped() {
+        try? mediater.send(request: SetupRecurringDonationChooseDestinationRoute(mediumId: ""), withContext: self)
     }
     
-    private func setupCollectGroupNameView() {
-        // hide symbol and make not editable field for the cgName
-        collectGroupNameTextView.isEditable = false;
-        collectGroupNameTextView.isValutaField = false;
-        collectGroupNameTextView.amountLabel.text = input.name
-        // set color of the cgName view bottom border
-        var bottomBorderColor: UIColor
-        
-        switch input.orgType {
-        case .church:
-            bottomBorderColor = ColorHelper.GivtBlue
-        case .charity:
-            bottomBorderColor = ColorHelper.GivtOrange
-        case .campaign:
-            bottomBorderColor = ColorHelper.GivtRed
-        case .artist:
-            bottomBorderColor = ColorHelper.GivtGreen
-        default:
-            bottomBorderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        }
-        
-        collectGroupNameTextView.bottomBorderColor = bottomBorderColor
+    private func ensureButtonHasCorrectState() {
+        let amount = amountView.amount
+        let endsAfterTurns = Int(occurencesTextField.text!) ?? 0
+        createSubcriptionButton.isEnabled = amount >= 0.5
+                                        && amount <= Decimal(UserDefaults.standard.amountLimit)
+                                        && endsAfterTurns > 0
+                                        && input?.mediumId != nil
     }
+        
     private func setupStartDatePicker() {
         startDatePicker.datePickerMode = .date
         let givtPurpleUIColor = UIColor.init(rgb: 0x2c2b57)
@@ -166,8 +209,8 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         startDateLabel.text = startDatePicker.date.formatted
         startDatePicker.minimumDate = Date()
         pickers.append(startDatePicker)
-        
     }
+    
     private func setupFrequencyPicker() {
         let givtPurpleUIColor = UIColor.init(rgb: 0x2c2b57)
         frequencyPicker.setValue(givtPurpleUIColor, forKeyPath: "textColor")
@@ -178,10 +221,13 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         frequencyLabel.text = frequencys[0][1] as? String
         occurencesLabel.text = frequencys[0][2] as? String
     }
+    
     private func setupAmountView() {
         // get the currency symbol from user settingsf
         amountView.currency = UserDefaults.standard.currencySymbol
         amountView.amountLabel.text = "0"
+        amountView.bottomBorderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+        
         
         // setup event handlers
         amountView.amountLabel.addTarget(self, action: #selector(handleAmountEditingChanged), for: .editingChanged)
@@ -193,27 +239,48 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         // set number keypad
         amountView.amountLabel.keyboardType = .decimalPad
     }
+    
     private func setupOccurencsView() {
         createToolbar(occurencesTextField)
         occurencesTextField.keyboardType = .numberPad
         // setup event handlers
         occurencesTextField.addTarget(self, action: #selector(handleOccurencesEditingChanged), for: .editingChanged)
         occurencesTextField.addTarget(self, action: #selector(handleOccurencesEditingEnd), for: .editingDidEnd)
-        
+    }
+    
+    private func setupCollectGroupLabel() {
+        collectGroupLabel.delegate = self
+        collectGroupLabel.label.text = NSLocalizedString("SetupRecurringGiftSelectOrganisationPlaceHolder", comment: "")
+        collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1131311879, green: 0.6627788544, blue: 0.423469007, alpha: 1)
+        if let input = self.input {
+            collectGroupLabel.label.text = input.name
+            switch input.orgType {
+            case .artist :
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+            case .campaign :
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
+            case .church :
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1)
+            case .charity :
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
+            default :
+                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1131311879, green: 0.6627788544, blue: 0.423469007, alpha: 1)
+            }
+        }
     }
     
     @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
         startDateLabel.text = datePicker.date.formatted
     }
+    
     @objc func handleAmountEditingChanged() {
         if(amountView.amount >= 0.5) {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
-        } else if (amountView.amount == 0) {
-            amountView.bottomBorderColor = .clear
-        } else if (amountView.amount > Decimal(UserDefaults.standard.amountLimit) || amountView.amount < 0.5) {
+        } else {
             amountView.bottomBorderColor = ColorHelper.GivtRed
         }
     }
+    
     @objc func handleAmountEditingDidBegin() {
         if(amountView.amount == 0) {
             amountView.bottomBorderColor = .clear
@@ -222,17 +289,15 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
     @objc func handleAmountEditingDidEnd() {
         if(amountView.amount < 0.5) {
             showAmountTooLow()
-        } else if (amountView.amount > Decimal(UserDefaults.standard.amountLimit)) {
-            displayAmountTooHigh()
         }
-        EnsureButtonHasCorrectState()
+        ensureButtonHasCorrectState()
     }
 
     @objc func handleOccurencesEditingChanged() {
-        EnsureButtonHasCorrectState()
+        ensureButtonHasCorrectState()
     }
     @objc func handleOccurencesEditingEnd() {
-        EnsureButtonHasCorrectState()
+        ensureButtonHasCorrectState()
     }
 
     private func closeAllOpenPickerViews() {
@@ -277,11 +342,14 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         self.frequencyLabel.text = frequencys[row][1] as? String
         self.occurencesLabel.text = frequencys[row][2] as? String
         pickerView.reloadAllComponents()
-        EnsureButtonHasCorrectState()
+        ensureButtonHasCorrectState()
     }
+    
     private enum Frequency {
+        case Weekly
         case Monthly
         case ThreeMonthly
+        case SixMonthly
         case Yearly
     }
     
@@ -295,9 +363,19 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
         
         textField.inputAccessoryView = toolbar
     }
+        
+    fileprivate func showAmountTooLow() {
+        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
+        let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
+                                      message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+        self.present(alert, animated: true, completion: {})
+    }
+    
     @objc func hideKeyboard(){
         self.view.endEditing(true)
     }
+    
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         let userInfo = notification.userInfo!
@@ -313,33 +391,11 @@ extension SetupRecurringDonationChooseSubscriptionViewController {
             self.view.layoutIfNeeded()
         })
     }
+    
     @objc func keyboardWillHide(notification:NSNotification){
         bottomScrollViewConstraint.constant = 0
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
     }
-    
-    fileprivate func showAmountTooLow() {
-        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
-        let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
-                                      message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
-        self.present(alert, animated: true, completion: {})
-    }
-    fileprivate func displayAmountTooHigh() {
-        let alert = UIAlertController(
-            title: NSLocalizedString("AmountTooHigh", comment: ""),
-            message: NSLocalizedString("AmountLimitExceeded", comment: ""),
-            preferredStyle: UIAlertControllerStyle.alert)
-        
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default) { action in })
-        
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
-            try? self.mediater.send(request: ChangeAmountLimitRoute(), withContext: self)
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
 }
