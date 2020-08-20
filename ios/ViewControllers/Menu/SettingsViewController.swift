@@ -298,7 +298,13 @@ class SettingsViewController: BaseMenuViewController {
           self.navigationController?.pushViewController(vc, animated: true)
       }
     private func consciousGiving() {
-          let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReverseGivingViewController") as! ReverseGivingViewController
-          self.navigationController?.pushViewController(vc, animated: true)
+          let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConsciousGivingViewController") as! ConsciousGivingViewController
+        NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
+            SVProgressHUD.show()
+                self.navigationController?.pushViewController(vc, animated: true)
+                SVProgressHUD.dismiss()
+            }
+        
+          
       }
 }
