@@ -85,10 +85,11 @@ class SettingsViewController: BaseMenuViewController {
             items.append([])
             items.append([])
             
-            items[0].append(consciousGivingItem)
+            
 
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[1].append(givts)
+            items[1].append(consciousGivingItem)
             let givtsTaxOverviewAvailable: Setting?
             if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
                 givtsTaxOverviewAvailable = Setting(name: NSLocalizedString("YearOverviewAvailable", comment: ""), image: UIImage(), callback: {
