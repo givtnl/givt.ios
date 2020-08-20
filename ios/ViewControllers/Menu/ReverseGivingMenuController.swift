@@ -29,8 +29,8 @@ class ReverseGivingViewController: BaseMenuViewController {
     override func loadItems() {
         items = []
         items.append([])
-        let firstDestinationThenAmount = Setting(name: "MenuItem_FirstDestinationThenAmount".localized, image: UIImage(named:"hand-holding-heart")!, callback: { self.startFirstDestinationThenAmountFlow() })
-        let setupRecurringGift = Setting(name: "Iederne moand ekji", image: UIImage(named:"hand-holding-heart")!, callback: { self.setupRecurringDonation() })
+        let firstDestinationThenAmount = Setting(name: "SubMenuItem_FirstDestinationThenAmount".localized, image: UIImage(named:"hand-holding-heart")!, callback: { self.startFirstDestinationThenAmountFlow() })
+        let setupRecurringGift = Setting(name: "SubMenuItem_RecurringDonation".localized, image: UIImage(named:"hand-holding-heart")!, callback: { self.setupRecurringDonation() })
         items[0].append(firstDestinationThenAmount)
         items[0].append(setupRecurringGift)
     }
