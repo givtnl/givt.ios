@@ -16,7 +16,7 @@ class CreateSubscriptionCommandHandler : RequestHandlerProtocol {
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let request = request as! CreateSubscriptionCommand
         do {
-            let body = try request.jsonData()
+            let body = try JSONEncoder().encode(request)
             try apiClient.postToCloudAPI(url: "https://api.development.givtapp.net/subscriptions", data: body, callback: { response in
                 if let responseType = response?.statusCode {
                     switch(responseType) {
