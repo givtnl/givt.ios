@@ -955,9 +955,9 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SetupRecurringGiftYearPlural" = "years";
 "MenuItem_newGiving" = "Considered giving";
 "SubMenuItem_RecurringDonation" = "Setup recurring donation";
-"SetupRecurringGiftHalfYear" = "semester";
+"SetupRecurringGiftHalfYear" = "Half year";
 
 /*Fuzzy*/
 "SetupRecurringGiftText_6" = "times";
 "LoginAndTryAgain" = "Please log in and try again.";
-"GivtIsBeingProcessedRecurring" = "Thank you for your Givt(s) to {0}!\nYou can check the overview of your recurring donations under 'Overview'.";
+"GivtIsBeingProcessedRecurring" = "Thank you for your Givt(s) to {0}!\nYou can check the overview of your recurring donations under 'Overview'.\nThe first recurring donation of {€/£} {500,00 / 500.00} will be withdrawn in the week of {3 - datum}.";
