@@ -188,6 +188,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
 
 extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupLabelDelegate {
     func collectGroupLabelTapped() {
+        hideKeyboard()
         try? mediater.send(request: SetupRecurringDonationChooseDestinationRoute(mediumId: ""), withContext: self)
     }
     
