@@ -38,9 +38,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     @IBOutlet weak var createSubcriptionButton: CustomButton!
     
     var input: DestinationSelectedRoute? = nil
-    
-    private var pickers: Array<Any> = [Any]()
-    
+        
     private var frequencyPicker: UIPickerView!
     private var startDatePicker: UIDatePicker!
     
@@ -268,35 +266,6 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     }
     @objc func handleOccurencesEditingEnd() {
         ensureButtonHasCorrectState()
-    }
-
-    private func closeAllOpenPickerViews() {
-        for picker in pickers {
-            if picker is UIDatePicker {
-                if(!(picker as! UIDatePicker).isHidden) {
-                    UIView.animate(
-                        withDuration: animationDuration,
-                        delay: 0.0,
-                        options: [.curveEaseOut],
-                        animations: {
-                            (picker as! UIDatePicker).isHidden = true
-                            (picker as! UIDatePicker).alpha = 0
-                    })
-                }
-            } else if picker is UIPickerView {
-                if(!(picker as! UIPickerView).isHidden) {
-                    UIView.animate(
-                        withDuration: animationDuration,
-                        delay: 0.0,
-                        options: [.curveEaseOut],
-                        animations: {
-                            (picker as! UIPickerView).isHidden = true
-                            (picker as! UIPickerView).alpha = 0
-                            
-                    })
-                }
-            }
-        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
