@@ -27,11 +27,9 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     
     @IBOutlet weak var frequencyLabel: CustomUITextField!
     @IBOutlet weak var frequencyButton: UIButton!
-    @IBOutlet weak var frequencyPicker: UIPickerView!
-    
+        
     @IBOutlet weak var startDateLabel: CustomUITextField!
     @IBOutlet weak var startDateButton: UIButton!
-    @IBOutlet weak var startDatePicker: UIDatePicker!
     
     @IBOutlet weak var occurencesTextField: CustomUITextField!
     @IBOutlet weak var occurencesLabel: UILabel!
@@ -43,12 +41,15 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     
     private var pickers: Array<Any> = [Any]()
     
+    private var frequencyPicker: UIPickerView!
+    private var startDatePicker: UIDatePicker!
+    
      private let frequencys: Array<Array<Any>> =
-        [[Frequency.Weekly, NSLocalizedString("SetupRecurringGiftWeek", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
-        , [Frequency.Monthly, NSLocalizedString("SetupRecurringGiftMonth", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
-        , [Frequency.ThreeMonthly, NSLocalizedString("SetupRecurringGiftQuarter", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
-        , [Frequency.SixMonthly, NSLocalizedString("SetupRecurringGiftHalfYear", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]
-        , [Frequency.Yearly, NSLocalizedString("SetupRecurringGiftYear", comment: ""), NSLocalizedString("SetupRecurringGiftText_6", comment: "")]]
+[[Frequency.Weekly, NSLocalizedString("SetupRecurringGiftWeek", comment: "")]
+        , [Frequency.Monthly, NSLocalizedString("SetupRecurringGiftMonth", comment: "")]
+        , [Frequency.ThreeMonthly, NSLocalizedString("SetupRecurringGiftQuarter", comment: "")]
+        , [Frequency.SixMonthly, NSLocalizedString("SetupRecurringGiftHalfYear", comment: "")]
+        , [Frequency.Yearly, NSLocalizedString("SetupRecurringGiftYear", comment: "")]]
     
     private let animationDuration = 0.4
     private var decimalNotation: String! = "," {
@@ -64,6 +65,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
+        
         Label1.text = NSLocalizedString("SetupRecurringGiftText_1", comment: "")
         Label2.text = NSLocalizedString("SetupRecurringGiftText_2", comment: "")
         Label3.text = NSLocalizedString("SetupRecurringGiftText_3", comment: "")
@@ -71,9 +73,19 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         Label4.text = NSLocalizedString("SetupRecurringGiftText_5", comment: "")
         
         setupAmountView()
-        setupStartDatePicker()
-        setupFrequencyPicker()
         setupOccurencsView()
+        setupFrequencyPickerView()
+        setupStartDatePickerView()
+
+    }
+
+    @IBAction func openStartDatePicker(_ sender: Any) {
+        startDateLabel.becomeFirstResponder()
+        startDatePicker.date = Date()
+    }
+    @IBAction func openFrequencyPicker(_ sender: Any) {
+        frequencyLabel.becomeFirstResponder()
+        frequencyPicker.selectRow(0, inComponent: 0, animated: false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,54 +94,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         setupCollectGroupLabel()
         ensureButtonHasCorrectState()
     }
-    
-    @IBAction func openStartDatePicker(_ sender: Any) {
-        if (startDatePicker.isHidden) {
-            closeAllOpenPickerViews()
-            UIView.animate(
-                withDuration: animationDuration,
-                delay: 0.0,
-                options: [.curveEaseOut],
-                animations: {
-                    self.startDatePicker.isHidden = false
-                    self.startDatePicker.alpha = 1
-            })
-        } else {
-            UIView.animate(
-                withDuration: animationDuration,
-                delay: 0.0,
-                options: [.curveEaseOut],
-                animations: {
-                    self.startDatePicker.isHidden = true
-                    self.startDatePicker.alpha = 0
-            })
-        }
-    }
-    
-    @IBAction func openFrequencyPicker(_ sender: Any) {
-        if (frequencyPicker.isHidden) {
-            closeAllOpenPickerViews()
-            UIView.animate(
-                withDuration: animationDuration,
-                delay: 0.0,
-                options: [.curveEaseOut],
-                animations: {
-                    self.frequencyPicker.isHidden = false
-                    self.frequencyPicker.alpha = 1
-                    
-            })
-        } else {
-            UIView.animate(
-                withDuration: animationDuration,
-                delay: 0.0,
-                options: [.curveEaseOut],
-                animations: {
-                    self.frequencyPicker.isHidden = true
-                    self.frequencyPicker.alpha = 0
-            })
-        }
-    }
-    
+
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: BackToMainRoute(), withContext: self)
     }
@@ -138,10 +103,9 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         
         let cronExpression: String
         
-        
         let dayOfMonth = startDatePicker.date.getDay()
         let month = startDatePicker.date.getMonth()
-        
+
         switch frequencys[frequencyPicker.selectedRow(inComponent: 0)][0] as! Frequency {
         case Frequency.Weekly:
             let dayOfWeek: String
@@ -174,7 +138,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         case Frequency.Yearly:
             cronExpression = "0 0 \(dayOfMonth) \(month+1)/12 *"
         }
-        
+
         let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression)
         do {
             try mediater.sendAsync(request: command, completion: { isSuccessful in
@@ -187,6 +151,28 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
 }
 
 extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupLabelDelegate {
+    func setupFrequencyPickerView() {
+        frequencyPicker = UIPickerView()
+        frequencyPicker.dataSource = self
+        frequencyPicker.delegate = self
+        frequencyLabel.inputView = frequencyPicker
+        frequencyPicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        frequencyPicker.selectRow(0, inComponent: 0, animated: false)
+        frequencyLabel.text = frequencys[0][1] as? String
+        createToolbar(frequencyLabel)
+    }
+    func setupStartDatePickerView() {
+        startDatePicker = UIDatePicker()
+        startDatePicker.datePickerMode = .date
+        startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        startDatePicker.setValue(false, forKeyPath: "highlightsToday")
+        startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
+        startDateLabel.text = startDatePicker.date.formatted
+        startDatePicker.minimumDate = Date()
+        startDateLabel.inputView = startDatePicker
+        createToolbar(startDateLabel)
+    }
+    
     func collectGroupLabelTapped() {
         hideKeyboard()
         try? mediater.send(request: SetupRecurringDonationChooseDestinationRoute(mediumId: ""), withContext: self)
@@ -199,28 +185,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
                                         && amount <= Decimal(UserDefaults.standard.amountLimit)
                                         && endsAfterTurns > 0
                                         && input?.mediumId != nil
-    }
-        
-    private func setupStartDatePicker() {
-        startDatePicker.datePickerMode = .date
-        let givtPurpleUIColor = UIColor.init(rgb: 0x2c2b57)
-        startDatePicker.setValue(givtPurpleUIColor, forKeyPath: "textColor")
-        startDatePicker.setValue(false, forKeyPath: "highlightsToday")
-        startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
-        startDateLabel.text = startDatePicker.date.formatted
-        startDatePicker.minimumDate = Date()
-        pickers.append(startDatePicker)
-    }
     
-    private func setupFrequencyPicker() {
-        let givtPurpleUIColor = UIColor.init(rgb: 0x2c2b57)
-        frequencyPicker.setValue(givtPurpleUIColor, forKeyPath: "textColor")
-        frequencyPicker.dataSource = self
-        frequencyPicker.delegate = self
-        pickers.append(frequencyPicker)
-        frequencyPicker.selectRow(0, inComponent: 0, animated: false)
-        frequencyLabel.text = frequencys[0][1] as? String
-        occurencesLabel.text = frequencys[0][2] as? String
     }
     
     private func setupAmountView() {
@@ -236,6 +201,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         
         // setup toolbar for the keyboard
         createToolbar(amountView.amountLabel)
+        
         // set number keypad
         amountView.amountLabel.keyboardType = .decimalPad
     }
@@ -340,7 +306,6 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.frequencyLabel.text = frequencys[row][1] as? String
-        self.occurencesLabel.text = frequencys[row][2] as? String
         pickerView.reloadAllComponents()
         ensureButtonHasCorrectState()
     }
