@@ -226,7 +226,6 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     private func setupAmountView() {
         // get the currency symbol from user settingsf
         amountView.currency = UserDefaults.standard.currencySymbol
-        amountView.amountLabel.text = "0"
         amountView.bottomBorderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
         
         
