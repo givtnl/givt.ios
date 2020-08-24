@@ -138,8 +138,12 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         case Frequency.Yearly:
             cronExpression = "0 0 \(dayOfMonth) \(month+1)/12 *"
         }
-
-        let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd"
+        let startDeet: String = dateFormatter.string(from: startDatePicker.date)
+        
+        let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression, startDate: startDeet)
         do {
             try mediater.sendAsync(request: command, completion: { isSuccessful in
                 if isSuccessful {
