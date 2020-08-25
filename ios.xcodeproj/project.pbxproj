@@ -26,7 +26,6 @@
 		3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211FB6D24D95BBE00351BC4 /* AmountTextField.swift */; };
 		3211FB7124D95C1000351BC4 /* AmountTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3211FB7024D95C1000351BC4 /* AmountTextField.xib */; };
 		3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450824DB0206003CF5CF /* ColorHelper.swift */; };
-		3232451024DD4C63003CF5CF /* ConsciousGivingMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450F24DD4C63003CF5CF /* ConsciousGivingMenuController.swift */; };
 		3269A07924F54FAF00E2531A /* CloudAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3269A07824F54FAF00E2531A /* CloudAPIClient.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */; };
@@ -182,6 +181,7 @@
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
 		DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */; };
+		DF1300F724F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */; };
 		DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */; };
 		DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */; };
 		DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBFAC302409404100F53095 /* GiftAidSettings.swift */; };
@@ -310,7 +310,6 @@
 		3211FB6D24D95BBE00351BC4 /* AmountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextField.swift; sourceTree = "<group>"; };
 		3211FB7024D95C1000351BC4 /* AmountTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountTextField.xib; sourceTree = "<group>"; };
 		3232450824DB0206003CF5CF /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
-		3232450F24DD4C63003CF5CF /* ConsciousGivingMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsciousGivingMenuController.swift; sourceTree = "<group>"; };
 		3269A07824F54FAF00E2531A /* CloudAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudAPIClient.swift; sourceTree = "<group>"; };
 		32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupRecurringDonation.storyboard; sourceTree = "<group>"; };
@@ -472,6 +471,7 @@
 		D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCompleteViewController.swift; sourceTree = "<group>"; };
 		DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMessageType.swift; sourceTree = "<group>"; };
+		DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRecurringDonationViewController.swift; sourceTree = "<group>"; };
 		DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushnotificationType.swift; sourceTree = "<group>"; };
 		DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidInfoController.swift; sourceTree = "<group>"; };
 		DFBFAC302409404100F53095 /* GiftAidSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidSettings.swift; sourceTree = "<group>"; };
@@ -628,6 +628,7 @@
 		32CA17A024CECE5100248053 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DF1300F524F5601F00EE1785 /* HomeScreen */,
 				32CA17B024CED48100248053 /* Routes */,
 				32CA17A424CED00200248053 /* ChooseDestination */,
 				320CF72524CEDF37008B3EDE /* ChooseSubscription */,
@@ -1095,6 +1096,14 @@
 				D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DF1300F524F5601F00EE1785 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */,
+			);
+			path = HomeScreen;
 			sourceTree = "<group>";
 		};
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
@@ -1747,6 +1756,7 @@
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
 				FB872FED24C6E722005FF355 /* BackToChooseDestinationRoute.swift in Sources */,
 				FBC1859524C08431001A4C6B /* DestinationTableCell.swift in Sources */,
+				DF1300F724F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift in Sources */,
 				27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */,
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
 				D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */,
