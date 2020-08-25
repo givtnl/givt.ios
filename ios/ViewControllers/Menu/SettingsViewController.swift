@@ -77,7 +77,7 @@ class SettingsViewController: BaseMenuViewController {
         
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
-//        let consciousGivingItem = Setting(name: "Doelbewust geven", image: UIImage(named: "hand-holding-heart")!, callback:  {self.consciousGiving()})
+        //        let consciousGivingItem = Setting(name: "Doelbewust geven", image: UIImage(named: "hand-holding-heart")!, callback:  {self.consciousGiving()})
         let firstDestinationThenAmount = Setting(name: "SubMenuItem_FirstDestinationThenAmount".localized, image: UIImage(named:"hand-holding-heart")!, callback: {self.startFirstDestinationThenAmountFlow() })
         let setupRecurringGift = Setting(name: "SubMenuItem_RecurringDonation".localized, image: UIImage(named:"hand-holding-heart")!, callback: { self.setupRecurringDonation() })
         
@@ -88,7 +88,7 @@ class SettingsViewController: BaseMenuViewController {
             items.append([])
             
             
-
+            
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[1].append(givts)
             items[1].append(firstDestinationThenAmount)
@@ -298,20 +298,23 @@ class SettingsViewController: BaseMenuViewController {
     }
     
     private func appInfo() {
-          let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "featureMenu") as! FeatureMenuViewController
-          self.navigationController?.pushViewController(vc, animated: true)
-      }
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "featureMenu") as! FeatureMenuViewController
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     private func startFirstDestinationThenAmountFlow() {
+        
         let vc = UIStoryboard(name:"FirstDestinationThenAmount", bundle: nil).instantiateInitialViewController()
         vc?.modalPresentationStyle = .fullScreen
         vc?.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
-            NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
-                SVProgressHUD.show()
-                self.present(vc!, animated: true, completion:  nil)
-                self.navigationController?.popViewController(animated: false)
-                SVProgressHUD.dismiss()
+            self.hideMenuAnimated() {
+                NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
+                    SVProgressHUD.show()
+                    self.present(vc!, animated: true, completion:  nil)
+                    self.navigationController?.popViewController(animated: false)
+                    SVProgressHUD.dismiss()
+                }
             }
         }
     }
@@ -321,11 +324,13 @@ class SettingsViewController: BaseMenuViewController {
         vc?.modalPresentationStyle = .fullScreen
         vc?.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
-            NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
-                SVProgressHUD.show()
-                self.present(vc!, animated: true, completion:  nil)
-                self.navigationController?.popViewController(animated: false)
-                SVProgressHUD.dismiss()
+            self.hideMenuAnimated() {
+                NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
+                    SVProgressHUD.show()
+                    self.present(vc!, animated: true, completion:  nil)
+                    self.navigationController?.popViewController(animated: false)
+                    SVProgressHUD.dismiss()
+                }
             }
         }
     }
