@@ -219,21 +219,12 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     private func setupCollectGroupLabel() {
         collectGroupLabel.delegate = self
         collectGroupLabel.label.text = NSLocalizedString("SetupRecurringGiftSelectOrganisationPlaceHolder", comment: "")
-        collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1131311879, green: 0.6627788544, blue: 0.423469007, alpha: 1)
         if let input = self.input {
             collectGroupLabel.label.text = input.name
-            switch input.orgType {
-            case .artist :
+            if input.name != "" {
                 collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
-            case .campaign :
-                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
-            case .church :
-                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1)
-            case .charity :
-                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
-            default :
-                collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1131311879, green: 0.6627788544, blue: 0.423469007, alpha: 1)
             }
+            
         }
     }
     
