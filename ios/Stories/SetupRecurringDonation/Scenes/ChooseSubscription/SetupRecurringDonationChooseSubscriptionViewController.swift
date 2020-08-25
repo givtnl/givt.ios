@@ -69,6 +69,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         Label3.text = NSLocalizedString("SetupRecurringGiftText_3", comment: "")
         LabelStarting.text = NSLocalizedString("SetupRecurringGiftText_4", comment: "")
         Label4.text = NSLocalizedString("SetupRecurringGiftText_5", comment: "")
+        occurencesLabel.text = NSLocalizedString("SetupRecurringGiftText_6", comment: "")
         
         setupAmountView()
         setupOccurencsView()
