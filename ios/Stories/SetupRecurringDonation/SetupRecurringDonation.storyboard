@@ -292,7 +292,7 @@
                                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 </state>
                                                                                 <connections>
-                                                                                    <action selector="openFrequencyPicker:" destination="UTq-9E-O8z" eventType="touchUpInside" id="Lff-Ax-qkV"/>
+                                                                                    <action selector="openFrequencyPicker:" destination="UTq-9E-O8z" eventType="touchUpInside" id="eSq-5r-dXN"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -311,12 +311,6 @@
                                                                             <constraint firstItem="S4s-8R-big" firstAttribute="centerY" secondItem="GIw-Od-57l" secondAttribute="centerY" id="vYe-sB-z8i"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <pickerView hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="doD-DL-JzP">
-                                                                        <rect key="frame" x="0.0" y="114" width="374" height="100"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="100" id="Pm3-ay-ARQ"/>
-                                                                        </constraints>
-                                                                    </pickerView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Iedere" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tYg-bU-QxX" userLabel="LabelStarting">
                                                                         <rect key="frame" x="0.0" y="124" width="374" height="40"/>
                                                                         <constraints>
@@ -352,7 +346,7 @@
                                                                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                 </state>
                                                                                 <connections>
-                                                                                    <action selector="openStartDatePicker:" destination="UTq-9E-O8z" eventType="touchUpInside" id="h3p-DE-mSI"/>
+                                                                                    <action selector="openStartDatePicker:" destination="UTq-9E-O8z" eventType="touchUpInside" id="uxY-1Z-EQ0"/>
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
@@ -371,13 +365,6 @@
                                                                             <constraint firstAttribute="trailing" secondItem="UUF-tb-zsE" secondAttribute="trailing" id="wW1-0Z-TNP"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <datePicker hidden="YES" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="RCD-wW-Zcy">
-                                                                        <rect key="frame" x="0.0" y="238" width="374" height="100"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="100" id="cfi-0N-rol"/>
-                                                                        </constraints>
-                                                                        <locale key="locale" localeIdentifier="nl"/>
-                                                                    </datePicker>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dit moet stoppen na" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qn-ks-03S">
                                                                         <rect key="frame" x="0.0" y="248" width="374" height="40"/>
                                                                         <constraints>
@@ -523,14 +510,12 @@
                         <outlet property="createSubcriptionButton" destination="lJ0-Hf-NsM" id="XJM-5M-HRC"/>
                         <outlet property="frequencyButton" destination="mIz-dt-G6N" id="jdN-1Z-Vcd"/>
                         <outlet property="frequencyLabel" destination="phc-si-YWc" id="GGS-KL-oxh"/>
-                        <outlet property="frequencyPicker" destination="doD-DL-JzP" id="1sF-F2-eCh"/>
                         <outlet property="mainStackView" destination="p3n-nK-f5M" id="I2w-Ea-Ls6"/>
                         <outlet property="navBar" destination="zDG-Q8-kK7" id="PqP-uT-yQN"/>
                         <outlet property="occurencesLabel" destination="acb-w8-OIu" id="A38-Pn-Qfv"/>
                         <outlet property="occurencesTextField" destination="OmU-h5-Y4I" id="Yhh-NV-EQt"/>
                         <outlet property="startDateButton" destination="UUF-tb-zsE" id="jfH-sr-v4d"/>
                         <outlet property="startDateLabel" destination="4Dk-Nd-VhK" id="565-Sj-8WL"/>
-                        <outlet property="startDatePicker" destination="RCD-wW-Zcy" id="ZlK-6J-J3x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o74-s8-g1r" userLabel="First Responder" sceneMemberID="firstResponder"/>

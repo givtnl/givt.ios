@@ -120,6 +120,13 @@ class AppConstants {
             //return "http://localhost:5000"
         #endif
     }()
+    static var cloudApiUri: String = {
+        #if PRODUCTION
+            return "https://api.development.givtapp.net"
+        #else
+            return "https://api.development.givtapp.net"
+        #endif
+    }()
     
     static var appStoreUrl = "itms-apps://itunes.apple.com/app/id1181435988"
     
