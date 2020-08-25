@@ -27,7 +27,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     
     @IBOutlet weak var frequencyLabel: CustomUITextField!
     @IBOutlet weak var frequencyButton: UIButton!
-        
+    
     @IBOutlet weak var startDateLabel: CustomUITextField!
     @IBOutlet weak var startDateButton: UIButton!
     
@@ -38,16 +38,16 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     @IBOutlet weak var createSubcriptionButton: CustomButton!
     
     var input: DestinationSelectedRoute? = nil
-        
+    
     private var frequencyPicker: UIPickerView!
     private var startDatePicker: UIDatePicker!
     
-     private let frequencys: Array<Array<Any>> =
-[[Frequency.Weekly, NSLocalizedString("SetupRecurringGiftWeek", comment: "")]
-        , [Frequency.Monthly, NSLocalizedString("SetupRecurringGiftMonth", comment: "")]
-        , [Frequency.ThreeMonthly, NSLocalizedString("SetupRecurringGiftQuarter", comment: "")]
-        , [Frequency.SixMonthly, NSLocalizedString("SetupRecurringGiftHalfYear", comment: "")]
-        , [Frequency.Yearly, NSLocalizedString("SetupRecurringGiftYear", comment: "")]]
+    private let frequencys: Array<Array<Any>> =
+        [[Frequency.Weekly, NSLocalizedString("SetupRecurringGiftWeek", comment: "")]
+            , [Frequency.Monthly, NSLocalizedString("SetupRecurringGiftMonth", comment: "")]
+            , [Frequency.ThreeMonthly, NSLocalizedString("SetupRecurringGiftQuarter", comment: "")]
+            , [Frequency.SixMonthly, NSLocalizedString("SetupRecurringGiftHalfYear", comment: "")]
+            , [Frequency.Yearly, NSLocalizedString("SetupRecurringGiftYear", comment: "")]]
     
     private let animationDuration = 0.4
     private var decimalNotation: String! = "," {
@@ -75,9 +75,15 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         setupOccurencsView()
         setupFrequencyPickerView()
         setupStartDatePickerView()
-
+        
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setupCollectGroupLabel()
+        ensureButtonHasCorrectState()
+    }
+    
     @IBAction func openStartDatePicker(_ sender: Any) {
         startDateLabel.becomeFirstResponder()
         startDatePicker.date = Date()
@@ -86,46 +92,37 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         frequencyLabel.becomeFirstResponder()
         frequencyPicker.selectRow(0, inComponent: 0, animated: false)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        setupCollectGroupLabel()
-        ensureButtonHasCorrectState()
-    }
-
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: BackToMainRoute(), withContext: self)
     }
-    
     @IBAction func makeSubscription(_ sender: Any) {
         
         let cronExpression: String
         
         let dayOfMonth = startDatePicker.date.getDay()
         let month = startDatePicker.date.getMonth()
-
+        
         switch frequencys[frequencyPicker.selectedRow(inComponent: 0)][0] as! Frequency {
         case Frequency.Weekly:
             let dayOfWeek: String
             let myCalendar = Calendar(identifier: .gregorian)
             switch myCalendar.component(.weekday, from: startDatePicker.date) {
-                case 0, 7:
-                    dayOfWeek = "SAT"
-                case 1:
-                    dayOfWeek = "SUN"
-                case 2:
-                    dayOfWeek = "MON"
-                case 3:
-                    dayOfWeek = "TUE"
-                case 4:
-                    dayOfWeek = "WED"
-                case 5:
-                    dayOfWeek = "THU"
-                case 6:
-                    dayOfWeek = "FRI"
-                default:
-                    dayOfWeek = "SUN"
+            case 0, 7:
+                dayOfWeek = "SAT"
+            case 1:
+                dayOfWeek = "SUN"
+            case 2:
+                dayOfWeek = "MON"
+            case 3:
+                dayOfWeek = "TUE"
+            case 4:
+                dayOfWeek = "WED"
+            case 5:
+                dayOfWeek = "THU"
+            case 6:
+                dayOfWeek = "FRI"
+            default:
+                dayOfWeek = "SUN"
             }
             cronExpression = "0 0 * * \(dayOfWeek)"
         case Frequency.Monthly:
@@ -144,12 +141,15 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         
         let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression, startDate: startDeet)
         do {
-            try mediater.sendAsync(request: command, completion: { isSuccessful in
-                if isSuccessful {
-                    try? self.mediater.send(request: FinalizeGivingRoute())
+            try mediater.sendAsync(request: command) { subscriptionMade in
+                if(subscriptionMade) {
+                    DispatchQueue.main.async {
+                        try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
+                    }
                 }
-            })
-        } catch { }
+            }
+        } catch  {
+        }
     }
 }
 
@@ -185,10 +185,10 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         let amount = amountView.amount
         let endsAfterTurns = Int(occurencesTextField.text!) ?? 0
         createSubcriptionButton.isEnabled = amount >= 0.5
-                                        && amount <= Decimal(UserDefaults.standard.amountLimit)
-                                        && endsAfterTurns > 0
-                                        && input?.mediumId != nil
-    
+            && amount <= Decimal(UserDefaults.standard.amountLimit)
+            && endsAfterTurns > 0
+            && input?.mediumId != nil
+        
     }
     
     private func setupAmountView() {
@@ -273,7 +273,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         }
         ensureButtonHasCorrectState()
     }
-
+    
     @objc func handleOccurencesEditingChanged() {
         ensureButtonHasCorrectState()
     }
@@ -314,7 +314,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         
         textField.inputAccessoryView = toolbar
     }
-        
+    
     fileprivate func showAmountTooLow() {
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
         let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
