@@ -193,8 +193,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     private func setupAmountView() {
         // get the currency symbol from user settingsf
         amountView.currency = UserDefaults.standard.currencySymbol
-        amountView.bottomBorderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
-        
+        amountView.bottomBorderColor = UIColor.white
         
         // setup event handlers
         amountView.amountLabel.addTarget(self, action: #selector(handleAmountEditingChanged), for: .editingChanged)
@@ -219,12 +218,34 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     private func setupCollectGroupLabel() {
         collectGroupLabel.delegate = self
         collectGroupLabel.label.text = NSLocalizedString("SetupRecurringGiftSelectOrganisationPlaceHolder", comment: "")
+        collectGroupLabel.bottomBorderColor = UIColor.white
+        collectGroupLabel.symbolView.isHidden = true;
+        collectGroupLabel.symbol.text = ""
         if let input = self.input {
             collectGroupLabel.label.text = input.name
-            if input.name != "" {
+
+            if (collectGroupLabel.label.text != NSLocalizedString("SetupRecurringGiftSelectOrganisationPlaceHolder", comment: "")) {
                 collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+                let text: String
+                switch input.orgType {
+                    case CollectGroupType.artist:
+                        text = "guitar"
+                    case CollectGroupType.campaign:
+                        text = "hand-holding-heart";
+                    case CollectGroupType.charity:
+                        text = "hands-helping";
+                    case CollectGroupType.church:
+                        text = "church";
+                    case CollectGroupType.debug:
+                        text = "debug";
+                    case CollectGroupType.demo:
+                        text = "democrat";
+                    default:
+                        text = "hands-helping";
+                }
+                collectGroupLabel.symbol.text = text
+                collectGroupLabel.symbolView.isHidden = false;
             }
-            
         }
     }
     

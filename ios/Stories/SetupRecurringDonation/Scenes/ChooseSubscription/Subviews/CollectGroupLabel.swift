@@ -20,6 +20,8 @@ class CollectGroupLabel : UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet var bottomBorderView: UIView!
     @IBOutlet var label: UILabel!
+    @IBOutlet weak var symbol: UILabel!
+    @IBOutlet weak var symbolView: UIView!
     
     private var borderView: UIView!
     
@@ -57,6 +59,7 @@ class CollectGroupLabel : UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         label.baselineAdjustment = .alignCenters
         label.isUserInteractionEnabled = true
+        symbolView.isHidden = true;
     }
     
     private var _isValid: Bool = true
