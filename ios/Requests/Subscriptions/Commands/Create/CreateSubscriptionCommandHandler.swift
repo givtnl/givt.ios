@@ -11,26 +11,23 @@ import CoreData
 import UIKit
 
 class CreateSubscriptionCommandHandler : RequestHandlerProtocol {
-    let apiClient = APIClient.shared
-
+    let apiClient = CloudAPIClient.shared
+    
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let request = request as! CreateSubscriptionCommand
         do {
             let body = try JSONEncoder().encode(request)
-            try apiClient.postToCloudAPI(url: "https://api.development.givtapp.net/subscriptions", data: body, callback: { response in
-                if let responseType = response?.statusCode {
-                    switch(responseType) {
-                        case 202:
-                            LogService.shared.info(message: "Succesfully posted a new subscription")
-                        default:
-                            LogService.shared.info(message: "Got a response but was not accepted with status code: "  + String(responseType))
-                    }
+            try apiClient.post(url: "/subscriptions", data: body) { response in
+                if let statusCode = response?.statusCode {
+                    try? completion((statusCode == 202) as! R.TResponse)
                 } else {
                     LogService.shared.info(message: "Couldnt get a response")
+                    try? completion(false as! R.TResponse)
                 }
-            })
+            }
         } catch {
             LogService.shared.info(message: "Unknown error")
+            try? completion(false as! R.TResponse)
         }
     }
     
