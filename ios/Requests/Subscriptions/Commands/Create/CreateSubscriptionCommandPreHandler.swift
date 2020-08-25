@@ -13,10 +13,8 @@ class CreateSubscriptionCommandPreHandler: RequestPreProcessorProtocol {
     func handle<R>(request: R, completion: @escaping (R) throws -> Void) throws where R : RequestProtocol {
         let request = request as! CreateSubscriptionCommand
         
-        if let userId = UserDefaults.standard.userExt?.guid {
-            if let uuid = UUID(uuidString: userId) {
-                request.userId = uuid
-            }
+        if let user = UserDefaults.standard.userExt {
+            request.userId = UUID(uuidString: user.guid.uppercased())
         }
         try completion(request as! R)
     }
