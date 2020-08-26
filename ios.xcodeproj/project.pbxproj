@@ -182,6 +182,8 @@
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
 		DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */; };
 		DF1300F724F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */; };
+		DF1300FA24F63F2C00EE1785 /* CreateRecurringDonationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1300F924F63F2C00EE1785 /* CreateRecurringDonationButton.xib */; };
+		DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1300FB24F63F4500EE1785 /* CreateRecurringDonationButton.swift */; };
 		DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */; };
 		DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */; };
 		DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBFAC302409404100F53095 /* GiftAidSettings.swift */; };
@@ -472,6 +474,8 @@
 		DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMessageType.swift; sourceTree = "<group>"; };
 		DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRecurringDonationViewController.swift; sourceTree = "<group>"; };
+		DF1300F924F63F2C00EE1785 /* CreateRecurringDonationButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateRecurringDonationButton.xib; sourceTree = "<group>"; };
+		DF1300FB24F63F4500EE1785 /* CreateRecurringDonationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationButton.swift; sourceTree = "<group>"; };
 		DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushnotificationType.swift; sourceTree = "<group>"; };
 		DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidInfoController.swift; sourceTree = "<group>"; };
 		DFBFAC302409404100F53095 /* GiftAidSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidSettings.swift; sourceTree = "<group>"; };
@@ -1101,9 +1105,19 @@
 		DF1300F524F5601F00EE1785 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				DF1300F824F63EF600EE1785 /* Subviews */,
 				DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */,
 			);
 			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		DF1300F824F63EF600EE1785 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				DF1300F924F63F2C00EE1785 /* CreateRecurringDonationButton.xib */,
+				DF1300FB24F63F4500EE1785 /* CreateRecurringDonationButton.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
@@ -1677,6 +1691,7 @@
 				D7E708541FE7FD68002A7770 /* InfoPlist.strings in Resources */,
 				D7CCC0681FC427A9006A6A4F /* Pincode.storyboard in Resources */,
 				D78D44B01FC6FC0200325CAF /* FAQ.storyboard in Resources */,
+				DF1300FA24F63F2C00EE1785 /* CreateRecurringDonationButton.xib in Resources */,
 				D72A89D11FE8050A00C06EF6 /* LaunchScreen.storyboard in Resources */,
 				32CA179D24CECB9500248053 /* SetupRecurringDonation.storyboard in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
@@ -1907,6 +1922,7 @@
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
+				DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */,
 				3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */,
 				D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */,
 				27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */,
