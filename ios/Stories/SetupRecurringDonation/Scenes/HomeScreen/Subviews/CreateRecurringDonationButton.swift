@@ -9,20 +9,14 @@
 import UIKit
 import Foundation
 
-
-protocol CreateButtonDelegate {
-    func createButtonTapped() -> Void
-}
-
 @IBDesignable
-class CreateRecurringDonationButton: UIView {
+class CreateRecurringDonationButton: UIControl {
     
-    @IBOutlet var contentView: CreateRecurringDonationButton!
+    @IBOutlet var contentView: UIView!
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var symbolRight: UILabel!
     
-    var delegate: CreateButtonDelegate? = nil
     private var borderView: UIView!
     
     override init(frame: CGRect) {
@@ -45,10 +39,19 @@ class CreateRecurringDonationButton: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    @IBAction func ButtonTapped(_ sender: UITapGestureRecognizer) {
-        if let delegate = self.delegate {
-            delegate.createButtonTapped()
-        }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        contentView.backgroundColor = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+        super.touchesBegan(touches, with: event)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        contentView.backgroundColor = #colorLiteral(red: 0.2529559135, green: 0.789002955, blue: 0.554667592, alpha: 1)
+        super.touchesEnded(touches, with: event)
+    }
+        
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        contentView.backgroundColor = #colorLiteral(red: 0.2529559135, green: 0.789002955, blue: 0.554667592, alpha: 1)
+        super.touchesCancelled(touches, with: event)
     }
     
     func shadowAndCorners() {
@@ -60,31 +63,5 @@ class CreateRecurringDonationButton: UIView {
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
         self.backgroundColor = UIColor.clear
-
-        borderView = UIView()
-        borderView.isUserInteractionEnabled = false
-        borderView.translatesAutoresizingMaskIntoConstraints = false
-        borderView.backgroundColor = UIColor.white
-        borderView.frame = self.bounds
-        borderView.layer.cornerRadius = 4
-        borderView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        borderView.layer.borderWidth = 1
-        borderView.layer.masksToBounds = true
-        self.addSubview(borderView)
-        borderView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        borderView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-
     }
-    
-    
-    
-    
-    
-    
-    
-    
-        
-   
 }

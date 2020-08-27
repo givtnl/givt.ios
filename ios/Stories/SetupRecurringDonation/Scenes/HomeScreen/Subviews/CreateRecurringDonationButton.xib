@@ -20,20 +20,15 @@
                 <outlet property="symbolRight" destination="TWK-DD-68E" id="7ep-he-buf"/>
             </connections>
         </placeholder>
-        <tapGestureRecognizer id="FoR-87-PmY">
-            <connections>
-                <action selector="ButtonTapped:" destination="-1" id="MtN-D8-QSb"/>
-            </connections>
-        </tapGestureRecognizer>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6iI-np-bES">
+        <view userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6iI-np-bES">
             <rect key="frame" x="0.0" y="0.0" width="538" height="76"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TE5-pR-ZEM">
+                <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TE5-pR-ZEM">
                     <rect key="frame" x="25" y="10" width="508" height="52"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-vi-d4o">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-vi-d4o">
                             <rect key="frame" x="0.0" y="0.0" width="458" height="52"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Creeer een" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTP-oZ-vhU">
@@ -65,7 +60,7 @@
                                 <constraint firstAttribute="bottom" secondItem="Bz5-Un-aN3" secondAttribute="bottom" id="lUO-JK-2Ft"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heB-aq-Jl2">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heB-aq-Jl2">
                             <rect key="frame" x="458" y="0.0" width="50" height="52"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chevron-right" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWK-DD-68E">
