@@ -58,7 +58,6 @@ class CollectGroupLabel : UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         label.baselineAdjustment = .alignCenters
-        label.isUserInteractionEnabled = true
         symbolView.isHidden = true;
     }
     
@@ -74,7 +73,7 @@ class CollectGroupLabel : UIView {
     }
     
     @IBAction func labelTapped(_ sender: UITapGestureRecognizer) {
-        if let delegate = self.delegate {
+        if sender.state == .ended, let delegate = self.delegate {
             delegate.collectGroupLabelTapped()
         }
     }
