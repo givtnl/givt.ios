@@ -58,9 +58,6 @@
                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                     <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
-                                    <connections>
-                                        <outletCollection property="gestureRecognizers" destination="Qlx-8L-VPY" appends="YES" id="PaS-GG-ubK"/>
-                                    </connections>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -92,6 +89,9 @@
                 <constraint firstAttribute="trailing" secondItem="hIy-lc-B7S" secondAttribute="trailing" id="bf9-nq-zIb"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="Qlx-8L-VPY" appends="YES" id="YY0-yM-uXx"/>
+            </connections>
             <point key="canvasLocation" x="237.68115942028987" y="-15.401785714285714"/>
         </view>
         <tapGestureRecognizer id="Qlx-8L-VPY">
