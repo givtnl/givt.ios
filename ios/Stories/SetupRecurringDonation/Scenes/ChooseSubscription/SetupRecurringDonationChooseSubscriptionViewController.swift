@@ -255,7 +255,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     }
     
     @objc func handleAmountEditingChanged() {
-        if(amountView.amount >= 0.5) {
+        if(amountView.amount >= 0.5 && amountView.amount <= 99999) {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
         } else {
             amountView.bottomBorderColor = ColorHelper.GivtRed
@@ -270,6 +270,8 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     @objc func handleAmountEditingDidEnd() {
         if(amountView.amount < 0.5) {
             showAmountTooLow()
+        } else if (amountView.amount > 99999) {
+            displayAmountTooHigh()
         }
         ensureButtonHasCorrectState()
     }
@@ -314,7 +316,15 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         
         textField.inputAccessoryView = toolbar
     }
-    
+    fileprivate func displayAmountTooHigh() {
+        let alert = UIAlertController(
+            title: NSLocalizedString("AmountTooHigh", comment: ""),
+            message: NSLocalizedString("AmountLimitExceeded", comment: ""),
+            preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default) { action in })
+        self.present(alert, animated: true, completion: nil)
+    }
     fileprivate func showAmountTooLow() {
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
         let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
