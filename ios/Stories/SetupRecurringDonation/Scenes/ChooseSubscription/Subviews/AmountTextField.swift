@@ -81,6 +81,11 @@ class AmountTextField: UIView {
         commonInit()
     }
     
+    private var HasDelimiter: Bool = false
+    private var TextBeforeChange: String = ""
+    private var HasDotAsDelimiter: Bool = false
+    private var Delimiter: Character = ","
+    
     private func commonInit() {
         let bundle = Bundle(for: AmountTextField.self)
         bundle.loadNibNamed("AmountTextField", owner: self, options: nil)
@@ -93,8 +98,52 @@ class AmountTextField: UIView {
         numberFormatter = NumberFormatter()
         numberFormatter.locale = Locale.current
         numberFormatter.numberStyle = .decimal
+        
+        amountLabel.addTarget(self, action: #selector(amountLabelEditingBegin(_:)), for: .editingDidBegin)
+        amountLabel.addTarget(self, action: #selector(amountLabelEditingChanged(_:)), for: .editingChanged)
     }
     
+    @objc func amountLabelEditingBegin(_ textField: UITextField) {
+        if let amountLabelText = amountLabel.text {
+            TextBeforeChange = amountLabelText
+        }
+    }
+    
+    @objc func amountLabelEditingChanged(_ textField: UITextField) {
+        if var amountLabelText: String = amountLabel.text {
+            if !amountLabelText.isEmpty && amountLabelText != TextBeforeChange {
+                HasDelimiter = TextBeforeChange.contains(",") || TextBeforeChange.contains(".")
+                if (HasDelimiter) {
+                    HasDotAsDelimiter = TextBeforeChange.contains(".");
+                    Delimiter = HasDotAsDelimiter ? "." : ","
+                    if(amountLabelText.count(of: Delimiter) > 1) {
+                        amountLabelText = TextBeforeChange
+                        amountLabel.text = amountLabelText
+                    }
+                    if(amountLabelText.last == Delimiter && TextBeforeChange.last == Delimiter) {
+                        amountLabelText = TextBeforeChange
+                        amountLabel.text = amountLabelText
+                    }
+                    
+                    let splittedAmountText = amountLabelText.components(separatedBy: String(Delimiter))
+                    if(splittedAmountText.count == 2) {
+                        if(splittedAmountText[1].count > 2) {
+                            amountLabelText = TextBeforeChange
+                            amountLabel.text = amountLabelText
+                        }
+                    }
+                } else {
+                    if(amountLabelText == "," || amountLabelText == ".") {
+                        amountLabelText = "0"+amountLabelText
+                        amountLabel.text = amountLabelText
+                    }
+                }
+                TextBeforeChange = amountLabelText
+            }
+        }
+
+    }
+
     private var _isValid: Bool = true
     
     var isValid: Bool {
@@ -130,6 +179,5 @@ class AmountTextField: UIView {
         borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         borderView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-
     }
 }
