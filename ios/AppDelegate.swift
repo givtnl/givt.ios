@@ -243,9 +243,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Flow: SetupRecurringSubscription
         // -- Navigation
-        Mediater.shared.registerHandler(handler: BackToChooseSubscriptionRouteHandler())
         Mediater.shared.registerHandler(handler: DestinationSelectedRouteHandler())
         Mediater.shared.registerHandler(handler: SetupRecurringDonationChooseDestinationRouteHandler())
+        Mediater.shared.registerHandler(handler: GoToChooseSubscriptionRouteHandler())
+        Mediater.shared.registerHandler(handler: BackToPreviousViewRouteHandler())
         
         // -- Commands
         Mediater.shared.registerPreProcessor(processor: CreateSubscriptionCommandPreHandler())

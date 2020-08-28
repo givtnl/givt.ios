@@ -181,6 +181,10 @@
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
 		DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */; };
+		DF05015424F8B299006196A3 /* GoToChooseSubscriptionRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015324F8B299006196A3 /* GoToChooseSubscriptionRoute.swift */; };
+		DF05015624F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015524F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift */; };
+		DF05015924F8B4C6006196A3 /* BackToPreviousViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015824F8B4C6006196A3 /* BackToPreviousViewRoute.swift */; };
+		DF05015B24F8B4E0006196A3 /* BackToPreviousViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015A24F8B4E0006196A3 /* BackToPreviousViewRouteHandler.swift */; };
 		DF1300F724F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */; };
 		DF1300FA24F63F2C00EE1785 /* CreateRecurringDonationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1300F924F63F2C00EE1785 /* CreateRecurringDonationButton.xib */; };
 		DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1300FB24F63F4500EE1785 /* CreateRecurringDonationButton.swift */; };
@@ -191,8 +195,6 @@
 		DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBFAC302409404100F53095 /* GiftAidSettings.swift */; };
 		FB13642A24BF2E3B006EF19D /* ChooseDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13642424BF2E3B006EF19D /* ChooseDestinationViewController.swift */; };
 		FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */; };
-		FB2CFAE224EC1295003E096D /* BackToChooseSubscriptionRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2CFAE124EC1295003E096D /* BackToChooseSubscriptionRoute.swift */; };
-		FB2CFAE424EC12AB003E096D /* BackToChooseSubscriptionRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2CFAE324EC12AB003E096D /* BackToChooseSubscriptionRouteHandler.swift */; };
 		FB2E61602306B965006F6792 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB2E615F2306B614006F6792 /* Font Awesome 5 Free-Solid-900.otf */; };
 		FB38F1B22133E7500025F648 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38F1B12133E7500025F648 /* NavigationHelper.swift */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
@@ -475,6 +477,10 @@
 		D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCompleteViewController.swift; sourceTree = "<group>"; };
 		DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMessageType.swift; sourceTree = "<group>"; };
+		DF05015324F8B299006196A3 /* GoToChooseSubscriptionRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToChooseSubscriptionRoute.swift; sourceTree = "<group>"; };
+		DF05015524F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToChooseSubscriptionRouteHandler.swift; sourceTree = "<group>"; };
+		DF05015824F8B4C6006196A3 /* BackToPreviousViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToPreviousViewRoute.swift; sourceTree = "<group>"; };
+		DF05015A24F8B4E0006196A3 /* BackToPreviousViewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToPreviousViewRouteHandler.swift; sourceTree = "<group>"; };
 		DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRecurringDonationViewController.swift; sourceTree = "<group>"; };
 		DF1300F924F63F2C00EE1785 /* CreateRecurringDonationButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateRecurringDonationButton.xib; sourceTree = "<group>"; };
 		DF1300FB24F63F4500EE1785 /* CreateRecurringDonationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationButton.swift; sourceTree = "<group>"; };
@@ -488,8 +494,6 @@
 		FB19533B1F56DDEC00172CD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureManager.swift; sourceTree = "<group>"; };
-		FB2CFAE124EC1295003E096D /* BackToChooseSubscriptionRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToChooseSubscriptionRoute.swift; sourceTree = "<group>"; };
-		FB2CFAE324EC12AB003E096D /* BackToChooseSubscriptionRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToChooseSubscriptionRouteHandler.swift; sourceTree = "<group>"; };
 		FB2E615F2306B614006F6792 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
 		FB38F1B12133E7500025F648 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -655,7 +659,8 @@
 		32CA17B024CED48100248053 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				FB2CFAE024EC127A003E096D /* BackToChooseSubscription */,
+				DF05015724F8B48F006196A3 /* BackToPreviousView */,
+				DF05015224F8B278006196A3 /* GoToChooseSubscription */,
 				320CF72824CEF1C1008B3EDE /* DestinationSelected */,
 				32CA17B124CED48A00248053 /* ChooseDestination */,
 			);
@@ -1106,6 +1111,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		DF05015224F8B278006196A3 /* GoToChooseSubscription */ = {
+			isa = PBXGroup;
+			children = (
+				DF05015324F8B299006196A3 /* GoToChooseSubscriptionRoute.swift */,
+				DF05015524F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift */,
+			);
+			path = GoToChooseSubscription;
+			sourceTree = "<group>";
+		};
+		DF05015724F8B48F006196A3 /* BackToPreviousView */ = {
+			isa = PBXGroup;
+			children = (
+				DF05015824F8B4C6006196A3 /* BackToPreviousViewRoute.swift */,
+				DF05015A24F8B4E0006196A3 /* BackToPreviousViewRouteHandler.swift */,
+			);
+			path = BackToPreviousView;
+			sourceTree = "<group>";
+		};
 		DF1300F524F5601F00EE1785 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -1169,15 +1192,6 @@
 				FBC1859F24C08F19001A4C6B /* PaymentType.swift */,
 			);
 			path = Enums;
-			sourceTree = "<group>";
-		};
-		FB2CFAE024EC127A003E096D /* BackToChooseSubscription */ = {
-			isa = PBXGroup;
-			children = (
-				FB2CFAE124EC1295003E096D /* BackToChooseSubscriptionRoute.swift */,
-				FB2CFAE324EC12AB003E096D /* BackToChooseSubscriptionRouteHandler.swift */,
-			);
-			path = BackToChooseSubscription;
 			sourceTree = "<group>";
 		};
 		FB2CFAE524EC157B003E096D /* Routes */ = {
@@ -1805,12 +1819,14 @@
 				FB7F33FB22254E5A00482E2C /* ErrorHandlingHelper.swift in Sources */,
 				D761E9A01F167798002B849B /* FirstViewController.swift in Sources */,
 				D7721B4B20EB67AD009771EE /* LMUserExt.swift in Sources */,
+				DF05015B24F8B4E0006196A3 /* BackToPreviousViewRouteHandler.swift in Sources */,
 				FB872FEF24C6E7C3005FF355 /* BackToChooseDestinationRouteHandler.swift in Sources */,
 				FBC185A224C0AD81001A4C6B /* DestinationViewModel.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D7BC58D620776361008C9497 /* Context.swift in Sources */,
+				DF05015424F8B299006196A3 /* GoToChooseSubscriptionRoute.swift in Sources */,
 				FBC185C124C57DB6001A4C6B /* MediaterWithContextProtocol.swift in Sources */,
 				D74C19EA20F627DA00E116A0 /* ExternalSuggestionViewController.swift in Sources */,
 				D7AE8BA42136CA4F00CB3A33 /* PaymentTypes.swift in Sources */,
@@ -1879,10 +1895,10 @@
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
+				DF05015924F8B4C6006196A3 /* BackToPreviousViewRoute.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
-				FB2CFAE424EC12AB003E096D /* BackToChooseSubscriptionRouteHandler.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */,
 				D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */,
@@ -1935,6 +1951,7 @@
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
+				DF05015624F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */,
@@ -1968,7 +1985,6 @@
 				FB87303024C885EE005FF355 /* NoInternetAlert.swift in Sources */,
 				D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */,
 				FB87302624C87678005FF355 /* SafariTransactionModel.swift in Sources */,
-				FB2CFAE224EC1295003E096D /* BackToChooseSubscriptionRoute.swift in Sources */,
 				FBC185B124C0CF15001A4C6B /* GetLocalUserConfigurationHandler.swift in Sources */,
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				FB872FF224C6EC2F005FF355 /* BackToMainRoute.swift in Sources */,
