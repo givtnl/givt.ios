@@ -12,6 +12,7 @@ internal class RecurringRuleViewModel {
     public var name = String()
     public var type: CollectGroupType = CollectGroupType.church
     public var CRON = String()
+    public var startdate = String()
     public var enddate = String()
     
 }

@@ -11,38 +11,9 @@ import Foundation
 
 internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var Name: UILabel!
-    
-    //    public var name: String = "" {
-//        didSet {
-//            collectGroupLabel.text = name
-//            collectGroupLabel.numberOfLines = 0
-//        }
-//    }
-//    
-//    public var type: CollectGroupType = .church {
-//        didSet {
-//            switch type {
-//                case .church:
-//                    iconLabel.text = "place-of-worship"
-//                    break
-//                case .charity:
-//                    iconLabel.text = "hands-helping"
-//                    break
-//                case .campaign:
-//                    iconLabel.text = "hand-holding-heart"
-//                    break
-//                case .artist:
-//                    iconLabel.text = "guitar"
-//                    break
-//                default:
-//                    iconLabel.text = "place-of-worship"
-//                    break
-//                }
-//        }
-//    }
-//
-//    @IBOutlet var iconLabel: UILabel!
-//    @IBOutlet var collectGroupLabel: UILabel!
+    @IBOutlet weak var Cron: UILabel!
+    @IBOutlet weak var EndDate: UILabel!
+    @IBOutlet weak var Indication: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
