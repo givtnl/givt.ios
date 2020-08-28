@@ -78,7 +78,7 @@ class SettingsViewController: BaseMenuViewController {
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
         //        let consciousGivingItem = Setting(name: "Doelbewust geven", image: UIImage(named: "hand-holding-heart")!, callback:  {self.consciousGiving()})
-        let firstDestinationThenAmount = Setting(name: "SubMenuItem_FirstDestinationThenAmount".localized, image: UIImage(named:"hand-holding-heart")!, callback: {self.startFirstDestinationThenAmountFlow() })
+        
         let setupRecurringGift = Setting(name: "SubMenuItem_RecurringDonation".localized, image: UIImage(named:"hand-holding-heart")!, callback: { self.setupRecurringDonation() })
         
         if !UserDefaults.standard.isTempUser {
@@ -91,8 +91,11 @@ class SettingsViewController: BaseMenuViewController {
             
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[1].append(givts)
-            items[1].append(firstDestinationThenAmount)
-            items[1].append(setupRecurringGift)
+            
+            if(LoginManager.shared.isFullyRegistered) {
+                items[1].append(setupRecurringGift)
+            }
+         
             let givtsTaxOverviewAvailable: Setting?
             if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
                 givtsTaxOverviewAvailable = Setting(name: NSLocalizedString("YearOverviewAvailable", comment: ""), image: UIImage(), callback: {
