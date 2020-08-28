@@ -193,6 +193,8 @@
 		DF8BB30524F7A12200104668 /* RecurringRuleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */; };
 		DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */; };
 		DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBFAC302409404100F53095 /* GiftAidSettings.swift */; };
+		DFFF7E8E24F935E40098E4F6 /* GoToRootViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8D24F935E40098E4F6 /* GoToRootViewRoute.swift */; };
+		DFFF7E9024F935EC0098E4F6 /* GoToRootViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8F24F935EC0098E4F6 /* GoToRootViewRouteHandler.swift */; };
 		FB13642A24BF2E3B006EF19D /* ChooseDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13642424BF2E3B006EF19D /* ChooseDestinationViewController.swift */; };
 		FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */; };
 		FB2E61602306B965006F6792 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB2E615F2306B614006F6792 /* Font Awesome 5 Free-Solid-900.otf */; };
@@ -489,6 +491,8 @@
 		DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleTableCell.swift; sourceTree = "<group>"; };
 		DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidInfoController.swift; sourceTree = "<group>"; };
 		DFBFAC302409404100F53095 /* GiftAidSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidSettings.swift; sourceTree = "<group>"; };
+		DFFF7E8D24F935E40098E4F6 /* GoToRootViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToRootViewRoute.swift; sourceTree = "<group>"; };
+		DFFF7E8F24F935EC0098E4F6 /* GoToRootViewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToRootViewRouteHandler.swift; sourceTree = "<group>"; };
 		F2A335656287D463EE35D0BB /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 		FB13642424BF2E3B006EF19D /* ChooseDestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDestinationViewController.swift; sourceTree = "<group>"; };
 		FB19533B1F56DDEC00172CD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -659,6 +663,7 @@
 		32CA17B024CED48100248053 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				DFFF7E8C24F935C00098E4F6 /* GoToRootView */,
 				DF05015724F8B48F006196A3 /* BackToPreviousView */,
 				DF05015224F8B278006196A3 /* GoToChooseSubscription */,
 				320CF72824CEF1C1008B3EDE /* DestinationSelected */,
@@ -1154,6 +1159,15 @@
 				DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */,
 			);
 			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		DFFF7E8C24F935C00098E4F6 /* GoToRootView */ = {
+			isa = PBXGroup;
+			children = (
+				DFFF7E8D24F935E40098E4F6 /* GoToRootViewRoute.swift */,
+				DFFF7E8F24F935EC0098E4F6 /* GoToRootViewRouteHandler.swift */,
+			);
+			path = GoToRootView;
 			sourceTree = "<group>";
 		};
 		FB07A9651F14D9F300FD9C1A /* Frameworks */ = {
@@ -1893,6 +1907,7 @@
 				DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */,
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
+				DFFF7E8E24F935E40098E4F6 /* GoToRootViewRoute.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
 				DF05015924F8B4C6006196A3 /* BackToPreviousViewRoute.swift in Sources */,
@@ -1952,6 +1967,7 @@
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				DF05015624F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift in Sources */,
+				DFFF7E9024F935EC0098E4F6 /* GoToRootViewRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */,
