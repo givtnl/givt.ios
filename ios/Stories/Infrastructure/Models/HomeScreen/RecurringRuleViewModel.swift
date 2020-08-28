@@ -9,10 +9,11 @@
 import Foundation
 
 internal class RecurringRuleViewModel {
-    public var name = String()
-    public var type: CollectGroupType = CollectGroupType.church
-    public var CRON = String()
-    public var startdate = String()
-    public var enddate = String()
-    
+    public var nameSpace:String = ""
+    public var organisationName:String = ""
+    public var cronExpression:String = ""
+    public var amountPerTurn:Double = 0.0
+    public var startDate:CLong = 0
+    public var endsAfterTurns:Int = 0
+    public var highLight:Bool = false
 }
