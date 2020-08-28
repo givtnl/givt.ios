@@ -138,13 +138,12 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd"
         let startDeet: String = dateFormatter.string(from: startDatePicker.date)
-        
         let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression, startDate: startDeet)
         do {
             try mediater.sendAsync(request: command) { subscriptionMade in
                 if(subscriptionMade) {
                     DispatchQueue.main.async {
-                        try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
+                        try? self.mediater.send(request: GoToRootView(), withContext: self)
                     }
                 }
             }
