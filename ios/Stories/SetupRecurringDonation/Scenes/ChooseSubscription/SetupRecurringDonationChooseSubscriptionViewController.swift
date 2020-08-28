@@ -93,7 +93,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         frequencyPicker.selectRow(0, inComponent: 0, animated: false)
     }
     @IBAction func backButton(_ sender: Any) {
-        try? mediater.send(request: BackToMainRoute(), withContext: self)
+        try? mediater.send(request: BackToPreviousViewRoute(), withContext: self)
     }
     @IBAction func makeSubscription(_ sender: Any) {
         
