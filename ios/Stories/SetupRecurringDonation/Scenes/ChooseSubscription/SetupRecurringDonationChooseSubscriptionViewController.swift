@@ -143,7 +143,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
             try mediater.sendAsync(request: command) { subscriptionMade in
                 if(subscriptionMade) {
                     DispatchQueue.main.async {
-                        try? self.mediater.send(request: GoToRootView(), withContext: self)
+                        try? self.mediater.send(request: GoToRootViewRoute(), withContext: self)
                     }
                 }
             }
