@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -141,11 +142,20 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         
         let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression, startDate: startDeet)
         do {
+            SVProgressHUD.show()
+
             try mediater.sendAsync(request: command) { subscriptionMade in
                 if(subscriptionMade) {
+                    SVProgressHUD.dismiss()
                     DispatchQueue.main.async {
                         try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
                     }
+                } else {
+                    SVProgressHUD.dismiss()
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: "Wat zouden we hierin zetten?", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    }))
+                    self.present(alert, animated: true, completion:  {})
                 }
             }
         } catch  {
