@@ -96,8 +96,8 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     //MARK: viewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = "ChooseWhoYouWantToGiveTo".localized
-        navigationItem.accessibilityLabel = "ChooseWhoYouWantToGiveTo".localized
+        navigationItem.title = "SelectRecipient".localized
+        navigationItem.accessibilityLabel = "SelectRecipient".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
