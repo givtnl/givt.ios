@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -37,14 +37,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dOx-Gn-Aqt">
-                                <rect key="frame" x="20" y="88" width="374" height="27.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDi-LU-GN8">
-                                <rect key="frame" x="0.0" y="125.5" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Exu-0F-dU9">
                                         <rect key="frame" x="20" y="0.0" width="374" height="80"/>
@@ -87,11 +81,11 @@
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="WzN-Xf-iNZ">
-                                <rect key="frame" x="0.0" y="205.5" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="168" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nq7-8s-OLd">
-                                <rect key="frame" x="0.0" y="261.5" width="414" height="467.5"/>
+                                <rect key="frame" x="0.0" y="224" width="414" height="505"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -147,12 +141,9 @@
                         <constraints>
                             <constraint firstItem="rXW-vT-4nz" firstAttribute="top" secondItem="Nq7-8s-OLd" secondAttribute="bottom" constant="20" id="0Cs-Qg-H9q"/>
                             <constraint firstItem="WzN-Xf-iNZ" firstAttribute="top" secondItem="NDi-LU-GN8" secondAttribute="bottom" id="2fd-Bx-hsM"/>
-                            <constraint firstItem="28h-aI-vay" firstAttribute="trailing" secondItem="dOx-Gn-Aqt" secondAttribute="trailing" constant="20" id="6Fi-GS-W5g"/>
+                            <constraint firstItem="NDi-LU-GN8" firstAttribute="top" secondItem="28h-aI-vay" secondAttribute="top" id="5Re-V7-AJt"/>
                             <constraint firstItem="WzN-Xf-iNZ" firstAttribute="leading" secondItem="28h-aI-vay" secondAttribute="leading" id="6hv-Dt-xAd"/>
                             <constraint firstItem="WzN-Xf-iNZ" firstAttribute="trailing" secondItem="28h-aI-vay" secondAttribute="trailing" id="A97-yZ-c3o"/>
-                            <constraint firstItem="dOx-Gn-Aqt" firstAttribute="top" secondItem="28h-aI-vay" secondAttribute="top" id="Gfj-cq-m2W"/>
-                            <constraint firstItem="dOx-Gn-Aqt" firstAttribute="leading" secondItem="28h-aI-vay" secondAttribute="leading" constant="20" id="KGG-n1-gQs"/>
-                            <constraint firstItem="NDi-LU-GN8" firstAttribute="top" secondItem="dOx-Gn-Aqt" secondAttribute="bottom" constant="10" id="SwL-Nr-87o"/>
                             <constraint firstItem="NDi-LU-GN8" firstAttribute="leading" secondItem="28h-aI-vay" secondAttribute="leading" id="aau-bL-tgA"/>
                             <constraint firstItem="rXW-vT-4nz" firstAttribute="leading" secondItem="28h-aI-vay" secondAttribute="leading" constant="20" id="d6e-Sq-L6j"/>
                             <constraint firstItem="28h-aI-vay" firstAttribute="bottom" secondItem="rXW-vT-4nz" secondAttribute="bottom" constant="20" id="gAF-wj-1qo"/>
@@ -180,7 +171,6 @@
                         <outlet property="nextButton" destination="rXW-vT-4nz" id="0BP-NN-hpe"/>
                         <outlet property="searchBar" destination="WzN-Xf-iNZ" id="R94-qg-Cj9"/>
                         <outlet property="tableView" destination="Nq7-8s-OLd" id="nAS-Bj-VQk"/>
-                        <outlet property="titleText" destination="dOx-Gn-Aqt" id="asC-Hz-I4k"/>
                         <outlet property="typeStackView" destination="Exu-0F-dU9" id="uYp-1S-Rhm"/>
                     </connections>
                 </viewController>
