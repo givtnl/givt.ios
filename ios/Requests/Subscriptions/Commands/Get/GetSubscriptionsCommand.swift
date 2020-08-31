@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+class GetSubscriptionsCommand : Codable, RequestProtocol {
+    typealias TResponse = [RecurringRuleViewModel]
+}
