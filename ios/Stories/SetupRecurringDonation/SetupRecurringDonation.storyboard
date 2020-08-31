@@ -286,7 +286,7 @@
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstItem="phc-si-YWc" firstAttribute="leading" secondItem="GIw-Od-57l" secondAttribute="leading" id="3Vs-kp-gUg"/>
                                                                             <constraint firstItem="mIz-dt-G6N" firstAttribute="top" secondItem="GIw-Od-57l" secondAttribute="top" id="6pQ-xa-vDp"/>
@@ -340,7 +340,7 @@
                                                                                 </connections>
                                                                             </button>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="trailing" secondItem="4Dk-Nd-VhK" secondAttribute="trailing" id="9a6-5H-Gdq"/>
                                                                             <constraint firstItem="UUF-tb-zsE" firstAttribute="leading" secondItem="QQ7-ZN-k39" secondAttribute="leading" id="CFR-ZG-xcu"/>
