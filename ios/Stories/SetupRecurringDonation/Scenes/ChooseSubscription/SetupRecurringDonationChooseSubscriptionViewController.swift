@@ -153,10 +153,12 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
                     }
                 } else {
                     SVProgressHUD.dismiss()
-                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: "Wat zouden we hierin zetten?", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                    }))
-                    self.present(alert, animated: true, completion:  {})
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        }))
+                        self.present(alert, animated: true, completion:  {})
+                    }
                 }
             }
         } catch  {
