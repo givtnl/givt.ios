@@ -232,8 +232,8 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     private func setupCollectGroupLabel() {
         collectGroupLabel.delegate = self
         collectGroupLabel.label.text = "SelectRecipient".localized
-        collectGroupLabel.bottomBorderColor = UIColor.white
-        collectGroupLabel.symbolView.isHidden = true;
+        collectGroupLabel.bottomBorderColor = UIColor.clear
+        collectGroupLabel.symbol.isHidden = true;
         collectGroupLabel.symbol.text = ""
         if let input = self.input {
             collectGroupLabel.label.text = input.name
@@ -258,7 +258,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
                         text = "hands-helping";
                 }
                 collectGroupLabel.symbol.text = text
-                collectGroupLabel.symbolView.isHidden = false;
+                collectGroupLabel.symbol.isHidden = false;
             }
         }
     }
