@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -18,7 +18,6 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="8Pd-GL-D9B"/>
                 <outlet property="label" destination="kxy-uc-YJJ" id="smD-gS-ETy"/>
                 <outlet property="symbol" destination="hi7-49-fVg" id="2ie-OZ-rPx"/>
-                <outlet property="symbolView" destination="LUA-tW-3FL" id="wLm-S2-Nzc"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -26,53 +25,13 @@
             <rect key="frame" x="0.0" y="0.0" width="502" height="110"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hIy-lc-B7S">
-                    <rect key="frame" x="0.0" y="0.0" width="502" height="110"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUA-tW-3FL">
-                            <rect key="frame" x="0.0" y="0.0" width="50" height="110"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="church" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hi7-49-fVg">
-                                    <rect key="frame" x="20" y="0.0" width="30" height="110"/>
-                                    <gestureRecognizers/>
-                                    <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="24"/>
-                                    <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstItem="hi7-49-fVg" firstAttribute="top" secondItem="LUA-tW-3FL" secondAttribute="top" id="9Zc-Ze-Nol"/>
-                                <constraint firstItem="hi7-49-fVg" firstAttribute="leading" secondItem="LUA-tW-3FL" secondAttribute="leading" constant="20" id="Lds-3k-f9k"/>
-                                <constraint firstAttribute="trailing" secondItem="hi7-49-fVg" secondAttribute="trailing" id="S2p-dp-vUX"/>
-                                <constraint firstAttribute="bottom" secondItem="hi7-49-fVg" secondAttribute="bottom" id="lXJ-VJ-28f"/>
-                                <constraint firstAttribute="width" constant="50" id="yUQ-Kt-g9N"/>
-                            </constraints>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukP-Ag-7lW">
-                            <rect key="frame" x="50" y="0.0" width="452" height="110"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxy-uc-YJJ">
-                                    <rect key="frame" x="20" y="0.0" width="432" height="110"/>
-                                    <gestureRecognizers/>
-                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                    <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                    <connections>
-                                        <outletCollection property="gestureRecognizers" destination="Qlx-8L-VPY" appends="YES" id="PaS-GG-ubK"/>
-                                    </connections>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            <constraints>
-                                <constraint firstItem="kxy-uc-YJJ" firstAttribute="leading" secondItem="ukP-Ag-7lW" secondAttribute="leading" constant="20" id="5aB-Ep-Vlk"/>
-                                <constraint firstAttribute="bottom" secondItem="kxy-uc-YJJ" secondAttribute="bottom" id="I0w-iB-IeD"/>
-                                <constraint firstAttribute="trailing" secondItem="kxy-uc-YJJ" secondAttribute="trailing" id="Ooh-SH-aLg"/>
-                                <constraint firstItem="kxy-uc-YJJ" firstAttribute="top" secondItem="ukP-Ag-7lW" secondAttribute="top" id="U3q-RR-xCf"/>
-                            </constraints>
-                        </view>
-                    </subviews>
-                </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="church" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hi7-49-fVg">
+                    <rect key="frame" x="20" y="0.0" width="30" height="110"/>
+                    <gestureRecognizers/>
+                    <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="24"/>
+                    <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21P-Ri-B5Z">
                     <rect key="frame" x="0.0" y="107" width="502" height="3"/>
                     <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.55294117649999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,16 +39,29 @@
                         <constraint firstAttribute="height" constant="3" id="Lw0-Yr-W5g"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxy-uc-YJJ">
+                    <rect key="frame" x="70" y="0.0" width="412" height="107"/>
+                    <gestureRecognizers/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
+                    <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Qlx-8L-VPY" appends="YES" id="PaS-GG-ubK"/>
+                    </connections>
+                </label>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="hi7-49-fVg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5sP-c0-E72"/>
                 <constraint firstAttribute="trailing" secondItem="21P-Ri-B5Z" secondAttribute="trailing" id="6ZT-Lh-wjF"/>
                 <constraint firstItem="21P-Ri-B5Z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8Av-mJ-8jJ"/>
-                <constraint firstItem="hIy-lc-B7S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JK5-Iq-hQf"/>
                 <constraint firstAttribute="bottom" secondItem="21P-Ri-B5Z" secondAttribute="bottom" id="UU8-DG-58A"/>
-                <constraint firstItem="hIy-lc-B7S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VWw-aq-Evz"/>
-                <constraint firstAttribute="bottom" secondItem="hIy-lc-B7S" secondAttribute="bottom" id="Zzz-Tg-sGE"/>
-                <constraint firstAttribute="trailing" secondItem="hIy-lc-B7S" secondAttribute="trailing" id="bf9-nq-zIb"/>
+                <constraint firstItem="21P-Ri-B5Z" firstAttribute="top" secondItem="kxy-uc-YJJ" secondAttribute="bottom" id="WZp-1h-FKO"/>
+                <constraint firstAttribute="bottom" secondItem="hi7-49-fVg" secondAttribute="bottom" id="Y4h-2F-CAe"/>
+                <constraint firstItem="hi7-49-fVg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="bke-i3-cHy"/>
+                <constraint firstItem="kxy-uc-YJJ" firstAttribute="leading" secondItem="hi7-49-fVg" secondAttribute="trailing" constant="20" id="m6w-qC-pVN"/>
+                <constraint firstItem="kxy-uc-YJJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rtH-20-NSh"/>
+                <constraint firstAttribute="trailing" secondItem="kxy-uc-YJJ" secondAttribute="trailing" constant="20" id="wMb-0n-uhc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="237.68115942028987" y="-15.401785714285714"/>

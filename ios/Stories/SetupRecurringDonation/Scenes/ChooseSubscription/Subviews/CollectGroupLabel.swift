@@ -59,7 +59,7 @@ class CollectGroupLabel : UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         label.baselineAdjustment = .alignCenters
         label.isUserInteractionEnabled = true
-        symbolView.isHidden = true;
+        symbol.isHidden = true;
     }
     
     private var _isValid: Bool = true
