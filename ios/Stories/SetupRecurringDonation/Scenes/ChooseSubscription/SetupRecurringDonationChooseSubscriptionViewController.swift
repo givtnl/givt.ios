@@ -207,7 +207,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     private func setupAmountView() {
         // get the currency symbol from user settingsf
         amountView.currency = UserDefaults.standard.currencySymbol
-        amountView.bottomBorderColor = UIColor.white
+        amountView.bottomBorderColor = UIColor.clear
         
         // setup event handlers
         amountView.amountLabel.addTarget(self, action: #selector(handleAmountEditingChanged), for: .editingChanged)
