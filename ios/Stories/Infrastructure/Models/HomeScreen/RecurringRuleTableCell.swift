@@ -14,6 +14,9 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var Cron: UILabel!
     @IBOutlet weak var EndDate: UILabel!
     @IBOutlet weak var Indication: UIImageView!
+    @IBOutlet weak var CenterView: UIView!
+    @IBOutlet var Logo: UIImageView!
+    @IBOutlet weak var LogoView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
