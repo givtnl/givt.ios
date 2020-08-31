@@ -63,5 +63,6 @@ class CreateRecurringDonationButton: UIControl {
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
         self.backgroundColor = UIColor.clear
+        contentView.layer.cornerRadius = 8
     }
 }
