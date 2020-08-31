@@ -80,7 +80,8 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        navigationItem.title = "SubMenuItem_RecurringDonation".localized
+        navigationItem.accessibilityLabel = "SubMenuItem_RecurringDonation".localized
         setupCollectGroupLabel()
         ensureButtonHasCorrectState()
     }
