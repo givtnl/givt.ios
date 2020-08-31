@@ -249,7 +249,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
                     case CollectGroupType.charity:
                         text = "hands-helping";
                     case CollectGroupType.church:
-                        text = "church";
+                        text = "place-of-worship";
                     case CollectGroupType.debug:
                         text = "debug";
                     case CollectGroupType.demo:
