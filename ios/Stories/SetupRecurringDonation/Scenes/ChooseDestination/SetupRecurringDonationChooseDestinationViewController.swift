@@ -121,7 +121,9 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         tableView.tableFooterView = UIView(frame: .zero)
         
-        nextButton.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
+        nextButton.setTitle("SelectRecipient".localized, for: UIControlState.normal)
+        nextButton.accessibilityLabel = "SelectRecipient".localized
+        
         nextButton.isEnabled = false
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         churchButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "church_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_church_white"), labelText: "Church".localized, tag: CollectGroupType.church.rawValue)
