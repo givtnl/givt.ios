@@ -186,8 +186,10 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
         startDatePicker.setValue(false, forKeyPath: "highlightsToday")
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
+        if let newDate = Calendar.current.date(byAdding: .day, value: 1, to: Date()) {
+            startDatePicker.minimumDate = newDate
+        }
         startDateLabel.text = startDatePicker.date.formatted
-        startDatePicker.minimumDate = Date()
         startDateLabel.inputView = startDatePicker
         createToolbar(startDateLabel)
     }
