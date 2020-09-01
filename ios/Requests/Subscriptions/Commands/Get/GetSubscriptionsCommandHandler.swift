@@ -15,16 +15,26 @@ class GetSubscriptionsCommandHandler : RequestHandlerProtocol {
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         
-        
-        client.get(url: "https://api.development.givtapp.net/subscriptions?userId=subscriptions?userId=\(UserDefaults.standard.userExt!.guid)", data: [:]) { (response) in
-            let models: [RecurringRuleViewModel] = []
+        let data = ["userId" : UserDefaults.standard.userExt!.guid]
+        client.get(url: "https://api.development.givtapp.net/subscriptions?userId=subscriptions", data: data) { (response) in
+            var models: [RecurringRuleViewModel] = []
             if let response = response, let data = response.data, response.statusCode == 200 {
                 do
                 {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-//                    for x in parsedData {
-//                        models.append(HistoryTransaction(dictionary: x as Dictionary<String, Any>)!)
-//                    }
+                    let parsedDataResult = parsedData["results"] as? [Dictionary<String, Any>]
+                    
+                    for x in parsedDataResult! {
+                        let item:RecurringRuleViewModel = RecurringRuleViewModel()
+                        item.amountPerTurn = x["amountPerTurn"] as! Double
+                        item.cronExpression = x["cronExpression"] as! String
+                        item.currentState = x["currentState"] as! Int
+                        item.endsAfterTurns = x["endsAfterTurns"] as! Int
+                        item.id = x["id"] as! String
+                        item.nameSpace = x["nameSpace"] as! String
+                        models.append(item)
+                    }
+                    
                     try? completion(models as! R.TResponse)
                 } catch {
                     try? completion(models as! R.TResponse)

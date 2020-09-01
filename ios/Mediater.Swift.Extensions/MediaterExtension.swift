@@ -12,7 +12,7 @@ import UIKit
 extension Mediater : MediaterWithContextProtocol {    
     public func send<R>(request: R, withContext context: UIViewController) throws -> (R.TResponse) where R : RequestProtocol {
         var response: R.TResponse!
-        let semaphore = DispatchSemaphore.init(value: 1)
+        let semaphore = DispatchSemaphore.init(value: 0)
         try sendAsync(request: request, withContext: context) { innerResponse in
             response = innerResponse
             semaphore.signal()

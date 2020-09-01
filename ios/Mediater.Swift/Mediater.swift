@@ -30,7 +30,7 @@ final class Mediater : MediaterProtocol {
 
     func send<R>(request: R) throws -> (R.TResponse) where R : RequestProtocol {
         var response: R.TResponse!
-        let semaphore = DispatchSemaphore.init(value: 1)
+        let semaphore = DispatchSemaphore.init(value: 0)
         try sendAsync(request: request) { innerResponse in
             response = innerResponse
             semaphore.signal()
