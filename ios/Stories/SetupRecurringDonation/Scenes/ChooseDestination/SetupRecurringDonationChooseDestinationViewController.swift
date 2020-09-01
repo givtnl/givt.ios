@@ -121,7 +121,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         tableView.tableFooterView = UIView(frame: .zero)
         
-        nextButton.setTitle("SelectRecipient".localized, for: UIControlState.normal)
+        nextButton.setTitle("SelectReceiverButton".localized, for: UIControlState.normal)
         nextButton.accessibilityLabel = "SelectRecipient".localized
         
         nextButton.isEnabled = false
