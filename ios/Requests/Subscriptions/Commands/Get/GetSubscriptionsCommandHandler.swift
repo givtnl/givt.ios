@@ -32,6 +32,7 @@ class GetSubscriptionsCommandHandler : RequestHandlerProtocol {
                         item.endsAfterTurns = x["endsAfterTurns"] as! Int
                         item.id = x["id"] as! String
                         item.nameSpace = x["nameSpace"] as! String
+                        item.startDate = x["startDate"] as! Int
                         models.append(item)
                     }
                     

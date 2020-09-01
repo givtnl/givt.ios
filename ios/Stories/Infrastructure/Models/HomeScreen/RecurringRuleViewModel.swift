@@ -15,4 +15,5 @@ internal class RecurringRuleViewModel {
     public var currentState:Int = 0
     public var cronExpression:String=""
     public var amountPerTurn:Double = 0.0
+    public var startDate:Int = 0
 }
