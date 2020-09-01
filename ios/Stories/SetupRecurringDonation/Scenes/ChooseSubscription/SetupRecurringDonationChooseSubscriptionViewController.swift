@@ -72,11 +72,14 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         Label4.text = NSLocalizedString("SetupRecurringGiftText_5", comment: "")
         occurencesLabel.text = NSLocalizedString("SetupRecurringGiftText_6", comment: "")
         
+        
         setupAmountView()
         setupOccurencsView()
         setupFrequencyPickerView()
         setupStartDatePickerView()
         
+        createSubcriptionButton.accessibilityLabel = "Give".localized
+        createSubcriptionButton.setTitle("Give".localized, for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
