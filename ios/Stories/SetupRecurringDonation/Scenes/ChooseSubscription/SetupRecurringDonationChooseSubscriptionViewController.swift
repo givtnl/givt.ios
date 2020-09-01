@@ -295,6 +295,13 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     }
     
     @objc func handleOccurencesEditingChanged() {
+        if let times = Int(occurencesTextField.text!) {
+            if(times == 0) {
+                occurencesTextField.setBorderColor(.red)
+            } else {
+                occurencesTextField.resetBorderColor()
+            }
+        }
         ensureButtonHasCorrectState()
     }
     @objc func handleOccurencesEditingEnd() {
