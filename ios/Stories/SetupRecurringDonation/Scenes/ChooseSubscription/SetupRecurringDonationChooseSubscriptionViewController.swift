@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -71,15 +72,19 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         Label4.text = NSLocalizedString("SetupRecurringGiftText_5", comment: "")
         occurencesLabel.text = NSLocalizedString("SetupRecurringGiftText_6", comment: "")
         
+        
         setupAmountView()
         setupOccurencsView()
         setupFrequencyPickerView()
         setupStartDatePickerView()
         
+        createSubcriptionButton.accessibilityLabel = "Give".localized
+        createSubcriptionButton.setTitle("Give".localized, for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        navigationItem.title = "SubMenuItem_RecurringDonation".localized
+        navigationItem.accessibilityLabel = "SubMenuItem_RecurringDonation".localized
         setupCollectGroupLabel()
         ensureButtonHasCorrectState()
     }
@@ -140,10 +145,21 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         let startDeet: String = dateFormatter.string(from: startDatePicker.date)
         let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, nameSpace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression, startDate: startDeet)
         do {
+            SVProgressHUD.show()
+
             try mediater.sendAsync(request: command) { subscriptionMade in
                 if(subscriptionMade) {
+                    SVProgressHUD.dismiss()
                     DispatchQueue.main.async {
                         try? self.mediater.send(request: GoToRootViewRoute(), withContext: self)
+                    }
+                } else {
+                    SVProgressHUD.dismiss()
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        }))
+                        self.present(alert, animated: true, completion:  {})
                     }
                 }
             }
@@ -193,7 +209,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     private func setupAmountView() {
         // get the currency symbol from user settingsf
         amountView.currency = UserDefaults.standard.currencySymbol
-        amountView.bottomBorderColor = UIColor.white
+        amountView.bottomBorderColor = UIColor.clear
         
         // setup event handlers
         amountView.amountLabel.addTarget(self, action: #selector(handleAmountEditingChanged), for: .editingChanged)
@@ -217,14 +233,14 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     
     private func setupCollectGroupLabel() {
         collectGroupLabel.delegate = self
-        collectGroupLabel.label.text = NSLocalizedString("SetupRecurringGiftSelectOrganisationPlaceHolder", comment: "")
-        collectGroupLabel.bottomBorderColor = UIColor.white
-        collectGroupLabel.symbolView.isHidden = true;
+        collectGroupLabel.label.text = "SelectRecipient".localized
+        collectGroupLabel.bottomBorderColor = UIColor.clear
+        collectGroupLabel.symbol.isHidden = true;
         collectGroupLabel.symbol.text = ""
         if let input = self.input {
             collectGroupLabel.label.text = input.name
 
-            if (collectGroupLabel.label.text != NSLocalizedString("SetupRecurringGiftSelectOrganisationPlaceHolder", comment: "")) {
+            if (collectGroupLabel.label.text != "SelectRecipient".localized) {
                 collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
                 let text: String
                 switch input.orgType {
@@ -235,7 +251,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
                     case CollectGroupType.charity:
                         text = "hands-helping";
                     case CollectGroupType.church:
-                        text = "church";
+                        text = "place-of-worship";
                     case CollectGroupType.debug:
                         text = "debug";
                     case CollectGroupType.demo:
@@ -244,7 +260,7 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
                         text = "hands-helping";
                 }
                 collectGroupLabel.symbol.text = text
-                collectGroupLabel.symbolView.isHidden = false;
+                collectGroupLabel.symbol.isHidden = false;
             }
         }
     }

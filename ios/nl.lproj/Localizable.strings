@@ -927,9 +927,9 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "UnregisterMandateError" = "Helaas, we kunnen op dit moment je account niet opzeggen omdat het niet lukt om je machtiging op te zeggen. Neem aub contact op met ons.";
 "UnregisterErrorTitle" = "Opzeggen mislukt";
 "SetupRecurringGiftTitle" = "Plan je Givt";
-"SetupRecurringGiftText_3" = "Elk(e)";
-"SetupRecurringGiftText_4" = "Vanaf";
-"SetupRecurringGiftText_5" = "Dit moet stoppen na";
+"SetupRecurringGiftText_3" = "elk(e)";
+"SetupRecurringGiftText_4" = "vanaf";
+"SetupRecurringGiftText_5" = "Dit mag ";
 "Add" = "Toevoegen";
 
 /*Fuzzy*/
@@ -944,7 +944,6 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQAnswerFirstTargetThenAmount2" = "Het \"geven aan een goed doel\" is splinternieuw en nog in volle opbouw. Beetje bij beetje zullen wij dus nieuwe functionaliteiten toevoegen.";
 "SetupRecurringGiftText_2" = "geven aan";
 "SetupRecurringGiftText_1" = "Ik wil graag";
-"SetupRecurringGiftSelectOrganisationPlaceHolder" = "Kies aan wie je wil geven";
 "SetupRecurringGiftWeek" = "week";
 "SetupRecurringGiftMonth" = "maand";
 "SetupRecurringGiftQuarter" = "kwartaal";
@@ -953,11 +952,19 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SetupRecurringGiftMonthPlural" = "maanden";
 "SetupRecurringGiftQuarterPlural" = "kwartalen";
 "SetupRecurringGiftYearPlural" = "jaren";
-"MenuItem_newGiving" = "Doelbewust geven";
+"MenuItem_newGiving" = "Terugkerende giften";
 "SubMenuItem_RecurringDonation" = "Plan je Givt";
 "SetupRecurringGiftHalfYear" = "half jaar";
 
 /*Fuzzy*/
-"SetupRecurringGiftText_6" = "keer";
+"SetupRecurringGiftText_6" = "keer gebeuren";
 "LoginAndTryAgain" = "Gelieve in te loggen en opnieuw te proberen.";
-"GivtIsBeingProcessedRecurring" = "Bedankt voor je Givt(s) aan {0}!\nBekijk het overzicht van je geplande Givts onder 'Overzicht'. \nDe eerste geplande Givt van {€/£} {500,00 / 500.00} zal worden afgeschreven in de week van {3 - datum}.";
+"GivtIsBeingProcessedRecurring" = "Bedankt voor je Givt(s) aan {0}!\nBekijk het overzicht van je geplande Givts onder 'Overzicht'. \nDe eerste geplande Givt van {1} {2} zal worden afgeschreven op {3}.\nDaarna zullen we iedere {4} afschrijven.";
+"OverviewRecurringDonations" = "Terugkerende giften";
+"TitleRecurringGifts" = "Terugkerende giften";
+"RecurringGiftsSetupCreate" = "Creëer een";
+"RecurringGiftsSetupRecurringGift" = "Terugkerende gift";
+"RecurringDonationYouGive" = "geef je";
+"RecurringDonationStops" = "Laatste gift op {0}";
+"SelectRecipient" = "Selecteer ontvanger";
+"SetupRecurringDonationFailed" = "Het instellen van de terugkerende gift is helaas niet gelukt. Probeer het later eens opnieuw.";

@@ -16,7 +16,6 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     var mediater: MediaterWithContextProtocol = Mediater.shared
     
     @IBOutlet weak var backButton: UIBarButtonItem!
-    @IBOutlet var titleText: UILabel!
     @IBOutlet var typeStackView: UIStackView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
@@ -97,8 +96,8 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     //MARK: viewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
-        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepOne", comment: "")
+        navigationItem.title = "SelectRecipient".localized
+        navigationItem.accessibilityLabel = "SelectRecipient".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
@@ -106,9 +105,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        titleText.text = "ChooseWhoYouWantToGiveTo".localized
-        
+                
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         navigationController?.navigationBar.isTranslucent = true
@@ -124,7 +121,9 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         tableView.tableFooterView = UIView(frame: .zero)
         
-        nextButton.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
+        nextButton.setTitle("SelectRecipient".localized, for: UIControlState.normal)
+        nextButton.accessibilityLabel = "SelectRecipient".localized
+        
         nextButton.isEnabled = false
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         churchButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "church_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_church_white"), labelText: "Church".localized, tag: CollectGroupType.church.rawValue)
@@ -193,10 +192,8 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
                 button.removeFromSuperview()
                 if button.active {
                     button.setInactive()
-                    titleText.text = "ChooseWhoYouWantToGiveTo".localized
                 } else {
                     button.setActive()
-                    titleText.text = button.labelText
                 }
                 typeStackView.insertArrangedSubview(button, at: idx)
             }
