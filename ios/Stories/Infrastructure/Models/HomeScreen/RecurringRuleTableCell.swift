@@ -15,11 +15,16 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var EndDate: UILabel!
     @IBOutlet weak var Indication: UIImageView!
     @IBOutlet weak var CenterView: UIView!
-    @IBOutlet var Logo: UIImageView!
+    @IBOutlet weak var Logo: UIImageView!
     @IBOutlet weak var LogoView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.insetBy(dx: 0, dy: 5)
     }
 }
