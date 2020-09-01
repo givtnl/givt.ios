@@ -17,7 +17,8 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
     var recurringRules:[RecurringRuleViewModel] = []
-    
+    var frequencies = [NSLocalizedString("SetupRecurringGiftWeek", comment: ""), NSLocalizedString("SetupRecurringGiftMonth", comment: ""), NSLocalizedString("SetupRecurringGiftQuarter", comment: ""), NSLocalizedString("SetupRecurringGiftHalfYear", comment: ""), NSLocalizedString("SetupRecurringGiftYear", comment: "")]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,45 +41,89 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecurringRuleTableCell.self), for: indexPath) as! RecurringRuleTableCell
-        
         let rule = self.recurringRules[indexPath.row]
-        
-        cell.Name.text = rule.nameSpace
-        cell.Cron.text = rule.cronExpression
-        cell.EndDate.text = String(rule.endsAfterTurns)
-        
+        var color: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+
+        switch MediumHelper.namespaceToOrganisationType(namespace: rule.nameSpace) {
+        case .church:
+            cell.Logo.image = UIImage(imageLiteralResourceName: "church_white")
+            color = #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1)
+        case .charity:
+            cell.Logo.image = UIImage(imageLiteralResourceName: "stichting_white")
+            color = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
+        case .campaign:
+            cell.Logo.image = UIImage(imageLiteralResourceName: "actions_white")
+            color = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
+        case .artist:
+            cell.Logo.image = UIImage(imageLiteralResourceName: "artist")
+            color = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+        default:
+            break
+        }
+        cell.Name.text = GivtManager.shared.getOrganisationName(organisationNameSpace: rule.nameSpace)
+        let cron = frequencies[evaluateCronExpression(cronExpression: rule.cronExpression)]
+        cell.Cron.text = NSLocalizedString("SetupRecurringGiftText_3", comment: "") + " " + cron + " " + NSLocalizedString("RecurringDonationYouGive", comment: "") + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        let endDate:String = formatter.string(from: evaluateEndDateFromSubscription(recurringRule: rule))
+        cell.EndDate.text = NSLocalizedString("RecurringDonationStops", comment: "").replacingOccurrences(of: "{0}", with: endDate)
         cell.CenterView.layer.borderWidth = 1
         cell.CenterView.layer.cornerRadius = 8
         cell.Indication.isHidden = true
-        
-        switch rule.nameSpace {
-        case "Cow":
-            cell.Logo.image = UIImage(imageLiteralResourceName: "church_white")
-            cell.Logo.contentMode = .scaleAspectFill
-            cell.LogoView.backgroundColor = #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1)
-            cell.CenterView.layer.borderColor = #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1)
-            cell.LogoView.layer.cornerRadius = 4
-        case "Camel":
-            cell.Logo.image = UIImage(imageLiteralResourceName: "stichting_white")
-            cell.Logo.contentMode = .scaleAspectFill
-            cell.LogoView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
-            cell.CenterView.layer.borderColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
-            cell.LogoView.layer.cornerRadius = 4
-        case "Sheep":
-            cell.Logo.image = UIImage(imageLiteralResourceName: "actions_white")
-            cell.Logo.contentMode = .scaleAspectFill
-            cell.LogoView.backgroundColor = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
-            cell.CenterView.layer.borderColor = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
-            cell.LogoView.layer.cornerRadius = 4
-        default:
-            cell.Logo.image = UIImage(imageLiteralResourceName: "artist")
-            cell.Logo.contentMode = .scaleAspectFill
-            cell.LogoView.backgroundColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
-            cell.CenterView.layer.borderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
-            cell.LogoView.layer.cornerRadius = 4
-        }
+        cell.Logo.contentMode = .scaleAspectFill
+        cell.LogoView.layer.cornerRadius = 4
+        cell.LogoView.backgroundColor = color
+        cell.CenterView.layer.borderColor = color.cgColor
         return cell
     }
+    
+    private func evaluateCronExpression(cronExpression: String) -> Int {
+        let elements = cronExpression.split(separator: " ")
+        let day = elements[2]
+        let month = elements[3]
+        let dayOfWeek = elements[4]
+        var frequency: Int = 0
+        if (dayOfWeek != "*") {
+            frequency = 0
+        }
+        if (day != "*") {
+            if (month == "*") {
+                frequency = 1
+            }
+            if (month.contains("/3")) {
+                frequency = 2
+            }
+            if (month.contains("/6")) {
+                frequency = 3
+            }
+            if (month.contains("/12")) {
+                frequency = 4
+            }
+        }
+        return frequency
+    }
+    
+    private func evaluateEndDateFromSubscription(recurringRule: RecurringRuleViewModel) -> Date {
+        let multiplier = recurringRule.endsAfterTurns-1
+        let startDate = Date(timeIntervalSince1970: TimeInterval(recurringRule.startDate * 1000) / 1000)
+        var dateComponent = DateComponents()
+        switch evaluateCronExpression(cronExpression: recurringRule.cronExpression) {
+        case 0:
+            dateComponent.weekOfYear = multiplier
+        case 1:
+            dateComponent.month = multiplier
+        case 2:
+            dateComponent.month = multiplier * 3
+        case 3:
+            dateComponent.month = multiplier * 6
+        case 4:
+            dateComponent.year = multiplier
+        default:
+            break
+        }
+        return Calendar.current.date(byAdding: dateComponent, to: startDate) as! Date
+    }
+
     
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
         try? mediater.send(request: GoToChooseSubscriptionRoute(), withContext: self)
