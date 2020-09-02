@@ -38,7 +38,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         RecurringDonationsRuleOverview.layer.cornerRadius = 8
         
         do {
-            recurringRules = try mediater.send(request: GetSubscriptionsCommand())
+            recurringRules = try mediater.send(request: GetRecurringDonationsQuery())
             if recurringRules.count == 0 {
                 tableView.removeFromSuperview()
                 emptyListLabel.text = "EmptySubscriptionList".localized
