@@ -185,8 +185,10 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
         startDatePicker.setValue(false, forKeyPath: "highlightsToday")
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
+        if let newDate = Calendar.current.date(byAdding: .day, value: 1, to: Date()) {
+            startDatePicker.minimumDate = newDate
+        }
         startDateLabel.text = startDatePicker.date.formatted
-        startDatePicker.minimumDate = Date()
         startDateLabel.inputView = startDatePicker
         createToolbar(startDateLabel)
     }
@@ -292,6 +294,13 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     }
     
     @objc func handleOccurencesEditingChanged() {
+        if let times = Int(occurencesTextField.text!) {
+            if(times == 0) {
+                occurencesTextField.setBorderColor(.red)
+            } else {
+                occurencesTextField.resetBorderColor()
+            }
+        }
         ensureButtonHasCorrectState()
     }
     @objc func handleOccurencesEditingEnd() {
