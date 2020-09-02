@@ -61,23 +61,23 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         let rule = self.recurringRules[indexPath.row]
         var color: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 
-        switch MediumHelper.namespaceToOrganisationType(namespace: rule.nameSpace) {
-        case .church:
-            cell.Logo.image = UIImage(imageLiteralResourceName: "church_white")
-            color = #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1)
-        case .charity:
-            cell.Logo.image = UIImage(imageLiteralResourceName: "stichting_white")
-            color = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
-        case .campaign:
-            cell.Logo.image = UIImage(imageLiteralResourceName: "actions_white")
-            color = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
-        case .artist:
-            cell.Logo.image = UIImage(imageLiteralResourceName: "artist")
-            color = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
-        default:
-            break
+        switch MediumHelper.namespaceToOrganisationType(namespace: rule.namespace) {
+            case .church:
+                cell.Logo.image = UIImage(imageLiteralResourceName: "church_white")
+                color = #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1)
+            case .charity:
+                cell.Logo.image = UIImage(imageLiteralResourceName: "stichting_white")
+                color = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
+            case .campaign:
+                cell.Logo.image = UIImage(imageLiteralResourceName: "actions_white")
+                color = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
+            case .artist:
+                cell.Logo.image = UIImage(imageLiteralResourceName: "artist")
+                color = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+            default:
+                break
         }
-        cell.Name.text = GivtManager.shared.getOrganisationName(organisationNameSpace: rule.nameSpace)
+        cell.Name.text = GivtManager.shared.getOrganisationName(organisationNameSpace: rule.namespace)
         let cron = frequencies[evaluateCronExpression(cronExpression: rule.cronExpression)]
         cell.Cron.text = NSLocalizedString("SetupRecurringGiftText_3", comment: "") + " " + cron + " " + NSLocalizedString("RecurringDonationYouGive", comment: "") + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
         let formatter = DateFormatter()
