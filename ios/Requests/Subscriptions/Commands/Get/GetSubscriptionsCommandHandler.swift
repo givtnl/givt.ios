@@ -21,20 +21,19 @@ class GetSubscriptionsCommandHandler : RequestHandlerProtocol {
                 do
                 {
                     let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                    let parsedDataResult = parsedData["results"] as? [Dictionary<String, Any>]
-                    
-                    for x in parsedDataResult! {
-                        let item:RecurringRuleViewModel = RecurringRuleViewModel()
-                        item.amountPerTurn = x["amountPerTurn"] as! Double
-                        item.cronExpression = x["cronExpression"] as! String
-                        item.currentState = x["currentState"] as! Int
-                        item.endsAfterTurns = x["endsAfterTurns"] as! Int
-                        item.id = x["id"] as! String
-                        item.nameSpace = x["nameSpace"] as! String
-                        item.startDate = x["startDate"] as! Int
-                        models.append(item)
+                    if let parsedDataResult = parsedData["results"] as? [Dictionary<String, Any>] {
+                        for x in parsedDataResult {
+                            let item:RecurringRuleViewModel = RecurringRuleViewModel()
+                            item.amountPerTurn = x["amountPerTurn"] as! Double
+                            item.cronExpression = x["cronExpression"] as! String
+                            item.currentState = x["currentState"] as! Int
+                            item.endsAfterTurns = x["endsAfterTurns"] as! Int
+                            item.id = x["id"] as! String
+                            item.nameSpace = x["nameSpace"] as! String
+                            item.startDate = x["startDate"] as! Int
+                            models.append(item)
+                        }
                     }
-                    
                     try? completion(models as! R.TResponse)
                 } catch {
                     try? completion(models as! R.TResponse)
