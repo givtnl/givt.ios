@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -263,6 +263,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="RecurringDonationsRuleOverview" destination="ZW4-eZ-ovY" id="Is7-A5-Xj3"/>
+                        <outlet property="createButton" destination="3u0-sI-BBb" id="fHj-QN-Nhi"/>
+                        <outlet property="navBar" destination="ZjW-Vs-6Uv" id="fBt-bC-RMZ"/>
+                        <outlet property="recurringDonationsOverviewTitleLabel" destination="deh-ps-Qom" id="nhW-vl-lvU"/>
                         <outlet property="tableView" destination="jxc-L3-vdS" id="W7k-aE-laf"/>
                     </connections>
                 </viewController>
