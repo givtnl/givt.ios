@@ -14,14 +14,14 @@ class CreateSubscriptionCommand : Codable, RequestProtocol {
     
     var userId: UUID? = nil
     let amountPerTurn: Decimal
-    let nameSpace: String
+    let namespace: String
     let endsAfterTurns: Int
     let cronExpression: String
     let startDate: String
         
-    internal init(amountPerTurn: Decimal, nameSpace: String, endsAfterTurns: Int, cronExpression: String, startDate: String) {
+    internal init(amountPerTurn: Decimal, namespace: String, endsAfterTurns: Int, cronExpression: String, startDate: String) {
         self.amountPerTurn = amountPerTurn
-        self.nameSpace = nameSpace
+        self.namespace = namespace
         self.endsAfterTurns = endsAfterTurns
         self.cronExpression = cronExpression
         self.startDate = startDate

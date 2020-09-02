@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal class RecurringRuleViewModel {
+struct RecurringRuleViewModel: Codable {
     public var namespace: String = ""
     public var endsAfterTurns: Int = 0
     public var id: String = ""
@@ -16,4 +16,9 @@ internal class RecurringRuleViewModel {
     public var cronExpression: String = ""
     public var amountPerTurn: Double = 0.0
     public var startDate: Int = 0
+}
+
+struct RecurringRulesResponseModel: Codable {
+    public var count: Int = 0
+    public var results: [RecurringRuleViewModel] = []
 }

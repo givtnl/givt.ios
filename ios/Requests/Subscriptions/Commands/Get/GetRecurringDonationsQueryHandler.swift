@@ -17,25 +17,15 @@ class GetRecurringDonationsQueryHandler : RequestHandlerProtocol {
         
         client.get(url: "https://api.development.givtapp.net/subscriptions", data: [:]) { (response) in
             var models: [RecurringRuleViewModel] = []
-            if let response = response, let data = response.data, response.statusCode == 200 {
-                do
-                {
-                    let parsedData = try JSONSerialization.jsonObject(with: data) as! [String: Any]
-                    if let parsedDataResult = parsedData["results"] as? [Dictionary<String, Any>] {
-                        for x in parsedDataResult {
-                            let item:RecurringRuleViewModel = RecurringRuleViewModel()
-                            item.amountPerTurn = x["amountPerTurn"] as! Double
-                            item.cronExpression = x["cronExpression"] as! String
-                            item.currentState = x["currentState"] as! Int
-                            item.endsAfterTurns = x["endsAfterTurns"] as! Int
-                            item.id = x["id"] as! String
-                            item.namespace = x["namespace"] as! String
-                            item.startDate = x["startDate"] as! Int
-                            models.append(item)
-                        }
+            if let response = response, response.statusCode == 200 {
+                if let body = response.text {
+                    do {
+                        let decoder = JSONDecoder()
+                        let parsedDataResult = try decoder.decode(RecurringRulesResponseModel.self, from: Data(body.utf8))
+                        models = parsedDataResult.results
+                    } catch {
+                        try? completion(models as! R.TResponse)
                     }
-                    try? completion(models as! R.TResponse)
-                } catch {
                     try? completion(models as! R.TResponse)
                 }
             } else {
