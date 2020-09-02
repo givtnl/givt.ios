@@ -15,8 +15,7 @@ class GetSubscriptionsCommandHandler : RequestHandlerProtocol {
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         
-        let data = ["userId" : UserDefaults.standard.userExt!.guid]
-        client.get(url: "https://api.development.givtapp.net/subscriptions?userId=subscriptions", data: data) { (response) in
+        client.get(url: "https://api.development.givtapp.net/subscriptions?userId=subscriptions", data: [:]) { (response) in
             var models: [RecurringRuleViewModel] = []
             if let response = response, let data = response.data, response.statusCode == 200 {
                 do
