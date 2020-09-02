@@ -240,7 +240,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Mediater.shared.registerHandler(handler: GoToSafariRouteHandler())
         Mediater.shared.registerHandler(handler: FinalizeGivingRouteHandler())
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
-        Mediater.shared.registerHandler(handler: GetSubscriptionsCommandHandler())
+        Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
         
         // Flow: SetupRecurringSubscription
         // -- Navigation

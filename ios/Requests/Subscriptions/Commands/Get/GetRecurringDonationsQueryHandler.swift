@@ -1,5 +1,5 @@
 //
-//  GetSubscriptionsCommandHandler.swift
+//  GetRecurringDonationsQueryHandler.swift
 //  ios
 //
 //  Created by Jonas Brabant on 29/08/2020.
@@ -10,12 +10,12 @@ import Foundation
 import CoreData
 import UIKit
 
-class GetSubscriptionsCommandHandler : RequestHandlerProtocol {
+class GetRecurringDonationsQueryHandler : RequestHandlerProtocol {
     private var client = APIClient.shared
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         
-        client.get(url: "https://api.development.givtapp.net/subscriptions?userId=subscriptions", data: [:]) { (response) in
+        client.get(url: "https://api.development.givtapp.net/subscriptions", data: [:]) { (response) in
             var models: [RecurringRuleViewModel] = []
             if let response = response, let data = response.data, response.statusCode == 200 {
                 do
@@ -45,6 +45,6 @@ class GetSubscriptionsCommandHandler : RequestHandlerProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is GetSubscriptionsCommand
+        return request is GetRecurringDonationsQuery
     }
 }

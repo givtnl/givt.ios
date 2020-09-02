@@ -1,5 +1,5 @@
 //
-//  GetSubscriptionsCommand.swift
+//  GetRecurringDonationsQuery.swift
 //  ios
 //
 //  Created by Jonas Brabant on 29/08/2020.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-class GetSubscriptionsCommand : Codable, RequestProtocol {
+class GetRecurringDonationsQuery : Codable, RequestProtocol {
     typealias TResponse = [RecurringRuleViewModel]
 }
