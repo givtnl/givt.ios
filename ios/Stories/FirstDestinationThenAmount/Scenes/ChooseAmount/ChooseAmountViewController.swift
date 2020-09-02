@@ -46,16 +46,16 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
         amountControl.currency = UserDefaults.standard.currencySymbol
         amountControl.isActive = true
         
-        giveButton.labelText.text = NSLocalizedString("Give", comment: "Button to give")
+        giveButton.labelText.text = "Give".localized
         giveButton.labelText.adjustsFontSizeToFitWidth = true
-        giveButton.accessibilityLabel = NSLocalizedString("Give", comment: "Button to give")
+        giveButton.accessibilityLabel = "Give".localized
         
-        screenTitle.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
+        screenTitle.text = "Amount".localized
         navigationTitle.title = ""
         
-        removeButton.accessibilityLabel = NSLocalizedString("RemoveBtnAccessabilityLabel", comment: "")
+        removeButton.accessibilityLabel = "RemoveBtnAccessabilityLabel".localized
         
-        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        backButton.accessibilityLabel = "Back".localized
         
         checkAmount()
     }
@@ -66,7 +66,7 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
         decimalNotation = NSLocale.current.decimalSeparator! as String
 
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_second"))
-        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepTwo", comment: "")
+        navigationItem.accessibilityLabel = "ProgressBarStepTwo".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
     }
@@ -179,22 +179,22 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
     }
 
     fileprivate func showAmountTooLow() {
-        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
-        let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
-                                      message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
+        let alert = UIAlertController(title: "AmountTooLow".localized,
+                                      message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
     
     fileprivate func displayAmountTooHigh() {
         let alert = UIAlertController(
-            title: NSLocalizedString("AmountTooHigh", comment: ""),
-            message: NSLocalizedString("AmountLimitExceeded", comment: ""),
+            title: "AmountTooHigh".localized,
+            message: "AmountLimitExceeded".localized,
             preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default) { action in })
+        alert.addAction(UIAlertAction(title: "ChooseLowerAmount".localized, style: .default) { action in })
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ChangeGivingLimit", comment: ""), style: .cancel, handler: { action in
+        alert.addAction(UIAlertAction(title: "ChangeGivingLimit".localized, style: .cancel, handler: { action in
             try? self.mediater.send(request: ChangeAmountLimitRoute(), withContext: self)
         }))
         

@@ -44,11 +44,11 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     private var startDatePicker: UIDatePicker!
     
     private let frequencys: Array<Array<Any>> =
-        [[Frequency.Weekly, NSLocalizedString("SetupRecurringGiftWeek", comment: "")]
-            , [Frequency.Monthly, NSLocalizedString("SetupRecurringGiftMonth", comment: "")]
-            , [Frequency.ThreeMonthly, NSLocalizedString("SetupRecurringGiftQuarter", comment: "")]
-            , [Frequency.SixMonthly, NSLocalizedString("SetupRecurringGiftHalfYear", comment: "")]
-            , [Frequency.Yearly, NSLocalizedString("SetupRecurringGiftYear", comment: "")]]
+        [[Frequency.Weekly, "SetupRecurringGiftWeek".localized]
+            , [Frequency.Monthly, "SetupRecurringGiftMonth".localized]
+            , [Frequency.ThreeMonthly, "SetupRecurringGiftQuarter".localized]
+            , [Frequency.SixMonthly, "SetupRecurringGiftHalfYear".localized]
+            , [Frequency.Yearly, "SetupRecurringGiftYear".localized]]
     
     private let animationDuration = 0.4
     private var decimalNotation: String! = "," {
@@ -65,12 +65,12 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
         
-        Label1.text = NSLocalizedString("SetupRecurringGiftText_1", comment: "")
-        Label2.text = NSLocalizedString("SetupRecurringGiftText_2", comment: "")
-        Label3.text = NSLocalizedString("SetupRecurringGiftText_3", comment: "")
-        LabelStarting.text = NSLocalizedString("SetupRecurringGiftText_4", comment: "")
-        Label4.text = NSLocalizedString("SetupRecurringGiftText_5", comment: "")
-        occurencesLabel.text = NSLocalizedString("SetupRecurringGiftText_6", comment: "")
+        Label1.text = "SetupRecurringGiftText_1".localized
+        Label2.text = "SetupRecurringGiftText_2".localized
+        Label3.text = "SetupRecurringGiftText_3".localized
+        LabelStarting.text = "SetupRecurringGiftText_4".localized
+        Label4.text = "SetupRecurringGiftText_5".localized
+        occurencesLabel.text = "SetupRecurringGiftText_6".localized
         
         
         setupAmountView()
@@ -156,7 +156,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
                 } else {
                     SVProgressHUD.dismiss()
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
+                        let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                         }))
                         self.present(alert, animated: true, completion:  {})
@@ -342,17 +342,17 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
     }
     fileprivate func displayAmountTooHigh() {
         let alert = UIAlertController(
-            title: NSLocalizedString("AmountTooHigh", comment: ""),
-            message: NSLocalizedString("AmountLimitExceeded", comment: ""),
+            title: "AmountTooHigh".localized,
+            message: "AmountLimitExceeded".localized,
             preferredStyle: UIAlertControllerStyle.alert)
         
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default) { action in })
+        alert.addAction(UIAlertAction(title: "ChooseLowerAmount".localized, style: .default) { action in })
         self.present(alert, animated: true, completion: nil)
     }
     fileprivate func showAmountTooLow() {
-        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
-        let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
-                                      message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
+        let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
+        let alert = UIAlertController(title: "AmountTooLow".localized,
+                                      message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }

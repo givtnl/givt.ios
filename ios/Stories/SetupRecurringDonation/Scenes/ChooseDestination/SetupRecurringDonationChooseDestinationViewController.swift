@@ -125,7 +125,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         nextButton.accessibilityLabel = "SelectRecipient".localized
         
         nextButton.isEnabled = false
-        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        backButton.accessibilityLabel = "Back".localized
         churchButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "church_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_church_white"), labelText: "Church".localized, tag: CollectGroupType.church.rawValue)
         churchButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
         charityButton = DestinationCategoryButton(color: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "stichting_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: "Charity".localized, tag: CollectGroupType.charity.rawValue)
