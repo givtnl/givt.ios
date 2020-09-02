@@ -12,7 +12,11 @@ import Foundation
 class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet var navBar: UINavigationItem!
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var imageView: UIView!
+    @IBOutlet weak var emptyListLabel: UILabel!
+    
     @IBOutlet weak var RecurringDonationsRuleOverview: UIView!
     @IBOutlet var createButton: CreateRecurringDonationButton!
     @IBOutlet var recurringDonationsOverviewTitleLabel: UILabel!
@@ -35,9 +39,15 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         
         do {
             recurringRules = try mediater.send(request: GetSubscriptionsCommand())
-            self.tableView.reloadData()
+            if recurringRules.count == 0 {
+                tableView.removeFromSuperview()
+                emptyListLabel.text = "EmptySubscriptionList".localized
+            } else {
+                imageView.removeFromSuperview()
+                tableView.reloadData()
+            }
         } catch  {
-            
+            tableView.removeFromSuperview()
         }
     }
     
