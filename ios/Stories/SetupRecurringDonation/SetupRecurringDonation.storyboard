@@ -84,7 +84,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="jxc-L3-vdS">
-                                                <rect key="frame" x="0.0" y="55" width="374" height="359"/>
+                                                <rect key="frame" x="0.0" y="55" width="374" height="259"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="sectionIndexBackgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
@@ -230,13 +230,13 @@
                                                 </prototypes>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xnA-Uk-JCy">
-                                                <rect key="frame" x="0.0" y="429" width="374" height="160"/>
+                                                <rect key="frame" x="0.0" y="329" width="374" height="260"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givymoney" translatesAutoresizingMaskIntoConstraints="NO" id="ILJ-Aa-nau">
-                                                        <rect key="frame" x="137" y="40" width="100" height="100"/>
+                                                        <rect key="frame" x="87" y="40" width="200" height="200"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="Pkh-Nz-c5g"/>
-                                                            <constraint firstAttribute="height" constant="100" id="xal-V6-9lw"/>
+                                                            <constraint firstAttribute="width" constant="200" id="Pkh-Nz-c5g"/>
+                                                            <constraint firstAttribute="height" constant="200" id="xal-V6-9lw"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9A-Fz-Lc9">
@@ -244,8 +244,8 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="VGs-D8-vlh"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
+                                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
