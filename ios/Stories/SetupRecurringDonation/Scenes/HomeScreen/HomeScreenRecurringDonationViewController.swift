@@ -11,8 +11,11 @@ import Foundation
 
 class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource
 {
+    @IBOutlet var navBar: UINavigationItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var RecurringDonationsRuleOverview: UIView!
+    @IBOutlet var createButton: CreateRecurringDonationButton!
+    @IBOutlet var recurringDonationsOverviewTitleLabel: UILabel!
     
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
@@ -22,6 +25,10 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navBar.title = NSLocalizedString("TitleRecurringGifts", comment: "")
+        createButton.label1.text = NSLocalizedString("RecurringGiftsSetupCreate", comment: "")
+        createButton.label2.text = NSLocalizedString("RecurringGiftsSetupRecurringGift", comment: "")
+        recurringDonationsOverviewTitleLabel.text = NSLocalizedString("OverviewRecurringDonations", comment: "")
         tableView.delegate = self
         tableView.dataSource = self
         RecurringDonationsRuleOverview.layer.cornerRadius = 8
