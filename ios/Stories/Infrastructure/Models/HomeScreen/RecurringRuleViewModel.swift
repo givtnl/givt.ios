@@ -9,7 +9,7 @@
 import Foundation
 
 internal class RecurringRuleViewModel {
-    public var nameSpace:String = ""
+    public var namespace:String = ""
     public var endsAfterTurns:Int = 0
     public var id:String = ""
     public var currentState:Int = 0
