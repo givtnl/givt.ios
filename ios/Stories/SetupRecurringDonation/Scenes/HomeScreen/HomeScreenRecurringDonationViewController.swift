@@ -24,15 +24,15 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
     var recurringRules:[RecurringRuleViewModel] = []
-    var frequencies = [NSLocalizedString("SetupRecurringGiftWeek", comment: ""), NSLocalizedString("SetupRecurringGiftMonth", comment: ""), NSLocalizedString("SetupRecurringGiftQuarter", comment: ""), NSLocalizedString("SetupRecurringGiftHalfYear", comment: ""), NSLocalizedString("SetupRecurringGiftYear", comment: "")]
+    var frequencies = ["SetupRecurringGiftWeek".localized, "SetupRecurringGiftMonth".localized, "SetupRecurringGiftQuarter".localized, "SetupRecurringGiftHalfYear".localized, "SetupRecurringGiftYear".localized]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navBar.title = NSLocalizedString("TitleRecurringGifts", comment: "")
-        createButton.label1.text = NSLocalizedString("RecurringGiftsSetupCreate", comment: "")
-        createButton.label2.text = NSLocalizedString("RecurringGiftsSetupRecurringGift", comment: "")
-        recurringDonationsOverviewTitleLabel.text = NSLocalizedString("OverviewRecurringDonations", comment: "")
+        navBar.title = "TitleRecurringGifts".localized
+        createButton.label1.text = "RecurringGiftsSetupCreate".localized
+        createButton.label2.text = "RecurringGiftsSetupRecurringGift".localized
+        recurringDonationsOverviewTitleLabel.text = "OverviewRecurringDonations".localized
         tableView.delegate = self
         tableView.dataSource = self
         RecurringDonationsRuleOverview.layer.cornerRadius = 8
@@ -79,11 +79,11 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         }
         cell.Name.text = GivtManager.shared.getOrganisationName(organisationNameSpace: rule.namespace)
         let cron = frequencies[evaluateCronExpression(cronExpression: rule.cronExpression)]
-        cell.Cron.text = NSLocalizedString("SetupRecurringGiftText_3", comment: "") + " " + cron + " " + NSLocalizedString("RecurringDonationYouGive", comment: "") + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
+        cell.Cron.text = "SetupRecurringGiftText_3".localized + " " + cron + " " + "RecurringDonationYouGive".localized + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         let endDate:String = formatter.string(from: evaluateEndDateFromSubscription(recurringRule: rule))
-        cell.EndDate.text = NSLocalizedString("RecurringDonationStops", comment: "").replacingOccurrences(of: "{0}", with: endDate)
+        cell.EndDate.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
         cell.CenterView.layer.borderWidth = 1
         cell.CenterView.layer.cornerRadius = 8
         cell.Indication.isHidden = true
