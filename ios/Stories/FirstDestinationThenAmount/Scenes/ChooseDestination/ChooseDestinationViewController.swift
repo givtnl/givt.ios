@@ -102,7 +102,7 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
-        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepOne", comment: "")
+        navigationItem.accessibilityLabel = "ProgressBarStepOne".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
@@ -128,9 +128,9 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
         tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         tableView.tableFooterView = UIView(frame: .zero)
 
-        nextButton.setTitle(NSLocalizedString("Next", comment: "Button to give"), for: UIControlState.normal)
+        nextButton.setTitle("Next".localized, for: UIControlState.normal)
         nextButton.isEnabled = false
-        backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
+        backButton.accessibilityLabel = "Back".localized
         churchButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "church_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_church_white"), labelText: "Church".localized, tag: CollectGroupType.church.rawValue)
         churchButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
         charityButton = DestinationCategoryButton(color: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "stichting_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: "Charity".localized, tag: CollectGroupType.charity.rawValue)
