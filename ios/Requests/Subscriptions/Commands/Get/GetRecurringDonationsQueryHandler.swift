@@ -11,13 +11,13 @@ import CoreData
 import UIKit
 
 class GetRecurringDonationsQueryHandler : RequestHandlerProtocol {
-    private var client = APIClient.shared
+    private var client = APIClient.cloud
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         
-        client.get(url: "https://api.development.givtapp.net/subscriptions", data: [:]) { (response) in
+        client.get(url: "/subscriptions", data: [:]) { (response) in
             var models: [RecurringRuleViewModel] = []
-            if let response = response, response.statusCode == 200 {
+            if let response = response, response.isSuccess {
                 if let body = response.text {
                     do {
                         let decoder = JSONDecoder()

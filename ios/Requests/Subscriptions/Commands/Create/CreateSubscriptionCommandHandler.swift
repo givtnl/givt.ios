@@ -11,7 +11,7 @@ import CoreData
 import UIKit
 
 class CreateSubscriptionCommandHandler : RequestHandlerProtocol {
-    let apiClient = CloudAPIClient.shared
+    let apiClient = APIClient.cloud
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let request = request as! CreateSubscriptionCommand
