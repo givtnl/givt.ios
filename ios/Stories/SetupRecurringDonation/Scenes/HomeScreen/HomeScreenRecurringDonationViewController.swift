@@ -85,7 +85,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         cell.Cron.text = "SetupRecurringGiftText_3".localized + " " + cron + " " + "RecurringDonationYouGive".localized + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
-        let endDate:String = formatter.string(from: evaluateEndDateFromSubscription(recurringRule: rule))
+        let endDate:String = formatter.string(from: evaluateEndDateFromRecurringDonation(recurringRule: rule))
         cell.EndDate.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
         cell.LogoView.backgroundColor = color
         cell.CenterView.layer.borderColor = color.cgColor
@@ -118,7 +118,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         return frequency
     }
     
-    private func evaluateEndDateFromSubscription(recurringRule: RecurringRuleViewModel) -> Date {
+    private func evaluateEndDateFromRecurringDonation(recurringRule: RecurringRuleViewModel) -> Date {
         let multiplier = recurringRule.endsAfterTurns-1
         let startDate = Date(timeIntervalSince1970: TimeInterval(recurringRule.startDate * 1000) / 1000)
         var dateComponent = DateComponents()
@@ -141,7 +141,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
 
     
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
-        try? mediater.send(request: GoToChooseSubscriptionRoute(), withContext: self)
+        try? mediater.send(request: GoToChooseRecurringDonationRoute(), withContext: self)
     }
     
     @IBAction func backButton(_ sender: Any) {

@@ -1,5 +1,5 @@
 //
-//  GoToChooseSubscriptionRouteHandler.swift
+//  GoToChooseRecurringDonationsRouteHandler.swift
 //  ios
 //
 //  Created by Jonas Brabant on 28/08/2020.
@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
-class GoToChooseSubscriptionRouteHandler : RequestHandlerWithContextProtocol {
+class GoToChooseRecurringDonationRouteHandler : RequestHandlerWithContextProtocol {
    
     public func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         
             let vc = UIStoryboard.init(name: "SetupRecurringDonation", bundle: nil)
-                .instantiateViewController(withIdentifier: String(describing: SetupRecurringDonationChooseSubscriptionViewController.self)) as! SetupRecurringDonationChooseSubscriptionViewController
+                .instantiateViewController(withIdentifier: String(describing: SetupRecurringDonationChooseRecurringDonationViewController.self)) as! SetupRecurringDonationChooseRecurringDonationViewController
             context.navigationController?.pushViewController(vc, animated: true)
             try completion(() as! R.TResponse)
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is GoToChooseSubscriptionRoute
+        return request is GoToChooseRecurringDonationRoute
     }
 }
 

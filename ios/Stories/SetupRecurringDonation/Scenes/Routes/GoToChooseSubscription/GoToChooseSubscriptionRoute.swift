@@ -1,5 +1,5 @@
 //
-//  GoToChooseSubscriptionRoute.swift
+//  GoToChooseRecurringDonationRoute.swift
 //  ios
 //
 //  Created by Jonas Brabant on 28/08/2020.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-class GoToChooseSubscriptionRoute : NoResponseRequest {
+class GoToChooseRecurringDonationRoute : NoResponseRequest {
     
 }

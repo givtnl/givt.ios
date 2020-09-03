@@ -1,5 +1,5 @@
 //
-//  CreateSubscriptionCommand.swift
+//  CreateRecurringDonationCommand.swift
 //  ios
 //
 //  Created by Mike Pattyn on 28/07/2020.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class CreateSubscriptionCommand : Codable, RequestProtocol {
+class CreateRecurringDonationCommand : Codable, RequestProtocol {
     typealias TResponse = Bool
     
     var userId: UUID? = nil
