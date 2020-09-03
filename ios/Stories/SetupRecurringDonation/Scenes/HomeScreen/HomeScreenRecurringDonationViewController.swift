@@ -16,11 +16,13 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIView!
     @IBOutlet weak var emptyListLabel: UILabel!
+    @IBOutlet weak var stackView: UIStackView!
     
     @IBOutlet weak var RecurringDonationsRuleOverview: UIView!
     @IBOutlet var createButton: CreateRecurringDonationButton!
     @IBOutlet var recurringDonationsOverviewTitleLabel: UILabel!
     
+    private var tempTableView: UITableView!
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
     var recurringRules:[RecurringRuleViewModel] = []
@@ -41,13 +43,18 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         do {
             recurringRules = try mediater.send(request: GetRecurringDonationsQuery())
             if recurringRules.count == 0 {
+                tempTableView = tableView
                 tableView.removeFromSuperview()
                 emptyListLabel.text = "EmptySubscriptionList".localized
             } else {
                 if let view = imageView {
                     view.removeFromSuperview()
                 }
+                if let table = tempTableView {
+                    tableView = table
+                }
                 tableView.reloadData()
+                stackView.addArrangedSubview(tableView)
             }
         } catch  {
             tableView.removeFromSuperview()

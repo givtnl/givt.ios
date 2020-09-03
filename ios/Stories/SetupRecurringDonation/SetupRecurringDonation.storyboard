@@ -302,6 +302,7 @@
                         <outlet property="imageView" destination="xnA-Uk-JCy" id="Oui-hS-5q6"/>
                         <outlet property="navBar" destination="ZjW-Vs-6Uv" id="fBt-bC-RMZ"/>
                         <outlet property="recurringDonationsOverviewTitleLabel" destination="deh-ps-Qom" id="nhW-vl-lvU"/>
+                        <outlet property="stackView" destination="4Ni-Xx-YpT" id="rGz-2D-Qbq"/>
                         <outlet property="tableView" destination="jxc-L3-vdS" id="W7k-aE-laf"/>
                     </connections>
                 </viewController>
