@@ -1,5 +1,5 @@
 //
-//  ChooseSubscriptionViewController.swift
+//  ChooseRecurringDonationViewController.swift
 //  ios
 //
 //  Created by Mike Pattyn on 27/07/2020.
@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class SetupRecurringDonationChooseRecurringDonationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
@@ -100,8 +100,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: BackToPreviousViewRoute(), withContext: self)
     }
-    @IBAction func makeSubscription(_ sender: Any) {
-        
+    @IBAction func makeRecurringDonation(_ sender: Any) {
         let cronExpression: String
         
         let dayOfMonth = startDatePicker.date.getDay()
@@ -143,12 +142,12 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let startDeet: String = dateFormatter.string(from: startDatePicker.date)
-        let command = CreateSubscriptionCommand(amountPerTurn: amountView.amount, namespace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression, startDate: startDeet)
+        let command = CreateRecurringDonationCommand(amountPerTurn: amountView.amount, namespace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression, startDate: startDeet)
         do {
             SVProgressHUD.show()
 
-            try mediater.sendAsync(request: command) { subscriptionMade in
-                if(subscriptionMade) {
+            try mediater.sendAsync(request: command) { recurringDonationMade in
+                if(recurringDonationMade) {
                     SVProgressHUD.dismiss()
                     DispatchQueue.main.async {
                         try? self.mediater.send(request: GoToRootViewRoute(), withContext: self)
@@ -168,7 +167,7 @@ class SetupRecurringDonationChooseSubscriptionViewController: UIViewController, 
     }
 }
 
-extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupLabelDelegate {
+extension SetupRecurringDonationChooseRecurringDonationViewController : CollectGroupLabelDelegate {
     func setupFrequencyPickerView() {
         frequencyPicker = UIPickerView()
         frequencyPicker.dataSource = self

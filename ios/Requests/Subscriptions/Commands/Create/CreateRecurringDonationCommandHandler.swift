@@ -1,5 +1,5 @@
 //
-//  CreateSubscriptionCommandHandler.swift
+//  CreateRecurringDonationCommandHandler.swift
 //  ios
 //
 //  Created by Mike Pattyn on 28/07/2020.
@@ -10,11 +10,11 @@ import Foundation
 import CoreData
 import UIKit
 
-class CreateSubscriptionCommandHandler : RequestHandlerProtocol {
+class CreateRecurringDonationCommandHandler : RequestHandlerProtocol {
     let apiClient = APIClient.cloud
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let request = request as! CreateSubscriptionCommand
+        let request = request as! CreateRecurringDonationCommand
         do {
             let body = try JSONEncoder().encode(request)
             try apiClient.post(url: "/subscriptions", data: body) { response in
@@ -31,6 +31,6 @@ class CreateSubscriptionCommandHandler : RequestHandlerProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is CreateSubscriptionCommand
+        return request is CreateRecurringDonationCommand
     }
 }

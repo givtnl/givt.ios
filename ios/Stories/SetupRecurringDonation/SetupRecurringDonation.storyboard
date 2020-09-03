@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -461,7 +461,7 @@
         <!--Plan je Givt-->
         <scene sceneID="SsZ-Ka-MoC">
             <objects>
-                <viewController storyboardIdentifier="SetupRecurringDonationChooseSubscriptionViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UTq-9E-O8z" customClass="SetupRecurringDonationChooseSubscriptionViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetupRecurringDonationChooseRecurringDonationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UTq-9E-O8z" customClass="SetupRecurringDonationChooseRecurringDonationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WhU-VP-B9p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -731,7 +731,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="makeSubscription:" destination="UTq-9E-O8z" eventType="touchUpInside" id="MAK-qj-BID"/>
+                                            <action selector="makeRecurringDonation:" destination="UTq-9E-O8z" eventType="touchUpInside" id="02x-Ht-1t1"/>
                                             <action selector="nextButtonTapped:" destination="pif-bt-Fyp" eventType="touchUpInside" id="0os-1F-js6"/>
                                         </connections>
                                     </button>

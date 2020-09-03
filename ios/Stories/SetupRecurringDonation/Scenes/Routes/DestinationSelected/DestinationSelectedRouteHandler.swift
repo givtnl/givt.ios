@@ -1,5 +1,5 @@
 //
-//  OpenChooseSubscriptionRouteHandler.swift
+//  OpenChooseRecurringDonationRouteHandler.swift
 //  ios
 //
 //  Created by Mike Pattyn on 27/07/2020.
@@ -14,7 +14,7 @@ public class DestinationSelectedRouteHandler : RequestHandlerWithContextProtocol
         if let lastVc = context.navigationController?.viewControllers.last,
             let lastVcIndex = context.navigationController?.viewControllers.lastIndex(of: lastVc),
             lastVcIndex > 0,
-            let vc = context.navigationController?.viewControllers[lastVcIndex-1] as? SetupRecurringDonationChooseSubscriptionViewController {
+            let vc = context.navigationController?.viewControllers[lastVcIndex-1] as? SetupRecurringDonationChooseRecurringDonationViewController {
             vc.input = request as? DestinationSelectedRoute
         }
         context.navigationController?.popViewController(animated: true)

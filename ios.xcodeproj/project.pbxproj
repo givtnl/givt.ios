@@ -36,9 +36,9 @@
 		32CA17B524CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA17B424CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift */; };
 		32CE4D4E24BDE1FC0048671B /* FirstDestinationThenAmount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CE4D4D24BDE1FC0048671B /* FirstDestinationThenAmount.storyboard */; };
 		32CE4D5324BDEEEC0048671B /* ChooseAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE4D5224BDEEEC0048671B /* ChooseAmountViewController.swift */; };
-		32D4852E24D0445200F821A5 /* CreateSubscriptionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4852D24D0445200F821A5 /* CreateSubscriptionCommand.swift */; };
-		32D4853124D0459C00F821A5 /* CreateSubscriptionCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853024D0459C00F821A5 /* CreateSubscriptionCommandHandler.swift */; };
-		32D4853324D0477000F821A5 /* CreateSubscriptionCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateSubscriptionCommandPreHandler.swift */; };
+		32D4852E24D0445200F821A5 /* CreateRecurringDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */; };
+		32D4853124D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */; };
+		32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */; };
 		A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C296222AA5EF70098442C /* GiftAidViewController.swift */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
@@ -329,9 +329,9 @@
 		32CA17B424CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseDestinationRouteHandler.swift; sourceTree = "<group>"; };
 		32CE4D4D24BDE1FC0048671B /* FirstDestinationThenAmount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstDestinationThenAmount.storyboard; sourceTree = "<group>"; };
 		32CE4D5224BDEEEC0048671B /* ChooseAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAmountViewController.swift; sourceTree = "<group>"; };
-		32D4852D24D0445200F821A5 /* CreateSubscriptionCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubscriptionCommand.swift; sourceTree = "<group>"; };
-		32D4853024D0459C00F821A5 /* CreateSubscriptionCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubscriptionCommandHandler.swift; sourceTree = "<group>"; };
-		32D4853224D0477000F821A5 /* CreateSubscriptionCommandPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSubscriptionCommandPreHandler.swift; sourceTree = "<group>"; };
+		32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommand.swift; sourceTree = "<group>"; };
+		32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandHandler.swift; sourceTree = "<group>"; };
+		32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandPreHandler.swift; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A40C296222AA5EF70098442C /* GiftAidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidViewController.swift; sourceTree = "<group>"; };
@@ -706,9 +706,9 @@
 		32D4852C24D0444300F821A5 /* Create */ = {
 			isa = PBXGroup;
 			children = (
-				32D4852D24D0445200F821A5 /* CreateSubscriptionCommand.swift */,
-				32D4853024D0459C00F821A5 /* CreateSubscriptionCommandHandler.swift */,
-				32D4853224D0477000F821A5 /* CreateSubscriptionCommandPreHandler.swift */,
+				32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */,
+				32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */,
+				32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -1947,12 +1947,12 @@
 				FBC185BC24C1A824001A4C6B /* OpenChooseAmountRouteHandler.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				D761E9BF1F18CFE4002B849B /* UIColorExtensions.swift in Sources */,
-				32D4853324D0477000F821A5 /* CreateSubscriptionCommandPreHandler.swift in Sources */,
+				32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */,
 				FBBF72A621CA819600EBB085 /* FeaturesNavigationController.swift in Sources */,
 				D721F19A1F7E2D4B000B9546 /* MainNavigationController.swift in Sources */,
 				FB87301B24C845E0005FF355 /* DeleteDonationCommandHandler.swift in Sources */,
 				27A0E4E9221F395000982842 /* PresetsNavigationViewController.swift in Sources */,
-				32D4852E24D0445200F821A5 /* CreateSubscriptionCommand.swift in Sources */,
+				32D4852E24D0445200F821A5 /* CreateRecurringDonationCommand.swift in Sources */,
 				DF2D13B924FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift in Sources */,
 				FBC1859C24C08918001A4C6B /* TableSection.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
@@ -1967,7 +1967,7 @@
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D748F5FC2061425400B25BC2 /* HistoryTableViewCell.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
-				32D4853124D0459C00F821A5 /* CreateSubscriptionCommandHandler.swift in Sources */,
+				32D4853124D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift in Sources */,
 				D7AE8BA921393B3400CB3A33 /* AmountPresetsNavigationController.swift in Sources */,
 				D74C19EC20F62B8A00E116A0 /* ExternalSuggestionView.swift in Sources */,
 				D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */,

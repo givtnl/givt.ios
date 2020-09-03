@@ -242,16 +242,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
         Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
         
-        // Flow: SetupRecurringSubscription
+        // Flow: SetupRecurringDonation
         // -- Navigation
         Mediater.shared.registerHandler(handler: DestinationSelectedRouteHandler())
         Mediater.shared.registerHandler(handler: SetupRecurringDonationChooseDestinationRouteHandler())
-        Mediater.shared.registerHandler(handler: GoToChooseSubscriptionRouteHandler())
+        Mediater.shared.registerHandler(handler: GoToChooseRecurringDonationRouteHandler())
         Mediater.shared.registerHandler(handler: BackToPreviousViewRouteHandler())
         Mediater.shared.registerHandler(handler: GoToRootViewRouteHandler())
         
         // -- Commands
-        Mediater.shared.registerPreProcessor(processor: CreateSubscriptionCommandPreHandler())
-        Mediater.shared.registerHandler(handler: CreateSubscriptionCommandHandler())
+        Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
+        Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
     }
 }

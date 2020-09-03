@@ -1,5 +1,5 @@
 //
-//  CreateSubscriptionCommandValidator.swift
+//  CreateRecurringDonationCommandValidator.swift
 //  ios
 //
 //  Created by Mike Pattyn on 28/07/2020.
@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class CreateSubscriptionCommandPreHandler: RequestPreProcessorProtocol {
+class CreateRecurringDonationCommandPreHandler: RequestPreProcessorProtocol {
     func handle<R>(request: R, completion: @escaping (R) throws -> Void) throws where R : RequestProtocol {
-        let request = request as! CreateSubscriptionCommand
+        let request = request as! CreateRecurringDonationCommand
         
         if let user = UserDefaults.standard.userExt {
             request.userId = UUID(uuidString: user.guid.uppercased())
@@ -20,6 +20,6 @@ class CreateSubscriptionCommandPreHandler: RequestPreProcessorProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is CreateSubscriptionCommand
+        return request is CreateRecurringDonationCommand
     }
 }

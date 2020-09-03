@@ -1,5 +1,5 @@
 //
-//  OpenChooseSubscriptionRoute.swift
+//  OpenChooseRecurringDonationRoute.swift
 //  ios
 //
 //  Created by Mike Pattyn on 27/07/2020.
