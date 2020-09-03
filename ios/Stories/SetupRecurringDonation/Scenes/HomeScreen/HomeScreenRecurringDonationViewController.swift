@@ -87,11 +87,6 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         formatter.dateFormat = "dd-MM-yyyy"
         let endDate:String = formatter.string(from: evaluateEndDateFromSubscription(recurringRule: rule))
         cell.EndDate.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
-        cell.CenterView.layer.borderWidth = 1
-        cell.CenterView.layer.cornerRadius = 8
-        cell.Indication.isHidden = true
-        cell.Logo.contentMode = .scaleAspectFill
-        cell.LogoView.layer.cornerRadius = 4
         cell.LogoView.backgroundColor = color
         cell.CenterView.layer.borderColor = color.cgColor
         return cell

@@ -26,5 +26,10 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = contentView.frame.insetBy(dx: 0, dy: 5)
+        CenterView.layer.borderWidth = 1
+        CenterView.layer.cornerRadius = 8
+        Indication.isHidden = true
+        Logo.contentMode = .scaleAspectFill
+        LogoView.layer.cornerRadius = 4
     }
 }
