@@ -203,7 +203,8 @@ extension SetupRecurringDonationChooseSubscriptionViewController : CollectGroupL
         let endsAfterTurns = Int(occurencesTextField.text!) ?? 0
         createSubcriptionButton.isEnabled = amount >= 0.5
             && amount <= 99999
-            && endsAfterTurns > 0
+            && endsAfterTurns >= 1
+            && endsAfterTurns <= 999
             && input?.mediumId != nil
         
     }
