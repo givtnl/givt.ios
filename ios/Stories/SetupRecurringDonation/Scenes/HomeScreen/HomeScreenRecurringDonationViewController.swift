@@ -36,14 +36,17 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         RecurringDonationsRuleOverview.layer.cornerRadius = 8
-        
+    }
+    override func viewWillAppear(_ animated: Bool) {
         do {
             recurringRules = try mediater.send(request: GetRecurringDonationsQuery())
             if recurringRules.count == 0 {
                 tableView.removeFromSuperview()
                 emptyListLabel.text = "EmptySubscriptionList".localized
             } else {
-                imageView.removeFromSuperview()
+                if let view = imageView {
+                    view.removeFromSuperview()
+                }
                 tableView.reloadData()
             }
         } catch  {
