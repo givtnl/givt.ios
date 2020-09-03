@@ -20,7 +20,7 @@
 		27AC59FA22255DEE00163BF4 /* SelectContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27AC59F922255DEE00163BF4 /* SelectContextView.swift */; };
 		27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */; };
 		27D7F7662229214E00D3953A /* CustomButtonWithRightArrow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */; };
-		320CF72724CEDF6B008B3EDE /* SetupRecurringDonationChooseSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseSubscriptionViewController.swift */; };
+		320CF72724CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift */; };
 		320CF72A24CEF1D3008B3EDE /* DestinationSelectedRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72924CEF1D3008B3EDE /* DestinationSelectedRoute.swift */; };
 		320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72B24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift */; };
 		3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211FB6D24D95BBE00351BC4 /* AmountTextField.swift */; };
@@ -181,8 +181,8 @@
 		D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251C1F4D6D2F0011A14E /* AppServices.swift */; };
 		D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */; };
 		DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */; };
-		DF05015424F8B299006196A3 /* GoToChooseSubscriptionRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015324F8B299006196A3 /* GoToChooseSubscriptionRoute.swift */; };
-		DF05015624F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015524F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift */; };
+		DF05015424F8B299006196A3 /* GoToChooseRecurringDonationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015324F8B299006196A3 /* GoToChooseRecurringDonationRoute.swift */; };
+		DF05015624F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015524F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift */; };
 		DF05015924F8B4C6006196A3 /* BackToPreviousViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015824F8B4C6006196A3 /* BackToPreviousViewRoute.swift */; };
 		DF05015B24F8B4E0006196A3 /* BackToPreviousViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015A24F8B4E0006196A3 /* BackToPreviousViewRouteHandler.swift */; };
 		DF1300F724F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */; };
@@ -314,7 +314,7 @@
 		27AC59F922255DEE00163BF4 /* SelectContextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContextView.swift; sourceTree = "<group>"; };
 		27D7F763222920FB00D3953A /* CustomButtonWithRightArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonWithRightArrow.swift; sourceTree = "<group>"; };
 		27D7F7652229214E00D3953A /* CustomButtonWithRightArrow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomButtonWithRightArrow.xib; sourceTree = "<group>"; };
-		320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseSubscriptionViewController.swift; sourceTree = "<group>"; };
+		320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseRecurringDonationViewController.swift; sourceTree = "<group>"; };
 		320CF72924CEF1D3008B3EDE /* DestinationSelectedRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectedRoute.swift; sourceTree = "<group>"; };
 		320CF72B24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectedRouteHandler.swift; sourceTree = "<group>"; };
 		3211FB6D24D95BBE00351BC4 /* AmountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextField.swift; sourceTree = "<group>"; };
@@ -481,8 +481,8 @@
 		D7FB251E1F4F189F0011A14E /* ScanCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCompleteViewController.swift; sourceTree = "<group>"; };
 		DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF034A8923F2E0A0000F81E4 /* BluetoothMessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothMessageType.swift; sourceTree = "<group>"; };
-		DF05015324F8B299006196A3 /* GoToChooseSubscriptionRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToChooseSubscriptionRoute.swift; sourceTree = "<group>"; };
-		DF05015524F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToChooseSubscriptionRouteHandler.swift; sourceTree = "<group>"; };
+		DF05015324F8B299006196A3 /* GoToChooseRecurringDonationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToChooseRecurringDonationRoute.swift; sourceTree = "<group>"; };
+		DF05015524F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToChooseRecurringDonationRouteHandler.swift; sourceTree = "<group>"; };
 		DF05015824F8B4C6006196A3 /* BackToPreviousViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToPreviousViewRoute.swift; sourceTree = "<group>"; };
 		DF05015A24F8B4E0006196A3 /* BackToPreviousViewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToPreviousViewRouteHandler.swift; sourceTree = "<group>"; };
 		DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRecurringDonationViewController.swift; sourceTree = "<group>"; };
@@ -606,13 +606,13 @@
 			path = Presets;
 			sourceTree = "<group>";
 		};
-		320CF72524CEDF37008B3EDE /* ChooseSubscription */ = {
+		320CF72524CEDF37008B3EDE /* ChooseRecurringDonation */ = {
 			isa = PBXGroup;
 			children = (
 				3211FB6F24D95BCA00351BC4 /* Subviews */,
-				320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseSubscriptionViewController.swift */,
+				320CF72624CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift */,
 			);
-			path = ChooseSubscription;
+			path = ChooseRecurringDonation;
 			sourceTree = "<group>";
 		};
 		320CF72824CEF1C1008B3EDE /* DestinationSelected */ = {
@@ -651,7 +651,7 @@
 				DF1300F524F5601F00EE1785 /* HomeScreen */,
 				32CA17B024CED48100248053 /* Routes */,
 				32CA17A424CED00200248053 /* ChooseDestination */,
-				320CF72524CEDF37008B3EDE /* ChooseSubscription */,
+				320CF72524CEDF37008B3EDE /* ChooseRecurringDonation */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -669,7 +669,7 @@
 			children = (
 				DFFF7E8C24F935C00098E4F6 /* GoToRootView */,
 				DF05015724F8B48F006196A3 /* BackToPreviousView */,
-				DF05015224F8B278006196A3 /* GoToChooseSubscription */,
+				DF05015224F8B278006196A3 /* GoToChooseRecurringDonation */,
 				320CF72824CEF1C1008B3EDE /* DestinationSelected */,
 				32CA17B124CED48A00248053 /* ChooseDestination */,
 			);
@@ -685,13 +685,12 @@
 			path = ChooseDestination;
 			sourceTree = "<group>";
 		};
-		32D4852A24D0442800F821A5 /* Subscriptions */ = {
+		32D4852A24D0442800F821A5 /* RecurringDonations */ = {
 			isa = PBXGroup;
 			children = (
-				32D4852F24D044F400F821A5 /* Models */,
 				32D4852B24D0443100F821A5 /* Commands */,
 			);
-			path = Subscriptions;
+			path = RecurringDonations;
 			sourceTree = "<group>";
 		};
 		32D4852B24D0443100F821A5 /* Commands */ = {
@@ -711,13 +710,6 @@
 				32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */,
 			);
 			path = Create;
-			sourceTree = "<group>";
-		};
-		32D4852F24D044F400F821A5 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		4B950123D45CD9CD856C736B /* Pods */ = {
@@ -1121,13 +1113,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DF05015224F8B278006196A3 /* GoToChooseSubscription */ = {
+		DF05015224F8B278006196A3 /* GoToChooseRecurringDonation */ = {
 			isa = PBXGroup;
 			children = (
-				DF05015324F8B299006196A3 /* GoToChooseSubscriptionRoute.swift */,
-				DF05015524F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift */,
+				DF05015324F8B299006196A3 /* GoToChooseRecurringDonationRoute.swift */,
+				DF05015524F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift */,
 			);
-			path = GoToChooseSubscription;
+			path = GoToChooseRecurringDonation;
 			sourceTree = "<group>";
 		};
 		DF05015724F8B48F006196A3 /* BackToPreviousView */ = {
@@ -1505,7 +1497,7 @@
 		FBC185A424C0CD0B001A4C6B /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				32D4852A24D0442800F821A5 /* Subscriptions */,
+				32D4852A24D0442800F821A5 /* RecurringDonations */,
 				FB87300724C818FA005FF355 /* Donations */,
 				FBC185A524C0CD11001A4C6B /* CollectGroups */,
 				FBC185A624C0CD18001A4C6B /* User */,
@@ -1854,7 +1846,7 @@
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D7BC58D620776361008C9497 /* Context.swift in Sources */,
-				DF05015424F8B299006196A3 /* GoToChooseSubscriptionRoute.swift in Sources */,
+				DF05015424F8B299006196A3 /* GoToChooseRecurringDonationRoute.swift in Sources */,
 				FBC185C124C57DB6001A4C6B /* MediaterWithContextProtocol.swift in Sources */,
 				D74C19EA20F627DA00E116A0 /* ExternalSuggestionViewController.swift in Sources */,
 				D7AE8BA42136CA4F00CB3A33 /* PaymentTypes.swift in Sources */,
@@ -1897,7 +1889,7 @@
 				D782089F2008BE6000AB6DC1 /* ArrayExtensions.swift in Sources */,
 				FBA0895021C7FEE4001DD889 /* FeatureViewController.swift in Sources */,
 				D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */,
-				320CF72724CEDF6B008B3EDE /* SetupRecurringDonationChooseSubscriptionViewController.swift in Sources */,
+				320CF72724CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift in Sources */,
 				FB45AC3B21CA4A4A00F12584 /* BaseMenuViewController.swift in Sources */,
 				FB13642A24BF2E3B006EF19D /* ChooseDestinationViewController.swift in Sources */,
 				FBC185AB24C0CD6F001A4C6B /* GetLocalUserConfiguration.swift in Sources */,
@@ -1982,7 +1974,7 @@
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
-				DF05015624F8B2B2006196A3 /* GoToChooseSubscriptionRouteHandler.swift in Sources */,
+				DF05015624F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift in Sources */,
 				DFFF7E9024F935EC0098E4F6 /* GoToRootViewRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
