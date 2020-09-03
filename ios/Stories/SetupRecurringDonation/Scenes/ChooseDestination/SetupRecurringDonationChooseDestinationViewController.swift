@@ -126,13 +126,13 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         
         nextButton.isEnabled = false
         backButton.accessibilityLabel = "Back".localized
-        churchButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "church_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_church_white"), labelText: "Church".localized, tag: CollectGroupType.church.rawValue)
+        churchButton = DestinationCategoryButton(color: ColorHelper.Church, imageWhenInactive: #imageLiteral(resourceName: "church_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_church_white"), labelText: "Church".localized, tag: CollectGroupType.church.rawValue)
         churchButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
-        charityButton = DestinationCategoryButton(color: #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "stichting_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: "Charity".localized, tag: CollectGroupType.charity.rawValue)
+        charityButton = DestinationCategoryButton(color: ColorHelper.Charity, imageWhenInactive: #imageLiteral(resourceName: "stichting_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_stichting_white"), labelText: "Charity".localized, tag: CollectGroupType.charity.rawValue)
         charityButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
-        campaignButton = DestinationCategoryButton(color: #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "actions_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_actions_white"), labelText: "Campaign".localized, tag: CollectGroupType.campaign.rawValue)
+        campaignButton = DestinationCategoryButton(color: ColorHelper.Action, imageWhenInactive: #imageLiteral(resourceName: "actions_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_actions_white"), labelText: "Campaign".localized, tag: CollectGroupType.campaign.rawValue)
         campaignButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
-        artistButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "artist"), imageWhenActive: #imageLiteral(resourceName: "artist_white"), labelText: "Artist".localized, tag: CollectGroupType.artist.rawValue)
+        artistButton = DestinationCategoryButton(color: ColorHelper.Artist, imageWhenInactive: #imageLiteral(resourceName: "artist"), imageWhenActive: #imageLiteral(resourceName: "artist_white"), labelText: "Artist".localized, tag: CollectGroupType.artist.rawValue)
         artistButton.addTapGesture(self, action: #selector(categoryButtonTapped(_:)))
         typeStackView.addArrangedSubview(churchButton)
         typeStackView.addArrangedSubview(charityButton)

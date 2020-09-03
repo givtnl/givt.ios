@@ -67,16 +67,16 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         switch MediumHelper.namespaceToOrganisationType(namespace: rule.namespace) {
             case .church:
                 cell.Logo.image = UIImage(imageLiteralResourceName: "church_white")
-                color = #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1)
+                color = ColorHelper.Church
             case .charity:
                 cell.Logo.image = UIImage(imageLiteralResourceName: "stichting_white")
-                color = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
+                color = ColorHelper.Charity
             case .campaign:
                 cell.Logo.image = UIImage(imageLiteralResourceName: "actions_white")
-                color = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
+                color = ColorHelper.Action
             case .artist:
                 cell.Logo.image = UIImage(imageLiteralResourceName: "artist")
-                color = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+                color = ColorHelper.Artist
             default:
                 break
         }
