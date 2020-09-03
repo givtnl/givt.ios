@@ -18,10 +18,9 @@ class CreateSubscriptionCommandHandler : RequestHandlerProtocol {
         do {
             let body = try JSONEncoder().encode(request)
             try apiClient.post(url: "/subscriptions", data: body) { response in
-                if let statusCode = response?.statusCode {
-                    try? completion((statusCode >= 200 && statusCode < 300) as! R.TResponse)
+                if let success = response?.isSuccess {
+                    try? completion(success as! R.TResponse)
                 } else {
-                    LogService.shared.info(message: "Couldnt get a response")
                     try? completion(false as! R.TResponse)
                 }
             }
