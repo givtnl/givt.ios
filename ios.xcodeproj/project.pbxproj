@@ -1134,6 +1134,7 @@
 		DF1300F524F5601F00EE1785 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				DFCA4EE32500EF04003D1825 /* Models */,
 				DF1300F824F63EF600EE1785 /* Subviews */,
 				DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */,
 			);
@@ -1158,13 +1159,13 @@
 			path = Get;
 			sourceTree = "<group>";
 		};
-		DF8BB30124F7A06A00104668 /* HomeScreen */ = {
+		DFCA4EE32500EF04003D1825 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				DF8BB30224F7A09F00104668 /* RecurringRuleViewModel.swift */,
 				DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */,
 			);
-			path = HomeScreen;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		DFFF7E8C24F935C00098E4F6 /* GoToRootView */ = {
@@ -1432,7 +1433,6 @@
 		FB9CEE0024EC1DEF0062EE07 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DF8BB30124F7A06A00104668 /* HomeScreen */,
 				FB9CEE0124EC1DF50062EE07 /* ChooseDestination */,
 			);
 			path = Models;
