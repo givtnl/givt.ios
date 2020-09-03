@@ -962,8 +962,8 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "GivtIsBeingProcessedRecurring" = "Thank you for your Givt(s) to {0}!\nYou can check the overview of your recurring donations under 'Overview'.\nThe first recurring donation of {1} {2} will be initiated on {3}.\nAfter that it will be withdrawn each {4}.";
 "OverviewRecurringDonations" = "Recurring donations";
 "TitleRecurringGifts" = "Recurring donations";
-"RecurringGiftsSetupCreate" = "create a";
-"RecurringGiftsSetupRecurringGift" = "Recurring donation";
+"RecurringGiftsSetupCreate" = "Set up a";
+"RecurringGiftsSetupRecurringGift" = "recurring donation";
 "RecurringDonationYouGive" = "you give";
 "RecurringDonationStops" = "Last donation on {0}";
 "SelectRecipient" = "Select recipient";
