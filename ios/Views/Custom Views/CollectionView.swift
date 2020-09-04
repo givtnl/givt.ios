@@ -17,6 +17,7 @@ class CollectionView: UIControl {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var currencySign: UILabel!
     @IBOutlet weak var activeMarker: UIView!
+    @IBOutlet weak var bottomBorderView: UIView!
     
     var isPreset: Bool = true;
     
@@ -111,6 +112,15 @@ class CollectionView: UIControl {
         borderView.layer.borderWidth = 1
         borderView.layer.masksToBounds = true
         self.addSubview(borderView)
+        
+        if let myBorder = bottomBorderView {
+            bottomBorderView.removeFromSuperview()
+            borderView.addSubview(myBorder)
+            myBorder.leadingAnchor.constraint(equalTo: borderView.leadingAnchor).isActive = true
+            myBorder.trailingAnchor.constraint(equalTo: borderView.trailingAnchor).isActive = true
+            myBorder.bottomAnchor.constraint(equalTo: borderView.bottomAnchor).isActive = true
+        }
+        
         borderView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
