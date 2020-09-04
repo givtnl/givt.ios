@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="church" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hi7-49-fVg">
-                    <rect key="frame" x="20" y="0.0" width="30" height="110"/>
+                    <rect key="frame" x="20" y="43" width="30" height="24"/>
                     <gestureRecognizers/>
                     <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="24"/>
                     <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,7 +40,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxy-uc-YJJ">
-                    <rect key="frame" x="70" y="0.0" width="412" height="107"/>
+                    <rect key="frame" x="70" y="42.5" width="412" height="25"/>
                     <gestureRecognizers/>
                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                     <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -52,16 +52,14 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="hi7-49-fVg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5sP-c0-E72"/>
+                <constraint firstItem="kxy-uc-YJJ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0OJ-MW-Ae4"/>
                 <constraint firstAttribute="trailing" secondItem="21P-Ri-B5Z" secondAttribute="trailing" id="6ZT-Lh-wjF"/>
                 <constraint firstItem="21P-Ri-B5Z" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8Av-mJ-8jJ"/>
                 <constraint firstAttribute="bottom" secondItem="21P-Ri-B5Z" secondAttribute="bottom" id="UU8-DG-58A"/>
-                <constraint firstItem="21P-Ri-B5Z" firstAttribute="top" secondItem="kxy-uc-YJJ" secondAttribute="bottom" id="WZp-1h-FKO"/>
-                <constraint firstAttribute="bottom" secondItem="hi7-49-fVg" secondAttribute="bottom" id="Y4h-2F-CAe"/>
                 <constraint firstItem="hi7-49-fVg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="bke-i3-cHy"/>
                 <constraint firstItem="kxy-uc-YJJ" firstAttribute="leading" secondItem="hi7-49-fVg" secondAttribute="trailing" constant="20" id="m6w-qC-pVN"/>
-                <constraint firstItem="kxy-uc-YJJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rtH-20-NSh"/>
                 <constraint firstAttribute="trailing" secondItem="kxy-uc-YJJ" secondAttribute="trailing" constant="20" id="wMb-0n-uhc"/>
+                <constraint firstItem="hi7-49-fVg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wyB-eR-P3F"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="237.68115942028987" y="-15.401785714285714"/>
