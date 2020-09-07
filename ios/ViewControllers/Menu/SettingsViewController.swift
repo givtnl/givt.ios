@@ -95,7 +95,7 @@ class SettingsViewController: BaseMenuViewController {
             if(LoginManager.shared.isFullyRegistered) {
                 items[1].append(setupRecurringGift)
             }
-         
+            
             let givtsTaxOverviewAvailable: Setting?
             if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
                 givtsTaxOverviewAvailable = Setting(name: NSLocalizedString("YearOverviewAvailable", comment: ""), image: UIImage(), callback: {
@@ -312,12 +312,7 @@ class SettingsViewController: BaseMenuViewController {
         vc?.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
             self.hideMenuAnimated() {
-                NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
-                    SVProgressHUD.show()
-                    self.present(vc!, animated: true, completion:  nil)
-                    self.navigationController?.popViewController(animated: false)
-                    SVProgressHUD.dismiss()
-                }
+                NavigationManager.shared.pushWithLogin(vc!, context: self)
             }
         }
     }
@@ -328,12 +323,7 @@ class SettingsViewController: BaseMenuViewController {
         vc?.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
             self.hideMenuAnimated() {
-                NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
-                    SVProgressHUD.show()
-                    self.present(vc!, animated: true, completion:  nil)
-                    self.navigationController?.popViewController(animated: false)
-                    SVProgressHUD.dismiss()
-                }
+                NavigationManager.shared.pushWithLogin(vc!, context: self)
             }
         }
     }
