@@ -8,11 +8,7 @@
 
 import UIKit
 import Foundation
-extension HomeScreenRecurringDonationViewController: RecurringRuleTableCellDelegate {
-    func recurringRuleTableCellTapped() {
-        print("Tapped ipt kaartje")
-    }
-}
+
 class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet var navBar: UINavigationItem!
@@ -31,6 +27,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     
     var recurringRules:[RecurringRuleViewModel] = []
     var frequencies = ["SetupRecurringGiftWeek".localized, "SetupRecurringGiftMonth".localized, "SetupRecurringGiftQuarter".localized, "SetupRecurringGiftHalfYear".localized, "SetupRecurringGiftYear".localized]
+    var selectedIndex: Int? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +38,10 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         recurringDonationsOverviewTitleLabel.text = "OverviewRecurringDonations".localized
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
         RecurringDonationsRuleOverview.layer.cornerRadius = 8
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         do {
             recurringRules = try mediater.send(request: GetRecurringDonationsQuery())
@@ -64,7 +63,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
             tableView.removeFromSuperview()
         }
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.recurringRules.count
     }
@@ -74,22 +73,22 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecurringRuleTableCell.self), for: indexPath) as! RecurringRuleTableCell
         let rule = self.recurringRules[indexPath.row]
         var color: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-
+        
         switch MediumHelper.namespaceToOrganisationType(namespace: rule.namespace) {
-            case .church:
-                cell.Logo.image = UIImage(imageLiteralResourceName: "church_white")
-                color = ColorHelper.Church
-            case .charity:
-                cell.Logo.image = UIImage(imageLiteralResourceName: "stichting_white")
-                color = ColorHelper.Charity
-            case .campaign:
-                cell.Logo.image = UIImage(imageLiteralResourceName: "actions_white")
-                color = ColorHelper.Action
-            case .artist:
-                cell.Logo.image = UIImage(imageLiteralResourceName: "artist")
-                color = ColorHelper.Artist
-            default:
-                break
+        case .church:
+            cell.Logo.image = UIImage(imageLiteralResourceName: "church_white")
+            color = ColorHelper.Church
+        case .charity:
+            cell.Logo.image = UIImage(imageLiteralResourceName: "stichting_white")
+            color = ColorHelper.Charity
+        case .campaign:
+            cell.Logo.image = UIImage(imageLiteralResourceName: "actions_white")
+            color = ColorHelper.Action
+        case .artist:
+            cell.Logo.image = UIImage(imageLiteralResourceName: "artist")
+            color = ColorHelper.Artist
+        default:
+            break
         }
         cell.Name.text = GivtManager.shared.getOrganisationName(organisationNameSpace: rule.namespace)
         let cron = frequencies[evaluateCronExpression(cronExpression: rule.cronExpression)]
@@ -99,11 +98,34 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         let endDate:String = formatter.string(from: evaluateEndDateFromRecurringDonation(recurringRule: rule))
         cell.EndDate.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
         cell.LogoView.backgroundColor = color
-        cell.CenterView.layer.borderColor = color.cgColor
-        cell.delegate = self
+        cell.stackViewRuleView.layer.borderColor = color.cgColor
+        cell.stopLabel.text = "CancelSubscription".localized
+        cell.stopLabel.textColor = ColorHelper.GivtRed
+        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        tableView.beginUpdates()
+
+        if selectedIndex == indexPath.row {
+            selectedIndex = nil
+        } else {
+            selectedIndex = indexPath.row
+        }
+        
+        tableView.endUpdates()
+
+        print("Ah kayeeet")
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if selectedIndex == indexPath.row {
+            return 119
+        } else {
+            return 89
+        }
+    }
     private func evaluateCronExpression(cronExpression: String) -> Int {
         let elements = cronExpression.split(separator: " ")
         let day = elements[2]
@@ -113,6 +135,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         if (dayOfWeek != "*") {
             frequency = 0
         }
+        
         if (day != "*") {
             if (month == "*") {
                 frequency = 1
@@ -150,7 +173,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         }
         return Calendar.current.date(byAdding: dateComponent, to: startDate) as! Date
     }
-
+    
     
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
         try? mediater.send(request: GoToChooseRecurringDonationRoute(), withContext: self)
