@@ -8,8 +8,12 @@
 
 import UIKit
 import Foundation
+protocol RecurringRuleCencelDelegate {
+    func recurringRuleCancelTapped() -> Void
+}
 
 internal final class RecurringRuleTableCell : UITableViewCell {
+    var delegate: RecurringRuleCencelDelegate? = nil
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cronTextLabel: UILabel!
@@ -30,6 +34,8 @@ internal final class RecurringRuleTableCell : UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
+        stopLabel.addGestureRecognizer(tap)
     }
     
     override func layoutSubviews() {
@@ -40,5 +46,10 @@ internal final class RecurringRuleTableCell : UITableViewCell {
         indicationImageView.isHidden = true
         logoImageView.contentMode = .scaleAspectFill
         logoContainerView.layer.cornerRadius = 4
+    }
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        if let delegate = self.delegate {
+            delegate.recurringRuleCancelTapped()
+       }
     }
 }
