@@ -106,7 +106,6 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         cell.stopLabel.text = "CancelSubscription".localized
         cell.stopLabel.textColor = ColorHelper.GivtRed
         cell.delegate = self
-        cell.tag = indexPath.row
         return cell
     }
     
