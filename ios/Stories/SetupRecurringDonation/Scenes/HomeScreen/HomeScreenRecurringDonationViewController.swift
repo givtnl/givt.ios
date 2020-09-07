@@ -19,29 +19,12 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
             
             try mediater.sendAsync(request: command) { canceled in
                 if(canceled) {
-                    do {
-                        self.recurringRules = try self.mediater.send(request: GetRecurringDonationsQuery())
-                        SVProgressHUD.dismiss()
-                        if self.recurringRules.count == 0 {
-                            DispatchQueue.main.async {
-                                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                                }))
-                                self.present(alert, animated: true, completion:  {})
-                            }
-                        } else {
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
-                            }
-                        }
-                    } catch  {
-                        SVProgressHUD.dismiss()
-                        DispatchQueue.main.async {
-                            let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                            }))
-                            self.present(alert, animated: true, completion:  {})
-                        }
+                    SVProgressHUD.dismiss()
+                    self.recurringRules.removeAll { (model) -> Bool in
+                        model.id == recurringRuleCell.recurringDonationId
+                    }
+                    DispatchQueue.main.async {
+                        self.tableView.deleteRows(at: [recurringRuleCell.rowIndexPath!], with: .bottom)
                     }
                 } else {
                     SVProgressHUD.dismiss()
@@ -156,6 +139,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         cell.stopLabel.text = "CancelSubscription".localized
         cell.stopLabel.textColor = ColorHelper.GivtRed
         cell.recurringDonationId = rule.id
+        cell.rowIndexPath = indexPath
         cell.delegate = self
         return cell
     }
