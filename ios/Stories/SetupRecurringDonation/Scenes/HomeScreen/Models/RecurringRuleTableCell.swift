@@ -29,7 +29,9 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var stackViewRuleView: UIView!
     @IBOutlet weak var actionView: UIView!
     @IBOutlet weak var stopLabel: UILabel!
-
+    
+    var recurringDonationId: String?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
