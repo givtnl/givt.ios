@@ -122,7 +122,7 @@ class AppConstants {
     }()
     static var cloudApiUri: String = {
         #if PRODUCTION
-            return "https://api.development.givtapp.net"
+            return "https://api.production.givtapp.net"
         #else
             return "https://api.development.givtapp.net"
         #endif
