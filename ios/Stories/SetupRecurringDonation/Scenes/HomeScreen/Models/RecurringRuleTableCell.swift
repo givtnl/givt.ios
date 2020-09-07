@@ -9,12 +9,7 @@
 import UIKit
 import Foundation
 
-protocol RecurringRuleTableCellDelegate {
-    func recurringRuleTableCellTapped() -> Void
-}
-
 internal final class RecurringRuleTableCell : UITableViewCell {
-    var delegate: RecurringRuleTableCellDelegate? = nil
 
     @IBOutlet weak var Name: UILabel!
     @IBOutlet weak var Cron: UILabel!
@@ -24,25 +19,25 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var Logo: UIImageView!
     @IBOutlet weak var LogoView: UIView!
     
+    @IBOutlet weak var ruleStackView: UIStackView!
+    
+    @IBOutlet weak var horiStackView: UIStackView!
+    @IBOutlet weak var stackViewRuleView: UIView!
+    @IBOutlet weak var actionView: UIView!
+    @IBOutlet weak var stopLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        addGestureRecognizer(tap)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.frame = contentView.frame.insetBy(dx: 0, dy: 5)
-        CenterView.layer.borderWidth = 1
-        CenterView.layer.cornerRadius = 8
+        stackViewRuleView.layer.borderWidth = 1
+        stackViewRuleView.layer.cornerRadius = 8
         Indication.isHidden = true
         Logo.contentMode = .scaleAspectFill
         LogoView.layer.cornerRadius = 4
-    }
-    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        if let delegate = self.delegate {
-            delegate.recurringRuleTableCellTapped()
-       }
     }
 }
