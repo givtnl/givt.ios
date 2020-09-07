@@ -8,9 +8,59 @@
 
 import UIKit
 import Foundation
+import SVProgressHUD
+
 extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
         print("Cancel recurring donation: "+recurringRuleCell.nameLabel.text!)
+        let command = CancelRecurringDonationCommand(recurringDonationId: recurringRuleCell.recurringDonationId!)
+        do {
+            SVProgressHUD.show()
+            
+            try mediater.sendAsync(request: command) { canceled in
+                if(canceled) {
+                    do {
+                        self.recurringRules = try self.mediater.send(request: GetRecurringDonationsQuery())
+                        SVProgressHUD.dismiss()
+                        if self.recurringRules.count == 0 {
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                                }))
+                                self.present(alert, animated: true, completion:  {})
+                            }
+                        } else {
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        }
+                    } catch  {
+                        SVProgressHUD.dismiss()
+                        DispatchQueue.main.async {
+                            let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            }))
+                            self.present(alert, animated: true, completion:  {})
+                        }
+                    }
+                } else {
+                    SVProgressHUD.dismiss()
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        }))
+                        self.present(alert, animated: true, completion:  {})
+                    }
+                }
+            }
+        } catch  {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                }))
+                self.present(alert, animated: true, completion:  {})
+            }
+        }
     }
 }
 
@@ -33,7 +83,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     var recurringRules:[RecurringRuleViewModel] = []
     var frequencies = ["SetupRecurringGiftWeek".localized, "SetupRecurringGiftMonth".localized, "SetupRecurringGiftQuarter".localized, "SetupRecurringGiftHalfYear".localized, "SetupRecurringGiftYear".localized]
     var selectedIndex: Int? = nil
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -105,6 +155,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         cell.stackViewRuleView.layer.borderColor = color.cgColor
         cell.stopLabel.text = "CancelSubscription".localized
         cell.stopLabel.textColor = ColorHelper.GivtRed
+        cell.recurringDonationId = rule.id
         cell.delegate = self
         return cell
     }

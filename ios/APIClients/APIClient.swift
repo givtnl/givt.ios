@@ -120,6 +120,24 @@ class APIClient: NSObject, URLSessionDelegate {
         }
     }
     
+   func patch(url: String, callback: @escaping (Response?) -> Void) {
+       var headers: [String: String] = [:]
+        if let bearerToken = UserDefaults.standard.bearerToken {
+            headers["Authorization"] = "Bearer " + bearerToken
+        }
+        log.info(message: "PATCH on " + url)
+        
+        client.patch(url: url).delegate(delegate: self)
+            .type(type: "json")
+            .set(headers: headers)
+            .end(done: { (res:Response) in
+                callback(res)
+            }) { (err) in
+                callback(nil)
+                self.handleError(err: err)
+        }
+    }
+    
     private func handleError(err: Error) {
         let error = (err as NSError)
         if let url = error.userInfo["NSErrorFailingURLStringKey"] as? String, let description = error.userInfo["NSLocalizedDescription"] as? String {
