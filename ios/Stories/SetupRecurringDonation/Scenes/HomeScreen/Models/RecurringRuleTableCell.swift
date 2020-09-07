@@ -9,7 +9,13 @@
 import UIKit
 import Foundation
 
+protocol RecurringRuleTableCellDelegate {
+    func recurringRuleTableCellTapped() -> Void
+}
+
 internal final class RecurringRuleTableCell : UITableViewCell {
+    var delegate: RecurringRuleTableCellDelegate? = nil
+
     @IBOutlet weak var Name: UILabel!
     @IBOutlet weak var Cron: UILabel!
     @IBOutlet weak var EndDate: UILabel!
@@ -21,6 +27,8 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        addGestureRecognizer(tap)
     }
     
     override func layoutSubviews() {
@@ -31,5 +39,10 @@ internal final class RecurringRuleTableCell : UITableViewCell {
         Indication.isHidden = true
         Logo.contentMode = .scaleAspectFill
         LogoView.layer.cornerRadius = 4
+    }
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        if let delegate = self.delegate {
+            delegate.recurringRuleTableCellTapped()
+       }
     }
 }

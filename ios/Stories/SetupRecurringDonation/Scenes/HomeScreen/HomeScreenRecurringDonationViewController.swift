@@ -8,7 +8,11 @@
 
 import UIKit
 import Foundation
-
+extension HomeScreenRecurringDonationViewController: RecurringRuleTableCellDelegate {
+    func recurringRuleTableCellTapped() {
+        print("Tapped ipt kaartje")
+    }
+}
 class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource
 {
     @IBOutlet var navBar: UINavigationItem!
@@ -60,7 +64,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
             tableView.removeFromSuperview()
         }
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.recurringRules.count
     }
@@ -96,6 +100,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         cell.EndDate.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
         cell.LogoView.backgroundColor = color
         cell.CenterView.layer.borderColor = color.cgColor
+        cell.delegate = self
         return cell
     }
     
