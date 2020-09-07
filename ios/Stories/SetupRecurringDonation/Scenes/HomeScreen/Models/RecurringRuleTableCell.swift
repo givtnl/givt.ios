@@ -31,6 +31,7 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var stopLabel: UILabel!
     
     var recurringDonationId: String?
+    var rowIndexPath: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
