@@ -9,8 +9,8 @@
 import UIKit
 import Foundation
 extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate {
-    func recurringRuleCancelTapped() {
-        print("Cancel recurring donation")
+    func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
+        print("Cancel recurring donation: "+recurringRuleCell.nameLabel.text!)
     }
 }
 

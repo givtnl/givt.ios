@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 protocol RecurringRuleCencelDelegate {
-    func recurringRuleCancelTapped() -> Void
+    func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) -> Void
 }
 
 internal final class RecurringRuleTableCell : UITableViewCell {
@@ -49,7 +49,7 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     }
     @objc func handleTap(sender: UITapGestureRecognizer) {
         if let delegate = self.delegate {
-            delegate.recurringRuleCancelTapped()
+            delegate.recurringRuleCancelTapped(recurringRuleCell: self)
        }
     }
 }
