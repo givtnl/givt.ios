@@ -8,6 +8,11 @@
 
 import UIKit
 import Foundation
+extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate {
+    func recurringRuleCancelTapped() {
+        print("Cancel recurring donation")
+    }
+}
 
 class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource
 {
@@ -100,6 +105,8 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         cell.stackViewRuleView.layer.borderColor = color.cgColor
         cell.stopLabel.text = "CancelSubscription".localized
         cell.stopLabel.textColor = ColorHelper.GivtRed
+        cell.delegate = self
+        cell.tag = indexPath.row
         return cell
     }
     
