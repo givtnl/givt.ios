@@ -11,13 +11,13 @@ import Foundation
 
 internal final class RecurringRuleTableCell : UITableViewCell {
 
-    @IBOutlet weak var Name: UILabel!
-    @IBOutlet weak var Cron: UILabel!
-    @IBOutlet weak var EndDate: UILabel!
-    @IBOutlet weak var Indication: UIImageView!
-    @IBOutlet weak var CenterView: UIView!
-    @IBOutlet weak var Logo: UIImageView!
-    @IBOutlet weak var LogoView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var cronTextLabel: UILabel!
+    @IBOutlet weak var endDateLabel: UILabel!
+    @IBOutlet weak var indicationImageView: UIImageView!
+    @IBOutlet weak var centerView: UIView!
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var logoContainerView: UIView!
     
     @IBOutlet weak var ruleStackView: UIStackView!
     
@@ -29,6 +29,7 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        
     }
     
     override func layoutSubviews() {
@@ -36,8 +37,8 @@ internal final class RecurringRuleTableCell : UITableViewCell {
         contentView.frame = contentView.frame.insetBy(dx: 0, dy: 5)
         stackViewRuleView.layer.borderWidth = 1
         stackViewRuleView.layer.cornerRadius = 8
-        Indication.isHidden = true
-        Logo.contentMode = .scaleAspectFill
-        LogoView.layer.cornerRadius = 4
+        indicationImageView.isHidden = true
+        logoImageView.contentMode = .scaleAspectFill
+        logoContainerView.layer.cornerRadius = 4
     }
 }

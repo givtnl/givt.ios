@@ -91,11 +91,11 @@
                                                     <tableViewCell autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecurringRuleTableCell" id="FvZ-Pz-uYM" customClass="RecurringRuleTableCell" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="374" height="110"/>
                                                         <autoresizingMask key="autoresizingMask"/>
-                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FvZ-Pz-uYM" id="RTS-cM-ipO">
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FvZ-Pz-uYM" id="RTS-cM-ipO">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="110"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <stackView autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="0YH-nu-bc8">
+                                                                <stackView autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="0YH-nu-bc8">
                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="110"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8r-PT-14b" userLabel="LeftView">
@@ -162,19 +162,19 @@
                                                                                                             <rect key="frame" x="50" y="0.0" width="274" height="80"/>
                                                                                                             <subviews>
                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Het Gulle handje" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7Y-qz-oeZ" userLabel="Name">
-                                                                                                                    <rect key="frame" x="10" y="11" width="111" height="19.5"/>
+                                                                                                                    <rect key="frame" x="10" y="11" width="254" height="19.5"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="14"/>
                                                                                                                     <nil key="textColor"/>
                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                 </label>
                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elk half jaar geef je €500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5R-iF-Wwa" userLabel="CRON">
-                                                                                                                    <rect key="frame" x="10" y="30.5" width="156" height="19.5"/>
+                                                                                                                    <rect key="frame" x="10" y="30.5" width="254" height="19.5"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                                                                     <nil key="textColor"/>
                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                 </label>
                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stopt op 20/08/2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmp-dt-uiY" userLabel="Expire date">
-                                                                                                                    <rect key="frame" x="10" y="50" width="114" height="16.5"/>
+                                                                                                                    <rect key="frame" x="10" y="50" width="254" height="16.5"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                                     <nil key="highlightedColor"/>
@@ -185,7 +185,10 @@
                                                                                                                 <constraint firstItem="S5R-iF-Wwa" firstAttribute="leading" secondItem="gVS-Jn-y4s" secondAttribute="leading" constant="10" id="JF1-B7-MBt"/>
                                                                                                                 <constraint firstItem="Bmp-dt-uiY" firstAttribute="top" secondItem="S5R-iF-Wwa" secondAttribute="bottom" id="S5Z-eg-R6a"/>
                                                                                                                 <constraint firstItem="Bmp-dt-uiY" firstAttribute="leading" secondItem="gVS-Jn-y4s" secondAttribute="leading" constant="10" id="SM0-1Y-wxs"/>
+                                                                                                                <constraint firstAttribute="trailing" secondItem="Bmp-dt-uiY" secondAttribute="trailing" constant="10" id="c0b-An-ZSB"/>
                                                                                                                 <constraint firstItem="S5R-iF-Wwa" firstAttribute="centerY" secondItem="gVS-Jn-y4s" secondAttribute="centerY" id="kDc-Di-RtU"/>
+                                                                                                                <constraint firstAttribute="trailing" secondItem="S5R-iF-Wwa" secondAttribute="trailing" constant="10" id="s6m-Vr-n7O"/>
+                                                                                                                <constraint firstAttribute="trailing" secondItem="I7Y-qz-oeZ" secondAttribute="trailing" constant="10" id="xBq-Li-i1W"/>
                                                                                                                 <constraint firstItem="I7Y-qz-oeZ" firstAttribute="leading" secondItem="gVS-Jn-y4s" secondAttribute="leading" constant="10" id="xtH-8s-QyY"/>
                                                                                                             </constraints>
                                                                                                         </view>
@@ -266,15 +269,15 @@
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
-                                                            <outlet property="CenterView" destination="A8K-Xo-did" id="psF-hz-Kmr"/>
-                                                            <outlet property="Cron" destination="S5R-iF-Wwa" id="82l-jy-NUw"/>
-                                                            <outlet property="EndDate" destination="Bmp-dt-uiY" id="J9X-xG-u6a"/>
-                                                            <outlet property="Indication" destination="QAd-4f-Mxt" id="e9H-lt-xng"/>
-                                                            <outlet property="Logo" destination="KmB-Mg-b8d" id="eZQ-xS-k9p"/>
-                                                            <outlet property="LogoView" destination="mSU-gU-Y7W" id="E1C-EX-Nq6"/>
-                                                            <outlet property="Name" destination="I7Y-qz-oeZ" id="wHr-rm-7Hd"/>
                                                             <outlet property="actionView" destination="nKC-Zh-aFd" id="R8K-Ls-l74"/>
+                                                            <outlet property="centerView" destination="A8K-Xo-did" id="psF-hz-Kmr"/>
+                                                            <outlet property="cronTextLabel" destination="S5R-iF-Wwa" id="82l-jy-NUw"/>
+                                                            <outlet property="endDateLabel" destination="Bmp-dt-uiY" id="J9X-xG-u6a"/>
                                                             <outlet property="horiStackView" destination="0YH-nu-bc8" id="m8B-op-kUQ"/>
+                                                            <outlet property="indicationImageView" destination="QAd-4f-Mxt" id="e9H-lt-xng"/>
+                                                            <outlet property="logoContainerView" destination="mSU-gU-Y7W" id="E1C-EX-Nq6"/>
+                                                            <outlet property="logoImageView" destination="KmB-Mg-b8d" id="eZQ-xS-k9p"/>
+                                                            <outlet property="nameLabel" destination="I7Y-qz-oeZ" id="wHr-rm-7Hd"/>
                                                             <outlet property="ruleStackView" destination="2GB-Ln-E7y" id="3Mk-co-ZQp"/>
                                                             <outlet property="stackViewRuleView" destination="5zM-iP-CVj" id="I4y-pt-eEU"/>
                                                             <outlet property="stopLabel" destination="UjU-Wk-er6" id="vtu-mi-2qq"/>
