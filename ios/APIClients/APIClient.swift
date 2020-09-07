@@ -98,25 +98,6 @@ class APIClient: NSObject, URLSessionDelegate {
         }
     }
     
-    func postToCloudAPI(url: String, data: Data, callback: @escaping (Response?) -> Void) throws {
-        log.info(message: "POST on " + url)
-        var headers: [String: String] = [:]
-        headers["Accept-Language"] = Locale.preferredLanguages[0]
-        if let bearerToken = UserDefaults.standard.bearerToken {
-            headers["Authorization"] = "Bearer " + bearerToken
-        }
-        client.post(url: url).delegate(delegate: self)
-            .type(type: "json")
-            .set(headers: headers)
-            .send(data: data)
-            .end(done: { (res:Response) in
-                callback(res)
-            }) { (err) in
-                callback(nil)
-                self.handleError(err: err)
-        }
-    }
-    
     func delete(url: String, data: [Any], callback: @escaping (Response?) -> Void) {
         log.info(message: "DELETE ON " + url)
         var headers: [String: String] = [:]
