@@ -104,25 +104,16 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        tableView.beginUpdates()
-
         if selectedIndex == indexPath.row {
             selectedIndex = nil
         } else {
             selectedIndex = indexPath.row
         }
-        
+        tableView.beginUpdates()
         tableView.endUpdates()
-
-        print("Ah kayeeet")
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if selectedIndex == indexPath.row {
-            return 119
-        } else {
-            return 89
-        }
+        if selectedIndex == indexPath.row { return 119 } else { return 89 }
     }
     private func evaluateCronExpression(cronExpression: String) -> Int {
         let elements = cronExpression.split(separator: " ")
