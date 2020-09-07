@@ -38,7 +38,6 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         recurringDonationsOverviewTitleLabel.text = "OverviewRecurringDonations".localized
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = UITableViewAutomaticDimension
         RecurringDonationsRuleOverview.layer.cornerRadius = 8
     }
     
@@ -76,32 +75,31 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         
         switch MediumHelper.namespaceToOrganisationType(namespace: rule.namespace) {
         case .church:
-            cell.Logo.image = UIImage(imageLiteralResourceName: "church_white")
+            cell.logoImageView.image = UIImage(imageLiteralResourceName: "church_white")
             color = ColorHelper.Church
         case .charity:
-            cell.Logo.image = UIImage(imageLiteralResourceName: "stichting_white")
+            cell.logoImageView.image = UIImage(imageLiteralResourceName: "stichting_white")
             color = ColorHelper.Charity
         case .campaign:
-            cell.Logo.image = UIImage(imageLiteralResourceName: "actions_white")
+            cell.logoImageView.image = UIImage(imageLiteralResourceName: "actions_white")
             color = ColorHelper.Action
         case .artist:
-            cell.Logo.image = UIImage(imageLiteralResourceName: "artist")
+            cell.logoImageView.image = UIImage(imageLiteralResourceName: "artist")
             color = ColorHelper.Artist
         default:
             break
         }
-        cell.Name.text = GivtManager.shared.getOrganisationName(organisationNameSpace: rule.namespace)
+        cell.nameLabel.text = GivtManager.shared.getOrganisationName(organisationNameSpace: rule.namespace)
         let cron = frequencies[evaluateCronExpression(cronExpression: rule.cronExpression)]
-        cell.Cron.text = "SetupRecurringGiftText_3".localized + " " + cron + " " + "RecurringDonationYouGive".localized + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
+        cell.cronTextLabel.text = "SetupRecurringGiftText_3".localized + " " + cron + " " + "RecurringDonationYouGive".localized + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         let endDate:String = formatter.string(from: evaluateEndDateFromRecurringDonation(recurringRule: rule))
-        cell.EndDate.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
-        cell.LogoView.backgroundColor = color
+        cell.endDateLabel.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
+        cell.logoContainerView.backgroundColor = color
         cell.stackViewRuleView.layer.borderColor = color.cgColor
         cell.stopLabel.text = "CancelSubscription".localized
         cell.stopLabel.textColor = ColorHelper.GivtRed
-        
         return cell
     }
     
