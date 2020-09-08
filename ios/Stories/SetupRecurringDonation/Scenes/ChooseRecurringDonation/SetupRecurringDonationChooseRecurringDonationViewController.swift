@@ -142,7 +142,7 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let startDeet: String = dateFormatter.string(from: startDatePicker.date)
-        let command = CreateRecurringDonationCommand(amountPerTurn: amountView.amount, namespace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression, startDate: startDeet)
+        let command = CreateRecurringDonationCommand(amountPerTurn: amountView.amount, namespace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression.lowercased(), startDate: startDeet)
         do {
             SVProgressHUD.show()
 
