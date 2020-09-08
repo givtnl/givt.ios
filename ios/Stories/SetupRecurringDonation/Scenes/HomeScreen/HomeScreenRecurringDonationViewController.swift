@@ -89,9 +89,8 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
                         model.id == recurringRuleCell.recurringDonationId
                     }
                     DispatchQueue.main.async {
-                        self.tableView.deleteRows(at: [recurringRuleCell.rowIndexPath!], with: .automatic)
+                        self.tableView.reloadData()
                         self.selectedIndex = nil
-                        self.tableView.selectRow(at: recurringRuleCell.rowIndexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
                     }
                 } else {
                     SVProgressHUD.dismiss()
