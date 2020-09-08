@@ -78,7 +78,6 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
 }
 
 extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate {
-    
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
         print("Cancel recurring donation: "+recurringRuleCell.nameLabel.text!)
         let command = CancelRecurringDonationCommand(recurringDonationId: recurringRuleCell.recurringDonationId!)
@@ -177,7 +176,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
         tableView.endUpdates()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if selectedIndex == indexPath.row { return 133 } else { return 89 }
+        if selectedIndex == indexPath.row { return 143 } else { return 99 }
     }
     
 }
