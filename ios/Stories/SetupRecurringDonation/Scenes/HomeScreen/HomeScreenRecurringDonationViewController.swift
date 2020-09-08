@@ -139,7 +139,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
         default:
             break
         }
-        cell.viewModel = rule
+//        cell.viewModel = rule
         cell.nameLabel.text = GivtManager.shared.getOrganisationName(organisationNameSpace: rule.namespace)
         cell.cronTextLabel.text = "SetupRecurringGiftText_3".localized + " " + rule.getFrequencyFromCron() + " " + "RecurringDonationYouGive".localized + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
         let formatter = DateFormatter()
