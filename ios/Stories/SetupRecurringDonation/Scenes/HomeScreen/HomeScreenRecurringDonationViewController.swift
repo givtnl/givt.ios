@@ -48,11 +48,13 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
 
             if recurringRules.count == 0 {
                 tempTableView = tableView
-                tableView.removeFromSuperview()
+                tableView.isHidden = true
+                imageView.isHidden = false
                 emptyListLabel.text = "EmptySubscriptionList".localized
             } else {
                 if let view = imageView {
-                    view.removeFromSuperview()
+                    tableView.isHidden = false
+                    view.isHidden = true
                 }
                 if let table = tempTableView {
                     tableView = table
@@ -62,6 +64,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
             }
         } catch  {
             tableView.removeFromSuperview()
+            stackView.addSubview(self.imageView)
         }
     }
     
