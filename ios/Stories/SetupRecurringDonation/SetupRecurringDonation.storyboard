@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -289,7 +289,7 @@
                                                 <rect key="frame" x="0.0" y="589" width="374" height="0.0"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givymoney" translatesAutoresizingMaskIntoConstraints="NO" id="ILJ-Aa-nau">
-                                                        <rect key="frame" x="87" y="40" width="200" height="200"/>
+                                                        <rect key="frame" x="87" y="-100" width="200" height="200"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="200" id="Pkh-Nz-c5g"/>
                                                             <constraint firstAttribute="height" constant="200" id="xal-V6-9lw"/>
@@ -308,7 +308,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="c9A-Fz-Lc9" secondAttribute="trailing" id="Fvg-qI-4zL"/>
                                                     <constraint firstItem="ILJ-Aa-nau" firstAttribute="centerX" secondItem="xnA-Uk-JCy" secondAttribute="centerX" id="I64-Yo-T4H"/>
-                                                    <constraint firstItem="ILJ-Aa-nau" firstAttribute="top" secondItem="c9A-Fz-Lc9" secondAttribute="bottom" constant="20" id="M2n-vq-LLf"/>
+                                                    <constraint firstItem="ILJ-Aa-nau" firstAttribute="centerY" secondItem="xnA-Uk-JCy" secondAttribute="centerY" id="bqu-ph-gcQ"/>
                                                     <constraint firstItem="c9A-Fz-Lc9" firstAttribute="leading" secondItem="xnA-Uk-JCy" secondAttribute="leading" id="bzR-d7-yt4"/>
                                                     <constraint firstItem="c9A-Fz-Lc9" firstAttribute="top" secondItem="xnA-Uk-JCy" secondAttribute="top" id="ldF-ur-KgJ"/>
                                                 </constraints>
