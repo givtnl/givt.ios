@@ -22,7 +22,9 @@ class GetRecurringDonationsQueryHandler : RequestHandlerProtocol {
                     do {
                         let decoder = JSONDecoder()
                         let parsedDataResult = try decoder.decode(RecurringRulesResponseModel.self, from: Data(body.utf8))
-                        models = parsedDataResult.results
+                        models = parsedDataResult.results.filter({ (model) -> Bool in
+                            model.currentState == 1
+                        })
                     } catch {
                         try? completion(models as! R.TResponse)
                     }
