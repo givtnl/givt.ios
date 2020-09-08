@@ -17,10 +17,10 @@ class CreateRecurringDonationCommandHandler : RequestHandlerProtocol {
         let request = request as! CreateRecurringDonationCommand
         do {
             let body = try JSONEncoder().encode(request)
-            try apiClient.post(url: "/subscriptions", data: body) { response in
+            try apiClient.post(url: "/recurringdonations", data: body) { response in
                 if let success = response?.isSuccess {
                     try? completion(success as! R.TResponse)
-                } else {
+                } else { 
                     try? completion(false as! R.TResponse)
                 }
             }

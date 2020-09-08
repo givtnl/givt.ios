@@ -127,24 +127,32 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
         
         
         switch MediumHelper.namespaceToOrganisationType(namespace: rule.namespace) {
-        case .church:
-            cell.logoImageView.image = UIImage(imageLiteralResourceName: "church_white")
-            color = ColorHelper.Church
-        case .charity:
-            cell.logoImageView.image = UIImage(imageLiteralResourceName: "stichting_white")
-            color = ColorHelper.Charity
-        case .campaign:
-            cell.logoImageView.image = UIImage(imageLiteralResourceName: "actions_white")
-            color = ColorHelper.Action
-        case .artist:
-            cell.logoImageView.image = UIImage(imageLiteralResourceName: "artist")
-            color = ColorHelper.Artist
-        default:
-            break
+            case .church:
+                cell.logoImageView.image = UIImage(imageLiteralResourceName: "church_white")
+                color = ColorHelper.Church
+            case .charity:
+                cell.logoImageView.image = UIImage(imageLiteralResourceName: "stichting_white")
+                color = ColorHelper.Charity
+            case .campaign:
+                cell.logoImageView.image = UIImage(imageLiteralResourceName: "actions_white")
+                color = ColorHelper.Action
+            case .artist:
+                cell.logoImageView.image = UIImage(imageLiteralResourceName: "artist")
+                color = ColorHelper.Artist
+            default:
+                break
         }
 //        cell.viewModel = rule
         cell.nameLabel.text = GivtManager.shared.getOrganisationName(organisationNameSpace: rule.namespace)
-        cell.cronTextLabel.text = "SetupRecurringGiftText_3".localized + " " + rule.getFrequencyFromCron() + " " + "RecurringDonationYouGive".localized + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
+        
+        var tempCronTextLabel = "SetupRecurringGiftText_7".localized + " " + rule.getFrequencyFromCron() + " " + "RecurringDonationYouGive".localized + " "
+        if( UserDefaults.standard.currencySymbol == "£") {
+            tempCronTextLabel = tempCronTextLabel + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
+        } else {
+            tempCronTextLabel = tempCronTextLabel + UserDefaults.standard.currencySymbol + " " + String(format: "%.2f", rule.amountPerTurn)
+        }
+        cell.cronTextLabel.text = tempCronTextLabel
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
         let endDate:String = formatter.string(from: rule.getEndDateFromRule())
@@ -169,7 +177,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
         tableView.endUpdates()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if selectedIndex == indexPath.row { return 119 } else { return 89 }
+        if selectedIndex == indexPath.row { return 133 } else { return 89 }
     }
     
 }

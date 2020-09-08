@@ -24,7 +24,6 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var logoContainerView: UIView!
     
     @IBOutlet weak var ruleStackView: UIStackView!
-    
     @IBOutlet weak var horiStackView: UIStackView!
     @IBOutlet weak var stackViewRuleView: UIView!
     @IBOutlet weak var actionView: UIView!
