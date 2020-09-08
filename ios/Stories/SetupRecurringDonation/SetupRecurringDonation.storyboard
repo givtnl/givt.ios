@@ -100,20 +100,8 @@
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8r-PT-14b" userLabel="LeftView">
                                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="124"/>
-                                                                            <subviews>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stop" translatesAutoresizingMaskIntoConstraints="NO" id="QAd-4f-Mxt">
-                                                                                    <rect key="frame" x="2.5" y="5" width="15" height="15"/>
-                                                                                    <constraints>
-                                                                                        <constraint firstAttribute="width" constant="15" id="UGv-6S-hdT"/>
-                                                                                        <constraint firstAttribute="height" constant="15" id="Vzx-CU-Aca"/>
-                                                                                    </constraints>
-                                                                                </imageView>
-                                                                            </subviews>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
-                                                                                <constraint firstItem="QAd-4f-Mxt" firstAttribute="top" secondItem="J8r-PT-14b" secondAttribute="top" constant="5" id="PFi-Ub-UjU"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="QAd-4f-Mxt" secondAttribute="trailing" constant="2.5" id="RxQ-oe-Pkq"/>
-                                                                                <constraint firstItem="QAd-4f-Mxt" firstAttribute="leading" secondItem="J8r-PT-14b" secondAttribute="leading" constant="2.5" id="aI1-Ix-SpJ"/>
                                                                                 <constraint firstAttribute="width" constant="20" id="xMy-e8-FJT"/>
                                                                             </constraints>
                                                                         </view>
@@ -267,8 +255,20 @@
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b46-lo-mkf" userLabel="RightView">
                                                                             <rect key="frame" x="354" y="0.0" width="20" height="124"/>
+                                                                            <subviews>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QAd-4f-Mxt">
+                                                                                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                                                                    <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="width" constant="20" id="UGv-6S-hdT"/>
+                                                                                        <constraint firstAttribute="height" constant="20" id="Vzx-CU-Aca"/>
+                                                                                    </constraints>
+                                                                                </imageView>
+                                                                            </subviews>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
+                                                                                <constraint firstItem="QAd-4f-Mxt" firstAttribute="leading" secondItem="b46-lo-mkf" secondAttribute="leading" constant="-10" id="JcQ-uY-b2e"/>
+                                                                                <constraint firstItem="QAd-4f-Mxt" firstAttribute="top" secondItem="b46-lo-mkf" secondAttribute="top" constant="-10" id="TWA-Re-aBi"/>
                                                                                 <constraint firstAttribute="width" constant="20" id="ePo-0K-TDG"/>
                                                                             </constraints>
                                                                         </view>
@@ -875,7 +875,7 @@
         <image name="backbtn" width="15" height="24"/>
         <image name="dropdown.png" width="128" height="128"/>
         <image name="givymoney" width="240" height="240"/>
-        <image name="stop" width="128" height="128"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="stop.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>
