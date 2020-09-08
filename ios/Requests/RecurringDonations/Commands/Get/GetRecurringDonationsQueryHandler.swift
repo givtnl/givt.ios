@@ -15,7 +15,7 @@ class GetRecurringDonationsQueryHandler : RequestHandlerProtocol {
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         
-        client.get(url: "/subscriptions", data: [:]) { (response) in
+        client.get(url: "/recurringdonations", data: [:]) { (response) in
             var models: [RecurringRuleViewModel] = []
             if let response = response, response.isSuccess {
                 if let body = response.text {

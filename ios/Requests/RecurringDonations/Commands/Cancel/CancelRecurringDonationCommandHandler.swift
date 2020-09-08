@@ -12,7 +12,7 @@ class CancelRecurringDonationCommandHandler : RequestHandlerProtocol {
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let request = request as! CancelRecurringDonationCommand
-        apiClient.patch(url: "/subscriptions/"+request.recurringDonationId+"/cancel") { response in
+        apiClient.patch(url: "/recurringdonations/"+request.recurringDonationId+"/cancel") { response in
             if let success = response?.isSuccess {
                 try? completion(success as! R.TResponse)
             } else {
