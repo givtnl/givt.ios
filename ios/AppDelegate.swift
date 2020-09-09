@@ -253,6 +253,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // -- Commands
         Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
         Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
+        Mediater.shared.registerPostProcessor(processor: CreateRecurringDonationCommandPostHandler())
+        
         Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
     }
 }
