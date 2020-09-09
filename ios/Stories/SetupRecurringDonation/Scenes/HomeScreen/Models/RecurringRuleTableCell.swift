@@ -59,7 +59,7 @@ internal final class RecurringRuleTableCell : UITableViewCell {
                 
                 var tempCronTextLabel = "SetupRecurringGiftText_7".localized + " " + data.getFrequencyFromCron() + " " + "RecurringDonationYouGive".localized
                 
-                var delimiter = NSLocale.current.decimalSeparator! as String
+                let delimiter = NSLocale.current.decimalSeparator! as String
                 if( UserDefaults.standard.currencySymbol == "£") {
                     tempCronTextLabel = tempCronTextLabel + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", data.amountPerTurn)
                 } else {
