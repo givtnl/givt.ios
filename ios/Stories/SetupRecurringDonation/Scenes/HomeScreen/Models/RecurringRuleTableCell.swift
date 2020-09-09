@@ -73,6 +73,12 @@ internal final class RecurringRuleTableCell : UITableViewCell {
                 stopLabel.textColor = ColorHelper.GivtRed
                 recurringDonationId = data.id
                 rowIndexPath = data.indexPath
+                
+                if let shouldShow = data.shouldShowNewItemMarker {
+                    if (shouldShow) {
+                        indicationImageView.isHidden = !shouldShow 
+                    }
+                }
             }
         }
     }
@@ -90,7 +96,6 @@ internal final class RecurringRuleTableCell : UITableViewCell {
         contentView.frame = contentView.frame.insetBy(dx: 0, dy: 5)
         stackViewRuleView.layer.borderWidth = 1
         stackViewRuleView.layer.cornerRadius = 8
-        indicationImageView.isHidden = false
         logoImageView.contentMode = .scaleAspectFill
         logoContainerView.layer.cornerRadius = 4
     }
