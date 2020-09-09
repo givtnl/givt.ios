@@ -11,12 +11,8 @@ import UIKit
 
 class CreateRecurringDonationCommandPostHandler: RequestPostProcessorProtocol {
     func handle<R>(request: R, response: R.TResponse, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        
-        let request = request as! CreateRecurringDonationCommand
-        
-        if let recurringDonationId = request.recurringDonationId?.uuidString {
-            NotificationCenter.default.post(name: .GivtCreatedRecurringDonation, object: nil, userInfo: ["recurringDonationId":recurringDonationId])
-        }
+                
+        NotificationCenter.default.post(name: .GivtCreatedRecurringDonation, object: nil)
         
         try completion(true as! R.TResponse)
     }

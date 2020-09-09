@@ -101,6 +101,8 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         try? mediater.send(request: BackToPreviousViewRoute(), withContext: self)
     }
     @IBAction func makeRecurringDonation(_ sender: Any) {
+        self.view.endEditing(true)
+
         let cronExpression: String
         
         let dayOfMonth = startDatePicker.date.getDay()

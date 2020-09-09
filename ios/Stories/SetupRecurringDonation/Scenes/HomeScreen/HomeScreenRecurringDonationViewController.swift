@@ -46,20 +46,16 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     }
     
     @objc func recurringDonationCreated(notification: NSNotification) {
-        do {
-            recurringRules = try mediater.send(request: GetRecurringDonationsQuery())
-            if let recurringDonationId = notification.userInfo?["recurringDonationId"] as? String {
-                if var recurringRule = recurringRules.first(where: { (model) -> Bool in model.id.lowercased() == recurringDonationId.lowercased() }) {
-                    recurringRule.shouldShowNewItemMarker = true
-                    recurringRules.remove(at: 0)
-                    recurringRules.insert(recurringRule, at: 0)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+        try? mediater.sendAsync(request: GetRecurringDonationsQuery()) { response in
+            self.recurringRules = response
+            if var recurringRule = self.recurringRules.first {
+                recurringRule.shouldShowNewItemMarker = true
+                DispatchQueue.main.async {
+                    self.recurringRules.remove(at: 0)
+                    self.recurringRules.insert(recurringRule, at: 0)
+                    self.tableView.reloadData()
                 }
             }
-        } catch {
-            
         }
     }
     
