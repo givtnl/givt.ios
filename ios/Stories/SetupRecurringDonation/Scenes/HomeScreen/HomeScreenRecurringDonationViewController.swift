@@ -98,23 +98,35 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
 
 extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
-        print("Cancel recurring donation: "+recurringRuleCell.nameLabel.text!)
-        let command = CancelRecurringDonationCommand(recurringDonationId: recurringRuleCell.recurringDonationId!)
-        do {
-            SVProgressHUD.show()
-            
-            try mediater.sendAsync(request: command) { canceled in
-                if(canceled) {
-                    SVProgressHUD.dismiss()
-                    self.recurringRules.removeAll { (model) -> Bool in
-                        model.id == recurringRuleCell.recurringDonationId
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "CancelSubscriptionAlertTitle".localized, message: "CancelSubscriptionAlertMessage".localized, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { (action) in
+                print("Cancel recurring donation: "+recurringRuleCell.nameLabel.text!)
+                let command = CancelRecurringDonationCommand(recurringDonationId: recurringRuleCell.recurringDonationId!)
+                do {
+                    SVProgressHUD.show()
+                    
+                    try self.mediater.sendAsync(request: command) { canceled in
+                        if(canceled) {
+                            SVProgressHUD.dismiss()
+                            self.recurringRules.removeAll { (model) -> Bool in
+                                model.id == recurringRuleCell.recurringDonationId
+                            }
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                                self.selectedIndex = nil
+                            }
+                        } else {
+                            SVProgressHUD.dismiss()
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                                }))
+                                self.present(alert, animated: true, completion:  {})
+                            }
+                        }
                     }
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.selectedIndex = nil
-                    }
-                } else {
-                    SVProgressHUD.dismiss()
+                } catch  {
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
@@ -122,14 +134,10 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
                         self.present(alert, animated: true, completion:  {})
                     }
                 }
-            }
-        } catch  {
-            DispatchQueue.main.async {
-                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                }))
-                self.present(alert, animated: true, completion:  {})
-            }
+            }))
+            alert.addAction(UIAlertAction(title: "No".localized, style: .default, handler: {(action) in
+            }))
+            self.present(alert, animated: true, completion:  {})
         }
     }
     
