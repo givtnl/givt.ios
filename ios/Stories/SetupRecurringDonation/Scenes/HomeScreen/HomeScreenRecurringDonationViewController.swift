@@ -170,7 +170,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
         tableView.endUpdates()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if selectedIndex == indexPath.row { return 143 } else { return 99 }
+        if selectedIndex == indexPath.row { return 133 } else { return 89 }
     }
     
 }
