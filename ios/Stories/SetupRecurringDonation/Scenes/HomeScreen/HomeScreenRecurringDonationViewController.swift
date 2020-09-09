@@ -19,7 +19,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     @IBOutlet weak var emptyListLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!
     
-    @IBOutlet weak var RecurringDonationsRuleOverview: UIView!
+    @IBOutlet weak var recurringDonationsRuleOverview: UIView!
     @IBOutlet var createButton: CreateRecurringDonationButton!
     @IBOutlet var recurringDonationsOverviewTitleLabel: UILabel!
     
@@ -39,13 +39,15 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         recurringDonationsOverviewTitleLabel.text = "OverviewRecurringDonations".localized
         tableView.delegate = self
         tableView.dataSource = self
-        RecurringDonationsRuleOverview.layer.cornerRadius = 8
+        recurringDonationsRuleOverview.layer.cornerRadius = 8
     }
     
     override func viewWillAppear(_ animated: Bool) {
         do {
+            // load collectgroups with query
+            
             recurringRules = try mediater.send(request: GetRecurringDonationsQuery())
-
+            
             if recurringRules.count == 0 {
                 tempTableView = tableView
                 tableView.isHidden = true
@@ -121,47 +123,21 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecurringRuleTableCell.self), for: indexPath) as! RecurringRuleTableCell
-        let rule = self.recurringRules[indexPath.row]
-        var color: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
+        var rule = self.recurringRules[indexPath.row]
         
-        switch MediumHelper.namespaceToOrganisationType(namespace: rule.namespace) {
-            case .church:
-                cell.logoImageView.image = UIImage(imageLiteralResourceName: "church_white")
-                color = ColorHelper.Church
-            case .charity:
-                cell.logoImageView.image = UIImage(imageLiteralResourceName: "stichting_white")
-                color = ColorHelper.Charity
-            case .campaign:
-                cell.logoImageView.image = UIImage(imageLiteralResourceName: "actions_white")
-                color = ColorHelper.Action
-            case .artist:
-                cell.logoImageView.image = UIImage(imageLiteralResourceName: "artist")
-                color = ColorHelper.Artist
-            default:
-                break
+        var collectGroupDetail: CollectGroupDetailModel
+        do {
+            let collectGroupDetailList: [CollectGroupDetailModel] = try mediater.send(request: GetCollectGroupsQuery())
+            collectGroupDetail = collectGroupDetailList.first(where: { $0.namespace == rule.namespace })!
+            rule.collectGroupName = collectGroupDetail.name
+            rule.collectGroupType = collectGroupDetail.type
+            rule.indexPath = indexPath
+        } catch
+        {
+            print(error)
         }
-//        cell.viewModel = rule
-        cell.nameLabel.text = GivtManager.shared.getOrganisationName(organisationNameSpace: rule.namespace)
-        
-        var tempCronTextLabel = "SetupRecurringGiftText_7".localized + " " + rule.getFrequencyFromCron() + " " + "RecurringDonationYouGive".localized + " "
-        if( UserDefaults.standard.currencySymbol == "£") {
-            tempCronTextLabel = tempCronTextLabel + UserDefaults.standard.currencySymbol + String(format: "%.2f", rule.amountPerTurn)
-        } else {
-            tempCronTextLabel = tempCronTextLabel + UserDefaults.standard.currencySymbol + " " + String(format: "%.2f", rule.amountPerTurn)
-        }
-        cell.cronTextLabel.text = tempCronTextLabel
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd-MM-yyyy"
-        let endDate:String = formatter.string(from: rule.getEndDateFromRule())
-        cell.endDateLabel.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
-        cell.logoContainerView.backgroundColor = color
-        cell.stackViewRuleView.layer.borderColor = color.cgColor
-        cell.stopLabel.text = "CancelSubscription".localized
-        cell.stopLabel.textColor = ColorHelper.GivtRed
-        cell.recurringDonationId = rule.id
-        cell.rowIndexPath = indexPath
+        cell.viewModel = rule
         cell.delegate = self
         return cell
     }

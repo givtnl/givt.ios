@@ -10,12 +10,15 @@ import Foundation
 
 struct RecurringRuleViewModel: Codable {
     public var namespace: String = ""
+    public var collectGroupName: String?
     public var endsAfterTurns: Int = 0
     public var id: String = ""
     public var currentState: Int = 0
     public var cronExpression: String = ""
     public var amountPerTurn: Double = 0.0
     public var startDate: Int = 0
+    public var collectGroupType: CollectGroupType?
+    public var indexPath: IndexPath?
 }
 
 extension RecurringRuleViewModel {
