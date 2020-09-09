@@ -142,17 +142,28 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let startDeet: String = dateFormatter.string(from: startDatePicker.date)
-        let command = CreateRecurringDonationCommand(amountPerTurn: amountView.amount, namespace: input!.mediumId, endsAfterTurns: Int(occurencesTextField.text!)!, cronExpression: cronExpression.lowercased(), startDate: startDeet)
-        do {
+        if AppServices.shared.isServerReachable {
             SVProgressHUD.show()
-
-            try mediater.sendAsync(request: command) { recurringDonationMade in
-                if(recurringDonationMade) {
-                    SVProgressHUD.dismiss()
-                    DispatchQueue.main.async {
-                        try? self.mediater.send(request: GoToRootViewRoute(), withContext: self)
+            LoginManager.shared.getUserExt { (userExtObject) in
+                let command = CreateRecurringDonationCommand(amountPerTurn: self.amountView.amount, namespace: self.input!.mediumId, endsAfterTurns: Int(self.occurencesTextField.text!)!, cronExpression: cronExpression, startDate: startDeet, country: userExtObject!.Country)
+                do {
+                    try self.mediater.sendAsync(request: command) { recurringDonationMade in
+                        if(recurringDonationMade) {
+                            SVProgressHUD.dismiss()
+                            DispatchQueue.main.async {
+                                try? self.mediater.send(request: GoToRootViewRoute(), withContext: self)
+                            }
+                        } else {
+                            SVProgressHUD.dismiss()
+                            DispatchQueue.main.async {
+                                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                                }))
+                                self.present(alert, animated: true, completion:  {})
+                            }
+                        }
                     }
-                } else {
+                } catch {
                     SVProgressHUD.dismiss()
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
@@ -162,7 +173,8 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
                     }
                 }
             }
-        } catch  {
+        } else {
+            try? mediater.send(request: NoInternetAlert(), withContext: self)
         }
     }
 }

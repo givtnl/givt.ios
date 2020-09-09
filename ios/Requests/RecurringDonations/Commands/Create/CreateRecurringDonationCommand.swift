@@ -19,12 +19,14 @@ class CreateRecurringDonationCommand : Codable, RequestProtocol {
     let cronExpression: String
     let startDate: String
     var recurringDonationId: UUID? = nil
+    var country: String
         
-    internal init(amountPerTurn: Decimal, namespace: String, endsAfterTurns: Int, cronExpression: String, startDate: String) {
+    internal init(amountPerTurn: Decimal, namespace: String, endsAfterTurns: Int, cronExpression: String, startDate: String, country: String) {
         self.amountPerTurn = amountPerTurn
         self.namespace = namespace
         self.endsAfterTurns = endsAfterTurns
         self.cronExpression = cronExpression
         self.startDate = startDate
+        self.country = country
     }
 }
