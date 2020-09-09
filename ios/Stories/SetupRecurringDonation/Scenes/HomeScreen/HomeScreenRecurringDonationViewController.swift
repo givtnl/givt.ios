@@ -35,7 +35,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(recurringDonationCreated), name: .GivtCreatedRecurringDonation, object: nil)
-
+        
         navBar.title = "TitleRecurringGifts".localized
         createButton.label1.text = "RecurringGiftsSetupCreate".localized
         createButton.label2.text = "RecurringGiftsSetupRecurringGift".localized
@@ -44,13 +44,25 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         tableView.dataSource = self
         recurringDonationsRuleOverview.layer.cornerRadius = 8
     }
-    func recurringDonationCreated(notification: NSNotification) {
-        let recurringDonationId = notification.userInfo?["recurringDonationId"] as! String
-        let recurringRule = recurringRules.first { (model) -> Bool in model.id == recurringDonationId }
-        if let newRecurringRule = recurringRule {
+    
+    @objc func recurringDonationCreated(notification: NSNotification) {
+        do {
+            recurringRules = try mediater.send(request: GetRecurringDonationsQuery())
+            if let recurringDonationId = notification.userInfo?["recurringDonationId"] as? String {
+                if var recurringRule = recurringRules.first(where: { (model) -> Bool in model.id.lowercased() == recurringDonationId.lowercased() }) {
+                    recurringRule.shouldShowNewItemMarker = true
+                    recurringRules.remove(at: 0)
+                    recurringRules.insert(recurringRule, at: 0)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        } catch {
+            
         }
     }
-       
+    
     override func viewWillAppear(_ animated: Bool) {
         do {
             // load collectgroups with query

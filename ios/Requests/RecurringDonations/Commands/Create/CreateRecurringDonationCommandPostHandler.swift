@@ -14,7 +14,11 @@ class CreateRecurringDonationCommandPostHandler: RequestPostProcessorProtocol {
         
         let request = request as! CreateRecurringDonationCommand
         
-        NotificationCenter.default.post(name: .GivtCreatedRecurringDonation, object: nil, userInfo: ["recurringDonationId":request.recurringDonationId?.uuidString])
+        if let recurringDonationId = request.recurringDonationId?.uuidString {
+            NotificationCenter.default.post(name: .GivtCreatedRecurringDonation, object: nil, userInfo: ["recurringDonationId":recurringDonationId])
+        }
+        
+        try completion(true as! R.TResponse)
     }
 
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {

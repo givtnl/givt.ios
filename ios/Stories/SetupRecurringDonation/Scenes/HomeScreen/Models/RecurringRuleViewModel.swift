@@ -19,6 +19,7 @@ struct RecurringRuleViewModel: Codable {
     public var startDate: Int = 0
     public var collectGroupType: CollectGroupType?
     public var indexPath: IndexPath?
+    public var shouldShowNewItemMarker: Bool? = false
 }
 
 extension RecurringRuleViewModel {
