@@ -19,18 +19,6 @@ class CreateRecurringDonationCommandHandler : RequestHandlerProtocol {
             let body = try JSONEncoder().encode(request)
             try apiClient.post(url: "/recurringdonations", data: body) { response in
                 if let success = response?.isSuccess {
-                    if let responseText = response!.text {
-                        do {
-                            let decoder = JSONDecoder()
-                            let responseModel = try decoder.decode(CreateRecurringDonationResponseModel.self, from: Data(responseText.utf8))
-                            if let uuId = UUID(uuidString: responseModel.id) {
-                                request.recurringDonationId = uuId
-                            }
-                            try? completion(true as! R.TResponse)
-                        } catch {
-                            try? completion(false as! R.TResponse)
-                        }
-                    }
                     try? completion(success as! R.TResponse)
                 } else { 
                     try? completion(false as! R.TResponse)
