@@ -28,6 +28,7 @@
 		3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450824DB0206003CF5CF /* ColorHelper.swift */; };
 		324761BE2508BADC002BC37E /* CreateRecurringDonationCommandPostHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761BD2508BADC002BC37E /* CreateRecurringDonationCommandPostHandler.swift */; };
 		324761C12508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */; };
+		324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C22508FE25002BC37E /* RecurringDonationState.swift */; };
 		3274566D2500D704006F0C60 /* ResponseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3274566C2500D704006F0C60 /* ResponseExtension.swift */; };
 		327C5B7E2506D8680064BBC4 /* CancelRecurringDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C5B7D2506D8680064BBC4 /* CancelRecurringDonationCommand.swift */; };
 		327C5B802506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C5B7F2506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift */; };
@@ -326,6 +327,7 @@
 		3232450824DB0206003CF5CF /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		324761BD2508BADC002BC37E /* CreateRecurringDonationCommandPostHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandPostHandler.swift; sourceTree = "<group>"; };
 		324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationResponseModel.swift; sourceTree = "<group>"; };
+		324761C22508FE25002BC37E /* RecurringDonationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationState.swift; sourceTree = "<group>"; };
 		3274566C2500D704006F0C60 /* ResponseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseExtension.swift; sourceTree = "<group>"; };
 		327C5B7D2506D8680064BBC4 /* CancelRecurringDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRecurringDonationCommand.swift; sourceTree = "<group>"; };
 		327C5B7F2506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRecurringDonationCommandHandler.swift; sourceTree = "<group>"; };
@@ -1239,6 +1241,7 @@
 			children = (
 				D7AE8BA32136CA4F00CB3A33 /* PaymentTypes.swift */,
 				FBC1859F24C08F19001A4C6B /* PaymentType.swift */,
+				324761C22508FE25002BC37E /* RecurringDonationState.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -2070,6 +2073,7 @@
 				FB87300B24C82CC1005FF355 /* CoreData.xcdatamodeld in Sources */,
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
 				FBC1859324C06716001A4C6B /* CollectGroupType.swift in Sources */,
+				324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
 				D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */,
 				3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */,

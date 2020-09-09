@@ -15,7 +15,7 @@ struct CreateRecurringDonationResponseModel: Codable {
     var startDate: String = ""
     var amountPerTurn: Decimal = 0.0
     var namespace: String = ""
-    var currentState: Int = 0
+    var currentState: RecurringDonationState
     var lastProcessingDate: String = ""
     var creationDateTime: String = ""
     var endsAfterTurns: Int = 0
