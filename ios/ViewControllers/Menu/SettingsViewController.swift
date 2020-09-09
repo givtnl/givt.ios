@@ -79,7 +79,7 @@ class SettingsViewController: BaseMenuViewController {
         
         //        let consciousGivingItem = Setting(name: "Doelbewust geven", image: UIImage(named: "hand-holding-heart")!, callback:  {self.consciousGiving()})
         
-        let setupRecurringGift = Setting(name: "MenuItem_RecurringDonation".localized, image: UIImage(named:"hand-holding-heart")!, callback: { self.setupRecurringDonation() })
+        let setupRecurringGift = Setting(name: "MenuItem_RecurringDonation".localized, image: UIImage(named:"repeat")!, callback: { self.setupRecurringDonation() })
         
         if !UserDefaults.standard.isTempUser {
             items.append([])
