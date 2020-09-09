@@ -93,7 +93,6 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        contentView.frame = contentView.frame.insetBy(dx: 0, dy: 5)
         stackViewRuleView.layer.borderWidth = 1
         stackViewRuleView.layer.cornerRadius = 8
         logoImageView.contentMode = .scaleAspectFill
