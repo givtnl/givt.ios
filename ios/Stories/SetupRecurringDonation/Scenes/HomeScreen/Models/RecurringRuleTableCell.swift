@@ -14,7 +14,7 @@ protocol RecurringRuleCencelDelegate {
 
 internal final class RecurringRuleTableCell : UITableViewCell {
     var delegate: RecurringRuleCencelDelegate? = nil
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cronTextLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
@@ -31,6 +31,51 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     
     var recurringDonationId: String?
     var rowIndexPath: IndexPath?
+    var viewModel: RecurringRuleViewModel? = nil {
+        didSet{
+            if let data = viewModel {
+                switch data.collectGroupType {
+                case .church:
+                    logoImageView.image = UIImage(imageLiteralResourceName: "church_white")
+                    logoContainerView.backgroundColor = ColorHelper.Church
+                    stackViewRuleView.layer.borderColor = ColorHelper.Church.cgColor
+                case .charity:
+                    logoImageView.image = UIImage(imageLiteralResourceName: "stichting_white")
+                    logoContainerView.backgroundColor = ColorHelper.Charity
+                    stackViewRuleView.layer.borderColor = ColorHelper.Charity.cgColor
+                case .campaign:
+                    logoImageView.image = UIImage(imageLiteralResourceName: "actions_white")
+                    logoContainerView.backgroundColor = ColorHelper.Action
+                    stackViewRuleView.layer.borderColor = ColorHelper.Action.cgColor
+                case .artist:
+                    logoImageView.image = UIImage(imageLiteralResourceName: "artist")
+                    logoContainerView.backgroundColor = ColorHelper.Artist
+                    stackViewRuleView.layer.borderColor = ColorHelper.Artist.cgColor
+                default:
+                    break
+                }
+                
+                nameLabel.text = data.collectGroupName
+                
+                var tempCronTextLabel = "SetupRecurringGiftText_7".localized + " " + data.getFrequencyFromCron() + " " + "RecurringDonationYouGive".localized
+                if( UserDefaults.standard.currencySymbol == "£") {
+                    tempCronTextLabel = tempCronTextLabel + " " + UserDefaults.standard.currencySymbol + String(format: "%.2f", data.amountPerTurn)
+                } else {
+                    tempCronTextLabel = tempCronTextLabel + " " + UserDefaults.standard.currencySymbol + " " + String(format: "%.2f", data.amountPerTurn)
+                }
+                cronTextLabel.text = tempCronTextLabel
+                
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd-MM-yyyy"
+                let endDate:String = formatter.string(from: data.getEndDateFromRule())
+                endDateLabel.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
+                stopLabel.text = "CancelSubscription".localized
+                stopLabel.textColor = ColorHelper.GivtRed
+                recurringDonationId = data.id
+                rowIndexPath = data.indexPath
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,6 +97,8 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @objc func handleTap(sender: UITapGestureRecognizer) {
         if let delegate = self.delegate {
             delegate.recurringRuleCancelTapped(recurringRuleCell: self)
-       }
+        }
     }
+    
+    
 }
