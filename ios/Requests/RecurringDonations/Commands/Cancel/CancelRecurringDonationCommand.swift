@@ -1,5 +1,5 @@
 //
-//  DeleteSubscriptionCommand.swift
+//  CancelRecurringDonationCommand.swift
 //  ios
 //
 //  Created by Mike Pattyn on 07/09/2020.
