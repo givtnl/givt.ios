@@ -60,6 +60,9 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        tableView.isHidden = true
+        imageView.isHidden = false
+        emptyListLabel.text = "EmptySubscriptionList".localized
         SVProgressHUD.show()
     }
     
@@ -68,13 +71,10 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
             // load collectgroups with query
             self.recurringRules = try self.mediater.send(request: GetRecurringDonationsQuery())
             
-            if self.recurringRules.count == 0 {
-                self.tempTableView = self.tableView
-                self.tableView.isHidden = true
-                self.imageView.isHidden = false
-                self.emptyListLabel.text = "EmptySubscriptionList".localized
+            tempTableView = tableView
+            
+            if self.recurringRules.count > 0 {
                 
-            } else {
                 if let view = self.imageView {
                     self.tableView.isHidden = false
                     view.isHidden = true
