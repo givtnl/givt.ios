@@ -105,7 +105,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
 extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: "CancelRecurringDonationAlertTitle".localized, message: "CancelRecurringDonationAlertMessage".localized, preferredStyle: .alert)
+            let alert = UIAlertController(title: "CancelRecurringDonationAlertTitle".localized.replacingOccurrences(of: "{0}", with: recurringRuleCell.nameLabel.text!), message: "CancelRecurringDonationAlertMessage".localized , preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { (action) in
                 print("Cancel recurring donation: "+recurringRuleCell.nameLabel.text!)
                 let command = CancelRecurringDonationCommand(recurringDonationId: recurringRuleCell.recurringDonationId!)
