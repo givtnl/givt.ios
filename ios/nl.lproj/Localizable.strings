@@ -970,7 +970,11 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "SelectRecipient" = "Selecteer ontvanger";
 "SetupRecurringDonationFailed" = "Het instellen van de terugkerende gift is helaas niet gelukt. Probeer het later eens opnieuw.";
 "EmptySubscriptionList" = "Al je terugkerende giften komen hier terecht";
-"CancelSubscriptionAlertTitle" = "Wil je je terugkerende gift stopzetten?";
-"CancelSubscriptionAlertMessage" = "Gedane donaties worden niet geannuleerd.\nToekomstige donaties worden niet uitgevoerd.";
+
+/*Fuzzy*/
+"CancelRecurringDonationAlertTitle" = "Wil je je terugkerende gift stopzetten?";
+
+/*Fuzzy*/
+"CancelRecurringDonationAlertMessage" = "Gedane donaties worden niet geannuleerd.\nToekomstige donaties worden niet uitgevoerd.";
 "CancelSubscription" = "Stopzetten";
 "SetupRecurringGiftText_7" = "Elk(e)";
