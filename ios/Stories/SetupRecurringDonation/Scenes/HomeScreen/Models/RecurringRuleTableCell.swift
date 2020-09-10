@@ -72,7 +72,7 @@ internal final class RecurringRuleTableCell : UITableViewCell {
                 formatter.dateFormat = "dd-MM-yyyy"
                 let endDate:String = formatter.string(from: data.getEndDateFromRule())
                 endDateLabel.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
-                stopLabel.text = "CancelSubscription".localized
+                stopLabel.text = "CancelRecurringDonation".localized
                 stopLabel.textColor = ColorHelper.GivtRed
                 recurringDonationId = data.id
                 rowIndexPath = data.indexPath

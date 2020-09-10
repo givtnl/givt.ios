@@ -62,7 +62,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         tableView.isHidden = true
         imageView.isHidden = false
-        emptyListLabel.text = "EmptySubscriptionList".localized
+        emptyListLabel.text = "EmptyRecurringDonationList".localized
         SVProgressHUD.show()
     }
     
