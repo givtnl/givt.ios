@@ -134,9 +134,9 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         case Frequency.Monthly:
             cronExpression = "0 0 \(dayOfMonth) * *"
         case Frequency.ThreeMonthly:
-            cronExpression = "0 0 \(dayOfMonth) \(month+1)/3 *"
+            cronExpression = "0 0 \(dayOfMonth) \(month % 3 + 1)/3 *"
         case Frequency.SixMonthly:
-            cronExpression = "0 0 \(dayOfMonth) \(month+1)/6 *"
+            cronExpression = "0 0 \(dayOfMonth) \(month % 6 + 1)/6 *"
         case Frequency.Yearly:
             cronExpression = "0 0 \(dayOfMonth) \(month+1)/12 *"
         }
