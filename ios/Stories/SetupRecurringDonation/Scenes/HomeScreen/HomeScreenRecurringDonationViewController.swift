@@ -59,32 +59,38 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        SVProgressHUD.show()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         do {
             // load collectgroups with query
+            self.recurringRules = try self.mediater.send(request: GetRecurringDonationsQuery())
             
-            recurringRules = try mediater.send(request: GetRecurringDonationsQuery())
-            
-            if recurringRules.count == 0 {
-                tempTableView = tableView
-                tableView.isHidden = true
-                imageView.isHidden = false
-                emptyListLabel.text = "EmptySubscriptionList".localized
+            if self.recurringRules.count == 0 {
+                self.tempTableView = self.tableView
+                self.tableView.isHidden = true
+                self.imageView.isHidden = false
+                self.emptyListLabel.text = "EmptySubscriptionList".localized
+                
             } else {
-                if let view = imageView {
-                    tableView.isHidden = false
+                if let view = self.imageView {
+                    self.tableView.isHidden = false
                     view.isHidden = true
                 }
-                if let table = tempTableView {
-                    tableView = table
+                if let table = self.tempTableView {
+                    self.tableView = table
                 }
-                tableView.reloadData()
-                stackView.addArrangedSubview(tableView)
+                self.tableView.reloadData()
+                self.stackView.addArrangedSubview(self.tableView)
+                
             }
         } catch  {
-            tableView.removeFromSuperview()
-            stackView.addSubview(self.imageView)
+            self.tableView.removeFromSuperview()
+            self.stackView.addSubview(self.imageView)
         }
+        SVProgressHUD.dismiss()
     }
     
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
