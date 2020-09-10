@@ -147,32 +147,37 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         if AppServices.shared.isServerReachable {
             SVProgressHUD.show()
             LoginManager.shared.getUserExt { (userExtObject) in
-                let command = CreateRecurringDonationCommand(amountPerTurn: self.amountView.amount, namespace: self.input!.mediumId, endsAfterTurns: Int(self.occurencesTextField.text!)!, cronExpression: cronExpression, startDate: startDeet, country: userExtObject!.Country)
-                do {
-                    try self.mediater.sendAsync(request: command) { recurringDonationMade in
-                        if(recurringDonationMade) {
-                            SVProgressHUD.dismiss()
-                            DispatchQueue.main.async {
-                                try? self.mediater.send(request: GoToRootViewRoute(), withContext: self)
+                if let mediumid = self.input?.mediumId, let occurences = self.occurencesTextField.text, let country = userExtObject?.Country {
+                    if let numberOccurences = Int(occurences) {
+                        let command = CreateRecurringDonationCommand(amountPerTurn: self.amountView.amount, namespace: mediumid, endsAfterTurns: Int(numberOccurences), cronExpression: cronExpression, startDate: startDeet, country: country)
+                        do {
+                            try self.mediater.sendAsync(request: command) { recurringDonationMade in
+                                if(recurringDonationMade) {
+                                    SVProgressHUD.dismiss()
+                                    DispatchQueue.main.async {
+                                        try? self.mediater.send(request: GoToRootViewRoute(), withContext: self)
+                                    }
+                                } else {
+                                    SVProgressHUD.dismiss()
+                                    DispatchQueue.main.async {
+                                        let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                                        }))
+                                        self.present(alert, animated: true, completion:  {})
+                                    }
+                                }
                             }
-                        } else {
+                        } catch {
                             SVProgressHUD.dismiss()
-                            DispatchQueue.main.async {
-                                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                                }))
-                                self.present(alert, animated: true, completion:  {})
-                            }
+                            self.showSetupRecurringDonationFailed()
                         }
+                    } else {
+                        SVProgressHUD.dismiss()
+                        self.showSetupRecurringDonationFailed()
                     }
-                } catch {
+                } else {
                     SVProgressHUD.dismiss()
-                    DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                        }))
-                        self.present(alert, animated: true, completion:  {})
-                    }
+                    self.showSetupRecurringDonationFailed()
                 }
             }
         } else {
@@ -182,6 +187,14 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
 }
 
 extension SetupRecurringDonationChooseRecurringDonationViewController : CollectGroupLabelDelegate {
+    private func showSetupRecurringDonationFailed() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            }))
+            self.present(alert, animated: true, completion:  {})
+        }
+    }
     func setupFrequencyPickerView() {
         frequencyPicker = UIPickerView()
         frequencyPicker.dataSource = self
