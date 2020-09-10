@@ -972,9 +972,9 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "EmptySubscriptionList" = "All your recurring donations will be visible here.";
 
 /*Fuzzy*/
-"CancelRecurringDonationAlertTitle" = "Do you want to stop your recurring donation?";
+"CancelRecurringDonationAlertTitle" = "Are you sure you want to stop donating to {0}?";
 
 /*Fuzzy*/
-"CancelRecurringDonationAlertMessage" = "Future donations are cancelled.\nPast donations will not be affected.";
+"CancelRecurringDonationAlertMessage" = "The donations already made will not be cancelled by this.";
 "CancelSubscription" = "Stop";
 "SetupRecurringGiftText_7" = "Each";
