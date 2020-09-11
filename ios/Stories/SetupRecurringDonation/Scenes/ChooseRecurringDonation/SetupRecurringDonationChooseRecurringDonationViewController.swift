@@ -147,8 +147,12 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         if AppServices.shared.isServerReachable {
             SVProgressHUD.show()
             LoginManager.shared.getUserExt { (userExtObject) in
-                if let mediumid = self.input?.mediumId, let occurences = self.occurencesTextField.text, let country = userExtObject?.Country {
-                    if let numberOccurences = Int(occurences) {
+                if let mediumid = self.input?.mediumId, let country = userExtObject?.Country {
+                    var occurencesString: String? = nil
+                    DispatchQueue.main.sync {
+                        occurencesString = self.occurencesTextField.text!
+                    }
+                    if let numberOccurences = Int(occurencesString!){
                         let command = CreateRecurringDonationCommand(amountPerTurn: self.amountView.amount, namespace: mediumid, endsAfterTurns: Int(numberOccurences), cronExpression: cronExpression, startDate: startDeet, country: country)
                         do {
                             try self.mediater.sendAsync(request: command) { recurringDonationMade in
