@@ -31,6 +31,8 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     var frequencies = ["SetupRecurringGiftWeek".localized, "SetupRecurringGiftMonth".localized, "SetupRecurringGiftQuarter".localized, "SetupRecurringGiftHalfYear".localized, "SetupRecurringGiftYear".localized]
     var selectedIndex: Int? = nil
     
+    private var markedItem: RecurringRuleViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,11 +52,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
             self.recurringRules = response
             if var recurringRule = self.recurringRules.first {
                 recurringRule.shouldShowNewItemMarker = true
-                DispatchQueue.main.async {
-                    self.recurringRules.remove(at: 0)
-                    self.recurringRules.insert(recurringRule, at: 0)
-                    self.tableView.reloadData()
-                }
+                self.markedItem = recurringRule
             }
         }
     }
@@ -70,6 +68,11 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         do {
             // load collectgroups with query
             self.recurringRules = try self.mediater.send(request: GetRecurringDonationsQuery())
+            
+            if let item = markedItem {
+                self.recurringRules.removeFirst()
+                self.recurringRules.insert(item, at: 0)
+            }
             
             tempTableView = tableView
             

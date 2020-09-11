@@ -76,10 +76,19 @@ internal final class RecurringRuleTableCell : UITableViewCell {
                 stopLabel.textColor = ColorHelper.GivtRed
                 recurringDonationId = data.id
                 rowIndexPath = data.indexPath
-                
-                if let shouldShow = data.shouldShowNewItemMarker {
-                    if (shouldShow) {
-                        indicationImageView.isHidden = !shouldShow 
+                if let rowIndex = rowIndexPath?.row {
+                    if rowIndex != 0 {
+                        indicationImageView.isHidden = true
+                    } else {
+                        if let testShuldShow = data.shouldShowNewItemMarker {
+                            if testShuldShow {
+                                indicationImageView.isHidden = false
+                            } else {
+                                indicationImageView.isHidden = true
+                            }
+                        } else {
+                            indicationImageView.isHidden = true
+                        }
                     }
                 }
             }
