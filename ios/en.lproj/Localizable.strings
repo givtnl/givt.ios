@@ -977,8 +977,11 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "CancelRecurringDonationAlertTitle" = "Are you sure you want to stop donating to {0}?";
 
 /*Fuzzy*/
-"CancelRecurringDonationAlertMessage" = "The donations already made will not be cancelled by this.";
+"CancelRecurringDonationAlertMessage" = "The donations already made will not be cancelled.";
 
 /*Fuzzy*/
 "CancelRecurringDonation" = "Stop";
 "SetupRecurringGiftText_7" = "Each";
+
+/*Fuzzy*/
+"CancelRecurringDonationFailed" = "The recurring donation was not cancelled successfully. Please try again later.";
