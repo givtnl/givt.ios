@@ -130,7 +130,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
                         } else {
                             SVProgressHUD.dismiss()
                             DispatchQueue.main.async {
-                                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
+                                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "CancelRecurringDonationFailed".localized, preferredStyle: .alert)
                                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                                 }))
                                 self.present(alert, animated: true, completion:  {})
@@ -139,7 +139,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
                     }
                 } catch  {
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Tis misgegaan", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "CancelRecurringDonationFailed".localized, preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                         }))
                         self.present(alert, animated: true, completion:  {})
