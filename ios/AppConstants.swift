@@ -134,6 +134,18 @@ class AppConstants {
         let trustKitConfig = [
             kTSKSwizzleNetworkDelegates: false,
             kTSKPinnedDomains: [
+                "api.production.givtapp.net" : [
+                    kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
+                    kTSKPublicKeyHashes: [
+                        "++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=", //Amazon Root CA pin
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
+                    ]],
+                "api.development.givtapp.net" : [
+                    kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
+                    kTSKPublicKeyHashes: [
+                        "++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=", //Amazon Root CA pin
+                        "HnLdxcfpBNV0OtFuufExFJmkuj2oQYQrfLZ+KTy7A1w=" //fake pin
+                    ]],
                 "api.givtapp.net": [
                     kTSKPublicKeyAlgorithms: [kTSKAlgorithmRsa2048],
                     kTSKPublicKeyHashes: [
@@ -146,7 +158,8 @@ class AppConstants {
                     kTSKPublicKeyHashes: [
                         "/JvZY7DBIDt5NylYRKjYP76G3E0F/6C4X6u0bqosQok=",
                         "Slt48iBVTjuRQJTjbzopminRrHSGtndY0/sj0lFf9Qk="
-                    ]],]
+                    ]]
+                ]
             ] as [String : Any]
         return trustKitConfig
     }()
