@@ -97,10 +97,12 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     }
     
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
+        resetSelectedIndex()
         try? mediater.send(request: GoToChooseRecurringDonationRoute(), withContext: self)
     }
     
     @IBAction func backButton(_ sender: Any) {
+        resetSelectedIndex()
         try? mediater.send(request: BackToMainRoute(), withContext: self)
     }
 }
@@ -160,10 +162,9 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
         
         var rule = self.recurringRules[indexPath.row]
         
-        var collectGroupDetail: CollectGroupDetailModel
         do {
             let collectGroupDetailList: [CollectGroupDetailModel] = try mediater.send(request: GetCollectGroupsQuery())
-            collectGroupDetail = collectGroupDetailList.first(where: { $0.namespace == rule.namespace })!
+            var collectGroupDetail: CollectGroupDetailModel = collectGroupDetailList.first(where: { $0.namespace == rule.namespace })!
             rule.collectGroupName = collectGroupDetail.name
             rule.collectGroupType = collectGroupDetail.type
             rule.indexPath = indexPath
@@ -189,5 +190,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedIndex == indexPath.row { return 133 } else { return 89 }
     }
-    
+    private func resetSelectedIndex() {
+        selectedIndex = nil
+    }
 }
