@@ -16,7 +16,7 @@ struct RecurringRuleViewModel: Codable {
     public var currentState: RecurringDonationState?
     public var cronExpression: String = ""
     public var amountPerTurn: Double = 0.0
-    public var startDate: Int = 0
+    public var startDate: String = ""
     public var collectGroupType: CollectGroupType?
     public var indexPath: IndexPath?
     public var shouldShowNewItemMarker: Bool? = false
@@ -25,7 +25,6 @@ struct RecurringRuleViewModel: Codable {
 extension RecurringRuleViewModel {
     func getEndDateFromRule() -> Date {
         let multiplier = endsAfterTurns-1
-        let newStartDate = Date(timeIntervalSince1970: TimeInterval(startDate * 1000) / 1000)
         var dateComponent = DateComponents()
         switch getFrequencyFromCron() {
             case "SetupRecurringGiftWeek".localized:
@@ -41,7 +40,10 @@ extension RecurringRuleViewModel {
             default:
                 break
         }
-        return Calendar.current.date(byAdding: dateComponent, to: newStartDate)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        return Calendar.current.date(byAdding: dateComponent, to: dateFormatter.date(from: startDate)!)!
     }
     func getFrequencyFromCron() -> String {
         let elements = cronExpression.split(separator: " ")
