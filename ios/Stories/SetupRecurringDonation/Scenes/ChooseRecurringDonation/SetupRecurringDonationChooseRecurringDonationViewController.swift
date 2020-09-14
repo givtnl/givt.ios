@@ -292,7 +292,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         collectGroupLabel.delegate = self
         collectGroupLabel.label.text = "SelectRecipient".localized
         collectGroupLabel.bottomBorderColor = UIColor.clear
-        collectGroupLabel.symbol.isHidden = true;
+        collectGroupLabel.symbolView.isHidden = true;
         collectGroupLabel.symbol.text = ""
         if let input = self.input {
             collectGroupLabel.label.text = input.name
@@ -317,7 +317,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
                         text = "hands-helping";
                 }
                 collectGroupLabel.symbol.text = text
-                collectGroupLabel.symbol.isHidden = false;
+                collectGroupLabel.symbolView.isHidden = false;
             }
         }
     }
