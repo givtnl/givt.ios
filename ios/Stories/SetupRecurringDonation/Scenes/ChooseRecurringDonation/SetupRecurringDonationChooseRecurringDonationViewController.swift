@@ -134,9 +134,9 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         case Frequency.Monthly:
             cronExpression = "0 0 \(dayOfMonth) * *"
         case Frequency.ThreeMonthly:
-            cronExpression = "0 0 \(dayOfMonth) \(month % 3 + 1)/3 *"
+            cronExpression = "0 0 \(dayOfMonth) \(getFirstPartQuarterlyCronMonth(month: month))/3 *"
         case Frequency.SixMonthly:
-            cronExpression = "0 0 \(dayOfMonth) \(month % 6 + 1)/6 *"
+            cronExpression = "0 0 \(dayOfMonth) \(getFirstPartHalfYearlyCronMonth(month: month))/6 *"
         case Frequency.Yearly:
             cronExpression = "0 0 \(dayOfMonth) \(month+1)/12 *"
         }
@@ -186,6 +186,30 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
             }
         } else {
             try? mediater.send(request: NoInternetAlert(), withContext: self)
+        }
+    }
+    
+    private func getFirstPartQuarterlyCronMonth(month: Int) -> Int {
+        switch month {
+        case 0,3,6,9:
+            return 1
+        case 1,4,7,10:
+            return 2
+        case 2,5,8,11:
+            return 3
+        default:
+            return 0
+        }
+    }
+    
+    private func getFirstPartHalfYearlyCronMonth(month: Int) -> Int {
+        switch month {
+        case 0,1,2,3,4,5:
+            return month
+        case 6,7,8,9,10,11:
+            return month - 6
+        default:
+            return 0
         }
     }
 }
