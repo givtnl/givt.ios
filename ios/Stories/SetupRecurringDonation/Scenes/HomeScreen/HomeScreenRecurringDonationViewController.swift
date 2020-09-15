@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import SVProgressHUD
+import AppCenterAnalytics
 
 class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource
 {
@@ -45,6 +46,9 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         recurringDonationsRuleOverview.layer.cornerRadius = 8
+        
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_OVERVIEW_OPENED")
+
     }
     
     @objc func recurringDonationCreated(notification: NSNotification) {
@@ -99,19 +103,24 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
         resetSelectedIndex()
         try? mediater.send(request: GoToChooseRecurringDonationRoute(), withContext: self)
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATE_CLICKED")
     }
     
     @IBAction func backButton(_ sender: Any) {
         resetSelectedIndex()
         try? mediater.send(request: BackToMainRoute(), withContext: self)
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_OVERVIEW_DISMISSED")
     }
 }
 
 extension HomeScreenRecurringDonationViewController: RecurringRuleCancelDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP")
+        
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "CancelRecurringDonationAlertTitle".localized.replacingOccurrences(of: "{0}", with: recurringRuleCell.nameLabel.text!), message: "CancelRecurringDonationAlertMessage".localized , preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { (action) in
+                MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP_YES")
                 print("Cancel recurring donation: "+recurringRuleCell.nameLabel.text!)
                 let command = CancelRecurringDonationCommand(recurringDonationId: recurringRuleCell.recurringDonationId!)
                 do {
@@ -147,6 +156,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCancelDelegate
                 }
             }))
             alert.addAction(UIAlertAction(title: "No".localized, style: .default, handler: {(action) in
+                MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP_NO")
             }))
             self.present(alert, animated: true, completion:  {})
         }
@@ -188,7 +198,12 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCancelDelegate
         tableView.endUpdates()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if selectedIndex == indexPath.row { return 133 } else { return 89 }
+        if selectedIndex == indexPath.row {
+            MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_OPENED")
+            return 133
+        } else {
+            return 89
+        }
     }
     private func resetSelectedIndex() {
         selectedIndex = nil

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AppCenterAnalytics
 
 class SetupRecurringDonationChooseDestinationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate
 {
@@ -146,8 +147,10 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     //MARK: nextButton
     @IBAction func nextButtonTapped(_ sender: Any) {
         do {
+            
             if let selectedCell = tableView.cellForRow(at: tableView.indexPathForSelectedRow!) as? DestinationTableCell,
                 let medium = ((try mediater.send(request: GetCollectGroupsQuery())).first { $0.name == selectedCell.name }) {
+                MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_RECIPIENT_SELECTED", withProperties: ["namespace": medium.namespace])
                 try mediater.send(request: DestinationSelectedRoute(name: selectedCell.name, mediumId: medium.namespace, orgType: medium.type), withContext: self)
             }
         } catch {}
