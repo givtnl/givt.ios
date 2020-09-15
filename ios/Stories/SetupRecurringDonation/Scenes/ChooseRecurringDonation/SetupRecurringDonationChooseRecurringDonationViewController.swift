@@ -147,6 +147,7 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         if AppServices.shared.isServerReachable {
             SVProgressHUD.show()
             LoginManager.shared.getUserExt { (userExtObject) in
+                SVProgressHUD.dismiss()
                 if let mediumid = self.input?.mediumId, let country = userExtObject?.Country {
                     var occurencesString: String? = nil
                     DispatchQueue.main.sync {
@@ -157,6 +158,7 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
                         NavigationManager.shared.executeWithLogin(context: self) {
                             if LoginManager.shared.isUserLoggedIn {
                                 do {
+                                    SVProgressHUD.show()
                                     try self.mediater.sendAsync(request: command) { recurringDonationMade in
                                         if(recurringDonationMade) {
                                             SVProgressHUD.dismiss()
