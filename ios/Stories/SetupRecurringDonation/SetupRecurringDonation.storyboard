@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -112,7 +112,7 @@
                                                                                 <constraint firstAttribute="width" constant="20" id="xMy-e8-FJT"/>
                                                                             </constraints>
                                                                         </view>
-                                                                        <view autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5zM-iP-CVj">
+                                                                        <view autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="5zM-iP-CVj">
                                                                             <rect key="frame" x="20" y="0.0" width="334" height="134"/>
                                                                             <subviews>
                                                                                 <stackView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GB-Ln-E7y">
@@ -207,7 +207,7 @@
                                                                                         <constraint firstAttribute="height" constant="80" id="RCl-tc-K1w"/>
                                                                                     </constraints>
                                                                                 </stackView>
-                                                                                <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="nKC-Zh-aFd" userLabel="actionView">
+                                                                                <view clipsSubviews="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="nKC-Zh-aFd" userLabel="actionView">
                                                                                     <rect key="frame" x="0.0" y="80" width="334" height="44"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJb-n3-DRq">
