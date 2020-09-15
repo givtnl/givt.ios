@@ -664,7 +664,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterSad" = "We're sad to see you leave\nand we hope to see you again.";
 
 /*Titel op de Historie pagina in de app*/
-"HistoryTitle" = "Donations";
+"HistoryTitle" = "Donations history";
 
 /*Titel op de infopagina van het Historiescherm*/
 "HistoryInfoTitle" = "Donation details";
