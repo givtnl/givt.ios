@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var loginManager: LoginManager = LoginManager.shared
     
+    var coreDataContext = CoreDataContext()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
@@ -33,6 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             logService.error(message: "User had a crash, check AppCenter")
         }
 
+        registerHandlers()
+        
         logService.info(message: "App started")
         
         if !UserDefaults.standard.showcases.isEmpty {
@@ -221,4 +225,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationManager.shared.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
     }
     
+    func registerHandlers() {
+        Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
+        Mediater.shared.registerHandler(handler: GetLocalUserConfigurationHandler())
+        Mediater.shared.registerHandler(handler: OpenChooseAmountRouteHandler())
+        Mediater.shared.registerHandler(handler: BackToChooseDestinationRouteHandler())
+        Mediater.shared.registerHandler(handler: BackToMainRouteHandler())
+        Mediater.shared.registerHandler(handler: ChangeAmountLimitRouteHandler())
+        Mediater.shared.registerHandler(handler: CreateDonationCommandHandler())
+        Mediater.shared.registerPreProcessor(processor: ChangeAmountLimitRoutePreHandler())
+        Mediater.shared.registerPreProcessor(processor: CreateDonationCommandValidator())
+        Mediater.shared.registerHandler(handler: DeleteDonationCommandHandler())
+        Mediater.shared.registerHandler(handler: ExportDonationCommandHandler())
+        Mediater.shared.registerHandler(handler: GoToSafariRouteHandler())
+        Mediater.shared.registerHandler(handler: FinalizeGivingRouteHandler())
+        Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
+        Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
+        
+        // Flow: SetupRecurringDonation
+        // -- Navigation
+        Mediater.shared.registerHandler(handler: DestinationSelectedRouteHandler())
+        Mediater.shared.registerHandler(handler: SetupRecurringDonationChooseDestinationRouteHandler())
+        Mediater.shared.registerHandler(handler: GoToChooseRecurringDonationRouteHandler())
+        Mediater.shared.registerHandler(handler: BackToPreviousViewRouteHandler())
+        Mediater.shared.registerHandler(handler: GoToRootViewRouteHandler())
+        
+        // -- Commands
+        Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
+        Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
+        Mediater.shared.registerPostProcessor(processor: CreateRecurringDonationCommandPostHandler())
+        
+        Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
+    }
 }

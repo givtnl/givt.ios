@@ -203,13 +203,13 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountMiddle" = "Zeven Euro Vijftig";
 "AmountHighest" = "Twaalf Euro Vijftig";
 "Divider" = "Komma";
-"GivtEventText" = "Hey! Je staat op een locatie waar Givt wordt ondersteund. Wil jij toevallig geven aan {0}?";
+"GivtEventText" = "Hey! Je bent op een locatie waar Givt wordt ondersteund. Wil jij toevallig geven aan {0}?";
 "SearchingEventText" = "We zoeken even waar je bent, wacht je even?";
 "WeDoNotFindYou" = "Jammer genoeg kunnen we je niet terugvinden. Je kan kiezen om te selecteren uit een lijst of teruggaan om nog eens opnieuw te proberen.";
 "SelectLocationContext" = "Geef op locatie";
 "ChangePassword" = "Wachtwoord wijzigen";
 "AllowGivtLocationTitle" = "Sta Givt toe je locatie te gebruiken";
-"AllowGivtLocationMessage" = "We hebben je locatie nodig om te bepalen aan wie je wil geven.\nGa naar Instellingen > Privacy > Locatievoorzieningen > Zet Locatievoorzieningen aan en stel 'Bij gebruik van app' in voor Givt.";
+"AllowGivtLocationMessage" = "We hebben je locatie nodig om te bepalen aan wie je wilt geven.\nGa naar Instellingen > Privacy > Locatievoorzieningen > Zet Locatievoorzieningen aan en stel 'Bij gebruik van app' in voor Givt.";
 "FaqVraag10" = "Hoe verander ik mijn wachtwoord?";
 "FaqAntwoord10" = "Wanneer je je wachtwoord wilt wijzigen, kun je in het menu kiezen voor ‘Mijn gegevens’ en dan op de knop ‘Wachtwoord wijzigen’ drukken. Wij sturen je dan een e-mail met een link waarmee je je wachtwoord kunt wijzigen.";
 "EditPersonalSucces" = "Je persoonlijke gegevens zijn succesvol aangepast\n";
@@ -407,7 +407,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*Op afstand geven en het bedrag overmaken is volgens mij niet hetzelfde!! 
  "Op afstand geven" knop; wordt getoond op de pagina wanneer het scannen niet lukt*/
-"SelectReceiverButton" = "Ontvanger selecteren";
+"SelectReceiverButton" = "Selecteer";
 
 /*"Geeflimiet" knop bij de instellingen*/
 "GiveLimit" = "Geeflimiet";
@@ -926,3 +926,62 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "UnregisterError" = "Helaas, we kunnen op dit moment je account niet opzeggen. Probeer je het later nog een keer?";
 "UnregisterMandateError" = "Helaas, we kunnen op dit moment je account niet opzeggen omdat het niet lukt om je machtiging op te zeggen. Neem aub contact op met ons.";
 "UnregisterErrorTitle" = "Opzeggen mislukt";
+"SetupRecurringGiftTitle" = "Plan je gift";
+"SetupRecurringGiftText_3" = "elk(e)";
+"SetupRecurringGiftText_4" = "vanaf";
+"SetupRecurringGiftText_5" = "Dit mag";
+"Add" = "Toevoegen";
+
+/*Fuzzy*/
+"SubMenuItem_FirstDestinationThenAmount" = "Eenmalige gift";
+
+/*Fuzzy*/
+"FAQQuestionFirstTargetThenAmount1" = "Wat is \"geven aan een goed doel\"?";
+
+/*Fuzzy*/
+"FAQAnswerFirstTargetThenAmount1" = "\"Geven aan een goed doel\" is een nieuwe functionaliteit in je Givt-app. Het werkt net zoals je het van de app gewoon bent, maar nu kan je eerst je goede doel kiezen en daarna hoeveel je wil geven.";
+"FAQQuestionFirstTargetThenAmount2" = "Waarom kan ik enkel maar een goed doel uit de lijst selecteren?";
+"FAQAnswerFirstTargetThenAmount2" = "Het \"geven aan een goed doel\" is splinternieuw en nog in volle opbouw. Beetje bij beetje zullen wij dus nieuwe functionaliteiten toevoegen.";
+"SetupRecurringGiftText_2" = "geven aan";
+"SetupRecurringGiftText_1" = "Ik wil graag";
+"SetupRecurringGiftWeek" = "week";
+"SetupRecurringGiftMonth" = "maand";
+"SetupRecurringGiftQuarter" = "kwartaal";
+"SetupRecurringGiftYear" = "jaar";
+"SetupRecurringGiftWeekPlural" = "weken";
+"SetupRecurringGiftMonthPlural" = "maanden";
+"SetupRecurringGiftQuarterPlural" = "kwartalen";
+"SetupRecurringGiftYearPlural" = "jaren";
+
+/*Fuzzy*/
+"MenuItem_RecurringDonation" = "Terugkerende giften";
+"SetupRecurringGiftHalfYear" = "half jaar";
+
+/*Fuzzy*/
+"SetupRecurringGiftText_6" = "keer gebeuren";
+"LoginAndTryAgain" = "Gelieve in te loggen en opnieuw te proberen.";
+"GivtIsBeingProcessedRecurring" = "Bedankt voor je Givt(s) aan {0}!\nBekijk het overzicht van je geplande Givts onder 'Overzicht'. \nDe eerste geplande Givt van {1} {2} zal worden afgeschreven op {3}.\nDaarna zullen we iedere {4} afschrijven.";
+"OverviewRecurringDonations" = "Terugkerende giften";
+"TitleRecurringGifts" = "Terugkerende giften";
+"RecurringGiftsSetupCreate" = "Plan je";
+"RecurringGiftsSetupRecurringGift" = "terugkerende gift";
+"RecurringDonationYouGive" = "geef je";
+"RecurringDonationStops" = "Laatste gift op {0}";
+"SelectRecipient" = "Selecteer ontvanger";
+"SetupRecurringDonationFailed" = "Het instellen van de terugkerende gift is helaas niet gelukt. Probeer het later eens opnieuw.";
+
+/*Fuzzy*/
+"EmptyRecurringDonationList" = "Al je terugkerende giften komen hier terecht";
+
+/*Fuzzy*/
+"CancelRecurringDonationAlertTitle" = "Weet je zeker dat je wil stoppen met geven aan {0}?\n";
+
+/*Fuzzy*/
+"CancelRecurringDonationAlertMessage" = "De giften die je al hebt gedaan worden niet geannuleerd.";
+
+/*Fuzzy*/
+"CancelRecurringDonation" = "Stopzetten";
+"SetupRecurringGiftText_7" = "Elk(e)";
+
+/*Fuzzy*/
+"CancelRecurringDonationFailed" = "Het annuleren van de terugkerende gift is helaas niet gelukt. Probeer het later eens opnieuw.";

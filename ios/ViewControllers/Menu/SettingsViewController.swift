@@ -10,6 +10,7 @@ import UIKit
 import SVProgressHUD
 import AVFoundation
 import LGSideMenuController
+import AppCenterAnalytics
 
 class SettingsViewController: BaseMenuViewController {
     var logService: LogService = LogService.shared
@@ -60,7 +61,6 @@ class SettingsViewController: BaseMenuViewController {
     
     override func loadItems(){
         items = []
-        
         let turnOnPresets = Setting(name: NSLocalizedString("AmountPresetsTitle", comment: ""), image: UIImage(named: "amountpresets")!, callback: { self.setPresets() }, showArrow: true)
         
         let changeAccount = Setting(name: NSLocalizedString("LogoffSession", comment: ""), image: UIImage(named: "exit")!, callback: { self.logout() }, showArrow: false)
@@ -78,13 +78,25 @@ class SettingsViewController: BaseMenuViewController {
         
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
+        //        let consciousGivingItem = Setting(name: "Doelbewust geven", image: UIImage(named: "hand-holding-heart")!, callback:  {self.consciousGiving()})
+        
+        let setupRecurringGift = Setting(name: "MenuItem_RecurringDonation".localized, image: UIImage(named:"repeat")!, callback: { self.setupRecurringDonation() })
+        
         if !UserDefaults.standard.isTempUser {
             items.append([])
             items.append([])
             items.append([])
+            items.append([])
+            
+            
             
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
-            items[0].append(givts)
+            items[1].append(givts)
+            
+            if(LoginManager.shared.isFullyRegistered) {
+                items[1].append(setupRecurringGift)
+            }
+            
             let givtsTaxOverviewAvailable: Setting?
             if UserDefaults.standard.hasGivtsInPreviousYear && !UserDefaults.standard.showCasesByUserID.contains(UserDefaults.Showcase.taxOverview.rawValue)  {
                 givtsTaxOverviewAvailable = Setting(name: NSLocalizedString("YearOverviewAvailable", comment: ""), image: UIImage(), callback: {
@@ -94,25 +106,25 @@ class SettingsViewController: BaseMenuViewController {
             }
             
             let givingLimitImage = UserDefaults.standard.currencySymbol == "£" ? #imageLiteral(resourceName: "pound") : #imageLiteral(resourceName: "euro")
-            items[0].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: givingLimitImage, callback: { self.openGiveLimit() }))
-            items[0].append(changePersonalInfo)
-            items[0].append(turnOnPresets)
+            items[1].append(Setting(name: NSLocalizedString("GiveLimit", comment: ""), image: givingLimitImage, callback: { self.openGiveLimit() }))
+            items[1].append(changePersonalInfo)
+            items[1].append(turnOnPresets)
             let accessCode = Setting(name: NSLocalizedString("Pincode", comment: ""), image: UIImage(named: "lock")!, callback: { self.pincode() })
             
-            items[0].append(accessCode)
+            items[1].append(accessCode)
             
             if(InfraManager.biometricType() == .touch) {
                 let fingerprint = Setting(name: NSLocalizedString("TouchID", comment: ""), image: #imageLiteral(resourceName: "TouchID"), callback: { self.manageFingerprint() })
-                items[0].append(fingerprint)
+                items[1].append(fingerprint)
             } else if(InfraManager.biometricType() == .face) {
                 let fingerprint = Setting(name: NSLocalizedString("FaceID", comment: ""), image: #imageLiteral(resourceName: "FaceID"), callback: { self.manageFingerprint() })
-                items[0].append(fingerprint)
+                items[1].append(fingerprint)
             }
-            items[1] = [changeAccount, screwAccount]
+            items[2] = [changeAccount, screwAccount]
             if let info = appInfo {
-                items[2] = [info, aboutGivt, shareGivt]
+                items[3] = [info, aboutGivt, shareGivt]
             } else {
-                items[2] = [aboutGivt, shareGivt]
+                items[3] = [aboutGivt, shareGivt]
             }
             
             if !LoginManager.shared.isFullyRegistered {
@@ -292,5 +304,29 @@ class SettingsViewController: BaseMenuViewController {
     private func appInfo() {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "featureMenu") as! FeatureMenuViewController
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func startFirstDestinationThenAmountFlow() {
+        
+        let vc = UIStoryboard(name:"FirstDestinationThenAmount", bundle: nil).instantiateInitialViewController()
+        vc?.modalPresentationStyle = .fullScreen
+        vc?.transitioningDelegate = self.slideFromRightAnimation
+        DispatchQueue.main.async {
+            self.hideMenuAnimated() {
+                NavigationManager.shared.pushWithLogin(vc!, context: self)
+            }
+        }
+    }
+    
+    private func setupRecurringDonation() {
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_MENU_CLICKED")
+        let vc = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController()
+        vc?.modalPresentationStyle = .fullScreen
+        vc?.transitioningDelegate = self.slideFromRightAnimation
+        DispatchQueue.main.async {
+            self.hideMenuAnimated() {
+                NavigationManager.shared.pushWithLogin(vc!, context: self)
+            }
+        }
     }
 }
