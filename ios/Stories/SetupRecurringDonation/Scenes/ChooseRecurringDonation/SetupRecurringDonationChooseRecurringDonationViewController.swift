@@ -102,7 +102,7 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     }
     @IBAction func makeRecurringDonation(_ sender: Any) {
         self.view.endEditing(true)
-
+        
         let cronExpression: String
         
         let dayOfMonth = startDatePicker.date.getDay()
@@ -154,26 +154,32 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
                     }
                     if let numberOccurences = Int(occurencesString!){
                         let command = CreateRecurringDonationCommand(amountPerTurn: self.amountView.amount, namespace: mediumid, endsAfterTurns: Int(numberOccurences), cronExpression: cronExpression, startDate: startDeet, country: country)
-                        do {
-                            try self.mediater.sendAsync(request: command) { recurringDonationMade in
-                                if(recurringDonationMade) {
-                                    SVProgressHUD.dismiss()
-                                    DispatchQueue.main.async {
-                                        try? self.mediater.send(request: GoToRootViewRoute(), withContext: self)
+                        NavigationManager.shared.executeWithLogin(context: self) {
+                            if LoginManager.shared.isUserLoggedIn {
+                                do {
+                                    try self.mediater.sendAsync(request: command) { recurringDonationMade in
+                                        if(recurringDonationMade) {
+                                            SVProgressHUD.dismiss()
+                                            DispatchQueue.main.async {
+                                                try? self.mediater.send(request: GoToRootViewRoute(), withContext: self)
+                                            }
+                                        } else {
+                                            SVProgressHUD.dismiss()
+                                            DispatchQueue.main.async {
+                                                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
+                                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                                                }))
+                                                self.present(alert, animated: true, completion:  {})
+                                            }
+                                        }
                                     }
-                                } else {
+                                } catch {
                                     SVProgressHUD.dismiss()
-                                    DispatchQueue.main.async {
-                                        let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
-                                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                                        }))
-                                        self.present(alert, animated: true, completion:  {})
-                                    }
+                                    self.showSetupRecurringDonationFailed()
                                 }
+                            } else {
+                                SVProgressHUD.dismiss()
                             }
-                        } catch {
-                            SVProgressHUD.dismiss()
-                            self.showSetupRecurringDonationFailed()
                         }
                     } else {
                         SVProgressHUD.dismiss()
@@ -296,25 +302,25 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         collectGroupLabel.symbol.text = ""
         if let input = self.input {
             collectGroupLabel.label.text = input.name
-
+            
             if (collectGroupLabel.label.text != "SelectRecipient".localized) {
                 collectGroupLabel.bottomBorderColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
                 let text: String
                 switch input.orgType {
-                    case CollectGroupType.artist:
-                        text = "guitar"
-                    case CollectGroupType.campaign:
-                        text = "hand-holding-heart";
-                    case CollectGroupType.charity:
-                        text = "hands-helping";
-                    case CollectGroupType.church:
-                        text = "place-of-worship";
-                    case CollectGroupType.debug:
-                        text = "debug";
-                    case CollectGroupType.demo:
-                        text = "democrat";
-                    default:
-                        text = "hands-helping";
+                case CollectGroupType.artist:
+                    text = "guitar"
+                case CollectGroupType.campaign:
+                    text = "hand-holding-heart";
+                case CollectGroupType.charity:
+                    text = "hands-helping";
+                case CollectGroupType.church:
+                    text = "place-of-worship";
+                case CollectGroupType.debug:
+                    text = "debug";
+                case CollectGroupType.demo:
+                    text = "democrat";
+                default:
+                    text = "hands-helping";
                 }
                 collectGroupLabel.symbol.text = text
                 collectGroupLabel.symbolView.isHidden = false;
