@@ -8,12 +8,12 @@
 
 import UIKit
 import Foundation
-protocol RecurringRuleCencelDelegate {
+protocol RecurringRuleCancelDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) -> Void
 }
 
 internal final class RecurringRuleTableCell : UITableViewCell {
-    var delegate: RecurringRuleCencelDelegate? = nil
+    var delegate: RecurringRuleCancelDelegate? = nil
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cronTextLabel: UILabel!

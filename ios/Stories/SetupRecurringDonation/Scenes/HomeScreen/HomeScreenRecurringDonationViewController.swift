@@ -107,7 +107,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     }
 }
 
-extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate {
+extension HomeScreenRecurringDonationViewController: RecurringRuleCancelDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "CancelRecurringDonationAlertTitle".localized.replacingOccurrences(of: "{0}", with: recurringRuleCell.nameLabel.text!), message: "CancelRecurringDonationAlertMessage".localized , preferredStyle: .alert)
@@ -164,7 +164,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCencelDelegate
         
         do {
             let collectGroupDetailList: [CollectGroupDetailModel] = try mediater.send(request: GetCollectGroupsQuery())
-            var collectGroupDetail: CollectGroupDetailModel = collectGroupDetailList.first(where: { $0.namespace == rule.namespace })!
+            let collectGroupDetail: CollectGroupDetailModel = collectGroupDetailList.first(where: { $0.namespace == rule.namespace })!
             rule.collectGroupName = collectGroupDetail.name
             rule.collectGroupType = collectGroupDetail.type
             rule.indexPath = indexPath
