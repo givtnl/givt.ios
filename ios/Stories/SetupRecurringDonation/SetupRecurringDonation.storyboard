@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Font Awesome 5 Free-Regular-400.otf">
+            <string>FontAwesome5Free-Regular</string>
+        </array>
         <array key="Font Awesome 5 Free-Solid-900.otf">
             <string>FontAwesome5Free-Solid</string>
         </array>
@@ -210,17 +213,19 @@
                                                                                 <view clipsSubviews="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="nKC-Zh-aFd" userLabel="actionView">
                                                                                     <rect key="frame" x="0.0" y="80" width="334" height="44"/>
                                                                                     <subviews>
-                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJb-n3-DRq">
+                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJb-n3-DRq" userLabel="stopView">
                                                                                             <rect key="frame" x="89" y="0.0" width="156" height="44"/>
                                                                                             <subviews>
-                                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="stop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oLH-j8-e1G">
-                                                                                                    <rect key="frame" x="0.0" y="12.5" width="20" height="19"/>
-                                                                                                    <color key="tintColor" red="0.88235294117647056" green="0.41960784313725491" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stop-circle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcu-3n-nqU">
+                                                                                                    <rect key="frame" x="0.0" y="12" width="20" height="20"/>
                                                                                                     <constraints>
-                                                                                                        <constraint firstAttribute="width" constant="20" id="RaL-zi-kVs"/>
-                                                                                                        <constraint firstAttribute="height" constant="20" id="iHG-AB-Lcj"/>
+                                                                                                        <constraint firstAttribute="width" constant="20" id="37v-5G-Eqo"/>
+                                                                                                        <constraint firstAttribute="height" constant="20" id="fxw-DA-alk"/>
                                                                                                     </constraints>
-                                                                                                </imageView>
+                                                                                                    <fontDescription key="fontDescription" name="FontAwesome5Free-Regular" family="Font Awesome 5 Free" pointSize="17"/>
+                                                                                                    <color key="textColor" red="0.8823577762" green="0.41963112349999998" blue="0.333312571" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                                    <nil key="highlightedColor"/>
+                                                                                                </label>
                                                                                                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LDJFLKDSJFLSJDLF" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UjU-Wk-er6">
                                                                                                     <rect key="frame" x="24" y="12.5" width="132" height="19.5"/>
                                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -231,12 +236,12 @@
                                                                                             </subviews>
                                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <constraints>
+                                                                                                <constraint firstItem="gcu-3n-nqU" firstAttribute="centerY" secondItem="HJb-n3-DRq" secondAttribute="centerY" id="9eY-I4-Kzo"/>
                                                                                                 <constraint firstItem="UjU-Wk-er6" firstAttribute="centerY" secondItem="HJb-n3-DRq" secondAttribute="centerY" id="AgJ-7Z-NpB"/>
                                                                                                 <constraint firstAttribute="trailing" secondItem="UjU-Wk-er6" secondAttribute="trailing" id="UlU-xj-EAw"/>
                                                                                                 <constraint firstAttribute="height" constant="44" id="cdc-cB-azh"/>
-                                                                                                <constraint firstItem="oLH-j8-e1G" firstAttribute="leading" secondItem="HJb-n3-DRq" secondAttribute="leading" id="jui-Mv-Tae"/>
-                                                                                                <constraint firstItem="oLH-j8-e1G" firstAttribute="centerY" secondItem="HJb-n3-DRq" secondAttribute="centerY" id="n4m-nc-r3g"/>
-                                                                                                <constraint firstItem="UjU-Wk-er6" firstAttribute="leading" secondItem="oLH-j8-e1G" secondAttribute="trailing" constant="4" id="rY1-70-Qu7"/>
+                                                                                                <constraint firstItem="UjU-Wk-er6" firstAttribute="leading" secondItem="gcu-3n-nqU" secondAttribute="trailing" constant="4" id="hXb-cG-aDq"/>
+                                                                                                <constraint firstItem="gcu-3n-nqU" firstAttribute="leading" secondItem="HJb-n3-DRq" secondAttribute="leading" id="ipB-Rr-JCQ"/>
                                                                                             </constraints>
                                                                                         </view>
                                                                                     </subviews>
@@ -315,6 +320,7 @@
                                                             <outlet property="ruleStackView" destination="2GB-Ln-E7y" id="3Mk-co-ZQp"/>
                                                             <outlet property="stackViewRuleView" destination="5zM-iP-CVj" id="I4y-pt-eEU"/>
                                                             <outlet property="stopLabel" destination="UjU-Wk-er6" id="vtu-mi-2qq"/>
+                                                            <outlet property="stopView" destination="HJb-n3-DRq" id="js0-U9-0Fy"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -941,6 +947,5 @@
         <image name="dropdown.png" width="128" height="128"/>
         <image name="givymoney" width="240" height="240"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <image name="stop.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

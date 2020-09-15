@@ -28,6 +28,7 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var stackViewRuleView: UIView!
     @IBOutlet weak var actionView: UIView!
     @IBOutlet weak var stopLabel: UILabel!
+    @IBOutlet var stopView: UIView!
     
     var recurringDonationId: String?
     var rowIndexPath: IndexPath?
@@ -100,7 +101,7 @@ internal final class RecurringRuleTableCell : UITableViewCell {
         selectionStyle = .none
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
-        stopLabel.addGestureRecognizer(tap)
+        stopView.addGestureRecognizer(tap)
     }
     
     override func layoutSubviews() {

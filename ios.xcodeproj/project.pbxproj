@@ -199,6 +199,8 @@
 		DF8BB30324F7A09F00104668 /* RecurringRuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB30224F7A09F00104668 /* RecurringRuleViewModel.swift */; };
 		DF8BB30524F7A12200104668 /* RecurringRuleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */; };
 		DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */; };
+		DFBF338D2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFBF338C2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf */; };
+		DFBF338F2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFBF338E2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf */; };
 		DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBFAC302409404100F53095 /* GiftAidSettings.swift */; };
 		DFFF7E8E24F935E40098E4F6 /* GoToRootViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8D24F935E40098E4F6 /* GoToRootViewRoute.swift */; };
 		DFFF7E9024F935EC0098E4F6 /* GoToRootViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8F24F935EC0098E4F6 /* GoToRootViewRouteHandler.swift */; };
@@ -504,6 +506,8 @@
 		DF8BB30224F7A09F00104668 /* RecurringRuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleViewModel.swift; sourceTree = "<group>"; };
 		DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleTableCell.swift; sourceTree = "<group>"; };
 		DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidInfoController.swift; sourceTree = "<group>"; };
+		DFBF338C2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
+		DFBF338E2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
 		DFBFAC302409404100F53095 /* GiftAidSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidSettings.swift; sourceTree = "<group>"; };
 		DFFF7E8D24F935E40098E4F6 /* GoToRootViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToRootViewRoute.swift; sourceTree = "<group>"; };
 		DFFF7E8F24F935EC0098E4F6 /* GoToRootViewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToRootViewRouteHandler.swift; sourceTree = "<group>"; };
@@ -1317,6 +1321,8 @@
 		FB58BCD3230AF041001B1B9C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				DFBF338E2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf */,
+				DFBF338C2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf */,
 				FB2E615F2306B614006F6792 /* Font Awesome 5 Free-Solid-900.otf */,
 				D761E9B21F18B450002B849B /* entypo.ttf */,
 				D761E9B41F18B602002B849B /* zocial-regular-webfont.ttf */,
@@ -1742,12 +1748,14 @@
 				D75141A71F9E181A0016B71F /* givt_animation.gif in Resources */,
 				D75141A81F9E181A0016B71F /* givt_registration.gif in Resources */,
 				D7F131661F75574D00E25A68 /* Registration.storyboard in Resources */,
+				DFBF338F2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf in Resources */,
 				FB8187AE21C298050084C23E /* NewFeaturePopDownView.xib in Resources */,
 				27D7F7662229214E00D3953A /* CustomButtonWithRightArrow.xib in Resources */,
 				FBD9CACC237580D5006C07FA /* Welcome.storyboard in Resources */,
 				FBD9CACE237580DB006C07FA /* Main.storyboard in Resources */,
 				D787BE79208DCA6B00E20873 /* celebration.gif in Resources */,
 				27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */,
+				DFBF338D2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				FB94D1CC24EBD88800C61ECE /* CollectGroupLabel.xib in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
 				32CE4D4E24BDE1FC0048671B /* FirstDestinationThenAmount.storyboard in Resources */,
