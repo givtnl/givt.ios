@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import AppCenterAnalytics
 
 class SetupRecurringDonationChooseRecurringDonationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -79,7 +80,7 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         setupStartDatePickerView()
         
         createSubcriptionButton.accessibilityLabel = "Give".localized
-        createSubcriptionButton.setTitle("Give".localized, for: .normal)
+        createSubcriptionButton.setTitle("Give".localized, for: .normal)        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -99,9 +100,12 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     }
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: BackToPreviousViewRoute(), withContext: self)
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
     }
     @IBAction func makeRecurringDonation(_ sender: Any) {
         self.view.endEditing(true)
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
+
         
         let cronExpression: String
         
@@ -256,6 +260,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     }
     
     func collectGroupLabelTapped() {
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
         hideKeyboard()
         try? mediater.send(request: SetupRecurringDonationChooseDestinationRoute(mediumId: ""), withContext: self)
     }
@@ -332,6 +337,8 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     
     @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
         startDateLabel.text = datePicker.date.formatted
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
+
     }
     
     @objc func handleAmountEditingChanged() {
@@ -348,6 +355,8 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         }
     }
     @objc func handleAmountEditingDidEnd() {
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
+
         if(amountView.amount < 0.5) {
             showAmountTooLow()
         } else if (amountView.amount > 99999) {
@@ -367,6 +376,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         ensureButtonHasCorrectState()
     }
     @objc func handleOccurencesEditingEnd() {
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         ensureButtonHasCorrectState()
     }
     
@@ -381,6 +391,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.frequencyLabel.text = frequencys[row][1] as? String
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", withProperties: ["frequency": frequencys[row][1] as! String])
         pickerView.reloadAllComponents()
         ensureButtonHasCorrectState()
     }
