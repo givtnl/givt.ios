@@ -15,6 +15,7 @@ class CustomUITextField: UITextField{
         self.layer.borderColor = self.originalColor.cgColor
         self.layer.borderWidth = 1.0
         self.layer.cornerRadius = 4
+        self.backgroundColor = .white
         self.setLeftPaddingPoints(15)
         self.setRightPaddingPoints(15)
     }
@@ -31,6 +32,7 @@ class CustomUITextField: UITextField{
     func isDifferentFrom(from: String) -> Bool {
         return self.text! != from
     }
+    
     func beganEditing() {
         self.layer.isHidden = false
     }
@@ -38,6 +40,7 @@ class CustomUITextField: UITextField{
     func endedEditing() {
         self.layer.isHidden = false
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

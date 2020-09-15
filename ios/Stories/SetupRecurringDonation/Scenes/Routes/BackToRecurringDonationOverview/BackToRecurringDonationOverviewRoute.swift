@@ -1,5 +1,5 @@
 //
-//  GoToRootViewRoute.swift
+//  BackToRecurringDonationOverviewRoute.swift
 //  ios
 //
 //  Created by Jonas Brabant on 28/08/2020.
@@ -8,7 +8,6 @@
 
 import Foundation
 
-class GoToRootViewRoute: NoResponseRequest {
+class BackToRecurringDonationOverviewRoute : NoResponseRequest {
     
 }
-
