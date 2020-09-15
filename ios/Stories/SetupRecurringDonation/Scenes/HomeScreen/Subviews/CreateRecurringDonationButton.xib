@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TE5-pR-ZEM">
-                    <rect key="frame" x="25" y="10" width="508" height="52"/>
+                    <rect key="frame" x="25" y="12" width="508" height="52"/>
                     <subviews>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jkh-vi-d4o">
                             <rect key="frame" x="0.0" y="0.0" width="458" height="52"/>
@@ -84,8 +84,8 @@
             <color key="backgroundColor" red="0.21176470589999999" green="0.80784313730000001" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="TE5-pR-ZEM" firstAttribute="leading" secondItem="6iI-np-bES" secondAttribute="leading" constant="25" id="UAd-oM-gl1"/>
+                <constraint firstItem="TE5-pR-ZEM" firstAttribute="centerY" secondItem="6iI-np-bES" secondAttribute="centerY" id="Vdy-sV-9Xo"/>
                 <constraint firstAttribute="trailing" secondItem="TE5-pR-ZEM" secondAttribute="trailing" constant="5" id="iG5-dd-TEj"/>
-                <constraint firstItem="TE5-pR-ZEM" firstAttribute="top" secondItem="6iI-np-bES" secondAttribute="top" constant="10" id="vKD-XL-N4B"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
