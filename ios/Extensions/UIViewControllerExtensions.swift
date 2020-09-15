@@ -35,7 +35,7 @@ extension UIViewController {
         SVProgressHUD.show()
     }
     
-    func hideLoader() {
+    @objc func hideLoader() {
         SVProgressHUD.dismiss()
     }
 }

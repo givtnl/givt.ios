@@ -88,7 +88,7 @@ class SPInfoViewController: UIViewController {
                     }
                 } else {
                     self.log.warning(message: "Mandate url is empty, what is going on?")
-                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                         NavigationManager.shared.loadMainPage()
                         self.dismiss(animated: true, completion: {})

@@ -277,7 +277,7 @@ class SettingsViewController: BaseMenuViewController {
         logService.info(message: "User is opening history")
         if GivtManager.shared.hasOfflineGifts() {
             let alert = UIAlertController(title: NSLocalizedString("OfflineGiftsTitle", comment: ""), message: NSLocalizedString("OfflineGiftsMessage", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController

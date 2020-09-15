@@ -50,7 +50,7 @@ class ScanCompleteViewController: UIViewController {
         
     }
     @IBAction func nextBtn(_ sender: Any) {
-        if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
+        if let amountVC = self.navigationController?.children[0] as? AmountViewController {
             amountVC.clearAmounts()
         }
         

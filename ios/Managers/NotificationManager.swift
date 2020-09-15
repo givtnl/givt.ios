@@ -135,7 +135,7 @@ final class NotificationManager : NSObject {
                                 return
                             }
                             
-                            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                                 return
                             }
                             UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })

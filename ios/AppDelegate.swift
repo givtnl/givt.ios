@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var coreDataContext = CoreDataContext()
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
                 MSAnalytics.self,
@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkIfTempUser()
         doMagicForPresets()
         
-        if let remoteNotif = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
+        if let remoteNotif = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
             DispatchQueue.global(qos: .background).async {
                 NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
             }
@@ -168,7 +168,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    internal func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if let host = url.host, host == "sharemygivt" {
             if var topController = UIApplication.shared.keyWindow?.rootViewController {
                 while let presentedViewController = topController.presentedViewController {

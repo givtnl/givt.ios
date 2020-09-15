@@ -115,14 +115,14 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         tableView.sectionIndexMinimumDisplayRowCount = 20
         tableView.sectionIndexColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         tableView.tableFooterView = UIView(frame: .zero)
         
-        nextButton.setTitle("SelectReceiverButton".localized, for: UIControlState.normal)
+        nextButton.setTitle("SelectReceiverButton".localized, for: UIControl.State.normal)
         nextButton.accessibilityLabel = "SelectRecipient".localized
         
         nextButton.isEnabled = false
@@ -182,7 +182,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
                 let btn = view as? DestinationCategoryButton
                 return button != btn && btn?.active ?? false
             }.first as? DestinationCategoryButton) {
-                let idx = typeStackView.arrangedSubviews.index(of: prevButton)
+                let idx = typeStackView.arrangedSubviews.firstIndex(of: prevButton)
                 typeStackView.removeArrangedSubview(prevButton)
                 prevButton.removeFromSuperview()
                 prevButton.setInactive()
@@ -190,7 +190,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
             }
             
             //replace tapped button with newly styled button
-            if let idx = typeStackView.arrangedSubviews.index(of: button) {
+            if let idx = typeStackView.arrangedSubviews.firstIndex(of: button) {
                 typeStackView.removeArrangedSubview(button)
                 button.removeFromSuperview()
                 if button.active {

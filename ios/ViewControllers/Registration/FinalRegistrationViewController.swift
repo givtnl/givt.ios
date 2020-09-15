@@ -21,7 +21,7 @@ class FinalRegistrationViewController: UIViewController {
         MSAnalytics.trackEvent("User finished registration")
 
         gif.loadGif(name: "givt_registration")
-        self.view.sendSubview(toBack: gif)
+        self.view.sendSubviewToBack(gif)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         nextButton.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
         titleLabel.text = NSLocalizedString("RegistrationSuccess", comment: "")

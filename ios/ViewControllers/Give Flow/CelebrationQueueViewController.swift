@@ -36,10 +36,10 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
         secondaryTitelLabel.text = NSLocalizedString("CelebrationQueueText", comment: "")
         
         // set button texts
-        buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControlState.normal)
+        buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControl.State.normal)
         buttonEnablePushNot.accessibilityLabel = NSLocalizedString("CelebrationEnablePushNotification", comment: "")
         
-        buttonCancelFlashGivt.setTitle(NSLocalizedString("CelebrationQueueCancel", comment: ""), for: UIControlState.normal)
+        buttonCancelFlashGivt.setTitle(NSLocalizedString("CelebrationQueueCancel", comment: ""), for: UIControl.State.normal)
         buttonCancelFlashGivt.accessibilityLabel = NSLocalizedString("CelebrationQueueCancel", comment: "")
         
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled

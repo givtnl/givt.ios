@@ -107,19 +107,19 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         collectThree.isHidden = true
         
         collectOne.deleteBtn.tag = 1
-        collectOne.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        collectOne.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControl.Event.touchUpInside)
         collectOne.collectLabel.text = NSLocalizedString("FirstCollect", comment: "")
         collectOne.collectLabel.isHidden = true
         collectOne.amountLabel.text = "0"
         
         
         collectTwo.deleteBtn.tag = 2
-        collectTwo.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        collectTwo.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControl.Event.touchUpInside)
         collectTwo.collectLabel.text = NSLocalizedString("SecondCollect", comment: "")
         collectTwo.amountLabel.text = "0"
         
         collectThree.deleteBtn.tag = 3
-        collectThree.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControlEvents.touchUpInside)
+        collectThree.deleteBtn.addTarget(self, action: #selector(deleteCollect), for: UIControl.Event.touchUpInside)
         collectThree.collectLabel.text = NSLocalizedString("ThirdCollect", comment: "")
         collectThree.amountLabel.text = "0"
         
@@ -171,7 +171,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         let backItem = UIBarButtonItem()
         backItem.title = NSLocalizedString("Cancel", comment: "Annuleer")
         backItem.style = .plain
-        backItem.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!], for: .normal)
+        backItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 18)!], for: .normal)
         btnNext.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         self.navigationItem.backBarButtonItem = backItem
         checkAmounts()
@@ -208,8 +208,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                     LoginManager.shared.getUserExt { (userExtObject) in
                         SVProgressHUD.dismiss()
                         guard let userExt = userExtObject else {
-                            let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                            let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
                                 DispatchQueue.main.async {
                                     self.backPressed(self)
                                 }
@@ -532,8 +532,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     fileprivate func showAmountTooLow() {
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? NSLocalizedString("GivtMinimumAmountPond", comment: "") : NSLocalizedString("GivtMinimumAmountEuro", comment: "")
         let alert = UIAlertController(title: NSLocalizedString("AmountTooLow", comment: ""),
-                                      message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+                                      message: NSLocalizedString("GivtNotEnough", comment: "").replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
     
@@ -541,7 +541,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         let alert = UIAlertController(
             title: NSLocalizedString("AmountTooHigh", comment: ""),
             message: NSLocalizedString("AmountLimitExceeded", comment: ""),
-            preferredStyle: UIAlertControllerStyle.alert)
+            preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: NSLocalizedString("ChooseLowerAmount", comment: ""), style: .default, handler: {
                 action in

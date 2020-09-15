@@ -41,7 +41,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
         
         title = NSLocalizedString("AmountPresetsTitle", comment: "")
         bodyText.text = NSLocalizedString("AmountPresetsBody", comment: "")
-        save.setTitle(NSLocalizedString("Save", comment: ""), for: UIControlState.normal)
+        save.setTitle(NSLocalizedString("Save", comment: ""), for: UIControl.State.normal)
         
         firstTextField.delegate = self
         secondTextField.delegate = self
@@ -73,10 +73,10 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
         
         save.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: .disabled)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
     
         checkAll()
         
@@ -106,8 +106,8 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     func createToolbar(_ textField: UITextField) {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
-        let done = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(nextField(_:)))
+        let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
+        let done = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(nextField(_:)))
         toolbar.setItems([spacer, done], animated: false)
         toolbar.isUserInteractionEnabled = true
         textField.inputAccessoryView = toolbar
@@ -125,8 +125,8 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
             if #available(iOS 11.0, *) {
                 theScrollView.contentInset.bottom = contentInsets.bottom + 20 - view.safeAreaInsets.bottom
                 theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom + 20  - view.safeAreaInsets.bottom
@@ -140,7 +140,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+        if ((notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             theScrollView.contentInset = .zero
             theScrollView.scrollIndicatorInsets = .zero
         }
@@ -224,7 +224,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             if range.location <= commaPosition.encodedOffset {
                 return true
             }
-            var splitString = textField.text!.split(separator: Character(decimalNotation))
+            let splitString = textField.text!.split(separator: Character(decimalNotation))
             if splitString.count == 2 {
                 if splitString[1].count == 2 {
                     return false

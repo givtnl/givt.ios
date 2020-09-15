@@ -121,14 +121,14 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
 
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         tableView.sectionIndexMinimumDisplayRowCount = 20
         tableView.sectionIndexColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         tableView.sectionIndexBackgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         tableView.tableFooterView = UIView(frame: .zero)
 
-        nextButton.setTitle("Next".localized, for: UIControlState.normal)
+        nextButton.setTitle("Next".localized, for: UIControl.State.normal)
         nextButton.isEnabled = false
         backButton.accessibilityLabel = "Back".localized
         churchButton = DestinationCategoryButton(color: #colorLiteral(red: 0.1843137255, green: 0.5058823529, blue: 0.7843137255, alpha: 1), imageWhenInactive: #imageLiteral(resourceName: "church_white"), imageWhenActive: #imageLiteral(resourceName: "sugg_church_white"), labelText: "Church".localized, tag: CollectGroupType.church.rawValue)
@@ -184,7 +184,7 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
                 let btn = view as? DestinationCategoryButton
                 return button != btn && btn?.active ?? false
             }.first as? DestinationCategoryButton) {
-                let idx = typeStackView.arrangedSubviews.index(of: prevButton)
+                let idx = typeStackView.arrangedSubviews.firstIndex(of: prevButton)
                 typeStackView.removeArrangedSubview(prevButton)
                 prevButton.removeFromSuperview()
                 prevButton.setInactive()
@@ -192,7 +192,7 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
             }
 
             //replace tapped button with newly styled button
-            if let idx = typeStackView.arrangedSubviews.index(of: button) {
+            if let idx = typeStackView.arrangedSubviews.firstIndex(of: button) {
                 typeStackView.removeArrangedSubview(button)
                 button.removeFromSuperview()
                 if button.active {
