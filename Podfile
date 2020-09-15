@@ -15,6 +15,7 @@ target 'ios' do
   pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift.git', :tag => 'v4.3.1'
   pod 'AppCenter/Push'
   pod 'SwiftCron'
+  pod 'Mixpanel-swift'
 
   # Pods for ios
 
