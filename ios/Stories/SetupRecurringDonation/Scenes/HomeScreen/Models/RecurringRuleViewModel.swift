@@ -42,7 +42,6 @@ extension RecurringRuleViewModel {
         }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         return Calendar.current.date(byAdding: dateComponent, to: dateFormatter.date(from: startDate)!)!
     }
     func getFrequencyFromCron() -> String {
