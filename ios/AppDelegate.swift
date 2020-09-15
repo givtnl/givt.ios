@@ -13,6 +13,7 @@ import AppCenterCrashes
 import AppCenterPush
 import TrustKit
 import UserNotifications
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appService: AppServices = AppServices.shared
     
     var loginManager: LoginManager = LoginManager.shared
+    
+    var mixpanel: MixpanelInstance = Mixpanel.initialize(token: "408ddc540995656bdbd17c2f61df7ce2")
     
     var coreDataContext = CoreDataContext()
     
@@ -56,6 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        mixpanel.serverURL = "https://api-eu.mixpanel.com"
+
         return true
     }
     
