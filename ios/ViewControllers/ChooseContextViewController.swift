@@ -47,8 +47,8 @@ class ChooseContextViewController: UIViewController {
                 self.navigationController!.show(vc, sender: nil)
             case .GiveToEvent:
                 if !GivtManager.shared.hasGivtLocations() {
-                    let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.navigationController?.present(alert, animated: true, completion: nil)
                 } else {
                     let story = UIStoryboard(name: "Event", bundle: nil)

@@ -24,10 +24,10 @@ class ExternalSuggestionViewController: BaseScanViewController {
         externalSuggestion.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         externalSuggestion.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         
-        externalSuggestion.button.addTarget(self, action: #selector(self.giveAction), for: UIControlEvents.touchUpInside)
-        externalSuggestion.button.setTitle(NSLocalizedString("YesPlease", comment: ""), for: UIControlState.normal)
+        externalSuggestion.button.addTarget(self, action: #selector(self.giveAction), for: UIControl.Event.touchUpInside)
+        externalSuggestion.button.setTitle(NSLocalizedString("YesPlease", comment: ""), for: UIControl.State.normal)
         
-        externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControlEvents.touchUpInside)
+        externalSuggestion.cancelButton.addTarget(self, action: #selector(self.cancel), for: UIControl.Event.touchUpInside)
         externalSuggestion.cancelButton.isUserInteractionEnabled = true
         
         externalSuggestion.image.image = GivtManager.shared.externalIntegration!.logo
@@ -73,13 +73,13 @@ class ExternalSuggestionViewController: BaseScanViewController {
     
     func setupLabel(label: UILabel) {
         let lightAttributes = [
-            NSAttributedStringKey.font: UIFont(name: "Avenir-Light", size: 17)!,
-            NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-            ] as [NSAttributedStringKey : Any]
+            NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 17)!,
+            NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+            ] as [NSAttributedString.Key : Any]
         let boldAttributes = [
-            NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 17)!,
-            NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-            ] as [NSAttributedStringKey : Any]
+            NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 17)!,
+            NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+            ] as [NSAttributedString.Key : Any]
         let mediumId = GivtManager.shared.externalIntegration!.mediumId
         let stopIndex = mediumId.index(of: ".")!
         let namespace = String(mediumId[..<stopIndex])

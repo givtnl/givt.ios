@@ -143,8 +143,8 @@ class EventViewController: BaseScanViewController {
     }
         
     func showLocationMessage() {
-        let alert = UIAlertController(title: NSLocalizedString("AllowGivtLocationTitle", comment: ""), message: NSLocalizedString("AllowGivtLocationMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+        let alert = UIAlertController(title: NSLocalizedString("AllowGivtLocationTitle", comment: ""), message: NSLocalizedString("AllowGivtLocationMessage", comment: ""), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("GotIt", comment: ""), style: UIAlertAction.Style.default, handler: { (action) in
         }))
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)

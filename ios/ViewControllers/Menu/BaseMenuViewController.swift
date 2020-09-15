@@ -30,7 +30,7 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
          * there is a hidden table header somewhere.
          * I haven't found where to change this so, we change the contentinset to -30 */
         table.tableHeaderView = nil
-        table.contentInset = UIEdgeInsetsMake(-30, 0, 0, 0)
+        table.contentInset = UIEdgeInsets(top: -30, left: 0, bottom: 0, right: 0)
         table.dataSource = self
         table.delegate = self
         
@@ -83,11 +83,11 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
         return ""
     }
     
-    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivityType?) -> Any? {
+    func activityViewController(_ activityViewController: UIActivityViewController, itemForActivityType activityType: UIActivity.ActivityType?) -> Any? {
         return ""
     }
     
-    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivityType?) -> String {
+    func activityViewController(_ activityViewController: UIActivityViewController, subjectForActivityType activityType: UIActivity.ActivityType?) -> String {
         return NSLocalizedString("GivtGewoonBlijvenGeven", comment: "")
     }
 }

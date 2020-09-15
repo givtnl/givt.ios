@@ -35,13 +35,13 @@ class EventSuggestionViewController: UIViewController {
         let mutableAttributedString = NSMutableAttributedString()
         
         let lightAttributes = [
-            NSAttributedStringKey.font: UIFont(name: "Avenir-Light", size: 17)!,
-            NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-            ] as [NSAttributedStringKey : Any]
+            NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 17)!,
+            NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+            ] as [NSAttributedString.Key : Any]
         let boldAttributes = [
-            NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 17)!,
-            NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-            ] as [NSAttributedStringKey : Any]
+            NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 17)!,
+            NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+            ] as [NSAttributedString.Key : Any]
         
         let boldAttributedString = NSAttributedString(string: UserDefaults.standard.userExt!.email, attributes: boldAttributes)
         mutableAttributedString.append(NSAttributedString(string: NSLocalizedString("SendOverViewTo", comment: "") + " "))
