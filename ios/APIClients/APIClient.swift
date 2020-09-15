@@ -11,14 +11,16 @@ import SwiftClient
 import TrustKit
 
 class APIClient: NSObject, URLSessionDelegate {
-    static let shared = APIClient()
+    static let shared = APIClient(url: AppConstants.apiUri)
+    static let cloud = APIClient(url: AppConstants.cloudApiUri)
     private var log = LogService.shared
     
-    private static let BASEURL: String = AppConstants.apiUri
-    private var client = Client().baseUrl(url: BASEURL)
+    private var BASEURL: String
+    private var client: Client
     
-    private override init() {
-        
+    init(url: String) {
+        self.BASEURL = url
+        client = Client().baseUrl(url: url)
     }
    
     func get(url: String, data: [String: String], headers: [String: String] = [:], timeout: Double = 60, callback: @escaping (Response?) -> Void) {
@@ -115,6 +117,24 @@ class APIClient: NSObject, URLSessionDelegate {
             }) { (error) in
                 callback(nil)
                 self.handleError(err: error)
+        }
+    }
+    
+   func patch(url: String, callback: @escaping (Response?) -> Void) {
+       var headers: [String: String] = [:]
+        if let bearerToken = UserDefaults.standard.bearerToken {
+            headers["Authorization"] = "Bearer " + bearerToken
+        }
+        log.info(message: "PATCH on " + url)
+        
+        client.patch(url: url).delegate(delegate: self)
+            .type(type: "json")
+            .set(headers: headers)
+            .end(done: { (res:Response) in
+                callback(res)
+            }) { (err) in
+                callback(nil)
+                self.handleError(err: err)
         }
     }
     

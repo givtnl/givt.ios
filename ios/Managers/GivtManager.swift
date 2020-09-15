@@ -664,7 +664,7 @@ class BestBeacon {
     }
 }
 
-class Transaction:NSObject, NSCoding {
+class Transaction: NSObject, NSCoding, Codable {
     var amount: Decimal
     var beaconId: String
     var collectId: String
