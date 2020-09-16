@@ -12,4 +12,12 @@ import UIKit
 class SetupNotificationRecurringDonationViewController: UIViewController
 {
     
+    @IBOutlet weak var btnAllowPush: CustomButton!
+    
+    
+    
+    
+    @IBAction func AllowPush(_ sender: CustomButton) {
+        NotificationManager.shared.requestNotificationPermission()
+    }
 }
