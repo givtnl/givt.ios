@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         mixpanel.serverURL = "https://api-eu.mixpanel.com"
+        mixpanel.flushInterval = AppConstants.mixpanelConfig.flushInterval
 
         return true
     }

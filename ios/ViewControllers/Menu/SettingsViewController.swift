@@ -10,7 +10,7 @@ import UIKit
 import SVProgressHUD
 import AVFoundation
 import LGSideMenuController
-import AppCenterAnalytics
+import Mixpanel
 
 class SettingsViewController: BaseMenuViewController {
     var logService: LogService = LogService.shared
@@ -319,7 +319,7 @@ class SettingsViewController: BaseMenuViewController {
     }
     
     private func setupRecurringDonation() {
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_MENU_CLICKED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_MENU_CLICKED")
         let vc = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController()
         vc?.modalPresentationStyle = .fullScreen
         vc?.transitioningDelegate = self.slideFromRightAnimation
