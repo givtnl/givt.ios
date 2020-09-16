@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class GoToRootViewRouteHandler : RequestHandlerWithContextProtocol {
+class PopToRecurringDonationOverviewRouteHandler : RequestHandlerWithContextProtocol {
    
     public func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
             context.navigationController?.popToRootViewController(animated: true)
@@ -17,7 +17,7 @@ class GoToRootViewRouteHandler : RequestHandlerWithContextProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is GoToRootViewRoute
+        return request is PopToRecurringDonationOverviewRoute
     }
 }
 
