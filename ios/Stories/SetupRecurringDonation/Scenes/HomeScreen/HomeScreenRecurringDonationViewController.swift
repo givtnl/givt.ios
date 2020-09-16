@@ -24,7 +24,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     @IBOutlet weak var recurringDonationsRuleOverview: UIView!
     @IBOutlet var createButton: CreateRecurringDonationButton!
     @IBOutlet var recurringDonationsOverviewTitleLabel: UILabel!
-    
+        
     private var tempTableView: UITableView!
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
@@ -65,6 +65,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         tableView.isHidden = true
         imageView.isHidden = false
         emptyListLabel.text = "EmptyRecurringDonationList".localized
+        
         SVProgressHUD.show()
     }
     

@@ -8,6 +8,6 @@
 
 import Foundation
 
-class BackToPreviousViewRoute: NoResponseRequest {
+class BackToSetupRecurringDonationRoute: NoResponseRequest {
     
 }
