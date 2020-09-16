@@ -11,6 +11,7 @@ import MaterialShowcase
 import AppCenterCrashes
 import AppCenterAnalytics
 import SVProgressHUD
+import Mixpanel
 
 class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
     private var log: LogService = LogService.shared
@@ -342,7 +343,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         let hasPresetSet = UserDefaults.standard.hasPresetsSet ?? false
         let usedPreset:String = String( collectOne.isPreset && collectTwo.isPreset && collectThree.isPreset)
-        MSAnalytics.trackEvent("GIVING_STARTED", withProperties: ["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
+        MSAnalytics.trackEvent("GIVING_STARTED", withProperties:["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
+        Mixpanel.mainInstance().track(event: "GIVING_STARTED", properties: ["hasPresets": String(hasPresetSet), "usedPresets":usedPreset])
         
         if givtService.externalIntegration != nil && !givtService.externalIntegration!.wasShownAlready {
             let vc = UIStoryboard.init(name: "ExternalSuggestion", bundle: nil).instantiateInitialViewController() as! ExternalSuggestionViewController

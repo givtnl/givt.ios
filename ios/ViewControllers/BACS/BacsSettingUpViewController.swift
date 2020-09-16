@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import AppCenterAnalytics
+import Mixpanel
 
 class BacsSettingUpViewController: UIViewController {
 
@@ -24,6 +25,7 @@ class BacsSettingUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MSAnalytics.trackEvent("User started BACS mandate flow")
+        Mixpanel.mainInstance().track(event: "User started BACS mandate flow")
 
         self.navigationController?.removeLogo()
         title = NSLocalizedString("BacsSetupTitle", comment: "")

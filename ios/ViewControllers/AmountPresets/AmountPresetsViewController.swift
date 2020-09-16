@@ -8,6 +8,7 @@
 
 import UIKit
 import AppCenterAnalytics
+import Mixpanel
 
 class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
     
@@ -31,6 +32,7 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
              self.getDecimalValue(text: thirdTextField.text!)!]
         LogService.shared.info(message: "Saving custom preset amounts")
         MSAnalytics.trackEvent("PRESET_CHANGE")
+        Mixpanel.mainInstance().track(event: "PRESET_CHANGE")
         self.navigationController?.hideLeftView(self)
         self.backPressed(self)
         NotificationCenter.default.post(name: .GivtDidSavePresets, object: nil)
