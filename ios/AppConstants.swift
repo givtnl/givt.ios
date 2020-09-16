@@ -128,6 +128,14 @@ class AppConstants {
         #endif
     }()
     
+    static var mixpanelConfig: MixpanelConfig = {
+        #if PRODUCTION
+            return MixpanelConfig(flushInterval: 30)
+        #else
+            return MixpanelConfig(flushInterval: 4)
+        #endif
+    }()
+    
     static var appStoreUrl = "itms-apps://itunes.apple.com/app/id1181435988"
     
     static var trustKitConfig: [String: Any] = {
@@ -199,4 +207,8 @@ class AppConstants {
             return "eb8799f0-c64e-4447-bdc6-3e3d27ddf4bf"
         #endif
     }()
+    
+    internal struct MixpanelConfig {
+        var flushInterval: Double
+    }
 }
