@@ -117,7 +117,7 @@ final class NotificationManager : NSObject {
         }
     }
     
-    func requestNotificationPermission() -> Void {
+    func requestNotificationPermission(completion: @escaping (Bool) -> Void) {
         if #available(iOS 10.0, *) {
             let center = UNUserNotificationCenter.current()
             DispatchQueue.main.async {
@@ -128,17 +128,22 @@ final class NotificationManager : NSObject {
                                 if granted {
                                     UIApplication.shared.registerForRemoteNotifications()
                                 }
+                                completion(granted)
                             }
                         } else {
                             if settings.authorizationStatus == .authorized {
                                 UIApplication.shared.registerForRemoteNotifications()
+                                completion(true)
                                 return
                             }
                             
                             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                                completion(false)
                                 return
                             }
-                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in })
+                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                completion(success)
+                            })
                         }
                     }
                 })
@@ -148,10 +153,12 @@ final class NotificationManager : NSObject {
                 DispatchQueue.main.async {
                     if (enabled) {
                         UIApplication.shared.registerForRemoteNotifications()
+                        completion(enabled)
                     }
                     else {
                         UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                            completion(true)
                             DispatchQueue.main.async { UIApplication.shared.registerForRemoteNotifications() }
                         })
                     }
