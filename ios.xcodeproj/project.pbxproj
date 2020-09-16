@@ -48,6 +48,8 @@
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A478D1D42512386600251AFE /* GoToPushNotificationRequestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D32512386600251AFE /* GoToPushNotificationRequestRoute.swift */; };
 		A478D1D62512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D52512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift */; };
+		A478D1D92512C3AE00251AFE /* DismissPushNotificationRequestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D82512C3AE00251AFE /* DismissPushNotificationRequestRoute.swift */; };
+		A478D1DB2512C3BA00251AFE /* DismissPushNotificationRequestRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1DA2512C3BA00251AFE /* DismissPushNotificationRequestRouteHandler.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71DA04D20F758DD0084381E /* ExternalIntegration.swift */; };
@@ -355,6 +357,8 @@
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		A478D1D32512386600251AFE /* GoToPushNotificationRequestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToPushNotificationRequestRoute.swift; sourceTree = "<group>"; };
 		A478D1D52512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToPushNotificationRequestRouteHandler.swift; sourceTree = "<group>"; };
+		A478D1D82512C3AE00251AFE /* DismissPushNotificationRequestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPushNotificationRequestRoute.swift; sourceTree = "<group>"; };
+		A478D1DA2512C3BA00251AFE /* DismissPushNotificationRequestRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPushNotificationRequestRouteHandler.swift; sourceTree = "<group>"; };
 		A4DE893F220C76F500379CFD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D71DA04D20F758DD0084381E /* ExternalIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalIntegration.swift; sourceTree = "<group>"; };
@@ -709,6 +713,7 @@
 		32CA17B024CED48100248053 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				A478D1D72512C38C00251AFE /* DismissPushNotificationRequest */,
 				A478D1D22512380800251AFE /* GoToPushNotificationRequest */,
 				FB56C55E2510FFE90099EC62 /* BackToRecurringDonationOverview */,
 				DFFF7E8C24F935C00098E4F6 /* PopToRecurringDonationOverview */,
@@ -776,6 +781,15 @@
 				A478D1D52512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift */,
 			);
 			path = GoToPushNotificationRequest;
+			sourceTree = "<group>";
+		};
+		A478D1D72512C38C00251AFE /* DismissPushNotificationRequest */ = {
+			isa = PBXGroup;
+			children = (
+				A478D1D82512C3AE00251AFE /* DismissPushNotificationRequestRoute.swift */,
+				A478D1DA2512C3BA00251AFE /* DismissPushNotificationRequestRouteHandler.swift */,
+			);
+			path = DismissPushNotificationRequest;
 			sourceTree = "<group>";
 		};
 		D72B707E1F44832D0022BD29 /* Services */ = {
@@ -1999,6 +2013,7 @@
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
 				DF05015924F8B4C6006196A3 /* BackToSetupRecurringDonationRoute.swift in Sources */,
+				A478D1D92512C3AE00251AFE /* DismissPushNotificationRequestRoute.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
@@ -2068,6 +2083,7 @@
 				27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */,
 				D7F0D2A521639544004770F8 /* NotificationExtensions.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */,
+				A478D1DB2512C3BA00251AFE /* DismissPushNotificationRequestRouteHandler.swift in Sources */,
 				FB87301F24C865BF005FF355 /* GoToSafariRoute.swift in Sources */,
 				FB872FFB24C8072A005FF355 /* CreateDonationCommandHandler.swift in Sources */,
 				FBC1857C24C06507001A4C6B /* GetCollectGroupsQueryHandler.swift in Sources */,

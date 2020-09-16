@@ -249,8 +249,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Mediater.shared.registerHandler(handler: GoToChooseRecurringDonationRouteHandler())
         Mediater.shared.registerHandler(handler: BackToSetupRecurringDonationRouteHandler())
         Mediater.shared.registerHandler(handler: PopToRecurringDonationOverviewRouteHandler())
-        Mediater.shared.registerHandler(handler: BackToRecurringDonationOverviewRouteHandler())
+        Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
         Mediater.shared.registerHandler(handler: GoToPushNotificationRequestRouteHandler())
+        Mediater.shared.registerHandler(handler: DismissPushNotificationRequestRouteHandler())
 
         // -- Commands
         Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())

@@ -165,18 +165,8 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
                                     SVProgressHUD.show()
                                     try self.mediater.sendAsync(request: command) { recurringDonationMade in
                                         if(recurringDonationMade) {
-                                            NotificationManager.shared.areNotificationsEnabled { enabled in
-                                                if enabled {
-                                                    SVProgressHUD.dismiss()
-                                                    DispatchQueue.main.async {
-                                                        try? self.mediater.send(request: PopToRecurringDonationOverviewRoute(), withContext: self)
-                                                    }
-                                                } else {
-                                                    SVProgressHUD.dismiss()
-                                                    DispatchQueue.main.async {
-                                                        try? self.mediater.send(request: GoToPushNotificationRequestRoute(), withContext: self)
-                                                    }
-                                                }
+                                            DispatchQueue.main.async {
+                                                try? self.mediater.send(request: PopToRecurringDonationOverviewRoute(), withContext: self)
                                             }
                                         } else {
                                             SVProgressHUD.dismiss()
