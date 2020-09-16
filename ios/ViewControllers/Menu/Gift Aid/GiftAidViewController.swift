@@ -10,6 +10,7 @@ import Foundation
 import SVProgressHUD
 import UIKit
 import AppCenterAnalytics
+import Mixpanel
 
 class GiftAidViewController: UIViewController {
     
@@ -109,7 +110,8 @@ class GiftAidViewController: UIViewController {
                         self.hideLoader()
                     }
                     if success {
-                        MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties: ["state": (userExt.GiftAidEnabled).description])
+                        MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties:["state": (userExt.GiftAidEnabled).description])
+                        Mixpanel.mainInstance().track(event: "GIFTAID_CHANGED", properties: ["state": (userExt.GiftAidEnabled).description])
                         DispatchQueue.main.async {
                             if(self.comingFromRegistration){
                                 let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController

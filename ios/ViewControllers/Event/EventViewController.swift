@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import AudioToolbox
 import AppCenterAnalytics
+import Mixpanel
 
 enum GivingState: Int {
     case idle
@@ -49,6 +50,7 @@ class EventViewController: BaseScanViewController {
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         LogService.shared.info(message: "GIVE_LOCATION_START")
         MSAnalytics.trackEvent("GIVE_LOCATION_START")
+        Mixpanel.mainInstance().track(event: "GIVE_LOCATION_START")
     }
     
     override func didDetectGivtLocation(orgName: String, identifier: String) {
@@ -67,7 +69,8 @@ class EventViewController: BaseScanViewController {
                 vc.onSuccess = {
                     self.givingState = .given
                     LogService.shared.info(message: "GIVE_LOCATION id: \(identifier)")
-                    MSAnalytics.trackEvent("GIVE_LOCATION", withProperties: ["id": identifier])
+                    MSAnalytics.trackEvent("GIVE_LOCATION", withProperties:["id": identifier])
+                    Mixpanel.mainInstance().track(event: "GIVE_LOCATION", properties: ["id": identifier])
                     self.givtManager.stopLookingForGivtLocations()
                     self.giveManually(antennaID: identifier)
                 }

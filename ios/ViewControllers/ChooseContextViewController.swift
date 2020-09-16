@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import AppCenterAnalytics
+import Mixpanel
 
 class ChooseContextViewController: UIViewController {
 
@@ -32,7 +33,8 @@ class ChooseContextViewController: UIViewController {
     
     @IBAction func selectContext(_ sender: Any) {
         let contextType = (sender as! SelectContextView).contextType
-        MSAnalytics.trackEvent("CONTEXT_SELECTED", withProperties: ["context": contextType!.name])
+        MSAnalytics.trackEvent("CONTEXT_SELECTED", withProperties:["context": contextType!.name])
+        Mixpanel.mainInstance().track(event: "CONTEXT_SELECTED", properties: ["context": contextType!.name])
         let sb = UIStoryboard(name:"Main", bundle:nil)
         DispatchQueue.main.async {
             switch contextType! {

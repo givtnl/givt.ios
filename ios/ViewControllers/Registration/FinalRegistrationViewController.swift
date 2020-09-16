@@ -8,6 +8,7 @@
 
 import UIKit
 import AppCenterAnalytics
+import Mixpanel
 
 class FinalRegistrationViewController: UIViewController {
 
@@ -19,6 +20,7 @@ class FinalRegistrationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MSAnalytics.trackEvent("User finished registration")
+        Mixpanel.mainInstance().track(event: "User finished registration")
 
         gif.loadGif(name: "givt_registration")
         self.view.sendSubviewToBack(gif)

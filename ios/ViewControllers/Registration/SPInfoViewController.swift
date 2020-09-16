@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import AppCenterAnalytics
+import Mixpanel
 
 class SPInfoViewController: UIViewController {
     private var _navigationManager = NavigationManager.shared
@@ -24,6 +25,7 @@ class SPInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MSAnalytics.trackEvent("User started SEPA mandate flow")
+        Mixpanel.mainInstance().track(event: "User started SEPA mandate flow")
 
         backButton.isEnabled = false
         headerText.text = NSLocalizedString("SlimPayInformation", comment: "")

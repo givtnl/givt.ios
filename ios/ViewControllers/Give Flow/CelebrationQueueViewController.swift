@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import AppCenterAnalytics
 import UserNotifications
+import Mixpanel
 
 class CelebrationQueueViewController : BaseScanViewController, NotificationManagerDelegate {
     
@@ -28,6 +29,7 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
     override func viewDidLoad() {
         LogService.shared.info(message: "CELEBRATE_QUEUE")
         MSAnalytics.trackEvent("CELEBRATE_QUEUE")
+        Mixpanel.mainInstance().track(event: "CELEBRATE_QUEUE")
 
         UIApplication.shared.isIdleTimerDisabled = true
 
@@ -79,6 +81,7 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (action) in
             LogService.shared.info(message: "CELEBRATE_QUEUE_CANCEL")
             MSAnalytics.trackEvent("CELEBRATE_QUEUE_CANCEL")
+            Mixpanel.mainInstance().track(event: "CELEBRATE_QUEUE_CANCEL")
             self.onGivtProcessed(transactions: self.transactions, organisationName: self.organisation, canShare: true)
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: { (action) in

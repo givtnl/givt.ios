@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import AppCenterAnalytics
+import Mixpanel
 
 class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
@@ -34,6 +35,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         MSAnalytics.trackEvent("User started registration")
+        Mixpanel.mainInstance().track(event: "User started registration")
 
         initButtonsWithTags()
         initTermsText()

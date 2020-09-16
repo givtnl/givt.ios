@@ -11,6 +11,7 @@ import MaterialShowcase
 import AppCenterCrashes
 import AppCenterAnalytics
 import SVProgressHUD
+import Mixpanel
 
 class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
