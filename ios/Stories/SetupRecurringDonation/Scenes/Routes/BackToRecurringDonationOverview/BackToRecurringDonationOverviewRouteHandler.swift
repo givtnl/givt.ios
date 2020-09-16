@@ -12,7 +12,7 @@ import Foundation
 class BackToRecurringDonationOverviewRouteHandler : RequestHandlerWithContextProtocol {
    
     public func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        context.navigationController?.popViewController(animated: true)
+        context.navigationController?.popToRootViewController(animated: true)
         try completion(() as! R.TResponse)
     }
     
