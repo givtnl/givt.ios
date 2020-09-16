@@ -46,6 +46,8 @@
 		32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */; };
 		A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C296222AA5EF70098442C /* GiftAidViewController.swift */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
+		A478D1D42512386600251AFE /* GoToPushNotificationRequestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D32512386600251AFE /* GoToPushNotificationRequestRoute.swift */; };
+		A478D1D62512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D52512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71DA04D20F758DD0084381E /* ExternalIntegration.swift */; };
@@ -351,6 +353,8 @@
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A40C296222AA5EF70098442C /* GiftAidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidViewController.swift; sourceTree = "<group>"; };
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
+		A478D1D32512386600251AFE /* GoToPushNotificationRequestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToPushNotificationRequestRoute.swift; sourceTree = "<group>"; };
+		A478D1D52512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToPushNotificationRequestRouteHandler.swift; sourceTree = "<group>"; };
 		A4DE893F220C76F500379CFD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D71DA04D20F758DD0084381E /* ExternalIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalIntegration.swift; sourceTree = "<group>"; };
@@ -705,6 +709,7 @@
 		32CA17B024CED48100248053 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				A478D1D22512380800251AFE /* GoToPushNotificationRequest */,
 				FB56C55E2510FFE90099EC62 /* BackToRecurringDonationOverview */,
 				DFFF7E8C24F935C00098E4F6 /* PopToRecurringDonationOverview */,
 				DF05015724F8B48F006196A3 /* BackToSetupRecurringDonation */,
@@ -762,6 +767,15 @@
 				572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A478D1D22512380800251AFE /* GoToPushNotificationRequest */ = {
+			isa = PBXGroup;
+			children = (
+				A478D1D32512386600251AFE /* GoToPushNotificationRequestRoute.swift */,
+				A478D1D52512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift */,
+			);
+			path = GoToPushNotificationRequest;
 			sourceTree = "<group>";
 		};
 		D72B707E1F44832D0022BD29 /* Services */ = {
@@ -1881,6 +1895,7 @@
 			files = (
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
+				A478D1D62512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift in Sources */,
 				FB872FED24C6E722005FF355 /* BackToChooseDestinationRoute.swift in Sources */,
 				FBC1859524C08431001A4C6B /* DestinationTableCell.swift in Sources */,
 				DF1300F724F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift in Sources */,
@@ -2042,6 +2057,7 @@
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				DF05015624F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift in Sources */,
+				A478D1D42512386600251AFE /* GoToPushNotificationRequestRoute.swift in Sources */,
 				DF3FD7882512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift in Sources */,
 				DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
