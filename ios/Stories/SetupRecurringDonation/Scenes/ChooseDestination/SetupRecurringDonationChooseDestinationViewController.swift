@@ -157,7 +157,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     }
     
     @IBAction func backButton(_ sender: Any) {
-        try? mediater.send(request: BackToPreviousViewRoute(), withContext: self)
+        try? mediater.send(request: BackToSetupRecurringDonationRoute(), withContext: self)
     }
     
     //MARK: tableFiltering

@@ -664,7 +664,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterSad" = "Jammer dat je gaat,\nhopelijk zien we je weer terug.";
 
 /*Titel op de Historie pagina in de app*/
-"HistoryTitle" = "Giften";
+"HistoryTitle" = "Giftenoverzicht";
 
 /*Titel op de infopagina van het Historiescherm*/
 "HistoryInfoTitle" = "Info over de gift";
@@ -977,7 +977,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "CancelRecurringDonationAlertTitle" = "Weet je zeker dat je wil stoppen met geven aan {0}?\n";
 
 /*Fuzzy*/
-"CancelRecurringDonationAlertMessage" = "De giften die je al hebt gedaan worden niet geannuleerd.";
+"CancelRecurringDonationAlertMessage" = "De giften die je al hebt gedaan, worden niet geannuleerd.";
 
 /*Fuzzy*/
 "CancelRecurringDonation" = "Stopzetten";

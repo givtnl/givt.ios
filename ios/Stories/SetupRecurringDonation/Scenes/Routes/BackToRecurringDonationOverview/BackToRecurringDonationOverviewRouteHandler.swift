@@ -9,15 +9,14 @@
 import UIKit
 import Foundation
 
-class BackToPreviousViewRouteHandler : RequestHandlerWithContextProtocol {
+class BackToRecurringDonationOverviewRouteHandler : RequestHandlerWithContextProtocol {
    
     public func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        
-            context.navigationController?.popViewController(animated: true)
-            try completion(() as! R.TResponse)
+        context.navigationController?.popViewController(animated: true)
+        try completion(() as! R.TResponse)
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is BackToPreviousViewRoute
+        return request is BackToRecurringDonationOverviewRoute
     }
 }

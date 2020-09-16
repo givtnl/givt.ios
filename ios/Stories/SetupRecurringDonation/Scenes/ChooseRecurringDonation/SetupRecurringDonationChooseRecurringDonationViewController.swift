@@ -33,8 +33,8 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     @IBOutlet weak var startDateLabel: CustomUITextField!
     @IBOutlet weak var startDateButton: UIButton!
     
-    @IBOutlet weak var occurencesTextField: CustomUITextField!
-    @IBOutlet weak var occurencesLabel: UILabel!
+    @IBOutlet weak var occurrencesTextField: CustomUITextField!
+    @IBOutlet weak var occurrencesLabel: UILabel!
     
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var createSubcriptionButton: CustomButton!
@@ -71,11 +71,11 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         Label3.text = "SetupRecurringGiftText_3".localized
         LabelStarting.text = "SetupRecurringGiftText_4".localized
         Label4.text = "SetupRecurringGiftText_5".localized
-        occurencesLabel.text = "SetupRecurringGiftText_6".localized
+        occurrencesLabel.text = "SetupRecurringGiftText_6".localized
         
         
         setupAmountView()
-        setupOccurencsView()
+        setupOccurrencesView()
         setupFrequencyPickerView()
         setupStartDatePickerView()
         
@@ -99,7 +99,7 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         frequencyPicker.selectRow(0, inComponent: 0, animated: false)
     }
     @IBAction func backButton(_ sender: Any) {
-        try? mediater.send(request: BackToPreviousViewRoute(), withContext: self)
+        try? mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
     }
     @IBAction func makeRecurringDonation(_ sender: Any) {
@@ -153,12 +153,12 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
             LoginManager.shared.getUserExt { (userExtObject) in
                 SVProgressHUD.dismiss()
                 if let mediumid = self.input?.mediumId, let country = userExtObject?.Country {
-                    var occurencesString: String? = nil
+                    var occurrencesString: String? = nil
                     DispatchQueue.main.sync {
-                        occurencesString = self.occurencesTextField.text!
+                        occurrencesString = self.occurrencesTextField.text!
                     }
-                    if let numberOccurences = Int(occurencesString!){
-                        let command = CreateRecurringDonationCommand(amountPerTurn: self.amountView.amount, namespace: mediumid, endsAfterTurns: Int(numberOccurences), cronExpression: cronExpression, startDate: startDeet, country: country)
+                    if let numberOccurrences = Int(occurrencesString!){
+                        let command = CreateRecurringDonationCommand(amountPerTurn: self.amountView.amount, namespace: mediumid, endsAfterTurns: Int(numberOccurrences), cronExpression: cronExpression, startDate: startDeet, country: country)
                         NavigationManager.shared.executeWithLogin(context: self) {
                             if LoginManager.shared.isUserLoggedIn {
                                 do {
@@ -167,7 +167,7 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
                                         if(recurringDonationMade) {
                                             SVProgressHUD.dismiss()
                                             DispatchQueue.main.async {
-                                                try? self.mediater.send(request: GoToRootViewRoute(), withContext: self)
+                                                try? self.mediater.send(request: PopToRecurringDonationOverviewRoute(), withContext: self)
                                             }
                                         } else {
                                             SVProgressHUD.dismiss()
@@ -239,21 +239,30 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         frequencyPicker = UIPickerView()
         frequencyPicker.dataSource = self
         frequencyPicker.delegate = self
-        frequencyLabel.inputView = frequencyPicker
-        frequencyPicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
         frequencyPicker.selectRow(0, inComponent: 0, animated: false)
+        if #available(iOS 14.0, *) {
+            frequencyPicker.tintColor = ColorHelper.GivtPurple
+        }
+        frequencyPicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        frequencyLabel.inputView = frequencyPicker
         frequencyLabel.text = frequencys[0][1] as? String
         createToolbar(frequencyLabel)
     }
     func setupStartDatePickerView() {
         startDatePicker = UIDatePicker()
         startDatePicker.datePickerMode = .date
-        startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
-        startDatePicker.setValue(false, forKeyPath: "highlightsToday")
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
         if let newDate = Calendar.current.date(byAdding: .day, value: 1, to: Date()) {
             startDatePicker.minimumDate = newDate
         }
+        if #available(iOS 14.0, *) {
+            startDatePicker.preferredDatePickerStyle = .wheels
+            startDatePicker.tintColor = ColorHelper.GivtPurple
+        } else {
+            startDatePicker.setValue(false, forKeyPath: "highlightsToday")
+        }
+        startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+
         startDateLabel.text = startDatePicker.date.formatted
         startDateLabel.inputView = startDatePicker
         createToolbar(startDateLabel)
@@ -267,7 +276,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     
     private func ensureButtonHasCorrectState() {
         let amount = amountView.amount
-        let endsAfterTurns = Int(occurencesTextField.text!) ?? 0
+        let endsAfterTurns = Int(occurrencesTextField.text!) ?? 0
         createSubcriptionButton.isEnabled = amount >= 0.5
             && amount <= 99999
             && endsAfterTurns >= 1
@@ -293,12 +302,12 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         amountView.amountLabel.keyboardType = .decimalPad
     }
     
-    private func setupOccurencsView() {
-        createToolbar(occurencesTextField)
-        occurencesTextField.keyboardType = .numberPad
+    private func setupOccurrencesView() {
+        createToolbar(occurrencesTextField)
+        occurrencesTextField.keyboardType = .numberPad
         // setup event handlers
-        occurencesTextField.addTarget(self, action: #selector(handleOccurencesEditingChanged), for: .editingChanged)
-        occurencesTextField.addTarget(self, action: #selector(handleOccurencesEditingEnd), for: .editingDidEnd)
+        occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingChanged), for: .editingChanged)
+        occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingEnd), for: .editingDidEnd)
     }
     
     private func setupCollectGroupLabel() {
@@ -365,17 +374,17 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         ensureButtonHasCorrectState()
     }
     
-    @objc func handleOccurencesEditingChanged() {
-        if let times = Int(occurencesTextField.text!) {
+    @objc func handleOccurrencesEditingChanged() {
+        if let times = Int(occurrencesTextField.text!) {
             if(times == 0) {
-                occurencesTextField.setBorderColor(.red)
+                occurrencesTextField.setBorderColor(.red)
             } else {
-                occurencesTextField.resetBorderColor()
+                occurrencesTextField.resetBorderColor()
             }
         }
         ensureButtonHasCorrectState()
     }
-    @objc func handleOccurencesEditingEnd() {
+    @objc func handleOccurrencesEditingEnd() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         ensureButtonHasCorrectState()
     }
