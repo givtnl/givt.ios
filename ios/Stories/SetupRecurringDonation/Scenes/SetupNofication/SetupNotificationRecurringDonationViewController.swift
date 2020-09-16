@@ -14,9 +14,10 @@ class SetupNotificationRecurringDonationViewController: UIViewController
     var mediater: MediaterWithContextProtocol = Mediater.shared
 
     @IBOutlet weak var btnAllowPush: CustomButton!
-    
-    
-    
+
+    @IBAction func GoBack(_ sender: Any) {
+        try? self.mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
+    }
     
     @IBAction func AllowPush(_ sender: CustomButton) {
         NotificationManager.shared.requestNotificationPermission {_ in
