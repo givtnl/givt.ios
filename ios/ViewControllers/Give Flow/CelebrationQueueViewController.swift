@@ -109,6 +109,6 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
     }
     
     @IBAction func activatePushNotfications(_ sender: Any) {
-        NotificationManager.shared.requestNotificationPermission()
+        NotificationManager.shared.requestNotificationPermission(completion: { _ in } )
     }
 }
