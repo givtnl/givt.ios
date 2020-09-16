@@ -590,11 +590,35 @@
                                             <action selector="nextButtonTapped:" destination="pif-bt-Fyp" eventType="touchUpInside" id="BCI-rW-xCo"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5u-mq-0QS" customClass="UIControl">
+                                        <rect key="frame" x="354" y="20" width="40" height="40"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="closepurple" translatesAutoresizingMaskIntoConstraints="NO" id="0aO-PZ-DmU">
+                                                <rect key="frame" x="10" y="10" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="4fO-6A-S1n"/>
+                                                    <constraint firstAttribute="width" constant="20" id="sQ0-Id-yLS"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="0aO-PZ-DmU" firstAttribute="centerX" secondItem="s5u-mq-0QS" secondAttribute="centerX" id="3ga-K2-b4D"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="LHT-xC-ULV"/>
+                                            <constraint firstAttribute="width" constant="40" id="Tjy-dS-NI2"/>
+                                            <constraint firstAttribute="height" constant="40" id="kQo-0e-qDg"/>
+                                            <constraint firstItem="0aO-PZ-DmU" firstAttribute="centerY" secondItem="s5u-mq-0QS" secondAttribute="centerY" id="pj7-KU-6Kb"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="tBD-hI-4cc"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="Dismiss:" destination="iEl-c7-t0Q" eventType="touchUpInside" id="xza-YO-mwi"/>
+                                        </connections>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6q-Vg-tFb">
-                                        <rect key="frame" x="20" y="20" width="374" height="512"/>
+                                        <rect key="frame" x="20" y="40" width="374" height="492"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feature_pushnot1" translatesAutoresizingMaskIntoConstraints="NO" id="kUL-HN-ey0">
-                                                <rect key="frame" x="18.5" y="0.0" width="337" height="512"/>
+                                                <rect key="frame" x="18.5" y="0.0" width="337" height="492"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -620,12 +644,14 @@
                                     <constraint firstAttribute="bottom" secondItem="MNb-0j-ua7" secondAttribute="bottom" constant="20" id="4Oh-I5-3Eh"/>
                                     <constraint firstItem="EU4-9g-9hK" firstAttribute="top" secondItem="y6q-Vg-tFb" secondAttribute="bottom" constant="20" id="5qT-2E-o1e"/>
                                     <constraint firstItem="MNb-0j-ua7" firstAttribute="top" secondItem="EU4-9g-9hK" secondAttribute="bottom" constant="20" id="BHl-sb-xLT"/>
+                                    <constraint firstAttribute="trailing" secondItem="s5u-mq-0QS" secondAttribute="trailing" constant="20" id="VDE-5u-wLs"/>
                                     <constraint firstAttribute="trailing" secondItem="MNb-0j-ua7" secondAttribute="trailing" constant="20" id="XYQ-EG-EXJ"/>
                                     <constraint firstItem="EU4-9g-9hK" firstAttribute="leading" secondItem="Xuh-qV-AqU" secondAttribute="leading" constant="20" id="Xpq-Ps-qvI"/>
+                                    <constraint firstItem="s5u-mq-0QS" firstAttribute="top" secondItem="Xuh-qV-AqU" secondAttribute="top" constant="20" id="aOs-MP-rW9"/>
                                     <constraint firstAttribute="trailing" secondItem="y6q-Vg-tFb" secondAttribute="trailing" constant="20" id="ctm-h1-ikO"/>
                                     <constraint firstAttribute="trailing" secondItem="EU4-9g-9hK" secondAttribute="trailing" constant="20" id="hRF-B8-NY2"/>
                                     <constraint firstItem="y6q-Vg-tFb" firstAttribute="leading" secondItem="Xuh-qV-AqU" secondAttribute="leading" constant="20" id="o7y-eV-c6K"/>
-                                    <constraint firstItem="y6q-Vg-tFb" firstAttribute="top" secondItem="Xuh-qV-AqU" secondAttribute="top" constant="20" id="ogQ-E1-lDs"/>
+                                    <constraint firstItem="y6q-Vg-tFb" firstAttribute="top" secondItem="Xuh-qV-AqU" secondAttribute="top" constant="40" id="ogQ-E1-lDs"/>
                                     <constraint firstItem="MNb-0j-ua7" firstAttribute="leading" secondItem="Xuh-qV-AqU" secondAttribute="leading" constant="20" id="zVg-aL-dcu"/>
                                 </constraints>
                             </view>
@@ -654,7 +680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7s-6o-cWG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="701"/>
+            <point key="canvasLocation" x="3095.6521739130435" y="700.44642857142856"/>
         </scene>
         <!--Plan je Givt-->
         <scene sceneID="SsZ-Ka-MoC">
@@ -1054,6 +1080,7 @@
     </scenes>
     <resources>
         <image name="backbtn" width="15" height="24"/>
+        <image name="closepurple" width="23" height="24"/>
         <image name="dropdown.png" width="128" height="128"/>
         <image name="feature_pushnot1" width="332" height="332"/>
         <image name="givymoney" width="240" height="240"/>

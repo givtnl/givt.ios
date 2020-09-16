@@ -11,9 +11,9 @@ import UIKit
 
 class GoToPushNotificationRequestRouteHandler: RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-         let vc = UIStoryboard.init(name: "SetupRecurringDonation", bundle: nil)
-                   .instantiateViewController(withIdentifier: String(describing: SetupNotificationRecurringDonationViewController.self)) as! SetupNotificationRecurringDonationViewController
-               context.navigationController?.pushViewController(vc, animated: true)
+        let vc = UIStoryboard.init(name: "SetupRecurringDonation", bundle: nil)
+            .instantiateViewController(withIdentifier: String(describing: SetupNotificationRecurringDonationViewController.self)) as! SetupNotificationRecurringDonationViewController
+        context.present(vc, animated: true)
         try completion(() as! R.TResponse)
     }
     

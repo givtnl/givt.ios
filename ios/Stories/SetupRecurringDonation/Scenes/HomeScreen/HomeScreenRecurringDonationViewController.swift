@@ -58,6 +58,13 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
                 recurringRule.shouldShowNewItemMarker = true
                 self.markedItem = recurringRule
             }
+            NotificationManager.shared.areNotificationsEnabled(completion: { enabled in
+                if (!enabled) {
+                    DispatchQueue.main.async {
+                        try? self.mediater.send(request: GoToPushNotificationRequestRoute(), withContext: self)
+                    }
+                }
+            })
         }
     }
     
