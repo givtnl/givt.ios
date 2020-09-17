@@ -35,7 +35,7 @@
         <!--Home scherm-->
         <scene sceneID="1ki-Lr-tyd">
             <objects>
-                <viewController storyboardIdentifier="HomeScreenRecurringDonationViewController" automaticallyAdjustsScrollViewInsets="NO" id="Obx-fa-Vae" userLabel="Home scherm" customClass="HomeScreenRecurringDonationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetupRecurringDonationOverviewViewController" automaticallyAdjustsScrollViewInsets="NO" id="Obx-fa-Vae" userLabel="Home scherm" customClass="SetupRecurringDonationOverviewViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="emu-ij-DZy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
