@@ -36,7 +36,7 @@ class SetupNotificationRecurringDonationViewController: UIViewController
     
     private func setupLabels() {
         descriptionLabel.text = "PushnotificationRequestScreenDescription".localized
-        confirmButton.titleLabel!.text = "PushnotificationRequestScreenButtonYes".localized
+        confirmButton.setTitle("PushnotificationRequestScreenButtonYes".localized, for: UIControl.State.normal)
     }
     
     override func viewDidLoad() {
