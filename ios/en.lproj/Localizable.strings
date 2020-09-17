@@ -985,3 +985,8 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "CancelRecurringDonationFailed" = "The recurring donation was not cancelled successfully. Please try again later.";
+
+/*Fuzzy*/
+"PushnotificationRequestScreenTitle" = "Pushnotifications";
+"PushnotificationRequestScreenDescription" = "We will send you a message when future donations will be debited.\nWould you like to change your settings so that we can send you push notifications?";
+"PushnotificationRequestScreenButtonYes" = "Yes, I will change my settings";
