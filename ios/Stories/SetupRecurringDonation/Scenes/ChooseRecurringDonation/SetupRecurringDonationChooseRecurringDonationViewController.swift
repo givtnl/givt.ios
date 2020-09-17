@@ -108,7 +108,7 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         self.view.endEditing(true)
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
-
+        
         
         let cronExpression: String
         
@@ -151,51 +151,51 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let startDeet: String = dateFormatter.string(from: startDatePicker.date)
+        
         if AppServices.shared.isServerReachable {
             SVProgressHUD.show()
-            LoginManager.shared.getUserExt { (userExtObject) in
-                SVProgressHUD.dismiss()
-                if let mediumid = self.input?.mediumId, let country = userExtObject?.Country {
-                    var occurrencesString: String? = nil
-                    DispatchQueue.main.sync {
-                        occurrencesString = self.occurrencesTextField.text!
-                    }
-                    if let numberOccurrences = Int(occurrencesString!){
-                        let command = CreateRecurringDonationCommand(amountPerTurn: self.amountView.amount, namespace: mediumid, endsAfterTurns: Int(numberOccurrences), cronExpression: cronExpression, startDate: startDeet, country: country)
-                        NavigationManager.shared.executeWithLogin(context: self) {
-                            if LoginManager.shared.isUserLoggedIn {
-                                do {
-                                    SVProgressHUD.show()
-                                    try self.mediater.sendAsync(request: command) { recurringDonationMade in
-                                        if(recurringDonationMade) {
-                                            DispatchQueue.main.async {
-                                                try? self.mediater.send(request: PopToRecurringDonationOverviewRoute(), withContext: self)
-                                            }
-                                        } else {
-                                            SVProgressHUD.dismiss()
-                                            DispatchQueue.main.async {
-                                                let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
-                                                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                                                }))
-                                                self.present(alert, animated: true, completion:  {})
-                                            }
-                                        }
-                                    }
-                                } catch {
-                                    SVProgressHUD.dismiss()
-                                    self.showSetupRecurringDonationFailed()
+            
+            guard let countryString: String = try? mediater.send(request: GetCountryQuery()) else {
+                self.showSetupRecurringDonationFailed()
+                return
+            }
+            
+            guard let mediumIdString: String = self.input?.mediumId else {
+                self.showSetupRecurringDonationFailed()
+                return
+            }
+            
+            guard let occurencesInteger: Int = Int(self.occurrencesTextField.text!) else {
+                self.showSetupRecurringDonationFailed()
+                return
+            }
+            
+            let command = CreateRecurringDonationCommand(amountPerTurn: self.amountView.amount, namespace: mediumIdString, endsAfterTurns: occurencesInteger, cronExpression: cronExpression, startDate: startDeet, country: countryString)
+            
+            NavigationManager.shared.executeWithLogin(context: self) {
+                if !LoginManager.shared.isUserLoggedIn {
+                    SVProgressHUD.dismiss()
+                    self.showSetupRecurringDonationFailed()
+                } else {
+                    do {
+                        try self.mediater.sendAsync(request: command) { recurringDonationMade in
+                            if(recurringDonationMade) {
+                                DispatchQueue.main.async {
+                                    try? self.mediater.send(request: PopToRecurringDonationOverviewRoute(), withContext: self)
                                 }
                             } else {
                                 SVProgressHUD.dismiss()
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                                    }))
+                                    self.present(alert, animated: true, completion:  {})
+                                }
                             }
                         }
-                    } else {
-                        SVProgressHUD.dismiss()
+                    } catch {
                         self.showSetupRecurringDonationFailed()
                     }
-                } else {
-                    SVProgressHUD.dismiss()
-                    self.showSetupRecurringDonationFailed()
                 }
             }
         } else {
@@ -230,6 +230,8 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
 
 extension SetupRecurringDonationChooseRecurringDonationViewController : CollectGroupLabelDelegate {
     private func showSetupRecurringDonationFailed() {
+        SVProgressHUD.dismiss()
+
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
@@ -264,7 +266,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
             startDatePicker.setValue(false, forKeyPath: "highlightsToday")
         }
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
-
+        
         startDateLabel.text = startDatePicker.date.formatted
         startDateLabel.inputView = startDatePicker
         createToolbar(startDateLabel)
@@ -351,7 +353,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         startDateLabel.text = datePicker.date.formatted
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
-
+        
     }
     
     @objc func handleAmountEditingChanged() {
@@ -370,7 +372,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     @objc func handleAmountEditingDidEnd() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
-
+        
         if(amountView.amount < 0.5) {
             showAmountTooLow()
         } else if (amountView.amount > 99999) {

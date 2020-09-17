@@ -33,6 +33,9 @@
 		327C5B7E2506D8680064BBC4 /* CancelRecurringDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C5B7D2506D8680064BBC4 /* CancelRecurringDonationCommand.swift */; };
 		327C5B802506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C5B7F2506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
+		32A67F7A2513946F007EC7EF /* GetCountryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F792513946F007EC7EF /* GetCountryQuery.swift */; };
+		32A67F7C25139483007EC7EF /* GetCountryQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7B25139483007EC7EF /* GetCountryQueryHandler.swift */; };
+		32A67F7E25139A7F007EC7EF /* GetCountryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7D25139A7F007EC7EF /* GetCountryError.swift */; };
 		32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */; };
 		32CA179D24CECB9500248053 /* SetupRecurringDonation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */; };
 		32CA179F24CECBFC00248053 /* SetupRecurringDonationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA179E24CECBFC00248053 /* SetupRecurringDonationNavigationController.swift */; };
@@ -340,6 +343,9 @@
 		3274566C2500D704006F0C60 /* ResponseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseExtension.swift; sourceTree = "<group>"; };
 		327C5B7D2506D8680064BBC4 /* CancelRecurringDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRecurringDonationCommand.swift; sourceTree = "<group>"; };
 		327C5B7F2506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRecurringDonationCommandHandler.swift; sourceTree = "<group>"; };
+		32A67F792513946F007EC7EF /* GetCountryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryQuery.swift; sourceTree = "<group>"; };
+		32A67F7B25139483007EC7EF /* GetCountryQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryQueryHandler.swift; sourceTree = "<group>"; };
+		32A67F7D25139A7F007EC7EF /* GetCountryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryError.swift; sourceTree = "<group>"; };
 		32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupRecurringDonation.storyboard; sourceTree = "<group>"; };
 		32CA179E24CECBFC00248053 /* SetupRecurringDonationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationNavigationController.swift; sourceTree = "<group>"; };
@@ -678,6 +684,15 @@
 				327C5B7F2506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift */,
 			);
 			path = Cancel;
+			sourceTree = "<group>";
+		};
+		32A67F7825139450007EC7EF /* GetCountry */ = {
+			isa = PBXGroup;
+			children = (
+				32A67F792513946F007EC7EF /* GetCountryQuery.swift */,
+				32A67F7B25139483007EC7EF /* GetCountryQueryHandler.swift */,
+			);
+			path = GetCountry;
 			sourceTree = "<group>";
 		};
 		32CA179B24CECAB900248053 /* SetupRecurringDonation */ = {
@@ -1563,6 +1578,7 @@
 			isa = PBXGroup;
 			children = (
 				FBC1857924C0647C001A4C6B /* NotLoggedInError.swift */,
+				32A67F7D25139A7F007EC7EF /* GetCountryError.swift */,
 				FB872FFE24C809EF005FF355 /* DonationError.swift */,
 				FB87302924C881D9005FF355 /* SafariError.swift */,
 			);
@@ -1624,6 +1640,7 @@
 		FBC185A824C0CD3D001A4C6B /* Queries */ = {
 			isa = PBXGroup;
 			children = (
+				32A67F7825139450007EC7EF /* GetCountry */,
 				FBC185A924C0CD42001A4C6B /* GetLocalUserConfiguration */,
 			);
 			path = Queries;
@@ -1997,6 +2014,7 @@
 				FB87301324C837ED005FF355 /* ExportDonationCommandHandler.swift in Sources */,
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
 				D7FB251F1F4F189F0011A14E /* ScanCompleteViewController.swift in Sources */,
+				32A67F7E25139A7F007EC7EF /* GetCountryError.swift in Sources */,
 				32CE4D5324BDEEEC0048671B /* ChooseAmountViewController.swift in Sources */,
 				DF2D13BB24FAB71000DCE603 /* GetRecurringDonationsQueryHandler.swift in Sources */,
 				FBA0894E21C7FC27001DD889 /* BaseCarouselViewController.swift in Sources */,
@@ -2020,6 +2038,7 @@
 				320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
+				32A67F7C25139483007EC7EF /* GetCountryQueryHandler.swift in Sources */,
 				A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */,
 				D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */,
 				D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */,
@@ -2102,6 +2121,7 @@
 				DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */,
 				FB872FF524C6EC58005FF355 /* BackToMainRouteHandler.swift in Sources */,
 				DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */,
+				32A67F7A2513946F007EC7EF /* GetCountryQuery.swift in Sources */,
 				FB56C560251100050099EC62 /* BackToRecurringDonationOverviewRoute.swift in Sources */,
 				FB58BCD1230AD361001B1B9C /* MediumHelper.swift in Sources */,
 				A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */,
