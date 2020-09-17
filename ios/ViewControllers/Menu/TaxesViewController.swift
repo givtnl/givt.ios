@@ -43,9 +43,9 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate {
         let mutableAttributedString = NSMutableAttributedString()
         
         let boldAttribute = [
-            NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 17)!,
-            NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
-            ] as [NSAttributedStringKey : Any]
+            NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 17)!,
+            NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+            ] as [NSAttributedString.Key : Any]
         
         let boldAttributedString = NSAttributedString(string: UserDefaults.standard.userExt!.email, attributes: boldAttribute)
         mutableAttributedString.append(NSAttributedString(string: NSLocalizedString("DownloadYearOverviewByChoice", comment: "") + " "))
@@ -94,7 +94,7 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate {
                 }
                 
             } else {
-                let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CouldNotSendTaxOverview", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CouldNotSendTaxOverview", comment: ""), preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                     
                 }))
@@ -124,7 +124,7 @@ class TaxesViewController: UIViewController, UIPickerViewDelegate {
         textField.inputAccessoryView = toolbar
     }
     
-    func hideKeyboard(){
+    @objc func hideKeyboard(){
         self.view.endEditing(true)
     }
 }

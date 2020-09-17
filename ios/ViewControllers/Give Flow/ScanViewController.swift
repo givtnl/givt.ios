@@ -10,6 +10,7 @@ import UIKit
 import CoreBluetooth
 import SafariServices
 import AppCenterAnalytics
+import Mixpanel
 
 class ScanViewController: BaseScanViewController {
     @IBOutlet weak var backBtn: UIBarButtonItem!
@@ -27,6 +28,7 @@ class ScanViewController: BaseScanViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MSAnalytics.trackEvent("GIVE_SCANNING_START")
+        Mixpanel.mainInstance().track(event: "GIVE_SCANNING_START")
         gif.loadGif(name: "givt_animation")
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGiveDifferent.setTitle(NSLocalizedString("GiveYetDifferently", comment: ""), for: .normal)
@@ -63,6 +65,7 @@ class ScanViewController: BaseScanViewController {
             GivtManager.shared.giveManually(antennaId: nameSpace)
         }
         MSAnalytics.trackEvent("GIVE_TO_SUGGESTION")
+        Mixpanel.mainInstance().track(event: "GIVE_TO_SUGGESTION")
     }
     
     @objc func startScanning() {
@@ -133,6 +136,7 @@ class ScanViewController: BaseScanViewController {
 
     @IBAction func giveDifferently(_ sender: Any) {
         MSAnalytics.trackEvent("GIVE_FROM_LIST")
+        Mixpanel.mainInstance().track(event: "GIVE_FROM_LIST")
 
         btnGive.isEnabled = false
         GivtManager.shared.stopScanning()

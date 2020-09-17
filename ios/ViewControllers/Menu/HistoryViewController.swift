@@ -86,8 +86,8 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             
             if tx.timestamp < newDate {
                 action.fulfill(with: ExpansionFulfillmentStyle.reset)
-                let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 return
             }
@@ -97,7 +97,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
             }
             self.sortedArray[indexPath.section].value.remove(at: indexPath.row) // REMOVE ITEM
             action.fulfill(with: .delete) // ANIMATION
-            let alert = UIAlertController(title: NSLocalizedString("CancelGiftAlertTitle", comment: ""), message: NSLocalizedString("CancelGiftAlertMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: NSLocalizedString("CancelGiftAlertTitle", comment: ""), message: NSLocalizedString("CancelGiftAlertMessage", comment: ""), preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive, handler: { (actionButton) in
                 // GET TRANSACTION ID's
                 
@@ -131,14 +131,14 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                                 }
                                 
                             case .expectationFailed:
-                                let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("CantCancelGiftAfter15Minutes", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                 DispatchQueue.main.async {
                                     self.present(alert, animated: true, completion: nil)
                                 }
                             default:
-                                let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                 DispatchQueue.main.async {
                                     self.present(alert, animated: true, completion: nil)
                                 }
@@ -147,8 +147,8 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                             DispatchQueue.main.async {
                                 
                                 if AppServices.shared.isServerReachable {
-                                    let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                                    let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                                     self.present(alert, animated: true, completion: nil)
                                 } else {
                                     NavigationManager.shared.presentAlertNoConnection(context: self)
@@ -159,13 +159,13 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     
                 } catch {
                     self.logService.error(message: "Could not JSONSerialize transaction IDS")
-                    let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    let alert = UIAlertController(title: NSLocalizedString("CancelFailed", comment: ""), message: NSLocalizedString("UnknownErrorCancelGivt", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
                 
             }))
-            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertActionStyle.cancel, handler: { (actionButton) in
+            alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: UIAlertAction.Style.cancel, handler: { (actionButton) in
                 self.sortedArray[indexPath.section].value.insert(tx, at: indexPath.row)
                 tableView.reloadData()
             }))
@@ -222,7 +222,7 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
         super.viewWillAppear(animated)
 
         tableView.estimatedRowHeight = 500
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

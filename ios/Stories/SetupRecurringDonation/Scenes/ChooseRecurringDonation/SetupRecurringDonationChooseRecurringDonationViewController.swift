@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import AppCenterAnalytics
+import Mixpanel
 
 class SetupRecurringDonationChooseRecurringDonationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -63,8 +64,8 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: self.view.window)
         
         Label1.text = "SetupRecurringGiftText_1".localized
         Label2.text = "SetupRecurringGiftText_2".localized
@@ -101,10 +102,12 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_DISMISSED")
     }
     @IBAction func makeRecurringDonation(_ sender: Any) {
         self.view.endEditing(true)
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
 
         
         let cronExpression: String
@@ -269,6 +272,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     
     func collectGroupLabelTapped() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
         hideKeyboard()
         try? mediater.send(request: SetupRecurringDonationChooseDestinationRoute(mediumId: ""), withContext: self)
     }
@@ -346,6 +350,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
         startDateLabel.text = datePicker.date.formatted
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
 
     }
     
@@ -364,6 +369,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     }
     @objc func handleAmountEditingDidEnd() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
 
         if(amountView.amount < 0.5) {
             showAmountTooLow()
@@ -385,6 +391,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     }
     @objc func handleOccurrencesEditingEnd() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         ensureButtonHasCorrectState()
     }
     
@@ -399,7 +406,8 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.frequencyLabel.text = frequencys[row][1] as? String
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", withProperties: ["frequency": frequencys[row][1] as! String])
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", withProperties:["frequency": frequencys[row][1] as! String])
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", properties: ["frequency": frequencys[row][1] as! String])
         pickerView.reloadAllComponents()
         ensureButtonHasCorrectState()
     }
@@ -426,7 +434,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         let alert = UIAlertController(
             title: "AmountTooHigh".localized,
             message: "AmountLimitExceeded".localized,
-            preferredStyle: UIAlertControllerStyle.alert)
+            preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "ChooseLowerAmount".localized, style: .default) { action in })
         self.present(alert, animated: true, completion: nil)
@@ -434,8 +442,8 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     fileprivate func showAmountTooLow() {
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
         let alert = UIAlertController(title: "AmountTooLow".localized,
-                                      message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+                                      message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
     
@@ -446,7 +454,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         let userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
         if #available(iOS 11.0, *) {

@@ -13,7 +13,7 @@ class BaseNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setLogo()
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.init(rgb: 0x2E2957), NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!]
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(rgb: 0x2E2957), NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 18)!]
         // Do any additional setup after loading the view.
     }
 

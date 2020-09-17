@@ -10,15 +10,15 @@ import UIKit
 
 class FirstUseViewController: UIViewController {
 
-    let subtiel : [NSAttributedStringKey: Any] = [
-        NSAttributedStringKey.font : UIFont(name: "Avenir-Light", size: 17)!,
-        NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1),
-        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleNone.rawValue]
+    let subtiel : [NSAttributedString.Key: Any] = [
+        NSAttributedString.Key.font : UIFont(name: "Avenir-Light", size: 17)!,
+        NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1),
+        NSAttributedString.Key.underlineStyle : 0]
     
-    let focus : [NSAttributedStringKey: Any] = [
-        NSAttributedStringKey.font : UIFont(name: "Avenir-Medium", size: 18)!,
-        NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),
-        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue]
+    let focus : [NSAttributedString.Key: Any] = [
+        NSAttributedString.Key.font : UIFont(name: "Avenir-Medium", size: 18)!,
+        NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),
+        NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue]
     
     @IBOutlet var loginButton: UIButton!
     @IBOutlet var getStarted: CustomButton!
@@ -32,7 +32,7 @@ class FirstUseViewController: UIViewController {
         let attributedString = NSMutableAttributedString(string: NSLocalizedString("AlreadyAnAccount", comment: "") + " ", attributes: subtiel)
         attributedString.append(NSMutableAttributedString(string: NSLocalizedString("Login", comment: ""), attributes: focus))
         
-        loginButton.setAttributedTitle(attributedString, for: UIControlState.normal)
+        loginButton.setAttributedTitle(attributedString, for: UIControl.State.normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
