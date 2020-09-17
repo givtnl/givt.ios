@@ -194,7 +194,7 @@
 		DF05015624F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015524F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift */; };
 		DF05015924F8B4C6006196A3 /* BackToSetupRecurringDonationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015824F8B4C6006196A3 /* BackToSetupRecurringDonationRoute.swift */; };
 		DF05015B24F8B4E0006196A3 /* BackToSetupRecurringDonationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF05015A24F8B4E0006196A3 /* BackToSetupRecurringDonationRouteHandler.swift */; };
-		DF1300F724F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */; };
+		DF1300F724F5603E00EE1785 /* SetupRecurringDonationOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1300F624F5603E00EE1785 /* SetupRecurringDonationOverviewViewController.swift */; };
 		DF1300FA24F63F2C00EE1785 /* CreateRecurringDonationButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1300F924F63F2C00EE1785 /* CreateRecurringDonationButton.xib */; };
 		DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1300FB24F63F4500EE1785 /* CreateRecurringDonationButton.swift */; };
 		DF2D13B924FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D13B824FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift */; };
@@ -508,7 +508,7 @@
 		DF05015524F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToChooseRecurringDonationRouteHandler.swift; sourceTree = "<group>"; };
 		DF05015824F8B4C6006196A3 /* BackToSetupRecurringDonationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToSetupRecurringDonationRoute.swift; sourceTree = "<group>"; };
 		DF05015A24F8B4E0006196A3 /* BackToSetupRecurringDonationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToSetupRecurringDonationRouteHandler.swift; sourceTree = "<group>"; };
-		DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenRecurringDonationViewController.swift; sourceTree = "<group>"; };
+		DF1300F624F5603E00EE1785 /* SetupRecurringDonationOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationOverviewViewController.swift; sourceTree = "<group>"; };
 		DF1300F924F63F2C00EE1785 /* CreateRecurringDonationButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateRecurringDonationButton.xib; sourceTree = "<group>"; };
 		DF1300FB24F63F4500EE1785 /* CreateRecurringDonationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationButton.swift; sourceTree = "<group>"; };
 		DF2D13B824FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecurringDonationsQuery.swift; sourceTree = "<group>"; };
@@ -694,7 +694,7 @@
 			isa = PBXGroup;
 			children = (
 				DF3FD7862512132C006BB1A7 /* SetupNofication */,
-				DF1300F524F5601F00EE1785 /* HomeScreen */,
+				DF1300F524F5601F00EE1785 /* Overview */,
 				32CA17B024CED48100248053 /* Routes */,
 				32CA17A424CED00200248053 /* ChooseDestination */,
 				320CF72524CEDF37008B3EDE /* ChooseRecurringDonation */,
@@ -1201,14 +1201,14 @@
 			path = BackToSetupRecurringDonation;
 			sourceTree = "<group>";
 		};
-		DF1300F524F5601F00EE1785 /* HomeScreen */ = {
+		DF1300F524F5601F00EE1785 /* Overview */ = {
 			isa = PBXGroup;
 			children = (
 				DFCA4EE32500EF04003D1825 /* Models */,
 				DF1300F824F63EF600EE1785 /* Subviews */,
-				DF1300F624F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift */,
+				DF1300F624F5603E00EE1785 /* SetupRecurringDonationOverviewViewController.swift */,
 			);
-			path = HomeScreen;
+			path = Overview;
 			sourceTree = "<group>";
 		};
 		DF1300F824F63EF600EE1785 /* Subviews */ = {
@@ -1914,7 +1914,7 @@
 				A478D1D62512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift in Sources */,
 				FB872FED24C6E722005FF355 /* BackToChooseDestinationRoute.swift in Sources */,
 				FBC1859524C08431001A4C6B /* DestinationTableCell.swift in Sources */,
-				DF1300F724F5603E00EE1785 /* HomeScreenRecurringDonationViewController.swift in Sources */,
+				DF1300F724F5603E00EE1785 /* SetupRecurringDonationOverviewViewController.swift in Sources */,
 				27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */,
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
 				D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */,

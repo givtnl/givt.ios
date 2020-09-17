@@ -1,5 +1,5 @@
 //
-//  HomeScreenRecurringDonationViewController.swift
+//  SetupRecurringDonationOverviewViewController.swift
 //  ios
 //
 //  Created by Jonas Brabant on 25/08/2020.
@@ -12,7 +12,7 @@ import SVProgressHUD
 import AppCenterAnalytics
 import Mixpanel
 
-class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource
+class SetupRecurringDonationOverviewViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource
 {
     
     @IBOutlet var navBar: UINavigationItem!
@@ -125,7 +125,7 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     }
 }
 
-extension HomeScreenRecurringDonationViewController: RecurringRuleCancelDelegate {
+extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_STOP")
