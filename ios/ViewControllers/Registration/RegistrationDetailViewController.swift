@@ -10,6 +10,7 @@ import UIKit
 import PhoneNumberKit
 import SVProgressHUD
 import AppCenterAnalytics
+import Mixpanel
 
 class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     private var _navigationManager = NavigationManager.shared
@@ -47,6 +48,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         MSAnalytics.trackEvent("User entered 2nd step of registration")
+        Mixpanel.mainInstance().track(event: "User entered 2nd step of registration")
 
         setupPaymentView()
         
@@ -160,8 +162,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             }
             if (self.selectedCountry.shortName == AppConstants.CountryCodes.UnitedKingdom.rawValue || self.selectedCountry.shortName == AppConstants.CountryCodes.Guernsey.rawValue || self.selectedCountry.shortName == AppConstants.CountryCodes.Jersey.rawValue) {
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertSEPAMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertSEPAMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -186,8 +188,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             }
             if (self.selectedCountry.shortName != AppConstants.CountryCodes.UnitedKingdom.rawValue && self.selectedCountry.shortName != AppConstants.CountryCodes.Guernsey.rawValue && self.selectedCountry.shortName != AppConstants.CountryCodes.Jersey.rawValue) {
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertBACSMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    let alert = UIAlertController(title: NSLocalizedString("Important", comment: ""), message: NSLocalizedString("AlertBACSMessage", comment: "").replacingOccurrences(of: "{0}", with: self.selectedCountry.name), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
             }
@@ -278,9 +280,9 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: .UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
     }
     
     
@@ -422,7 +424,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
         if textField == iban || textField == accountNumber {
             if nextButton.isEnabled {
                 
-                nextButton.sendActions(for: UIControlEvents.touchUpInside)
+                nextButton.sendActions(for: UIControl.Event.touchUpInside)
             }
         }
         return false
@@ -469,8 +471,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
                     //registration not gelukt e
                     DispatchQueue.main.async {
                         SVProgressHUD.dismiss()
-                        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ErrorTextRegister", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                        let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ErrorTextRegister", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                             
                         }))
                         self.present(alert, animated: true, completion: nil)
@@ -479,11 +481,11 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
             } else {
                 SVProgressHUD.dismiss()
                 if AppServices.shared.isServerReachable {
-                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertActionStyle.default, handler: { action in
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Close", comment: ""), style: UIAlertAction.Style.default, handler: { action in
                         
                     }))
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("SendMessage", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("SendMessage", comment: ""), style: UIAlertAction.Style.default, handler: { (action) in
                         let vc = UIStoryboard(name: "AboutGivt", bundle: nil).instantiateViewController(withIdentifier: "AboutNavigationController") as! BaseNavigationController
                         self.present(vc, animated: true, completion: {
                             
@@ -597,8 +599,8 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
             theScrollView.contentInset.bottom = contentInsets.bottom + 20
             theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom + 20
             
@@ -606,7 +608,7 @@ class RegistrationDetailViewController: UIViewController, UITextFieldDelegate, U
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+        if ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             theScrollView.contentInset = .zero
             theScrollView.scrollIndicatorInsets = .zero
         }

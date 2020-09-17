@@ -21,9 +21,9 @@ class AboutViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         goBack.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textDidChange), name: UITextView.textDidChangeNotification, object: nil)
         // Do any additional setup after loading the view.
         textView.placeholder = NSLocalizedString("TypeMessage", comment: "")
         btnSend.setTitle(NSLocalizedString("Send", comment: ""), for: .normal)
@@ -44,7 +44,7 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         tapGesture.cancelsTouchesInView = true
         scrollView.addGestureRecognizer(tapGesture)
         
-        btnSend.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: UIControlState.disabled)
+        btnSend.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: UIControl.State.disabled)
         btnSend.isEnabled = false
     }
     
@@ -57,8 +57,8 @@ class AboutViewController: UIViewController, UITextViewDelegate {
     
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
-        var userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
         var contentInset:UIEdgeInsets = self.scrollView.contentInset

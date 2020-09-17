@@ -9,6 +9,7 @@
 import UIKit
 import AudioToolbox
 import AppCenterAnalytics
+import Mixpanel
 
 class CelebrateViewController: BaseScanViewController {
 
@@ -25,6 +26,7 @@ class CelebrateViewController: BaseScanViewController {
         super.viewDidLoad()
         LogService.shared.info(message: "CELEBRATE_COUNTDOWN")
         MSAnalytics.trackEvent("CELEBRATE_COUNTDOWN")
+        Mixpanel.mainInstance().track(event: "CELEBRATE_COUNTDOWN")
         
         UIApplication.shared.isIdleTimerDisabled = true
 
@@ -63,6 +65,7 @@ class CelebrateViewController: BaseScanViewController {
         if secondsLeft <= 0 {
             LogService.shared.info(message: "CELEBRATE_FLASH")
             MSAnalytics.trackEvent("CELEBRATE_FLASH")
+            Mixpanel.mainInstance().track(event: "CELEBRATE_FLASH")
             countdownTimer.invalidate()
             title = NSLocalizedString("AfterCelebrationTitle", comment: "")
             message.text = NSLocalizedString("AfterCelebrationMessage", comment: "")

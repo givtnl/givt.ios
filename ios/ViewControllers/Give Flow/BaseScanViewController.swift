@@ -42,12 +42,12 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
             self.bluetoothAlert = UIAlertController(
                 title: NSLocalizedString("AuthoriseBluetooth", comment: ""),
                 message: NSLocalizedString("AuthoriseBluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("AuthoriseBluetoothExtraText", comment: "") ,
-                preferredStyle: UIAlertControllerStyle.alert)
+                preferredStyle: UIAlertController.Style.alert)
         } else {
             self.bluetoothAlert = UIAlertController(
                 title: NSLocalizedString("ActivateBluetooth", comment: ""),
                 message: NSLocalizedString("BluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
-                preferredStyle: UIAlertControllerStyle.alert)
+                preferredStyle: UIAlertController.Style.alert)
         }
         bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("BluetoothErrorMessageAction", comment: ""), style: .cancel, handler: { action in
             if let after = after {
@@ -66,7 +66,7 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     
     fileprivate func popToRootWithDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-            if let amountVC = self.navigationController?.childViewControllers[0] as? AmountViewController {
+            if let amountVC = self.navigationController?.children[0] as? AmountViewController {
                 amountVC.clearAmounts()
             }
             self.navigationController?.popToRootViewController(animated: false)

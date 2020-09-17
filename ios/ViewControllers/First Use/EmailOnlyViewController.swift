@@ -10,15 +10,15 @@ import UIKit
 import SVProgressHUD
 
 class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
-    let subtiel : [NSAttributedStringKey: Any] = [
-        NSAttributedStringKey.font : UIFont(name: "Avenir-Light", size: 17)!,
-        NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1),
-        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleNone.rawValue]
+    let subtiel : [NSAttributedString.Key: Any] = [
+        NSAttributedString.Key.font : UIFont(name: "Avenir-Light", size: 17)!,
+        NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.3513332009, green: 0.3270585537, blue: 0.5397221446, alpha: 1),
+        NSAttributedString.Key.underlineStyle : 0]
     
-    let focus : [NSAttributedStringKey: Any] = [
-        NSAttributedStringKey.font : UIFont(name: "Avenir-Medium", size: 18)!,
-        NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),
-        NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue]
+    let focus : [NSAttributedString.Key: Any] = [
+        NSAttributedString.Key.font : UIFont(name: "Avenir-Medium", size: 18)!,
+        NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1),
+        NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue]
     
     private var _navigationManager = NavigationManager.shared
     private var _appServices = AppServices.shared
@@ -81,12 +81,11 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
     
-        NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: UITextField.textDidChangeNotification, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
  
         let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         
@@ -98,7 +97,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
         let attributedString = NSMutableAttributedString(string: NSLocalizedString("AlreadyAnAccount", comment: "") + " ", attributes: subtiel)
         attributedString.append(NSMutableAttributedString(string: NSLocalizedString("Login", comment: ""), attributes: focus))
         
-        loginButton.setAttributedTitle(attributedString, for: UIControlState.normal)
+        loginButton.setAttributedTitle(attributedString, for: UIControl.State.normal)
     
     }
     
@@ -131,8 +130,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
             scroll.contentInset.bottom = contentInsets.bottom + 20
             scroll.scrollIndicatorInsets.bottom = contentInsets.bottom + 20
             
@@ -140,7 +139,7 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+        if ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             scroll.contentInset = .zero
             scroll.scrollIndicatorInsets = .zero
         }
@@ -224,8 +223,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             } else {
                 DispatchQueue.main.async {
                     self.hideLoader()
-                    let alert = UIAlertController(title: NSLocalizedString("InvalidEmail", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                    let alert = UIAlertController(title: NSLocalizedString("InvalidEmail", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                         
                     }))
                     self.present(alert, animated: true, completion: nil)
@@ -245,8 +244,8 @@ class EmailOnlyViewController: UIViewController, UITextFieldDelegate {
             } else {
                 //registration failed somehow...?
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ErrorTextRegister", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                    let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ErrorTextRegister", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                         
                     }))
                     self.present(alert, animated: true, completion: nil)

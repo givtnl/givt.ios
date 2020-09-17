@@ -78,13 +78,13 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
             let overlay: UIView = UIView(frame: CGRect(x: 0, y: 0, width: containerVIew.frame.size.width, height: containerVIew.frame.size.height))
             overlay.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.1)
             containerVIew.addSubview(overlay)
-            containerVIew.bringSubview(toFront: overlay)
+            containerVIew.bringSubviewToFront(overlay)
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
             let alert = UIAlertController(title: NSLocalizedString("AccessDenied", comment: ""), message: NSLocalizedString("NoCameraAccess", comment: ""), preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OpenSettings", comment: ""), style: .default, handler: { (action) in
-                guard let url = URL(string: UIApplicationOpenSettingsURLString) else { return }
+                guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
                 UIApplication.shared.openURL(url)
             }))
             alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { (action) in
@@ -92,10 +92,10 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
             }))
             self.present(alert, animated: true, completion: nil)
         } else {
-            containerVIew.bringSubview(toFront: topLeft)
-            containerVIew.bringSubview(toFront: topRight)
-            containerVIew.bringSubview(toFront: bottomLeft)
-            containerVIew.bringSubview(toFront: bottomRight)
+            containerVIew.bringSubviewToFront(topLeft)
+            containerVIew.bringSubviewToFront(topRight)
+            containerVIew.bringSubviewToFront(bottomLeft)
+            containerVIew.bringSubviewToFront(bottomRight)
         }
     }
     
@@ -124,10 +124,10 @@ class QRViewController: BaseScanViewController, AVCaptureMetadataOutputObjectsDe
                     self.log.info(message: "Scanned a QR")
                     if object.stringValue! == "https://www.givtapp.net/download/" {
                         let alert = UIAlertController(title: NSLocalizedString("PromotionalQRTitle", comment: ""), message: NSLocalizedString("PromotionalQR", comment: ""), preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: UIAlertActionStyle.default, handler: { (action) in
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("TryAgain", comment: ""), style: UIAlertAction.Style.default, handler: { (action) in
                             self.session?.startRunning()
                         }))
-                        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.default, handler: {(action) in
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertAction.Style.default, handler: {(action) in
                             DispatchQueue.main.async {
                                 self.backPressed(self)
                             }

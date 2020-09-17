@@ -130,11 +130,11 @@ class CollectionView: UIControl {
     
     func styleDeleteButton() {
         deleteBtn.isHidden = true
-        deleteBtn.setImage(#imageLiteral(resourceName: "decrease"), for: UIControlState.normal)
-        deleteBtn.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10)
+        deleteBtn.setImage(#imageLiteral(resourceName: "decrease"), for: UIControl.State.normal)
+        deleteBtn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         deleteBtn.translatesAutoresizingMaskIntoConstraints = false
         deleteBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        deleteBtn.contentMode = UIViewContentMode.scaleAspectFit
+        deleteBtn.contentMode = UIView.ContentMode.scaleAspectFit
         deleteBtn.widthAnchor.constraint(equalToConstant: 40).isActive = true
         deleteBtn.translatesAutoresizingMaskIntoConstraints = false
         deleteBtn.alpha = 0.5
