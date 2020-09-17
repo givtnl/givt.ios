@@ -951,14 +951,14 @@
             <objects>
                 <viewController storyboardIdentifier="SetupNotificationRecurringDonationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="S1W-2y-7pj" userLabel="Setup Noficatie scherm" customClass="SetupNotificationRecurringDonationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6ZQ-HM-0JH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ib-rK-pk8">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="btnAllowPush" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eb-HM-aX4" userLabel="btnAllowPush" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="754" width="374" height="44"/>
+                                        <rect key="frame" x="20" y="744" width="374" height="44"/>
                                         <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
                                         <constraints>
@@ -1027,10 +1027,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ead-Iz-x2q">
-                                        <rect key="frame" x="20" y="452" width="374" height="282"/>
+                                        <rect key="frame" x="20" y="452" width="374" height="272"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voor een optimaal gebruik van de Givt app vragen we je om de Push notifcaties toe te staan. Merci eh..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uob-EV-UaN">
-                                                <rect key="frame" x="0.0" y="96.5" width="374" height="89"/>
+                                                <rect key="frame" x="0.0" y="91.5" width="374" height="89"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="89" id="MLm-AW-c7Q"/>
                                                 </constraints>
@@ -1084,8 +1084,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="btnAllowPush" destination="3eb-HM-aX4" id="Q9t-nd-0bc"/>
+                        <outlet property="confirmButton" destination="3eb-HM-aX4" id="aD7-6T-kNZ"/>
+                        <outlet property="descriptionLabel" destination="uob-EV-UaN" id="PLX-wm-WDw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYf-6f-SwV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
