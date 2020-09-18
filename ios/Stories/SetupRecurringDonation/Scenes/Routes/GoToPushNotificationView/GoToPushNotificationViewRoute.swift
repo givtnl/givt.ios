@@ -8,4 +8,4 @@
 
 import Foundation
 
-class GoToPushNotificationRequestRoute: NoResponseRequest { }
+class GoToPushNotificationViewRoute: NoResponseRequest { }

@@ -232,42 +232,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func registerHandlers() {
-        Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
+        // -- DONATIONS
+        Mediater.shared.registerHandler(handler: CreateDonationCommandHandler())
+        Mediater.shared.registerPreProcessor(processor: CreateDonationCommandValidator())
+        Mediater.shared.registerHandler(handler: DeleteDonationCommandHandler())
+        Mediater.shared.registerHandler(handler: ExportDonationCommandHandler())
+
+        // -- RECURRING DONATIONS
+        Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
+        Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
+        Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
+        Mediater.shared.registerPostProcessor(processor: CreateRecurringDonationCommandPostHandler())
+        Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
+        
+        //-- USER QUERIES
         Mediater.shared.registerHandler(handler: GetLocalUserConfigurationHandler())
+        Mediater.shared.registerHandler(handler: GetCountryQueryHandler())
+        
+        // -- COLLECT GROUPS
+        Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
+        
+        // -- NAVIGATION
         Mediater.shared.registerHandler(handler: OpenChooseAmountRouteHandler())
         Mediater.shared.registerHandler(handler: BackToChooseDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: BackToMainRouteHandler())
         Mediater.shared.registerHandler(handler: ChangeAmountLimitRouteHandler())
-        Mediater.shared.registerHandler(handler: CreateDonationCommandHandler())
         Mediater.shared.registerPreProcessor(processor: ChangeAmountLimitRoutePreHandler())
-        Mediater.shared.registerPreProcessor(processor: CreateDonationCommandValidator())
-        Mediater.shared.registerHandler(handler: DeleteDonationCommandHandler())
-        Mediater.shared.registerHandler(handler: ExportDonationCommandHandler())
         Mediater.shared.registerHandler(handler: GoToSafariRouteHandler())
         Mediater.shared.registerHandler(handler: FinalizeGivingRouteHandler())
-        Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
-        Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
-        
-        // Flow: SetupRecurringDonation
-        // -- Navigation
         Mediater.shared.registerHandler(handler: DestinationSelectedRouteHandler())
         Mediater.shared.registerHandler(handler: SetupRecurringDonationChooseDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: GoToChooseRecurringDonationRouteHandler())
         Mediater.shared.registerHandler(handler: BackToSetupRecurringDonationRouteHandler())
         Mediater.shared.registerHandler(handler: PopToRecurringDonationOverviewRouteHandler())
-        Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
-        Mediater.shared.registerHandler(handler: GoToPushNotificationRequestRouteHandler())
-        Mediater.shared.registerHandler(handler: DismissPushNotificationRequestRouteHandler())
         Mediater.shared.registerHandler(handler: BackToRecurringDonationOverviewRouteHandler())
+        Mediater.shared.registerHandler(handler: GoToPushNotificationViewRouteHandler())
+        Mediater.shared.registerHandler(handler: DismissPushNotificationViewRouteHandler())
+        
+        //-- INFRA
+        Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
 
-        // -- Commands
-        Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
-        Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
-        Mediater.shared.registerPostProcessor(processor: CreateRecurringDonationCommandPostHandler())
-        
-        Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
-        
-        //-- USER QUERIES
-        Mediater.shared.registerHandler(handler: GetCountryQueryHandler())
     }
 }

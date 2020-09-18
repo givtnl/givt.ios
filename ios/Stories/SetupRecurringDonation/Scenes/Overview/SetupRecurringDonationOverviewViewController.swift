@@ -63,7 +63,7 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
             NotificationManager.shared.areNotificationsEnabled(completion: { enabled in
                 if (!enabled) {
                     DispatchQueue.main.async {
-                        try? self.mediater.send(request: GoToPushNotificationRequestRoute(), withContext: self)
+                        try? self.mediater.send(request: GoToPushNotificationViewRoute(), withContext: self)
                     }
                 }
             })
