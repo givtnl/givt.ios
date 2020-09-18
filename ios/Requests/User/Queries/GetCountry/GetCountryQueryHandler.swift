@@ -17,15 +17,13 @@ internal struct GetCountryQueryHandler : RequestHandlerProtocol {
             retVal = country
         } else {
             LoginManager.shared.getUserExt { (userExtObject) in
-                if let country = userExtObject?.Country {
-                    retVal = country
-                }
+                retVal = userExtObject?.Country
             }
-            if retVal == nil {
+            guard let retVal = retVal else {
                 throw GetCountryError.CouldNotGetCountryFromUser
             }
+            try completion(retVal as! R.TResponse)
         }
-        try completion(retVal as! R.TResponse)
     }
     
     public func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
