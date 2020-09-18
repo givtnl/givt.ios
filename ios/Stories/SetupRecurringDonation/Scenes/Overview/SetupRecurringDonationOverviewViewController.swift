@@ -25,7 +25,9 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     @IBOutlet weak var recurringDonationsRuleOverview: UIView!
     @IBOutlet var createButton: CreateRecurringDonationButton!
     @IBOutlet var recurringDonationsOverviewTitleLabel: UILabel!
-        
+    
+    public var reloadData: Bool = true;
+    
     private var tempTableView: UITableView!
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
@@ -71,43 +73,50 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.isHidden = true
-        imageView.isHidden = false
-        emptyListLabel.text = "EmptyRecurringDonationList".localized
-        
-        SVProgressHUD.show()
+        if(reloadData) {
+            tableView.isHidden = true
+            imageView.isHidden = false
+            emptyListLabel.text = "EmptyRecurringDonationList".localized
+            
+            SVProgressHUD.show()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if(!reloadData) { return }
+        
         do {
             // load collectgroups with query
             self.recurringRules = try self.mediater.send(request: GetRecurringDonationsQuery())
-            
-            if let item = markedItem {
-                self.recurringRules.removeFirst()
-                self.recurringRules.insert(item, at: 0)
-            }
-            
-            tempTableView = tableView
-            
-            if self.recurringRules.count > 0 {
-                
-                if let view = self.imageView {
-                    self.tableView.isHidden = false
-                    view.isHidden = true
-                }
-                if let table = self.tempTableView {
-                    self.tableView = table
-                }
-                self.tableView.reloadData()
-                self.stackView.addArrangedSubview(self.tableView)
-                
-            }
         } catch  {
             self.tableView.removeFromSuperview()
             self.stackView.addSubview(self.imageView)
         }
+        
+        if let item = markedItem {
+            self.recurringRules.removeFirst()
+            self.recurringRules.insert(item, at: 0)
+        }
+        
+        tempTableView = tableView
+        
+        if self.recurringRules.count > 0 {
+            
+            if let view = self.imageView {
+                self.tableView.isHidden = false
+                view.isHidden = true
+            }
+            if let table = self.tempTableView {
+                self.tableView = table
+            }
+            self.tableView.reloadData()
+            self.stackView.addArrangedSubview(self.tableView)
+            
+        }
+        reloadData = true;
         SVProgressHUD.dismiss()
+        
+        
     }
     
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
