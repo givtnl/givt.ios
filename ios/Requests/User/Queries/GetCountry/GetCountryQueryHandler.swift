@@ -16,11 +16,8 @@ internal struct GetCountryQueryHandler : RequestHandlerProtocol {
             try? completion(country as! R.TResponse)
         } else {
             LoginManager.shared.getUserExt { (userExtObject) in
-                guard let retVal = userExtObject?.Country else {
-                    return
-                }
-                try? completion(retVal as! R.TResponse)
-            }
+                try? completion(userExtObject?.Country as! R.TResponse)
+            }            
         }
     }
     
