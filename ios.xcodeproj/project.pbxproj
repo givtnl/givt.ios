@@ -50,10 +50,10 @@
 		32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */; };
 		A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C296222AA5EF70098442C /* GiftAidViewController.swift */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
-		A478D1D42512386600251AFE /* GoToPushNotificationRequestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D32512386600251AFE /* GoToPushNotificationRequestRoute.swift */; };
-		A478D1D62512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D52512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift */; };
-		A478D1D92512C3AE00251AFE /* DismissPushNotificationRequestRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D82512C3AE00251AFE /* DismissPushNotificationRequestRoute.swift */; };
-		A478D1DB2512C3BA00251AFE /* DismissPushNotificationRequestRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1DA2512C3BA00251AFE /* DismissPushNotificationRequestRouteHandler.swift */; };
+		A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D32512386600251AFE /* GoToPushNotificationViewRoute.swift */; };
+		A478D1D62512387400251AFE /* GoToPushNotificationViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D52512387400251AFE /* GoToPushNotificationViewRouteHandler.swift */; };
+		A478D1D92512C3AE00251AFE /* DismissPushNotificationViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D82512C3AE00251AFE /* DismissPushNotificationViewRoute.swift */; };
+		A478D1DB2512C3BA00251AFE /* DismissPushNotificationViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1DA2512C3BA00251AFE /* DismissPushNotificationViewRouteHandler.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71DA04D20F758DD0084381E /* ExternalIntegration.swift */; };
@@ -363,10 +363,10 @@
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A40C296222AA5EF70098442C /* GiftAidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidViewController.swift; sourceTree = "<group>"; };
 		A46C8AEF210889A400988D6D /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
-		A478D1D32512386600251AFE /* GoToPushNotificationRequestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToPushNotificationRequestRoute.swift; sourceTree = "<group>"; };
-		A478D1D52512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToPushNotificationRequestRouteHandler.swift; sourceTree = "<group>"; };
-		A478D1D82512C3AE00251AFE /* DismissPushNotificationRequestRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPushNotificationRequestRoute.swift; sourceTree = "<group>"; };
-		A478D1DA2512C3BA00251AFE /* DismissPushNotificationRequestRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPushNotificationRequestRouteHandler.swift; sourceTree = "<group>"; };
+		A478D1D32512386600251AFE /* GoToPushNotificationViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToPushNotificationViewRoute.swift; sourceTree = "<group>"; };
+		A478D1D52512387400251AFE /* GoToPushNotificationViewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToPushNotificationViewRouteHandler.swift; sourceTree = "<group>"; };
+		A478D1D82512C3AE00251AFE /* DismissPushNotificationViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPushNotificationViewRoute.swift; sourceTree = "<group>"; };
+		A478D1DA2512C3BA00251AFE /* DismissPushNotificationViewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPushNotificationViewRouteHandler.swift; sourceTree = "<group>"; };
 		A4DE893F220C76F500379CFD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D71DA04D20F758DD0084381E /* ExternalIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalIntegration.swift; sourceTree = "<group>"; };
@@ -730,8 +730,8 @@
 		32CA17B024CED48100248053 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				A478D1D72512C38C00251AFE /* DismissPushNotificationRequest */,
-				A478D1D22512380800251AFE /* GoToPushNotificationRequest */,
+				A478D1D72512C38C00251AFE /* DismissPushNotificationView */,
+				A478D1D22512380800251AFE /* GoToPushNotificationView */,
 				FB56C55E2510FFE90099EC62 /* BackToRecurringDonationOverview */,
 				DFFF7E8C24F935C00098E4F6 /* PopToRecurringDonationOverview */,
 				DF05015724F8B48F006196A3 /* BackToSetupRecurringDonation */,
@@ -791,22 +791,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A478D1D22512380800251AFE /* GoToPushNotificationRequest */ = {
+		A478D1D22512380800251AFE /* GoToPushNotificationView */ = {
 			isa = PBXGroup;
 			children = (
-				A478D1D32512386600251AFE /* GoToPushNotificationRequestRoute.swift */,
-				A478D1D52512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift */,
+				A478D1D32512386600251AFE /* GoToPushNotificationViewRoute.swift */,
+				A478D1D52512387400251AFE /* GoToPushNotificationViewRouteHandler.swift */,
 			);
-			path = GoToPushNotificationRequest;
+			path = GoToPushNotificationView;
 			sourceTree = "<group>";
 		};
-		A478D1D72512C38C00251AFE /* DismissPushNotificationRequest */ = {
+		A478D1D72512C38C00251AFE /* DismissPushNotificationView */ = {
 			isa = PBXGroup;
 			children = (
-				A478D1D82512C3AE00251AFE /* DismissPushNotificationRequestRoute.swift */,
-				A478D1DA2512C3BA00251AFE /* DismissPushNotificationRequestRouteHandler.swift */,
+				A478D1D82512C3AE00251AFE /* DismissPushNotificationViewRoute.swift */,
+				A478D1DA2512C3BA00251AFE /* DismissPushNotificationViewRouteHandler.swift */,
 			);
-			path = DismissPushNotificationRequest;
+			path = DismissPushNotificationView;
 			sourceTree = "<group>";
 		};
 		D72B707E1F44832D0022BD29 /* Services */ = {
@@ -1931,7 +1931,7 @@
 			files = (
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
-				A478D1D62512387400251AFE /* GoToPushNotificationRequestRouteHandler.swift in Sources */,
+				A478D1D62512387400251AFE /* GoToPushNotificationViewRouteHandler.swift in Sources */,
 				FB872FED24C6E722005FF355 /* BackToChooseDestinationRoute.swift in Sources */,
 				FBC1859524C08431001A4C6B /* DestinationTableCell.swift in Sources */,
 				DF1300F724F5603E00EE1785 /* SetupRecurringDonationOverviewViewController.swift in Sources */,
@@ -2037,7 +2037,7 @@
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
 				DF05015924F8B4C6006196A3 /* BackToSetupRecurringDonationRoute.swift in Sources */,
-				A478D1D92512C3AE00251AFE /* DismissPushNotificationRequestRoute.swift in Sources */,
+				A478D1D92512C3AE00251AFE /* DismissPushNotificationViewRoute.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
@@ -2097,7 +2097,7 @@
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				DF05015624F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift in Sources */,
-				A478D1D42512386600251AFE /* GoToPushNotificationRequestRoute.swift in Sources */,
+				A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */,
 				DF3FD7882512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift in Sources */,
 				DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
@@ -2108,7 +2108,7 @@
 				27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */,
 				D7F0D2A521639544004770F8 /* NotificationExtensions.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */,
-				A478D1DB2512C3BA00251AFE /* DismissPushNotificationRequestRouteHandler.swift in Sources */,
+				A478D1DB2512C3BA00251AFE /* DismissPushNotificationViewRouteHandler.swift in Sources */,
 				FB87301F24C865BF005FF355 /* GoToSafariRoute.swift in Sources */,
 				FB872FFB24C8072A005FF355 /* CreateDonationCommandHandler.swift in Sources */,
 				FBC1857C24C06507001A4C6B /* GetCollectGroupsQueryHandler.swift in Sources */,

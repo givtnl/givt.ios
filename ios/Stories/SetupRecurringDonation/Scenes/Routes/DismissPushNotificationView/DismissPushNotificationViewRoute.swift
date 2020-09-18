@@ -8,4 +8,4 @@
 
 import Foundation
 
-class DismissPushNotificationRequestRoute: NoResponseRequest { }
+class DismissPushNotificationViewRoute: NoResponseRequest { }

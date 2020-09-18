@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GoToPushNotificationRequestRouteHandler: RequestHandlerWithContextProtocol {
+class GoToPushNotificationViewRouteHandler: RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let vc = UIStoryboard.init(name: "SetupRecurringDonation", bundle: nil)
             .instantiateViewController(withIdentifier: String(describing: SetupNotificationRecurringDonationViewController.self)) as! SetupNotificationRecurringDonationViewController
@@ -18,6 +18,6 @@ class GoToPushNotificationRequestRouteHandler: RequestHandlerWithContextProtocol
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is GoToPushNotificationRequestRoute
+        return request is GoToPushNotificationViewRoute
     }
 }
