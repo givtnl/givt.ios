@@ -966,7 +966,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "RecurringGiftsSetupCreate" = "Schedule your";
 "RecurringGiftsSetupRecurringGift" = "recurring donation";
 "RecurringDonationYouGive" = "you give";
-"RecurringDonationStops" = "Last donation on {0}";
+"RecurringDonationStops" = "Recurring donation will stop on {0}";
 "SelectRecipient" = "Select recipient";
 "SetupRecurringDonationFailed" = "The recurring donation was not set up successfully. Please try again later.";
 
@@ -987,6 +987,6 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "CancelRecurringDonationFailed" = "The recurring donation was not cancelled successfully. Please try again later.";
 
 /*Fuzzy*/
-"PushnotificationRequestScreenTitle" = "Pushnotifications";
-"PushnotificationRequestScreenDescription" = "We will send you a message when future donations will be debited.\nWould you like to change your settings so that we can send you push notifications?";
+"PushnotificationRequestScreenTitle" = "Push notifications";
+"PushnotificationRequestScreenDescription" = "We would like to keep you posted on when the next donation will be collected from your account. At the moment we don't have permission to send you messages. Could you please fix that?";
 "PushnotificationRequestScreenButtonYes" = "Yes, I will change my settings";
