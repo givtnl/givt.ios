@@ -284,7 +284,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     }
     
     @objc func handleAmountEditingChanged() {
-        if(amountView.amount >= 0.5 && amountView.amount <= 99999) {
+        if amountView.amount >= 0.5 && amountView.amount <= 99999 {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
         } else {
             amountView.bottomBorderColor = ColorHelper.GivtRed
@@ -292,7 +292,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     }
     
     @objc func handleAmountEditingDidBegin() {
-        if(amountView.amount == 0) {
+        if amountView.amount == 0 {
             amountView.bottomBorderColor = .clear
         }
     }
@@ -300,9 +300,9 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
         
-        if(amountView.amount < 0.5) {
+        if amountView.amount > 0 && amountView.amount < 0.5 {
             showAmountTooLow()
-        } else if (amountView.amount > 99999) {
+        } else if amountView.amount > 99999 {
             displayAmountTooHigh()
         }
         ensureButtonHasCorrectState()
