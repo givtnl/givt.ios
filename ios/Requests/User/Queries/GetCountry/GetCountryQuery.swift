@@ -9,5 +9,5 @@
 import Foundation
 
 internal struct GetCountryQuery : RequestProtocol {
-    typealias TResponse = String
+    typealias TResponse = String?
 }
