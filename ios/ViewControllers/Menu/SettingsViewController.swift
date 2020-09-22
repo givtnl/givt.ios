@@ -11,6 +11,7 @@ import SVProgressHUD
 import AVFoundation
 import LGSideMenuController
 import AppCenterAnalytics
+import Mixpanel
 
 class SettingsViewController: BaseMenuViewController {
     var logService: LogService = LogService.shared
@@ -277,7 +278,7 @@ class SettingsViewController: BaseMenuViewController {
         logService.info(message: "User is opening history")
         if GivtManager.shared.hasOfflineGifts() {
             let alert = UIAlertController(title: NSLocalizedString("OfflineGiftsTitle", comment: ""), message: NSLocalizedString("OfflineGiftsMessage", comment: ""), preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         } else {
             let vc = storyboard?.instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
@@ -320,6 +321,7 @@ class SettingsViewController: BaseMenuViewController {
     
     private func setupRecurringDonation() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_MENU_CLICKED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_MENU_CLICKED")
         let vc = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController()
         vc?.modalPresentationStyle = .fullScreen
         vc?.transitioningDelegate = self.slideFromRightAnimation

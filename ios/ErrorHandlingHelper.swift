@@ -33,7 +33,7 @@ class ErrorHandlingHelper {
         
         let alert = UIAlertController(title: title,
                                       message: message,
-                                      preferredStyle: UIAlertControllerStyle.alert)
+                                      preferredStyle: UIAlertController.Style.alert)
         
         let cancelAction = UIAlertAction(title: "OK",
                                          style: .cancel, handler: nil)

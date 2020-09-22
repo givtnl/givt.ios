@@ -13,20 +13,32 @@ class CreateRecurringDonationCommand : Codable, RequestProtocol {
     typealias TResponse = Bool
     
     var userId: UUID? = nil
+    
     let amountPerTurn: Decimal
     let namespace: String
     let endsAfterTurns: Int
-    let cronExpression: String
     let startDate: String
-    var recurringDonationId: UUID? = nil
     var country: String
+    
+    var recurringDonationId: UUID? = nil
+    var cronExpression: String? = nil
+    
+    let frequency: Frequency
         
-    internal init(amountPerTurn: Decimal, namespace: String, endsAfterTurns: Int, cronExpression: String, startDate: String, country: String) {
+    internal init(amountPerTurn: Decimal, namespace: String, endsAfterTurns: Int, startDate: String, country: String, frequency: Frequency) {
         self.amountPerTurn = amountPerTurn
         self.namespace = namespace
         self.endsAfterTurns = endsAfterTurns
-        self.cronExpression = cronExpression
         self.startDate = startDate
         self.country = country
+        self.frequency = frequency
     }
+}
+
+enum Frequency: Int, Codable {
+    case Weekly = 0
+    case Monthly = 1
+    case ThreeMonthly = 2
+    case SixMonthly = 3
+    case Yearly = 4
 }

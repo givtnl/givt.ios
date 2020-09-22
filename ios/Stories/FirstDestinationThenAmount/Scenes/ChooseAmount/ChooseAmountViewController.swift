@@ -11,6 +11,7 @@ import MaterialShowcase
 import AppCenterCrashes
 import AppCenterAnalytics
 import SVProgressHUD
+import Mixpanel
 
 class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
@@ -181,8 +182,8 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
     fileprivate func showAmountTooLow() {
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
         let alert = UIAlertController(title: "AmountTooLow".localized,
-                                      message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in  }))
+                                      message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
     
@@ -190,7 +191,7 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
         let alert = UIAlertController(
             title: "AmountTooHigh".localized,
             message: "AmountLimitExceeded".localized,
-            preferredStyle: UIAlertControllerStyle.alert)
+            preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "ChooseLowerAmount".localized, style: .default) { action in })
         

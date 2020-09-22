@@ -29,7 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         txtPassword.placeholder = NSLocalizedString("Password", comment: "")
         txtTitle.text = NSLocalizedString("LoginText", comment: "")
         btnForgotPassword.setTitle(NSLocalizedString("ForgotPassword", comment: ""), for: .normal)
-        btnLogin.setTitle(NSLocalizedString("Login", comment: ""), for: UIControlState.normal)
+        btnLogin.setTitle(NSLocalizedString("Login", comment: ""), for: UIControl.State.normal)
         txtUserName.delegate = self
         txtPassword.delegate = self
         var email = ""
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @objc func keyboardWillShow(notification: NSNotification) {
         //To retrieve keyboard size, uncomment following line
-        let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
+        let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
         bottomConstraint.constant = (keyboardSize?.height)! + 20
         
         UIView.animate(withDuration: 0.3) {

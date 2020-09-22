@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import AppCenterAnalytics
+import Mixpanel
 
 class RegistrationViewController: UIViewController, UITextFieldDelegate {
 
@@ -34,6 +35,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         MSAnalytics.trackEvent("User started registration")
+        Mixpanel.mainInstance().track(event: "User started registration")
 
         initButtonsWithTags()
         initTermsText()
@@ -98,10 +100,10 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: UITextField.textDidChangeNotification, object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -211,8 +213,8 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let contentInsets = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0)
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
             theScrollView.contentInset.bottom = contentInsets.bottom + 20
             theScrollView.scrollIndicatorInsets.bottom = contentInsets.bottom + 20
             
@@ -220,7 +222,7 @@ class RegistrationViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+        if ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             theScrollView.contentInset = .zero
             theScrollView.scrollIndicatorInsets = .zero
         }

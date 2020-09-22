@@ -11,6 +11,7 @@ import UIKit
 import SwiftClient
 import LocalAuthentication
 import CoreTelephony
+import Mixpanel
 
 class LoginManager {
     
@@ -101,6 +102,9 @@ class LoginManager {
                                 config.email = email
                               
                                 UserDefaults.standard.userExt = config
+
+                                Mixpanel.mainInstance().identify(distinctId: config.guid)
+
                                 GivtManager.shared.getBeaconsFromOrganisation(completionHandler: { (status) in
                                     //do nothing
                                 })
@@ -667,6 +671,9 @@ class LoginManager {
             self.userClaim = .give
         }
         
+        if let userId = UserDefaults.standard.userExt?.guid {
+            Mixpanel.mainInstance().identify(distinctId: userId)
+        }
     }
     
     func logout() {

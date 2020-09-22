@@ -21,7 +21,7 @@ class FeaturesNavigationController: UINavigationController {
         self.navigationBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         self.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationBar.shadowImage = UIImage()
-        if let vc = self.childViewControllers.first as? FeaturesFirstViewController {
+        if let vc = self.children.first as? FeaturesFirstViewController {
             vc.btnBackVisible = btnBackVisible
             vc.btnCloseVisible = btnCloseVisible
             vc.btnSkipVisible = btnSkipVisible

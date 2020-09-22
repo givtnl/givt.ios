@@ -82,7 +82,7 @@ class ExternalSuggestionView: UIView {
     }()
     
     let button: CustomButton = {
-        let btn = CustomButton(type: UIButtonType.custom)
+        let btn = CustomButton(type: UIButton.ButtonType.custom)
         btn.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
         btn.highlightedBGColor = #colorLiteral(red: 0.1098039216, green: 0.662745098, blue: 0.4235294118, alpha: 1)
         btn.ogBGColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
@@ -95,7 +95,7 @@ class ExternalSuggestionView: UIView {
     let cancelButton: UIButton = {
         let btn = UIButton(type: .custom)
         btn.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-        btn.setImage(#imageLiteral(resourceName: "closepurple"), for: UIControlState.normal)
+        btn.setImage(#imageLiteral(resourceName: "closepurple"), for: UIControl.State.normal)
         btn.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         return btn
     }()

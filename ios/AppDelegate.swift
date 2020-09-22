@@ -13,6 +13,7 @@ import AppCenterCrashes
 import AppCenterPush
 import TrustKit
 import UserNotifications
+import Mixpanel
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,9 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var loginManager: LoginManager = LoginManager.shared
     
+    var mixpanel: MixpanelInstance = Mixpanel.initialize(token: "408ddc540995656bdbd17c2f61df7ce2")
+    
     var coreDataContext = CoreDataContext()
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
                 MSAnalytics.self,
@@ -50,12 +53,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkIfTempUser()
         doMagicForPresets()
         
-        if let remoteNotif = launchOptions?[UIApplicationLaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
+        if let remoteNotif = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
             DispatchQueue.global(qos: .background).async {
                 NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
             }
         }
         
+        mixpanel.serverURL = "https://api-eu.mixpanel.com"
+        mixpanel.flushInterval = AppConstants.mixpanelConfig.flushInterval
+
         return true
     }
     
@@ -168,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    internal func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if let host = url.host, host == "sharemygivt" {
             if var topController = UIApplication.shared.keyWindow?.rootViewController {
                 while let presentedViewController = topController.presentedViewController {
@@ -226,36 +232,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func registerHandlers() {
-        Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
+        // -- DONATIONS
+        Mediater.shared.registerHandler(handler: CreateDonationCommandHandler())
+        Mediater.shared.registerPreProcessor(processor: CreateDonationCommandValidator())
+        Mediater.shared.registerHandler(handler: DeleteDonationCommandHandler())
+        Mediater.shared.registerHandler(handler: ExportDonationCommandHandler())
+
+        // -- RECURRING DONATIONS
+        Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
+        Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
+        Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
+        Mediater.shared.registerPostProcessor(processor: CreateRecurringDonationCommandPostHandler())
+        Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
+        
+        //-- USER QUERIES
         Mediater.shared.registerHandler(handler: GetLocalUserConfigurationHandler())
+        Mediater.shared.registerHandler(handler: GetCountryQueryHandler())
+        
+        // -- COLLECT GROUPS
+        Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
+        
+        // -- NAVIGATION
         Mediater.shared.registerHandler(handler: OpenChooseAmountRouteHandler())
         Mediater.shared.registerHandler(handler: BackToChooseDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: BackToMainRouteHandler())
         Mediater.shared.registerHandler(handler: ChangeAmountLimitRouteHandler())
-        Mediater.shared.registerHandler(handler: CreateDonationCommandHandler())
         Mediater.shared.registerPreProcessor(processor: ChangeAmountLimitRoutePreHandler())
-        Mediater.shared.registerPreProcessor(processor: CreateDonationCommandValidator())
-        Mediater.shared.registerHandler(handler: DeleteDonationCommandHandler())
-        Mediater.shared.registerHandler(handler: ExportDonationCommandHandler())
         Mediater.shared.registerHandler(handler: GoToSafariRouteHandler())
         Mediater.shared.registerHandler(handler: FinalizeGivingRouteHandler())
-        Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
-        Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
-        
-        // Flow: SetupRecurringDonation
-        // -- Navigation
         Mediater.shared.registerHandler(handler: DestinationSelectedRouteHandler())
         Mediater.shared.registerHandler(handler: SetupRecurringDonationChooseDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: GoToChooseRecurringDonationRouteHandler())
         Mediater.shared.registerHandler(handler: BackToSetupRecurringDonationRouteHandler())
         Mediater.shared.registerHandler(handler: PopToRecurringDonationOverviewRouteHandler())
         Mediater.shared.registerHandler(handler: BackToRecurringDonationOverviewRouteHandler())
-
-        // -- Commands
-        Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
-        Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
-        Mediater.shared.registerPostProcessor(processor: CreateRecurringDonationCommandPostHandler())
+        Mediater.shared.registerHandler(handler: GoToPushNotificationViewRouteHandler())
+        Mediater.shared.registerHandler(handler: DismissPushNotificationViewRouteHandler())
         
-        Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
+        //-- INFRA
+        Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
+
     }
 }

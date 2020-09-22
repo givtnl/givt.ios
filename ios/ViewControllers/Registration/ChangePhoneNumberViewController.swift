@@ -31,9 +31,9 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
         
         titelLabel.text = NSLocalizedString("ChangePhone", comment: "")
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: Notification.Name.UITextFieldTextDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: UITextField.textDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: self.view.window)
         
 //         initialize picker view
         mobilePrefixPickerView = UIPickerView()
@@ -75,7 +75,7 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
    @objc func keyboardWillShow(notification: NSNotification) {
     let userInfo = notification.userInfo!
 
-    var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+    var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 
     keyboardFrame = self.view.convert(keyboardFrame, from: nil)
 
@@ -128,8 +128,8 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
             LoginManager.shared.getUserExt(completion: {(userExt) in
                 guard var userExt = userExt else {
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                        let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
 
                         }))
                         SVProgressHUD.dismiss()
@@ -147,8 +147,8 @@ class ChangePhoneNumberViewController : UIViewController, UITextFieldDelegate, U
                         }
                     } else {
                         DispatchQueue.main.async {
-                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
 
                             }))
                             self.present(alert, animated: true, completion: nil)

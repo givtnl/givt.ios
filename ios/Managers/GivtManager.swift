@@ -14,6 +14,7 @@ import SwiftClient
 import CoreLocation
 import Reachability
 import AppCenterAnalytics
+import Mixpanel
 
 struct BeaconList: Codable {
     var OrgBeacons: [OrgBeacon]
@@ -209,7 +210,8 @@ final class GivtManager: NSObject {
         }
         self.cacheGivt(transactions: transactions)
         giveInBackground(transactions: transactions)
-        MSAnalytics.trackEvent("GIVING_FINISHED", withProperties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
+        MSAnalytics.trackEvent("GIVING_FINISHED", withProperties:["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
+        Mixpanel.mainInstance().track(event: "GIVING_FINISHED", properties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
     }
     
@@ -273,7 +275,8 @@ final class GivtManager: NSObject {
                         afterGivt(-1, false, transactions, self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!)!)
                     }
                 } else {
-                    MSAnalytics.trackEvent("GIVING_FINISHED", withProperties: ["namespace": String((transactions[0].beaconId).prefix(20))])
+                    MSAnalytics.trackEvent("GIVING_FINISHED", withProperties:["namespace": String((transactions[0].beaconId).prefix(20))])
+                    Mixpanel.mainInstance().track(event: "GIVING_FINISHED", properties: ["namespace": String((transactions[0].beaconId).prefix(20))])
                     self.delegate?.onGivtProcessed(transactions: transactions,
                                                    organisationName: self.getOrganisationName(organisationNameSpace: bestBeacon.namespace!),
                                                    canShare: self.canShare(id: bestBeacon.beaconId!))

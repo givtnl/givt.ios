@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import AppCenterAnalytics
 import UserNotifications
+import Mixpanel
 
 class CelebrationQueueViewController : BaseScanViewController, NotificationManagerDelegate {
     
@@ -28,6 +29,7 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
     override func viewDidLoad() {
         LogService.shared.info(message: "CELEBRATE_QUEUE")
         MSAnalytics.trackEvent("CELEBRATE_QUEUE")
+        Mixpanel.mainInstance().track(event: "CELEBRATE_QUEUE")
 
         UIApplication.shared.isIdleTimerDisabled = true
 
@@ -36,10 +38,10 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
         secondaryTitelLabel.text = NSLocalizedString("CelebrationQueueText", comment: "")
         
         // set button texts
-        buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControlState.normal)
+        buttonEnablePushNot.setTitle(NSLocalizedString("CelebrationEnablePushNotification", comment: ""), for: UIControl.State.normal)
         buttonEnablePushNot.accessibilityLabel = NSLocalizedString("CelebrationEnablePushNotification", comment: "")
         
-        buttonCancelFlashGivt.setTitle(NSLocalizedString("CelebrationQueueCancel", comment: ""), for: UIControlState.normal)
+        buttonCancelFlashGivt.setTitle(NSLocalizedString("CelebrationQueueCancel", comment: ""), for: UIControl.State.normal)
         buttonCancelFlashGivt.accessibilityLabel = NSLocalizedString("CelebrationQueueCancel", comment: "")
         
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled
@@ -79,6 +81,7 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
         alert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .default, handler: { (action) in
             LogService.shared.info(message: "CELEBRATE_QUEUE_CANCEL")
             MSAnalytics.trackEvent("CELEBRATE_QUEUE_CANCEL")
+            Mixpanel.mainInstance().track(event: "CELEBRATE_QUEUE_CANCEL")
             self.onGivtProcessed(transactions: self.transactions, organisationName: self.organisation, canShare: true)
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: { (action) in
@@ -109,6 +112,6 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
     }
     
     @IBAction func activatePushNotfications(_ sender: Any) {
-        NotificationManager.shared.requestNotificationPermission()
+        NotificationManager.shared.requestNotificationPermission(completion: { _ in } )
     }
 }

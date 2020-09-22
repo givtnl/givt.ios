@@ -25,8 +25,8 @@ class BacsDetailViewController: UIViewController {
         }
         
         title = NSLocalizedString("BacsVerifyTitle", comment: "")
-        readGuarantee.setTitle(NSLocalizedString("BacsReadDDGuarantee", comment: ""), for: UIControlState.normal)
-        done.setTitle(NSLocalizedString("Continue", comment: ""), for: UIControlState.normal)
+        readGuarantee.setTitle(NSLocalizedString("BacsReadDDGuarantee", comment: ""), for: UIControl.State.normal)
+        done.setTitle(NSLocalizedString("Continue", comment: ""), for: UIControl.State.normal)
         personalInformationText.text = NSLocalizedString("BacsVerifyBodyDetails", comment: "")
             .replacingOccurrences(of: "{0}", with: "\(userExtension.FirstName) \(userExtension.LastName)")
             .replacingOccurrences(of: "{1}", with: "\(userExtension.Address), \(userExtension.PostalCode) \(userExtension.City) \(country?.name ?? "undefined")")
@@ -69,8 +69,8 @@ class BacsDetailViewController: UIViewController {
                             self.navigationController!.pushViewController(vc, animated: true)
                         }
                     } else {
-                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
+                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (actions) in
                             DispatchQueue.main.async {
                                 self.dismiss(animated: true, completion: nil)
                                 NavigationManager.shared.loadMainPage(animated: false)

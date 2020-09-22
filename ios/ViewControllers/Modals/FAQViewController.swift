@@ -8,6 +8,8 @@
 
 import UIKit
 import AppCenterAnalytics
+import Mixpanel
+
 
 class FAQViewController: UIViewController, OpenedQuestionDelegate {
     @IBOutlet var scrollView: UIScrollView!
@@ -26,7 +28,8 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         /* when answer is opened, we want to scroll to the top of the Question view */
         scrollView.layoutIfNeeded()
         scrollView.scrollToView(view: sender, animated: false)
-        MSAnalytics.trackEvent("OPEN_FAQ_QUESTION", withProperties: ["question": sender.questionString])
+        MSAnalytics.trackEvent("OPEN_FAQ_QUESTION", withProperties:["question": sender.questionString])
+        Mixpanel.mainInstance().track(event: "OPEN_FAQ_QUESTION", properties: ["question": sender.questionString])
         LogService.shared.info(message: "OPEN_FAQ_QUESTION \(sender.questionString)")
     }
     
@@ -71,6 +74,8 @@ class FAQViewController: UIViewController, OpenedQuestionDelegate {
         super.viewWillAppear(animated)
         
         MSAnalytics.trackEvent("OPEN_FAQ")
+        
+        Mixpanel.mainInstance().track(event: "OPEN_FAQ")
         
         closeButton.accessibilityLabel = NSLocalizedString("Close", comment: "")
         

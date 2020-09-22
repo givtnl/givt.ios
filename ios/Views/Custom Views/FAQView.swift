@@ -154,7 +154,7 @@ class FAQView: UIView, WKNavigationDelegate, WKUIDelegate {
             videoWrapper?.heightAnchor.constraint(equalToConstant: 210).isActive = true
             
             if indicator == nil {
-                indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+                indicator = UIActivityIndicatorView(style: .whiteLarge)
                 indicator!.translatesAutoresizingMaskIntoConstraints = false
                 indicator!.startAnimating()
                 indicator!.hidesWhenStopped = true
