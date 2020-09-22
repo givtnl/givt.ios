@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import AppCenterAnalytics
+import Mixpanel
 
 class SPInfoViewController: UIViewController {
     private var _navigationManager = NavigationManager.shared
@@ -24,6 +25,7 @@ class SPInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MSAnalytics.trackEvent("User started SEPA mandate flow")
+        Mixpanel.mainInstance().track(event: "User started SEPA mandate flow")
 
         backButton.isEnabled = false
         headerText.text = NSLocalizedString("SlimPayInformation", comment: "")
@@ -88,7 +90,7 @@ class SPInfoViewController: UIViewController {
                     }
                 } else {
                     self.log.warning(message: "Mandate url is empty, what is going on?")
-                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                         NavigationManager.shared.loadMainPage()
                         self.dismiss(animated: true, completion: {})

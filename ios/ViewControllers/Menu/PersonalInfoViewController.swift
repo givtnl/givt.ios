@@ -92,8 +92,8 @@ class PersonalInfoViewController: UIViewController, UITextFieldDelegate {
                 SVProgressHUD.dismiss()
                 self.uExt = userExtObject
                 guard let userExt = userExtObject else {
-                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
                         DispatchQueue.main.async {
                             self.backPressed(self)
                         }
@@ -189,8 +189,8 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                         guard var userExt = userExt else
                         {
                             DispatchQueue.main.async {
-                                let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                                     
                                 }))
                                 SVProgressHUD.dismiss()
@@ -207,8 +207,8 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                                 }
                             } else {
                                 DispatchQueue.main.async {
-                                    let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                    let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                                         
                                     }))
                                     self.present(alert, animated: true, completion: nil)
@@ -251,8 +251,8 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                                 self.backPressed(self)
                             }
                         } else {
-                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil ))
+                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil ))
                             
                             if(result.error == 111){
                                 alert.title = NSLocalizedString("DDIFailedTitle", comment: "")
@@ -298,8 +298,8 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                                         }
                                     } else {
                                         DispatchQueue.main.async {
-                                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                                                 
                                             }))
                                             self.present(alert, animated: true, completion: nil)
@@ -310,8 +310,8 @@ extension PersonalInfoViewController: UITableViewDelegate, UITableViewDataSource
                         } else {
                             SVProgressHUD.dismiss()
                             DispatchQueue.main.async {
-                                let alert = UIAlertController(title: NSLocalizedString("InvalidEmail", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                                let alert = UIAlertController(title: NSLocalizedString("InvalidEmail", comment: ""), message: NSLocalizedString("ErrorTLDCheck", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                                     
                                 }))
                                 self.present(alert, animated: true, completion: nil)

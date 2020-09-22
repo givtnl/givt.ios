@@ -1,5 +1,5 @@
 //
-//  HomeScreenRecurringDonationViewController.swift
+//  SetupRecurringDonationOverviewViewController.swift
 //  ios
 //
 //  Created by Jonas Brabant on 25/08/2020.
@@ -10,8 +10,9 @@ import UIKit
 import Foundation
 import SVProgressHUD
 import AppCenterAnalytics
+import Mixpanel
 
-class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource
+class SetupRecurringDonationOverviewViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource
 {
     
     @IBOutlet var navBar: UINavigationItem!
@@ -24,7 +25,9 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
     @IBOutlet weak var recurringDonationsRuleOverview: UIView!
     @IBOutlet var createButton: CreateRecurringDonationButton!
     @IBOutlet var recurringDonationsOverviewTitleLabel: UILabel!
-        
+    
+    public var reloadData: Bool = true;
+    
     private var tempTableView: UITableView!
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
@@ -48,7 +51,8 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
         recurringDonationsRuleOverview.layer.cornerRadius = 8
         
         MSAnalytics.trackEvent("RECURRING_DONATIONS_OVERVIEW_OPENED")
-
+        
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_OVERVIEW_OPENED")
     }
     
     @objc func recurringDonationCreated(notification: NSNotification) {
@@ -58,70 +62,88 @@ class HomeScreenRecurringDonationViewController: UIViewController,  UITableViewD
                 recurringRule.shouldShowNewItemMarker = true
                 self.markedItem = recurringRule
             }
+            NotificationManager.shared.areNotificationsEnabled(completion: { enabled in
+                if (!enabled) {
+                    DispatchQueue.main.async {
+                        try? self.mediater.send(request: GoToPushNotificationViewRoute(), withContext: self)
+                    }
+                }
+            })
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.isHidden = true
-        imageView.isHidden = false
-        emptyListLabel.text = "EmptyRecurringDonationList".localized
-        
-        SVProgressHUD.show()
+        if(reloadData) {
+            tableView.isHidden = true
+            imageView.isHidden = false
+            emptyListLabel.text = "EmptyRecurringDonationList".localized
+            
+            SVProgressHUD.show()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if(!reloadData) { return }
+        
         do {
             // load collectgroups with query
             self.recurringRules = try self.mediater.send(request: GetRecurringDonationsQuery())
-            
-            if let item = markedItem {
-                self.recurringRules.removeFirst()
-                self.recurringRules.insert(item, at: 0)
-            }
-            
-            tempTableView = tableView
-            
-            if self.recurringRules.count > 0 {
-                
-                if let view = self.imageView {
-                    self.tableView.isHidden = false
-                    view.isHidden = true
-                }
-                if let table = self.tempTableView {
-                    self.tableView = table
-                }
-                self.tableView.reloadData()
-                self.stackView.addArrangedSubview(self.tableView)
-                
-            }
         } catch  {
             self.tableView.removeFromSuperview()
             self.stackView.addSubview(self.imageView)
         }
+        
+        if let item = markedItem {
+            self.recurringRules.removeFirst()
+            self.recurringRules.insert(item, at: 0)
+        }
+        
+        tempTableView = tableView
+        
+        if self.recurringRules.count > 0 {
+            
+            if let view = self.imageView {
+                self.tableView.isHidden = false
+                view.isHidden = true
+            }
+            if let table = self.tempTableView {
+                self.tableView = table
+            }
+            self.tableView.reloadData()
+            self.stackView.addArrangedSubview(self.tableView)
+            
+        }
+        reloadData = true;
         SVProgressHUD.dismiss()
+        
+        
     }
     
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
         resetSelectedIndex()
         try? mediater.send(request: GoToChooseRecurringDonationRoute(), withContext: self)
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATE_CLICKED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATE_CLICKED")
     }
     
     @IBAction func backButton(_ sender: Any) {
         resetSelectedIndex()
         try? mediater.send(request: BackToMainRoute(), withContext: self)
         MSAnalytics.trackEvent("RECURRING_DONATIONS_OVERVIEW_DISMISSED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_OVERVIEW_DISMISSED")
     }
 }
 
-extension HomeScreenRecurringDonationViewController: RecurringRuleCancelDelegate {
+extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_STOP")
         
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "CancelRecurringDonationAlertTitle".localized.replacingOccurrences(of: "{0}", with: recurringRuleCell.nameLabel.text!), message: "CancelRecurringDonationAlertMessage".localized , preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Yes".localized, style: .default, handler: { (action) in
                 MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP_YES")
+                Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_STOP_YES")
                 print("Cancel recurring donation: "+recurringRuleCell.nameLabel.text!)
                 let command = CancelRecurringDonationCommand(recurringDonationId: recurringRuleCell.recurringDonationId!)
                 do {
@@ -158,6 +180,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCancelDelegate
             }))
             alert.addAction(UIAlertAction(title: "No".localized, style: .default, handler: {(action) in
                 MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP_NO")
+                Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_STOP_NO")
             }))
             self.present(alert, animated: true, completion:  {})
         }
@@ -201,6 +224,7 @@ extension HomeScreenRecurringDonationViewController: RecurringRuleCancelDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if selectedIndex == indexPath.row {
             MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_OPENED")
+            Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_OPENED")
             return 133
         } else {
             return 89

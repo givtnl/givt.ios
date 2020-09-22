@@ -50,7 +50,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         }
         
         if let pp = prevPos, (pp.type == selectedTag || pp.type == 0 || selectedTag == 0) && pp.nameSpace == nameSpace  {
-            tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
+            tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
             cell.toggleOn()
             btnGive.isEnabled = true
         }
@@ -100,7 +100,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                 
                 //find orgname associated with namespace
                 if let namespace = namespace, let orgName = GivtManager.shared.getOrganisationName(organisationNameSpace: namespace) {
-                    guard let tableSectionId = sections.index(where: { (sec) -> Bool in
+                    guard let tableSectionId = sections.firstIndex(where: { (sec) -> Bool in
                         return sec.title.uppercased() == String(orgName.first!).uppercased()
                     }) else {
                         return
@@ -108,7 +108,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                     
                     let sectionIdxOfItem = sections[tableSectionId].index
                     
-                    guard let namespaceIdx = filteredList!.index(where: { (o) -> Bool in
+                    guard let namespaceIdx = filteredList!.firstIndex(where: { (o) -> Bool in
                         o.EddyNameSpace == namespace
                     }) else {
                         return
@@ -116,7 +116,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                     
                     if tableSectionId < tableView.numberOfSections && (namespaceIdx - sectionIdxOfItem) < tableView.numberOfRows(inSection: tableSectionId) {
                         let ip = IndexPath(row: (namespaceIdx - sectionIdxOfItem), section: tableSectionId)
-                        tableView.scrollToRow(at: ip, at: UITableViewScrollPosition.top, animated: false)
+                        tableView.scrollToRow(at: ip, at: UITableView.ScrollPosition.top, animated: false)
                     }
                 }
             }
@@ -183,7 +183,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
@@ -196,7 +196,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         
         searchBar.delegate = self
         tableView.tableFooterView = UIView(frame: .zero)
-        btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControlState.normal)
+        btnGive.setTitle(NSLocalizedString("Give", comment: "Button to give"), for: UIControl.State.normal)
         
         btnGive.isEnabled = false
         
@@ -261,7 +261,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
                         replaceView = btnArtiest
                     }
                     
-                    if let idx = typeStackView.arrangedSubviews.index(of: v), replaceView != nil {
+                    if let idx = typeStackView.arrangedSubviews.firstIndex(of: v), replaceView != nil {
                         typeStackView.removeArrangedSubview(v)
                         v.removeFromSuperview()
                         typeStackView.insertArrangedSubview(replaceView!, at: idx)
@@ -275,7 +275,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     
     func setActiveType(view: UIView) {
-        if let positionInStackview = typeStackView.arrangedSubviews.index(of: view) {
+        if let positionInStackview = typeStackView.arrangedSubviews.firstIndex(of: view) {
             var viewToAdd: UIView?
             var orgType = MediumHelper.OrganisationType.invalid
             
@@ -307,7 +307,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     }
     
     func unsetActiveType(view: UIView) {
-        if let positionInStackview = typeStackView.arrangedSubviews.index(of: view) {
+        if let positionInStackview = typeStackView.arrangedSubviews.firstIndex(of: view) {
             var viewToAdd: UIView?
             switch (view) {
             case btnKerkenSpecial:
@@ -562,7 +562,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         originalList = filteredList
         
         if let lastOrg = getPreselectedOrganisation() {
-            lastGivtToOrganisationPosition = filteredList?.index(where: { (org) -> Bool in
+            lastGivtToOrganisationPosition = filteredList?.firstIndex(where: { (org) -> Bool in
                 return org.EddyNameSpace == lastOrg
             })
         }
@@ -643,9 +643,9 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
             if let savedName = UserDefaults.standard.lastGivtToOrganisationName {
                 guard let _ = GivtManager.shared.orgBeaconList?.first(where: { $0.EddyNameSpace == namespace }) else {
                     DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "", message: NSLocalizedString("SuggestionNamespaceInvalid", comment: "").replacingOccurrences(of: "{0}", with: savedName), preferredStyle: UIAlertControllerStyle.alert)
+                        let alert = UIAlertController(title: "", message: NSLocalizedString("SuggestionNamespaceInvalid", comment: "").replacingOccurrences(of: "{0}", with: savedName), preferredStyle: UIAlertController.Style.alert)
                         
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                             
                         }))
                         self.present(alert, animated: true, completion: nil)

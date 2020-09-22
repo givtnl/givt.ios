@@ -14,9 +14,8 @@ class NoInternetAlertHandler : RequestHandlerWithContextProtocol {
         let alert = UIAlertController(title: NSLocalizedString("SomethingWentWrong", comment: ""), message: NSLocalizedString("ConnectionError", comment: ""), preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
         }))
-        context.present(alert, animated: true) {
-            try? completion(() as! R.TResponse)
-        }
+        context.present(alert, animated: true) {}
+        try? completion(() as! R.TResponse)
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {

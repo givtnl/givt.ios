@@ -10,6 +10,7 @@ import Foundation
 import SVProgressHUD
 import UIKit
 import AppCenterAnalytics
+import Mixpanel
 
 class GiftAidViewController: UIViewController {
     
@@ -109,7 +110,8 @@ class GiftAidViewController: UIViewController {
                         self.hideLoader()
                     }
                     if success {
-                        MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties: ["state": (userExt.GiftAidEnabled).description])
+                        MSAnalytics.trackEvent("GIFTAID_CHANGED", withProperties:["state": (userExt.GiftAidEnabled).description])
+                        Mixpanel.mainInstance().track(event: "GIFTAID_CHANGED", properties: ["state": (userExt.GiftAidEnabled).description])
                         DispatchQueue.main.async {
                             if(self.comingFromRegistration){
                                 let vc = UIStoryboard(name: "Registration", bundle: nil).instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
@@ -128,8 +130,8 @@ class GiftAidViewController: UIViewController {
                         
                     } else {
                         DispatchQueue.main.async {
-                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                            let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                                 
                             }))
                             self.present(alert, animated: true, completion: nil)
@@ -144,7 +146,7 @@ class GiftAidViewController: UIViewController {
             let alert = UIAlertController(
                 title: NSLocalizedString(title, comment: ""),
                 message: NSLocalizedString(message, comment: ""),
-                preferredStyle: UIAlertControllerStyle.alert)
+                preferredStyle: UIAlertController.Style.alert)
             alert.addAction(action1)
             if let _action2 = action2 {
                     alert.addAction(_action2)

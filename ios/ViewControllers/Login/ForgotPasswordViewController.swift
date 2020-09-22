@@ -35,12 +35,12 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         emailField.delegate = self
         checkAll()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: .UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkAll), name: UITextField.textDidChangeNotification, object: nil)
         
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.setDefaultAnimationType(.native)
         SVProgressHUD.setBackgroundColor(.white)
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!, NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 18)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)]
         self.navigationController?.removeLogo()
     }
 
@@ -78,8 +78,8 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
                         SVProgressHUD.dismiss()
                         if let status = status {
                             if status {
-                                let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("ResetPasswordSent", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+                                let alert = UIAlertController(title: NSLocalizedString("Success", comment: ""), message: NSLocalizedString("ResetPasswordSent", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
                                     DispatchQueue.main.async {
                                         self.navigationController?.popViewController(animated: true)
                                     }
@@ -103,8 +103,8 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             } else if status == "false" {
                 DispatchQueue.main.async {
                     SVProgressHUD.dismiss()
-                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("NonExistingEmail", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("NonExistingEmail", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     DispatchQueue.main.async {
                         self.present(alert, animated: true, completion: nil)
                     }

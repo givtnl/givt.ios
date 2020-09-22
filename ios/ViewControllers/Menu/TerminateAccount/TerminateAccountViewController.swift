@@ -23,7 +23,7 @@ class TerminateAccountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
-        terminate.setBackgroundColor(color: #colorLiteral(red: 0.8901960784, green: 0.8862745098, blue: 0.9058823529, alpha: 1), forState: .disabled)
+        terminate.setBackgroundColor(color: #colorLiteral(red: 0.8901960784, green: 0.8862745098, blue: 0.9058823529, alpha: 1), forState: UIControl.State.disabled)
         check.setImage(#imageLiteral(resourceName: "checked"), for: .selected)
         terminate.isEnabled = false
 
@@ -37,7 +37,7 @@ class TerminateAccountViewController: UIViewController {
         
         self.navigationController?.removeLogo()
         title = NSLocalizedString("Unregister", comment: "")
-        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedStringKey.font: UIFont(name: "Avenir-Heavy", size: 18)!, NSAttributedStringKey.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)]
+        self.navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 18)!, NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)]
     }
 
     override func didReceiveMemoryWarning() {

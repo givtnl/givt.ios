@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import AppCenterAnalytics
+import Mixpanel
 
 class BacsSettingUpViewController: UIViewController {
 
@@ -24,6 +25,7 @@ class BacsSettingUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MSAnalytics.trackEvent("User started BACS mandate flow")
+        Mixpanel.mainInstance().track(event: "User started BACS mandate flow")
 
         self.navigationController?.removeLogo()
         title = NSLocalizedString("BacsSetupTitle", comment: "")
@@ -71,7 +73,7 @@ class BacsSettingUpViewController: UIViewController {
                 LoginManager.shared.getUserExt(completion: { (userExt) in
                     SVProgressHUD.dismiss()
                     guard let userExt = userExt else {
-                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("CantFetchPersonalInformation", comment: ""), preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
                         }))
                         DispatchQueue.main.async {

@@ -22,6 +22,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var inputStack: UIStackView!
     
     @IBOutlet var fieldToEdit: UILabel!
+    
     var saveAction: (String) -> Void = {_ in }
     var saveAction2: (String, String) -> Void = {_ , _ in}
     
@@ -40,10 +41,10 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     var img: UIImage!
     override func viewDidLoad() {
         super.viewDidLoad()
-        saveBtn.setTitle(NSLocalizedString("Save", comment: ""), for: UIControlState.normal)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
-        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: Notification.Name.UITextFieldTextDidChange, object: nil)
+        saveBtn.setTitle(NSLocalizedString("Save", comment: ""), for: UIControl.State.normal)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: UITextField.textDidChangeNotification, object: nil)
         
         inputFieldToEdit.text = inputOfInput
         fieldToEdit.text = titleOfInput
@@ -174,9 +175,9 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillShow, object: self.view.window)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self.view.window)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: self.view.window)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -197,7 +198,7 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
     //MARK: Animate Keyboard
     @objc func keyboardWillShow(notification : NSNotification){
         
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
             if #available(iOS 11.0, *) {
                 animateKeyboard(withConstraintValue: keyboardSize.size.height + 20 - view.safeAreaInsets.bottom)

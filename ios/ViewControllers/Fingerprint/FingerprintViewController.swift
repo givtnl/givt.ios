@@ -42,8 +42,8 @@ class FingerprintViewController: UIViewController {
 
         let sw = sender as! UISwitch
         if sw.isOn {
-            let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in
+            let cannotUseTouchId = UIAlertController(title: NSLocalizedString("AuthenticationIssueTitle", comment: ""), message: NSLocalizedString("AuthenticationIssueMessage", comment: ""), preferredStyle: UIAlertController.Style.alert)
+            cannotUseTouchId.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
                 sw.isOn = false
                 UserDefaults.standard.hasFingerprintSet = false
             }))

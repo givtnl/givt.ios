@@ -18,7 +18,7 @@ class CustomUITextView: UITextView, UITextViewDelegate{
         self.layer.borderColor = originalColor.cgColor
         self.layer.borderWidth = 1.0
         self.layer.cornerRadius = 4
-        self.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
+        self.textContainerInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         self.textColor = .lightGray
         self.font = UIFont(name: "Avenir-Light", size: 16.0)
     }

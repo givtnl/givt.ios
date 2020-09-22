@@ -68,9 +68,10 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         address.placeholder = NSLocalizedString("StreetAndHouseNumber", comment: "")
         postalCode.placeholder = NSLocalizedString("PostalCode", comment: "")
         city.placeholder = NSLocalizedString("City", comment: "")
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:Notification.Name.UIKeyboardWillShow, object: self.view.window)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: self.view.window)
-        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: Notification.Name.UITextFieldTextDidChange, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: UITextField.textDidChangeNotification, object: nil)
         
         
         // Do any additional setup after loading the view.
@@ -80,7 +81,7 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
         theScrollView.addGestureRecognizer(tapGesture)
     }
     @IBAction func openPicker(_ sender: Any) {
-        let idx = AppConstants.countries.index { (country) -> Bool in
+        let idx = AppConstants.countries.firstIndex { (country) -> Bool in
             return country.name == currentCountry!.name
         }
         country.becomeFirstResponder()
@@ -114,8 +115,8 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
                         self.backPressed(self)
                     }
                 } else {
-                    let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (actions) in
+                    let alert = UIAlertController(title: NSLocalizedString("SaveFailed", comment: ""), message: NSLocalizedString("UpdatePersonalInfoError", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (actions) in
                         
                     }))
                     DispatchQueue.main.async {
@@ -128,8 +129,8 @@ class ChangeAddressViewController: UIViewController, UITextFieldDelegate, UIPick
     
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
-        var userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         keyboardFrame = self.view.convert(keyboardFrame, from: nil)
         
         if #available(iOS 11.0, *) {

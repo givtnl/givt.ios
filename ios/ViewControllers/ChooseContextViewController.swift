@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import AppCenterAnalytics
+import Mixpanel
 
 class ChooseContextViewController: UIViewController {
 
@@ -32,7 +33,8 @@ class ChooseContextViewController: UIViewController {
     
     @IBAction func selectContext(_ sender: Any) {
         let contextType = (sender as! SelectContextView).contextType
-        MSAnalytics.trackEvent("CONTEXT_SELECTED", withProperties: ["context": contextType!.name])
+        MSAnalytics.trackEvent("CONTEXT_SELECTED", withProperties:["context": contextType!.name])
+        Mixpanel.mainInstance().track(event: "CONTEXT_SELECTED", properties: ["context": contextType!.name])
         let sb = UIStoryboard(name:"Main", bundle:nil)
         DispatchQueue.main.async {
             switch contextType! {
@@ -47,8 +49,8 @@ class ChooseContextViewController: UIViewController {
                 self.navigationController!.show(vc, sender: nil)
             case .GiveToEvent:
                 if !GivtManager.shared.hasGivtLocations() {
-                    let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    let alert = UIAlertController(title: NSLocalizedString("GivtAtLocationDisabledTitle", comment: ""), message: NSLocalizedString("GivtAtLocationDisabledMessage", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                     self.navigationController?.present(alert, animated: true, completion: nil)
                 } else {
                     let story = UIStoryboard(name: "Event", bundle: nil)

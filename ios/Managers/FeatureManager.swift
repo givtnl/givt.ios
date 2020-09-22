@@ -112,7 +112,7 @@ class FeatureManager {
                                     } else {
                                         var notifFeature = NotificationFeature(context: context)
                                         NotificationManager.shared.delegates.append(notifFeature)
-                                        NotificationManager.shared.requestNotificationPermission()
+                                        NotificationManager.shared.requestNotificationPermission{ success in }
                                     }
                                 }
                             })
