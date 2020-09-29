@@ -646,6 +646,14 @@
 			path = Presets;
 			sourceTree = "<group>";
 		};
+		3201243E252370ED0048ACF2 /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				DF2D13B724FAB6E700DCE603 /* Get */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
 		320CF72524CEDF37008B3EDE /* ChooseRecurringDonation */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +712,7 @@
 		32CA179B24CECAB900248053 /* SetupRecurringDonation */ = {
 			isa = PBXGroup;
 			children = (
+				32CA17B024CED48100248053 /* Routes */,
 				32CA17A024CECE5100248053 /* Scenes */,
 				32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */,
 				32CA179E24CECBFC00248053 /* SetupRecurringDonationNavigationController.swift */,
@@ -716,7 +725,6 @@
 			children = (
 				DF3FD7862512132C006BB1A7 /* SetupNofication */,
 				DF1300F524F5601F00EE1785 /* Overview */,
-				32CA17B024CED48100248053 /* Routes */,
 				32CA17A424CED00200248053 /* ChooseDestination */,
 				320CF72524CEDF37008B3EDE /* ChooseRecurringDonation */,
 			);
@@ -758,6 +766,7 @@
 		32D4852A24D0442800F821A5 /* RecurringDonations */ = {
 			isa = PBXGroup;
 			children = (
+				3201243E252370ED0048ACF2 /* Queries */,
 				32D4852B24D0443100F821A5 /* Commands */,
 			);
 			path = RecurringDonations;
@@ -767,7 +776,6 @@
 			isa = PBXGroup;
 			children = (
 				327C5B7C2506D8520064BBC4 /* Cancel */,
-				DF2D13B724FAB6E700DCE603 /* Get */,
 				32D4852C24D0444300F821A5 /* Create */,
 			);
 			path = Commands;
