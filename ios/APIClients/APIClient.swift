@@ -42,7 +42,7 @@ class APIClient: NSObject, URLSessionDelegate {
             .query(query: data)
             .end(done: { (response:Response) in
                 if response.status == .tooManyRequests {
-                    if retries < 3 {
+                    if retries < 5 {
                         let waitTime = self.getExponentialBackoffTime(retries: retries)
                         retries += 1
                         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + DispatchTimeInterval.milliseconds(waitTime)) {
@@ -69,7 +69,7 @@ class APIClient: NSObject, URLSessionDelegate {
             .send(data: data)
             .end(done: { (response:Response) in
                 if response.status == .tooManyRequests {
-                    if retries < 3 {
+                    if retries < 5 {
                         let waitTime = self.getExponentialBackoffTime(retries: retries)
                         retries += 1
                         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + DispatchTimeInterval.milliseconds(waitTime)) {
@@ -100,7 +100,7 @@ class APIClient: NSObject, URLSessionDelegate {
             .send(data: data)
             .end(done: { (response:Response) in
                 if response.status == .tooManyRequests {
-                    if retries < 3 {
+                    if retries < 5 {
                         let waitTime = self.getExponentialBackoffTime(retries: retries)
                         retries += 1
                         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + DispatchTimeInterval.milliseconds(waitTime)) {
@@ -130,7 +130,7 @@ class APIClient: NSObject, URLSessionDelegate {
             .send(data: data)
             .end(done: { (response:Response) in
                 if response.status == .tooManyRequests {
-                    if retries < 3 {
+                    if retries < 5 {
                         let waitTime = self.getExponentialBackoffTime(retries: retries)
                         retries += 1
                         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + DispatchTimeInterval.milliseconds(waitTime)) {
@@ -162,7 +162,7 @@ class APIClient: NSObject, URLSessionDelegate {
             .set(headers: headers)
             .send(data: data).end(done: { (response) in
                 if response.status == .tooManyRequests {
-                    if retries < 3 {
+                    if retries < 5 {
                         let waitTime = self.getExponentialBackoffTime(retries: retries)
                         retries += 1
                         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + DispatchTimeInterval.milliseconds(waitTime)) {
@@ -192,7 +192,7 @@ class APIClient: NSObject, URLSessionDelegate {
             .set(headers: headers)
             .end(done: { (response:Response) in
                 if response.status == .tooManyRequests {
-                    if retries < 3 {
+                    if retries < 5 {
                         let waitTime = self.getExponentialBackoffTime(retries: retries)
                         retries += 1
                         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + DispatchTimeInterval.milliseconds(waitTime)) {
