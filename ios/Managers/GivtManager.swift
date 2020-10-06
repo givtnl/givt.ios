@@ -232,10 +232,10 @@ final class GivtManager: NSObject {
                 transactions.append(newTransaction)
             }
         }
-        self.cacheGivt(transactions: transactions)
-        giveInBackground(transactions: transactions)
         MSAnalytics.trackEvent("GIVING_FINISHED", withProperties:["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
         Mixpanel.mainInstance().track(event: "GIVING_FINISHED", properties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
+        self.cacheGivt(transactions: transactions)
+        giveInBackground(transactions: transactions)
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
     }
     
