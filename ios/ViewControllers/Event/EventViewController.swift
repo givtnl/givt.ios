@@ -27,6 +27,11 @@ class EventViewController: BaseScanViewController {
     @IBOutlet var imageV: UIImageView!
     private var countdownTimer: Timer?
     private var timer20S: Timer?
+    @IBAction func kerrekiwere(_ sender: Any) {
+        self.backPressed(self)
+        Mixpanel.mainInstance().track(event: "GIVE_LOCATION_ON_BACK_fPRESSED")
+
+    }
     
     private var shouldShowAfterBluetoothAlert: () -> Void = {}
 
@@ -65,14 +70,17 @@ class EventViewController: BaseScanViewController {
                 vc.organisation = orgName
                 vc.onClose = {
                     self.givingState = .idle
+                    Mixpanel.mainInstance().track(event: "GIVE_LOCATION_GIVE_SUGGESTION_DENIED")
                 }
                 vc.onSuccess = {
+                    Mixpanel.mainInstance().track(event: "GIVE_LOCATION_GIVE_SUGGESTION_ACCEPTED")
                     self.givingState = .given
+                   
+                    self.givtManager.stopLookingForGivtLocations()
+                    self.giveManually(antennaID: identifier)
                     LogService.shared.info(message: "GIVE_LOCATION id: \(identifier)")
                     MSAnalytics.trackEvent("GIVE_LOCATION", withProperties:["id": identifier])
                     Mixpanel.mainInstance().track(event: "GIVE_LOCATION", properties: ["id": identifier])
-                    self.givtManager.stopLookingForGivtLocations()
-                    self.giveManually(antennaID: identifier)
                 }
                 self.present(vc, animated: true, completion: nil)
             }
@@ -155,12 +163,14 @@ class EventViewController: BaseScanViewController {
     }
     
     @IBAction func giveDifferently(_ sender: Any) {
+        Mixpanel.mainInstance().track(event: "GIVE_LOCATION_GIVE_FROM_LIST")
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "SelectOrgViewController") as! SelectOrgViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func after20s() {
+        Mixpanel.mainInstance().track(event: "GIVE_LOCATION_TOO_LONG")
         UIView.animate(withDuration: 0.3) {
             self.giveDifferently.isHidden = false
         }
@@ -171,7 +181,10 @@ class EventViewController: BaseScanViewController {
         self.givtManager.stopLookingForGivtLocations()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     override func deniedBluetoothAccess() {
-        
     }
 }

@@ -179,6 +179,7 @@ class BeaconService: NSObject, CBCentralManagerDelegate {
     }
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        TrackingHelper.trackBluetoothPermissionStatus(rawValue: central.state.rawValue)
         if #available(iOS 10.0, *) {
             switch (central.state) {
             case .poweredOff:
