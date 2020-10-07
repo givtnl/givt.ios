@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import Mixpanel
 
 protocol LocationServiceProtocol: class {
     func didDiscoverLocationInRegion(location: GivtLocation)
@@ -26,6 +27,18 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         super.init()
     }
     
+    // only works for lower then iOS 14
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        TrackingHelper.trackLocationPermissionStatus(rawValue: status.rawValue)
+    }
+    
+    // only works for iOS 14 or above
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        if #available(iOS 14.0, *) {
+            TrackingHelper.trackLocationPermissionStatus(rawValue: manager.authorizationStatus.rawValue)
+        }
+    }
+
     func startLookingForLocation() {
         self.lastLocation = nil
         givtLocations = getGivtLocations()
