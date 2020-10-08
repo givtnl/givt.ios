@@ -88,17 +88,28 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
-            nextButton.isEnabled = true
-            // update ViewModel
-            (destinations.first { $0.name == destinationCell.name })!.selected = true
-            // make sure other destinations are deselected
-            destinations.filter { $0.name != destinationCell.name }.forEach { $0.selected = false }
+            // This is the special "report missing organisation item"
+            if (destinationCell.type == .none) {
+                nextButton.isEnabled = false
+                try? self.mediater.send(request: GoToAboutViewRoute(), withContext: self)
+            } else {
+                nextButton.isEnabled = true
+                // update ViewModel
+                (destinations.first { $0.name == destinationCell.name })!.selected = true
+                // make sure other destinations are deselected
+                destinations.filter { $0.name != destinationCell.name }.forEach { $0.selected = false }
+            }
         }
     }
     
     //MARK: viewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let index = self.tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: index, animated: true)
+        }
+            
         navigationItem.title = "SelectRecipient".localized
         navigationItem.accessibilityLabel = "SelectRecipient".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
@@ -224,7 +235,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         
         // Add "meld ontrbrekende organisatie' to list of organisations
         let MissingOrganisationElement = DestinationViewModel()
-        MissingOrganisationElement.name = "Meld ontbrekende organisatie"
+        MissingOrganisationElement.name = NSLocalizedString("ReportMissingOrganisationListItem", comment: "")
         MissingOrganisationElement.selected = false
         MissingOrganisationElement.iconRight = "plus"
         MissingOrganisationElement.type = CollectGroupType.none
