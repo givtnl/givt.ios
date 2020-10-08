@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import UserNotifications
+import LGSideMenuController
 
 class FeaturePageContent {
     let image: String
@@ -169,7 +170,15 @@ class FeatureManager {
                             return "Feature_RecurringDonations_3_Button".localized
                         },
                         action: { (context) -> Void in
-                            context?.dismiss(animated: true)
+                            if (LoginManager.shared.isFullyRegistered) {
+                                context?.dismiss(animated: true, completion: {
+                                    if let menuCtrl = UIApplication.shared.delegate?.window??.rootViewController as? LGSideMenuController {
+                                        menuCtrl.showLeftView(animated: true)
+                                    }
+                                })
+                            } else {
+                                context?.dismiss(animated: true)
+                            }
                         })
                    ])
     ]
