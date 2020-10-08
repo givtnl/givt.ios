@@ -16,4 +16,5 @@ enum CollectGroupType : Int, Codable {
     case unknown = 4
     case demo = 5
     case debug = 6
+    case none = 7
 }

@@ -52,6 +52,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         let destinationCell = tableView.dequeueReusableCell(withIdentifier: String(describing: DestinationTableCell.self), for: indexPath) as! DestinationTableCell
         destinationCell.name = destination.name
         destinationCell.type = destination.type
+        destinationCell.iconRight = destination.iconRight
         if destination.selected {
             //select row that should be selected
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
@@ -234,6 +235,14 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         if let currentSearchText = searchBar.text, !currentSearchText.isEmpty {
             filteredDestinations = filteredDestinations.filter { $0.name.lowercased().contains(currentSearchText.lowercased()) }
         }
+        
+        // Add "meld ontrbrekende organisatie' to list of organisations
+        let MissingOrganisationElement = DestinationViewModel()
+        MissingOrganisationElement.name = "Meld ontbrekende organisatie"
+        MissingOrganisationElement.selected = false
+        MissingOrganisationElement.iconRight = "plus"
+        MissingOrganisationElement.type = CollectGroupType.none
+        filteredDestinations.insert(MissingOrganisationElement, at: 0)
         
         buildTableSections()
         
