@@ -11,6 +11,7 @@ import SVProgressHUD
 
 class AboutViewController: UIViewController, UITextViewDelegate {
 
+    public var prefilledText: String = String()
     private var log = LogService.shared
     @IBOutlet var titleText: UILabel!
     @IBOutlet var versionNumber: UILabel!
@@ -18,6 +19,7 @@ class AboutViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var btnSend: UIButton!
     @IBOutlet var textView: CustomUITextView!
     @IBOutlet var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         goBack.accessibilityLabel = NSLocalizedString("Back", comment: "")
@@ -46,6 +48,8 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         
         btnSend.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: UIControl.State.disabled)
         btnSend.isEnabled = false
+        
+        textView.text = prefilledText
     }
     
     @objc private func textDidChange(notification: Notification) {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="703-4V-yAM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +27,7 @@
                                 <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4S2-ek-spf" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4S2-ek-spf" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="20" y="798" width="374" height="44"/>
                                 <color key="backgroundColor" red="0.21385991569999999" green="0.78783458470000001" blue="0.54240250590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -62,7 +62,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8V-Yp-Hcx">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8V-Yp-Hcx">
                                 <rect key="frame" x="20" y="268" width="374" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="9K1-tS-rKk"/>
@@ -112,6 +112,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Gy5-nL-RMg"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Gy5-nL-RMg" firstAttribute="trailing" secondItem="4S2-ek-spf" secondAttribute="trailing" constant="20" id="2dh-4q-oke"/>
@@ -133,7 +134,6 @@
                             <constraint firstItem="rLK-fg-kiR" firstAttribute="top" secondItem="xv4-WD-WoL" secondAttribute="bottom" constant="20" id="qVo-4R-Y9Y"/>
                             <constraint firstItem="Gy5-nL-RMg" firstAttribute="bottom" secondItem="4S2-ek-spf" secondAttribute="bottom" constant="20" identifier="bottomConstraint" id="qyI-GU-MOV"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Gy5-nL-RMg"/>
                     </view>
                     <navigationItem key="navigationItem" id="MYY-AS-V6b">
                         <barButtonItem key="leftBarButtonItem" image="backbtn.png" width="50" id="muJ-3T-9gD">
@@ -171,8 +171,8 @@
                     <view key="view" contentMode="scaleToFill" id="NdF-zb-KMX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="X5G-AA-nlE"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZDF-la-ZIy"/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -188,8 +188,8 @@
                     <view key="view" contentMode="scaleToFill" id="502-Ir-ELC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Is1-vq-Wjc"/>
+                        <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="leftViewPresentationStyle">
@@ -215,7 +215,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="1" sectionFooterHeight="18" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rov-sM-I0M">
                                 <rect key="frame" x="0.0" y="5" width="414" height="720"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemTableViewCell" rowHeight="50" id="Q4I-eq-bMl" customClass="SettingsItemTableViewCell" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="50"/>
@@ -543,14 +543,14 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="tCD-JW-GVF"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tCD-JW-GVF" firstAttribute="trailing" secondItem="rov-sM-I0M" secondAttribute="trailing" id="72L-WJ-cQA"/>
                             <constraint firstItem="rov-sM-I0M" firstAttribute="leading" secondItem="tCD-JW-GVF" secondAttribute="leading" id="F1P-cc-nhf"/>
                             <constraint firstItem="rov-sM-I0M" firstAttribute="top" secondItem="tCD-JW-GVF" secondAttribute="top" constant="5" id="gKM-qM-1Z0"/>
                             <constraint firstItem="tCD-JW-GVF" firstAttribute="bottom" secondItem="rov-sM-I0M" secondAttribute="bottom" id="rJe-dQ-MeJ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="tCD-JW-GVF"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
@@ -652,6 +652,7 @@ Kijk voor de status in je overzicht.</string>
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="N6F-1X-0jM"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cdK-pi-bub" firstAttribute="centerX" secondItem="N6F-1X-0jM" secondAttribute="centerX" constant="60" id="45B-co-wTy"/>
@@ -667,7 +668,6 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="45q-nR-SS6" firstAttribute="leading" secondItem="N6F-1X-0jM" secondAttribute="leading" constant="20" id="ooi-5e-c5d"/>
                             <constraint firstItem="cdK-pi-bub" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rFD-qH-doC" secondAttribute="bottom" id="prn-VZ-HQA"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="N6F-1X-0jM"/>
                     </view>
                     <navigationItem key="navigationItem" id="H6U-qm-1aX"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -767,7 +767,7 @@ Kijk voor de status in je overzicht.</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv6-iH-YVl">
                                                         <rect key="frame" x="116" y="0.0" width="298" height="325"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNy-mi-UI2" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNy-mi-UI2" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="15" y="10" width="82.5" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="1">
@@ -785,7 +785,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="njY-f4-xac"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCW-62-N94" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCW-62-N94" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="107.5" y="10" width="83" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="2">
@@ -803,7 +803,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="WyL-li-GIh"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAG-Aw-TuA" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAG-Aw-TuA" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="200.5" y="10" width="82.5" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="3">
@@ -821,7 +821,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="7WW-ab-3ZN"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oad-iX-HrB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oad-iX-HrB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="15" y="88" width="82.5" height="70.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="4">
@@ -839,7 +839,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="kf5-i4-0HC"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2y-kT-0o4" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2y-kT-0o4" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="107.5" y="88" width="83" height="70.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="5">
@@ -857,7 +857,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="npj-OV-9Th"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qL-oU-syQ" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qL-oU-syQ" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="200.5" y="88" width="82.5" height="70.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="6">
@@ -875,7 +875,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="Euh-ga-j9d"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVZ-Me-cmB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVZ-Me-cmB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="15" y="166.5" width="82.5" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="7">
@@ -893,7 +893,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="hrP-sF-vgk"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jw-tI-vCz" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jw-tI-vCz" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="107.5" y="166.5" width="83" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="8">
@@ -911,7 +911,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="aRt-4K-PmT"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnM-rs-vqX" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnM-rs-vqX" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="15" y="244.5" width="82.5" height="70.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title=",">
@@ -929,7 +929,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <action selector="addValueWithSender:" destination="lyO-8n-bds" eventType="touchUpInside" id="aFm-w5-IRk"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJb-1f-9ig" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJb-1f-9ig" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="107.5" y="244.5" width="83" height="70.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="0">
@@ -966,7 +966,7 @@ Kijk voor de status in je overzicht.</string>
                                                                     <outletCollection property="gestureRecognizers" destination="7Lk-gE-NB3" appends="YES" id="5Ct-xZ-wF3"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g42-Kb-4UT" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g42-Kb-4UT" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="200.5" y="166.5" width="82.5" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="9">
@@ -1193,6 +1193,7 @@ Kijk voor de status in je overzicht.</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="D9v-Aw-MYg"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="sk7-Jb-o0S" firstAttribute="top" secondItem="D9v-Aw-MYg" secondAttribute="top" id="5WY-zz-hfM"/>
@@ -1204,7 +1205,6 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="LVh-mq-ZfQ" firstAttribute="width" secondItem="WsT-yj-Ydz" secondAttribute="width" multiplier="0.6" id="slI-9j-95Z"/>
                             <constraint firstItem="D9v-Aw-MYg" firstAttribute="trailing" secondItem="sk7-Jb-o0S" secondAttribute="trailing" id="y8h-iW-q2a"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="D9v-Aw-MYg"/>
                     </view>
                     <navigationItem key="navigationItem" title="Bedrag" id="h1k-Ax-YwJ">
                         <barButtonItem key="leftBarButtonItem" image="menu_badge.png" width="50" springLoaded="YES" id="QTY-DE-8Mb">
@@ -1330,6 +1330,7 @@ Kijk voor de status in je overzicht.</string>
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="zQK-V4-Qej"/>
                         <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -1351,7 +1352,6 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="trailing" secondItem="dca-BL-A98" secondAttribute="trailing" id="rNe-LC-Sxy"/>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="trailing" secondItem="UdD-yT-jJx" secondAttribute="trailing" constant="20" id="xeI-hx-sAu"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="zQK-V4-Qej"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title=" " id="eIV-KD-Dxj">
@@ -1405,6 +1405,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="QgJ-lU-eRf"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="9Ag-aw-gWW" firstAttribute="centerY" secondItem="372-H4-Qb3" secondAttribute="centerY" priority="750" id="13Z-Xs-XnI"/>
@@ -1418,7 +1419,6 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="QgJ-lU-eRf" firstAttribute="bottom" secondItem="Fjc-TE-i8Z" secondAttribute="bottom" constant="20" id="q75-LE-HuI"/>
                             <constraint firstItem="QgJ-lU-eRf" firstAttribute="trailing" secondItem="1I1-Hy-cdh" secondAttribute="trailing" constant="20" id="qul-vx-eAD"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="QgJ-lU-eRf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feest" id="rn2-Bs-Jmo"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -1573,6 +1573,7 @@ Kijk voor de status in je overzicht.</string>
                                 </prototypes>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="jv0-et-J5F"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jv0-et-J5F" firstAttribute="trailing" secondItem="BvS-eI-dex" secondAttribute="trailing" constant="20" id="2KG-sL-Vnr"/>
@@ -1592,7 +1593,6 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="Yvi-za-LaC" firstAttribute="leading" secondItem="jv0-et-J5F" secondAttribute="leading" id="vIZ-7p-PLW"/>
                             <constraint firstItem="Yvi-za-LaC" firstAttribute="top" secondItem="Z0c-L7-8Js" secondAttribute="bottom" id="wwN-RL-kWI"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="jv0-et-J5F"/>
                     </view>
                     <navigationItem key="navigationItem" title="Anders geven" id="akm-Ra-BMg">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="1Iw-cC-4is">
@@ -1688,6 +1688,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="0lA-UE-6Pk"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0lA-UE-6Pk" firstAttribute="trailing" secondItem="QT6-ho-fo6" secondAttribute="trailing" id="Hd7-qT-edo"/>
@@ -1701,7 +1702,6 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="xoN-z2-xhE" firstAttribute="leading" secondItem="0lA-UE-6Pk" secondAttribute="leading" constant="20" id="zHR-9p-jbc"/>
                             <constraint firstItem="0lA-UE-6Pk" firstAttribute="trailing" secondItem="xoN-z2-xhE" secondAttribute="trailing" constant="20" id="zy2-nw-SEV"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="0lA-UE-6Pk"/>
                     </view>
                     <navigationItem key="navigationItem" id="JLi-K3-eRm">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="UMu-rJ-Ofr">
@@ -1798,7 +1798,7 @@ Kijk voor de status in je overzicht.</string>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="lQc-TT-oq2">
                                         <rect key="frame" x="0.0" y="30" width="414" height="744"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                         <color key="separatorColor" red="0.35133320089999998" green="0.32705855369999998" blue="0.53972214460000001" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HistoryTableViewCell" id="G9F-zP-LIY" customClass="HistoryTableViewCell" customModule="ios" customModuleProvider="target">
@@ -1838,7 +1838,7 @@ Kijk voor de status in je overzicht.</string>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                                            <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                                                             <constraints>
                                                                                 <constraint firstItem="NpX-Fy-D5d" firstAttribute="leading" secondItem="YPY-9I-P2o" secondAttribute="leading" id="K8N-5E-eDg"/>
                                                                                 <constraint firstAttribute="trailing" secondItem="NpX-Fy-D5d" secondAttribute="trailing" id="ho4-HY-wWp"/>
@@ -2016,6 +2016,7 @@ Kijk voor de status in je overzicht.</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="ChL-RU-lhi"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vLV-67-JKF" firstAttribute="bottom" secondItem="ChL-RU-lhi" secondAttribute="bottom" id="Biu-IR-Xag"/>
@@ -2023,7 +2024,6 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="vLV-67-JKF" firstAttribute="leading" secondItem="ChL-RU-lhi" secondAttribute="leading" id="r7H-GR-Z5Q"/>
                             <constraint firstItem="vLV-67-JKF" firstAttribute="trailing" secondItem="ChL-RU-lhi" secondAttribute="trailing" id="wyg-b6-6Ub"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="ChL-RU-lhi"/>
                     </view>
                     <navigationItem key="navigationItem" id="o4T-Gi-5wo">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="ecN-GT-hw3">
@@ -2108,7 +2108,7 @@ Kijk voor de status in je overzicht.</string>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropdown.png" translatesAutoresizingMaskIntoConstraints="NO" id="dth-fh-REQ">
                                         <rect key="frame" x="350" y="14" width="16" height="16"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKh-SI-fOK">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKh-SI-fOK">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2176,6 +2176,7 @@ Kijk voor de status in je overzicht.</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="gYD-K0-wNW"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="MaT-GU-xJy" secondAttribute="trailing" constant="20" id="1oi-aK-5sM"/>
@@ -2192,7 +2193,6 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="gYD-K0-wNW" firstAttribute="trailing" secondItem="pgF-rN-46D" secondAttribute="trailing" constant="20" id="qqx-8i-RKR"/>
                             <constraint firstItem="QWX-iD-aYU" firstAttribute="top" secondItem="gYD-K0-wNW" secondAttribute="top" constant="20" id="uRj-cI-xCi"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="gYD-K0-wNW"/>
                     </view>
                     <navigationItem key="navigationItem" title=" " id="9wz-7p-LjB">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="RyQ-wt-xzP">
@@ -2370,6 +2370,7 @@ best bij jou past.</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ln1-Bo-aah"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cir-JG-aZJ" firstAttribute="trailing" secondItem="Ln1-Bo-aah" secondAttribute="trailing" id="Pza-oK-abA"/>
@@ -2377,7 +2378,6 @@ best bij jou past.</string>
                             <constraint firstItem="cir-JG-aZJ" firstAttribute="top" secondItem="Ln1-Bo-aah" secondAttribute="top" id="YEp-Ty-xnF"/>
                             <constraint firstItem="cir-JG-aZJ" firstAttribute="leading" secondItem="Ln1-Bo-aah" secondAttribute="leading" id="h5Q-7U-7Rb"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ln1-Bo-aah"/>
                     </view>
                     <navigationItem key="navigationItem" title="Kies hier hoe je wil geven" id="Y7e-Us-ZPY">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="7f6-1i-y0U">
@@ -2491,6 +2491,7 @@ best bij jou past.</string>
                                 <rect key="frame" x="20" y="162" width="374" height="364"/>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="oyi-VM-7CI"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZWB-1n-TdE" firstAttribute="leading" secondItem="oyi-VM-7CI" secondAttribute="leading" constant="20" id="8ER-gj-IlU"/>
@@ -2510,7 +2511,6 @@ best bij jou past.</string>
                             <constraint firstItem="E9g-1r-13K" firstAttribute="leading" secondItem="oyi-VM-7CI" secondAttribute="leading" constant="20" id="yYw-IF-K76"/>
                             <constraint firstItem="Gfa-RE-6Yf" firstAttribute="leading" secondItem="oyi-VM-7CI" secondAttribute="leading" constant="20" id="zZ3-GA-VC7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="oyi-VM-7CI"/>
                     </view>
                     <connections>
                         <outlet property="buttonCancelFlashGivt" destination="ENb-c4-V9M" id="guE-N6-z5G"/>
@@ -2551,7 +2551,7 @@ best bij jou past.</string>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="1" sectionFooterHeight="18" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmZ-QK-ne8">
                                 <rect key="frame" x="0.0" y="5" width="414" height="720"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemTableViewCell" rowHeight="50" id="HYb-8g-YY6" customClass="SettingsItemTableViewCell" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="50"/>
@@ -2879,14 +2879,14 @@ best bij jou past.</string>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="dzU-zI-0Cb"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fmZ-QK-ne8" firstAttribute="leading" secondItem="dzU-zI-0Cb" secondAttribute="leading" id="9H4-0C-DaO"/>
                             <constraint firstItem="fmZ-QK-ne8" firstAttribute="top" secondItem="dzU-zI-0Cb" secondAttribute="top" constant="5" id="IZp-hQ-Mye"/>
                             <constraint firstItem="dzU-zI-0Cb" firstAttribute="bottom" secondItem="fmZ-QK-ne8" secondAttribute="bottom" id="WTe-Iu-2IX"/>
                             <constraint firstItem="dzU-zI-0Cb" firstAttribute="trailing" secondItem="fmZ-QK-ne8" secondAttribute="trailing" id="rwA-1e-vVr"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dzU-zI-0Cb"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
@@ -2918,7 +2918,7 @@ best bij jou past.</string>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="1" sectionFooterHeight="18" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKb-06-hv1">
                                 <rect key="frame" x="0.0" y="5" width="414" height="720"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsItemTableViewCell" rowHeight="50" id="77d-rZ-wAi" customClass="SettingsItemTableViewCell" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="50"/>
@@ -3246,14 +3246,14 @@ best bij jou past.</string>
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="Grb-ek-hkd"/>
+                        <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="IKb-06-hv1" firstAttribute="leading" secondItem="Grb-ek-hkd" secondAttribute="leading" id="4JG-Z4-3Cz"/>
                             <constraint firstItem="IKb-06-hv1" firstAttribute="top" secondItem="Grb-ek-hkd" secondAttribute="top" constant="5" id="4X4-bw-IgP"/>
                             <constraint firstItem="Grb-ek-hkd" firstAttribute="trailing" secondItem="IKb-06-hv1" secondAttribute="trailing" id="nF2-u7-0sT"/>
                             <constraint firstItem="Grb-ek-hkd" firstAttribute="bottom" secondItem="IKb-06-hv1" secondAttribute="bottom" id="xPR-lt-OrD"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Grb-ek-hkd"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <toolbarItems/>
@@ -3276,6 +3276,83 @@ best bij jou past.</string>
             <point key="canvasLocation" x="2048" y="554"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="1Jw-tI-vCz">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="2qL-oU-syQ">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="4S2-ek-spf">
+            <size key="intrinsicContentSize" width="75" height="37"/>
+        </designable>
+        <designable name="AAV-Sm-VSv">
+            <size key="intrinsicContentSize" width="30" height="23.5"/>
+        </designable>
+        <designable name="Atw-kU-0kr">
+            <size key="intrinsicContentSize" width="240" height="37"/>
+        </designable>
+        <designable name="BvS-eI-dex">
+            <size key="intrinsicContentSize" width="56" height="37"/>
+        </designable>
+        <designable name="DJb-1f-9ig">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="E9g-1r-13K">
+            <size key="intrinsicContentSize" width="56" height="37"/>
+        </designable>
+        <designable name="ENb-c4-V9M">
+            <size key="intrinsicContentSize" width="142" height="37"/>
+        </designable>
+        <designable name="KgC-fX-maL">
+            <size key="intrinsicContentSize" width="24" height="22"/>
+        </designable>
+        <designable name="MnM-rs-vqX">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="Oad-iX-HrB">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="PAG-Aw-TuA">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="UdD-yT-jJx">
+            <size key="intrinsicContentSize" width="127" height="37"/>
+        </designable>
+        <designable name="Y2y-kT-0o4">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="aVZ-Me-cmB">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="avu-iq-1Ae">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+        <designable name="g42-Kb-4UT">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="hNy-mi-UI2">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="mCW-62-N94">
+            <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="ohk-H0-NHv">
+            <size key="intrinsicContentSize" width="93" height="37"/>
+        </designable>
+        <designable name="pgF-rN-46D">
+            <size key="intrinsicContentSize" width="73" height="37"/>
+        </designable>
+        <designable name="qIq-fo-fkJ">
+            <size key="intrinsicContentSize" width="158" height="37"/>
+        </designable>
+        <designable name="rLK-fg-kiR">
+            <size key="intrinsicContentSize" width="72" height="23.5"/>
+        </designable>
+        <designable name="uzn-Pv-4sw">
+            <size key="intrinsicContentSize" width="67" height="22"/>
+        </designable>
+    </designables>
     <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="acties" width="120" height="120"/>
@@ -3301,5 +3378,29 @@ best bij jou past.</string>
         <image name="stichtingen" width="120" height="120"/>
         <image name="visible_eye.png" width="16" height="12"/>
         <image name="whitedlTaxes" width="26" height="26"/>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

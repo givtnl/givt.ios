@@ -213,6 +213,8 @@
 		DFBF338D2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFBF338C2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf */; };
 		DFBF338F2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFBF338E2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf */; };
 		DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBFAC302409404100F53095 /* GiftAidSettings.swift */; };
+		DFD4F94D252F3C5700EA3141 /* GoToAboutViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD4F94C252F3C5700EA3141 /* GoToAboutViewRoute.swift */; };
+		DFD4F94F252F3C6700EA3141 /* GoToAboutViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD4F94E252F3C6700EA3141 /* GoToAboutViewRouteHandler.swift */; };
 		DFFF7E8E24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8D24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift */; };
 		DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8F24F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift */; };
 		FB13642A24BF2E3B006EF19D /* ChooseDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13642424BF2E3B006EF19D /* ChooseDestinationViewController.swift */; };
@@ -533,6 +535,8 @@
 		DFBF338C2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		DFBF338E2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
 		DFBFAC302409404100F53095 /* GiftAidSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidSettings.swift; sourceTree = "<group>"; };
+		DFD4F94C252F3C5700EA3141 /* GoToAboutViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToAboutViewRoute.swift; sourceTree = "<group>"; };
+		DFD4F94E252F3C6700EA3141 /* GoToAboutViewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToAboutViewRouteHandler.swift; sourceTree = "<group>"; };
 		DFFF7E8D24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopToRecurringDonationOverviewRoute.swift; sourceTree = "<group>"; };
 		DFFF7E8F24F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopToRecurringDonationOverviewRouteHandler.swift; sourceTree = "<group>"; };
 		F2A335656287D463EE35D0BB /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -742,6 +746,7 @@
 		32CA17B024CED48100248053 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				DFD4F94B252F3B8B00EA3141 /* GoToAboutView */,
 				A478D1D72512C38C00251AFE /* DismissPushNotificationView */,
 				A478D1D22512380800251AFE /* GoToPushNotificationView */,
 				FB56C55E2510FFE90099EC62 /* BackToRecurringDonationOverview */,
@@ -1275,6 +1280,15 @@
 				DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DFD4F94B252F3B8B00EA3141 /* GoToAboutView */ = {
+			isa = PBXGroup;
+			children = (
+				DFD4F94C252F3C5700EA3141 /* GoToAboutViewRoute.swift */,
+				DFD4F94E252F3C6700EA3141 /* GoToAboutViewRouteHandler.swift */,
+			);
+			name = GoToAboutView;
 			sourceTree = "<group>";
 		};
 		DFFF7E8C24F935C00098E4F6 /* PopToRecurringDonationOverview */ = {
@@ -2001,6 +2015,7 @@
 				D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */,
 				D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */,
 				D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */,
+				DFD4F94F252F3C6700EA3141 /* GoToAboutViewRouteHandler.swift in Sources */,
 				FBC185A024C08F19001A4C6B /* PaymentType.swift in Sources */,
 				D77FC1BE1F86668A0031C49F /* Country.swift in Sources */,
 				FBC1857A24C0647C001A4C6B /* NotLoggedInError.swift in Sources */,
@@ -2068,6 +2083,7 @@
 				FBC1858724C0651D001A4C6B /* MediaterProtocol.swift in Sources */,
 				32C2D83125221D6B00832444 /* IntExtension.swift in Sources */,
 				D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */,
+				DFD4F94D252F3C5700EA3141 /* GoToAboutViewRoute.swift in Sources */,
 				D7AF43031FEA8E680027EEC1 /* PlaceholderViewController.swift in Sources */,
 				27AC59FA22255DEE00163BF4 /* SelectContextView.swift in Sources */,
 				FBC185CC24C6CCD2001A4C6B /* MediaterError.swift in Sources */,
