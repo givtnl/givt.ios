@@ -994,3 +994,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "PushnotificationRequestScreenButtonYes" = "Yes, ga ik regelen";
+"ReportMissingOrganisationListItem" = "Ontbrekende organisatie melden";
+"ReportMissingOrganisationPrefilledText" = "Hallo! Ik wil heel graag geven aan: ";
