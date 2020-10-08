@@ -11,5 +11,6 @@ import Foundation
 internal class DestinationViewModel {
     public var name = String()
     public var type = CollectGroupType.church
+    public var iconRight = String()
     public var selected: Bool!
 }
