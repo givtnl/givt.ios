@@ -221,6 +221,15 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
                     return destination
             }
         }
+        
+        // Add "meld ontrbrekende organisatie' to list of organisations
+        let MissingOrganisationElement = DestinationViewModel()
+        MissingOrganisationElement.name = "Meld ontbrekende organisatie"
+        MissingOrganisationElement.selected = false
+        MissingOrganisationElement.iconRight = "plus"
+        MissingOrganisationElement.type = CollectGroupType.none
+        
+        self.destinations.insert(MissingOrganisationElement, at: 0)
     }
     
     private func filterDestinationsAndReloadTable() {
@@ -229,20 +238,12 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         if let activeCategoryButton = typeStackView.arrangedSubviews.first(where: { view in
             return (view as! DestinationCategoryButton).active
         }) {
-            filteredDestinations = filteredDestinations.filter { $0.type == CollectGroupType(rawValue: activeCategoryButton.tag) }
+            filteredDestinations = filteredDestinations.filter { $0.type == CollectGroupType(rawValue: activeCategoryButton.tag) || $0.type == CollectGroupType.none }
         }
 
         if let currentSearchText = searchBar.text, !currentSearchText.isEmpty {
-            filteredDestinations = filteredDestinations.filter { $0.name.lowercased().contains(currentSearchText.lowercased()) }
+            filteredDestinations = filteredDestinations.filter { $0.name.lowercased().contains(currentSearchText.lowercased()) || $0.type == CollectGroupType.none}
         }
-        
-        // Add "meld ontrbrekende organisatie' to list of organisations
-        let MissingOrganisationElement = DestinationViewModel()
-        MissingOrganisationElement.name = "Meld ontbrekende organisatie"
-        MissingOrganisationElement.selected = false
-        MissingOrganisationElement.iconRight = "plus"
-        MissingOrganisationElement.type = CollectGroupType.none
-        filteredDestinations.insert(MissingOrganisationElement, at: 0)
         
         buildTableSections()
         

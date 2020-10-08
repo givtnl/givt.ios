@@ -75,6 +75,7 @@ internal final class DestinationTableCell : UITableViewCell {
         setBackgroundColorRecursive(view: self.contentView, color: UIColor.clear)
         iconLabel.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         collectGroupLabel.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        iconLabelRight.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
     }
     
     private func toggleOn() {
@@ -97,6 +98,7 @@ internal final class DestinationTableCell : UITableViewCell {
         }
         iconLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         collectGroupLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        iconLabelRight.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     private func setBackgroundColorRecursive(view: UIView, color: UIColor) {
