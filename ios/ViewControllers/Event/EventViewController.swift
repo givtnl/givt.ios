@@ -29,7 +29,7 @@ class EventViewController: BaseScanViewController {
     private var timer20S: Timer?
     @IBAction func kerrekiwere(_ sender: Any) {
         self.backPressed(self)
-        Mixpanel.mainInstance().track(event: "GIVE_LOCATION_ON_BACK_fPRESSED")
+        Mixpanel.mainInstance().track(event: "GIVE_LOCATION_ON_BACK_PRESSED")
 
     }
     
