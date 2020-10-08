@@ -458,8 +458,8 @@
                                 <rect key="frame" x="0.0" y="168" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nq7-8s-OLd">
-                                <rect key="frame" x="0.0" y="224" width="414" height="505"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Nq7-8s-OLd">
+                                <rect key="frame" x="0.0" y="230" width="414" height="505"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -483,12 +483,21 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dshfjkhJSFdsf sjdhfkjsd fhfkjsdf jsdhfksdf" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTh-wi-a1A" customClass="Dest">
-                                                            <rect key="frame" x="40" y="0.0" width="334" height="50"/>
+                                                            <rect key="frame" x="40" y="0.0" width="309" height="50"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Nln-y0-CmT"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                                             <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFN-5t-fqM">
+                                                            <rect key="frame" x="359" y="0.0" width="15" height="50"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="15" id="831-kn-ZzR"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="17"/>
+                                                            <color key="textColor" red="0.18037796019999999" green="0.1608026326" blue="0.34113067390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -506,6 +515,7 @@
                                         <connections>
                                             <outlet property="collectGroupLabel" destination="fTh-wi-a1A" id="DOf-I6-ond"/>
                                             <outlet property="iconLabel" destination="7KW-RA-Yl3" id="cO3-WL-xWA"/>
+                                            <outlet property="iconLabelRight" destination="aFN-5t-fqM" id="fVW-EB-OSu"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

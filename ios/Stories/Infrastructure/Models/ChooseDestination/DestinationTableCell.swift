@@ -17,6 +17,16 @@ internal final class DestinationTableCell : UITableViewCell {
         }
     }
     
+    public var iconRight: String = "" {
+        didSet {
+            iconLabelRight.text = iconRight
+            iconLabelRight.isHidden = true
+            if (iconRight != "") {
+                iconLabelRight.isHidden = false
+            }
+        }
+    }
+    
     public var type: CollectGroupType = .church {
         didSet {
             switch type {
@@ -32,6 +42,9 @@ internal final class DestinationTableCell : UITableViewCell {
             case .artist:
                 iconLabel.text = "guitar"
                 break
+            case .none:
+                iconLabel.text = ""
+                break
             default:
                 iconLabel.text = "place-of-worship"
                 break
@@ -41,10 +54,12 @@ internal final class DestinationTableCell : UITableViewCell {
 
     @IBOutlet var iconLabel: UILabel!
     @IBOutlet var collectGroupLabel: UILabel!
+    @IBOutlet var iconLabelRight: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        iconLabelRight.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -60,6 +75,7 @@ internal final class DestinationTableCell : UITableViewCell {
         setBackgroundColorRecursive(view: self.contentView, color: UIColor.clear)
         iconLabel.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
         collectGroupLabel.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        iconLabelRight.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
     }
     
     private func toggleOn() {
@@ -75,13 +91,14 @@ internal final class DestinationTableCell : UITableViewCell {
             break
         case .artist:
             setBackgroundColorRecursive(view: self.contentView, color: #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1))
-            break
+            break            
         default:
             setBackgroundColorRecursive(view: self.contentView, color: #colorLiteral(red: 0.09952672571, green: 0.41830042, blue: 0.7092369199, alpha: 1))
             break
         }
         iconLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         collectGroupLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        iconLabelRight.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     }
     
     private func setBackgroundColorRecursive(view: UIView, color: UIColor) {

@@ -52,6 +52,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         let destinationCell = tableView.dequeueReusableCell(withIdentifier: String(describing: DestinationTableCell.self), for: indexPath) as! DestinationTableCell
         destinationCell.name = destination.name
         destinationCell.type = destination.type
+        destinationCell.iconRight = destination.iconRight
         if destination.selected {
             //select row that should be selected
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
@@ -87,17 +88,28 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
-            nextButton.isEnabled = true
-            // update ViewModel
-            (destinations.first { $0.name == destinationCell.name })!.selected = true
-            // make sure other destinations are deselected
-            destinations.filter { $0.name != destinationCell.name }.forEach { $0.selected = false }
+            // This is the special "report missing organisation item"
+            if (destinationCell.type == .none) {
+                nextButton.isEnabled = false
+                try? self.mediater.send(request: GoToAboutViewRoute(), withContext: self)
+            } else {
+                nextButton.isEnabled = true
+                // update ViewModel
+                (destinations.first { $0.name == destinationCell.name })!.selected = true
+                // make sure other destinations are deselected
+                destinations.filter { $0.name != destinationCell.name }.forEach { $0.selected = false }
+            }
         }
     }
     
     //MARK: viewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let index = self.tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: index, animated: true)
+        }
+            
         navigationItem.title = "SelectRecipient".localized
         navigationItem.accessibilityLabel = "SelectRecipient".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
@@ -220,6 +232,15 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
                     return destination
             }
         }
+        
+        // Add "meld ontrbrekende organisatie' to list of organisations
+        let MissingOrganisationElement = DestinationViewModel()
+        MissingOrganisationElement.name = NSLocalizedString("ReportMissingOrganisationListItem", comment: "")
+        MissingOrganisationElement.selected = false
+        MissingOrganisationElement.iconRight = "plus"
+        MissingOrganisationElement.type = CollectGroupType.none
+        
+        self.destinations.insert(MissingOrganisationElement, at: 0)
     }
     
     private func filterDestinationsAndReloadTable() {
@@ -228,11 +249,11 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         if let activeCategoryButton = typeStackView.arrangedSubviews.first(where: { view in
             return (view as! DestinationCategoryButton).active
         }) {
-            filteredDestinations = filteredDestinations.filter { $0.type == CollectGroupType(rawValue: activeCategoryButton.tag) }
+            filteredDestinations = filteredDestinations.filter { $0.type == CollectGroupType(rawValue: activeCategoryButton.tag) || $0.type == CollectGroupType.none }
         }
 
         if let currentSearchText = searchBar.text, !currentSearchText.isEmpty {
-            filteredDestinations = filteredDestinations.filter { $0.name.lowercased().contains(currentSearchText.lowercased()) }
+            filteredDestinations = filteredDestinations.filter { $0.name.lowercased().contains(currentSearchText.lowercased()) || $0.type == CollectGroupType.none}
         }
         
         buildTableSections()
