@@ -94,6 +94,14 @@ extension String{
         return NSLocalizedString(self, comment: "")
     }
     
+    func localizedImage(language: String?) -> String {
+        if (language == "nl") {
+            return self + "_NL"
+        } else {
+            return self + "_GB"
+        }
+    }
+    
     var toDate : Date? {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS"
