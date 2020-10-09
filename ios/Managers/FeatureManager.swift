@@ -171,7 +171,7 @@ class FeatureManager {
                             return "Feature_RecurringDonations_3_Button".localized
                         },
                         action: { (context) -> Void in
-                            if (!LoginManager.shared.isFullyRegistered) {
+                            if (LoginManager.shared.isFullyRegistered) {
                                 context?.dismiss(animated: true, completion: {
                                     if let menuCtrl = UIApplication.shared.delegate?.window??.rootViewController as? LGSideMenuController {
                                         menuCtrl.showLeftView(animated: true)
@@ -180,15 +180,10 @@ class FeatureManager {
                             } else {
                                 let alert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertController.Style.alert)
                                 alert.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertAction.Style.default, handler: { action in
-                                    if let ctx = context as? AmountViewController {
-                                        ctx.menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
-                                    }
+                                    context?.dismiss(animated: true)
                                 }))
+                                
                                 alert.addAction(UIAlertAction(title: NSLocalizedString("FinalizeRegistration", comment: ""), style: .cancel, handler: { (action) in
-                                    if let ctx = context as? AmountViewController {
-                                        ctx.menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
-                                    }
-                                    
                                     if AppServices.shared.isServerReachable {
                                         NavigationManager.shared.finishRegistration(context!)
                                     } else {
