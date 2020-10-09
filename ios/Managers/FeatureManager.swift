@@ -150,7 +150,7 @@ class FeatureManager {
                    icon: "repeat",
                    title: "MenuItem_RecurringDonation".localized,
                    notification: "Feature_RecurringDescription_Notification".localized,
-                   mustSee: false,
+                   mustSee: LoginManager.shared.isFullyRegistered,
                    pages: [
                     FeaturePageContent(
                         image: "RecurringDonation_FeatureSlide_01".localizedImage(language: Locale.current.languageCode),
