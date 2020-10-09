@@ -149,7 +149,7 @@ class FeatureManager {
         3: Feature(id: 3,
                    icon: "repeat",
                    title: "MenuItem_RecurringDonation".localized,
-                   notification: "Feature_RecurringDescription_Notification".localized,
+                   notification: "Feature_RecurringDonations_Notification".localized,
                    mustSee: LoginManager.shared.isFullyRegistered,
                    pages: [
                     FeaturePageContent(
