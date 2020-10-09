@@ -147,22 +147,23 @@ class FeatureManager {
                             })
                     ]),
         3: Feature(id: 3,
-                   icon: "feature_newinterface_menu_icon",
-                   title: "Feature_RecurringDonation_Menu".localized,
+                   icon: "repeat",
+                   title: "MenuItem_RecurringDonation".localized,
                    notification: "Feature_RecurringDescription_Notification".localized,
                    mustSee: false,
                    pages: [
                     FeaturePageContent(
-                        image: "feature_newgui1",
+                        image: "RecurringDonation_FeatureSlide_01".localizedImage(language: Locale.current.languageCode),
                         color: #colorLiteral(red: 0.2529238164, green: 0.7889558673, blue: 0.5588058829, alpha: 1),
                         title: "Feature_RecurringDonations_1_Title".localized,
                         subText: "Feature_RecurringDonations_1_Description".localized),
                     FeaturePageContent(
-                        image: "feature_newgui1",
+                        image: "RecurringDonation_FeatureSlide_02".localizedImage(language: Locale.current.languageCode),
                         color: #colorLiteral(red: 0.9581139684, green: 0.7486050725, blue: 0.3875802159, alpha: 1), title: "Feature_RecurringDonations_2_Title".localized,
                         subText: "Feature_RecurringDonations_2_Description".localized),
                     FeaturePageContent(
-                        image: "feature_newgui1",
+                        
+                        image: "RecurringDonation_FeatureSlide_03".localizedImage(language: Locale.current.languageCode),
                         color: #colorLiteral(red: 0.2959860563, green: 0.5844997168, blue: 0.7966017127, alpha: 1),
                         title: "Feature_RecurringDonations_3_Title".localized,
                         subText: "Feature_RecurringDonations_3_Description".localized,
