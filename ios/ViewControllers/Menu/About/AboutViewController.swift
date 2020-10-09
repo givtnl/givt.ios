@@ -11,7 +11,7 @@ import SVProgressHUD
 
 class AboutViewController: UIViewController, UITextViewDelegate {
 
-    public var prefilledText: String = String()
+    public var prefilledText: String?
     private var log = LogService.shared
     @IBOutlet var titleText: UILabel!
     @IBOutlet var versionNumber: UILabel!
@@ -49,13 +49,20 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         btnSend.setBackgroundColor(color: UIColor.init(rgb: 0xE3E2E7), forState: UIControl.State.disabled)
         btnSend.isEnabled = false
         
-        textView.text = prefilledText
+        if let prefilled = prefilledText {
+            textView.tag = 1
+            textView.text = prefilled
+            textView.placeholder = prefilled
+            textView.becomeFirstResponder()
+            textView.selectedRange = NSMakeRange(prefilled.count, 0)
+        }
     }
     
     @objc private func textDidChange(notification: Notification) {
         if let tv = notification.object as? CustomUITextView {
             let text = tv.text.trimmingCharacters(in: .whitespacesAndNewlines)
-            btnSend.isEnabled = !text.isEmpty && text != tv.placeholder!
+            let placeholder = tv.placeholder?.trimmingCharacters(in: .whitespacesAndNewlines)
+            btnSend.isEnabled = !text.isEmpty && text != placeholder
         }
     }
     
@@ -68,13 +75,22 @@ class AboutViewController: UIViewController, UITextViewDelegate {
         var contentInset:UIEdgeInsets = self.scrollView.contentInset
         contentInset.bottom = keyboardFrame.size.height
         scrollView.contentInset = contentInset
-        
-        justifyScrollViewContent()
+        if textView.tag != 1 {
+            justifyScrollViewContent()
+        } else {
+            justifyScrollViewContentWhenUseFirstResponder(keyboardHeight: keyboardFrame.size.height)
+        }
     }
     
     func justifyScrollViewContent() {
         var offset = scrollView.contentOffset
         offset.y = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.bounds.size.height
+        scrollView.setContentOffset(offset, animated: true)
+    }
+    
+    func justifyScrollViewContentWhenUseFirstResponder(keyboardHeight: CGFloat) {
+        var offset = scrollView.contentOffset
+        offset.y = keyboardHeight
         scrollView.setContentOffset(offset, animated: true)
     }
     
