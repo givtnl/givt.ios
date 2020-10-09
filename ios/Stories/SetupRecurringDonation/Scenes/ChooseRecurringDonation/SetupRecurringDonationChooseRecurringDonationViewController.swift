@@ -34,7 +34,7 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     @IBOutlet weak var startDateLabel: CustomUITextField!
     @IBOutlet weak var startDateButton: UIButton!
     
-    @IBOutlet weak var occurrencesTextField: CustomUITextField!
+    @IBOutlet weak var occurrencesTextField: UITextField!
     @IBOutlet weak var occurrencesLabel: UILabel!
     
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
@@ -310,10 +310,10 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     
     @objc func handleOccurrencesEditingChanged() {
         if let times = Int(occurrencesTextField.text!) {
-            if(times == 0) {
-                occurrencesTextField.setBorderColor(.red)
-            } else {
-                occurrencesTextField.resetBorderColor()
+            if times == 0 {
+                occurrencesTextField.text = ""
+            } else if times > 999 {
+                occurrencesTextField.text = "999"
             }
         }
         ensureButtonHasCorrectState()
