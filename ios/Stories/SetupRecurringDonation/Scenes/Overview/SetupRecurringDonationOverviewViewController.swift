@@ -88,7 +88,6 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
         do {
             // load collectgroups with query
             self.recurringRules = try self.mediater.send(request: GetRecurringDonationsQuery())
-            self.recurringRules = self.recurringRules.filter { $0.currentState == RecurringDonationState.Active }
         } catch  {
             self.tableView.removeFromSuperview()
             self.stackView.addSubview(self.imageView)
