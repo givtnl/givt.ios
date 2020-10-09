@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ogr-VH-ndU">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ogr-VH-ndU">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -52,6 +50,7 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="oqF-u7-6Bw"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -63,7 +62,6 @@
                             <constraint firstItem="qDc-13-xR5" firstAttribute="leading" secondItem="595-2M-sXG" secondAttribute="leading" constant="20" id="jjt-Rl-86e"/>
                             <constraint firstItem="kTq-T7-frQ" firstAttribute="leading" secondItem="595-2M-sXG" secondAttribute="leading" id="n8F-3m-bIW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="oqF-u7-6Bw"/>
                     </view>
                     <navigationItem key="navigationItem" id="wKv-Qm-pnR">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="IwQ-jP-X4k">
@@ -146,8 +144,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnB-eZ-tGI">
-                                        <rect key="frame" x="183" y="40" width="48" height="23"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PnB-eZ-tGI">
+                                        <rect key="frame" x="20" y="20" width="374" height="22"/>
                                         <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -177,13 +175,15 @@
                                 <color key="backgroundColor" red="0.96529752016067505" green="0.74714535474777222" blue="0.33720988035202026" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Qii-M5-7r5" firstAttribute="top" secondItem="PnB-eZ-tGI" secondAttribute="bottom" constant="20" id="8ip-g8-7U3"/>
-                                    <constraint firstItem="PnB-eZ-tGI" firstAttribute="centerX" secondItem="zCU-y0-gTS" secondAttribute="centerX" id="Jjf-wN-EaO"/>
                                     <constraint firstAttribute="trailing" secondItem="Qii-M5-7r5" secondAttribute="trailing" constant="20" id="Wog-RH-epz"/>
                                     <constraint firstItem="PnB-eZ-tGI" firstAttribute="top" secondItem="zCU-y0-gTS" secondAttribute="top" constant="20" id="cuB-He-zVI"/>
+                                    <constraint firstAttribute="trailing" secondItem="PnB-eZ-tGI" secondAttribute="trailing" constant="20" id="iiF-Ud-hqU"/>
                                     <constraint firstItem="Qii-M5-7r5" firstAttribute="leading" secondItem="zCU-y0-gTS" secondAttribute="leading" constant="20" id="jb5-zR-lzK"/>
+                                    <constraint firstItem="PnB-eZ-tGI" firstAttribute="leading" secondItem="zCU-y0-gTS" secondAttribute="leading" constant="20" id="xT9-fZ-haI"/>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="SLq-VT-slz"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -199,7 +199,6 @@
                             <constraint firstAttribute="trailing" secondItem="zCU-y0-gTS" secondAttribute="trailing" id="yee-sr-quO"/>
                             <constraint firstItem="9gt-hh-Emu" firstAttribute="leading" secondItem="SLq-VT-slz" secondAttribute="leading" constant="20" id="zKB-rm-sJc"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="SLq-VT-slz"/>
                     </view>
                     <size key="freeformSize" width="414" height="816"/>
                     <connections>
@@ -215,6 +214,14 @@
             <point key="canvasLocation" x="1128" y="17"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="9gt-hh-Emu">
+            <size key="intrinsicContentSize" width="62" height="40"/>
+        </designable>
+        <designable name="qDc-13-xR5">
+            <size key="intrinsicContentSize" width="41" height="40"/>
+        </designable>
+    </designables>
     <resources>
         <image name="backbtn" width="15" height="24"/>
         <image name="closepurple" width="23" height="24"/>
