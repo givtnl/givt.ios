@@ -23,6 +23,7 @@ internal final class DestinationTableCell : UITableViewCell {
             iconLabelRight.isHidden = true
             if (iconRight != "") {
                 iconLabelRight.isHidden = false
+                collectGroupLabel.font = UIFont(name: "Avenir-MediumOblique", size: collectGroupLabel.font.pointSize)
             }
         }
     }
