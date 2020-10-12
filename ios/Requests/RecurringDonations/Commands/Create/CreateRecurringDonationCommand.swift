@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 class CreateRecurringDonationCommand : Codable, RequestProtocol {
-    typealias TResponse = Bool
+    typealias TResponse = ResponseModel<Bool>
     
     var userId: UUID? = nil
     
