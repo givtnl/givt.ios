@@ -13,7 +13,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SlimPayInformation" = "Wir möchten, dass Du Givt so einfach wie möglich nutzen kannst.";
 "SavingSettings" = "Lehn Dich zurück und entspann Dich, wir speichern Deine Einstellungen.";
 "Continue" = "Weiter";
-"GivtMinimumAmountEuro" = "0,50 Euro";
+"GivtMinimumAmountEuro" = "0,25 Euro";
 "SlimPayInfoDetail" = "Givt arbeitet bei der Ausführung der Transaktionen mit SlimPay zusammen. SlimPay ist spezialisiert auf die Abwicklung von Mandaten und automatischen Geldüberweisungen auf digitalen Plattformen. SlimPay führt diese Aufträge für Givt zu den niedrigsten Preisen auf diesem Markt und mit hoher Geschwindigkeit aus.\n\nSlimPay ist ein idealer Partner für Givt, weil sie das bargeldlose Spenden sehr einfach und sicher machen. Als Zahlungsdienstleister werden sie von der Nederlandsche Bank und anderen europäischen Nationalbanken beaufsichtigt.\n\nDas Geld wird auf einem SlimPay-Konto gesammelt. \nGivt wird sicherstellen, dass das Geld korrekt ausgegeben wird.\n";
 "SlimPayInfoDetailTitle" = "Was ist SlimPay`";
 "ContinueRegistration" = "Dein Benutzerkonto wurde bereits angelegt,\naber es war leider nicht möglich.\ndie Registrierung abzuschließen.\n\nWir möchten Dir gerne dabei helfen, Givt zu nutzen, \ndaher bitten wir Dich, Dich einzuloggen.\num die Registrierung abzuschließen.";
@@ -266,9 +266,11 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountPresetsBody" = "Stelle Deine Betragsvorgaben unten ein.";
 "AmountPresetsResetAll" = "Werte zurücksetzen";
 "AmountPresetsErrGivingLimit" = "Der Betrag ist höher als Dein Maximalbetrag.";
-"AmountPresetsErr50C" = "Der Betrag muss mindestens 0,50 Euro betragen.";
+
+/*Fuzzy*/
+"AmountPresetsErr25C" = "Der Betrag muss mindestens 0,25 Euro betragen.";
 "AmountPresetsErrEmpty" = "Gib einen Betrag ein";
-"GivtMinimumAmountPond" = "£0.50";
+"GivtMinimumAmountPond" = "£0.25";
 "AlertBACSMessage" = "Da Du {0} als Länderwahl angegeben hast, gehen wir davon aus, dass Du lieber über ein SEPA-Mandat (€) gibst, dafür benötigen wir Deine IBAN. Wenn Du lieber BACS (£) verwendest, benötigen wir Deinen Sort Code und Deine Kontonummer.";
 "AlertSEPAMessage" = "Da Du {0} als Länderwahl angegeben hast, gehen wir davon aus, dass Du lieber über BACS Direct Debit (£) gibst, dafür benötigen wir Deinen Sort Code und Deine Kontonummer. Wenn Du lieber SEPA (€) nutzen möchtest, benötigen wir Deine IBAN.";
 "Important" = "Wichtig";
@@ -977,3 +979,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "Feature_RecurringDonations_3_Description" = "All your one off and recurring donations in one overview. Useful for yourself and for tax purposes.";
 "Feature_RecurringDonations_3_Button" = "Ok, understood!";
 "Feature_RecurringDonations_Notification" = "Hallo! Möchtest du auch mit der App wiederkehrende Spende einrichten? Werfe einen kurzen Blick auf das, was wir gemacht haben.";
+"SetupRecurringDonationFailedDuplicate" = "The recurring donation was not set up successfully. You have already made a donation to this organisation with the same frequency and amount.";
