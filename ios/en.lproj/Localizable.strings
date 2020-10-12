@@ -990,3 +990,15 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "PushnotificationRequestScreenTitle" = "Push notifications";
 "PushnotificationRequestScreenDescription" = "We would like to keep you posted on when the next donation will be collected from your account. At the moment we don't have permission to send you messages. Could you change that setting, please?";
 "PushnotificationRequestScreenButtonYes" = "Yes, I will change my settings";
+"ReportMissingOrganisationListItem" = "Report a missing organisation";
+"ReportMissingOrganisationPrefilledText" = "Hi! I would really like to give to: ";
+"Feature_RecurringDonations_1_Title" = "Plan your recurring donations to charities";
+"Feature_RecurringDonations_2_Title" = "You're in control";
+"Feature_RecurringDonations_3_Title" = "Overview";
+"Feature_RecurringDonations_1_Description" = "You can now plan your recurring donations, with the end date already selected.";
+"Feature_RecurringDonations_2_Description" = "You can see all the recurring donations you have planned and stop them whenever you want.";
+"Feature_RecurringDonations_3_Description" = "All your one off and recurring donations in one overview. Useful for yourself and for tax purposes.";
+"Feature_RecurringDonations_3_Button" = "Ok, understood!";
+
+/*Fuzzy*/
+"Feature_RecurringDonations_Notification" = "Hi! Would you also like to set up a recurring donation with this app? Take a quick look at what we have built.";

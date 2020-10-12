@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +13,7 @@
             <objects>
                 <navigationController storyboardIdentifier="PresetsNavigationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hhf-uQ-iVJ" customClass="PresetsNavigationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OQi-G2-Y7g">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
@@ -32,13 +30,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hier beheer je het gebruik van je voorkeursbedragen." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sda-ok-DVf">
-                                <rect key="frame" x="20" y="40" width="335" height="44"/>
+                                <rect key="frame" x="20" y="20" width="335" height="44"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="16"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXq-7L-N1H">
-                                <rect key="frame" x="0.0" y="109" width="375" height="103"/>
+                                <rect key="frame" x="0.0" y="89" width="375" height="103"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4W-9V-NZy">
                                         <rect key="frame" x="0.0" y="1" width="375" height="50"/>
@@ -106,6 +104,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Rr3-3t-hUe"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Rr3-3t-hUe" firstAttribute="trailing" secondItem="sda-ok-DVf" secondAttribute="trailing" constant="20" id="7op-oS-37S"/>
@@ -115,7 +114,6 @@
                             <constraint firstItem="qXq-7L-N1H" firstAttribute="top" secondItem="sda-ok-DVf" secondAttribute="bottom" constant="25" id="xDq-to-YUb"/>
                             <constraint firstItem="qXq-7L-N1H" firstAttribute="trailing" secondItem="Rr3-3t-hUe" secondAttribute="trailing" id="zAz-dU-BYh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Rr3-3t-hUe"/>
                     </view>
                     <navigationItem key="navigationItem" title="Voorkeursbedragen" id="ryg-z5-8Ta">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="z3s-Wi-vN1">

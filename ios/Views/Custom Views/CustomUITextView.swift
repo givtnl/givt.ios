@@ -37,8 +37,10 @@ class CustomUITextView: UITextView, UITextViewDelegate{
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if(textView.tag != 1) {
             textView.text = ""
+        }
+        if textView.textColor == UIColor.lightGray {
             textView.textColor = self.originalTextColor
         }
     }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3oB-Co-b0Z">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3oB-Co-b0Z">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +23,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We zoeken even waar je bent, wacht je even?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgE-JW-Wal">
-                                <rect key="frame" x="20" y="106.5" width="335" height="49.5"/>
+                                <rect key="frame" x="20" y="86.5" width="335" height="49.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="18"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -55,12 +53,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tET-B1-mWg">
-                                <rect key="frame" x="20" y="64" width="335" height="27.5"/>
+                                <rect key="frame" x="20" y="44" width="335" height="27.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="LB2-dK-tjk"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="LB2-dK-tjk" firstAttribute="trailing" secondItem="05x-ft-8QM" secondAttribute="trailing" constant="20" id="4qT-ra-Qir"/>
@@ -76,12 +75,11 @@
                             <constraint firstItem="tHt-MQ-Ldg" firstAttribute="leading" secondItem="LB2-dK-tjk" secondAttribute="leading" id="pPp-V1-M3h"/>
                             <constraint firstItem="LB2-dK-tjk" firstAttribute="trailing" secondItem="lgE-JW-Wal" secondAttribute="trailing" constant="20" id="xCd-Pb-TY0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="LB2-dK-tjk"/>
                     </view>
                     <navigationItem key="navigationItem" id="6YI-mF-ozn">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="tTW-gD-iwk">
                             <connections>
-                                <action selector="backPressed:" destination="3oB-Co-b0Z" id="KmK-bc-df1"/>
+                                <action selector="kerrekiwere:" destination="3oB-Co-b0Z" id="ECf-c5-sV0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -107,19 +105,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUH-3X-8JH">
-                                <rect key="frame" x="40" y="242" width="295" height="183"/>
+                                <rect key="frame" x="40" y="221.5" width="295" height="224"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey! Je staat op een evenement waar Givt ondersteund word. Wil jij toevallig geven aan  Zwolle Unlimited?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGR-pZ-Z5l">
-                                        <rect key="frame" x="20" y="38" width="255" height="93"/>
+                                        <rect key="frame" x="20" y="79" width="255" height="93"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="giveatlocationnocircle" translatesAutoresizingMaskIntoConstraints="NO" id="KQM-Fz-mNp">
-                                        <rect key="frame" x="0.0" y="-8" width="295" height="16"/>
+                                        <rect key="frame" x="0.0" y="-49" width="295" height="98"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jo-UR-O8e">
-                                        <rect key="frame" x="239" y="0.0" width="56" height="62"/>
+                                        <rect key="frame" x="232" y="0.0" width="63" height="64"/>
                                         <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                         <state key="normal" image="closepurple"/>
                                         <connections>
@@ -140,7 +138,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ja, graag!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kn-jd-iPt" customClass="InsetLabel" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="130.5" y="403" width="114" height="44"/>
+                                <rect key="frame" x="145.5" y="423.5" width="84" height="44"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="a3z-Nm-liZ"/>
@@ -158,6 +156,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="EBA-dD-aXe"/>
                         <color key="backgroundColor" red="0.1803921568627451" green="0.16078431372549018" blue="0.3411764705882353" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="AUH-3X-8JH" firstAttribute="centerY" secondItem="Lh4-gc-YJG" secondAttribute="centerY" id="Ai3-7O-dzD"/>
@@ -168,7 +167,6 @@
                             <constraint firstItem="AUH-3X-8JH" firstAttribute="centerX" secondItem="Lh4-gc-YJG" secondAttribute="centerX" id="rEf-YW-PZT"/>
                             <constraint firstItem="1kn-jd-iPt" firstAttribute="centerY" secondItem="AUH-3X-8JH" secondAttribute="bottom" id="vYc-zY-b3C"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="EBA-dD-aXe"/>
                     </view>
                     <connections>
                         <outlet property="btnGive" destination="1kn-jd-iPt" id="NI1-15-IXg"/>
@@ -182,6 +180,14 @@
             <point key="canvasLocation" x="680.79999999999995" y="137.18140929535232"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="05x-ft-8QM">
+            <size key="intrinsicContentSize" width="158" height="37"/>
+        </designable>
+        <designable name="1kn-jd-iPt">
+            <size key="intrinsicContentSize" width="84" height="25"/>
+        </designable>
+    </designables>
     <resources>
         <image name="backbtn" width="15" height="24"/>
         <image name="closepurple" width="23" height="24"/>

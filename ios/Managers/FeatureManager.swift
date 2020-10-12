@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import UserNotifications
+import LGSideMenuController
 
 class FeaturePageContent {
     let image: String
@@ -17,7 +18,7 @@ class FeaturePageContent {
     let subText: String
     let actionText: ((UIViewController?)->String)?
     let action: ((UIViewController?)->Void)?
-
+    
     init(image: String, color: UIColor, title: String, subText: String, actionText: ((UIViewController?)->String)? = nil, action: ((UIViewController?)->Void)? = nil) {
         self.image = image
         self.color = color
@@ -116,7 +117,7 @@ class FeatureManager {
                                     }
                                 }
                             })
-            ]),
+                    ]),
         2: Feature( id: 2,
                     icon: "feature_newinterface_menu_icon",
                     title: NSLocalizedString("Feature_newgui1_title", comment: ""),
@@ -135,7 +136,7 @@ class FeatureManager {
                             subText: NSLocalizedString("Feature_newgui2_message", comment: "")),
                         FeaturePageContent(
                             image: "feature_newgui3",
-                            color: #colorLiteral(red: 0.3019607843, green: 0.5960784314, blue: 0.8117647059, alpha: 1),
+                            color: #colorLiteral(red: 0.2959860563, green: 0.5844997168, blue: 0.7966017127, alpha: 1),
                             title: NSLocalizedString("Feature_newgui3_title", comment: ""),
                             subText: NSLocalizedString("Feature_newgui3_message", comment: ""),
                             actionText: {(context) -> String in
@@ -144,7 +145,56 @@ class FeatureManager {
                             action: {(context) -> Void in
                                 context?.dismiss(animated: true)
                             })
-            ])
+                    ]),
+        3: Feature(id: 3,
+                   icon: "repeat",
+                   title: "MenuItem_RecurringDonation".localized,
+                   notification: "Feature_RecurringDonations_Notification".localized,
+                   mustSee: LoginManager.shared.isFullyRegistered,
+                   pages: [
+                    FeaturePageContent(
+                        image: "RecurringDonation_FeatureSlide_01".localizedImage(language: Locale.current.languageCode),
+                        color: #colorLiteral(red: 0.2529238164, green: 0.7889558673, blue: 0.5588058829, alpha: 1),
+                        title: "Feature_RecurringDonations_1_Title".localized,
+                        subText: "Feature_RecurringDonations_1_Description".localized),
+                    FeaturePageContent(
+                        image: "RecurringDonation_FeatureSlide_02".localizedImage(language: Locale.current.languageCode),
+                        color: #colorLiteral(red: 0.9581139684, green: 0.7486050725, blue: 0.3875802159, alpha: 1), title: "Feature_RecurringDonations_2_Title".localized,
+                        subText: "Feature_RecurringDonations_2_Description".localized),
+                    FeaturePageContent(
+                        
+                        image: "RecurringDonation_FeatureSlide_03".localizedImage(language: Locale.current.languageCode),
+                        color: #colorLiteral(red: 0.2959860563, green: 0.5844997168, blue: 0.7966017127, alpha: 1),
+                        title: "Feature_RecurringDonations_3_Title".localized,
+                        subText: "Feature_RecurringDonations_3_Description".localized,
+                        actionText: { (context) -> String in
+                            return "Feature_RecurringDonations_3_Button".localized
+                        },
+                        action: { (context) -> Void in
+                            if (LoginManager.shared.isFullyRegistered) {
+                                context?.dismiss(animated: true, completion: {
+                                    if let menuCtrl = UIApplication.shared.delegate?.window??.rootViewController as? LGSideMenuController {
+                                        menuCtrl.showLeftView(animated: true)
+                                    }
+                                })
+                            } else {
+                                let alert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertAction.Style.default, handler: { action in
+                                    context?.dismiss(animated: true)
+                                }))
+                                
+                                alert.addAction(UIAlertAction(title: NSLocalizedString("FinalizeRegistration", comment: ""), style: .cancel, handler: { (action) in
+                                    if AppServices.shared.isServerReachable {
+                                        NavigationManager.shared.finishRegistration(context!)
+                                    } else {
+                                        NavigationManager.shared.presentAlertNoConnection(context: context!)
+                                    }
+                                    
+                                }))
+                                context?.present(alert, animated: false, completion: {})
+                            }
+                        })
+                   ])
     ]
     
     var featuresWithBadge: [Int] {
@@ -202,7 +252,7 @@ class FeatureManager {
                             featView.widthAnchor.constraint(equalToConstant: sv.frame.width-16),
                             featView.leftAnchor.constraint(equalTo: sv.leftAnchor, constant: 8),
                             topConstraint
-                            ])
+                        ])
                         sv.layoutIfNeeded()
                         featView.invalidateIntrinsicContentSize()
                         sv.layoutIfNeeded()
@@ -218,7 +268,7 @@ class FeatureManager {
                             sv.layoutIfNeeded()
                         })
                         self.featureViewConstraint = topConstraint
-
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {() -> Void in
                             self.dismissNotification()
                         })
