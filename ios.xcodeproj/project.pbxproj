@@ -211,6 +211,8 @@
 		DF8BB30524F7A12200104668 /* RecurringRuleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */; };
 		DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */; };
 		DFAEA67925347A7A00A41499 /* RecurringRuleOverviewRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAEA67825347A7A00A41499 /* RecurringRuleOverviewRecurringDonationViewController.swift */; };
+		DFAEA67C253481B800A41499 /* RecurringRuleOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFAEA67B253481B800A41499 /* RecurringRuleOverviewCell.xib */; };
+		DFAEA67E25348A3400A41499 /* RecurringRuleOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAEA67D25348A3400A41499 /* RecurringRuleOverviewCell.swift */; };
 		DFBF338D2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFBF338C2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf */; };
 		DFBF338F2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFBF338E2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf */; };
 		DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBFAC302409404100F53095 /* GiftAidSettings.swift */; };
@@ -534,6 +536,8 @@
 		DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleTableCell.swift; sourceTree = "<group>"; };
 		DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidInfoController.swift; sourceTree = "<group>"; };
 		DFAEA67825347A7A00A41499 /* RecurringRuleOverviewRecurringDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleOverviewRecurringDonationViewController.swift; sourceTree = "<group>"; };
+		DFAEA67B253481B800A41499 /* RecurringRuleOverviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecurringRuleOverviewCell.xib; sourceTree = "<group>"; };
+		DFAEA67D25348A3400A41499 /* RecurringRuleOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleOverviewCell.swift; sourceTree = "<group>"; };
 		DFBF338C2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		DFBF338E2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
 		DFBFAC302409404100F53095 /* GiftAidSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidSettings.swift; sourceTree = "<group>"; };
@@ -1279,9 +1283,19 @@
 		DFAEA67725347A5100A41499 /* RecurringRuleOverview */ = {
 			isa = PBXGroup;
 			children = (
+				DFAEA67A2534800100A41499 /* Subviews */,
 				DFAEA67825347A7A00A41499 /* RecurringRuleOverviewRecurringDonationViewController.swift */,
 			);
 			path = RecurringRuleOverview;
+			sourceTree = "<group>";
+		};
+		DFAEA67A2534800100A41499 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				DFAEA67B253481B800A41499 /* RecurringRuleOverviewCell.xib */,
+				DFAEA67D25348A3400A41499 /* RecurringRuleOverviewCell.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		DFCA4EE32500EF04003D1825 /* Models */ = {
@@ -1900,6 +1914,7 @@
 				27A0E4EB221F3D3500982842 /* Presets.storyboard in Resources */,
 				D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */,
 				D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */,
+				DFAEA67C253481B800A41499 /* RecurringRuleOverviewCell.xib in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1988,6 +2003,7 @@
 				FB87303224C88627005FF355 /* NoInternetAlertHandler.swift in Sources */,
 				FB45AC3921CA406200F12584 /* FeatureMenuViewController.swift in Sources */,
 				32CA17B324CED4BD00248053 /* SetupRecurringDonationChooseDestinationRoute.swift in Sources */,
+				DFAEA67E25348A3400A41499 /* RecurringRuleOverviewCell.swift in Sources */,
 				D726298D1FFBD10C00743224 /* BaseScanViewController.swift in Sources */,
 				D731EACD1F792D7400F5116C /* AmountLimitNavigationViewController.swift in Sources */,
 				D7335B2E1F45923F00B57AE0 /* UIImageExtensions.swift in Sources */,
