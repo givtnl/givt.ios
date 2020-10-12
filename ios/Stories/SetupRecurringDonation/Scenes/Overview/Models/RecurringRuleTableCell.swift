@@ -26,9 +26,12 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var ruleStackView: UIStackView!
     @IBOutlet weak var horiStackView: UIStackView!
     @IBOutlet weak var stackViewRuleView: UIView!
+    
     @IBOutlet weak var actionView: UIView!
+    @IBOutlet weak var stopView: UIView!
     @IBOutlet weak var stopLabel: UILabel!
-    @IBOutlet var stopView: UIView!
+    @IBOutlet weak var listView: UIView!
+    @IBOutlet weak var listLabel: UILabel!
     
     var recurringDonationId: String?
     var rowIndexPath: IndexPath?
@@ -74,7 +77,7 @@ internal final class RecurringRuleTableCell : UITableViewCell {
                 let endDate:String = formatter.string(from: data.getEndDateFromRule())
                 endDateLabel.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
                 stopLabel.text = "CancelRecurringDonation".localized
-                stopLabel.textColor = ColorHelper.GivtRed
+                listLabel.text = "GoToListWithRecurringDonationDonations".localized
                 recurringDonationId = data.id
                 rowIndexPath = data.indexPath
                 if let rowIndex = rowIndexPath?.row {
