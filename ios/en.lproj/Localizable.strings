@@ -1004,4 +1004,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "Feature_RecurringDonations_Notification" = "Hi! Would you also like to set up a recurring donation with this app? Take a quick look at what we have built.";
-"SetupRecurringDonationFailedDuplicate" = "The recurring donation was not set up successfully. You have already made a donation to this organisation with the same frequency and amount.";
+"SetupRecurringDonationFailedDuplicate" = "The recurring donation was not set up successfully. You have already made a donation to this organisation with the same repeating period.";
