@@ -1008,4 +1008,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "Feature_RecurringDonations_Notification" = "Hallo! Wil je ook graag een terugkerende gift instellen met de app? Bekijk snel wat we hebben gemaakt.";
-"SetupRecurringDonationFailedDuplicate" = "Het instellen van de terugkerende gift is helaas niet gelukt. Je hebt al een gift aan deze organisatie met dezelfde frequentie en bedrag.";
+"SetupRecurringDonationFailedDuplicate" = "Het instellen van de terugkerende gift is helaas niet gelukt. Je hebt al een gift aan deze organisatie met dezelfde herhalingsperiode.";
