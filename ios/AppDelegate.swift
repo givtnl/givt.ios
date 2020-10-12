@@ -242,7 +242,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
         Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
         Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
-        Mediater.shared.registerPostProcessor(processor: CreateRecurringDonationCommandPostHandler())
         Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
         
         //-- USER QUERIES
