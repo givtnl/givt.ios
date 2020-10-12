@@ -18,8 +18,8 @@ class CreateRecurringDonationCommandHandler : RequestHandlerProtocol {
         do {
             let body = try JSONEncoder().encode(request)
             try apiClient.post(url: "/recurringdonations", data: body) { response in
-                if let success = response?.isSuccess {
-                    try? completion(ResponseModel(result: success) as! R.TResponse)
+                if let response = response, response.isSuccess {
+                    try? completion(ResponseModel(result: true) as! R.TResponse)
                 } else {
                     switch response?.status {
                     case .unauthorized :
