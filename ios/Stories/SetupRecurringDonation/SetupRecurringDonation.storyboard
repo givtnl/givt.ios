@@ -1110,6 +1110,26 @@
                         <viewLayoutGuide key="safeArea" id="Clq-Ox-nPr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="zbC-BI-si0">
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="ayc-Ms-m23"/>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="Z4g-LF-sQj">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bPL-Lb-yMZ">
+                                    <rect key="frame" x="354" y="2" width="40" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="info20h"/>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem width="44" id="r4s-5l-0Oj">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eZq-6l-7Tj">
+                                    <rect key="frame" x="302" y="2" width="44" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" image="dlTaxes"/>
+                                </button>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -1138,9 +1158,11 @@
     <resources>
         <image name="backbtn" width="15" height="24"/>
         <image name="closepurple" width="23" height="24"/>
+        <image name="dlTaxes" width="20" height="20"/>
         <image name="dropdown.png" width="128" height="128"/>
         <image name="feature_pushnot1" width="332" height="332"/>
         <image name="givymoney" width="240" height="240"/>
+        <image name="info20h" width="20" height="20"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
