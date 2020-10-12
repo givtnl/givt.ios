@@ -32,7 +32,14 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
     var recurringRules:[RecurringRuleViewModel] = []
-    var frequencies = ["SetupRecurringGiftWeek".localized, "SetupRecurringGiftMonth".localized, "SetupRecurringGiftQuarter".localized, "SetupRecurringGiftHalfYear".localized, "SetupRecurringGiftYear".localized]
+    
+    var frequencies = [
+        "SetupRecurringGiftWeek".localized,
+        "SetupRecurringGiftMonth".localized,
+        "SetupRecurringGiftQuarter".localized,
+        "SetupRecurringGiftHalfYear".localized,
+        "SetupRecurringGiftYear".localized
+    ]
     var selectedIndex: Int? = nil
     
     private var markedItem: RecurringRuleViewModel?
