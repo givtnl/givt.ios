@@ -41,6 +41,7 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(recurringDonationCreated), name: .GivtCreatedRecurringDonation, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(recurringDonationCreatedDuplicate), name: .GivtCreatedRecurringDonationDuplicate, object: nil)
         
         navBar.title = "TitleRecurringGifts".localized
         createButton.label1.text = "RecurringGiftsSetupCreate".localized
@@ -69,6 +70,15 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
                     }
                 }
             })
+        }
+    }
+    
+    @objc func recurringDonationCreatedDuplicate(notification: NSNotification) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "CancelRecurringDonationFailedDuplicate".localized, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            }))
+            self.present(alert, animated: true, completion:  {})
         }
     }
     
