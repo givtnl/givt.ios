@@ -297,6 +297,8 @@
 		FBC185C924C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C824C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift */; };
 		FBC185CC24C6CCD2001A4C6B /* MediaterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185CB24C6CCD2001A4C6B /* MediaterError.swift */; };
 		FBC185D124C6E237001A4C6B /* FirstDestinationThenAmountNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185D024C6E237001A4C6B /* FirstDestinationThenAmountNavigationController.swift */; };
+		FBC41A25253486310047C706 /* ReponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC41A24253486310047C706 /* ReponseModel.swift */; };
+		FBC41A272534868D0047C706 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC41A262534868D0047C706 /* ResponseError.swift */; };
 		FBD9CACC237580D5006C07FA /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD9CACB237580D5006C07FA /* Welcome.storyboard */; };
 		FBD9CACE237580DB006C07FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD9CACD237580DB006C07FA /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -625,6 +627,8 @@
 		FBC185C824C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPostProcessorWithContextProtocol.swift; sourceTree = "<group>"; };
 		FBC185CB24C6CCD2001A4C6B /* MediaterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaterError.swift; sourceTree = "<group>"; };
 		FBC185D024C6E237001A4C6B /* FirstDestinationThenAmountNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDestinationThenAmountNavigationController.swift; sourceTree = "<group>"; };
+		FBC41A24253486310047C706 /* ReponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReponseModel.swift; sourceTree = "<group>"; };
+		FBC41A262534868D0047C706 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		FBD827E4234DF2F70034BB51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FBD827E5234DF2F70034BB51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBD9CACB237580D5006C07FA /* Welcome.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
@@ -1637,9 +1641,10 @@
 		FBC185A424C0CD0B001A4C6B /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				32D4852A24D0442800F821A5 /* RecurringDonations */,
-				FB87300724C818FA005FF355 /* Donations */,
 				FBC185A524C0CD11001A4C6B /* CollectGroups */,
+				FB87300724C818FA005FF355 /* Donations */,
+				FBC41A23253486230047C706 /* Models */,
+				32D4852A24D0442800F821A5 /* RecurringDonations */,
 				FBC185A624C0CD18001A4C6B /* User */,
 			);
 			path = Requests;
@@ -1764,6 +1769,15 @@
 				FBC185D024C6E237001A4C6B /* FirstDestinationThenAmountNavigationController.swift */,
 			);
 			path = FirstDestinationThenAmount;
+			sourceTree = "<group>";
+		};
+		FBC41A23253486230047C706 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FBC41A24253486310047C706 /* ReponseModel.swift */,
+				FBC41A262534868D0047C706 /* ResponseError.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1977,6 +1991,7 @@
 				D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */,
 				FBC185D124C6E237001A4C6B /* FirstDestinationThenAmountNavigationController.swift in Sources */,
 				FB87302124C8678B005FF355 /* GoToSafariRouteHandler.swift in Sources */,
+				FBC41A272534868D0047C706 /* ResponseError.swift in Sources */,
 				FB87303224C88627005FF355 /* NoInternetAlertHandler.swift in Sources */,
 				FB45AC3921CA406200F12584 /* FeatureMenuViewController.swift in Sources */,
 				32CA17B324CED4BD00248053 /* SetupRecurringDonationChooseDestinationRoute.swift in Sources */,
@@ -1988,6 +2003,7 @@
 				D761E9A01F167798002B849B /* FirstViewController.swift in Sources */,
 				D7721B4B20EB67AD009771EE /* LMUserExt.swift in Sources */,
 				DF05015B24F8B4E0006196A3 /* BackToSetupRecurringDonationRouteHandler.swift in Sources */,
+				FBC41A25253486310047C706 /* ReponseModel.swift in Sources */,
 				FB872FEF24C6E7C3005FF355 /* BackToChooseDestinationRouteHandler.swift in Sources */,
 				32C2D8222522087000832444 /* DecimalExtension.swift in Sources */,
 				FBC185A224C0AD81001A4C6B /* DestinationViewModel.swift in Sources */,

@@ -19,14 +19,23 @@ class CreateRecurringDonationCommandHandler : RequestHandlerProtocol {
             let body = try JSONEncoder().encode(request)
             try apiClient.post(url: "/recurringdonations", data: body) { response in
                 if let success = response?.isSuccess {
-                    try? completion(success as! R.TResponse)
-                } else { 
-                    try? completion(false as! R.TResponse)
+                    try? completion(ResponseModel(result: success) as! R.TResponse)
+                } else {
+                    switch response?.status {
+                    case .unauthorized :
+                        try? completion(ResponseModel(result: false, error: .unauthorized) as! R.TResponse)
+                        break
+                    case .conflict :
+                        try? completion(ResponseModel(result: false, error: .duplicate) as! R.TResponse)
+                        break
+                    default :
+                        try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
+                    }
                 }
             }
         } catch {
             LogService.shared.info(message: "Unknown error")
-            try? completion(false as! R.TResponse)
+            try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
         }
     }
     

@@ -139,8 +139,16 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
             } else {
                 do {
                     try self.mediater.sendAsync(request: command) { recurringDonationMade in
-                        if !recurringDonationMade {
-                            self.showSetupRecurringDonationFailed()
+                        if !recurringDonationMade.result {
+                            if recurringDonationMade.error == .duplicate {
+                                DispatchQueue.main.async {
+                                    let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailedDuplicate".localized, preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in }))
+                                    self.present(alert, animated: true, completion:  {})
+                                }
+                            } else {
+                                self.showSetupRecurringDonationFailed()
+                            }
                             return
                         }
                         DispatchQueue.main.async {

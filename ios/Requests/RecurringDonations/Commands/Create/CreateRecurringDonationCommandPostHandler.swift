@@ -11,17 +11,11 @@ import UIKit
 
 class CreateRecurringDonationCommandPostHandler: RequestPostProcessorProtocol {
     func handle<R>(request: R, response: R.TResponse, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-                
-        if let tisGelukt = response as? Bool {
-            if tisGelukt {
-                NotificationCenter.default.post(name: .GivtCreatedRecurringDonation, object: nil)
-                try completion(true as! R.TResponse)
-            } else {
-                try completion(false as! R.TResponse)
-            }
-        } else {
-            try completion(false as! R.TResponse)
+        if let tisGelukt = response as? ResponseModel<Bool>, tisGelukt.result {
+            NotificationCenter.default.post(name: .GivtCreatedRecurringDonation, object: nil)
         }
+        try completion(response)
+
     }
 
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
