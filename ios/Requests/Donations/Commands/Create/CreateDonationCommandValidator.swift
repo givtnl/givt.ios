@@ -18,7 +18,7 @@ class CreateDonationCommandValidator: RequestPreProcessorProtocol {
             throw DonationError.amountTooHigh
         }
         
-        if request.amount < 0.50 {
+        if request.amount < 0.25 {
             throw DonationError.amountTooLow
         }
         
