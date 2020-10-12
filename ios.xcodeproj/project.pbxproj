@@ -210,6 +210,7 @@
 		DF8BB30324F7A09F00104668 /* RecurringRuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB30224F7A09F00104668 /* RecurringRuleViewModel.swift */; };
 		DF8BB30524F7A12200104668 /* RecurringRuleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */; };
 		DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */; };
+		DFAEA67925347A7A00A41499 /* RecurringRuleOverviewRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAEA67825347A7A00A41499 /* RecurringRuleOverviewRecurringDonationViewController.swift */; };
 		DFBF338D2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFBF338C2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf */; };
 		DFBF338F2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = DFBF338E2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf */; };
 		DFBFAC312409404100F53095 /* GiftAidSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFBFAC302409404100F53095 /* GiftAidSettings.swift */; };
@@ -532,6 +533,7 @@
 		DF8BB30224F7A09F00104668 /* RecurringRuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleViewModel.swift; sourceTree = "<group>"; };
 		DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleTableCell.swift; sourceTree = "<group>"; };
 		DFAB497A22B2372200BB2942 /* GiftAidInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidInfoController.swift; sourceTree = "<group>"; };
+		DFAEA67825347A7A00A41499 /* RecurringRuleOverviewRecurringDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleOverviewRecurringDonationViewController.swift; sourceTree = "<group>"; };
 		DFBF338C2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Regular-400.otf"; sourceTree = "<group>"; };
 		DFBF338E2510B53C007F09A0 /* Font Awesome 5 Brands-Regular-400.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Brands-Regular-400.otf"; sourceTree = "<group>"; };
 		DFBFAC302409404100F53095 /* GiftAidSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidSettings.swift; sourceTree = "<group>"; };
@@ -727,6 +729,7 @@
 		32CA17A024CECE5100248053 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				DFAEA67725347A5100A41499 /* RecurringRuleOverview */,
 				DF3FD7862512132C006BB1A7 /* SetupNofication */,
 				DF1300F524F5601F00EE1785 /* Overview */,
 				32CA17A424CED00200248053 /* ChooseDestination */,
@@ -1271,6 +1274,14 @@
 				DF3FD7872512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift */,
 			);
 			path = SetupNofication;
+			sourceTree = "<group>";
+		};
+		DFAEA67725347A5100A41499 /* RecurringRuleOverview */ = {
+			isa = PBXGroup;
+			children = (
+				DFAEA67825347A7A00A41499 /* RecurringRuleOverviewRecurringDonationViewController.swift */,
+			);
+			path = RecurringRuleOverview;
 			sourceTree = "<group>";
 		};
 		DFCA4EE32500EF04003D1825 /* Models */ = {
@@ -2074,6 +2085,7 @@
 				320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
+				DFAEA67925347A7A00A41499 /* RecurringRuleOverviewRecurringDonationViewController.swift in Sources */,
 				32A67F7C25139483007EC7EF /* GetCountryQueryHandler.swift in Sources */,
 				A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */,
 				D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */,
