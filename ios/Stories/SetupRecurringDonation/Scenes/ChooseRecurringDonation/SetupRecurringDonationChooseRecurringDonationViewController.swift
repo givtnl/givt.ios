@@ -142,7 +142,8 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
                         if !recurringDonationMade.result {
                             if recurringDonationMade.error == .duplicate {
                                 DispatchQueue.main.async {
-                                    let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailedDuplicate".localized, preferredStyle: .alert)
+                                    SVProgressHUD.dismiss()
+                                    let alert = UIAlertController(title: "SetupRecurringDonationFailedDuplicateTitle".localized, message: "SetupRecurringDonationFailedDuplicate".localized, preferredStyle: .alert)
                                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in }))
                                     self.present(alert, animated: true, completion:  {})
                                 }

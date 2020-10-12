@@ -15,7 +15,6 @@ class CreateRecurringDonationCommandPostHandler: RequestPostProcessorProtocol {
             NotificationCenter.default.post(name: .GivtCreatedRecurringDonation, object: nil)
         }
         try completion(response)
-
     }
 
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
