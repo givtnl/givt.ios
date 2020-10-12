@@ -560,7 +560,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qP-Ng-2v2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2384" y="684"/>
+            <point key="canvasLocation" x="1571" y="-4"/>
         </scene>
         <!--Plan je Givt-->
         <scene sceneID="SsZ-Ka-MoC">
@@ -986,7 +986,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o74-s8-g1r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618.840579710145" y="683.70535714285711"/>
+            <point key="canvasLocation" x="838" y="-4"/>
         </scene>
         <!--Setup Noficatie scherm-->
         <scene sceneID="gPI-ef-j70">
@@ -1098,7 +1098,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYf-6f-SwV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3129" y="684"/>
+            <point key="canvasLocation" x="1570" y="684"/>
+        </scene>
+        <!--Recurring Rule Overview-->
+        <scene sceneID="LYY-AT-7VA">
+            <objects>
+                <viewController storyboardIdentifier="RecurringRuleOverviewRecurringDonationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vrw-0P-X0A" userLabel="Recurring Rule Overview" customClass="RecurringRuleOverviewRecurringDonationViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QQg-BA-N6P">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Clq-Ox-nPr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="79V-HH-T6j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="838" y="1367"/>
         </scene>
     </scenes>
     <designables>
