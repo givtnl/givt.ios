@@ -30,7 +30,7 @@ class FeatureMenuViewController: BaseMenuViewController {
     override func loadItems() {
         items = []
         items.append([])
-        for feat in FeatureManager.shared.features.sorted(by: {pair1, pair2 in pair1.value.title < pair2.value.title }) {
+        for feat in FeatureManager.shared.features.sorted(by: {pair1, pair2 in pair1.value.id < pair2.value.id }) {
             let showBadge = feat.value.mustSee && FeatureManager.shared.featuresWithBadge.firstIndex(of: feat.key) != nil
             let item = Setting(name: feat.value.title, image: UIImage(named: feat.value.icon)!, showBadge: showBadge,
                                callback: { self.showFeature(which: feat.key) }, showArrow: true, isHighlighted: false)

@@ -953,7 +953,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "RecurringGiftsSetupCreate" = "Plan deine";
 "RecurringGiftsSetupRecurringGift" = "wiederkehrende Spende";
 "RecurringDonationYouGive" = "you give";
-"RecurringDonationStops" = "Last donation on {0}";
+"RecurringDonationStops" = "This will stop on {0}";
 "SelectRecipient" = "Select recipient";
 "SetupRecurringDonationFailed" = "The recurring donation was not set up successfully. Please try again later.";
 
@@ -964,3 +964,16 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "CancelRecurringDonation" = "Stop";
 "SetupRecurringGiftText_7" = "Each";
 "CancelRecurringDonationFailed" = "The recurring donation was not cancelled successfully. Please try again later.";
+"PushnotificationRequestScreenTitle" = "Push-Nachrichten";
+"PushnotificationRequestScreenDescription" = "We would like to keep you posted on when the next donation will be collected from your account. At the moment we don't have permission to send you messages. Could you change that setting, please?";
+"PushnotificationRequestScreenButtonYes" = "Ja, ich werde's arrangieren";
+"ReportMissingOrganisationListItem" = "Fehlende Organisation melden";
+"ReportMissingOrganisationPrefilledText" = "Hallo! Ich würde wirklich gerne geben an: ";
+"Feature_RecurringDonations_1_Title" = "Plan your recurring donations to charities";
+"Feature_RecurringDonations_2_Title" = "You're in control";
+"Feature_RecurringDonations_3_Title" = "Overview";
+"Feature_RecurringDonations_1_Description" = "You can now plan your recurring donations, with the end date already selected.";
+"Feature_RecurringDonations_2_Description" = "You can see all the recurring donations you have planned and stop them whenever you want.";
+"Feature_RecurringDonations_3_Description" = "All your one off and recurring donations in one overview. Useful for yourself and for tax purposes.";
+"Feature_RecurringDonations_3_Button" = "Ok, understood!";
+"Feature_RecurringDonations_Notification" = "Hallo! Möchtest du auch mit der App wiederkehrende Spende einrichten? Werfe einen kurzen Blick auf das, was wir gemacht haben.";

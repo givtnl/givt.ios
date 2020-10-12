@@ -11,22 +11,12 @@ import Foundation
 internal struct GetCollectGroupsQueryHandler : RequestHandlerProtocol {    
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let collectGroups = GivtManager.shared.orgBeaconList!.map { (orgBeacon) -> CollectGroupDetailModel in
-            var type = CollectGroupType.church
-            switch MediumHelper.namespaceToOrganisationType(namespace: orgBeacon.EddyNameSpace) {
-            case .church:
-                type = .church
-            case .charity:
-                type = .charity
-            case .campaign:
-                type = .campaign
-            case .artist:
-                type = .artist
-            default:
-                break
-            }
+            
+            let orgType = orgBeacon.collectGroupType ?? orgBeacon.tempCollectGroupType
+            
             return CollectGroupDetailModel(namespace: orgBeacon.EddyNameSpace,
                                     name: orgBeacon.OrgName,
-                                    type: type,
+                                    type: orgType,
                                     paymentType: orgBeacon.accountType == AccountType.sepa ? PaymentType.SEPADirectDebit : PaymentType.BACSDirectDebit)
             
         }

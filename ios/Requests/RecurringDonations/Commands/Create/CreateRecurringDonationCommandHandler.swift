@@ -18,9 +18,16 @@ class CreateRecurringDonationCommandHandler : RequestHandlerProtocol {
         do {
             let body = try JSONEncoder().encode(request)
             try apiClient.post(url: "/recurringdonations", data: body) { response in
-                if let success = response?.isSuccess {
-                    try? completion(success as! R.TResponse)
-                } else { 
+                if let resp = response {
+                    if resp.isSuccess {
+                        NotificationCenter.default.post(name: .GivtCreatedRecurringDonation, object: nil)
+                    } else {
+                        if resp.statusCode == 409 {
+                            NotificationCenter.default.post(name: .GivtCreatedRecurringDonationDuplicate, object: nil)
+                        }
+                    }
+                    try? completion(resp.isSuccess as! R.TResponse)
+                } else {
                     try? completion(false as! R.TResponse)
                 }
             }

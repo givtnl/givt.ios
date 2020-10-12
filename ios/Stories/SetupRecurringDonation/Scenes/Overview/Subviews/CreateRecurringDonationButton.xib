@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -63,19 +63,17 @@
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heB-aq-Jl2">
                             <rect key="frame" x="458" y="0.0" width="50" height="52"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chevron-right" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWK-DD-68E">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="52"/>
-                                    <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="18"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="chevron-right" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWK-DD-68E">
+                                    <rect key="frame" x="19" y="17" width="13" height="19"/>
+                                    <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="22"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="TWK-DD-68E" secondAttribute="bottom" id="YDM-HO-dEm"/>
+                                <constraint firstItem="TWK-DD-68E" firstAttribute="centerX" secondItem="heB-aq-Jl2" secondAttribute="centerX" id="8Dz-gY-rGv"/>
                                 <constraint firstAttribute="width" constant="50" id="cq7-rQ-SwV"/>
-                                <constraint firstAttribute="trailing" secondItem="TWK-DD-68E" secondAttribute="trailing" id="dlR-pu-UST"/>
-                                <constraint firstItem="TWK-DD-68E" firstAttribute="leading" secondItem="heB-aq-Jl2" secondAttribute="leading" id="h3S-AL-jfk"/>
-                                <constraint firstItem="TWK-DD-68E" firstAttribute="top" secondItem="heB-aq-Jl2" secondAttribute="top" id="tgG-x2-ZbA"/>
+                                <constraint firstItem="TWK-DD-68E" firstAttribute="centerY" secondItem="heB-aq-Jl2" secondAttribute="centerY" id="hXv-66-i6T"/>
                             </constraints>
                         </view>
                     </subviews>

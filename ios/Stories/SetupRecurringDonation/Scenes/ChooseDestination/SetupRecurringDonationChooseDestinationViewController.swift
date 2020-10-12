@@ -52,6 +52,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         let destinationCell = tableView.dequeueReusableCell(withIdentifier: String(describing: DestinationTableCell.self), for: indexPath) as! DestinationTableCell
         destinationCell.name = destination.name
         destinationCell.type = destination.type
+        destinationCell.iconRight = destination.iconRight
         if destination.selected {
             //select row that should be selected
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
@@ -82,6 +83,12 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
                 return nil //make sure selection doesn't continue
             }
         }
+        if ( (tableView.cellForRow(at: indexPath) as! DestinationTableCell).type == CollectGroupType.none) {
+            // This is the special "report missing organisation item"
+            nextButton.isEnabled = false
+            try? self.mediater.send(request: GoToAboutViewRoute(), withContext: self)
+            return nil
+        }
         return indexPath
     }
     
@@ -98,6 +105,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     //MARK: viewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+            
         navigationItem.title = "SelectRecipient".localized
         navigationItem.accessibilityLabel = "SelectRecipient".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
@@ -220,6 +228,15 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
                     return destination
             }
         }
+        
+        // Add "meld ontrbrekende organisatie' to list of organisations
+        let MissingOrganisationElement = DestinationViewModel()
+        MissingOrganisationElement.name = NSLocalizedString("ReportMissingOrganisationListItem", comment: "")
+        MissingOrganisationElement.selected = false
+        MissingOrganisationElement.iconRight = "plus"
+        MissingOrganisationElement.type = CollectGroupType.none
+        
+        self.destinations.insert(MissingOrganisationElement, at: 0)
     }
     
     private func filterDestinationsAndReloadTable() {
@@ -228,11 +245,11 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         if let activeCategoryButton = typeStackView.arrangedSubviews.first(where: { view in
             return (view as! DestinationCategoryButton).active
         }) {
-            filteredDestinations = filteredDestinations.filter { $0.type == CollectGroupType(rawValue: activeCategoryButton.tag) }
+            filteredDestinations = filteredDestinations.filter { $0.type == CollectGroupType(rawValue: activeCategoryButton.tag) || $0.type == CollectGroupType.none }
         }
 
         if let currentSearchText = searchBar.text, !currentSearchText.isEmpty {
-            filteredDestinations = filteredDestinations.filter { $0.name.lowercased().contains(currentSearchText.lowercased()) }
+            filteredDestinations = filteredDestinations.filter { $0.name.lowercased().contains(currentSearchText.lowercased()) || $0.type == CollectGroupType.none}
         }
         
         buildTableSections()

@@ -39,6 +39,25 @@ struct OrgBeacon: Codable {
             }
         }
     }
+    let collectGroupType: CollectGroupType?
+    var tempCollectGroupType: CollectGroupType {
+        get {
+            var type: CollectGroupType
+            switch MediumHelper.namespaceToOrganisationType(namespace: self.EddyNameSpace) {
+            case .church:
+                type = .church
+            case .charity:
+                type = .charity
+            case .campaign:
+                type = .campaign
+            case .artist:
+                type = .artist
+            default:
+                type = .unknown
+            }
+            return type
+        }
+    }
 }
 
 struct OrgBeaconLocation: Codable {
@@ -208,10 +227,10 @@ final class GivtManager: NSObject {
                 transactions.append(newTransaction)
             }
         }
-        self.cacheGivt(transactions: transactions)
-        giveInBackground(transactions: transactions)
         MSAnalytics.trackEvent("GIVING_FINISHED", withProperties:["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
         Mixpanel.mainInstance().track(event: "GIVING_FINISHED", properties: ["namespace": String((transactions[0].beaconId).prefix(20)),"online": String(reachability!.connection != .none)])
+        self.cacheGivt(transactions: transactions)
+        giveInBackground(transactions: transactions)
         self.delegate?.onGivtProcessed(transactions: transactions, organisationName: organisationName, canShare: canShare(id: antennaID))
     }
     
@@ -544,6 +563,7 @@ final class GivtManager: NSObject {
                             })
                             let bl = try decoder.decode(BeaconList.self, from: data)
                             UserDefaults.standard.orgBeaconListV2 = bl
+                        
                             completionHandler(true)
                         } catch let err as NSError {
                             if (tries > 0) {
