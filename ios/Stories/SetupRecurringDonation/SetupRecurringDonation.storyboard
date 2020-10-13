@@ -1154,8 +1154,20 @@
                     <view key="view" contentMode="scaleToFill" id="QQg-BA-N6P">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nOo-xj-zcK">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Clq-Ox-nPr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nOo-xj-zcK" firstAttribute="top" secondItem="Clq-Ox-nPr" secondAttribute="top" id="7PS-ee-oYm"/>
+                            <constraint firstItem="nOo-xj-zcK" firstAttribute="leading" secondItem="Clq-Ox-nPr" secondAttribute="leading" id="Caq-C7-KXt"/>
+                            <constraint firstItem="nOo-xj-zcK" firstAttribute="bottom" secondItem="Clq-Ox-nPr" secondAttribute="bottom" id="OL9-ku-Azc"/>
+                            <constraint firstItem="nOo-xj-zcK" firstAttribute="trailing" secondItem="Clq-Ox-nPr" secondAttribute="trailing" id="QNO-Ul-YER"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="zbC-BI-si0">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="ayc-Ms-m23"/>
@@ -1179,10 +1191,13 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="nOo-xj-zcK" id="doL-NX-ZAh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79V-HH-T6j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="1367"/>
+            <point key="canvasLocation" x="837.68115942028987" y="1366.7410714285713"/>
         </scene>
     </scenes>
     <designables>
