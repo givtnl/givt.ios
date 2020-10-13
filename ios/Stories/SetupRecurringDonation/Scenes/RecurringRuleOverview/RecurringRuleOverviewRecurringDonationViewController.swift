@@ -11,5 +11,12 @@ import UIKit
 
 class RecurringRuleOverviewRecurringDonationViewController : UIViewController
 {
+    @IBOutlet var tableView: UITableView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let nib = UINib(nibName: "RecurringRuleOverviewCell", bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "recurringRuleOverviewCell")
+    }
 }

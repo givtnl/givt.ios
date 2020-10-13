@@ -12,5 +12,8 @@ import Foundation
 @IBDesignable
 internal final class RecurringRuleOverviewCell : UITableViewCell {
     
-   
+    @IBOutlet var Date: UILabel!
+    @IBOutlet var Month: UILabel!
+    @IBOutlet var Amount: UILabel!
+    
 }
