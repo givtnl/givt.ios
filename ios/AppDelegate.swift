@@ -268,7 +268,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Mediater.shared.registerHandler(handler: GoToPushNotificationViewRouteHandler())
         Mediater.shared.registerHandler(handler: DismissPushNotificationViewRouteHandler())
         Mediater.shared.registerHandler(handler: GoToAboutViewRouteHandler())
-        
+        Mediater.shared.registerHandler(handler: OpenRecurringDonationOverviewListRouteHandler())
+
         //-- INFRA
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
 
