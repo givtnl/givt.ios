@@ -151,7 +151,7 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     }
 }
 
-extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDelegate {
+extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDelegate, RecurringRuleListDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_STOP")
@@ -202,7 +202,9 @@ extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDeleg
             self.present(alert, animated: true, completion:  {})
         }
     }
-    
+    func recurringRuleListTapped(recurringRuleCell: RecurringRuleTableCell) {
+        try? mediater.send(request: OpenRecurringDonationOverviewListRoute(id: recurringRuleCell.recurringDonationId!), withContext: self)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.recurringRules.count
     }
@@ -224,7 +226,9 @@ extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDeleg
             print(error)
         }
         cell.viewModel = rule
-        cell.delegate = self
+        
+        cell.cancelDelegate = self
+        cell.listDelegate = self
         
         return cell
     }

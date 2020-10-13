@@ -8,4 +8,7 @@
 
 import Foundation
 
-class OpenRecurringDonationOverviewListRoute: NoResponseRequest { }
+class OpenRecurringDonationOverviewListRoute: NoResponseRequest {
+    var id: String
+    init(id: String) {self.id = id}
+}
