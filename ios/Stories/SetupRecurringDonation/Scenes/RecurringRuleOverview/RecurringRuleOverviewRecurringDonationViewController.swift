@@ -11,6 +11,11 @@ import UIKit
 
 class RecurringRuleOverviewRecurringDonationViewController : UIViewController
 {
+    private var mediater: MediaterWithContextProtocol = Mediater.shared
+    
+    var recurringDonationId: String?
+    var donations: [RecurringDonationDonationViewModel]?
+    
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -18,5 +23,13 @@ class RecurringRuleOverviewRecurringDonationViewController : UIViewController
         
         let nib = UINib(nibName: "RecurringRuleOverviewCell", bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "recurringRuleOverviewCell")
+        
+        do {
+            self.donations = try self.mediater.send(request: GetDonationsFromRecurringDonationQuery(id: recurringDonationId!))
+        } catch  {
+            print("ERROR: GOESTING NOT FOUND")
+        }
+        
+        print(self.donations)
     }
 }
