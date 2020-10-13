@@ -8,13 +8,8 @@
 
 import Foundation
 
-public class RecurringDonationDonationViewModel: Codable {
-    var id: String
-    var amount: Decimal
-    var confirmationDateTime: Date
-    init(id: String, amount: Decimal, confirmationDateTime: Date) {
-        self.id = id
-        self.amount = amount
-        self.confirmationDateTime = confirmationDateTime
-    }
+struct RecurringDonationDonationViewModel: Codable {
+    var amount: Decimal = 0
+    var confirmationDateTime: String = ""
+    var donationId: Int = 0
 }
