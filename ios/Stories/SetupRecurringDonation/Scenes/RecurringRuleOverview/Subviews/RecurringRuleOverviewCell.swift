@@ -16,4 +16,8 @@ internal final class RecurringRuleOverviewCell : UITableViewCell {
     @IBOutlet var Month: UILabel!
     @IBOutlet var Amount: UILabel!
     
+    private func commonInit() {
+        let bundle = Bundle(for: RecurringRuleOverviewCell.self)
+        bundle.loadNibNamed("RecurringRuleOverviewCell", owner: self, options: nil)
+    }
 }
