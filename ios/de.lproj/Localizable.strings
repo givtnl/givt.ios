@@ -950,7 +950,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SetupRecurringGiftText_6" = "times";
 "LoginAndTryAgain" = "Please log in and try again.";
 "GivtIsBeingProcessedRecurring" = "Thank you for your Givt(s) to {0}!\nYou can check the overview of your recurring donations under 'Overview'.\nThe first recurring donation of {1} {2} will be initiated on {3}.\nAfter that it will be withdrawn each {4}.";
-"OverviewRecurringDonations" = "Recurring donations";
+"OverviewRecurringDonations" = "Wiederkehrende Spenden";
 "TitleRecurringGifts" = "Wiederkehrende Spende";
 "RecurringGiftsSetupCreate" = "Plan deine";
 "RecurringGiftsSetupRecurringGift" = "wiederkehrende Spende";
@@ -978,6 +978,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "Feature_RecurringDonations_2_Description" = "You can see all the recurring donations you have planned and stop them whenever you want.";
 "Feature_RecurringDonations_3_Description" = "All your one off and recurring donations in one overview. Useful for yourself and for tax purposes.";
 "Feature_RecurringDonations_3_Button" = "Ok, understood!";
-"Feature_RecurringDonations_Notification" = "Hallo! Möchtest du auch mit der App wiederkehrende Spende einrichten? Werfe einen kurzen Blick auf das, was wir gemacht haben.";
-"SetupRecurringDonationFailedDuplicate" = "Die wiederkehrende Spende wurde nicht erfolgreich eingerichtet. Dus hast bereits eine Spende an diese Organisation mit der gleichen Wiederholungsperiode geleistet.";
+"Feature_RecurringDonations_Notification" = "Hallo! Möchtest Du auch mit der App wiederkehrende Spende einrichten? Werfe einen kurzen Blick auf das, was wir gemacht haben.";
+"SetupRecurringDonationFailedDuplicate" = "Die wiederkehrende Spende wurde nicht erfolgreich eingerichtet. Du hast bereits eine Spende an diese Organisation mit der gleichen Wiederholungsperiode geleistet.";
 "SetupRecurringDonationFailedDuplicateTitle" = "Doppelte Spende";
+"GoToListWithRecurringDonationDonations" = "Übersicht";
+"RecurringDonationsEmptyDetailOverview" = "Hier findest Du Informationen über Deine Spenden, aber die erste Spende muss noch abgebucht werden";
