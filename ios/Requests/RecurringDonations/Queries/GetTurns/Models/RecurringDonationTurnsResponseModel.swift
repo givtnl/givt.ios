@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GetDonationsFromRecurringDonationResponseModel: Codable {
+struct RecurringDonationTurnsResponseModel: Codable {
     public var count: Int = 0
-    public var results: [RecurringDonationDonationViewModel] = []
+    public var results: [RecurringDonationTurnModel] = []
 }

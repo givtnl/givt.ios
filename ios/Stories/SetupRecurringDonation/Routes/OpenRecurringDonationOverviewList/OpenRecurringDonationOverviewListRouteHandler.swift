@@ -12,8 +12,8 @@ import UIKit
 class OpenRecurringDonationOverviewListRouteHandler: RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let vc = UIStoryboard.init(name: "SetupRecurringDonation", bundle: nil)
-            .instantiateViewController(withIdentifier: String(describing: RecurringRuleOverviewRecurringDonationViewController.self)) as! RecurringRuleOverviewRecurringDonationViewController
-        vc.recurringDonationId = (request as! OpenRecurringDonationOverviewListRoute).id
+            .instantiateViewController(withIdentifier: String(describing: RecurringDonationTurnsOverviewController.self)) as! RecurringDonationTurnsOverviewController
+        vc.recurringDonation = (request as! OpenRecurringDonationOverviewListRoute).recurringDonation
         context.navigationController?.pushViewController(vc, animated: true)
         try completion(() as! R.TResponse)
     }

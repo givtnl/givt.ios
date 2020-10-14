@@ -110,7 +110,7 @@ extension String{
         if let date = formatter.date(from: self) {
             return date
         } else {
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
             if let  date = formatter.date(from: self) {
                 return date
             }

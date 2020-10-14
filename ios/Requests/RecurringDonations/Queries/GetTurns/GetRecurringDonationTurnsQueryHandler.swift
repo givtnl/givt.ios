@@ -9,20 +9,20 @@ import Foundation
 import CoreData
 import UIKit
 
-class GetDonationsFromRecurringDonationQueryHandler : RequestHandlerProtocol {
+class GetRecurringDonationTurnsQueryHandler : RequestHandlerProtocol {
     private var client = APIClient.cloud
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let query = request as! GetDonationsFromRecurringDonationQuery
+        let query = request as! GetRecurringDonationTurnsQuery
         
         client.get(url: "/recurringdonations/"+query.id+"/donations", data: [:]) { (response) in
-            var models: [RecurringDonationDonationViewModel] = []
+            var models: [Int] = []
             if let response = response, response.isSuccess {
                 if let body = response.text {
                     do {
                         let decoder = JSONDecoder()
-                        let parsedDataResult = try decoder.decode(GetDonationsFromRecurringDonationResponseModel.self, from: Data(body.utf8))
-                        models = parsedDataResult.results
+                        let parsedDataResult = try decoder.decode(RecurringDonationTurnsResponseModel.self, from: Data(body.utf8))
+                        models = parsedDataResult.results.map {$0.donationId}
                     } catch {
                         try? completion(models as! R.TResponse)
                     }
@@ -35,6 +35,6 @@ class GetDonationsFromRecurringDonationQueryHandler : RequestHandlerProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is GetDonationsFromRecurringDonationQuery
+        return request is GetRecurringDonationTurnsQuery
     }
 }
