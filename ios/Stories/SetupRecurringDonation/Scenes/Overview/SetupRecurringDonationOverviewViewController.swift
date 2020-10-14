@@ -203,7 +203,7 @@ extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDeleg
         }
     }
     func recurringRuleListTapped(recurringRuleCell: RecurringRuleTableCell) {
-        try? mediater.send(request: OpenRecurringDonationOverviewListRoute(id: recurringRuleCell.recurringDonationId!), withContext: self)
+        try? mediater.send(request: OpenRecurringDonationOverviewListRoute(recurringDonation: recurringRuleCell.viewModel!), withContext: self)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.recurringRules.count

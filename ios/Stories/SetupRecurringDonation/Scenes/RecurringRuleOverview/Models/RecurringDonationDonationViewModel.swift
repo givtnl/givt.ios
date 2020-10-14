@@ -8,8 +8,10 @@
 
 import Foundation
 
-struct RecurringDonationDonationViewModel: Codable {
-    var amount: Decimal = 0
-    var confirmationDateTime: String = ""
-    var donationId: Int = 0
+struct RecurringDonationTurnViewModel {
+    var amount: Decimal
+    var day: String
+    var month: String
+    var year: String
+    var status: Int
 }

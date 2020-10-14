@@ -8,8 +8,10 @@
 
 import Foundation
 
-class GetDonationsFromRecurringDonationQuery : Codable, RequestProtocol {
-    typealias TResponse = [RecurringDonationDonationViewModel]
+class GetRecurringDonationTurnsQuery : Codable, RequestProtocol {
+    typealias TResponse = [Int]
     var id: String
-    init(id: String){self.id = id}
+    init(id: String){
+        self.id = id
+    }
 }
