@@ -55,6 +55,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecurringDonationTurnTableCell.self), for: indexPath) as! RecurringDonationTurnTableCell
+
         
         let viewModel = Array(donationsByYear.values)[indexPath.section][indexPath.row]
         let decimalString = "\(viewModel.amount)"
@@ -62,6 +63,8 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         cell.amount.text = "€ \(String(format: "%.2f", doubleAmount))"
         cell.date.text = viewModel.day
         cell.month.text = viewModel.month
+        cell.overlayOn = viewModel.toBePlanned
+
         return cell
     }
     
@@ -110,7 +113,7 @@ extension RecurringDonationTurnsOverviewController {
             let currentYear: String = donationDetail.Timestamp.toDate!.getYear().string
             let currentAmount = donationDetail.Amount
             let currentStatus = donationDetail.Status
-            let model = RecurringDonationTurnViewModel(amount: currentAmount, day: currentDay, month: currentMonth, year: currentYear, status: currentStatus)
+            let model = RecurringDonationTurnViewModel(amount: currentAmount, day: currentDay, month: currentMonth, year: currentYear, status: currentStatus, toBePlanned: false)
             donations.append(model)
         }
         return donations
@@ -133,7 +136,7 @@ extension RecurringDonationTurnsOverviewController {
             let currentMonth: String = nextRunDate.getMonthName()
             let currentYear: String = nextRunDate.getYear().string
             
-            let model = RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0)
+            let model = RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0, toBePlanned: true)
             
             donations.append(model)
             
@@ -151,7 +154,7 @@ extension RecurringDonationTurnsOverviewController {
                     let currentMonth: String = nextRunDate.getMonthName()
                     let currentYear: String = nextRunDate.getYear().string
                     
-                    let model = RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0)
+                    let model = RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0, toBePlanned: true)
                     
                     donations.append(model)
                     

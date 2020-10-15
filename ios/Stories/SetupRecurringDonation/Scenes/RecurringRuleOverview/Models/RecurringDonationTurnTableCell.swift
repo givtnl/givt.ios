@@ -14,6 +14,13 @@ internal final class RecurringDonationTurnTableCell : UITableViewCell {
     @IBOutlet var date: UILabel!
     @IBOutlet var month: UILabel!
     @IBOutlet var amount: UILabel!
+    @IBOutlet var opaqueLayer: UIView!
+    
+    var overlayOn: Bool = false {
+        didSet {
+            self.opaqueLayer.isHidden = !self.overlayOn
+        }
+    }
     
     var viewModel: RecurringDonationTurnViewModel? = nil {
         didSet{
@@ -24,27 +31,9 @@ internal final class RecurringDonationTurnTableCell : UITableViewCell {
             }
         }
     }
-    
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
-    }
-}
-
-//
-//  RecurringRuleTableCell.swift
-//  ios
-//
-//  Created by Jonas Brabant on 27/08/2020.
-//  Copyright © 2020 Givt. All rights reserved.
-//
-
-internal final class RecurringTestCell : UITableViewCell {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
     }
 }
