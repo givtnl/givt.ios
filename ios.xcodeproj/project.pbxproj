@@ -221,6 +221,8 @@
 		DF2D13B924FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D13B824FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift */; };
 		DF2D13BB24FAB71000DCE603 /* GetRecurringDonationsQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2D13BA24FAB71000DCE603 /* GetRecurringDonationsQueryHandler.swift */; };
 		DF3FD7882512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3FD7872512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift */; };
+		DF76413C2538399400A42109 /* TableSectionHeaderRecurringRuleOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF76413B2538399400A42109 /* TableSectionHeaderRecurringRuleOverview.swift */; };
+		DF76413E253839C700A42109 /* TableSectionHeaderRecurringRuleOverviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF76413D253839C700A42109 /* TableSectionHeaderRecurringRuleOverviewView.xib */; };
 		DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */; };
 		DF8BB30324F7A09F00104668 /* RecurringRuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB30224F7A09F00104668 /* RecurringRuleViewModel.swift */; };
 		DF8BB30524F7A12200104668 /* RecurringRuleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */; };
@@ -559,6 +561,8 @@
 		DF2D13B824FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecurringDonationsQuery.swift; sourceTree = "<group>"; };
 		DF2D13BA24FAB71000DCE603 /* GetRecurringDonationsQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecurringDonationsQueryHandler.swift; sourceTree = "<group>"; };
 		DF3FD7872512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotificationRecurringDonationViewController.swift; sourceTree = "<group>"; };
+		DF76413B2538399400A42109 /* TableSectionHeaderRecurringRuleOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeaderRecurringRuleOverview.swift; sourceTree = "<group>"; };
+		DF76413D253839C700A42109 /* TableSectionHeaderRecurringRuleOverviewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableSectionHeaderRecurringRuleOverviewView.xib; sourceTree = "<group>"; };
 		DF7B7B2022CCDE300060E134 /* PushnotificationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushnotificationType.swift; sourceTree = "<group>"; };
 		DF8BB30224F7A09F00104668 /* RecurringRuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleViewModel.swift; sourceTree = "<group>"; };
 		DF8BB30424F7A12200104668 /* RecurringRuleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringRuleTableCell.swift; sourceTree = "<group>"; };
@@ -1383,9 +1387,19 @@
 			path = SetupNofication;
 			sourceTree = "<group>";
 		};
+		DF76413A2538397F00A42109 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				DF76413B2538399400A42109 /* TableSectionHeaderRecurringRuleOverview.swift */,
+				DF76413D253839C700A42109 /* TableSectionHeaderRecurringRuleOverviewView.xib */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		DFAEA67725347A5100A41499 /* RecurringRuleOverview */ = {
 			isa = PBXGroup;
 			children = (
+				DF76413A2538397F00A42109 /* Subviews */,
 				3273B8AC2535C3A3003DB100 /* Models */,
 				DFAEA67825347A7A00A41499 /* RecurringDonationTurnsOverviewController.swift */,
 			);
@@ -1979,6 +1993,7 @@
 				DFBF338D2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				FB94D1CC24EBD88800C61ECE /* CollectGroupLabel.xib in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
+				DF76413E253839C700A42109 /* TableSectionHeaderRecurringRuleOverviewView.xib in Resources */,
 				32CE4D4E24BDE1FC0048671B /* FirstDestinationThenAmount.storyboard in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
 				D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */,
@@ -2316,6 +2331,7 @@
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
+				DF76413C2538399400A42109 /* TableSectionHeaderRecurringRuleOverview.swift in Sources */,
 				FB87301624C84462005FF355 /* DeleteDonationCommand.swift in Sources */,
 				32CA17A724CED02300248053 /* SetupRecurringDonationChooseDestinationViewController.swift in Sources */,
 				FB87300624C81463005FF355 /* ChangeAmountLimitRoutePreHandler.swift in Sources */,
