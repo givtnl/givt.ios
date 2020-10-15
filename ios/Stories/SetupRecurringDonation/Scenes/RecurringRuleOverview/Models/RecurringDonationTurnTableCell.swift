@@ -33,11 +33,33 @@ internal final class RecurringDonationTurnTableCell : UITableViewCell {
     var viewModel: RecurringDonationTurnViewModel? = nil {
         didSet{
             if let data = viewModel {
-                self.date.text = "blablbabla"
-                self.month.text = "blablabla"
-                self.amount.text = "15"
+                let decimalString = "\(data.amount)"
+                let doubleAmount: Double = Double(decimalString)!
+                amount.text = "€ \(String(format: "%.2f", doubleAmount))"
+                
+                date.text = data.day
+                month.text = data.month
+                overlayOn = data.toBePlanned
+                isGiftAided = data.isGiftAided!
+                
+                
+                status.backgroundColor = determineColorForStatus(status: data.status)
             }
         }
+    }
+    private func determineColorForStatus(status: Int) -> UIColor {
+        var color = UIColor.clear
+        switch status {
+        case 3:
+            color = ColorHelper.GivtLightGreen
+        case 4:
+            color = ColorHelper.GivtRed
+        case 5:
+            color = UIColor.gray
+        default:
+            color = ColorHelper.GivtPurple
+        }
+        return color
     }
  
     override func awakeFromNib() {

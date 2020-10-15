@@ -57,15 +57,8 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecurringDonationTurnTableCell.self), for: indexPath) as! RecurringDonationTurnTableCell
 
         
-        let viewModel = Array(donationsByYear.values)[indexPath.section][indexPath.row]
-        let decimalString = "\(viewModel.amount)"
-        let doubleAmount: Double = Double(decimalString)!
-        cell.amount.text = "€ \(String(format: "%.2f", doubleAmount))"
-        cell.date.text = viewModel.day
-        cell.month.text = viewModel.month
-        cell.overlayOn = viewModel.toBePlanned
-        cell.isGiftAided = viewModel.isGiftAided!
-
+        cell.viewModel = Array(donationsByYear.values)[indexPath.section][indexPath.row]
+        
         return cell
     }
     
