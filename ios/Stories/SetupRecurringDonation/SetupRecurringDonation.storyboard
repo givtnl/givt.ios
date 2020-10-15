@@ -218,16 +218,16 @@
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="167" height="44"/>
                                                                                                     <subviews>
                                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWn-h3-ncL" userLabel="stopView">
-                                                                                                            <rect key="frame" x="52" y="0.0" width="63.5" height="44"/>
+                                                                                                            <rect key="frame" x="20" y="0.0" width="127.5" height="44"/>
                                                                                                             <subviews>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stop-circle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLq-tW-iua">
-                                                                                                                    <rect key="frame" x="0.0" y="13.5" width="17" height="17"/>
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="stop-circle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLq-tW-iua">
+                                                                                                                    <rect key="frame" x="0.0" y="12" width="81" height="20"/>
                                                                                                                     <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.72549019607843135" green="0.10196078431372549" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                 </label>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZE-em-daY">
-                                                                                                                    <rect key="frame" x="27" y="10.5" width="36.5" height="23.5"/>
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZE-em-daY">
+                                                                                                                    <rect key="frame" x="91" y="10.5" width="36.5" height="23.5"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.72549019607843135" green="0.10196078431372549" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
@@ -255,16 +255,16 @@
                                                                                                     <rect key="frame" x="167" y="0.0" width="167" height="44"/>
                                                                                                     <subviews>
                                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22M-wb-RiC" userLabel="listView">
-                                                                                                            <rect key="frame" x="33.5" y="0.0" width="100.5" height="44"/>
+                                                                                                            <rect key="frame" x="21" y="0.0" width="125" height="44"/>
                                                                                                             <subviews>
                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="list-ul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfK-Jh-y1y">
-                                                                                                                    <rect key="frame" x="0.0" y="13.5" width="17" height="17"/>
+                                                                                                                    <rect key="frame" x="0.0" y="12" width="41.5" height="20"/>
                                                                                                                     <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                 </label>
                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-rF-WB2">
-                                                                                                                    <rect key="frame" x="27" y="10.5" width="73.5" height="23.5"/>
+                                                                                                                    <rect key="frame" x="51.5" y="10.5" width="73.5" height="23.5"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
@@ -1244,6 +1244,10 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <view hidden="YES" opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOI-zR-Lsr" userLabel="Opaque">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                                    <color key="backgroundColor" red="0.79813081641285943" green="0.79813081641285943" blue="0.79813081641285943" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -1251,10 +1255,14 @@
                                                 <constraint firstItem="pFc-MM-Bpb" firstAttribute="centerY" secondItem="2WS-yk-V7k" secondAttribute="centerY" id="AT6-hU-UHW"/>
                                                 <constraint firstItem="pkf-L5-WGr" firstAttribute="top" secondItem="2WS-yk-V7k" secondAttribute="top" id="CV6-X4-PY3"/>
                                                 <constraint firstAttribute="bottom" secondItem="jmq-E2-YPm" secondAttribute="bottom" constant="20" id="CgW-Bf-s1e"/>
+                                                <constraint firstAttribute="trailing" secondItem="zOI-zR-Lsr" secondAttribute="trailing" id="NIP-p4-Nhi"/>
                                                 <constraint firstAttribute="trailing" secondItem="pFc-MM-Bpb" secondAttribute="trailing" constant="10" id="OI1-3I-gUd"/>
+                                                <constraint firstItem="zOI-zR-Lsr" firstAttribute="top" secondItem="2WS-yk-V7k" secondAttribute="top" id="Rkk-Pt-gGR"/>
                                                 <constraint firstItem="pFc-MM-Bpb" firstAttribute="leading" secondItem="jmq-E2-YPm" secondAttribute="trailing" constant="20" id="XtQ-D0-EsP"/>
+                                                <constraint firstAttribute="bottom" secondItem="zOI-zR-Lsr" secondAttribute="bottom" id="b6N-uA-2na"/>
                                                 <constraint firstItem="jmq-E2-YPm" firstAttribute="leading" secondItem="pkf-L5-WGr" secondAttribute="trailing" constant="14" id="bsv-qh-JV9"/>
                                                 <constraint firstAttribute="bottom" secondItem="pkf-L5-WGr" secondAttribute="bottom" id="haJ-Pp-uIt"/>
+                                                <constraint firstItem="zOI-zR-Lsr" firstAttribute="leading" secondItem="2WS-yk-V7k" secondAttribute="leading" id="lyz-nQ-Gav"/>
                                                 <constraint firstItem="pkf-L5-WGr" firstAttribute="leading" secondItem="2WS-yk-V7k" secondAttribute="leading" id="uQg-AY-IeB"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1263,6 +1271,7 @@
                                             <outlet property="amount" destination="KLA-j2-K1p" id="gc9-z2-F8L"/>
                                             <outlet property="date" destination="IVG-GM-BWC" id="iTg-8f-04n"/>
                                             <outlet property="month" destination="ZW9-ky-z7d" id="RPd-r3-nBe"/>
+                                            <outlet property="opaqueLayer" destination="zOI-zR-Lsr" id="MuV-J1-CgU"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1344,7 +1353,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wE7-uM-RYx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="1343"/>
+            <point key="canvasLocation" x="837.68115942028987" y="1342.6339285714284"/>
         </scene>
     </scenes>
     <designables>
@@ -1355,7 +1364,7 @@
             <size key="intrinsicContentSize" width="5" height="23.5"/>
         </designable>
         <designable name="lJ0-Hf-NsM">
-            <size key="intrinsicContentSize" width="56" height="25"/>
+            <size key="intrinsicContentSize" width="56" height="37"/>
         </designable>
         <designable name="phc-si-YWc">
             <size key="intrinsicContentSize" width="50" height="23.5"/>
