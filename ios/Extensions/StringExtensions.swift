@@ -103,19 +103,13 @@ extension String{
     }
     
     var toDate : Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS"
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        if let date = formatter.date(from: self) {
-            return date
-        } else {
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-            if let  date = formatter.date(from: self) {
-                return date
-            }
-        }
-        return nil
+        // first strip everything smaller than a second
+        let from = self.replacingOccurrences(of: "\\.\\d+", with: "")
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        df.timeZone = TimeZone(abbreviation: "UTC")
+        df.locale = Locale(identifier: "en_US_POSIX")
+        return df.date(from: from)
     }
     
     static func random(length: Int = 20) -> String {
