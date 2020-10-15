@@ -42,47 +42,15 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                     donations.append(model)
                 }
                 
-                guard let cronObject: SwifCron = createSwifCron(cronString: recurringDonation.cronExpression) else {
-                    return
-                }
                 guard let lastDonation: DonationResponseModel = donationDetails.last else {
                     return
                 }
-                guard let lastDonationDate: Date = lastDonation.Timestamp.toDate else {
-                    return
-                }
                 
-                var nextRunDate = try cronObject.next(from: lastDonationDate)
+                let futureTurns: [RecurringDonationTurnViewModel] = try self.mediater.send(request: GetRecurringDonationFutureTurnsQuery(recurringDonation: recurringDonation, recurringDonationLastTurn: lastDonation, recurringDonationPastTurnsCount: recurringDonationTurns.count))
                 
-                let currentDay: String = nextRunDate.getDay().string
-                let currentMonth: String = nextRunDate.getMonthName()
-                let currentYear: String = nextRunDate.getYear().string
+                donations.append(contentsOf: futureTurns)
                 
-                let model = RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0)
-                
-                donations.append(model)
-                
-                print(nextRunDate)
-                
-                let turnsToCalculate = recurringDonation.endsAfterTurns-recurringDonationTurns.count
-                
-                if turnsToCalculate > 1 {
-                    for _ in 1...turnsToCalculate - 1 {
-                        let prevRunDate = nextRunDate
-                        
-                        nextRunDate = try cronObject.next(from: prevRunDate)
-                        
-                        let currentDay: String = nextRunDate.getDay().string
-                        let currentMonth: String = nextRunDate.getMonthName()
-                        let currentYear: String = nextRunDate.getYear().string
-                        
-                        let model = RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0)
-                        
-                        donations.append(model)
-                        
-                        print(nextRunDate)
-                    }
-                }
+               
                 print("Ah yeeet")
             }
         } catch  {
@@ -110,61 +78,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
 
 
 extension RecurringDonationTurnsOverviewController {
-    private func createSwifCron(cronString: String) -> SwifCron? {
-        do {
-            let cronItems: [String] = transformDayInCronToInt(cronArray: cronString.split(separator: " ").map(String.init))
-            return try SwifCron(cronItems.joined(separator: " "))
-        }
-        catch {
-            return nil
-        }
-    }
-    private func transformDayInCronToInt(cronArray: [String]) -> [String] {
-        var newarray = cronArray
-        var day = newarray[4]
-        switch day {
-        case "MON":
-            day = "1"
-        case "TUE":
-            day = "2"
-        case "WED":
-            day = "3"
-        case "THU":
-            day = "4"
-        case "FRI":
-            day = "5"
-        case "SAT":
-            day = "6"
-        case "SUN":
-            day = "7"
-        default:
-            day = "NOOB"
-        }
-        
-        newarray[4] = day
-        return newarray
-    }
-    private func returnStringFromDayInteger(value: Int) -> String {
-        var retVal: String
-        switch value {
-        case 1:
-            retVal = "SUN"
-        case 2:
-            retVal = "MON"
-        case 3:
-            retVal = "TUE"
-        case 4:
-            retVal = "WED"
-        case 5:
-            retVal = "THU"
-        case 6:
-            retVal = "FRI"
-        case 7:
-            retVal = "SAT"
-        default:
-            retVal = "NOOB"
-        }
-        return retVal
-    }
+
+    
 }
 
