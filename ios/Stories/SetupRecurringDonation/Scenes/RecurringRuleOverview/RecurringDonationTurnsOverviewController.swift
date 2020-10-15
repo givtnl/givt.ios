@@ -57,13 +57,6 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         cell.month.text = viewModel.month
         return cell
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        // Dequeue with the reuse identifier
-        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderRecurringRuleOverviewView")
-        let header = cell as! TableSectionHeaderRecurringRuleOverview
-        header.year.text = "Yey"
-        return cell
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -85,6 +78,14 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         header.textLabel!.font = title.font
         header.textLabel!.textColor = title.textColor
         header.contentView.backgroundColor = UIColor.white
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // Dequeue with the reuse identifier
+        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderRecurringRuleOverviewView")
+        let header = cell as! TableSectionHeaderRecurringRuleOverview
+        header.year.text = "Yey"
+        return cell
     }
     @IBAction override func backPressed(_ sender: Any) {
         try? mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
