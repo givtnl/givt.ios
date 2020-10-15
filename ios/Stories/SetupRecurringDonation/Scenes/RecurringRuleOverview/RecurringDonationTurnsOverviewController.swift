@@ -51,6 +51,8 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
+        
+        tableView.tableFooterView = UIView()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
