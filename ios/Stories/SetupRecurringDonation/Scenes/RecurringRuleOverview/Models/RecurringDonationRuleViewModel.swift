@@ -14,5 +14,6 @@ struct RecurringDonationTurnViewModel {
     var month: String
     var year: String
     var status: Int
-    var toBePlanned: Bool
+    var toBePlanned: Bool;
+    var isGiftAided: Bool? = false;
 }

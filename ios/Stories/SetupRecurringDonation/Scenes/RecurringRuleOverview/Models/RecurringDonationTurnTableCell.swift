@@ -15,10 +15,17 @@ internal final class RecurringDonationTurnTableCell : UITableViewCell {
     @IBOutlet var month: UILabel!
     @IBOutlet var amount: UILabel!
     @IBOutlet var opaqueLayer: UIView!
+    @IBOutlet var giftAided: UIImageView!
     
     var overlayOn: Bool = false {
         didSet {
             self.opaqueLayer.isHidden = !self.overlayOn
+        }
+    }
+    
+    var isGiftAided: Bool = false {
+        didSet {
+            self.giftAided.isHidden = !self.isGiftAided
         }
     }
     
@@ -35,5 +42,7 @@ internal final class RecurringDonationTurnTableCell : UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionStyle = .none
+        isGiftAided = false
+        overlayOn = false
     }
 }

@@ -64,6 +64,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         cell.date.text = viewModel.day
         cell.month.text = viewModel.month
         cell.overlayOn = viewModel.toBePlanned
+        cell.isGiftAided = viewModel.isGiftAided!
 
         return cell
     }
@@ -113,7 +114,8 @@ extension RecurringDonationTurnsOverviewController {
             let currentYear: String = donationDetail.Timestamp.toDate!.getYear().string
             let currentAmount = donationDetail.Amount
             let currentStatus = donationDetail.Status
-            let model = RecurringDonationTurnViewModel(amount: currentAmount, day: currentDay, month: currentMonth, year: currentYear, status: currentStatus, toBePlanned: false)
+            let currentGiftAidEnabled = donationDetail.GiftAidEnabled
+            let model = RecurringDonationTurnViewModel(amount: currentAmount, day: currentDay, month: currentMonth, year: currentYear, status: currentStatus, toBePlanned: false, isGiftAided: currentGiftAidEnabled)
             donations.append(model)
         }
         return donations
