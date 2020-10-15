@@ -15,9 +15,9 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     
     var recurringDonation: RecurringRuleViewModel?
     var donations: [RecurringDonationTurnViewModel] = []
-    
+    @IBOutlet var givyContainer: UIView!
     @IBOutlet weak var teeebelFjiew: UITableView!
-    
+
     @IBAction override func backPressed(_ sender: Any) {
         super.backPressed(sender)
     }
@@ -27,6 +27,8 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         
         let nib = UINib(nibName: "TableSectionHeaderRecurringRuleOverviewView", bundle: nil)
         teeebelFjiew.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderRecurringRuleOverviewView")
+        
+        givyContainer.isHidden = false
         
         do {
             if let recurringDonation = recurringDonation {
