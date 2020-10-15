@@ -1338,8 +1338,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="givyContainer" destination="dXx-Ag-SPP" id="cpc-Jv-4i9"/>
-                        <outlet property="teeebelFjiew" destination="33T-gx-lCK" id="qkM-A7-iXh"/>
+                        <outlet property="givyContainer" destination="dXx-Ag-SPP" id="cpc-Jv-4i9"/
+                        <outlet property="tableView" destination="33T-gx-lCK" id="qkM-A7-iXh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wE7-uM-RYx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
