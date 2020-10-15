@@ -22,7 +22,9 @@ class GetRecurringDonationTurnsQueryHandler : RequestHandlerProtocol {
                     do {
                         let decoder = JSONDecoder()
                         let parsedDataResult = try decoder.decode(RecurringDonationTurnsResponseModel.self, from: Data(body.utf8))
-                        models = parsedDataResult.results.map {$0.donationId}
+                        models = (parsedDataResult.results.sorted(by: { (first, second) -> Bool in
+                            return first.confirmationDateTime < second.confirmationDateTime
+                        })).map {$0.donationId}
                     } catch {
                         try? completion(models as! R.TResponse)
                     }

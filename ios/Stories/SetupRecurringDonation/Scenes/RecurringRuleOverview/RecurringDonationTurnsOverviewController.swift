@@ -15,6 +15,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     
     var recurringDonation: RecurringRuleViewModel?
     var donations: [RecurringDonationTurnViewModel] = []
+    var donationsByYear: [Int: [RecurringDonationTurnViewModel]] = [:]
     @IBOutlet var givyContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
 
@@ -31,18 +32,22 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                 
                 let recurringDonationTurns: [Int] = try self.mediater.send(request: GetRecurringDonationTurnsQuery(id: recurringDonation.id))
                 let donationDetails: [DonationResponseModel] = try self.mediater.send(request: GetDonationsByIdsQuery(ids: recurringDonationTurns))
-
+                
                 let pastTurns = getPastTurns(donationDetails: donationDetails)
                 donations.append(contentsOf: pastTurns)
                 
                 guard let lastDonation: DonationResponseModel = donationDetails.last else { return }
-                let futureTurns: [RecurringDonationTurnViewModel] = getFutureTurns(recurringDonation: recurringDonation, recurringDonationLastTurn: lastDonation, recurringDonationPastTurnsCount: recurringDonationTurns.count, maxCount: 5)
                 
+                let futureTurns: [RecurringDonationTurnViewModel] = getFutureTurns(recurringDonation: recurringDonation, recurringDonationLastTurn: lastDonation, recurringDonationPastTurnsCount: recurringDonationTurns.count, maxCount: 5)
                 donations.append(contentsOf: futureTurns)
             }
         } catch {
             print(error)
         }
+        
+        donations = donations.reversed()
+        donationsByYear = Dictionary(grouping: donations, by: {Int($0.year)!})
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
@@ -51,19 +56,21 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecurringDonationTurnTableCell.self), for: indexPath) as! RecurringDonationTurnTableCell
         
-        let viewModel = donations[indexPath.row]
-        cell.amount.text = "€\(viewModel.amount)"
+        let viewModel = Array(donationsByYear.values)[indexPath.section][indexPath.row]
+        let decimalString = "\(viewModel.amount)"
+        let doubleAmount: Double = Double(decimalString)!
+        cell.amount.text = "€ \(String(format: "%.2f", doubleAmount))"
         cell.date.text = viewModel.day
         cell.month.text = viewModel.month
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return donationsByYear.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return donations.count
+        return Array(donationsByYear.values)[section].count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -82,9 +89,10 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // Dequeue with the reuse identifier
+        let yearText = Array(donationsByYear.keys)[section]
         let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderRecurringRuleOverviewView")
         let header = cell as! TableSectionHeaderRecurringRuleOverview
-        header.year.text = "Yey"
+        header.year.text = "\(yearText)"
         return cell
     }
     @IBAction override func backPressed(_ sender: Any) {
