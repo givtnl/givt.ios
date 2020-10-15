@@ -34,7 +34,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                 
                 for donationDetail in donationDetails {
                     let currentDay: String = donationDetail.Timestamp.toDate!.getDay().string
-                    let currentMonth: String = donationDetail.Timestamp.toDate!.getMonth().string
+                    let currentMonth: String = donationDetail.Timestamp.toDate!.getMonthName()
                     let currentYear: String = donationDetail.Timestamp.toDate!.getYear().string
                     let currentAmount = donationDetail.Amount
                     let currentStatus = donationDetail.Status
@@ -55,7 +55,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                 var nextRunDate = try cronObject.next(from: lastDonationDate)
                 
                 let currentDay: String = nextRunDate.getDay().string
-                let currentMonth: String = nextRunDate.getMonth().string
+                let currentMonth: String = nextRunDate.getMonthName()
                 let currentYear: String = nextRunDate.getYear().string
                 
                 let model = RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0)
@@ -73,7 +73,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                         nextRunDate = try cronObject.next(from: prevRunDate)
                         
                         let currentDay: String = nextRunDate.getDay().string
-                        let currentMonth: String = nextRunDate.getMonth().string
+                        let currentMonth: String = nextRunDate.getMonthName()
                         let currentYear: String = nextRunDate.getYear().string
                         
                         let model = RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0)
@@ -93,6 +93,23 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         teeebelFjiew.dataSource = self
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return donations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecurringDonationTurnTableCell.self), for: indexPath) as! RecurringDonationTurnTableCell
+        
+        let viewModel = donations[indexPath.row]
+        cell.amount.text = "€\(viewModel.amount)"
+        cell.date.text = viewModel.day
+        cell.month.text = viewModel.month
+        return cell
+    }
+}
+
+
+extension RecurringDonationTurnsOverviewController {
     private func createSwifCron(cronString: String) -> SwifCron? {
         do {
             let cronItems: [String] = transformDayInCronToInt(cronArray: cronString.split(separator: " ").map(String.init))
@@ -149,20 +166,5 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         }
         return retVal
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return donations.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecurringDonationTurnTableCell.self), for: indexPath) as! RecurringDonationTurnTableCell
-        
-        let viewModel = donations[indexPath.row]
-        cell.amount.text = "€\(viewModel.amount)"
-        cell.date.text = viewModel.day
-        cell.month.text = viewModel.month
-        return cell
-    }
 }
-
 
