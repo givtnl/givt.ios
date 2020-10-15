@@ -28,10 +28,6 @@
 		3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450824DB0206003CF5CF /* ColorHelper.swift */; };
 		324761C12508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */; };
 		324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C22508FE25002BC37E /* RecurringDonationState.swift */; };
-		324D1E1D253830F7002286C4 /* GetRecurringDonationFutureTurnsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324D1E1C253830F7002286C4 /* GetRecurringDonationFutureTurnsQuery.swift */; };
-		324D1E1F25383102002286C4 /* GetRecurringDonationFutureTurnsQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324D1E1E25383102002286C4 /* GetRecurringDonationFutureTurnsQueryHandler.swift */; };
-		324D1E2225383A93002286C4 /* GetRecurringDonationPastTurnsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324D1E2125383A93002286C4 /* GetRecurringDonationPastTurnsQuery.swift */; };
-		324D1E2425383A9D002286C4 /* GetRecurringDonationPastTurnsQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324D1E2325383A9D002286C4 /* GetRecurringDonationPastTurnsQueryHandler.swift */; };
 		3273B89F25359C4E003DB100 /* OpenRecurringDonationOverviewListRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3273B89E25359C4E003DB100 /* OpenRecurringDonationOverviewListRoute.swift */; };
 		3273B8A125359C6C003DB100 /* OpenRecurringDonationOverviewListRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3273B8A025359C6C003DB100 /* OpenRecurringDonationOverviewListRouteHandler.swift */; };
 		3273B8A425359E0D003DB100 /* GetRecurringDonationTurnsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3273B8A325359E0D003DB100 /* GetRecurringDonationTurnsQuery.swift */; };
@@ -362,10 +358,6 @@
 		3232450824DB0206003CF5CF /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationResponseModel.swift; sourceTree = "<group>"; };
 		324761C22508FE25002BC37E /* RecurringDonationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationState.swift; sourceTree = "<group>"; };
-		324D1E1C253830F7002286C4 /* GetRecurringDonationFutureTurnsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecurringDonationFutureTurnsQuery.swift; sourceTree = "<group>"; };
-		324D1E1E25383102002286C4 /* GetRecurringDonationFutureTurnsQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecurringDonationFutureTurnsQueryHandler.swift; sourceTree = "<group>"; };
-		324D1E2125383A93002286C4 /* GetRecurringDonationPastTurnsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecurringDonationPastTurnsQuery.swift; sourceTree = "<group>"; };
-		324D1E2325383A9D002286C4 /* GetRecurringDonationPastTurnsQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecurringDonationPastTurnsQueryHandler.swift; sourceTree = "<group>"; };
 		3273B89E25359C4E003DB100 /* OpenRecurringDonationOverviewListRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecurringDonationOverviewListRoute.swift; sourceTree = "<group>"; };
 		3273B8A025359C6C003DB100 /* OpenRecurringDonationOverviewListRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecurringDonationOverviewListRouteHandler.swift; sourceTree = "<group>"; };
 		3273B8A325359E0D003DB100 /* GetRecurringDonationTurnsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRecurringDonationTurnsQuery.swift; sourceTree = "<group>"; };
@@ -689,8 +681,6 @@
 		3201243E252370ED0048ACF2 /* Queries */ = {
 			isa = PBXGroup;
 			children = (
-				324D1E2025383A86002286C4 /* GetPastTurns */,
-				324D1E1B253830D9002286C4 /* GetFutureTurns */,
 				DF2D13B724FAB6E700DCE603 /* GetAll */,
 				3273B8A225359DC6003DB100 /* GetTurns */,
 			);
@@ -732,24 +722,6 @@
 				324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		324D1E1B253830D9002286C4 /* GetFutureTurns */ = {
-			isa = PBXGroup;
-			children = (
-				324D1E1C253830F7002286C4 /* GetRecurringDonationFutureTurnsQuery.swift */,
-				324D1E1E25383102002286C4 /* GetRecurringDonationFutureTurnsQueryHandler.swift */,
-			);
-			path = GetFutureTurns;
-			sourceTree = "<group>";
-		};
-		324D1E2025383A86002286C4 /* GetPastTurns */ = {
-			isa = PBXGroup;
-			children = (
-				324D1E2125383A93002286C4 /* GetRecurringDonationPastTurnsQuery.swift */,
-				324D1E2325383A9D002286C4 /* GetRecurringDonationPastTurnsQueryHandler.swift */,
-			);
-			path = GetPastTurns;
 			sourceTree = "<group>";
 		};
 		3273B89D25359C0C003DB100 /* OpenRecurringDonationOverviewList */ = {
@@ -2095,7 +2067,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
-				324D1E2425383A9D002286C4 /* GetRecurringDonationPastTurnsQueryHandler.swift in Sources */,
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
 				A478D1D62512387400251AFE /* GoToPushNotificationViewRouteHandler.swift in Sources */,
 				FB872FED24C6E722005FF355 /* BackToChooseDestinationRoute.swift in Sources */,
@@ -2105,7 +2076,6 @@
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
 				D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */,
 				D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */,
-				324D1E2225383A93002286C4 /* GetRecurringDonationPastTurnsQuery.swift in Sources */,
 				27A0E4EE221F3FF100982842 /* PresetsSettingsViewController.swift in Sources */,
 				FBC1858924C0651D001A4C6B /* RequestPostProcessorProtocol.swift in Sources */,
 				D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */,
@@ -2188,7 +2158,6 @@
 				D748F6002063D4A500B25BC2 /* Status.swift in Sources */,
 				D7DD79A620A19E2500047CA7 /* LocationService.swift in Sources */,
 				FBC185C724C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift in Sources */,
-				324D1E1D253830F7002286C4 /* GetRecurringDonationFutureTurnsQuery.swift in Sources */,
 				3274566D2500D704006F0C60 /* ResponseExtension.swift in Sources */,
 				FB87301324C837ED005FF355 /* ExportDonationCommandHandler.swift in Sources */,
 				D77667EE1F39F12900649157 /* LoginManager.swift in Sources */,
@@ -2280,7 +2249,6 @@
 				A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */,
 				DF3FD7882512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift in Sources */,
 				DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */,
-				324D1E1F25383102002286C4 /* GetRecurringDonationFutureTurnsQueryHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
 				DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */,
