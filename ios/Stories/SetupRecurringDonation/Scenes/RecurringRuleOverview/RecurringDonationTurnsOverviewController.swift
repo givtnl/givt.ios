@@ -17,42 +17,20 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     var donations: [RecurringDonationTurnViewModel] = []
     
     @IBOutlet weak var teeebelFjiew: UITableView!
-    
-    @IBAction override func backPressed(_ sender: Any) {
-        super.backPressed(sender)
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         do {
             if let recurringDonation = recurringDonation {
-                
                 let recurringDonationTurns: [Int] = try self.mediater.send(request: GetRecurringDonationTurnsQuery(id: recurringDonation.id))
                 let donationDetails: [DonationResponseModel] = try self.mediater.send(request: GetDonationsByIdsQuery(ids: recurringDonationTurns))
+                let pastTurns = try self.mediater.send(request: GetRecurringDonationPastTurnsQuery(details: donationDetails))
+                donations.append(contentsOf: pastTurns)
                 
-                for donationDetail in donationDetails {
-                    let currentDay: String = donationDetail.Timestamp.toDate!.getDay().string
-                    let currentMonth: String = donationDetail.Timestamp.toDate!.getMonthName()
-                    let currentYear: String = donationDetail.Timestamp.toDate!.getYear().string
-                    let currentAmount = donationDetail.Amount
-                    let currentStatus = donationDetail.Status
-                    let model = RecurringDonationTurnViewModel(amount: currentAmount, day: currentDay, month: currentMonth, year: currentYear, status: currentStatus)
-                    donations.append(model)
-                }
-                
-                guard let lastDonation: DonationResponseModel = donationDetails.last else {
-                    return
-                }
-                
+                guard let lastDonation: DonationResponseModel = donationDetails.last else { return }
                 let futureTurns: [RecurringDonationTurnViewModel] = try self.mediater.send(request: GetRecurringDonationFutureTurnsQuery(recurringDonation: recurringDonation, recurringDonationLastTurn: lastDonation, recurringDonationPastTurnsCount: recurringDonationTurns.count))
-                
                 donations.append(contentsOf: futureTurns)
-                
-               
-                print("Ah yeeet")
-            }
+                }
         } catch  {
             print(error)
         }
@@ -74,11 +52,14 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         cell.month.text = viewModel.month
         return cell
     }
+    
+    @IBAction override func backPressed(_ sender: Any) {
+        super.backPressed(sender)
+    }
 }
 
 
 extension RecurringDonationTurnsOverviewController {
 
-    
 }
 
