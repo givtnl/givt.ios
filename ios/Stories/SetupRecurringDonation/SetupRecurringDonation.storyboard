@@ -1147,10 +1147,10 @@
             </objects>
             <point key="canvasLocation" x="1570" y="684"/>
         </scene>
-        <!--Overzichtjeuhn-->
+        <!--Setup Recurring Donation Rule Overview-->
         <scene sceneID="xTi-2b-eit">
             <objects>
-                <viewController storyboardIdentifier="RecurringDonationTurnsOverviewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SMo-r3-7JJ" customClass="RecurringDonationTurnsOverviewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecurringDonationTurnsOverviewController" title="Setup Recurring Donation Rule Overview" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SMo-r3-7JJ" customClass="RecurringDonationTurnsOverviewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pai-hm-9P5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1311,7 +1311,7 @@
                             <constraint firstItem="33T-gx-lCK" firstAttribute="leading" secondItem="mu2-jU-jiW" secondAttribute="leading" id="x2Y-1x-fsM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Overzichtjeuhn" id="zbC-BI-si0">
+                    <navigationItem key="navigationItem" title="Terugkerende giften" id="zbC-BI-si0">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="ayc-Ms-m23">
                             <connections>
                                 <action selector="backPressed:" destination="SMo-r3-7JJ" id="qrs-18-Epf"/>
@@ -1355,7 +1355,7 @@
             <size key="intrinsicContentSize" width="5" height="23.5"/>
         </designable>
         <designable name="lJ0-Hf-NsM">
-            <size key="intrinsicContentSize" width="56" height="37"/>
+            <size key="intrinsicContentSize" width="56" height="25"/>
         </designable>
         <designable name="phc-si-YWc">
             <size key="intrinsicContentSize" width="50" height="23.5"/>
