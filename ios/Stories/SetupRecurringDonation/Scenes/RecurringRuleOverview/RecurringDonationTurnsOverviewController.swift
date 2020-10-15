@@ -24,7 +24,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         let nib = UINib(nibName: "TableSectionHeaderRecurringRuleOverviewView", bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderRecurringRuleOverviewView")
 
-        givyContainer.isHidden = false
+        givyContainer.isHidden = true
 
         do {
             if let recurringDonation = recurringDonation {
