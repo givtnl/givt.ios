@@ -16,6 +16,7 @@ internal final class RecurringDonationTurnTableCell : UITableViewCell {
     @IBOutlet var amount: UILabel!
     @IBOutlet var opaqueLayer: UIView!
     @IBOutlet var giftAided: UIImageView!
+    @IBOutlet var status: UIView!
     
     var overlayOn: Bool = false {
         didSet {

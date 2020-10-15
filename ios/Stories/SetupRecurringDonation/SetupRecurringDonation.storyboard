@@ -1287,6 +1287,7 @@
                                             <outlet property="giftAided" destination="ZN0-WO-Quv" id="qyY-Hn-jrs"/>
                                             <outlet property="month" destination="ZW9-ky-z7d" id="RPd-r3-nBe"/>
                                             <outlet property="opaqueLayer" destination="zOI-zR-Lsr" id="MuV-J1-CgU"/>
+                                            <outlet property="status" destination="pkf-L5-WGr" id="SBN-so-VcB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
