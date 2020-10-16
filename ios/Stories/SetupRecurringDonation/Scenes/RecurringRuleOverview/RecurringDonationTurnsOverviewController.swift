@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 import SwifCron
 
-class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource
+class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate
 {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
@@ -18,15 +18,18 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     var donationsByYear: [Int: [RecurringDonationTurnViewModel]] = [:]
     @IBOutlet var givyContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
-
+    
+    @IBOutlet weak var legendOverlay: UIView!
+    @IBOutlet weak var closeLegendControl: UIControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let nib = UINib(nibName: "TableSectionHeaderRecurringRuleOverviewView", bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderRecurringRuleOverviewView")
-
+        
         givyContainer.isHidden = true
-
+        
         do {
             if let recurringDonation = recurringDonation {
                 
@@ -53,11 +56,19 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         tableView.reloadData()
         
         tableView.tableFooterView = UIView()
+        // Adding swipe gesture to the legenda overlay
+        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(openInfo(_:)))
+        swipeGesture.direction = UISwipeGestureRecognizer.Direction.up
+        legendOverlay.addGestureRecognizer(swipeGesture)
+        
+        // add tap gesture to close if dont wanna swipe...
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeInfo(_:)))
+        closeLegendControl.addGestureRecognizer(tapGesture)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecurringDonationTurnTableCell.self), for: indexPath) as! RecurringDonationTurnTableCell
-
+        
         
         cell.viewModel = Array(donationsByYear.values)[indexPath.section][indexPath.row]
         
@@ -67,7 +78,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     func numberOfSections(in tableView: UITableView) -> Int {
         return donationsByYear.count
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Array(donationsByYear.values)[section].count
     }
@@ -75,11 +86,11 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-//
+    //
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let title = UILabel()
         title.textColor = UIColor.red
-
+        
         let header = view as! UITableViewHeaderFooterView
         header.textLabel!.font = title.font
         header.textLabel!.textColor = title.textColor
@@ -96,6 +107,21 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     }
     @IBAction override func backPressed(_ sender: Any) {
         try? mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
+    }
+    @IBAction func openInfo(_ sender: Any) {
+        UIView.animate(withDuration: 1, animations: {
+            self.legendOverlay.frame.origin.y = 0
+            self.navigationController?.navigationBar.layer.zPosition = -1;
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    @IBAction func closeInfo(_ sender: Any) {
+        UIView.animate(withDuration: 1, animations: {
+            self.legendOverlay.frame.origin.y = -400
+            self.navigationController?.navigationBar.layer.zPosition = 0;
+            self.view.layoutIfNeeded()
+        })
     }
 }
 
@@ -117,9 +143,9 @@ extension RecurringDonationTurnsOverviewController {
     }
     func getFutureTurns(recurringDonation: RecurringRuleViewModel, recurringDonationLastTurn: DonationResponseModel, recurringDonationPastTurnsCount: Int, maxCount: Int)  -> [RecurringDonationTurnViewModel] {
         var donations: [RecurringDonationTurnViewModel] = []
-
+        
         do {
-
+            
             guard let lastDonationDate: Date = recurringDonationLastTurn.Timestamp.toDate else {
                 return []
             }
@@ -176,7 +202,7 @@ extension RecurringDonationTurnsOverviewController {
             return nil
         }
     }
-
+    
     fileprivate func transformDayInCronToInt(cronArray: [String]) -> [String] {
         var newarray = cronArray
         var day = newarray[4]
