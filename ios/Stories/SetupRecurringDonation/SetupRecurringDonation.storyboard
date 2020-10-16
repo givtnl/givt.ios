@@ -1176,7 +1176,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jmq-E2-YPm" userLabel="Calendar">
-                                                    <rect key="frame" x="20" y="20" width="50" height="50"/>
+                                                    <rect key="frame" x="20" y="15" width="50" height="60"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OUj-rD-F6O">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="5"/>
@@ -1193,10 +1193,10 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RLx-Bn-Uhs">
-                                                            <rect key="frame" x="0.0" y="7" width="50" height="43"/>
+                                                            <rect key="frame" x="0.0" y="7" width="50" height="53"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVG-GM-BWC" userLabel="Date">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="53"/>
                                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="28"/>
                                                                     <color key="textColor" red="0.35133320089999998" green="0.32705855369999998" blue="0.53972214460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1265,10 +1265,10 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="jmq-E2-YPm" firstAttribute="top" secondItem="2WS-yk-V7k" secondAttribute="top" constant="20" id="265-ZI-Ewt"/>
+                                                <constraint firstItem="jmq-E2-YPm" firstAttribute="top" secondItem="2WS-yk-V7k" secondAttribute="top" constant="15" id="265-ZI-Ewt"/>
                                                 <constraint firstItem="pFc-MM-Bpb" firstAttribute="centerY" secondItem="2WS-yk-V7k" secondAttribute="centerY" id="AT6-hU-UHW"/>
                                                 <constraint firstItem="pkf-L5-WGr" firstAttribute="top" secondItem="2WS-yk-V7k" secondAttribute="top" id="CV6-X4-PY3"/>
-                                                <constraint firstAttribute="bottom" secondItem="jmq-E2-YPm" secondAttribute="bottom" constant="20" id="CgW-Bf-s1e"/>
+                                                <constraint firstAttribute="bottom" secondItem="jmq-E2-YPm" secondAttribute="bottom" constant="15" id="CgW-Bf-s1e"/>
                                                 <constraint firstAttribute="trailing" secondItem="zOI-zR-Lsr" secondAttribute="trailing" id="NIP-p4-Nhi"/>
                                                 <constraint firstAttribute="trailing" secondItem="pFc-MM-Bpb" secondAttribute="trailing" constant="10" id="OI1-3I-gUd"/>
                                                 <constraint firstItem="zOI-zR-Lsr" firstAttribute="top" secondItem="2WS-yk-V7k" secondAttribute="top" id="Rkk-Pt-gGR"/>
@@ -1423,7 +1423,7 @@
             <size key="intrinsicContentSize" width="5" height="23.5"/>
         </designable>
         <designable name="lJ0-Hf-NsM">
-            <size key="intrinsicContentSize" width="56" height="37"/>
+            <size key="intrinsicContentSize" width="56" height="25"/>
         </designable>
         <designable name="phc-si-YWc">
             <size key="intrinsicContentSize" width="50" height="23.5"/>
