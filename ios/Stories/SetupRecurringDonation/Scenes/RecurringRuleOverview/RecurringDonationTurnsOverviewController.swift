@@ -23,9 +23,12 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     
     @IBOutlet weak var legendOverlay: UIView!
     @IBOutlet weak var closeLegendControl: UIControl!
+    @IBOutlet weak var navBar: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.title = "TitleRecurringGifts".localized
         
         let nib = UINib(nibName: "TableSectionHeaderRecurringRuleOverviewView", bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderRecurringRuleOverviewView")

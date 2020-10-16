@@ -218,16 +218,16 @@
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="167" height="44"/>
                                                                                                     <subviews>
                                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWn-h3-ncL" userLabel="stopView">
-                                                                                                            <rect key="frame" x="20" y="0.0" width="127.5" height="44"/>
+                                                                                                            <rect key="frame" x="52" y="0.0" width="63.5" height="44"/>
                                                                                                             <subviews>
                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stop-circle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLq-tW-iua">
-                                                                                                                    <rect key="frame" x="0.0" y="12" width="81" height="20"/>
+                                                                                                                    <rect key="frame" x="0.0" y="13.5" width="17" height="17"/>
                                                                                                                     <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.72549019607843135" green="0.10196078431372549" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                 </label>
                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZE-em-daY">
-                                                                                                                    <rect key="frame" x="91" y="10.5" width="36.5" height="23.5"/>
+                                                                                                                    <rect key="frame" x="27" y="10.5" width="36.5" height="23.5"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.72549019607843135" green="0.10196078431372549" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
@@ -255,16 +255,16 @@
                                                                                                     <rect key="frame" x="167" y="0.0" width="167" height="44"/>
                                                                                                     <subviews>
                                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22M-wb-RiC" userLabel="listView">
-                                                                                                            <rect key="frame" x="21" y="0.0" width="125" height="44"/>
+                                                                                                            <rect key="frame" x="33.5" y="0.0" width="100.5" height="44"/>
                                                                                                             <subviews>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="list-ul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfK-Jh-y1y">
-                                                                                                                    <rect key="frame" x="0.0" y="12" width="41.5" height="20"/>
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="list-ul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfK-Jh-y1y">
+                                                                                                                    <rect key="frame" x="0.0" y="13.5" width="17" height="17"/>
                                                                                                                     <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                 </label>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-rF-WB2">
-                                                                                                                    <rect key="frame" x="51.5" y="10.5" width="73.5" height="23.5"/>
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-rF-WB2">
+                                                                                                                    <rect key="frame" x="27" y="10.5" width="73.5" height="23.5"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
@@ -1407,6 +1407,7 @@
                         <outlet property="closeLegendControl" destination="L3c-0j-tiQ" id="OjJ-e2-Ngo"/>
                         <outlet property="givyContainer" destination="dXx-Ag-SPP" id="cpc-Jv-4i9"/>
                         <outlet property="legendOverlay" destination="wZe-s9-6WI" id="XES-sO-FHY"/>
+                        <outlet property="navBar" destination="zbC-BI-si0" id="Pip-yo-vW1"/>
                         <outlet property="tableView" destination="33T-gx-lCK" id="qkM-A7-iXh"/>
                     </connections>
                 </viewController>
