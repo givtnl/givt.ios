@@ -76,7 +76,7 @@ class CreateRecurringDonationCommandPreHandler: RequestPreProcessorProtocol {
             case Frequency.SixMonthly:
                 cronExpression = "0 0 \(dayOfMonth) \(getFirstPartHalfYearlyCronMonth(month: month))/6 *"
             case Frequency.Yearly:
-                cronExpression = "0 0 \(dayOfMonth) \(month+1)/12 *"
+                cronExpression = "0 0 \(dayOfMonth) \(month+1) *"
         }
         return cronExpression
     }
