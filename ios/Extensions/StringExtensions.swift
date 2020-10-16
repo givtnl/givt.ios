@@ -103,19 +103,12 @@ extension String{
     }
     
     var toDate : Date? {
+        let from = self.replacingOccurrences(of: "\\.\\d+", with: "", options: .regularExpression)
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS"
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
         formatter.locale = Locale(identifier: "en_US_POSIX")
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        if let date = formatter.date(from: self) {
-            return date
-        } else {
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-            if let  date = formatter.date(from: self) {
-                return date
-            }
-        }
-        return nil
+        return formatter.date(from: from) 
     }
     
     static func random(length: Int = 20) -> String {
