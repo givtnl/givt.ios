@@ -56,13 +56,13 @@ extension RecurringRuleViewModel {
             if (month == "*") {
                 frequency = "SetupRecurringGiftMonth".localized
             }
-            if (month.contains("/3")) {
+            else if (month.contains("/3")) {
                 frequency = "SetupRecurringGiftQuarter".localized
             }
-            if (month.contains("/6")) {
+            else if (month.contains("/6")) {
                 frequency = "SetupRecurringGiftHalfYear".localized
             }
-            if (month.contains("/12")) {
+            else {
                 frequency = "SetupRecurringGiftYear".localized
             }
         }
