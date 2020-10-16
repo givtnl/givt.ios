@@ -23,7 +23,10 @@ class GetDonationsByIdsQueryHandler : RequestHandlerProtocol {
                 if let body = response.text {
                     do {
                         let decoder = JSONDecoder()
-                        models = try decoder.decode(Array<DonationResponseModel>.self, from: Data(body.utf8))
+                        models = try decoder.decode(Array<DonationResponseModel>.self, from: Data(body.utf8)).sorted(by: { (first, second) -> Bool in
+                            return first.Timestamp.toDate! < second.Timestamp.toDate!
+                        })
+                        
                     } catch {
                         print("\(error)")
                     }
