@@ -12,7 +12,8 @@ import SwifCron
 class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate
 {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
-    
+    private var log = LogService.shared
+
     var recurringDonation: RecurringRuleViewModel?
     var donations: [RecurringDonationTurnViewModel] = []
     var donationsByYear: [Int: [RecurringDonationTurnViewModel]] = [:]
@@ -57,17 +58,18 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                 let futureTurns: [RecurringDonationTurnViewModel] = getFutureTurns(recurringDonation: recurringDonation, recurringDonationLastDate: lastDonationDate, recurringDonationPastTurnsCount: recurringDonationTurns.count, maxCount: 5)
                 
                 donations.append(contentsOf: futureTurns)
+                
+                donations = donations.reversed()
+                
+                donationsByYear = Dictionary(grouping: donations, by: {Int($0.year)!})
+                
+                donationsByYearSorted = donationsByYear.sorted { (first, second) -> Bool in
+                    return first.key > second.key
+                }
+                
             }
         } catch {
-            print(error)
-        }
-        
-        donations = donations.reversed()
-        
-        donationsByYear = Dictionary(grouping: donations, by: {Int($0.year)!})
-        
-        donationsByYearSorted = donationsByYear.sorted { (first, second) -> Bool in
-            return first.key > second.key
+            log.warning(message: "Recurring donation was not found or nil, this shouldnt happen")
         }
         
         tableView.delegate = self
@@ -76,7 +78,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         
         tableView.tableFooterView = UIView()
         // Adding swipe gesture to the legenda overlay
-        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(openInfo(_:)))
+        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(closeInfo(_:)))
         swipeGesture.direction = UISwipeGestureRecognizer.Direction.up
         legendOverlay.addGestureRecognizer(swipeGesture)
         
@@ -87,7 +89,6 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RecurringDonationTurnTableCell.self), for: indexPath) as! RecurringDonationTurnTableCell
-        
         
         cell.viewModel = donationsByYearSorted![indexPath.section].value[indexPath.row]
         
