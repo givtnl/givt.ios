@@ -16,6 +16,7 @@ target 'ios' do
   pod 'AppCenter/Push'
   pod 'SwiftCron'
   pod 'Mixpanel-swift'
+  pod 'SwifCron'
 
   # Pods for ios
 
