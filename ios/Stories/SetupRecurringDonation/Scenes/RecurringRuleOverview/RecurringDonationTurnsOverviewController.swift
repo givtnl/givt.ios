@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import SwifCron
+import SVProgressHUD
 
 class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate
 {
@@ -21,7 +22,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     
     @IBOutlet var givyContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet var givyContainer_label: UILabel!
     @IBOutlet weak var legendOverlay: UIView!
     @IBOutlet weak var closeLegendControl: UIControl!
     @IBOutlet weak var navBar: UINavigationItem!
@@ -29,12 +30,38 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navBar.title = "TitleRecurringGifts".localized
-        
+        // set table
+        tableView.delegate = self
+        tableView.dataSource = self
         let nib = UINib(nibName: "TableSectionHeaderRecurringRuleOverviewView", bundle: nil)
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: "TableSectionHeaderRecurringRuleOverviewView")
+        tableView.tableFooterView = UIView()
         
+        // Make Givy visible and hide table
         givyContainer.isHidden = true
+        
+        // Set title
+        navBar.title = "TitleRecurringGifts".localized
+        
+        // Adding swipe gesture to the legenda overlay
+        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(closeInfo(_:)))
+        swipeGesture.direction = UISwipeGestureRecognizer.Direction.up
+        legendOverlay.addGestureRecognizer(swipeGesture)
+        
+        // add tap gesture to close if dont wanna swipe...
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeInfo(_:)))
+        closeLegendControl.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.isHidden = true
+        givyContainer.isHidden = false
+        givyContainer_label.text = "LoadingMessage".localized
+        
+        SVProgressHUD.show()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         
         do {
             if let recurringDonation = recurringDonation {
@@ -68,23 +95,20 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                 }
                 
             }
+            
+            self.tableView.isHidden = false
+            givyContainer.isHidden = true
+            
+            tableView.reloadData()
+            
         } catch {
             log.warning(message: "Recurring donation was not found or nil, this shouldnt happen")
+            
+            self.tableView.isHidden = true
+            givyContainer.isHidden = false
+            givyContainer_label.text = "SomethingWentWrong".localized
         }
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.reloadData()
-        
-        tableView.tableFooterView = UIView()
-        // Adding swipe gesture to the legenda overlay
-        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(closeInfo(_:)))
-        swipeGesture.direction = UISwipeGestureRecognizer.Direction.up
-        legendOverlay.addGestureRecognizer(swipeGesture)
-        
-        // add tap gesture to close if dont wanna swipe...
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeInfo(_:)))
-        closeLegendControl.addGestureRecognizer(tapGesture)
+        SVProgressHUD.dismiss()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -96,7 +120,12 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return donationsByYearSorted!.count
+        if(donationsByYearSorted != nil) {
+            return donationsByYearSorted!.count
+        }
+        else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

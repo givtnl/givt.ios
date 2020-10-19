@@ -1405,7 +1405,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="closeLegendControl" destination="L3c-0j-tiQ" id="OjJ-e2-Ngo"/>
-                        <outlet property="givyContainer" destination="dXx-Ag-SPP" id="cpc-Jv-4i9"/>
+                        <outlet property="givyContainer" destination="dXx-Ag-SPP" id="2tb-SF-8DZ"/>
+                        <outlet property="givyContainer_label" destination="XVh-5Y-Ggf" id="qlp-Su-6O2"/>
                         <outlet property="legendOverlay" destination="wZe-s9-6WI" id="XES-sO-FHY"/>
                         <outlet property="navBar" destination="zbC-BI-si0" id="Pip-yo-vW1"/>
                         <outlet property="tableView" destination="33T-gx-lCK" id="qkM-A7-iXh"/>
