@@ -24,7 +24,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var givyContainer_label: UILabel!
     @IBOutlet weak var legendOverlay: UIView!
-    @IBOutlet weak var closeLegendControl: UIControl!
+//    @IBOutlet weak var closeLegendControl: UIControl!
     @IBOutlet weak var navBar: UINavigationItem!
     
     override func viewDidLoad() {
@@ -48,9 +48,9 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         swipeGesture.direction = UISwipeGestureRecognizer.Direction.up
         legendOverlay.addGestureRecognizer(swipeGesture)
         
-        // add tap gesture to close if dont wanna swipe...
-        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeInfo(_:)))
-        closeLegendControl.addGestureRecognizer(tapGesture)
+//        // add tap gesture to close if dont wanna swipe...
+//        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeInfo(_:)))
+//        closeLegendControl.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -168,7 +168,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     
     @IBAction func closeInfo(_ sender: Any) {
         UIView.animate(withDuration: 1, animations: {
-            self.legendOverlay.frame.origin.y = -400
+            self.legendOverlay.frame.origin.y = -320
             self.navigationController?.navigationBar.layer.zPosition = 0;
             self.view.layoutIfNeeded()
         })
