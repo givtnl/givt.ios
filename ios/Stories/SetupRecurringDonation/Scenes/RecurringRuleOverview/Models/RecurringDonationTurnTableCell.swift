@@ -33,15 +33,13 @@ internal final class RecurringDonationTurnTableCell : UITableViewCell {
     var viewModel: RecurringDonationTurnViewModel? = nil {
         didSet{
             if let data = viewModel {
-                let decimalString = "\(data.amount)"
-                let doubleAmount: Double = Double(decimalString)!
-                let delimiter: String = NSLocale.current.decimalSeparator!
-                let currencySign = UserDefaults.standard.currencySymbol
-                if currencySign == "€" {
-                    currencySign += " "
+                if let decimalString = data.amount.formattedTwoDigits {
+                    var currencySign = UserDefaults.standard.currencySymbol
+                    if currencySign == "€" {
+                        currencySign += " "
+                    }
+                    amount.text = "\(currencySign)\(String(describing: decimalString))"
                 }
-                amount.text = "\(currencySign)\(String(format: "%\(delimiter)2f", doubleAmount))"
-
                 date.text = data.day
                 month.text = data.month
                 overlayOn = data.toBePlanned
