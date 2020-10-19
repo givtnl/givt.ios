@@ -822,7 +822,7 @@
 			isa = PBXGroup;
 			children = (
 				DFAEA67725347A5100A41499 /* RecurringRuleOverview */,
-				DF3FD7862512132C006BB1A7 /* SetupNofication */,
+				DF3FD7862512132C006BB1A7 /* SetupNotification */,
 				DF1300F524F5601F00EE1785 /* Overview */,
 				32CA17A424CED00200248053 /* ChooseDestination */,
 				320CF72524CEDF37008B3EDE /* ChooseRecurringDonation */,
@@ -1362,12 +1362,12 @@
 			path = GetAll;
 			sourceTree = "<group>";
 		};
-		DF3FD7862512132C006BB1A7 /* SetupNofication */ = {
+		DF3FD7862512132C006BB1A7 /* SetupNotification */ = {
 			isa = PBXGroup;
 			children = (
 				DF3FD7872512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift */,
 			);
-			path = SetupNofication;
+			path = SetupNotification;
 			sourceTree = "<group>";
 		};
 		DF76413A2538397F00A42109 /* Subviews */ = {
