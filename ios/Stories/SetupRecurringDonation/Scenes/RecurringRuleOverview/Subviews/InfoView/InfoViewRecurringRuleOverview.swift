@@ -13,7 +13,6 @@ class InfoViewRecurringRuleOverview: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var closeInfoView: UIView!
     @IBOutlet weak var closeInfoViewImage: UIImageView!
-    @IBOutlet var containerView: UIView!
     
     @IBOutlet var infoViewTitle: UILabel!
     
@@ -29,6 +28,8 @@ class InfoViewRecurringRuleOverview: UIView {
     @IBOutlet var elementCancelledByUserStatus: UIView!
     @IBOutlet var elementGiftAidedStatus: UIImageView!
     
+    @IBOutlet weak var elementStackView: UIStackView!
+    @IBOutlet weak var giftAidView: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,8 +65,10 @@ class InfoViewRecurringRuleOverview: UIView {
         elementCancelledByUserStatus.backgroundColor = UIColor.init(rgb: 0xbcb9c9)
         elementCancelledByUserStatus.layer.cornerRadius = 7.5
         
-        if UserDefaults.standard.accountType == AccountType.bacs {
-           
+        if UserDefaults.standard.accountType != AccountType.bacs {
+            elementStackView.removeArrangedSubview(giftAidView)
+            giftAidView.removeFromSuperview()
         }
+        
     }
 }
