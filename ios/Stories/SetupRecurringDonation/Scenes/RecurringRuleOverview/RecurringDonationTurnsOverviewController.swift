@@ -172,13 +172,17 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         
         header.opaqueLayer.isHidden = true
         
-        if(section == 0 && donationsByYearSorted![section].key == 9999) {
+        if(donationsByYearSorted![section].key == 9999) {
             
-            let yearNextDonation = donationsByYearSorted![section].value[0].year
-            let yearLastDonation = donationsByYearSorted![1].value[0].year
+            let yearNextDonation = Int(donationsByYearSorted![section].value[0].year)
+            var yearLastDonation = yearNextDonation! - 1
             
-            if(Int(yearNextDonation)! > Int(yearLastDonation)!) {
-                header.year.text = "RecurringDonationFutureDetailDifferentYear".localized + " " + yearNextDonation
+            if (donationsByYearSorted!.count >= 2) {
+                yearLastDonation = Int(donationsByYearSorted![1].value[0].year)!
+            }
+            
+            if(yearNextDonation! > yearLastDonation) {
+                header.year.text = "RecurringDonationFutureDetailDifferentYear".localized + " " + String(yearNextDonation!)
             }
             else {
                 header.year.text = "RecurringDonationFutureDetailSameYear".localized
