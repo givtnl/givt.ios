@@ -1319,10 +1319,10 @@
                                 </constraints>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZe-s9-6WI" customClass="InfoViewRecurringRuleOverview" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-320" width="414" height="320"/>
+                                <rect key="frame" x="0.0" y="-340" width="414" height="340"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="AEs-wQ-RzU"/>
+                                    <constraint firstAttribute="height" constant="340" id="fxv-6Y-3nz"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1330,7 +1330,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="33T-gx-lCK" firstAttribute="top" secondItem="mu2-jU-jiW" secondAttribute="top" id="0Pm-kt-XJd"/>
-                            <constraint firstItem="wZe-s9-6WI" firstAttribute="top" secondItem="pai-hm-9P5" secondAttribute="top" constant="-320" id="1Kc-ku-gZd"/>
+                            <constraint firstItem="wZe-s9-6WI" firstAttribute="top" secondItem="pai-hm-9P5" secondAttribute="top" constant="-340" id="1Kc-ku-gZd"/>
                             <constraint firstItem="33T-gx-lCK" firstAttribute="trailing" secondItem="mu2-jU-jiW" secondAttribute="trailing" id="8Fw-GN-KqZ"/>
                             <constraint firstItem="33T-gx-lCK" firstAttribute="leading" secondItem="mu2-jU-jiW" secondAttribute="leading" id="AOG-hE-HoL"/>
                             <constraint firstItem="33T-gx-lCK" firstAttribute="top" secondItem="mu2-jU-jiW" secondAttribute="top" id="Byq-2z-hOB"/>
@@ -1395,7 +1395,7 @@
             <size key="intrinsicContentSize" width="5" height="23.5"/>
         </designable>
         <designable name="lJ0-Hf-NsM">
-            <size key="intrinsicContentSize" width="56" height="25"/>
+            <size key="intrinsicContentSize" width="56" height="37"/>
         </designable>
         <designable name="phc-si-YWc">
             <size key="intrinsicContentSize" width="50" height="23.5"/>
