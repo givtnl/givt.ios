@@ -24,7 +24,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var givyContainer_label: UILabel!
     @IBOutlet weak var legendOverlay: InfoViewRecurringRuleOverview!
-//    @IBOutlet weak var closeLegendControl: UIControl!
+    @IBOutlet weak var legendOverlayHeight: NSLayoutConstraint!
     @IBOutlet weak var navBar: UINavigationItem!
     
     override func viewDidLoad() {
@@ -45,9 +45,6 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         setupInfoViewContainer()
 
     }
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-//        return touch.view == legendOverlay.closeInfoView
-//    }
     fileprivate func setupInfoViewContainer() {
         // adding gesture recognizers manually because in teh close method we are accessing the nav controller
         // cannot access nav controller from xib swift context
@@ -65,9 +62,17 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         // put the view inside the navbar
         legendOverlay.removeFromSuperview()
         self.navigationController!.view.addSubview(legendOverlay)
-        legendOverlay.containerView.topAnchor.constraint(equalTo: (self.navigationController?.view.topAnchor)!, constant: -340).isActive = true
-        legendOverlay.containerView.leadingAnchor.constraint(equalTo: (self.navigationController?.view.leadingAnchor)!).isActive = true
-        legendOverlay.containerView.trailingAnchor.constraint(equalTo: (self.navigationController?.view.trailingAnchor)!).isActive = true
+        
+        legendOverlay.contentView.leadingAnchor.constraint(equalTo: (self.navigationController?.view.leadingAnchor)!).isActive = true
+        legendOverlay.contentView.trailingAnchor.constraint(equalTo: (self.navigationController?.view.trailingAnchor)!).isActive = true
+        
+        if UserDefaults.standard.accountType != AccountType.bacs {
+            legendOverlayHeight.constant = 290
+            legendOverlay.contentView.topAnchor.constraint(equalTo: (self.navigationController?.view.topAnchor)!, constant: -290).isActive = true
+        } else {
+            legendOverlayHeight.constant = 340
+            legendOverlay.contentView.topAnchor.constraint(equalTo: (self.navigationController?.view.topAnchor)!, constant: -340).isActive = true
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         tableView.isHidden = true
@@ -101,7 +106,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                 
                 let futureTurns: [RecurringDonationTurnViewModel] = getFutureTurns(recurringDonation: recurringDonation, recurringDonationLastDate: lastDonationDate, recurringDonationPastTurnsCount: recurringDonationTurns.count, maxCount: 1)
                 
-//                donations.append(contentsOf: futureTurns)
+                //                donations.append(contentsOf: futureTurns)
                 
                 donations = donations.reversed()
                 

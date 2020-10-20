@@ -263,7 +263,7 @@
                                                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                 </label>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-rF-WB2">
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-rF-WB2">
                                                                                                                     <rect key="frame" x="27" y="11" width="69.5" height="22"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1378,6 +1378,7 @@
                         <outlet property="givyContainer" destination="dXx-Ag-SPP" id="2tb-SF-8DZ"/>
                         <outlet property="givyContainer_label" destination="XVh-5Y-Ggf" id="qlp-Su-6O2"/>
                         <outlet property="legendOverlay" destination="wZe-s9-6WI" id="XES-sO-FHY"/>
+                        <outlet property="legendOverlayHeight" destination="fxv-6Y-3nz" id="dI5-OF-dFM"/>
                         <outlet property="navBar" destination="zbC-BI-si0" id="Pip-yo-vW1"/>
                         <outlet property="tableView" destination="33T-gx-lCK" id="qkM-A7-iXh"/>
                     </connections>
@@ -1395,7 +1396,7 @@
             <size key="intrinsicContentSize" width="5" height="23.5"/>
         </designable>
         <designable name="lJ0-Hf-NsM">
-            <size key="intrinsicContentSize" width="56" height="37"/>
+            <size key="intrinsicContentSize" width="56" height="25"/>
         </designable>
         <designable name="phc-si-YWc">
             <size key="intrinsicContentSize" width="50" height="23.5"/>
