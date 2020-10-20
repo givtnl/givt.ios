@@ -18,6 +18,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uh0-HR-k8q">
                     <rect key="frame" x="0.0" y="0.0" width="830" height="81"/>
                     <subviews>
+                        <view hidden="YES" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fe8-aL-997" userLabel="Opaque">
+                            <rect key="frame" x="0.0" y="0.0" width="830" height="81"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="abN-bb-9j8">
                             <rect key="frame" x="20" y="0.0" width="796" height="81"/>
                             <subviews>
@@ -34,6 +38,10 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="abN-bb-9j8" secondAttribute="bottom" id="16U-Ja-nWw"/>
                         <constraint firstItem="abN-bb-9j8" firstAttribute="top" secondItem="uh0-HR-k8q" secondAttribute="top" id="78f-9n-cc0"/>
+                        <constraint firstAttribute="trailing" secondItem="fe8-aL-997" secondAttribute="trailing" id="Ab0-ex-dmq"/>
+                        <constraint firstItem="fe8-aL-997" firstAttribute="leading" secondItem="uh0-HR-k8q" secondAttribute="leading" id="K5X-Od-vjl"/>
+                        <constraint firstAttribute="bottom" secondItem="fe8-aL-997" secondAttribute="bottom" id="MvT-af-fAn"/>
+                        <constraint firstItem="fe8-aL-997" firstAttribute="top" secondItem="uh0-HR-k8q" secondAttribute="top" id="eyv-XF-A6i"/>
                         <constraint firstAttribute="trailing" secondItem="abN-bb-9j8" secondAttribute="trailing" constant="14" id="fvT-e4-V8k"/>
                         <constraint firstItem="abN-bb-9j8" firstAttribute="leading" secondItem="uh0-HR-k8q" secondAttribute="leading" constant="20" id="kM7-lv-M6j"/>
                     </constraints>
@@ -51,6 +59,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="opaqueLayer" destination="fe8-aL-997" id="kGG-1W-gRd"/>
                 <outlet property="year" destination="fDH-oK-O0I" id="6Ke-aF-xec"/>
             </connections>
             <point key="canvasLocation" x="317.39130434782612" y="-213.95089285714286"/>

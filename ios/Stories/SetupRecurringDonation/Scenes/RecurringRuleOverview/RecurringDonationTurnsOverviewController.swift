@@ -99,18 +99,19 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                     lastDonationDate = recurringDonation.startDate.toDate!
                 }
                 
-                let futureTurns: [RecurringDonationTurnViewModel] = getFutureTurns(recurringDonation: recurringDonation, recurringDonationLastDate: lastDonationDate, recurringDonationPastTurnsCount: recurringDonationTurns.count, maxCount: 5)
+                let futureTurns: [RecurringDonationTurnViewModel] = getFutureTurns(recurringDonation: recurringDonation, recurringDonationLastDate: lastDonationDate, recurringDonationPastTurnsCount: recurringDonationTurns.count, maxCount: 1)
                 
-                donations.append(contentsOf: futureTurns)
+//                donations.append(contentsOf: futureTurns)
                 
                 donations = donations.reversed()
                 
                 donationsByYear = Dictionary(grouping: donations, by: {Int($0.year)!})
                 
+                donationsByYear[9999] = futureTurns
+                
                 donationsByYearSorted = donationsByYear.sorted { (first, second) -> Bool in
                     return first.key > second.key
                 }
-                
             }
             
             self.tableView.isHidden = false
@@ -168,7 +169,25 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         let yearText = donationsByYearSorted![section].key
         let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderRecurringRuleOverviewView")
         let header = cell as! TableSectionHeaderRecurringRuleOverview
-        header.year.text = "\(yearText)"
+        
+        header.opaqueLayer.isHidden = true
+        
+        if(section == 0 && donationsByYearSorted![section].key == 9999) {
+            
+            let yearNextDonation = donationsByYearSorted![section].value[0].year
+            let yearLastDonation = donationsByYearSorted![1].value[0].year
+            
+            if(Int(yearNextDonation)! > Int(yearLastDonation)!) {
+                header.year.text = "RecurringDonationFutureDetailDifferentYear".localized + " " + yearNextDonation
+            }
+            else {
+                header.year.text = "RecurringDonationFutureDetailSameYear".localized
+            }
+            
+        } else {
+            header.year.text = "\(yearText)"
+        }
+        
         return cell
     }
     @IBAction override func backPressed(_ sender: Any) {
