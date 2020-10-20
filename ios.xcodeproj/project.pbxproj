@@ -841,16 +841,16 @@
 		32CA17B024CED48100248053 /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				3273B89D25359C0C003DB100 /* OpenRecurringDonationOverviewList */,
-				DFD4F94B252F3B8B00EA3141 /* GoToAboutView */,
-				A478D1D72512C38C00251AFE /* DismissPushNotificationView */,
-				A478D1D22512380800251AFE /* GoToPushNotificationView */,
 				FB56C55E2510FFE90099EC62 /* BackToRecurringDonationOverview */,
-				DFFF7E8C24F935C00098E4F6 /* PopToRecurringDonationOverview */,
 				DF05015724F8B48F006196A3 /* BackToSetupRecurringDonation */,
-				DF05015224F8B278006196A3 /* GoToChooseRecurringDonation */,
-				320CF72824CEF1C1008B3EDE /* DestinationSelected */,
 				32CA17B124CED48A00248053 /* ChooseDestination */,
+				320CF72824CEF1C1008B3EDE /* DestinationSelected */,
+				A478D1D72512C38C00251AFE /* DismissPushNotificationView */,
+				DFD4F94B252F3B8B00EA3141 /* GoToAboutView */,
+				DF05015224F8B278006196A3 /* GoToChooseRecurringDonation */,
+				A478D1D22512380800251AFE /* GoToPushNotificationView */,
+				3273B89D25359C0C003DB100 /* OpenRecurringDonationOverviewList */,
+				DFFF7E8C24F935C00098E4F6 /* PopToRecurringDonationOverview */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
