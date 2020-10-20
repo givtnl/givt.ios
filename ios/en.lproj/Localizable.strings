@@ -1011,5 +1011,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "GoToListWithRecurringDonationDonations" = "Overview";
 "RecurringDonationsEmptyDetailOverview" = "This is where you'll find information about your donations, but the first donation still has to be collected";
 "RecurringDonationSoonNotification" = "Soon a donation will be done to {0}.";
-"RecurringDonationFutureDetailSameYear" = "Next donation";
-"RecurringDonationFutureDetailDifferentYear" = "Next donation in";
+"RecurringDonationFutureDetailSameYear" = "Upcoming donation";
+"RecurringDonationFutureDetailDifferentYear" = "Upcoming donation in";
