@@ -80,17 +80,19 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if(reloadData) {
+        if reloadData {
             tableView.isHidden = true
             imageView.isHidden = false
             emptyListLabel.text = "EmptyRecurringDonationList".localized
             
-            SVProgressHUD.show()
+            if !SVProgressHUD.isVisible() {
+                SVProgressHUD.show()
+            }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if(!reloadData) { return }
+        if !reloadData { return }
         
         do {
             // load collectgroups with query
@@ -122,8 +124,6 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
         }
         reloadData = true;
         SVProgressHUD.dismiss()
-        
-        
     }
     
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
