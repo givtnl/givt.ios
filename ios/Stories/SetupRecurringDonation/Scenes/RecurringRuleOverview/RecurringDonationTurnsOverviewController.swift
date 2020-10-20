@@ -10,7 +10,7 @@ import Foundation
 import SwifCron
 import SVProgressHUD
 
-class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate
+class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource, CloseInfoViewDelegate
 {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     private var log = LogService.shared
@@ -23,13 +23,12 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     @IBOutlet var givyContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var givyContainer_label: UILabel!
-    @IBOutlet weak var legendOverlay: UIView!
+    @IBOutlet weak var legendOverlay: InfoViewRecurringRuleOverview!
 //    @IBOutlet weak var closeLegendControl: UIControl!
     @IBOutlet weak var navBar: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // set table
         tableView.delegate = self
         tableView.dataSource = self
@@ -42,17 +41,16 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         
         // Set title
         navBar.title = "TitleRecurringGifts".localized
-        
-        // Adding swipe gesture to the legenda overlay
-        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(closeInfo(_:)))
+
+        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(closeInfo))
         swipeGesture.direction = UISwipeGestureRecognizer.Direction.up
         legendOverlay.addGestureRecognizer(swipeGesture)
-        
-//        // add tap gesture to close if dont wanna swipe...
-//        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeInfo(_:)))
-//        closeLegendControl.addGestureRecognizer(tapGesture)
+
+        legendOverlay.closeInfoViewDelegate = self
     }
-    
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        return touch.view == legendOverlay.closeInfoView
+//    }
     override func viewWillAppear(_ animated: Bool) {
         tableView.isHidden = true
         givyContainer.isHidden = false
@@ -161,17 +159,20 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     @IBAction func openInfo(_ sender: Any) {
         UIView.animate(withDuration: 1, animations: {
             self.legendOverlay.frame.origin.y = 0
-            self.navigationController?.navigationBar.layer.zPosition = -1;
+            self.navigationController?.navigationBar.isHidden = true
             self.view.layoutIfNeeded()
         })
     }
     
-    @IBAction func closeInfo(_ sender: Any) {
+    @objc func closeInfo() {
         UIView.animate(withDuration: 1, animations: {
-            self.legendOverlay.frame.origin.y = -320
-            self.navigationController?.navigationBar.layer.zPosition = 0;
+            self.legendOverlay.frame.origin.y = -340
+            self.navigationController?.navigationBar.isHidden = false
             self.view.layoutIfNeeded()
         })
+    }
+    func closeInfoView() {
+        closeInfo()
     }
 }
 
