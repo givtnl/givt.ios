@@ -12,4 +12,5 @@ class TableSectionHeaderRecurringRuleOverview: UITableViewHeaderFooterView {
 
     @IBOutlet var year: UILabel!
     
+    @IBOutlet var opaqueLayer: UIView!
 }
