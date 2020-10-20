@@ -10,7 +10,7 @@ import Foundation
 import SwifCron
 import SVProgressHUD
 
-class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource, CloseInfoViewDelegate
+class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     private var log = LogService.shared
@@ -42,15 +42,33 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         // Set title
         navBar.title = "TitleRecurringGifts".localized
 
-        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(closeInfo))
-        swipeGesture.direction = UISwipeGestureRecognizer.Direction.up
-        legendOverlay.addGestureRecognizer(swipeGesture)
+        setupInfoViewContainer()
 
-        legendOverlay.closeInfoViewDelegate = self
     }
 //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
 //        return touch.view == legendOverlay.closeInfoView
 //    }
+    fileprivate func setupInfoViewContainer() {
+        // adding gesture recognizers manually because in teh close method we are accessing the nav controller
+        // cannot access nav controller from xib swift context
+        
+        // add swipe gesture so users can swipe up to close the view
+        let swipeGesture: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(closeInfo))
+        swipeGesture.direction = UISwipeGestureRecognizer.Direction.up
+        legendOverlay.addGestureRecognizer(swipeGesture)
+        
+        // add tap gesture recognizer to image and its parent view
+        let tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeInfo))
+        legendOverlay.closeInfoView.addGestureRecognizer(tapGesture)
+        legendOverlay.closeInfoViewImage.addGestureRecognizer(tapGesture)
+
+        // put the view inside the navbar
+        legendOverlay.removeFromSuperview()
+        self.navigationController!.view.addSubview(legendOverlay)
+        legendOverlay.containerView.topAnchor.constraint(equalTo: (self.navigationController?.view.topAnchor)!, constant: -340).isActive = true
+        legendOverlay.containerView.leadingAnchor.constraint(equalTo: (self.navigationController?.view.leadingAnchor)!).isActive = true
+        legendOverlay.containerView.trailingAnchor.constraint(equalTo: (self.navigationController?.view.trailingAnchor)!).isActive = true
+    }
     override func viewWillAppear(_ animated: Bool) {
         tableView.isHidden = true
         givyContainer.isHidden = false
