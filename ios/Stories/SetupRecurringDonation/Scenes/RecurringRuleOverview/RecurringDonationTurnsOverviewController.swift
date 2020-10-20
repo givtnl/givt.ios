@@ -110,14 +110,14 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     @IBAction func openInfo(_ sender: Any) {
         UIView.animate(withDuration: 1, animations: {
             self.legendOverlay.frame.origin.y = 0
-            self.navigationController?.navigationBar.isHidden = true
+            self.navigationController?.navigationBar.alpha = 0
             self.view.layoutIfNeeded()
         })
     }
     @objc func closeInfo() {
         UIView.animate(withDuration: 1, animations: {
             self.legendOverlay.frame.origin.y = -340
-            self.navigationController?.navigationBar.isHidden = false
+            self.navigationController?.navigationBar.alpha = 1
             self.view.layoutIfNeeded()
         })
     }
