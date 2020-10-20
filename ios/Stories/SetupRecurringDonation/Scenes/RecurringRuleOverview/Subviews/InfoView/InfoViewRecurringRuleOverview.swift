@@ -13,7 +13,7 @@ class InfoViewRecurringRuleOverview: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var closeInfoView: UIView!
     @IBOutlet weak var closeInfoViewImage: UIImageView!
-    var closeInfoViewDelegate: CloseInfoViewDelegate? = nil
+    @IBOutlet var containerView: UIView!
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -24,11 +24,6 @@ class InfoViewRecurringRuleOverview: UIView {
         commonInit()
     }
     
-    @IBAction func closeInfoView(_ sender: Any) {
-        if let delegate = closeInfoViewDelegate {
-            delegate.closeInfoView()
-        }
-    }
     private func commonInit() {
         let bundle = Bundle(for: InfoViewRecurringRuleOverview.self)
         bundle.loadNibNamed("InfoViewRecurringRuleOverview", owner: self, options: nil)
@@ -37,8 +32,4 @@ class InfoViewRecurringRuleOverview: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
-}
-
-protocol CloseInfoViewDelegate {
-    func closeInfoView()
 }
