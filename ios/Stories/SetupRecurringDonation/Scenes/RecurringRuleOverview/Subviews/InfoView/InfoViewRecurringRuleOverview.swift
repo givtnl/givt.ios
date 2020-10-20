@@ -9,9 +9,16 @@
 import Foundation
 import UIKit
 
+protocol CloseInfoViewDelegate {
+    func closeButtonTapped() -> Void
+}
+
 class InfoViewRecurringRuleOverview: UIView {
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var closeButtonView: UIView!
     
+    var delegate: CloseInfoViewDelegate? = nil
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -30,4 +37,10 @@ class InfoViewRecurringRuleOverview: UIView {
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
+    @IBAction func labelTapped(_ sender: UITapGestureRecognizer) {
+        if let delegate = self.delegate {
+            delegate.closeButtonTapped()
+        }
+    }
+    
 }
