@@ -13,6 +13,7 @@ import UserNotifications
 protocol NotificationManagerDelegate: class {
     func onNotificationTokenRegistered(token: String?)
     func onReceivedCelebration(collectGroupId: String)
+    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String)
 }
 
 final class NotificationManager : NSObject {
@@ -43,7 +44,11 @@ final class NotificationManager : NSObject {
             delegate.onReceivedCelebration(collectGroupId: collectGroupId)
         }
     }
-    
+    func invokeOnReceiveRecurringDonationTurnCreated(recurringDonationId: String) {
+        for delegate in delegates {
+            delegate.onReceivedRecurringDonationTurnCreated(recurringDonationId: recurringDonationId)
+        }
+    }
     func start() -> Void {
         DispatchQueue.main.async {
             self.requestAndUpdateTokenIfNeeded()
@@ -206,6 +211,10 @@ final class NotificationManager : NSObject {
             case NotificationType.ProcessCachedGivts.rawValue:
                 print("process cached givts action")
                 GivtManager.shared.processCachedGivts()
+            case NotificationType.RecurringDonationTurnCreated.rawValue:
+                if let recurringDonationId = pushNotificationInfo["RecurringDonationId"] as? String {
+                    self.invokeOnReceiveRecurringDonationTurnCreated(recurringDonationId: recurringDonationId)
+                }
             default:
                 print("wrong type")
             LogService.shared.error(message: "Pushnotification type not known")

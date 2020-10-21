@@ -94,7 +94,7 @@ class FeatureManager {
                             action: {(context) -> Void in
                                 class NotificationFeature : NotificationManagerDelegate {
                                     func onReceivedCelebration(collectGroupId: String) {}
-                                    
+                                    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {}
                                     var innerContext: UIViewController?
                                     init(context: UIViewController?) {
                                         innerContext = context

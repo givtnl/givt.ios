@@ -13,7 +13,9 @@ import AppCenterAnalytics
 import SVProgressHUD
 import Mixpanel
 
-class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
+class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate, NotificationManagerDelegate {
+    private var mediater: MediaterWithContextProtocol = Mediater.shared
+    
     private var log: LogService = LogService.shared
     private let slideFromRightAnimation = PresentFromRight()
     
@@ -187,6 +189,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             self._cameFromFAQ = true
         }
         
+        NotificationManager.shared.delegates.append(self)
+
         navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
         navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepOne", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor.white
@@ -596,6 +600,22 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         } else {
             calcPresetsStackView.insertArrangedSubview(viewPresets, at: 0)
             viewPresets.isHidden = false
+        }
+    }
+    
+    func onNotificationTokenRegistered(token: String?) {
+    }
+    
+    func onReceivedCelebration(collectGroupId: String) {
+    }
+    
+    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {
+        DispatchQueue.main.async {
+            if let recurringDonations: [RecurringRuleViewModel] = try? self.mediater.send(request: GetRecurringDonationsQuery()) {
+                if let recurringDonation = recurringDonations.first(where: { $0.id == recurringDonationId }) {
+                    try? self.mediater.send(request: OpenRecurringDonationOverviewListRoute(recurringDonation: recurringDonation))
+                }
+            }
         }
     }
 }

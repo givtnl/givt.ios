@@ -13,7 +13,6 @@ import UserNotifications
 import Mixpanel
 
 class CelebrationQueueViewController : BaseScanViewController, NotificationManagerDelegate {
-    
     var transactions: [Transaction]!
     var organisation = ""
     var secondsLeft = -1
@@ -110,7 +109,9 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
             }
         })
     }
-    
+    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {
+        
+    }
     @IBAction func activatePushNotfications(_ sender: Any) {
         NotificationManager.shared.requestNotificationPermission(completion: { _ in } )
     }
