@@ -166,9 +166,8 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
 
 extension SetupRecurringDonationChooseRecurringDonationViewController : CollectGroupLabelDelegate {
     private func showSetupRecurringDonationFailed() {
-        SVProgressHUD.dismiss()
-        
         DispatchQueue.main.async {
+            SVProgressHUD.dismiss()
             let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             }))
