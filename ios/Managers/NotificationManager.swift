@@ -10,32 +10,10 @@ import Foundation
 import UIKit
 import UserNotifications
 
-//protocol NotificationManagerDelegate: class {
-//    func onNotificationTokenRegistered(token: String?)
-//    func onReceivedCelebration(collectGroupId: String)
-//    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String)
-//}
-
-protocol NotificationMananagerDelegate: class {
-    
-}
-
-protocol NotificationTokenRegisteredDelegate: NotificationMananagerDelegate {
-    func onNotificationTokenRegistered(token: String?)
-}
-
-protocol NotificationReceivedCelebrationDelegate: NotificationMananagerDelegate {
-    func onReceivedCelebration(collectGroupId: String)
-}
-
-protocol NotificationRecurringDonationTurnCreatedDelegate: NotificationMananagerDelegate {
-    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String)
-}
-
 final class NotificationManager : NSObject {
     static let shared: NotificationManager = NotificationManager()
     
-    public var delegates = [NotificationMananagerDelegate]()
+    public var delegates = [NotificationManagerDelegate]()
     
     private let loginManager = LoginManager.shared
     
@@ -245,4 +223,19 @@ final class NotificationManager : NSObject {
         print(aps)
         completionHandler(.newData)
     }
+}
+
+protocol NotificationManagerDelegate: class {
+}
+
+protocol NotificationTokenRegisteredDelegate: NotificationManagerDelegate {
+    func onNotificationTokenRegistered(token: String?)
+}
+
+protocol NotificationReceivedCelebrationDelegate: NotificationManagerDelegate {
+    func onReceivedCelebration(collectGroupId: String)
+}
+
+protocol NotificationRecurringDonationTurnCreatedDelegate: NotificationManagerDelegate {
+    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String)
 }
