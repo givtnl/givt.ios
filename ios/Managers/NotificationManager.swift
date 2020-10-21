@@ -10,16 +10,32 @@ import Foundation
 import UIKit
 import UserNotifications
 
-protocol NotificationManagerDelegate: class {
+//protocol NotificationManagerDelegate: class {
+//    func onNotificationTokenRegistered(token: String?)
+//    func onReceivedCelebration(collectGroupId: String)
+//    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String)
+//}
+
+protocol NotificationMananagerDelegate: class {
+    
+}
+
+protocol NotificationTokenRegisteredDelegate: NotificationMananagerDelegate {
     func onNotificationTokenRegistered(token: String?)
+}
+
+protocol NotificationReceivedCelebrationDelegate: NotificationMananagerDelegate {
     func onReceivedCelebration(collectGroupId: String)
+}
+
+protocol NotificationRecurringDonationTurnCreatedDelegate: NotificationMananagerDelegate {
     func onReceivedRecurringDonationTurnCreated(recurringDonationId: String)
 }
 
 final class NotificationManager : NSObject {
     static let shared: NotificationManager = NotificationManager()
     
-    public var delegates = [NotificationManagerDelegate]()
+    public var delegates = [NotificationMananagerDelegate]()
     
     private let loginManager = LoginManager.shared
     
@@ -35,18 +51,24 @@ final class NotificationManager : NSObject {
     
     func invokeOnNotificationTokenRegistered(token: String?) {
         for delegate in delegates {
-            delegate.onNotificationTokenRegistered(token: token)
+            if let myDelegate = delegate as? NotificationTokenRegisteredDelegate {
+                myDelegate.onNotificationTokenRegistered(token: token)
+            }
         }
     }
     
     func invokeOnReceivedCelebration(collectGroupId: String) {
         for delegate in delegates {
-            delegate.onReceivedCelebration(collectGroupId: collectGroupId)
+            if let myDelegate = delegate as? NotificationReceivedCelebrationDelegate {
+                myDelegate.onReceivedCelebration(collectGroupId: collectGroupId)
+            }
         }
     }
     func invokeOnReceiveRecurringDonationTurnCreated(recurringDonationId: String) {
         for delegate in delegates {
-            delegate.onReceivedRecurringDonationTurnCreated(recurringDonationId: recurringDonationId)
+            if let myDelegate = delegate as? NotificationRecurringDonationTurnCreatedDelegate {
+                myDelegate.onReceivedRecurringDonationTurnCreated(recurringDonationId: recurringDonationId)
+            }
         }
     }
     func start() -> Void {
