@@ -41,7 +41,14 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         
         // Set title
         navBar.title = "TitleRecurringGifts".localized
-        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: (self.navigationController?.navigationBar.frame.width)! , height: (self.navigationController?.navigationBar.frame.height)!))
+        titleLabel.text = navBar.title
+        titleLabel.font = UIFont(name: "Avenir-Heavy", size: 18)
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.textColor = #colorLiteral(red: 0.1803921569, green: 0.1607843137, blue: 0.3411764706, alpha: 1)
+        titleLabel.textAlignment = .center
+        titleLabel.baselineAdjustment = .alignCenters
+        navBar.titleView = titleLabel
         setupInfoViewContainer()
         
     }
@@ -56,7 +63,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
         
         do {
             if let recurringDonation = recurringDonation {
-                navBar.title = recurringDonation.collectGroupName
+                (navBar.titleView as! UILabel).text = recurringDonation.collectGroupName
                 
                 let recurringDonationTurns: [Int] = try self.mediater.send(request: GetRecurringDonationTurnsQuery(id: recurringDonation.id))
                 var donationDetails: [DonationResponseModel] = []
