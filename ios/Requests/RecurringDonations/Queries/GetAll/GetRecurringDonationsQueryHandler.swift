@@ -19,17 +19,14 @@ class GetRecurringDonationsQueryHandler : RequestHandlerProtocol {
             var models: [RecurringRuleViewModel] = []
             if let response = response, response.isSuccess {
                 if let body = response.text {
-                    do {
-                        let decoder = JSONDecoder()
-                        let parsedDataResult = try decoder.decode(RecurringRulesResponseModel.self, from: Data(body.utf8))
+                    let decoder = JSONDecoder()
+                    if let parsedDataResult = try? decoder.decode(RecurringRulesResponseModel.self, from: Data(body.utf8)) {
                         models = parsedDataResult.results.filter({ (model) -> Bool in
                             model.currentState == RecurringDonationState.Active
                         })
-                    } catch {
-                        try? completion(models as! R.TResponse)
                     }
-                    try? completion(models as! R.TResponse)
                 }
+                try? completion(models as! R.TResponse)
             } else {
                 try? completion(models as! R.TResponse)
             }
