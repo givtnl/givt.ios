@@ -13,7 +13,7 @@ import AppCenterAnalytics
 import SVProgressHUD
 import Mixpanel
 
-class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate, NotificationManagerDelegate {
+class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate, NotificationRecurringDonationTurnCreatedDelegate {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
     private var log: LogService = LogService.shared
@@ -601,12 +601,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
             calcPresetsStackView.insertArrangedSubview(viewPresets, at: 0)
             viewPresets.isHidden = false
         }
-    }
-    
-    func onNotificationTokenRegistered(token: String?) {
-    }
-    
-    func onReceivedCelebration(collectGroupId: String) {
     }
     
     func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {
