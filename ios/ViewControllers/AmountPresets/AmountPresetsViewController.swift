@@ -96,8 +96,8 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             if let value = getDecimalValue(text: tf!.text!) {
                 tf!.text = fmt.string(from: value as NSNumber)
                 let isBelowAmountLimit = value <= Decimal(amountLimit)
-                let isHigherThan50Cent = value >= 0.5
-                tf!.unfocus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr50C", comment: ""))
+                let isHigherThan50Cent = value >= 0.25
+                tf!.unfocus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr25C", comment: ""))
             } else {
                 tf!.unfocus(isCorrect: false, note: NSLocalizedString("AmountPresetsErrEmpty", comment: ""))
             }
@@ -154,8 +154,8 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             currentTextField = tf
             if let value = getDecimalValue(text: tf.text!) {
                 let isBelowAmountLimit = value <= Decimal(amountLimit)
-                let isHigherThan50Cent = value >= 0.5
-                tf.focus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr50C", comment: ""))
+                let isHigherThan25Cent = value >= 0.25
+                tf.focus(isCorrect: isBelowAmountLimit && isHigherThan25Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr25C", comment: ""))
             } else {
                 tf.focus(isCorrect: false, note: NSLocalizedString("AmountPresetsErrEmpty", comment: ""))
             }
@@ -168,8 +168,8 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             if let value = getDecimalValue(text: tf.text!) {
                 tf.text = fmt.string(from: value as NSNumber)
                 let isBelowAmountLimit = value <= Decimal(amountLimit)
-                let isHigherThan50Cent = value >= 0.5
-                tf.unfocus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr50C", comment: ""))
+                let isHigherThan25Cent = value >= 0.25
+                tf.unfocus(isCorrect: isBelowAmountLimit && isHigherThan25Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr25C", comment: ""))
             } else {
                 tf.unfocus(isCorrect: false, note: NSLocalizedString("AmountPresetsErrEmpty", comment: ""))
             }
@@ -191,8 +191,8 @@ class AmountPresetsViewController: UIViewController, UITextFieldDelegate {
             if let text = tf.text {
                 if let value = getDecimalValue(text: text) {
                     let isBelowAmountLimit = value <= Decimal(amountLimit)
-                    let isHigherThan50Cent = value >= 0.5
-                    tf.focus(isCorrect: isBelowAmountLimit && isHigherThan50Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr50C", comment: ""))
+                    let isHigherThan25Cent = value >= 0.25
+                    tf.focus(isCorrect: isBelowAmountLimit && isHigherThan25Cent, note: !isBelowAmountLimit ? NSLocalizedString("AmountPresetsErrGivingLimit", comment: "") : NSLocalizedString("AmountPresetsErr25C", comment: ""))
                 } else {
                     tf.focus(isCorrect: false, note: NSLocalizedString("AmountPresetsErrEmpty", comment: ""))
                 }

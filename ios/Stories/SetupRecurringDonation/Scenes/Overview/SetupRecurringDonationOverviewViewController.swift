@@ -32,7 +32,14 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     
     var recurringRules:[RecurringRuleViewModel] = []
-    var frequencies = ["SetupRecurringGiftWeek".localized, "SetupRecurringGiftMonth".localized, "SetupRecurringGiftQuarter".localized, "SetupRecurringGiftHalfYear".localized, "SetupRecurringGiftYear".localized]
+    
+    var frequencies = [
+        "SetupRecurringGiftWeek".localized,
+        "SetupRecurringGiftMonth".localized,
+        "SetupRecurringGiftQuarter".localized,
+        "SetupRecurringGiftHalfYear".localized,
+        "SetupRecurringGiftYear".localized
+    ]
     var selectedIndex: Int? = nil
     
     private var markedItem: RecurringRuleViewModel?
@@ -41,7 +48,6 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(recurringDonationCreated), name: .GivtCreatedRecurringDonation, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(recurringDonationCreatedDuplicate), name: .GivtCreatedRecurringDonationDuplicate, object: nil)
         
         navBar.title = "TitleRecurringGifts".localized
         createButton.label1.text = "RecurringGiftsSetupCreate".localized
@@ -73,27 +79,20 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
         }
     }
     
-    @objc func recurringDonationCreatedDuplicate(notification: NSNotification) {
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "CancelRecurringDonationFailedDuplicate".localized, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            }))
-            self.present(alert, animated: true, completion:  {})
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
-        if(reloadData) {
+        if reloadData {
             tableView.isHidden = true
             imageView.isHidden = false
             emptyListLabel.text = "EmptyRecurringDonationList".localized
             
-            SVProgressHUD.show()
+            if !SVProgressHUD.isVisible() {
+                SVProgressHUD.show()
+            }
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if(!reloadData) { return }
+        if !reloadData { return }
         
         do {
             // load collectgroups with query
@@ -125,8 +124,6 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
         }
         reloadData = true;
         SVProgressHUD.dismiss()
-        
-        
     }
     
     @IBAction func createRecurringDonationButtonTapped(_ sender: Any) {
@@ -144,7 +141,7 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     }
 }
 
-extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDelegate {
+extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDelegate, RecurringRuleListDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_DONATION_STOP")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_DONATION_STOP")
@@ -195,7 +192,9 @@ extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDeleg
             self.present(alert, animated: true, completion:  {})
         }
     }
-    
+    func recurringRuleListTapped(recurringRuleCell: RecurringRuleTableCell) {
+        try? mediater.send(request: OpenRecurringDonationOverviewListRoute(recurringDonation: recurringRuleCell.viewModel!), withContext: self)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.recurringRules.count
     }
@@ -217,7 +216,9 @@ extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDeleg
             print(error)
         }
         cell.viewModel = rule
-        cell.delegate = self
+        
+        cell.cancelDelegate = self
+        cell.listDelegate = self
         
         return cell
     }

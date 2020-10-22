@@ -221,7 +221,7 @@ final class GivtManager: NSObject {
         print(date)
         var transactions = [Transaction]()
         for (index, value) in amounts.enumerated() {
-            if value >= 0.50 {
+            if value >= 0.25 {
                 print(value)
                 let newTransaction = Transaction(amount: value, beaconId: antennaID, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
                 transactions.append(newTransaction)
@@ -276,7 +276,7 @@ final class GivtManager: NSObject {
             print(date)
             var transactions = [Transaction]()
             for (index, value) in amounts.enumerated() {
-                if value >= 0.50 {
+                if value >= 0.25 {
                     print(value)
                     let newTransaction = Transaction(amount: value, beaconId: bestBeacon.beaconId!, collectId: String(index + 1), timeStamp: date, userId: (UserDefaults.standard.userExt?.guid)!)
                     transactions.append(newTransaction)

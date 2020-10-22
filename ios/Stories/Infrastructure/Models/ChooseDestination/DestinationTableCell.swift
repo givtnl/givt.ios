@@ -20,8 +20,13 @@ internal final class DestinationTableCell : UITableViewCell {
     public var iconRight: String = "" {
         didSet {
             iconLabelRight.text = iconRight
-            iconLabelRight.isHidden = true
-            if (iconRight != "") {
+            if iconRight.isEmpty {
+                // we put default settings here because it's a reusable cell
+                // we should, however, have created a special cell for the right icon "missing organisation" item
+                iconLabelRight.isHidden = true
+                collectGroupLabel.font = UIFont(name: "Avenir-Medium", size: collectGroupLabel.font.pointSize)
+            }
+            else {
                 iconLabelRight.isHidden = false
                 collectGroupLabel.font = UIFont(name: "Avenir-MediumOblique", size: collectGroupLabel.font.pointSize)
             }
@@ -57,12 +62,6 @@ internal final class DestinationTableCell : UITableViewCell {
     @IBOutlet var collectGroupLabel: UILabel!
     @IBOutlet var iconLabelRight: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        selectionStyle = .none
-        iconLabelRight.isHidden = true
-    }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         if selected {

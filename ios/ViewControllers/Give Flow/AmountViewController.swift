@@ -322,7 +322,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                 return
             }
 
-            if parsedDecimal  > 0 && parsedDecimal < 0.50 {
+            if parsedDecimal  > 0 && parsedDecimal < 0.25 {
                 setActiveCollection(collectionViews[index])
                 showAmountTooLow()
                 return
@@ -568,8 +568,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     func checkAmount(collection: CollectionView) {
         let parsedDecimal = Decimal(string: (collection.amountLabel.text!.replacingOccurrences(of: ",", with: ".")))!
-        collection.amountLabel.textColor = parsedDecimal > Decimal(amountLimit) || (parsedDecimal > 0 && parsedDecimal < 0.50) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
-        collection.isValid = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= 0.50 || parsedDecimal == 0
+        collection.amountLabel.textColor = parsedDecimal > Decimal(amountLimit) || (parsedDecimal > 0 && parsedDecimal < 0.25) ? UIColor.init(rgb: 0xb91a24).withAlphaComponent(0.5) : UIColor.init(rgb: 0xD2D1D9)
+        collection.isValid = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= 0.25 || parsedDecimal == 0
         collection.activeMarker.backgroundColor = collection.isActive ? collection.isValid ? #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5529411765, alpha: 1) : #colorLiteral(red: 0.737254902, green: 0.09803921569, blue: 0.1137254902, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
     }
     func checkAmounts() {

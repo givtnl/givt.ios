@@ -13,7 +13,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "SlimPayInformation" = "We want your Givt experience to be as smooth as possible.";
 "SavingSettings" = "Sit back and relax,\nwe are saving your settings.";
 "Continue" = "Continue";
-"GivtMinimumAmountEuro" = "0.50 euro";
+"GivtMinimumAmountEuro" = "0.25 euro";
 "SlimPayInfoDetail" = "Givt works together with SlimPay for executing the transactions. SlimPay is specialised in handling mandates and automatic money transfers on digital platforms. SlimPay executes these orders for Givt at the lowest rates on this market and at a high speed.\n\nSlimPay is an ideal partner for Givt because they make giving without cash very easy and safe. As a payment company, they are supervised by the Nederlandsche Bank and other European national banks.\n\nThe money will be collected in a SlimPay account. \nGivt will ensure that the money is distributed correctly.";
 "SlimPayInfoDetailTitle" = "What is SlimPay?";
 "ContinueRegistration" = "Your user account was already\ncreated, but it was impossible\nto finalise the registration.\n\nWe would love for you to use\nGivt, so we ask you to login\nto complete the registration.";
@@ -256,9 +256,11 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountPresetsBody" = "Set your amount presets below.";
 "AmountPresetsResetAll" = "Reset values";
 "AmountPresetsErrGivingLimit" = "The amount is higher than your maximum amount";
-"AmountPresetsErr50C" = "The amount has to be at least 0.50";
+
+/*Fuzzy*/
+"AmountPresetsErr25C" = "The amount has to be at least 0.25";
 "AmountPresetsErrEmpty" = "Enter an amount";
-"GivtMinimumAmountPond" = "£0.50";
+"GivtMinimumAmountPond" = "£0.25";
 "AlertBACSMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through a SEPA mandate (€), we need your IBAN for that. If you prefer to use BACS (£), we need your Sort Code and Account Number.";
 "AlertSEPAMessage" = "Because you indicated {0} as country choice, we assume that you prefer to give through BACS Direct Debit (£), we need your Sort Code and Account Number for that. If you prefer to use SEPA (€), we need your IBAN.";
 "Important" = "Important";
@@ -1002,3 +1004,12 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Fuzzy*/
 "Feature_RecurringDonations_Notification" = "Hi! Would you also like to set up a recurring donation with this app? Take a quick look at what we have built.";
+"SetupRecurringDonationFailedDuplicate" = "The recurring donation was not set up successfully. You have already made a donation to this organisation with the same repeating period.";
+"SetupRecurringDonationFailedDuplicateTitle" = "Duplicate donation";
+
+/*Fuzzy*/
+"GoToListWithRecurringDonationDonations" = "Overview";
+"RecurringDonationsEmptyDetailOverview" = "This is where you'll find information about your donations, but the first donation still has to be collected";
+"RecurringDonationSoonNotification" = "Soon a donation will be done to {0}.";
+"RecurringDonationFutureDetailSameYear" = "Upcoming donation";
+"RecurringDonationFutureDetailDifferentYear" = "Upcoming donation in";
