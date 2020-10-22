@@ -144,7 +144,11 @@ class EventViewController: BaseScanViewController {
             {
             case .enabled:
                 self.bluetoothAlert?.dismiss(animated: true, completion: nil)
-                self.givtManager.startLookingForGivtLocations()
+                if AppServices.isLocationServicesEnabled() && AppServices.isLocationPermissionDetermined() && !AppServices.isLocationPermissionGranted() {
+                    self.showLocationMessage()
+                } else {
+                    self.givtManager.startLookingForGivtLocations()
+                }
             case .unauthorized:
                 self.showBluetoothMessage(type: .unauthorized) { self.shouldShowAfterBluetoothAlert() }
             default:
