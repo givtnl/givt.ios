@@ -23,8 +23,12 @@ class OpenRecurringRuleDetailFromNotificationRouteHandler : RequestHandlerWithCo
                     context.present(alert, animated: true, completion:  {})
                 }
             } else {
-                let navController = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: "SetupRecurringDonationNavigationController") as! SetupRecurringDonationNavigationController
-                context.navigationController?.pushViewController(navController, animated: true)
+                if let vc = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController() {
+                    vc.modalPresentationStyle = .fullScreen
+                    DispatchQueue.main.async {
+                        context.present(vc, animated: false, completion: nil)
+                    }
+                }
 //                let overview = navController.children.first as! SetupRecurringDonationOverviewViewController
 //                overview.reloadData = true
 //                let detail = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: "RecurringDonationTurnsOverviewController") as! RecurringDonationTurnsOverviewController
