@@ -82,6 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
                         let overview = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: "SetupRecurringDonationOverviewViewController") as! SetupRecurringDonationOverviewViewController
                         let detail = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: "RecurringDonationTurnsOverviewController") as! RecurringDonationTurnsOverviewController
                         
+                        guard let recurringDonations: [RecurringRuleViewModel] = try? self.mediater.send(request: GetRecurringDonationsQuery()) else { return }
+                        guard let recurringDonation: RecurringRuleViewModel = recurringDonations.first(where: { (item) -> Bool in item.id == recurringDonationId }) else { return }
+                        detail.recurringDonation = recurringDonation
+                        overview.recurringRules = recurringDonations
+                        
                         vc.setViewControllers([main, overview, detail], animated: true)
                     }
                 }
