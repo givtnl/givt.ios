@@ -12,14 +12,17 @@ import SVProgressHUD
 
 class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    //input variables
+    var recurringDonationId: String!
+    var comingFromNotification = false
+    
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     private var log = LogService.shared
     
     private var recurringDonation: RecurringRuleViewModel? = nil
-    var recurringDonationId: String!
-    var donations: [RecurringDonationTurnViewModel] = []
-    var donationsByYear: [Int: [RecurringDonationTurnViewModel]] = [:]
-    var donationsByYearSorted: [Dictionary<Int, [RecurringDonationTurnViewModel]>.Element]? = nil
+    internal var donations: [RecurringDonationTurnViewModel] = []
+    internal var donationsByYear: [Int: [RecurringDonationTurnViewModel]] = [:]
+    internal var donationsByYearSorted: [Dictionary<Int, [RecurringDonationTurnViewModel]>.Element]? = nil
     
     @IBOutlet var givyContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -119,8 +122,9 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     }
     
     @IBAction override func backPressed(_ sender: Any) {
-        try? mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
+        try? mediater.send(request: BackToRecurringDonationOverviewRoute(reloadData: comingFromNotification), withContext: self)
     }
+    
     @IBAction func openInfo(_ sender: Any) {
         UIView.animate(withDuration: 1, animations: {
             self.legendOverlay.frame.origin.y = 0
@@ -128,6 +132,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
             self.view.layoutIfNeeded()
         })
     }
+    
     @objc func closeInfo() {
         UIView.animate(withDuration: 1, animations: {
             self.legendOverlay.frame.origin.y = -340

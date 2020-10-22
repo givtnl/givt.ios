@@ -17,7 +17,7 @@ class BackToRecurringDonationOverviewRouteHandler : RequestHandlerWithContextPro
             let lastVcIndex = context.navigationController?.viewControllers.lastIndex(of: lastVc),
             lastVcIndex > 0,
             let vc = context.navigationController?.viewControllers[lastVcIndex-1] as? SetupRecurringDonationOverviewViewController {
-            vc.reloadData = false;
+            vc.reloadData = (request as! BackToRecurringDonationOverviewRoute).reloadData;
             validVc = vc
         }
         
