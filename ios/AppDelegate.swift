@@ -77,7 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
                     .first(where: { (child) -> Bool in child is MainNavigationController })?.children
                     .first(where: { (child) -> Bool in child is AmountViewController }) else { return }
             
-            try? self.mediater.send(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: amountViewController)
+            try? self.mediater.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: amountViewController)
+            { }
         }
     }
     

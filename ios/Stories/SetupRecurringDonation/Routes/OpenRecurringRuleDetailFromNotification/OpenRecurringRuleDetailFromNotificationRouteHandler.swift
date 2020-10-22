@@ -23,18 +23,16 @@ class OpenRecurringRuleDetailFromNotificationRouteHandler : RequestHandlerWithCo
                     context.present(alert, animated: true, completion:  {})
                 }
             } else {
-                if let vc = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController() {
-                    vc.modalPresentationStyle = .fullScreen
-                    DispatchQueue.main.async {
-                        context.present(vc, animated: false, completion: nil)
-                    }
+                let recurringDonationNav = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController() as! SetupRecurringDonationNavigationController
+                let overview = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: String(describing: SetupRecurringDonationOverviewViewController.self)) as! SetupRecurringDonationOverviewViewController
+                let detail = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: String(describing: RecurringDonationTurnsOverviewController.self)) as! RecurringDonationTurnsOverviewController
+                detail.recurringDonationId = (request as! OpenRecurringRuleDetailFromNotificationRoute).recurringDonationId
+                detail.comingFromNotification = true
+                recurringDonationNav.modalPresentationStyle = .fullScreen
+                recurringDonationNav.viewControllers = [overview, detail]
+                DispatchQueue.main.async {
+                    context.present(recurringDonationNav, animated: false, completion: nil)
                 }
-//                let overview = navController.children.first as! SetupRecurringDonationOverviewViewController
-//                overview.reloadData = true
-//                let detail = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: "RecurringDonationTurnsOverviewController") as! RecurringDonationTurnsOverviewController
-//                detail.recurringDonationId = (request as! OpenRecurringRuleDetailFromNotificationRoute).recurringDonationId
-//
-//                navController.pushViewController(detail, animated: true)
             }
         }
     }

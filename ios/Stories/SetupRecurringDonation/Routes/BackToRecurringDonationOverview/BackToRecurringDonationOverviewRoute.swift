@@ -9,5 +9,8 @@
 import Foundation
 
 class BackToRecurringDonationOverviewRoute : NoResponseRequest {
-    
+    var reloadData = false
+    init(reloadData: Bool = false) {
+        self.reloadData = reloadData
+    }
 }
