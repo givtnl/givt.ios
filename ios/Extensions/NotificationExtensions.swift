@@ -19,5 +19,4 @@ extension Notification.Name {
     public static let GivtDidFindBeaconFarAway = Notification.Name("GivtDidFindBeaconFarAway")
     
     public static let GivtCreatedRecurringDonation = Notification.Name("GivtCreatedRecurringDonation")
-    public static let GivtCreatedRecurringDonationDuplicate = Notification.Name("GivtCreatedRecurringDonationDuplicate")
 }

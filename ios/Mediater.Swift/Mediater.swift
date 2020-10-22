@@ -36,6 +36,9 @@ final class Mediater : MediaterProtocol {
             semaphore.signal()
         }
         semaphore.wait()
+        if response is ()? {
+            return () as! R.TResponse
+        }
         if response == nil {
             throw MediaterError.handlerNotFound
         }

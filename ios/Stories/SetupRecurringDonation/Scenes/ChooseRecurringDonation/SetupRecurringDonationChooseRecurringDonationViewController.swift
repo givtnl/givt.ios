@@ -139,8 +139,17 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
             } else {
                 do {
                     try self.mediater.sendAsync(request: command) { recurringDonationMade in
-                        if !recurringDonationMade {
-                            self.showSetupRecurringDonationFailed()
+                        if !recurringDonationMade.result {
+                            if recurringDonationMade.error == .duplicate {
+                                DispatchQueue.main.async {
+                                    SVProgressHUD.dismiss()
+                                    let alert = UIAlertController(title: "SetupRecurringDonationFailedDuplicateTitle".localized, message: "SetupRecurringDonationFailedDuplicate".localized, preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in }))
+                                    self.present(alert, animated: true, completion:  {})
+                                }
+                            } else {
+                                self.showSetupRecurringDonationFailed()
+                            }
                             return
                         }
                         DispatchQueue.main.async {
@@ -157,9 +166,8 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
 
 extension SetupRecurringDonationChooseRecurringDonationViewController : CollectGroupLabelDelegate {
     private func showSetupRecurringDonationFailed() {
-        SVProgressHUD.dismiss()
-        
         DispatchQueue.main.async {
+            SVProgressHUD.dismiss()
             let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "SetupRecurringDonationFailed".localized, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
             }))
@@ -209,7 +217,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     private func ensureButtonHasCorrectState() {
         let amount = amountView.amount
         let endsAfterTurns = Int(occurrencesTextField.text!) ?? 0
-        createSubcriptionButton.isEnabled = amount >= 0.5
+        createSubcriptionButton.isEnabled = amount >= 0.25
             && amount <= 99999
             && endsAfterTurns >= 1
             && endsAfterTurns <= 999
@@ -284,7 +292,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     }
     
     @objc func handleAmountEditingChanged() {
-        if amountView.amount >= 0.5 && amountView.amount <= 99999 {
+        if amountView.amount >= 0.25 && amountView.amount <= 99999 {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
         } else {
             amountView.bottomBorderColor = ColorHelper.GivtRed
@@ -300,7 +308,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
         
-        if amountView.amount > 0 && amountView.amount < 0.5 {
+        if amountView.amount > 0 && amountView.amount < 0.25 {
             showAmountTooLow()
         } else if amountView.amount > 99999 {
             displayAmountTooHigh()

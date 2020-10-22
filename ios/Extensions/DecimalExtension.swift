@@ -8,8 +8,18 @@
 
 import Foundation
 
+
 extension Decimal {
+    
     var int: Int {
         return NSDecimalNumber(decimal: self).intValue
+    }
+    
+    var formattedTwoDigits: String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumFractionDigits = 2
+        return numberFormatter.string(for: self)
     }
 }

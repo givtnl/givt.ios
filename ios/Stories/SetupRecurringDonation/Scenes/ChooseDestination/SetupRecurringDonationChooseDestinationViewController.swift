@@ -49,7 +49,7 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     //MARK: table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let destination = filteredDestinations[sections[indexPath.section].index + indexPath.row]
-        let destinationCell = tableView.dequeueReusableCell(withIdentifier: String(describing: DestinationTableCell.self), for: indexPath) as! DestinationTableCell
+        let destinationCell = (tableView.dequeueReusableCell(withIdentifier: String(describing: DestinationTableCell.self), for: indexPath) as! DestinationTableCell)
         destinationCell.name = destination.name
         destinationCell.type = destination.type
         destinationCell.iconRight = destination.iconRight

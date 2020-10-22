@@ -1,30 +1,30 @@
 //
-//  GetRecurringDonationsQueryHandler.swift
+//  GetDonationsFromRecurringDonationQueryHandler.swift
 //  ios
 //
-//  Created by Jonas Brabant on 29/08/2020.
+//  Created by Mike Pattyn on 13/10/2020.
 //  Copyright © 2020 Givt. All rights reserved.
 //
-
 import Foundation
 import CoreData
 import UIKit
 
-class GetRecurringDonationsQueryHandler : RequestHandlerProtocol {
+class GetRecurringDonationTurnsQueryHandler : RequestHandlerProtocol {
     private var client = APIClient.cloud
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
+        let query = request as! GetRecurringDonationTurnsQuery
         
-        client.get(url: "/recurringdonations", data: [:]) { (response) in
-            var models: [RecurringRuleViewModel] = []
+        client.get(url: "/recurringdonations/"+query.id+"/donations", data: [:]) { (response) in
+            var models: [Int] = []
             if let response = response, response.isSuccess {
                 if let body = response.text {
                     do {
                         let decoder = JSONDecoder()
-                        let parsedDataResult = try decoder.decode(RecurringRulesResponseModel.self, from: Data(body.utf8))
-                        models = parsedDataResult.results.filter({ (model) -> Bool in
-                            model.currentState == RecurringDonationState.Active
-                        })
+                        let parsedDataResult = try decoder.decode(RecurringDonationTurnsResponseModel.self, from: Data(body.utf8))
+                        models = (parsedDataResult.results.sorted(by: { (first, second) -> Bool in
+                            return first.confirmationDateTime < second.confirmationDateTime
+                        })).map {$0.donationId}
                     } catch {
                         try? completion(models as! R.TResponse)
                     }
@@ -37,6 +37,6 @@ class GetRecurringDonationsQueryHandler : RequestHandlerProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is GetRecurringDonationsQuery
+        return request is GetRecurringDonationTurnsQuery
     }
 }

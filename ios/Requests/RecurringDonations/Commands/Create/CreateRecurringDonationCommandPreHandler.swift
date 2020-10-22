@@ -10,13 +10,6 @@ import Foundation
 import UIKit
 
 class CreateRecurringDonationCommandPreHandler: RequestPreProcessorProtocol {
-    private let frequencys: Array<Array<Any>> =
-    [[Frequency.Weekly, "SetupRecurringGiftWeek".localized]
-        , [Frequency.Monthly, "SetupRecurringGiftMonth".localized]
-        , [Frequency.ThreeMonthly, "SetupRecurringGiftQuarter".localized]
-        , [Frequency.SixMonthly, "SetupRecurringGiftHalfYear".localized]
-        , [Frequency.Yearly, "SetupRecurringGiftYear".localized]]
-    
     func handle<R>(request: R, completion: @escaping (R) throws -> Void) throws where R : RequestProtocol {
         let request = request as! CreateRecurringDonationCommand
         
@@ -76,7 +69,7 @@ class CreateRecurringDonationCommandPreHandler: RequestPreProcessorProtocol {
             case Frequency.SixMonthly:
                 cronExpression = "0 0 \(dayOfMonth) \(getFirstPartHalfYearlyCronMonth(month: month))/6 *"
             case Frequency.Yearly:
-                cronExpression = "0 0 \(dayOfMonth) \(month+1)/12 *"
+                cronExpression = "0 0 \(dayOfMonth) \(month) *"
         }
         return cronExpression
     }

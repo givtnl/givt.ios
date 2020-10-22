@@ -11,9 +11,13 @@ import Foundation
 protocol RecurringRuleCancelDelegate {
     func recurringRuleCancelTapped(recurringRuleCell: RecurringRuleTableCell) -> Void
 }
+protocol RecurringRuleListDelegate {
+    func recurringRuleListTapped(recurringRuleCell: RecurringRuleTableCell) -> Void
+}
 
 internal final class RecurringRuleTableCell : UITableViewCell {
-    var delegate: RecurringRuleCancelDelegate? = nil
+    var cancelDelegate: RecurringRuleCancelDelegate? = nil
+    var listDelegate: RecurringRuleListDelegate? = nil
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cronTextLabel: UILabel!
@@ -26,9 +30,12 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var ruleStackView: UIStackView!
     @IBOutlet weak var horiStackView: UIStackView!
     @IBOutlet weak var stackViewRuleView: UIView!
+    
     @IBOutlet weak var actionView: UIView!
+    @IBOutlet weak var stopView: UIView!
     @IBOutlet weak var stopLabel: UILabel!
-    @IBOutlet var stopView: UIView!
+    @IBOutlet weak var listView: UIView!
+    @IBOutlet weak var listLabel: UILabel!
     
     var recurringDonationId: String?
     var rowIndexPath: IndexPath?
@@ -74,7 +81,7 @@ internal final class RecurringRuleTableCell : UITableViewCell {
                 let endDate:String = formatter.string(from: data.getEndDateFromRule())
                 endDateLabel.text = "RecurringDonationStops".localized.replacingOccurrences(of: "{0}", with: endDate)
                 stopLabel.text = "CancelRecurringDonation".localized
-                stopLabel.textColor = ColorHelper.GivtRed
+                listLabel.text = "GoToListWithRecurringDonationDonations".localized
                 recurringDonationId = data.id
                 rowIndexPath = data.indexPath
                 if let rowIndex = rowIndexPath?.row {
@@ -100,8 +107,10 @@ internal final class RecurringRuleTableCell : UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap))
-        stopView.addGestureRecognizer(tap)
+        let stopTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleStopTap))
+        stopView.addGestureRecognizer(stopTapGesture)
+        let listTapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleListTap))
+        listView.addGestureRecognizer(listTapGesture)
     }
     
     override func layoutSubviews() {
@@ -111,11 +120,14 @@ internal final class RecurringRuleTableCell : UITableViewCell {
         logoImageView.contentMode = .scaleAspectFill
         logoContainerView.layer.cornerRadius = 4
     }
-    @objc func handleTap(sender: UITapGestureRecognizer) {
-        if let delegate = self.delegate {
+    @objc func handleStopTap(sender: UITapGestureRecognizer) {
+        if let delegate = self.cancelDelegate {
             delegate.recurringRuleCancelTapped(recurringRuleCell: self)
         }
     }
-    
-    
+    @objc func handleListTap(sender: UITapGestureRecognizer) {
+        if let delegate = self.listDelegate {
+            delegate.recurringRuleListTapped(recurringRuleCell: self)
+        }
+    }
 }
