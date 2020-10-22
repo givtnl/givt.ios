@@ -73,24 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
     func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {
         DispatchQueue.main.async {
             guard let window = UIApplication.shared.keyWindow else { return }
+            guard let amountViewController = window.rootViewController?.children
+                    .first(where: { (child) -> Bool in child is MainNavigationController })?.children
+                    .first(where: { (child) -> Bool in child is AmountViewController }) else { return }
             
-            if let childViewControllers = window.rootViewController?.children {
-                for childViewController in childViewControllers {
-                    if let vc = childViewController as? MainNavigationController {
-                        
-                        let main = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
-                        let overview = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: "SetupRecurringDonationOverviewViewController") as! SetupRecurringDonationOverviewViewController
-                        let detail = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: "RecurringDonationTurnsOverviewController") as! RecurringDonationTurnsOverviewController
-                        
-                        guard let recurringDonations: [RecurringRuleViewModel] = try? self.mediater.send(request: GetRecurringDonationsQuery()) else { return }
-                        guard let recurringDonation: RecurringRuleViewModel = recurringDonations.first(where: { (item) -> Bool in item.id == recurringDonationId }) else { return }
-                        detail.recurringDonation = recurringDonation
-                        overview.recurringRules = recurringDonations
-                        
-                        vc.setViewControllers([main, overview, detail], animated: true)
-                    }
-                }
-            }
+            try? self.mediater.send(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: amountViewController)
         }
     }
     
@@ -299,7 +286,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         Mediater.shared.registerHandler(handler: DismissPushNotificationViewRouteHandler())
         Mediater.shared.registerHandler(handler: GoToAboutViewRouteHandler())
         Mediater.shared.registerHandler(handler: OpenRecurringDonationOverviewListRouteHandler())
-
+        Mediater.shared.registerHandler(handler: OpenRecurringRuleDetailFromNotificationRouteHandler())
+        
         //-- INFRA
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
 

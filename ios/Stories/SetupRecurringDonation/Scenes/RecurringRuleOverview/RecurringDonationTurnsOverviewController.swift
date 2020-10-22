@@ -15,7 +15,8 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     private var log = LogService.shared
     
-    var recurringDonation: RecurringRuleViewModel?
+    private var recurringDonation: RecurringRuleViewModel? = nil
+    var recurringDonationId: String!
     var donations: [RecurringDonationTurnViewModel] = []
     var donationsByYear: [Int: [RecurringDonationTurnViewModel]] = [:]
     var donationsByYearSorted: [Dictionary<Int, [RecurringDonationTurnViewModel]>.Element]? = nil
@@ -62,6 +63,10 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     override func viewDidAppear(_ animated: Bool) {
         
         do {
+            recurringDonation = try? mediater.send(request: GetRecurringDonationsQuery()).first(where: { (recurringDonation) -> Bool in
+                recurringDonation.id == recurringDonationId
+            })
+            
             if let recurringDonation = recurringDonation {
                 (navBar.titleView as! UILabel).text = recurringDonation.collectGroupName
                 
