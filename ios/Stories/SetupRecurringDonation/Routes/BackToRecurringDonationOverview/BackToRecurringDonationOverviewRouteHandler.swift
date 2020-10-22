@@ -12,13 +12,21 @@ import Foundation
 class BackToRecurringDonationOverviewRouteHandler : RequestHandlerWithContextProtocol {
    
     public func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
+        var validVc: SetupRecurringDonationOverviewViewController? = nil
         if let lastVc = context.navigationController?.viewControllers.last,
             let lastVcIndex = context.navigationController?.viewControllers.lastIndex(of: lastVc),
             lastVcIndex > 0,
             let vc = context.navigationController?.viewControllers[lastVcIndex-1] as? SetupRecurringDonationOverviewViewController {
             vc.reloadData = false;
+            validVc = vc
         }
-        context.navigationController?.popToRootViewController(animated: true)
+        
+        if let vc = validVc {
+            context.navigationController?.popToViewController(vc, animated: true)
+        }
+        else {
+            context.navigationController?.popToRootViewController(animated: true)
+        }
         try completion(() as! R.TResponse)
     }
     

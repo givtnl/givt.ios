@@ -16,7 +16,9 @@ import UserNotifications
 import Mixpanel
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDonationTurnCreatedDelegate {
+    
+    
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
@@ -27,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var coreDataContext = CoreDataContext()
     
+    private var mediater: MediaterWithContextProtocol = Mediater.shared
+
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
@@ -48,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NotificationManager.shared.start()
+        NotificationManager.shared.delegates.append(self)
         
         handleOldBeaconList()
         checkIfTempUser()
@@ -63,6 +68,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mixpanel.flushInterval = AppConstants.mixpanelConfig.flushInterval
 
         return true
+    }
+
+    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {
+        DispatchQueue.main.async {
+            guard let window = UIApplication.shared.keyWindow else { return }
+            
+            if let childViewControllers = window.rootViewController?.children {
+                for childViewController in childViewControllers {
+                    if let vc = childViewController as? MainNavigationController {
+                        
+                        let main = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
+                        let overview = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: "SetupRecurringDonationOverviewViewController") as! SetupRecurringDonationOverviewViewController
+                        let detail = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: "RecurringDonationTurnsOverviewController") as! RecurringDonationTurnsOverviewController
+                        
+                        vc.setViewControllers([main, overview, detail], animated: true)
+                    }
+                }
+            }
+        }
     }
     
     func doMagicForPresets() {
