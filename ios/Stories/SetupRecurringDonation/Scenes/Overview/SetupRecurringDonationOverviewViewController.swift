@@ -64,6 +64,7 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     
     @objc func recurringDonationCreated(notification: NSNotification) {
         try? mediater.sendAsync(request: GetRecurringDonationsQuery()) { response in
+            SVProgressHUD.dismiss()
             self.recurringRules = response
             if var recurringRule = self.recurringRules.first {
                 recurringRule.shouldShowNewItemMarker = true
