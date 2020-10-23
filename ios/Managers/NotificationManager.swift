@@ -63,7 +63,7 @@ final class NotificationManager : NSObject {
     
     func requestAndUpdateTokenIfNeeded(force: Bool = false) {
         areNotificationsEnabled { enabled in
-            if enabled {
+            if enabled == .authorized {
                 if force, let token = UserDefaults.standard.deviceToken {
                     DispatchQueue.global(qos: .background).async {
                         self.updateNotificationId(token: token, force: true)
@@ -78,22 +78,18 @@ final class NotificationManager : NSObject {
         }
     }
     
-    func areNotificationsEnabled(completion: @escaping (Bool) -> Void) {
+    func areNotificationsEnabled(completion: @escaping (NotificationAuthorization) -> Void) {
         if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().getNotificationSettings(){ (setttings) in
-                switch setttings.authorizationStatus{
-                case .authorized:
-                    completion(true)
-                default:
-                    completion(false)
-                }
+            UNUserNotificationCenter.current().getNotificationSettings(){ (settings) in
+                completion(NotificationAuthorization(rawValue: settings.authorizationStatus.rawValue)!)
             }
         } else {
+            
             let notificationDisabled = UIApplication.shared.currentUserNotificationSettings?.types.isEmpty
             if let notificationDisabled = notificationDisabled, !notificationDisabled {
-                completion(true)
+                completion(NotificationAuthorization.authorized)
             } else {
-                completion(false)
+                completion(NotificationAuthorization.denied)
             }
         }
     }
@@ -156,16 +152,18 @@ final class NotificationManager : NSObject {
         } else {
             areNotificationsEnabled { enabled in
                 DispatchQueue.main.async {
-                    if (enabled) {
-                        UIApplication.shared.registerForRemoteNotifications()
-                        completion(enabled)
-                    }
-                    else {
-                        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    switch(enabled) {
+                        case .authorized:
+                            UIApplication.shared.registerForRemoteNotifications()
                             completion(true)
-                            DispatchQueue.main.async { UIApplication.shared.registerForRemoteNotifications() }
-                        })
+                        break
+                        default:
+                            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                                completion(true)
+                                DispatchQueue.main.async { UIApplication.shared.registerForRemoteNotifications() }
+                            })
+                        break
                     }
                 }
             }
@@ -223,6 +221,14 @@ final class NotificationManager : NSObject {
         print(aps)
         completionHandler(.newData)
     }
+}
+
+enum NotificationAuthorization: Int {
+    case notDetermined = 0
+    case denied = 1
+    case authorized = 2
+    case provisional = 3
+    case ephemeral = 4
 }
 
 protocol NotificationManagerDelegate: class {

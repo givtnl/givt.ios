@@ -46,8 +46,8 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationToken
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled
         NotificationManager.shared.areNotificationsEnabled { enabled in
             DispatchQueue.main.async {
-                self.buttonEnablePushNot.isHidden = enabled
-                self.imageFlash.bottomAnchor.constraint(equalTo: self.buttonCancelFlashGivt.topAnchor).isActive = enabled
+                self.buttonEnablePushNot.isHidden = enabled == .authorized
+                self.imageFlash.bottomAnchor.constraint(equalTo: self.buttonCancelFlashGivt.topAnchor).isActive = enabled == .authorized
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()
             }
@@ -65,7 +65,7 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationToken
         NotificationManager.shared.delegates.append(self)
 
         NotificationManager.shared.areNotificationsEnabled { enabled in
-            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled }
+            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled == .authorized }
         }
     }
 
@@ -93,7 +93,7 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationToken
     
     func onNotificationTokenRegistered(token: String?) {
         NotificationManager.shared.areNotificationsEnabled { enabled in
-            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled }
+            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled == .authorized }
         }
     }
     

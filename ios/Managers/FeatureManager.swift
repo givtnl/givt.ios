@@ -80,7 +80,7 @@ class FeatureManager {
                                 let sem = DispatchSemaphore(value: 0)
                                 DispatchQueue.global(qos: .background).async {
                                     NotificationManager.shared.areNotificationsEnabled { enabled in
-                                        if enabled {
+                                        if enabled == .authorized {
                                             retVal = NSLocalizedString("Feature_push_enabled_action", comment: "")
                                         } else {
                                             retVal = NSLocalizedString("Feature_push_notenabled_action", comment: "")
@@ -106,7 +106,7 @@ class FeatureManager {
                                     }
                                 }
                                 NotificationManager.shared.areNotificationsEnabled { enabled in
-                                    if enabled {
+                                    if enabled == .authorized {
                                         DispatchQueue.main.async { context?.dismiss(animated: true) }
                                     } else {
                                         var notifFeature = NotificationFeature(context: context)
