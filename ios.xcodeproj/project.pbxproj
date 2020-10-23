@@ -27,6 +27,7 @@
 		3211FB7124D95C1000351BC4 /* AmountTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3211FB7024D95C1000351BC4 /* AmountTextField.xib */; };
 		3216ED812541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED802541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift */; };
 		3216ED832541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED822541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift */; };
+		3216ED922542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED912542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift */; };
 		322441A0253F62EA00E357D9 /* RecurringDonationTurnsOverviewControllerExension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224419F253F62EA00E357D9 /* RecurringDonationTurnsOverviewControllerExension.swift */; };
 		3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450824DB0206003CF5CF /* ColorHelper.swift */; };
 		324761BE2508BADC002BC37E /* CreateRecurringDonationCommandPostHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761BD2508BADC002BC37E /* CreateRecurringDonationCommandPostHandler.swift */; };
@@ -365,6 +366,7 @@
 		3211FB7024D95C1000351BC4 /* AmountTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountTextField.xib; sourceTree = "<group>"; };
 		3216ED802541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecurringRuleDetailFromNotificationRoute.swift; sourceTree = "<group>"; };
 		3216ED822541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecurringRuleDetailFromNotificationRouteHandler.swift; sourceTree = "<group>"; };
+		3216ED912542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationOverviewViewControllerExtension.swift; sourceTree = "<group>"; };
 		3224419F253F62EA00E357D9 /* RecurringDonationTurnsOverviewControllerExension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationTurnsOverviewControllerExension.swift; sourceTree = "<group>"; };
 		3232450824DB0206003CF5CF /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		324761BD2508BADC002BC37E /* CreateRecurringDonationCommandPostHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandPostHandler.swift; sourceTree = "<group>"; };
@@ -1356,6 +1358,7 @@
 				DFCA4EE32500EF04003D1825 /* Models */,
 				DF1300F824F63EF600EE1785 /* Subviews */,
 				DF1300F624F5603E00EE1785 /* SetupRecurringDonationOverviewViewController.swift */,
+				3216ED912542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -2305,6 +2308,7 @@
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
+				3216ED922542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift in Sources */,
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				DF05015624F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift in Sources */,
