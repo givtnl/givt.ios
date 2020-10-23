@@ -62,8 +62,8 @@ final class NotificationManager : NSObject {
     }
     
     func requestAndUpdateTokenIfNeeded(force: Bool = false) {
-        areNotificationsEnabled { enabled in
-            if enabled == .authorized {
+        getNotificationAuthorizationStatus { status in
+            if status == .authorized {
                 if force, let token = UserDefaults.standard.deviceToken {
                     DispatchQueue.global(qos: .background).async {
                         self.updateNotificationId(token: token, force: true)
@@ -78,7 +78,7 @@ final class NotificationManager : NSObject {
         }
     }
     
-    func areNotificationsEnabled(completion: @escaping (NotificationAuthorization) -> Void) {
+    func getNotificationAuthorizationStatus(completion: @escaping (NotificationAuthorization) -> Void) {
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().getNotificationSettings(){ (settings) in
                 completion(NotificationAuthorization(rawValue: settings.authorizationStatus.rawValue)!)
@@ -150,9 +150,9 @@ final class NotificationManager : NSObject {
                 })
             }
         } else {
-            areNotificationsEnabled { enabled in
+            getNotificationAuthorizationStatus { status in
                 DispatchQueue.main.async {
-                    switch(enabled) {
+                    switch(status) {
                         case .authorized:
                             UIApplication.shared.registerForRemoteNotifications()
                             completion(true)
