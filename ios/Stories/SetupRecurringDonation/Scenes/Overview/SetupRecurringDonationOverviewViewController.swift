@@ -71,7 +71,7 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
                     self.markedItem = recurringRule
                 }
                 NotificationManager.shared.areNotificationsEnabled(completion: { enabled in
-                    if (!enabled) {
+                    if (enabled != NotificationAuthorization.authorized) {
                         DispatchQueue.main.async {
                             try? self.mediater.send(request: GoToPushNotificationViewRoute(), withContext: self)
                         }
