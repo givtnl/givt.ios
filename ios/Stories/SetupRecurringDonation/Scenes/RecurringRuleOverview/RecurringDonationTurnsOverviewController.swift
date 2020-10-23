@@ -71,7 +71,9 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
             })
             
             if let recurringDonation = recurringDonation {
-                (navBar.titleView as! UILabel).text = recurringDonation.collectGroupName
+                let cgName = try mediater.send(request: GetCollectGroupsQuery()).first(where: { $0.namespace == recurringDonation.namespace })!.name
+                
+                (navBar.titleView as! UILabel).text = cgName
                 
                 let recurringDonationTurns: [Int] = try self.mediater.send(request: GetRecurringDonationTurnsQuery(id: recurringDonation.id))
                 var donationDetails: [DonationResponseModel] = []
