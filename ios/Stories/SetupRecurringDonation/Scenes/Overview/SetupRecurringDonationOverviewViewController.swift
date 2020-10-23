@@ -192,8 +192,14 @@ extension SetupRecurringDonationOverviewViewController: RecurringRuleCancelDeleg
             self.present(alert, animated: true, completion:  {})
         }
     }
+    
     func recurringRuleListTapped(recurringRuleCell: RecurringRuleTableCell) {
-        try? mediater.send(request: OpenRecurringDonationOverviewListRoute(recurringDonationId: (recurringRuleCell.viewModel?.id)!), withContext: self)
+        if !AppServices.shared.isServerReachable {
+            try? mediater.send(request: NoInternetAlert(), withContext: self)
+        } else {
+            try? mediater.send(request: OpenRecurringDonationOverviewListRoute(recurringDonationId: (recurringRuleCell.viewModel?.id)!), withContext: self)
+
+        }
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.recurringRules.count
