@@ -194,34 +194,47 @@ extension RecurringDonationTurnsOverviewController {
         header.contentView.backgroundColor = UIColor.white
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        // Dequeue with the reuse identifier
-        let yearText = donationsByYearSorted![section].key
-        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderRecurringRuleOverviewView")
-        let header = cell as! TableSectionHeaderRecurringRuleOverview
+        // Get header-cell
+        let header_cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderRecurringRuleOverviewView")
+        let header = header_cell as! TableSectionHeaderRecurringRuleOverview
         
+        // Set cell start status
         header.opaqueLayer.isHidden = true
         
-        if(donationsByYearSorted![section].key == 9999) {
+        // Get all the gifts from the year, specified by the section number
+        // (lowest section number is highest year, highest section number is lowest year)
+        let giftsFromSameYear = donationsByYearSorted![section]
+        // Get the first gift from giftsFromeSameYear
+        let giftsFromSameYear_First = giftsFromSameYear.value[0]
+        // Get year from current giftsFromSameYear
+        let year : Int = Int(giftsFromSameYear_First.year)!
+        
+        // Make sure we are being bussy with a 'future' donation
+        if(giftsFromSameYear.key == 9999 && giftsFromSameYear_First.toBePlanned) {
+        
+            // Check if there are multiple gifts in multiple years
             
-            let yearNextDonation = Int(donationsByYearSorted![section].value[0].year)
-            var yearLastDonation = yearNextDonation! - 1
-            
-            if (donationsByYearSorted!.count >= 2) {
-                yearLastDonation = Int(donationsByYearSorted![1].value[0].year)!
+            // If only 1
+            if (donationsByYearSorted!.count == 1) {
+                header.year.text = "RecurringDonationFutureDetailDifferentYear".localized + " " + String(year)
             }
-            
-            if(yearNextDonation! > yearLastDonation) {
-                header.year.text = "RecurringDonationFutureDetailDifferentYear".localized + " " + String(yearNextDonation!)
+            // If more than 1
+            else if(donationsByYearSorted!.count > 1) {
+                // Get the next year
+                let nextYear = donationsByYearSorted![section+1].key
+                if (nextYear == year) {
+                    header.year.text = "RecurringDonationFutureDetailSameYear".localized
+                } else {
+                    header.year.text = "RecurringDonationFutureDetailDifferentYear".localized + " " + String(year)
+                }
             }
-            else {
-                header.year.text = "RecurringDonationFutureDetailSameYear".localized
-            }
-            
-        } else {
-            header.year.text = "\(yearText)"
+        }
+        // If we are not handling a future donation
+        else {
+            header.year.text = "\(year)"
         }
         
-        return cell
+        return header_cell
     }
 
 }
