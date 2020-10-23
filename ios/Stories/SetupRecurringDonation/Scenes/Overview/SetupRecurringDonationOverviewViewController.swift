@@ -63,22 +63,21 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     }
     
     @objc func recurringDonationCreated(notification: NSNotification) {
-        DispatchQueue.main.async {
-            try? self.mediater.sendAsync(request: GetRecurringDonationsQuery()) { response in
-                self.recurringRules = response
-                if var recurringRule = self.recurringRules.first {
-                    recurringRule.shouldShowNewItemMarker = true
-                    self.markedItem = recurringRule
-                }
-                NotificationManager.shared.areNotificationsEnabled(completion: { enabled in
-                    if (!enabled) {
-                        DispatchQueue.main.async {
-                            try? self.mediater.send(request: GoToPushNotificationViewRoute(), withContext: self)
-                        }
-                    }
-                })
+        try? self.mediater.sendAsync(request: GetRecurringDonationsQuery()) { response in
+            self.recurringRules = response
+            if var recurringRule = self.recurringRules.first {
+                recurringRule.shouldShowNewItemMarker = true
+                self.markedItem = recurringRule
             }
+            NotificationManager.shared.areNotificationsEnabled(completion: { enabled in
+                if (!enabled) {
+                    DispatchQueue.main.async {
+                        try? self.mediater.send(request: GoToPushNotificationViewRoute(), withContext: self)
+                    }
+                }
+            })
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
