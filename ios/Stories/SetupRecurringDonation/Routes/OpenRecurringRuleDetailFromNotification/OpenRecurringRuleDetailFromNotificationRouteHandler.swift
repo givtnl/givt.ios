@@ -14,9 +14,9 @@ class OpenRecurringRuleDetailFromNotificationRouteHandler : RequestHandlerWithCo
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         SVProgressHUD.show()
         NavigationManager.shared.executeWithLogin(context: context) {
+            SVProgressHUD.dismiss()
             if !LoginManager.shared.isUserLoggedIn {
                 DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
                     let alert = UIAlertController(title: "SomethingWentWrong".localized, message: "Ti twa ni just", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                     }))
