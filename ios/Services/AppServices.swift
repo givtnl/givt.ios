@@ -18,8 +18,8 @@ class AppServices {
     static let shared = AppServices()
     private var timer: Timer?
     private let reachability = Reachability()!
-    private var isConnectable = false
-    private var isReachable = false
+    private var isConnectable = true
+    private var isReachable = true
     private let notificationLocker = NSRecursiveLock()
     var isServerReachable: Bool {
         get {
