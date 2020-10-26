@@ -101,7 +101,9 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                 
                 donationsByYear = Dictionary(grouping: donations, by: {Int($0.year)!})
                 
-                donationsByYear[9999] = futureTurns
+                if(futureTurns.count > 0) {
+                    donationsByYear[9999] = futureTurns
+                }
                 
                 donationsByYearSorted = donationsByYear.sorted { (first, second) -> Bool in
                     return first.key > second.key
