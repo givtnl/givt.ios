@@ -194,41 +194,33 @@ extension RecurringDonationTurnsOverviewController {
         header.contentView.backgroundColor = UIColor.white
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        // Get header-cell
         let header_cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeaderRecurringRuleOverviewView") as! TableSectionHeaderRecurringRuleOverview
         
-        // Set cell start status
         header_cell.opaqueLayer.isHidden = true
         
-        // Get all the gifts from the year, specified by the section number
-        // (lowest section number is highest year, highest section number is lowest year)
         let giftsFromSameYear = donationsByYearSorted![section]
-        // Get the first gift from giftsFromeSameYear
         let giftsFromSameYear_First = giftsFromSameYear.value.first
-        // Get year from current giftsFromSameYear
         let year : Int = Int(giftsFromSameYear_First!.year)!
         
-        // Make sure we are being bussy with a 'future' donation
         if(giftsFromSameYear.key == 9999 && giftsFromSameYear_First!.toBePlanned) {
         
-            // Check if there are multiple gifts in multiple years
-            
-            // If only 1
-            if (donationsByYearSorted!.count == 1) {
-                header_cell.year.text = "RecurringDonationFutureDetailDifferentYear".localized + " " + String(year)
-            }
-            // If more than 1
-            else if(donationsByYearSorted!.count > 1) {
-                // Get the next year
-                let nextYear = donationsByYearSorted![section+1].key
-                if (nextYear == year) {
-                    header_cell.year.text = "RecurringDonationFutureDetailSameYear".localized
-                } else {
+            if(donationsByYearSorted![section].value.count > 0) {
+                if (donationsByYearSorted!.count == 1) {
                     header_cell.year.text = "RecurringDonationFutureDetailDifferentYear".localized + " " + String(year)
                 }
+                else if(donationsByYearSorted!.count > 1) {
+                    let nextYear = donationsByYearSorted![section+1].key
+                    if (nextYear == year) {
+                        header_cell.year.text = "RecurringDonationFutureDetailSameYear".localized
+                    } else {
+                        header_cell.year.text = "RecurringDonationFutureDetailDifferentYear".localized + " " + String(year)
+                    }
+                }
+            }
+            else {
+                header_cell.isHidden = true
             }
         }
-        // If we are not handling a future donation
         else {
             header_cell.year.text = "\(year)"
         }
