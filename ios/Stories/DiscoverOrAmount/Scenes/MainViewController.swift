@@ -13,7 +13,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var contextTitleLabel: UILabel!
     @IBOutlet weak var navbarTitle: UINavigationItem!
     @IBOutlet weak var menu: UIBarButtonItem!
-    
+    @IBOutlet weak var titleLabel: UINavigationItem!
+    @IBOutlet weak var faqBtn: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
 //        outerView.layer.borderWidth = 1

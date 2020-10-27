@@ -142,10 +142,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
 //        screenTitle.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         addCollectLabel.text = NSLocalizedString("AddCollect", comment: "")
         addCollectLabel.adjustsFontSizeToFitWidth = true
-        lblTitle.title = ""
+//        titleLabel.title = ""
         
-        menu.accessibilityLabel = "Menu"
-        btnFaq.accessibilityLabel = NSLocalizedString("FAQButtonAccessibilityLabel", comment: "")
+//        menu.accessibilityLabel = "Menu"
+//        btnFaq.accessibilityLabel = NSLocalizedString("FAQButtonAccessibilityLabel", comment: "")
         btnRemove.accessibilityLabel = NSLocalizedString("RemoveBtnAccessabilityLabel", comment: "")
         addCollect.accessibilityLabel = NSLocalizedString("AddCollect", comment: "")
         collectOne.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("FirstCollect", comment: ""))
@@ -182,14 +182,14 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         FeatureManager.shared.checkUpdateState(context: self)
         
-        menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
+//        menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         
         if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
             self._cameFromFAQ = true
         }
         
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
-        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepOne", comment: "")
+//        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
+//        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepOne", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
     }
