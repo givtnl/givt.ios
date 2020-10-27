@@ -919,7 +919,7 @@
 		32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */ = {
 			isa = PBXGroup;
 			children = (
-				32F21E9425484D50003E46D5 /* Discover */,
+				32F21E9525484DF6003E46D5 /* Scenes */,
 				32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */,
 			);
 			path = DiscoverOrAmount;
@@ -931,6 +931,14 @@
 				32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */,
 			);
 			path = Discover;
+			sourceTree = "<group>";
+		};
+		32F21E9525484DF6003E46D5 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				32F21E9425484D50003E46D5 /* Discover */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		4B950123D45CD9CD856C736B /* Pods */ = {
