@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,8 +16,61 @@
                     <view key="view" contentMode="scaleToFill" id="uHZ-E8-WOO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xvo-BV-UoQ">
+                                <rect key="frame" x="7" y="64" width="400" height="791"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9st-gS-bRT">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="395.5"/>
+                                        <subviews>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCe-Cj-rdC">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="395.5"/>
+                                                <color key="backgroundColor" red="0.95811396839999996" green="0.74860507249999997" blue="0.38758021590000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Charities"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmU-yY-6cP">
+                                                <rect key="frame" x="200" y="0.0" width="200" height="395.5"/>
+                                                <color key="backgroundColor" red="0.14239108559999999" green="0.41729393599999998" blue="0.69546395539999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Churches"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="hmU-yY-6cP" firstAttribute="width" secondItem="XCe-Cj-rdC" secondAttribute="width" id="6Ir-V9-OTc"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70j-aJ-D1a">
+                                        <rect key="frame" x="0.0" y="395.5" width="400" height="395.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjH-QF-s2u">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="395.5"/>
+                                                <color key="backgroundColor" red="0.94612163309999997" green="0.43695491549999999" blue="0.34317821259999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Actions"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyG-lN-azv">
+                                                <rect key="frame" x="200" y="0.0" width="200" height="395.5"/>
+                                                <color key="backgroundColor" red="0.1068804488" green="0.66330748799999995" blue="0.42432337999999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Artists"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="NyG-lN-azv" firstAttribute="width" secondItem="MjH-QF-s2u" secondAttribute="width" id="SCa-0H-pxN"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="70j-aJ-D1a" firstAttribute="height" secondItem="9st-gS-bRT" secondAttribute="height" id="E3x-ng-HBj"/>
+                                    <constraint firstItem="70j-aJ-D1a" firstAttribute="top" secondItem="Xvo-BV-UoQ" secondAttribute="top" constant="761" id="XrI-Je-DUh"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Hsf-D1-N9j"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Hsf-D1-N9j" firstAttribute="trailing" secondItem="Xvo-BV-UoQ" secondAttribute="trailing" constant="7" id="4LX-oA-tBa"/>
+                            <constraint firstItem="Hsf-D1-N9j" firstAttribute="bottom" secondItem="Xvo-BV-UoQ" secondAttribute="bottom" constant="7" id="78x-1J-5mR"/>
+                            <constraint firstItem="Xvo-BV-UoQ" firstAttribute="top" secondItem="Hsf-D1-N9j" secondAttribute="top" constant="20" id="AcB-JY-RGC"/>
+                            <constraint firstItem="Xvo-BV-UoQ" firstAttribute="leading" secondItem="Hsf-D1-N9j" secondAttribute="leading" constant="7" id="gQ0-0z-I8D"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lwK-ee-Buu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
