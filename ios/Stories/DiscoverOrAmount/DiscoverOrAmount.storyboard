@@ -12,7 +12,7 @@
         <!--Discover View Controller-->
         <scene sceneID="UXd-CO-Xme">
             <objects>
-                <viewController id="gc6-Bn-zoz" customClass="DiscoverViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoverViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gc6-Bn-zoz" customClass="DiscoverViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uHZ-E8-WOO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lwK-ee-Buu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-141" y="29"/>
+            <point key="canvasLocation" x="143" y="28"/>
         </scene>
     </scenes>
     <resources>

@@ -128,7 +128,7 @@ class NavigationManager {
                     let termsUpdateVC = UIStoryboard(name: "UpdatedTermsPage", bundle: nil).instantiateInitialViewController() as! UpdatedTermsPageViewController
                     vc.setViewControllers([termsUpdateVC], animated: false)
                 } else {
-                    let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
+                    let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
                     vc.setViewControllers([amount], animated: animated)
                 }
             }
