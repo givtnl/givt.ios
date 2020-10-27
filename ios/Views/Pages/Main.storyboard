@@ -691,7 +691,7 @@ Kijk voor de status in je overzicht.</string>
             </objects>
             <point key="canvasLocation" x="1770" y="-672"/>
         </scene>
-        <!--Bedrag-->
+        <!--Amount View Controller-->
         <scene sceneID="jdE-oM-Up1">
             <objects>
                 <viewController storyboardIdentifier="AmountViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lyO-8n-bds" customClass="AmountViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -700,40 +700,40 @@ Kijk voor de status in je overzicht.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sk7-Jb-o0S">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vep-oF-LTp">
-                                        <rect key="frame" x="0.0" y="449" width="414" height="325"/>
+                                        <rect key="frame" x="0.0" y="474.5" width="414" height="343.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9B-KQ-rXU">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="359"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="377.5"/>
                                                 <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23j-EG-1Q9">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="325"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="343.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-xz-VHc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="116" height="325"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="116" height="343.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VaT-GT-awW">
-                                                                <rect key="frame" x="10" y="48.5" width="106" height="227.5"/>
+                                                                <rect key="frame" x="10" y="51.5" width="106" height="240.5"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cn6-kA-C6Y" customClass="PresetButton" customModule="ios" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="106" height="70.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="106" height="75"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <connections>
                                                                             <action selector="addPresetValue:" destination="lyO-8n-bds" eventType="touchUpInside" id="Jdi-8t-iHt"/>
                                                                         </connections>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ky-9Q-vkw" customClass="PresetButton" customModule="ios" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="78.5" width="106" height="70.5"/>
+                                                                        <rect key="frame" x="0.0" y="83" width="106" height="74.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <connections>
                                                                             <action selector="addPresetValue:" destination="lyO-8n-bds" eventType="touchUpInside" id="5Mi-vA-aXD"/>
                                                                         </connections>
                                                                     </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ov7-5Q-kWa" customClass="PresetButton" customModule="ios" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="157" width="106" height="70.5"/>
+                                                                        <rect key="frame" x="0.0" y="165.5" width="106" height="75"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <connections>
                                                                             <action selector="addPresetValue:" destination="lyO-8n-bds" eventType="touchUpInside" id="ivw-XG-whP"/>
@@ -766,10 +766,10 @@ Kijk voor de status in je overzicht.</string>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv6-iH-YVl">
-                                                        <rect key="frame" x="116" y="0.0" width="298" height="325"/>
+                                                        <rect key="frame" x="116" y="0.0" width="298" height="343.5"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNy-mi-UI2" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="10" width="82.5" height="70"/>
+                                                                <rect key="frame" x="15" y="10" width="82.5" height="75"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="1">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -787,7 +787,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCW-62-N94" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="107.5" y="10" width="83" height="70"/>
+                                                                <rect key="frame" x="107.5" y="10" width="83" height="75"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="2">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -805,7 +805,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAG-Aw-TuA" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="200.5" y="10" width="82.5" height="70"/>
+                                                                <rect key="frame" x="200.5" y="10" width="82.5" height="75"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="3">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -823,7 +823,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oad-iX-HrB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="88" width="82.5" height="70.5"/>
+                                                                <rect key="frame" x="15" y="93" width="82.5" height="74.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="4">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -841,7 +841,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2y-kT-0o4" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="107.5" y="88" width="83" height="70.5"/>
+                                                                <rect key="frame" x="107.5" y="93" width="83" height="74.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="5">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -859,7 +859,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qL-oU-syQ" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="200.5" y="88" width="82.5" height="70.5"/>
+                                                                <rect key="frame" x="200.5" y="93" width="82.5" height="74.5"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="6">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -877,7 +877,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVZ-Me-cmB" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="166.5" width="82.5" height="70"/>
+                                                                <rect key="frame" x="15" y="175.5" width="82.5" height="75"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="7">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -895,7 +895,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jw-tI-vCz" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="107.5" y="166.5" width="83" height="70"/>
+                                                                <rect key="frame" x="107.5" y="175.5" width="83" height="75"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="8">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -913,7 +913,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MnM-rs-vqX" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="15" y="244.5" width="82.5" height="70.5"/>
+                                                                <rect key="frame" x="15" y="258.5" width="82.5" height="75"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title=",">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -931,7 +931,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJb-1f-9ig" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="107.5" y="244.5" width="83" height="70.5"/>
+                                                                <rect key="frame" x="107.5" y="258.5" width="83" height="75"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="0">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -949,7 +949,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgC-fX-maL" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="200.5" y="244.5" width="82.5" height="70.5"/>
+                                                                <rect key="frame" x="200.5" y="258.5" width="82.5" height="75"/>
                                                                 <gestureRecognizers/>
                                                                 <state key="normal" image="erase_new">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -968,7 +968,7 @@ Kijk voor de status in je overzicht.</string>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g42-Kb-4UT" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="200.5" y="166.5" width="82.5" height="70"/>
+                                                                <rect key="frame" x="200.5" y="175.5" width="82.5" height="75"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
                                                                 <state key="normal" title="9">
                                                                     <color key="titleColor" red="0.4549019608" green="0.44705882349999998" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1149,7 +1149,7 @@ Kijk voor de status in je overzicht.</string>
                                         </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avu-iq-1Ae" customClass="CustomButtonWithRightArrow" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="205.5" y="385" width="186.5" height="44"/>
+                                        <rect key="frame" x="205.5" y="410.5" width="186.5" height="44"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.34999999999999998" height="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="3f0-oV-omv"/>
@@ -1207,20 +1207,6 @@ Kijk voor de status in je overzicht.</string>
                             <constraint firstItem="D9v-Aw-MYg" firstAttribute="trailing" secondItem="sk7-Jb-o0S" secondAttribute="trailing" id="y8h-iW-q2a"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Bedrag" id="h1k-Ax-YwJ">
-                        <barButtonItem key="leftBarButtonItem" image="menu_badge.png" width="50" springLoaded="YES" id="QTY-DE-8Mb">
-                            <connections>
-                                <action selector="toggleLeftViewAnimated:" destination="lyO-8n-bds" id="6HM-34-ghj"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="help" width="50" id="btt-fE-FBf">
-                            <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="JIe-cW-JOT" kind="presentation" identifier="faq" id="PMR-0p-zsl"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="addCollect" destination="LVh-mq-ZfQ" id="zKp-su-ZJY"/>
                         <outlet property="addCollectLabel" destination="vEQ-X4-UKG" id="s5d-23-e31"/>
@@ -1228,7 +1214,6 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="amountPresetThree" destination="ov7-5Q-kWa" id="Dif-bc-myQ"/>
                         <outlet property="amountPresetTwo" destination="2Ky-9Q-vkw" id="Zvb-Wt-CpO"/>
                         <outlet property="btnComma" destination="MnM-rs-vqX" id="mUl-Ja-Npv"/>
-                        <outlet property="btnFaq" destination="btt-fE-FBf" id="Tnd-6Q-1ou"/>
                         <outlet property="btnNext" destination="avu-iq-1Ae" id="G0B-tH-oXZ"/>
                         <outlet property="btnRemove" destination="KgC-fX-maL" id="gmb-mn-IxK"/>
                         <outlet property="calcPresetsStackView" destination="23j-EG-1Q9" id="HSQ-ib-NoU"/>
@@ -1236,8 +1221,6 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="collectOne" destination="JdZ-h5-LAO" id="bwx-pC-KcT"/>
                         <outlet property="collectThree" destination="wef-5E-eYC" id="rgk-Jm-5Vv"/>
                         <outlet property="collectTwo" destination="KbE-MY-azs" id="UGv-Y1-2zg"/>
-                        <outlet property="lblTitle" destination="h1k-Ax-YwJ" id="kRF-na-R6Y"/>
-                        <outlet property="menu" destination="QTY-DE-8Mb" id="fuH-wr-9ha"/>
                         <outlet property="pageControl" destination="sk7-Jb-o0S" id="Lji-EQ-vmT"/>
                         <outlet property="screenTitle" destination="7gc-CF-kwy" id="oVk-kG-BQT"/>
                         <outlet property="stackCollections" destination="sHt-md-26B" id="xAS-22-VA5"/>
@@ -3279,7 +3262,9 @@ best bij jou past.</string>
         <!--Initial Page View Controller-->
         <scene sceneID="Vkx-cI-vkY">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="hIA-oI-lGl" customClass="InitialPageViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" doubleSided="YES" id="hIA-oI-lGl" customClass="InitialPageViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="liz-41-zYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1007" y="68"/>
@@ -3287,7 +3272,7 @@ best bij jou past.</string>
         <!--Main View Controller-->
         <scene sceneID="Ruw-HP-SMy">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" title="Main View Controller" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QDM-To-zi9" customClass="MainViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="Main View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QDM-To-zi9" customClass="MainViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MOO-Hg-fXz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3346,11 +3331,6 @@ best bij jou past.</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tt6-it-0w6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="zTH-64-zrF">
-                    <connections>
-                        <action selector="clearAll:" destination="QDM-To-zi9" id="0sE-US-jNh"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1710" y="68"/>
         </scene>
