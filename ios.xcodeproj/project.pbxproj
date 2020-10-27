@@ -66,6 +66,8 @@
 		32D4853124D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */; };
 		32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */; };
 		32E76C3D252DCFCA005B5CB9 /* TrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */; };
+		32F21E9125484C91003E46D5 /* DiscoverOrAmount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */; };
+		32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */; };
 		A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C296222AA5EF70098442C /* GiftAidViewController.swift */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D32512386600251AFE /* GoToPushNotificationViewRoute.swift */; };
@@ -404,6 +406,8 @@
 		32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandHandler.swift; sourceTree = "<group>"; };
 		32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandPreHandler.swift; sourceTree = "<group>"; };
 		32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingHelper.swift; sourceTree = "<group>"; };
+		32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverOrAmount.storyboard; sourceTree = "<group>"; };
+		32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A40C296222AA5EF70098442C /* GiftAidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidViewController.swift; sourceTree = "<group>"; };
@@ -910,6 +914,23 @@
 				324761BD2508BADC002BC37E /* CreateRecurringDonationCommandPostHandler.swift */,
 			);
 			path = Create;
+			sourceTree = "<group>";
+		};
+		32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */ = {
+			isa = PBXGroup;
+			children = (
+				32F21E9425484D50003E46D5 /* Discover */,
+				32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */,
+			);
+			path = DiscoverOrAmount;
+			sourceTree = "<group>";
+		};
+		32F21E9425484D50003E46D5 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */,
+			);
+			path = Discover;
 			sourceTree = "<group>";
 		};
 		4B950123D45CD9CD856C736B /* Pods */ = {
@@ -1902,6 +1923,7 @@
 		FBC185CE24C6E1C3001A4C6B /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */,
 				FBC185CF24C6E1DE001A4C6B /* FirstDestinationThenAmount */,
 				FB87302C24C88529005FF355 /* Infrastructure */,
 				32CA179B24CECAB900248053 /* SetupRecurringDonation */,
@@ -2055,6 +2077,7 @@
 				27AC59F822255DD400163BF4 /* SelectContextView.xib in Resources */,
 				27A0E4EB221F3D3500982842 /* Presets.storyboard in Resources */,
 				D7C8F3D3209A0B7300DBB397 /* Event.storyboard in Resources */,
+				32F21E9125484C91003E46D5 /* DiscoverOrAmount.storyboard in Resources */,
 				D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
 			);
@@ -2387,6 +2410,7 @@
 				FB87300B24C82CC1005FF355 /* CoreData.xcdatamodeld in Sources */,
 				3273B8B32535CCE8003DB100 /* GetDonationsByIdsQueryHandler.swift in Sources */,
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
+				32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */,
 				FBC1859324C06716001A4C6B /* CollectGroupType.swift in Sources */,
 				324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
