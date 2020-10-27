@@ -68,6 +68,8 @@
 		32E76C3D252DCFCA005B5CB9 /* TrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */; };
 		32F21E9125484C91003E46D5 /* DiscoverOrAmount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */; };
 		32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */; };
+		32F21E97254850E7003E46D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E96254850E7003E46D5 /* MainViewController.swift */; };
+		32F21E992548526B003E46D5 /* InitialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E982548526B003E46D5 /* InitialPageViewController.swift */; };
 		A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C296222AA5EF70098442C /* GiftAidViewController.swift */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D32512386600251AFE /* GoToPushNotificationViewRoute.swift */; };
@@ -408,6 +410,8 @@
 		32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingHelper.swift; sourceTree = "<group>"; };
 		32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverOrAmount.storyboard; sourceTree = "<group>"; };
 		32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		32F21E96254850E7003E46D5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		32F21E982548526B003E46D5 /* InitialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPageViewController.swift; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A40C296222AA5EF70098442C /* GiftAidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidViewController.swift; sourceTree = "<group>"; };
@@ -921,6 +925,7 @@
 			children = (
 				32F21E9525484DF6003E46D5 /* Scenes */,
 				32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */,
+				32F21E982548526B003E46D5 /* InitialPageViewController.swift */,
 			);
 			path = DiscoverOrAmount;
 			sourceTree = "<group>";
@@ -937,6 +942,7 @@
 			isa = PBXGroup;
 			children = (
 				32F21E9425484D50003E46D5 /* Discover */,
+				32F21E96254850E7003E46D5 /* MainViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -2278,6 +2284,7 @@
 				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
 				DF05015924F8B4C6006196A3 /* BackToSetupRecurringDonationRoute.swift in Sources */,
 				A478D1D92512C3AE00251AFE /* DismissPushNotificationViewRoute.swift in Sources */,
+				32F21E992548526B003E46D5 /* InitialPageViewController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
@@ -2425,6 +2432,7 @@
 				D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */,
 				3273B8AE2535C3D7003DB100 /* RecurringDonationRuleViewModel.swift in Sources */,
 				3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */,
+				32F21E97254850E7003E46D5 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

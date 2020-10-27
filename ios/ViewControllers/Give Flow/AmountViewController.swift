@@ -139,7 +139,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         btnNext.labelText.adjustsFontSizeToFitWidth = true
         btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         
-        screenTitle.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
+//        screenTitle.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         addCollectLabel.text = NSLocalizedString("AddCollect", comment: "")
         addCollectLabel.adjustsFontSizeToFitWidth = true
         lblTitle.title = ""
@@ -198,7 +198,8 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         super.viewDidAppear(animated)
         navigationManager.delegate = self
         
-        if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
+        // fix this default value 
+        if self.sideMenuController?.isLeftViewHidden ?? false && !self._cameFromFAQ {
             navigationManager.finishRegistrationAlert(self)
         }
         
