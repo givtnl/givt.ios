@@ -689,7 +689,7 @@ Kijk voor de status in je overzicht.</string>
                 <viewControllerPlaceholder storyboardName="FAQ" id="JIe-cW-JOT" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PV8-wL-ICq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1770" y="-672"/>
+            <point key="canvasLocation" x="-1280" y="-421"/>
         </scene>
         <!--Amount View Controller-->
         <scene sceneID="jdE-oM-Up1">
@@ -3340,10 +3340,14 @@ best bij jou past.</string>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="help" width="50" id="8l4-9s-UVm">
                             <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="JIe-cW-JOT" kind="presentation" id="0x3-Yf-ask"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="faqButton" destination="8l4-9s-UVm" id="agN-1G-ggp"/>
                         <outlet property="menu" destination="ZL7-Lm-zvM" id="iWp-gN-dyK"/>
                         <outlet property="outerView" destination="JtW-ft-cSJ" id="yLo-8r-oRZ"/>
                         <outlet property="segmentControl" destination="cSM-HU-jBj" id="wXo-sK-UjW"/>
