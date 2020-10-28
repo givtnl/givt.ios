@@ -1027,3 +1027,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "DiscoverSegmentNow" = "Geef nu";
 "DiscoverSegmentWho" = "Ontdek wie";
 "DiscoverHomeDiscoverTitle" = "Kies categorie";
+"DiscoverOrAmountActionSheetOnce" = "Eenmalige gift";
+"DiscoverOrAmountActionSheetRecurring" = "Terugkerende gift";
