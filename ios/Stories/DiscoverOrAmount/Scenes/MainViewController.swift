@@ -13,9 +13,11 @@ class MainViewController: UIViewController {
     @IBOutlet weak var menu: UIBarButtonItem!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var titleNav: UINavigationItem!
+    @IBOutlet weak var faqButton: UIBarButtonItem!
     
     private let items = ["Geef nu", "Ontdek wie"]
     private var navigationManager: NavigationManager = NavigationManager.shared
+    private var _cameFromFAQ: Bool = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,6 +30,10 @@ class MainViewController: UIViewController {
         outerView.layer.masksToBounds = true;
         menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         menu.accessibilityLabel = "Menu"
+        
+        if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
+            self._cameFromFAQ = true
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         if self.sideMenuController!.isLeftViewHidden && !self._cameFromFAQ {
