@@ -32,7 +32,14 @@ class MainViewController: UIViewController {
         menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         menu.accessibilityLabel = "Menu"
         faqButton.accessibilityLabel = NSLocalizedString("FAQButtonAccessibilityLabel", comment: "")
+        
+        segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 14)!], for: .normal)
 
+        if #available(iOS 13.0, *) {
+            segmentControl.selectedSegmentTintColor = ColorHelper.GivtLightGreen
+        } else {
+            segmentControl.tintColor = ColorHelper.GivtLightGreen
+        }
         if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
             self._cameFromFAQ = true
         }
