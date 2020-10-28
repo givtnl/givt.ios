@@ -90,8 +90,12 @@ class DiscoverOrAmountSelectDestinationViewController: UIViewController, UITable
 extension DiscoverOrAmountSelectDestinationViewController {
     func setupActionSheet() {
         actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let oneTime: UIAlertAction = UIAlertAction(title: "DiscoverOrAmountActionSheetOnce".localized, style: .default)
-        let recurring: UIAlertAction = UIAlertAction(title: "DiscoverOrAmountActionSheetRecurring".localized, style: .default)
+        let oneTime: UIAlertAction = UIAlertAction(title: "DiscoverOrAmountActionSheetOnce".localized, style: .default) { (action) in
+            // implement route
+        }
+        let recurring: UIAlertAction = UIAlertAction(title: "DiscoverOrAmountActionSheetRecurring".localized, style: .default) { (action) in
+            // implement route
+        }
         let cancelAction: UIAlertAction = UIAlertAction(title: "CancelShort".localized, style: .cancel)
         actionSheet?.addAction(oneTime)
         actionSheet?.addAction(recurring)
