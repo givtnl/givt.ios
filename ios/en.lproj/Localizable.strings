@@ -1019,6 +1019,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "PushnotificationRequestScreenPrimaryDescription" = "We would like to keep you posted on when the next donation will be collected from your account. At the moment we don't have permission to send you messages. Could you allow that, please?";
 "PushnotificationRequestScreenPrimaryButtonYes" = "Ok, fine!";
 "DiscoverSearchButton" = "Search";
-"DiscoverDiscoverButton" = "Discover everything";
+"DiscoverDiscoverButton" = "See all";
 "DiscoverSegmentNow" = "Give now";
 "DiscoverSegmentWho" = "Discover who";
+"DiscoverHomeDiscoverTitle" = "Choose category";
