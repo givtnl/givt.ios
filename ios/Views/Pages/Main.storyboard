@@ -694,7 +694,7 @@ Kijk voor de status in je overzicht.</string>
         <!--Amount View Controller-->
         <scene sceneID="jdE-oM-Up1">
             <objects>
-                <viewController storyboardIdentifier="AmountViewController" extendedLayoutIncludesOpaqueBars="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lyO-8n-bds" customClass="AmountViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AmountViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lyO-8n-bds" customClass="AmountViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WsT-yj-Ydz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1064,14 +1064,8 @@ Kijk voor de status in je overzicht.</string>
                                             <constraint firstAttribute="bottom" secondItem="23j-EG-1Q9" secondAttribute="bottom" id="ufX-c8-29L"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoeveel wil je geven ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gc-CF-kwy">
-                                        <rect key="frame" x="22" y="0.0" width="370" height="30.5"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
-                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sHt-md-26B">
-                                        <rect key="frame" x="20" y="40.5" width="374" height="272.5"/>
+                                        <rect key="frame" x="20" y="20" width="374" height="272.5"/>
                                         <subviews>
                                             <view tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JdZ-h5-LAO" customClass="CollectionView" customModule="ios" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="85.5"/>
@@ -1102,7 +1096,7 @@ Kijk voor de status in je overzicht.</string>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LVh-mq-ZfQ" customClass="AddCollectButtonView" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="83" y="333" width="248" height="40"/>
+                                        <rect key="frame" x="83" y="312.5" width="248" height="40"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="increase" translatesAutoresizingMaskIntoConstraints="NO" id="pfc-fH-Pba">
                                                 <rect key="frame" x="20" y="10" width="20" height="20"/>
@@ -1180,15 +1174,12 @@ Kijk voor de status in je overzicht.</string>
                                     <constraint firstItem="Vep-oF-LTp" firstAttribute="leading" secondItem="sk7-Jb-o0S" secondAttribute="leading" id="00C-9r-ldd"/>
                                     <constraint firstAttribute="trailing" secondItem="sHt-md-26B" secondAttribute="trailing" constant="20" id="0fZ-MN-xv5"/>
                                     <constraint firstItem="avu-iq-1Ae" firstAttribute="width" secondItem="sk7-Jb-o0S" secondAttribute="width" multiplier="0.45" id="7ml-jD-nKC"/>
-                                    <constraint firstItem="7gc-CF-kwy" firstAttribute="leading" secondItem="sk7-Jb-o0S" secondAttribute="leading" constant="22" id="9l0-oF-VIA"/>
-                                    <constraint firstAttribute="trailing" secondItem="7gc-CF-kwy" secondAttribute="trailing" constant="22" id="MaH-3y-LfX"/>
+                                    <constraint firstItem="sHt-md-26B" firstAttribute="top" secondItem="sk7-Jb-o0S" secondAttribute="top" constant="20" id="Na2-ei-u6C"/>
                                     <constraint firstAttribute="bottom" secondItem="Vep-oF-LTp" secondAttribute="bottom" id="POq-tL-ag4"/>
                                     <constraint firstItem="Vep-oF-LTp" firstAttribute="top" secondItem="avu-iq-1Ae" secondAttribute="bottom" constant="20" id="SQ5-FZ-mfb"/>
                                     <constraint firstItem="Vep-oF-LTp" firstAttribute="height" secondItem="sk7-Jb-o0S" secondAttribute="height" multiplier="0.42" id="YGx-ZG-dsF"/>
                                     <constraint firstItem="LVh-mq-ZfQ" firstAttribute="top" secondItem="sHt-md-26B" secondAttribute="bottom" constant="20" id="alC-XP-LV3"/>
                                     <constraint firstItem="sHt-md-26B" firstAttribute="leading" secondItem="sk7-Jb-o0S" secondAttribute="leading" constant="20" id="cNT-D9-I8G"/>
-                                    <constraint firstItem="7gc-CF-kwy" firstAttribute="top" secondItem="sk7-Jb-o0S" secondAttribute="top" id="ex0-Yx-hNU"/>
-                                    <constraint firstItem="sHt-md-26B" firstAttribute="top" secondItem="7gc-CF-kwy" secondAttribute="bottom" constant="10" id="glz-8E-VZ6"/>
                                     <constraint firstAttribute="trailing" secondItem="Vep-oF-LTp" secondAttribute="trailing" id="gz0-W8-6TH"/>
                                     <constraint firstAttribute="trailing" secondItem="avu-iq-1Ae" secondAttribute="trailing" constant="22" id="zK1-i5-JBq"/>
                                 </constraints>
@@ -1222,7 +1213,6 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="collectThree" destination="wef-5E-eYC" id="rgk-Jm-5Vv"/>
                         <outlet property="collectTwo" destination="KbE-MY-azs" id="UGv-Y1-2zg"/>
                         <outlet property="pageControl" destination="sk7-Jb-o0S" id="Lji-EQ-vmT"/>
-                        <outlet property="screenTitle" destination="7gc-CF-kwy" id="oVk-kG-BQT"/>
                         <outlet property="stackCollections" destination="sHt-md-26B" id="xAS-22-VA5"/>
                         <outlet property="viewCalc" destination="Nv6-iH-YVl" id="ZAR-nj-Ksz"/>
                         <outlet property="viewPresets" destination="aFc-xz-VHc" id="cnH-Vi-F6e"/>
@@ -3262,9 +3252,7 @@ best bij jou past.</string>
         <!--Initial Page View Controller-->
         <scene sceneID="Vkx-cI-vkY">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" doubleSided="YES" id="hIA-oI-lGl" customClass="InitialPageViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
-                </pageViewController>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" doubleSided="YES" id="hIA-oI-lGl" customClass="InitialPageViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="liz-41-zYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1007" y="68"/>
@@ -3280,28 +3268,57 @@ best bij jou past.</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIj-1K-NiZ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cSM-HU-jBj">
-                                        <rect key="frame" x="141.5" y="20" width="131" height="32"/>
-                                        <segments>
-                                            <segment title="First"/>
-                                            <segment title="Second"/>
-                                        </segments>
-                                    </segmentedControl>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udc-Xp-XDA">
-                                        <rect key="frame" x="20" y="71" width="374" height="683"/>
-                                        <connections>
-                                            <segue destination="hIA-oI-lGl" kind="embed" id="Xgn-d9-fHR"/>
-                                        </connections>
-                                    </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JtW-ft-cSJ">
+                                        <rect key="frame" x="10" y="35" width="394" height="719"/>
+                                        <subviews>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udc-Xp-XDA">
+                                                <rect key="frame" x="0.0" y="16" width="394" height="703"/>
+                                                <connections>
+                                                    <segue destination="hIA-oI-lGl" kind="embed" id="Xgn-d9-fHR"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="udc-Xp-XDA" secondAttribute="bottom" id="J1a-8Y-qtw"/>
+                                            <constraint firstItem="udc-Xp-XDA" firstAttribute="leading" secondItem="JtW-ft-cSJ" secondAttribute="leading" id="K9x-f0-INU"/>
+                                            <constraint firstAttribute="trailing" secondItem="udc-Xp-XDA" secondAttribute="trailing" id="e1c-EU-RvP"/>
+                                            <constraint firstItem="udc-Xp-XDA" firstAttribute="top" secondItem="JtW-ft-cSJ" secondAttribute="top" constant="16" id="jXS-gP-9HI"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b84-7Q-IkP">
+                                        <rect key="frame" x="107.5" y="20" width="199" height="31"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cSM-HU-jBj">
+                                                <rect key="frame" x="10" y="0.0" width="179" height="32"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <segments>
+                                                    <segment title="Geef nu"/>
+                                                    <segment title="Ontdek wie"/>
+                                                </segments>
+                                                <color key="tintColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="segmentControlValueChanged:" destination="QDM-To-zi9" eventType="valueChanged" id="VWw-dl-pnQ"/>
+                                                </connections>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="cSM-HU-jBj" firstAttribute="leading" secondItem="b84-7Q-IkP" secondAttribute="leading" constant="10" id="42n-jw-pWG"/>
+                                            <constraint firstItem="cSM-HU-jBj" firstAttribute="top" secondItem="b84-7Q-IkP" secondAttribute="top" id="IIx-kX-xRZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="cSM-HU-jBj" secondAttribute="bottom" id="KRh-4k-UZv"/>
+                                            <constraint firstAttribute="trailing" secondItem="cSM-HU-jBj" secondAttribute="trailing" constant="10" id="gyC-r7-Iws"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="udc-Xp-XDA" secondAttribute="bottom" constant="20" id="BiO-XR-tGl"/>
-                                    <constraint firstItem="udc-Xp-XDA" firstAttribute="top" secondItem="cSM-HU-jBj" secondAttribute="bottom" constant="20" id="CDM-fE-Xek"/>
-                                    <constraint firstItem="udc-Xp-XDA" firstAttribute="leading" secondItem="wIj-1K-NiZ" secondAttribute="leading" constant="20" id="JQX-vS-VLn"/>
-                                    <constraint firstItem="cSM-HU-jBj" firstAttribute="top" secondItem="wIj-1K-NiZ" secondAttribute="top" constant="20" id="M1y-ER-fSS"/>
-                                    <constraint firstAttribute="trailing" secondItem="udc-Xp-XDA" secondAttribute="trailing" constant="20" id="fzF-aV-lC3"/>
-                                    <constraint firstItem="cSM-HU-jBj" firstAttribute="centerX" secondItem="wIj-1K-NiZ" secondAttribute="centerX" id="w3r-z1-S6x"/>
+                                    <constraint firstItem="JtW-ft-cSJ" firstAttribute="leading" secondItem="wIj-1K-NiZ" secondAttribute="leading" constant="10" id="6ZF-BO-4j7"/>
+                                    <constraint firstAttribute="trailing" secondItem="JtW-ft-cSJ" secondAttribute="trailing" constant="10" id="Q7G-u0-n2k"/>
+                                    <constraint firstAttribute="bottom" secondItem="JtW-ft-cSJ" secondAttribute="bottom" constant="20" id="fEx-bX-XPG"/>
+                                    <constraint firstItem="b84-7Q-IkP" firstAttribute="centerX" secondItem="wIj-1K-NiZ" secondAttribute="centerX" id="iXz-Jz-f3o"/>
+                                    <constraint firstItem="b84-7Q-IkP" firstAttribute="top" secondItem="wIj-1K-NiZ" secondAttribute="top" constant="20" id="kN0-g0-Y1w"/>
+                                    <constraint firstItem="JtW-ft-cSJ" firstAttribute="top" secondItem="b84-7Q-IkP" secondAttribute="bottom" constant="-16" id="uw2-9a-DFs"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -3315,7 +3332,7 @@ best bij jou past.</string>
                             <constraint firstItem="wIj-1K-NiZ" firstAttribute="top" secondItem="Pac-Th-VQ6" secondAttribute="top" id="uYy-wE-00d"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="ZZZZ" id="dgS-Kz-ExX">
+                    <navigationItem key="navigationItem" title="Hoeveel wil je geven?" id="dgS-Kz-ExX">
                         <barButtonItem key="leftBarButtonItem" image="menu_badge.png" width="50" springLoaded="YES" id="ZL7-Lm-zvM">
                             <connections>
                                 <action selector="toggleLeftViewAnimated:" destination="QDM-To-zi9" id="JU3-5Y-WLv"/>
@@ -3328,6 +3345,9 @@ best bij jou past.</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="menu" destination="ZL7-Lm-zvM" id="iWp-gN-dyK"/>
+                        <outlet property="outerView" destination="JtW-ft-cSJ" id="yLo-8r-oRZ"/>
+                        <outlet property="segmentControl" destination="cSM-HU-jBj" id="wXo-sK-UjW"/>
+                        <outlet property="titleNav" destination="dgS-Kz-ExX" id="gIQ-eI-cFo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tt6-it-0w6" userLabel="First Responder" sceneMemberID="firstResponder"/>
