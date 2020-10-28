@@ -13,7 +13,7 @@ import AppCenterAnalytics
 import SVProgressHUD
 import Mixpanel
 
-class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
+class AmountViewController: UIViewController, UIGestureRecognizerDelegate, MaterialShowcaseDelegate {
     
     private var log: LogService = LogService.shared
     private let slideFromRightAnimation = PresentFromRight()
@@ -57,8 +57,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     var topAnchor: NSLayoutConstraint!
     var leadingAnchor: NSLayoutConstraint!
     var selectedAmount = 0
-    private var _cameFromFAQ: Bool = false
-    
+
     private var amountLimit: Int {
         get {
             return UserDefaults.standard.amountLimit
@@ -142,7 +141,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         addCollectLabel.text = NSLocalizedString("AddCollect", comment: "")
         addCollectLabel.adjustsFontSizeToFitWidth = true
         
-//        btnFaq.accessibilityLabel = NSLocalizedString("FAQButtonAccessibilityLabel", comment: "")
         btnRemove.accessibilityLabel = NSLocalizedString("RemoveBtnAccessabilityLabel", comment: "")
         addCollect.accessibilityLabel = NSLocalizedString("AddCollect", comment: "")
         collectOne.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("FirstCollect", comment: ""))
@@ -177,18 +175,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
         
         FeatureManager.shared.checkUpdateState(context: self)
-        
-        if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
-            self._cameFromFAQ = true
-        }
-        
+
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationManager.delegate = self
         
         GivtManager.shared.getPublicMeta { (shouldShowGiftAid) in
             if let shouldAskForPermission = shouldShowGiftAid {
@@ -214,8 +207,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                 }
             }
         }
-        
-        self._cameFromFAQ = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -425,15 +416,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         checkAmounts()
     }
     
-    func willResume(sender: NavigationManager) {
-        if ((self.presentedViewController as? UIAlertController) == nil) {
-            if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
-                navigationManager.finishRegistrationAlert(self)
-            }
-            self._cameFromFAQ = false
-        }
-    }
-    
     @objc func deleteCollect(sender: UIButton){
         switch sender.tag {
             case 1:
@@ -565,14 +547,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         btnNext.isEnabled = nuOfCollectsShown != countOfZeroAmounts
     }
 
-    let slideAnimator = CustomPresentModalAnimation()
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "faq" {
-            let destination = segue.destination
-            destination.transitioningDelegate = slideAnimator
-        }
-    }
-    
     @objc func presetsWillShow(notification: Notification){
         if(!viewPresets.isHidden){
             calcPresetsStackView.removeArrangedSubview(viewPresets)
