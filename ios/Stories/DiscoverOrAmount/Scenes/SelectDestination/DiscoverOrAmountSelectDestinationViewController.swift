@@ -91,7 +91,11 @@ extension DiscoverOrAmountSelectDestinationViewController {
     func setupActionSheet() {
         actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let oneTime: UIAlertAction = UIAlertAction(title: "DiscoverOrAmountActionSheetOnce".localized, style: .default) { (action) in
-            // implement route
+            if let selectedCell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as? DestinationTableCell {
+                if let medium = ((try? self.mediater.send(request: GetCollectGroupsQuery()).first { $0.name == selectedCell.name })) {
+                    try? self.mediater.send(request: DiscoverOrAmountOpenSetupRecurringDonationRoute(name: selectedCell.name, mediumId: medium.namespace, orgType: medium.type), withContext: self)
+                }
+            }
         }
         let recurring: UIAlertAction = UIAlertAction(title: "DiscoverOrAmountActionSheetRecurring".localized, style: .default) { (action) in
             // implement route
