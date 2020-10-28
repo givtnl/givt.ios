@@ -18,7 +18,8 @@ class MainViewController: UIViewController {
     private let items = ["Geef nu", "Ontdek wie"]
     private var navigationManager: NavigationManager = NavigationManager.shared
     private var _cameFromFAQ: Bool = false
-    
+    private let modalAnimation = CustomPresentModalAnimation()
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -30,15 +31,20 @@ class MainViewController: UIViewController {
         outerView.layer.masksToBounds = true;
         menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         menu.accessibilityLabel = "Menu"
-        
+        faqButton.accessibilityLabel = NSLocalizedString("FAQButtonAccessibilityLabel", comment: "")
+
         if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
             self._cameFromFAQ = true
         }
     }
     override func viewDidAppear(_ animated: Bool) {
+        navigationManager.delegate = self
+
         if self.sideMenuController!.isLeftViewHidden && !self._cameFromFAQ {
             navigationManager.finishRegistrationAlert(self)
         }
+        self._cameFromFAQ = false
+
     }
     
     override func viewDidLoad() {
@@ -48,13 +54,26 @@ class MainViewController: UIViewController {
     @IBAction func segmentControlValueChanged(_ sender: Any) {
         NotificationCenter.default.post(name: .GivtSegmentControlStateDidChange, object: nil)
     }
-    
 }
 
-extension MainViewController {
+extension MainViewController: NavigationManagerDelegate {
     @objc func checkBadges(notification:Notification) {
         DispatchQueue.main.async {
             self.menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "faq" {
+            let destination = segue.destination
+            destination.transitioningDelegate = modalAnimation
+        }
+    }
+    func willResume(sender: NavigationManager) {
+        if ((self.presentedViewController as? UIAlertController) == nil) {
+            if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
+                navigationManager.finishRegistrationAlert(self)
+            }
+            self._cameFromFAQ = false
         }
     }
 }
