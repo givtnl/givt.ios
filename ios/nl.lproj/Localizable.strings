@@ -1023,6 +1023,9 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "PushnotificationRequestScreenPrimaryDescription" = "We sturen graag even een berichtje wanneer je volgende gift wordt afgeschreven. We hebben nu nog geen toestemming om berichten te sturen. Geef je toestemming?";
 "PushnotificationRequestScreenPrimaryButtonYes" = "Oké, goed!";
 "DiscoverSearchButton" = "Zoeken";
-"DiscoverDiscoverButton" = "Ontdek alles";
+"DiscoverDiscoverButton" = "Bekijk alle";
 "DiscoverSegmentNow" = "Geef nu";
 "DiscoverSegmentWho" = "Ontdek wie";
+"DiscoverHomeDiscoverTitle" = "Kies categorie";
+"DiscoverOrAmountActionSheetOnce" = "Eenmalige gift";
+"DiscoverOrAmountActionSheetRecurring" = "Terugkerende gift";
