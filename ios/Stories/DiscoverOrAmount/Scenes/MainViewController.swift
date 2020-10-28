@@ -26,15 +26,17 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.backgroundColor = .clear
         outerView.layer.borderWidth = 1
-        outerView.layer.borderColor = UIColor.gray.cgColor
+        outerView.layer.borderColor = ColorHelper.LightGrey.cgColor
         outerView.layer.cornerRadius = 8;
         outerView.layer.masksToBounds = true;
         menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
         menu.accessibilityLabel = "Menu"
         faqButton.accessibilityLabel = NSLocalizedString("FAQButtonAccessibilityLabel", comment: "")
-        
+        titleNav.title = "Amount".localized
         segmentControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 14)!], for: .normal)
-
+        segmentControl.setTitle("DiscoverSegmentNow".localized, forSegmentAt: 0)
+        segmentControl.setTitle("DiscoverSegmentWho".localized, forSegmentAt: 1)
+        
         if #available(iOS 13.0, *) {
             segmentControl.selectedSegmentTintColor = ColorHelper.GivtLightGreen
         } else {
