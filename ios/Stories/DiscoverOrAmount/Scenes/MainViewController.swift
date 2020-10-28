@@ -10,16 +10,25 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var outerView: UIView!
-    @IBOutlet weak var contextTitleLabel: UILabel!
-    @IBOutlet weak var navbarTitle: UINavigationItem!
     @IBOutlet weak var menu: UIBarButtonItem!
-    @IBOutlet weak var titleLabel: UINavigationItem!
-    @IBOutlet weak var faqBtn: UIBarButtonItem!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        outerView.layer.borderWidth = 1
-//        outerView.layer.borderColor = UIColor.gray.cgColor
-//        contextTitleLabel.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
-
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var titleNav: UINavigationItem!
+    
+    private let items = ["Geef nu", "Ontdek wie"]
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.navigationBar.backgroundColor = .clear
+        outerView.layer.borderWidth = 1
+        outerView.layer.borderColor = UIColor.gray.cgColor
+        outerView.layer.cornerRadius = 8;
+        outerView.layer.masksToBounds = true;
+    }
+    
+    @IBAction func segmentControlValueChanged(_ sender: Any) {
+        NotificationCenter.default.post(name: .GivtSegmentControlStateDidChange, object: nil)
     }
 }
+

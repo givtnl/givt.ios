@@ -9,11 +9,25 @@
 import UIKit
 
 class InitialPageViewController: UIPageViewController {
+    @objc func segmentControlTapped() {
+        if viewControllers?.count == 1 {
+            if viewControllers?[0] is AmountViewController {
+                setViewControllers([items[1]], direction: .forward, animated: true, completion: nil)
+            } else {
+                setViewControllers([items[0]], direction: .reverse, animated: true, completion: nil)
+            }
+        }
+    }
+    
     fileprivate var items: [UIViewController] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(segmentControlTapped), name: .GivtSegmentControlStateDidChange, object: nil)
+
+        dataSource = self
+
         populateItems()
         if let firstViewController = items.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
@@ -27,40 +41,21 @@ class InitialPageViewController: UIPageViewController {
         items.append(vc2)
     }
 }
-extension InitialPageViewController: UIPageViewControllerDataSource {
+extension InitialPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = items.firstIndex(of: viewController) else {
-            return nil
+        if viewController is AmountViewController {
+            return items[1]
+        } else {
+            return items[0]
         }
-        
-        let previousIndex = viewControllerIndex - 1
-        
-        guard previousIndex >= 0 else {
-            return items.last
-        }
-        
-        guard items.count > previousIndex else {
-            return nil
-        }
-        
-        return items[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = items.firstIndex(of: viewController) else {
-            return nil
+        if viewController is AmountViewController {
+            return items[1]
+        } else {
+            return items[0]
         }
-        
-        let nextIndex = viewControllerIndex + 1
-        guard items.count != nextIndex else {
-            return items.first
-        }
-        
-        guard items.count > nextIndex else {
-            return nil
-        }
-        
-        return items[nextIndex]
     }
     
     
