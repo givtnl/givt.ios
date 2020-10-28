@@ -83,7 +83,7 @@ class DiscoverOrAmountSelectDestinationViewController: UIViewController, UITable
     }
     
     @IBAction func backButton(_ sender: Any) {
-        try? mediater.send(request: BackToSetupRecurringDonationRoute(), withContext: self)
+        try? mediater.send(request: BackToMainViewRoute(), withContext: self)
     }
 }
 

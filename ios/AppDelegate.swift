@@ -294,6 +294,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         
         //-- DISCOVER OR AMOUNT: ROUTES
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSelectDestinationRouteHandler())
-
+        Mediater.shared.registerHandler(handler: BackToMainViewRouteHandler())
     }
 }
