@@ -3279,6 +3279,7 @@ best bij jou past.</string>
                                             </containerView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="udc-Xp-XDA" secondAttribute="bottom" id="J1a-8Y-qtw"/>
                                             <constraint firstItem="udc-Xp-XDA" firstAttribute="leading" secondItem="JtW-ft-cSJ" secondAttribute="leading" id="K9x-f0-INU"/>

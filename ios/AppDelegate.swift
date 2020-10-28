@@ -291,6 +291,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         
         //-- INFRA
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
+        
+        //-- DISCOVER OR AMOUNT: ROUTES
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSelectDestinationRouteHandler())
 
     }
 }

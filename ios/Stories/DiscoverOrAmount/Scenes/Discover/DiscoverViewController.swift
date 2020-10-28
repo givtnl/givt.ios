@@ -15,7 +15,8 @@ class DiscoverViewController: UIViewController {
     @IBOutlet weak var artistsView: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var discoverView: UIView!
-    
+    var mediater: MediaterWithContextProtocol = Mediater.shared
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRoundedCorners()
@@ -23,22 +24,22 @@ class DiscoverViewController: UIViewController {
     }
     
     @IBAction func tappedSearch(_ sender: Any) {
-        print("Search")
+        try? mediater.send(request: DiscoverOrAmountOpenSelectDestinationRoute(action: .search), withContext: self)
     }
     @IBAction func tappedDiscover(_ sender: Any) {
-        print("Discover")
+        try? mediater.send(request: DiscoverOrAmountOpenSelectDestinationRoute(action: .discover), withContext: self)
     }
     @IBAction func charitiesTapped(_ sender: Any) {
-        print("Charities")
+        try? mediater.send(request: DiscoverOrAmountOpenSelectDestinationRoute(action: .charities), withContext: self)
     }
     @IBAction func churchesTapped(_ sender: Any) {
-        print("Churches")
+        try? mediater.send(request: DiscoverOrAmountOpenSelectDestinationRoute(action: .churches), withContext: self)
     }
     @IBAction func actionsTapped(_ sender: Any) {
-        print("Actions")
+        try? mediater.send(request: DiscoverOrAmountOpenSelectDestinationRoute(action: .campaigns), withContext: self)
     }
     @IBAction func artistsTapped(_ sender: Any) {
-        print("Artists")
+        try? mediater.send(request: DiscoverOrAmountOpenSelectDestinationRoute(action: .artists), withContext: self)
     }
     
 }

@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController: NavigationManagerDelegate {
+extension MainViewController: NavigationManagerDelegate, UIPageViewControllerDelegate {
     @objc func checkBadges(notification:Notification) {
         DispatchQueue.main.async {
             self.menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")

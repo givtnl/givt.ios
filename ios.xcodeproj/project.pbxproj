@@ -47,6 +47,10 @@
 		3274566D2500D704006F0C60 /* ResponseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3274566C2500D704006F0C60 /* ResponseExtension.swift */; };
 		327C5B7E2506D8680064BBC4 /* CancelRecurringDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C5B7D2506D8680064BBC4 /* CancelRecurringDonationCommand.swift */; };
 		327C5B802506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C5B7F2506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift */; };
+		327E34502549FDF000314BFD /* DiscoverOrAmountSelectDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327E344F2549FDF000314BFD /* DiscoverOrAmountSelectDestinationViewController.swift */; };
+		327E34532549FE7A00314BFD /* DiscoverOrAmountActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327E34522549FE7A00314BFD /* DiscoverOrAmountActions.swift */; };
+		327E34572549FEEE00314BFD /* DiscoverOrAmountOpenSelectDestinationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327E34562549FEEE00314BFD /* DiscoverOrAmountOpenSelectDestinationRoute.swift */; };
+		327E34592549FEF500314BFD /* DiscoverOrAmountOpenSelectDestinationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327E34582549FEF500314BFD /* DiscoverOrAmountOpenSelectDestinationRouteHandler.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		32A67F7A2513946F007EC7EF /* GetCountryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F792513946F007EC7EF /* GetCountryQuery.swift */; };
 		32A67F7C25139483007EC7EF /* GetCountryQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7B25139483007EC7EF /* GetCountryQueryHandler.swift */; };
@@ -390,6 +394,10 @@
 		3274566C2500D704006F0C60 /* ResponseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseExtension.swift; sourceTree = "<group>"; };
 		327C5B7D2506D8680064BBC4 /* CancelRecurringDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRecurringDonationCommand.swift; sourceTree = "<group>"; };
 		327C5B7F2506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelRecurringDonationCommandHandler.swift; sourceTree = "<group>"; };
+		327E344F2549FDF000314BFD /* DiscoverOrAmountSelectDestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountSelectDestinationViewController.swift; sourceTree = "<group>"; };
+		327E34522549FE7A00314BFD /* DiscoverOrAmountActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountActions.swift; sourceTree = "<group>"; };
+		327E34562549FEEE00314BFD /* DiscoverOrAmountOpenSelectDestinationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountOpenSelectDestinationRoute.swift; sourceTree = "<group>"; };
+		327E34582549FEF500314BFD /* DiscoverOrAmountOpenSelectDestinationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverOrAmountOpenSelectDestinationRouteHandler.swift; sourceTree = "<group>"; };
 		32A67F792513946F007EC7EF /* GetCountryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryQuery.swift; sourceTree = "<group>"; };
 		32A67F7B25139483007EC7EF /* GetCountryQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryQueryHandler.swift; sourceTree = "<group>"; };
 		32A67F7D25139A7F007EC7EF /* GetCountryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryError.swift; sourceTree = "<group>"; };
@@ -823,6 +831,39 @@
 			path = Cancel;
 			sourceTree = "<group>";
 		};
+		327E344E2549FDBE00314BFD /* SelectDestination */ = {
+			isa = PBXGroup;
+			children = (
+				327E344F2549FDF000314BFD /* DiscoverOrAmountSelectDestinationViewController.swift */,
+			);
+			path = SelectDestination;
+			sourceTree = "<group>";
+		};
+		327E34512549FE5800314BFD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				327E34522549FE7A00314BFD /* DiscoverOrAmountActions.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		327E34542549FEB000314BFD /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				327E34552549FEC900314BFD /* OpenSelectDestination */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		327E34552549FEC900314BFD /* OpenSelectDestination */ = {
+			isa = PBXGroup;
+			children = (
+				327E34562549FEEE00314BFD /* DiscoverOrAmountOpenSelectDestinationRoute.swift */,
+				327E34582549FEF500314BFD /* DiscoverOrAmountOpenSelectDestinationRouteHandler.swift */,
+			);
+			path = OpenSelectDestination;
+			sourceTree = "<group>";
+		};
 		32A67F7825139450007EC7EF /* GetCountry */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,6 +964,7 @@
 		32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */ = {
 			isa = PBXGroup;
 			children = (
+				327E34542549FEB000314BFD /* Routes */,
 				32F21E9525484DF6003E46D5 /* Scenes */,
 				32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */,
 				32F21E982548526B003E46D5 /* InitialPageViewController.swift */,
@@ -933,6 +975,7 @@
 		32F21E9425484D50003E46D5 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				327E34512549FE5800314BFD /* Models */,
 				32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */,
 			);
 			path = Discover;
@@ -941,6 +984,7 @@
 		32F21E9525484DF6003E46D5 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				327E344E2549FDBE00314BFD /* SelectDestination */,
 				32F21E9425484D50003E46D5 /* Discover */,
 				32F21E96254850E7003E46D5 /* MainViewController.swift */,
 			);
@@ -2220,6 +2264,7 @@
 				FBC185B324C0D661001A4C6B /* DestinationCategoryButton.swift in Sources */,
 				320CF72A24CEF1D3008B3EDE /* DestinationSelectedRoute.swift in Sources */,
 				FB87302424C8717A005FF355 /* SafariInputModel.swift in Sources */,
+				327E34572549FEEE00314BFD /* DiscoverOrAmountOpenSelectDestinationRoute.swift in Sources */,
 				32A67F80251497F7007EC7EF /* RecurringDonationError.swift in Sources */,
 				327C5B7E2506D8680064BBC4 /* CancelRecurringDonationCommand.swift in Sources */,
 				D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */,
@@ -2289,6 +2334,7 @@
 				320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
+				327E34592549FEF500314BFD /* DiscoverOrAmountOpenSelectDestinationRouteHandler.swift in Sources */,
 				DFAEA67925347A7A00A41499 /* RecurringDonationTurnsOverviewController.swift in Sources */,
 				32A67F7C25139483007EC7EF /* GetCountryQueryHandler.swift in Sources */,
 				A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */,
@@ -2384,6 +2430,7 @@
 				FB58BCD1230AD361001B1B9C /* MediumHelper.swift in Sources */,
 				A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */,
 				3273B8A425359E0D003DB100 /* GetRecurringDonationTurnsQuery.swift in Sources */,
+				327E34532549FE7A00314BFD /* DiscoverOrAmountActions.swift in Sources */,
 				D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */,
 				3216ED832541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift in Sources */,
 				DF8BB30324F7A09F00104668 /* RecurringRuleViewModel.swift in Sources */,
@@ -2398,6 +2445,7 @@
 				FB872FF224C6EC2F005FF355 /* BackToMainRoute.swift in Sources */,
 				FBC1858A24C0651D001A4C6B /* RequestProtocol.swift in Sources */,
 				FB56C5622511001E0099EC62 /* BackToRecurringDonationOverviewRouteHandler.swift in Sources */,
+				327E34502549FDF000314BFD /* DiscoverOrAmountSelectDestinationViewController.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
 				D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */,
 				D748F6042063D50C00B25BC2 /* HistoryTableViewModel.swift in Sources */,
