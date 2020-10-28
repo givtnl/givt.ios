@@ -41,8 +41,10 @@ extension InitialPageViewController: UIPageViewControllerDataSource, UIPageViewC
     @objc func segmentControlTapped() {
         if viewControllers?.count == 1 {
             if viewControllers?[0] is AmountViewController {
+                navigationController?.children.first?.title = "DiscoverHomeDiscoverTitle".localized
                 setViewControllers([items[1]], direction: .forward, animated: true, completion: nil)
             } else {
+                navigationController?.children.first?.title = "Amount".localized
                 setViewControllers([items[0]], direction: .reverse, animated: true, completion: nil)
             }
         }
