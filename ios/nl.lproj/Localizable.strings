@@ -63,7 +63,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AreYouSureToCancelGivts" = "Weet je het zeker? Tik op OK om te bevestigen.";
 "FeedbackTitle" = "Feedback of vragen?";
 "NoMessage" = "Je hebt geen bericht ingevoerd.";
-"FeedbackMailSent" = "We hebben je bericht succesvol ontvangen, we nemen als de bliksem contact met je op.";
+"FeedbackMailSent" = "Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.";
 "TypeMessage" = "Schrijf hier je bericht!";
 "Safari_GivtTransaction" = "Deze Givt wordt in een transactie omgezet.";
 "Safari_MandateSignedPopup" = "Jouw giften worden van dit IBAN afgeschreven. Niet akkoord? Annuleer dan deze Givt en maak een nieuwe account aan.";
@@ -1014,6 +1014,15 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 /*Fuzzy*/
 "GoToListWithRecurringDonationDonations" = "Overzicht";
 "RecurringDonationsEmptyDetailOverview" = "Hier komen jouw giften te staan, maar het geld moet eerst nog rollen";
-"RecurringDonationSoonNotification" = "Binnenkort zal een donatie gedaan worden aan {0}.";
+
+/*Fuzzy*/
 "RecurringDonationFutureDetailSameYear" = "Eerstvolgende gift";
+
+/*Fuzzy*/
 "RecurringDonationFutureDetailDifferentYear" = "Eerstvolgende gift in";
+"PushnotificationRequestScreenPrimaryDescription" = "We sturen graag even een berichtje wanneer je volgende gift wordt afgeschreven. We hebben nu nog geen toestemming om berichten te sturen. Geef je toestemming?";
+"PushnotificationRequestScreenPrimaryButtonYes" = "Oké, goed!";
+"DiscoverSearchButton" = "Zoeken";
+"DiscoverDiscoverButton" = "Ontdek alles";
+"DiscoverSegmentNow" = "Geef nu";
+"DiscoverSegmentWho" = "Ontdek wie";
