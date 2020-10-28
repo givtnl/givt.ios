@@ -139,12 +139,9 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         btnNext.labelText.adjustsFontSizeToFitWidth = true
         btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         
-//        screenTitle.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         addCollectLabel.text = NSLocalizedString("AddCollect", comment: "")
         addCollectLabel.adjustsFontSizeToFitWidth = true
-//        titleLabel.title = ""
         
-//        menu.accessibilityLabel = "Menu"
 //        btnFaq.accessibilityLabel = NSLocalizedString("FAQButtonAccessibilityLabel", comment: "")
         btnRemove.accessibilityLabel = NSLocalizedString("RemoveBtnAccessabilityLabel", comment: "")
         addCollect.accessibilityLabel = NSLocalizedString("AddCollect", comment: "")
@@ -152,7 +149,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         collectTwo.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("SecondCollect", comment: ""))
         collectThree.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("ThirdCollect", comment: ""))
         
-        NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(presetsWillShow), name: .GivtAmountPresetsSet, object: nil)
 
     }
@@ -182,14 +178,10 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         
         FeatureManager.shared.checkUpdateState(context: self)
         
-//        menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
-        
         if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
             self._cameFromFAQ = true
         }
         
-//        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
-//        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepOne", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
     }
@@ -197,11 +189,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         navigationManager.delegate = self
-        
-        // fix this default value 
-        if self.sideMenuController?.isLeftViewHidden ?? false && !self._cameFromFAQ {
-            navigationManager.finishRegistrationAlert(self)
-        }
         
         GivtManager.shared.getPublicMeta { (shouldShowGiftAid) in
             if let shouldAskForPermission = shouldShowGiftAid {
@@ -505,11 +492,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     func selectFirstCollect(){
         setActiveCollection(collectionViews.first!)
-    }
-    @objc func checkBadges(notification:Notification) {
-        DispatchQueue.main.async {
-            self.menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
-        }
     }
     
     func clearAmounts() {

@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var titleNav: UINavigationItem!
     
     private let items = ["Geef nu", "Ontdek wie"]
+    private var navigationManager: NavigationManager = NavigationManager.shared
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -25,10 +26,29 @@ class MainViewController: UIViewController {
         outerView.layer.borderColor = UIColor.gray.cgColor
         outerView.layer.cornerRadius = 8;
         outerView.layer.masksToBounds = true;
+        menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
+        menu.accessibilityLabel = "Menu"
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        if self.sideMenuController!.isLeftViewHidden && !self._cameFromFAQ {
+            navigationManager.finishRegistrationAlert(self)
+        }
+    }
+    
+    override func viewDidLoad() {
+        NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
     }
     
     @IBAction func segmentControlValueChanged(_ sender: Any) {
         NotificationCenter.default.post(name: .GivtSegmentControlStateDidChange, object: nil)
     }
+    
 }
 
+extension MainViewController {
+    @objc func checkBadges(notification:Notification) {
+        DispatchQueue.main.async {
+            self.menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
+        }
+    }
+}
