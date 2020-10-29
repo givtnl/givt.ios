@@ -15,29 +15,51 @@ class InitialPageViewController: UIPageViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(segmentControlTapped), name: .GivtSegmentControlStateDidChange, object: nil)
         dataSource = self
-
+        delegate = self
+        
         populateItems()
         if let firstViewController = items.first {
             setViewControllers([firstViewController], direction: .forward, animated: true, completion: nil)
         }
     }
 }
+
 extension InitialPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        if viewController is AmountViewController {
-            return items[1]
-        } else {
+        if viewController == items[1] {
             return items[0]
         }
+        return nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        if viewController is AmountViewController {
+        if viewController == items[0] {
             return items[1]
-        } else {
-            return items[0]
+        }
+        return nil
+    }
+    
+    //both didFinishAnimating and willTransitionTo are needed to have a correct state
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let mainController = pageViewController.parent as? MainViewController {
+            if previousViewControllers[0] == items[0] {
+                mainController.segmentControl.selectedSegmentIndex = completed ? 1 : 0
+            } else {
+                mainController.segmentControl.selectedSegmentIndex = completed ? 0 : 1
+            }
         }
     }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        if let mainController = pageViewController.parent as? MainViewController {
+            if pendingViewControllers[0] == items[0] {
+                mainController.segmentControl.selectedSegmentIndex = 0
+            } else {
+                mainController.segmentControl.selectedSegmentIndex = 1
+            }
+        }
+    }
+    
     @objc func segmentControlTapped() {
         if viewControllers?.count == 1 {
             if viewControllers?[0] is AmountViewController {
@@ -49,6 +71,7 @@ extension InitialPageViewController: UIPageViewControllerDataSource, UIPageViewC
             }
         }
     }
+    
     fileprivate func populateItems() {
         let vc1 = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AmountViewController") as! AmountViewController
         let vc2 = UIStoryboard(name: "DiscoverOrAmount", bundle: nil).instantiateViewController(withIdentifier: "DiscoverViewController") as! DiscoverViewController

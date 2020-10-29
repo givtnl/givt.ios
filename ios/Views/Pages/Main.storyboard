@@ -3214,7 +3214,7 @@ best bij jou past.</string>
         <!--Initial Page View Controller-->
         <scene sceneID="Vkx-cI-vkY">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" doubleSided="YES" id="hIA-oI-lGl" customClass="InitialPageViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="hIA-oI-lGl" customClass="InitialPageViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="liz-41-zYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1007" y="68"/>
