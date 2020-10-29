@@ -106,7 +106,9 @@ extension DiscoverOrAmountSelectDestinationViewController {
         }
         let cancelAction: UIAlertAction = UIAlertAction(title: "CancelShort".localized, style: .cancel)
         actionSheet?.addAction(oneTime)
-        actionSheet?.addAction(recurring)
+        if LoginManager.shared.isFullyRegistered {
+            actionSheet?.addAction(recurring)
+        }
         actionSheet?.addAction(cancelAction)
     }
     
