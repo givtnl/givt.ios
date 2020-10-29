@@ -23,7 +23,7 @@ class DiscoverOrAmountSelectDestinationViewController: UIViewController, UITable
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var navBar: UINavigationItem!
-
+    
     var churchButton: DestinationCategoryButton!
     var charityButton: DestinationCategoryButton!
     var campaignButton: DestinationCategoryButton!
@@ -34,7 +34,7 @@ class DiscoverOrAmountSelectDestinationViewController: UIViewController, UITable
     //MARK: viewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-            
+        
         navigationItem.title = "SelectRecipient".localized
         navigationItem.accessibilityLabel = "SelectRecipient".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
@@ -46,7 +46,7 @@ class DiscoverOrAmountSelectDestinationViewController: UIViewController, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         navigationController?.navigationBar.isTranslucent = true
@@ -79,7 +79,7 @@ class DiscoverOrAmountSelectDestinationViewController: UIViewController, UITable
         loadDestinations()
         handleDestinationAction(action: action)
         filterDestinationsAndReloadTable()
-    
+        
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -92,20 +92,24 @@ extension DiscoverOrAmountSelectDestinationViewController {
         actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let oneTime: UIAlertAction = UIAlertAction(title: "DiscoverOrAmountActionSheetOnce".localized, style: .default) { (action) in
             if let selectedCell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as? DestinationTableCell {
-                if let medium = ((try? self.mediater.send(request: GetCollectGroupsQuery()).first { $0.name == selectedCell.name })) {
-                    try? self.mediater.send(request: DiscoverOrAmountOpenSetupRecurringDonationRoute(name: selectedCell.name, mediumId: medium.namespace, orgType: medium.type), withContext: self)
+                if let mediumId = ((try? self.mediater.send(request: GetCollectGroupsQuery()).first { $0.name == selectedCell.name }))?.namespace {
+                    try? self.mediater.send(request: DiscoverOrAmountOpenSetupSingleDonationRoute(name: selectedCell.name, mediumId: mediumId), withContext: self)
                 }
             }
         }
         let recurring: UIAlertAction = UIAlertAction(title: "DiscoverOrAmountActionSheetRecurring".localized, style: .default) { (action) in
-            // implement route
+            if let selectedCell = self.tableView.cellForRow(at: self.tableView.indexPathForSelectedRow!) as? DestinationTableCell {
+                if let medium = ((try? self.mediater.send(request: GetCollectGroupsQuery()).first { $0.name == selectedCell.name })) {
+                    try? self.mediater.send(request: DiscoverOrAmountOpenSetupRecurringDonationRoute(name: selectedCell.name, mediumId: medium.namespace, orgType: medium.type), withContext: self)
+                }
+            }
         }
         let cancelAction: UIAlertAction = UIAlertAction(title: "CancelShort".localized, style: .cancel)
         actionSheet?.addAction(oneTime)
         actionSheet?.addAction(recurring)
         actionSheet?.addAction(cancelAction)
     }
-
+    
     func handleDestinationAction(action: DiscoverOrAmountActions) {
         switch action {
         case .search:
@@ -197,7 +201,7 @@ extension DiscoverOrAmountSelectDestinationViewController {
         if destination.selected {
             //select row that should be selected
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-//            nextButton.isEnabled = true
+            //            nextButton.isEnabled = true
         }
         return destinationCell
     }
@@ -211,7 +215,7 @@ extension DiscoverOrAmountSelectDestinationViewController {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//        nextButton.isEnabled = false
+        //        nextButton.isEnabled = false
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -226,7 +230,7 @@ extension DiscoverOrAmountSelectDestinationViewController {
         }
         if ( (tableView.cellForRow(at: indexPath) as! DestinationTableCell).type == CollectGroupType.none) {
             // This is the special "report missing organisation item"
-//            nextButton.isEnabled = false
+            //            nextButton.isEnabled = false
             try? self.mediater.send(request: GoToAboutViewRoute(), withContext: self)
             return nil
         }
@@ -254,7 +258,7 @@ extension DiscoverOrAmountSelectDestinationViewController {
                     destination.type = cg.type
                     destination.selected = false
                     return destination
-            }
+                }
         }
         
         let missingOrganisationElement = DestinationViewModel()
@@ -274,7 +278,7 @@ extension DiscoverOrAmountSelectDestinationViewController {
         }) {
             filteredDestinations = filteredDestinations.filter { $0.type == CollectGroupType(rawValue: activeCategoryButton.tag) || $0.type == CollectGroupType.none }
         }
-
+        
         if let currentSearchText = searchBar.text, !currentSearchText.isEmpty {
             filteredDestinations = filteredDestinations.filter { $0.name.lowercased().contains(currentSearchText.lowercased()) || $0.type == CollectGroupType.none}
         }
