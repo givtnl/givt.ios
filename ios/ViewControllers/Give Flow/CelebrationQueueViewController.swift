@@ -56,7 +56,6 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationToken
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_fourth"))
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true

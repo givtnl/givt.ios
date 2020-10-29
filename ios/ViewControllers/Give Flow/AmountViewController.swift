@@ -25,8 +25,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
     @IBOutlet var pageControl: UIView!
     @IBOutlet var calcView: UIView!
     
-    @IBOutlet var menu: UIBarButtonItem!
-    @IBOutlet var btnFaq: UIBarButtonItem!
     @IBOutlet var btnRemove: CustomButton!
     @IBOutlet var btnNext: CustomButtonWithRightArrow!
     @IBOutlet var viewPresets: UIView!
@@ -40,8 +38,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Mater
     @IBOutlet weak var addCollectLabel: UILabel!
     
     @IBOutlet var btnComma: UIButton!
-    @IBOutlet weak var lblTitle: UINavigationItem!
-    @IBOutlet weak var screenTitle: UILabel!
     
     @IBOutlet var stackCollections: UIStackView!
     

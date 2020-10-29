@@ -101,8 +101,6 @@ class ChooseDestinationViewController: UIViewController, UITableViewDataSource, 
     //MARK: viewController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
-        navigationItem.accessibilityLabel = "ProgressBarStepOne".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false

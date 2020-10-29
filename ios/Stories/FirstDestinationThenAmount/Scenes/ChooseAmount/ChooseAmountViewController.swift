@@ -51,8 +51,7 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
         giveButton.labelText.adjustsFontSizeToFitWidth = true
         giveButton.accessibilityLabel = "Give".localized
         
-        screenTitle.text = "Amount".localized
-        navigationTitle.title = ""
+        navigationTitle.title = "Amount".localized
         
         removeButton.accessibilityLabel = "RemoveBtnAccessabilityLabel".localized
         
@@ -66,8 +65,6 @@ class ChooseAmountViewController: UIViewController, UIGestureRecognizerDelegate 
         
         decimalNotation = NSLocale.current.decimalSeparator! as String
 
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_second"))
-        navigationItem.accessibilityLabel = "ProgressBarStepTwo".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
     }

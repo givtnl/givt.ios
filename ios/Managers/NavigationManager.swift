@@ -39,12 +39,12 @@ class NavigationManager {
             
             currentAlert = UIAlertController(title: NSLocalizedString("ImportantReminder", comment: ""), message: NSLocalizedString("FinalizeRegistrationPopupText", comment: ""), preferredStyle: UIAlertController.Style.alert)
             currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("AskMeLater", comment: ""), style: UIAlertAction.Style.default, handler: { action in
-                if let ctx = context as? AmountViewController {
+                if let ctx = context as? MainViewController {
                     ctx.menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
                 }
             }))
             currentAlert?.addAction(UIAlertAction(title: NSLocalizedString("FinalizeRegistration", comment: ""), style: .cancel, handler: { (action) in
-                if let ctx = context as? AmountViewController {
+                if let ctx = context as? MainViewController {
                     ctx.menu.image = LoginManager.shared.isFullyRegistered ? #imageLiteral(resourceName: "menu_base") : #imageLiteral(resourceName: "menu_badge")
                 }
                 

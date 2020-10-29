@@ -17,7 +17,6 @@ class ScanViewController: BaseScanViewController {
     private var log = LogService.shared
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet var gif: UIImageView!
-    @IBOutlet var titleText: UILabel!
     @IBOutlet var bodyText: UILabel!
     @IBOutlet var btnGive: CustomButton!
     @IBOutlet var btnGiveDifferent: CustomButton!
@@ -33,7 +32,7 @@ class ScanViewController: BaseScanViewController {
         bodyText.text = NSLocalizedString("MakeContact", comment: "Contact maken")
         btnGiveDifferent.setTitle(NSLocalizedString("GiveYetDifferently", comment: ""), for: .normal)
         btnGive.accessibilityLabel = NSLocalizedString("GiveDifferently", comment: "")
-        titleText.text = NSLocalizedString("GiveWithYourPhone", comment: "")
+        navBar.title = NSLocalizedString("GiveWithYourPhone", comment: "")
         backBtn.accessibilityLabel = NSLocalizedString("Back", comment: "")
         btnGive.contentEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
 
@@ -100,8 +99,6 @@ class ScanViewController: BaseScanViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_third"))
-        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepThree", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor(rgb: 0xfbfbfb)
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false

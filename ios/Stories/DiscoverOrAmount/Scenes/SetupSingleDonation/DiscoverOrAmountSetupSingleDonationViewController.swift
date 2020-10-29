@@ -21,7 +21,6 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
     @IBOutlet var giveButton: CustomButtonWithRightArrow!
     @IBOutlet var removeButton: CustomButton!
     @IBOutlet var commaButton: UIButton!
-    @IBOutlet weak var screenTitle: UILabel!
     @IBOutlet weak var navigationTitle: UINavigationItem!
     @IBOutlet weak var amountControl: CollectionView!
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -51,8 +50,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
         giveButton.labelText.adjustsFontSizeToFitWidth = true
         giveButton.accessibilityLabel = "Give".localized
         
-        screenTitle.text = "Amount".localized
-        navigationTitle.title = ""
+        navigationTitle.title = "Amount".localized
         
         removeButton.accessibilityLabel = "RemoveBtnAccessabilityLabel".localized
         
@@ -65,9 +63,6 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
         super.viewWillAppear(animated)
         
         decimalNotation = NSLocale.current.decimalSeparator! as String
-
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_second"))
-        navigationItem.accessibilityLabel = "ProgressBarStepTwo".localized
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
     }
