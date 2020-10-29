@@ -154,7 +154,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
                             return
                         }
                         DispatchQueue.main.async {
-                            try? self.mediater.send(request: PopToRecurringDonationOverviewRoute(), withContext: self)
+                            try? self.mediater.send(request: DiscoverOrAmountOpenSuccessRoute(), withContext: self)
                         }
                     }
                 } catch {
