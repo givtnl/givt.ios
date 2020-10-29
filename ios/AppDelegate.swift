@@ -293,8 +293,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
         
         //-- DISCOVER OR AMOUNT: ROUTES
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSelectDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: BackToMainViewRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSelectDestinationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSetupSingleDonationRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSetupRecurringDonationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSafariRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountBackToSelectDestinationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenChangeAmountLimitRouteHandler())
+        Mediater.shared.registerPreProcessor(processor: DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler())
     }
 }
