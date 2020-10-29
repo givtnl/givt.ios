@@ -1268,15 +1268,9 @@ Kijk voor de status in je overzicht.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Dit is het Givt-moment.  Beweeg nu je telefoon langs de collectemand." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="gx7-9u-1ov">
-                                <rect key="frame" x="20" y="130.5" width="374" height="202.5"/>
+                                <rect key="frame" x="20" y="88" width="374" height="245"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <color key="textColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMt-ml-2d9">
-                                <rect key="frame" x="20" y="88" width="374" height="27.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atw-kU-0kr" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
@@ -1309,21 +1303,18 @@ Kijk voor de status in je overzicht.</string>
                         <color key="tintColor" red="0.17846655850000001" green="0.16241741179999999" blue="0.34955233340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="YMt-ml-2d9" firstAttribute="top" secondItem="zQK-V4-Qej" secondAttribute="top" id="0m6-ZN-cnm"/>
-                            <constraint firstItem="zQK-V4-Qej" firstAttribute="trailing" secondItem="YMt-ml-2d9" secondAttribute="trailing" constant="20" id="2S6-2x-tZv"/>
                             <constraint firstItem="UdD-yT-jJx" firstAttribute="top" secondItem="Atw-kU-0kr" secondAttribute="bottom" constant="20" id="3Bv-AB-dfA"/>
                             <constraint firstItem="dca-BL-A98" firstAttribute="centerY" secondItem="q64-wl-MlZ" secondAttribute="centerY" priority="750" id="BWU-B6-7qS"/>
                             <constraint firstItem="dca-BL-A98" firstAttribute="leading" secondItem="zQK-V4-Qej" secondAttribute="leading" id="By8-w8-MEe"/>
                             <constraint firstItem="dca-BL-A98" firstAttribute="top" relation="lessThanOrEqual" secondItem="gx7-9u-1ov" secondAttribute="bottom" constant="15" id="Crx-9q-erT"/>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="trailing" secondItem="gx7-9u-1ov" secondAttribute="trailing" constant="20" id="PWz-8M-7kC"/>
-                            <constraint firstItem="gx7-9u-1ov" firstAttribute="top" secondItem="YMt-ml-2d9" secondAttribute="bottom" constant="15" id="TuN-fg-HbQ"/>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="trailing" secondItem="Atw-kU-0kr" secondAttribute="trailing" constant="20" id="afS-85-Kbr"/>
                             <constraint firstItem="Atw-kU-0kr" firstAttribute="leading" secondItem="zQK-V4-Qej" secondAttribute="leading" constant="20" id="c5h-Xy-T6M"/>
                             <constraint firstItem="gx7-9u-1ov" firstAttribute="leading" secondItem="zQK-V4-Qej" secondAttribute="leading" constant="20" id="fl0-hj-bPL"/>
-                            <constraint firstItem="YMt-ml-2d9" firstAttribute="leading" secondItem="zQK-V4-Qej" secondAttribute="leading" constant="20" id="gEF-mj-ebX"/>
                             <constraint firstItem="UdD-yT-jJx" firstAttribute="leading" secondItem="zQK-V4-Qej" secondAttribute="leading" constant="20" id="kWD-tG-86Y"/>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="bottom" secondItem="UdD-yT-jJx" secondAttribute="bottom" constant="20" id="mBH-7M-mwq"/>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="trailing" secondItem="dca-BL-A98" secondAttribute="trailing" id="rNe-LC-Sxy"/>
+                            <constraint firstItem="gx7-9u-1ov" firstAttribute="top" secondItem="zQK-V4-Qej" secondAttribute="top" id="s7v-1W-so1"/>
                             <constraint firstItem="zQK-V4-Qej" firstAttribute="trailing" secondItem="UdD-yT-jJx" secondAttribute="trailing" constant="20" id="xeI-hx-sAu"/>
                         </constraints>
                     </view>
@@ -1343,7 +1334,7 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="btnGive" destination="Atw-kU-0kr" id="Oeg-M9-tvg"/>
                         <outlet property="btnGiveDifferent" destination="UdD-yT-jJx" id="Ob7-Rt-vkE"/>
                         <outlet property="gif" destination="dca-BL-A98" id="vOl-gh-cBj"/>
-                        <outlet property="titleText" destination="YMt-ml-2d9" id="5aZ-oM-qI4"/>
+                        <outlet property="navBar" destination="eIV-KD-Dxj" id="bbi-qs-PQg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4KZ-3p-NFh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1414,14 +1405,8 @@ Kijk voor de status in je overzicht.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDz-oD-TuA">
-                                <rect key="frame" x="20" y="88" width="374" height="27.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHR-GM-wez">
-                                <rect key="frame" x="0.0" y="125.5" width="414" height="80"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oAt-na-8SN">
                                         <rect key="frame" x="20" y="0.0" width="374" height="80"/>
@@ -1491,11 +1476,11 @@ Kijk voor de status in je overzicht.</string>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Z0c-L7-8Js">
-                                <rect key="frame" x="0.0" y="205.5" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="168" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yvi-za-LaC">
-                                <rect key="frame" x="0.0" y="261.5" width="414" height="516.5"/>
+                                <rect key="frame" x="0.0" y="224" width="414" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -1552,18 +1537,15 @@ Kijk voor de status in je overzicht.</string>
                         <constraints>
                             <constraint firstItem="jv0-et-J5F" firstAttribute="trailing" secondItem="BvS-eI-dex" secondAttribute="trailing" constant="20" id="2KG-sL-Vnr"/>
                             <constraint firstItem="cHR-GM-wez" firstAttribute="leading" secondItem="jv0-et-J5F" secondAttribute="leading" id="2zP-Xu-EtH"/>
-                            <constraint firstItem="cHR-GM-wez" firstAttribute="top" secondItem="cDz-oD-TuA" secondAttribute="bottom" constant="10" id="8Ac-dX-5nL"/>
                             <constraint firstItem="BvS-eI-dex" firstAttribute="leading" secondItem="jv0-et-J5F" secondAttribute="leading" constant="20" id="Aoi-dR-gW5"/>
                             <constraint firstItem="Z0c-L7-8Js" firstAttribute="trailing" secondItem="jv0-et-J5F" secondAttribute="trailing" id="DRA-Aa-f3e"/>
                             <constraint firstItem="jv0-et-J5F" firstAttribute="trailing" secondItem="Yvi-za-LaC" secondAttribute="trailing" id="DtD-nS-8YQ"/>
-                            <constraint firstItem="jv0-et-J5F" firstAttribute="trailing" secondItem="cDz-oD-TuA" secondAttribute="trailing" constant="20" id="I83-gh-AB3"/>
                             <constraint firstItem="BvS-eI-dex" firstAttribute="top" secondItem="Yvi-za-LaC" secondAttribute="bottom" constant="20" id="K0e-TV-z1C"/>
                             <constraint firstItem="Z0c-L7-8Js" firstAttribute="top" secondItem="cHR-GM-wez" secondAttribute="bottom" id="Qsa-V0-JH7"/>
                             <constraint firstItem="Z0c-L7-8Js" firstAttribute="leading" secondItem="jv0-et-J5F" secondAttribute="leading" id="b8b-oJ-bv1"/>
                             <constraint firstItem="jv0-et-J5F" firstAttribute="bottom" secondItem="BvS-eI-dex" secondAttribute="bottom" constant="20" id="cVB-xI-1kY"/>
-                            <constraint firstItem="cDz-oD-TuA" firstAttribute="top" secondItem="jv0-et-J5F" secondAttribute="top" id="jbE-aO-pat"/>
+                            <constraint firstItem="cHR-GM-wez" firstAttribute="top" secondItem="jv0-et-J5F" secondAttribute="top" id="gAt-jd-WS4"/>
                             <constraint firstItem="jv0-et-J5F" firstAttribute="trailing" secondItem="cHR-GM-wez" secondAttribute="trailing" id="kgz-pB-2H7"/>
-                            <constraint firstItem="cDz-oD-TuA" firstAttribute="leading" secondItem="jv0-et-J5F" secondAttribute="leading" constant="20" id="o3v-HQ-JK6"/>
                             <constraint firstItem="Yvi-za-LaC" firstAttribute="leading" secondItem="jv0-et-J5F" secondAttribute="leading" id="vIZ-7p-PLW"/>
                             <constraint firstItem="Yvi-za-LaC" firstAttribute="top" secondItem="Z0c-L7-8Js" secondAttribute="bottom" id="wwN-RL-kWI"/>
                         </constraints>
@@ -1589,7 +1571,6 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="stichtingWidth" destination="UV8-5j-Nrb" id="xud-80-xF8"/>
                         <outlet property="stichtingen" destination="dla-KA-vJ8" id="zFj-Cr-2fh"/>
                         <outlet property="tableView" destination="Yvi-za-LaC" id="ppn-Vn-f8j"/>
-                        <outlet property="titleText" destination="cDz-oD-TuA" id="O4u-9a-IeL"/>
                         <outlet property="typeStackView" destination="oAt-na-8SN" id="HUO-jz-mnz"/>
                     </connections>
                 </viewController>
@@ -1605,14 +1586,8 @@ Kijk voor de status in je overzicht.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoN-z2-xhE">
-                                <rect key="frame" x="20" y="88" width="374" height="28"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QT6-ho-fo6">
-                                <rect key="frame" x="0.0" y="196" width="414" height="666"/>
+                                <rect key="frame" x="0.0" y="153" width="414" height="709"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="Tt0-8d-fGU">
                                         <rect key="frame" x="40" y="40" width="40" height="40"/>
@@ -1629,14 +1604,14 @@ Kijk voor de status in je overzicht.</string>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="Tlo-R9-tPd">
-                                        <rect key="frame" x="40" y="586" width="40" height="40"/>
+                                        <rect key="frame" x="40" y="629" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="A2c-Hn-ust"/>
                                             <constraint firstAttribute="width" constant="40" id="Sdj-a6-nn5"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner" translatesAutoresizingMaskIntoConstraints="NO" id="zgG-fD-qhK">
-                                        <rect key="frame" x="334" y="586" width="40" height="40"/>
+                                        <rect key="frame" x="334" y="629" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="S3w-wG-aVf"/>
                                             <constraint firstAttribute="width" constant="40" id="vCK-p5-HNh"/>
@@ -1656,7 +1631,7 @@ Kijk voor de status in je overzicht.</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nu goed mikken! Scan de QR-code en geef." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ug-pI-rYK">
-                                <rect key="frame" x="40" y="131" width="334" height="55"/>
+                                <rect key="frame" x="40" y="88" width="334" height="55"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1667,14 +1642,11 @@ Kijk voor de status in je overzicht.</string>
                         <constraints>
                             <constraint firstItem="0lA-UE-6Pk" firstAttribute="trailing" secondItem="QT6-ho-fo6" secondAttribute="trailing" id="Hd7-qT-edo"/>
                             <constraint firstItem="0lA-UE-6Pk" firstAttribute="bottom" secondItem="QT6-ho-fo6" secondAttribute="bottom" id="MFC-1v-FcA"/>
-                            <constraint firstItem="xoN-z2-xhE" firstAttribute="top" secondItem="0lA-UE-6Pk" secondAttribute="top" id="T60-yW-9Z8"/>
+                            <constraint firstItem="1Ug-pI-rYK" firstAttribute="top" secondItem="0lA-UE-6Pk" secondAttribute="top" id="cnD-nB-O8R"/>
                             <constraint firstItem="QT6-ho-fo6" firstAttribute="leading" secondItem="0lA-UE-6Pk" secondAttribute="leading" id="era-JR-I5M"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1Ug-pI-rYK" secondAttribute="trailing" constant="20" id="gt2-eo-HqY"/>
-                            <constraint firstItem="1Ug-pI-rYK" firstAttribute="top" secondItem="xoN-z2-xhE" secondAttribute="bottom" constant="15" id="kOX-EU-Rgb"/>
                             <constraint firstItem="QT6-ho-fo6" firstAttribute="top" secondItem="1Ug-pI-rYK" secondAttribute="bottom" constant="10" id="m7a-Xk-gf2"/>
                             <constraint firstItem="1Ug-pI-rYK" firstAttribute="leading" secondItem="ZtI-sK-Uzf" secondAttribute="leadingMargin" constant="20" id="z6v-JO-ny9"/>
-                            <constraint firstItem="xoN-z2-xhE" firstAttribute="leading" secondItem="0lA-UE-6Pk" secondAttribute="leading" constant="20" id="zHR-9p-jbc"/>
-                            <constraint firstItem="0lA-UE-6Pk" firstAttribute="trailing" secondItem="xoN-z2-xhE" secondAttribute="trailing" constant="20" id="zy2-nw-SEV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JLi-K3-eRm">
@@ -1693,7 +1665,6 @@ Kijk voor de status in je overzicht.</string>
                         <outlet property="containerVIew" destination="QT6-ho-fo6" id="Ape-g3-qU0"/>
                         <outlet property="navBar" destination="JLi-K3-eRm" id="lSn-pF-uTO"/>
                         <outlet property="subTitle" destination="1Ug-pI-rYK" id="RDZ-Yu-IEj"/>
-                        <outlet property="titleText" destination="xoN-z2-xhE" id="cvo-x9-NBl"/>
                         <outlet property="topLeft" destination="Tt0-8d-fGU" id="LZA-3J-AdD"/>
                         <outlet property="topRight" destination="ffd-0b-cJR" id="dX0-8V-2lR"/>
                     </connections>
@@ -2233,14 +2204,8 @@ Kijk voor de status in je overzicht.</string>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="736" translatesAutoresizingMaskIntoConstraints="NO" id="cir-JG-aZJ">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Hoe wil je geven ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7V-XZ-zeg">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="27.5"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="20"/>
-                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKm-Yo-Wje">
-                                        <rect key="frame" x="20" y="27.5" width="374" height="96"/>
+                                        <rect key="frame" x="20" y="20" width="374" height="103.5"/>
                                         <string key="text">Je kan op verschillende manieren ‘Givten’. 
 Hier kun je kiezen wat op dit moment het 
 best bij jou past.</string>
@@ -2326,10 +2291,9 @@ best bij jou past.</string>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="D7V-XZ-zeg" firstAttribute="top" secondItem="cir-JG-aZJ" secondAttribute="top" id="1m8-UU-P6S"/>
+                                    <constraint firstItem="hKm-Yo-Wje" firstAttribute="top" secondItem="cir-JG-aZJ" secondAttribute="top" constant="20" id="3I0-tU-PgZ"/>
                                     <constraint firstAttribute="bottom" secondItem="4mR-Ef-QWQ" secondAttribute="bottom" id="85C-K2-wLG"/>
                                     <constraint firstItem="ZLY-4u-8ip" firstAttribute="leading" secondItem="cir-JG-aZJ" secondAttribute="leading" id="GmL-fG-mYg"/>
-                                    <constraint firstAttribute="trailing" secondItem="D7V-XZ-zeg" secondAttribute="trailing" constant="20" id="HlF-0u-Qm1"/>
                                     <constraint firstAttribute="trailing" secondItem="ZLY-4u-8ip" secondAttribute="trailing" id="N4X-dp-lcT"/>
                                     <constraint firstItem="4mR-Ef-QWQ" firstAttribute="height" secondItem="cir-JG-aZJ" secondAttribute="height" multiplier="0.83" id="QaG-Bf-KcS"/>
                                     <constraint firstItem="4mR-Ef-QWQ" firstAttribute="leading" secondItem="cir-JG-aZJ" secondAttribute="leading" id="SUn-tv-yGa"/>
@@ -2338,8 +2302,6 @@ best bij jou past.</string>
                                     <constraint firstAttribute="bottom" secondItem="ZLY-4u-8ip" secondAttribute="bottom" constant="-36" id="aRk-zl-3kE"/>
                                     <constraint firstItem="hKm-Yo-Wje" firstAttribute="leading" secondItem="cir-JG-aZJ" secondAttribute="leading" constant="20" id="fbq-rq-cZ6"/>
                                     <constraint firstItem="ZLY-4u-8ip" firstAttribute="height" secondItem="cir-JG-aZJ" secondAttribute="height" multiplier="0.78" id="kJD-nW-eyP"/>
-                                    <constraint firstItem="D7V-XZ-zeg" firstAttribute="leading" secondItem="cir-JG-aZJ" secondAttribute="leading" constant="20" id="kWW-Hb-g1W"/>
-                                    <constraint firstItem="hKm-Yo-Wje" firstAttribute="top" secondItem="D7V-XZ-zeg" secondAttribute="bottom" id="rwq-24-fP3"/>
                                     <constraint firstAttribute="trailing" secondItem="hKm-Yo-Wje" secondAttribute="trailing" constant="20" id="tQI-ud-HaI"/>
                                 </constraints>
                             </view>
@@ -2365,10 +2327,10 @@ best bij jou past.</string>
                         <outlet property="backButton" destination="7f6-1i-y0U" id="fSM-aD-8bf"/>
                         <outlet property="firstSelection" destination="wbX-o1-bs5" id="mVm-dH-QlS"/>
                         <outlet property="fourthSelection" destination="AIl-Za-biW" id="66N-YD-zJJ"/>
+                        <outlet property="navigationTitle" destination="Y7e-Us-ZPY" id="bnc-4Z-1kB"/>
                         <outlet property="secondSelection" destination="eUc-Jb-nhG" id="Cj4-wC-WDS"/>
                         <outlet property="subtextLabel" destination="hKm-Yo-Wje" id="0ov-go-QAt"/>
                         <outlet property="thirdSelection" destination="VCJ-rL-9Ah" id="4mv-cP-qlk"/>
-                        <outlet property="titleLabel" destination="D7V-XZ-zeg" id="34N-2T-vcD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z7x-jb-VlY" userLabel="First Responder" sceneMemberID="firstResponder"/>

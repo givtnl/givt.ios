@@ -15,13 +15,13 @@ class ChooseContextViewController: UIViewController {
 
     @IBOutlet weak var backButton: UIBarButtonItem!
     
-    @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtextLabel: UILabel!
     
     @IBOutlet var firstSelection: SelectContextView!
     @IBOutlet var secondSelection: SelectContextView!
     @IBOutlet var thirdSelection: SelectContextView!
     @IBOutlet var fourthSelection: SelectContextView!
+    @IBOutlet weak var navigationTitle: UINavigationItem!
     
     lazy var contexts: [Context] = {
         let collectionDevice = Context(title: NSLocalizedString("GivingContextCollectionBag", comment: ""), subtitle: NSLocalizedString("SelectContextCollect", comment: ""), type: ContextType.GiveWithBluetooth, image: #imageLiteral(resourceName: "collectebus_grijs"))
@@ -65,7 +65,7 @@ class ChooseContextViewController: UIViewController {
         super.viewDidLoad()
         backButton.accessibilityLabel = NSLocalizedString("Back", comment: "")
         
-        titleLabel.text = NSLocalizedString("SelectContext", comment: "")
+        navigationTitle.title = NSLocalizedString("SelectContext", comment: "")
 
         subtextLabel.text = NSLocalizedString("GiveSubtitle", comment: "")
         subtextLabel.adjustsFontSizeToFitWidth = true
@@ -108,8 +108,6 @@ class ChooseContextViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_second"))
-        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepTwo", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false

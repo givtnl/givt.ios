@@ -1208,12 +1208,6 @@
                                             <constraint firstAttribute="bottom" secondItem="rLT-Di-07D" secondAttribute="bottom" id="w4w-6c-C7W"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hoeveel wil je geven ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAW-yE-PD9">
-                                        <rect key="frame" x="22" y="0.0" width="370" height="30.5"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="22"/>
-                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxi-pf-6sV" userLabel="nextButton" customClass="CustomButtonWithRightArrow" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="205.5" y="356.5" width="186.5" height="44"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.34999999999999998" height="1"/>
@@ -1240,8 +1234,8 @@
                                             <action selector="giveButtonTouchDragOutside:" destination="0pP-OR-icK" eventType="touchDragOutside" id="I36-rp-CBM"/>
                                         </connections>
                                     </button>
-                                    <view tag="1" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9f-Gw-gX6" userLabel="Amount" customClass="CollectionView" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="56" width="374" height="90"/>
+                                    <view tag="1" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9f-Gw-gX6" userLabel="Amount" customClass="CollectionView" customModule="ios" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="374" height="90"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="90" id="np4-19-pI5"/>
@@ -1250,17 +1244,14 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="W9f-Gw-gX6" firstAttribute="top" secondItem="LAW-yE-PD9" secondAttribute="bottom" constant="20" id="264-o9-CQB"/>
                                     <constraint firstItem="WGI-T3-MiM" firstAttribute="leading" secondItem="0BK-pk-bgB" secondAttribute="leading" id="38P-Pq-Z6b"/>
-                                    <constraint firstAttribute="trailing" secondItem="LAW-yE-PD9" secondAttribute="trailing" constant="22" id="5fK-xu-ApZ"/>
                                     <constraint firstAttribute="bottom" secondItem="WGI-T3-MiM" secondAttribute="bottom" id="9TF-VZ-eXi"/>
                                     <constraint firstItem="WGI-T3-MiM" firstAttribute="top" secondItem="Jxi-pf-6sV" secondAttribute="bottom" constant="20" id="EdL-Q7-p9y"/>
                                     <constraint firstItem="W9f-Gw-gX6" firstAttribute="leading" secondItem="0BK-pk-bgB" secondAttribute="leading" constant="20" id="VFB-3P-Giw"/>
                                     <constraint firstAttribute="trailing" secondItem="W9f-Gw-gX6" secondAttribute="trailing" constant="20" id="WGA-cU-lVQ"/>
+                                    <constraint firstItem="W9f-Gw-gX6" firstAttribute="top" secondItem="0BK-pk-bgB" secondAttribute="top" constant="20" id="dUA-Vg-5pP"/>
                                     <constraint firstAttribute="trailing" secondItem="WGI-T3-MiM" secondAttribute="trailing" id="hP5-rp-Mcu"/>
                                     <constraint firstItem="WGI-T3-MiM" firstAttribute="height" secondItem="0BK-pk-bgB" secondAttribute="height" multiplier="0.42" id="mMI-8N-iGx"/>
-                                    <constraint firstItem="LAW-yE-PD9" firstAttribute="top" secondItem="0BK-pk-bgB" secondAttribute="top" id="oSn-4V-W3M"/>
-                                    <constraint firstItem="LAW-yE-PD9" firstAttribute="leading" secondItem="0BK-pk-bgB" secondAttribute="leading" constant="22" id="rZu-R3-WFK"/>
                                     <constraint firstAttribute="trailing" secondItem="Jxi-pf-6sV" secondAttribute="trailing" constant="22" id="rzA-Iu-Z8y"/>
                                     <constraint firstItem="Jxi-pf-6sV" firstAttribute="width" secondItem="0BK-pk-bgB" secondAttribute="width" multiplier="0.45" id="zb0-js-9wS"/>
                                 </constraints>
@@ -1293,7 +1284,6 @@
                         <outlet property="giveButton" destination="Jxi-pf-6sV" id="rBQ-70-iUo"/>
                         <outlet property="navigationTitle" destination="Is8-P3-VP2" id="y8y-FN-4Z8"/>
                         <outlet property="removeButton" destination="En9-WY-UxY" id="UlW-e9-Frn"/>
-                        <outlet property="screenTitle" destination="LAW-yE-PD9" id="PxA-TC-T0b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p46-ab-j6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
