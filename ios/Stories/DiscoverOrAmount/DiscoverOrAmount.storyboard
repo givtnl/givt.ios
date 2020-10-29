@@ -73,16 +73,16 @@
                                         <rect key="frame" x="197" y="0.0" width="177" height="70"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37X-d2-KvQ">
-                                                <rect key="frame" x="20" y="12" width="137" height="46.5"/>
+                                                <rect key="frame" x="32.5" y="23.5" width="112.5" height="23.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="compass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mlc-He-5Wd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="16.5" height="46.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="16.5" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="FontAwesome5Free-Regular" family="Font Awesome 5 Free" pointSize="17"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ontdek  alles" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="kXy-Ab-uvL">
-                                                        <rect key="frame" x="36.5" y="0.0" width="100.5" height="46.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bekijk alle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="kXy-Ab-uvL">
+                                                        <rect key="frame" x="36.5" y="0.0" width="76" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -92,9 +92,9 @@
                                                 <constraints>
                                                     <constraint firstItem="kXy-Ab-uvL" firstAttribute="leading" secondItem="Mlc-He-5Wd" secondAttribute="trailing" constant="20" id="66t-qg-PQc"/>
                                                     <constraint firstAttribute="bottom" secondItem="Mlc-He-5Wd" secondAttribute="bottom" id="9Pl-rb-ALz"/>
-                                                    <constraint firstAttribute="trailing" secondItem="kXy-Ab-uvL" secondAttribute="trailing" id="9rT-pm-EdQ"/>
                                                     <constraint firstItem="Mlc-He-5Wd" firstAttribute="leading" secondItem="37X-d2-KvQ" secondAttribute="leading" id="P6Y-12-jUx"/>
                                                     <constraint firstItem="Mlc-He-5Wd" firstAttribute="top" secondItem="37X-d2-KvQ" secondAttribute="top" id="QVo-bK-FhF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="kXy-Ab-uvL" secondAttribute="trailing" id="ecM-kO-gUV"/>
                                                     <constraint firstAttribute="bottom" secondItem="kXy-Ab-uvL" secondAttribute="bottom" id="oUP-P9-CbE"/>
                                                     <constraint firstItem="kXy-Ab-uvL" firstAttribute="top" secondItem="37X-d2-KvQ" secondAttribute="top" id="uMu-3d-EwV"/>
                                                 </constraints>
@@ -103,9 +103,8 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <gestureRecognizers/>
                                         <constraints>
-                                            <constraint firstItem="37X-d2-KvQ" firstAttribute="centerY" secondItem="Eni-2D-vD5" secondAttribute="centerY" id="XkL-yj-Ti5"/>
-                                            <constraint firstAttribute="trailing" secondItem="37X-d2-KvQ" secondAttribute="trailing" constant="20" id="Yny-PE-jXR"/>
-                                            <constraint firstItem="37X-d2-KvQ" firstAttribute="leading" secondItem="Eni-2D-vD5" secondAttribute="leading" constant="20" id="gF7-yC-RyS"/>
+                                            <constraint firstItem="37X-d2-KvQ" firstAttribute="centerY" secondItem="Eni-2D-vD5" secondAttribute="centerY" id="2TL-Qz-IXG"/>
+                                            <constraint firstItem="37X-d2-KvQ" firstAttribute="centerX" secondItem="Eni-2D-vD5" secondAttribute="centerX" id="yaa-w9-c5b"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="Iee-jy-fr4" appends="YES" id="v7s-vc-xpe"/>
