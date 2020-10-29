@@ -1301,8 +1301,122 @@
             </objects>
             <point key="canvasLocation" x="2151" y="27"/>
         </scene>
+        <!--Discover Or Amount Success View Controller-->
+        <scene sceneID="nIB-xO-uSQ">
+            <objects>
+                <viewController storyboardIdentifier="DiscoverOrAmountSuccessViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2TQ-wy-z94" customClass="DiscoverOrAmountSuccessViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6mk-sX-Ghq">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="givyGave" translatesAutoresizingMaskIntoConstraints="NO" id="Ji8-t3-gZ5">
+                                <rect key="frame" x="199" y="547" width="136" height="197"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="136" id="WJt-ti-1so"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="197" id="fkz-zp-6kL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="WZf-Ta-Oqf">
+                                <rect key="frame" x="20" y="138.5" width="374" height="49.5"/>
+                                <string key="text">Bedankt voor je Givt!
+Kijk voor de status in je overzicht.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MO2-jA-7me">
+                                <rect key="frame" x="20" y="744" width="374" height="98"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amf-Z1-2ad" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                        <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="r5D-IT-i58"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                        <state key="normal" title="Keer terug"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                                <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="goBackButtonPressed:" destination="2TQ-wy-z94" eventType="touchUpInside" id="eBM-oF-Sf5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0el-wK-yrU" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="54" width="374" height="44"/>
+                                        <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="atJ-BH-s7j"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                        <state key="normal" title="Deel met vrienden"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                <color key="value" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                                <color key="value" red="0.062745098040000002" green="0.054901960780000002" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="shareButtonPressed:" destination="2TQ-wy-z94" eventType="touchUpInside" id="wuo-dy-fUf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yes, gelukt!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="czB-XA-j86">
+                                <rect key="frame" x="20" y="64" width="374" height="34.5"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
+                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="onU-h0-qfk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MO2-jA-7me" firstAttribute="leading" secondItem="onU-h0-qfk" secondAttribute="leading" constant="20" id="03G-4x-Qei"/>
+                            <constraint firstItem="czB-XA-j86" firstAttribute="top" secondItem="onU-h0-qfk" secondAttribute="top" constant="20" id="4uz-aR-yPa"/>
+                            <constraint firstItem="WZf-Ta-Oqf" firstAttribute="top" secondItem="czB-XA-j86" secondAttribute="bottom" constant="40" id="7pI-75-FVz"/>
+                            <constraint firstItem="Ji8-t3-gZ5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WZf-Ta-Oqf" secondAttribute="bottom" id="F6A-kV-gyL"/>
+                            <constraint firstItem="Ji8-t3-gZ5" firstAttribute="centerX" secondItem="6mk-sX-Ghq" secondAttribute="centerX" constant="60" id="FDs-Xh-bib"/>
+                            <constraint firstItem="onU-h0-qfk" firstAttribute="trailing" secondItem="WZf-Ta-Oqf" secondAttribute="trailing" constant="20" id="IHb-Iu-pF9"/>
+                            <constraint firstItem="czB-XA-j86" firstAttribute="leading" secondItem="onU-h0-qfk" secondAttribute="leading" constant="20" id="JRC-eo-mni"/>
+                            <constraint firstItem="onU-h0-qfk" firstAttribute="trailing" secondItem="MO2-jA-7me" secondAttribute="trailing" constant="20" id="PKk-VW-Fue"/>
+                            <constraint firstItem="onU-h0-qfk" firstAttribute="trailing" secondItem="czB-XA-j86" secondAttribute="trailing" constant="20" id="Qtk-Eo-csF"/>
+                            <constraint firstItem="WZf-Ta-Oqf" firstAttribute="leading" secondItem="onU-h0-qfk" secondAttribute="leading" constant="20" id="agj-HU-gBt"/>
+                            <constraint firstItem="onU-h0-qfk" firstAttribute="bottom" secondItem="MO2-jA-7me" secondAttribute="bottom" constant="20" id="ds4-GP-c5H"/>
+                            <constraint firstItem="MO2-jA-7me" firstAttribute="top" secondItem="Ji8-t3-gZ5" secondAttribute="bottom" id="tRV-Oj-zBl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="goBackButton" destination="Amf-Z1-2ad" id="J01-Xt-pp5"/>
+                        <outlet property="shareButton" destination="0el-wK-yrU" id="gmD-By-cxd"/>
+                        <outlet property="subtitleLabel" destination="WZf-Ta-Oqf" id="bi9-im-qjc"/>
+                        <outlet property="titleLabel" destination="czB-XA-j86" id="9Be-NE-hxS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HRV-LX-Y3R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2826" y="27"/>
+        </scene>
     </scenes>
     <designables>
+        <designable name="0el-wK-yrU">
+            <size key="intrinsicContentSize" width="158" height="37"/>
+        </designable>
         <designable name="6oN-C6-1ZT">
             <size key="intrinsicContentSize" width="30" height="40"/>
         </designable>
@@ -1311,6 +1425,9 @@
         </designable>
         <designable name="8xv-LH-K7n">
             <size key="intrinsicContentSize" width="30" height="40"/>
+        </designable>
+        <designable name="Amf-Z1-2ad">
+            <size key="intrinsicContentSize" width="93" height="37"/>
         </designable>
         <designable name="En9-WY-UxY">
             <size key="intrinsicContentSize" width="24" height="22"/>
@@ -1334,7 +1451,7 @@
             <size key="intrinsicContentSize" width="30" height="40"/>
         </designable>
         <designable name="rHG-nN-HFC">
-            <size key="intrinsicContentSize" width="56" height="25"/>
+            <size key="intrinsicContentSize" width="56" height="37"/>
         </designable>
         <designable name="vTT-9f-akz">
             <size key="intrinsicContentSize" width="30" height="40"/>
@@ -1359,6 +1476,7 @@
         <image name="church_white" width="50" height="50"/>
         <image name="dropdown.png" width="128" height="128"/>
         <image name="erase_new" width="24" height="18"/>
+        <image name="givyGave" width="136" height="197"/>
         <image name="stichting_white" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
