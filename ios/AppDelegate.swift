@@ -270,12 +270,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
         
         // -- NAVIGATION
-        Mediater.shared.registerHandler(handler: OpenChooseAmountRouteHandler())
-        Mediater.shared.registerHandler(handler: BackToChooseDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: BackToMainRouteHandler())
-        Mediater.shared.registerHandler(handler: ChangeAmountLimitRouteHandler())
-        Mediater.shared.registerPreProcessor(processor: ChangeAmountLimitRoutePreHandler())
-        Mediater.shared.registerHandler(handler: GoToSafariRouteHandler())
         Mediater.shared.registerHandler(handler: FinalizeGivingRouteHandler())
         Mediater.shared.registerHandler(handler: DestinationSelectedRouteHandler())
         Mediater.shared.registerHandler(handler: SetupRecurringDonationChooseDestinationRouteHandler())
