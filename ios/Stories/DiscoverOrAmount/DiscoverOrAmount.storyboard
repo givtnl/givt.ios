@@ -1310,7 +1310,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="givyGave" translatesAutoresizingMaskIntoConstraints="NO" id="Ji8-t3-gZ5">
-                                <rect key="frame" x="199" y="547" width="136" height="197"/>
+                                <rect key="frame" x="199" y="601" width="136" height="197"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" id="WJt-ti-1so"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="197" id="fkz-zp-6kL"/>
@@ -1325,7 +1325,7 @@ Kijk voor de status in je overzicht.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MO2-jA-7me">
-                                <rect key="frame" x="20" y="744" width="374" height="98"/>
+                                <rect key="frame" x="20" y="798" width="374" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amf-Z1-2ad" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
@@ -1349,30 +1349,6 @@ Kijk voor de status in je overzicht.</string>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="goBackButtonPressed:" destination="2TQ-wy-z94" eventType="touchUpInside" id="eBM-oF-Sf5"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0el-wK-yrU" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="54" width="374" height="44"/>
-                                        <color key="backgroundColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="atJ-BH-s7j"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
-                                        <state key="normal" title="Deel met vrienden"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                                <color key="value" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                                <color key="value" red="0.062745098040000002" green="0.054901960780000002" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="shareButtonPressed:" destination="2TQ-wy-z94" eventType="touchUpInside" id="wuo-dy-fUf"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1403,7 +1379,6 @@ Kijk voor de status in je overzicht.</string>
                     </view>
                     <connections>
                         <outlet property="goBackButton" destination="Amf-Z1-2ad" id="J01-Xt-pp5"/>
-                        <outlet property="shareButton" destination="0el-wK-yrU" id="gmD-By-cxd"/>
                         <outlet property="subtitleLabel" destination="WZf-Ta-Oqf" id="bi9-im-qjc"/>
                         <outlet property="titleLabel" destination="czB-XA-j86" id="9Be-NE-hxS"/>
                     </connections>
@@ -1414,9 +1389,6 @@ Kijk voor de status in je overzicht.</string>
         </scene>
     </scenes>
     <designables>
-        <designable name="0el-wK-yrU">
-            <size key="intrinsicContentSize" width="158" height="37"/>
-        </designable>
         <designable name="6oN-C6-1ZT">
             <size key="intrinsicContentSize" width="30" height="40"/>
         </designable>

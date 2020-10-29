@@ -11,10 +11,11 @@ import UIKit
 import SVProgressHUD
 
 class DiscoverOrAmountSuccessViewController: UIViewController {
+    private var mediater: MediaterWithContextProtocol = Mediater.shared
+
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var goBackButton: CustomButton!
-    @IBOutlet weak var shareButton: CustomButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,13 +24,17 @@ class DiscoverOrAmountSuccessViewController: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         navigationItem.hidesBackButton = true
         SVProgressHUD.dismiss()
+        
+        setupLabels()
     }
     
     @IBAction func goBackButtonPressed(_ sender: Any) {
-        print("Go back")
-    }
-    @IBAction func shareButtonPressed(_ sender: Any) {
-        print("Share")
+        try? mediater.send(request: BackToMainViewRoute(), withContext: self)
     }
     
+    func setupLabels() {
+        subtitleLabel.text = "OfflineGegevenGivtMessage".localized
+        titleLabel.text = "YesSuccess".localized
+        goBackButton.setTitle("Ready".localized, for: .normal)
+    }
 }
