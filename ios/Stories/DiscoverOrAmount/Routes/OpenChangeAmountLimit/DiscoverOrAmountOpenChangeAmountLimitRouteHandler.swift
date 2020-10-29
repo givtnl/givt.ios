@@ -10,7 +10,7 @@ import UIKit
 
 class DiscoverOrAmountOpenChangeAmountLimitRouteHandler : RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let request = request as! ChangeAmountLimitRoute
+        let request = request as! DiscoverOrAmountOpenChangeAmountLimitRoute
         
         LogService.shared.info(message: "User is opening giving limit")
         let transition = PresentFromRight()

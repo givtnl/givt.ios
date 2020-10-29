@@ -175,20 +175,25 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
     }
 
     fileprivate func showAmountTooLow() {
+
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
         let alert = UIAlertController(title: "AmountTooLow".localized,
                                       message: "GivtNotEnough".localized.replacingOccurrences(of: "{0}", with: minimumAmount.replacingOccurrences(of: ".", with: decimalNotation)), preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
-        self.present(alert, animated: true, completion: {})
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+        }))
+        self.present(alert, animated: true, completion:nil)
     }
     
     fileprivate func displayAmountTooHigh() {
+        self.hideLoader()
+
         let alert = UIAlertController(
             title: "AmountTooHigh".localized,
             message: "AmountLimitExceeded".localized,
             preferredStyle: UIAlertController.Style.alert)
         
-        alert.addAction(UIAlertAction(title: "ChooseLowerAmount".localized, style: .default) { action in })
+        alert.addAction(UIAlertAction(title: "ChooseLowerAmount".localized, style: .default) { action in
+        })
         
         alert.addAction(UIAlertAction(title: "ChangeGivingLimit".localized, style: .cancel, handler: { action in
             try? self.mediater.send(request: DiscoverOrAmountOpenChangeAmountLimitRoute(), withContext: self)
@@ -205,6 +210,6 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
                 UIColor.init(rgb: 0xD2D1D9)
         amountControl.isValid = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= 0.25 || parsedDecimal == 0
         amountControl.activeMarker.backgroundColor = amountControl.isActive ? amountControl.isValid ? #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5529411765, alpha: 1) : #colorLiteral(red: 0.737254902, green: 0.09803921569, blue: 0.1137254902, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        giveButton.isEnabled = amountControl.isValid
+
     }
 }
