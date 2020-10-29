@@ -1416,7 +1416,7 @@ Kijk voor de status in je overzicht.</string>
             <size key="intrinsicContentSize" width="30" height="40"/>
         </designable>
         <designable name="rHG-nN-HFC">
-            <size key="intrinsicContentSize" width="56" height="37"/>
+            <size key="intrinsicContentSize" width="56" height="25"/>
         </designable>
         <designable name="vTT-9f-akz">
             <size key="intrinsicContentSize" width="30" height="40"/>
