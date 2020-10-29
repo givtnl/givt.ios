@@ -126,13 +126,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="334"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkB-yM-5uS">
-                                                        <rect key="frame" x="59.5" y="115.5" width="58.5" height="103"/>
+                                                        <rect key="frame" x="20" y="115.5" width="137" height="103"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="stichting_white" translatesAutoresizingMaskIntoConstraints="NO" id="dH9-gA-YRt">
-                                                                <rect key="frame" x="0.0" y="0.0" width="58.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="137" height="50"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kx-hz-FcL">
-                                                                <rect key="frame" x="0.0" y="70" width="58.5" height="33"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="4Kx-hz-FcL">
+                                                                <rect key="frame" x="0.0" y="70" width="137" height="33"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </label>
@@ -152,8 +152,9 @@
                                                 <color key="backgroundColor" red="0.95686274510000002" green="0.74901960779999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="CkB-yM-5uS" secondAttribute="trailing" constant="20" id="FfY-wv-VCE"/>
                                                     <constraint firstItem="CkB-yM-5uS" firstAttribute="centerY" secondItem="cUv-fm-YVP" secondAttribute="centerY" id="a4y-Xp-KCy"/>
-                                                    <constraint firstItem="CkB-yM-5uS" firstAttribute="centerX" secondItem="cUv-fm-YVP" secondAttribute="centerX" id="imX-T5-8ca"/>
+                                                    <constraint firstItem="CkB-yM-5uS" firstAttribute="leading" secondItem="cUv-fm-YVP" secondAttribute="leading" constant="20" id="bvT-bQ-DSc"/>
                                                 </constraints>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="RhD-Xo-k4f" appends="YES" id="Ek7-GC-kwE"/>
@@ -163,13 +164,13 @@
                                                 <rect key="frame" x="197" y="0.0" width="177" height="334"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUy-A5-ZTz">
-                                                        <rect key="frame" x="59.5" y="115.5" width="58.5" height="103"/>
+                                                        <rect key="frame" x="20" y="115.5" width="137" height="103"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="church_white" translatesAutoresizingMaskIntoConstraints="NO" id="OZq-xD-kBu">
-                                                                <rect key="frame" x="0.0" y="0.0" width="58.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="137" height="50"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFl-ro-v2D">
-                                                                <rect key="frame" x="0.0" y="70" width="58.5" height="33"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="PFl-ro-v2D">
+                                                                <rect key="frame" x="0.0" y="70" width="137" height="33"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </label>
@@ -189,8 +190,9 @@
                                                 <color key="backgroundColor" red="0.14117647058823529" green="0.41568627450980389" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
+                                                    <constraint firstItem="CUy-A5-ZTz" firstAttribute="leading" secondItem="IWO-X3-vKa" secondAttribute="leading" constant="20" id="6wz-OS-qdc"/>
                                                     <constraint firstItem="CUy-A5-ZTz" firstAttribute="centerY" secondItem="IWO-X3-vKa" secondAttribute="centerY" id="hQQ-CB-Lya"/>
-                                                    <constraint firstItem="CUy-A5-ZTz" firstAttribute="centerX" secondItem="IWO-X3-vKa" secondAttribute="centerX" id="mK9-bP-wp3"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CUy-A5-ZTz" secondAttribute="trailing" constant="20" id="mfx-Tb-zr0"/>
                                                 </constraints>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="bWN-O1-T3y" appends="YES" id="hjP-QH-NWp"/>
@@ -205,13 +207,13 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="334"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="87g-4h-vtp">
-                                                        <rect key="frame" x="59.5" y="115.5" width="58.5" height="103"/>
+                                                        <rect key="frame" x="20" y="115.5" width="137" height="103"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="actions_white" translatesAutoresizingMaskIntoConstraints="NO" id="bal-iO-WzH">
-                                                                <rect key="frame" x="0.0" y="0.0" width="58.5" height="50"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="137" height="50"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LD-L4-s73">
-                                                                <rect key="frame" x="0.0" y="70" width="58.5" height="33"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="5LD-L4-s73">
+                                                                <rect key="frame" x="0.0" y="70" width="137" height="33"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </label>
@@ -231,8 +233,9 @@
                                                 <color key="backgroundColor" red="0.94509803921568625" green="0.4392156862745098" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
+                                                    <constraint firstItem="87g-4h-vtp" firstAttribute="leading" secondItem="SUE-zC-rtu" secondAttribute="leading" constant="20" id="HtA-Kx-NEQ"/>
                                                     <constraint firstItem="87g-4h-vtp" firstAttribute="centerY" secondItem="SUE-zC-rtu" secondAttribute="centerY" id="JJO-hQ-miH"/>
-                                                    <constraint firstItem="87g-4h-vtp" firstAttribute="centerX" secondItem="SUE-zC-rtu" secondAttribute="centerX" id="bhD-sN-9np"/>
+                                                    <constraint firstAttribute="trailing" secondItem="87g-4h-vtp" secondAttribute="trailing" constant="20" id="nBb-LB-t79"/>
                                                 </constraints>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="Jfl-k7-aCb" appends="YES" id="Kz3-Y8-7aH"/>
@@ -242,13 +245,13 @@
                                                 <rect key="frame" x="197" y="0.0" width="177" height="334"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eDd-5n-AWI">
-                                                        <rect key="frame" x="59.5" y="118" width="58.5" height="98"/>
+                                                        <rect key="frame" x="20" y="118" width="137" height="98"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="artist" translatesAutoresizingMaskIntoConstraints="NO" id="YIS-Tm-qpS">
-                                                                <rect key="frame" x="0.0" y="0.0" width="58.5" height="45"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="137" height="45"/>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Co-8m-vXy">
-                                                                <rect key="frame" x="0.0" y="65" width="58.5" height="33"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="5Co-8m-vXy">
+                                                                <rect key="frame" x="0.0" y="65" width="137" height="33"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="24"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </label>
@@ -269,7 +272,8 @@
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="eDd-5n-AWI" firstAttribute="centerY" secondItem="Ju0-FV-7KN" secondAttribute="centerY" id="QQP-wF-Bi6"/>
-                                                    <constraint firstItem="eDd-5n-AWI" firstAttribute="centerX" secondItem="Ju0-FV-7KN" secondAttribute="centerX" id="XTC-RB-uil"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eDd-5n-AWI" secondAttribute="trailing" constant="20" id="Wld-tK-pMD"/>
+                                                    <constraint firstItem="eDd-5n-AWI" firstAttribute="leading" secondItem="Ju0-FV-7KN" secondAttribute="leading" constant="20" id="n9i-PL-f1r"/>
                                                 </constraints>
                                                 <connections>
                                                     <outletCollection property="gestureRecognizers" destination="491-XX-sf8" appends="YES" id="t6J-jb-sYw"/>
