@@ -84,8 +84,6 @@
 		32CA17A724CED02300248053 /* SetupRecurringDonationChooseDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA17A624CED02300248053 /* SetupRecurringDonationChooseDestinationViewController.swift */; };
 		32CA17B324CED4BD00248053 /* SetupRecurringDonationChooseDestinationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA17B224CED4BD00248053 /* SetupRecurringDonationChooseDestinationRoute.swift */; };
 		32CA17B524CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CA17B424CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift */; };
-		32CE4D4E24BDE1FC0048671B /* FirstDestinationThenAmount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CE4D4D24BDE1FC0048671B /* FirstDestinationThenAmount.storyboard */; };
-		32CE4D5324BDEEEC0048671B /* ChooseAmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32CE4D5224BDEEEC0048671B /* ChooseAmountViewController.swift */; };
 		32D4852E24D0445200F821A5 /* CreateRecurringDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */; };
 		32D4853124D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */; };
 		32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */; };
@@ -266,7 +264,6 @@
 		DFD4F94F252F3C6700EA3141 /* GoToAboutViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD4F94E252F3C6700EA3141 /* GoToAboutViewRouteHandler.swift */; };
 		DFFF7E8E24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8D24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift */; };
 		DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8F24F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift */; };
-		FB13642A24BF2E3B006EF19D /* ChooseDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB13642424BF2E3B006EF19D /* ChooseDestinationViewController.swift */; };
 		FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */; };
 		FB2E61602306B965006F6792 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB2E615F2306B614006F6792 /* Font Awesome 5 Free-Solid-900.otf */; };
 		FB38F1B22133E7500025F648 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38F1B12133E7500025F648 /* NavigationHelper.swift */; };
@@ -281,27 +278,18 @@
 		FB7F33FB22254E5A00482E2C /* ErrorHandlingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7F33FA22254E5A00482E2C /* ErrorHandlingHelper.swift */; };
 		FB8187AE21C298050084C23E /* NewFeaturePopDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB8187AD21C298040084C23E /* NewFeaturePopDownView.xib */; };
 		FB8187B221C29C7C0084C23E /* NewFeaturePopDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */; };
-		FB872FED24C6E722005FF355 /* BackToChooseDestinationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB872FEC24C6E722005FF355 /* BackToChooseDestinationRoute.swift */; };
-		FB872FEF24C6E7C3005FF355 /* BackToChooseDestinationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB872FEE24C6E7C3005FF355 /* BackToChooseDestinationRouteHandler.swift */; };
 		FB872FF224C6EC2F005FF355 /* BackToMainRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB872FF124C6EC2F005FF355 /* BackToMainRoute.swift */; };
 		FB872FF524C6EC58005FF355 /* BackToMainRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB872FF424C6EC58005FF355 /* BackToMainRouteHandler.swift */; };
 		FB872FF924C80581005FF355 /* CreateDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB872FF824C80581005FF355 /* CreateDonationCommand.swift */; };
 		FB872FFB24C8072A005FF355 /* CreateDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB872FFA24C8072A005FF355 /* CreateDonationCommandHandler.swift */; };
 		FB872FFD24C80758005FF355 /* CreateDonationCommandValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB872FFC24C80758005FF355 /* CreateDonationCommandValidator.swift */; };
 		FB872FFF24C809EF005FF355 /* DonationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB872FFE24C809EF005FF355 /* DonationError.swift */; };
-		FB87300224C80B7B005FF355 /* ChangeAmountLimitRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87300124C80B7B005FF355 /* ChangeAmountLimitRoute.swift */; };
-		FB87300424C81339005FF355 /* ChangeAmountLimitRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87300324C81339005FF355 /* ChangeAmountLimitRouteHandler.swift */; };
-		FB87300624C81463005FF355 /* ChangeAmountLimitRoutePreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87300524C81463005FF355 /* ChangeAmountLimitRoutePreHandler.swift */; };
 		FB87300B24C82CC1005FF355 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FB87300924C82CC1005FF355 /* CoreData.xcdatamodeld */; };
 		FB87300E24C831EA005FF355 /* CoreDataContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87300D24C831EA005FF355 /* CoreDataContext.swift */; };
 		FB87301124C836EA005FF355 /* ExportDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87301024C836EA005FF355 /* ExportDonationCommand.swift */; };
 		FB87301324C837ED005FF355 /* ExportDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87301224C837ED005FF355 /* ExportDonationCommandHandler.swift */; };
 		FB87301624C84462005FF355 /* DeleteDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87301524C84462005FF355 /* DeleteDonationCommand.swift */; };
 		FB87301B24C845E0005FF355 /* DeleteDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87301A24C845E0005FF355 /* DeleteDonationCommandHandler.swift */; };
-		FB87301F24C865BF005FF355 /* GoToSafariRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87301E24C865BF005FF355 /* GoToSafariRoute.swift */; };
-		FB87302124C8678B005FF355 /* GoToSafariRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87302024C8678B005FF355 /* GoToSafariRouteHandler.swift */; };
-		FB87302424C8717A005FF355 /* SafariInputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87302324C8717A005FF355 /* SafariInputModel.swift */; };
-		FB87302624C87678005FF355 /* SafariTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87302524C87678005FF355 /* SafariTransactionModel.swift */; };
 		FB87302A24C881D9005FF355 /* SafariError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87302924C881D9005FF355 /* SafariError.swift */; };
 		FB87303024C885EE005FF355 /* NoInternetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87302F24C885EE005FF355 /* NoInternetAlert.swift */; };
 		FB87303224C88627005FF355 /* NoInternetAlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB87303124C88627005FF355 /* NoInternetAlertHandler.swift */; };
@@ -336,15 +324,12 @@
 		FBC185AE24C0CD98001A4C6B /* LocalUserConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185AD24C0CD98001A4C6B /* LocalUserConfigurationModel.swift */; };
 		FBC185B124C0CF15001A4C6B /* GetLocalUserConfigurationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B024C0CF15001A4C6B /* GetLocalUserConfigurationHandler.swift */; };
 		FBC185B324C0D661001A4C6B /* DestinationCategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B224C0D661001A4C6B /* DestinationCategoryButton.swift */; };
-		FBC185B824C1A7F8001A4C6B /* OpenChooseAmountRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185B724C1A7F8001A4C6B /* OpenChooseAmountRoute.swift */; };
-		FBC185BC24C1A824001A4C6B /* OpenChooseAmountRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185BB24C1A824001A4C6B /* OpenChooseAmountRouteHandler.swift */; };
 		FBC185C124C57DB6001A4C6B /* MediaterWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C024C57DB6001A4C6B /* MediaterWithContextProtocol.swift */; };
 		FBC185C324C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C224C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift */; };
 		FBC185C524C5CDF2001A4C6B /* MediaterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C424C5CDF2001A4C6B /* MediaterExtension.swift */; };
 		FBC185C724C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C624C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift */; };
 		FBC185C924C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185C824C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift */; };
 		FBC185CC24C6CCD2001A4C6B /* MediaterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185CB24C6CCD2001A4C6B /* MediaterError.swift */; };
-		FBC185D124C6E237001A4C6B /* FirstDestinationThenAmountNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC185D024C6E237001A4C6B /* FirstDestinationThenAmountNavigationController.swift */; };
 		FBC41A25253486310047C706 /* ReponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC41A24253486310047C706 /* ReponseModel.swift */; };
 		FBC41A272534868D0047C706 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC41A262534868D0047C706 /* ResponseError.swift */; };
 		FBD9CACC237580D5006C07FA /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBD9CACB237580D5006C07FA /* Welcome.storyboard */; };
@@ -450,8 +435,6 @@
 		32CA17A624CED02300248053 /* SetupRecurringDonationChooseDestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseDestinationViewController.swift; sourceTree = "<group>"; };
 		32CA17B224CED4BD00248053 /* SetupRecurringDonationChooseDestinationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseDestinationRoute.swift; sourceTree = "<group>"; };
 		32CA17B424CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationChooseDestinationRouteHandler.swift; sourceTree = "<group>"; };
-		32CE4D4D24BDE1FC0048671B /* FirstDestinationThenAmount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FirstDestinationThenAmount.storyboard; sourceTree = "<group>"; };
-		32CE4D5224BDEEEC0048671B /* ChooseAmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAmountViewController.swift; sourceTree = "<group>"; };
 		32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommand.swift; sourceTree = "<group>"; };
 		32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandHandler.swift; sourceTree = "<group>"; };
 		32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandPreHandler.swift; sourceTree = "<group>"; };
@@ -640,7 +623,6 @@
 		DFFF7E8D24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopToRecurringDonationOverviewRoute.swift; sourceTree = "<group>"; };
 		DFFF7E8F24F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopToRecurringDonationOverviewRouteHandler.swift; sourceTree = "<group>"; };
 		F2A335656287D463EE35D0BB /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
-		FB13642424BF2E3B006EF19D /* ChooseDestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDestinationViewController.swift; sourceTree = "<group>"; };
 		FB19533B1F56DDEC00172CD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureManager.swift; sourceTree = "<group>"; };
@@ -659,27 +641,18 @@
 		FB7F33FA22254E5A00482E2C /* ErrorHandlingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlingHelper.swift; sourceTree = "<group>"; };
 		FB8187AD21C298040084C23E /* NewFeaturePopDownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewFeaturePopDownView.xib; path = "ios/Views/Custom Views/NewFeaturePopDownView.xib"; sourceTree = SOURCE_ROOT; };
 		FB8187B121C29C7C0084C23E /* NewFeaturePopDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturePopDownView.swift; sourceTree = "<group>"; };
-		FB872FEC24C6E722005FF355 /* BackToChooseDestinationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToChooseDestinationRoute.swift; sourceTree = "<group>"; };
-		FB872FEE24C6E7C3005FF355 /* BackToChooseDestinationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToChooseDestinationRouteHandler.swift; sourceTree = "<group>"; };
 		FB872FF124C6EC2F005FF355 /* BackToMainRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToMainRoute.swift; sourceTree = "<group>"; };
 		FB872FF424C6EC58005FF355 /* BackToMainRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToMainRouteHandler.swift; sourceTree = "<group>"; };
 		FB872FF824C80581005FF355 /* CreateDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDonationCommand.swift; sourceTree = "<group>"; };
 		FB872FFA24C8072A005FF355 /* CreateDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDonationCommandHandler.swift; sourceTree = "<group>"; };
 		FB872FFC24C80758005FF355 /* CreateDonationCommandValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateDonationCommandValidator.swift; sourceTree = "<group>"; };
 		FB872FFE24C809EF005FF355 /* DonationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationError.swift; sourceTree = "<group>"; };
-		FB87300124C80B7B005FF355 /* ChangeAmountLimitRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAmountLimitRoute.swift; sourceTree = "<group>"; };
-		FB87300324C81339005FF355 /* ChangeAmountLimitRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAmountLimitRouteHandler.swift; sourceTree = "<group>"; };
-		FB87300524C81463005FF355 /* ChangeAmountLimitRoutePreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAmountLimitRoutePreHandler.swift; sourceTree = "<group>"; };
 		FB87300A24C82CC1005FF355 /* Donation.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Donation.xcdatamodel; sourceTree = "<group>"; };
 		FB87300D24C831EA005FF355 /* CoreDataContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContext.swift; sourceTree = "<group>"; };
 		FB87301024C836EA005FF355 /* ExportDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportDonationCommand.swift; sourceTree = "<group>"; };
 		FB87301224C837ED005FF355 /* ExportDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportDonationCommandHandler.swift; sourceTree = "<group>"; };
 		FB87301524C84462005FF355 /* DeleteDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDonationCommand.swift; sourceTree = "<group>"; };
 		FB87301A24C845E0005FF355 /* DeleteDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDonationCommandHandler.swift; sourceTree = "<group>"; };
-		FB87301E24C865BF005FF355 /* GoToSafariRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToSafariRoute.swift; sourceTree = "<group>"; };
-		FB87302024C8678B005FF355 /* GoToSafariRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToSafariRouteHandler.swift; sourceTree = "<group>"; };
-		FB87302324C8717A005FF355 /* SafariInputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariInputModel.swift; sourceTree = "<group>"; };
-		FB87302524C87678005FF355 /* SafariTransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariTransactionModel.swift; sourceTree = "<group>"; };
 		FB87302924C881D9005FF355 /* SafariError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariError.swift; sourceTree = "<group>"; };
 		FB87302F24C885EE005FF355 /* NoInternetAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetAlert.swift; sourceTree = "<group>"; };
 		FB87303124C88627005FF355 /* NoInternetAlertHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetAlertHandler.swift; sourceTree = "<group>"; };
@@ -714,15 +687,12 @@
 		FBC185AD24C0CD98001A4C6B /* LocalUserConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalUserConfigurationModel.swift; sourceTree = "<group>"; };
 		FBC185B024C0CF15001A4C6B /* GetLocalUserConfigurationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocalUserConfigurationHandler.swift; sourceTree = "<group>"; };
 		FBC185B224C0D661001A4C6B /* DestinationCategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCategoryButton.swift; sourceTree = "<group>"; };
-		FBC185B724C1A7F8001A4C6B /* OpenChooseAmountRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountRoute.swift; sourceTree = "<group>"; };
-		FBC185BB24C1A824001A4C6B /* OpenChooseAmountRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenChooseAmountRouteHandler.swift; sourceTree = "<group>"; };
 		FBC185C024C57DB6001A4C6B /* MediaterWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaterWithContextProtocol.swift; sourceTree = "<group>"; };
 		FBC185C224C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHandlerWithContextProtocol.swift; sourceTree = "<group>"; };
 		FBC185C424C5CDF2001A4C6B /* MediaterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaterExtension.swift; sourceTree = "<group>"; };
 		FBC185C624C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPreProcessorWithContextProtocol.swift; sourceTree = "<group>"; };
 		FBC185C824C5CF88001A4C6B /* RequestPostProcessorWithContextProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPostProcessorWithContextProtocol.swift; sourceTree = "<group>"; };
 		FBC185CB24C6CCD2001A4C6B /* MediaterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaterError.swift; sourceTree = "<group>"; };
-		FBC185D024C6E237001A4C6B /* FirstDestinationThenAmountNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstDestinationThenAmountNavigationController.swift; sourceTree = "<group>"; };
 		FBC41A24253486310047C706 /* ReponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReponseModel.swift; sourceTree = "<group>"; };
 		FBC41A262534868D0047C706 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		FBD827E4234DF2F70034BB51 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -1692,24 +1662,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FB13641C24BF2CDC006EF19D /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				FBC185CA24C5D257001A4C6B /* ChooseAmount */,
-				FB13642C24BF2E43006EF19D /* ChooseDestination */,
-				FBC185B524C1A789001A4C6B /* Routes */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
-		FB13642C24BF2E43006EF19D /* ChooseDestination */ = {
-			isa = PBXGroup;
-			children = (
-				FB13642424BF2E3B006EF19D /* ChooseDestinationViewController.swift */,
-			);
-			path = ChooseDestination;
-			sourceTree = "<group>";
-		};
 		FB13642D24BF4147006EF19D /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -1809,15 +1761,6 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		FB872FEB24C6E700005FF355 /* BackToChooseDestination */ = {
-			isa = PBXGroup;
-			children = (
-				FB872FEC24C6E722005FF355 /* BackToChooseDestinationRoute.swift */,
-				FB872FEE24C6E7C3005FF355 /* BackToChooseDestinationRouteHandler.swift */,
-			);
-			path = BackToChooseDestination;
-			sourceTree = "<group>";
-		};
 		FB872FF024C6EBC8005FF355 /* BackToMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -1846,16 +1789,6 @@
 				FB872FFC24C80758005FF355 /* CreateDonationCommandValidator.swift */,
 			);
 			path = Create;
-			sourceTree = "<group>";
-		};
-		FB87300024C80B31005FF355 /* ChangeAmountLimit */ = {
-			isa = PBXGroup;
-			children = (
-				FB87300124C80B7B005FF355 /* ChangeAmountLimitRoute.swift */,
-				FB87300324C81339005FF355 /* ChangeAmountLimitRouteHandler.swift */,
-				FB87300524C81463005FF355 /* ChangeAmountLimitRoutePreHandler.swift */,
-			);
-			path = ChangeAmountLimit;
 			sourceTree = "<group>";
 		};
 		FB87300724C818FA005FF355 /* Donations */ = {
@@ -1890,25 +1823,6 @@
 				FB87301A24C845E0005FF355 /* DeleteDonationCommandHandler.swift */,
 			);
 			path = Delete;
-			sourceTree = "<group>";
-		};
-		FB87301D24C865A6005FF355 /* GoToSafari */ = {
-			isa = PBXGroup;
-			children = (
-				FB87302224C87169005FF355 /* Models */,
-				FB87301E24C865BF005FF355 /* GoToSafariRoute.swift */,
-				FB87302024C8678B005FF355 /* GoToSafariRouteHandler.swift */,
-			);
-			path = GoToSafari;
-			sourceTree = "<group>";
-		};
-		FB87302224C87169005FF355 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				FB87302324C8717A005FF355 /* SafariInputModel.swift */,
-				FB87302524C87678005FF355 /* SafariTransactionModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		FB87302C24C88529005FF355 /* Infrastructure */ = {
@@ -2086,26 +2000,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		FBC185B524C1A789001A4C6B /* Routes */ = {
-			isa = PBXGroup;
-			children = (
-				FB872FEB24C6E700005FF355 /* BackToChooseDestination */,
-				FB87300024C80B31005FF355 /* ChangeAmountLimit */,
-				FB87301D24C865A6005FF355 /* GoToSafari */,
-				FBC185B624C1A7A6001A4C6B /* OpenChooseAmount */,
-			);
-			path = Routes;
-			sourceTree = "<group>";
-		};
-		FBC185B624C1A7A6001A4C6B /* OpenChooseAmount */ = {
-			isa = PBXGroup;
-			children = (
-				FBC185B724C1A7F8001A4C6B /* OpenChooseAmountRoute.swift */,
-				FBC185BB24C1A824001A4C6B /* OpenChooseAmountRouteHandler.swift */,
-			);
-			path = OpenChooseAmount;
-			sourceTree = "<group>";
-		};
 		FBC185BF24C57D73001A4C6B /* Mediater.Swift.Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -2118,33 +2012,14 @@
 			path = Mediater.Swift.Extensions;
 			sourceTree = "<group>";
 		};
-		FBC185CA24C5D257001A4C6B /* ChooseAmount */ = {
-			isa = PBXGroup;
-			children = (
-				32CE4D5224BDEEEC0048671B /* ChooseAmountViewController.swift */,
-			);
-			path = ChooseAmount;
-			sourceTree = "<group>";
-		};
 		FBC185CE24C6E1C3001A4C6B /* Stories */ = {
 			isa = PBXGroup;
 			children = (
 				32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */,
-				FBC185CF24C6E1DE001A4C6B /* FirstDestinationThenAmount */,
 				FB87302C24C88529005FF355 /* Infrastructure */,
 				32CA179B24CECAB900248053 /* SetupRecurringDonation */,
 			);
 			path = Stories;
-			sourceTree = "<group>";
-		};
-		FBC185CF24C6E1DE001A4C6B /* FirstDestinationThenAmount */ = {
-			isa = PBXGroup;
-			children = (
-				FB13641C24BF2CDC006EF19D /* Scenes */,
-				32CE4D4D24BDE1FC0048671B /* FirstDestinationThenAmount.storyboard */,
-				FBC185D024C6E237001A4C6B /* FirstDestinationThenAmountNavigationController.swift */,
-			);
-			path = FirstDestinationThenAmount;
 			sourceTree = "<group>";
 		};
 		FBC41A23253486230047C706 /* Models */ = {
@@ -2254,7 +2129,6 @@
 				DF76414E2539824C00A42109 /* InfoViewRecurringRuleOverview.xib in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
 				DF76413E253839C700A42109 /* TableSectionHeaderRecurringRuleOverviewView.xib in Resources */,
-				32CE4D4E24BDE1FC0048671B /* FirstDestinationThenAmount.storyboard in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
 				D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */,
 				D7B715501FD0529D00666262 /* Personal.storyboard in Resources */,
@@ -2359,7 +2233,6 @@
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
 				A478D1D62512387400251AFE /* GoToPushNotificationViewRouteHandler.swift in Sources */,
-				FB872FED24C6E722005FF355 /* BackToChooseDestinationRoute.swift in Sources */,
 				3260CF0D254A313E00BA6BD7 /* DiscoverOrAmountSetupRecurringDonationViewController.swift in Sources */,
 				FBC1859524C08431001A4C6B /* DestinationTableCell.swift in Sources */,
 				DF1300F724F5603E00EE1785 /* SetupRecurringDonationOverviewViewController.swift in Sources */,
@@ -2370,8 +2243,6 @@
 				27A0E4EE221F3FF100982842 /* PresetsSettingsViewController.swift in Sources */,
 				FBC1858924C0651D001A4C6B /* RequestPostProcessorProtocol.swift in Sources */,
 				D7E3CE921F7CF0DA005807BE /* RegistrationUser.swift in Sources */,
-				FBC185D124C6E237001A4C6B /* FirstDestinationThenAmountNavigationController.swift in Sources */,
-				FB87302124C8678B005FF355 /* GoToSafariRouteHandler.swift in Sources */,
 				FBC41A272534868D0047C706 /* ResponseError.swift in Sources */,
 				FB87303224C88627005FF355 /* NoInternetAlertHandler.swift in Sources */,
 				FB45AC3921CA406200F12584 /* FeatureMenuViewController.swift in Sources */,
@@ -2388,7 +2259,6 @@
 				DF05015B24F8B4E0006196A3 /* BackToSetupRecurringDonationRouteHandler.swift in Sources */,
 				FBC41A25253486310047C706 /* ReponseModel.swift in Sources */,
 				3273B8A125359C6C003DB100 /* OpenRecurringDonationOverviewListRouteHandler.swift in Sources */,
-				FB872FEF24C6E7C3005FF355 /* BackToChooseDestinationRouteHandler.swift in Sources */,
 				32C2D8222522087000832444 /* DecimalExtension.swift in Sources */,
 				FBC185A224C0AD81001A4C6B /* DestinationViewModel.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
@@ -2415,7 +2285,6 @@
 				3260CF26254ABF4F00BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRoute.swift in Sources */,
 				FBC185B324C0D661001A4C6B /* DestinationCategoryButton.swift in Sources */,
 				320CF72A24CEF1D3008B3EDE /* DestinationSelectedRoute.swift in Sources */,
-				FB87302424C8717A005FF355 /* SafariInputModel.swift in Sources */,
 				327E34572549FEEE00314BFD /* DiscoverOrAmountOpenSelectDestinationRoute.swift in Sources */,
 				32A67F80251497F7007EC7EF /* RecurringDonationError.swift in Sources */,
 				327C5B7E2506D8680064BBC4 /* CancelRecurringDonationCommand.swift in Sources */,
@@ -2452,7 +2321,6 @@
 				D761E9B71F18B89D002B849B /* AmountViewController.swift in Sources */,
 				320CF72724CEDF6B008B3EDE /* SetupRecurringDonationChooseRecurringDonationViewController.swift in Sources */,
 				FB45AC3B21CA4A4A00F12584 /* BaseMenuViewController.swift in Sources */,
-				FB13642A24BF2E3B006EF19D /* ChooseDestinationViewController.swift in Sources */,
 				FBC185AB24C0CD6F001A4C6B /* GetLocalUserConfiguration.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
 				D748F6002063D4A500B25BC2 /* Status.swift in Sources */,
@@ -2465,14 +2333,12 @@
 				32A67F7E25139A7F007EC7EF /* GetCountryError.swift in Sources */,
 				3260CF07254A2EB900BA6BD7 /* BackToMainViewRoute.swift in Sources */,
 				DF7641502539825900A42109 /* InfoViewRecurringRuleOverview.swift in Sources */,
-				32CE4D5324BDEEEC0048671B /* ChooseAmountViewController.swift in Sources */,
 				DF2D13BB24FAB71000DCE603 /* GetRecurringDonationsQueryHandler.swift in Sources */,
 				FBA0894E21C7FC27001DD889 /* BaseCarouselViewController.swift in Sources */,
 				FBC1858624C0651D001A4C6B /* RequestProcessorProtocol.swift in Sources */,
 				D7AF43011FEA66B40027EEC1 /* UpdatedTermsPageViewController.swift in Sources */,
 				D787AE2B1FCD91680004BDB1 /* LogService.swift in Sources */,
 				FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */,
-				FB87300224C80B7B005FF355 /* ChangeAmountLimitRoute.swift in Sources */,
 				FB87301124C836EA005FF355 /* ExportDonationCommand.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
 				FB87302A24C881D9005FF355 /* SafariError.swift in Sources */,
@@ -2498,7 +2364,6 @@
 				D72BD5441FDECA0B001481B1 /* ModalFromRightAnimation.swift in Sources */,
 				D7ADE24D1FBC8E9300198F28 /* ConfirmationViewController.swift in Sources */,
 				D7F654931FA8B390007816B0 /* PermissionViewController.swift in Sources */,
-				FB87300424C81339005FF355 /* ChangeAmountLimitRouteHandler.swift in Sources */,
 				FBC1858724C0651D001A4C6B /* MediaterProtocol.swift in Sources */,
 				32C2D83125221D6B00832444 /* IntExtension.swift in Sources */,
 				D7B7154E1FD0527E00666262 /* PersonalInfoViewController.swift in Sources */,
@@ -2509,7 +2374,6 @@
 				D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				FBC1859124C06616001A4C6B /* CollectGroupDetailModel.swift in Sources */,
-				FBC185BC24C1A824001A4C6B /* OpenChooseAmountRouteHandler.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				3260CF35254ACFD800BA6BD7 /* DiscoverOrAmountOpenSuccessRoute.swift in Sources */,
 				3260CF17254AB70700BA6BD7 /* DiscoverOrAmountSetupSingleDonationRoute.swift in Sources */,
@@ -2574,7 +2438,6 @@
 				D7F0D2A521639544004770F8 /* NotificationExtensions.swift in Sources */,
 				D754DA3B1F3B45D5001B7040 /* UIButtonExtensions.swift in Sources */,
 				A478D1DB2512C3BA00251AFE /* DismissPushNotificationViewRouteHandler.swift in Sources */,
-				FB87301F24C865BF005FF355 /* GoToSafariRoute.swift in Sources */,
 				FB872FFB24C8072A005FF355 /* CreateDonationCommandHandler.swift in Sources */,
 				FBC1857C24C06507001A4C6B /* GetCollectGroupsQueryHandler.swift in Sources */,
 				3273B90C25374B69003DB100 /* RecurringDonationTurnTableCell.swift in Sources */,
@@ -2604,7 +2467,6 @@
 				D7BB5DA81FD59B4700D12E62 /* InfraManager.swift in Sources */,
 				FB87303024C885EE005FF355 /* NoInternetAlert.swift in Sources */,
 				D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */,
-				FB87302624C87678005FF355 /* SafariTransactionModel.swift in Sources */,
 				FBC185B124C0CF15001A4C6B /* GetLocalUserConfigurationHandler.swift in Sources */,
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				3273B8AB25359F55003DB100 /* RecurringDonationTurnsResponseModel.swift in Sources */,
@@ -2622,7 +2484,6 @@
 				DF76413C2538399400A42109 /* TableSectionHeaderRecurringRuleOverview.swift in Sources */,
 				FB87301624C84462005FF355 /* DeleteDonationCommand.swift in Sources */,
 				32CA17A724CED02300248053 /* SetupRecurringDonationChooseDestinationViewController.swift in Sources */,
-				FB87300624C81463005FF355 /* ChangeAmountLimitRoutePreHandler.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
 				D71DA050211AE5C90084381E /* ChangeAddressViewController.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
@@ -2636,7 +2497,6 @@
 				D78208A12008BE7900AB6DC1 /* CollectionExtensions.swift in Sources */,
 				FBC185C324C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift in Sources */,
 				D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */,
-				FBC185B824C1A7F8001A4C6B /* OpenChooseAmountRoute.swift in Sources */,
 				3260CF14254AB61400BA6BD7 /* DiscoverOrAmountSetupSingleDonationViewController.swift in Sources */,
 				FB87300B24C82CC1005FF355 /* CoreData.xcdatamodeld in Sources */,
 				3273B8B32535CCE8003DB100 /* GetDonationsByIdsQueryHandler.swift in Sources */,
