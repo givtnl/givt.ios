@@ -39,8 +39,8 @@ class SetupNotificationRecurringDonationViewController: UIViewController
     private func setupLabels() {
         switch notificationAuthorizationStatus {
             case .notDetermined:
-                descriptionLabel.text = "Iets anders hier".localized
-                confirmButton.setTitle("En hier ook".localized, for: UIControl.State.normal)
+                descriptionLabel.text = "PushnotificationRequestScreenPrimaryDescription".localized
+                confirmButton.setTitle("PushnotificationRequestScreenPrimaryButtonYes".localized, for: UIControl.State.normal)
                 break;
             default:
                 descriptionLabel.text = "PushnotificationRequestScreenDescription".localized
