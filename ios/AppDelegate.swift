@@ -270,12 +270,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
         
         // -- NAVIGATION
-        Mediater.shared.registerHandler(handler: OpenChooseAmountRouteHandler())
-        Mediater.shared.registerHandler(handler: BackToChooseDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: BackToMainRouteHandler())
-        Mediater.shared.registerHandler(handler: ChangeAmountLimitRouteHandler())
-        Mediater.shared.registerPreProcessor(processor: ChangeAmountLimitRoutePreHandler())
-        Mediater.shared.registerHandler(handler: GoToSafariRouteHandler())
         Mediater.shared.registerHandler(handler: FinalizeGivingRouteHandler())
         Mediater.shared.registerHandler(handler: DestinationSelectedRouteHandler())
         Mediater.shared.registerHandler(handler: SetupRecurringDonationChooseDestinationRouteHandler())
@@ -291,6 +286,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         
         //-- INFRA
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
-
+        
+        //-- DISCOVER OR AMOUNT: ROUTES
+        Mediater.shared.registerHandler(handler: BackToMainViewRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSelectDestinationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSetupSingleDonationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSetupRecurringDonationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSafariRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountBackToSelectDestinationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenChangeAmountLimitRouteHandler())
+        Mediater.shared.registerPreProcessor(processor: DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSuccessRouteHandler())
     }
 }

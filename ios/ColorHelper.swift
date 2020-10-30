@@ -19,4 +19,5 @@ public class ColorHelper {
     public static var Charity: UIColor = #colorLiteral(red: 0.9294117647, green: 0.6470588235, blue: 0.1803921569, alpha: 1)
     public static var Action: UIColor = #colorLiteral(red: 0.9460871816, green: 0.4409908056, blue: 0.3430213332, alpha: 1)
     public static var Artist: UIColor = #colorLiteral(red: 0.1137254902, green: 0.662745098, blue: 0.4235294118, alpha: 1)
+    public static var LightGrey: UIColor = #colorLiteral(red: 0.9176470588, green: 0.9176470588, blue: 0.9333333333, alpha: 1)
 }
