@@ -996,5 +996,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "DiscoverSegmentNow" = "Gib jetzt";
 "DiscoverSegmentWho" = "Zu wem?";
 "DiscoverHomeDiscoverTitle" = "Kategorie wählen";
-"DiscoverOrAmountActionSheetOnce" = "One-time donation";
-"DiscoverOrAmountActionSheetRecurring" = "Recurring donation";
+"DiscoverOrAmountActionSheetOnce" = "Einmalige Spende";
+"DiscoverOrAmountActionSheetRecurring" = "Wiederkehrende Spende";
+
+/*Fuzzy*/
+"ReccurringGivtIsBeingProcessed" = "Danke für deine wiederkehrende Spende an {0}!\nUm alle Informationen dazu anzuzeigen, gehen Sie zur Menüoption 'Wiederkehrende Spenden'.";
