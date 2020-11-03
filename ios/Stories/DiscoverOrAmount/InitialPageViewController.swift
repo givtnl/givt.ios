@@ -44,8 +44,10 @@ extension InitialPageViewController: UIPageViewControllerDataSource, UIPageViewC
         if let mainController = pageViewController.parent as? MainViewController {
             if previousViewControllers[0] == items[0] {
                 mainController.segmentControl.selectedSegmentIndex = completed ? 1 : 0
+                navigationController?.children.first?.title = completed ? "DiscoverHomeDiscoverTitle".localized : "Amount".localized
             } else {
                 mainController.segmentControl.selectedSegmentIndex = completed ? 0 : 1
+                navigationController?.children.first?.title = completed ? "Amount".localized : "DiscoverHomeDiscoverTitle".localized
             }
         }
     }
@@ -54,8 +56,10 @@ extension InitialPageViewController: UIPageViewControllerDataSource, UIPageViewC
         if let mainController = pageViewController.parent as? MainViewController {
             if pendingViewControllers[0] == items[0] {
                 mainController.segmentControl.selectedSegmentIndex = 0
+                navigationController?.children.first?.title = "Amount".localized
             } else {
                 mainController.segmentControl.selectedSegmentIndex = 1
+                navigationController?.children.first?.title = "DiscoverHomeDiscoverTitle".localized
             }
         }
     }
