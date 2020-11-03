@@ -87,10 +87,8 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                 
                 if donationDetails.count >= 1 {
                     lastDonationDate = (donationDetails.last?.Timestamp.toDate!)!
-                } else if Date() > recurringDonation.startDate.toDate! {
-                    lastDonationDate = Date()
                 } else {
-                    lastDonationDate = recurringDonation.startDate.toDate!.addingTimeInterval(-1*24*60*60)
+                    lastDonationDate = recurringDonation.startDate.toDate!.addingTimeInterval(-1)
                 }
                 
                 let futureTurns: [RecurringDonationTurnViewModel] = getFutureTurns(recurringDonation: recurringDonation, recurringDonationLastDate: lastDonationDate, recurringDonationPastTurnsCount: recurringDonationTurns.count, maxCount: 1)
