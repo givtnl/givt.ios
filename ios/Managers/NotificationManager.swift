@@ -10,11 +10,6 @@ import Foundation
 import UIKit
 import UserNotifications
 
-protocol NotificationManagerDelegate: class {
-    func onNotificationTokenRegistered(token: String?)
-    func onReceivedCelebration(collectGroupId: String)
-}
-
 final class NotificationManager : NSObject {
     static let shared: NotificationManager = NotificationManager()
     
@@ -34,16 +29,26 @@ final class NotificationManager : NSObject {
     
     func invokeOnNotificationTokenRegistered(token: String?) {
         for delegate in delegates {
-            delegate.onNotificationTokenRegistered(token: token)
+            if let myDelegate = delegate as? NotificationTokenRegisteredDelegate {
+                myDelegate.onNotificationTokenRegistered(token: token)
+            }
         }
     }
     
     func invokeOnReceivedCelebration(collectGroupId: String) {
         for delegate in delegates {
-            delegate.onReceivedCelebration(collectGroupId: collectGroupId)
+            if let myDelegate = delegate as? NotificationReceivedCelebrationDelegate {
+                myDelegate.onReceivedCelebration(collectGroupId: collectGroupId)
+            }
         }
     }
-    
+    func invokeOnReceiveRecurringDonationTurnCreated(recurringDonationId: String) {
+        for delegate in delegates {
+            if let myDelegate = delegate as? NotificationRecurringDonationTurnCreatedDelegate {
+                myDelegate.onReceivedRecurringDonationTurnCreated(recurringDonationId: recurringDonationId)
+            }
+        }
+    }
     func start() -> Void {
         DispatchQueue.main.async {
             self.requestAndUpdateTokenIfNeeded()
@@ -57,8 +62,8 @@ final class NotificationManager : NSObject {
     }
     
     func requestAndUpdateTokenIfNeeded(force: Bool = false) {
-        areNotificationsEnabled { enabled in
-            if enabled {
+        getNotificationAuthorizationStatus { status in
+            if status == .authorized {
                 if force, let token = UserDefaults.standard.deviceToken {
                     DispatchQueue.global(qos: .background).async {
                         self.updateNotificationId(token: token, force: true)
@@ -73,22 +78,18 @@ final class NotificationManager : NSObject {
         }
     }
     
-    func areNotificationsEnabled(completion: @escaping (Bool) -> Void) {
+    func getNotificationAuthorizationStatus(completion: @escaping (NotificationAuthorization) -> Void) {
         if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().getNotificationSettings(){ (setttings) in
-                switch setttings.authorizationStatus{
-                case .authorized:
-                    completion(true)
-                default:
-                    completion(false)
-                }
+            UNUserNotificationCenter.current().getNotificationSettings(){ (settings) in
+                completion(NotificationAuthorization(rawValue: settings.authorizationStatus.rawValue)!)
             }
         } else {
+            
             let notificationDisabled = UIApplication.shared.currentUserNotificationSettings?.types.isEmpty
             if let notificationDisabled = notificationDisabled, !notificationDisabled {
-                completion(true)
+                completion(NotificationAuthorization.authorized)
             } else {
-                completion(false)
+                completion(NotificationAuthorization.denied)
             }
         }
     }
@@ -149,18 +150,20 @@ final class NotificationManager : NSObject {
                 })
             }
         } else {
-            areNotificationsEnabled { enabled in
+            getNotificationAuthorizationStatus { status in
                 DispatchQueue.main.async {
-                    if (enabled) {
-                        UIApplication.shared.registerForRemoteNotifications()
-                        completion(enabled)
-                    }
-                    else {
-                        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                    switch(status) {
+                        case .authorized:
+                            UIApplication.shared.registerForRemoteNotifications()
                             completion(true)
-                            DispatchQueue.main.async { UIApplication.shared.registerForRemoteNotifications() }
-                        })
+                        break
+                        default:
+                            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: [.sound, .alert, .badge], categories: nil))
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                                completion(true)
+                                DispatchQueue.main.async { UIApplication.shared.registerForRemoteNotifications() }
+                            })
+                        break
                     }
                 }
             }
@@ -206,6 +209,10 @@ final class NotificationManager : NSObject {
             case NotificationType.ProcessCachedGivts.rawValue:
                 print("process cached givts action")
                 GivtManager.shared.processCachedGivts()
+            case NotificationType.RecurringDonationTurnCreated.rawValue:
+                if let recurringDonationId = pushNotificationInfo["RecurringDonationId"] as? String {
+                    self.invokeOnReceiveRecurringDonationTurnCreated(recurringDonationId: recurringDonationId)
+                }
             default:
                 print("wrong type")
             LogService.shared.error(message: "Pushnotification type not known")
@@ -214,4 +221,27 @@ final class NotificationManager : NSObject {
         print(aps)
         completionHandler(.newData)
     }
+}
+
+enum NotificationAuthorization: Int {
+    case notDetermined = 0
+    case denied = 1
+    case authorized = 2
+    case provisional = 3
+    case ephemeral = 4
+}
+
+protocol NotificationManagerDelegate: class {
+}
+
+protocol NotificationTokenRegisteredDelegate: NotificationManagerDelegate {
+    func onNotificationTokenRegistered(token: String?)
+}
+
+protocol NotificationReceivedCelebrationDelegate: NotificationManagerDelegate {
+    func onReceivedCelebration(collectGroupId: String)
+}
+
+protocol NotificationRecurringDonationTurnCreatedDelegate: NotificationManagerDelegate {
+    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String)
 }

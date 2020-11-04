@@ -1010,6 +1010,21 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 /*Fuzzy*/
 "GoToListWithRecurringDonationDonations" = "Overview";
 "RecurringDonationsEmptyDetailOverview" = "This is where you'll find information about your donations, but the first donation still has to be collected";
-"RecurringDonationSoonNotification" = "Soon a donation will be done to {0}.";
+
+/*Fuzzy*/
 "RecurringDonationFutureDetailSameYear" = "Upcoming donation";
+
+/*Fuzzy*/
 "RecurringDonationFutureDetailDifferentYear" = "Upcoming donation in";
+"PushnotificationRequestScreenPrimaryDescription" = "We would like to keep you posted on when the next donation will be collected from your account. At the moment we don't have permission to send you messages. Could you allow that, please?";
+"PushnotificationRequestScreenPrimaryButtonYes" = "Ok, fine!";
+"DiscoverSearchButton" = "Search";
+"DiscoverDiscoverButton" = "See all";
+"DiscoverSegmentNow" = "Give";
+"DiscoverSegmentWho" = "Discover";
+"DiscoverHomeDiscoverTitle" = "Choose category";
+"DiscoverOrAmountActionSheetOnce" = "One-off donation";
+"DiscoverOrAmountActionSheetRecurring" = "Recurring donation";
+
+/*Fuzzy*/
+"ReccurringGivtIsBeingProcessed" = "Thank you for your recurring donation to {0}!\nTo see all the information, go to the menu-option 'recurring donations'.";

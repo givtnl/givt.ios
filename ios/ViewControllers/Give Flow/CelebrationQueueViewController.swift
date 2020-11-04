@@ -12,8 +12,7 @@ import AppCenterAnalytics
 import UserNotifications
 import Mixpanel
 
-class CelebrationQueueViewController : BaseScanViewController, NotificationManagerDelegate {
-    
+class CelebrationQueueViewController : BaseScanViewController, NotificationTokenRegisteredDelegate, NotificationReceivedCelebrationDelegate {
     var transactions: [Transaction]!
     var organisation = ""
     var secondsLeft = -1
@@ -45,10 +44,10 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
         buttonCancelFlashGivt.accessibilityLabel = NSLocalizedString("CelebrationQueueCancel", comment: "")
         
         // show/hide and move anchors based on mNotificationManager.notificationsEnabled
-        NotificationManager.shared.areNotificationsEnabled { enabled in
+        NotificationManager.shared.getNotificationAuthorizationStatus { status in
             DispatchQueue.main.async {
-                self.buttonEnablePushNot.isHidden = enabled
-                self.imageFlash.bottomAnchor.constraint(equalTo: self.buttonCancelFlashGivt.topAnchor).isActive = enabled
+                self.buttonEnablePushNot.isHidden = status == .authorized
+                self.imageFlash.bottomAnchor.constraint(equalTo: self.buttonCancelFlashGivt.topAnchor).isActive = status == .authorized
                 self.view.setNeedsLayout()
                 self.view.layoutIfNeeded()
             }
@@ -57,7 +56,6 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_fourth"))
         navigationItem.hidesBackButton = true
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
@@ -65,8 +63,8 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
 
         NotificationManager.shared.delegates.append(self)
 
-        NotificationManager.shared.areNotificationsEnabled { enabled in
-            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled }
+        NotificationManager.shared.getNotificationAuthorizationStatus { status in
+            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = status == .authorized }
         }
     }
 
@@ -93,8 +91,8 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
     }
     
     func onNotificationTokenRegistered(token: String?) {
-        NotificationManager.shared.areNotificationsEnabled { enabled in
-            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = enabled }
+        NotificationManager.shared.getNotificationAuthorizationStatus { status in
+            DispatchQueue.main.async { self.buttonEnablePushNot.isHidden = status == .authorized }
         }
     }
     
@@ -110,7 +108,6 @@ class CelebrationQueueViewController : BaseScanViewController, NotificationManag
             }
         })
     }
-    
     @IBAction func activatePushNotfications(_ sender: Any) {
         NotificationManager.shared.requestNotificationPermission(completion: { _ in } )
     }

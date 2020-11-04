@@ -21,7 +21,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     var initial = true
     var scrollTo = true
     
-    @IBOutlet var titleText: UILabel!
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet var typeStackView: UIStackView!
     @IBOutlet var searchBar: UISearchBar!
@@ -234,8 +233,6 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_third"))
-        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepThree", comment: "")
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
@@ -522,19 +519,19 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
         switch(tag) {
         case 100:
             mediumType = .charity
-            titleText.text = NSLocalizedString("Stichtingen", comment: "")
+            navBar.title = NSLocalizedString("Stichtingen", comment: "")
         case 101:
             mediumType = .church
-            titleText.text = NSLocalizedString("Churches", comment: "")
+            navBar.title = NSLocalizedString("Churches", comment: "")
         case 102:
             mediumType = .campaign
-            titleText.text = NSLocalizedString("Acties", comment: "")
+            navBar.title = NSLocalizedString("Acties", comment: "")
         case 103:
             mediumType = .artist
-            titleText.text = NSLocalizedString("Artists", comment: "")
+            navBar.title = NSLocalizedString("Artists", comment: "")
         default:
             mediumType = .invalid
-            titleText.text = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
+            navBar.title = NSLocalizedString("ChooseWhoYouWantToGiveTo", comment: "")
             break
         }
         

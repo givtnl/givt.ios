@@ -983,6 +983,21 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SetupRecurringDonationFailedDuplicateTitle" = "Doppelte Spende";
 "GoToListWithRecurringDonationDonations" = "Übersicht";
 "RecurringDonationsEmptyDetailOverview" = "Hier findest Du Informationen über Deine Spenden, aber die erste Spende muss noch abgebucht werden";
-"RecurringDonationSoonNotification" = "Soon a donation will be done to {0}.";
+
+/*Fuzzy*/
 "RecurringDonationFutureDetailSameYear" = "Kommende Spende";
+
+/*Fuzzy*/
 "RecurringDonationFutureDetailDifferentYear" = "Kommende Spende in";
+"PushnotificationRequestScreenPrimaryDescription" = "We would like to keep you posted on when the next donation will be collected from your account. At the moment we don't have permission to send you messages. Could you allow that, please?";
+"PushnotificationRequestScreenPrimaryButtonYes" = "Ok, fine!";
+"DiscoverSearchButton" = "Suchen";
+"DiscoverDiscoverButton" = "Alles sehen";
+"DiscoverSegmentNow" = "Gib";
+"DiscoverSegmentWho" = "Entdecken";
+"DiscoverHomeDiscoverTitle" = "Kategorie wählen";
+"DiscoverOrAmountActionSheetOnce" = "Einmalige Spende";
+"DiscoverOrAmountActionSheetRecurring" = "Wiederkehrende Spende";
+
+/*Fuzzy*/
+"ReccurringGivtIsBeingProcessed" = "Danke für deine wiederkehrende Spende an {0}!\nUm alle Informationen dazu anzuzeigen, gehen Sie zur Menüoption 'Wiederkehrende Spenden'.";

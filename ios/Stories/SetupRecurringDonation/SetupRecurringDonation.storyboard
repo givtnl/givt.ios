@@ -257,13 +257,13 @@
                                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22M-wb-RiC" userLabel="listView">
                                                                                                             <rect key="frame" x="35.5" y="0.0" width="96.5" height="44"/>
                                                                                                             <subviews>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="list-ul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfK-Jh-y1y">
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="list-ul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfK-Jh-y1y">
                                                                                                                     <rect key="frame" x="0.0" y="13.5" width="17" height="17"/>
                                                                                                                     <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                 </label>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-rF-WB2">
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-rF-WB2">
                                                                                                                     <rect key="frame" x="27" y="11" width="69.5" height="22"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -313,20 +313,8 @@
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b46-lo-mkf" userLabel="RightView">
                                                                             <rect key="frame" x="354" y="0.0" width="20" height="134"/>
-                                                                            <subviews>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QAd-4f-Mxt">
-                                                                                    <rect key="frame" x="-10" y="-10.5" width="20" height="20"/>
-                                                                                    <color key="tintColor" systemColor="systemYellowColor"/>
-                                                                                    <constraints>
-                                                                                        <constraint firstAttribute="width" constant="20" id="UGv-6S-hdT"/>
-                                                                                        <constraint firstAttribute="height" constant="20" id="Vzx-CU-Aca"/>
-                                                                                    </constraints>
-                                                                                </imageView>
-                                                                            </subviews>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
-                                                                                <constraint firstItem="QAd-4f-Mxt" firstAttribute="leading" secondItem="b46-lo-mkf" secondAttribute="leading" constant="-10" id="JcQ-uY-b2e"/>
-                                                                                <constraint firstItem="QAd-4f-Mxt" firstAttribute="top" secondItem="b46-lo-mkf" secondAttribute="top" constant="-10" id="TWA-Re-aBi"/>
                                                                                 <constraint firstAttribute="width" constant="20" id="ePo-0K-TDG"/>
                                                                             </constraints>
                                                                         </view>
@@ -358,7 +346,6 @@
                                                             <outlet property="cronTextLabel" destination="S5R-iF-Wwa" id="82l-jy-NUw"/>
                                                             <outlet property="endDateLabel" destination="Bmp-dt-uiY" id="J9X-xG-u6a"/>
                                                             <outlet property="horiStackView" destination="0YH-nu-bc8" id="m8B-op-kUQ"/>
-                                                            <outlet property="indicationImageView" destination="QAd-4f-Mxt" id="e9H-lt-xng"/>
                                                             <outlet property="listLabel" destination="cEq-rF-WB2" id="SO4-2n-whd"/>
                                                             <outlet property="listView" destination="22M-wb-RiC" id="Hsw-4M-odf"/>
                                                             <outlet property="logoContainerView" destination="mSU-gU-Y7W" id="E1C-EX-Nq6"/>
@@ -1258,7 +1245,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view hidden="YES" opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOI-zR-Lsr" userLabel="Opaque">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                                    <rect key="frame" x="6" y="0.0" width="408" height="90"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -1275,7 +1262,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="zOI-zR-Lsr" secondAttribute="bottom" id="b6N-uA-2na"/>
                                                 <constraint firstItem="jmq-E2-YPm" firstAttribute="leading" secondItem="pkf-L5-WGr" secondAttribute="trailing" constant="14" id="bsv-qh-JV9"/>
                                                 <constraint firstAttribute="bottom" secondItem="pkf-L5-WGr" secondAttribute="bottom" id="haJ-Pp-uIt"/>
-                                                <constraint firstItem="zOI-zR-Lsr" firstAttribute="leading" secondItem="2WS-yk-V7k" secondAttribute="leading" id="lyz-nQ-Gav"/>
+                                                <constraint firstItem="zOI-zR-Lsr" firstAttribute="leading" secondItem="pkf-L5-WGr" secondAttribute="trailing" id="lyz-nQ-Gav"/>
                                                 <constraint firstItem="pkf-L5-WGr" firstAttribute="leading" secondItem="2WS-yk-V7k" secondAttribute="leading" id="uQg-AY-IeB"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1402,7 +1389,6 @@
         <image name="giftaid_yellow_noborder_15" width="17" height="17"/>
         <image name="givymoney" width="240" height="240"/>
         <image name="info20h" width="20" height="20"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -1414,9 +1400,6 @@
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
