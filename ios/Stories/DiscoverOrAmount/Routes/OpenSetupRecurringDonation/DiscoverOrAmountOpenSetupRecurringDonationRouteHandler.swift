@@ -11,10 +11,18 @@ import UIKit
 
 class DiscoverOrAmountOpenSetupRecurringDonationRouteHandler: RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
+        
+        let transition = PresentFromRight()
+
         let vc = UIStoryboard.init(name: "DiscoverOrAmount", bundle: nil)
             .instantiateViewController(withIdentifier: String(describing: DiscoverOrAmountSetupRecurringDonationViewController.self)) as! DiscoverOrAmountSetupRecurringDonationViewController
+
         vc.input = (request as! DiscoverOrAmountOpenSetupRecurringDonationRoute)
-        context.navigationController?.pushViewController(vc, animated: true)
+
+        vc.transitioningDelegate = transition
+        vc.modalPresentationStyle = .fullScreen
+        NavigationManager.shared.pushWithLogin(vc, context: context)
+
         try completion(() as! R.TResponse)
     }
     
