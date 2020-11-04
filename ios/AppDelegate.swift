@@ -73,11 +73,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
     func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {
         DispatchQueue.main.async {
             guard let window = UIApplication.shared.keyWindow else { return }
-            guard let amountViewController = window.rootViewController?.children
+            guard let mainViewController = window.rootViewController?.children
                     .first(where: { (child) -> Bool in child is MainNavigationController })?.children
-                    .first(where: { (child) -> Bool in child is AmountViewController }) else { return }
+                    .first(where: { (child) -> Bool in child is MainViewController }) else { return }
             
-            try? self.mediater.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: amountViewController)
+            try? self.mediater.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
             { }
         }
     }
