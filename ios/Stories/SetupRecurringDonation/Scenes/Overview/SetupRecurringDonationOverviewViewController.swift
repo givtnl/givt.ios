@@ -46,9 +46,7 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(recurringDonationCreated), name: .GivtCreatedRecurringDonation, object: nil)
-        
+                
         navBar.title = "TitleRecurringGifts".localized
         createButton.label1.text = "RecurringGiftsSetupCreate".localized
         createButton.label2.text = "RecurringGiftsSetupRecurringGift".localized
@@ -60,25 +58,6 @@ class SetupRecurringDonationOverviewViewController: UIViewController,  UITableVi
         MSAnalytics.trackEvent("RECURRING_DONATIONS_OVERVIEW_OPENED")
         
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_OVERVIEW_OPENED")
-    }
-    
-    @objc func recurringDonationCreated(notification: NSNotification) {
-        DispatchQueue.main.async {
-            try? self.mediater.sendAsync(request: GetRecurringDonationsQuery()) { response in
-                self.recurringRules = response
-                if var recurringRule = self.recurringRules.first {
-                    recurringRule.shouldShowNewItemMarker = true
-                    self.markedItem = recurringRule
-                }
-                NotificationManager.shared.getNotificationAuthorizationStatus(completion: { status in
-                    if (status != NotificationAuthorization.authorized) {
-                        DispatchQueue.main.async {
-                            try? self.mediater.send(request: GoToPushNotificationViewRoute(notificationAuthorization: status), withContext: self)
-                        }
-                    }
-                })
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

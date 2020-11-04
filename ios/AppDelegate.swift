@@ -259,7 +259,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
         Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
         Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
-        Mediater.shared.registerPostProcessor(processor: CreateRecurringDonationCommandPostHandler())
         Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
         Mediater.shared.registerHandler(handler: GetRecurringDonationTurnsQueryHandler())
         //-- USER QUERIES

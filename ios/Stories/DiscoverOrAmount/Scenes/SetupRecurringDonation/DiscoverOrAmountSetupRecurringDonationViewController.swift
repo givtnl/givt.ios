@@ -75,7 +75,6 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
         Label4.text = "SetupRecurringGiftText_5".localized
         occurrencesLabel.text = "SetupRecurringGiftText_6".localized
         
-        
         setupAmountView()
         setupOccurrencesView()
         setupFrequencyPickerView()
