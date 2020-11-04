@@ -13,7 +13,8 @@ import AppCenterAnalytics
 import SVProgressHUD
 import Mixpanel
 
-class AmountViewController: UIViewController, UIGestureRecognizerDelegate, NavigationManagerDelegate, MaterialShowcaseDelegate {
+class AmountViewController: UIViewController, UIGestureRecognizerDelegate, MaterialShowcaseDelegate {
+    
     private var log: LogService = LogService.shared
     private let slideFromRightAnimation = PresentFromRight()
     
@@ -24,8 +25,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet var pageControl: UIView!
     @IBOutlet var calcView: UIView!
     
-    @IBOutlet var menu: UIBarButtonItem!
-    @IBOutlet var btnFaq: UIBarButtonItem!
     @IBOutlet var btnRemove: CustomButton!
     @IBOutlet var btnNext: CustomButtonWithRightArrow!
     @IBOutlet var viewPresets: UIView!
@@ -39,8 +38,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     @IBOutlet weak var addCollectLabel: UILabel!
     
     @IBOutlet var btnComma: UIButton!
-    @IBOutlet weak var lblTitle: UINavigationItem!
-    @IBOutlet weak var screenTitle: UILabel!
     
     @IBOutlet var stackCollections: UIStackView!
     
@@ -56,8 +53,7 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     var topAnchor: NSLayoutConstraint!
     var leadingAnchor: NSLayoutConstraint!
     var selectedAmount = 0
-    private var _cameFromFAQ: Bool = false
-    
+
     private var amountLimit: Int {
         get {
             return UserDefaults.standard.amountLimit
@@ -138,20 +134,15 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         btnNext.labelText.adjustsFontSizeToFitWidth = true
         btnNext.accessibilityLabel = NSLocalizedString("Next", comment: "Button to give")
         
-        screenTitle.text = NSLocalizedString("Amount", comment: "Title on the AmountPage")
         addCollectLabel.text = NSLocalizedString("AddCollect", comment: "")
         addCollectLabel.adjustsFontSizeToFitWidth = true
-        lblTitle.title = ""
         
-        menu.accessibilityLabel = "Menu"
-        btnFaq.accessibilityLabel = NSLocalizedString("FAQButtonAccessibilityLabel", comment: "")
         btnRemove.accessibilityLabel = NSLocalizedString("RemoveBtnAccessabilityLabel", comment: "")
         addCollect.accessibilityLabel = NSLocalizedString("AddCollect", comment: "")
         collectOne.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("FirstCollect", comment: ""))
         collectTwo.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("SecondCollect", comment: ""))
         collectThree.deleteBtn.accessibilityLabel = NSLocalizedString("RemoveCollectButtonAccessibilityLabel", comment: "").replacingOccurrences(of: "{0}", with: NSLocalizedString("ThirdCollect", comment: ""))
         
-        NotificationCenter.default.addObserver(self, selector: #selector(checkBadges), name: .GivtBadgeNumberDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(presetsWillShow), name: .GivtAmountPresetsSet, object: nil)
 
     }
@@ -180,26 +171,13 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         log.info(message:"Mandate signed: " + String(UserDefaults.standard.mandateSigned))
         
         FeatureManager.shared.checkUpdateState(context: self)
-        
-        menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
-        
-        if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
-            self._cameFromFAQ = true
-        }
-        
-        navigationItem.titleView = UIImageView(image: UIImage(named: "pg_give_first"))
-        navigationItem.accessibilityLabel = NSLocalizedString("ProgressBarStepOne", comment: "")
+
         navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationController?.navigationBar.isTranslucent = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationManager.delegate = self
-        
-        if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
-            navigationManager.finishRegistrationAlert(self)
-        }
         
         GivtManager.shared.getPublicMeta { (shouldShowGiftAid) in
             if let shouldAskForPermission = shouldShowGiftAid {
@@ -225,8 +203,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
                 }
             }
         }
-        
-        self._cameFromFAQ = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -436,15 +412,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         checkAmounts()
     }
     
-    func willResume(sender: NavigationManager) {
-        if ((self.presentedViewController as? UIAlertController) == nil) {
-            if (self.sideMenuController?.isLeftViewHidden)! && !self._cameFromFAQ {
-                navigationManager.finishRegistrationAlert(self)
-            }
-            self._cameFromFAQ = false
-        }
-    }
-    
     @objc func deleteCollect(sender: UIButton){
         switch sender.tag {
             case 1:
@@ -503,11 +470,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
     }
     func selectFirstCollect(){
         setActiveCollection(collectionViews.first!)
-    }
-    @objc func checkBadges(notification:Notification) {
-        DispatchQueue.main.async {
-            self.menu.image = BadgeService.shared.hasBadge() ? #imageLiteral(resourceName: "menu_badge") : #imageLiteral(resourceName: "menu_base")
-        }
     }
     
     func clearAmounts() {
@@ -581,14 +543,6 @@ class AmountViewController: UIViewController, UIGestureRecognizerDelegate, Navig
         btnNext.isEnabled = nuOfCollectsShown != countOfZeroAmounts
     }
 
-    let slideAnimator = CustomPresentModalAnimation()
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "faq" {
-            let destination = segue.destination
-            destination.transitioningDelegate = slideAnimator
-        }
-    }
-    
     @objc func presetsWillShow(notification: Notification){
         if(!viewPresets.isHidden){
             calcPresetsStackView.removeArrangedSubview(viewPresets)

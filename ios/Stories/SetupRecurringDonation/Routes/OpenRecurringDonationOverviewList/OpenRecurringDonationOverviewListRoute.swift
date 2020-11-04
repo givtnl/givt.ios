@@ -9,9 +9,9 @@
 import Foundation
 
 class OpenRecurringDonationOverviewListRoute: NoResponseRequest {
-    var recurringDonation: RecurringRuleViewModel
+    var recurringDonationId: String
     
-    init(recurringDonation: RecurringRuleViewModel) {
-        self.recurringDonation = recurringDonation
+    init(recurringDonationId: String) {
+        self.recurringDonationId = recurringDonationId
     }
 }

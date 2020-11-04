@@ -8,4 +8,9 @@
 
 import Foundation
 
-class GoToPushNotificationViewRoute: NoResponseRequest { }
+class GoToPushNotificationViewRoute: NoResponseRequest {
+    var notificationAuthorization: NotificationAuthorization
+    init(notificationAuthorization: NotificationAuthorization) {
+        self.notificationAuthorization = notificationAuthorization
+    }
+}

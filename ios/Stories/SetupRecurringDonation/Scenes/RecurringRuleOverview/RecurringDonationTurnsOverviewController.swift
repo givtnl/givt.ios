@@ -12,13 +12,17 @@ import SVProgressHUD
 
 class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    //input variables
+    var recurringDonationId: String!
+    var comingFromNotification = false
+    
     private var mediater: MediaterWithContextProtocol = Mediater.shared
     private var log = LogService.shared
     
-    var recurringDonation: RecurringRuleViewModel?
-    var donations: [RecurringDonationTurnViewModel] = []
-    var donationsByYear: [Int: [RecurringDonationTurnViewModel]] = [:]
-    var donationsByYearSorted: [Dictionary<Int, [RecurringDonationTurnViewModel]>.Element]? = nil
+    private var recurringDonation: RecurringRuleViewModel? = nil
+    internal var donations: [RecurringDonationTurnViewModel] = []
+    internal var donationsByYear: [Int: [RecurringDonationTurnViewModel]] = [:]
+    internal var donationsByYearSorted: [Dictionary<Int, [RecurringDonationTurnViewModel]>.Element]? = nil
     
     @IBOutlet var givyContainer: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -62,8 +66,14 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     override func viewDidAppear(_ animated: Bool) {
         
         do {
+            recurringDonation = try? mediater.send(request: GetRecurringDonationsQuery()).first(where: { (recurringDonation) -> Bool in
+                recurringDonation.id == recurringDonationId
+            })
+            
             if let recurringDonation = recurringDonation {
-                (navBar.titleView as! UILabel).text = recurringDonation.collectGroupName
+                let cgName = try mediater.send(request: GetCollectGroupsQuery()).first(where: { $0.namespace == recurringDonation.namespace })!.name
+                
+                (navBar.titleView as! UILabel).text = cgName
                 
                 let recurringDonationTurns: [Int] = try self.mediater.send(request: GetRecurringDonationTurnsQuery(id: recurringDonation.id))
                 var donationDetails: [DonationResponseModel] = []
@@ -77,10 +87,8 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                 
                 if donationDetails.count >= 1 {
                     lastDonationDate = (donationDetails.last?.Timestamp.toDate!)!
-                } else if Date() > recurringDonation.startDate.toDate! {
-                    lastDonationDate = Date()
                 } else {
-                    lastDonationDate = recurringDonation.startDate.toDate!.addingTimeInterval(-1*24*60*60)
+                    lastDonationDate = recurringDonation.startDate.toDate!.addingTimeInterval(-1)
                 }
                 
                 let futureTurns: [RecurringDonationTurnViewModel] = getFutureTurns(recurringDonation: recurringDonation, recurringDonationLastDate: lastDonationDate, recurringDonationPastTurnsCount: recurringDonationTurns.count, maxCount: 1)
@@ -116,8 +124,9 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
     }
     
     @IBAction override func backPressed(_ sender: Any) {
-        try? mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
+        try? mediater.send(request: BackToRecurringDonationOverviewRoute(reloadData: comingFromNotification), withContext: self)
     }
+    
     @IBAction func openInfo(_ sender: Any) {
         UIView.animate(withDuration: 1, animations: {
             self.legendOverlay.frame.origin.y = 0
@@ -125,6 +134,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
             self.view.layoutIfNeeded()
         })
     }
+    
     @objc func closeInfo() {
         UIView.animate(withDuration: 1, animations: {
             self.legendOverlay.frame.origin.y = -340

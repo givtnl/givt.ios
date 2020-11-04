@@ -16,7 +16,9 @@ import UserNotifications
 import Mixpanel
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDonationTurnCreatedDelegate {
+    
+    
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
@@ -27,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var coreDataContext = CoreDataContext()
     
+    private var mediater: MediaterWithContextProtocol = Mediater.shared
+
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
@@ -48,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         NotificationManager.shared.start()
+        NotificationManager.shared.delegates.append(self)
         
         handleOldBeaconList()
         checkIfTempUser()
@@ -63,6 +68,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mixpanel.flushInterval = AppConstants.mixpanelConfig.flushInterval
 
         return true
+    }
+
+    func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {
+        DispatchQueue.main.async {
+            guard let window = UIApplication.shared.keyWindow else { return }
+            guard let mainViewController = window.rootViewController?.children
+                    .first(where: { (child) -> Bool in child is MainNavigationController })?.children
+                    .first(where: { (child) -> Bool in child is MainViewController }) else { return }
+            
+            try? self.mediater.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
+            { }
+        }
     }
     
     func doMagicForPresets() {
@@ -242,7 +259,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Mediater.shared.registerHandler(handler: GetRecurringDonationsQueryHandler())
         Mediater.shared.registerPreProcessor(processor: CreateRecurringDonationCommandPreHandler())
         Mediater.shared.registerHandler(handler: CreateRecurringDonationCommandHandler())
-        Mediater.shared.registerPostProcessor(processor: CreateRecurringDonationCommandPostHandler())
         Mediater.shared.registerHandler(handler: CancelRecurringDonationCommandHandler())
         Mediater.shared.registerHandler(handler: GetRecurringDonationTurnsQueryHandler())
         //-- USER QUERIES
@@ -253,12 +269,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
         
         // -- NAVIGATION
-        Mediater.shared.registerHandler(handler: OpenChooseAmountRouteHandler())
-        Mediater.shared.registerHandler(handler: BackToChooseDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: BackToMainRouteHandler())
-        Mediater.shared.registerHandler(handler: ChangeAmountLimitRouteHandler())
-        Mediater.shared.registerPreProcessor(processor: ChangeAmountLimitRoutePreHandler())
-        Mediater.shared.registerHandler(handler: GoToSafariRouteHandler())
         Mediater.shared.registerHandler(handler: FinalizeGivingRouteHandler())
         Mediater.shared.registerHandler(handler: DestinationSelectedRouteHandler())
         Mediater.shared.registerHandler(handler: SetupRecurringDonationChooseDestinationRouteHandler())
@@ -270,9 +281,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Mediater.shared.registerHandler(handler: DismissPushNotificationViewRouteHandler())
         Mediater.shared.registerHandler(handler: GoToAboutViewRouteHandler())
         Mediater.shared.registerHandler(handler: OpenRecurringDonationOverviewListRouteHandler())
-
+        Mediater.shared.registerHandler(handler: OpenRecurringRuleDetailFromNotificationRouteHandler())
+        
         //-- INFRA
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
-
+        
+        //-- DISCOVER OR AMOUNT: ROUTES
+        Mediater.shared.registerHandler(handler: BackToMainViewRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSelectDestinationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSetupSingleDonationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSetupRecurringDonationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSafariRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountBackToSelectDestinationRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenChangeAmountLimitRouteHandler())
+        Mediater.shared.registerPreProcessor(processor: DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSuccessRouteHandler())
     }
 }

@@ -15,7 +15,9 @@ class SetupNotificationRecurringDonationViewController: UIViewController
     @IBOutlet weak var confirmButton: CustomButton!
     
     var mediater: MediaterWithContextProtocol = Mediater.shared
-
+    
+    var notificationAuthorizationStatus: NotificationAuthorization? = nil
+    
     @IBOutlet weak var btnAllowPush: CustomButton!
 
     @IBAction func GoBack(_ sender: Any) {
@@ -35,8 +37,16 @@ class SetupNotificationRecurringDonationViewController: UIViewController
     }
     
     private func setupLabels() {
-        descriptionLabel.text = "PushnotificationRequestScreenDescription".localized
-        confirmButton.setTitle("PushnotificationRequestScreenButtonYes".localized, for: UIControl.State.normal)
+        switch notificationAuthorizationStatus {
+            case .notDetermined:
+                descriptionLabel.text = "PushnotificationRequestScreenPrimaryDescription".localized
+                confirmButton.setTitle("PushnotificationRequestScreenPrimaryButtonYes".localized, for: UIControl.State.normal)
+                break;
+            default:
+                descriptionLabel.text = "PushnotificationRequestScreenDescription".localized
+                confirmButton.setTitle("PushnotificationRequestScreenButtonYes".localized, for: UIControl.State.normal)
+                break;
+        }
     }
     
     override func viewDidLoad() {
