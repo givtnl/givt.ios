@@ -1245,7 +1245,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <view hidden="YES" opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zOI-zR-Lsr" userLabel="Opaque">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                                    <rect key="frame" x="6" y="0.0" width="408" height="90"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -1262,7 +1262,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="zOI-zR-Lsr" secondAttribute="bottom" id="b6N-uA-2na"/>
                                                 <constraint firstItem="jmq-E2-YPm" firstAttribute="leading" secondItem="pkf-L5-WGr" secondAttribute="trailing" constant="14" id="bsv-qh-JV9"/>
                                                 <constraint firstAttribute="bottom" secondItem="pkf-L5-WGr" secondAttribute="bottom" id="haJ-Pp-uIt"/>
-                                                <constraint firstItem="zOI-zR-Lsr" firstAttribute="leading" secondItem="2WS-yk-V7k" secondAttribute="leading" id="lyz-nQ-Gav"/>
+                                                <constraint firstItem="zOI-zR-Lsr" firstAttribute="leading" secondItem="pkf-L5-WGr" secondAttribute="trailing" id="lyz-nQ-Gav"/>
                                                 <constraint firstItem="pkf-L5-WGr" firstAttribute="leading" secondItem="2WS-yk-V7k" secondAttribute="leading" id="uQg-AY-IeB"/>
                                             </constraints>
                                         </tableViewCellContentView>
