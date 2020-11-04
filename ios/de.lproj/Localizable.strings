@@ -993,8 +993,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "PushnotificationRequestScreenPrimaryButtonYes" = "Ok, fine!";
 "DiscoverSearchButton" = "Suchen";
 "DiscoverDiscoverButton" = "Alles sehen";
-"DiscoverSegmentNow" = "Gib jetzt";
-"DiscoverSegmentWho" = "Zu wem?";
+"DiscoverSegmentNow" = "Gib";
+"DiscoverSegmentWho" = "Entdecken";
 "DiscoverHomeDiscoverTitle" = "Kategorie wählen";
 "DiscoverOrAmountActionSheetOnce" = "Einmalige Spende";
 "DiscoverOrAmountActionSheetRecurring" = "Wiederkehrende Spende";
