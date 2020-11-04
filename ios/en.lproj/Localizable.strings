@@ -1020,8 +1020,8 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "PushnotificationRequestScreenPrimaryButtonYes" = "Ok, fine!";
 "DiscoverSearchButton" = "Search";
 "DiscoverDiscoverButton" = "See all";
-"DiscoverSegmentNow" = "Give now";
-"DiscoverSegmentWho" = "Discover who";
+"DiscoverSegmentNow" = "Give";
+"DiscoverSegmentWho" = "Discover";
 "DiscoverHomeDiscoverTitle" = "Choose category";
 "DiscoverOrAmountActionSheetOnce" = "One-off donation";
 "DiscoverOrAmountActionSheetRecurring" = "Recurring donation";
