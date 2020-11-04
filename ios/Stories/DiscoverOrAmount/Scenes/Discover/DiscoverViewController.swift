@@ -61,7 +61,7 @@ extension DiscoverViewController {
     func setupLabels() {
         (charitiesView.subviews[0].subviews[1] as! UILabel).text = "Stichtingen".localized
         (churchesView.subviews[0].subviews[1] as! UILabel).text = "Churches".localized
-        (actionsView.subviews[0].subviews[1] as! UILabel).text = "Campaigns".localized
+        (actionsView.subviews[0].subviews[1] as! UILabel).text = "Acties".localized
         (artistsView.subviews[0].subviews[1] as! UILabel).text = "Artists".localized
         (searchView.subviews[0].subviews[1] as! UILabel).text = "DiscoverSearchButton".localized
         (discoverView.subviews[0].subviews[1] as! UILabel).text = "DiscoverDiscoverButton".localized
