@@ -43,23 +43,21 @@ extension InitialPageViewController: UIPageViewControllerDataSource, UIPageViewC
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let mainController = pageViewController.parent as? MainViewController {
             if previousViewControllers[0] == items[0] {
-                mainController.segmentControl.selectedSegmentIndex = completed ? 1 : 0
-                navigationController?.children.first?.title = completed ? "DiscoverHomeDiscoverTitle".localized : "Amount".localized
+                if completed {
+                    mainController.segmentControl.selectedSegmentIndex = 1
+                    navigationController?.children.first?.title = "DiscoverHomeDiscoverTitle".localized
+                } else {
+                    mainController.segmentControl.selectedSegmentIndex = 0
+                    navigationController?.children.first?.title = "Amount".localized
+                }
             } else {
-                mainController.segmentControl.selectedSegmentIndex = completed ? 0 : 1
-                navigationController?.children.first?.title = completed ? "Amount".localized : "DiscoverHomeDiscoverTitle".localized
-            }
-        }
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
-        if let mainController = pageViewController.parent as? MainViewController {
-            if pendingViewControllers[0] == items[0] {
-                mainController.segmentControl.selectedSegmentIndex = 0
-                navigationController?.children.first?.title = "Amount".localized
-            } else {
-                mainController.segmentControl.selectedSegmentIndex = 1
-                navigationController?.children.first?.title = "DiscoverHomeDiscoverTitle".localized
+                if completed {
+                    mainController.segmentControl.selectedSegmentIndex = 0
+                    navigationController?.children.first?.title = "Amount".localized
+                } else {
+                    mainController.segmentControl.selectedSegmentIndex = 1
+                    navigationController?.children.first?.title = "DiscoverHomeDiscoverTitle".localized
+                }
             }
         }
     }
