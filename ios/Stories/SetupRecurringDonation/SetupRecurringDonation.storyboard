@@ -313,20 +313,8 @@
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b46-lo-mkf" userLabel="RightView">
                                                                             <rect key="frame" x="354" y="0.0" width="20" height="134"/>
-                                                                            <subviews>
-                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QAd-4f-Mxt">
-                                                                                    <rect key="frame" x="-10" y="-10.5" width="20" height="20"/>
-                                                                                    <color key="tintColor" systemColor="systemYellowColor"/>
-                                                                                    <constraints>
-                                                                                        <constraint firstAttribute="width" constant="20" id="UGv-6S-hdT"/>
-                                                                                        <constraint firstAttribute="height" constant="20" id="Vzx-CU-Aca"/>
-                                                                                    </constraints>
-                                                                                </imageView>
-                                                                            </subviews>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
-                                                                                <constraint firstItem="QAd-4f-Mxt" firstAttribute="leading" secondItem="b46-lo-mkf" secondAttribute="leading" constant="-10" id="JcQ-uY-b2e"/>
-                                                                                <constraint firstItem="QAd-4f-Mxt" firstAttribute="top" secondItem="b46-lo-mkf" secondAttribute="top" constant="-10" id="TWA-Re-aBi"/>
                                                                                 <constraint firstAttribute="width" constant="20" id="ePo-0K-TDG"/>
                                                                             </constraints>
                                                                         </view>
@@ -358,7 +346,6 @@
                                                             <outlet property="cronTextLabel" destination="S5R-iF-Wwa" id="82l-jy-NUw"/>
                                                             <outlet property="endDateLabel" destination="Bmp-dt-uiY" id="J9X-xG-u6a"/>
                                                             <outlet property="horiStackView" destination="0YH-nu-bc8" id="m8B-op-kUQ"/>
-                                                            <outlet property="indicationImageView" destination="QAd-4f-Mxt" id="e9H-lt-xng"/>
                                                             <outlet property="listLabel" destination="cEq-rF-WB2" id="SO4-2n-whd"/>
                                                             <outlet property="listView" destination="22M-wb-RiC" id="Hsw-4M-odf"/>
                                                             <outlet property="logoContainerView" destination="mSU-gU-Y7W" id="E1C-EX-Nq6"/>
@@ -1402,7 +1389,6 @@
         <image name="giftaid_yellow_noborder_15" width="17" height="17"/>
         <image name="givymoney" width="240" height="240"/>
         <image name="info20h" width="20" height="20"/>
-        <image name="star.fill" catalog="system" width="128" height="116"/>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -1414,9 +1400,6 @@
         </systemColor>
         <systemColor name="systemGroupedBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

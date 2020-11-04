@@ -18,6 +18,5 @@ extension Notification.Name {
     public static let GivtDidSavePresets = Notification.Name("GivtDidSavePresets")
     public static let GivtDidFindBeaconFarAway = Notification.Name("GivtDidFindBeaconFarAway")
     
-    public static let GivtCreatedRecurringDonation = Notification.Name("GivtCreatedRecurringDonation")
     public static let GivtSegmentControlStateDidChange = Notification.Name("GivtSegmentControlStateDidChange")
 }

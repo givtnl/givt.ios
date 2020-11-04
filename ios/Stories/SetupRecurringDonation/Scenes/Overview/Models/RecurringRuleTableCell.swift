@@ -22,7 +22,6 @@ internal final class RecurringRuleTableCell : UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cronTextLabel: UILabel!
     @IBOutlet weak var endDateLabel: UILabel!
-    @IBOutlet weak var indicationImageView: UIImageView!
     @IBOutlet weak var centerView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var logoContainerView: UIView!
@@ -84,21 +83,6 @@ internal final class RecurringRuleTableCell : UITableViewCell {
                 listLabel.text = "GoToListWithRecurringDonationDonations".localized
                 recurringDonationId = data.id
                 rowIndexPath = data.indexPath
-                if let rowIndex = rowIndexPath?.row {
-                    if rowIndex != 0 {
-                        indicationImageView.isHidden = true
-                    } else {
-                        if let testShuldShow = data.shouldShowNewItemMarker {
-                            if testShuldShow {
-                                indicationImageView.isHidden = false
-                            } else {
-                                indicationImageView.isHidden = true
-                            }
-                        } else {
-                            indicationImageView.isHidden = true
-                        }
-                    }
-                }
             }
         }
     }
