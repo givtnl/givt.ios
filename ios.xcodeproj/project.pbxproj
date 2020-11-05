@@ -264,6 +264,8 @@
 		DFFF7E8E24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8D24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift */; };
 		DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8F24F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift */; };
 		FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */; };
+		FB243BDD2553F30500C6F768 /* GoBackOneControllerRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB243BDC2553F30500C6F768 /* GoBackOneControllerRoute.swift */; };
+		FB243BDF2553F32000C6F768 /* GoBackOneControllerRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB243BDE2553F32000C6F768 /* GoBackOneControllerRouteHandler.swift */; };
 		FB2E61602306B965006F6792 /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = FB2E615F2306B614006F6792 /* Font Awesome 5 Free-Solid-900.otf */; };
 		FB38F1B22133E7500025F648 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB38F1B12133E7500025F648 /* NavigationHelper.swift */; };
 		FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB3CE6D61F14CA200055185B /* AppDelegate.swift */; };
@@ -624,6 +626,8 @@
 		FB19533B1F56DDEC00172CD3 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureManager.swift; sourceTree = "<group>"; };
+		FB243BDC2553F30500C6F768 /* GoBackOneControllerRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackOneControllerRoute.swift; sourceTree = "<group>"; };
+		FB243BDE2553F32000C6F768 /* GoBackOneControllerRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackOneControllerRouteHandler.swift; sourceTree = "<group>"; };
 		FB2E615F2306B614006F6792 /* Font Awesome 5 Free-Solid-900.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Font Awesome 5 Free-Solid-900.otf"; sourceTree = "<group>"; };
 		FB38F1B12133E7500025F648 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		FB3CE6D31F14CA200055185B /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1669,9 +1673,19 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		FB243BDB2553F2D200C6F768 /* GoBackOneController */ = {
+			isa = PBXGroup;
+			children = (
+				FB243BDC2553F30500C6F768 /* GoBackOneControllerRoute.swift */,
+				FB243BDE2553F32000C6F768 /* GoBackOneControllerRouteHandler.swift */,
+			);
+			path = GoBackOneController;
+			sourceTree = "<group>";
+		};
 		FB2CFAE524EC157B003E096D /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				FB243BDB2553F2D200C6F768 /* GoBackOneController */,
 				FB872FF024C6EBC8005FF355 /* BackToMain */,
 				FB87303324C88ADE005FF355 /* FinalizeGiving */,
 			);
@@ -2383,6 +2397,7 @@
 				27A0E4E9221F395000982842 /* PresetsNavigationViewController.swift in Sources */,
 				32D4852E24D0445200F821A5 /* CreateRecurringDonationCommand.swift in Sources */,
 				3260CF1C254ABC4500BA6BD7 /* DiscoverOrAmountOpenSafariRoute.swift in Sources */,
+				FB243BDD2553F30500C6F768 /* GoBackOneControllerRoute.swift in Sources */,
 				DF2D13B924FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift in Sources */,
 				FBC1859C24C08918001A4C6B /* TableSection.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
@@ -2461,6 +2476,7 @@
 				3216ED832541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift in Sources */,
 				DF8BB30324F7A09F00104668 /* RecurringRuleViewModel.swift in Sources */,
 				D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */,
+				FB243BDF2553F32000C6F768 /* GoBackOneControllerRouteHandler.swift in Sources */,
 				D7BB5DA81FD59B4700D12E62 /* InfraManager.swift in Sources */,
 				FB87303024C885EE005FF355 /* NoInternetAlert.swift in Sources */,
 				D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */,
