@@ -95,15 +95,18 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
         startDateLabel.becomeFirstResponder()
         startDatePicker.date = Date()
     }
+    
     @IBAction func openFrequencyPicker(_ sender: Any) {
         frequencyLabel.becomeFirstResponder()
         frequencyPicker.selectRow(0, inComponent: 0, animated: false)
     }
+    
     @IBAction func backButton(_ sender: Any) {
-        try? mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
+        try? mediater.send(request: GoBackOneControllerRoute(), withContext: self)
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_DISMISSED")
     }
+    
     @IBAction func makeRecurringDonation(_ sender: Any) {
         self.view.endEditing(true)
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")

@@ -285,6 +285,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         
         //-- INFRA
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
+        Mediater.shared.registerHandler(handler: GoBackOneControllerRouteHandler())
         
         //-- DISCOVER OR AMOUNT: ROUTES
         Mediater.shared.registerHandler(handler: BackToMainViewRouteHandler())
