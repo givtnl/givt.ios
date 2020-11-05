@@ -95,6 +95,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
             let user = try mediater.send(request: GetLocalUserConfiguration())
             guard let userId = user.userId else {
                 LogService.shared.error(message: "Trying to donate without valid userId")
+                hideLoader()
                 return
             }
             let amount = Decimal(string: (amountControl.amount.replacingOccurrences(of: decimalNotation, with: ".")))!
@@ -120,10 +121,13 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
             }
         } catch DonationError.amountTooHigh {
             displayAmountTooHigh()
+            hideLoader()
         } catch DonationError.amountTooLow {
             showAmountTooLow()
+            hideLoader()
         } catch SafariError.cannotOpenSafari {
             LogService.shared.error(message: "There was a problem opening Safari")
+            hideLoader()
         }
         catch {}
     }

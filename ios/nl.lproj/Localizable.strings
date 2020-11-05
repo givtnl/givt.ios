@@ -1031,4 +1031,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "DiscoverOrAmountActionSheetRecurring" = "Terugkerende gift";
 
 /*Fuzzy*/
-"ReccurringGivtIsBeingProcessed" = "Bedankt voor je terugkerende gift aan {0}! \nOm alle informatie hierover te zien, ga naar de menu optie 'terugkerende giften'.";
+"ReccurringGivtIsBeingProcessed" = "Bedankt voor je terugkerende gift aan {0}! \nOm alle informatie hierover te zien, ga naar 'Terugkerende giften' in het menu.";
