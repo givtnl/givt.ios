@@ -40,7 +40,7 @@ internal final class DestinationTableCell : UITableViewCell {
                 iconLabel.text = "place-of-worship"
                 break
             case .charity:
-                iconLabel.text = "hands-helping"
+                iconLabel.text = "heart"
                 break
             case .campaign:
                 iconLabel.text = "hand-holding-heart"
