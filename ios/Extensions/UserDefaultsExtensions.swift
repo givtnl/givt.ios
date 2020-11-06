@@ -46,6 +46,7 @@ extension UserDefaults {
         case deviceToken
         case giftAidEnabled
         case giftAidSettings
+        case toHighlightMenuList
     }
     
     enum Showcase: String {
@@ -80,6 +81,18 @@ extension UserDefaults {
         set(value)
         {
             set(value, forKey: UserDefaultsKeys.badges.rawValue)
+            synchronize()
+        }
+    }
+    
+    var toHighlightMenuList: [String] {
+        get {
+            guard let toHighlightMenuList = array(forKey: UserDefaultsKeys.toHighlightMenuList.rawValue) as? [String] else { return [String]()}
+            return toHighlightMenuList
+        }
+        set(value)
+        {
+            set(value, forKey: UserDefaultsKeys.toHighlightMenuList.rawValue)
             synchronize()
         }
     }
