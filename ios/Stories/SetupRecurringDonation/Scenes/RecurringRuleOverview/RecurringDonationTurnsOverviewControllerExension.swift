@@ -79,7 +79,7 @@ extension RecurringDonationTurnsOverviewController {
     
     private func createSwifCron(cronString: String) -> SwifCron? {
         do {
-            let cronItems: [String] = transformDayInCronToInt(cronArray: cronString.split(separator: " ").map(String.init))
+            let cronItems: [String] = transformDayInCronToInt(cronArray: cronString.components(separatedBy: " "))
             return try SwifCron(cronItems.joined(separator: " "))
         }
         catch {
@@ -103,34 +103,12 @@ extension RecurringDonationTurnsOverviewController {
         case "SAT":
             day = "6"
         case "SUN":
-            day = "7"
+            day = "0"
         default:
             day = "*"
         }
         newarray[4] = day
         return newarray
-    }
-    private func returnStringFromDayInteger(value: Int) -> String {
-        var retVal: String
-        switch value {
-        case 1:
-            retVal = "SUN"
-        case 2:
-            retVal = "MON"
-        case 3:
-            retVal = "TUE"
-        case 4:
-            retVal = "WED"
-        case 5:
-            retVal = "THU"
-        case 6:
-            retVal = "FRI"
-        case 7:
-            retVal = "SAT"
-        default:
-            retVal = "*"
-        }
-        return retVal
     }
     
     func setupInfoViewContainer() {
