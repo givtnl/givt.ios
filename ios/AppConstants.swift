@@ -128,11 +128,11 @@ class AppConstants {
         #endif
     }()
     
-    static var mixpanelConfig: MixpanelConfig = {
+    static var mixpanelProjectId: String = {
         #if PRODUCTION
-            return MixpanelConfig(flushInterval: 30)
+            return "03cf660868058915f0ff4d3cc45371b9"
         #else
-            return MixpanelConfig(flushInterval: 4)
+            return "408ddc540995656bdbd17c2f61df7ce2"
         #endif
     }()
     
@@ -207,8 +207,4 @@ class AppConstants {
             return "eb8799f0-c64e-4447-bdc6-3e3d27ddf4bf"
         #endif
     }()
-    
-    internal struct MixpanelConfig {
-        var flushInterval: Double
-    }
 }
