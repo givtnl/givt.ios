@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
     
     var loginManager: LoginManager = LoginManager.shared
     
-    var mixpanel: MixpanelInstance = Mixpanel.initialize(token: "408ddc540995656bdbd17c2f61df7ce2")
+    var mixpanel: MixpanelInstance = Mixpanel.initialize(token: AppConstants.mixpanelProjectId)
     
     var coreDataContext = CoreDataContext()
     
@@ -65,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         }
         
         mixpanel.serverURL = "https://api-eu.mixpanel.com"
-        mixpanel.flushInterval = AppConstants.mixpanelConfig.flushInterval
 
         return true
     }
