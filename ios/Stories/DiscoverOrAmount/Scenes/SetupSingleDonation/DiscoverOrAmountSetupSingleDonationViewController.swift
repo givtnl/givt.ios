@@ -24,6 +24,10 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
     @IBOutlet weak var navigationTitle: UINavigationItem!
     @IBOutlet weak var amountControl: CollectionView!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var presetView: UIView!
+    @IBOutlet weak var presetButton1: PresetButton!
+    @IBOutlet weak var presetButton2: PresetButton!
+    @IBOutlet weak var presetButton3: PresetButton!
     
     var amountLimit = 0
     
@@ -57,6 +61,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
         backButton.accessibilityLabel = "Back".localized
         
         checkAmount()
+        checkPresetButtons()
     }
         
     override func viewWillAppear(_ animated: Bool) {
@@ -177,7 +182,33 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
         amountControl.amount = "0";
         checkAmount()
     }
-
+    
+    @IBAction func presetButtonTapped(_ sender: Any) {
+        guard let button = sender as? PresetButton else {
+            return
+        }
+        amountControl.isPreset = true
+        amountControl.amount = button.amount.text!
+        checkAmount()
+    }
+    
+    fileprivate func checkPresetButtons() {
+        if UserDefaults.standard.hasPresetsSet == true {
+            let fmt = NumberFormatter()
+            fmt.minimumFractionDigits = 2
+            fmt.minimumIntegerDigits = 1
+            presetButton1.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber)
+            presetButton1.contentView.accessibilityLabel = fmt.string(from: UserDefaults.standard.amountPresets[0] as NSNumber)
+            presetButton2.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber)
+            presetButton2.contentView.accessibilityLabel = fmt.string(from: UserDefaults.standard.amountPresets[1] as NSNumber)
+            presetButton3.amount.text = fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber)
+            presetButton3.contentView.accessibilityLabel = fmt.string(from: UserDefaults.standard.amountPresets[2] as NSNumber)
+            presetView.isHidden = false
+        } else {
+            presetView.isHidden = true
+        }
+    }
+    
     fileprivate func showAmountTooLow() {
 
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
@@ -214,6 +245,5 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
                 UIColor.init(rgb: 0xD2D1D9)
         amountControl.isValid = parsedDecimal <= Decimal(amountLimit) && parsedDecimal >= 0.25 || parsedDecimal == 0
         amountControl.activeMarker.backgroundColor = amountControl.isActive ? amountControl.isValid ? #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5529411765, alpha: 1) : #colorLiteral(red: 0.737254902, green: 0.09803921569, blue: 0.1137254902, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-
     }
 }
