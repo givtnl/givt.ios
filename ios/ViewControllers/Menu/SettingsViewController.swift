@@ -81,7 +81,7 @@ class SettingsViewController: BaseMenuViewController {
         
         //        let consciousGivingItem = Setting(name: "Doelbewust geven", image: UIImage(named: "hand-holding-heart")!, callback:  {self.consciousGiving()})
         
-        let setupRecurringGift = Setting(name: "MenuItem_RecurringDonation".localized, image: UIImage(named:"repeat")!, callback: { self.setupRecurringDonation() })
+        let setupRecurringGift = Setting(name: "MenuItem_RecurringDonation".localized, image: UIImage(named:"repeat")!, showBadge: UserDefaults.standard.toHighlightMenuList.contains( "MenuItem_RecurringDonation".localized), callback: { self.setupRecurringDonation() })
         
         if !UserDefaults.standard.isTempUser {
             items.append([])
@@ -325,6 +325,10 @@ class SettingsViewController: BaseMenuViewController {
         let vc = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController()
         vc?.modalPresentationStyle = .fullScreen
         vc?.transitioningDelegate = self.slideFromRightAnimation
+        if let index =  UserDefaults.standard.toHighlightMenuList.firstIndex(of: "MenuItem_RecurringDonation".localized) {
+            UserDefaults.standard.toHighlightMenuList.remove(at: index)
+        }
+        NotificationCenter.default.post(name: .GivtBadgeNumberDidChange, object: nil)
         DispatchQueue.main.async {
             self.hideMenuAnimated() {
                 NavigationManager.shared.pushWithLogin(vc!, context: self)

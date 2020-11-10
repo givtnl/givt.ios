@@ -268,7 +268,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
                 case CollectGroupType.campaign:
                     text = "hand-holding-heart";
                 case CollectGroupType.charity:
-                    text = "hands-helping";
+                    text = "heart";
                 case CollectGroupType.church:
                     text = "place-of-worship";
                 case CollectGroupType.debug:
@@ -276,7 +276,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
                 case CollectGroupType.demo:
                     text = "democrat";
                 default:
-                    text = "hands-helping";
+                    text = "heart";
                 }
                 collectGroupLabel.symbol.text = text
                 collectGroupLabel.symbolView.isHidden = false;

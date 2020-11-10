@@ -43,18 +43,14 @@ class DiscoverOrAmountOpenSafariRouteHandler : RequestHandlerWithContextProtocol
         let plainTextBytes = try JSONEncoder().encode(safariModel).base64EncodedString()
         let gotoUrl = URL(string: "\(AppConstants.apiUri)/confirm.html?msg=\(plainTextBytes)")!;
         LogService.shared.info(message: "Going to Safari")
-        if UIApplication.shared.canOpenURL(gotoUrl) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(gotoUrl, options: [:]) { _ in
-                    try? completion(() as! R.TResponse)
-                }
-            } else {
-                // Fallback on earlier versions
-                UIApplication.shared.openURL(gotoUrl)
-                try completion(() as! R.TResponse)
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(gotoUrl, options: [:]) { _ in
+                try? completion(() as! R.TResponse)
             }
         } else {
-            throw SafariError.cannotOpenSafari
+            // Fallback on earlier versions
+            UIApplication.shared.openURL(gotoUrl)
+            try completion(() as! R.TResponse)
         }
     }
     
