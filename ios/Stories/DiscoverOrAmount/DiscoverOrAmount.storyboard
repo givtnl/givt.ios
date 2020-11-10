@@ -509,17 +509,8 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UaN-As-kx6">
                                                                 <rect key="frame" x="0.0" y="35" width="374" height="44"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diI-xl-iji" customClass="AmountTextField" customModule="ios" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="44"/>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="bottomBorderColor">
-                                                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </view>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IpP-Pp-v83" userLabel="frequency">
-                                                                        <rect key="frame" x="197" y="0.0" width="177" height="44"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="44"/>
                                                                         <subviews>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Maand" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mio-Pl-hEh" customClass="RecurringCustomUITextField" customModule="ios" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="44"/>
@@ -562,6 +553,15 @@
                                                                             <constraint firstAttribute="bottom" secondItem="NQD-Ge-pFh" secondAttribute="bottom" id="vRk-P4-drE"/>
                                                                             <constraint firstAttribute="trailing" secondItem="NQD-Ge-pFh" secondAttribute="trailing" id="vax-Or-Vfv"/>
                                                                         </constraints>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="diI-xl-iji" customClass="AmountTextField" customModule="ios" customModuleProvider="target">
+                                                                        <rect key="frame" x="197" y="0.0" width="177" height="44"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="bottomBorderColor">
+                                                                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
                                                                     </view>
                                                                 </subviews>
                                                             </stackView>
