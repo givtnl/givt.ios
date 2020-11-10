@@ -20,8 +20,9 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var Label1: UILabel!
     @IBOutlet weak var Label2: UILabel!
-    @IBOutlet weak var Label3: UILabel!
     @IBOutlet weak var Label4: UILabel!
+    @IBOutlet weak var Label5: UILabel!
+    
     @IBOutlet weak var LabelStarting: UILabel!
     
     @IBOutlet weak var amountView: AmountTextField! { didSet { amountView.amountLabel.delegate = self } }
@@ -29,13 +30,16 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     
     @IBOutlet weak var mainStackView: UIStackView!
     
-    @IBOutlet weak var frequencyLabel: CustomUITextField!
+    @IBOutlet weak var frequencyLabel: RecurringCustomUITextField!
     @IBOutlet weak var frequencyButton: UIButton!
     
-    @IBOutlet weak var startDateLabel: CustomUITextField!
+    @IBOutlet weak var startDateLabel: RecurringCustomUITextField!
     @IBOutlet weak var startDateButton: UIButton!
     
-    @IBOutlet weak var occurrencesTextField: UITextField!
+    @IBOutlet weak var endDateLabel: RecurringCustomUITextField!
+    @IBOutlet weak var endDateButton: UIButton!
+    
+    @IBOutlet weak var occurrencesTextField: RecurringCustomUITextField!
     @IBOutlet weak var occurrencesLabel: UILabel!
     
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
@@ -45,6 +49,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     
     private var frequencyPicker: UIPickerView!
     private var startDatePicker: UIDatePicker!
+    private var endDatePicker: UIDatePicker!
     
     private let frequencys: Array<Array<Any>> =
         [[Frequency.Weekly, "SetupRecurringGiftWeek".localized]
@@ -70,15 +75,16 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
         
         Label1.text = "SetupRecurringGiftText_1".localized
         Label2.text = "SetupRecurringGiftText_2".localized
-        Label3.text = "SetupRecurringGiftText_3".localized
+//        Label3.text = "SetupRecurringGiftText_3".localized
         LabelStarting.text = "SetupRecurringGiftText_4".localized
-        Label4.text = "SetupRecurringGiftText_5".localized
-        occurrencesLabel.text = "SetupRecurringGiftText_6".localized
+        Label4.text = "of".localized
+        Label5.text = "tot".localized
         
         setupAmountView()
         setupOccurrencesView()
         setupFrequencyPickerView()
         setupStartDatePickerView()
+        setupEndDatePickerView()
         
         createSubcriptionButton.accessibilityLabel = "Give".localized
         createSubcriptionButton.setTitle("Give".localized, for: .normal)
@@ -93,9 +99,16 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     
     @IBAction func openStartDatePicker(_ sender: Any) {
         startDateLabel.becomeFirstResponder()
-        startDatePicker.date = Date()
+        if let newDate = Calendar.current.date(byAdding: .day, value: 1, to: Date()) {
+            startDatePicker.minimumDate = newDate
+        }
     }
-    
+    @IBAction func openEndDatePicker(_ sender: Any) {
+        endDateLabel.becomeFirstResponder()
+        if let newDate = Calendar.current.date(byAdding: .day, value: 8, to: Date()) {
+            endDatePicker.minimumDate = newDate
+        }
+    }
     @IBAction func openFrequencyPicker(_ sender: Any) {
         frequencyLabel.becomeFirstResponder()
         frequencyPicker.selectRow(0, inComponent: 0, animated: false)
@@ -205,9 +218,29 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         }
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
         
-        startDateLabel.text = startDatePicker.date.formatted
+        startDateLabel.text = startDatePicker.date.formattedShort
         startDateLabel.inputView = startDatePicker
         createToolbar(startDateLabel)
+    }
+    
+    func setupEndDatePickerView() {
+        endDatePicker = UIDatePicker()
+        endDatePicker.datePickerMode = .date
+        endDatePicker.addTarget(self, action: #selector(handleEndDatePicker), for: .valueChanged)
+        if let newDate = Calendar.current.date(byAdding: .day, value: 8, to: Date()) {
+            endDatePicker.minimumDate = newDate
+        }
+        if #available(iOS 14.0, *) {
+            endDatePicker.preferredDatePickerStyle = .wheels
+            endDatePicker.tintColor = ColorHelper.GivtPurple
+        } else {
+            endDatePicker.setValue(false, forKeyPath: "highlightsToday")
+        }
+        endDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        
+        endDateLabel.text = endDatePicker.date.formattedShort
+        endDateLabel.inputView = endDatePicker
+        createToolbar(endDateLabel)
     }
  
     private func ensureButtonHasCorrectState() {
@@ -280,10 +313,16 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     }
     
     @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
-        startDateLabel.text = datePicker.date.formatted
+        startDateLabel.text = datePicker.date.formattedShort
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
+    }
+    
+    @objc func handleEndDatePicker(_ datePicker: UIDatePicker) {
+        endDateLabel.text = datePicker.date.formattedShort
         
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
     }
     
     @objc func handleAmountEditingChanged() {
