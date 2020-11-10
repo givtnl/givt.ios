@@ -210,13 +210,14 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         if let newDate = Calendar.current.date(byAdding: .day, value: 1, to: Date()) {
             startDatePicker.minimumDate = newDate
         }
-        if #available(iOS 14.0, *) {
-            startDatePicker.preferredDatePickerStyle = .wheels
-            startDatePicker.tintColor = ColorHelper.GivtPurple
-        } else {
-            startDatePicker.setValue(false, forKeyPath: "highlightsToday")
-        }
+
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        
+        if #available(iOS 13.4, *) {
+            startDatePicker.preferredDatePickerStyle = .compact
+        } else {
+            startDatePicker.tintColor = ColorHelper.GivtPurple
+        }
         
         startDateLabel.text = startDatePicker.date.formattedShort
         startDateLabel.inputView = startDatePicker
@@ -230,16 +231,18 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         if let newDate = Calendar.current.date(byAdding: .day, value: 8, to: Date()) {
             endDatePicker.minimumDate = newDate
         }
-        if #available(iOS 14.0, *) {
-            endDatePicker.preferredDatePickerStyle = .wheels
-            endDatePicker.tintColor = ColorHelper.GivtPurple
-        } else {
-            endDatePicker.setValue(false, forKeyPath: "highlightsToday")
-        }
+
         endDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        
+        if #available(iOS 13.4, *) {
+            endDatePicker.preferredDatePickerStyle = .compact
+        } else {
+            endDatePicker.tintColor = ColorHelper.GivtPurple
+        }
         
         endDateLabel.text = endDatePicker.date.formattedShort
         endDateLabel.inputView = endDatePicker
+        
         createToolbar(endDateLabel)
     }
  
