@@ -172,6 +172,8 @@ class FeatureManager {
                             if (LoginManager.shared.isFullyRegistered) {
                                 context?.dismiss(animated: true, completion: {
                                     if let menuCtrl = UIApplication.shared.delegate?.window??.rootViewController as? LGSideMenuController {
+                                        UserDefaults.standard.toHighlightMenuList.append("MenuItem_RecurringDonation".localized)
+                                        NotificationCenter.default.post(name: .GivtBadgeNumberDidChange, object: nil)
                                         menuCtrl.showLeftView(animated: true)
                                     }
                                 })

@@ -156,7 +156,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
                             return
                         }
                         DispatchQueue.main.async {
-                            try? self.mediater.send(request: DiscoverOrAmountOpenSuccessRoute(), withContext: self)
+                            try? self.mediater.send(request: DiscoverOrAmountOpenSuccessRoute(collectGroupName: self.collectGroupLabel.label.text!), withContext: self)
                         }
                     }
                 } catch {
@@ -167,7 +167,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     }
 }
 
-extension DiscoverOrAmountSetupRecurringDonationViewController : CollectGroupLabelDelegate {
+extension DiscoverOrAmountSetupRecurringDonationViewController {
     private func showSetupRecurringDonationFailed() {
         DispatchQueue.main.async {
             SVProgressHUD.dismiss()
@@ -209,14 +209,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController : CollectGroupLab
         startDateLabel.inputView = startDatePicker
         createToolbar(startDateLabel)
     }
-    
-    func collectGroupLabelTapped() {
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
-        hideKeyboard()
-        try? mediater.send(request: SetupRecurringDonationChooseDestinationRoute(mediumId: ""), withContext: self)
-    }
-    
+ 
     private func ensureButtonHasCorrectState() {
         let amount = amountView.amount
         let endsAfterTurns = Int(occurrencesTextField.text!) ?? 0
@@ -254,7 +247,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController : CollectGroupLab
     }
     
     private func setupCollectGroupLabel() {
-        collectGroupLabel.delegate = self
         collectGroupLabel.label.text = "SelectRecipient".localized
         collectGroupLabel.bottomBorderColor = UIColor.clear
         collectGroupLabel.symbolView.isHidden = true;
@@ -271,7 +263,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController : CollectGroupLab
                 case CollectGroupType.campaign:
                     text = "hand-holding-heart";
                 case CollectGroupType.charity:
-                    text = "hands-helping";
+                    text = "heart";
                 case CollectGroupType.church:
                     text = "place-of-worship";
                 case CollectGroupType.debug:
@@ -279,7 +271,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController : CollectGroupLab
                 case CollectGroupType.demo:
                     text = "democrat";
                 default:
-                    text = "hands-helping";
+                    text = "heart"
                 }
                 collectGroupLabel.symbol.text = text
                 collectGroupLabel.symbolView.isHidden = false;

@@ -13,6 +13,7 @@ class DiscoverOrAmountOpenSuccessRouteHandler: RequestHandlerWithContextProtocol
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let vc = UIStoryboard.init(name: "DiscoverOrAmount", bundle: nil)
             .instantiateViewController(withIdentifier: String(describing: DiscoverOrAmountSuccessViewController.self)) as! DiscoverOrAmountSuccessViewController
+        vc.collectGroupName = (request as! DiscoverOrAmountOpenSuccessRoute).collectGroupName
         context.navigationController?.pushViewController(vc, animated: true)
         try completion(() as! R.TResponse)
     }
