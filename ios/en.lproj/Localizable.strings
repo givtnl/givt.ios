@@ -929,9 +929,9 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterMandateError" = "Alas, we are unable to unregister your account because we are unable to cancel your mandate or direct debit instruction. Please contact us.";
 "UnregisterErrorTitle" = "Terminate failed";
 "SetupRecurringGiftTitle" = "Set up your recurring donation";
-"SetupRecurringGiftText_3" = "each";
-"SetupRecurringGiftText_4" = "starting";
-"SetupRecurringGiftText_5" = "and this should happen";
+"SetupRecurringGiftText_3" = "starting on";
+"SetupRecurringGiftText_4" = "stops after";
+"SetupRecurringGiftText_5" = "or";
 "Add" = "Add";
 
 /*Fuzzy*/
@@ -945,7 +945,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "FAQQuestionFirstTargetThenAmount2" = "Why can I only choose a good cause from the list?";
 "FAQAnswerFirstTargetThenAmount2" = "\"Giving to a good cause\" is brand new and still under construction. New functionalities are continuous being added in time.";
 "SetupRecurringGiftText_2" = "to";
-"SetupRecurringGiftText_1" = "I want to give";
+"SetupRecurringGiftText_1" = "I want to give every";
 "SetupRecurringGiftWeek" = "week";
 "SetupRecurringGiftMonth" = "month";
 "SetupRecurringGiftQuarter" = "quarter";
