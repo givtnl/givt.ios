@@ -67,6 +67,8 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
         }
     }
     
+    private var minimumDate: Date? = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -99,13 +101,13 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     
     @IBAction func openStartDatePicker(_ sender: Any) {
         startDateLabel.becomeFirstResponder()
-        if let newDate = Calendar.current.date(byAdding: .day, value: 1, to: Date()) {
+        if let newDate = minimumDate {
             startDatePicker.minimumDate = newDate
         }
     }
     @IBAction func openEndDatePicker(_ sender: Any) {
         endDateLabel.becomeFirstResponder()
-        if let newDate = Calendar.current.date(byAdding: .day, value: 8, to: Date()) {
+        if let newDate = minimumDate {
             endDatePicker.minimumDate = newDate
         }
     }
@@ -207,7 +209,8 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         startDatePicker = UIDatePicker()
         startDatePicker.datePickerMode = .date
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
-        if let newDate = Calendar.current.date(byAdding: .day, value: 1, to: Date()) {
+        
+        if let newDate = minimumDate {
             startDatePicker.minimumDate = newDate
         }
 
@@ -228,7 +231,8 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         endDatePicker = UIDatePicker()
         endDatePicker.datePickerMode = .date
         endDatePicker.addTarget(self, action: #selector(handleEndDatePicker), for: .valueChanged)
-        if let newDate = Calendar.current.date(byAdding: .day, value: 8, to: Date()) {
+        
+        if let newDate = minimumDate {
             endDatePicker.minimumDate = newDate
         }
 
@@ -240,7 +244,8 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             endDatePicker.tintColor = ColorHelper.GivtPurple
         }
         
-        endDateLabel.text = endDatePicker.date.formattedShort
+        endDateLabel.placeholder = "dd/mm/yyyy"
+        endDateLabel.text = String.empty
         endDateLabel.inputView = endDatePicker
         
         createToolbar(endDateLabel)
@@ -277,7 +282,10 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     private func setupOccurrencesView() {
         createToolbar(occurrencesTextField)
         occurrencesTextField.keyboardType = .numberPad
+        occurrencesTextField.placeholder = "X"
+
         // setup event handlers
+        occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingBegan), for: .editingDidBegin)
         occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingChanged), for: .editingChanged)
         occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingEnd), for: .editingDidEnd)
     }
@@ -363,6 +371,9 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         }
         ensureButtonHasCorrectState()
     }
+    @objc func handleOccurrencesEditingBegan() {
+        occurrencesTextField.text = String.empty
+    }
     @objc func handleOccurrencesEditingEnd() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
@@ -383,6 +394,8 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", withProperties:["frequency": frequencys[row][1] as! String])
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", properties: ["frequency": frequencys[row][1] as! String])
         pickerView.reloadAllComponents()
+        
+        resetDatesAndTimes()
         ensureButtonHasCorrectState()
     }
     
@@ -396,6 +409,17 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         toolbar.isUserInteractionEnabled = true
         
         textField.inputAccessoryView = toolbar
+    }
+    func resetDatesAndTimes() {
+        if let date = minimumDate {
+            startDatePicker.setDate(date, animated: true)
+            startDateLabel.text = date.formattedShort
+            
+            endDatePicker.setDate(date, animated: true)
+            endDateLabel.text = String.empty
+            
+            occurrencesTextField.text = String.empty
+        }
     }
     fileprivate func displayAmountTooHigh() {
         let alert = UIAlertController(
