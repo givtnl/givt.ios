@@ -23,7 +23,8 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     @IBOutlet weak var Label3: UILabel!
     @IBOutlet weak var Label4: UILabel!
     @IBOutlet weak var Label5: UILabel!
-        
+    @IBOutlet weak var Label6: UILabel!
+    
     @IBOutlet weak var amountView: AmountTextField! { didSet { amountView.amountLabel.delegate = self } }
     @IBOutlet weak var collectGroupLabel: CollectGroupLabel!
     
@@ -39,7 +40,6 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     @IBOutlet weak var endDateButton: UIButton!
     
     @IBOutlet weak var occurrencesTextField: RecurringCustomUITextField!
-    @IBOutlet weak var occurrencesLabel: UILabel!
     
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var createSubcriptionButton: CustomButton!
@@ -81,6 +81,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
         Label3.text = "SetupRecurringGiftText_3".localized
         Label4.text = "SetupRecurringGiftText_4".localized
         Label5.text = "SetupRecurringGiftText_5".localized
+        Label6.text = "SetupRecurringGiftText_6".localized
         
         setupAmountView()
         setupOccurrencesView()
@@ -227,7 +228,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         startDateLabel.inputView = startDatePicker
         createToolbar(startDateLabel)
     }
-    
     func setupEndDatePickerView() {
         endDatePicker = UIDatePicker()
         endDatePicker.datePickerMode = .date
@@ -279,7 +279,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         // set number keypad
         amountView.amountLabel.keyboardType = .decimalPad
     }
-    
     private func setupOccurrencesView() {
         occurrencesTextField.isOccurrencesLabel = true
         createToolbar(occurrencesTextField)
@@ -292,7 +291,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingChanged), for: .editingChanged)
         occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingEnd), for: .editingDidEnd)
     }
-    
     private func setupCollectGroupLabel() {
         collectGroupLabel.label.text = "SelectRecipient".localized
         collectGroupLabel.bottomBorderColor = UIColor.clear
@@ -325,6 +323,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             }
         }
     }
+    
     func calculateTimes(until: Date) -> String {
         var times = 0
         var startDate = startDatePicker.date;
@@ -357,7 +356,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         }
         return times.string
     }
-    
     func calculateEndDate(withTimes: Int) -> Date {
         var times = withTimes
         var startDate = startDatePicker.date
@@ -390,6 +388,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         }
         return startDate
     }
+    
     @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
         startDateLabel.text = datePicker.date.formattedShort
         
@@ -407,7 +406,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
     }
-    
     @objc func handleEndDatePicker(_ datePicker: UIDatePicker) {
         endDateLabel.text = datePicker.date.formattedShort
         occurrencesTextField.text = calculateTimes(until: datePicker.date)
@@ -417,7 +415,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
     }
-    
     @objc func handleAmountEditingChanged() {
         if amountView.amount >= 0.25 && amountView.amount <= 99999 {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
@@ -453,8 +450,8 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             }
             endDatePicker.date = calculateEndDate(withTimes: times)
             endDateLabel.text = endDatePicker.date.formattedShort
-            ensureButtonHasCorrectState()
         }
+        ensureButtonHasCorrectState()
     }
     @objc func handleOccurrencesEditingBegan() {
         if let times = Int(occurrencesTextField.text!) {
@@ -462,10 +459,16 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         } else {
             occurrencesTextField.text = String.empty
         }
+        ensureButtonHasCorrectState()
     }
     @objc func handleOccurrencesEditingEnd() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
+        
+        if occurrencesTextField.text == String.empty {
+            occurrencesTextField.text = calculateTimes(until: endDatePicker.date)
+        }
+        ensureButtonHasCorrectState()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -523,11 +526,9 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
-    
     @objc func hideKeyboard(){
         self.view.endEditing(true)
     }
-    
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         let userInfo = notification.userInfo!
@@ -543,7 +544,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             self.view.layoutIfNeeded()
         })
     }
-    
     @objc func keyboardWillHide(notification:NSNotification){
         bottomScrollViewConstraint.constant = 0
         UIView.animate(withDuration: 0.3, animations: {
