@@ -16,9 +16,7 @@ import UserNotifications
 import Mixpanel
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDonationTurnCreatedDelegate {
-    
-    
+class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, NotificationRecurringDonationTurnCreatedDelegate {
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
@@ -30,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
     var coreDataContext = CoreDataContext()
     
     private var mediater: MediaterWithContextProtocol = Mediater.shared
-
+    
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
@@ -160,8 +158,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
-        //
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb { //coming from safari
+            GivtManager.shared.externalIntegration = nil
             if let appScheme = GivtManager.shared.externalIntegration?.appScheme {
                 let url = URL(string: appScheme)!
                 if NavigationHelper.openUrl(url: url, completion: nil) {
@@ -169,13 +167,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
                 } else {
                     LogService.shared.warning(message: "\(url) was not installed on the device.")
                 }
-            } else if let url = userActivity.webpageURL{
+            } else if let url = userActivity.webpageURL {
                 if let mediumId = GivtManager.shared.getMediumIdFromGivtLink(link: url.absoluteString) {
                     if mediumId.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumId.prefix(20))) == nil {
                         LogService.shared.warning(message: "Illegal mediumid \"\(mediumId)\" provided. Going to normal give flow")
                     } else {
                         let specialChar = mediumId.substring(21..<22)
-                        if (specialChar == "c"){
+                        if (specialChar == "c") {
                             GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumId, name: "QR", logo: UIImage(named: "qr_scan_phone"))
                         } else {
                             GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumId)
@@ -185,7 +183,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
                     }
                 }
             }
-            GivtManager.shared.externalIntegration = nil
         }
         return true
     }
@@ -207,28 +204,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
                 logService.info(message: "A Givt is being shared via the Safari-flow")
             }
         } else {
-            if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = urlComponents.queryItems {
-                if let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "mediumid" })?.value {
-                    if mediumIdValue.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumIdValue.prefix(20))) == nil {
-                        LogService.shared.warning(message: "Illegal mediumid \"\(mediumIdValue)\" provided. Going to normal give flow")
-                    } else {
-                        if let fromValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "from" })?.value {
-                            if let appId = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "appid" })?.value,
-                                let element = AppConstants.externalApps[appId], let name = element["name"] {
-                                    var image: UIImage? = nil
-                                    if let imageString = element["logo"] {
-                                        image = UIImage(named: imageString)
-                                    }
-                                    GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, name: name, logo: image, appScheme: fromValue)
-                            } else {
-                                GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, appScheme: fromValue)
+            guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
+                  let queryItems = urlComponents.queryItems,
+                  let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "mediumid" })?.value
+            else { return true }
+            if mediumIdValue.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumIdValue.prefix(20))) == nil {
+                LogService.shared.warning(message: "Illegal mediumid \"\(mediumIdValue)\" provided. Going to normal give flow")
+            } else {
+                if let fromValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "from" })?.value {
+                    if let appId = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "appid" })?.value,
+                        let element = AppConstants.externalApps[appId], let name = element["name"] {
+                            var image: UIImage? = nil
+                            if let imageString = element["logo"] {
+                                image = UIImage(named: imageString)
                             }
-                        } else {
-                            GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue)
-                        }
-                        LogService.shared.info(message: "Entering Givt-app with identifier \(mediumIdValue)")
+                            GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, name: name, logo: image, appScheme: fromValue)
+                    } else {
+                        GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, appScheme: fromValue)
                     }
+                } else {
+                    GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue)
                 }
+                LogService.shared.info(message: "Entering Givt-app with identifier \(mediumIdValue)")
             }
         }
         return true
@@ -245,6 +242,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
     func application(_ application: UIApplication, didReceiveRemoteNotification pushNotificationInfo: [AnyHashable: Any],
     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void ) {
         NotificationManager.shared.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
+    }
+    
+    @available(iOS 13.0, *)
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        return UISceneConfiguration(name: "Default", sessionRole: connectingSceneSession.role)
+    }
+    
+    @available(iOS 13.0, *)
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        guard let userActivity = connectionOptions.userActivities.first else { return }
+        let _ = application(UIApplication.shared, continue: userActivity) { (_) in }
+    }
+
+    @available(iOS 13.0, *)
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        let _ = application(UIApplication.shared, continue: userActivity) { (_) in }
     }
     
     func registerHandlers() {
