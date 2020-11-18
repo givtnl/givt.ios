@@ -281,6 +281,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     }
     
     private func setupOccurrencesView() {
+        occurrencesTextField.isOccurrencesLabel = true
         createToolbar(occurrencesTextField)
         occurrencesTextField.keyboardType = .numberPad
         occurrencesTextField.placeholder = "X"
