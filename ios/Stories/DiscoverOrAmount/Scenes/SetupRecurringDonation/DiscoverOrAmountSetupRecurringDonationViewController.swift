@@ -57,6 +57,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
             , [Frequency.ThreeMonthly, "SetupRecurringGiftQuarter".localized]
             , [Frequency.SixMonthly, "SetupRecurringGiftHalfYear".localized]
             , [Frequency.Yearly, "SetupRecurringGiftYear".localized]]
+    private var selectedFrequencyIndex: Int? = nil
     
     private let animationDuration = 0.4
     private var decimalNotation: String! = "," {
@@ -113,7 +114,8 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     }
     @IBAction func openFrequencyPicker(_ sender: Any) {
         frequencyLabel.becomeFirstResponder()
-        frequencyPicker.selectRow(0, inComponent: 0, animated: false)
+        let selectedIndex: Int = selectedFrequencyIndex ?? 0
+        frequencyPicker.selectRow(selectedIndex, inComponent: 0, animated: false)
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -322,15 +324,85 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             }
         }
     }
+    func calculateTimes(until: Date) -> String {
+        var times = 0
+        var startDate = startDatePicker.date;
+        let frequency = Frequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
+        
+        while startDate < until {
+            switch frequency {
+            case Frequency.Weekly:
+                var dateComponent = DateComponents()
+                dateComponent.weekday = 7
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.Monthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 1
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.ThreeMonthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 3
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.SixMonthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 6
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.Yearly:
+                var dateComponent = DateComponents()
+                dateComponent.year = 1
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            }
+            times+=1
+        }
+        return times.string
+    }
     
+    func calculateEndDate(withTimes: Int) -> Date {
+        var times = withTimes
+        var startDate = startDatePicker.date
+        let frequency = Frequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
+
+        while times > 0 {
+            switch frequency {
+            case Frequency.Weekly:
+                var dateComponent = DateComponents()
+                dateComponent.weekday = 7
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.Monthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 1
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.ThreeMonthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 3
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.SixMonthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 6
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.Yearly:
+                var dateComponent = DateComponents()
+                dateComponent.year = 1
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            }
+            times-=1
+        }
+        return startDate
+    }
     @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
         startDateLabel.text = datePicker.date.formattedShort
+        
+        if endDatePicker.date > startDatePicker.date {
+            occurrencesTextField.text = calculateTimes(until: endDatePicker.date)
+        }
+        
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
     }
     
     @objc func handleEndDatePicker(_ datePicker: UIDatePicker) {
         endDateLabel.text = datePicker.date.formattedShort
+        occurrencesTextField.text = calculateTimes(until: datePicker.date)
         
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
@@ -378,6 +450,11 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         ensureButtonHasCorrectState()
+        
+        if let times: Int = Int(occurrencesTextField.text!) {
+            endDatePicker.date = calculateEndDate(withTimes: times)
+            endDateLabel.text = endDatePicker.date.formattedShort
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -390,6 +467,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         return frequencys[row][1] as? String
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedFrequencyIndex = row
         self.frequencyLabel.text = frequencys[row][1] as? String
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", withProperties:["frequency": frequencys[row][1] as! String])
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", properties: ["frequency": frequencys[row][1] as! String])
@@ -412,9 +490,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     }
     func resetDatesAndTimes() {
         if let date = minimumDate {
-            startDatePicker.setDate(date, animated: true)
-            startDateLabel.text = date.formattedShort
-            
             endDatePicker.setDate(date, animated: true)
             endDateLabel.text = String.empty
             
