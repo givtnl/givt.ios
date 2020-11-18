@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>We'd like to know on which event you are!</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -42,11 +40,6 @@
 		</dict>
 		<dict/>
 	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>kdgm-dev</string>
-		<string>kdgm</string>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>25</string>
 	<key>Fabric</key>
@@ -63,10 +56,21 @@
 			</dict>
 		</array>
 	</dict>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kdgm-dev</string>
+		<string>kdgm</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
@@ -75,15 +79,34 @@
 				<true/>
 			</dict>
 		</dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-		<key>NSAllowsArbitraryLoadsInWebContent</key>
-		<true/>
 	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>With Bluetooth we are able to detect the Givt beacons</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Needed to scan the Givt-beacons.</string>
 	<key>NSCameraUsageDescription</key>
 	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We&apos;d like to know on which event you are!</string>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<true/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).AppDelegate</string>
+					<key>UISceneConfigurationName</key>
+					<string>Default</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Main</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
@@ -97,6 +120,8 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -108,13 +133,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>With Bluetooth we are able to detect the Givt beacons</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>
