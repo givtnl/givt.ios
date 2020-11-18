@@ -361,7 +361,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         var startDate = startDatePicker.date
         let frequency = Frequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
 
-        while times > 0 {
+        while times > 1 {
             switch frequency {
             case Frequency.Weekly:
                 var dateComponent = DateComponents()
