@@ -165,7 +165,7 @@ met Givt, wordt er geÃ¯ncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Cancelled" = "Cancelled";
 "Undo" = "Undo";
 "FAQVraag16" = "Can I revoke donations?";
-"FAQAntwoord16" = "During the first 15 minutes after the donation was done in the app, it is possible to cancel the donation. Simply go to the donation overview and swipe the donation you want to cancel to the left. Cancelling is free of charge when doing it this way. Note: You can only cancel your donation if you have completed your registration in the Givt app.\n\nNo transactions take place in the moment of giving. The transactions take place afterwards via a direct debit. Since these transactions are revertible via your bank, it is completely safe and immune to fraud. This method of reverting does entail costs for the organisation to which you have given.";
+"FAQAntwoord16" = "During the first 15 minutes after the donation was done in the app, it is possible to cancel the donation. Simply go to the donation overview and swipe the donation you want to cancel to the left. Note: You can only cancel your donation if you have completed your registration in the Givt app.\n\nNo transactions take place in the moment of giving. The transactions take place afterwards via a direct debit. Since these transactions are revertible via your bank, it is completely safe and immune to fraud.";
 "SelectContextCollect" = "Give in the church, at the door or on the street";
 "GiveContextQR" = "Give by scanning a QR-code";
 "SelectContextList" = "Select a goal from the list";
@@ -930,7 +930,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterErrorTitle" = "Terminate failed";
 "SetupRecurringGiftTitle" = "Set up your recurring donation";
 "SetupRecurringGiftText_3" = "starting on";
-"SetupRecurringGiftText_4" = "stops after";
+"SetupRecurringGiftText_4" = "and ending after";
 "SetupRecurringGiftText_5" = "or";
 "Add" = "Add";
 
@@ -1028,3 +1028,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "ReccurringGivtIsBeingProcessed" = "Thank you for your recurring donation to {0}!\nTo see all the information, go to the menu-option 'recurring donations'.";
+"SetupRecurringGiftText_placeholderDate" = "dd / mm / yy";
+"SetupRecurringGiftText_placeholderTimes" = "x";
