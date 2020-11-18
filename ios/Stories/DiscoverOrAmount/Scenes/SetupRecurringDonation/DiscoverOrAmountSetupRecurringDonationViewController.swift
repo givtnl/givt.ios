@@ -393,6 +393,12 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         
         if endDatePicker.date > startDatePicker.date {
             occurrencesTextField.text = calculateTimes(until: endDatePicker.date)
+        } else if endDateLabel.text == String.empty && occurrencesTextField.text == String.empty {
+            endDatePicker.minimumDate = startDatePicker.date
+        } else {
+            endDatePicker.date = startDatePicker.date
+            endDateLabel.text = startDateLabel.text
+            occurrencesTextField.text = 1.string
         }
         
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
@@ -435,25 +441,26 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     @objc func handleOccurrencesEditingChanged() {
         if let times = Int(occurrencesTextField.text!) {
             if times == 0 {
-                occurrencesTextField.text = ""
+                occurrencesTextField.text = String.empty
             } else if times > 999 {
                 occurrencesTextField.text = "999"
             }
+            endDatePicker.date = calculateEndDate(withTimes: times)
+            endDateLabel.text = endDatePicker.date.formattedShort
         }
         ensureButtonHasCorrectState()
     }
     @objc func handleOccurrencesEditingBegan() {
-        occurrencesTextField.text = String.empty
+        if let times = Int(occurrencesTextField.text!) {
+            occurrencesTextField.text = times.string
+        } else {
+            occurrencesTextField.text = String.empty
+        }
     }
     @objc func handleOccurrencesEditingEnd() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         ensureButtonHasCorrectState()
-        
-        if let times: Int = Int(occurrencesTextField.text!) {
-            endDatePicker.date = calculateEndDate(withTimes: times)
-            endDateLabel.text = endDatePicker.date.formattedShort
-        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
