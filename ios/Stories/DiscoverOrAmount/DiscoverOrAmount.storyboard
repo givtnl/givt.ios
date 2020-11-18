@@ -907,6 +907,7 @@
                         <outlet property="Label3" destination="ohe-2g-ctb" id="U8s-Aj-QqH"/>
                         <outlet property="Label4" destination="AY3-ff-kQZ" id="Xsy-Ox-a4u"/>
                         <outlet property="Label5" destination="paj-Ue-crt" id="sBI-mD-s5a"/>
+                        <outlet property="Label6" destination="Uq7-0s-V2Q" id="l0j-n1-Qjj"/>
                         <outlet property="amountView" destination="diI-xl-iji" id="1OX-9a-xXR"/>
                         <outlet property="backButton" destination="PGX-cC-2e8" id="AFl-hI-DaI"/>
                         <outlet property="bottomScrollViewConstraint" destination="p5A-ah-ApR" id="d0O-NF-lJA"/>
@@ -918,7 +919,6 @@
                         <outlet property="frequencyLabel" destination="Mio-Pl-hEh" id="fxs-et-iCc"/>
                         <outlet property="mainStackView" destination="OWC-XD-q2D" id="g57-dl-lUX"/>
                         <outlet property="navBar" destination="hJ7-ga-ncM" id="8yA-Gi-ozB"/>
-                        <outlet property="occurrencesLabel" destination="Uq7-0s-V2Q" id="CCQ-6R-DG5"/>
                         <outlet property="occurrencesTextField" destination="5P0-ks-Jis" id="U7k-sW-glQ"/>
                         <outlet property="startDateButton" destination="rfB-sF-FqD" id="d3Q-8T-DBZ"/>
                         <outlet property="startDateLabel" destination="zmz-KI-1u1" id="AQ7-f4-bxl"/>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aeb-XX-2f2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -218,16 +218,16 @@
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="167" height="44"/>
                                                                                                     <subviews>
                                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWn-h3-ncL" userLabel="stopView">
-                                                                                                            <rect key="frame" x="21" y="0.0" width="125.5" height="44"/>
+                                                                                                            <rect key="frame" x="53" y="0.0" width="61.5" height="44"/>
                                                                                                             <subviews>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="stop-circle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLq-tW-iua">
-                                                                                                                    <rect key="frame" x="0.0" y="12" width="81" height="20"/>
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="stop-circle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLq-tW-iua">
+                                                                                                                    <rect key="frame" x="0.0" y="13.5" width="17" height="17"/>
                                                                                                                     <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.72549019607843135" green="0.10196078431372549" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                 </label>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZE-em-daY">
-                                                                                                                    <rect key="frame" x="91" y="11" width="34.5" height="22"/>
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZE-em-daY">
+                                                                                                                    <rect key="frame" x="27" y="11" width="34.5" height="22"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                                                                                     <color key="textColor" red="0.72549019607843135" green="0.10196078431372549" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
@@ -255,16 +255,16 @@
                                                                                                     <rect key="frame" x="167" y="0.0" width="167" height="44"/>
                                                                                                     <subviews>
                                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22M-wb-RiC" userLabel="listView">
-                                                                                                            <rect key="frame" x="23" y="0.0" width="121" height="44"/>
+                                                                                                            <rect key="frame" x="35.5" y="0.0" width="96.5" height="44"/>
                                                                                                             <subviews>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="list-ul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfK-Jh-y1y">
-                                                                                                                    <rect key="frame" x="0.0" y="12" width="41.5" height="20"/>
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="list-ul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfK-Jh-y1y">
+                                                                                                                    <rect key="frame" x="0.0" y="13.5" width="17" height="17"/>
                                                                                                                     <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="17"/>
                                                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                 </label>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-rF-WB2">
-                                                                                                                    <rect key="frame" x="51.5" y="11" width="69.5" height="22"/>
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEq-rF-WB2">
+                                                                                                                    <rect key="frame" x="27" y="11" width="69.5" height="22"/>
                                                                                                                     <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                                                                                                     <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                     <nil key="highlightedColor"/>
@@ -822,7 +822,7 @@
                                                                             <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                         </state>
                                                                         <connections>
-                                                                            <action selector="openStartDatePicker:" destination="UTq-9E-O8z" eventType="touchUpInside" id="FdN-yH-Wto"/>
+                                                                            <action selector="openEndDatePicker:" destination="UTq-9E-O8z" eventType="touchUpInside" id="IQr-39-784"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -984,17 +984,20 @@
                     <connections>
                         <outlet property="Label1" destination="8RS-9j-DfJ" id="rkY-i1-oC3"/>
                         <outlet property="Label2" destination="sbQ-Y5-9lh" id="xam-gD-K5c"/>
+                        <outlet property="Label3" destination="tYg-bU-QxX" id="Y3k-U2-SRD"/>
                         <outlet property="Label4" destination="0qn-ks-03S" id="5wl-LC-x9u"/>
-                        <outlet property="LabelStarting" destination="tYg-bU-QxX" id="02L-Nf-rHG"/>
+                        <outlet property="Label5" destination="717-pd-WIn" id="u0v-Pj-w7d"/>
+                        <outlet property="Label6" destination="acb-w8-OIu" id="AT0-R4-1cH"/>
                         <outlet property="amountView" destination="Skb-Hx-MDj" id="LpP-dw-Xvg"/>
                         <outlet property="backButton" destination="21A-8R-8IW" id="OjT-8m-vHB"/>
                         <outlet property="bottomScrollViewConstraint" destination="63x-bS-6Ak" id="YnE-Jd-sX0"/>
                         <outlet property="collectGroupLabel" destination="lDx-DY-AtB" id="WF4-1w-5Cw"/>
                         <outlet property="createSubcriptionButton" destination="lJ0-Hf-NsM" id="XJM-5M-HRC"/>
+                        <outlet property="endDateButton" destination="75j-Px-TJf" id="rSn-Jt-5cm"/>
+                        <outlet property="endDateLabel" destination="5fI-aT-hzD" id="2cG-By-aDf"/>
                         <outlet property="frequencyButton" destination="mIz-dt-G6N" id="jdN-1Z-Vcd"/>
                         <outlet property="frequencyLabel" destination="phc-si-YWc" id="GGS-KL-oxh"/>
                         <outlet property="navBar" destination="zDG-Q8-kK7" id="PqP-uT-yQN"/>
-                        <outlet property="occurrencesLabel" destination="acb-w8-OIu" id="A38-Pn-Qfv"/>
                         <outlet property="occurrencesTextField" destination="OmU-h5-Y4I" id="Yhh-NV-EQt"/>
                         <outlet property="startDateButton" destination="UUF-tb-zsE" id="jfH-sr-v4d"/>
                         <outlet property="startDateLabel" destination="4Dk-Nd-VhK" id="565-Sj-8WL"/>

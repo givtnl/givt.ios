@@ -17,25 +17,27 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     
     @IBOutlet var navBar: UINavigationItem!
     @IBOutlet weak var backButton: UIBarButtonItem!
+    
     @IBOutlet weak var Label1: UILabel!
     @IBOutlet weak var Label2: UILabel!
     @IBOutlet weak var Label3: UILabel!
     @IBOutlet weak var Label4: UILabel!
-    @IBOutlet weak var LabelStarting: UILabel!
-    
+    @IBOutlet weak var Label5: UILabel!
+    @IBOutlet weak var Label6: UILabel!
+
     @IBOutlet weak var amountView: AmountTextField! { didSet { amountView.amountLabel.delegate = self } }
     @IBOutlet weak var collectGroupLabel: CollectGroupLabel!
-    
-    @IBOutlet weak var mainStackView: UIStackView!
-    
-    @IBOutlet weak var frequencyLabel: CustomUITextField!
+        
+    @IBOutlet weak var frequencyLabel: RecurringCustomUITextField!
     @IBOutlet weak var frequencyButton: UIButton!
     
-    @IBOutlet weak var startDateLabel: CustomUITextField!
+    @IBOutlet weak var startDateLabel: RecurringCustomUITextField!
     @IBOutlet weak var startDateButton: UIButton!
     
-    @IBOutlet weak var occurrencesTextField: UITextField!
-    @IBOutlet weak var occurrencesLabel: UILabel!
+    @IBOutlet weak var endDateLabel: RecurringCustomUITextField!
+    @IBOutlet weak var endDateButton: UIButton!
+    
+    @IBOutlet weak var occurrencesTextField: RecurringCustomUITextField!
     
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var createSubcriptionButton: CustomButton!
@@ -43,8 +45,13 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     var input: DestinationSelectedRoute? = nil
     
     private var frequencyPicker: UIPickerView!
+    private var selectedFrequencyIndex: Int? = nil
+
     private var startDatePicker: UIDatePicker!
+    private var endDatePicker: UIDatePicker!
     
+    private var minimumDate: Date? = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+
     private let frequencys: Array<Array<Any>> =
         [[Frequency.Weekly, "SetupRecurringGiftWeek".localized]
             , [Frequency.Monthly, "SetupRecurringGiftMonth".localized]
@@ -70,15 +77,16 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         Label1.text = "SetupRecurringGiftText_1".localized
         Label2.text = "SetupRecurringGiftText_2".localized
         Label3.text = "SetupRecurringGiftText_3".localized
-        LabelStarting.text = "SetupRecurringGiftText_4".localized
-        Label4.text = "SetupRecurringGiftText_5".localized
-        occurrencesLabel.text = "SetupRecurringGiftText_6".localized
+        Label4.text = "SetupRecurringGiftText_4".localized
+        Label5.text = "SetupRecurringGiftText_5".localized
+        Label6.text = "SetupRecurringGiftText_6".localized
         
         
         setupAmountView()
         setupOccurrencesView()
         setupFrequencyPickerView()
         setupStartDatePickerView()
+        setupEndDatePickerView()
         
         createSubcriptionButton.accessibilityLabel = "Give".localized
         createSubcriptionButton.setTitle("Give".localized, for: .normal)        
@@ -94,6 +102,10 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     @IBAction func openStartDatePicker(_ sender: Any) {
         startDateLabel.becomeFirstResponder()
         startDatePicker.date = Date()
+    }
+    @IBAction func openEndDatePicker(_ sender: Any) {
+        endDateLabel.becomeFirstResponder()
+        endDatePicker.date = Date()
     }
     @IBAction func openFrequencyPicker(_ sender: Any) {
         frequencyLabel.becomeFirstResponder()
@@ -191,22 +203,47 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         startDatePicker = UIDatePicker()
         startDatePicker.datePickerMode = .date
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
-        if let newDate = Calendar.current.date(byAdding: .day, value: 1, to: Date()) {
+        
+        if let newDate = minimumDate {
             startDatePicker.minimumDate = newDate
         }
-        if #available(iOS 14.0, *) {
-            startDatePicker.preferredDatePickerStyle = .wheels
-            startDatePicker.tintColor = ColorHelper.GivtPurple
-        } else {
-            startDatePicker.setValue(false, forKeyPath: "highlightsToday")
-        }
+        
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
         
-        startDateLabel.text = startDatePicker.date.formatted
+        if #available(iOS 13.4, *) {
+            startDatePicker.preferredDatePickerStyle = .compact
+        } else {
+            startDatePicker.tintColor = ColorHelper.GivtPurple
+        }
+        
+        startDateLabel.text = startDatePicker.date.formattedShort
         startDateLabel.inputView = startDatePicker
         createToolbar(startDateLabel)
     }
-    
+    func setupEndDatePickerView() {
+        endDatePicker = UIDatePicker()
+        endDatePicker.datePickerMode = .date
+        endDatePicker.addTarget(self, action: #selector(handleEndDatePicker), for: .valueChanged)
+        
+        if let newDate = minimumDate {
+            endDatePicker.minimumDate = newDate
+        }
+        
+        endDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        
+        if #available(iOS 13.4, *) {
+            endDatePicker.preferredDatePickerStyle = .compact
+        } else {
+            endDatePicker.tintColor = ColorHelper.GivtPurple
+        }
+        
+        endDateLabel.placeholder = "dd/mm/yyyy"
+        endDateLabel.text = String.empty
+        endDateLabel.inputView = endDatePicker
+        
+        createToolbar(endDateLabel)
+    }
+
     func collectGroupLabelTapped() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
@@ -241,15 +278,18 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         // set number keypad
         amountView.amountLabel.keyboardType = .decimalPad
     }
-    
     private func setupOccurrencesView() {
+        occurrencesTextField.isOccurrencesLabel = true
         createToolbar(occurrencesTextField)
+        
         occurrencesTextField.keyboardType = .numberPad
+        occurrencesTextField.placeholder = "X"
+        
         // setup event handlers
+        occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingBegan), for: .editingDidBegin)
         occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingChanged), for: .editingChanged)
         occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingEnd), for: .editingDidEnd)
     }
-    
     private func setupCollectGroupLabel() {
         collectGroupLabel.delegate = self
         collectGroupLabel.label.text = "SelectRecipient".localized
@@ -284,19 +324,104 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         }
     }
     
-    @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
-        startDateLabel.text = datePicker.date.formatted
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
+    func calculateTimes(until: Date) -> String {
+        var times = 0
+        var startDate = startDatePicker.date;
+        let frequency = Frequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
         
+        while startDate < until {
+            switch frequency {
+            case Frequency.Weekly:
+                var dateComponent = DateComponents()
+                dateComponent.weekday = 7
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.Monthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 1
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.ThreeMonthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 3
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.SixMonthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 6
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.Yearly:
+                var dateComponent = DateComponents()
+                dateComponent.year = 1
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            }
+            times+=1
+        }
+        return times.string
+    }
+    func calculateEndDate(withTimes: Int) -> Date {
+        var times = withTimes
+        var startDate = startDatePicker.date
+        let frequency = Frequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
+
+        while times > 0 {
+            switch frequency {
+            case Frequency.Weekly:
+                var dateComponent = DateComponents()
+                dateComponent.weekday = 7
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.Monthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 1
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.ThreeMonthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 3
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.SixMonthly:
+                var dateComponent = DateComponents()
+                dateComponent.month = 6
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            case Frequency.Yearly:
+                var dateComponent = DateComponents()
+                dateComponent.year = 1
+                startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
+            }
+            times-=1
+        }
+        return startDate
     }
     
+    @objc func handleStartDatePicker(_ datePicker: UIDatePicker) {
+        startDateLabel.text = datePicker.date.formattedShort
+        
+        if endDatePicker.date > startDatePicker.date {
+            occurrencesTextField.text = calculateTimes(until: endDatePicker.date)
+        } else if endDateLabel.text == String.empty && occurrencesTextField.text == String.empty {
+            endDatePicker.minimumDate = startDatePicker.date
+        } else {
+            endDatePicker.date = startDatePicker.date
+            endDateLabel.text = startDateLabel.text
+            occurrencesTextField.text = 1.string
+        }
+        ensureButtonHasCorrectState()
+
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
+    }
+    @objc func handleEndDatePicker(_ datePicker: UIDatePicker) {
+        endDateLabel.text = datePicker.date.formattedShort
+        occurrencesTextField.text = calculateTimes(until: datePicker.date)
+        ensureButtonHasCorrectState()
+        
+
+        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
+        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
+    }
     @objc func handleAmountEditingChanged() {
         if amountView.amount >= 0.25 && amountView.amount <= 99999 {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
         } else {
             amountView.bottomBorderColor = ColorHelper.GivtRed
         }
+        ensureButtonHasCorrectState()
     }
     
     @objc func handleAmountEditingDidBegin() {
@@ -319,16 +444,30 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     @objc func handleOccurrencesEditingChanged() {
         if let times = Int(occurrencesTextField.text!) {
             if times == 0 {
-                occurrencesTextField.text = ""
+                occurrencesTextField.text = String.empty
             } else if times > 999 {
                 occurrencesTextField.text = "999"
             }
+            endDatePicker.date = calculateEndDate(withTimes: times)
+            endDateLabel.text = endDatePicker.date.formattedShort
+        }
+        ensureButtonHasCorrectState()
+    }
+    @objc func handleOccurrencesEditingBegan() {
+        if let times = Int(occurrencesTextField.text!) {
+            occurrencesTextField.text = times.string
+        } else {
+            occurrencesTextField.text = String.empty
         }
         ensureButtonHasCorrectState()
     }
     @objc func handleOccurrencesEditingEnd() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
+        
+        if occurrencesTextField.text == String.empty {
+            occurrencesTextField.text = calculateTimes(until: endDatePicker.date)
+        }
         ensureButtonHasCorrectState()
     }
     
@@ -376,11 +515,9 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
-    
     @objc func hideKeyboard(){
         self.view.endEditing(true)
     }
-    
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         let userInfo = notification.userInfo!
@@ -396,7 +533,6 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
             self.view.layoutIfNeeded()
         })
     }
-    
     @objc func keyboardWillHide(notification:NSNotification){
         bottomScrollViewConstraint.constant = 0
         UIView.animate(withDuration: 0.3, animations: {
