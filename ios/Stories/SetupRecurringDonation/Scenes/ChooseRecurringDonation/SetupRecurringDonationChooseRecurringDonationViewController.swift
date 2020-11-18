@@ -487,9 +487,18 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", withProperties:["frequency": frequencys[row][1] as! String])
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", properties: ["frequency": frequencys[row][1] as! String])
         pickerView.reloadAllComponents()
+        
+        resetDatesAndTimes()
         ensureButtonHasCorrectState()
     }
-    
+    func resetDatesAndTimes() {
+        if let date = minimumDate {
+            endDatePicker.setDate(date, animated: true)
+            endDateLabel.text = String.empty
+            
+            occurrencesTextField.text = String.empty
+        }
+    }
     func createToolbar(_ textField: UITextField) {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
