@@ -109,7 +109,8 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     }
     @IBAction func openFrequencyPicker(_ sender: Any) {
         frequencyLabel.becomeFirstResponder()
-        frequencyPicker.selectRow(0, inComponent: 0, animated: false)
+        let selectedIndex: Int = selectedFrequencyIndex ?? 0
+        frequencyPicker.selectRow(selectedIndex, inComponent: 0, animated: false)
     }
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
@@ -481,6 +482,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         return frequencys[row][1] as? String
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedFrequencyIndex = row
         self.frequencyLabel.text = frequencys[row][1] as? String
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", withProperties:["frequency": frequencys[row][1] as! String])
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", properties: ["frequency": frequencys[row][1] as! String])
