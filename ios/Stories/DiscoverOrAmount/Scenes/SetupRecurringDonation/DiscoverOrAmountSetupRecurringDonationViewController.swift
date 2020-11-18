@@ -20,11 +20,10 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var Label1: UILabel!
     @IBOutlet weak var Label2: UILabel!
+    @IBOutlet weak var Label3: UILabel!
     @IBOutlet weak var Label4: UILabel!
     @IBOutlet weak var Label5: UILabel!
-    
-    @IBOutlet weak var LabelStarting: UILabel!
-    
+        
     @IBOutlet weak var amountView: AmountTextField! { didSet { amountView.amountLabel.delegate = self } }
     @IBOutlet weak var collectGroupLabel: CollectGroupLabel!
     
@@ -53,10 +52,11 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     
     private let frequencys: Array<Array<Any>> =
         [[Frequency.Weekly, "SetupRecurringGiftWeek".localized]
-            , [Frequency.Monthly, "SetupRecurringGiftMonth".localized]
-            , [Frequency.ThreeMonthly, "SetupRecurringGiftQuarter".localized]
-            , [Frequency.SixMonthly, "SetupRecurringGiftHalfYear".localized]
-            , [Frequency.Yearly, "SetupRecurringGiftYear".localized]]
+         , [Frequency.Monthly, "SetupRecurringGiftMonth".localized]
+         , [Frequency.ThreeMonthly, "SetupRecurringGiftQuarter".localized]
+         , [Frequency.SixMonthly, "SetupRecurringGiftHalfYear".localized]
+         , [Frequency.Yearly, "SetupRecurringGiftYear".localized]]
+    
     private var selectedFrequencyIndex: Int? = nil
     
     private let animationDuration = 0.4
@@ -78,10 +78,9 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
         
         Label1.text = "SetupRecurringGiftText_1".localized
         Label2.text = "SetupRecurringGiftText_2".localized
-//        Label3.text = "SetupRecurringGiftText_3".localized
-        LabelStarting.text = "SetupRecurringGiftText_4".localized
-        Label4.text = "of".localized
-        Label5.text = "tot".localized
+        Label3.text = "SetupRecurringGiftText_3".localized
+        Label4.text = "SetupRecurringGiftText_4".localized
+        Label5.text = "SetupRecurringGiftText_5".localized
         
         setupAmountView()
         setupOccurrencesView()
@@ -215,7 +214,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         if let newDate = minimumDate {
             startDatePicker.minimumDate = newDate
         }
-
+        
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
         
         if #available(iOS 13.4, *) {
@@ -237,7 +236,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         if let newDate = minimumDate {
             endDatePicker.minimumDate = newDate
         }
-
+        
         endDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
         
         if #available(iOS 13.4, *) {
@@ -252,7 +251,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         
         createToolbar(endDateLabel)
     }
- 
+    
     private func ensureButtonHasCorrectState() {
         let amount = amountView.amount
         let endsAfterTurns = Int(occurrencesTextField.text!) ?? 0
@@ -285,7 +284,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         createToolbar(occurrencesTextField)
         occurrencesTextField.keyboardType = .numberPad
         occurrencesTextField.placeholder = "X"
-
+        
         // setup event handlers
         occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingBegan), for: .editingDidBegin)
         occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingChanged), for: .editingChanged)
