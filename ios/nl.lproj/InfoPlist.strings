@@ -1,4 +1,4 @@
-"NSCameraUsageDescription" = "We willen graag de camera gebruiken om de code te scannen.";
+"NSCameraUsageDescription" = "Met de camera kun je geven aan Givt QR-code";
 "NSBluetoothPeripheralUsageDescription" = "Nodig om de Givt-zenders op te pikken.";
 "NSFaceIDUsageDescription" = "Met Face ID kun je heel eenvoudig en snel inloggen";
 "NSBluetoothAlwaysUsageDescription" = "Met Bluetooth kunnen we de Givt-zenders detecteren";

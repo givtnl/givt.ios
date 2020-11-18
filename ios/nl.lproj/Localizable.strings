@@ -165,7 +165,7 @@ met Givt, wordt er geÃ¯ncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Cancelled" = "Geannuleerd";
 "Undo" = "Ongedaan maken";
 "FAQVraag16" = "Kan ik mijn giften annuleren?";
-"FAQAntwoord16" = "Binnen een kwartier nadat je je gift hebt gegeven, kun je via het giftenoverzicht je gift annuleren door naar links te swipen (vegen). Dit is dus enkel mogelijk binnen de eerste 15 minuten na het geven en deze manier van herroepen is kosteloos. Let op: dit kan alleen als je je registratie in de Givt-app hebt voltooid.\n\nJe kunt je giften ook op een later moment herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Alle automatische incassoâ€™s zijn achteraf via je eigen bank te herroepen. Het herroepen van deze giften brengt wel storneringskosten met zich mee voor de organisatie waaraan je gegeven hebt.";
+"FAQAntwoord16" = "Binnen een kwartier nadat je je gift hebt gegeven, kun je via het giftenoverzicht je gift annuleren door naar links te swipen (vegen). Dit is dus enkel mogelijk binnen de eerste 15 minuten na het geven. Let op: dit kan alleen als je je registratie in de Givt-app hebt voltooid.\n\nJe kunt je giften ook op een later moment herroepen. Er vinden geen overschrijvingen plaats tijdens het geven met Givt, dit gebeurt achteraf door middel van een automatische incasso. Alle automatische incassoâ€™s zijn achteraf via je eigen bank te herroepen.";
 "SelectContextCollect" = "Geef in de kerk, aan de deur of op straat";
 "GiveContextQR" = "Geef door middel van een QR-code";
 "SelectContextList" = "Kies een doel uit de lijst";
@@ -929,9 +929,9 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterMandateError" = "Helaas, we kunnen op dit moment je account niet opzeggen omdat het niet lukt om je machtiging op te zeggen. Neem aub contact op met ons.";
 "UnregisterErrorTitle" = "Opzeggen mislukt";
 "SetupRecurringGiftTitle" = "Plan je gift";
-"SetupRecurringGiftText_3" = "elk(e)";
-"SetupRecurringGiftText_4" = "vanaf";
-"SetupRecurringGiftText_5" = "Dit mag";
+"SetupRecurringGiftText_3" = "vanaf";
+"SetupRecurringGiftText_4" = "en eindigend na";
+"SetupRecurringGiftText_5" = "of";
 "Add" = "Toevoegen";
 
 /*Fuzzy*/
@@ -945,7 +945,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "FAQQuestionFirstTargetThenAmount2" = "Waarom kan ik enkel maar een goed doel uit de lijst selecteren?";
 "FAQAnswerFirstTargetThenAmount2" = "Het \"geven aan een goed doel\" is splinternieuw en nog in volle opbouw. Beetje bij beetje zullen wij dus nieuwe functionaliteiten toevoegen.";
 "SetupRecurringGiftText_2" = "geven aan";
-"SetupRecurringGiftText_1" = "Ik wil graag";
+"SetupRecurringGiftText_1" = "Ik wil graag iedere";
 "SetupRecurringGiftWeek" = "week";
 "SetupRecurringGiftMonth" = "maand";
 "SetupRecurringGiftQuarter" = "kwartaal";
@@ -960,7 +960,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "SetupRecurringGiftHalfYear" = "half jaar";
 
 /*Fuzzy*/
-"SetupRecurringGiftText_6" = "keer gebeuren";
+"SetupRecurringGiftText_6" = "keer";
 "LoginAndTryAgain" = "Gelieve in te loggen en opnieuw te proberen.";
 "GivtIsBeingProcessedRecurring" = "Bedankt voor je Givt(s) aan {0}!\nBekijk het overzicht van je geplande Givts onder 'Overzicht'. \nDe eerste geplande Givt van {1} {2} zal worden afgeschreven op {3}.\nDaarna zullen we iedere {4} afschrijven.";
 "OverviewRecurringDonations" = "Terugkerende giften";
@@ -1032,3 +1032,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "ReccurringGivtIsBeingProcessed" = "Bedankt voor je terugkerende gift aan {0}! \nOm alle informatie hierover te zien, ga naar 'Terugkerende giften' in het menu.";
+"SetupRecurringGiftText_placeholderDate" = "dd / mm / jj";
+"SetupRecurringGiftText_placeholderTimes" = "x";

@@ -165,7 +165,7 @@ met Givt, wordt er geÃ¯ncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Cancelled" = "Cancelled";
 "Undo" = "Undo";
 "FAQVraag16" = "Can I revoke donations?";
-"FAQAntwoord16" = "During the first 15 minutes after the donation was done in the app, it is possible to cancel the donation. Simply go to the donation overview and swipe the donation you want to cancel to the left. Cancelling is free of charge when doing it this way. Note: You can only cancel your donation if you have completed your registration in the Givt app.\n\nNo transactions take place in the moment of giving. The transactions take place afterwards via a direct debit. Since these transactions are revertible via your bank, it is completely safe and immune to fraud. This method of reverting does entail costs for the organisation to which you have given.";
+"FAQAntwoord16" = "During the first 15 minutes after the donation was done in the app, it is possible to cancel the donation. Simply go to the donation overview and swipe the donation you want to cancel to the left. Note: You can only cancel your donation if you have completed your registration in the Givt app.\n\nNo transactions take place in the moment of giving. The transactions take place afterwards via a direct debit. Since these transactions are revertible via your bank, it is completely safe and immune to fraud.";
 "SelectContextCollect" = "Give in the church, at the door or on the street";
 "GiveContextQR" = "Give by scanning a QR-code";
 "SelectContextList" = "Select a goal from the list";
@@ -929,9 +929,9 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterMandateError" = "Alas, we are unable to unregister your account because we are unable to cancel your mandate or direct debit instruction. Please contact us.";
 "UnregisterErrorTitle" = "Terminate failed";
 "SetupRecurringGiftTitle" = "Set up your recurring donation";
-"SetupRecurringGiftText_3" = "each";
-"SetupRecurringGiftText_4" = "starting";
-"SetupRecurringGiftText_5" = "and this should happen";
+"SetupRecurringGiftText_3" = "starting on";
+"SetupRecurringGiftText_4" = "and ending after";
+"SetupRecurringGiftText_5" = "or";
 "Add" = "Add";
 
 /*Fuzzy*/
@@ -945,7 +945,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "FAQQuestionFirstTargetThenAmount2" = "Why can I only choose a good cause from the list?";
 "FAQAnswerFirstTargetThenAmount2" = "\"Giving to a good cause\" is brand new and still under construction. New functionalities are continuous being added in time.";
 "SetupRecurringGiftText_2" = "to";
-"SetupRecurringGiftText_1" = "I want to give";
+"SetupRecurringGiftText_1" = "I want to give every";
 "SetupRecurringGiftWeek" = "week";
 "SetupRecurringGiftMonth" = "month";
 "SetupRecurringGiftQuarter" = "quarter";
@@ -1028,3 +1028,5 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "ReccurringGivtIsBeingProcessed" = "Thank you for your recurring donation to {0}!\nTo see all the information, go to the menu-option 'recurring donations'.";
+"SetupRecurringGiftText_placeholderDate" = "dd / mm / yy";
+"SetupRecurringGiftText_placeholderTimes" = "x";
