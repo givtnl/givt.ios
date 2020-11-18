@@ -904,9 +904,9 @@
                     <connections>
                         <outlet property="Label1" destination="AlR-en-l9b" id="c0M-zK-SCn"/>
                         <outlet property="Label2" destination="JsE-ZW-j6U" id="Iia-Au-clq"/>
-                        <outlet property="Label4" destination="paj-Ue-crt" id="udU-33-1s1"/>
-                        <outlet property="Label5" destination="AY3-ff-kQZ" id="FEd-kS-6FW"/>
-                        <outlet property="LabelStarting" destination="ohe-2g-ctb" id="bqA-YY-Miv"/>
+                        <outlet property="Label3" destination="ohe-2g-ctb" id="U8s-Aj-QqH"/>
+                        <outlet property="Label4" destination="AY3-ff-kQZ" id="Xsy-Ox-a4u"/>
+                        <outlet property="Label5" destination="paj-Ue-crt" id="sBI-mD-s5a"/>
                         <outlet property="amountView" destination="diI-xl-iji" id="1OX-9a-xXR"/>
                         <outlet property="backButton" destination="PGX-cC-2e8" id="AFl-hI-DaI"/>
                         <outlet property="bottomScrollViewConstraint" destination="p5A-ah-ApR" id="d0O-NF-lJA"/>
@@ -1517,7 +1517,7 @@ Kijk voor de status in je overzicht.</string>
             <size key="intrinsicContentSize" width="30" height="40"/>
         </designable>
         <designable name="rHG-nN-HFC">
-            <size key="intrinsicContentSize" width="56" height="37"/>
+            <size key="intrinsicContentSize" width="56" height="25"/>
         </designable>
         <designable name="vTT-9f-akz">
             <size key="intrinsicContentSize" width="30" height="40"/>
