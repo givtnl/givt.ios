@@ -283,6 +283,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     private func setupOccurrencesView() {
         occurrencesTextField.isOccurrencesLabel = true
         createToolbar(occurrencesTextField)
+        
         occurrencesTextField.keyboardType = .numberPad
         occurrencesTextField.placeholder = "X"
         
@@ -401,7 +402,8 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             endDateLabel.text = startDateLabel.text
             occurrencesTextField.text = 1.string
         }
-        
+        ensureButtonHasCorrectState()
+
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
     }
@@ -409,7 +411,9 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     @objc func handleEndDatePicker(_ datePicker: UIDatePicker) {
         endDateLabel.text = datePicker.date.formattedShort
         occurrencesTextField.text = calculateTimes(until: datePicker.date)
+        ensureButtonHasCorrectState()
         
+
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
     }
@@ -420,6 +424,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         } else {
             amountView.bottomBorderColor = ColorHelper.GivtRed
         }
+        ensureButtonHasCorrectState()
     }
     
     @objc func handleAmountEditingDidBegin() {
@@ -448,8 +453,8 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             }
             endDatePicker.date = calculateEndDate(withTimes: times)
             endDateLabel.text = endDatePicker.date.formattedShort
+            ensureButtonHasCorrectState()
         }
-        ensureButtonHasCorrectState()
     }
     @objc func handleOccurrencesEditingBegan() {
         if let times = Int(occurrencesTextField.text!) {
@@ -461,7 +466,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     @objc func handleOccurrencesEditingEnd() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
-        ensureButtonHasCorrectState()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
