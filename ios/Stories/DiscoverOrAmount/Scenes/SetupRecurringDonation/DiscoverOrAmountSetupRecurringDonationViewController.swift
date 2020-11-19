@@ -173,7 +173,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
                             return
                         }
                         DispatchQueue.main.async {
-                            try? self.mediater.send(request: DiscoverOrAmountOpenSuccessRoute(collectGroupName: self.collectGroupLabel.label.text!), withContext: self)
+                            try? self.mediater.send(request: DiscoverOrAmountOpenRecurringSuccessRoute(collectGroupName: self.collectGroupLabel.label.text!), withContext: self)
                         }
                     }
                 } catch {
