@@ -329,7 +329,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         var startDate = startDatePicker.date;
         let frequency = Frequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
         
-        while startDate < until {
+        while startDate.shortDate < until.shortDate {
             switch frequency {
             case Frequency.Weekly:
                 var dateComponent = DateComponents()
@@ -354,7 +354,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             }
             times+=1
         }
-        if startDate == until {
+        if startDate.shortDate == until.shortDate {
             times+=1
         }
         return times.string
