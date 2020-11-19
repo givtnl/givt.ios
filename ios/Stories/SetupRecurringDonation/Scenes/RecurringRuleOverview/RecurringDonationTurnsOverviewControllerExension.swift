@@ -28,10 +28,8 @@ extension RecurringDonationTurnsOverviewController {
         var donations: [RecurringDonationTurnViewModel] = []
         
         do {
-            
-            guard let lastDonationDate: Date = recurringDonationLastDate else {
-                return []
-            }
+                
+            let lastDonationDate: Date = recurringDonationLastDate
             guard let cronObject: SwifCron = createSwifCron(cronString: recurringDonation.cronExpression) else {
                 return []
             }
