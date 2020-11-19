@@ -22,7 +22,6 @@ class DeleteDonationCommandHandler : RequestHandlerProtocol {
         let request = request as! DeleteDonationCommand
         let donation = try dataContext.objectContext.existingObject(with: request.objectId)
         dataContext.objectContext.delete(donation)
-        
         BadgeService.shared.removeBadge(badge: .offlineGifts)
     }
     
