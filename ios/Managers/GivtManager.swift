@@ -115,6 +115,7 @@ final class GivtManager: NSObject {
     
     func hasOfflineGifts() -> Bool {
         return UserDefaults.standard.offlineGivts.count > 0
+            || ((try? mediater.send(request: GetAllDonationsQuery()))?.count ?? 0) > 0
     }
     
     func determineOrganisationName(namespace: String) -> String? {
@@ -177,6 +178,10 @@ final class GivtManager: NSObject {
                     } else {
                         self.log.error(message: "Unable to post offline donation to server")
                     }
+                }
+                // :( need to do this separately
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    try? (UIApplication.shared.delegate as! AppDelegate).coreDataContext.objectContext.save()
                 }
             }
         }
