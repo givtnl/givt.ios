@@ -29,6 +29,8 @@ class CreateDonationCommandHandler : RequestHandlerProtocol {
         donation.setValue(request.timeStamp, forKey: "timeStamp")
         try dataContext.saveToMainContext()
         
+        BadgeService.shared.addBadge(badge: .offlineGifts)
+        
         try completion(donation.objectID as! R.TResponse)
     }
     

@@ -83,6 +83,7 @@ final class GivtManager: NSObject {
     private var amount: Decimal!
     private var amounts = [Decimal]()
     private var scanLock = NSRecursiveLock()
+    private var mediater = Mediater.shared
     
     var externalIntegration: ExternalAppIntegration?
     
@@ -166,6 +167,20 @@ final class GivtManager: NSObject {
     
     func processCachedGivts() {
         cachedGivtsLock.lock()
+        
+        if let donations = try? mediater.send(request: GetAllDonationsQuery()) {
+            for donation in donations {
+                try? mediater.sendAsync(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
+                                                                  userId: donation.userId, timeStamp: donation.timeStamp)) { result in
+                    if result {
+                        try! self.mediater.send(request: DeleteDonationCommand(objectId: donation.objectId))
+                    } else {
+                        self.log.error(message: "Unable to post offline donation to server")
+                    }
+                }
+            }
+        }
+        
         for (_, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
             log.info(message: "Started processing chached Givts")
             giveInBackground(transactions: [element])
