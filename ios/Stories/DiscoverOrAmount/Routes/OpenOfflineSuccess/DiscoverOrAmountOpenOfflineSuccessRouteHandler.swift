@@ -20,6 +20,6 @@ class DiscoverOrAmountOpenOfflineSuccessRouteHandler : RequestHandlerWithContext
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is DiscoverOrAmountOpenOfflineSuccessRoute
+        request is DiscoverOrAmountOpenOfflineSuccessRoute
     }
 }

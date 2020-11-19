@@ -26,9 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
     var mixpanel: MixpanelInstance = Mixpanel.initialize(token: AppConstants.mixpanelProjectId)
     
     var coreDataContext = CoreDataContext()
-    
-    private var mediater: MediaterWithContextProtocol = Mediater.shared
-    
+        
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
@@ -74,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
                     .first(where: { (child) -> Bool in child is MainNavigationController })?.children
                     .first(where: { (child) -> Bool in child is MainViewController }) else { return }
             
-            try? self.mediater.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
+            try? Mediater.shared.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
             { }
         }
     }
@@ -328,6 +326,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenChangeAmountLimitRouteHandler())
         Mediater.shared.registerPreProcessor(processor: DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenRecurringSuccessRouteHandler())
-        mediater.shared.registerHandler(handler: DiscoverOrAmountOpenOfflineSuccessRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenOfflineSuccessRouteHandler())
+        Mediater.shared.registerHandler(handler: GetAllDonationsQueryHandler())
     }
 }
