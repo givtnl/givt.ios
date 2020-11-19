@@ -79,4 +79,12 @@ extension Date {
     var formattedShort: String {
         return Date.formatterShort.string(from:self)
     }
+    var shortDate: Date {
+        var dateComponents = DateComponents()
+        dateComponents.day = self.getDay()
+        dateComponents.month = self.getMonth()
+        dateComponents.year = self.getYear()
+        return Calendar.current.date(from: dateComponents)!
+    }
+    
 }
