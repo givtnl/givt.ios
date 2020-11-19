@@ -354,6 +354,9 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             }
             times+=1
         }
+        if startDate == until {
+            times+=1
+        }
         return times.string
     }
     func calculateEndDate(withTimes: Int) -> Date {
@@ -442,11 +445,13 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     }
     
     @objc func handleOccurrencesEditingChanged() {
-        if let times = Int(occurrencesTextField.text!) {
-            if times == 0 {
-                occurrencesTextField.text = String.empty
+        if var times = Int(occurrencesTextField.text!) {
+            if times <= 0 {
+                occurrencesTextField.text = "1"
+                times = 1
             } else if times > 999 {
                 occurrencesTextField.text = "999"
+                times = 999
             }
             endDatePicker.date = calculateEndDate(withTimes: times)
             endDateLabel.text = endDatePicker.date.formattedShort
