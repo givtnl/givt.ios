@@ -67,9 +67,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
             fmt.minimumIntegerDigits = 1
         }
     }
-    
-    private var today: Date? = Calendar.current.date(byAdding: .day, value: 1, to: Date())
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
