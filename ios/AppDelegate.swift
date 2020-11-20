@@ -26,9 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
     var mixpanel: MixpanelInstance = Mixpanel.initialize(token: AppConstants.mixpanelProjectId)
     
     var coreDataContext = CoreDataContext()
-    
-    private var mediater: MediaterWithContextProtocol = Mediater.shared
-    
+        
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
@@ -74,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
                     .first(where: { (child) -> Bool in child is MainNavigationController })?.children
                     .first(where: { (child) -> Bool in child is MainViewController }) else { return }
             
-            try? self.mediater.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
+            try? Mediater.shared.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
             { }
         }
     }
@@ -128,7 +126,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         appService.stop()
-        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -263,6 +260,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
         let _ = application(UIApplication.shared, continue: userActivity) { (_) in }
     }
     
+    @available(iOS 13.0, *)
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        let _ = applicationDidBecomeActive(UIApplication.shared)
+    }
+    
+    @available(iOS 13.0, *)
+    func sceneWillResignActive(_ scene: UIScene) {
+        let _ = applicationWillResignActive(UIApplication.shared)
+    }
+    
+    @available(iOS 13.0, *)
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        let _ = applicationDidEnterBackground(UIApplication.shared)
+    }
+    
+    @available(iOS 13.0, *)
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        let _ = applicationWillEnterForeground(UIApplication.shared)
+    }
+    
     func registerHandlers() {
         // -- DONATIONS
         Mediater.shared.registerHandler(handler: CreateDonationCommandHandler())
@@ -311,6 +328,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
         Mediater.shared.registerHandler(handler: DiscoverOrAmountBackToSelectDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenChangeAmountLimitRouteHandler())
         Mediater.shared.registerPreProcessor(processor: DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSuccessRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenRecurringSuccessRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenOfflineSuccessRouteHandler())
+        Mediater.shared.registerHandler(handler: GetAllDonationsQueryHandler())
     }
 }

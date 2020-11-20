@@ -91,12 +91,6 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
     @IBAction func giveButton(_ sender: Any) {
         giveButton.ogBGColor = #colorLiteral(red: 0.2529559135, green: 0.789002955, blue: 0.554667592, alpha: 1)
         do {
-            if !AppServices.shared.isServerReachable {
-                try? mediater.send(request: NoInternetAlert(), withContext: self)
-                return
-            }
-            
-            showLoader()
             let user = try mediater.send(request: GetLocalUserConfiguration())
             guard let userId = user.userId else {
                 LogService.shared.error(message: "Trying to donate without valid userId")
@@ -107,23 +101,26 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
             let timeStamp = Date()
             let cmd = CreateDonationCommand(mediumId: input.mediumId, amount: amount, userId: userId, timeStamp: timeStamp)
             let donationId = try mediater.send(request: cmd)
-            let exportCommand = ExportDonationCommand(mediumId: input.mediumId, amount: amount, userId: userId, timeStamp: timeStamp)
-            try mediater.sendAsync(request: exportCommand) { isSuccessful in
-                if isSuccessful {
-                    try? self.mediater.send(request: DeleteDonationCommand(objectId: donationId))
-                    try? (UIApplication.shared.delegate as? AppDelegate)?.coreDataContext.objectContext.save()
-                }
-            }
             AppServices.shared.vibrate()
-            hideLoader()
-            try mediater.sendAsync(request: DiscoverOrAmountOpenSafariRoute(donations: [Transaction(amount: amount, beaconId: input.mediumId, collectId: "0", timeStamp: timeStamp.toISOString(), userId: userId.uuidString)],
-                                                       canShare: false,
-                                                       userId: userId,
-                                                       collectGroupName: input.name),
-                                   withContext: self)
-            {
-                usleep(500000)
-                try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
+            if AppServices.shared.isServerReachable {
+                let exportCommand = ExportDonationCommand(mediumId: input.mediumId, amount: amount, userId: userId, timeStamp: timeStamp)
+                try mediater.sendAsync(request: exportCommand) { isSuccessful in
+                    if isSuccessful {
+                        try? self.mediater.send(request: DeleteDonationCommand(objectId: donationId))
+                        try? (UIApplication.shared.delegate as? AppDelegate)?.coreDataContext.objectContext.save()
+                    }
+                }
+                try mediater.sendAsync(request: DiscoverOrAmountOpenSafariRoute(donations: [Transaction(amount: amount, beaconId: input.mediumId, collectId: "0", timeStamp: timeStamp.toISOString(), userId: userId.uuidString)],
+                                                           canShare: false,
+                                                           userId: userId,
+                                                           collectGroupName: input.name),
+                                       withContext: self)
+                {
+                    usleep(500000)
+                    try? self.mediater.send(request: FinalizeGivingRoute(), withContext: self)
+                }
+            } else {
+                try mediater.send(request: DiscoverOrAmountOpenOfflineSuccessRoute(collectGroupName: input.name), withContext: self)
             }
         } catch DonationError.amountTooHigh {
             displayAmountTooHigh()
