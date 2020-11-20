@@ -74,18 +74,24 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        let deselectRowFunction: (_ path: IndexPath) -> Void = { path in
+            tableView.deselectRow(at: path, animated: false)
+            _ = tableView.delegate!.tableView?(tableView, willDeselectRowAt: path)
+            tableView.delegate!.tableView?(tableView, didDeselectRowAt: path)
+        }
+        
         if let indexPaths = tableView.indexPathsForSelectedRows {
             if (indexPaths.contains { $0 == indexPath }) {
                 // deselect when tapped again
-                tableView.deselectRow(at: indexPath, animated: false)
-                _ = tableView.delegate!.tableView?(tableView, willDeselectRowAt: indexPath)
-                tableView.delegate!.tableView?(tableView, didDeselectRowAt: indexPath)
+                deselectRowFunction(indexPath)
                 return nil //make sure selection doesn't continue
             }
         }
         if ( (tableView.cellForRow(at: indexPath) as! DestinationTableCell).type == CollectGroupType.none) {
             // This is the special "report missing organisation item"
-            nextButton.isEnabled = false
+            tableView.indexPathsForSelectedRows?.forEach { selectedIndexPath in
+                deselectRowFunction(selectedIndexPath)
+            }
             try? self.mediater.send(request: GoToAboutViewRoute(), withContext: self)
             return nil
         }
