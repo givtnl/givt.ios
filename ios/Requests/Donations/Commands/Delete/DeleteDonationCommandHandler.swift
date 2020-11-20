@@ -22,6 +22,7 @@ class DeleteDonationCommandHandler : RequestHandlerProtocol {
         let request = request as! DeleteDonationCommand
         let donation = try dataContext.objectContext.existingObject(with: request.objectId)
         dataContext.objectContext.delete(donation)
+        try completion(() as! R.TResponse)
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {

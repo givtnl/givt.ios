@@ -111,6 +111,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
             try mediater.sendAsync(request: exportCommand) { isSuccessful in
                 if isSuccessful {
                     try? self.mediater.send(request: DeleteDonationCommand(objectId: donationId))
+                    try? (UIApplication.shared.delegate as? AppDelegate)?.coreDataContext.objectContext.save()
                 }
             }
             AppServices.shared.vibrate()
