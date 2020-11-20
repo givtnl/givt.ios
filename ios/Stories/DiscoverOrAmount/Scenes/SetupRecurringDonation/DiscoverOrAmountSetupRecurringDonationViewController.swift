@@ -217,9 +217,9 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         }
         
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
-        
+
         if #available(iOS 13.4, *) {
-            startDatePicker.preferredDatePickerStyle = .compact
+            startDatePicker.preferredDatePickerStyle = .wheels
         } else {
             startDatePicker.tintColor = ColorHelper.GivtPurple
         }
@@ -238,13 +238,12 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         }
         
         endDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
-        
         if #available(iOS 13.4, *) {
-            endDatePicker.preferredDatePickerStyle = .compact
+            endDatePicker.preferredDatePickerStyle = .wheels
         } else {
             endDatePicker.tintColor = ColorHelper.GivtPurple
         }
-        
+
         endDateLabel.placeholder = "dd/mm/yyyy"
         endDateLabel.text = String.empty
         endDateLabel.inputView = endDatePicker
