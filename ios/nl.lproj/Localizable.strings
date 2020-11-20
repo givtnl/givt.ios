@@ -1004,7 +1004,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "Feature_RecurringDonations_1_Description" = "Je kunt nu terugkerende donaties met een einddatum instellen.";
 "Feature_RecurringDonations_2_Description" = "Bekijk welke terugkerende donaties je hebt ingesteld en stop ze wanneer jij wilt.";
 "Feature_RecurringDonations_3_Description" = "Al je eenmalige en terugkerende donaties in één overzicht. Handig voor jezelf en voor de belastingaangifte.";
-"Feature_RecurringDonations_3_Button" = "Toon eens!";
+"Feature_RecurringDonations_3_Button" = "Laat het me zien!";
 
 /*Fuzzy*/
 "Feature_RecurringDonations_Notification" = "Hallo! Wil je ook graag een terugkerende gift instellen met de app? Bekijk snel wat we hebben gemaakt.";
