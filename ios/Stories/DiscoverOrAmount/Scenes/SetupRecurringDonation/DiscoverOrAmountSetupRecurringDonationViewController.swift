@@ -203,6 +203,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     
     func setupStartDatePickerView() {
         startDatePicker = UIDatePicker()
+        startDatePicker.setDate(Date.tomorrow, animated: true)
         startDatePicker.datePickerMode = .date
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
                 
@@ -242,9 +243,9 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         let amount = amountView.amount
         let endsAfterTurns = Int(occurrencesTextField.text!) ?? 0
         
-        startDateLabel.handleInputValidation(invalid: Date.yesterday > startDatePicker.date )
-        endDateLabel.handleInputValidation(invalid: endDatePicker.date < startDatePicker.date)
-        occurrencesTextField.handleInputValidation(invalid: endsAfterTurns < 1 || endsAfterTurns > 999)
+        startDateLabel.handleInputValidation(invalid: Date() > startDatePicker.date )
+        endDateLabel.handleInputValidation(invalid: endDatePicker.date.timeIntervalSince1970.rounded() < startDatePicker.date.timeIntervalSince1970.rounded())
+        occurrencesTextField.handleInputValidation(invalid: occurrencesTextField.text! != "X" && (endsAfterTurns < 1 || endsAfterTurns > 999))
         
         createSubcriptionButton.isEnabled = amount >= 0.25
             && amount <= 99999
