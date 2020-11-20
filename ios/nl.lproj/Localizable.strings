@@ -929,9 +929,9 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterMandateError" = "Helaas, we kunnen op dit moment je account niet opzeggen omdat het niet lukt om je machtiging op te zeggen. Neem aub contact op met ons.";
 "UnregisterErrorTitle" = "Opzeggen mislukt";
 "SetupRecurringGiftTitle" = "Plan je gift";
-"SetupRecurringGiftText_3" = "vanaf";
-"SetupRecurringGiftText_4" = "eindigend na";
-"SetupRecurringGiftText_5" = "of";
+"SetupRecurringGiftText_3" = "elk(e)";
+"SetupRecurringGiftText_4" = "vanaf";
+"SetupRecurringGiftText_5" = "Dit mag";
 "Add" = "Toevoegen";
 
 /*Fuzzy*/
@@ -945,7 +945,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "FAQQuestionFirstTargetThenAmount2" = "Waarom kan ik enkel maar een goed doel uit de lijst selecteren?";
 "FAQAnswerFirstTargetThenAmount2" = "Het \"geven aan een goed doel\" is splinternieuw en nog in volle opbouw. Beetje bij beetje zullen wij dus nieuwe functionaliteiten toevoegen.";
 "SetupRecurringGiftText_2" = "geven aan";
-"SetupRecurringGiftText_1" = "Ik wil graag iedere";
+"SetupRecurringGiftText_1" = "Ik wil graag";
 "SetupRecurringGiftWeek" = "week";
 "SetupRecurringGiftMonth" = "maand";
 "SetupRecurringGiftQuarter" = "kwartaal";
@@ -960,7 +960,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "SetupRecurringGiftHalfYear" = "half jaar";
 
 /*Fuzzy*/
-"SetupRecurringGiftText_6" = "keer";
+"SetupRecurringGiftText_6" = "keer gebeuren";
 "LoginAndTryAgain" = "Gelieve in te loggen en opnieuw te proberen.";
 "GivtIsBeingProcessedRecurring" = "Bedankt voor je Givt(s) aan {0}!\nBekijk het overzicht van je geplande Givts onder 'Overzicht'. \nDe eerste geplande Givt van {1} {2} zal worden afgeschreven op {3}.\nDaarna zullen we iedere {4} afschrijven.";
 "OverviewRecurringDonations" = "Terugkerende giften";
