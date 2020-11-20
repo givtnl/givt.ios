@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DiscoverOrAmountOpenSuccessRoute: NoResponseRequest {
+class DiscoverOrAmountOpenRecurringSuccessRoute: NoResponseRequest {
     var collectGroupName: String!
     init(collectGroupName: String) {
         self.collectGroupName = collectGroupName

@@ -79,8 +79,6 @@ class SettingsViewController: BaseMenuViewController {
         
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
-        //        let consciousGivingItem = Setting(name: "Doelbewust geven", image: UIImage(named: "hand-holding-heart")!, callback:  {self.consciousGiving()})
-        
         let setupRecurringGift = Setting(name: "MenuItem_RecurringDonation".localized, image: UIImage(named:"repeat")!, showBadge: UserDefaults.standard.toHighlightMenuList.contains( "MenuItem_RecurringDonation".localized), callback: { self.setupRecurringDonation() })
         
         if !UserDefaults.standard.isTempUser {
