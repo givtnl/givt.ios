@@ -175,8 +175,8 @@ final class GivtManager: NSObject {
             let semaGroup = DispatchGroup()
             donations.forEach { donation in
                 semaGroup.enter()
-                try? mediater.sendAsync(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
-                                                                  userId: donation.userId, timeStamp: donation.timeStamp)) { result in
+                if let result = try? mediater.send(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
+                                                                                  userId: donation.userId, timeStamp: donation.timeStamp)) {
                     if result {
                         try! self.mediater.send(request: DeleteDonationCommand(objectId: donation.objectId))
                     } else {
@@ -184,10 +184,11 @@ final class GivtManager: NSObject {
                     }
                     semaGroup.leave()
                 }
-                // After we synchronize all calls, we tell the main thread to save the coreDataContext
-                semaGroup.notify(queue: .main) {
-                    try? (UIApplication.shared.delegate as! AppDelegate).coreDataContext.objectContext.save()
-                }
+            }
+            // After we synchronize all calls, we tell the main thread to save the coreDataContext
+            semaGroup.notify(queue: .main) {
+                print("All CoreData offline donations processed")
+                try? (UIApplication.shared.delegate as! AppDelegate).coreDataContext.objectContext.save()
             }
         }
         
