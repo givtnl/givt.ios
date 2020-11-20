@@ -221,6 +221,7 @@ extension DiscoverOrAmountSelectDestinationViewController {
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        view.endEditing(true)
         if let indexPaths = tableView.indexPathsForSelectedRows {
             if (indexPaths.contains { $0 == indexPath }) {
                 // deselect when tapped again
