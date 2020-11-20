@@ -107,6 +107,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
                 try mediater.sendAsync(request: exportCommand) { isSuccessful in
                     if isSuccessful {
                         try? self.mediater.send(request: DeleteDonationCommand(objectId: donationId))
+                        try? (UIApplication.shared.delegate as? AppDelegate)?.coreDataContext.objectContext.save()
                     }
                 }
                 try mediater.sendAsync(request: DiscoverOrAmountOpenSafariRoute(donations: [Transaction(amount: amount, beaconId: input.mediumId, collectId: "0", timeStamp: timeStamp.toISOString(), userId: userId.uuidString)],
