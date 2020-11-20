@@ -138,7 +138,6 @@ final class GivtManager: NSObject {
     
     private override init() {
         super.init()
-        resume()
         
         NotificationCenter.default.addObserver(self, selector: #selector(connectionStatusDidChange(notification:)), name: .GivtConnectionStateDidChange, object: nil)
         beaconService.delegate = self
