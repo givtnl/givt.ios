@@ -56,7 +56,8 @@ class RecurringCustomUITextField: UITextField{
             self.setRightPaddingPoints(5)
         }
     }
-    func shadowAndCorners() {
+    
+    private func shadowAndCorners() {
         self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.5).cgColor
         self.layer.shadowOpacity = 1
@@ -81,5 +82,15 @@ class RecurringCustomUITextField: UITextField{
         borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         borderView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
+    
+    func handleInputValidation(invalid: Bool) {
+        if invalid {
+            borderView.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            borderView.layer.borderWidth = 2
+        } else {
+            borderView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            borderView.layer.borderWidth = 1
+        }
     }
 }

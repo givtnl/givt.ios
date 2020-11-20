@@ -68,7 +68,7 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
         }
     }
     
-    private var minimumDate: Date? = Calendar.current.date(byAdding: .day, value: 1, to: Date())
+    private var today: Date? = Calendar.current.date(byAdding: .day, value: 1, to: Date())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,15 +102,9 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     
     @IBAction func openStartDatePicker(_ sender: Any) {
         startDateLabel.becomeFirstResponder()
-        if let newDate = minimumDate {
-            startDatePicker.minimumDate = newDate
-        }
     }
     @IBAction func openEndDatePicker(_ sender: Any) {
         endDateLabel.becomeFirstResponder()
-        if let newDate = minimumDate {
-            endDatePicker.minimumDate = newDate
-        }
     }
     @IBAction func openFrequencyPicker(_ sender: Any) {
         frequencyLabel.becomeFirstResponder()
@@ -194,6 +188,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             self.present(alert, animated: true, completion:  {})
         }
     }
+    
     func setupFrequencyPickerView() {
         frequencyPicker = UIPickerView()
         frequencyPicker.dataSource = self
@@ -207,15 +202,12 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         frequencyLabel.text = frequencys[0][1] as? String
         createToolbar(frequencyLabel)
     }
+    
     func setupStartDatePickerView() {
         startDatePicker = UIDatePicker()
         startDatePicker.datePickerMode = .date
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
-        
-        if let newDate = minimumDate {
-            startDatePicker.minimumDate = newDate
-        }
-        
+                
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
 
         if #available(iOS 13.4, *) {
@@ -228,15 +220,12 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         startDateLabel.inputView = startDatePicker
         createToolbar(startDateLabel)
     }
+    
     func setupEndDatePickerView() {
         endDatePicker = UIDatePicker()
         endDatePicker.datePickerMode = .date
         endDatePicker.addTarget(self, action: #selector(handleEndDatePicker), for: .valueChanged)
-        
-        if let newDate = minimumDate {
-            endDatePicker.minimumDate = newDate
-        }
-        
+                
         endDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
         if #available(iOS 13.4, *) {
             endDatePicker.preferredDatePickerStyle = .wheels
@@ -254,12 +243,16 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     private func ensureButtonHasCorrectState() {
         let amount = amountView.amount
         let endsAfterTurns = Int(occurrencesTextField.text!) ?? 0
+        
+        startDateLabel.handleInputValidation(invalid: Date.yesterday > startDatePicker.date )
+        endDateLabel.handleInputValidation(invalid: endDatePicker.date < startDatePicker.date)
+        occurrencesTextField.handleInputValidation(invalid: endsAfterTurns < 1 || endsAfterTurns > 999)
+        
         createSubcriptionButton.isEnabled = amount >= 0.25
             && amount <= 99999
             && endsAfterTurns >= 1
             && endsAfterTurns <= 999
             && input?.mediumId != nil
-        
     }
     
     private func setupAmountView() {
@@ -278,6 +271,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         // set number keypad
         amountView.amountLabel.keyboardType = .decimalPad
     }
+    
     private func setupOccurrencesView() {
         occurrencesTextField.isOccurrencesLabel = true
         createToolbar(occurrencesTextField)
@@ -290,6 +284,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingChanged), for: .editingChanged)
         occurrencesTextField.addTarget(self, action: #selector(handleOccurrencesEditingEnd), for: .editingDidEnd)
     }
+    
     private func setupCollectGroupLabel() {
         collectGroupLabel.label.text = "SelectRecipient".localized
         collectGroupLabel.bottomBorderColor = UIColor.clear
@@ -358,6 +353,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         }
         return times.string
     }
+    
     func calculateEndDate(withTimes: Int) -> Date {
         var times = withTimes
         var startDate = startDatePicker.date
@@ -404,19 +400,14 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             occurrencesTextField.text = 1.string
         }
         ensureButtonHasCorrectState()
-
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
     }
+    
     @objc func handleEndDatePicker(_ datePicker: UIDatePicker) {
         endDateLabel.text = datePicker.date.formattedShort
         occurrencesTextField.text = calculateTimes(until: datePicker.date)
         ensureButtonHasCorrectState()
-        
-
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
     }
+    
     @objc func handleAmountEditingChanged() {
         if amountView.amount >= 0.25 && amountView.amount <= 99999 {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
@@ -431,10 +422,8 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             amountView.bottomBorderColor = .clear
         }
     }
+    
     @objc func handleAmountEditingDidEnd() {
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
-        
         if amountView.amount > 0 && amountView.amount < 0.25 {
             showAmountTooLow()
         } else if amountView.amount > 99999 {
@@ -457,6 +446,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         }
         ensureButtonHasCorrectState()
     }
+    
     @objc func handleOccurrencesEditingBegan() {
         if let times = Int(occurrencesTextField.text!) {
             occurrencesTextField.text = times.string
@@ -465,10 +455,8 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         }
         ensureButtonHasCorrectState()
     }
+    
     @objc func handleOccurrencesEditingEnd() {
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
-        
         if occurrencesTextField.text == String.empty {
             occurrencesTextField.text = calculateTimes(until: endDatePicker.date)
         }
@@ -478,17 +466,18 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return frequencys.count
     }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return frequencys[row][1] as? String
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedFrequencyIndex = row
         self.frequencyLabel.text = frequencys[row][1] as? String
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", withProperties:["frequency": frequencys[row][1] as! String])
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", properties: ["frequency": frequencys[row][1] as! String])
         pickerView.reloadAllComponents()
         
         resetDatesAndTimes()
@@ -506,14 +495,14 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         
         textField.inputAccessoryView = toolbar
     }
+    
     func resetDatesAndTimes() {
-        if let date = minimumDate {
-            endDatePicker.setDate(date, animated: true)
-            endDateLabel.text = String.empty
-            
-            occurrencesTextField.text = String.empty
-        }
+        endDatePicker.date = Date.tomorrow
+        handleEndDatePicker(endDatePicker)
+        endDateLabel.text = String.empty
+        occurrencesTextField.text = String.empty
     }
+    
     fileprivate func displayAmountTooHigh() {
         let alert = UIAlertController(
             title: "AmountTooHigh".localized,
@@ -523,6 +512,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         alert.addAction(UIAlertAction(title: "ChooseLowerAmount".localized, style: .default) { action in })
         self.present(alert, animated: true, completion: nil)
     }
+    
     fileprivate func showAmountTooLow() {
         let minimumAmount = UserDefaults.standard.currencySymbol == "£" ? "GivtMinimumAmountPond".localized : "GivtMinimumAmountEuro".localized
         let alert = UIAlertController(title: "AmountTooLow".localized,
@@ -530,9 +520,11 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
+    
     @objc func hideKeyboard(){
         self.view.endEditing(true)
     }
+    
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         let userInfo = notification.userInfo!
@@ -548,6 +540,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             self.view.layoutIfNeeded()
         })
     }
+    
     @objc func keyboardWillHide(notification:NSNotification){
         bottomScrollViewConstraint.constant = 0
         UIView.animate(withDuration: 0.3, animations: {

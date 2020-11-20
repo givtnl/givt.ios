@@ -86,5 +86,12 @@ extension Date {
         dateComponents.year = self.getYear()
         return Calendar.current.date(from: dateComponents)!
     }
-    
+
+    static var yesterday: Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: Date())!
+    }
+
+    static var tomorrow: Date {
+        return Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    }
 }
