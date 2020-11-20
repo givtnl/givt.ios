@@ -167,10 +167,14 @@ final class GivtManager: NSObject {
     }
     
     func processCachedGivts() {
+        let bgTask = UIApplication.shared.beginBackgroundTask {
+            //task will end by itself
+        }
         cachedGivtsLock.lock()
-        
         if let donations = try? mediater.send(request: GetAllDonationsQuery()) {
-            for donation in donations {
+            let semaGroup = DispatchGroup()
+            donations.forEach { donation in
+                semaGroup.enter()
                 try? mediater.sendAsync(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
                                                                   userId: donation.userId, timeStamp: donation.timeStamp)) { result in
                     if result {
@@ -178,9 +182,10 @@ final class GivtManager: NSObject {
                     } else {
                         self.log.error(message: "Unable to post offline donation to server")
                     }
+                    semaGroup.leave()
                 }
-                // :( need to do this separately
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                // After we synchronize all calls, we tell the main thread to save the coreDataContext
+                semaGroup.notify(queue: .main) {
                     try? (UIApplication.shared.delegate as! AppDelegate).coreDataContext.objectContext.save()
                 }
             }
@@ -188,9 +193,10 @@ final class GivtManager: NSObject {
         
         for (_, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
             log.info(message: "Started processing chached Givts")
-            giveInBackground(transactions: [element])
+            self.tryGive(transactions: [element], trycount: 0)
         }
         cachedGivtsLock.unlock()
+        UIApplication.shared.endBackgroundTask(bgTask)
     }
     
     @objc func connectionStatusDidChange(notification: Notification) {
