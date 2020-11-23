@@ -101,10 +101,14 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     @IBAction func openStartDatePicker(_ sender: Any) {
         startDateLabel.becomeFirstResponder()
     }
+    
     @IBAction func openEndDatePicker(_ sender: Any) {
         endDateLabel.becomeFirstResponder()
-        endDatePicker.setDate(Date.tomorrow, animated: true)
+        if endDateLabel.text! == "" {
+            endDatePicker.setDate(Date.tomorrow, animated: true)
+        }
     }
+    
     @IBAction func openFrequencyPicker(_ sender: Any) {
         frequencyLabel.becomeFirstResponder()
         let selectedIndex: Int = selectedFrequencyIndex ?? 0
@@ -245,7 +249,10 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         endDateLabel.handleInputValidation(invalid: endDateLabel.text! != "" && endDatePicker.date.shortDate < startDatePicker.date.shortDate)
         occurrencesTextField.handleInputValidation(invalid: occurrencesTextField.text! != "" && (endsAfterTurns < 1 || endsAfterTurns > 999))
         
-        createSubcriptionButton.isEnabled = amount >= 0.25
+        createSubcriptionButton.isEnabled = startDateLabel.inputValid
+            && endDateLabel.inputValid
+            && occurrencesTextField.inputValid
+            && amount >= 0.25
             && amount <= 99999
             && endsAfterTurns >= 1
             && endsAfterTurns <= 999
@@ -434,7 +441,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
                 times = 999
             }
             endDatePicker.date = calculateEndDate(withTimes: times)
-            endDateLabel.text = endDatePicker.date.formattedShort
+            handleEndDatePicker(endDatePicker)
         }
         ensureButtonHasCorrectState()
     }
