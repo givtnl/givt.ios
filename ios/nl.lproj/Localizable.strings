@@ -930,7 +930,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterErrorTitle" = "Opzeggen mislukt";
 "SetupRecurringGiftTitle" = "Plan je gift";
 "SetupRecurringGiftText_3" = "vanaf";
-"SetupRecurringGiftText_4" = "en eindigend na";
+"SetupRecurringGiftText_4" = "tot";
 "SetupRecurringGiftText_5" = "of";
 "Add" = "Toevoegen";
 
@@ -983,6 +983,8 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "CancelRecurringDonation" = "Stopzetten";
+
+/*Fuzzy*/
 "SetupRecurringGiftText_7" = "Elk(e)";
 
 /*Fuzzy*/
