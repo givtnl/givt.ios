@@ -386,8 +386,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         
         if endDatePicker.date > startDatePicker.date {
             occurrencesTextField.text = calculateTimes(until: endDatePicker.date)
-        } else if endDateLabel.text == String.empty && occurrencesTextField.text == String.empty {
-            endDatePicker.minimumDate = startDatePicker.date
         } else {
             endDatePicker.date = startDatePicker.date
             endDateLabel.text = startDateLabel.text
