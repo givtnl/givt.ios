@@ -72,8 +72,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
                     .first(where: { (child) -> Bool in child is MainNavigationController })?.children
                     .first(where: { (child) -> Bool in child is MainViewController }) else { return }
             
+            if let prentedViewcontroller = mainViewController.children.first?.presentedViewController {
+                prentedViewcontroller.dismiss(animated: true, completion: nil)
+            }
+
             try? Mediater.shared.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
-            { }
+                { }
         }
     }
     
