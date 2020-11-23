@@ -99,22 +99,24 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     
     @IBAction func openStartDatePicker(_ sender: Any) {
         startDateLabel.becomeFirstResponder()
-        startDatePicker.date = Date()
     }
+
     @IBAction func openEndDatePicker(_ sender: Any) {
         endDateLabel.becomeFirstResponder()
-        endDatePicker.date = Date()
     }
+
     @IBAction func openFrequencyPicker(_ sender: Any) {
         frequencyLabel.becomeFirstResponder()
         let selectedIndex: Int = selectedFrequencyIndex ?? 0
         frequencyPicker.selectRow(selectedIndex, inComponent: 0, animated: false)
     }
+
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: BackToRecurringDonationOverviewRoute(), withContext: self)
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_DISMISSED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_DISMISSED")
     }
+
     @IBAction func makeRecurringDonation(_ sender: Any) {
         self.view.endEditing(true)
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
@@ -240,7 +242,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     func collectGroupLabelTapped() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
-        hideKeyboard()
+        view.endEditing(true)
         try? mediater.send(request: SetupRecurringDonationChooseDestinationRoute(mediumId: ""), withContext: self)
     }
     
@@ -249,7 +251,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         let endsAfterTurns = Int(occurrencesTextField.text!) ?? 0
         
         startDateLabel.handleInputValidation(invalid: Date() > startDatePicker.date )
-        endDateLabel.handleInputValidation(invalid: endDatePicker.date.timeIntervalSince1970.rounded() < startDatePicker.date.timeIntervalSince1970.rounded())
+        endDateLabel.handleInputValidation(invalid: endDatePicker.date.shortDate < startDatePicker.date.shortDate)
         occurrencesTextField.handleInputValidation(invalid: occurrencesTextField.text! != "X" && (endsAfterTurns < 1 || endsAfterTurns > 999))
         
         createSubcriptionButton.isEnabled = amount >= 0.25
@@ -326,7 +328,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         var startDate = startDatePicker.date;
         let frequency = Frequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
         
-        while startDate.shortDate < until.shortDate {
+        while startDate.shortDate <= until.shortDate {
             switch frequency {
             case Frequency.Weekly:
                 var dateComponent = DateComponents()
@@ -350,12 +352,10 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
                 startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
             }
             times+=1
-            if startDate.shortDate == until.shortDate {
-                times+=1
-            }
         }
         return times.string
     }
+    
     func calculateEndDate(withTimes: Int) -> Date {
         var times = withTimes
         var startDate = startDatePicker.date
