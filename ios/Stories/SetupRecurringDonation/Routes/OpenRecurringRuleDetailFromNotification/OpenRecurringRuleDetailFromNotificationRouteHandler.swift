@@ -21,15 +21,29 @@ class OpenRecurringRuleDetailFromNotificationRouteHandler : RequestHandlerWithCo
                     context.present(alert, animated: true, completion:  {})
                 }
             } else {
-                let recurringDonationNav = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController() as! SetupRecurringDonationNavigationController
+                var recurringDonationNavigationController: SetupRecurringDonationNavigationController!
+                
+                if context is SetupRecurringDonationNavigationController {
+                    recurringDonationNavigationController = context as? SetupRecurringDonationNavigationController
+                } else {
+                    recurringDonationNavigationController = UIStoryboard(name:"SetupRecurringDonation", bundle: nil).instantiateInitialViewController() as? SetupRecurringDonationNavigationController
+                }
+                
+                guard let recurringDonationNav = recurringDonationNavigationController else { return }
+                
                 let overview = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: String(describing: SetupRecurringDonationOverviewViewController.self)) as! SetupRecurringDonationOverviewViewController
                 let detail = UIStoryboard(name: "SetupRecurringDonation", bundle: nil).instantiateViewController(withIdentifier: String(describing: RecurringDonationTurnsOverviewController.self)) as! RecurringDonationTurnsOverviewController
+                
                 detail.recurringDonationId = (request as! OpenRecurringRuleDetailFromNotificationRoute).recurringDonationId
                 detail.comingFromNotification = true
                 recurringDonationNav.modalPresentationStyle = .fullScreen
                 recurringDonationNav.viewControllers = [overview, detail]
                 DispatchQueue.main.async {
-                    context.present(recurringDonationNav, animated: false, completion: nil)
+                    if context is MainViewController {
+                        context.present(recurringDonationNav, animated: false, completion: nil)
+                    } else {
+                        print("qyeet")
+                    }
                 }
             }
         }

@@ -72,8 +72,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
                     .first(where: { (child) -> Bool in child is MainNavigationController })?.children
                     .first(where: { (child) -> Bool in child is MainViewController }) else { return }
             
-            try? Mediater.shared.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
-            { }
+            if let currentVc = mainViewController.children.first?.presentedViewController as? SetupRecurringDonationNavigationController {
+                try? Mediater.shared.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: currentVc)
+                    { }
+            } else {
+                try? Mediater.shared.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
+                    { }
+            }
         }
     }
     
