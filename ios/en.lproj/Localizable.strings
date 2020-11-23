@@ -929,8 +929,8 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "UnregisterMandateError" = "Alas, we are unable to unregister your account because we are unable to cancel your mandate or direct debit instruction. Please contact us.";
 "UnregisterErrorTitle" = "Terminate failed";
 "SetupRecurringGiftTitle" = "Set up your recurring donation";
-"SetupRecurringGiftText_3" = "starting on";
-"SetupRecurringGiftText_4" = "and ending after";
+"SetupRecurringGiftText_3" = "from";
+"SetupRecurringGiftText_4" = "until";
 "SetupRecurringGiftText_5" = "or";
 "Add" = "Add";
 
@@ -983,6 +983,8 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "CancelRecurringDonation" = "Stop";
+
+/*Fuzzy*/
 "SetupRecurringGiftText_7" = "Each";
 
 /*Fuzzy*/
