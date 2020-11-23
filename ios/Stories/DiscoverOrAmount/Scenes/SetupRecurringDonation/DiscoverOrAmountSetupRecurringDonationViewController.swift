@@ -192,10 +192,8 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         frequencyPicker.dataSource = self
         frequencyPicker.delegate = self
         frequencyPicker.selectRow(0, inComponent: 0, animated: false)
-        if #available(iOS 14.0, *) {
-            frequencyPicker.tintColor = ColorHelper.GivtPurple
-        }
         frequencyPicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        frequencyPicker.tintColor = ColorHelper.GivtPurple
         frequencyLabel.inputView = frequencyPicker
         frequencyLabel.text = frequencys[0][1] as? String
         createToolbar(frequencyLabel)
@@ -207,12 +205,11 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         startDatePicker.datePickerMode = .date
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
                 
+        startDatePicker.tintColor = ColorHelper.GivtPurple
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
 
         if #available(iOS 13.4, *) {
             startDatePicker.preferredDatePickerStyle = .wheels
-        } else {
-            startDatePicker.tintColor = ColorHelper.GivtPurple
         }
         
         startDateLabel.text = startDatePicker.date.formattedShort
@@ -222,14 +219,15 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     
     func setupEndDatePickerView() {
         endDatePicker = UIDatePicker()
+        endDatePicker.setDate(Date.tomorrow, animated: true)
         endDatePicker.datePickerMode = .date
         endDatePicker.addTarget(self, action: #selector(handleEndDatePicker), for: .valueChanged)
                 
-        endDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        startDatePicker.tintColor = ColorHelper.GivtPurple
+        startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        
         if #available(iOS 13.4, *) {
             endDatePicker.preferredDatePickerStyle = .wheels
-        } else {
-            endDatePicker.tintColor = ColorHelper.GivtPurple
         }
 
         endDateLabel.placeholder = "dd/mm/yyyy"
@@ -486,7 +484,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
     func createToolbar(_ textField: UITextField) {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideKeyboard))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(toolbarDoneButtonTapped))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         toolbar.setItems([flexibleSpace, doneButton], animated: false)
@@ -520,8 +518,15 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         self.present(alert, animated: true, completion: {})
     }
     
-    @objc func hideKeyboard(){
+    @objc func toolbarDoneButtonTapped(_ sender: UIBarButtonItem){
         self.view.endEditing(true)
+        if let toolbar = startDateLabel.inputAccessoryView as? UIToolbar,
+           toolbar.items?.contains(where: { item in item == sender }) == true {
+            handleStartDatePicker(startDatePicker)
+        } else if let toolbar = endDateLabel.inputAccessoryView as? UIToolbar,
+           toolbar.items?.contains(where: { item in item == sender }) == true {
+            handleEndDatePicker(endDatePicker)
+        }
     }
     
     @objc func keyboardWillShow(notification:NSNotification){
