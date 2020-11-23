@@ -50,8 +50,6 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
     private var startDatePicker: UIDatePicker!
     private var endDatePicker: UIDatePicker!
     
-    private var minimumDate: Date? = Calendar.current.date(byAdding: .day, value: 1, to: Date())
-
     private let frequencys: Array<Array<Any>> =
         [[Frequency.Weekly, "SetupRecurringGiftWeek".localized]
             , [Frequency.Monthly, "SetupRecurringGiftMonth".localized]
@@ -187,63 +185,57 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
             self.present(alert, animated: true, completion:  {})
         }
     }
+    
     func setupFrequencyPickerView() {
         frequencyPicker = UIPickerView()
         frequencyPicker.dataSource = self
         frequencyPicker.delegate = self
         frequencyPicker.selectRow(0, inComponent: 0, animated: false)
-        if #available(iOS 14.0, *) {
-            frequencyPicker.tintColor = ColorHelper.GivtPurple
-        }
         frequencyPicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+        frequencyPicker.tintColor = ColorHelper.GivtPurple
         frequencyLabel.inputView = frequencyPicker
         frequencyLabel.text = frequencys[0][1] as? String
         createToolbar(frequencyLabel)
     }
+    
     func setupStartDatePickerView() {
         startDatePicker = UIDatePicker()
+        startDatePicker.setDate(Date.tomorrow, animated: true)
         startDatePicker.datePickerMode = .date
         startDatePicker.addTarget(self, action: #selector(handleStartDatePicker), for: .valueChanged)
-        
-        if let newDate = minimumDate {
-            startDatePicker.minimumDate = newDate
-        }
-        
+                
+        startDatePicker.tintColor = ColorHelper.GivtPurple
         startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
-        
+
         if #available(iOS 13.4, *) {
-            startDatePicker.preferredDatePickerStyle = .compact
-        } else {
-            startDatePicker.tintColor = ColorHelper.GivtPurple
+            startDatePicker.preferredDatePickerStyle = .wheels
         }
         
         startDateLabel.text = startDatePicker.date.formattedShort
         startDateLabel.inputView = startDatePicker
         createToolbar(startDateLabel)
     }
+    
     func setupEndDatePickerView() {
         endDatePicker = UIDatePicker()
+        endDatePicker.setDate(Date.tomorrow, animated: true)
         endDatePicker.datePickerMode = .date
         endDatePicker.addTarget(self, action: #selector(handleEndDatePicker), for: .valueChanged)
-        
-        if let newDate = minimumDate {
-            endDatePicker.minimumDate = newDate
-        }
-        
-        endDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
+                
+        startDatePicker.tintColor = ColorHelper.GivtPurple
+        startDatePicker.setValue(ColorHelper.GivtPurple, forKeyPath: "textColor")
         
         if #available(iOS 13.4, *) {
-            endDatePicker.preferredDatePickerStyle = .compact
-        } else {
-            endDatePicker.tintColor = ColorHelper.GivtPurple
+            endDatePicker.preferredDatePickerStyle = .wheels
         }
-        
+
         endDateLabel.placeholder = "dd/mm/yyyy"
         endDateLabel.text = String.empty
         endDateLabel.inputView = endDatePicker
         
         createToolbar(endDateLabel)
     }
+
 
     func collectGroupLabelTapped() {
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_SELECT_RECIPIENT")
@@ -255,12 +247,16 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     private func ensureButtonHasCorrectState() {
         let amount = amountView.amount
         let endsAfterTurns = Int(occurrencesTextField.text!) ?? 0
+        
+        startDateLabel.handleInputValidation(invalid: Date() > startDatePicker.date )
+        endDateLabel.handleInputValidation(invalid: endDatePicker.date.timeIntervalSince1970.rounded() < startDatePicker.date.timeIntervalSince1970.rounded())
+        occurrencesTextField.handleInputValidation(invalid: occurrencesTextField.text! != "X" && (endsAfterTurns < 1 || endsAfterTurns > 999))
+        
         createSubcriptionButton.isEnabled = amount >= 0.25
             && amount <= 99999
             && endsAfterTurns >= 1
             && endsAfterTurns <= 999
             && input?.mediumId != nil
-        
     }
     
     private func setupAmountView() {
@@ -406,19 +402,14 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
             occurrencesTextField.text = 1.string
         }
         ensureButtonHasCorrectState()
-
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_STARTDATE_CHANGED")
     }
+    
     @objc func handleEndDatePicker(_ datePicker: UIDatePicker) {
         endDateLabel.text = datePicker.date.formattedShort
         occurrencesTextField.text = calculateTimes(until: datePicker.date)
         ensureButtonHasCorrectState()
-        
-
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_ENDDATE_CHANGED")
     }
+    
     @objc func handleAmountEditingChanged() {
         if amountView.amount >= 0.25 && amountView.amount <= 99999 {
             amountView.bottomBorderColor = ColorHelper.GivtGreen
@@ -434,9 +425,6 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         }
     }
     @objc func handleAmountEditingDidEnd() {
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_AMOUNT_ENTERED")
-        
         if amountView.amount > 0 && amountView.amount < 0.25 {
             showAmountTooLow()
         } else if amountView.amount > 99999 {
@@ -468,9 +456,6 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         ensureButtonHasCorrectState()
     }
     @objc func handleOccurrencesEditingEnd() {
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_TIMES_ENTERED")
-        
         if occurrencesTextField.text == String.empty {
             occurrencesTextField.text = calculateTimes(until: endDatePicker.date)
         }
@@ -489,25 +474,23 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectedFrequencyIndex = row
         self.frequencyLabel.text = frequencys[row][1] as? String
-        MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", withProperties:["frequency": frequencys[row][1] as! String])
-        Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_FREQUENCY_CHANGED", properties: ["frequency": frequencys[row][1] as! String])
         pickerView.reloadAllComponents()
         
         resetDatesAndTimes()
         ensureButtonHasCorrectState()
     }
+    
     func resetDatesAndTimes() {
-        if let date = minimumDate {
-            endDatePicker.setDate(date, animated: true)
-            endDateLabel.text = String.empty
-            
-            occurrencesTextField.text = String.empty
-        }
+        endDatePicker.date = Date.tomorrow
+        handleEndDatePicker(endDatePicker)
+        endDateLabel.text = String.empty
+        occurrencesTextField.text = String.empty
     }
+    
     func createToolbar(_ textField: UITextField) {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideKeyboard))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(toolbarDoneButtonTapped))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         
         toolbar.setItems([flexibleSpace, doneButton], animated: false)
@@ -531,9 +514,18 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in  }))
         self.present(alert, animated: true, completion: {})
     }
-    @objc func hideKeyboard(){
+    
+    @objc func toolbarDoneButtonTapped(_ sender: UIBarButtonItem){
         self.view.endEditing(true)
+        if let toolbar = startDateLabel.inputAccessoryView as? UIToolbar,
+           toolbar.items?.contains(where: { item in item == sender }) == true {
+            handleStartDatePicker(startDatePicker)
+        } else if let toolbar = endDateLabel.inputAccessoryView as? UIToolbar,
+           toolbar.items?.contains(where: { item in item == sender }) == true {
+            handleEndDatePicker(endDatePicker)
+        }
     }
+    
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         let userInfo = notification.userInfo!
