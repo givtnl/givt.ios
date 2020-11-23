@@ -11,6 +11,8 @@ import UIKit
 @IBDesignable
 class RecurringCustomUITextField: UITextField{
     
+    public var inputValid = true
+    
     private var borderView: UIView!
     @IBOutlet var contentView: UIView!
     
@@ -85,6 +87,7 @@ class RecurringCustomUITextField: UITextField{
     }
     
     func handleInputValidation(invalid: Bool) {
+        inputValid = !invalid
         if invalid {
             borderView.layer.borderColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             borderView.layer.borderWidth = 2
