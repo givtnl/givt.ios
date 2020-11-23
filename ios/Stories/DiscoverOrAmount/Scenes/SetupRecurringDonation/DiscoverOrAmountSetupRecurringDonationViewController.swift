@@ -242,7 +242,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         let endsAfterTurns = Int(occurrencesTextField.text!) ?? 0
         
         startDateLabel.handleInputValidation(invalid: Date() > startDatePicker.date )
-        endDateLabel.handleInputValidation(invalid: endDatePicker.date.timeIntervalSince1970.rounded() < startDatePicker.date.timeIntervalSince1970.rounded())
+        endDateLabel.handleInputValidation(invalid: endDatePicker.date.shortDate < startDatePicker.date.shortDate)
         occurrencesTextField.handleInputValidation(invalid: occurrencesTextField.text! != "X" && (endsAfterTurns < 1 || endsAfterTurns > 999))
         
         createSubcriptionButton.isEnabled = amount >= 0.25
@@ -320,7 +320,7 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
         var startDate = startDatePicker.date;
         let frequency = Frequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
         
-        while startDate.shortDate < until.shortDate {
+        while startDate.shortDate <= until.shortDate {
             switch frequency {
             case Frequency.Weekly:
                 var dateComponent = DateComponents()
@@ -343,9 +343,6 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
                 dateComponent.year = 1
                 startDate = Calendar.current.date(byAdding: dateComponent, to: startDate)!
             }
-            times+=1
-        }
-        if startDate.shortDate == until.shortDate {
             times+=1
         }
         return times.string
