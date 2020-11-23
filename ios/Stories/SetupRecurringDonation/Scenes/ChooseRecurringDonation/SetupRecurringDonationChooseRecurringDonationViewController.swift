@@ -103,6 +103,7 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
 
     @IBAction func openEndDatePicker(_ sender: Any) {
         endDateLabel.becomeFirstResponder()
+        endDatePicker.setDate(Date.tomorrow, animated: true)
     }
 
     @IBAction func openFrequencyPicker(_ sender: Any) {
@@ -220,7 +221,6 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     
     func setupEndDatePickerView() {
         endDatePicker = UIDatePicker()
-        endDatePicker.setDate(Date.tomorrow, animated: true)
         endDatePicker.datePickerMode = .date
         endDatePicker.addTarget(self, action: #selector(handleEndDatePicker), for: .valueChanged)
                 
@@ -251,8 +251,8 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         let endsAfterTurns = Int(occurrencesTextField.text!) ?? 0
         
         startDateLabel.handleInputValidation(invalid: Date() > startDatePicker.date )
-        endDateLabel.handleInputValidation(invalid: endDatePicker.date.shortDate < startDatePicker.date.shortDate)
-        occurrencesTextField.handleInputValidation(invalid: occurrencesTextField.text! != "X" && (endsAfterTurns < 1 || endsAfterTurns > 999))
+        endDateLabel.handleInputValidation(invalid: endDateLabel.text! != "" && endDatePicker.date.shortDate < startDatePicker.date.shortDate)
+        occurrencesTextField.handleInputValidation(invalid: occurrencesTextField.text! != "" && (endsAfterTurns < 1 || endsAfterTurns > 999))
         
         createSubcriptionButton.isEnabled = amount >= 0.25
             && amount <= 99999
