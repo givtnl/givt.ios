@@ -92,7 +92,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
                 prentedViewcontroller.dismiss(animated: true, completion: nil)
             }
             
-            try? Mediater.shared.sendAsync(request: OpenFeatureByIdRoute(featureId: featureId), withContext: mainViewController) { }
+            if FeatureManager.shared.highestFeature >= featureId {
+                try? Mediater.shared.sendAsync(request: OpenFeatureByIdRoute(featureId: featureId), withContext: mainViewController) { }
+            } else {
+                try? Mediater.shared.sendAsync(request: ShowUpdateAlert(), withContext: mainViewController) { }
+            }
         }
     }
     
@@ -338,6 +342,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
         Mediater.shared.registerHandler(handler: GoBackOneControllerRouteHandler())
         Mediater.shared.registerHandler(handler: OpenFeatureByIdRouteHandler())
+        Mediater.shared.registerHandler(handler: ShowUpdateAlertHandler())
 
         //-- DISCOVER OR AMOUNT: ROUTES
         Mediater.shared.registerHandler(handler: BackToMainViewRouteHandler())

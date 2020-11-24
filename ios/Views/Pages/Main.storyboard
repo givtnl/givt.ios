@@ -2154,83 +2154,6 @@ Kijk voor de status in je overzicht.</string>
             </objects>
             <point key="canvasLocation" x="4753.6231884057979" y="513.61607142857144"/>
         </scene>
-        <!--Show Update Feature View Controller-->
-        <scene sceneID="NsD-DN-GnW">
-            <objects>
-                <viewController storyboardIdentifier="ShowUpdateFeatureViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NPY-h8-0bP" customClass="ShowUpdateFeatureViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Gsp-hz-ayA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bla" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="C5C-IB-7C3">
-                                <rect key="frame" x="20" y="162.5" width="374" height="25"/>
-                                <fontDescription key="fontDescription" name="Avenir-Roman" family="Avenir" pointSize="18"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zPn-BL-DDI">
-                                <rect key="frame" x="20" y="798" width="374" height="44"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exU-r3-e3s" userLabel="btnGive" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
-                                        <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="btnGive" label="btnGive"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="eHt-1s-4rS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
-                                        <state key="normal" title="Keer terug"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <integer key="value" value="4"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                                <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                                <color key="value" red="0.10980392160000001" green="0.66274509800000003" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="buttonNextTouched:" destination="NPY-h8-0bP" eventType="touchUpInside" id="aUl-7w-MGW"/>
-                                            <action selector="nextBtn:" destination="T9t-cc-i7G" eventType="touchUpInside" id="Nfe-GZ-ezb"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bla" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="KcB-xL-KRG">
-                                <rect key="frame" x="20" y="108" width="374" height="34.5"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="25"/>
-                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="LgQ-Yb-uhu"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="C5C-IB-7C3" firstAttribute="top" secondItem="KcB-xL-KRG" secondAttribute="bottom" constant="20" id="3c0-FG-9Xg"/>
-                            <constraint firstItem="KcB-xL-KRG" firstAttribute="top" secondItem="LgQ-Yb-uhu" secondAttribute="top" constant="20" id="7Ik-CA-Y36"/>
-                            <constraint firstItem="LgQ-Yb-uhu" firstAttribute="bottom" secondItem="zPn-BL-DDI" secondAttribute="bottom" constant="20" id="CFJ-Yu-YdM"/>
-                            <constraint firstItem="LgQ-Yb-uhu" firstAttribute="trailing" secondItem="KcB-xL-KRG" secondAttribute="trailing" constant="20" id="cqf-iz-d7Y"/>
-                            <constraint firstItem="LgQ-Yb-uhu" firstAttribute="trailing" secondItem="zPn-BL-DDI" secondAttribute="trailing" constant="20" id="csW-ue-LNc"/>
-                            <constraint firstItem="LgQ-Yb-uhu" firstAttribute="trailing" secondItem="C5C-IB-7C3" secondAttribute="trailing" constant="20" id="j4F-aq-wdh"/>
-                            <constraint firstItem="KcB-xL-KRG" firstAttribute="leading" secondItem="LgQ-Yb-uhu" secondAttribute="leading" constant="20" id="k78-nu-amd"/>
-                            <constraint firstItem="C5C-IB-7C3" firstAttribute="leading" secondItem="LgQ-Yb-uhu" secondAttribute="leading" constant="20" id="mJQ-Ul-Dft"/>
-                            <constraint firstItem="zPn-BL-DDI" firstAttribute="leading" secondItem="LgQ-Yb-uhu" secondAttribute="leading" constant="20" id="uHD-n5-pXP"/>
-                        </constraints>
-                    </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="buttonNext" destination="exU-r3-e3s" id="NNw-iL-Fhh"/>
-                        <outlet property="messageLabel" destination="C5C-IB-7C3" id="Yhv-Ii-ZeP"/>
-                        <outlet property="titleLabel" destination="KcB-xL-KRG" id="lFr-8s-d8D"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FZM-5J-7Rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1804" y="-1051"/>
-        </scene>
         <!--Login Navigation View Controller-->
         <scene sceneID="j4E-5s-cpT">
             <objects>
@@ -3449,9 +3372,6 @@ best bij jou past.</string>
         </designable>
         <designable name="avu-iq-1Ae">
             <size key="intrinsicContentSize" width="30" height="34"/>
-        </designable>
-        <designable name="exU-r3-e3s">
-            <size key="intrinsicContentSize" width="93" height="37"/>
         </designable>
         <designable name="g42-Kb-4UT">
             <size key="intrinsicContentSize" width="30" height="40"/>
