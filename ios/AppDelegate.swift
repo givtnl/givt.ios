@@ -16,7 +16,8 @@ import UserNotifications
 import Mixpanel
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, NotificationRecurringDonationTurnCreatedDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, NotificationRecurringDonationTurnCreatedDelegate, NotificationShowFeatureUpdateDelegate {
+    
     var window: UIWindow?
     var logService: LogService = LogService.shared
     var appService: AppServices = AppServices.shared
@@ -76,8 +77,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
                 prentedViewcontroller.dismiss(animated: true, completion: nil)
             }
 
-            try? Mediater.shared.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
-                { }
+            try? Mediater.shared.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController) { }
+        }
+    }
+    
+    func onReceiveShowFeatureUpdate(featureId: Int) {
+        DispatchQueue.main.async {
+            guard let window = UIApplication.shared.keyWindow else { return }
+            guard let mainViewController = window.rootViewController?.children
+                    .first(where: { (child) -> Bool in child is MainNavigationController })?.children
+                    .first(where: { (child) -> Bool in child is MainViewController }) else { return }
+            
+            if let prentedViewcontroller = mainViewController.children.first?.presentedViewController {
+                prentedViewcontroller.dismiss(animated: true, completion: nil)
+            }
+            
+            try? Mediater.shared.sendAsync(request: OpenFeatureByIdRoute(featureId: featureId), withContext: mainViewController) { }
         }
     }
     
@@ -322,7 +337,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
         //-- INFRA
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
         Mediater.shared.registerHandler(handler: GoBackOneControllerRouteHandler())
-        
+        Mediater.shared.registerHandler(handler: OpenFeatureByIdRouteHandler())
+
         //-- DISCOVER OR AMOUNT: ROUTES
         Mediater.shared.registerHandler(handler: BackToMainViewRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSelectDestinationRouteHandler())
@@ -335,5 +351,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenRecurringSuccessRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenOfflineSuccessRouteHandler())
         Mediater.shared.registerHandler(handler: GetAllDonationsQueryHandler())
-    }
+        }
 }
