@@ -10,4 +10,5 @@ public enum NotificationType: String {
     case CelebrationActivated = "CelebrationActivated"
     case ProcessCachedGivts = "ProcessCachedGivts"
     case RecurringDonationTurnCreated = "RecurringDonationTurnCreated"
+    case ShowFeatureUpdate = "ShowFeatureUpdate"
 }
