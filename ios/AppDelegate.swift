@@ -52,7 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         NotificationManager.shared.delegates.append(self)
 
         if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().delegate = self
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound,  .sound]) { (granted, error) in
+                UNUserNotificationCenter.current().delegate = self
+            }
         } else {
             if let remoteNotif = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
                 DispatchQueue.global(qos: .background).async {
@@ -277,15 +280,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
     @available(iOS 10.0, *)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         //foreground
-//        let pushNotificationInfo = notification.request.content.userInfo
-//        DispatchQueue.global(qos: .background).async {
-//            NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
-//        }
+        let userInfo = notification.request.content.userInfo
+                print(userInfo) // the payload that is attached to the push notification
+                // you can customize the notification presentation options. Below code will show notification banner as well as play a sound. If you want to add a badge too, add .badge in the array.
+                completionHandler([.alert,.sound])
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification pushNotificationInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void ) {
         //voorgrond
+        
 //        NotificationManager.shared.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
     }
     
