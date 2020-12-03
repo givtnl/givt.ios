@@ -16,7 +16,7 @@ import UserNotifications
 import Mixpanel
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, NotificationRecurringDonationTurnCreatedDelegate, NotificationShowFeatureUpdateDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UNUserNotificationCenterDelegate, NotificationRecurringDonationTurnCreatedDelegate, NotificationShowFeatureUpdateDelegate {
     
     var window: UIWindow?
     var logService: LogService = LogService.shared
@@ -50,17 +50,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
         
         NotificationManager.shared.start()
         NotificationManager.shared.delegates.append(self)
-        
+
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
+        } else {
+            if let remoteNotif = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
+                DispatchQueue.global(qos: .background).async {
+                    NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
+                }
+            }
+        }
+
         handleOldBeaconList()
         checkIfTempUser()
         doMagicForPresets()
-        
-        if let remoteNotif = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
-            DispatchQueue.global(qos: .background).async {
-                NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
-            }
-        }
-        
+                
         mixpanel.serverURL = "https://api-eu.mixpanel.com"
 
         return true
@@ -259,8 +263,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, No
         print("Failed to register: \(error)")
     }
     
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        //background
+        if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
+            let pushNotificationInfo = response.notification.request.content.userInfo
+            DispatchQueue.global(qos: .background).async {
+                NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
+            }
+        }
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        //foreground
+//        let pushNotificationInfo = notification.request.content.userInfo
+//        DispatchQueue.global(qos: .background).async {
+//            NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
+//        }
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification pushNotificationInfo: [AnyHashable: Any],
-    fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void ) {
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void ) {
+        //voorgrond
         NotificationManager.shared.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
     }
     
