@@ -32,7 +32,7 @@ class ExportDonationCommandHandler : RequestHandlerProtocol {
             return false
         }
         
-        let semaphore = DispatchSemaphore.init(value: 1)
+        let semaphore = DispatchSemaphore.init(value: 0)
         var retVal = false
         do {
             try apiClient.post(url: "/api/v2/givts", data: donation) { response in

@@ -16,7 +16,8 @@ class DiscoverOrAmountSuccessViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var goBackButton: CustomButton!
-    var collectGroupName: String!
+    
+    var subtitleText: String!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,7 +35,7 @@ class DiscoverOrAmountSuccessViewController: UIViewController {
     
     func setupLabels() {
         titleLabel.text = "YesSuccess".localized
-        subtitleLabel.text = "ReccurringGivtIsBeingProcessed".localized.replacingOccurrences(of: "{0}", with: collectGroupName)
+        subtitleLabel.text = subtitleText
         goBackButton.setTitle("Ready".localized, for: .normal)
     }
 }

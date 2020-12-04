@@ -26,7 +26,7 @@ class SPInfoViewController: UIViewController {
         super.viewDidLoad()
         MSAnalytics.trackEvent("User started SEPA mandate flow")
         Mixpanel.mainInstance().track(event: "User started SEPA mandate flow")
-
+        
         backButton.isEnabled = false
         headerText.text = NSLocalizedString("SlimPayInformation", comment: "")
         explanation.text = NSLocalizedString("SlimPayInformationPart2", comment: "")
@@ -64,7 +64,7 @@ class SPInfoViewController: UIViewController {
             print("done terms")
         })
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -75,31 +75,36 @@ class SPInfoViewController: UIViewController {
             _navigationManager.presentAlertNoConnection(context: self)
             return
         }
-
+        
         NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
             SVProgressHUD.show()
             
             self._loginManager.registerMandate(completionHandler: { (response) in
                 SVProgressHUD.dismiss()
-                if let r = response, let slimpayUrl = r.text, r.basicStatus == .ok {
-                    self.log.info(message: "Mandate flow will now start")
-                    DispatchQueue.main.async {
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-                        vc.url = slimpayUrl
-                        self.show(vc, sender: nil)
+                var hasError = true
+                if let r = response, r.basicStatus == .ok {
+                    if r.text != String.empty {
+                        hasError = false
+                        self.log.info(message: "Mandate flow will now start")
+                        DispatchQueue.main.async {
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
+                            vc.url = r.text
+                            self.show(vc, sender: nil)
+                        }
                     }
-                } else {
-                    self.log.warning(message: "Mandate url is empty, what is going on?")
-                    let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                        NavigationManager.shared.loadMainPage()
-                        self.dismiss(animated: true, completion: {})
-                    }))
-                    DispatchQueue.main.async {
-                        self.present(alert, animated: true, completion: {})
+                    
+                    if hasError {
+                        self.log.warning(message: "Mandate url is empty, what is going on?")
+                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                            NavigationManager.shared.loadMainPage()
+                            self.dismiss(animated: true, completion: {})
+                        }))
+                        DispatchQueue.main.async {
+                            self.present(alert, animated: true, completion: {})
+                        }
                     }
+                }})
                 }
-            })
-        }
+            }
     }
-}
