@@ -16,8 +16,7 @@ import UserNotifications
 import Mixpanel
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDonationTurnCreatedDelegate {
-    
+class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UNUserNotificationCenterDelegate, NotificationRecurringDonationTurnCreatedDelegate, NotificationShowFeatureUpdateDelegate {
     
     var window: UIWindow?
     var logService: LogService = LogService.shared
@@ -28,9 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
     var mixpanel: MixpanelInstance = Mixpanel.initialize(token: AppConstants.mixpanelProjectId)
     
     var coreDataContext = CoreDataContext()
-    
-    private var mediater: MediaterWithContextProtocol = Mediater.shared
-
+        
     internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TrustKit.initSharedInstance(withConfiguration: AppConstants.trustKitConfig) //must be called first in order to call the apis
         MSAppCenter.start(AppConstants.appcenterId, withServices:[
@@ -53,17 +50,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         
         NotificationManager.shared.start()
         NotificationManager.shared.delegates.append(self)
-        
+
+        if #available(iOS 10.0, *) {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound,  .sound]) { (granted, error) in
+                UNUserNotificationCenter.current().delegate = self
+            }
+        } else {
+            if let remoteNotif = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
+                DispatchQueue.global(qos: .background).async {
+                    NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
+                }
+            }
+        }
+
         handleOldBeaconList()
         checkIfTempUser()
         doMagicForPresets()
-        
-        if let remoteNotif = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
-            DispatchQueue.global(qos: .background).async {
-                NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
-            }
-        }
-        
+                
         mixpanel.serverURL = "https://api-eu.mixpanel.com"
 
         return true
@@ -76,8 +80,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
                     .first(where: { (child) -> Bool in child is MainNavigationController })?.children
                     .first(where: { (child) -> Bool in child is MainViewController }) else { return }
             
-            try? self.mediater.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController)
-            { }
+            if let prentedViewcontroller = mainViewController.children.first?.presentedViewController {
+                prentedViewcontroller.dismiss(animated: true, completion: nil)
+            }
+
+            try? Mediater.shared.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController) { }
+        }
+    }
+    
+    func onReceiveShowFeatureUpdate(featureId: Int) {
+        DispatchQueue.main.async {
+            guard let window = UIApplication.shared.keyWindow else { return }
+            guard let mainViewController = window.rootViewController?.children
+                    .first(where: { (child) -> Bool in child is MainNavigationController })?.children
+                    .first(where: { (child) -> Bool in child is MainViewController }) else { return }
+            
+            if let prentedViewcontroller = mainViewController.children.first?.presentedViewController {
+                prentedViewcontroller.dismiss(animated: true, completion: nil)
+            }
+            
+            if FeatureManager.shared.highestFeature >= featureId {
+                try? Mediater.shared.sendAsync(request: OpenFeatureByIdRoute(featureId: featureId), withContext: mainViewController) { }
+            } else {
+                try? Mediater.shared.sendAsync(request: ShowUpdateAlert(), withContext: mainViewController) { }
+            }
         }
     }
     
@@ -130,7 +156,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         appService.stop()
-        
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -160,8 +185,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
-        //
         if userActivity.activityType == NSUserActivityTypeBrowsingWeb { //coming from safari
+            GivtManager.shared.externalIntegration = nil
             if let appScheme = GivtManager.shared.externalIntegration?.appScheme {
                 let url = URL(string: appScheme)!
                 if NavigationHelper.openUrl(url: url, completion: nil) {
@@ -169,13 +194,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
                 } else {
                     LogService.shared.warning(message: "\(url) was not installed on the device.")
                 }
-            } else if let url = userActivity.webpageURL{
+            } else if let url = userActivity.webpageURL {
                 if let mediumId = GivtManager.shared.getMediumIdFromGivtLink(link: url.absoluteString) {
                     if mediumId.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumId.prefix(20))) == nil {
                         LogService.shared.warning(message: "Illegal mediumid \"\(mediumId)\" provided. Going to normal give flow")
                     } else {
                         let specialChar = mediumId.substring(21..<22)
-                        if (specialChar == "c"){
+                        if (specialChar == "c") {
                             GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumId, name: "QR", logo: UIImage(named: "qr_scan_phone"))
                         } else {
                             GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumId)
@@ -185,7 +210,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
                     }
                 }
             }
-            GivtManager.shared.externalIntegration = nil
         }
         return true
     }
@@ -207,28 +231,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
                 logService.info(message: "A Givt is being shared via the Safari-flow")
             }
         } else {
-            if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), let queryItems = urlComponents.queryItems {
-                if let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "mediumid" })?.value {
-                    if mediumIdValue.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumIdValue.prefix(20))) == nil {
-                        LogService.shared.warning(message: "Illegal mediumid \"\(mediumIdValue)\" provided. Going to normal give flow")
-                    } else {
-                        if let fromValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "from" })?.value {
-                            if let appId = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "appid" })?.value,
-                                let element = AppConstants.externalApps[appId], let name = element["name"] {
-                                    var image: UIImage? = nil
-                                    if let imageString = element["logo"] {
-                                        image = UIImage(named: imageString)
-                                    }
-                                    GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, name: name, logo: image, appScheme: fromValue)
-                            } else {
-                                GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, appScheme: fromValue)
+            guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
+                  let queryItems = urlComponents.queryItems,
+                  let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "mediumid" })?.value
+            else { return true }
+            if mediumIdValue.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumIdValue.prefix(20))) == nil {
+                LogService.shared.warning(message: "Illegal mediumid \"\(mediumIdValue)\" provided. Going to normal give flow")
+            } else {
+                if let fromValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "from" })?.value {
+                    if let appId = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "appid" })?.value,
+                        let element = AppConstants.externalApps[appId], let name = element["name"] {
+                            var image: UIImage? = nil
+                            if let imageString = element["logo"] {
+                                image = UIImage(named: imageString)
                             }
-                        } else {
-                            GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue)
-                        }
-                        LogService.shared.info(message: "Entering Givt-app with identifier \(mediumIdValue)")
+                            GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, name: name, logo: image, appScheme: fromValue)
+                    } else {
+                        GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, appScheme: fromValue)
                     }
+                } else {
+                    GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue)
                 }
+                LogService.shared.info(message: "Entering Givt-app with identifier \(mediumIdValue)")
             }
         }
         return true
@@ -242,9 +266,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         print("Failed to register: \(error)")
     }
     
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        //background
+        if response.actionIdentifier == UNNotificationDefaultActionIdentifier {
+            let pushNotificationInfo = response.notification.request.content.userInfo
+            DispatchQueue.global(qos: .background).async {
+                NotificationManager.shared.processPushNotification(fetchCompletionHandler: {result in }, pushNotificationInfo: pushNotificationInfo )
+            }
+        }
+    }
+    
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        //foreground
+        let userInfo = notification.request.content.userInfo
+                print(userInfo) // the payload that is attached to the push notification
+                // you can customize the notification presentation options. Below code will show notification banner as well as play a sound. If you want to add a badge too, add .badge in the array.
+                completionHandler([.alert,.sound])
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification pushNotificationInfo: [AnyHashable: Any],
-    fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void ) {
-        NotificationManager.shared.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void ) {
+        //voorgrond
+        
+//        NotificationManager.shared.processPushNotification(fetchCompletionHandler: completionHandler, pushNotificationInfo: pushNotificationInfo)
+    }
+    
+    @available(iOS 13.0, *)
+    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+        return UISceneConfiguration(name: "Default", sessionRole: connectingSceneSession.role)
+    }
+    
+    @available(iOS 13.0, *)
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window = self.window
+        
+        guard let userActivity = connectionOptions.userActivities.first else { return }
+        let _ = application(UIApplication.shared, continue: userActivity) { (_) in }
+    }
+
+    @available(iOS 13.0, *)
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        let _ = application(UIApplication.shared, continue: userActivity) { (_) in }
+    }
+    
+    @available(iOS 13.0, *)
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        let _ = applicationDidBecomeActive(UIApplication.shared)
+    }
+    
+    @available(iOS 13.0, *)
+    func sceneWillResignActive(_ scene: UIScene) {
+        let _ = applicationWillResignActive(UIApplication.shared)
+    }
+    
+    @available(iOS 13.0, *)
+    func sceneDidEnterBackground(_ scene: UIScene) {
+        let _ = applicationDidEnterBackground(UIApplication.shared)
+    }
+    
+    @available(iOS 13.0, *)
+    func sceneWillEnterForeground(_ scene: UIScene) {
+        let _ = applicationWillEnterForeground(UIApplication.shared)
     }
     
     func registerHandlers() {
@@ -285,7 +370,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         //-- INFRA
         Mediater.shared.registerHandler(handler: NoInternetAlertHandler())
         Mediater.shared.registerHandler(handler: GoBackOneControllerRouteHandler())
-        
+        Mediater.shared.registerHandler(handler: OpenFeatureByIdRouteHandler())
+        Mediater.shared.registerHandler(handler: ShowUpdateAlertHandler())
+
         //-- DISCOVER OR AMOUNT: ROUTES
         Mediater.shared.registerHandler(handler: BackToMainViewRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSelectDestinationRouteHandler())
@@ -295,6 +382,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, NotificationRecurringDona
         Mediater.shared.registerHandler(handler: DiscoverOrAmountBackToSelectDestinationRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenChangeAmountLimitRouteHandler())
         Mediater.shared.registerPreProcessor(processor: DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler())
-        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenSuccessRouteHandler())
-    }
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenRecurringSuccessRouteHandler())
+        Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenOfflineSuccessRouteHandler())
+        Mediater.shared.registerHandler(handler: GetAllDonationsQueryHandler())
+        }
 }

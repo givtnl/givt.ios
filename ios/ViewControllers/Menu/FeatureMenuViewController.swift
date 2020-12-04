@@ -11,7 +11,8 @@ import UIKit
 
 class FeatureMenuViewController: BaseMenuViewController {
     private let slideFromRightAnimation = PresentFromRight()
-
+    public var featureId: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navItem.titleView = UIImageView(image: UIImage(named: "givt20h"))

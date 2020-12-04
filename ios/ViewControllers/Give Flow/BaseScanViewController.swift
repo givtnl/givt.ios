@@ -10,10 +10,11 @@ import UIKit
 import SVProgressHUD
 
 class BaseScanViewController: UIViewController, GivtProcessedProtocol {
-   
     private var log = LogService.shared
     var bluetoothAlert: UIAlertController?
     private var isBacs = false
+    
+    private var bluetoothAsked = false
     
     func didUpdateBluetoothState(bluetoothState: BluetoothState) {
         DispatchQueue.main.async {
@@ -38,30 +39,33 @@ class BaseScanViewController: UIViewController, GivtProcessedProtocol {
     }
     
     func showBluetoothMessage(type: BluetoothMessageType = .normal, after: (() -> ())? = nil) {
-        if type == .unauthorized {
-            self.bluetoothAlert = UIAlertController(
-                title: NSLocalizedString("AuthoriseBluetooth", comment: ""),
-                message: NSLocalizedString("AuthoriseBluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("AuthoriseBluetoothExtraText", comment: "") ,
-                preferredStyle: UIAlertController.Style.alert)
-        } else {
-            self.bluetoothAlert = UIAlertController(
-                title: NSLocalizedString("ActivateBluetooth", comment: ""),
-                message: NSLocalizedString("BluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
-                preferredStyle: UIAlertController.Style.alert)
-        }
-        bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("BluetoothErrorMessageAction", comment: ""), style: .cancel, handler: { action in
-            if let after = after {
-                after()
+        if !bluetoothAsked {
+            if type == .unauthorized {
+                self.bluetoothAlert = UIAlertController(
+                    title: NSLocalizedString("AuthoriseBluetooth", comment: ""),
+                    message: NSLocalizedString("AuthoriseBluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("AuthoriseBluetoothExtraText", comment: "") ,
+                    preferredStyle: UIAlertController.Style.alert)
             } else {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-                    self.didUpdateBluetoothState(bluetoothState: GivtManager.shared.getBluetoothState())
-                }
+                self.bluetoothAlert = UIAlertController(
+                    title: NSLocalizedString("ActivateBluetooth", comment: ""),
+                    message: NSLocalizedString("BluetoothErrorMessage" , comment: "") + "\n\n" + NSLocalizedString("ExtraBluetoothText", comment: ""),
+                    preferredStyle: UIAlertController.Style.alert)
             }
-        }))
-        bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("BluetoothErrorMessageCancel", comment: ""), style: .default, handler: { action in
-            self.deniedBluetoothAccess()
-        }))
-        present(self.bluetoothAlert!, animated: true, completion: nil)
+            bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("BluetoothErrorMessageAction", comment: ""), style: .cancel, handler: { action in
+                if let after = after {
+                    after()
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+                        self.didUpdateBluetoothState(bluetoothState: GivtManager.shared.getBluetoothState())
+                    }
+                }
+            }))
+            bluetoothAlert!.addAction(UIAlertAction(title: NSLocalizedString("BluetoothErrorMessageCancel", comment: ""), style: .default, handler: { action in
+                self.deniedBluetoothAccess()
+            }))
+            present(self.bluetoothAlert!, animated: true, completion: nil)
+            bluetoothAsked = true
+        }
     }
     
     fileprivate func popToRootWithDelay() {

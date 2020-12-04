@@ -203,7 +203,6 @@ extension DiscoverOrAmountSelectDestinationViewController {
         if destination.selected {
             //select row that should be selected
             tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-            //            nextButton.isEnabled = true
         }
         return destinationCell
     }
@@ -217,22 +216,30 @@ extension DiscoverOrAmountSelectDestinationViewController {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        //        nextButton.isEnabled = false
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        view.endEditing(true)
+        
+        let deselectRowFunction: (_ path: IndexPath) -> Void = { path in
+            tableView.deselectRow(at: path, animated: false)
+            _ = tableView.delegate!.tableView?(tableView, willDeselectRowAt: path)
+            tableView.delegate!.tableView?(tableView, didDeselectRowAt: path)
+        }
+        
         if let indexPaths = tableView.indexPathsForSelectedRows {
             if (indexPaths.contains { $0 == indexPath }) {
                 // deselect when tapped again
-                tableView.deselectRow(at: indexPath, animated: false)
-                _ = tableView.delegate!.tableView?(tableView, willDeselectRowAt: indexPath)
-                tableView.delegate!.tableView?(tableView, didDeselectRowAt: indexPath)
+                deselectRowFunction(indexPath)
                 return nil //make sure selection doesn't continue
             }
         }
         if ( (tableView.cellForRow(at: indexPath) as! DestinationTableCell).type == CollectGroupType.none) {
+            // deselect previous selected row
+            tableView.indexPathsForSelectedRows?.forEach { selectedIndexPath in
+                deselectRowFunction(selectedIndexPath)
+            }
             // This is the special "report missing organisation item"
-            //            nextButton.isEnabled = false
             try? self.mediater.send(request: GoToAboutViewRoute(), withContext: self)
             return nil
         }

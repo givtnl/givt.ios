@@ -49,6 +49,13 @@ final class NotificationManager : NSObject {
             }
         }
     }
+    func invokeOnReceiveShowFeatureUpdate(featureId: Int) {
+        for delegate in delegates {
+            if let myDelegate = delegate as? NotificationShowFeatureUpdateDelegate {
+                myDelegate.onReceiveShowFeatureUpdate(featureId: featureId)
+            }
+        }
+    }
     func start() -> Void {
         DispatchQueue.main.async {
             self.requestAndUpdateTokenIfNeeded()
@@ -213,6 +220,10 @@ final class NotificationManager : NSObject {
                 if let recurringDonationId = pushNotificationInfo["RecurringDonationId"] as? String {
                     self.invokeOnReceiveRecurringDonationTurnCreated(recurringDonationId: recurringDonationId)
                 }
+            case NotificationType.ShowFeatureUpdate.rawValue:
+                if let featureId = pushNotificationInfo["FeatureId"] as? String {
+                    self.invokeOnReceiveShowFeatureUpdate(featureId: featureId.toInt)
+                }
             default:
                 print("wrong type")
             LogService.shared.error(message: "Pushnotification type not known")
@@ -244,4 +255,8 @@ protocol NotificationReceivedCelebrationDelegate: NotificationManagerDelegate {
 
 protocol NotificationRecurringDonationTurnCreatedDelegate: NotificationManagerDelegate {
     func onReceivedRecurringDonationTurnCreated(recurringDonationId: String)
+}
+
+protocol NotificationShowFeatureUpdateDelegate: NotificationManagerDelegate {
+    func onReceiveShowFeatureUpdate(featureId: Int)
 }
