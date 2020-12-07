@@ -24,7 +24,7 @@ class GetCollectGroupsQueryPreProcessor: RequestPreProcessorProtocol {
     
     fileprivate func loadFromJsonFile() -> BeaconList {
         var jsonFileName = "collectGroupsList"
-        #if DEBUG
+        #if !PRODUCTION
             jsonFileName += "Debug"
         #endif
         
