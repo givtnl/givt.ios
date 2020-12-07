@@ -23,7 +23,12 @@ class GetCollectGroupsQueryPreProcessor: RequestPreProcessorProtocol {
     }
     
     fileprivate func loadFromJsonFile() -> BeaconList {
-        let jsonFilePath = Bundle.main.path(forResource: "collectGroupsList", ofType: "json")!
+        var jsonFileName = "collectGroupsList"
+        #if DEBUG
+            jsonFileName += "Debug"
+        #endif
+        
+        let jsonFilePath = Bundle.main.path(forResource: jsonFileName, ofType: "json")!
         let jsonData = try? String(contentsOfFile: jsonFilePath).data(using: .utf8)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .custom({ (date) -> Date in
