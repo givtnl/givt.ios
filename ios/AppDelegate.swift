@@ -351,6 +351,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         
         // -- COLLECT GROUPS
         Mediater.shared.registerHandler(handler: GetCollectGroupsQueryHandler())
+        Mediater.shared.registerPreProcessor(processor: GetCollectGroupsQueryPreProcessor())
         
         // -- NAVIGATION
         Mediater.shared.registerHandler(handler: BackToMainRouteHandler())
