@@ -125,6 +125,16 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
         
+        if amountView.amount > UserDefaults.standard.amountLimit.decimal {
+            displayAmountHigherThenAmountLimit()
+        } else {
+            makeDonation()
+        }
+    }
+}
+
+extension SetupRecurringDonationChooseRecurringDonationViewController : CollectGroupLabelDelegate {
+    private func makeDonation() {
         if !AppServices.shared.isServerReachable {
             try? mediater.send(request: NoInternetAlert(), withContext: self)
             return
@@ -178,9 +188,6 @@ class SetupRecurringDonationChooseRecurringDonationViewController: UIViewControl
             }
         }
     }
-}
-
-extension SetupRecurringDonationChooseRecurringDonationViewController : CollectGroupLabelDelegate {
     private func showSetupRecurringDonationFailed() {
         DispatchQueue.main.async {
             SVProgressHUD.dismiss()
@@ -500,6 +507,18 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
         toolbar.isUserInteractionEnabled = true
         
         textField.inputAccessoryView = toolbar
+    }
+    fileprivate func displayAmountHigherThenAmountLimit() {
+        let alert = UIAlertController(
+            title: "AmountTooHigh".localized,
+            message: "AmountLimitExceededRecurringDonation".localized,
+            preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "ChooseLowerAmount".localized, style: .default) { action in })
+        alert.addAction(UIAlertAction(title: "Continue".localized, style: .default) { action in
+            self.makeDonation()
+        })
+        self.present(alert, animated: true, completion: nil)
     }
     fileprivate func displayAmountTooHigh() {
         let alert = UIAlertController(
