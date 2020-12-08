@@ -11,10 +11,10 @@ import Foundation
 class GetCollectGroupsQueryPreProcessor: RequestPreProcessorProtocol {
     func handle<R>(request: R, completion: @escaping (R) throws -> Void) throws where R : RequestProtocol {
         
-        if GivtManager.shared.orgBeaconList == nil {
+//        if GivtManager.shared.orgBeaconList == nil {
             // setting this because orgBeaconList in the GivtManager is a read only
             UserDefaults.standard.orgBeaconListV2 = loadFromJsonFile()
-        }
+//        }
         try completion(request)
     }
     
