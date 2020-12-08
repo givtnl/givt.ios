@@ -123,9 +123,20 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
     
     @IBAction func makeRecurringDonation(_ sender: Any) {
         self.view.endEditing(true)
+        
+        if amountView.amount > UserDefaults.standard.amountLimit.decimal {
+            displayAmountHigherThenAmountLimit()
+        } else {
+            makeDonation()
+        }
+        
         MSAnalytics.trackEvent("RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
         Mixpanel.mainInstance().track(event: "RECURRING_DONATIONS_CREATION_GIVE_CLICKED")
-        
+    }
+}
+
+extension DiscoverOrAmountSetupRecurringDonationViewController {
+    private func makeDonation() {
         if !AppServices.shared.isServerReachable {
             try? mediater.send(request: NoInternetAlert(), withContext: self)
             return
@@ -178,10 +189,8 @@ class DiscoverOrAmountSetupRecurringDonationViewController: UIViewController, UI
                 }
             }
         }
+        
     }
-}
-
-extension DiscoverOrAmountSetupRecurringDonationViewController {
     private func showSetupRecurringDonationFailed() {
         DispatchQueue.main.async {
             SVProgressHUD.dismiss()
@@ -509,6 +518,18 @@ extension DiscoverOrAmountSetupRecurringDonationViewController {
             preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "ChooseLowerAmount".localized, style: .default) { action in })
+        self.present(alert, animated: true, completion: nil)
+    }
+    fileprivate func displayAmountHigherThenAmountLimit() {
+        let alert = UIAlertController(
+            title: "AmountTooHigh".localized,
+            message: "AmountLimitExceededRecurringDonation".localized,
+            preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "ChooseLowerAmount".localized, style: .default) { action in })
+        alert.addAction(UIAlertAction(title: "Continue".localized, style: .default) { action in
+            self.makeDonation()
+        })
         self.present(alert, animated: true, completion: nil)
     }
     
