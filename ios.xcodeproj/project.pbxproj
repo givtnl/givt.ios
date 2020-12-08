@@ -83,7 +83,6 @@
 		32A67F7C25139483007EC7EF /* GetCountryQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7B25139483007EC7EF /* GetCountryQueryHandler.swift */; };
 		32A67F7E25139A7F007EC7EF /* GetCountryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7D25139A7F007EC7EF /* GetCountryError.swift */; };
 		32A67F80251497F7007EC7EF /* RecurringDonationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7F251497F7007EC7EF /* RecurringDonationError.swift */; };
-		32AD4859257FC09600E410F0 /* appcenter-pre-build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 32AD4858257FC09600E410F0 /* appcenter-pre-build.sh */; };
 		32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */; };
 		32C2D8222522087000832444 /* DecimalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C2D8212522087000832444 /* DecimalExtension.swift */; };
 		32C2D83125221D6B00832444 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C2D83025221D6B00832444 /* IntExtension.swift */; };
@@ -450,7 +449,6 @@
 		32A67F7B25139483007EC7EF /* GetCountryQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryQueryHandler.swift; sourceTree = "<group>"; };
 		32A67F7D25139A7F007EC7EF /* GetCountryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryError.swift; sourceTree = "<group>"; };
 		32A67F7F251497F7007EC7EF /* RecurringDonationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationError.swift; sourceTree = "<group>"; };
-		32AD4858257FC09600E410F0 /* appcenter-pre-build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "appcenter-pre-build.sh"; sourceTree = "<group>"; };
 		32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		32C2D8212522087000832444 /* DecimalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtension.swift; sourceTree = "<group>"; };
 		32C2D83025221D6B00832444 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
@@ -1753,7 +1751,6 @@
 		FB3CE6CA1F14CA1F0055185B = {
 			isa = PBXGroup;
 			children = (
-				32AD4858257FC09600E410F0 /* appcenter-pre-build.sh */,
 				FB3CE6D51F14CA200055185B /* ios */,
 				FB3CE6D41F14CA200055185B /* Products */,
 				FB07A9651F14D9F300FD9C1A /* Frameworks */,
@@ -2158,6 +2155,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB3CE6E91F14CA200055185B /* Build configuration list for PBXNativeTarget "ios" */;
 			buildPhases = (
+				322400CD257E8C28007FB046 /* ShellScript */,
 				18302013F794B31C0E20167F /* [CP] Check Pods Manifest.lock */,
 				FB3CE6CF1F14CA200055185B /* Sources */,
 				FB3CE6D01F14CA200055185B /* Frameworks */,
@@ -2248,7 +2246,6 @@
 				DFBF338D2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				FB94D1CC24EBD88800C61ECE /* CollectGroupLabel.xib in Resources */,
 				DF76414E2539824C00A42109 /* InfoViewRecurringRuleOverview.xib in Resources */,
-				32AD4859257FC09600E410F0 /* appcenter-pre-build.sh in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
 				DF76413E253839C700A42109 /* TableSectionHeaderRecurringRuleOverviewView.xib in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
@@ -2307,6 +2304,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		322400CD257E8C28007FB046 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "curl -H \"Accept: application/json\" https://givt-debug-api.azurewebsites.net/api/v2/collectgroups/applist > ios/collectGroupsListDebug.json\ncurl -H \"Accept: application/json\" https://api.givtapp.net/api/v2/collectgroups/applist > ios/collectGroupsList.json\n";
 		};
 		B31A8402412C0DD81B9F1453 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
