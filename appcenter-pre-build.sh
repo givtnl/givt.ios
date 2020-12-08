@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 if [ "$APPCENTER_BRANCH" == "master" ];
     then
         curl -H "Accept: application/json" https://api.givtapp.net/api/v2/collectgroups/applist > ios/collectGroupsList.json
