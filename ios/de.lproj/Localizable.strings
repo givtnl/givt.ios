@@ -996,7 +996,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "DiscoverSearchButton" = "Suchen";
 "DiscoverDiscoverButton" = "Alles sehen";
 "DiscoverSegmentNow" = "Gib";
-"DiscoverSegmentWho" = "Entdecken"; 
+"DiscoverSegmentWho" = "Entdecken";
 "DiscoverHomeDiscoverTitle" = "Kategorie wählen";
 "DiscoverOrAmountActionSheetOnce" = "Einmalige Spende";
 "DiscoverOrAmountActionSheetRecurring" = "Wiederkehrende Spende";
@@ -1005,3 +1005,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "ReccurringGivtIsBeingProcessed" = "Danke für deine wiederkehrende Spende an {0}!\nUm alle Informationen dazu anzuzeigen, gehen Sie zur Menüoption 'Wiederkehrende Spenden'.";
 "SetupRecurringGiftText_placeholderDate" = "tt / mm / jj";
 "SetupRecurringGiftText_placeholderTimes" = "x";
+"AmountLimitExceededRecurringDonation" = "This amount is higher than your chosen maximum amount. Do you want to continue or lower the amount?";
