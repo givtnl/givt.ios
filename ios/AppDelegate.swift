@@ -52,10 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         NotificationManager.shared.delegates.append(self)
 
         if #available(iOS 10.0, *) {
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options: [.alert, .sound,  .sound]) { (granted, error) in
-                UNUserNotificationCenter.current().delegate = self
-            }
+            UNUserNotificationCenter.current().delegate = self
         } else {
             if let remoteNotif = launchOptions?[UIApplication.LaunchOptionsKey.remoteNotification], let pushNotificationInfo = remoteNotif as? [AnyHashable : Any] {
                 DispatchQueue.global(qos: .background).async {
