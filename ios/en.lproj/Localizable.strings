@@ -102,7 +102,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "LocationEnabledMessage" = "Please enable your location with high accuracy to give with Givt. (After your donation you can disable it again.)";
 "ChangeGivingLimit" = "Adjust maximum amount";
 "SomethingWentWrong2" = "Something went wrong.";
-"ChooseLowerAmount" = "Choose a lower amount";
+"ChooseLowerAmount" = "Change the amount";
 "TurnOnBluetooth" = "Switch on Bluetooth";
 "ErrorTLDCheck" = "Sorry, you can’t register with this e-mail address. Could you check for any typos?";
 "AddCollectConfirm" = "Do you want to add a second collection?";
@@ -943,7 +943,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 /*Fuzzy*/
 "FAQAnswerFirstTargetThenAmount1" = "\"Give to a good cause\" is a new functionality in your Givt-app. It works exactly as you are used with us, but now you first choose the good cause and then the amount. Handy!";
 "FAQQuestionFirstTargetThenAmount2" = "Why can I only choose a good cause from the list?";
-"FAQAnswerFirstTargetThenAmount2" = "\"Giving to a good cause\" is brand new and still under construction. New functionalities are continuous being added in time."; 
+"FAQAnswerFirstTargetThenAmount2" = "\"Giving to a good cause\" is brand new and still under construction. New functionalities are continuous being added in time.";
 "SetupRecurringGiftText_2" = "to";
 "SetupRecurringGiftText_1" = "I want to give every";
 "SetupRecurringGiftWeek" = "week";
@@ -1032,3 +1032,5 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "ReccurringGivtIsBeingProcessed" = "Thank you for your recurring donation to {0}!\nTo see all the information, go to the menu-option 'recurring donations'.";
 "SetupRecurringGiftText_placeholderDate" = "dd / mm / yy";
 "SetupRecurringGiftText_placeholderTimes" = "x";
+"AmountLimitExceededRecurringDonation" = "This amount is higher than your chosen maximum amount. Do you want to continue or change the amount?";
+"AppStoreRestart" = "";

@@ -91,7 +91,6 @@ final class NotificationManager : NSObject {
                 completion(NotificationAuthorization(rawValue: settings.authorizationStatus.rawValue)!)
             }
         } else {
-            
             let notificationDisabled = UIApplication.shared.currentUserNotificationSettings?.types.isEmpty
             if let notificationDisabled = notificationDisabled, !notificationDisabled {
                 completion(NotificationAuthorization.authorized)
@@ -216,7 +215,7 @@ final class NotificationManager : NSObject {
             case NotificationType.ProcessCachedGivts.rawValue:
                 print("process cached givts action")
                 GivtManager.shared.processCachedGivts()
-            case NotificationType.RecurringDonationTurnCreated.rawValue:
+            case NotificationType.RecurringDonationTurnCreated.rawValue, NotificationType.RecurringDonationAboutToExpire.rawValue:
                 if let recurringDonationId = pushNotificationInfo["RecurringDonationId"] as? String {
                     self.invokeOnReceiveRecurringDonationTurnCreated(recurringDonationId: recurringDonationId)
                 }
