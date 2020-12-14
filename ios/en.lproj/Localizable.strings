@@ -102,7 +102,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "LocationEnabledMessage" = "Please enable your location with high accuracy to give with Givt. (After your donation you can disable it again.)";
 "ChangeGivingLimit" = "Adjust maximum amount";
 "SomethingWentWrong2" = "Something went wrong.";
-"ChooseLowerAmount" = "Choose a lower amount";
+"ChooseLowerAmount" = "Change the amount";
 "TurnOnBluetooth" = "Switch on Bluetooth";
 "ErrorTLDCheck" = "Sorry, you can’t register with this e-mail address. Could you check for any typos?";
 "AddCollectConfirm" = "Do you want to add a second collection?";
