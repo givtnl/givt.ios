@@ -1005,5 +1005,5 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "ReccurringGivtIsBeingProcessed" = "Danke für deine wiederkehrende Spende an {0}!\nUm alle Informationen dazu anzuzeigen, gehen Sie zur Menüoption 'Wiederkehrende Spenden'.";
 "SetupRecurringGiftText_placeholderDate" = "tt / mm / jj";
 "SetupRecurringGiftText_placeholderTimes" = "x";
-"AmountLimitExceededRecurringDonation" = "This amount is higher than your chosen maximum amount. Do you want to continue or change the amount?";
+"AmountLimitExceededRecurringDonation" = "Dieser Betrag ist höher als der von Ihnen gewählte Höchstbetrag. Möchten Sie fortfahren oder den Betrag ändern?";
 "AppStoreRestart" = "";
