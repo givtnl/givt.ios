@@ -510,7 +510,7 @@ extension SetupRecurringDonationChooseRecurringDonationViewController : CollectG
     }
     fileprivate func displayAmountHigherThenAmountLimit() {
         let alert = UIAlertController(
-            title: "AmountTooHigh".localized,
+            title: nil,
             message: "AmountLimitExceededRecurringDonation".localized,
             preferredStyle: UIAlertController.Style.alert)
         
