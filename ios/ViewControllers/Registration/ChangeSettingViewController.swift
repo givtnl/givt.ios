@@ -76,11 +76,8 @@ class ChangeSettingViewController: UIViewController, UITextFieldDelegate {
             imgView2.isHidden = false
             inputFieldToEdit2.isHidden = false
             inputFieldToEdit2.text = inputOfInput2
-            if(UserDefaults.standard.mandateSigned) {
-                inputFieldToEdit.disable()
-                inputFieldToEdit2.disable()
-                saveBtn.isEnabled = false
-            }
+           
+            saveBtn.isEnabled = false
 
         }
         
