@@ -331,31 +331,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
     
     @available(iOS 13.0, *)
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        for context in URLContexts {
-            guard let urlComponents = URLComponents(url: context.url, resolvingAgainstBaseURL: false),
-                  let queryItems = urlComponents.queryItems,
-                  let mediumIdValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "mediumid" })?.value
-            else { return }
-            
-            if mediumIdValue.count < 20 || GivtManager.shared.getOrganisationName(organisationNameSpace: String(mediumIdValue.prefix(20))) == nil {
-                LogService.shared.warning(message: "Illegal mediumid \"\(mediumIdValue)\" provided. Going to normal give flow")
-            } else {
-                if let fromValue = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "from" })?.value {
-                    if let appId = queryItems.first(where: { (item) -> Bool in item.name.lowercased() == "appid" })?.value,
-                       let element = AppConstants.externalApps[appId], let name = element["name"] {
-                        var image: UIImage? = nil
-                        if let imageString = element["logo"] {
-                            image = UIImage(named: imageString)
-                        }
-                        GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, name: name, logo: image, appScheme: fromValue)
-                    } else {
-                        GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue, appScheme: fromValue)
-                    }
-                } else {
-                    GivtManager.shared.externalIntegration = ExternalAppIntegration(mediumId: mediumIdValue)
-                }
-                LogService.shared.info(message: "Entering Givt-app with identifier \(mediumIdValue)")
-            }
+        if let urlContext = URLContexts.first {
+            let _ = application(UIApplication.shared, open: urlContext.url)
         }
     }
     
