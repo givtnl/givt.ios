@@ -83,18 +83,17 @@ class SPInfoViewController: UIViewController {
                 SVProgressHUD.dismiss()
                 var hasError = true
                 if let r = response, r.basicStatus == .ok {
-                    if r.text != String.empty {
+                    
+                    if (r.basicStatus == .ok) {
                         hasError = false
                         self.log.info(message: "Mandate flow will now start")
                         DispatchQueue.main.async {
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-                            vc.url = r.text
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
                             self.show(vc, sender: nil)
                         }
                     }
-                    
+                        
                     if hasError {
-                        self.log.warning(message: "Mandate url is empty, what is going on?")
                         let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
                             NavigationManager.shared.loadMainPage()
