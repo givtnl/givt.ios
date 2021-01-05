@@ -38,6 +38,9 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
         
     @IBOutlet weak var btnNext: CustomButton!
     @IBOutlet weak var tblPersonalData: UITableView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblMandateDisclaimer: UILabel!
+    @IBOutlet weak var lblCheckInformation: UILabel!
     
     private var settings: [PersonalSetting] = []
     
@@ -51,13 +54,17 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        btnNext.setTitle(NSLocalizedString("Next", comment: ""), for: .normal)
                 
         tblPersonalData.delegate = self
         tblPersonalData.dataSource = self
         tblPersonalData.allowsSelection = false
         tblPersonalData.isScrollEnabled = false
         tblPersonalData.separatorStyle = .none
+        
+        btnNext.setTitle(NSLocalizedString("SignMandate", comment: ""), for: .normal)
+        lblTitle.text = NSLocalizedString("BacsVerifyTitle", comment: "");
+        lblMandateDisclaimer.text = NSLocalizedString("SignMandateDisclaimer", comment: "");
+        lblCheckInformation.text = NSLocalizedString("SepaVerifyBody", comment: "");
     }
     
     override func viewWillAppear(_ animated: Bool) {
