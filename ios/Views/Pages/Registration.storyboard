@@ -1332,6 +1332,9 @@ Veel geefplezier!</string>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="btnNext" destination="vmc-1F-Ps4" id="aBE-kE-HU1"/>
+                        <outlet property="lblCheckInformation" destination="ur3-VF-lq4" id="ocX-h1-Dgv"/>
+                        <outlet property="lblMandateDisclaimer" destination="Nzt-0y-NtN" id="ahL-Se-F30"/>
+                        <outlet property="lblTitle" destination="AAN-f5-nML" id="NZX-xK-HYR"/>
                         <outlet property="tblPersonalData" destination="SR4-d5-b48" id="4m7-B8-Pz0"/>
                     </connections>
                 </viewController>
