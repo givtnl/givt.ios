@@ -1007,3 +1007,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SetupRecurringGiftText_placeholderTimes" = "x";
 "AmountLimitExceededRecurringDonation" = "Dieser Betrag ist höher als der von Ihnen gewählte Höchstbetrag. Möchten Sie fortfahren oder den Betrag ändern?";
 "AppStoreRestart" = "";
+"SepaVerifyBodyDetails" = "Name: {0}\nAdresse 1}\nE-Mail-Adresse: {2}\nIBAN: {3}\nWir verwenden das eMandate nur, wenn Sie mit der Givt-App spenden";
+"SepaVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'";
+"SignMandate" = "Sign mandate";
+"SignMandateDisclaimer" = "By continuing you sign the eMandate with above details.\nThe mandate will be sent to you via mail.";
