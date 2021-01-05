@@ -106,6 +106,7 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
                     var frame = self.tblPersonalData.frame;
                     frame.size.height = self.tblPersonalData.contentSize.height;
                     self.tblPersonalData.frame = frame;
+                    self.tblPersonalData.layoutIfNeeded()
                 }
             }
         }
