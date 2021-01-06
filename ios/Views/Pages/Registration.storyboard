@@ -1232,7 +1232,7 @@ Veel geefplezier!</string>
                                     <action selector="SignMandate:" destination="hyG-eg-FHu" eventType="touchUpInside" id="Fso-eQ-6Ft"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SR4-d5-b48">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SR4-d5-b48">
                                 <rect key="frame" x="20" y="107.33333333333331" width="374" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -1318,6 +1318,7 @@ Veel geefplezier!</string>
                         <constraints>
                             <constraint firstItem="vmc-1F-Ps4" firstAttribute="leading" secondItem="cNG-4D-qVU" secondAttribute="leading" constant="20" id="0ld-F7-GvS"/>
                             <constraint firstItem="cNG-4D-qVU" firstAttribute="trailing" secondItem="ur3-VF-lq4" secondAttribute="trailing" constant="20" id="1q5-B4-O6Z"/>
+                            <constraint firstItem="Nzt-0y-NtN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ur3-VF-lq4" secondAttribute="bottom" id="ASc-Wv-nGz"/>
                             <constraint firstItem="cNG-4D-qVU" firstAttribute="trailing" secondItem="vmc-1F-Ps4" secondAttribute="trailing" constant="20" id="CbE-NH-Vuc"/>
                             <constraint firstItem="vmc-1F-Ps4" firstAttribute="top" secondItem="Nzt-0y-NtN" secondAttribute="bottom" constant="20" id="F52-k1-ZIy"/>
                             <constraint firstItem="ur3-VF-lq4" firstAttribute="top" secondItem="SR4-d5-b48" secondAttribute="bottom" constant="20" id="F5g-hE-ehS"/>

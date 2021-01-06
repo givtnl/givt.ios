@@ -58,7 +58,6 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
         tblPersonalData.delegate = self
         tblPersonalData.dataSource = self
         tblPersonalData.allowsSelection = false
-        tblPersonalData.isScrollEnabled = false
         tblPersonalData.separatorStyle = .none
         
         btnNext.setTitle(NSLocalizedString("SignMandate", comment: ""), for: .normal)
