@@ -123,7 +123,7 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
             self._loginManager.registerMandate(completionHandler: { (response) in
                 SVProgressHUD.dismiss()
                 var hasError = true
-                if let r = response, r.basicStatus == .ok {
+                if let r = response {
                     
                     if (r.basicStatus == .ok) {
                         hasError = false
@@ -140,6 +140,10 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
                             NavigationManager.shared.loadMainPage()
                             self.dismiss(animated: true, completion: {})
                         }))
+                        if (r.statusCode == 400) {
+                            alert.message = NSLocalizedString("MandateFailPersonalInformation", comment: "")
+                            alert.title = nil
+                        }
                         DispatchQueue.main.async {
                             self.present(alert, animated: true, completion: {})
                         }
