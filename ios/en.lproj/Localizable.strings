@@ -188,7 +188,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AfterCelebrationTitle" = "And now... wave!";
 "AfterCelebrationMessage" = "Now is the time, wave away! \n(We're not responsible for any elbow bumps that might occur.)";
 "ErrorContactGivt" = "An error has occurred, please contact us at support@givtapp.net .";
-"MandateFailPersonalInformation" = "It seems there is something wrong with Your IBAN and/or phone number seem to be incorrect. Please change your personal information via the menu or contact us at support@givtapp.net to solve this issue.";
+"MandateFailPersonalInformation" = "It seems there is something wrong with the information you filled in. Could you please check in the menu, under 'Personal information'? You can change the information there as well, if necessary.";
 "MandateSMSCode" = "We'll send a text message to {0}. The mandate will be signed on behalf of {1}. Correct? Proceed to the next step.";
 "MandateSigningCode" = "If all goes well, you'll receive a text message. Fill in the code below to sign your mandate.";
 "ReadCode" = "Your code:";
