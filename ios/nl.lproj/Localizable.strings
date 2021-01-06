@@ -188,7 +188,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AfterCelebrationTitle" = "Zwaaien maar!";
 "AfterCelebrationMessage" = "Het is zover, zwaai er op los! \n(We zijn niet verantwoordelijk voor eventuele elleboogstoten.)";
 "ErrorContactGivt" = "Er is een fout opgetreden, gelieve contact op te nemen met support@givtapp.net .";
-"MandateFailPersonalInformation" = "Er lijkt iets mis te zijn met je ingevulde gegevens. Controleer je even in het menu, onder 'Mijn gegevens'? Daar kun je ook een eventuele aanpassing doen.";
+"MandateFailPersonalInformation" = "Er lijkt iets mis te zijn met je ingevulde gegevens. Controleer je even in het menu, onder 'Mijn gegevens'? Daar kun je je gegevens ook aanpassen.";
 "MandateSMSCode" = "We sturen een sms-code naar {0}. Het mandaat wordt aangevraagd op naam van {1}. Correct? Ga dan gerust verder.";
 "MandateSigningCode" = "Als het goed is, krijg je zometeen een code. Vul die hieronder in om de machtiging te ondertekenen.";
 "ReadCode" = "Jouw code:";
