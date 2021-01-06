@@ -140,8 +140,8 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
                             self.dismiss(animated: true, completion: {})
                         }))
                         if (r.statusCode == 400) {
+                            alert.title = NSLocalizedString("RequestFailed", comment: "")
                             alert.message = NSLocalizedString("MandateFailPersonalInformation", comment: "")
-                            alert.title = nil
                         }
                         DispatchQueue.main.async {
                             self.present(alert, animated: true, completion: {})
