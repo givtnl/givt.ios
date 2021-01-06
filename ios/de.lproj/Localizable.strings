@@ -198,7 +198,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*here: occurred is misspelled, an r is missing*/
 "ErrorContactGivt" = "Ein Fehler ist aufgetreten, bitte kontaktiere uns unter support@givtapp.net ";
-"MandateFailPersonalInformation" = "Deine IBAN und/oder Telefonnummer scheint falsch zu sein. Bitte ändere Deine persönlichen Daten über das Menü oder kontaktiere uns unter support@givtapp.net, um dieses Problem zu lösen.";
+"MandateFailPersonalInformation" = "Anscheinend stimmt etwas mit den von Ihnen eingegebenen Informationen nicht. Könnten Sie bitte im Menü unter \"Persönliche Informationen\" nachsehen? Bei Bedarf können Sie dort auch die Informationen ändern.";
 "MandateSMSCode" = "Wir senden eine SMS an {0}. Das Mandat wird im Namen von {1} unterzeichnet. Ist das korrekt so? Fahre mit dem nächsten Schritt fort.";
 "MandateSigningCode" = "Wenn alles gut geht, erhältst du eine SMS. Bitte trage den untenstehenden Code ein, um Dein Mandat zu unterzeichnen.";
 "ReadCode" = "Dein Code:";
