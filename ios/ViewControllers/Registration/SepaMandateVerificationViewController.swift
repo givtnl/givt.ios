@@ -126,11 +126,12 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
                     
                     if (r.basicStatus == .ok) {
                         hasError = false
-                        self.log.info(message: "Mandate flow will now start")
-                        DispatchQueue.main.async {
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
-                            self.show(vc, sender: nil)
-                        }
+                        self._loginManager.checkMandate(completionHandler: { status in
+                            DispatchQueue.main.async {
+                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "FinalRegistrationViewController") as! FinalRegistrationViewController
+                                self.show(vc, sender: nil)
+                            }
+                        })
                     }
                     
                     if hasError {
