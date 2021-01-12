@@ -188,7 +188,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AfterCelebrationTitle" = "Zwaaien maar!";
 "AfterCelebrationMessage" = "Het is zover, zwaai er op los! \n(We zijn niet verantwoordelijk voor eventuele elleboogstoten.)";
 "ErrorContactGivt" = "Er is een fout opgetreden, gelieve contact op te nemen met support@givtapp.net .";
-"MandateFailPersonalInformation" = "Je IBAN en/of telefoonnummer blijkt niet goed ingevuld te zijn. Wijzig je gegevens via het menu of neem even contact op via support@givtapp.net om dit akkefietje op te lossen.";
+"MandateFailPersonalInformation" = "Er lijkt iets mis te zijn met je ingevulde gegevens. Controleer je even in het menu, onder 'Mijn gegevens'? Daar kun je je gegevens ook aanpassen.";
 "MandateSMSCode" = "We sturen een sms-code naar {0}. Het mandaat wordt aangevraagd op naam van {1}. Correct? Ga dan gerust verder.";
 "MandateSigningCode" = "Als het goed is, krijg je zometeen een code. Vul die hieronder in om de machtiging te ondertekenen.";
 "ReadCode" = "Jouw code:";
@@ -1040,3 +1040,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SetupRecurringGiftText_placeholderTimes" = "x";
 "AmountLimitExceededRecurringDonation" = "Hé gulle gever, dit bedrag is hoger dan je geeflimiet. Wil je toch doorgaan of wil je je gift aanpassen?";
 "AppStoreRestart" = "";
+"SepaVerifyBodyDetails" = "Naam: {0}\nAdres: {1}\nEmail adres: {2}\nIBAN: {3} \nWe gebruiken de machtiging enkel wanneer je de Givt-app gebruikt om te geven";
+"SepaVerifyBody" = "Zijn deze gegevens correct? Zo niet, annuleer de registratie en verander je persoonlijke gegevens.";
+"SignMandate" = "Teken machtiging";
+"SignMandateDisclaimer" = "Bij doorgaan wordt een machtiging getekend met bovenstaande gegevens. Deze zal verstuurd worden via mail.";

@@ -188,7 +188,7 @@ met Givt, wordt er geÃ¯ncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AfterCelebrationTitle" = "And now... wave!";
 "AfterCelebrationMessage" = "Now is the time, wave away! \n(We're not responsible for any elbow bumps that might occur.)";
 "ErrorContactGivt" = "An error has occurred, please contact us at support@givtapp.net .";
-"MandateFailPersonalInformation" = "Your IBAN and/or phone number seem to be incorrect. Please change your personal information via the menu or contact us at support@givtapp.net to solve this issue.";
+"MandateFailPersonalInformation" = "It seems there is something wrong with the information you filled in. Could you please check in the menu, under 'Personal information'? You can change the information there as well, if necessary.";
 "MandateSMSCode" = "We'll send a text message to {0}. The mandate will be signed on behalf of {1}. Correct? Proceed to the next step.";
 "MandateSigningCode" = "If all goes well, you'll receive a text message. Fill in the code below to sign your mandate.";
 "ReadCode" = "Your code:";
@@ -654,7 +654,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "GivtNotEnough" = "Sorry, but the minimum amount we can work with is {0}.";
 
 /*SlimPay informatie onder het Givy icoon*/
-"SlimPayInformationPart2" = "That's why we ask you this one time to sign the SlimPay eMandate.\n\nSince we're working with mandates, you have the option to revoke your donation if you should wish to do so.";
+"SlimPayInformationPart2" = "That's why we ask you this one time to sign a SEPA eMandate.\n\nSince we're working with mandates, you have the option to revoke your donation if you should wish to do so.";
 
 /*Title van de pagina "Account opzeggen"*/
 "Unregister" = "Terminate account";
@@ -1034,3 +1034,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "SetupRecurringGiftText_placeholderTimes" = "x";
 "AmountLimitExceededRecurringDonation" = "This amount is higher than your chosen maximum amount. Do you want to continue or change the amount?";
 "AppStoreRestart" = "";
+"SepaVerifyBodyDetails" = "Name: {0}\nAddress: {1}\nE-mail address: {2}\nIBAN: {3}\nWe only use the eMandate when you use the Givt app to make a donation";
+"SepaVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'";
+"SignMandate" = "Sign mandate";
+"SignMandateDisclaimer" = "By continuing you sign the eMandate with above details.\nThe mandate will be sent to you via mail.";
