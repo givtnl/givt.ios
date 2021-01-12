@@ -329,6 +329,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         let _ = applicationWillEnterForeground(UIApplication.shared)
     }
     
+    @available(iOS 13.0, *)
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        if let urlContext = URLContexts.first {
+            let _ = application(UIApplication.shared, open: urlContext.url)
+        }
+    }
+    
     func registerHandlers() {
         // -- DONATIONS
         Mediater.shared.registerHandler(handler: CreateDonationCommandHandler())

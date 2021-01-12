@@ -106,6 +106,7 @@
 		A478D1D62512387400251AFE /* GoToPushNotificationViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D52512387400251AFE /* GoToPushNotificationViewRouteHandler.swift */; };
 		A478D1D92512C3AE00251AFE /* DismissPushNotificationViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D82512C3AE00251AFE /* DismissPushNotificationViewRoute.swift */; };
 		A478D1DB2512C3BA00251AFE /* DismissPushNotificationViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1DA2512C3BA00251AFE /* DismissPushNotificationViewRouteHandler.swift */; };
+		A4BA1AD925A3505700B2F6C2 /* SepaMandateVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BA1AD825A3505700B2F6C2 /* SepaMandateVerificationViewController.swift */; };
 		A4DE8940220C76F500379CFD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DE893F220C76F500379CFD /* NotificationManager.swift */; };
 		D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */; };
 		D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71DA04D20F758DD0084381E /* ExternalIntegration.swift */; };
@@ -475,6 +476,7 @@
 		A478D1D52512387400251AFE /* GoToPushNotificationViewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoToPushNotificationViewRouteHandler.swift; sourceTree = "<group>"; };
 		A478D1D82512C3AE00251AFE /* DismissPushNotificationViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPushNotificationViewRoute.swift; sourceTree = "<group>"; };
 		A478D1DA2512C3BA00251AFE /* DismissPushNotificationViewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissPushNotificationViewRouteHandler.swift; sourceTree = "<group>"; };
+		A4BA1AD825A3505700B2F6C2 /* SepaMandateVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SepaMandateVerificationViewController.swift; sourceTree = "<group>"; };
 		A4DE893F220C76F500379CFD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		D70F82D31F67E8E5001CEC90 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		D71DA04D20F758DD0084381E /* ExternalIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalIntegration.swift; sourceTree = "<group>"; };
@@ -1497,6 +1499,7 @@
 				D782F3071F7D8CFB00348D7A /* FinalRegistrationViewController.swift */,
 				D7D9C31920D9453F000D93C5 /* ChangeSettingViewController.swift */,
 				32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */,
+				A4BA1AD825A3505700B2F6C2 /* SepaMandateVerificationViewController.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -2589,6 +2592,7 @@
 				D761E9BA1F18C5C6002B849B /* StringExtensions.swift in Sources */,
 				D7AE8BA02136980600CB3A33 /* BacsSettingUpViewController.swift in Sources */,
 				FB87303524C88AF8005FF355 /* FinalizeGivingRoute.swift in Sources */,
+				A4BA1AD925A3505700B2F6C2 /* SepaMandateVerificationViewController.swift in Sources */,
 				32CA179F24CECBFC00248053 /* SetupRecurringDonationNavigationController.swift in Sources */,
 				D78D44B21FC6FCD700325CAF /* FAQViewController.swift in Sources */,
 				D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */,

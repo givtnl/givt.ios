@@ -71,40 +71,9 @@ class SPInfoViewController: UIViewController {
     }
     
     @IBAction func next(_ sender: Any) {
-        if !_appServices.isServerReachable {
-            _navigationManager.presentAlertNoConnection(context: self)
-            return
-        }
         
-        NavigationManager.shared.reAuthenticateIfNeeded(context: self) {
-            SVProgressHUD.show()
-            
-            self._loginManager.registerMandate(completionHandler: { (response) in
-                SVProgressHUD.dismiss()
-                var hasError = true
-                if let r = response, r.basicStatus == .ok {
-                    if r.text != String.empty {
-                        hasError = false
-                        self.log.info(message: "Mandate flow will now start")
-                        DispatchQueue.main.async {
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SPWebViewController") as! SPWebViewController
-                            vc.url = r.text
-                            self.show(vc, sender: nil)
-                        }
-                    }
-                    
-                    if hasError {
-                        self.log.warning(message: "Mandate url is empty, what is going on?")
-                        let alert = UIAlertController(title: NSLocalizedString("RequestFailed", comment: ""), message: NSLocalizedString("RequestMandateFailed", comment: ""), preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-                            NavigationManager.shared.loadMainPage()
-                            self.dismiss(animated: true, completion: {})
-                        }))
-                        DispatchQueue.main.async {
-                            self.present(alert, animated: true, completion: {})
-                        }
-                    }
-                }})
-                }
-            }
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SepaMandateVerificationViewController") as! SepaMandateVerificationViewController
+        self.show(vc, sender: nil)
+        
     }
+}

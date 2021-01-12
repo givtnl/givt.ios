@@ -198,7 +198,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 
 /*here: occurred is misspelled, an r is missing*/
 "ErrorContactGivt" = "Ein Fehler ist aufgetreten, bitte kontaktiere uns unter support@givtapp.net ";
-"MandateFailPersonalInformation" = "Deine IBAN und/oder Telefonnummer scheint falsch zu sein. Bitte ändere Deine persönlichen Daten über das Menü oder kontaktiere uns unter support@givtapp.net, um dieses Problem zu lösen.";
+"MandateFailPersonalInformation" = "Anscheinend stimmt etwas mit den von Ihnen eingegebenen Informationen nicht. Könnten Sie bitte im Menü unter \"Persönliche Informationen\" nachsehen? Bei Bedarf können Sie dort auch die Informationen ändern.";
 "MandateSMSCode" = "Wir senden eine SMS an {0}. Das Mandat wird im Namen von {1} unterzeichnet. Ist das korrekt so? Fahre mit dem nächsten Schritt fort.";
 "MandateSigningCode" = "Wenn alles gut geht, erhältst du eine SMS. Bitte trage den untenstehenden Code ein, um Dein Mandat zu unterzeichnen.";
 "ReadCode" = "Dein Code:";
@@ -1007,3 +1007,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SetupRecurringGiftText_placeholderTimes" = "x";
 "AmountLimitExceededRecurringDonation" = "Dieser Betrag ist höher als der von Ihnen gewählte Höchstbetrag. Möchten Sie fortfahren oder den Betrag ändern?";
 "AppStoreRestart" = "";
+"SepaVerifyBodyDetails" = "Name: {0}\nAdresse 1}\nE-Mail-Adresse: {2}\nIBAN: {3}\nWir verwenden das eMandate nur, wenn Sie mit der Givt-App spenden";
+"SepaVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'";
+"SignMandate" = "Sign mandate";
+"SignMandateDisclaimer" = "By continuing you sign the eMandate with above details.\nThe mandate will be sent to you via mail.";

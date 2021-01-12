@@ -663,13 +663,9 @@ class LoginManager {
             return
         }
         
-        if !UserDefaults.standard.mandateSigned {
-            self.checkMandate(completionHandler: { (status) in
-                self.userClaim = self.isFullyRegistered ? .give : .giveOnce
-            })
-        } else {
-            self.userClaim = .give
-        }
+        self.checkMandate(completionHandler: { (status) in
+            self.userClaim = self.isFullyRegistered ? .give : .giveOnce
+        })
         
         if let userId = UserDefaults.standard.userExt?.guid {
             Mixpanel.mainInstance().identify(distinctId: userId)
