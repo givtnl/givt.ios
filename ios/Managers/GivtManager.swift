@@ -191,10 +191,22 @@ final class GivtManager: NSObject {
             }
         }
         
+        let dispatchGroup = DispatchGroup()
+        
         for (_, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
-            log.info(message: "Started processing chached Givts")
-            self.tryGive(transactions: [element], trycount: 0)
+            dispatchGroup.enter()
+            log.info(message: "Started processing cached Givts")
+            if let result = try? mediater.send(request: ExportDonationCommand(mediumId: element.beaconId, amount: element.amount, userId: UUID.init(uuidString: element.userId)!, timeStamp: element.timeStamp.toDate!)) {
+                if result {
+                    self.findAndRemoveCachedTransactions(transactions: [element])
+                    log.info(message: "Started processing cached Givts")
+                } else {
+                    self.log.error(message: "Unable to post offline donation to server")
+                }
+                dispatchGroup.leave()
+            }
         }
+        
         cachedGivtsLock.unlock()
         UIApplication.shared.endBackgroundTask(bgTask)
     }
