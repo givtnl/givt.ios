@@ -53,6 +53,7 @@ class BacsDetailViewController: UIViewController {
     }
     
     @IBAction func done(_ sender: Any) {
+        (sender as! UIButton).isEnabled = false
         if NavigationManager.shared.hasInternetConnection(context: self) {
             SVProgressHUD.show()
             LoginManager.shared.registerMandate { (response) in
