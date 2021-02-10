@@ -27,6 +27,8 @@
 		320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72B24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift */; };
 		3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211FB6D24D95BBE00351BC4 /* AmountTextField.swift */; };
 		3211FB7124D95C1000351BC4 /* AmountTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3211FB7024D95C1000351BC4 /* AmountTextField.xib */; };
+		3215976D25D2FABB0065C80A /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3215976C25D2FABB0065C80A /* Budget.storyboard */; };
+		3215977025D2FAEA0065C80A /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3215976F25D2FAEA0065C80A /* BudgetViewController.swift */; };
 		3216ED812541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED802541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift */; };
 		3216ED832541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED822541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift */; };
 		3216ED922542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED912542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift */; };
@@ -396,6 +398,8 @@
 		320CF72B24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectedRouteHandler.swift; sourceTree = "<group>"; };
 		3211FB6D24D95BBE00351BC4 /* AmountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextField.swift; sourceTree = "<group>"; };
 		3211FB7024D95C1000351BC4 /* AmountTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountTextField.xib; sourceTree = "<group>"; };
+		3215976C25D2FABB0065C80A /* Budget.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Budget.storyboard; sourceTree = "<group>"; };
+		3215976F25D2FAEA0065C80A /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		3216ED802541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecurringRuleDetailFromNotificationRoute.swift; sourceTree = "<group>"; };
 		3216ED822541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecurringRuleDetailFromNotificationRouteHandler.swift; sourceTree = "<group>"; };
 		3216ED912542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationOverviewViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -801,6 +805,23 @@
 				FB94D1C924EBD20900C61ECE /* CollectGroupLabel.xib */,
 			);
 			path = Subviews;
+			sourceTree = "<group>";
+		};
+		3215976B25D2FAAC0065C80A /* Budget */ = {
+			isa = PBXGroup;
+			children = (
+				3215976E25D2FADB0065C80A /* Scenes */,
+				3215976C25D2FABB0065C80A /* Budget.storyboard */,
+			);
+			path = Budget;
+			sourceTree = "<group>";
+		};
+		3215976E25D2FADB0065C80A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3215976F25D2FAEA0065C80A /* BudgetViewController.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		3216ED7F2541A97100B965A2 /* OpenRecurringRuleDetailFromNotification */ = {
@@ -2111,6 +2132,7 @@
 		FBC185CE24C6E1C3001A4C6B /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				3215976B25D2FAAC0065C80A /* Budget */,
 				32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */,
 				FB87302C24C88529005FF355 /* Infrastructure */,
 				32CA179B24CECAB900248053 /* SetupRecurringDonation */,
@@ -2261,6 +2283,7 @@
 				FB94D1CC24EBD88800C61ECE /* CollectGroupLabel.xib in Resources */,
 				DF76414E2539824C00A42109 /* InfoViewRecurringRuleOverview.xib in Resources */,
 				D72A89D31FE81FD800C06EF6 /* WhyPersonalData.storyboard in Resources */,
+				3215976D25D2FABB0065C80A /* Budget.storyboard in Resources */,
 				DF76413E253839C700A42109 /* TableSectionHeaderRecurringRuleOverviewView.xib in Resources */,
 				D7EAF10F1FB491B000DFE5CC /* icon@2x.png in Resources */,
 				D7AE8BA621393AF900CB3A33 /* AmountPresets.storyboard in Resources */,
@@ -2407,6 +2430,7 @@
 				D7BC58D620776361008C9497 /* Context.swift in Sources */,
 				DF05015424F8B299006196A3 /* GoToChooseRecurringDonationRoute.swift in Sources */,
 				FBC185C124C57DB6001A4C6B /* MediaterWithContextProtocol.swift in Sources */,
+				3215977025D2FAEA0065C80A /* BudgetViewController.swift in Sources */,
 				D74C19EA20F627DA00E116A0 /* ExternalSuggestionViewController.swift in Sources */,
 				D7AE8BA42136CA4F00CB3A33 /* PaymentTypes.swift in Sources */,
 				D77511BD1F713B56004F91F6 /* AgendaNumber.swift in Sources */,

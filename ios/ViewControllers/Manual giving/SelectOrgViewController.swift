@@ -621,7 +621,7 @@ class SelectOrgViewController: BaseScanViewController, UITableViewDataSource, UI
     func filterList() {
         if let searchText = searchBar.text, searchText.count > 0 {
             filteredList = originalList?.filter({ (organisation) -> Bool in
-                return organisation.OrgName.lowercased().contains(searchText.lowercased())
+                return organisation.OrgName.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current).contains(searchText.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current))
             })
         }
     }
