@@ -2773,7 +2773,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 164;
+				CURRENT_PROJECT_VERSION = 165;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
@@ -2908,7 +2908,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 164;
+				CURRENT_PROJECT_VERSION = 165;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
@@ -2935,7 +2935,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 164;
+				CURRENT_PROJECT_VERSION = 165;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
