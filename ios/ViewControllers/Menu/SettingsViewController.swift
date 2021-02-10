@@ -80,14 +80,15 @@ class SettingsViewController: BaseMenuViewController {
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
         let setupRecurringGift = Setting(name: "MenuItem_RecurringDonation".localized, image: UIImage(named:"repeat")!, showBadge: UserDefaults.standard.toHighlightMenuList.contains( "MenuItem_RecurringDonation".localized), callback: { self.setupRecurringDonation() })
-        
+        let budget = Setting(name: "Budget", image: UIImage(named: "repeat")!, showBadge: false, callback: { self.openBudget() })
         if !UserDefaults.standard.isTempUser {
             items.append([])
             items.append([])
             items.append([])
             items.append([])
             
-            
+            items[1].append(budget)
+
             
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
             items[1].append(givts)
@@ -133,6 +134,7 @@ class SettingsViewController: BaseMenuViewController {
             if let info = appInfo {
                 items =
                     [
+                        [budget],
                         [finishRegistration],
                         [turnOnPresets],
                         [changeAccount, screwAccount],
@@ -141,6 +143,7 @@ class SettingsViewController: BaseMenuViewController {
             } else {
                 items =
                     [
+                        [budget],
                         [finishRegistration],
                         [turnOnPresets],
                         [changeAccount, screwAccount],
@@ -154,6 +157,17 @@ class SettingsViewController: BaseMenuViewController {
     private var blinkTimer: Timer = Timer()
     private func toggleTorch() {
         InfraManager.shared.flashTorch(length: 10, interval: 0.1)
+    }
+    
+    private func openBudget() {
+        let vc = UIStoryboard(name: "Budget", bundle: nil).instantiateInitialViewController()
+        vc?.modalPresentationStyle = .fullScreen
+        vc?.transitioningDelegate = self.slideFromRightAnimation
+        DispatchQueue.main.async {
+            self.hideMenuAnimated() {
+                self.present(vc!, animated: true, completion:  nil)
+            }
+        }
     }
     
     private func setPresets() {

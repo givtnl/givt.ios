@@ -10,5 +10,12 @@ import Foundation
 import UIKit
 
 class BudgetViewController : UIViewController {
+    @IBOutlet weak var monthlySummaryTile: MonthlySummary!
+    @IBOutlet weak var giveNowButton: GiveNowButton!
     
+    override func viewDidLoad() {
+        monthlySummaryTile.amountLabel.text = "€5"
+        monthlySummaryTile.descriptionLabel.text = "deze maand gegeven"
+        giveNowButton.buttonLabel.text = "ik wil nu geven!"
+    }
 }
