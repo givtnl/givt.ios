@@ -255,7 +255,9 @@ class SetupRecurringDonationChooseDestinationViewController: UIViewController, U
         }
 
         if let currentSearchText = searchBar.text, !currentSearchText.isEmpty {
-            filteredDestinations = filteredDestinations.filter { $0.name.lowercased().contains(currentSearchText.lowercased()) || $0.type == CollectGroupType.none}
+            filteredDestinations = filteredDestinations.filter {
+                
+                $0.name.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current).contains(currentSearchText.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current)) || $0.type == CollectGroupType.none}
         }
         
         buildTableSections()

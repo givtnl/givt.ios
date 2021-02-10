@@ -112,6 +112,8 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
     }
     
     @IBAction func SignMandate(_ sender: Any) {
+        (sender as! UIButton).isEnabled = false
+
         if !_appServices.isServerReachable {
             _navigationManager.presentAlertNoConnection(context: self)
             return
