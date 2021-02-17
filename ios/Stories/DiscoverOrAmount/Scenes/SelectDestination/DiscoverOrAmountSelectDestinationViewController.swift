@@ -248,6 +248,11 @@ extension DiscoverOrAmountSelectDestinationViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let destinationCell = tableView.cellForRow(at: indexPath) as? DestinationTableCell {
+            
+            if let popoverController = actionSheet?.popoverPresentationController {
+                popoverController.sourceView = destinationCell
+            }
+            
             self.present(actionSheet!, animated: true, completion: nil)
             // update ViewModel
             (destinations.first { $0.name == destinationCell.name })!.selected = true
