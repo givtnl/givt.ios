@@ -8,6 +8,6 @@
 
 import Foundation
 
-class MonthlyOverviewCellViewModel {
-    
+struct MonthlyOverviewCellViewModel {
+    public var collectGroupName: String = ""
 }

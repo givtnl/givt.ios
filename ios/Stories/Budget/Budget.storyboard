@@ -80,7 +80,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="sectionIndexColor" systemColor="labelColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ixa-io-O74" customClass="MonthlyOverviewCell" customModule="ios" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MonthlyOverviewCell" id="ixa-io-O74" customClass="MonthlyOverviewCell" customModule="ios" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="24.5" width="374" height="43.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ixa-io-O74" id="PYx-2J-hiY">
@@ -99,6 +99,9 @@
                                                         <constraint firstItem="JT6-tb-pGN" firstAttribute="leading" secondItem="PYx-2J-hiY" secondAttribute="leadingMargin" id="Pp0-YG-CKU"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="collectGroupNameLabel" destination="JT6-tb-pGN" id="R3v-gJ-G5v"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -139,6 +142,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="givtNowButton" destination="mpb-Fe-X9c" id="Fo5-89-YPc"/>
+                        <outlet property="monthlyOverviewTable" destination="Q5b-DH-fqo" id="1z0-Rj-0z8"/>
                         <outlet property="monthlySummaryTile" destination="1tn-nC-9qd" id="pAH-Je-SOA"/>
                     </connections>
                 </viewController>
