@@ -50,12 +50,16 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="NNf-SL-Kx2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Q0g-Eo-0d1"/>
                 <constraint firstItem="NNf-SL-Kx2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="V53-SJ-tIL"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NNf-SL-Kx2" secondAttribute="trailing" constant="20" id="WWT-R9-B53"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <action selector="onClick:" destination="-1" eventType="touchUpInside" id="aKi-Ng-Gz6"/>
+            </connections>
             <point key="canvasLocation" x="-1678.2608695652175" y="363.61607142857139"/>
         </view>
     </objects>
