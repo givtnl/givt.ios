@@ -10,12 +10,18 @@ import Foundation
 import UIKit
 
 class BudgetViewController : UIViewController {
+    private var mediater: MediaterWithContextProtocol = Mediater.shared
+
     @IBOutlet weak var monthlySummaryTile: MonthlySummary!
-    @IBOutlet weak var giveNowButton: GiveNowButton!
+    @IBOutlet weak var givtNowButton: CustomButton!
     
     override func viewDidLoad() {
         monthlySummaryTile.amountLabel.text = "€5"
         monthlySummaryTile.descriptionLabel.text = "deze maand gegeven"
-        giveNowButton.buttonLabel.text = "ik wil nu geven!"
+        givtNowButton.setTitle("Ik wil nu geven", for: .normal)
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        try? mediater.send(request: BackToMainRoute(), withContext: self)
     }
 }

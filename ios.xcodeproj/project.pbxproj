@@ -86,6 +86,9 @@
 		32A67F7E25139A7F007EC7EF /* GetCountryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7D25139A7F007EC7EF /* GetCountryError.swift */; };
 		32A67F80251497F7007EC7EF /* RecurringDonationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7F251497F7007EC7EF /* RecurringDonationError.swift */; };
 		32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */; };
+		32BFA7A025DD0F75003AD5FE /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFA79F25DD0F75003AD5FE /* UIViewExtensions.swift */; };
+		32BFA7A825DD58DA003AD5FE /* MonthlyOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFA7A725DD58DA003AD5FE /* MonthlyOverviewCell.swift */; };
+		32BFA7AA25DD5AFB003AD5FE /* MonthlyOverviewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFA7A925DD5AFB003AD5FE /* MonthlyOverviewCellViewModel.swift */; };
 		32C2D8222522087000832444 /* DecimalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C2D8212522087000832444 /* DecimalExtension.swift */; };
 		32C2D83125221D6B00832444 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C2D83025221D6B00832444 /* IntExtension.swift */; };
 		32CA179D24CECB9500248053 /* SetupRecurringDonation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */; };
@@ -101,8 +104,6 @@
 		32EB1CF025D3E1330005CCAC /* BudgetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB1CEF25D3E1330005CCAC /* BudgetNavigationController.swift */; };
 		32EB1CF325D3E3930005CCAC /* MonthlySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB1CF225D3E3930005CCAC /* MonthlySummary.swift */; };
 		32EB1CF525D3E3A80005CCAC /* MonthlySummary.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32EB1CF425D3E3A80005CCAC /* MonthlySummary.xib */; };
-		32EB1CF925D3EEF40005CCAC /* GiveNowButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32EB1CF825D3EEF40005CCAC /* GiveNowButton.xib */; };
-		32EB1CFB25D3EEFF0005CCAC /* GiveNowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB1CFA25D3EEFF0005CCAC /* GiveNowButton.swift */; };
 		32F21E9125484C91003E46D5 /* DiscoverOrAmount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */; };
 		32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */; };
 		32F21E97254850E7003E46D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E96254850E7003E46D5 /* MainViewController.swift */; };
@@ -460,6 +461,9 @@
 		32A67F7D25139A7F007EC7EF /* GetCountryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryError.swift; sourceTree = "<group>"; };
 		32A67F7F251497F7007EC7EF /* RecurringDonationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationError.swift; sourceTree = "<group>"; };
 		32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
+		32BFA79F25DD0F75003AD5FE /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		32BFA7A725DD58DA003AD5FE /* MonthlyOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyOverviewCell.swift; sourceTree = "<group>"; };
+		32BFA7A925DD5AFB003AD5FE /* MonthlyOverviewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyOverviewCellViewModel.swift; sourceTree = "<group>"; };
 		32C2D8212522087000832444 /* DecimalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtension.swift; sourceTree = "<group>"; };
 		32C2D83025221D6B00832444 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		32CA179C24CECB9500248053 /* SetupRecurringDonation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SetupRecurringDonation.storyboard; sourceTree = "<group>"; };
@@ -475,8 +479,6 @@
 		32EB1CEF25D3E1330005CCAC /* BudgetNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetNavigationController.swift; sourceTree = "<group>"; };
 		32EB1CF225D3E3930005CCAC /* MonthlySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummary.swift; sourceTree = "<group>"; };
 		32EB1CF425D3E3A80005CCAC /* MonthlySummary.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlySummary.xib; sourceTree = "<group>"; };
-		32EB1CF825D3EEF40005CCAC /* GiveNowButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiveNowButton.xib; sourceTree = "<group>"; };
-		32EB1CFA25D3EEFF0005CCAC /* GiveNowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiveNowButton.swift; sourceTree = "<group>"; };
 		32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverOrAmount.storyboard; sourceTree = "<group>"; };
 		32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		32F21E96254850E7003E46D5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -1080,6 +1082,15 @@
 			path = GetCountry;
 			sourceTree = "<group>";
 		};
+		32BFA7A125DD4E86003AD5FE /* MonthlyOverview */ = {
+			isa = PBXGroup;
+			children = (
+				32BFA7A725DD58DA003AD5FE /* MonthlyOverviewCell.swift */,
+				32BFA7A925DD5AFB003AD5FE /* MonthlyOverviewCellViewModel.swift */,
+			);
+			path = MonthlyOverview;
+			sourceTree = "<group>";
+		};
 		32CA179B24CECAB900248053 /* SetupRecurringDonation */ = {
 			isa = PBXGroup;
 			children = (
@@ -1170,7 +1181,7 @@
 		32EB1CF125D3E3670005CCAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				32EB1CF725D3EEE10005CCAC /* GiveNowButton */,
+				32BFA7A125DD4E86003AD5FE /* MonthlyOverview */,
 				32EB1CF625D3EECE0005CCAC /* MonthlySummary */,
 			);
 			path = Views;
@@ -1183,15 +1194,6 @@
 				32EB1CF425D3E3A80005CCAC /* MonthlySummary.xib */,
 			);
 			path = MonthlySummary;
-			sourceTree = "<group>";
-		};
-		32EB1CF725D3EEE10005CCAC /* GiveNowButton */ = {
-			isa = PBXGroup;
-			children = (
-				32EB1CF825D3EEF40005CCAC /* GiveNowButton.xib */,
-				32EB1CFA25D3EEFF0005CCAC /* GiveNowButton.swift */,
-			);
-			path = GiveNowButton;
 			sourceTree = "<group>";
 		};
 		32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */ = {
@@ -1646,6 +1648,7 @@
 				D7D6FA6A1F7BADA5008A5604 /* UITextFieldExtensions.swift */,
 				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
 				D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */,
+				32BFA79F25DD0F75003AD5FE /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2324,7 +2327,6 @@
 				27A0E4E3221EC7E800982842 /* PresetButton.xib in Resources */,
 				D7EAF10E1FB491B000DFE5CC /* icon.png in Resources */,
 				D7ADE2481FBC870000198F28 /* TerminateAccount.storyboard in Resources */,
-				32EB1CF925D3EEF40005CCAC /* GiveNowButton.xib in Resources */,
 				D748F5F82061381B00B25BC2 /* TableSectionHeaderView.xib in Resources */,
 				D7DBED971FBC473700D78E2A /* AboutGivt.storyboard in Resources */,
 				D7EAF1101FB491B000DFE5CC /* icon@3x.png in Resources */,
@@ -2490,6 +2492,7 @@
 				FBC1857A24C0647C001A4C6B /* NotLoggedInError.swift in Sources */,
 				FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */,
 				DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */,
+				32BFA7AA25DD5AFB003AD5FE /* MonthlyOverviewCellViewModel.swift in Sources */,
 				3260CF19254AB72800BA6BD7 /* DiscoverOrAmountSetupSingleDonationRouteHandler.swift in Sources */,
 				3216ED812541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift in Sources */,
 				326E0970256D42180079B4B0 /* OpenFeatureByIdRoute.swift in Sources */,
@@ -2517,6 +2520,7 @@
 				FB45AC3B21CA4A4A00F12584 /* BaseMenuViewController.swift in Sources */,
 				FBC185AB24C0CD6F001A4C6B /* GetLocalUserConfiguration.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
+				32BFA7A825DD58DA003AD5FE /* MonthlyOverviewCell.swift in Sources */,
 				D748F6002063D4A500B25BC2 /* Status.swift in Sources */,
 				D7DD79A620A19E2500047CA7 /* LocationService.swift in Sources */,
 				FBC185C724C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift in Sources */,
@@ -2670,6 +2674,7 @@
 				D7BB5DA81FD59B4700D12E62 /* InfraManager.swift in Sources */,
 				FB87303024C885EE005FF355 /* NoInternetAlert.swift in Sources */,
 				D79F97731FACC83F0006335A /* SelectOrgViewController.swift in Sources */,
+				32BFA7A025DD0F75003AD5FE /* UIViewExtensions.swift in Sources */,
 				FBC185B124C0CF15001A4C6B /* GetLocalUserConfigurationHandler.swift in Sources */,
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				3273B8AB25359F55003DB100 /* RecurringDonationTurnsResponseModel.swift in Sources */,
@@ -2712,7 +2717,6 @@
 				3273B8AE2535C3D7003DB100 /* RecurringDonationRuleViewModel.swift in Sources */,
 				3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */,
 				32F21E97254850E7003E46D5 /* MainViewController.swift in Sources */,
-				32EB1CFB25D3EEFF0005CCAC /* GiveNowButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

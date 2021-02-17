@@ -41,30 +41,104 @@
                                     <constraint firstAttribute="width" constant="125" id="OWU-8Z-u5Q"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9rw-A4-pKs" customClass="GiveNowButton" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="60" y="298" width="294" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpb-Fe-X9c" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="50" y="303" width="314" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="IHQ-Fa-gJf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="16"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="0.89815876269999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f0w-Jx-AaB">
+                                <rect key="frame" x="20" y="377" width="374" height="150"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pK7-uB-INM">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Eig-xh-v0z"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Q5b-DH-fqo">
+                                        <rect key="frame" x="0.0" y="30" width="374" height="120"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="sectionIndexColor" systemColor="labelColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ixa-io-O74" customClass="MonthlyOverviewCell" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="24.5" width="374" height="43.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ixa-io-O74" id="PYx-2J-hiY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JT6-tb-pGN">
+                                                            <rect key="frame" x="20" y="11.5" width="42" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="JT6-tb-pGN" firstAttribute="centerY" secondItem="PYx-2J-hiY" secondAttribute="centerY" id="8fz-I4-wE5"/>
+                                                        <constraint firstItem="JT6-tb-pGN" firstAttribute="leading" secondItem="PYx-2J-hiY" secondAttribute="leadingMargin" id="Pp0-YG-CKU"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="bRh-t8-HSm"/>
+                                    <constraint firstAttribute="height" constant="150" id="1AK-CT-NAc"/>
+                                    <constraint firstItem="Q5b-DH-fqo" firstAttribute="leading" secondItem="f0w-Jx-AaB" secondAttribute="leading" id="2dH-ii-VXb"/>
+                                    <constraint firstItem="Q5b-DH-fqo" firstAttribute="top" secondItem="pK7-uB-INM" secondAttribute="bottom" id="JKL-iR-yRz"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q5b-DH-fqo" secondAttribute="trailing" id="Sen-MT-pbt"/>
+                                    <constraint firstItem="pK7-uB-INM" firstAttribute="top" secondItem="f0w-Jx-AaB" secondAttribute="top" id="iGb-cc-rGY"/>
+                                    <constraint firstItem="pK7-uB-INM" firstAttribute="leading" secondItem="f0w-Jx-AaB" secondAttribute="leading" id="jFa-5D-TQu"/>
+                                    <constraint firstAttribute="trailing" secondItem="pK7-uB-INM" secondAttribute="trailing" id="w9e-jX-IoG"/>
+                                    <constraint firstAttribute="bottom" secondItem="Q5b-DH-fqo" secondAttribute="bottom" id="zX5-6a-UIF"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="9rw-A4-pKs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="60" id="5Zo-nF-kcb"/>
+                            <constraint firstItem="f0w-Jx-AaB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="1HC-EH-xRa"/>
+                            <constraint firstItem="f0w-Jx-AaB" firstAttribute="top" secondItem="mpb-Fe-X9c" secondAttribute="bottom" constant="30" id="6EH-Yy-rin"/>
                             <constraint firstItem="1tn-nC-9qd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="FHd-5v-xyB"/>
                             <constraint firstItem="1tn-nC-9qd" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="HEi-eR-pEy"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9rw-A4-pKs" secondAttribute="trailing" constant="60" id="cLY-Cp-dLN"/>
-                            <constraint firstItem="9rw-A4-pKs" firstAttribute="top" secondItem="1tn-nC-9qd" secondAttribute="bottom" constant="25" id="ryh-Lk-uKK"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mpb-Fe-X9c" secondAttribute="trailing" constant="50" id="aVI-ne-LfW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="f0w-Jx-AaB" secondAttribute="trailing" constant="20" id="bVa-1P-Unq"/>
+                            <constraint firstItem="mpb-Fe-X9c" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="50" id="dNV-Oi-scH"/>
+                            <constraint firstItem="mpb-Fe-X9c" firstAttribute="top" secondItem="1tn-nC-9qd" secondAttribute="bottom" constant="30" id="raD-ob-mnZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Budget" id="btx-D5-6VS" userLabel="Nav Bar">
-                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="CoU-XG-Idw"/>
+                        <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="CoU-XG-Idw">
+                            <connections>
+                                <action selector="backButton:" destination="Y6W-OH-hqX" id="2Kk-3t-5wL"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="giveNowButton" destination="9rw-A4-pKs" id="mgv-Ru-60w"/>
+                        <outlet property="givtNowButton" destination="mpb-Fe-X9c" id="Fo5-89-YPc"/>
                         <outlet property="monthlySummaryTile" destination="1tn-nC-9qd" id="pAH-Je-SOA"/>
                     </connections>
                 </viewController>
@@ -73,8 +147,16 @@
             <point key="canvasLocation" x="-619" y="58"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="mpb-Fe-X9c">
+            <size key="intrinsicContentSize" width="52" height="34"/>
+        </designable>
+    </designables>
     <resources>
         <image name="backbtn" width="15" height="24"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
