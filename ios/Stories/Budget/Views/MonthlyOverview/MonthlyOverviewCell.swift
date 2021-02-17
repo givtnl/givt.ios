@@ -10,10 +10,11 @@ import UIKit
 import Foundation
 
 internal final class MonthlyOverviewCell : UITableViewCell {
+    @IBOutlet weak var collectGroupNameLabel: UILabel!
     var viewModel: MonthlyOverviewCellViewModel? = nil {
         didSet{
             if let data = viewModel {
-                
+                collectGroupNameLabel.text = data.collectGroupName
             }
         }
     }
