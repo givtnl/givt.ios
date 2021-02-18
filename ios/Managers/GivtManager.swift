@@ -165,49 +165,54 @@ final class GivtManager: NSObject {
             //task will end by itself
         }
         cachedGivtsLock.lock()
+        let semaGroup = DispatchGroup()
+        log.info(message: "Started processing cached Givts")
         if let donations = try? mediater.send(request: GetAllDonationsQuery()) {
-            let semaGroup = DispatchGroup()
             donations.forEach { donation in
                 semaGroup.enter()
-                if let _ = try? mediater.send(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
-                                                                                  userId: donation.userId, timeStamp: donation.timeStamp)) {
+                do {
+                    try mediater.sendAsync(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
+                                                                                      userId: donation.userId, timeStamp: donation.timeStamp))
+                    { result in
+                        if result {
+                            try! self.mediater.send(request: DeleteDonationCommand(objectId: donation.objectId))
+                        } else {
+                            self.log.error(message: "Unable to post offline donation to server")
+                        }
+                        semaGroup.leave()
+                    }
+                } catch {
+                    semaGroup.leave()
+                }
+            }
+        }
+                
+        for (_, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
+            semaGroup.enter()
+            do {
+                try mediater.sendAsync(request: ExportDonationCommand(mediumId: element.beaconId, amount: element.amount,
+                                                                      userId: UUID.init(uuidString: element.userId)!, timeStamp: element.timeStamp.toDate!))
+                { result in
                     if result {
-                        try! self.mediater.send(request: DeleteDonationCommand(objectId: donation.objectId))
+                        self.findAndRemoveCachedTransactions(transactions: [element])
+                        self.log.info(message: "Finished processing one offline donation")
                     } else {
                         self.log.error(message: "Unable to post offline donation to server")
                     }
                     semaGroup.leave()
-                } else {
-                    semaGroup.leave()
                 }
-            }
-            // After we synchronize all calls, we tell the main thread to save the coreDataContext
-            semaGroup.notify(queue: .main) {
-                print("All CoreData offline donations processed")
-                try? (UIApplication.shared.delegate as! AppDelegate).coreDataContext.objectContext.save()
+            } catch {
+                semaGroup.leave()
             }
         }
         
-        let dispatchGroup = DispatchGroup()
-        
-        for (_, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
-            dispatchGroup.enter()
-            log.info(message: "Started processing cached Givts")
-            if let _ = try? mediater.send(request: ExportDonationCommand(mediumId: element.beaconId, amount: element.amount,
-                                                                      userId: UUID.init(uuidString: element.userId)!, timeStamp: element.timeStamp.toDate!)) {
-                if result {
-                    self.findAndRemoveCachedTransactions(transactions: [element])
-                    log.info(message: "Finished processing one offline donation")
-                } else {
-                    self.log.error(message: "Unable to post offline donation to server")
-                }
-                dispatchGroup.leave()
-            } else {
-                dispatchGroup.leave()
-            }
+        // After we synchronize all calls, we tell the main thread to save the coreDataContext
+        semaGroup.notify(queue: .main) {
+            print("All CoreData offline donations processed")
+            try? (UIApplication.shared.delegate as! AppDelegate).coreDataContext.objectContext.save()
+            self.cachedGivtsLock.unlock()
         }
-        
-        cachedGivtsLock.unlock()
+
         UIApplication.shared.endBackgroundTask(bgTask)
     }
     
