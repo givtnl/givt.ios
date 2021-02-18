@@ -203,6 +203,7 @@ final class GivtManager: NSObject {
                 { result in
                     if result {
                         self.findAndRemoveCachedTransactions(transactions: [element])
+                        BadgeService.shared.removeBadge(badge: BadgeService.Badge.offlineGifts)
                         self.log.info(message: "Finished processing one offline donation")
                     } else {
                         self.log.error(message: "Unable to post offline donation to server")
@@ -221,6 +222,8 @@ final class GivtManager: NSObject {
                 try? (UIApplication.shared.delegate as! AppDelegate).coreDataContext.objectContext.save()
                 self.cachedGivtsLock.unlock()
             }
+        } else {
+            cachedGivtsLock.unlock()
         }
 
         UIApplication.shared.endBackgroundTask(bgTask)
