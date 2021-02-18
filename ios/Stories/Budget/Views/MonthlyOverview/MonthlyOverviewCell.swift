@@ -10,21 +10,22 @@ import UIKit
 import Foundation
 
 internal final class MonthlyOverviewCell : UITableViewCell {
-    @IBOutlet weak var collectGroupNameLabel: UILabel!
+    @IBOutlet var collectGroupNameLabel: UILabel? = UILabel()
+    
     var viewModel: MonthlyOverviewCellViewModel? = nil {
         didSet{
             if let data = viewModel {
-                collectGroupNameLabel.text = data.collectGroupName
+                collectGroupNameLabel!.text = data.collectGroupName
             }
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .none
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    class func createCell() -> MonthlyOverviewCell? {
+        let nib = UINib(nibName: "MonthlyOverviewCell", bundle: nil)
+        let cell = nib.instantiate(withOwner: self, options: nil).last as? MonthlyOverviewCell
+        return cell
     }
 }
