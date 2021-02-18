@@ -264,8 +264,10 @@ class SettingsViewController: BaseMenuViewController {
     private func logout() {
         logService.info(message: "User is switching accounts via the menu")
         if navigationManager.hasInternetConnection(context: self) {
-            LoginManager.shared.logout()
-            navigationManager.loadMainPage()
+            hideMenuAnimated {
+                LoginManager.shared.logout()
+                self.navigationManager.loadMainPage()
+            }
         } else {
             navigationManager.presentAlertNoConnection(context: self)
         }
