@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardViewBody" customModule="ios" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="6Vj-AO-God"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="138"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8pB-DE-EFP">
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="138"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="goN-HA-cI2">
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="138"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BSO-K9-Jf3">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="19.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5s-A4-0U9">
+                                    <rect key="frame" x="0.0" y="29.5" width="300" height="19.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="via Givt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2M-ep-TVz">
+                                            <rect key="frame" x="25" y="0.0" width="51.5" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="b2M-ep-TVz" firstAttribute="leading" secondItem="V5s-A4-0U9" secondAttribute="leading" constant="25" id="Z6S-l9-AyK"/>
+                                        <constraint firstItem="b2M-ep-TVz" firstAttribute="centerY" secondItem="V5s-A4-0U9" secondAttribute="centerY" id="xUv-JY-AfY"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAk-XC-m5v">
+                                    <rect key="frame" x="0.0" y="59" width="300" height="20"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voorbeeldkerk 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbt-8i-9nW">
+                                            <rect key="frame" x="25" y="0.5" width="103" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyB-0r-v9e">
+                                            <rect key="frame" x="254" y="0.5" width="21" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="Kbt-8i-9nW" firstAttribute="leading" secondItem="kAk-XC-m5v" secondAttribute="leading" constant="25" id="HeD-YC-w5z"/>
+                                        <constraint firstItem="eyB-0r-v9e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Kbt-8i-9nW" secondAttribute="trailing" constant="20" id="NNk-Ds-CYr"/>
+                                        <constraint firstAttribute="trailing" secondItem="eyB-0r-v9e" secondAttribute="trailing" constant="25" id="XGZ-Pj-4xd"/>
+                                        <constraint firstItem="eyB-0r-v9e" firstAttribute="centerY" secondItem="kAk-XC-m5v" secondAttribute="centerY" id="dUq-uA-aur"/>
+                                        <constraint firstItem="Kbt-8i-9nW" firstAttribute="centerY" secondItem="kAk-XC-m5v" secondAttribute="centerY" id="eYY-eG-SMD"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RIb-zQ-OAE">
+                                    <rect key="frame" x="0.0" y="89" width="300" height="19.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86D-hy-SMr">
+                                            <rect key="frame" x="254" y="0.0" width="21" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voorbeeldkerk 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IC1-gx-Jvu">
+                                            <rect key="frame" x="25" y="0.0" width="103" height="19.5"/>
+                                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="86D-hy-SMr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IC1-gx-Jvu" secondAttribute="trailing" constant="20" id="BeY-gj-rOw"/>
+                                        <constraint firstItem="IC1-gx-Jvu" firstAttribute="centerY" secondItem="RIb-zQ-OAE" secondAttribute="centerY" id="IuR-Ps-lQb"/>
+                                        <constraint firstItem="IC1-gx-Jvu" firstAttribute="leading" secondItem="RIb-zQ-OAE" secondAttribute="leading" constant="25" id="Srm-Uo-Kjs"/>
+                                        <constraint firstAttribute="trailing" secondItem="86D-hy-SMr" secondAttribute="trailing" constant="25" id="Vzx-6h-sH3"/>
+                                        <constraint firstItem="86D-hy-SMr" firstAttribute="centerY" secondItem="RIb-zQ-OAE" secondAttribute="centerY" id="kmA-hQ-G2f"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KzQ-As-Vgr">
+                                    <rect key="frame" x="0.0" y="118.5" width="300" height="19.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="goN-HA-cI2" firstAttribute="top" secondItem="8pB-DE-EFP" secondAttribute="top" id="HIw-RZ-xWI"/>
+                        <constraint firstAttribute="bottom" secondItem="goN-HA-cI2" secondAttribute="bottom" id="RPz-81-6xl"/>
+                        <constraint firstAttribute="trailing" secondItem="goN-HA-cI2" secondAttribute="trailing" id="U3d-aW-eoP"/>
+                        <constraint firstItem="goN-HA-cI2" firstAttribute="leading" secondItem="8pB-DE-EFP" secondAttribute="leading" id="eD8-Qn-TDR"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8pB-DE-EFP" secondAttribute="bottom" id="ETC-1a-Ddy"/>
+                <constraint firstItem="8pB-DE-EFP" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Pih-x3-sfm"/>
+                <constraint firstItem="8pB-DE-EFP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VRt-hh-1ew"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="8pB-DE-EFP" secondAttribute="trailing" id="WwM-5v-XCd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="49.275362318840585" y="-180.13392857142856"/>
+        </view>
+    </objects>
+</document>

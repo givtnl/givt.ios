@@ -10,4 +10,7 @@ import Foundation
 
 struct MonthlyOverviewCellViewModel {
     public var collectGroupName: String = ""
+    init(collectGroupName: String) {
+        self.collectGroupName = collectGroupName
+    }
 }
