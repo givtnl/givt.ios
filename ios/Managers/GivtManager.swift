@@ -165,10 +165,12 @@ final class GivtManager: NSObject {
             //task will end by itself
         }
         cachedGivtsLock.lock()
+        var shouldWait = false
         let semaGroup = DispatchGroup()
         log.info(message: "Started processing cached Givts")
         if let donations = try? mediater.send(request: GetAllDonationsQuery()) {
             donations.forEach { donation in
+                shouldWait = true
                 semaGroup.enter()
                 do {
                     try mediater.sendAsync(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
@@ -188,6 +190,7 @@ final class GivtManager: NSObject {
         }
                 
         for (_, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
+            shouldWait = true
             semaGroup.enter()
             do {
                 try mediater.sendAsync(request: ExportDonationCommand(mediumId: element.beaconId, amount: element.amount,
@@ -206,11 +209,13 @@ final class GivtManager: NSObject {
             }
         }
         
-        // After we synchronize all calls, we tell the main thread to save the coreDataContext
-        semaGroup.notify(queue: .main) {
-            print("All CoreData offline donations processed")
-            try? (UIApplication.shared.delegate as! AppDelegate).coreDataContext.objectContext.save()
-            self.cachedGivtsLock.unlock()
+        if shouldWait {
+            // After we synchronize all calls, we tell the main thread to save the coreDataContext
+            semaGroup.notify(queue: .main) {
+                print("All CoreData offline donations processed")
+                try? (UIApplication.shared.delegate as! AppDelegate).coreDataContext.objectContext.save()
+                self.cachedGivtsLock.unlock()
+            }
         }
 
         UIApplication.shared.endBackgroundTask(bgTask)
