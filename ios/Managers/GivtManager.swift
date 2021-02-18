@@ -174,13 +174,15 @@ final class GivtManager: NSObject {
             let semaGroup = DispatchGroup()
             donations.forEach { donation in
                 semaGroup.enter()
-                if let result = try? mediater.send(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
+                if let _ = try? mediater.send(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
                                                                                   userId: donation.userId, timeStamp: donation.timeStamp)) {
                     if result {
                         try! self.mediater.send(request: DeleteDonationCommand(objectId: donation.objectId))
                     } else {
                         self.log.error(message: "Unable to post offline donation to server")
                     }
+                    semaGroup.leave()
+                } else {
                     semaGroup.leave()
                 }
             }
@@ -196,13 +198,16 @@ final class GivtManager: NSObject {
         for (_, element) in UserDefaults.standard.offlineGivts.enumerated().reversed() {
             dispatchGroup.enter()
             log.info(message: "Started processing cached Givts")
-            if let result = try? mediater.send(request: ExportDonationCommand(mediumId: element.beaconId, amount: element.amount, userId: UUID.init(uuidString: element.userId)!, timeStamp: element.timeStamp.toDate!)) {
+            if let _ = try? mediater.send(request: ExportDonationCommand(mediumId: element.beaconId, amount: element.amount,
+                                                                      userId: UUID.init(uuidString: element.userId)!, timeStamp: element.timeStamp.toDate!)) {
                 if result {
                     self.findAndRemoveCachedTransactions(transactions: [element])
-                    log.info(message: "Started processing cached Givts")
+                    log.info(message: "Finished processing one offline donation")
                 } else {
                     self.log.error(message: "Unable to post offline donation to server")
                 }
+                dispatchGroup.leave()
+            } else {
                 dispatchGroup.leave()
             }
         }
