@@ -1,17 +1,23 @@
 //
-//  ChartViewBody.swift
+//  YearViewBody.swift
 //  ios
 //
-//  Created by Mike Pattyn on 18/02/2021.
+//  Created by Mike Pattyn on 19/02/2021.
 //  Copyright © 2021 Givt. All rights reserved.
 //
 import Charts
 import UIKit
 
-class ChartViewBody: UIView {
+class YearViewBody: UIView, AxisValueFormatter {
+    var years: [String]!
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return years[Int(value)].lowercased()
+    }
+    
     private var borderView: UIView!
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var chartView: BarChartView!
+    @IBOutlet weak var chartView: HorizontalBarChartView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,8 +33,8 @@ class ChartViewBody: UIView {
         roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5.0)
     }
     private func commonInit() {
-        let bundle = Bundle(for: ChartViewBody.self)
-        bundle.loadNibNamed("ChartViewBody", owner: self, options: nil)
+        let bundle = Bundle(for: YearViewBody.self)
+        bundle.loadNibNamed("YearViewBody", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

@@ -36,11 +36,10 @@ class MonthlySummary: UIControl {
     }
 
     func shadowAndCorners() {
-        self.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.5).cgColor
+        self.layer.shadowColor = UIColor(red:0, green:0, blue:0, alpha:0.25).cgColor
         self.layer.shadowOpacity = 1
-        self.layer.shadowRadius = 2
-        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowRadius = 10
+        self.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
         self.backgroundColor = UIColor.clear
