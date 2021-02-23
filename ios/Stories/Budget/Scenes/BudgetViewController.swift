@@ -41,6 +41,10 @@ class BudgetViewController : UIViewController {
         chartViewHeader.label.text = "Per maand".lowercased()
         yearViewHeader.label.text = "Per jaar".lowercased()
         
+        // delegates for chart formatters
+        axisMonthFormatDelegate = chartViewBody.self
+        axisYearFormatDelegate = yearViewBody.self
+        
         // setup the chart for months
         chartViewBody.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let chartValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
@@ -52,9 +56,7 @@ class BudgetViewController : UIViewController {
         let yearChartValues = [70, 800.0]
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
         
-        // delegates for chart formatters
-        axisMonthFormatDelegate = chartViewBody.self
-        axisYearFormatDelegate = yearViewBody.self
+
         
         
     }
