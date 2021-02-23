@@ -154,7 +154,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "NoInternetConnectionTitle" = "Geen internetverbinding";
 "ServerNotReachable" = "Het is nu helaas niet mogelijk om je registratie af te ronden, het lijkt aan onze server te liggen. Probeer je het later nog eens?\nDeze melding al vaker gekregen? Dan zijn we hier waarschijnlijk niet van op de hoogte. Help ons Givt verbeteren en laat een bericht achter, dan gaan we ermee aan de slag.";
 "SendMessage" = "Bericht sturen";
-"AnswerWhyAreMyDataStored" = "Lees hieronder welke gegevens we waarvoor nodig hebben:\n\nAdresgegevens: We hebben je adresgegevens nodig om het mandaat aan te kunnen maken, zonder deze gegevens is het mandaat niet geldig en kun je je registratie niet afronden. Welke gegevens hiervoor nodig zijn, is wettelijk bepaald.\n\nMobiele nummer: We gebruiken je mobiele nummer voor het versturen van een SMS-code die nodig is bij het tekenen van het mandaat. Dit wordt verzorgd door onze partner SlimPay.\n\nBetalingsgegevens: Je betalingsgegevens hebben we nodig om je gedane gift af te kunnen schrijven.\n\nE-mailadres: We gebruiken je e-mailadres om je Givt-account aan te maken. Je logt in met je e-mailadres en je wachtwoord. Ook sturen we je af en toe een update maar hier kun je je ook altijd weer voor uitschrijven.\nHierover kun je meer lezen in onze privacyverklaring die je vindt onderaan deze faq.";
+"AnswerWhyAreMyDataStored" = "Lees hieronder welke gegevens we waarvoor nodig hebben:\n\nAdresgegevens: We hebben je adresgegevens nodig om het mandaat aan te kunnen maken, zonder deze gegevens is het mandaat niet geldig en kun je je registratie niet afronden. Welke gegevens hiervoor nodig zijn, is wettelijk bepaald.\n\nMobiele nummer: We gebruiken je mobiele nummer enkel voor support doeleinden.\n\nBetalingsgegevens: Je betalingsgegevens hebben we nodig om je gedane gift af te kunnen schrijven.\n\nE-mailadres: We gebruiken je e-mailadres om je Givt-account aan te maken. Je logt in met je e-mailadres en je wachtwoord. Ook sturen we je af en toe een update maar hier kun je je ook altijd weer voor uitschrijven.\nHierover kun je meer lezen in onze privacyverklaring die je vindt onderaan deze faq.";
 "LogoffSession" = "Uitloggen";
 "AlreadyAnAccount" = "Heb je al een account?";
 "UnitedKingdom" = "Verenigd Koninkrijk";
@@ -1042,3 +1042,40 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SepaVerifyBody" = "Zijn deze gegevens correct? Zo niet, annuleer de registratie en verander je persoonlijke gegevens.";
 "SignMandate" = "Teken machtiging";
 "SignMandateDisclaimer" = "Bij doorgaan wordt een machtiging getekend met bovenstaande gegevens. Deze zal verstuurd worden via mail.";
+
+/*Fuzzy*/
+"BudgetModalText" = "Je krijgt in Givt elke maand een samenvatting. Pas dit overzicht aan je wensen aan.";
+"BudgetModalButton" = "Bekijk je samenvatting";
+
+/*Fuzzy*/
+"BudgetSummaryBalance" = "Deze maand gegeven";
+"BudgetSummarySetGoal" = "Krijg meer grip op wat je kan en wil geven, met een streefbedrag.";
+
+/*Fuzzy*/
+"BudgetSummaryGiveNow" = "Ik wil nu geven!";
+"BudgetSummaryGivt" = "Via Givt";
+"BudgetSummaryNotGivt" = "Niet via Givt";
+"BudgetSummary ShowAll" = "Toon alles";
+"BudgetSummaryMonth" = "Per maand";
+"BudgetSummaryYear" = "Per jaar";
+"BudgetExternalGiftsTitle" = "Donaties buiten Givt";
+"BudgetExternalGiftsInfo" = "Door óók je donaties toe te voegen die je buiten Givt doet, krijg je een volledig overzicht.";
+"BudgetExternalGiftsSubTitle" = "Donaties buiten Givt";
+"BudgetExternalGiftsOrg" = "Naam organisatie";
+"BudgetExternalGiftsTime" = "Periode";
+"BudgetExternalGiftsAmount" = "Bedrag";
+"BudgetExternalGiftsAdd" = "Toevoegen";
+"BudgetExternalGiftsSave" = "Opslaan";
+"BudgetGivingGoalTitle" = "Streefbedrag instellen";
+"BudgetGivingGoalInfo" = "Een streefbedrag kan jou helpen om grip te krijgen op je doelen rondom geven.";
+"BudgetGivingGoalMine" = "Mijn streefbedrag";
+"BudgetGivingGoalTime" = "Periode";
+"BudgetSummaryGivingGoalMonth" = "Streefbedrag per maand";
+"BudgetSummaryGivingGoalEdit" = "Streefbedrag aanpassen";
+"BudgetSummaryGivingGoalRest" = "Resterend streefbedrag";
+"BudgetSummaryGivingGoal" = "Streefbedrag: ";
+"BudgetMenuView" = "Bekijk je samenvatting!";
+"BudgetModalTextBold" = "Leuk dat je regelmatig  met Givt geeft!";
+"BudgetSummarySetGoalBold\n" = "Streefbedrag instellen.";
+"BudgetExternalGiftsInfoBold" = "Jij wilt graag inzicht in wat je geeft. ";
+"BudgetGivingGoalInfoBold" = "Jij geeft wat je wil én kan geven.";
