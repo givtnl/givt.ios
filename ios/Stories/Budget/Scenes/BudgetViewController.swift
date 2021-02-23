@@ -52,7 +52,7 @@ class BudgetViewController : UIViewController {
         setChart(dataPoints: months, values: chartValues, chartView: chartViewBody.chartView)
         
         yearViewBody.years = ["2021", "2020"]
-        let yearChartValues = [70.0, 800.0]
+        let yearChartValues = [270, 800.0]
         
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
         setupYearChart(chart: yearViewBody.chartView)
@@ -72,7 +72,7 @@ class BudgetViewController : UIViewController {
 }
 class ChartValueFormatter: NSObject, ValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return "€ \(value)"
+        return "€ \(String(format: "%.2f", value))"
     }
 }
 
@@ -84,17 +84,23 @@ extension BudgetViewController: AxisValueFormatter {
     
     func setHorizontalChart(dataPoints: [String], values: [Double], chartView: HorizontalBarChartView) {
         var dataEntries: [BarChartDataEntry] = []
-        
+        var chartColors: [UIColor] = []
+
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
+            if ((i+1) < dataPoints.count) {
+                chartColors.append(ColorHelper.GivtPurple)
+            } else {
+                chartColors.append(ColorHelper.GivtGreen)
+            }
         }
         
         let chartDataSet = BarChartDataSet(entries: dataEntries)
-        chartDataSet.setColor(ColorHelper.GivtPurple)
+        chartDataSet.colors = chartColors.reversed()
         let valuesFormatter = ChartValueFormatter()
         chartDataSet.valueFormatter = valuesFormatter
-        chartDataSet.valueFont = UIFont(name: "Avenir-Light", size: 12)!
+        chartDataSet.valueFont = UIFont(name: "Avenir-Heavy", size: 12)!
         chartDataSet.valueTextColor = .white
         
         let chartData = BarChartData(dataSet: chartDataSet)
@@ -154,14 +160,20 @@ extension BudgetViewController: AxisValueFormatter {
     }
     
     func setupYearChart(chart: HorizontalBarChartView) {
-        chart.getAxis(.left).drawGridLinesEnabled = false
-        chart.getAxis(.right).drawGridLinesEnabled = false
+        let leftAxis = chart.getAxis(.left)
+        let rightAxis = chart.getAxis(.right)
         
-        chart.getAxis(.left).drawAxisLineEnabled = false
-        chart.getAxis(.right).drawAxisLineEnabled = false
+        leftAxis.drawGridLinesEnabled = false
+        rightAxis.drawGridLinesEnabled = false
         
-        chart.getAxis(.left).drawLabelsEnabled = false
-        chart.getAxis(.right).drawLabelsEnabled = false
+        leftAxis.drawAxisLineEnabled = false
+        rightAxis.drawAxisLineEnabled = false
+        
+        leftAxis.drawLabelsEnabled = false
+        rightAxis.drawLabelsEnabled = false
+        
+        leftAxis.axisMinimum = 0
+        rightAxis.axisMinimum = 0
         
         chart.drawValueAboveBarEnabled = false
 
