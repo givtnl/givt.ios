@@ -19,6 +19,8 @@ class MainViewController: UIViewController {
     private var navigationManager: NavigationManager = NavigationManager.shared
     private var _cameFromFAQ: Bool = false
     private let modalAnimation = CustomPresentModalAnimation()
+    
+    var comingFromBudget = false
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

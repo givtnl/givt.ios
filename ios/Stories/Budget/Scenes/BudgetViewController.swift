@@ -33,8 +33,6 @@ class BudgetViewController : UIViewController {
     private var months: [String]!
     
     override func viewDidLoad() {
-
-        
         monthlySummaryTile.amountLabel.text = "€5"
         monthlySummaryTile.descriptionLabel.text = "deze maand gegeven"
         givtNowButton.setTitle("Ik wil nu geven", for: .normal)
@@ -58,13 +56,14 @@ class BudgetViewController : UIViewController {
         axisMonthFormatDelegate = chartViewBody.self
         axisYearFormatDelegate = yearViewBody.self
         
+        
     }
     
     @IBAction func backButton(_ sender: Any) {
         try? mediater.send(request: BackToMainRoute(), withContext: self)
     }
     @IBAction func giveNowButton(_ sender: Any) {
-        print("Qyeet")
+        try? mediater.send(request: OpenGiveNowRoute(), withContext: self)
     }
 }
 class ChartValueFormatter: NSObject, ValueFormatter {
