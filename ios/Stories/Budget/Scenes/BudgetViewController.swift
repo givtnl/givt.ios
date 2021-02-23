@@ -105,14 +105,21 @@ extension BudgetViewController: AxisValueFormatter {
     func setChart(dataPoints: [String], values: [Double], chartView: BarChartView) {
         chartView.noDataText = "You need to provide data for the chart."
         var dataEntries: [BarChartDataEntry] = []
-                
+        var chartColors: [UIColor] = []
+
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i] )
             dataEntries.append(dataEntry)
+            if ((i+1) < dataPoints.count) {
+                chartColors.append(ColorHelper.GivtPurple)
+            } else {
+                chartColors.append(ColorHelper.LightGrey)
+            }
         }
                 
         let chartDataSet = BarChartDataSet(entries: dataEntries)
-        chartDataSet.setColor(ColorHelper.GivtPurple)
+        chartDataSet.colors = chartColors
+        
         let chartData = BarChartData(dataSet: chartDataSet)
         
         chartView.data = chartData
