@@ -70,7 +70,7 @@ extension BudgetViewController {
         chartView.animate(xAxisDuration: 2.0, yAxisDuration: 0)
     }
     
-    func setVerticalChart(dataPoints: [String], values: [Double], chartView: BarChartView) {
+    func setVerticalChart(dataPoints: [String], values: [Double], chartView: BarChartView, trueAverage: Double) {
         chartView.noDataText = "You need to provide data for the chart."
         var dataEntries: [BarChartDataEntry] = []
         var chartColors: [UIColor] = []
@@ -105,7 +105,7 @@ extension BudgetViewController {
         let xAxis = chartView.xAxis
         xAxis.labelPosition = .bottom
         xAxis.drawGridLinesEnabled = false;
-        xAxis.labelCount = 12
+        xAxis.labelCount = values.count
         xAxis.valueFormatter = axisMonthFormatDelegate
         xAxis.labelFont = UIFont(name: "Avenir-Light", size: 12)!
         xAxis.drawAxisLineEnabled = false
@@ -114,14 +114,12 @@ extension BudgetViewController {
         
         chartView.legend.enabled = false
         chartView.isUserInteractionEnabled = false
-        
-        let averageValue = values.reduce(0, +)/12
-        
-        let ll = ChartLimitLine(limit: averageValue)
+                
+        let ll = ChartLimitLine(limit: trueAverage)
         ll.lineColor = ColorHelper.GivtLightGreen
         ll.lineDashLengths = [4.0]
         
-        chartViewBody.averageButton.setTitle("€\(String(format: "%.0f", averageValue))", for: .normal)
+        chartViewBody.averageButton.setTitle("€\(String(format: "%.0f", trueAverage))", for: .normal)
         chartViewBody.averageButton.ogBGColor = ColorHelper.LightGreenChart
         chartViewBody.averageButton.isEnabled = false
         

@@ -168,7 +168,7 @@ class SettingsViewController: BaseMenuViewController {
         vc?.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
             self.hideMenuAnimated() {
-                self.present(vc!, animated: true, completion:  nil)
+                self.navigationManager.pushWithLogin(vc!, context: self)
             }
         }
     }

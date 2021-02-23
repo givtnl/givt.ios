@@ -29,6 +29,9 @@
 		32111D6325E52EC800DB775C /* BudgetViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32111D6225E52EC800DB775C /* BudgetViewControllerExtension.swift */; };
 		32111D6625E5308000DB775C /* OpenGiveNowRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32111D6525E5308000DB775C /* OpenGiveNowRoute.swift */; };
 		32111D6825E5342B00DB775C /* OpenGiveNowRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32111D6725E5342B00DB775C /* OpenGiveNowRouteHandler.swift */; };
+		32111D6B25E556A700DB775C /* GetMonthlySummaryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32111D6A25E556A700DB775C /* GetMonthlySummaryQuery.swift */; };
+		32111D6D25E556B900DB775C /* GetMonthlySummaryQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32111D6C25E556B900DB775C /* GetMonthlySummaryQueryHandler.swift */; };
+		32111D7025E5570100DB775C /* MonthlySummaryDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32111D6F25E5570100DB775C /* MonthlySummaryDetailModel.swift */; };
 		3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211FB6D24D95BBE00351BC4 /* AmountTextField.swift */; };
 		3211FB7124D95C1000351BC4 /* AmountTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3211FB7024D95C1000351BC4 /* AmountTextField.xib */; };
 		3215976D25D2FABB0065C80A /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3215976C25D2FABB0065C80A /* Budget.storyboard */; };
@@ -417,6 +420,9 @@
 		32111D6225E52EC800DB775C /* BudgetViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewControllerExtension.swift; sourceTree = "<group>"; };
 		32111D6525E5308000DB775C /* OpenGiveNowRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGiveNowRoute.swift; sourceTree = "<group>"; };
 		32111D6725E5342B00DB775C /* OpenGiveNowRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGiveNowRouteHandler.swift; sourceTree = "<group>"; };
+		32111D6A25E556A700DB775C /* GetMonthlySummaryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMonthlySummaryQuery.swift; sourceTree = "<group>"; };
+		32111D6C25E556B900DB775C /* GetMonthlySummaryQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMonthlySummaryQueryHandler.swift; sourceTree = "<group>"; };
+		32111D6F25E5570100DB775C /* MonthlySummaryDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryDetailModel.swift; sourceTree = "<group>"; };
 		3211FB6D24D95BBE00351BC4 /* AmountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextField.swift; sourceTree = "<group>"; };
 		3211FB7024D95C1000351BC4 /* AmountTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountTextField.xib; sourceTree = "<group>"; };
 		3215976C25D2FABB0065C80A /* Budget.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Budget.storyboard; sourceTree = "<group>"; };
@@ -838,6 +844,24 @@
 				32111D6725E5342B00DB775C /* OpenGiveNowRouteHandler.swift */,
 			);
 			path = Routes;
+			sourceTree = "<group>";
+		};
+		32111D6925E5568C00DB775C /* GetMonthlySummary */ = {
+			isa = PBXGroup;
+			children = (
+				32111D6E25E556EB00DB775C /* Models */,
+				32111D6A25E556A700DB775C /* GetMonthlySummaryQuery.swift */,
+				32111D6C25E556B900DB775C /* GetMonthlySummaryQueryHandler.swift */,
+			);
+			path = GetMonthlySummary;
+			sourceTree = "<group>";
+		};
+		32111D6E25E556EB00DB775C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32111D6F25E5570100DB775C /* MonthlySummaryDetailModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		3211FB6F24D95BCA00351BC4 /* Subviews */ = {
@@ -2269,6 +2293,7 @@
 		FBFAF47A25669CCA0012E4A6 /* Queries */ = {
 			isa = PBXGroup;
 			children = (
+				32111D6925E5568C00DB775C /* GetMonthlySummary */,
 				FBFAF48025669EE90012E4A6 /* Models */,
 				FBFAF47B25669CD30012E4A6 /* GetAll */,
 			);
@@ -2552,6 +2577,7 @@
 				D7F131641F7555EC00E25A68 /* RegistrationDetailViewController.swift in Sources */,
 				D7BC58D620776361008C9497 /* Context.swift in Sources */,
 				DF05015424F8B299006196A3 /* GoToChooseRecurringDonationRoute.swift in Sources */,
+				32111D6D25E556B900DB775C /* GetMonthlySummaryQueryHandler.swift in Sources */,
 				FBC185C124C57DB6001A4C6B /* MediaterWithContextProtocol.swift in Sources */,
 				3215977025D2FAEA0065C80A /* BudgetViewController.swift in Sources */,
 				D74C19EA20F627DA00E116A0 /* ExternalSuggestionViewController.swift in Sources */,
@@ -2644,6 +2670,7 @@
 				3260CF28254ABF5C00BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRouteHandler.swift in Sources */,
 				3260CF21254ABC9D00BA6BD7 /* OpenSafariRouteInputModel.swift in Sources */,
 				A478D1D92512C3AE00251AFE /* DismissPushNotificationViewRoute.swift in Sources */,
+				32111D7025E5570100DB775C /* MonthlySummaryDetailModel.swift in Sources */,
 				32F21E992548526B003E46D5 /* InitialPageViewController.swift in Sources */,
 				D754DA331F3AF9E7001B7040 /* CustomUITextField.swift in Sources */,
 				320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */,
@@ -2762,6 +2789,7 @@
 				FBFAF47D25669CF30012E4A6 /* GetAllDonationsQuery.swift in Sources */,
 				D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */,
 				3216ED832541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift in Sources */,
+				32111D6B25E556A700DB775C /* GetMonthlySummaryQuery.swift in Sources */,
 				DF8BB30324F7A09F00104668 /* RecurringRuleViewModel.swift in Sources */,
 				D788E4781FA08DA700506DA5 /* NavigationManager.swift in Sources */,
 				FB243BDF2553F32000C6F768 /* GoBackOneControllerRouteHandler.swift in Sources */,
