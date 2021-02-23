@@ -27,15 +27,13 @@ class BudgetViewController : UIViewController {
     
     
     // stuff for the chart
-    private weak var axisMonthFormatDelegate: AxisValueFormatter?
-    private weak var axisYearFormatDelegate: AxisValueFormatter?
+    weak var axisMonthFormatDelegate: AxisValueFormatter?
+    weak var axisYearFormatDelegate: AxisValueFormatter?
     
     private var months: [String]!
     
     override func viewDidLoad() {
-        
-        axisMonthFormatDelegate = chartViewBody.self
-        axisYearFormatDelegate = yearViewBody.self
+
         
         monthlySummaryTile.amountLabel.text = "€5"
         monthlySummaryTile.descriptionLabel.text = "deze maand gegeven"
@@ -48,13 +46,17 @@ class BudgetViewController : UIViewController {
         // setup the chart for months
         chartViewBody.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let chartValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        setChart(dataPoints: chartViewBody.months, values: chartValues, chartView: chartViewBody.chartView)
+        setVerticalChart(dataPoints: chartViewBody.months, values: chartValues, chartView: chartViewBody.chartView)
         
         
         //setup the chart for years
         yearViewBody.years = ["2021", "2020"]
         let yearChartValues = [70, 800.0]
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
+        
+        // delegates for chart formatters
+        axisMonthFormatDelegate = chartViewBody.self
+        axisYearFormatDelegate = yearViewBody.self
         
     }
     
@@ -71,124 +73,3 @@ class ChartValueFormatter: NSObject, ValueFormatter {
     }
 }
 
-extension BudgetViewController {
-    func setHorizontalChart(dataPoints: [String], values: [Double], chartView: HorizontalBarChartView) {
-        var dataEntries: [BarChartDataEntry] = []
-        var chartColors: [UIColor] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
-            dataEntries.append(dataEntry)
-            if ((i+1) < dataPoints.count) {
-                chartColors.append(ColorHelper.SoftenedGivtPurple)
-            } else {
-                chartColors.append(ColorHelper.LightGreenChart)
-            }
-        }
-        
-        let chartDataSet = BarChartDataSet(entries: dataEntries)
-        chartDataSet.colors = chartColors.reversed()
-        let valuesFormatter = ChartValueFormatter()
-        chartDataSet.valueFormatter = valuesFormatter
-        chartDataSet.valueFont = UIFont(name: "Avenir-Black", size: 12)!
-        chartDataSet.valueTextColor = .white
-        
-        let chartData = BarChartData(dataSet: chartDataSet)
-        chartData.barWidth = 0.9
-        chartView.data = chartData
-        
-        let leftAxis = chartView.getAxis(.left)
-        let rightAxis = chartView.getAxis(.right)
-        
-        leftAxis.drawGridLinesEnabled = false
-        rightAxis.drawGridLinesEnabled = false
-        
-        leftAxis.drawAxisLineEnabled = false
-        rightAxis.drawAxisLineEnabled = false
-        
-        leftAxis.drawLabelsEnabled = false
-        rightAxis.drawLabelsEnabled = false
-        
-        leftAxis.axisMinimum = 0
-        rightAxis.axisMinimum = 0
-        
-        chartView.drawValueAboveBarEnabled = false
-        
-        
-        let xAxis = chartView.xAxis
-        xAxis.labelPosition = .top
-        xAxis.drawGridLinesEnabled = false;
-        xAxis.labelCount = 2
-        xAxis.valueFormatter = axisYearFormatDelegate
-        xAxis.labelFont = UIFont(name: "Avenir-Heavy", size: 12)!
-        xAxis.labelTextColor = ColorHelper.GivtPurple
-        xAxis.drawAxisLineEnabled = false
-        
-        chartView.data?.setDrawValues(true)
-        
-        chartView.legend.enabled = false
-        chartView.isUserInteractionEnabled = false
-        
-        chartView.animate(xAxisDuration: 2.0, yAxisDuration: 0)
-    }
-    
-    func setChart(dataPoints: [String], values: [Double], chartView: BarChartView) {
-        chartView.noDataText = "You need to provide data for the chart."
-        var dataEntries: [BarChartDataEntry] = []
-        var chartColors: [UIColor] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i] )
-            dataEntries.append(dataEntry)
-            if ((i+1) < dataPoints.count) {
-                chartColors.append(ColorHelper.SoftenedGivtPurple)
-            } else {
-                chartColors.append(ColorHelper.ActiveMonthForChart)
-            }
-        }
-        
-        let chartDataSet = BarChartDataSet(entries: dataEntries)
-        chartDataSet.colors = chartColors
-        
-        let chartData = BarChartData(dataSet: chartDataSet)
-        
-        chartView.data = chartData
-        
-        chartView.getAxis(.left).drawGridLinesEnabled = false
-        chartView.getAxis(.right).drawGridLinesEnabled = false
-        
-        chartView.getAxis(.left).drawAxisLineEnabled = false
-        chartView.getAxis(.right).drawAxisLineEnabled = false
-        
-        chartView.getAxis(.left).drawLabelsEnabled = false
-        chartView.getAxis(.right).drawLabelsEnabled = false
-        
-        
-        let xAxis = chartView.xAxis
-        xAxis.labelPosition = .bottom
-        xAxis.drawGridLinesEnabled = false;
-        xAxis.labelCount = 12
-        xAxis.valueFormatter = axisMonthFormatDelegate
-        xAxis.labelFont = UIFont(name: "Avenir-Light", size: 12)!
-        xAxis.drawAxisLineEnabled = false
-        
-        chartView.data?.setDrawValues(false)
-        
-        chartView.legend.enabled = false
-        chartView.isUserInteractionEnabled = false
-        
-        let averageValue = values.reduce(0, +)/12
-        
-        let ll = ChartLimitLine(limit: averageValue)
-        ll.lineColor = ColorHelper.GivtLightGreen
-        ll.lineDashLengths = [4.0]
-        
-        chartViewBody.averageButton.setTitle("€\(String(format: "%.0f", averageValue))", for: .normal)
-        chartViewBody.averageButton.ogBGColor = ColorHelper.LightGreenChart
-        chartViewBody.averageButton.isEnabled = false
-        
-        chartView.rightAxis.addLimitLine(ll)
-        
-        chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
-    }
-}
