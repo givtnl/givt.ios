@@ -59,6 +59,8 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
             } else {
                 cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemArrow", for: indexPath) as? SettingsItemArrow
             }
+        } else if setting.isSpecialItem {
+            cell = tableView.dequeueReusableCell(withIdentifier: "BudgetMenuItemWithArrow", for: indexPath) as? BudgetMenuItemWithArrow
         } else {
             if setting.isHighlighted {
                 cell = tableView.dequeueReusableCell(withIdentifier: "HighlightedItem", for: indexPath) as? HighlightedItem
@@ -67,9 +69,30 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
         
+        if setting.isSpecialItem {
+            cell?.settingImageView.leftAnchor.constraint(equalTo: (cell?.leftAnchor)!, constant: 30).isActive = true
+            cell?.settingImageView.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
+
+            cell?.settingLabel.leftAnchor.constraint(equalTo: (cell?.settingImageView.rightAnchor)!, constant: 50).isActive = true
+            cell?.settingLabel.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
+
+            (cell! as! SettingsItemArrow).arrow.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
+
+            cell?.settingLabel.font = UIFont(name: "Avenir-Black", size: 16)
+        }
+        
         cell!.settingLabel.text = setting.name
         cell!.settingImageView.image = setting.image
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let setting = self.items[indexPath.section][indexPath.row]
+        if setting.isSpecialItem {
+            return 90
+        } else {
+            return 50
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
