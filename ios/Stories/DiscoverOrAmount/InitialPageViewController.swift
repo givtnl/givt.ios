@@ -30,7 +30,6 @@ extension InitialPageViewController: UIPageViewControllerDataSource, UIPageViewC
         let vc = navigationController?.children.first as! MainViewController
         vc.segmentControl.selectedSegmentIndex = 1
         vc.title = "DiscoverHomeDiscoverTitle".localized
-        vc.comingFromBudget = true
         setViewControllers([items[1]], direction: .forward, animated: true, completion: nil)
     }
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
