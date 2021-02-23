@@ -8,7 +8,13 @@
 import Charts
 import UIKit
 
-class ChartViewBody: UIView {
+class ChartViewBody: UIView, AxisValueFormatter {
+    var months: [String] = []
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return months[Int(value)].lowercased()
+    }
+    
     private var borderView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var chartView: BarChartView!
