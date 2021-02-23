@@ -73,7 +73,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Safari_MandateSignedPopup" = "Deine Spende wird von diesem Konto (IBAN) eingezogen. Sollte das nicht korrekt sein, so storniere diese Spende und registriere Dich neu.";
 "DidNotSignMandateYet" = "Du musst noch ein Mandat unterschreiben. Dies ist notwendig, damit die Spende bis zum Schluss ausgeführt werden kann. Im Moment ist es nicht möglich, eines zu unterschreiben. Givt wird fortfahren, aber um die Bearbeitung abzuschließen, muss ein Mandat unterzeichnet werden.";
 "AppVersion" = "App Version: ";
-"ShareGivtText" = "Givt teilen";
+"ShareGivtText" = "Givt empfehlen";
 "ShareGivtTextLong" = "Hey! Willst du weiter spenden?";
 "GivtGewoonBlijvenGeven" = "Givt - Geben tut so gut";
 "UpdatesDoneTitle" = "Bist Du bereit zum Spenden?";
@@ -234,7 +234,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ChooseHowIGive" = "Nein, ich würde gerne selbst entscheiden, wie ich das tue.";
 "AndersGeven" = "Spende anders";
 "KerkdienstGemist" = "Kerkdienst Gemist";
-"ChangePhone" = "Ändere Deine Telefonnummer";
+"ChangePhone" = "Ändere Deine Handynummer";
 "Artists" = "Künstler";
 "ChangeAddress" = "Adresse ändern";
 "SelectLocationContextLong" = "Spenden am Veranstaltungsort bei Veranstaltungen";
@@ -327,7 +327,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "GiveOutOfApp" = "Hey! Schön, dass du mit Givt spenden willst! Bist du sicher, dass du {0} etwas geben möchtest?";
 "MandateFailTryAgainLater" = "Bei der Erstellung des Mandats ist etwas schief gelaufen. Kannst Du es später noch einmal versuchen?";
 "FeatureButtonSkip" = "Überspringen";
-"FeatureMenuText" = "Dein App von A bis Z";
+"FeatureMenuText" = "Deine App von A bis Z";
 "FeatureMultipleNew" = "Hallo, wir möchten Dir ein paar neue Features vorstellen.";
 "FeatureReadMore" = "Lies weiter";
 "FeatureStepTitle" = "Feature {0} of {1}";
@@ -345,7 +345,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FirstCollect" = "Erste Sammlung";
 "SecondCollect" = "Zweite Sammlung";
 "ThirdCollect" = "Dritte Sammlung";
-"AddCollect" = "Füge eine Sammlung hinzu";
+"AddCollect" = "Betrag hinzufügen";
 "TermsTextVersionGB" = "1.3";
 "AccountDisabledError" = "Leider sieht es so aus, als ob Dein Konto deaktiviert wurde. Keine Sorge! Sende einfach eine kurze E-Mail an support@givtapp.net.";
 "Feature_newgui1_title" = "Die Benutzeroberfläche";
@@ -462,7 +462,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "PasswordRule" = "Das Passwort sollte mindestens 7 Zeichen lang sein, einschließlich mindestens einem Großbuchstaben und einer Ziffer.";
 
 /*Telefoonnummer placeholder bij registratie*/
-"PhoneNumber" = "Telefonnummer";
+"PhoneNumber" = "Handynummer";
 
 /*Postcode placeholder*/
 "PostalCode" = "PLZ";
@@ -666,7 +666,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "UnregisterSad" = "Wir sind sehr traurig, dass Du gehst und hoffen, dass wir Dich wiedersehen.";
 
 /*Titel op de Historie pagina in de app*/
-"HistoryTitle" = "Spendengeschichte";
+"HistoryTitle" = "Spendenhistorie";
 
 /*Titel op de infopagina van het Historiescherm*/
 "HistoryInfoTitle" = "Spendendetails";
@@ -828,7 +828,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQanswerAnonymity" = "Givt ensures that the receiving party will never be able to see who has given the donation and that you, as a user, can give anonymously with Givt. Only the total amounts will be shared with the receiving party. Data from you as a user will never be resold to third parties, it is only used to make it easier for you to give and to be involved in the charities in a way that you prefer.\n\nDo you want to read more about this? Then read our privacy statement (scroll down to the last question at the bottom of this FAQ).";
 
 /*op het scherm waar je de voorkeursbedragen (presets) kan enablen of disablen*/
-"AmountPresetsChangingPresets" = "Du kannst hier Beträge vordefinieren und zu Deiner Tastatur hinzufügen.";
+"AmountPresetsChangingPresets" = "Du kannst hier Beträge vordefinieren und zu deiner Tastatur hinzufügen.";
 
 /*menu-item to change/set the amount presets*/
 "AmountPresetsChangePresetsMenu" = "Vordefinierte Beträge anpassen";
@@ -994,7 +994,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "PushnotificationRequestScreenPrimaryDescription" = "We would like to keep you posted on when the next donation will be collected from your account. At the moment we don't have permission to send you messages. Could you allow that, please?";
 "PushnotificationRequestScreenPrimaryButtonYes" = "Ok, fine!";
 "DiscoverSearchButton" = "Suchen";
-"DiscoverDiscoverButton" = "Alles sehen";
+"DiscoverDiscoverButton" = "Alles zeigen";
 "DiscoverSegmentNow" = "Gib";
 "DiscoverSegmentWho" = "Entdecken";
 "DiscoverHomeDiscoverTitle" = "Kategorie wählen";
@@ -1011,3 +1011,34 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SepaVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'";
 "SignMandate" = "Sign mandate";
 "SignMandateDisclaimer" = "By continuing you sign the eMandate with above details.\nThe mandate will be sent to you via mail.";
+"BudgetModalText" = "You will receive a monthly summary in Givt. Adjust this overview to your wishes.";
+"BudgetModalButton" = "View your summary";
+"BudgetSummaryBalance" = "Given this month";
+"BudgetSummarySetGoal" = "Get more control over what you can and want to give, with a giving goal.";
+"BudgetSummaryGiveNow" = "I want to give now!";
+"BudgetSummaryGivt" = "Via Givt";
+"BudgetSummaryNotGivt" = "Not via Givt";
+"BudgetSummary ShowAll" = "Show all";
+"BudgetSummaryMonth" = "Per month";
+"BudgetSummaryYear" = "Per Year";
+"BudgetExternalGiftsTitle" = "External donations";
+"BudgetExternalGiftsInfo" = "By also adding your external donations, you get a complete summary.";
+"BudgetExternalGiftsSubTitle" = "External donations";
+"BudgetExternalGiftsOrg" = "Name organisation";
+"BudgetExternalGiftsTime" = "Period";
+"BudgetExternalGiftsAmount" = "Amount";
+"BudgetExternalGiftsAdd" = "Add";
+"BudgetExternalGiftsSave" = "Save";
+"BudgetGivingGoalTitle" = "Setup giving goal";
+"BudgetGivingGoalInfo" = "A giving goal can help you to get a grip on your goals around giving.";
+"BudgetGivingGoalMine" = "My giving goal";
+"BudgetGivingGoalTime" = "Period";
+"BudgetSummaryGivingGoalMonth" = "Giving goal per Month";
+"BudgetSummaryGivingGoalEdit" = "Edit giving goal";
+"BudgetSummaryGivingGoalRest" = "Remaining giving goal";
+"BudgetSummaryGivingGoal" = "Giving goal: ";
+"BudgetMenuView" = "View your summary!";
+"BudgetModalTextBold" = "Nice that you regularly  give with Givt! ";
+"BudgetSummarySetGoalBold\n" = "Setup giving goal.";
+"BudgetExternalGiftsInfoBold" = "You want to give insight in what you give.";
+"BudgetGivingGoalInfoBold" = "You give what you can and want to give.";

@@ -1038,3 +1038,40 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SepaVerifyBody" = "If any of the above is incorrect, please abort the registration and change your 'Personal information'";
 "SignMandate" = "Sign mandate";
 "SignMandateDisclaimer" = "By continuing you sign the eMandate with above details.\nThe mandate will be sent to you via mail.";
+
+/*Fuzzy*/
+"BudgetModalText" = "You will receive a monthly summary in Givt. Adjust this overview to your wishes.";
+"BudgetModalButton" = "View your summary";
+
+/*Fuzzy*/
+"BudgetSummaryBalance" = "Given this month";
+"BudgetSummarySetGoal" = "Get more control over what you can and want to give, with a giving goal.";
+
+/*Fuzzy*/
+"BudgetSummaryGiveNow" = "I want to give now!";
+"BudgetSummaryGivt" = "Via Givt";
+"BudgetSummaryNotGivt" = "Not via Givt";
+"BudgetSummary ShowAll" = "Show all";
+"BudgetSummaryMonth" = "Per month";
+"BudgetSummaryYear" = "Per Year";
+"BudgetExternalGiftsTitle" = "External donations";
+"BudgetExternalGiftsInfo" = "By also adding your external donations, you get a complete summary.";
+"BudgetExternalGiftsSubTitle" = "External donations";
+"BudgetExternalGiftsOrg" = "Name organisation";
+"BudgetExternalGiftsTime" = "Period";
+"BudgetExternalGiftsAmount" = "Amount";
+"BudgetExternalGiftsAdd" = "Add";
+"BudgetExternalGiftsSave" = "Save";
+"BudgetGivingGoalTitle" = "Setup giving goal";
+"BudgetGivingGoalInfo" = "A giving goal can help you to get a grip on your goals around giving.";
+"BudgetGivingGoalMine" = "My giving goal";
+"BudgetGivingGoalTime" = "Period";
+"BudgetSummaryGivingGoalMonth" = "Giving goal per Month";
+"BudgetSummaryGivingGoalEdit" = "Edit giving goal";
+"BudgetSummaryGivingGoalRest" = "Remaining giving goal";
+"BudgetSummaryGivingGoal" = "Giving goal: ";
+"BudgetMenuView" = "View your summary!";
+"BudgetModalTextBold" = "Nice that you regularly  give with Givt! ";
+"BudgetSummarySetGoalBold\n" = "Setup giving goal.";
+"BudgetExternalGiftsInfoBold" = "You want to give insight in what you give.";
+"BudgetGivingGoalInfoBold" = "You give what you can and want to give.";
