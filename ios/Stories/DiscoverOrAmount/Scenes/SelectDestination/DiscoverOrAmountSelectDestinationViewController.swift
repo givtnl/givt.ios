@@ -42,6 +42,8 @@ class DiscoverOrAmountSelectDestinationViewController: UIViewController, UITable
         self.sideMenuController?.isLeftViewSwipeGestureEnabled = false
         
         setupActionSheet()
+        
+        var comingFromBudget = true
     }
     
     override func viewDidLoad() {

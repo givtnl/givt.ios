@@ -14,6 +14,7 @@ class InitialPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(segmentControlTapped), name: .GivtSegmentControlStateDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(cameFromBudget), name: .GivtComingFromBudget, object: nil)
         dataSource = self
         delegate = self
         
@@ -25,6 +26,13 @@ class InitialPageViewController: UIPageViewController {
 }
 
 extension InitialPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    @objc func cameFromBudget() {
+        let vc = navigationController?.children.first as! MainViewController
+        vc.segmentControl.selectedSegmentIndex = 1
+        vc.title = "DiscoverHomeDiscoverTitle".localized
+        vc.comingFromBudget = true
+        setViewControllers([items[1]], direction: .forward, animated: true, completion: nil)
+    }
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if viewController == items[1] {
             return items[0]

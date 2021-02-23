@@ -27,6 +27,8 @@
 		320CF72A24CEF1D3008B3EDE /* DestinationSelectedRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72924CEF1D3008B3EDE /* DestinationSelectedRoute.swift */; };
 		320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CF72B24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift */; };
 		32111D6325E52EC800DB775C /* BudgetViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32111D6225E52EC800DB775C /* BudgetViewControllerExtension.swift */; };
+		32111D6625E5308000DB775C /* OpenGiveNowRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32111D6525E5308000DB775C /* OpenGiveNowRoute.swift */; };
+		32111D6825E5342B00DB775C /* OpenGiveNowRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32111D6725E5342B00DB775C /* OpenGiveNowRouteHandler.swift */; };
 		3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3211FB6D24D95BBE00351BC4 /* AmountTextField.swift */; };
 		3211FB7124D95C1000351BC4 /* AmountTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3211FB7024D95C1000351BC4 /* AmountTextField.xib */; };
 		3215976D25D2FABB0065C80A /* Budget.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3215976C25D2FABB0065C80A /* Budget.storyboard */; };
@@ -413,6 +415,8 @@
 		320CF72924CEF1D3008B3EDE /* DestinationSelectedRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectedRoute.swift; sourceTree = "<group>"; };
 		320CF72B24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSelectedRouteHandler.swift; sourceTree = "<group>"; };
 		32111D6225E52EC800DB775C /* BudgetViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewControllerExtension.swift; sourceTree = "<group>"; };
+		32111D6525E5308000DB775C /* OpenGiveNowRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGiveNowRoute.swift; sourceTree = "<group>"; };
+		32111D6725E5342B00DB775C /* OpenGiveNowRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGiveNowRouteHandler.swift; sourceTree = "<group>"; };
 		3211FB6D24D95BBE00351BC4 /* AmountTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountTextField.swift; sourceTree = "<group>"; };
 		3211FB7024D95C1000351BC4 /* AmountTextField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountTextField.xib; sourceTree = "<group>"; };
 		3215976C25D2FABB0065C80A /* Budget.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Budget.storyboard; sourceTree = "<group>"; };
@@ -827,6 +831,15 @@
 			path = DestinationSelected;
 			sourceTree = "<group>";
 		};
+		32111D6425E5306400DB775C /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				32111D6525E5308000DB775C /* OpenGiveNowRoute.swift */,
+				32111D6725E5342B00DB775C /* OpenGiveNowRouteHandler.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
 		3211FB6F24D95BCA00351BC4 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
@@ -841,6 +854,7 @@
 		3215976B25D2FAAC0065C80A /* Budget */ = {
 			isa = PBXGroup;
 			children = (
+				32111D6425E5306400DB775C /* Routes */,
 				32EB1CF125D3E3670005CCAC /* Views */,
 				3215976E25D2FADB0065C80A /* Scenes */,
 				3215976C25D2FABB0065C80A /* Budget.storyboard */,
@@ -2504,6 +2518,7 @@
 				27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */,
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
 				D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */,
+				32111D6825E5342B00DB775C /* OpenGiveNowRouteHandler.swift in Sources */,
 				D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */,
 				27A0E4EE221F3FF100982842 /* PresetsSettingsViewController.swift in Sources */,
 				FBC1858924C0651D001A4C6B /* RequestPostProcessorProtocol.swift in Sources */,
@@ -2519,6 +2534,7 @@
 				3273B8B12535CC8B003DB100 /* GetDonationsByIdsQuery.swift in Sources */,
 				3234570E25DFDF8700284808 /* YearViewBody.swift in Sources */,
 				FB7F33FB22254E5A00482E2C /* ErrorHandlingHelper.swift in Sources */,
+				32111D6625E5308000DB775C /* OpenGiveNowRoute.swift in Sources */,
 				D761E9A01F167798002B849B /* FirstViewController.swift in Sources */,
 				D7721B4B20EB67AD009771EE /* LMUserExt.swift in Sources */,
 				FB42C2FF25666F020011012C /* DiscoverOrAmountOpenOfflineSuccessRouteHandler.swift in Sources */,
