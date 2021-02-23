@@ -80,14 +80,17 @@ class SettingsViewController: BaseMenuViewController {
         let screwAccount = Setting(name: NSLocalizedString("Unregister", comment: ""), image: UIImage(named: "banicon")!, callback: { self.terminate() })
         
         let setupRecurringGift = Setting(name: "MenuItem_RecurringDonation".localized, image: UIImage(named:"repeat")!, showBadge: UserDefaults.standard.toHighlightMenuList.contains( "MenuItem_RecurringDonation".localized), callback: { self.setupRecurringDonation() })
-        let budget = Setting(name: "Budget", image: UIImage(named: "repeat")!, showBadge: false, callback: { self.openBudget() })
+        
+        let budget = Setting(name: "Kiek naj samenvattinge!", image: UIImage(named: "budget_menu")!, showBadge: false, callback: { self.openBudget() }, isSpecialItem: true)
+        
         if !UserDefaults.standard.isTempUser {
             items.append([])
             items.append([])
             items.append([])
             items.append([])
+            items.append([])
             
-            items[1].append(budget)
+            items[0].append(budget)
 
             
             let givts = Setting(name: NSLocalizedString("HistoryTitle", comment: ""), image: UIImage(named: "list")!, showBadge: GivtManager.shared.hasOfflineGifts(),callback: { self.openHistory() })
