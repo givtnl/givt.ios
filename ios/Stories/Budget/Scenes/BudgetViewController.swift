@@ -34,7 +34,7 @@ class BudgetViewController : UIViewController {
     
     override func viewDidLoad() {
         
-        axisMonthFormatDelegate = self
+        axisMonthFormatDelegate = chartViewBody.self
         axisYearFormatDelegate = yearViewBody.self
         
         monthlySummaryTile.amountLabel.text = "€5"
@@ -45,21 +45,16 @@ class BudgetViewController : UIViewController {
         chartViewHeader.label.text = "Per maand".lowercased()
         yearViewHeader.label.text = "Per jaar".lowercased()
         
-        months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let chartValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        
         // setup the chart for months
-        setChart(dataPoints: months, values: chartValues, chartView: chartViewBody.chartView)
+        chartViewBody.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let chartValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
+        setChart(dataPoints: chartViewBody.months, values: chartValues, chartView: chartViewBody.chartView)
         
+        
+        //setup the chart for years
         yearViewBody.years = ["2021", "2020"]
         let yearChartValues = [70, 800.0]
-        
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
-        setupYearChart(chart: yearViewBody.chartView)
-        
-        chartViewBody.chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
-        //        yearViewBody.chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-        
         
     }
     
@@ -76,12 +71,7 @@ class ChartValueFormatter: NSObject, ValueFormatter {
     }
 }
 
-extension BudgetViewController: AxisValueFormatter {
-    
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return months[Int(value)].lowercased()
-    }
-    
+extension BudgetViewController {
     func setHorizontalChart(dataPoints: [String], values: [Double], chartView: HorizontalBarChartView) {
         var dataEntries: [BarChartDataEntry] = []
         var chartColors: [UIColor] = []
@@ -107,7 +97,41 @@ extension BudgetViewController: AxisValueFormatter {
         chartData.barWidth = 0.9
         chartView.data = chartData
         
+        let leftAxis = chartView.getAxis(.left)
+        let rightAxis = chartView.getAxis(.right)
+        
+        leftAxis.drawGridLinesEnabled = false
+        rightAxis.drawGridLinesEnabled = false
+        
+        leftAxis.drawAxisLineEnabled = false
+        rightAxis.drawAxisLineEnabled = false
+        
+        leftAxis.drawLabelsEnabled = false
+        rightAxis.drawLabelsEnabled = false
+        
+        leftAxis.axisMinimum = 0
+        rightAxis.axisMinimum = 0
+        
+        chartView.drawValueAboveBarEnabled = false
+        
+        
+        let xAxis = chartView.xAxis
+        xAxis.labelPosition = .top
+        xAxis.drawGridLinesEnabled = false;
+        xAxis.labelCount = 2
+        xAxis.valueFormatter = axisYearFormatDelegate
+        xAxis.labelFont = UIFont(name: "Avenir-Heavy", size: 12)!
+        xAxis.labelTextColor = ColorHelper.GivtPurple
+        xAxis.drawAxisLineEnabled = false
+        
+        chartView.data?.setDrawValues(true)
+        
+        chartView.legend.enabled = false
+        chartView.isUserInteractionEnabled = false
+        
+        chartView.animate(xAxisDuration: 2.0, yAxisDuration: 0)
     }
+    
     func setChart(dataPoints: [String], values: [Double], chartView: BarChartView) {
         chartView.noDataText = "You need to provide data for the chart."
         var dataEntries: [BarChartDataEntry] = []
@@ -164,40 +188,7 @@ extension BudgetViewController: AxisValueFormatter {
         chartViewBody.averageButton.isEnabled = false
         
         chartView.rightAxis.addLimitLine(ll)
+        
+        chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
     }
-    
-    func setupYearChart(chart: HorizontalBarChartView) {
-        let leftAxis = chart.getAxis(.left)
-        let rightAxis = chart.getAxis(.right)
-        
-        leftAxis.drawGridLinesEnabled = false
-        rightAxis.drawGridLinesEnabled = false
-        
-        leftAxis.drawAxisLineEnabled = false
-        rightAxis.drawAxisLineEnabled = false
-        
-        leftAxis.drawLabelsEnabled = false
-        rightAxis.drawLabelsEnabled = false
-        
-        leftAxis.axisMinimum = 0
-        rightAxis.axisMinimum = 0
-        
-        chart.drawValueAboveBarEnabled = false
-        
-        
-        let xAxis = chart.xAxis
-        xAxis.labelPosition = .top
-        xAxis.drawGridLinesEnabled = false;
-        xAxis.labelCount = 2
-        xAxis.valueFormatter = axisYearFormatDelegate
-        xAxis.labelFont = UIFont(name: "Avenir-Heavy", size: 12)!
-        xAxis.labelTextColor = ColorHelper.GivtPurple
-        xAxis.drawAxisLineEnabled = false
-        
-        chart.data?.setDrawValues(true)
-        
-        chart.legend.enabled = false
-        chart.isUserInteractionEnabled = false
-    }
-    
 }
