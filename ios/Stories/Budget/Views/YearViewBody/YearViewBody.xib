@@ -21,10 +21,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWG-H3-aUC">
-                    <rect key="frame" x="115" y="107" width="240" height="128"/>
+                    <rect key="frame" x="0.0" y="44" width="446" height="236"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAX-75-Aap" customClass="HorizontalBarChartView" customModule="Charts">
-                            <rect key="frame" x="-103" y="-54" width="446" height="236"/>
+                            <rect key="frame" x="15" y="15" width="416" height="206"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>

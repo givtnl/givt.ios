@@ -11,7 +11,7 @@ import UIKit
 
 class BudgetViewController : UIViewController {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
-
+    
     @IBOutlet weak var monthlySummaryTile: MonthlySummary!
     
     @IBOutlet weak var givtNowButton: CustomButton!
@@ -36,7 +36,7 @@ class BudgetViewController : UIViewController {
         
         axisMonthFormatDelegate = self
         axisYearFormatDelegate = yearViewBody.self
-
+        
         monthlySummaryTile.amountLabel.text = "€5"
         monthlySummaryTile.descriptionLabel.text = "deze maand gegeven"
         givtNowButton.setTitle("Ik wil nu geven", for: .normal)
@@ -47,19 +47,19 @@ class BudgetViewController : UIViewController {
         
         months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
         let chartValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-                
+        
         // setup the chart for months
         setChart(dataPoints: months, values: chartValues, chartView: chartViewBody.chartView)
         
         yearViewBody.years = ["2021", "2020"]
-        let yearChartValues = [270, 800.0]
+        let yearChartValues = [70, 800.0]
         
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
         setupYearChart(chart: yearViewBody.chartView)
         
-//        chartViewBody.chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-//        yearViewBody.chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-            
+        chartViewBody.chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
+        //        yearViewBody.chartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
+        
         
     }
     
@@ -72,12 +72,12 @@ class BudgetViewController : UIViewController {
 }
 class ChartValueFormatter: NSObject, ValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return "€ \(String(format: "%.2f", value))"
+        return "€ \(String(format: "%.0f", value))"
     }
 }
 
 extension BudgetViewController: AxisValueFormatter {
-
+    
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return months[Int(value)].lowercased()
     }
@@ -85,14 +85,14 @@ extension BudgetViewController: AxisValueFormatter {
     func setHorizontalChart(dataPoints: [String], values: [Double], chartView: HorizontalBarChartView) {
         var dataEntries: [BarChartDataEntry] = []
         var chartColors: [UIColor] = []
-
+        
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
             dataEntries.append(dataEntry)
             if ((i+1) < dataPoints.count) {
-                chartColors.append(ColorHelper.GivtPurple)
+                chartColors.append(ColorHelper.SoftenedGivtPurple)
             } else {
-                chartColors.append(ColorHelper.GivtGreen)
+                chartColors.append(ColorHelper.LightGreenChart)
             }
         }
         
@@ -100,7 +100,7 @@ extension BudgetViewController: AxisValueFormatter {
         chartDataSet.colors = chartColors.reversed()
         let valuesFormatter = ChartValueFormatter()
         chartDataSet.valueFormatter = valuesFormatter
-        chartDataSet.valueFont = UIFont(name: "Avenir-Heavy", size: 12)!
+        chartDataSet.valueFont = UIFont(name: "Avenir-Black", size: 12)!
         chartDataSet.valueTextColor = .white
         
         let chartData = BarChartData(dataSet: chartDataSet)
@@ -112,17 +112,17 @@ extension BudgetViewController: AxisValueFormatter {
         chartView.noDataText = "You need to provide data for the chart."
         var dataEntries: [BarChartDataEntry] = []
         var chartColors: [UIColor] = []
-
+        
         for i in 0..<dataPoints.count {
             let dataEntry = BarChartDataEntry(x: Double(i), y: values[i] )
             dataEntries.append(dataEntry)
             if ((i+1) < dataPoints.count) {
-                chartColors.append(ColorHelper.GivtPurple)
+                chartColors.append(ColorHelper.SoftenedGivtPurple)
             } else {
-                chartColors.append(ColorHelper.LightGrey)
+                chartColors.append(ColorHelper.ActiveMonthForChart)
             }
         }
-                
+        
         let chartDataSet = BarChartDataSet(entries: dataEntries)
         chartDataSet.colors = chartColors
         
@@ -153,9 +153,16 @@ extension BudgetViewController: AxisValueFormatter {
         chartView.legend.enabled = false
         chartView.isUserInteractionEnabled = false
         
-        let ll = ChartLimitLine(limit: (values.reduce(0, +)/12))
+        let averageValue = values.reduce(0, +)/12
+        
+        let ll = ChartLimitLine(limit: averageValue)
         ll.lineColor = ColorHelper.GivtLightGreen
         ll.lineDashLengths = [4.0]
+        
+        chartViewBody.averageButton.setTitle("€\(String(format: "%.0f", averageValue))", for: .normal)
+        chartViewBody.averageButton.ogBGColor = ColorHelper.LightGreenChart
+        chartViewBody.averageButton.isEnabled = false
+        
         chartView.rightAxis.addLimitLine(ll)
     }
     
@@ -176,20 +183,21 @@ extension BudgetViewController: AxisValueFormatter {
         rightAxis.axisMinimum = 0
         
         chart.drawValueAboveBarEnabled = false
-
+        
         
         let xAxis = chart.xAxis
         xAxis.labelPosition = .top
         xAxis.drawGridLinesEnabled = false;
         xAxis.labelCount = 2
         xAxis.valueFormatter = axisYearFormatDelegate
-        xAxis.labelFont = UIFont(name: "Avenir-Light", size: 12)!
+        xAxis.labelFont = UIFont(name: "Avenir-Heavy", size: 12)!
+        xAxis.labelTextColor = ColorHelper.GivtPurple
         xAxis.drawAxisLineEnabled = false
-                
+        
         chart.data?.setDrawValues(true)
         
         chart.legend.enabled = false
         chart.isUserInteractionEnabled = false
     }
-
+    
 }

@@ -12,6 +12,7 @@ class ChartViewBody: UIView {
     private var borderView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var chartView: BarChartView!
+    @IBOutlet weak var averageButton: CustomButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
