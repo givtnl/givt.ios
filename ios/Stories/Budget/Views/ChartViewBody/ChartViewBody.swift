@@ -10,6 +10,7 @@ import UIKit
 
 class ChartViewBody: UIView, AxisValueFormatter {
     var months: [String] = []
+    var trueAverage: Double?
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return months[Int(value)].lowercased()

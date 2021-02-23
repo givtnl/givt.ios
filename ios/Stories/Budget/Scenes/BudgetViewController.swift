@@ -45,10 +45,9 @@ class BudgetViewController : UIViewController {
         axisMonthFormatDelegate = chartViewBody.self
         axisYearFormatDelegate = yearViewBody.self
         
-        // setup the chart for months
-        chartViewBody.months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let chartValues = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
-        setVerticalChart(dataPoints: chartViewBody.months, values: chartValues, chartView: chartViewBody.chartView)
+        
+        
+        
         
         
         //setup the chart for years
@@ -56,9 +55,38 @@ class BudgetViewController : UIViewController {
         let yearChartValues = [70, 800.0]
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
         
+        // setup the chart for months
+        var months: [String] = []
+        var lastMonthInt = 0
+        var lastMonthDate: Date?
+        var monthValues: [Double] = []
+        let monthlySummarymodels: [MonthlySummaryDetailModel] = try! mediater.send(request: GetMonthlySummaryQuery())
+        
+        monthlySummarymodels.forEach { model in
+            lastMonthInt = Int(model.Key)!
+            lastMonthDate = getDateFromInt(value: lastMonthInt)
+            months.append(getMonthStringFromIntValue(value: lastMonthInt))
+            monthValues.append(model.Value)
+        }
+                
+        let fillCount = 12 - monthlySummarymodels.count
+        
+        for _ in 1...fillCount {
+            let date = getPreviousMonthDate(fromDate: lastMonthDate!)
+            lastMonthDate = date
+            
+            months.insert(getMonthStringFromDateValue(value: lastMonthDate!), at: 0)
+            monthValues.insert(Double(0), at: 0)
+        }
+        
+        chartViewBody.trueAverage = monthValues.filter{$0 != 0}.reduce(0, +)/Double(monthValues.filter{$0 != 0}.count)
 
+        chartViewBody.months = months
+        let chartValues = monthValues
         
-        
+        setVerticalChart(dataPoints: chartViewBody.months, values: chartValues, chartView: chartViewBody.chartView, trueAverage: chartViewBody.trueAverage!)
+        // end of setup the chart for months
+
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -67,7 +95,31 @@ class BudgetViewController : UIViewController {
     @IBAction func giveNowButton(_ sender: Any) {
         try? mediater.send(request: OpenGiveNowRoute(), withContext: self)
     }
+    
+    private func getPreviousMonthDate(fromDate: Date) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.month = -1
+        return Calendar.current.date(byAdding: dateComponents, to: fromDate)!
+    }
+    private func getMonthStringFromIntValue(value: Int) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter.string(from: getDateFromInt(value: value)).replacingOccurrences(of: ".", with: String.empty)
+    }
+    private func getMonthStringFromDateValue(value: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter.string(from: value).replacingOccurrences(of: ".", with: String.empty)
+    }
+    private func getDateFromInt(value: Int) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.month = value
+        return Calendar.current.date(from: dateComponents)!
+    }
 }
+
 class ChartValueFormatter: NSObject, ValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
         return "€ \(String(format: "%.0f", value))"

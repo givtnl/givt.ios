@@ -393,5 +393,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         
         //-- BUDGET: ROUTES
         Mediater.shared.registerHandler(handler: OpenGiveNowRouteHandler())
+        
+        //-- BUDGET: QUERYS
+        Mediater.shared.registerHandler(handler: GetMonthlySummaryQueryHandler())
     }
 }
