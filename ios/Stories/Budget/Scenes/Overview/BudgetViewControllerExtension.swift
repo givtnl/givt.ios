@@ -71,7 +71,11 @@ extension BudgetViewController {
     }
     
     func setVerticalChart(dataPoints: [String], values: [Double], chartView: BarChartView, trueAverage: Double) {
-        chartView.noDataText = "You need to provide data for the chart."
+        
+        chartView.noDataText = "Geet gi nog gin givtn."
+        chartView.noDataFont = UIFont(name: "Avenir-Book", size: 14)!
+        chartView.noDataTextColor = ColorHelper.GivtPurple
+        
         var dataEntries: [BarChartDataEntry] = []
         var chartColors: [UIColor] = []
         
@@ -85,12 +89,14 @@ extension BudgetViewController {
             }
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries)
-        chartDataSet.colors = chartColors
-        
-        let chartData = BarChartData(dataSet: chartDataSet)
-        
-        chartView.data = chartData
+        if dataEntries.count > 0 {
+            let chartDataSet = BarChartDataSet(entries: dataEntries)
+            chartDataSet.colors = chartColors
+            
+            let chartData = BarChartData(dataSet: chartDataSet)
+            
+            chartView.data = chartData
+        }
         
         chartView.getAxis(.left).drawGridLinesEnabled = false
         chartView.getAxis(.right).drawGridLinesEnabled = false

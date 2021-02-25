@@ -40,7 +40,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WyI-IN-h7K">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="789"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="739"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x63-aR-afc" customClass="MonthlySummary" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="144.5" y="20" width="125" height="165"/>
@@ -81,7 +81,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPk-5v-igI" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="269" width="374" height="150"/>
+                                                        <rect key="frame" x="20" y="269" width="374" height="100"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3DR-wi-43U" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -91,8 +91,11 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IM9-Mi-cEF" customClass="MonthlyCardViewBody" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="30" width="374" height="120"/>
+                                                                <rect key="frame" x="0.0" y="30" width="374" height="70"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="70" id="lBl-jw-nt3"/>
+                                                                </constraints>
                                                             </view>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,11 +107,10 @@
                                                             <constraint firstItem="3DR-wi-43U" firstAttribute="top" secondItem="vPk-5v-igI" secondAttribute="top" id="PIP-qo-IE4"/>
                                                             <constraint firstAttribute="bottom" secondItem="IM9-Mi-cEF" secondAttribute="bottom" id="m0O-Mf-ypj"/>
                                                             <constraint firstItem="3DR-wi-43U" firstAttribute="leading" secondItem="vPk-5v-igI" secondAttribute="leading" id="oCO-yJ-aIE"/>
-                                                            <constraint firstAttribute="height" constant="150" id="u7n-dk-0ld"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpN-cF-0Wb" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="434" width="374" height="180"/>
+                                                        <rect key="frame" x="20" y="384" width="374" height="180"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNJ-DF-KkV" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -135,7 +137,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfC-9P-EC7" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="629" width="374" height="140"/>
+                                                        <rect key="frame" x="20" y="579" width="374" height="140"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IlB-hW-U0S" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -223,6 +225,7 @@
                         <outlet property="givtNowButton" destination="VB2-d6-wv3" id="rqT-E8-yeg"/>
                         <outlet property="monthlyCardBody" destination="IM9-Mi-cEF" id="5jC-PS-IyL"/>
                         <outlet property="monthlyCardHeader" destination="3DR-wi-43U" id="TFc-QC-g8j"/>
+                        <outlet property="monthlyCardViewBodyHeight" destination="lBl-jw-nt3" id="2bb-DW-Mph"/>
                         <outlet property="monthlySummaryTile" destination="x63-aR-afc" id="dth-hB-b54"/>
                         <outlet property="yearViewBody" destination="cON-ZA-46W" id="vpW-Of-A9H"/>
                         <outlet property="yearViewHeader" destination="IlB-hW-U0S" id="c1q-fx-jr5"/>

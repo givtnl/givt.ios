@@ -1,26 +1,19 @@
 //
-//  ChartViewBody.swift
+//  MonthlyCardViewLine.swift
 //  ios
 //
-//  Created by Mike Pattyn on 18/02/2021.
+//  Created by Mike Pattyn on 25/02/2021.
 //  Copyright © 2021 Givt. All rights reserved.
 //
-import Charts
+
+import Foundation
 import UIKit
 
-class ChartViewBody: UIView, AxisValueFormatter {
-    var months: [String] = []
-    var trueAverage: Double?
-    
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return months[Int(value)].lowercased()
-    }
-    
-    private var borderView: UIView!
+class MonthlyCardViewLine : UIView {
+    @IBOutlet weak var collectGroupLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var chartView: BarChartView!
-    @IBOutlet weak var averageButton: CustomButton!
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -34,9 +27,10 @@ class ChartViewBody: UIView, AxisValueFormatter {
         super.layoutSubviews()
         roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5.0)
     }
+    
     private func commonInit() {
-        let bundle = Bundle(for: ChartViewBody.self)
-        bundle.loadNibNamed("ChartViewBody", owner: self, options: nil)
+        let bundle = Bundle(for: MonthlyCardViewLine.self)
+        bundle.loadNibNamed("MonthlyCardViewLine", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
