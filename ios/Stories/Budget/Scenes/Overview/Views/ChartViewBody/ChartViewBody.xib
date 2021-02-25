@@ -25,10 +25,10 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oak-Uk-Vm8" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                    <rect key="frame" x="342" y="54" width="30" height="30"/>
+                    <rect key="frame" x="332" y="54" width="40" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="30" id="Scj-uN-Doy"/>
-                        <constraint firstAttribute="height" constant="30" id="x0v-oT-hd6"/>
+                        <constraint firstAttribute="width" constant="40" id="Scj-uN-Doy"/>
+                        <constraint firstAttribute="height" constant="40" id="x0v-oT-hd6"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
                     <state key="normal" title="Button">
@@ -39,7 +39,7 @@
                             <color key="value" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                            <real key="value" value="15"/>
+                            <real key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
@@ -58,4 +58,9 @@
             <point key="canvasLocation" x="-40.579710144927539" y="-136.94196428571428"/>
         </view>
     </objects>
+    <designables>
+        <designable name="oak-Uk-Vm8">
+            <size key="intrinsicContentSize" width="39" height="29"/>
+        </designable>
+    </designables>
 </document>

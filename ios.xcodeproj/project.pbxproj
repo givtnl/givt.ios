@@ -39,6 +39,10 @@
 		3216ED812541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED802541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift */; };
 		3216ED832541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED822541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift */; };
 		3216ED922542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED912542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift */; };
+		3220B8AE25E7A98F0086577E /* MonthlyCardViewLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */; };
+		3220B8B025E7A9AB0086577E /* MonthlyCardViewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */; };
+		3220B8B325E7BCFB0086577E /* MonthlySummaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */; };
+		3220B8B525E7C9D40086577E /* MonthlySummaryValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8B425E7C9D40086577E /* MonthlySummaryValue.swift */; };
 		322400B9257E5EF4007FB046 /* GetCollectGroupsQueryPreProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322400B8257E5EF4007FB046 /* GetCollectGroupsQueryPreProcessor.swift */; };
 		322400CB257E8275007FB046 /* collectGroupsList.json in Resources */ = {isa = PBXBuildFile; fileRef = 322400B6257E5D12007FB046 /* collectGroupsList.json */; };
 		322441A0253F62EA00E357D9 /* RecurringDonationTurnsOverviewControllerExension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224419F253F62EA00E357D9 /* RecurringDonationTurnsOverviewControllerExension.swift */; };
@@ -430,6 +434,10 @@
 		3216ED802541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecurringRuleDetailFromNotificationRoute.swift; sourceTree = "<group>"; };
 		3216ED822541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRecurringRuleDetailFromNotificationRouteHandler.swift; sourceTree = "<group>"; };
 		3216ED912542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupRecurringDonationOverviewViewControllerExtension.swift; sourceTree = "<group>"; };
+		3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlyCardViewLine.xib; sourceTree = "<group>"; };
+		3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCardViewLine.swift; sourceTree = "<group>"; };
+		3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryKey.swift; sourceTree = "<group>"; };
+		3220B8B425E7C9D40086577E /* MonthlySummaryValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryValue.swift; sourceTree = "<group>"; };
 		322400B6257E5D12007FB046 /* collectGroupsList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = collectGroupsList.json; sourceTree = "<group>"; };
 		322400B8257E5EF4007FB046 /* GetCollectGroupsQueryPreProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCollectGroupsQueryPreProcessor.swift; sourceTree = "<group>"; };
 		3224419F253F62EA00E357D9 /* RecurringDonationTurnsOverviewControllerExension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationTurnsOverviewControllerExension.swift; sourceTree = "<group>"; };
@@ -813,6 +821,7 @@
 		320CC7A7255B12CE0092782A /* Custom views */ = {
 			isa = PBXGroup;
 			children = (
+				3234570525DFB30E00284808 /* BackgroundShadowView */,
 				320B7FBC255B020A00779B1D /* RecurringCustomUITextField.swift */,
 				320B7FBE255B03E300779B1D /* RecurringCustomUITextField.xib */,
 			);
@@ -860,6 +869,8 @@
 			isa = PBXGroup;
 			children = (
 				32111D6F25E5570100DB775C /* MonthlySummaryDetailModel.swift */,
+				3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */,
+				3220B8B425E7C9D40086577E /* MonthlySummaryValue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -879,7 +890,6 @@
 			isa = PBXGroup;
 			children = (
 				32111D6425E5306400DB775C /* Routes */,
-				32EB1CF125D3E3670005CCAC /* Views */,
 				3215976E25D2FADB0065C80A /* Scenes */,
 				3215976C25D2FABB0065C80A /* Budget.storyboard */,
 				32EB1CEF25D3E1330005CCAC /* BudgetNavigationController.swift */,
@@ -890,8 +900,7 @@
 		3215976E25D2FADB0065C80A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				3215976F25D2FAEA0065C80A /* BudgetViewController.swift */,
-				32111D6225E52EC800DB775C /* BudgetViewControllerExtension.swift */,
+				3220B8A625E793560086577E /* Overview */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -903,6 +912,25 @@
 				3216ED822541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift */,
 			);
 			path = OpenRecurringRuleDetailFromNotification;
+			sourceTree = "<group>";
+		};
+		3220B8A625E793560086577E /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				32EB1CF125D3E3670005CCAC /* Views */,
+				3215976F25D2FAEA0065C80A /* BudgetViewController.swift */,
+				32111D6225E52EC800DB775C /* BudgetViewControllerExtension.swift */,
+			);
+			path = Overview;
+			sourceTree = "<group>";
+		};
+		3220B8AC25E7A9700086577E /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */,
+				3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */,
+			);
+			path = Line;
 			sourceTree = "<group>";
 		};
 		3234570525DFB30E00284808 /* BackgroundShadowView */ = {
@@ -1154,6 +1182,7 @@
 		32810EF325DF12C4004E305C /* MonthlyCardViewBody */ = {
 			isa = PBXGroup;
 			children = (
+				3220B8AC25E7A9700086577E /* Line */,
 				32810EF425DF12D4004E305C /* MonthlyCardViewBody.xib */,
 				32810EF625DF12DC004E305C /* MonthlyCardViewBody.swift */,
 			);
@@ -1278,7 +1307,6 @@
 			isa = PBXGroup;
 			children = (
 				3234570A25DFDF6D00284808 /* YearViewBody */,
-				3234570525DFB30E00284808 /* BackgroundShadowView */,
 				32810EF825DF23EE004E305C /* ChartViewBody */,
 				32810EF325DF12C4004E305C /* MonthlyCardViewBody */,
 				32E506F525DE98A200BC6070 /* CardViewHeader */,
@@ -2284,6 +2312,7 @@
 		FBFAF47925669C3F0012E4A6 /* ServerQueries */ = {
 			isa = PBXGroup;
 			children = (
+				32111D6925E5568C00DB775C /* GetMonthlySummary */,
 				3273B8B42535D258003DB100 /* Models */,
 				3273B8AF2535CB21003DB100 /* GetByIds */,
 			);
@@ -2293,7 +2322,6 @@
 		FBFAF47A25669CCA0012E4A6 /* Queries */ = {
 			isa = PBXGroup;
 			children = (
-				32111D6925E5568C00DB775C /* GetMonthlySummary */,
 				FBFAF48025669EE90012E4A6 /* Models */,
 				FBFAF47B25669CD30012E4A6 /* GetAll */,
 			);
@@ -2419,6 +2447,7 @@
 				FBD9CACE237580DB006C07FA /* Main.storyboard in Resources */,
 				3234570C25DFDF7C00284808 /* YearViewBody.xib in Resources */,
 				D787BE79208DCA6B00E20873 /* celebration.gif in Resources */,
+				3220B8AE25E7A98F0086577E /* MonthlyCardViewLine.xib in Resources */,
 				27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */,
 				DFBF338D2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				FB94D1CC24EBD88800C61ECE /* CollectGroupLabel.xib in Resources */,
@@ -2611,6 +2640,7 @@
 				FBC1857A24C0647C001A4C6B /* NotLoggedInError.swift in Sources */,
 				FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */,
 				DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */,
+				3220B8B525E7C9D40086577E /* MonthlySummaryValue.swift in Sources */,
 				3260CF19254AB72800BA6BD7 /* DiscoverOrAmountSetupSingleDonationRouteHandler.swift in Sources */,
 				3216ED812541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift in Sources */,
 				326E0970256D42180079B4B0 /* OpenFeatureByIdRoute.swift in Sources */,
@@ -2748,6 +2778,7 @@
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				DF05015624F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift in Sources */,
 				A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */,
+				3220B8B025E7A9AB0086577E /* MonthlyCardViewLine.swift in Sources */,
 				3260CF2A254ABF6900BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler.swift in Sources */,
 				DF3FD7882512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift in Sources */,
 				3260CF32254AC8B200BA6BD7 /* DiscoverOrAmountSuccessViewController.swift in Sources */,
@@ -2838,6 +2869,7 @@
 				D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */,
 				3273B8AE2535C3D7003DB100 /* RecurringDonationRuleViewModel.swift in Sources */,
 				3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */,
+				3220B8B325E7BCFB0086577E /* MonthlySummaryKey.swift in Sources */,
 				32F21E97254850E7003E46D5 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
