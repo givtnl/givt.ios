@@ -36,11 +36,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7RY-xw-JpH" userLabel="mainView">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLo-Jn-1wz">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLo-Jn-1wz">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WyI-IN-h7K">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="739"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="784"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x63-aR-afc" customClass="MonthlySummary" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="144.5" y="20" width="125" height="165"/>
@@ -81,7 +81,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPk-5v-igI" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="269" width="374" height="100"/>
+                                                        <rect key="frame" x="20" y="269" width="374" height="145"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3DR-wi-43U" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -91,10 +91,62 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IM9-Mi-cEF" customClass="MonthlyCardViewBody" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="30" width="374" height="70"/>
+                                                                <rect key="frame" x="0.0" y="30" width="374" height="115"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDQ-8I-afB" userLabel="labelGivt">
+                                                                        <rect key="frame" x="20" y="15" width="36" height="19.5"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.35502952440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ogc-tT-6Q1">
+                                                                        <rect key="frame" x="0.0" y="34.5" width="374" height="0.0"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" id="Ubp-qe-4Dd"/>
+                                                                        </constraints>
+                                                                    </stackView>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WM7-7D-8jP" userLabel="borderView">
+                                                                        <rect key="frame" x="20" y="49.5" width="334" height="1"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="1" id="EDM-EQ-Poc"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="goF-vp-Bzz" userLabel="labelNotGivt">
+                                                                        <rect key="frame" x="20" y="65.5" width="36" height="19.5"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.35502952440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lQ4-2a-dpL">
+                                                                        <rect key="frame" x="0.0" y="85" width="374" height="0.0"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" id="cVj-GK-6AB"/>
+                                                                        </constraints>
+                                                                    </stackView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fny-Xa-lVr">
+                                                                        <rect key="frame" x="164" y="85" width="46" height="30"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                    </button>
+                                                                </subviews>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="70" id="lBl-jw-nt3"/>
+                                                                    <constraint firstItem="lQ4-2a-dpL" firstAttribute="leading" secondItem="IM9-Mi-cEF" secondAttribute="leading" id="0tH-pH-R1d"/>
+                                                                    <constraint firstItem="Fny-Xa-lVr" firstAttribute="centerX" secondItem="IM9-Mi-cEF" secondAttribute="centerX" id="2dt-Jf-aLy"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="ogc-tT-6Q1" secondAttribute="trailing" id="3FV-xu-jIU"/>
+                                                                    <constraint firstItem="WM7-7D-8jP" firstAttribute="top" secondItem="ogc-tT-6Q1" secondAttribute="bottom" constant="15" id="73M-n0-O2B"/>
+                                                                    <constraint firstItem="Fny-Xa-lVr" firstAttribute="top" secondItem="lQ4-2a-dpL" secondAttribute="bottom" id="7A4-CR-M3m"/>
+                                                                    <constraint firstItem="TDQ-8I-afB" firstAttribute="top" secondItem="IM9-Mi-cEF" secondAttribute="top" constant="15" id="7iC-dq-AVw"/>
+                                                                    <constraint firstItem="WM7-7D-8jP" firstAttribute="leading" secondItem="IM9-Mi-cEF" secondAttribute="leading" constant="20" id="FX9-Tu-dEa"/>
+                                                                    <constraint firstItem="goF-vp-Bzz" firstAttribute="top" secondItem="WM7-7D-8jP" secondAttribute="bottom" constant="15" id="VRn-sw-xIN"/>
+                                                                    <constraint firstItem="TDQ-8I-afB" firstAttribute="leading" secondItem="IM9-Mi-cEF" secondAttribute="leading" constant="20" id="VbP-t8-Nie"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="WM7-7D-8jP" secondAttribute="trailing" constant="20" id="aWm-1j-R3T"/>
+                                                                    <constraint firstItem="goF-vp-Bzz" firstAttribute="leading" secondItem="IM9-Mi-cEF" secondAttribute="leading" constant="20" id="b6o-P3-h8h"/>
+                                                                    <constraint firstItem="ogc-tT-6Q1" firstAttribute="top" secondItem="TDQ-8I-afB" secondAttribute="bottom" id="bko-J3-Kfh"/>
+                                                                    <constraint firstItem="ogc-tT-6Q1" firstAttribute="leading" secondItem="IM9-Mi-cEF" secondAttribute="leading" id="gCm-uE-vZO"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="lQ4-2a-dpL" secondAttribute="trailing" id="now-TA-eu2"/>
+                                                                    <constraint firstItem="lQ4-2a-dpL" firstAttribute="top" secondItem="goF-vp-Bzz" secondAttribute="bottom" id="q7U-KI-9Fr"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="Fny-Xa-lVr" secondAttribute="bottom" id="qV3-xm-bGF"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -110,7 +162,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpN-cF-0Wb" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="384" width="374" height="180"/>
+                                                        <rect key="frame" x="20" y="429" width="374" height="180"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNJ-DF-KkV" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -137,7 +189,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfC-9P-EC7" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="579" width="374" height="140"/>
+                                                        <rect key="frame" x="20" y="624" width="374" height="140"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IlB-hW-U0S" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -220,13 +272,19 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="buttonSeeMore" destination="Fny-Xa-lVr" id="DUL-7Q-HTr"/>
                         <outlet property="chartViewBody" destination="Xeh-1u-1tz" id="odR-lT-g73"/>
                         <outlet property="chartViewHeader" destination="nNJ-DF-KkV" id="EU4-z8-GX7"/>
                         <outlet property="givtNowButton" destination="VB2-d6-wv3" id="rqT-E8-yeg"/>
-                        <outlet property="monthlyCardBody" destination="IM9-Mi-cEF" id="5jC-PS-IyL"/>
+                        <outlet property="labelGivt" destination="TDQ-8I-afB" id="jKS-6V-jSu"/>
+                        <outlet property="labelNotGivt" destination="goF-vp-Bzz" id="gel-2c-45h"/>
                         <outlet property="monthlyCardHeader" destination="3DR-wi-43U" id="TFc-QC-g8j"/>
-                        <outlet property="monthlyCardViewBodyHeight" destination="lBl-jw-nt3" id="2bb-DW-Mph"/>
                         <outlet property="monthlySummaryTile" destination="x63-aR-afc" id="dth-hB-b54"/>
+                        <outlet property="stackViewGivt" destination="ogc-tT-6Q1" id="FNV-By-FjD"/>
+                        <outlet property="stackViewGivtHeight" destination="Ubp-qe-4Dd" id="qcp-ji-D2T"/>
+                        <outlet property="stackViewNotGivt" destination="lQ4-2a-dpL" id="gXm-c0-xK6"/>
+                        <outlet property="stackViewNotGivtHeight" destination="cVj-GK-6AB" id="Yiw-zf-HtP"/>
+                        <outlet property="viewBorder" destination="WM7-7D-8jP" id="HQw-9S-frz"/>
                         <outlet property="yearViewBody" destination="cON-ZA-46W" id="vpW-Of-A9H"/>
                         <outlet property="yearViewHeader" destination="IlB-hW-U0S" id="c1q-fx-jr5"/>
                     </connections>

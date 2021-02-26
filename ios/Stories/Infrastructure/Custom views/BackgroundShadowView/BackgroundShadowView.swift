@@ -27,7 +27,7 @@ class BackgroundShadowView: UIView {
         bundle.loadNibNamed("BackgroundShadowView", owner: self, options: nil)
         shadowAndCorners()
         addSubview(contentView)
-        contentView.frame = self.bounds
+        contentView.frame = self.layer.frame
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 
@@ -41,10 +41,10 @@ class BackgroundShadowView: UIView {
         self.backgroundColor = UIColor.clear
         
         borderView = UIView()
-        borderView.isUserInteractionEnabled = true
+        borderView.isUserInteractionEnabled = false
         borderView.translatesAutoresizingMaskIntoConstraints = false
         borderView.backgroundColor = .clear
-        borderView.frame = self.bounds
+        borderView.frame = self.layer.frame
 //        borderView.layer.cornerRadius = 4
         borderView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         borderView.layer.borderWidth = 1

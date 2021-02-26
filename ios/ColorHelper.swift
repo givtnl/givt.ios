@@ -24,4 +24,6 @@ public class ColorHelper {
     public static var SoftenedGivtPurple: UIColor = #colorLiteral(red: 0.3450980392, green: 0.3294117647, blue: 0.4745098039, alpha: 1)
     public static var ActiveMonthForChart: UIColor = #colorLiteral(red: 0.7960784314, green: 0.7882352941, blue: 0.8352941176, alpha: 1)
     public static var LightGreenChart: UIColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
+    public static var SummaryLightGray: UIColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
+    
 }

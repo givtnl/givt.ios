@@ -9,9 +9,6 @@
 import UIKit
 
 class MonthlyCardViewBody: UIView {
-    private var borderView: UIView!
-    @IBOutlet weak var stackView: UIStackView!
-    
     @IBOutlet var contentView: UIView!
         
     override init(frame: CGRect) {
@@ -31,8 +28,5 @@ class MonthlyCardViewBody: UIView {
     private func commonInit() {
         let bundle = Bundle(for: MonthlyCardViewBody.self)
         bundle.loadNibNamed("MonthlyCardViewBody", owner: self, options: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 }
