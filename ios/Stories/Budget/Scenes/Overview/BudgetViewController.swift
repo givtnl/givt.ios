@@ -17,7 +17,21 @@ class BudgetViewController : UIViewController {
     @IBOutlet weak var givtNowButton: CustomButton!
     
     @IBOutlet weak var monthlyCardHeader: CardViewHeader!
-    @IBOutlet weak var monthlyCardBody: MonthlyCardViewBody!
+    
+    @IBOutlet weak var labelGivt: UILabel!
+    @IBOutlet weak var stackViewGivt: UIStackView!
+    
+    @IBOutlet weak var viewBorder: UIView!
+    
+    @IBOutlet weak var labelNotGivt: UILabel!
+    @IBOutlet weak var stackViewNotGivt: UIStackView!
+    
+    @IBOutlet weak var buttonSeeMore: UIButton!
+    
+    @IBOutlet weak var buttonPlus: UIButton!
+    @IBOutlet weak var stackViewGivtHeight: NSLayoutConstraint!
+    @IBOutlet weak var stackViewNotGivtHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var monthlyCardViewBodyHeight: NSLayoutConstraint!
     
     @IBOutlet weak var chartViewHeader: CardViewHeader!
@@ -39,12 +53,18 @@ class BudgetViewController : UIViewController {
         navigationItem.title = getFullMonthStringFromDateValue(value: Date()).capitalized
         chartViewHeader.label.text = "BudgetSummaryMonth".localized
         yearViewHeader.label.text = "BudgetSummaryYear".localized
-        
+        labelGivt.text = "BudgetSummaryGivt".localized
+        labelNotGivt.text = "BudgetSummaryNotGivt".localized
+        buttonSeeMore.setAttributedTitle(NSMutableAttributedString(string: "BudgetSummaryShowAll".localized,
+                                      attributes: [NSAttributedString.Key.underlineStyle : true]), for: .normal)
+        buttonSeeMore.setTitleColor(ColorHelper.SummaryLightGray, for: .normal)
+//        buttonPlus.backgroundColor = ColorHelper.LightGreenChart
+        viewBorder.backgroundColor = ColorHelper.SummaryLightGray
         // delegates for chart formatters
         axisMonthFormatDelegate = chartViewBody.self
         axisYearFormatDelegate = yearViewBody.self
-        
-        setupCollectGroupsCard()
+        setupTesting()
+//        setupCollectGroupsCard()
         setupMonthsCard()
         setupYearsCard()
     }
@@ -55,7 +75,28 @@ class BudgetViewController : UIViewController {
     @IBAction func giveNowButton(_ sender: Any) {
         try? mediater.send(request: OpenGiveNowRoute(), withContext: self)
     }
-    
+    @IBAction func buttonPlusTapped(_ sender: Any) {
+        print("plus tapped")
+    }
+    private func setupTesting() {
+        let noGivtsYet = MonthlyCardViewLine()
+        noGivtsYet.collectGroupLabel.text = "Nog geen giften"
+        stackViewGivt.addArrangedSubview(noGivtsYet)
+        stackViewGivtHeight.constant += 22
+        let noGivtsYet2 = MonthlyCardViewLine()
+        noGivtsYet2.collectGroupLabel.text = "Nog geen giften"
+        stackViewGivt.addArrangedSubview(noGivtsYet2)
+        stackViewNotGivtHeight.constant += 22
+        
+        let noGivtsYet3 = MonthlyCardViewLine()
+        noGivtsYet.collectGroupLabel.text = "Nog geen giften"
+        stackViewNotGivt.addArrangedSubview(noGivtsYet3)
+        stackViewGivtHeight.constant += 22
+        let noGivtsYet4 = MonthlyCardViewLine()
+        noGivtsYet2.collectGroupLabel.text = "Nog geen giften"
+        stackViewNotGivt.addArrangedSubview(noGivtsYet4)
+        stackViewNotGivtHeight.constant += 22
+    }
     private func setupCollectGroupsCard() {
         let collectGroupsForCurrentMonth: [MonthlySummaryDetailModel] = try! mediater.send(request: GetMonthlySummaryQuery(
                                                                                             fromDate: getFromDateForCurrentMonth(),
@@ -63,15 +104,44 @@ class BudgetViewController : UIViewController {
                                                                                             groupType: 2,
                                                                                             orderType: 0))
 
-        if collectGroupsForCurrentMonth.count > 0 {
-            collectGroupsForCurrentMonth.forEach { model in
+        if collectGroupsForCurrentMonth.count >= 2 {
+            let firstTwoCollectGroups = [collectGroupsForCurrentMonth[0], collectGroupsForCurrentMonth[1]]
+
+            firstTwoCollectGroups.forEach { model in
                 let view = MonthlyCardViewLine()
                 view.collectGroupLabel.text = model.Key
-                view.amountLabel.text = "€\(String(format: "%.2f", model.Value))"
-                monthlyCardBody.stackView.addArrangedSubview(view)
-                monthlyCardViewBodyHeight.constant += 22
+                view.amountLabel.text = "€ \(String(format: "%.2f", model.Value))"
+                stackViewGivt.addArrangedSubview(view)
+                stackViewGivtHeight.constant += 22
             }
         }
+        
+//        let noGivtsYet = MonthlyCardViewLine()
+//        noGivtsYet.collectGroupLabel.text = "Nog geen giften"
+//        monthlyCardBody.notGivtStackview.addArrangedSubview(noGivtsYet)
+//        monthlyCardBody.notGivtStackViewHeight.constant += 22
+//        monthlyCardViewBodyHeight.constant += 22
+        
+        let eReke = MonthlyCardViewLine()
+        eReke.collectGroupLabel.text = "Rode kruis"
+        eReke.amountLabel.text = "€ 20"
+        stackViewNotGivt.addArrangedSubview(eReke)
+        stackViewNotGivtHeight.constant += 22
+        monthlyCardViewBodyHeight.constant += 22
+
+        let nogEReke = MonthlyCardViewLine()
+        nogEReke.collectGroupLabel.text = "Ah yeet"
+        nogEReke.amountLabel.text = "€20"
+        stackViewNotGivt.addArrangedSubview(nogEReke)
+        stackViewNotGivtHeight.constant += 22
+        monthlyCardViewBodyHeight.constant += 22
+
+        let puntjes = MonthlyCardViewLine()
+        puntjes.collectGroupLabel.text = "..."
+        stackViewNotGivt.addArrangedSubview(puntjes)
+        stackViewNotGivtHeight.constant += 35
+        monthlyCardViewBodyHeight.constant += 35
+        
     }
     private func setupYearsCard() {
         var yearChartValues: [Double] = []
