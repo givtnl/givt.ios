@@ -9,7 +9,7 @@ import Charts
 import UIKit
 
 class YearViewBody: UIView, AxisValueFormatter {
-    var years: [String]!
+    var years: [String] = []
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return years[Int(value)].lowercased()
