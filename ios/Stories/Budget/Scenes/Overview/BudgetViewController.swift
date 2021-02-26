@@ -30,16 +30,33 @@ class BudgetViewController : UIViewController {
     // stuff for the chart
     weak var axisMonthFormatDelegate: AxisValueFormatter?
     weak var axisYearFormatDelegate: AxisValueFormatter?
-    
-    private var months: [String]!
-    
+        
     override func viewDidLoad() {
-        monthlySummaryTile.amountLabel.text = "€5"
-        monthlySummaryTile.descriptionLabel.text = "deze maand gegeven"
-        givtNowButton.setTitle("Ik wil nu geven", for: .normal)
+        monthlySummaryTile.descriptionLabel.text = "BudgetSummaryBalance".localized
+        givtNowButton.setTitle("BudgetSummaryGiveNow".localized, for: .normal)
         
-        monthlyCardHeader.label.text = "Februari".lowercased()
+        monthlyCardHeader.label.text = getFullMonthStringFromDateValue(value: Date())
+        navigationController?.title = getFullMonthStringFromDateValue(value: Date())
+        chartViewHeader.label.text = "BudgetSummaryMonth".localized
+        yearViewHeader.label.text = "BudgetSummaryYear".localized
         
+        // delegates for chart formatters
+        axisMonthFormatDelegate = chartViewBody.self
+        axisYearFormatDelegate = yearViewBody.self
+        
+        setupCollectGroupsCard()
+        setupMonthsCard()
+        setupYearsCard()
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        try? mediater.send(request: BackToMainRoute(), withContext: self)
+    }
+    @IBAction func giveNowButton(_ sender: Any) {
+        try? mediater.send(request: OpenGiveNowRoute(), withContext: self)
+    }
+    
+    private func setupCollectGroupsCard() {
         let collectGroupsForCurrentMonth: [MonthlySummaryDetailModel] = try! mediater.send(request: GetMonthlySummaryQuery(
                                                                                             fromDate: getFromDateForCurrentMonth(),
                                                                                             tillDate: getTillDateForCurrentMonth(),
@@ -55,24 +72,23 @@ class BudgetViewController : UIViewController {
                 monthlyCardViewBodyHeight.constant += 22
             }
         }
-        
-        chartViewHeader.label.text = "Per maand".lowercased()
-        yearViewHeader.label.text = "Per jaar".lowercased()
-        
-        // delegates for chart formatters
-        axisMonthFormatDelegate = chartViewBody.self
-        axisYearFormatDelegate = yearViewBody.self
+    }
+    private func setupYearsCard() {
+        var yearChartValues: [Double] = []
 
+        let yearlySummary: [MonthlySummaryDetailModel] = try! mediater.send(request: GetMonthlySummaryQuery(
+                                                                                fromDate: getFromDateForYearlyOverview(),
+                                                                                tillDate: getTillDateForCurrentMonth(),
+                                                                                groupType: 1,
+                                                                                orderType: 0))
+        yearlySummary.reversed().forEach { model in
+            yearViewBody.years.append(model.Key)
+            yearChartValues.append(model.Value)
+        }
         //setup the chart for years
-        yearViewBody.years = ["2021", "2020"]
-        let yearChartValues = [70, 800.0]
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
-        
-//        // setup the chart for months
-//        var lastMonthInt = 0
-//        var lastMonthDate: Date?
-//        var monthValues: [Double] = []
-//
+    }
+    private func setupMonthsCard() {
         // get values for monthly summary chart
         let monthlySummarymodels: [MonthlySummaryDetailModel] = try! mediater.send(request: GetMonthlySummaryQuery(
                                                                                     fromDate: getFromDateForMonthsChart(),
@@ -118,21 +134,13 @@ class BudgetViewController : UIViewController {
             doubleValues.append(monthlySummaryValue.Value)
         }
         
+        monthlySummaryTile.amountLabel.text = "€\(String(format: "%.2f", doubleValues.last!))"
         
         print(monthsDictionary.count)
         
         chartViewBody.trueAverage = doubleValues.reduce(0, +)/Double(doubleValues.count)
         chartViewBody.months = monthStrings
         setVerticalChart(dataPoints: chartViewBody.months, values: doubleValues, chartView: chartViewBody.chartView, trueAverage: chartViewBody.trueAverage)
-        // end of setup the chart for months
-
-    }
-    
-    @IBAction func backButton(_ sender: Any) {
-        try? mediater.send(request: BackToMainRoute(), withContext: self)
-    }
-    @IBAction func giveNowButton(_ sender: Any) {
-        try? mediater.send(request: OpenGiveNowRoute(), withContext: self)
     }
     private func getFromDateForCurrentMonth() -> String {
         let calendar = Calendar.current
@@ -228,6 +236,12 @@ class BudgetViewController : UIViewController {
         dateFormatter.dateFormat = "MMM"
         return dateFormatter.string(from: value).replacingOccurrences(of: ".", with: String.empty)
     }
+    private func getFullMonthStringFromDateValue(value: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: value).replacingOccurrences(of: ".", with: String.empty)
+    }
     private func getDateFromInt(value: Int) -> Date {
         var dateComponents = DateComponents()
         dateComponents.month = value
@@ -235,8 +249,8 @@ class BudgetViewController : UIViewController {
     }
     private func getKeyValues(fromDate: Date) -> MonthlySummaryKey {
         let calendar = Calendar.current
-        let currentYear = Calendar.current.component(.year, from: fromDate)
-        let currentMonth = Calendar.current.component(.month, from: fromDate)
+        let currentYear = calendar.component(.year, from: fromDate)
+        let currentMonth = calendar.component(.month, from: fromDate)
         return MonthlySummaryKey(Year: currentYear, Month: currentMonth)
     }
     private func createDateByMonthAndYear(month: Int, year: Int) -> Date {
@@ -244,6 +258,14 @@ class BudgetViewController : UIViewController {
         dateComponents.month = month
         dateComponents.year = year
         return Calendar.current.date(from: dateComponents)!
+    }
+    private func getFromDateForYearlyOverview() -> String {
+        var componentsForYearlySummaryComponents = DateComponents()
+        componentsForYearlySummaryComponents.day = 1
+        componentsForYearlySummaryComponents.month = 1
+        componentsForYearlySummaryComponents.year = Calendar.current.component(.year, from: Date()) - 1
+        return getMonthStringFromDateValue(value: Calendar.current.date(from: componentsForYearlySummaryComponents)!)
+
     }
 }
 
