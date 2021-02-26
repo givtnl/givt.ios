@@ -35,8 +35,8 @@ class BudgetViewController : UIViewController {
         monthlySummaryTile.descriptionLabel.text = "BudgetSummaryBalance".localized
         givtNowButton.setTitle("BudgetSummaryGiveNow".localized, for: .normal)
         
-        monthlyCardHeader.label.text = getFullMonthStringFromDateValue(value: Date())
-        navigationController?.title = getFullMonthStringFromDateValue(value: Date())
+        monthlyCardHeader.label.text = getFullMonthStringFromDateValue(value: Date()).capitalized
+        navigationItem.title = getFullMonthStringFromDateValue(value: Date()).capitalized
         chartViewHeader.label.text = "BudgetSummaryMonth".localized
         yearViewHeader.label.text = "BudgetSummaryYear".localized
         
@@ -135,9 +135,7 @@ class BudgetViewController : UIViewController {
         }
         
         monthlySummaryTile.amountLabel.text = "€\(String(format: "%.2f", doubleValues.last!))"
-        
-        print(monthsDictionary.count)
-        
+                
         chartViewBody.trueAverage = doubleValues.reduce(0, +)/Double(doubleValues.count)
         chartViewBody.months = monthStrings
         setVerticalChart(dataPoints: chartViewBody.months, values: doubleValues, chartView: chartViewBody.chartView, trueAverage: chartViewBody.trueAverage)
