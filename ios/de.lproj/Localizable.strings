@@ -1018,7 +1018,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetSummaryGiveNow" = "I want to give now!";
 "BudgetSummaryGivt" = "Via Givt";
 "BudgetSummaryNotGivt" = "Not via Givt";
-"BudgetSummary ShowAll" = "Show all";
+"BudgetSummaryShowAll" = "Show all";
 "BudgetSummaryMonth" = "Per month";
 "BudgetSummaryYear" = "Per Year";
 "BudgetExternalGiftsTitle" = "External donations";
