@@ -8,6 +8,7 @@
 import Charts
 import Foundation
 import UIKit
+import SVProgressHUD
 
 class BudgetViewController : UIViewController {    
     @IBOutlet weak var monthlySummaryTile: MonthlySummary!
@@ -31,9 +32,18 @@ class BudgetViewController : UIViewController {
         super.viewDidLoad()
         setupTerms()
         setupTesting()
+       
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if !SVProgressHUD.isVisible() {
+            SVProgressHUD.show()
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
         setupCollectGroupsCard()
         setupMonthsCard()
         setupYearsCard()
+        SVProgressHUD.dismiss()
     }
 }
 
