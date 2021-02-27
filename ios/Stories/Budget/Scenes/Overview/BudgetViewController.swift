@@ -28,7 +28,6 @@ class BudgetViewController : UIViewController {
     
     @IBOutlet weak var buttonSeeMore: UIButton!
     
-    @IBOutlet weak var buttonPlus: UIButton!
     @IBOutlet weak var stackViewGivtHeight: NSLayoutConstraint!
     @IBOutlet weak var stackViewNotGivtHeight: NSLayoutConstraint!
     
@@ -75,27 +74,27 @@ class BudgetViewController : UIViewController {
     @IBAction func giveNowButton(_ sender: Any) {
         try? mediater.send(request: OpenGiveNowRoute(), withContext: self)
     }
-    @IBAction func buttonPlusTapped(_ sender: Any) {
-        print("plus tapped")
+    @IBAction func buttonSeeMore(_ sender: Any) {
+        print("See more pressed")
     }
+    
     private func setupTesting() {
         let noGivtsYet = MonthlyCardViewLine()
-        noGivtsYet.collectGroupLabel.text = "Nog geen giften"
         stackViewGivt.addArrangedSubview(noGivtsYet)
         stackViewGivtHeight.constant += 22
         let noGivtsYet2 = MonthlyCardViewLine()
-        noGivtsYet2.collectGroupLabel.text = "Nog geen giften"
         stackViewGivt.addArrangedSubview(noGivtsYet2)
         stackViewNotGivtHeight.constant += 22
         
         let noGivtsYet3 = MonthlyCardViewLine()
-        noGivtsYet.collectGroupLabel.text = "Nog geen giften"
+        noGivtsYet3.collectGroupLabel.text = "Nog geen giften"
         stackViewNotGivt.addArrangedSubview(noGivtsYet3)
         stackViewGivtHeight.constant += 22
         let noGivtsYet4 = MonthlyCardViewLine()
-        noGivtsYet2.collectGroupLabel.text = "Nog geen giften"
+        noGivtsYet4.collectGroupLabel.text = "Nog geen giften"
         stackViewNotGivt.addArrangedSubview(noGivtsYet4)
         stackViewNotGivtHeight.constant += 22
+        
     }
     private func setupCollectGroupsCard() {
         let collectGroupsForCurrentMonth: [MonthlySummaryDetailModel] = try! mediater.send(request: GetMonthlySummaryQuery(
@@ -115,33 +114,6 @@ class BudgetViewController : UIViewController {
                 stackViewGivtHeight.constant += 22
             }
         }
-        
-//        let noGivtsYet = MonthlyCardViewLine()
-//        noGivtsYet.collectGroupLabel.text = "Nog geen giften"
-//        monthlyCardBody.notGivtStackview.addArrangedSubview(noGivtsYet)
-//        monthlyCardBody.notGivtStackViewHeight.constant += 22
-//        monthlyCardViewBodyHeight.constant += 22
-        
-        let eReke = MonthlyCardViewLine()
-        eReke.collectGroupLabel.text = "Rode kruis"
-        eReke.amountLabel.text = "€ 20"
-        stackViewNotGivt.addArrangedSubview(eReke)
-        stackViewNotGivtHeight.constant += 22
-        monthlyCardViewBodyHeight.constant += 22
-
-        let nogEReke = MonthlyCardViewLine()
-        nogEReke.collectGroupLabel.text = "Ah yeet"
-        nogEReke.amountLabel.text = "€20"
-        stackViewNotGivt.addArrangedSubview(nogEReke)
-        stackViewNotGivtHeight.constant += 22
-        monthlyCardViewBodyHeight.constant += 22
-
-        let puntjes = MonthlyCardViewLine()
-        puntjes.collectGroupLabel.text = "..."
-        stackViewNotGivt.addArrangedSubview(puntjes)
-        stackViewNotGivtHeight.constant += 35
-        monthlyCardViewBodyHeight.constant += 35
-        
     }
     private func setupYearsCard() {
         var yearChartValues: [Double] = []
