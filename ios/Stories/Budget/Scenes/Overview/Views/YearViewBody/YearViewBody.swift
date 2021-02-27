@@ -8,15 +8,12 @@
 import Charts
 import UIKit
 
-class YearViewBody: UIView, AxisValueFormatter {
+class YearViewBody: UIView {
     private weak var axisYearFormatDelegate: AxisValueFormatter?
 
     var years: [String] = []
     
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return years[Int(value)].lowercased()
-    }
-    
+   
     private var borderView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var chartView: HorizontalBarChartView!
@@ -42,6 +39,11 @@ class YearViewBody: UIView, AxisValueFormatter {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         axisYearFormatDelegate = self
         chartView.xAxis.valueFormatter = axisYearFormatDelegate
+    }
+}
 
+extension YearViewBody: AxisValueFormatter {
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        return years[Int(value)].lowercased()
     }
 }
