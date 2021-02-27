@@ -33,7 +33,7 @@ class LineWithButton : UIView {
         contentView.frame = self.layer.frame
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         contentView.isUserInteractionEnabled = false
-//        addButton.ogBGColor = ColorHelper.LightGreenChart
+        addButton.ogBGColor = ColorHelper.LightGreenChart
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {

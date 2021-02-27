@@ -26,9 +26,6 @@ class BackgroundShadowView: UIView {
         let bundle = Bundle(for: BackgroundShadowView.self)
         bundle.loadNibNamed("BackgroundShadowView", owner: self, options: nil)
         shadowAndCorners()
-        addSubview(contentView)
-        contentView.frame = self.layer.frame
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 
     func shadowAndCorners() {
@@ -38,23 +35,6 @@ class BackgroundShadowView: UIView {
         self.layer.shadowOffset = CGSize(width: 1.5, height: 1.5)
         self.layer.shouldRasterize = true
         self.layer.rasterizationScale = UIScreen.main.scale
-        self.backgroundColor = UIColor.clear
-        
-        borderView = UIView()
-        borderView.isUserInteractionEnabled = false
-        borderView.translatesAutoresizingMaskIntoConstraints = false
-        borderView.backgroundColor = .clear
-        borderView.frame = self.layer.frame
-//        borderView.layer.cornerRadius = 4
-        borderView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
-        borderView.layer.borderWidth = 1
-        borderView.layer.masksToBounds = true
-        self.addSubview(borderView)
-        
-        borderView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        borderView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        borderView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        borderView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        
+        self.backgroundColor = .clear
     }
 }
