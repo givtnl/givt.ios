@@ -9,6 +9,8 @@ import Charts
 import UIKit
 
 class YearViewBody: UIView, AxisValueFormatter {
+    private weak var axisYearFormatDelegate: AxisValueFormatter?
+
     var years: [String] = []
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
@@ -38,5 +40,8 @@ class YearViewBody: UIView, AxisValueFormatter {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        axisYearFormatDelegate = self
+        chartView.xAxis.valueFormatter = axisYearFormatDelegate
+
     }
 }
