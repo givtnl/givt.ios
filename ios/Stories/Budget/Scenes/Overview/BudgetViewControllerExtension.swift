@@ -121,6 +121,7 @@ extension BudgetViewController {
                                                                                 tillDate: getTillDateForCurrentMonth(),
                                                                                 groupType: 1,
                                                                                 orderType: 0))
+        yearViewBody.years = []
         yearlySummary.reversed().forEach { model in
             yearViewBody.years.append(model.Key)
             yearChartValues.append(model.Value)

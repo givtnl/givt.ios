@@ -398,7 +398,7 @@
                     <navigationItem key="navigationItem" title="Donaties buiten Givt" id="3MD-gf-40A" userLabel="Nav Bar">
                         <barButtonItem key="leftBarButtonItem" image="backbtn" width="50" id="o0p-0D-d0f">
                             <connections>
-                                <action selector="backButton:" destination="Y6W-OH-hqX" id="m10-1m-yXA"/>
+                                <action selector="backButton:" destination="dIS-A1-n3J" id="1gZ-OJ-xK7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

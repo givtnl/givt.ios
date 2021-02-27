@@ -25,6 +25,9 @@ class BudgetExternalGivtsViewController : UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
     }
+    @IBAction func backButton(_ sender: Any) {
+        try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+    }
 }
 
 extension BudgetExternalGivtsViewController {
