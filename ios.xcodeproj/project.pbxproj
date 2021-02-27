@@ -134,6 +134,10 @@
 		32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */; };
 		32F21E97254850E7003E46D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E96254850E7003E46D5 /* MainViewController.swift */; };
 		32F21E992548526B003E46D5 /* InitialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E982548526B003E46D5 /* InitialPageViewController.swift */; };
+		32F528CC25EA9BA90073C243 /* BudgetExternalGivtsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F528CB25EA9BA90073C243 /* BudgetExternalGivtsController.swift */; };
+		32F528CE25EA9DAE0073C243 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F528CD25EA9DAE0073C243 /* NSMutableAttributedString.swift */; };
+		32F528D125EA9F020073C243 /* OpenExternalGivtsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F528D025EA9F020073C243 /* OpenExternalGivtsRoute.swift */; };
+		32F528D325EA9F120073C243 /* OpenExternalGivtsRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F528D225EA9F120073C243 /* OpenExternalGivtsRouteHandler.swift */; };
 		A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C296222AA5EF70098442C /* GiftAidViewController.swift */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D32512386600251AFE /* GoToPushNotificationViewRoute.swift */; };
@@ -535,6 +539,10 @@
 		32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		32F21E96254850E7003E46D5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		32F21E982548526B003E46D5 /* InitialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPageViewController.swift; sourceTree = "<group>"; };
+		32F528CB25EA9BA90073C243 /* BudgetExternalGivtsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExternalGivtsController.swift; sourceTree = "<group>"; };
+		32F528CD25EA9DAE0073C243 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
+		32F528D025EA9F020073C243 /* OpenExternalGivtsRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenExternalGivtsRoute.swift; sourceTree = "<group>"; };
+		32F528D225EA9F120073C243 /* OpenExternalGivtsRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenExternalGivtsRouteHandler.swift; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A40C296222AA5EF70098442C /* GiftAidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidViewController.swift; sourceTree = "<group>"; };
@@ -863,8 +871,8 @@
 		32111D6425E5306400DB775C /* Routes */ = {
 			isa = PBXGroup;
 			children = (
-				32111D6525E5308000DB775C /* OpenGiveNowRoute.swift */,
-				32111D6725E5342B00DB775C /* OpenGiveNowRouteHandler.swift */,
+				32F528D425EA9F160073C243 /* OpenGiveNow */,
+				32F528CF25EA9EEA0073C243 /* OpenExternalGivts */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -914,6 +922,7 @@
 		3215976E25D2FADB0065C80A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				32F528CA25EA9B850073C243 /* ExternalGivt */,
 				3220B8A625E793560086577E /* Overview */,
 			);
 			path = Scenes;
@@ -1410,6 +1419,32 @@
 			path = Scenes;
 			sourceTree = "<group>";
 		};
+		32F528CA25EA9B850073C243 /* ExternalGivt */ = {
+			isa = PBXGroup;
+			children = (
+				32F528CB25EA9BA90073C243 /* BudgetExternalGivtsController.swift */,
+			);
+			path = ExternalGivt;
+			sourceTree = "<group>";
+		};
+		32F528CF25EA9EEA0073C243 /* OpenExternalGivts */ = {
+			isa = PBXGroup;
+			children = (
+				32F528D025EA9F020073C243 /* OpenExternalGivtsRoute.swift */,
+				32F528D225EA9F120073C243 /* OpenExternalGivtsRouteHandler.swift */,
+			);
+			path = OpenExternalGivts;
+			sourceTree = "<group>";
+		};
+		32F528D425EA9F160073C243 /* OpenGiveNow */ = {
+			isa = PBXGroup;
+			children = (
+				32111D6525E5308000DB775C /* OpenGiveNowRoute.swift */,
+				32111D6725E5342B00DB775C /* OpenGiveNowRouteHandler.swift */,
+			);
+			path = OpenGiveNow;
+			sourceTree = "<group>";
+		};
 		4B950123D45CD9CD856C736B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1830,6 +1865,7 @@
 				D7EE4B621F9F3C430091BF2C /* UIViewControllerExtensions.swift */,
 				D73CA1C61F39BD970059A296 /* UserDefaultsExtensions.swift */,
 				32BFA79F25DD0F75003AD5FE /* UIViewExtensions.swift */,
+				32F528CD25EA9DAE0073C243 /* NSMutableAttributedString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2628,6 +2664,7 @@
 				27D7F764222920FB00D3953A /* CustomButtonWithRightArrow.swift in Sources */,
 				D72A89D71FE820F000C06EF6 /* InfoRegistrationViewController.swift in Sources */,
 				D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */,
+				32F528D325EA9F120073C243 /* OpenExternalGivtsRouteHandler.swift in Sources */,
 				32111D6825E5342B00DB775C /* OpenGiveNowRouteHandler.swift in Sources */,
 				D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */,
 				27A0E4EE221F3FF100982842 /* PresetsSettingsViewController.swift in Sources */,
@@ -2754,6 +2791,7 @@
 				DFFF7E8E24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
+				32F528D125EA9F020073C243 /* OpenExternalGivtsRoute.swift in Sources */,
 				DF05015924F8B4C6006196A3 /* BackToSetupRecurringDonationRoute.swift in Sources */,
 				3260CF28254ABF5C00BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRouteHandler.swift in Sources */,
 				3274EB6A25E9C32200FC8D6A /* LineWithIcon.swift in Sources */,
@@ -2808,6 +2846,7 @@
 				A46C8AF0210889A400988D6D /* Beacon.swift in Sources */,
 				32CA17B524CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift in Sources */,
 				D787AE2D1FCD9EFB0004BDB1 /* ILogService.swift in Sources */,
+				32F528CC25EA9BA90073C243 /* BudgetExternalGivtsController.swift in Sources */,
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
 				3260CF12254A31D700BA6BD7 /* DiscoverOrAmountOpenSetupRecurringDonationRouteHandler.swift in Sources */,
@@ -2927,6 +2966,7 @@
 				324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,
 				D7AE8BAB21393B7D00CB3A33 /* AmountPresetsViewController.swift in Sources */,
+				32F528CE25EA9DAE0073C243 /* NSMutableAttributedString.swift in Sources */,
 				3273B8AE2535C3D7003DB100 /* RecurringDonationRuleViewModel.swift in Sources */,
 				3211FB6E24D95BBE00351BC4 /* AmountTextField.swift in Sources */,
 				3220B8B325E7BCFB0086577E /* MonthlySummaryKey.swift in Sources */,

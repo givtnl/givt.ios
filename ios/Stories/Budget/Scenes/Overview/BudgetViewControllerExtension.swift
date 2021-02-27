@@ -142,7 +142,7 @@ private extension BudgetViewController {
         print("See more pressed")
     }
     @IBAction func buttonPlus(_ sender: Any) {
-        print("Plus pressed")
+        try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
     }
     
     private func setHorizontalChart(dataPoints: [String], values: [Double], chartView: HorizontalBarChartView) {
