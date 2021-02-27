@@ -25,5 +25,10 @@ public class ColorHelper {
     public static var ActiveMonthForChart: UIColor = #colorLiteral(red: 0.7960784314, green: 0.7882352941, blue: 0.8352941176, alpha: 1)
     public static var LightGreenChart: UIColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
     public static var SummaryLightGray: UIColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1)
+    public static var BudgetExternalGivtsGreen: UIColor = #colorLiteral(red: 0.2549019608, green: 0.7882352941, blue: 0.5568627451, alpha: 1)
+    
+    public static var UITextFieldBorderColor: UIColor = #colorLiteral(red: 0.7607843137, green: 0.7607843137, blue: 0.7607843137, alpha: 1)
+    
+
     
 }

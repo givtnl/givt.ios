@@ -29,7 +29,5 @@ class MonthlyCardViewBody: UIView {
         let bundle = Bundle(for: MonthlyCardViewBody.self)
         bundle.loadNibNamed("MonthlyCardViewBody", owner: self, options: nil)
         contentView.isUserInteractionEnabled = true
-        contentView.backgroundColor = ColorHelper.Church
-
     }
 }
