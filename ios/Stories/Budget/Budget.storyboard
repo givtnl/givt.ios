@@ -112,7 +112,7 @@
                                                                     </stackView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WM7-7D-8jP" userLabel="borderView">
                                                                         <rect key="frame" x="20" y="64.5" width="334" height="1"/>
-                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="1" id="EDM-EQ-Poc"/>
                                                                         </constraints>
@@ -155,6 +155,9 @@
                                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                                                 <real key="value" value="15"/>
                                                                                             </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                                                                <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            </userDefinedRuntimeAttribute>
                                                                                         </userDefinedRuntimeAttributes>
                                                                                         <connections>
                                                                                             <action selector="buttonPlus:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NOn-ci-swQ"/>
@@ -172,7 +175,9 @@
                                                                             </view>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tT3-A7-Fsi">
                                                                                 <rect key="frame" x="164" y="40" width="46" height="30"/>
-                                                                                <state key="normal" title="Button"/>
+                                                                                <state key="normal" title="Button">
+                                                                                    <color key="titleColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                </state>
                                                                                 <connections>
                                                                                     <action selector="buttonSeeMore:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="9c0-17-USK"/>
                                                                                 </connections>
