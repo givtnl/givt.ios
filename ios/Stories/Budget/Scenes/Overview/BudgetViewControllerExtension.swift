@@ -11,8 +11,39 @@ import Foundation
 import UIKit
 
 extension BudgetViewController {
+    func setupTerms() {
+        monthlySummaryTile.descriptionLabel.text = "BudgetSummaryBalance".localized
+        givtNowButton.setTitle("BudgetSummaryGiveNow".localized, for: .normal)
+        
+        monthlyCardHeader.label.text = getFullMonthStringFromDateValue(value: Date()).capitalized
+        navigationItem.title = getFullMonthStringFromDateValue(value: Date()).capitalized
+        chartViewHeader.label.text = "BudgetSummaryMonth".localized
+        yearViewHeader.label.text = "BudgetSummaryYear".localized
+        labelGivt.text = "BudgetSummaryGivt".localized
+        labelNotGivt.text = "BudgetSummaryNotGivt".localized
+        buttonSeeMore.setAttributedTitle(NSMutableAttributedString(string: "BudgetSummaryShowAll".localized,
+                                      attributes: [NSAttributedString.Key.underlineStyle : true]), for: .normal)
+    }
+    func setupTesting() {
+//        let noGivtsYet = MonthlyCardViewLine()
+//        stackViewGivt.addArrangedSubview(noGivtsYet)
+//        stackViewGivtHeight.constant += 22
+//        let noGivtsYet2 = MonthlyCardViewLine()
+//        stackViewGivt.addArrangedSubview(noGivtsYet2)
+//        stackViewGivtHeight.constant += 22
+        
+        let noGivtsYet3 = MonthlyCardViewLine()
+        noGivtsYet3.collectGroupLabel.text = "Nog geen giften"
+        stackViewNotGivt.addArrangedSubview(noGivtsYet3)
+        stackViewNotGivtHeight.constant += 22
+        let noGivtsYet4 = MonthlyCardViewLine()
+        noGivtsYet4.collectGroupLabel.text = "Nog geen giften"
+        stackViewNotGivt.addArrangedSubview(noGivtsYet4)
+        stackViewNotGivtHeight.constant += 22
+        
+    }
     func setupCollectGroupsCard() {
-        let collectGroupsForCurrentMonth: [MonthlySummaryDetailModel] = try! mediater.send(request: GetMonthlySummaryQuery(
+        let collectGroupsForCurrentMonth: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
                                                                                             fromDate: getFromDateForCurrentMonth(),
                                                                                             tillDate: getTillDateForCurrentMonth(),
                                                                                             groupType: 2,
@@ -32,7 +63,7 @@ extension BudgetViewController {
     }
     func setupMonthsCard() {
         // get values for monthly summary chart
-        let monthlySummarymodels: [MonthlySummaryDetailModel] = try! mediater.send(request: GetMonthlySummaryQuery(
+        let monthlySummarymodels: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
                                                                                     fromDate: getFromDateForMonthsChart(),
                                                                                     tillDate: getTillDateForMonthsChart(),
                                                                                     groupType: 0,
@@ -85,7 +116,7 @@ extension BudgetViewController {
     func setupYearsCard() {
         var yearChartValues: [Double] = []
 
-        let yearlySummary: [MonthlySummaryDetailModel] = try! mediater.send(request: GetMonthlySummaryQuery(
+        let yearlySummary: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
                                                                                 fromDate: getFromDateForYearlyOverview(),
                                                                                 tillDate: getTillDateForCurrentMonth(),
                                                                                 groupType: 1,
@@ -97,21 +128,15 @@ extension BudgetViewController {
         //setup the chart for years
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
     }
-    func getFullMonthStringFromDateValue(value: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current
-        dateFormatter.dateFormat = "MMMM"
-        return dateFormatter.string(from: value).replacingOccurrences(of: ".", with: String.empty)
-    }
 
 }
 //MARK: Private extension - used to store private methods
 private extension BudgetViewController {
     @IBAction func backButton(_ sender: Any) {
-        try? mediater.send(request: BackToMainRoute(), withContext: self)
+        try? Mediater.shared.send(request: BackToMainRoute(), withContext: self)
     }
     @IBAction func giveNowButton(_ sender: Any) {
-        try? mediater.send(request: OpenGiveNowRoute(), withContext: self)
+        try? Mediater.shared.send(request: OpenGiveNowRoute(), withContext: self)
     }
     @IBAction func buttonSeeMore(_ sender: Any) {
         print("See more pressed")
@@ -120,7 +145,7 @@ private extension BudgetViewController {
         print("Plus pressed")
     }
     
-    func setHorizontalChart(dataPoints: [String], values: [Double], chartView: HorizontalBarChartView) {
+    private func setHorizontalChart(dataPoints: [String], values: [Double], chartView: HorizontalBarChartView) {
         var dataEntries: [BarChartDataEntry] = []
         var chartColors: [UIColor] = []
         
@@ -177,7 +202,7 @@ private extension BudgetViewController {
         
         chartView.animate(xAxisDuration: 2.0, yAxisDuration: 0)
     }
-    func setVerticalChart(dataPoints: [String], values: [Double], chartView: BarChartView, trueAverage: Double) {
+    private func setVerticalChart(dataPoints: [String], values: [Double], chartView: BarChartView, trueAverage: Double) {
         
         chartView.noDataText = "Geet gi nog gin givtn."
         chartView.noDataFont = UIFont(name: "Avenir-Book", size: 14)!
@@ -240,7 +265,6 @@ private extension BudgetViewController {
         chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
     }
 
-    
     private func getFromDateForCurrentMonth() -> String {
         let calendar = Calendar.current
         let currentDate = Date()
@@ -356,5 +380,11 @@ private extension BudgetViewController {
         componentsForYearlySummaryComponents.year = Calendar.current.component(.year, from: Date()) - 1
         return getMonthStringFromDateValue(value: Calendar.current.date(from: componentsForYearlySummaryComponents)!)
 
+    }
+    private func getFullMonthStringFromDateValue(value: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "MMMM"
+        return dateFormatter.string(from: value).replacingOccurrences(of: ".", with: String.empty)
     }
 }
