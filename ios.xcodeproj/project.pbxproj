@@ -56,6 +56,8 @@
 		323F16F425EB9D7800B12049 /* TextFieldWithInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F16F325EB9D7800B12049 /* TextFieldWithInset.swift */; };
 		323F16F625EBB87900B12049 /* BudgetExternalGivtsControllerPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F16F525EBB87900B12049 /* BudgetExternalGivtsControllerPickerExtension.swift */; };
 		323F16F825EBB90D00B12049 /* BudgetExternalGivtsControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F16F725EBB90D00B12049 /* BudgetExternalGivtsControllerExtension.swift */; };
+		323F16FB25EBEBFE00B12049 /* BudgetExternalGivtsEditRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F16FA25EBEBFE00B12049 /* BudgetExternalGivtsEditRow.swift */; };
+		323F16FD25EBEC1B00B12049 /* BudgetExternalGivtsEditRow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 323F16FC25EBEC1B00B12049 /* BudgetExternalGivtsEditRow.xib */; };
 		324761C12508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */; };
 		324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C22508FE25002BC37E /* RecurringDonationState.swift */; };
 		3260CF07254A2EB900BA6BD7 /* BackToMainViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF06254A2EB900BA6BD7 /* BackToMainViewRoute.swift */; };
@@ -467,6 +469,8 @@
 		323F16F325EB9D7800B12049 /* TextFieldWithInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithInset.swift; sourceTree = "<group>"; };
 		323F16F525EBB87900B12049 /* BudgetExternalGivtsControllerPickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExternalGivtsControllerPickerExtension.swift; sourceTree = "<group>"; };
 		323F16F725EBB90D00B12049 /* BudgetExternalGivtsControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExternalGivtsControllerExtension.swift; sourceTree = "<group>"; };
+		323F16FA25EBEBFE00B12049 /* BudgetExternalGivtsEditRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExternalGivtsEditRow.swift; sourceTree = "<group>"; };
+		323F16FC25EBEC1B00B12049 /* BudgetExternalGivtsEditRow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetExternalGivtsEditRow.xib; sourceTree = "<group>"; };
 		324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationResponseModel.swift; sourceTree = "<group>"; };
 		324761C22508FE25002BC37E /* RecurringDonationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationState.swift; sourceTree = "<group>"; };
 		3260CF06254A2EB900BA6BD7 /* BackToMainViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToMainViewRoute.swift; sourceTree = "<group>"; };
@@ -1010,6 +1014,15 @@
 			path = TextFieldWithInset;
 			sourceTree = "<group>";
 		};
+		323F16F925EBEBD800B12049 /* EditRow */ = {
+			isa = PBXGroup;
+			children = (
+				323F16FA25EBEBFE00B12049 /* BudgetExternalGivtsEditRow.swift */,
+				323F16FC25EBEC1B00B12049 /* BudgetExternalGivtsEditRow.xib */,
+			);
+			path = EditRow;
+			sourceTree = "<group>";
+		};
 		324761BF2508BCAE002BC37E /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1466,6 +1479,7 @@
 		32F528D525EAA4A60073C243 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				323F16F925EBEBD800B12049 /* EditRow */,
 				32F528DB25EAB05A0073C243 /* ControlPanel */,
 				32F528D625EAA4B00073C243 /* InfoView */,
 			);
@@ -2585,6 +2599,7 @@
 				D787BE79208DCA6B00E20873 /* celebration.gif in Resources */,
 				3220B8AE25E7A98F0086577E /* MonthlyCardViewLine.xib in Resources */,
 				27689CE0221AF94B006C0DA6 /* CollectionView.xib in Resources */,
+				323F16FD25EBEC1B00B12049 /* BudgetExternalGivtsEditRow.xib in Resources */,
 				DFBF338D2510B528007F09A0 /* Font Awesome 5 Free-Regular-400.otf in Resources */,
 				FB94D1CC24EBD88800C61ECE /* CollectGroupLabel.xib in Resources */,
 				DF76414E2539824C00A42109 /* InfoViewRecurringRuleOverview.xib in Resources */,
@@ -2840,6 +2855,7 @@
 				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
 				32F528D125EA9F020073C243 /* OpenExternalGivtsRoute.swift in Sources */,
 				DF05015924F8B4C6006196A3 /* BackToSetupRecurringDonationRoute.swift in Sources */,
+				323F16FB25EBEBFE00B12049 /* BudgetExternalGivtsEditRow.swift in Sources */,
 				3260CF28254ABF5C00BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRouteHandler.swift in Sources */,
 				3274EB6A25E9C32200FC8D6A /* LineWithIcon.swift in Sources */,
 				3260CF21254ABC9D00BA6BD7 /* OpenSafariRouteInputModel.swift in Sources */,
