@@ -375,7 +375,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="690"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-SA-Aok">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="453"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="483"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCW-sX-TKu" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="20" width="374" height="60.5"/>
@@ -414,7 +414,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e29-K9-H0J" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="30" y="161" width="354" height="217"/>
+                                                        <rect key="frame" x="30" y="191" width="354" height="217"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyX-GV-kg0" customClass="BudgetExternalGivtsControlPanel" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="354" height="217"/>
@@ -577,7 +577,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqY-Sp-MoJ" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="269" y="398" width="125" height="35"/>
+                                                        <rect key="frame" x="269" y="428" width="125" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="125" id="h1f-AY-4G1"/>
                                                             <constraint firstAttribute="height" constant="35" id="kbi-Bv-Ubb"/>
@@ -598,22 +598,31 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fBG-sa-hnc">
+                                                        <rect key="frame" x="30" y="171" width="354" height="0.0"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" id="FSc-v2-Opm"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstItem="yqe-uH-2st" firstAttribute="leading" secondItem="Raa-SA-Aok" secondAttribute="leading" constant="20" id="3Cm-mh-8Mt"/>
+                                                    <constraint firstItem="fBG-sa-hnc" firstAttribute="top" secondItem="yqe-uH-2st" secondAttribute="bottom" constant="30" id="AeL-9q-3br"/>
                                                     <constraint firstItem="e29-K9-H0J" firstAttribute="leading" secondItem="Raa-SA-Aok" secondAttribute="leading" constant="30" id="Heq-7n-6sG"/>
                                                     <constraint firstAttribute="trailing" secondItem="yqe-uH-2st" secondAttribute="trailing" constant="20" id="JSk-Zb-knD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fBG-sa-hnc" secondAttribute="trailing" constant="30" id="KBy-pZ-YZ2"/>
                                                     <constraint firstItem="jqY-Sp-MoJ" firstAttribute="top" secondItem="e29-K9-H0J" secondAttribute="bottom" constant="20" id="Pak-Ee-k0C"/>
                                                     <constraint firstAttribute="trailing" secondItem="gCW-sX-TKu" secondAttribute="trailing" constant="20" id="SHC-oe-MQS"/>
                                                     <constraint firstItem="gCW-sX-TKu" firstAttribute="top" secondItem="Raa-SA-Aok" secondAttribute="top" constant="20" id="TUn-Vk-kDh"/>
                                                     <constraint firstAttribute="bottom" secondItem="jqY-Sp-MoJ" secondAttribute="bottom" constant="20" id="WKC-Av-a5O"/>
+                                                    <constraint firstItem="e29-K9-H0J" firstAttribute="top" secondItem="fBG-sa-hnc" secondAttribute="bottom" constant="20" id="Y5l-eX-2EZ"/>
                                                     <constraint firstAttribute="trailing" secondItem="e29-K9-H0J" secondAttribute="trailing" constant="30" id="YP1-GJ-f4S"/>
+                                                    <constraint firstItem="fBG-sa-hnc" firstAttribute="leading" secondItem="Raa-SA-Aok" secondAttribute="leading" constant="30" id="YsB-dT-WFR"/>
                                                     <constraint firstItem="jqY-Sp-MoJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Raa-SA-Aok" secondAttribute="leading" constant="20" id="Zj4-94-3bE"/>
                                                     <constraint firstAttribute="trailing" secondItem="jqY-Sp-MoJ" secondAttribute="trailing" constant="20" id="aYT-Kq-xYg"/>
                                                     <constraint firstItem="gCW-sX-TKu" firstAttribute="leading" secondItem="Raa-SA-Aok" secondAttribute="leading" constant="20" id="p7E-wu-M3D"/>
                                                     <constraint firstItem="yqe-uH-2st" firstAttribute="top" secondItem="gCW-sX-TKu" secondAttribute="bottom" constant="40" id="qA5-O4-Vjn"/>
-                                                    <constraint firstItem="e29-K9-H0J" firstAttribute="top" secondItem="yqe-uH-2st" secondAttribute="bottom" constant="20" id="zZe-Ff-hCQ"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -690,6 +699,8 @@
                         <outlet property="labelExternalGivtsSubtitle" destination="yqe-uH-2st" id="Ylc-Nt-6YE"/>
                         <outlet property="labelExternalGivtsTime" destination="V8M-fj-POG" id="mJG-Rp-LBS"/>
                         <outlet property="labelExternalGivtsTimeDown" destination="2ZE-fv-DaX" id="JaB-Yt-D0E"/>
+                        <outlet property="stackViewEditRows" destination="fBG-sa-hnc" id="KiP-kO-r6u"/>
+                        <outlet property="stackViewEditRowsHeight" destination="FSc-v2-Opm" id="09F-aF-ndA"/>
                         <outlet property="textFieldExternalGivtsAmount" destination="nPl-We-QEd" id="CGN-RB-V08"/>
                         <outlet property="textFieldExternalGivtsOrganisation" destination="fw9-Ih-bGG" id="kOC-3O-Dyp"/>
                         <outlet property="textFieldExternalGivtsTime" destination="FD6-rl-HFC" id="Pe6-JV-y7E"/>
@@ -704,7 +715,7 @@
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="29"/>
+            <size key="intrinsicContentSize" width="30" height="26"/>
         </designable>
         <designable name="VB2-d6-wv3">
             <size key="intrinsicContentSize" width="52" height="34"/>

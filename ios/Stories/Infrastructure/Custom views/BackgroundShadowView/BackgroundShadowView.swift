@@ -9,7 +9,6 @@
 import UIKit
 
 class BackgroundShadowView: UIView {
-    private var borderView: UIView!
     @IBOutlet var contentView: UIView!
     
     override init(frame: CGRect) {

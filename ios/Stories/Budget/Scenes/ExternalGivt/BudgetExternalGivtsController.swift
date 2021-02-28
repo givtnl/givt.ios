@@ -28,6 +28,9 @@ class BudgetExternalGivtsViewController : UIViewController {
     
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var stackViewEditRows: UIStackView!
+    @IBOutlet weak var stackViewEditRowsHeight: NSLayoutConstraint!
+    
     var frequencyPicker: UIPickerView!
     var selectedFrequencyIndex: Int? = nil
     let frequencys: Array<Array<Any>> =
@@ -51,6 +54,9 @@ class BudgetExternalGivtsViewController : UIViewController {
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
         }
+        let testView = BudgetExternalGivtsEditRow()
+        stackViewEditRows.addArrangedSubview(testView)
+        stackViewEditRowsHeight.constant += 44
     }
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
