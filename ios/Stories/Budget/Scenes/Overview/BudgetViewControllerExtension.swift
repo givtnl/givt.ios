@@ -32,15 +32,23 @@ extension BudgetViewController {
 //        stackViewGivt.addArrangedSubview(noGivtsYet2)
 //        stackViewGivtHeight.constant += 22
         
-        let noGivtsYet3 = MonthlyCardViewLine()
+        let noGivtsYet3 = LineWithIcon()
         noGivtsYet3.collectGroupLabel.text = "Nog geen giften"
         stackViewNotGivt.addArrangedSubview(noGivtsYet3)
         stackViewNotGivtHeight.constant += 22
-        let noGivtsYet4 = MonthlyCardViewLine()
+        noGivtsYet3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noGivtsAction)))
+        noGivtsYet3.guid = UUID().uuidString
+        
+        let noGivtsYet4 = LineWithIcon()
         noGivtsYet4.collectGroupLabel.text = "Nog geen giften"
         stackViewNotGivt.addArrangedSubview(noGivtsYet4)
         stackViewNotGivtHeight.constant += 22
         
+    }
+    
+    @objc func noGivtsAction(_ sender: UITapGestureRecognizer) {
+        let view = sender.view as! LineWithIcon
+        print(view.guid!)
     }
     func setupCollectGroupsCard() {
         let collectGroupsForCurrentMonth: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
