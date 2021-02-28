@@ -52,6 +52,8 @@
 		3234570C25DFDF7C00284808 /* YearViewBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3234570B25DFDF7C00284808 /* YearViewBody.xib */; };
 		3234570E25DFDF8700284808 /* YearViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234570D25DFDF8700284808 /* YearViewBody.swift */; };
 		323F16ED25EAC12A00B12049 /* CALayerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F16EC25EAC12A00B12049 /* CALayerExtension.swift */; };
+		323F16F125EB9B4400B12049 /* BudgetExternalGivtsViewWithBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F16F025EB9B4400B12049 /* BudgetExternalGivtsViewWithBorder.swift */; };
+		323F16F425EB9D7800B12049 /* TextFieldWithInset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F16F325EB9D7800B12049 /* TextFieldWithInset.swift */; };
 		324761C12508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */; };
 		324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C22508FE25002BC37E /* RecurringDonationState.swift */; };
 		3260CF07254A2EB900BA6BD7 /* BackToMainViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF06254A2EB900BA6BD7 /* BackToMainViewRoute.swift */; };
@@ -463,6 +465,8 @@
 		3234570B25DFDF7C00284808 /* YearViewBody.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearViewBody.xib; sourceTree = "<group>"; };
 		3234570D25DFDF8700284808 /* YearViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewBody.swift; sourceTree = "<group>"; };
 		323F16EC25EAC12A00B12049 /* CALayerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtension.swift; sourceTree = "<group>"; };
+		323F16F025EB9B4400B12049 /* BudgetExternalGivtsViewWithBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExternalGivtsViewWithBorder.swift; sourceTree = "<group>"; };
+		323F16F325EB9D7800B12049 /* TextFieldWithInset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithInset.swift; sourceTree = "<group>"; };
 		324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationResponseModel.swift; sourceTree = "<group>"; };
 		324761C22508FE25002BC37E /* RecurringDonationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationState.swift; sourceTree = "<group>"; };
 		3260CF06254A2EB900BA6BD7 /* BackToMainViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToMainViewRoute.swift; sourceTree = "<group>"; };
@@ -853,6 +857,7 @@
 		320CC7A7255B12CE0092782A /* Custom views */ = {
 			isa = PBXGroup;
 			children = (
+				323F16F225EB9D6200B12049 /* TextFieldWithInset */,
 				3234570525DFB30E00284808 /* BackgroundShadowView */,
 				320B7FBC255B020A00779B1D /* RecurringCustomUITextField.swift */,
 				320B7FBE255B03E300779B1D /* RecurringCustomUITextField.xib */,
@@ -983,6 +988,30 @@
 				3234570D25DFDF8700284808 /* YearViewBody.swift */,
 			);
 			path = YearViewBody;
+			sourceTree = "<group>";
+		};
+		323F16EE25EB9B1F00B12049 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				323F16EF25EB9B2500B12049 /* ViewWithBorder */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		323F16EF25EB9B2500B12049 /* ViewWithBorder */ = {
+			isa = PBXGroup;
+			children = (
+				323F16F025EB9B4400B12049 /* BudgetExternalGivtsViewWithBorder.swift */,
+			);
+			path = ViewWithBorder;
+			sourceTree = "<group>";
+		};
+		323F16F225EB9D6200B12049 /* TextFieldWithInset */ = {
+			isa = PBXGroup;
+			children = (
+				323F16F325EB9D7800B12049 /* TextFieldWithInset.swift */,
+			);
+			path = TextFieldWithInset;
 			sourceTree = "<group>";
 		};
 		324761BF2508BCAE002BC37E /* Models */ = {
@@ -1477,6 +1506,7 @@
 		32F528DB25EAB05A0073C243 /* ControlPanel */ = {
 			isa = PBXGroup;
 			children = (
+				323F16EE25EB9B1F00B12049 /* Subviews */,
 				32F528DC25EAB0720073C243 /* BudgetExternalGivtsControlPanel.swift */,
 				32F528DE25EAB0870073C243 /* BudgetExternalGivtsControlPanel.xib */,
 			);
@@ -2927,6 +2957,7 @@
 				3260CF32254AC8B200BA6BD7 /* DiscoverOrAmountSuccessViewController.swift in Sources */,
 				326E0979256D64310079B4B0 /* ShowUpdateAlertHandler.swift in Sources */,
 				32E506F725DE98AD00BC6070 /* CardViewHeader.swift in Sources */,
+				323F16F125EB9B4400B12049 /* BudgetExternalGivtsViewWithBorder.swift in Sources */,
 				DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
@@ -2983,6 +3014,7 @@
 				D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */,
 				32EB1CF325D3E3930005CCAC /* MonthlySummary.swift in Sources */,
 				D748F6042063D50C00B25BC2 /* HistoryTableViewModel.swift in Sources */,
+				323F16F425EB9D7800B12049 /* TextFieldWithInset.swift in Sources */,
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
