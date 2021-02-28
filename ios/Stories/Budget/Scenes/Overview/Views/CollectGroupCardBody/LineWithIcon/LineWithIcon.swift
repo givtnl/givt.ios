@@ -1,5 +1,5 @@
 //
-//  LineWithButton.swift
+//  LineWithIcon.swift
 //  ios
 //
 //  Created by Mike Pattyn on 27/02/2021.
@@ -9,9 +9,11 @@
 import Foundation
 import UIKit
 
-class LineWithButton : UIView {
+class LineWithIcon: UIView {
+    @IBOutlet weak var collectGroupLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var addButton: CustomButton!
+    var guid: String?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,19 +26,14 @@ class LineWithButton : UIView {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
+        roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5.0)
     }
     
     private func commonInit() {
-        let bundle = Bundle(for: LineWithButton.self)
-        bundle.loadNibNamed("LineWithButton", owner: self, options: nil)
+        let bundle = Bundle(for: LineWithIcon.self)
+        bundle.loadNibNamed("LineWithIcon", owner: self, options: nil)
         addSubview(contentView)
-        contentView.frame = self.layer.frame
+        contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        contentView.isUserInteractionEnabled = false
-        addButton.ogBGColor = ColorHelper.LightGreenChart
-    }
-    
-    @IBAction func addButtonPressed(_ sender: Any) {
-        print("Add button pressed")
     }
 }
