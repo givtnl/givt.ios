@@ -435,7 +435,7 @@
                                                                         <textInputTraits key="textInputTraits"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="xInset">
-                                                                                <real key="value" value="5"/>
+                                                                                <real key="value" value="10"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
@@ -473,21 +473,27 @@
                                                                                         <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="elke maand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FeI-bB-lVj">
-                                                                                        <rect key="frame" x="10" y="12.5" width="87" height="19.5"/>
-                                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per maand" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FD6-rl-HFC" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="44"/>
                                                                                         <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                        <nil key="highlightedColor"/>
-                                                                                    </label>
+                                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                                                        <textInputTraits key="textInputTraits"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="xInset">
+                                                                                                <real key="value" value="10"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </textField>
                                                                                 </subviews>
                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                 <constraints>
+                                                                                    <constraint firstItem="FD6-rl-HFC" firstAttribute="leading" secondItem="oFO-Hn-hi6" secondAttribute="leading" id="06q-29-mxN"/>
+                                                                                    <constraint firstItem="2ZE-fv-DaX" firstAttribute="leading" secondItem="FD6-rl-HFC" secondAttribute="trailing" id="AJt-n7-3rW"/>
                                                                                     <constraint firstItem="2ZE-fv-DaX" firstAttribute="top" secondItem="oFO-Hn-hi6" secondAttribute="top" constant="1" id="AR8-Yi-l72"/>
-                                                                                    <constraint firstItem="2ZE-fv-DaX" firstAttribute="leading" secondItem="FeI-bB-lVj" secondAttribute="trailing" constant="10" id="LAb-xe-OUO"/>
-                                                                                    <constraint firstItem="FeI-bB-lVj" firstAttribute="leading" secondItem="oFO-Hn-hi6" secondAttribute="leading" constant="10" id="NkM-1M-Xdr"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="2ZE-fv-DaX" secondAttribute="trailing" id="b0z-5p-i9W"/>
+                                                                                    <constraint firstItem="FD6-rl-HFC" firstAttribute="top" secondItem="oFO-Hn-hi6" secondAttribute="top" id="hKU-yD-gWA"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="FD6-rl-HFC" secondAttribute="bottom" id="hnD-On-ExA"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="2ZE-fv-DaX" secondAttribute="bottom" constant="1" id="ig3-HE-d2N"/>
-                                                                                    <constraint firstItem="FeI-bB-lVj" firstAttribute="centerY" secondItem="oFO-Hn-hi6" secondAttribute="centerY" id="yvt-Rx-kFe"/>
                                                                                 </constraints>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -498,7 +504,7 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                                 <connections>
-                                                                                    <action selector="timeTapped:" destination="dIS-A1-n3J" eventType="valueChanged" id="8xX-SC-vtK"/>
+                                                                                    <action selector="timeTapped:" destination="dIS-A1-n3J" eventType="touchUpInside" id="Nty-0z-J6V"/>
                                                                                 </connections>
                                                                             </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dko-DV-N1I" customClass="BudgetExternalGivtsViewWithBorder" customModule="ios" customModuleProvider="target">
@@ -521,7 +527,7 @@
                                                                                         <textInputTraits key="textInputTraits"/>
                                                                                         <userDefinedRuntimeAttributes>
                                                                                             <userDefinedRuntimeAttribute type="number" keyPath="xInset">
-                                                                                                <real key="value" value="5"/>
+                                                                                                <real key="value" value="10"/>
                                                                                             </userDefinedRuntimeAttribute>
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </textField>
@@ -686,6 +692,7 @@
                         <outlet property="labelExternalGivtsTimeDown" destination="2ZE-fv-DaX" id="JaB-Yt-D0E"/>
                         <outlet property="textFieldExternalGivtsAmount" destination="nPl-We-QEd" id="CGN-RB-V08"/>
                         <outlet property="textFieldExternalGivtsOrganisation" destination="fw9-Ih-bGG" id="kOC-3O-Dyp"/>
+                        <outlet property="textFieldExternalGivtsTime" destination="FD6-rl-HFC" id="Pe6-JV-y7E"/>
                         <outlet property="viewExternalGivtsAmount" destination="dko-DV-N1I" id="STH-DX-cYG"/>
                         <outlet property="viewExternalGivtsTime" destination="oFO-Hn-hi6" id="QXH-Qj-RhW"/>
                     </connections>
