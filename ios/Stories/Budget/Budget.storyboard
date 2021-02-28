@@ -425,13 +425,19 @@
                                                                         <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fw9-Ih-bGG">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fw9-Ih-bGG" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
                                                                         <rect key="frame" x="20" y="59.5" width="314" height="44"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="44" id="TxG-45-BXN"/>
                                                                         </constraints>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="xInset">
+                                                                                <real key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
                                                                     </textField>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Fdj-hs-pZ4">
                                                                         <rect key="frame" x="20" y="123.5" width="314" height="19.5"/>
@@ -466,9 +472,6 @@
                                                                                         <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="14"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
-                                                                                        <connections>
-                                                                                            <outletCollection property="gestureRecognizers" destination="suv-1r-K1d" appends="YES" id="ywX-Jb-3SX"/>
-                                                                                        </connections>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="elke maand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FeI-bB-lVj">
                                                                                         <rect key="frame" x="10" y="12.5" width="87" height="19.5"/>
@@ -494,26 +497,50 @@
                                                                                         <real key="value" value="1"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
+                                                                                <connections>
+                                                                                    <action selector="timeTapped:" destination="dIS-A1-n3J" eventType="valueChanged" id="8xX-SC-vtK"/>
+                                                                                </connections>
                                                                             </view>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dko-DV-N1I">
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dko-DV-N1I" customClass="BudgetExternalGivtsViewWithBorder" customModule="ios" customModuleProvider="target">
                                                                                 <rect key="frame" x="167" y="0.0" width="147" height="44"/>
                                                                                 <subviews>
-                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bzo-UK-WgN">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="147" height="44"/>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="euro-sign" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wr-my-hHb">
+                                                                                        <rect key="frame" x="0.0" y="1" width="40" height="42"/>
                                                                                         <constraints>
-                                                                                            <constraint firstAttribute="height" constant="44" id="nXS-M4-otT"/>
+                                                                                            <constraint firstAttribute="height" constant="42" id="7X7-QG-TmX"/>
+                                                                                            <constraint firstAttribute="width" constant="40" id="kJD-fm-IjE"/>
                                                                                         </constraints>
-                                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                        <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="14"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nPl-We-QEd" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
+                                                                                        <rect key="frame" x="40" y="0.0" width="107" height="44"/>
+                                                                                        <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="xInset">
+                                                                                                <real key="value" value="5"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
                                                                                     </textField>
                                                                                 </subviews>
                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                 <constraints>
-                                                                                    <constraint firstItem="bzo-UK-WgN" firstAttribute="top" secondItem="dko-DV-N1I" secondAttribute="top" id="ChD-42-pY8"/>
-                                                                                    <constraint firstItem="bzo-UK-WgN" firstAttribute="leading" secondItem="dko-DV-N1I" secondAttribute="leading" id="R89-AH-V6r"/>
-                                                                                    <constraint firstAttribute="trailing" secondItem="bzo-UK-WgN" secondAttribute="trailing" id="WCx-WE-UxK"/>
-                                                                                    <constraint firstAttribute="bottom" secondItem="bzo-UK-WgN" secondAttribute="bottom" id="dGc-27-XqC"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="4wr-my-hHb" secondAttribute="bottom" constant="1" id="7Hh-OP-wCQ"/>
+                                                                                    <constraint firstItem="4wr-my-hHb" firstAttribute="top" secondItem="dko-DV-N1I" secondAttribute="top" constant="1" id="LMQ-rE-hYT"/>
+                                                                                    <constraint firstItem="4wr-my-hHb" firstAttribute="leading" secondItem="dko-DV-N1I" secondAttribute="leading" id="XCg-X2-lYg"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="nPl-We-QEd" secondAttribute="trailing" id="hhi-2z-KsP"/>
+                                                                                    <constraint firstItem="nPl-We-QEd" firstAttribute="leading" secondItem="4wr-my-hHb" secondAttribute="trailing" id="lbA-HN-iKI"/>
+                                                                                    <constraint firstItem="nPl-We-QEd" firstAttribute="top" secondItem="dko-DV-N1I" secondAttribute="top" id="pkL-Kx-iMq"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="nPl-We-QEd" secondAttribute="bottom" id="zcU-LC-iQl"/>
                                                                                 </constraints>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                        <real key="value" value="5"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
                                                                             </view>
                                                                         </subviews>
                                                                     </stackView>
@@ -641,30 +668,30 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="bottomScrollViewConstraint" destination="TI7-wK-A67" id="CYd-9N-6pL"/>
                         <outlet property="buttonExternalGivtsAdd" destination="jqY-Sp-MoJ" id="1CY-5r-rNm"/>
                         <outlet property="buttonExternalGivtsSave" destination="rrV-x6-BW3" id="55a-h6-6Vo"/>
                         <outlet property="labelExternalGivtsAmount" destination="nkO-fT-btY" id="XZx-ON-DSG"/>
+                        <outlet property="labelExternalGivtsAmountCurrency" destination="4wr-my-hHb" id="3d3-S3-Qrw"/>
                         <outlet property="labelExternalGivtsInfo" destination="ogr-fy-7GL" id="oaz-E0-2Sd"/>
                         <outlet property="labelExternalGivtsOrganisation" destination="46C-Ao-1I8" id="fu8-uU-RRR"/>
                         <outlet property="labelExternalGivtsSubtitle" destination="yqe-uH-2st" id="Ylc-Nt-6YE"/>
                         <outlet property="labelExternalGivtsTime" destination="V8M-fj-POG" id="mJG-Rp-LBS"/>
                         <outlet property="labelExternalGivtsTimeDown" destination="2ZE-fv-DaX" id="JaB-Yt-D0E"/>
+                        <outlet property="textFieldExternalGivtsAmount" destination="nPl-We-QEd" id="CGN-RB-V08"/>
+                        <outlet property="textFieldExternalGivtsOrganisation" destination="fw9-Ih-bGG" id="kOC-3O-Dyp"/>
+                        <outlet property="viewExternalGivtsAmount" destination="dko-DV-N1I" id="STH-DX-cYG"/>
                         <outlet property="viewExternalGivtsTime" destination="oFO-Hn-hi6" id="QXH-Qj-RhW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ko-yX-sgF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="suv-1r-K1d">
-                    <connections>
-                        <action selector="timeTapped:" destination="dIS-A1-n3J" id="Ssx-60-3Xf"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="263.768115942029" y="57.589285714285708"/>
         </scene>
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="29"/>
+            <size key="intrinsicContentSize" width="30" height="26"/>
         </designable>
         <designable name="VB2-d6-wv3">
             <size key="intrinsicContentSize" width="52" height="34"/>
