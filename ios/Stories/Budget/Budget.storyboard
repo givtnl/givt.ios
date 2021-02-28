@@ -45,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WyI-IN-h7K">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="859"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="864"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x63-aR-afc" customClass="MonthlySummary" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="144.5" y="20" width="125" height="165"/>
@@ -228,7 +228,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpN-cF-0Wb" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="504" width="374" height="180"/>
+                                                        <rect key="frame" x="20" y="504" width="374" height="185"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNJ-DF-KkV" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -238,7 +238,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xeh-1u-1tz" customClass="ChartViewBody" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="30" width="374" height="150"/>
+                                                                <rect key="frame" x="0.0" y="30" width="374" height="155"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </view>
                                                         </subviews>
@@ -250,12 +250,12 @@
                                                             <constraint firstAttribute="bottom" secondItem="Xeh-1u-1tz" secondAttribute="bottom" id="fL9-ri-EMg"/>
                                                             <constraint firstItem="nNJ-DF-KkV" firstAttribute="leading" secondItem="kpN-cF-0Wb" secondAttribute="leading" id="fwh-Gr-ZQH"/>
                                                             <constraint firstAttribute="trailing" secondItem="nNJ-DF-KkV" secondAttribute="trailing" id="ilV-jF-fZ3"/>
-                                                            <constraint firstAttribute="height" constant="180" id="mqo-dz-PGm"/>
+                                                            <constraint firstAttribute="height" constant="185" id="mqo-dz-PGm"/>
                                                             <constraint firstItem="nNJ-DF-KkV" firstAttribute="top" secondItem="kpN-cF-0Wb" secondAttribute="top" id="nd0-oa-ov0"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfC-9P-EC7" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="699" width="374" height="140"/>
+                                                        <rect key="frame" x="20" y="704" width="374" height="140"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IlB-hW-U0S" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -470,7 +470,7 @@
                                                                                             <constraint firstAttribute="width" constant="40" id="wHj-9W-iJM"/>
                                                                                         </constraints>
                                                                                         <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="14"/>
-                                                                                        <nil key="textColor"/>
+                                                                                        <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="elke maand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FeI-bB-lVj">
@@ -511,7 +511,7 @@
                                                                                             <constraint firstAttribute="width" constant="40" id="kJD-fm-IjE"/>
                                                                                         </constraints>
                                                                                         <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="14"/>
-                                                                                        <nil key="textColor"/>
+                                                                                        <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nPl-We-QEd" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
@@ -691,7 +691,7 @@
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="26"/>
+            <size key="intrinsicContentSize" width="30" height="29"/>
         </designable>
         <designable name="VB2-d6-wv3">
             <size key="intrinsicContentSize" width="52" height="34"/>
