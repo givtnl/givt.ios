@@ -23,22 +23,4 @@ private extension BudgetViewController {
     @IBAction func buttonPlus(_ sender: Any) {
         try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
     }
-
-    private func getMonthStringFromIntValue(value: Int) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current
-        dateFormatter.dateFormat = "MMM"
-        return dateFormatter.string(from: getDateFromInt(value: value)).replacingOccurrences(of: ".", with: String.empty)
-    }
-    private func getDateFromInt(value: Int) -> Date {
-        var dateComponents = DateComponents()
-        dateComponents.month = value
-        return Calendar.current.date(from: dateComponents)!
-    }
-    private func createDateByMonthAndYear(month: Int, year: Int) -> Date {
-        var dateComponents = DateComponents()
-        dateComponents.month = month
-        dateComponents.year = year
-        return Calendar.current.date(from: dateComponents)!
-    }
 }

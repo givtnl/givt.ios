@@ -46,5 +46,3 @@ class BudgetViewController : UIViewController {
         SVProgressHUD.dismiss()
     }
 }
-
-
