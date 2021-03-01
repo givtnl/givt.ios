@@ -54,9 +54,13 @@ class BudgetExternalGivtsViewController : UIViewController {
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
         }
-        let testView = BudgetExternalGivtsEditRow()
-        stackViewEditRows.addArrangedSubview(testView)
-        stackViewEditRowsHeight.constant += 44
+        
+        var testViews = [BudgetExternalGivtsEditRow(), BudgetExternalGivtsEditRow()]
+        testViews.forEach { view in
+            stackViewEditRows.addArrangedSubview(view)
+        }
+        stackViewEditRowsHeight.constant += CGFloat(testViews.count) * 44
+        stackViewEditRowsHeight.constant += CGFloat(testViews.count - 1) * 10
     }
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
