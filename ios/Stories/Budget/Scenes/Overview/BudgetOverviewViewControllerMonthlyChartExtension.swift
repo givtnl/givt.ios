@@ -11,7 +11,7 @@ import Charts
 import UIKit
 
 // MARK: VC Extension With Monthly chart functions
-extension BudgetViewController {
+extension BudgetOverviewViewController {
     func setupMonthsCard() {
         // get values for monthly summary chart
         let monthlySummarymodels: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(

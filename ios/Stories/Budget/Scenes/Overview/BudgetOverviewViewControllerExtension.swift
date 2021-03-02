@@ -12,7 +12,7 @@ import UIKit
 
 
 //MARK: Public extension - used to store public methods
-extension BudgetViewController {
+extension BudgetOverviewViewController {
     func setupTerms() {
         monthlySummaryTile.descriptionLabel.text = "BudgetSummaryBalance".localized
         givtNowButton.setTitle("BudgetSummaryGiveNow".localized, for: .normal)

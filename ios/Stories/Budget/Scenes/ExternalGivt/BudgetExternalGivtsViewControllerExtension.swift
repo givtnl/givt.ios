@@ -43,24 +43,6 @@ extension BudgetExternalGivtsViewController {
         createToolbar(textFieldExternalGivtsOrganisation)
     }
     
-    @IBAction func backButton(_ sender: Any) {
-        try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
-    }
-    
-   
-    @IBAction func timeTapped(_ sender: Any) {
-        textFieldExternalGivtsTime.becomeFirstResponder()
-        let selectedIndex: Int = selectedFrequencyIndex ?? 0
-        frequencyPicker.selectRow(selectedIndex, inComponent: 0, animated: false)
-    }
-    
-    
-    private func createInfoText() -> NSMutableAttributedString {
-        return NSMutableAttributedString()
-            .bold("BudgetExternalGiftsInfoBold".localized + "\n", font: UIFont(name: "Avenir-Black", size: 16)!)
-            .normal("BudgetExternalGiftsInfo".localized, font: UIFont(name: "Avenir-Light", size: 16)!)
-    }
-    
     private func createToolbar(_ textField: UITextField) {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -72,10 +54,16 @@ extension BudgetExternalGivtsViewController {
         
         textField.inputAccessoryView = toolbar
     }
+    
     @objc private func toolbarDoneButtonTapped(_ sender: UIBarButtonItem){
         self.view.endEditing(true)
     }
     
+    private func createInfoText() -> NSMutableAttributedString {
+        return NSMutableAttributedString()
+            .bold("BudgetExternalGiftsInfoBold".localized + "\n", font: UIFont(name: "Avenir-Black", size: 16)!)
+            .normal("BudgetExternalGiftsInfo".localized, font: UIFont(name: "Avenir-Light", size: 16)!)
+    }
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
         let userInfo = notification.userInfo!
@@ -91,7 +79,7 @@ extension BudgetExternalGivtsViewController {
             self.view.layoutIfNeeded()
         })
     }
-    
+
     @objc func keyboardWillHide(notification:NSNotification){
         bottomScrollViewConstraint.constant = 0
         UIView.animate(withDuration: 0.3, animations: {

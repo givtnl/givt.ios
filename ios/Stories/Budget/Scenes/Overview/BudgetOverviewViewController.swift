@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SVProgressHUD
 
-class BudgetViewController : UIViewController {    
+class BudgetOverviewViewController : UIViewController {    
     @IBOutlet weak var monthlySummaryTile: MonthlySummary!
     @IBOutlet weak var givtNowButton: CustomButton!
     @IBOutlet weak var monthlyCardHeader: CardViewHeader!
