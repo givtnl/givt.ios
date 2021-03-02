@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: VC Extension With CollectGroupsCard functions
-extension BudgetViewController {
+extension BudgetOverviewViewController {
     func setupCollectGroupsCard() {
         let collectGroupsForCurrentMonth: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
                                                                                             fromDate: getFromDateForCurrentMonth(),

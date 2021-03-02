@@ -11,7 +11,7 @@ import Charts
 import UIKit
 
 // MARK: VC Extension With Year chart functions
-extension BudgetViewController {
+extension BudgetOverviewViewController {
     func setupYearsCard() {
         var yearChartValues: [Double] = []
 

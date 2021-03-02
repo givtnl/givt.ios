@@ -10,7 +10,7 @@ import Foundation
 
 
 //MARK: Private extension - used to store private methods and actions
-private extension BudgetViewController {
+private extension BudgetOverviewViewController {
     @IBAction func backButton(_ sender: Any) {
         try? Mediater.shared.send(request: BackToMainRoute(), withContext: self)
     }
