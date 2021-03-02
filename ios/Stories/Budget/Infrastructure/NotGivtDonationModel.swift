@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NotGivtModel: Codable {
+struct NotGivtDonationModel: Codable {
     var GUID: String
     var Name: String
     var Amount: Double

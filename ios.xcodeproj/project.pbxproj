@@ -120,7 +120,9 @@
 		32A67F7E25139A7F007EC7EF /* GetCountryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7D25139A7F007EC7EF /* GetCountryError.swift */; };
 		32A67F80251497F7007EC7EF /* RecurringDonationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7F251497F7007EC7EF /* RecurringDonationError.swift */; };
 		32A8AB9225EE164200B96594 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8AB9125EE164200B96594 /* DoubleExtension.swift */; };
-		32A8AB9525EE377100B96594 /* NotGivtModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8AB9425EE377100B96594 /* NotGivtModel.swift */; };
+		32A8AB9525EE377100B96594 /* NotGivtDonationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8AB9425EE377100B96594 /* NotGivtDonationModel.swift */; };
+		32A8AB9825EE38F400B96594 /* GetNotGivtDonationsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8AB9725EE38F400B96594 /* GetNotGivtDonationsQuery.swift */; };
+		32A8AB9A25EE390400B96594 /* GetNotGivtDonationsQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8AB9925EE390400B96594 /* GetNotGivtDonationsQueryHandler.swift */; };
 		32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */; };
 		32BFA7A025DD0F75003AD5FE /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFA79F25DD0F75003AD5FE /* UIViewExtensions.swift */; };
 		32C2D8222522087000832444 /* DecimalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C2D8212522087000832444 /* DecimalExtension.swift */; };
@@ -539,7 +541,9 @@
 		32A67F7D25139A7F007EC7EF /* GetCountryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryError.swift; sourceTree = "<group>"; };
 		32A67F7F251497F7007EC7EF /* RecurringDonationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationError.swift; sourceTree = "<group>"; };
 		32A8AB9125EE164200B96594 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
-		32A8AB9425EE377100B96594 /* NotGivtModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotGivtModel.swift; sourceTree = "<group>"; };
+		32A8AB9425EE377100B96594 /* NotGivtDonationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotGivtDonationModel.swift; sourceTree = "<group>"; };
+		32A8AB9725EE38F400B96594 /* GetNotGivtDonationsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotGivtDonationsQuery.swift; sourceTree = "<group>"; };
+		32A8AB9925EE390400B96594 /* GetNotGivtDonationsQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotGivtDonationsQueryHandler.swift; sourceTree = "<group>"; };
 		32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		32BFA79F25DD0F75003AD5FE /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		32C2D8212522087000832444 /* DecimalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtension.swift; sourceTree = "<group>"; };
@@ -1319,9 +1323,18 @@
 		32A8AB9325EE374A00B96594 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				32A8AB9425EE377100B96594 /* NotGivtModel.swift */,
+				32A8AB9425EE377100B96594 /* NotGivtDonationModel.swift */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		32A8AB9625EE38CE00B96594 /* GetNotGivtDonations */ = {
+			isa = PBXGroup;
+			children = (
+				32A8AB9725EE38F400B96594 /* GetNotGivtDonationsQuery.swift */,
+				32A8AB9925EE390400B96594 /* GetNotGivtDonationsQueryHandler.swift */,
+			);
+			path = GetNotGivtDonations;
 			sourceTree = "<group>";
 		};
 		32CA179B24CECAB900248053 /* SetupRecurringDonation */ = {
@@ -2501,6 +2514,7 @@
 		FBFAF47A25669CCA0012E4A6 /* Queries */ = {
 			isa = PBXGroup;
 			children = (
+				32A8AB9625EE38CE00B96594 /* GetNotGivtDonations */,
 				FBFAF48025669EE90012E4A6 /* Models */,
 				FBFAF47B25669CD30012E4A6 /* GetAll */,
 			);
@@ -2875,6 +2889,7 @@
 				FB8A610B20A049B400696D20 /* BaseUser.swift in Sources */,
 				3234570725DFB32600284808 /* BackgroundShadowView.swift in Sources */,
 				FB87301124C836EA005FF355 /* ExportDonationCommand.swift in Sources */,
+				32A8AB9A25EE390400B96594 /* GetNotGivtDonationsQueryHandler.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
 				FB87302A24C881D9005FF355 /* SafariError.swift in Sources */,
 				DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */,
@@ -2973,6 +2988,7 @@
 				D7F746B51FD83FC7005354A3 /* CustomModalAnimation.swift in Sources */,
 				DF05015624F8B2B2006196A3 /* GoToChooseRecurringDonationRouteHandler.swift in Sources */,
 				A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */,
+				32A8AB9825EE38F400B96594 /* GetNotGivtDonationsQuery.swift in Sources */,
 				3220B8B025E7A9AB0086577E /* MonthlyCardViewLine.swift in Sources */,
 				3260CF2A254ABF6900BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler.swift in Sources */,
 				DF3FD7882512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift in Sources */,
@@ -3040,7 +3056,7 @@
 				323F16F425EB9D7800B12049 /* TextFieldWithInset.swift in Sources */,
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */,
-				32A8AB9525EE377100B96594 /* NotGivtModel.swift in Sources */,
+				32A8AB9525EE377100B96594 /* NotGivtDonationModel.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
 				DF76413C2538399400A42109 /* TableSectionHeaderRecurringRuleOverview.swift in Sources */,
 				FB87301624C84462005FF355 /* DeleteDonationCommand.swift in Sources */,
