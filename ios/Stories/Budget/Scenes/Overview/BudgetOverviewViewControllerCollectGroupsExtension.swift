@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: VC Extension With CollectGroupsCard functions
 extension BudgetOverviewViewController {
@@ -27,6 +28,24 @@ extension BudgetOverviewViewController {
                 stackViewGivt.addArrangedSubview(view)
                 stackViewGivtHeight.constant += 22
             }
+        }
+        
+        let notGivtModels: [NotGivtModel] = [
+            NotGivtModel(guid: UUID().uuidString, name: "Rode kruis", amount: 50.0),
+            NotGivtModel(guid: UUID().uuidString, name: "Kom op tegen kanker", amount: 50.0)
+        ]
+        
+        let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
+        notGivtModels.forEach { model in
+            let notGivtRow: LineWithIcon = LineWithIcon(
+                guid: model.GUID,
+                name: model.Name,
+                amount: model.Amount
+            )
+            notGivtRow.addGestureRecognizer(notGivtTapGesture)
+            stackViewNotGivt.addArrangedSubview(notGivtRow)
+            stackViewNotGivtHeight.constant += 22
+            
         }
     }
 }

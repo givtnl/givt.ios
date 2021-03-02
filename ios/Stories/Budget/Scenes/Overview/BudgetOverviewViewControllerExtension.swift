@@ -26,27 +26,6 @@ extension BudgetOverviewViewController {
         buttonSeeMore.setAttributedTitle(NSMutableAttributedString(string: "BudgetSummaryShowAll".localized,
                                       attributes: [NSAttributedString.Key.underlineStyle : true]), for: .normal)
     }
-    func setupTesting() {
-//        let noGivtsYet = MonthlyCardViewLine()
-//        stackViewGivt.addArrangedSubview(noGivtsYet)
-//        stackViewGivtHeight.constant += 22
-//        let noGivtsYet2 = MonthlyCardViewLine()
-//        stackViewGivt.addArrangedSubview(noGivtsYet2)
-//        stackViewGivtHeight.constant += 22
-        
-        let noGivtsYet3 = LineWithIcon()
-        noGivtsYet3.collectGroupLabel.text = "Nog geen giften"
-        stackViewNotGivt.addArrangedSubview(noGivtsYet3)
-        stackViewNotGivtHeight.constant += 22
-        noGivtsYet3.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noGivtsAction)))
-        noGivtsYet3.guid = UUID().uuidString
-        
-        let noGivtsYet4 = LineWithIcon()
-        noGivtsYet4.collectGroupLabel.text = "Nog geen giften"
-        stackViewNotGivt.addArrangedSubview(noGivtsYet4)
-        stackViewNotGivtHeight.constant += 22
-        
-    }
     
     @objc func noGivtsAction(_ sender: UITapGestureRecognizer) {
         let view = sender.view as! LineWithIcon
