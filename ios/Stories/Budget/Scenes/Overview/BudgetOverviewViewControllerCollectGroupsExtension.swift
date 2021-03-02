@@ -23,7 +23,7 @@ extension BudgetOverviewViewController {
             firstTwoCollectGroups.forEach { model in
                 let view = MonthlyCardViewLine()
                 view.collectGroupLabel.text = model.Key
-                view.amountLabel.text = "€ \(String(format: "%.2f", model.Value))"
+                view.amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                 stackViewGivt.addArrangedSubview(view)
                 stackViewGivtHeight.constant += 22
             }

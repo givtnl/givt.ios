@@ -13,7 +13,6 @@ class YearViewBody: UIView {
 
     var years: [String] = []
     
-   
     private var borderView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var chartView: HorizontalBarChartView!
