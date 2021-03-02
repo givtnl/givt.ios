@@ -135,8 +135,24 @@ class BudgetViewController : UIViewController {
         }
         
         monthlySummaryTile.amountLabel.text = doubleValues.last!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                
-        chartViewBody.trueAverage = doubleValues.reduce(0, +)/Double(doubleValues.count)
+        
+        var placeholderDoubles = doubleValues
+        
+        for _ in 0...11 {
+            if placeholderDoubles[0] == 0 {
+                placeholderDoubles.remove(at: 0)
+                if placeholderDoubles[1] > 0 {
+                    if placeholderDoubles[0] == 0 {
+                        placeholderDoubles.remove(at: 0)
+                    }
+                    break
+                }
+            }
+        }
+        
+        placeholderDoubles.remove(at: placeholderDoubles.count - 1)
+        
+        chartViewBody.trueAverage = placeholderDoubles.reduce(0, +)/Double(placeholderDoubles.count)
         chartViewBody.months = monthStrings
         setVerticalChart(dataPoints: chartViewBody.months, values: doubleValues, chartView: chartViewBody.chartView, trueAverage: chartViewBody.trueAverage)
     }
