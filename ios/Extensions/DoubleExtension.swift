@@ -17,7 +17,6 @@ extension Double {
         default:
             break
         }
-//        return "€ \(String(format: "%.2f", model.Value))"
         return "\(currency)\(String(format: "%.\(decimals)f", self))".replacingOccurrences(of: ".", with: Locale.current.decimalSeparator!)
     }
 }
