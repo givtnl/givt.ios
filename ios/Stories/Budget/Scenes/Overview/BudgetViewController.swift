@@ -67,7 +67,7 @@ class BudgetViewController : UIViewController {
             collectGroupsForCurrentMonth.forEach { model in
                 let view = MonthlyCardViewLine()
                 view.collectGroupLabel.text = model.Key
-                view.amountLabel.text = "€\(String(format: "%.2f", model.Value))"
+                view.amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                 monthlyCardBody.stackView.addArrangedSubview(view)
                 monthlyCardViewBodyHeight.constant += 22
             }
@@ -134,7 +134,7 @@ class BudgetViewController : UIViewController {
             doubleValues.append(monthlySummaryValue.Value)
         }
         
-        monthlySummaryTile.amountLabel.text = "€\(String(format: "%.2f", doubleValues.last!))"
+        monthlySummaryTile.amountLabel.text = doubleValues.last!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                 
         chartViewBody.trueAverage = doubleValues.reduce(0, +)/Double(doubleValues.count)
         chartViewBody.months = monthStrings
@@ -269,7 +269,7 @@ class BudgetViewController : UIViewController {
 
 class ChartValueFormatter: NSObject, ValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return "€ \(String(format: "%.0f", value))"
+        return value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0)
     }
 }
 
