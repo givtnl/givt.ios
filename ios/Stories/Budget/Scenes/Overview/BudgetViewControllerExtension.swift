@@ -125,7 +125,7 @@ extension BudgetViewController {
         ll.lineColor = ColorHelper.GivtLightGreen
         ll.lineDashLengths = [4.0]
         
-        chartViewBody.averageButton.setTitle("€\(String(format: "%.0f", trueAverage))", for: .normal)
+        chartViewBody.averageButton.setTitle(trueAverage.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0), for: .normal)
         chartViewBody.averageButton.ogBGColor = ColorHelper.LightGreenChart
         chartViewBody.averageButton.isEnabled = false
         
