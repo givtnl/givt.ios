@@ -41,6 +41,13 @@ extension BudgetExternalGivtsViewController {
         createToolbar(textFieldExternalGivtsTime)
         createToolbar(textFieldExternalGivtsAmount)
         createToolbar(textFieldExternalGivtsOrganisation)
+        
+        switch UserDefaults.standard.currencySymbol {
+        case "£":
+            labelExternalGivtsAmountCurrency.text = "pound-sign"
+        default:
+            labelExternalGivtsAmountCurrency.text = "euro"
+        }
     }
     
     private func createToolbar(_ textField: UITextField) {

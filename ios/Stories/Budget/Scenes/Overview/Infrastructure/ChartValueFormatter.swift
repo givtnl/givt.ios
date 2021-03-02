@@ -11,6 +11,6 @@ import Foundation
 
 class ChartValueFormatter: NSObject, ValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return "€ \(String(format: "%.0f", value))"
+        return value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0)
     }
 }

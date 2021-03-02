@@ -15,6 +15,13 @@ class LineWithIcon: UIView {
     @IBOutlet var contentView: UIView!
     var guid: String?
     
+    convenience init(guid: String, name: String, amount: Double) {
+        self.init()
+        self.guid = guid
+        self.collectGroupLabel.text = name
+        self.amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
