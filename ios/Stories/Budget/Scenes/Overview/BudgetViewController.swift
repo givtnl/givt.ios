@@ -262,8 +262,10 @@ class BudgetViewController : UIViewController {
         componentsForYearlySummaryComponents.day = 1
         componentsForYearlySummaryComponents.month = 1
         componentsForYearlySummaryComponents.year = Calendar.current.component(.year, from: Date()) - 1
-        return getMonthStringFromDateValue(value: Calendar.current.date(from: componentsForYearlySummaryComponents)!)
-
+        let date = Calendar.current.date(from: componentsForYearlySummaryComponents)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
     }
 }
 
