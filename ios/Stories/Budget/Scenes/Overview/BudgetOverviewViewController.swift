@@ -28,19 +28,22 @@ class BudgetOverviewViewController : UIViewController {
     @IBOutlet weak var yearViewHeader: CardViewHeader!
     @IBOutlet weak var yearViewBody: YearViewBody!
 
+    var needsReload: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTerms()
-        setupTesting()
-       
     }
     override func viewWillAppear(_ animated: Bool) {
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
         }
+        setupTerms()
     }
     override func viewDidAppear(_ animated: Bool) {
-        setupCollectGroupsCard()
+        if needsReload {
+            setupCollectGroupsCard()
+            needsReload = false
+        }
         setupMonthsCard()
         setupYearsCard()
         SVProgressHUD.dismiss()
