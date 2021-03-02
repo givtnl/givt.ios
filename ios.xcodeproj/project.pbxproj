@@ -949,8 +949,8 @@
 		3215976E25D2FADB0065C80A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				32F528CA25EA9B850073C243 /* ExternalGivt */,
 				3220B8A625E793560086577E /* Overview */,
+				32F528CA25EA9B850073C243 /* ExternalGivt */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
