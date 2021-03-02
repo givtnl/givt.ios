@@ -30,10 +30,7 @@ extension BudgetOverviewViewController {
             }
         }
         
-        let notGivtModels: [NotGivtModel] = [
-            NotGivtModel(guid: UUID().uuidString, name: "Rode kruis", amount: 50.0),
-            NotGivtModel(guid: UUID().uuidString, name: "Kom op tegen kanker", amount: 50.0)
-        ]
+        let notGivtModels: [NotGivtDonationModel] = try! Mediater.shared.send(request: GetNotGivtDonationsQuery())
         
         let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
         notGivtModels.forEach { model in
