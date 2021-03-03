@@ -390,5 +390,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenRecurringSuccessRouteHandler())
         Mediater.shared.registerHandler(handler: DiscoverOrAmountOpenOfflineSuccessRouteHandler())
         Mediater.shared.registerHandler(handler: GetAllDonationsQueryHandler())
-        }
+        
+        //-- BUDGET: ROUTES
+        Mediater.shared.registerHandler(handler: OpenGiveNowRouteHandler())
+        
+        //-- BUDGET: QUERYS
+        Mediater.shared.registerHandler(handler: GetMonthlySummaryQueryHandler())
+    }
 }

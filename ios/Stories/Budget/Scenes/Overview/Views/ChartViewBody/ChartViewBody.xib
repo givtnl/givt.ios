@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChartViewBody" customModule="ios" customModuleProvider="target">
+            <connections>
+                <outlet property="averageButton" destination="oak-Uk-Vm8" id="PpG-Lp-2m2"/>
+                <outlet property="chartView" destination="rI7-bm-qxM" id="avW-UQ-cYS"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="7Tu-2q-JeA"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="267"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rI7-bm-qxM" customClass="BarChartView" customModule="Charts">
+                    <rect key="frame" x="15" y="54" width="352" height="193"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oak-Uk-Vm8" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                    <rect key="frame" x="332" y="54" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="Scj-uN-Doy"/>
+                        <constraint firstAttribute="height" constant="40" id="x0v-oT-hd6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                            <color key="value" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="rI7-bm-qxM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="E0a-Sp-lav"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="rI7-bm-qxM" secondAttribute="bottom" constant="20" id="LxY-cu-2Ub"/>
+                <constraint firstItem="oak-Uk-Vm8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="MJO-Jp-Q2S"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="rI7-bm-qxM" secondAttribute="trailing" constant="15" id="YdY-el-mP0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oak-Uk-Vm8" secondAttribute="trailing" constant="10" id="Ym1-o0-rEx"/>
+                <constraint firstItem="rI7-bm-qxM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="baP-Dc-Egi"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-40.579710144927539" y="-136.94196428571428"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="oak-Uk-Vm8">
+            <size key="intrinsicContentSize" width="39" height="29"/>
+        </designable>
+    </designables>
+</document>

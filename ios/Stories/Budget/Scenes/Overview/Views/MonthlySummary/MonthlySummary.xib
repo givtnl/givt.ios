@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonthlySummary" customModule="ios" customModuleProvider="target">
+            <connections>
+                <outlet property="amountLabel" destination="Pnr-dJ-eA5" id="cML-a5-WeD"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="dNa-pW-RKd"/>
+                <outlet property="descriptionLabel" destination="kL7-GW-aRx" id="86j-me-Wn9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="214" height="290"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NNf-SL-Kx2">
+                    <rect key="frame" x="20" y="98.5" width="174" height="93"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Pnr-dJ-eA5">
+                            <rect key="frame" x="0.0" y="0.0" width="174" height="57.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="42"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kL7-GW-aRx">
+                            <rect key="frame" x="0.0" y="73.5" width="174" height="19.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="kL7-GW-aRx" secondAttribute="trailing" id="DWX-i1-9Hc"/>
+                        <constraint firstItem="kL7-GW-aRx" firstAttribute="leading" secondItem="NNf-SL-Kx2" secondAttribute="leading" id="GRG-Ps-76E"/>
+                        <constraint firstItem="Pnr-dJ-eA5" firstAttribute="leading" secondItem="NNf-SL-Kx2" secondAttribute="leading" id="PHr-uQ-fBd"/>
+                        <constraint firstItem="kL7-GW-aRx" firstAttribute="top" secondItem="Pnr-dJ-eA5" secondAttribute="bottom" constant="16" id="ZCb-9Q-94B"/>
+                        <constraint firstAttribute="bottom" secondItem="kL7-GW-aRx" secondAttribute="bottom" id="f70-wk-I2s"/>
+                        <constraint firstAttribute="trailing" secondItem="Pnr-dJ-eA5" secondAttribute="trailing" id="myI-ib-bZY"/>
+                        <constraint firstItem="Pnr-dJ-eA5" firstAttribute="top" secondItem="NNf-SL-Kx2" secondAttribute="top" id="siQ-yo-Lru"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="NNf-SL-Kx2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Q0g-Eo-0d1"/>
+                <constraint firstItem="NNf-SL-Kx2" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="V53-SJ-tIL"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NNf-SL-Kx2" secondAttribute="trailing" constant="20" id="WWT-R9-B53"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <action selector="onClick:" destination="-1" eventType="touchUpInside" id="aKi-Ng-Gz6"/>
+            </connections>
+            <point key="canvasLocation" x="-1678.2608695652175" y="363.61607142857139"/>
+        </view>
+    </objects>
+</document>

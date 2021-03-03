@@ -1,15 +1,15 @@
 //
-//  BackToMainRouteHandler.swift
+//  OpenGiveNowRouteHandler.swift
 //  ios
 //
-//  Created by Maarten Vergouwe on 21/07/2020.
-//  Copyright © 2020 Givt. All rights reserved.
+//  Created by Mike Pattyn on 23/02/2021.
+//  Copyright © 2021 Givt. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class BackToMainRouteHandler : RequestHandlerWithContextProtocol {
+class OpenGiveNowRouteHandler: RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         var validVc: AmountViewController? = nil
         if let lastVc = context.navigationController?.viewControllers.last,
@@ -25,10 +25,13 @@ class BackToMainRouteHandler : RequestHandlerWithContextProtocol {
         } else {
             context.dismiss(animated: true)
         }
+        
+        NotificationCenter.default.post(name: Notification.Name("GivtComingFromBudget"), object: nil)
+
         try completion(() as! R.TResponse)
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is BackToMainRoute
+        return request is OpenGiveNowRoute
     }
 }
