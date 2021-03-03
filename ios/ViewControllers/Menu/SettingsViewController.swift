@@ -81,7 +81,7 @@ class SettingsViewController: BaseMenuViewController {
         
         let setupRecurringGift = Setting(name: "MenuItem_RecurringDonation".localized, image: UIImage(named:"repeat")!, showBadge: UserDefaults.standard.toHighlightMenuList.contains( "MenuItem_RecurringDonation".localized), callback: { self.setupRecurringDonation() })
         
-        let budget = Setting(name: "Kiek naj samenvattinge!", image: UIImage(named: "budget_menu")!, showBadge: false, callback: { self.openBudget() }, isSpecialItem: true)
+        let budget = Setting(name: "BudgetMenuView".localized, image: UIImage(named: "budget_menu")!, showBadge: false, callback: { self.openBudget() }, isSpecialItem: true)
         
         if !UserDefaults.standard.isTempUser {
             items.append([])
