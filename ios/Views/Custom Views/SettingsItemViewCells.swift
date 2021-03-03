@@ -36,9 +36,3 @@ class SettingsItemArrow: SettingsItemTableViewCell {
 class HighlightedItem: SettingsItemTableViewCell {
     
 }
-
-class BudgetMenuItemWithArrow: SettingsItemArrow {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-}
