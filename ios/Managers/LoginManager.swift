@@ -674,7 +674,6 @@ class LoginManager {
     
     func logout() {
         self.log.info(message: "App settings got cleared by either terminate account/switch account")
-        
         UserDefaults.standard.viewedCoachMarks = 0
         UserDefaults.standard.amountLimit = 0
         UserDefaults.standard.bearerToken = ""

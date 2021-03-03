@@ -17,7 +17,6 @@ target 'ios' do
   pod 'SwiftCron'
   pod 'Mixpanel-swift'
   pod 'SwifCron'
-
   # Pods for ios
 
 end
