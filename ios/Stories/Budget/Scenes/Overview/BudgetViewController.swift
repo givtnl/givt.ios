@@ -89,6 +89,7 @@ class BudgetViewController : UIViewController {
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
     }
     private func setupMonthsCard() {
+        
         // get values for monthly summary chart
         let monthlySummarymodels: [MonthlySummaryDetailModel] = try! mediater.send(request: GetMonthlySummaryQuery(
                                                                                     fromDate: getFromDateForMonthsChart(),
@@ -141,7 +142,7 @@ class BudgetViewController : UIViewController {
         for _ in 0...11 {
             if placeholderDoubles[0] == 0 {
                 placeholderDoubles.remove(at: 0)
-                if placeholderDoubles[1] > 0 {
+                if placeholderDoubles.count >= 2 && placeholderDoubles[1] > 0 {
                     if placeholderDoubles[0] == 0 {
                         placeholderDoubles.remove(at: 0)
                     }
@@ -150,9 +151,16 @@ class BudgetViewController : UIViewController {
             }
         }
         
-        placeholderDoubles.remove(at: placeholderDoubles.count - 1)
+        if placeholderDoubles.count >= 1 {
+            placeholderDoubles.remove(at: placeholderDoubles.count - 1)
+        }
         
-        chartViewBody.trueAverage = placeholderDoubles.reduce(0, +)/Double(placeholderDoubles.count)
+        if placeholderDoubles.count == 0 {
+            chartViewBody.trueAverage = 0
+        } else {
+            chartViewBody.trueAverage = placeholderDoubles.reduce(0, +)/Double(placeholderDoubles.count)
+        }
+        
         chartViewBody.months = monthStrings
         setVerticalChart(dataPoints: chartViewBody.months, values: doubleValues, chartView: chartViewBody.chartView, trueAverage: chartViewBody.trueAverage)
     }
