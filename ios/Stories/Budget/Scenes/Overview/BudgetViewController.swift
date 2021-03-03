@@ -26,10 +26,11 @@ class BudgetViewController : UIViewController {
     @IBOutlet weak var yearViewHeader: CardViewHeader!
     @IBOutlet weak var yearViewBody: YearViewBody!
     
+    @IBOutlet weak var yearViewHeight: NSLayoutConstraint!
+    
     
     // stuff for the chart
     weak var axisMonthFormatDelegate: AxisValueFormatter?
-    weak var axisYearFormatDelegate: AxisValueFormatter?
         
     override func viewDidLoad() {
         monthlySummaryTile.descriptionLabel.text = "BudgetSummaryBalance".localized
@@ -42,7 +43,6 @@ class BudgetViewController : UIViewController {
         
         // delegates for chart formatters
         axisMonthFormatDelegate = chartViewBody.self
-        axisYearFormatDelegate = yearViewBody.self
         
         setupCollectGroupsCard()
         setupMonthsCard()
@@ -81,9 +81,21 @@ class BudgetViewController : UIViewController {
                                                                                 tillDate: getTillDateForCurrentMonth(),
                                                                                 groupType: 1,
                                                                                 orderType: 0))
+        
+        
+        
         yearlySummary.reversed().forEach { model in
             yearViewBody.years.append(model.Key)
             yearChartValues.append(model.Value)
+        }
+        
+        if yearlySummary.count == 1 {
+            yearViewHeight.constant = 110
+            yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
+            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[0]
+        } else {
+            (yearViewBody.labelStackView.arrangedSubviews[1] as! UILabel).text = yearViewBody.years[0]
+            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[1]
         }
         //setup the chart for years
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
@@ -160,7 +172,6 @@ class BudgetViewController : UIViewController {
         } else {
             chartViewBody.trueAverage = placeholderDoubles.reduce(0, +)/Double(placeholderDoubles.count)
         }
-        
         chartViewBody.months = monthStrings
         setVerticalChart(dataPoints: chartViewBody.months, values: doubleValues, chartView: chartViewBody.chartView, trueAverage: chartViewBody.trueAverage)
     }

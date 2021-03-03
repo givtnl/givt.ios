@@ -229,6 +229,7 @@
                         <outlet property="monthlySummaryTile" destination="x63-aR-afc" id="dth-hB-b54"/>
                         <outlet property="yearViewBody" destination="cON-ZA-46W" id="vpW-Of-A9H"/>
                         <outlet property="yearViewHeader" destination="IlB-hW-U0S" id="c1q-fx-jr5"/>
+                        <outlet property="yearViewHeight" destination="7zQ-Wl-CWZ" id="Wpa-lK-9Sd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

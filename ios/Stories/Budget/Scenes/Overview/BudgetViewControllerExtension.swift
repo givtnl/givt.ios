@@ -56,12 +56,9 @@ extension BudgetViewController {
         let xAxis = chartView.xAxis
         xAxis.labelPosition = .top
         xAxis.drawGridLinesEnabled = false;
-        xAxis.labelCount = 2
-        xAxis.valueFormatter = axisYearFormatDelegate
-        xAxis.labelFont = UIFont(name: "Avenir-Heavy", size: 12)!
-        xAxis.labelTextColor = ColorHelper.GivtPurple
+        xAxis.drawLabelsEnabled = false
         xAxis.drawAxisLineEnabled = false
-        
+
         chartView.data?.setDrawValues(true)
         
         chartView.legend.enabled = false
