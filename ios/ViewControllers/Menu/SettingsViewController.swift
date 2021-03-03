@@ -69,7 +69,7 @@ class SettingsViewController: BaseMenuViewController {
         var appInfo: Setting? = nil
         
         if (FeatureManager.shared.features.count != 0) {
-            appInfo = Setting(name: NSLocalizedString("FeatureMenuText", comment: ""), image: UIImage(named: "givt_atoz")!, showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
+            appInfo = Setting(name: "FeatureMenuText".localized, image: #imageLiteral(resourceName: "givt_atoz"), showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
         }
         let aboutGivt = Setting(name: "TitleAboutGivt".localized, image: #imageLiteral(resourceName: "info24"), callback: { self.about() })
         
