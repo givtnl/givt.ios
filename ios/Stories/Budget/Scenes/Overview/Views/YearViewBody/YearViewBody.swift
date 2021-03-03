@@ -18,6 +18,7 @@ class YearViewBody: UIView, AxisValueFormatter {
     private var borderView: UIView!
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var chartView: HorizontalBarChartView!
+    @IBOutlet weak var labelStackView: UIStackView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,10 +29,12 @@ class YearViewBody: UIView, AxisValueFormatter {
         super.init(coder: aDecoder)
         commonInit()
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5.0)
     }
+    
     private func commonInit() {
         let bundle = Bundle(for: YearViewBody.self)
         bundle.loadNibNamed("YearViewBody", owner: self, options: nil)

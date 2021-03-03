@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="chartView" destination="xAX-75-Aap" id="bWy-9Y-X34"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="fIa-Ee-edl"/>
+                <outlet property="labelStackView" destination="qZy-bg-d4N" id="TT6-Du-G4r"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,13 +28,36 @@
                             <rect key="frame" x="15" y="15" width="416" height="206"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qZy-bg-d4N">
+                            <rect key="frame" x="366" y="25" width="80" height="186"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9F7-MV-e3y">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="93"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                    <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kf-J2-cd2">
+                                    <rect key="frame" x="0.0" y="93" width="80" height="93"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                    <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="8NR-rb-6XK"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="xAX-75-Aap" firstAttribute="leading" secondItem="GWG-H3-aUC" secondAttribute="leading" constant="15" id="GG4-EQ-H8n"/>
                         <constraint firstItem="xAX-75-Aap" firstAttribute="top" secondItem="GWG-H3-aUC" secondAttribute="top" constant="15" id="QXx-uB-5Y9"/>
                         <constraint firstAttribute="bottom" secondItem="xAX-75-Aap" secondAttribute="bottom" constant="15" id="VZu-dc-2Ed"/>
+                        <constraint firstAttribute="trailing" secondItem="qZy-bg-d4N" secondAttribute="trailing" id="d3n-Hn-p1A"/>
+                        <constraint firstAttribute="bottom" secondItem="qZy-bg-d4N" secondAttribute="bottom" constant="25" id="nmu-YP-bQu"/>
                         <constraint firstAttribute="trailing" secondItem="xAX-75-Aap" secondAttribute="trailing" constant="15" id="oju-dq-gmg"/>
+                        <constraint firstItem="qZy-bg-d4N" firstAttribute="top" secondItem="GWG-H3-aUC" secondAttribute="top" constant="25" id="xtD-f1-FsW"/>
                     </constraints>
                 </view>
             </subviews>
