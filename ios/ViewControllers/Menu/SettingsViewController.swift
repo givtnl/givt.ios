@@ -71,7 +71,8 @@ class SettingsViewController: BaseMenuViewController {
         if (FeatureManager.shared.features.count != 0) {
             appInfo = Setting(name: NSLocalizedString("FeatureMenuText", comment: ""), image: UIImage(named: "givt_atoz")!, showBadge: FeatureManager.shared.showBadge, callback: { self.appInfo() })
         }
-        let aboutGivt = Setting(name: NSLocalizedString("TitleAboutGivt", comment: ""), image: UIImage(named: "info24")!, callback: { self.about() })
+        let aboutGivt = Setting(name: "TitleAboutGivt".localized, image: #imageLiteral(resourceName: "info24"), callback: { self.about() })
+        
         let shareGivt = Setting(name: NSLocalizedString("ShareGivtText", comment: ""), image: UIImage(named: "share")!, callback: { self.share() }, showArrow: false)
         
         let finishRegistration = Setting(name: NSLocalizedString("FinalizeRegistration", comment: ""), image: #imageLiteral(resourceName: "pencil"), showBadge: true, callback: { self.register() })
