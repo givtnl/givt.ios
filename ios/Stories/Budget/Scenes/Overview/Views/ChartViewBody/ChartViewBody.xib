@@ -30,7 +30,7 @@
                         <constraint firstAttribute="width" constant="30" id="Scj-uN-Doy"/>
                         <constraint firstAttribute="height" constant="30" id="x0v-oT-hd6"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="11"/>
                     <state key="normal" title="Button">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
@@ -60,7 +60,7 @@
     </objects>
     <designables>
         <designable name="oak-Uk-Vm8">
-            <size key="intrinsicContentSize" width="39" height="29"/>
+            <size key="intrinsicContentSize" width="36" height="28"/>
         </designable>
     </designables>
 </document>

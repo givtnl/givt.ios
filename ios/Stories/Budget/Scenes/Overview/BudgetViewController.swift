@@ -153,7 +153,7 @@ class BudgetViewController : UIViewController {
         
         placeholderDoubles.removeLast()
         
-        placeholderDoubles = placeholderDoubles.filter{$0 == 0}
+        placeholderDoubles = placeholderDoubles.filter{$0 != 0}
         
         if placeholderDoubles.count == 0 {
             chartViewBody.trueAverage = 0
