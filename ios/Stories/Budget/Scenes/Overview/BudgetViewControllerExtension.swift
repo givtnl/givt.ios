@@ -127,6 +127,8 @@ extension BudgetViewController {
         chartViewBody.averageButton.isEnabled = false
         
         chartView.rightAxis.addLimitLine(ll)
+        chartView.minOffset = 0.0
+        chartView.extraBottomOffset = 5
         
         chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
     }
