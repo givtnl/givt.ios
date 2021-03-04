@@ -46,7 +46,7 @@ extension BudgetExternalGivtsViewController {
         case "£":
             labelExternalGivtsAmountCurrency.text = "pound-sign"
         default:
-            labelExternalGivtsAmountCurrency.text = "euro"
+            labelExternalGivtsAmountCurrency.text = "euro-sign"
         }
     }
     
