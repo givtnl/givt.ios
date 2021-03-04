@@ -60,7 +60,11 @@ extension BudgetOverviewViewController {
         
         monthlySummaryTile.amountLabel.text = doubleValues.last!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                 
-        chartViewBody.trueAverage = doubleValues.reduce(0, +)/Double(doubleValues.count)
+        var placeholderDoubles = doubleValues
+        placeholderDoubles.removeLast()
+        placeholderDoubles = placeholderDoubles.filter{$0 != 0}
+
+        chartViewBody.trueAverage = placeholderDoubles.reduce(0, +)/Double(placeholderDoubles.count)
         chartViewBody.months = monthStrings
         setVerticalChart(dataPoints: chartViewBody.months, values: doubleValues, chartView: chartViewBody.chartView, trueAverage: chartViewBody.trueAverage)
     }

@@ -27,7 +27,8 @@ class BudgetOverviewViewController : UIViewController {
     @IBOutlet weak var chartViewBody: ChartViewBody!
     @IBOutlet weak var yearViewHeader: CardViewHeader!
     @IBOutlet weak var yearViewBody: YearViewBody!
-
+    @IBOutlet weak var yearViewBodyHeight: NSLayoutConstraint!
+    
     var needsReload: Bool = true
     
     override func viewDidLoad() {
