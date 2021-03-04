@@ -23,13 +23,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rb-zb-oy9">
                     <rect key="frame" x="0.0" y="0.0" width="604" height="22"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hm-WZ-9dq">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2hm-WZ-9dq">
                             <rect key="frame" x="563" y="1.5" width="21" height="19.5"/>
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
                             <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voorbeeldkerk 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6P-22-YnK">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voorbeeldkerk 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="c6P-22-YnK">
                             <rect key="frame" x="20" y="1.5" width="103" height="19.5"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
                             <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,6 +40,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="Zko-dd-jnn"/>
                         <constraint firstAttribute="trailing" secondItem="2hm-WZ-9dq" secondAttribute="trailing" constant="20" id="caG-VL-WMc"/>
+                        <constraint firstItem="2hm-WZ-9dq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c6P-22-YnK" secondAttribute="trailing" constant="20" id="diS-e4-XWG"/>
                         <constraint firstItem="2hm-WZ-9dq" firstAttribute="centerY" secondItem="9Rb-zb-oy9" secondAttribute="centerY" id="gSr-Yc-2d9"/>
                         <constraint firstItem="c6P-22-YnK" firstAttribute="leading" secondItem="9Rb-zb-oy9" secondAttribute="leading" constant="20" id="tcM-eU-TUS"/>
                         <constraint firstItem="c6P-22-YnK" firstAttribute="centerY" secondItem="9Rb-zb-oy9" secondAttribute="centerY" id="vxv-q6-b06"/>
