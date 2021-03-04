@@ -6,7 +6,7 @@ target 'ios' do
   use_frameworks!
   pod 'AppCenter'
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
-  pod 'LGSideMenuController', '~> 2.3.0'
+  pod 'LGSideMenuController', '~> 2.1.1'
   pod 'PhoneNumberKit'
   pod 'SwiftClient', :git => 'https://github.com/givtnl/SwiftClient.git'
   pod ‘TrustKit’
