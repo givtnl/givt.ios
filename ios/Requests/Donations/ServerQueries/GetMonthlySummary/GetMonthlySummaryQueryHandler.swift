@@ -14,7 +14,9 @@ class GetMonthlySummaryQueryHandler: RequestHandlerProtocol {
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let query = request as! GetMonthlySummaryQuery
         
-        let route: String = "/api/v2/users/\(String(describing: UserDefaults.standard.userExt!.guid))/summary?groupType=\(query.groupType)&fromDate=\(query.fromDate)&tillDate=\(query.tillDate)&orderType=\(query.orderType)"
+        var route: String = "/api/v2/users/\(String(describing: UserDefaults.standard.userExt!.guid))/summary?groupType=\(query.groupType)&fromDate=\(query.fromDate)&tillDate=\(query.tillDate)&orderType=\(query.orderType)"
+        
+        route += "&transactionstatusses=1&transactionstatusses=2&transactionstatusses=3"
         
         client.get(url: route, data: [:]) { (response) in
             var models: [MonthlySummaryDetailModel] = []

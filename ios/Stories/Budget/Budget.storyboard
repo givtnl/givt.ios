@@ -354,6 +354,7 @@
                         <outlet property="viewBorder" destination="WM7-7D-8jP" id="HQw-9S-frz"/>
                         <outlet property="yearViewBody" destination="cON-ZA-46W" id="vpW-Of-A9H"/>
                         <outlet property="yearViewHeader" destination="IlB-hW-U0S" id="c1q-fx-jr5"/>
+                        <outlet property="yearViewHeight" destination="7zQ-Wl-CWZ" id="Wpa-lK-9Sd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

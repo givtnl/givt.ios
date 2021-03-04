@@ -59,8 +59,6 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
             } else {
                 cell = tableView.dequeueReusableCell(withIdentifier: "SettingsItemArrow", for: indexPath) as? SettingsItemArrow
             }
-        } else if setting.isSpecialItem {
-            cell = tableView.dequeueReusableCell(withIdentifier: "BudgetMenuItemWithArrow", for: indexPath) as? BudgetMenuItemWithArrow
         } else {
             if setting.isHighlighted {
                 cell = tableView.dequeueReusableCell(withIdentifier: "HighlightedItem", for: indexPath) as? HighlightedItem
