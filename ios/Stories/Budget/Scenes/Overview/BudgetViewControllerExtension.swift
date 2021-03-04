@@ -29,7 +29,7 @@ extension BudgetViewController {
         chartDataSet.colors = chartColors.reversed()
         let valuesFormatter = ChartValueFormatter()
         chartDataSet.valueFormatter = valuesFormatter
-        chartDataSet.valueFont = UIFont(name: "Avenir-Black", size: 12)!
+        chartDataSet.valueFont = UIFont(name: "Avenir-Black", size: 11)!
         chartDataSet.valueTextColor = .white
         
         let chartData = BarChartData(dataSet: chartDataSet)
