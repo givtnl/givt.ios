@@ -103,12 +103,16 @@ class BudgetViewController : UIViewController {
             yearViewHeight.constant = 110
             yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
             (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[0]
-        } else {
+        } else if yearlySummary.count == 2 {
             (yearViewBody.labelStackView.arrangedSubviews[1] as! UILabel).text = yearViewBody.years[0]
             (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[1]
+        } else {
+            yearViewHeight.constant = 110
+            yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
+            yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
         }
         //setup the chart for years
-        setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
+        setHorizontalChart(dataPoints: yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
     }
     private func setupMonthsCard() {
         
