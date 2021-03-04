@@ -8,6 +8,7 @@
 import Charts
 import Foundation
 import UIKit
+import SVProgressHUD
 
 class BudgetViewController : UIViewController {
     private var mediater: MediaterWithContextProtocol = Mediater.shared
@@ -32,6 +33,12 @@ class BudgetViewController : UIViewController {
     // stuff for the chart
     weak var axisMonthFormatDelegate: AxisValueFormatter?
         
+    override func viewWillAppear(_ animated: Bool) {
+        if !SVProgressHUD.isVisible() {
+            SVProgressHUD.show()
+        }
+    }
+    
     override func viewDidLoad() {
         monthlySummaryTile.descriptionLabel.text = "BudgetSummaryBalance".localized
         givtNowButton.setTitle("BudgetSummaryGiveNow".localized, for: .normal)
@@ -43,10 +50,13 @@ class BudgetViewController : UIViewController {
         
         // delegates for chart formatters
         axisMonthFormatDelegate = chartViewBody.self
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         setupCollectGroupsCard()
         setupMonthsCard()
         setupYearsCard()
+        SVProgressHUD.dismiss()
     }
     
     @IBAction func backButton(_ sender: Any) {
