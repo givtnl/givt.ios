@@ -11,12 +11,23 @@ import UIKit
 
 class BudgetExternalGivtsEditRow: UIView {
     @IBOutlet var contentView: UIView!
-    
+    @IBOutlet weak var collectGroupLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    var guid: String?
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius
             layer.masksToBounds = cornerRadius > 0
         }
+    }
+    
+    convenience init(guid: String, name: String, amount: Double) {
+        self.init()
+        self.guid = guid
+        self.collectGroupLabel.text = name
+        self.amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0)
     }
     
     override init(frame: CGRect) {
@@ -38,5 +49,9 @@ class BudgetExternalGivtsEditRow: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+
+    @IBAction func deleteButton(_ sender: Any) {
+        print("Deleting \(guid!)")
     }
 }
