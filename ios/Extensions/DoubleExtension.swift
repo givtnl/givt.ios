@@ -19,4 +19,7 @@ extension Double {
         }
         return "\(currency)\(String(format: "%.\(decimals)f", self))".replacingOccurrences(of: ".", with: Locale.current.decimalSeparator!)
     }
+    func getFormattedWithoutCurrency(decimals: Int) -> String {
+        return "\(String(format: "%.\(decimals)f", self))".replacingOccurrences(of: ".", with: Locale.current.decimalSeparator!)
+    }
 }

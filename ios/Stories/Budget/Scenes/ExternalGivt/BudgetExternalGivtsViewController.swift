@@ -40,6 +40,8 @@ class BudgetExternalGivtsViewController : UIViewController {
             , [Frequency.SixMonthly, "SetupRecurringGiftHalfYear".localized]
             , [Frequency.Yearly, "SetupRecurringGiftYear".localized]]
     
+    var externalGivtsModels: [NotGivtDonationModel]? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,14 +57,28 @@ class BudgetExternalGivtsViewController : UIViewController {
             SVProgressHUD.show()
         }
         
-        var testViews = [BudgetExternalGivtsEditRow(), BudgetExternalGivtsEditRow()]
-        testViews.forEach { view in
-            stackViewEditRows.addArrangedSubview(view)
+        externalGivtsModels = try! Mediater.shared.send(request: GetNotGivtDonationsQuery())
+        
+        externalGivtsModels!.forEach { model in
+            let newRow = BudgetExternalGivtsEditRow(guid: model.GUID, name: model.Name, amount: model.Amount)
+            newRow.editButton.addTarget(self, action: #selector(editButtonRow), for: .touchUpInside)
+            stackViewEditRows.addArrangedSubview(newRow)
         }
-        stackViewEditRowsHeight.constant += CGFloat(testViews.count) * 44
-        stackViewEditRowsHeight.constant += CGFloat(testViews.count - 1) * 10
+        
+        stackViewEditRowsHeight.constant += CGFloat(externalGivtsModels!.count) * 44
+        stackViewEditRowsHeight.constant += CGFloat(externalGivtsModels!.count - 1) * 10
     }
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
+    }
+    @objc func editButtonRow(_ sender: UIButton) {
+        let editRowGuid = getEditRowFrom(button: sender).guid!
+        let model = externalGivtsModels!.filter{$0.GUID == editRowGuid}.first!
+        textFieldExternalGivtsOrganisation.text = model.Name
+        textFieldExternalGivtsAmount.text = model.Amount.getFormattedWithoutCurrency(decimals: 2)
+        
+    }
+    private func getEditRowFrom(button: UIButton) -> BudgetExternalGivtsEditRow {
+        return button.superview?.superview?.superview?.superview as! BudgetExternalGivtsEditRow
     }
 }
