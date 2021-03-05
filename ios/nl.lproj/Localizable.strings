@@ -1075,7 +1075,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "BudgetMenuView" = "Bekijk je persoonlijke samenvatting!";
 
 /*Fuzzy*/
-"BudgetSummarySetGoalBold" = "Geef bewust";
+"BudgetSummarySetGoalBold" = "Bewust geven?";
 "BudgetExternalGiftsInfoBold" = "Inzicht in wat je geeft";
 "BudgetGivingGoalInfoBold" = "Stel jezelf een doel";
 "BudgetGivingGoalRemove" = "Verwijder streefbedrag";
