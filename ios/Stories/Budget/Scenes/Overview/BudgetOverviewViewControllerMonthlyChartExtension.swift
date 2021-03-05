@@ -121,12 +121,14 @@ extension BudgetOverviewViewController {
         let ll = ChartLimitLine(limit: trueAverage)
         ll.lineColor = ColorHelper.GivtLightGreen
         ll.lineDashLengths = [4.0]
-        
+        chartView.rightAxis.addLimitLine(ll)
+
         chartViewBody.averageButton.setTitle(trueAverage.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0), for: .normal)
         chartViewBody.averageButton.ogBGColor = ColorHelper.LightGreenChart
         chartViewBody.averageButton.isEnabled = false
         
-        chartView.rightAxis.addLimitLine(ll)
+        chartView.minOffset = 0
+        chartView.extraBottomOffset = 5
         
         chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
     }

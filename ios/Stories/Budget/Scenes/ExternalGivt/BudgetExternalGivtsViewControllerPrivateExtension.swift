@@ -16,7 +16,5 @@ private extension BudgetExternalGivtsViewController {
 
     @IBAction func timeTapped(_ sender: Any) {
         textFieldExternalGivtsTime.becomeFirstResponder()
-        let selectedIndex: Int = selectedFrequencyIndex ?? 0
-        frequencyPicker.selectRow(selectedIndex, inComponent: 0, animated: false)
     }
 }
