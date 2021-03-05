@@ -20,7 +20,6 @@ extension BudgetExternalGivtsViewController: UIPickerViewDelegate, UIPickerViewD
         return frequencys[row][1] as? String
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedFrequencyIndex = row
         self.textFieldExternalGivtsTime.text = frequencys[row][1] as? String
         pickerView.reloadAllComponents()
     }

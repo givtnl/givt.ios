@@ -33,9 +33,13 @@ extension BudgetOverviewViewController {
             yearViewBodyHeight.constant = 110
             yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
             (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[0]
-        } else {
+        } else if yearlySummary.count == 2 {
             (yearViewBody.labelStackView.arrangedSubviews[1] as! UILabel).text = yearViewBody.years[0]
             (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[1]
+        } else {
+            yearViewBodyHeight.constant = 110
+            yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
+            yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
         }
 
         //setup the chart for years
@@ -59,7 +63,7 @@ extension BudgetOverviewViewController {
         chartDataSet.colors = chartColors.reversed()
         let valuesFormatter = ChartValueFormatter()
         chartDataSet.valueFormatter = valuesFormatter
-        chartDataSet.valueFont = UIFont(name: "Avenir-Black", size: 12)!
+        chartDataSet.valueFont = UIFont(name: "Avenir-Black", size: 11)!
         chartDataSet.valueTextColor = .white
         
         let chartData = BarChartData(dataSet: chartDataSet)

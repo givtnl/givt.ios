@@ -8,6 +8,7 @@
 import UIKit
 import Foundation
 import SVProgressHUD
+import CoreData
 
 class BudgetExternalGivtsViewController : UIViewController {
     @IBOutlet weak var labelExternalGivtsInfo: UILabel!
@@ -32,16 +33,19 @@ class BudgetExternalGivtsViewController : UIViewController {
     @IBOutlet weak var stackViewEditRowsHeight: NSLayoutConstraint!
     
     var frequencyPicker: UIPickerView!
-    var selectedFrequencyIndex: Int? = nil
     let frequencys: Array<Array<Any>> =
-        [[Frequency.Weekly, "SetupRecurringGiftWeek".localized]
-            , [Frequency.Monthly, "SetupRecurringGiftMonth".localized]
-            , [Frequency.ThreeMonthly, "SetupRecurringGiftQuarter".localized]
-            , [Frequency.SixMonthly, "SetupRecurringGiftHalfYear".localized]
-            , [Frequency.Yearly, "SetupRecurringGiftYear".localized]]
+        [[ExternalDonationFrequency.Once, "Eenmalig"]
+            , [ExternalDonationFrequency.Monthly, "Elke maand"]
+            , [ExternalDonationFrequency.Quarterly, "Elk kwartaal"]
+            , [ExternalDonationFrequency.HalfYearly, "Elke 6 maanden"]
+            , [ExternalDonationFrequency.Yearly, "Elk jaar"]]
     
-    var externalGivtsModels: [NotGivtDonationModel]? = nil
+    var externalDonations: [ExternalDonationModel]? = nil
     
+    var isEditMode: Bool = false
+    var currentObjectId: NSManagedObjectID? = nil
+    
+    var originalStackviewHeightConstant: CGFloat? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,34 +55,128 @@ class BudgetExternalGivtsViewController : UIViewController {
         
         setupTerms()
         setupUI()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
         }
         
-        externalGivtsModels = try! Mediater.shared.send(request: GetNotGivtDonationsQuery())
+        originalStackviewHeightConstant = stackViewEditRowsHeight.constant
         
-        externalGivtsModels!.forEach { model in
-            let newRow = BudgetExternalGivtsEditRow(guid: model.GUID, name: model.Name, amount: model.Amount)
+        externalDonations = try? Mediater.shared.send(request: ReadExternalDonationCommand())
+        
+        externalDonations!.forEach { model in
+            let newRow = BudgetExternalGivtsEditRow(objectId: model.objectId, guid: model.guid, name: model.name, amount: model.amount)
             newRow.editButton.addTarget(self, action: #selector(editButtonRow), for: .touchUpInside)
+            newRow.deleteButton.addTarget(self, action: #selector(deleteButtonRow), for: .touchUpInside)
             stackViewEditRows.addArrangedSubview(newRow)
         }
         
-        stackViewEditRowsHeight.constant += CGFloat(externalGivtsModels!.count) * 44
-        stackViewEditRowsHeight.constant += CGFloat(externalGivtsModels!.count - 1) * 10
+        stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44
+        stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count - 1) * 10
     }
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
     }
-    @objc func editButtonRow(_ sender: UIButton) {
-        let editRowGuid = getEditRowFrom(button: sender).guid!
-        let model = externalGivtsModels!.filter{$0.GUID == editRowGuid}.first!
-        textFieldExternalGivtsOrganisation.text = model.Name
-        textFieldExternalGivtsAmount.text = model.Amount.getFormattedWithoutCurrency(decimals: 2)
+    @objc func deleteButtonRow(_ sender: UIButton) {
+        let editRow = getEditRowFrom(button: sender)
         
+        let command = DeleteExternalDonationCommand(guid: editRow.guid!)
+        
+        let _ = try? Mediater.shared.send(request: command)
+        
+        reloadExternalDonationList()
+    }
+    @objc func editButtonRow(_ sender: UIButton) {
+        switchButtonState()
+        
+        let editRow = getEditRowFrom(button: sender)
+        currentObjectId = editRow.objectId!
+        let model = externalDonations!.filter{$0.guid == editRow.guid!}.first!
+        textFieldExternalGivtsOrganisation.text = model.name
+        textFieldExternalGivtsAmount.text = model.amount.getFormattedWithoutCurrency(decimals: 2)
+        frequencyPicker.selectRow(model.frequency.rawValue, inComponent: 0, animated: false)
+        textFieldExternalGivtsTime.text = frequencys[model.frequency.rawValue][1] as? String
     }
     private func getEditRowFrom(button: UIButton) -> BudgetExternalGivtsEditRow {
         return button.superview?.superview?.superview?.superview as! BudgetExternalGivtsEditRow
+    }
+    @IBAction func controlPanelButton(_ sender: Any) {
+        if !isEditMode {
+            let command = CreateExternalDonationCommand(
+                guid: UUID().uuidString,
+                name: textFieldExternalGivtsOrganisation.text!,
+                amount: Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: "."))!,
+                frequency: ExternalDonationFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
+            )
+            
+            let _ = try? Mediater.shared.send(request: command)
+            
+            resetFields()
+            
+            reloadExternalDonationList()
+        } else {
+            switchButtonState()
+
+            if let objectId = currentObjectId {
+                if let currentObject = externalDonations?.filter({$0.objectId == objectId}).first! {
+                    
+                    let externalDonationModel: ExternalDonationModel = ExternalDonationModel(
+                        objectId: currentObject.objectId,
+                        guid: currentObject.guid,
+                        name: textFieldExternalGivtsOrganisation.text!,
+                        amount: Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: "."))!,
+                        frequency: ExternalDonationFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
+                    )
+                    
+                    let command = UpdateExternalDonationCommand(
+                        externalDonation: externalDonationModel
+                    )
+                    
+                    let _ = try? Mediater.shared.send(request: command)
+                    
+                    resetFields()
+                    
+                    reloadExternalDonationList()
+                }
+            }
+        }
+    }
+    func switchButtonState() {
+        if isEditMode {
+            isEditMode = false
+            buttonExternalGivtsAdd.setTitle("Toevoegen", for: .normal)
+        } else {
+            isEditMode = true
+            buttonExternalGivtsAdd.setTitle("Opslaan", for: .normal)
+        }
+    }
+    
+    func resetFields() {
+        textFieldExternalGivtsOrganisation.text = String.empty
+        textFieldExternalGivtsAmount.text = String.empty
+        frequencyPicker.selectRow(0, inComponent: 0, animated: false)
+        textFieldExternalGivtsTime.text = frequencys[0][1] as? String
+    }
+    
+    func reloadExternalDonationList() {
+        externalDonations = try? Mediater.shared.send(request: ReadExternalDonationCommand())
+        
+        stackViewEditRows.arrangedSubviews.forEach { arrangedSubview in
+            arrangedSubview.removeFromSuperview()
+        }
+        
+        stackViewEditRowsHeight.constant = originalStackviewHeightConstant!
+        
+        externalDonations!.forEach { model in
+            let newRow = BudgetExternalGivtsEditRow(objectId: model.objectId, guid: model.guid, name: model.name, amount: model.amount)
+            newRow.editButton.addTarget(self, action: #selector(editButtonRow), for: .touchUpInside)
+            newRow.deleteButton.addTarget(self, action: #selector(deleteButtonRow), for: .touchUpInside)
+            stackViewEditRows.addArrangedSubview(newRow)
+        }
+        
+        stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44
+        stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count - 1) * 10
     }
 }

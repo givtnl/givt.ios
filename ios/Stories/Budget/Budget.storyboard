@@ -474,7 +474,7 @@
                                                                                         <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per maand" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FD6-rl-HFC" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
+                                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per maand" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FD6-rl-HFC" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="107" height="44"/>
                                                                                         <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
@@ -598,6 +598,9 @@
                                                                 <color key="value" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="0.92871048430000003" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="controlPanelButton:" destination="dIS-A1-n3J" eventType="touchUpInside" id="Gym-0q-utT"/>
+                                                        </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fBG-sa-hnc">
                                                         <rect key="frame" x="30" y="151" width="354" height="0.0"/>

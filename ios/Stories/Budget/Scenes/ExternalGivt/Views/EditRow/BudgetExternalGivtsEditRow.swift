@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class BudgetExternalGivtsEditRow: UIView {
     @IBOutlet var contentView: UIView!
@@ -16,6 +17,7 @@ class BudgetExternalGivtsEditRow: UIView {
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     var guid: String?
+    var objectId: NSManagedObjectID?
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius
@@ -23,11 +25,12 @@ class BudgetExternalGivtsEditRow: UIView {
         }
     }
     
-    convenience init(guid: String, name: String, amount: Double) {
+    convenience init(objectId: NSManagedObjectID, guid: String, name: String, amount: Double) {
         self.init()
+        self.objectId = objectId
         self.guid = guid
         self.collectGroupLabel.text = name
-        self.amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0)
+        self.amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
     }
     
     override init(frame: CGRect) {
