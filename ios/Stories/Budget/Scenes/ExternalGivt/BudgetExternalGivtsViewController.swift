@@ -36,11 +36,11 @@ class BudgetExternalGivtsViewController : UIViewController {
     
     var frequencyPicker: UIPickerView!
     let frequencys: Array<Array<Any>> =
-        [[ExternalDonationFrequency.Once, "Eenmalig"]
-            , [ExternalDonationFrequency.Monthly, "Elke maand"]
-            , [ExternalDonationFrequency.Quarterly, "Elk kwartaal"]
-            , [ExternalDonationFrequency.HalfYearly, "Elke 6 maanden"]
-            , [ExternalDonationFrequency.Yearly, "Elk jaar"]]
+        [[ExternalDonationFrequency.Once, "Just once"]
+            , [ExternalDonationFrequency.Monthly, "Every month"]
+            , [ExternalDonationFrequency.Quarterly, "Every quarter"]
+            , [ExternalDonationFrequency.HalfYearly, "Every 6 months"]
+            , [ExternalDonationFrequency.Yearly, "Every year"]]
     
     var externalDonations: [ExternalDonationModel]? = nil
     
@@ -150,6 +150,7 @@ class BudgetExternalGivtsViewController : UIViewController {
             }
         }
     }
+
     func switchButtonState() {
         if isEditMode {
             isEditMode = false
