@@ -17,11 +17,27 @@ extension BudgetOverviewViewController {
                                                                                             tillDate: getTillDateForCurrentMonth(),
                                                                                             groupType: 2,
                                                                                             orderType: 0))
-
-        if collectGroupsForCurrentMonth.count >= 2 {
-            let firstTwoCollectGroups = [collectGroupsForCurrentMonth[0], collectGroupsForCurrentMonth[1]]
-
-            firstTwoCollectGroups.forEach { model in
+        stackViewGivt.arrangedSubviews.forEach { arrangedSubview in
+            arrangedSubview.removeFromSuperview()
+        }
+        
+        stackViewGivtHeight.constant = originalStackviewGivtHeight!
+        
+        stackViewNotGivt.arrangedSubviews.forEach { arrangedSubview in
+            arrangedSubview.removeFromSuperview()
+        }
+        
+        stackViewNotGivtHeight.constant = originalStackviewNotGivtHeight!
+        
+        if collectGroupsForCurrentMonth.count >= 1 {
+            var firstCollectGroups: [MonthlySummaryDetailModel] = [MonthlySummaryDetailModel]()
+            if collectGroupsForCurrentMonth.count == 1 {
+                firstCollectGroups.append(collectGroupsForCurrentMonth[0])
+            } else {
+                firstCollectGroups = [collectGroupsForCurrentMonth[0], collectGroupsForCurrentMonth[1]]
+            }
+            
+            firstCollectGroups.forEach { model in
                 let view = MonthlyCardViewLine()
                 view.collectGroupLabel.text = model.Key
                 view.amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
@@ -30,14 +46,14 @@ extension BudgetOverviewViewController {
             }
         }
         
-        let notGivtModels: [NotGivtDonationModel] = try! Mediater.shared.send(request: GetNotGivtDonationsQuery())
+        let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: ReadExternalDonationCommand())
         
         let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
         notGivtModels.forEach { model in
             let notGivtRow: LineWithIcon = LineWithIcon(
-                guid: model.GUID,
-                name: model.Name,
-                amount: model.Amount
+                guid: model.guid,
+                name: model.name,
+                amount: model.amount
             )
             notGivtRow.addGestureRecognizer(notGivtTapGesture)
             stackViewNotGivt.addArrangedSubview(notGivtRow)

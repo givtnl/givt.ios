@@ -29,7 +29,9 @@ class BudgetOverviewViewController : UIViewController {
     @IBOutlet weak var yearViewBody: YearViewBody!
     @IBOutlet weak var yearViewBodyHeight: NSLayoutConstraint!
     
-    var needsReload: Bool = true
+    var originalHeightsSet = false
+    var originalStackviewGivtHeight: CGFloat? = nil
+    var originalStackviewNotGivtHeight: CGFloat? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +41,14 @@ class BudgetOverviewViewController : UIViewController {
             SVProgressHUD.show()
         }
         setupTerms()
+        if !originalHeightsSet {
+            originalStackviewGivtHeight = stackViewGivtHeight.constant
+            originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
+            originalHeightsSet = true
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
-        if needsReload {
-            setupCollectGroupsCard()
-            needsReload = false
-        }
+        setupCollectGroupsCard()
         setupMonthsCard()
         setupYearsCard()
         SVProgressHUD.dismiss()
