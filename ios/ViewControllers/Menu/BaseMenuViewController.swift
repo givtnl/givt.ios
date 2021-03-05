@@ -73,6 +73,7 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
 
             cell?.settingLabel.leftAnchor.constraint(equalTo: (cell?.settingImageView.rightAnchor)!, constant: 50).isActive = true
             cell?.settingLabel.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
+            cell?.settingLabel.numberOfLines = 2
 
             (cell! as! SettingsItemArrow).arrow.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
 

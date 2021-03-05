@@ -703,6 +703,7 @@
                         <outlet property="labelExternalGivtsSubtitle" destination="yqe-uH-2st" id="Ylc-Nt-6YE"/>
                         <outlet property="labelExternalGivtsTime" destination="V8M-fj-POG" id="mJG-Rp-LBS"/>
                         <outlet property="labelExternalGivtsTimeDown" destination="2ZE-fv-DaX" id="JaB-Yt-D0E"/>
+                        <outlet property="navBar" destination="3MD-gf-40A" id="YEq-2e-z8M"/>
                         <outlet property="stackViewEditRows" destination="fBG-sa-hnc" id="KiP-kO-r6u"/>
                         <outlet property="stackViewEditRowsHeight" destination="FSc-v2-Opm" id="09F-aF-ndA"/>
                         <outlet property="textFieldExternalGivtsAmount" destination="nPl-We-QEd" id="CGN-RB-V08"/>
@@ -719,7 +720,7 @@
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="26"/>
+            <size key="intrinsicContentSize" width="30" height="29"/>
         </designable>
         <designable name="FD6-rl-HFC">
             <size key="intrinsicContentSize" width="89" height="21"/>
