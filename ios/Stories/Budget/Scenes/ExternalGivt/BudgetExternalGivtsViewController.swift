@@ -86,7 +86,11 @@ class BudgetExternalGivtsViewController : UIViewController {
         
         let _ = try? Mediater.shared.send(request: command)
         
+        resetFields()
+        
         reloadExternalDonationList()
+        
+        resetButtonState()
     }
     @objc func editButtonRow(_ sender: UIButton) {
         switchButtonState()
@@ -116,6 +120,7 @@ class BudgetExternalGivtsViewController : UIViewController {
             resetFields()
             
             reloadExternalDonationList()
+            
         } else {
             switchButtonState()
 
@@ -146,11 +151,16 @@ class BudgetExternalGivtsViewController : UIViewController {
     func switchButtonState() {
         if isEditMode {
             isEditMode = false
-            buttonExternalGivtsAdd.setTitle("Toevoegen", for: .normal)
+            buttonExternalGivtsAdd.setTitle("Add", for: .normal)
         } else {
             isEditMode = true
-            buttonExternalGivtsAdd.setTitle("Opslaan", for: .normal)
+            buttonExternalGivtsAdd.setTitle("Edit", for: .normal)
         }
+    }
+    
+    func resetButtonState() {
+        isEditMode = false
+        buttonExternalGivtsAdd.setTitle("Add", for: .normal)
     }
     
     func resetFields() {
