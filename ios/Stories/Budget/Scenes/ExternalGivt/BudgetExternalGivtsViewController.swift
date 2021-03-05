@@ -32,6 +32,8 @@ class BudgetExternalGivtsViewController : UIViewController {
     @IBOutlet weak var stackViewEditRows: UIStackView!
     @IBOutlet weak var stackViewEditRowsHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var navBar: UINavigationItem!
+    
     var frequencyPicker: UIPickerView!
     let frequencys: Array<Array<Any>> =
         [[ExternalDonationFrequency.Once, "Eenmalig"]

@@ -14,6 +14,7 @@ extension BudgetExternalGivtsViewController {
         labelExternalGivtsInfo.attributedText = createInfoText()
         labelExternalGivtsInfo.textColor = .white
         labelExternalGivtsSubtitle.text = "BudgetExternalGiftsSubTitle".localized
+        navBar.title = "BudgetExternalGiftsSubTitle".localized
         labelExternalGivtsOrganisation.text = "BudgetExternalGiftsOrg".localized
         labelExternalGivtsTime.text = "BudgetExternalGiftsTime".localized
         labelExternalGivtsAmount.text = "BudgetExternalGiftsAmount".localized
