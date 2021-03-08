@@ -46,8 +46,8 @@ class BudgetExternalGivtsViewController : UIViewController {
     
     var isEditMode: Bool = false
     var currentObjectId: NSManagedObjectID? = nil
-    
     var originalStackviewHeightConstant: CGFloat? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +73,16 @@ class BudgetExternalGivtsViewController : UIViewController {
             newRow.editButton.addTarget(self, action: #selector(editButtonRow), for: .touchUpInside)
             newRow.deleteButton.addTarget(self, action: #selector(deleteButtonRow), for: .touchUpInside)
             stackViewEditRows.addArrangedSubview(newRow)
+        }
+        
+        if let objectId = currentObjectId {
+            let model = externalDonations!.filter{$0.objectId == objectId}.first!
+            textFieldExternalGivtsOrganisation.text = model.name
+            textFieldExternalGivtsAmount.text = model.amount.getFormattedWithoutCurrency(decimals: 2)
+            frequencyPicker.selectRow(model.frequency.rawValue, inComponent: 0, animated: false)
+            textFieldExternalGivtsTime.text = frequencys[model.frequency.rawValue][1] as? String
+            isEditMode = false
+            switchButtonState()
         }
         
         stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44

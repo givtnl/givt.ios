@@ -11,10 +11,14 @@ import Foundation
 
 class OpenExternalGivtsRouteHandler: RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let _ = request as! OpenExternalGivtsRoute
+        let route = request as! OpenExternalGivtsRoute
+        
         let vc = UIStoryboard.init(name: "Budget", bundle: nil)
             .instantiateViewController(withIdentifier: String(describing: BudgetExternalGivtsViewController.self)) as! BudgetExternalGivtsViewController
+        vc.currentObjectId = route.objectId
+        
         context.navigationController?.pushViewController(vc, animated: true)
+        
         try completion(() as! R.TResponse)
     }
     

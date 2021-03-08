@@ -51,7 +51,7 @@ extension BudgetOverviewViewController {
         let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
         notGivtModels.forEach { model in
             let notGivtRow: LineWithIcon = LineWithIcon(
-                guid: model.guid,
+                objectId: model.objectId,
                 name: model.name,
                 amount: model.amount
             )
