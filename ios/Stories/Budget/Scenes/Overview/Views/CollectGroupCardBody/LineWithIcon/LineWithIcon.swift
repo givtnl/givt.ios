@@ -8,16 +8,17 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class LineWithIcon: UIView {
     @IBOutlet weak var collectGroupLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet var contentView: UIView!
-    var guid: String?
+    var objectId: NSManagedObjectID?
     
-    convenience init(guid: String, name: String, amount: Double) {
+    convenience init(objectId: NSManagedObjectID, name: String, amount: Double) {
         self.init()
-        self.guid = guid
+        self.objectId = objectId
         self.collectGroupLabel.text = name
         self.amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
     }
