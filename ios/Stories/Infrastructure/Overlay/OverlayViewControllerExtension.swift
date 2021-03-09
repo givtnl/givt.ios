@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// inherit from this protocol on the viewcontroller that needs to look like an overlay
 protocol OverlayViewController: AnyObject {
     var overlaySize: CGSize? { get }
     func presentOverlay(from parentViewController: UIViewController)
@@ -31,12 +32,16 @@ extension OverlayViewController where Self: UIViewController {
         // Dim out background.
         let parentBounds = parentViewController.view.bounds
         let blackOverlayView = UIView()
-        blackOverlayView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+        blackOverlayView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         blackOverlayView.frame = parentBounds
         blackOverlayView.alpha = 0.0
         blackOverlayView.isUserInteractionEnabled = true
         blackOverlayView.tag = blackOverlayViewTag
         parentViewController.view.addSubview(blackOverlayView)
+        
+        blackOverlayView.addGestureRecognizer(BindableGestureRecognizer {
+            self.dismissOverlay()
+        })
 
         let containerView = UIView()
         if let overlaySize = overlaySize {

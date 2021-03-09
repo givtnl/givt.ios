@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+// if you want to implement the overlay on a controller, inherit the OverlayHost on that controller
 protocol OverlayHost {
     func showOverlay<T: OverlayViewController>(type: T.Type, fromStoryboardWithName storyboardName: String) -> T?
     func showOverlay<T: OverlayViewController>(identifier: String, fromStoryboardWithName storyboardName: String) -> T?

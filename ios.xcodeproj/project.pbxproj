@@ -148,6 +148,7 @@
 		32DDFB2F25F75F4900E25AF2 /* BudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */; };
 		32DDFB3225F7618400E25AF2 /* OverlayViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB3125F7618400E25AF2 /* OverlayViewControllerExtension.swift */; };
 		32DDFB3425F761B100E25AF2 /* OverlayHostViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB3325F761B100E25AF2 /* OverlayHostViewControllerExtension.swift */; };
+		32DDFB3625F7F52900E25AF2 /* BindableGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB3525F7F52800E25AF2 /* BindableGestureRecognizer.swift */; };
 		32E506F725DE98AD00BC6070 /* CardViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E506F625DE98AD00BC6070 /* CardViewHeader.swift */; };
 		32E506F925DE991C00BC6070 /* CardViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E506F825DE991C00BC6070 /* CardViewHeader.xib */; };
 		32E76C3D252DCFCA005B5CB9 /* TrackingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */; };
@@ -582,6 +583,7 @@
 		32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewController.swift; sourceTree = "<group>"; };
 		32DDFB3125F7618400E25AF2 /* OverlayViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewControllerExtension.swift; sourceTree = "<group>"; };
 		32DDFB3325F761B100E25AF2 /* OverlayHostViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayHostViewControllerExtension.swift; sourceTree = "<group>"; };
+		32DDFB3525F7F52800E25AF2 /* BindableGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableGestureRecognizer.swift; sourceTree = "<group>"; };
 		32E506F625DE98AD00BC6070 /* CardViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewHeader.swift; sourceTree = "<group>"; };
 		32E506F825DE991C00BC6070 /* CardViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewHeader.xib; sourceTree = "<group>"; };
 		32E76C3C252DCFCA005B5CB9 /* TrackingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackingHelper.swift; sourceTree = "<group>"; };
@@ -2408,6 +2410,7 @@
 				FB87302D24C88540005FF355 /* Alerts */,
 				FB9CEE0024EC1DEF0062EE07 /* Models */,
 				FB2CFAE524EC157B003E096D /* Routes */,
+				32DDFB3525F7F52800E25AF2 /* BindableGestureRecognizer.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -3046,6 +3049,7 @@
 				D7AE8BA22136BD9000CB3A33 /* BacsDetailViewController.swift in Sources */,
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				FBC1859124C06616001A4C6B /* CollectGroupDetailModel.swift in Sources */,
+				32DDFB3625F7F52900E25AF2 /* BindableGestureRecognizer.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				3260CF35254ACFD800BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRoute.swift in Sources */,
 				3260CF17254AB70700BA6BD7 /* DiscoverOrAmountSetupSingleDonationRoute.swift in Sources */,
