@@ -18,7 +18,7 @@ private extension BudgetOverviewViewController {
         try? Mediater.shared.send(request: OpenGiveNowRoute(), withContext: self)
     }
     @IBAction func buttonSeeMore(_ sender: Any) {
-        print("See more pressed")
+        showOverlay(type: BudgetListViewController.self, fromStoryboardWithName: "Budget")
     }
     @IBAction func buttonPlus(_ sender: Any) {
         try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)

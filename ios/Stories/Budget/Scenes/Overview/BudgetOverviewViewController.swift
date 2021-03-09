@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SVProgressHUD
 
-class BudgetOverviewViewController : UIViewController {    
+class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var monthlySummaryTile: MonthlySummary!
     @IBOutlet weak var givtNowButton: CustomButton!
     @IBOutlet weak var monthlyCardHeader: CardViewHeader!

@@ -718,12 +718,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ko-yX-sgF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="263.768115942029" y="57.589285714285708"/>
+            <point key="canvasLocation" x="32" y="58"/>
+        </scene>
+        <!--Budget List View Controller-->
+        <scene sceneID="aos-WA-ozq">
+            <objects>
+                <viewController storyboardIdentifier="BudgetListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eq3-oF-UWp" customClass="BudgetListViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ReI-3r-tpr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FCb-Nh-ro9">
+                                <rect key="frame" x="184" y="433" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="eq3-oF-UWp" eventType="touchUpInside" id="Zp7-45-73G"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tAv-Zt-gWI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FCb-Nh-ro9" firstAttribute="centerY" secondItem="ReI-3r-tpr" secondAttribute="centerY" id="avU-l2-lg4"/>
+                            <constraint firstItem="FCb-Nh-ro9" firstAttribute="centerX" secondItem="ReI-3r-tpr" secondAttribute="centerX" id="dwT-G8-Pqi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MHv-HB-UWE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="687" y="58"/>
         </scene>
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="29"/>
+            <size key="intrinsicContentSize" width="30" height="26"/>
         </designable>
         <designable name="FD6-rl-HFC">
             <size key="intrinsicContentSize" width="89" height="21"/>
