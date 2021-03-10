@@ -13,7 +13,7 @@ class ChartViewBody: UIView, AxisValueFormatter {
     var trueAverage: Double = 0
     
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return months[Int(value)].lowercased()
+        return months[Int(value)]
     }
     
     private var borderView: UIView!
