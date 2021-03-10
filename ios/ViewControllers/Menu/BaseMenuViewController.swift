@@ -77,6 +77,7 @@ class BaseMenuViewController: UIViewController, UITableViewDataSource, UITableVi
             (cell! as! SettingsItemArrow).arrow.centerYAnchor.constraint(equalTo: cell!.centerYAnchor, constant: 0).isActive = true
 
             cell?.settingLabel.font = UIFont(name: "Avenir-Black", size: 16)
+            cell?.settingLabel.numberOfLines = 2
         }
         
         cell!.settingLabel.text = setting.name

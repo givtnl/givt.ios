@@ -136,12 +136,12 @@ class BudgetViewController : UIViewController {
         // array for month strings
         var monthStrings: [String] = []
         // get the current moths string value
-        monthStrings.insert(getMonthStringFromDateValue(value: toUseDate), at: 0)
+        monthStrings.insert(getMonthStringFromDateValue(value: toUseDate).capitalizedByLanguage(Locale.current.languageCode!), at: 0)
         // start looping to fill array with place holder values
         while i < 12 {
             let prevDate = getPreviousMonthDate(fromDate: toUseDate)
             toUseDate = prevDate
-            monthStrings.insert(getMonthStringFromDateValue(value: toUseDate), at: 0)
+            monthStrings.insert(getMonthStringFromDateValue(value: toUseDate).capitalizedByLanguage(Locale.current.languageCode!), at: 0)
             let nextKey = getKeyValues(fromDate: prevDate)
             monthsDictionary[nextKey] = MonthlySummaryValue(Index: 12 - i, Value: 0.0)
             i += 1
@@ -308,7 +308,7 @@ class BudgetViewController : UIViewController {
 
 class ChartValueFormatter: NSObject, ValueFormatter {
     func stringForValue(_ value: Double, entry: ChartDataEntry, dataSetIndex: Int, viewPortHandler: ViewPortHandler?) -> String {
-        return value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0)
+        return value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
     }
 }
 
