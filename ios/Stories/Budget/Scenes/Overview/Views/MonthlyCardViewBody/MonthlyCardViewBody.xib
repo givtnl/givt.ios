@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonthlyCardViewBody" customModule="ios" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="6Vj-AO-God"/>
+                <outlet property="labelGivt" destination="b2M-ep-TVz" id="gbp-oB-Eki"/>
                 <outlet property="stackView" destination="bfy-nA-cv2" id="3Ld-Sd-4Q9"/>
             </connections>
         </placeholder>

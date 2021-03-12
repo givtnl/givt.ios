@@ -42,7 +42,7 @@ class BudgetViewController : UIViewController {
     override func viewDidLoad() {
         monthlySummaryTile.descriptionLabel.text = "BudgetSummaryBalance".localized
         givtNowButton.setTitle("BudgetSummaryGiveNow".localized, for: .normal)
-        
+        monthlyCardBody.labelGivt.text = "BudgetSummaryGivt".localized
         monthlyCardHeader.label.text = getFullMonthStringFromDateValue(value: Date()).capitalized
         navigationItem.title = getFullMonthStringFromDateValue(value: Date()).capitalized
         chartViewHeader.label.text = "BudgetSummaryMonth".localized

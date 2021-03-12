@@ -11,6 +11,7 @@ import UIKit
 class MonthlyCardViewBody: UIView {
     private var borderView: UIView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var labelGivt: UILabel!
     
     @IBOutlet var contentView: UIView!
         
