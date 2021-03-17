@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SwifCron
+import UIKit
 
 extension RecurringDonationTurnsOverviewController {
     func getPastTurns(donationDetails: [DonationResponseModel]) -> [RecurringDonationTurnViewModel] {
@@ -24,89 +24,38 @@ extension RecurringDonationTurnsOverviewController {
         }
         return donations
     }
-    func getFutureTurns(recurringDonation: RecurringRuleViewModel, recurringDonationLastDate: Date, recurringDonationPastTurnsCount: Int, maxCount: Int)  -> [RecurringDonationTurnViewModel] {
-        var donations: [RecurringDonationTurnViewModel] = []
+    func getFutureTurn(recurringDonation: RecurringRuleViewModel, recurringDonationLastDate: Date, recurringDonationPastTurnsCount: Int, isFirst: Bool = false)  -> RecurringDonationTurnViewModel {
+        let lastDonationDate: Date = recurringDonationLastDate
+
+        var nextRunDate: Date? = nil
         
-        do {
-                
-            let lastDonationDate: Date = recurringDonationLastDate
-            guard let cronObject: SwifCron = createSwifCron(cronString: recurringDonation.cronExpression) else {
-                return []
+        if isFirst {
+            let currentDay: String = recurringDonationLastDate.getDay().string
+            let currentMonth: String = recurringDonationLastDate.getMonthName()
+            let currentYear: String = recurringDonationLastDate.getYear().string
+            return RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0, toBePlanned: true)
+        } else {
+            let cronDayOfMonth = Int(recurringDonation.cronExpression.split(separator: " ")[2])!
+
+            switch getFrequencyFromCron(cronExpression: recurringDonation.cronExpression) {
+                case .Weekly:
+                    nextRunDate = add7Days(date: lastDonationDate)
+                case .Monthly:
+                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 1), cronDayOfMonth: cronDayOfMonth)
+                case .ThreeMonthly:
+                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 3), cronDayOfMonth: cronDayOfMonth)
+                case .SixMonthly:
+                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 6), cronDayOfMonth: cronDayOfMonth)
+                case .Yearly:
+                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 12), cronDayOfMonth: cronDayOfMonth)
             }
             
-            var nextRunDate = try cronObject.next(from: lastDonationDate)
+            let currentDay: String = nextRunDate!.getDay().string
+            let currentMonth: String = nextRunDate!.getMonthName()
+            let currentYear: String = nextRunDate!.getYear().string
             
-            let currentDay: String = nextRunDate.getDay().string
-            let currentMonth: String = nextRunDate.getMonthName()
-            let currentYear: String = nextRunDate.getYear().string
-            
-            let model = RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0, toBePlanned: true)
-            
-            donations.append(model)
-            
-            print(nextRunDate)
-            
-            let turnsToCalculate = recurringDonation.endsAfterTurns-recurringDonationPastTurnsCount
-            
-            if turnsToCalculate > 1 {
-                for _ in 1...turnsToCalculate - 1 {
-                    let prevRunDate = nextRunDate
-                    
-                    nextRunDate = try cronObject.next(from: prevRunDate)
-                    
-                    let currentDay: String = nextRunDate.getDay().string
-                    let currentMonth: String = nextRunDate.getMonthName()
-                    let currentYear: String = nextRunDate.getYear().string
-                    
-                    let model = RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0, toBePlanned: true)
-                    
-                    donations.append(model)
-                    
-                    print(nextRunDate)
-                }
-            }
-        } catch {
-            print(error)
+            return RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0, toBePlanned: true)
         }
-        
-        if donations.count > maxCount {
-            donations = Array(donations.prefix(maxCount))
-        }
-        return donations
-    }
-    
-    private func createSwifCron(cronString: String) -> SwifCron? {
-        do {
-            let cronItems: [String] = transformDayInCronToInt(cronArray: cronString.components(separatedBy: " "))
-            return try SwifCron(cronItems.joined(separator: " "))
-        }
-        catch {
-            return nil
-        }
-    }
-    private func transformDayInCronToInt(cronArray: [String]) -> [String] {
-        var newarray = cronArray
-        var day = newarray[4]
-        switch day {
-        case "MON":
-            day = "1"
-        case "TUE":
-            day = "2"
-        case "WED":
-            day = "3"
-        case "THU":
-            day = "4"
-        case "FRI":
-            day = "5"
-        case "SAT":
-            day = "6"
-        case "SUN":
-            day = "0"
-        default:
-            day = "*"
-        }
-        newarray[4] = day
-        return newarray
     }
     
     func setupInfoViewContainer() {
