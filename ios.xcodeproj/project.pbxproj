@@ -2967,6 +2967,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 123;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
@@ -2975,6 +2976,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativepre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3105,6 +3107,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 123;
 				DEVELOPMENT_TEAM = 9C9K7PRW9C;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
@@ -3113,6 +3116,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "3ce18608-3c76-4483-8182-e1a97ba62157";
@@ -3134,6 +3138,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 123;
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
@@ -3142,6 +3147,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.givt.iosnativedev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
