@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-private extension RecurringDonationTurnsOverviewController {
+extension RecurringDonationTurnsOverviewController {
     @IBAction override func backPressed(_ sender: Any) {
         try? Mediater.shared.send(request: BackToRecurringDonationOverviewRoute(reloadData: comingFromNotification), withContext: self)
     }
