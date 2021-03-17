@@ -71,6 +71,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
             })
             
             if let recurringDonation = recurringDonation {
+                
                 let cgName = try mediater.send(request: GetCollectGroupsQuery()).first(where: { $0.namespace == recurringDonation.namespace })!.name
                 
                 (navBar.titleView as! UILabel).text = cgName
@@ -85,22 +86,23 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
                 }
                 var lastDonationDate: Date
                 
-                if donationDetails.count >= 1 {
-                    lastDonationDate = (donationDetails.last?.Timestamp.toDate!)!
-                } else {
-                    lastDonationDate = recurringDonation.startDate.toDate!.addingTimeInterval(-1)
+                var futureTurn: RecurringDonationTurnViewModel?
+                
+                if donationDetails.count < recurringDonation.endsAfterTurns {
+                    if donationDetails.count >= 1 {
+                        lastDonationDate = (donationDetails.last?.Timestamp.toDate!)!
+                        futureTurn = getFutureTurn(recurringDonation: recurringDonation, recurringDonationLastDate: lastDonationDate, recurringDonationPastTurnsCount: recurringDonationTurns.count)
+                    } else {
+                        lastDonationDate = recurringDonation.startDate.toDate!.addingTimeInterval(-1)
+                        futureTurn = getFutureTurn(recurringDonation: recurringDonation, recurringDonationLastDate: lastDonationDate, recurringDonationPastTurnsCount: recurringDonationTurns.count, isFirst: true)
+                    }
                 }
-                
-                let futureTurns: [RecurringDonationTurnViewModel] = getFutureTurns(recurringDonation: recurringDonation, recurringDonationLastDate: lastDonationDate, recurringDonationPastTurnsCount: recurringDonationTurns.count, maxCount: 1)
-                
-                //                donations.append(contentsOf: futureTurns)
-                
                 donations = donations.reversed()
                 
                 donationsByYear = Dictionary(grouping: donations, by: {Int($0.year)!})
                 
-                if(futureTurns.count > 0) {
-                    donationsByYear[9999] = futureTurns
+                if let futureTurn = futureTurn {
+                    donationsByYear[9999] = [futureTurn]
                 }
                 
                 donationsByYearSorted = donationsByYear.sorted { (first, second) -> Bool in
