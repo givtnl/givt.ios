@@ -17,6 +17,7 @@ class BackToMainRouteHandler : RequestHandlerWithContextProtocol {
             lastVcIndex > 0,
             let vc = context.navigationController?.viewControllers[lastVcIndex-1] as? AmountViewController {
             validVc = vc
+            
         }
         
         if let vc = validVc {
