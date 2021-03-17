@@ -111,6 +111,7 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
             }
             
             self.tableView.isHidden = false
+            
             givyContainer.isHidden = true
             
             tableView.reloadData()
@@ -123,26 +124,6 @@ class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDe
             givyContainer_label.text = "SomethingWentWrong".localized
         }
         SVProgressHUD.dismiss()
-    }
-    
-    @IBAction override func backPressed(_ sender: Any) {
-        try? mediater.send(request: BackToRecurringDonationOverviewRoute(reloadData: comingFromNotification), withContext: self)
-    }
-    
-    @IBAction func openInfo(_ sender: Any) {
-        UIView.animate(withDuration: 1, animations: {
-            self.legendOverlay.frame.origin.y = 0
-            self.navigationController?.navigationBar.alpha = 0
-            self.view.layoutIfNeeded()
-        })
-    }
-    
-    @objc func closeInfo() {
-        UIView.animate(withDuration: 1, animations: {
-            self.legendOverlay.frame.origin.y = -340
-            self.navigationController?.navigationBar.alpha = 1
-            self.view.layoutIfNeeded()
-        })
     }
 }
 
