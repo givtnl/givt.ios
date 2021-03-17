@@ -19,4 +19,6 @@ extension Notification.Name {
     public static let GivtDidFindBeaconFarAway = Notification.Name("GivtDidFindBeaconFarAway")
     
     public static let GivtSegmentControlStateDidChange = Notification.Name("GivtSegmentControlStateDidChange")
+    
+    public static let GivtComingFromBudget = Notification.Name("GivtComingFromBudget")
 }

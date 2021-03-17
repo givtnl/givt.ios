@@ -132,4 +132,10 @@ extension String{
     var toInt: Int {
         return Int(self)!
     }
+    func capitalizedByLanguage(_ language: String) -> String {
+        if language != "nl" {
+            return self.capitalized
+        }
+        return self
+    }
 }

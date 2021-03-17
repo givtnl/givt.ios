@@ -15,14 +15,16 @@ class Setting {
     var showArrow: Bool
     var showBadge: Bool
     var isHighlighted: Bool
+    var isSpecialItem: Bool
     
-    init(name: String, image: UIImage, showBadge: Bool = false, callback: @escaping () -> (), showArrow: Bool = true, isHighlighted: Bool = false) {
+    init(name: String, image: UIImage, showBadge: Bool = false, callback: @escaping () -> (), showArrow: Bool = true, isHighlighted: Bool = false, isSpecialItem: Bool = false) {
         self.name = name
         self.image = image
         self.callback = callback
         self.showArrow = showArrow
         self.showBadge = showBadge
         self.isHighlighted = isHighlighted
+        self.isSpecialItem = isSpecialItem
     }
 
 }

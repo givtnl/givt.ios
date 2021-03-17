@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonthlyCardViewLine" customModule="ios" customModuleProvider="target">
+            <connections>
+                <outlet property="amountLabel" destination="2hm-WZ-9dq" id="FRx-Ol-2Gp"/>
+                <outlet property="collectGroupLabel" destination="c6P-22-YnK" id="Soa-gv-Ihd"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="cbW-qE-N9z"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="604" height="22"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rb-zb-oy9">
+                    <rect key="frame" x="0.0" y="0.0" width="604" height="22"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2hm-WZ-9dq">
+                            <rect key="frame" x="563" y="1.5" width="21" height="19.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                            <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voorbeeldkerk 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="c6P-22-YnK">
+                            <rect key="frame" x="20" y="1.5" width="103" height="19.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                            <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="Zko-dd-jnn"/>
+                        <constraint firstAttribute="trailing" secondItem="2hm-WZ-9dq" secondAttribute="trailing" constant="20" id="caG-VL-WMc"/>
+                        <constraint firstItem="2hm-WZ-9dq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c6P-22-YnK" secondAttribute="trailing" constant="20" id="diS-e4-XWG"/>
+                        <constraint firstItem="2hm-WZ-9dq" firstAttribute="centerY" secondItem="9Rb-zb-oy9" secondAttribute="centerY" id="gSr-Yc-2d9"/>
+                        <constraint firstItem="c6P-22-YnK" firstAttribute="leading" secondItem="9Rb-zb-oy9" secondAttribute="leading" constant="20" id="tcM-eU-TUS"/>
+                        <constraint firstItem="c6P-22-YnK" firstAttribute="centerY" secondItem="9Rb-zb-oy9" secondAttribute="centerY" id="vxv-q6-b06"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="9Rb-zb-oy9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7XS-CV-QkC"/>
+                <constraint firstItem="9Rb-zb-oy9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dGh-B0-vtn"/>
+                <constraint firstAttribute="bottom" secondItem="9Rb-zb-oy9" secondAttribute="bottom" id="jL4-yK-dOh"/>
+                <constraint firstAttribute="trailing" secondItem="9Rb-zb-oy9" secondAttribute="trailing" id="l1I-IF-xJG"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="269.56521739130437" y="-161.38392857142856"/>
+        </view>
+    </objects>
+</document>
