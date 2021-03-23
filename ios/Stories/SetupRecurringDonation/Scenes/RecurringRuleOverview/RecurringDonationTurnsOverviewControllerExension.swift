@@ -35,19 +35,24 @@ extension RecurringDonationTurnsOverviewController {
             let currentYear: String = recurringDonationLastDate.getYear().string
             return RecurringDonationTurnViewModel(amount: Decimal(recurringDonation.amountPerTurn), day: currentDay, month: currentMonth, year: currentYear, status: 0, toBePlanned: true)
         } else {
-            let cronDayOfMonth = Int(recurringDonation.cronExpression.split(separator: " ")[2])!
+            
+            var cronDay: Int? = nil
+            
+            if let cronDayOfMonth = Int(recurringDonation.cronExpression.split(separator: " ")[2]) {
+                cronDay = cronDayOfMonth
+            }
 
             switch getFrequencyFromCron(cronExpression: recurringDonation.cronExpression) {
                 case .Weekly:
                     nextRunDate = add7Days(date: lastDonationDate)
                 case .Monthly:
-                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 1), cronDayOfMonth: cronDayOfMonth)
+                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 1), cronDayOfMonth: cronDay!)
                 case .ThreeMonthly:
-                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 3), cronDayOfMonth: cronDayOfMonth)
+                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 3), cronDayOfMonth: cronDay!)
                 case .SixMonthly:
-                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 6), cronDayOfMonth: cronDayOfMonth)
+                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 6), cronDayOfMonth: cronDay!)
                 case .Yearly:
-                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 12), cronDayOfMonth: cronDayOfMonth)
+                    nextRunDate = getFinalRunDate(date: addMonths(date: lastDonationDate, months: 12), cronDayOfMonth: cronDay!)
             }
             
             let currentDay: String = nextRunDate!.getDay().string
