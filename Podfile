@@ -18,5 +18,7 @@ target 'ios' do
   pod 'Mixpanel-swift'
   pod 'SwifCron'
   # Pods for ios
-
+  target 'ios.tests' do
+    inherit! :search_paths
+  end
 end
