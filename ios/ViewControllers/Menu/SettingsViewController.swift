@@ -134,11 +134,10 @@ class SettingsViewController: BaseMenuViewController {
             if !LoginManager.shared.isFullyRegistered {
                 items.insert([finishRegistration], at: 0)
             }
-        } else {
+        } else {            
             if let info = appInfo {
                 items =
                     [
-                        [budget],
                         [finishRegistration],
                         [turnOnPresets],
                         [changeAccount, screwAccount],
@@ -147,7 +146,6 @@ class SettingsViewController: BaseMenuViewController {
             } else {
                 items =
                     [
-                        [budget],
                         [finishRegistration],
                         [turnOnPresets],
                         [changeAccount, screwAccount],
