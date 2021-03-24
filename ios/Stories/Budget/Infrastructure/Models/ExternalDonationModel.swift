@@ -9,18 +9,18 @@
 import Foundation
 import CoreData
 
-struct ExternalDonationModel {
-    var objectId: NSManagedObjectID
-    var guid: String
-    var name: String
+struct ExternalDonationModel: Codable {
+    var id: String
     var amount: Double
-    var frequency: ExternalDonationFrequency
+    var description: String
+    var cronExpression: String
+    var creationDate: String
     
-    init(objectId: NSManagedObjectID, guid: String, name: String, amount: Double, frequency: ExternalDonationFrequency) {
-        self.objectId = objectId
-        self.guid = guid
-        self.name = name
+    init(id: String, amount: Double, description: String, cronExpression: String, creationDate: String) {
+        self.id = id
         self.amount = amount
-        self.frequency = frequency
+        self.description = description
+        self.cronExpression = cronExpression
+        self.creationDate = creationDate
     }
 }

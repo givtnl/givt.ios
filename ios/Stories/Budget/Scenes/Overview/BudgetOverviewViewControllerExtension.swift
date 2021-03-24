@@ -29,7 +29,7 @@ extension BudgetOverviewViewController {
     
     @objc func noGivtsAction(_ sender: UITapGestureRecognizer) {
         let view = sender.view as! LineWithIcon
-        try? Mediater.shared.send(request: OpenExternalGivtsRoute(objectId: view.objectId!), withContext: self)
+        try? Mediater.shared.send(request: OpenExternalGivtsRoute(id: view.id!), withContext: self)
     }
     
     func getFromDateForCurrentMonth() -> String {

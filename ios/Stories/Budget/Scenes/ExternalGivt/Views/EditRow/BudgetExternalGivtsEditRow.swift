@@ -16,8 +16,9 @@ class BudgetExternalGivtsEditRow: UIView {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
-    var guid: String?
-    var objectId: NSManagedObjectID?
+    
+    var id: String?
+    
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius
@@ -25,11 +26,10 @@ class BudgetExternalGivtsEditRow: UIView {
         }
     }
     
-    convenience init(objectId: NSManagedObjectID, guid: String, name: String, amount: Double) {
+    convenience init(id: String, description: String, amount: Double) {
         self.init()
-        self.objectId = objectId
-        self.guid = guid
-        self.collectGroupLabel.text = name
+        self.id = id
+        self.collectGroupLabel.text = description
         self.amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
     }
     
@@ -55,6 +55,6 @@ class BudgetExternalGivtsEditRow: UIView {
     }
 
     @IBAction func deleteButton(_ sender: Any) {
-        print("Deleting \(guid!)")
+        print("Deleting \(id!)")
     }
 }

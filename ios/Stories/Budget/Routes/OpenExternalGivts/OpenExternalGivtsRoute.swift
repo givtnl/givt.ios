@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 class OpenExternalGivtsRoute: NoResponseRequest {
-    var objectId: NSManagedObjectID?
-    init(objectId: NSManagedObjectID? = nil) {
-        self.objectId = objectId
+    var id: String?
+    init(id: String? = nil) {
+        self.id = id
     }
 }

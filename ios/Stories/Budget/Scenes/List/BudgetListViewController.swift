@@ -62,11 +62,11 @@ class BudgetListViewController: UIViewController, OverlayViewController {
             }
         }
         
-        let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: ReadExternalDonationCommand())
+        let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: GetAllExternalDonationsQuery()).result
         
         notGivtModels.forEach { model in
             let view = MonthlyCardViewLine()
-            view.collectGroupLabel.text = model.name
+            view.collectGroupLabel.text = model.description
             view.amountLabel.text = model.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
             stackViewNotGivt.addArrangedSubview(view)
             stackViewNotGivtHeight.constant += 22

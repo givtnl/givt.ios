@@ -45,7 +45,7 @@ class BudgetExternalGivtsViewController : UIViewController {
     var externalDonations: [ExternalDonationModel]? = nil
     
     var isEditMode: Bool = false
-    var currentObjectId: NSManagedObjectID? = nil
+    var currentObjectInEditMode: String? = nil
     var originalStackviewHeightConstant: CGFloat? = nil
     
     override func viewDidLoad() {
@@ -66,21 +66,25 @@ class BudgetExternalGivtsViewController : UIViewController {
         
         originalStackviewHeightConstant = stackViewEditRowsHeight.constant
         
-        externalDonations = try? Mediater.shared.send(request: ReadExternalDonationCommand())
+        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery()).result
         
         externalDonations!.forEach { model in
-            let newRow = BudgetExternalGivtsEditRow(objectId: model.objectId, guid: model.guid, name: model.name, amount: model.amount)
+            let newRow = BudgetExternalGivtsEditRow(id: model.id, description: model.description, amount: model.amount)
             newRow.editButton.addTarget(self, action: #selector(editButtonRow), for: .touchUpInside)
             newRow.deleteButton.addTarget(self, action: #selector(deleteButtonRow), for: .touchUpInside)
             stackViewEditRows.addArrangedSubview(newRow)
         }
         
-        if let objectId = currentObjectId {
-            let model = externalDonations!.filter{$0.objectId == objectId}.first!
-            textFieldExternalGivtsOrganisation.text = model.name
+        if let currentObjectInEditMode = currentObjectInEditMode {
+            let model = externalDonations!.filter{$0.id == currentObjectInEditMode}.first!
+            textFieldExternalGivtsOrganisation.text = model.description
             textFieldExternalGivtsAmount.text = model.amount.getFormattedWithoutCurrency(decimals: 2)
-            frequencyPicker.selectRow(model.frequency.rawValue, inComponent: 0, animated: false)
-            textFieldExternalGivtsTime.text = frequencys[model.frequency.rawValue][1] as? String
+            
+            // MARK: TODO - Get Frequency from cronExpression
+            // frequencyPicker.selectRow(model.frequency.rawValue, inComponent: 0, animated: false)
+            // textFieldExternalGivtsTime.text = frequencys[model.frequency.rawValue][1] as? String
+            
+            
             isEditMode = false
             switchButtonState()
         }
@@ -94,7 +98,7 @@ class BudgetExternalGivtsViewController : UIViewController {
     @objc func deleteButtonRow(_ sender: UIButton) {
         let editRow = getEditRowFrom(button: sender)
         
-        let command = DeleteExternalDonationCommand(guid: editRow.guid!)
+        let command = DeleteExternalDonationCommand(guid: editRow.id!)
         
         let _ = try? Mediater.shared.send(request: command)
         
@@ -108,12 +112,15 @@ class BudgetExternalGivtsViewController : UIViewController {
         switchButtonState()
         
         let editRow = getEditRowFrom(button: sender)
-        currentObjectId = editRow.objectId!
-        let model = externalDonations!.filter{$0.guid == editRow.guid!}.first!
-        textFieldExternalGivtsOrganisation.text = model.name
+        currentObjectInEditMode = editRow.id!
+        
+        let model = externalDonations!.filter{$0.id == editRow.id!}.first!
+        textFieldExternalGivtsOrganisation.text = model.description
         textFieldExternalGivtsAmount.text = model.amount.getFormattedWithoutCurrency(decimals: 2)
-        frequencyPicker.selectRow(model.frequency.rawValue, inComponent: 0, animated: false)
-        textFieldExternalGivtsTime.text = frequencys[model.frequency.rawValue][1] as? String
+        
+        // MARK: TODO - Get Frequency from cronExpression
+        // frequencyPicker.selectRow(model.frequency.rawValue, inComponent: 0, animated: false)
+        // textFieldExternalGivtsTime.text = frequencys[model.frequency.rawValue][1] as? String
     }
     private func getEditRowFrom(button: UIButton) -> BudgetExternalGivtsEditRow {
         return button.superview?.superview?.superview?.superview as! BudgetExternalGivtsEditRow
@@ -121,13 +128,15 @@ class BudgetExternalGivtsViewController : UIViewController {
     @IBAction func controlPanelButton(_ sender: Any) {
         if !isEditMode {
             let command = CreateExternalDonationCommand(
-                guid: UUID().uuidString,
-                name: textFieldExternalGivtsOrganisation.text!,
+                description: textFieldExternalGivtsOrganisation.text!,
                 amount: Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: "."))!,
-                frequency: ExternalDonationFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
+                frequency: ExternalDonationFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!,
+                date: Date()
             )
             
-            let _ = try? Mediater.shared.send(request: command)
+            let result: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
+            
+            print(result.result)
             
             resetFields()
             
@@ -136,22 +145,19 @@ class BudgetExternalGivtsViewController : UIViewController {
         } else {
             switchButtonState()
 
-            if let objectId = currentObjectId {
-                if let currentObject = externalDonations?.filter({$0.objectId == objectId}).first! {
+            if let objectId = currentObjectInEditMode {
+                if let model = externalDonations?.filter({$0.id == objectId}).first! {
                     
-                    let externalDonationModel: ExternalDonationModel = ExternalDonationModel(
-                        objectId: currentObject.objectId,
-                        guid: currentObject.guid,
-                        name: textFieldExternalGivtsOrganisation.text!,
+                    let command: UpdateExternalDonationCommand = UpdateExternalDonationCommand(
+                        id: model.id,
                         amount: Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: "."))!,
-                        frequency: ExternalDonationFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!
+                        cronExpression: model.cronExpression,
+                        description: textFieldExternalGivtsOrganisation.text!
                     )
                     
-                    let command = UpdateExternalDonationCommand(
-                        externalDonation: externalDonationModel
-                    )
+                    let result: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
                     
-                    let _ = try? Mediater.shared.send(request: command)
+                    print(result.result)
                     
                     resetFields()
                     
@@ -184,7 +190,7 @@ class BudgetExternalGivtsViewController : UIViewController {
     }
     
     func reloadExternalDonationList() {
-        externalDonations = try? Mediater.shared.send(request: ReadExternalDonationCommand())
+        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery()).result
         
         stackViewEditRows.arrangedSubviews.forEach { arrangedSubview in
             arrangedSubview.removeFromSuperview()
@@ -193,7 +199,7 @@ class BudgetExternalGivtsViewController : UIViewController {
         stackViewEditRowsHeight.constant = originalStackviewHeightConstant!
         
         externalDonations!.forEach { model in
-            let newRow = BudgetExternalGivtsEditRow(objectId: model.objectId, guid: model.guid, name: model.name, amount: model.amount)
+            let newRow = BudgetExternalGivtsEditRow(id: model.id, description: model.description, amount: model.amount)
             newRow.editButton.addTarget(self, action: #selector(editButtonRow), for: .touchUpInside)
             newRow.deleteButton.addTarget(self, action: #selector(deleteButtonRow), for: .touchUpInside)
             stackViewEditRows.addArrangedSubview(newRow)

@@ -7,34 +7,23 @@
 //
 
 import Foundation
-import CoreData
-import UIKit
 
 class UpdateExternalDonationCommandHandler: RequestHandlerProtocol {
-    let dataContext: CoreDataContext
-    
-    init () {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        dataContext = appDelegate.coreDataContext
-    }
+    private var client = APIClient.cloud
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let request = request as! UpdateExternalDonationCommand
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ExternalDonation")
-        fetchRequest.predicate = NSPredicate(format: "guid = %@", argumentArray: [request.externalDonation.guid])
+        let body = try JSONEncoder().encode(UpdateExternalDonationBody(amount: request.amount, cronExpression: request.cronExpression, description: request.description))
         
-        let fetchResult = try dataContext.objectContext.fetch(fetchRequest)
-        
-        if fetchResult.count != 0 {
-            fetchResult.first?.setValue(request.externalDonation.name, forKey: "name")
-            fetchResult.first?.setValue(request.externalDonation.amount, forKey: "amount")
-            fetchResult.first?.setValue(request.externalDonation.frequency.rawValue, forKey: "frequency")
+        let url = "/external-donations/\(request.id)"
+        client.patch(url: url, data: body) { response in
+            if let response = response, response.isSuccess {
+                try? completion(ResponseModel(result: true) as! R.TResponse)
+            } else {
+                try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
+            }
         }
-       
-        try dataContext.saveToMainContext()
-        
-        try completion(fetchResult.first?.objectID as! R.TResponse)
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {

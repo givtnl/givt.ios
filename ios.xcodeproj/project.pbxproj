@@ -40,6 +40,10 @@
 		3216ED832541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED822541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift */; };
 		3216ED922542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3216ED912542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift */; };
 		32182DE22608CA2F0007CF7D /* RecurringDonationCalculateLastTurnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182DE12608CA2F0007CF7D /* RecurringDonationCalculateLastTurnTests.swift */; };
+		32182DF4260A074A0007CF7D /* CreateExternalDonationCommandCronGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182DF3260A074A0007CF7D /* CreateExternalDonationCommandCronGenerator.swift */; };
+		32182DF7260A0A040007CF7D /* CreateExternalDonationCommandBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182DF6260A0A040007CF7D /* CreateExternalDonationCommandBody.swift */; };
+		32182DFA260A40DD0007CF7D /* ExternalDonationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182DF9260A40DD0007CF7D /* ExternalDonationResponseModel.swift */; };
+		32182DFD260A48E80007CF7D /* UpdateExternalDonationBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182DFC260A48E80007CF7D /* UpdateExternalDonationBody.swift */; };
 		3220B8AE25E7A98F0086577E /* MonthlyCardViewLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */; };
 		3220B8B025E7A9AB0086577E /* MonthlyCardViewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */; };
 		3220B8B325E7BCFB0086577E /* MonthlySummaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */; };
@@ -122,8 +126,8 @@
 		329C3E7825F210D20037D750 /* CreateExternalDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E7725F210D20037D750 /* CreateExternalDonationCommand.swift */; };
 		329C3E7A25F210E60037D750 /* CreateExternalDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E7925F210E60037D750 /* CreateExternalDonationCommandHandler.swift */; };
 		329C3E8125F2145F0037D750 /* ExternalDonationFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8025F2145F0037D750 /* ExternalDonationFrequency.swift */; };
-		329C3E8325F21A3B0037D750 /* ReadExternalDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8225F21A3B0037D750 /* ReadExternalDonationCommand.swift */; };
-		329C3E8525F21A4A0037D750 /* ReadExternalDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8425F21A4A0037D750 /* ReadExternalDonationCommandHandler.swift */; };
+		329C3E8325F21A3B0037D750 /* GetAllExternalDonationsQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8225F21A3B0037D750 /* GetAllExternalDonationsQuery.swift */; };
+		329C3E8525F21A4A0037D750 /* GetAllExternalDonationsQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8425F21A4A0037D750 /* GetAllExternalDonationsQueryHandler.swift */; };
 		329C3E8725F21A8F0037D750 /* ExternalDonationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8625F21A8F0037D750 /* ExternalDonationModel.swift */; };
 		329C3E8925F21F200037D750 /* UpdateExternalDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8825F21F200037D750 /* UpdateExternalDonationCommand.swift */; };
 		329C3E8B25F21F2E0037D750 /* UpdateExternalDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8A25F21F2E0037D750 /* UpdateExternalDonationCommandHandler.swift */; };
@@ -492,6 +496,10 @@
 		32182DDF2608CA2F0007CF7D /* ios.tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ios.tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32182DE12608CA2F0007CF7D /* RecurringDonationCalculateLastTurnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationCalculateLastTurnTests.swift; sourceTree = "<group>"; };
 		32182DE32608CA2F0007CF7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32182DF3260A074A0007CF7D /* CreateExternalDonationCommandCronGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExternalDonationCommandCronGenerator.swift; sourceTree = "<group>"; };
+		32182DF6260A0A040007CF7D /* CreateExternalDonationCommandBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExternalDonationCommandBody.swift; sourceTree = "<group>"; };
+		32182DF9260A40DD0007CF7D /* ExternalDonationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDonationResponseModel.swift; sourceTree = "<group>"; };
+		32182DFC260A48E80007CF7D /* UpdateExternalDonationBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateExternalDonationBody.swift; sourceTree = "<group>"; };
 		3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlyCardViewLine.xib; sourceTree = "<group>"; };
 		3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCardViewLine.swift; sourceTree = "<group>"; };
 		3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryKey.swift; sourceTree = "<group>"; };
@@ -573,8 +581,8 @@
 		329C3E7725F210D20037D750 /* CreateExternalDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExternalDonationCommand.swift; sourceTree = "<group>"; };
 		329C3E7925F210E60037D750 /* CreateExternalDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExternalDonationCommandHandler.swift; sourceTree = "<group>"; };
 		329C3E8025F2145F0037D750 /* ExternalDonationFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDonationFrequency.swift; sourceTree = "<group>"; };
-		329C3E8225F21A3B0037D750 /* ReadExternalDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadExternalDonationCommand.swift; sourceTree = "<group>"; };
-		329C3E8425F21A4A0037D750 /* ReadExternalDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadExternalDonationCommandHandler.swift; sourceTree = "<group>"; };
+		329C3E8225F21A3B0037D750 /* GetAllExternalDonationsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllExternalDonationsQuery.swift; sourceTree = "<group>"; };
+		329C3E8425F21A4A0037D750 /* GetAllExternalDonationsQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllExternalDonationsQueryHandler.swift; sourceTree = "<group>"; };
 		329C3E8625F21A8F0037D750 /* ExternalDonationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDonationModel.swift; sourceTree = "<group>"; };
 		329C3E8825F21F200037D750 /* UpdateExternalDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateExternalDonationCommand.swift; sourceTree = "<group>"; };
 		329C3E8A25F21F2E0037D750 /* UpdateExternalDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateExternalDonationCommandHandler.swift; sourceTree = "<group>"; };
@@ -1036,6 +1044,38 @@
 			path = ios.tests;
 			sourceTree = "<group>";
 		};
+		32182DEC260A01620007CF7D /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				329C3E7E25F213BF0037D750 /* GetAll */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		32182DF5260A09D80007CF7D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32182DF6260A0A040007CF7D /* CreateExternalDonationCommandBody.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		32182DF8260A40BA0007CF7D /* ResultModel */ = {
+			isa = PBXGroup;
+			children = (
+				32182DF9260A40DD0007CF7D /* ExternalDonationResponseModel.swift */,
+			);
+			path = ResultModel;
+			sourceTree = "<group>";
+		};
+		32182DFB260A48D20007CF7D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32182DFC260A48E80007CF7D /* UpdateExternalDonationBody.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3220B8A625E793560086577E /* Overview */ = {
 			isa = PBXGroup;
 			children = (
@@ -1379,6 +1419,7 @@
 		329C3E7525F210B90037D750 /* ExternalDonations */ = {
 			isa = PBXGroup;
 			children = (
+				32182DEC260A01620007CF7D /* Queries */,
 				329C3E7B25F213740037D750 /* Commands */,
 			);
 			path = ExternalDonations;
@@ -1387,8 +1428,10 @@
 		329C3E7625F210BF0037D750 /* Create */ = {
 			isa = PBXGroup;
 			children = (
+				32182DF5260A09D80007CF7D /* Models */,
 				329C3E7725F210D20037D750 /* CreateExternalDonationCommand.swift */,
 				329C3E7925F210E60037D750 /* CreateExternalDonationCommandHandler.swift */,
+				32182DF3260A074A0007CF7D /* CreateExternalDonationCommandCronGenerator.swift */,
 			);
 			path = Create;
 			sourceTree = "<group>";
@@ -1397,7 +1440,6 @@
 			isa = PBXGroup;
 			children = (
 				329C3E7625F210BF0037D750 /* Create */,
-				329C3E7E25F213BF0037D750 /* Read */,
 				329C3E7C25F213B00037D750 /* Update */,
 				329C3E7D25F213BA0037D750 /* Delete */,
 			);
@@ -1407,6 +1449,7 @@
 		329C3E7C25F213B00037D750 /* Update */ = {
 			isa = PBXGroup;
 			children = (
+				32182DFB260A48D20007CF7D /* Models */,
 				329C3E8825F21F200037D750 /* UpdateExternalDonationCommand.swift */,
 				329C3E8A25F21F2E0037D750 /* UpdateExternalDonationCommandHandler.swift */,
 			);
@@ -1422,13 +1465,14 @@
 			path = Delete;
 			sourceTree = "<group>";
 		};
-		329C3E7E25F213BF0037D750 /* Read */ = {
+		329C3E7E25F213BF0037D750 /* GetAll */ = {
 			isa = PBXGroup;
 			children = (
-				329C3E8225F21A3B0037D750 /* ReadExternalDonationCommand.swift */,
-				329C3E8425F21A4A0037D750 /* ReadExternalDonationCommandHandler.swift */,
+				32182DF8260A40BA0007CF7D /* ResultModel */,
+				329C3E8225F21A3B0037D750 /* GetAllExternalDonationsQuery.swift */,
+				329C3E8425F21A4A0037D750 /* GetAllExternalDonationsQueryHandler.swift */,
 			);
-			path = Read;
+			path = GetAll;
 			sourceTree = "<group>";
 		};
 		329C3E7F25F214510037D750 /* Models */ = {
@@ -3110,7 +3154,7 @@
 				320CF72C24CEF1E6008B3EDE /* DestinationSelectedRouteHandler.swift in Sources */,
 				D7CAB10420875E9F004139CB /* CelebrateViewController.swift in Sources */,
 				329C3E8125F2145F0037D750 /* ExternalDonationFrequency.swift in Sources */,
-				329C3E8325F21A3B0037D750 /* ReadExternalDonationCommand.swift in Sources */,
+				329C3E8325F21A3B0037D750 /* GetAllExternalDonationsQuery.swift in Sources */,
 				D761E9BC1F18CE0C002B849B /* ScanViewController.swift in Sources */,
 				327E34592549FEF500314BFD /* DiscoverOrAmountOpenSelectDestinationRouteHandler.swift in Sources */,
 				DFAEA67925347A7A00A41499 /* RecurringDonationTurnsOverviewController.swift in Sources */,
@@ -3146,7 +3190,7 @@
 				3260CF1C254ABC4500BA6BD7 /* DiscoverOrAmountOpenSafariRoute.swift in Sources */,
 				FB243BDD2553F30500C6F768 /* GoBackOneControllerRoute.swift in Sources */,
 				DF2D13B924FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift in Sources */,
-				329C3E8525F21A4A0037D750 /* ReadExternalDonationCommandHandler.swift in Sources */,
+				329C3E8525F21A4A0037D750 /* GetAllExternalDonationsQueryHandler.swift in Sources */,
 				FBC1859C24C08918001A4C6B /* TableSection.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
 				FB42C2FD25666EC10011012C /* DiscoverOrAmountOpenOfflineSuccessRoute.swift in Sources */,
@@ -3158,6 +3202,7 @@
 				A46C8AF0210889A400988D6D /* Beacon.swift in Sources */,
 				32CA17B524CED4CC00248053 /* SetupRecurringDonationChooseDestinationRouteHandler.swift in Sources */,
 				D787AE2D1FCD9EFB0004BDB1 /* ILogService.swift in Sources */,
+				32182DF7260A0A040007CF7D /* CreateExternalDonationCommandBody.swift in Sources */,
 				32F528CC25EA9BA90073C243 /* BudgetExternalGivtsViewController.swift in Sources */,
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
@@ -3169,6 +3214,7 @@
 				3260CF10254A31C700BA6BD7 /* DiscoverOrAmountOpenSetupRecurringDonationRoute.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
 				32DDFB3425F761B100E25AF2 /* OverlayHostViewControllerExtension.swift in Sources */,
+				32182DFD260A48E80007CF7D /* UpdateExternalDonationBody.swift in Sources */,
 				32D4853124D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift in Sources */,
 				D7AE8BA921393B3400CB3A33 /* AmountPresetsNavigationController.swift in Sources */,
 				D74C19EC20F62B8A00E116A0 /* ExternalSuggestionView.swift in Sources */,
@@ -3264,6 +3310,7 @@
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */,
 				32A8AB9525EE377100B96594 /* NotGivtDonationModel.swift in Sources */,
+				32182DFA260A40DD0007CF7D /* ExternalDonationResponseModel.swift in Sources */,
 				D751419C1F9799970016B71F /* FirstUseNavigationViewController.swift in Sources */,
 				DF76413C2538399400A42109 /* TableSectionHeaderRecurringRuleOverview.swift in Sources */,
 				FB87301624C84462005FF355 /* DeleteDonationCommand.swift in Sources */,
@@ -3272,6 +3319,7 @@
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
 				D71DA050211AE5C90084381E /* ChangeAddressViewController.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
+				32182DF4260A074A0007CF7D /* CreateExternalDonationCommandCronGenerator.swift in Sources */,
 				D7E3CE941F7CFA34005807BE /* UserExt.swift in Sources */,
 				D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */,
 				D77511BB1F711231004F91F6 /* DateExtensions.swift in Sources */,

@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import CoreData
 
 class DeleteExternalDonationCommand: RequestProtocol {
-    typealias TResponse = NSManagedObjectID
+    typealias TResponse = ResponseModel<Bool>
     
     var guid: String
     
