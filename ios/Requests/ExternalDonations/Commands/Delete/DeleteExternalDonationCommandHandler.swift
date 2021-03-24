@@ -7,32 +7,22 @@
 //
 
 import Foundation
-import CoreData
-import UIKit
 
 class DeleteExternalDonationCommandHandler: RequestHandlerProtocol {
-    let dataContext: CoreDataContext
-    
-    init () {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        dataContext = appDelegate.coreDataContext
-    }
+    private var client = APIClient.cloud
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let request = request as! DeleteExternalDonationCommand
+        let command = request as! DeleteExternalDonationCommand
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ExternalDonation")
-        fetchRequest.predicate = NSPredicate(format: "guid = %@", argumentArray: [request.guid])
+        let url = "/external-donations/\(command.guid)"
         
-        let fetchResult = try dataContext.objectContext.fetch(fetchRequest)
-        
-        if fetchResult.count != 0 {
-            dataContext.objectContext.delete(fetchResult.first!)
+        client.delete(url: url, data: []) { response in
+            if let response = response, response.isSuccess {
+                try? completion(ResponseModel(result: true) as! R.TResponse)
+            } else {
+                try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
+            }
         }
-       
-        try dataContext.saveToMainContext()
-        
-        try completion(fetchResult.first?.objectID as! R.TResponse)
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {

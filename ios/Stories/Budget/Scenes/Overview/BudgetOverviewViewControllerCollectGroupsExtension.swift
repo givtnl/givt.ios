@@ -46,13 +46,13 @@ extension BudgetOverviewViewController {
             }
         }
         
-        let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: ReadExternalDonationCommand())
+        let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: GetAllExternalDonationsQuery()).result
         
         let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
         notGivtModels.forEach { model in
             let notGivtRow: LineWithIcon = LineWithIcon(
-                objectId: model.objectId,
-                name: model.name,
+                id: model.id,
+                description: model.description,
                 amount: model.amount
             )
             notGivtRow.addGestureRecognizer(notGivtTapGesture)

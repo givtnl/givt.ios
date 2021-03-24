@@ -14,12 +14,12 @@ class LineWithIcon: UIView {
     @IBOutlet weak var collectGroupLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet var contentView: UIView!
-    var objectId: NSManagedObjectID?
+    var id: String?
     
-    convenience init(objectId: NSManagedObjectID, name: String, amount: Double) {
+    convenience init(id: String, description: String, amount: Double) {
         self.init()
-        self.objectId = objectId
-        self.collectGroupLabel.text = name
+        self.id = id
+        self.collectGroupLabel.text = description
         self.amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
     }
     

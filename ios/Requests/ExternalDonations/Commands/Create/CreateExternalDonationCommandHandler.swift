@@ -7,29 +7,31 @@
 //
 
 import Foundation
-import CoreData
-import UIKit
 
 class CreateExternalDonationCommandHandler: RequestHandlerProtocol {
-    let dataContext: CoreDataContext
-    
-    init () {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        dataContext = appDelegate.coreDataContext
-    }
+    private var client = APIClient.cloud
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let request = request as! CreateExternalDonationCommand
+        let command = request as! CreateExternalDonationCommand
         
-        let donationEntity = NSEntityDescription.entity(forEntityName: "ExternalDonation", in: dataContext.objectContext)
-        let donation = NSManagedObject(entity: donationEntity!, insertInto: dataContext.objectContext)
-        donation.setValue(request.guid, forKey: "guid")
-        donation.setValue(request.name, forKey: "name")
-        donation.setValue(request.amount, forKey: "amount")
-        donation.setValue(request.frequency.rawValue, forKey: "frequency")
-        try dataContext.saveToMainContext()
+        let body = try JSONEncoder().encode(CreateExternalDonationCommandBody(
+            creationDate: command.date.toISOString(),
+            amount: command.amount,
+            cronExpression: command.cronExpression ?? String.empty,
+            description: command.description
+        ))
         
-        try completion(donation.objectID as! R.TResponse)
+        do {
+            try client.post(url: "/external-donations", data: body) { response in
+                if let response = response, response.isSuccess {
+                    try? completion(ResponseModel(result: true) as! R.TResponse)
+                } else {
+                    try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
+                }
+            }
+        } catch {
+            try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
+        }
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {

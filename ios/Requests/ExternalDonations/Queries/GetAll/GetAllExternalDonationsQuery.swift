@@ -8,6 +8,6 @@
 
 import Foundation
 
-class ReadExternalDonationCommand: RequestProtocol {
-    typealias TResponse = [ExternalDonationModel]
+class GetAllExternalDonationsQuery: RequestProtocol {
+    typealias TResponse = ExternalDonationGetAllResultModel
 }

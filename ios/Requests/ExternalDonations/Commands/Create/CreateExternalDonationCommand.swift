@@ -7,20 +7,21 @@
 //
 
 import Foundation
-import CoreData
+
 class CreateExternalDonationCommand: RequestProtocol {
-    typealias TResponse = NSManagedObjectID
+    typealias TResponse = ResponseModel<Bool>
     
-    var guid: String
-    var name: String
+    var description: String
     var amount: Double
     var frequency: ExternalDonationFrequency
+    var date: Date
     
-    internal init(guid: String, name: String, amount: Double, frequency: ExternalDonationFrequency) {
-        self.guid = guid
-        self.name = name
+    var cronExpression: String? = nil
+    
+    internal init(description: String, amount: Double, frequency: ExternalDonationFrequency, date: Date) {
+        self.description = description
         self.amount = amount
         self.frequency = frequency
+        self.date = date
     }
-    
 }

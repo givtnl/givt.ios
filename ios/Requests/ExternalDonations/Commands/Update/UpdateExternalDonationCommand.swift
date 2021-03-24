@@ -7,14 +7,22 @@
 //
 
 import Foundation
-import CoreData
 
 class UpdateExternalDonationCommand: RequestProtocol {
-    typealias TResponse = NSManagedObjectID
+    typealias TResponse = ResponseModel<Bool>
     
-    var externalDonation: ExternalDonationModel
+    var id: String
+    var amount: Double
+    var cronExpression: String
+    var description: String
     
-    internal init(externalDonation: ExternalDonationModel) {
-        self.externalDonation = externalDonation
+    internal init(id: String,
+                  amount: Double,
+                  cronExpression: String,
+                  description: String) {
+        self.id = id
+        self.amount = amount
+        self.cronExpression = cronExpression
+        self.description = description
     }
 }
