@@ -31,7 +31,9 @@ extension BudgetOverviewViewController {
         
         if yearlySummary.count == 1 {
             yearViewBodyHeight.constant = 110
-            yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
+            if yearViewBody.labelStackView.arrangedSubviews.count > 1 {
+                yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
+            }
             (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[0]
         } else if yearlySummary.count == 2 {
             (yearViewBody.labelStackView.arrangedSubviews[1] as! UILabel).text = yearViewBody.years[0]
