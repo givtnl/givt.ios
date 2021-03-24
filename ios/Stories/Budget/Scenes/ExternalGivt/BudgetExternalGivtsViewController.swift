@@ -47,6 +47,9 @@ class BudgetExternalGivtsViewController : UIViewController {
     var isEditMode: Bool = false
     var currentObjectInEditMode: String? = nil
     var originalStackviewHeightConstant: CGFloat? = nil
+    var modelBeeingEdited: ExternalDonationModel? = nil
+    
+    var somethingHappened = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +60,8 @@ class BudgetExternalGivtsViewController : UIViewController {
         
         setupTerms()
         setupUI()
-        
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
@@ -77,19 +80,25 @@ class BudgetExternalGivtsViewController : UIViewController {
         
         if let currentObjectInEditMode = currentObjectInEditMode {
             let model = externalDonations!.filter{$0.id == currentObjectInEditMode}.first!
-            textFieldExternalGivtsOrganisation.text = model.description
-            textFieldExternalGivtsAmount.text = model.amount.getFormattedWithoutCurrency(decimals: 2)
+            modelBeeingEdited = model
             
-            frequencyPicker.selectRow(getFrequencyFrom(cronExpression: model.cronExpression).rawValue, inComponent: 0, animated: false)
+            textFieldExternalGivtsOrganisation.text = modelBeeingEdited?.description
+            textFieldExternalGivtsAmount.text = modelBeeingEdited?.amount.getFormattedWithoutCurrency(decimals: 2)
+            
+            frequencyPicker.selectRow(getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue, inComponent: 0, animated: false)
             textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: model.cronExpression).rawValue][1] as? String
-            
             
             isEditMode = false
             switchButtonState()
+            
+            buttonExternalGivtsAdd.isEnabled = false
+            viewExternalGivtsTime.isEnabled = false
         }
+        
         stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44
         stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count - 1) * 10
     }
+    
     func getFrequencyFrom(cronExpression: String) -> ExternalDonationFrequency {
         if cronExpression.split(separator: " ").count != 5 {
             return .Once
@@ -133,6 +142,7 @@ class BudgetExternalGivtsViewController : UIViewController {
         resetButtonState()
         SVProgressHUD.dismiss()
     }
+    
     @objc func editButtonRow(_ sender: UIButton) {
         switchButtonState(editmode: true)
         
@@ -140,14 +150,62 @@ class BudgetExternalGivtsViewController : UIViewController {
         currentObjectInEditMode = editRow.id!
         
         let model = externalDonations!.filter{$0.id == editRow.id!}.first!
-        textFieldExternalGivtsOrganisation.text = model.description
-        textFieldExternalGivtsAmount.text = model.amount.getFormattedWithoutCurrency(decimals: 2)
+        modelBeeingEdited = model
         
-        frequencyPicker.selectRow(getFrequencyFrom(cronExpression: model.cronExpression).rawValue, inComponent: 0, animated: false)
-        textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: model.cronExpression).rawValue][1] as? String
+        textFieldExternalGivtsOrganisation.text = modelBeeingEdited!.description
+        textFieldExternalGivtsAmount.text = modelBeeingEdited!.amount.getFormattedWithoutCurrency(decimals: 2)
+        
+        frequencyPicker.selectRow(getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue, inComponent: 0, animated: false)
+        textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue][1] as? String
+        
+        buttonExternalGivtsAdd.isEnabled = false
+        viewExternalGivtsTime.isEnabled = false
     }
+    
     private func getEditRowFrom(button: UIButton) -> BudgetExternalGivtsEditRow {
         return button.superview?.superview?.superview?.superview as! BudgetExternalGivtsEditRow
+    }
+    @IBAction func amountEditingEnd(_ sender: Any) {
+        checkFields()
+    }
+    @IBAction func descriptionEditingEnd(_ sender: Any) {
+        checkFields()
+    }
+    func checkFields() {
+        if let model = modelBeeingEdited {
+            guard let amount: Double = Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: ".")) else {
+                return
+            }
+            let description = textFieldExternalGivtsOrganisation.text!.replacingOccurrences(of: " ", with: String.empty)
+            
+            if description == String.empty {
+                return
+            }
+            
+            if amount != model.amount || description != model.description {
+                buttonExternalGivtsAdd.isEnabled = true
+                somethingHappened = true
+                buttonExternalGivtsSave.isEnabled = somethingHappened
+                return
+            }
+        } else {
+            guard let amount: Double = Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: ".")) else {
+                return
+            }
+            
+            let description = textFieldExternalGivtsOrganisation.text!.replacingOccurrences(of: " ", with: String.empty)
+            
+            if description == String.empty {
+                return
+            }
+            
+            if amount > 0 {
+                buttonExternalGivtsAdd.isEnabled = true
+                somethingHappened = true
+                buttonExternalGivtsSave.isEnabled = somethingHappened
+                return
+            }
+        }
     }
     @IBAction func controlPanelButton(_ sender: Any) {
         SVProgressHUD.show()
@@ -164,10 +222,12 @@ class BudgetExternalGivtsViewController : UIViewController {
                 let _: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
                 self.resetFields()
                 self.reloadExternalDonationList()
+                self.viewExternalGivtsTime.isEnabled = true
+                self.checkFields()
             }
         } else {
             switchButtonState()
-
+            
             if let objectId = currentObjectInEditMode {
                 if let model = externalDonations?.filter({$0.id == objectId}).first! {
                     
@@ -182,6 +242,9 @@ class BudgetExternalGivtsViewController : UIViewController {
                         let _: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
                         self.resetFields()
                         self.reloadExternalDonationList()
+                        self.buttonExternalGivtsAdd.isEnabled = false
+                        self.viewExternalGivtsTime.isEnabled = false
+                        self.checkFields()
                     }
                 }
             }
@@ -214,6 +277,7 @@ class BudgetExternalGivtsViewController : UIViewController {
         textFieldExternalGivtsAmount.text = String.empty
         frequencyPicker.selectRow(0, inComponent: 0, animated: false)
         textFieldExternalGivtsTime.text = frequencys[0][1] as? String
+        buttonExternalGivtsAdd.isEnabled = false
     }
     
     func reloadExternalDonationList() {
