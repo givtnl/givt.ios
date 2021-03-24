@@ -44,25 +44,36 @@ extension BudgetOverviewViewController {
                 stackViewGivt.addArrangedSubview(view)
                 stackViewGivtHeight.constant += 22
             }
+        } else {
+            let view = MonthlyCardViewLine()
+            view.collectGroupLabel.text = "BudgetSummaryNoGifts".localized
+            stackViewGivt.addArrangedSubview(view)
+            stackViewGivtHeight.constant += 22
         }
         
         let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: GetAllExternalDonationsQuery()).result
         var count = 0
-        notGivtModels.forEach { model in
-            if count < 2 {
-                let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
+        if notGivtModels.count >= 1 {
+            notGivtModels.forEach { model in
+                if count < 2 {
+                    let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
 
-                let notGivtRow: LineWithIcon = LineWithIcon(
-                    id: model.id,
-                    description: model.description,
-                    amount: model.amount
-                )
-                notGivtRow.addGestureRecognizer(notGivtTapGesture)
-                stackViewNotGivt.addArrangedSubview(notGivtRow)
-                stackViewNotGivtHeight.constant += 22
-                count+=1
+                    let notGivtRow: LineWithIcon = LineWithIcon(
+                        id: model.id,
+                        description: model.description,
+                        amount: model.amount
+                    )
+                    notGivtRow.addGestureRecognizer(notGivtTapGesture)
+                    stackViewNotGivt.addArrangedSubview(notGivtRow)
+                    stackViewNotGivtHeight.constant += 22
+                    count+=1
+                }
             }
-            
+        } else {
+            let viewNotGivt = MonthlyCardViewLine()
+            viewNotGivt.collectGroupLabel.text = "BudgetSummaryNoGifts".localized
+            stackViewNotGivt.addArrangedSubview(viewNotGivt)
+            stackViewNotGivtHeight.constant += 22
         }
     }
 }
