@@ -220,6 +220,7 @@ class APIClient: NSObject, URLSessionDelegate {
         client.patch(url: url).delegate(delegate: self)
             .type(type: "json")
             .set(headers: headers)
+            .send(data: data)
             .end(done: { (response:Response) in
                 if response.status == .tooManyRequests {
                     if retries < 5 {

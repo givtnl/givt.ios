@@ -9,13 +9,13 @@
 import Foundation
 
 struct UpdateExternalDonationBody: Codable {
-    var amount: Double
     var cronExpression: String
     var description: String
-    
-    init(amount: Double, cronExpression: String, description: String) {
-        self.amount = amount
+    var amount: Double
+
+    init(cronExpression: String, description: String, amount: Double) {
         self.cronExpression = cronExpression
         self.description = description
+        self.amount = amount
     }
 }

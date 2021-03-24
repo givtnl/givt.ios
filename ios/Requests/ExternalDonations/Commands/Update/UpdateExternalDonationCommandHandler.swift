@@ -14,7 +14,11 @@ class UpdateExternalDonationCommandHandler: RequestHandlerProtocol {
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         let request = request as! UpdateExternalDonationCommand
         
-        let body = try JSONEncoder().encode(UpdateExternalDonationBody(amount: request.amount, cronExpression: request.cronExpression, description: request.description))
+        let body = try JSONEncoder().encode(UpdateExternalDonationBody(
+            cronExpression: request.cronExpression,
+            description: request.description,
+            amount: request.amount
+        ))
         
         let url = "/external-donations/\(request.id)"
         client.patch(url: url, data: body) { response in
