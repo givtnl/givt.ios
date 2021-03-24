@@ -80,22 +80,46 @@ class BudgetExternalGivtsViewController : UIViewController {
             textFieldExternalGivtsOrganisation.text = model.description
             textFieldExternalGivtsAmount.text = model.amount.getFormattedWithoutCurrency(decimals: 2)
             
-            // MARK: TODO - Get Frequency from cronExpression
-            // frequencyPicker.selectRow(model.frequency.rawValue, inComponent: 0, animated: false)
-            // textFieldExternalGivtsTime.text = frequencys[model.frequency.rawValue][1] as? String
+            frequencyPicker.selectRow(getFrequencyFrom(cronExpression: model.cronExpression).rawValue, inComponent: 0, animated: false)
+            textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: model.cronExpression).rawValue][1] as? String
             
             
             isEditMode = false
             switchButtonState()
         }
-        
         stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44
         stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count - 1) * 10
+    }
+    func getFrequencyFrom(cronExpression: String) -> ExternalDonationFrequency {
+        if cronExpression.split(separator: " ").count != 5 {
+            return .Once
+        }
+        
+        let splittedCron = cronExpression.split(separator: " ")
+        
+        if splittedCron[3].contains("/") {
+            let frequencyInt = Int(splittedCron[3].split(separator: "/")[1])!
+            switch frequencyInt {
+                case 1:
+                    return .Monthly
+                case 3:
+                    return .Quarterly
+                case 6:
+                    return .HalfYearly
+                case 12:
+                    return .Yearly
+                default:
+                    return .Once
+            }
+        }
+        return .Once
     }
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
     }
     @objc func deleteButtonRow(_ sender: UIButton) {
+        SVProgressHUD.show()
+
         let editRow = getEditRowFrom(button: sender)
         
         let command = DeleteExternalDonationCommand(guid: editRow.id!)
@@ -107,9 +131,11 @@ class BudgetExternalGivtsViewController : UIViewController {
         reloadExternalDonationList()
         
         resetButtonState()
+        
+        SVProgressHUD.dismiss()
     }
     @objc func editButtonRow(_ sender: UIButton) {
-        switchButtonState()
+        switchButtonState(editmode: true)
         
         let editRow = getEditRowFrom(button: sender)
         currentObjectInEditMode = editRow.id!
@@ -118,14 +144,15 @@ class BudgetExternalGivtsViewController : UIViewController {
         textFieldExternalGivtsOrganisation.text = model.description
         textFieldExternalGivtsAmount.text = model.amount.getFormattedWithoutCurrency(decimals: 2)
         
-        // MARK: TODO - Get Frequency from cronExpression
-        // frequencyPicker.selectRow(model.frequency.rawValue, inComponent: 0, animated: false)
-        // textFieldExternalGivtsTime.text = frequencys[model.frequency.rawValue][1] as? String
+        frequencyPicker.selectRow(getFrequencyFrom(cronExpression: model.cronExpression).rawValue, inComponent: 0, animated: false)
+        textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: model.cronExpression).rawValue][1] as? String
     }
     private func getEditRowFrom(button: UIButton) -> BudgetExternalGivtsEditRow {
         return button.superview?.superview?.superview?.superview as! BudgetExternalGivtsEditRow
     }
     @IBAction func controlPanelButton(_ sender: Any) {
+        SVProgressHUD.show()
+
         if !isEditMode {
             let command = CreateExternalDonationCommand(
                 description: textFieldExternalGivtsOrganisation.text!,
@@ -165,9 +192,15 @@ class BudgetExternalGivtsViewController : UIViewController {
                 }
             }
         }
+        SVProgressHUD.dismiss()
     }
 
-    func switchButtonState() {
+    func switchButtonState(editmode: Bool = false) {
+        if editmode {
+            isEditMode = true
+            buttonExternalGivtsAdd.setTitle("Edit", for: .normal)
+            return
+        }
         if isEditMode {
             isEditMode = false
             buttonExternalGivtsAdd.setTitle("Add", for: .normal)
