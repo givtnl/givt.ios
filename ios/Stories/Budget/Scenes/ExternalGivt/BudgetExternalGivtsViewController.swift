@@ -124,14 +124,13 @@ class BudgetExternalGivtsViewController : UIViewController {
         
         let command = DeleteExternalDonationCommand(guid: editRow.id!)
         
-        let _ = try? Mediater.shared.send(request: command)
-        
-        resetFields()
-        
-        reloadExternalDonationList()
+        NavigationManager.shared.executeWithLogin(context: self) {
+            let _ = try? Mediater.shared.send(request: command)
+            self.resetFields()
+            self.reloadExternalDonationList()
+        }
         
         resetButtonState()
-        
         SVProgressHUD.dismiss()
     }
     @objc func editButtonRow(_ sender: UIButton) {
@@ -161,14 +160,11 @@ class BudgetExternalGivtsViewController : UIViewController {
                 date: Date()
             )
             
-            let result: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
-            
-            print(result.result)
-            
-            resetFields()
-            
-            reloadExternalDonationList()
-            
+            NavigationManager.shared.executeWithLogin(context: self) {
+                let _: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
+                self.resetFields()
+                self.reloadExternalDonationList()
+            }
         } else {
             switchButtonState()
 
@@ -182,13 +178,11 @@ class BudgetExternalGivtsViewController : UIViewController {
                         description: textFieldExternalGivtsOrganisation.text!
                     )
                     
-                    let result: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
-                    
-                    print(result.result)
-                    
-                    resetFields()
-                    
-                    reloadExternalDonationList()
+                    NavigationManager.shared.executeWithLogin(context: self) {
+                        let _: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
+                        self.resetFields()
+                        self.reloadExternalDonationList()
+                    }
                 }
             }
         }
