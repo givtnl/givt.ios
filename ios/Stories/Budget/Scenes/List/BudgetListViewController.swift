@@ -75,6 +75,7 @@ class BudgetListViewController: UIViewController, OverlayViewController {
     
     @IBAction func closeButtonPressed(_ sender: Any) {
         dismissOverlay()
+        try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
     }
     func setupTerms() {
         headerLabel.text = getFullMonthStringFromDateValue(value: Date()).capitalized

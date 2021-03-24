@@ -47,18 +47,21 @@ extension BudgetOverviewViewController {
         }
         
         let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: GetAllExternalDonationsQuery()).result
-        
+        var count = 0
         notGivtModels.forEach { model in
-            let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
+            if count < 2 {
+                let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
 
-            let notGivtRow: LineWithIcon = LineWithIcon(
-                id: model.id,
-                description: model.description,
-                amount: model.amount
-            )
-            notGivtRow.addGestureRecognizer(notGivtTapGesture)
-            stackViewNotGivt.addArrangedSubview(notGivtRow)
-            stackViewNotGivtHeight.constant += 22
+                let notGivtRow: LineWithIcon = LineWithIcon(
+                    id: model.id,
+                    description: model.description,
+                    amount: model.amount
+                )
+                notGivtRow.addGestureRecognizer(notGivtTapGesture)
+                stackViewNotGivt.addArrangedSubview(notGivtRow)
+                stackViewNotGivtHeight.constant += 22
+                count+=1
+            }
             
         }
     }
