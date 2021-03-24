@@ -49,6 +49,8 @@ extension BudgetExternalGivtsViewController {
         default:
             labelExternalGivtsAmountCurrency.text = "euro-sign"
         }
+        
+        buttonExternalGivtsSave.isEnabled = false
     }
     
     private func createToolbar(_ textField: UITextField) {

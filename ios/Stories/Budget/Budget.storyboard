@@ -439,6 +439,9 @@
                                                                                 <real key="value" value="10"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="descriptionEditingEnd:" destination="dIS-A1-n3J" eventType="editingDidEnd" id="Kib-1C-6wT"/>
+                                                                        </connections>
                                                                     </textField>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Fdj-hs-pZ4">
                                                                         <rect key="frame" x="20" y="103.5" width="314" height="19.5"/>
@@ -531,6 +534,9 @@
                                                                                                 <real key="value" value="10"/>
                                                                                             </userDefinedRuntimeAttribute>
                                                                                         </userDefinedRuntimeAttributes>
+                                                                                        <connections>
+                                                                                            <action selector="amountEditingEnd:" destination="dIS-A1-n3J" eventType="editingDidEnd" id="JIo-lx-SyJ"/>
+                                                                                        </connections>
                                                                                     </textField>
                                                                                 </subviews>
                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -596,6 +602,9 @@
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
                                                                 <color key="value" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="0.92871048430000003" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                                                <color key="value" red="0.8901960784313725" green="0.88627450980392153" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
@@ -872,6 +881,9 @@
     <designables>
         <designable name="1aL-2S-Md4">
             <size key="intrinsicContentSize" width="30" height="26"/>
+        </designable>
+        <designable name="FCb-Nh-ro9">
+            <size key="intrinsicContentSize" width="249" height="32"/>
         </designable>
         <designable name="FD6-rl-HFC">
             <size key="intrinsicContentSize" width="89" height="21"/>
