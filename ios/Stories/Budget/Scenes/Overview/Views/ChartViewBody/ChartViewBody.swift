@@ -40,6 +40,7 @@ class ChartViewBody: UIView {
         
         axisMonthFormatDelegate = self
         chartView.xAxis.valueFormatter = axisMonthFormatDelegate
+        chartView.xAxis.labelTextColor = ColorHelper.GivtPurple
     }
 }
 
