@@ -24,7 +24,8 @@ extension BudgetOverviewViewController {
                                                                                     groupType: 1,
                                                                                     orderType: 0))
         yearViewBody.years = []
-        yearlySummary.forEach { model in
+        yearlySummary.sorted(by: {(first, second) -> Bool in first.Key < second.Key})
+                     .forEach { model in
             yearChartValueDict[model.Key] = model.Value
         }
         
@@ -33,7 +34,9 @@ extension BudgetOverviewViewController {
                                                                                             tillDate: tillDate,
                                                                                             groupType: 1,
                                                                                             orderType: 0))
-        yearlySummaryNotGivt.forEach { model in
+        
+        yearlySummaryNotGivt.sorted(by: {(first, second) -> Bool in first.Key < second.Key})
+                            .forEach { model in
             yearChartValueDict[model.Key]? += model.Value
         }
         
@@ -112,12 +115,14 @@ extension BudgetOverviewViewController {
         xAxis.drawLabelsEnabled = false
         xAxis.drawAxisLineEnabled = false
         
+        leftAxis.spaceTop = 0
+        
         chartView.data?.setDrawValues(true)
         
         chartView.legend.enabled = false
         chartView.isUserInteractionEnabled = false
         
-        chartView.animate(xAxisDuration: 2.0, yAxisDuration: 0)
+        chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
     }
     private func getFromDateForYearlyOverview() -> String {
         var componentsForYearlySummaryComponents = DateComponents()
