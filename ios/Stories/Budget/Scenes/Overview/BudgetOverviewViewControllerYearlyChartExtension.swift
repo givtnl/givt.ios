@@ -13,20 +13,35 @@ import UIKit
 // MARK: VC Extension With Year chart functions
 extension BudgetOverviewViewController {
     func setupYearsCard() {
-        var yearChartValues: [Double] = []
-
+        var yearChartValueDict: [String: Double] = [:]
+        
         let fromDate = getFromDateForYearlyOverview()
         let tillDate = getTillDateForCurrentMonth()
         
         let yearlySummary: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
                                                                                     fromDate: fromDate,
-                                                                                tillDate: tillDate,
-                                                                                groupType: 1,
-                                                                                orderType: 0))
+                                                                                    tillDate: tillDate,
+                                                                                    groupType: 1,
+                                                                                    orderType: 0))
         yearViewBody.years = []
-        yearlySummary.reversed().forEach { model in
-            yearViewBody.years.append(model.Key)
-            yearChartValues.append(model.Value)
+        yearlySummary.forEach { model in
+            yearChartValueDict[model.Key] = model.Value
+        }
+        
+        let yearlySummaryNotGivt: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(
+                                                                                            fromDate: fromDate,
+                                                                                            tillDate: tillDate,
+                                                                                            groupType: 1,
+                                                                                            orderType: 0))
+        yearlySummaryNotGivt.forEach { model in
+            yearChartValueDict[model.Key]? += model.Value
+        }
+        
+        var yearChartValues: [Double] = []
+        
+        yearChartValueDict.forEach { (key: String, value: Double) in
+            yearViewBody.years.append(key)
+            yearChartValues.append(value)
         }
         
         if yearlySummary.count == 1 {

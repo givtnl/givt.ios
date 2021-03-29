@@ -396,8 +396,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: OpenExternalGivtsRouteHandler())
         //-- BUDGET SCENE: QUERYS
         Mediater.shared.registerHandler(handler: GetMonthlySummaryQueryHandler())
-        Mediater.shared.registerHandler(handler: GetNotGivtDonationsQueryHandler())
-                
+                    
         //-- Budget External Donation Create
         Mediater.shared.registerHandler(handler: CreateExternalDonationCommandHandler())
         Mediater.shared.registerPreProcessor(processor: CreateExternalDonationCronGenerator())
@@ -410,5 +409,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         
         //-- Budget External Donation GetAll
         Mediater.shared.registerHandler(handler: GetAllExternalDonationsQueryHandler())
+        
+        //-- Budget External Donation Summary
+        Mediater.shared.registerHandler(handler: GetExternalMonthlySummaryQueryHandler())
     }
 }
