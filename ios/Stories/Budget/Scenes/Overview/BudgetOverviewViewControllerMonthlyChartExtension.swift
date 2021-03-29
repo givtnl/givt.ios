@@ -51,6 +51,16 @@ extension BudgetOverviewViewController {
             monthsDictionary[keyValues]?.Value = model.Value
         }
             
+        let monthlySummarNotGivt: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(
+                                                                                            fromDate: getFromDateForMonthsChart(),
+                                                                                            tillDate: getTillDateForMonthsChart(),
+                                                                                            groupType: 0,
+                                                                                            orderType: 0))
+        monthlySummarNotGivt.forEach { model in
+            let keyValues = MonthlySummaryKey(Year: Int(model.Key.split(separator: "-")[0])!, Month: Int(model.Key.split(separator: "-")[1])!)
+            monthsDictionary[keyValues]?.Value += model.Value
+        }
+        
         var doubleValues: [Double] = []
         
         for i in 1...12 {
