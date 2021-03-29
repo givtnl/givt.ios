@@ -29,30 +29,27 @@ extension BudgetOverviewViewController {
         
         stackViewNotGivtHeight.constant = originalStackviewNotGivtHeight!
         
+        var count = 0
+        
         if collectGroupsForCurrentMonth.count >= 1 {
-            var firstCollectGroups: [MonthlySummaryDetailModel] = [MonthlySummaryDetailModel]()
-            if collectGroupsForCurrentMonth.count == 1 {
-                firstCollectGroups.append(collectGroupsForCurrentMonth[0])
-            } else {
-                firstCollectGroups = [collectGroupsForCurrentMonth[0], collectGroupsForCurrentMonth[1]]
-            }
-            
-            firstCollectGroups.forEach { model in
-                let view = MonthlyCardViewLine()
-                view.collectGroupLabel.text = model.Key
-                view.amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                stackViewGivt.addArrangedSubview(view)
-                stackViewGivtHeight.constant += 22
+            collectGroupsForCurrentMonth.forEach { model in
+                if count < 2 {
+                    let view = MonthlyCardViewLine()
+                    view.collectGroupLabel.text = model.Key
+                    view.amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    stackViewGivt.addArrangedSubview(view)
+                    stackViewGivtHeight.constant += 22
+                    count += 1
+                }
             }
         } else {
-            let view = MonthlyCardViewLine()
-            view.collectGroupLabel.text = "BudgetSummaryNoGifts".localized
-            stackViewGivt.addArrangedSubview(view)
-            stackViewGivtHeight.constant += 22
+            addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight)
         }
         
         let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: GetAllExternalDonationsQuery()).result
-        var count = 0
+        
+        count = 0
+        
         if notGivtModels.count >= 1 {
             notGivtModels.forEach { model in
                 if count < 2 {
@@ -70,10 +67,15 @@ extension BudgetOverviewViewController {
                 }
             }
         } else {
-            let viewNotGivt = MonthlyCardViewLine()
-            viewNotGivt.collectGroupLabel.text = "BudgetSummaryNoGifts".localized
-            stackViewNotGivt.addArrangedSubview(viewNotGivt)
-            stackViewNotGivtHeight.constant += 22
+            addEmptyLine(stackView: stackViewNotGivt, stackViewHeight: stackViewNotGivtHeight)
         }
+    }
+    
+    private func addEmptyLine(stackView: UIStackView, stackViewHeight: NSLayoutConstraint) {
+        let view = MonthlyCardViewLine()
+        view.collectGroupLabel.text = "BudgetSummaryNoGifts".localized
+        view.amountLabel.text = String.empty
+        stackView.addArrangedSubview(view)
+        stackViewHeight.constant += 22
     }
 }

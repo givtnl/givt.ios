@@ -64,7 +64,11 @@ extension BudgetOverviewViewController {
         placeholderDoubles.removeLast()
         placeholderDoubles = placeholderDoubles.filter{$0 != 0}
 
-        chartViewBody.trueAverage = placeholderDoubles.reduce(0, +)/Double(placeholderDoubles.count)
+        var average = 0.0
+        if placeholderDoubles.count >= 1 {
+            average = placeholderDoubles.reduce(0, +)/Double(placeholderDoubles.count)
+        }
+        chartViewBody.trueAverage = average
         chartViewBody.months = monthStrings
         setVerticalChart(dataPoints: chartViewBody.months, values: doubleValues, chartView: chartViewBody.chartView, trueAverage: chartViewBody.trueAverage)
     }
@@ -123,12 +127,12 @@ extension BudgetOverviewViewController {
         ll.lineDashLengths = [4.0]
         chartView.rightAxis.addLimitLine(ll)
 
-        chartViewBody.averageButton.setTitle(trueAverage.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0), for: .normal)
+        chartViewBody.averageButton.setTitle(trueAverage.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0, withSpace: false), for: .normal)
         chartViewBody.averageButton.ogBGColor = ColorHelper.LightGreenChart
         chartViewBody.averageButton.isEnabled = false
         
         chartView.minOffset = 0
-        chartView.extraBottomOffset = 5
+        chartView.extraBottomOffset = 4
         
         chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
     }
