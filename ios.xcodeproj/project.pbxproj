@@ -44,6 +44,8 @@
 		32182DF7260A0A040007CF7D /* CreateExternalDonationCommandBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182DF6260A0A040007CF7D /* CreateExternalDonationCommandBody.swift */; };
 		32182DFA260A40DD0007CF7D /* ExternalDonationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182DF9260A40DD0007CF7D /* ExternalDonationResponseModel.swift */; };
 		32182DFD260A48E80007CF7D /* UpdateExternalDonationBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182DFC260A48E80007CF7D /* UpdateExternalDonationBody.swift */; };
+		32182DFF2611E6D10007CF7D /* BudgetListViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182DFE2611E6D10007CF7D /* BudgetListViewControllerPrivateExtension.swift */; };
+		32182E012611E70E0007CF7D /* BudgetListViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E002611E70E0007CF7D /* BudgetListViewControllerExtension.swift */; };
 		3220B8AE25E7A98F0086577E /* MonthlyCardViewLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */; };
 		3220B8B025E7A9AB0086577E /* MonthlyCardViewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */; };
 		3220B8B325E7BCFB0086577E /* MonthlySummaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */; };
@@ -500,6 +502,8 @@
 		32182DF6260A0A040007CF7D /* CreateExternalDonationCommandBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExternalDonationCommandBody.swift; sourceTree = "<group>"; };
 		32182DF9260A40DD0007CF7D /* ExternalDonationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDonationResponseModel.swift; sourceTree = "<group>"; };
 		32182DFC260A48E80007CF7D /* UpdateExternalDonationBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateExternalDonationBody.swift; sourceTree = "<group>"; };
+		32182DFE2611E6D10007CF7D /* BudgetListViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
+		32182E002611E70E0007CF7D /* BudgetListViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewControllerExtension.swift; sourceTree = "<group>"; };
 		3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlyCardViewLine.xib; sourceTree = "<group>"; };
 		3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCardViewLine.swift; sourceTree = "<group>"; };
 		3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryKey.swift; sourceTree = "<group>"; };
@@ -1602,6 +1606,8 @@
 			isa = PBXGroup;
 			children = (
 				32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */,
+				32182E002611E70E0007CF7D /* BudgetListViewControllerExtension.swift */,
+				32182DFE2611E6D10007CF7D /* BudgetListViewControllerPrivateExtension.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -3137,6 +3143,7 @@
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
 				329C3E8725F21A8F0037D750 /* ExternalDonationModel.swift in Sources */,
 				DFFF7E8E24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift in Sources */,
+				32182E012611E70E0007CF7D /* BudgetListViewControllerExtension.swift in Sources */,
 				D7DBED9A1FBC483300D78E2A /* BaseNavigationController.swift in Sources */,
 				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
 				32F528D125EA9F020073C243 /* OpenExternalGivtsRoute.swift in Sources */,
@@ -3229,6 +3236,7 @@
 				324761C12508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift in Sources */,
 				D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */,
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
+				32182DFF2611E6D10007CF7D /* BudgetListViewControllerPrivateExtension.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				3216ED922542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift in Sources */,
