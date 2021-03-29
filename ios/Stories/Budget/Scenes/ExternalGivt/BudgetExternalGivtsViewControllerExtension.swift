@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SVProgressHUD
 import UIKit
 
 extension BudgetExternalGivtsViewController {
@@ -76,7 +77,7 @@ extension BudgetExternalGivtsViewController {
     private func createInfoText() -> NSMutableAttributedString {
         return NSMutableAttributedString()
             .bold("BudgetExternalGiftsInfoBold".localized + "\n", font: UIFont(name: "Avenir-Black", size: 16)!)
-            .normal("BudgetExternalGiftsInfo".localized, font: UIFont(name: "Avenir-Light", size: 16)!)
+            .normal("BudgetTooltipExternalGifts".localized, font: UIFont(name: "Avenir-Light", size: 16)!)
     }
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
@@ -99,5 +100,238 @@ extension BudgetExternalGivtsViewController {
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
         })
+    }
+    func loadDonations() {
+        originalStackviewHeightConstant = stackViewEditRowsHeight.constant
+        
+        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery()).result
+        
+        externalDonations!.forEach { model in
+            let newRow = BudgetExternalGivtsEditRow(id: model.id, description: model.description, amount: model.amount)
+            newRow.editButton.addTarget(self, action: #selector(editButtonRow), for: .touchUpInside)
+            newRow.deleteButton.addTarget(self, action: #selector(deleteButtonRow), for: .touchUpInside)
+            stackViewEditRows.addArrangedSubview(newRow)
+        }
+        
+        if let currentObjectInEditMode = currentObjectInEditMode {
+            let model = externalDonations!.filter{$0.id == currentObjectInEditMode}.first!
+            modelBeeingEdited = model
+            
+            textFieldExternalGivtsOrganisation.text = modelBeeingEdited?.description
+            textFieldExternalGivtsAmount.text = modelBeeingEdited?.amount.getFormattedWithoutCurrency(decimals: 2)
+            
+            frequencyPicker.selectRow(getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue, inComponent: 0, animated: false)
+            textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: model.cronExpression).rawValue][1] as? String
+            
+            isEditMode = false
+            switchButtonState()
+            
+            buttonExternalGivtsAdd.isEnabled = false
+            viewExternalGivtsTime.isEnabled = false
+        }
+        
+        stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44
+        stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count - 1) * 10
+    }
+    
+    func getFrequencyFrom(cronExpression: String) -> ExternalDonationFrequency {
+        if cronExpression.split(separator: " ").count != 5 {
+            return .Once
+        }
+        
+        let splittedCron = cronExpression.split(separator: " ")
+        
+        if splittedCron[3].contains("/") {
+            let frequencyInt = Int(splittedCron[3].split(separator: "/")[1])!
+            switch frequencyInt {
+                case 1:
+                    return .Monthly
+                case 3:
+                    return .Quarterly
+                case 6:
+                    return .HalfYearly
+                case 12:
+                    return .Yearly
+                default:
+                    return .Once
+            }
+        }
+        return .Once
+    }
+
+    @objc func deleteButtonRow(_ sender: UIButton) {
+        SVProgressHUD.show()
+
+        let editRow = getEditRowFrom(button: sender)
+        
+        let command = DeleteExternalDonationCommand(guid: editRow.id!)
+        
+        NavigationManager.shared.executeWithLogin(context: self) {
+            let _ = try? Mediater.shared.send(request: command)
+            self.resetFields()
+            self.reloadExternalDonationList()
+        }
+        
+        resetButtonState()
+        SVProgressHUD.dismiss()
+    }
+    
+    @objc func editButtonRow(_ sender: UIButton) {
+        switchButtonState(editmode: true)
+        
+        let editRow = getEditRowFrom(button: sender)
+        currentObjectInEditMode = editRow.id!
+        
+        let model = externalDonations!.filter{$0.id == editRow.id!}.first!
+        modelBeeingEdited = model
+        
+        textFieldExternalGivtsOrganisation.text = modelBeeingEdited!.description
+        textFieldExternalGivtsAmount.text = modelBeeingEdited!.amount.getFormattedWithoutCurrency(decimals: 2)
+        
+        frequencyPicker.selectRow(getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue, inComponent: 0, animated: false)
+        textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue][1] as? String
+        
+        buttonExternalGivtsAdd.isEnabled = false
+        viewExternalGivtsTime.isEnabled = false
+    }
+    
+    private func getEditRowFrom(button: UIButton) -> BudgetExternalGivtsEditRow {
+        return button.superview?.superview?.superview?.superview as! BudgetExternalGivtsEditRow
+    }
+    
+
+
+    func checkFields() {
+        var isAmountValid = false
+        var isDescriptionValid = false
+        
+        if let model = modelBeeingEdited {
+            let description = textFieldExternalGivtsOrganisation.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            if description.count > 30 || description == String.empty {
+                setBorder(textField: textFieldExternalGivtsOrganisation, color: UIColor.red)
+                isDescriptionValid = false
+            } else {
+                resetBorder(textField: textFieldExternalGivtsOrganisation)
+                isDescriptionValid = true
+            }
+            var amount: Double = 0
+            
+            if textFieldExternalGivtsAmount.text!.count != 0 {
+                amount = Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: ".")) ?? 0
+            }
+            
+            if amount == 0 || amount > 99999 {
+                setBorder(view: viewExternalGivtsAmount)
+                isAmountValid = false
+            } else {
+                resetBorder(view: viewExternalGivtsAmount)
+                isAmountValid = true
+            }
+            
+            if isAmountValid && isDescriptionValid && amount != model.amount || description != model.description {
+                buttonExternalGivtsAdd.isEnabled = true
+            } else {
+                buttonExternalGivtsAdd.isEnabled = false
+            }
+            
+        } else {
+            
+            let description = textFieldExternalGivtsOrganisation.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            if description.count > 30 || description == String.empty {
+                setBorder(textField: textFieldExternalGivtsOrganisation, color: UIColor.red)
+                isDescriptionValid = false
+            } else {
+                resetBorder(textField: textFieldExternalGivtsOrganisation)
+                isDescriptionValid = true
+            }
+            
+            if textFieldExternalGivtsAmount.text!.count != 0 {
+                let amount: Double = Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: ".")) ?? 0
+                if amount == 0 || amount > 99999 {
+                    setBorder(view: viewExternalGivtsAmount)
+                    isAmountValid = false
+                } else {
+                    resetBorder(view: viewExternalGivtsAmount)
+                    isAmountValid = true
+                }
+            }
+            
+            if isAmountValid && isDescriptionValid {
+                buttonExternalGivtsAdd.isEnabled = true
+            } else {
+                buttonExternalGivtsAdd.isEnabled = false
+            }
+        }
+    }
+    func setBorder(textField: UITextField, color: UIColor) {
+        textField.layer.cornerRadius = 5
+        textField.layer.borderColor = color.cgColor
+        textField.layer.borderWidth = 1.0
+    }
+    
+    func setBorder(view: BudgetExternalGivtsViewWithBorder) {
+        view.borderColor = UIColor.red
+        view.borderWidth = 1
+    }
+    
+    func resetBorder(textField: UITextField) {
+        textField.layer.cornerRadius = 0
+        textField.layer.borderColor = UIColor.clear.cgColor
+        textField.layer.borderWidth = 0
+    }
+    
+    func resetBorder(view: BudgetExternalGivtsViewWithBorder) {
+        view.borderColor = ColorHelper.UITextFieldBorderColor
+        view.borderWidth = 0.5
+    }
+    
+    func switchButtonState(editmode: Bool = false) {
+        if editmode {
+            isEditMode = true
+            buttonExternalGivtsAdd.setTitle("Edit", for: .normal)
+            return
+        }
+        if isEditMode {
+            isEditMode = false
+            buttonExternalGivtsAdd.setTitle("Add", for: .normal)
+        } else {
+            isEditMode = true
+            buttonExternalGivtsAdd.setTitle("Edit", for: .normal)
+        }
+    }
+    
+    func resetButtonState() {
+        isEditMode = false
+        buttonExternalGivtsAdd.setTitle("Add", for: .normal)
+    }
+    
+    func resetFields() {
+        textFieldExternalGivtsOrganisation.text = String.empty
+        textFieldExternalGivtsAmount.text = String.empty
+        frequencyPicker.selectRow(0, inComponent: 0, animated: false)
+        textFieldExternalGivtsTime.text = frequencys[0][1] as? String
+        buttonExternalGivtsAdd.isEnabled = false
+    }
+    
+    func reloadExternalDonationList() {
+        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery()).result
+        
+        stackViewEditRows.arrangedSubviews.forEach { arrangedSubview in
+            arrangedSubview.removeFromSuperview()
+        }
+        
+        stackViewEditRowsHeight.constant = originalStackviewHeightConstant!
+        
+        externalDonations!.forEach { model in
+            let newRow = BudgetExternalGivtsEditRow(id: model.id, description: model.description, amount: model.amount)
+            newRow.editButton.addTarget(self, action: #selector(editButtonRow), for: .touchUpInside)
+            newRow.deleteButton.addTarget(self, action: #selector(deleteButtonRow), for: .touchUpInside)
+            stackViewEditRows.addArrangedSubview(newRow)
+        }
+        
+        stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44
+        stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count - 1) * 10
     }
 }
