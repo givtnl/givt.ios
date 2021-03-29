@@ -9,11 +9,13 @@
 import Foundation
 
 extension Double {
-    func getFormattedWith(currency: String, decimals: Int) -> String {
+    func getFormattedWith(currency: String, decimals: Int, withSpace: Bool = true) -> String {
         var currency = currency
         switch currency {
         case "€":
-            currency += " "
+            if withSpace {
+                currency += " "
+            }
         default:
             break
         }

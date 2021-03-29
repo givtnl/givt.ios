@@ -45,6 +45,10 @@ class ChartViewBody: UIView {
 
 extension ChartViewBody: AxisValueFormatter {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return months[Int(value)].lowercased()
+        if Locale.current.languageCode == "en" {
+            return months[Int(value)].capitalized
+        } else {
+            return months[Int(value)].lowercased()
+        }
     }
 }

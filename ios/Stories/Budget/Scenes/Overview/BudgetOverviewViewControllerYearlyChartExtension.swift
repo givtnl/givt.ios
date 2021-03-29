@@ -40,10 +40,12 @@ extension BudgetOverviewViewController {
             (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[1]
         } else {
             yearViewBodyHeight.constant = 110
-            yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
-            yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
+            if yearViewBody.labelStackView.arrangedSubviews.count > 1 {
+                yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
+            }
+            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = Date().getYear().string
         }
-
+        
         //setup the chart for years
         setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
     }

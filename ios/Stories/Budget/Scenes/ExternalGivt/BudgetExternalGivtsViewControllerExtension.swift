@@ -30,6 +30,7 @@ extension BudgetExternalGivtsViewController {
         labelExternalGivtsAmountCurrency.layer.addBorder(edge: .right, color: ColorHelper.UITextFieldBorderColor, thickness: 0.5)
         viewExternalGivtsAmount.borderColor = ColorHelper.UITextFieldBorderColor
         viewExternalGivtsAmount.borderWidth = 0.5
+        
         frequencyPicker = UIPickerView()
         frequencyPicker.dataSource = self
         frequencyPicker.delegate = self
@@ -39,15 +40,18 @@ extension BudgetExternalGivtsViewController {
         textFieldExternalGivtsTime.inputView = frequencyPicker
         textFieldExternalGivtsTime.text = frequencys[0][1] as? String
         textFieldExternalGivtsTime.tintColor = .clear
+        
+        textFieldExternalGivtsAmount.keyboardType = .decimalPad
+        
         createToolbar(textFieldExternalGivtsTime)
         createToolbar(textFieldExternalGivtsAmount)
         createToolbar(textFieldExternalGivtsOrganisation)
         
         switch UserDefaults.standard.currencySymbol {
-        case "£":
-            labelExternalGivtsAmountCurrency.text = "pound-sign"
-        default:
-            labelExternalGivtsAmountCurrency.text = "euro-sign"
+            case "£":
+                labelExternalGivtsAmountCurrency.text = "pound-sign"
+            default:
+                labelExternalGivtsAmountCurrency.text = "euro-sign"
         }
         
         buttonExternalGivtsSave.isEnabled = false
