@@ -170,7 +170,16 @@ extension BudgetExternalGivtsViewController {
             let _ = try? Mediater.shared.send(request: command)
             self.resetFields()
             self.reloadExternalDonationList()
+            self.somethingHappened = true
+            if self.somethingHappened {
+                self.buttonExternalGivtsSave.isEnabled = true
+                self.buttonExternalGivtsAdd.isEnabled = false
+                self.viewExternalGivtsTime.isEnabled = true
+                self.modelBeeingEdited = nil
+            }
         }
+        
+       
         
         resetButtonState()
         SVProgressHUD.dismiss()
@@ -236,7 +245,6 @@ extension BudgetExternalGivtsViewController {
             }
             
         } else {
-            
             let description = textFieldExternalGivtsOrganisation.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             if description.count > 30 || description == String.empty {
