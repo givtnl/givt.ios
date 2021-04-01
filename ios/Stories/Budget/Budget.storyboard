@@ -779,10 +779,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2NV-4x-aLY">
-                                <rect key="frame" x="0.0" y="74" width="414" height="726"/>
+                                <rect key="frame" x="0.0" y="74" width="414" height="706"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Stz-6P-IgX">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="726"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="706"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U2i-0t-7yu">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="129"/>
@@ -849,7 +849,7 @@
                         <viewLayoutGuide key="safeArea" id="tAv-Zt-gWI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="FCb-Nh-ro9" firstAttribute="top" secondItem="2NV-4x-aLY" secondAttribute="bottom" id="7q5-nh-4iE"/>
+                            <constraint firstItem="FCb-Nh-ro9" firstAttribute="top" secondItem="2NV-4x-aLY" secondAttribute="bottom" constant="20" id="7q5-nh-4iE"/>
                             <constraint firstItem="tAv-Zt-gWI" firstAttribute="trailing" secondItem="FCb-Nh-ro9" secondAttribute="trailing" constant="25" id="86h-Sn-OGm"/>
                             <constraint firstItem="FCb-Nh-ro9" firstAttribute="leading" secondItem="tAv-Zt-gWI" secondAttribute="leading" constant="25" id="9ux-Sb-lfb"/>
                             <constraint firstItem="2NV-4x-aLY" firstAttribute="top" secondItem="5L8-eD-6Ev" secondAttribute="bottom" id="OhE-UU-ieF"/>
@@ -863,6 +863,7 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="buttonExternal" destination="FCb-Nh-ro9" id="Zwk-3D-pSb"/>
                         <outlet property="headerLabel" destination="GcP-uP-THp" id="Zl7-sm-oYE"/>
                         <outlet property="headerView" destination="5L8-eD-6Ev" id="teI-gl-KUf"/>
                         <outlet property="labelGivt" destination="l7m-yR-yf3" id="Pyz-SB-w2V"/>
@@ -880,25 +881,28 @@
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="26"/>
+            <size key="intrinsicContentSize" width="30" height="29"/>
         </designable>
         <designable name="FCb-Nh-ro9">
             <size key="intrinsicContentSize" width="249" height="32"/>
         </designable>
         <designable name="FD6-rl-HFC">
-            <size key="intrinsicContentSize" width="69" height="21"/>
+            <size key="intrinsicContentSize" width="89" height="21"/>
         </designable>
         <designable name="VB2-d6-wv3">
             <size key="intrinsicContentSize" width="52" height="34"/>
         </designable>
         <designable name="fw9-Ih-bGG">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="38" height="34"/>
         </designable>
         <designable name="jqY-Sp-MoJ">
-            <size key="intrinsicContentSize" width="46" height="32"/>
+            <size key="intrinsicContentSize" width="46" height="20"/>
         </designable>
         <designable name="nPl-We-QEd">
-            <size key="intrinsicContentSize" width="4" height="21"/>
+            <size key="intrinsicContentSize" width="24" height="21"/>
+        </designable>
+        <designable name="oFO-Hn-hi6">
+            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="rrV-x6-BW3">
             <size key="intrinsicContentSize" width="58" height="37"/>

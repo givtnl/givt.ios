@@ -20,6 +20,7 @@ class BudgetListViewController: UIViewController, OverlayViewController {
     @IBOutlet weak var labelNotGivt: UILabel!
     @IBOutlet weak var stackViewNotGivt: UIStackView!
     @IBOutlet weak var stackViewNotGivtHeight: NSLayoutConstraint!
+    @IBOutlet weak var buttonExternal: CustomButton!
     
     override func viewWillAppear(_ animated: Bool) {
         if !SVProgressHUD.isVisible() {

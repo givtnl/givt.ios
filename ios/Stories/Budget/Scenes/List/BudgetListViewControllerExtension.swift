@@ -14,6 +14,7 @@ extension BudgetListViewController {
         headerLabel.text = getFullMonthStringFromDateValue(value: Date()).capitalized
         labelGivt.text = "BudgetSummaryGivt".localized
         labelNotGivt.text = "BudgetSummaryNotGivt".localized
+        buttonExternal.setTitle("BudgetExternalGiftsListAddEditButton".localized, for: .normal)
     }
     func setupHeader() {
         if #available(iOS 11.0, *) {
