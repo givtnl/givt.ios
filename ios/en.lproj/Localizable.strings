@@ -1091,3 +1091,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "BudgetTooltipYearly" = "One overview for the tax return? View the overview of all your donations here.";
 "BudgetPushMonthlyBold" = "Your monthly summary is ready in Givt.";
 "BudgetPushYearlyBold" = "2021 is almost over ... Have you made up your balance?";
+"BudgetExternalGiftsListAddEditButton" = "Manage your external donations";
