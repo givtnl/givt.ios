@@ -1,20 +1,28 @@
 //
-//  CardViewBody.swift
+//  LineWithIcon.swift
 //  ios
 //
-//  Created by Mike Pattyn on 18/02/2021.
+//  Created by Mike Pattyn on 27/02/2021.
 //  Copyright © 2021 Givt. All rights reserved.
 //
 
+import Foundation
 import UIKit
+import CoreData
 
-class MonthlyCardViewBody: UIView {
-    private var borderView: UIView!
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var labelGivt: UILabel!
-    
+class LineWithIcon: UIView {
+    @IBOutlet weak var collectGroupLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet var contentView: UIView!
-        
+    var id: String?
+    
+    convenience init(id: String, description: String, amount: Double) {
+        self.init()
+        self.id = id
+        self.collectGroupLabel.text = description
+        self.amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -30,8 +38,8 @@ class MonthlyCardViewBody: UIView {
     }
     
     private func commonInit() {
-        let bundle = Bundle(for: MonthlyCardViewBody.self)
-        bundle.loadNibNamed("MonthlyCardViewBody", owner: self, options: nil)
+        let bundle = Bundle(for: LineWithIcon.self)
+        bundle.loadNibNamed("LineWithIcon", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

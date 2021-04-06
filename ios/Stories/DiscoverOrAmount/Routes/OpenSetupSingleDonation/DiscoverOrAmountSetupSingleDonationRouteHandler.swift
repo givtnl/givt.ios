@@ -14,6 +14,7 @@ public struct DiscoverOrAmountOpenSetupSingleDonationRouteHandler : RequestHandl
         let vc = UIStoryboard.init(name: "DiscoverOrAmount", bundle: nil)
             .instantiateViewController(withIdentifier: String(describing: DiscoverOrAmountSetupSingleDonationViewController.self)) as! DiscoverOrAmountSetupSingleDonationViewController
         vc.input = request as! DiscoverOrAmountOpenSetupSingleDonationRoute
+        
         context.navigationController?.pushViewController(vc, animated: true)
         try completion(() as! R.TResponse)
     }
