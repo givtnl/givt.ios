@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="44" width="446" height="236"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAX-75-Aap" customClass="HorizontalBarChartView" customModule="Charts">
-                            <rect key="frame" x="15" y="15" width="416" height="206"/>
+                            <rect key="frame" x="15" y="15" width="381" height="206"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qZy-bg-d4N">
@@ -51,12 +51,12 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="qZy-bg-d4N" firstAttribute="leading" secondItem="xAX-75-Aap" secondAttribute="trailing" constant="-30" id="6YB-8z-Fxc"/>
                         <constraint firstItem="xAX-75-Aap" firstAttribute="leading" secondItem="GWG-H3-aUC" secondAttribute="leading" constant="15" id="GG4-EQ-H8n"/>
                         <constraint firstItem="xAX-75-Aap" firstAttribute="top" secondItem="GWG-H3-aUC" secondAttribute="top" constant="15" id="QXx-uB-5Y9"/>
                         <constraint firstAttribute="bottom" secondItem="xAX-75-Aap" secondAttribute="bottom" constant="15" id="VZu-dc-2Ed"/>
                         <constraint firstAttribute="trailing" secondItem="qZy-bg-d4N" secondAttribute="trailing" id="d3n-Hn-p1A"/>
                         <constraint firstAttribute="bottom" secondItem="qZy-bg-d4N" secondAttribute="bottom" constant="25" id="nmu-YP-bQu"/>
-                        <constraint firstAttribute="trailing" secondItem="xAX-75-Aap" secondAttribute="trailing" constant="15" id="oju-dq-gmg"/>
                         <constraint firstItem="qZy-bg-d4N" firstAttribute="top" secondItem="GWG-H3-aUC" secondAttribute="top" constant="25" id="xtD-f1-FsW"/>
                     </constraints>
                 </view>
