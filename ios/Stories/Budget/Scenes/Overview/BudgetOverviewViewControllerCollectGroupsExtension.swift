@@ -16,7 +16,7 @@ extension BudgetOverviewViewController {
                                                                                             fromDate: getFromDateForCurrentMonth(),
                                                                                             tillDate: getTillDateForCurrentMonth(),
                                                                                             groupType: 2,
-                                                                                            orderType: 0))
+                                                                                            orderType: 3))
         stackViewGivt.arrangedSubviews.forEach { arrangedSubview in
             arrangedSubview.removeFromSuperview()
         }
