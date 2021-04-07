@@ -25,9 +25,9 @@ extension BudgetOverviewViewController {
                                                                                     orderType: 0))
         yearViewBody.years = []
         yearlySummary.sorted(by: {(first, second) -> Bool in first.Key < second.Key})
-                     .forEach { model in
-            yearChartValueDict[model.Key] = model.Value
-        }
+            .forEach { model in
+                yearChartValueDict[model.Key] = model.Value
+            }
         
         let yearlySummaryNotGivt: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(
                                                                                             fromDate: fromDate,
@@ -36,9 +36,13 @@ extension BudgetOverviewViewController {
                                                                                             orderType: 0))
         
         yearlySummaryNotGivt.sorted(by: {(first, second) -> Bool in first.Key < second.Key})
-                            .forEach { model in
-            yearChartValueDict[model.Key]? += model.Value
-        }
+            .forEach { model in
+                if yearChartValueDict[model.Key] != nil {
+                    yearChartValueDict[model.Key]? += model.Value
+                } else {
+                    yearChartValueDict[model.Key] = model.Value
+                }
+            }
         
         var yearChartValues: [Double] = []
         
