@@ -24,7 +24,7 @@ extension BudgetOverviewViewController {
                                                                                     groupType: 1,
                                                                                     orderType: 0))
         yearViewBody.years = []
-        yearlySummary.sorted(by: {(first, second) -> Bool in first.Key < second.Key})
+        yearlySummary.sorted(by: {(first, second) -> Bool in first.Key > second.Key})
             .forEach { model in
                 yearChartValueDict[model.Key] = model.Value
             }
@@ -35,7 +35,7 @@ extension BudgetOverviewViewController {
                                                                                             groupType: 1,
                                                                                             orderType: 0))
         
-        yearlySummaryNotGivt.sorted(by: {(first, second) -> Bool in first.Key < second.Key})
+        yearlySummaryNotGivt.sorted(by: {(first, second) -> Bool in first.Key > second.Key})
             .forEach { model in
                 if yearChartValueDict[model.Key] != nil {
                     yearChartValueDict[model.Key]? += model.Value
