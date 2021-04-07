@@ -12,12 +12,19 @@ import UIKit
 
 private extension BudgetExternalGivtsViewController {
     @IBAction func backButton(_ sender: Any) {
-        try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+        } else {
+            try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+        }
     }
     
     @IBAction func buttonSave(_ sender: Any) {
-        
-        try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+        } else {
+            try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+        }
     }
 
     @IBAction func timeTapped(_ sender: Any) {
@@ -31,6 +38,11 @@ private extension BudgetExternalGivtsViewController {
         checkFields()
     }
     @IBAction func controlPanelButton(_ sender: Any) {
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+            return
+        }
+        
         SVProgressHUD.show()
 
         if !isEditMode {
