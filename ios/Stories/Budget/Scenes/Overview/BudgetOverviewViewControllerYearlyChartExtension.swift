@@ -9,12 +9,24 @@
 import Foundation
 import Charts
 import UIKit
+class YearlySummaryItem {
+    var year: Int
+    var amount: Double
+    init(year: Int, amount: Double) {
+        self.year = year
+        self.amount = amount
+    }
+}
 
 // MARK: VC Extension With Year chart functions
 extension BudgetOverviewViewController {
     func setupYearsCard() {
-        var yearChartValueDict: [String: Double] = [:]
+        var yearsWithValues: [YearlySummaryItem] = []
         
+        let currentYear = Date().getYear().string.toInt
+        yearsWithValues.append(YearlySummaryItem(year: currentYear-1, amount: 0))
+        yearsWithValues.append(YearlySummaryItem(year: currentYear, amount: 0))
+                
         let fromDate = getFromDateForYearlyOverview()
         let tillDate = getTillDateForCurrentMonth()
         
@@ -24,10 +36,11 @@ extension BudgetOverviewViewController {
                                                                                     groupType: 1,
                                                                                     orderType: 0))
         yearViewBody.years = []
-        yearlySummary.sorted(by: {(first, second) -> Bool in first.Key > second.Key})
-            .forEach { model in
-                yearChartValueDict[model.Key] = model.Value
-            }
+        
+        yearlySummary.forEach { model in
+            let item = yearsWithValues.first { $0.year == model.Key.toInt }
+            item?.amount = model.Value
+        }
         
         let yearlySummaryNotGivt: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(
                                                                                             fromDate: fromDate,
@@ -35,20 +48,16 @@ extension BudgetOverviewViewController {
                                                                                             groupType: 1,
                                                                                             orderType: 0))
         
-        yearlySummaryNotGivt.sorted(by: {(first, second) -> Bool in first.Key > second.Key})
-            .forEach { model in
-                if yearChartValueDict[model.Key] != nil {
-                    yearChartValueDict[model.Key]? += model.Value
-                } else {
-                    yearChartValueDict[model.Key] = model.Value
-                }
-            }
+        yearlySummaryNotGivt.forEach { model in
+            let item = yearsWithValues.first { $0.year == model.Key.toInt }
+            item?.amount += model.Value
+        }
         
         var yearChartValues: [Double] = []
         
-        yearChartValueDict.forEach { (key: String, value: Double) in
-            yearViewBody.years.append(key)
-            yearChartValues.append(value)
+        yearsWithValues.forEach { model in
+            yearViewBody.years.append(model.year.string)
+            yearChartValues.append(model.amount)
         }
         
         if yearlySummary.count == 1 {
@@ -58,8 +67,8 @@ extension BudgetOverviewViewController {
             }
             (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[0]
         } else if yearlySummary.count == 2 {
-            (yearViewBody.labelStackView.arrangedSubviews[1] as! UILabel).text = yearViewBody.years[0]
-            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[1]
+            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[0]
+            (yearViewBody.labelStackView.arrangedSubviews[1] as! UILabel).text = yearViewBody.years[1]
         } else {
             yearViewBodyHeight.constant = 110
             if yearViewBody.labelStackView.arrangedSubviews.count > 1 {
@@ -69,7 +78,7 @@ extension BudgetOverviewViewController {
         }
         
         //setup the chart for years
-        setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues, chartView: yearViewBody.chartView)
+        setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues.reversed(), chartView: yearViewBody.chartView)
     }
     private func setHorizontalChart(dataPoints: [String], values: [Double], chartView: HorizontalBarChartView) {
         var dataEntries: [BarChartDataEntry] = []
