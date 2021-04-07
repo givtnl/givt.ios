@@ -18,9 +18,17 @@ private extension BudgetOverviewViewController {
         try? Mediater.shared.send(request: OpenGiveNowRoute(), withContext: self)
     }
     @IBAction func buttonSeeMore(_ sender: Any) {
-        showOverlay(type: BudgetListViewController.self, fromStoryboardWithName: "Budget")
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+        } else {
+            showOverlay(type: BudgetListViewController.self, fromStoryboardWithName: "Budget")
+        }
     }
     @IBAction func buttonPlus(_ sender: Any) {
-        try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+        } else {
+            try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
+        }
     }
 }
