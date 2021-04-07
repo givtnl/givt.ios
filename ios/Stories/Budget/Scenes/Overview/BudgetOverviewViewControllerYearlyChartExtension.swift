@@ -56,8 +56,10 @@ extension BudgetOverviewViewController {
         var yearChartValues: [Double] = []
         
         yearsWithValues.forEach { model in
-            yearViewBody.years.append(model.year.string)
-            yearChartValues.append(model.amount)
+            if model.amount != 0 {
+                yearViewBody.years.append(model.year.string)
+                yearChartValues.append(model.amount)
+            }
         }
         
         if yearlySummary.count == 1 {
