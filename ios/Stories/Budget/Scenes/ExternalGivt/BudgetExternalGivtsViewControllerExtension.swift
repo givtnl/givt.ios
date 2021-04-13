@@ -326,7 +326,9 @@ extension BudgetExternalGivtsViewController {
     }
     
     func reloadExternalDonationList() {
-        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery()).result
+        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery()).result.sorted(by: { first, second in
+            first.creationDate > second.creationDate
+        })
         
         stackViewEditRows.arrangedSubviews.forEach { arrangedSubview in
             arrangedSubview.removeFromSuperview()
