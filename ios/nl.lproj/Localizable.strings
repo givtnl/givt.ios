@@ -717,7 +717,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "FAQvraag9" = "Waar kan ik het overzicht van mijn giften bekijken?";
 
 /*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
-"FAQantwoord9" = "Druk op het menu linksbovenin om je app-menu te openen. Om toegang te krijgen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies voor 'Giften' om een overzicht van je giften weer te geven. Je kunt hier ook een jaarlijks giftenoverzicht downloaden voor de belastingaangifte.\n\nDe giften staan in een lijst met naam van de ontvanger, tijd en datum. Aan de gekleurde streep (links van je gift) zie je direct wat de status is: wordt verwerkt, verwerkt, geweigerd door bank of geannuleerd door gever.";
+"FAQantwoord9" = "Druk op het menu linksbovenin om je app-menu te openen. Om toegang te krijgen wordt je gevraagd in te loggen met je e-mailadres en wachtwoord of met je toegangscode. Kies voor 'Giftenoverzicht' om een overzicht van je giften weer te geven. Je kunt hier ook een jaarlijks giftenoverzicht downloaden voor de belastingaangifte.\n\nDe giften staan in een lijst met naam van de ontvanger, tijd en datum. Aan de gekleurde streep (links van je gift) zie je direct wat de status is: wordt verwerkt, verwerkt, geweigerd door bank of geannuleerd door gever.";
 
 /*Question about passcode*/
 "FAQQuestion11" = "Hoe stel ik mijn toegangscode, Touch ID of Face ID in?";
@@ -1101,3 +1101,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "BudgetExternalGiftsFrequencyQuarterly" = "Elk kwartaal";
 "BudgetExternalGiftsFrequencyHalfYearly" = "Elke 6 maanden";
 "BudgetExternalGiftsFrequencyYearly" = "Elk jaar";
+"BudgetExternalGiftsEdit" = "Wijzigen";
