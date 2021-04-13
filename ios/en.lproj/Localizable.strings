@@ -717,7 +717,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQvraag9" = "Where can I see the overview of my donations?";
 
 /*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
-"FAQantwoord9" = "Press the menu at the top left of the ‘Amount’ screen to access your app menu. To get access you have to login using your e-mail address and password or passcode. Choose ‘Donations’ to find an overview of your recent activity. This list consists of the name of the recipient, time, and date. The coloured line indicates the status of the donation: In process, processed, refused by bank, or cancelled by user.\nYou can request an overview of your donations for your tax declaration at the end of each year.";
+"FAQantwoord9" = "Press the menu at the top left of the ‘Amount’ screen to access your app menu. To get access you have to login using your e-mail address and password or passcode. Choose ‘Donations history’ to find an overview of your recent activity. This list consists of the name of the recipient, time, and date. The coloured line indicates the status of the donation: In process, processed, refused by bank, or cancelled by user.\nYou can request an overview of your donations for your tax declaration at the end of each year.";
 
 /*Question about passcode*/
 "FAQQuestion11" = "How do I set my passcode, Touch ID and Face ID?";
@@ -1091,9 +1091,10 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetTooltipYearly" = "One overview for the tax return? View the overview of all your donations here.";
 "BudgetPushMonthlyBold" = "Your monthly summary is ready in Givt.";
 "BudgetPushYearlyBold" = "2021 is almost over ... Have you made up your balance?";
-"BudgetExternalGiftsListAddEditButton" = "Manage your external donations";
+"BudgetExternalGiftsListAddEditButton" = "Manage external donations";
 "BudgetExternalGiftsFrequencyOnce" = "Once";
 "BudgetExternalGiftsFrequencyMonthly" = "Every month";
 "BudgetExternalGiftsFrequencyQuarterly" = "Every 3 months";
 "BudgetExternalGiftsFrequencyHalfYearly" = "Every 6 months";
 "BudgetExternalGiftsFrequencyYearly" = "Every year";
+"BudgetExternalGiftsEdit" = "Edit";
