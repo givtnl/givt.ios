@@ -21,7 +21,9 @@ private extension BudgetOverviewViewController {
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
-            showOverlay(type: BudgetListViewController.self, fromStoryboardWithName: "Budget")
+            NavigationManager.shared.executeWithLogin(context: self, completion: {
+                self.showOverlay(type: BudgetListViewController.self, fromStoryboardWithName: "Budget")
+            })
         }
     }
     @IBAction func buttonPlus(_ sender: Any) {
