@@ -204,6 +204,8 @@ extension BudgetExternalGivtsViewController {
         
         buttonExternalGivtsAdd.isEnabled = false
         viewExternalGivtsTime.isEnabled = false
+        
+        mainScrollView.scrollToBottom()
     }
     
     private func getEditRowFrom(button: UIButton) -> BudgetExternalGivtsEditRow {
