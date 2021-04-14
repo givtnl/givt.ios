@@ -23,6 +23,7 @@ class BudgetExternalGivtsViewController : UIViewController {
     @IBOutlet weak var textFieldExternalGivtsAmount: UITextField!
     @IBOutlet weak var buttonExternalGivtsAdd: CustomButton!
     @IBOutlet weak var buttonExternalGivtsSave: CustomButton!
+    @IBOutlet weak var mainScrollView: UIScrollView!
     
     @IBOutlet weak var viewExternalGivtsTime: CustomButton!
     @IBOutlet weak var viewExternalGivtsAmount: BudgetExternalGivtsViewWithBorder!
@@ -72,5 +73,8 @@ class BudgetExternalGivtsViewController : UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
+        if (modelBeeingEdited != nil) {
+            mainScrollView.scrollToBottom()
+        }
     }
 }

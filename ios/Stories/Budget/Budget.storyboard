@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bah-Fb-fWK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bah-Fb-fWK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -719,6 +719,7 @@
                         <outlet property="labelExternalGivtsSubtitle" destination="yqe-uH-2st" id="Ylc-Nt-6YE"/>
                         <outlet property="labelExternalGivtsTime" destination="V8M-fj-POG" id="mJG-Rp-LBS"/>
                         <outlet property="labelExternalGivtsTimeDown" destination="2ZE-fv-DaX" id="JaB-Yt-D0E"/>
+                        <outlet property="mainScrollView" destination="l5e-aO-55u" id="hiy-V1-MIJ"/>
                         <outlet property="navBar" destination="3MD-gf-40A" id="YEq-2e-z8M"/>
                         <outlet property="stackViewEditRows" destination="fBG-sa-hnc" id="KiP-kO-r6u"/>
                         <outlet property="stackViewEditRowsHeight" destination="FSc-v2-Opm" id="09F-aF-ndA"/>
@@ -885,25 +886,28 @@
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="26"/>
+            <size key="intrinsicContentSize" width="30" height="29"/>
         </designable>
         <designable name="FCb-Nh-ro9">
             <size key="intrinsicContentSize" width="249" height="32"/>
         </designable>
         <designable name="FD6-rl-HFC">
-            <size key="intrinsicContentSize" width="69" height="21"/>
+            <size key="intrinsicContentSize" width="89" height="21"/>
         </designable>
         <designable name="VB2-d6-wv3">
             <size key="intrinsicContentSize" width="52" height="34"/>
         </designable>
         <designable name="fw9-Ih-bGG">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="38" height="34"/>
         </designable>
         <designable name="jqY-Sp-MoJ">
-            <size key="intrinsicContentSize" width="46" height="32"/>
+            <size key="intrinsicContentSize" width="46" height="20"/>
         </designable>
         <designable name="nPl-We-QEd">
-            <size key="intrinsicContentSize" width="4" height="21"/>
+            <size key="intrinsicContentSize" width="24" height="21"/>
+        </designable>
+        <designable name="oFO-Hn-hi6">
+            <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="rrV-x6-BW3">
             <size key="intrinsicContentSize" width="58" height="37"/>
