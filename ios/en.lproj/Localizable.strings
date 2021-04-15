@@ -1080,10 +1080,10 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Fuzzy*/
 "BudgetSummaryNoGifts" = "You have no contributions yet this month";
-"BudgetTestimonialSummary" = "Willem: ”Since I’ve been using the summary, I have gained more insight into what I give. I give more consciously because of it.";
-"BudgetTestimonialGivingGoal" = "Danielle: ”My giving goal motivates me to regularly reflect on my giving behaviour.”";
-"BudgetTestimonialExternalGifts" = "John: ”I like that I can fill in my contributions outside of Givt in the app. Now I can easily consider what I still want to give.”";
-"BudgetTestimonialYearlyOverview" = "Jonathan: “I think Givt's annual overview is great! Since I also make contributions outside of Givt, I am happy that I can now add them too. All my donations in one overview, super easy for my tax return.”";
+"BudgetTestimonialSummary" = "”Since I’ve been using the summary, I have gained more insight into what I give. I give more consciously because of it.";
+"BudgetTestimonialGivingGoal" = "”My giving goal motivates me to regularly reflect on my giving behaviour.”";
+"BudgetTestimonialExternalGifts" = "”I like that I can fill in my contributions outside of Givt in the app. Now I can easily consider what I still want to give.”";
+"BudgetTestimonialYearlyOverview" = "“I think Givt's annual overview is great! Since I also make contributions outside of Givt, I am happy that I can now add them too. All my donations in one overview, super easy for my tax return.”";
 "BudgetPushMonthly" = "See what you have given this month.";
 "BudgetPushYearly" = "View your annual overview and see what you have given so far.";
 "BudgetTooltipGivingGoal" = "Give consciously. Consider each month whether your giving behaviour matches your personal ambitions.";
@@ -1098,3 +1098,9 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetExternalGiftsFrequencyHalfYearly" = "Every 6 months";
 "BudgetExternalGiftsFrequencyYearly" = "Every year";
 "BudgetExternalGiftsEdit" = "Edit";
+
+/*Fuzzy*/
+"BudgetTestimonialSummaryName" = "Willem:";
+"BudgetTestimonialGivingGoalName" = "Danielle:";
+"BudgetTestimonialExternalGiftsName" = "John:";
+"BudgetTestimonialYearlyOverviewName" = "Jonathan:";
