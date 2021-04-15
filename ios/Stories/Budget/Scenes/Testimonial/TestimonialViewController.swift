@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 
-struct TestimonialPageContent {
-    var image: UIImage?
-    var description: NSMutableAttributedString
-}
-
 class TestimonialViewController: UIViewController {
     var content: TestimonialPageContent?
     
@@ -40,6 +35,10 @@ class TestimonialViewController: UIViewController {
     }
     
     @IBAction func closeOverlay(_ sender: Any) {
+        (parent as! TestimonialCarouselViewController).dismissOverlay()
+    }
+    
+    @IBAction func actionButton(_ sender: Any) {
         (parent as! TestimonialCarouselViewController).dismissOverlay()
     }
 }

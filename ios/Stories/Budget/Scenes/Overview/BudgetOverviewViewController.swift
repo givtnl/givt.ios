@@ -52,6 +52,6 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         setupMonthsCard()
         setupYearsCard()
         SVProgressHUD.dismiss()
-        self.showOverlay(type: TestimonialCarouselViewController.self, fromStoryboardWithName: "Budget")
+        loadTestimonial()
     }
 }
