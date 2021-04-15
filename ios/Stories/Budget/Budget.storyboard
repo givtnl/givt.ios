@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bah-Fb-fWK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bah-Fb-fWK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -883,10 +883,114 @@
             </objects>
             <point key="canvasLocation" x="737.68115942028987" y="57.589285714285708"/>
         </scene>
+        <!--Testimonial Carousel View Controller-->
+        <scene sceneID="qAU-Cn-vNB">
+            <objects>
+                <pageViewController storyboardIdentifier="TestimonialCarouselViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="MC1-Ho-F86" customClass="TestimonialCarouselViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4oc-DK-D3w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1564" y="58"/>
+        </scene>
+        <!--Testimonial View Controller-->
+        <scene sceneID="S7Y-0Z-5Lk">
+            <objects>
+                <viewController storyboardIdentifier="TestimonialViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SlJ-e4-kyE" customClass="TestimonialViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I5u-nR-a0T">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Luc-wW-czW">
+                                <rect key="frame" x="0.0" y="44" width="414" height="830"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givy-party" translatesAutoresizingMaskIntoConstraints="NO" id="ifO-ac-e0x">
+                                        <rect key="frame" x="169" y="20" width="76" height="76"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="76" id="hN6-i4-urR"/>
+                                            <constraint firstAttribute="height" constant="76" id="uX1-Dh-fKF"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqU-eu-QFW">
+                                        <rect key="frame" x="30" y="116" width="354" height="66"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
+                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JH8-t3-GDP">
+                                        <rect key="frame" x="374" y="20" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="WiR-Sv-kBl"/>
+                                            <constraint firstAttribute="width" constant="20" id="jy6-E9-8My"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="closepurple"/>
+                                        <connections>
+                                            <action selector="closeOverlay:" destination="SlJ-e4-kyE" eventType="touchUpInside" id="0dG-AQ-wJb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ifO-ac-e0x" firstAttribute="top" secondItem="Luc-wW-czW" secondAttribute="top" constant="20" id="9gl-L2-psb"/>
+                                    <constraint firstAttribute="trailing" secondItem="JH8-t3-GDP" secondAttribute="trailing" constant="20" id="S1g-6e-LWn"/>
+                                    <constraint firstAttribute="trailing" secondItem="LqU-eu-QFW" secondAttribute="trailing" constant="30" id="cAy-4O-Mte"/>
+                                    <constraint firstItem="LqU-eu-QFW" firstAttribute="top" secondItem="ifO-ac-e0x" secondAttribute="bottom" constant="20" id="i3e-CC-yh2"/>
+                                    <constraint firstItem="LqU-eu-QFW" firstAttribute="leading" secondItem="Luc-wW-czW" secondAttribute="leading" constant="30" id="ktg-ST-5xH"/>
+                                    <constraint firstItem="JH8-t3-GDP" firstAttribute="top" secondItem="Luc-wW-czW" secondAttribute="top" constant="20" id="pyJ-GI-tZh"/>
+                                    <constraint firstItem="ifO-ac-e0x" firstAttribute="centerX" secondItem="Luc-wW-czW" secondAttribute="centerX" id="xon-ft-SZt"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anr-sl-GRw" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="40" y="852" width="334" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Lxp-hh-Lq1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Bekijk je samenvatting">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.92305272169999997" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9dT-PF-DZz"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="anr-sl-GRw" secondAttribute="bottom" id="0oV-IP-4Fk"/>
+                            <constraint firstItem="9dT-PF-DZz" firstAttribute="trailing" secondItem="Luc-wW-czW" secondAttribute="trailing" id="Kra-tH-oWT"/>
+                            <constraint firstItem="anr-sl-GRw" firstAttribute="leading" secondItem="9dT-PF-DZz" secondAttribute="leading" constant="40" id="VZe-Zz-yJL"/>
+                            <constraint firstItem="9dT-PF-DZz" firstAttribute="trailing" secondItem="anr-sl-GRw" secondAttribute="trailing" constant="40" id="f4M-G3-xJZ"/>
+                            <constraint firstItem="Luc-wW-czW" firstAttribute="top" secondItem="9dT-PF-DZz" secondAttribute="top" id="nEd-QD-nGf"/>
+                            <constraint firstItem="Luc-wW-czW" firstAttribute="leading" secondItem="9dT-PF-DZz" secondAttribute="leading" id="nfZ-J4-808"/>
+                            <constraint firstItem="anr-sl-GRw" firstAttribute="top" secondItem="Luc-wW-czW" secondAttribute="bottom" constant="-22" id="oJe-3R-vPh"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="actionButton" destination="anr-sl-GRw" id="qFP-uC-ovg"/>
+                        <outlet property="contentView" destination="Luc-wW-czW" id="bcm-xV-FQ5"/>
+                        <outlet property="descriptionLabel" destination="LqU-eu-QFW" id="lQf-qD-E0n"/>
+                        <outlet property="imageView" destination="ifO-ac-e0x" id="9Sk-ou-Ph6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x9d-yP-HWW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2313" y="58"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="29"/>
+            <size key="intrinsicContentSize" width="30" height="26"/>
         </designable>
         <designable name="FCb-Nh-ro9">
             <size key="intrinsicContentSize" width="249" height="32"/>
@@ -915,6 +1019,8 @@
     </designables>
     <resources>
         <image name="backbtn" width="15" height="24"/>
+        <image name="closepurple" width="23" height="24"/>
+        <image name="givy-party" width="288" height="197"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
