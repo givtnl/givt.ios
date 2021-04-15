@@ -47,6 +47,7 @@ extension UserDefaults {
         case giftAidEnabled
         case giftAidSettings
         case toHighlightMenuList
+        case testimonialsByUserId
     }
     
     enum Showcase: String {
@@ -182,6 +183,31 @@ extension UserDefaults {
         }
     }
     
+    var lastShownTestimonial: Int? {
+        get {
+            if let testimonialsDictionary = dictionary(forKey: UserDefaultsKeys.testimonialsByUserId.rawValue) as? [String: Int] {
+                if let uExt = userExt, let retArray = testimonialsDictionary[uExt.guid] {
+                    return retArray
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
+        set(value) {
+            var testimonialDictonary: [String: Int] = [:]
+            if let originalDictionary = dictionary(forKey: UserDefaultsKeys.testimonialsByUserId.rawValue) as? [String: Int] {
+                testimonialDictonary = originalDictionary
+            }
+            
+            if let uExt = userExt {
+                testimonialDictonary[uExt.guid] = value
+                set(testimonialDictonary, forKey: UserDefaultsKeys.testimonialsByUserId.rawValue)
+            }
+            synchronize()
+        }
+    }
     @available(*, deprecated, message: "Do not use. Use showCasesByUserId instead.")
     var showcases: [String] {
         get {
