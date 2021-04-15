@@ -208,6 +208,36 @@ class APIClient: NSObject, URLSessionDelegate {
             }
     }
     
+    func patch(url: String, data: Data, callback: @escaping (Response?) -> Void, retryCount: Int = 0) {
+        var headers: [String: String] = [:]
+        if let bearerToken = UserDefaults.standard.bearerToken {
+            headers["Authorization"] = "Bearer " + bearerToken
+        }
+        log.info(message: "PATCH on " + url)
+        
+        var retries = retryCount
+        
+        client.patch(url: url).delegate(delegate: self)
+            .type(type: "json")
+            .set(headers: headers)
+            .send(data: data)
+            .end(done: { (response:Response) in
+                if response.status == .tooManyRequests {
+                    if retries < 5 {
+                        let waitTime = self.getExponentialBackoffTime(retries: retries)
+                        retries += 1
+                        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + DispatchTimeInterval.milliseconds(waitTime)) {
+                            self.patch(url: url, data: data, callback: callback, retryCount: retries)
+                        }
+                    }
+                } else {
+                    callback(response)
+                }
+            }) { (err) in
+                callback(nil)
+                self.handleError(err: err)
+            }
+    }
     private func handleError(err: Error) {
         let error = (err as NSError)
         if let url = error.userInfo["NSErrorFailingURLStringKey"] as? String, let description = error.userInfo["NSLocalizedDescription"] as? String {

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Font Awesome 5 Free-Solid-900.otf">
+            <string>FontAwesome5Free-Solid</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LineWithIcon" customModule="ios" customModuleProvider="target">
+            <connections>
+                <outlet property="amountLabel" destination="Bna-Ia-vzy" id="a7Y-cO-zGO"/>
+                <outlet property="collectGroupLabel" destination="fh1-NB-Otk" id="Wc2-rH-QCh"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="YSh-zv-iCz"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="529" height="22"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PeM-V9-J6a">
+                    <rect key="frame" x="0.0" y="0.0" width="529" height="22"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voorbeeldkerk 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fh1-NB-Otk">
+                            <rect key="frame" x="44" y="1.5" width="103" height="19.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                            <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gG4-bk-vHL">
+                            <rect key="frame" x="20" y="4" width="14" height="14"/>
+                            <fontDescription key="fontDescription" name="FontAwesome5Free-Solid" family="Font Awesome 5 Free" pointSize="14"/>
+                            <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bna-Ia-vzy">
+                            <rect key="frame" x="488" y="1.5" width="21" height="19.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                            <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="gG4-bk-vHL" firstAttribute="centerY" secondItem="PeM-V9-J6a" secondAttribute="centerY" id="0XI-gN-tzQ"/>
+                        <constraint firstAttribute="trailing" secondItem="Bna-Ia-vzy" secondAttribute="trailing" constant="20" id="1IB-IW-i3X"/>
+                        <constraint firstItem="Bna-Ia-vzy" firstAttribute="centerY" secondItem="PeM-V9-J6a" secondAttribute="centerY" id="I7t-Da-o4m"/>
+                        <constraint firstAttribute="height" constant="22" id="LAE-hO-0oa"/>
+                        <constraint firstItem="Bna-Ia-vzy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fh1-NB-Otk" secondAttribute="trailing" constant="20" id="Rdx-lj-RsL"/>
+                        <constraint firstItem="fh1-NB-Otk" firstAttribute="centerY" secondItem="PeM-V9-J6a" secondAttribute="centerY" id="msO-hO-spJ"/>
+                        <constraint firstItem="gG4-bk-vHL" firstAttribute="leading" secondItem="PeM-V9-J6a" secondAttribute="leading" constant="20" id="rj1-EN-vFl"/>
+                        <constraint firstItem="fh1-NB-Otk" firstAttribute="leading" secondItem="gG4-bk-vHL" secondAttribute="trailing" constant="10" id="w8V-HC-kfH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="PeM-V9-J6a" secondAttribute="trailing" id="BlW-BM-7Se"/>
+                <constraint firstItem="PeM-V9-J6a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aKa-Op-VT9"/>
+                <constraint firstItem="PeM-V9-J6a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="vnP-v5-eeM"/>
+                <constraint firstAttribute="bottom" secondItem="PeM-V9-J6a" secondAttribute="bottom" id="zW4-cj-QE7"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="215.21739130434784" y="-160.71428571428569"/>
+        </view>
+    </objects>
+</document>

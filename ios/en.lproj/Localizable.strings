@@ -717,7 +717,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQvraag9" = "Where can I see the overview of my donations?";
 
 /*antwoord-Waar kan ik het overzicht van mijn giften bekijken?*/
-"FAQantwoord9" = "Press the menu at the top left of the ‘Amount’ screen to access your app menu. To get access you have to login using your e-mail address and password or passcode. Choose ‘Donations’ to find an overview of your recent activity. This list consists of the name of the recipient, time, and date. The coloured line indicates the status of the donation: In process, processed, refused by bank, or cancelled by user.\nYou can request an overview of your donations for your tax declaration at the end of each year.";
+"FAQantwoord9" = "Press the menu at the top left of the ‘Amount’ screen to access your app menu. To get access you have to login using your e-mail address and password or passcode. Choose ‘Donations history’ to find an overview of your recent activity. This list consists of the name of the recipient, time, and date. The coloured line indicates the status of the donation: In process, processed, refused by bank, or cancelled by user.\nYou can request an overview of your donations for your tax declaration at the end of each year.";
 
 /*Question about passcode*/
 "FAQQuestion11" = "How do I set my passcode, Touch ID and Face ID?";
@@ -1068,7 +1068,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetSummaryGivingGoalEdit" = "Edit giving goal";
 "BudgetSummaryGivingGoalRest" = "Remaining giving goal";
 "BudgetSummaryGivingGoal" = "Giving goal: ";
-"BudgetMenuView" = "My personal summary!";
+"BudgetMenuView" = "My personal summary";
 
 /*Fuzzy*/
 "BudgetSummarySetGoalBold" = "Give consciously";
@@ -1080,10 +1080,10 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Fuzzy*/
 "BudgetSummaryNoGifts" = "You have no contributions yet this month";
-"BudgetTestimonialSummary" = "Jasmijn: ”Since I’ve been using the summary, I have gained more insight into what I give. I give more consiously because of it.";
-"BudgetTestimonialGivingGoal" = "Saar: ”My giving goal motivates me to regularly reflect on my giving behaviour.”";
-"BudgetTestimonialExternalGifts" = "Noah: ”I like that I can fill in my contributions outside of Givt in the app. Now I can easily consider what I still want to give.”";
-"BudgetTestimonialYearlyOverview" = "Gertjan: “I think Givt's annual overview is great! Since I also make contributions outside of Givt, I am happy that I can now add them too. All my donations in one overview, super easy for my tax return.”";
+"BudgetTestimonialSummary" = "Willem: ”Since I’ve been using the summary, I have gained more insight into what I give. I give more consciously because of it.";
+"BudgetTestimonialGivingGoal" = "Danielle: ”My giving goal motivates me to regularly reflect on my giving behaviour.”";
+"BudgetTestimonialExternalGifts" = "John: ”I like that I can fill in my contributions outside of Givt in the app. Now I can easily consider what I still want to give.”";
+"BudgetTestimonialYearlyOverview" = "Jonathan: “I think Givt's annual overview is great! Since I also make contributions outside of Givt, I am happy that I can now add them too. All my donations in one overview, super easy for my tax return.”";
 "BudgetPushMonthly" = "See what you have given this month.";
 "BudgetPushYearly" = "View your annual overview and see what you have given so far.";
 "BudgetTooltipGivingGoal" = "Give consciously. Consider each month whether your giving behaviour matches your personal ambitions.";
@@ -1091,3 +1091,10 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetTooltipYearly" = "One overview for the tax return? View the overview of all your donations here.";
 "BudgetPushMonthlyBold" = "Your monthly summary is ready in Givt.";
 "BudgetPushYearlyBold" = "2021 is almost over ... Have you made up your balance?";
+"BudgetExternalGiftsListAddEditButton" = "Manage external donations";
+"BudgetExternalGiftsFrequencyOnce" = "Once";
+"BudgetExternalGiftsFrequencyMonthly" = "Every month";
+"BudgetExternalGiftsFrequencyQuarterly" = "Every 3 months";
+"BudgetExternalGiftsFrequencyHalfYearly" = "Every 6 months";
+"BudgetExternalGiftsFrequencyYearly" = "Every year";
+"BudgetExternalGiftsEdit" = "Edit";
