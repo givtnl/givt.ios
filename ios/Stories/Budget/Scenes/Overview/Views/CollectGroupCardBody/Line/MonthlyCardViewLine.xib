@@ -40,10 +40,10 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="Zko-dd-jnn"/>
                         <constraint firstAttribute="trailing" secondItem="2hm-WZ-9dq" secondAttribute="trailing" constant="20" id="caG-VL-WMc"/>
-                        <constraint firstItem="2hm-WZ-9dq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c6P-22-YnK" secondAttribute="trailing" constant="20" id="diS-e4-XWG"/>
                         <constraint firstItem="2hm-WZ-9dq" firstAttribute="centerY" secondItem="9Rb-zb-oy9" secondAttribute="centerY" id="gSr-Yc-2d9"/>
                         <constraint firstItem="c6P-22-YnK" firstAttribute="leading" secondItem="9Rb-zb-oy9" secondAttribute="leading" constant="20" id="tcM-eU-TUS"/>
                         <constraint firstItem="c6P-22-YnK" firstAttribute="centerY" secondItem="9Rb-zb-oy9" secondAttribute="centerY" id="vxv-q6-b06"/>
+                        <constraint firstItem="2hm-WZ-9dq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c6P-22-YnK" secondAttribute="trailing" constant="20" id="y7u-7J-sZu"/>
                     </constraints>
                 </view>
             </subviews>
