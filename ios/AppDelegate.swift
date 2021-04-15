@@ -81,7 +81,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                     shouldRepeat: true
                 )
             ]
-            localNotificationManager.schedule()
+            if !UserDefaults.standard.isTempUser {
+                localNotificationManager.schedule()
+            }
         }
 
         return true
