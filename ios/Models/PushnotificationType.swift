@@ -12,4 +12,5 @@ public enum NotificationType: String {
     case RecurringDonationTurnCreated = "RecurringDonationTurnCreated"
     case ShowFeatureUpdate = "ShowFeatureUpdate"
     case RecurringDonationAboutToExpire = "RecurringDonationAboutToExpire"
+    case OpenSummaryNotification = "OpenSummaryNotification"
 }
