@@ -251,9 +251,6 @@ class LoginManager {
                         let newConfig = UserDefaults.standard.userExt!
                         newConfig.guid = guid
                         UserDefaults.standard.userExt = newConfig
-                        if #available(iOS 10.0, *) {
-                            LocalNotificationManager.shared.schedule()
-                        }
                         self.loginUser(email: user.email, password: user.password, type: .password, completionHandler: { (success, err, descr) in
                             if success {
                                 if let limit = params["AmountLimit"] {
