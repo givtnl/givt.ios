@@ -24,20 +24,9 @@ class LocalNotificationManager {
         }
     }
     
-    // We need this function to request permission to the user
-    private func requestAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-            if granted == true && error == nil {
-                self.scheduleNotifications()
-            }
-        }
-    }
-    
-    func schedule() {
+    func schedule() { // only schedule if permission is given
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             switch settings.authorizationStatus {
-                case .notDetermined:
-                    self.requestAuthorization()
                 case .authorized, .provisional:
                     self.scheduleNotifications()
                 default:
