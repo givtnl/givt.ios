@@ -144,7 +144,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
     }
     
     func checkIfTempUser() {
-        guard let userExt = UserDefaults.standard.userExt else { return }
+        guard let userExt = UserDefaults.standard.userExt else {
+            UserDefaults.standard.isTempUser = true
+            return
+        }
         LoginManager.shared.doesEmailExist(email: userExt.email) { (status) in
             if status == "true" { //completed registration
                 UserDefaults.standard.isTempUser = false
