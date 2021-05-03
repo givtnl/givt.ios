@@ -30,6 +30,9 @@ class TestimonialViewController: UIViewController {
             imageView.image = content.image
             descriptionLabel.attributedText = content.description
         }
+        
+        actionButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        actionButton.titleLabel?.numberOfLines = 1
     }
     
     @IBAction func closeOverlay(_ sender: Any) {
