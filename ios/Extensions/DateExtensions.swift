@@ -73,11 +73,19 @@ extension Date {
         formatter.dateFormat = "dd MMM yyyy"
         return formatter
     }()
+    static let yearAndMonthFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM"
+        return formatter
+    }()
     var formatted: String {
         return Date.formatter.string(from: self)
     }
     var formattedShort: String {
         return Date.formatterShort.string(from:self)
+    }
+    var formattedYearAndMonth: String {
+        return Date.yearAndMonthFormatter.string(from: self)
     }
     var shortDate: Date {
         var dateComponents = DateComponents()
