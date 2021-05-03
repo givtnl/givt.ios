@@ -16,7 +16,7 @@ import UserNotifications
 import Mixpanel
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UNUserNotificationCenterDelegate, NotificationRecurringDonationTurnCreatedDelegate, NotificationShowFeatureUpdateDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UNUserNotificationCenterDelegate, NotificationRecurringDonationTurnCreatedDelegate, NotificationShowFeatureUpdateDelegate, NotificationOpenSummaryDelegate {
     
     var window: UIWindow?
     var logService: LogService = LogService.shared
@@ -60,16 +60,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 }
             }
         }
-
+        
         handleOldBeaconList()
         checkIfTempUser()
         doMagicForPresets()
-                
+        
         mixpanel.serverURL = "https://api-eu.mixpanel.com"
-
+        
+        if #available(iOS 10.0, *) {
+            setupNotifications()
+        }
+        
         return true
     }
-
+    
+    @available(iOS 10.0, *)
+    func setupNotifications() {
+        var dateComponents: DateComponents?
+        #if PRODUCTION
+        dateComponents = DateComponents(
+            calendar: Calendar.current,
+            day: 25,
+            hour: 20
+        )
+        #else
+        dateComponents = DateComponents(
+            calendar: Calendar.current,
+            hour: 16,
+            minute: 34
+        )
+        #endif
+        
+        let localNotificationManager = LocalNotificationManager.shared
+        
+        localNotificationManager.notifications = [
+            LocalNotification(
+                id: "TestOne",
+                title: "BudgetPushMonthlyBold".localized,
+                subTitle: "BudgetPushMonthly".localized,
+                dateTime: dateComponents!,
+                userInfo: ["Type" : NotificationType.OpenSummaryNotification.rawValue],
+                shouldRepeat: true
+            )
+        ]
+        if !UserDefaults.standard.isTempUser {
+            localNotificationManager.schedule()
+        }
+    }
     func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {
         DispatchQueue.main.async {
             guard let window = UIApplication.shared.keyWindow else { return }
@@ -80,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             if let prentedViewcontroller = mainViewController.children.first?.presentedViewController {
                 prentedViewcontroller.dismiss(animated: true, completion: nil)
             }
-
+            
             try? Mediater.shared.sendAsync(request: OpenRecurringRuleDetailFromNotificationRoute(recurringDonationId: recurringDonationId), withContext: mainViewController) { }
         }
     }
@@ -103,7 +140,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             }
         }
     }
-    
+
+    func onReceiveOpenSummaryNotification() {
+        DispatchQueue.main.async {
+            guard let window = UIApplication.shared.keyWindow else { return }
+            guard let mainViewController = window.rootViewController?.children
+                    .first(where: { (child) -> Bool in child is MainNavigationController })?.children
+                    .first(where: { (child) -> Bool in child is MainViewController }) else { return }
+            
+            if let prentedViewcontroller = mainViewController.children.first?.presentedViewController {
+                prentedViewcontroller.dismiss(animated: true, completion: nil)
+            }
+            
+            if !AppServices.shared.isServerReachable {
+                try? Mediater.shared.send(request: NoInternetAlert(), withContext: mainViewController)
+            }
+            
+            try? Mediater.shared.sendAsync(request: OpenSummaryRoute(), withContext: mainViewController) { }
+        }
+    }
     func doMagicForPresets() {
         if(UserDefaults.standard.object(forKey: UserDefaults.UserDefaultsKeys.presetsSet.rawValue) == nil){
             UserDefaults.standard.hasPresetsSet = UserDefaults.standard.userExt?.guid != nil
@@ -111,7 +166,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
     }
     
     func checkIfTempUser() {
-        guard let userExt = UserDefaults.standard.userExt else { return }
+        guard let userExt = UserDefaults.standard.userExt else {
+            UserDefaults.standard.isTempUser = true
+            return
+        }
         LoginManager.shared.doesEmailExist(email: userExt.email) { (status) in
             if status == "true" { //completed registration
                 UserDefaults.standard.isTempUser = false
@@ -392,6 +450,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: GetAllDonationsQueryHandler())
         
         //-- BUDGET SCENE: ROUTES
+        Mediater.shared.registerHandler(handler: OpenSummaryRouteHandler())
         Mediater.shared.registerHandler(handler: OpenGiveNowRouteHandler())
         Mediater.shared.registerHandler(handler: OpenExternalGivtsRouteHandler())
         //-- BUDGET SCENE: QUERYS

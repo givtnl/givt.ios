@@ -72,6 +72,7 @@
 		323F170725ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F170625ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift */; };
 		323F170925ED520800B12049 /* BudgetOverviewViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F170825ED520800B12049 /* BudgetOverviewViewControllerPrivateExtension.swift */; };
 		323F170B25ED723400B12049 /* BudgetExternalGivtsViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F170A25ED723400B12049 /* BudgetExternalGivtsViewControllerPrivateExtension.swift */; };
+		3245E13F262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */; };
 		324761C12508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */; };
 		324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C22508FE25002BC37E /* RecurringDonationState.swift */; };
 		3260CF07254A2EB900BA6BD7 /* BackToMainViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3260CF06254A2EB900BA6BD7 /* BackToMainViewRoute.swift */; };
@@ -143,6 +144,8 @@
 		32A67F80251497F7007EC7EF /* RecurringDonationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7F251497F7007EC7EF /* RecurringDonationError.swift */; };
 		32A8AB9225EE164200B96594 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8AB9125EE164200B96594 /* DoubleExtension.swift */; };
 		32A8AB9525EE377100B96594 /* NotGivtDonationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A8AB9425EE377100B96594 /* NotGivtDonationModel.swift */; };
+		32AA42AD263FFFA3000BF0EC /* TestimonialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AA42AC263FFFA3000BF0EC /* TestimonialManager.swift */; };
+		32AA42AF263FFFCE000BF0EC /* Testimonial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AA42AE263FFFCE000BF0EC /* Testimonial.swift */; };
 		32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */; };
 		32BFA7A025DD0F75003AD5FE /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32BFA79F25DD0F75003AD5FE /* UIViewExtensions.swift */; };
 		32C2D8222522087000832444 /* DecimalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32C2D8212522087000832444 /* DecimalExtension.swift */; };
@@ -155,6 +158,7 @@
 		32D4852E24D0445200F821A5 /* CreateRecurringDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */; };
 		32D4853124D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */; };
 		32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */; };
+		32DBF12426271EED00E20C45 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBF12326271EED00E20C45 /* LocalNotificationManager.swift */; };
 		32DDFB2F25F75F4900E25AF2 /* BudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */; };
 		32DDFB3225F7618400E25AF2 /* OverlayViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB3125F7618400E25AF2 /* OverlayViewControllerExtension.swift */; };
 		32DDFB3425F761B100E25AF2 /* OverlayHostViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB3325F761B100E25AF2 /* OverlayHostViewControllerExtension.swift */; };
@@ -166,6 +170,10 @@
 		32EB1CF025D3E1330005CCAC /* BudgetNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB1CEF25D3E1330005CCAC /* BudgetNavigationController.swift */; };
 		32EB1CF325D3E3930005CCAC /* MonthlySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EB1CF225D3E3930005CCAC /* MonthlySummary.swift */; };
 		32EB1CF525D3E3A80005CCAC /* MonthlySummary.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32EB1CF425D3E3A80005CCAC /* MonthlySummary.xib */; };
+		32EEB2B7262838F4008EED9A /* OpenSummaryRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EEB2B6262838F4008EED9A /* OpenSummaryRoute.swift */; };
+		32EEB2B9262838FF008EED9A /* OpenSummaryRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EEB2B8262838FF008EED9A /* OpenSummaryRouteHandler.swift */; };
+		32EEB2BC26283F56008EED9A /* TestimonialCarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EEB2BB26283F56008EED9A /* TestimonialCarouselViewController.swift */; };
+		32EEB2BE262842D5008EED9A /* TestimonialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EEB2BD262842D5008EED9A /* TestimonialViewController.swift */; };
 		32F21E9125484C91003E46D5 /* DiscoverOrAmount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */; };
 		32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */; };
 		32F21E97254850E7003E46D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E96254850E7003E46D5 /* MainViewController.swift */; };
@@ -530,6 +538,7 @@
 		323F170625ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerYearlyChartExtension.swift; sourceTree = "<group>"; };
 		323F170825ED520800B12049 /* BudgetOverviewViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
 		323F170A25ED723400B12049 /* BudgetExternalGivtsViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExternalGivtsViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
+		3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerTestimonialExtension.swift; sourceTree = "<group>"; };
 		324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationResponseModel.swift; sourceTree = "<group>"; };
 		324761C22508FE25002BC37E /* RecurringDonationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationState.swift; sourceTree = "<group>"; };
 		3260CF06254A2EB900BA6BD7 /* BackToMainViewRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackToMainViewRoute.swift; sourceTree = "<group>"; };
@@ -600,6 +609,8 @@
 		32A67F7F251497F7007EC7EF /* RecurringDonationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationError.swift; sourceTree = "<group>"; };
 		32A8AB9125EE164200B96594 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		32A8AB9425EE377100B96594 /* NotGivtDonationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotGivtDonationModel.swift; sourceTree = "<group>"; };
+		32AA42AC263FFFA3000BF0EC /* TestimonialManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialManager.swift; sourceTree = "<group>"; };
+		32AA42AE263FFFCE000BF0EC /* Testimonial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testimonial.swift; sourceTree = "<group>"; };
 		32AEB6CC24B703970000F7DE /* ChangePhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneNumberViewController.swift; sourceTree = "<group>"; };
 		32BFA79F25DD0F75003AD5FE /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		32C2D8212522087000832444 /* DecimalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalExtension.swift; sourceTree = "<group>"; };
@@ -612,6 +623,7 @@
 		32D4852D24D0445200F821A5 /* CreateRecurringDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommand.swift; sourceTree = "<group>"; };
 		32D4853024D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandHandler.swift; sourceTree = "<group>"; };
 		32D4853224D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationCommandPreHandler.swift; sourceTree = "<group>"; };
+		32DBF12326271EED00E20C45 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewController.swift; sourceTree = "<group>"; };
 		32DDFB3125F7618400E25AF2 /* OverlayViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewControllerExtension.swift; sourceTree = "<group>"; };
 		32DDFB3325F761B100E25AF2 /* OverlayHostViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayHostViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -623,6 +635,10 @@
 		32EB1CEF25D3E1330005CCAC /* BudgetNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetNavigationController.swift; sourceTree = "<group>"; };
 		32EB1CF225D3E3930005CCAC /* MonthlySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummary.swift; sourceTree = "<group>"; };
 		32EB1CF425D3E3A80005CCAC /* MonthlySummary.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlySummary.xib; sourceTree = "<group>"; };
+		32EEB2B6262838F4008EED9A /* OpenSummaryRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSummaryRoute.swift; sourceTree = "<group>"; };
+		32EEB2B8262838FF008EED9A /* OpenSummaryRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSummaryRouteHandler.swift; sourceTree = "<group>"; };
+		32EEB2BB26283F56008EED9A /* TestimonialCarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialCarouselViewController.swift; sourceTree = "<group>"; };
+		32EEB2BD262842D5008EED9A /* TestimonialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestimonialViewController.swift; sourceTree = "<group>"; };
 		32F21E9025484C91003E46D5 /* DiscoverOrAmount.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiscoverOrAmount.storyboard; sourceTree = "<group>"; };
 		32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		32F21E96254850E7003E46D5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -971,6 +987,7 @@
 		32111D6425E5306400DB775C /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				32EEB2B5262838DA008EED9A /* OpenSummary */,
 				32F528D425EA9F160073C243 /* OpenGiveNow */,
 				32F528CF25EA9EEA0073C243 /* OpenExternalGivts */,
 			);
@@ -1023,6 +1040,7 @@
 		3215976E25D2FADB0065C80A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				32EEB2BA26283F0E008EED9A /* Testimonial */,
 				3220B8A625E793560086577E /* Overview */,
 				32F528CA25EA9B850073C243 /* ExternalGivt */,
 				32DDFB2D25F75EDA00E25AF2 /* List */,
@@ -1101,6 +1119,7 @@
 				323F170225ED4EA300B12049 /* BudgetOverviewViewControllerCollectGroupsExtension.swift */,
 				323F170425ED4F6400B12049 /* BudgetOverviewViewControllerMonthlyChartExtension.swift */,
 				323F170625ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift */,
+				3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -1652,6 +1671,26 @@
 			path = MonthlySummary;
 			sourceTree = "<group>";
 		};
+		32EEB2B5262838DA008EED9A /* OpenSummary */ = {
+			isa = PBXGroup;
+			children = (
+				32EEB2B6262838F4008EED9A /* OpenSummaryRoute.swift */,
+				32EEB2B8262838FF008EED9A /* OpenSummaryRouteHandler.swift */,
+			);
+			path = OpenSummary;
+			sourceTree = "<group>";
+		};
+		32EEB2BA26283F0E008EED9A /* Testimonial */ = {
+			isa = PBXGroup;
+			children = (
+				32EEB2BD262842D5008EED9A /* TestimonialViewController.swift */,
+				32EEB2BB26283F56008EED9A /* TestimonialCarouselViewController.swift */,
+				32AA42AC263FFFA3000BF0EC /* TestimonialManager.swift */,
+				32AA42AE263FFFCE000BF0EC /* Testimonial.swift */,
+			);
+			path = Testimonial;
+			sourceTree = "<group>";
+		};
 		32F21E8F25484C6C003E46D5 /* DiscoverOrAmount */ = {
 			isa = PBXGroup;
 			children = (
@@ -1824,6 +1863,7 @@
 				D788E4771FA08DA700506DA5 /* NavigationManager.swift */,
 				FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */,
 				A4DE893F220C76F500379CFD /* NotificationManager.swift */,
+				32DBF12326271EED00E20C45 /* LocalNotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -3014,6 +3054,7 @@
 				D7C5120C20761D51002B1618 /* ChooseContextViewController.swift in Sources */,
 				32F528D325EA9F120073C243 /* OpenExternalGivtsRouteHandler.swift in Sources */,
 				32111D6825E5342B00DB775C /* OpenGiveNowRouteHandler.swift in Sources */,
+				32AA42AF263FFFCE000BF0EC /* Testimonial.swift in Sources */,
 				D75AA196200CBFD5006E09BB /* TaxesViewController.swift in Sources */,
 				27A0E4EE221F3FF100982842 /* PresetsSettingsViewController.swift in Sources */,
 				FBC1858924C0651D001A4C6B /* RequestPostProcessorProtocol.swift in Sources */,
@@ -3093,6 +3134,7 @@
 				32182E06261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift in Sources */,
 				D7DBEDA31FBC798A00D78E2A /* UIDeviceExtensions.swift in Sources */,
 				FB87303724C88B21005FF355 /* FinalizeGivingRouteHandler.swift in Sources */,
+				32EEB2B7262838F4008EED9A /* OpenSummaryRoute.swift in Sources */,
 				FBB85B0321C9230400A1A634 /* FeaturesFirstViewController.swift in Sources */,
 				32EB1CF025D3E1330005CCAC /* BudgetNavigationController.swift in Sources */,
 				FBC185AE24C0CD98001A4C6B /* LocalUserConfigurationModel.swift in Sources */,
@@ -3197,6 +3239,7 @@
 				32D4852E24D0445200F821A5 /* CreateRecurringDonationCommand.swift in Sources */,
 				3260CF1C254ABC4500BA6BD7 /* DiscoverOrAmountOpenSafariRoute.swift in Sources */,
 				FB243BDD2553F30500C6F768 /* GoBackOneControllerRoute.swift in Sources */,
+				32EEB2BC26283F56008EED9A /* TestimonialCarouselViewController.swift in Sources */,
 				DF2D13B924FAB6FD00DCE603 /* GetRecurringDonationsQuery.swift in Sources */,
 				329C3E8525F21A4A0037D750 /* GetAllExternalDonationsQueryHandler.swift in Sources */,
 				FBC1859C24C08918001A4C6B /* TableSection.swift in Sources */,
@@ -3249,6 +3292,7 @@
 				3260CF2A254ABF6900BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRoutePreHandler.swift in Sources */,
 				DF3FD7882512134A006BB1A7 /* SetupNotificationRecurringDonationViewController.swift in Sources */,
 				3260CF32254AC8B200BA6BD7 /* DiscoverOrAmountSuccessViewController.swift in Sources */,
+				32AA42AD263FFFA3000BF0EC /* TestimonialManager.swift in Sources */,
 				326E0979256D64310079B4B0 /* ShowUpdateAlertHandler.swift in Sources */,
 				32E506F725DE98AD00BC6070 /* CardViewHeader.swift in Sources */,
 				323F16F125EB9B4400B12049 /* BudgetExternalGivtsViewWithBorder.swift in Sources */,
@@ -3292,6 +3336,7 @@
 				327E34532549FE7A00314BFD /* DiscoverOrAmountActions.swift in Sources */,
 				FBFAF47D25669CF30012E4A6 /* GetAllDonationsQuery.swift in Sources */,
 				D7CCC06D1FC4280F006A6A4F /* PinViewController.swift in Sources */,
+				32EEB2B9262838FF008EED9A /* OpenSummaryRouteHandler.swift in Sources */,
 				3216ED832541A9DE00B965A2 /* OpenRecurringRuleDetailFromNotificationRouteHandler.swift in Sources */,
 				32111D6B25E556A700DB775C /* GetMonthlySummaryQuery.swift in Sources */,
 				DF8BB30324F7A09F00104668 /* RecurringRuleViewModel.swift in Sources */,
@@ -3308,6 +3353,7 @@
 				FBC1858A24C0651D001A4C6B /* RequestProtocol.swift in Sources */,
 				FB56C5622511001E0099EC62 /* BackToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				327E34502549FDF000314BFD /* DiscoverOrAmountSelectDestinationViewController.swift in Sources */,
+				32DBF12426271EED00E20C45 /* LocalNotificationManager.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
 				3260CF1E254ABC5200BA6BD7 /* DiscoverOrAmountOpenSafariRouteHandler.swift in Sources */,
 				D73CA1C71F39BD970059A296 /* UserDefaultsExtensions.swift in Sources */,
@@ -3324,6 +3370,7 @@
 				FB87301624C84462005FF355 /* DeleteDonationCommand.swift in Sources */,
 				32CA17A724CED02300248053 /* SetupRecurringDonationChooseDestinationViewController.swift in Sources */,
 				323F16F825EBB90D00B12049 /* BudgetExternalGivtsViewControllerExtension.swift in Sources */,
+				32EEB2BE262842D5008EED9A /* TestimonialViewController.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
 				D71DA050211AE5C90084381E /* ChangeAddressViewController.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
@@ -3336,6 +3383,7 @@
 				FB8187B221C29C7C0084C23E /* NewFeaturePopDownView.swift in Sources */,
 				D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */,
 				D78208A12008BE7900AB6DC1 /* CollectionExtensions.swift in Sources */,
+				3245E13F262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift in Sources */,
 				32DDFB2F25F75F4900E25AF2 /* BudgetListViewController.swift in Sources */,
 				FBC185C324C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift in Sources */,
 				329C3E7825F210D20037D750 /* CreateExternalDonationCommand.swift in Sources */,

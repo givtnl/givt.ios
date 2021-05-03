@@ -1040,23 +1040,23 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SignMandateDisclaimer" = "By continuing you sign the eMandate with above details.\nThe mandate will be sent to you via mail.";
 
 /*Fuzzy*/
-"BudgetSummaryBalance" = "Given this month";
+"BudgetSummaryBalance" = "My giving this month";
 "BudgetSummarySetGoal" = "Set a giving goal to motivate yourself.";
 
 /*Fuzzy*/
 "BudgetSummaryGiveNow" = "Give now!";
-"BudgetSummaryGivt" = "Given through Givt";
+"BudgetSummaryGivt" = "Given within Givt";
 "BudgetSummaryNotGivt" = "Given outside of Givt";
 
 /*Fuzzy*/
 "BudgetSummaryShowAll" = "Show all";
-"BudgetSummaryMonth" = "Per month";
+"BudgetSummaryMonth" = "Monthly";
 "BudgetSummaryYear" = "Annually";
-"BudgetExternalGiftsTitle" = "Contributions outside of Givt";
+"BudgetExternalGiftsTitle" = "Giving outside of Givt";
 "BudgetExternalGiftsInfo" = "Get a complete overview of all of your contributions. Add any contributions that you have made outside of Givt. You will find everything in your summary.";
-"BudgetExternalGiftsSubTitle" = "Contributions outside of Givt";
-"BudgetExternalGiftsOrg" = "Name organisation";
-"BudgetExternalGiftsTime" = "Period";
+"BudgetExternalGiftsSubTitle" = "Your donations outside of Givt";
+"BudgetExternalGiftsOrg" = "Name of organisation";
+"BudgetExternalGiftsTime" = "Frequency";
 "BudgetExternalGiftsAmount" = "Amount";
 "BudgetExternalGiftsAdd" = "Add";
 "BudgetExternalGiftsSave" = "Save";
@@ -1079,17 +1079,17 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetGivingGoalRemove" = "Remove giving goal";
 
 /*Fuzzy*/
-"BudgetSummaryNoGifts" = "You have no contributions yet this month";
-"BudgetTestimonialSummary" = "Willem: ”Since I’ve been using the summary, I have gained more insight into what I give. I give more consciously because of it.";
-"BudgetTestimonialGivingGoal" = "Danielle: ”My giving goal motivates me to regularly reflect on my giving behaviour.”";
-"BudgetTestimonialExternalGifts" = "John: ”I like that I can fill in my contributions outside of Givt in the app. Now I can easily consider what I still want to give.”";
-"BudgetTestimonialYearlyOverview" = "Jonathan: “I think Givt's annual overview is great! Since I also make contributions outside of Givt, I am happy that I can now add them too. All my donations in one overview, super easy for my tax return.”";
+"BudgetSummaryNoGifts" = "Donations outside Givt this month? Add here";
+"BudgetTestimonialSummary" = "”Since I’ve been using the summary, I have gained more insight into what I give. I give more consciously because of it.";
+"BudgetTestimonialGivingGoal" = "”My giving goal motivates me to regularly reflect on my giving behaviour.”";
+"BudgetTestimonialExternalGifts" = "”I like that I can fill in my contributions outside of Givt in the app. Now I can easily consider what I still want to give.”";
+"BudgetTestimonialYearlyOverview" = "“I think Givt's annual overview is great! Since I also make contributions outside of Givt, I am happy that I can now add them too. All my donations in one overview, super easy for my tax return.”";
 "BudgetPushMonthly" = "See what you have given this month.";
 "BudgetPushYearly" = "View your annual overview and see what you have given so far.";
 "BudgetTooltipGivingGoal" = "Give consciously. Consider each month whether your giving behaviour matches your personal ambitions.";
-"BudgetTooltipExternalGifts" = "Your overview is only complete when all your donations are included in it. Add what you don't give through Givt. You will find everything in this summary.";
+"BudgetTooltipExternalGifts" = "Add what you're donating outside of Givt. Everything will appear in your summary. WIth all your donations included you'll get the best insight.";
 "BudgetTooltipYearly" = "One overview for the tax return? View the overview of all your donations here.";
-"BudgetPushMonthlyBold" = "Your monthly summary is ready in Givt.";
+"BudgetPushMonthlyBold" = "Your monthly summary is ready.";
 "BudgetPushYearlyBold" = "2021 is almost over ... Have you made up your balance?";
 "BudgetExternalGiftsListAddEditButton" = "Manage external donations";
 "BudgetExternalGiftsFrequencyOnce" = "Once";
@@ -1098,3 +1098,10 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetExternalGiftsFrequencyHalfYearly" = "Every 6 months";
 "BudgetExternalGiftsFrequencyYearly" = "Every year";
 "BudgetExternalGiftsEdit" = "Edit";
+
+/*Fuzzy*/
+"BudgetTestimonialSummaryName" = "Willem:";
+"BudgetTestimonialGivingGoalName" = "Danielle:";
+"BudgetTestimonialExternalGiftsName" = "John:";
+"BudgetTestimonialYearlyOverviewName" = "Jonathan:";
+"BudgetTestimonialSummaryAction" = "View your summary";
