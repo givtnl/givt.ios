@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class TestimonialViewController: UIViewController {
-    var content: TestimonialPageContent?
+    var content: Testimonial?
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -27,9 +27,7 @@ class TestimonialViewController: UIViewController {
         super.viewDidLoad()
     
         if let content = content {
-            if content.image != nil {
-                imageView.image = content.image
-            }
+            imageView.image = content.image
             descriptionLabel.attributedText = content.description
         }
     }
