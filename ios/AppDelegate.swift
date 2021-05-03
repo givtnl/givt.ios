@@ -86,7 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         #else
         dateComponents = DateComponents(
             calendar: Calendar.current,
-            second: 30
+            hour: 16,
+            minute: 30
         )
         #endif
         
