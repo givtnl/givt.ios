@@ -10,12 +10,8 @@ import Foundation
 
 extension BudgetOverviewViewController {
     func loadTestimonial() {
-        let lastSeenTestimonial = UserDefaults.standard.lastShownTestimonial
-        
-        if (lastSeenTestimonial == nil) {
-            self.showOverlay(type: TestimonialCarouselViewController.self, fromStoryboardWithName: "Budget")
-        } else {
-            let lastSeenDate: String = lastSeenTestimonial!.date
+        if let lastSeenTestimonial = UserDefaults.standard.lastShownTestimonial {
+            let lastSeenDate: String = lastSeenTestimonial.date
             
             guard lastSeenDate.contains("-") else {
                 return
@@ -31,7 +27,8 @@ extension BudgetOverviewViewController {
             if (lastSeenYear == currentYear && lastSeenMonth < currentMonth || lastSeenYear < currentYear) {
                 self.showOverlay(type: TestimonialCarouselViewController.self, fromStoryboardWithName: "Budget")
             }
+        } else {
+            self.showOverlay(type: TestimonialCarouselViewController.self, fromStoryboardWithName: "Budget")
         }
-        
     }
 }
