@@ -39,7 +39,7 @@ class LocalNotificationManager {
         for notification in notifications {
             let content = UNMutableNotificationContent()
             content.title = notification.title
-            content.subtitle = notification.subTitle
+            content.body = notification.subTitle
             content.sound = .default
             content.userInfo = notification.userInfo
             
