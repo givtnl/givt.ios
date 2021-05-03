@@ -79,8 +79,6 @@ private extension BudgetExternalGivtsViewController {
                             let _: ResponseModel<Bool> = try! Mediater.shared.send(request: createCommand)
                             self.resetFields()
                             self.reloadExternalDonationList()
-                            self.buttonExternalGivtsAdd.isEnabled = false
-                            self.viewExternalGivtsTime.isEnabled = false
                             self.checkFields()
                             self.somethingHappened = true
                         }
@@ -94,11 +92,6 @@ private extension BudgetExternalGivtsViewController {
                         
                         NavigationManager.shared.executeWithLogin(context: self) {
                             let _: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
-                            self.resetFields()
-                            self.reloadExternalDonationList()
-                            self.buttonExternalGivtsAdd.isEnabled = false
-                            self.viewExternalGivtsTime.isEnabled = false
-                            self.checkFields()
                             self.somethingHappened = true
                         }
                     }
@@ -107,11 +100,18 @@ private extension BudgetExternalGivtsViewController {
         }
         
         if somethingHappened {
+            resetFields()
+            reloadExternalDonationList()
+            checkFields()
+            buttonExternalGivtsAdd.isEnabled = false
             buttonExternalGivtsSave.isEnabled = true
             resetBorder(textField: textFieldExternalGivtsOrganisation)
             resetBorder(view: viewExternalGivtsAmount)
             buttonExternalGivtsAdd.isEnabled = false
             viewExternalGivtsTime.isEnabled = true
+            viewExternalGivtsTime.backgroundColor = .clear
+            labelChevronDown.textColor = ColorHelper.GivtPurple
+            textFieldExternalGivtsTime.textColor = ColorHelper.GivtPurple
             modelBeeingEdited = nil
         }
         
