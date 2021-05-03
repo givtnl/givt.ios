@@ -128,8 +128,12 @@ extension BudgetExternalGivtsViewController {
             isEditMode = false
             switchButtonState()
             
-            buttonExternalGivtsAdd.isEnabled = false
             viewExternalGivtsTime.isEnabled = false
+            viewExternalGivtsTime.backgroundColor = UIColor(cgColor: ColorHelper.SummaryLightGray.cgColor.copy(alpha: 0.35)!)
+            textFieldExternalGivtsTime.textColor = UIColor(cgColor: textFieldExternalGivtsTime.textColor!.cgColor.copy(alpha: 0.35)!)
+            labelChevronDown.textColor = UIColor(cgColor: labelChevronDown.textColor.cgColor.copy(alpha: 0.35)!)
+            
+            buttonExternalGivtsAdd.isEnabled = false
         }
         
         stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44
@@ -203,7 +207,11 @@ extension BudgetExternalGivtsViewController {
         textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue][1] as? String
         
         buttonExternalGivtsAdd.isEnabled = false
+
         viewExternalGivtsTime.isEnabled = false
+        viewExternalGivtsTime.backgroundColor = UIColor(cgColor: ColorHelper.SummaryLightGray.cgColor.copy(alpha: 0.35)!)
+        textFieldExternalGivtsTime.textColor = UIColor(cgColor: textFieldExternalGivtsTime.textColor!.cgColor.copy(alpha: 0.35)!)
+        labelChevronDown.textColor = UIColor(cgColor: labelChevronDown.textColor.cgColor.copy(alpha: 0.35)!)
         
         mainScrollView.scrollToBottom()
     }

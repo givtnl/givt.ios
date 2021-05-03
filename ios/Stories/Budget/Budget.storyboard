@@ -19,7 +19,6 @@
             <objects>
                 <navigationController storyboardIdentifier="BudgetNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bah-Fb-fWK" customClass="BudgetNavigationController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aDd-BX-URm">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -713,6 +712,7 @@
                         <outlet property="bottomScrollViewConstraint" destination="TI7-wK-A67" id="CYd-9N-6pL"/>
                         <outlet property="buttonExternalGivtsAdd" destination="jqY-Sp-MoJ" id="1CY-5r-rNm"/>
                         <outlet property="buttonExternalGivtsSave" destination="rrV-x6-BW3" id="55a-h6-6Vo"/>
+                        <outlet property="labelChevronDown" destination="2ZE-fv-DaX" id="3Q0-fL-flN"/>
                         <outlet property="labelExternalGivtsAmount" destination="nkO-fT-btY" id="XZx-ON-DSG"/>
                         <outlet property="labelExternalGivtsAmountCurrency" destination="4wr-my-hHb" id="3d3-S3-Qrw"/>
                         <outlet property="labelExternalGivtsInfo" destination="ogr-fy-7GL" id="oaz-E0-2Sd"/>
