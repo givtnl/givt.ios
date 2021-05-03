@@ -182,32 +182,7 @@ extension UserDefaults {
             synchronize()
         }
     }
-    
-    var lastShownTestimonial: Int? {
-        get {
-            if let testimonialsDictionary = dictionary(forKey: UserDefaultsKeys.testimonialsByUserId.rawValue) as? [String: Int] {
-                if let uExt = userExt, let retArray = testimonialsDictionary[uExt.guid] {
-                    return retArray
-                } else {
-                    return nil
-                }
-            } else {
-                return nil
-            }
-        }
-        set(value) {
-            var testimonialDictonary: [String: Int] = [:]
-            if let originalDictionary = dictionary(forKey: UserDefaultsKeys.testimonialsByUserId.rawValue) as? [String: Int] {
-                testimonialDictonary = originalDictionary
-            }
-            
-            if let uExt = userExt {
-                testimonialDictonary[uExt.guid] = value
-                set(testimonialDictonary, forKey: UserDefaultsKeys.testimonialsByUserId.rawValue)
-            }
-            synchronize()
-        }
-    }
+
     @available(*, deprecated, message: "Do not use. Use showCasesByUserId instead.")
     var showcases: [String] {
         get {
@@ -534,4 +509,42 @@ extension UserDefaults {
             synchronize()
         }
     }
+    
+    var lastShownTestimonial: TestimonialSetting? {
+        get {
+            if let data = data(forKey: UserDefaultsKeys.testimonialsByUserId.rawValue) {
+                if let testimonialDictonary = try? JSONDecoder().decode([String: TestimonialSetting].self, from: data) {
+                    if let uExt = userExt {
+                        return testimonialDictonary[uExt.guid]
+                    } else {
+                        return nil
+                    }
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
+        set(value) {
+            var testimonialDictonary: [String: TestimonialSetting] = [:]
+            
+            if let data = data(forKey: UserDefaultsKeys.testimonialsByUserId.rawValue) {
+                if let originalDictionary = try? JSONDecoder().decode([String: TestimonialSetting].self, from: data) {
+                    testimonialDictonary = originalDictionary
+                }
+            }
+            
+            if let uExt = userExt {
+                testimonialDictonary[uExt.guid] = value
+                set(try? JSONEncoder().encode(testimonialDictonary), forKey: UserDefaultsKeys.testimonialsByUserId.rawValue)
+            }
+            synchronize()
+        }
+    }
+}
+
+struct TestimonialSetting: Encodable, Decodable {
+    var id: Int
+    var date: String
 }
