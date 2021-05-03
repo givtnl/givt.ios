@@ -39,6 +39,7 @@ class LocalNotificationManager {
         for notification in notifications {
             let content = UNMutableNotificationContent()
             content.title = notification.title
+            content.subtitle = notification.subTitle
             content.sound = .default
             content.userInfo = notification.userInfo
             
@@ -58,6 +59,7 @@ class LocalNotificationManager {
 struct LocalNotification {
     var id: String
     var title: String
+    var subTitle: String
     var dateTime: DateComponents
     var userInfo: [String: String]
     var shouldRepeat: Bool

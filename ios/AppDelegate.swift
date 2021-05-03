@@ -60,35 +60,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 }
             }
         }
-
+        
         handleOldBeaconList()
         checkIfTempUser()
         doMagicForPresets()
-                
+        
         mixpanel.serverURL = "https://api-eu.mixpanel.com"
         
         if #available(iOS 10.0, *) {
-            let localNotificationManager = LocalNotificationManager.shared
-            localNotificationManager.notifications = [
-                LocalNotification(
-                    id: "TestOne",
-                    title: "The cake is a lie!",
-                    dateTime: DateComponents(
-                        calendar: Calendar.current,
-                        second: 30
-                    ),
-                    userInfo: ["Type" : NotificationType.OpenSummaryNotification.rawValue],
-                    shouldRepeat: true
-                )
-            ]
-            if !UserDefaults.standard.isTempUser {
-                localNotificationManager.schedule()
-            }
+            setupNotifications()
         }
-
+        
         return true
     }
-
+    
+    @available(iOS 10.0, *)
+    func setupNotifications() {
+        var dateComponents: DateComponents?
+        #if PRODUCTION
+        dateComponents = DateComponents(
+            calendar: Calendar.current,
+            day: 25,
+            hour: 20
+        )
+        #else
+        dateComponents = DateComponents(
+            calendar: Calendar.current,
+            second: 30
+        )
+        #endif
+        
+        let localNotificationManager = LocalNotificationManager.shared
+        
+        localNotificationManager.notifications = [
+            LocalNotification(
+                id: "TestOne",
+                title: "BudgetPushMonthlyBold".localized,
+                subTitle: "BudgetPushMonthly".localized,
+                dateTime: dateComponents!,
+                userInfo: ["Type" : NotificationType.OpenSummaryNotification.rawValue],
+                shouldRepeat: true
+            )
+        ]
+        if !UserDefaults.standard.isTempUser {
+            localNotificationManager.schedule()
+        }
+    }
     func onReceivedRecurringDonationTurnCreated(recurringDonationId: String) {
         DispatchQueue.main.async {
             guard let window = UIApplication.shared.keyWindow else { return }
