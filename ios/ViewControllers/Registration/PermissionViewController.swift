@@ -47,6 +47,11 @@ class PermissionViewController: UIViewController {
             
             determineNextScreen()
         }
+        
+        if #available(iOS 10.0, *) {
+            LocalNotificationManager.shared.schedule()
+        }
+        
         UIApplication.shared.registerForRemoteNotifications()
     }
     

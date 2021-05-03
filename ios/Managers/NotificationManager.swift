@@ -56,6 +56,13 @@ final class NotificationManager : NSObject {
             }
         }
     }
+    func invokeOnReceiveSummaryNotification() {
+        for delegate in delegates {
+            if let myDelegate = delegate as? NotificationOpenSummaryDelegate {
+                myDelegate.onReceiveOpenSummaryNotification()
+            }
+        }
+    }
     func start() -> Void {
         DispatchQueue.main.async {
             self.requestAndUpdateTokenIfNeeded()
@@ -196,11 +203,6 @@ final class NotificationManager : NSObject {
     }
     
     func processPushNotification(fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void, pushNotificationInfo: [AnyHashable: Any] ) {
-        guard let aps = pushNotificationInfo["aps"] as? [String: AnyObject] else {
-            completionHandler(.failed)
-            return
-        }
-
         guard let type = pushNotificationInfo["Type"] as? String else  {
             completionHandler(.failed)
             LogService.shared.error(message: "Pushnotification type not of string-type")
@@ -223,12 +225,13 @@ final class NotificationManager : NSObject {
                 if let featureId = pushNotificationInfo["FeatureId"] as? String {
                     self.invokeOnReceiveShowFeatureUpdate(featureId: featureId.toInt)
                 }
+            case NotificationType.OpenSummaryNotification.rawValue:
+                self.invokeOnReceiveSummaryNotification()
             default:
                 print("wrong type")
             LogService.shared.error(message: "Pushnotification type not known")
         }
-        
-        print(aps)
+
         completionHandler(.newData)
     }
 }
@@ -258,4 +261,8 @@ protocol NotificationRecurringDonationTurnCreatedDelegate: NotificationManagerDe
 
 protocol NotificationShowFeatureUpdateDelegate: NotificationManagerDelegate {
     func onReceiveShowFeatureUpdate(featureId: Int)
+}
+
+protocol NotificationOpenSummaryDelegate: NotificationManagerDelegate {
+    func onReceiveOpenSummaryNotification()
 }
