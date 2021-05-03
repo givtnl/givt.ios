@@ -9,12 +9,10 @@
 import Foundation
 import UIKit
 
-
-
 class TestimonialCarouselViewController: BaseCarouselViewController, OverlayViewController {
     var overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.8, height: 300.0)
     var pages: [Testimonial] = [Testimonial]()
-
+    
     override func setupViewControllers() {
         pages = TestimonialManager.shared.pages
         
@@ -27,9 +25,15 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
             viewControllerList.append(vc)
         }
     }
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.subviews.forEach { view in
+            if let subView = view as? UIScrollView {
+                subView.bounces = false
+            }
+        }
         
         if pages.count > 1 {
             pageControl.currentPageIndicatorTintColor = ColorHelper.GivtPurple

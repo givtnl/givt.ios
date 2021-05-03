@@ -15,8 +15,6 @@ extension BudgetOverviewViewController {
         if (lastSeenTestimonial == nil) {
             self.showOverlay(type: TestimonialCarouselViewController.self, fromStoryboardWithName: "Budget")
         } else {
-            var shouldShow = false
-
             let lastSeenDate: String = lastSeenTestimonial!.date
             
             guard lastSeenDate.contains("-") else {
