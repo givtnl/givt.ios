@@ -151,6 +151,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 prentedViewcontroller.dismiss(animated: true, completion: nil)
             }
             
+            if !AppServices.shared.isServerReachable {
+                try? Mediater.shared.send(request: NoInternetAlert(), withContext: mainViewController)
+            }
+            
             try? Mediater.shared.sendAsync(request: OpenSummaryRoute(), withContext: mainViewController) { }
         }
     }
