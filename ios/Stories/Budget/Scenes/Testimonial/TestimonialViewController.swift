@@ -32,7 +32,7 @@ class TestimonialViewController: UIViewController {
         }
         
         actionButton.titleLabel?.numberOfLines = 1
-        actionButton.titleLabel?.text = "BudgetTestimonialSummaryAction".localized
+        actionButton.setTitle("BudgetTestimonialSummaryAction".localized, for: .normal)
         actionButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
