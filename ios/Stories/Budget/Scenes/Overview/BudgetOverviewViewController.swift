@@ -52,5 +52,6 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         setupMonthsCard()
         setupYearsCard()
         SVProgressHUD.dismiss()
+        loadTestimonial()
     }
 }

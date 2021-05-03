@@ -1086,16 +1086,16 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Fuzzy*/
 "BudgetSummaryNoGifts" = "Je hebt deze maand nog geen giften";
-"BudgetTestimonialSummary" = "Willem: ”Ik heb meer inzicht in wat ik geef sinds ik de samenvatting voor al mijn giften gebruik. Ik geef hierdoor bewuster.”";
-"BudgetTestimonialGivingGoal" = "Danielle: ”Mijn streefbedrag motiveert mij om regelmatig stil te staan  bij mijn geefgedrag.”";
-"BudgetTestimonialExternalGifts" = "John: ”Ik vind het fijn dat ik mijn giften die ik niet via Givt doe in de app kan noteren. Nu kan ik makkelijk afwegen wat ik nog wil geven.”";
-"BudgetTestimonialYearlyOverview" = "Jonathan: ”Ik vind het jaaroverzicht van Givt top! Omdat ik ook giften doe buiten Givt, ben ik blij dat ik die nu ook kan toevoegen. Al mijn giften in één overzicht, super makkelijk voor mijn belastingaangifte.”";
+"BudgetTestimonialSummary" = "”Ik heb meer inzicht in wat ik geef sinds ik de samenvatting voor al mijn giften gebruik. Ik geef hierdoor bewuster.”";
+"BudgetTestimonialGivingGoal" = "”Mijn streefbedrag motiveert mij om regelmatig stil te staan  bij mijn geefgedrag.”";
+"BudgetTestimonialExternalGifts" = "”Ik vind het fijn dat ik mijn giften die ik niet via Givt doe in de app kan noteren. Nu kan ik makkelijk afwegen wat ik nog wil geven.”";
+"BudgetTestimonialYearlyOverview" = "”Ik vind het jaaroverzicht van Givt top! Omdat ik ook giften doe buiten Givt, ben ik blij dat ik die nu ook kan toevoegen. Al mijn giften in één overzicht, super makkelijk voor mijn belastingaangifte.”";
 "BudgetPushMonthly" = "Kijk wat je tot nu toe gegeven hebt.";
 "BudgetPushYearly" = "Bekijk je jaaroverzicht en zie wat je tot nu toe al gegeven hebt.";
 "BudgetTooltipGivingGoal" = "Geef bewust. Weeg elke maand af of je geefgedrag past bij je persoonlijke ambities.";
 "BudgetTooltipExternalGifts" = "Je overzicht is pas compleet als al je giften erin staan. Voeg toe wat je niet via Givt geeft. Je vindt alles terug in deze samenvatting.";
 "BudgetTooltipYearly" = "Één overzicht voor de belastingaangifte? Bekijk hier het overzicht van al je giften.";
-"BudgetPushMonthlyBold" = "Je maandelijkse samenvatting staat klaar in Givt.";
+"BudgetPushMonthlyBold" = "Je maandelijkse samenvatting staat klaar.";
 "BudgetPushYearlyBold" = "2021 is bijna voorbij... Je balans al opgemaakt?";
 "BudgetExternalGiftsListAddEditButton" = "Beheer je externe giften";
 "BudgetExternalGiftsFrequencyOnce" = "Eenmalig";
@@ -1104,3 +1104,10 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetExternalGiftsFrequencyHalfYearly" = "Elke 6 maanden";
 "BudgetExternalGiftsFrequencyYearly" = "Elk jaar";
 "BudgetExternalGiftsEdit" = "Wijzigen";
+
+/*Fuzzy*/
+"BudgetTestimonialSummaryName" = "Willem:";
+"BudgetTestimonialGivingGoalName" = "Danielle:";
+"BudgetTestimonialExternalGiftsName" = "John:";
+"BudgetTestimonialYearlyOverviewName" = "Jonathan:";
+"BudgetTestimonialSummaryAction" = "Bekijk je samenvatting";
