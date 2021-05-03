@@ -31,8 +31,9 @@ class TestimonialViewController: UIViewController {
             descriptionLabel.attributedText = content.description
         }
         
-        actionButton.titleLabel?.adjustsFontSizeToFitWidth = true
         actionButton.titleLabel?.numberOfLines = 1
+        actionButton.titleLabel?.text = "BudgetTestimonialSummaryAction".localized
+        actionButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     @IBAction func closeOverlay(_ sender: Any) {
