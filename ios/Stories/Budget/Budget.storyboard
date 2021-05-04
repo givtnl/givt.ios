@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bah-Fb-fWK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bah-Fb-fWK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,6 +19,7 @@
             <objects>
                 <navigationController storyboardIdentifier="BudgetNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bah-Fb-fWK" customClass="BudgetNavigationController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aDd-BX-URm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -44,18 +45,30 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WyI-IN-h7K">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="868"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="863"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x63-aR-afc" customClass="MonthlySummary" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="144.5" y="20" width="125" height="165"/>
-                                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1vd-8O-T3w">
+                                                        <rect key="frame" x="20" y="20" width="374" height="160"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHz-1L-UH8" customClass="MonthlySummary" customModule="ios" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="125" height="160"/>
+                                                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="160" id="g6x-jo-om9"/>
+                                                                    <constraint firstAttribute="width" constant="125" id="xmK-ds-b5E"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UN1-w0-O2g">
+                                                                <rect key="frame" x="145" y="0.0" width="229" height="160"/>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            </view>
+                                                        </subviews>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="125" id="JSk-KE-T6g"/>
-                                                            <constraint firstAttribute="height" constant="165" id="ddF-g3-gAk"/>
+                                                            <constraint firstAttribute="height" constant="160" id="7jd-90-T5t"/>
                                                         </constraints>
-                                                    </view>
+                                                    </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VB2-d6-wv3" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="50" y="205" width="314" height="44"/>
+                                                        <rect key="frame" x="50" y="200" width="314" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="ZR7-AK-2Oj"/>
                                                         </constraints>
@@ -85,7 +98,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPk-5v-igI" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="269" width="374" height="224"/>
+                                                        <rect key="frame" x="20" y="264" width="374" height="224"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3DR-wi-43U" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -232,7 +245,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpN-cF-0Wb" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="508" width="374" height="185"/>
+                                                        <rect key="frame" x="20" y="503" width="374" height="185"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nNJ-DF-KkV" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -259,7 +272,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfC-9P-EC7" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="708" width="374" height="140"/>
+                                                        <rect key="frame" x="20" y="703" width="374" height="140"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IlB-hW-U0S" customClass="CardViewHeader" customModule="ios" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
@@ -291,15 +304,16 @@
                                                     <constraint firstAttribute="trailing" secondItem="VB2-d6-wv3" secondAttribute="trailing" constant="50" id="3re-9E-fSd"/>
                                                     <constraint firstItem="cfC-9P-EC7" firstAttribute="leading" secondItem="WyI-IN-h7K" secondAttribute="leading" constant="20" id="A7X-Bx-Qom"/>
                                                     <constraint firstAttribute="trailing" secondItem="vPk-5v-igI" secondAttribute="trailing" constant="20" id="B1M-h1-O0V"/>
+                                                    <constraint firstItem="VB2-d6-wv3" firstAttribute="top" secondItem="1vd-8O-T3w" secondAttribute="bottom" constant="20" id="FOF-Ii-Wcn"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1vd-8O-T3w" secondAttribute="trailing" constant="20" id="LgZ-HQ-5UH"/>
+                                                    <constraint firstItem="1vd-8O-T3w" firstAttribute="top" secondItem="WyI-IN-h7K" secondAttribute="top" constant="20" id="OSS-ay-Soi"/>
                                                     <constraint firstItem="kpN-cF-0Wb" firstAttribute="leading" secondItem="WyI-IN-h7K" secondAttribute="leading" constant="20" id="Ra9-aN-IGK"/>
                                                     <constraint firstItem="VB2-d6-wv3" firstAttribute="leading" secondItem="WyI-IN-h7K" secondAttribute="leading" constant="50" id="TkS-09-nuG"/>
                                                     <constraint firstItem="vPk-5v-igI" firstAttribute="top" secondItem="VB2-d6-wv3" secondAttribute="bottom" constant="20" id="VZx-6o-FAX"/>
                                                     <constraint firstItem="vPk-5v-igI" firstAttribute="leading" secondItem="WyI-IN-h7K" secondAttribute="leading" constant="20" id="Wrf-jX-9eb"/>
-                                                    <constraint firstItem="x63-aR-afc" firstAttribute="centerX" secondItem="WyI-IN-h7K" secondAttribute="centerX" id="aj3-fL-nyu"/>
-                                                    <constraint firstItem="x63-aR-afc" firstAttribute="top" secondItem="WyI-IN-h7K" secondAttribute="top" constant="20" id="d2c-Wj-j3Q"/>
-                                                    <constraint firstItem="VB2-d6-wv3" firstAttribute="top" secondItem="x63-aR-afc" secondAttribute="bottom" constant="20" id="dMh-Yu-DT8"/>
                                                     <constraint firstAttribute="trailing" secondItem="kpN-cF-0Wb" secondAttribute="trailing" constant="20" id="hq8-du-n5W"/>
                                                     <constraint firstAttribute="trailing" secondItem="cfC-9P-EC7" secondAttribute="trailing" constant="20" id="jDU-pt-bIU"/>
+                                                    <constraint firstItem="1vd-8O-T3w" firstAttribute="leading" secondItem="WyI-IN-h7K" secondAttribute="leading" constant="20" id="p2s-Ln-uSb"/>
                                                     <constraint firstItem="cfC-9P-EC7" firstAttribute="top" secondItem="kpN-cF-0Wb" secondAttribute="bottom" constant="15" id="pLe-lm-yIp"/>
                                                     <constraint firstAttribute="bottom" secondItem="cfC-9P-EC7" secondAttribute="bottom" constant="20" id="q4r-Cg-0Tb"/>
                                                     <constraint firstItem="kpN-cF-0Wb" firstAttribute="top" secondItem="vPk-5v-igI" secondAttribute="bottom" constant="15" id="tPb-Wq-6bM"/>
@@ -350,7 +364,6 @@
                         <outlet property="labelGivt" destination="TDQ-8I-afB" id="jKS-6V-jSu"/>
                         <outlet property="labelNotGivt" destination="goF-vp-Bzz" id="gel-2c-45h"/>
                         <outlet property="monthlyCardHeader" destination="3DR-wi-43U" id="TFc-QC-g8j"/>
-                        <outlet property="monthlySummaryTile" destination="x63-aR-afc" id="dth-hB-b54"/>
                         <outlet property="stackViewGivt" destination="ogc-tT-6Q1" id="FNV-By-FjD"/>
                         <outlet property="stackViewGivtHeight" destination="Ubp-qe-4Dd" id="qcp-ji-D2T"/>
                         <outlet property="stackViewNotGivt" destination="lQ4-2a-dpL" id="gXm-c0-xK6"/>
@@ -1022,6 +1035,9 @@
         </designable>
         <designable name="rrV-x6-BW3">
             <size key="intrinsicContentSize" width="58" height="37"/>
+        </designable>
+        <designable name="tT3-A7-Fsi">
+            <size key="intrinsicContentSize" width="50" height="34"/>
         </designable>
     </designables>
     <resources>
