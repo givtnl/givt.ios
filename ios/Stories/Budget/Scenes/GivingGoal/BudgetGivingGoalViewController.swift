@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import SVProgressHUD
 enum GivingGoalFrequency: Int, Codable {
-    case Monthly = 1
     case Yearly = 0
+    case Monthly = 1
 }
 class BudgetGivingGoalViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationItem!
@@ -34,9 +34,11 @@ class BudgetGivingGoalViewController: UIViewController {
     
     let frequencys: Array<Array<Any>> =
         [
-            [GivingGoalFrequency.Monthly, "BudgetExternalGiftsFrequencyMonthly".localized],
-            [GivingGoalFrequency.Yearly, "BudgetExternalGiftsFrequencyYearly".localized]
+            [GivingGoalFrequency.Yearly, "BudgetExternalGiftsFrequencyYearly".localized],
+            [GivingGoalFrequency.Monthly, "BudgetExternalGiftsFrequencyMonthly".localized]
         ]
+    
+    var givingGoal: GivingGoal? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,9 @@ class BudgetGivingGoalViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: self.view.window)
         
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        
+        givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
