@@ -43,8 +43,8 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     var originalHeightsSet = false
     var originalStackviewGivtHeight: CGFloat? = nil
     var originalStackviewNotGivtHeight: CGFloat? = nil
-    
-    var hasGivingGoalSetup = false
+        
+    var givingGoal: GivingGoal? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,9 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             originalHeightsSet = true
         }
         
-        if hasGivingGoalSetup {
+        setupGivingGoalCard()
+        
+        if givingGoal != nil {
             givingGoalSetupStackItem.isHidden = true
             givingGoalStackItem.isHidden = false
             remainingGivingGoalStackItem.isHidden = false
@@ -72,7 +74,6 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             remainingGivingGoalStackItem.isHidden = true
         }
         
-        setupGivingGoalCard()
     }
     override func viewDidAppear(_ animated: Bool) {
         setupCollectGroupsCard()

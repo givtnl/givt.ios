@@ -53,5 +53,7 @@ extension BudgetOverviewViewController {
         givingGoalViewEditLabel.attributedText = underlineAttributedString
         
         givingGoalSetupViewLabel.attributedText = createInfoText(bold: "Bewust geven?", normal: "Stel een streefbedrag in om jezelf te motiveren.")
+        
+        givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
     }
 }

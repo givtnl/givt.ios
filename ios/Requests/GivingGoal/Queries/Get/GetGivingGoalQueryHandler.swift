@@ -13,13 +13,13 @@ class GetGivingGoalQueryHandler: RequestHandlerProtocol {
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         client.get(url: "/giving-goal", data: [:]) { (response) in
-            var responseModel: GivingGoal? = nil
+            var responseModel: GetGivingGoalResult? = nil
             
             if let response = response, response.isSuccess {
                 if let body = response.text {
                     do {
                         let decoder = JSONDecoder()
-                        responseModel = try decoder.decode(GivingGoal.self, from: Data(body.utf8))
+                        responseModel = try decoder.decode(GetGivingGoalResult.self, from: Data(body.utf8))
                     } catch {
                         print("\(error)")
                     }
@@ -34,4 +34,8 @@ class GetGivingGoalQueryHandler: RequestHandlerProtocol {
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
         request is GetGivingGoalQuery
     }
+}
+
+struct GetGivingGoalResult: Decodable {
+    var result: GivingGoal
 }
