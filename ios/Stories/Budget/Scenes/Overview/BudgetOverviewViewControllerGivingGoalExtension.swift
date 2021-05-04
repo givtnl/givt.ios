@@ -35,10 +35,10 @@ extension BudgetOverviewViewController {
     }
     
     @objc func givingGoalEdit(sender: UITapGestureRecognizer) {
-        print("Open edit screen")
+        try? Mediater.shared.send(request: OpenGivingGoalRoute(), withContext: self)
     }
     @objc func givingGoalSetup(sender: UITapGestureRecognizer) {
-        print("Open setup screen")
+        try? Mediater.shared.send(request: OpenGivingGoalRoute(), withContext: self)
     }
     func setupGivingGoalCard() {
         // add onclick to adjust giving goal

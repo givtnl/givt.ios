@@ -44,7 +44,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     var originalStackviewGivtHeight: CGFloat? = nil
     var originalStackviewNotGivtHeight: CGFloat? = nil
     
-    var hasGivingGoalSetup = true
+    var hasGivingGoalSetup = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
