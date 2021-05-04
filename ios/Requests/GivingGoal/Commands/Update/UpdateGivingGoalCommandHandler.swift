@@ -16,7 +16,7 @@ class UpdateGivingGoalCommandHandler: RequestHandlerProtocol {
         
         let body = try JSONEncoder().encode(command.givingGoal)
         
-        client.patch(url: "/giving-goal", data: body) { response in
+        client.put(url: "/giving-goal", data: body) { response in
             if let response = response, response.isSuccess {
                 try? completion(ResponseModel(result: true) as! R.TResponse)
             } else {

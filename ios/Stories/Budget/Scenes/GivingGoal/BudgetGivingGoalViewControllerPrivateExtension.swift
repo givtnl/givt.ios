@@ -14,8 +14,17 @@ private extension BudgetGivingGoalViewController {
     }
     
     @IBAction func buttonSave(_ sender: Any) {
-        print("Save")
+        guard let amount = amountViewTextField.text?.replacingOccurrences(of: ",", with: ".").doubleValue else { return }
+        guard let frequency = GivingGoalFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0)) else { return }
+        
+        let command = CreateGivingGoalCommand(givingGoal: GivingGoal(amount: amount, periodicity: frequency.rawValue))
+        let response: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
+        
+        if response.result {
+            try? Mediater.shared.send(request: GoBackOneControllerRoute())
+        }
     }
+    
     @IBAction func amountEditingEnded(_ sender: Any) {
         checkFields()
     }
