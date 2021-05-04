@@ -1,0 +1,57 @@
+//
+//  BudgetOverviewViewControllerGivingGoalExtension.swift
+//  ios
+//
+//  Created by Mike Pattyn on 04/05/2021.
+//  Copyright © 2021 Givt. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+extension BudgetOverviewViewController {
+    func roundCorners(view: UIView) {
+        if #available(iOS 11.0, *) {
+            view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            view.layer.cornerRadius = 6
+            view.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+            view.layer.borderWidth = 1
+            view.layer.masksToBounds = true
+        } else {
+            // Fallback on earlier versions
+            view.roundCorners(corners: [.allCorners], radius: 6)
+        }
+    }
+    func createInfoText(bold: String, normal: String) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString()
+            .bold(bold.localized + "\n", font: UIFont(name: "Avenir-Black", size: 12)!)
+            .normal(normal.localized, font: UIFont(name: "Avenir-Light", size: 12)!)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 1
+        paragraphStyle.alignment = .center
+        
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        return attributedString
+    }
+    
+    @objc func givingGoalEdit(sender: UITapGestureRecognizer) {
+        print("Open edit screen")
+    }
+    @objc func givingGoalSetup(sender: UITapGestureRecognizer) {
+        print("Open setup screen")
+    }
+    func setupGivingGoalCard() {
+        // add onclick to adjust giving goal
+        givingGoalViewEditLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalEdit)))
+        givingGoalSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalSetup)))
+        roundCorners(view: givingGoalView)
+        roundCorners(view: remainingGivingGoalView)
+        roundCorners(view: givingGoalSetupView)
+        
+        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue]
+        let underlineAttributedString = NSAttributedString(string: "Streefbedrag aanpassen", attributes: underlineAttribute)
+        givingGoalViewEditLabel.attributedText = underlineAttributedString
+        
+        givingGoalSetupViewLabel.attributedText = createInfoText(bold: "Bewust geven?", normal: "Stel een streefbedrag in om jezelf te motiveren.")
+    }
+}
