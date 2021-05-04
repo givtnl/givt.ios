@@ -9,5 +9,5 @@
 import Foundation
 
 class GetGivingGoalQuery: RequestProtocol {
-    typealias TResponse = GivingGoal
+    typealias TResponse = GetGivingGoalResult
 }
