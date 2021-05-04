@@ -37,8 +37,6 @@ extension BudgetGivingGoalViewController {
         periodViewTextField.inputView = frequencyPicker
         periodViewTextField.text = frequencys[0][1] as? String
         periodViewTextField.tintColor = .clear
-
-        
     }
     private func createInfoText(bold: String, normal: String) -> NSMutableAttributedString {
         return NSMutableAttributedString()
@@ -82,5 +80,21 @@ extension BudgetGivingGoalViewController {
     
     @objc private func toolbarDoneButtonTapped(_ sender: UIBarButtonItem){
         self.view.endEditing(true)
+    }
+    
+    func checkFields() {
+        var isValid = false
+        
+        if let amount: Double = amountViewTextField.text?.replacingOccurrences(of: ",", with: ".").doubleValue {
+            if amount >= 1 && amount <= 99999 {
+                isValid = true
+            }
+        }
+        
+        if !isValid {
+            amountView.borderColor = .red
+        } else {
+            amountView.borderColor = ColorHelper.UITextFieldBorderColor
+        }
     }
 }

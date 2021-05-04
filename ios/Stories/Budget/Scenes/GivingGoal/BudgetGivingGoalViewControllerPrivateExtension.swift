@@ -16,4 +16,7 @@ private extension BudgetGivingGoalViewController {
     @IBAction func buttonSave(_ sender: Any) {
         print("Save")
     }
+    @IBAction func amountEditingEnded(_ sender: Any) {
+        checkFields()
+    }
 }
