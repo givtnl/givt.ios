@@ -54,6 +54,7 @@
 		32207E942641601500A265A4 /* OpenGivingGoalRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E932641601500A265A4 /* OpenGivingGoalRouteHandler.swift */; };
 		32207E96264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E95264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift */; };
 		32207E982641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E972641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift */; };
+		32207E9A2641794F00A265A4 /* BudgetGivingGoalViewControllerPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E992641794F00A265A4 /* BudgetGivingGoalViewControllerPickerExtension.swift */; };
 		3220B8AE25E7A98F0086577E /* MonthlyCardViewLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */; };
 		3220B8B025E7A9AB0086577E /* MonthlyCardViewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */; };
 		3220B8B325E7BCFB0086577E /* MonthlySummaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */; };
@@ -526,6 +527,7 @@
 		32207E932641601500A265A4 /* OpenGivingGoalRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGivingGoalRouteHandler.swift; sourceTree = "<group>"; };
 		32207E95264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewControllerExtension.swift; sourceTree = "<group>"; };
 		32207E972641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
+		32207E992641794F00A265A4 /* BudgetGivingGoalViewControllerPickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewControllerPickerExtension.swift; sourceTree = "<group>"; };
 		3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlyCardViewLine.xib; sourceTree = "<group>"; };
 		3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCardViewLine.swift; sourceTree = "<group>"; };
 		3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryKey.swift; sourceTree = "<group>"; };
@@ -1128,6 +1130,7 @@
 				32207E8E26415F1A00A265A4 /* BudgetGivingGoalViewController.swift */,
 				32207E95264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift */,
 				32207E972641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift */,
+				32207E992641794F00A265A4 /* BudgetGivingGoalViewControllerPickerExtension.swift */,
 			);
 			path = GivingGoal;
 			sourceTree = "<group>";
@@ -3232,6 +3235,7 @@
 				323F170725ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift in Sources */,
 				3260CF21254ABC9D00BA6BD7 /* OpenSafariRouteInputModel.swift in Sources */,
 				323F16ED25EAC12A00B12049 /* CALayerExtension.swift in Sources */,
+				32207E9A2641794F00A265A4 /* BudgetGivingGoalViewControllerPickerExtension.swift in Sources */,
 				A478D1D92512C3AE00251AFE /* DismissPushNotificationViewRoute.swift in Sources */,
 				32111D7025E5570100DB775C /* MonthlySummaryDetailModel.swift in Sources */,
 				32F21E992548526B003E46D5 /* InitialPageViewController.swift in Sources */,
