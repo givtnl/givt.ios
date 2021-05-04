@@ -193,6 +193,15 @@
 		32F528DA25EAA84F0073C243 /* BudgetExternalGivtsInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F528D925EAA84F0073C243 /* BudgetExternalGivtsInfoView.xib */; };
 		32F528DD25EAB0720073C243 /* BudgetExternalGivtsControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F528DC25EAB0720073C243 /* BudgetExternalGivtsControlPanel.swift */; };
 		32F528DF25EAB0870073C243 /* BudgetExternalGivtsControlPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F528DE25EAB0870073C243 /* BudgetExternalGivtsControlPanel.xib */; };
+		32FCF678264180A10094166C /* CreateGivingGoalCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF677264180A10094166C /* CreateGivingGoalCommand.swift */; };
+		32FCF67A264180AD0094166C /* CreateGivingGoalCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF679264180AD0094166C /* CreateGivingGoalCommandHandler.swift */; };
+		32FCF67D264180D70094166C /* GetGivingGoalQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF67C264180D70094166C /* GetGivingGoalQuery.swift */; };
+		32FCF67F264180E40094166C /* GetGivingGoalQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF67E264180E40094166C /* GetGivingGoalQueryHandler.swift */; };
+		32FCF684264181180094166C /* UpdateGivingGoalCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF683264181180094166C /* UpdateGivingGoalCommand.swift */; };
+		32FCF686264181250094166C /* UpdateGivingGoalCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF685264181250094166C /* UpdateGivingGoalCommandHandler.swift */; };
+		32FCF6892641813B0094166C /* DeleteGivingGoalCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF6882641813B0094166C /* DeleteGivingGoalCommand.swift */; };
+		32FCF68B264181490094166C /* DeleteGivingGoalCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF68A264181480094166C /* DeleteGivingGoalCommandHandler.swift */; };
+		32FCF68E264182C60094166C /* GivingGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF68D264182C60094166C /* GivingGoal.swift */; };
 		A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C296222AA5EF70098442C /* GiftAidViewController.swift */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D32512386600251AFE /* GoToPushNotificationViewRoute.swift */; };
@@ -665,6 +674,15 @@
 		32F528D925EAA84F0073C243 /* BudgetExternalGivtsInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetExternalGivtsInfoView.xib; sourceTree = "<group>"; };
 		32F528DC25EAB0720073C243 /* BudgetExternalGivtsControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExternalGivtsControlPanel.swift; sourceTree = "<group>"; };
 		32F528DE25EAB0870073C243 /* BudgetExternalGivtsControlPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetExternalGivtsControlPanel.xib; sourceTree = "<group>"; };
+		32FCF677264180A10094166C /* CreateGivingGoalCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGivingGoalCommand.swift; sourceTree = "<group>"; };
+		32FCF679264180AD0094166C /* CreateGivingGoalCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGivingGoalCommandHandler.swift; sourceTree = "<group>"; };
+		32FCF67C264180D70094166C /* GetGivingGoalQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGivingGoalQuery.swift; sourceTree = "<group>"; };
+		32FCF67E264180E40094166C /* GetGivingGoalQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGivingGoalQueryHandler.swift; sourceTree = "<group>"; };
+		32FCF683264181180094166C /* UpdateGivingGoalCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGivingGoalCommand.swift; sourceTree = "<group>"; };
+		32FCF685264181250094166C /* UpdateGivingGoalCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGivingGoalCommandHandler.swift; sourceTree = "<group>"; };
+		32FCF6882641813B0094166C /* DeleteGivingGoalCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGivingGoalCommand.swift; sourceTree = "<group>"; };
+		32FCF68A264181480094166C /* DeleteGivingGoalCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGivingGoalCommandHandler.swift; sourceTree = "<group>"; };
+		32FCF68D264182C60094166C /* GivingGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GivingGoal.swift; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A40C296222AA5EF70098442C /* GiftAidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidViewController.swift; sourceTree = "<group>"; };
@@ -1820,6 +1838,78 @@
 			path = ControlPanel;
 			sourceTree = "<group>";
 		};
+		32FCF675264180820094166C /* GivingGoal */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF68C264182BB0094166C /* Models */,
+				32FCF680264180EE0094166C /* Queries */,
+				32FCF681264180F60094166C /* Commands */,
+			);
+			path = GivingGoal;
+			sourceTree = "<group>";
+		};
+		32FCF6762641808A0094166C /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF677264180A10094166C /* CreateGivingGoalCommand.swift */,
+				32FCF679264180AD0094166C /* CreateGivingGoalCommandHandler.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		32FCF67B264180BC0094166C /* Get */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF67C264180D70094166C /* GetGivingGoalQuery.swift */,
+				32FCF67E264180E40094166C /* GetGivingGoalQueryHandler.swift */,
+			);
+			path = Get;
+			sourceTree = "<group>";
+		};
+		32FCF680264180EE0094166C /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF67B264180BC0094166C /* Get */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		32FCF681264180F60094166C /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF6762641808A0094166C /* Create */,
+				32FCF682264181090094166C /* Update */,
+				32FCF6872641812F0094166C /* Delete */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		32FCF682264181090094166C /* Update */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF683264181180094166C /* UpdateGivingGoalCommand.swift */,
+				32FCF685264181250094166C /* UpdateGivingGoalCommandHandler.swift */,
+			);
+			path = Update;
+			sourceTree = "<group>";
+		};
+		32FCF6872641812F0094166C /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF6882641813B0094166C /* DeleteGivingGoalCommand.swift */,
+				32FCF68A264181480094166C /* DeleteGivingGoalCommandHandler.swift */,
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
+		32FCF68C264182BB0094166C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF68D264182C60094166C /* GivingGoal.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4B950123D45CD9CD856C736B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -2681,6 +2771,7 @@
 		FBC185A424C0CD0B001A4C6B /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				32FCF675264180820094166C /* GivingGoal */,
 				329C3E7525F210B90037D750 /* ExternalDonations */,
 				FBC185A524C0CD11001A4C6B /* CollectGroups */,
 				FB87300724C818FA005FF355 /* Donations */,
@@ -3079,8 +3170,10 @@
 			files = (
 				3260CF37254ACFE700BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRouteHandler.swift in Sources */,
 				322400B9257E5EF4007FB046 /* GetCollectGroupsQueryPreProcessor.swift in Sources */,
+				32FCF68B264181490094166C /* DeleteGivingGoalCommandHandler.swift in Sources */,
 				FBFAF48225669EFE0012E4A6 /* DonationDetailModel.swift in Sources */,
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
+				32FCF6892641813B0094166C /* DeleteGivingGoalCommand.swift in Sources */,
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
 				A478D1D62512387400251AFE /* GoToPushNotificationViewRouteHandler.swift in Sources */,
 				3260CF0D254A313E00BA6BD7 /* DiscoverOrAmountSetupRecurringDonationViewController.swift in Sources */,
@@ -3153,6 +3246,7 @@
 				326B7E7D260242AF000A6239 /* RecurringDonationTurnsOverviewControllerTableExtension.swift in Sources */,
 				327C5B7E2506D8680064BBC4 /* CancelRecurringDonationCommand.swift in Sources */,
 				3260CF09254A2EC700BA6BD7 /* BackToMainViewRouteHandler.swift in Sources */,
+				32FCF68E264182C60094166C /* GivingGoal.swift in Sources */,
 				D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */,
 				D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */,
 				D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */,
@@ -3196,6 +3290,7 @@
 				32810EF725DF12DC004E305C /* MonthlyCardViewBody.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
 				D748F6002063D4A500B25BC2 /* Status.swift in Sources */,
+				32FCF67D264180D70094166C /* GetGivingGoalQuery.swift in Sources */,
 				323F16F625EBB87900B12049 /* BudgetExternalGivtsViewControllerPickerExtension.swift in Sources */,
 				D7DD79A620A19E2500047CA7 /* LocationService.swift in Sources */,
 				FBC185C724C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift in Sources */,
@@ -3266,6 +3361,7 @@
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				FBC1859124C06616001A4C6B /* CollectGroupDetailModel.swift in Sources */,
 				32DDFB3625F7F52900E25AF2 /* BindableGestureRecognizer.swift in Sources */,
+				32FCF686264181250094166C /* UpdateGivingGoalCommandHandler.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				3260CF35254ACFD800BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRoute.swift in Sources */,
 				3260CF17254AB70700BA6BD7 /* DiscoverOrAmountSetupSingleDonationRoute.swift in Sources */,
@@ -3304,6 +3400,7 @@
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D748F5FC2061425400B25BC2 /* HistoryTableViewCell.swift in Sources */,
 				3260CF10254A31C700BA6BD7 /* DiscoverOrAmountOpenSetupRecurringDonationRoute.swift in Sources */,
+				32FCF67A264180AD0094166C /* CreateGivingGoalCommandHandler.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
 				32DDFB3425F761B100E25AF2 /* OverlayHostViewControllerExtension.swift in Sources */,
 				32182DFD260A48E80007CF7D /* UpdateExternalDonationBody.swift in Sources */,
@@ -3323,6 +3420,7 @@
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
 				32182DFF2611E6D10007CF7D /* BudgetListViewControllerPrivateExtension.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
+				32FCF684264181180094166C /* UpdateGivingGoalCommand.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				3216ED922542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift in Sources */,
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
@@ -3340,6 +3438,7 @@
 				DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
+				32FCF678264180A10094166C /* CreateGivingGoalCommand.swift in Sources */,
 				DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */,
 				3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */,
 				D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */,
@@ -3423,6 +3522,7 @@
 				D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */,
 				D77511BB1F711231004F91F6 /* DateExtensions.swift in Sources */,
 				323F170925ED520800B12049 /* BudgetOverviewViewControllerPrivateExtension.swift in Sources */,
+				32FCF67F264180E40094166C /* GetGivingGoalQueryHandler.swift in Sources */,
 				D770E5341FB097FA0079D253 /* ManualOrganisationView.swift in Sources */,
 				FB8187B221C29C7C0084C23E /* NewFeaturePopDownView.swift in Sources */,
 				D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */,
