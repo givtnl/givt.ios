@@ -48,6 +48,7 @@
 		32182E012611E70E0007CF7D /* BudgetListViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E002611E70E0007CF7D /* BudgetListViewControllerExtension.swift */; };
 		32182E04261211560007CF7D /* GetExternalMonthlySummaryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E03261211550007CF7D /* GetExternalMonthlySummaryQuery.swift */; };
 		32182E06261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E05261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift */; };
+		32207E8C26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E8B26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift */; };
 		3220B8AE25E7A98F0086577E /* MonthlyCardViewLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */; };
 		3220B8B025E7A9AB0086577E /* MonthlyCardViewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */; };
 		3220B8B325E7BCFB0086577E /* MonthlySummaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */; };
@@ -514,6 +515,7 @@
 		32182E002611E70E0007CF7D /* BudgetListViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewControllerExtension.swift; sourceTree = "<group>"; };
 		32182E03261211550007CF7D /* GetExternalMonthlySummaryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalMonthlySummaryQuery.swift; sourceTree = "<group>"; };
 		32182E05261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalMonthlySummaryQueryHandler.swift; sourceTree = "<group>"; };
+		32207E8B26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerGivingGoalExtension.swift; sourceTree = "<group>"; };
 		3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlyCardViewLine.xib; sourceTree = "<group>"; };
 		3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCardViewLine.swift; sourceTree = "<group>"; };
 		3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryKey.swift; sourceTree = "<group>"; };
@@ -1120,6 +1122,7 @@
 				323F170425ED4F6400B12049 /* BudgetOverviewViewControllerMonthlyChartExtension.swift */,
 				323F170625ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift */,
 				3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */,
+				32207E8B26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -3323,6 +3326,7 @@
 				D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */,
 				FBC1858B24C0651D001A4C6B /* Mediater.swift in Sources */,
 				329C3E8F25F21F470037D750 /* DeleteExternalDonationCommandHandler.swift in Sources */,
+				32207E8C26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift in Sources */,
 				D796043620C00607005B609B /* BeaconService.swift in Sources */,
 				DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */,
 				FB872FF524C6EC58005FF355 /* BackToMainRouteHandler.swift in Sources */,

@@ -28,24 +28,51 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var yearViewHeader: CardViewHeader!
     @IBOutlet weak var yearViewBody: YearViewBody!
     @IBOutlet weak var yearViewBodyHeight: NSLayoutConstraint!
+
+    @IBOutlet weak var givingGoalView: UIView!
+    @IBOutlet weak var givingGoalViewEditLabel: UILabel!
+    @IBOutlet weak var givingGoalStackItem: BackgroundShadowView!
+    
+    @IBOutlet weak var remainingGivingGoalView: UIView!
+    @IBOutlet weak var remainingGivingGoalStackItem: BackgroundShadowView!
+    
+    @IBOutlet weak var givingGoalSetupView: UIView!
+    @IBOutlet weak var givingGoalSetupViewLabel: UILabel!
+    @IBOutlet weak var givingGoalSetupStackItem: BackgroundShadowView!
     
     var originalHeightsSet = false
     var originalStackviewGivtHeight: CGFloat? = nil
     var originalStackviewNotGivtHeight: CGFloat? = nil
     
+    var hasGivingGoalSetup = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
         }
         setupTerms()
+        
         if !originalHeightsSet {
             originalStackviewGivtHeight = stackViewGivtHeight.constant
             originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
             originalHeightsSet = true
         }
+        
+        if hasGivingGoalSetup {
+            givingGoalSetupStackItem.isHidden = true
+            givingGoalStackItem.isHidden = false
+            remainingGivingGoalStackItem.isHidden = false
+        } else {
+            givingGoalSetupStackItem.isHidden = false
+            givingGoalStackItem.isHidden = true
+            remainingGivingGoalStackItem.isHidden = true
+        }
+        
+        setupGivingGoalCard()
     }
     override func viewDidAppear(_ animated: Bool) {
         setupCollectGroupsCard()
@@ -54,4 +81,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         SVProgressHUD.dismiss()
         loadTestimonial()
     }
+    
+    
+   
 }
