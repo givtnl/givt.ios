@@ -17,6 +17,7 @@ extension BudgetGivingGoalViewController {
         periodTitelLabel.text = "Periode"
     }
     func setupUI() {
+        
         amountViewLabelCurrency.layer.addBorder(edge: .right, color: ColorHelper.UITextFieldBorderColor, thickness: 0.5)
         amountView.borderColor = ColorHelper.UITextFieldBorderColor
         amountView.borderWidth = 0.5
@@ -37,6 +38,11 @@ extension BudgetGivingGoalViewController {
         periodViewTextField.inputView = frequencyPicker
         periodViewTextField.text = frequencys[0][1] as? String
         periodViewTextField.tintColor = .clear
+        
+        if let goal = givingGoal {
+            amountViewTextField.text = goal.amount.getFormattedWithoutCurrency(decimals: 2)
+            periodViewTextField.text = frequencys[goal.periodicity][1] as? String
+        }
     }
     private func createInfoText(bold: String, normal: String) -> NSMutableAttributedString {
         return NSMutableAttributedString()

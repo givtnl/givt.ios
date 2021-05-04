@@ -13,7 +13,7 @@ class GetGivingGoalQueryHandler: RequestHandlerProtocol {
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         client.get(url: "/giving-goal", data: [:]) { (response) in
-            var responseModel: GetGivingGoalResult? = nil
+            var responseModel: GetGivingGoalResult = GetGivingGoalResult(result: nil)
             
             if let response = response, response.isSuccess {
                 if let body = response.text {
@@ -26,7 +26,7 @@ class GetGivingGoalQueryHandler: RequestHandlerProtocol {
                     try? completion(responseModel as! R.TResponse)
                 }
             } else {
-                try? completion(responseModel as! R.TResponse)
+                try? completion(GetGivingGoalResult(result: nil) as! R.TResponse)
             }
         }
     }
@@ -37,5 +37,5 @@ class GetGivingGoalQueryHandler: RequestHandlerProtocol {
 }
 
 struct GetGivingGoalResult: Decodable {
-    var result: GivingGoal
+    var result: GivingGoal?
 }
