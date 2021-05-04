@@ -21,7 +21,7 @@ private extension BudgetGivingGoalViewController {
         let response: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
         
         if response.result {
-            try? Mediater.shared.send(request: GoBackOneControllerRoute())
+            try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
         }
     }
     
