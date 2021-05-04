@@ -16,12 +16,16 @@ class UpdateGivingGoalCommandHandler: RequestHandlerProtocol {
         
         let body = try JSONEncoder().encode(command.givingGoal)
         
-        client.put(url: "/giving-goal", data: body) { response in
-            if let response = response, response.isSuccess {
-                try? completion(ResponseModel(result: true) as! R.TResponse)
-            } else {
-                try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
+        do {
+            try client.put(url: "/giving-goal", data: body) { response in
+                if let response = response, response.isSuccess {
+                    try? completion(ResponseModel(result: true) as! R.TResponse)
+                } else {
+                    try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
+                }
             }
+        } catch {
+            try? completion(ResponseModel(result: false, error: .unknown) as! R.TResponse)
         }
     }
     
