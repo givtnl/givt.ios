@@ -468,9 +468,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: GetExternalMonthlySummaryQueryHandler())
         
         //-- Giving Goal CRUD
-        Mediater.shared.registerHandler(handler: CreateGivingGoalCommandHandler())
+        Mediater.shared.registerHandler(handler: CreateGivingGoalCommandHandler()) //-- Can use as an update aswell
         Mediater.shared.registerHandler(handler: GetGivingGoalQueryHandler())
-        Mediater.shared.registerHandler(handler: UpdateGivingGoalCommandHandler())
         Mediater.shared.registerHandler(handler: DeleteGivingGoalCommandHandler())
     }
 }

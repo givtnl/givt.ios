@@ -197,8 +197,6 @@
 		32FCF67A264180AD0094166C /* CreateGivingGoalCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF679264180AD0094166C /* CreateGivingGoalCommandHandler.swift */; };
 		32FCF67D264180D70094166C /* GetGivingGoalQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF67C264180D70094166C /* GetGivingGoalQuery.swift */; };
 		32FCF67F264180E40094166C /* GetGivingGoalQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF67E264180E40094166C /* GetGivingGoalQueryHandler.swift */; };
-		32FCF684264181180094166C /* UpdateGivingGoalCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF683264181180094166C /* UpdateGivingGoalCommand.swift */; };
-		32FCF686264181250094166C /* UpdateGivingGoalCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF685264181250094166C /* UpdateGivingGoalCommandHandler.swift */; };
 		32FCF6892641813B0094166C /* DeleteGivingGoalCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF6882641813B0094166C /* DeleteGivingGoalCommand.swift */; };
 		32FCF68B264181490094166C /* DeleteGivingGoalCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF68A264181480094166C /* DeleteGivingGoalCommandHandler.swift */; };
 		32FCF68E264182C60094166C /* GivingGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF68D264182C60094166C /* GivingGoal.swift */; };
@@ -678,8 +676,6 @@
 		32FCF679264180AD0094166C /* CreateGivingGoalCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGivingGoalCommandHandler.swift; sourceTree = "<group>"; };
 		32FCF67C264180D70094166C /* GetGivingGoalQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGivingGoalQuery.swift; sourceTree = "<group>"; };
 		32FCF67E264180E40094166C /* GetGivingGoalQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGivingGoalQueryHandler.swift; sourceTree = "<group>"; };
-		32FCF683264181180094166C /* UpdateGivingGoalCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGivingGoalCommand.swift; sourceTree = "<group>"; };
-		32FCF685264181250094166C /* UpdateGivingGoalCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGivingGoalCommandHandler.swift; sourceTree = "<group>"; };
 		32FCF6882641813B0094166C /* DeleteGivingGoalCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGivingGoalCommand.swift; sourceTree = "<group>"; };
 		32FCF68A264181480094166C /* DeleteGivingGoalCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGivingGoalCommandHandler.swift; sourceTree = "<group>"; };
 		32FCF68D264182C60094166C /* GivingGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GivingGoal.swift; sourceTree = "<group>"; };
@@ -1878,19 +1874,9 @@
 			isa = PBXGroup;
 			children = (
 				32FCF6762641808A0094166C /* Create */,
-				32FCF682264181090094166C /* Update */,
 				32FCF6872641812F0094166C /* Delete */,
 			);
 			path = Commands;
-			sourceTree = "<group>";
-		};
-		32FCF682264181090094166C /* Update */ = {
-			isa = PBXGroup;
-			children = (
-				32FCF683264181180094166C /* UpdateGivingGoalCommand.swift */,
-				32FCF685264181250094166C /* UpdateGivingGoalCommandHandler.swift */,
-			);
-			path = Update;
 			sourceTree = "<group>";
 		};
 		32FCF6872641812F0094166C /* Delete */ = {
@@ -3361,7 +3347,6 @@
 				D7D6FA6E1F7BE423008A5604 /* ValidationHelper.swift in Sources */,
 				FBC1859124C06616001A4C6B /* CollectGroupDetailModel.swift in Sources */,
 				32DDFB3625F7F52900E25AF2 /* BindableGestureRecognizer.swift in Sources */,
-				32FCF686264181250094166C /* UpdateGivingGoalCommandHandler.swift in Sources */,
 				D75B2BCF1FCEADE8000B7968 /* APIClient.swift in Sources */,
 				3260CF35254ACFD800BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRoute.swift in Sources */,
 				3260CF17254AB70700BA6BD7 /* DiscoverOrAmountSetupSingleDonationRoute.swift in Sources */,
@@ -3420,7 +3405,6 @@
 				D782F2E41F7D331B00348D7A /* TermsViewController.swift in Sources */,
 				32182DFF2611E6D10007CF7D /* BudgetListViewControllerPrivateExtension.swift in Sources */,
 				D782F3081F7D8CFB00348D7A /* FinalRegistrationViewController.swift in Sources */,
-				32FCF684264181180094166C /* UpdateGivingGoalCommand.swift in Sources */,
 				D751419A1F9799750016B71F /* FirstUseViewController.swift in Sources */,
 				3216ED922542E66900B965A2 /* SetupRecurringDonationOverviewViewControllerExtension.swift in Sources */,
 				279672B52264CF6D0092464A /* CelebrationQueueViewController.swift in Sources */,
