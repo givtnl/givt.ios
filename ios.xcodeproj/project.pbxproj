@@ -49,6 +49,11 @@
 		32182E04261211560007CF7D /* GetExternalMonthlySummaryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E03261211550007CF7D /* GetExternalMonthlySummaryQuery.swift */; };
 		32182E06261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E05261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift */; };
 		32207E8C26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E8B26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift */; };
+		32207E8F26415F1A00A265A4 /* BudgetGivingGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E8E26415F1A00A265A4 /* BudgetGivingGoalViewController.swift */; };
+		32207E9226415FF900A265A4 /* OpenGivingGoalRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E9126415FF900A265A4 /* OpenGivingGoalRoute.swift */; };
+		32207E942641601500A265A4 /* OpenGivingGoalRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E932641601500A265A4 /* OpenGivingGoalRouteHandler.swift */; };
+		32207E96264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E95264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift */; };
+		32207E982641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E972641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift */; };
 		3220B8AE25E7A98F0086577E /* MonthlyCardViewLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */; };
 		3220B8B025E7A9AB0086577E /* MonthlyCardViewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */; };
 		3220B8B325E7BCFB0086577E /* MonthlySummaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */; };
@@ -516,6 +521,11 @@
 		32182E03261211550007CF7D /* GetExternalMonthlySummaryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalMonthlySummaryQuery.swift; sourceTree = "<group>"; };
 		32182E05261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalMonthlySummaryQueryHandler.swift; sourceTree = "<group>"; };
 		32207E8B26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerGivingGoalExtension.swift; sourceTree = "<group>"; };
+		32207E8E26415F1A00A265A4 /* BudgetGivingGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewController.swift; sourceTree = "<group>"; };
+		32207E9126415FF900A265A4 /* OpenGivingGoalRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGivingGoalRoute.swift; sourceTree = "<group>"; };
+		32207E932641601500A265A4 /* OpenGivingGoalRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGivingGoalRouteHandler.swift; sourceTree = "<group>"; };
+		32207E95264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewControllerExtension.swift; sourceTree = "<group>"; };
+		32207E972641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
 		3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlyCardViewLine.xib; sourceTree = "<group>"; };
 		3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCardViewLine.swift; sourceTree = "<group>"; };
 		3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryKey.swift; sourceTree = "<group>"; };
@@ -989,6 +999,7 @@
 		32111D6425E5306400DB775C /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				32207E9026415FEA00A265A4 /* OpenGivingGoal */,
 				32EEB2B5262838DA008EED9A /* OpenSummary */,
 				32F528D425EA9F160073C243 /* OpenGiveNow */,
 				32F528CF25EA9EEA0073C243 /* OpenExternalGivts */,
@@ -1042,6 +1053,7 @@
 		3215976E25D2FADB0065C80A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				32207E8D26415F0600A265A4 /* GivingGoal */,
 				32EEB2BA26283F0E008EED9A /* Testimonial */,
 				3220B8A625E793560086577E /* Overview */,
 				32F528CA25EA9B850073C243 /* ExternalGivt */,
@@ -1108,6 +1120,25 @@
 				32182E05261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift */,
 			);
 			path = Summary;
+			sourceTree = "<group>";
+		};
+		32207E8D26415F0600A265A4 /* GivingGoal */ = {
+			isa = PBXGroup;
+			children = (
+				32207E8E26415F1A00A265A4 /* BudgetGivingGoalViewController.swift */,
+				32207E95264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift */,
+				32207E972641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift */,
+			);
+			path = GivingGoal;
+			sourceTree = "<group>";
+		};
+		32207E9026415FEA00A265A4 /* OpenGivingGoal */ = {
+			isa = PBXGroup;
+			children = (
+				32207E9126415FF900A265A4 /* OpenGivingGoalRoute.swift */,
+				32207E932641601500A265A4 /* OpenGivingGoalRouteHandler.swift */,
+			);
+			path = OpenGivingGoal;
 			sourceTree = "<group>";
 		};
 		3220B8A625E793560086577E /* Overview */ = {
@@ -3084,6 +3115,7 @@
 				3273B8A125359C6C003DB100 /* OpenRecurringDonationOverviewListRouteHandler.swift in Sources */,
 				32C2D8222522087000832444 /* DecimalExtension.swift in Sources */,
 				FBC185A224C0AD81001A4C6B /* DestinationViewModel.swift in Sources */,
+				32207E982641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
 				3260CF2F254AC14A00BA6BD7 /* DiscoverOrAmountBackToSelectDestinationRouteHandler.swift in Sources */,
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
@@ -3183,6 +3215,7 @@
 				FB87301124C836EA005FF355 /* ExportDonationCommand.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
 				FB87302A24C881D9005FF355 /* SafariError.swift in Sources */,
+				32207E9226415FF900A265A4 /* OpenGivingGoalRoute.swift in Sources */,
 				DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */,
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
@@ -3261,6 +3294,7 @@
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
 				3260CF12254A31D700BA6BD7 /* DiscoverOrAmountOpenSetupRecurringDonationRouteHandler.swift in Sources */,
+				32207E8F26415F1A00A265A4 /* BudgetGivingGoalViewController.swift in Sources */,
 				FB872FF924C80581005FF355 /* CreateDonationCommand.swift in Sources */,
 				D7F3A84E214A6925008B65AE /* BadgeService.swift in Sources */,
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
@@ -3357,6 +3391,7 @@
 				FBC1858A24C0651D001A4C6B /* RequestProtocol.swift in Sources */,
 				FB56C5622511001E0099EC62 /* BackToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				327E34502549FDF000314BFD /* DiscoverOrAmountSelectDestinationViewController.swift in Sources */,
+				32207E942641601500A265A4 /* OpenGivingGoalRouteHandler.swift in Sources */,
 				32DBF12426271EED00E20C45 /* LocalNotificationManager.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
 				3260CF1E254ABC5200BA6BD7 /* DiscoverOrAmountOpenSafariRouteHandler.swift in Sources */,
@@ -3376,6 +3411,7 @@
 				323F16F825EBB90D00B12049 /* BudgetExternalGivtsViewControllerExtension.swift in Sources */,
 				32EEB2BE262842D5008EED9A /* TestimonialViewController.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
+				32207E96264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift in Sources */,
 				D71DA050211AE5C90084381E /* ChangeAddressViewController.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
 				32182DF4260A074A0007CF7D /* CreateExternalDonationCommandCronGenerator.swift in Sources */,
