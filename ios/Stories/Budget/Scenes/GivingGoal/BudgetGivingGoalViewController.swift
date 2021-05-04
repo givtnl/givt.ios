@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 import SVProgressHUD
-enum GivingGoalFrequency {
-    case Monthly
-    case Yearly
+enum GivingGoalFrequency: Int, Codable {
+    case Monthly = 1
+    case Yearly = 0
 }
 class BudgetGivingGoalViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationItem!
