@@ -68,7 +68,9 @@ extension BudgetOverviewViewController {
             doubleValues.append(monthlySummaryValue.Value)
         }
         
-        monthlySummaryTile.amountLabel.text = doubleValues.last!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        lastMonthTotal = doubleValues.last
+        
+        monthlySummaryTile.amountLabel.text = lastMonthTotal!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                 
         var placeholderDoubles = doubleValues
         placeholderDoubles.removeLast()
