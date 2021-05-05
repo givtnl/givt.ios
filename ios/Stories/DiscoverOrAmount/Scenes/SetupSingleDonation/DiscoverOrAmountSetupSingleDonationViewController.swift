@@ -100,7 +100,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
             }
             let amount = Decimal(string: (amountControl.amount.replacingOccurrences(of: decimalNotation, with: ".")))!
             let timeStamp = Date()
-            let cmd = CreateDonationCommand(mediumId: input.mediumId, amount: amount, userId: userId, timeStamp: timeStamp)
+            let cmd = CreateDonationCommand(mediumId: input.mediumId, amount: amount, userId: userId, timeStamp: timeStamp, collectId: "1")
             let donationId = try mediater.send(request: cmd)
             AppServices.shared.vibrate()
             if AppServices.shared.isServerReachable {
