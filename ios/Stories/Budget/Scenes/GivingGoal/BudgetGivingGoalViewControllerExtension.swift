@@ -11,11 +11,12 @@ import UIKit
 
 extension BudgetGivingGoalViewController {
     func setupTerms() {
-        navBar.title = "BudgetGivingGoalTitle"
+        navBar.title = "BudgetGivingGoalTitle".localized
         infoLabel.attributedText = createInfoText(bold: "BudgetGivingGoalInfoBold", normal: "BudgetGivingGoalInfo")
-        amountTitelLabel.text = "BudgetGivingGoalMine"
-        periodTitelLabel.text = "BudgetGivingGoalTime"
+        amountTitelLabel.text = "BudgetGivingGoalMine".localized
+        periodTitelLabel.text = "BudgetGivingGoalTime".localized
         labelRemove.attributedText = "BudgetGivingGoalRemove".localized.underlined
+        buttonSave.setTitle("Save".localized, for: .normal)
     }
     func setupUI() {
         
