@@ -25,6 +25,7 @@ class GetAllDonationsQueryHandler : RequestHandlerProtocol {
         for donation in donations {
             result.append(DonationDetailModel(objectId: donation.objectID,
                                               mediumId: donation.value(forKey: "mediumId") as! String,
+                                              collectId: donation.value(forKey: "collectId") as! String,
                                               amount: donation.value(forKey: "amount") as! Decimal,
                                               userId: UUID.init(uuidString: donation.value(forKey: "userId") as! String)!,
                                               timeStamp: donation.value(forKey: "timeStamp") as! Date))

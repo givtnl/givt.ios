@@ -15,7 +15,7 @@ class ExportDonationCommandHandler : RequestHandlerProtocol {
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
         DispatchQueue.global(qos: .userInitiated).async {
             let request = request as! ExportDonationCommand
-            let donation = Transaction(amount: request.amount, beaconId: request.mediumId, collectId: "1",
+            let donation = Transaction(amount: request.amount, beaconId: request.mediumId, collectId: request.collectId,
                                        timeStamp: request.timeStamp.toISOString(), userId: request.userId.uuidString)
             
             try? completion(self.tryGive(donation: JSONEncoder().encode(donation)) as! R.TResponse)
