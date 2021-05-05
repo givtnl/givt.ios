@@ -104,7 +104,7 @@ class DiscoverOrAmountSetupSingleDonationViewController: UIViewController, UIGes
             let donationId = try mediater.send(request: cmd)
             AppServices.shared.vibrate()
             if AppServices.shared.isServerReachable {
-                let exportCommand = ExportDonationCommand(mediumId: input.mediumId, amount: amount, userId: userId, timeStamp: timeStamp)
+                let exportCommand = ExportDonationCommand(mediumId: input.mediumId, collectId: "1", amount: amount, userId: userId, timeStamp: timeStamp)
                 try mediater.sendAsync(request: exportCommand) { isSuccessful in
                     if isSuccessful {
                         try? self.mediater.send(request: DeleteDonationCommand(objectId: donationId))
