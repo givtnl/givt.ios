@@ -12,6 +12,7 @@ import CoreData
 struct DonationDetailModel {
     var objectId: NSManagedObjectID
     var mediumId: String
+    var collectId: String
     var amount: Decimal
     var userId: UUID
     var timeStamp: Date
