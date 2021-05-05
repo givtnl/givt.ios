@@ -52,6 +52,8 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     
     @IBOutlet weak var setupGivingGoalLabel: UILabel!
     
+    var lastMonthTotal: Double? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -68,6 +70,10 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             originalHeightsSet = true
         }
         
+        setupCollectGroupsCard()
+        setupMonthsCard()
+        setupYearsCard()
+        
         setupGivingGoalCard()
         
         if givingGoal != nil {
@@ -80,6 +86,11 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
 
             }
             
+            let currentGivenPerMonth = lastMonthTotal!
+            let remainingThisMonth = (givingGoal!.amount / 12) - currentGivenPerMonth
+            
+            givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                
         } else {
             givingGoalSetupStackItem.isHidden = false
             givingGoalStackItem.isHidden = true
@@ -88,9 +99,6 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        setupCollectGroupsCard()
-        setupMonthsCard()
-        setupYearsCard()
         SVProgressHUD.dismiss()
         loadTestimonial()
     }
