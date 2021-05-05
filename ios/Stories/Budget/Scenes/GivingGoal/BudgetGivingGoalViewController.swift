@@ -30,6 +30,8 @@ class BudgetGivingGoalViewController: UIViewController {
     
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var labelRemove: UILabel!
+    
     var frequencyPicker: UIPickerView!
     
     let frequencys: Array<Array<Any>> =
@@ -58,6 +60,15 @@ class BudgetGivingGoalViewController: UIViewController {
         }
         setupTerms()
         setupUI()
+        
+        if givingGoal != nil {
+            labelRemove.superview!.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.deleteGivingGoal)))
+            labelRemove.isHidden = false
+        } else {
+            labelRemove.isHidden = true
+        }
+        
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
