@@ -178,7 +178,7 @@ final class GivtManager: NSObject {
                 shouldWait = true
                 semaGroup.enter()
                 do {
-                    try mediater.sendAsync(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
+                    try mediater.sendAsync(request: ExportDonationCommand(mediumId: donation.mediumId, collectId: donation.collectId, amount: donation.amount,
                                                                                       userId: donation.userId, timeStamp: donation.timeStamp))
                     { result in
                         if result {
@@ -198,7 +198,7 @@ final class GivtManager: NSObject {
             shouldWait = true
             semaGroup.enter()
             do {
-                try mediater.sendAsync(request: ExportDonationCommand(mediumId: element.beaconId, amount: element.amount,
+                try mediater.sendAsync(request: ExportDonationCommand(mediumId: element.beaconId, collectId: element.collectId, amount: element.amount,
                                                                       userId: UUID.init(uuidString: element.userId)!, timeStamp: element.timeStamp.toDate!))
                 { result in
                     if result {
