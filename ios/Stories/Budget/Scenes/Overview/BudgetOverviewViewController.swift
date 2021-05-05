@@ -45,6 +45,12 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     var originalStackviewNotGivtHeight: CGFloat? = nil
         
     var givingGoal: GivingGoal? = nil
+    @IBOutlet weak var givingGoalPerMonthText: UILabel!
+    @IBOutlet weak var givingGoalPerMonthInfo: UILabel!
+    @IBOutlet weak var givingGoalRemaining: UILabel!
+    @IBOutlet weak var givingGoalRemainingInfo: UILabel!
+    
+    @IBOutlet weak var setupGivingGoalLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +74,12 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             givingGoalSetupStackItem.isHidden = true
             givingGoalStackItem.isHidden = false
             remainingGivingGoalStackItem.isHidden = false
+            
+            if givingGoal!.periodicity == 0 {
+                givingGoalPerMonthText.text = (givingGoal!.amount / 12).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+
+            }
+            
         } else {
             givingGoalSetupStackItem.isHidden = false
             givingGoalStackItem.isHidden = true

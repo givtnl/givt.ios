@@ -563,6 +563,10 @@
                         <outlet property="buttonSeeMore" destination="tT3-A7-Fsi" id="uzQ-7C-ap3"/>
                         <outlet property="chartViewBody" destination="Xeh-1u-1tz" id="odR-lT-g73"/>
                         <outlet property="chartViewHeader" destination="nNJ-DF-KkV" id="EU4-z8-GX7"/>
+                        <outlet property="givingGoalPerMonthInfo" destination="7xc-WH-UDc" id="3HY-wn-4n3"/>
+                        <outlet property="givingGoalPerMonthText" destination="VcP-Bk-bX1" id="b2E-Sg-DFH"/>
+                        <outlet property="givingGoalRemaining" destination="WJ9-nP-Xxa" id="WHI-Pb-YV8"/>
+                        <outlet property="givingGoalRemainingInfo" destination="yba-5u-Wtc" id="AOs-Wv-YtE"/>
                         <outlet property="givingGoalSetupStackItem" destination="y8p-c6-6je" id="8SS-u3-JmJ"/>
                         <outlet property="givingGoalSetupView" destination="Sb4-DJ-lKd" id="eVY-uv-AMR"/>
                         <outlet property="givingGoalSetupViewLabel" destination="d23-TR-ilx" id="Rum-T8-kIM"/>
@@ -576,6 +580,7 @@
                         <outlet property="monthlySummaryTile" destination="hHz-1L-UH8" id="LIl-Oc-PeP"/>
                         <outlet property="remainingGivingGoalStackItem" destination="KeT-SQ-G9X" id="HTw-6O-6Vg"/>
                         <outlet property="remainingGivingGoalView" destination="jhe-Vc-0Rs" id="riv-BS-Ue4"/>
+                        <outlet property="setupGivingGoalLabel" destination="d23-TR-ilx" id="1ah-F2-XUV"/>
                         <outlet property="stackViewGivt" destination="ogc-tT-6Q1" id="FNV-By-FjD"/>
                         <outlet property="stackViewGivtHeight" destination="Ubp-qe-4Dd" id="qcp-ji-D2T"/>
                         <outlet property="stackViewNotGivt" destination="lQ4-2a-dpL" id="gXm-c0-xK6"/>
@@ -1228,7 +1233,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hob-ND-CQS">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="690"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="650"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s69-HH-Un8">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="299.5"/>
@@ -1396,44 +1401,68 @@
                                             <constraint firstItem="s69-HH-Un8" firstAttribute="leading" secondItem="Hob-ND-CQS" secondAttribute="leading" id="S0s-Ct-smo"/>
                                         </constraints>
                                     </scrollView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-Cg-1kQ" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="710" width="374" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="bCn-ud-i3w"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
-                                                <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                                <color key="value" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
-                                                <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.93000000000000005" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="buttonSave:" destination="dDl-4h-OqA" eventType="touchUpInside" id="YFq-ex-FRC"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rOG-7v-RqI">
+                                        <rect key="frame" x="20" y="670" width="374" height="84"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhO-JB-wGq">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdZ-Tn-U1f">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
+                                                        <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="pdZ-Tn-U1f" secondAttribute="bottom" id="3Oz-nj-kAG"/>
+                                                    <constraint firstAttribute="height" constant="40" id="SPb-eY-IFy"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pdZ-Tn-U1f" secondAttribute="trailing" id="pBP-1L-M3e"/>
+                                                    <constraint firstItem="pdZ-Tn-U1f" firstAttribute="leading" secondItem="JhO-JB-wGq" secondAttribute="leading" id="vCj-kW-p4j"/>
+                                                    <constraint firstItem="pdZ-Tn-U1f" firstAttribute="top" secondItem="JhO-JB-wGq" secondAttribute="top" id="xO8-pK-ESl"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogd-Cg-1kQ" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="40" width="374" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="bCn-ud-i3w"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="18"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
+                                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                                        <color key="value" red="0.89019607840000003" green="0.8862745098" blue="0.90588235289999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="highlightedBGColor">
+                                                        <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.93000000000000005" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="buttonSave:" destination="dDl-4h-OqA" eventType="touchUpInside" id="YFq-ex-FRC"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="rOG-7v-RqI" firstAttribute="leading" secondItem="TLf-LK-r02" secondAttribute="leading" constant="20" id="7iE-2x-BMr"/>
                                     <constraint firstItem="s69-HH-Un8" firstAttribute="width" secondItem="TLf-LK-r02" secondAttribute="width" id="Dky-Y1-IU5"/>
-                                    <constraint firstAttribute="trailing" secondItem="ogd-Cg-1kQ" secondAttribute="trailing" constant="20" id="Hxx-Vf-nHU"/>
-                                    <constraint firstItem="ogd-Cg-1kQ" firstAttribute="leading" secondItem="TLf-LK-r02" secondAttribute="leading" constant="20" id="JNq-pV-EXV"/>
-                                    <constraint firstAttribute="bottom" secondItem="ogd-Cg-1kQ" secondAttribute="bottom" constant="20" id="O72-Rv-Z7b"/>
-                                    <constraint firstItem="ogd-Cg-1kQ" firstAttribute="top" secondItem="Hob-ND-CQS" secondAttribute="bottom" constant="20" id="amj-1H-WbJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="rOG-7v-RqI" secondAttribute="bottom" constant="20" id="UyP-Vj-Orw"/>
                                     <constraint firstItem="Hob-ND-CQS" firstAttribute="leading" secondItem="TLf-LK-r02" secondAttribute="leading" id="gim-O6-oIn"/>
                                     <constraint firstItem="Hob-ND-CQS" firstAttribute="top" secondItem="TLf-LK-r02" secondAttribute="top" id="mJE-xL-lVp"/>
+                                    <constraint firstAttribute="trailing" secondItem="rOG-7v-RqI" secondAttribute="trailing" constant="20" id="sEA-6f-Exw"/>
                                     <constraint firstAttribute="trailing" secondItem="Hob-ND-CQS" secondAttribute="trailing" id="sFt-h3-5IW"/>
+                                    <constraint firstItem="rOG-7v-RqI" firstAttribute="top" secondItem="Hob-ND-CQS" secondAttribute="bottom" constant="20" id="xL0-M6-eHW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1459,9 +1488,10 @@
                         <outlet property="amountView" destination="tSP-pA-xci" id="b7j-wG-vTJ"/>
                         <outlet property="amountViewLabelCurrency" destination="yIY-wO-ajW" id="TeC-ou-u7E"/>
                         <outlet property="amountViewTextField" destination="rLR-S7-3JI" id="mb8-QA-Usz"/>
-                        <outlet property="bottomScrollViewConstraint" destination="amj-1H-WbJ" id="6eG-KW-pjg"/>
+                        <outlet property="bottomScrollViewConstraint" destination="xL0-M6-eHW" id="0hK-TG-lKz"/>
                         <outlet property="buttonSave" destination="ogd-Cg-1kQ" id="Osm-qI-sNf"/>
                         <outlet property="infoLabel" destination="XKM-Eb-wVL" id="2Qt-GW-dHZ"/>
+                        <outlet property="labelRemove" destination="pdZ-Tn-U1f" id="a5t-OA-ANY"/>
                         <outlet property="navBar" destination="olL-FQ-nlI" id="NKO-07-gc9"/>
                         <outlet property="periodTitelLabel" destination="628-Y3-TEw" id="Lxj-Ko-3sw"/>
                         <outlet property="periodView" destination="utM-V3-jEr" id="VgT-Rs-C0a"/>
@@ -1476,7 +1506,7 @@
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="29"/>
+            <size key="intrinsicContentSize" width="30" height="26"/>
         </designable>
         <designable name="FCb-Nh-ro9">
             <size key="intrinsicContentSize" width="249" height="32"/>

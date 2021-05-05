@@ -48,12 +48,6 @@ extension BudgetOverviewViewController {
         roundCorners(view: remainingGivingGoalView)
         roundCorners(view: givingGoalSetupView)
         
-        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue]
-        let underlineAttributedString = NSAttributedString(string: "Streefbedrag aanpassen", attributes: underlineAttribute)
-        givingGoalViewEditLabel.attributedText = underlineAttributedString
-        
-        givingGoalSetupViewLabel.attributedText = createInfoText(bold: "Bewust geven?", normal: "Stel een streefbedrag in om jezelf te motiveren.")
-        
         givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
     }
 }

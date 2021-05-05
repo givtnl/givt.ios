@@ -11,10 +11,11 @@ import UIKit
 
 extension BudgetGivingGoalViewController {
     func setupTerms() {
-        navBar.title = "Streefbedrag instelleuh"
-        infoLabel.attributedText = createInfoText(bold: "Stel jezelf een doel", normal: "Geef bewust. Weeg elke maand af of je geefgedrag past bij je persoonlijke ambities.")
-        amountTitelLabel.text = "Mijn streefbedrag"
-        periodTitelLabel.text = "Periode"
+        navBar.title = "BudgetGivingGoalTitle"
+        infoLabel.attributedText = createInfoText(bold: "BudgetGivingGoalInfoBold", normal: "BudgetGivingGoalInfo")
+        amountTitelLabel.text = "BudgetGivingGoalMine"
+        periodTitelLabel.text = "BudgetGivingGoalTime"
+        labelRemove.attributedText = "BudgetGivingGoalRemove".localized.underlined
     }
     func setupUI() {
         
@@ -42,6 +43,13 @@ extension BudgetGivingGoalViewController {
         if let goal = givingGoal {
             amountViewTextField.text = goal.amount.getFormattedWithoutCurrency(decimals: 2)
             periodViewTextField.text = frequencys[goal.periodicity][1] as? String
+        }
+    }
+    
+    @objc func deleteGivingGoal() {
+        let deleteResponse: ResponseModel<Bool> = try! Mediater.shared.send(request: DeleteGivingGoalCommand())
+        if deleteResponse.result {
+            try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
         }
     }
     private func createInfoText(bold: String, normal: String) -> NSMutableAttributedString {
