@@ -36,7 +36,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "PincodeSuccessfullMessage" = "Ihr Pin-Code wurde erfolgreich gespeichert.";
 "PincodeForgotten" = "Login mit E-Mail und Passwort";
 "PincodeForgottenTitle" = "Pin-Code vergessen";
-"PincodeForgottenMessage" = "Nutzen Sie Ihre E-Mail-Adresse, um sich in Ihrem Account einzuloggen. ";
+"PincodeForgottenMessage" = "Nutzen Sie Ihre E-Mail-Adresse, um sich in Ihrem Account einzuloggen.";
 "PincodeWrongPinTitle" = "Falscher Pin-Code";
 "PincodeWrongPinFirstTry" = "Erster Versuch fehlgeschlagen. Bitte versuchen Sie es noch einmal.";
 "PincodeWrongPinSecondTry" = "Zweiter Versuch fehlgeschlagen. Bitte versuchen Sie es noch einmal.";
@@ -73,10 +73,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "ShareGivtTextLong" = "Hey! Wollen Sie weiter spenden?";
 "GivtGewoonBlijvenGeven" = "Givt - Geben tut so gut";
 "UpdatesDoneTitle" = "Sind Sie bereit zum Spenden?";
-"UpdatesDoneSubtitle" = "Givt ist nun absolute up-to-date. Viel Spaß beim Geben. ";
+"UpdatesDoneSubtitle" = "Givt ist nun absolute up-to-date. Viel Spaß beim Geben.";
 "Feature_ShareTitle" = "Teile Givt!";
 "Feature_ShareSubtitle" = "Das Weiterempfehlen von Givt ist so einfach wie 1, 2, 3. Du kannst die App unten auf der Einstellungsseite teilen.";
-"AskMeLater" = "Frag mich später ";
+"AskMeLater" = "Frag mich später";
 "GiveDifferently" = "Aus der Liste auswählen";
 "Churches" = "Kirchen";
 "Stichtingen" = "Wohltätigkeitsorganisationen";
@@ -156,7 +156,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "NoInternetConnectionTitle" = "Keine Internetverbindung";
 
 /*here the English is misspelled: possbile instead of possible*/
-"ServerNotReachable" = "Leider ist es gerade nicht möglich Ihre Registrierung abzuschließen, unser Server scheint ein Problem zu haben. Können Sie es später noch einmal versuchen?\nHaben Sie diese Nachricht wiederholt bekommen? Offensichtlich sind wir uns dieses Problems nicht bewusst. Hilf uns Givt zu verbessern, indem Sie uns eine Nachricht schicken und wir werden uns sofort darum kümmern.";
+"ServerNotReachable" = "Leider ist es gerade nicht möglich Ihre Registrierung abzuschließen, unser Server scheint ein Problem zu haben. Können Sie es später noch einmal versuchen?\nHaben Sie diese Nachricht wiederholt bekommen? Offensichtlich sind wir uns dieses Problems nicht bewusst. Helfern Sie uns Givt zu verbessern, indem Sie uns eine Nachricht schicken und wir werden uns sofort darum kümmern.";
 "SendMessage" = "Nachricht senden";
 "AnswerWhyAreMyDataStored" = "Jeden Tag arbeiten wir sehr hart daran, Givt zu verbessern. Dazu verwenden wir die uns zur Verfügung stehenden Daten.\nFür die Erstellung Ihres Mandates benötigen wir einige Ihrer Daten. Andere Informationen werden verwendet, um Ihr persönliches Konto zu erstellen.\nWir verwenden Ihre Daten auch, um Ihre Support-Fragen zu beantworten.\nIn keinem Fall geben wir Ihre persönlichen Daten an Dritte weiter.";
 "LogoffSession" = "Ausloggen";
@@ -170,7 +170,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "Undo" = "Zurück";
 "FAQVraag16" = "Kann ich einen Spende zurückziehen?";
 "FAQAntwoord16" = "In den ersten 15 Minuten nach der Spende per App ist es möglich, die Spende zu stornieren. Wechseln Sie einfach in die Spendenübersicht und wischen Sie die betreffende Spende, welche Sie stornieren möchten, nach links. Die Stornierung ist kostenlos, wenn Sie es auf diese Weise durchführen. Hinweis: Sie können Ihre Spende nur stornieren, wenn Sie Ihre Registrierung in der Givt App abgeschlossen haben.\n\nIm Moment der Spende finden keine Transaktionen statt. Die Transaktionen erfolgen anschließend per Lastschrift. Da diese Transaktionen über Ihre Bank reversibel sind, sind diese absolut sicher und vor Betrug geschützt. Diese Art der Rückabwicklung verursacht aber ggf. Kosten für die Organisation, der Sie gespendet haben.";
-"SelectContextCollect" = "Spenden Sie in der Kirche, an der Tür oder auf der Straße";
+"SelectContextCollect" = "Spenden Sie in der Kirche, an der Haustür oder auf der Straße";
 "GiveContextQR" = "Spenden Sie, indem Sie einen QR-Code scannst";
 "SelectContextList" = "Suchen Sie ein Spendenziel aus der Liste aus";
 "SelectContext" = "Wähle die Art und Weise, wie Sie spenden";
@@ -197,7 +197,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "MandateFailPersonalInformation" = "Anscheinend stimmt etwas mit den von Ihnen eingegebenen Informationen nicht. Könnten Sie bitte im Menü unter \"Persönliche Informationen\" nachsehen? Bei Bedarf können Sie dort auch die Informationen ändern.";
 "MandateSMSCode" = "Wir senden eine SMS an {0}. Das Mandat wird im Namen von {1} unterzeichnet. Ist dies korrekt? Dann fahren Sie mit dem nächsten Schritt fort.";
 "MandateSigningCode" = "Wenn alles gut geht, erhalten Sie eine SMS. Bitte tragen Sie den untenstehenden Code ein, um Ihr Mandat zu unterzeichnen.";
-"ReadCode" = "Dein Code:";
+"ReadCode" = "Ihr Code:";
 "ReadMandate" = "Mandat ansehen";
 "MandatePdfFileName" = "Mandat";
 "WriteStoragePermission" = "Um dieses PDF ansehen zu können, benötigen wir den Zugriff auf den Speicher Ihres Telefons, damit wir das PDF speichern und anzeigen können.";
@@ -237,7 +237,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "GivtAtLocationDisabledTitle" = "Kein Givt-Standort verfügbar";
 "GivtAtLocationDisabledMessage" = "Hey, nicht so schnell! Im Moment sind keine Organisationen verfügbar, bei denen Sie hier vor Ort spenden können.";
 "TempAccountLogin" = "Sie verwenden ein temporäres Konto ohne Passwort. Sie werden nun automatisch eingeloggt und aufgefordert Ihre Registrierung abzuschließen.";
-"SortCodePlaceholder" = "Sortierungscode";
+"SortCodePlaceholder" = "Bankleitzahl";
 "BankAccountNumberPlaceholder" = "Kontonummer";
 "BacsSetupTitle" = "Einrichten der Einzugsermächtigung";
 "BacsSetupBody" = "Sie unterzeichnen eine pauschale Einzugsermächtigung, wir belasten jedoch ihr Konto nur, falls Sie die Givt App benutzen, um eine Spende zu tätigen.\n\nIndem Sie fortfahren, erklären Sie, dass Sie der Kontoinhaber sind und die einzige Person, die zur Ermächtigung von Belastungen von diesem Konto berechtigt ist.\n\nDie Details Ihrer Einzugsermächtigung werden Ihnen innerhalb von 3 Werktagen oder spätestens 10 Werktage vor der ersten Einziehung per E-Mail zugesandt.";
@@ -249,10 +249,10 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "BacsAdvanceNotice" = "Sie unterschreiben eine fallweise, nicht wiederkehrende Weisung zum Lastschriftverfahren. Nur auf Ihren speziellen Wunsch hin werden Abbuchungen von der Organisation durchgeführt. Es gelten alle üblichen Sicherheitsvorkehrungen und Garantien für Lastschriften. Es können keine Änderungen an der Nutzung dieser Einzugsermächtigung vorgenommen werden, ohne Sie mindestens fünf (5) Werktage vor der Belastung Ihres Kontos zu informieren.\nIm Falle eines Fehlers haben Sie Anspruch auf eine sofortige Rückerstattung durch Ihre Bank oder Bausparkasse. \nSie haben das Recht, eine Einzugsermächtigung jederzeit schriftlich an Ihre Bank oder Bausparkasse mit einer Kopie an uns zu widerrufen.";
 "BacsAdvanceNoticeTitle" = "Vorankündigung";
 "BacsDDGuaranteeTitle" = "Lastschrift-Garantie";
-"BacsVerifyBodyDetails" = "Name: {0}\nAdresse: {1}\nE-Mail-Adresse: {2}\nSortierungscode: {3}\nKontonummer: {4}\nFrequenzart: nach Nutzung, falls Sie die Givt App benutzen, um zu spenden";
+"BacsVerifyBodyDetails" = "Name: {0}\nAdresse: {1}\nE-Mail-Adresse: {2}\nBankleitzahl: {3}\nKontonummer: {4}\nFrequenzart: nach Nutzung, falls Sie die Givt App benutzen, um zu spenden";
 "BacsHelpTitle" = "Benötigen Sie Hilfe?";
 "BacsHelpBody" = "Benötigen Sie Hilfe oder haben eine Frage? Rufen Sie uns unter +49 391 5054 7299 an oder kontaktieren Sie uns unter support@givt.app und wir werden uns mit Ihnen in Verbindung setzen!";
-"BacsSortcodeAccountnumber" = "Sortierungscode: {0}\nKontonummer: {1}";
+"BacsSortcodeAccountnumber" = "Bankleitzahl: {0}\nKontonummer: {1}";
 "CantFetchPersonalInformation" = "Wir können Ihre persönlichen Daten im Moment nicht abrufen, könnten Sie es später noch einmal versuchen?";
 "GivingContextCollectionBag" = "Klingelbeutel";
 "GivingContextQRCode" = "QR-Code";
@@ -265,8 +265,8 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "AmountPresetsErr25C" = "Der Betrag muss mindestens 0,25 Euro betragen.";
 "AmountPresetsErrEmpty" = "Geben Sie einen Betrag ein";
 "GivtMinimumAmountPond" = "0.25 €";
-"AlertBACSMessage" = "Da Sie {0} als Länderwahl angegeben haben, gehen wir davon aus, dass Sie lieber über ein SEPA-Mandat (€) geben wollen, dafür benötigen wir Ihre IBAN. Falls Sie lieber BACS (£) verwenden möchten, benötigen wir Ihren Sort Code und Kontonummer.";
-"AlertSEPAMessage" = "Da Sie {0} als Länderwahl angegeben haben, gehen wir davon aus, dass Sie lieber über BACS Direct Debit (£) geben wollen, dafür benötigen wir Ihren Sort Code und Kontonummer. Falls Sie stattdessen lieber SEPA (€) nutzen möchten, benötigen wir Ihre IBAN.";
+"AlertBACSMessage" = "Da Sie {0} als Länderwahl angegeben haben, gehen wir davon aus, dass Sie lieber über ein SEPA-Mandat (€) geben wollen, dafür benötigen wir Ihre IBAN. Falls Sie lieber BACS (£) verwenden möchten, benötigen wir Ihre Bankleitzahl und Kontonummer.";
+"AlertSEPAMessage" = "Da Sie {0} als Länderwahl angegeben haben, gehen wir davon aus, dass Sie lieber über BACS Direct Debit (£) geben wollen, dafür benötigen wir Ihre Bankleitzahl und Kontonummer. Falls Sie stattdessen lieber SEPA (€) nutzen möchten, benötigen wir Ihre IBAN.";
 "Important" = "Wichtig";
 "FingerprintTitle" = "Fingerabdruck";
 "TouchID" = "Touch ID";
@@ -629,10 +629,10 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "AcceptTerms" = "Indem Sie fortfahren, stimmen Sie unseren Allgemeinen Geschäftsbedingungen zu.";
 
 /*Tekst verschijnt wanneer het ondertekenen van de machtiging niet is gelukt*/
-"MandateSigingFailed" = "Das Mandat konnte nicht unterschrieben werden. Versuche es später noch einmal über das Menü. Kommt diese Nachricht immer wieder? Kontaktiere uns über support@givtapp.net .";
+"MandateSigingFailed" = "Das Mandat konnte nicht unterschrieben werden. Versuchen Sie es später noch einmal über das Menü. Erscheint diese Nachricht immer wieder? Kontaktieren Sie uns via support@givtapp.net .";
 
 /*Tekst verschijnt in een loading-animatie wanneer de status van de machtiging wordt opgevraagd.*/
-"AwaitingMandateStatus" = "Wir benötigen einen Moment um Dein Mandat zu bearbeiten.";
+"AwaitingMandateStatus" = "Wir benötigen einen Moment um Ihr Mandat zu bearbeiten.";
 
 /*Treedt op wanneer het niet mogelijk blijkt te zijn om een machtigings-ondertekening te starten (SlimPay niet te bereiken)*/
 "RequestMandateFailed" = "Derzeit ist es leider nicht möglich, ein Mandat zu beantragen. Bitte versuchen Sie es in einigen Minuten erneut.";
@@ -645,7 +645,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Cindy, die {0} stond daar express ... 
  Sorry, maar we nemen pas genoegen met minstens 0,50 euro.*/
-"GivtNotEnough" = "Tut mir Leid, aber der Mindestbetrag den wir bearbeiten können beträgt {0}.";
+"GivtNotEnough" = "Tut mir Leid, aber der Mindestbetrag den wir verarbeiten können beträgt {0}.";
 
 /*SlimPay informatie onder het Givy icoon*/
 "SlimPayInformationPart2" = "Deshalb bitten wir Sie diesmal, ein SEPA eMandate zu unterzeichnen.\n\nDa wir mit Mandaten arbeiten, haben Sie die Möglichkeit, Ihre Spende ggf. zu widerrufen, wenn Sie dies wünschen.";
@@ -789,7 +789,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "FAQvraag15" = "Sind meine Givt-Spenden steuerlich absetzbar?";
 
 /*antwoord op vraag15*/
-"FAQantwoord15" = "Yes, your Givt donations are tax deductable, but only when you’re giving to institutions that are registered as ANBI (Public Benefit Organisation) or SBBI (Social Importance Organisation). Check if the church or institution has such a registration. Since it’s quite a bit of work to gather all your donations for your tax declaration, the Givt app offers you the option to annually download an overview of your donations. Go to your Donations in the app-menu to download the overview. You can use this overview for your tax declaration. It’s a piece of cake.";
+"FAQantwoord15" = "Ja, Ihre Givt-Spenden sind steuerlich absetzbar. Bis 300€ müssen Sie sich keine weiteren Gedanken machen. Ab dieser Summe sollten Sie sich aber in Kontakt mit der Organisation begeben, der Sie gespendet haben, um eine Spendenquittung zu beantragen. Da es darüberhinaus ziemlich mühsam ist, alle Ihre getätigten Spenden für Ihre Steuererklärung zu sammeln, bietet Ihnen die Givt-App die Möglichkeit, jährlich eine Übersicht Ihrer Spenden herunterzuladen. Gehen Sie zu Ihren Spenden im App-Menü, um die Übersicht herunterzuladen. Diese Übersicht können Sie für Ihre Steuererklärung verwenden.";
 
 /*In app begeleiding naar 'Anders geven?'*/
 "GiveDiffWalkthrough" = "Haben Sie Probleme? Tippen Sie hier, um eine Organisation aus der Liste auszuwählen.";
@@ -912,8 +912,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "AuthoriseBluetooth" = "Autorisieren Sie Givt zur Verwendung von Bluetooth";
 "AuthoriseBluetoothErrorMessage" = "Geben Sie Givt die Erlaubnis, auf Ihr Bluetooth zuzugreifen, damit Sie einer Sammlung etwas geben können.";
 "AuthoriseBluetoothExtraText" = "Gehe zu Einstellungen > Datenschutz > Bluetooth und wähle 'Givt'.";
-"UnregisterError" = "DE: TODO";
-"UnregisterMandateError" = "DE: TODO";
+"UnregisterError" = "Leider können wir die Registrierung Ihres Kontos nicht aufheben. Könnten Sie es später noch einmal versuchen?";
+"UnregisterMandateError" = "Leider können wir die Registrierung Ihres Kontos nicht aufheben, da wir Ihr Mandat oder Ihre Lastschriftanweisung nicht kündigen können. Bitte kontaktieren Sie uns.";
 "UnregisterErrorTitle" = "Beenden fehlgeschlagen";
 "SetupRecurringGiftTitle" = "Richten Sie eine wiederkehrende Spende ein";
 "SetupRecurringGiftText_3" = "von";
@@ -939,7 +939,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "SetupRecurringGiftHalfYear" = "Halbes Jahr";
 "SetupRecurringGiftText_6" = "Mal";
 "LoginAndTryAgain" = "Bitte melden Sie sich an und versuchen Sie es erneut.";
-"GivtIsBeingProcessedRecurring" = "Vielen Dank für Ihre Givt (s) an {0}!\nSie können die Übersicht Ihrer wiederkehrenden Spenden unter \"Übersicht\" einsehen.\nDie erste wiederkehrende Spende von {1} {2} wird am {3} initiiert.\nDanach wird es jeweils zum {4} eingezogen.";
+"GivtIsBeingProcessedRecurring" = "Vielen Dank für Ihre(n) Givt (s) an {0}!\nSie können die Übersicht Ihrer wiederkehrenden Spenden unter \"Übersicht\" einsehen.\nDie erste wiederkehrende Spende von {1} {2} wird am {3} initiiert.\nDanach wird es jeweils zum {4} eingezogen.";
 "OverviewRecurringDonations" = "Wiederkehrende Spenden";
 "TitleRecurringGifts" = "Wiederkehrende Spenden";
 "RecurringGiftsSetupCreate" = "Planen Sie Ihre";
@@ -1043,4 +1043,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetTestimonialGivingGoalName" = "Danielle:";
 "BudgetTestimonialExternalGiftsName" = "John:";
 "BudgetTestimonialYearlyOverviewName" = "Jonathan:";
-"BudgetTestimonialSummaryAction" = "View your summary";
+"BudgetTestimonialSummaryAction" = "Ihre Zusammenfassung anzeigen";
