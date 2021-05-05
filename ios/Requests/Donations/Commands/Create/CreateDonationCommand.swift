@@ -16,11 +16,13 @@ class CreateDonationCommand: RequestProtocol {
     var amount: Decimal
     var userId: UUID
     var timeStamp: Date
+    var collectId: String
     
-    internal init(mediumId: String, amount: Decimal, userId: UUID, timeStamp: Date) {
+    internal init(mediumId: String, amount: Decimal, userId: UUID, timeStamp: Date, collectId: String) {
         self.mediumId = mediumId
         self.amount = amount
         self.userId = userId
         self.timeStamp = timeStamp
+        self.collectId = collectId
     }
 }

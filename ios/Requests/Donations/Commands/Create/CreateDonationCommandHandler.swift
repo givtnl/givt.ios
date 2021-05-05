@@ -27,6 +27,7 @@ class CreateDonationCommandHandler : RequestHandlerProtocol {
         donation.setValue(request.mediumId, forKey: "mediumId")
         donation.setValue(request.userId.uuidString, forKey: "userId")
         donation.setValue(request.timeStamp, forKey: "timeStamp")
+        donation.setValue(request.collectId, forKey: "collectId")
         try dataContext.saveToMainContext()
         
         BadgeService.shared.addBadge(badge: .offlineGifts)
