@@ -58,35 +58,44 @@ extension BudgetOverviewViewController {
         // get max width from superview
         let maxWidth = yearBarOneParent.frame.width
         // grootstn  = maxWidth
-        let barOneConstraint = yearBarOne.constraints.first { constraint in constraint.identifier == "IdYearBarOne" }
-        let barTwoConstraint = yearBarTwo.constraints.first { constraint in constraint.identifier == "IdYearBarTwo" }
+        var barOneConstraint: NSLayoutConstraint? = nil
+        if yearBarOne != nil {
+            barOneConstraint = yearBarOne.constraints.first { constraint in constraint.identifier == "IdYearBarOne" }
+            
+            let lowestYear = yearsWithValues.min(by: { val1, val2 in val1.year < val2.year })!
+            let lowestYearValue = lowestYear.amount / referenceValue.amount
+            
+            barOneConstraint?.constant = maxWidth * CGFloat(lowestYearValue.isFinite ? lowestYearValue : 0)
+            
+            yearBarOneLabel.text = lowestYear.year.string
+            
+            [yearBarOne.amountLabel, yearBarOneOutsideValueLabel].forEach({ label in
+                label.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            })
+            
+            if barOneConstraint!.constant-30 <= yearBarOne.amountLabel.frame.width {
+                yearBarOne.amountLabel.isHidden = true
+                if lowestYearValue.isFinite {
+                    yearBarOneOutsideValueLabel.isHidden = false
+                }
+            }
+            
+            yearBarOne.bgView.backgroundColor = ColorHelper.SoftenedGivtPurple
+            yearBarOneOutsideValueLabel.textColor = ColorHelper.SoftenedGivtPurple
+        }
         
-        let lowestYear = yearsWithValues.min(by: { val1, val2 in val1.year < val2.year })!
-        let lowestYearValue = lowestYear.amount / referenceValue.amount
+        let barTwoConstraint = yearBarTwo.constraints.first { constraint in constraint.identifier == "IdYearBarTwo" }
         
         let highestYear = yearsWithValues.max { val1, val2 in val1.year < val2.year }!
         let highestYearValue = highestYear.amount / referenceValue.amount
         
-        barOneConstraint?.constant = maxWidth * CGFloat(lowestYearValue.isFinite ? lowestYearValue : 0)
         barTwoConstraint?.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
         
-        yearBarOneLabel.text = lowestYear.year.string
         yearBarTwoLabel.text = highestYear.year.string
-        
-        [yearBarOne.amountLabel, yearBarOneOutsideValueLabel].forEach({ label in
-            label.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-        })
         
         [yearBarTwo.amountLabel, yearBarTwoOutsideValueLabel].forEach({ label in
             label.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         })
-        
-        if barOneConstraint!.constant-30 <= yearBarOne.amountLabel.frame.width {
-            yearBarOne.amountLabel.isHidden = true
-            if lowestYearValue.isFinite {
-                yearBarOneOutsideValueLabel.isHidden = false
-            }
-        }
         
         if barTwoConstraint!.constant-30 <= yearBarTwo.amountLabel.frame.width {
             yearBarTwo.amountLabel.isHidden = true
@@ -95,18 +104,19 @@ extension BudgetOverviewViewController {
             }
         }
         
-        yearBarOne.bgView.backgroundColor = ColorHelper.SoftenedGivtPurple
-        yearBarOneOutsideValueLabel.textColor = ColorHelper.SoftenedGivtPurple
-        
         yearBarTwo.bgView.backgroundColor = ColorHelper.GivtLightGreen
         yearBarTwoOutsideValueLabel.textColor = ColorHelper.GivtLightGreen
         
         if yearsWithValues.filter({ $0.amount == 0.0 }).count == 2 {
-            yearBarOneStackItem.removeFromSuperview()
+            if yearBarOne != nil {
+                yearBarOneStackItem.removeFromSuperview()
+            }
         } else if yearsWithValues.filter({ $0.amount == 0.0 }).count == 1 {
             let emptyYear = yearsWithValues.first { item in item.amount == 0.0 }
             if emptyYear!.year == currentYear - 1 {
-                yearBarOneStackItem.removeFromSuperview()
+                if yearBarOne != nil {
+                    yearBarOneStackItem.removeFromSuperview()
+                }
             }
         }
     }
