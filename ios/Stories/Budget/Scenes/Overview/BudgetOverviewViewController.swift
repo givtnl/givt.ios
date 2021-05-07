@@ -9,7 +9,10 @@ import Charts
 import Foundation
 import UIKit
 import SVProgressHUD
-
+struct YearChartValue {
+    var year: Int
+    var value: Double
+}
 class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var monthlySummaryTile: MonthlySummary!
     @IBOutlet weak var givtNowButton: CustomButton!
@@ -45,6 +48,8 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     var originalStackviewNotGivtHeight: CGFloat? = nil
         
     var givingGoal: GivingGoal? = nil
+    var givingGoalAmount: Double? = nil
+    
     @IBOutlet weak var givingGoalPerMonthText: UILabel!
     @IBOutlet weak var givingGoalPerMonthInfo: UILabel!
     @IBOutlet weak var givingGoalRemaining: UILabel!
@@ -53,6 +58,16 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var setupGivingGoalLabel: UILabel!
     
     var lastMonthTotal: Double? = nil
+    
+    @IBOutlet weak var yearBarOneStackItem: UIView!
+    @IBOutlet weak var yearBarTwoStackItem: UIView!
+    @IBOutlet weak var yearBarOneParent: UIView!
+    @IBOutlet weak var yearBarOne: YearViewBodyLine!
+    @IBOutlet weak var yearBarOneLabel: UILabel!
+    @IBOutlet weak var yearBarTwo: YearViewBodyLine!
+    @IBOutlet weak var yearBarTwoLabel: UILabel!
+    @IBOutlet weak var yearBarOneOutsideValueLabel: UILabel!
+    @IBOutlet weak var yearBarTwoOutsideValueLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,11 +84,6 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
             originalHeightsSet = true
         }
-        
-        setupCollectGroupsCard()
-        setupMonthsCard()
-        setupYearsCard()
-        
         setupGivingGoalCard()
         
         if givingGoal != nil {
@@ -82,27 +92,36 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             remainingGivingGoalStackItem.isHidden = false
             
             if givingGoal!.periodicity == 0 {
-                givingGoalPerMonthText.text = (givingGoal!.amount / 12).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                givingGoalAmount = givingGoal!.amount / 12
+                givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
 
+            } else {
+                givingGoalAmount = givingGoal!.amount
+                givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
             }
-            
-            let currentGivenPerMonth = lastMonthTotal!
-            let remainingThisMonth = (givingGoal!.amount / 12) - currentGivenPerMonth
-            
-            givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                
         } else {
             givingGoalSetupStackItem.isHidden = false
             givingGoalStackItem.isHidden = true
             remainingGivingGoalStackItem.isHidden = true
         }
         
+        setupCollectGroupsCard()
+        setupMonthsCard()
+        
+        if givingGoal != nil {
+            let currentGivenPerMonth = lastMonthTotal!
+            let remainingThisMonth = givingGoalAmount! - currentGivenPerMonth
+            
+            givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        }
+        
+
     }
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
         loadTestimonial()
+
+        setupYearsCard()
+
     }
-    
-    
-   
 }
