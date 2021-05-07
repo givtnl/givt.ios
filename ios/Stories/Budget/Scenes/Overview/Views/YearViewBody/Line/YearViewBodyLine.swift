@@ -1,18 +1,19 @@
 //
-//  YearViewBody.swift
+//  YearViewBodyLine.swift
 //  ios
 //
-//  Created by Mike Pattyn on 19/02/2021.
+//  Created by Mike Pattyn on 07/05/2021.
 //  Copyright © 2021 Givt. All rights reserved.
 //
-import Charts
+
+import Foundation
 import UIKit
 
-class YearViewBody: UIView {
-    
-    private var borderView: UIView!
+class YearViewBodyLine: UIView {
     @IBOutlet var contentView: UIView!
-
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var bgView: UIView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -25,12 +26,11 @@ class YearViewBody: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5.0)
+        roundCorners(corners: [.topRight, .bottomRight], radius: 7)
     }
-    
     private func commonInit() {
-        let bundle = Bundle(for: YearViewBody.self)
-        bundle.loadNibNamed("YearViewBody", owner: self, options: nil)
+        let bundle = Bundle(for: YearViewBodyLine.self)
+        bundle.loadNibNamed("YearViewBodyLine", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]

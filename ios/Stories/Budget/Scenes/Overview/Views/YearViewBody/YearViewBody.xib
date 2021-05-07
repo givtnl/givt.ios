@@ -1,81 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YearViewBody" customModule="ios" customModuleProvider="target">
             <connections>
-                <outlet property="chartView" destination="xAX-75-Aap" id="bWy-9Y-X34"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="fIa-Ee-edl"/>
-                <outlet property="labelStackView" destination="qZy-bg-d4N" id="TT6-Du-G4r"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="446" height="314"/>
+            <rect key="frame" x="0.0" y="0.0" width="438" height="261"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWG-H3-aUC">
-                    <rect key="frame" x="0.0" y="44" width="446" height="236"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xAX-75-Aap" customClass="HorizontalBarChartView" customModule="Charts">
-                            <rect key="frame" x="15" y="15" width="381" height="206"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qZy-bg-d4N">
-                            <rect key="frame" x="366" y="25" width="80" height="186"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9F7-MV-e3y">
-                                    <rect key="frame" x="0.0" y="0.0" width="80" height="93"/>
-                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
-                                    <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kf-J2-cd2">
-                                    <rect key="frame" x="0.0" y="93" width="80" height="93"/>
-                                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
-                                    <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="80" id="8NR-rb-6XK"/>
-                            </constraints>
-                        </stackView>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="qZy-bg-d4N" firstAttribute="leading" secondItem="xAX-75-Aap" secondAttribute="trailing" constant="-30" id="6YB-8z-Fxc"/>
-                        <constraint firstItem="xAX-75-Aap" firstAttribute="leading" secondItem="GWG-H3-aUC" secondAttribute="leading" constant="15" id="GG4-EQ-H8n"/>
-                        <constraint firstItem="xAX-75-Aap" firstAttribute="top" secondItem="GWG-H3-aUC" secondAttribute="top" constant="15" id="QXx-uB-5Y9"/>
-                        <constraint firstAttribute="bottom" secondItem="xAX-75-Aap" secondAttribute="bottom" constant="15" id="VZu-dc-2Ed"/>
-                        <constraint firstAttribute="trailing" secondItem="qZy-bg-d4N" secondAttribute="trailing" id="d3n-Hn-p1A"/>
-                        <constraint firstAttribute="bottom" secondItem="qZy-bg-d4N" secondAttribute="bottom" constant="25" id="nmu-YP-bQu"/>
-                        <constraint firstItem="qZy-bg-d4N" firstAttribute="top" secondItem="GWG-H3-aUC" secondAttribute="top" constant="25" id="xtD-f1-FsW"/>
-                    </constraints>
-                </view>
-            </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GWG-H3-aUC" secondAttribute="trailing" id="9Te-2Y-xGn"/>
-                <constraint firstItem="GWG-H3-aUC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="FiY-3i-YJl"/>
-                <constraint firstItem="GWG-H3-aUC" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="JTf-ZW-GsU"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="GWG-H3-aUC" secondAttribute="bottom" id="tGh-hl-2xU"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="253.62318840579712" y="-334.82142857142856"/>
+            <point key="canvasLocation" x="247.82608695652175" y="-352.56696428571428"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

@@ -133,13 +133,16 @@ extension BudgetOverviewViewController {
         
         chartView.legend.enabled = false
         chartView.isUserInteractionEnabled = false
-                
-        let ll = ChartLimitLine(limit: trueAverage)
+        
+        let lineLimit = givingGoalAmount != nil ? givingGoalAmount! : trueAverage
+        
+        let ll = ChartLimitLine(limit: lineLimit)
         ll.lineColor = ColorHelper.GivtLightGreen
         ll.lineDashLengths = [4.0]
+        chartView.rightAxis.removeAllLimitLines()
         chartView.rightAxis.addLimitLine(ll)
 
-        chartViewBody.averageButton.setTitle(trueAverage.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0, withSpace: false), for: .normal)
+        chartViewBody.averageButton.setTitle(lineLimit.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0, withSpace: false), for: .normal)
         chartViewBody.averageButton.ogBGColor = ColorHelper.LightGreenChart
         chartViewBody.averageButton.isEnabled = false
         

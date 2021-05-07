@@ -35,7 +35,6 @@ extension BudgetOverviewViewController {
                                                                                     tillDate: tillDate,
                                                                                     groupType: 1,
                                                                                     orderType: 0))
-        yearViewBody.years = []
         
         yearlySummary.forEach { model in
             let item = yearsWithValues.first { $0.year == model.Key.toInt }
@@ -53,92 +52,65 @@ extension BudgetOverviewViewController {
             item?.amount += model.Value
         }
         
-        var yearChartValues: [Double] = []
+        let referenceValue = yearsWithValues.max { val1, val2 in val1.amount < val2.amount }!
+        // get biggest value that will be equal to max width
+//        let referenceValueItem: [String: Double]? = testValues.count > 0 ? highestTestValue! : nil
+        // get max width from superview
+        let maxWidth = yearBarOneParent.frame.width
+        // grootstn  = maxWidth
+        let barOneConstraint = yearBarOne.constraints.first { constraint in constraint.identifier == "IdYearBarOne" }
+        let barTwoConstraint = yearBarTwo.constraints.first { constraint in constraint.identifier == "IdYearBarTwo" }
         
-        yearsWithValues.forEach { model in
-            if model.amount != 0 {
-                yearViewBody.years.append(model.year.string)
-                yearChartValues.append(model.amount)
+        let lowestYear = yearsWithValues.min(by: { val1, val2 in val1.year < val2.year })!
+        let lowestYearValue = lowestYear.amount / referenceValue.amount
+        
+        let highestYear = yearsWithValues.max { val1, val2 in val1.year < val2.year }!
+        let highestYearValue = highestYear.amount / referenceValue.amount
+        
+        barOneConstraint?.constant = maxWidth * CGFloat(lowestYearValue.isFinite ? lowestYearValue : 0)
+        barTwoConstraint?.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
+        
+        yearBarOneLabel.text = lowestYear.year.string
+        yearBarTwoLabel.text = highestYear.year.string
+        
+        [yearBarOne.amountLabel, yearBarOneOutsideValueLabel].forEach({ label in
+            label.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        })
+        
+        [yearBarTwo.amountLabel, yearBarTwoOutsideValueLabel].forEach({ label in
+            label.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        })
+        
+        if barOneConstraint!.constant-30 <= yearBarOne.amountLabel.frame.width {
+            yearBarOne.amountLabel.isHidden = true
+            if lowestYearValue.isFinite {
+                yearBarOneOutsideValueLabel.isHidden = false
             }
         }
         
-        if yearsWithValues.filter({$0.amount != 0}).count == 1 {
-            yearViewBodyHeight.constant = 110
-            if yearViewBody.labelStackView.arrangedSubviews.count > 1 {
-                yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
+        if barTwoConstraint!.constant-30 <= yearBarTwo.amountLabel.frame.width {
+            yearBarTwo.amountLabel.isHidden = true
+            if highestYearValue.isFinite {
+                yearBarTwoOutsideValueLabel.isHidden = false
             }
-            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[0]
-        } else if yearsWithValues.filter({$0.amount != 0}).count == 2 {
-            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[0]
-            (yearViewBody.labelStackView.arrangedSubviews[1] as! UILabel).text = yearViewBody.years[1]
-        } else {
-            yearViewBodyHeight.constant = 110
-            if yearViewBody.labelStackView.arrangedSubviews.count > 1 {
-                yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
-            }
-            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = Date().getYear().string
         }
         
-        //setup the chart for years
-        setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues.reversed(), chartView: yearViewBody.chartView)
+        yearBarOne.bgView.backgroundColor = ColorHelper.SoftenedGivtPurple
+        yearBarOneOutsideValueLabel.textColor = ColorHelper.SoftenedGivtPurple
+        
+        yearBarTwo.bgView.backgroundColor = ColorHelper.GivtLightGreen
+        yearBarTwoOutsideValueLabel.textColor = ColorHelper.GivtLightGreen
+        
+        if yearsWithValues.filter({ $0.amount == 0.0 }).count == 2 {
+            yearBarOneStackItem.removeFromSuperview()
+        } else if yearsWithValues.filter({ $0.amount == 0.0 }).count == 1 {
+            let emptyYear = yearsWithValues.first { item in item.amount == 0.0 }
+            if emptyYear!.year == currentYear - 1 {
+                yearBarOneStackItem.removeFromSuperview()
+            }
+        }
     }
-    private func setHorizontalChart(dataPoints: [String], values: [Double], chartView: HorizontalBarChartView) {
-        var dataEntries: [BarChartDataEntry] = []
-        var chartColors: [UIColor] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
-            dataEntries.append(dataEntry)
-            if ((i+1) < dataPoints.count) {
-                chartColors.append(ColorHelper.SoftenedGivtPurple)
-            } else {
-                chartColors.append(ColorHelper.LightGreenChart)
-            }
-        }
-        
-        let chartDataSet = BarChartDataSet(entries: dataEntries)
-        chartDataSet.colors = chartColors.reversed()
-        let valuesFormatter = ChartValueFormatter()
-        chartDataSet.valueFormatter = valuesFormatter
-        chartDataSet.valueFont = UIFont(name: "Avenir-Black", size: 11)!
-        chartDataSet.valueTextColor = .white
-        
-        let chartData = BarChartData(dataSet: chartDataSet)
-        chartData.barWidth = 0.9
-        chartView.data = chartData
-        
-        let leftAxis = chartView.getAxis(.left)
-        let rightAxis = chartView.getAxis(.right)
-        
-        leftAxis.drawGridLinesEnabled = false
-        rightAxis.drawGridLinesEnabled = false
-        
-        leftAxis.drawAxisLineEnabled = false
-        rightAxis.drawAxisLineEnabled = false
-        
-        leftAxis.drawLabelsEnabled = false
-        rightAxis.drawLabelsEnabled = false
-        
-        leftAxis.axisMinimum = 0
-        rightAxis.axisMinimum = 0
-        
-        chartView.drawValueAboveBarEnabled = false
-        
-        let xAxis = chartView.xAxis
-        xAxis.labelPosition = .top
-        xAxis.drawGridLinesEnabled = false;
-        xAxis.drawLabelsEnabled = false
-        xAxis.drawAxisLineEnabled = false
-        
-        leftAxis.spaceTop = 0
-        
-        chartView.data?.setDrawValues(true)
-        
-        chartView.legend.enabled = false
-        chartView.isUserInteractionEnabled = false
-        
-        chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
-    }
+    
     private func getFromDateForYearlyOverview() -> String {
         var componentsForYearlySummaryComponents = DateComponents()
         componentsForYearlySummaryComponents.day = 1
