@@ -213,17 +213,17 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="234" height="160"/>
                                                                                         <subviews>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givymoney" translatesAutoresizingMaskIntoConstraints="NO" id="Mhp-RY-kSz">
-                                                                                                <rect key="frame" x="87" y="20" width="60" height="60"/>
+                                                                                                <rect key="frame" x="92" y="15" width="50" height="50"/>
                                                                                                 <constraints>
-                                                                                                    <constraint firstAttribute="width" constant="60" id="Siw-ic-dkZ"/>
-                                                                                                    <constraint firstAttribute="height" constant="60" id="yyy-Mk-yqe"/>
+                                                                                                    <constraint firstAttribute="width" constant="50" id="Siw-ic-dkZ"/>
+                                                                                                    <constraint firstAttribute="height" constant="50" id="yyy-Mk-yqe"/>
                                                                                                 </constraints>
                                                                                             </imageView>
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wof-M3-aqL">
-                                                                                                <rect key="frame" x="0.0" y="80" width="234" height="80"/>
+                                                                                                <rect key="frame" x="0.0" y="65" width="234" height="95"/>
                                                                                                 <subviews>
-                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bewust geven? Stel een streefbedrag in om jezelf te motiveren. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="d23-TR-ilx">
-                                                                                                        <rect key="frame" x="15" y="10" width="204" height="55"/>
+                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bewust geven? Stel een streefbedrag in om jezelf te motiveren. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d23-TR-ilx">
+                                                                                                        <rect key="frame" x="10" y="10" width="214" height="75"/>
                                                                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                                                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                         <nil key="highlightedColor"/>
@@ -231,10 +231,10 @@
                                                                                                 </subviews>
                                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                                 <constraints>
-                                                                                                    <constraint firstAttribute="bottom" secondItem="d23-TR-ilx" secondAttribute="bottom" constant="15" id="GKd-uW-LlU"/>
+                                                                                                    <constraint firstAttribute="bottom" secondItem="d23-TR-ilx" secondAttribute="bottom" constant="10" id="GKd-uW-LlU"/>
                                                                                                     <constraint firstItem="d23-TR-ilx" firstAttribute="top" secondItem="Wof-M3-aqL" secondAttribute="top" constant="10" id="Okz-MS-Yio"/>
-                                                                                                    <constraint firstAttribute="trailing" secondItem="d23-TR-ilx" secondAttribute="trailing" constant="15" id="pch-63-JcY"/>
-                                                                                                    <constraint firstItem="d23-TR-ilx" firstAttribute="leading" secondItem="Wof-M3-aqL" secondAttribute="leading" constant="15" id="wMZ-d6-e8S"/>
+                                                                                                    <constraint firstAttribute="trailing" secondItem="d23-TR-ilx" secondAttribute="trailing" constant="10" id="pch-63-JcY"/>
+                                                                                                    <constraint firstItem="d23-TR-ilx" firstAttribute="leading" secondItem="Wof-M3-aqL" secondAttribute="leading" constant="10" id="wMZ-d6-e8S"/>
                                                                                                 </constraints>
                                                                                             </view>
                                                                                         </subviews>
@@ -243,7 +243,7 @@
                                                                                             <constraint firstItem="Mhp-RY-kSz" firstAttribute="centerX" secondItem="Sb4-DJ-lKd" secondAttribute="centerX" id="RxL-N8-wuO"/>
                                                                                             <constraint firstItem="Wof-M3-aqL" firstAttribute="top" secondItem="Mhp-RY-kSz" secondAttribute="bottom" id="WvZ-ja-1jV"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="Wof-M3-aqL" secondAttribute="bottom" id="dg7-eo-BPn"/>
-                                                                                            <constraint firstItem="Mhp-RY-kSz" firstAttribute="top" secondItem="Sb4-DJ-lKd" secondAttribute="top" constant="20" id="gMm-ty-UoF"/>
+                                                                                            <constraint firstItem="Mhp-RY-kSz" firstAttribute="top" secondItem="Sb4-DJ-lKd" secondAttribute="top" constant="15" id="gMm-ty-UoF"/>
                                                                                             <constraint firstItem="Wof-M3-aqL" firstAttribute="leading" secondItem="Sb4-DJ-lKd" secondAttribute="leading" id="nLY-95-O8j"/>
                                                                                             <constraint firstAttribute="trailing" secondItem="Wof-M3-aqL" secondAttribute="trailing" id="r3e-OT-psv"/>
                                                                                         </constraints>
