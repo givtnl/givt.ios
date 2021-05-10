@@ -40,14 +40,35 @@ extension BudgetOverviewViewController {
     @objc func givingGoalSetup(sender: UITapGestureRecognizer) {
         try? Mediater.shared.send(request: OpenGivingGoalRoute(), withContext: self)
     }
+    
     func setupGivingGoalCard() {
         // add onclick to adjust giving goal
         givingGoalViewEditLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalEdit)))
         givingGoalSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalSetup)))
+        
         roundCorners(view: givingGoalView)
         roundCorners(view: remainingGivingGoalView)
         roundCorners(view: givingGoalSetupView)
         
         givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
+        
+        if givingGoal != nil {
+            givingGoalSetupStackItem.isHidden = true
+            givingGoalStackItem.isHidden = false
+            remainingGivingGoalStackItem.isHidden = false
+            
+            if givingGoal!.periodicity == 0 {
+                givingGoalAmount = givingGoal!.amount / 12
+                givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+
+            } else {
+                givingGoalAmount = givingGoal!.amount
+                givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            }
+        } else {
+            givingGoalSetupStackItem.isHidden = false
+            givingGoalStackItem.isHidden = true
+            remainingGivingGoalStackItem.isHidden = true
+        }
     }
 }

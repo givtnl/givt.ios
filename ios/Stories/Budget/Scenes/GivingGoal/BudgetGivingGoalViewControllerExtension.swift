@@ -44,6 +44,7 @@ extension BudgetGivingGoalViewController {
         if let goal = givingGoal {
             amountViewTextField.text = goal.amount.getFormattedWithoutCurrency(decimals: 2)
             periodViewTextField.text = frequencys[goal.periodicity][1] as? String
+            frequencyPicker.selectRow(goal.periodicity, inComponent: 0, animated: false)
         }
     }
     
