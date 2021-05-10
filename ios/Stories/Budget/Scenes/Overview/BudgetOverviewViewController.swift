@@ -30,7 +30,6 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var chartViewBody: ChartViewBody!
     @IBOutlet weak var yearViewHeader: CardViewHeader!
     @IBOutlet weak var yearViewBody: YearViewBody!
-    @IBOutlet weak var yearViewBodyHeight: NSLayoutConstraint!
 
     @IBOutlet weak var givingGoalView: UIView!
     @IBOutlet weak var givingGoalViewEditLabel: UILabel!
@@ -84,33 +83,17 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
             originalHeightsSet = true
         }
+        
         setupGivingGoalCard()
-        
-        if givingGoal != nil {
-            givingGoalSetupStackItem.isHidden = true
-            givingGoalStackItem.isHidden = false
-            remainingGivingGoalStackItem.isHidden = false
-            
-            if givingGoal!.periodicity == 0 {
-                givingGoalAmount = givingGoal!.amount / 12
-                givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-
-            } else {
-                givingGoalAmount = givingGoal!.amount
-                givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            }
-        } else {
-            givingGoalSetupStackItem.isHidden = false
-            givingGoalStackItem.isHidden = true
-            remainingGivingGoalStackItem.isHidden = true
-        }
-        
         setupCollectGroupsCard()
         setupMonthsCard()
         
         if givingGoal != nil {
             let currentGivenPerMonth = lastMonthTotal!
-            let remainingThisMonth = givingGoalAmount! - currentGivenPerMonth
+            
+            var remainingThisMonth = givingGoalAmount! - currentGivenPerMonth
+            
+            remainingThisMonth = remainingThisMonth >= 0 ? remainingThisMonth : 0
             
             givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         }
@@ -119,6 +102,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     }
     override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
+        
         loadTestimonial()
 
         setupYearsCard()
