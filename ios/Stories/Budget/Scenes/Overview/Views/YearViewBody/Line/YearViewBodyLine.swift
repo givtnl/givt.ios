@@ -13,7 +13,9 @@ class YearViewBodyLine: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var bgView: UIView!
-    
+    @IBOutlet weak var givenAmountView: UIView!
+    @IBOutlet weak var amountLabelInside: UILabel!
+    @IBOutlet weak var amountLabelOutside: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()

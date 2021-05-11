@@ -12,11 +12,7 @@ import UIKit
 // MARK: VC Extension With CollectGroupsCard functions
 extension BudgetOverviewViewController {
     func setupCollectGroupsCard() {
-        let collectGroupsForCurrentMonth: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
-                                                                                            fromDate: getFromDateForCurrentMonth(),
-                                                                                            tillDate: getTillDateForCurrentMonth(),
-                                                                                            groupType: 2,
-                                                                                            orderType: 3))
+        
         stackViewGivt.arrangedSubviews.forEach { arrangedSubview in
             arrangedSubview.removeFromSuperview()
         }
@@ -31,43 +27,49 @@ extension BudgetOverviewViewController {
         
         var count = 0
         
-        if collectGroupsForCurrentMonth.count >= 1 {
-            collectGroupsForCurrentMonth.forEach { model in
-                if count < 2 {
-                    let view = MonthlyCardViewLine()
-                    view.collectGroupLabel.text = model.Key
-                    view.amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                    stackViewGivt.addArrangedSubview(view)
-                    stackViewGivtHeight.constant += 22
-                    count += 1
+        if let currentMonthSummaryCollectGroups = collectGroupsForCurrentMonth {
+            if currentMonthSummaryCollectGroups.count >= 1 {
+                currentMonthSummaryCollectGroups.forEach { model in
+                    if count < 2 {
+                        let view = MonthlyCardViewLine()
+                        view.collectGroupLabel.text = model.Key
+                        view.amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                        stackViewGivt.addArrangedSubview(view)
+                        stackViewGivtHeight.constant += 22
+                        count += 1
+                    }
                 }
+            } else {
+                addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight)
             }
         } else {
             addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight)
         }
         
         
-        let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: GetAllExternalDonationsQuery()).result.sorted(by: { first, second in
-                first.creationDate > second.creationDate
-            })
+ 
         
         count = 0
         
-        if notGivtModels.count >= 1 {
-            notGivtModels.forEach { model in
-                if count < 2 {
-                    let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
+        if let notGivtModels = notGivtModelsForCurrentMonth {
+            if notGivtModels.count >= 1 {
+                notGivtModels.forEach { model in
+                    if count < 2 {
+                        let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
 
-                    let notGivtRow: LineWithIcon = LineWithIcon(
-                        id: model.id,
-                        description: model.description,
-                        amount: model.amount
-                    )
-                    notGivtRow.addGestureRecognizer(notGivtTapGesture)
-                    stackViewNotGivt.addArrangedSubview(notGivtRow)
-                    stackViewNotGivtHeight.constant += 22
-                    count+=1
+                        let notGivtRow: LineWithIcon = LineWithIcon(
+                            id: model.id,
+                            description: model.description,
+                            amount: model.amount
+                        )
+                        notGivtRow.addGestureRecognizer(notGivtTapGesture)
+                        stackViewNotGivt.addArrangedSubview(notGivtRow)
+                        stackViewNotGivtHeight.constant += 22
+                        count+=1
+                    }
                 }
+            } else {
+                addEmptyLine(stackView: stackViewNotGivt, stackViewHeight: stackViewNotGivtHeight)
             }
         } else {
             addEmptyLine(stackView: stackViewNotGivt, stackViewHeight: stackViewNotGivtHeight)

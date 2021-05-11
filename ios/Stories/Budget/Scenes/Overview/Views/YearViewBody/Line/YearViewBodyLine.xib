@@ -12,8 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YearViewBodyLine" customModule="ios" customModuleProvider="target">
             <connections>
                 <outlet property="amountLabel" destination="4eP-K3-wiS" id="yvd-Cp-lGW"/>
+                <outlet property="amountLabelInside" destination="PsW-cb-v6A" id="c5x-lY-jgD"/>
+                <outlet property="amountLabelOutside" destination="1tX-qq-J2H" id="OLi-20-CwN"/>
                 <outlet property="bgView" destination="NyX-Jd-aiQ" id="V2n-Pb-TQx"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="66Y-gW-axq"/>
+                <outlet property="givenAmountView" destination="vXB-nj-QC3" id="G2y-7M-hqj"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,17 +27,50 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyX-Jd-aiQ">
                     <rect key="frame" x="0.0" y="0.0" width="477" height="76"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eP-K3-wiS">
-                            <rect key="frame" x="223.5" y="30" width="30.5" height="16.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="4eP-K3-wiS">
+                            <rect key="frame" x="45.5" y="0.0" width="426.5" height="76"/>
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXB-nj-QC3" userLabel="otherView">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="76"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsW-cb-v6A">
+                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="76"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="PsW-cb-v6A" secondAttribute="trailing" id="0AR-3b-6BJ"/>
+                                <constraint firstItem="PsW-cb-v6A" firstAttribute="top" secondItem="vXB-nj-QC3" secondAttribute="top" id="1iM-OO-ans"/>
+                                <constraint firstAttribute="width" identifier="OverlaySpecial" id="9ka-IE-MwC"/>
+                                <constraint firstAttribute="bottom" secondItem="PsW-cb-v6A" secondAttribute="bottom" id="A8e-3q-sRG"/>
+                                <constraint firstItem="PsW-cb-v6A" firstAttribute="leading" secondItem="vXB-nj-QC3" secondAttribute="leading" id="ojd-9l-l7W"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tX-qq-J2H" userLabel="labelOutsideAmount">
+                            <rect key="frame" x="10" y="0.0" width="30.5" height="76"/>
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                            <color key="textColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.69968376235206531" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstItem="4eP-K3-wiS" firstAttribute="centerX" secondItem="NyX-Jd-aiQ" secondAttribute="centerX" id="6kU-i5-GOO"/>
-                        <constraint firstItem="4eP-K3-wiS" firstAttribute="centerY" secondItem="NyX-Jd-aiQ" secondAttribute="centerY" id="TaZ-CF-B1z"/>
+                        <constraint firstAttribute="bottom" secondItem="4eP-K3-wiS" secondAttribute="bottom" id="1NO-he-iE7"/>
+                        <constraint firstItem="1tX-qq-J2H" firstAttribute="top" secondItem="NyX-Jd-aiQ" secondAttribute="top" id="Dzm-Gi-LEf"/>
+                        <constraint firstAttribute="trailing" secondItem="4eP-K3-wiS" secondAttribute="trailing" constant="5" id="EuI-X1-uno"/>
+                        <constraint firstItem="1tX-qq-J2H" firstAttribute="leading" secondItem="vXB-nj-QC3" secondAttribute="trailing" constant="10" id="FV7-KX-D6H"/>
+                        <constraint firstItem="vXB-nj-QC3" firstAttribute="top" secondItem="NyX-Jd-aiQ" secondAttribute="top" id="Jda-Yv-Yi1"/>
+                        <constraint firstItem="4eP-K3-wiS" firstAttribute="top" secondItem="NyX-Jd-aiQ" secondAttribute="top" id="RxN-5a-y8T"/>
+                        <constraint firstItem="vXB-nj-QC3" firstAttribute="leading" secondItem="NyX-Jd-aiQ" secondAttribute="leading" id="UHE-t2-tD0"/>
+                        <constraint firstAttribute="bottom" secondItem="vXB-nj-QC3" secondAttribute="bottom" id="Vd9-ui-Rsd"/>
+                        <constraint firstItem="4eP-K3-wiS" firstAttribute="leading" secondItem="1tX-qq-J2H" secondAttribute="trailing" constant="5" id="WrE-Zc-I0G"/>
+                        <constraint firstAttribute="bottom" secondItem="1tX-qq-J2H" secondAttribute="bottom" id="a24-Io-dZJ"/>
                     </constraints>
                 </view>
             </subviews>

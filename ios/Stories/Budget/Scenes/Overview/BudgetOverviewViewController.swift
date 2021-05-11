@@ -30,7 +30,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var chartViewBody: ChartViewBody!
     @IBOutlet weak var yearViewHeader: CardViewHeader!
     @IBOutlet weak var yearViewBody: YearViewBody!
-
+    
     @IBOutlet weak var givingGoalView: UIView!
     @IBOutlet weak var givingGoalViewEditLabel: UILabel!
     @IBOutlet weak var givingGoalStackItem: BackgroundShadowView!
@@ -45,7 +45,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     var originalHeightsSet = false
     var originalStackviewGivtHeight: CGFloat? = nil
     var originalStackviewNotGivtHeight: CGFloat? = nil
-        
+    
     var givingGoal: GivingGoal? = nil
     var givingGoalAmount: Double? = nil
     
@@ -68,14 +68,47 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var yearBarOneOutsideValueLabel: UILabel!
     @IBOutlet weak var yearBarTwoOutsideValueLabel: UILabel!
     
+    var collectGroupsForCurrentMonth: [MonthlySummaryDetailModel]? = nil
+    var notGivtModelsForCurrentMonth: [ExternalDonationModel]? = nil
+    
+    var monthlySummaryModels: [MonthlySummaryDetailModel]? = nil
+    var monthlySummaryModelsNotGivt: [MonthlySummaryDetailModel]? = nil
+    
+    var yearlySummary: [MonthlySummaryDetailModel]? = nil
+    var yearlySummaryNotGivt: [MonthlySummaryDetailModel]? = nil
+    
+    var amountOutsideLabel: CGRect? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    func loadData() {
+        collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth(), groupType: 2, orderType: 3))
+        
+        notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery()).result.sorted(by: { first, second in
+            first.creationDate > second.creationDate
+        })
+        
+        monthlySummaryModels = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
+        
+        monthlySummaryModelsNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
+        
+        yearlySummary = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
+        
+        yearlySummaryNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
+        
+        givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
         }
+        
+        loadData()
+        
         setupTerms()
         
         if !originalHeightsSet {
@@ -83,6 +116,10 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
             originalHeightsSet = true
         }
+       
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         setupGivingGoalCard()
         setupCollectGroupsCard()
@@ -98,14 +135,11 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         }
         
+        setupYearsCard()
+        
+        setupTestimonial()
 
-    }
-    override func viewDidAppear(_ animated: Bool) {
         SVProgressHUD.dismiss()
         
-        loadTestimonial()
-
-        setupYearsCard()
-
     }
 }

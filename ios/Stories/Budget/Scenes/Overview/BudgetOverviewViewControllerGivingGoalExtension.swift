@@ -49,15 +49,13 @@ extension BudgetOverviewViewController {
         roundCorners(view: givingGoalView)
         roundCorners(view: remainingGivingGoalView)
         roundCorners(view: givingGoalSetupView)
-        
-        givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
-        
+                
         if givingGoal != nil {
             givingGoalSetupStackItem.isHidden = true
             givingGoalStackItem.isHidden = false
             remainingGivingGoalStackItem.isHidden = false
             
-            if givingGoal!.periodicity == 0 {
+            if givingGoal!.periodicity == 1 {
                 givingGoalAmount = givingGoal!.amount / 12
                 givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
 
