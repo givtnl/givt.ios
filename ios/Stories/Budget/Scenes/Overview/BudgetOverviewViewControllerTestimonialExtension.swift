@@ -9,7 +9,7 @@
 import Foundation
 
 extension BudgetOverviewViewController {
-    func loadTestimonial() {
+    func setupTestimonial() {
         if let lastSeenTestimonial = UserDefaults.standard.lastShownTestimonial {
             let lastSeenDate: String = lastSeenTestimonial.date
             

@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import SVProgressHUD
 enum GivingGoalFrequency: Int, Codable {
-    case Yearly = 0
-    case Monthly = 1
+    case Monthly = 0
+    case Yearly = 1
 }
 class BudgetGivingGoalViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationItem!
@@ -36,8 +36,8 @@ class BudgetGivingGoalViewController: UIViewController {
     
     let frequencys: Array<Array<Any>> =
         [
-            [GivingGoalFrequency.Yearly, "BudgetExternalGiftsFrequencyYearly".localized],
-            [GivingGoalFrequency.Monthly, "BudgetExternalGiftsFrequencyMonthly".localized]
+            [GivingGoalFrequency.Monthly, "BudgetExternalGiftsFrequencyMonthly".localized],
+            [GivingGoalFrequency.Yearly, "BudgetExternalGiftsFrequencyYearly".localized]
         ]
     
     var givingGoal: GivingGoal? = nil

@@ -26,44 +26,40 @@ extension BudgetOverviewViewController {
         let currentYear = Date().getYear().string.toInt
         yearsWithValues.append(YearlySummaryItem(year: currentYear-1, amount: 0))
         yearsWithValues.append(YearlySummaryItem(year: currentYear, amount: 0))
-                
-        let fromDate = getFromDateForYearlyOverview()
-        let tillDate = getTillDateForCurrentMonth()
         
-        let yearlySummary: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
-                                                                                    fromDate: fromDate,
-                                                                                    tillDate: tillDate,
-                                                                                    groupType: 1,
-                                                                                    orderType: 0))
+        guard let yearlySummary = yearlySummary else {
+            return
+        }
         
         yearlySummary.forEach { model in
             let item = yearsWithValues.first { $0.year == model.Key.toInt }
             item?.amount = model.Value
         }
         
-        let yearlySummaryNotGivt: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(
-                                                                                            fromDate: fromDate,
-                                                                                            tillDate: tillDate,
-                                                                                            groupType: 1,
-                                                                                            orderType: 0))
+        guard let yearlySummaryNotGivt = yearlySummaryNotGivt else {
+            return
+        }
         
         yearlySummaryNotGivt.forEach { model in
             let item = yearsWithValues.first { $0.year == model.Key.toInt }
             item?.amount += model.Value
         }
         
-        let referenceValue = yearsWithValues.max { val1, val2 in val1.amount < val2.amount }!
-        // get biggest value that will be equal to max width
-//        let referenceValueItem: [String: Double]? = testValues.count > 0 ? highestTestValue! : nil
-        // get max width from superview
+        let regularReferenceValue = yearsWithValues.max { val1, val2 in val1.amount < val2.amount }!.amount
+        
+        let givingGoalReferenceValue = givingGoal != nil ? givingGoal!.periodicity == 1 ? givingGoal!.amount : givingGoal!.amount * 12 : 0.0
+        
+        let referenceValue = regularReferenceValue > givingGoalReferenceValue ? regularReferenceValue : givingGoalReferenceValue
+        
         let maxWidth = yearBarOneParent.frame.width
-        // grootstn  = maxWidth
+        
         var barOneConstraint: NSLayoutConstraint? = nil
+        
         if yearBarOne != nil {
             barOneConstraint = yearBarOne.constraints.first { constraint in constraint.identifier == "IdYearBarOne" }
             
             let lowestYear = yearsWithValues.min(by: { val1, val2 in val1.year < val2.year })!
-            let lowestYearValue = lowestYear.amount / referenceValue.amount
+            let lowestYearValue = lowestYear.amount / referenceValue
             
             barOneConstraint?.constant = maxWidth * CGFloat(lowestYearValue.isFinite ? lowestYearValue : 0)
             
@@ -73,23 +69,36 @@ extension BudgetOverviewViewController {
                 label.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
             })
             
-            if barOneConstraint!.constant-30 <= yearBarOne.amountLabel.frame.width {
-                yearBarOne.amountLabel.isHidden = true
-                if lowestYearValue.isFinite {
-                    yearBarOneOutsideValueLabel.isHidden = false
+            let barOneWidth = barOneConstraint!.constant-30
+            let labelWidth = yearBarOne.amountLabel.frame.width
+            
+            self.view.layoutIfNeeded()
+            
+            if givingGoal == nil {
+                if barOneWidth <= labelWidth {
+                    yearBarOne.amountLabel.isHidden = true
+                    if lowestYearValue.isFinite {
+                        yearBarOneOutsideValueLabel.isHidden = false
+                    }
                 }
             }
             
             yearBarOne.bgView.backgroundColor = ColorHelper.SoftenedGivtPurple
             yearBarOneOutsideValueLabel.textColor = ColorHelper.SoftenedGivtPurple
         }
-        
         let barTwoConstraint = yearBarTwo.constraints.first { constraint in constraint.identifier == "IdYearBarTwo" }
-        
+        let otherConstraint = yearBarTwo.givenAmountView.constraints.first { constraint in constraint.identifier == "OverlaySpecial" }
         let highestYear = yearsWithValues.max { val1, val2 in val1.year < val2.year }!
-        let highestYearValue = highestYear.amount / referenceValue.amount
+        let highestYearValue = highestYear.amount / referenceValue
         
-        barTwoConstraint?.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
+        if givingGoal != nil {
+            barTwoConstraint?.constant = maxWidth * CGFloat(givingGoalReferenceValue / referenceValue)
+            otherConstraint?.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
+        } else {
+            barTwoConstraint?.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
+            otherConstraint?.constant = 0
+
+        }
         
         yearBarTwoLabel.text = highestYear.year.string
         
@@ -97,15 +106,52 @@ extension BudgetOverviewViewController {
             label.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         })
         
-        if barTwoConstraint!.constant-30 <= yearBarTwo.amountLabel.frame.width {
-            yearBarTwo.amountLabel.isHidden = true
-            if highestYearValue.isFinite {
-                yearBarTwoOutsideValueLabel.isHidden = false
+        let barTwoWidth = barTwoConstraint!.constant-30
+        let labelTwoWidth = yearBarTwo.amountLabel.frame.width
+                
+        if givingGoal == nil {
+            if barTwoWidth <= labelTwoWidth {
+                yearBarTwo.amountLabel.isHidden = true
+                if highestYearValue.isFinite {
+                    yearBarTwoOutsideValueLabel.isHidden = false
+                }
             }
         }
         
         yearBarTwo.bgView.backgroundColor = ColorHelper.GivtLightGreen
         yearBarTwoOutsideValueLabel.textColor = ColorHelper.GivtLightGreen
+        
+        if givingGoal != nil {
+            yearBarTwo.bgView.backgroundColor = ColorHelper.GivtLightLightGreen
+            yearBarTwoOutsideValueLabel.textColor = ColorHelper.GivtLightLightGreen
+            
+            [yearBarTwo.amountLabel, yearBarTwoOutsideValueLabel].forEach({ label in
+                label.text = givingGoalReferenceValue.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            })
+            
+            [yearBarTwo.amountLabelInside, yearBarTwo.amountLabelOutside].forEach({ label in
+                label.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            })
+
+            let labelForWidthDetermination = UILabel()
+            labelForWidthDetermination.font = UIFont(name: "Avenir-Black", size: 12)
+            labelForWidthDetermination.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            labelForWidthDetermination.sizeToFit()
+            
+            let currentAmountViewConstant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
+            let currentAmountInsideLabel = labelForWidthDetermination.frame.width
+            
+           
+            if currentAmountInsideLabel > currentAmountViewConstant {
+                yearBarTwo.amountLabelInside.isHidden = true
+                yearBarTwo.amountLabelOutside.isHidden = false
+            } else {
+                yearBarTwo.amountLabelInside.isHidden = false
+                yearBarTwo.amountLabelOutside.isHidden = true
+                yearBarTwo.amountLabel.leadingAnchor.constraint(equalTo: yearBarTwo.givenAmountView.trailingAnchor, constant: 0).isActive = true
+            }
+            print("ah yeet")
+        }
         
         if yearsWithValues.filter({ $0.amount == 0.0 }).count == 2 {
             if yearBarOne != nil {
@@ -121,7 +167,7 @@ extension BudgetOverviewViewController {
         }
     }
     
-    private func getFromDateForYearlyOverview() -> String {
+    func getFromDateForYearlyOverview() -> String {
         var componentsForYearlySummaryComponents = DateComponents()
         componentsForYearlySummaryComponents.day = 1
         componentsForYearlySummaryComponents.month = 1
