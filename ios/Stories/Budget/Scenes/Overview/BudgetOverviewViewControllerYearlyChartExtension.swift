@@ -82,7 +82,9 @@ extension BudgetOverviewViewController {
                     }
                 }
             }
-            
+            yearBarOne.amountLabelOutside.isHidden = true
+            yearBarOne.amountLabel.leadingAnchor.constraint(equalTo: yearBarOne.givenAmountView.trailingAnchor, constant: 0).isActive = true
+
             yearBarOne.bgView.backgroundColor = ColorHelper.SoftenedGivtPurple
             yearBarOneOutsideValueLabel.textColor = ColorHelper.SoftenedGivtPurple
         }
@@ -150,7 +152,6 @@ extension BudgetOverviewViewController {
                 yearBarTwo.amountLabelOutside.isHidden = true
                 yearBarTwo.amountLabel.leadingAnchor.constraint(equalTo: yearBarTwo.givenAmountView.trailingAnchor, constant: 0).isActive = true
             }
-            print("ah yeet")
         }
         
         if yearsWithValues.filter({ $0.amount == 0.0 }).count == 2 {
