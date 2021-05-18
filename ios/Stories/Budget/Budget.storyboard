@@ -1489,7 +1489,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="timeTapped:" destination="dIS-A1-n3J" eventType="touchUpInside" id="Oko-yv-XHz"/>
+                                                            <action selector="timeTapped:" destination="dDl-4h-OqA" eventType="touchUpInside" id="J0z-SK-mZ3"/>
                                                         </connections>
                                                     </view>
                                                 </subviews>

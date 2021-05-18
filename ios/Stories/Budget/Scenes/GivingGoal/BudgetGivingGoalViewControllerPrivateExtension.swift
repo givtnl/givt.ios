@@ -28,4 +28,8 @@ private extension BudgetGivingGoalViewController {
     @IBAction func amountEditingEnded(_ sender: Any) {
         checkFields()
     }
+    
+    @IBAction func timeTapped(_ sender: Any) {
+        periodViewTextField.becomeFirstResponder()
+    }
 }
