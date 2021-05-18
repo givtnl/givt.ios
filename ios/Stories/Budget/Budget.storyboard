@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bah-Fb-fWK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bah-Fb-fWK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -497,36 +497,27 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="287" height="25"/>
                                                                                         <subviews>
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjx-To-dr8" customClass="YearViewBodyLine" customModule="ios" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="200" height="25"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="287" height="25"/>
                                                                                                 <subviews>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4N-UT-Iwz">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="25"/>
-                                                                                                        <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="287" height="25"/>
+                                                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                     </view>
                                                                                                 </subviews>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="bottom" secondItem="Z4N-UT-Iwz" secondAttribute="bottom" id="EW3-UI-iV7"/>
-                                                                                                    <constraint firstAttribute="width" constant="200" identifier="IdYearBarOne" id="WcK-WU-3K9"/>
                                                                                                     <constraint firstAttribute="trailing" secondItem="Z4N-UT-Iwz" secondAttribute="trailing" id="hJB-7M-6m3"/>
                                                                                                     <constraint firstItem="Z4N-UT-Iwz" firstAttribute="top" secondItem="xjx-To-dr8" secondAttribute="top" id="v4p-H8-FSe"/>
                                                                                                     <constraint firstItem="Z4N-UT-Iwz" firstAttribute="leading" secondItem="xjx-To-dr8" secondAttribute="leading" id="w2a-ux-e6T"/>
                                                                                                 </constraints>
                                                                                             </view>
-                                                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hK-r6-3eG">
-                                                                                                <rect key="frame" x="220" y="0.0" width="30.5" height="25"/>
-                                                                                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
-                                                                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                                <nil key="highlightedColor"/>
-                                                                                            </label>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <constraints>
-                                                                                            <constraint firstAttribute="bottom" secondItem="9hK-r6-3eG" secondAttribute="bottom" id="27v-QO-Wsr"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="xjx-To-dr8" secondAttribute="bottom" id="5Oj-60-zrJ"/>
-                                                                                            <constraint firstItem="9hK-r6-3eG" firstAttribute="leading" secondItem="xjx-To-dr8" secondAttribute="trailing" constant="20" id="DIP-lC-Maz"/>
                                                                                             <constraint firstItem="xjx-To-dr8" firstAttribute="top" secondItem="eBu-Pe-0h3" secondAttribute="top" id="S8h-su-Wmd"/>
-                                                                                            <constraint firstItem="9hK-r6-3eG" firstAttribute="top" secondItem="eBu-Pe-0h3" secondAttribute="top" id="Ubt-Jt-UcB"/>
+                                                                                            <constraint firstAttribute="trailing" secondItem="xjx-To-dr8" secondAttribute="trailing" id="d19-lP-Fsl"/>
                                                                                             <constraint firstItem="xjx-To-dr8" firstAttribute="leading" secondItem="eBu-Pe-0h3" secondAttribute="leading" id="gIa-Pa-eNd"/>
                                                                                         </constraints>
                                                                                     </view>
@@ -556,36 +547,27 @@
                                                                                         <rect key="frame" x="0.0" y="0.0" width="287" height="25"/>
                                                                                         <subviews>
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aX5-f0-D0y" customClass="YearViewBodyLine" customModule="ios" customModuleProvider="target">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="200" height="25"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="287" height="25"/>
                                                                                                 <subviews>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efz-G5-s3j">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="25"/>
-                                                                                                        <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="287" height="25"/>
+                                                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                     </view>
                                                                                                 </subviews>
                                                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstItem="Efz-G5-s3j" firstAttribute="leading" secondItem="aX5-f0-D0y" secondAttribute="leading" id="FDc-4F-HUv"/>
-                                                                                                    <constraint firstAttribute="width" constant="200" identifier="IdYearBarTwo" id="PHg-ph-XZJ"/>
                                                                                                     <constraint firstItem="Efz-G5-s3j" firstAttribute="top" secondItem="aX5-f0-D0y" secondAttribute="top" id="cMd-Lj-uAx"/>
                                                                                                     <constraint firstAttribute="trailing" secondItem="Efz-G5-s3j" secondAttribute="trailing" id="kxC-aQ-B7L"/>
                                                                                                     <constraint firstAttribute="bottom" secondItem="Efz-G5-s3j" secondAttribute="bottom" id="ttg-Hf-D7p"/>
                                                                                                 </constraints>
                                                                                             </view>
-                                                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VvG-a3-LD7">
-                                                                                                <rect key="frame" x="220" y="0.0" width="30.5" height="25"/>
-                                                                                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
-                                                                                                <color key="textColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                                                <nil key="highlightedColor"/>
-                                                                                            </label>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="bottom" secondItem="aX5-f0-D0y" secondAttribute="bottom" id="738-Fq-ike"/>
-                                                                                            <constraint firstAttribute="bottom" secondItem="VvG-a3-LD7" secondAttribute="bottom" id="7GR-lQ-aXA"/>
-                                                                                            <constraint firstItem="VvG-a3-LD7" firstAttribute="leading" secondItem="aX5-f0-D0y" secondAttribute="trailing" constant="20" id="HtH-9c-aPR"/>
                                                                                             <constraint firstItem="aX5-f0-D0y" firstAttribute="top" secondItem="xtE-Ns-GIo" secondAttribute="top" id="MtC-oc-C8E"/>
-                                                                                            <constraint firstItem="VvG-a3-LD7" firstAttribute="top" secondItem="xtE-Ns-GIo" secondAttribute="top" id="o9w-HN-aKG"/>
+                                                                                            <constraint firstAttribute="trailing" secondItem="aX5-f0-D0y" secondAttribute="trailing" id="SYg-M5-bcb"/>
                                                                                             <constraint firstItem="aX5-f0-D0y" firstAttribute="leading" secondItem="xtE-Ns-GIo" secondAttribute="leading" id="r5E-dn-NAQ"/>
                                                                                         </constraints>
                                                                                     </view>
@@ -718,12 +700,10 @@
                         <outlet property="viewBorder" destination="WM7-7D-8jP" id="HQw-9S-frz"/>
                         <outlet property="yearBarOne" destination="xjx-To-dr8" id="jtN-3j-gEe"/>
                         <outlet property="yearBarOneLabel" destination="aTa-eN-wp2" id="b3R-Xp-d8F"/>
-                        <outlet property="yearBarOneOutsideValueLabel" destination="9hK-r6-3eG" id="yUz-G3-rtM"/>
                         <outlet property="yearBarOneParent" destination="xtE-Ns-GIo" id="qt1-2I-BzA"/>
                         <outlet property="yearBarOneStackItem" destination="19F-oW-VjU" id="QxO-nW-PUc"/>
                         <outlet property="yearBarTwo" destination="aX5-f0-D0y" id="5kh-fK-EMo"/>
                         <outlet property="yearBarTwoLabel" destination="H5j-Z4-9AH" id="vmm-q0-D18"/>
-                        <outlet property="yearBarTwoOutsideValueLabel" destination="VvG-a3-LD7" id="hF0-8T-DWL"/>
                         <outlet property="yearBarTwoStackItem" destination="lhh-lp-aCr" id="ywl-Nm-cAU"/>
                         <outlet property="yearViewBody" destination="cON-ZA-46W" id="vpW-Of-A9H"/>
                         <outlet property="yearViewHeader" destination="IlB-hW-U0S" id="c1q-fx-jr5"/>
