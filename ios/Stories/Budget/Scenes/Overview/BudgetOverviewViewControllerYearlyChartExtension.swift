@@ -26,120 +26,117 @@ extension BudgetOverviewViewController {
         let currentYear = Date().getYear().string.toInt
         yearsWithValues.append(YearlySummaryItem(year: currentYear-1, amount: 0))
         yearsWithValues.append(YearlySummaryItem(year: currentYear, amount: 0))
-                
-        let fromDate = getFromDateForYearlyOverview()
-        let tillDate = getTillDateForCurrentMonth()
         
-        let yearlySummary: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
-                                                                                    fromDate: fromDate,
-                                                                                    tillDate: tillDate,
-                                                                                    groupType: 1,
-                                                                                    orderType: 0))
-        yearViewBody.years = []
+        guard let yearlySummary = yearlySummary else {
+            return
+        }
         
         yearlySummary.forEach { model in
             let item = yearsWithValues.first { $0.year == model.Key.toInt }
             item?.amount = model.Value
         }
         
-        let yearlySummaryNotGivt: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(
-                                                                                            fromDate: fromDate,
-                                                                                            tillDate: tillDate,
-                                                                                            groupType: 1,
-                                                                                            orderType: 0))
+        guard let yearlySummaryNotGivt = yearlySummaryNotGivt else {
+            return
+        }
         
         yearlySummaryNotGivt.forEach { model in
             let item = yearsWithValues.first { $0.year == model.Key.toInt }
             item?.amount += model.Value
         }
         
-        var yearChartValues: [Double] = []
+        let regularReferenceValue = yearsWithValues.max { val1, val2 in val1.amount < val2.amount }!.amount
         
-        yearsWithValues.forEach { model in
-            if model.amount != 0 {
-                yearViewBody.years.append(model.year.string)
-                yearChartValues.append(model.amount)
+        let givingGoalReferenceValue = givingGoal != nil ? givingGoal!.periodicity == 1 ? givingGoal!.amount : givingGoal!.amount * 12 : 0.0
+        
+        let referenceValue = regularReferenceValue > givingGoalReferenceValue ? regularReferenceValue : givingGoalReferenceValue
+        
+        let maxWidth = yearBarOneParent.frame.width
+        
+        if yearBarOne != nil {
+            let lowestYear = yearsWithValues.min(by: { val1, val2 in val1.year < val2.year })!
+            let lowestYearValue = lowestYear.amount / referenceValue
+            yearBarOneLabel.text = lowestYear.year.string
+            yearBarOne.givenViewWidthConstraint.constant = maxWidth * CGFloat(lowestYearValue.isFinite ? lowestYearValue : 0)
+            yearBarOne.givenView.backgroundColor = ColorHelper.SoftenedGivtPurple
+            yearBarOne.alternateLabel.textColor = ColorHelper.SoftenedGivtPurple
+            yearBarOne.givenLabel.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            yearBarOne.alternateLabel.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            yearBarOne.hideGivingGoal()
+            if #available(iOS 11.0, *) {
+                yearBarOne.givenView.layer.cornerRadius = 7
+                yearBarOne.givenView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
             }
-        }
-        
-        if yearsWithValues.filter({$0.amount != 0}).count == 1 {
-            yearViewBodyHeight.constant = 110
-            if yearViewBody.labelStackView.arrangedSubviews.count > 1 {
-                yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
-            }
-            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[0]
-        } else if yearsWithValues.filter({$0.amount != 0}).count == 2 {
-            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = yearViewBody.years[0]
-            (yearViewBody.labelStackView.arrangedSubviews[1] as! UILabel).text = yearViewBody.years[1]
-        } else {
-            yearViewBodyHeight.constant = 110
-            if yearViewBody.labelStackView.arrangedSubviews.count > 1 {
-                yearViewBody.labelStackView.arrangedSubviews[0].removeFromSuperview()
-            }
-            (yearViewBody.labelStackView.arrangedSubviews[0] as! UILabel).text = Date().getYear().string
-        }
-        
-        //setup the chart for years
-        setHorizontalChart(dataPoints:  yearViewBody.years, values: yearChartValues.reversed(), chartView: yearViewBody.chartView)
-    }
-    private func setHorizontalChart(dataPoints: [String], values: [Double], chartView: HorizontalBarChartView) {
-        var dataEntries: [BarChartDataEntry] = []
-        var chartColors: [UIColor] = []
-        
-        for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x: Double(i), y: values[i])
-            dataEntries.append(dataEntry)
-            if ((i+1) < dataPoints.count) {
-                chartColors.append(ColorHelper.SoftenedGivtPurple)
+            if yearBarOne.givenLabel.frame.width > yearBarOne.givenViewWidthConstraint.constant {
+                yearBarOne.givenLabel.isHidden = true
+                yearBarOne.alternateLabel.isHidden = false
             } else {
-                chartColors.append(ColorHelper.LightGreenChart)
+                yearBarOne.givenLabel.isHidden = false
+                yearBarOne.alternateLabel.isHidden = true
             }
         }
         
-        let chartDataSet = BarChartDataSet(entries: dataEntries)
-        chartDataSet.colors = chartColors.reversed()
-        let valuesFormatter = ChartValueFormatter()
-        chartDataSet.valueFormatter = valuesFormatter
-        chartDataSet.valueFont = UIFont(name: "Avenir-Black", size: 11)!
-        chartDataSet.valueTextColor = .white
+        if yearBarTwo != nil {
+            let highestYear = yearsWithValues.max { val1, val2 in val1.year < val2.year }!
+            let highestYearValue = highestYear.amount / referenceValue
+            yearBarTwoLabel.text = highestYear.year.string
+            yearBarTwo.givenViewWidthConstraint.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
+            yearBarTwo.givenView.backgroundColor = ColorHelper.GivtLightGreen
+            yearBarTwo.alternateLabel.textColor = ColorHelper.GivtLightGreen
+            yearBarTwo.givenLabel.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            yearBarTwo.alternateLabel.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            yearBarTwo.hideGivingGoal()
+            if #available(iOS 11.0, *) {
+                yearBarTwo.givenView.layer.cornerRadius = 7
+                yearBarTwo.givenView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+            }
+            if yearBarTwo.givenLabel.frame.width > yearBarTwo.givenViewWidthConstraint.constant {
+                yearBarTwo.givenLabel.isHidden = true
+                yearBarTwo.alternateLabel.isHidden = false
+            } else {
+                yearBarTwo.givenLabel.isHidden = false
+                yearBarTwo.alternateLabel.isHidden = true
+            }
+            
+            if givingGoal != nil {
+                let givingGoalBarWidth = (maxWidth * CGFloat(givingGoalReferenceValue / referenceValue)) - yearBarTwo.givenViewWidthConstraint.constant
+                
+                if givingGoalBarWidth > 0 {
+                    yearBarTwo.givenView.layer.cornerRadius = 0
+                    yearBarTwo.showGivingGoal()
+                    yearBarTwo.givingGoalWidthConstraint.constant = givingGoalBarWidth
+                    yearBarTwo.givingGoalLabel.text = givingGoalReferenceValue.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    yearBarTwo.givingGoalView.backgroundColor = ColorHelper.GivtLightLightGreen
+                    
+                    if #available(iOS 11.0, *) {
+                        yearBarTwo.givingGoalView.layer.cornerRadius = 7
+                        yearBarTwo.givingGoalView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+                    }
+                    
+                    if yearBarTwo.givingGoalLabel.frame.width > yearBarTwo.givingGoalWidthConstraint.constant {
+                        yearBarTwo.givingGoalLabel.isHidden = true
+                    } else {
+                        yearBarTwo.givingGoalLabel.isHidden = false
+                    }
+                }
+            }
+        }
         
-        let chartData = BarChartData(dataSet: chartDataSet)
-        chartData.barWidth = 0.9
-        chartView.data = chartData
-        
-        let leftAxis = chartView.getAxis(.left)
-        let rightAxis = chartView.getAxis(.right)
-        
-        leftAxis.drawGridLinesEnabled = false
-        rightAxis.drawGridLinesEnabled = false
-        
-        leftAxis.drawAxisLineEnabled = false
-        rightAxis.drawAxisLineEnabled = false
-        
-        leftAxis.drawLabelsEnabled = false
-        rightAxis.drawLabelsEnabled = false
-        
-        leftAxis.axisMinimum = 0
-        rightAxis.axisMinimum = 0
-        
-        chartView.drawValueAboveBarEnabled = false
-        
-        let xAxis = chartView.xAxis
-        xAxis.labelPosition = .top
-        xAxis.drawGridLinesEnabled = false;
-        xAxis.drawLabelsEnabled = false
-        xAxis.drawAxisLineEnabled = false
-        
-        leftAxis.spaceTop = 0
-        
-        chartView.data?.setDrawValues(true)
-        
-        chartView.legend.enabled = false
-        chartView.isUserInteractionEnabled = false
-        
-        chartView.animate(xAxisDuration: 0, yAxisDuration: 2.0)
+        if yearsWithValues.filter({ $0.amount == 0.0 }).count == 2 {
+            if yearBarOne != nil {
+                yearBarOneStackItem.removeFromSuperview()
+            }
+        } else if yearsWithValues.filter({ $0.amount == 0.0 }).count == 1 {
+            let emptyYear = yearsWithValues.first { item in item.amount == 0.0 }
+            if emptyYear!.year == currentYear - 1 {
+                if yearBarOne != nil {
+                    yearBarOneStackItem.removeFromSuperview()
+                }
+            }
+        }
     }
-    private func getFromDateForYearlyOverview() -> String {
+    
+    func getFromDateForYearlyOverview() -> String {
         var componentsForYearlySummaryComponents = DateComponents()
         componentsForYearlySummaryComponents.day = 1
         componentsForYearlySummaryComponents.month = 1
