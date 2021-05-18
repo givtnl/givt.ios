@@ -24,7 +24,7 @@ extension BudgetGivingGoalViewController {
         amountView.borderColor = ColorHelper.UITextFieldBorderColor
         amountView.borderWidth = 0.5
         createToolbar(amountViewTextField)
-        amountViewTextField.keyboardType = .decimalPad
+        amountViewTextField.keyboardType = .numberPad
 
         periodViewLabelDown.layer.addBorder(edge: .left, color: ColorHelper.UITextFieldBorderColor, thickness: 0.5)
         periodView.borderColor = ColorHelper.UITextFieldBorderColor
@@ -42,7 +42,7 @@ extension BudgetGivingGoalViewController {
         periodViewTextField.tintColor = .clear
         
         if let goal = givingGoal {
-            amountViewTextField.text = goal.amount.getFormattedWithoutCurrency(decimals: 2)
+            amountViewTextField.text = goal.amount.getFormattedWithoutCurrency(decimals: 0)
             periodViewTextField.text = frequencys[goal.periodicity][1] as? String
             frequencyPicker.selectRow(goal.periodicity, inComponent: 0, animated: false)
         }
