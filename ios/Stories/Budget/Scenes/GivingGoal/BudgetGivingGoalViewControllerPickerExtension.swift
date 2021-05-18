@@ -22,5 +22,6 @@ extension BudgetGivingGoalViewController: UIPickerViewDelegate, UIPickerViewData
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.periodViewTextField.text = frequencys[row][1] as? String
         pickerView.reloadAllComponents()
+        checkFields()
     }
 }
