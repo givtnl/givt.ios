@@ -11,11 +11,16 @@ import UIKit
 
 class YearViewBodyLine: UIView {
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var givenAmountView: UIView!
-    @IBOutlet weak var amountLabelInside: UILabel!
-    @IBOutlet weak var amountLabelOutside: UILabel!
+    @IBOutlet weak var givingGoalView: UIView!
+    @IBOutlet weak var givingGoalLabel: UILabel!
+    @IBOutlet weak var givingGoalWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var givenView: UIView!
+    @IBOutlet weak var givenLabel: UILabel!
+    @IBOutlet weak var givenViewWidthConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var alternateLabel: UILabel!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -36,5 +41,15 @@ class YearViewBodyLine: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    func hideGivingGoal() {
+        givingGoalView.isHidden = true
+        givingGoalLabel.isHidden = true
+    }
+    
+    func showGivingGoal() {
+        givingGoalView.isHidden = false
+        givingGoalLabel.isHidden = false
     }
 }

@@ -53,104 +53,72 @@ extension BudgetOverviewViewController {
         
         let maxWidth = yearBarOneParent.frame.width
         
-        var barOneConstraint: NSLayoutConstraint? = nil
-        
         if yearBarOne != nil {
-            barOneConstraint = yearBarOne.constraints.first { constraint in constraint.identifier == "IdYearBarOne" }
-            
             let lowestYear = yearsWithValues.min(by: { val1, val2 in val1.year < val2.year })!
             let lowestYearValue = lowestYear.amount / referenceValue
-            
-            barOneConstraint?.constant = maxWidth * CGFloat(lowestYearValue.isFinite ? lowestYearValue : 0)
-            
             yearBarOneLabel.text = lowestYear.year.string
+            yearBarOne.givenViewWidthConstraint.constant = maxWidth * CGFloat(lowestYearValue.isFinite ? lowestYearValue : 0)
+            yearBarOne.givenView.backgroundColor = ColorHelper.SoftenedGivtPurple
+            yearBarOne.alternateLabel.textColor = ColorHelper.SoftenedGivtPurple
+            yearBarOne.givenLabel.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            yearBarOne.alternateLabel.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            yearBarOne.hideGivingGoal()
+            if #available(iOS 11.0, *) {
+                yearBarOne.givenView.layer.cornerRadius = 7
+                yearBarOne.givenView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+            }
+            if yearBarOne.givenLabel.frame.width > yearBarOne.givenViewWidthConstraint.constant {
+                yearBarOne.givenLabel.isHidden = true
+                yearBarOne.alternateLabel.isHidden = false
+            } else {
+                yearBarOne.givenLabel.isHidden = false
+                yearBarOne.alternateLabel.isHidden = true
+            }
+        }
+        
+        if yearBarTwo != nil {
+            let highestYear = yearsWithValues.max { val1, val2 in val1.year < val2.year }!
+            let highestYearValue = highestYear.amount / referenceValue
+            yearBarTwoLabel.text = highestYear.year.string
+            yearBarTwo.givenViewWidthConstraint.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
+            yearBarTwo.givenView.backgroundColor = ColorHelper.GivtLightGreen
+            yearBarTwo.alternateLabel.textColor = ColorHelper.GivtLightGreen
+            yearBarTwo.givenLabel.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            yearBarTwo.alternateLabel.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            yearBarTwo.hideGivingGoal()
+            if #available(iOS 11.0, *) {
+                yearBarTwo.givenView.layer.cornerRadius = 7
+                yearBarTwo.givenView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+            }
+            if yearBarTwo.givenLabel.frame.width > yearBarTwo.givenViewWidthConstraint.constant {
+                yearBarTwo.givenLabel.isHidden = true
+                yearBarTwo.alternateLabel.isHidden = false
+            } else {
+                yearBarTwo.givenLabel.isHidden = false
+                yearBarTwo.alternateLabel.isHidden = true
+            }
             
-            [yearBarOne.amountLabel, yearBarOneOutsideValueLabel].forEach({ label in
-                label.text = lowestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            })
-            
-            let barOneWidth = barOneConstraint!.constant-30
-            let labelWidth = yearBarOne.amountLabel.frame.width
-            
-            self.view.layoutIfNeeded()
-            
-            if givingGoal == nil {
-                if barOneWidth <= labelWidth {
-                    yearBarOne.amountLabel.isHidden = true
-                    if lowestYearValue.isFinite {
-                        yearBarOneOutsideValueLabel.isHidden = false
+            if givingGoal != nil {
+                let givingGoalBarWidth = (maxWidth * CGFloat(givingGoalReferenceValue / referenceValue)) - yearBarTwo.givenViewWidthConstraint.constant
+                
+                if givingGoalBarWidth > 0 {
+                    yearBarTwo.givenView.layer.cornerRadius = 0
+                    yearBarTwo.showGivingGoal()
+                    yearBarTwo.givingGoalWidthConstraint.constant = givingGoalBarWidth
+                    yearBarTwo.givingGoalLabel.text = givingGoalReferenceValue.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    yearBarTwo.givingGoalView.backgroundColor = ColorHelper.GivtLightLightGreen
+                    
+                    if #available(iOS 11.0, *) {
+                        yearBarTwo.givingGoalView.layer.cornerRadius = 7
+                        yearBarTwo.givingGoalView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+                    }
+                    
+                    if yearBarTwo.givingGoalLabel.frame.width > yearBarTwo.givingGoalWidthConstraint.constant {
+                        yearBarTwo.givingGoalLabel.isHidden = true
+                    } else {
+                        yearBarTwo.givingGoalLabel.isHidden = false
                     }
                 }
-            }
-            yearBarOne.amountLabelOutside.isHidden = true
-            yearBarOne.amountLabel.leadingAnchor.constraint(equalTo: yearBarOne.givenAmountView.trailingAnchor, constant: 0).isActive = true
-
-            yearBarOne.bgView.backgroundColor = ColorHelper.SoftenedGivtPurple
-            yearBarOneOutsideValueLabel.textColor = ColorHelper.SoftenedGivtPurple
-        }
-        let barTwoConstraint = yearBarTwo.constraints.first { constraint in constraint.identifier == "IdYearBarTwo" }
-        let otherConstraint = yearBarTwo.givenAmountView.constraints.first { constraint in constraint.identifier == "OverlaySpecial" }
-        let highestYear = yearsWithValues.max { val1, val2 in val1.year < val2.year }!
-        let highestYearValue = highestYear.amount / referenceValue
-        
-        if givingGoal != nil {
-            barTwoConstraint?.constant = maxWidth * CGFloat(givingGoalReferenceValue / referenceValue)
-            otherConstraint?.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
-        } else {
-            barTwoConstraint?.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
-            otherConstraint?.constant = 0
-
-        }
-        
-        yearBarTwoLabel.text = highestYear.year.string
-        
-        [yearBarTwo.amountLabel, yearBarTwoOutsideValueLabel].forEach({ label in
-            label.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-        })
-        
-        let barTwoWidth = barTwoConstraint!.constant-30
-        let labelTwoWidth = yearBarTwo.amountLabel.frame.width
-                
-        if givingGoal == nil {
-            if barTwoWidth <= labelTwoWidth {
-                yearBarTwo.amountLabel.isHidden = true
-                if highestYearValue.isFinite {
-                    yearBarTwoOutsideValueLabel.isHidden = false
-                }
-            }
-        }
-        
-        yearBarTwo.bgView.backgroundColor = ColorHelper.GivtLightGreen
-        yearBarTwoOutsideValueLabel.textColor = ColorHelper.GivtLightGreen
-        
-        if givingGoal != nil {
-            yearBarTwo.bgView.backgroundColor = ColorHelper.GivtLightLightGreen
-            yearBarTwoOutsideValueLabel.textColor = ColorHelper.GivtLightLightGreen
-            
-            [yearBarTwo.amountLabel, yearBarTwoOutsideValueLabel].forEach({ label in
-                label.text = givingGoalReferenceValue.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            })
-            
-            [yearBarTwo.amountLabelInside, yearBarTwo.amountLabelOutside].forEach({ label in
-                label.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            })
-
-            let labelForWidthDetermination = UILabel()
-            labelForWidthDetermination.font = UIFont(name: "Avenir-Black", size: 12)
-            labelForWidthDetermination.text = highestYear.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            labelForWidthDetermination.sizeToFit()
-            
-            let currentAmountViewConstant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
-            let currentAmountInsideLabel = labelForWidthDetermination.frame.width
-            
-           
-            if currentAmountInsideLabel > currentAmountViewConstant {
-                yearBarTwo.amountLabelInside.isHidden = true
-                yearBarTwo.amountLabelOutside.isHidden = false
-            } else {
-                yearBarTwo.amountLabelInside.isHidden = false
-                yearBarTwo.amountLabelOutside.isHidden = true
-                yearBarTwo.amountLabel.leadingAnchor.constraint(equalTo: yearBarTwo.givenAmountView.trailingAnchor, constant: 0).isActive = true
             }
         }
         
