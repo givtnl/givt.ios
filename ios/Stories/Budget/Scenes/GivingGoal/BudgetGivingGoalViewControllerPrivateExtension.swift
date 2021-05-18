@@ -7,13 +7,17 @@
 //
 
 import Foundation
+import SVProgressHUD
 
 private extension BudgetGivingGoalViewController {
     @IBAction func backButton(_ sender: Any) {
+        SVProgressHUD.show()
         try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
     }
     
     @IBAction func buttonSave(_ sender: Any) {
+        SVProgressHUD.show()
+
         guard let amount = amountViewTextField.text?.replacingOccurrences(of: ",", with: ".").doubleValue else { return }
         guard let frequency = GivingGoalFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0)) else { return }
         
@@ -22,7 +26,10 @@ private extension BudgetGivingGoalViewController {
         
         if response.result {
             try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+        } else {
+            SVProgressHUD.dismiss()
         }
+        
     }
     
     @IBAction func amountEditingEnded(_ sender: Any) {

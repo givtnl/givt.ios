@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SVProgressHUD
 import UIKit
 
 extension BudgetGivingGoalViewController {
@@ -49,9 +50,12 @@ extension BudgetGivingGoalViewController {
     }
     
     @objc func deleteGivingGoal() {
+        SVProgressHUD.show()
         let deleteResponse: ResponseModel<Bool> = try! Mediater.shared.send(request: DeleteGivingGoalCommand())
         if deleteResponse.result {
             try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+        } else {
+            SVProgressHUD.dismiss()
         }
     }
     private func createInfoText(bold: String, normal: String) -> NSMutableAttributedString {
@@ -75,7 +79,7 @@ extension BudgetGivingGoalViewController {
             self.view.layoutIfNeeded()
         })
     }
-
+    
     @objc func keyboardWillHide(notification:NSNotification){
         bottomScrollViewConstraint.constant = 0
         UIView.animate(withDuration: 0.3, animations: {
@@ -111,6 +115,20 @@ extension BudgetGivingGoalViewController {
             amountView.borderColor = .red
         } else {
             amountView.borderColor = ColorHelper.UITextFieldBorderColor
+        }
+        
+        if givingGoal != nil {
+            if givingGoal?.periodicity != frequencyPicker.selectedRow(inComponent: 0) || givingGoal?.amount != amountViewTextField.text?.replacingOccurrences(of: ",", with: ".").doubleValue {
+                buttonSave.isEnabled = true
+            } else {
+                buttonSave.isEnabled = false
+            }
+        } else {
+            if amountViewTextField.text != String.empty {
+                buttonSave.isEnabled = true
+            } else {
+                buttonSave.isEnabled = false
+            }
         }
     }
 }
