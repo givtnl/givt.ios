@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18121" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18091"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YearViewBodyLine" customModule="ios" customModuleProvider="target">
+            <connections>
+                <outlet property="alternateLabel" destination="1tX-qq-J2H" id="pih-mK-y0f"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="66Y-gW-axq"/>
+                <outlet property="givenLabel" destination="PsW-cb-v6A" id="vDe-Ss-x5Q"/>
+                <outlet property="givenView" destination="vXB-nj-QC3" id="Qdb-bb-dqQ"/>
+                <outlet property="givenViewWidthConstraint" destination="9ka-IE-MwC" id="uqG-qG-6Kt"/>
+                <outlet property="givingGoalLabel" destination="qfi-2L-8bp" id="7RC-CX-UUL"/>
+                <outlet property="givingGoalView" destination="4Ay-Vx-w1e" id="p5Y-ez-HJF"/>
+                <outlet property="givingGoalWidthConstraint" destination="8MH-3L-a8g" id="FCe-Og-vfM"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="477" height="76"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" restorationIdentifier="innerViewYearBar" translatesAutoresizingMaskIntoConstraints="NO" id="NyX-Jd-aiQ">
+                    <rect key="frame" x="0.0" y="0.0" width="477" height="76"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ay-Vx-w1e" userLabel="givingGoalView">
+                            <rect key="frame" x="100" y="0.0" width="200" height="76"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfi-2L-8bp" userLabel="givingGoalLabel">
+                                    <rect key="frame" x="85" y="30" width="30.5" height="16.5"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.83365630800000001" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" identifier="OverlaySpecial" id="8MH-3L-a8g"/>
+                                <constraint firstItem="qfi-2L-8bp" firstAttribute="centerY" secondItem="4Ay-Vx-w1e" secondAttribute="centerY" id="am1-3x-Idj"/>
+                                <constraint firstItem="qfi-2L-8bp" firstAttribute="centerX" secondItem="4Ay-Vx-w1e" secondAttribute="centerX" id="mw3-74-x4p"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXB-nj-QC3" userLabel="givenView">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="76"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PsW-cb-v6A" userLabel="givenLabel">
+                                    <rect key="frame" x="35" y="30" width="30.5" height="16.5"/>
+                                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" identifier="OverlaySpecial" id="9ka-IE-MwC"/>
+                                <constraint firstItem="PsW-cb-v6A" firstAttribute="centerY" secondItem="vXB-nj-QC3" secondAttribute="centerY" id="Vk3-EQ-l1w"/>
+                                <constraint firstItem="PsW-cb-v6A" firstAttribute="centerX" secondItem="vXB-nj-QC3" secondAttribute="centerX" id="l25-Q6-IG6"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="idLabelOutside" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tX-qq-J2H" userLabel="alternateLabel">
+                            <rect key="frame" x="110" y="0.0" width="30.5" height="76"/>
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
+                            <color key="textColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="4Ay-Vx-w1e" firstAttribute="leading" secondItem="vXB-nj-QC3" secondAttribute="trailing" id="1IS-0w-vQv"/>
+                        <constraint firstItem="1tX-qq-J2H" firstAttribute="top" secondItem="NyX-Jd-aiQ" secondAttribute="top" id="Dzm-Gi-LEf"/>
+                        <constraint firstItem="1tX-qq-J2H" firstAttribute="leading" secondItem="vXB-nj-QC3" secondAttribute="trailing" constant="10" id="FV7-KX-D6H"/>
+                        <constraint firstItem="4Ay-Vx-w1e" firstAttribute="top" secondItem="NyX-Jd-aiQ" secondAttribute="top" id="HoX-L1-37t"/>
+                        <constraint firstItem="vXB-nj-QC3" firstAttribute="top" secondItem="NyX-Jd-aiQ" secondAttribute="top" id="Jda-Yv-Yi1"/>
+                        <constraint firstItem="vXB-nj-QC3" firstAttribute="leading" secondItem="NyX-Jd-aiQ" secondAttribute="leading" id="UHE-t2-tD0"/>
+                        <constraint firstAttribute="bottom" secondItem="vXB-nj-QC3" secondAttribute="bottom" id="Vd9-ui-Rsd"/>
+                        <constraint firstAttribute="bottom" secondItem="1tX-qq-J2H" secondAttribute="bottom" id="a24-Io-dZJ"/>
+                        <constraint firstAttribute="bottom" secondItem="4Ay-Vx-w1e" secondAttribute="bottom" id="eI7-OV-lft"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="NyX-Jd-aiQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AOe-lD-Wyd"/>
+                <constraint firstAttribute="bottom" secondItem="NyX-Jd-aiQ" secondAttribute="bottom" id="RgC-Yo-92d"/>
+                <constraint firstAttribute="trailing" secondItem="NyX-Jd-aiQ" secondAttribute="trailing" id="cOf-FQ-puV"/>
+                <constraint firstItem="NyX-Jd-aiQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ydx-ua-aEE"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="173.18840579710147" y="-45.535714285714285"/>
+        </view>
+    </objects>
+</document>
