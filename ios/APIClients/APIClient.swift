@@ -58,6 +58,39 @@ class APIClient: NSObject, URLSessionDelegate {
             }
     }
     
+    func head(url: String, timeout: Double = 60, callback: @escaping (Response?) -> Void, retryCount: Int = 0) {
+        if url != "/api/v2/status" {
+            log.info(message: "GET on " + url)
+        }
+        
+        var retries = retryCount
+        
+        var headers: [String: String] = [:]
+        if let bearerToken = UserDefaults.standard.bearerToken {
+            headers["Authorization"] = "Bearer " + bearerToken
+        }
+        
+        client.head(url: url).delegate(delegate: self)
+            .timeout(timeout: timeout)
+            .set(headers: headers)
+            .end(done: { (response:Response) in
+                if response.status == .tooManyRequests {
+                    if retries < 5 {
+                        let waitTime = self.getExponentialBackoffTime(retries: retries)
+                        retries += 1
+                        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + DispatchTimeInterval.milliseconds(waitTime)) {
+                            self.head(url: url, timeout: timeout, callback: callback, retryCount: retries)
+                        }
+                    }
+                } else {
+                    callback(response)
+                }
+            }) { (err) in
+                callback(nil)
+                self.handleError(err: err)
+            }
+    }
+    
     func put(url: String, data: [String: Any?], callback: @escaping (Response?) -> Void, retryCount: Int = 0) throws {
         log.info(message: "PUT on " + url)
         
