@@ -12,7 +12,8 @@ class GetAllExternalDonationsQueryHandler: RequestHandlerProtocol {
     private var client = APIClient.cloud
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        client.get(url: "/external-donations", data: [:]) { (response) in
+        var query = request as! GetAllExternalDonationsQuery
+        client.get(url: "/external-donations?fromDate=\(query.fromDate)&tillDate=\(query.tillDate)", data: [:]) { (response) in
             var responseModel: ExternalDonationGetAllResultModel? = nil
             
             if let response = response, response.isSuccess {

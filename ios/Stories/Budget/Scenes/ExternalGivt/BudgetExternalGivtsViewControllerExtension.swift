@@ -104,7 +104,7 @@ extension BudgetExternalGivtsViewController {
     func loadDonations() {
         originalStackviewHeightConstant = stackViewEditRowsHeight.constant
         
-        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery()).result.sorted(by: { first, second in
+        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
             first.creationDate > second.creationDate
         })
         
@@ -336,7 +336,7 @@ extension BudgetExternalGivtsViewController {
     }
     
     func reloadExternalDonationList() {
-        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery()).result.sorted(by: { first, second in
+        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
             first.creationDate > second.creationDate
         })
         
@@ -355,5 +355,49 @@ extension BudgetExternalGivtsViewController {
         
         stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44
         stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count - 1) * 10
+    }
+    
+    func getFromDateForCurrentMonth() -> String {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let currentYear = Calendar.current.component(.year, from: currentDate)
+        let currentMonth = Calendar.current.component(.month, from: currentDate)
+        var dateComponents = DateComponents()
+        dateComponents.year = currentYear
+        dateComponents.month = currentMonth
+        dateComponents.day = 1
+        let date = calendar.date(from: dateComponents)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
+    }
+    func getTillDateForCurrentMonth() -> String {
+        let calendar = Calendar.current
+        let currentDate = Date()
+        let currentYear = Calendar.current.component(.year, from: currentDate)
+        let currentMonth = Calendar.current.component(.month, from: currentDate)
+        var dateComponents = DateComponents()
+        dateComponents.year = currentYear
+        dateComponents.month = currentMonth
+        dateComponents.day = getDaysInMonth(month: Int(currentMonth), year: Int(currentYear))
+        let date = calendar.date(from: dateComponents)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
+    }
+    func getDaysInMonth(month: Int, year: Int) -> Int {
+        let calendar = Calendar.current
+        var startComps = DateComponents()
+        startComps.day = 1
+        startComps.month = month
+        startComps.year = year
+        var endComps = DateComponents()
+        endComps.day = 1
+        endComps.month = month == 12 ? 1 : month + 1
+        endComps.year = month == 12 ? year + 1 : year
+        let startDate = calendar.date(from: startComps)!
+        let endDate = calendar.date(from:endComps)!
+        let diff = calendar.dateComponents([Calendar.Component.day], from: startDate, to: endDate)
+        return diff.day!
     }
 }
