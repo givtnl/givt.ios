@@ -16,20 +16,30 @@ private extension BudgetGivingGoalViewController {
     }
     
     @IBAction func buttonSave(_ sender: Any) {
-        SVProgressHUD.show()
 
         guard let amount = amountViewTextField.text?.replacingOccurrences(of: ",", with: ".").doubleValue else { return }
         guard let frequency = GivingGoalFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0)) else { return }
-        
+
+
         let command = CreateGivingGoalCommand(givingGoal: GivingGoal(amount: amount, periodicity: frequency.rawValue))
-        let response: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
         
-        if response.result {
-            try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
-            SVProgressHUD.dismiss()
+            SVProgressHUD.show()
+            
+            NavigationManager.shared.executeWithLogin(context: self) {
+                try! Mediater.shared.sendAsync(request: command, completion: { response in
+                    DispatchQueue.main.async {
+                        if (response as ResponseModel<Bool>).result {
+                            try! Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+                        } else {
+                            SVProgressHUD.dismiss()
+                        }
+                    }
+                })
+            }
         }
-        
     }
     
     @IBAction func amountEditingEnded(_ sender: Any) {

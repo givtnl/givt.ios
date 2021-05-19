@@ -26,7 +26,7 @@ extension BudgetGivingGoalViewController {
         amountView.borderWidth = 0.5
         createToolbar(amountViewTextField)
         amountViewTextField.keyboardType = .numberPad
-
+        
         periodViewLabelDown.layer.addBorder(edge: .left, color: ColorHelper.UITextFieldBorderColor, thickness: 0.5)
         periodView.borderColor = ColorHelper.UITextFieldBorderColor
         periodView.borderWidth = 0.5
@@ -50,12 +50,21 @@ extension BudgetGivingGoalViewController {
     }
     
     @objc func deleteGivingGoal() {
-        SVProgressHUD.show()
-        let deleteResponse: ResponseModel<Bool> = try! Mediater.shared.send(request: DeleteGivingGoalCommand())
-        if deleteResponse.result {
-            try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
-            SVProgressHUD.dismiss()
+            SVProgressHUD.show()
+            NavigationManager.shared.executeWithLogin(context: self) {
+                try! Mediater.shared.sendAsync(request: DeleteGivingGoalCommand(), completion: { response in
+                    DispatchQueue.main.async {
+                        if (response as ResponseModel<Bool>).result {
+                            try! Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+                        } else {
+                            SVProgressHUD.dismiss()
+                        }
+                    }
+                })
+            }
         }
     }
     private func createInfoText(bold: String, normal: String) -> NSMutableAttributedString {
