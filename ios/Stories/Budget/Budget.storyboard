@@ -795,31 +795,34 @@
                                                                             <action selector="descriptionEditingEnd:" destination="dIS-A1-n3J" eventType="editingDidEnd" id="Kib-1C-6wT"/>
                                                                         </connections>
                                                                     </textField>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Fdj-hs-pZ4">
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Fdj-hs-pZ4">
                                                                         <rect key="frame" x="20" y="103.5" width="314" height="19.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V8M-fj-POG">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="147" height="19.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="19.5"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="150" id="ykr-n3-8u8"/>
+                                                                                </constraints>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                                 <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkO-fT-btY">
-                                                                                <rect key="frame" x="167" y="0.0" width="147" height="19.5"/>
+                                                                                <rect key="frame" x="170" y="0.0" width="144" height="19.5"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                                 <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
                                                                     </stackView>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WPx-at-NvS">
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WPx-at-NvS">
                                                                         <rect key="frame" x="20" y="128" width="314" height="44"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFO-Hn-hi6" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="147" height="44"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chevron-down" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZE-fv-DaX">
-                                                                                        <rect key="frame" x="107" y="1" width="40" height="42"/>
+                                                                                        <rect key="frame" x="110" y="1" width="40" height="42"/>
                                                                                         <gestureRecognizers/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="42" id="0dC-Vz-mzB"/>
@@ -830,7 +833,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="per maand" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="FD6-rl-HFC" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="107" height="44"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="110" height="44"/>
                                                                                         <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
@@ -846,6 +849,7 @@
                                                                                     <constraint firstItem="FD6-rl-HFC" firstAttribute="leading" secondItem="oFO-Hn-hi6" secondAttribute="leading" id="06q-29-mxN"/>
                                                                                     <constraint firstItem="2ZE-fv-DaX" firstAttribute="leading" secondItem="FD6-rl-HFC" secondAttribute="trailing" id="AJt-n7-3rW"/>
                                                                                     <constraint firstItem="2ZE-fv-DaX" firstAttribute="top" secondItem="oFO-Hn-hi6" secondAttribute="top" constant="1" id="AR8-Yi-l72"/>
+                                                                                    <constraint firstAttribute="width" constant="150" id="Li8-cY-N9c"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="2ZE-fv-DaX" secondAttribute="trailing" id="b0z-5p-i9W"/>
                                                                                     <constraint firstItem="FD6-rl-HFC" firstAttribute="top" secondItem="oFO-Hn-hi6" secondAttribute="top" id="hKU-yD-gWA"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="FD6-rl-HFC" secondAttribute="bottom" id="hnD-On-ExA"/>
@@ -864,7 +868,7 @@
                                                                                 </connections>
                                                                             </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dko-DV-N1I" customClass="BudgetExternalGivtsViewWithBorder" customModule="ios" customModuleProvider="target">
-                                                                                <rect key="frame" x="167" y="0.0" width="147" height="44"/>
+                                                                                <rect key="frame" x="170" y="0.0" width="144" height="44"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="euro-sign" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wr-my-hHb">
                                                                                         <rect key="frame" x="0.0" y="1" width="40" height="42"/>
@@ -877,7 +881,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nPl-We-QEd" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
-                                                                                        <rect key="frame" x="40" y="0.0" width="107" height="44"/>
+                                                                                        <rect key="frame" x="40" y="0.0" width="24" height="44"/>
                                                                                         <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
@@ -894,10 +898,10 @@
                                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="bottom" secondItem="4wr-my-hHb" secondAttribute="bottom" constant="1" id="7Hh-OP-wCQ"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="nPl-We-QEd" secondAttribute="trailing" id="FDX-vm-B1B"/>
                                                                                     <constraint firstItem="4wr-my-hHb" firstAttribute="top" secondItem="dko-DV-N1I" secondAttribute="top" constant="1" id="LMQ-rE-hYT"/>
+                                                                                    <constraint firstItem="nPl-We-QEd" firstAttribute="leading" secondItem="4wr-my-hHb" secondAttribute="trailing" id="VhT-LG-aGl"/>
                                                                                     <constraint firstItem="4wr-my-hHb" firstAttribute="leading" secondItem="dko-DV-N1I" secondAttribute="leading" id="XCg-X2-lYg"/>
-                                                                                    <constraint firstAttribute="trailing" secondItem="nPl-We-QEd" secondAttribute="trailing" id="hhi-2z-KsP"/>
-                                                                                    <constraint firstItem="nPl-We-QEd" firstAttribute="leading" secondItem="4wr-my-hHb" secondAttribute="trailing" id="lbA-HN-iKI"/>
                                                                                     <constraint firstItem="nPl-We-QEd" firstAttribute="top" secondItem="dko-DV-N1I" secondAttribute="top" id="pkL-Kx-iMq"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="nPl-We-QEd" secondAttribute="bottom" id="zcU-LC-iQl"/>
                                                                                 </constraints>
@@ -1081,7 +1085,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ko-yX-sgF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80" y="-619"/>
+            <point key="canvasLocation" x="79.710144927536234" y="-619.41964285714278"/>
         </scene>
         <!--Budget List View Controller-->
         <scene sceneID="aos-WA-ozq">
