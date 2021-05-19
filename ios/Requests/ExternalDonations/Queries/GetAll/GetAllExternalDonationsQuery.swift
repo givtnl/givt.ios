@@ -10,4 +10,12 @@ import Foundation
 
 class GetAllExternalDonationsQuery: RequestProtocol {
     typealias TResponse = ExternalDonationGetAllResultModel
+    
+    var fromDate: String
+    var tillDate: String
+    
+    init(fromDate: String, tillDate: String) {
+        self.fromDate = fromDate
+        self.tillDate = tillDate
+    }
 }
