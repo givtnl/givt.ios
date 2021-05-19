@@ -45,10 +45,31 @@ class FinalRegistrationViewController: UIViewController {
     }
     
     @IBAction func exit(_ sender: Any) {
-        self.hideLeftView(nil)
-        self.dismiss(animated: true, completion: nil)
-        NavigationManager.shared.loadMainPage(animated: false)
-        
+        APIClient.shared.head(url: "/api/v2/users/\(UserDefaults.standard.userExt!.guid)") { response in
+            DispatchQueue.main.async {
+                self.hideLeftView(nil)
+                self.dismiss(animated: true, completion: nil)
+                if let resp = response {
+                    if let header = resp.headers.first(where: { (key, value) in
+                        key == "x-givt-donations-count"
+                    }) {
+                        if let count = Int(header.value) {
+                            if count > 0 {
+                                NavigationManager.shared.loadHistoryPage(animated: true)
+                            } else {
+                                NavigationManager.shared.loadMainPage(animated: false)
+                            }
+                        } else {
+                            NavigationManager.shared.loadMainPage(animated: false)
+                        }
+                    } else {
+                        NavigationManager.shared.loadMainPage(animated: false)
+                    }
+                } else {
+                    NavigationManager.shared.loadMainPage(animated: false)
+                }
+            }
+        }
     }
     
     /*
