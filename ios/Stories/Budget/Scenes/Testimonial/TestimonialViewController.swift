@@ -20,7 +20,6 @@ class TestimonialViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        contentView.roundCorners(corners: .allCorners, radius: 5.0)
         contentView.layer.cornerRadius = 5.0
     }
     override func viewDidLoad() {
@@ -29,10 +28,10 @@ class TestimonialViewController: UIViewController {
         if let content = content {
             imageView.image = content.image
             descriptionLabel.attributedText = content.description
+            actionButton.setTitle(content.action.localized, for: .normal)
         }
         
         actionButton.titleLabel?.numberOfLines = 1
-        actionButton.setTitle("BudgetTestimonialSummaryAction".localized, for: .normal)
         actionButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
