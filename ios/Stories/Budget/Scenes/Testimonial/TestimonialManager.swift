@@ -15,7 +15,8 @@ class TestimonialManager {
     var pages: [Testimonial] = []
     
     init() {
-        pages.append(Testimonial(id: 1, image: UIImage(named: "testimonial1")!, description: createAttributeText(bold: "BudgetTestimonialSummaryName", normal: "BudgetTestimonialSummary")))
+        pages.append(Testimonial(id: 1, image: UIImage(named: "testimonial1")!, description: createAttributeText(bold: "BudgetTestimonialSummaryName", normal: "BudgetTestimonialSummary"), action: "BudgetTestimonialSummaryAction"))
+        pages.append(Testimonial(id: 2, image: UIImage(named: "testimonial3")!, description: createAttributeText(bold: "BudgetTestimonialGivingGoalName", normal: "BudgetTestimonialGivingGoal"), action: "BudgetTestimonialSummaryAction"))
     }
     
     func createAttributeText(bold: String, normal: String) -> NSMutableAttributedString {
