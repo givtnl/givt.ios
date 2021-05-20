@@ -41,5 +41,19 @@ class TestimonialViewController: UIViewController {
     
     @IBAction func actionButton(_ sender: Any) {
         (parent as! TestimonialCarouselViewController).dismissOverlay()
+        switch content?.id {
+        case 1:
+            (parent as! TestimonialCarouselViewController).dismissOverlay()
+        case 2:
+            if !AppServices.shared.isServerReachable {
+                try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+            } else {
+                NavigationManager.shared.executeWithLogin(context: self) {
+                    try? Mediater.shared.send(request: OpenGivingGoalRoute(), withContext: self)
+                }
+            }
+        }
+        default:
+            (parent as! TestimonialCarouselViewController).dismissOverlay()
     }
 }
