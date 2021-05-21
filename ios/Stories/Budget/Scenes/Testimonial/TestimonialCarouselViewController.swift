@@ -48,7 +48,7 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
             var vcs = viewControllerList! as! [TestimonialViewController]
             
             vcs = vcs.sorted(by: {first,second in
-                return first.content!.id > second.content!.id
+                return first.content!.id < second.content!.id
             })
             
             if let latestVc: TestimonialViewController = vcs.first(where: { $0.content!.id > UserDefaults.standard.lastShownTestimonial!.id }) {
