@@ -1061,7 +1061,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "BudgetExternalGiftsAdd" = "Add";
 "BudgetExternalGiftsSave" = "Save";
 "BudgetGivingGoalTitle" = "Setup giving goal";
-"BudgetGivingGoalInfo" = "Give consciously. Consider each month whether your giving behavior matches your personal ambitions.";
+"BudgetGivingGoalInfo" = "Give consciously. Consider each month whether your giving behaviour matches your personal ambitions.";
 "BudgetGivingGoalMine" = "My giving goal";
 "BudgetGivingGoalTime" = "Period";
 "BudgetSummaryGivingGoalMonth" = "Monthly giving goal";
@@ -1087,7 +1087,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "BudgetPushMonthly" = "See what you have given this month.";
 "BudgetPushYearly" = "View your annual overview and see what you have given so far.";
 "BudgetTooltipGivingGoal" = "Give consciously. Consider each month whether your giving behaviour matches your personal ambitions.";
-"BudgetTooltipExternalGifts" = "Add what you're donating outside of Givt. Everything will appear in your summary. WIth all your donations included you'll get the best insight.";
+"BudgetTooltipExternalGifts" = "Add what you're donating outside of Givt. Everything will appear in your summary. With all your donations included you'll get the best insight.";
 "BudgetTooltipYearly" = "One overview for the tax return? View the overview of all your donations here.";
 "BudgetPushMonthlyBold" = "Your monthly summary is ready.";
 "BudgetPushYearlyBold" = "2021 is almost over ... Have you made up your balance?";
@@ -1106,3 +1106,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "BudgetTestimonialYearlyOverviewName" = "Jonathan:";
 "BudgetTestimonialSummaryAction" = "View your summary";
 "BudgetTestimonialGivingGoalAction" = "Setup your giving goal";
+"BudgetTestimonialExternalGiftsAction" = "Add external donations";
