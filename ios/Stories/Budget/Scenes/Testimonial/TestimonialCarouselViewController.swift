@@ -19,11 +19,16 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
         viewControllerList = [UIViewController]()
         
         let storyboard = UIStoryboard.init(name: "Budget", bundle: nil)
+        
         pages.forEach { pageContent in
             let vc = storyboard.instantiateViewController(withIdentifier: "TestimonialViewController") as! TestimonialViewController
             vc.content = pageContent
             viewControllerList.append(vc)
         }
+        
+        viewControllerList = (viewControllerList as! [TestimonialViewController]).sorted(by: { first, second in
+            return first.content!.id < second.content!.id
+        })
     }
     
     override func viewDidLoad() {
@@ -44,10 +49,7 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
             UserDefaults.standard.lastShownTestimonial = TestimonialSetting(id: 1, date: Date().formattedYearAndMonth)
             pageControl.currentPage = 0
         } else {
-            let lastSeenTestimonialId = lastSeenTestimonial!.id
-            var vcs = viewControllerList! as! [TestimonialViewController]
-            
-            vcs = vcs.sorted(by: {first,second in
+            let vcs = (viewControllerList as! [TestimonialViewController]).sorted(by: { first, second in
                 return first.content!.id < second.content!.id
             })
             
@@ -56,10 +58,8 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
                 setViewControllers([latestVc], direction: .forward, animated: true, completion: nil)
                 pageControl.currentPage = latestVc.content!.id - 1
             } else {
-                let lastSeenViewController = vcs.first(where: { $0.content!.id == lastSeenTestimonialId })!
-                
+                let lastSeenViewController = vcs.first(where: { $0.content!.id == lastSeenTestimonial!.id })!
                 setViewControllers([lastSeenViewController], direction: .forward, animated: true, completion: nil)
-                
                 pageControl.currentPage = lastSeenViewController.content!.id - 1
             }
         }
