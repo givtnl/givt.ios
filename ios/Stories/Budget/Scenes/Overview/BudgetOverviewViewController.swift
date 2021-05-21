@@ -65,8 +65,6 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var yearBarOneLabel: UILabel!
     @IBOutlet weak var yearBarTwo: YearViewBodyLine!
     @IBOutlet weak var yearBarTwoLabel: UILabel!
-    @IBOutlet weak var yearBarOneOutsideValueLabel: UILabel!
-    @IBOutlet weak var yearBarTwoOutsideValueLabel: UILabel!
     
     var collectGroupsForCurrentMonth: [MonthlySummaryDetailModel]? = nil
     var notGivtModelsForCurrentMonth: [ExternalDonationModel]? = nil

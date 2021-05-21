@@ -76,8 +76,8 @@
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAA-2C-iT9">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="117" height="45"/>
                                                                                                         <subviews>
-                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€75,50   " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="VcP-Bk-bX1">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="91.5" height="45"/>
+                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="VcP-Bk-bX1">
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="112" height="45"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="22"/>
                                                                                                                 <color key="textColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.92305272169999997" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -95,7 +95,7 @@
                                                                                                         <rect key="frame" x="117" y="0.0" width="117" height="45"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Streefbedrag per maand" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="7xc-WH-UDc">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="134" height="45"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="112" height="45"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -153,8 +153,8 @@
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGx-Bc-5Hs">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="117" height="60"/>
                                                                                                         <subviews>
-                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€75,50   " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="WJ9-nP-Xxa">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="91.5" height="60"/>
+                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="WJ9-nP-Xxa">
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="112" height="60"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="22"/>
                                                                                                                 <color key="textColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.92305272169999997" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -172,7 +172,7 @@
                                                                                                         <rect key="frame" x="117" y="0.0" width="117" height="60"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Resterend streefbedrag" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yba-5u-Wtc">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="129.5" height="60"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="112" height="60"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -223,7 +223,7 @@
                                                                                                 <rect key="frame" x="0.0" y="65" width="234" height="20"/>
                                                                                                 <subviews>
                                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bewust geven? Stel een streefbedrag in om jezelf te motiveren. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d23-TR-ilx">
-                                                                                                        <rect key="frame" x="10" y="10" width="128" height="0.0"/>
+                                                                                                        <rect key="frame" x="10" y="10" width="214" height="0.0"/>
                                                                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                                                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                         <nil key="highlightedColor"/>
@@ -881,7 +881,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nPl-We-QEd" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
-                                                                                        <rect key="frame" x="40" y="0.0" width="24" height="44"/>
+                                                                                        <rect key="frame" x="40" y="0.0" width="4" height="44"/>
                                                                                         <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
@@ -1634,10 +1634,10 @@
             <size key="intrinsicContentSize" width="249" height="32"/>
         </designable>
         <designable name="FD6-rl-HFC">
-            <size key="intrinsicContentSize" width="89" height="21"/>
+            <size key="intrinsicContentSize" width="69" height="21"/>
         </designable>
         <designable name="LId-pm-2Vg">
-            <size key="intrinsicContentSize" width="89" height="21"/>
+            <size key="intrinsicContentSize" width="69" height="21"/>
         </designable>
         <designable name="VB2-d6-wv3">
             <size key="intrinsicContentSize" width="52" height="34"/>
@@ -1646,22 +1646,22 @@
             <size key="intrinsicContentSize" width="193" height="37"/>
         </designable>
         <designable name="fw9-Ih-bGG">
-            <size key="intrinsicContentSize" width="38" height="34"/>
+            <size key="intrinsicContentSize" width="32" height="34"/>
         </designable>
         <designable name="jqY-Sp-MoJ">
-            <size key="intrinsicContentSize" width="46" height="20"/>
+            <size key="intrinsicContentSize" width="46" height="32"/>
         </designable>
         <designable name="nPl-We-QEd">
-            <size key="intrinsicContentSize" width="24" height="21"/>
+            <size key="intrinsicContentSize" width="4" height="21"/>
         </designable>
         <designable name="oFO-Hn-hi6">
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="ogd-Cg-1kQ">
-            <size key="intrinsicContentSize" width="58" height="25"/>
+            <size key="intrinsicContentSize" width="58" height="37"/>
         </designable>
         <designable name="rLR-S7-3JI">
-            <size key="intrinsicContentSize" width="24" height="21"/>
+            <size key="intrinsicContentSize" width="4" height="21"/>
         </designable>
         <designable name="rrV-x6-BW3">
             <size key="intrinsicContentSize" width="58" height="37"/>
