@@ -29,12 +29,6 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.subviews.forEach { view in
-            if let subView = view as? UIScrollView {
-                subView.bounces = false
-            }
-        }
-        
         if pages.count > 1 {
             pageControl.currentPageIndicatorTintColor = ColorHelper.GivtPurple
             pageControl.pageIndicatorTintColor = ColorHelper.LightGrey
