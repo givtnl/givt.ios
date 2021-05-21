@@ -67,7 +67,13 @@ extension BudgetOverviewViewController {
                 yearBarOne.givenView.layer.cornerRadius = 7
                 yearBarOne.givenView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
             }
-            if yearBarOne.givenLabel.frame.width > yearBarOne.givenViewWidthConstraint.constant {
+            
+            let labelForWidth = UILabel()
+            labelForWidth.font = UIFont(name: "Avenir-Black", size: 12)
+            labelForWidth.text = yearBarOne.givenLabel.text
+            labelForWidth.sizeToFit()
+            
+            if labelForWidth.frame.width > yearBarOne.givenViewWidthConstraint.constant {
                 yearBarOne.givenLabel.isHidden = true
                 yearBarOne.alternateLabel.isHidden = false
             } else {
@@ -90,7 +96,13 @@ extension BudgetOverviewViewController {
                 yearBarTwo.givenView.layer.cornerRadius = 7
                 yearBarTwo.givenView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
             }
-            if yearBarTwo.givenLabel.frame.width > yearBarTwo.givenViewWidthConstraint.constant {
+            
+            let labelForWidth = UILabel()
+            labelForWidth.font = UIFont(name: "Avenir-Black", size: 12)
+            labelForWidth.text = yearBarTwo.givenLabel.text
+            labelForWidth.sizeToFit()
+
+            if labelForWidth.frame.width > yearBarTwo.givenViewWidthConstraint.constant {
                 yearBarTwo.givenLabel.isHidden = true
                 yearBarTwo.alternateLabel.isHidden = false
             } else {
