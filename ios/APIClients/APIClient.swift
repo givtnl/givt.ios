@@ -60,7 +60,7 @@ class APIClient: NSObject, URLSessionDelegate {
     
     func head(url: String, timeout: Double = 60, callback: @escaping (Response?) -> Void, retryCount: Int = 0) {
         if url != "/api/v2/status" {
-            log.info(message: "GET on " + url)
+            log.info(message: "HEAD on " + url)
         }
         
         var retries = retryCount
