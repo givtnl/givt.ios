@@ -52,8 +52,16 @@ class TestimonialViewController: UIViewController {
                     try? Mediater.shared.send(request: OpenGivingGoalRoute(), withContext: self)
                 }
             }
-            default:
-                (parent as! TestimonialCarouselViewController).dismissOverlay()
+        case 3:
+            if !AppServices.shared.isServerReachable {
+                try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+            } else {
+                NavigationManager.shared.executeWithLogin(context: self) {
+                    try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
+                }
+            }
+        default:
+            (parent as! TestimonialCarouselViewController).dismissOverlay()
         }
     }
 }
