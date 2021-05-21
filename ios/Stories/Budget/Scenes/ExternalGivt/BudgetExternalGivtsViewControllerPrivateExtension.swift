@@ -57,7 +57,7 @@ private extension BudgetExternalGivtsViewController {
                 let _: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
                 self.resetFields()
                 self.reloadExternalDonationList()
-                self.viewExternalGivtsTime.isEnabled = true
+                self.enableTime()
                 self.checkFields()
                 self.somethingHappened = true
             }
@@ -108,10 +108,7 @@ private extension BudgetExternalGivtsViewController {
             resetBorder(textField: textFieldExternalGivtsOrganisation)
             resetBorder(view: viewExternalGivtsAmount)
             buttonExternalGivtsAdd.isEnabled = false
-            viewExternalGivtsTime.isEnabled = true
-            viewExternalGivtsTime.backgroundColor = .clear
-            labelChevronDown.textColor = ColorHelper.GivtPurple
-            textFieldExternalGivtsTime.textColor = ColorHelper.GivtPurple
+            enableTime()
             modelBeeingEdited = nil
         }
         

@@ -182,10 +182,9 @@ extension BudgetExternalGivtsViewController {
                 self.buttonExternalGivtsAdd.isEnabled = false
                 self.viewExternalGivtsTime.isEnabled = true
                 self.modelBeeingEdited = nil
+                self.enableTime()
             }
         }
-        
-       
         
         resetButtonState()
         SVProgressHUD.dismiss()
@@ -208,12 +207,23 @@ extension BudgetExternalGivtsViewController {
         
         buttonExternalGivtsAdd.isEnabled = false
 
+        disableTime()
+        
+        mainScrollView.scrollToBottom()
+    }
+    
+    func disableTime() {
         viewExternalGivtsTime.isEnabled = false
         viewExternalGivtsTime.backgroundColor = UIColor(cgColor: ColorHelper.SummaryLightGray.cgColor.copy(alpha: 0.35)!)
         textFieldExternalGivtsTime.textColor = UIColor(cgColor: textFieldExternalGivtsTime.textColor!.cgColor.copy(alpha: 0.35)!)
         labelChevronDown.textColor = UIColor(cgColor: labelChevronDown.textColor.cgColor.copy(alpha: 0.35)!)
-        
-        mainScrollView.scrollToBottom()
+    }
+    
+    func enableTime() {
+        viewExternalGivtsTime.isEnabled = true
+        viewExternalGivtsTime.backgroundColor = .white
+        textFieldExternalGivtsTime.textColor = ColorHelper.GivtPurple
+        labelChevronDown.textColor = ColorHelper.GivtPurple
     }
     
     private func getEditRowFrom(button: UIButton) -> BudgetExternalGivtsEditRow {
