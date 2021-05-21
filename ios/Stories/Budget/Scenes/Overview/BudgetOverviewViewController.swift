@@ -106,9 +106,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
         }
-        
-        loadData()
-        
+                
         setupTerms()
         
         if !originalHeightsSet {
@@ -116,11 +114,12 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
             originalHeightsSet = true
         }
-       
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        loadData()
+
         setupGivingGoalCard()
         setupCollectGroupsCard()
         setupMonthsCard()
