@@ -53,14 +53,11 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
                 return first.content!.id < second.content!.id
             })
             
-            if let latestVc: TestimonialViewController = vcs.first(where: { $0.content!.id > UserDefaults.standard.lastShownTestimonial!.id }) {
-                UserDefaults.standard.lastShownTestimonial = TestimonialSetting(id: latestVc.content!.id, date: Date().formattedYearAndMonth)
-                setViewControllers([latestVc], direction: .forward, animated: true, completion: nil)
-                pageControl.currentPage = latestVc.content!.id - 1
+            if let nextVc: TestimonialViewController = vcs.first(where: { $0.content!.id > UserDefaults.standard.lastShownTestimonial!.id }) {
+                UserDefaults.standard.lastShownTestimonial = TestimonialSetting(id: nextVc.content!.id, date: Date().formattedYearAndMonth)
+                loadPageAtIndex(self.viewControllerList.firstIndex(of: nextVc)!)
             } else {
-                let lastSeenViewController = vcs.first(where: { $0.content!.id == lastSeenTestimonial!.id })!
-                setViewControllers([lastSeenViewController], direction: .forward, animated: true, completion: nil)
-                pageControl.currentPage = lastSeenViewController.content!.id - 1
+                loadPageAtIndex(vcs.count - 1)
             }
         }
     }
