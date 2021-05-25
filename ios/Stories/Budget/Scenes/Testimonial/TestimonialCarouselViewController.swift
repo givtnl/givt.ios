@@ -34,14 +34,14 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if pages.count > 1 {
-            pageControl.currentPageIndicatorTintColor = ColorHelper.GivtPurple
-            pageControl.pageIndicatorTintColor = ColorHelper.LightGrey
-            NSLayoutConstraint.activate([
-                pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50)
-            ])
-        }
+        pageControl.currentPageIndicatorTintColor = ColorHelper.GivtPurple
+        pageControl.pageIndicatorTintColor = ColorHelper.LightGrey
+        pageControl.hidesForSinglePage = true
+        
+        NSLayoutConstraint.activate([
+            pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50)
+        ])
         
         let lastSeenTestimonial = UserDefaults.standard.lastShownTestimonial
         
