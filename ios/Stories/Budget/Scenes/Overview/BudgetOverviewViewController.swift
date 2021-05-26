@@ -14,6 +14,7 @@ struct YearChartValue {
     var value: Double
 }
 class BudgetOverviewViewController : UIViewController, OverlayHost {
+    @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var monthlySummaryTile: MonthlySummary!
     @IBOutlet weak var givtNowButton: CustomButton!
     @IBOutlet weak var monthlyCardHeader: CardViewHeader!
@@ -78,10 +79,16 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     var amountOutsideLabel: CGRect? = nil
     
     @IBOutlet weak var monthPickerView: CustomButton!
-    @IBOutlet weak var pickerMonthLabel: TextFieldWithInset!
+    @IBOutlet weak var monthPickerLabel: TextFieldWithInset!
+    
+    var monthPicker: UIPickerView!
+    var monthPickerData: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: self.view.window)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: self.view.window)
     }
     
     func loadData() {
@@ -115,12 +122,13 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
             originalHeightsSet = true
         }
+        
+        setupMonthPicker()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         loadData()
-        setupMonthPicker()
         setupGivingGoalCard()
         setupCollectGroupsCard()
         setupMonthsCard()
