@@ -77,6 +77,9 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     
     var amountOutsideLabel: CGRect? = nil
     
+    @IBOutlet weak var monthPickerView: CustomButton!
+    @IBOutlet weak var pickerMonthLabel: TextFieldWithInset!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -117,7 +120,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         super.viewDidAppear(animated)
         
         loadData()
-
+        setupMonthPicker()
         setupGivingGoalCard()
         setupCollectGroupsCard()
         setupMonthsCard()
