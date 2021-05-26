@@ -56,8 +56,6 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
             if let nextVc: TestimonialViewController = vcs.first(where: { $0.content!.id > UserDefaults.standard.lastShownTestimonial!.id }) {
                 UserDefaults.standard.lastShownTestimonial = TestimonialSetting(id: nextVc.content!.id, date: Date().formattedYearAndMonth)
                 loadPageAtIndex(self.viewControllerList.firstIndex(of: nextVc)!)
-            } else {
-                loadPageAtIndex(vcs.count - 1)
             }
         }
     }
