@@ -11,6 +11,11 @@ import Foundation
 extension BudgetOverviewViewController {
     func setupTestimonial() {
         if let lastSeenTestimonial = UserDefaults.standard.lastShownTestimonial {
+            
+            guard TestimonialManager.shared.pages.contains(where: { testimonial in
+                testimonial.id > lastSeenTestimonial.id
+            }) else { return }
+            
             let lastSeenDate: String = lastSeenTestimonial.date
             
             guard lastSeenDate.contains("-") else {
