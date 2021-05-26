@@ -9,5 +9,8 @@
 import Foundation
 
 class OpenSummaryRoute: NoResponseRequest {
-    
+    var fromDate: Date
+    init(fromDate: Date) {
+        self.fromDate = fromDate
+    }
 }

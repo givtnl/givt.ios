@@ -84,6 +84,8 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     var monthPicker: UIPickerView!
     var monthPickerData: [String]!
     
+    var fromMonth: Date!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -91,10 +93,10 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: self.view.window)
     }
     
-    func loadData() {
-        collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth(), groupType: 2, orderType: 3))
+    func loadData(_ fromMonth: Date) {
+        collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getStartDateOfMonth(date: fromMonth),tillDate: getEndDateOfMonth(date: fromMonth), groupType: 2, orderType: 3))
         
-        notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
+        notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getStartDateOfMonth(date: fromMonth), tillDate: getEndDateOfMonth(date: fromMonth))).result.sorted(by: { first, second in
             first.creationDate > second.creationDate
         })
         
@@ -109,6 +111,35 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
         
     }
+    
+    func getStartDateOfMonth(date: Date) -> String {
+        let calendar = Calendar.current
+        let currentYear = Calendar.current.component(.year, from: date)
+        let currentMonth = Calendar.current.component(.month, from: date)
+        var dateComponents = DateComponents()
+        dateComponents.year = currentYear
+        dateComponents.month = currentMonth
+        dateComponents.day = 1
+        let date = calendar.date(from: dateComponents)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    func getEndDateOfMonth(date: Date) -> String {
+        let calendar = Calendar.current
+        let currentYear = Calendar.current.component(.year, from: date)
+        let currentMonth = Calendar.current.component(.month, from: date) + 1
+        var dateComponents = DateComponents()
+        dateComponents.year = currentYear
+        dateComponents.month = currentMonth
+        dateComponents.day = -1
+        let date = calendar.date(from: dateComponents)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !SVProgressHUD.isVisible() {
@@ -128,7 +159,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        loadData()
+        loadData(fromMonth)
         setupGivingGoalCard()
         setupCollectGroupsCard()
         setupMonthsCard()

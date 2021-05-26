@@ -156,7 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 try? Mediater.shared.send(request: NoInternetAlert(), withContext: mainViewController)
             }
             
-            try? Mediater.shared.sendAsync(request: OpenSummaryRoute(), withContext: mainViewController) { }
+            try? Mediater.shared.sendAsync(request: OpenSummaryRoute(fromDate: Date()), withContext: mainViewController) { }
         }
     }
     func doMagicForPresets() {
