@@ -11,7 +11,9 @@ import UIKit
 
 extension BudgetOverviewViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func setupMonthPicker() {
-        monthPickerData = getMonths().reversed()
+        monthPickerData = getMonths().sorted(by: { first, second in
+            first.value > second.value
+        }).map({$0.key})
         monthPickerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openMonthPicker)))
         
         monthPickerLabel.layer.addBorder(edge: .left, color: ColorHelper.UITextFieldBorderColor, thickness: 0.5)
@@ -35,14 +37,14 @@ extension BudgetOverviewViewController: UIPickerViewDelegate, UIPickerViewDataSo
         print("press works")
     }
     
-    private func getMonths() -> [String] {
+    private func getMonths() -> [String: Date] {
         let calendar = Calendar.current
         var date = Date()
-        var monthStrings: [String] = [date.getMonthNameLong()]
+        var monthStrings: [String: Date] = [date.getMonthNameLong(): date]
         
         while monthStrings.count < 12 {
             date = calendar.date(byAdding: .month, value: -1, to: date)!
-            monthStrings.append(date.getMonthNameLong())
+            monthStrings[date.getMonthNameLong()] = date
         }
         
         return monthStrings
