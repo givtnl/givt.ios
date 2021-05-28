@@ -31,6 +31,7 @@ extension BudgetOverviewViewController {
         givingGoalSetupViewLabel.attributedText = createInfoText(bold: "BudgetSummarySetGoalBold", normal: "BudgetSummarySetGoal")
         givingGoalPerMonthInfo.text = "BudgetSummaryGivingGoalMonth".localized
         givingGoalRemainingInfo.text = "BudgetSummaryGivingGoalRest".localized
+        givingGoalReachedLabel.text = "BudgetSummaryGivingGoal".localized
     }
     
     @objc func noGivtsAction(_ sender: UITapGestureRecognizer) {

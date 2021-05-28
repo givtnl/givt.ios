@@ -33,6 +33,7 @@
         <!--BudgetViewController-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Y6W-OH-hqX" userLabel="BudgetViewController" customClass="BudgetOverviewViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -77,7 +78,7 @@
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="117" height="45"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="VcP-Bk-bX1">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="112" height="45"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="45"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="22"/>
                                                                                                                 <color key="textColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.92305272169999997" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -95,7 +96,7 @@
                                                                                                         <rect key="frame" x="117" y="0.0" width="117" height="45"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Streefbedrag per maand" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="7xc-WH-UDc">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="112" height="45"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="134" height="45"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -138,6 +139,7 @@
                                                                                     <constraint firstItem="vos-CL-2bt" firstAttribute="leading" secondItem="fh5-Ba-QSD" secondAttribute="leading" id="Fz9-nQ-jY9"/>
                                                                                     <constraint firstItem="vos-CL-2bt" firstAttribute="top" secondItem="fh5-Ba-QSD" secondAttribute="top" id="GFP-C6-z6Z"/>
                                                                                     <constraint firstAttribute="bottom" secondItem="vos-CL-2bt" secondAttribute="bottom" id="IFp-Ly-0ot"/>
+                                                                                    <constraint firstAttribute="height" constant="85" id="WSP-Th-75n"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="vos-CL-2bt" secondAttribute="trailing" id="jmX-pS-9WW"/>
                                                                                 </constraints>
                                                                             </view>
@@ -154,7 +156,7 @@
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="117" height="60"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="WJ9-nP-Xxa">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="112" height="60"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="60"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="22"/>
                                                                                                                 <color key="textColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.92305272169999997" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -172,7 +174,7 @@
                                                                                                         <rect key="frame" x="117" y="0.0" width="117" height="60"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Resterend streefbedrag" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yba-5u-Wtc">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="112" height="60"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="129.5" height="60"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -206,6 +208,46 @@
                                                                                     <constraint firstItem="jhe-Vc-0Rs" firstAttribute="top" secondItem="KeT-SQ-G9X" secondAttribute="top" id="vH9-ge-GOM"/>
                                                                                 </constraints>
                                                                             </view>
+                                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JS8-Mh-doi" userLabel="Giving goal finished" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="160" width="234" height="60"/>
+                                                                                <subviews>
+                                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scM-XA-hkV">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="234" height="60"/>
+                                                                                        <subviews>
+                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="givy_giving_goal" translatesAutoresizingMaskIntoConstraints="NO" id="eNy-qe-ytj">
+                                                                                                <rect key="frame" x="10" y="10" width="70" height="50"/>
+                                                                                                <constraints>
+                                                                                                    <constraint firstAttribute="width" constant="70" id="h0J-8U-e3W"/>
+                                                                                                    <constraint firstAttribute="height" constant="50" id="x8I-DW-Wng"/>
+                                                                                                </constraints>
+                                                                                            </imageView>
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Streefbedrag gehaald" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Et-vh-SrL">
+                                                                                                <rect key="frame" x="100" y="15" width="119" height="30"/>
+                                                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
+                                                                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                                <nil key="highlightedColor"/>
+                                                                                            </label>
+                                                                                        </subviews>
+                                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="bottom" secondItem="0Et-vh-SrL" secondAttribute="bottom" constant="15" id="26n-Lo-5N9"/>
+                                                                                            <constraint firstItem="eNy-qe-ytj" firstAttribute="leading" secondItem="scM-XA-hkV" secondAttribute="leading" constant="10" id="gsB-sQ-l1Z"/>
+                                                                                            <constraint firstItem="0Et-vh-SrL" firstAttribute="leading" secondItem="eNy-qe-ytj" secondAttribute="trailing" constant="20" id="n20-H6-a9w"/>
+                                                                                            <constraint firstAttribute="bottom" secondItem="eNy-qe-ytj" secondAttribute="bottom" id="pFW-gV-mYt"/>
+                                                                                            <constraint firstItem="0Et-vh-SrL" firstAttribute="top" secondItem="scM-XA-hkV" secondAttribute="top" constant="15" id="r1z-45-qBC"/>
+                                                                                            <constraint firstAttribute="trailing" secondItem="0Et-vh-SrL" secondAttribute="trailing" constant="20" id="tcJ-Ir-TG9"/>
+                                                                                        </constraints>
+                                                                                    </view>
+                                                                                </subviews>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="scM-XA-hkV" firstAttribute="top" secondItem="JS8-Mh-doi" secondAttribute="top" id="1zc-53-pcJ"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="scM-XA-hkV" secondAttribute="trailing" id="22m-ho-ky4"/>
+                                                                                    <constraint firstAttribute="height" constant="60" id="OXL-C7-AHY"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="scM-XA-hkV" secondAttribute="bottom" id="edE-9R-6B4"/>
+                                                                                    <constraint firstItem="scM-XA-hkV" firstAttribute="leading" secondItem="JS8-Mh-doi" secondAttribute="leading" id="yeg-5F-hp1"/>
+                                                                                </constraints>
+                                                                            </view>
                                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8p-c6-6je" userLabel="Giving Goal Setup Stack Item" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="160" width="234" height="85"/>
                                                                                 <subviews>
@@ -223,7 +265,7 @@
                                                                                                 <rect key="frame" x="0.0" y="65" width="234" height="20"/>
                                                                                                 <subviews>
                                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bewust geven? Stel een streefbedrag in om jezelf te motiveren. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d23-TR-ilx">
-                                                                                                        <rect key="frame" x="10" y="10" width="214" height="0.0"/>
+                                                                                                        <rect key="frame" x="10" y="10" width="128" height="0.0"/>
                                                                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                                                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                         <nil key="highlightedColor"/>
@@ -677,6 +719,8 @@
                         <outlet property="chartViewHeader" destination="nNJ-DF-KkV" id="EU4-z8-GX7"/>
                         <outlet property="givingGoalPerMonthInfo" destination="7xc-WH-UDc" id="3HY-wn-4n3"/>
                         <outlet property="givingGoalPerMonthText" destination="VcP-Bk-bX1" id="b2E-Sg-DFH"/>
+                        <outlet property="givingGoalReachedLabel" destination="0Et-vh-SrL" id="tCe-GO-pyJ"/>
+                        <outlet property="givingGoalReachedStackItem" destination="JS8-Mh-doi" id="rTW-Fa-ucZ"/>
                         <outlet property="givingGoalRemaining" destination="WJ9-nP-Xxa" id="WHI-Pb-YV8"/>
                         <outlet property="givingGoalRemainingInfo" destination="yba-5u-Wtc" id="AOs-Wv-YtE"/>
                         <outlet property="givingGoalSetupStackItem" destination="y8p-c6-6je" id="8SS-u3-JmJ"/>
@@ -709,7 +753,6 @@
                         <outlet property="yearViewHeader" destination="IlB-hW-U0S" id="c1q-fx-jr5"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-620.28985507246387" y="57.589285714285708"/>
         </scene>
@@ -881,7 +924,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nPl-We-QEd" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
-                                                                                        <rect key="frame" x="40" y="0.0" width="4" height="44"/>
+                                                                                        <rect key="frame" x="40" y="0.0" width="24" height="44"/>
                                                                                         <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
@@ -1634,10 +1677,10 @@
             <size key="intrinsicContentSize" width="249" height="32"/>
         </designable>
         <designable name="FD6-rl-HFC">
-            <size key="intrinsicContentSize" width="69" height="21"/>
+            <size key="intrinsicContentSize" width="89" height="21"/>
         </designable>
         <designable name="LId-pm-2Vg">
-            <size key="intrinsicContentSize" width="69" height="21"/>
+            <size key="intrinsicContentSize" width="89" height="21"/>
         </designable>
         <designable name="VB2-d6-wv3">
             <size key="intrinsicContentSize" width="52" height="34"/>
@@ -1646,22 +1689,22 @@
             <size key="intrinsicContentSize" width="193" height="37"/>
         </designable>
         <designable name="fw9-Ih-bGG">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="38" height="34"/>
         </designable>
         <designable name="jqY-Sp-MoJ">
-            <size key="intrinsicContentSize" width="46" height="32"/>
+            <size key="intrinsicContentSize" width="46" height="20"/>
         </designable>
         <designable name="nPl-We-QEd">
-            <size key="intrinsicContentSize" width="4" height="21"/>
+            <size key="intrinsicContentSize" width="24" height="21"/>
         </designable>
         <designable name="oFO-Hn-hi6">
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="ogd-Cg-1kQ">
-            <size key="intrinsicContentSize" width="58" height="37"/>
+            <size key="intrinsicContentSize" width="58" height="25"/>
         </designable>
         <designable name="rLR-S7-3JI">
-            <size key="intrinsicContentSize" width="4" height="21"/>
+            <size key="intrinsicContentSize" width="24" height="21"/>
         </designable>
         <designable name="rrV-x6-BW3">
             <size key="intrinsicContentSize" width="58" height="37"/>
@@ -1677,6 +1720,7 @@
         <image name="backbtn" width="15" height="24"/>
         <image name="closepurple" width="23" height="24"/>
         <image name="givy-party" width="288" height="197"/>
+        <image name="givy_giving_goal" width="70" height="57"/>
         <image name="givymoney" width="240" height="240"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
