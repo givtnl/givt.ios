@@ -61,7 +61,8 @@ extension BudgetOverviewViewController {
         roundCorners(view: givingGoalView)
         roundCorners(view: remainingGivingGoalView)
         roundCorners(view: givingGoalSetupView)
-                
+        roundCorners(view: givingGoalReachedView)
+        
         if givingGoal != nil {
             givingGoalSetupStackItem.isHidden = true
             givingGoalStackItem.isHidden = false
@@ -75,10 +76,28 @@ extension BudgetOverviewViewController {
                 givingGoalAmount = givingGoal!.amount
                 givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
             }
+            
+            let currentGivenPerMonth = lastMonthTotal!
+            
+            var remainingThisMonth = givingGoal!.amount - currentGivenPerMonth
+            
+            remainingThisMonth = remainingThisMonth >= 0 ? remainingThisMonth : 0
+            
+            givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            
+            if remainingThisMonth == 0 {
+                remainingGivingGoalStackItem.isHidden = true
+                givingGoalReachedStackItem.isHidden = false
+            } else {
+                remainingGivingGoalStackItem.isHidden = false
+                givingGoalReachedStackItem.isHidden = true
+            }
+            
         } else {
             givingGoalSetupStackItem.isHidden = false
             givingGoalStackItem.isHidden = true
             remainingGivingGoalStackItem.isHidden = true
+            givingGoalReachedStackItem.isHidden = true
         }
     }
 }
