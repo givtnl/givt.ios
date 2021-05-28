@@ -19,7 +19,8 @@ class MainViewController: UIViewController {
     private var navigationManager: NavigationManager = NavigationManager.shared
     private var _cameFromFAQ: Bool = false
     private let modalAnimation = CustomPresentModalAnimation()
-
+    
+    var showHistory = false
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: false)
@@ -44,6 +45,11 @@ class MainViewController: UIViewController {
         }
         if self.presentedViewController?.restorationIdentifier == "FAQViewController" {
             self._cameFromFAQ = true
+        }
+        
+        if showHistory {
+            let history = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HistoryFlow") as! BaseNavigationController
+            self.present(history, animated: false)
         }
     }
     override func viewDidAppear(_ animated: Bool) {

@@ -489,20 +489,8 @@ class LoginManager {
                                 DispatchQueue.main.async { completionHandler(errorTerm) }
                             } catch { completionHandler(errorTerm) }
                         } else {
-                            if let userExt = UserDefaults.standard.userExt {
-                                self.doesEmailExist(email: userExt.email, completionHandler: {(resp) in
-                                    if (resp == "false" || resp == "dashboard") {
-                                        completionHandler(nil)
-                                        self.logout()
-                                    } else {
-                                        self.log.error(message: "Could not terminate account because the user is still found after terminating.")
-                                        completionHandler(errorTerm)
-                                    }
-                                })
-                            } else {
-                                self.log.error(message: "Could not terminate account because no user ext is found on device.")
-                                completionHandler(errorTerm)
-                            }
+                            completionHandler(nil)
+                            self.logout()
                         }
                     }
                 } else {

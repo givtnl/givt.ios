@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class BaseCarouselViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    var currentPageIndex: Int = 0
+    
     var viewControllerList: [UIViewController]!
     
     var pageControl: UIPageControl = {
@@ -45,6 +47,7 @@ class BaseCarouselViewController: UIPageViewController, UIPageViewControllerData
             if let vcs = pageViewController.viewControllers  {
                 if let idx = viewControllerList.index(of: vcs[0]) {
                     pageControl.currentPage = idx
+                    currentPageIndex = idx
                 }
             }
         }
@@ -70,6 +73,27 @@ class BaseCarouselViewController: UIPageViewController, UIPageViewControllerData
         guard viewControllerList.count != nextIndex else {return nil}
         guard viewControllerList.count > nextIndex else {return nil}
         return viewControllerList[nextIndex]
+    }
+    
+    func loadPageAtIndex(_ index: Int) {
+        let count = viewControllerList.count
+        if index < count {
+            if index > currentPageIndex {
+                let vc = viewControllerList[index]
+                self.setViewControllers([vc], direction: .forward, animated: false, completion: { (complete) -> Void in
+                    self.currentPageIndex = index
+                    self.pageControl.currentPage = self.currentPageIndex
+                })
+                
+            } else if index < currentPageIndex {
+                let vc = viewControllerList[index]
+                self.setViewControllers([vc], direction: .reverse, animated: false, completion: { (complete) -> Void in
+                    self.currentPageIndex = index
+                    self.pageControl.currentPage = self.currentPageIndex
+                })
+                
+            }
+        }
     }
 }
 

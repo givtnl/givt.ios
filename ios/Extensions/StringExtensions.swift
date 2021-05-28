@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String{   
     func separate(every: Int, with separator: String) -> String {
@@ -137,5 +138,10 @@ extension String{
             return self.capitalized
         }
         return self
+    }
+    var underlined: NSAttributedString {
+        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
+        let underlineAttributedString = NSAttributedString(string: self, attributes: underlineAttribute)
+        return underlineAttributedString
     }
 }

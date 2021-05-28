@@ -107,6 +107,25 @@ class NavigationManager {
         }
     }
     
+    public func loadHistoryPage(animated: Bool = true) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        if let childViewControllers = appDelegate.window?.rootViewController?.children {
+            for childViewController in childViewControllers {
+                if let vc = childViewController as? MainNavigationController {
+                    loadHistory(vc: vc, animated: animated)
+                }
+            }
+        }
+    }
+    
+    public func loadHistory(vc: UINavigationController, animated: Bool = true) {
+        DispatchQueue.main.async {
+            let amount = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+            amount.showHistory = true
+            vc.setViewControllers([amount], animated: animated)
+        }
+    }
+    
     public func load(vc: UINavigationController, animated: Bool = true) {
         var thisVersion = ""
         if let savedVersion = UserDefaults.standard.termsVersion {

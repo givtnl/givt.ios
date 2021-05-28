@@ -178,7 +178,7 @@ final class GivtManager: NSObject {
                 shouldWait = true
                 semaGroup.enter()
                 do {
-                    try mediater.sendAsync(request: ExportDonationCommand(mediumId: donation.mediumId, amount: donation.amount,
+                    try mediater.sendAsync(request: ExportDonationCommand(mediumId: donation.mediumId, collectId: donation.collectId, amount: donation.amount,
                                                                                       userId: donation.userId, timeStamp: donation.timeStamp))
                     { result in
                         if result {
@@ -198,7 +198,7 @@ final class GivtManager: NSObject {
             shouldWait = true
             semaGroup.enter()
             do {
-                try mediater.sendAsync(request: ExportDonationCommand(mediumId: element.beaconId, amount: element.amount,
+                try mediater.sendAsync(request: ExportDonationCommand(mediumId: element.beaconId, collectId: element.collectId, amount: element.amount,
                                                                       userId: UUID.init(uuidString: element.userId)!, timeStamp: element.timeStamp.toDate!))
                 { result in
                     if result {
@@ -217,11 +217,15 @@ final class GivtManager: NSObject {
         
         if shouldWait {
             // After we synchronize all calls, we tell the main thread to save the coreDataContext
-            semaGroup.notify(queue: .main) {
-                print("All CoreData offline donations processed")
+            let _ = semaGroup.wait(timeout: .now() + 60)
+            semaGroup.enter()
+            print("All CoreData offline donations processed")
+            DispatchQueue.main.async {
                 try? (UIApplication.shared.delegate as! AppDelegate).coreDataContext.objectContext.save()
-                self.cachedGivtsLock.unlock()
+                semaGroup.leave()
             }
+            let _ = semaGroup.wait(timeout: .now() + 60)
+            self.cachedGivtsLock.unlock()
         } else {
             cachedGivtsLock.unlock()
         }
@@ -422,11 +426,13 @@ final class GivtManager: NSObject {
     }
     
     private func cacheGivt(transactions: [Transaction]){
+        cachedGivtsLock.lock()
         self.log.info(message: "Caching givt(s)")
         for tr in transactions {
             UserDefaults.standard.offlineGivts.append(tr)
         }
         BadgeService.shared.addBadge(badge: .offlineGifts)
+        cachedGivtsLock.unlock()
     }
     
     private func findAndRemoveCachedTransactions(transactions: [Transaction]) {

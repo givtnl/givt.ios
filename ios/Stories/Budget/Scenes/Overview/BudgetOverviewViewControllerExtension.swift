@@ -26,6 +26,12 @@ extension BudgetOverviewViewController {
         buttonSeeMore.setAttributedTitle(NSMutableAttributedString(string: "BudgetSummaryShowAll".localized,
                                       attributes: [NSAttributedString.Key.underlineStyle : true]), for: .normal)
         buttonSeeMore.titleLabel?.tintColor = #colorLiteral(red: 0.8470588235, green: 0.8470588235, blue: 0.8470588235, alpha: 1) //
+        
+        givingGoalViewEditLabel.attributedText = "BudgetSummaryGivingGoalEdit".localized.underlined
+        givingGoalSetupViewLabel.attributedText = createInfoText(bold: "BudgetSummarySetGoalBold", normal: "BudgetSummarySetGoal")
+        givingGoalPerMonthInfo.text = "BudgetSummaryGivingGoalMonth".localized
+        givingGoalRemainingInfo.text = "BudgetSummaryGivingGoalRest".localized
+        givingGoalReachedLabel.text = "BudgetSummaryGivingGoalReached".localized
     }
     
     @objc func noGivtsAction(_ sender: UITapGestureRecognizer) {
