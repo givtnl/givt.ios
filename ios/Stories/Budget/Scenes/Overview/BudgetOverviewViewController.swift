@@ -138,6 +138,9 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             if remainingThisMonth == 0 {
                 remainingGivingGoalStackItem.isHidden = true
                 givingGoalReachedStackItem.isHidden = false
+            } else {
+                remainingGivingGoalStackItem.isHidden = false
+                givingGoalReachedStackItem.isHidden = true
             }
         }
         
