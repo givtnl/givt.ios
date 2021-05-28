@@ -42,6 +42,9 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var givingGoalSetupViewLabel: UILabel!
     @IBOutlet weak var givingGoalSetupStackItem: BackgroundShadowView!
     
+    @IBOutlet weak var givingGoalReachedLabel: UILabel!
+    @IBOutlet weak var givingGoalReachedStackItem: BackgroundShadowView!
+    
     var originalHeightsSet = false
     var originalStackviewGivtHeight: CGFloat? = nil
     var originalStackviewNotGivtHeight: CGFloat? = nil
