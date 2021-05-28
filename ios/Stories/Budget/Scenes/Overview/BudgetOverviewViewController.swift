@@ -84,25 +84,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    func loadData() {
-        collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth(), groupType: 2, orderType: 3))
-        
-        notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
-            first.creationDate > second.creationDate
-        })
-        
-        monthlySummaryModels = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
-        
-        monthlySummaryModelsNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
-        
-        yearlySummary = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
-        
-        yearlySummaryNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
-        
-        givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
-        
-    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !SVProgressHUD.isVisible() {
@@ -120,29 +102,34 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        loadData()
-
-        setupGivingGoalCard()
+        // MARK: Collect groups card
+        collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth(), groupType: 2, orderType: 3))
+        
+        notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
+            first.creationDate > second.creationDate
+        })
+        
         setupCollectGroupsCard()
+        
+        // MARK: Per month chart
+        
+        monthlySummaryModels = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
+        
+        monthlySummaryModelsNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
+        
         setupMonthsCard()
         
-        if givingGoal != nil {
-            let currentGivenPerMonth = lastMonthTotal!
-            
-            var remainingThisMonth = givingGoalAmount! - currentGivenPerMonth
-            
-            remainingThisMonth = remainingThisMonth >= 0 ? remainingThisMonth : 0
-            
-            givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            
-            if remainingThisMonth == 0 {
-                remainingGivingGoalStackItem.isHidden = true
-                givingGoalReachedStackItem.isHidden = false
-            } else {
-                remainingGivingGoalStackItem.isHidden = false
-                givingGoalReachedStackItem.isHidden = true
-            }
-        }
+        // MARK: Giving goal
+
+        givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
+
+        setupGivingGoalCard()
+
+        // MARK: Yearly Chart
+        
+        yearlySummary = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
+        
+        yearlySummaryNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
         
         setupYearsCard()
         
