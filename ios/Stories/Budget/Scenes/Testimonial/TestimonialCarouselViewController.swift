@@ -19,30 +19,29 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
         viewControllerList = [UIViewController]()
         
         let storyboard = UIStoryboard.init(name: "Budget", bundle: nil)
+        
         pages.forEach { pageContent in
             let vc = storyboard.instantiateViewController(withIdentifier: "TestimonialViewController") as! TestimonialViewController
             vc.content = pageContent
             viewControllerList.append(vc)
         }
+        
+        viewControllerList = (viewControllerList as! [TestimonialViewController]).sorted(by: { first, second in
+            return first.content!.id < second.content!.id
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.subviews.forEach { view in
-            if let subView = view as? UIScrollView {
-                subView.bounces = false
-            }
-        }
+        pageControl.currentPageIndicatorTintColor = ColorHelper.GivtPurple
+        pageControl.pageIndicatorTintColor = ColorHelper.LightGrey
+        pageControl.hidesForSinglePage = true
         
-        if pages.count > 1 {
-            pageControl.currentPageIndicatorTintColor = ColorHelper.GivtPurple
-            pageControl.pageIndicatorTintColor = ColorHelper.LightGrey
-            NSLayoutConstraint.activate([
-                pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50)
-            ])
-        }
+        NSLayoutConstraint.activate([
+            pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            pageControl.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50)
+        ])
         
         let lastSeenTestimonial = UserDefaults.standard.lastShownTestimonial
         
@@ -50,23 +49,13 @@ class TestimonialCarouselViewController: BaseCarouselViewController, OverlayView
             UserDefaults.standard.lastShownTestimonial = TestimonialSetting(id: 1, date: Date().formattedYearAndMonth)
             pageControl.currentPage = 0
         } else {
-            let lastSeenTestimonialId = lastSeenTestimonial!.id
-            var vcs = viewControllerList! as! [TestimonialViewController]
-            
-            vcs = vcs.sorted(by: {first,second in
-                return first.content!.id > second.content!.id
+            let vcs = (viewControllerList as! [TestimonialViewController]).sorted(by: { first, second in
+                return first.content!.id < second.content!.id
             })
             
-            if let latestVc: TestimonialViewController = vcs.first(where: { $0.content!.id > UserDefaults.standard.lastShownTestimonial!.id }) {
-                UserDefaults.standard.lastShownTestimonial = TestimonialSetting(id: latestVc.content!.id, date: Date().formattedYearAndMonth)
-                setViewControllers([latestVc], direction: .forward, animated: true, completion: nil)
-                pageControl.currentPage = latestVc.content!.id - 1
-            } else {
-                let lastSeenViewController = vcs.first(where: { $0.content!.id == lastSeenTestimonialId })!
-                
-                setViewControllers([lastSeenViewController], direction: .forward, animated: true, completion: nil)
-                
-                pageControl.currentPage = lastSeenViewController.content!.id - 1
+            if let nextVc: TestimonialViewController = vcs.first(where: { $0.content!.id > UserDefaults.standard.lastShownTestimonial!.id }) {
+                UserDefaults.standard.lastShownTestimonial = TestimonialSetting(id: nextVc.content!.id, date: Date().formattedYearAndMonth)
+                loadPageAtIndex(self.viewControllerList.firstIndex(of: nextVc)!)
             }
         }
     }

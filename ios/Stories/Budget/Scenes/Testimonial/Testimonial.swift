@@ -13,4 +13,5 @@ struct Testimonial {
     var id: Int
     var image: UIImage
     var description: NSMutableAttributedString
+    var action: String
 }

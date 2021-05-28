@@ -58,7 +58,7 @@ extension BudgetListViewController {
             addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight)
         }
         
-        let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: GetAllExternalDonationsQuery()).result.sorted(by: { first, second in
+        let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
             first.creationDate > second.creationDate
         })
         

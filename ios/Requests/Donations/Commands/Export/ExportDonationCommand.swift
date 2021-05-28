@@ -15,9 +15,11 @@ class ExportDonationCommand : RequestProtocol {
     var amount: Decimal
     var userId: UUID
     var timeStamp: Date
+    var collectId: String
     
-    internal init(mediumId: String, amount: Decimal, userId: UUID, timeStamp: Date) {
+    internal init(mediumId: String, collectId: String, amount: Decimal, userId: UUID, timeStamp: Date) {
         self.mediumId = mediumId
+        self.collectId = collectId
         self.amount = amount
         self.userId = userId
         self.timeStamp = timeStamp

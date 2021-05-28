@@ -14,11 +14,10 @@ import UIKit
 extension BudgetOverviewViewController {
     func setupMonthsCard() {
         // get values for monthly summary chart
-        let monthlySummarymodels: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
-                                                                                    fromDate: getFromDateForMonthsChart(),
-                                                                                    tillDate: getTillDateForMonthsChart(),
-                                                                                    groupType: 0,
-                                                                                    orderType: 0))
+        guard let monthlySummarymodels = monthlySummaryModels else {
+            return
+        }
+        
         // define dictionary
         var monthsDictionary: [MonthlySummaryKey: MonthlySummaryValue] = [:]
         // create the date from now
@@ -43,6 +42,7 @@ extension BudgetOverviewViewController {
             monthsDictionary[nextKey] = MonthlySummaryValue(Index: 12 - i, Value: 0.0)
             i += 1
         }
+        
         // now loop over the results from the query to fill it with the actual values
         monthlySummarymodels.forEach { model in
             // get our key model from the result key
@@ -51,12 +51,11 @@ extension BudgetOverviewViewController {
             monthsDictionary[keyValues]?.Value = model.Value
         }
             
-        let monthlySummarNotGivt: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(
-                                                                                            fromDate: getFromDateForMonthsChart(),
-                                                                                            tillDate: getTillDateForMonthsChart(),
-                                                                                            groupType: 0,
-                                                                                            orderType: 0))
-        monthlySummarNotGivt.forEach { model in
+        guard let monthlySummaryNotGivt = monthlySummaryModelsNotGivt else {
+            return
+        }
+        
+        monthlySummaryNotGivt.forEach { model in
             let keyValues = MonthlySummaryKey(Year: Int(model.Key.split(separator: "-")[0])!, Month: Int(model.Key.split(separator: "-")[1])!)
             monthsDictionary[keyValues]?.Value += model.Value
         }
@@ -68,7 +67,9 @@ extension BudgetOverviewViewController {
             doubleValues.append(monthlySummaryValue.Value)
         }
         
-        monthlySummaryTile.amountLabel.text = doubleValues.last!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        lastMonthTotal = doubleValues.last
+        
+        monthlySummaryTile.amountLabel.text = lastMonthTotal!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                 
         var placeholderDoubles = doubleValues
         placeholderDoubles.removeLast()
@@ -101,15 +102,21 @@ extension BudgetOverviewViewController {
             }
         }
         
+        let lineLimit = givingGoal != nil && givingGoalAmount != nil ? givingGoalAmount! : trueAverage
+
         if dataEntries.count > 0 {
+            let limitBarChartDataEntry = BarChartDataEntry(x: 0, y: lineLimit)
+            dataEntries.append(limitBarChartDataEntry)
+            chartColors.append(.clear)
             let chartDataSet = BarChartDataSet(entries: dataEntries)
             chartDataSet.colors = chartColors
             
-            let chartData = BarChartData(dataSet: chartDataSet)
             
+            
+            let chartData = BarChartData(dataSet: chartDataSet)
+
             chartView.data = chartData
         }
-        
         chartView.getAxis(.left).drawGridLinesEnabled = false
         chartView.getAxis(.right).drawGridLinesEnabled = false
         
@@ -131,13 +138,15 @@ extension BudgetOverviewViewController {
         
         chartView.legend.enabled = false
         chartView.isUserInteractionEnabled = false
-                
-        let ll = ChartLimitLine(limit: trueAverage)
+        
+        
+        let ll = ChartLimitLine(limit: lineLimit)
         ll.lineColor = ColorHelper.GivtLightGreen
         ll.lineDashLengths = [4.0]
+        chartView.rightAxis.removeAllLimitLines()
         chartView.rightAxis.addLimitLine(ll)
-
-        chartViewBody.averageButton.setTitle(trueAverage.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0, withSpace: false), for: .normal)
+                
+        chartViewBody.averageButton.setTitle(lineLimit.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0, withSpace: false), for: .normal)
         chartViewBody.averageButton.ogBGColor = ColorHelper.LightGreenChart
         chartViewBody.averageButton.isEnabled = false
         
@@ -152,13 +161,13 @@ extension BudgetOverviewViewController {
         let currentMonth = calendar.component(.month, from: fromDate)
         return MonthlySummaryKey(Year: currentYear, Month: currentMonth)
     }
-    private func getFromDateForMonthsChart() -> String {
+    func getFromDateForMonthsChart() -> String {
         let currentDate = Date()
         let currentYear = Calendar.current.component(.year, from: currentDate)
         let currentMonth = Calendar.current.component(.month, from: currentDate)
         return makeFromDateString(year: currentYear, month: currentMonth, day: 1)
     }
-    private func getTillDateForMonthsChart() -> String {
+    func getTillDateForMonthsChart() -> String {
         let currentDate = Date()
         let currentYear = Calendar.current.component(.year, from: currentDate)
         let currentMonth = Calendar.current.component(.month, from: currentDate)

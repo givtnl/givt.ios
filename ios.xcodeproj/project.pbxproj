@@ -48,6 +48,13 @@
 		32182E012611E70E0007CF7D /* BudgetListViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E002611E70E0007CF7D /* BudgetListViewControllerExtension.swift */; };
 		32182E04261211560007CF7D /* GetExternalMonthlySummaryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E03261211550007CF7D /* GetExternalMonthlySummaryQuery.swift */; };
 		32182E06261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E05261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift */; };
+		32207E8C26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E8B26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift */; };
+		32207E8F26415F1A00A265A4 /* BudgetGivingGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E8E26415F1A00A265A4 /* BudgetGivingGoalViewController.swift */; };
+		32207E9226415FF900A265A4 /* OpenGivingGoalRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E9126415FF900A265A4 /* OpenGivingGoalRoute.swift */; };
+		32207E942641601500A265A4 /* OpenGivingGoalRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E932641601500A265A4 /* OpenGivingGoalRouteHandler.swift */; };
+		32207E96264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E95264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift */; };
+		32207E982641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E972641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift */; };
+		32207E9A2641794F00A265A4 /* BudgetGivingGoalViewControllerPickerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E992641794F00A265A4 /* BudgetGivingGoalViewControllerPickerExtension.swift */; };
 		3220B8AE25E7A98F0086577E /* MonthlyCardViewLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */; };
 		3220B8B025E7A9AB0086577E /* MonthlyCardViewLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */; };
 		3220B8B325E7BCFB0086577E /* MonthlySummaryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */; };
@@ -55,6 +62,8 @@
 		322400B9257E5EF4007FB046 /* GetCollectGroupsQueryPreProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322400B8257E5EF4007FB046 /* GetCollectGroupsQueryPreProcessor.swift */; };
 		322400CB257E8275007FB046 /* collectGroupsList.json in Resources */ = {isa = PBXBuildFile; fileRef = 322400B6257E5D12007FB046 /* collectGroupsList.json */; };
 		322441A0253F62EA00E357D9 /* RecurringDonationTurnsOverviewControllerExension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224419F253F62EA00E357D9 /* RecurringDonationTurnsOverviewControllerExension.swift */; };
+		3224BD0226451EF400AE12A1 /* YearViewBodyLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224BD0126451EF400AE12A1 /* YearViewBodyLine.swift */; };
+		3224BD0426451F1E00AE12A1 /* YearViewBodyLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3224BD0326451F1E00AE12A1 /* YearViewBodyLine.xib */; };
 		3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3232450824DB0206003CF5CF /* ColorHelper.swift */; };
 		3234570725DFB32600284808 /* BackgroundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234570625DFB32600284808 /* BackgroundShadowView.swift */; };
 		3234570925DFB38700284808 /* BackgroundShadowView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3234570825DFB38700284808 /* BackgroundShadowView.xib */; };
@@ -186,6 +195,13 @@
 		32F528DA25EAA84F0073C243 /* BudgetExternalGivtsInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F528D925EAA84F0073C243 /* BudgetExternalGivtsInfoView.xib */; };
 		32F528DD25EAB0720073C243 /* BudgetExternalGivtsControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F528DC25EAB0720073C243 /* BudgetExternalGivtsControlPanel.swift */; };
 		32F528DF25EAB0870073C243 /* BudgetExternalGivtsControlPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F528DE25EAB0870073C243 /* BudgetExternalGivtsControlPanel.xib */; };
+		32FCF678264180A10094166C /* CreateGivingGoalCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF677264180A10094166C /* CreateGivingGoalCommand.swift */; };
+		32FCF67A264180AD0094166C /* CreateGivingGoalCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF679264180AD0094166C /* CreateGivingGoalCommandHandler.swift */; };
+		32FCF67D264180D70094166C /* GetGivingGoalQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF67C264180D70094166C /* GetGivingGoalQuery.swift */; };
+		32FCF67F264180E40094166C /* GetGivingGoalQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF67E264180E40094166C /* GetGivingGoalQueryHandler.swift */; };
+		32FCF6892641813B0094166C /* DeleteGivingGoalCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF6882641813B0094166C /* DeleteGivingGoalCommand.swift */; };
+		32FCF68B264181490094166C /* DeleteGivingGoalCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF68A264181480094166C /* DeleteGivingGoalCommandHandler.swift */; };
+		32FCF68E264182C60094166C /* GivingGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FCF68D264182C60094166C /* GivingGoal.swift */; };
 		A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40C296222AA5EF70098442C /* GiftAidViewController.swift */; };
 		A46C8AF0210889A400988D6D /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46C8AEF210889A400988D6D /* Beacon.swift */; };
 		A478D1D42512386600251AFE /* GoToPushNotificationViewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A478D1D32512386600251AFE /* GoToPushNotificationViewRoute.swift */; };
@@ -359,6 +375,7 @@
 		DFD4F94F252F3C6700EA3141 /* GoToAboutViewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD4F94E252F3C6700EA3141 /* GoToAboutViewRouteHandler.swift */; };
 		DFFF7E8E24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8D24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift */; };
 		DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFF7E8F24F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift */; };
+		E1627D4F99ABF7C9562D9388 /* Pods_ios_tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE1FF4DAF924508CAA7F488A /* Pods_ios_tests.framework */; };
 		FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1E1ABE21C4075A00A656DA /* FeatureManager.swift */; };
 		FB243BDD2553F30500C6F768 /* GoBackOneControllerRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB243BDC2553F30500C6F768 /* GoBackOneControllerRoute.swift */; };
 		FB243BDF2553F32000C6F768 /* GoBackOneControllerRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB243BDE2553F32000C6F768 /* GoBackOneControllerRouteHandler.swift */; };
@@ -471,6 +488,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2141FDC908722C6041042560 /* Pods-ios.tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios.tests/Pods-ios.tests.debug.xcconfig"; sourceTree = "<group>"; };
+		230305A293224629502F19E7 /* Pods-ios.tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ios.tests/Pods-ios.tests.release.xcconfig"; sourceTree = "<group>"; };
 		27689CDF221AF94B006C0DA6 /* CollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CollectionView.xib; path = "ios/Views/Custom Views/CollectionView.xib"; sourceTree = SOURCE_ROOT; };
 		27689CE3221B0064006C0DA6 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		279672B42264CF6D0092464A /* CelebrationQueueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationQueueViewController.swift; sourceTree = "<group>"; };
@@ -514,6 +533,13 @@
 		32182E002611E70E0007CF7D /* BudgetListViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewControllerExtension.swift; sourceTree = "<group>"; };
 		32182E03261211550007CF7D /* GetExternalMonthlySummaryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalMonthlySummaryQuery.swift; sourceTree = "<group>"; };
 		32182E05261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalMonthlySummaryQueryHandler.swift; sourceTree = "<group>"; };
+		32207E8B26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerGivingGoalExtension.swift; sourceTree = "<group>"; };
+		32207E8E26415F1A00A265A4 /* BudgetGivingGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewController.swift; sourceTree = "<group>"; };
+		32207E9126415FF900A265A4 /* OpenGivingGoalRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGivingGoalRoute.swift; sourceTree = "<group>"; };
+		32207E932641601500A265A4 /* OpenGivingGoalRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGivingGoalRouteHandler.swift; sourceTree = "<group>"; };
+		32207E95264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewControllerExtension.swift; sourceTree = "<group>"; };
+		32207E972641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
+		32207E992641794F00A265A4 /* BudgetGivingGoalViewControllerPickerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewControllerPickerExtension.swift; sourceTree = "<group>"; };
 		3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthlyCardViewLine.xib; sourceTree = "<group>"; };
 		3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCardViewLine.swift; sourceTree = "<group>"; };
 		3220B8B225E7BCFB0086577E /* MonthlySummaryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlySummaryKey.swift; sourceTree = "<group>"; };
@@ -521,6 +547,8 @@
 		322400B6257E5D12007FB046 /* collectGroupsList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = collectGroupsList.json; sourceTree = "<group>"; };
 		322400B8257E5EF4007FB046 /* GetCollectGroupsQueryPreProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCollectGroupsQueryPreProcessor.swift; sourceTree = "<group>"; };
 		3224419F253F62EA00E357D9 /* RecurringDonationTurnsOverviewControllerExension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationTurnsOverviewControllerExension.swift; sourceTree = "<group>"; };
+		3224BD0126451EF400AE12A1 /* YearViewBodyLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearViewBodyLine.swift; sourceTree = "<group>"; };
+		3224BD0326451F1E00AE12A1 /* YearViewBodyLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearViewBodyLine.xib; sourceTree = "<group>"; };
 		3232450824DB0206003CF5CF /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		3234570625DFB32600284808 /* BackgroundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundShadowView.swift; sourceTree = "<group>"; };
 		3234570825DFB38700284808 /* BackgroundShadowView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundShadowView.xib; sourceTree = "<group>"; };
@@ -651,6 +679,14 @@
 		32F528D925EAA84F0073C243 /* BudgetExternalGivtsInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetExternalGivtsInfoView.xib; sourceTree = "<group>"; };
 		32F528DC25EAB0720073C243 /* BudgetExternalGivtsControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExternalGivtsControlPanel.swift; sourceTree = "<group>"; };
 		32F528DE25EAB0870073C243 /* BudgetExternalGivtsControlPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BudgetExternalGivtsControlPanel.xib; sourceTree = "<group>"; };
+		32FCF677264180A10094166C /* CreateGivingGoalCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGivingGoalCommand.swift; sourceTree = "<group>"; };
+		32FCF679264180AD0094166C /* CreateGivingGoalCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGivingGoalCommandHandler.swift; sourceTree = "<group>"; };
+		32FCF67C264180D70094166C /* GetGivingGoalQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGivingGoalQuery.swift; sourceTree = "<group>"; };
+		32FCF67E264180E40094166C /* GetGivingGoalQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGivingGoalQueryHandler.swift; sourceTree = "<group>"; };
+		32FCF6882641813B0094166C /* DeleteGivingGoalCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGivingGoalCommand.swift; sourceTree = "<group>"; };
+		32FCF68A264181480094166C /* DeleteGivingGoalCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteGivingGoalCommandHandler.swift; sourceTree = "<group>"; };
+		32FCF68D264182C60094166C /* GivingGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GivingGoal.swift; sourceTree = "<group>"; };
+		4A1F2C97AFBA34DE9E57B7C7 /* Pods-ios.tests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.tests.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios.tests/Pods-ios.tests.production.xcconfig"; sourceTree = "<group>"; };
 		572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.production.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.production.xcconfig"; sourceTree = "<group>"; };
 		908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		A40C296222AA5EF70098442C /* GiftAidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftAidViewController.swift; sourceTree = "<group>"; };
@@ -915,6 +951,7 @@
 		FBFAF47C25669CF30012E4A6 /* GetAllDonationsQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllDonationsQuery.swift; sourceTree = "<group>"; };
 		FBFAF47E25669D3D0012E4A6 /* GetAllDonationsQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllDonationsQueryHandler.swift; sourceTree = "<group>"; };
 		FBFAF48125669EFE0012E4A6 /* DonationDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationDetailModel.swift; sourceTree = "<group>"; };
+		FE1FF4DAF924508CAA7F488A /* Pods_ios_tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios_tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -922,6 +959,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1627D4F99ABF7C9562D9388 /* Pods_ios_tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,6 +1025,7 @@
 		32111D6425E5306400DB775C /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				32207E9026415FEA00A265A4 /* OpenGivingGoal */,
 				32EEB2B5262838DA008EED9A /* OpenSummary */,
 				32F528D425EA9F160073C243 /* OpenGiveNow */,
 				32F528CF25EA9EEA0073C243 /* OpenExternalGivts */,
@@ -1040,6 +1079,7 @@
 		3215976E25D2FADB0065C80A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				32207E8D26415F0600A265A4 /* GivingGoal */,
 				32EEB2BA26283F0E008EED9A /* Testimonial */,
 				3220B8A625E793560086577E /* Overview */,
 				32F528CA25EA9B850073C243 /* ExternalGivt */,
@@ -1108,6 +1148,26 @@
 			path = Summary;
 			sourceTree = "<group>";
 		};
+		32207E8D26415F0600A265A4 /* GivingGoal */ = {
+			isa = PBXGroup;
+			children = (
+				32207E8E26415F1A00A265A4 /* BudgetGivingGoalViewController.swift */,
+				32207E95264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift */,
+				32207E972641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift */,
+				32207E992641794F00A265A4 /* BudgetGivingGoalViewControllerPickerExtension.swift */,
+			);
+			path = GivingGoal;
+			sourceTree = "<group>";
+		};
+		32207E9026415FEA00A265A4 /* OpenGivingGoal */ = {
+			isa = PBXGroup;
+			children = (
+				32207E9126415FF900A265A4 /* OpenGivingGoalRoute.swift */,
+				32207E932641601500A265A4 /* OpenGivingGoalRouteHandler.swift */,
+			);
+			path = OpenGivingGoal;
+			sourceTree = "<group>";
+		};
 		3220B8A625E793560086577E /* Overview */ = {
 			isa = PBXGroup;
 			children = (
@@ -1120,6 +1180,7 @@
 				323F170425ED4F6400B12049 /* BudgetOverviewViewControllerMonthlyChartExtension.swift */,
 				323F170625ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift */,
 				3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */,
+				32207E8B26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift */,
 			);
 			path = Overview;
 			sourceTree = "<group>";
@@ -1129,6 +1190,15 @@
 			children = (
 				3220B8AD25E7A98F0086577E /* MonthlyCardViewLine.xib */,
 				3220B8AF25E7A9AB0086577E /* MonthlyCardViewLine.swift */,
+			);
+			path = Line;
+			sourceTree = "<group>";
+		};
+		3224BD0026451EE400AE12A1 /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				3224BD0126451EF400AE12A1 /* YearViewBodyLine.swift */,
+				3224BD0326451F1E00AE12A1 /* YearViewBodyLine.xib */,
 			);
 			path = Line;
 			sourceTree = "<group>";
@@ -1145,6 +1215,7 @@
 		3234570A25DFDF6D00284808 /* YearViewBody */ = {
 			isa = PBXGroup;
 			children = (
+				3224BD0026451EE400AE12A1 /* Line */,
 				3234570B25DFDF7C00284808 /* YearViewBody.xib */,
 				3234570D25DFDF8700284808 /* YearViewBody.swift */,
 			);
@@ -1783,12 +1854,77 @@
 			path = ControlPanel;
 			sourceTree = "<group>";
 		};
+		32FCF675264180820094166C /* GivingGoal */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF68C264182BB0094166C /* Models */,
+				32FCF680264180EE0094166C /* Queries */,
+				32FCF681264180F60094166C /* Commands */,
+			);
+			path = GivingGoal;
+			sourceTree = "<group>";
+		};
+		32FCF6762641808A0094166C /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF677264180A10094166C /* CreateGivingGoalCommand.swift */,
+				32FCF679264180AD0094166C /* CreateGivingGoalCommandHandler.swift */,
+			);
+			path = Create;
+			sourceTree = "<group>";
+		};
+		32FCF67B264180BC0094166C /* Get */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF67C264180D70094166C /* GetGivingGoalQuery.swift */,
+				32FCF67E264180E40094166C /* GetGivingGoalQueryHandler.swift */,
+			);
+			path = Get;
+			sourceTree = "<group>";
+		};
+		32FCF680264180EE0094166C /* Queries */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF67B264180BC0094166C /* Get */,
+			);
+			path = Queries;
+			sourceTree = "<group>";
+		};
+		32FCF681264180F60094166C /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF6762641808A0094166C /* Create */,
+				32FCF6872641812F0094166C /* Delete */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		32FCF6872641812F0094166C /* Delete */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF6882641813B0094166C /* DeleteGivingGoalCommand.swift */,
+				32FCF68A264181480094166C /* DeleteGivingGoalCommandHandler.swift */,
+			);
+			path = Delete;
+			sourceTree = "<group>";
+		};
+		32FCF68C264182BB0094166C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32FCF68D264182C60094166C /* GivingGoal.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4B950123D45CD9CD856C736B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				908D5DF335394A362CDBEBB8 /* Pods-ios.debug.xcconfig */,
 				F2A335656287D463EE35D0BB /* Pods-ios.release.xcconfig */,
 				572558AF5739C776EE1A8A6C /* Pods-ios.production.xcconfig */,
+				2141FDC908722C6041042560 /* Pods-ios.tests.debug.xcconfig */,
+				230305A293224629502F19E7 /* Pods-ios.tests.release.xcconfig */,
+				4A1F2C97AFBA34DE9E57B7C7 /* Pods-ios.tests.production.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -2342,6 +2478,7 @@
 				FB19533B1F56DDEC00172CD3 /* Fabric.framework */,
 				FB19533C1F56DDEC00172CD3 /* Crashlytics.framework */,
 				DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */,
+				FE1FF4DAF924508CAA7F488A /* Pods_ios_tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2644,6 +2781,7 @@
 		FBC185A424C0CD0B001A4C6B /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				32FCF675264180820094166C /* GivingGoal */,
 				329C3E7525F210B90037D750 /* ExternalDonations */,
 				FBC185A524C0CD11001A4C6B /* CollectGroups */,
 				FB87300724C818FA005FF355 /* Donations */,
@@ -2790,6 +2928,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32182DE92608CA2F0007CF7D /* Build configuration list for PBXNativeTarget "ios.tests" */;
 			buildPhases = (
+				2B3517196B4977113FB3E7D1 /* [CP] Check Pods Manifest.lock */,
 				32182DDB2608CA2F0007CF7D /* Sources */,
 				32182DDC2608CA2F0007CF7D /* Frameworks */,
 				32182DDD2608CA2F0007CF7D /* Resources */,
@@ -2963,6 +3102,7 @@
 				32F21E9125484C91003E46D5 /* DiscoverOrAmount.storyboard in Resources */,
 				D7A64D071FDFDC62005B51B2 /* ForgotPassword.storyboard in Resources */,
 				D761E9B31F18B55C002B849B /* entypo.ttf in Resources */,
+				3224BD0426451F1E00AE12A1 /* YearViewBodyLine.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2981,6 +3121,28 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2B3517196B4977113FB3E7D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ios.tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3042,8 +3204,10 @@
 			files = (
 				3260CF37254ACFE700BA6BD7 /* DiscoverOrAmountOpenRecurringSuccessRouteHandler.swift in Sources */,
 				322400B9257E5EF4007FB046 /* GetCollectGroupsQueryPreProcessor.swift in Sources */,
+				32FCF68B264181490094166C /* DeleteGivingGoalCommandHandler.swift in Sources */,
 				FBFAF48225669EFE0012E4A6 /* DonationDetailModel.swift in Sources */,
 				D72A89D91FE9164200C06EF6 /* AmountLimit.swift in Sources */,
+				32FCF6892641813B0094166C /* DeleteGivingGoalCommand.swift in Sources */,
 				D7ADE24B1FBC899300198F28 /* TerminateAccountViewController.swift in Sources */,
 				A478D1D62512387400251AFE /* GoToPushNotificationViewRouteHandler.swift in Sources */,
 				3260CF0D254A313E00BA6BD7 /* DiscoverOrAmountSetupRecurringDonationViewController.swift in Sources */,
@@ -3081,6 +3245,7 @@
 				3273B8A125359C6C003DB100 /* OpenRecurringDonationOverviewListRouteHandler.swift in Sources */,
 				32C2D8222522087000832444 /* DecimalExtension.swift in Sources */,
 				FBC185A224C0AD81001A4C6B /* DestinationViewModel.swift in Sources */,
+				32207E982641770300A265A4 /* BudgetGivingGoalViewControllerPrivateExtension.swift in Sources */,
 				D76A03451FBAFC5100E338C5 /* TemplateViewController.swift in Sources */,
 				3260CF2F254AC14A00BA6BD7 /* DiscoverOrAmountBackToSelectDestinationRouteHandler.swift in Sources */,
 				D7A64D091FDFDE2E005B51B2 /* ForgotPasswordViewController.swift in Sources */,
@@ -3115,6 +3280,7 @@
 				326B7E7D260242AF000A6239 /* RecurringDonationTurnsOverviewControllerTableExtension.swift in Sources */,
 				327C5B7E2506D8680064BBC4 /* CancelRecurringDonationCommand.swift in Sources */,
 				3260CF09254A2EC700BA6BD7 /* BackToMainViewRouteHandler.swift in Sources */,
+				32FCF68E264182C60094166C /* GivingGoal.swift in Sources */,
 				D731EACF1F79300300F5116C /* LoginNavigationViewController.swift in Sources */,
 				D7E3CE9E1F7D2C5C005807BE /* SPWebViewController.swift in Sources */,
 				D70F82D41F67E8E5001CEC90 /* HistoryViewController.swift in Sources */,
@@ -3123,6 +3289,7 @@
 				FBC185A024C08F19001A4C6B /* PaymentType.swift in Sources */,
 				D77FC1BE1F86668A0031C49F /* Country.swift in Sources */,
 				FBC1857A24C0647C001A4C6B /* NotLoggedInError.swift in Sources */,
+				3224BD0226451EF400AE12A1 /* YearViewBodyLine.swift in Sources */,
 				FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */,
 				DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */,
 				3220B8B525E7C9D40086577E /* MonthlySummaryValue.swift in Sources */,
@@ -3158,6 +3325,7 @@
 				32810EF725DF12DC004E305C /* MonthlyCardViewBody.swift in Sources */,
 				D7CCC06B1FC427FC006A6A4F /* PinNavViewController.swift in Sources */,
 				D748F6002063D4A500B25BC2 /* Status.swift in Sources */,
+				32FCF67D264180D70094166C /* GetGivingGoalQuery.swift in Sources */,
 				323F16F625EBB87900B12049 /* BudgetExternalGivtsViewControllerPickerExtension.swift in Sources */,
 				D7DD79A620A19E2500047CA7 /* LocationService.swift in Sources */,
 				FBC185C724C5CF70001A4C6B /* RequestPreProcessorWithContextProtocol.swift in Sources */,
@@ -3180,6 +3348,7 @@
 				FB87301124C836EA005FF355 /* ExportDonationCommand.swift in Sources */,
 				D75141981F9798040016B71F /* EmailOnlyViewController.swift in Sources */,
 				FB87302A24C881D9005FF355 /* SafariError.swift in Sources */,
+				32207E9226415FF900A265A4 /* OpenGivingGoalRoute.swift in Sources */,
 				DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */,
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
@@ -3196,6 +3365,7 @@
 				323F170725ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift in Sources */,
 				3260CF21254ABC9D00BA6BD7 /* OpenSafariRouteInputModel.swift in Sources */,
 				323F16ED25EAC12A00B12049 /* CALayerExtension.swift in Sources */,
+				32207E9A2641794F00A265A4 /* BudgetGivingGoalViewControllerPickerExtension.swift in Sources */,
 				A478D1D92512C3AE00251AFE /* DismissPushNotificationViewRoute.swift in Sources */,
 				32111D7025E5570100DB775C /* MonthlySummaryDetailModel.swift in Sources */,
 				32F21E992548526B003E46D5 /* InitialPageViewController.swift in Sources */,
@@ -3258,11 +3428,13 @@
 				FB3CE6D71F14CA200055185B /* AppDelegate.swift in Sources */,
 				D761E9B01F18AC90002B849B /* CustomButton.swift in Sources */,
 				3260CF12254A31D700BA6BD7 /* DiscoverOrAmountOpenSetupRecurringDonationRouteHandler.swift in Sources */,
+				32207E8F26415F1A00A265A4 /* BudgetGivingGoalViewController.swift in Sources */,
 				FB872FF924C80581005FF355 /* CreateDonationCommand.swift in Sources */,
 				D7F3A84E214A6925008B65AE /* BadgeService.swift in Sources */,
 				D7E3CE961F7D2159005807BE /* SPInfoViewController.swift in Sources */,
 				D748F5FC2061425400B25BC2 /* HistoryTableViewCell.swift in Sources */,
 				3260CF10254A31C700BA6BD7 /* DiscoverOrAmountOpenSetupRecurringDonationRoute.swift in Sources */,
+				32FCF67A264180AD0094166C /* CreateGivingGoalCommandHandler.swift in Sources */,
 				D761E9A21F17B14D002B849B /* RoundedButton.swift in Sources */,
 				32DDFB3425F761B100E25AF2 /* OverlayHostViewControllerExtension.swift in Sources */,
 				32182DFD260A48E80007CF7D /* UpdateExternalDonationBody.swift in Sources */,
@@ -3299,6 +3471,7 @@
 				DFFF7E9024F935EC0098E4F6 /* PopToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				D7D9C31C20D94A5E000D93C5 /* PersonalSettingTableViewCell.swift in Sources */,
 				D7DBED9C1FBC484600D78E2A /* AboutViewController.swift in Sources */,
+				32FCF678264180A10094166C /* CreateGivingGoalCommand.swift in Sources */,
 				DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */,
 				3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */,
 				D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */,
@@ -3323,6 +3496,7 @@
 				D78D44B41FC7039E00325CAF /* FAQView.swift in Sources */,
 				FBC1858B24C0651D001A4C6B /* Mediater.swift in Sources */,
 				329C3E8F25F21F470037D750 /* DeleteExternalDonationCommandHandler.swift in Sources */,
+				32207E8C26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift in Sources */,
 				D796043620C00607005B609B /* BeaconService.swift in Sources */,
 				DF7B7B2122CCDE300060E134 /* PushnotificationType.swift in Sources */,
 				FB872FF524C6EC58005FF355 /* BackToMainRouteHandler.swift in Sources */,
@@ -3353,6 +3527,7 @@
 				FBC1858A24C0651D001A4C6B /* RequestProtocol.swift in Sources */,
 				FB56C5622511001E0099EC62 /* BackToRecurringDonationOverviewRouteHandler.swift in Sources */,
 				327E34502549FDF000314BFD /* DiscoverOrAmountSelectDestinationViewController.swift in Sources */,
+				32207E942641601500A265A4 /* OpenGivingGoalRouteHandler.swift in Sources */,
 				32DBF12426271EED00E20C45 /* LocalNotificationManager.swift in Sources */,
 				D7F131681F75593A00E25A68 /* RegistrationViewController.swift in Sources */,
 				3260CF1E254ABC5200BA6BD7 /* DiscoverOrAmountOpenSafariRouteHandler.swift in Sources */,
@@ -3372,6 +3547,7 @@
 				323F16F825EBB90D00B12049 /* BudgetExternalGivtsViewControllerExtension.swift in Sources */,
 				32EEB2BE262842D5008EED9A /* TestimonialViewController.swift in Sources */,
 				D761E9631F161207002B849B /* Setting.swift in Sources */,
+				32207E96264176F500A265A4 /* BudgetGivingGoalViewControllerExtension.swift in Sources */,
 				D71DA050211AE5C90084381E /* ChangeAddressViewController.swift in Sources */,
 				D761E9601F15248E002B849B /* SettingsItemViewCells.swift in Sources */,
 				32182DF4260A074A0007CF7D /* CreateExternalDonationCommandCronGenerator.swift in Sources */,
@@ -3379,6 +3555,7 @@
 				D73E976E1FD000CE00EFD8E1 /* AuthClient.swift in Sources */,
 				D77511BB1F711231004F91F6 /* DateExtensions.swift in Sources */,
 				323F170925ED520800B12049 /* BudgetOverviewViewControllerPrivateExtension.swift in Sources */,
+				32FCF67F264180E40094166C /* GetGivingGoalQueryHandler.swift in Sources */,
 				D770E5341FB097FA0079D253 /* ManualOrganisationView.swift in Sources */,
 				FB8187B221C29C7C0084C23E /* NewFeaturePopDownView.swift in Sources */,
 				D7F1316A1F7559BD00E25A68 /* RegNavigationController.swift in Sources */,
@@ -3444,6 +3621,7 @@
 /* Begin XCBuildConfiguration section */
 		32182DE62608CA2F0007CF7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2141FDC908722C6041042560 /* Pods-ios.tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -3481,6 +3659,7 @@
 		};
 		32182DE72608CA2F0007CF7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 230305A293224629502F19E7 /* Pods-ios.tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -3516,6 +3695,7 @@
 		};
 		32182DE82608CA2F0007CF7D /* Production */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A1F2C97AFBA34DE9E57B7C7 /* Pods-ios.tests.production.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;

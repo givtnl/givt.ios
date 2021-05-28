@@ -8,18 +8,11 @@
 import Charts
 import UIKit
 
-class YearViewBody: UIView, AxisValueFormatter {
-    var years: [String] = []
-    
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return years[Int(value)].lowercased()
-    }
+class YearViewBody: UIView {
     
     private var borderView: UIView!
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var chartView: HorizontalBarChartView!
-    @IBOutlet weak var labelStackView: UIStackView!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()

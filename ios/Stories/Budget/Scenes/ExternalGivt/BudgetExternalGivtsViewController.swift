@@ -18,6 +18,7 @@ class BudgetExternalGivtsViewController : UIViewController {
     @IBOutlet weak var labelExternalGivtsTime: UILabel!
     @IBOutlet weak var labelExternalGivtsTimeDown: TextFieldWithInset!
     @IBOutlet weak var textFieldExternalGivtsTime: TextFieldWithInset!
+    @IBOutlet weak var labelChevronDown: UILabel!
     @IBOutlet weak var labelExternalGivtsAmount: UILabel!
     @IBOutlet weak var labelExternalGivtsAmountCurrency: UILabel!
     @IBOutlet weak var textFieldExternalGivtsAmount: UITextField!

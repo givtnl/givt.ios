@@ -453,23 +453,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: OpenSummaryRouteHandler())
         Mediater.shared.registerHandler(handler: OpenGiveNowRouteHandler())
         Mediater.shared.registerHandler(handler: OpenExternalGivtsRouteHandler())
+        Mediater.shared.registerHandler(handler: OpenGivingGoalRouteHandler())
         //-- BUDGET SCENE: QUERYS
         Mediater.shared.registerHandler(handler: GetMonthlySummaryQueryHandler())
                     
-        //-- Budget External Donation Create
+        //-- Budget External Donations CRUD
         Mediater.shared.registerHandler(handler: CreateExternalDonationCommandHandler())
         Mediater.shared.registerPreProcessor(processor: CreateExternalDonationCronGenerator())
-        
-        //-- Budget External Donation Update
-        Mediater.shared.registerHandler(handler: UpdateExternalDonationCommandHandler())
-        
-        //-- Budget External Donation Delete
-        Mediater.shared.registerHandler(handler: DeleteExternalDonationCommandHandler())
-        
-        //-- Budget External Donation GetAll
         Mediater.shared.registerHandler(handler: GetAllExternalDonationsQueryHandler())
+        Mediater.shared.registerHandler(handler: UpdateExternalDonationCommandHandler())
+        Mediater.shared.registerHandler(handler: DeleteExternalDonationCommandHandler())
         
         //-- Budget External Donation Summary
         Mediater.shared.registerHandler(handler: GetExternalMonthlySummaryQueryHandler())
+        
+        //-- Giving Goal CRUD
+        Mediater.shared.registerHandler(handler: CreateGivingGoalCommandHandler()) //-- Can use as an update aswell
+        Mediater.shared.registerHandler(handler: GetGivingGoalQueryHandler())
+        Mediater.shared.registerHandler(handler: DeleteGivingGoalCommandHandler())
     }
 }
