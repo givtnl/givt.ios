@@ -42,6 +42,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var givingGoalSetupViewLabel: UILabel!
     @IBOutlet weak var givingGoalSetupStackItem: BackgroundShadowView!
     
+    @IBOutlet weak var givingGoalReachedView: UIView!
     @IBOutlet weak var givingGoalReachedLabel: UILabel!
     @IBOutlet weak var givingGoalReachedStackItem: BackgroundShadowView!
     
@@ -133,6 +134,11 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             remainingThisMonth = remainingThisMonth >= 0 ? remainingThisMonth : 0
             
             givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            
+            if remainingThisMonth == 0 {
+                remainingGivingGoalStackItem.isHidden = true
+                givingGoalReachedStackItem.isHidden = false
+            }
         }
         
         setupYearsCard()

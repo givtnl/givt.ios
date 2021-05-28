@@ -61,7 +61,8 @@ extension BudgetOverviewViewController {
         roundCorners(view: givingGoalView)
         roundCorners(view: remainingGivingGoalView)
         roundCorners(view: givingGoalSetupView)
-                
+        roundCorners(view: givingGoalReachedView)
+        
         if givingGoal != nil {
             givingGoalSetupStackItem.isHidden = true
             givingGoalStackItem.isHidden = false

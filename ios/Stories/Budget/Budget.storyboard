@@ -33,7 +33,6 @@
         <!--BudgetViewController-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Y6W-OH-hqX" userLabel="BudgetViewController" customClass="BudgetOverviewViewController" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -721,6 +720,7 @@
                         <outlet property="givingGoalPerMonthText" destination="VcP-Bk-bX1" id="b2E-Sg-DFH"/>
                         <outlet property="givingGoalReachedLabel" destination="0Et-vh-SrL" id="tCe-GO-pyJ"/>
                         <outlet property="givingGoalReachedStackItem" destination="JS8-Mh-doi" id="rTW-Fa-ucZ"/>
+                        <outlet property="givingGoalReachedView" destination="scM-XA-hkV" id="bGA-Aw-Gfp"/>
                         <outlet property="givingGoalRemaining" destination="WJ9-nP-Xxa" id="WHI-Pb-YV8"/>
                         <outlet property="givingGoalRemainingInfo" destination="yba-5u-Wtc" id="AOs-Wv-YtE"/>
                         <outlet property="givingGoalSetupStackItem" destination="y8p-c6-6je" id="8SS-u3-JmJ"/>
@@ -753,6 +753,7 @@
                         <outlet property="yearViewHeader" destination="IlB-hW-U0S" id="c1q-fx-jr5"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-620.28985507246387" y="57.589285714285708"/>
         </scene>
