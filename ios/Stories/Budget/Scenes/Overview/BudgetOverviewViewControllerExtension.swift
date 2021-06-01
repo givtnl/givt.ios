@@ -37,7 +37,7 @@ extension BudgetOverviewViewController {
     @objc func noGivtsAction(_ sender: UITapGestureRecognizer) {
         let view = sender.view as! LineWithIcon
         NavigationManager.shared.executeWithLogin(context: self) {
-            try? Mediater.shared.send(request: OpenExternalGivtsRoute(id: view.id!), withContext: self)
+            try? Mediater.shared.send(request: OpenExternalGivtsRoute(id: view.id!, externalDonations: self.notGivtModelsForCurrentMonth), withContext: self)
         }
     }
     

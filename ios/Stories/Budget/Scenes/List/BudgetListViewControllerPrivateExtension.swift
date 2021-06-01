@@ -9,8 +9,10 @@
 import Foundation
 
 extension BudgetListViewController {
-    @IBAction func closeButtonPressed(_ sender: Any) {
+    @IBAction func manageExternalDonations(_ sender: Any) {
         dismissOverlay()
-        try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
+        NavigationManager.shared.executeWithLogin(context: self) {
+            try? Mediater.shared.send(request: OpenExternalGivtsRoute(externalDonations: self.notGivtModelsForCurrentMonth), withContext: self)
+        }
     }
 }
