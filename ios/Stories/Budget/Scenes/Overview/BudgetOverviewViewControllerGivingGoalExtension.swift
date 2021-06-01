@@ -53,15 +53,11 @@ extension BudgetOverviewViewController {
         }
     }
     
-    func setupGivingGoalCard() {
+    func setupGivingGoalCard(_ monthlySum: Double? = nil) {
         // add onclick to adjust giving goal
         givingGoalViewEditLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalEdit)))
         givingGoalSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalSetup)))
         
-        roundCorners(view: givingGoalView)
-        roundCorners(view: remainingGivingGoalView)
-        roundCorners(view: givingGoalSetupView)
-                
         if givingGoal != nil {
             givingGoalSetupStackItem.isHidden = true
             givingGoalStackItem.isHidden = false
@@ -75,10 +71,34 @@ extension BudgetOverviewViewController {
                 givingGoalAmount = givingGoal!.amount
                 givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
             }
+            
+            var currentGivenPerMonth: Double
+            
+            if monthlySum != nil {
+                currentGivenPerMonth = monthlySum!
+            } else {
+                currentGivenPerMonth = lastMonthTotal!
+            }
+            
+            var remainingThisMonth = givingGoal!.amount - currentGivenPerMonth
+            
+            remainingThisMonth = remainingThisMonth >= 0 ? remainingThisMonth : 0
+            
+            givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            
+            if remainingThisMonth == 0 {
+                remainingGivingGoalStackItem.isHidden = true
+                givingGoalReachedStackItem.isHidden = false
+            } else {
+                remainingGivingGoalStackItem.isHidden = false
+                givingGoalReachedStackItem.isHidden = true
+            }
+            
         } else {
             givingGoalSetupStackItem.isHidden = false
             givingGoalStackItem.isHidden = true
             remainingGivingGoalStackItem.isHidden = true
+            givingGoalReachedStackItem.isHidden = true
         }
     }
 }
