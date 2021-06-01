@@ -33,4 +33,14 @@ private extension BudgetOverviewViewController {
             try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
         }
     }
+    @IBAction func goBackOneMonth(_ sender: Any) {
+        fromMonth = getPreviousMonth(from: fromMonth)
+        
+        updateMonthCard()
+    }
+    @IBAction func goForwardOneMonth(_ sender: Any) {
+        fromMonth = getNextMonth(from: fromMonth)
+        
+        updateMonthCard()
+    }
 }

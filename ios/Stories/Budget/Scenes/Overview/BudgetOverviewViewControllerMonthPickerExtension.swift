@@ -14,56 +14,68 @@ extension BudgetOverviewViewController {
         monthSelectorLabel.text = getFullMonthStringFromDateValue(value: fromMonth).capitalized
     }
     
-    private func getMonths() -> [String: Date] {
+    func updateMonthCard() {
+        SVProgressHUD.show()
+        try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth), groupType: 2, orderType: 3)) { givtResponse in
+            self.collectGroupsForCurrentMonth = givtResponse
+            try! Mediater.shared.sendAsync(request: GetAllExternalDonationsQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth))) { notGivtResponse in
+                self.notGivtModelsForCurrentMonth = notGivtResponse.result.sorted(by: { first, second in
+                    first.creationDate > second.creationDate
+                })
+                DispatchQueue.main.async {
+                    self.monthSelectorLabel.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
+                    self.setupCollectGroupsCard()
+                    self.monthlySummaryTile.amountLabel.text = self.getMonthlySum().getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    self.setupGivingGoalCard(self.getMonthlySum())
+                    SVProgressHUD.dismiss()
+                }
+            }
+        }
+    }
+    
+    func getMonthlySum() -> Double {
+        let amountValuesGivt: [Double] = collectGroupsForCurrentMonth!.map { $0.Value }
+        let amountValuesNotGivt: [Double] = notGivtModelsForCurrentMonth!.map { $0.amount }
+        return amountValuesGivt.reduce(0, +) + amountValuesNotGivt.reduce(0, +)
+    }
+    
+    func getPreviousMonth(from: Date) -> Date  {
+        var dateComponent = DateComponents()
+        dateComponent.month = -1
+        return Calendar.current.date(byAdding: dateComponent, to: from)!
+    }
+    
+    func getNextMonth(from: Date) -> Date {
+        var dateComponent = DateComponents()
+        dateComponent.month = 1
+        return Calendar.current.date(byAdding: dateComponent, to: from)!
+    }
+    
+    func getStartDateOfMonth(date: Date) -> String {
         let calendar = Calendar.current
-        var date = Date()
-        var monthStrings: [String: Date] = [date.getMonthNameLong(): date]
-        
-        while monthStrings.count < 12 {
-            date = calendar.date(byAdding: .month, value: -1, to: date)!
-            monthStrings[date.getMonthNameLong()] = date
-        }
-        
-        return monthStrings
+        let currentYear = Calendar.current.component(.year, from: date)
+        let currentMonth = Calendar.current.component(.month, from: date)
+        var dateComponents = DateComponents()
+        dateComponents.year = currentYear
+        dateComponents.month = currentMonth
+        dateComponents.day = 1
+        let date = calendar.date(from: dateComponents)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
     }
     
-    
-    private func createToolbar(_ textField: UITextField) {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(toolbarDoneButtonTapped))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        toolbar.setItems([flexibleSpace, doneButton], animated: false)
-        toolbar.isUserInteractionEnabled = true
-        
-        textField.inputAccessoryView = toolbar
-    }
-    
-    @objc private func toolbarDoneButtonTapped(_ sender: UIBarButtonItem){
-        self.view.endEditing(true)
-    }
-    
-    @objc func keyboardWillShow(notification:NSNotification){
-        //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
-        let userInfo = notification.userInfo!
-        var keyboardFrame:CGRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        keyboardFrame = self.view.convert(keyboardFrame, from: nil)
-        
-        if #available(iOS 11.0, *) {
-            bottomScrollViewConstraint.constant = keyboardFrame.size.height - view.safeAreaInsets.bottom - 64
-        } else {
-            bottomScrollViewConstraint.constant = keyboardFrame.size.height - 64
-        }
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
-    }
-
-    @objc func keyboardWillHide(notification:NSNotification){
-        bottomScrollViewConstraint.constant = 0
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
+    func getEndDateOfMonth(date: Date) -> String {
+        let calendar = Calendar.current
+        let currentYear = Calendar.current.component(.year, from: date)
+        let currentMonth = Calendar.current.component(.month, from: date) + 1
+        var dateComponents = DateComponents()
+        dateComponents.year = currentYear
+        dateComponents.month = currentMonth
+        dateComponents.day = -1
+        let date = calendar.date(from: dateComponents)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
     }
 }
