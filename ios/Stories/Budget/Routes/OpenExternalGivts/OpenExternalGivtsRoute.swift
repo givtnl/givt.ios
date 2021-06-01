@@ -11,7 +11,10 @@ import CoreData
 
 class OpenExternalGivtsRoute: NoResponseRequest {
     var id: String?
-    init(id: String? = nil) {
+    var externalDonations: [ExternalDonationModel]?
+    
+    init(id: String? = nil, externalDonations: [ExternalDonationModel]? = nil) {
         self.id = id
+        self.externalDonations = externalDonations
     }
 }
