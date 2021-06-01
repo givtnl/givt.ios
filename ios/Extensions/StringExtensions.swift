@@ -56,6 +56,19 @@ extension String{
         return 0
     }
     
+    var toDouble: Double? {
+        String.numberFormatter.decimalSeparator = "."
+        if let result =  String.numberFormatter.number(from: self) {
+            return result.doubleValue
+        } else {
+            String.numberFormatter.decimalSeparator = ","
+            if let result = String.numberFormatter.number(from: self) {
+                return result.doubleValue
+            }
+        }
+        return nil
+    }
+    
     func index(of string: String, options: CompareOptions = .literal) -> Index? {
         return range(of: string, options: options)?.lowerBound
     }
