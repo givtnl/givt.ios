@@ -98,6 +98,11 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
             originalHeightsSet = true
         }
+        
+        roundCorners(view: givingGoalView)
+        roundCorners(view: remainingGivingGoalView)
+        roundCorners(view: givingGoalSetupView)
+        roundCorners(view: givingGoalReachedView)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

@@ -58,11 +58,6 @@ extension BudgetOverviewViewController {
         givingGoalViewEditLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalEdit)))
         givingGoalSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalSetup)))
         
-        roundCorners(view: givingGoalView)
-        roundCorners(view: remainingGivingGoalView)
-        roundCorners(view: givingGoalSetupView)
-        roundCorners(view: givingGoalReachedView)
-        
         if givingGoal != nil {
             givingGoalSetupStackItem.isHidden = true
             givingGoalStackItem.isHidden = false
