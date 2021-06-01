@@ -88,13 +88,6 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var monthSelectorLabel: UILabel!
     @IBOutlet weak var monthSelectorButtonRight: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: self.view.window)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: self.view.window)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !SVProgressHUD.isVisible() {
@@ -122,114 +115,29 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         
         // MARK: Collect groups card
         collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth(), groupType: 2, orderType: 3))
-        
         notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
             first.creationDate > second.creationDate
         })
-        
         setupCollectGroupsCard()
         
         // MARK: Per month chart
-        
         monthlySummaryModels = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
-        
         monthlySummaryModelsNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
-        
         setupMonthsCard()
         
         // MARK: Giving goal
-        
         givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
-        
         setupGivingGoalCard()
         
         // MARK: Yearly Chart
-        
         yearlySummary = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
-        
         yearlySummaryNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
-        
         setupYearsCard()
         
+        // MARK: Testimonial
         setupTestimonial()
         
         SVProgressHUD.dismiss()
         
     }
-    @IBAction func goBackOneMonth(_ sender: Any) {
-        fromMonth = getPreviousMonth(from: fromMonth)
-        
-        updateMonthCard()
-    }
-    @IBAction func goForwardOneMonth(_ sender: Any) {
-        fromMonth = getNextMonth(from: fromMonth)
-        
-        updateMonthCard()
-    }
-    func updateMonthCard() {
-        
-        // MARK: Collect groups card
-        
-        SVProgressHUD.show()
-        
-        try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth), groupType: 2, orderType: 3)) { givtResponse in
-            self.collectGroupsForCurrentMonth = givtResponse
-            try! Mediater.shared.sendAsync(request: GetAllExternalDonationsQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth))) { notGivtResponse in
-                self.notGivtModelsForCurrentMonth = notGivtResponse.result.sorted(by: { first, second in
-                    first.creationDate > second.creationDate
-                })
-                DispatchQueue.main.async {
-                    self.monthSelectorLabel.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
-                    self.setupCollectGroupsCard()
-                    self.monthlySummaryTile.amountLabel.text = self.getMonthlySum().getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                    self.setupGivingGoalCard(self.getMonthlySum())
-                    SVProgressHUD.dismiss()
-                }
-            }
-        }
-    }
-    func getMonthlySum() -> Double {
-        let amountValuesGivt: [Double] = collectGroupsForCurrentMonth!.map { $0.Value }
-        let amountValuesNotGivt: [Double] = notGivtModelsForCurrentMonth!.map { $0.amount }
-        return amountValuesGivt.reduce(0, +) + amountValuesNotGivt.reduce(0, +)
-    }
-    func getPreviousMonth(from: Date) -> Date  {
-        var dateComponent = DateComponents()
-        dateComponent.month = -1
-        return Calendar.current.date(byAdding: dateComponent, to: from)!
-    }
-    func getNextMonth(from: Date) -> Date {
-        var dateComponent = DateComponents()
-        dateComponent.month = 1
-        return Calendar.current.date(byAdding: dateComponent, to: from)!
-    }
-    
-    func getStartDateOfMonth(date: Date) -> String {
-        let calendar = Calendar.current
-        let currentYear = Calendar.current.component(.year, from: date)
-        let currentMonth = Calendar.current.component(.month, from: date)
-        var dateComponents = DateComponents()
-        dateComponents.year = currentYear
-        dateComponents.month = currentMonth
-        dateComponents.day = 1
-        let date = calendar.date(from: dateComponents)!
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
-    }
-    
-    func getEndDateOfMonth(date: Date) -> String {
-        let calendar = Calendar.current
-        let currentYear = Calendar.current.component(.year, from: date)
-        let currentMonth = Calendar.current.component(.month, from: date) + 1
-        var dateComponents = DateComponents()
-        dateComponents.year = currentYear
-        dateComponents.month = currentMonth
-        dateComponents.day = -1
-        let date = calendar.date(from: dateComponents)!
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
-    }
-    
 }
