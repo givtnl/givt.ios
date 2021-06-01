@@ -454,6 +454,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: OpenGiveNowRouteHandler())
         Mediater.shared.registerHandler(handler: OpenExternalGivtsRouteHandler())
         Mediater.shared.registerHandler(handler: OpenGivingGoalRouteHandler())
+        Mediater.shared.registerHandler(handler: GoBackToSummaryRouteHandler())
         //-- BUDGET SCENE: QUERYS
         Mediater.shared.registerHandler(handler: GetMonthlySummaryQueryHandler())
                     
