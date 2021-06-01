@@ -43,6 +43,10 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var givingGoalSetupViewLabel: UILabel!
     @IBOutlet weak var givingGoalSetupStackItem: BackgroundShadowView!
     
+    @IBOutlet weak var givingGoalReachedView: UIView!
+    @IBOutlet weak var givingGoalReachedLabel: UILabel!
+    @IBOutlet weak var givingGoalReachedStackItem: BackgroundShadowView!
+    
     var originalHeightsSet = false
     var originalStackviewGivtHeight: CGFloat? = nil
     var originalStackviewNotGivtHeight: CGFloat? = nil
@@ -78,13 +82,11 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     
     var amountOutsideLabel: CGRect? = nil
     
-    @IBOutlet weak var monthPickerView: CustomButton!
-    @IBOutlet weak var monthPickerLabel: TextFieldWithInset!
-    
-    var monthPicker: UIPickerView!
-    var monthPickerData: [String]!
-    
     var fromMonth: Date!
+    
+    @IBOutlet weak var monthSelectorButtonLeft: UIButton!
+    @IBOutlet weak var monthSelectorLabel: UILabel!
+    @IBOutlet weak var monthSelectorButtonRight: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,23 +95,113 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: self.view.window)
     }
     
-    func loadData(_ fromMonth: Date) {
-        collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getStartDateOfMonth(date: fromMonth),tillDate: getEndDateOfMonth(date: fromMonth), groupType: 2, orderType: 3))
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !SVProgressHUD.isVisible() {
+            SVProgressHUD.show()
+        }
         
-        notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getStartDateOfMonth(date: fromMonth), tillDate: getEndDateOfMonth(date: fromMonth))).result.sorted(by: { first, second in
+        setupTerms()
+        
+        if !originalHeightsSet {
+            originalStackviewGivtHeight = stackViewGivtHeight.constant
+            originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
+            originalHeightsSet = true
+        }
+        
+        setupMonthPicker()
+        
+        roundCorners(view: givingGoalView)
+        roundCorners(view: remainingGivingGoalView)
+        roundCorners(view: givingGoalSetupView)
+        roundCorners(view: givingGoalReachedView)
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // MARK: Collect groups card
+        collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth(), groupType: 2, orderType: 3))
+        
+        notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
             first.creationDate > second.creationDate
         })
+        
+        setupCollectGroupsCard()
+        
+        // MARK: Per month chart
         
         monthlySummaryModels = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
         
         monthlySummaryModelsNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
         
+        setupMonthsCard()
+        
+        // MARK: Giving goal
+        
+        givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
+        
+        setupGivingGoalCard()
+        
+        // MARK: Yearly Chart
+        
         yearlySummary = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
         
         yearlySummaryNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
         
-        givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
+        setupYearsCard()
         
+        setupTestimonial()
+        
+        SVProgressHUD.dismiss()
+        
+    }
+    @IBAction func goBackOneMonth(_ sender: Any) {
+        fromMonth = getPreviousMonth(from: fromMonth)
+        
+        updateMonthCard()
+    }
+    @IBAction func goForwardOneMonth(_ sender: Any) {
+        fromMonth = getNextMonth(from: fromMonth)
+        
+        updateMonthCard()
+    }
+    func updateMonthCard() {
+        
+        // MARK: Collect groups card
+        
+        SVProgressHUD.show()
+        
+        try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth), groupType: 2, orderType: 3)) { givtResponse in
+            self.collectGroupsForCurrentMonth = givtResponse
+            try! Mediater.shared.sendAsync(request: GetAllExternalDonationsQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth))) { notGivtResponse in
+                self.notGivtModelsForCurrentMonth = notGivtResponse.result.sorted(by: { first, second in
+                    first.creationDate > second.creationDate
+                })
+                DispatchQueue.main.async {
+                    self.monthSelectorLabel.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
+                    self.setupCollectGroupsCard()
+                    self.monthlySummaryTile.amountLabel.text = self.getMonthlySum().getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    self.setupGivingGoalCard(self.getMonthlySum())
+                    SVProgressHUD.dismiss()
+                }
+            }
+        }
+    }
+    func getMonthlySum() -> Double {
+        let amountValuesGivt: [Double] = collectGroupsForCurrentMonth!.map { $0.Value }
+        let amountValuesNotGivt: [Double] = notGivtModelsForCurrentMonth!.map { $0.amount }
+        return amountValuesGivt.reduce(0, +) + amountValuesNotGivt.reduce(0, +)
+    }
+    func getPreviousMonth(from: Date) -> Date  {
+        var dateComponent = DateComponents()
+        dateComponent.month = -1
+        return Calendar.current.date(byAdding: dateComponent, to: from)!
+    }
+    func getNextMonth(from: Date) -> Date {
+        var dateComponent = DateComponents()
+        dateComponent.month = 1
+        return Calendar.current.date(byAdding: dateComponent, to: from)!
     }
     
     func getStartDateOfMonth(date: Date) -> String {
@@ -140,45 +232,4 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         return dateFormatter.string(from: date)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if !SVProgressHUD.isVisible() {
-            SVProgressHUD.show()
-        }
-                
-        setupTerms()
-        
-        if !originalHeightsSet {
-            originalStackviewGivtHeight = stackViewGivtHeight.constant
-            originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
-            originalHeightsSet = true
-        }
-        
-        setupMonthPicker()
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        loadData(fromMonth)
-        setupGivingGoalCard()
-        setupCollectGroupsCard()
-        setupMonthsCard()
-        
-        if givingGoal != nil {
-            let currentGivenPerMonth = lastMonthTotal!
-            
-            var remainingThisMonth = givingGoalAmount! - currentGivenPerMonth
-            
-            remainingThisMonth = remainingThisMonth >= 0 ? remainingThisMonth : 0
-            
-            givingGoalRemaining.text = remainingThisMonth.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-        }
-        
-        setupYearsCard()
-        
-        setupTestimonial()
-
-        SVProgressHUD.dismiss()
-        
-    }
 }

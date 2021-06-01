@@ -18,7 +18,7 @@ extension BudgetOverviewViewController {
         givtNowButton.setTitle("BudgetSummaryGiveNow".localized, for: .normal)
         
         monthlyCardHeader.label.text = getFullMonthStringFromDateValue(value: Date()).capitalized
-        navigationItem.title = getFullMonthStringFromDateValue(value: Date()).capitalized
+        navigationItem.title = "BudgetMenuView".localized
         chartViewHeader.label.text = "BudgetSummaryMonth".localized
         yearViewHeader.label.text = "BudgetSummaryYear".localized
         labelGivt.text = "BudgetSummaryGivt".localized
@@ -31,6 +31,7 @@ extension BudgetOverviewViewController {
         givingGoalSetupViewLabel.attributedText = createInfoText(bold: "BudgetSummarySetGoalBold", normal: "BudgetSummarySetGoal")
         givingGoalPerMonthInfo.text = "BudgetSummaryGivingGoalMonth".localized
         givingGoalRemainingInfo.text = "BudgetSummaryGivingGoalRest".localized
+        givingGoalReachedLabel.text = "BudgetSummaryGivingGoalReached".localized
     }
     
     @objc func noGivtsAction(_ sender: UITapGestureRecognizer) {
@@ -112,7 +113,7 @@ extension BudgetOverviewViewController {
         let diff = calendar.dateComponents([Calendar.Component.day], from: startDate, to: endDate)
         return diff.day!
     }
-    private func getFullMonthStringFromDateValue(value: Date) -> String {
+    func getFullMonthStringFromDateValue(value: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "MMMM"
