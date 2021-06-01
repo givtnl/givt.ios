@@ -61,7 +61,7 @@
                                                                     <action selector="goBackOneMonth:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="1so-Yz-mne"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-lw-kaA" userLabel="buttonRight">
+                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJr-lw-kaA" userLabel="buttonRight">
                                                                 <rect key="frame" x="290" y="20" width="44" height="44"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="44" id="ZUt-6b-40C"/>
@@ -1209,6 +1209,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
+                                        <color key="value" red="0.59215686270000001" green="0.58039215690000001" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
