@@ -148,6 +148,8 @@
 		329C3E8B25F21F2E0037D750 /* UpdateExternalDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8A25F21F2E0037D750 /* UpdateExternalDonationCommandHandler.swift */; };
 		329C3E8D25F21F3E0037D750 /* DeleteExternalDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8C25F21F3E0037D750 /* DeleteExternalDonationCommand.swift */; };
 		329C3E8F25F21F470037D750 /* DeleteExternalDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E8E25F21F470037D750 /* DeleteExternalDonationCommandHandler.swift */; };
+		329D440C266655A5003CE5F0 /* GoBackToSummaryRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329D440B266655A5003CE5F0 /* GoBackToSummaryRoute.swift */; };
+		329D440E266655AD003CE5F0 /* GoBackToSummaryRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329D440D266655AD003CE5F0 /* GoBackToSummaryRouteHandler.swift */; };
 		32A67F7A2513946F007EC7EF /* GetCountryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F792513946F007EC7EF /* GetCountryQuery.swift */; };
 		32A67F7C25139483007EC7EF /* GetCountryQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7B25139483007EC7EF /* GetCountryQueryHandler.swift */; };
 		32A67F7E25139A7F007EC7EF /* GetCountryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A67F7D25139A7F007EC7EF /* GetCountryError.swift */; };
@@ -633,6 +635,8 @@
 		329C3E8A25F21F2E0037D750 /* UpdateExternalDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateExternalDonationCommandHandler.swift; sourceTree = "<group>"; };
 		329C3E8C25F21F3E0037D750 /* DeleteExternalDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExternalDonationCommand.swift; sourceTree = "<group>"; };
 		329C3E8E25F21F470037D750 /* DeleteExternalDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteExternalDonationCommandHandler.swift; sourceTree = "<group>"; };
+		329D440B266655A5003CE5F0 /* GoBackToSummaryRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackToSummaryRoute.swift; sourceTree = "<group>"; };
+		329D440D266655AD003CE5F0 /* GoBackToSummaryRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackToSummaryRouteHandler.swift; sourceTree = "<group>"; };
 		32A67F792513946F007EC7EF /* GetCountryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryQuery.swift; sourceTree = "<group>"; };
 		32A67F7B25139483007EC7EF /* GetCountryQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryQueryHandler.swift; sourceTree = "<group>"; };
 		32A67F7D25139A7F007EC7EF /* GetCountryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCountryError.swift; sourceTree = "<group>"; };
@@ -1027,6 +1031,7 @@
 		32111D6425E5306400DB775C /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				329D440A2666558A003CE5F0 /* GoBackToSummary */,
 				32207E9026415FEA00A265A4 /* OpenGivingGoal */,
 				32EEB2B5262838DA008EED9A /* OpenSummary */,
 				32F528D425EA9F160073C243 /* OpenGiveNow */,
@@ -1590,6 +1595,15 @@
 				329C3E8625F21A8F0037D750 /* ExternalDonationModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		329D440A2666558A003CE5F0 /* GoBackToSummary */ = {
+			isa = PBXGroup;
+			children = (
+				329D440B266655A5003CE5F0 /* GoBackToSummaryRoute.swift */,
+				329D440D266655AD003CE5F0 /* GoBackToSummaryRouteHandler.swift */,
+			);
+			path = GoBackToSummary;
 			sourceTree = "<group>";
 		};
 		32A67F7825139450007EC7EF /* GetCountry */ = {
@@ -3527,6 +3541,7 @@
 				FBC185B124C0CF15001A4C6B /* GetLocalUserConfigurationHandler.swift in Sources */,
 				D75F2CD11FACA73900F40827 /* QRViewController.swift in Sources */,
 				3273B8AB25359F55003DB100 /* RecurringDonationTurnsResponseModel.swift in Sources */,
+				329D440C266655A5003CE5F0 /* GoBackToSummaryRoute.swift in Sources */,
 				FB872FF224C6EC2F005FF355 /* BackToMainRoute.swift in Sources */,
 				FBC1858A24C0651D001A4C6B /* RequestProtocol.swift in Sources */,
 				FB56C5622511001E0099EC62 /* BackToRecurringDonationOverviewRouteHandler.swift in Sources */,
@@ -3539,6 +3554,7 @@
 				329C3E8D25F21F3E0037D750 /* DeleteExternalDonationCommand.swift in Sources */,
 				32EB1CF325D3E3930005CCAC /* MonthlySummary.swift in Sources */,
 				D748F6042063D50C00B25BC2 /* HistoryTableViewModel.swift in Sources */,
+				329D440E266655AD003CE5F0 /* GoBackToSummaryRouteHandler.swift in Sources */,
 				323F16F425EB9D7800B12049 /* TextFieldWithInset.swift in Sources */,
 				D748F5F6206137E400B25BC2 /* TableSectionHeader.swift in Sources */,
 				32AEB6CD24B703970000F7DE /* ChangePhoneNumberViewController.swift in Sources */,
