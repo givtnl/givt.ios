@@ -1102,7 +1102,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 /*Fuzzy*/
 "BudgetTestimonialSummaryName" = "Willem:";
 "BudgetTestimonialGivingGoalName" = "Danielle:";
-"BudgetTestimonialExternalGiftsName" = "John:";
+"BudgetTestimonialExternalGiftsName" = "Johnson:";
 "BudgetTestimonialYearlyOverviewName" = "Jonathan:";
 "BudgetTestimonialSummaryAction" = "View your summary";
 "BudgetTestimonialGivingGoalAction" = "Setup your giving goal";
@@ -1110,3 +1110,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "BudgetSummaryGivingGoalReached" = "Giving goal reached";
+"BudgetExternalDonationToHighAlertTitle" = "ToHighTitle";
+"BudgetExternalDonationToHighAlertMessage" = "ToHighMessage";
+"BudgetExternalDonationToLongAlertTitle" = "ToLongTitle";
+"BudgetExternalDonationToLongAlertMessage" = "ToLongMessage";
