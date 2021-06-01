@@ -25,6 +25,7 @@ extension BudgetOverviewViewController {
                 })
                 DispatchQueue.main.async {
                     self.monthSelectorLabel.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
+                    self.monthlyCardHeader.label.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
                     self.setupCollectGroupsCard()
                     self.monthlySummaryTile.amountLabel.text = self.getMonthlySum().getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                     self.setupGivingGoalCard(self.getMonthlySum())
