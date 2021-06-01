@@ -31,6 +31,12 @@ class BudgetListViewController: UIViewController, OverlayViewController {
             SVProgressHUD.show()
         }
         loadDonations()
+        
+        if monthDate!.getMonth() == Date().getMonth() && monthDate!.getYear() == Date().getYear() {
+            buttonExternal.isEnabled = true
+        } else {
+            buttonExternal.isEnabled = false
+        }
     }
     
     override func viewDidLoad() {
