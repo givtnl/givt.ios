@@ -26,9 +26,19 @@ extension BudgetOverviewViewController {
                 DispatchQueue.main.async {
                     self.monthSelectorLabel.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
                     self.monthlyCardHeader.label.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
-                    self.setupCollectGroupsCard()
                     self.monthlySummaryTile.amountLabel.text = self.getMonthlySum().getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    
+                    self.setupCollectGroupsCard()
                     self.setupGivingGoalCard(self.getMonthlySum())
+                    
+                    if self.fromMonth.getMonth() == Date().getMonth() && self.fromMonth.getYear() == Date().getYear() {
+                        self.buttonPlus.isHidden = false
+                        self.monthSelectorButtonRight.isHidden = true
+                    } else {
+                        self.buttonPlus.isHidden = true
+                        self.monthSelectorButtonRight.isHidden = false
+                    }
+                    
                     SVProgressHUD.dismiss()
                 }
             }
