@@ -88,56 +88,63 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var monthSelectorLabel: UILabel!
     @IBOutlet weak var monthSelectorButtonRight: UIButton!
     
+    var needsReload = true
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !SVProgressHUD.isVisible() {
-            SVProgressHUD.show()
+        
+        if needsReload {
+            if !SVProgressHUD.isVisible() {
+                SVProgressHUD.show()
+            }
+            
+            setupTerms()
+            
+            if !originalHeightsSet {
+                originalStackviewGivtHeight = stackViewGivtHeight.constant
+                originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
+                originalHeightsSet = true
+            }
+            
+            setupMonthPicker()
+            
+            roundCorners(view: givingGoalView)
+            roundCorners(view: remainingGivingGoalView)
+            roundCorners(view: givingGoalSetupView)
+            roundCorners(view: givingGoalReachedView)
         }
-        
-        setupTerms()
-        
-        if !originalHeightsSet {
-            originalStackviewGivtHeight = stackViewGivtHeight.constant
-            originalStackviewNotGivtHeight = stackViewNotGivtHeight.constant
-            originalHeightsSet = true
-        }
-        
-        setupMonthPicker()
-        
-        roundCorners(view: givingGoalView)
-        roundCorners(view: remainingGivingGoalView)
-        roundCorners(view: givingGoalSetupView)
-        roundCorners(view: givingGoalReachedView)
         
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // MARK: Collect groups card
-        collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth(), groupType: 2, orderType: 3))
-        notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
-            first.creationDate > second.creationDate
-        })
-        setupCollectGroupsCard()
-        
-        // MARK: Per month chart
-        monthlySummaryModels = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
-        monthlySummaryModelsNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
-        setupMonthsCard()
-        
-        // MARK: Giving goal
-        givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
-        setupGivingGoalCard()
-        
-        // MARK: Yearly Chart
-        yearlySummary = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
-        yearlySummaryNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
-        setupYearsCard()
-        
-        // MARK: Testimonial
-        setupTestimonial()
-        
-        SVProgressHUD.dismiss()
-        
+        if needsReload {
+            // MARK: Collect groups card
+            collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth(), groupType: 2, orderType: 3))
+            notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
+                first.creationDate > second.creationDate
+            })
+            setupCollectGroupsCard()
+            
+            // MARK: Per month chart
+            monthlySummaryModels = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
+            monthlySummaryModelsNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
+            setupMonthsCard()
+            
+            // MARK: Giving goal
+            givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
+            setupGivingGoalCard()
+            
+            // MARK: Yearly Chart
+            yearlySummary = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
+            yearlySummaryNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
+            setupYearsCard()
+            
+            // MARK: Testimonial
+            setupTestimonial()
+            
+            SVProgressHUD.dismiss()
+
+        }
     }
 }
