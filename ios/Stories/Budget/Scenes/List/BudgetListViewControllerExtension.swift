@@ -11,7 +11,7 @@ import UIKit
 
 extension BudgetListViewController {
     func setupTerms() {
-        headerLabel.text = getFullMonthStringFromDateValue(value: Date()).capitalized
+        headerLabel.text = getFullMonthStringFromDateValue(value: monthDate!).capitalized
         labelGivt.text = "BudgetSummaryGivt".localized
         labelNotGivt.text = "BudgetSummaryNotGivt".localized
         buttonExternal.setTitle("BudgetExternalGiftsListAddEditButton".localized, for: .normal)
