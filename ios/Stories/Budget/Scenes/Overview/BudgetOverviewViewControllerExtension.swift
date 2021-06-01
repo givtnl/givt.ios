@@ -17,7 +17,7 @@ extension BudgetOverviewViewController {
         monthlySummaryTile.descriptionLabel.text = "BudgetSummaryBalance".localized
         givtNowButton.setTitle("BudgetSummaryGiveNow".localized, for: .normal)
         
-        monthlyCardHeader.label.text = getFullMonthStringFromDateValue(value: Date()).capitalized
+        monthlyCardHeader.label.text = getFullMonthStringFromDateValue(value: fromMonth).capitalized
         navigationItem.title = "BudgetMenuView".localized
         chartViewHeader.label.text = "BudgetSummaryMonth".localized
         yearViewHeader.label.text = "BudgetSummaryYear".localized
