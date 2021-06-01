@@ -16,6 +16,7 @@ class OpenExternalGivtsRouteHandler: RequestHandlerWithContextProtocol {
         let vc = UIStoryboard.init(name: "Budget", bundle: nil)
             .instantiateViewController(withIdentifier: String(describing: BudgetExternalGivtsViewController.self)) as! BudgetExternalGivtsViewController
         vc.currentObjectInEditMode = route.id
+        vc.externalDonations = route.externalDonations
         
         context.navigationController?.pushViewController(vc, animated: true)
         
