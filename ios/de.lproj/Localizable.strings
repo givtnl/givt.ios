@@ -1050,7 +1050,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 /*Fuzzy*/
 "BudgetSummaryGivingGoalReached" = "Spendenziel erreicht";
 "BudgetExternalDonationToHighAlertTitle" = "Oh, Du bist ein Großspender?";
-"BudgetExternalDonationToHighAlertMessage" = "Hallo Großspender! Dein Beitrag ist höher, als wir erwartet haben. Senke bitte den Betrag oder lass' uns wissen, dass wir das Maximum verändern sollten.";
+"BudgetExternalDonationToHighAlertMessage" = "Hallo Großspender! Dein Beitrag ist höher, als wir erwartet haben. Senke bitte den Betrag oder lass' uns wissen, das wir das Maximum in Höhe von 99 999 verändern sollen.";
 "BudgetExternalDonationToLongAlertTitle" = "Zu viel!";
 "BudgetExternalDonationToLongAlertMessage" = "Langsam, langsam! Dieses Feld verträgt maximal 30 Zeichen!";
 "BudgetSummaryNoGiftsExternal" = "Spenden außerhalb von Givt, diesen Monat? Hier hinzufügen";
