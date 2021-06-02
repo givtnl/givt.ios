@@ -1079,7 +1079,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetGivingGoalRemove" = "Remove giving goal";
 
 /*Fuzzy*/
-"BudgetSummaryNoGifts" = "Donations outside Givt this month? Add here";
+"BudgetSummaryNoGifts" = "You have no contributions yet this month";
 "BudgetTestimonialSummary" = "”Since I’ve been using the summary, I have gained more insight into what I give. I give more consciously because of it.";
 "BudgetTestimonialGivingGoal" = "”My giving goal motivates me to regularly reflect on my giving behaviour.”";
 "BudgetTestimonialExternalGifts" = "”I like that I can fill in my contributions outside of Givt in the app. Now I can easily consider what I still want to give.”";
@@ -1114,3 +1114,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetExternalDonationToHighAlertMessage" = "Hi big spender, this amount is higher than we expected here. Lower your amount or let us know that we have to change this maximum.";
 "BudgetExternalDonationToLongAlertTitle" = "Too much";
 "BudgetExternalDonationToLongAlertMessage" = "Hold your horses! This field can only take 30 characters max.";
+"BudgetSummaryNoGiftsExternal\n" = "Donations outside Givt this month? Add here";
