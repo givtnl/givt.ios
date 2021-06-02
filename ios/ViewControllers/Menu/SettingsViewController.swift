@@ -165,6 +165,7 @@ class SettingsViewController: BaseMenuViewController {
         DispatchQueue.main.async {
             self.hideMenuAnimated() {
                 self.navigationManager.executeWithLogin(context: self) {
+                    SVProgressHUD.show()
                     try! Mediater.shared.send(request: OpenSummaryRoute(fromDate: Date()), withContext: self)
                 }
             }
