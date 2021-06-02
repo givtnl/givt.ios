@@ -84,11 +84,6 @@ extension BudgetOverviewViewController {
         setVerticalChart(dataPoints: chartViewBody.months, values: doubleValues, chartView: chartViewBody.chartView, trueAverage: chartViewBody.trueAverage)
     }
     private func setVerticalChart(dataPoints: [String], values: [Double], chartView: BarChartView, trueAverage: Double) {
-        
-        chartView.noDataText = "Geet gi nog gin givtn."
-        chartView.noDataFont = UIFont(name: "Avenir-Book", size: 14)!
-        chartView.noDataTextColor = ColorHelper.GivtPurple
-        
         var dataEntries: [BarChartDataEntry] = []
         var chartColors: [UIColor] = []
         
