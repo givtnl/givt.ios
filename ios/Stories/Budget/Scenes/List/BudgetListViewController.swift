@@ -22,11 +22,21 @@ class BudgetListViewController: UIViewController, OverlayViewController {
     @IBOutlet weak var stackViewNotGivtHeight: NSLayoutConstraint!
     @IBOutlet weak var buttonExternal: CustomButton!
     
+    var collectGroupsForCurrentMonth: [MonthlySummaryDetailModel]? = nil
+    var notGivtModelsForCurrentMonth: [ExternalDonationModel]? = nil
+    var monthDate: Date? = nil
+    
     override func viewWillAppear(_ animated: Bool) {
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
         }
         loadDonations()
+        
+        if monthDate!.getMonth() == Date().getMonth() && monthDate!.getYear() == Date().getYear() {
+            buttonExternal.isEnabled = true
+        } else {
+            buttonExternal.isEnabled = false
+        }
     }
     
     override func viewDidLoad() {

@@ -15,7 +15,7 @@ private extension BudgetExternalGivtsViewController {
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
-            try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+            try? Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: somethingHappened), withContext: self)
         }
     }
     
@@ -23,7 +23,7 @@ private extension BudgetExternalGivtsViewController {
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
-            try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+            try? Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: somethingHappened), withContext: self)
         }
     }
 
