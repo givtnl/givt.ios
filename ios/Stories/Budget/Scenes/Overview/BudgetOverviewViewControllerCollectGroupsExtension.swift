@@ -40,10 +40,10 @@ extension BudgetOverviewViewController {
                     }
                 }
             } else {
-                addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight)
+                addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight, givtDonation: true)
             }
         } else {
-            addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight)
+            addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight, givtDonation: true)
         }
         
         
@@ -76,9 +76,9 @@ extension BudgetOverviewViewController {
         }
     }
     
-    private func addEmptyLine(stackView: UIStackView, stackViewHeight: NSLayoutConstraint) {
+    private func addEmptyLine(stackView: UIStackView, stackViewHeight: NSLayoutConstraint, givtDonation: Bool = false) {
         let view = MonthlyCardViewLine()
-        view.collectGroupLabel.text = "BudgetSummaryNoGifts".localized
+        view.collectGroupLabel.text = givtDonation ? "BudgetSummaryNoGifts".localized : "BudgetSummaryNoGiftsExternal".localized
         view.amountLabel.text = String.empty
         stackView.addArrangedSubview(view)
         stackViewHeight.constant += 22
