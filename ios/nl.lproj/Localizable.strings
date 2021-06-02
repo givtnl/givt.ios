@@ -1117,7 +1117,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 /*Fuzzy*/
 "BudgetSummaryGivingGoalReached" = "Streefbedrag behaald";
 "BudgetExternalDonationToHighAlertTitle" = "Dat is gul!";
-"BudgetExternalDonationToHighAlertMessage" = "Hé gulle gever, dit bedrag is hoger dan wat we hier nu voorzien. Kies een lager bedrag of laat ons weten dat we dit moeten aanpassen!";
+"BudgetExternalDonationToHighAlertMessage" = "Hé gulle gever, dit bedrag is hoger dan wat we hier nu voorzien. Kies een lager bedrag of laat ons weten dat we dit maximum van 99 999 moeten aanpassen!";
 "BudgetExternalDonationToLongAlertTitle" = "Te veel";
 "BudgetExternalDonationToLongAlertMessage" = "Hold your horses! Je kunt hier maximaal 30 karakters invullen.";
 
