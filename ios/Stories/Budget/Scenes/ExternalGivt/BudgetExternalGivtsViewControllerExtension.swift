@@ -104,10 +104,6 @@ extension BudgetExternalGivtsViewController {
     func loadDonations() {
         originalStackviewHeightConstant = stackViewEditRowsHeight.constant
         
-        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
-            first.creationDate > second.creationDate
-        })
-        
         externalDonations!.forEach { model in
             let newRow = BudgetExternalGivtsEditRow(id: model.id, description: model.description, amount: model.amount)
             newRow.editButton.addTarget(self, action: #selector(editButtonRow), for: .touchUpInside)

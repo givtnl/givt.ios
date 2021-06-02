@@ -58,7 +58,7 @@ extension BudgetGivingGoalViewController {
                 try! Mediater.shared.sendAsync(request: DeleteGivingGoalCommand(), completion: { response in
                     DispatchQueue.main.async {
                         if (response as ResponseModel<Bool>).result {
-                            try! Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+                            try! Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: true), withContext: self)
                         } else {
                             SVProgressHUD.dismiss()
                         }

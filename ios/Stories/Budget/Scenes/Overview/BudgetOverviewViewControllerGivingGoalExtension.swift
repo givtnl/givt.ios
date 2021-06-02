@@ -53,7 +53,7 @@ extension BudgetOverviewViewController {
         }
     }
     
-    func setupGivingGoalCard() {
+    func setupGivingGoalCard(_ monthlySum: Double? = nil) {
         // add onclick to adjust giving goal
         givingGoalViewEditLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalEdit)))
         givingGoalSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalSetup)))
@@ -72,7 +72,13 @@ extension BudgetOverviewViewController {
                 givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
             }
             
-            let currentGivenPerMonth = lastMonthTotal!
+            var currentGivenPerMonth: Double
+            
+            if monthlySum != nil {
+                currentGivenPerMonth = monthlySum!
+            } else {
+                currentGivenPerMonth = lastMonthTotal!
+            }
             
             var remainingThisMonth = givingGoal!.amount - currentGivenPerMonth
             

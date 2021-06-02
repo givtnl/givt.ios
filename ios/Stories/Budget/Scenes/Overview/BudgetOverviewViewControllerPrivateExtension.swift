@@ -22,7 +22,8 @@ private extension BudgetOverviewViewController {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
             NavigationManager.shared.executeWithLogin(context: self, completion: {
-                self.showOverlay(type: BudgetListViewController.self, fromStoryboardWithName: "Budget")
+                let collections: [AnyObject] = [self.collectGroupsForCurrentMonth as Any, self.notGivtModelsForCurrentMonth as Any, self.fromMonth as Any] as [AnyObject]
+                self.showOverlay(type: BudgetListViewController.self, fromStoryboardWithName: "Budget", collections: collections)
             })
         }
     }
@@ -30,7 +31,17 @@ private extension BudgetOverviewViewController {
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
-            try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
+            try? Mediater.shared.send(request: OpenExternalGivtsRoute(externalDonations: self.notGivtModelsForCurrentMonth), withContext: self)
         }
+    }
+    @IBAction func goBackOneMonth(_ sender: Any) {
+        fromMonth = getPreviousMonth(from: fromMonth)
+        
+        updateMonthCard()
+    }
+    @IBAction func goForwardOneMonth(_ sender: Any) {
+        fromMonth = getNextMonth(from: fromMonth)
+        
+        updateMonthCard()
     }
 }
