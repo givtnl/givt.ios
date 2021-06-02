@@ -115,7 +115,7 @@ extension BudgetGivingGoalViewController {
         var isValid = false
         
         if let amount: Double = amountViewTextField.text?.replacingOccurrences(of: ",", with: ".").doubleValue {
-            if amount >= 1 && amount <= 99999 {
+            if amount >= 1 && amount <= 9999 {
                 isValid = true
             }
         }
