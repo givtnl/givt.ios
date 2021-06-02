@@ -16,8 +16,8 @@ extension BudgetOverviewViewController {
     }
     
     func updateMonthCard() {
-        SVProgressHUD.show()
         NavigationManager.shared.executeWithLogin(context: self) {
+            SVProgressHUD.show()
             try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth), groupType: 2, orderType: 3)) { givtResponse in
                 self.collectGroupsForCurrentMonth = givtResponse
                 try! Mediater.shared.sendAsync(request: GetAllExternalDonationsQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth))) { notGivtResponse in
