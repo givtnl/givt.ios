@@ -30,7 +30,7 @@ extension BudgetOverviewViewController {
                         self.monthlySummaryTile.amountLabel.text = self.getMonthlySum().getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                         
                         self.setupCollectGroupsCard()
-                        self.setupGivingGoalCard(self.getMonthlySum())
+                        self.setupRemainingGivingGoal(self.getMonthlySum())
                         
                         if self.fromMonth.getMonth() == Date().getMonth() && self.fromMonth.getYear() == Date().getYear() {
                             self.buttonPlus.isHidden = false

@@ -53,7 +53,7 @@ extension BudgetOverviewViewController {
         }
     }
     
-    func setupGivingGoalCard(_ monthlySum: Double? = nil) {
+    func setupGivingGoalCard() {
         // add onclick to adjust giving goal
         givingGoalViewEditLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalEdit)))
         givingGoalSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalSetup)))
@@ -71,7 +71,16 @@ extension BudgetOverviewViewController {
                 givingGoalAmount = givingGoal!.amount
                 givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
             }
-            
+        } else {
+            givingGoalSetupStackItem.isHidden = false
+            givingGoalStackItem.isHidden = true
+            remainingGivingGoalStackItem.isHidden = true
+            givingGoalReachedStackItem.isHidden = true
+        }
+    }
+    
+    func setupRemainingGivingGoal(_ monthlySum: Double? = nil) {
+        if givingGoal != nil {
             var currentGivenPerMonth: Double
             
             if monthlySum != nil {
@@ -93,12 +102,6 @@ extension BudgetOverviewViewController {
                 remainingGivingGoalStackItem.isHidden = false
                 givingGoalReachedStackItem.isHidden = true
             }
-            
-        } else {
-            givingGoalSetupStackItem.isHidden = false
-            givingGoalStackItem.isHidden = true
-            remainingGivingGoalStackItem.isHidden = true
-            givingGoalReachedStackItem.isHidden = true
         }
     }
 }
