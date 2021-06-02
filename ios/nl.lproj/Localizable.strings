@@ -1120,4 +1120,6 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetExternalDonationToHighAlertMessage" = "Hé gulle gever, dit bedrag is hoger dan wat we hier nu voorzien. Kies een lager bedrag of laat ons weten dat we dit moeten aanpassen!";
 "BudgetExternalDonationToLongAlertTitle" = "Te veel";
 "BudgetExternalDonationToLongAlertMessage" = "Hold your horses! Je kunt hier maximaal 30 karakters invullen.";
-"BudgetSummaryNoGiftsExternal\n" = "Je hebt deze maand nog geen giften";
+
+/*Fuzzy*/
+"BudgetSummaryNoGiftsExternal" = "Je hebt deze maand nog geen giften";
