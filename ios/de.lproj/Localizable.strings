@@ -1053,4 +1053,4 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetExternalDonationToHighAlertMessage" = "Hallo Großspender! Dein Beitrag ist höher, als wir erwartet haben. Senke bitte den Betrag oder lass' uns wissen, dass wir das Maximum verändern sollten.";
 "BudgetExternalDonationToLongAlertTitle" = "Zu viel!";
 "BudgetExternalDonationToLongAlertMessage" = "Langsam, langsam! Dieses Feld verträgt maximal 30 Zeichen!";
-"BudgetSummaryNoGiftsExternal\n" = "Donations outside Givt this month? Add here";
+"BudgetSummaryNoGiftsExternal" = "Donations outside Givt this month? Add here";
