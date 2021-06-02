@@ -1110,7 +1110,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "BudgetSummaryGivingGoalReached" = "Giving goal reached";
-"BudgetExternalDonationToHighAlertTitle" = "ToHighTitle";
-"BudgetExternalDonationToHighAlertMessage" = "ToHighMessage";
-"BudgetExternalDonationToLongAlertTitle" = "ToLongTitle";
-"BudgetExternalDonationToLongAlertMessage" = "ToLongMessage";
+"BudgetExternalDonationToHighAlertTitle" = "Wow, big spender?!";
+"BudgetExternalDonationToHighAlertMessage" = "Hi big spender, this amount is higher than we expected here. Lower your amount or let us know that we have to change this maximum.";
+"BudgetExternalDonationToLongAlertTitle" = "Too much";
+"BudgetExternalDonationToLongAlertMessage" = "Hold your horses! This field can only take 30 characters max.";
