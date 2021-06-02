@@ -119,6 +119,10 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         super.viewDidAppear(animated)
         
         if needsReload {
+            // MARK: Giving goal
+            givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
+            setupGivingGoalCard()
+            
             // MARK: Collect groups card
             collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth(), groupType: 2, orderType: 3))
             notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
@@ -131,10 +135,6 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             monthlySummaryModelsNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForMonthsChart(), tillDate: getTillDateForMonthsChart(), groupType: 0, orderType: 0))
             setupMonthsCard()
             
-            // MARK: Giving goal
-            givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
-            setupGivingGoalCard()
-            
             // MARK: Yearly Chart
             yearlySummary = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
             yearlySummaryNotGivt = try! Mediater.shared.send(request: GetExternalMonthlySummaryQuery(fromDate: getFromDateForYearlyOverview(), tillDate: getTillDateForCurrentMonth(), groupType: 1, orderType: 0))
@@ -142,6 +142,8 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             
             // MARK: Testimonial
             setupTestimonial()
+            
+            setupRemainingGivingGoal()
             
             SVProgressHUD.dismiss()
 

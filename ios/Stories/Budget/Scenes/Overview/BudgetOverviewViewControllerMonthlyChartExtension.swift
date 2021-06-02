@@ -102,7 +102,7 @@ extension BudgetOverviewViewController {
             }
         }
         
-        let lineLimit = givingGoal != nil && givingGoalAmount != nil ? givingGoalAmount! : trueAverage
+        let lineLimit = givingGoal != nil ? givingGoal!.periodicity == 0 ? givingGoal!.amount : givingGoal!.amount / 12 : trueAverage
 
         if dataEntries.count > 0 {
             let limitBarChartDataEntry = BarChartDataEntry(x: 0, y: lineLimit)
