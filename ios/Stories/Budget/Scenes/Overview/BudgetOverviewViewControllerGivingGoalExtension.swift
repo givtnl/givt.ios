@@ -89,7 +89,7 @@ extension BudgetOverviewViewController {
                 currentGivenPerMonth = lastMonthTotal!
             }
             
-            var remainingThisMonth = givingGoal!.amount - currentGivenPerMonth
+            var remainingThisMonth = givingGoal!.periodicity == 0 ? givingGoal!.amount : givingGoal!.amount / 12 - currentGivenPerMonth
             
             remainingThisMonth = remainingThisMonth >= 0 ? remainingThisMonth : 0
             
