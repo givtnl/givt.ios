@@ -1122,4 +1122,4 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "BudgetExternalDonationToLongAlertMessage" = "Hold your horses! Je kunt hier maximaal 30 karakters invullen.";
 
 /*Fuzzy*/
-"BudgetSummaryNoGiftsExternal" = "Je hebt deze maand nog geen giften";
+"BudgetSummaryNoGiftsExternal" = "Donaties buiten Givt? Voeg ze hier toe";
