@@ -9,5 +9,8 @@
 import Foundation
 
 class OpenYearlyOverviewRoute: NoResponseRequest {
-    
+    var year: Int
+    init(year: Int) {
+        self.year = year
+    }
 }

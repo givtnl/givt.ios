@@ -154,7 +154,7 @@ extension BudgetOverviewViewController {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
             NavigationManager.shared.executeWithLogin(context: self) {
-                try! Mediater.shared.send(request: OpenYearlyOverviewRoute(), withContext: self)
+                try! Mediater.shared.send(request: OpenYearlyOverviewRoute(year: Date().getYear() - 1), withContext: self)
             }
         }
     }
