@@ -11,12 +11,8 @@ import UIKit
 
 class OpenYearlyOverviewRouteHandler: RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let route = (request as! OpenYearlyOverviewRoute)
-        
         let vc = UIStoryboard.init(name: "Budget", bundle: nil)
             .instantiateViewController(withIdentifier: String(describing: BudgetYearlyOverviewViewController.self)) as! BudgetYearlyOverviewViewController
-        vc.collectGroupsForCurrentMonth = route.collectGroupsForCurrentMonth
-        vc.notGivtModelsForCurrentMonth = route.notGivtModelsForCurrentMonth
         
         context.navigationController?.pushViewController(vc, animated: true)
         
