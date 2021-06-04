@@ -62,8 +62,8 @@ extension BudgetOverviewViewController {
         let currentMonth = Calendar.current.component(.month, from: currentDate)
         var dateComponents = DateComponents()
         dateComponents.year = currentYear
-        dateComponents.month = currentMonth
-        dateComponents.day = getDaysInMonth(month: Int(currentMonth), year: Int(currentYear))
+        dateComponents.month = currentMonth+1
+        dateComponents.day = 1
         let date = calendar.date(from: dateComponents)!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
