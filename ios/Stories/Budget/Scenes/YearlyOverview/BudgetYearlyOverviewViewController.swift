@@ -23,9 +23,7 @@ class BudgetYearlyOverviewViewController: UIViewController {
     @IBOutlet weak var amountTotal: UILabel!
     @IBOutlet weak var amountTax: UILabel!
     
-    var givtTotal: Double?
-    var notGivtTotal: Double?
-    var taxDeductableTotal: Double?
+    var year: Int!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -40,8 +38,8 @@ class BudgetYearlyOverviewViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let fromDate = getStartDateForYear(year: 2021)
-        let tillDate = getEndDateForYear(year: 2021)
+        let fromDate = getStartDateForYear(year: year)
+        let tillDate = getEndDateForYear(year: year)
         
         try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
             DispatchQueue.main.async {
