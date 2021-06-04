@@ -9,11 +9,5 @@
 import Foundation
 
 class OpenYearlyOverviewRoute: NoResponseRequest {
-    var collectGroupsForCurrentMonth: [MonthlySummaryDetailModel]
-    var notGivtModelsForCurrentMonth: [ExternalDonationModel]
     
-    init(_ collectGroupsForCurrentMonth: [MonthlySummaryDetailModel], _ notGivtModelsForCurrentMonth: [ExternalDonationModel]) {
-        self.collectGroupsForCurrentMonth = collectGroupsForCurrentMonth
-        self.notGivtModelsForCurrentMonth = notGivtModelsForCurrentMonth
-    }
 }

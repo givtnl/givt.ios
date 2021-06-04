@@ -12,8 +12,8 @@ import UIKit
 class BudgetYearlyOverviewViewController: UIViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     
-    var collectGroupsForCurrentMonth: [MonthlySummaryDetailModel]!
-    var notGivtModelsForCurrentMonth: [ExternalDonationModel]!
+    var collectGroupsForCurrentMonth: [MonthlySummaryDetailModel]?
+    var notGivtModelsForCurrentMonth: [ExternalDonationModel]?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -21,6 +21,7 @@ class BudgetYearlyOverviewViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
+    
     @IBAction func backButton(_ sender: Any) {
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
