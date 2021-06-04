@@ -29,6 +29,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var stackViewNotGivtHeight: NSLayoutConstraint!
     @IBOutlet weak var chartViewHeader: CardViewHeader!
     @IBOutlet weak var chartViewBody: ChartViewBody!
+    @IBOutlet weak var yearCardView: BackgroundShadowView!
     @IBOutlet weak var yearViewHeader: CardViewHeader!
     @IBOutlet weak var yearViewBody: YearViewBody!
     
