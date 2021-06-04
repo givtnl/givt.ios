@@ -57,6 +57,7 @@ class BudgetYearlyOverviewViewController: UIViewController {
     }
     
     func setupTerms() {
+        navItem.title = year.string
         labelGivt.text = "BudgetYearlyOverviewGivenThroughGivt".localized
         labelNotGivt.text = "BudgetYearlyOverviewGivenThroughNotGivt".localized
         labelTotal.text = "BudgetYearlyOverviewGivenTotal".localized
