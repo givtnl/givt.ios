@@ -175,6 +175,8 @@
 		32D488A6266A2FAC00B166B4 /* OpenYearlyOverviewRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D488A5266A2FAC00B166B4 /* OpenYearlyOverviewRouteHandler.swift */; };
 		32D488AA266A417E00B166B4 /* BackgroundTotalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D488A9266A417E00B166B4 /* BackgroundTotalsView.swift */; };
 		32D488AC266A418C00B166B4 /* BackgroundTotalsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32D488AB266A418C00B166B4 /* BackgroundTotalsView.xib */; };
+		32D488AE266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D488AD266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift */; };
+		32D488B0266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D488AF266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift */; };
 		32DBF12426271EED00E20C45 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBF12326271EED00E20C45 /* LocalNotificationManager.swift */; };
 		32DDFB2F25F75F4900E25AF2 /* BudgetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */; };
 		32DDFB3225F7618400E25AF2 /* OverlayViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DDFB3125F7618400E25AF2 /* OverlayViewControllerExtension.swift */; };
@@ -667,6 +669,8 @@
 		32D488A5266A2FAC00B166B4 /* OpenYearlyOverviewRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenYearlyOverviewRouteHandler.swift; sourceTree = "<group>"; };
 		32D488A9266A417E00B166B4 /* BackgroundTotalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTotalsView.swift; sourceTree = "<group>"; };
 		32D488AB266A418C00B166B4 /* BackgroundTotalsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackgroundTotalsView.xib; sourceTree = "<group>"; };
+		32D488AD266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
+		32D488AF266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerExtension.swift; sourceTree = "<group>"; };
 		32DBF12326271EED00E20C45 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		32DDFB2E25F75F4900E25AF2 /* BudgetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewController.swift; sourceTree = "<group>"; };
 		32DDFB3125F7618400E25AF2 /* OverlayViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -1727,6 +1731,8 @@
 			children = (
 				32D488A7266A415E00B166B4 /* Views */,
 				32D4889F266A2E3C00B166B4 /* BudgetYearlyOverviewViewController.swift */,
+				32D488AF266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift */,
+				32D488AD266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift */,
 			);
 			path = YearlyOverview;
 			sourceTree = "<group>";
@@ -3373,6 +3379,7 @@
 				FBB85B0321C9230400A1A634 /* FeaturesFirstViewController.swift in Sources */,
 				32EB1CF025D3E1330005CCAC /* BudgetNavigationController.swift in Sources */,
 				FBC185AE24C0CD98001A4C6B /* LocalUserConfigurationModel.swift in Sources */,
+				32D488AE266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift in Sources */,
 				326B7E7B2602411E000A6239 /* RecurringDonationTurnsOverviewControllerCronExtension.swift in Sources */,
 				D782E68F20064A680086907E /* SettingsViewController.swift in Sources */,
 				FBC1858524C0651D001A4C6B /* RequestHandlerProtocol.swift in Sources */,
@@ -3636,6 +3643,7 @@
 				32DDFB2F25F75F4900E25AF2 /* BudgetListViewController.swift in Sources */,
 				FBC185C324C57F52001A4C6B /* RequestHandlerWithContextProtocol.swift in Sources */,
 				329C3E7825F210D20037D750 /* CreateExternalDonationCommand.swift in Sources */,
+				32D488B0266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift in Sources */,
 				329C3E8925F21F200037D750 /* UpdateExternalDonationCommand.swift in Sources */,
 				D7DD79A2209B359D00047CA7 /* EventSuggestionViewController.swift in Sources */,
 				32A8AB9225EE164200B96594 /* DoubleExtension.swift in Sources */,

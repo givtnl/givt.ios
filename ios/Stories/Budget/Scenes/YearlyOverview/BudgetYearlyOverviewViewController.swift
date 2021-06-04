@@ -55,44 +55,4 @@ class BudgetYearlyOverviewViewController: UIViewController {
             }
         }
     }
-    
-    func setupTerms() {
-        navItem.title = year.string
-        labelGivt.text = "BudgetYearlyOverviewGivenThroughGivt".localized
-        labelNotGivt.text = "BudgetYearlyOverviewGivenThroughNotGivt".localized
-        labelTotal.text = "BudgetYearlyOverviewGivenTotal".localized
-        labelTax.text = "BudgetYearlyOverviewGivenTotalTax".localized
-    }
-    
-    @IBAction func backButton(_ sender: Any) {
-        if !AppServices.shared.isServerReachable {
-            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
-        } else {
-            NavigationManager.shared.executeWithLogin(context: self) {
-                try! Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: false), withContext: self)
-            }
-        }
-    }
-    
-    func getStartDateForYear(year: Int) -> String {
-        var componentsForYearlySummaryComponents = DateComponents()
-        componentsForYearlySummaryComponents.day = 1
-        componentsForYearlySummaryComponents.month = 1
-        componentsForYearlySummaryComponents.year = year
-        let date = Calendar.current.date(from: componentsForYearlySummaryComponents)!
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
-    }
-    
-    func getEndDateForYear(year: Int) -> String {
-        var componentsForYearlySummaryComponents = DateComponents()
-        componentsForYearlySummaryComponents.day = 1
-        componentsForYearlySummaryComponents.month = 1
-        componentsForYearlySummaryComponents.year = year + 1
-        let date = Calendar.current.date(from: componentsForYearlySummaryComponents)!
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
-    }
 }
