@@ -1119,7 +1119,11 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetExternalDonationToHighAlertTitle" = "Dat is gul!";
 "BudgetExternalDonationToHighAlertMessage" = "Hé gulle gever, dit bedrag is hoger dan wat we hier nu voorzien. Kies een lager bedrag of laat ons weten dat we dit maximum van 99 999 moeten aanpassen!";
 "BudgetExternalDonationToLongAlertTitle" = "Te veel";
-"BudgetExternalDonationToLongAlertMessage" = "Hold your horses! Je kunt hier maximaal 30 karakters invullen.";
+"BudgetExternalDonationToLongAlertMessage" = "Hold your horses! Je kunt hier maximaal 30 tekens invullen.";
 
 /*Fuzzy*/
 "BudgetSummaryNoGiftsExternal" = "Donaties buiten Givt? Voeg ze hier toe";
+"BudgetYearlyOverviewGivenThroughGivt" = "Totaal via Givt";
+"BudgetYearlyOverviewGivenThroughtNotGivt" = "Totaal niet via Givt";
+"BudgetYearlyOverviewGivenTotal" = "Totaal";
+"BudgetYearlyOverviewGivenTax" = "Totaal ANBI";
