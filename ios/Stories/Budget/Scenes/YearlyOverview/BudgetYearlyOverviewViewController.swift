@@ -13,6 +13,16 @@ import SVProgressHUD
 class BudgetYearlyOverviewViewController: UIViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     
+    @IBOutlet weak var labelGivt: UILabel!
+    @IBOutlet weak var labelNotGivt: UILabel!
+    @IBOutlet weak var labelTotal: UILabel!
+    @IBOutlet weak var labelTax: UILabel!
+    
+    @IBOutlet weak var amountGivt: UILabel!
+    @IBOutlet weak var amountNotGivt: UILabel!
+    @IBOutlet weak var amountTotal: UILabel!
+    @IBOutlet weak var amountTax: UILabel!
+    
     var givtTotal: Double?
     var notGivtTotal: Double?
     var taxDeductableTotal: Double?
@@ -23,7 +33,10 @@ class BudgetYearlyOverviewViewController: UIViewController {
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
         }
+        
+        setupTerms()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -31,13 +44,25 @@ class BudgetYearlyOverviewViewController: UIViewController {
         let tillDate = getEndDateForYear(year: 2021)
         
         try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
-            self.givtTotal = givtModels.map { $0.Value }.reduce(0, +)
-            self.taxDeductableTotal = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
+            DispatchQueue.main.async {
+                self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0)
+                self.amountTax.text = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0)
+            }
             try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: fromDate , tillDate: tillDate, groupType: 2, orderType: 3)) { notGivtModels in
-                self.notGivtTotal = notGivtModels.map { $0.Value }.reduce(0, +)
-                SVProgressHUD.dismiss()
+                DispatchQueue.main.async {
+                    self.amountNotGivt.text = notGivtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0)
+                    self.amountTotal.text = (notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +)).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 0)
+                    SVProgressHUD.dismiss()
+                }
             }
         }
+    }
+    
+    func setupTerms() {
+        labelGivt.text = "BudgetYearlyOverviewGivenThroughGivt".localized
+        labelNotGivt.text = "BudgetYearlyOverviewGivenThroughNotGivt".localized
+        labelTotal.text = "BudgetYearlyOverviewGivenTotal".localized
+        labelTax.text = "BudgetYearlyOverviewGivenTotalTax".localized
     }
     
     @IBAction func backButton(_ sender: Any) {
