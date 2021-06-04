@@ -12,4 +12,5 @@ struct MonthlySummaryDetailModel: Codable {
     let Key: String
     let Value: Double
     let Count: Double
+    let TaxDeductable: Bool?
 }
