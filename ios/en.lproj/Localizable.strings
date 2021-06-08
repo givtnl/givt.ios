@@ -168,7 +168,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 "FAQAntwoord16" = "During the first 15 minutes after the donation was done in the app, it is possible to cancel the donation. Simply go to the donation overview and swipe the donation you want to cancel to the left. Note: You can only cancel your donation if you have completed your registration in the Givt app.\n\nNo transactions take place in the moment of giving. The transactions take place afterwards via a direct debit. Since these transactions are revertible via your bank, it is completely safe and immune to fraud.";
 "SelectContextCollect" = "Give in the church, at the door or on the street";
 "GiveContextQR" = "Give by scanning a QR-code";
-"SelectContextList" = "Select a goal from the list";
+"SelectContextList" = "Select a cause from the list";
 "SelectContext" = "Choose the way you give";
 "ChooseWhoYouWantToGiveTo" = "Choose who you want to give to";
 "CancelGiftAlertTitle" = "Cancel donation?";
@@ -606,7 +606,7 @@ met Givt, wordt er geïncasseerd. Deze oorspronkelijke tekst even aangepast om t
 /*Klopt dit?
 Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts’. Door op deze melding te klikken geef je alsnog het bedrag dat je tijdens de collecte wilde geven. 
  Antwoord op FAQ vraag2*/
-"FAQantwoord2" = "The first step was installing the app. For Givt to work effectively, it’s important that you enable Bluetooth and have a working internet connection. \n\nThen register yourself by filling in your information and signing a mandate. \nYou’re ready to give! Open the app, select an amount, and scan a QR-code, move your phone towards the collection bag or basket, or select a goal from the list.\nYour chosen amount will be saved, withdrawn from your account and distributed to the church or collecting charities.\n\nIf you don’t have an internet connection when making your donation, the donation will be sent at a later time when you re-open the app. Like when you are in a WiFi zone.";
+"FAQantwoord2" = "The first step was installing the app. For Givt to work effectively, it’s important that you enable Bluetooth and have a working internet connection. \n\nThen register yourself by filling in your information and signing a mandate. \nYou’re ready to give! Open the app, select an amount, and scan a QR-code, move your phone towards the collection bag or basket, or select a cause from the list.\nYour chosen amount will be saved, withdrawn from your account and distributed to the church or collecting charities.\n\nIf you don’t have an internet connection when making your donation, the donation will be sent at a later time when you re-open the app. Like when you are in a WiFi zone.";
 
 /*Je komt nu meteen in het betaalscherm. (ipv je komt nu gelijk in het betaalscherm) 
  Antwoord op FAQ vraag3*/
@@ -882,7 +882,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "HistoryDownloadAnnualOverviewAccessibilityLabel" = "Download annual overview of donations (mail)";
 "BluetoothErrorMessageEvent" = "With Bluetooth, you can find your location even with no/poor GPS connection, thanks to location-beacons. \nActivate your Bluetooth now!";
 "processCashedGivt_NamespaceInvalid" = "We see that you have made a non-processed gift to an organisation that, sadly, doesn't use Givt anymore. This gift will be deleted.";
-"SuggestionNamespaceInvalid" = "Your last selected goal doesn't support Givt anymore.";
+"SuggestionNamespaceInvalid" = "Your last selected cause doesn't support Givt anymore.";
 "Charity" = "Charity";
 "Artist" = "Artist";
 "Church" = "Church";
@@ -1046,22 +1046,22 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 /*Fuzzy*/
 "BudgetSummaryGiveNow" = "Give now!";
 "BudgetSummaryGivt" = "Given within Givt";
-"BudgetSummaryNotGivt" = "Given outside of Givt";
+"BudgetSummaryNotGivt" = "Given outside Givt";
 
 /*Fuzzy*/
 "BudgetSummaryShowAll" = "Show all";
 "BudgetSummaryMonth" = "Monthly";
 "BudgetSummaryYear" = "Annually";
-"BudgetExternalGiftsTitle" = "Giving outside of Givt";
+"BudgetExternalGiftsTitle" = "Giving outside Givt";
 "BudgetExternalGiftsInfo" = "Get a complete overview of all of your contributions. Add any contributions that you have made outside of Givt. You will find everything in your summary.";
-"BudgetExternalGiftsSubTitle" = "Your donations outside of Givt";
+"BudgetExternalGiftsSubTitle" = "Your donations outside Givt";
 "BudgetExternalGiftsOrg" = "Name of organisation";
 "BudgetExternalGiftsTime" = "Frequency";
 "BudgetExternalGiftsAmount" = "Amount";
 "BudgetExternalGiftsAdd" = "Add";
 "BudgetExternalGiftsSave" = "Save";
 "BudgetGivingGoalTitle" = "Setup giving goal";
-"BudgetGivingGoalInfo" = "Give consciously. Consider each month whether your giving behaviour matches your personal ambitions.";
+"BudgetGivingGoalInfo" = "Give consciously. Consider each month whether your giving behaviour matches your personal giving goals.";
 "BudgetGivingGoalMine" = "My giving goal";
 "BudgetGivingGoalTime" = "Period";
 "BudgetSummaryGivingGoalMonth" = "Monthly giving goal";
@@ -1080,13 +1080,13 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Fuzzy*/
 "BudgetSummaryNoGifts" = "You have no donations yet this month";
-"BudgetTestimonialSummary" = "”Since I’ve been using the summary, I have gained more insight into what I give. I give more consciously because of it.";
+"BudgetTestimonialSummary" = "”Since I’ve been using the summary, I have gained more insight into what I give. I give more consciously because of it.\"";
 "BudgetTestimonialGivingGoal" = "”My giving goal motivates me to regularly reflect on my giving behaviour.”";
-"BudgetTestimonialExternalGifts" = "”I like that I can fill in my contributions outside of Givt in the app. Now I can easily consider what I still want to give.”";
-"BudgetTestimonialYearlyOverview" = "“I think Givt's annual overview is great! Since I also make contributions outside of Givt, I am happy that I can now add them too. All my donations in one overview, super easy for my tax return.”";
+"BudgetTestimonialExternalGifts" = "\"I like that I can add any external donations to my summary. I can now simply keep track of my giving.\"";
+"BudgetTestimonialYearlyOverview" = "\"Givt's annual overview is great! I've also added all my donations outside Givt. This way I have all my giving in one overview, which is essential for my tax return.\"";
 "BudgetPushMonthly" = "See what you have given this month.";
 "BudgetPushYearly" = "View your annual overview and see what you have given so far.";
-"BudgetTooltipGivingGoal" = "Give consciously. Consider each month whether your giving behaviour matches your personal ambitions.";
+"BudgetTooltipGivingGoal" = "Give consciously. Consider each month whether your giving behaviour matches your personal giving goals.";
 "BudgetTooltipExternalGifts" = "Add what you're donating outside of Givt. Everything will appear in your summary. With all your donations included you'll get the best insight.";
 "BudgetTooltipYearly" = "One overview for the tax return? View the overview of all your donations here.";
 "BudgetPushMonthlyBold" = "Your monthly summary is ready.";
@@ -1109,7 +1109,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetTestimonialExternalGiftsAction" = "Add external donations";
 
 /*Fuzzy*/
-"BudgetSummaryGivingGoalReached" = "Giving goal reached";
+"BudgetSummaryGivingGoalReached" = "Giving goal achieved";
 "BudgetExternalDonationToHighAlertTitle" = "Wow, big spender?!";
 "BudgetExternalDonationToHighAlertMessage" = "Hi big spender, this amount is higher than we expected here. Lower your amount or let us know that we have to change this maximum of 99 999.";
 "BudgetExternalDonationToLongAlertTitle" = "Too much";
