@@ -1059,7 +1059,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetSummaryMonth" = "Per maand";
 "BudgetSummaryYear" = "Per jaar";
 "BudgetExternalGiftsTitle" = "Donaties buiten Givt";
-"BudgetExternalGiftsInfo" = "Je overzicht is pas compleet als al je giften  erin staan. Voeg toe wat je niet via Givt geeft.  Je vindt alles terug in je samenvatting.";
+"BudgetExternalGiftsInfo" = "Je overzicht is pas compleet als al je giften erin staan. Voeg toe wat je niet via Givt geeft. Je vindt alles terug in je samenvatting.";
 "BudgetExternalGiftsSubTitle" = "Donaties buiten Givt";
 "BudgetExternalGiftsOrg" = "Naam organisatie";
 "BudgetExternalGiftsTime" = "Periode";
