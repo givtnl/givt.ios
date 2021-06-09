@@ -55,7 +55,7 @@ extension BudgetOverviewViewController {
             if notGivtModels.count >= 1 {
                 notGivtModels.forEach { model in
                     if count < 2 {
-                        if fromMonth.getYear() == Date().getYear && fromMonth.getMonth() == Date().getMonth() {
+                        if fromMonth.getYear() == Date().getYear() && fromMonth.getMonth() == Date().getMonth() {
                             let notGivtRow: LineWithIcon = LineWithIcon(
                                 id: model.id,
                                 description: model.description,
