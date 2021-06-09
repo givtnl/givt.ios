@@ -124,11 +124,16 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             givingGoal = try! Mediater.shared.send(request: GetGivingGoalQuery()).result
             setupGivingGoalCard()
             
+            
             // MARK: Collect groups card
-            collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth(), groupType: 2, orderType: 3))
-            notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
+            collectGroupsForCurrentMonth = try! Mediater.shared.send(request: GetMonthlySummaryQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth), groupType: 2, orderType: 3))
+            notGivtModelsForCurrentMonth = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth))).result.sorted(by: { first, second in
                 first.creationDate > second.creationDate
             })
+            setupCollectGroupsCard()
+            
+            monthlySummaryTile.amountLabel.text = getMonthlySum().getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            
             setupCollectGroupsCard()
             
             // MARK: Per month chart
@@ -144,7 +149,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             // MARK: Testimonial
             setupTestimonial()
             
-            setupRemainingGivingGoal()
+            setupRemainingGivingGoal(getMonthlySum())
             
             SVProgressHUD.dismiss()
 
