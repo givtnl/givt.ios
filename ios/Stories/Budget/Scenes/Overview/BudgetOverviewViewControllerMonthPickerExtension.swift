@@ -16,31 +16,35 @@ extension BudgetOverviewViewController {
     }
     
     func updateMonthCard() {
-        NavigationManager.shared.executeWithLogin(context: self) {
-            SVProgressHUD.show()
-            try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth), groupType: 2, orderType: 3)) { givtResponse in
-                self.collectGroupsForCurrentMonth = givtResponse
-                try! Mediater.shared.sendAsync(request: GetAllExternalDonationsQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth))) { notGivtResponse in
-                    self.notGivtModelsForCurrentMonth = notGivtResponse.result.sorted(by: { first, second in
-                        first.creationDate > second.creationDate
-                    })
-                    DispatchQueue.main.async {
-                        self.monthSelectorLabel.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
-                        self.monthlyCardHeader.label.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
-                        self.monthlySummaryTile.amountLabel.text = self.getMonthlySum().getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                        
-                        self.setupCollectGroupsCard()
-                        self.setupRemainingGivingGoal(self.getMonthlySum())
-                        
-                        if self.fromMonth.getMonth() == Date().getMonth() && self.fromMonth.getYear() == Date().getYear() {
-                            self.buttonPlus.isHidden = false
-                            self.monthSelectorButtonRight.isHidden = true
-                        } else {
-                            self.buttonPlus.isHidden = true
-                            self.monthSelectorButtonRight.isHidden = false
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+        } else {
+            NavigationManager.shared.executeWithLogin(context: self) {
+                SVProgressHUD.show()
+                try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth), groupType: 2, orderType: 3)) { givtResponse in
+                    self.collectGroupsForCurrentMonth = givtResponse
+                    try! Mediater.shared.sendAsync(request: GetAllExternalDonationsQuery(fromDate: self.getStartDateOfMonth(date: self.fromMonth),tillDate: self.getEndDateOfMonth(date: self.fromMonth))) { notGivtResponse in
+                        self.notGivtModelsForCurrentMonth = notGivtResponse.result.sorted(by: { first, second in
+                            first.creationDate > second.creationDate
+                        })
+                        DispatchQueue.main.async {
+                            self.monthSelectorLabel.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
+                            self.monthlyCardHeader.label.text = self.getFullMonthStringFromDateValue(value: self.fromMonth).capitalized
+                            self.monthlySummaryTile.amountLabel.text = self.getMonthlySum().getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                            
+                            self.setupCollectGroupsCard()
+                            self.setupRemainingGivingGoal(self.getMonthlySum())
+                            
+                            if self.fromMonth.getMonth() == Date().getMonth() && self.fromMonth.getYear() == Date().getYear() {
+                                self.buttonPlus.isHidden = false
+                                self.monthSelectorButtonRight.isHidden = true
+                            } else {
+                                self.buttonPlus.isHidden = true
+                                self.monthSelectorButtonRight.isHidden = false
+                            }
+                            
+                            SVProgressHUD.dismiss()
                         }
-                        
-                        SVProgressHUD.dismiss()
                     }
                 }
             }
