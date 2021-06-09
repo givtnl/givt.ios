@@ -55,16 +55,24 @@ extension BudgetOverviewViewController {
             if notGivtModels.count >= 1 {
                 notGivtModels.forEach { model in
                     if count < 2 {
-                        let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
-
-                        let notGivtRow: LineWithIcon = LineWithIcon(
-                            id: model.id,
-                            description: model.description,
-                            amount: model.amount
-                        )
-                        notGivtRow.addGestureRecognizer(notGivtTapGesture)
-                        stackViewNotGivt.addArrangedSubview(notGivtRow)
-                        stackViewNotGivtHeight.constant += 22
+                        if fromMonth.getMonth() == Date().getMonth() {
+                            let notGivtRow: LineWithIcon = LineWithIcon(
+                                id: model.id,
+                                description: model.description,
+                                amount: model.amount
+                            )
+                            
+                            let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
+                            notGivtRow.addGestureRecognizer(notGivtTapGesture)
+                            stackViewNotGivt.addArrangedSubview(notGivtRow)
+                            stackViewNotGivtHeight.constant += 22
+                        } else {
+                            let view = MonthlyCardViewLine()
+                            view.collectGroupLabel.text = model.description
+                            view.amountLabel.text = model.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                            stackViewNotGivt.addArrangedSubview(view)
+                            stackViewNotGivtHeight.constant += 22
+                        }
                         count+=1
                     }
                 }
