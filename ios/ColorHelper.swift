@@ -29,5 +29,6 @@ public class ColorHelper {
     public static var UITextFieldBorderColor: UIColor = #colorLiteral(red: 0.7607843137, green: 0.7607843137, blue: 0.7607843137, alpha: 1)
     public static var GivtLightLightGreen: UIColor = #colorLiteral(red: 0.7568627451, green: 0.9294117647, blue: 0.8509803922, alpha: 1)
     
-    public static var BudgetYearlyOverviewTotalsBackground: UIColor = #colorLiteral(red: 0.337254902, green: 0.3215686275, blue: 0.4666666667, alpha: 1)    
+    public static var BudgetYearlyOverviewTotalsBackground: UIColor = #colorLiteral(red: 0.337254902, green: 0.3215686275, blue: 0.4666666667, alpha: 1)
+    public static var BudgetYearlyOverviewDetailColoredRow: UIColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
 }

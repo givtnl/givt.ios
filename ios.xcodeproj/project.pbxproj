@@ -197,6 +197,13 @@
 		32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */; };
 		32F21E97254850E7003E46D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E96254850E7003E46D5 /* MainViewController.swift */; };
 		32F21E992548526B003E46D5 /* InitialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F21E982548526B003E46D5 /* InitialPageViewController.swift */; };
+		32F270C826725B2200DAC20E /* OpenYearlyOverviewDetailRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F270C726725B2200DAC20E /* OpenYearlyOverviewDetailRoute.swift */; };
+		32F270CA26725B3600DAC20E /* OpenYearlyOverviewDetailRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F270C926725B3600DAC20E /* OpenYearlyOverviewDetailRouteHandler.swift */; };
+		32F270CE267262E900DAC20E /* YearlyOverviewDetailLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F270CD267262E900DAC20E /* YearlyOverviewDetailLine.swift */; };
+		32F270D0267262F700DAC20E /* YearlyOverviewDetailLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32F270CF267262F700DAC20E /* YearlyOverviewDetailLine.xib */; };
+		32F270D22672959500DAC20E /* YearlyOverviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F270D12672959500DAC20E /* YearlyOverviewDetailViewController.swift */; };
+		32F270D4267295A300DAC20E /* YearlyOverviewDetailViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F270D3267295A300DAC20E /* YearlyOverviewDetailViewControllerExtension.swift */; };
+		32F270D6267295AE00DAC20E /* YearlyOverviewDetailViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F270D5267295AE00DAC20E /* YearlyOverviewDetailViewControllerPrivateExtension.swift */; };
 		32F528CC25EA9BA90073C243 /* BudgetExternalGivtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F528CB25EA9BA90073C243 /* BudgetExternalGivtsViewController.swift */; };
 		32F528CE25EA9DAE0073C243 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F528CD25EA9DAE0073C243 /* NSMutableAttributedString.swift */; };
 		32F528D125EA9F020073C243 /* OpenExternalGivtsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F528D025EA9F020073C243 /* OpenExternalGivtsRoute.swift */; };
@@ -691,6 +698,13 @@
 		32F21E9225484CEC003E46D5 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		32F21E96254850E7003E46D5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		32F21E982548526B003E46D5 /* InitialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialPageViewController.swift; sourceTree = "<group>"; };
+		32F270C726725B2200DAC20E /* OpenYearlyOverviewDetailRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenYearlyOverviewDetailRoute.swift; sourceTree = "<group>"; };
+		32F270C926725B3600DAC20E /* OpenYearlyOverviewDetailRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenYearlyOverviewDetailRouteHandler.swift; sourceTree = "<group>"; };
+		32F270CD267262E900DAC20E /* YearlyOverviewDetailLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyOverviewDetailLine.swift; sourceTree = "<group>"; };
+		32F270CF267262F700DAC20E /* YearlyOverviewDetailLine.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearlyOverviewDetailLine.xib; sourceTree = "<group>"; };
+		32F270D12672959500DAC20E /* YearlyOverviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyOverviewDetailViewController.swift; sourceTree = "<group>"; };
+		32F270D3267295A300DAC20E /* YearlyOverviewDetailViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyOverviewDetailViewControllerExtension.swift; sourceTree = "<group>"; };
+		32F270D5267295AE00DAC20E /* YearlyOverviewDetailViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyOverviewDetailViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
 		32F528CB25EA9BA90073C243 /* BudgetExternalGivtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExternalGivtsViewController.swift; sourceTree = "<group>"; };
 		32F528CD25EA9DAE0073C243 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		32F528D025EA9F020073C243 /* OpenExternalGivtsRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenExternalGivtsRoute.swift; sourceTree = "<group>"; };
@@ -1045,6 +1059,7 @@
 		32111D6425E5306400DB775C /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				32F270C626725AD900DAC20E /* OpenYearlyOverviewDetail */,
 				32D488A2266A2F7500B166B4 /* OpenYearlyOverview */,
 				329D440A2666558A003CE5F0 /* GoBackToSummary */,
 				32207E9026415FEA00A265A4 /* OpenGivingGoal */,
@@ -1101,6 +1116,7 @@
 		3215976E25D2FADB0065C80A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				32F270CB267262C100DAC20E /* YearlyOverviewDetail */,
 				32D4889E266A2DEF00B166B4 /* YearlyOverview */,
 				32207E8D26415F0600A265A4 /* GivingGoal */,
 				32EEB2BA26283F0E008EED9A /* Testimonial */,
@@ -1863,6 +1879,35 @@
 				32F21E96254850E7003E46D5 /* MainViewController.swift */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		32F270C626725AD900DAC20E /* OpenYearlyOverviewDetail */ = {
+			isa = PBXGroup;
+			children = (
+				32F270C726725B2200DAC20E /* OpenYearlyOverviewDetailRoute.swift */,
+				32F270C926725B3600DAC20E /* OpenYearlyOverviewDetailRouteHandler.swift */,
+			);
+			path = OpenYearlyOverviewDetail;
+			sourceTree = "<group>";
+		};
+		32F270CB267262C100DAC20E /* YearlyOverviewDetail */ = {
+			isa = PBXGroup;
+			children = (
+				32F270CC267262D600DAC20E /* Views */,
+				32F270D12672959500DAC20E /* YearlyOverviewDetailViewController.swift */,
+				32F270D3267295A300DAC20E /* YearlyOverviewDetailViewControllerExtension.swift */,
+				32F270D5267295AE00DAC20E /* YearlyOverviewDetailViewControllerPrivateExtension.swift */,
+			);
+			path = YearlyOverviewDetail;
+			sourceTree = "<group>";
+		};
+		32F270CC267262D600DAC20E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32F270CD267262E900DAC20E /* YearlyOverviewDetailLine.swift */,
+				32F270CF267262F700DAC20E /* YearlyOverviewDetailLine.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		32F528CA25EA9B850073C243 /* ExternalGivt */ = {
@@ -3164,6 +3209,7 @@
 				32CA179D24CECB9500248053 /* SetupRecurringDonation.storyboard in Resources */,
 				FB3CE6E21F14CA200055185B /* Assets.xcassets in Resources */,
 				32F528DF25EAB0870073C243 /* BudgetExternalGivtsControlPanel.xib in Resources */,
+				32F270D0267262F700DAC20E /* YearlyOverviewDetailLine.xib in Resources */,
 				D7F3A84521480161008B65AE /* Fingerprint.storyboard in Resources */,
 				D761E9C21F20CFA6002B849B /* Localizable.strings in Resources */,
 				27AC59F822255DD400163BF4 /* SelectContextView.xib in Resources */,
@@ -3366,6 +3412,7 @@
 				3224BD0226451EF400AE12A1 /* YearViewBodyLine.swift in Sources */,
 				FB1E1ABF21C4075A00A656DA /* FeatureManager.swift in Sources */,
 				DFAB497B22B2372200BB2942 /* GiftAidInfoController.swift in Sources */,
+				32F270D6267295AE00DAC20E /* YearlyOverviewDetailViewControllerPrivateExtension.swift in Sources */,
 				3220B8B525E7C9D40086577E /* MonthlySummaryValue.swift in Sources */,
 				3260CF19254AB72800BA6BD7 /* DiscoverOrAmountSetupSingleDonationRouteHandler.swift in Sources */,
 				3216ED812541A9CE00B965A2 /* OpenRecurringRuleDetailFromNotificationRoute.swift in Sources */,
@@ -3427,6 +3474,7 @@
 				DF034A8A23F2E0A0000F81E4 /* BluetoothMessageType.swift in Sources */,
 				D7EE4B631F9F3C430091BF2C /* UIViewControllerExtensions.swift in Sources */,
 				D7DD79A4209B463800047CA7 /* InsetLabel.swift in Sources */,
+				32F270D4267295A300DAC20E /* YearlyOverviewDetailViewControllerExtension.swift in Sources */,
 				329C3E8725F21A8F0037D750 /* ExternalDonationModel.swift in Sources */,
 				DFFF7E8E24F935E40098E4F6 /* PopToRecurringDonationOverviewRoute.swift in Sources */,
 				32182E012611E70E0007CF7D /* BudgetListViewControllerExtension.swift in Sources */,
@@ -3434,6 +3482,7 @@
 				27A0E4E1221E9D6D00982842 /* AddCollectButtonView.swift in Sources */,
 				32F528D125EA9F020073C243 /* OpenExternalGivtsRoute.swift in Sources */,
 				DF05015924F8B4C6006196A3 /* BackToSetupRecurringDonationRoute.swift in Sources */,
+				32F270CA26725B3600DAC20E /* OpenYearlyOverviewDetailRouteHandler.swift in Sources */,
 				323F16FB25EBEBFE00B12049 /* BudgetExternalGivtsEditRow.swift in Sources */,
 				3260CF28254ABF5C00BA6BD7 /* DiscoverOrAmountOpenChangeAmountLimitRouteHandler.swift in Sources */,
 				3274EB6A25E9C32200FC8D6A /* LineWithIcon.swift in Sources */,
@@ -3478,6 +3527,7 @@
 				D761E9BF1F18CFE4002B849B /* UIColorExtensions.swift in Sources */,
 				32D4853324D0477000F821A5 /* CreateRecurringDonationCommandPreHandler.swift in Sources */,
 				FBBF72A621CA819600EBB085 /* FeaturesNavigationController.swift in Sources */,
+				32F270D22672959500DAC20E /* YearlyOverviewDetailViewController.swift in Sources */,
 				D721F19A1F7E2D4B000B9546 /* MainNavigationController.swift in Sources */,
 				FB87301B24C845E0005FF355 /* DeleteDonationCommandHandler.swift in Sources */,
 				27A0E4E9221F395000982842 /* PresetsNavigationViewController.swift in Sources */,
@@ -3489,6 +3539,7 @@
 				329C3E8525F21A4A0037D750 /* GetAllExternalDonationsQueryHandler.swift in Sources */,
 				FBC1859C24C08918001A4C6B /* TableSection.swift in Sources */,
 				D7CCC06F1FC4346F006A6A4F /* PinScreenViewController.swift in Sources */,
+				32F270CE267262E900DAC20E /* YearlyOverviewDetailLine.swift in Sources */,
 				FB42C2FD25666EC10011012C /* DiscoverOrAmountOpenOfflineSuccessRoute.swift in Sources */,
 				3273B8A825359EAC003DB100 /* RecurringDonationTurnModel.swift in Sources */,
 				327C5B802506D8750064BBC4 /* CancelRecurringDonationCommandHandler.swift in Sources */,
@@ -3516,6 +3567,7 @@
 				32182DFD260A48E80007CF7D /* UpdateExternalDonationBody.swift in Sources */,
 				32D4853124D0459C00F821A5 /* CreateRecurringDonationCommandHandler.swift in Sources */,
 				D7AE8BA921393B3400CB3A33 /* AmountPresetsNavigationController.swift in Sources */,
+				32F270C826725B2200DAC20E /* OpenYearlyOverviewDetailRoute.swift in Sources */,
 				D74C19EC20F62B8A00E116A0 /* ExternalSuggestionView.swift in Sources */,
 				D76A03431FBAFBD600E338C5 /* CarouselViewController.swift in Sources */,
 				FB87300E24C831EA005FF355 /* CoreDataContext.swift in Sources */,
