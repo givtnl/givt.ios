@@ -162,12 +162,11 @@ class SettingsViewController: BaseMenuViewController {
     }
     
     private func openBudget() {
-        let vc = UIStoryboard(name: "Budget", bundle: nil).instantiateInitialViewController()
-        vc?.modalPresentationStyle = .fullScreen
-        vc?.transitioningDelegate = self.slideFromRightAnimation
         DispatchQueue.main.async {
             self.hideMenuAnimated() {
-                self.navigationManager.pushWithLogin(vc!, context: self)
+                self.navigationManager.executeWithLogin(context: self) {
+                    try! Mediater.shared.send(request: OpenSummaryRoute(fromDate: Date()), withContext: self)
+                }
             }
         }
     }

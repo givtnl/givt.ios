@@ -58,11 +58,6 @@ extension BudgetOverviewViewController {
         givingGoalViewEditLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalEdit)))
         givingGoalSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalSetup)))
         
-        roundCorners(view: givingGoalView)
-        roundCorners(view: remainingGivingGoalView)
-        roundCorners(view: givingGoalSetupView)
-        roundCorners(view: givingGoalReachedView)
-        
         if givingGoal != nil {
             givingGoalSetupStackItem.isHidden = true
             givingGoalStackItem.isHidden = false
@@ -76,10 +71,25 @@ extension BudgetOverviewViewController {
                 givingGoalAmount = givingGoal!.amount
                 givingGoalPerMonthText.text = givingGoalAmount!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
             }
+        } else {
+            givingGoalSetupStackItem.isHidden = false
+            givingGoalStackItem.isHidden = true
+            remainingGivingGoalStackItem.isHidden = true
+            givingGoalReachedStackItem.isHidden = true
+        }
+    }
+    
+    func setupRemainingGivingGoal(_ monthlySum: Double? = nil) {
+        if givingGoal != nil {
+            var currentGivenPerMonth: Double
             
-            let currentGivenPerMonth = lastMonthTotal!
+            if monthlySum != nil {
+                currentGivenPerMonth = monthlySum!
+            } else {
+                currentGivenPerMonth = lastMonthTotal!
+            }
             
-            var remainingThisMonth = givingGoal!.amount - currentGivenPerMonth
+            var remainingThisMonth = (givingGoal!.periodicity == 0 ? givingGoal!.amount : givingGoal!.amount / 12) - currentGivenPerMonth
             
             remainingThisMonth = remainingThisMonth >= 0 ? remainingThisMonth : 0
             
@@ -92,12 +102,6 @@ extension BudgetOverviewViewController {
                 remainingGivingGoalStackItem.isHidden = false
                 givingGoalReachedStackItem.isHidden = true
             }
-            
-        } else {
-            givingGoalSetupStackItem.isHidden = false
-            givingGoalStackItem.isHidden = true
-            remainingGivingGoalStackItem.isHidden = true
-            givingGoalReachedStackItem.isHidden = true
         }
     }
 }

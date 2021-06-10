@@ -156,7 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 try? Mediater.shared.send(request: NoInternetAlert(), withContext: mainViewController)
             }
             
-            try? Mediater.shared.sendAsync(request: OpenSummaryRoute(), withContext: mainViewController) { }
+            try? Mediater.shared.sendAsync(request: OpenSummaryRoute(fromDate: Date()), withContext: mainViewController) { }
         }
     }
     func doMagicForPresets() {
@@ -454,6 +454,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: OpenGiveNowRouteHandler())
         Mediater.shared.registerHandler(handler: OpenExternalGivtsRouteHandler())
         Mediater.shared.registerHandler(handler: OpenGivingGoalRouteHandler())
+        Mediater.shared.registerHandler(handler: GoBackToSummaryRouteHandler())
+        Mediater.shared.registerHandler(handler: OpenYearlyOverviewRouteHandler())
         //-- BUDGET SCENE: QUERYS
         Mediater.shared.registerHandler(handler: GetMonthlySummaryQueryHandler())
                     
@@ -471,5 +473,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: CreateGivingGoalCommandHandler()) //-- Can use as an update aswell
         Mediater.shared.registerHandler(handler: GetGivingGoalQueryHandler())
         Mediater.shared.registerHandler(handler: DeleteGivingGoalCommandHandler())
+        
     }
 }

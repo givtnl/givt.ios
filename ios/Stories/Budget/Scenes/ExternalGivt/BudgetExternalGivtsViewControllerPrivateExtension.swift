@@ -15,7 +15,7 @@ private extension BudgetExternalGivtsViewController {
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
-            try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+            try? Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: somethingHappened), withContext: self)
         }
     }
     
@@ -23,19 +23,51 @@ private extension BudgetExternalGivtsViewController {
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
-            try? Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+            try? Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: somethingHappened), withContext: self)
         }
     }
 
     @IBAction func timeTapped(_ sender: Any) {
         textFieldExternalGivtsTime.becomeFirstResponder()
     }
+    func alertToLongName() {
+        let alert = UIAlertController(
+            title: "BudgetExternalDonationToLongAlertTitle".localized,
+            message: "BudgetExternalDonationToLongAlertMessage".localized,
+            preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in }))
+        
+        self.present(alert, animated: true, completion:  {})
+    }
     
+    func alertToHighAmount() {
+        let alert = UIAlertController(
+            title: "BudgetExternalDonationToHighAlertTitle".localized,
+            message: "BudgetExternalDonationToHighAlertMessage".localized,
+            preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in }))
+        
+        self.present(alert, animated: true, completion:  {})
+    }
     @IBAction func amountEditingEnd(_ sender: Any) {
         checkFields()
+        
+        guard let amount = textFieldExternalGivtsAmount.text!.toDouble else { return }
+        
+        if amount > 99999 {
+            alertToHighAmount()
+        }
     }
     @IBAction func descriptionEditingEnd(_ sender: Any) {
         checkFields()
+        
+        let description = textFieldExternalGivtsOrganisation.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if description.count > 30 {
+            alertToLongName()
+        }
     }
     @IBAction func controlPanelButton(_ sender: Any) {
         if !AppServices.shared.isServerReachable {

@@ -15,7 +15,7 @@ extension BudgetExternalGivtsViewController {
         labelExternalGivtsInfo.attributedText = createInfoText()
         labelExternalGivtsInfo.textColor = .white
         labelExternalGivtsSubtitle.text = "BudgetExternalGiftsSubTitle".localized
-        navBar.title = "BudgetExternalGiftsSubTitle".localized
+        navBar.title = "BudgetExternalGiftsTitle".localized
         labelExternalGivtsOrganisation.text = "BudgetExternalGiftsOrg".localized
         labelExternalGivtsTime.text = "BudgetExternalGiftsTime".localized
         labelExternalGivtsAmount.text = "BudgetExternalGiftsAmount".localized
@@ -77,7 +77,7 @@ extension BudgetExternalGivtsViewController {
     private func createInfoText() -> NSMutableAttributedString {
         return NSMutableAttributedString()
             .bold("BudgetExternalGiftsInfoBold".localized + "\n", font: UIFont(name: "Avenir-Black", size: 16)!)
-            .normal("BudgetTooltipExternalGifts".localized, font: UIFont(name: "Avenir-Light", size: 16)!)
+            .normal("BudgetExternalGiftsInfo".localized, font: UIFont(name: "Avenir-Light", size: 16)!)
     }
     @objc func keyboardWillShow(notification:NSNotification){
         //give room at the bottom of the scroll view, so it doesn't cover up anything the user needs to tap
@@ -103,10 +103,6 @@ extension BudgetExternalGivtsViewController {
     }
     func loadDonations() {
         originalStackviewHeightConstant = stackViewEditRowsHeight.constant
-        
-        externalDonations = try? Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
-            first.creationDate > second.creationDate
-        })
         
         externalDonations!.forEach { model in
             let newRow = BudgetExternalGivtsEditRow(id: model.id, description: model.description, amount: model.amount)

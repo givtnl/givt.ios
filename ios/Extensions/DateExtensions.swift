@@ -50,6 +50,12 @@ extension Date {
         return fmt.monthSymbols[self.getMonth() - 1]
     }
     
+    public func getMonthNameLong() -> String {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "MMMM"
+        return fmt.monthSymbols[self.getMonth() - 1]
+    }
+    
     public func toString(_ format: String) -> String {
         let fmt = DateFormatter()
         fmt.dateFormat = format

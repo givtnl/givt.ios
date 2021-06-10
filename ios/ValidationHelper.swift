@@ -118,7 +118,7 @@ class ValidationHelper {
 
     func isValidCityOrAddress(string: String, illegalStartingOrEndingCharacters: Array<Character>) -> Bool {
         var allowedCharacters = CharacterSet.alphanumerics
-        allowedCharacters.insert(charactersIn: " -'.,‘")
+        allowedCharacters.insert(charactersIn: " -'.,‘/")
         //remove all allowed characters. When rest is not 0, means that we have unwanted characters.
         let rest = string.trimmingCharacters(in: allowedCharacters)
         let trimmedString = string.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)

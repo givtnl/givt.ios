@@ -49,7 +49,7 @@ class TestimonialViewController: UIViewController {
                 try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
             } else {
                 NavigationManager.shared.executeWithLogin(context: self) {
-                    try? Mediater.shared.send(request: OpenGivingGoalRoute(), withContext: self)
+                    try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
                 }
             }
         case 3:
@@ -57,7 +57,7 @@ class TestimonialViewController: UIViewController {
                 try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
             } else {
                 NavigationManager.shared.executeWithLogin(context: self) {
-                    try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
+                    try? Mediater.shared.send(request: OpenGivingGoalRoute(), withContext: self)                    
                 }
             }
         default:
