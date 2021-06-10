@@ -17,8 +17,8 @@ extension BudgetOverviewViewController {
         monthlySummaryTile.descriptionLabel.text = "BudgetSummaryBalance".localized
         givtNowButton.setTitle("BudgetSummaryGiveNow".localized, for: .normal)
         
-        monthlyCardHeader.label.text = getFullMonthStringFromDateValue(value: Date()).capitalized
-        navigationItem.title = getFullMonthStringFromDateValue(value: Date()).capitalized
+        monthlyCardHeader.label.text = getFullMonthStringFromDateValue(value: fromMonth).capitalized
+        navigationItem.title = "BudgetMenuView".localized
         chartViewHeader.label.text = "BudgetSummaryMonth".localized
         yearViewHeader.label.text = "BudgetSummaryYear".localized
         labelGivt.text = "BudgetSummaryGivt".localized
@@ -37,7 +37,7 @@ extension BudgetOverviewViewController {
     @objc func noGivtsAction(_ sender: UITapGestureRecognizer) {
         let view = sender.view as! LineWithIcon
         NavigationManager.shared.executeWithLogin(context: self) {
-            try? Mediater.shared.send(request: OpenExternalGivtsRoute(id: view.id!), withContext: self)
+            try? Mediater.shared.send(request: OpenExternalGivtsRoute(id: view.id!, externalDonations: self.notGivtModelsForCurrentMonth), withContext: self)
         }
     }
     
@@ -62,8 +62,8 @@ extension BudgetOverviewViewController {
         let currentMonth = Calendar.current.component(.month, from: currentDate)
         var dateComponents = DateComponents()
         dateComponents.year = currentYear
-        dateComponents.month = currentMonth
-        dateComponents.day = getDaysInMonth(month: Int(currentMonth), year: Int(currentYear))
+        dateComponents.month = currentMonth+1
+        dateComponents.day = 1
         let date = calendar.date(from: dateComponents)!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -113,7 +113,7 @@ extension BudgetOverviewViewController {
         let diff = calendar.dateComponents([Calendar.Component.day], from: startDate, to: endDate)
         return diff.day!
     }
-    private func getFullMonthStringFromDateValue(value: Date) -> String {
+    func getFullMonthStringFromDateValue(value: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "MMMM"

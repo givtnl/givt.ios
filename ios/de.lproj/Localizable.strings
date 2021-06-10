@@ -1020,6 +1020,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetExternalGiftsInfoBold" = "Gewinne einen Einblick über das, was du gibst";
 "BudgetGivingGoalInfoBold" = "Setze ein Spendenziel";
 "BudgetGivingGoalRemove" = "Entferne das Spendenziel";
+
+/*Fuzzy*/
 "BudgetSummaryNoGifts" = "Du hast diesen Monat noch keine Spenden getätigt";
 "BudgetTestimonialSummary" = "\"Seit ich die Zusammenfassung verwende, habe ich mehr Einblick über das, was ich gebe. Ich gebe deswegen viel bewusster.\"";
 "BudgetTestimonialGivingGoal" = "\"Mein Spendenziel motiviert mich, regelmäßig über mein Spendenverhalten nachzudenken.\"";
@@ -1049,3 +1051,14 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Fuzzy*/
 "BudgetSummaryGivingGoalReached" = "Spendenziel erreicht";
+"BudgetExternalDonationToHighAlertTitle" = "Oh, Du bist ein Großspender?";
+"BudgetExternalDonationToHighAlertMessage" = "Hallo Großspender! Dein Beitrag ist höher, als wir erwartet haben. Senke bitte den Betrag oder lass' uns wissen, das wir das Maximum in Höhe von 99 999 verändern sollen.";
+"BudgetExternalDonationToLongAlertTitle" = "Zu viel!";
+"BudgetExternalDonationToLongAlertMessage" = "Langsam, langsam! Dieses Feld verträgt maximal 30 Zeichen!";
+
+/*Fuzzy*/
+"BudgetSummaryNoGiftsExternal" = "Spenden außerhalb von Givt, diesen Monat? Hier hinzufügen";
+"BudgetYearlyOverviewGivenThroughGivt" = "Total within Givt";
+"BudgetYearlyOverviewGivenThroughNotGivt" = "Total outside Givt";
+"BudgetYearlyOverviewGivenTotal" = "Total";
+"BudgetYearlyOverviewGivenTotalTax" = "Total tax deductable";

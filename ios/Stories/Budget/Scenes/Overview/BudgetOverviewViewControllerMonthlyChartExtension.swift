@@ -66,10 +66,6 @@ extension BudgetOverviewViewController {
             let monthlySummaryValue = monthsDictionary.values.filter {$0.Index == i}.first!
             doubleValues.append(monthlySummaryValue.Value)
         }
-        
-        lastMonthTotal = doubleValues.last
-        
-        monthlySummaryTile.amountLabel.text = lastMonthTotal!.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                 
         var placeholderDoubles = doubleValues
         placeholderDoubles.removeLast()
@@ -84,11 +80,6 @@ extension BudgetOverviewViewController {
         setVerticalChart(dataPoints: chartViewBody.months, values: doubleValues, chartView: chartViewBody.chartView, trueAverage: chartViewBody.trueAverage)
     }
     private func setVerticalChart(dataPoints: [String], values: [Double], chartView: BarChartView, trueAverage: Double) {
-        
-        chartView.noDataText = "Geet gi nog gin givtn."
-        chartView.noDataFont = UIFont(name: "Avenir-Book", size: 14)!
-        chartView.noDataTextColor = ColorHelper.GivtPurple
-        
         var dataEntries: [BarChartDataEntry] = []
         var chartColors: [UIColor] = []
         
@@ -102,7 +93,7 @@ extension BudgetOverviewViewController {
             }
         }
         
-        let lineLimit = givingGoal != nil && givingGoalAmount != nil ? givingGoalAmount! : trueAverage
+        let lineLimit = givingGoal != nil ? givingGoal!.periodicity == 0 ? givingGoal!.amount : givingGoal!.amount / 12 : trueAverage
 
         if dataEntries.count > 0 {
             let limitBarChartDataEntry = BarChartDataEntry(x: 0, y: lineLimit)

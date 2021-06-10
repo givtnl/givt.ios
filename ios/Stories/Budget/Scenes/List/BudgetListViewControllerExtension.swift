@@ -11,7 +11,7 @@ import UIKit
 
 extension BudgetListViewController {
     func setupTerms() {
-        headerLabel.text = getFullMonthStringFromDateValue(value: Date()).capitalized
+        headerLabel.text = getFullMonthStringFromDateValue(value: monthDate!).capitalized
         labelGivt.text = "BudgetSummaryGivt".localized
         labelNotGivt.text = "BudgetSummaryNotGivt".localized
         buttonExternal.setTitle("BudgetExternalGiftsListAddEditButton".localized, for: .normal)
@@ -29,11 +29,7 @@ extension BudgetListViewController {
         }
     }
     func loadDonations() {
-        let collectGroupsForCurrentMonth: [MonthlySummaryDetailModel] = try! Mediater.shared.send(request: GetMonthlySummaryQuery(
-                                                                                            fromDate: getFromDateForCurrentMonth(),
-                                                                                            tillDate: getTillDateForCurrentMonth(),
-                                                                                            groupType: 2,
-                                                                                            orderType: 3))
+        
         stackViewGivt.arrangedSubviews.forEach { arrangedSubview in
             arrangedSubview.removeFromSuperview()
         }
@@ -46,8 +42,8 @@ extension BudgetListViewController {
         
         stackViewNotGivtHeight.constant = 0
         
-        if collectGroupsForCurrentMonth.count >= 1 {
-            collectGroupsForCurrentMonth.forEach { model in
+        if collectGroupsForCurrentMonth != nil && collectGroupsForCurrentMonth!.count >= 1 {
+            collectGroupsForCurrentMonth!.forEach { model in
                 let view = MonthlyCardViewLine()
                 view.collectGroupLabel.text = model.Key
                 view.amountLabel.text = model.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
@@ -58,13 +54,8 @@ extension BudgetListViewController {
             addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight)
         }
         
-        let notGivtModels: [ExternalDonationModel] = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: getFromDateForCurrentMonth(),tillDate: getTillDateForCurrentMonth())).result.sorted(by: { first, second in
-            first.creationDate > second.creationDate
-        })
-        
-        
-        if notGivtModels.count >= 1 {
-            notGivtModels.forEach { model in
+        if notGivtModelsForCurrentMonth != nil && notGivtModelsForCurrentMonth!.count >= 1 {
+            notGivtModelsForCurrentMonth!.forEach { model in
                 let view = MonthlyCardViewLine()
                 view.collectGroupLabel.text = model.description
                 view.amountLabel.text = model.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)

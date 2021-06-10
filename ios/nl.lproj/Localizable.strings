@@ -1059,7 +1059,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetSummaryMonth" = "Per maand";
 "BudgetSummaryYear" = "Per jaar";
 "BudgetExternalGiftsTitle" = "Donaties buiten Givt";
-"BudgetExternalGiftsInfo" = "Je overzicht is pas compleet als al je giften  erin staan. Voeg toe wat je niet via Givt geeft.  Je vindt alles terug in je samenvatting.";
+"BudgetExternalGiftsInfo" = "Je overzicht is pas compleet als al je giften erin staan. Voeg toe wat je niet via Givt geeft. Je vindt alles terug in je samenvatting.";
 "BudgetExternalGiftsSubTitle" = "Donaties buiten Givt";
 "BudgetExternalGiftsOrg" = "Naam organisatie";
 "BudgetExternalGiftsTime" = "Periode";
@@ -1116,3 +1116,18 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Fuzzy*/
 "BudgetSummaryGivingGoalReached" = "Streefbedrag behaald";
+"BudgetExternalDonationToHighAlertTitle" = "Dat is gul!";
+"BudgetExternalDonationToHighAlertMessage" = "Hé gulle gever, dit bedrag is hoger dan wat we hier nu voorzien. Kies een lager bedrag of laat ons weten dat we dit maximum van 99 999 moeten aanpassen!";
+"BudgetExternalDonationToLongAlertTitle" = "Te veel";
+"BudgetExternalDonationToLongAlertMessage" = "Hold your horses! Je kunt hier maximaal 30 tekens invullen.";
+
+/*Fuzzy*/
+"BudgetSummaryNoGiftsExternal" = "Donaties buiten Givt? Voeg ze hier toe";
+"BudgetYearlyOverviewGivenThroughGivt" = "Totaal via Givt";
+
+/*Fuzzy*/
+"BudgetYearlyOverviewGivenThroughNotGivt" = "Totaal niet via Givt";
+"BudgetYearlyOverviewGivenTotal" = "Totaal";
+
+/*Fuzzy*/
+"BudgetYearlyOverviewGivenTotalTax" = "Totaal ANBI";

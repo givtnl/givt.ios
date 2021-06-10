@@ -40,10 +40,10 @@ extension BudgetOverviewViewController {
                     }
                 }
             } else {
-                addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight)
+                addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight, givtDonation: true)
             }
         } else {
-            addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight)
+            addEmptyLine(stackView: stackViewGivt, stackViewHeight: stackViewGivtHeight, givtDonation: true)
         }
         
         
@@ -55,16 +55,24 @@ extension BudgetOverviewViewController {
             if notGivtModels.count >= 1 {
                 notGivtModels.forEach { model in
                     if count < 2 {
-                        let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
-
-                        let notGivtRow: LineWithIcon = LineWithIcon(
-                            id: model.id,
-                            description: model.description,
-                            amount: model.amount
-                        )
-                        notGivtRow.addGestureRecognizer(notGivtTapGesture)
-                        stackViewNotGivt.addArrangedSubview(notGivtRow)
-                        stackViewNotGivtHeight.constant += 22
+                        if fromMonth.getYear() == Date().getYear() && fromMonth.getMonth() == Date().getMonth() {
+                            let notGivtRow: LineWithIcon = LineWithIcon(
+                                id: model.id,
+                                description: model.description,
+                                amount: model.amount
+                            )
+                            
+                            let notGivtTapGesture = UITapGestureRecognizer(target: self, action: #selector(noGivtsAction))
+                            notGivtRow.addGestureRecognizer(notGivtTapGesture)
+                            stackViewNotGivt.addArrangedSubview(notGivtRow)
+                            stackViewNotGivtHeight.constant += 22
+                        } else {
+                            let view = MonthlyCardViewLine()
+                            view.collectGroupLabel.text = model.description
+                            view.amountLabel.text = model.amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                            stackViewNotGivt.addArrangedSubview(view)
+                            stackViewNotGivtHeight.constant += 22
+                        }
                         count+=1
                     }
                 }
@@ -76,9 +84,9 @@ extension BudgetOverviewViewController {
         }
     }
     
-    private func addEmptyLine(stackView: UIStackView, stackViewHeight: NSLayoutConstraint) {
+    private func addEmptyLine(stackView: UIStackView, stackViewHeight: NSLayoutConstraint, givtDonation: Bool = false) {
         let view = MonthlyCardViewLine()
-        view.collectGroupLabel.text = "BudgetSummaryNoGifts".localized
+        view.collectGroupLabel.text = givtDonation ? "BudgetSummaryNoGifts".localized : "BudgetSummaryNoGiftsExternal".localized
         view.amountLabel.text = String.empty
         stackView.addArrangedSubview(view)
         stackViewHeight.constant += 22

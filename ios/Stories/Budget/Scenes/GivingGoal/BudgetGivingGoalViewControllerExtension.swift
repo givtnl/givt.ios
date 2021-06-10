@@ -58,7 +58,7 @@ extension BudgetGivingGoalViewController {
                 try! Mediater.shared.sendAsync(request: DeleteGivingGoalCommand(), completion: { response in
                     DispatchQueue.main.async {
                         if (response as ResponseModel<Bool>).result {
-                            try! Mediater.shared.send(request: GoBackOneControllerRoute(), withContext: self)
+                            try! Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: true), withContext: self)
                         } else {
                             SVProgressHUD.dismiss()
                         }
@@ -115,7 +115,7 @@ extension BudgetGivingGoalViewController {
         var isValid = false
         
         if let amount: Double = amountViewTextField.text?.replacingOccurrences(of: ",", with: ".").doubleValue {
-            if amount >= 1 && amount <= 99999 {
+            if amount >= 1 && amount <= 9999 {
                 isValid = true
             }
         }
