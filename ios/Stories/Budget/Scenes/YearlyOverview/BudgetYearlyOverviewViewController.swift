@@ -25,6 +25,9 @@ class BudgetYearlyOverviewViewController: UIViewController {
     
     var year: Int!
     
+    var givtModels: [MonthlySummaryDetailModel]?
+    var notGivtModels: [MonthlySummaryDetailModel]?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -43,16 +46,27 @@ class BudgetYearlyOverviewViewController: UIViewController {
         
         try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
             DispatchQueue.main.async {
+                self.givtModels = givtModels
                 self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                 self.amountTax.text = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
             }
+            
             try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: fromDate , tillDate: tillDate, groupType: 2, orderType: 3)) { notGivtModels in
+                self.notGivtModels = notGivtModels
                 DispatchQueue.main.async {
                     self.amountNotGivt.text = notGivtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                     self.amountTotal.text = (notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +)).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                     SVProgressHUD.dismiss()
                 }
             }
+        }
+    }
+    
+    @IBAction func goToYearlyOverviewDetail(_ sender: Any) {
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+        } else {
+            try? Mediater.shared.send(request: OpenYearlyOverviewDetailRoute(year: year, givtModels!, notGivtModels!) , withContext: self)
         }
     }
 }
