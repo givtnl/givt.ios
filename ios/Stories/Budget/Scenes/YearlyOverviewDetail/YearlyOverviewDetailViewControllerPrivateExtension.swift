@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SVProgressHUD
 
 private extension BudgetYearlyOverviewDetailViewController {
      @IBAction func backButton(_ sender: Any) {
@@ -21,7 +22,22 @@ private extension BudgetYearlyOverviewDetailViewController {
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
-            print("get by email")
+            SVProgressHUD.show()
+            try? Mediater.shared.sendAsync(request: DownloadSummaryCommand(fromDate: self.fromDate, tillDate: self.tillDate), completion: { response in
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                    self.finishedDownloadAlert(success: response.result)
+                }
+            })
         }
      }
+    
+    func finishedDownloadAlert(success: Bool) {
+        let alert = UIAlertController(
+            title: success ? "Success".localized : "RequestFailed".localized,
+            message: success ? "GiftsOverviewSent".localized : "CouldNotSendTaxOverview".localized,
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in }))
+        self.present(alert, animated: true, completion:  {})
+    }
 }

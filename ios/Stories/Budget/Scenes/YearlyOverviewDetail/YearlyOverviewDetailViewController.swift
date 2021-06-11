@@ -20,6 +20,8 @@ class BudgetYearlyOverviewDetailViewController: UIViewController {
     var year: Int!
     var givtModels: [MonthlySummaryDetailModel]!
     var notGivtModels: [MonthlySummaryDetailModel]!
+    var fromDate: String!
+    var tillDate: String!
     
     @IBOutlet weak var givtTableHeaderTitleLabel: UILabel!
     @IBOutlet weak var givtTableHeaderAmountLabel: UILabel!
@@ -53,6 +55,8 @@ class BudgetYearlyOverviewDetailViewController: UIViewController {
         setupNotGivtModels()
         setupTotal()
         setupTip()
+        
+        getByEmail.isEnabled = !(givtModels.count == 0 && notGivtModels.count == 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
