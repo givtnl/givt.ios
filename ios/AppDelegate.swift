@@ -466,7 +466,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: GetAllExternalDonationsQueryHandler())
         Mediater.shared.registerHandler(handler: UpdateExternalDonationCommandHandler())
         Mediater.shared.registerHandler(handler: DeleteExternalDonationCommandHandler())
-        
+        Mediater.shared.registerHandler(handler: DownloadSummaryCommandHandler())
         //-- Budget External Donation Summary
         Mediater.shared.registerHandler(handler: GetExternalMonthlySummaryQueryHandler())
         

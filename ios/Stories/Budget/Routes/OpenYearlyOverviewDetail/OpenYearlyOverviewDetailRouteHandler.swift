@@ -17,6 +17,8 @@ class OpenYearlyOverviewRouteDetailHandler: RequestHandlerWithContextProtocol {
         vc.year = route.year
         vc.givtModels = route.givtModels
         vc.notGivtModels = route.notGivtModels
+        vc.fromDate = route.fromDate
+        vc.tillDate = route.tillDate
         context.navigationController?.pushViewController(vc, animated: true)
         
         try completion(() as! R.TResponse)
