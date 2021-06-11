@@ -10,34 +10,27 @@ import Foundation
 import UIKit
 
 extension BudgetYearlyOverviewDetailViewController {
-    func setupGivtModels() {
+    func setupTable(_ models: [MonthlySummaryDetailModel], _ stackView: UIStackView, _ stackViewHeight: NSLayoutConstraint) {
         var counter = 0
-        givtModels.forEach { model in
+        models.forEach { model in
             let row = YearlyOverviewDetailLine()
             row.data = model
             if counter % 2 == 0 {
                 row.backgroundView.backgroundColor = ColorHelper.BudgetYearlyOverviewDetailColoredRow
             }
-            givtStack.addArrangedSubview(row)
-            givtStackHeight.constant += 30
+            stackView.addArrangedSubview(row)
+            stackViewHeight.constant += 30
             counter += 1
         }
+    }
+    func setupGivtModels() {
+        setupTable(givtModels, givtStack, givtStackHeight)
         givtTableFooterTotalGivtAmountLabel.text = givtModels.map {$0.Value}.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         givtTableFooterDeductableAmountLabel.text = givtModels.filter {$0.TaxDeductable!}.map {$0.Value}.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
     }
     
     func setupNotGivtModels() {
-        var counter = 0
-        notGivtModels.forEach { model in
-            let row = YearlyOverviewDetailLine()
-            row.data = model
-            if counter % 2 == 0 {
-                row.backgroundView.backgroundColor = ColorHelper.BudgetYearlyOverviewDetailColoredRow
-            }
-            notGivtStack.addArrangedSubview(row)
-            notGivtStackHeight.constant += 30
-            counter += 1
-        }
+        setupTable(notGivtModels, notGivtStack, notGivtStackHeight)
         notGivtTableFooterTotalNotGivtAmountLabel.text = notGivtModels.map{$0.Value}.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
     }
     
