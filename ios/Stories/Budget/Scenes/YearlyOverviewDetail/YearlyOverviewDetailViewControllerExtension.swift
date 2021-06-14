@@ -45,18 +45,18 @@ extension BudgetYearlyOverviewDetailViewController {
     
     func setupTerms() {
         navItem.title = year.string
-        givtTableHeaderTitleLabel.text = "Via Givt".localized
-        givtTableHeaderAmountLabel.text = "Bedrag".localized
-        givtTableHeaderDeductableLabel.text = "Aftrekbaar".localized
-        givtTableFooterTotalGivtLabel.attributedText = createFooterTotalText(bold: "Totaal".localized, normal: "(via Givt)".localized)
+        givtTableHeaderTitleLabel.text = "BudgetYearlyOverviewDetailThroughGivt".localized
+        givtTableHeaderAmountLabel.text = "BudgetYearlyOverviewDetailAmount".localized
+        givtTableHeaderDeductableLabel.text = "BudgetYearlyOverviewDetailDeductable".localized
+        givtTableFooterTotalGivtLabel.attributedText = createFooterTotalText(bold: "BudgetYearlyOverviewDetailTotal".localized, normal: "BudgetYearlyOverviewDetailTotalThroughGivt".localized)
         givtTableFooterDeductableLabel.text = "Totaal belastingsaftrekbaar".localized
-        notGivtTableHeaderTitleLabel.text = "Niet via Givt".localized
-        notGivtTableHeaderAmountLabel.text = "Bedrag".localized
+        notGivtTableHeaderTitleLabel.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
+        notGivtTableHeaderAmountLabel.text = "BudgetYearlyOverviewDetailAmount".localized
         notGivtTableHeaderDeductableLabel.isHidden = true
-        notGivtTableFooterTotalNotGivtLabel.attributedText = createFooterTotalText(bold: "Totaal".localized, normal: "(niet via Givt)".localized)
-        tableTotalLabel.text = "Total".localized
-        tipLabel.attributedText = createTipText(bold: "TIP: voeg je externe giften toe".localized, normal: "om een totaal overzicht te krijgen van wat je geeft, zowel via de Givt app als niet via de Givt app".localized)
-        getByEmail.setTitle("Per mail ontvangen".localized, for: .normal)
+        notGivtTableFooterTotalNotGivtLabel.attributedText = createFooterTotalText(bold: "BudgetYearlyOverviewDetailTotal".localized, normal: "BudgetYearlyOverviewDetailTotalNotThroughGivt".localized)
+        tableTotalLabel.text = "BudgetYearlyOverviewDetailTotal".localized
+        tipLabel.attributedText = createTipText(bold: "BudgetYearlyOverviewDetailTipBold".localized, normal: "BudgetYearlyOverviewDetailTipBold".localized)
+        getByEmail.setTitle("BudgetYearlyOverviewDetailReceiveViaMail".localized, for: .normal)
     }
     
     func roundCorners(view: UIView) {
