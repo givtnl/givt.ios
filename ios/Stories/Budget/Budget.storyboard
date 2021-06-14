@@ -817,6 +817,7 @@
                         <outlet property="givtNowButton" destination="VB2-d6-wv3" id="rqT-E8-yeg"/>
                         <outlet property="labelGivt" destination="TDQ-8I-afB" id="jKS-6V-jSu"/>
                         <outlet property="labelNotGivt" destination="goF-vp-Bzz" id="gel-2c-45h"/>
+                        <outlet property="mainView" destination="7RY-xw-JpH" id="Xxz-dt-50G"/>
                         <outlet property="monthSelectorButtonLeft" destination="0Y0-l9-9AE" id="1pk-y0-p7R"/>
                         <outlet property="monthSelectorButtonRight" destination="HJr-lw-kaA" id="eXh-WY-f0m"/>
                         <outlet property="monthSelectorLabel" destination="FGz-zW-ids" id="Z7P-9X-0Da"/>
@@ -1956,6 +1957,7 @@
                         <outlet property="labelNotGivt" destination="B1f-zB-lli" id="x5m-oV-xcA"/>
                         <outlet property="labelTax" destination="6nL-uX-cpU" id="uHs-tB-xTj"/>
                         <outlet property="labelTotal" destination="qAK-Xk-tVD" id="khz-qN-fRO"/>
+                        <outlet property="mainView" destination="iHN-L7-Gzl" id="Oj1-TO-Lya"/>
                         <outlet property="navItem" destination="iJu-RC-wst" id="5iu-RR-SkG"/>
                     </connections>
                 </viewController>
@@ -2398,6 +2400,7 @@
                         <outlet property="givtTableHeaderAmountLabel" destination="wEz-Y2-d8e" id="NH6-lA-Nvx"/>
                         <outlet property="givtTableHeaderDeductableLabel" destination="4VQ-WZ-cnX" id="SKE-IZ-KqY"/>
                         <outlet property="givtTableHeaderTitleLabel" destination="2Le-TR-o7w" id="N3X-4r-ykJ"/>
+                        <outlet property="mainView" destination="DzW-DU-5Y9" id="9Gn-jI-DlL"/>
                         <outlet property="navItem" destination="ivD-we-cMs" id="7hy-fS-0cH"/>
                         <outlet property="notGivtStack" destination="abt-s1-c7v" id="O55-IQ-eNr"/>
                         <outlet property="notGivtStackHeight" destination="DaZ-35-5ZT" id="BQa-iy-6Dg"/>
