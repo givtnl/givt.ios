@@ -64,6 +64,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     
     var lastMonthTotal: Double? = nil
     
+    @IBOutlet weak var yearBarsStack: UIStackView!
     @IBOutlet weak var yearBarOneStackItem: UIView!
     @IBOutlet weak var yearBarTwoStackItem: UIView!
     @IBOutlet weak var yearBarOneParent: UIView!
@@ -71,6 +72,8 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var yearBarOneLabel: UILabel!
     @IBOutlet weak var yearBarTwo: YearViewBodyLine!
     @IBOutlet weak var yearBarTwoLabel: UILabel!
+    @IBOutlet weak var yearOneTapView: YearUIView!
+    @IBOutlet weak var yearTwoTapView: YearUIView!
     
     var collectGroupsForCurrentMonth: [MonthlySummaryDetailModel]? = nil
     var notGivtModelsForCurrentMonth: [ExternalDonationModel]? = nil

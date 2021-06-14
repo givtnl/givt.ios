@@ -607,7 +607,7 @@
                                                                                             <constraint firstItem="xjx-To-dr8" firstAttribute="leading" secondItem="eBu-Pe-0h3" secondAttribute="leading" id="gIa-Pa-eNd"/>
                                                                                         </constraints>
                                                                                     </view>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTa-eN-wp2">
+                                                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTa-eN-wp2">
                                                                                         <rect key="frame" x="307" y="0.0" width="27" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
@@ -615,6 +615,7 @@
                                                                                     </label>
                                                                                 </subviews>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <gestureRecognizers/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="bottom" secondItem="eBu-Pe-0h3" secondAttribute="bottom" id="MEB-N7-CSq"/>
                                                                                     <constraint firstAttribute="height" constant="25" id="MNP-1i-Mtr"/>
@@ -657,7 +658,7 @@
                                                                                             <constraint firstItem="aX5-f0-D0y" firstAttribute="leading" secondItem="xtE-Ns-GIo" secondAttribute="leading" id="r5E-dn-NAQ"/>
                                                                                         </constraints>
                                                                                     </view>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5j-Z4-9AH">
+                                                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5j-Z4-9AH">
                                                                                         <rect key="frame" x="307" y="0.0" width="27" height="25"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
@@ -687,15 +688,50 @@
                                                                     <constraint firstAttribute="trailing" secondItem="gtz-Wa-xYc" secondAttribute="trailing" constant="20" id="cKg-Vt-Ocl"/>
                                                                 </constraints>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qsl-Lh-vfc">
+                                                                <rect key="frame" x="20" y="50" width="334" height="60"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gsl-wy-czV">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="60"/>
+                                                                        <subviews>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6d2-cA-ffh" customClass="YearUIView" customModule="ios" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="334" height="20"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </view>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4YU-8n-aVh" customClass="YearUIView" customModule="ios" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="40" width="334" height="20"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </view>
+                                                                        </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="6d2-cA-ffh" secondAttribute="trailing" id="7cL-bH-7ZJ"/>
+                                                                            <constraint firstItem="4YU-8n-aVh" firstAttribute="leading" secondItem="gsl-wy-czV" secondAttribute="leading" id="Vce-B5-Tp0"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="4YU-8n-aVh" secondAttribute="trailing" id="fzC-0l-cXF"/>
+                                                                            <constraint firstItem="6d2-cA-ffh" firstAttribute="leading" secondItem="gsl-wy-czV" secondAttribute="leading" id="idz-Ej-AZK"/>
+                                                                        </constraints>
+                                                                    </stackView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="gsl-wy-czV" firstAttribute="top" secondItem="qsl-Lh-vfc" secondAttribute="top" id="0aT-uj-75N"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="gsl-wy-czV" secondAttribute="bottom" id="aDd-vS-yTn"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="gsl-wy-czV" secondAttribute="trailing" id="fXw-RN-pHW"/>
+                                                                    <constraint firstItem="gsl-wy-czV" firstAttribute="leading" secondItem="qsl-Lh-vfc" secondAttribute="leading" id="udz-So-mrB"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
+                                                            <constraint firstItem="qsl-Lh-vfc" firstAttribute="leading" secondItem="cfC-9P-EC7" secondAttribute="leading" constant="20" id="6wY-An-Jhq"/>
+                                                            <constraint firstItem="qsl-Lh-vfc" firstAttribute="top" secondItem="IlB-hW-U0S" secondAttribute="bottom" constant="20" id="G1J-vp-jCr"/>
                                                             <constraint firstItem="IlB-hW-U0S" firstAttribute="leading" secondItem="cfC-9P-EC7" secondAttribute="leading" id="OPI-QQ-CXm"/>
                                                             <constraint firstItem="cON-ZA-46W" firstAttribute="leading" secondItem="cfC-9P-EC7" secondAttribute="leading" id="WSF-yt-cOY"/>
                                                             <constraint firstItem="IlB-hW-U0S" firstAttribute="top" secondItem="cfC-9P-EC7" secondAttribute="top" id="bLM-Hc-wta"/>
                                                             <constraint firstItem="cON-ZA-46W" firstAttribute="top" secondItem="IlB-hW-U0S" secondAttribute="bottom" id="ctz-af-7S7"/>
                                                             <constraint firstAttribute="trailing" secondItem="IlB-hW-U0S" secondAttribute="trailing" id="gFb-fM-dkx"/>
+                                                            <constraint firstAttribute="bottom" secondItem="qsl-Lh-vfc" secondAttribute="bottom" constant="20" id="gqM-MD-hZI"/>
                                                             <constraint firstAttribute="trailing" secondItem="cON-ZA-46W" secondAttribute="trailing" id="h9L-bK-cj0"/>
+                                                            <constraint firstAttribute="trailing" secondItem="qsl-Lh-vfc" secondAttribute="trailing" constant="20" id="n9d-Vv-czh"/>
                                                             <constraint firstAttribute="bottom" secondItem="cON-ZA-46W" secondAttribute="bottom" id="qNZ-LZ-uVJ"/>
                                                         </constraints>
                                                     </view>
@@ -801,7 +837,10 @@
                         <outlet property="yearBarTwo" destination="aX5-f0-D0y" id="5kh-fK-EMo"/>
                         <outlet property="yearBarTwoLabel" destination="H5j-Z4-9AH" id="vmm-q0-D18"/>
                         <outlet property="yearBarTwoStackItem" destination="lhh-lp-aCr" id="ywl-Nm-cAU"/>
+                        <outlet property="yearBarsStack" destination="gtz-Wa-xYc" id="rjQ-Te-ZDE"/>
                         <outlet property="yearCardView" destination="cfC-9P-EC7" id="MOg-NN-ywe"/>
+                        <outlet property="yearOneTapView" destination="6d2-cA-ffh" id="LuS-cq-WFL"/>
+                        <outlet property="yearTwoTapView" destination="4YU-8n-aVh" id="grg-9h-GOV"/>
                         <outlet property="yearViewBody" destination="cON-ZA-46W" id="vpW-Of-A9H"/>
                         <outlet property="yearViewHeader" destination="IlB-hW-U0S" id="c1q-fx-jr5"/>
                     </connections>
@@ -2380,7 +2419,7 @@
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="29"/>
+            <size key="intrinsicContentSize" width="30" height="26"/>
         </designable>
         <designable name="FCb-Nh-ro9">
             <size key="intrinsicContentSize" width="249" height="32"/>
