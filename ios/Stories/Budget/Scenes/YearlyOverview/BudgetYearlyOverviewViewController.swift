@@ -23,6 +23,8 @@ class BudgetYearlyOverviewViewController: UIViewController {
     @IBOutlet weak var amountTotal: UILabel!
     @IBOutlet weak var amountTax: UILabel!
     
+    @IBOutlet weak var downloadButton: CustomButton!
+    
     var year: Int!
     
     var givtModels: [MonthlySummaryDetailModel]?
