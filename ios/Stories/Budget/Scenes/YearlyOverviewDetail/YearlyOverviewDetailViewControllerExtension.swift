@@ -12,7 +12,7 @@ import UIKit
 extension BudgetYearlyOverviewDetailViewController {
     func setupTable(_ models: [MonthlySummaryDetailModel], _ stackView: UIStackView, _ stackViewHeight: NSLayoutConstraint) {
         var counter = 0
-        models.forEach { model in
+        models.sorted(by: { first, second in first.Key < second.Key }).forEach { model in
             let row = YearlyOverviewDetailLine()
             row.data = model
             if counter % 2 == 0 {
