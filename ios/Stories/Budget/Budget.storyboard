@@ -2409,10 +2409,12 @@
                         <outlet property="notGivtTableHeaderAmountLabel" destination="7XT-DN-5lB" id="0NV-Y8-yPz"/>
                         <outlet property="notGivtTableHeaderDeductableLabel" destination="uhS-HG-T5Z" id="lVT-V3-Ia3"/>
                         <outlet property="notGivtTableHeaderTitleLabel" destination="DIP-8I-5DL" id="43I-hm-ZYi"/>
+                        <outlet property="scrollView" destination="6qv-TB-xc5" id="edv-eF-hiT"/>
                         <outlet property="tableTotalAmountLabel" destination="xOF-zY-6tI" id="nNr-6i-P3S"/>
                         <outlet property="tableTotalLabel" destination="zpB-7X-3KE" id="Nth-5W-RAF"/>
                         <outlet property="tipLabel" destination="rV9-bE-sxp" id="zi0-NU-0h1"/>
                         <outlet property="tipView" destination="FKb-Wu-Qws" id="c2J-Qz-JGO"/>
+                        <outlet property="totalRowView" destination="O6X-Uu-8vG" id="HgI-yM-CAG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YqL-lZ-9jG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
