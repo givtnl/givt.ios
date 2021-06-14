@@ -40,7 +40,13 @@ extension BudgetYearlyOverviewDetailViewController {
     }
     
     func setupTip() {
+        if year != Date().getYear() {
+            tipView.superview?.superview?.removeFromSuperview()
+            totalRowView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+            return
+        }
         roundCorners(view: tipView)
+        
     }
     
     func setupTerms() {

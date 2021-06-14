@@ -12,6 +12,8 @@ import SVProgressHUD
 
 class BudgetYearlyOverviewDetailViewController: UIViewController {
     @IBOutlet weak var mainView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var totalRowView: UIView!
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var givtStack: UIStackView!
     @IBOutlet weak var givtStackHeight: NSLayoutConstraint!
