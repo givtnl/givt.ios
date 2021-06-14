@@ -15,6 +15,7 @@ extension BudgetYearlyOverviewViewController {
         labelNotGivt.text = "BudgetYearlyOverviewGivenThroughNotGivt".localized
         labelTotal.text = "BudgetYearlyOverviewGivenTotal".localized
         labelTax.text = "BudgetYearlyOverviewGivenTotalTax".localized
+        downloadButton.setTitle("BudgetYearlyOverviewDownloadButton".localized, for: .normal)
     }
     
     func getStartDateForYear(year: Int) -> String {

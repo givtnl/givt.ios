@@ -49,13 +49,13 @@ extension BudgetYearlyOverviewDetailViewController {
         givtTableHeaderAmountLabel.text = "BudgetYearlyOverviewDetailAmount".localized
         givtTableHeaderDeductableLabel.text = "BudgetYearlyOverviewDetailDeductable".localized
         givtTableFooterTotalGivtLabel.attributedText = createFooterTotalText(bold: "BudgetYearlyOverviewDetailTotal".localized, normal: "BudgetYearlyOverviewDetailTotalThroughGivt".localized)
-        givtTableFooterDeductableLabel.text = "Totaal belastingsaftrekbaar".localized
+        givtTableFooterDeductableLabel.text = "BudgetYearlyOverviewDetailTotalDeductable".localized
         notGivtTableHeaderTitleLabel.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
         notGivtTableHeaderAmountLabel.text = "BudgetYearlyOverviewDetailAmount".localized
         notGivtTableHeaderDeductableLabel.isHidden = true
         notGivtTableFooterTotalNotGivtLabel.attributedText = createFooterTotalText(bold: "BudgetYearlyOverviewDetailTotal".localized, normal: "BudgetYearlyOverviewDetailTotalNotThroughGivt".localized)
         tableTotalLabel.text = "BudgetYearlyOverviewDetailTotal".localized
-        tipLabel.attributedText = createTipText(bold: "BudgetYearlyOverviewDetailTipBold".localized, normal: "BudgetYearlyOverviewDetailTipBold".localized)
+        tipLabel.attributedText = createTipText(bold: "BudgetYearlyOverviewDetailTipBold".localized, normal: "BudgetYearlyOverviewDetailTipNormal".localized)
         getByEmail.setTitle("BudgetYearlyOverviewDetailReceiveViaMail".localized, for: .normal)
     }
     
