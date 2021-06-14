@@ -11,11 +11,7 @@ import SVProgressHUD
 
 private extension BudgetYearlyOverviewDetailViewController {
      @IBAction func backButton(_ sender: Any) {
-         if !AppServices.shared.isServerReachable {
-             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
-         } else {
-             try? Mediater.shared.send(request: GoBackOneControllerRoute() , withContext: self)
-         }
+         try? Mediater.shared.send(request: GoBackToYearlyOverviewRoute(needsReload: false) , withContext: self)
      }
      
      @IBAction func getByEmail(_ sender: Any) {

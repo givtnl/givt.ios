@@ -11,6 +11,7 @@ import UIKit
 import SVProgressHUD
 
 class BudgetYearlyOverviewDetailViewController: UIViewController {
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var givtStack: UIStackView!
     @IBOutlet weak var givtStackHeight: NSLayoutConstraint!
@@ -47,9 +48,12 @@ class BudgetYearlyOverviewDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if !SVProgressHUD.isVisible() {
             SVProgressHUD.show()
+            hideView(mainView, true)
         }
+        
         setupTerms()
         setupGivtModels()
         setupNotGivtModels()
@@ -62,6 +66,9 @@ class BudgetYearlyOverviewDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        SVProgressHUD.dismiss()
+        if SVProgressHUD.isVisible() {
+            SVProgressHUD.dismiss()
+            hideView(mainView, false)
+        }
     }
 }

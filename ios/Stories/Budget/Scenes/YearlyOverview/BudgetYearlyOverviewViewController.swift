@@ -11,6 +11,7 @@ import UIKit
 import SVProgressHUD
 
 class BudgetYearlyOverviewViewController: UIViewController {
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var navItem: UINavigationItem!
     
     @IBOutlet weak var labelGivt: UILabel!
@@ -30,35 +31,44 @@ class BudgetYearlyOverviewViewController: UIViewController {
     var givtModels: [MonthlySummaryDetailModel]?
     var notGivtModels: [MonthlySummaryDetailModel]?
     
+    var needsReload = true
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if !SVProgressHUD.isVisible() {
-            SVProgressHUD.show()
+        if needsReload {
+            if !SVProgressHUD.isVisible() {
+                SVProgressHUD.show()
+                hideView(mainView, true)
+            }
+            
+            setupTerms()
         }
-        
-        setupTerms()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let fromDate = getStartDateForYear(year: year)
-        let tillDate = getEndDateForYear(year: year)
-        
-        try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
-            DispatchQueue.main.async {
-                self.givtModels = givtModels
-                self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                self.amountTax.text = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            }
+        if needsReload {
+            let fromDate = getStartDateForYear(year: year)
+            let tillDate = getEndDateForYear(year: year)
             
-            try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: fromDate , tillDate: tillDate, groupType: 2, orderType: 3)) { notGivtModels in
-                self.notGivtModels = notGivtModels
+            try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
                 DispatchQueue.main.async {
-                    self.amountNotGivt.text = notGivtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                    self.amountTotal.text = (notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +)).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                    SVProgressHUD.dismiss()
+                    self.givtModels = givtModels
+                    self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    self.amountTax.text = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                }
+                
+                try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: fromDate , tillDate: tillDate, groupType: 2, orderType: 3)) { notGivtModels in
+                    self.notGivtModels = notGivtModels
+                    DispatchQueue.main.async {
+                        self.amountNotGivt.text = notGivtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                        self.amountTotal.text = (notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +)).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                        SVProgressHUD.dismiss()
+                        self.hideView(self.mainView, false)
+
+                    }
                 }
             }
         }

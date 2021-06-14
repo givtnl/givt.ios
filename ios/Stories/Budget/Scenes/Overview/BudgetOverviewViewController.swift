@@ -14,6 +14,7 @@ struct YearChartValue {
     var value: Double
 }
 class BudgetOverviewViewController : UIViewController, OverlayHost {
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var monthlySummaryTile: MonthlySummary!
     @IBOutlet weak var givtNowButton: CustomButton!
@@ -100,6 +101,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
         if needsReload {
             if !SVProgressHUD.isVisible() {
                 SVProgressHUD.show()
+                hideView(mainView, true)
             }
             
             setupTerms()
@@ -155,7 +157,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             setupRemainingGivingGoal(getMonthlySum())
             
             SVProgressHUD.dismiss()
-
+            hideView(mainView, false)
         }
     }
 }
