@@ -17,7 +17,9 @@ class YearlySummaryItem {
         self.amount = amount
     }
 }
-
+class YearUIView: UIView {
+    var year: Int?
+}
 // MARK: VC Extension With Year chart functions
 extension BudgetOverviewViewController {
     func setupYearsCard() {
@@ -57,6 +59,7 @@ extension BudgetOverviewViewController {
             let lowestYear = yearsWithValues.min(by: { val1, val2 in val1.year < val2.year })!
             let lowestYearValue = lowestYear.amount / referenceValue
             yearBarOneLabel.text = lowestYear.year.string
+            yearOneTapView.year = lowestYear.year
             yearBarOne.givenViewWidthConstraint.constant = maxWidth * CGFloat(lowestYearValue.isFinite ? lowestYearValue : 0)
             yearBarOne.givenView.backgroundColor = ColorHelper.SoftenedGivtPurple
             yearBarOne.alternateLabel.textColor = ColorHelper.SoftenedGivtPurple
@@ -80,12 +83,14 @@ extension BudgetOverviewViewController {
                 yearBarOne.givenLabel.isHidden = false
                 yearBarOne.alternateLabel.isHidden = true
             }
+            yearOneTapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openYearlyOverview)))
         }
         
         if yearBarTwo != nil {
             let highestYear = yearsWithValues.max { val1, val2 in val1.year < val2.year }!
             let highestYearValue = highestYear.amount / referenceValue
             yearBarTwoLabel.text = highestYear.year.string
+            yearTwoTapView.year = highestYear.year
             yearBarTwo.givenViewWidthConstraint.constant = maxWidth * CGFloat(highestYearValue.isFinite ? highestYearValue : 0)
             yearBarTwo.givenView.backgroundColor = ColorHelper.GivtLightGreen
             yearBarTwo.alternateLabel.textColor = ColorHelper.GivtLightGreen
@@ -109,7 +114,8 @@ extension BudgetOverviewViewController {
                 yearBarTwo.givenLabel.isHidden = false
                 yearBarTwo.alternateLabel.isHidden = true
             }
-            
+            yearTwoTapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openYearlyOverview)))
+
             if givingGoal != nil {
                 let givingGoalBarWidth = (maxWidth * CGFloat(givingGoalReferenceValue / referenceValue)) - yearBarTwo.givenViewWidthConstraint.constant
                 
@@ -137,24 +143,27 @@ extension BudgetOverviewViewController {
         if yearsWithValues.filter({ $0.amount == 0.0 }).count == 2 {
             if yearBarOne != nil {
                 yearBarOneStackItem.removeFromSuperview()
+                yearOneTapView.removeFromSuperview()
             }
         } else if yearsWithValues.filter({ $0.amount == 0.0 }).count == 1 {
             let emptyYear = yearsWithValues.first { item in item.amount == 0.0 }
             if emptyYear!.year == currentYear - 1 {
                 if yearBarOne != nil {
                     yearBarOneStackItem.removeFromSuperview()
+                    yearOneTapView.removeFromSuperview()
                 }
             }
         }
         
-        yearCardView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openYearlyOverview)))
+
     }
-    @objc func openYearlyOverview() {
+    @objc func openYearlyOverview(_ sender: UITapGestureRecognizer) {
+        let year = (sender.view as! YearUIView).year!
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
             NavigationManager.shared.executeWithLogin(context: self) {
-                try! Mediater.shared.send(request: OpenYearlyOverviewRoute(year: Date().getYear() - 1), withContext: self)
+                try! Mediater.shared.send(request: OpenYearlyOverviewRoute(year: year), withContext: self)
             }
         }
     }
