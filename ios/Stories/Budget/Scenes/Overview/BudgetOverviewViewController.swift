@@ -34,6 +34,8 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var yearViewHeader: CardViewHeader!
     @IBOutlet weak var yearViewBody: YearViewBody!
     
+    @IBOutlet weak var buttonControlView: UIView!
+    @IBOutlet weak var buttonAddExternalDonationView: UIView!
     @IBOutlet weak var givingGoalView: UIView!
     @IBOutlet weak var givingGoalViewEditLabel: UILabel!
     @IBOutlet weak var givingGoalStackItem: BackgroundShadowView!
@@ -118,6 +120,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             roundCorners(view: remainingGivingGoalView)
             roundCorners(view: givingGoalSetupView)
             roundCorners(view: givingGoalReachedView)
+            
         }
         
     }
