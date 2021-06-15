@@ -83,6 +83,7 @@ extension BudgetOverviewViewController {
                 yearBarOne.givenLabel.isHidden = false
                 yearBarOne.alternateLabel.isHidden = true
             }
+            yearOneTapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openYearlyOverview)))
         }
         
         if yearBarTwo != nil {
@@ -113,7 +114,8 @@ extension BudgetOverviewViewController {
                 yearBarTwo.givenLabel.isHidden = false
                 yearBarTwo.alternateLabel.isHidden = true
             }
-            
+            yearTwoTapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openYearlyOverview)))
+
             if givingGoal != nil {
                 let givingGoalBarWidth = (maxWidth * CGFloat(givingGoalReferenceValue / referenceValue)) - yearBarTwo.givenViewWidthConstraint.constant
                 
@@ -153,8 +155,6 @@ extension BudgetOverviewViewController {
             }
         }
         
-        yearOneTapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openYearlyOverview)))
-        yearTwoTapView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openYearlyOverview)))
 
     }
     @objc func openYearlyOverview(_ sender: UITapGestureRecognizer) {
