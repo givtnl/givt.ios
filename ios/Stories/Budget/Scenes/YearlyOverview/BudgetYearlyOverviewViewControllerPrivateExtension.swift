@@ -10,12 +10,6 @@ import Foundation
 
 private extension BudgetYearlyOverviewViewController {
     @IBAction func backButton(_ sender: Any) {
-        if !AppServices.shared.isServerReachable {
-            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
-        } else {
-            NavigationManager.shared.executeWithLogin(context: self) {
-                try! Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: false), withContext: self)
-            }
-        }
+        try! Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: false), withContext: self)
     }
 }
