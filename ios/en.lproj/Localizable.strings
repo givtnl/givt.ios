@@ -1,3 +1,5 @@
+
+/*Fuzzy*/
 "IBANPlaceHolder" = "IBAN account number";
 
 /*@Tine, vind je 'Ho' kunnen? Of 'Ha' of moet de zin gewoon anders? Sjoerd kan niet leven met 'Hé'*/
@@ -1124,7 +1126,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetYearlyOverviewGivenTotal" = "Total";
 
 /*Fuzzy*/
-"BudgetYearlyOverviewGivenTotalTax" = "Total tax deductable";
+"BudgetYearlyOverviewGivenTotalTax" = "Total tax relief";
 "BudgetYearlyOverviewDetailThroughGivt" = "Through Givt";
 "BudgetYearlyOverviewDetailAmount" = "Amount";
 "BudgetYearlyOverviewDetailDeductable" = "Tax relief";
