@@ -482,6 +482,8 @@ class HistoryViewController: UIViewController, UIScrollViewDelegate, UITableView
                     SVProgressHUD.dismiss()
                     self.givyContainer.isHidden = false
                     self.infoButton.isHidden = true
+                    self.tableView.isHidden = true
+
                 }
             } else {
                 self.models = historyTransactions.sorted {
