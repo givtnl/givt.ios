@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bah-Fb-fWK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19115.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bah-Fb-fWK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19107.4"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -122,7 +122,7 @@
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="117" height="45"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="VcP-Bk-bX1">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="112" height="45"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="45"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="22"/>
                                                                                                                 <color key="textColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.92305272169999997" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -140,7 +140,7 @@
                                                                                                         <rect key="frame" x="117" y="0.0" width="117" height="45"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Streefbedrag per maand" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="7xc-WH-UDc">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="112" height="45"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="134" height="45"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -200,7 +200,7 @@
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="117" height="60"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="WJ9-nP-Xxa">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="112" height="60"/>
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="60"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="22"/>
                                                                                                                 <color key="textColor" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="0.92305272169999997" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -218,7 +218,7 @@
                                                                                                         <rect key="frame" x="117" y="0.0" width="117" height="60"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Resterend streefbedrag" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yba-5u-Wtc">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="112" height="60"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="129.5" height="60"/>
                                                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -266,7 +266,7 @@
                                                                                                 </constraints>
                                                                                             </imageView>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Streefbedrag gehaald" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0Et-vh-SrL">
-                                                                                                <rect key="frame" x="100" y="15" width="114" height="30"/>
+                                                                                                <rect key="frame" x="100" y="15" width="119" height="30"/>
                                                                                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="12"/>
                                                                                                 <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                 <nil key="highlightedColor"/>
@@ -309,7 +309,7 @@
                                                                                                 <rect key="frame" x="0.0" y="65" width="234" height="20"/>
                                                                                                 <subviews>
                                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bewust geven? Stel een streefbedrag in om jezelf te motiveren. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d23-TR-ilx">
-                                                                                                        <rect key="frame" x="10" y="10" width="214" height="0.0"/>
+                                                                                                        <rect key="frame" x="10" y="10" width="128" height="0.0"/>
                                                                                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="12"/>
                                                                                                         <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                         <nil key="highlightedColor"/>
@@ -2041,13 +2041,13 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Totaal (via Givt)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6xh-nl-6sx" userLabel="ViaGivt">
-                                                                        <rect key="frame" x="15" y="0.0" width="219" height="30"/>
+                                                                        <rect key="frame" x="15" y="10.5" width="219" height="19.5"/>
                                                                         <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aftrekbaar" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1a-SV-mI5" userLabel="Aftrekbaar">
-                                                                        <rect key="frame" x="234" y="0.0" width="90" height="30"/>
+                                                                        <rect key="frame" x="234" y="10.5" width="90" height="19.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="90" id="ele-fi-TnF"/>
                                                                         </constraints>
@@ -2062,23 +2062,21 @@
                                                                     <constraint firstAttribute="height" constant="30" id="8Nm-Ok-vIw"/>
                                                                     <constraint firstAttribute="bottom" secondItem="6xh-nl-6sx" secondAttribute="bottom" id="AoR-Iw-njA"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Q1a-SV-mI5" secondAttribute="trailing" constant="90" id="Jig-J1-7gb"/>
-                                                                    <constraint firstItem="6xh-nl-6sx" firstAttribute="top" secondItem="tFK-L9-8Xr" secondAttribute="top" id="L4u-RK-fB9"/>
                                                                     <constraint firstItem="6xh-nl-6sx" firstAttribute="leading" secondItem="tFK-L9-8Xr" secondAttribute="leading" constant="15" id="R6m-nM-bdK"/>
                                                                     <constraint firstAttribute="bottom" secondItem="Q1a-SV-mI5" secondAttribute="bottom" id="Sao-38-umP"/>
-                                                                    <constraint firstItem="Q1a-SV-mI5" firstAttribute="top" secondItem="tFK-L9-8Xr" secondAttribute="top" id="wWn-OS-Bgv"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WsD-1Q-zsA">
                                                                 <rect key="frame" x="0.0" y="30" width="414" height="30"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Totaal belastingsaftrekbaar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAX-Jx-vsL" userLabel="ViaGivt">
-                                                                        <rect key="frame" x="15" y="0.0" width="219" height="30"/>
+                                                                        <rect key="frame" x="15" y="0.0" width="219" height="19.5"/>
                                                                         <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aftrekbaar" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSk-ak-PiI" userLabel="Aftrekbaar">
-                                                                        <rect key="frame" x="234" y="0.0" width="90" height="30"/>
+                                                                        <rect key="frame" x="234" y="0.0" width="90" height="19.5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="90" id="0zs-Mc-DcT"/>
                                                                         </constraints>
@@ -2093,8 +2091,6 @@
                                                                     <constraint firstItem="aSk-ak-PiI" firstAttribute="top" secondItem="WsD-1Q-zsA" secondAttribute="top" id="RPT-ze-48z"/>
                                                                     <constraint firstAttribute="trailing" secondItem="aSk-ak-PiI" secondAttribute="trailing" constant="90" id="WJs-Um-Dbq"/>
                                                                     <constraint firstAttribute="height" constant="30" id="fme-a5-kmU"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="vAX-Jx-vsL" secondAttribute="bottom" id="mCS-2N-hwp"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="aSk-ak-PiI" secondAttribute="bottom" id="pTM-Nd-lHq"/>
                                                                     <constraint firstItem="vAX-Jx-vsL" firstAttribute="leading" secondItem="WsD-1Q-zsA" secondAttribute="leading" constant="15" id="yeh-KE-7E1"/>
                                                                     <constraint firstItem="vAX-Jx-vsL" firstAttribute="top" secondItem="WsD-1Q-zsA" secondAttribute="top" id="zF7-do-l7l"/>
                                                                 </constraints>
@@ -2427,7 +2423,7 @@
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="26"/>
+            <size key="intrinsicContentSize" width="30" height="29"/>
         </designable>
         <designable name="FCb-Nh-ro9">
             <size key="intrinsicContentSize" width="249" height="32"/>
