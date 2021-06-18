@@ -15,13 +15,15 @@ class CreateExternalDonationCommand: RequestProtocol {
     var amount: Double
     var frequency: ExternalDonationFrequency
     var date: Date
+    var taxDeductable: Bool
     
     var cronExpression: String? = nil
     
-    internal init(description: String, amount: Double, frequency: ExternalDonationFrequency, date: Date) {
+    internal init(description: String, amount: Double, frequency: ExternalDonationFrequency, date: Date, taxDeductable: Bool) {
         self.description = description
         self.amount = amount
         self.frequency = frequency
         self.date = date
+        self.taxDeductable = taxDeductable
     }
 }

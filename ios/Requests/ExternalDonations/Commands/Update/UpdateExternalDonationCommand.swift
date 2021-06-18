@@ -15,14 +15,13 @@ class UpdateExternalDonationCommand: RequestProtocol {
     var amount: Double
     var cronExpression: String
     var description: String
+    var taxDeductable: Bool
     
-    internal init(id: String,
-                  amount: Double,
-                  cronExpression: String,
-                  description: String) {
+    internal init(id: String, amount: Double, cronExpression: String, description: String, taxDeductable: Bool) {
         self.id = id
         self.amount = amount
         self.cronExpression = cronExpression
         self.description = description
+        self.taxDeductable = taxDeductable
     }
 }
