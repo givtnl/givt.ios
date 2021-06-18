@@ -202,6 +202,16 @@ extension BudgetExternalGivtsViewController {
         textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue][1] as? String
         
         buttonExternalGivtsAdd.isEnabled = false
+        
+        switchTaxDeductable.isOn = modelBeeingEdited!.taxDeductable
+        
+        if !switchTaxDeductable.isOn {
+            switchTaxDeductable.thumbTintColor = .white
+            switchTaxDeductable.onTintColor = ColorHelper.BudgetExternalTaxDeductableSwitchOffOnTint
+        } else {
+            switchTaxDeductable.thumbTintColor = ColorHelper.GivtPurple
+            switchTaxDeductable.onTintColor = ColorHelper.BudgetExternalTaxDeductableSwitchOnOnTint
+        }
 
         disableTime()
         
@@ -256,7 +266,9 @@ extension BudgetExternalGivtsViewController {
                 isAmountValid = true
             }
             
-            if isAmountValid && isDescriptionValid && amount != model.amount || description != model.description {
+            let isTaxDeductableChanged = switchTaxDeductable.isOn != model.taxDeductable
+            
+            if isAmountValid && isDescriptionValid && amount != model.amount || description != model.description || isTaxDeductableChanged {
                 buttonExternalGivtsAdd.isEnabled = true
             } else {
                 buttonExternalGivtsAdd.isEnabled = false
