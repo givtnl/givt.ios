@@ -17,7 +17,8 @@ class UpdateExternalDonationCommandHandler: RequestHandlerProtocol {
         let body = try JSONEncoder().encode(UpdateExternalDonationBody(
             cronExpression: request.cronExpression,
             description: request.description,
-            amount: request.amount
+            amount: request.amount,
+            taxDeductable: request.taxDeductable
         ))
         
         let url = "/external-donations/\(request.id)"

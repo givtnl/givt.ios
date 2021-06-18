@@ -18,7 +18,8 @@ class CreateExternalDonationCommandHandler: RequestHandlerProtocol {
             creationDate: command.date.toISOString(),
             amount: command.amount,
             cronExpression: command.cronExpression ?? String.empty,
-            description: command.description
+            description: command.description,
+            taxDeductable: command.taxDeductable
         ))
         
         do {
