@@ -867,7 +867,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="690"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Raa-SA-Aok">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="438"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="489"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCW-sX-TKu" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="20" width="374" height="60.5"/>
@@ -906,10 +906,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e29-K9-H0J" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="30" y="171" width="354" height="192"/>
+                                                        <rect key="frame" x="30" y="171" width="354" height="243"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyX-GV-kg0" customClass="BudgetExternalGivtsControlPanel" customModule="ios" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="192"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hyX-GV-kg0" userLabel="controlWindow" customClass="BudgetExternalGivtsControlPanel" customModule="ios" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="243"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46C-Ao-1I8">
                                                                         <rect key="frame" x="20" y="20" width="34.5" height="19.5"/>
@@ -955,7 +955,7 @@
                                                                             </label>
                                                                         </subviews>
                                                                     </stackView>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WPx-at-NvS">
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WPx-at-NvS" userLabel="bottomStack">
                                                                         <rect key="frame" x="20" y="128" width="314" height="44"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oFO-Hn-hi6" customClass="CustomButton" customModule="ios" customModuleProvider="target">
@@ -1053,21 +1053,52 @@
                                                                             </view>
                                                                         </subviews>
                                                                     </stackView>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIo-SV-SOj">
+                                                                        <rect key="frame" x="0.0" y="172" width="354" height="71"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aftrekbaar voor belastingen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3s-3l-pvh">
+                                                                                <rect key="frame" x="20" y="26" width="245" height="19.5"/>
+                                                                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                                                <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFz-7B-Gfc">
+                                                                                <rect key="frame" x="285" y="20" width="51" height="31"/>
+                                                                                <color key="onTintColor" red="0.5725490196078431" green="0.5607843137254902" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="thumbTintColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <connections>
+                                                                                    <action selector="taxDeductableChanged:" destination="dIS-A1-n3J" eventType="valueChanged" id="2qD-V4-xye"/>
+                                                                                </connections>
+                                                                            </switch>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="cFz-7B-Gfc" secondAttribute="trailing" constant="20" id="GSD-yl-KL7"/>
+                                                                            <constraint firstItem="k3s-3l-pvh" firstAttribute="leading" secondItem="DIo-SV-SOj" secondAttribute="leading" constant="20" id="fzM-6Q-Dwz"/>
+                                                                            <constraint firstItem="cFz-7B-Gfc" firstAttribute="top" secondItem="DIo-SV-SOj" secondAttribute="top" constant="20" id="mgt-QT-ANM"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="cFz-7B-Gfc" secondAttribute="bottom" constant="20" id="o2Y-nq-ros"/>
+                                                                            <constraint firstItem="cFz-7B-Gfc" firstAttribute="leading" secondItem="k3s-3l-pvh" secondAttribute="trailing" constant="20" id="xzX-qp-eQa"/>
+                                                                            <constraint firstItem="k3s-3l-pvh" firstAttribute="centerY" secondItem="DIo-SV-SOj" secondAttribute="centerY" id="z1M-aR-siq"/>
+                                                                        </constraints>
+                                                                    </view>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="trailing" secondItem="fw9-Ih-bGG" secondAttribute="trailing" constant="20" id="Ezc-6n-Clk"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="DIo-SV-SOj" secondAttribute="trailing" id="JrM-d4-Usm"/>
                                                                     <constraint firstAttribute="trailing" secondItem="WPx-at-NvS" secondAttribute="trailing" constant="20" id="P1e-Rj-rtn"/>
                                                                     <constraint firstItem="fw9-Ih-bGG" firstAttribute="leading" secondItem="hyX-GV-kg0" secondAttribute="leading" constant="20" id="R1n-4c-Cqc"/>
+                                                                    <constraint firstItem="DIo-SV-SOj" firstAttribute="leading" secondItem="hyX-GV-kg0" secondAttribute="leading" id="S6g-PJ-taZ"/>
                                                                     <constraint firstItem="46C-Ao-1I8" firstAttribute="leading" secondItem="hyX-GV-kg0" secondAttribute="leading" constant="20" id="XLk-hg-p9u"/>
                                                                     <constraint firstItem="Fdj-hs-pZ4" firstAttribute="leading" secondItem="hyX-GV-kg0" secondAttribute="leading" constant="20" id="ZXF-HM-er4"/>
                                                                     <constraint firstItem="fw9-Ih-bGG" firstAttribute="top" secondItem="46C-Ao-1I8" secondAttribute="bottom" constant="5" id="beB-Of-MVf"/>
                                                                     <constraint firstItem="46C-Ao-1I8" firstAttribute="top" secondItem="hyX-GV-kg0" secondAttribute="top" constant="20" id="gur-p6-oUh"/>
+                                                                    <constraint firstItem="DIo-SV-SOj" firstAttribute="top" secondItem="WPx-at-NvS" secondAttribute="bottom" id="iwd-eP-uMS"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="DIo-SV-SOj" secondAttribute="bottom" id="jLu-YN-AhW"/>
                                                                     <constraint firstItem="WPx-at-NvS" firstAttribute="top" secondItem="Fdj-hs-pZ4" secondAttribute="bottom" constant="5" id="l8C-NU-CiS"/>
                                                                     <constraint firstItem="WPx-at-NvS" firstAttribute="leading" secondItem="hyX-GV-kg0" secondAttribute="leading" constant="20" id="pci-Ih-4Ja"/>
                                                                     <constraint firstItem="Fdj-hs-pZ4" firstAttribute="top" secondItem="fw9-Ih-bGG" secondAttribute="bottom" constant="15" id="rmf-q8-Yrz"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Fdj-hs-pZ4" secondAttribute="trailing" constant="20" id="sP3-TD-eMM"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="WPx-at-NvS" secondAttribute="bottom" constant="20" id="yvR-Kl-QyJ"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -1080,7 +1111,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jqY-Sp-MoJ" customClass="CustomButton" customModule="ios" customModuleProvider="target">
-                                                        <rect key="frame" x="269" y="383" width="125" height="35"/>
+                                                        <rect key="frame" x="269" y="434" width="125" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="125" id="h1f-AY-4G1"/>
                                                             <constraint firstAttribute="height" constant="35" id="kbi-Bv-Ubb"/>
@@ -1212,10 +1243,12 @@
                         <outlet property="labelExternalGivtsSubtitle" destination="yqe-uH-2st" id="Ylc-Nt-6YE"/>
                         <outlet property="labelExternalGivtsTime" destination="V8M-fj-POG" id="mJG-Rp-LBS"/>
                         <outlet property="labelExternalGivtsTimeDown" destination="2ZE-fv-DaX" id="JaB-Yt-D0E"/>
+                        <outlet property="labelTaxDeductable" destination="k3s-3l-pvh" id="dox-jp-JiI"/>
                         <outlet property="mainScrollView" destination="l5e-aO-55u" id="hiy-V1-MIJ"/>
                         <outlet property="navBar" destination="3MD-gf-40A" id="YEq-2e-z8M"/>
                         <outlet property="stackViewEditRows" destination="fBG-sa-hnc" id="KiP-kO-r6u"/>
                         <outlet property="stackViewEditRowsHeight" destination="FSc-v2-Opm" id="09F-aF-ndA"/>
+                        <outlet property="switchTaxDeductable" destination="cFz-7B-Gfc" id="4ct-Yn-MVi"/>
                         <outlet property="textFieldExternalGivtsAmount" destination="nPl-We-QEd" id="CGN-RB-V08"/>
                         <outlet property="textFieldExternalGivtsOrganisation" destination="fw9-Ih-bGG" id="kOC-3O-Dyp"/>
                         <outlet property="textFieldExternalGivtsTime" destination="FD6-rl-HFC" id="Pe6-JV-y7E"/>
@@ -2423,7 +2456,7 @@
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="29"/>
+            <size key="intrinsicContentSize" width="30" height="26"/>
         </designable>
         <designable name="FCb-Nh-ro9">
             <size key="intrinsicContentSize" width="249" height="32"/>

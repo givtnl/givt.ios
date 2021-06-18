@@ -21,9 +21,11 @@ class BudgetExternalGivtsViewController : UIViewController {
     @IBOutlet weak var labelChevronDown: UILabel!
     @IBOutlet weak var labelExternalGivtsAmount: UILabel!
     @IBOutlet weak var labelExternalGivtsAmountCurrency: UILabel!
+    @IBOutlet weak var labelTaxDeductable: UILabel!
     @IBOutlet weak var textFieldExternalGivtsAmount: UITextField!
     @IBOutlet weak var buttonExternalGivtsAdd: CustomButton!
     @IBOutlet weak var buttonExternalGivtsSave: CustomButton!
+    @IBOutlet weak var switchTaxDeductable: UISwitch!
     @IBOutlet weak var mainScrollView: UIScrollView!
     
     @IBOutlet weak var viewExternalGivtsTime: CustomButton!
@@ -78,4 +80,5 @@ class BudgetExternalGivtsViewController : UIViewController {
             mainScrollView.scrollToBottom()
         }
     }
+
 }
