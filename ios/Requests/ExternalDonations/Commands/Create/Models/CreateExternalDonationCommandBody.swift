@@ -13,4 +13,5 @@ struct CreateExternalDonationCommandBody: Codable {
     var amount: Double
     var cronExpression: String
     var description: String
+    var taxDeductable: Bool
 }
