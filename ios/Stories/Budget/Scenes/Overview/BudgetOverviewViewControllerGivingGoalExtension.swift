@@ -55,7 +55,7 @@ extension BudgetOverviewViewController {
     
     func setupGivingGoalCard() {
         // add onclick to adjust giving goal
-        givingGoalViewEditLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalEdit)))
+        givingGoalStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalEdit)))
         givingGoalSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.givingGoalSetup)))
         
         if givingGoal != nil {
