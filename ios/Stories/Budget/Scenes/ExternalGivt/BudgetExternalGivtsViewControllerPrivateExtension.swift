@@ -54,14 +54,7 @@ private extension BudgetExternalGivtsViewController {
     
     @IBAction func taxDeductableChanged(_ sender: Any) {
         let taxSwitch = sender as! UISwitch
-        
-        if !taxSwitch.isOn {
-            taxSwitch.thumbTintColor = .white
-            taxSwitch.onTintColor = ColorHelper.BudgetExternalTaxDeductableSwitchOffOnTint
-        } else {
-            taxSwitch.thumbTintColor = ColorHelper.GivtPurple
-            taxSwitch.onTintColor = ColorHelper.BudgetExternalTaxDeductableSwitchOnOnTint
-        }
+        setTaxDecuctableSwitch(isOn: taxSwitch.isOn)
         checkFields()
         print(taxSwitch.isOn)
     }

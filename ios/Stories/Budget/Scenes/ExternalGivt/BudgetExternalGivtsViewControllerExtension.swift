@@ -55,6 +55,9 @@ extension BudgetExternalGivtsViewController {
                 labelExternalGivtsAmountCurrency.text = "euro-sign"
         }
         
+        switchTaxDeductable.isOn = false
+        setTaxDecuctableSwitch(isOn: switchTaxDeductable.isOn)
+
         buttonExternalGivtsSave.isEnabled = false
     }
     
@@ -205,19 +208,21 @@ extension BudgetExternalGivtsViewController {
         
         switchTaxDeductable.isOn = modelBeeingEdited!.taxDeductable
         
-        if !switchTaxDeductable.isOn {
+        setTaxDecuctableSwitch(isOn: switchTaxDeductable.isOn)
+
+        disableTime()
+        
+        mainScrollView.scrollToBottom()
+    }
+    func setTaxDecuctableSwitch(isOn: Bool) {
+        if !isOn {
             switchTaxDeductable.thumbTintColor = .white
             switchTaxDeductable.onTintColor = ColorHelper.BudgetExternalTaxDeductableSwitchOffOnTint
         } else {
             switchTaxDeductable.thumbTintColor = ColorHelper.GivtPurple
             switchTaxDeductable.onTintColor = ColorHelper.BudgetExternalTaxDeductableSwitchOnOnTint
         }
-
-        disableTime()
-        
-        mainScrollView.scrollToBottom()
     }
-    
     func disableTime() {
         viewExternalGivtsTime.isEnabled = false
         viewExternalGivtsTime.backgroundColor = UIColor(cgColor: ColorHelper.SummaryLightGray.cgColor.copy(alpha: 0.35)!)
