@@ -32,6 +32,8 @@ extension BudgetYearlyOverviewDetailViewController {
     func setupNotGivtModels() {
         setupTable(notGivtModels, notGivtStack, notGivtStackHeight)
         notGivtTableFooterTotalNotGivtAmountLabel.text = notGivtModels.map{$0.Value}.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+        notGivtTableFooterDeductableAmountLabel.text = notGivtModels.filter {$0.TaxDeductable!}.map {$0.Value}.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+
     }
     
     func setupTotal() {
@@ -58,8 +60,9 @@ extension BudgetYearlyOverviewDetailViewController {
         givtTableFooterDeductableLabel.text = "BudgetYearlyOverviewDetailTotalDeductable".localized
         notGivtTableHeaderTitleLabel.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
         notGivtTableHeaderAmountLabel.text = "BudgetYearlyOverviewDetailAmount".localized
-        notGivtTableHeaderDeductableLabel.isHidden = true
+        notGivtTableHeaderDeductableLabel.text = "BudgetYearlyOverviewDetailDeductable".localized
         notGivtTableFooterTotalNotGivtLabel.attributedText = createFooterTotalText(bold: "BudgetYearlyOverviewDetailTotal".localized, normal: "BudgetYearlyOverviewDetailTotalNotThroughGivt".localized)
+        notGivtTableFooterDeductableLabel.text = "BudgetYearlyOverviewDetailTotalDeductable".localized
         tableTotalLabel.text = "BudgetYearlyOverviewDetailTotal".localized
         tipLabel.attributedText = createTipText(bold: "BudgetYearlyOverviewDetailTipBold".localized, normal: "BudgetYearlyOverviewDetailTipNormal".localized)
         getByEmail.setTitle("BudgetYearlyOverviewDetailReceiveViaMail".localized, for: .normal)
