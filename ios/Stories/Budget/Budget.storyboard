@@ -1837,46 +1837,46 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nL-uX-cpU" userLabel="labelRow2">
-                                                                        <rect key="frame" x="50" y="39.5" width="34" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="14"/>
+                                                                        <rect key="frame" x="25" y="39.5" width="34" height="19.5"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gv6-IT-pNg" userLabel="amountRow2">
                                                                         <rect key="frame" x="345" y="39.5" width="4" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1f-zB-lli" userLabel="labelRow3">
-                                                                        <rect key="frame" x="25" y="64" width="34.5" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                                        <rect key="frame" x="25" y="64" width="36" height="19.5"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYg-FO-XJh" userLabel="amountRow3">
                                                                         <rect key="frame" x="345" y="64" width="4" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qAK-Xk-tVD" userLabel="labelRow4">
-                                                                        <rect key="frame" x="25" y="88.5" width="36" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                                                        <rect key="frame" x="50" y="88.5" width="34.5" height="19.5"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwL-KC-Y8e" userLabel="amountRow4">
                                                                         <rect key="frame" x="345" y="88.5" width="4" height="19.5"/>
-                                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="qAK-Xk-tVD" firstAttribute="leading" secondItem="tFc-uZ-H99" secondAttribute="leading" constant="25" id="00T-GB-dzH"/>
-                                                                    <constraint firstItem="6nL-uX-cpU" firstAttribute="leading" secondItem="tFc-uZ-H99" secondAttribute="leading" constant="50" id="3Bl-VK-rSi"/>
+                                                                    <constraint firstItem="qAK-Xk-tVD" firstAttribute="leading" secondItem="tFc-uZ-H99" secondAttribute="leading" constant="50" id="00T-GB-dzH"/>
+                                                                    <constraint firstItem="6nL-uX-cpU" firstAttribute="leading" secondItem="tFc-uZ-H99" secondAttribute="leading" constant="25" id="3Bl-VK-rSi"/>
                                                                     <constraint firstAttribute="trailing" secondItem="WwL-KC-Y8e" secondAttribute="trailing" constant="25" id="4kE-wV-GIF"/>
                                                                     <constraint firstItem="6nL-uX-cpU" firstAttribute="top" secondItem="qbh-P4-QQ8" secondAttribute="bottom" constant="5" id="5wO-tZ-yjZ"/>
                                                                     <constraint firstItem="WwL-KC-Y8e" firstAttribute="top" secondItem="UYg-FO-XJh" secondAttribute="bottom" constant="5" id="77o-KG-5zb"/>
@@ -1985,14 +1985,14 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="amountGivt" destination="g8F-Gv-zaP" id="TWV-yO-Nwc"/>
-                        <outlet property="amountNotGivt" destination="UYg-FO-XJh" id="niF-WL-qP7"/>
-                        <outlet property="amountTax" destination="gv6-IT-pNg" id="3uI-cf-a0l"/>
-                        <outlet property="amountTotal" destination="WwL-KC-Y8e" id="QW5-3M-ZfA"/>
+                        <outlet property="amountNotGivt" destination="gv6-IT-pNg" id="8jZ-dr-3LM"/>
+                        <outlet property="amountTax" destination="WwL-KC-Y8e" id="2fl-PH-Ytd"/>
+                        <outlet property="amountTotal" destination="UYg-FO-XJh" id="GN0-Lq-PPV"/>
                         <outlet property="downloadButton" destination="oUs-f5-uEf" id="la2-Gd-Wod"/>
                         <outlet property="labelGivt" destination="qbh-P4-QQ8" id="jK2-Wg-sng"/>
-                        <outlet property="labelNotGivt" destination="B1f-zB-lli" id="x5m-oV-xcA"/>
-                        <outlet property="labelTax" destination="6nL-uX-cpU" id="uHs-tB-xTj"/>
-                        <outlet property="labelTotal" destination="qAK-Xk-tVD" id="khz-qN-fRO"/>
+                        <outlet property="labelNotGivt" destination="6nL-uX-cpU" id="kc9-dh-Pqu"/>
+                        <outlet property="labelTax" destination="qAK-Xk-tVD" id="z13-nh-Xkn"/>
+                        <outlet property="labelTotal" destination="B1f-zB-lli" id="aSg-zk-ufH"/>
                         <outlet property="mainView" destination="iHN-L7-Gzl" id="Oj1-TO-Lya"/>
                         <outlet property="navItem" destination="iJu-RC-wst" id="5iu-RR-SkG"/>
                     </connections>
