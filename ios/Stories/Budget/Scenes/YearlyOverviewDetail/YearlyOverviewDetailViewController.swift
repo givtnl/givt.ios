@@ -39,6 +39,8 @@ class BudgetYearlyOverviewDetailViewController: UIViewController {
     @IBOutlet weak var notGivtTableHeaderDeductableLabel: UILabel!
     @IBOutlet weak var notGivtTableFooterTotalNotGivtLabel: UILabel!
     @IBOutlet weak var notGivtTableFooterTotalNotGivtAmountLabel: UILabel!
+    @IBOutlet weak var notGivtTableFooterDeductableLabel: UILabel!
+    @IBOutlet weak var notGivtTableFooterDeductableAmountLabel: UILabel!
     
     @IBOutlet weak var tableTotalLabel: UILabel!
     @IBOutlet weak var tableTotalAmountLabel: UILabel!
