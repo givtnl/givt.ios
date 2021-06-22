@@ -134,7 +134,7 @@ extension BudgetExternalGivtsViewController {
             
             buttonExternalGivtsAdd.isEnabled = false
             
-            switchTaxDeductable.isOn = model.taxDeductable
+            switchTaxDeductable.isOn = modelBeeingEdited != nil ? modelBeeingEdited!.taxDeductable : false
             setTaxDecuctableSwitch(isOn: switchTaxDeductable.isOn)
 
         }
