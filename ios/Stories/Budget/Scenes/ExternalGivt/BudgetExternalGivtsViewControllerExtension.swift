@@ -133,6 +133,10 @@ extension BudgetExternalGivtsViewController {
             labelChevronDown.textColor = UIColor(cgColor: labelChevronDown.textColor.cgColor.copy(alpha: 0.35)!)
             
             buttonExternalGivtsAdd.isEnabled = false
+            
+            switchTaxDeductable.isOn = model.taxDeductable
+            setTaxDecuctableSwitch(isOn: switchTaxDeductable.isOn)
+
         }
         
         stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44
