@@ -31,6 +31,9 @@ class BudgetYearlyOverviewViewController: UIViewController {
     var givtModels: [MonthlySummaryDetailModel]?
     var notGivtModels: [MonthlySummaryDetailModel]?
     
+    var previousYearGivtModels: [MonthlySummaryDetailModel] = []
+    var previousYearNotGivtModels: [MonthlySummaryDetailModel] = []
+    
     var needsReload = true
     @IBOutlet weak var totalGivenPerYearAmountLabel: UILabel!
     @IBOutlet weak var totalGivenPerYearAmountDescription: UILabel!
@@ -67,17 +70,6 @@ class BudgetYearlyOverviewViewController: UIViewController {
             
             setupTerms()
             
-            setupTotalGivenPerYearCard()
-            
-            setupGivingGoalPerYearCard()
-            setupGivingGoalPerYearRemainingCard()
-
-            setupGivingGoalSmallSetupCard()
-            setupGivingGoalPercentagePreviousYearCard()
-            
-            setupGivingGoalBigSetupCard()
-            
-            setupGivingGoalAmountBigCard()
             
             hideStatisticsStackItems()
             showGivingGoalWithoutPreviousYearCards()
@@ -92,28 +84,88 @@ class BudgetYearlyOverviewViewController: UIViewController {
             let tillDate = getEndDateForYear(year: year)
             
             try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
-                DispatchQueue.main.async {
-                    self.givtModels = givtModels
-                    self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                   
+                self.givtModels = givtModels
+                
+                try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateForYear(year: self.year-1), tillDate: self.getEndDateForYear(year: self.year-1), groupType: 2, orderType: 3)) { givtModelsPreviousYear in
+                    self.previousYearGivtModels = givtModelsPreviousYear
                 }
                 
+                DispatchQueue.main.async {
+                    self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                }
+                
+
                 try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: fromDate , tillDate: tillDate, groupType: 2, orderType: 3)) { notGivtModels in
+                    try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: self.getStartDateForYear(year: self.year-1), tillDate: self.getEndDateForYear(year: self.year-1), groupType: 2, orderType: 3)) { previousNotGivtModels in
+                        self.previousYearNotGivtModels = previousNotGivtModels
+                    }
                     self.notGivtModels = notGivtModels
                     DispatchQueue.main.async {
                         self.amountNotGivt.text = notGivtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
                         self.amountTotal.text = (notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +)).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                        
                         let givtAmountTax = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
                         let notGivtAmountTax = notGivtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
                         self.amountTax.text = (givtAmountTax + notGivtAmountTax).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                        
-                        SVProgressHUD.dismiss()
-                        self.hideView(self.mainView, false)
-
+                        self.setupTotalGivenPerYearCard(notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +))
                     }
+                    
+                    
+                    try! Mediater.shared.sendAsync(request: GetGivingGoalQuery(), completion: { response in
+                        DispatchQueue.main.async {
+                            self.determineWhichCardsToShow(
+                                givingGoal: response.result,
+                                donations: self.previousYearGivtModels + self.previousYearNotGivtModels,
+                                currentTotalThisYear: notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +)
+                            )
+                            SVProgressHUD.dismiss()
+                            self.hideView(self.mainView, false)
+                        }
+                    })
                 }
             }
+        }
+    }
+    
+    func determineWhichCardsToShow(givingGoal: GivingGoal?, donations: [MonthlySummaryDetailModel]?, currentTotalThisYear: Double) {
+        hideStatisticsStackItems()
+        
+        let donationsSum = donations?.map { $0.Value }.reduce(0, +) ?? 0
+        let percentageLastYear = currentTotalThisYear / donationsSum * 100
+        
+        guard let givingGoal = givingGoal else {
+            if donations != nil && donations!.count > 0 {
+                setupGivingGoalSmallSetupCard()
+                setupGivingGoalPercentagePreviousYearCard(percentageLastYear)
+                showNoGivingGoalWithPreviousYearCards()
+                return
+            }
+            setupGivingGoalBigSetupCard()
+            showGivingGoalBigSetupCard()
+            return
+        }
+        
+        let givingGoalAmountPerYear = givingGoal.periodicity == 0 ? givingGoal.amount * 12 : givingGoal.amount
+        let remainingGivingGoal = givingGoalAmountPerYear - donationsSum
+        
+        if year == Date().getYear() {
+            setupGivingGoalPerYearCard(givingGoalAmountPerYear)
+            setupGivingGoalPerYearRemainingCard(remainingGivingGoal > 0 ? remainingGivingGoal : 0)
+            showGivingGoalWithoutPreviousYearCards()
+            return
+        }
+        
+        if donations != nil {
+            setupGivingGoalPerYearCard(givingGoalAmountPerYear)
+            setupGivingGoalPercentagePreviousYearCard(percentageLastYear)
+            givingGoalPercentagePreviousYearStackItem.constraints.first!.constant = 65
+            showGivingGoalPerYearAndPercentCards()
+            return
+        }
+        
+        if donations == nil || donations!.count == 0 {
+            setupGivingGoalAmountBigCard(currentTotalThisYear)
+            showGivingGoalPerYearBigCard()
+            return
         }
     }
     
@@ -123,7 +175,7 @@ class BudgetYearlyOverviewViewController: UIViewController {
         }
         
         hideStatisticsStackItems()
-
+        
         if currentIndex == 0 {
             showNoGivingGoalWithPreviousYearCards()
             currentIndex = 1
@@ -137,10 +189,10 @@ class BudgetYearlyOverviewViewController: UIViewController {
             showGivingGoalWithoutPreviousYearCards()
             currentIndex = 0
         }
-//        if !AppServices.shared.isServerReachable {
-//            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
-//        } else {
-//            try? Mediater.shared.send(request: OpenYearlyOverviewDetailRoute(year: year, givtModels!, notGivtModels!, getStartDateForYear(year: year), getEndDateForYear(year: year)) , withContext: self)
-//        }
+        //        if !AppServices.shared.isServerReachable {
+        //            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+        //        } else {
+        //            try? Mediater.shared.send(request: OpenYearlyOverviewDetailRoute(year: year, givtModels!, notGivtModels!, getStartDateForYear(year: year), getEndDateForYear(year: year)) , withContext: self)
+        //        }
     }
 }
