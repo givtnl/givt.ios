@@ -36,10 +36,12 @@ extension BudgetYearlyOverviewViewController {
         givingGoalBigAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         givingGoalBigDescriptionLabel.text = "Streefbedrag per jaar"
     }
-    func setupGivingGoalPercentagePreviousYearCard(_ amount: Double) {
+    func setupGivingGoalPercentagePreviousYearCard(_ amount: Double, _ thisYear: Bool) {
         givingGoalPercentagePreviousYearAmountLabel.text = amount.toPercentile()
-        givingGoalPercentagePreviousYearDescriptionLabel.text = "Ten opzichte van totaal 2020"
+        let labelText = thisYear ? "Ten opzichte van totaal \(year-1)" : "Tegenover \(year-1)"
+        givingGoalPercentagePreviousYearDescriptionLabel.text = labelText
     }
+    
     //-- MARK: Methods
     func showGivingGoalWithoutPreviousYearCards(_ shouldHide: Bool = false) {
         givingGoalPerYearStackItem.isHidden = shouldHide
@@ -83,4 +85,60 @@ extension BudgetYearlyOverviewViewController {
             }
         }
     }
+    func determineWhichCardsToShow(givingGoal: GivingGoal?, donations: [MonthlySummaryDetailModel]?, currentTotalThisYear: Double) {
+        hideStatisticsStackItems()
+        
+        let donationsSum = donations?.map { $0.Value }.reduce(0, +) ?? 0
+        var percentage: Double = 0.00
+        
+        if year == Date().getYear() {
+            percentage = currentTotalThisYear / donationsSum * 100
+        } else {
+            percentage = (currentTotalThisYear - donationsSum) / donationsSum * 100
+        }
+        
+        guard let givingGoal = givingGoal else {
+            if donations != nil && donations!.count > 0 {
+                setupGivingGoalSmallSetupCard()
+                setupGivingGoalPercentagePreviousYearCard(percentage, year == Date().getYear())
+                showNoGivingGoalWithPreviousYearCards()
+                return
+            }
+            setupGivingGoalBigSetupCard()
+            showGivingGoalBigSetupCard()
+            return
+        }
+        
+        let givingGoalAmountPerYear = givingGoal.periodicity == 0 ? givingGoal.amount * 12 : givingGoal.amount
+        let remainingGivingGoal = givingGoalAmountPerYear - donationsSum
+        
+        if year == Date().getYear() {
+            setupGivingGoalPerYearCard(givingGoalAmountPerYear)
+            setupGivingGoalPerYearRemainingCard(remainingGivingGoal > 0 ? remainingGivingGoal : 0)
+            showGivingGoalWithoutPreviousYearCards()
+            return
+        }
+        
+        if year != Date().getYear() {
+            setupGivingGoalPerYearCard(givingGoalAmountPerYear)
+            setupGivingGoalPercentagePreviousYearCard(percentage, false)
+            showGivingGoalPerYearAndPercentCards()
+            return
+        }
+        
+        if donations != nil {
+            setupGivingGoalPerYearCard(givingGoalAmountPerYear)
+            setupGivingGoalPercentagePreviousYearCard(percentage, false)
+            givingGoalPercentagePreviousYearStackItem.constraints.first!.constant = 65
+            showGivingGoalPerYearAndPercentCards()
+            return
+        }
+        
+        if donations == nil || donations!.count == 0 {
+            setupGivingGoalAmountBigCard(currentTotalThisYear)
+            showGivingGoalPerYearBigCard()
+            return
+        }
+    }
+    
 }

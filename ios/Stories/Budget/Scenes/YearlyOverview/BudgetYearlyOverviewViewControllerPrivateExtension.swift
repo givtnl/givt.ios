@@ -12,4 +12,11 @@ private extension BudgetYearlyOverviewViewController {
     @IBAction func backButton(_ sender: Any) {
         try! Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: false), withContext: self)
     }
+    @IBAction func goToYearlyOverviewDetail(_ sender: Any) {
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+        } else {
+            try? Mediater.shared.send(request: OpenYearlyOverviewDetailRoute(year: year, givtModels!, notGivtModels!, getStartDateForYear(year: year), getEndDateForYear(year: year)) , withContext: self)
+        }
+    }
 }
