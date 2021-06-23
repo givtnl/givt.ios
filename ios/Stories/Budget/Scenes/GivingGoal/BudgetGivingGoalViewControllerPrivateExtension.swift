@@ -11,7 +11,7 @@ import SVProgressHUD
 
 private extension BudgetGivingGoalViewController {
     @IBAction func backButton(_ sender: Any) {
-        try? Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: false), withContext: self)
+        try? Mediater.shared.send(request: GoBackFromGivingGoalWithReloadRoute(needsReload: false), withContext: self)
     }
     
     @IBAction func buttonSave(_ sender: Any) {
@@ -31,7 +31,7 @@ private extension BudgetGivingGoalViewController {
                 try! Mediater.shared.sendAsync(request: command, completion: { response in
                     DispatchQueue.main.async {
                         if (response as ResponseModel<Bool>).result {
-                            try! Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: true), withContext: self)
+                            try! Mediater.shared.send(request: GoBackFromGivingGoalWithReloadRoute(needsReload: true), withContext: self)
                         } else {
                             SVProgressHUD.dismiss()
                         }

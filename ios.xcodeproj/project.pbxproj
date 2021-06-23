@@ -48,6 +48,8 @@
 		32182E012611E70E0007CF7D /* BudgetListViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E002611E70E0007CF7D /* BudgetListViewControllerExtension.swift */; };
 		32182E04261211560007CF7D /* GetExternalMonthlySummaryQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E03261211550007CF7D /* GetExternalMonthlySummaryQuery.swift */; };
 		32182E06261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32182E05261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift */; };
+		321A21642683B706009D8BC4 /* GoBackFromGivingGoalWIthReloadRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321A21632683B706009D8BC4 /* GoBackFromGivingGoalWIthReloadRoute.swift */; };
+		321A21662683B72D009D8BC4 /* GoBackFromGivingGoalWithReloadRouteHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321A21652683B72D009D8BC4 /* GoBackFromGivingGoalWithReloadRouteHandler.swift */; };
 		32207E8C26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E8B26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift */; };
 		32207E8F26415F1A00A265A4 /* BudgetGivingGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E8E26415F1A00A265A4 /* BudgetGivingGoalViewController.swift */; };
 		32207E9226415FF900A265A4 /* OpenGivingGoalRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32207E9126415FF900A265A4 /* OpenGivingGoalRoute.swift */; };
@@ -555,6 +557,8 @@
 		32182E002611E70E0007CF7D /* BudgetListViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetListViewControllerExtension.swift; sourceTree = "<group>"; };
 		32182E03261211550007CF7D /* GetExternalMonthlySummaryQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalMonthlySummaryQuery.swift; sourceTree = "<group>"; };
 		32182E05261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetExternalMonthlySummaryQueryHandler.swift; sourceTree = "<group>"; };
+		321A21632683B706009D8BC4 /* GoBackFromGivingGoalWIthReloadRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackFromGivingGoalWIthReloadRoute.swift; sourceTree = "<group>"; };
+		321A21652683B72D009D8BC4 /* GoBackFromGivingGoalWithReloadRouteHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoBackFromGivingGoalWithReloadRouteHandler.swift; sourceTree = "<group>"; };
 		32207E8B26415A7C00A265A4 /* BudgetOverviewViewControllerGivingGoalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerGivingGoalExtension.swift; sourceTree = "<group>"; };
 		32207E8E26415F1A00A265A4 /* BudgetGivingGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetGivingGoalViewController.swift; sourceTree = "<group>"; };
 		32207E9126415FF900A265A4 /* OpenGivingGoalRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenGivingGoalRoute.swift; sourceTree = "<group>"; };
@@ -1069,6 +1073,7 @@
 		32111D6425E5306400DB775C /* Routes */ = {
 			isa = PBXGroup;
 			children = (
+				321A21622683B6DB009D8BC4 /* GoBackFromGivingGoal */,
 				328087C82677A6DF00CD5F51 /* GoBackToYearlyOverview */,
 				32F270C626725AD900DAC20E /* OpenYearlyOverviewDetail */,
 				32D488A2266A2F7500B166B4 /* OpenYearlyOverview */,
@@ -1196,6 +1201,15 @@
 				32182E05261211620007CF7D /* GetExternalMonthlySummaryQueryHandler.swift */,
 			);
 			path = Summary;
+			sourceTree = "<group>";
+		};
+		321A21622683B6DB009D8BC4 /* GoBackFromGivingGoal */ = {
+			isa = PBXGroup;
+			children = (
+				321A21632683B706009D8BC4 /* GoBackFromGivingGoalWIthReloadRoute.swift */,
+				321A21652683B72D009D8BC4 /* GoBackFromGivingGoalWithReloadRouteHandler.swift */,
+			);
+			path = GoBackFromGivingGoal;
 			sourceTree = "<group>";
 		};
 		32207E8D26415F0600A265A4 /* GivingGoal */ = {
@@ -3639,6 +3653,7 @@
 				DF1300FC24F63F4500EE1785 /* CreateRecurringDonationButton.swift in Sources */,
 				3232450924DB0206003CF5CF /* ColorHelper.swift in Sources */,
 				D7F3A84C21480216008B65AE /* FingerprintNavigationController.swift in Sources */,
+				321A21662683B72D009D8BC4 /* GoBackFromGivingGoalWithReloadRouteHandler.swift in Sources */,
 				329C3E7A25F210E60037D750 /* CreateExternalDonationCommandHandler.swift in Sources */,
 				27689CE4221B0064006C0DA6 /* CollectionView.swift in Sources */,
 				D7F0D2A521639544004770F8 /* NotificationExtensions.swift in Sources */,
@@ -3741,6 +3756,7 @@
 				D782089D2008ADB000AB6DC1 /* ManualGivingOrganisation.swift in Sources */,
 				323F170525ED4F6400B12049 /* BudgetOverviewViewControllerMonthlyChartExtension.swift in Sources */,
 				32F21E9325484CEC003E46D5 /* DiscoverViewController.swift in Sources */,
+				321A21642683B706009D8BC4 /* GoBackFromGivingGoalWIthReloadRoute.swift in Sources */,
 				FBC1859324C06716001A4C6B /* CollectGroupType.swift in Sources */,
 				324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */,
 				D748F6022063D4BF00B25BC2 /* HistoryTransaction.swift in Sources */,

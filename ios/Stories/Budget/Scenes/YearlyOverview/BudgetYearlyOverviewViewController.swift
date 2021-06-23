@@ -49,6 +49,7 @@ class BudgetYearlyOverviewViewController: UIViewController {
     @IBOutlet weak var givingGoalBigSetupLabel: UILabel!
     @IBOutlet weak var givingGoalBigAmountLabel: UILabel!
     @IBOutlet weak var givingGoalBigDescriptionLabel: UILabel!
+    @IBOutlet weak var givingGoalFinishedLabel: UILabel!
     
     @IBOutlet weak var givingGoalPerYearStackItem: BackgroundShadowView!
     @IBOutlet weak var givingGoalPerYearRemainingStackItem: BackgroundShadowView!
@@ -56,6 +57,7 @@ class BudgetYearlyOverviewViewController: UIViewController {
     @IBOutlet weak var givingGoalPercentagePreviousYearStackItem: BackgroundShadowView!
     @IBOutlet weak var givingGoalBigSetupStackItem: BackgroundShadowView!
     @IBOutlet weak var givingGoalPerYearBigStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalFinishedStackItem: BackgroundShadowView!
     
     var currentIndex: Int? = nil
     
