@@ -19,6 +19,7 @@ extension BudgetYearlyOverviewViewController {
         givingGoalPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         givingGoalPerYearDescriptionLabel.text = "Streefbedrag per jaar"
         givingGoalPerYearEditGivingGoalLabel.attributedText = "BudgetSummaryGivingGoalEdit".localized.underlined
+        givingGoalPerYearStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
     }
     func setupGivingGoalPerYearRemainingCard(_ amount: Double) {
         givingGoalPerYearRemainingAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
@@ -87,18 +88,19 @@ extension BudgetYearlyOverviewViewController {
     }
     func determineWhichCardsToShow(givingGoal: GivingGoal?, donations: [MonthlySummaryDetailModel]?, currentTotalThisYear: Double) {
         hideStatisticsStackItems()
-        
-        let donationsSum = donations?.map { $0.Value }.reduce(0, +) ?? 0
+        let weHavePastDonations = donations != nil && donations!.count > 0
+        let isCurrentYear = year == Date().getYear()
+        let sumOfLastYearsDonations = donations?.map { $0.Value }.reduce(0, +) ?? 0
         var percentage: Double = 0.00
         
-        if year == Date().getYear() {
-            percentage = currentTotalThisYear / donationsSum * 100
+        if isCurrentYear {
+            percentage = currentTotalThisYear / sumOfLastYearsDonations * 100
         } else {
-            percentage = (currentTotalThisYear - donationsSum) / donationsSum * 100
+            percentage = (currentTotalThisYear - sumOfLastYearsDonations) / sumOfLastYearsDonations * 100
         }
         
         guard let givingGoal = givingGoal else {
-            if donations != nil && donations!.count > 0 {
+            if weHavePastDonations {
                 setupGivingGoalSmallSetupCard()
                 setupGivingGoalPercentagePreviousYearCard(percentage, year == Date().getYear())
                 showNoGivingGoalWithPreviousYearCards()
@@ -110,23 +112,16 @@ extension BudgetYearlyOverviewViewController {
         }
         
         let givingGoalAmountPerYear = givingGoal.periodicity == 0 ? givingGoal.amount * 12 : givingGoal.amount
-        let remainingGivingGoal = givingGoalAmountPerYear - donationsSum
+        let remainingGivingGoal = givingGoalAmountPerYear - currentTotalThisYear
         
-        if year == Date().getYear() {
+        if isCurrentYear {
             setupGivingGoalPerYearCard(givingGoalAmountPerYear)
             setupGivingGoalPerYearRemainingCard(remainingGivingGoal > 0 ? remainingGivingGoal : 0)
             showGivingGoalWithoutPreviousYearCards()
             return
         }
         
-        if year != Date().getYear() {
-            setupGivingGoalPerYearCard(givingGoalAmountPerYear)
-            setupGivingGoalPercentagePreviousYearCard(percentage, false)
-            showGivingGoalPerYearAndPercentCards()
-            return
-        }
-        
-        if donations != nil {
+        if weHavePastDonations {
             setupGivingGoalPerYearCard(givingGoalAmountPerYear)
             setupGivingGoalPercentagePreviousYearCard(percentage, false)
             givingGoalPercentagePreviousYearStackItem.constraints.first!.constant = 65
@@ -134,11 +129,8 @@ extension BudgetYearlyOverviewViewController {
             return
         }
         
-        if donations == nil || donations!.count == 0 {
-            setupGivingGoalAmountBigCard(currentTotalThisYear)
-            showGivingGoalPerYearBigCard()
-            return
-        }
+        setupGivingGoalAmountBigCard(givingGoalAmountPerYear)
+        showGivingGoalPerYearBigCard()
     }
     
 }
