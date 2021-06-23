@@ -11,53 +11,54 @@ import UIKit
 
 extension BudgetYearlyOverviewViewController {
     //-- MARK: Setup functions for different cards
-    func setupTotalGivenPerYearCard() {
-        totalGivenPerYearAmountLabel.text = "€ 450,00"
+    func setupTotalGivenPerYearCard(_ amount: Double) {
+        totalGivenPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         totalGivenPerYearAmountDescription.text = "Gegeven in 2021"
     }
-    func setupGivingGoalPerYearCard() {
-        givingGoalPerYearAmountLabel.text = "€ 800,00"
+    func setupGivingGoalPerYearCard(_ amount: Double) {
+        givingGoalPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         givingGoalPerYearDescriptionLabel.text = "Streefbedrag per jaar"
         givingGoalPerYearEditGivingGoalLabel.attributedText = "BudgetSummaryGivingGoalEdit".localized.underlined
     }
-    func setupGivingGoalPerYearRemainingCard() {
-        givingGoalPerYearRemainingAmountLabel.text = "€ 350,00"
+    func setupGivingGoalPerYearRemainingCard(_ amount: Double) {
+        givingGoalPerYearRemainingAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         givingGoalPerYearRemainingDescriptionLabel.text = "Resterend streefbedrag"
     }
     func setupGivingGoalSmallSetupCard() {
+        givingGoalSmallSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
         givingGoalSetupSmallLabel.attributedText = createAttributeText(bold: "BudgetSummarySetGoalBold", normal: "BudgetSummarySetGoal")
     }
-    
     func setupGivingGoalBigSetupCard() {
+        givingGoalBigSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
         givingGoalBigSetupLabel.attributedText = createAttributeText(bold: "BudgetSummarySetGoalBold", normal: "BudgetSummarySetGoal")
     }
-    func setupGivingGoalAmountBigCard() {
-        givingGoalBigAmountLabel.text = "€ 800"
+    func setupGivingGoalAmountBigCard(_ amount: Double) {
+        givingGoalBigAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         givingGoalBigDescriptionLabel.text = "Streefbedrag per jaar"
     }
-    func setupGivingGoalPercentagePreviousYearCard() {
-        givingGoalPercentagePreviousYearAmountLabel.text = "58%"
+    func setupGivingGoalPercentagePreviousYearCard(_ amount: Double) {
+        givingGoalPercentagePreviousYearAmountLabel.text = amount.toPercentile()
         givingGoalPercentagePreviousYearDescriptionLabel.text = "Ten opzichte van totaal 2020"
     }
-    
     //-- MARK: Methods
     func showGivingGoalWithoutPreviousYearCards(_ shouldHide: Bool = false) {
         givingGoalPerYearStackItem.isHidden = shouldHide
         givingGoalPerYearRemainingStackItem.isHidden = shouldHide
     }
-    
     func showNoGivingGoalWithPreviousYearCards(_ shouldHide: Bool = false) {
         givingGoalSmallSetupStackItem.isHidden = shouldHide
         givingGoalPercentagePreviousYearStackItem.isHidden = shouldHide
     }
-    
     func showGivingGoalBigSetupCard(_ shouldHide: Bool = false) {
         givingGoalBigSetupStackItem.isHidden = shouldHide
     }
     func showGivingGoalPerYearBigCard(_ shouldHide: Bool = false) {
         givingGoalPerYearBigStackItem.isHidden = shouldHide
     }
-    
+    func showGivingGoalPerYearAndPercentCards(_ shouldHide: Bool = false) {
+        givingGoalPerYearStackItem.isHidden = shouldHide
+        givingGoalPercentagePreviousYearStackItem.isHidden = shouldHide
+    }
     func hideStatisticsStackItems() {
         givingGoalPerYearStackItem.isHidden = true
         givingGoalPerYearRemainingStackItem.isHidden = true
@@ -66,11 +67,20 @@ extension BudgetYearlyOverviewViewController {
         givingGoalBigSetupStackItem.isHidden = true
         givingGoalPerYearBigStackItem.isHidden = true
     }
-    
     //-- MARK: Usefull functions
     func createAttributeText(bold: String, normal: String) -> NSMutableAttributedString {
         return NSMutableAttributedString()
             .bold(bold.localized + "\n", font: UIFont(name: "Avenir-Black", size: 12)!)
             .normal(normal.localized, font: UIFont(name: "Avenir-Medium", size: 12)!)
+    }
+    
+    @objc func openGivingGoalSetup() {
+        if !AppServices.shared.isServerReachable {
+            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+        } else {
+            NavigationManager.shared.executeWithLogin(context: self) {
+                try? Mediater.shared.send(request: OpenGivingGoalRoute(), withContext: self)
+            }
+        }
     }
 }

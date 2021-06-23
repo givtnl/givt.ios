@@ -1021,7 +1021,7 @@
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nPl-We-QEd" customClass="TextFieldWithInset" customModule="ios" customModuleProvider="target">
-                                                                                        <rect key="frame" x="40" y="0.0" width="4" height="44"/>
+                                                                                        <rect key="frame" x="40" y="0.0" width="24" height="44"/>
                                                                                         <color key="textColor" red="0.18166366219999999" green="0.16050180789999999" blue="0.34040296079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="14"/>
                                                                                         <textInputTraits key="textInputTraits"/>
@@ -1836,7 +1836,7 @@
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="53i-zE-V31">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="57.5"/>
                                                                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="42"/>
-                                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
@@ -2886,10 +2886,10 @@
             <size key="intrinsicContentSize" width="249" height="32"/>
         </designable>
         <designable name="FD6-rl-HFC">
-            <size key="intrinsicContentSize" width="69" height="21"/>
+            <size key="intrinsicContentSize" width="89" height="21"/>
         </designable>
         <designable name="LId-pm-2Vg">
-            <size key="intrinsicContentSize" width="69" height="21"/>
+            <size key="intrinsicContentSize" width="89" height="21"/>
         </designable>
         <designable name="U6K-SY-fur">
             <size key="intrinsicContentSize" width="58" height="37"/>
@@ -2901,22 +2901,22 @@
             <size key="intrinsicContentSize" width="193" height="37"/>
         </designable>
         <designable name="fw9-Ih-bGG">
-            <size key="intrinsicContentSize" width="32" height="34"/>
+            <size key="intrinsicContentSize" width="38" height="34"/>
         </designable>
         <designable name="jqY-Sp-MoJ">
-            <size key="intrinsicContentSize" width="46" height="32"/>
+            <size key="intrinsicContentSize" width="46" height="20"/>
         </designable>
         <designable name="nPl-We-QEd">
-            <size key="intrinsicContentSize" width="4" height="21"/>
+            <size key="intrinsicContentSize" width="24" height="21"/>
         </designable>
         <designable name="oFO-Hn-hi6">
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
         <designable name="ogd-Cg-1kQ">
-            <size key="intrinsicContentSize" width="58" height="37"/>
+            <size key="intrinsicContentSize" width="58" height="25"/>
         </designable>
         <designable name="rLR-S7-3JI">
-            <size key="intrinsicContentSize" width="4" height="21"/>
+            <size key="intrinsicContentSize" width="24" height="21"/>
         </designable>
         <designable name="rrV-x6-BW3">
             <size key="intrinsicContentSize" width="58" height="37"/>
