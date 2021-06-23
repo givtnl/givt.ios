@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SVProgressHUD
 import UIKit
 
 extension BudgetYearlyOverviewViewController {
@@ -23,7 +24,51 @@ extension BudgetYearlyOverviewViewController {
         }
 
     }
+    func reloadData() {
+        let fromDate = getStartDateForYear(year: year)
+        let tillDate = getEndDateForYear(year: year)
+        
+        try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
+            self.givtModels = givtModels
+            
+            try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateForYear(year: self.year-1), tillDate: self.getEndDateForYear(year: self.year-1), groupType: 2, orderType: 3)) { givtModelsPreviousYear in
+                self.previousYearGivtModels = givtModelsPreviousYear
+            }
+            
+            DispatchQueue.main.async {
+                self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+            }
+            
 
+            try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: fromDate , tillDate: tillDate, groupType: 2, orderType: 3)) { notGivtModels in
+                try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: self.getStartDateForYear(year: self.year-1), tillDate: self.getEndDateForYear(year: self.year-1), groupType: 2, orderType: 3)) { previousNotGivtModels in
+                    self.previousYearNotGivtModels = previousNotGivtModels
+                }
+                self.notGivtModels = notGivtModels
+                DispatchQueue.main.async {
+                    self.amountNotGivt.text = notGivtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    self.amountTotal.text = (notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +)).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    let givtAmountTax = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
+                    let notGivtAmountTax = notGivtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
+                    self.amountTax.text = (givtAmountTax + notGivtAmountTax).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    self.setupTotalGivenPerYearCard(notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +))
+                }
+                
+                
+                try! Mediater.shared.sendAsync(request: GetGivingGoalQuery(), completion: { response in
+                    DispatchQueue.main.async {
+                        self.determineWhichCardsToShow(
+                            givingGoal: response.result,
+                            donations: self.previousYearGivtModels + self.previousYearNotGivtModels,
+                            currentTotalThisYear: notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +)
+                        )
+                        SVProgressHUD.dismiss()
+                        self.hideView(self.mainView, false)
+                    }
+                })
+            }
+        }
+    }
     func getStartDateForYear(year: Int) -> String {
         var componentsForYearlySummaryComponents = DateComponents()
         componentsForYearlySummaryComponents.day = 1
