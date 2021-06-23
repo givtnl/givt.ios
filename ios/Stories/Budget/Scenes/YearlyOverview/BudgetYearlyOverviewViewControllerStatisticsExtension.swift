@@ -43,6 +43,10 @@ extension BudgetYearlyOverviewViewController {
         givingGoalPercentagePreviousYearDescriptionLabel.text = labelText
     }
     
+    func setupGivingGoalFinishedCard() {
+        givingGoalFinishedLabel.text = "BudgetSummaryGivingGoalReached".localized
+    }
+    
     //-- MARK: Methods
     func showGivingGoalWithoutPreviousYearCards(_ shouldHide: Bool = false) {
         givingGoalPerYearStackItem.isHidden = shouldHide
@@ -62,6 +66,11 @@ extension BudgetYearlyOverviewViewController {
         givingGoalPerYearStackItem.isHidden = shouldHide
         givingGoalPercentagePreviousYearStackItem.isHidden = shouldHide
     }
+    func showGivingGoalFinishedCard(_ shouldHide: Bool = false) {
+        givingGoalPerYearStackItem.isHidden = shouldHide
+        givingGoalFinishedStackItem.isHidden = shouldHide
+    }
+    
     func hideStatisticsStackItems() {
         givingGoalPerYearStackItem.isHidden = true
         givingGoalPerYearRemainingStackItem.isHidden = true
@@ -69,6 +78,7 @@ extension BudgetYearlyOverviewViewController {
         givingGoalPercentagePreviousYearStackItem.isHidden = true
         givingGoalBigSetupStackItem.isHidden = true
         givingGoalPerYearBigStackItem.isHidden = true
+        givingGoalFinishedStackItem.isHidden = true
     }
     //-- MARK: Usefull functions
     func createAttributeText(bold: String, normal: String) -> NSMutableAttributedString {
@@ -117,8 +127,13 @@ extension BudgetYearlyOverviewViewController {
         
         if isCurrentYear {
             setupGivingGoalPerYearCard(givingGoalAmountPerYear)
-            setupGivingGoalPerYearRemainingCard(remainingGivingGoal > 0 ? remainingGivingGoal : 0)
-            showGivingGoalWithoutPreviousYearCards()
+            if remainingGivingGoal > 0 {
+                setupGivingGoalPerYearRemainingCard(remainingGivingGoal)
+                showGivingGoalWithoutPreviousYearCards()
+            } else {
+                setupGivingGoalFinishedCard()
+                showGivingGoalFinishedCard()
+            }
             return
         }
         

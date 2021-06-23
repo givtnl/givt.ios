@@ -458,6 +458,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: OpenYearlyOverviewRouteHandler())
         Mediater.shared.registerHandler(handler: OpenYearlyOverviewRouteDetailHandler())
         Mediater.shared.registerHandler(handler: GoBackToYearlyOverviewRouteHandler())
+        Mediater.shared.registerHandler(handler: GoBackFromGivingGoalWithReloadRouteHandler())
         
         //-- BUDGET SCENE: QUERYS
         Mediater.shared.registerHandler(handler: GetMonthlySummaryQueryHandler())
