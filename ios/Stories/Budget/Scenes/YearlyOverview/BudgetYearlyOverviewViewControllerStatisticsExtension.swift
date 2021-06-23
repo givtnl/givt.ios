@@ -11,9 +11,9 @@ import UIKit
 
 extension BudgetYearlyOverviewViewController {
     //-- MARK: Setup functions for different cards
-    func setupTotalGivenPerYearCard(_ amount: Double) {
+    func setupTotalGivenPerYearCard(_ amount: Double, _ year: Int) {
         totalGivenPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-        totalGivenPerYearAmountDescription.text = "Gegeven in 2021"
+        totalGivenPerYearAmountDescription.text = "Gegeven in \(String(describing: year))"
     }
     func setupGivingGoalPerYearCard(_ amount: Double) {
         givingGoalPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
@@ -92,12 +92,13 @@ extension BudgetYearlyOverviewViewController {
         let isCurrentYear = year == Date().getYear()
         let sumOfLastYearsDonations = donations?.map { $0.Value }.reduce(0, +) ?? 0
         var percentage: Double = 0.00
-        
         if isCurrentYear {
             percentage = currentTotalThisYear / sumOfLastYearsDonations * 100
         } else {
             percentage = (currentTotalThisYear - sumOfLastYearsDonations) / sumOfLastYearsDonations * 100
         }
+        
+        setupTotalGivenPerYearCard(notGivtModels!.map { $0.Value }.reduce(0, +) + givtModels!.map { $0.Value }.reduce(0, +), year)
         
         guard let givingGoal = givingGoal else {
             if weHavePastDonations {
