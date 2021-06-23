@@ -37,7 +37,7 @@ extension BudgetYearlyOverviewViewController {
         givingGoalBigDescriptionLabel.text = "Streefbedrag per jaar"
     }
     func setupGivingGoalPercentagePreviousYearCard(_ amount: Double, _ thisYear: Bool) {
-        givingGoalPercentagePreviousYearAmountLabel.text = amount.toPercentile()
+        givingGoalPercentagePreviousYearAmountLabel.text = amount.toPercentile(showSign: !thisYear)
         let labelText = thisYear ? "Ten opzichte van totaal \(year-1)" : "Tegenover \(year-1)"
         givingGoalPercentagePreviousYearDescriptionLabel.text = labelText
     }
