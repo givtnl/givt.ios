@@ -32,6 +32,29 @@ class BudgetYearlyOverviewViewController: UIViewController {
     var notGivtModels: [MonthlySummaryDetailModel]?
     
     var needsReload = true
+    @IBOutlet weak var totalGivenPerYearAmountLabel: UILabel!
+    @IBOutlet weak var totalGivenPerYearAmountDescription: UILabel!
+    
+    @IBOutlet weak var givingGoalPerYearAmountLabel: UILabel!
+    @IBOutlet weak var givingGoalPerYearDescriptionLabel: UILabel!
+    @IBOutlet weak var givingGoalPerYearEditGivingGoalLabel: UILabel!
+    @IBOutlet weak var givingGoalPerYearRemainingAmountLabel: UILabel!
+    @IBOutlet weak var givingGoalPerYearRemainingDescriptionLabel: UILabel!
+    @IBOutlet weak var givingGoalSetupSmallLabel: UILabel!
+    @IBOutlet weak var givingGoalPercentagePreviousYearAmountLabel: UILabel!
+    @IBOutlet weak var givingGoalPercentagePreviousYearDescriptionLabel: UILabel!
+    @IBOutlet weak var givingGoalBigSetupLabel: UILabel!
+    @IBOutlet weak var givingGoalBigAmountLabel: UILabel!
+    @IBOutlet weak var givingGoalBigDescriptionLabel: UILabel!
+    
+    @IBOutlet weak var givingGoalPerYearStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalPerYearRemainingStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalSmallSetupStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalPercentagePreviousYearStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalBigSetupStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalPerYearBigStackItem: BackgroundShadowView!
+    
+    var currentIndex: Int? = nil
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -43,6 +66,21 @@ class BudgetYearlyOverviewViewController: UIViewController {
             }
             
             setupTerms()
+            
+            setupTotalGivenPerYearCard()
+            
+            setupGivingGoalPerYearCard()
+            setupGivingGoalPerYearRemainingCard()
+
+            setupGivingGoalSmallSetupCard()
+            setupGivingGoalPercentagePreviousYearCard()
+            
+            setupGivingGoalBigSetupCard()
+            
+            setupGivingGoalAmountBigCard()
+            
+            hideStatisticsStackItems()
+            showGivingGoalWithoutPreviousYearCards()
         }
     }
     
@@ -80,10 +118,29 @@ class BudgetYearlyOverviewViewController: UIViewController {
     }
     
     @IBAction func goToYearlyOverviewDetail(_ sender: Any) {
-        if !AppServices.shared.isServerReachable {
-            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
-        } else {
-            try? Mediater.shared.send(request: OpenYearlyOverviewDetailRoute(year: year, givtModels!, notGivtModels!, getStartDateForYear(year: year), getEndDateForYear(year: year)) , withContext: self)
+        if currentIndex == nil {
+            currentIndex = 0
         }
+        
+        hideStatisticsStackItems()
+
+        if currentIndex == 0 {
+            showNoGivingGoalWithPreviousYearCards()
+            currentIndex = 1
+        } else if currentIndex == 1{
+            showGivingGoalBigSetupCard()
+            currentIndex = 2
+        } else if currentIndex == 2 {
+            showGivingGoalPerYearBigCard()
+            currentIndex = 3
+        } else if currentIndex == 3 {
+            showGivingGoalWithoutPreviousYearCards()
+            currentIndex = 0
+        }
+//        if !AppServices.shared.isServerReachable {
+//            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
+//        } else {
+//            try? Mediater.shared.send(request: OpenYearlyOverviewDetailRoute(year: year, givtModels!, notGivtModels!, getStartDateForYear(year: year), getEndDateForYear(year: year)) , withContext: self)
+//        }
     }
 }
