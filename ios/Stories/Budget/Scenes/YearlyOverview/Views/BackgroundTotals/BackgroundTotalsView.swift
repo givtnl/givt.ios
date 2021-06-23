@@ -9,9 +9,19 @@
 import Foundation
 import UIKit
 
+@IBDesignable
 class BackgroundTotalsView: UIView {
     @IBOutlet var contentView: UIView!
     
+    @IBInspectable var bgColor: UIColor? = nil {
+        didSet {
+            if bgColor != nil {
+                self.backgroundColor = bgColor
+            } else {
+                self.backgroundColor = ColorHelper.BudgetYearlyOverviewTotalsBackground
+            }
+        }
+    }
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -31,6 +41,5 @@ class BackgroundTotalsView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        self.backgroundColor = ColorHelper.BudgetYearlyOverviewTotalsBackground
     }
 }
