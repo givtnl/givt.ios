@@ -81,6 +81,7 @@
 		323F170725ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F170625ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift */; };
 		323F170925ED520800B12049 /* BudgetOverviewViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F170825ED520800B12049 /* BudgetOverviewViewControllerPrivateExtension.swift */; };
 		323F170B25ED723400B12049 /* BudgetExternalGivtsViewControllerPrivateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323F170A25ED723400B12049 /* BudgetExternalGivtsViewControllerPrivateExtension.swift */; };
+		3241BE4526831F9300E001F5 /* BudgetYearlyOverviewViewControllerStatisticsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3241BE4426831F9300E001F5 /* BudgetYearlyOverviewViewControllerStatisticsExtension.swift */; };
 		3245E13F262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */; };
 		324761C12508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */; };
 		324761C32508FE25002BC37E /* RecurringDonationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324761C22508FE25002BC37E /* RecurringDonationState.swift */; };
@@ -587,6 +588,7 @@
 		323F170625ED50F700B12049 /* BudgetOverviewViewControllerYearlyChartExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerYearlyChartExtension.swift; sourceTree = "<group>"; };
 		323F170825ED520800B12049 /* BudgetOverviewViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
 		323F170A25ED723400B12049 /* BudgetExternalGivtsViewControllerPrivateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExternalGivtsViewControllerPrivateExtension.swift; sourceTree = "<group>"; };
+		3241BE4426831F9300E001F5 /* BudgetYearlyOverviewViewControllerStatisticsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerStatisticsExtension.swift; sourceTree = "<group>"; };
 		3245E13E262863EA0081766C /* BudgetOverviewViewControllerTestimonialExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetOverviewViewControllerTestimonialExtension.swift; sourceTree = "<group>"; };
 		324761C02508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRecurringDonationResponseModel.swift; sourceTree = "<group>"; };
 		324761C22508FE25002BC37E /* RecurringDonationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringDonationState.swift; sourceTree = "<group>"; };
@@ -1777,6 +1779,7 @@
 				32D4889F266A2E3C00B166B4 /* BudgetYearlyOverviewViewController.swift */,
 				32D488AF266A523300B166B4 /* BudgetYearlyOverviewViewControllerExtension.swift */,
 				32D488AD266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift */,
+				3241BE4426831F9300E001F5 /* BudgetYearlyOverviewViewControllerStatisticsExtension.swift */,
 			);
 			path = YearlyOverview;
 			sourceTree = "<group>";
@@ -3467,6 +3470,7 @@
 				FBA0894C21C7F97F001DD889 /* FeatureCarouselViewController.swift in Sources */,
 				D7FB251D1F4D6D2F0011A14E /* AppServices.swift in Sources */,
 				3273B8B62535D267003DB100 /* DonationResponseModel.swift in Sources */,
+				3241BE4526831F9300E001F5 /* BudgetYearlyOverviewViewControllerStatisticsExtension.swift in Sources */,
 				D71DA04E20F758DD0084381E /* ExternalIntegration.swift in Sources */,
 				D782089F2008BE6000AB6DC1 /* ArrayExtensions.swift in Sources */,
 				FBA0895021C7FEE4001DD889 /* FeatureViewController.swift in Sources */,
