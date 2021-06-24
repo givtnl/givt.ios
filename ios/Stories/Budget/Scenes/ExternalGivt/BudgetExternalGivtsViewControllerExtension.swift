@@ -21,7 +21,7 @@ extension BudgetExternalGivtsViewController {
         labelExternalGivtsAmount.text = "BudgetExternalGiftsAmount".localized
         buttonExternalGivtsAdd.setTitle("BudgetExternalGiftsAdd".localized, for: .normal)
         buttonExternalGivtsSave.setTitle("BudgetExternalGiftsSave".localized, for: .normal)
-
+        labelTaxDeductable.text = "BudgetExternalDonationsTaxDeductableSwitch".localized
     }
     func setupUI() {
         labelExternalGivtsTimeDown.layer.addBorder(edge: .left, color: ColorHelper.UITextFieldBorderColor, thickness: 0.5)
