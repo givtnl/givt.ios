@@ -101,22 +101,20 @@ extension BudgetYearlyOverviewViewController {
         let weHavePastDonations = donations != nil && donations!.count > 0
         let isCurrentYear = year == Date().getYear()
         let sumOfLastYearsDonations = donations?.map { $0.Value }.reduce(0, +) ?? 0
-        var percentage: Double = 0.00
-        if isCurrentYear {
-            percentage = currentTotalThisYear / sumOfLastYearsDonations * 100
-        } else {
-            percentage = (currentTotalThisYear - sumOfLastYearsDonations) / sumOfLastYearsDonations * 100
-        }
+        let percentage: Double = isCurrentYear ? currentTotalThisYear / sumOfLastYearsDonations * 100 : (currentTotalThisYear - sumOfLastYearsDonations) / sumOfLastYearsDonations * 100
         
-        setupTotalGivenPerYearCard(notGivtModels!.map { $0.Value }.reduce(0, +) + givtModels!.map { $0.Value }.reduce(0, +), year)
-        
+        // always setup the given in selected year card
+        setupTotalGivenPerYearCard(currentTotalThisYear, year)
+
         guard let givingGoal = givingGoal else {
             if weHavePastDonations {
+                // giving goal not set with past donations
                 setupGivingGoalSmallSetupCard()
-                setupGivingGoalPercentagePreviousYearCard(percentage, year == Date().getYear())
+                setupGivingGoalPercentagePreviousYearCard(percentage, isCurrentYear)
                 showNoGivingGoalWithPreviousYearCards()
                 return
             }
+            // giving goal not set without past donations
             setupGivingGoalBigSetupCard()
             showGivingGoalBigSetupCard()
             return
@@ -125,12 +123,16 @@ extension BudgetYearlyOverviewViewController {
         let givingGoalAmountPerYear = givingGoal.periodicity == 0 ? givingGoal.amount * 12 : givingGoal.amount
         let remainingGivingGoal = givingGoalAmountPerYear - currentTotalThisYear
         
+        
         if isCurrentYear {
+            // giving goal set and is current year
             setupGivingGoalPerYearCard(givingGoalAmountPerYear)
             if remainingGivingGoal > 0 {
+                // show remaining giving goal
                 setupGivingGoalPerYearRemainingCard(remainingGivingGoal)
                 showGivingGoalWithoutPreviousYearCards()
             } else {
+                // show giving goal finished
                 setupGivingGoalFinishedCard()
                 showGivingGoalFinishedCard()
             }
@@ -138,13 +140,15 @@ extension BudgetYearlyOverviewViewController {
         }
         
         if weHavePastDonations {
+            // giving goal set and is not current year and have past donations
             setupGivingGoalPerYearCard(givingGoalAmountPerYear)
-            setupGivingGoalPercentagePreviousYearCard(percentage, false)
+            setupGivingGoalPercentagePreviousYearCard(percentage, isCurrentYear)
             givingGoalPercentagePreviousYearStackItem.constraints.first!.constant = 65
             showGivingGoalPerYearAndPercentCards()
             return
         }
         
+        // giving goal set and is past year without donations in year before
         setupGivingGoalAmountBigCard(givingGoalAmountPerYear)
         showGivingGoalPerYearBigCard()
     }
