@@ -17,12 +17,7 @@ extension BudgetYearlyOverviewViewController {
         labelNotGivt.text = "BudgetYearlyOverviewGivenThroughNotGivt".localized
         labelTotal.text = "BudgetYearlyOverviewGivenTotal".localized
         labelTax.text = "BudgetYearlyOverviewGivenTotalTax".localized
-        if let attributedTitle = downloadButton.attributedTitle(for: .normal) {
-            let mutableAttributedTitle = NSMutableAttributedString(attributedString: attributedTitle)
-            mutableAttributedTitle.replaceCharacters(in: NSMakeRange(0, mutableAttributedTitle.length), with: "BudgetYearlyOverviewDownloadButton".localized)
-            downloadButton.setAttributedTitle(mutableAttributedTitle, for: .normal)
-        }
-
+        downloadButton.setTitle("BudgetYearlyOverviewDownloadButton".localized, for: .normal)
     }
     func reloadData() {
         let fromDate = getStartDateForYear(year: year)

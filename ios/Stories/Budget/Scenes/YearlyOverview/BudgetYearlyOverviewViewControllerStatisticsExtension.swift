@@ -17,13 +17,13 @@ extension BudgetYearlyOverviewViewController {
     }
     func setupGivingGoalPerYearCard(_ amount: Double) {
         givingGoalPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-        givingGoalPerYearDescriptionLabel.text = "Streefbedrag per jaar"
+        givingGoalPerYearDescriptionLabel.text = "BudgetYearlyOverviewGivingGoalPerYear".localized
         givingGoalPerYearEditGivingGoalLabel.attributedText = "BudgetSummaryGivingGoalEdit".localized.underlined
         givingGoalPerYearStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
     }
     func setupGivingGoalPerYearRemainingCard(_ amount: Double) {
         givingGoalPerYearRemainingAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-        givingGoalPerYearRemainingDescriptionLabel.text = "Resterend streefbedrag"
+        givingGoalPerYearRemainingDescriptionLabel.text = "BudgetSummaryGivingGoalRest".localized
     }
     func setupGivingGoalSmallSetupCard() {
         givingGoalSmallSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
@@ -35,7 +35,7 @@ extension BudgetYearlyOverviewViewController {
     }
     func setupGivingGoalAmountBigCard(_ amount: Double) {
         givingGoalBigAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-        givingGoalBigDescriptionLabel.text = "Streefbedrag per jaar"
+        givingGoalBigDescriptionLabel.text = "BudgetYearlyOverviewGivingGoalPerYear".localized
         givingGoalPerYearBigStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
     }
     func setupGivingGoalPercentagePreviousYearCard(_ amount: Double, _ thisYear: Bool) {
