@@ -13,7 +13,7 @@ extension BudgetYearlyOverviewViewController {
     //-- MARK: Setup functions for different cards
     func setupTotalGivenPerYearCard(_ amount: Double, _ year: Int) {
         totalGivenPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-        totalGivenPerYearAmountDescription.text = "Gegeven in \(String(describing: year))"
+        totalGivenPerYearAmountDescription.text = "\("BudgetYearlyOverviewGivenIn".localized) \(year)"
     }
     func setupGivingGoalPerYearCard(_ amount: Double) {
         givingGoalPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
@@ -40,7 +40,7 @@ extension BudgetYearlyOverviewViewController {
     }
     func setupGivingGoalPercentagePreviousYearCard(_ amount: Double, _ thisYear: Bool) {
         givingGoalPercentagePreviousYearAmountLabel.text = amount.toPercentile(showSign: !thisYear)
-        let labelText = thisYear ? "Ten opzichte van totaal \(year-1)" : "Tegenover \(year-1)"
+        let labelText = thisYear ? "\("BudgetYearlyOverviewRelativeTo".localized) \(year-1)" : "\("BudgetYearlyOverviewVersus".localized) \(year-1)"
         givingGoalPercentagePreviousYearDescriptionLabel.text = labelText
     }
     func setupGivingGoalFinishedCard() {
