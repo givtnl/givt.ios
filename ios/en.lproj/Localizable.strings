@@ -1142,3 +1142,7 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "BudgetExternalDonationsTaxDeductableSwitch" = "Tax relief";
+"BudgetYearlyOverviewGivingGoalPerYear" = "Yearly giving goal";
+"BudgetYearlyOverviewGivenIn" = "Given in";
+"BudgetYearlyOverviewRelativeTo" = "Relative to the total in";
+"BudgetYearlyOverviewVersus" = "Versus";
