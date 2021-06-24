@@ -36,13 +36,13 @@ extension BudgetYearlyOverviewViewController {
     func setupGivingGoalAmountBigCard(_ amount: Double) {
         givingGoalBigAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         givingGoalBigDescriptionLabel.text = "Streefbedrag per jaar"
+        givingGoalPerYearBigStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
     }
     func setupGivingGoalPercentagePreviousYearCard(_ amount: Double, _ thisYear: Bool) {
         givingGoalPercentagePreviousYearAmountLabel.text = amount.toPercentile(showSign: !thisYear)
         let labelText = thisYear ? "Ten opzichte van totaal \(year-1)" : "Tegenover \(year-1)"
         givingGoalPercentagePreviousYearDescriptionLabel.text = labelText
     }
-    
     func setupGivingGoalFinishedCard() {
         givingGoalFinishedLabel.text = "BudgetSummaryGivingGoalReached".localized
     }
@@ -110,6 +110,7 @@ extension BudgetYearlyOverviewViewController {
             if weHavePastDonations {
                 // giving goal not set with past donations
                 setupGivingGoalSmallSetupCard()
+                givingGoalPercentagePreviousYearStackItem.constraints.first!.constant = 85
                 setupGivingGoalPercentagePreviousYearCard(percentage, isCurrentYear)
                 showNoGivingGoalWithPreviousYearCards()
                 return
@@ -122,7 +123,6 @@ extension BudgetYearlyOverviewViewController {
         
         let givingGoalAmountPerYear = givingGoal.periodicity == 0 ? givingGoal.amount * 12 : givingGoal.amount
         let remainingGivingGoal = givingGoalAmountPerYear - currentTotalThisYear
-        
         
         if isCurrentYear {
             // giving goal set and is current year
