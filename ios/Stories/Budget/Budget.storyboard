@@ -2231,23 +2231,15 @@
                                                             </view>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQ9-6n-bO7" customClass="CustomButton" customModule="ios" customModuleProvider="target">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQ9-6n-bO7" customClass="CustomButton" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="60" y="215" width="294" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="biD-nj-zTg"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="14"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain">
-                                                            <attributedString key="attributedTitle">
-                                                                <fragment content="Button">
-                                                                    <attributes>
-                                                                        <font key="NSFont" size="14" name="Avenir-Black"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
-                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </buttonConfiguration>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="ogBGColor">
                                                                 <color key="value" red="0.25490196079999999" green="0.78823529410000004" blue="0.5568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2944,7 +2936,7 @@
             <size key="intrinsicContentSize" width="30" height="26"/>
         </designable>
         <designable name="BQ9-6n-bO7">
-            <size key="intrinsicContentSize" width="69.5" height="33.5"/>
+            <size key="intrinsicContentSize" width="46" height="32"/>
         </designable>
         <designable name="FCb-Nh-ro9">
             <size key="intrinsicContentSize" width="249" height="32"/>
