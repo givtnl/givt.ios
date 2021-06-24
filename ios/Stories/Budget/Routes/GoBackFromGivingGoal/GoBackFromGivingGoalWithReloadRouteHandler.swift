@@ -11,12 +11,19 @@ import UIKit
 
 class GoBackFromGivingGoalWithReloadRouteHandler: RequestHandlerWithContextProtocol {
     func handle<R>(request: R, withContext context: UIViewController, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        switch(context.navigationController?.children[0]) {
-        case is BudgetYearlyOverviewViewController:
-            (context.navigationController?.children[0] as! BudgetOverviewViewController).needsReload = (request as! GoBackFromGivingGoalWithReloadRoute).needsReload
+        guard let givingGoalVc: BudgetGivingGoalViewController = context as? BudgetGivingGoalViewController else {
+            return try completion(() as! R.TResponse)
+        }
+        
+        let vcIndex: Int = givingGoalVc.navigationController?.children.firstIndex(of: givingGoalVc) ?? 1
+        let comingFromVc = givingGoalVc.navigationController?.children[vcIndex-1]
+        
+        switch(comingFromVc) {
+        case is BudgetOverviewViewController:
+            (comingFromVc as! BudgetOverviewViewController).needsReload = (request as! GoBackFromGivingGoalWithReloadRoute).needsReload
             break;
         case is BudgetYearlyOverviewViewController:
-            (context.navigationController?.children[0] as! BudgetYearlyOverviewViewController).needsReload = (request as! GoBackFromGivingGoalWithReloadRoute).needsReload
+            (comingFromVc as! BudgetYearlyOverviewViewController).needsReload = (request as! GoBackFromGivingGoalWithReloadRoute).needsReload
             break;
         default: break;
         }
