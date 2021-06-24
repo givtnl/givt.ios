@@ -65,9 +65,10 @@ class BudgetYearlyOverviewViewController: UIViewController {
         super.viewWillAppear(animated)
         
         if needsReload {
+            hideView(mainView, true)
+
             if !SVProgressHUD.isVisible() {
                 SVProgressHUD.show()
-                hideView(mainView, true)
             }
             setupTerms()
             
