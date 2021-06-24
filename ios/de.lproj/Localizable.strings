@@ -1,3 +1,5 @@
+
+/*Fuzzy*/
 "IBANPlaceHolder" = "IBAN";
 
 /*@Tine, vind je 'Ho' kunnen? Of 'Ha' of moet de zin gewoon anders? Sjoerd kan niet leven met 'Hé'*/
@@ -850,11 +852,11 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "UpdateBacsAccountDetailsError" = "Oha, die Bankleitzahl oder die Kontonummer ist ungültig. Du kannst die Bankleitzahl und/oder Kontonummer unter dem Menüpunkt 'Persönliche Daten' ändern.";
 "DDIFailedTitle" = "Lastschrift-Anfrage fehlgeschlagen";
 "DDIFailedMessage" = "Im Moment kann keine Lastschrift-Anfrage durchgeführt werden. Bitte versuche es in ein paar Minuten noch einmal.";
-"FAQantwoord5GB" = "Handling transactions\nThe transactions are handled by EazyCollect; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., EazyCollect is under the supervision of the Financial Conduct Authority.\n\nRevertible afterwards\nThe transactions take place afterwards via a direct debit under Givt Ltd. We want to emphasise that no transactions take place in the moment of giving. Since these transactions are revocable, it is completely safe and immune to fraud.";
+"FAQantwoord5GB" = "Handling transactions\nThe transactions are handled by Access PaySuite; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., Access PaySuite is under the supervision of the Financial Conduct Authority.\n\nRevertible afterwards\nThe transactions take place afterwards via a direct debit under Givt Ltd. We want to emphasise that no transactions take place in the moment of giving. Since these transactions are revocable, it is completely safe and immune to fraud.";
 "FAQvraag15GB" = "Can I Gift Aid my donations?";
 "FAQantwoord15GB" = "Yes, you can. In the Givt app you can enable Gift Aid. You can also always see how much Gift Aid has been claimed on your donations.\n\nDonating through Gift Aid means charities can claim an extra 25p for every £1 you give. It will not cost you any extra.";
-"AnswerHowDoesRegistrationWorkGB" = "To start giving, all you need is an e-mail address. Once you have entered this, you are ready to give.\n\nPlease note: you need to fully register to ensure that all your previous and future donations can be processed. Go to the menu in the app and choose ‘Complete registration’. Here, you set up a Givt account by filling in your personal information and by us giving permission to debit the donations made in the app. Those transactions are processed by Eazy Collect, who are specialised in direct debits. \n\nWhen your registration is complete, you are ready to give with the Givt app. You only need your login details to see or change your settings.";
-"FAQantwoord7GB" = "Registered Small Payment Institution\nGivt Ltd. is registered with the Financial Conduct Authority as a Small Payment Institution (823261). This means you can be confident that the way we conduct our business is transparent and secure and that the people running the company have been thoroughly checked.\n\nPersonal safety\nIt is very important to us that everything is safe and risk free. Each user has a personal account with its own password. You need to log in to view or change your settings.\n\nHandling transactions\nThe transactions are handled by EazyCollect; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., EazyCollect is under the supervision of the Financial Conduct Authority.\n\nImmune to fraud\nWhen installing Givt, the user gives the app authorisation to debit their account. We want to emphasise that no transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt Ltd. Since these transactions are revocable, it is completely safe and immune to fraud.\n\nOverview\nIndividual users can see an overview of their donations in the app. Organisations can log in to the Givt dashboard. This dashboard gives an overview of all financial transactions, from the moment of giving up to the full processing of the payment. In this way any collection can be followed from start to finish. Organisations can see how many people used Givt, but not who they are.";
+"AnswerHowDoesRegistrationWorkGB" = "To start giving, all you need is an e-mail address. Once you have entered this, you are ready to give.\n\nPlease note: you need to fully register to ensure that all your previous and future donations can be processed. Go to the menu in the app and choose ‘Complete registration’. Here, you set up a Givt account by filling in your personal information and by us giving permission to debit the donations made in the app. Those transactions are processed by Access PaySuite, who are specialised in direct debits. \n\nWhen your registration is complete, you are ready to give with the Givt app. You only need your login details to see or change your settings.";
+"FAQantwoord7GB" = "Registered Small Payment Institution\nGivt Ltd. is registered with the Financial Conduct Authority as a Small Payment Institution (823261). This means you can be confident that the way we conduct our business is transparent and secure and that the people running the company have been thoroughly checked.\n\nPersonal safety\nIt is very important to us that everything is safe and risk free. Each user has a personal account with its own password. You need to log in to view or change your settings.\n\nHandling transactions\nThe transactions are handled by Access PaySuite; a payment institution specialised in processing BACS Direct Debit Instructions. Just like Givt Ltd., Access PaySuite is under the supervision of the Financial Conduct Authority.\n\nImmune to fraud\nWhen installing Givt, the user gives the app authorisation to debit their account. We want to emphasise that no transactions take place in the moment of giving. The transactions take place afterwards via a direct debit under Givt Ltd. Since these transactions are revocable, it is completely safe and immune to fraud.\n\nOverview\nIndividual users can see an overview of their donations in the app. Organisations can log in to the Givt dashboard. This dashboard gives an overview of all financial transactions, from the moment of giving up to the full processing of the payment. In this way any collection can be followed from start to finish. Organisations can see how many people used Givt, but not who they are.";
 "FAQantwoord18GB" = "Givt fully complies with the GDPR requirements. GDPR stands for General Data Protection Regulation.\n\nWondering what this means for you? It means that we handle your information with care, that you have the right to know which information we keep on record, have the right to change this information, have the right to demand from us that we do not store your information, and that you may know why we need your personal information.\n\nIf you would like to know more, please read our privacy statement.";
 "GiftAid_Setting" = "N.A. in Germany";
 "GiftAid_Info" = "N.A. in Germany";
@@ -1058,19 +1060,20 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 
 /*Fuzzy*/
 "BudgetSummaryNoGiftsExternal" = "Spenden außerhalb von Givt, diesen Monat? Hier hinzufügen";
-"BudgetYearlyOverviewGivenThroughGivt" = "Total within Givt";
-"BudgetYearlyOverviewGivenThroughNotGivt" = "Total outside Givt";
-"BudgetYearlyOverviewGivenTotal" = "Total";
-"BudgetYearlyOverviewGivenTotalTax" = "Total tax deductable";
-"BudgetYearlyOverviewDetailThroughGivt" = "Through Givt";
-"BudgetYearlyOverviewDetailAmount" = "Amount";
-"BudgetYearlyOverviewDetailDeductable" = "Deductable";
-"BudgetYearlyOverviewDetailTotal" = "Total";
-"BudgetYearlyOverviewDetailTotalDeductable" = "Total tax deductable";
-"BudgetYearlyOverviewDetailNotThroughGivt" = "Not through Givt";
-"BudgetYearlyOverviewDetailTotalThroughGivt" = "(through Givt)";
-"BudgetYearlyOverviewDetailTotalNotThroughGivt" = "(not through Givt)";
-"BudgetYearlyOverviewDetailTipBold" = "TIP: add your external donations";
-"BudgetYearlyOverviewDetailTipNormal" = "to get a total overview of what you give, both via the Givt app and not via the Givt app";
-"BudgetYearlyOverviewDetailReceiveViaMail" = "Receive by email";
-"BudgetYearlyOverviewDownloadButton" = "Download yearly overview";
+"BudgetYearlyOverviewGivenThroughGivt" = "Gesamtbetrag via Givt";
+"BudgetYearlyOverviewGivenThroughNotGivt" = "Gesamtbetrag außerhalb Givt";
+"BudgetYearlyOverviewGivenTotal" = "Gesamtbetrag";
+"BudgetYearlyOverviewGivenTotalTax" = "steuerlich absetzbarer Gesamtbetrag";
+"BudgetYearlyOverviewDetailThroughGivt" = "via Givt";
+"BudgetYearlyOverviewDetailAmount" = "Betrag";
+"BudgetYearlyOverviewDetailDeductable" = "Abzugsfähig";
+"BudgetYearlyOverviewDetailTotal" = "Gesamtbetrag";
+"BudgetYearlyOverviewDetailTotalDeductable" = "Gesamt abzugsfähig";
+"BudgetYearlyOverviewDetailNotThroughGivt" = "außerhalb Givt";
+"BudgetYearlyOverviewDetailTotalThroughGivt" = "(via Givt)";
+"BudgetYearlyOverviewDetailTotalNotThroughGivt" = "(außerhalb Givt)";
+"BudgetYearlyOverviewDetailTipBold" = "TIPP: Füge deine externen Spenden hinzu";
+"BudgetYearlyOverviewDetailTipNormal" = "um einen Gesamtüberblick über das zu bekommen, was du gibst. Sowohl deine Spenden via Givt-App, als auch über alle anderen getätigten Spenden.";
+"BudgetYearlyOverviewDetailReceiveViaMail" = "Empfangen per E-Mail";
+"BudgetYearlyOverviewDownloadButton" = "Jahresübersicht herunterladen";
+"BudgetExternalDonationsTaxDeductableSwitch" = "Steuerlich absetzbar";
