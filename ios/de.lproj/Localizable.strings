@@ -1076,4 +1076,6 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetYearlyOverviewDetailTipNormal" = "um einen Gesamtüberblick über das zu bekommen, was du gibst. Sowohl deine Spenden via Givt-App, als auch über alle anderen getätigten Spenden.";
 "BudgetYearlyOverviewDetailReceiveViaMail" = "Empfangen per E-Mail";
 "BudgetYearlyOverviewDownloadButton" = "Jahresübersicht herunterladen";
+
+/*Fuzzy*/
 "BudgetExternalDonationsTaxDeductableSwitch" = "Steuerlich absetzbar";
