@@ -1138,11 +1138,11 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "BudgetYearlyOverviewDetailTipBold" = "TIP: add your external donations";
 "BudgetYearlyOverviewDetailTipNormal" = "to get a total overview of what you give, both via the Givt app and not via the Givt app.";
 "BudgetYearlyOverviewDetailReceiveViaMail" = "Receive by email";
-"BudgetYearlyOverviewDownloadButton" = "Download yearly overview";
+"BudgetYearlyOverviewDownloadButton" = "Download annual overview";
 
 /*Fuzzy*/
 "BudgetExternalDonationsTaxDeductableSwitch" = "Tax relief";
-"BudgetYearlyOverviewGivingGoalPerYear" = "Yearly giving goal";
+"BudgetYearlyOverviewGivingGoalPerYear" = "Annual giving goal";
 "BudgetYearlyOverviewGivenIn" = "Given in";
 "BudgetYearlyOverviewRelativeTo" = "Relative to the total in";
 "BudgetYearlyOverviewVersus" = "Versus";
