@@ -28,8 +28,6 @@ extension Double {
         var sign = ""
         if self > 0 && showSign {
             sign = "+"
-        } else if self < 0 && showSign {
-            sign = "-"
         }
         return "\(sign)\(String(format: "%.\(decimals)f", self))%".replacingOccurrences(of: ".", with: Locale.current.decimalSeparator!)
     }
