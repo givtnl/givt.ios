@@ -13,7 +13,22 @@ struct YearChartValue {
     var year: Int
     var value: Double
 }
-class BudgetOverviewViewController : UIViewController, OverlayHost {
+
+protocol DeltaChangedDelegate: AnyObject {
+    func onReceiveDeltaChanged()
+}
+
+class BudgetOverviewViewController : BaseTrackingViewController, OverlayHost, DeltaChangedDelegate {
+    
+    func onReceiveDeltaChanged() {
+        trackEvent("LOADED", properties: ["DELTA": delta])
+    }
+    
+    override var screenName: String  { return "PersonalSummary" }
+    
+    var delta = 0
+    var deltaDelegate: DeltaChangedDelegate?
+    
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var monthlySummaryTile: MonthlySummary!
@@ -96,10 +111,15 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var monthSelectorButtonRight: UIButton!
     
     var needsReload = true
+
+    override func viewDidLoad() {
+        customTrackingProperties = ["DELTA": delta]
+        super.viewDidLoad()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        deltaDelegate = self
         if needsReload {
             if !SVProgressHUD.isVisible() {
                 SVProgressHUD.show()

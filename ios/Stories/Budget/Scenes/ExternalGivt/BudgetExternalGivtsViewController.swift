@@ -10,7 +10,9 @@ import Foundation
 import SVProgressHUD
 import CoreData
 
-class BudgetExternalGivtsViewController : UIViewController {
+class BudgetExternalGivtsViewController : BaseTrackingViewController {
+    override var screenName: String  { return "ExternalDonation" }
+
     @IBOutlet weak var labelExternalGivtsInfo: UILabel!
     @IBOutlet weak var labelExternalGivtsSubtitle: UILabel!
     @IBOutlet weak var labelExternalGivtsOrganisation: UILabel!

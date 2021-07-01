@@ -170,7 +170,7 @@ extension BudgetExternalGivtsViewController {
 
     @objc func deleteButtonRow(_ sender: UIButton) {
         SVProgressHUD.show()
-
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "RemoveExternalDonation"])
         let editRow = getEditRowFrom(button: sender)
         
         let command = DeleteExternalDonationCommand(guid: editRow.id!)
@@ -194,6 +194,8 @@ extension BudgetExternalGivtsViewController {
     }
     
     @objc func editButtonRow(_ sender: UIButton) {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "EditExternalDonation"])
+
         switchButtonState(editmode: true)
         
         let editRow = getEditRowFrom(button: sender)
