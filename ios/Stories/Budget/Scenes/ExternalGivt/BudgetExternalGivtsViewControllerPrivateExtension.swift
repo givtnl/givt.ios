@@ -92,7 +92,8 @@ private extension BudgetExternalGivtsViewController {
                 date: Date(),
                 taxDeductable: switchTaxDeductable.isOn
             )
-            
+            trackEvent("CLICKED", properties: ["BUTTON_NAME": "SaveExternalDonation", "MODE": "Add"])
+
             NavigationManager.shared.executeWithLogin(context: self) {
                 let _: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
                 self.resetFields()
@@ -115,6 +116,9 @@ private extension BudgetExternalGivtsViewController {
                             date: model.creationDate.toDate!,
                             taxDeductable: switchTaxDeductable.isOn
                         )
+                        
+                        trackEvent("CLICKED", properties: ["BUTTON_NAME": "SaveExternalDonation", "MODE": "Edit"])
+                        
                         NavigationManager.shared.executeWithLogin(context: self) {
                             let _: ResponseModel<Bool> = try! Mediater.shared.send(request: deleteCommand)
                             let _: ResponseModel<Bool> = try! Mediater.shared.send(request: createCommand)

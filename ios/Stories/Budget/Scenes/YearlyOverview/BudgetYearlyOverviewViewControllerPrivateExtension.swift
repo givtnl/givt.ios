@@ -13,6 +13,8 @@ private extension BudgetYearlyOverviewViewController {
         try! Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: false), withContext: self)
     }
     @IBAction func goToYearlyOverviewDetail(_ sender: Any) {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "DownloadYearlyOverview"])
+
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {

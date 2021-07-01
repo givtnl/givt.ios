@@ -15,6 +15,8 @@ private extension BudgetYearlyOverviewDetailViewController {
      }
      
      @IBAction func getByEmail(_ sender: Any) {
+         trackEvent("CLICKED", properties: ["BUTTON_NAME": "ReceiveByEmail"])
+
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
