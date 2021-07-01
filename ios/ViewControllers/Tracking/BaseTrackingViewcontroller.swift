@@ -20,9 +20,14 @@ class BaseTrackingViewController: UIViewController {
         let properties = customTrackingProperties != nil ? mergeDictionaries(trackingProperties, customTrackingProperties!) : trackingProperties
         trackEvent(event: "LOADED", properties: properties)
     }
-
-    deinit {
+    
+    func viewDidUnload() {
         trackEvent(event: "DISMISSED", properties: trackingProperties)
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: flag, completion: completion)
+        viewDidUnload()
     }
     
     func trackEvent(_ event: String, properties: [String: MixpanelType]) {
