@@ -7,7 +7,6 @@
 //
 import UIKit
 import Foundation
-import SwifCron
 import SVProgressHUD
 
 class RecurringDonationTurnsOverviewController : UIViewController, UITableViewDelegate, UITableViewDataSource
