@@ -11,7 +11,7 @@ import UIKit
 
 class TestimonialViewController: UIViewController {
     var content: Testimonial?
-    
+       
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var actionButton: CustomButton!
@@ -49,7 +49,10 @@ class TestimonialViewController: UIViewController {
                 try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
             } else {
                 NavigationManager.shared.executeWithLogin(context: self) {
-                    try? Mediater.shared.send(request: OpenExternalGivtsRoute(), withContext: self)
+                    let externalDonations = try! Mediater.shared.send(request: GetAllExternalDonationsQuery(fromDate: self.getStartDateOfMonth(date: Date()),tillDate: self.getEndDateOfMonth(date: Date()))).result.sorted(by: { first, second in
+                        first.creationDate > second.creationDate
+                    })
+                    try? Mediater.shared.send(request: OpenExternalGivtsRoute(id: nil, externalDonations: externalDonations), withContext: self)
                 }
             }
         case 3:
@@ -63,5 +66,33 @@ class TestimonialViewController: UIViewController {
         default:
             (parent as! TestimonialCarouselViewController).dismissOverlay()
         }
+    }
+    
+    func getStartDateOfMonth(date: Date) -> String {
+        let calendar = Calendar.current
+        let currentYear = Calendar.current.component(.year, from: date)
+        let currentMonth = Calendar.current.component(.month, from: date)
+        var dateComponents = DateComponents()
+        dateComponents.year = currentYear
+        dateComponents.month = currentMonth
+        dateComponents.day = 1
+        let date = calendar.date(from: dateComponents)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    func getEndDateOfMonth(date: Date) -> String {
+        let calendar = Calendar.current
+        let currentYear = Calendar.current.component(.year, from: date)
+        let currentMonth = Calendar.current.component(.month, from: date) + 1
+        var dateComponents = DateComponents()
+        dateComponents.year = currentYear
+        dateComponents.month = currentMonth
+        dateComponents.day = 1
+        let date = calendar.date(from: dateComponents)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
     }
 }
