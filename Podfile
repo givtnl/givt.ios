@@ -11,7 +11,7 @@ target 'ios' do
   pod 'SwiftClient', :git => 'https://github.com/givtnl/SwiftClient.git'
   pod 'TrustKit'
   pod 'SwipeCellKit', '~> 2.5.4'
-  pod 'MaterialShowcase', '0.6.6'
+  pod 'MaterialShowcase'
   pod 'ReachabilitySwift', :git => 'https://github.com/givtnl/ReachabilitySwift.git'
   pod 'AppCenter/Push'
   pod 'Mixpanel-swift'
