@@ -17,7 +17,7 @@ import CoreTelephony
 class AppServices {
     static let shared = AppServices()
     private var timer: Timer?
-    private let reachability = Reachability()!
+    private let reachability = try? Reachability()
     private var isConnectable = true
     private var isReachable = true
     private let notificationLocker = NSRecursiveLock()
@@ -35,7 +35,7 @@ class AppServices {
         timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fetchInternetConnection), userInfo: nil, repeats: true)
         timer!.fire()
         do {
-            try reachability.startNotifier()
+            try reachability?.startNotifier()
         } catch {
             print("could not start reachability notifier")
         }
@@ -43,7 +43,7 @@ class AppServices {
     
     func stop() {
         timer?.invalidate()
-        reachability.stopNotifier()
+        reachability?.stopNotifier()
     }
     
     @objc private func reachabilityChanged(note: Notification) {
