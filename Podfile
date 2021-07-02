@@ -12,7 +12,7 @@ target 'ios' do
   pod ‘TrustKit’
   pod 'SwipeCellKit', '~> 2.5.4'
   pod 'MaterialShowcase', '0.6.6'
-  pod 'ReachabilitySwift', :git => 'https://github.com/ashleymills/Reachability.swift.git', :tag => 'v4.3.1'
+  pod 'ReachabilitySwift', :git => 'https://github.com/givtnl/ReachabilitySwift.git'
   pod 'AppCenter/Push'
   pod 'SwiftCron'
   pod 'Mixpanel-swift'
