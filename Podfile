@@ -5,18 +5,16 @@ target 'ios' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   pod 'AppCenter'
-  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+  pod 'SVProgressHUD', :git => 'https://github.com/givtnl/SVProgressHUD.git'
   pod 'LGSideMenuController', '~> 2.1.1'
   pod 'PhoneNumberKit'
   pod 'SwiftClient', :git => 'https://github.com/givtnl/SwiftClient.git'
-  pod ‘TrustKit’
+  pod 'TrustKit'
   pod 'SwipeCellKit', '~> 2.5.4'
   pod 'MaterialShowcase', '0.6.6'
   pod 'ReachabilitySwift', :git => 'https://github.com/givtnl/ReachabilitySwift.git'
   pod 'AppCenter/Push'
-  pod 'SwiftCron'
   pod 'Mixpanel-swift'
-  pod 'SwifCron'
   # Pods for ios
   target 'ios.tests' do
     inherit! :search_paths
