@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 import SVProgressHUD
 
-class BudgetYearlyOverviewDetailViewController: UIViewController {
+class BudgetYearlyOverviewDetailViewController: BaseTrackingViewController {
+    override var screenName: String  { return "YearlySummaryDetail" }
+
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var totalRowView: UIView!

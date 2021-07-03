@@ -144,6 +144,7 @@
 		32810EFA25DF2403004E305C /* ChartViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32810EF925DF2403004E305C /* ChartViewBody.swift */; };
 		32810EFC25DF2410004E305C /* ChartViewBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32810EFB25DF2410004E305C /* ChartViewBody.xib */; };
 		328FB25625EA58A1003E24B7 /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328FB25525EA58A1003E24B7 /* ChartValueFormatter.swift */; };
+		3290C14D268D9D6600BFED48 /* BaseTrackingViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290C14C268D9D6600BFED48 /* BaseTrackingViewcontroller.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		329C3E7825F210D20037D750 /* CreateExternalDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E7725F210D20037D750 /* CreateExternalDonationCommand.swift */; };
 		329C3E7A25F210E60037D750 /* CreateExternalDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E7925F210E60037D750 /* CreateExternalDonationCommandHandler.swift */; };
@@ -653,6 +654,7 @@
 		32810EF925DF2403004E305C /* ChartViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewBody.swift; sourceTree = "<group>"; };
 		32810EFB25DF2410004E305C /* ChartViewBody.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartViewBody.xib; sourceTree = "<group>"; };
 		328FB25525EA58A1003E24B7 /* ChartValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
+		3290C14C268D9D6600BFED48 /* BaseTrackingViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTrackingViewcontroller.swift; sourceTree = "<group>"; };
 		329C3E7725F210D20037D750 /* CreateExternalDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExternalDonationCommand.swift; sourceTree = "<group>"; };
 		329C3E7925F210E60037D750 /* CreateExternalDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExternalDonationCommandHandler.swift; sourceTree = "<group>"; };
 		329C3E8025F2145F0037D750 /* ExternalDonationFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDonationFrequency.swift; sourceTree = "<group>"; };
@@ -1603,6 +1605,14 @@
 			path = Infrastructure;
 			sourceTree = "<group>";
 		};
+		3290C14B268D9D5200BFED48 /* Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				3290C14C268D9D6600BFED48 /* BaseTrackingViewcontroller.swift */,
+			);
+			path = Tracking;
+			sourceTree = "<group>";
+		};
 		329C3E7525F210B90037D750 /* ExternalDonations */ = {
 			isa = PBXGroup;
 			children = (
@@ -2445,6 +2455,7 @@
 		D7F746DD1FD9449A005354A3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3290C14B268D9D5200BFED48 /* Tracking */,
 				D7AE8BA721393B1A00CB3A33 /* AmountPresets */,
 				D7AE8B9A2136951400CB3A33 /* BACS */,
 				FBA0894D21C7FC27001DD889 /* BaseCarouselViewController.swift */,
@@ -3324,9 +3335,7 @@
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/SwifCron/SwifCron.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftClient/SwiftClient.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftCron/SwiftCron.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TrustKit/TrustKit.framework",
 			);
@@ -3338,9 +3347,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifCron.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftCron.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeCellKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustKit.framework",
 			);
@@ -3443,6 +3450,7 @@
 				FBC185B324C0D661001A4C6B /* DestinationCategoryButton.swift in Sources */,
 				320CF72A24CEF1D3008B3EDE /* DestinationSelectedRoute.swift in Sources */,
 				327E34572549FEEE00314BFD /* DiscoverOrAmountOpenSelectDestinationRoute.swift in Sources */,
+				3290C14D268D9D6600BFED48 /* BaseTrackingViewcontroller.swift in Sources */,
 				32A67F80251497F7007EC7EF /* RecurringDonationError.swift in Sources */,
 				326B7E7D260242AF000A6239 /* RecurringDonationTurnsOverviewControllerTableExtension.swift in Sources */,
 				327C5B7E2506D8680064BBC4 /* CancelRecurringDonationCommand.swift in Sources */,
@@ -3955,7 +3963,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				STRIP_BITCODE_FROM_COPIED_FILES = NO;
@@ -3979,7 +3987,7 @@
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4042,7 +4050,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -4094,7 +4102,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				STRIP_BITCODE_FROM_COPIED_FILES = NO;
@@ -4118,7 +4126,7 @@
 				DEVELOPMENT_TEAM = 9C9K7PRW9C;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -4147,7 +4155,7 @@
 				DEVELOPMENT_TEAM = YDSA4AY496;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

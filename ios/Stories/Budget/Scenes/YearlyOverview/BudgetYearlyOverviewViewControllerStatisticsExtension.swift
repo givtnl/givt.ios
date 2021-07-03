@@ -19,24 +19,24 @@ extension BudgetYearlyOverviewViewController {
         givingGoalPerYearAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         givingGoalPerYearDescriptionLabel.text = "BudgetYearlyOverviewGivingGoalPerYear".localized
         givingGoalPerYearEditGivingGoalLabel.attributedText = "BudgetSummaryGivingGoalEdit".localized.underlined
-        givingGoalPerYearStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
+        givingGoalPerYearStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.editGivingGoal)))
     }
     func setupGivingGoalPerYearRemainingCard(_ amount: Double) {
         givingGoalPerYearRemainingAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         givingGoalPerYearRemainingDescriptionLabel.text = "BudgetSummaryGivingGoalRest".localized
     }
     func setupGivingGoalSmallSetupCard() {
-        givingGoalSmallSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
+        givingGoalSmallSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.setupGivingGoal)))
         givingGoalSetupSmallLabel.attributedText = createAttributeText(bold: "BudgetSummarySetGoalBold", normal: "BudgetSummarySetGoal")
     }
     func setupGivingGoalBigSetupCard() {
-        givingGoalBigSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
+        givingGoalBigSetupStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.setupGivingGoal)))
         givingGoalBigSetupLabel.attributedText = createAttributeText(bold: "BudgetSummarySetGoalBold", normal: "BudgetSummarySetGoal")
     }
     func setupGivingGoalAmountBigCard(_ amount: Double) {
         givingGoalBigAmountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
         givingGoalBigDescriptionLabel.text = "BudgetYearlyOverviewGivingGoalPerYear".localized
-        givingGoalPerYearBigStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.openGivingGoalSetup)))
+        givingGoalPerYearBigStackItem.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.editGivingGoal)))
     }
     func setupGivingGoalPercentagePreviousYearCard(_ amount: Double, _ thisYear: Bool) {
         givingGoalPercentagePreviousYearAmountLabel.text = amount.toPercentile(showSign: !thisYear)
@@ -87,7 +87,17 @@ extension BudgetYearlyOverviewViewController {
             .normal(normal.localized, font: UIFont(name: "Avenir-Medium", size: 12)!)
     }
     
-    @objc func openGivingGoalSetup() {
+    @objc func editGivingGoal() {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "OpenGivingGoal", "MODE": "Edit"])
+        openGivingGoal()
+    }
+    
+    @objc func setupGivingGoal() {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "OpenGivingGoal", "MODE": "Setup"])
+        openGivingGoal()
+    }
+    
+    private func openGivingGoal() {
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {

@@ -159,6 +159,13 @@ extension BudgetOverviewViewController {
     }
     @objc func openYearlyOverview(_ sender: UITapGestureRecognizer) {
         let year = (sender.view as! YearUIView).year!
+        
+        if year == Date().getYear() {
+            trackEvent("CLICKED", properties: ["BUTTON_NAME": "CurrentYearBarClicked"])
+        } else {
+            trackEvent("CLICKED", properties: ["BUTTON_NAME": "PreviousYearBarClicked"])
+        }
+        
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {

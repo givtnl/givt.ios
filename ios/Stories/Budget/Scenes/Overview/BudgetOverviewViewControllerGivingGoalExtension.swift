@@ -35,15 +35,15 @@ extension BudgetOverviewViewController {
     }
     
     @objc func givingGoalEdit(sender: UITapGestureRecognizer) {
-        if !AppServices.shared.isServerReachable {
-            try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
-        } else {
-            NavigationManager.shared.executeWithLogin(context: self) {
-                try? Mediater.shared.send(request: OpenGivingGoalRoute(), withContext: self)
-            }
-        }
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "OpenGivingGoal", "MODE": "Edit"])
+        openGivingGoal()
     }
     @objc func givingGoalSetup(sender: UITapGestureRecognizer) {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "OpenGivingGoal", "MODE": "Setup"])
+        openGivingGoal()
+    }
+    
+    private func openGivingGoal() {
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {

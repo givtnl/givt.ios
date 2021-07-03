@@ -56,6 +56,8 @@ extension BudgetGivingGoalViewController {
     }
     
     @objc func deleteGivingGoal() {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "DeleteGivingGoal"])
+
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {

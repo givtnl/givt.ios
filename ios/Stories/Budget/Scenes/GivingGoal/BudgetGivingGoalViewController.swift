@@ -13,7 +13,9 @@ enum GivingGoalFrequency: Int, Codable {
     case Monthly = 0
     case Yearly = 1
 }
-class BudgetGivingGoalViewController: UIViewController {
+class BudgetGivingGoalViewController: BaseTrackingViewController {
+    override var screenName: String { return "GivingGoal" }
+    
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var buttonSave: CustomButton!
