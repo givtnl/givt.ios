@@ -19,7 +19,7 @@ class BudgetNavigationController : UINavigationController {
     
     override func popViewController(animated: Bool) -> UIViewController? {
         if let vc = super.popViewController(animated: animated) as? BaseTrackingViewController {
-            vc.viewDidUnload()
+            vc.customViewDidUnload()
         }
         return nil
     }
