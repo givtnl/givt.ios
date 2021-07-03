@@ -15,6 +15,7 @@ private extension BudgetGivingGoalViewController {
     }
     
     @IBAction func buttonSave(_ sender: Any) {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "SaveGivingGoal"])
 
         guard let amount = amountViewTextField.text?.replacingOccurrences(of: ",", with: ".").doubleValue else { return }
         guard let frequency = GivingGoalFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0)) else { return }
