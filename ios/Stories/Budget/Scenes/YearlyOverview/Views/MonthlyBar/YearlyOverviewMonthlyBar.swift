@@ -52,12 +52,20 @@ class YearlyOverviewMonthlyBar: UIView {
             if let model = monthlyBarViewModel {
                 // dedecucting label widths
                 let barReferenceWidth = model.maxBarWidth - monthLabelWidthConstraint.constant - totalAmountLabelWidthConstraint.constant
-                
-                givtAmountWidthConstraint.constant = barReferenceWidth * (model.givtAmount / model.highestAmount)
-                notGivtAmountWidthConstraint.constant = barReferenceWidth * (model.notGivtAmount / model.highestAmount)
-                monthLabel.text = model.date.getMonthName()
+                let givtAmountWidth = barReferenceWidth * (model.givtAmount / model.highestAmount)
+                let notGivtAmountWidth = barReferenceWidth * (model.notGivtAmount / model.highestAmount)
+                givtAmountWidthConstraint.constant = givtAmountWidth > 0 ? givtAmountWidth : 0
+                notGivtAmountWidthConstraint.constant = notGivtAmountWidth > 0 ? notGivtAmountWidth : 0
+                monthLabel.text = getMonthString(model.date!)
                 totalAmountLabel.text = (model.givtAmount + model.notGivtAmount).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
             }
         }
+    }
+    
+    private func getMonthString(_ value: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "MMM"
+        return dateFormatter.string(from: value).replacingOccurrences(of: ".", with: String.empty)
     }
 }
