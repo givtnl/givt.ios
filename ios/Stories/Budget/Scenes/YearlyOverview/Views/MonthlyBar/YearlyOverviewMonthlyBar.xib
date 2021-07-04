@@ -32,7 +32,7 @@
                     <rect key="frame" x="0.0" y="44" width="660" height="204"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcu-yW-J8K">
-                            <rect key="frame" x="0.0" y="94" width="40" height="16.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="204"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="fpV-gH-B3Q"/>
                             </constraints>
@@ -70,7 +70,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 900" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqn-Hq-Dbd">
-                            <rect key="frame" x="585" y="94" width="75" height="16.5"/>
+                            <rect key="frame" x="585" y="0.0" width="75" height="204"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="75" id="h0k-9O-eSF"/>
                             </constraints>
@@ -83,12 +83,14 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="bqn-Hq-Dbd" secondAttribute="trailing" id="0Jq-fZ-QcA"/>
                         <constraint firstItem="dty-U5-MXm" firstAttribute="top" secondItem="Zh8-QA-iIj" secondAttribute="top" id="7oL-NE-N6v"/>
+                        <constraint firstAttribute="bottom" secondItem="tcu-yW-J8K" secondAttribute="bottom" id="BFE-1d-rVd"/>
                         <constraint firstItem="tcu-yW-J8K" firstAttribute="leading" secondItem="Zh8-QA-iIj" secondAttribute="leading" id="L8j-3S-a8X"/>
-                        <constraint firstItem="tcu-yW-J8K" firstAttribute="centerY" secondItem="Zh8-QA-iIj" secondAttribute="centerY" id="LyT-Hx-nQD"/>
-                        <constraint firstItem="bqn-Hq-Dbd" firstAttribute="centerY" secondItem="Zh8-QA-iIj" secondAttribute="centerY" id="Wbb-Cg-P1l"/>
+                        <constraint firstAttribute="bottom" secondItem="bqn-Hq-Dbd" secondAttribute="bottom" id="MO9-vp-eHv"/>
                         <constraint firstAttribute="bottom" secondItem="dty-U5-MXm" secondAttribute="bottom" id="Yld-aM-mXU"/>
                         <constraint firstItem="dty-U5-MXm" firstAttribute="leading" secondItem="tcu-yW-J8K" secondAttribute="trailing" id="dtV-6u-gGS"/>
                         <constraint firstItem="bqn-Hq-Dbd" firstAttribute="leading" secondItem="dty-U5-MXm" secondAttribute="trailing" id="kcu-yy-czH"/>
+                        <constraint firstItem="tcu-yW-J8K" firstAttribute="top" secondItem="Zh8-QA-iIj" secondAttribute="top" id="mr1-Yb-qFU"/>
+                        <constraint firstItem="bqn-Hq-Dbd" firstAttribute="top" secondItem="Zh8-QA-iIj" secondAttribute="top" id="z5Y-wD-ae1"/>
                     </constraints>
                 </view>
             </subviews>

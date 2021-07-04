@@ -2535,14 +2535,17 @@
                         <outlet property="givingGoalPercentagePreviousYearStackItem" destination="SEn-le-H1b" id="5yx-Sv-jIM"/>
                         <outlet property="givingGoalSetupSmallLabel" destination="wDD-ff-9vU" id="Z2D-Dv-Bl0"/>
                         <outlet property="givingGoalSmallSetupStackItem" destination="8df-Qu-l5t" id="gDr-EK-aRD"/>
+                        <outlet property="givtLegendLabel" destination="y5X-7m-GHv" id="bQN-Cz-FHM"/>
                         <outlet property="labelGivt" destination="qbh-P4-QQ8" id="jK2-Wg-sng"/>
                         <outlet property="labelNotGivt" destination="6nL-uX-cpU" id="kc9-dh-Pqu"/>
                         <outlet property="labelTax" destination="qAK-Xk-tVD" id="z13-nh-Xkn"/>
                         <outlet property="labelTotal" destination="B1f-zB-lli" id="aSg-zk-ufH"/>
                         <outlet property="mainView" destination="iHN-L7-Gzl" id="Oj1-TO-Lya"/>
+                        <outlet property="monthlyBarsHeader" destination="grU-Fm-H5g" id="M7D-9u-7E5"/>
                         <outlet property="monthlyBarsStackView" destination="0ik-Xb-hs9" id="etc-mj-Afb"/>
                         <outlet property="monthlyBarsStackViewHeight" destination="VZS-4G-XsL" id="FcN-qd-y4w"/>
                         <outlet property="navItem" destination="iJu-RC-wst" id="5iu-RR-SkG"/>
+                        <outlet property="notGivtLegendLabel" destination="MTW-8D-CqQ" id="USg-oB-YtT"/>
                         <outlet property="totalGivenPerYearAmountDescription" destination="eLm-xw-rop" id="5qW-V1-fJx"/>
                         <outlet property="totalGivenPerYearAmountLabel" destination="53i-zE-V31" id="E1r-HA-6cI"/>
                     </connections>
@@ -3039,7 +3042,7 @@
     </scenes>
     <designables>
         <designable name="1aL-2S-Md4">
-            <size key="intrinsicContentSize" width="30" height="26"/>
+            <size key="intrinsicContentSize" width="30" height="29"/>
         </designable>
         <designable name="BQ9-6n-bO7">
             <size key="intrinsicContentSize" width="46" height="32"/>

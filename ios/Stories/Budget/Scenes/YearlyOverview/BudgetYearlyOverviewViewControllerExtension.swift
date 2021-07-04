@@ -27,6 +27,10 @@ extension BudgetYearlyOverviewViewController {
         labelTotal.text = "BudgetYearlyOverviewGivenTotal".localized
         labelTax.text = "BudgetYearlyOverviewGivenTotalTax".localized
         downloadButton.setTitle("BudgetYearlyOverviewDownloadButton".localized, for: .normal)
+        monthlyBarsHeader.label.text = "BudgetSummaryMonth".localized
+        givtLegendLabel.text = "BudgetYearlyOverviewDetailThroughGivt".localized
+        notGivtLegendLabel.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
+
     }
 
     func reloadData() {
