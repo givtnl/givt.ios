@@ -9,6 +9,15 @@
 import Foundation
 import SVProgressHUD
 import UIKit
+extension MonthlySummaryKey {
+    func toDate() -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.year = self.Year
+        dateComponents.month = self.Month
+        return Calendar.current.date(from: dateComponents)!
+    }
+}
+
 
 extension BudgetYearlyOverviewViewController {
     func setupTerms() {
@@ -19,6 +28,7 @@ extension BudgetYearlyOverviewViewController {
         labelTax.text = "BudgetYearlyOverviewGivenTotalTax".localized
         downloadButton.setTitle("BudgetYearlyOverviewDownloadButton".localized, for: .normal)
     }
+
     func reloadData() {
         let fromDate = getStartDateForYear(year: year)
         let tillDate = getEndDateForYear(year: year)

@@ -99,7 +99,7 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
         
         var highestAmount = 0.0
         for int in 0...8 {
-            var sum = givtNumbers[int]! + notGivtNumbers[int]!
+            let sum = givtNumbers[int]! + notGivtNumbers[int]!
             if sum > highestAmount {
                 highestAmount = sum
             }
@@ -111,6 +111,18 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
             
         }
         
-        loadbars(barz: models.map { $0.value })
+        getDataForMonthBars() { bars in
+            DispatchQueue.main.async {
+                bars.forEach { bar in
+                    bar.highestAmount = bars.highestBarValue
+                    bar.maxBarWidth = (self.view.frame.width - 80.00)
+                }
+                self.loadMonthBars(monthBars: bars.sorted(by: { first, second in
+                    first.date! < second.date!
+                }))
+            }
+        }
+        
+        
     }
 }
