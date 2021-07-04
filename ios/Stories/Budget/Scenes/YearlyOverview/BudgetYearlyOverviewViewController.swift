@@ -61,8 +61,11 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
     @IBOutlet weak var givingGoalPerYearBigStackItem: BackgroundShadowView!
     @IBOutlet weak var givingGoalFinishedStackItem: BackgroundShadowView!
     
+    @IBOutlet weak var monthlyBarsHeader: CardViewHeader!
     @IBOutlet weak var monthlyBarsStackView: UIStackView!
     @IBOutlet weak var monthlyBarsStackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var givtLegendLabel: UILabel!
+    @IBOutlet weak var notGivtLegendLabel: UILabel!
     
     var currentIndex: Int? = nil
     
