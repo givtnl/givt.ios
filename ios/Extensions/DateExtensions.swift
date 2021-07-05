@@ -108,4 +108,8 @@ extension Date {
     static var tomorrow: Date {
         return Calendar.current.date(byAdding: .day, value: 1, to: Date())!
     }
+    
+    var nextMonth: Date {
+        return Calendar.current.date(byAdding: .month, value: 1, to: self)!
+    }
 }

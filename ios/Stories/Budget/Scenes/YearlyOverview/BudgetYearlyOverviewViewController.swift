@@ -61,6 +61,12 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
     @IBOutlet weak var givingGoalPerYearBigStackItem: BackgroundShadowView!
     @IBOutlet weak var givingGoalFinishedStackItem: BackgroundShadowView!
     
+    @IBOutlet weak var monthlyBarsHeader: CardViewHeader!
+    @IBOutlet weak var monthlyBarsStackView: UIStackView!
+    @IBOutlet weak var monthlyBarsStackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var givtLegendLabel: UILabel!
+    @IBOutlet weak var notGivtLegendLabel: UILabel!
+    
     var currentIndex: Int? = nil
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,5 +91,41 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
         if needsReload {
             reloadData()
         }
+        
+        var givtNumbers: [Int: Double] = [:]
+        var notGivtNumbers: [Int: Double] = [:]
+        
+        for int in 0...8 {
+            givtNumbers[int] = Double.random(in: 5...100)
+            notGivtNumbers[int] = Double.random(in: 5...100)
+        }
+        
+        var highestAmount = 0.0
+        for int in 0...8 {
+            let sum = givtNumbers[int]! + notGivtNumbers[int]!
+            if sum > highestAmount {
+                highestAmount = sum
+            }
+        }
+        
+        var models: [Int: MonthlyBarViewModel] = [:]
+        for int in 0...8 {
+            models[int] = MonthlyBarViewModel(givtAmount: givtNumbers[int]!, notGivtAmount: notGivtNumbers[int]!, highestAmount: highestAmount, maxBarWidth: (self.view.frame.width - 80.00), date: Date())
+            
+        }
+        
+        getDataForMonthBars() { bars in
+            DispatchQueue.main.async {
+                bars.forEach { bar in
+                    bar.highestAmount = bars.highestBarValue
+                    bar.maxBarWidth = (self.view.frame.width - 80.00)
+                }
+                self.loadMonthBars(monthBars: bars.sorted(by: { first, second in
+                    first.date! < second.date!
+                }))
+            }
+        }
+        
+        
     }
 }
