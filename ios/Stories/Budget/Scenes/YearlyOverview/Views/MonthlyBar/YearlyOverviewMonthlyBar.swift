@@ -52,8 +52,8 @@ class YearlyOverviewMonthlyBar: UIView {
             if let model = monthlyBarViewModel {
                 // dedecucting label widths
                 let barReferenceWidth: CGFloat = CGFloat(model.maxBarWidth) - monthLabelWidthConstraint.constant - totalAmountLabelWidthConstraint.constant
-                let givtAmountWidth = barReferenceWidth * (model.givtAmount / model.highestAmount)
-                let notGivtAmountWidth = barReferenceWidth * (model.notGivtAmount / model.highestAmount)
+                let givtAmountWidth = barReferenceWidth * CGFloat(model.givtAmount / model.highestAmount)
+                let notGivtAmountWidth = barReferenceWidth * CGFloat(model.notGivtAmount / model.highestAmount)
                 givtAmountWidthConstraint.constant = givtAmountWidth > 0 ? givtAmountWidth : 0
                 notGivtAmountWidthConstraint.constant = notGivtAmountWidth > 0 ? notGivtAmountWidth : 0
                 monthLabel.text = getMonthString(model.date!)
