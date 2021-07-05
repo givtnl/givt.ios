@@ -10,7 +10,10 @@ import Foundation
 import UIKit
 import SVProgressHUD
 
-class BudgetYearlyOverviewViewController: UIViewController {
+class BudgetYearlyOverviewViewController: BaseTrackingViewController {
+    override var screenName: String { return "YearlySummary" }
+
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var navItem: UINavigationItem!
     
     @IBOutlet weak var labelGivt: UILabel!
@@ -23,36 +26,64 @@ class BudgetYearlyOverviewViewController: UIViewController {
     @IBOutlet weak var amountTotal: UILabel!
     @IBOutlet weak var amountTax: UILabel!
     
+    @IBOutlet weak var downloadButton: CustomButton!
+    
     var year: Int!
+    
+    var givtModels: [MonthlySummaryDetailModel]?
+    var notGivtModels: [MonthlySummaryDetailModel]?
+    
+    var previousYearGivtModels: [MonthlySummaryDetailModel] = []
+    var previousYearNotGivtModels: [MonthlySummaryDetailModel] = []
+    
+    var needsReload = true
+    @IBOutlet weak var totalGivenPerYearAmountLabel: UILabel!
+    @IBOutlet weak var totalGivenPerYearAmountDescription: UILabel!
+    
+    @IBOutlet weak var givingGoalPerYearAmountLabel: UILabel!
+    @IBOutlet weak var givingGoalPerYearDescriptionLabel: UILabel!
+    @IBOutlet weak var givingGoalPerYearEditGivingGoalLabel: UILabel!
+    @IBOutlet weak var givingGoalPerYearRemainingAmountLabel: UILabel!
+    @IBOutlet weak var givingGoalPerYearRemainingDescriptionLabel: UILabel!
+    @IBOutlet weak var givingGoalSetupSmallLabel: UILabel!
+    @IBOutlet weak var givingGoalPercentagePreviousYearAmountLabel: UILabel!
+    @IBOutlet weak var givingGoalPercentagePreviousYearDescriptionLabel: UILabel!
+    @IBOutlet weak var givingGoalBigSetupLabel: UILabel!
+    @IBOutlet weak var givingGoalBigAmountLabel: UILabel!
+    @IBOutlet weak var givingGoalBigDescriptionLabel: UILabel!
+    @IBOutlet weak var givingGoalFinishedLabel: UILabel!
+    
+    @IBOutlet weak var givingGoalPerYearStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalPerYearRemainingStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalSmallSetupStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalPercentagePreviousYearStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalBigSetupStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalPerYearBigStackItem: BackgroundShadowView!
+    @IBOutlet weak var givingGoalFinishedStackItem: BackgroundShadowView!
+    
+    var currentIndex: Int? = nil
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if !SVProgressHUD.isVisible() {
-            SVProgressHUD.show()
+        if needsReload {
+            hideView(mainView, true)
+
+            if !SVProgressHUD.isVisible() {
+                SVProgressHUD.show()
+            }
+            setupTerms()
+            
+            hideStatisticsStackItems()
+            showGivingGoalWithoutPreviousYearCards()
         }
-        
-        setupTerms()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let fromDate = getStartDateForYear(year: year)
-        let tillDate = getEndDateForYear(year: year)
-        
-        try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
-            DispatchQueue.main.async {
-                self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                self.amountTax.text = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            }
-            try! Mediater.shared.sendAsync(request: GetExternalMonthlySummaryQuery(fromDate: fromDate , tillDate: tillDate, groupType: 2, orderType: 3)) { notGivtModels in
-                DispatchQueue.main.async {
-                    self.amountNotGivt.text = notGivtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                    self.amountTotal.text = (notGivtModels.map { $0.Value }.reduce(0, +) + givtModels.map { $0.Value }.reduce(0, +)).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-                    SVProgressHUD.dismiss()
-                }
-            }
+        if needsReload {
+            reloadData()
         }
     }
 }

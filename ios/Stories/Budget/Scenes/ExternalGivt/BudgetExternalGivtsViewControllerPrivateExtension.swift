@@ -51,6 +51,13 @@ private extension BudgetExternalGivtsViewController {
         
         self.present(alert, animated: true, completion:  {})
     }
+    
+    @IBAction func taxDeductableChanged(_ sender: Any) {
+        let taxSwitch = sender as! UISwitch
+        setTaxDecuctableSwitch(isOn: taxSwitch.isOn)
+        checkFields()
+        print(taxSwitch.isOn)
+    }
     @IBAction func amountEditingEnd(_ sender: Any) {
         checkFields()
         
@@ -82,9 +89,11 @@ private extension BudgetExternalGivtsViewController {
                 description: textFieldExternalGivtsOrganisation.text!,
                 amount: Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: "."))!,
                 frequency: ExternalDonationFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!,
-                date: Date()
+                date: Date(),
+                taxDeductable: switchTaxDeductable.isOn
             )
-            
+            trackEvent("CLICKED", properties: ["BUTTON_NAME": "SaveExternalDonation", "MODE": "Add"])
+
             NavigationManager.shared.executeWithLogin(context: self) {
                 let _: ResponseModel<Bool> = try! Mediater.shared.send(request: command)
                 self.resetFields()
@@ -104,8 +113,12 @@ private extension BudgetExternalGivtsViewController {
                             description: textFieldExternalGivtsOrganisation.text!,
                             amount: Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: "."))!,
                             frequency: ExternalDonationFrequency(rawValue: frequencyPicker.selectedRow(inComponent: 0))!,
-                            date: model.creationDate.toDate!
+                            date: model.creationDate.toDate!,
+                            taxDeductable: switchTaxDeductable.isOn
                         )
+                        
+                        trackEvent("CLICKED", properties: ["BUTTON_NAME": "SaveExternalDonation", "MODE": "Edit"])
+                        
                         NavigationManager.shared.executeWithLogin(context: self) {
                             let _: ResponseModel<Bool> = try! Mediater.shared.send(request: deleteCommand)
                             let _: ResponseModel<Bool> = try! Mediater.shared.send(request: createCommand)
@@ -119,7 +132,8 @@ private extension BudgetExternalGivtsViewController {
                             id: model.id,
                             amount: Double(textFieldExternalGivtsAmount.text!.replacingOccurrences(of: ",", with: "."))!,
                             cronExpression: model.cronExpression,
-                            description: textFieldExternalGivtsOrganisation.text!
+                            description: textFieldExternalGivtsOrganisation.text!,
+                            taxDeductable: switchTaxDeductable.isOn
                         )
                         
                         NavigationManager.shared.executeWithLogin(context: self) {

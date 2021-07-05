@@ -75,7 +75,7 @@ final class GivtManager: NSObject {
     static let shared = GivtManager()
     private var log = LogService.shared
     private var locationService = LocationService.instance
-    let reachability = Reachability()
+    let reachability = try? Reachability()
     
     static let FEAA = CBUUID.init(string: "FEAA")
     
