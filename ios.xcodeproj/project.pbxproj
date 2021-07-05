@@ -148,6 +148,7 @@
 		3290C1542690ADE000BFED48 /* BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290C1532690ADE000BFED48 /* BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift */; };
 		3290C1572690B21E00BFED48 /* YearlyOverviewMonthlyBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3290C1562690B21E00BFED48 /* YearlyOverviewMonthlyBar.xib */; };
 		3290C1592690B22800BFED48 /* YearlyOverviewMonthlyBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290C1582690B22800BFED48 /* YearlyOverviewMonthlyBar.swift */; };
+		3290C15B26933F8E00BFED48 /* BudgetYearlyOverviewViewControllerOrganisationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290C15A26933F8E00BFED48 /* BudgetYearlyOverviewViewControllerOrganisationExtension.swift */; };
 		3299E3287BAE8CD5D3906213 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1698C6D2FA09C297AA3189 /* Pods_ios.framework */; };
 		329C3E7825F210D20037D750 /* CreateExternalDonationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E7725F210D20037D750 /* CreateExternalDonationCommand.swift */; };
 		329C3E7A25F210E60037D750 /* CreateExternalDonationCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329C3E7925F210E60037D750 /* CreateExternalDonationCommandHandler.swift */; };
@@ -661,6 +662,7 @@
 		3290C1532690ADE000BFED48 /* BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift; sourceTree = "<group>"; };
 		3290C1562690B21E00BFED48 /* YearlyOverviewMonthlyBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YearlyOverviewMonthlyBar.xib; sourceTree = "<group>"; };
 		3290C1582690B22800BFED48 /* YearlyOverviewMonthlyBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyOverviewMonthlyBar.swift; sourceTree = "<group>"; };
+		3290C15A26933F8E00BFED48 /* BudgetYearlyOverviewViewControllerOrganisationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerOrganisationExtension.swift; sourceTree = "<group>"; };
 		329C3E7725F210D20037D750 /* CreateExternalDonationCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExternalDonationCommand.swift; sourceTree = "<group>"; };
 		329C3E7925F210E60037D750 /* CreateExternalDonationCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateExternalDonationCommandHandler.swift; sourceTree = "<group>"; };
 		329C3E8025F2145F0037D750 /* ExternalDonationFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalDonationFrequency.swift; sourceTree = "<group>"; };
@@ -1820,6 +1822,7 @@
 				32D488AD266A522300B166B4 /* BudgetYearlyOverviewViewControllerPrivateExtension.swift */,
 				3241BE4426831F9300E001F5 /* BudgetYearlyOverviewViewControllerStatisticsExtension.swift */,
 				3290C1532690ADE000BFED48 /* BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift */,
+				3290C15A26933F8E00BFED48 /* BudgetYearlyOverviewViewControllerOrganisationExtension.swift */,
 			);
 			path = YearlyOverview;
 			sourceTree = "<group>";
@@ -3713,6 +3716,7 @@
 				FB56C560251100050099EC62 /* BackToRecurringDonationOverviewRoute.swift in Sources */,
 				329C3E8B25F21F2E0037D750 /* UpdateExternalDonationCommandHandler.swift in Sources */,
 				FB58BCD1230AD361001B1B9C /* MediumHelper.swift in Sources */,
+				3290C15B26933F8E00BFED48 /* BudgetYearlyOverviewViewControllerOrganisationExtension.swift in Sources */,
 				A40C296322AA5EF70098442C /* GiftAidViewController.swift in Sources */,
 				3273B8A425359E0D003DB100 /* GetRecurringDonationTurnsQuery.swift in Sources */,
 				327E34532549FE7A00314BFD /* DiscoverOrAmountActions.swift in Sources */,
