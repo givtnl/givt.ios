@@ -92,7 +92,7 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
             reloadData()
         }
         
-        let viewWidth: Double = view.frame.width - 80.00
+        let viewWidth: Double = Double(view.frame.width) - 80.00
         
         getDataForMonthBars() { bars in
             DispatchQueue.main.async {
