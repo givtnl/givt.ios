@@ -30,7 +30,9 @@ extension BudgetYearlyOverviewViewController {
         monthlyBarsHeader.label.text = "BudgetSummaryMonth".localized
         givtLegendLabel.text = "BudgetYearlyOverviewDetailThroughGivt".localized
         notGivtLegendLabel.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
-
+        organisationGivtCardHeader.label.text = "Per organisation".localized
+        organisationGivt.text = "BudgetYearlyOverviewDetailThroughGivt".localized
+        organisationNotGivt.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
     }
 
     func reloadData() {

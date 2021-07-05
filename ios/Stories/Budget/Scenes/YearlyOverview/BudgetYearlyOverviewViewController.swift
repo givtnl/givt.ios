@@ -115,7 +115,5 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
                 }))
             }
         }
-        
-        
     }
 }
