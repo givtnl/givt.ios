@@ -38,4 +38,8 @@ extension UIViewController {
     @objc func hideLoader() {
         SVProgressHUD.dismiss()
     }
+    
+    func hideView(_ view: UIView, _ hide: Bool) {
+        view.isHidden = hide
+    }
 }

@@ -12,10 +12,12 @@ struct UpdateExternalDonationBody: Codable {
     var cronExpression: String
     var description: String
     var amount: Double
+    var taxDeductable: Bool
 
-    init(cronExpression: String, description: String, amount: Double) {
+    init(cronExpression: String, description: String, amount: Double, taxDeductable: Bool) {
         self.cronExpression = cronExpression
         self.description = description
         self.amount = amount
+        self.taxDeductable = taxDeductable
     }
 }

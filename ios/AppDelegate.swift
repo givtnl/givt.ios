@@ -456,20 +456,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         Mediater.shared.registerHandler(handler: OpenGivingGoalRouteHandler())
         Mediater.shared.registerHandler(handler: GoBackToSummaryRouteHandler())
         Mediater.shared.registerHandler(handler: OpenYearlyOverviewRouteHandler())
+        Mediater.shared.registerHandler(handler: OpenYearlyOverviewRouteDetailHandler())
+        Mediater.shared.registerHandler(handler: GoBackToYearlyOverviewRouteHandler())
+        Mediater.shared.registerHandler(handler: GoBackFromGivingGoalWithReloadRouteHandler())
+        
         //-- BUDGET SCENE: QUERYS
         Mediater.shared.registerHandler(handler: GetMonthlySummaryQueryHandler())
-                    
-        //-- Budget External Donations CRUD
+        Mediater.shared.registerHandler(handler: GetExternalMonthlySummaryQueryHandler())
+        Mediater.shared.registerHandler(handler: GetAllExternalDonationsQueryHandler())
+
+        //-- Budget External Donations
         Mediater.shared.registerHandler(handler: CreateExternalDonationCommandHandler())
         Mediater.shared.registerPreProcessor(processor: CreateExternalDonationCronGenerator())
-        Mediater.shared.registerHandler(handler: GetAllExternalDonationsQueryHandler())
         Mediater.shared.registerHandler(handler: UpdateExternalDonationCommandHandler())
         Mediater.shared.registerHandler(handler: DeleteExternalDonationCommandHandler())
+        Mediater.shared.registerHandler(handler: DownloadSummaryCommandHandler())
         
-        //-- Budget External Donation Summary
-        Mediater.shared.registerHandler(handler: GetExternalMonthlySummaryQueryHandler())
-        
-        //-- Giving Goal CRUD
+        //-- Giving Goal
         Mediater.shared.registerHandler(handler: CreateGivingGoalCommandHandler()) //-- Can use as an update aswell
         Mediater.shared.registerHandler(handler: GetGivingGoalQueryHandler())
         Mediater.shared.registerHandler(handler: DeleteGivingGoalCommandHandler())

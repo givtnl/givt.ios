@@ -13,7 +13,23 @@ struct YearChartValue {
     var year: Int
     var value: Double
 }
-class BudgetOverviewViewController : UIViewController, OverlayHost {
+
+protocol DeltaChangedDelegate: AnyObject {
+    func onReceiveDeltaChanged()
+}
+
+class BudgetOverviewViewController : BaseTrackingViewController, OverlayHost, DeltaChangedDelegate {
+    
+    func onReceiveDeltaChanged() {
+        trackEvent("LOADED", properties: ["DELTA": delta])
+    }
+    
+    override var screenName: String  { return "PersonalSummary" }
+    
+    var delta = 0
+    var deltaDelegate: DeltaChangedDelegate?
+    
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var bottomScrollViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var monthlySummaryTile: MonthlySummary!
     @IBOutlet weak var givtNowButton: CustomButton!
@@ -33,6 +49,8 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var yearViewHeader: CardViewHeader!
     @IBOutlet weak var yearViewBody: YearViewBody!
     
+    @IBOutlet weak var buttonControlView: UIView!
+    @IBOutlet weak var buttonAddExternalDonationView: UIView!
     @IBOutlet weak var givingGoalView: UIView!
     @IBOutlet weak var givingGoalViewEditLabel: UILabel!
     @IBOutlet weak var givingGoalStackItem: BackgroundShadowView!
@@ -64,6 +82,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     
     var lastMonthTotal: Double? = nil
     
+    @IBOutlet weak var yearBarsStack: UIStackView!
     @IBOutlet weak var yearBarOneStackItem: UIView!
     @IBOutlet weak var yearBarTwoStackItem: UIView!
     @IBOutlet weak var yearBarOneParent: UIView!
@@ -71,6 +90,8 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var yearBarOneLabel: UILabel!
     @IBOutlet weak var yearBarTwo: YearViewBodyLine!
     @IBOutlet weak var yearBarTwoLabel: UILabel!
+    @IBOutlet weak var yearOneTapView: YearUIView!
+    @IBOutlet weak var yearTwoTapView: YearUIView!
     
     var collectGroupsForCurrentMonth: [MonthlySummaryDetailModel]? = nil
     var notGivtModelsForCurrentMonth: [ExternalDonationModel]? = nil
@@ -90,13 +111,19 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
     @IBOutlet weak var monthSelectorButtonRight: UIButton!
     
     var needsReload = true
+
+    override func viewDidLoad() {
+        customTrackingProperties = ["DELTA": delta]
+        super.viewDidLoad()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        deltaDelegate = self
         if needsReload {
             if !SVProgressHUD.isVisible() {
                 SVProgressHUD.show()
+                hideView(mainView, true)
             }
             
             setupTerms()
@@ -113,6 +140,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             roundCorners(view: remainingGivingGoalView)
             roundCorners(view: givingGoalSetupView)
             roundCorners(view: givingGoalReachedView)
+            
         }
         
     }
@@ -152,7 +180,7 @@ class BudgetOverviewViewController : UIViewController, OverlayHost {
             setupRemainingGivingGoal(getMonthlySum())
             
             SVProgressHUD.dismiss()
-
+            hideView(mainView, false)
         }
     }
 }

@@ -10,7 +10,9 @@ import Foundation
 
 extension BudgetListViewController {
     @IBAction func manageExternalDonations(_ sender: Any) {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "ManageExternalDonations"])
         dismissOverlay()
+        
         NavigationManager.shared.executeWithLogin(context: self) {
             try? Mediater.shared.send(request: OpenExternalGivtsRoute(externalDonations: self.notGivtModelsForCurrentMonth), withContext: self)
         }

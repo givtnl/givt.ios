@@ -21,7 +21,7 @@ extension BudgetExternalGivtsViewController {
         labelExternalGivtsAmount.text = "BudgetExternalGiftsAmount".localized
         buttonExternalGivtsAdd.setTitle("BudgetExternalGiftsAdd".localized, for: .normal)
         buttonExternalGivtsSave.setTitle("BudgetExternalGiftsSave".localized, for: .normal)
-
+        labelTaxDeductable.text = "BudgetExternalDonationsTaxDeductableSwitch".localized
     }
     func setupUI() {
         labelExternalGivtsTimeDown.layer.addBorder(edge: .left, color: ColorHelper.UITextFieldBorderColor, thickness: 0.5)
@@ -55,6 +55,9 @@ extension BudgetExternalGivtsViewController {
                 labelExternalGivtsAmountCurrency.text = "euro-sign"
         }
         
+        switchTaxDeductable.isOn = false
+        setTaxDecuctableSwitch(isOn: switchTaxDeductable.isOn)
+
         buttonExternalGivtsSave.isEnabled = false
     }
     
@@ -130,6 +133,10 @@ extension BudgetExternalGivtsViewController {
             labelChevronDown.textColor = UIColor(cgColor: labelChevronDown.textColor.cgColor.copy(alpha: 0.35)!)
             
             buttonExternalGivtsAdd.isEnabled = false
+            
+            switchTaxDeductable.isOn = modelBeeingEdited != nil ? modelBeeingEdited!.taxDeductable : false
+            setTaxDecuctableSwitch(isOn: switchTaxDeductable.isOn)
+
         }
         
         stackViewEditRowsHeight.constant += CGFloat(externalDonations!.count) * 44
@@ -163,7 +170,7 @@ extension BudgetExternalGivtsViewController {
 
     @objc func deleteButtonRow(_ sender: UIButton) {
         SVProgressHUD.show()
-
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "RemoveExternalDonation"])
         let editRow = getEditRowFrom(button: sender)
         
         let command = DeleteExternalDonationCommand(guid: editRow.id!)
@@ -187,6 +194,8 @@ extension BudgetExternalGivtsViewController {
     }
     
     @objc func editButtonRow(_ sender: UIButton) {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "EditExternalDonation"])
+
         switchButtonState(editmode: true)
         
         let editRow = getEditRowFrom(button: sender)
@@ -202,12 +211,24 @@ extension BudgetExternalGivtsViewController {
         textFieldExternalGivtsTime.text = frequencys[getFrequencyFrom(cronExpression: modelBeeingEdited!.cronExpression).rawValue][1] as? String
         
         buttonExternalGivtsAdd.isEnabled = false
+        
+        switchTaxDeductable.isOn = modelBeeingEdited!.taxDeductable
+        
+        setTaxDecuctableSwitch(isOn: switchTaxDeductable.isOn)
 
         disableTime()
         
         mainScrollView.scrollToBottom()
     }
-    
+    func setTaxDecuctableSwitch(isOn: Bool) {
+        if !isOn {
+            switchTaxDeductable.thumbTintColor = .white
+            switchTaxDeductable.onTintColor = ColorHelper.BudgetExternalTaxDeductableSwitchOffOnTint
+        } else {
+            switchTaxDeductable.thumbTintColor = ColorHelper.GivtPurple
+            switchTaxDeductable.onTintColor = ColorHelper.BudgetExternalTaxDeductableSwitchOnOnTint
+        }
+    }
     func disableTime() {
         viewExternalGivtsTime.isEnabled = false
         viewExternalGivtsTime.backgroundColor = UIColor(cgColor: ColorHelper.SummaryLightGray.cgColor.copy(alpha: 0.35)!)
@@ -256,7 +277,9 @@ extension BudgetExternalGivtsViewController {
                 isAmountValid = true
             }
             
-            if isAmountValid && isDescriptionValid && amount != model.amount || description != model.description {
+            let isTaxDeductableChanged = switchTaxDeductable.isOn != model.taxDeductable
+            
+            if isAmountValid && isDescriptionValid && amount != model.amount || description != model.description || isTaxDeductableChanged {
                 buttonExternalGivtsAdd.isEnabled = true
             } else {
                 buttonExternalGivtsAdd.isEnabled = false

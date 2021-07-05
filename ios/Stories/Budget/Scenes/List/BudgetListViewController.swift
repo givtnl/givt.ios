@@ -10,7 +10,9 @@ import Foundation
 import SVProgressHUD
 import UIKit
 
-class BudgetListViewController: UIViewController, OverlayViewController {
+class BudgetListViewController: BaseTrackingViewController, OverlayViewController {
+    override var screenName: String  { return "PersonalSummary" }
+
     var overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.9, height: 300.0)
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerLabel: UILabel!

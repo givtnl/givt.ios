@@ -15,9 +15,12 @@ private extension BudgetOverviewViewController {
         try? Mediater.shared.send(request: BackToMainRoute(), withContext: self)
     }
     @IBAction func giveNowButton(_ sender: Any) {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "GiveNow"])
+
         try? Mediater.shared.send(request: OpenGiveNowRoute(), withContext: self)
     }
     @IBAction func buttonSeeMore(_ sender: Any) {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "ShowAll"])
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
@@ -28,6 +31,8 @@ private extension BudgetOverviewViewController {
         }
     }
     @IBAction func buttonPlus(_ sender: Any) {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "OpenExternalDonations"])
+
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {
@@ -35,13 +40,15 @@ private extension BudgetOverviewViewController {
         }
     }
     @IBAction func goBackOneMonth(_ sender: Any) {
+        delta-=1
         fromMonth = getPreviousMonth(from: fromMonth)
-        
         updateMonthCard()
+        deltaDelegate?.onReceiveDeltaChanged()
     }
     @IBAction func goForwardOneMonth(_ sender: Any) {
+        delta+=1
         fromMonth = getNextMonth(from: fromMonth)
-        
         updateMonthCard()
+        deltaDelegate?.onReceiveDeltaChanged()
     }
 }

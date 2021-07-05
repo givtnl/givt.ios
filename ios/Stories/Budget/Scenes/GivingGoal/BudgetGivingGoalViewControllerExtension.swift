@@ -42,6 +42,12 @@ extension BudgetGivingGoalViewController {
         periodViewTextField.text = frequencys[0][1] as? String
         periodViewTextField.tintColor = .clear
         
+        if UserDefaults.standard.accountType == .sepa {
+            amountViewLabelCurrency.text = "euro-sign"
+        } else {
+            amountViewLabelCurrency.text = "pound-sign"
+        }
+        
         if let goal = givingGoal {
             amountViewTextField.text = goal.amount.getFormattedWithoutCurrency(decimals: 0)
             periodViewTextField.text = frequencys[goal.periodicity][1] as? String
@@ -50,6 +56,8 @@ extension BudgetGivingGoalViewController {
     }
     
     @objc func deleteGivingGoal() {
+        trackEvent("CLICKED", properties: ["BUTTON_NAME": "DeleteGivingGoal"])
+
         if !AppServices.shared.isServerReachable {
             try? Mediater.shared.send(request: NoInternetAlert(), withContext: self)
         } else {

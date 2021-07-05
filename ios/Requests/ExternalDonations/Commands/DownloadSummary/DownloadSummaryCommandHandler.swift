@@ -1,29 +1,23 @@
 //
-//  CreateExternalDonationCommandHandler.swift
+//  DownloadSummaryCommandHandler.swift
 //  ios
 //
-//  Created by Mike Pattyn on 05/03/2021.
+//  Created by Mike Pattyn on 11/06/2021.
 //  Copyright © 2021 Givt. All rights reserved.
 //
 
 import Foundation
 
-class CreateExternalDonationCommandHandler: RequestHandlerProtocol {
+class DownloadSummaryCommandHandler: RequestHandlerProtocol {
     private var client = APIClient.cloud
     
     func handle<R>(request: R, completion: @escaping (R.TResponse) throws -> Void) throws where R : RequestProtocol {
-        let command = request as! CreateExternalDonationCommand
-        
-        let body = try JSONEncoder().encode(CreateExternalDonationCommandBody(
-            creationDate: command.date.toISOString(),
-            amount: command.amount,
-            cronExpression: command.cronExpression ?? String.empty,
-            description: command.description,
-            taxDeductable: command.taxDeductable
-        ))
+        let command = request as! DownloadSummaryCommand
+   
+        let body = ["fromDate":command.fromDate, "tillDate":command.tillDate]
         
         do {
-            try client.post(url: "/external-donations", data: body) { response in
+            try client.post(url: "/donations/download", data: body) { response in
                 if let response = response, response.isSuccess {
                     try? completion(ResponseModel(result: true) as! R.TResponse)
                 } else {
@@ -36,6 +30,6 @@ class CreateExternalDonationCommandHandler: RequestHandlerProtocol {
     }
     
     func canHandle<R>(request: R) -> Bool where R : RequestProtocol {
-        return request is CreateExternalDonationCommand
+        request is DownloadSummaryCommand
     }
 }

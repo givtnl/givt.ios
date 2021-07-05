@@ -10,7 +10,9 @@ import Foundation
 import SVProgressHUD
 import CoreData
 
-class BudgetExternalGivtsViewController : UIViewController {
+class BudgetExternalGivtsViewController : BaseTrackingViewController {
+    override var screenName: String  { return "ExternalDonation" }
+
     @IBOutlet weak var labelExternalGivtsInfo: UILabel!
     @IBOutlet weak var labelExternalGivtsSubtitle: UILabel!
     @IBOutlet weak var labelExternalGivtsOrganisation: UILabel!
@@ -21,9 +23,11 @@ class BudgetExternalGivtsViewController : UIViewController {
     @IBOutlet weak var labelChevronDown: UILabel!
     @IBOutlet weak var labelExternalGivtsAmount: UILabel!
     @IBOutlet weak var labelExternalGivtsAmountCurrency: UILabel!
+    @IBOutlet weak var labelTaxDeductable: UILabel!
     @IBOutlet weak var textFieldExternalGivtsAmount: UITextField!
     @IBOutlet weak var buttonExternalGivtsAdd: CustomButton!
     @IBOutlet weak var buttonExternalGivtsSave: CustomButton!
+    @IBOutlet weak var switchTaxDeductable: UISwitch!
     @IBOutlet weak var mainScrollView: UIScrollView!
     
     @IBOutlet weak var viewExternalGivtsTime: CustomButton!
@@ -78,4 +82,5 @@ class BudgetExternalGivtsViewController : UIViewController {
             mainScrollView.scrollToBottom()
         }
     }
+
 }

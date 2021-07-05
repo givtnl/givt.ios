@@ -29,5 +29,31 @@ public class ColorHelper {
     public static var UITextFieldBorderColor: UIColor = #colorLiteral(red: 0.7607843137, green: 0.7607843137, blue: 0.7607843137, alpha: 1)
     public static var GivtLightLightGreen: UIColor = #colorLiteral(red: 0.7568627451, green: 0.9294117647, blue: 0.8509803922, alpha: 1)
     
-    public static var BudgetYearlyOverviewTotalsBackground: UIColor = #colorLiteral(red: 0.337254902, green: 0.3215686275, blue: 0.4666666667, alpha: 1)    
+    public static var BudgetYearlyOverviewTotalsBackground: UIColor = #colorLiteral(red: 0.337254902, green: 0.3215686275, blue: 0.4666666667, alpha: 1)
+    public static var BudgetYearlyOverviewDetailColoredRow: UIColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.968627451, alpha: 1)
+    
+    public static var BudgetExternalTaxDeductableSwitchOnOnTint: UIColor = hexStringToUIColor(hex: "928FA7")
+    public static var BudgetExternalTaxDeductableSwitchOffOnTint: UIColor = hexStringToUIColor(hex: "9B9B9B")
+    
+    static func hexStringToUIColor (hex:String) -> UIColor {
+        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+
+        if cString.hasPrefix("#") {
+            cString.remove(at: cString.startIndex)
+        }
+
+        if cString.count != 6 {
+            return UIColor.gray
+        }
+
+        var rgbValue:UInt64 = 0
+        Scanner(string: cString).scanHexInt64(&rgbValue)
+
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
 }
