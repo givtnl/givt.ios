@@ -2626,6 +2626,13 @@
                         <outlet property="monthlyBarsStackViewHeight" destination="VZS-4G-XsL" id="FcN-qd-y4w"/>
                         <outlet property="navItem" destination="iJu-RC-wst" id="5iu-RR-SkG"/>
                         <outlet property="notGivtLegendLabel" destination="MTW-8D-CqQ" id="USg-oB-YtT"/>
+                        <outlet property="organisationGivt" destination="vTA-JG-OMk" id="rVV-TZ-5dV"/>
+                        <outlet property="organisationGivtCardHeader" destination="ong-ba-kCw" id="6oK-2w-gkc"/>
+                        <outlet property="organisationGivtStackView" destination="3aR-sU-NYo" id="3ZT-2n-OTt"/>
+                        <outlet property="organisationGivtStackViewHeight" destination="RTe-Hr-lKU" id="4b8-A5-gDt"/>
+                        <outlet property="organisationNotGivt" destination="5tn-6q-2U9" id="O2u-Nz-VTa"/>
+                        <outlet property="organisationNotGivtStackView" destination="Kem-NE-XIJ" id="Vno-jy-O4F"/>
+                        <outlet property="organisationNotGivtStackViewHeight" destination="Yl9-a3-h8W" id="x8j-0d-4d1"/>
                         <outlet property="totalGivenPerYearAmountDescription" destination="eLm-xw-rop" id="5qW-V1-fJx"/>
                         <outlet property="totalGivenPerYearAmountLabel" destination="53i-zE-V31" id="E1r-HA-6cI"/>
                     </connections>
