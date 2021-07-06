@@ -13,10 +13,10 @@ class MonthlyBarViewModel {
     var givtAmount: Double = 0
     var notGivtAmount: Double = 0
     var highestAmount: Double = 0
-    var maxBarWidth: Double = 0
+    var maxBarWidth: CGFloat = 0
     var date: Date? = nil
     init() { }
-    init(givtAmount: Double, notGivtAmount: Double, highestAmount: Double, maxBarWidth: Double, date: Date) {
+    init(givtAmount: Double, notGivtAmount: Double, highestAmount: Double, maxBarWidth: CGFloat, date: Date) {
         self.givtAmount = givtAmount
         self.notGivtAmount = notGivtAmount
         self.highestAmount = highestAmount
