@@ -67,6 +67,16 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
     @IBOutlet weak var givtLegendLabel: UILabel!
     @IBOutlet weak var notGivtLegendLabel: UILabel!
     
+    @IBOutlet weak var organisationGivtCardHeader: CardViewHeader!
+    @IBOutlet weak var organisationGivt: UILabel!
+    @IBOutlet weak var organisationGivtStackView: UIStackView!
+    @IBOutlet weak var organisationGivtStackViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var organisationNotGivt: UILabel!
+    @IBOutlet weak var organisationNotGivtStackView: UIStackView!
+    @IBOutlet weak var organisationNotGivtStackViewHeight: NSLayoutConstraint!
+    
+    
+    
     var currentIndex: Int? = nil
     
     override func viewWillAppear(_ animated: Bool) {
