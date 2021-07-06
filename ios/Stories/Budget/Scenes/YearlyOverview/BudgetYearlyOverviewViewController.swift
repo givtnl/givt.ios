@@ -90,22 +90,20 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
         
         if needsReload {
             reloadData()
-        }
-        
-        let viewWidth: Double = Double(view.frame.width) - 80.00
-        
-        getDataForMonthBars() { bars in
-            DispatchQueue.main.async {
-                bars.forEach { bar in
-                    bar.highestAmount = bars.highestBarValue
-                    bar.maxBarWidth = viewWidth
+            
+            let viewWidth: Double = Double(view.frame.width) - 80.00
+            
+            getDataForMonthBars() { bars in
+                DispatchQueue.main.async {
+                    bars.forEach { bar in
+                        bar.highestAmount = bars.highestBarValue
+                        bar.maxBarWidth = viewWidth
+                    }
+                    self.loadMonthBars(monthBars: bars.sorted(by: { first, second in
+                        first.date! < second.date!
+                    }))
                 }
-                self.loadMonthBars(monthBars: bars.sorted(by: { first, second in
-                    first.date! < second.date!
-                }))
             }
         }
-        
-        
     }
 }
