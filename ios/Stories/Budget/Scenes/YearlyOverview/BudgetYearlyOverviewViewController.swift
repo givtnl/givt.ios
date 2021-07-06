@@ -95,6 +95,10 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
             
             getDataForMonthBars() { bars in
                 DispatchQueue.main.async {
+                    self.monthlyBarsStackView.arrangedSubviews.forEach { view in
+                        view.removeFromSuperview()
+                        self.monthlyBarsStackViewHeight.constant -= 25
+                    }
                     bars.forEach { bar in
                         bar.highestAmount = bars.highestBarValue
                         bar.maxBarWidth = viewWidth
