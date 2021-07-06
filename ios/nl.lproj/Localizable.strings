@@ -1087,7 +1087,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetGivingGoalRemove" = "Verwijder streefbedrag";
 
 /*Fuzzy*/
-"BudgetSummaryNoGifts" = "Je hebt deze maand nog geen giften";
+"BudgetSummaryNoGifts" = "Je hebt deze maand (nog) geen giften";
 "BudgetTestimonialSummary" = "”Ik heb meer inzicht in wat ik geef sinds ik de samenvatting voor al mijn giften gebruik. Ik geef hierdoor bewuster.”";
 "BudgetTestimonialGivingGoal" = "”Mijn streefbedrag motiveert mij om regelmatig stil te staan bij mijn geefgedrag.”";
 "BudgetTestimonialExternalGifts" = "”Ik vind het fijn dat ik mijn giften die ik niet via Givt doe in de app kan noteren. Nu kan ik makkelijk afwegen wat ik nog wil geven.”";
@@ -1152,3 +1152,5 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetYearlyOverviewGivenIn" = "Gegeven in";
 "BudgetYearlyOverviewRelativeTo" = "Ten opzichte van totaal";
 "BudgetYearlyOverviewVersus" = "Tegenover";
+"BudgetYearlyOverviewPerOrganisation" = "Per organisatie";
+"BudgetSummaryNoGiftsYearlyOverview" = "Je hebt dit jaar (nog) geen giften";
