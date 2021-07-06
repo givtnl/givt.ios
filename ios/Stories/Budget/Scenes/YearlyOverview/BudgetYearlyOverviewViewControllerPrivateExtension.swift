@@ -10,7 +10,7 @@ import Foundation
 
 private extension BudgetYearlyOverviewViewController {
     @IBAction func backButton(_ sender: Any) {
-        try! Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: false), withContext: self)
+        try! Mediater.shared.send(request: GoBackToSummaryRoute(needsReload: needsReload), withContext: self)
     }
     @IBAction func goToYearlyOverviewDetail(_ sender: Any) {
         trackEvent("CLICKED", properties: ["BUTTON_NAME": "DownloadYearlyOverview"])
