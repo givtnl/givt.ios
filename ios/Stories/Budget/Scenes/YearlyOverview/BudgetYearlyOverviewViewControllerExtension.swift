@@ -30,7 +30,9 @@ extension BudgetYearlyOverviewViewController {
         monthlyBarsHeader.label.text = "BudgetSummaryMonth".localized
         givtLegendLabel.text = "BudgetYearlyOverviewDetailThroughGivt".localized
         notGivtLegendLabel.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
-
+        organisationGivtCardHeader.label.text = "Per organisation".localized
+        organisationGivt.text = "BudgetYearlyOverviewDetailThroughGivt".localized
+        organisationNotGivt.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
     }
 
     func reloadData() {
@@ -39,13 +41,14 @@ extension BudgetYearlyOverviewViewController {
         
         try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: fromDate, tillDate: tillDate, groupType: 2, orderType: 3)) { givtModels in
             self.givtModels = givtModels
-            
             try! Mediater.shared.sendAsync(request: GetMonthlySummaryQuery(fromDate: self.getStartDateForYear(year: self.year-1), tillDate: self.getEndDateForYear(year: self.year-1), groupType: 2, orderType: 3)) { givtModelsPreviousYear in
                 self.previousYearGivtModels = givtModelsPreviousYear
             }
             
             DispatchQueue.main.async {
                 self.amountGivt.text = givtModels.map { $0.Value }.reduce(0, +).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                self.loadGivtModels(givtModels)
+
             }
             
 
@@ -60,6 +63,7 @@ extension BudgetYearlyOverviewViewController {
                     let givtAmountTax = givtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
                     let notGivtAmountTax = notGivtModels.filter { $0.TaxDeductable != nil && $0.TaxDeductable! }.map { $0.Value }.reduce(0, +)
                     self.amountTax.text = (givtAmountTax + notGivtAmountTax).getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+                    self.loadNotGivtModels(notGivtModels)
                 }
                 
                 
