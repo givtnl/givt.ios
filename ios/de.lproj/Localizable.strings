@@ -1024,7 +1024,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetGivingGoalRemove" = "Entferne das Spendenziel";
 
 /*Fuzzy*/
-"BudgetSummaryNoGifts" = "Du hast diesen Monat noch keine Spenden getätigt";
+"BudgetSummaryNoGifts" = "Du hast diesen Monat (noch) keine Spenden getätigt";
 "BudgetTestimonialSummary" = "\"Seit ich die Zusammenfassung verwende, habe ich mehr Einblick über das, was ich gebe. Ich gebe deswegen viel bewusster.\"";
 "BudgetTestimonialGivingGoal" = "\"Mein Spendenziel motiviert mich, regelmäßig über mein Spendenverhalten nachzudenken.\"";
 "BudgetTestimonialExternalGifts" = "„Ich finde es gut, dass ich meine Beiträge außerhalb von Givt in der App eintragen kann. Jetzt kann ich mir leichter überlegen, was ich noch geben möchte. “";
@@ -1083,3 +1083,5 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetYearlyOverviewGivenIn" = "Given in";
 "BudgetYearlyOverviewRelativeTo" = "Relative to the total in";
 "BudgetYearlyOverviewVersus" = "Versus";
+"BudgetYearlyOverviewPerOrganisation" = "pro Organisation";
+"BudgetSummaryNoGiftsYearlyOverview" = "Du hast diesen Jahr (noch) keine Spenden getätigt";
