@@ -1081,7 +1081,7 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetGivingGoalRemove" = "Remove giving goal";
 
 /*Fuzzy*/
-"BudgetSummaryNoGifts" = "You have no donations yet this month";
+"BudgetSummaryNoGifts" = "You have no donations (yet) this month";
 "BudgetTestimonialSummary" = "”Since I’ve been using the summary, I have gained more insight into what I give. I give more consciously because of it.\"";
 "BudgetTestimonialGivingGoal" = "”My giving goal motivates me to regularly reflect on my giving behaviour.”";
 "BudgetTestimonialExternalGifts" = "\"I like that I can add any external donations to my summary. I can now simply keep track of my giving.\"";
@@ -1146,3 +1146,5 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetYearlyOverviewGivenIn" = "Given in";
 "BudgetYearlyOverviewRelativeTo" = "Relative to the total in";
 "BudgetYearlyOverviewVersus" = "Versus";
+"BudgetYearlyOverviewPerOrganisation" = "Per organisation";
+"BudgetSummaryNoGiftsYearlyOverview" = "You have no donations (yet) this year";
