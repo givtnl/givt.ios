@@ -143,6 +143,7 @@
 		32810EF725DF12DC004E305C /* MonthlyCardViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32810EF625DF12DC004E305C /* MonthlyCardViewBody.swift */; };
 		32810EFA25DF2403004E305C /* ChartViewBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32810EF925DF2403004E305C /* ChartViewBody.swift */; };
 		32810EFC25DF2410004E305C /* ChartViewBody.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32810EFB25DF2410004E305C /* ChartViewBody.xib */; };
+		328AFC402695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328AFC3F2695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift */; };
 		328FB25625EA58A1003E24B7 /* ChartValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328FB25525EA58A1003E24B7 /* ChartValueFormatter.swift */; };
 		3290C14D268D9D6600BFED48 /* BaseTrackingViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290C14C268D9D6600BFED48 /* BaseTrackingViewcontroller.swift */; };
 		3290C1542690ADE000BFED48 /* BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3290C1532690ADE000BFED48 /* BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift */; };
@@ -657,6 +658,7 @@
 		32810EF625DF12DC004E305C /* MonthlyCardViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCardViewBody.swift; sourceTree = "<group>"; };
 		32810EF925DF2403004E305C /* ChartViewBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewBody.swift; sourceTree = "<group>"; };
 		32810EFB25DF2410004E305C /* ChartViewBody.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartViewBody.xib; sourceTree = "<group>"; };
+		328AFC3F2695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearlyOverviewMonthlyBarViewModel.swift; sourceTree = "<group>"; };
 		328FB25525EA58A1003E24B7 /* ChartValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartValueFormatter.swift; sourceTree = "<group>"; };
 		3290C14C268D9D6600BFED48 /* BaseTrackingViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTrackingViewcontroller.swift; sourceTree = "<group>"; };
 		3290C1532690ADE000BFED48 /* BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetYearlyOverviewViewControllerMonthlyBarsExtension.swift; sourceTree = "<group>"; };
@@ -1626,6 +1628,7 @@
 			children = (
 				3290C1562690B21E00BFED48 /* YearlyOverviewMonthlyBar.xib */,
 				3290C1582690B22800BFED48 /* YearlyOverviewMonthlyBar.swift */,
+				328AFC3F2695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift */,
 			);
 			path = MonthlyBar;
 			sourceTree = "<group>";
@@ -3654,6 +3657,7 @@
 				FBC1858D24C065B3001A4C6B /* GetCollectGroupsQuery.swift in Sources */,
 				328FB25625EA58A1003E24B7 /* ChartValueFormatter.swift in Sources */,
 				3260CF23254ABCDB00BA6BD7 /* OpenSafariRouteTransactionModel.swift in Sources */,
+				328AFC402695B2ED00710DBC /* YearlyOverviewMonthlyBarViewModel.swift in Sources */,
 				D761E9941F166B8D002B849B /* CustomTableView.swift in Sources */,
 				324761C12508BCCA002BC37E /* CreateRecurringDonationResponseModel.swift in Sources */,
 				D721F19C1F7E3EF8000B9546 /* Mandate.swift in Sources */,
