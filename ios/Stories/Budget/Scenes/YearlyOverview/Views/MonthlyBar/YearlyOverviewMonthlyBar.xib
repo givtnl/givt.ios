@@ -31,7 +31,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zh8-QA-iIj">
                     <rect key="frame" x="0.0" y="44" width="660" height="204"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcu-yW-J8K">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcu-yW-J8K">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="204"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="fpV-gH-B3Q"/>
@@ -41,7 +41,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dty-U5-MXm">
-                            <rect key="frame" x="40" y="0.0" width="545" height="204"/>
+                            <rect key="frame" x="40" y="0.0" width="555" height="204"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAX-Eg-5SD">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="204"/>
@@ -69,10 +69,10 @@
                                 <constraint firstAttribute="bottom" secondItem="RbA-oi-joF" secondAttribute="bottom" id="hgS-Am-ggT"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 900" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqn-Hq-Dbd">
-                            <rect key="frame" x="585" y="0.0" width="75" height="204"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€ 999.99" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="bqn-Hq-Dbd">
+                            <rect key="frame" x="595" y="0.0" width="65" height="204"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="75" id="h0k-9O-eSF"/>
+                                <constraint firstAttribute="width" constant="65" id="h0k-9O-eSF"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="12"/>
                             <color key="textColor" red="0.18039215689999999" green="0.16078431369999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
