@@ -14,7 +14,9 @@ extension BudgetYearlyOverviewViewController {
         guard models.count > 0 else {
             return addEmpty(organisationGivtStackView, organisationGivtStackViewHeight)
         }
-        models.forEach({ givtModel in
+        models.sorted(by: { first, second in
+            first.Key < second.Key
+        }).forEach({ givtModel in
             addRow(organisationGivtStackView, organisationGivtStackViewHeight, givtModel)
         })
     }
@@ -22,7 +24,9 @@ extension BudgetYearlyOverviewViewController {
         guard models.count > 0 else {
             return addEmpty(organisationNotGivtStackView, organisationNotGivtStackViewHeight)
         }
-        models.forEach({ notGivtModel in
+        models.sorted(by: { first, second in
+            first.Key < second.Key
+        }).forEach({ notGivtModel in
             addRow(organisationNotGivtStackView, organisationNotGivtStackViewHeight, notGivtModel)
         })
     }
