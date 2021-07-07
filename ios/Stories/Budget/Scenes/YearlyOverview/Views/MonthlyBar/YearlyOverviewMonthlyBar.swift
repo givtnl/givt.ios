@@ -47,7 +47,7 @@ class YearlyOverviewMonthlyBar: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    var monthlyBarViewModel: MonthlyBarViewModel? = nil {
+    var monthlyBarViewModel: YearlyOverviewMonthlyBarViewModel? = nil {
         didSet {
             if let model = monthlyBarViewModel {
                 // dedecucting label widths

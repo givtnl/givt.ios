@@ -9,40 +9,18 @@
 import Foundation
 import UIKit
 
-class MonthlyBarViewModel {
-    var givtAmount: Double = 0
-    var notGivtAmount: Double = 0
-    var highestAmount: Double = 0
-    var maxBarWidth: CGFloat = 0
-    var date: Date? = nil
-    init() { }
-    init(givtAmount: Double, notGivtAmount: Double, highestAmount: Double, maxBarWidth: CGFloat, date: Date) {
-        self.givtAmount = givtAmount
-        self.notGivtAmount = notGivtAmount
-        self.highestAmount = highestAmount
-        self.maxBarWidth = maxBarWidth
-        self.date = date
-    }
-}
-
-extension Array where Element == MonthlyBarViewModel {
-    var highestBarValue: Double {
-        return self.map { $0.givtAmount + $0.notGivtAmount }.max() ?? 0
-    }
-}
-
 extension BudgetYearlyOverviewViewController {
-    typealias GetBarsCompletionHandler = (_ response: [MonthlyBarViewModel]) -> Void
+    typealias GetBarsCompletionHandler = (_ response: [YearlyOverviewMonthlyBarViewModel]) -> Void
     
     func getDataForMonthBars(completionHandler: @escaping GetBarsCompletionHandler) {
         let numberOfMonthsToFetch: Int = year == Date().getYear() ? Date().getMonth() : 12
-        var retArray: [MonthlySummaryKey: MonthlyBarViewModel] = [:]
+        var retArray: [MonthlySummaryKey: YearlyOverviewMonthlyBarViewModel] = [:]
         let fromDate = getStartDateForYear(year: year)
         let tillDate = getEndDateForYear(year: year)
                 
         for int in 1...numberOfMonthsToFetch {
             let keyValues = MonthlySummaryKey(Year: year, Month: int)
-            retArray[keyValues] = MonthlyBarViewModel()
+            retArray[keyValues] = YearlyOverviewMonthlyBarViewModel()
             retArray[keyValues]!.date = keyValues.toDate()
         }
         
@@ -64,7 +42,7 @@ extension BudgetYearlyOverviewViewController {
         }
     }
     
-    func loadMonthBars(monthBars: [MonthlyBarViewModel]) {
+    func loadMonthBars(monthBars: [YearlyOverviewMonthlyBarViewModel]) {
         for int in 0...monthBars.count - 1 {
             let monthlyBar = YearlyOverviewMonthlyBar()
             monthlyBar.tag = int
