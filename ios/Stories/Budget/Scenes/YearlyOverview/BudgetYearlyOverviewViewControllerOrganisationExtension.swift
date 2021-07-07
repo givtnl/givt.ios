@@ -7,42 +7,31 @@
 //
 
 import Foundation
-extension MonthlyCardViewLine {
-    static func Empty(description: String) -> MonthlyCardViewLine {
-        let line = MonthlyCardViewLine()
-        line.collectGroupLabel.text = description
-        line.amountLabel.text = String.empty
-        return line
-    }
-}
+import UIKit
+
 extension BudgetYearlyOverviewViewController {
-    
     func loadGivtModels(_ models: [MonthlySummaryDetailModel]) {
         guard models.count > 0 else {
-            organisationGivtStackView.addArrangedSubview(MonthlyCardViewLine.Empty(description: "BudgetSummaryNoGiftsYearlyOverview".localized))
-            organisationGivtStackViewHeight.constant += 22
-            return
+            return addEmpty(organisationGivtStackView, organisationGivtStackViewHeight)
         }
         models.forEach({ givtModel in
-            let line = MonthlyCardViewLine()
-            line.amountLabel.text = givtModel.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            line.collectGroupLabel.text = givtModel.Key
-            organisationGivtStackView.addArrangedSubview(line)
-            organisationGivtStackViewHeight.constant += 22
+            addRow(organisationGivtStackView, organisationGivtStackViewHeight, givtModel)
         })
     }
     func loadNotGivtModels(_ models: [MonthlySummaryDetailModel]) {
         guard models.count > 0 else {
-            organisationNotGivtStackView.addArrangedSubview(MonthlyCardViewLine.Empty(description: "BudgetSummaryNoGiftsYearlyOverview".localized))
-            organisationNotGivtStackViewHeight.constant += 22
-            return
+            return addEmpty(organisationNotGivtStackView, organisationNotGivtStackViewHeight)
         }
-        models.forEach({ givtModel in
-            let line = MonthlyCardViewLine()
-            line.amountLabel.text = givtModel.Value.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
-            line.collectGroupLabel.text = givtModel.Key
-            organisationNotGivtStackView.addArrangedSubview(line)
-            organisationNotGivtStackViewHeight.constant += 22
+        models.forEach({ notGivtModel in
+            addRow(organisationNotGivtStackView, organisationNotGivtStackViewHeight, notGivtModel)
         })
+    }
+    private func addEmpty(_ stackView: UIStackView, _ stackViewHeight: NSLayoutConstraint) {
+        stackView.addArrangedSubview(MonthlyCardViewLine.Empty(description: "BudgetSummaryNoGiftsYearlyOverview".localized))
+        stackViewHeight.constant += 22
+    }
+    private func addRow(_ stackView: UIStackView, _ stackViewHeight: NSLayoutConstraint, _ model: MonthlySummaryDetailModel) {
+        stackView.addArrangedSubview(MonthlyCardViewLine(description: model.Key, amount: model.Value))
+        stackViewHeight.constant += 22
     }
 }

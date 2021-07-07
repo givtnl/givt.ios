@@ -27,12 +27,25 @@ class MonthlyCardViewLine : UIView {
         super.layoutSubviews()
         roundCorners(corners: [.bottomLeft, .bottomRight], radius: 5.0)
     }
-    
+    convenience init(description: String, amount: Double) {
+        self.init()
+        collectGroupLabel.text = description
+        amountLabel.text = amount.getFormattedWith(currency: UserDefaults.standard.currencySymbol, decimals: 2)
+    }
     private func commonInit() {
         let bundle = Bundle(for: MonthlyCardViewLine.self)
         bundle.loadNibNamed("MonthlyCardViewLine", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+}
+
+extension MonthlyCardViewLine {
+    static func Empty(description: String) -> MonthlyCardViewLine {
+        let line = MonthlyCardViewLine()
+        line.collectGroupLabel.text = description
+        line.amountLabel.text = String.empty
+        return line
     }
 }
