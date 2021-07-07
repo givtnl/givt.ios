@@ -31,8 +31,8 @@ extension BudgetYearlyOverviewViewController {
         givtLegendLabel.text = "BudgetYearlyOverviewDetailThroughGivt".localized
         notGivtLegendLabel.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
         organisationGivtCardHeader.label.text = "BudgetYearlyOverviewPerOrganisation".localized
-        organisationGivt.text = "BudgetYearlyOverviewDetailThroughGivt".localized
-        organisationNotGivt.text = "BudgetYearlyOverviewDetailNotThroughGivt".localized
+        organisationGivt.text = "BudgetSummaryGivt".localized
+        organisationNotGivt.text = "BudgetSummaryNotGivt".localized
     }
 
     func reloadData() {
