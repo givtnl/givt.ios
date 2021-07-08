@@ -1817,7 +1817,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ice-DN-dpC">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="752"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0vc-LJ-4KL" userLabel="backgroundTotalYear" customClass="BackgroundShadowView" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="30" y="30" width="125" height="165"/>
@@ -2539,7 +2539,7 @@
                                                     <constraint firstItem="0vc-LJ-4KL" firstAttribute="top" secondItem="Ice-DN-dpC" secondAttribute="top" constant="30" id="BM3-kk-khR"/>
                                                     <constraint firstItem="a4R-Hk-9G8" firstAttribute="top" secondItem="FGu-SY-rlU" secondAttribute="bottom" id="FXa-ar-Qmk"/>
                                                     <constraint firstAttribute="trailing" secondItem="a4R-Hk-9G8" secondAttribute="trailing" id="IO3-s9-VIY"/>
-                                                    <constraint firstAttribute="bottom" secondItem="a4R-Hk-9G8" secondAttribute="bottom" id="UsD-RK-rJ3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="a4R-Hk-9G8" secondAttribute="bottom" constant="20" id="UsD-RK-rJ3"/>
                                                     <constraint firstAttribute="trailing" secondItem="7lX-F5-p2J" secondAttribute="trailing" constant="30" id="eDb-km-KRV"/>
                                                     <constraint firstItem="Zfw-F4-aXp" firstAttribute="leading" secondItem="Ice-DN-dpC" secondAttribute="leading" constant="20" id="ep2-sC-cBv"/>
                                                     <constraint firstItem="a4R-Hk-9G8" firstAttribute="leading" secondItem="Ice-DN-dpC" secondAttribute="leading" id="hTt-RT-B3I"/>
