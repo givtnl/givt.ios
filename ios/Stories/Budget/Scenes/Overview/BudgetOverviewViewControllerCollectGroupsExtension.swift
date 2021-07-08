@@ -88,7 +88,7 @@ extension BudgetOverviewViewController {
         if let givtModels = collectGroupsForCurrentMonth, let notGivtModels = notGivtModelsForCurrentMonth {
             if givtModels.count > 2 || notGivtModels.count > 2 {
                 buttonSeeMore.isHidden = false
-                buttonControlView.bottomAnchor.constraint(equalTo: buttonSeeMore.bottomAnchor, constant: 15).isActive = true
+                buttonControlView.bottomAnchor.constraint(equalTo: buttonSeeMore.bottomAnchor, constant: 25).isActive = true
             } else {
                 buttonSeeMore.isHidden = true
                 buttonControlView.bottomAnchor.constraint(equalTo: buttonAddExternalDonationView.bottomAnchor, constant: 15).isActive = true
