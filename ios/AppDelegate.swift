@@ -120,6 +120,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         
         var notifications = localNotificationManager.notifications
         let now = Date()
+        
+        #if DEBUG
         notifications.append(
             LocalNotification(
                 id: "TestYearly",
@@ -128,6 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 dateTime: DateComponents(calendar: Calendar.current, month: now.getMonth(), day: now.getDay(), hour: now.getHour(), minute: now.getMinutes() + 1),
                 userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
                 shouldRepeat: true))
+        #endif
         notifications.append(
             LocalNotification(
                 id: "YearlyOverviewEnd",
@@ -227,19 +230,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             } else {
                 // TODO => Build the stack nicely so we can go back in the navigation stack
                 NavigationManager.shared.executeWithLogin(context: mainViewController) {
-                    
-                    // What year should we show?
-                    let date = Date()
-                    let calendar = Calendar.current
-                    let month = date.getMonth()
-                    var year = date.getYear()
-                    switch(month){
-                        case 1...10 :
-                            year-=1
-                        default: break
-                    }
-                    
-                    try? Mediater.shared.sendAsync(request: OpenYearlyOverviewRoute(year: year), withContext: mainViewController) { }
+                    try? Mediater.shared.sendAsync(request: OpenSummaryRoute(fromDate: Date(), openYearlyOverview: true), withContext: mainViewController) { }
                 }
             }
         }

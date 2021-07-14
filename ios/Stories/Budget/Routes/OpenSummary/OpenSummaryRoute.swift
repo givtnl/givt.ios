@@ -10,7 +10,9 @@ import Foundation
 
 class OpenSummaryRoute: NoResponseRequest {
     var fromDate: Date
-    init(fromDate: Date) {
+    var openYearlyOverview: Bool
+    init(fromDate: Date, openYearlyOverview: Bool = false) {
         self.fromDate = fromDate
+        self.openYearlyOverview = openYearlyOverview
     }
 }
