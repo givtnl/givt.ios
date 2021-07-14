@@ -63,6 +63,15 @@ final class NotificationManager : NSObject {
             }
         }
     }
+    
+    func invokeOnReceiveYearlySummaryNotification(year: Int) {
+        for delegate in delegates {
+            if let myDelegate = delegate as? NotificationOpenYearlySummaryDelegate {
+                myDelegate.onReceiveOpenYearlySummaryNotification(year: year)
+            }
+        }
+    }
+    
     func start() -> Void {
         DispatchQueue.main.async {
             self.requestAndUpdateTokenIfNeeded()
@@ -227,6 +236,11 @@ final class NotificationManager : NSObject {
                 }
             case NotificationType.OpenSummaryNotification.rawValue:
                 self.invokeOnReceiveSummaryNotification()
+            case NotificationType.OpenYearlySummaryNotification.rawValue:
+                guard let year = Int.init(pushNotificationInfo["Year"] as! String) else {
+                    return
+                }
+                self.invokeOnReceiveYearlySummaryNotification(year: year)
             default:
                 print("wrong type")
             LogService.shared.error(message: "Pushnotification type not known")
@@ -265,4 +279,8 @@ protocol NotificationShowFeatureUpdateDelegate: NotificationManagerDelegate {
 
 protocol NotificationOpenSummaryDelegate: NotificationManagerDelegate {
     func onReceiveOpenSummaryNotification()
+}
+
+protocol NotificationOpenYearlySummaryDelegate: NotificationManagerDelegate {
+    func onReceiveOpenYearlySummaryNotification(year: Int)
 }
