@@ -14,7 +14,6 @@ class OpenYearlyOverviewRouteHandler: RequestHandlerWithContextProtocol {
         let vc = UIStoryboard.init(name: "Budget", bundle: nil)
             .instantiateViewController(withIdentifier: String(describing: BudgetYearlyOverviewViewController.self)) as! BudgetYearlyOverviewViewController
         vc.year = (request as! OpenYearlyOverviewRoute).year
-        //vc.year = 2021
         context.navigationController?.pushViewController(vc, animated: true)
         
         try completion(() as! R.TResponse)
