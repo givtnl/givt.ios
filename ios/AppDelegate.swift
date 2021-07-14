@@ -118,16 +118,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
 
         let localNotificationManager = LocalNotificationManager.shared
         
-        // TODO: make the year dependant on the current date
-        
         var notifications = localNotificationManager.notifications
+        let now = Date()
         notifications.append(
             LocalNotification(
                 id: "TestYearly",
                 title: "Et jaar is bijna gedaan",
                 subTitle: "Tis bijna gedaan",
-                dateTime: DateComponents(calendar: Calendar.current, month: 7, day: 14, hour: 14, minute: 23),
-                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue, "Year": "2021"],
+                dateTime: DateComponents(calendar: Calendar.current, month: now.getMonth(), day: now.getDay(), hour: now.getHour(), minute: now.getMinutes() + 1),
+                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
                 shouldRepeat: true))
         notifications.append(
             LocalNotification(
@@ -135,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 title: "Et jaar is bijna gedaan",
                 subTitle: "Tis bijna gedaan",
                 dateTime: DateComponents(calendar: Calendar.current, month: 12, day: 10, hour: 19, minute: 47),
-                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue, "Year": "2021"],
+                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
                 shouldRepeat: true))
         notifications.append(
             LocalNotification(
@@ -143,7 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 title: "Et jaar is bijna gedaan",
                 subTitle: "Tis bijna gedaan",
                 dateTime: DateComponents(calendar: Calendar.current, month: 1, day: 1, hour: 19, minute: 48),
-                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue, "Year": "2020"],
+                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
                 shouldRepeat: true))
         notifications.append(
             LocalNotification(
@@ -151,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
                 title: "Et jaar is bijna gedaan",
                 subTitle: "Tis bijna gedaan",
                 dateTime: DateComponents(calendar: Calendar.current, month: 3, day: 2, hour: 19, minute: 49),
-                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue, "Year": "2020"],
+                userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
                 shouldRepeat: true))
         localNotificationManager.notifications = notifications
         if !UserDefaults.standard.isTempUser {
@@ -212,7 +211,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         }
     }
     
-    func onReceiveOpenYearlySummaryNotification(year: Int) {
+    func onReceiveOpenYearlySummaryNotification() {
         DispatchQueue.main.async {
             guard let window = UIApplication.shared.keyWindow else { return }
             guard let mainViewController = window.rootViewController?.children
@@ -228,6 +227,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
             } else {
                 // TODO => Build the stack nicely so we can go back in the navigation stack
                 NavigationManager.shared.executeWithLogin(context: mainViewController) {
+                    
+                    // What year should we show?
+                    let date = Date()
+                    let calendar = Calendar.current
+                    let month = date.getMonth()
+                    var year = date.getYear()
+                    switch(month){
+                        case 1...10 :
+                            year-=1
+                        default: break
+                    }
+                    
                     try? Mediater.shared.sendAsync(request: OpenYearlyOverviewRoute(year: year), withContext: mainViewController) { }
                 }
             }
