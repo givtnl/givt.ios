@@ -127,8 +127,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         notifications.append(
             LocalNotification(
                 id: "TestYearly",
-                title: "Et jaar is bijna gedaan",
-                subTitle: "Tis bijna gedaan",
+                title: "BudgetPushYearlyNearlyEndBold".localized.replacingOccurrences(of: "{0}", with: String(now.getYear())),
+                subTitle: "BudgetPushYearlyNearlyEnd".localized,
                 dateTime: DateComponents(calendar: Calendar.current, month: now.getMonth(), day: now.getDay(), hour: now.getHour(), minute: now.getMinutes() + 1),
                 userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
                 shouldRepeat: true))
@@ -136,24 +136,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         notifications.append(
             LocalNotification(
                 id: "YearlyOverviewEnd",
-                title: "Et jaar is bijna gedaan",
-                subTitle: "Tis bijna gedaan",
+                title: "BudgetPushYearlyNearlyEndBold".localized.replacingOccurrences(of: "{0}", with: String(now.getYear())),
+                subTitle: "BudgetPushYearlyNearlyEnd".localized,
                 dateTime: DateComponents(calendar: Calendar.current, month: 12, day: 10, hour: 19, minute: 47),
                 userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
                 shouldRepeat: true))
         notifications.append(
             LocalNotification(
                 id: "YearlyOverviewBegin",
-                title: "Et jaar is bijna gedaan",
-                subTitle: "Tis bijna gedaan",
+                title: "BudgetPushYearlyFinalBold".localized,
+                subTitle: "BudgetPushYearlyFinal".localized,
                 dateTime: DateComponents(calendar: Calendar.current, month: 1, day: 1, hour: 19, minute: 48),
                 userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
                 shouldRepeat: true))
         notifications.append(
             LocalNotification(
                 id: "YearlyOverviewTax",
-                title: "Et jaar is bijna gedaan",
-                subTitle: "Tis bijna gedaan",
+                title: "BudgetPushYearlyNewYearBold".localized,
+                subTitle: "BudgetPushYearlyNewYear".localized,
                 dateTime: DateComponents(calendar: Calendar.current, month: 3, day: 2, hour: 19, minute: 49),
                 userInfo: ["Type" : NotificationType.OpenYearlySummaryNotification.rawValue],
                 shouldRepeat: true))
