@@ -66,6 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIWindowSceneDelegate, UN
         doMagicForPresets()
         
         mixpanel.serverURL = "https://api-eu.mixpanel.com"
+        mixpanel.useIPAddressForGeoLocation = false
+        mixpanel.people.unset(properties: ["$country_code", "$region", "$city", "$email"])
         
         if #available(iOS 10.0, *) {
             setupMonthlyOverviewNotification()

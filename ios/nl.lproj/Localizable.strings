@@ -1154,3 +1154,9 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 "BudgetYearlyOverviewVersus" = "Tegenover";
 "BudgetYearlyOverviewPerOrganisation" = "Per organisatie";
 "BudgetSummaryNoGiftsYearlyOverview" = "Je hebt dit jaar (nog) geen giften";
+"BudgetPushYearlyNearlyEndBold" = "{0} is bijna voorbij... Je balans al opgemaakt? ";
+"BudgetPushYearlyNearlyEnd" = "Bekijk je jaaroverzicht en zie wat je tot nu toe gegeven hebt.";
+"BudgetPushYearlyNewYearBold" = "Gelukkig Nieuwjaar! Je balans al opgemaakt?";
+"BudgetPushYearlyNewYear" = "Bekijk je jaaroverzicht en zie wat je het afgelopen jaar gegeven hebt.";
+"BudgetPushYearlyFinalBold" = "Je jaaroverzicht is nu finaal!";
+"BudgetPushYearlyFinal" = "Bekijk je jaaroverzicht en zie wat je het afgelopen jaar gegeven hebt.";
