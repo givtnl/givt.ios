@@ -1087,7 +1087,8 @@ Na inloggen komt er een melding in het scherm met ‘Verstuur openstaande Givts�
 "BudgetSummaryNoGiftsYearlyOverview" = "Du hast diesen Jahr (noch) keine Spenden getätigt";
 "BudgetPushYearlyNearlyEndBold" = "{0} is almost over... Have you made up your balance yet?";
 "BudgetPushYearlyNearlyEnd" = "View your annual overview and see what you have given so far.";
-"BudgetPushYearlyNewYearBold" = "Happy New Year! Have you made up your balance yet?";
+"BudgetPushYearlyNewYearBold" = "Have you made up your balance yet?";
 "BudgetPushYearlyNewYear" = "View your annual overview and see what you have given in the past year.";
-"BudgetPushYearlyFinalBold" = "Your annual overview is now final!";
+"BudgetPushYearlyFinalBold" = "Your annual overview is now ready!";
 "BudgetPushYearlyFinal" = "View your annual overview and see what you have given in the past year.";
+"BudgetTestimonialYearlyOverviewAction" = "Zur Übersicht";
