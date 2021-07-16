@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SVProgressHUD
 
-class BudgetYearlyOverviewViewController: BaseTrackingViewController {
+class BudgetYearlyOverviewViewController: BaseTrackingViewController, OverlayHost {
     override var screenName: String { return "YearlySummary" }
 
     @IBOutlet weak var mainView: UIView!
@@ -119,5 +119,7 @@ class BudgetYearlyOverviewViewController: BaseTrackingViewController {
                 }
             }
         }
+        
+        setupTestimonial()
     }
 }
