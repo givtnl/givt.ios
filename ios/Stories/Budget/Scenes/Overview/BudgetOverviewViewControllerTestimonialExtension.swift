@@ -30,10 +30,10 @@ extension BudgetOverviewViewController {
             let currentMonth = currentDate.getMonth()
             
             if (lastSeenYear == currentYear && lastSeenMonth < currentMonth || lastSeenYear < currentYear) {
-                self.showOverlay(type: TestimonialCarouselViewController.self, fromStoryboardWithName: "Budget")
+                self.showOverlay(type: TestimonialCarouselViewController.self, fromStoryboardWithName: "Budget") {}
             }
         } else {
-            self.showOverlay(type: TestimonialCarouselViewController.self, fromStoryboardWithName: "Budget")
+            self.showOverlay(type: TestimonialCarouselViewController.self, fromStoryboardWithName: "Budget") {}
         }
     }
 }
