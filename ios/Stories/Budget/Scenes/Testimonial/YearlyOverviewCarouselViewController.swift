@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Mixpanel
 import UIKit
 
 class YearlyOverviewCarouselViewController: BaseCarouselViewController, OverlayViewController {
@@ -35,6 +36,8 @@ class YearlyOverviewCarouselViewController: BaseCarouselViewController, OverlayV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Mixpanel.mainInstance().track(event: "LOADED", properties: ["TESTIMONIAL_NAME": "YearlyOverview"])
+
         pageControl.currentPageIndicatorTintColor = ColorHelper.GivtPurple
         pageControl.pageIndicatorTintColor = ColorHelper.LightGrey
         pageControl.hidesForSinglePage = true
