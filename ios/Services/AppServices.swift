@@ -98,6 +98,15 @@ class AppServices {
         return nil
     }
     
+    static func isCountryFromSimGB() -> Bool {
+        switch(getCountryFromSim()) {
+            case "GB", "GG", "JE":
+                return true
+            default:
+                return false
+        }
+    }
+    
     static func isLocationServicesEnabled() -> Bool {
         return CLLocationManager.locationServicesEnabled()
     }
