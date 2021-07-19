@@ -1127,14 +1127,14 @@ Na inloggen komt er een melding in het scherm met â€˜Verstuur openstaande Givtsâ
 
 /*Fuzzy*/
 "BudgetYearlyOverviewGivenTotalTax" = "Total tax relief";
-"BudgetYearlyOverviewDetailThroughGivt" = "Through Givt";
+"BudgetYearlyOverviewDetailThroughGivt" = "Within Givt";
 "BudgetYearlyOverviewDetailAmount" = "Amount";
 "BudgetYearlyOverviewDetailDeductable" = "Tax relief";
 "BudgetYearlyOverviewDetailTotal" = "Total";
 "BudgetYearlyOverviewDetailTotalDeductable" = "Total tax relief";
-"BudgetYearlyOverviewDetailNotThroughGivt" = "Not through Givt";
-"BudgetYearlyOverviewDetailTotalThroughGivt" = "(through Givt)";
-"BudgetYearlyOverviewDetailTotalNotThroughGivt" = "(not through Givt)";
+"BudgetYearlyOverviewDetailNotThroughGivt" = "Outside Givt";
+"BudgetYearlyOverviewDetailTotalThroughGivt" = "(within Givt)";
+"BudgetYearlyOverviewDetailTotalNotThroughGivt" = "(outside Givt)";
 "BudgetYearlyOverviewDetailTipBold" = "TIP: add your external donations";
 "BudgetYearlyOverviewDetailTipNormal" = "to get a total overview of what you give, both via the Givt app and not via the Givt app.";
 "BudgetYearlyOverviewDetailReceiveViaMail" = "Receive by email";
