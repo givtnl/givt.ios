@@ -12,7 +12,7 @@ import UIKit
 
 class YearlyOverviewCarouselViewController: BaseCarouselViewController, OverlayViewController {
     var completion: (() -> Void)?
-    var overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.8, height: 300.0)
+    var overlaySize: CGSize? = CGSize(width: UIScreen.main.bounds.width * 0.8, height: 320.0)
     var pages: [Testimonial] = [Testimonial]()
     
     override func setupViewControllers() {
