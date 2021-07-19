@@ -20,7 +20,7 @@ class TestimonialManager {
         pages.append(Testimonial(id: 2, image: UIImage(named: "testimonial2")!, description: createAttributeText(bold: "BudgetTestimonialExternalGiftsName", normal: "BudgetTestimonialExternalGifts"), action: "BudgetTestimonialExternalGiftsAction"))
         pages.append(Testimonial(id: 3, image: UIImage(named: "testimonial3")!, description: createAttributeText(bold: "BudgetTestimonialGivingGoalName", normal: "BudgetTestimonialGivingGoal"), action: "BudgetTestimonialGivingGoalAction"))
 
-        yearlyOverviewPages.append(Testimonial(id: 4, image: UIImage(named: "testimonial3")!, description: createAttributeText(bold: "BudgetTestimonialYearlyOverviewName", normal: "BudgetTestimonialYearlyOverview"), action: "BudgetTestimonialYearlyOverviewAction"))
+        yearlyOverviewPages.append(Testimonial(id: 4, image: UIImage(named: "testimonial4")!, description: createAttributeText(bold: "BudgetTestimonialYearlyOverviewName", normal: "BudgetTestimonialYearlyOverview"), action: "BudgetTestimonialYearlyOverviewAction"))
     }
     
     func createAttributeText(bold: String, normal: String) -> NSMutableAttributedString {
