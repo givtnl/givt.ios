@@ -55,6 +55,8 @@ class SepaMandateVerificationViewController: UIViewController, UITextFieldDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.titleView = UIImageView(image: UIImage(imageLiteralResourceName: "givt20h.png"))
+
         tblPersonalData.delegate = self
         tblPersonalData.dataSource = self
         tblPersonalData.allowsSelection = false
